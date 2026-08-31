@@ -3,416 +3,89 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 085 | Read and write SQL statements by their semantics</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <title>AS9618 Lesson 085 | Testing methods through the development process</title>
     <link rel="icon" href="data:" />
-    <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
+    <link rel="stylesheet" href="../course-v2.css?v=3" />
   </head>
-  <body>
+  <body data-course-version="2" data-lesson-id="085" data-syllabus-ids="S12.05">
     <a class="skip-link" href="#main-content">Skip to main content</a>
-    <header class="topbar">
-      <div>
-        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 8</p>
-        <h1>Read and write SQL statements by their semantics</h1>
-      </div>
-      <div class="action-panel" aria-label="Page controls">
-        <a class="course-home-link" href="../">Course home</a>
-        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
-      </div>
+    <header class="v2-topbar">
+      <div><p class="v2-eyebrow">Cambridge AS9618 | Paper 2 | Section 12: Software development</p><h1>Testing methods through the development process</h1></div>
+      <nav class="v2-actions" aria-label="Lesson actions"><a href="../">Course home</a><a href="../assessments/">Assessment bank</a><button type="button" id="printLesson">Print</button></nav>
     </header>
-
-    <main class="layout" id="main-content" tabindex="-1">
-      <aside class="lesson-nav" aria-label="Lesson navigation">
-        <a href="#overview">Overview</a>
-        <a href="#hook">Warm-up</a>
-        <a href="#clauses">Clauses</a>
-        <a href="#conditions">Conditions</a>
-        <a href="#strings">Strings</a>
-        <a href="#trace">Trace a query</a>
-        <a href="#builder">Clause builder</a>
-        <a href="#runner">Query runner</a>
-        <a href="#examples">Examples</a>
-        <a href="#practice">Practice</a>
-        <a href="#debug">Debugging</a>
-        <a href="#exam">Exam-style</a>
-        <a href="#summary">Summary</a>
-        <a href="#homework">Homework</a>
-        <a href="#stage2-completion">Core syllabus content</a>
-      </aside>
-
-      <div class="lesson-content">
-        <!-- remediation-v2-stage3-scope:start -->
-        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.</p></aside>
-        <!-- remediation-v2-stage3-scope:end -->
-
-<!-- stage2-completion:start -->
-        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus content</p>
-            <h2>Read and write SQL statements by their semantics</h2>
-          </div>
-          <div class="stage2-explanation">
-            <p>Structured Query Language (SQL) is the industry-standard language used by a DBMS for DDL and DML. To understand a statement, read each clause by its effect: SELECT chooses output fields, FROM identifies the source table, and WHERE filters records using a condition. Keywords, field names, table names, operators, literal values and punctuation have different roles.</p>
-            <p>A valid answer must preserve the requested semantics, not merely contain familiar keywords. Text and date values are normally quoted in this course's standard SQL style; numeric and Boolean values are not quoted. Clause order, comparison operators and requested output fields determine which records and columns appear.</p>
-          </div>
-          <article class="stage2-example">
-            <h3>Worked example: Interpret a query</h3>
-            <p>SELECT Title, DueDate FROM Loan WHERE Returned = FALSE; reads records from Loan, keeps only records whose Returned field is false, and outputs Title and DueDate. It does not update the table and it does not output every field.</p>
-          </article>
+    <main class="v2-shell" id="main-content" tabindex="-1">
+      <nav class="v2-toc" aria-label="Lesson contents"><strong>Lesson 085</strong><a href="#overview">Overview</a><a href="#prerequisite">Prerequisite</a><a href="#explanation">Explanation</a><a href="#practice">Practice</a><a href="#summary">Summary</a></nav>
+      <div class="v2-content">
+        <section class="v2-hero" id="overview">
+          <div><p class="v2-eyebrow">Flexible-depth lesson</p><h2>Testing methods through the development process</h2><p>S12.05 | Select what to omit, teach briefly or explore in depth.</p></div>
+          <div class="v2-time-grid" aria-label="Available lesson depth"><div><strong>Quick</strong><span>diagnose + essentials</span></div><div><strong>Full</strong><span>complete explanation</span></div><div><strong>Deep</strong><span>prerequisites + extension</span></div><div><strong>Choose</strong><span>practice by need</span></div></div>
         </section>
 
-        <!-- stage10-explanation:start clauses -->
-        <section class="panel explanation-panel" id="explanation-clauses" data-explains="clauses" data-explanation-kind="mechanism" aria-labelledby="explanation-clauses-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="clauses">
-          <h2 class="explanation-sr-only" id="explanation-clauses-title">The three foundation clauses</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-085-clauses.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining The three foundation clauses with a structured visual model." />
-            <figcaption class="explanation-sr-only">The three foundation clauses: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> SELECT Names the fields to output, such as Title, DueDate .</li><li><strong>Lesson fact:</strong> FROM Names the table to use, such as Loan .</li><li><strong>Lesson fact:</strong> WHERE Filters records using a condition, such as Returned = FALSE .</li><li><strong>Lesson fact:</strong> Thinking order:</li><li><strong>Lesson fact:</strong> What fields do I need? Which table contains them? Which records should be included?</li></ol>
-
-          </div>
+        <section class="v2-panel v2-route-menu" aria-labelledby="route-heading">
+          <div class="v2-heading"><p class="v2-eyebrow">Teacher choice</p><h2 id="route-heading">Choose the depth for this group</h2></div>
+          <div class="v2-route-grid"><article><h3>Quick route</h3><p>Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.</p></article><article><h3>Full route</h3><p>Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.</p></article><article><h3>Deep route</h3><p>Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.</p></article></div>
         </section>
-        <!-- stage10-explanation:end clauses -->
-        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus practice</p>
-            <h2>Read and write SQL statements by their semantics: apply and assess</h2>
-          </div>
-          <div class="stage2-practice">
-            <h3>Targeted practice</h3>
-            <article class="stage2-question">
-              <p><strong>1.</strong> What does SELECT control?</p>
-              <details><summary>Show answer</summary><p>The fields or expressions shown in the result.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>2.</strong> What does FROM control?</p>
-              <details><summary>Show answer</summary><p>The table supplying the records.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>3.</strong> What does WHERE control?</p>
-              <details><summary>Show answer</summary><p>Which records satisfy the filter condition.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>4.</strong> Why is SELECT * not equivalent to SELECT Title?</p>
-              <details><summary>Show answer</summary><p>The asterisk outputs all fields; SELECT Title outputs only the requested field.</p></details>
-            </article>
-          </div>
-          <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>5 marks</span></div>
-            <p>Explain the effect of SELECT StudentID, Name FROM Student WHERE TutorGroup = '12A'; and identify one change that would alter its result.</p>
-            <details>
-              <summary>Show MS</summary>
-              <table class="mark-scheme-table">
-                <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
-                <tbody>
-                  <tr><td>reads records from Student</td><td>Do not award a clause-name list unless its effect on this statement is explained.</td><td>1</td></tr>
-                  <tr><td>filters to TutorGroup 12A</td><td></td><td>1</td></tr>
-                  <tr><td>outputs StudentID and Name only</td><td></td><td>1</td></tr>
-                  <tr><td>identifies a valid semantic change such as field list, condition, operator or literal</td><td></td><td>1</td></tr>
-                  <tr><td>explains how the named change alters rows or columns returned</td><td></td><td>1</td></tr>
-                </tbody>
-              </table>
-            </details>
-          </article>
-        </section>
-        <!-- stage2-completion:end -->
 
-<section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-085">
-          <div class="hero-copy">
-            <p class="lesson-meta">Lesson 085 | 45 minutes | Paper 1 Section 8 | SQL basics</p>
-            <h2>SQL is how you ask a database a precise question. "Show me stuff" is not a query; it is a cry for help.</h2>
-            <p>
-              This lesson turns English questions into basic single-table SQL queries using <code>SELECT</code>,
-              <code>FROM</code> and <code>WHERE</code>. The focus is field selection, table selection and conditions.
-              Sorting, aggregates, grouping and joins are left for later lessons.
-            </p>
-            <div class="objective-grid" aria-label="Learning objectives">
-              <div><strong>Select</strong><span>the fields required by the question</span></div>
-              <div><strong>Use</strong><span>FROM to name the correct table</span></div>
-              <div><strong>Filter</strong><span>records using WHERE conditions and comparison operators</span></div>
+        <section class="v2-panel" id="prerequisite">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 1 | optional depth</p><h2>Prerequisite knowledge and quick diagnostic</h2></div>
+          <div class="v2-diagnostic"><p>Recall S12.04 before starting this lesson.</p></div>
+          <p>Give one accurate definition or method step before continuing. If it is missing, revisit only that prerequisite.</p>
+          <details class="v2-prerequisite-detail"><summary>Open optional prerequisite refresher</summary><ul><li>Understand different ways of exposing and avoiding faults in a program. Locate and identify syntax, logic and run-time errors in a program and correct identified errors.</li><li>Identify and correct syntax, logic and runtime errors.</li></ul></details>
+        </section>
+
+        <section class="v2-panel" id="explanation">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 2 | deliberately over-complete</p><h2>Knowledge explanation</h2></div>
+          <h3>Learning objectives</h3><ul class="v2-objectives"><li>Understand dry run, walkthrough, white-box, black-box, integration, alpha, beta, acceptance and stub testing.</li></ul>
+          <details class="v2-concept-menu"><summary>Open the concept checklist and choose what to teach</summary><ul><li>walkthrough</li><li>white-box</li><li>black-box</li><li>integration</li><li>alpha</li><li>beta</li><li>acceptance</li><li>stub</li><li>testing</li></ul></details>
+          <div class="v2-explanation-grid">
+            <div>
+              <article class="v2-core-facts"><h3>Detailed explanation</h3><p class="v2-teacher-note">Teach all points, or select only the ones this group needs. The list is intentionally fuller than a fixed lesson slot.</p><ul class="v2-facts"><li>Describe testing methods and select suitable test data: dry run, walkthrough, white-box, black-box, integration, alpha, beta and acceptance testing, and use of a stub.</li><li>Dry run manually traces code; walkthrough is a structured peer review; white-box derives tests from internal paths; black-box derives tests from specifications. Integration tests combined modules, using a stub to imitate an unavailable called module.</li><li>Alpha testing is performed internally before release; beta testing uses selected external users in realistic settings; acceptance testing checks the delivered system against agreed requirements. A strategy states levels/methods/responsibility, while a test plan records test ID, purpose, data, expected result, actual result and pass/fail.</li><li>Choose test data from the stated validation rule and give an expected result for each value. A label such as &#39;boundary&#39; is insufficient unless the value really tests a stated limit.</li><li>Every maintenance change requires impact analysis, controlled amendment, tests for the changed behaviour and regression tests for unaffected behaviour. Records should link the request, code change and test evidence.</li><li>Test the enhancement with data that exercises the new path and rerun regression tests for existing paths. Correcting a fault is corrective maintenance; adding or improving requested functionality is an enhancement and may be perfective maintenance.</li></ul></article>
+              <article class="v2-example"><h3>Worked example</h3><p>Test login through review, construction, integration and release / Test an inclusive mark range / Three changes to one booking system / Add a Merit count without breaking PassCount: First dry-run the lockout counter and conduct a walkthrough in which peers inspect the algorithm. White-box tests cover true/false paths; black-box tests valid, invalid and boundary inputs from requirements. During integration, a stub returns simulated account results before the database is ready. Internal staff perform alpha testing, selected external users perform beta testing, and the customer performs acceptance testing against the agreed lockout behaviour. For an allowed mark from 0 to 100 inclusive, 55 is normal, 0 and 100 are valid extreme/boundary values, and -1 or 101 is abnormal. Fixing a crash when saving is corrective. Updating tax or term-date rules imposed externally is adaptive.…</p></article>
+              <aside class="v2-extension"><h3>Beyond syllabus / 延伸知识（不要求背诵）</h3><p>modern teams often use continuous integration to repeat building and testing whenever a program changes.</p></aside>
             </div>
-          </div>
-          <div class="sql-visual" aria-label="SQL query visual">
-            <span class="keyword">SELECT</span><span>Title, DueDate</span>
-            <span class="keyword">FROM</span><span>Loan</span>
-            <span class="keyword">WHERE</span><span>Returned = FALSE</span>
-            <p>Think: fields, table, condition. Then write the clauses.</p>
-          </div>
-        </section>
-
-        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-085">
-          <article class="why-card">
-            <h3>Why this matters</h3>
-            <p>SQL questions are often marked with one point per clause or condition. A missing field or wrong table can lose easy marks.</p>
-          </article>
-          <article class="trap-card">
-            <h3>Common error</h3>
-            <p>Do not use <code>SELECT *</code> unless all fields are required. Cambridge usually asks for specific output fields.</p>
-          </article>
-        </section>
-
-        <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-085">
-          <div class="section-title">
-            <p class="eyebrow">Warm-up hook</p>
-            <h2>Find all overdue books without scrolling like a detective in a low-budget movie.</h2>
-            <p>SQL lets you ask the database exactly what to return. The database enjoys clear instructions. Same.</p>
-          </div>
-          <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="select">SELECT Title FROM Loan WHERE Returned = FALSE</button>
-            <button class="choice-card" type="button" data-hook="all">SELECT * FROM Loan</button>
-            <button class="choice-card" type="button" data-hook="from">FROM Loan WHERE Returned = FALSE</button>
-            <button class="choice-card" type="button" data-hook="where">WHERE Returned = FALSE SELECT Title</button>
-          </div>
-          <div class="feedback" id="hookFeedback" aria-live="polite">
-            Choose the best basic SQL query.
+            <figure class="v2-visual">
+              <img src="../assets/diagrams/stage10-infographics/stage10-lesson-146-changeover.jpg" alt="A test strategy states the testing levels, methods, responsibilities, sequence and resources for the project.. A test plan records individual cases with a test ID, purpose, data, expected result, actual result and pass/fail outcome.. Normal, abnormal and extreme/boundary values are test-data categories; a list of values alone is neither a complete strategy nor a complete test plan." loading="lazy" />
+              <figcaption>Test strategy and test plan are different documents. One maintained explanation is shown as an image on larger screens and as text on small screens.</figcaption>
+              <div class="v2-mobile-visual-text" aria-label="Mobile text alternative"><ul><li>A test strategy states the testing levels, methods, responsibilities, sequence and resources for the project.</li><li>A test plan records individual cases with a test ID, purpose, data, expected result, actual result and pass/fail outcome.</li><li>Normal, abnormal and extreme/boundary values are test-data categories; a list of values alone is neither a complete strategy nor a complete test plan.</li></ul></div>
+            </figure>
           </div>
         </section>
 
-        <section class="panel" id="clauses" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-085">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 1</p>
-            <h2>The three foundation clauses</h2>
-          </div>
-          <div class="clause-grid">
-            <article><strong>SELECT</strong><span>Names the fields to output, such as <code>Title, DueDate</code>.</span></article>
-            <article><strong>FROM</strong><span>Names the table to use, such as <code>Loan</code>.</span></article>
-            <article><strong>WHERE</strong><span>Filters records using a condition, such as <code>Returned = FALSE</code>.</span></article>
-          </div>
-          <div class="answer-frame">
-            <strong>Thinking order:</strong>
-            <span>What fields do I need? Which table contains them? Which records should be included?</span>
-          </div>
+        <section class="v2-panel" id="practice">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 3 | select by learner need</p><h2>Practice by question type</h2></div>
+          <div class="v2-question-list"><article class="v2-question" data-question-id="Q-L085-01" data-semantic-fingerprint="S12.05|testing-methods-through-the-development-process|apply|method-derives-tests-source|written|recall">
+              <div class="v2-question-head"><span class="v2-badge">apply</span><span class="v2-badge">recall</span><span class="v2-badge difficulty">foundation</span><span class="v2-badge">2 marks</span></div>
+              <p><strong>Question 1.</strong> Which method derives tests from source-code paths?</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> White-box testing.</p><p><strong>Marking guidance:</strong> Award one mark for each distinct, technically accurate point or method step.</p><p><strong>Common error:</strong> For the command word apply, perform that exact action; do not replace it with an unrelated fact.</p></div></details>
+            </article><article class="v2-question" data-question-id="Q-L085-02" data-semantic-fingerprint="S12.05|testing-methods-through-the-development-process|explain|why-login-project-needs|written|explain">
+              <div class="v2-question-head"><span class="v2-badge">explain</span><span class="v2-badge">explain</span><span class="v2-badge difficulty">application</span><span class="v2-badge">8 marks</span></div>
+              <p><strong>Question 2.</strong> Explain why a login-system project needs both a test strategy and a test plan. State three likely contents of each document. Suggest normal, abnormal and extreme/boundary data for an integer age accepted from 12 to 18 inclusive, and state each expected result. Identify and justify these changes: fix a save crash; support a new operating-system API; add an export feature. For one change, state the impact-analysis and regression evidence required. An existing program counts PassCount for Marks[1:30] where each mark is at least 50. Analyse where a new MeritCount for marks at least 70 should be added, write the amended declarations, initialisation, loop update and output, and name four boundary-focused test values.</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> strategy coordinates the overall approach, levels/methods or responsibilities; strategy content such as methods, sequence, responsibility or resources; a second distinct strategy content; plan records individual tests and their evidence; plan content such as test ID, purpose, data or expected result; a second distinct plan content such as actual result or pass/fail; valid normal value; 12 and/or 18 as valid extremes; 11 and/or 19 as abnormal boundary; coherent expected results; save-crash fix classified as corrective with fault reason; new operating-system API classified as adaptive with environment reason; new export feature classified as perfective with enhancement reason; identifies affected interfaces/modules or behaviour before amendment; tests the changed path; reruns relevant existing tests to detect regression; analysis identifies the existing traversal and output that must remain; declares and initialises MeritCount without removing PassCount; increments MeritCount inside the existing traversal when mark is at least 70; preserves the existing pass condition at 50 and outputs both results after the loop; uses 49 and 50 to regression-test the pass boundary; uses 69 and 70 to test the new merit boundary</p><p><strong>Marking guidance:</strong> Do not require candidates to produce either document as a syllabus obligation; assess the need and likely contents. Do not credit a value whose classification contradicts the stated inclusive range. Do not classify every post-release change as adaptive or describe perfective maintenance as fault correction only. Do not accept a rewrite that removes the existing pass count, changes its boundary, or tests only the new feature.</p><p><strong>Common error:</strong> Do not repeat the same point in different words; each mark needs a separate idea or method step.</p></div></details>
+            </article><article class="v2-question" data-question-id="Q-L085-03" data-semantic-fingerprint="S12.05|testing-methods-through-the-development-process|apply|who-normally-performs-beta|written|recall">
+              <div class="v2-question-head"><span class="v2-badge">apply</span><span class="v2-badge">recall</span><span class="v2-badge difficulty">transfer</span><span class="v2-badge">2 marks</span></div>
+              <p><strong>Question 3.</strong> Who normally performs beta testing?</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> Selected external/end users in realistic use.</p><p><strong>Marking guidance:</strong> Award one mark for each distinct, technically accurate point or method step.</p><p><strong>Common error:</strong> Do not copy the worked example unchanged; transfer the method and check it against the new context.</p></div></details>
+            </article></div>
+          <div class="v2-paper-refs">
+          <h3>Related past-paper indexes</h3>
+          <table><thead><tr><th>Reference</th><th>Marks</th><th>Command word</th><th>Question type</th></tr></thead>
+          <tbody><tr><td>9618/21/W/24 Q5(a)</td><td>5</td><td>complete</td><td>recall</td></tr><tr><td>9618/21/W/24 Q5(ii)</td><td>1</td><td>complete</td><td>recall</td></tr><tr><td>9618/23/S/23 Q5(a)</td><td>3</td><td>explain</td><td>explain</td></tr></tbody></table>
+          <p class="v2-copyright-note">Index only: Cambridge question and mark-scheme wording is not reproduced on this public course page.</p>
+        </div>
         </section>
 
-        <section class="panel" id="conditions" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-085">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 2</p>
-            <h2>WHERE conditions and comparison operators</h2>
-            <p>A <code>WHERE</code> clause tests each record and returns only records where the condition is true.</p>
-          </div>
-          <div class="operator-table" role="table" aria-label="SQL comparison operators">
-            <div class="table-row table-head" role="row">
-              <div role="columnheader">Operator</div>
-              <div role="columnheader">Meaning</div>
-              <div role="columnheader">Example</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell"><code>=</code></div>
-              <div role="cell">equal to</div>
-              <div role="cell"><code>Category = 'Fiction'</code></div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell"><code>&lt;&gt;</code></div>
-              <div role="cell">not equal to</div>
-              <div role="cell"><code>Status &lt;&gt; 'Returned'</code></div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell"><code>&gt;</code>, <code>&lt;</code></div>
-              <div role="cell">greater than, less than</div>
-              <div role="cell"><code>Price &lt; 10.00</code></div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell"><code>&gt;=</code>, <code>&lt;=</code></div>
-              <div role="cell">greater/less than or equal to</div>
-              <div role="cell"><code>ExamMark &gt;= 80</code></div>
-            </div>
-          </div>
+        <section class="v2-panel" id="summary">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 4 | close when ready</p><h2>Summary and exam reminders</h2></div>
+          <div class="v2-summary-grid"><div><h3>Summary</h3><ul class="v2-summary-list"><li>Define testing methods through the development process with the exact technical vocabulary expected by the syllabus.</li><li>Use the lesson method on a fresh context and show the intermediate decision, representation or calculation.</li><li>Match the shape of the answer to the command word and the available marks.</li><li>Check the final answer against the scenario instead of repeating a memorised sentence.</li></ul></div><div class="v2-error"><h3>Common error to correct</h3><p>Students often describe the lifecycle as a fixed checklist. Correction: development is iterative; findings can send a project back to earlier stages.</p></div></div>
+          <div class="v2-tip-box"><h3>Exam technique</h3><ul><li>Follow the command word: state gives a fact; explain links a cause to a consequence; compare covers both sides.</li><li>Match the number of independent points or method steps to the available marks.</li><li>For testing methods through the development process, use the exact technical term before applying it to the scenario.</li></ul></div>
         </section>
 
-        <!-- stage10-explanation:start conditions -->
-        <section class="panel explanation-panel" id="explanation-conditions" data-explains="conditions" data-explanation-kind="mechanism" aria-labelledby="explanation-conditions-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-085">
-          <h2 class="explanation-sr-only" id="explanation-conditions-title">WHERE conditions and comparison operators</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-085-conditions.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining WHERE conditions and comparison operators with a structured visual model." />
-            <figcaption class="explanation-sr-only">WHERE conditions and comparison operators: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> A WHERE clause tests each record and returns only records where the condition is true.</li><li><strong>Lesson fact:</strong> Operator</li><li><strong>Lesson fact:</strong> equal to</li><li><strong>Lesson fact:</strong> Category = 'Fiction'</li><li><strong>Lesson fact:</strong> not equal to</li><li><strong>Lesson fact:</strong> Status &lt;&gt; 'Returned'</li><li><strong>Lesson fact:</strong> greater than, less than</li><li><strong>Lesson fact:</strong> Price &lt; 10.00</li><li><strong>Lesson fact:</strong> greater/less than or equal to</li><li><strong>Lesson fact:</strong> ExamMark &gt;= 80</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end conditions -->
-        <section class="panel" id="strings" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-085">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 3</p>
-            <h2>Text values need quotes; numbers usually do not</h2>
-          </div>
-          <div class="concept-grid">
-            <article><strong>Text/string</strong><span><code>Category = 'Fiction'</code>. The text value is quoted.</span></article>
-            <article><strong>Number</strong><span><code>Price &lt; 10.00</code>. Numeric values are not quoted in basic exam SQL.</span></article>
-            <article><strong>Boolean</strong><span><code>Returned = FALSE</code>. Use the Boolean value expected by the question/table.</span></article>
-            <article><strong>Field names</strong><span>Usually not quoted: <code>SELECT Title</code>, not <code>SELECT 'Title'</code>.</span></article>
-          </div>
-          <div class="callout">Chinese support: clause = 子句；condition = 条件；string/text value = 字符串/文本值；quotes = 引号。</div>
-        </section>
-
-        <!-- stage10-explanation:start strings -->
-        <section class="panel explanation-panel" id="explanation-strings" data-explains="strings" data-explanation-kind="mechanism" aria-labelledby="explanation-strings-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-085">
-          <h2 class="explanation-sr-only" id="explanation-strings-title">Text values need quotes; numbers usually do not</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-085-strings.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Text values need quotes; numbers usually do not with a structured visual model." />
-            <figcaption class="explanation-sr-only">Text values need quotes; numbers usually do not: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Text/string Category = 'Fiction' . The text value is quoted.</li><li><strong>Lesson fact:</strong> Number Price &lt; 10.00 . Numeric values are not quoted in basic exam SQL.</li><li><strong>Lesson fact:</strong> Boolean Returned = FALSE . Use the Boolean value expected by the question/table.</li><li><strong>Lesson fact:</strong> Field names Usually not quoted: SELECT Title , not SELECT 'Title' .</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end strings -->
-        <section class="panel" id="trace" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-085">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 4</p>
-            <h2>Trace a query against rows</h2>
-            <p>Check each row against the <code>WHERE</code> condition, then output only the selected fields from matching rows.</p>
-          </div>
-          <div class="data-table" role="table" aria-label="Loan table">
-            <div class="table-row table-head" role="row">
-              <div role="columnheader">LoanID</div>
-              <div role="columnheader">Title</div>
-              <div role="columnheader">Borrower</div>
-              <div role="columnheader">Category</div>
-              <div role="columnheader">DaysOverdue</div>
-              <div role="columnheader">Returned</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">L01</div><div role="cell">Networks</div><div role="cell">Amira</div><div role="cell">Computing</div><div role="cell">5</div><div role="cell">FALSE</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">L02</div><div role="cell">Poems</div><div role="cell">Leo</div><div role="cell">Literature</div><div role="cell">0</div><div role="cell">TRUE</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">L03</div><div role="cell">Databases</div><div role="cell">Maya</div><div role="cell">Computing</div><div role="cell">12</div><div role="cell">FALSE</div>
-            </div>
-          </div>
-        </section>
-
-
-        <section class="panel" id="builder" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-085">
-          <div class="section-title">
-            <p class="eyebrow">Interactive clause builder</p>
-            <h2>Translate English to SQL parts</h2>
-          </div>
-          <div class="converter-grid">
-            <label>
-              English request
-              <select id="builderInput">
-                <option value="overdueTitles">Show Title and Borrower for books that have not been returned.</option>
-                <option value="computingBooks">Show Title for loans where Category is Computing.</option>
-                <option value="bigOverdue">Show LoanID and Title for loans more than 7 days overdue.</option>
-                <option value="leoLoans">Show Title and DaysOverdue for loans borrowed by Leo.</option>
-                <option value="notReturned">Show LoanID for loans where Returned is FALSE.</option>
-              </select>
-            </label>
-            <button class="primary-button" type="button" id="builderBtn">Build SQL</button>
-          </div>
-          <pre class="sql-output" id="builderResult">Choose a request, then build the SQL.</pre>
-          <div class="feedback" id="builderReason">The output will identify SELECT fields, FROM table and WHERE condition.</div>
-        </section>
-
-        <section class="panel" id="runner" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-085">
-          <div class="section-title">
-            <p class="eyebrow">Interactive query runner</p>
-            <h2>Run a safe preset query against the Loan table</h2>
-          </div>
-          <div class="converter-grid">
-            <label>
-              Query
-              <select id="queryInput">
-                <option value="q1">SELECT Title, Borrower FROM Loan WHERE Returned = FALSE</option>
-                <option value="q2">SELECT Title FROM Loan WHERE Category = 'Computing'</option>
-                <option value="q3">SELECT LoanID, Title FROM Loan WHERE DaysOverdue > 7</option>
-                <option value="q4">SELECT Title, DaysOverdue FROM Loan WHERE Borrower = 'Leo'</option>
-                <option value="q5">SELECT Borrower FROM Loan WHERE DaysOverdue = 0</option>
-              </select>
-            </label>
-            <button class="primary-button" type="button" id="queryBtn">Run query</button>
-          </div>
-          <div class="result-table" id="queryResult">Choose a query to see matching rows.</div>
-        </section>
-
-        <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-085">
-          <div class="section-title">
-            <p class="eyebrow">Worked examples</p>
-            <h2>From English to SQL</h2>
-          </div>
-          <div class="example-tabs" role="tablist" aria-label="Worked examples">
-            <button class="tab active" type="button" data-example="returned">Boolean condition</button>
-            <button class="tab" type="button" data-example="text">Text condition</button>
-            <button class="tab" type="button" data-example="number">Numeric condition</button>
-            <button class="tab" type="button" data-example="star">Avoid SELECT *</button>
-          </div>
-          <article class="example-box" id="exampleBox" aria-live="polite"></article>
-        </section>
-
-        <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-085">
-          <div class="section-title">
-            <p class="eyebrow">Practice with instant checking</p>
-            <h2>Short-answer checks</h2>
-            <p>Type concise answers. Use Show answer after committing to a response.</p>
-          </div>
-          <div class="practice-list" id="practiceList"></div>
-        </section>
-
-        <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-085">
-          <div class="section-title">
-            <p class="eyebrow">Mistake debugging</p>
-            <h2>Repair common SQL errors</h2>
-          </div>
-          <div class="mistake-grid" id="mistakeGrid"></div>
-        </section>
-
-        <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-085">
-          <div class="section-title">
-            <p class="eyebrow">Exam-style questions</p>
-            <h2>Original Cambridge-style practice with expandable MS</h2>
-            <p>These are original questions written in Cambridge style. The mark schemes are strict about fields, table and condition syntax.</p>
-          </div>
-          <div class="exam-list" id="examList"></div>
-        </section>
-
-        <section class="panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-085">
-          <div class="section-title">
-            <p class="eyebrow">Summary</p>
-            <h2>Basic SQL checklist</h2>
-          </div>
-          <div class="summary-grid">
-            <div><strong>SELECT</strong><span>List only the required output fields.</span></div>
-            <div><strong>FROM</strong><span>Name the table that contains the data.</span></div>
-            <div><strong>WHERE</strong><span>Filter rows using a condition; quote text values.</span></div>
-          </div>
-        </section>
-
-        <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
-          <div class="section-title">
-            <p class="eyebrow">Homework</p>
-            <h2>Clear tasks for consolidation</h2>
-          </div>
-          <div class="homework-list">
-            <article>
-              <strong>Task 1: Translate five requests</strong>
-              <span>Write SQL for five English requests using only <code>SELECT</code>, <code>FROM</code> and <code>WHERE</code>. Include at least one text condition and one numeric condition.</span>
-            </article>
-            <article>
-              <strong>Task 2: Trace results</strong>
-              <span>For the Loan table on this page, trace which rows match <code>WHERE DaysOverdue &gt; 0</code> and list only <code>Title</code> and <code>Borrower</code>.</span>
-            </article>
-            <article>
-              <strong>Task 3: 6-mark answer</strong>
-              <span>Answer: "Write SQL to output the borrower and title of all Computing books that have not been returned." Then annotate which part is SELECT, FROM and WHERE.</span>
-            </article>
-          </div>
-        </section>
+        <nav class="v2-bottom-nav" aria-label="Previous and next lesson"><a href="../lesson-084/" >Previous lesson</a><a href="../lesson-086/" >Next lesson</a></nav>
       </div>
     </main>
-
-    <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=3"></script>
-    <script src="../lesson-toolbar.js?v=3"></script>
-    <script src="../stage7-accessibility.js?v=4"></script>
+    <script src="../course-v2.js?v=1"></script>
   </body>
 </html>

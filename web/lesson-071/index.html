@@ -3,413 +3,89 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 071 | Backup strategies, disaster recovery, and audit trails</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <title>AS9618 Lesson 071 | Arithmetic and logical expressions</title>
     <link rel="icon" href="data:" />
-    <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
+    <link rel="stylesheet" href="../course-v2.css?v=3" />
   </head>
-  <body>
+  <body data-course-version="2" data-lesson-id="071" data-syllabus-ids="S11.02">
     <a class="skip-link" href="#main-content">Skip to main content</a>
-    <header class="topbar">
-      <div>
-        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 6</p>
-        <h1>Backup strategies, disaster recovery, and audit trails</h1>
-      </div>
-      <div class="action-panel" aria-label="Page controls">
-        <a class="course-home-link" href="../">Course home</a>
-        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
-      </div>
+    <header class="v2-topbar">
+      <div><p class="v2-eyebrow">Cambridge AS9618 | Paper 2 | Section 11: Programming</p><h1>Arithmetic and logical expressions</h1></div>
+      <nav class="v2-actions" aria-label="Lesson actions"><a href="../">Course home</a><a href="../assessments/">Assessment bank</a><button type="button" id="printLesson">Print</button></nav>
     </header>
+    <main class="v2-shell" id="main-content" tabindex="-1">
+      <nav class="v2-toc" aria-label="Lesson contents"><strong>Lesson 071</strong><a href="#overview">Overview</a><a href="#prerequisite">Prerequisite</a><a href="#explanation">Explanation</a><a href="#practice">Practice</a><a href="#summary">Summary</a></nav>
+      <div class="v2-content">
+        <section class="v2-hero" id="overview">
+          <div><p class="v2-eyebrow">Flexible-depth lesson</p><h2>Arithmetic and logical expressions</h2><p>S11.02 | Select what to omit, teach briefly or explore in depth.</p></div>
+          <div class="v2-time-grid" aria-label="Available lesson depth"><div><strong>Quick</strong><span>diagnose + essentials</span></div><div><strong>Full</strong><span>complete explanation</span></div><div><strong>Deep</strong><span>prerequisites + extension</span></div><div><strong>Choose</strong><span>practice by need</span></div></div>
+        </section>
 
-    <main class="layout" id="main-content" tabindex="-1">
-      <aside class="lesson-nav" aria-label="Lesson navigation">
-        <a href="#overview">Overview</a>
-        <a href="#hook">Warm-up</a>
-        <a href="#core">Core idea</a>
-        <a href="#backups">Backups</a>
-        <a href="#strategy">Strategy</a>
-        <a href="#recovery">Recovery</a>
-        <a href="#audit-trails">Audit trails</a>
-        <a href="#compare">Compare</a>
-        <a href="#tool">Strategy tool</a>
-        <a href="#rpo-tool">RPO/RTO tool</a>
-        <a href="#examples">Examples</a>
-        <a href="#practice">Practice</a>
-        <a href="#debug">Debugging</a>
-        <a href="#exam">Exam-style</a>
-        <a href="#summary">Summary</a>
-        <a href="#homework">Homework</a>
-      </aside>
+        <section class="v2-panel v2-route-menu" aria-labelledby="route-heading">
+          <div class="v2-heading"><p class="v2-eyebrow">Teacher choice</p><h2 id="route-heading">Choose the depth for this group</h2></div>
+          <div class="v2-route-grid"><article><h3>Quick route</h3><p>Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.</p></article><article><h3>Full route</h3><p>Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.</p></article><article><h3>Deep route</h3><p>Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.</p></article></div>
+        </section>
 
-      <div class="lesson-content">
-        <section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
-          <div class="hero-copy">
-            <p class="lesson-meta">Lesson 071 | 45 minutes | Paper 1 Section 6 | Security, privacy and data integrity</p>
-            <h2>Backups are useful only if recovery actually works.</h2>
-            <p>
-              Backup strategies create recoverable copies of data. Disaster recovery plans describe how an
-              organisation restores systems after serious failure. Audit trails record who did what, when and
-              where, so changes can be investigated instead of guessed with unsupported assumptions.
-            </p>
-            <div class="objective-grid" aria-label="Learning objectives">
-              <div><strong>Explain</strong><span>backup strategies, disaster recovery and audit trails</span></div>
-              <div><strong>Compare</strong><span>full, incremental, onsite, offsite and cloud backups</span></div>
-              <div><strong>Apply</strong><span>recovery objectives and audit trail evidence to scenarios</span></div>
+        <section class="v2-panel" id="prerequisite">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 1 | optional depth</p><h2>Prerequisite knowledge and quick diagnostic</h2></div>
+          <div class="v2-diagnostic"><p>Recall S10.01, S9.06 before starting this lesson.</p></div>
+          <p>Give one accurate definition or method step before continuing. If it is missing, revisit only that prerequisite.</p>
+          <details class="v2-prerequisite-detail"><summary>Open optional prerequisite refresher</summary><ul><li>Select and use appropriate types for a problem solution. The Version 2 Notes name integer, real, char, string, Boolean and date, and require the Cambridge pseudocode type names INTEGER, REAL, CHAR, STRING, BOOLEAN, DATE, ARRAY and FILE.</li><li>Understand integer, real, char, string, Boolean and date types and Cambridge pseudocode type names.</li><li>The three basic algorithm constructs are sequence, selection and iteration (repetition); students must recognise and use each construct, including combinations of constructs.</li><li>Understand and use sequence, selection and iteration.</li></ul></details>
+        </section>
+
+        <section class="v2-panel" id="explanation">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 2 | deliberately over-complete</p><h2>Knowledge explanation</h2></div>
+          <h3>Learning objectives</h3><ul class="v2-objectives"><li>Use declarations, constants, variables, assignment, arithmetic/logical operations and input/output.</li></ul>
+          <details class="v2-concept-menu"><summary>Open the concept checklist and choose what to teach</summary><ul><li>declaration / declarations</li><li>constants</li><li>variables</li><li>assignment</li><li>arithmetic</li><li>logical</li><li>input</li><li>output</li></ul></details>
+          <div class="v2-explanation-grid">
+            <div>
+              <article class="v2-core-facts"><h3>Detailed explanation</h3><p class="v2-teacher-note">Teach all points, or select only the ones this group needs. The list is intentionally fuller than a fixed lesson slot.</p><ul class="v2-facts"><li>Write pseudocode for declaration and initialisation of constants; declaration of variables; assignment of values; expressions using arithmetic or logical operators; input from the keyboard; and output to the console.</li><li>CONSTANT defines and initialises a fixed named value. DECLARE gives a variable a name and data type. Assignment evaluates the expression on the right of &lt;- and stores the result in the variable on the left. INPUT obtains a value from the keyboard; OUTPUT sends a value to the console.</li><li>Arithmetic expressions use operators such as +, -, , /, DIV and MOD. Logical expressions combine comparisons with AND, OR or NOT and produce BOOLEAN results. Use = for comparison and &lt;- for assignment.</li><li>For arithmetic and logical expressions, identify the required concept before describing its mechanism or consequence.</li></ul></article>
+              <article class="v2-example"><h3>Worked example</h3><p>Declare, input, calculate and output: CONSTANT PassMark = 50 defines and initialises a constant. DECLARE Mark : INTEGER and DECLARE Passed : BOOLEAN declare variables. INPUT Mark obtains keyboard input; Passed &lt;- Mark = PassMark assigns the result of a logical expression; OUTPUT Mark 2 and OUTPUT Passed send arithmetic and Boolean results to the console.</p></article>
+              <aside class="v2-extension"><h3>Beyond syllabus / 延伸知识（不要求背诵）</h3><p>consistent style, modularity and automated tests reduce maintenance errors in larger programs.</p></aside>
             </div>
-          </div>
-          <div class="recovery-card" aria-label="Recovery map">
-            <div class="recovery-stack">
-              <span>Backup -> copy data</span>
-              <span>Restore -> recover usable data</span>
-              <span>DR plan -> restore service</span>
-              <span>Audit trail -> trace actions</span>
-            </div>
-            <p>A backup nobody tests is a motivational poster, not a recovery plan.</p>
+            <figure class="v2-visual">
+              <img src="../assets/diagrams/stage10-infographics/stage10-lesson-115-pseudocode.jpg" alt="Pseudocode vs Java. Cambridge-style pseudocode. CONSTANT PassMark = 50. DECLARE Mark : INTEGER. DECLARE Passed : BOOLEAN" loading="lazy" />
+              <figcaption>The symbol changes, the update idea does not. One maintained explanation is shown as an image on larger screens and as text on small screens.</figcaption>
+              <div class="v2-mobile-visual-text" aria-label="Mobile text alternative"><ul><li>Pseudocode vs Java</li><li>Cambridge-style pseudocode</li><li>CONSTANT PassMark = 50</li><li>DECLARE Mark : INTEGER</li><li>DECLARE Passed : BOOLEAN</li></ul></div>
+            </figure>
           </div>
         </section>
 
-        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
-          <article class="why-card">
-            <h3>Why this matters</h3>
-            <p>Exam answers need a specific strategy. "Make a backup" is a start, not a finished answer.</p>
-          </article>
-          <article class="trap-card">
-            <h3>Common error</h3>
-            <p>Audit trails are not backups. They show events and accountability; they do not restore deleted files by themselves.</p>
-          </article>
+        <section class="v2-panel" id="practice">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 3 | select by learner need</p><h2>Practice by question type</h2></div>
+          <div class="v2-question-list"><article class="v2-question" data-question-id="Q-L071-01" data-semantic-fingerprint="S11.02|arithmetic-and-logical-expressions|state|precise-facts-about|written|recall">
+              <div class="v2-question-head"><span class="v2-badge">state</span><span class="v2-badge">recall</span><span class="v2-badge difficulty">foundation</span><span class="v2-badge">2 marks</span></div>
+              <p><strong>Question 1.</strong> State two precise facts about arithmetic and logical expressions.</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> Write pseudocode for declaration and initialisation of constants; declaration of variables; assignment of values; expressions using arithmetic or logical operators; input from the keyboard; and output to the console. CONSTANT defines and initialises a fixed named value. DECLARE gives a variable a name and data type. Assignment evaluates the expression on the right of &lt;- and stores the result in the variable on the left. INPUT obtains a value from the keyboard; OUTPUT sends a value to the console.</p><p><strong>Marking guidance:</strong> Award one mark for each distinct fact; do not credit a repeated point.</p><p><strong>Common error:</strong> For the command word state, perform that exact action; do not replace it with an unrelated fact.</p></div></details>
+            </article><article class="v2-question" data-question-id="Q-L071-02" data-semantic-fingerprint="S11.02|arithmetic-and-logical-expressions|explain|would-applied-suitable-computing|visual|explain">
+              <div class="v2-question-head"><span class="v2-badge">explain</span><span class="v2-badge">explain</span><span class="v2-badge difficulty">application</span><span class="v2-badge">3 marks</span></div>
+              <p><strong>Question 2.</strong> Explain how arithmetic and logical expressions would be applied in a suitable computing context.</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> CONSTANT defines and initialises a fixed named value. DECLARE gives a variable a name and data type. Assignment evaluates the expression on the right of &lt;- and stores the result in the variable on the left. INPUT obtains a value from the keyboard; OUTPUT sends a value to the console. Arithmetic expressions use operators such as +, -, , /, DIV and MOD. Logical expressions combine comparisons with AND, OR or NOT and produce BOOLEAN results. Use = for comparison and &lt;- for assignment. For arithmetic and logical expressions, identify the required concept before describing its mechanism or consequence.</p><p><strong>Marking guidance:</strong> Each mark needs a relevant point linked to the stated context.</p><p><strong>Common error:</strong> Do not repeat the same point in different words; each mark needs a separate idea or method step.</p></div></details>
+            </article><article class="v2-question" data-question-id="Q-L071-03" data-semantic-fingerprint="S11.02|arithmetic-and-logical-expressions|apply|student-gives-incomplete-answer|written|recall">
+              <div class="v2-question-head"><span class="v2-badge">apply</span><span class="v2-badge">recall</span><span class="v2-badge difficulty">transfer</span><span class="v2-badge">4 marks</span></div>
+              <p><strong>Question 3.</strong> A student gives an incomplete answer about arithmetic and logical expressions. Correct it by giving the key distinction and one justified example.</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> Write pseudocode for declaration and initialisation of constants; declaration of variables; assignment of values; expressions using arithmetic or logical operators; input from the keyboard; and output to the console. CONSTANT defines and initialises a fixed named value. DECLARE gives a variable a name and data type. Assignment evaluates the expression on the right of &lt;- and stores the result in the variable on the left. INPUT obtains a value from the keyboard; OUTPUT sends a value to the console. Arithmetic expressions use operators such as +, -, , /, DIV and MOD. Logical expressions combine comparisons with AND, OR or NOT and produce BOOLEAN results. Use = for comparison and &lt;- for assignment. For arithmetic and logical expressions, identify the required concept before describing its mechanism or consequence.</p><p><strong>Marking guidance:</strong> Credit the correction, the distinction, the example and its justification.</p><p><strong>Common error:</strong> Do not copy the worked example unchanged; transfer the method and check it against the new context.</p></div></details>
+            </article></div>
+          <div class="v2-paper-refs">
+          <h3>Related past-paper indexes</h3>
+          <table><thead><tr><th>Reference</th><th>Marks</th><th>Command word</th><th>Question type</th></tr></thead>
+          <tbody><tr><td>9618/22/S/25 Q3</td><td>8</td><td>write</td><td>write</td></tr><tr><td>9618/22/S/25 Q4</td><td>6</td><td>complete</td><td>recall</td></tr><tr><td>9618/21/S/25 Q1(b)</td><td>5</td><td>complete</td><td>calculate</td></tr><tr><td>9618/23/S/25 Q1(i)</td><td>2</td><td>state</td><td>recall</td></tr></tbody></table>
+          <p class="v2-copyright-note">Index only: Cambridge question and mark-scheme wording is not reproduced on this public course page.</p>
+        </div>
         </section>
 
-        <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
-          <div class="section-title">
-            <p class="eyebrow">Warm-up hook</p>
-            <h2>A ransomware attack encrypts the main server and the connected backup drive. What was wrong with the backup strategy?</h2>
-            <p>The backup was "safe" in the same way a spare key taped to the front door is secure.</p>
-          </div>
-          <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="offsite">The backup was not isolated/offsite, so the same incident affected it</button>
-            <button class="choice-card" type="button" data-hook="audit">An audit trail was missing, so files could not be restored</button>
-            <button class="choice-card" type="button" data-hook="validation">Validation should have checked the encrypted files were valid</button>
-            <button class="choice-card" type="button" data-hook="frequency">Daily backups are always enough, regardless of connection</button>
-          </div>
-          <div class="feedback" id="hookFeedback" aria-live="polite">
-            Choose one. Look for the shared failure point.
-          </div>
+        <section class="v2-panel" id="summary">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 4 | close when ready</p><h2>Summary and exam reminders</h2></div>
+          <div class="v2-summary-grid"><div><h3>Summary</h3><ul class="v2-summary-list"><li>Define arithmetic and logical expressions with the exact technical vocabulary expected by the syllabus.</li><li>Use the lesson method on a fresh context and show the intermediate decision, representation or calculation.</li><li>Match the shape of the answer to the command word and the available marks.</li><li>Check the final answer against the scenario instead of repeating a memorised sentence.</li></ul></div><div class="v2-error"><h3>Common error to correct</h3><p>Students often think working Java automatically means good pseudocode. Correction: Paper 2 rewards clear Cambridge-style algorithm expression.</p></div></div>
+          <div class="v2-tip-box"><h3>Exam technique</h3><ul><li>Follow the command word: state gives a fact; explain links a cause to a consequence; compare covers both sides.</li><li>Match the number of independent points or method steps to the available marks.</li><li>For arithmetic and logical expressions, use the exact technical term before applying it to the scenario.</li></ul></div>
         </section>
 
-        <section class="panel" id="core" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="core">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 1</p>
-            <h2>Recovery planning is about availability, integrity and accountability</h2>
-          </div>
-          <div class="concept-grid">
-            <article><strong>Backup</strong><span>A separate copy of data that can be used to restore the original after loss or corruption.</span></article>
-            <article><strong>Restore</strong><span>The process of recovering data or systems from a backup.</span></article>
-            <article><strong>Disaster recovery</strong><span>Planned actions to restore systems and services after a major incident.</span></article>
-            <article><strong>Audit trail</strong><span>A chronological record of actions, changes and access events.</span></article>
-          </div>
-          <div class="callout">Chinese support: backup = 备份；restore = 恢复；disaster recovery = 灾难恢复；audit trail = 审计追踪/审计日志。</div>
-        </section>
-
-        <!-- stage10-explanation:start core -->
-        <section class="panel explanation-panel" id="explanation-core" data-explains="core" data-explanation-kind="mechanism" aria-labelledby="explanation-core-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="core">
-          <h2 class="explanation-sr-only" id="explanation-core-title">Recovery planning is about availability, integrity and accountability</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-071-core.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Recovery planning is about availability, integrity and accountability with a structured visual model." />
-            <figcaption class="explanation-sr-only">Recovery planning is about availability, integrity and accountability: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Backup A separate copy of data that can be used to restore the original after loss or corruption.</li><li><strong>Lesson fact:</strong> Restore The process of recovering data or systems from a backup.</li><li><strong>Lesson fact:</strong> Disaster recovery Planned actions to restore systems and services after a major incident.</li><li><strong>Lesson fact:</strong> Audit trail A chronological record of actions, changes and access events.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end core -->
-        <section class="panel" id="backups" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="backups">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 2</p>
-            <h2>Backup type affects speed, storage and recovery complexity</h2>
-          </div>
-          <div class="concept-grid">
-            <article><strong>Full backup</strong><span>Copies all selected data. Simple to restore, but uses more time and storage.</span></article>
-            <article><strong>Incremental backup</strong><span>Copies only data changed since the last backup. Faster and smaller, but restore may need a chain.</span></article>
-            <article><strong>Differential idea</strong><span>Copies changes since last full backup. Useful comparison, though full/incremental is the main contrast here.</span></article>
-            <article><strong>Testing</strong><span>Backups must be tested by restoring sample data, not only by checking that a file exists.</span></article>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start backups -->
-        <section class="panel explanation-panel" id="explanation-backups" data-explains="backups" data-explanation-kind="mechanism" aria-labelledby="explanation-backups-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="backups">
-          <h2 class="explanation-sr-only" id="explanation-backups-title">Backup type affects speed, storage and recovery complexity</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-071-backups.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Backup type affects speed, storage and recovery complexity with a structured visual model." />
-            <figcaption class="explanation-sr-only">Backup type affects speed, storage and recovery complexity: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Full backup Copies all selected data. Simple to restore, but uses more time and storage.</li><li><strong>Lesson fact:</strong> Incremental backup Copies only data changed since the last backup. Faster and smaller, but restore may need a chain.</li><li><strong>Lesson fact:</strong> Differential idea Copies changes since last full backup. Useful comparison, though full/incremental is the main contrast here.</li><li><strong>Lesson fact:</strong> Testing Backups must be tested by restoring sample data, not only by checking that a file exists.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end backups -->
-        <section class="panel" id="strategy" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="strategy">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 3</p>
-            <h2>A strategy defines location, frequency, retention and security</h2>
-          </div>
-          <div class="concept-grid">
-            <article><strong>Onsite</strong><span>Fast to access, but vulnerable to the same fire, flood, theft or ransomware incident.</span></article>
-            <article><strong>Offsite</strong><span>Stored in a different physical location, reducing site-wide disaster risk.</span></article>
-            <article><strong>Cloud</strong><span>Remote provider storage; useful for offsite copies but needs network access and access control.</span></article>
-            <article><strong>Retention</strong><span>How long versions are kept, so accidental deletion or corruption can be rolled back.</span></article>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start strategy -->
-        <section class="panel explanation-panel" id="explanation-strategy" data-explains="strategy" data-explanation-kind="tradeoff" aria-labelledby="explanation-strategy-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="strategy">
-          <h2 class="explanation-sr-only" id="explanation-strategy-title">A strategy defines location, frequency, retention and security</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-071-strategy.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining A strategy defines location, frequency, retention and security with a structured visual model." />
-            <figcaption class="explanation-sr-only">A strategy defines location, frequency, retention and security: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Onsite Fast to access, but vulnerable to the same fire, flood, theft or ransomware incident.</li><li><strong>Lesson fact:</strong> Offsite Stored in a different physical location, reducing site-wide disaster risk.</li><li><strong>Lesson fact:</strong> Cloud Remote provider storage; useful for offsite copies but needs network access and access control.</li><li><strong>Lesson fact:</strong> Retention How long versions are kept, so accidental deletion or corruption can be rolled back.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end strategy -->
-        <section class="panel" id="recovery" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="recovery">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 4</p>
-            <h2>Disaster recovery is more than data copying</h2>
-          </div>
-          <div class="flow-grid">
-            <article><strong>1. Identify incident</strong><span>Detect failure, confirm scope and prevent further damage.</span></article>
-            <article><strong>2. Communicate</strong><span>Notify staff/users and assign responsibilities.</span></article>
-            <article><strong>3. Restore systems</strong><span>Recover data, applications, hardware/network access and configuration.</span></article>
-            <article><strong>4. Test and review</strong><span>Check service works, document lessons and improve the plan.</span></article>
-          </div>
-          <div class="callout">Useful exam language: RPO = how much data loss is acceptable; RTO = how quickly service must be restored.</div>
-        </section>
-
-        <!-- stage10-explanation:start recovery -->
-        <section class="panel explanation-panel" id="explanation-recovery" data-explains="recovery" data-explanation-kind="mechanism" aria-labelledby="explanation-recovery-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="recovery">
-          <h2 class="explanation-sr-only" id="explanation-recovery-title">Disaster recovery is more than data copying</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-071-recovery.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Disaster recovery is more than data copying with a structured visual model." />
-            <figcaption class="explanation-sr-only">Disaster recovery is more than data copying: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> 1. Identify incident Detect failure, confirm scope and prevent further damage.</li><li><strong>Lesson fact:</strong> 2. Communicate Notify staff/users and assign responsibilities.</li><li><strong>Lesson fact:</strong> 3. Restore systems Recover data, applications, hardware/network access and configuration.</li><li><strong>Lesson fact:</strong> 4. Test and review Check service works, document lessons and improve the plan.</li><li><strong>Lesson fact:</strong> Useful exam language: RPO = how much data loss is acceptable; RTO = how quickly service must be restored.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end recovery -->
-        <section class="panel" id="audit-trails" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="audit-trails">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 5</p>
-            <h2>Audit trails support accountability and investigation</h2>
-          </div>
-          <div class="concept-grid">
-            <article><strong>Who</strong><span>User ID, account, device or process involved.</span></article>
-            <article><strong>What</strong><span>Action such as login, read, edit, delete, approve or restore.</span></article>
-            <article><strong>When/where</strong><span>Timestamp, location, device or IP address.</span></article>
-            <article><strong>Use</strong><span>Trace errors, detect misuse, investigate incidents and prove compliance.</span></article>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start audit-trails -->
-        <section class="panel explanation-panel" id="explanation-audit-trails" data-explains="audit-trails" data-explanation-kind="mechanism" aria-labelledby="explanation-audit-trails-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="audit-trails">
-          <h2 class="explanation-sr-only" id="explanation-audit-trails-title">Audit trails support accountability and investigation</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-071-audit-trails.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Audit trails support accountability and investigation with a structured visual model." />
-            <figcaption class="explanation-sr-only">Audit trails support accountability and investigation: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Who User ID, account, device or process involved.</li><li><strong>Lesson fact:</strong> What Action such as login, read, edit, delete, approve or restore.</li><li><strong>Lesson fact:</strong> When/where Timestamp, location, device or IP address.</li><li><strong>Lesson fact:</strong> Use Trace errors, detect misuse, investigate incidents and prove compliance.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end audit-trails -->
-        <section class="panel" id="compare" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="compare">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 6</p>
-            <h2>Compare by purpose, not by "security word"</h2>
-          </div>
-          <div class="comparison-table" role="table" aria-label="Backup recovery audit comparison">
-            <div class="table-row table-head" role="row">
-              <div role="columnheader">Control</div>
-              <div role="columnheader">Main purpose</div>
-              <div role="columnheader">Limitation</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Backup</div>
-              <div role="cell">Restore data after deletion, corruption, hardware failure or ransomware.</div>
-              <div role="cell">May be too old, corrupted, inaccessible or affected by same incident.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Disaster recovery plan</div>
-              <div role="cell">Restore systems and services in a planned order after major disruption.</div>
-              <div role="cell">Needs testing, clear roles and updated documentation.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Audit trail</div>
-              <div role="cell">Record actions for accountability, investigation and evidence.</div>
-              <div role="cell">Does not restore data by itself and must be protected from tampering.</div>
-            </div>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start compare -->
-        <section class="panel explanation-panel" id="explanation-compare" data-explains="compare" data-explanation-kind="comparison" aria-labelledby="explanation-compare-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="compare">
-          <h2 class="explanation-sr-only" id="explanation-compare-title">Compare by purpose, not by &quot;security word&quot;</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-071-compare.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Compare by purpose, not by &quot;security word&quot; with a structured visual model." />
-            <figcaption class="explanation-sr-only">Compare by purpose, not by &quot;security word&quot;: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Main purpose</li><li><strong>Lesson fact:</strong> Limitation</li><li><strong>Lesson fact:</strong> Restore data after deletion, corruption, hardware failure or ransomware.</li><li><strong>Lesson fact:</strong> May be too old, corrupted, inaccessible or affected by same incident.</li><li><strong>Lesson fact:</strong> Disaster recovery plan</li><li><strong>Lesson fact:</strong> Restore systems and services in a planned order after major disruption.</li><li><strong>Lesson fact:</strong> Needs testing, clear roles and updated documentation.</li><li><strong>Lesson fact:</strong> Audit trail</li><li><strong>Lesson fact:</strong> Record actions for accountability, investigation and evidence.</li><li><strong>Lesson fact:</strong> Does not restore data by itself and must be protected from tampering.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end compare -->
-        <section class="panel" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="tool">
-          <div class="section-title">
-            <p class="eyebrow">Interactive backup strategy selector</p>
-            <h2>Choose a proportionate strategy</h2>
-            <p>Select a scenario and compare the recommendation with the reason and common wrong answer.</p>
-          </div>
-          <div class="converter-grid">
-            <label>
-              Scenario
-              <select id="scenarioInput">
-                <option value="school">School database updated throughout each day.</option>
-                <option value="photos">Small design studio archives finished project photos monthly.</option>
-                <option value="hospital">Hospital patient system must recover quickly after failure.</option>
-                <option value="ransomware">Ransomware can reach connected drives.</option>
-                <option value="laptop">Teacher laptop contains local coursework files.</option>
-              </select>
-            </label>
-            <button class="primary-button" type="button" id="simulateBtn">Recommend</button>
-          </div>
-          <div class="result-box" id="simulateResult" aria-live="polite"></div>
-          <div class="method-box" id="simulateMethod"></div>
-          <div class="reject-box" id="simulateTrap"></div>
-        </section>
-
-        <section class="panel" id="rpo-tool" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="rpo-tool">
-          <div class="section-title">
-            <p class="eyebrow">Interactive recovery objective tool</p>
-            <h2>Match backup frequency to acceptable data loss</h2>
-          </div>
-          <div class="converter-grid">
-            <label>
-              Maximum acceptable data loss
-              <select id="rpoInput">
-                <option value="hour">About one hour</option>
-                <option value="day">About one day</option>
-                <option value="week">About one week</option>
-                <option value="none">No meaningful data loss acceptable</option>
-              </select>
-            </label>
-            <button class="primary-button" type="button" id="rpoBtn">Suggest</button>
-          </div>
-          <div class="result-box" id="rpoResult" aria-live="polite"></div>
-          <div class="method-box" id="rpoReason"></div>
-        </section>
-
-        <!-- stage10-explanation:start rpo-tool -->
-        <section class="panel explanation-panel" id="explanation-rpo-tool" data-explains="rpo-tool" data-explanation-kind="mechanism" aria-labelledby="explanation-rpo-tool-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="rpo-tool">
-          <h2 class="explanation-sr-only" id="explanation-rpo-tool-title">Match backup frequency to acceptable data loss</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-071-rpo-tool.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Match backup frequency to acceptable data loss with a structured visual model." />
-            <figcaption class="explanation-sr-only">Match backup frequency to acceptable data loss: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Interactive recovery objective tool</li><li><strong>Lesson fact:</strong> Maximum acceptable data loss</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end rpo-tool -->
-        <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
-          <div class="section-title">
-            <p class="eyebrow">Worked examples</p>
-            <h2>Four model answers with risk-control matching</h2>
-          </div>
-          <div class="example-tabs" role="tablist" aria-label="Worked examples">
-            <button class="tab active" type="button" data-example="ransomware">Ransomware</button>
-            <button class="tab" type="button" data-example="hospital">Hospital</button>
-            <button class="tab" type="button" data-example="audit">Audit trail</button>
-            <button class="tab" type="button" data-example="testing">Testing</button>
-          </div>
-          <div class="example-box" id="exampleBox"></div>
-        </section>
-
-        <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
-          <div class="section-title">
-            <p class="eyebrow">Practice with instant checking</p>
-            <h2>Short answers: recovery and evidence</h2>
-            <p>Type a concise answer. Use the local answer button if you need a model response.</p>
-          </div>
-          <div class="practice-list" id="practiceList"></div>
-        </section>
-
-        <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
-          <div class="section-title">
-            <p class="eyebrow">Mistake debugging</p>
-            <h2>Fix the sentence before it loses marks</h2>
-          </div>
-          <div class="mistake-grid" id="mistakeGrid"></div>
-        </section>
-
-        <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
-          <div class="section-title">
-            <p class="eyebrow">Exam-style questions</p>
-            <h2>Original Cambridge-style questions with expandable MS</h2>
-            <p>Answer first. Then open the mark scheme and compare wording strictly.</p>
-          </div>
-          <div class="exam-list" id="examList"></div>
-        </section>
-
-        <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
-          <div class="section-title">
-            <p class="eyebrow">Summary</p>
-            <h2>Recovery needs copies, plans and evidence</h2>
-          </div>
-          <div class="summary-grid">
-            <div><strong>Backups</strong><span>Recover data if copies are current, isolated and tested.</span></div>
-            <div><strong>DR plan</strong><span>Restores systems, people, communication and priorities.</span></div>
-            <div><strong>Audit trails</strong><span>Show who did what, when and where.</span></div>
-          </div>
-        </section>
-
-        <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
-          <div class="section-title">
-            <p class="eyebrow">Homework</p>
-            <h2>Homework tasks</h2>
-          </div>
-          <div class="homework-list">
-            <article>
-              <strong>Task 1: Strategy table</strong>
-              <span>Design a backup strategy for a school database: type, location, frequency, retention, security and restore testing.</span>
-            </article>
-            <article>
-              <strong>Task 2: Disaster recovery sequence</strong>
-              <span>Write six ordered recovery actions after a ransomware attack. Include communication and testing restored data.</span>
-            </article>
-            <article>
-              <strong>Task 3: 6-mark answer</strong>
-              <span>Answer: "Explain how backup strategies and audit trails help an organisation recover from and investigate data loss." Use precise consequences.</span>
-            </article>
-          </div>
-        </section>
+        <nav class="v2-bottom-nav" aria-label="Previous and next lesson"><a href="../lesson-070/" >Previous lesson</a><a href="../lesson-072/" >Next lesson</a></nav>
       </div>
     </main>
-
-    <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=3"></script>
-    <script src="../lesson-toolbar.js?v=3"></script>
-    <script src="../stage7-accessibility.js?v=4"></script>
+    <script src="../course-v2.js?v=1"></script>
   </body>
 </html>

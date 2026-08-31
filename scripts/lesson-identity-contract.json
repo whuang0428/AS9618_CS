@@ -1,912 +1,546 @@
 {
-  "schemaVersion": 2,
-  "source": "151-lesson curriculum identity contract after the reviewed syllabus-order migration.",
+  "schemaVersion": 3,
+  "source": "90-lesson syllabus-order curriculum identity contract",
   "lessons": [
     {
       "lesson": 1,
       "id": "001",
-      "title": "Binary and decimal magnitude prefixes",
-      "markdownFile": "001-binary-and-decimal-magnitude-prefixes.md"
+      "title": "Binary data units and magnitude prefixes",
+      "markdownFile": "001-binary-data-units-and-magnitude-prefixes.md"
     },
     {
       "lesson": 2,
       "id": "002",
-      "title": "Integer conversion between binary and denary",
-      "markdownFile": "002-integer-conversion-between-binary-and-denary.md"
+      "title": "Binary, denary and hexadecimal number systems",
+      "markdownFile": "002-binary-denary-and-hexadecimal-number-systems.md"
     },
     {
       "lesson": 3,
       "id": "003",
-      "title": "Hexadecimal as a base-16 representation",
-      "markdownFile": "003-hexadecimal-as-a-base-16-representation.md"
+      "title": "Signed binary arithmetic and overflow",
+      "markdownFile": "003-signed-binary-arithmetic-and-overflow.md"
     },
     {
       "lesson": 4,
       "id": "004",
-      "title": "Binary addition and fixed-width overflow",
-      "markdownFile": "004-binary-addition-and-fixed-width-overflow.md"
+      "title": "BCD, hexadecimal applications and character encoding",
+      "markdownFile": "004-bcd-hexadecimal-applications-and-character-encoding.md"
     },
     {
       "lesson": 5,
       "id": "005",
-      "title": "Signed representations and binary subtraction",
-      "markdownFile": "005-signed-representations-and-binary-subtraction.md"
+      "title": "Bitmap and vector graphics",
+      "markdownFile": "005-bitmap-and-vector-graphics.md"
     },
     {
       "lesson": 6,
       "id": "006",
-      "title": "BCD and hexadecimal in practical systems",
-      "markdownFile": "006-bcd-and-hexadecimal-in-practical-systems.md"
+      "title": "Sound representation and file compression",
+      "markdownFile": "006-sound-representation-and-file-compression.md"
     },
     {
       "lesson": 7,
       "id": "007",
-      "title": "Character sets and internal binary character data",
-      "markdownFile": "007-character-sets-and-internal-binary-character-data.md"
+      "title": "Network purposes, LANs, WANs and computer roles",
+      "markdownFile": "007-network-purposes-lans-wans-and-computer-roles.md"
     },
     {
       "lesson": 8,
       "id": "008",
-      "title": "Bitmap file headers, image resolution and screen resolution",
-      "markdownFile": "008-bitmap-file-headers-image-resolution-and-screen-resolution.md"
+      "title": "Network topologies and packet transmission",
+      "markdownFile": "008-network-topologies-and-packet-transmission.md"
     },
     {
       "lesson": 9,
       "id": "009",
-      "title": "Bitmap file-size calculations and metadata",
-      "markdownFile": "009-bitmap-file-size-calculations-and-metadata.md"
+      "title": "Cloud computing and transmission media",
+      "markdownFile": "009-cloud-computing-and-transmission-media.md"
     },
     {
       "lesson": 10,
       "id": "010",
-      "title": "Vector graphics and drawing lists",
-      "markdownFile": "010-vector-graphics-and-drawing-lists.md"
+      "title": "LAN hardware, routers and Ethernet",
+      "markdownFile": "010-lan-hardware-routers-and-ethernet.md"
     },
     {
       "lesson": 11,
       "id": "011",
-      "title": "Sound sampling, sampling resolution, accuracy and storage",
-      "markdownFile": "011-sound-sampling-sampling-resolution-accuracy-and-storage.md"
+      "title": "Streaming, the internet and connection infrastructure",
+      "markdownFile": "011-streaming-the-internet-and-connection-infrastructure.md"
     },
     {
       "lesson": 12,
       "id": "012",
-      "title": "Sound file size calculations",
-      "markdownFile": "012-sound-file-size-calculations.md"
+      "title": "IP addressing, subnetting, URLs and DNS",
+      "markdownFile": "012-ip-addressing-subnetting-urls-and-dns.md"
     },
     {
       "lesson": 13,
       "id": "013",
-      "title": "Compression methods for text, bitmap, vector and sound files",
-      "markdownFile": "013-compression-methods-for-text-bitmap-vector-and-sound-files.md"
+      "title": "Input, output, storage and embedded systems",
+      "markdownFile": "013-input-output-storage-and-embedded-systems.md"
     },
     {
       "lesson": 14,
       "id": "014",
-      "title": "Run-length encoding and dictionary-style compression",
-      "markdownFile": "014-run-length-encoding-and-dictionary-style-compression.md"
+      "title": "How input, output and storage devices work",
+      "markdownFile": "014-how-input-output-and-storage-devices-work.md"
     },
     {
       "lesson": 15,
       "id": "015",
-      "title": "Choosing data representation for a real system",
-      "markdownFile": "015-choosing-data-representation-for-a-real-system.md"
+      "title": "Buffers and primary memory technologies",
+      "markdownFile": "015-buffers-and-primary-memory-technologies.md"
     },
     {
       "lesson": 16,
       "id": "016",
-      "title": "Section 1 review under exam timing",
-      "markdownFile": "016-section-1-review-under-exam-timing.md"
+      "title": "Monitoring, control, sensors and actuators",
+      "markdownFile": "016-monitoring-control-sensors-and-actuators.md"
     },
     {
       "lesson": 17,
       "id": "017",
-      "title": "Network purpose and client/server models",
-      "markdownFile": "017-network-purpose-and-client-server-models.md"
+      "title": "Logic gates, symbols and truth tables",
+      "markdownFile": "017-logic-gates-symbols-and-truth-tables.md"
     },
     {
       "lesson": 18,
       "id": "018",
-      "title": "Bus, star, mesh and hybrid topologies",
-      "markdownFile": "018-bus-star-mesh-and-hybrid-topologies.md"
+      "title": "Boolean expressions and logic-circuit design",
+      "markdownFile": "018-boolean-expressions-and-logic-circuit-design.md"
     },
     {
       "lesson": 19,
       "id": "019",
-      "title": "Packet transmission between two hosts in each required topology",
-      "markdownFile": "019-packet-transmission-between-two-hosts-in-each-required-topology.md"
+      "title": "Von Neumann architecture, CPU components and registers",
+      "markdownFile": "019-von-neumann-architecture-cpu-components-and-registers.md"
     },
     {
       "lesson": 20,
       "id": "020",
-      "title": "Cloud, wired and wireless networking",
-      "markdownFile": "020-cloud-wired-and-wireless-networking.md"
+      "title": "System buses, ports and processor performance",
+      "markdownFile": "020-system-buses-ports-and-processor-performance.md"
     },
     {
       "lesson": 21,
       "id": "021",
-      "title": "LAN hardware, Ethernet, streaming, the internet, IP and URL",
-      "markdownFile": "021-lan-hardware-ethernet-streaming-the-internet-ip-and-url.md"
+      "title": "The fetch-execute cycle in register-transfer notation",
+      "markdownFile": "021-the-fetch-execute-cycle-in-register-transfer-notation.md"
     },
     {
       "lesson": 22,
       "id": "022",
-      "title": "HTTP, HTTPS, FTP, SMTP, POP3 and IMAP in context",
-      "markdownFile": "022-http-https-ftp-smtp-pop3-and-imap-in-context.md"
+      "title": "Interrupt causes, detection and handling",
+      "markdownFile": "022-interrupt-causes-detection-and-handling.md"
     },
     {
       "lesson": 23,
       "id": "023",
-      "title": "Wired and wireless transmission media",
-      "markdownFile": "023-wired-and-wireless-transmission-media.md"
+      "title": "Assembly language and the two-pass assembler",
+      "markdownFile": "023-assembly-language-and-the-two-pass-assembler.md"
     },
     {
       "lesson": 24,
       "id": "024",
-      "title": "Network hardware: switches, routers, access points and gateways",
-      "markdownFile": "024-network-hardware-switches-routers-access-points-and-gateways.md"
+      "title": "Tracing instructions and addressing modes",
+      "markdownFile": "024-tracing-instructions-and-addressing-modes.md"
     },
     {
       "lesson": 25,
       "id": "025",
-      "title": "Internet, intranet, extranet and cloud services",
-      "markdownFile": "025-internet-intranet-extranet-and-cloud-services.md"
+      "title": "Bit manipulation, masks and binary shifts",
+      "markdownFile": "025-bit-manipulation-masks-and-binary-shifts.md"
     },
     {
       "lesson": 26,
       "id": "026",
-      "title": "Network performance, latency, bandwidth and congestion",
-      "markdownFile": "026-network-performance-latency-bandwidth-and-congestion.md"
+      "title": "Why operating systems are required",
+      "markdownFile": "026-why-operating-systems-are-required.md"
     },
     {
       "lesson": 27,
       "id": "027",
-      "title": "Section 2 review: explaining communication with precision",
-      "markdownFile": "027-section-2-review-explaining-communication-with-precision.md"
+      "title": "Utility software, libraries and linked files",
+      "markdownFile": "027-utility-software-libraries-and-linked-files.md"
     },
     {
       "lesson": 28,
       "id": "028",
-      "title": "Why computer systems need input, output and storage",
-      "markdownFile": "028-why-computer-systems-need-input-output-and-storage.md"
+      "title": "Assemblers, compilers and interpreters",
+      "markdownFile": "028-assemblers-compilers-and-interpreters.md"
     },
     {
       "lesson": 29,
       "id": "029",
-      "title": "Embedded systems: purpose, benefits and drawbacks",
-      "markdownFile": "029-embedded-systems-purpose-benefits-and-drawbacks.md"
+      "title": "Choosing a translator and understanding Java translation",
+      "markdownFile": "029-choosing-a-translator-and-understanding-java-translation.md"
     },
     {
       "lesson": 30,
       "id": "030",
-      "title": "Microphone, touchscreen and VR headset operation",
-      "markdownFile": "030-microphone-touchscreen-and-vr-headset-operation.md"
+      "title": "IDE features and practical debugging support",
+      "markdownFile": "030-ide-features-and-practical-debugging-support.md"
     },
     {
       "lesson": 31,
       "id": "031",
-      "title": "Output, storage devices and primary memory",
-      "markdownFile": "031-output-storage-devices-and-primary-memory.md"
+      "title": "Security, privacy, integrity and the need for protection",
+      "markdownFile": "031-security-privacy-integrity-and-the-need-for-protection.md"
     },
     {
       "lesson": 32,
       "id": "032",
-      "title": "Monitoring, control, feedback and required sensors",
-      "markdownFile": "032-monitoring-control-feedback-and-required-sensors.md"
+      "title": "Internet threats, malware and access restriction",
+      "markdownFile": "032-internet-threats-malware-and-access-restriction.md"
     },
     {
       "lesson": 33,
       "id": "033",
-      "title": "Logic-gate symbols, functions and representation conversions",
-      "markdownFile": "033-logic-gate-symbols-functions-and-representation-conversions.md"
+      "title": "Authentication, encryption and network protection",
+      "markdownFile": "033-authentication-encryption-and-network-protection.md"
     },
     {
       "lesson": 34,
       "id": "034",
-      "title": "Embedded systems and microcontrollers",
-      "markdownFile": "034-embedded-systems-and-microcontrollers.md"
+      "title": "Validation, verification, parity and checksums",
+      "markdownFile": "034-validation-verification-parity-and-checksums.md"
     },
     {
       "lesson": 35,
       "id": "035",
-      "title": "Sensors, actuators and control systems",
-      "markdownFile": "035-sensors-actuators-and-control-systems.md"
+      "title": "Professional ethics and professional bodies",
+      "markdownFile": "035-professional-ethics-and-professional-bodies.md"
     },
     {
       "lesson": 36,
       "id": "036",
-      "title": "Logic gates: NOT, AND, OR, NAND, NOR, XOR",
-      "markdownFile": "036-logic-gates-not-and-or-nand-nor-xor.md"
+      "title": "Ethical decisions and their consequences",
+      "markdownFile": "036-ethical-decisions-and-their-consequences.md"
     },
     {
       "lesson": 37,
       "id": "037",
-      "title": "Truth tables and Boolean expressions",
-      "markdownFile": "037-truth-tables-and-boolean-expressions.md"
+      "title": "Copyright and software licences",
+      "markdownFile": "037-copyright-and-software-licences.md"
     },
     {
       "lesson": 38,
       "id": "038",
-      "title": "Building logic circuits from requirements",
-      "markdownFile": "038-building-logic-circuits-from-requirements.md"
+      "title": "Artificial intelligence applications and impacts",
+      "markdownFile": "038-artificial-intelligence-applications-and-impacts.md"
     },
     {
       "lesson": 39,
       "id": "039",
-      "title": "Hardware selection for different users",
-      "markdownFile": "039-hardware-selection-for-different-users.md"
+      "title": "From file-based systems to relational databases",
+      "markdownFile": "039-from-file-based-systems-to-relational-databases.md"
     },
     {
       "lesson": 40,
       "id": "040",
-      "title": "Environmental and reliability considerations in hardware",
-      "markdownFile": "040-environmental-and-reliability-considerations-in-hardware.md"
+      "title": "Entity-relationship design and normalisation",
+      "markdownFile": "040-entity-relationship-design-and-normalisation.md"
     },
     {
       "lesson": 41,
       "id": "041",
-      "title": "Section 3 review: compare, justify, calculate",
-      "markdownFile": "041-section-3-review-compare-justify-calculate.md"
+      "title": "DBMS architecture, integrity, security and backup",
+      "markdownFile": "041-dbms-architecture-integrity-security-and-backup.md"
     },
     {
       "lesson": 42,
       "id": "042",
-      "title": "Von Neumann architecture, CPU components and registers",
-      "markdownFile": "042-von-neumann-architecture-cpu-components-and-registers.md"
+      "title": "DDL, DML and the role of SQL",
+      "markdownFile": "042-ddl-dml-and-the-role-of-sql.md"
     },
     {
       "lesson": 43,
       "id": "043",
-      "title": "System buses, ports and processor performance",
-      "markdownFile": "043-system-buses-ports-and-processor-performance.md"
+      "title": "Reading and writing SQL queries",
+      "markdownFile": "043-reading-and-writing-sql-queries.md"
     },
     {
       "lesson": 44,
       "id": "044",
-      "title": "Register-transfer notation for the fetch-decode-execute cycle",
-      "markdownFile": "044-register-transfer-notation-for-the-fetch-decode-execute-cycle.md"
+      "title": "Creating and maintaining database data",
+      "markdownFile": "044-creating-and-maintaining-database-data.md"
     },
     {
       "lesson": 45,
       "id": "045",
-      "title": "Interrupt causes, detection and handling",
-      "markdownFile": "045-interrupt-causes-detection-and-handling.md"
+      "title": "Paper 1 integrated review and error clinic",
+      "markdownFile": "045-paper-1-integrated-review-and-error-clinic.md"
     },
     {
       "lesson": 46,
       "id": "046",
-      "title": "Assembly language and machine code",
-      "markdownFile": "046-assembly-language-and-machine-code.md"
+      "title": "Abstraction and abstract models",
+      "markdownFile": "046-abstraction-and-abstract-models.md"
     },
     {
       "lesson": 47,
       "id": "047",
-      "title": "Two-pass assembly, program tracing and the instruction set",
-      "markdownFile": "047-two-pass-assembly-program-tracing-and-the-instruction-set.md"
+      "title": "Decomposition and modular problem solving",
+      "markdownFile": "047-decomposition-and-modular-problem-solving.md"
     },
     {
       "lesson": 48,
       "id": "048",
-      "title": "Addressing modes and address-sensitive instructions",
-      "markdownFile": "048-addressing-modes-and-address-sensitive-instructions.md"
+      "title": "Algorithms and meaningful identifiers",
+      "markdownFile": "048-algorithms-and-meaningful-identifiers.md"
     },
     {
       "lesson": 49,
       "id": "049",
-      "title": "Section 4 semantic checkpoint",
-      "markdownFile": "049-section-4-semantic-checkpoint.md"
+      "title": "Input-process-output solution design",
+      "markdownFile": "049-input-process-output-solution-design.md"
     },
     {
       "lesson": 50,
       "id": "050",
-      "title": "Bit manipulation with masks and shifts",
-      "markdownFile": "050-bit-manipulation-with-masks-and-shifts.md"
+      "title": "Sequence, selection and iteration",
+      "markdownFile": "050-sequence-selection-and-iteration.md"
     },
     {
       "lesson": 51,
       "id": "051",
-      "title": "Bit manipulation: masks and binary shifts",
-      "markdownFile": "051-bit-manipulation-masks-and-binary-shifts.md"
+      "title": "Structured English, flowcharts and pseudocode",
+      "markdownFile": "051-structured-english-flowcharts-and-pseudocode.md"
     },
     {
       "lesson": 52,
       "id": "052",
-      "title": "Section 4 review: tracing processor behaviour",
-      "markdownFile": "052-section-4-review-tracing-processor-behaviour.md"
+      "title": "Stepwise refinement",
+      "markdownFile": "052-stepwise-refinement.md"
     },
     {
       "lesson": 53,
       "id": "053",
-      "title": "Why an operating system is required and what it manages",
-      "markdownFile": "053-why-an-operating-system-is-required-and-what-it-manages.md"
+      "title": "Constructing and interpreting logic statements",
+      "markdownFile": "053-constructing-and-interpreting-logic-statements.md"
     },
     {
       "lesson": 54,
       "id": "054",
-      "title": "Required utility software",
-      "markdownFile": "054-required-utility-software.md"
+      "title": "Integrated algorithm design from a word problem",
+      "markdownFile": "054-integrated-algorithm-design-from-a-word-problem.md"
     },
     {
       "lesson": 55,
       "id": "055",
-      "title": "Libraries and dynamically linked library files",
-      "markdownFile": "055-libraries-and-dynamically-linked-library-files.md"
+      "title": "Cambridge data types and declarations",
+      "markdownFile": "055-cambridge-data-types-and-declarations.md"
     },
     {
       "lesson": 56,
       "id": "056",
-      "title": "Assembler, compiler and interpreter choices",
-      "markdownFile": "056-assembler-compiler-and-interpreter-choices.md"
+      "title": "Records: defining, reading and saving structured data",
+      "markdownFile": "056-records-defining-reading-and-saving-structured-data.md"
     },
     {
       "lesson": 57,
       "id": "057",
-      "title": "Java translation and required IDE features",
-      "markdownFile": "057-java-translation-and-required-ide-features.md"
+      "title": "Array terminology, indices and bounds",
+      "markdownFile": "057-array-terminology-indices-and-bounds.md"
     },
     {
       "lesson": 58,
       "id": "058",
-      "title": "Compilation stages: lexical analysis to object code",
-      "markdownFile": "058-compilation-stages-lexical-analysis-to-object-code.md"
+      "title": "Selecting and using one-dimensional arrays",
+      "markdownFile": "058-selecting-and-using-one-dimensional-arrays.md"
     },
     {
       "lesson": 59,
       "id": "059",
-      "title": "Linkers, loaders and libraries",
-      "markdownFile": "059-linkers-loaders-and-libraries.md"
+      "title": "Selecting and using two-dimensional arrays",
+      "markdownFile": "059-selecting-and-using-two-dimensional-arrays.md"
     },
     {
       "lesson": 60,
       "id": "060",
-      "title": "Error types: syntax, logic, runtime and translation diagnostics",
-      "markdownFile": "060-error-types-syntax-logic-runtime-and-translation-diagnostics.md"
+      "title": "Linear search using arrays",
+      "markdownFile": "060-linear-search-using-arrays.md"
     },
     {
       "lesson": 61,
       "id": "061",
-      "title": "Choosing translation approaches for development and deployment",
-      "markdownFile": "061-choosing-translation-approaches-for-development-and-deployment.md"
+      "title": "Bubble sort using arrays",
+      "markdownFile": "061-bubble-sort-using-arrays.md"
     },
     {
       "lesson": 62,
       "id": "062",
-      "title": "Section 5 review: precise software comparisons",
-      "markdownFile": "062-section-5-review-precise-software-comparisons.md"
+      "title": "Why files are needed and text-file pseudocode",
+      "markdownFile": "062-why-files-are-needed-and-text-file-pseudocode.md"
     },
     {
       "lesson": 63,
       "id": "063",
-      "title": "Security, privacy and data integrity",
-      "markdownFile": "063-security-privacy-and-data-integrity.md"
+      "title": "Abstract data types",
+      "markdownFile": "063-abstract-data-types.md"
     },
     {
       "lesson": 64,
       "id": "064",
-      "title": "Virus, spyware, anti-virus and anti-spyware",
-      "markdownFile": "064-virus-spyware-anti-virus-and-anti-spyware.md"
+      "title": "Stacks and LIFO operations",
+      "markdownFile": "064-stacks-and-lifo-operations.md"
     },
     {
       "lesson": 65,
       "id": "065",
-      "title": "Required internet threats and matching risk-reduction methods",
-      "markdownFile": "065-required-internet-threats-and-matching-risk-reduction-methods.md"
+      "title": "Queues and FIFO operations",
+      "markdownFile": "065-queues-and-fifo-operations.md"
     },
     {
       "lesson": 66,
       "id": "066",
-      "title": "User accounts, passwords and biometric authentication",
-      "markdownFile": "066-user-accounts-passwords-and-biometric-authentication.md"
+      "title": "Linked-list features and operations",
+      "markdownFile": "066-linked-list-features-and-operations.md"
     },
     {
       "lesson": 67,
       "id": "067",
-      "title": "Access rights and encryption as data-security methods",
-      "markdownFile": "067-access-rights-and-encryption-as-data-security-methods.md"
+      "title": "Implementing ADT operations with arrays",
+      "markdownFile": "067-implementing-adt-operations-with-arrays.md"
     },
     {
       "lesson": 68,
       "id": "068",
-      "title": "Digital signatures and encryption",
-      "markdownFile": "068-digital-signatures-and-encryption.md"
+      "title": "Choosing and combining data structures",
+      "markdownFile": "068-choosing-and-combining-data-structures.md"
     },
     {
       "lesson": 69,
       "id": "069",
-      "title": "Firewall protection from a stand-alone PC to a network",
-      "markdownFile": "069-firewall-protection-from-a-stand-alone-pc-to-a-network.md"
+      "title": "Translating descriptions into Cambridge pseudocode",
+      "markdownFile": "069-translating-descriptions-into-cambridge-pseudocode.md"
     },
     {
       "lesson": 70,
       "id": "070",
-      "title": "Complete validation and verification methods",
-      "markdownFile": "070-complete-validation-and-verification-methods.md"
+      "title": "Declarations, assignment and input/output",
+      "markdownFile": "070-declarations-assignment-and-input-output.md"
     },
     {
       "lesson": 71,
       "id": "071",
-      "title": "Backup strategies, disaster recovery, and audit trails",
-      "markdownFile": "071-backup-strategies-disaster-recovery-and-audit-trails.md"
+      "title": "Arithmetic and logical expressions",
+      "markdownFile": "071-arithmetic-and-logical-expressions.md"
     },
     {
       "lesson": 72,
       "id": "072",
-      "title": "Section 6 review: matching risks to controls",
-      "markdownFile": "072-section-6-review-matching-risks-to-controls.md"
+      "title": "Built-in routines and string functions",
+      "markdownFile": "072-built-in-routines-and-string-functions.md"
     },
     {
       "lesson": 73,
       "id": "073",
-      "title": "Professional ethics, professional bodies and ethical decisions",
-      "markdownFile": "073-professional-ethics-professional-bodies-and-ethical-decisions.md"
+      "title": "IF, ELSE and CASE selection",
+      "markdownFile": "073-if-else-and-case-selection.md"
     },
     {
       "lesson": 74,
       "id": "074",
-      "title": "Privacy, surveillance, and data protection",
-      "markdownFile": "074-privacy-surveillance-and-data-protection.md"
+      "title": "Count-controlled iteration",
+      "markdownFile": "074-count-controlled-iteration.md"
     },
     {
       "lesson": 75,
       "id": "075",
-      "title": "Copyright legislation, FSF, OSI and licence permissions",
-      "markdownFile": "075-copyright-legislation-fsf-osi-and-licence-permissions.md"
+      "title": "Pre-condition and post-condition loops",
+      "markdownFile": "075-pre-condition-and-post-condition-loops.md"
     },
     {
       "lesson": 76,
       "id": "076",
-      "title": "Shareware and commercial licences",
-      "markdownFile": "076-shareware-and-commercial-licences.md"
+      "title": "Selecting and justifying a loop structure",
+      "markdownFile": "076-selecting-and-justifying-a-loop-structure.md"
     },
     {
       "lesson": 77,
       "id": "077",
-      "title": "AI applications and impact chains",
-      "markdownFile": "077-ai-applications-and-impact-chains.md"
+      "title": "Procedures and parameter passing",
+      "markdownFile": "077-procedures-and-parameter-passing.md"
     },
     {
       "lesson": 78,
       "id": "078",
-      "title": "Section 7 required-content checkpoint",
-      "markdownFile": "078-section-7-required-content-checkpoint.md"
+      "title": "Functions, interfaces and return values",
+      "markdownFile": "078-functions-interfaces-and-return-values.md"
     },
     {
       "lesson": 79,
       "id": "079",
-      "title": "File-based limitations and relational solutions",
-      "markdownFile": "079-file-based-limitations-and-relational-solutions.md"
+      "title": "Clear and efficient Cambridge pseudocode",
+      "markdownFile": "079-clear-and-efficient-cambridge-pseudocode.md"
     },
     {
       "lesson": 80,
       "id": "080",
-      "title": "Relational terminology, keys and relationships",
-      "markdownFile": "080-relational-terminology-keys-and-relationships.md"
+      "title": "Writing complete program fragments",
+      "markdownFile": "080-writing-complete-program-fragments.md"
     },
     {
       "lesson": 81,
       "id": "081",
-      "title": "E-R design, normalisation and DBMS features",
-      "markdownFile": "081-e-r-design-normalisation-and-dbms-features.md"
+      "title": "Program-development lifecycle models",
+      "markdownFile": "081-program-development-lifecycle-models.md"
     },
     {
       "lesson": 82,
       "id": "082",
-      "title": "Primary keys, foreign keys and relationships",
-      "markdownFile": "082-primary-keys-foreign-keys-and-relationships.md"
+      "title": "Structure charts and module interfaces",
+      "markdownFile": "082-structure-charts-and-module-interfaces.md"
     },
     {
       "lesson": 83,
       "id": "083",
-      "title": "Entity-relationship modelling",
-      "markdownFile": "083-entity-relationship-modelling.md"
+      "title": "State-transition diagrams",
+      "markdownFile": "083-state-transition-diagrams.md"
     },
     {
       "lesson": 84,
       "id": "084",
-      "title": "DDL, DML and SQL roles",
-      "markdownFile": "084-ddl-dml-and-sql-roles.md"
+      "title": "Finding and correcting program errors",
+      "markdownFile": "084-finding-and-correcting-program-errors.md"
     },
     {
       "lesson": 85,
       "id": "085",
-      "title": "Read and write SQL statements by their semantics",
-      "markdownFile": "085-read-and-write-sql-statements-by-their-semantics.md"
+      "title": "Testing methods through the development process",
+      "markdownFile": "085-testing-methods-through-the-development-process.md"
     },
     {
       "lesson": 86,
       "id": "086",
-      "title": "DDL and two-table data queries",
-      "markdownFile": "086-ddl-and-two-table-data-queries.md"
+      "title": "Test strategies and test plans",
+      "markdownFile": "086-test-strategies-and-test-plans.md"
     },
     {
       "lesson": 87,
       "id": "087",
-      "title": "SQL joins using related tables",
-      "markdownFile": "087-sql-joins-using-related-tables.md"
+      "title": "Normal, abnormal and boundary test data",
+      "markdownFile": "087-normal-abnormal-and-boundary-test-data.md"
     },
     {
       "lesson": 88,
       "id": "088",
-      "title": "INSERT, DELETE and UPDATE",
-      "markdownFile": "088-insert-delete-and-update.md"
+      "title": "Corrective, adaptive and perfective maintenance",
+      "markdownFile": "088-corrective-adaptive-and-perfective-maintenance.md"
     },
     {
       "lesson": 89,
       "id": "089",
-      "title": "Validation, verification, security and backup in databases",
-      "markdownFile": "089-validation-verification-security-and-backup-in-databases.md"
+      "title": "Analysing and amending an existing program",
+      "markdownFile": "089-analysing-and-amending-an-existing-program.md"
     },
     {
       "lesson": 90,
       "id": "090",
-      "title": "Section 8 required-content checkpoint",
-      "markdownFile": "090-section-8-required-content-checkpoint.md"
-    },
-    {
-      "lesson": 91,
-      "id": "091",
-      "title": "Paper 1 review: representation and communication",
-      "markdownFile": "091-paper-1-review-representation-and-communication.md"
-    },
-    {
-      "lesson": 92,
-      "id": "092",
-      "title": "Paper 1 review: hardware and processor fundamentals",
-      "markdownFile": "092-paper-1-review-hardware-and-processor-fundamentals.md"
-    },
-    {
-      "lesson": 93,
-      "id": "093",
-      "title": "Paper 1 review: system software and security",
-      "markdownFile": "093-paper-1-review-system-software-and-security.md"
-    },
-    {
-      "lesson": 94,
-      "id": "094",
-      "title": "Paper 1 review: ethics and databases",
-      "markdownFile": "094-paper-1-review-ethics-and-databases.md"
-    },
-    {
-      "lesson": 95,
-      "id": "095",
-      "title": "Paper 1 mixed question strategy",
-      "markdownFile": "095-paper-1-mixed-question-strategy.md"
-    },
-    {
-      "lesson": 96,
-      "id": "096",
-      "title": "Paper 1 timed short-answer practice",
-      "markdownFile": "096-paper-1-timed-short-answer-practice.md"
-    },
-    {
-      "lesson": 97,
-      "id": "097",
-      "title": "Paper 1 extended-response practice",
-      "markdownFile": "097-paper-1-extended-response-practice.md"
-    },
-    {
-      "lesson": 98,
-      "id": "098",
-      "title": "Paper 1 mock review and correction clinic",
-      "markdownFile": "098-paper-1-mock-review-and-correction-clinic.md"
-    },
-    {
-      "lesson": 99,
-      "id": "099",
-      "title": "Abstraction and decomposition into program modules",
-      "markdownFile": "099-abstraction-and-decomposition-into-program-modules.md"
-    },
-    {
-      "lesson": 100,
-      "id": "100",
-      "title": "Algorithms, IPO solutions and identifier tables",
-      "markdownFile": "100-algorithms-ipo-solutions-and-identifier-tables.md"
-    },
-    {
-      "lesson": 101,
-      "id": "101",
-      "title": "Sequence, selection and iteration",
-      "markdownFile": "101-sequence-selection-and-iteration.md"
-    },
-    {
-      "lesson": 102,
-      "id": "102",
-      "title": "Structured English, flowcharts and pseudocode conversion",
-      "markdownFile": "102-structured-english-flowcharts-and-pseudocode-conversion.md"
-    },
-    {
-      "lesson": 103,
-      "id": "103",
-      "title": "Stepwise refinement from IPO design to modules",
-      "markdownFile": "103-stepwise-refinement-from-ipo-design-to-modules.md"
-    },
-    {
-      "lesson": 104,
-      "id": "104",
-      "title": "Logic statements define parts of an algorithm",
-      "markdownFile": "104-logic-statements-define-parts-of-an-algorithm.md"
-    },
-    {
-      "lesson": 105,
-      "id": "105",
-      "title": "Linear search and binary search",
-      "markdownFile": "105-linear-search-and-binary-search.md"
-    },
-    {
-      "lesson": 106,
-      "id": "106",
-      "title": "Bubble sort and insertion sort",
-      "markdownFile": "106-bubble-sort-and-insertion-sort.md"
-    },
-    {
-      "lesson": 107,
-      "id": "107",
-      "title": "Maximum, minimum, count and total",
-      "markdownFile": "107-maximum-minimum-count-and-total.md"
-    },
-    {
-      "lesson": 108,
-      "id": "108",
-      "title": "String-processing algorithms",
-      "markdownFile": "108-string-processing-algorithms.md"
-    },
-    {
-      "lesson": 109,
-      "id": "109",
-      "title": "Nested loops and table-style problems",
-      "markdownFile": "109-nested-loops-and-table-style-problems.md"
-    },
-    {
-      "lesson": 110,
-      "id": "110",
-      "title": "Algorithm efficiency at AS level",
-      "markdownFile": "110-algorithm-efficiency-at-as-level.md"
-    },
-    {
-      "lesson": 111,
-      "id": "111",
-      "title": "Cambridge pseudocode conventions and exam readability",
-      "markdownFile": "111-cambridge-pseudocode-conventions-and-exam-readability.md"
-    },
-    {
-      "lesson": 112,
-      "id": "112",
-      "title": "Designing algorithms from word problems",
-      "markdownFile": "112-designing-algorithms-from-word-problems.md"
-    },
-    {
-      "lesson": 113,
-      "id": "113",
-      "title": "Section 9 required-content checkpoint",
-      "markdownFile": "113-section-9-required-content-checkpoint.md"
-    },
-    {
-      "lesson": 114,
-      "id": "114",
-      "title": "Select and use the official Cambridge data types",
-      "markdownFile": "114-select-and-use-the-official-cambridge-data-types.md"
-    },
-    {
-      "lesson": 115,
-      "id": "115",
-      "title": "Define, read and save record data",
-      "markdownFile": "115-define-read-and-save-record-data.md"
-    },
-    {
-      "lesson": 116,
-      "id": "116",
-      "title": "Array terminology, selection and one-dimensional pseudocode",
-      "markdownFile": "116-array-terminology-selection-and-one-dimensional-pseudocode.md"
-    },
-    {
-      "lesson": 117,
-      "id": "117",
-      "title": "Select and write two-dimensional arrays",
-      "markdownFile": "117-select-and-write-two-dimensional-arrays.md"
-    },
-    {
-      "lesson": 118,
-      "id": "118",
-      "title": "Array model required by search algorithms",
-      "markdownFile": "118-array-model-required-by-search-algorithms.md"
-    },
-    {
-      "lesson": 119,
-      "id": "119",
-      "title": "Write linear-search and bubble-sort algorithms",
-      "markdownFile": "119-write-linear-search-and-bubble-sort-algorithms.md"
-    },
-    {
-      "lesson": 120,
-      "id": "120",
-      "title": "Why files are needed and how text-file pseudocode works",
-      "markdownFile": "120-why-files-are-needed-and-how-text-file-pseudocode-works.md"
-    },
-    {
-      "lesson": 121,
-      "id": "121",
-      "title": "Abstract data types and array-based operations",
-      "markdownFile": "121-abstract-data-types-and-array-based-operations.md"
-    },
-    {
-      "lesson": 122,
-      "id": "122",
-      "title": "Choosing stack, queue or linked list",
-      "markdownFile": "122-choosing-stack-queue-or-linked-list.md"
-    },
-    {
-      "lesson": 123,
-      "id": "123",
-      "title": "Stacks and queues as abstract data types",
-      "markdownFile": "123-stacks-and-queues-as-abstract-data-types.md"
-    },
-    {
-      "lesson": 124,
-      "id": "124",
-      "title": "Choosing appropriate data structures",
-      "markdownFile": "124-choosing-appropriate-data-structures.md"
-    },
-    {
-      "lesson": 125,
-      "id": "125",
-      "title": "Pseudocode data declarations vs Java declarations",
-      "markdownFile": "125-pseudocode-data-declarations-vs-java-declarations.md"
-    },
-    {
-      "lesson": 126,
-      "id": "126",
-      "title": "Section 10 review: data modelling in algorithms",
-      "markdownFile": "126-section-10-review-data-modelling-in-algorithms.md"
-    },
-    {
-      "lesson": 127,
-      "id": "127",
-      "title": "Translate descriptions into Cambridge pseudocode",
-      "markdownFile": "127-translate-descriptions-into-cambridge-pseudocode.md"
-    },
-    {
-      "lesson": 128,
-      "id": "128",
-      "title": "Complete Cambridge pseudocode statements",
-      "markdownFile": "128-complete-cambridge-pseudocode-statements.md"
-    },
-    {
-      "lesson": 129,
-      "id": "129",
-      "title": "Use supplied built-in and library routines",
-      "markdownFile": "129-use-supplied-built-in-and-library-routines.md"
-    },
-    {
-      "lesson": 130,
-      "id": "130",
-      "title": "Selection and loop structures",
-      "markdownFile": "130-selection-and-loop-structures.md"
-    },
-    {
-      "lesson": 131,
-      "id": "131",
-      "title": "Procedures, functions and their interfaces",
-      "markdownFile": "131-procedures-functions-and-their-interfaces.md"
-    },
-    {
-      "lesson": 132,
-      "id": "132",
-      "title": "Parameters: by value and by reference",
-      "markdownFile": "132-parameters-by-value-and-by-reference.md"
-    },
-    {
-      "lesson": 133,
-      "id": "133",
-      "title": "Scope, lifetime, and local/global variables",
-      "markdownFile": "133-scope-lifetime-and-local-global-variables.md"
-    },
-    {
-      "lesson": 134,
-      "id": "134",
-      "title": "Clear and efficient Cambridge pseudocode",
-      "markdownFile": "134-clear-and-efficient-cambridge-pseudocode.md"
-    },
-    {
-      "lesson": 135,
-      "id": "135",
-      "title": "Arithmetic operators, integer division, and MOD",
-      "markdownFile": "135-arithmetic-operators-integer-division-and-mod.md"
-    },
-    {
-      "lesson": 136,
-      "id": "136",
-      "title": "Input and output formatting",
-      "markdownFile": "136-input-and-output-formatting.md"
-    },
-    {
-      "lesson": 137,
-      "id": "137",
-      "title": "File handling patterns in pseudocode and Java",
-      "markdownFile": "137-file-handling-patterns-in-pseudocode-and-java.md"
-    },
-    {
-      "lesson": 138,
-      "id": "138",
-      "title": "Testing with normal, abnormal, and extreme/boundary data",
-      "markdownFile": "138-testing-with-normal-abnormal-and-extreme-boundary-data.md"
-    },
-    {
-      "lesson": 139,
-      "id": "139",
-      "title": "Debugging using traces and breakpoints",
-      "markdownFile": "139-debugging-using-traces-and-breakpoints.md"
-    },
-    {
-      "lesson": 140,
-      "id": "140",
-      "title": "Robust program design: validation and modularity",
-      "markdownFile": "140-robust-program-design-validation-and-modularity.md"
-    },
-    {
-      "lesson": 141,
-      "id": "141",
-      "title": "Converting Java habits into Cambridge pseudocode",
-      "markdownFile": "141-converting-java-habits-into-cambridge-pseudocode.md"
-    },
-    {
-      "lesson": 142,
-      "id": "142",
-      "title": "Section 11 review: writing complete program fragments",
-      "markdownFile": "142-section-11-review-writing-complete-program-fragments.md"
-    },
-    {
-      "lesson": 143,
-      "id": "143",
-      "title": "Lifecycle models, purpose and limitations",
-      "markdownFile": "143-lifecycle-models-purpose-and-limitations.md"
-    },
-    {
-      "lesson": 144,
-      "id": "144",
-      "title": "Structure charts and the purpose of state-transition diagrams",
-      "markdownFile": "144-structure-charts-and-the-purpose-of-state-transition-diagrams.md"
-    },
-    {
-      "lesson": 145,
-      "id": "145",
-      "title": "Expose, locate and correct program errors",
-      "markdownFile": "145-expose-locate-and-correct-program-errors.md"
-    },
-    {
-      "lesson": 146,
-      "id": "146",
-      "title": "Testing, maintenance and enhancement",
-      "markdownFile": "146-testing-maintenance-and-enhancement.md"
-    },
-    {
-      "lesson": 147,
-      "id": "147",
-      "title": "Section 12 review: software development case study",
-      "markdownFile": "147-section-12-review-software-development-case-study.md"
-    },
-    {
-      "lesson": 148,
-      "id": "148",
-      "title": "Paper 2 review: algorithm design and data structures",
-      "markdownFile": "148-paper-2-review-algorithm-design-and-data-structures.md"
-    },
-    {
-      "lesson": 149,
-      "id": "149",
-      "title": "Paper 2 review: programming constructs and file handling",
-      "markdownFile": "149-paper-2-review-programming-constructs-and-file-handling.md"
-    },
-    {
-      "lesson": 150,
-      "id": "150",
-      "title": "Paper 2 timed pseudocode practice",
-      "markdownFile": "150-paper-2-timed-pseudocode-practice.md"
-    },
-    {
-      "lesson": 151,
-      "id": "151",
-      "title": "Paper 2 mock review and correction clinic",
-      "markdownFile": "151-paper-2-mock-review-and-correction-clinic.md"
+      "title": "Paper 2 integrated review and pseudocode clinic",
+      "markdownFile": "090-paper-2-integrated-review-and-pseudocode-clinic.md"
     }
   ]
 }

@@ -3,397 +3,89 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 033 | Logic-gate symbols, functions and representation conversions</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <title>AS9618 Lesson 033 | Authentication, encryption and network protection</title>
     <link rel="icon" href="data:" />
-    <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
+    <link rel="stylesheet" href="../course-v2.css?v=3" />
   </head>
-  <body>
+  <body data-course-version="2" data-lesson-id="033" data-syllabus-ids="S6.03,S6.06">
     <a class="skip-link" href="#main-content">Skip to main content</a>
-    <header class="topbar">
-      <div>
-        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 3</p>
-        <h1>Logic-gate symbols, functions and representation conversions</h1>
-      </div>
-      <div class="action-panel" aria-label="Page controls">
-        <a class="course-home-link" href="../">Course home</a>
-        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
-      </div>
+    <header class="v2-topbar">
+      <div><p class="v2-eyebrow">Cambridge AS9618 | Paper 1 | Section 6: Security, privacy and data integrity</p><h1>Authentication, encryption and network protection</h1></div>
+      <nav class="v2-actions" aria-label="Lesson actions"><a href="../">Course home</a><a href="../assessments/">Assessment bank</a><button type="button" id="printLesson">Print</button></nav>
     </header>
-
-    <main class="layout" id="main-content" tabindex="-1">
-      <aside class="lesson-nav" aria-label="Lesson navigation">
-        <a href="#overview">Overview</a>
-        <a href="#hook">Warm-up</a>
-        <a href="#criteria">Criteria</a>
-        <a href="#tradeoffs">Trade-offs</a>
-        <a href="#answer">Answer pattern</a>
-        <a href="#tool">Choice tool</a>
-        <a href="#examples">Examples</a>
-        <a href="#practice">Practice</a>
-        <a href="#debug">Debugging</a>
-        <a href="#exam">Exam-style</a>
-        <a href="#homework">Homework</a>
-        <a href="#stage2-completion">Core syllabus content</a>
-      </aside>
-
-      <div class="lesson-content">
-        <!-- remediation-v2-stage3-scope:start -->
-        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.</p></aside>
-        <!-- remediation-v2-stage3-scope:end -->
-
-<!-- stage2-completion:start -->
-        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus content</p>
-            <h2>Logic-gate symbols, functions and representation conversions</h2>
-          </div>
-          <div class="stage2-explanation">
-            <p>Use the standard symbols and exact functions of NOT, AND, OR, NAND, NOR and XOR (EOR). NOT has one input; each of the other five gates has two inputs for this syllabus. A truth table lists every input combination and the resulting output according to the gate or circuit function.</p>
-            <p>You must be able to construct a logic circuit from a problem statement, logic expression or truth table; construct a truth table from a problem statement, logic circuit or logic expression; and construct a logic expression from a problem statement, logic circuit or truth table. Move through variables and conditions first, then intermediate gate outputs, then the final output so every representation can be checked against the same rows.</p>
-            <p>Each standard gate symbol identifies its function; do not substitute a labelled box when a logic-circuit symbol is required.</p>
-          </div>
-          <article class="stage2-example">
-            <h3>Worked example: Convert one rule among four representations</h3>
-            <p>Rule: an alarm sounds when the system is armed and either the door or window is open. Define A, D and W; write Alarm = A AND (D OR W); draw an OR gate for D and W feeding an AND gate with A; then list all eight input combinations and evaluate the intermediate OR column before Alarm.</p>
-          </article>
+    <main class="v2-shell" id="main-content" tabindex="-1">
+      <nav class="v2-toc" aria-label="Lesson contents"><strong>Lesson 033</strong><a href="#overview">Overview</a><a href="#prerequisite">Prerequisite</a><a href="#explanation">Explanation</a><a href="#practice">Practice</a><a href="#summary">Summary</a></nav>
+      <div class="v2-content">
+        <section class="v2-hero" id="overview">
+          <div><p class="v2-eyebrow">Flexible-depth lesson</p><h2>Authentication, encryption and network protection</h2><p>S6.03, S6.06 | Select what to omit, teach briefly or explore in depth.</p></div>
+          <div class="v2-time-grid" aria-label="Available lesson depth"><div><strong>Quick</strong><span>diagnose + essentials</span></div><div><strong>Full</strong><span>complete explanation</span></div><div><strong>Deep</strong><span>prerequisites + extension</span></div><div><strong>Choose</strong><span>practice by need</span></div></div>
         </section>
 
-        <!-- stage10-explanation:start gate-visual -->
-        <section class="panel explanation-panel" id="explanation-gate-visual" data-explains="gate-visual" data-explanation-kind="mechanism" aria-labelledby="explanation-gate-visual-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="gate-visual">
-          <h2 class="explanation-sr-only" id="explanation-gate-visual-title">Six symbols, six exact output rules</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-036-gate-visual.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Six symbols, six exact output rules with a structured visual model." />
-            <figcaption class="explanation-sr-only">Six symbols, six exact output rules: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Visual explanation</li><li><strong>Lesson fact:</strong> Read each symbol from left to right. A small circle on the output means “invert”; the extra curved input line distinguishes XOR from OR.</li><li><strong>Lesson fact:</strong> NOT One input; output is the opposite value.</li><li><strong>Lesson fact:</strong> AND / NAND AND tests whether both are 1; NAND inverts that result.</li><li><strong>Lesson fact:</strong> OR / NOR OR tests whether at least one is 1; NOR inverts that result.</li><li><strong>Lesson fact:</strong> XOR Output is 1 only when the two inputs are different.</li><li><strong>Lesson fact:</strong> Check the diagram: what two visual clues separate NOR from XOR?</li><li><strong>Lesson fact:</strong> NOR has an output bubble. XOR has no output bubble, but it has an extra curved line on the input side.</li></ol>
-
-          </div>
+        <section class="v2-panel v2-route-menu" aria-labelledby="route-heading">
+          <div class="v2-heading"><p class="v2-eyebrow">Teacher choice</p><h2 id="route-heading">Choose the depth for this group</h2></div>
+          <div class="v2-route-grid"><article><h3>Quick route</h3><p>Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.</p></article><article><h3>Full route</h3><p>Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.</p></article><article><h3>Deep route</h3><p>Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.</p></article></div>
         </section>
-        <!-- stage10-explanation:end gate-visual -->
-        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus practice</p>
-            <h2>Logic-gate symbols, functions and representation conversions: apply and assess</h2>
-          </div>
-          <div class="stage2-practice">
-            <h3>Targeted practice</h3>
-            <article class="stage2-question">
-              <p><strong>1.</strong> What distinguishes the XOR symbol from the OR symbol?</p>
-              <details><summary>Show answer</summary><p>XOR has an additional curved line on the input side.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>2.</strong> How many inputs does NOT have, and how many do the other specified gates have in this syllabus?</p>
-              <details><summary>Show answer</summary><p>NOT has one input; AND, OR, NAND, NOR and XOR each have two inputs.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>3.</strong> Identify the three possible sources from which a logic circuit may be constructed.</p>
-              <details><summary>Show answer</summary><p>A problem statement, a logic expression or a truth table.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>4.</strong> How do intermediate columns help convert a circuit into a truth table?</p>
-              <details><summary>Show answer</summary><p>Each intermediate column records one gate output, allowing the final result to be calculated and checked row by row.</p></details>
-            </article>
-          </div>
-          <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>4 marks</span></div>
-            <p>A truth table gives output 1 only when input A is 1 and input B is 0. Construct a logic expression and describe the corresponding circuit.</p>
-            <details>
-              <summary>Show MS</summary>
-              <table class="mark-scheme-table">
-                <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
-                <tbody>
-                  <tr><td>identifies that B must be inverted</td><td>Do not accept XOR: XOR is also 1 for A=0, B=1, which contradicts the given truth table.</td><td>1</td></tr>
-                  <tr><td>constructs expression Q = A AND NOT B</td><td></td><td>1</td></tr>
-                  <tr><td>B is connected to a NOT gate</td><td></td><td>1</td></tr>
-                  <tr><td>A and the NOT-gate output are connected to an AND gate whose output is Q</td><td></td><td>1</td></tr>
-                </tbody>
-              </table>
-            </details>
-          </article>
-        </section>
-        <!-- stage2-completion:end -->
 
-<section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-033">
-          <div class="hero-copy">
-            <p class="lesson-meta">Lesson 033 | 45 minutes | Paper 1 Section 3</p>
-            <h2>Storage choice is a trade-off, not a popularity contest.</h2>
-            <p>
-              This lesson trains the comparison language needed for storage questions:
-              capacity, speed, durability, portability and cost. The goal is to justify
-              a choice for a specific user, not to declare one storage type "best".
-            </p>
-            <div class="objective-grid" aria-label="Learning objectives">
-              <div><strong>Define</strong><span>five key storage characteristics accurately</span></div>
-              <div><strong>Compare</strong><span>storage devices using scenario-linked trade-offs</span></div>
-              <div><strong>Write</strong><span>Cambridge-style justifications with cause and consequence</span></div>
+        <section class="v2-panel" id="prerequisite">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 1 | optional depth</p><h2>Prerequisite knowledge and quick diagnostic</h2></div>
+          <div class="v2-diagnostic"><p>Recall S6.05 before starting this lesson.</p></div>
+          <p>Give one accurate definition or method step before continuing. If it is missing, revisit only that prerequisite.</p>
+          <details class="v2-prerequisite-detail"><summary>Open optional prerequisite refresher</summary><ul><li>Describe methods that restrict the risks posed by threats to data and computer systems; evidence must match each control mechanism to the attack route and avoid claims of total prevention.</li><li>Understand restriction of access to data and computer systems as a risk-reduction method.</li></ul></details>
+        </section>
+
+        <section class="v2-panel" id="explanation">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 2 | deliberately over-complete</p><h2>Knowledge explanation</h2></div>
+          <h3>Learning objectives</h3><ul class="v2-objectives"><li>Understand user accounts/passwords, digital signatures, biometrics, firewall, antivirus, anti-spyware and encryption as security measures.</li><li>Explain how encryption and access rights protect data.</li></ul>
+          <details class="v2-concept-menu"><summary>Open the concept checklist and choose what to teach</summary><ul><li>user account / user accounts</li><li>password</li><li>digital signature</li><li>biometric</li><li>firewall</li><li>anti-virus / antivirus</li><li>anti-spyware</li><li>encryption</li><li>security measure / security measures</li><li>access</li><li>rights</li><li>protect</li></ul></details>
+          <div class="v2-explanation-grid">
+            <div>
+              <article class="v2-core-facts"><h3>Detailed explanation</h3><p class="v2-teacher-note">Teach all points, or select only the ones this group needs. The list is intentionally fuller than a fixed lesson slot.</p><ul class="v2-facts"><li>Describe security measures for computer systems from a stand-alone PC to a network: user accounts, passwords, digital signatures, biometrics, firewall, anti-virus, anti-spyware and encryption are all required named evidence.</li><li>Describe security methods designed to protect data, including encryption and access rights; evidence must explain their different mechanisms and limitations.</li><li>A virus is malware that attaches to a host file or program and spreads when the infected host is run or shared. Spyware secretly monitors activity or collects data, such as keystrokes, credentials or browsing behaviour. These threats can damage the security of both data and the computer system.</li><li>Anti-virus software scans files, memory and activity for virus signatures or suspicious behaviour, then blocks, quarantines or removes detected malicious code. Anti-spyware performs corresponding detection and removal for spyware; the categories may be combined in one security product, but their syllabus roles must still be stated accurately.</li><li>Anti-virus and anti-spyware definitions and detection rules must be updated because new threats appear. Both measures reduce risk but cannot guarantee detection of every new, modified or concealed threat.</li><li>Each security measure has a distinct mechanism: a user account identifies a user; a password authenticates knowledge; a digital signature supports integrity and origin checks; a biometric compares a captured feature; a firewall filters traffic; anti-virus and anti-spyware detect known malicious software; encryption protects readable data. The threats include a virus, spyware, a hacker, phishing and pharming; each threat must be matched to a control whose mechanism reduces that risk.</li><li>A user account gives an individual or role a distinct system identity and supports accountability. A password is secret knowledge used to authenticate an identity claim. Accounts should not be shared; passwords should be difficult to guess, stored as salted hashes, protected by attempt limits and changed if compromised.</li><li>Biometrics use a physical or behavioural characteristic such as fingerprint, face, iris, retina, voice or typing pattern. A captured feature is converted to a template and compared with an enrolled template. A match authenticates the identity claim; authorisation is the separate decision about what that user may access or do.</li><li>False rejection denies a valid enrolled user by mistake; false acceptance authenticates an impostor by mistake. Biometrics can be convenient and cannot be casually shared like a password, but require sensors/templates, may raise privacy concerns and cannot normally be replaced as easily as a compromised password.</li><li>Access rights restrict authorised actions on resources. Read permission controls viewing; write/modify controls alteration; delete controls removal; execute or administrative rights control running software or changing system settings. Least privilege grants only the permissions needed for a role and removes temporary rights when no longer required.</li><li>Encryption transforms plaintext into ciphertext using an algorithm and key. Without the correct decryption key, intercepted or stolen ciphertext should not reveal readable content. Encryption therefore protects confidentiality, while access rights can protect confidentiality and integrity by preventing unauthorised viewing or alteration.</li><li>The methods do different jobs: encryption does not decide which logged-in user may edit a record, and access rights do not make a stolen unencrypted copy unreadable. Neither method guarantees availability, data truth or protection after an authorised account is misused.</li></ul></article>
+              <article class="v2-example"><h3>Worked example</h3><p>Protect a home laptop and a school network: The laptop&#39;s host firewall blocks unsolicited inbound connections except an explicitly required service. The school&#39;s boundary firewall denies unrequested external traffic, permits web traffic under ordered rules and logs repeated blocked attempts. Anti-virus still scans downloaded files, and account/access controls still decide who may use data after traffic is allowed.</p></article>
+              <aside class="v2-extension"><h3>Beyond syllabus / 延伸知识（不要求背诵）</h3><p>real security uses defence in depth, combining controls so that one failed control does not expose the whole system.</p></aside>
             </div>
-          </div>
-          <div class="system-card" aria-label="Storage trade-off">
-            <span>capacity + speed + durability + portability + cost</span>
-            <p>"Best storage" without a scenario is like "best shoe" without saying hiking, running or wedding.</p>
-          </div>
-        </section>
-
-        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-033">
-          <article class="why-card">
-            <h3>Why this matters</h3>
-            <p>CIE marking is strict with vague claims. "Efficient" or "better" usually needs a named characteristic and a scenario consequence.</p>
-          </article>
-          <article class="trap-card">
-            <h3>Common error</h3>
-            <p>Students often compare only speed. Capacity, durability, portability and cost can be the real deciding factors.</p>
-          </article>
-        </section>
-
-        <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-033">
-          <div class="section-title">
-            <p class="eyebrow">Warm-up hook</p>
-            <h2>Choose storage for a travel photographer: huge photo library, rough travel bag, limited budget and quick editing. Which feature matters most?</h2>
-          </div>
-          <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="capacity">Capacity: enough space for many large files</button>
-            <button class="choice-card" type="button" data-hook="durability">Durability: survives movement and knocks</button>
-            <button class="choice-card" type="button" data-hook="speed">Speed: loads and saves large files quickly</button>
-            <button class="choice-card" type="button" data-hook="cost">Cost: affordable per GB</button>
-          </div>
-          <div class="feedback" id="hookFeedback" aria-live="polite">
-            Click one feature. Good answers often combine two features, then explain the trade-off.
+            <figure class="v2-visual">
+              <img src="../assets/diagrams/stage10-infographics/stage10-lesson-069-limits.jpg" alt="Firewall limit Allowed traffic can still carry attacks, and rules may be misconfigured.. Proxy limit Encrypted traffic and unmanaged devices can reduce visibility if not configured properly.. Monitoring limit Alerts need review and response; too many false positives can be ignored.. Layering Use with authentication, permissions, patching, encryption and user training." loading="lazy" />
+              <figcaption>Controls reduce risk but have limits. One maintained explanation is shown as an image on larger screens and as text on small screens.</figcaption>
+              <div class="v2-mobile-visual-text" aria-label="Mobile text alternative"><ul><li>Firewall limit Allowed traffic can still carry attacks, and rules may be misconfigured.</li><li>Proxy limit Encrypted traffic and unmanaged devices can reduce visibility if not configured properly.</li><li>Monitoring limit Alerts need review and response; too many false positives can be ignored.</li><li>Layering Use with authentication, permissions, patching, encryption and user training.</li></ul></div>
+            </figure>
           </div>
         </section>
 
-        <section class="panel" id="criteria" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-033">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 1</p>
-            <h2>The five core characteristics</h2>
-          </div>
-          <div class="criteria-grid">
-            <article><strong>Capacity</strong><span>How much data can be stored, usually measured in GB or TB.</span></article>
-            <article><strong>Speed</strong><span>How quickly data can be read or written; affects startup, loading and transfer.</span></article>
-            <article><strong>Durability</strong><span>How well the device resists damage, wear, shock, scratches or environmental conditions.</span></article>
-            <article><strong>Portability</strong><span>How easy it is to carry, remove, connect and use between devices.</span></article>
-            <article><strong>Cost</strong><span>Price of the device and cost per unit of storage; not always the same thing.</span></article>
-          </div>
-          <div class="callout">Chinese support: capacity = 容量；speed = 速度；durability = 耐用性；portability = 便携性；cost per GB = 每 GB 成本。</div>
+        <section class="v2-panel" id="practice">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 3 | select by learner need</p><h2>Practice by question type</h2></div>
+          <div class="v2-question-list"><article class="v2-question" data-question-id="Q-L033-01" data-semantic-fingerprint="S6.03+S6.06|authentication-encryption-and-network-protection|describe|firewall-protect-both-stand|written|explain">
+              <div class="v2-question-head"><span class="v2-badge">describe</span><span class="v2-badge">explain</span><span class="v2-badge difficulty">foundation</span><span class="v2-badge">6 marks</span></div>
+              <p><strong>Question 1.</strong> Describe how a firewall can protect both a stand-alone PC and a network, then explain two limitations that require other security measures.</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> firewall compares traffic/connection information with configured rules; allows/blocks/rejects/logs according to a rule; host firewall protects one PC; network firewall protects a network boundary; allowed traffic or misconfiguration limitation; matching additional measure such as anti-virus, authentication, access rights or user training</p><p><strong>Marking guidance:</strong> Do not claim that a firewall removes viruses, detects every malicious payload or makes a computer system completely secure.</p><p><strong>Common error:</strong> For the command word describe, perform that exact action; do not replace it with an unrelated fact.</p></div></details>
+            </article><article class="v2-question" data-question-id="Q-L033-02" data-semantic-fingerprint="S6.03+S6.06|authentication-encryption-and-network-protection|apply|what-purpose-user-account|written|recall">
+              <div class="v2-question-head"><span class="v2-badge">apply</span><span class="v2-badge">recall</span><span class="v2-badge difficulty">application</span><span class="v2-badge">2 marks</span></div>
+              <p><strong>Question 2.</strong> What is the purpose of a user account?</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> It provides a distinct identity for authentication, access control and accountability.</p><p><strong>Marking guidance:</strong> Award one mark for each distinct, technically accurate point or method step.</p><p><strong>Common error:</strong> Do not repeat the same point in different words; each mark needs a separate idea or method step.</p></div></details>
+            </article><article class="v2-question" data-question-id="Q-L033-03" data-semantic-fingerprint="S6.03+S6.06|authentication-encryption-and-network-protection|apply|does-successful-decide-every|written|recall">
+              <div class="v2-question-head"><span class="v2-badge">apply</span><span class="v2-badge">recall</span><span class="v2-badge difficulty">transfer</span><span class="v2-badge">2 marks</span></div>
+              <p><strong>Question 3.</strong> Does successful authentication decide every permitted action?</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> No. Authorisation/access rights separately decide what the authenticated user may access or do.</p><p><strong>Marking guidance:</strong> Award one mark for each distinct, technically accurate point or method step.</p><p><strong>Common error:</strong> Do not copy the worked example unchanged; transfer the method and check it against the new context.</p></div></details>
+            </article></div>
+          <div class="v2-paper-refs">
+          <h3>Related past-paper indexes</h3>
+          <table><thead><tr><th>Reference</th><th>Marks</th><th>Command word</th><th>Question type</th></tr></thead>
+          <tbody><tr><td>9618/12/S/24 Q3(b)</td><td>4</td><td>complete</td><td>recall</td></tr><tr><td>9618/12/S/24 Q3(i)</td><td>3</td><td>describe</td><td>explain</td></tr><tr><td>9618/12/S/24 Q3(ii)</td><td>3</td><td>describe</td><td>explain</td></tr><tr><td>9618/13/S/23 Q6(a)</td><td>5</td><td>explain</td><td>explain</td></tr></tbody></table>
+          <p class="v2-copyright-note">Index only: Cambridge question and mark-scheme wording is not reproduced on this public course page.</p>
+        </div>
         </section>
 
-        <!-- stage10-explanation:start criteria -->
-        <section class="panel explanation-panel" id="explanation-criteria" data-explains="criteria" data-explanation-kind="mechanism" aria-labelledby="explanation-criteria-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-033">
-          <h2 class="explanation-sr-only" id="explanation-criteria-title">The five core characteristics</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-033-criteria.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining The five core characteristics with a structured visual model." />
-            <figcaption class="explanation-sr-only">The five core characteristics: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Capacity How much data can be stored, usually measured in GB or TB.</li><li><strong>Lesson fact:</strong> Speed How quickly data can be read or written; affects startup, loading and transfer.</li><li><strong>Lesson fact:</strong> Durability How well the device resists damage, wear, shock, scratches or environmental conditions.</li><li><strong>Lesson fact:</strong> Portability How easy it is to carry, remove, connect and use between devices.</li><li><strong>Lesson fact:</strong> Cost Price of the device and cost per unit of storage; not always the same thing.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end criteria -->
-        <section class="panel" id="tradeoffs" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-033">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 2</p>
-            <h2>Trade-offs by common storage device</h2>
-          </div>
-          <div class="device-table" role="table" aria-label="Storage characteristics comparison">
-            <div class="table-row table-head" role="row">
-              <div role="columnheader">Device</div>
-              <div role="columnheader">Strengths</div>
-              <div role="columnheader">Weaknesses</div>
-              <div role="columnheader">Suitable when...</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">HDD</div>
-              <div role="cell">High capacity; low cost per GB.</div>
-              <div role="cell">Moving parts; slower; less shock-resistant than SSD.</div>
-              <div role="cell">Large storage is needed cheaply and portability is less critical.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">SSD</div>
-              <div role="cell">Fast; durable; no moving parts; low power.</div>
-              <div role="cell">Often higher cost per GB than HDD.</div>
-              <div role="cell">Speed and durability matter, especially in laptops.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Magnetic tape</div>
-              <div role="cell">Very high capacity; low cost for archives.</div>
-              <div role="cell">Slow sequential access; not convenient for frequent random access.</div>
-              <div role="cell">Huge backups are rarely accessed.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Optical disc</div>
-              <div role="cell">Cheap removable media; useful for fixed offline copies.</div>
-              <div role="cell">Lower capacity; slower; can scratch.</div>
-              <div role="cell">Data rarely changes and low-cost distribution matters.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">USB flash / memory card</div>
-              <div role="cell">Very portable and removable; no moving parts.</div>
-              <div role="cell">Small devices can be lost; speed and quality vary.</div>
-              <div role="cell">Files need to be moved between devices or used in cameras/phones.</div>
-            </div>
-          </div>
+        <section class="v2-panel" id="summary">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 4 | close when ready</p><h2>Summary and exam reminders</h2></div>
+          <div class="v2-summary-grid"><div><h3>Summary</h3><ul class="v2-summary-list"><li>Define authentication, encryption and network protection with the exact technical vocabulary expected by the syllabus.</li><li>Use the lesson method on a fresh context and show the intermediate decision, representation or calculation.</li><li>Match the shape of the answer to the command word and the available marks.</li><li>Check the final answer against the scenario instead of repeating a memorised sentence.</li></ul></div><div class="v2-error"><h3>Common error to correct</h3><p>Students often propose encryption for every problem. Correction: encryption protects confidentiality but does not fix poor permissions, phishing or missing backups.</p></div></div>
+          <div class="v2-tip-box"><h3>Exam technique</h3><ul><li>Follow the command word: state gives a fact; explain links a cause to a consequence; compare covers both sides.</li><li>Match the number of independent points or method steps to the available marks.</li><li>For authentication, encryption and network protection, use the exact technical term before applying it to the scenario.</li></ul></div>
         </section>
 
-        <!-- stage10-explanation:start tradeoffs -->
-        <section class="panel explanation-panel" id="explanation-tradeoffs" data-explains="tradeoffs" data-explanation-kind="mechanism" aria-labelledby="explanation-tradeoffs-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-033">
-          <h2 class="explanation-sr-only" id="explanation-tradeoffs-title">Trade-offs by common storage device</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-033-tradeoffs.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Trade-offs by common storage device with a structured visual model." />
-            <figcaption class="explanation-sr-only">Trade-offs by common storage device: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Strengths</li><li><strong>Lesson fact:</strong> Weaknesses</li><li><strong>Lesson fact:</strong> Suitable when...</li><li><strong>Lesson fact:</strong> High capacity; low cost per GB.</li><li><strong>Lesson fact:</strong> Moving parts; slower; less shock-resistant than SSD.</li><li><strong>Lesson fact:</strong> Large storage is needed cheaply and portability is less critical.</li><li><strong>Lesson fact:</strong> Fast; durable; no moving parts; low power.</li><li><strong>Lesson fact:</strong> Often higher cost per GB than HDD.</li><li><strong>Lesson fact:</strong> Speed and durability matter, especially in laptops.</li><li><strong>Lesson fact:</strong> Magnetic tape</li><li><strong>Lesson fact:</strong> Very high capacity; low cost for archives.</li><li><strong>Lesson fact:</strong> Slow sequential access; not convenient for frequent random access.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end tradeoffs -->
-        <section class="panel" id="answer" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-033">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 3</p>
-            <h2>The answer pattern: choice -> characteristic -> context -> consequence</h2>
-          </div>
-          <div class="answer-pattern">
-            <div><strong>Choice</strong><span>Use an SSD</span></div>
-            <div><strong>Characteristic</strong><span>because it has fast access and no moving parts</span></div>
-            <div><strong>Context</strong><span>for a laptop carried to school each day</span></div>
-            <div><strong>Consequence</strong><span>so programs load quickly and it is less likely to be damaged by knocks</span></div>
-          </div>
-          <div class="callout">Weak: "SSD is better." Strong: "SSD is suitable because fast access reduces loading time and no moving parts improves durability in a portable laptop."</div>
-        </section>
-
-        <!-- stage10-explanation:start answer -->
-        <section class="panel explanation-panel" id="explanation-answer" data-explains="answer" data-explanation-kind="mechanism" aria-labelledby="explanation-answer-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-033">
-          <h2 class="explanation-sr-only" id="explanation-answer-title">The answer pattern: choice -&gt; characteristic -&gt; context -&gt; consequence</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-033-answer.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining The answer pattern: choice -&gt; characteristic -&gt; context -&gt; consequence with a structured visual model." />
-            <figcaption class="explanation-sr-only">The answer pattern: choice -&gt; characteristic -&gt; context -&gt; consequence: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Choice Use an SSD</li><li><strong>Lesson fact:</strong> Characteristic because it has fast access and no moving parts</li><li><strong>Lesson fact:</strong> Context for a laptop carried to school each day</li><li><strong>Lesson fact:</strong> Consequence so programs load quickly and it is less likely to be damaged by knocks</li><li><strong>Lesson fact:</strong> Weak: &quot;SSD is better.&quot; Strong: &quot;SSD is suitable because fast access reduces loading time and no moving parts improves durability in a portable laptop.&quot;</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end answer -->
-        <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-033">
-          <div class="section-title">
-            <p class="eyebrow">Interactive tool</p>
-            <h2>Choose by priority</h2>
-          </div>
-          <div class="converter-grid">
-            <label>
-              Scenario
-              <select id="scenarioInput">
-                <option value="budget">Store 10 TB of video as cheaply as possible</option>
-                <option value="mobile">Run applications on a laptop carried every day</option>
-                <option value="archive">Keep huge backups for years, rarely accessed</option>
-                <option value="transfer">Move small files between school computers</option>
-                <option value="distribution">Distribute fixed read-only content cheaply</option>
-                <option value="camera">Store photos on a small removable device inside a camera</option>
-              </select>
-            </label>
-            <button type="button" id="chooseBtn">Recommend</button>
-          </div>
-          <div class="result-box" id="componentResult" aria-live="polite"></div>
-          <div class="method-box" id="componentMethod"></div>
-        </section>
-
-        <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-033">
-          <div class="section-title">
-            <p class="eyebrow">Worked examples</p>
-            <h2>Trade-off answers in exam style</h2>
-          </div>
-          <div class="example-tabs" role="tablist" aria-label="Worked examples">
-            <button class="tab active" type="button" data-example="laptop">Laptop</button>
-            <button class="tab" type="button" data-example="backup">Backup</button>
-            <button class="tab" type="button" data-example="video">Video editor</button>
-          </div>
-          <article class="example-box" id="exampleBox"></article>
-        </section>
-
-        <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-033">
-          <div class="section-title">
-            <p class="eyebrow">Your turn</p>
-            <h2>Practice with instant checking</h2>
-          </div>
-          <div class="practice-list" id="practiceList"></div>
-          <button class="primary-button" type="button" id="checkPractice">Check practice</button>
-          <div class="feedback" id="practiceFeedback" aria-live="polite"></div>
-        </section>
-
-        <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-033">
-          <div class="section-title">
-            <p class="eyebrow">Mistake debugging</p>
-            <h2>Fix the vague comparison</h2>
-          </div>
-          <div class="mistake-grid">
-            <article>
-              <p class="wrong">"SSD is more efficient than HDD."</p>
-              <button class="answer-toggle" type="button" data-answer="mistake1">Show correction</button>
-              <p class="answer" id="mistake1">Say what "efficient" means. For example: SSD has faster access and no moving parts, so applications load faster and the laptop is less likely to be damaged by knocks.</p>
-            </article>
-            <article>
-              <p class="wrong">"Tape is bad because it is slow."</p>
-              <button class="answer-toggle" type="button" data-answer="mistake2">Show correction</button>
-              <p class="answer" id="mistake2">Tape can be suitable for huge backups because it has high capacity and low cost. Slow sequential access is acceptable if data is rarely restored.</p>
-            </article>
-          </div>
-        </section>
-
-        <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-033">
-          <div class="section-title">
-            <p class="eyebrow">Exam-style questions</p>
-            <h2>Questions with expandable MS</h2>
-            <p>Attempt first, then expand the mark scheme. Credit depends on explicit characteristics and scenario-linked consequences.</p>
-          </div>
-          <div class="exam-list" id="examList"></div>
-        </section>
-
-        <section class="panel summary-panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-033">
-          <div class="section-title">
-            <p class="eyebrow">Summary</p>
-            <h2>Characteristics decide suitability</h2>
-          </div>
-          <div class="summary-grid">
-            <div><strong>Capacity</strong><span>Enough space for current and future data.</span></div>
-            <div><strong>Speed</strong><span>Read/write access affects loading, saving and transfer.</span></div>
-            <div><strong>Durability</strong><span>Resistance to shock, scratches, wear or damage.</span></div>
-            <div><strong>Portability</strong><span>Ease of carrying, removing and using between devices.</span></div>
-            <div><strong>Cost</strong><span>Device price and cost per GB.</span></div>
-            <div><strong>Exam rule</strong><span>Characteristic plus context plus consequence earns stronger credit.</span></div>
-          </div>
-        </section>
-
-        <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
-          <div class="section-title">
-            <p class="eyebrow">Homework</p>
-            <h2>Clear tasks</h2>
-          </div>
-          <ol class="homework-list">
-            <li>Create a ranking table for HDD, SSD, tape, optical disc and USB flash using the five characteristics.</li>
-            <li>Write a 5-mark answer recommending storage for a school video archive and an active editing workstation.</li>
-            <li>Rewrite three vague phrases: "better", "more efficient", "more reliable" into precise storage explanations.</li>
-            <li>Write one trade-off sentence using "however" about SSD and HDD.</li>
-          </ol>
-          <button class="answer-toggle" type="button" data-answer="homeworkAnswers">Show homework guidance</button>
-          <div class="answer-panel" id="homeworkAnswers">
-            <p><strong>Ranking:</strong> use relative words such as high/medium/low and include a reason, not just ticks.</p>
-            <p><strong>Archive/editing:</strong> HDD or tape may suit large low-cost archive storage; SSD suits active editing because speed matters.</p>
-            <p><strong>Vague phrases:</strong> replace with named characteristics such as read/write speed, shock resistance or cost per GB.</p>
-            <p><strong>Trade-off:</strong> SSD is faster and more durable; however, HDD may offer more capacity for the same cost.</p>
-          </div>
-        </section>
+        <nav class="v2-bottom-nav" aria-label="Previous and next lesson"><a href="../lesson-032/" >Previous lesson</a><a href="../lesson-034/" >Next lesson</a></nav>
       </div>
     </main>
-
-    <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=3"></script>
-    <script src="../lesson-toolbar.js?v=3"></script>
-    <script src="../stage7-accessibility.js?v=4"></script>
+    <script src="../course-v2.js?v=1"></script>
   </body>
 </html>

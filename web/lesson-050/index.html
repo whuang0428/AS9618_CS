@@ -3,495 +3,84 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 050 | Bit manipulation with masks and shifts</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <title>AS9618 Lesson 050 | Sequence, selection and iteration</title>
     <link rel="icon" href="data:" />
-    <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
+    <link rel="stylesheet" href="../course-v2.css?v=3" />
   </head>
-  <body>
+  <body data-course-version="2" data-lesson-id="050" data-syllabus-ids="S9.06">
     <a class="skip-link" href="#main-content">Skip to main content</a>
-    <header class="topbar">
-      <div>
-        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 4</p>
-        <h1>Bit manipulation with masks and shifts</h1>
-      </div>
-      <div class="action-panel" aria-label="Page controls">
-        <a class="course-home-link" href="../">Course home</a>
-        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
-      </div>
+    <header class="v2-topbar">
+      <div><p class="v2-eyebrow">Cambridge AS9618 | Paper 2 | Section 9: Algorithm design and problem-solving</p><h1>Sequence, selection and iteration</h1></div>
+      <nav class="v2-actions" aria-label="Lesson actions"><a href="../">Course home</a><a href="../assessments/">Assessment bank</a><button type="button" id="printLesson">Print</button></nav>
     </header>
-
-    <main class="layout" id="main-content" tabindex="-1">
-      <aside class="lesson-nav" aria-label="Lesson navigation">
-        <a href="#overview">Overview</a>
-        <a href="#hook">Warm-up</a>
-        <a href="#concept">Core idea</a>
-        <a href="#clock">Clock speed</a>
-        <a href="#cores">Cores</a>
-        <a href="#cache">Cache</a>
-        <a href="#word">Word length</a>
-        <a href="#limits">Limits</a>
-        <a href="#tool">Performance tool</a>
-        <a href="#examples">Examples</a>
-        <a href="#practice">Practice</a>
-        <a href="#debug">Debugging</a>
-        <a href="#exam">Exam-style</a>
-        <a href="#summary">Summary</a>
-        <a href="#homework">Homework</a>
-        <a href="#stage2-completion">Core syllabus content</a>
-      </aside>
-
-      <div class="lesson-content">
-        <!-- remediation-v2-stage3-scope:start -->
-        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.</p></aside>
-        <!-- remediation-v2-stage3-scope:end -->
-
-<!-- stage2-completion:start -->
-        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus content</p>
-            <h2>Bit manipulation with masks and shifts</h2>
-          </div>
-          <div class="stage2-explanation">
-            <p>A bitwise AND mask can test or clear selected bits; an OR mask can set selected bits; an XOR mask can toggle selected bits. These operations are used to monitor and control individual flags without changing unrelated bits.</p>
-            <p>LSL is a logical left shift and LSR is a logical right shift. Distinguish logical shifts from arithmetic shifts and cyclic shifts: a logical shift inserts zero, an arithmetic right shift preserves the sign bit, and a cyclic shift wraps the bit that leaves one end back to the other.</p>
-          </div>
-          <article class="stage2-example">
-            <h3>Worked example: Test, set, clear and toggle one flag</h3>
-            <p>For Status = 10110100, an AND mask tests a selected bit, an OR mask sets it, an AND mask with a zero at that position clears it, and an XOR mask toggles it. LSL moves bits left; LSR moves them right and fills with zero.</p>
-          </article>
+    <main class="v2-shell" id="main-content" tabindex="-1">
+      <nav class="v2-toc" aria-label="Lesson contents"><strong>Lesson 050</strong><a href="#overview">Overview</a><a href="#prerequisite">Prerequisite</a><a href="#explanation">Explanation</a><a href="#practice">Practice</a><a href="#summary">Summary</a></nav>
+      <div class="v2-content">
+        <section class="v2-hero" id="overview">
+          <div><p class="v2-eyebrow">Flexible-depth lesson</p><h2>Sequence, selection and iteration</h2><p>S9.06 | Select what to omit, teach briefly or explore in depth.</p></div>
+          <div class="v2-time-grid" aria-label="Available lesson depth"><div><strong>Quick</strong><span>diagnose + essentials</span></div><div><strong>Full</strong><span>complete explanation</span></div><div><strong>Deep</strong><span>prerequisites + extension</span></div><div><strong>Choose</strong><span>practice by need</span></div></div>
         </section>
 
-        <!-- stage10-explanation:start shifts -->
-        <section class="panel explanation-panel" id="explanation-shifts" data-explains="shifts" data-explanation-kind="comparison" aria-labelledby="explanation-shifts-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="shifts">
-          <h2 class="explanation-sr-only" id="explanation-shifts-title">Binary shifts: logical, arithmetic, cyclic</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-051-shifts.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Binary shifts: logical, arithmetic, cyclic through a cause-and-effect diagram." />
-            <figcaption class="explanation-sr-only">Binary shifts: logical, arithmetic, cyclic: mechanism, reason, result, analogy and boundary condition.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Mechanism:</strong> Every shown input and stored result contains exactly eight bits.</li><li><strong>Reason:</strong> Logical shifts insert zero; logical left 10110011 becomes 01100110 and logical right becomes 01011001.</li><li><strong>Result:</strong> Arithmetic left 10110011 becomes 01100110; arithmetic right copies sign bit 1 and becomes 11011001.</li><li><strong>Additional fact:</strong> Cyclic left rotates the outgoing bit to give 01100111; cyclic right gives 11011001.</li><li><strong>Additional fact:</strong> Unsigned logical-left overflow and signed arithmetic-left overflow both occur here; rotations do not use an overflow label.</li></ol>
-
-            <p><strong>Analogy:</strong> Three conveyor rules move the same row but handle the end position differently.</p>
-            <p><strong>Boundary:</strong> State the fixed width, direction and shift type before calculating.</p>
-          </div>
+        <section class="v2-panel v2-route-menu" aria-labelledby="route-heading">
+          <div class="v2-heading"><p class="v2-eyebrow">Teacher choice</p><h2 id="route-heading">Choose the depth for this group</h2></div>
+          <div class="v2-route-grid"><article><h3>Quick route</h3><p>Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.</p></article><article><h3>Full route</h3><p>Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.</p></article><article><h3>Deep route</h3><p>Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.</p></article></div>
         </section>
-        <!-- stage10-explanation:end shifts -->
-        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus practice</p>
-            <h2>Bit manipulation with masks and shifts: apply and assess</h2>
-          </div>
-          <div class="stage2-practice">
-            <h3>Targeted practice</h3>
-            <article class="stage2-question">
-              <p><strong>1.</strong> Which mask operation sets selected bits?</p>
-              <details><summary>Show answer</summary><p>Bitwise OR.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>2.</strong> Which operation toggles selected bits?</p>
-              <details><summary>Show answer</summary><p>Bitwise XOR.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>3.</strong> What is inserted by a logical shift?</p>
-              <details><summary>Show answer</summary><p>Zero bits.</p></details>
-            </article>
-          </div>
-          <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>6 marks</span></div>
-            <p>Explain how AND, OR and XOR masks test, clear, set and toggle control flags, then apply one LSL and one LSR.</p>
-            <details>
-              <summary>Show MS</summary>
-              <table class="mark-scheme-table">
-                <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
-                <tbody>
-                  <tr><td>AND test/clear</td><td>Do not treat logical, arithmetic and cyclic shifts as identical.</td><td>1</td></tr>
-                  <tr><td>OR set</td><td></td><td>1</td></tr>
-                  <tr><td>XOR toggle</td><td></td><td>1</td></tr>
-                  <tr><td>correct LSL</td><td></td><td>1</td></tr>
-                  <tr><td>correct LSR</td><td></td><td>1</td></tr>
-                  <tr><td>monitor/control context</td><td></td><td>1</td></tr>
-                </tbody>
-              </table>
-            </details>
-          </article>
-        </section>
-        <!-- stage2-completion:end -->
 
-<section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-050">
-          <div class="hero-copy">
-            <p class="lesson-meta">Lesson 050 | 45 minutes | Paper 1 Section 4 | Processor fundamentals</p>
-            <h2>Processor performance depends on several interacting factors.</h2>
-            <p>
-              The official factors are processor type and number of cores, bus width,
-              clock speed and cache memory. Each can contribute to performance, but
-              only when the architecture, memory system, workload and software can benefit.
-            </p>
-            <div class="objective-grid" aria-label="Learning objectives">
-              <div><strong>Explain</strong><span>how processor type, cores, bus width, clock speed and cache affect performance</span></div>
-              <div><strong>Judge</strong><span>when a factor may not improve performance</span></div>
-              <div><strong>Write</strong><span>Cambridge-style cause-and-consequence answers</span></div>
+        <section class="v2-panel" id="prerequisite">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 1 | optional depth</p><h2>Prerequisite knowledge and quick diagnostic</h2></div>
+          <div class="v2-diagnostic"><p>Recall S9.03 before starting this lesson.</p></div>
+          <p>Give one accurate definition or method step before continuing. If it is missing, revisit only that prerequisite.</p>
+          <details class="v2-prerequisite-detail"><summary>Open optional prerequisite refresher</summary><ul><li>An algorithm is a solution to a problem expressed as a sequence of defined steps; the definition requires both the problem-solving purpose and the defined sequence.</li><li>Understand what an algorithm is.</li></ul></details>
+        </section>
+
+        <section class="v2-panel" id="explanation">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 2 | deliberately over-complete</p><h2>Knowledge explanation</h2></div>
+          <h3>Learning objectives</h3><ul class="v2-objectives"><li>Understand and use sequence, selection and iteration.</li></ul>
+          <details class="v2-concept-menu"><summary>Open the concept checklist and choose what to teach</summary><ul><li>sequence</li><li>selection</li><li>iteration</li></ul></details>
+          <div class="v2-explanation-grid">
+            <div>
+              <article class="v2-core-facts"><h3>Detailed explanation</h3><p class="v2-teacher-note">Teach all points, or select only the ones this group needs. The list is intentionally fuller than a fixed lesson slot.</p><ul class="v2-facts"><li>The three basic algorithm constructs are sequence, selection and iteration (repetition); students must recognise and use each construct, including combinations of constructs.</li><li>Sequence executes defined steps once in order. Selection chooses one of two or more paths using a condition. Iteration repeats one or more steps using a count or a condition.</li><li>A complete algorithm often combines the three constructs: use sequence to initialise and input, iteration to process repeated items, and selection inside the loop when each item needs a decision.</li><li>Choose the construct from the required behaviour. A known number of repetitions suggests count-controlled iteration; a stopping rule based on data suggests condition-controlled iteration.</li><li>Algorithm design review: define an algorithm as a solution expressed as a sequence of defined steps; use abstraction to retain essential details in an abstract model; use decomposition to express the problem as connected modules; and choose meaningful identifiers recorded in an identifier table.</li><li>Solution review: design with input-process-output, use sequence, selection and iteration, document the same algorithm in structured English, a flowchart or pseudocode, and convert between the specified representations without changing its control flow.</li><li>Development review: use stepwise refinement until steps are programmable, and construct and interpret logic statements that define decisions, loop conditions or Boolean values. Core answers must not replace these requirements with tracing, Java syntax or vague planning advice.</li></ul></article>
+              <article class="v2-example"><h3>Worked example</h3><p>Count five passing marks: Sequence sets PassCount to 0. A FOR loop iterates through five marks. Inside the loop, selection tests Mark = 50 and increments PassCount only on the true path. Sequence after the loop outputs PassCount.</p></article>
+              <aside class="v2-extension"><h3>Beyond syllabus / 延伸知识（不要求背诵）</h3><p>the same algorithm can be expressed in many programming languages; its logic should remain independent of syntax.</p></aside>
             </div>
-          </div>
-          <div class="performance-card" aria-label="Performance factors sketch">
-            <div class="perf-stack">
-              <span>Processor type: architecture and execution design</span>
-              <span>Cores: parallel execution</span>
-              <span>Bus width: bits transferred per transfer</span>
-              <span>Clock speed: cycles per second</span>
-              <span>Cache: faster repeated access</span>
-            </div>
-            <p>Performance is a team sport. One superstar part can still meet a bottleneck.</p>
+            <figure class="v2-visual">
+              <img src="../assets/diagrams/stage10-infographics/stage10-lesson-101-combining.jpg" alt="Combining structures. 1 Use sequence to initialise variables and read inputs.. 2 Use iteration when the same action happens repeatedly.. 3 Use selection inside the loop when each item needs a decision.. 4 Use sequence after the loop to calculate or output final results." loading="lazy" />
+              <figcaption>Real algorithms usually combine the three structures. One maintained explanation is shown as an image on larger screens and as text on small screens.</figcaption>
+              <div class="v2-mobile-visual-text" aria-label="Mobile text alternative"><ul><li>Combining structures</li><li>1 Use sequence to initialise variables and read inputs.</li><li>2 Use iteration when the same action happens repeatedly.</li><li>3 Use selection inside the loop when each item needs a decision.</li><li>4 Use sequence after the loop to calculate or output final results.</li></ul></div>
+            </figure>
           </div>
         </section>
 
-        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-050">
-          <article class="why-card">
-            <h3>Why this matters</h3>
-            <p>Exam answers must explain mechanism and limitation. Vague phrases like "better performance" are usually not enough.</p>
-          </article>
-          <article class="trap-card">
-            <h3>Common error</h3>
-            <p>Do not rank CPUs using one number only. A higher clock speed does not guarantee a faster system in every task.</p>
-          </article>
+        <section class="v2-panel" id="practice">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 3 | select by learner need</p><h2>Practice by question type</h2></div>
+          <div class="v2-question-list"><article class="v2-question" data-question-id="Q-L050-01" data-semantic-fingerprint="S9.06|sequence-selection-and-iteration|explain|develop-short-algorithm-inputs|pseudocode|explain">
+              <div class="v2-question-head"><span class="v2-badge">explain</span><span class="v2-badge">explain</span><span class="v2-badge difficulty">foundation</span><span class="v2-badge">4 marks</span></div>
+              <p><strong>Question 1.</strong> Develop a short algorithm that inputs ten marks and outputs how many are passes, labelling where sequence, selection and iteration are used.</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> sequence initialises the pass count; iteration processes exactly ten marks; selection tests each mark against the pass condition; sequence outputs the final count after the loop</p><p><strong>Marking guidance:</strong> Do not award a construct name unless the stated algorithm uses it for the correct behaviour.</p><p><strong>Common error:</strong> For the command word explain, perform that exact action; do not replace it with an unrelated fact.</p></div></details>
+            </article><article class="v2-question" data-question-id="Q-L050-02" data-semantic-fingerprint="S9.06|sequence-selection-and-iteration|construct|construct-executes-steps-once|written|diagram">
+              <div class="v2-question-head"><span class="v2-badge">construct</span><span class="v2-badge">diagram</span><span class="v2-badge difficulty">application</span><span class="v2-badge">2 marks</span></div>
+              <p><strong>Question 2.</strong> Which construct executes steps once in a fixed order?</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> Sequence.</p><p><strong>Marking guidance:</strong> Award one mark for each distinct, technically accurate point or method step.</p><p><strong>Common error:</strong> Do not repeat the same point in different words; each mark needs a separate idea or method step.</p></div></details>
+            </article><article class="v2-question" data-question-id="Q-L050-03" data-semantic-fingerprint="S9.06|sequence-selection-and-iteration|construct|construct-chooses-between-pass|written|diagram">
+              <div class="v2-question-head"><span class="v2-badge">construct</span><span class="v2-badge">diagram</span><span class="v2-badge difficulty">transfer</span><span class="v2-badge">2 marks</span></div>
+              <p><strong>Question 3.</strong> Which construct chooses between Pass and Resit?</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> Selection.</p><p><strong>Marking guidance:</strong> Award one mark for each distinct, technically accurate point or method step.</p><p><strong>Common error:</strong> Do not copy the worked example unchanged; transfer the method and check it against the new context.</p></div></details>
+            </article></div>
+
         </section>
 
-        <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-050">
-          <div class="section-title">
-            <p class="eyebrow">Warm-up hook</p>
-            <h2>A laptop has twice as many cores. Will every program run twice as fast?</h2>
-            <p>Click the best answer. The CPU marketing department may be optimistic; the exam mark scheme is not.</p>
-          </div>
-          <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="depends">Not always: the program must be able to use the extra cores</button>
-            <button class="choice-card" type="button" data-hook="yes">Yes: twice the cores always means twice the speed</button>
-            <button class="choice-card" type="button" data-hook="cache">Only if cache is removed</button>
-            <button class="choice-card" type="button" data-hook="bus">Only if the data bus is removed</button>
-          </div>
-          <div class="feedback" id="hookFeedback" aria-live="polite">
-            Choose one. Performance answers need a cause, a consequence and a sensible condition.
-          </div>
+        <section class="v2-panel" id="summary">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 4 | close when ready</p><h2>Summary and exam reminders</h2></div>
+          <div class="v2-summary-grid"><div><h3>Summary</h3><ul class="v2-summary-list"><li>Define sequence, selection and iteration with the exact technical vocabulary expected by the syllabus.</li><li>Use the lesson method on a fresh context and show the intermediate decision, representation or calculation.</li><li>Match the shape of the answer to the command word and the available marks.</li><li>Check the final answer against the scenario instead of repeating a memorised sentence.</li></ul></div><div class="v2-error"><h3>Common error to correct</h3><p>Students often start coding before defining the output. Correction: an algorithm is easier to design when the required result is known first.</p></div></div>
+          <div class="v2-tip-box"><h3>Exam technique</h3><ul><li>Follow the command word: state gives a fact; explain links a cause to a consequence; compare covers both sides.</li><li>Match the number of independent points or method steps to the available marks.</li><li>For sequence, selection and iteration, use the exact technical term before applying it to the scenario.</li></ul></div>
         </section>
 
-        <section class="panel" id="concept" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-050">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 1</p>
-            <h2>Processor type and number of cores, bus width, clock speed and cache memory</h2>
-          </div>
-          <div class="concept-grid">
-            <article>
-              <strong>Processor type</strong>
-              <span>Architecture and execution design affect how much useful work is completed for a workload.</span>
-            </article>
-            <article>
-              <strong>Number of cores</strong>
-              <span>Processing units that can execute instructions independently, allowing parallel work.</span>
-            </article>
-            <article>
-              <strong>Bus width</strong>
-              <span>A wider data bus can transfer more bits in one transfer when the rest of the system can use them.</span>
-            </article>
-            <article>
-              <strong>Clock speed</strong>
-              <span>How many clock cycles the CPU can perform per second, commonly measured in Hz/GHz.</span>
-            </article>
-            <article>
-              <strong>Cache memory</strong>
-              <span>Small, fast memory storing frequently or recently used data and instructions close to the CPU.</span>
-            </article>
-          </div>
-          <div class="callout">Chinese support: processor type = 处理器类型；core = 核心；bus width = 总线宽度；clock speed = 时钟频率；cache = 高速缓存。</div>
-        </section>
-
-        <!-- stage10-explanation:start concept -->
-        <section class="panel explanation-panel" id="explanation-concept" data-explains="concept" data-explanation-kind="process" aria-labelledby="explanation-concept-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-050">
-          <h2 class="explanation-sr-only" id="explanation-concept-title">The official processor performance factors</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-050-concept.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining The official processor performance factors with a structured visual model." />
-            <figcaption class="explanation-sr-only">The official processor performance factors: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> The official performance factors are processor type and number of cores, bus width, clock speed and cache memory.</li><li><strong>Lesson fact:</strong> Processor type affects how much useful work can be completed for a workload, while more cores help only when work can run in parallel.</li><li><strong>Lesson fact:</strong> A wider bus transfers more bits per transfer; a higher clock speed provides more cycles per second; cache reduces slower main-memory accesses when required data or instructions are present.</li><li><strong>Lesson fact:</strong> No single factor guarantees that one computer will be faster for every program.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end concept -->
-        <section class="panel" id="clock" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-050">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 2</p>
-            <h2>Clock speed: more cycles per second</h2>
-          </div>
-          <div class="factor-grid">
-            <article>
-              <strong>Mechanism</strong>
-              <span>A higher clock speed means more fetch-decode-execute cycle steps can be started per second, if other parts keep up.</span>
-            </article>
-            <article>
-              <strong>Example</strong>
-              <span>3.6 GHz means 3.6 billion clock cycles per second, not automatically 3.6 billion completed programs.</span>
-            </article>
-            <article>
-              <strong>Limitation</strong>
-              <span>Memory access, heat, power use and CPU architecture can limit the real improvement.</span>
-            </article>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start clock -->
-        <section class="panel explanation-panel" id="explanation-clock" data-explains="clock" data-explanation-kind="process" aria-labelledby="explanation-clock-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-050">
-          <h2 class="explanation-sr-only" id="explanation-clock-title">Clock speed: more cycles per second</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-050-clock.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Clock speed: more cycles per second with a structured visual model." />
-            <figcaption class="explanation-sr-only">Clock speed: more cycles per second: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Mechanism</li><li><strong>Lesson fact:</strong> A higher clock speed means more fetch-decode-execute cycle steps can be started per second, if other parts keep up.</li><li><strong>Lesson fact:</strong> 3.6 GHz means 3.6 billion clock cycles per second, not automatically 3.6 billion completed programs.</li><li><strong>Lesson fact:</strong> Limitation</li><li><strong>Lesson fact:</strong> Memory access, heat, power use and CPU architecture can limit the real improvement.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end clock -->
-        <section class="panel" id="cores" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-050">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 3</p>
-            <h2>Cores: more independent processing units</h2>
-          </div>
-          <div class="compare-grid">
-            <article>
-              <h3>Where extra cores help</h3>
-              <ul>
-                <li>Several programs running at the same time.</li>
-                <li>Tasks that can be split into parallel threads.</li>
-                <li>Background tasks while a foreground task remains responsive.</li>
-              </ul>
-            </article>
-            <article>
-              <h3>Where extra cores may not help much</h3>
-              <ul>
-                <li>A single-threaded program that cannot be divided.</li>
-                <li>A task waiting for disk, network or memory.</li>
-                <li>Software that was not designed for parallel processing.</li>
-              </ul>
-            </article>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start cores -->
-        <section class="panel explanation-panel" id="explanation-cores" data-explains="cores" data-explanation-kind="process" aria-labelledby="explanation-cores-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-050">
-          <h2 class="explanation-sr-only" id="explanation-cores-title">Cores: more independent processing units</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-050-cores.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Cores: more independent processing units with a structured visual model." />
-            <figcaption class="explanation-sr-only">Cores: more independent processing units: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> One thread can execute on only one core at a time.</li><li><strong>Lesson fact:</strong> A single-threaded task cannot run its own instructions concurrently across several cores.</li><li><strong>Lesson fact:</strong> Other cores may still execute operating-system work or other processes; they are not necessarily idle.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end cores -->
-        <section class="panel" id="cache" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-050">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 4</p>
-            <h2>Cache: reduce slow memory access</h2>
-          </div>
-          <div class="cache-flow" aria-label="Cache access flow">
-            <div><strong>1. CPU requests data</strong><span>The CPU needs an instruction or data item.</span></div>
-            <div><strong>2. Cache checked first</strong><span>Cache is much faster than main memory.</span></div>
-            <div><strong>3. Cache hit</strong><span>If found, access is fast and the CPU waits less.</span></div>
-            <div><strong>4. Cache miss</strong><span>If not found, data is fetched from slower main memory and may be copied into cache.</span></div>
-          </div>
-          <div class="trap-card inline-card">
-            <h3>Common error</h3>
-            <p>Cache is not the same as RAM capacity. It is smaller, faster and used to reduce repeated slow access to main memory.</p>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start cache -->
-        <section class="panel explanation-panel" id="explanation-cache" data-explains="cache" data-explanation-kind="mechanism" aria-labelledby="explanation-cache-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-050">
-          <h2 class="explanation-sr-only" id="explanation-cache-title">Cache: reduce slow memory access</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-050-cache.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Cache: reduce slow memory access with a structured visual model." />
-            <figcaption class="explanation-sr-only">Cache: reduce slow memory access: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> 1. CPU requests data The CPU needs an instruction or data item.</li><li><strong>Lesson fact:</strong> 2. Cache checked first Cache is much faster than main memory.</li><li><strong>Lesson fact:</strong> 3. Cache hit If found, access is fast and the CPU waits less.</li><li><strong>Lesson fact:</strong> 4. Cache miss If not found, data is fetched from slower main memory and may be copied into cache.</li><li><strong>Lesson fact:</strong> Common error</li><li><strong>Lesson fact:</strong> Cache is not the same as RAM capacity. It is smaller, faster and used to reduce repeated slow access to main memory.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end cache -->
-        <section class="panel" id="word" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-050">
-          <div class="section-title">
-            <p class="eyebrow">Optional enrichment — not part of this syllabus performance-factor list</p>
-            <h2>Word length: bits processed as a unit</h2>
-          </div>
-          <div class="word-table" role="table" aria-label="Word length effects">
-            <div class="table-row table-head" role="row">
-              <div role="columnheader">Effect</div>
-              <div role="columnheader">Explanation</div>
-              <div role="columnheader">Exam-safe wording</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Larger values</div>
-              <div role="cell">More bits can represent larger numbers in one word.</div>
-              <div role="cell">A longer word can process larger data values in a single operation.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">More precision</div>
-              <div role="cell">More bits can support greater numeric precision where relevant.</div>
-              <div role="cell">Useful for calculations needing larger or more precise operands.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Addressing</div>
-              <div role="cell">In some architectures, word/register/address size can affect addressable memory.</div>
-              <div role="cell">Do not claim this without linking it to the architecture or address size.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Limitation</div>
-              <div role="cell">Longer word length alone does not make all programs faster.</div>
-              <div role="cell">The software and data type must benefit from the larger word.</div>
-            </div>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start word -->
-        <section class="panel explanation-panel" id="explanation-word" data-explains="word" data-explanation-kind="process" aria-labelledby="explanation-word-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-050">
-          <h2 class="explanation-sr-only" id="explanation-word-title">Word length: bits processed as a unit</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-050-word.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Word length: bits processed as a unit with a structured visual model." />
-            <figcaption class="explanation-sr-only">Word length: bits processed as a unit: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Explanation</li><li><strong>Lesson fact:</strong> Exam-safe wording</li><li><strong>Lesson fact:</strong> Larger values</li><li><strong>Lesson fact:</strong> More bits can represent larger numbers in one word.</li><li><strong>Lesson fact:</strong> A longer word can process larger data values in a single operation.</li><li><strong>Lesson fact:</strong> More precision</li><li><strong>Lesson fact:</strong> More bits can support greater numeric precision where relevant.</li><li><strong>Lesson fact:</strong> Useful for calculations needing larger or more precise operands.</li><li><strong>Lesson fact:</strong> Addressing</li><li><strong>Lesson fact:</strong> In some architectures, word/register/address size can affect addressable memory.</li><li><strong>Lesson fact:</strong> Do not claim this without linking it to the architecture or address size.</li><li><strong>Lesson fact:</strong> Limitation</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end word -->
-        <section class="panel" id="limits" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-050">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 6</p>
-            <h2>Performance is limited by bottlenecks</h2>
-          </div>
-          <div class="limit-grid">
-            <article><strong>Memory bottleneck</strong><span>A fast CPU still waits if data arrives slowly from memory.</span></article>
-            <article><strong>Software bottleneck</strong><span>Single-threaded code cannot fully use many cores.</span></article>
-            <article><strong>Heat and power</strong><span>Higher clock speed can require more power and produce more heat.</span></article>
-            <article><strong>Architecture</strong><span>Different CPU designs may do different amounts of work per clock cycle.</span></article>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start limits -->
-        <section class="panel explanation-panel" id="explanation-limits" data-explains="limits" data-explanation-kind="tradeoff" aria-labelledby="explanation-limits-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-050">
-          <h2 class="explanation-sr-only" id="explanation-limits-title">Performance is limited by bottlenecks</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-050-limits.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Performance is limited by bottlenecks with a structured visual model." />
-            <figcaption class="explanation-sr-only">Performance is limited by bottlenecks: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Memory bottleneck A fast CPU still waits if data arrives slowly from memory.</li><li><strong>Lesson fact:</strong> Software bottleneck Single-threaded code cannot fully use many cores.</li><li><strong>Lesson fact:</strong> Heat and power Higher clock speed can require more power and produce more heat.</li><li><strong>Lesson fact:</strong> Architecture Different CPU designs may do different amounts of work per clock cycle.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end limits -->
-        <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-050">
-          <div class="section-title">
-            <p class="eyebrow">Interactive tool</p>
-            <h2>Performance factor selector</h2>
-            <p>Select a scenario and see which factor is most relevant. This is not a benchmark; it is an exam-answer thinking tool.</p>
-          </div>
-          <div class="converter-grid">
-            <label>
-              Scenario
-              <select id="scenarioInput">
-                <option value="single">Single-threaded program doing one long calculation</option>
-                <option value="multi">Video export split into many parallel tasks</option>
-                <option value="loop">Program repeatedly reads the same array data</option>
-                <option value="large">Program works with very large integer values</option>
-                <option value="memory">CPU often waits for data from main memory</option>
-              </select>
-            </label>
-            <button type="button" id="simulateBtn">Analyse</button>
-          </div>
-          <div class="result-box" id="simulateResult" aria-live="polite"></div>
-          <div class="method-box" id="simulateMethod"></div>
-          <div class="reject-box" id="simulateTrap"></div>
-        </section>
-
-        <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-050">
-          <div class="section-title">
-            <p class="eyebrow">Worked examples</p>
-            <h2>Explain the factor and the condition</h2>
-          </div>
-          <div class="example-tabs" role="tablist" aria-label="Worked examples">
-            <button class="tab active" type="button" data-example="clock">Clock speed</button>
-            <button class="tab" type="button" data-example="cores">Cores</button>
-            <button class="tab" type="button" data-example="cache">Cache</button>
-            <button class="tab" type="button" data-example="word">Word length</button>
-          </div>
-          <article class="example-box" id="exampleBox"></article>
-        </section>
-
-        <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-050">
-          <div class="section-title">
-            <p class="eyebrow">5-minute quiz</p>
-            <h2>Practice with instant checking</h2>
-            <p>Short answers are accepted, but "faster" without the reason is still wearing a disguise.</p>
-          </div>
-          <div class="practice-list" id="practiceList"></div>
-        </section>
-
-        <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-050">
-          <div class="section-title">
-            <p class="eyebrow">Mistake debugging</p>
-            <h2>Fix the performance claim</h2>
-          </div>
-          <div class="mistake-grid" id="mistakeList"></div>
-        </section>
-
-        <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-050">
-          <div class="section-title">
-            <p class="eyebrow">Exam-style questions</p>
-            <h2>Cambridge-style questions with expandable mark schemes</h2>
-            <p>These are original Cambridge-style questions. MS notes are strict about mechanism, scenario and limitations.</p>
-          </div>
-          <div class="exam-list" id="examList"></div>
-        </section>
-
-        <section class="panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-050">
-          <div class="section-title">
-            <p class="eyebrow">Summary</p>
-            <h2>Explain performance with conditions</h2>
-          </div>
-          <div class="summary-grid">
-            <div><strong>Clock speed</strong><span>More cycles per second can allow more instructions to be processed.</span></div>
-            <div><strong>Cores</strong><span>More cores help when work can be run in parallel.</span></div>
-            <div><strong>Cache</strong><span>Fast memory reduces repeated access to slower main memory.</span></div>
-            <div><strong>Word length</strong><span>More bits can be processed as a unit for suitable data.</span></div>
-            <div><strong>Bottleneck</strong><span>The slowest limiting part may reduce the real benefit.</span></div>
-            <div><strong>Exam habit</strong><span>State factor, mechanism, condition and consequence.</span></div>
-          </div>
-        </section>
-
-        <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
-          <div class="section-title">
-            <p class="eyebrow">Homework</p>
-            <h2>Turn vague performance claims into mark-worthy explanations</h2>
-          </div>
-          <ol class="homework-list">
-            <li>Define processor type, number of cores, bus width, clock speed and cache memory in one sentence each.</li>
-            <li>Write a 4-mark answer explaining why more cores may not speed up a single-threaded program.</li>
-            <li>Explain how cache can improve performance when a program repeatedly accesses the same data.</li>
-            <li>Correct this sentence: "A 4 GHz CPU is always faster than a 3 GHz CPU."</li>
-            <li>Choose one real task, such as gaming, video export or web browsing, and identify the most likely performance bottleneck.</li>
-          </ol>
-        </section>
+        <nav class="v2-bottom-nav" aria-label="Previous and next lesson"><a href="../lesson-049/" >Previous lesson</a><a href="../lesson-051/" >Next lesson</a></nav>
       </div>
     </main>
-    <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=3"></script>
-    <script src="../lesson-toolbar.js?v=3"></script>
-    <script src="../stage7-accessibility.js?v=4"></script>
+    <script src="../course-v2.js?v=1"></script>
   </body>
 </html>

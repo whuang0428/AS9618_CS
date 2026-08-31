@@ -3,314 +3,89 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 062 | Section 5 review: precise software comparisons</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <title>AS9618 Lesson 062 | Why files are needed and text-file pseudocode</title>
     <link rel="icon" href="data:" />
-    <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
+    <link rel="stylesheet" href="../course-v2.css?v=3" />
   </head>
-  <body>
+  <body data-course-version="2" data-lesson-id="062" data-syllabus-ids="S10.07">
     <a class="skip-link" href="#main-content">Skip to main content</a>
-    <header class="topbar">
-      <div>
-        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 5</p>
-        <h1>Section 5 review: precise software comparisons</h1>
-      </div>
-      <div class="action-panel" aria-label="Page controls">
-        <a class="course-home-link" href="../">Course home</a>
-        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
-      </div>
+    <header class="v2-topbar">
+      <div><p class="v2-eyebrow">Cambridge AS9618 | Paper 2 | Section 10: Data types and structures</p><h1>Why files are needed and text-file pseudocode</h1></div>
+      <nav class="v2-actions" aria-label="Lesson actions"><a href="../">Course home</a><a href="../assessments/">Assessment bank</a><button type="button" id="printLesson">Print</button></nav>
     </header>
+    <main class="v2-shell" id="main-content" tabindex="-1">
+      <nav class="v2-toc" aria-label="Lesson contents"><strong>Lesson 062</strong><a href="#overview">Overview</a><a href="#prerequisite">Prerequisite</a><a href="#explanation">Explanation</a><a href="#practice">Practice</a><a href="#summary">Summary</a></nav>
+      <div class="v2-content">
+        <section class="v2-hero" id="overview">
+          <div><p class="v2-eyebrow">Flexible-depth lesson</p><h2>Why files are needed and text-file pseudocode</h2><p>S10.07 | Select what to omit, teach briefly or explore in depth.</p></div>
+          <div class="v2-time-grid" aria-label="Available lesson depth"><div><strong>Quick</strong><span>diagnose + essentials</span></div><div><strong>Full</strong><span>complete explanation</span></div><div><strong>Deep</strong><span>prerequisites + extension</span></div><div><strong>Choose</strong><span>practice by need</span></div></div>
+        </section>
 
-    <main class="layout" id="main-content" tabindex="-1">
-      <aside class="lesson-nav" aria-label="Lesson navigation">
-        <a href="#overview">Overview</a>
-        <a href="#hook">Warm-up</a>
-        <a href="#retrieval">Retrieval grid</a>
-        <a href="#compare">Comparisons</a>
-        <a href="#precision">Precision rules</a>
-        <a href="#tool">Review tool</a>
-        <a href="#examples">Examples</a>
-        <a href="#practice">Practice</a>
-        <a href="#debug">Debugging</a>
-        <a href="#exam">Exam-style</a>
-        <a href="#summary">Summary</a>
-        <a href="#homework">Homework</a>
-      </aside>
+        <section class="v2-panel v2-route-menu" aria-labelledby="route-heading">
+          <div class="v2-heading"><p class="v2-eyebrow">Teacher choice</p><h2 id="route-heading">Choose the depth for this group</h2></div>
+          <div class="v2-route-grid"><article><h3>Quick route</h3><p>Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.</p></article><article><h3>Full route</h3><p>Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.</p></article><article><h3>Deep route</h3><p>Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.</p></article></div>
+        </section>
 
-      <div class="lesson-content">
-        <section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
-          <div class="hero-copy">
-            <p class="lesson-meta">Lesson 062 | 45 minutes | Paper 1 Section 5 | Stage review</p>
-            <h2>Effective review combines retrieval, selection of the relevant concept and timed application.</h2>
-            <p>
-              This review connects Section 5 ideas: operating systems, utility software, interfaces,
-              translators, compilation stages, linkers/loaders/libraries and error diagnostics.
-              The aim is precise comparison: name the correct tool, show the mechanism, and link it to the scenario.
-            </p>
-            <div class="objective-grid" aria-label="Learning objectives">
-              <div><strong>Retrieve</strong><span>key Section 5 definitions without notes</span></div>
-              <div><strong>Compare</strong><span>similar concepts using mechanism-level differences</span></div>
-              <div><strong>Improve</strong><span>weak answers into mark-worthy Cambridge-style responses</span></div>
+        <section class="v2-panel" id="prerequisite">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 1 | optional depth</p><h2>Prerequisite knowledge and quick diagnostic</h2></div>
+          <div class="v2-diagnostic"><p>Recall S10.01 before starting this lesson.</p></div>
+          <p>Give one accurate definition or method step before continuing. If it is missing, revisit only that prerequisite.</p>
+          <details class="v2-prerequisite-detail"><summary>Open optional prerequisite refresher</summary><ul><li>Select and use appropriate types for a problem solution. The Version 2 Notes name integer, real, char, string, Boolean and date, and require the Cambridge pseudocode type names INTEGER, REAL, CHAR, STRING, BOOLEAN, DATE, ARRAY and FILE.</li><li>Understand integer, real, char, string, Boolean and date types and Cambridge pseudocode type names.</li></ul></details>
+        </section>
+
+        <section class="v2-panel" id="explanation">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 2 | deliberately over-complete</p><h2>Knowledge explanation</h2></div>
+          <h3>Learning objectives</h3><ul class="v2-objectives"><li>Explain the need for files and use text-file pseudocode.</li></ul>
+          <details class="v2-concept-menu"><summary>Open the concept checklist and choose what to teach</summary><ul><li>files</li><li>persistent</li><li>text file</li><li>pseudocode</li></ul></details>
+          <div class="v2-explanation-grid">
+            <div>
+              <article class="v2-core-facts"><h3>Detailed explanation</h3><p class="v2-teacher-note">Teach all points, or select only the ones this group needs. The list is intentionally fuller than a fixed lesson slot.</p><ul class="v2-facts"><li>Show why files are needed for persistent data beyond one program run, and write Cambridge pseudocode to handle text files consisting of one or more lines, including opening, processing and closing in the correct mode.</li><li>Variables, arrays and records in main memory normally lose their contents when a program ends or power is removed. Files provide persistent storage so data can be reloaded by a later run, transferred or shared as required. A file is not merely a larger array.</li><li>For a text file containing one or more lines, select the mode before processing: READ obtains existing data, WRITE creates or replaces output content, and APPEND adds after existing content. Every opened file must be closed after processing.</li><li>A complete read algorithm uses OPENFILE for READ, checks NOT EOF before READFILE, processes each line and then CLOSEFILE. WRITEFILE stores a line in a file opened for WRITE or APPEND. Reading after EOF or using WRITE when old content must remain are boundary errors.</li></ul></article>
+              <article class="v2-example"><h3>Worked example</h3><p>Copy selected lines between text files: Open Results.txt FOR READ and Pass.txt FOR WRITE. While NOT EOF(Results.txt), READFILE the next Line; if it contains PASS, WRITEFILE it to Pass.txt. Close both files after the loop. Results remain available from storage, while Pass.txt is deliberately created as a new output file.</p></article>
+              <aside class="v2-extension"><h3>Beyond syllabus / 延伸知识（不要求背诵）</h3><p>programming libraries often provide tested ADT implementations, but the exam expects you to understand their behaviour and selection.</p></aside>
             </div>
-          </div>
-          <div class="review-card" aria-label="Section 5 review map">
-            <div class="review-stack">
-              <span>OS manages resources</span>
-              <span>Utility performs maintenance</span>
-              <span>Translator converts code</span>
-              <span>Linker connects modules</span>
-              <span>Loader loads into memory</span>
-            </div>
-            <p>Keyword first. Mechanism next. Scenario consequence last.</p>
+            <figure class="v2-visual">
+              <img src="../assets/diagrams/stage10-infographics/stage10-lesson-121-pseudocode.jpg" alt="Pseudocode vs Java. Cambridge-style pseudocode. OPENFILE &quot;Scores.txt&quot; FOR READ. WHILE NOT EOF(&quot;Scores.txt&quot;). READFILE &quot;Scores.txt&quot;, Line" loading="lazy" />
+              <figcaption>Cambridge pseudocode is the exam answer format. One maintained explanation is shown as an image on larger screens and as text on small screens.</figcaption>
+              <div class="v2-mobile-visual-text" aria-label="Mobile text alternative"><ul><li>Pseudocode vs Java</li><li>Cambridge-style pseudocode</li><li>OPENFILE &quot;Scores.txt&quot; FOR READ</li><li>WHILE NOT EOF(&quot;Scores.txt&quot;)</li><li>READFILE &quot;Scores.txt&quot;, Line</li></ul></div>
+            </figure>
           </div>
         </section>
 
-        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
-          <article class="why-card">
-            <h3>Why this matters</h3>
-            <p>Mixed questions often look easy until students explain the wrong tool. Recognition is part of the mark.</p>
-          </article>
-          <article class="trap-card">
-            <h3>Common error</h3>
-            <p>Do not use "makes it work" for everything. A linker, loader, compiler and OS do different jobs.</p>
-          </article>
+        <section class="v2-panel" id="practice">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 3 | select by learner need</p><h2>Practice by question type</h2></div>
+          <div class="v2-question-list"><article class="v2-question" data-question-id="Q-L062-01" data-semantic-fingerprint="S10.07|why-files-are-needed-and-text-file-pseudocode|write|cambridge-read-every-line|pseudocode|recall">
+              <div class="v2-question-head"><span class="v2-badge">write</span><span class="v2-badge">recall</span><span class="v2-badge difficulty">foundation</span><span class="v2-badge">6 marks</span></div>
+              <p><strong>Question 1.</strong> Write Cambridge pseudocode to read every line from Input.txt, copy non-blank lines to Output.txt and close both files. Explain why the input data is stored in a file.</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> persistent/later-use need for the input file; opens Input.txt FOR READ; opens Output.txt FOR WRITE; loops WHILE NOT EOF before READFILE; writes only non-blank lines inside a coherent IF; closes both files after the loop</p><p><strong>Marking guidance:</strong> Do not test EOF after an invalid read or claim that WRITE preserves existing output-file contents.</p><p><strong>Common error:</strong> For the command word write, perform that exact action; do not replace it with an unrelated fact.</p></div></details>
+            </article><article class="v2-question" data-question-id="Q-L062-02" data-semantic-fingerprint="S10.07|why-files-are-needed-and-text-file-pseudocode|explain|instead-only-array|written|explain">
+              <div class="v2-question-head"><span class="v2-badge">explain</span><span class="v2-badge">explain</span><span class="v2-badge difficulty">application</span><span class="v2-badge">2 marks</span></div>
+              <p><strong>Question 2.</strong> Why use a file instead of only an array?</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> A file persists after the program ends and can be reloaded in a later run.</p><p><strong>Marking guidance:</strong> Award one mark for each distinct, technically accurate point or method step.</p><p><strong>Common error:</strong> Do not repeat the same point in different words; each mark needs a separate idea or method step.</p></div></details>
+            </article><article class="v2-question" data-question-id="Q-L062-03" data-semantic-fingerprint="S10.07|why-files-are-needed-and-text-file-pseudocode|explain|test-not-eof-before|written|explain">
+              <div class="v2-question-head"><span class="v2-badge">explain</span><span class="v2-badge">explain</span><span class="v2-badge difficulty">transfer</span><span class="v2-badge">2 marks</span></div>
+              <p><strong>Question 3.</strong> Why test NOT EOF before READFILE?</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> It prevents an attempt to read beyond the final available line.</p><p><strong>Marking guidance:</strong> Award one mark for each distinct, technically accurate point or method step.</p><p><strong>Common error:</strong> Do not copy the worked example unchanged; transfer the method and check it against the new context.</p></div></details>
+            </article></div>
+          <div class="v2-paper-refs">
+          <h3>Related past-paper indexes</h3>
+          <table><thead><tr><th>Reference</th><th>Marks</th><th>Command word</th><th>Question type</th></tr></thead>
+          <tbody><tr><td>9618/22/S/25 Q5(b)</td><td>8</td><td>complete</td><td>recall</td></tr><tr><td>9618/22/S/24 Q8(c)</td><td>8</td><td>give</td><td>write</td></tr><tr><td>9618/23/S/24 Q2(a)</td><td>5</td><td>outline</td><td>explain</td></tr><tr><td>9618/21/W/24 Q3(a)</td><td>4</td><td>complete</td><td>recall</td></tr></tbody></table>
+          <p class="v2-copyright-note">Index only: Cambridge question and mark-scheme wording is not reproduced on this public course page.</p>
+        </div>
         </section>
 
-        <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
-          <div class="section-title">
-            <p class="eyebrow">Warm-up hook</p>
-            <h2>Three answers say "it helps the computer run". Which one earns marks?</h2>
-            <p>Click the best answer. Vague answers are comfortable until the mark scheme arrives.</p>
-          </div>
-          <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="precise">A loader places executable code into main memory ready for execution.</button>
-            <button class="choice-card" type="button" data-hook="vague">A loader makes the program work.</button>
-            <button class="choice-card" type="button" data-hook="wrong">A loader translates source code into object code.</button>
-            <button class="choice-card" type="button" data-hook="mixed">A loader resolves library references and checks syntax.</button>
-          </div>
-          <div class="feedback" id="hookFeedback" aria-live="polite">
-            Choose one. Full marks need a mechanism, not just a friendly label.
-          </div>
+        <section class="v2-panel" id="summary">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 4 | close when ready</p><h2>Summary and exam reminders</h2></div>
+          <div class="v2-summary-grid"><div><h3>Summary</h3><ul class="v2-summary-list"><li>Define why files are needed and text-file pseudocode with the exact technical vocabulary expected by the syllabus.</li><li>Use the lesson method on a fresh context and show the intermediate decision, representation or calculation.</li><li>Match the shape of the answer to the command word and the available marks.</li><li>Check the final answer against the scenario instead of repeating a memorised sentence.</li></ul></div><div class="v2-error"><h3>Common error to correct</h3><p>Students often confuse the identifier of the whole structure with one element. Correction: access requires an index or field name.</p></div></div>
+          <div class="v2-tip-box"><h3>Exam technique</h3><ul><li>Follow the command word: state gives a fact; explain links a cause to a consequence; compare covers both sides.</li><li>Match the number of independent points or method steps to the available marks.</li><li>For why files are needed and text-file pseudocode, use the exact technical term before applying it to the scenario.</li></ul></div>
         </section>
 
-        <section class="panel" id="retrieval" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="retrieval">
-          <div class="section-title">
-            <p class="eyebrow">Retrieval grid</p>
-            <h2>Section 5 in one screen</h2>
-          </div>
-          <div class="retrieval-grid">
-            <article><strong>Operating system</strong><span>Manages resources and provides services such as process, memory, file and device management.</span></article>
-            <article><strong>Utility software</strong><span>Performs a maintenance/protection task such as backup, compression, encryption, defragmentation or antivirus.</span></article>
-            <article><strong>User interface</strong><span>Allows the user to interact with the system: CLI, GUI, menu-driven or natural language.</span></article>
-            <article><strong>Compiler</strong><span>Translates a whole high-level program before execution and can produce object/executable code.</span></article>
-            <article><strong>Interpreter</strong><span>Translates and executes high-level code statement by statement.</span></article>
-            <article><strong>Assembler</strong><span>Translates assembly language mnemonics into machine code/object code.</span></article>
-            <article><strong>Compilation stages</strong><span>Lexical analysis, syntax analysis, semantic analysis, code generation and optimisation.</span></article>
-            <article><strong>Linker / loader</strong><span>Linker resolves external references; loader places executable code into main memory.</span></article>
-          </div>
-          <div class="callout">Chinese support: precise comparison = 精准对比；mechanism = 机制/工作原理；scenario consequence = 场景中的结果或影响。</div>
-        </section>
-
-        <!-- stage10-explanation:start retrieval -->
-        <section class="panel explanation-panel" id="explanation-retrieval" data-explains="retrieval" data-explanation-kind="synthesis" aria-labelledby="explanation-retrieval-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="retrieval">
-          <h2 class="explanation-sr-only" id="explanation-retrieval-title">Section 5 in one screen</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-062-retrieval.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Section 5 in one screen with a structured visual model." />
-            <figcaption class="explanation-sr-only">Section 5 in one screen: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> A compiler translates a whole high-level program into object code before execution.</li><li><strong>Lesson fact:</strong> An assembler translates assembly language into machine or object code.</li><li><strong>Lesson fact:</strong> A linker combines object modules and libraries, and a loader places an executable into memory.</li><li><strong>Lesson fact:</strong> An interpreter translates and executes source during runtime without producing a permanent object file for the linker path.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end retrieval -->
-        <section class="panel" id="compare" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="compare">
-          <div class="section-title">
-            <p class="eyebrow">High-value comparisons</p>
-            <h2>Similar terms that the exam likes to separate</h2>
-          </div>
-          <div class="comparison-table" role="table" aria-label="Section 5 comparison table">
-            <div class="table-row table-head" role="row">
-              <div role="columnheader">Pair</div>
-              <div role="columnheader">Difference that earns marks</div>
-              <div role="columnheader">Common wrong answer</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">OS vs utility</div>
-              <div role="cell">OS manages resources; a utility performs a specific maintenance/protection task.</div>
-              <div role="cell">"Both are apps."</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Compiler vs interpreter</div>
-              <div role="cell">Compiler translates whole program before execution; interpreter translates/executes statement by statement.</div>
-              <div role="cell">"Interpreter is a bad compiler."</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Syntax vs semantic</div>
-              <div role="cell">Syntax checks grammar; semantic checks meaning such as type, scope and declarations.</div>
-              <div role="cell">"Both mean spelling mistakes."</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Linker vs loader</div>
-              <div role="cell">Linker combines object modules/resolves references; loader places executable code into memory.</div>
-              <div role="cell">"Both run the program."</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Logic vs runtime error</div>
-              <div role="cell">Logic runs but gives wrong output; runtime fails while executing.</div>
-              <div role="cell">"Wrong output means runtime error."</div>
-            </div>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start compare -->
-        <section class="panel explanation-panel" id="explanation-compare" data-explains="compare" data-explanation-kind="synthesis" aria-labelledby="explanation-compare-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="compare">
-          <h2 class="explanation-sr-only" id="explanation-compare-title">Similar terms that the exam likes to separate</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-062-compare.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Similar terms that the exam likes to separate with a structured visual model." />
-            <figcaption class="explanation-sr-only">Similar terms that the exam likes to separate: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> High-value comparisons</li><li><strong>Lesson fact:</strong> Difference that earns marks</li><li><strong>Lesson fact:</strong> Common wrong answer</li><li><strong>Lesson fact:</strong> OS vs utility</li><li><strong>Lesson fact:</strong> OS manages resources; a utility performs a specific maintenance/protection task.</li><li><strong>Lesson fact:</strong> &quot;Both are apps.&quot;</li><li><strong>Lesson fact:</strong> Compiler vs interpreter</li><li><strong>Lesson fact:</strong> Compiler translates whole program before execution; interpreter translates/executes statement by statement.</li><li><strong>Lesson fact:</strong> &quot;Interpreter is a bad compiler.&quot;</li><li><strong>Lesson fact:</strong> Syntax vs semantic</li><li><strong>Lesson fact:</strong> Syntax checks grammar; semantic checks meaning such as type, scope and declarations.</li><li><strong>Lesson fact:</strong> &quot;Both mean spelling mistakes.&quot;</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end compare -->
-        <section class="panel" id="precision" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="precision">
-          <div class="section-title">
-            <p class="eyebrow">Precision rules</p>
-            <h2>Turn a weak answer into marks</h2>
-          </div>
-          <div class="precision-grid">
-            <article><strong>Weak</strong><span>"A compiler changes code so it can run."</span><em>Too vague: no input, output or timing.</em></article>
-            <article><strong>Better</strong><span>"A compiler translates the whole high-level source program into object/executable code before execution."</span><em>Names input, output and timing.</em></article>
-            <article><strong>Weak</strong><span>"Encryption makes data safe."</span><em>Too broad: safe from what?</em></article>
-            <article><strong>Better</strong><span>"Encryption converts plaintext into ciphertext using a key so unauthorised users cannot read it."</span><em>Names mechanism and security goal.</em></article>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start precision -->
-        <section class="panel explanation-panel" id="explanation-precision" data-explains="precision" data-explanation-kind="synthesis" aria-labelledby="explanation-precision-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="precision">
-          <h2 class="explanation-sr-only" id="explanation-precision-title">Turn a weak answer into marks</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-062-precision.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Turn a weak answer into marks with a structured visual model." />
-            <figcaption class="explanation-sr-only">Turn a weak answer into marks: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Precision rules</li><li><strong>Lesson fact:</strong> Weak &quot;A compiler changes code so it can run.&quot; Too vague: no input, output or timing.</li><li><strong>Lesson fact:</strong> Better &quot;A compiler translates the whole high-level source program into object/executable code before execution.&quot; Names input, output and timing.</li><li><strong>Lesson fact:</strong> Weak &quot;Encryption makes data safe.&quot; Too broad: safe from what?</li><li><strong>Lesson fact:</strong> Better &quot;Encryption converts plaintext into ciphertext using a key so unauthorised users cannot read it.&quot; Names mechanism and security goal.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end precision -->
-        <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="PRACTISE" data-delivery-group="tool">
-          <div class="section-title">
-            <p class="eyebrow">Interactive tool</p>
-            <h2>Mixed topic classifier</h2>
-            <p>Select a clue and identify the Section 5 topic before answering.</p>
-          </div>
-          <div class="converter-grid">
-            <label>
-              Exam clue
-              <select id="scenarioInput">
-                <option value="memory">Allocates RAM to running programs</option>
-                <option value="restore">Restores deleted coursework from a previous copy</option>
-                <option value="prompt">User types precise commands at a prompt</option>
-                <option value="tokens">Groups source-code characters into tokens</option>
-                <option value="references">Resolves references between object modules</option>
-                <option value="wrongresult">Program runs but gives the wrong result</option>
-              </select>
-            </label>
-            <button class="primary-button" type="button" id="simulateBtn">Classify</button>
-          </div>
-          <div class="result-box" id="simulateResult" aria-live="polite"></div>
-          <div class="method-box" id="simulateMethod"></div>
-          <div class="reject-box" id="simulateTrap"></div>
-        </section>
-
-        <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
-          <div class="section-title">
-            <p class="eyebrow">Worked examples</p>
-            <h2>Answer, annotate, improve</h2>
-          </div>
-          <div class="example-tabs" role="tablist" aria-label="Worked example tabs">
-            <button class="tab active" type="button" data-example="translator">Translator comparison</button>
-            <button class="tab" type="button" data-example="utility">Utility choice</button>
-            <button class="tab" type="button" data-example="linkload">Linker/loader</button>
-            <button class="tab" type="button" data-example="errors">Error diagnosis</button>
-          </div>
-          <div class="example-box" id="exampleBox"></div>
-        </section>
-
-        <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
-          <div class="section-title">
-            <p class="eyebrow">Practice</p>
-            <h2>Instant-check mixed retrieval</h2>
-            <p>Type a short answer, then check. Reveal the expected wording only after trying.</p>
-          </div>
-          <div class="practice-list" id="practiceList"></div>
-        </section>
-
-        <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
-          <div class="section-title">
-            <p class="eyebrow">Mistake debugging</p>
-            <h2>Repair weak review answers</h2>
-          </div>
-          <div class="mistake-grid" id="mistakeGrid"></div>
-        </section>
-
-        <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
-          <div class="section-title">
-            <p class="eyebrow">Exam-style stage review</p>
-            <h2>Answer first, then reveal the Cambridge-style mark scheme</h2>
-            <p>These are original Cambridge-style mixed Section 5 questions. The MS rewards precision and scenario linkage.</p>
-          </div>
-          <div class="exam-list" id="examList"></div>
-        </section>
-
-        <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
-          <div class="section-title">
-            <p class="eyebrow">Summary</p>
-            <h2>Section 5 review rule</h2>
-          </div>
-          <div class="summary-grid">
-            <div><strong>Recognise</strong><span>Identify the topic before writing the answer.</span></div>
-            <div><strong>Define</strong><span>Use precise input, action and output/result.</span></div>
-            <div><strong>Compare</strong><span>State the mechanism difference, not only a vague benefit.</span></div>
-            <div><strong>Apply</strong><span>Link the tool to the scenario evidence.</span></div>
-            <div><strong>Correct</strong><span>Rewrite weak answers using mark scheme phrases.</span></div>
-            <div><strong>Boundary</strong><span>Section 6 security begins next lesson.</span></div>
-          </div>
-        </section>
-
-        <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
-          <div class="section-title">
-            <p class="eyebrow">Homework</p>
-            <h2>Clear output, not vague revision</h2>
-          </div>
-          <div class="homework-list">
-            <article>
-              <strong>Task 1: Ten-card retrieval deck</strong>
-              <span>Create 10 cards from Section 5. Each back must include input/action/output or problem/mechanism/result.</span>
-            </article>
-            <article>
-              <strong>Task 2: Two comparison paragraphs</strong>
-              <span>Write one paragraph comparing compiler and interpreter, and one comparing linker and loader.</span>
-            </article>
-            <article>
-              <strong>Task 3: Timed answer repair</strong>
-              <span>Answer one 6-mark mixed Section 5 question in 7 minutes, then rewrite it using a different colour to add missing mark points.</span>
-            </article>
-          </div>
-        </section>
+        <nav class="v2-bottom-nav" aria-label="Previous and next lesson"><a href="../lesson-061/" >Previous lesson</a><a href="../lesson-063/" >Next lesson</a></nav>
       </div>
     </main>
-    <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=3"></script>
-    <script src="../lesson-toolbar.js?v=3"></script>
-    <script src="../stage7-accessibility.js?v=4"></script>
+    <script src="../course-v2.js?v=1"></script>
   </body>
 </html>

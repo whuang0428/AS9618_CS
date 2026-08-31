@@ -3,375 +3,89 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 058 | Compilation stages: lexical analysis to object code</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <title>AS9618 Lesson 058 | Selecting and using one-dimensional arrays</title>
     <link rel="icon" href="data:" />
-    <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
+    <link rel="stylesheet" href="../course-v2.css?v=3" />
   </head>
-  <body>
+  <body data-course-version="2" data-lesson-id="058" data-syllabus-ids="S10.04,S10.05">
     <a class="skip-link" href="#main-content">Skip to main content</a>
-    <header class="topbar">
-      <div>
-        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 5</p>
-        <h1>Compilation stages: lexical analysis to object code</h1>
-      </div>
-      <div class="action-panel" aria-label="Page controls">
-        <a class="course-home-link" href="../">Course home</a>
-        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
-      </div>
+    <header class="v2-topbar">
+      <div><p class="v2-eyebrow">Cambridge AS9618 | Paper 2 | Section 10: Data types and structures</p><h1>Selecting and using one-dimensional arrays</h1></div>
+      <nav class="v2-actions" aria-label="Lesson actions"><a href="../">Course home</a><a href="../assessments/">Assessment bank</a><button type="button" id="printLesson">Print</button></nav>
     </header>
+    <main class="v2-shell" id="main-content" tabindex="-1">
+      <nav class="v2-toc" aria-label="Lesson contents"><strong>Lesson 058</strong><a href="#overview">Overview</a><a href="#prerequisite">Prerequisite</a><a href="#explanation">Explanation</a><a href="#practice">Practice</a><a href="#summary">Summary</a></nav>
+      <div class="v2-content">
+        <section class="v2-hero" id="overview">
+          <div><p class="v2-eyebrow">Flexible-depth lesson</p><h2>Selecting and using one-dimensional arrays</h2><p>S10.04, S10.05 | Select what to omit, teach briefly or explore in depth.</p></div>
+          <div class="v2-time-grid" aria-label="Available lesson depth"><div><strong>Quick</strong><span>diagnose + essentials</span></div><div><strong>Full</strong><span>complete explanation</span></div><div><strong>Deep</strong><span>prerequisites + extension</span></div><div><strong>Choose</strong><span>practice by need</span></div></div>
+        </section>
 
-    <main class="layout" id="main-content" tabindex="-1">
-      <aside class="lesson-nav" aria-label="Lesson navigation">
-        <a href="#overview">Overview</a>
-        <a href="#hook">Warm-up</a>
-        <a href="#pipeline">Pipeline</a>
-        <a href="#lexical">Lexical analysis</a>
-        <a href="#syntax">Syntax analysis</a>
-        <a href="#semantic">Semantic analysis</a>
-        <a href="#generation">Code generation</a>
-        <a href="#optimisation">Optimisation</a>
-        <a href="#tool">Stage tool</a>
-        <a href="#examples">Examples</a>
-        <a href="#practice">Practice</a>
-        <a href="#debug">Debugging</a>
-        <a href="#exam">Exam-style</a>
-        <a href="#summary">Summary</a>
-        <a href="#homework">Homework</a>
-      </aside>
+        <section class="v2-panel v2-route-menu" aria-labelledby="route-heading">
+          <div class="v2-heading"><p class="v2-eyebrow">Teacher choice</p><h2 id="route-heading">Choose the depth for this group</h2></div>
+          <div class="v2-route-grid"><article><h3>Quick route</h3><p>Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.</p></article><article><h3>Full route</h3><p>Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.</p></article><article><h3>Deep route</h3><p>Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.</p></article></div>
+        </section>
 
-      <div class="lesson-content">
-        <!-- remediation-v2-optional:start -->
-        <aside class="optional-enrichment-notice" aria-label="Optional enrichment scope">
-          <strong>Optional enrichment</strong>
-          <p>compiler phases from lexical analysis through optimisation and code generation. This material is excluded from compulsory syllabus coverage, first-use and assessment statistics.</p>
-          <p><strong>Formal AS prerequisite:</strong> S5.04-S5.05 purposes of translators and compiler/interpreter comparison.</p>
-        </aside>
-        <!-- remediation-v2-optional:end -->
+        <section class="v2-panel" id="prerequisite">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 1 | optional depth</p><h2>Prerequisite knowledge and quick diagnostic</h2></div>
+          <div class="v2-diagnostic"><p>Recall S10.03 before starting this lesson.</p></div>
+          <p>Give one accurate definition or method step before continuing. If it is missing, revisit only that prerequisite.</p>
+          <details class="v2-prerequisite-detail"><summary>Open optional prerequisite refresher</summary><ul><li>Use the technical terms associated with arrays, including index, lower bound and upper bound. Bounds define the inclusive valid index range and an index selects one element.</li><li>Understand array, index, lower bound and upper bound terminology.</li></ul></details>
+        </section>
 
-<section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-optional-058">
-          <div class="hero-copy">
-            <p class="lesson-meta">Lesson 058 | 45 minutes | Paper 1 Section 5 | System software</p>
-            <h2>A compiler is not one giant button. It is a careful sequence of checks and transformations.</h2>
-            <p>
-              This lesson follows source code through the main compilation stages:
-              lexical analysis, syntax analysis, semantic analysis, code generation and optimisation.
-              The aim is to explain what each stage does and what kind of error it can detect.
-            </p>
-            <div class="objective-grid" aria-label="Learning objectives">
-              <div><strong>Sequence</strong><span>the main stages from source code to object code</span></div>
-              <div><strong>Explain</strong><span>tokens, grammar checks, semantic checks and code generation</span></div>
-              <div><strong>Classify</strong><span>compiler errors and outputs using precise exam wording</span></div>
+        <section class="v2-panel" id="explanation">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 2 | deliberately over-complete</p><h2>Knowledge explanation</h2></div>
+          <h3>Learning objectives</h3><ul class="v2-objectives"><li>Select one- or two-dimensional arrays for a scenario.</li><li>Write pseudocode using one- and two-dimensional arrays.</li></ul>
+          <details class="v2-concept-menu"><summary>Open the concept checklist and choose what to teach</summary><ul><li>one-dimensional / 1D</li><li>two-dimensional / 2D</li><li>select / suitable</li><li>pseudocode</li><li>ARRAY</li></ul></details>
+          <div class="v2-explanation-grid">
+            <div>
+              <article class="v2-core-facts"><h3>Detailed explanation</h3><p class="v2-teacher-note">Teach all points, or select only the ones this group needs. The list is intentionally fuller than a fixed lesson slot.</p><ul class="v2-facts"><li>Select a suitable one-dimensional (1D) or two-dimensional (2D) array for a given task. One index suits a linear collection; two indexes suit data with a genuine row-column or equivalent two-coordinate relationship.</li><li>Write Cambridge pseudocode for 1D and 2D arrays: declare explicit inclusive bounds and an element type, use the required number of indexes, and traverse only valid positions.</li><li>An array is a collection of elements stored under one identifier. An index selects one element. The lower bound is the first valid index and the upper bound is the last valid index; both bounds are inclusive in a Cambridge declaration such as ARRAY[1:20] OF INTEGER.</li><li>Choose a one-dimensional array when each element needs one position, such as twenty marks or a list of names. Choose a two-dimensional array when each value naturally needs a row and a column, such as marks for several students across several tests. Do not choose 2D merely because there are many values.</li><li>One-dimensional array pseudocode must declare explicit bounds and an element type, access elements with one index and use loop bounds that match the declared lower and upper bounds. The number of elements is upper bound - lower bound + 1.</li><li>A two-dimensional array uses two indexes, normally interpreted as row and column. In DECLARE Marks : ARRAY[1:30, 1:4] OF INTEGER, the first range gives 30 valid row indexes and the second gives 4 valid column indexes, for 120 cells.</li><li>Select 2D when the scenario has two independent position dimensions, such as Student and Test, Row and Column, or Day and Period. A simple list, sequence or one category of positions remains 1D even when it contains many elements.</li><li>Two-dimensional pseudocode declares both ranges, accesses one cell as Marks[Student, Test] and normally uses nested loops: one loop traverses rows and the inner loop traverses every column for the current row.</li></ul></article>
+              <article class="v2-example"><h3>Worked example</h3><p>Choose and declare the dimension: Twenty daily temperatures need one position per day, so DECLARE Temperature : ARRAY[1:20] OF REAL is suitable and valid indexes are 1 to 20. Marks for 30 students in 4 tests need row and column positions, so a 2D array is suitable instead.</p></article>
+              <aside class="v2-extension"><h3>Beyond syllabus / 延伸知识（不要求背诵）</h3><p>programming libraries often provide tested ADT implementations, but the exam expects you to understand their behaviour and selection.</p></aside>
             </div>
-          </div>
-          <div class="pipeline-card" aria-label="Compilation pipeline">
-            <div class="pipeline-stack">
-              <span>source code</span>
-              <span>lexical analysis</span>
-              <span>syntax analysis</span>
-              <span>semantic analysis</span>
-              <span>code generation</span>
-              <span>optimisation</span>
-              <span>object code</span>
-            </div>
-            <p>Compilers are strict because processors are even stricter.</p>
+            <figure class="v2-visual">
+              <img src="../assets/diagrams/stage10-infographics/stage10-lesson-116-declare.jpg" alt="Declare arrays. Cambridge-style pseudocode. Valid indexes. Five integer scores. DECLARE Scores : ARRAY[1:5] OF INTEGER" loading="lazy" />
+              <figcaption>Bounds say which indexes are valid. One maintained explanation is shown as an image on larger screens and as text on small screens.</figcaption>
+              <div class="v2-mobile-visual-text" aria-label="Mobile text alternative"><ul><li>Declare arrays</li><li>Cambridge-style pseudocode</li><li>Valid indexes</li><li>Five integer scores</li><li>DECLARE Scores : ARRAY[1:5] OF INTEGER</li></ul></div>
+            </figure>
           </div>
         </section>
 
-        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-optional-058">
-          <article class="why-card">
-            <h3>Why this matters</h3>
-            <p>Exam questions often ask students to name a stage and describe its role. Stage names alone rarely earn full marks.</p>
-          </article>
-          <article class="trap-card">
-            <h3>Common error</h3>
-            <p>Do not mix syntax and semantic errors. Grammar may be valid while meaning is still wrong.</p>
-          </article>
+        <section class="v2-panel" id="practice">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 3 | select by learner need</p><h2>Practice by question type</h2></div>
+          <div class="v2-question-list"><article class="v2-question" data-question-id="Q-L058-01" data-semantic-fingerprint="S10.04+S10.05|selecting-and-using-one-dimensional-arrays|write|cambridge-pseudocode-declare-number|pseudocode|calculate">
+              <div class="v2-question-head"><span class="v2-badge">write</span><span class="v2-badge">calculate</span><span class="v2-badge difficulty">foundation</span><span class="v2-badge">6 marks</span></div>
+              <p><strong>Question 1.</strong> Write Cambridge pseudocode to declare a 5 by 7 REAL temperature table and calculate the total of every cell.</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> declares ARRAY[1:5, 1:7] OF REAL or equivalent explicit five-by-seven bounds; initialises Total; outer loop covers all five rows; inner loop covers all seven columns; adds Temperature[Row, Column] inside the inner loop; closes both loops and outputs Total after traversal</p><p><strong>Marking guidance:</strong> Do not reverse the declared bounds in the traversal or access a 2D cell with only one index.</p><p><strong>Common error:</strong> For the command word write, perform that exact action; do not replace it with an unrelated fact.</p></div></details>
+            </article><article class="v2-question" data-question-id="Q-L058-02" data-semantic-fingerprint="S10.04+S10.05|selecting-and-using-one-dimensional-arrays|explain|why-seating-grid-normally|written|explain">
+              <div class="v2-question-head"><span class="v2-badge">explain</span><span class="v2-badge">explain</span><span class="v2-badge difficulty">application</span><span class="v2-badge">2 marks</span></div>
+              <p><strong>Question 2.</strong> Why is a seating grid normally 2D?</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> Each seat is identified by two independent positions: row and column.</p><p><strong>Marking guidance:</strong> Award one mark for each distinct, technically accurate point or method step.</p><p><strong>Common error:</strong> Do not repeat the same point in different words; each mark needs a separate idea or method step.</p></div></details>
+            </article><article class="v2-question" data-question-id="Q-L058-03" data-semantic-fingerprint="S10.04+S10.05|selecting-and-using-one-dimensional-arrays|explain|many-cells-array-number|written|explain">
+              <div class="v2-question-head"><span class="v2-badge">explain</span><span class="v2-badge">explain</span><span class="v2-badge difficulty">transfer</span><span class="v2-badge">2 marks</span></div>
+              <p><strong>Question 3.</strong> How many cells are in ARRAY[1:3, 1:4]?</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> 12 cells because 3 row indexes are paired with 4 column indexes.</p><p><strong>Marking guidance:</strong> Award one mark for each distinct, technically accurate point or method step.</p><p><strong>Common error:</strong> Do not copy the worked example unchanged; transfer the method and check it against the new context.</p></div></details>
+            </article></div>
+          <div class="v2-paper-refs">
+          <h3>Related past-paper indexes</h3>
+          <table><thead><tr><th>Reference</th><th>Marks</th><th>Command word</th><th>Question type</th></tr></thead>
+          <tbody><tr><td>9618/21/S/25 Q6(b)</td><td>8</td><td>complete</td><td>recall</td></tr><tr><td>9618/21/W/25 Q4(a)</td><td>6</td><td>complete</td><td>recall</td></tr><tr><td>9618/22/W/25 Q8(b)</td><td>5</td><td>complete</td><td>write</td></tr><tr><td>9618/21/W/25 Q3(a)(i)</td><td>4</td><td>define</td><td>write</td></tr></tbody></table>
+          <p class="v2-copyright-note">Index only: Cambridge question and mark-scheme wording is not reproduced on this public course page.</p>
+        </div>
         </section>
 
-        <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-optional-058">
-          <div class="section-title">
-            <p class="eyebrow">Warm-up hook</p>
-            <h2>What happens first when a compiler reads <code>total = price + tax</code>?</h2>
-            <p>Click the best answer. The compiler does not begin by panicking; it tokenises first.</p>
-          </div>
-          <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="tokens">Break the text into tokens.</button>
-            <button class="choice-card" type="button" data-hook="run">Run the program immediately.</button>
-            <button class="choice-card" type="button" data-hook="link">Link external libraries.</button>
-            <button class="choice-card" type="button" data-hook="load">Load the executable into memory.</button>
-          </div>
-          <div class="feedback" id="hookFeedback" aria-live="polite">
-            Choose one. The early compiler stages inspect the source code before object code exists.
-          </div>
+        <section class="v2-panel" id="summary">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 4 | close when ready</p><h2>Summary and exam reminders</h2></div>
+          <div class="v2-summary-grid"><div><h3>Summary</h3><ul class="v2-summary-list"><li>Define selecting and using one-dimensional arrays with the exact technical vocabulary expected by the syllabus.</li><li>Use the lesson method on a fresh context and show the intermediate decision, representation or calculation.</li><li>Match the shape of the answer to the command word and the available marks.</li><li>Check the final answer against the scenario instead of repeating a memorised sentence.</li></ul></div><div class="v2-error"><h3>Common error to correct</h3><p>Students often confuse the identifier of the whole structure with one element. Correction: access requires an index or field name.</p></div></div>
+          <div class="v2-tip-box"><h3>Exam technique</h3><ul><li>Follow the command word: state gives a fact; explain links a cause to a consequence; compare covers both sides.</li><li>Match the number of independent points or method steps to the available marks.</li><li>For selecting and using one-dimensional arrays, use the exact technical term before applying it to the scenario.</li></ul></div>
         </section>
 
-        <section class="panel" id="pipeline" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-optional-058">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 1</p>
-            <h2>The compilation pipeline transforms source code into object code</h2>
-          </div>
-          <div class="stage-grid">
-            <article><strong>Source code</strong><span>The high-level program written by the programmer.</span></article>
-            <article><strong>Tokens</strong><span>Meaningful units such as identifiers, keywords, operators and literals.</span></article>
-            <article><strong>Checks</strong><span>The compiler checks structure and meaning before generating code.</span></article>
-            <article><strong>Object code</strong><span>Translated low-level code output by the compiler before linking/loading details.</span></article>
-          </div>
-          <div class="callout">Chinese support: lexical analysis = 词法分析；syntax analysis = 语法分析；semantic analysis = 语义分析；token = 词法单元；object code = 目标代码。</div>
-        </section>
-
-        <!-- stage10-explanation:start pipeline -->
-        <section class="panel explanation-panel" id="explanation-pipeline" data-explains="pipeline" data-explanation-kind="mechanism" aria-labelledby="explanation-pipeline-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-optional-058">
-          <h2 class="explanation-sr-only" id="explanation-pipeline-title">The compilation pipeline transforms source code into object code</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-058-pipeline.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining The compilation pipeline transforms source code into object code with a structured visual model." />
-            <figcaption class="explanation-sr-only">The compilation pipeline transforms source code into object code: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Source code The high-level program written by the programmer.</li><li><strong>Lesson fact:</strong> Tokens Meaningful units such as identifiers, keywords, operators and literals.</li><li><strong>Lesson fact:</strong> Checks The compiler checks structure and meaning before generating code.</li><li><strong>Lesson fact:</strong> Object code Translated low-level code output by the compiler before linking/loading details.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end pipeline -->
-        <section class="panel" id="lexical" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-optional-058">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 2</p>
-            <h2>Lexical analysis converts character streams into tokens</h2>
-          </div>
-          <div class="stage-grid">
-            <article><strong>Input</strong><span>Source code as a stream of characters.</span></article>
-            <article><strong>Action</strong><span>Groups characters into tokens such as identifiers, operators, constants and keywords.</span></article>
-            <article><strong>Also</strong><span>May remove unnecessary whitespace and comments.</span></article>
-            <article><strong>Errors</strong><span>Can detect invalid characters or unrecognised symbols.</span></article>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start lexical -->
-        <section class="panel explanation-panel" id="explanation-lexical" data-explains="lexical" data-explanation-kind="mechanism" aria-labelledby="explanation-lexical-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-optional-058">
-          <h2 class="explanation-sr-only" id="explanation-lexical-title">Lexical analysis converts character streams into tokens</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-058-lexical.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Lexical analysis converts character streams into tokens with a structured visual model." />
-            <figcaption class="explanation-sr-only">Lexical analysis converts character streams into tokens: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Lexical analysis converts source characters into tokens.</li><li><strong>Lesson fact:</strong> Keywords, identifiers, literals and operators are distinct token categories.</li><li><strong>Lesson fact:</strong> Semicolons, parentheses and braces are delimiters or punctuation, not all operators.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end lexical -->
-        <section class="panel" id="syntax" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-optional-058">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 3</p>
-            <h2>Syntax analysis checks grammar and program structure</h2>
-          </div>
-          <div class="stage-grid">
-            <article><strong>Input</strong><span>Tokens produced by lexical analysis.</span></article>
-            <article><strong>Action</strong><span>Checks whether tokens follow the grammar rules of the language.</span></article>
-            <article><strong>Output</strong><span>May build a parse tree or syntax tree to represent structure.</span></article>
-            <article><strong>Errors</strong><span>Can detect missing brackets, invalid statement order or malformed expressions.</span></article>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start syntax -->
-        <section class="panel explanation-panel" id="explanation-syntax" data-explains="syntax" data-explanation-kind="mechanism" aria-labelledby="explanation-syntax-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-optional-058">
-          <h2 class="explanation-sr-only" id="explanation-syntax-title">Syntax analysis checks grammar and program structure</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-058-syntax.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Syntax analysis checks grammar and program structure with a structured visual model." />
-            <figcaption class="explanation-sr-only">Syntax analysis checks grammar and program structure: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Input Tokens produced by lexical analysis.</li><li><strong>Lesson fact:</strong> Action Checks whether tokens follow the grammar rules of the language.</li><li><strong>Lesson fact:</strong> Output May build a parse tree or syntax tree to represent structure.</li><li><strong>Lesson fact:</strong> Errors Can detect missing brackets, invalid statement order or malformed expressions.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end syntax -->
-        <section class="panel" id="semantic" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-optional-058">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 4</p>
-            <h2>Semantic analysis checks meaning and context</h2>
-          </div>
-          <div class="stage-grid">
-            <article><strong>Meaning</strong><span>Code can be grammatically correct but still not make valid sense.</span></article>
-            <article><strong>Checks</strong><span>Type compatibility, variable declarations, scope and valid operations.</span></article>
-            <article><strong>Symbol table</strong><span>Stores information about identifiers such as names, types and locations.</span></article>
-            <article><strong>Errors</strong><span>Examples include using an undeclared variable or adding incompatible types.</span></article>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start semantic -->
-        <section class="panel explanation-panel" id="explanation-semantic" data-explains="semantic" data-explanation-kind="mechanism" aria-labelledby="explanation-semantic-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-optional-058">
-          <h2 class="explanation-sr-only" id="explanation-semantic-title">Semantic analysis checks meaning and context</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-058-semantic.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Semantic analysis checks meaning and context with a structured visual model." />
-            <figcaption class="explanation-sr-only">Semantic analysis checks meaning and context: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Meaning Code can be grammatically correct but still not make valid sense.</li><li><strong>Lesson fact:</strong> Checks Type compatibility, variable declarations, scope and valid operations.</li><li><strong>Lesson fact:</strong> Symbol table Stores information about identifiers such as names, types and locations.</li><li><strong>Lesson fact:</strong> Errors Examples include using an undeclared variable or adding incompatible types.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end semantic -->
-        <section class="panel" id="generation" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-optional-058">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 5</p>
-            <h2>Code generation produces object code</h2>
-          </div>
-          <div class="stage-grid">
-            <article><strong>Input</strong><span>Checked intermediate representation or syntax tree.</span></article>
-            <article><strong>Action</strong><span>Generates target low-level instructions for the processor or virtual machine.</span></article>
-            <article><strong>Output</strong><span>Object code, often not yet a complete final executable.</span></article>
-            <article><strong>Boundary</strong><span>Linking external modules and loading into memory belong to the next lesson.</span></article>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start generation -->
-        <section class="panel explanation-panel" id="explanation-generation" data-explains="generation" data-explanation-kind="mechanism" aria-labelledby="explanation-generation-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-optional-058">
-          <h2 class="explanation-sr-only" id="explanation-generation-title">Code generation produces object code</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-058-generation.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Code generation produces object code with a structured visual model." />
-            <figcaption class="explanation-sr-only">Code generation produces object code: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Input Checked intermediate representation or syntax tree.</li><li><strong>Lesson fact:</strong> Action Generates target low-level instructions for the processor or virtual machine.</li><li><strong>Lesson fact:</strong> Output Object code, often not yet a complete final executable.</li><li><strong>Lesson fact:</strong> Boundary Linking external modules and loading into memory belong to the next lesson.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end generation -->
-        <section class="panel" id="optimisation" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-optional-058">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 6</p>
-            <h2>Optimisation improves code without changing what it does</h2>
-          </div>
-          <div class="stage-grid">
-            <article><strong>Purpose</strong><span>Improve efficiency, such as speed or memory use.</span></article>
-            <article><strong>Examples</strong><span>Remove unreachable code or avoid repeated calculations.</span></article>
-            <article><strong>Rule</strong><span>The program's intended behaviour should remain the same.</span></article>
-            <article><strong>Common error</strong><span>Optimisation does not mean fixing all logic errors in the programmer's algorithm.</span></article>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start optimisation -->
-        <section class="panel explanation-panel" id="explanation-optimisation" data-explains="optimisation" data-explanation-kind="mechanism" aria-labelledby="explanation-optimisation-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-optional-058">
-          <h2 class="explanation-sr-only" id="explanation-optimisation-title">Optimisation improves code without changing what it does</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-058-optimisation.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Optimisation improves code without changing what it does with a structured visual model." />
-            <figcaption class="explanation-sr-only">Optimisation improves code without changing what it does: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Purpose Improve efficiency, such as speed or memory use.</li><li><strong>Lesson fact:</strong> Examples Remove unreachable code or avoid repeated calculations.</li><li><strong>Lesson fact:</strong> Rule The program's intended behaviour should remain the same.</li><li><strong>Lesson fact:</strong> Common error Optimisation does not mean fixing all logic errors in the programmer's algorithm.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end optimisation -->
-        <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="PRACTISE" data-delivery-group="tool">
-          <div class="section-title">
-            <p class="eyebrow">Interactive tool</p>
-            <h2>Compilation stage selector</h2>
-            <p>Select a compiler task and identify the relevant stage.</p>
-          </div>
-          <div class="converter-grid">
-            <label>
-              Compiler task
-              <select id="scenarioInput">
-                <option value="tokenise">Group characters into identifiers, keywords and operators</option>
-                <option value="grammar">Check whether a statement follows language grammar</option>
-                <option value="type">Detect assigning a string to an integer variable</option>
-                <option value="symbol">Look up an identifier's declared type and scope</option>
-                <option value="target">Produce low-level target instructions</option>
-                <option value="remove">Remove unreachable code without changing output</option>
-              </select>
-            </label>
-            <button class="primary-button" type="button" id="simulateBtn">Classify</button>
-          </div>
-          <div class="result-box" id="simulateResult" aria-live="polite"></div>
-          <div class="method-box" id="simulateMethod"></div>
-          <div class="reject-box" id="simulateTrap"></div>
-        </section>
-
-        <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-optional-058">
-          <div class="section-title">
-            <p class="eyebrow">Worked examples</p>
-            <h2>Track one line through compiler stages</h2>
-          </div>
-          <div class="example-tabs" role="tablist" aria-label="Worked example tabs">
-            <button class="tab active" type="button" data-example="lexical">Lexical</button>
-            <button class="tab" type="button" data-example="syntax">Syntax</button>
-            <button class="tab" type="button" data-example="semantic">Semantic</button>
-            <button class="tab" type="button" data-example="codegen">Code generation</button>
-          </div>
-          <div class="example-box" id="exampleBox"></div>
-        </section>
-
-        <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-optional-058">
-          <div class="section-title">
-            <p class="eyebrow">Practice</p>
-            <h2>Instant-check questions</h2>
-            <p>Type a short answer, then check. Reveal the expected wording only after trying.</p>
-          </div>
-          <div class="practice-list" id="practiceList"></div>
-        </section>
-
-        <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-optional-058">
-          <div class="section-title">
-            <p class="eyebrow">Mistake debugging</p>
-            <h2>Fix the almost-right answers</h2>
-          </div>
-          <div class="mistake-grid" id="mistakeGrid"></div>
-        </section>
-
-        <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-optional-058">
-          <div class="section-title">
-            <p class="eyebrow">Exam-style questions</p>
-            <h2>Answer first, then reveal the Cambridge-style mark scheme</h2>
-            <p>These are original Cambridge-style questions. The mark schemes include strict wording notes and follow-through guidance.</p>
-          </div>
-          <div class="exam-list" id="examList"></div>
-        </section>
-
-        <section class="panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-optional-058">
-          <div class="section-title">
-            <p class="eyebrow">Summary</p>
-            <h2>Compilation memory map</h2>
-          </div>
-          <div class="summary-grid">
-            <div><strong>Lexical</strong><span>Characters to tokens; removes comments/extra whitespace.</span></div>
-            <div><strong>Syntax</strong><span>Checks grammar and may build a parse tree.</span></div>
-            <div><strong>Semantic</strong><span>Checks meaning, types, declarations and scope.</span></div>
-            <div><strong>Symbol table</strong><span>Stores identifier information for compiler checks.</span></div>
-            <div><strong>Code generation</strong><span>Produces object/target code.</span></div>
-            <div><strong>Optimisation</strong><span>Improves efficiency without changing behaviour.</span></div>
-          </div>
-        </section>
-
-        <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
-          <div class="section-title">
-            <p class="eyebrow">Homework</p>
-            <h2>Clear output, not vague revision</h2>
-          </div>
-          <div class="homework-list">
-            <article>
-              <strong>Task 1: Stage table</strong>
-              <span>Create a table for lexical, syntax, semantic, code generation and optimisation: input, action, output/error.</span>
-            </article>
-            <article>
-              <strong>Task 2: Error classification</strong>
-              <span>Classify five errors as lexical, syntax or semantic, and justify each classification in one sentence.</span>
-            </article>
-            <article>
-              <strong>Task 3: 6-mark answer</strong>
-              <span>Explain how a compiler can process source code and produce object code. Use the words token, grammar, semantic and object code.</span>
-            </article>
-          </div>
-        </section>
+        <nav class="v2-bottom-nav" aria-label="Previous and next lesson"><a href="../lesson-057/" >Previous lesson</a><a href="../lesson-059/" >Next lesson</a></nav>
       </div>
     </main>
-    <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=3"></script>
-    <script src="../lesson-toolbar.js?v=3"></script>
-    <script src="../stage7-accessibility.js?v=4"></script>
+    <script src="../course-v2.js?v=1"></script>
   </body>
 </html>

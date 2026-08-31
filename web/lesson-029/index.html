@@ -3,398 +3,89 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 029 | Embedded systems: purpose, benefits and drawbacks</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <title>AS9618 Lesson 029 | Choosing a translator and understanding Java translation</title>
     <link rel="icon" href="data:" />
-    <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
+    <link rel="stylesheet" href="../course-v2.css?v=3" />
   </head>
-  <body>
+  <body data-course-version="2" data-lesson-id="029" data-syllabus-ids="S5.05,S5.06">
     <a class="skip-link" href="#main-content">Skip to main content</a>
-    <header class="topbar">
-      <div>
-        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 3</p>
-        <h1>Embedded systems: purpose, benefits and drawbacks</h1>
-      </div>
-      <div class="action-panel" aria-label="Page controls">
-        <a class="course-home-link" href="../">Course home</a>
-        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
-      </div>
+    <header class="v2-topbar">
+      <div><p class="v2-eyebrow">Cambridge AS9618 | Paper 1 | Section 5: System software</p><h1>Choosing a translator and understanding Java translation</h1></div>
+      <nav class="v2-actions" aria-label="Lesson actions"><a href="../">Course home</a><a href="../assessments/">Assessment bank</a><button type="button" id="printLesson">Print</button></nav>
     </header>
-
-    <main class="layout" id="main-content" tabindex="-1">
-      <aside class="lesson-nav" aria-label="Lesson navigation">
-        <a href="#overview">Overview</a>
-        <a href="#hook">Warm-up</a>
-        <a href="#capture">Data capture</a>
-        <a href="#devices">Input devices</a>
-        <a href="#automatic">Automatic input</a>
-        <a href="#tool">Choice tool</a>
-        <a href="#examples">Examples</a>
-        <a href="#practice">Practice</a>
-        <a href="#debug">Debugging</a>
-        <a href="#exam">Exam-style</a>
-        <a href="#homework">Homework</a>
-        <a href="#stage2-completion">Core syllabus content</a>
-      </aside>
-
-      <div class="lesson-content">
-        <!-- remediation-v2-stage3-scope:start -->
-        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.</p></aside>
-        <!-- remediation-v2-stage3-scope:end -->
-
-<!-- stage2-completion:start -->
-        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus content</p>
-            <h2>Embedded systems: purpose, benefits and drawbacks</h2>
-          </div>
-          <div class="stage2-explanation">
-            <p>An embedded system is a computer system built into a larger device to perform one dedicated task or a closely related set of tasks. A microcontroller may integrate the processor, memory and input/output interfaces needed for that task.</p>
-            <p>Benefits can include low cost, low power use, small size and reliable, predictable automatic operation because the hardware and software are designed for a limited purpose. Drawbacks can include limited processing, storage and user interface, difficulty adding new functions, and dependence on the embedded controller: if it fails, the larger device may stop working. A valid comparison must link each point to the device and task.</p>
-            <p>A control system sends output signals to actuators and uses sensor feedback to determine the next control action.</p>
-            <p>One benefit must state a useful consequence of the dedicated design; one drawback must state a relevant limitation or failure consequence.</p>
-          </div>
-          <article class="stage2-example">
-            <h3>Worked example: Washing-machine controller</h3>
-            <p>A dedicated microcontroller can read sensors and control the motor and valves with low power use and predictable timing. Its limited interface is acceptable for wash programs, but it cannot readily run unrelated applications, and a controller failure can prevent the whole machine from operating.</p>
-          </article>
+    <main class="v2-shell" id="main-content" tabindex="-1">
+      <nav class="v2-toc" aria-label="Lesson contents"><strong>Lesson 029</strong><a href="#overview">Overview</a><a href="#prerequisite">Prerequisite</a><a href="#explanation">Explanation</a><a href="#practice">Practice</a><a href="#summary">Summary</a></nav>
+      <div class="v2-content">
+        <section class="v2-hero" id="overview">
+          <div><p class="v2-eyebrow">Flexible-depth lesson</p><h2>Choosing a translator and understanding Java translation</h2><p>S5.05, S5.06 | Select what to omit, teach briefly or explore in depth.</p></div>
+          <div class="v2-time-grid" aria-label="Available lesson depth"><div><strong>Quick</strong><span>diagnose + essentials</span></div><div><strong>Full</strong><span>complete explanation</span></div><div><strong>Deep</strong><span>prerequisites + extension</span></div><div><strong>Choose</strong><span>practice by need</span></div></div>
         </section>
-        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus practice</p>
-            <h2>Embedded systems: purpose, benefits and drawbacks: apply and assess</h2>
-          </div>
-          <div class="stage2-practice">
-            <h3>Targeted practice</h3>
-            <article class="stage2-question">
-              <p><strong>1.</strong> What two features define an embedded system?</p>
-              <details><summary>Show answer</summary><p>It is built into a larger device and performs a dedicated task or closely related set of tasks.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>2.</strong> Give one benefit of an embedded controller and explain its consequence.</p>
-              <details><summary>Show answer</summary><p>For example, low power use reduces energy or battery demand for the device.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>3.</strong> Give one drawback of an embedded controller and explain its consequence.</p>
-              <details><summary>Show answer</summary><p>For example, limited resources make it difficult to add unrelated functions or run general-purpose software.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>4.</strong> Why can failure of an embedded controller be serious?</p>
-              <details><summary>Show answer</summary><p>The larger device may lose the function controlled by that computer or stop operating.</p></details>
-            </article>
-          </div>
-          <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>5 marks</span></div>
-            <p>A battery-powered medical monitor uses an embedded controller. Explain two benefits and two drawbacks of this design in context.</p>
-            <details>
-              <summary>Show MS</summary>
-              <table class="mark-scheme-table">
-                <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
-                <tbody>
-                  <tr><td>benefit such as low power, compact size or predictable automatic operation</td><td>Do not award bare adjectives such as 'small' or 'cheap' without a device-specific consequence.</td><td>1</td></tr>
-                  <tr><td>first benefit linked to battery life, portability or continuous monitoring</td><td></td><td>1</td></tr>
-                  <tr><td>drawback such as limited resources/upgrading/interface or controller dependence</td><td></td><td>1</td></tr>
-                  <tr><td>first drawback linked to limited new functions or device failure</td><td></td><td>1</td></tr>
-                  <tr><td>second distinct benefit or drawback correctly developed</td><td></td><td>1</td></tr>
-                </tbody>
-              </table>
-            </details>
-          </article>
-        </section>
-        <!-- stage2-completion:end -->
 
-<section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-029">
-          <div class="hero-copy">
-            <p class="lesson-meta">Lesson 029 | 45 minutes | Paper 1 Section 3</p>
-            <h2>Input is where the computer first meets the messy real world.</h2>
-            <p>
-              This lesson focuses on input devices and data capture. The exam skill is not
-              simply naming a device. You must explain how it captures data and why it is
-              suitable for the situation.
-            </p>
-            <div class="objective-grid" aria-label="Learning objectives">
-              <div><strong>Describe</strong><span>the purpose of common input devices</span></div>
-              <div><strong>Compare</strong><span>manual and automatic data capture methods</span></div>
-              <div><strong>Justify</strong><span>input device choices using accuracy, speed, cost and suitability</span></div>
+        <section class="v2-panel v2-route-menu" aria-labelledby="route-heading">
+          <div class="v2-heading"><p class="v2-eyebrow">Teacher choice</p><h2 id="route-heading">Choose the depth for this group</h2></div>
+          <div class="v2-route-grid"><article><h3>Quick route</h3><p>Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.</p></article><article><h3>Full route</h3><p>Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.</p></article><article><h3>Deep route</h3><p>Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.</p></article></div>
+        </section>
+
+        <section class="v2-panel" id="prerequisite">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 1 | optional depth</p><h2>Prerequisite knowledge and quick diagnostic</h2></div>
+          <div class="v2-diagnostic"><p>Recall S5.04 before starting this lesson.</p></div>
+          <p>Give one accurate definition or method step before continuing. If it is missing, revisit only that prerequisite.</p>
+          <details class="v2-prerequisite-detail"><summary>Open optional prerequisite refresher</summary><ul><li>An assembler translates assembly language, a compiler translates high-level language, and an interpreter translates and executes high-level language.</li><li>Explain why assembler, compiler and interpreter are needed.</li></ul></details>
+        </section>
+
+        <section class="v2-panel" id="explanation">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 2 | deliberately over-complete</p><h2>Knowledge explanation</h2></div>
+          <h3>Learning objectives</h3><ul class="v2-objectives"><li>Compare compiler and interpreter advantages/disadvantages and justify use.</li><li>Understand that Java is partly compiled and partly interpreted.</li></ul>
+          <details class="v2-concept-menu"><summary>Open the concept checklist and choose what to teach</summary><ul><li>compiler</li><li>interpreter</li><li>advantages / benefits</li><li>disadvantages / drawbacks</li><li>Java</li><li>partly</li><li>compiled</li><li>interpreted</li></ul></details>
+          <div class="v2-explanation-grid">
+            <div>
+              <article class="v2-core-facts"><h3>Detailed explanation</h3><p class="v2-teacher-note">Teach all points, or select only the ones this group needs. The list is intentionally fuller than a fixed lesson slot.</p><ul class="v2-facts"><li>Explain the benefits and drawbacks of a compiler and an interpreter, and justify which translator is appropriate for a stated use.</li><li>A high-level program may be partly compiled and partly interpreted; Java in console mode is the required example.</li><li>An assembler is needed to translate a processor-specific assembly-language program into machine code or object code. A compiler is needed to translate a whole high-level language program before execution, normally producing target/object code. An interpreter translates and executes a high-level language program statement by statement during execution, normally without producing a separate permanent object-code file.</li><li>Compiler advantages include faster repeated execution after translation, distribution without the source code and translation checks across the whole program. Disadvantages include a separate compilation step and an error list that may need several corrections before execution. Interpreter advantages include immediate statement-level feedback and convenient incremental testing. Disadvantages include repeated translation overhead, slower execution and needing the interpreter and usually the source program at run time.</li><li>A justified choice must connect the mechanism to the scenario: an interpreter can suit development and debugging; a compiler can suit repeated use or distribution; an assembler is required for assembly source. These are advantages and disadvantages of the translation approaches, not universal claims that one tool is always better.</li><li>Java in console mode is partly compiled and partly interpreted: the Java compiler translates source code into platform-independent bytecode, then a Java Virtual Machine (JVM) interprets that bytecode and may just-in-time compile parts for the host processor. Bytecode is not universal processor machine code.</li><li>The expand/collapse feature hides or reveals a code block in the editor without changing program execution.</li></ul></article>
+              <article class="v2-example"><h3>Worked example</h3><p>Choose tools across development and deployment: During development, an interpreter can execute each statement and stop near a fault, giving quick feedback. For final distribution, a compiler can translate the whole high-level program before execution and provide target/object or executable code without distributing the source. A processor-specific assembly routine requires an assembler because its mnemonic instructions must become the target processor&#39;s machine code.</p></article>
+              <aside class="v2-extension"><h3>Beyond syllabus / 延伸知识（不要求背诵）</h3><p>production build systems automate translation, linking, testing and packaging, while the syllabus examines the purpose of each stage separately.</p></aside>
             </div>
-          </div>
-          <div class="system-card" aria-label="Input data capture chain">
-            <span>real world -> sensor/scanner/user -> digital data</span>
-            <p>A barcode reader is not "clever". It is just very good at not mistyping 13 digits before lunch.</p>
-          </div>
-        </section>
-
-        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-029">
-          <article class="why-card">
-            <h3>Why this matters</h3>
-            <p>Cambridge-style hardware questions reward suitability. "Keyboard" may be true; "keyboard because staff must type short codes occasionally" earns the mark.</p>
-          </article>
-          <article class="trap-card">
-            <h3>Common error</h3>
-            <p>Do not call every scanner a barcode reader. OCR, OMR, barcode and QR capture different patterns for different jobs.</p>
-          </article>
-        </section>
-
-        <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-029">
-          <div class="section-title">
-            <p class="eyebrow">Warm-up hook</p>
-            <h2>A supermarket checkout scans an item, weighs fruit, accepts a typed discount code and reads a loyalty card. Which inputs are being captured?</h2>
-          </div>
-          <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="barcode">Barcode reader captures product ID</button>
-            <button class="choice-card" type="button" data-hook="scale">Sensor captures mass/weight</button>
-            <button class="choice-card" type="button" data-hook="keyboard">Keyboard captures typed code</button>
-            <button class="choice-card" type="button" data-hook="rfid">RFID/card reader captures customer ID</button>
-          </div>
-          <div class="feedback" id="hookFeedback" aria-live="polite">
-            Click one input. The useful exam habit is naming what data is captured, not just naming the hardware.
+            <figure class="v2-visual">
+              <img src="../assets/diagrams/stage10-infographics/stage10-lesson-057-compare.jpg" alt="A compiler translates a whole high-level program before execution and produces target or object code; a linked executable can run repeatedly without the source.. An interpreter translates and executes high-level statements during execution and normally produces no separate permanent object-code file.. An assembler translates assembly-language mnemonics into target machine code or an object module for a specific processor instruction set.. If an assembler or compiler produces object modules, a linker may still be required before there is an executable program.. Choose the translator from the input language and the development or deployment need; do not claim that every assembler output is immediately executable." loading="lazy" />
+              <figcaption>Comparison: same goal, different route. One maintained explanation is shown as an image on larger screens and as text on small screens.</figcaption>
+              <div class="v2-mobile-visual-text" aria-label="Mobile text alternative"><ul><li>A compiler translates a whole high-level program before execution and produces target or object code; a linked executable can run repeatedly without the source.</li><li>An interpreter translates and executes high-level statements during execution and normally produces no separate permanent object-code file.</li><li>An assembler translates assembly-language mnemonics into target machine code or an object module for a specific processor instruction set.</li><li>If an assembler or compiler produces object modules, a linker may still be required before there is an executable program.</li><li>Choose the translator from the input language and the development or deployment need; do not claim that every assembler output is immediately executable.</li></ul></div>
+            </figure>
           </div>
         </section>
 
-        <section class="panel" id="capture" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-029">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 1</p>
-            <h2>What input devices do</h2>
-          </div>
-          <div class="flow-grid">
-            <article><strong>1. Capture</strong><span>The device captures data from a user, document, object or environment.</span></article>
-            <article><strong>2. Convert</strong><span>The data is converted into a digital form the computer can process.</span></article>
-            <article><strong>3. Validate later</strong><span>Input is not automatically correct. Validation and verification may still be needed.</span></article>
-          </div>
-          <div class="callout">Chinese support: input device = 输入设备；data capture = 数据采集；automatic input = 自动输入；manual input = 手动输入。</div>
+        <section class="v2-panel" id="practice">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 3 | select by learner need</p><h2>Practice by question type</h2></div>
+          <div class="v2-question-list"><article class="v2-question" data-question-id="Q-L029-01" data-semantic-fingerprint="S5.05+S5.06|choosing-a-translator-and-understanding-java-translation|give|compiler-advantage-mechanism|written|recall">
+              <div class="v2-question-head"><span class="v2-badge">give</span><span class="v2-badge">recall</span><span class="v2-badge difficulty">foundation</span><span class="v2-badge">2 marks</span></div>
+              <p><strong>Question 1.</strong> Give one compiler advantage and its mechanism.</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> A compiled program can run repeatedly without translating the source each time because translation occurred before execution.</p><p><strong>Marking guidance:</strong> Award one mark for each distinct, technically accurate point or method step.</p><p><strong>Common error:</strong> For the command word give, perform that exact action; do not replace it with an unrelated fact.</p></div></details>
+            </article><article class="v2-question" data-question-id="Q-L029-02" data-semantic-fingerprint="S5.05+S5.06|choosing-a-translator-and-understanding-java-translation|explain|why-partly-compiled-interpreted|written|debug">
+              <div class="v2-question-head"><span class="v2-badge">explain</span><span class="v2-badge">debug</span><span class="v2-badge difficulty">application</span><span class="v2-badge">6 marks</span></div>
+              <p><strong>Question 2.</strong> Explain why Java is partly compiled and partly interpreted, then describe four IDE features from coding, initial error detection, presentation and debugging.</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> Java source is compiled to bytecode; JVM interprets bytecode and may JIT-compile parts for the host; context-sensitive prompts or dynamic syntax checking described accurately; prettyprint or expand/collapse code blocks described accurately; single stepping or breakpoint described accurately; variable/expression inspection or report window described accurately</p><p><strong>Marking guidance:</strong> Do not accept that Java source becomes one universal machine-code file or that IDE syntax checking proves logical correctness.</p><p><strong>Common error:</strong> Do not repeat the same point in different words; each mark needs a separate idea or method step.</p></div></details>
+            </article><article class="v2-question" data-question-id="Q-L029-03" data-semantic-fingerprint="S5.05+S5.06|choosing-a-translator-and-understanding-java-translation|explain|why-described-partly-compiled|written|explain">
+              <div class="v2-question-head"><span class="v2-badge">explain</span><span class="v2-badge">explain</span><span class="v2-badge difficulty">transfer</span><span class="v2-badge">2 marks</span></div>
+              <p><strong>Question 3.</strong> Why is Java described as partly compiled and partly interpreted?</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> Source is compiled to bytecode, then a JVM interprets the bytecode and may JIT-compile parts for the host.</p><p><strong>Marking guidance:</strong> Award one mark for each distinct, technically accurate point or method step.</p><p><strong>Common error:</strong> Do not copy the worked example unchanged; transfer the method and check it against the new context.</p></div></details>
+            </article></div>
+          <div class="v2-paper-refs">
+          <h3>Related past-paper indexes</h3>
+          <table><thead><tr><th>Reference</th><th>Marks</th><th>Command word</th><th>Question type</th></tr></thead>
+          <tbody><tr><td>9618/12/W/25 Q10(c)</td><td>3</td><td>describe</td><td>explain</td></tr><tr><td>9618/13/W/25 Q8(b)</td><td>3</td><td>explain</td><td>explain</td></tr><tr><td>9618/13/W/25 Q8(d)</td><td>3</td><td>explain</td><td>explain</td></tr><tr><td>9618/13/W/25 Q8(a)</td><td>2</td><td>state</td><td>recall</td></tr></tbody></table>
+          <p class="v2-copyright-note">Index only: Cambridge question and mark-scheme wording is not reproduced on this public course page.</p>
+        </div>
         </section>
 
-        <!-- stage10-explanation:start capture -->
-        <section class="panel explanation-panel" id="explanation-capture" data-explains="capture" data-explanation-kind="mechanism" aria-labelledby="explanation-capture-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-029">
-          <h2 class="explanation-sr-only" id="explanation-capture-title">What input devices do</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-029-capture.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining What input devices do with a structured visual model." />
-            <figcaption class="explanation-sr-only">What input devices do: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> 1. Capture The device captures data from a user, document, object or environment.</li><li><strong>Lesson fact:</strong> 2. Convert The data is converted into a digital form the computer can process.</li><li><strong>Lesson fact:</strong> 3. Validate later Input is not automatically correct. Validation and verification may still be needed.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end capture -->
-        <section class="panel" id="devices" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-029">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 2</p>
-            <h2>Common input devices and what they capture</h2>
-          </div>
-          <div class="device-table" role="table" aria-label="Input devices comparison">
-            <div class="table-row table-head" role="row">
-              <div role="columnheader">Device</div>
-              <div role="columnheader">Captures</div>
-              <div role="columnheader">Good use</div>
-              <div role="columnheader">Exam warning</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Keyboard</div>
-              <div role="cell">Typed text/numbers</div>
-              <div role="cell">Short manual entries, corrections, commands</div>
-              <div role="cell">Slow and error-prone for long repeated codes</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Barcode / QR reader</div>
-              <div role="cell">Encoded product, ticket or ID data</div>
-              <div role="cell">Fast repeated identification</div>
-              <div role="cell">Needs a readable code; does not capture handwriting</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">RFID / NFC reader</div>
-              <div role="cell">Data from a tag/card without contact</div>
-              <div role="cell">Access cards, library books, stock tracking</div>
-              <div role="cell">Range/security/cost must match scenario</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">OCR / OMR</div>
-              <div role="cell">Printed characters / shaded marks</div>
-              <div role="cell">Forms, exam answer sheets, printed documents</div>
-              <div role="cell">OCR reads characters; OMR detects marks</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Sensor</div>
-              <div role="cell">Physical measurements</div>
-              <div role="cell">Temperature, light, pressure, motion systems</div>
-              <div role="cell">Usually automatic; often needs calibration</div>
-            </div>
-          </div>
+        <section class="v2-panel" id="summary">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 4 | close when ready</p><h2>Summary and exam reminders</h2></div>
+          <div class="v2-summary-grid"><div><h3>Summary</h3><ul class="v2-summary-list"><li>Define choosing a translator and understanding java translation with the exact technical vocabulary expected by the syllabus.</li><li>Use the lesson method on a fresh context and show the intermediate decision, representation or calculation.</li><li>Match the shape of the answer to the command word and the available marks.</li><li>Check the final answer against the scenario instead of repeating a memorised sentence.</li></ul></div><div class="v2-error"><h3>Common error to correct</h3><p>Students often say interpreters are &#39;bad compilers&#39;. Correction: they are different translation approaches with different use cases.</p></div></div>
+          <div class="v2-tip-box"><h3>Exam technique</h3><ul><li>Follow the command word: state gives a fact; explain links a cause to a consequence; compare covers both sides.</li><li>Match the number of independent points or method steps to the available marks.</li><li>For choosing a translator and understanding java translation, use the exact technical term before applying it to the scenario.</li></ul></div>
         </section>
 
-        <!-- stage10-explanation:start devices -->
-        <section class="panel explanation-panel" id="explanation-devices" data-explains="devices" data-explanation-kind="mechanism" aria-labelledby="explanation-devices-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-029">
-          <h2 class="explanation-sr-only" id="explanation-devices-title">Common input devices and what they capture</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-029-devices.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Common input devices and what they capture with a structured visual model." />
-            <figcaption class="explanation-sr-only">Common input devices and what they capture: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Captures</li><li><strong>Lesson fact:</strong> Good use</li><li><strong>Lesson fact:</strong> Exam warning</li><li><strong>Lesson fact:</strong> Keyboard</li><li><strong>Lesson fact:</strong> Typed text/numbers</li><li><strong>Lesson fact:</strong> Short manual entries, corrections, commands</li><li><strong>Lesson fact:</strong> Slow and error-prone for long repeated codes</li><li><strong>Lesson fact:</strong> Barcode / QR reader</li><li><strong>Lesson fact:</strong> Encoded product, ticket or ID data</li><li><strong>Lesson fact:</strong> Fast repeated identification</li><li><strong>Lesson fact:</strong> Needs a readable code; does not capture handwriting</li><li><strong>Lesson fact:</strong> RFID / NFC reader</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end devices -->
-        <section class="panel" id="automatic" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-029">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 3</p>
-            <h2>Manual input vs automatic data capture</h2>
-          </div>
-          <div class="compare-table" role="table" aria-label="Manual and automatic input comparison">
-            <div class="table-row table-head" role="row">
-              <div role="columnheader">Feature</div>
-              <div role="columnheader">Manual input</div>
-              <div role="columnheader">Automatic data capture</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Method</div>
-              <div role="cell">A person enters data, such as typing into a form.</div>
-              <div role="cell">A device captures data directly, such as scanning or sensing.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Advantages</div>
-              <div role="cell">Flexible, cheap for occasional input, useful for unusual data.</div>
-              <div role="cell">Fast, consistent, reduces transcription errors, suitable for high volume.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Limitations</div>
-              <div role="cell">Typing mistakes, slower, depends on user attention.</div>
-              <div role="cell">May need codes/tags/sensors; can fail if labels are damaged or conditions are poor.</div>
-            </div>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start automatic -->
-        <section class="panel explanation-panel" id="explanation-automatic" data-explains="automatic" data-explanation-kind="comparison" aria-labelledby="explanation-automatic-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-029">
-          <h2 class="explanation-sr-only" id="explanation-automatic-title">Manual input vs automatic data capture</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-029-automatic.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Manual input vs automatic data capture with a structured visual model." />
-            <figcaption class="explanation-sr-only">Manual input vs automatic data capture: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Manual input</li><li><strong>Lesson fact:</strong> Automatic data capture</li><li><strong>Lesson fact:</strong> A person enters data, such as typing into a form.</li><li><strong>Lesson fact:</strong> A device captures data directly, such as scanning or sensing.</li><li><strong>Lesson fact:</strong> Advantages</li><li><strong>Lesson fact:</strong> Flexible, cheap for occasional input, useful for unusual data.</li><li><strong>Lesson fact:</strong> Fast, consistent, reduces transcription errors, suitable for high volume.</li><li><strong>Lesson fact:</strong> Limitations</li><li><strong>Lesson fact:</strong> Typing mistakes, slower, depends on user attention.</li><li><strong>Lesson fact:</strong> May need codes/tags/sensors; can fail if labels are damaged or conditions are poor.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end automatic -->
-        <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-029">
-          <div class="section-title">
-            <p class="eyebrow">Interactive tool</p>
-            <h2>Choose the input device</h2>
-          </div>
-          <div class="converter-grid">
-            <label>
-              Scenario
-              <select id="scenarioInput">
-                <option value="checkout">A shop needs to identify products quickly at checkout</option>
-                <option value="exam">An exam board marks multiple-choice answer sheets</option>
-                <option value="passport">A border system reads printed passport text</option>
-                <option value="greenhouse">A greenhouse records temperature every minute</option>
-                <option value="warehouse">A warehouse tracks stock in sealed boxes</option>
-                <option value="podcast">A student records spoken audio for a podcast</option>
-              </select>
-            </label>
-            <button type="button" id="chooseBtn">Recommend device</button>
-          </div>
-          <div class="result-box" id="componentResult" aria-live="polite"></div>
-          <div class="method-box" id="componentMethod"></div>
-        </section>
-
-        <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-029">
-          <div class="section-title">
-            <p class="eyebrow">Worked examples</p>
-            <h2>From device name to exam-worthy justification</h2>
-          </div>
-          <div class="example-tabs" role="tablist" aria-label="Worked examples">
-            <button class="tab active" type="button" data-example="checkout">Checkout</button>
-            <button class="tab" type="button" data-example="exam">OMR sheets</button>
-            <button class="tab" type="button" data-example="greenhouse">Greenhouse sensor</button>
-          </div>
-          <article class="example-box" id="exampleBox"></article>
-        </section>
-
-        <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-029">
-          <div class="section-title">
-            <p class="eyebrow">Your turn</p>
-            <h2>Practice with instant checking</h2>
-          </div>
-          <div class="practice-list" id="practiceList"></div>
-          <button class="primary-button" type="button" id="checkPractice">Check practice</button>
-          <div class="feedback" id="practiceFeedback" aria-live="polite"></div>
-        </section>
-
-        <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-029">
-          <div class="section-title">
-            <p class="eyebrow">Mistake debugging</p>
-            <h2>Fix the weak input answer</h2>
-          </div>
-          <div class="mistake-grid">
-            <article>
-              <p class="wrong">"Use a keyboard because it is easy."</p>
-              <button class="answer-toggle" type="button" data-answer="mistake1">Show correction</button>
-              <p class="answer" id="mistake1">This is too vague. A stronger answer links feature to scenario: use a barcode reader because it captures product codes faster than typing and reduces transcription errors at a busy checkout.</p>
-            </article>
-            <article>
-              <p class="wrong">"OMR reads printed words from a form."</p>
-              <button class="answer-toggle" type="button" data-answer="mistake2">Show correction</button>
-              <p class="answer" id="mistake2">OMR detects shaded marks or tick boxes. OCR recognises printed characters. The letter R is not enough; the middle letter matters.</p>
-            </article>
-          </div>
-        </section>
-
-        <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-029">
-          <div class="section-title">
-            <p class="eyebrow">Exam-style questions</p>
-            <h2>Questions with expandable MS</h2>
-            <p>Attempt first, then expand the mark scheme. Credit depends on accurate device role plus a scenario-linked reason.</p>
-          </div>
-          <div class="exam-list" id="examList"></div>
-        </section>
-
-        <section class="panel summary-panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-029">
-          <div class="section-title">
-            <p class="eyebrow">Summary</p>
-            <h2>Input device answers need a mechanism</h2>
-          </div>
-          <div class="summary-grid">
-            <div><strong>Input device</strong><span>Captures data from a user, object, document or environment.</span></div>
-            <div><strong>Automatic capture</strong><span>Reduces manual typing and is useful for repeated or high-volume data.</span></div>
-            <div><strong>OCR vs OMR</strong><span>OCR recognises characters; OMR detects marks.</span></div>
-            <div><strong>Barcode / QR</strong><span>Reads encoded data quickly if the code is present and readable.</span></div>
-            <div><strong>Sensor</strong><span>Captures physical measurements, often automatically.</span></div>
-            <div><strong>Suitability</strong><span>Name the feature and link it to the scenario consequence.</span></div>
-          </div>
-        </section>
-
-        <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
-          <div class="section-title">
-            <p class="eyebrow">Homework</p>
-            <h2>Clear tasks</h2>
-          </div>
-          <ol class="homework-list">
-            <li>Create a two-column table: five input devices and the exact data each captures.</li>
-            <li>Write a 4-mark answer comparing barcode reader and keyboard for supermarket checkout input.</li>
-            <li>Choose a suitable input method for a school library, a greenhouse and an exam marking system. Give one reason for each.</li>
-            <li>Write one sentence explaining the difference between OCR and OMR.</li>
-          </ol>
-          <button class="answer-toggle" type="button" data-answer="homeworkAnswers">Show homework guidance</button>
-          <div class="answer-panel" id="homeworkAnswers">
-            <p><strong>Device table:</strong> include examples such as keyboard -> typed text; barcode reader -> encoded product ID; sensor -> physical measurement.</p>
-            <p><strong>Checkout answer:</strong> barcode reader is faster and reduces transcription errors; keyboard remains useful for exceptions or manual correction.</p>
-            <p><strong>Scenario choices:</strong> library can use barcode/RFID; greenhouse can use temperature/humidity sensors; exam system can use OMR for shaded multiple-choice sheets.</p>
-            <p><strong>OCR/OMR:</strong> OCR recognises printed characters; OMR detects the position of shaded marks.</p>
-          </div>
-        </section>
+        <nav class="v2-bottom-nav" aria-label="Previous and next lesson"><a href="../lesson-028/" >Previous lesson</a><a href="../lesson-030/" >Next lesson</a></nav>
       </div>
     </main>
-
-    <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=3"></script>
-    <script src="../lesson-toolbar.js?v=3"></script>
-    <script src="../stage7-accessibility.js?v=4"></script>
+    <script src="../course-v2.js?v=1"></script>
   </body>
 </html>

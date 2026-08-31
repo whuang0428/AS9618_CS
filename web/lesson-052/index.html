@@ -3,396 +3,89 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 052 | Section 4 review: tracing processor behaviour</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <title>AS9618 Lesson 052 | Stepwise refinement</title>
     <link rel="icon" href="data:" />
-    <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
+    <link rel="stylesheet" href="../course-v2.css?v=3" />
   </head>
-  <body>
+  <body data-course-version="2" data-lesson-id="052" data-syllabus-ids="S9.08">
     <a class="skip-link" href="#main-content">Skip to main content</a>
-    <header class="topbar">
-      <div>
-        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 4</p>
-        <h1>Section 4 review: tracing processor behaviour</h1>
-      </div>
-      <div class="action-panel" aria-label="Page controls">
-        <a class="course-home-link" href="../">Course home</a>
-        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
-      </div>
+    <header class="v2-topbar">
+      <div><p class="v2-eyebrow">Cambridge AS9618 | Paper 2 | Section 9: Algorithm design and problem-solving</p><h1>Stepwise refinement</h1></div>
+      <nav class="v2-actions" aria-label="Lesson actions"><a href="../">Course home</a><a href="../assessments/">Assessment bank</a><button type="button" id="printLesson">Print</button></nav>
     </header>
+    <main class="v2-shell" id="main-content" tabindex="-1">
+      <nav class="v2-toc" aria-label="Lesson contents"><strong>Lesson 052</strong><a href="#overview">Overview</a><a href="#prerequisite">Prerequisite</a><a href="#explanation">Explanation</a><a href="#practice">Practice</a><a href="#summary">Summary</a></nav>
+      <div class="v2-content">
+        <section class="v2-hero" id="overview">
+          <div><p class="v2-eyebrow">Flexible-depth lesson</p><h2>Stepwise refinement</h2><p>S9.08 | Select what to omit, teach briefly or explore in depth.</p></div>
+          <div class="v2-time-grid" aria-label="Available lesson depth"><div><strong>Quick</strong><span>diagnose + essentials</span></div><div><strong>Full</strong><span>complete explanation</span></div><div><strong>Deep</strong><span>prerequisites + extension</span></div><div><strong>Choose</strong><span>practice by need</span></div></div>
+        </section>
 
-    <main class="layout" id="main-content" tabindex="-1">
-      <aside class="lesson-nav" aria-label="Lesson navigation">
-        <a href="#overview">Overview</a>
-        <a href="#hook">Warm-up</a>
-        <a href="#map">Section map</a>
-        <a href="#classifier">Classifier</a>
-        <a href="#retrieval">Retrieval</a>
-        <a href="#compare">Compare traps</a>
-        <a href="#timed">Timed task</a>
-        <a href="#clinic">Answer clinic</a>
-        <a href="#tool">Review tool</a>
-        <a href="#examples">Examples</a>
-        <a href="#practice">Practice</a>
-        <a href="#debug">Debugging</a>
-        <a href="#exam">Exam-style</a>
-        <a href="#summary">Summary</a>
-        <a href="#homework">Homework</a>
-      </aside>
+        <section class="v2-panel v2-route-menu" aria-labelledby="route-heading">
+          <div class="v2-heading"><p class="v2-eyebrow">Teacher choice</p><h2 id="route-heading">Choose the depth for this group</h2></div>
+          <div class="v2-route-grid"><article><h3>Quick route</h3><p>Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.</p></article><article><h3>Full route</h3><p>Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.</p></article><article><h3>Deep route</h3><p>Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.</p></article></div>
+        </section>
 
-      <div class="lesson-content">
-        <!-- remediation-v2-stage3-scope:start -->
-        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>This lesson is Optional enrichment or review. It does not establish first use of a new syllabus requirement and is excluded from compulsory coverage and prerequisite statistics.</p></aside>
-        <!-- remediation-v2-stage3-scope:end -->
+        <section class="v2-panel" id="prerequisite">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 1 | optional depth</p><h2>Prerequisite knowledge and quick diagnostic</h2></div>
+          <div class="v2-diagnostic"><p>Recall S9.02, S9.03 before starting this lesson.</p></div>
+          <p>Give one accurate definition or method step before continuing. If it is missing, revisit only that prerequisite.</p>
+          <details class="v2-prerequisite-detail"><summary>Open optional prerequisite refresher</summary><ul><li>Decomposition must break a problem into sub-problems and lead to a program module, identified at design level as a procedure or function with a distinct responsibility.</li><li>Use decomposition and express a problem as modules.</li><li>An algorithm is a solution to a problem expressed as a sequence of defined steps; the definition requires both the problem-solving purpose and the defined sequence.</li><li>Understand what an algorithm is.</li></ul></details>
+        </section>
 
-<section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-052">
-          <div class="hero-copy">
-            <p class="lesson-meta">Lesson 052 | 45 minutes | Paper 1 Section 4 | Stage review</p>
-            <h2>Identify the relevant processor concept before answering.</h2>
-            <p>
-              Section 4 questions often look similar: registers, buses, instructions,
-              interrupts and performance all involve the CPU. This review trains topic
-              recognition, trace accuracy and Cambridge-style correction.
-            </p>
-            <div class="objective-grid" aria-label="Learning objectives">
-              <div><strong>Recognise</strong><span>which Section 4 concept a mixed question is testing</span></div>
-              <div><strong>Trace</strong><span>processor behaviour using precise registers, buses and instruction stages</span></div>
-              <div><strong>Improve</strong><span>weak answers using mark-scheme language and correction prompts</span></div>
+        <section class="v2-panel" id="explanation">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 2 | deliberately over-complete</p><h2>Knowledge explanation</h2></div>
+          <h3>Learning objectives</h3><ul class="v2-objectives"><li>Use stepwise refinement to develop an algorithm.</li></ul>
+          <details class="v2-concept-menu"><summary>Open the concept checklist and choose what to teach</summary><ul><li>stepwise</li><li>refinement</li><li>algorithm</li><li>implement</li></ul></details>
+          <div class="v2-explanation-grid">
+            <div>
+              <article class="v2-core-facts"><h3>Detailed explanation</h3><p class="v2-teacher-note">Teach all points, or select only the ones this group needs. The list is intentionally fuller than a fixed lesson slot.</p><ul class="v2-facts"><li>Use stepwise refinement to develop an algorithm from a high-level solution to a level of detail from which a program can be written; each level must preserve the parent purpose.</li><li>Stepwise refinement starts with a high-level algorithm and repeatedly replaces each complex step with a smaller sequence of defined substeps. Refinement stops when every step is precise enough to implement and its input and output are clear.</li><li>At each level, preserve the parent step&#39;s purpose and input-process-output relationship. Related substeps can be expressed as program modules, including procedures that perform actions and functions that return calculated values.</li><li>Refinement supports review, implementation and testing because each module has a limited responsibility. It is not merely adding prose: every level must reduce ambiguity and collectively remain a complete solution.</li><li>Algorithm design review: define an algorithm as a solution expressed as a sequence of defined steps; use abstraction to retain essential details in an abstract model; use decomposition to express the problem as connected modules; and choose meaningful identifiers recorded in an identifier table.</li><li>Solution review: design with input-process-output, use sequence, selection and iteration, document the same algorithm in structured English, a flowchart or pseudocode, and convert between the specified representations without changing its control flow.</li><li>Development review: use stepwise refinement until steps are programmable, and construct and interpret logic statements that define decisions, loop conditions or Boolean values. Core answers must not replace these requirements with tracing, Java syntax or vague planning advice.</li></ul></article>
+              <article class="v2-example"><h3>Worked example</h3><p>Refine an order-processing algorithm: Level 1: InputOrder; ValidateOrder; CalculateTotal; ProduceReceipt. Refine CalculateTotal into Set Total to 0; for each item validate Quantity; add Price Quantity; apply Discount; return Total. CalculateTotal can be a function returning Total, while ProduceReceipt can be a procedure receiving the completed total.</p></article>
+              <aside class="v2-extension"><h3>Beyond syllabus / 延伸知识（不要求背诵）</h3><p>the same algorithm can be expressed in many programming languages; its logic should remain independent of syntax.</p></aside>
             </div>
-          </div>
-          <div class="review-card" aria-label="Section 4 review sketch">
-            <div class="review-stack">
-              <span>Identify topic</span>
-              <span>State mechanism</span>
-              <span>Trace or compare</span>
-              <span>Add consequence</span>
-              <span>Check MS wording</span>
-            </div>
-            <p>The first mark is often knowing what the question is really asking.</p>
+            <figure class="v2-visual">
+              <img src="../assets/diagrams/stage10-infographics/stage10-lesson-112-analyser.jpg" alt="Refinement stops when every step is precise enough to implement and its input and output are clear.. At each level, preserve the parent step&#39;s purpose and input-process-output relationship.. Related substeps can be expressed as program modules, including procedures that perform actions and functions that return calculated values.. Every level must reduce ambiguity and collectively remain a complete solution." loading="lazy" />
+              <figcaption>Stepwise refinement turns a high-level algorithm into implementable modules. One maintained explanation is shown as an image on larger screens and as text on small screens.</figcaption>
+              <div class="v2-mobile-visual-text" aria-label="Mobile text alternative"><ul><li>Refinement stops when every step is precise enough to implement and its input and output are clear.</li><li>At each level, preserve the parent step&#39;s purpose and input-process-output relationship.</li><li>Related substeps can be expressed as program modules, including procedures that perform actions and functions that return calculated values.</li><li>Every level must reduce ambiguity and collectively remain a complete solution.</li></ul></div>
+            </figure>
           </div>
         </section>
 
-        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-052">
-          <article class="why-card">
-            <h3>Why this matters</h3>
-            <p>Students often know the content but answer the neighbouring topic. Review lessons fix recognition and precision.</p>
-          </article>
-          <article class="trap-card">
-            <h3>Common error</h3>
-            <p>Do not write a memorised paragraph about the CPU if the question asks specifically about MAR, indirect addressing or cache.</p>
-          </article>
+        <section class="v2-panel" id="practice">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 3 | select by learner need</p><h2>Practice by question type</h2></div>
+          <div class="v2-question-list"><article class="v2-question" data-question-id="Q-L052-01" data-semantic-fingerprint="S9.08|stepwise-refinement|apply|what-starting-point|written|recall">
+              <div class="v2-question-head"><span class="v2-badge">apply</span><span class="v2-badge">recall</span><span class="v2-badge difficulty">foundation</span><span class="v2-badge">2 marks</span></div>
+              <p><strong>Question 1.</strong> What is the starting point of stepwise refinement?</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> A high-level algorithm or task.</p><p><strong>Marking guidance:</strong> Award one mark for each distinct, technically accurate point or method step.</p><p><strong>Common error:</strong> For the command word apply, perform that exact action; do not replace it with an unrelated fact.</p></div></details>
+            </article><article class="v2-question" data-question-id="Q-L052-02" data-semantic-fingerprint="S9.08|stepwise-refinement|apply|apply-levels-&#39;register-new|written|recall">
+              <div class="v2-question-head"><span class="v2-badge">apply</span><span class="v2-badge">recall</span><span class="v2-badge difficulty">application</span><span class="v2-badge">5 marks</span></div>
+              <p><strong>Question 2.</strong> Apply two levels of stepwise refinement to &#39;register a new library member&#39;, showing module inputs/outputs and identifying one procedure or function.</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> Level 1 separates capture, validation, storage and confirmation responsibilities; Level 2 replaces at least one complex step with smaller ordered substeps; module inputs and outputs are clear; procedure or function choice matches action versus returned value; refined steps collectively implement the original task</p><p><strong>Marking guidance:</strong> Do not award unrelated features, repeated high-level labels or a level that does not reduce ambiguity.</p><p><strong>Common error:</strong> Do not repeat the same point in different words; each mark needs a separate idea or method step.</p></div></details>
+            </article><article class="v2-question" data-question-id="Q-L052-03" data-semantic-fingerprint="S9.08|stepwise-refinement|explain|would-applied-suitable-computing|visual|explain">
+              <div class="v2-question-head"><span class="v2-badge">explain</span><span class="v2-badge">explain</span><span class="v2-badge difficulty">transfer</span><span class="v2-badge">3 marks</span></div>
+              <p><strong>Question 3.</strong> Explain how stepwise refinement would be applied in a suitable computing context.</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> Stepwise refinement starts with a high-level algorithm and repeatedly replaces each complex step with a smaller sequence of defined substeps. Refinement stops when every step is precise enough to implement and its input and output are clear. At each level, preserve the parent step&#39;s purpose and input-process-output relationship. Related substeps can be expressed as program modules, including procedures that perform actions and functions that return calculated values. Refinement supports review, implementation and testing because each module has a limited responsibility. It is not merely adding prose: every level must reduce ambiguity and collectively remain a complete solution.</p><p><strong>Marking guidance:</strong> Each mark needs a relevant point linked to the stated context.</p><p><strong>Common error:</strong> Do not copy the worked example unchanged; transfer the method and check it against the new context.</p></div></details>
+            </article></div>
+          <div class="v2-paper-refs">
+          <h3>Related past-paper indexes</h3>
+          <table><thead><tr><th>Reference</th><th>Marks</th><th>Command word</th><th>Question type</th></tr></thead>
+          <tbody><tr><td>9618/23/W/25 Q2(a)</td><td>6</td><td>describe</td><td>explain</td></tr><tr><td>9618/22/S/25 Q2(a)</td><td>2</td><td>calculate</td><td>calculate</td></tr><tr><td>9618/22/S/25 Q2(ii)</td><td>2</td><td>calculate</td><td>calculate</td></tr><tr><td>9618/22/S/25 Q2(iii)</td><td>2</td><td>calculate</td><td>calculate</td></tr></tbody></table>
+          <p class="v2-copyright-note">Index only: Cambridge question and mark-scheme wording is not reproduced on this public course page.</p>
+        </div>
         </section>
 
-        <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-052">
-          <div class="section-title">
-            <p class="eyebrow">Warm-up hook</p>
-            <h2>Which topic is being tested?</h2>
-            <p>Click the best label for this mini-question: "Explain why `LOAD #5` and `LOAD 5` may load different values."</p>
-          </div>
-          <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="addressing">Addressing modes</button>
-            <button class="choice-card" type="button" data-hook="interrupts">Interrupt handling</button>
-            <button class="choice-card" type="button" data-hook="pipelining">Pipelining</button>
-            <button class="choice-card" type="button" data-hook="cache">Cache memory</button>
-          </div>
-          <div class="feedback" id="hookFeedback" aria-live="polite">
-            Choose one. A review lesson begins by naming the correct topic before writing the answer.
-          </div>
+        <section class="v2-panel" id="summary">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 4 | close when ready</p><h2>Summary and exam reminders</h2></div>
+          <div class="v2-summary-grid"><div><h3>Summary</h3><ul class="v2-summary-list"><li>Define stepwise refinement with the exact technical vocabulary expected by the syllabus.</li><li>Use the lesson method on a fresh context and show the intermediate decision, representation or calculation.</li><li>Match the shape of the answer to the command word and the available marks.</li><li>Check the final answer against the scenario instead of repeating a memorised sentence.</li></ul></div><div class="v2-error"><h3>Common error to correct</h3><p>Students often start coding before defining the output. Correction: an algorithm is easier to design when the required result is known first.</p></div></div>
+          <div class="v2-tip-box"><h3>Exam technique</h3><ul><li>Follow the command word: state gives a fact; explain links a cause to a consequence; compare covers both sides.</li><li>Match the number of independent points or method steps to the available marks.</li><li>For stepwise refinement, use the exact technical term before applying it to the scenario.</li></ul></div>
         </section>
 
-        <section class="panel" id="map" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-052">
-          <div class="section-title">
-            <p class="eyebrow">Section map</p>
-            <h2>Section 4 concept map</h2>
-          </div>
-          <div class="map-grid">
-            <article><strong>CPU components</strong><span>ALU, CU, registers, buses and clock coordinate instruction processing.</span></article>
-            <article><strong>FDE cycle</strong><span>PC, MAR, MDR and CIR move address, instruction and data through fetch-decode-execute.</span></article>
-            <article><strong>Instruction set</strong><span>Machine code depends on a processor's instruction set; assembly uses mnemonics and labels.</span></article>
-            <article><strong>Addressing modes</strong><span>Immediate, direct, indirect and indexed modes change operand interpretation.</span></article>
-            <article><strong>Interrupts</strong><span>The CPU saves state, runs an ISR, then restores state and resumes.</span></article>
-            <article><strong>Performance</strong><span>Clock speed, cores, cache, word length and pipelining affect performance with limits.</span></article>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start map -->
-        <section class="panel explanation-panel" id="explanation-map" data-explains="map" data-explanation-kind="synthesis" aria-labelledby="explanation-map-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-052">
-          <h2 class="explanation-sr-only" id="explanation-map-title">Section 4 concept map</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-052-map.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Section 4 concept map with a structured visual model." />
-            <figcaption class="explanation-sr-only">Section 4 concept map: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Fetch copies PC to MAR, reads memory into MDR, copies MDR to CIR and increments PC.</li><li><strong>Lesson fact:</strong> Decode begins after CIR holds the current instruction; the control unit interprets its opcode and operands.</li><li><strong>Lesson fact:</strong> The address in MAR does not flow into MDR; memory returns the addressed instruction or data into MDR.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end map -->
-        <section class="panel" id="classifier" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-052">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 1</p>
-            <h2>Classify the question before answering</h2>
-          </div>
-          <div class="classifier-table" role="table" aria-label="Question classifier">
-            <div class="table-row table-head" role="row">
-              <div role="columnheader">Question clue</div>
-              <div role="columnheader">Likely topic</div>
-              <div role="columnheader">What to include</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">PC, MAR, MDR, CIR, ACC, status flags</div>
-              <div role="cell">Registers / FDE cycle</div>
-              <div role="cell">Temporary storage role and sequence.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Address bus, data bus, control bus</div>
-              <div role="cell">System buses</div>
-              <div role="cell">Direction, content carried and purpose.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Mnemonic, opcode, operand, label</div>
-              <div role="cell">Instruction sets / assembly</div>
-              <div role="cell">Human-readable representation and processor-specific machine code.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">`#`, address, pointer, base + index</div>
-              <div role="cell">Addressing modes</div>
-              <div role="cell">How the operand is interpreted and effective address.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">ISR, save state, device signal</div>
-              <div role="cell">Interrupts</div>
-              <div role="cell">Pause, save state, run ISR, restore, resume.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Throughput, stall, branch, cache, cores</div>
-              <div role="cell">Performance / pipelining</div>
-              <div role="cell">Mechanism, condition and limitation.</div>
-            </div>
-          </div>
-        </section>
-
-        <section class="panel" id="retrieval" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-052">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 2</p>
-            <h2>Retrieval grid: say the role, not just the name</h2>
-          </div>
-          <div class="retrieval-grid">
-            <article><strong>PC</strong><span>Holds address of the next instruction to fetch.</span></article>
-            <article><strong>MAR</strong><span>Holds the memory address being accessed.</span></article>
-            <article><strong>MDR</strong><span>Holds data/instruction transferred to or from memory.</span></article>
-            <article><strong>CIR</strong><span>Holds the current instruction while it is decoded/executed.</span></article>
-            <article><strong>Control bus</strong><span>Carries control/timing signals such as read, write and interrupt.</span></article>
-            <article><strong>Cache</strong><span>Small fast memory storing frequently/recently used items.</span></article>
-            <article><strong>ISR</strong><span>Routine that handles a specific interrupt.</span></article>
-            <article><strong>Pipeline stall</strong><span>Pause because an instruction cannot safely continue.</span></article>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start retrieval -->
-        <section class="panel explanation-panel" id="explanation-retrieval" data-explains="retrieval" data-explanation-kind="synthesis" aria-labelledby="explanation-retrieval-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-052">
-          <h2 class="explanation-sr-only" id="explanation-retrieval-title">Retrieval grid: say the role, not just the name</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-052-retrieval.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Retrieval grid: say the role, not just the name with a structured visual model." />
-            <figcaption class="explanation-sr-only">Retrieval grid: say the role, not just the name: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> PC holds the address of the next instruction; MAR holds the memory address being accessed.</li><li><strong>Lesson fact:</strong> The address bus carries addresses between the processor and memory.</li><li><strong>Lesson fact:</strong> MDR holds data or instructions transferred through the data bus.</li><li><strong>Lesson fact:</strong> CIR holds the current instruction while it is decoded and executed.</li><li><strong>Lesson fact:</strong> The control bus carries control and timing signals such as read, write and interrupt.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end retrieval -->
-        <section class="panel" id="compare" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-052">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 3</p>
-            <h2>Common compare traps</h2>
-          </div>
-          <div class="compare-grid">
-            <article>
-              <h3>MAR vs MDR</h3>
-              <p>MAR holds an address. MDR holds the data or instruction being transferred. One points where; the other carries what.</p>
-            </article>
-            <article>
-              <h3>Direct vs indirect</h3>
-              <p>Direct uses the operand as the address of the value. Indirect uses the operand as the address of a pointer to the value.</p>
-            </article>
-            <article>
-              <h3>Clock speed vs throughput</h3>
-              <p>Clock speed is cycles per second. Throughput is completed work per unit time. They are related, not identical.</p>
-            </article>
-            <article>
-              <h3>Interrupt vs polling</h3>
-              <p>An interrupt lets a device signal the CPU. Polling means the CPU repeatedly checks the device/status flag.</p>
-            </article>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start compare -->
-        <section class="panel explanation-panel" id="explanation-compare" data-explains="compare" data-explanation-kind="synthesis" aria-labelledby="explanation-compare-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-052">
-          <h2 class="explanation-sr-only" id="explanation-compare-title">Common compare traps</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-052-compare.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Common compare traps with a structured visual model." />
-            <figcaption class="explanation-sr-only">Common compare traps: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> MAR vs MDR</li><li><strong>Lesson fact:</strong> MAR holds an address. MDR holds the data or instruction being transferred. One points where; the other carries what.</li><li><strong>Lesson fact:</strong> Direct vs indirect</li><li><strong>Lesson fact:</strong> Direct uses the operand as the address of the value. Indirect uses the operand as the address of a pointer to the value.</li><li><strong>Lesson fact:</strong> Clock speed vs throughput</li><li><strong>Lesson fact:</strong> Clock speed is cycles per second. Throughput is completed work per unit time. They are related, not identical.</li><li><strong>Lesson fact:</strong> Interrupt vs polling</li><li><strong>Lesson fact:</strong> An interrupt lets a device signal the CPU. Polling means the CPU repeatedly checks the device/status flag.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end compare -->
-        <section class="panel" id="timed" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-052">
-          <div class="section-title">
-            <p class="eyebrow">Timed task</p>
-            <h2>8-minute mixed Section 4 response</h2>
-            <p>Choose one question, write the answer, then compare with the expandable MS in the exam section.</p>
-          </div>
-          <div class="timed-grid">
-            <article><strong>Question A</strong><span>Trace the fetch stage and name the role of PC, MAR and MDR.</span></article>
-            <article><strong>Question B</strong><span>Explain why an interrupt service routine must save and restore processor state.</span></article>
-            <article><strong>Question C</strong><span>Discuss why pipelining may improve CPU performance but not always reach ideal speed-up.</span></article>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start timed -->
-        <section class="panel explanation-panel" id="explanation-timed" data-explains="timed" data-explanation-kind="synthesis" aria-labelledby="explanation-timed-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-052">
-          <h2 class="explanation-sr-only" id="explanation-timed-title">8-minute mixed Section 4 response</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-052-timed.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining 8-minute mixed Section 4 response with a structured visual model." />
-            <figcaption class="explanation-sr-only">8-minute mixed Section 4 response: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Timed task</li><li><strong>Lesson fact:</strong> Choose one question, write the answer, then compare with the expandable MS in the exam section.</li><li><strong>Lesson fact:</strong> Question A Trace the fetch stage and name the role of PC, MAR and MDR.</li><li><strong>Lesson fact:</strong> Question B Explain why an interrupt service routine must save and restore processor state.</li><li><strong>Lesson fact:</strong> Question C Discuss why pipelining may improve CPU performance but not always reach ideal speed-up.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end timed -->
-        <section class="panel" id="clinic" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-052">
-          <div class="section-title">
-            <p class="eyebrow">Answer clinic</p>
-            <h2>Turn vague into mark-worthy</h2>
-          </div>
-          <div class="clinic-card">
-            <p><strong>Weak answer:</strong> "The CPU uses registers and buses to get instructions. It is faster because of cache and pipelining."</p>
-            <p><strong>Diagnosis:</strong> This names several topics but does not answer any one of them precisely.</p>
-            <p><strong>Fix pattern:</strong> Topic → mechanism → exact role/sequence → consequence.</p>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start clinic -->
-        <section class="panel explanation-panel" id="explanation-clinic" data-explains="clinic" data-explanation-kind="synthesis" aria-labelledby="explanation-clinic-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-052">
-          <h2 class="explanation-sr-only" id="explanation-clinic-title">Turn vague into mark-worthy</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-052-clinic.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Turn vague into mark-worthy with a structured visual model." />
-            <figcaption class="explanation-sr-only">Turn vague into mark-worthy: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Answer clinic</li><li><strong>Lesson fact:</strong> Weak answer: &quot;The CPU uses registers and buses to get instructions. It is faster because of cache and pipelining.&quot;</li><li><strong>Lesson fact:</strong> Diagnosis: This names several topics but does not answer any one of them precisely.</li><li><strong>Lesson fact:</strong> Fix pattern: Topic → mechanism → exact role/sequence → consequence.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end clinic -->
-        <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-052">
-          <div class="section-title">
-            <p class="eyebrow">Interactive tool</p>
-            <h2>Question topic classifier</h2>
-            <p>Select a clue and practise choosing the correct Section 4 response pattern.</p>
-          </div>
-          <div class="converter-grid">
-            <label>
-              Question clue
-              <select id="scenarioInput">
-                <option value="fde">"Describe what happens during the fetch stage."</option>
-                <option value="bus">"Explain the role of the control bus."</option>
-                <option value="mode">"Compare LOAD #20 and LOAD 20."</option>
-                <option value="interrupt">"A device sends an interrupt signal."</option>
-                <option value="pipeline">"A branch instruction is in a pipeline."</option>
-                <option value="performance">"A processor has more cores and larger cache."</option>
-              </select>
-            </label>
-            <button type="button" id="simulateBtn">Classify</button>
-          </div>
-          <div class="result-box" id="simulateResult" aria-live="polite"></div>
-          <div class="method-box" id="simulateMethod"></div>
-          <div class="reject-box" id="simulateTrap"></div>
-        </section>
-
-        <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-052">
-          <div class="section-title">
-            <p class="eyebrow">Worked examples</p>
-            <h2>Annotate where marks come from</h2>
-          </div>
-          <div class="example-tabs" role="tablist" aria-label="Worked examples">
-            <button class="tab active" type="button" data-example="fde">FDE trace</button>
-            <button class="tab" type="button" data-example="addressing">Addressing</button>
-            <button class="tab" type="button" data-example="interrupt">Interrupt</button>
-            <button class="tab" type="button" data-example="pipeline">Pipelining</button>
-          </div>
-          <article class="example-box" id="exampleBox"></article>
-        </section>
-
-        <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-052">
-          <div class="section-title">
-            <p class="eyebrow">5-minute quiz</p>
-            <h2>Practice with instant checking</h2>
-            <p>These are deliberately mixed. Identify the topic before typing the answer.</p>
-          </div>
-          <div class="practice-list" id="practiceList"></div>
-        </section>
-
-        <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-052">
-          <div class="section-title">
-            <p class="eyebrow">Mistake debugging</p>
-            <h2>Repair common Section 4 errors</h2>
-          </div>
-          <div class="mistake-grid" id="mistakeList"></div>
-        </section>
-
-        <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-052">
-          <div class="section-title">
-            <p class="eyebrow">Stage review exam-style questions</p>
-            <h2>Mixed Section 4 questions with expandable mark schemes</h2>
-            <p>These are original Cambridge-style questions. MS notes are strict about topic recognition and precise processor vocabulary.</p>
-          </div>
-          <div class="exam-list" id="examList"></div>
-        </section>
-
-        <section class="panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-052">
-          <div class="section-title">
-            <p class="eyebrow">Summary</p>
-            <h2>Review method: classify, trace, correct</h2>
-          </div>
-          <div class="summary-grid">
-            <div><strong>Classify</strong><span>Identify the topic from clue words before answering.</span></div>
-            <div><strong>Trace</strong><span>Use correct sequence for FDE, interrupts, addressing or pipelines.</span></div>
-            <div><strong>Compare</strong><span>State the exact difference between similar terms.</span></div>
-            <div><strong>Consequence</strong><span>Explain why the mechanism matters in the scenario.</span></div>
-            <div><strong>Correct</strong><span>Rewrite vague answers using MS wording.</span></div>
-            <div><strong>Exam habit</strong><span>One precise mechanism beats three vague keywords.</span></div>
-          </div>
-        </section>
-
-        <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
-          <div class="section-title">
-            <p class="eyebrow">Homework</p>
-            <h2>Finish the Section 4 correction cycle</h2>
-          </div>
-          <ol class="homework-list">
-            <li>Create a one-page Section 4 retrieval sheet with six boxes: registers, buses, FDE, assembly/addressing, interrupts, performance/pipelining.</li>
-            <li>Answer Question A, B and C from the timed task in full sentences.</li>
-            <li>Mark each answer using the expandable MS style: underline each mark-worthy phrase.</li>
-            <li>Rewrite the weakest answer in a second colour, adding missing mechanism and consequence.</li>
-            <li>Write three "do not confuse" pairs, such as MAR/MDR or direct/indirect addressing.</li>
-          </ol>
-        </section>
+        <nav class="v2-bottom-nav" aria-label="Previous and next lesson"><a href="../lesson-051/" >Previous lesson</a><a href="../lesson-053/" >Next lesson</a></nav>
       </div>
     </main>
-    <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=3"></script>
-    <script src="../lesson-toolbar.js?v=3"></script>
-    <script src="../stage7-accessibility.js?v=4"></script>
+    <script src="../course-v2.js?v=1"></script>
   </body>
 </html>

@@ -3,419 +3,93 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 090 | Section 8 required-content checkpoint</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <title>AS9618 Lesson 090 | Paper 2 integrated review and pseudocode clinic</title>
     <link rel="icon" href="data:" />
-    <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
+    <link rel="stylesheet" href="../course-v2.css?v=3" />
   </head>
-  <body>
+  <body data-course-version="2" data-lesson-id="090" data-syllabus-ids="S9.01,S9.02,S9.03,S9.04,S9.05,S9.06,S9.07,S9.08,S9.09,S10.01,S10.02,S10.03,S10.04,S10.05,S10.06,S10.07,S10.08,S10.09,S10.10,S11.01,S11.02,S11.03,S11.04,S11.05,S11.06,S11.07,S11.08,S11.09,S12.01,S12.02,S12.03,S12.04,S12.05,S12.06,S12.07,S12.08,S12.09">
     <a class="skip-link" href="#main-content">Skip to main content</a>
-    <header class="topbar">
-      <div>
-        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 8</p>
-        <h1>Section 8 required-content checkpoint</h1>
-      </div>
-      <div class="action-panel" aria-label="Page controls">
-        <a class="course-home-link" href="../">Course home</a>
-        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
-      </div>
+    <header class="v2-topbar">
+      <div><p class="v2-eyebrow">Cambridge AS9618 | Paper 2 | Paper 2 integrated review</p><h1>Paper 2 integrated review and pseudocode clinic</h1></div>
+      <nav class="v2-actions" aria-label="Lesson actions"><a href="../">Course home</a><a href="../assessments/">Assessment bank</a><button type="button" id="printLesson">Print</button></nav>
     </header>
-
-    <main class="layout" id="main-content" tabindex="-1">
-      <aside class="lesson-nav" aria-label="Lesson navigation">
-        <a href="#overview">Overview</a>
-        <a href="#hook">Warm-up</a>
-        <a href="#map">Retrieval map</a>
-        <a href="#design">Design review</a>
-        <a href="#sql">SQL review</a>
-        <a href="#protection">Protection review</a>
-        <a href="#classifier">Question classifier</a>
-        <a href="#tracer">SQL tracer</a>
-        <a href="#examples">Examples</a>
-        <a href="#practice">Practice</a>
-        <a href="#debug">Debugging</a>
-        <a href="#exam">Exam-style</a>
-        <a href="#summary">Summary</a>
-        <a href="#homework">Homework</a>
-        <a href="#stage2-completion">Core syllabus content</a>
-      </aside>
-
-      <div class="lesson-content">
-        <!-- remediation-v2-stage3-scope:start -->
-        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.</p></aside>
-        <!-- remediation-v2-stage3-scope:end -->
-
-<!-- stage2-completion:start -->
-        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus content</p>
-            <h2>Section 8 required-content checkpoint</h2>
-          </div>
-          <div class="stage2-explanation">
-            <p>Database design review: connect each file-based limitation to a relational or DBMS mechanism; use entity/table, record/tuple and field/attribute precisely; distinguish candidate, primary, secondary and foreign keys; classify one-to-one, one-to-many and many-to-many relationships; apply referential integrity and indexing; document the design with an E-R diagram; and explain or produce 1NF, 2NF and 3NF designs.</p>
-            <p>DBMS and SQL review: identify data management/data dictionary, data modelling, logical schema, integrity, security/backup/access rights, developer interface and query processor. Distinguish DDL structure commands from DML query/maintenance commands, use every required data type and key clause, and keep SELECT queries to at most two tables with explicit INNER JOIN ... ON when two tables are needed.</p>
-            <p>A complete answer follows the scenario through design, statement and result. It does not claim that a primary key prevents every duplicate fact, that a secondary key must be unique, that normalisation guarantees correctness, or that a three-table/comma-style query is within the AS core boundary.</p>
-            <p>Relational databases reduce selected file-based limitations by storing shared facts once in linked tables with centrally enforced rules.</p>
-            <p>A record is also called a tuple; both terms describe one row containing fields or attributes for one entity occurrence.</p>
-            <p>A query uses SELECT fields FROM a table, may filter rows with WHERE, sort with ORDER BY and form aggregate groups with GROUP BY. SUM totals values, COUNT counts rows or values, and AVG calculates a mean. An INNER JOIN uses ON to match at most two tables in the required AS queries.</p>
-          </div>
-          <article class="stage2-example">
-            <h3>Worked example: Design and query a library database</h3>
-            <p>Separate Student and Loan tables, identify StudentID as primary key in Student and foreign key in Loan, state the one-to-many relationship and referential-integrity rule, then write SELECT Student.StudentName, Loan.DueDate FROM Student INNER JOIN Loan ON Student.StudentID = Loan.StudentID WHERE Loan.Returned = FALSE; using exactly two tables.</p>
-          </article>
+    <main class="v2-shell" id="main-content" tabindex="-1">
+      <nav class="v2-toc" aria-label="Lesson contents"><strong>Lesson 090</strong><a href="#overview">Overview</a><a href="#prerequisite">Prerequisite</a><a href="#explanation">Explanation</a><a href="#practice">Practice</a><a href="#summary">Summary</a></nav>
+      <div class="v2-content">
+        <section class="v2-hero" id="overview">
+          <div><p class="v2-eyebrow">Flexible-depth lesson</p><h2>Paper 2 integrated review and pseudocode clinic</h2><p>S9.01, S9.02, S9.03, S9.04, S9.05, S9.06, S9.07, S9.08, S9.09, S10.01, S10.02, S10.03, S10.04, S10.05, S10.06, S10.07, S10.08, S10.09, S10.10, S11.01, S11.02, S11.03, S11.04, S11.05, S11.06, S11.07, S11.08, S11.09, S12.01, S12.02, S12.03, S12.04, S12.05, S12.06, S12.07, S12.08, S12.09 | Select what to omit, teach briefly or explore in depth.</p></div>
+          <div class="v2-time-grid" aria-label="Available lesson depth"><div><strong>Quick</strong><span>diagnose + essentials</span></div><div><strong>Full</strong><span>complete explanation</span></div><div><strong>Deep</strong><span>prerequisites + extension</span></div><div><strong>Choose</strong><span>practice by need</span></div></div>
         </section>
-        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus practice</p>
-            <h2>Section 8 required-content checkpoint: apply and assess</h2>
-          </div>
-          <div class="stage2-practice">
-            <h3>Targeted practice</h3>
-            <article class="stage2-question">
-              <p><strong>1.</strong> Which key may retrieve several records sharing a value?</p>
-              <details><summary>Show answer</summary><p>A secondary key; it need not be unique.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>2.</strong> Which normal form removes partial dependency on part of a composite key?</p>
-              <details><summary>Show answer</summary><p>Second Normal Form (2NF).</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>3.</strong> Which two DBMS tools are named separately in the syllabus?</p>
-              <details><summary>Show answer</summary><p>Developer interface and query processor.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>4.</strong> Which SQL language category changes table structure?</p>
-              <details><summary>Show answer</summary><p>DDL.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>5.</strong> What is the AS table-count boundary for a DML query?</p>
-              <details><summary>Show answer</summary><p>At most two tables.</p></details>
-            </article>
-          </div>
-          <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>7 marks</span></div>
-            <p>A school currently repeats student details in a loan file. Propose a relational design and write a two-table query listing StudentName and DueDate for unreturned loans.</p>
-            <details>
-              <summary>Show MS</summary>
-              <table class="mark-scheme-table">
-                <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
-                <tbody>
-                  <tr><td>identifies redundancy/inconsistency in the repeated file</td><td>Do not accept a three-table query, comma-style join, unexplained table split or unsupported claim that normalisation alone validates every value.</td><td>1</td></tr>
-                  <tr><td>separates Student and Loan with suitable primary keys</td><td></td><td>1</td></tr>
-                  <tr><td>uses StudentID as a foreign key in Loan and preserves referential integrity</td><td></td><td>1</td></tr>
-                  <tr><td>SELECT contains StudentName and DueDate</td><td></td><td>1</td></tr>
-                  <tr><td>uses Student INNER JOIN Loan</td><td></td><td>1</td></tr>
-                  <tr><td>ON matches Student.StudentID to Loan.StudentID</td><td></td><td>1</td></tr>
-                  <tr><td>WHERE Loan.Returned = FALSE</td><td></td><td>1</td></tr>
-                </tbody>
-              </table>
-            </details>
-          </article>
-        </section>
-        <!-- stage2-completion:end -->
 
-<section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-090">
-          <div class="hero-copy">
-            <p class="lesson-meta">Lesson 090 | 45 minutes | Paper 1 Section 8 | stage review</p>
-            <h2>The first mark is often hidden in choosing the right toolbox.</h2>
-            <p>
-              This review lesson mixes relational database design, keys, normalisation, SQL and database protection.
-              The goal is not to reread notes politely. The goal is to identify the topic, answer with precise terms,
-              and repair weak responses into mark-worthy ones.
-            </p>
-            <div class="objective-grid" aria-label="Learning objectives">
-              <div><strong>Recognise</strong><span>which Section 8 concept a question is testing</span></div>
-              <div><strong>Apply</strong><span>design rules, SQL clauses and protection controls to scenarios</span></div>
-              <div><strong>Improve</strong><span>answers using Cambridge-style marking language</span></div>
+        <section class="v2-panel v2-route-menu" aria-labelledby="route-heading">
+          <div class="v2-heading"><p class="v2-eyebrow">Teacher choice</p><h2 id="route-heading">Choose the depth for this group</h2></div>
+          <div class="v2-route-grid"><article><h3>Quick route</h3><p>Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.</p></article><article><h3>Full route</h3><p>Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.</p></article><article><h3>Deep route</h3><p>Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.</p></article></div>
+        </section>
+
+        <section class="v2-panel" id="prerequisite">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 1 | optional depth</p><h2>Prerequisite knowledge and quick diagnostic</h2></div>
+          <div class="v2-diagnostic"><p>Recall S9.01, S9.03, S9.04, S9.06, S9.02, S10.01, S10.03, S10.08, S10.09, S9.07, S11.04, S11.02, S11.06, S11.07, S12.04, S12.05, S12.01 before starting this lesson.</p></div>
+          <p>Give one accurate definition or method step before continuing. If it is missing, revisit only that prerequisite.</p>
+          <details class="v2-prerequisite-detail"><summary>Open optional prerequisite refresher</summary><ul><li>Abstraction is required both as a concept and as a practical modelling skill: explain its need and benefits, then produce an abstract model containing only details essential to the problem.</li><li>Understand abstraction, its purpose/benefits and creation of an abstract model.</li><li>An algorithm is a solution to a problem expressed as a sequence of defined steps; the definition requires both the problem-solving purpose and the defined sequence.</li><li>Understand what an algorithm is.</li><li>Students must choose suitable meaningful identifier names and construct an identifier table that records each identifier&#39;s name, data type and purpose for the designed algorithm.</li><li>Choose meaningful identifier names and construct an identifier table.</li></ul></details>
+        </section>
+
+        <section class="v2-panel" id="explanation">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 2 | deliberately over-complete</p><h2>Knowledge explanation</h2></div>
+          <h3>Learning objectives</h3><ul class="v2-objectives"><li>Understand abstraction, its purpose/benefits and creation of an abstract model.</li><li>Use decomposition and express a problem as modules.</li><li>Understand what an algorithm is.</li></ul>
+          <details class="v2-concept-menu"><summary>Open the concept checklist and choose what to teach</summary><ul><li>abstraction</li><li>essential details</li><li>irrelevant detail</li><li>abstract model</li><li>decomposition</li><li>problem</li><li>modules</li><li>procedure</li><li>function</li><li>algorithm</li><li>solution</li><li>sequence</li><li>defined steps</li><li>meaningful</li><li>identifier</li><li>names</li><li>table</li><li>input-process-output</li><li>design</li><li>pseudocode</li><li>selection</li><li>iteration</li><li>structured</li><li>English</li></ul></details>
+          <div class="v2-explanation-grid">
+            <div>
+              <article class="v2-core-facts"><h3>Detailed explanation</h3><p class="v2-teacher-note">Teach all points, or select only the ones this group needs. The list is intentionally fuller than a fixed lesson slot.</p><ul class="v2-facts"><li>Use stepwise refinement to develop an algorithm from a high-level solution to a level of detail from which a program can be written; each level must preserve the parent purpose.</li><li>Select and use appropriate types for a problem solution. The Version 2 Notes name integer, real, char, string, Boolean and date, and require the Cambridge pseudocode type names INTEGER, REAL, CHAR, STRING, BOOLEAN, DATE, ARRAY and FILE.</li><li>Define and use a procedure; explain when the use of a procedure is appropriate; use parameters with none, one or more values passed by reference or by value.</li><li>Candidates should understand the purpose of a program-development lifecycle and the need for different lifecycles depending on the program being developed. Compare the principles, benefits and drawbacks of waterfall, iterative and Rapid Application Development (RAD). Lifecycle stages are analysis, design, coding, testing and maintenance.</li></ul></article>
+              <article class="v2-example"><h3>Worked example</h3><p>Use one fresh scenario to apply paper 2 integrated review and pseudocode clinic, showing each decision or calculation step and checking the result against the question context.</p></article>
+              <aside class="v2-extension"><h3>Beyond syllabus / 延伸知识（不要求背诵）</h3><p>modern teams often use continuous integration to repeat building and testing whenever a program changes.</p></aside>
             </div>
-          </div>
-          <div class="sql-visual" aria-label="Review visual">
-            <span class="keyword">Design</span><span>entities, tables, keys, relationships</span>
-            <span class="keyword">Query</span><span>SELECT, WHERE, ORDER BY, GROUP BY, joins</span>
-            <span class="keyword">Change</span><span>INSERT, UPDATE, DELETE</span>
-            <span class="keyword">Protect</span><span>validation, verification, security, backup</span>
-            <p>Mixed questions are less scary when you label the tool before using it.</p>
+            <figure class="v2-visual">
+              <img src="../assets/diagrams/stage10-infographics/stage10-lesson-151-marking.jpg" alt="Mark recovery. Pseudocode initialise variables, process all items, output after the loop, close files. Trace show intermediate values and include boundary conditions. Data structures justify with LIFO, FIFO, index access or grouped fields. Explanations use point, reason, context and consequence" loading="lazy" />
+              <figcaption>Translate feedback into a repeatable checklist. One maintained explanation is shown as an image on larger screens and as text on small screens.</figcaption>
+              <div class="v2-mobile-visual-text" aria-label="Mobile text alternative"><ul><li>Mark recovery</li><li>Pseudocode initialise variables, process all items, output after the loop, close files</li><li>Trace show intermediate values and include boundary conditions</li><li>Data structures justify with LIFO, FIFO, index access or grouped fields</li><li>Explanations use point, reason, context and consequence</li></ul></div>
+            </figure>
           </div>
         </section>
 
-        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-090">
-          <article class="why-card">
-            <h3>Why this matters</h3>
-            <p>In review questions, students often know facts but answer the wrong topic. Topic recognition protects marks.</p>
-          </article>
-          <article class="trap-card">
-            <h3>Common error</h3>
-            <p>Do not write generic benefits such as "faster" or "better". Explain the mechanism and consequence in the scenario.</p>
-          </article>
+        <section class="v2-panel" id="practice">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 3 | select by learner need</p><h2>Practice by question type</h2></div>
+          <div class="v2-question-list"><article class="v2-question" data-question-id="Q-L090-01" data-semantic-fingerprint="Paper2-review|paper-number-integrated-review-and-pseudocode-clinic|write|cambridge-linear-search-name|pseudocode|recall">
+              <div class="v2-question-head"><span class="v2-badge">write</span><span class="v2-badge">recall</span><span class="v2-badge difficulty">foundation</span><span class="v2-badge">8 marks</span></div>
+              <p><strong>Question 1.</strong> Write Cambridge pseudocode for a linear search of Name[1:20] and an ascending bubble sort of Score[1:20].</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> linear search initialises Found and Index; linear search loops within indexes 1 to 20 until found or exhausted; linear search compares Name[Index] with the target and records a match; bubble sort uses repeated passes; compares adjacent Score[Index] and Score[Index + 1] within valid bounds; uses Temp or an equivalent safe three-step swap; reduces the unsorted range or uses a valid no-swap stopping condition; all constructs close coherently in Cambridge pseudocode</p><p><strong>Marking guidance:</strong> Do not award only a trace or a description; both requested algorithms must be written and must not access Index + 1 beyond the upper bound.</p><p><strong>Common error:</strong> For the command word write, perform that exact action; do not replace it with an unrelated fact.</p></div></details>
+            </article><article class="v2-question" data-question-id="Q-L090-02" data-semantic-fingerprint="Paper2-review|paper-number-integrated-review-and-pseudocode-clinic|explain|common-error-section-programming|written|explain">
+              <div class="v2-question-head"><span class="v2-badge">explain</span><span class="v2-badge">explain</span><span class="v2-badge difficulty">application</span><span class="v2-badge">3 marks</span></div>
+              <p><strong>Question 2.</strong> Explain one common error from Section 11: Programming, and give the corrected reasoning.</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> Define and use a procedure; explain when the use of a procedure is appropriate; use parameters with none, one or more values passed by reference or by value.</p><p><strong>Marking guidance:</strong> Credit distinct syllabus-accurate points that follow the command word.</p><p><strong>Common error:</strong> Do not repeat the same point in different words; each mark needs a separate idea or method step.</p></div></details>
+            </article><article class="v2-question" data-question-id="Q-L090-03" data-semantic-fingerprint="Paper2-review|paper-number-integrated-review-and-pseudocode-clinic|compare|compare-closely-related-ideas|pseudocode|evaluate">
+              <div class="v2-question-head"><span class="v2-badge">compare</span><span class="v2-badge">evaluate</span><span class="v2-badge difficulty">application</span><span class="v2-badge">4 marks</span></div>
+              <p><strong>Question 3.</strong> Compare two closely related ideas from Section 9: Algorithm design and problem-solving.</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> Use stepwise refinement to develop an algorithm from a high-level solution to a level of detail from which a program can be written; each level must preserve the parent purpose.</p><p><strong>Marking guidance:</strong> Credit distinct syllabus-accurate points that follow the command word.</p><p><strong>Common error:</strong> Do not copy the worked example unchanged; transfer the method and check it against the new context.</p></div></details>
+            </article><article class="v2-question" data-question-id="Q-L090-04" data-semantic-fingerprint="Paper2-review|paper-number-integrated-review-and-pseudocode-clinic|apply|apply-method-section-software|written|recall">
+              <div class="v2-question-head"><span class="v2-badge">apply</span><span class="v2-badge">recall</span><span class="v2-badge difficulty">transfer</span><span class="v2-badge">4 marks</span></div>
+              <p><strong>Question 4.</strong> Apply one method from Section 12: Software development to a fresh exam context.</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> Candidates should understand the purpose of a program-development lifecycle and the need for different lifecycles depending on the program being developed. Compare the principles, benefits and drawbacks of waterfall, iterative and Rapid Application Development (RAD). Lifecycle stages are analysis, design, coding, testing and maintenance.</p><p><strong>Marking guidance:</strong> Credit distinct syllabus-accurate points that follow the command word.</p><p><strong>Common error:</strong> Do not copy the worked example unchanged; transfer the method and check it against the new context.</p></div></details>
+            </article></div>
+          <div class="v2-paper-refs">
+          <h3>Related past-paper indexes</h3>
+          <table><thead><tr><th>Reference</th><th>Marks</th><th>Command word</th><th>Question type</th></tr></thead>
+          <tbody><tr><td>9618/21/S/25 Q3</td><td>8</td><td>write</td><td>recall</td></tr><tr><td>9618/21/S/25 Q6(b)</td><td>8</td><td>complete</td><td>recall</td></tr><tr><td>9618/21/S/25 Q7(i)</td><td>8</td><td>write</td><td>calculate</td></tr><tr><td>9618/21/W/25 Q8(b)</td><td>8</td><td>define</td><td>recall</td></tr></tbody></table>
+          <p class="v2-copyright-note">Index only: Cambridge question and mark-scheme wording is not reproduced on this public course page.</p>
+        </div>
         </section>
 
-        <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-090">
-          <div class="section-title">
-            <p class="eyebrow">Warm-up hook</p>
-            <h2>Which syllabus concept is required first?</h2>
-            <p>Reading a database question without identifying the topic is like opening every app on your laptop and hoping one of them writes SQL.</p>
-          </div>
-          <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="normalise">A table stores repeated book details for every loan.</button>
-            <button class="choice-card" type="button" data-hook="sql">Output current loans where Returned is FALSE.</button>
-            <button class="choice-card" type="button" data-hook="verify">Check a typed email against a paper form.</button>
-            <button class="choice-card" type="button" data-hook="key">Choose a field that uniquely identifies each member.</button>
-          </div>
-          <div class="feedback" id="hookFeedback" aria-live="polite">
-            Choose any card to identify the topic first.
-          </div>
+        <section class="v2-panel" id="summary">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 4 | close when ready</p><h2>Summary and exam reminders</h2></div>
+          <div class="v2-summary-grid"><div><h3>Summary</h3><ul class="v2-summary-list"><li>Define paper 2 integrated review and pseudocode clinic with the exact technical vocabulary expected by the syllabus.</li><li>Use the lesson method on a fresh context and show the intermediate decision, representation or calculation.</li><li>Match the shape of the answer to the command word and the available marks.</li><li>Check the final answer against the scenario instead of repeating a memorised sentence.</li></ul></div><div class="v2-error"><h3>Common error to correct</h3><p>Students often revise by rereading notes only. Correction: review lessons require retrieval, timed practice and correction.</p></div></div>
+          <div class="v2-tip-box"><h3>Exam technique</h3><ul><li>Follow the command word: state gives a fact; explain links a cause to a consequence; compare covers both sides.</li><li>Match the number of independent points or method steps to the available marks.</li><li>For paper 2 integrated review and pseudocode clinic, use the exact technical term before applying it to the scenario.</li></ul></div>
         </section>
 
-        <section class="panel" id="map" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-090">
-          <div class="section-title">
-            <p class="eyebrow">Retrieval map</p>
-            <h2>Section 8 knowledge map</h2>
-          </div>
-          <div class="retrieval-grid">
-            <article><strong>Data and DBMS</strong><span>data vs information; DBMS roles; avoiding flat-file limitations</span></article>
-            <article><strong>Tables and keys</strong><span>records, fields, data types, constraints, primary keys and foreign keys</span></article>
-            <article><strong>Design</strong><span>entity-relationship modelling and normalisation to reduce duplication</span></article>
-            <article><strong>SQL retrieval</strong><span><code>SELECT</code>, <code>FROM</code>, <code>WHERE</code>, <code>ORDER BY</code>, aggregates and joins</span></article>
-            <article><strong>SQL modification</strong><span><code>INSERT</code>, <code>UPDATE</code>, <code>DELETE</code>, field/value matching and safe <code>WHERE</code></span></article>
-            <article><strong>Protection</strong><span>validation, verification, security controls, backups and restore testing</span></article>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start map -->
-        <section class="panel explanation-panel" id="explanation-map" data-explains="map" data-explanation-kind="synthesis" aria-labelledby="explanation-map-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-090">
-          <h2 class="explanation-sr-only" id="explanation-map-title">Section 8 knowledge map</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-090-map.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Section 8 knowledge map with a structured visual model." />
-            <figcaption class="explanation-sr-only">Section 8 knowledge map: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Retrieval map</li><li><strong>Lesson fact:</strong> Data and DBMS data vs information; DBMS roles; avoiding flat-file limitations</li><li><strong>Lesson fact:</strong> Tables and keys records, fields, data types, constraints, primary keys and foreign keys</li><li><strong>Lesson fact:</strong> Design entity-relationship modelling and normalisation to reduce duplication</li><li><strong>Lesson fact:</strong> SQL retrieval SELECT , FROM , WHERE , ORDER BY , aggregates and joins</li><li><strong>Lesson fact:</strong> SQL modification INSERT , UPDATE , DELETE , field/value matching and safe WHERE</li><li><strong>Lesson fact:</strong> Protection validation, verification, security controls, backups and restore testing</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end map -->
-        <section class="panel" id="design" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-090">
-          <div class="section-title">
-            <p class="eyebrow">Design review</p>
-            <h2>Relational design: what earns marks?</h2>
-          </div>
-          <div class="clause-grid">
-            <article><strong>Primary key</strong><span>Uniquely identifies a record in one table. It must be unique and reliable.</span></article>
-            <article><strong>Foreign key</strong><span>Stores a value that matches a primary key in another table, creating a relationship.</span></article>
-            <article><strong>Normalisation</strong><span>Separates repeated data into related tables to reduce duplication and update errors.</span></article>
-          </div>
-          <div class="callout">Chinese support: review = 复习；identify the topic = 识别题型；mechanism = 机制；consequence = 结果/影响。</div>
-        </section>
-
-        <!-- stage10-explanation:start design -->
-        <section class="panel explanation-panel" id="explanation-design" data-explains="design" data-explanation-kind="synthesis" aria-labelledby="explanation-design-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-090">
-          <h2 class="explanation-sr-only" id="explanation-design-title">Relational design: what earns marks?</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-090-design.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Relational design: what earns marks? with a structured visual model." />
-            <figcaption class="explanation-sr-only">Relational design: what earns marks?: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Design review</li><li><strong>Lesson fact:</strong> Primary key Uniquely identifies a record in one table. It must be unique and reliable.</li><li><strong>Lesson fact:</strong> Foreign key Stores a value that matches a primary key in another table, creating a relationship.</li><li><strong>Lesson fact:</strong> Normalisation Separates repeated data into related tables to reduce duplication and update errors.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end design -->
-        <section class="panel" id="sql" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-090">
-          <div class="section-title">
-            <p class="eyebrow">SQL review</p>
-            <h2>SQL clauses: choose the clause that matches the request</h2>
-          </div>
-          <div class="data-table sql-table" role="table" aria-label="SQL clause review">
-            <div class="table-row table-head" role="row"><div>Request clue</div><div>Use</div><div>Example</div></div>
-            <div class="table-row" role="row"><div>output fields</div><div><code>SELECT</code></div><div><code>SELECT Title, Borrower</code></div></div>
-            <div class="table-row" role="row"><div>filter rows</div><div><code>WHERE</code></div><div><code>WHERE Returned = FALSE</code></div></div>
-            <div class="table-row" role="row"><div>sort rows</div><div><code>ORDER BY</code></div><div><code>ORDER BY Price DESC</code></div></div>
-            <div class="table-row" role="row"><div>summary per group</div><div><code>GROUP BY</code></div><div><code>GROUP BY Category</code></div></div>
-            <div class="table-row" role="row"><div>related tables</div><div>join condition</div><div><code>Loan.BookID = Book.BookID</code></div></div>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start sql -->
-        <section class="panel explanation-panel" id="explanation-sql" data-explains="sql" data-explanation-kind="synthesis" aria-labelledby="explanation-sql-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-090">
-          <h2 class="explanation-sr-only" id="explanation-sql-title">SQL clauses: choose the clause that matches the request</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-090-sql.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining SQL clauses: choose the clause that matches the request with a structured visual model." />
-            <figcaption class="explanation-sr-only">SQL clauses: choose the clause that matches the request: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> For the clauses shown, written syntax order is SELECT, FROM, WHERE, GROUP BY, ORDER BY.</li><li><strong>Lesson fact:</strong> A simplified logical processing order is FROM, WHERE, GROUP BY, SELECT, ORDER BY.</li><li><strong>Lesson fact:</strong> GROUP BY forms groups and ORDER BY sorts the final rows.</li><li><strong>Lesson fact:</strong> Written syntax order and logical processing order are different.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end sql -->
-        <section class="panel" id="protection" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-090">
-          <div class="section-title">
-            <p class="eyebrow">Protection review</p>
-            <h2>Do not swap the security vocabulary</h2>
-          </div>
-          <div class="clause-grid">
-            <article><strong>Validation</strong><span>Checks data follows rules, such as range, type, format or presence.</span></article>
-            <article><strong>Verification</strong><span>Checks entered data matches a source, using proofreading or double entry.</span></article>
-            <article><strong>Security and backup</strong><span>Security restricts access; backup enables recovery after loss or corruption.</span></article>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start protection -->
-        <section class="panel explanation-panel" id="explanation-protection" data-explains="protection" data-explanation-kind="synthesis" aria-labelledby="explanation-protection-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-090">
-          <h2 class="explanation-sr-only" id="explanation-protection-title">Do not swap the security vocabulary</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-090-protection.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Do not swap the security vocabulary with a structured visual model." />
-            <figcaption class="explanation-sr-only">Do not swap the security vocabulary: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Protection review</li><li><strong>Lesson fact:</strong> Validation Checks data follows rules, such as range, type, format or presence.</li><li><strong>Lesson fact:</strong> Verification Checks entered data matches a source, using proofreading or double entry.</li><li><strong>Lesson fact:</strong> Security and backup Security restricts access; backup enables recovery after loss or corruption.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end protection -->
-        <section class="panel" id="classifier" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-090">
-          <div class="section-title">
-            <p class="eyebrow">Interactive question classifier</p>
-            <h2>Identify the topic before answering</h2>
-          </div>
-          <div class="converter-grid">
-            <label>
-              Mixed question clue
-              <select id="classifierInput">
-                <option value="flat">A spreadsheet repeats a student's address on every activity booking.</option>
-                <option value="pk">A question asks which field uniquely identifies a loan record.</option>
-                <option value="join">A query must output StudentName and BookTitle from different tables.</option>
-                <option value="group">A query asks for number of books in each category.</option>
-                <option value="backup">A server fails and the club needs to restore yesterday's records.</option>
-              </select>
-            </label>
-            <button class="primary-button" type="button" id="classifyBtn">Classify</button>
-          </div>
-          <div class="feedback" id="classifyResult">Choose a clue and classify the topic.</div>
-        </section>
-
-        <section class="panel" id="tracer" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-090">
-          <div class="section-title">
-            <p class="eyebrow">Interactive SQL tracer</p>
-            <h2>Trace one mixed SQL result</h2>
-          </div>
-          <div class="data-table book-table" role="table" aria-label="Book table">
-            <div class="table-row table-head" role="row"><div>BookID</div><div>Title</div><div>Category</div><div>Copies</div></div>
-            <div class="table-row" role="row"><div>B01</div><div>Networks</div><div>Computing</div><div>4</div></div>
-            <div class="table-row" role="row"><div>B02</div><div>Poems</div><div>Literature</div><div>7</div></div>
-            <div class="table-row" role="row"><div>B03</div><div>Databases</div><div>Computing</div><div>3</div></div>
-            <div class="table-row" role="row"><div>B04</div><div>Drama</div><div>Literature</div><div>2</div></div>
-          </div>
-          <div class="converter-grid">
-            <label>
-              Query
-              <select id="queryInput">
-                <option value="q1">SELECT Title FROM Book WHERE Category = 'Computing'</option>
-                <option value="q2">SELECT Title, Copies FROM Book ORDER BY Copies DESC</option>
-                <option value="q3">SELECT Category, COUNT(*) FROM Book GROUP BY Category</option>
-                <option value="q4">SELECT Category, SUM(Copies) FROM Book GROUP BY Category</option>
-              </select>
-            </label>
-            <button class="primary-button" type="button" id="queryBtn">Trace result</button>
-          </div>
-          <div class="result-table" id="queryResult">Choose a query to see the result.</div>
-        </section>
-
-        <!-- stage10-explanation:start tracer -->
-        <section class="panel explanation-panel" id="explanation-tracer" data-explains="tracer" data-explanation-kind="synthesis" aria-labelledby="explanation-tracer-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-090">
-          <h2 class="explanation-sr-only" id="explanation-tracer-title">Trace one mixed SQL result</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-090-tracer.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Trace one mixed SQL result with a structured visual model." />
-            <figcaption class="explanation-sr-only">Trace one mixed SQL result: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Interactive SQL tracer</li><li><strong>Lesson fact:</strong> Category</li><li><strong>Lesson fact:</strong> Networks</li><li><strong>Lesson fact:</strong> Computing</li><li><strong>Lesson fact:</strong> Literature</li><li><strong>Lesson fact:</strong> Databases</li><li><strong>Lesson fact:</strong> Choose a query to see the result.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end tracer -->
-        <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-090">
-          <div class="section-title">
-            <p class="eyebrow">Worked examples</p>
-            <h2>Annotate where the marks are</h2>
-          </div>
-          <div class="example-tabs" role="tablist" aria-label="Worked examples">
-            <button class="tab active" type="button" data-example="design">Design</button>
-            <button class="tab" type="button" data-example="sql">SQL</button>
-            <button class="tab" type="button" data-example="protect">Protection</button>
-            <button class="tab" type="button" data-example="improve">Improve answer</button>
-          </div>
-          <article class="example-box" id="exampleBox" aria-live="polite"></article>
-        </section>
-
-        <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-090">
-          <div class="section-title">
-            <p class="eyebrow">Practice with instant checking</p>
-            <h2>Mixed retrieval check</h2>
-            <p>Type concise answers. Use Show answer after committing to a response.</p>
-          </div>
-          <div class="practice-list" id="practiceList"></div>
-        </section>
-
-        <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-090">
-          <div class="section-title">
-            <p class="eyebrow">Mistake debugging</p>
-            <h2>Rewrite weak review answers</h2>
-          </div>
-          <div class="mistake-grid" id="mistakeGrid"></div>
-        </section>
-
-        <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-090">
-          <div class="section-title">
-            <p class="eyebrow">Exam-style questions</p>
-            <h2>Original Cambridge-style stage review with expandable MS</h2>
-            <p>These questions mix Section 8 topics. The mark schemes reward precise terms, method and scenario consequence.</p>
-          </div>
-          <div class="exam-list" id="examList"></div>
-        </section>
-
-        <section class="panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-090">
-          <div class="section-title">
-            <p class="eyebrow">Summary</p>
-            <h2>Stage review checklist</h2>
-          </div>
-          <div class="summary-grid">
-            <div><strong>Label the topic</strong><span>Design, SQL, modification or protection.</span></div>
-            <div><strong>Use exact terms</strong><span>Primary key, foreign key, validation, verification, aggregate, join.</span></div>
-            <div><strong>Give consequence</strong><span>Explain what error is reduced, what data is protected or what output is produced.</span></div>
-          </div>
-        </section>
-
-        <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
-          <div class="section-title">
-            <p class="eyebrow">Homework</p>
-            <h2>Clear tasks for consolidation</h2>
-          </div>
-          <div class="homework-list">
-            <article>
-              <strong>Task 1: Retrieval grid</strong>
-              <span>Create a 12-cell retrieval grid covering DBMS, keys, relationships, normalisation, SQL and data protection.</span>
-            </article>
-            <article>
-              <strong>Task 2: Timed SQL</strong>
-              <span>Write one query using <code>WHERE</code>, one using <code>ORDER BY</code>, one using <code>GROUP BY</code> and one using a join.</span>
-            </article>
-            <article>
-              <strong>Task 3: Improve a weak answer</strong>
-              <span>Rewrite: "Validation is good because it makes data correct." Include one named check, a mechanism and a limitation.</span>
-            </article>
-          </div>
-        </section>
+        <nav class="v2-bottom-nav" aria-label="Previous and next lesson"><a href="../lesson-089/" >Previous lesson</a><a href="../" aria-disabled="true">Next lesson</a></nav>
       </div>
     </main>
-
-    <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=3"></script>
-    <script src="../lesson-toolbar.js?v=3"></script>
-    <script src="../stage7-accessibility.js?v=4"></script>
+    <script src="../course-v2.js?v=1"></script>
   </body>
 </html>

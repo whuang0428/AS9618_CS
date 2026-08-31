@@ -3,459 +3,89 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 007 | Character sets and internal binary character data</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <title>AS9618 Lesson 007 | Network purposes, LANs, WANs and computer roles</title>
     <link rel="icon" href="data:" />
-    <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
+    <link rel="stylesheet" href="../course-v2.css?v=3" />
   </head>
-  <body>
+  <body data-course-version="2" data-lesson-id="007" data-syllabus-ids="S2.01,S2.02,S2.03">
     <a class="skip-link" href="#main-content">Skip to main content</a>
-    <header class="topbar">
-      <div>
-        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 1</p>
-        <h1>Character sets and internal binary character data</h1>
-      </div>
-      <div class="action-panel" aria-label="Page controls">
-        <a class="course-home-link" href="../">Course home</a>
-        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
-      </div>
+    <header class="v2-topbar">
+      <div><p class="v2-eyebrow">Cambridge AS9618 | Paper 1 | Section 2: Communication</p><h1>Network purposes, LANs, WANs and computer roles</h1></div>
+      <nav class="v2-actions" aria-label="Lesson actions"><a href="../">Course home</a><a href="../assessments/">Assessment bank</a><button type="button" id="printLesson">Print</button></nav>
     </header>
-
-    <main class="layout" id="main-content" tabindex="-1">
-      <aside class="lesson-nav" aria-label="Lesson navigation">
-        <a href="#overview">Overview</a>
-        <a href="#hook">Warm-up</a>
-        <a href="#concept">Character set</a>
-        <a href="#ascii">ASCII</a>
-        <a href="#unicode">Unicode</a>
-        <a href="#encoding">Encoding</a>
-        <a href="#tool">Inspector</a>
-        <a href="#examples">Examples</a>
-        <a href="#practice">Practice</a>
-        <a href="#exam">Exam-style</a>
-        <a href="#homework">Homework</a>
-        <a href="#stage2-completion">Core syllabus content</a>
-      </aside>
-
-      <div class="lesson-content">
-        <!-- remediation-v2-stage3-scope:start -->
-        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.</p></aside>
-        <!-- remediation-v2-stage3-scope:end -->
-
-<!-- stage2-completion:start -->
-        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus content</p>
-            <h2>Character sets and internal binary character data</h2>
-          </div>
-          <div class="stage2-explanation">
-            <p>A character set defines a collection of characters and assigns a numeric character code to each one. The code is stored internally in binary; the bit pattern is meaningful only when software interprets it using the agreed character set.</p>
-            <p>Standard ASCII uses 7-bit codes, extended ASCII uses 8-bit codes, and Unicode provides code points for a much wider range of languages and symbols. Candidates are not expected to memorise particular character codes; a question must provide any code value needed for a conversion.</p>
-          </div>
-          <article class="stage2-example">
-            <h3>Worked example: Choose a character set for worldwide text</h3>
-            <p>A messaging system containing English, Chinese and Arabic text needs Unicode because its character repertoire is much wider than ASCII or extended ASCII. The chosen Unicode encoding stores the character codes as binary data.</p>
-          </article>
+    <main class="v2-shell" id="main-content" tabindex="-1">
+      <nav class="v2-toc" aria-label="Lesson contents"><strong>Lesson 007</strong><a href="#overview">Overview</a><a href="#prerequisite">Prerequisite</a><a href="#explanation">Explanation</a><a href="#practice">Practice</a><a href="#summary">Summary</a></nav>
+      <div class="v2-content">
+        <section class="v2-hero" id="overview">
+          <div><p class="v2-eyebrow">Flexible-depth lesson</p><h2>Network purposes, LANs, WANs and computer roles</h2><p>S2.01, S2.02, S2.03 | Select what to omit, teach briefly or explore in depth.</p></div>
+          <div class="v2-time-grid" aria-label="Available lesson depth"><div><strong>Quick</strong><span>diagnose + essentials</span></div><div><strong>Full</strong><span>complete explanation</span></div><div><strong>Deep</strong><span>prerequisites + extension</span></div><div><strong>Choose</strong><span>practice by need</span></div></div>
         </section>
 
-        <!-- stage10-explanation:start ascii -->
-        <section class="panel explanation-panel" id="explanation-ascii" data-explains="ascii" data-explanation-kind="mechanism" aria-labelledby="explanation-ascii-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="ascii">
-          <h2 class="explanation-sr-only" id="explanation-ascii-title">ASCII and extended ASCII</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-007-ascii.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining ASCII and extended ASCII with a structured visual model." />
-            <figcaption class="explanation-sr-only">ASCII and extended ASCII: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Standard ASCII</li><li><strong>Lesson fact:</strong> Uses 7 bits, so it can represent 2⁷ = 128 possible codes.</li><li><strong>Lesson fact:</strong> It covers common English letters, digits, punctuation and control characters.</li><li><strong>Lesson fact:</strong> Extended ASCII</li><li><strong>Lesson fact:</strong> Uses 8 bits, so it can represent 2⁸ = 256 possible codes.</li><li><strong>Lesson fact:</strong> It adds extra characters, but still cannot cover the world’s writing systems.</li><li><strong>Lesson fact:</strong> Character</li><li><strong>Lesson fact:</strong> Denary code</li><li><strong>Lesson fact:</strong> 8-bit binary</li><li><strong>Lesson fact:</strong> Exam note</li><li><strong>Lesson fact:</strong> 01000001</li><li><strong>Lesson fact:</strong> Example only; no need to memorise.</li></ol>
-
-          </div>
+        <section class="v2-panel v2-route-menu" aria-labelledby="route-heading">
+          <div class="v2-heading"><p class="v2-eyebrow">Teacher choice</p><h2 id="route-heading">Choose the depth for this group</h2></div>
+          <div class="v2-route-grid"><article><h3>Quick route</h3><p>Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.</p></article><article><h3>Full route</h3><p>Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.</p></article><article><h3>Deep route</h3><p>Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.</p></article></div>
         </section>
-        <!-- stage10-explanation:end ascii -->
-        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus practice</p>
-            <h2>Character sets and internal binary character data: apply and assess</h2>
-          </div>
-          <div class="stage2-practice">
-            <h3>Targeted practice</h3>
-            <article class="stage2-question">
-              <p><strong>1.</strong> What does a character set assign to each character?</p>
-              <details><summary>Show answer</summary><p>A numeric character code that can be stored in binary.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>2.</strong> Compare standard ASCII from extended ASCII.</p>
-              <details><summary>Show answer</summary><p>Standard ASCII uses 7 bits/128 codes; extended ASCII uses 8 bits/256 codes.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>3.</strong> Why is Unicode suitable for multilingual text?</p>
-              <details><summary>Show answer</summary><p>It defines codes for characters from far more languages and symbol systems.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>4.</strong> Must candidates memorise particular ASCII codes?</p>
-              <details><summary>Show answer</summary><p>No; any required code value should be provided.</p></details>
-            </article>
-          </div>
-          <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>4 marks</span></div>
-            <p>Explain how the character 'A' is represented internally and why Unicode is preferred to ASCII for a multilingual website.</p>
-            <details>
-              <summary>Show MS</summary>
-              <table class="mark-scheme-table">
-                <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
-                <tbody>
-                  <tr><td>character set assigns A a numeric code</td><td>Do not accept that changing a font changes the stored character code.</td><td>1</td></tr>
-                  <tr><td>numeric code is stored as a binary bit pattern</td><td></td><td>1</td></tr>
-                  <tr><td>Unicode represents a much wider range of characters/languages</td><td></td><td>1</td></tr>
-                  <tr><td>applies the wider repertoire to the multilingual website</td><td></td><td>1</td></tr>
-                </tbody>
-              </table>
-            </details>
-          </article>
-        </section>
-        <!-- stage2-completion:end -->
 
-<section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-007">
-          <div class="hero-copy">
-            <p class="lesson-meta">Lesson 007 | 45 minutes | Informal questioning</p>
-            <h2>Text is numbers wearing a very convincing disguise.</h2>
-            <p>
-              Computers store characters as binary values. A character set defines which
-              characters are available and which numeric code is assigned to each character.
-              This lesson compares ASCII, extended ASCII and Unicode without asking anyone
-              to memorise a table like a very small, very boring phone book.
-            </p>
-            <div class="objective-grid" aria-label="Learning objectives">
-              <div>
-                <strong>Define</strong>
-                <span>character set and character code using precise wording</span>
-              </div>
-              <div>
-                <strong>Compare</strong>
-                <span>ASCII, extended ASCII and Unicode by range and purpose</span>
-              </div>
-              <div>
-                <strong>Explain</strong>
-                <span>why Unicode supports more languages and symbols</span>
-              </div>
+        <section class="v2-panel" id="prerequisite">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 1 | optional depth</p><h2>Prerequisite knowledge and quick diagnostic</h2></div>
+          <div class="v2-diagnostic"><p>Recall S2.02 before starting this lesson.</p></div>
+          <p>Give one accurate definition or method step before continuing. If it is missing, revisit only that prerequisite.</p>
+          <details class="v2-prerequisite-detail"><summary>Open optional prerequisite refresher</summary><ul><li>Evidence must cover the different computer roles in each model, balanced benefits and drawbacks, and a scenario-linked choice; a topology cannot substitute for a network model.</li><li>Explain client-server and peer-to-peer models, their computer roles, benefits and drawbacks, and justify a model for a given situation.</li></ul></details>
+        </section>
+
+        <section class="v2-panel" id="explanation">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 2 | deliberately over-complete</p><h2>Knowledge explanation</h2></div>
+          <h3>Learning objectives</h3><ul class="v2-objectives"><li>Show understanding of the purpose and benefits of networking devices and the characteristics of LANs and WANs.</li><li>Explain client-server and peer-to-peer models, their computer roles, benefits and drawbacks, and justify a model for a given situation.</li><li>Show understanding of thin-client and thick-client computers and the differences between them.</li></ul>
+          <details class="v2-concept-menu"><summary>Open the concept checklist and choose what to teach</summary><ul><li>networking devices</li><li>benefits</li><li>LAN</li><li>WAN</li><li>limited geographical area</li><li>large geographical area</li><li>client-server</li><li>peer-to-peer</li><li>clients request</li><li>servers provide</li><li>drawbacks</li><li>justified</li><li>thin client</li><li>thick client</li><li>server processing / server for processing</li><li>local processing / processing locally</li></ul></details>
+          <div class="v2-explanation-grid">
+            <div>
+              <article class="v2-core-facts"><h3>Detailed explanation</h3><p class="v2-teacher-note">Teach all points, or select only the ones this group needs. The list is intentionally fuller than a fixed lesson slot.</p><ul class="v2-facts"><li>A LAN covers a limited area and is normally managed by one organisation; a WAN connects sites across a large area and commonly uses provider infrastructure. Benefits must identify a shared or centrally managed resource and its consequence.</li><li>Evidence must cover the different computer roles in each model, balanced benefits and drawbacks, and a scenario-linked choice; a topology cannot substitute for a network model.</li><li>Thin/thick describes where processing, software and storage reside; it must not be treated as a synonym for client-server/peer-to-peer.</li><li>Networking devices allow computers and users to share resources such as files, printers, storage and an internet connection. A network can also support communication, collaboration, central account management, central backup and access to shared services. A benefit must identify what is shared or managed and explain the consequence; &#39;it is easier&#39; is not enough.</li><li>A LAN covers a limited geographical area such as one building or site and is normally owned or managed by one organisation. A WAN covers a large geographical area, connects separate LANs or sites and commonly uses telecommunications-provider infrastructure. LAN and WAN describe scope and management, not a guaranteed speed.</li><li>In a bus topology, devices attach to one shared backbone cable and a transmitted signal travels along that shared medium. In a star topology, every device has a separate link to a central switch and each frame passes through that switch. In a mesh topology, nodes have multiple interconnections so packets may use alternative routes. A hybrid topology combines two or more topology patterns, for example two star segments connected by a backbone.</li><li>Topology choice must be justified from packet path, failure effect, redundancy, cabling cost, expansion and traffic. A star isolates most individual cable faults but the central switch is a single point of failure; a mesh offers alternative paths but needs more links and management; a bus uses less cable but the shared backbone and shared traffic are weaknesses.</li><li>In a client-server model, clients request services or resources and one or more servers provide them. Dedicated server roles can include authentication, file storage, web hosting and backup. Central management, consistent access control and central backup are benefits; server cost, specialist administration, dependence on the server and a possible central failure are drawbacks.</li><li>In a peer-to-peer model, each peer may request and provide resources directly. It can be inexpensive and simple for a small trusted group because no dedicated server is required, but distributed accounts, backups, security and availability become harder to control. A model choice must be justified from number of users, trust, management, availability, cost and the required shared services.</li><li>A thin client relies mainly on a server for processing and/or storage. A thick client performs more processing locally and normally stores more software or data on the client device. Thin clients simplify central updates and can use lower-specification hardware, but depend heavily on the server and network. Thick clients can continue more work when disconnected, but local installation, security and maintenance are distributed.</li><li>To justify a topology, link the packet path, dependence on central hardware, alternative routes and failure behaviour to the given situation.</li></ul></article>
+              <article class="v2-example"><h3>Worked example</h3><p>Choose a topology for a two-building clinic / Choose a model and client type for a school examination room: Use a star LAN inside each building so individual devices have independent links to a central switch. Connect the two stars to form a hybrid network. If the inter-building link is safety-critical, add a second path: packets can use the alternative route after one link fails, at extra cost. Use a client-server model so accounts, permissions, exam files and backups are controlled by servers. Thin clients support central software management and reduce local storage, but the school must provide resilient servers and networking because a failure can stop the room. Thick clients would reduce that dependence but distribute software and security maintenance.</p></article>
+              <aside class="v2-extension"><h3>Beyond syllabus / 延伸知识（不要求背诵）</h3><p>real networks organise communication in layers so that hardware, addressing and application protocols can change independently.</p></aside>
             </div>
-          </div>
-          <div class="binary-display" aria-label="Character encoding focus">
-            <span>A = 65</span>
-            <p>`A` is displayed as a letter, but stored using a binary code such as `01000001`.</p>
-          </div>
-        </section>
-
-        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-007">
-          <article class="why-card">
-            <h3>Why this matters</h3>
-            <p>Wrong encoding can turn meaningful text into broken symbols, especially across languages and systems.</p>
-          </article>
-          <article class="trap-card">
-            <h3>Common error</h3>
-            <p>Do not say Unicode is “just bigger ASCII”. It is a much larger character set designed for global text.</p>
-          </article>
-        </section>
-
-        <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-007">
-          <div class="section-title">
-            <p class="eyebrow">Warm-up hook</p>
-            <h2>Can standard ASCII store `你`?</h2>
-          </div>
-          <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="yes">Yes, every character is text</button>
-            <button class="choice-card" type="button" data-hook="no">No, standard ASCII is too limited</button>
-            <button class="choice-card" type="button" data-hook="emoji">Only if it is an emoji</button>
-            <button class="choice-card" type="button" data-hook="font">Only if the font is pretty</button>
-          </div>
-          <div class="feedback" id="hookFeedback" aria-live="polite">
-            Pick an answer. The issue is not artistic talent; it is whether the character set contains the character.
+            <figure class="v2-visual">
+              <img src="../assets/diagrams/stage10-infographics/stage10-lesson-017-lanwan.jpg" alt="A LAN usually stays within one organisation&#39;s controlled site.. A WAN crosses distance and often uses provider-owned infrastructure.. More owners and routes add latency, cost and fault-finding complexity." loading="lazy" />
+              <figcaption>Why LAN and WAN management differs. One maintained explanation is shown as an image on larger screens and as text on small screens.</figcaption>
+              <div class="v2-mobile-visual-text" aria-label="Mobile text alternative"><ul><li>A LAN usually stays within one organisation&#39;s controlled site.</li><li>A WAN crosses distance and often uses provider-owned infrastructure.</li><li>More owners and routes add latency, cost and fault-finding complexity.</li></ul></div>
+            </figure>
           </div>
         </section>
 
-        <section class="panel" id="concept" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-007">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 1</p>
-            <h2>What a character set actually does</h2>
-          </div>
-          <div class="concept-flow">
-            <article>
-              <strong>Character</strong>
-              <span>A visible symbol such as `A`, `?`, `é`, `你` or `€`.</span>
-            </article>
-            <article>
-              <strong>Character set</strong>
-              <span>A defined collection of characters and the code assigned to each character.</span>
-            </article>
-            <article>
-              <strong>Character code</strong>
-              <span>The numeric value used to represent a character inside the computer.</span>
-            </article>
-            <article>
-              <strong>Binary storage</strong>
-              <span>The numeric code is stored using bits, for example `65₁₀ = 01000001₂`.</span>
-            </article>
-          </div>
-          <div class="callout">
-            Chinese support: character set = 字符集；character code = 字符编码值；encoding = 编码方式。
-          </div>
+        <section class="v2-panel" id="practice">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 3 | select by learner need</p><h2>Practice by question type</h2></div>
+          <div class="v2-question-list"><article class="v2-question" data-question-id="Q-L007-01" data-semantic-fingerprint="S2.01+S2.02+S2.03|network-purposes-lans-wans-and-computer-roles|explain|college-replacing-shared-bus|written|explain">
+              <div class="v2-question-head"><span class="v2-badge">explain</span><span class="v2-badge">explain</span><span class="v2-badge difficulty">foundation</span><span class="v2-badge">8 marks</span></div>
+              <p><strong>Question 1.</strong> A college is replacing one shared bus network with star LANs connected into a hybrid topology. Explain two networking benefits and justify the topology change. A call centre is choosing a client-server model with thin clients. Explain two benefits and two drawbacks of this combined choice.</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> one developed resource-sharing, communication or central-management benefit; a second distinct developed networking benefit; star frames pass through a central switch and an individual cable failure normally affects one device; hybrid combines topology patterns / connects the star segments; justification links reliability, expansion, traffic or cost to the college; centralised accounts/software/update or data management; lower client hardware/storage requirement; depends on network/server availability or performance; server infrastructure, administration or central-failure cost; develops at least one point in the call-centre context</p><p><strong>Marking guidance:</strong> Do not award generic benefits or a topology name without a path/failure consequence. Do not award &#39;cheaper&#39; unless the lower client specification or central administration explains why; do not confuse network model with topology.</p><p><strong>Common error:</strong> For the command word explain, perform that exact action; do not replace it with an unrelated fact.</p></div></details>
+            </article><article class="v2-question" data-question-id="Q-L007-02" data-semantic-fingerprint="S2.01+S2.02+S2.03|network-purposes-lans-wans-and-computer-roles|compare|compare-lan-wan-geographical|written|evaluate">
+              <div class="v2-question-head"><span class="v2-badge">compare</span><span class="v2-badge">evaluate</span><span class="v2-badge difficulty">application</span><span class="v2-badge">2 marks</span></div>
+              <p><strong>Question 2.</strong> Compare a LAN from a WAN using geographical scope and management.</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> A LAN covers a limited site and is normally managed by one organisation; a WAN connects sites over a large area and often uses provider infrastructure.</p><p><strong>Marking guidance:</strong> Award one mark for each distinct, technically accurate point or method step.</p><p><strong>Common error:</strong> Do not repeat the same point in different words; each mark needs a separate idea or method step.</p></div></details>
+            </article><article class="v2-question" data-question-id="Q-L007-03" data-semantic-fingerprint="S2.01+S2.02+S2.03|network-purposes-lans-wans-and-computer-roles|state|client-server|written|recall">
+              <div class="v2-question-head"><span class="v2-badge">state</span><span class="v2-badge">recall</span><span class="v2-badge difficulty">transfer</span><span class="v2-badge">2 marks</span></div>
+              <p><strong>Question 3.</strong> State the roles of a client and server.</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> A client requests a service or resource; a server provides and manages the service or resource.</p><p><strong>Marking guidance:</strong> Award one mark for each distinct, technically accurate point or method step.</p><p><strong>Common error:</strong> Do not copy the worked example unchanged; transfer the method and check it against the new context.</p></div></details>
+            </article></div>
+          <div class="v2-paper-refs">
+          <h3>Related past-paper indexes</h3>
+          <table><thead><tr><th>Reference</th><th>Marks</th><th>Command word</th><th>Question type</th></tr></thead>
+          <tbody><tr><td>9618/12/S/25 Q6(c)</td><td>6</td><td>complete</td><td>recall</td></tr><tr><td>9618/12/S/25 Q6(b)</td><td>4</td><td>explain</td><td>explain</td></tr><tr><td>9618/12/S/25 Q6(e)</td><td>3</td><td>complete</td><td>recall</td></tr><tr><td>9618/12/S/25 Q6(a)</td><td>2</td><td>state</td><td>recall</td></tr></tbody></table>
+          <p class="v2-copyright-note">Index only: Cambridge question and mark-scheme wording is not reproduced on this public course page.</p>
+        </div>
         </section>
 
-        <!-- stage10-explanation:start concept -->
-        <section class="panel explanation-panel" id="explanation-concept" data-explains="concept" data-explanation-kind="mechanism" aria-labelledby="explanation-concept-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-007">
-          <h2 class="explanation-sr-only" id="explanation-concept-title">What a character set actually does</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-007-concept.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining What a character set actually does with a structured visual model." />
-            <figcaption class="explanation-sr-only">What a character set actually does: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Character</li><li><strong>Lesson fact:</strong> Character set</li><li><strong>Lesson fact:</strong> A defined collection of characters and the code assigned to each character.</li><li><strong>Lesson fact:</strong> Character code</li><li><strong>Lesson fact:</strong> The numeric value used to represent a character inside the computer.</li><li><strong>Lesson fact:</strong> Binary storage</li><li><strong>Lesson fact:</strong> The numeric code is stored using bits, for example 65₁₀ = 01000001₂.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end concept -->
-        <section class="panel" id="ascii" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-007">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 2</p>
-            <h2>ASCII and extended ASCII</h2>
-          </div>
-          <div class="compare-grid">
-            <article>
-              <h3>Standard ASCII</h3>
-              <p>Uses 7 bits, so it can represent `2⁷ = 128` possible codes.</p>
-              <p>It covers common English letters, digits, punctuation and control characters.</p>
-            </article>
-            <article>
-              <h3>Extended ASCII</h3>
-              <p>Uses 8 bits, so it can represent `2⁸ = 256` possible codes.</p>
-              <p>It adds extra characters, but still cannot cover the world’s writing systems.</p>
-            </article>
-          </div>
-          <div class="table-wrap">
-            <table class="code-table" aria-label="Small ASCII example table">
-              <thead>
-                <tr>
-                  <th>Character</th>
-                  <th>Denary code</th>
-                  <th>8-bit binary</th>
-                  <th>Exam note</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>A</td>
-                  <td>65</td>
-                  <td>01000001</td>
-                  <td>Example only; no need to memorise.</td>
-                </tr>
-                <tr>
-                  <td>B</td>
-                  <td>66</td>
-                  <td>01000010</td>
-                  <td>Codes are numeric values.</td>
-                </tr>
-                <tr>
-                  <td>a</td>
-                  <td>97</td>
-                  <td>01100001</td>
-                  <td>Uppercase and lowercase have different codes.</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+        <section class="v2-panel" id="summary">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 4 | close when ready</p><h2>Summary and exam reminders</h2></div>
+          <div class="v2-summary-grid"><div><h3>Summary</h3><ul class="v2-summary-list"><li>Define network purposes, lans, wans and computer roles with the exact technical vocabulary expected by the syllabus.</li><li>Use the lesson method on a fresh context and show the intermediate decision, representation or calculation.</li><li>Match the shape of the answer to the command word and the available marks.</li><li>Check the final answer against the scenario instead of repeating a memorised sentence.</li></ul></div><div class="v2-error"><h3>Common error to correct</h3><p>Students often confuse bandwidth with speed in every sense. Correction: bandwidth is capacity; latency and congestion also affect perceived performance.</p></div></div>
+          <div class="v2-tip-box"><h3>Exam technique</h3><ul><li>Follow the command word: state gives a fact; explain links a cause to a consequence; compare covers both sides.</li><li>Match the number of independent points or method steps to the available marks.</li><li>For network purposes, lans, wans and computer roles, use the exact technical term before applying it to the scenario.</li></ul></div>
         </section>
 
-        <section id="delivery-06" class="guidance-grid compact" aria-label="ASCII guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-007">
-          <article class="trap-card">
-            <h3>Common error</h3>
-            <p>Font changes appearance. A character set defines which character a code represents. These are not the same thing.</p>
-          </article>
-        </section>
-
-        <section class="panel" id="unicode" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-007">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 3</p>
-            <h2>Unicode: more characters, more global use</h2>
-          </div>
-          <div class="unicode-grid">
-            <article>
-              <h3>Purpose</h3>
-              <p>Unicode is designed to represent characters from many languages and symbol systems.</p>
-            </article>
-            <article>
-              <h3>Scale</h3>
-              <p>Unicode supports far more characters than ASCII, including Chinese characters and many symbols.</p>
-            </article>
-            <article>
-              <h3>Trade-off</h3>
-              <p>More possible characters may require more bits per character, depending on the encoding used.</p>
-            </article>
-          </div>
-          <div class="callout warning">
-            Emoji are characters assigned Unicode code points and rendered by software using available fonts or graphics.
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start unicode -->
-        <section class="panel explanation-panel" id="explanation-unicode" data-explains="unicode" data-explanation-kind="mechanism" aria-labelledby="explanation-unicode-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-007">
-          <h2 class="explanation-sr-only" id="explanation-unicode-title">Unicode: more characters, more global use</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-007-unicode.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Unicode: more characters, more global use with a structured visual model." />
-            <figcaption class="explanation-sr-only">Unicode: more characters, more global use: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Unicode is designed to represent characters from many languages and symbol systems.</li><li><strong>Lesson fact:</strong> Unicode supports far more characters than ASCII, including Chinese characters and many symbols.</li><li><strong>Lesson fact:</strong> Trade-off</li><li><strong>Lesson fact:</strong> More possible characters may require more bits per character, depending on the encoding used.</li><li><strong>Lesson fact:</strong> Emoji are characters assigned Unicode code points and rendered by software using available fonts or graphics.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end unicode -->
-        <section class="panel" id="encoding" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-007">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 4</p>
-            <h2>Character set vs encoding</h2>
-          </div>
-          <div class="method-grid">
-            <article>
-              <h3>Character set</h3>
-              <p>Defines the characters and their code points or code values.</p>
-              <p>Example idea: `A` has a defined code in ASCII and Unicode.</p>
-            </article>
-            <article>
-              <h3>Encoding</h3>
-              <p>Defines how those codes are stored as bytes.</p>
-              <p>For AS exam answers, keep this distinction simple unless the question gives a specific encoding.</p>
-            </article>
-          </div>
-          <div class="callout">
-            A good exam sentence: “Unicode can represent a wider range of characters, so it is more suitable for multilingual text.”
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start encoding -->
-        <section class="panel explanation-panel" id="explanation-encoding" data-explains="encoding" data-explanation-kind="comparison" aria-labelledby="explanation-encoding-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-007">
-          <h2 class="explanation-sr-only" id="explanation-encoding-title">Character set vs encoding</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-007-encoding.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Character set vs encoding with a structured visual model." />
-            <figcaption class="explanation-sr-only">Character set vs encoding: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Character set</li><li><strong>Lesson fact:</strong> Defines the characters and their code points or code values.</li><li><strong>Lesson fact:</strong> Example idea: A has a defined code in ASCII and Unicode.</li><li><strong>Lesson fact:</strong> Encoding</li><li><strong>Lesson fact:</strong> Defines how those codes are stored as bytes.</li><li><strong>Lesson fact:</strong> For AS exam answers, keep this distinction simple unless the question gives a specific encoding.</li><li><strong>Lesson fact:</strong> A good exam sentence: “Unicode can represent a wider range of characters, so it is more suitable for multilingual text.”</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end encoding -->
-        <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-007">
-          <div class="section-title">
-            <p class="eyebrow">Interactive tool</p>
-            <h2>Character inspector</h2>
-          </div>
-          <div class="converter-grid">
-            <label>
-              Character
-              <input id="charInput" type="text" value="A" maxlength="2" />
-            </label>
-            <button type="button" id="inspectBtn">Inspect</button>
-          </div>
-          <div class="result-box" id="inspectResult" aria-live="polite"></div>
-          <div class="method-box" id="inspectMethod"></div>
-          <div class="byte-visual" id="byteVisual" aria-label="Character byte visual"></div>
-        </section>
-
-        <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-007">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge examples</p>
-            <h2>Worked examples</h2>
-          </div>
-          <div class="example-tabs" role="tablist" aria-label="Worked examples">
-            <button class="tab active" type="button" data-example="ascii">A in ASCII</button>
-            <button class="tab" type="button" data-example="capacity">7-bit vs 8-bit</button>
-            <button class="tab" type="button" data-example="unicode">Unicode choice</button>
-          </div>
-          <article class="example-box" id="exampleBox"></article>
-        </section>
-
-        <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-007">
-          <div class="section-title">
-            <p class="eyebrow">Your turn</p>
-            <h2>Practice with instant checking</h2>
-          </div>
-          <div class="practice-list" id="practiceList"></div>
-          <button class="primary-button" type="button" id="checkPractice">Check practice</button>
-          <div class="feedback" id="practiceFeedback" aria-live="polite"></div>
-        </section>
-
-        <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-007">
-          <div class="section-title">
-            <p class="eyebrow">Mistake debugging</p>
-            <h2>Correct the almost-right answer</h2>
-          </div>
-          <div class="mistake-grid">
-            <article>
-              <p class="wrong">“ASCII can store all languages because every character is just binary.”</p>
-              <button class="answer-toggle" type="button" data-answer="mistake1">Show correction</button>
-              <p class="answer" id="mistake1">All stored data is binary, but the character set must contain the character. Standard ASCII only has 128 codes.</p>
-            </article>
-            <article>
-              <p class="wrong">“A font is the same thing as a character set.”</p>
-              <button class="answer-toggle" type="button" data-answer="mistake2">Show correction</button>
-              <p class="answer" id="mistake2">A font controls appearance. A character set maps characters to codes.</p>
-            </article>
-          </div>
-        </section>
-
-        <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-007">
-          <div class="section-title">
-            <p class="eyebrow">Exam-style questions</p>
-            <h2>Questions with expandable MS</h2>
-            <p>
-              Use the buttons under each question to expand the Cambridge-style mark scheme.
-              These are original questions written in Cambridge style, not copied past-paper items.
-            </p>
-          </div>
-          <div class="exam-list" id="examList"></div>
-        </section>
-
-        <section class="panel summary-panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-007">
-          <div class="section-title">
-            <p class="eyebrow">Summary</p>
-            <h2>Text storage needs a rulebook</h2>
-          </div>
-          <div class="summary-grid">
-            <div><strong>1</strong><span>A character set maps characters to numeric codes.</span></div>
-            <div><strong>2</strong><span>Standard ASCII uses 7 bits and has 128 possible codes.</span></div>
-            <div><strong>3</strong><span>Extended ASCII uses 8 bits and has 256 possible codes.</span></div>
-            <div><strong>4</strong><span>Unicode supports a much wider range of global characters and symbols.</span></div>
-          </div>
-        </section>
-
-        <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
-          <div class="section-title">
-            <p class="eyebrow">Homework</p>
-            <h2>Clear tasks</h2>
-          </div>
-          <ol class="homework-list">
-            <li>Define character set, character code and encoding in one sentence each.</li>
-            <li>Explain why standard ASCII cannot represent all written languages.</li>
-            <li>Calculate the number of possible codes for 7-bit and 8-bit character sets.</li>
-            <li>Write a 4-mark comparison of ASCII and Unicode for a multilingual website.</li>
-          </ol>
-          <button class="answer-toggle" type="button" data-answer="homeworkAnswers">Show homework answers</button>
-          <div class="answer-panel" id="homeworkAnswers">
-            <p><strong>Definitions:</strong> character set maps characters to numeric codes; character code is the assigned numeric value; encoding stores codes as bytes.</p>
-            <p><strong>ASCII limitation:</strong> standard ASCII has only 128 possible codes, so it cannot include characters from all languages.</p>
-            <p><strong>Capacity:</strong> `2⁷ = 128`; `2⁸ = 256`.</p>
-            <p><strong>Comparison focus:</strong> ASCII is suitable for basic English text; Unicode is more suitable for multilingual text because it supports many more characters.</p>
-          </div>
-        </section>
+        <nav class="v2-bottom-nav" aria-label="Previous and next lesson"><a href="../lesson-006/" >Previous lesson</a><a href="../lesson-008/" >Next lesson</a></nav>
       </div>
     </main>
-
-    <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=3"></script>
-    <script src="../lesson-toolbar.js?v=3"></script>
-    <script src="../stage7-accessibility.js?v=4"></script>
+    <script src="../course-v2.js?v=1"></script>
   </body>
 </html>

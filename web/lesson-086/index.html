@@ -3,435 +3,89 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 086 | DDL and two-table data queries</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <title>AS9618 Lesson 086 | Test strategies and test plans</title>
     <link rel="icon" href="data:" />
-    <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
+    <link rel="stylesheet" href="../course-v2.css?v=3" />
   </head>
-  <body>
+  <body data-course-version="2" data-lesson-id="086" data-syllabus-ids="S12.06">
     <a class="skip-link" href="#main-content">Skip to main content</a>
-    <header class="topbar">
-      <div>
-        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 8</p>
-        <h1>DDL and two-table data queries</h1>
-      </div>
-      <div class="action-panel" aria-label="Page controls">
-        <a class="course-home-link" href="../">Course home</a>
-        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
-      </div>
+    <header class="v2-topbar">
+      <div><p class="v2-eyebrow">Cambridge AS9618 | Paper 2 | Section 12: Software development</p><h1>Test strategies and test plans</h1></div>
+      <nav class="v2-actions" aria-label="Lesson actions"><a href="../">Course home</a><a href="../assessments/">Assessment bank</a><button type="button" id="printLesson">Print</button></nav>
     </header>
-
-    <main class="layout" id="main-content" tabindex="-1">
-      <aside class="lesson-nav" aria-label="Lesson navigation">
-        <a href="#overview">Overview</a>
-        <a href="#hook">Warm-up</a>
-        <a href="#orderby">ORDER BY</a>
-        <a href="#aggregates">Aggregates</a>
-        <a href="#groupby">GROUP BY</a>
-        <a href="#trace">Trace results</a>
-        <a href="#builder">Query builder</a>
-        <a href="#runner">Result runner</a>
-        <a href="#examples">Examples</a>
-        <a href="#practice">Practice</a>
-        <a href="#debug">Debugging</a>
-        <a href="#exam">Exam-style</a>
-        <a href="#summary">Summary</a>
-        <a href="#homework">Homework</a>
-        <a href="#stage2-completion">Core syllabus content</a>
-      </aside>
-
-      <div class="lesson-content">
-        <!-- remediation-v2-stage3-scope:start -->
-        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.</p></aside>
-        <!-- remediation-v2-stage3-scope:end -->
-
-<!-- stage2-completion:start -->
-        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus content</p>
-            <h2>DDL and two-table data queries</h2>
-          </div>
-          <div class="stage2-explanation">
-            <p>Required DDL includes CREATE DATABASE, CREATE TABLE and ALTER TABLE. Field types include CHARACTER, VARCHAR, BOOLEAN, INTEGER, REAL, DATE and TIME.</p>
-            <p>A PRIMARY KEY uniquely identifies a row. A FOREIGN KEY with REFERENCES links a field to a key in another table and supports referential integrity.</p>
-            <p>AS DML questions use at most two tables. Write an explicit INNER JOIN between those tables and place the matching key condition after ON; use table-qualified field names where the same field name could be ambiguous.</p>
-            <p>For Student(StudentID, StudentName) and Loan(StudentID, DueDate), SELECT Student.StudentName FROM Student INNER JOIN Loan ON Student.StudentID = Loan.StudentID returns names only where matching rows exist. Add WHERE for a further row condition, not for the join relationship itself.</p>
-            <p>A query uses SELECT fields FROM a table, may filter rows with WHERE, sort with ORDER BY and form aggregate groups with GROUP BY. SUM totals values, COUNT counts rows or values, and AVG calculates a mean. An INNER JOIN uses ON to match at most two tables in the required AS queries.</p>
-          </div>
-          <article class="stage2-example">
-            <h3>Worked example: Define two related tables / List overdue borrowers</h3>
-            <p>CREATE DATABASE College; then CREATE TABLE Department and CREATE TABLE Student. Student uses INTEGER for StudentID, VARCHAR for Name, DATE for DateOfBirth, BOOLEAN for Active and a DepartmentID foreign key REFERENCES Department(DepartmentID). ALTER TABLE can modify the structure later. SELECT Student.StudentName FROM Student INNER JOIN Loan ON Student.StudentID = Loan.StudentID WHERE Loan.DueDate &lt; '2027-05-01'; uses two tables, one explicit join condition and one separate filter.</p>
-          </article>
+    <main class="v2-shell" id="main-content" tabindex="-1">
+      <nav class="v2-toc" aria-label="Lesson contents"><strong>Lesson 086</strong><a href="#overview">Overview</a><a href="#prerequisite">Prerequisite</a><a href="#explanation">Explanation</a><a href="#practice">Practice</a><a href="#summary">Summary</a></nav>
+      <div class="v2-content">
+        <section class="v2-hero" id="overview">
+          <div><p class="v2-eyebrow">Flexible-depth lesson</p><h2>Test strategies and test plans</h2><p>S12.06 | Select what to omit, teach briefly or explore in depth.</p></div>
+          <div class="v2-time-grid" aria-label="Available lesson depth"><div><strong>Quick</strong><span>diagnose + essentials</span></div><div><strong>Full</strong><span>complete explanation</span></div><div><strong>Deep</strong><span>prerequisites + extension</span></div><div><strong>Choose</strong><span>practice by need</span></div></div>
         </section>
 
-        <!-- stage10-explanation:start join -->
-        <section class="panel explanation-panel" id="explanation-join" data-explains="join" data-explanation-kind="mechanism" aria-labelledby="explanation-join-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="join">
-          <h2 class="explanation-sr-only" id="explanation-join-title">Two-table INNER JOIN with ON</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-087-join.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Two-table INNER JOIN with ON with a structured visual model." />
-            <figcaption class="explanation-sr-only">Two-table INNER JOIN with ON: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> AS DML questions use at most two tables.</li><li><strong>Lesson fact:</strong> SELECT Student.StudentName FROM Student INNER JOIN Loan ON Student.StudentID = Loan.StudentID uses an explicit two-table join.</li><li><strong>Lesson fact:</strong> ON states the matching key relationship between the tables.</li><li><strong>Lesson fact:</strong> WHERE adds a separate row filter after the join; it does not replace the required INNER JOIN syntax.</li></ol>
-
-          </div>
+        <section class="v2-panel v2-route-menu" aria-labelledby="route-heading">
+          <div class="v2-heading"><p class="v2-eyebrow">Teacher choice</p><h2 id="route-heading">Choose the depth for this group</h2></div>
+          <div class="v2-route-grid"><article><h3>Quick route</h3><p>Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.</p></article><article><h3>Full route</h3><p>Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.</p></article><article><h3>Deep route</h3><p>Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.</p></article></div>
         </section>
-        <!-- stage10-explanation:end join -->
-        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus practice</p>
-            <h2>DDL and two-table data queries: apply and assess</h2>
-          </div>
-          <div class="stage2-practice">
-            <h3>Targeted practice</h3>
-            <article class="stage2-question">
-              <p><strong>1.</strong> Identify four required SQL field types.</p>
-              <details><summary>Show answer</summary><p>Any four of CHARACTER, VARCHAR, BOOLEAN, INTEGER, REAL, DATE and TIME.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>2.</strong> Which clause declares the referenced table?</p>
-              <details><summary>Show answer</summary><p>REFERENCES.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>3.</strong> Which clause states how two joined tables match?</p>
-              <details><summary>Show answer</summary><p>ON.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>4.</strong> How many tables are required at most in the AS syllabus query?</p>
-              <details><summary>Show answer</summary><p>Two.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>5.</strong> Why qualify Student.StudentID and Loan.StudentID?</p>
-              <details><summary>Show answer</summary><p>To identify which table supplies each otherwise identical field name.</p></details>
-            </article>
-          </div>
-          <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>8 marks</span></div>
-            <p>Write DDL to create a Student table with suitable data types, a primary key and one foreign key. Write an INNER JOIN query listing DepartmentName and EmployeeName from Department and Employee, matching their DepartmentID fields.</p>
-            <details>
-              <summary>Show MS</summary>
-              <table class="mark-scheme-table">
-                <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
-                <tbody>
-                  <tr><td>CREATE TABLE and named fields</td><td>Do not award DML statements for a schema-definition task. Do not use a three-table query or replace the required INNER JOIN with comma-style FROM and a WHERE join.</td><td>1</td></tr>
-                  <tr><td>suitable required data types</td><td></td><td>1</td></tr>
-                  <tr><td>PRIMARY KEY</td><td></td><td>1</td></tr>
-                  <tr><td>FOREIGN KEY with REFERENCES</td><td></td><td>1</td></tr>
-                  <tr><td>SELECT includes DepartmentName and EmployeeName</td><td></td><td>1</td></tr>
-                  <tr><td>FROM Department</td><td></td><td>1</td></tr>
-                  <tr><td>INNER JOIN Employee</td><td></td><td>1</td></tr>
-                  <tr><td>ON Department.DepartmentID = Employee.DepartmentID</td><td></td><td>1</td></tr>
-                </tbody>
-              </table>
-            </details>
-          </article>
-        </section>
-        <!-- stage2-completion:end -->
 
-<section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-086">
-          <div class="hero-copy">
-            <p class="lesson-meta">Lesson 086 | 45 minutes | Paper 1 Section 8 | 5-minute quiz</p>
-            <h2>SQL can sort the mess, count the mess, and summarise the mess. Sadly, it cannot mark your homework.</h2>
-            <p>
-              This lesson extends basic <code>SELECT</code> queries with <code>ORDER BY</code>, aggregate functions
-              and <code>GROUP BY</code>. You will sort rows, calculate summaries and group records by category.
-              Multi-table joins are left for Lesson 087.
-            </p>
-            <div class="objective-grid" aria-label="Learning objectives">
-              <div><strong>Sort</strong><span>records using <code>ORDER BY</code>, <code>ASC</code> and <code>DESC</code></span></div>
-              <div><strong>Summarise</strong><span>data using <code>COUNT</code>, <code>SUM</code>, <code>AVG</code>, <code>MIN</code>, <code>MAX</code></span></div>
-              <div><strong>Group</strong><span>records using <code>GROUP BY</code> with aggregate functions</span></div>
+        <section class="v2-panel" id="prerequisite">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 1 | optional depth</p><h2>Prerequisite knowledge and quick diagnostic</h2></div>
+          <div class="v2-diagnostic"><p>Recall S12.05 before starting this lesson.</p></div>
+          <p>Give one accurate definition or method step before continuing. If it is missing, revisit only that prerequisite.</p>
+          <details class="v2-prerequisite-detail"><summary>Open optional prerequisite refresher</summary><ul><li>Describe testing methods and select suitable test data: dry run, walkthrough, white-box, black-box, integration, alpha, beta and acceptance testing, and use of a stub.</li></ul></details>
+        </section>
+
+        <section class="v2-panel" id="explanation">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 2 | deliberately over-complete</p><h2>Knowledge explanation</h2></div>
+          <h3>Learning objectives</h3><ul class="v2-objectives"><li>Show understanding of the need for a test strategy and test plan and their likely contents.</li></ul>
+          <details class="v2-concept-menu"><summary>Open the concept checklist and choose what to teach</summary><ul><li>test</li><li>strategy</li><li>plan</li></ul></details>
+          <div class="v2-explanation-grid">
+            <div>
+              <article class="v2-core-facts"><h3>Detailed explanation</h3><p class="v2-teacher-note">Teach all points, or select only the ones this group needs. The list is intentionally fuller than a fixed lesson slot.</p><ul class="v2-facts"><li>The Version 2 table requires understanding the need and likely contents; it does not require candidates to produce either document.</li><li>Alpha testing is performed internally before release; beta testing uses selected external users in realistic settings; acceptance testing checks the delivered system against agreed requirements. A strategy states levels/methods/responsibility, while a test plan records test ID, purpose, data, expected result, actual result and pass/fail.</li><li>Choose test data from the stated validation rule and give an expected result for each value. A label such as &#39;boundary&#39; is insufficient unless the value really tests a stated limit.</li><li>Classify the reason for the change, not the code edited. The same module could receive a corrective change for a crash, an adaptive change for a new operating-system interface, or a perfective change for faster search and a clearer result display.</li><li>Every maintenance change requires impact analysis, controlled amendment, tests for the changed behaviour and regression tests for unaffected behaviour. Records should link the request, code change and test evidence.</li><li>Test the enhancement with data that exercises the new path and rerun regression tests for existing paths. Correcting a fault is corrective maintenance; adding or improving requested functionality is an enhancement and may be perfective maintenance.</li></ul></article>
+              <article class="v2-example"><h3>Worked example</h3><p>Test login through review, construction, integration and release / Test an inclusive mark range / Three changes to one booking system / Add a Merit count without breaking PassCount: First dry-run the lockout counter and conduct a walkthrough in which peers inspect the algorithm. White-box tests cover true/false paths; black-box tests valid, invalid and boundary inputs from requirements. During integration, a stub returns simulated account results before the database is ready. Internal staff perform alpha testing, selected external users perform beta testing, and the customer performs acceptance testing against the agreed lockout behaviour. For an allowed mark from 0 to 100 inclusive, 55 is normal, 0 and 100 are valid extreme/boundary values, and -1 or 101 is abnormal. Fixing a crash when saving is corrective. Updating tax or term-date rules imposed externally is adaptive.…</p></article>
+              <aside class="v2-extension"><h3>Beyond syllabus / 延伸知识（不要求背诵）</h3><p>modern teams often use continuous integration to repeat building and testing whenever a program changes.</p></aside>
             </div>
-          </div>
-          <div class="sql-visual" aria-label="SQL aggregate visual">
-            <span class="keyword">SELECT</span><span>Category, COUNT(*)</span>
-            <span class="keyword">FROM</span><span>Book</span>
-            <span class="keyword">GROUP BY</span><span>Category</span>
-            <p>When the question asks "per category", GROUP BY has entered the room.</p>
-          </div>
-        </section>
-
-        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-086">
-          <article class="why-card">
-            <h3>Why this matters</h3>
-            <p>Students often write a correct WHERE clause but miss the aggregate or GROUP BY, losing the summary mark.</p>
-          </article>
-          <article class="trap-card">
-            <h3>Common error</h3>
-            <p>If you select a normal field alongside an aggregate, you usually need <code>GROUP BY</code> for that field.</p>
-          </article>
-        </section>
-
-        <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-086">
-          <div class="section-title">
-            <p class="eyebrow">Warm-up hook</p>
-            <h2>Which query counts how many books are in each category?</h2>
-            <p>Counting by category without grouping is like sorting socks with your eyes closed: brave, but not useful.</p>
-          </div>
-          <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="group">SELECT Category, COUNT(*) FROM Book GROUP BY Category</button>
-            <button class="choice-card" type="button" data-hook="order">SELECT Category FROM Book ORDER BY Category</button>
-            <button class="choice-card" type="button" data-hook="where">SELECT Category FROM Book WHERE COUNT(*)</button>
-            <button class="choice-card" type="button" data-hook="star">SELECT * FROM Book</button>
-          </div>
-          <div class="feedback" id="hookFeedback" aria-live="polite">
-            Choose the query that creates a count per category.
+            <figure class="v2-visual">
+              <img src="../assets/diagrams/stage10-infographics/stage10-lesson-146-changeover.jpg" alt="A test strategy states the testing levels, methods, responsibilities, sequence and resources for the project.. A test plan records individual cases with a test ID, purpose, data, expected result, actual result and pass/fail outcome.. Normal, abnormal and extreme/boundary values are test-data categories; a list of values alone is neither a complete strategy nor a complete test plan." loading="lazy" />
+              <figcaption>Test strategy and test plan are different documents. One maintained explanation is shown as an image on larger screens and as text on small screens.</figcaption>
+              <div class="v2-mobile-visual-text" aria-label="Mobile text alternative"><ul><li>A test strategy states the testing levels, methods, responsibilities, sequence and resources for the project.</li><li>A test plan records individual cases with a test ID, purpose, data, expected result, actual result and pass/fail outcome.</li><li>Normal, abnormal and extreme/boundary values are test-data categories; a list of values alone is neither a complete strategy nor a complete test plan.</li></ul></div>
+            </figure>
           </div>
         </section>
 
-        <section class="panel" id="orderby" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-086">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 1</p>
-            <h2><code>ORDER BY</code> sorts output rows</h2>
-            <p><code>ORDER BY</code> controls the order of the result rows. <code>ASC</code> means ascending; <code>DESC</code> means descending.</p>
-          </div>
-          <div class="clause-grid">
-            <article><strong>Ascending</strong><span><code>ORDER BY Price ASC</code>: low to high, A to Z, oldest to newest.</span></article>
-            <article><strong>Descending</strong><span><code>ORDER BY Price DESC</code>: high to low, Z to A, newest to oldest.</span></article>
-            <article><strong>Default</strong><span>Many SQL systems default to ascending, but exams may expect explicit <code>ASC</code> if asked.</span></article>
-          </div>
+        <section class="v2-panel" id="practice">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 3 | select by learner need</p><h2>Practice by question type</h2></div>
+          <div class="v2-question-list"><article class="v2-question" data-question-id="Q-L086-01" data-semantic-fingerprint="S12.06|test-strategies-and-test-plans|apply|what-does-stub-replace|written|recall">
+              <div class="v2-question-head"><span class="v2-badge">apply</span><span class="v2-badge">recall</span><span class="v2-badge difficulty">foundation</span><span class="v2-badge">2 marks</span></div>
+              <p><strong>Question 1.</strong> What does a stub replace?</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> A called module/component not yet available.</p><p><strong>Marking guidance:</strong> Award one mark for each distinct, technically accurate point or method step.</p><p><strong>Common error:</strong> For the command word apply, perform that exact action; do not replace it with an unrelated fact.</p></div></details>
+            </article><article class="v2-question" data-question-id="Q-L086-02" data-semantic-fingerprint="S12.06|test-strategies-and-test-plans|state|precise-facts-about|written|recall">
+              <div class="v2-question-head"><span class="v2-badge">state</span><span class="v2-badge">recall</span><span class="v2-badge difficulty">application</span><span class="v2-badge">2 marks</span></div>
+              <p><strong>Question 2.</strong> State two precise facts about test strategies and test plans.</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> The Version 2 table requires understanding the need and likely contents; it does not require candidates to produce either document. Alpha testing is performed internally before release; beta testing uses selected external users in realistic settings; acceptance testing checks the delivered system against agreed requirements. A strategy states levels/methods/responsibility, while a test plan records test ID, purpose, data, expected result, actual result and pass/fail.</p><p><strong>Marking guidance:</strong> Award one mark for each distinct fact; do not credit a repeated point.</p><p><strong>Common error:</strong> Do not repeat the same point in different words; each mark needs a separate idea or method step.</p></div></details>
+            </article><article class="v2-question" data-question-id="Q-L086-03" data-semantic-fingerprint="S12.06|test-strategies-and-test-plans|explain|would-applied-suitable-computing|visual|explain">
+              <div class="v2-question-head"><span class="v2-badge">explain</span><span class="v2-badge">explain</span><span class="v2-badge difficulty">transfer</span><span class="v2-badge">3 marks</span></div>
+              <p><strong>Question 3.</strong> Explain how test strategies and test plans would be applied in a suitable computing context.</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> Alpha testing is performed internally before release; beta testing uses selected external users in realistic settings; acceptance testing checks the delivered system against agreed requirements. A strategy states levels/methods/responsibility, while a test plan records test ID, purpose, data, expected result, actual result and pass/fail. Choose test data from the stated validation rule and give an expected result for each value. A label such as &#39;boundary&#39; is insufficient unless the value really tests a stated limit. Classify the reason for the change, not the code edited. The same module could receive a corrective change for a crash, an adaptive change for a new operating-system interface, or a perfective change for faster search and a clearer result display.</p><p><strong>Marking guidance:</strong> Each mark needs a relevant point linked to the stated context.</p><p><strong>Common error:</strong> Do not copy the worked example unchanged; transfer the method and check it against the new context.</p></div></details>
+            </article></div>
+          <div class="v2-paper-refs">
+          <h3>Related past-paper indexes</h3>
+          <table><thead><tr><th>Reference</th><th>Marks</th><th>Command word</th><th>Question type</th></tr></thead>
+          <tbody><tr><td>9618/21/S/25 Q6(a)</td><td>4</td><td>complete</td><td>recall</td></tr><tr><td>9618/21/W/24 Q5(i)</td><td>4</td><td>complete</td><td>recall</td></tr></tbody></table>
+          <p class="v2-copyright-note">Index only: Cambridge question and mark-scheme wording is not reproduced on this public course page.</p>
+        </div>
         </section>
 
-        <!-- stage10-explanation:start orderby -->
-        <section class="panel explanation-panel" id="explanation-orderby" data-explains="orderby" data-explanation-kind="process" aria-labelledby="explanation-orderby-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-086">
-          <h2 class="explanation-sr-only" id="explanation-orderby-title">ORDER BY sorts output rows</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-086-orderby.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining ORDER BY sorts output rows with a structured visual model." />
-            <figcaption class="explanation-sr-only">ORDER BY sorts output rows: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> ORDER BY controls the order of the result rows. ASC means ascending; DESC means descending.</li><li><strong>Lesson fact:</strong> Ascending ORDER BY Price ASC : low to high, A to Z, oldest to newest.</li><li><strong>Lesson fact:</strong> Descending ORDER BY Price DESC : high to low, Z to A, newest to oldest.</li><li><strong>Lesson fact:</strong> Default Many SQL systems default to ascending, but exams may expect explicit ASC if asked.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end orderby -->
-        <section class="panel" id="aggregates" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-086">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 2</p>
-            <h2>Aggregate functions calculate one summary value</h2>
-          </div>
-          <div class="aggregate-table" role="table" aria-label="Aggregate functions">
-            <div class="table-row table-head" role="row">
-              <div role="columnheader">Function</div>
-              <div role="columnheader">Purpose</div>
-              <div role="columnheader">Example</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell"><code>COUNT</code></div>
-              <div role="cell">Counts records or non-null values</div>
-              <div role="cell"><code>SELECT COUNT(*) FROM Book</code></div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell"><code>SUM</code></div>
-              <div role="cell">Adds numeric values</div>
-              <div role="cell"><code>SELECT SUM(Price) FROM Book</code></div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell"><code>AVG</code></div>
-              <div role="cell">Calculates the mean</div>
-              <div role="cell"><code>SELECT AVG(Price) FROM Book</code></div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell"><code>MIN</code>, <code>MAX</code></div>
-              <div role="cell">Finds smallest or largest value</div>
-              <div role="cell"><code>SELECT MAX(Price) FROM Book</code></div>
-            </div>
-          </div>
+        <section class="v2-panel" id="summary">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 4 | close when ready</p><h2>Summary and exam reminders</h2></div>
+          <div class="v2-summary-grid"><div><h3>Summary</h3><ul class="v2-summary-list"><li>Define test strategies and test plans with the exact technical vocabulary expected by the syllabus.</li><li>Use the lesson method on a fresh context and show the intermediate decision, representation or calculation.</li><li>Match the shape of the answer to the command word and the available marks.</li><li>Check the final answer against the scenario instead of repeating a memorised sentence.</li></ul></div><div class="v2-error"><h3>Common error to correct</h3><p>Students often describe the lifecycle as a fixed checklist. Correction: development is iterative; findings can send a project back to earlier stages.</p></div></div>
+          <div class="v2-tip-box"><h3>Exam technique</h3><ul><li>Follow the command word: state gives a fact; explain links a cause to a consequence; compare covers both sides.</li><li>Match the number of independent points or method steps to the available marks.</li><li>For test strategies and test plans, use the exact technical term before applying it to the scenario.</li></ul></div>
         </section>
 
-        <!-- stage10-explanation:start aggregates -->
-        <section class="panel explanation-panel" id="explanation-aggregates" data-explains="aggregates" data-explanation-kind="mechanism" aria-labelledby="explanation-aggregates-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-086">
-          <h2 class="explanation-sr-only" id="explanation-aggregates-title">Aggregate functions calculate one summary value</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-086-aggregates.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Aggregate functions calculate one summary value with a structured visual model." />
-            <figcaption class="explanation-sr-only">Aggregate functions calculate one summary value: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> COUNT(*) counts all rows in the result, including rows containing null values.</li><li><strong>Lesson fact:</strong> COUNT(column) counts only non-null values in the named column.</li><li><strong>Lesson fact:</strong> SUM, AVG and COUNT operate on the rows remaining after filtering and grouping rules are applied.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end aggregates -->
-        <section class="panel" id="groupby" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-086">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 3</p>
-            <h2><code>GROUP BY</code> calculates summaries per group</h2>
-            <p>Use <code>GROUP BY</code> when the question asks for a summary for each category, each borrower, each course or each group.</p>
-          </div>
-          <div class="answer-frame">
-            <strong>Pattern:</strong>
-            <span><code>SELECT Category, COUNT(*) FROM Book GROUP BY Category;</code></span>
-          </div>
-          <div class="callout">Chinese support: sort = 排序；aggregate = 汇总函数；group = 分组；per category = 每个类别。</div>
-        </section>
-
-        <!-- stage10-explanation:start groupby -->
-        <section class="panel explanation-panel" id="explanation-groupby" data-explains="groupby" data-explanation-kind="mechanism" aria-labelledby="explanation-groupby-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-086">
-          <h2 class="explanation-sr-only" id="explanation-groupby-title">GROUP BY calculates summaries per group</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-086-groupby.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining GROUP BY calculates summaries per group with a structured visual model." />
-            <figcaption class="explanation-sr-only">GROUP BY calculates summaries per group: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Use GROUP BY when the question asks for a summary for each category, each borrower, each course or each group.</li><li><strong>Lesson fact:</strong> Pattern:</li><li><strong>Lesson fact:</strong> SELECT Category, COUNT(*) FROM Book GROUP BY Category;</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end groupby -->
-        <section class="panel" id="trace" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-086">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 4</p>
-            <h2>Trace summaries from a small table</h2>
-          </div>
-          <div class="data-table" role="table" aria-label="Book table">
-            <div class="table-row table-head" role="row">
-              <div role="columnheader">BookID</div>
-              <div role="columnheader">Title</div>
-              <div role="columnheader">Category</div>
-              <div role="columnheader">Price</div>
-              <div role="columnheader">Copies</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">B01</div><div role="cell">Networks</div><div role="cell">Computing</div><div role="cell">12.50</div><div role="cell">4</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">B02</div><div role="cell">Poems</div><div role="cell">Literature</div><div role="cell">8.00</div><div role="cell">7</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">B03</div><div role="cell">Databases</div><div role="cell">Computing</div><div role="cell">15.00</div><div role="cell">3</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">B04</div><div role="cell">Drama</div><div role="cell">Literature</div><div role="cell">9.50</div><div role="cell">2</div>
-            </div>
-          </div>
-        </section>
-
-
-        <section class="panel" id="builder" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-086">
-          <div class="section-title">
-            <p class="eyebrow">Interactive query builder</p>
-            <h2>Choose the right summary query</h2>
-          </div>
-          <div class="converter-grid">
-            <label>
-              English request
-              <select id="builderInput">
-                <option value="priceDesc">Show Title and Price sorted by Price highest first.</option>
-                <option value="countAll">Count all books.</option>
-                <option value="avgPrice">Find the average price of all books.</option>
-                <option value="countCategory">Count books in each Category.</option>
-                <option value="sumCopiesCategory">Show total Copies for each Category.</option>
-              </select>
-            </label>
-            <button class="primary-button" type="button" id="builderBtn">Build SQL</button>
-          </div>
-          <pre class="sql-output" id="builderResult">Choose a request, then build the SQL.</pre>
-          <div class="feedback" id="builderReason">The output will choose sorting, aggregate or grouping as needed.</div>
-        </section>
-
-        <section class="panel" id="runner" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-086">
-          <div class="section-title">
-            <p class="eyebrow">Interactive result runner</p>
-            <h2>Run preset queries against the Book table</h2>
-          </div>
-          <div class="converter-grid">
-            <label>
-              Query
-              <select id="queryInput">
-                <option value="q1">SELECT Title, Price FROM Book ORDER BY Price DESC</option>
-                <option value="q2">SELECT COUNT(*) FROM Book</option>
-                <option value="q3">SELECT AVG(Price) FROM Book</option>
-                <option value="q4">SELECT Category, COUNT(*) FROM Book GROUP BY Category</option>
-                <option value="q5">SELECT Category, SUM(Copies) FROM Book GROUP BY Category</option>
-              </select>
-            </label>
-            <button class="primary-button" type="button" id="queryBtn">Run query</button>
-          </div>
-          <div class="result-table" id="queryResult">Choose a query to see the result.</div>
-        </section>
-
-        <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-086">
-          <div class="section-title">
-            <p class="eyebrow">Worked examples</p>
-            <h2>Choose the correct SQL tool</h2>
-          </div>
-          <div class="example-tabs" role="tablist" aria-label="Worked examples">
-            <button class="tab active" type="button" data-example="sort">Sorting</button>
-            <button class="tab" type="button" data-example="count">COUNT</button>
-            <button class="tab" type="button" data-example="average">AVG</button>
-            <button class="tab" type="button" data-example="group">GROUP BY</button>
-          </div>
-          <article class="example-box" id="exampleBox" aria-live="polite"></article>
-        </section>
-
-        <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-086">
-          <div class="section-title">
-            <p class="eyebrow">Practice with instant checking</p>
-            <h2>5-minute quiz and core checks</h2>
-            <p>Type concise answers. Use Show answer after committing to a response.</p>
-          </div>
-          <div class="practice-list" id="practiceList"></div>
-        </section>
-
-        <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-086">
-          <div class="section-title">
-            <p class="eyebrow">Mistake debugging</p>
-            <h2>Repair sorting and aggregate errors</h2>
-          </div>
-          <div class="mistake-grid" id="mistakeGrid"></div>
-        </section>
-
-        <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-086">
-          <div class="section-title">
-            <p class="eyebrow">Exam-style questions</p>
-            <h2>Original Cambridge-style practice with expandable MS</h2>
-            <p>These are original questions written in Cambridge style. The mark schemes are strict about aggregate choice and GROUP BY use.</p>
-          </div>
-          <div class="exam-list" id="examList"></div>
-        </section>
-
-        <section class="panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-086">
-          <div class="section-title">
-            <p class="eyebrow">Summary</p>
-            <h2>SQL extension checklist</h2>
-          </div>
-          <div class="summary-grid">
-            <div><strong>ORDER BY</strong><span>Sort result rows; use ASC or DESC as required.</span></div>
-            <div><strong>Aggregates</strong><span>Calculate summaries: count, total, average, minimum or maximum.</span></div>
-            <div><strong>GROUP BY</strong><span>Use when the summary is needed for each group.</span></div>
-          </div>
-        </section>
-
-        <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
-          <div class="section-title">
-            <p class="eyebrow">Homework</p>
-            <h2>Clear tasks for consolidation</h2>
-          </div>
-          <div class="homework-list">
-            <article>
-              <strong>Task 1: Query writing</strong>
-              <span>Write one query each using <code>ORDER BY</code>, <code>COUNT</code>, <code>AVG</code> and <code>GROUP BY</code> for the Book table.</span>
-            </article>
-            <article>
-              <strong>Task 2: Result tracing</strong>
-              <span>Trace the result of <code>SELECT Category, SUM(Copies) FROM Book GROUP BY Category</code> using the table on this page.</span>
-            </article>
-            <article>
-              <strong>Task 3: 6-mark answer</strong>
-              <span>Answer: "Write SQL to show the number of books in each category." Then annotate the aggregate and grouping clauses.</span>
-            </article>
-          </div>
-        </section>
+        <nav class="v2-bottom-nav" aria-label="Previous and next lesson"><a href="../lesson-085/" >Previous lesson</a><a href="../lesson-087/" >Next lesson</a></nav>
       </div>
     </main>
-
-    <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=3"></script>
-    <script src="../lesson-toolbar.js?v=3"></script>
-    <script src="../stage7-accessibility.js?v=4"></script>
+    <script src="../course-v2.js?v=1"></script>
   </body>
 </html>

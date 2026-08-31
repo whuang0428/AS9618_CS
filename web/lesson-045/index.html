@@ -3,422 +3,93 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 045 | Interrupt causes, detection and handling</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <title>AS9618 Lesson 045 | Paper 1 integrated review and error clinic</title>
     <link rel="icon" href="data:" />
-    <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
+    <link rel="stylesheet" href="../course-v2.css?v=3" />
   </head>
-  <body>
+  <body data-course-version="2" data-lesson-id="045" data-syllabus-ids="S1.01,S1.02,S1.03,S1.04,S1.05,S1.06,S1.07,S1.08,S1.09,S1.10,S1.11,S2.01,S2.02,S2.03,S2.04,S2.05,S2.06,S2.07,S2.08,S2.09,S2.10,S2.11,S2.12,S2.13,S2.14,S2.15,S2.16,S3.01,S3.02,S3.03,S3.04,S3.05,S3.06,S3.07,S3.08,S3.09,S3.10,S4.01,S4.02,S4.03,S4.04,S4.05,S4.06,S4.07,S4.08,S4.09,S4.10,S4.11,S4.12,S4.13,S4.14,S4.15,S5.01,S5.02,S5.03,S5.04,S5.05,S5.06,S5.07,S6.01,S6.02,S6.03,S6.04,S6.05,S6.06,S6.07,S6.08,S7.01,S7.02,S7.03,S7.04,S7.05,S7.06,S8.01,S8.02,S8.03,S8.04,S8.05,S8.06,S8.07,S8.08,S8.09,S8.10,S8.11">
     <a class="skip-link" href="#main-content">Skip to main content</a>
-    <header class="topbar">
-      <div>
-        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 4</p>
-        <h1>Interrupt causes, detection and handling</h1>
-      </div>
-      <div class="action-panel" aria-label="Page controls">
-        <a class="course-home-link" href="../">Course home</a>
-        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
-      </div>
+    <header class="v2-topbar">
+      <div><p class="v2-eyebrow">Cambridge AS9618 | Paper 1 | Paper 1 integrated review</p><h1>Paper 1 integrated review and error clinic</h1></div>
+      <nav class="v2-actions" aria-label="Lesson actions"><a href="../">Course home</a><a href="../assessments/">Assessment bank</a><button type="button" id="printLesson">Print</button></nav>
     </header>
-
-    <main class="layout" id="main-content" tabindex="-1">
-      <aside class="lesson-nav" aria-label="Lesson navigation">
-        <a href="#overview">Overview</a>
-        <a href="#hook">Warm-up</a>
-        <a href="#concept">Bus concept</a>
-        <a href="#three-buses">Three buses</a>
-        <a href="#read-write">Read/write traces</a>
-        <a href="#width">Bus width</a>
-        <a href="#tool">Bus mapper</a>
-        <a href="#examples">Examples</a>
-        <a href="#practice">Practice</a>
-        <a href="#debug">Debugging</a>
-        <a href="#exam">Exam-style</a>
-        <a href="#summary">Summary</a>
-        <a href="#homework">Homework</a>
-        <a href="#stage2-completion">Core syllabus content</a>
-      </aside>
-
-      <div class="lesson-content">
-        <!-- remediation-v2-stage3-scope:start -->
-        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.</p></aside>
-        <!-- remediation-v2-stage3-scope:end -->
-
-<!-- stage2-completion:start -->
-        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus content</p>
-            <h2>Interrupt causes, detection and handling</h2>
-          </div>
-          <div class="stage2-explanation">
-            <p>An interrupt is a signal or condition requesting processor attention. Possible causes include input/output devices needing service, a timer used for scheduling, a hardware fault, and a software exception. Applications include responsive input, sharing processor time and dealing promptly with exceptional conditions without continuously polling every device.</p>
-            <p>For most maskable interrupts, the processor completes the current instruction and checks for pending enabled interrupts at the end of that fetch-execute cycle, before beginning the next instruction. Detection is therefore not the same as stopping halfway through an ordinary instruction.</p>
-            <p>If an interrupt is accepted, the processor checks priority, saves the state needed to resume (such as PC, registers and status), loads or locates the correct interrupt service routine (ISR), executes the ISR, restores the saved state and resumes the interrupted program at the correct next instruction. The ISR is a routine, not the interrupt signal itself.</p>
-            <p>An enabled interrupt request is detected at an instruction boundary before the processor begins the handling sequence.</p>
-          </div>
-          <article class="stage2-example">
-            <h3>Worked example: Handle a keyboard interrupt</h3>
-            <p>A key press raises an interrupt while the CPU is executing another program. The CPU finishes its current instruction, detects the pending request at the cycle boundary, saves PC/register/status state, runs the keyboard ISR to read or acknowledge the input, restores the saved state and continues the original program.</p>
-          </article>
+    <main class="v2-shell" id="main-content" tabindex="-1">
+      <nav class="v2-toc" aria-label="Lesson contents"><strong>Lesson 045</strong><a href="#overview">Overview</a><a href="#prerequisite">Prerequisite</a><a href="#explanation">Explanation</a><a href="#practice">Practice</a><a href="#summary">Summary</a></nav>
+      <div class="v2-content">
+        <section class="v2-hero" id="overview">
+          <div><p class="v2-eyebrow">Flexible-depth lesson</p><h2>Paper 1 integrated review and error clinic</h2><p>S1.01, S1.02, S1.03, S1.04, S1.05, S1.06, S1.07, S1.08, S1.09, S1.10, S1.11, S2.01, S2.02, S2.03, S2.04, S2.05, S2.06, S2.07, S2.08, S2.09, S2.10, S2.11, S2.12, S2.13, S2.14, S2.15, S2.16, S3.01, S3.02, S3.03, S3.04, S3.05, S3.06, S3.07, S3.08, S3.09, S3.10, S4.01, S4.02, S4.03, S4.04, S4.05, S4.06, S4.07, S4.08, S4.09, S4.10, S4.11, S4.12, S4.13, S4.14, S4.15, S5.01, S5.02, S5.03, S5.04, S5.05, S5.06, S5.07, S6.01, S6.02, S6.03, S6.04, S6.05, S6.06, S6.07, S6.08, S7.01, S7.02, S7.03, S7.04, S7.05, S7.06, S8.01, S8.02, S8.03, S8.04, S8.05, S8.06, S8.07, S8.08, S8.09, S8.10, S8.11 | Select what to omit, teach briefly or explore in depth.</p></div>
+          <div class="v2-time-grid" aria-label="Available lesson depth"><div><strong>Quick</strong><span>diagnose + essentials</span></div><div><strong>Full</strong><span>complete explanation</span></div><div><strong>Deep</strong><span>prerequisites + extension</span></div><div><strong>Choose</strong><span>practice by need</span></div></div>
         </section>
-        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus practice</p>
-            <h2>Interrupt causes, detection and handling: apply and assess</h2>
-          </div>
-          <div class="stage2-practice">
-            <h3>Targeted practice</h3>
-            <article class="stage2-question">
-              <p><strong>1.</strong> Give two possible causes or applications of interrupts.</p>
-              <details><summary>Show answer</summary><p>For example an I/O device request, timer/scheduler event, hardware fault or software exception.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>2.</strong> When is a normal maskable interrupt detected and accepted?</p>
-              <details><summary>Show answer</summary><p>After the current instruction completes, at the end of the fetch-execute cycle before the next instruction begins, subject to enabled/priority checks.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>3.</strong> What is an ISR?</p>
-              <details><summary>Show answer</summary><p>An interrupt service routine: program code that handles a particular interrupt.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>4.</strong> Why must processor state be saved and restored?</p>
-              <details><summary>Show answer</summary><p>So the interrupted program can resume at the correct instruction with its earlier register and status values.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>5.</strong> List the handling sequence after detection.</p>
-              <details><summary>Show answer</summary><p>Check/accept, save state, locate and execute ISR, restore state, resume program.</p></details>
-            </article>
-          </div>
-          <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>6 marks</span></div>
-            <p>Describe one interrupt cause or application, state when it is detected in the fetch-execute cycle, and trace handling through the ISR to resumption.</p>
-            <details>
-              <summary>Show MS</summary>
-              <table class="mark-scheme-table">
-                <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
-                <tbody>
-                  <tr><td>valid cause/application such as I/O, timer, fault or exception</td><td>Do not accept that every interrupt stops an instruction halfway through, that the ISR is the signal, or that the whole interrupted program restarts.</td><td>1</td></tr>
-                  <tr><td>current instruction completes and interrupt is detected/checked at the cycle boundary</td><td></td><td>1</td></tr>
-                  <tr><td>priority/enabled status is checked</td><td></td><td>1</td></tr>
-                  <tr><td>PC/register/status state is saved</td><td></td><td>1</td></tr>
-                  <tr><td>correct ISR is located and executed</td><td></td><td>1</td></tr>
-                  <tr><td>state is restored and the interrupted program resumes</td><td></td><td>1</td></tr>
-                </tbody>
-              </table>
-            </details>
-          </article>
-        </section>
-        <!-- stage2-completion:end -->
 
-<section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-045">
-          <div class="hero-copy">
-            <p class="lesson-meta">Lesson 045 | 45 minutes | Paper 1 Section 4 | Processor fundamentals</p>
-            <h2>Buses move signals. They are not tiny school buses full of bytes wearing backpacks.</h2>
-            <p>
-              A system bus is a communication pathway used to transfer signals between
-              the CPU, memory and other components. The address bus says where, the
-              data bus carries what, and the control bus says what operation is happening.
-            </p>
-            <div class="objective-grid" aria-label="Learning objectives">
-              <div><strong>Describe</strong><span>the roles of address, data and control buses</span></div>
-              <div><strong>Trace</strong><span>read and write operations using the correct bus</span></div>
-              <div><strong>Explain</strong><span>how address bus width affects addressable memory locations</span></div>
+        <section class="v2-panel v2-route-menu" aria-labelledby="route-heading">
+          <div class="v2-heading"><p class="v2-eyebrow">Teacher choice</p><h2 id="route-heading">Choose the depth for this group</h2></div>
+          <div class="v2-route-grid"><article><h3>Quick route</h3><p>Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.</p></article><article><h3>Full route</h3><p>Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.</p></article><article><h3>Deep route</h3><p>Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.</p></article></div>
+        </section>
+
+        <section class="v2-panel" id="prerequisite">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 1 | optional depth</p><h2>Prerequisite knowledge and quick diagnostic</h2></div>
+          <div class="v2-diagnostic"><p>Recall S1.02, S1.04, S1.01, S1.08, S1.09, S1.10, S2.02, S2.04, S2.01, S2.15, S3.01, S3.05, S3.08, S4.01, S4.07, S4.09, S4.12, S4.13, S5.01, S5.04, S6.02, S6.05, S6.01, S7.01, S7.04, S8.01, S8.02, S8.05, S8.08 before starting this lesson.</p></div>
+          <p>Give one accurate definition or method step before continuing. If it is missing, revisit only that prerequisite.</p>
+          <details class="v2-prerequisite-detail"><summary>Open optional prerequisite refresher</summary><ul><li>The Version 2 row requires binary, denary, hexadecimal, Binary Coded Decimal (BCD), one&#39;s complement and two&#39;s complement; BCD and complements are representations rather than additional number bases.</li><li>Show understanding of binary, denary and hexadecimal number systems, BCD, and one&#39;s- and two&#39;s-complement representations.</li><li>Version 2 explicitly requires both addition and subtraction using positive and negative binary integers; fixed-width representation must be retained throughout a calculation.</li><li>Perform binary addition and subtraction using positive and negative binary integers.</li><li>Use and distinguish kibi/kilo, mebi/mega, gibi/giga and tebi/tera; binary prefixes use powers of 1024 and decimal prefixes use powers of 1000.</li><li>Show understanding of binary magnitudes and the difference between binary prefixes and decimal prefixes.</li></ul></details>
+        </section>
+
+        <section class="v2-panel" id="explanation">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 2 | deliberately over-complete</p><h2>Knowledge explanation</h2></div>
+          <h3>Learning objectives</h3><ul class="v2-objectives"><li>Show understanding of binary magnitudes and the difference between binary prefixes and decimal prefixes.</li><li>Show understanding of binary, denary and hexadecimal number systems, BCD, and one&#39;s- and two&#39;s-complement representations.</li><li>Convert an integer value from one required number base or representation to another.</li></ul>
+          <details class="v2-concept-menu"><summary>Open the concept checklist and choose what to teach</summary><ul><li>binary prefixes</li><li>decimal prefixes</li><li>kibi / KiB</li><li>kilo / kB</li><li>mebi / MiB</li><li>mega / MB</li><li>gibi / GiB</li><li>giga / GB</li><li>tebi / TiB</li><li>tera / TB</li><li>binary</li><li>denary</li><li>hexadecimal</li><li>BCD</li><li>one&#39;s-complement / one&#39;s complement</li><li>two&#39;s-complement / two&#39;s complement</li><li>INTEGER</li><li>convert / conversion</li><li>binary addition</li><li>binary subtraction</li><li>positive</li><li>negative</li><li>overflow</li><li>fixed-width / fixed width</li></ul></details>
+          <div class="v2-explanation-grid">
+            <div>
+              <article class="v2-core-facts"><h3>Detailed explanation</h3><p class="v2-teacher-note">Teach all points, or select only the ones this group needs. The list is intentionally fuller than a fixed lesson slot.</p><ul class="v2-facts"><li>Conversions apply to integer values and the binary, denary, hexadecimal, BCD, one&#39;s-complement and two&#39;s-complement representations named in the preceding Version 2 row.</li><li>A LAN covers a limited area and is normally managed by one organisation; a WAN connects sites across a large area and commonly uses provider infrastructure. Benefits must identify a shared or centrally managed resource and its consequence.</li><li>Use the standard symbols and define the functions of NOT, AND, OR, NAND, NOR and XOR (EOR); all gates except NOT have two inputs. Construct circuits, truth tables and expressions from each of the other stated representations: problem statement, logic expression, logic circuit and truth table.</li><li>Use the complete Version 2 instruction set with its specified operands and effects. In particular LDR n loads IX, CMI &lt;address is indirect comparison, JPE follows a True comparison and JPN follows a False comparison.</li><li>The operating system is required to provide a platform and manage memory, files, security, hardware input/output and peripherals, and processes.</li><li>Describe security measures for computer systems from a stand-alone PC to a network: user accounts, passwords, digital signatures, biometrics, firewall, anti-virus, anti-spyware and encryption are all required named evidence.</li><li>Version 2 explicitly includes the Free Software Foundation, Open Source Initiative, shareware and commercial software. All four must be taught; a scenario answer must justify permissions, restrictions, cost or support rather than choose by label alone.</li><li>Version 2 requires CREATE DATABASE, CREATE TABLE, ALTER TABLE, CHARACTER, VARCHAR(n), BOOLEAN, INTEGER, REAL, DATE, TIME, PRIMARY KEY(field) and FOREIGN KEY(field) REFERENCES Table(Field). Each named item remains core.</li></ul></article>
+              <article class="v2-example"><h3>Worked example</h3><p>Use one fresh scenario to apply paper 1 integrated review and error clinic, showing each decision or calculation step and checking the result against the question context.</p></article>
+              <aside class="v2-extension"><h3>Beyond syllabus / 延伸知识（不要求背诵）</h3><p>production databases also manage transactions and concurrent users; these ideas extend the syllabus model of integrity and access control.</p></aside>
             </div>
-          </div>
-          <div class="bus-card" aria-label="System bus sketch">
-            <div class="bus-board">
-              <span class="node">CPU</span>
-              <span class="bus-line address">address bus: where?</span>
-              <span class="bus-line data">data bus: what?</span>
-              <span class="bus-line control">control bus: read/write?</span>
-              <span class="node">Memory / I/O</span>
-            </div>
-            <p>Exam shortcut: where, what, command.</p>
+            <figure class="v2-visual">
+              <img src="../assets/diagrams/stage10-infographics/stage10-lesson-097-map.jpg" alt="Question map. Representation choice justify storage, compression, image/sound settings and file-size trade-offs. Communication compare networks, models, protocols, media and cloud services in context. Hardware/processor explain component roles, FDE cycle, interrupts and performance factors. System software compare translators, OS roles, utility software and development choices" loading="lazy" />
+              <figcaption>Extended-response topics across Paper 1. One maintained explanation is shown as an image on larger screens and as text on small screens.</figcaption>
+              <div class="v2-mobile-visual-text" aria-label="Mobile text alternative"><ul><li>Question map</li><li>Representation choice justify storage, compression, image/sound settings and file-size trade-offs</li><li>Communication compare networks, models, protocols, media and cloud services in context</li><li>Hardware/processor explain component roles, FDE cycle, interrupts and performance factors</li><li>System software compare translators, OS roles, utility software and development choices</li></ul></div>
+            </figure>
           </div>
         </section>
 
-        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-045">
-          <article class="why-card">
-            <h3>Why this matters</h3>
-            <p>Cambridge marking often rewards the bus name only when the role is also accurate.</p>
-          </article>
-          <article class="trap-card">
-            <h3>Common error</h3>
-            <p>"The bus transfers data" is not enough if the question asks for three buses. Distinguish each pathway.</p>
-          </article>
+        <section class="v2-panel" id="practice">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 3 | select by learner need</p><h2>Practice by question type</h2></div>
+          <div class="v2-question-list"><article class="v2-question" data-question-id="Q-L045-01" data-semantic-fingerprint="Paper1-review|paper-number-integrated-review-and-error-clinic|describe|verification-method-during-entry|written|explain">
+              <div class="v2-question-head"><span class="v2-badge">describe</span><span class="v2-badge">explain</span><span class="v2-badge difficulty">foundation</span><span class="v2-badge">5 marks</span></div>
+              <p><strong>Question 1.</strong> Describe one verification method used during data entry and two methods used during data transfer.</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> visual check against source or double entry with comparison; byte parity uses an agreed odd/even parity bit and checks it at the receiver; block parity checks rows and columns / can locate many single-bit errors; checksum is recalculated from received block and compared; methods detect many errors but do not prove truth or automatically correct every error</p><p><strong>Marking guidance:</strong> Do not substitute validation checks for verification, merge byte and block parity into one unexplained word, or claim that detection automatically corrects an error.</p><p><strong>Common error:</strong> For the command word describe, perform that exact action; do not replace it with an unrelated fact.</p></div></details>
+            </article><article class="v2-question" data-question-id="Q-L045-02" data-semantic-fingerprint="Paper1-review|paper-number-integrated-review-and-error-clinic|explain|common-section-databases-corrected|written|explain">
+              <div class="v2-question-head"><span class="v2-badge">explain</span><span class="v2-badge">explain</span><span class="v2-badge difficulty">application</span><span class="v2-badge">3 marks</span></div>
+              <p><strong>Question 2.</strong> Explain one common error from Section 8: Databases, and give the corrected reasoning.</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> Version 2 requires CREATE DATABASE, CREATE TABLE, ALTER TABLE, CHARACTER, VARCHAR(n), BOOLEAN, INTEGER, REAL, DATE, TIME, PRIMARY KEY(field) and FOREIGN KEY(field) REFERENCES Table(Field). Each named item remains core.</p><p><strong>Marking guidance:</strong> Credit distinct syllabus-accurate points that follow the command word.</p><p><strong>Common error:</strong> Do not repeat the same point in different words; each mark needs a separate idea or method step.</p></div></details>
+            </article><article class="v2-question" data-question-id="Q-L045-03" data-semantic-fingerprint="Paper1-review|paper-number-integrated-review-and-error-clinic|compare|compare-closely-related-ideas|written|evaluate">
+              <div class="v2-question-head"><span class="v2-badge">compare</span><span class="v2-badge">evaluate</span><span class="v2-badge difficulty">application</span><span class="v2-badge">4 marks</span></div>
+              <p><strong>Question 3.</strong> Compare two closely related ideas from Section 3: Hardware.</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> Use the standard symbols and define the functions of NOT, AND, OR, NAND, NOR and XOR (EOR); all gates except NOT have two inputs. Construct circuits, truth tables and expressions from each of the other stated representations: problem statement, logic expression, logic circuit and truth table.</p><p><strong>Marking guidance:</strong> Credit distinct syllabus-accurate points that follow the command word.</p><p><strong>Common error:</strong> Do not copy the worked example unchanged; transfer the method and check it against the new context.</p></div></details>
+            </article><article class="v2-question" data-question-id="Q-L045-04" data-semantic-fingerprint="Paper1-review|paper-number-integrated-review-and-error-clinic|apply|apply-method-section-information|written|recall">
+              <div class="v2-question-head"><span class="v2-badge">apply</span><span class="v2-badge">recall</span><span class="v2-badge difficulty">transfer</span><span class="v2-badge">4 marks</span></div>
+              <p><strong>Question 4.</strong> Apply one method from Section 1: Information representation to a fresh exam context.</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> Conversions apply to integer values and the binary, denary, hexadecimal, BCD, one&#39;s-complement and two&#39;s-complement representations named in the preceding Version 2 row.</p><p><strong>Marking guidance:</strong> Credit distinct syllabus-accurate points that follow the command word.</p><p><strong>Common error:</strong> Do not copy the worked example unchanged; transfer the method and check it against the new context.</p></div></details>
+            </article></div>
+          <div class="v2-paper-refs">
+          <h3>Related past-paper indexes</h3>
+          <table><thead><tr><th>Reference</th><th>Marks</th><th>Command word</th><th>Question type</th></tr></thead>
+          <tbody><tr><td>9618/12/S/25 Q6(c)</td><td>6</td><td>complete</td><td>recall</td></tr><tr><td>9618/11/S/25 Q6(b)</td><td>5</td><td>complete</td><td>recall</td></tr><tr><td>9618/11/S/25 Q7(b)</td><td>5</td><td>describe</td><td>explain</td></tr><tr><td>9618/13/W/25 Q5(c)</td><td>5</td><td>complete</td><td>recall</td></tr></tbody></table>
+          <p class="v2-copyright-note">Index only: Cambridge question and mark-scheme wording is not reproduced on this public course page.</p>
+        </div>
         </section>
 
-        <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-045">
-          <div class="section-title">
-            <p class="eyebrow">Warm-up hook</p>
-            <h2>The CPU wants to read memory address 500. Which bus carries 500?</h2>
-            <p>Click the best answer. Address 500 is a location, not the value hiding inside that location.</p>
-          </div>
-          <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="address">Address bus</button>
-            <button class="choice-card" type="button" data-hook="data">Data bus</button>
-            <button class="choice-card" type="button" data-hook="control">Control bus</button>
-            <button class="choice-card" type="button" data-hook="register">MDR</button>
-          </div>
-          <div class="feedback" id="hookFeedback" aria-live="polite">
-            Click one. Ask: is 500 a location, a value, or a command?
-          </div>
+        <section class="v2-panel" id="summary">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 4 | close when ready</p><h2>Summary and exam reminders</h2></div>
+          <div class="v2-summary-grid"><div><h3>Summary</h3><ul class="v2-summary-list"><li>Define paper 1 integrated review and error clinic with the exact technical vocabulary expected by the syllabus.</li><li>Use the lesson method on a fresh context and show the intermediate decision, representation or calculation.</li><li>Match the shape of the answer to the command word and the available marks.</li><li>Check the final answer against the scenario instead of repeating a memorised sentence.</li></ul></div><div class="v2-error"><h3>Common error to correct</h3><p>Students often revise by rereading notes only. Correction: review lessons require retrieval, timed practice and correction.</p></div></div>
+          <div class="v2-tip-box"><h3>Exam technique</h3><ul><li>Follow the command word: state gives a fact; explain links a cause to a consequence; compare covers both sides.</li><li>Match the number of independent points or method steps to the available marks.</li><li>For paper 1 integrated review and error clinic, use the exact technical term before applying it to the scenario.</li></ul></div>
         </section>
 
-        <section class="panel" id="concept" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-045">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 1</p>
-            <h2>What a system bus does</h2>
-          </div>
-          <div class="concept-grid">
-            <article>
-              <strong>Communication pathway</strong>
-              <span>A bus is a set of parallel wires or connections used to carry signals.</span>
-            </article>
-            <article>
-              <strong>Connects components</strong>
-              <span>System buses connect CPU, main memory and other devices through controlled transfers.</span>
-            </article>
-            <article>
-              <strong>Not storage</strong>
-              <span>A bus transfers signals; it does not permanently store data or instructions.</span>
-            </article>
-            <article>
-              <strong>Part of a trace</strong>
-              <span>In processor questions, bus roles often appear inside fetch, read and write sequences.</span>
-            </article>
-          </div>
-          <div class="callout">Chinese support: bus = 总线；address = 地址/位置；data = 数据/值；control signal = 控制信号；bidirectional = 双向。</div>
-        </section>
-
-        <!-- stage10-explanation:start concept -->
-        <section class="panel explanation-panel" id="explanation-concept" data-explains="concept" data-explanation-kind="mechanism" aria-labelledby="explanation-concept-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-045">
-          <h2 class="explanation-sr-only" id="explanation-concept-title">What a system bus does</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-045-concept.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining What a system bus does with a structured visual model." />
-            <figcaption class="explanation-sr-only">What a system bus does: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Communication pathway</li><li><strong>Lesson fact:</strong> A bus is a set of parallel wires or connections used to carry signals.</li><li><strong>Lesson fact:</strong> Connects components</li><li><strong>Lesson fact:</strong> System buses connect CPU, main memory and other devices through controlled transfers.</li><li><strong>Lesson fact:</strong> Not storage</li><li><strong>Lesson fact:</strong> A bus transfers signals; it does not permanently store data or instructions.</li><li><strong>Lesson fact:</strong> Part of a trace</li><li><strong>Lesson fact:</strong> In processor questions, bus roles often appear inside fetch, read and write sequences.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end concept -->
-        <section class="panel" id="three-buses" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-045">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 2</p>
-            <h2>The three buses</h2>
-          </div>
-          <div class="bus-table" role="table" aria-label="System bus roles">
-            <div class="table-row table-head" role="row">
-              <div role="columnheader">Bus</div>
-              <div role="columnheader">Carries</div>
-              <div role="columnheader">Typical direction</div>
-              <div role="columnheader">Exam-safe sentence</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Address bus</div>
-              <div role="cell">Memory or I/O address identifying a location.</div>
-              <div role="cell">Usually from CPU to memory/I/O.</div>
-              <div role="cell">The address bus carries the address of the location to be read from or written to.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Data bus</div>
-              <div role="cell">Data or instructions being transferred.</div>
-              <div role="cell">Usually bidirectional.</div>
-              <div role="cell">The data bus carries the actual data or instruction between CPU, memory and devices.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Control bus</div>
-              <div role="cell">Control and timing signals such as read, write, interrupt and clock signals.</div>
-              <div role="cell">Signals can travel in different directions depending on purpose.</div>
-              <div role="cell">The control bus carries signals that coordinate and control the transfer.</div>
-            </div>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start three-buses -->
-        <section class="panel explanation-panel" id="explanation-three-buses" data-explains="three-buses" data-explanation-kind="mechanism" aria-labelledby="explanation-three-buses-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-045">
-          <h2 class="explanation-sr-only" id="explanation-three-buses-title">The three buses</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-045-three-buses.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining The three buses with a structured visual model." />
-            <figcaption class="explanation-sr-only">The three buses: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> The address bus carries the address of the location being accessed and is normally directed from the CPU.</li><li><strong>Lesson fact:</strong> The data bus carries data and instructions in both directions.</li><li><strong>Lesson fact:</strong> The control bus carries control and timing signals in both directions, including read/write from the CPU and interrupts toward the CPU.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end three-buses -->
-        <section class="panel" id="read-write" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-045">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 3</p>
-            <h2>Read and write traces</h2>
-          </div>
-          <div class="trace-grid">
-            <article>
-              <h3>Memory read</h3>
-              <ol>
-                <li>CPU places the required address on the address bus.</li>
-                <li>CPU sends a read signal on the control bus.</li>
-                <li>Memory places the requested data/instruction on the data bus.</li>
-                <li>CPU receives the data, often through the MDR.</li>
-              </ol>
-            </article>
-            <article>
-              <h3>Memory write</h3>
-              <ol>
-                <li>CPU places the target address on the address bus.</li>
-                <li>CPU places the data to be stored on the data bus.</li>
-                <li>CPU sends a write signal on the control bus.</li>
-                <li>Memory stores the data at the addressed location.</li>
-              </ol>
-            </article>
-          </div>
-          <div class="trap-card inline-card">
-            <h3>Common error</h3>
-            <p>Read and write both use all three buses, but the direction of data transfer changes.</p>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start read-write -->
-        <section class="panel explanation-panel" id="explanation-read-write" data-explains="read-write" data-explanation-kind="mechanism" aria-labelledby="explanation-read-write-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-045">
-          <h2 class="explanation-sr-only" id="explanation-read-write-title">Read and write traces</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-045-read-write.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Read and write traces with a structured visual model." />
-            <figcaption class="explanation-sr-only">Read and write traces: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Memory read</li><li><strong>Lesson fact:</strong> CPU places the required address on the address bus.</li><li><strong>Lesson fact:</strong> CPU sends a read signal on the control bus.</li><li><strong>Lesson fact:</strong> Memory places the requested data/instruction on the data bus.</li><li><strong>Lesson fact:</strong> CPU receives the data, often through the MDR.</li><li><strong>Lesson fact:</strong> Memory write</li><li><strong>Lesson fact:</strong> CPU places the target address on the address bus.</li><li><strong>Lesson fact:</strong> CPU places the data to be stored on the data bus.</li><li><strong>Lesson fact:</strong> CPU sends a write signal on the control bus.</li><li><strong>Lesson fact:</strong> Memory stores the data at the addressed location.</li><li><strong>Lesson fact:</strong> Common error</li><li><strong>Lesson fact:</strong> Read and write both use all three buses, but the direction of data transfer changes.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end read-write -->
-        <section class="panel" id="width" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-045">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 4</p>
-            <h2>Bus width and addressable locations</h2>
-          </div>
-          <div class="width-grid">
-            <article>
-              <strong>Address bus width</strong>
-              <span>If the address bus has n lines, it can represent 2^n different addresses.</span>
-            </article>
-            <article>
-              <strong>Example</strong>
-              <span>A 16-bit address bus can address 2^16 = 65,536 memory locations.</span>
-            </article>
-            <article>
-              <strong>Data bus width</strong>
-              <span>A wider data bus can transfer more bits at once, which can affect throughput.</span>
-            </article>
-            <article>
-              <strong>Precision</strong>
-              <span>Address bus width affects address range; data bus width affects transfer size.</span>
-            </article>
-          </div>
-        </section>
-        <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-045">
-          <div class="section-title">
-            <p class="eyebrow">Interactive tool</p>
-            <h2>Bus role mapper</h2>
-            <p>Select a signal and identify the correct bus, reason and common error.</p>
-          </div>
-          <div class="converter-grid">
-            <label>
-              Signal or task
-              <select id="busInput">
-                <option value="address500">CPU sends memory address 500</option>
-                <option value="instruction">Instruction transferred from memory to CPU</option>
-                <option value="read">Read signal sent to memory</option>
-                <option value="write">Write signal sent to memory</option>
-                <option value="interrupt">Interrupt signal sent to CPU</option>
-                <option value="width16">16-bit address bus capacity</option>
-              </select>
-            </label>
-            <button type="button" id="mapBtn">Map bus</button>
-          </div>
-          <div class="result-box" id="mapResult" aria-live="polite"></div>
-          <div class="method-box" id="mapMethod"></div>
-          <div class="reject-box" id="mapTrap"></div>
-        </section>
-
-        <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-045">
-          <div class="section-title">
-            <p class="eyebrow">Worked examples</p>
-            <h2>Sort the signal before writing the sentence</h2>
-          </div>
-          <div class="example-tabs" role="tablist" aria-label="Worked examples">
-            <button class="tab active" type="button" data-example="read">Memory read</button>
-            <button class="tab" type="button" data-example="write">Memory write</button>
-            <button class="tab" type="button" data-example="width">Address width</button>
-          </div>
-          <article class="example-box" id="exampleBox"></article>
-        </section>
-
-        <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-045">
-          <div class="section-title">
-            <p class="eyebrow">5-minute quiz</p>
-            <h2>Practice with instant checking</h2>
-            <p>One-word answers are okay here, but they need to be the right bus. "The busy bus" remains sadly unmarkable.</p>
-          </div>
-          <div class="practice-list" id="practiceList"></div>
-        </section>
-
-        <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-045">
-          <div class="section-title">
-            <p class="eyebrow">Mistake debugging</p>
-            <h2>Fix the bus confusion</h2>
-          </div>
-          <div class="mistake-grid" id="mistakeList"></div>
-        </section>
-
-        <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-045">
-          <div class="section-title">
-            <p class="eyebrow">Exam-style questions</p>
-            <h2>Cambridge-style questions with expandable mark schemes</h2>
-            <p>These are original Cambridge-style questions. MS wording separates bus identification from role explanation.</p>
-          </div>
-          <div class="exam-list" id="examList"></div>
-        </section>
-
-        <section class="panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-045">
-          <div class="section-title">
-            <p class="eyebrow">Summary</p>
-            <h2>Three buses, three jobs</h2>
-          </div>
-          <div class="summary-grid">
-            <div><strong>Address bus</strong><span>Carries the address/location to be accessed.</span></div>
-            <div><strong>Data bus</strong><span>Carries the data or instruction being transferred.</span></div>
-            <div><strong>Control bus</strong><span>Carries control/timing signals such as read and write.</span></div>
-            <div><strong>Read</strong><span>Address out, read signal out, data back to CPU.</span></div>
-            <div><strong>Write</strong><span>Address out, data out, write signal out.</span></div>
-            <div><strong>Width</strong><span>n address lines can represent 2^n addresses.</span></div>
-          </div>
-        </section>
-
-        <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
-          <div class="section-title">
-            <p class="eyebrow">Homework</p>
-            <h2>Make bus answers precise</h2>
-          </div>
-          <ol class="homework-list">
-            <li>Create a three-row table for address bus, data bus and control bus. Include what each carries and one example signal/value.</li>
-            <li>Write a 6-mark answer: "Describe the roles of the three system buses during a memory read operation."</li>
-            <li>Trace a memory write operation in four numbered steps using all three buses.</li>
-            <li>Calculate how many addresses can be represented by 12-bit, 16-bit and 20-bit address buses.</li>
-            <li>Correct this sentence: "The address bus carries the data and the data bus carries the address."</li>
-          </ol>
-        </section>
+        <nav class="v2-bottom-nav" aria-label="Previous and next lesson"><a href="../lesson-044/" >Previous lesson</a><a href="../lesson-046/" >Next lesson</a></nav>
       </div>
     </main>
-    <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=3"></script>
-    <script src="../lesson-toolbar.js?v=3"></script>
-    <script src="../stage7-accessibility.js?v=4"></script>
+    <script src="../course-v2.js?v=1"></script>
   </body>
 </html>

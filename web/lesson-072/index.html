@@ -3,424 +3,89 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 072 | Section 6 review: matching risks to controls</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <title>AS9618 Lesson 072 | Built-in routines and string functions</title>
     <link rel="icon" href="data:" />
-    <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
+    <link rel="stylesheet" href="../course-v2.css?v=3" />
   </head>
-  <body>
+  <body data-course-version="2" data-lesson-id="072" data-syllabus-ids="S11.03">
     <a class="skip-link" href="#main-content">Skip to main content</a>
-    <header class="topbar">
-      <div>
-        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 6</p>
-        <h1>Section 6 review: matching risks to controls</h1>
-      </div>
-      <div class="action-panel" aria-label="Page controls">
-        <a class="course-home-link" href="../">Course home</a>
-        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
-      </div>
+    <header class="v2-topbar">
+      <div><p class="v2-eyebrow">Cambridge AS9618 | Paper 2 | Section 11: Programming</p><h1>Built-in routines and string functions</h1></div>
+      <nav class="v2-actions" aria-label="Lesson actions"><a href="../">Course home</a><a href="../assessments/">Assessment bank</a><button type="button" id="printLesson">Print</button></nav>
     </header>
+    <main class="v2-shell" id="main-content" tabindex="-1">
+      <nav class="v2-toc" aria-label="Lesson contents"><strong>Lesson 072</strong><a href="#overview">Overview</a><a href="#prerequisite">Prerequisite</a><a href="#explanation">Explanation</a><a href="#practice">Practice</a><a href="#summary">Summary</a></nav>
+      <div class="v2-content">
+        <section class="v2-hero" id="overview">
+          <div><p class="v2-eyebrow">Flexible-depth lesson</p><h2>Built-in routines and string functions</h2><p>S11.03 | Select what to omit, teach briefly or explore in depth.</p></div>
+          <div class="v2-time-grid" aria-label="Available lesson depth"><div><strong>Quick</strong><span>diagnose + essentials</span></div><div><strong>Full</strong><span>complete explanation</span></div><div><strong>Deep</strong><span>prerequisites + extension</span></div><div><strong>Choose</strong><span>practice by need</span></div></div>
+        </section>
 
-    <main class="layout" id="main-content" tabindex="-1">
-      <aside class="lesson-nav" aria-label="Lesson navigation">
-        <a href="#overview">Overview</a>
-        <a href="#hook">Warm-up</a>
-        <a href="#review-map">Review map</a>
-        <a href="#method">Answer method</a>
-        <a href="#controls">Controls</a>
-        <a href="#compare">Compare</a>
-        <a href="#matcher">Risk matcher</a>
-        <a href="#diagnostic">Diagnostic</a>
-        <a href="#examples">Examples</a>
-        <a href="#practice">Practice</a>
-        <a href="#debug">Debugging</a>
-        <a href="#exam">Exam-style</a>
-        <a href="#summary">Summary</a>
-        <a href="#homework">Homework</a>
-      </aside>
+        <section class="v2-panel v2-route-menu" aria-labelledby="route-heading">
+          <div class="v2-heading"><p class="v2-eyebrow">Teacher choice</p><h2 id="route-heading">Choose the depth for this group</h2></div>
+          <div class="v2-route-grid"><article><h3>Quick route</h3><p>Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.</p></article><article><h3>Full route</h3><p>Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.</p></article><article><h3>Deep route</h3><p>Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.</p></article></div>
+        </section>
 
-      <div class="lesson-content">
-        <section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
-          <div class="hero-copy">
-            <p class="lesson-meta">Lesson 072 | 45 minutes | Paper 1 Section 6 | Stage review</p>
-            <h2>The right control depends on the risk, not on the fanciest keyword.</h2>
-            <p>
-              This review lesson connects Section 6 topics: threats, vulnerabilities, confidentiality,
-              integrity, availability, privacy, authentication, encryption, backup, disaster recovery
-              and audit trails. The exam skill is to diagnose the problem first, then choose and justify
-              a proportionate control.
-            </p>
-            <div class="objective-grid" aria-label="Learning objectives">
-              <div><strong>Classify</strong><span>risk type: access, loss, corruption, disclosure or disruption</span></div>
-              <div><strong>Match</strong><span>each risk to a suitable control and clear mechanism</span></div>
-              <div><strong>Correct</strong><span>vague answers into mark-worthy scenario explanations</span></div>
+        <section class="v2-panel" id="prerequisite">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 1 | optional depth</p><h2>Prerequisite knowledge and quick diagnostic</h2></div>
+          <div class="v2-diagnostic"><p>Recall the main conclusion from Lesson 071: Arithmetic and logical expressions.</p></div>
+          <p>Give one accurate definition or method step before continuing. If it is missing, revisit only that prerequisite.</p>
+
+        </section>
+
+        <section class="v2-panel" id="explanation">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 2 | deliberately over-complete</p><h2>Knowledge explanation</h2></div>
+          <h3>Learning objectives</h3><ul class="v2-objectives"><li>Use built-in/library and string functions.</li></ul>
+          <details class="v2-concept-menu"><summary>Open the concept checklist and choose what to teach</summary><ul><li>built-in / library</li><li>string</li><li>functions</li></ul></details>
+          <div class="v2-explanation-grid">
+            <div>
+              <article class="v2-core-facts"><h3>Detailed explanation</h3><p class="v2-teacher-note">Teach all points, or select only the ones this group needs. The list is intentionally fuller than a fixed lesson slot.</p><ul class="v2-facts"><li>Use built-in functions and library routines. Any function not given in the pseudocode guide will be provided; string manipulation functions will always be given in the question.</li><li>Read the supplied function name, parameter order, position convention and returned type before using it. LENGTH is a familiar built-in example; LEFT, RIGHT, MID or SUBSTRING examples in this course illustrate a mechanism only when their definition and indexing convention are stated.</li><li>A function call returns a value, so it can be assigned, compared, output or combined in an expression. Do not import Java&#39;s zero-based substring convention unless the question explicitly specifies it.</li><li>For built-in routines and string functions, identify the required concept before describing its mechanism or consequence.</li></ul></article>
+              <article class="v2-example"><h3>Worked example</h3><p>Apply a supplied string routine: A question supplies FUNCTION EXTRACT(Text : STRING, Start : INTEGER, Count : INTEGER) RETURNS STRING and states that positions start at 1. LENGTH(&quot;NETWORK&quot;) returns 7; EXTRACT(&quot;NETWORK&quot;, 4, 2) returns &quot;WO&quot;. Code &lt;- EXTRACT(Name, 1, 3) uses the supplied routine in an assignment without importing Java indexing.</p></article>
+              <aside class="v2-extension"><h3>Beyond syllabus / 延伸知识（不要求背诵）</h3><p>consistent style, modularity and automated tests reduce maintenance errors in larger programs.</p></aside>
             </div>
-          </div>
-          <div class="review-card" aria-label="Risk control chain">
-            <div class="review-stack">
-              <span>Asset</span>
-              <span>Threat</span>
-              <span>Vulnerability</span>
-              <span>Impact</span>
-              <span>Control</span>
-              <span>Consequence</span>
-            </div>
-            <p>"Use encryption" is not a personality. Explain what it protects and why.</p>
+            <figure class="v2-visual">
+              <img src="../assets/diagrams/stage10-infographics/stage10-lesson-134-substring.jpg" alt="String manipulation functions are supplied in the question; use the stated name, parameter order and position convention.. Trace the supplied routine exactly, then use its returned string in an assignment, comparison, output or expression.. Do not import Java&#39;s zero-based substring convention or memorise an unstated course-specific signature." loading="lazy" />
+              <figcaption>Use the string-function definition supplied in the question. One maintained explanation is shown as an image on larger screens and as text on small screens.</figcaption>
+              <div class="v2-mobile-visual-text" aria-label="Mobile text alternative"><ul><li>String manipulation functions are supplied in the question; use the stated name, parameter order and position convention.</li><li>Trace the supplied routine exactly, then use its returned string in an assignment, comparison, output or expression.</li><li>Do not import Java&#39;s zero-based substring convention or memorise an unstated course-specific signature.</li></ul></div>
+            </figure>
           </div>
         </section>
 
-        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
-          <article class="why-card">
-            <h3>Why this matters</h3>
-            <p>Cambridge-style marks often reward the link between a control and the specific scenario, not a memorised list.</p>
-          </article>
-          <article class="trap-card">
-            <h3>Common error</h3>
-            <p>Students often prescribe encryption for everything. Encryption protects confidentiality; it does not prove identity, restore data or stop weak behaviour.</p>
-          </article>
+        <section class="v2-panel" id="practice">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 3 | select by learner need</p><h2>Practice by question type</h2></div>
+          <div class="v2-question-list"><article class="v2-question" data-question-id="Q-L072-01" data-semantic-fingerprint="S11.03|built-in-routines-and-string-functions|apply|will-unfamiliar-manipulation-function|written|recall">
+              <div class="v2-question-head"><span class="v2-badge">apply</span><span class="v2-badge">recall</span><span class="v2-badge difficulty">foundation</span><span class="v2-badge">2 marks</span></div>
+              <p><strong>Question 1.</strong> Will an unfamiliar string manipulation function be supplied?</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> Yes. The syllabus says string manipulation functions will always be given.</p><p><strong>Marking guidance:</strong> Award one mark for each distinct, technically accurate point or method step.</p><p><strong>Common error:</strong> For the command word apply, perform that exact action; do not replace it with an unrelated fact.</p></div></details>
+            </article><article class="v2-question" data-question-id="Q-L072-02" data-semantic-fingerprint="S11.03|built-in-routines-and-string-functions|state|question-supplies-function-take|pseudocode|calculate">
+              <div class="v2-question-head"><span class="v2-badge">state</span><span class="v2-badge">calculate</span><span class="v2-badge difficulty">application</span><span class="v2-badge">4 marks</span></div>
+              <p><strong>Question 2.</strong> A question supplies FUNCTION TAKE(Text : STRING, Start : INTEGER, Count : INTEGER) RETURNS STRING and FUNCTION TOUPPER(Text : STRING) RETURNS STRING, with positions starting at 1. State LENGTH(&quot;ALGORITHM&quot;), state TAKE(&quot;ALGORITHM&quot;, 3, 4), and write an assignment that converts the extracted STRING to upper case.</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> LENGTH result is 9; TAKE result is GORI; uses the supplied Start/Count convention rather than Java indexing; assigns TOUPPER(TAKE(&quot;ALGORITHM&quot;, 3, 4)) or equivalent to a variable</p><p><strong>Marking guidance:</strong> Do not use CHAR-only UCASE on a STRING, require memorisation of an unstated substring signature or import Java&#39;s zero-based indexes.</p><p><strong>Common error:</strong> Do not repeat the same point in different words; each mark needs a separate idea or method step.</p></div></details>
+            </article><article class="v2-question" data-question-id="Q-L072-03" data-semantic-fingerprint="S11.03|built-in-routines-and-string-functions|apply|returned-assigned-variable|written|recall">
+              <div class="v2-question-head"><span class="v2-badge">apply</span><span class="v2-badge">recall</span><span class="v2-badge difficulty">transfer</span><span class="v2-badge">2 marks</span></div>
+              <p><strong>Question 3.</strong> May a returned string be assigned to a variable?</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> Yes; a function return can be used wherever a compatible value is needed.</p><p><strong>Marking guidance:</strong> Award one mark for each distinct, technically accurate point or method step.</p><p><strong>Common error:</strong> Do not copy the worked example unchanged; transfer the method and check it against the new context.</p></div></details>
+            </article></div>
+          <div class="v2-paper-refs">
+          <h3>Related past-paper indexes</h3>
+          <table><thead><tr><th>Reference</th><th>Marks</th><th>Command word</th><th>Question type</th></tr></thead>
+          <tbody><tr><td>9618/23/W/25 Q4</td><td>6</td><td>complete</td><td>calculate</td></tr><tr><td>9618/21/S/25 Q7(ii)</td><td>4</td><td>explain</td><td>explain</td></tr><tr><td>9618/23/W/25 Q1(a)</td><td>3</td><td>design</td><td>recall</td></tr><tr><td>9618/23/S/25 Q1(iii)</td><td>2</td><td>state</td><td>recall</td></tr></tbody></table>
+          <p class="v2-copyright-note">Index only: Cambridge question and mark-scheme wording is not reproduced on this public course page.</p>
+        </div>
         </section>
 
-        <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
-          <div class="section-title">
-            <p class="eyebrow">Warm-up hook</p>
-            <h2>A school loses coursework because a shared drive failed. Which control best addresses the main risk?</h2>
-            <p>If the answer is "stronger passwords", the files remain impressively inaccessible to everyone.</p>
-          </div>
-          <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="backup">Regular tested backups with an offsite copy</button>
-            <button class="choice-card" type="button" data-hook="password">Longer passwords for all users</button>
-            <button class="choice-card" type="button" data-hook="hashing">Hashing the coursework folder names</button>
-            <button class="choice-card" type="button" data-hook="ethics">Writing an ethics policy about coursework ownership</button>
-          </div>
-          <div class="feedback" id="hookFeedback" aria-live="polite">
-            Choose one. Identify the risk before admiring the control.
-          </div>
+        <section class="v2-panel" id="summary">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 4 | close when ready</p><h2>Summary and exam reminders</h2></div>
+          <div class="v2-summary-grid"><div><h3>Summary</h3><ul class="v2-summary-list"><li>Define built-in routines and string functions with the exact technical vocabulary expected by the syllabus.</li><li>Use the lesson method on a fresh context and show the intermediate decision, representation or calculation.</li><li>Match the shape of the answer to the command word and the available marks.</li><li>Check the final answer against the scenario instead of repeating a memorised sentence.</li></ul></div><div class="v2-error"><h3>Common error to correct</h3><p>Students often think working Java automatically means good pseudocode. Correction: Paper 2 rewards clear Cambridge-style algorithm expression.</p></div></div>
+          <div class="v2-tip-box"><h3>Exam technique</h3><ul><li>Follow the command word: state gives a fact; explain links a cause to a consequence; compare covers both sides.</li><li>Match the number of independent points or method steps to the available marks.</li><li>For built-in routines and string functions, use the exact technical term before applying it to the scenario.</li></ul></div>
         </section>
 
-        <section class="panel" id="review-map" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="review-map">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 1</p>
-            <h2>Section 6 review map: risk families and likely controls</h2>
-          </div>
-          <div class="risk-table" role="table" aria-label="Section 6 risk families">
-            <div class="table-row table-head" role="row">
-              <div role="columnheader">Risk family</div>
-              <div role="columnheader">Typical problem</div>
-              <div role="columnheader">Useful controls</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Unauthorised access</div>
-              <div role="cell">A user enters a system or data they should not access.</div>
-              <div role="cell">Authentication, access levels, strong passwords, two-factor authentication.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Disclosure</div>
-              <div role="cell">Sensitive data is read or intercepted by an unauthorised party.</div>
-              <div role="cell">Encryption in transit/at rest, access rights, staff training.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Corruption / inaccurate data</div>
-              <div role="cell">Data is changed incorrectly, accidentally or maliciously.</div>
-              <div role="cell">Validation, verification, permissions, audit trails, backups.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Loss / unavailability</div>
-              <div role="cell">Data or service cannot be accessed after failure or attack.</div>
-              <div role="cell">Backups, disaster recovery, redundancy, restore testing.</div>
-            </div>
-          </div>
-          <div class="callout">Chinese support: risk = 风险；control/safeguard = 控制措施/保护措施；mechanism = 作用机制；consequence = 后果。</div>
-        </section>
-
-        <!-- stage10-explanation:start review-map -->
-        <section class="panel explanation-panel" id="explanation-review-map" data-explains="review-map" data-explanation-kind="synthesis" aria-labelledby="explanation-review-map-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="review-map">
-          <h2 class="explanation-sr-only" id="explanation-review-map-title">Section 6 review map: risk families and likely controls</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-072-review-map.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Section 6 review map: risk families and likely controls with a structured visual model." />
-            <figcaption class="explanation-sr-only">Section 6 review map: risk families and likely controls: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Risk family</li><li><strong>Lesson fact:</strong> Typical problem</li><li><strong>Lesson fact:</strong> Useful controls</li><li><strong>Lesson fact:</strong> Unauthorised access</li><li><strong>Lesson fact:</strong> A user enters a system or data they should not access.</li><li><strong>Lesson fact:</strong> Authentication, access levels, strong passwords, two-factor authentication.</li><li><strong>Lesson fact:</strong> Disclosure</li><li><strong>Lesson fact:</strong> Sensitive data is read or intercepted by an unauthorised party.</li><li><strong>Lesson fact:</strong> Encryption in transit/at rest, access rights, staff training.</li><li><strong>Lesson fact:</strong> Corruption / inaccurate data</li><li><strong>Lesson fact:</strong> Data is changed incorrectly, accidentally or maliciously.</li><li><strong>Lesson fact:</strong> Validation, verification, permissions, audit trails, backups.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end review-map -->
-        <section class="panel" id="method" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="method">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 2</p>
-            <h2>Use the four-part answer chain</h2>
-          </div>
-          <div class="flow-grid">
-            <article><strong>1. Name the risk</strong><span>Example: unauthorised users may view medical records.</span></article>
-            <article><strong>2. Choose a control</strong><span>Example: role-based access levels and authentication.</span></article>
-            <article><strong>3. Explain mechanism</strong><span>Example: only authenticated staff with the correct role can open the record.</span></article>
-            <article><strong>4. Link consequence</strong><span>Example: this protects confidentiality and reduces privacy breaches.</span></article>
-          </div>
-          <div class="answer-frame">
-            <strong>Answer frame:</strong>
-            <span>[Control] reduces [risk] because [mechanism]. In this scenario, this matters because [impact/consequence].</span>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start method -->
-        <section class="panel explanation-panel" id="explanation-method" data-explains="method" data-explanation-kind="synthesis" aria-labelledby="explanation-method-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="method">
-          <h2 class="explanation-sr-only" id="explanation-method-title">Use the four-part answer chain</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-072-method.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Use the four-part answer chain with a structured visual model." />
-            <figcaption class="explanation-sr-only">Use the four-part answer chain: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> 1. Name the risk Example: unauthorised users may view medical records.</li><li><strong>Lesson fact:</strong> 2. Choose a control Example: role-based access levels and authentication.</li><li><strong>Lesson fact:</strong> 3. Explain mechanism Example: only authenticated staff with the correct role can open the record.</li><li><strong>Lesson fact:</strong> 4. Link consequence Example: this protects confidentiality and reduces privacy breaches.</li><li><strong>Lesson fact:</strong> Answer frame:</li><li><strong>Lesson fact:</strong> [Control] reduces [risk] because [mechanism]. In this scenario, this matters because [impact/consequence].</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end method -->
-        <section class="panel" id="controls" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="controls">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 3</p>
-            <h2>Controls have different jobs</h2>
-          </div>
-          <div class="concept-grid">
-            <article><strong>Authentication</strong><span>Checks identity before access. It does not decide every permission by itself.</span></article>
-            <article><strong>Access rights</strong><span>Limit what an authenticated user can read, edit, delete or approve.</span></article>
-            <article><strong>Encryption</strong><span>Makes data unreadable without the key, protecting confidentiality.</span></article>
-            <article><strong>Validation</strong><span>Checks input follows rules such as type, range, length or format.</span></article>
-            <article><strong>Verification</strong><span>Checks data has been copied or entered accurately, often by comparison.</span></article>
-            <article><strong>Backup</strong><span>Provides recoverable copies after deletion, corruption or hardware failure.</span></article>
-            <article><strong>Disaster recovery</strong><span>Plans how systems and services are restored after a major incident.</span></article>
-            <article><strong>Audit trail</strong><span>Records actions for investigation, accountability and evidence.</span></article>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start controls -->
-        <section class="panel explanation-panel" id="explanation-controls" data-explains="controls" data-explanation-kind="synthesis" aria-labelledby="explanation-controls-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="controls">
-          <h2 class="explanation-sr-only" id="explanation-controls-title">Controls have different jobs</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-072-controls.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Controls have different jobs with a structured visual model." />
-            <figcaption class="explanation-sr-only">Controls have different jobs: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Verification checks that copied, entered or transferred data agrees with the source or repeated entry.</li><li><strong>Lesson fact:</strong> Double entry and visual checking can reduce copying errors.</li><li><strong>Lesson fact:</strong> Matching values may still be false, so verification does not guarantee accuracy or truth.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end controls -->
-        <section class="panel" id="compare" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="compare">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 4</p>
-            <h2>Similar-looking controls: choose by mechanism</h2>
-          </div>
-          <div class="comparison-table" role="table" aria-label="Similar controls comparison">
-            <div class="table-row table-head" role="row">
-              <div role="columnheader">Pair</div>
-              <div role="columnheader">Difference</div>
-              <div role="columnheader">Common error</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Validation vs verification</div>
-              <div role="cell">Validation checks rule acceptability; verification checks accurate transfer/copying.</div>
-              <div role="cell">A valid value can still be the wrong value.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Authentication vs authorisation</div>
-              <div role="cell">Authentication confirms identity; authorisation/access rights decide permitted actions.</div>
-              <div role="cell">Logging in does not mean full access should be granted.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Encryption vs hashing</div>
-              <div role="cell">Encryption is reversible with a key; hashing is one-way and often used for password storage.</div>
-              <div role="cell">Do not say hashed data can be decrypted.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Backup vs audit trail</div>
-              <div role="cell">Backup restores data; audit trail explains what happened.</div>
-              <div role="cell">An audit log is not a copy of the lost file.</div>
-            </div>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start compare -->
-        <section class="panel explanation-panel" id="explanation-compare" data-explains="compare" data-explanation-kind="synthesis" aria-labelledby="explanation-compare-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="compare">
-          <h2 class="explanation-sr-only" id="explanation-compare-title">Similar-looking controls: choose by mechanism</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-072-compare.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Similar-looking controls: choose by mechanism with a structured visual model." />
-            <figcaption class="explanation-sr-only">Similar-looking controls: choose by mechanism: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Difference</li><li><strong>Lesson fact:</strong> Common error</li><li><strong>Lesson fact:</strong> Validation vs verification</li><li><strong>Lesson fact:</strong> Validation checks rule acceptability; verification checks accurate transfer/copying.</li><li><strong>Lesson fact:</strong> A valid value can still be the wrong value.</li><li><strong>Lesson fact:</strong> Authentication vs authorisation</li><li><strong>Lesson fact:</strong> Authentication confirms identity; authorisation/access rights decide permitted actions.</li><li><strong>Lesson fact:</strong> Logging in does not mean full access should be granted.</li><li><strong>Lesson fact:</strong> Encryption vs hashing</li><li><strong>Lesson fact:</strong> Encryption is reversible with a key; hashing is one-way and often used for password storage.</li><li><strong>Lesson fact:</strong> Do not say hashed data can be decrypted.</li><li><strong>Lesson fact:</strong> Backup vs audit trail</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end compare -->
-        <section class="panel" id="matcher" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="matcher">
-          <div class="section-title">
-            <p class="eyebrow">Interactive risk matcher</p>
-            <h2>Select the best control for the scenario</h2>
-            <p>The best answer is the one whose mechanism directly addresses the named risk.</p>
-          </div>
-          <div class="converter-grid">
-            <label>
-              Scenario
-              <select id="scenarioInput">
-                <option value="lostLaptop">A teacher loses a laptop containing pupil medical information.</option>
-                <option value="wrongEmail">A clerk types the wrong email address for a parent.</option>
-                <option value="sharedAdmin">Several staff share one admin account.</option>
-                <option value="deletedMarks">Exam marks are deleted accidentally.</option>
-                <option value="suspiciousEdit">A customer record is changed at midnight.</option>
-                <option value="fakeLogin">A user tricks staff into entering credentials on a fake page.</option>
-              </select>
-            </label>
-            <label>
-              Control
-              <select id="controlInput">
-                <option value="encryption">Encryption</option>
-                <option value="verification">Verification</option>
-                <option value="uniqueAccounts">Unique accounts and access rights</option>
-                <option value="backups">Tested backups</option>
-                <option value="auditTrail">Audit trail</option>
-                <option value="training2fa">User training plus two-factor authentication</option>
-              </select>
-            </label>
-            <button class="primary-button" type="button" id="matchBtn">Check match</button>
-          </div>
-          <div class="result-box" id="matchResult" aria-live="polite"></div>
-          <div class="method-box" id="matchReason"></div>
-          <div class="reject-box" id="matchTrap"></div>
-        </section>
-
-        <!-- stage10-explanation:start matcher -->
-        <section class="panel explanation-panel" id="explanation-matcher" data-explains="matcher" data-explanation-kind="synthesis" aria-labelledby="explanation-matcher-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="matcher">
-          <h2 class="explanation-sr-only" id="explanation-matcher-title">Select the best control for the scenario</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-072-matcher.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Select the best control for the scenario with a structured visual model." />
-            <figcaption class="explanation-sr-only">Select the best control for the scenario: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Interactive risk matcher</li><li><strong>Lesson fact:</strong> The best answer is the one whose mechanism directly addresses the named risk.</li><li><strong>Lesson fact:</strong> Scenario</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end matcher -->
-        <section class="panel" id="diagnostic" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="diagnostic">
-          <div class="section-title">
-            <p class="eyebrow">Interactive diagnostic</p>
-            <h2>Identify the risk family first</h2>
-            <p>Choose the broad risk family. Then compare the suggested control route.</p>
-          </div>
-          <div class="converter-grid">
-            <label>
-              Symptom
-              <select id="diagnosticInput">
-                <option value="cannotAccess">Users cannot access the service after a server failure.</option>
-                <option value="viewPrivate">A user can view records outside their job role.</option>
-                <option value="badInput">A date of birth is entered as 31/02/2010.</option>
-                <option value="copiedWrong">A correct source value is copied incorrectly into another system.</option>
-                <option value="passwordFile">A password file is stolen from a server.</option>
-              </select>
-            </label>
-            <button class="primary-button" type="button" id="diagnosticBtn">Diagnose</button>
-          </div>
-          <div class="result-box" id="diagnosticResult" aria-live="polite"></div>
-          <div class="method-box" id="diagnosticReason"></div>
-        </section>
-
-        <!-- stage10-explanation:start diagnostic -->
-        <section class="panel explanation-panel" id="explanation-diagnostic" data-explains="diagnostic" data-explanation-kind="synthesis" aria-labelledby="explanation-diagnostic-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="diagnostic">
-          <h2 class="explanation-sr-only" id="explanation-diagnostic-title">Identify the risk family first</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-072-diagnostic.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Identify the risk family first with a structured visual model." />
-            <figcaption class="explanation-sr-only">Identify the risk family first: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Interactive diagnostic</li><li><strong>Lesson fact:</strong> Choose the broad risk family. Then compare the suggested control route.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end diagnostic -->
-        <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
-          <div class="section-title">
-            <p class="eyebrow">Worked examples</p>
-            <h2>Four model answers that turn labels into marks</h2>
-          </div>
-          <div class="example-tabs" role="tablist" aria-label="Worked examples">
-            <button class="tab active" type="button" data-example="hospital">Hospital records</button>
-            <button class="tab" type="button" data-example="email">Wrong email</button>
-            <button class="tab" type="button" data-example="password">Password file</button>
-            <button class="tab" type="button" data-example="outage">Service outage</button>
-          </div>
-          <div class="example-box" id="exampleBox" aria-live="polite"></div>
-        </section>
-
-        <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
-          <div class="section-title">
-            <p class="eyebrow">Practice with instant checking</p>
-            <h2>Use precise vocabulary, then expand into full explanations</h2>
-          </div>
-          <div class="practice-list" id="practiceList"></div>
-        </section>
-
-        <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
-          <div class="section-title">
-            <p class="eyebrow">Mistake debugging</p>
-            <h2>Fix answers that sound secure but do not earn enough marks</h2>
-          </div>
-          <div class="mistake-grid" id="mistakeGrid"></div>
-        </section>
-
-        <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
-          <div class="section-title">
-            <p class="eyebrow">Exam-style questions</p>
-            <h2>Cambridge-style Section 6 review questions with expandable MS</h2>
-            <p>Attempt first. Then open the mark scheme and check whether the mechanism and scenario link are present.</p>
-          </div>
-          <div class="exam-list" id="examList"></div>
-        </section>
-
-        <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
-          <div class="section-title">
-            <p class="eyebrow">Summary</p>
-            <h2>Section 6 review in six exam-ready sentences</h2>
-          </div>
-          <div class="summary-grid">
-            <div><strong>Risk first</strong><span>Identify what can go wrong before naming a control.</span></div>
-            <div><strong>Mechanism earns marks</strong><span>Explain how the control reduces the risk.</span></div>
-            <div><strong>Scenario matters</strong><span>Link the answer to the data, user or organisation given.</span></div>
-            <div><strong>Different controls</strong><span>Authentication, encryption, validation, backup and audit trail solve different problems.</span></div>
-            <div><strong>Do not overclaim</strong><span>No control removes all risk; describe what it reduces.</span></div>
-            <div><strong>Use consequences</strong><span>Connect to confidentiality, integrity, availability, privacy or accountability.</span></div>
-          </div>
-        </section>
-
-        <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
-          <div class="section-title">
-            <p class="eyebrow">Homework</p>
-            <h2>Make the review useful, not decorative</h2>
-          </div>
-          <div class="homework-list">
-            <article>
-              <strong>Task 1: Risk-control table</strong>
-              <span>Create a 12-row table with columns: scenario, risk family, suitable control, mechanism, consequence. Use at least six different Section 6 controls.</span>
-            </article>
-            <article>
-              <strong>Task 2: Rewrite weak answers</strong>
-              <span>Rewrite these into mark-worthy answers: "Use encryption", "Make backups", "Use validation", "Use passwords". Each rewrite must include because + scenario consequence.</span>
-            </article>
-            <article>
-              <strong>Task 3: Timed exam response</strong>
-              <span>Answer: "A school stores pupil records online. Discuss security measures that could reduce risks to this data." Write 8-10 marks worth of points using Section 6 vocabulary.</span>
-            </article>
-          </div>
-        </section>
+        <nav class="v2-bottom-nav" aria-label="Previous and next lesson"><a href="../lesson-071/" >Previous lesson</a><a href="../lesson-073/" >Next lesson</a></nav>
       </div>
     </main>
-
-    <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=3"></script>
-    <script src="../lesson-toolbar.js?v=3"></script>
-    <script src="../stage7-accessibility.js?v=4"></script>
+    <script src="../course-v2.js?v=1"></script>
   </body>
 </html>

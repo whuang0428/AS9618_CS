@@ -3,375 +3,89 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 083 | Entity-relationship modelling</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <title>AS9618 Lesson 083 | State-transition diagrams</title>
     <link rel="icon" href="data:" />
-    <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
+    <link rel="stylesheet" href="../course-v2.css?v=3" />
   </head>
-  <body>
+  <body data-course-version="2" data-lesson-id="083" data-syllabus-ids="S12.03">
     <a class="skip-link" href="#main-content">Skip to main content</a>
-    <header class="topbar">
-      <div>
-        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 8</p>
-        <h1>Entity-relationship modelling</h1>
-      </div>
-      <div class="action-panel" aria-label="Page controls">
-        <a class="course-home-link" href="../">Course home</a>
-        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
-      </div>
+    <header class="v2-topbar">
+      <div><p class="v2-eyebrow">Cambridge AS9618 | Paper 2 | Section 12: Software development</p><h1>State-transition diagrams</h1></div>
+      <nav class="v2-actions" aria-label="Lesson actions"><a href="../">Course home</a><a href="../assessments/">Assessment bank</a><button type="button" id="printLesson">Print</button></nav>
     </header>
+    <main class="v2-shell" id="main-content" tabindex="-1">
+      <nav class="v2-toc" aria-label="Lesson contents"><strong>Lesson 083</strong><a href="#overview">Overview</a><a href="#prerequisite">Prerequisite</a><a href="#explanation">Explanation</a><a href="#practice">Practice</a><a href="#summary">Summary</a></nav>
+      <div class="v2-content">
+        <section class="v2-hero" id="overview">
+          <div><p class="v2-eyebrow">Flexible-depth lesson</p><h2>State-transition diagrams</h2><p>S12.03 | Select what to omit, teach briefly or explore in depth.</p></div>
+          <div class="v2-time-grid" aria-label="Available lesson depth"><div><strong>Quick</strong><span>diagnose + essentials</span></div><div><strong>Full</strong><span>complete explanation</span></div><div><strong>Deep</strong><span>prerequisites + extension</span></div><div><strong>Choose</strong><span>practice by need</span></div></div>
+        </section>
 
-    <main class="layout" id="main-content" tabindex="-1">
-      <aside class="lesson-nav" aria-label="Lesson navigation">
-        <a href="#overview">Overview</a>
-        <a href="#hook">Warm-up</a>
-        <a href="#entities">Entities</a>
-        <a href="#attributes">Attributes</a>
-        <a href="#cardinality">Cardinality</a>
-        <a href="#participation">Participation</a>
-        <a href="#parser">Scenario parser</a>
-        <a href="#checker">Cardinality checker</a>
-        <a href="#examples">Examples</a>
-        <a href="#practice">Practice</a>
-        <a href="#debug">Debugging</a>
-        <a href="#exam">Exam-style</a>
-        <a href="#summary">Summary</a>
-        <a href="#homework">Homework</a>
-      </aside>
+        <section class="v2-panel v2-route-menu" aria-labelledby="route-heading">
+          <div class="v2-heading"><p class="v2-eyebrow">Teacher choice</p><h2 id="route-heading">Choose the depth for this group</h2></div>
+          <div class="v2-route-grid"><article><h3>Quick route</h3><p>Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.</p></article><article><h3>Full route</h3><p>Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.</p></article><article><h3>Deep route</h3><p>Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.</p></article></div>
+        </section>
 
-      <div class="lesson-content">
-        <!-- remediation-v2-stage3-scope:start -->
-        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>This lesson is Optional enrichment or review. It does not establish first use of a new syllabus requirement and is excluded from compulsory coverage and prerequisite statistics.</p></aside>
-        <!-- remediation-v2-stage3-scope:end -->
+        <section class="v2-panel" id="prerequisite">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 1 | optional depth</p><h2>Prerequisite knowledge and quick diagnostic</h2></div>
+          <div class="v2-diagnostic"><p>Recall S9.07 before starting this lesson.</p></div>
+          <p>Give one accurate definition or method step before continuing. If it is missing, revisit only that prerequisite.</p>
+          <details class="v2-prerequisite-detail"><summary>Open optional prerequisite refresher</summary><ul><li>Document an algorithm using structured English, a flowchart or pseudocode; write pseudocode from structured English or a flowchart, and draw a flowchart from structured English or pseudocode while preserving the same algorithm.</li><li>Use structured English, flowcharts and pseudocode; convert between representations.</li></ul></details>
+        </section>
 
-<section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-083">
-          <div class="hero-copy">
-            <p class="lesson-meta">Lesson 083 | 45 minutes | Paper 1 Section 8 | ER modelling</p>
-            <h2>An ER model is a map before the database is built. Tables without a map are just furniture in the dark.</h2>
-            <p>
-              This lesson turns scenario text into an entity-relationship model. You will identify entities,
-              choose attributes, mark keys, and describe cardinality such as one-to-many and many-to-many.
-              The goal is a clear design model, not SQL statements or normalisation rules.
-            </p>
-            <div class="objective-grid" aria-label="Learning objectives">
-              <div><strong>Identify</strong><span>entities and attributes from a scenario</span></div>
-              <div><strong>Model</strong><span>relationships with cardinality and optional/mandatory participation</span></div>
-              <div><strong>Critique</strong><span>weak ER diagrams using precise database vocabulary</span></div>
+        <section class="v2-panel" id="explanation">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 2 | deliberately over-complete</p><h2>Knowledge explanation</h2></div>
+          <h3>Learning objectives</h3><ul class="v2-objectives"><li>Show understanding of the purpose of state-transition diagrams to document an algorithm.</li></ul>
+          <details class="v2-concept-menu"><summary>Open the concept checklist and choose what to teach</summary><ul><li>state-transition</li><li>diagrams</li></ul></details>
+          <div class="v2-explanation-grid">
+            <div>
+              <article class="v2-core-facts"><h3>Detailed explanation</h3><p class="v2-teacher-note">Teach all points, or select only the ones this group needs. The list is intentionally fuller than a fixed lesson slot.</p><ul class="v2-facts"><li>The Version 2 table requires understanding the purpose; it does not require candidates to construct a state-transition diagram.</li><li>A structure chart documents decomposition into modules, procedures and functions. Boxes name modules; hierarchy lines show which module calls another; labelled arrows show data or control parameters passed between them. Its purpose is to communicate modular structure and interfaces before coding.</li><li>To construct a structure chart, place the controlling module at the top, split the problem into one-responsibility subtasks, connect each caller to its called modules, and label every value passed. To derive equivalent pseudocode, turn each box into a complete PROCEDURE or FUNCTION header with corresponding parameters, add calls in the parent body with matching arguments, and preserve the shown hierarchy.</li><li>A state-transition diagram documents an algorithm by showing persistent states and the events that cause changes between them. Its syllabus requirement is to understand that purpose; constructing a state-transition diagram is retained only as Optional enrichment.</li></ul></article>
+              <article class="v2-example"><h3>Worked example</h3><p>Door controller: two design views: A structure chart places ControlDoor above ReadCard(CardID), ValidateCard(CardID, IsValid) and SetLock(IsValid). Equivalent pseudocode declares those interfaces and calls them from ControlDoor with matching arguments. A provided state-transition diagram with Locked and Unlocked states serves a different purpose: it documents event-driven changes rather than module hierarchy or processing sequence.</p></article>
+              <aside class="v2-extension"><h3>Beyond syllabus / 延伸知识（不要求背诵）</h3><p>modern teams often use continuous integration to repeat building and testing whenever a program changes.</p></aside>
             </div>
-          </div>
-          <div class="er-visual" aria-label="Entity relationship visual">
-            <div class="entity-box">
-              <strong>Student</strong>
-              <span class="pk">StudentID</span>
-              <span>Name</span>
-            </div>
-            <div class="cardinality-line">1..1 borrows 0..*</div>
-            <div class="entity-box">
-              <strong>Loan</strong>
-              <span class="pk">LoanID</span>
-              <span>StudentID</span>
-              <span>BookID</span>
-            </div>
-            <p>Chinese support: entity = 实体；attribute = 属性；cardinality = 基数/数量关系。</p>
+            <figure class="v2-visual">
+              <img src="../assets/diagrams/stage10-infographics/stage10-lesson-145-algorithms.jpg" alt="A structure chart shows module hierarchy, calling relationships and labelled parameters passed between modules, procedures or functions.. Derive pseudocode by turning each box into a complete subprogram header and each hierarchy connection into a matching call with arguments.. A separate state-transition diagram marks the start state and uses directed, event-labelled transitions between persistent states; it is not a flowchart of processing steps." loading="lazy" />
+              <figcaption>Structure charts, derived pseudocode and state transitions. One maintained explanation is shown as an image on larger screens and as text on small screens.</figcaption>
+              <div class="v2-mobile-visual-text" aria-label="Mobile text alternative"><ul><li>A structure chart shows module hierarchy, calling relationships and labelled parameters passed between modules, procedures or functions.</li><li>Derive pseudocode by turning each box into a complete subprogram header and each hierarchy connection into a matching call with arguments.</li><li>A separate state-transition diagram marks the start state and uses directed, event-labelled transitions between persistent states; it is not a flowchart of processing steps.</li></ul></div>
+            </figure>
           </div>
         </section>
 
-        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-083">
-          <article class="why-card">
-            <h3>Why this matters</h3>
-            <p>ER modelling questions reward careful reading. A small word like "many" or "optional" can change the relationship.</p>
-          </article>
-          <article class="trap-card">
-            <h3>Common error</h3>
-            <p>Do not turn every noun into an entity. "Address" is often an attribute unless the scenario stores separate address records.</p>
-          </article>
+        <section class="v2-panel" id="practice">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 3 | select by learner need</p><h2>Practice by question type</h2></div>
+          <div class="v2-question-list"><article class="v2-question" data-question-id="Q-L083-01" data-semantic-fingerprint="S12.03|state-transition-diagrams|state|what-does-diagram-document|visual|recall">
+              <div class="v2-question-head"><span class="v2-badge">state</span><span class="v2-badge">recall</span><span class="v2-badge difficulty">foundation</span><span class="v2-badge">2 marks</span></div>
+              <p><strong>Question 1.</strong> What does a state-transition diagram document?</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> The persistent states of an algorithm/system and the event-driven changes between them.</p><p><strong>Marking guidance:</strong> Award one mark for each distinct, technically accurate point or method step.</p><p><strong>Common error:</strong> For the command word state, perform that exact action; do not replace it with an unrelated fact.</p></div></details>
+            </article><article class="v2-question" data-question-id="Q-L083-02" data-semantic-fingerprint="S12.03|state-transition-diagrams|explain|does-walkthrough-differ-dry|written|trace">
+              <div class="v2-question-head"><span class="v2-badge">explain</span><span class="v2-badge">trace</span><span class="v2-badge difficulty">application</span><span class="v2-badge">2 marks</span></div>
+              <p><strong>Question 2.</strong> How does a walkthrough differ from a dry run?</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> A walkthrough is a structured peer review of the algorithm or code; a dry run manually traces values and control flow for selected data.</p><p><strong>Marking guidance:</strong> Award one mark for each distinct, technically accurate point or method step.</p><p><strong>Common error:</strong> Do not repeat the same point in different words; each mark needs a separate idea or method step.</p></div></details>
+            </article><article class="v2-question" data-question-id="Q-L083-03" data-semantic-fingerprint="S12.03|state-transition-diagrams|state|precise-facts-about|visual|recall">
+              <div class="v2-question-head"><span class="v2-badge">state</span><span class="v2-badge">recall</span><span class="v2-badge difficulty">transfer</span><span class="v2-badge">2 marks</span></div>
+              <p><strong>Question 3.</strong> State two precise facts about state-transition diagrams.</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> The Version 2 table requires understanding the purpose; it does not require candidates to construct a state-transition diagram. A structure chart documents decomposition into modules, procedures and functions. Boxes name modules; hierarchy lines show which module calls another; labelled arrows show data or control parameters passed between them. Its purpose is to communicate modular structure and interfaces before coding.</p><p><strong>Marking guidance:</strong> Award one mark for each distinct fact; do not credit a repeated point.</p><p><strong>Common error:</strong> Do not copy the worked example unchanged; transfer the method and check it against the new context.</p></div></details>
+            </article></div>
+          <div class="v2-paper-refs">
+          <h3>Related past-paper indexes</h3>
+          <table><thead><tr><th>Reference</th><th>Marks</th><th>Command word</th><th>Question type</th></tr></thead>
+          <tbody><tr><td>9618/21/W/25 Q7(a)</td><td>5</td><td>complete</td><td>recall</td></tr><tr><td>9618/23/W/25 Q7(a)</td><td>5</td><td>complete</td><td>recall</td></tr><tr><td>9618/22/S/25 Q5(a)</td><td>4</td><td>complete</td><td>recall</td></tr><tr><td>9618/21/W/23 Q7</td><td>5</td><td>complete</td><td>recall</td></tr></tbody></table>
+          <p class="v2-copyright-note">Index only: Cambridge question and mark-scheme wording is not reproduced on this public course page.</p>
+        </div>
         </section>
 
-        <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-083">
-          <div class="section-title">
-            <p class="eyebrow">Warm-up hook</p>
-            <h2>A library stores students, books and loans. Which one is most likely a relationship event?</h2>
-            <p>A loan is the plot twist: a student and a book meet, briefly, with paperwork.</p>
-          </div>
-          <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="student">Student</button>
-            <button class="choice-card" type="button" data-hook="book">Book</button>
-            <button class="choice-card" type="button" data-hook="loan">Loan</button>
-            <button class="choice-card" type="button" data-hook="title">BookTitle</button>
-          </div>
-          <div class="feedback" id="hookFeedback" aria-live="polite">
-            Choose the item that connects two main entities.
-          </div>
+        <section class="v2-panel" id="summary">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 4 | close when ready</p><h2>Summary and exam reminders</h2></div>
+          <div class="v2-summary-grid"><div><h3>Summary</h3><ul class="v2-summary-list"><li>Define state-transition diagrams with the exact technical vocabulary expected by the syllabus.</li><li>Use the lesson method on a fresh context and show the intermediate decision, representation or calculation.</li><li>Match the shape of the answer to the command word and the available marks.</li><li>Check the final answer against the scenario instead of repeating a memorised sentence.</li></ul></div><div class="v2-error"><h3>Common error to correct</h3><p>Students often describe the lifecycle as a fixed checklist. Correction: development is iterative; findings can send a project back to earlier stages.</p></div></div>
+          <div class="v2-tip-box"><h3>Exam technique</h3><ul><li>Follow the command word: state gives a fact; explain links a cause to a consequence; compare covers both sides.</li><li>Match the number of independent points or method steps to the available marks.</li><li>For state-transition diagrams, use the exact technical term before applying it to the scenario.</li></ul></div>
         </section>
 
-        <section class="panel" id="entities" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-083">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 1</p>
-            <h2>Entities are things the database stores data about</h2>
-            <p>An entity is a person, object, event or concept about which data is stored. In a relational design, an entity often becomes a table.</p>
-          </div>
-          <div class="concept-grid">
-            <article><strong>Person</strong><span>Student, Customer, Doctor, Teacher.</span></article>
-            <article><strong>Object</strong><span>Book, Product, Vehicle, Equipment.</span></article>
-            <article><strong>Event</strong><span>Loan, Appointment, Order, Booking.</span></article>
-            <article><strong>Concept</strong><span>Course, Club, Department, Module.</span></article>
-          </div>
-          <div class="callout">Exam wording: say why it is an entity. "Student is an entity because the system stores multiple facts about each student."</div>
-        </section>
-
-        <!-- stage10-explanation:start entities -->
-        <section class="panel explanation-panel" id="explanation-entities" data-explains="entities" data-explanation-kind="mechanism" aria-labelledby="explanation-entities-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-083">
-          <h2 class="explanation-sr-only" id="explanation-entities-title">Entities are things the database stores data about</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-083-entities.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Entities are things the database stores data about with a structured visual model." />
-            <figcaption class="explanation-sr-only">Entities are things the database stores data about: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> An entity is a person, object, event or concept about which data is stored. In a relational design, an entity often becomes a table.</li><li><strong>Lesson fact:</strong> Person Student, Customer, Doctor, Teacher.</li><li><strong>Lesson fact:</strong> Object Book, Product, Vehicle, Equipment.</li><li><strong>Lesson fact:</strong> Event Loan, Appointment, Order, Booking.</li><li><strong>Lesson fact:</strong> Concept Course, Club, Department, Module.</li><li><strong>Lesson fact:</strong> Exam wording: say why it is an entity. &quot;Student is an entity because the system stores multiple facts about each student.&quot;</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end entities -->
-        <section class="panel" id="attributes" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-083">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 2</p>
-            <h2>Attributes describe an entity</h2>
-            <p>An attribute is a property stored about an entity. It often becomes a field in the table for that entity.</p>
-          </div>
-          <div class="attribute-table" role="table" aria-label="Entity attribute examples">
-            <div class="table-row table-head" role="row">
-              <div role="columnheader">Entity</div>
-              <div role="columnheader">Possible attributes</div>
-              <div role="columnheader">Not usually an attribute here</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Student</div>
-              <div role="cell">StudentID, Name, DateOfBirth, TutorGroup</div>
-              <div role="cell">BookTitle, LoanDate</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Book</div>
-              <div role="cell">BookID, ISBN, Title, Author</div>
-              <div role="cell">StudentName, ReturnDate</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Loan</div>
-              <div role="cell">LoanID, StudentID, BookID, DateBorrowed, DateReturned</div>
-              <div role="cell">StudentDateOfBirth, BookAuthor if already stored in Book</div>
-            </div>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start attributes -->
-        <section class="panel explanation-panel" id="explanation-attributes" data-explains="attributes" data-explanation-kind="mechanism" aria-labelledby="explanation-attributes-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-083">
-          <h2 class="explanation-sr-only" id="explanation-attributes-title">Attributes describe an entity</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-083-attributes.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Attributes describe an entity with a structured visual model." />
-            <figcaption class="explanation-sr-only">Attributes describe an entity: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> An attribute is a property stored about an entity. It often becomes a field in the table for that entity.</li><li><strong>Lesson fact:</strong> Possible attributes</li><li><strong>Lesson fact:</strong> Not usually an attribute here</li><li><strong>Lesson fact:</strong> StudentID, Name, DateOfBirth, TutorGroup</li><li><strong>Lesson fact:</strong> BookTitle, LoanDate</li><li><strong>Lesson fact:</strong> BookID, ISBN, Title, Author</li><li><strong>Lesson fact:</strong> StudentName, ReturnDate</li><li><strong>Lesson fact:</strong> LoanID, StudentID, BookID, DateBorrowed, DateReturned</li><li><strong>Lesson fact:</strong> StudentDateOfBirth, BookAuthor if already stored in Book</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end attributes -->
-        <section class="panel" id="cardinality" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-083">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 3</p>
-            <h2>Cardinality describes how many records may be linked</h2>
-            <p>Cardinality states how many records in one entity can be associated with records in another entity.</p>
-          </div>
-          <div class="cardinality-grid">
-            <article><strong>One-to-one</strong><span>One record in A links to one record in B. Example: one person has one passport in a simplified model.</span></article>
-            <article><strong>One-to-many</strong><span>One record in A links to many records in B. Example: one customer can place many orders.</span></article>
-            <article><strong>Many-to-many</strong><span>Many records in A link to many records in B. Usually resolved by a linking entity.</span></article>
-          </div>
-          <div class="diagram-row">
-            <div class="entity-mini">Student</div>
-            <div class="diagram-line">1 -> many</div>
-            <div class="entity-mini">Loan</div>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start cardinality -->
-        <section class="panel explanation-panel" id="explanation-cardinality" data-explains="cardinality" data-explanation-kind="mechanism" aria-labelledby="explanation-cardinality-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-083">
-          <h2 class="explanation-sr-only" id="explanation-cardinality-title">Cardinality describes how many records may be linked</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-083-cardinality.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Cardinality describes how many records may be linked with a structured visual model." />
-            <figcaption class="explanation-sr-only">Cardinality describes how many records may be linked: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Cardinality states how many records in one entity can be associated with records in another entity.</li><li><strong>Lesson fact:</strong> One-to-one One record in A links to one record in B. Example: one person has one passport in a simplified model.</li><li><strong>Lesson fact:</strong> One-to-many One record in A links to many records in B. Example: one customer can place many orders.</li><li><strong>Lesson fact:</strong> Many-to-many Many records in A link to many records in B. Usually resolved by a linking entity.</li><li><strong>Lesson fact:</strong> 1 -&gt; many</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end cardinality -->
-        <section class="panel" id="participation" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-083">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 4</p>
-            <h2>Optional and mandatory participation</h2>
-            <p>Participation describes whether a record must be linked. This is often written using minimum and maximum values such as 0..* or 1..1.</p>
-          </div>
-          <div class="participation-grid">
-            <article><strong>0..*</strong><span>Optional many: a student may have no loans, or many loans.</span></article>
-            <article><strong>1..*</strong><span>Mandatory many: an order must have at least one order line.</span></article>
-            <article><strong>0..1</strong><span>Optional one: a member may have zero or one parking permit.</span></article>
-            <article><strong>1..1</strong><span>Mandatory one: each loan must refer to exactly one student.</span></article>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start participation -->
-        <section class="panel explanation-panel" id="explanation-participation" data-explains="participation" data-explanation-kind="mechanism" aria-labelledby="explanation-participation-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-083">
-          <h2 class="explanation-sr-only" id="explanation-participation-title">Optional and mandatory participation</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-083-participation.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Optional and mandatory participation with a structured visual model." />
-            <figcaption class="explanation-sr-only">Optional and mandatory participation: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Participation describes whether a record must be linked. This is often written using minimum and maximum values such as 0..* or 1..1.</li><li><strong>Lesson fact:</strong> 0..* Optional many: a student may have no loans, or many loans.</li><li><strong>Lesson fact:</strong> 1..* Mandatory many: an order must have at least one order line.</li><li><strong>Lesson fact:</strong> 0..1 Optional one: a member may have zero or one parking permit.</li><li><strong>Lesson fact:</strong> 1..1 Mandatory one: each loan must refer to exactly one student.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end participation -->
-        <section class="panel" id="parser" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-083">
-          <div class="section-title">
-            <p class="eyebrow">Interactive scenario parser</p>
-            <h2>Identify entities and attributes</h2>
-          </div>
-          <div class="converter-grid">
-            <label>
-              Scenario
-              <select id="scenarioInput">
-                <option value="library">A library records students, books and each loan.</option>
-                <option value="clinic">A clinic records patients, doctors and appointments.</option>
-                <option value="shop">A shop records customers, orders and products.</option>
-                <option value="club">A school records students, clubs and club memberships.</option>
-                <option value="parking">A company records employees and optional parking permits.</option>
-              </select>
-            </label>
-            <button class="primary-button" type="button" id="scenarioBtn">Parse scenario</button>
-          </div>
-          <div class="result-box" id="scenarioResult">Choose a scenario to identify likely entities.</div>
-          <div class="feedback" id="scenarioReason">The answer will separate entities from attributes and relationship events.</div>
-        </section>
-
-        <!-- stage10-explanation:start parser -->
-        <section class="panel explanation-panel" id="explanation-parser" data-explains="parser" data-explanation-kind="mechanism" aria-labelledby="explanation-parser-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-083">
-          <h2 class="explanation-sr-only" id="explanation-parser-title">Identify entities and attributes</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-083-parser.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Identify entities and attributes with a structured visual model." />
-            <figcaption class="explanation-sr-only">Identify entities and attributes: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Interactive scenario parser</li><li><strong>Lesson fact:</strong> Scenario</li><li><strong>Lesson fact:</strong> Choose a scenario to identify likely entities.</li><li><strong>Lesson fact:</strong> The answer will separate entities from attributes and relationship events.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end parser -->
-        <section class="panel" id="checker" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-083">
-          <div class="section-title">
-            <p class="eyebrow">Interactive cardinality checker</p>
-            <h2>Choose the relationship type</h2>
-          </div>
-          <div class="converter-grid">
-            <label>
-              Relationship wording
-              <select id="cardinalityInput">
-                <option value="customerOrders">One customer can place many orders; each order is placed by one customer.</option>
-                <option value="studentsClubs">A student can join many clubs; a club can have many students.</option>
-                <option value="orderLines">Each order must contain at least one order line; each order line belongs to one order.</option>
-                <option value="personPassport">One person has one passport in this simplified system.</option>
-                <option value="studentLoans">A student may have no loans or many loans; each loan has exactly one student.</option>
-              </select>
-            </label>
-            <button class="primary-button" type="button" id="cardinalityBtn">Check cardinality</button>
-          </div>
-          <div class="result-box" id="cardinalityResult">Choose wording to classify the cardinality.</div>
-          <div class="feedback" id="cardinalityReason">Look for "one", "many", "must" and "may".</div>
-        </section>
-
-        <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-083">
-          <div class="section-title">
-            <p class="eyebrow">Worked examples</p>
-            <h2>Turn words into an ER model</h2>
-          </div>
-          <div class="example-tabs" role="tablist" aria-label="Worked examples">
-            <button class="tab active" type="button" data-example="library">Library</button>
-            <button class="tab" type="button" data-example="clinic">Clinic</button>
-            <button class="tab" type="button" data-example="club">Many-to-many</button>
-            <button class="tab" type="button" data-example="critique">Critique</button>
-          </div>
-          <article class="example-box" id="exampleBox" aria-live="polite"></article>
-        </section>
-
-        <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-083">
-          <div class="section-title">
-            <p class="eyebrow">Practice with instant checking</p>
-            <h2>Short-answer checks</h2>
-            <p>Type concise answers. Use Show answer after committing to a response.</p>
-          </div>
-          <div class="practice-list" id="practiceList"></div>
-        </section>
-
-        <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-083">
-          <div class="section-title">
-            <p class="eyebrow">Mistake debugging</p>
-            <h2>Repair weak ER modelling decisions</h2>
-          </div>
-          <div class="mistake-grid" id="mistakeGrid"></div>
-        </section>
-
-        <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-083">
-          <div class="section-title">
-            <p class="eyebrow">Exam-style questions</p>
-            <h2>Original Cambridge-style practice with expandable MS</h2>
-            <p>These are original questions written in Cambridge style. The mark schemes are strict about entities, attributes and cardinality justification.</p>
-          </div>
-          <div class="exam-list" id="examList"></div>
-        </section>
-
-        <section class="panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-083">
-          <div class="section-title">
-            <p class="eyebrow">Summary</p>
-            <h2>ER modelling checklist</h2>
-          </div>
-          <div class="summary-grid">
-            <div><strong>Entities</strong><span>Things the system stores data about; often become tables.</span></div>
-            <div><strong>Attributes</strong><span>Facts stored about each entity; often become fields.</span></div>
-            <div><strong>Relationships</strong><span>Links between entities with cardinality and participation.</span></div>
-          </div>
-        </section>
-
-        <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
-          <div class="section-title">
-            <p class="eyebrow">Homework</p>
-            <h2>Clear tasks for consolidation</h2>
-          </div>
-          <div class="homework-list">
-            <article>
-              <strong>Task 1: Model a scenario</strong>
-              <span>A music school stores students, teachers, instruments and lesson bookings. Identify four entities, two attributes for each, and two relationships with cardinality.</span>
-            </article>
-            <article>
-              <strong>Task 2: Critique</strong>
-              <span>Explain why making "PhoneNumber" an entity may be poor design if only one phone number is stored for each student.</span>
-            </article>
-            <article>
-              <strong>Task 3: 6-mark answer</strong>
-              <span>Answer: "Explain how an ER model helps design a relational database for a library loan system." Include entities, attributes and cardinality.</span>
-            </article>
-          </div>
-        </section>
+        <nav class="v2-bottom-nav" aria-label="Previous and next lesson"><a href="../lesson-082/" >Previous lesson</a><a href="../lesson-084/" >Next lesson</a></nav>
       </div>
     </main>
-
-    <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=3"></script>
-    <script src="../lesson-toolbar.js?v=3"></script>
-    <script src="../stage7-accessibility.js?v=4"></script>
+    <script src="../course-v2.js?v=1"></script>
   </body>
 </html>

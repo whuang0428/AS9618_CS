@@ -3,449 +3,89 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 031 | Output, storage devices and primary memory</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <title>AS9618 Lesson 031 | Security, privacy, integrity and the need for protection</title>
     <link rel="icon" href="data:" />
-    <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
+    <link rel="stylesheet" href="../course-v2.css?v=3" />
   </head>
-  <body>
+  <body data-course-version="2" data-lesson-id="031" data-syllabus-ids="S6.01,S6.02">
     <a class="skip-link" href="#main-content">Skip to main content</a>
-    <header class="topbar">
-      <div>
-        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 3</p>
-        <h1>Output, storage devices and primary memory</h1>
-      </div>
-      <div class="action-panel" aria-label="Page controls">
-        <a class="course-home-link" href="../">Course home</a>
-        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
-      </div>
+    <header class="v2-topbar">
+      <div><p class="v2-eyebrow">Cambridge AS9618 | Paper 1 | Section 6: Security, privacy and data integrity</p><h1>Security, privacy, integrity and the need for protection</h1></div>
+      <nav class="v2-actions" aria-label="Lesson actions"><a href="../">Course home</a><a href="../assessments/">Assessment bank</a><button type="button" id="printLesson">Print</button></nav>
     </header>
-
-    <main class="layout" id="main-content" tabindex="-1">
-      <aside class="lesson-nav" aria-label="Lesson navigation">
-        <a href="#overview">Overview</a>
-        <a href="#hook">Warm-up</a>
-        <a href="#primary">Primary storage</a>
-        <a href="#ram-rom">RAM vs ROM</a>
-        <a href="#cache-vm">Cache and VM</a>
-        <a href="#tool">Choice tool</a>
-        <a href="#examples">Examples</a>
-        <a href="#practice">Practice</a>
-        <a href="#debug">Debugging</a>
-        <a href="#exam">Exam-style</a>
-        <a href="#homework">Homework</a>
-        <a href="#stage2-completion">Core syllabus content</a>
-      </aside>
-
-      <div class="lesson-content">
-        <!-- remediation-v2-stage3-scope:start -->
-        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.</p></aside>
-        <!-- remediation-v2-stage3-scope:end -->
-
-        <!-- remediation-v2-optional:start -->
-        <aside class="optional-enrichment-notice" aria-label="Optional enrichment scope">
-          <strong>Optional enrichment</strong>
-          <p>cache and virtual-memory detail in the hardware section. This material is excluded from compulsory syllabus coverage, first-use and assessment statistics.</p>
-          <p><strong>Formal AS prerequisite:</strong> S3.05-S3.07 RAM, ROM, SRAM, DRAM, PROM, EPROM and EEPROM; cache belongs to S4.05.</p>
-        </aside>
-        <!-- remediation-v2-optional:end -->
-<!-- stage2-completion:start -->
-        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus content</p>
-            <h2>Output, storage devices and primary memory</h2>
-          </div>
-          <div class="stage2-explanation">
-            <p>A laser printer charges a drum, a laser discharges selected points, toner adheres to the image, toner transfers to paper and heat/pressure fuse it. A 3D printer deposits or solidifies material layer by layer from a digital model.</p>
-            <p>A speaker uses a DAC/amplifier to drive a coil and cone, producing pressure waves. An output buffer temporarily holds data because the processor can produce it faster or in different-sized bursts than a printer or audio device can consume it.</p>
-            <p>An HDD spins magnetic platters while an actuator positions read/write heads; writing changes magnetic orientation and reading senses it. Flash memory stores charge in floating-gate cells and has no moving parts.</p>
-            <p>An optical drive spins a disc and directs a laser at its track. Reflected-light differences are read as data; a writer uses a higher-power laser to change a dye or recording layer.</p>
-            <p>A magnetic HDD uses moving read/write heads over rotating platters. Flash memory stores charge electronically with no moving parts. An optical disc reader/writer uses a laser to read marks and, on writable media, to create or alter marks.</p>
-            <p>RAM is volatile read/write primary memory used for programs and data currently being processed. ROM is non-volatile primary memory used for instructions that must remain when power is removed, such as firmware or start-up instructions. ROM is not ordinary long-term storage for user files.</p>
-            <p>SRAM stores bits using flip-flop circuits, needs no refresh and is fast but expensive with lower density, so it is used for cache. DRAM stores charge in capacitors, requires refresh and is slower but cheaper and denser, so it is used for main memory.</p>
-            <p>PROM is programmed once. EPROM can be erased with ultraviolet light and reprogrammed. EEPROM is erased and rewritten electrically, often without removing it from the system. All three are non-volatile ROM technologies.</p>
-            <p>A buffer temporarily holds data when connected components operate at a different speed or transfer data in different-sized bursts.</p>
-            <p>Required device overview: a laser printer uses an electrostatic drum, laser, toner and fuser; a 3D printer builds successive layers; a speaker converts an electrical signal into sound. An HDD or magnetic hard disk uses rotating magnetic platters, flash memory stores charge electronically, and an optical reader/writer uses a laser.</p>
-          </div>
-          <article class="stage2-example">
-            <h3>Worked example: Print a page / Read an HDD block / Choose a storage mechanism / Choose memory for a computer system</h3>
-            <p>The operating system places page data in a print buffer. The CPU can continue other work while the slower printer consumes buffered data and performs drum, toner and fusing stages. The controller moves the head to the correct track, waits for the sector to rotate beneath it, senses magnetic patterns and transfers the decoded bits through a buffer. A portable device may use flash memory for shock resistance; an archive may use optical media when an optical disc reader/writer is available. Use DRAM as main RAM because its density and lower cost support a large working capacity. Use a small amount of SRAM for cache because faster, no-refresh access reduces processor waiting. Store updateable firmware in EEPROM because it remains without power but can be rewritten electrically.</p>
-          </article>
+    <main class="v2-shell" id="main-content" tabindex="-1">
+      <nav class="v2-toc" aria-label="Lesson contents"><strong>Lesson 031</strong><a href="#overview">Overview</a><a href="#prerequisite">Prerequisite</a><a href="#explanation">Explanation</a><a href="#practice">Practice</a><a href="#summary">Summary</a></nav>
+      <div class="v2-content">
+        <section class="v2-hero" id="overview">
+          <div><p class="v2-eyebrow">Flexible-depth lesson</p><h2>Security, privacy, integrity and the need for protection</h2><p>S6.01, S6.02 | Select what to omit, teach briefly or explore in depth.</p></div>
+          <div class="v2-time-grid" aria-label="Available lesson depth"><div><strong>Quick</strong><span>diagnose + essentials</span></div><div><strong>Full</strong><span>complete explanation</span></div><div><strong>Deep</strong><span>prerequisites + extension</span></div><div><strong>Choose</strong><span>practice by need</span></div></div>
         </section>
-        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus practice</p>
-            <h2>Output, storage devices and primary memory: apply and assess</h2>
-          </div>
-          <div class="stage2-practice">
-            <h3>Targeted practice</h3>
-            <article class="stage2-question">
-              <p><strong>1.</strong> What permanently bonds toner to laser-printer paper?</p>
-              <details><summary>Show answer</summary><p>Heat and pressure in the fuser.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>2.</strong> How does a 3D printer build an object?</p>
-              <details><summary>Show answer</summary><p>It deposits/solidifies successive layers.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>3.</strong> How does a speaker produce sound from digital output?</p>
-              <details><summary>Show answer</summary><p>A DAC and amplifier drive a coil and cone; cone vibration produces pressure waves in the air.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>4.</strong> Why is a print buffer needed?</p>
-              <details><summary>Show answer</summary><p>It handles the speed difference and lets the producer continue while the printer consumes data.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>5.</strong> Why is flash storage resistant to mechanical shock?</p>
-              <details><summary>Show answer</summary><p>It has no moving read/write head or spinning platter.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>6.</strong> What physical property stores HDD data?</p>
-              <details><summary>Show answer</summary><p>Magnetic orientation/patterns on a platter.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>7.</strong> How does an optical reader Compare stored data?</p>
-              <details><summary>Show answer</summary><p>It detects differences in reflected laser light.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>8.</strong> Which device uses rotating platters?</p>
-              <details><summary>Show answer</summary><p>An HDD.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>9.</strong> Which device uses a laser?</p>
-              <details><summary>Show answer</summary><p>An optical reader/writer.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>10.</strong> Compare RAM from ROM by volatility and use.</p>
-              <details><summary>Show answer</summary><p>RAM is volatile and holds current programs/data; ROM is non-volatile and holds persistent firmware or start-up instructions.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>11.</strong> Why is DRAM refreshed?</p>
-              <details><summary>Show answer</summary><p>Charge in its storage capacitors leaks and must be restored.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>12.</strong> Why is SRAM used for cache while DRAM is used for main memory?</p>
-              <details><summary>Show answer</summary><p>SRAM is faster and needs no refresh; DRAM is denser and cheaper per bit for a larger capacity.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>13.</strong> Compare PROM, EPROM and EEPROM.</p>
-              <details><summary>Show answer</summary><p>PROM is programmed once; EPROM is erased with ultraviolet light; EEPROM is erased and rewritten electrically.</p></details>
-            </article>
-          </div>
-          <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>15 marks</span></div>
-            <p>Explain why a buffer is used when a computer sends a large document to a laser printer. Describe how data is read from a magnetic hard disk drive. Explain how an HDD, flash memory and an optical reader/writer store or retrieve data. Compare SRAM and DRAM and explain why DRAM is normally used for main memory.</p>
-            <details>
-              <summary>Show MS</summary>
-              <table class="mark-scheme-table">
-                <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
-                <tbody>
-                  <tr><td>processor/computer and printer operate at different speeds</td><td>Do not accept 'the buffer makes the printer faster'; it manages transfer-rate differences. Do not accept a laser-based explanation for an HDD; lasers apply to optical media. Do not describe every storage device as magnetic. Do not award both comparison marks for merely expanding the abbreviations.</td><td>1</td></tr>
-                  <tr><td>buffer temporarily stores print data</td><td></td><td>1</td></tr>
-                  <tr><td>printer reads data at its own rate</td><td></td><td>1</td></tr>
-                  <tr><td>computer/processor can continue other processing without waiting for the full print</td><td></td><td>1</td></tr>
-                  <tr><td>platters rotate</td><td></td><td>1</td></tr>
-                  <tr><td>actuator positions read/write head over the required track</td><td></td><td>1</td></tr>
-                  <tr><td>required sector passes beneath the head</td><td></td><td>1</td></tr>
-                  <tr><td>head senses magnetic patterns which are decoded as data</td><td></td><td>1</td></tr>
-                  <tr><td>HDD mechanism</td><td></td><td>1</td></tr>
-                  <tr><td>flash mechanism</td><td></td><td>1</td></tr>
-                  <tr><td>optical reader/writer mechanism</td><td></td><td>1</td></tr>
-                  <tr><td>SRAM is faster / does not require refresh</td><td></td><td>1</td></tr>
-                  <tr><td>DRAM requires refresh / is slower</td><td></td><td>1</td></tr>
-                  <tr><td>DRAM has greater density / lower cost per bit</td><td></td><td>1</td></tr>
-                  <tr><td>main memory needs large capacity, making DRAM more economical</td><td></td><td>1</td></tr>
-                </tbody>
-              </table>
-            </details>
-          </article>
-        </section>
-        <!-- stage2-completion:end -->
 
-<section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-031">
-          <div class="hero-copy">
-            <p class="lesson-meta">Lesson 031 | 45 minutes | Paper 1 Section 3</p>
-            <h2>Primary storage is the computer's working desk, not its filing cabinet.</h2>
-            <p>
-              This lesson explains RAM, ROM, cache and virtual memory. The main exam skill
-              is explaining what each type is used for, whether it is volatile, and how it
-              affects performance.
-            </p>
-            <div class="objective-grid" aria-label="Learning objectives">
-              <div><strong>Distinguish</strong><span>RAM, ROM, cache and virtual memory</span></div>
-              <div><strong>Explain</strong><span>volatility, speed and purpose using precise terms</span></div>
-              <div><strong>Apply</strong><span>primary storage ideas to startup, multitasking and performance scenarios</span></div>
+        <section class="v2-panel v2-route-menu" aria-labelledby="route-heading">
+          <div class="v2-heading"><p class="v2-eyebrow">Teacher choice</p><h2 id="route-heading">Choose the depth for this group</h2></div>
+          <div class="v2-route-grid"><article><h3>Quick route</h3><p>Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.</p></article><article><h3>Full route</h3><p>Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.</p></article><article><h3>Deep route</h3><p>Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.</p></article></div>
+        </section>
+
+        <section class="v2-panel" id="prerequisite">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 1 | optional depth</p><h2>Prerequisite knowledge and quick diagnostic</h2></div>
+          <div class="v2-diagnostic"><p>Recall the main conclusion from Lesson 030: IDE features and practical debugging support.</p></div>
+          <p>Give one accurate definition or method step before continuing. If it is missing, revisit only that prerequisite.</p>
+
+        </section>
+
+        <section class="v2-panel" id="explanation">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 2 | deliberately over-complete</p><h2>Knowledge explanation</h2></div>
+          <h3>Learning objectives</h3><ul class="v2-objectives"><li>Distinguish data security, privacy and integrity.</li><li>Explain the need for data and computer-system security.</li></ul>
+          <details class="v2-concept-menu"><summary>Open the concept checklist and choose what to teach</summary><ul><li>security</li><li>privacy</li><li>integrity</li><li>computer-system</li><li>data</li></ul></details>
+          <div class="v2-explanation-grid">
+            <div>
+              <article class="v2-core-facts"><h3>Detailed explanation</h3><p class="v2-teacher-note">Teach all points, or select only the ones this group needs. The list is intentionally fuller than a fixed lesson slot.</p><ul class="v2-facts"><li>Distinguish data security, data privacy and data integrity as separate concepts; evidence must not treat confidentiality, lawful/appropriate use and correctness/consistency as interchangeable.</li><li>Show appreciation of the need for both security of data and security of the computer system; evidence must explain why protecting one layer does not replace the other.</li><li>Data security is protection against unauthorised access, loss or damage. Privacy concerns appropriate collection, use and disclosure of personal data. Integrity means data remains accurate, complete and unaltered except by authorised processes.</li><li>The concepts overlap but are not synonyms: encrypted inaccurate data may be secure but lack integrity; authorised publication may preserve integrity while violating privacy.</li><li>Both data security and computer-system security are necessary. Protecting only a data file is insufficient if an attacker can control the operating system, install malware, steal credentials or make the computer system unavailable; protecting only the device is insufficient if copied data is disclosed, altered or lost.</li></ul></article>
+              <article class="v2-example"><h3>Worked example</h3><p>Medical records on a compromised computer system: Encryption restricts unauthorised reading of the record data. Access rights restrict who may view or alter it. Anti-virus and a firewall help protect the computer system that stores and processes the records. If malware controls the system, it may steal decrypted data, alter records or stop authorised access even though the stored file was encrypted.</p></article>
+              <aside class="v2-extension"><h3>Beyond syllabus / 延伸知识（不要求背诵）</h3><p>real security uses defence in depth, combining controls so that one failed control does not expose the whole system.</p></aside>
             </div>
-          </div>
-          <div class="system-card" aria-label="Primary storage hierarchy">
-            <span>cache -> RAM -> virtual memory</span>
-            <p>Closer to the CPU usually means faster, smaller and more expensive. Convenient, like a front-row seat with a tiny desk.</p>
-          </div>
-        </section>
-
-        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-031">
-          <article class="why-card">
-            <h3>Why this matters</h3>
-            <p>Cambridge-style answers often require exact contrasts. "RAM is temporary" is weaker than "RAM is volatile and stores data/instructions currently in use."</p>
-          </article>
-          <article class="trap-card">
-            <h3>Common error</h3>
-            <p>Virtual memory is not extra physical RAM. It uses secondary storage as if it were memory, which is slower than RAM.</p>
-          </article>
-        </section>
-
-        <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-031">
-          <div class="section-title">
-            <p class="eyebrow">Warm-up hook</p>
-            <h2>Your laptop has 30 browser tabs, a video call and an IDE open. Which memory areas are being stressed?</h2>
-          </div>
-          <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="ram">RAM holds active programs and data</button>
-            <button class="choice-card" type="button" data-hook="cache">Cache keeps frequently used data close to the CPU</button>
-            <button class="choice-card" type="button" data-hook="vm">Virtual memory helps when RAM is insufficient</button>
-            <button class="choice-card" type="button" data-hook="rom">ROM handled startup instructions earlier</button>
-          </div>
-          <div class="feedback" id="hookFeedback" aria-live="polite">
-            Click one memory area. The useful exam habit is linking storage type -> role -> consequence.
+            <figure class="v2-visual">
+              <img src="../assets/diagrams/stage10-infographics/stage10-lesson-071-compare.jpg" alt="Main purpose. Restore data after deletion, corruption, hardware failure or ransomware.. May be too old, corrupted, inaccessible or affected by same incident.. Disaster recovery plan. Restore systems and services in a planned order after major disruption." loading="lazy" />
+              <figcaption>Compare by purpose, not by &quot;security word&quot;. One maintained explanation is shown as an image on larger screens and as text on small screens.</figcaption>
+              <div class="v2-mobile-visual-text" aria-label="Mobile text alternative"><ul><li>Main purpose</li><li>Restore data after deletion, corruption, hardware failure or ransomware.</li><li>May be too old, corrupted, inaccessible or affected by same incident.</li><li>Disaster recovery plan</li><li>Restore systems and services in a planned order after major disruption.</li></ul></div>
+            </figure>
           </div>
         </section>
 
-        <section class="panel" id="primary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-031">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 1</p>
-            <h2>Primary storage is directly involved in current processing</h2>
-          </div>
-          <div class="flow-grid">
-            <article><strong>RAM</strong><span>Stores programs, data and instructions currently in use. It is volatile.</span></article>
-            <article><strong>ROM</strong><span>Stores startup/boot instructions. It is non-volatile and normally read-only.</span></article>
-            <article><strong>Cache</strong><span>Very fast memory close to/on the CPU for frequently used data and instructions.</span></article>
-            <article><strong>Virtual memory</strong><span>Uses part of secondary storage when RAM is full, but access is slower.</span></article>
-          </div>
-          <div class="callout">Chinese support: primary storage = 主存/主存储；volatile = 易失性；non-volatile = 非易失性；cache = 高速缓存；virtual memory = 虚拟内存。</div>
+        <section class="v2-panel" id="practice">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 3 | select by learner need</p><h2>Practice by question type</h2></div>
+          <div class="v2-question-list"><article class="v2-question" data-question-id="Q-L031-01" data-semantic-fingerprint="S6.01+S6.02|security-privacy-integrity-and-the-need-for-protection|compare|compare-then-why-both|written|evaluate">
+              <div class="v2-question-head"><span class="v2-badge">compare</span><span class="v2-badge">evaluate</span><span class="v2-badge difficulty">foundation</span><span class="v2-badge">5 marks</span></div>
+              <p><strong>Question 1.</strong> Compare data security, privacy and integrity, then explain why both data and its computer system require security.</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> security protects against unauthorised access/loss/damage; privacy controls appropriate personal-data use/disclosure; integrity concerns accuracy/completeness/authorised change; computer-system compromise can expose/alter/destroy data or prevent authorised access; data-specific and system controls are both required / one does not replace the other</p><p><strong>Marking guidance:</strong> Do not accept repeated versions of &#39;keeping data safe&#39; or the claim that file encryption alone secures the computer system.</p><p><strong>Common error:</strong> For the command word compare, perform that exact action; do not replace it with an unrelated fact.</p></div></details>
+            </article><article class="v2-question" data-question-id="Q-L031-02" data-semantic-fingerprint="S6.01+S6.02|security-privacy-integrity-and-the-need-for-protection|explain|why-must-computer-also|written|explain">
+              <div class="v2-question-head"><span class="v2-badge">explain</span><span class="v2-badge">explain</span><span class="v2-badge difficulty">application</span><span class="v2-badge">2 marks</span></div>
+              <p><strong>Question 2.</strong> Why must the computer system also be protected?</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> A compromised or unavailable system can expose, alter, delete or prevent access to the data it processes, even when a stored file has a separate protection such as encryption.</p><p><strong>Marking guidance:</strong> Award one mark for each distinct, technically accurate point or method step.</p><p><strong>Common error:</strong> Do not repeat the same point in different words; each mark needs a separate idea or method step.</p></div></details>
+            </article><article class="v2-question" data-question-id="Q-L031-03" data-semantic-fingerprint="S6.01+S6.02|security-privacy-integrity-and-the-need-for-protection|apply|secure-but-inaccurate|written|recall">
+              <div class="v2-question-head"><span class="v2-badge">apply</span><span class="v2-badge">recall</span><span class="v2-badge difficulty">transfer</span><span class="v2-badge">2 marks</span></div>
+              <p><strong>Question 3.</strong> Can data be secure but inaccurate?</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> Yes; access protection does not guarantee correctness.</p><p><strong>Marking guidance:</strong> Award one mark for each distinct, technically accurate point or method step.</p><p><strong>Common error:</strong> Do not copy the worked example unchanged; transfer the method and check it against the new context.</p></div></details>
+            </article></div>
+          <div class="v2-paper-refs">
+          <h3>Related past-paper indexes</h3>
+          <table><thead><tr><th>Reference</th><th>Marks</th><th>Command word</th><th>Question type</th></tr></thead>
+          <tbody><tr><td>9618/12/W/23 Q5(a)</td><td>1</td><td>state</td><td>recall</td></tr><tr><td>9618/12/W/23 Q5(b)</td><td>1</td><td>state</td><td>recall</td></tr></tbody></table>
+          <p class="v2-copyright-note">Index only: Cambridge question and mark-scheme wording is not reproduced on this public course page.</p>
+        </div>
         </section>
 
-        <!-- stage10-explanation:start primary -->
-        <section class="panel explanation-panel" id="explanation-primary" data-explains="primary" data-explanation-kind="mechanism" aria-labelledby="explanation-primary-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-031">
-          <h2 class="explanation-sr-only" id="explanation-primary-title">Why active data stays close to the CPU</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-031-primary.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Why active data stays close to the CPU through a cause-and-effect diagram." />
-            <figcaption class="explanation-sr-only">Why active data stays close to the CPU: mechanism, reason, result, analogy and boundary condition.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Mechanism:</strong> The CPU repeatedly requests current instructions and data.</li><li><strong>Reason:</strong> Nearby electronic storage answers with less delay than secondary storage.</li><li><strong>Result:</strong> Faster access prevents the processor waiting as often.</li></ol>
-
-            <p><strong>Analogy:</strong> Keep today's papers on the desk, not in a distant archive.</p>
-            <p><strong>Boundary:</strong> Closer and faster storage is smaller and more expensive per byte.</p>
-          </div>
-        </section>
-        <!-- stage10-explanation:end primary -->
-        <section class="panel" id="ram-rom" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-031">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 2</p>
-            <h2>RAM and ROM: similar letters, very different jobs</h2>
-          </div>
-          <div class="compare-table" role="table" aria-label="RAM and ROM comparison">
-            <div class="table-row table-head" role="row">
-              <div role="columnheader">Feature</div>
-              <div role="columnheader">RAM</div>
-              <div role="columnheader">ROM</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Purpose</div>
-              <div role="cell">Holds data, programs and instructions currently being used.</div>
-              <div role="cell">Stores firmware/startup instructions needed to boot the computer.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Volatility</div>
-              <div role="cell">Volatile: contents are lost when power is off.</div>
-              <div role="cell">Non-volatile: contents remain when power is off.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Write access</div>
-              <div role="cell">Can be read from and written to during normal use.</div>
-              <div role="cell">Normally read-only or not easily changed by the user.</div>
-            </div>
-          </div>
+        <section class="v2-panel" id="summary">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 4 | close when ready</p><h2>Summary and exam reminders</h2></div>
+          <div class="v2-summary-grid"><div><h3>Summary</h3><ul class="v2-summary-list"><li>Define security, privacy, integrity and the need for protection with the exact technical vocabulary expected by the syllabus.</li><li>Use the lesson method on a fresh context and show the intermediate decision, representation or calculation.</li><li>Match the shape of the answer to the command word and the available marks.</li><li>Check the final answer against the scenario instead of repeating a memorised sentence.</li></ul></div><div class="v2-error"><h3>Common error to correct</h3><p>Students often propose encryption for every problem. Correction: encryption protects confidentiality but does not fix poor permissions, phishing or missing backups.</p></div></div>
+          <div class="v2-tip-box"><h3>Exam technique</h3><ul><li>Follow the command word: state gives a fact; explain links a cause to a consequence; compare covers both sides.</li><li>Match the number of independent points or method steps to the available marks.</li><li>For security, privacy, integrity and the need for protection, use the exact technical term before applying it to the scenario.</li></ul></div>
         </section>
 
-        <!-- stage10-explanation:start ram-rom -->
-        <section class="panel explanation-panel" id="explanation-ram-rom" data-explains="ram-rom" data-explanation-kind="comparison" aria-labelledby="explanation-ram-rom-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-031">
-          <h2 class="explanation-sr-only" id="explanation-ram-rom-title">Why RAM changes while ROM remains stable</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-031-ram-rom.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Why RAM changes while ROM remains stable through a cause-and-effect diagram." />
-            <figcaption class="explanation-sr-only">Why RAM changes while ROM remains stable: mechanism, reason, result, analogy and boundary condition.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Mechanism:</strong> RAM holds the changing state of running programs.</li><li><strong>Reason:</strong> Most RAM needs continuous power to preserve that state.</li><li><strong>Result:</strong> ROM retains fixed startup instructions when power is removed.</li></ol>
-
-            <p><strong>Analogy:</strong> A working notepad changes constantly; a printed reference card should not.</p>
-            <p><strong>Boundary:</strong> ROM can sometimes be updated, but not as ordinary working memory.</p>
-          </div>
-        </section>
-        <!-- stage10-explanation:end ram-rom -->
-        <section class="panel" id="cache-vm" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-031">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 3</p>
-            <h2>Cache and virtual memory affect performance in opposite directions</h2>
-          </div>
-          <div class="memory-stack" aria-label="Memory hierarchy">
-            <div><strong>Cache</strong><span>Fastest, smallest, closest to CPU</span></div>
-            <div><strong>RAM</strong><span>Fast working memory for active programs</span></div>
-            <div><strong>Virtual memory</strong><span>Slower extension using secondary storage</span></div>
-            <div><strong>Secondary storage</strong><span>Persistent storage, covered next lesson</span></div>
-          </div>
-          <div class="compare-table" role="table" aria-label="Cache and virtual memory comparison">
-            <div class="table-row table-head" role="row">
-              <div role="columnheader">Concept</div>
-              <div role="columnheader">Why it is useful</div>
-              <div role="columnheader">Exam warning</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Cache</div>
-              <div role="cell">Stores frequently/recently used data or instructions so the CPU can access them faster than from RAM.</div>
-              <div role="cell">Do not say cache permanently stores user files.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Virtual memory</div>
-              <div role="cell">Allows the system to continue running more/larger programs than RAM alone can hold.</div>
-              <div role="cell">Do not say it is as fast as RAM; using it heavily can slow the system.</div>
-            </div>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start cache-vm -->
-        <section class="panel explanation-panel" id="explanation-cache-vm" data-explains="cache-vm" data-explanation-kind="comparison" aria-labelledby="explanation-cache-vm-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-031">
-          <h2 class="explanation-sr-only" id="explanation-cache-vm-title">Why cache helps and virtual memory slows</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-031-cache-vm.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Why cache helps and virtual memory slows through a cause-and-effect diagram." />
-            <figcaption class="explanation-sr-only">Why cache helps and virtual memory slows: mechanism, reason, result, analogy and boundary condition.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Mechanism:</strong> Cache holds copies of recently or frequently used instructions and data close to the CPU.</li><li><strong>Reason:</strong> A cache hit avoids a slower main-memory access.</li><li><strong>Result:</strong> Virtual memory uses secondary storage when RAM is insufficient and increases apparent capacity rather than physical RAM speed.</li></ol>
-
-            <p><strong>Analogy:</strong> A desk tray saves a walk; using the archive as desk space creates walks.</p>
-            <p><strong>Boundary:</strong> Virtual memory increases capacity, not physical RAM speed.</p>
-          </div>
-        </section>
-        <!-- stage10-explanation:end cache-vm -->
-        <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-031">
-          <div class="section-title">
-            <p class="eyebrow">Interactive tool</p>
-            <h2>Choose the memory concept</h2>
-          </div>
-          <div class="converter-grid">
-            <label>
-              Scenario
-              <select id="scenarioInput">
-                <option value="active">A program and its current data are being edited</option>
-                <option value="boot">The computer needs startup instructions before the OS loads</option>
-                <option value="repeat">The CPU repeatedly needs the same instructions in a tight loop</option>
-                <option value="full">Many applications are open and RAM is nearly full</option>
-                <option value="power">Power is turned off and contents are lost</option>
-                <option value="slow">System becomes slow because pages are swapped to disk frequently</option>
-              </select>
-            </label>
-            <button type="button" id="chooseBtn">Identify concept</button>
-          </div>
-          <div class="result-box" id="componentResult" aria-live="polite"></div>
-          <div class="method-box" id="componentMethod"></div>
-        </section>
-
-        <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-031">
-          <div class="section-title">
-            <p class="eyebrow">Worked examples</p>
-            <h2>Precise explanations for primary storage</h2>
-          </div>
-          <div class="example-tabs" role="tablist" aria-label="Worked examples">
-            <button class="tab active" type="button" data-example="ram">RAM</button>
-            <button class="tab" type="button" data-example="rom">ROM</button>
-            <button class="tab" type="button" data-example="virtual">Virtual memory</button>
-          </div>
-          <article class="example-box" id="exampleBox"></article>
-        </section>
-
-        <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-031">
-          <div class="section-title">
-            <p class="eyebrow">Your turn</p>
-            <h2>Practice with instant checking</h2>
-          </div>
-          <div class="practice-list" id="practiceList"></div>
-          <button class="primary-button" type="button" id="checkPractice">Check practice</button>
-          <div class="feedback" id="practiceFeedback" aria-live="polite"></div>
-        </section>
-
-        <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-031">
-          <div class="section-title">
-            <p class="eyebrow">Mistake debugging</p>
-            <h2>Fix the weak memory answer</h2>
-          </div>
-          <div class="mistake-grid">
-            <article>
-              <p class="wrong">"ROM is faster RAM that stores open programs."</p>
-              <button class="answer-toggle" type="button" data-answer="mistake1">Show correction</button>
-              <p class="answer" id="mistake1">ROM is non-volatile memory used for firmware/startup instructions. RAM stores currently running programs and data and is volatile.</p>
-            </article>
-            <article>
-              <p class="wrong">"Virtual memory gives the computer more real RAM."</p>
-              <button class="answer-toggle" type="button" data-answer="mistake2">Show correction</button>
-              <p class="answer" id="mistake2">Virtual memory uses part of secondary storage as if it were RAM. It can let more programs run, but it is slower than RAM and heavy use reduces performance.</p>
-            </article>
-          </div>
-        </section>
-
-        <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-031">
-          <div class="section-title">
-            <p class="eyebrow">Exam-style questions</p>
-            <h2>Questions with expandable MS</h2>
-            <p>Attempt first, then expand the mark scheme. Credit depends on exact terms: volatile, non-volatile, currently in use, startup instructions and slower secondary storage.</p>
-          </div>
-          <div class="exam-list" id="examList"></div>
-        </section>
-
-        <section class="panel summary-panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-031">
-          <div class="section-title">
-            <p class="eyebrow">Summary</p>
-            <h2>Primary storage in six exam sentences</h2>
-          </div>
-          <div class="summary-grid">
-            <div><strong>RAM</strong><span>Volatile memory for programs/data currently in use.</span></div>
-            <div><strong>ROM</strong><span>Non-volatile memory for startup/firmware instructions.</span></div>
-            <div><strong>Cache</strong><span>Very fast memory for frequently used data/instructions.</span></div>
-            <div><strong>Virtual memory</strong><span>Uses secondary storage when RAM is insufficient.</span></div>
-            <div><strong>Performance</strong><span>More cache/RAM can improve performance; heavy virtual memory use can slow it.</span></div>
-            <div><strong>Common error</strong><span>Primary storage is not the same as long-term secondary storage.</span></div>
-          </div>
-        </section>
-
-        <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
-          <div class="section-title">
-            <p class="eyebrow">Homework</p>
-            <h2>Clear tasks</h2>
-          </div>
-          <ol class="homework-list">
-            <li>Create a comparison table for RAM, ROM, cache and virtual memory: purpose, volatility and performance effect.</li>
-            <li>Write a 4-mark answer explaining why a computer may slow down when virtual memory is used heavily.</li>
-            <li>Explain why ROM is needed during startup in two precise sentences.</li>
-            <li>Write one common misconception and correct it using the terms volatile or non-volatile.</li>
-          </ol>
-          <button class="answer-toggle" type="button" data-answer="homeworkAnswers">Show homework guidance</button>
-          <div class="answer-panel" id="homeworkAnswers">
-            <p><strong>Comparison:</strong> RAM = current volatile working memory; ROM = non-volatile startup instructions; cache = very fast frequently used data; virtual memory = slower secondary storage used when RAM is full.</p>
-            <p><strong>Virtual memory:</strong> it involves moving data between RAM and secondary storage, which is slower than accessing RAM directly.</p>
-            <p><strong>ROM startup:</strong> ROM retains boot instructions when power is off, so the system can start before the operating system is loaded.</p>
-            <p><strong>Misconception:</strong> "RAM keeps files after power off" is wrong because RAM is volatile.</p>
-          </div>
-        </section>
+        <nav class="v2-bottom-nav" aria-label="Previous and next lesson"><a href="../lesson-030/" >Previous lesson</a><a href="../lesson-032/" >Next lesson</a></nav>
       </div>
     </main>
-
-    <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=3"></script>
-    <script src="../lesson-toolbar.js?v=3"></script>
-    <script src="../stage7-accessibility.js?v=4"></script>
+    <script src="../course-v2.js?v=1"></script>
   </body>
 </html>

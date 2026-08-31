@@ -3,447 +3,89 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 073 | Professional ethics, professional bodies and ethical decisions</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <title>AS9618 Lesson 073 | IF, ELSE and CASE selection</title>
     <link rel="icon" href="data:" />
-    <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
+    <link rel="stylesheet" href="../course-v2.css?v=3" />
   </head>
-  <body>
+  <body data-course-version="2" data-lesson-id="073" data-syllabus-ids="S11.04">
     <a class="skip-link" href="#main-content">Skip to main content</a>
-    <header class="topbar">
-      <div>
-        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 7</p>
-        <h1>Professional ethics, professional bodies and ethical decisions</h1>
-      </div>
-      <div class="action-panel" aria-label="Page controls">
-        <a class="course-home-link" href="../">Course home</a>
-        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
-      </div>
+    <header class="v2-topbar">
+      <div><p class="v2-eyebrow">Cambridge AS9618 | Paper 2 | Section 11: Programming</p><h1>IF, ELSE and CASE selection</h1></div>
+      <nav class="v2-actions" aria-label="Lesson actions"><a href="../">Course home</a><a href="../assessments/">Assessment bank</a><button type="button" id="printLesson">Print</button></nav>
     </header>
-
-    <main class="layout" id="main-content" tabindex="-1">
-      <aside class="lesson-nav" aria-label="Lesson navigation">
-        <a href="#overview">Overview</a>
-        <a href="#hook">Warm-up</a>
-        <a href="#ethics">Ethics</a>
-        <a href="#stakeholders">Stakeholders</a>
-        <a href="#tradeoffs">Trade-offs</a>
-        <a href="#method">Answer method</a>
-        <a href="#mapper">Stakeholder map</a>
-        <a href="#builder">Judgement builder</a>
-        <a href="#examples">Examples</a>
-        <a href="#practice">Practice</a>
-        <a href="#debug">Debugging</a>
-        <a href="#exam">Exam-style</a>
-        <a href="#summary">Summary</a>
-        <a href="#homework">Homework</a>
-        <a href="#stage2-completion">Core syllabus content</a>
-      </aside>
-
-      <div class="lesson-content">
-        <!-- remediation-v2-stage3-scope:start -->
-        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.</p></aside>
-        <!-- remediation-v2-stage3-scope:end -->
-
-<!-- stage2-completion:start -->
-        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus content</p>
-            <h2>Professional ethics, professional bodies and ethical decisions</h2>
-          </div>
-          <div class="stage2-explanation">
-            <p>Professional ethics provides principles for deciding how a computing professional should act when technical choices can affect clients, users, colleagues or wider society. Its purpose is to protect the public interest, support competent and honest work, and make professionals accountable for foreseeable consequences rather than treating legal compliance or a manager's instruction as the whole decision.</p>
-            <p>Joining a professional ethical body is important because membership gives a practitioner an explicit code of conduct, current professional guidance, continuing professional development and a community through which standards and misconduct can be challenged. The British Computer Society (BCS) and the Institute of Electrical and Electronics Engineers (IEEE) are the two named syllabus examples. Their codes promote public interest, competence, integrity, privacy and accountability; a code guides judgement but does not replace law.</p>
-            <p>For a given situation, decide whether an action is ethical or unethical by identifying the decision, affected stakeholders, benefits, harms, rights and responsibilities. Then explain the impact of acting ethically and the impact of acting unethically. A defensible conclusion applies evidence, proportionality and safeguards; it is not a one-sided list or an unsupported personal opinion.</p>
-          </div>
-          <article class="stage2-example">
-            <h3>Worked example: Unsafe release pressure</h3>
-            <p>A developer is told to hide failed safety tests so a medical system can launch on time. Concealing the evidence would be unethical because patients could be harmed and trust would be damaged. The developer acts ethically by documenting the risk, refusing to falsify the record and escalating through BCS/IEEE-style professional channels. This may delay release and cost money, but protects patients, supports accountability and allows the defect to be corrected.</p>
-          </article>
+    <main class="v2-shell" id="main-content" tabindex="-1">
+      <nav class="v2-toc" aria-label="Lesson contents"><strong>Lesson 073</strong><a href="#overview">Overview</a><a href="#prerequisite">Prerequisite</a><a href="#explanation">Explanation</a><a href="#practice">Practice</a><a href="#summary">Summary</a></nav>
+      <div class="v2-content">
+        <section class="v2-hero" id="overview">
+          <div><p class="v2-eyebrow">Flexible-depth lesson</p><h2>IF, ELSE and CASE selection</h2><p>S11.04 | Select what to omit, teach briefly or explore in depth.</p></div>
+          <div class="v2-time-grid" aria-label="Available lesson depth"><div><strong>Quick</strong><span>diagnose + essentials</span></div><div><strong>Full</strong><span>complete explanation</span></div><div><strong>Deep</strong><span>prerequisites + extension</span></div><div><strong>Choose</strong><span>practice by need</span></div></div>
         </section>
 
-        <!-- stage10-explanation:start stakeholders -->
-        <section class="panel explanation-panel" id="explanation-stakeholders" data-explains="stakeholders" data-explanation-kind="mechanism" aria-labelledby="explanation-stakeholders-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stakeholders">
-          <h2 class="explanation-sr-only" id="explanation-stakeholders-title">Ethical answers start with stakeholders</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-073-stakeholders.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Ethical answers start with stakeholders with a structured visual model." />
-            <figcaption class="explanation-sr-only">Ethical answers start with stakeholders: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Stakeholder</li><li><strong>Lesson fact:</strong> Possible benefit</li><li><strong>Lesson fact:</strong> Possible harm or concern</li><li><strong>Lesson fact:</strong> Users / students / patients</li><li><strong>Lesson fact:</strong> Better service, safety, convenience, personalisation.</li><li><strong>Lesson fact:</strong> Loss of privacy, unfair treatment, pressure, exclusion.</li><li><strong>Lesson fact:</strong> Organisation</li><li><strong>Lesson fact:</strong> Efficiency, security, reduced cost, legal compliance.</li><li><strong>Lesson fact:</strong> Reputation damage, misuse of data, over-collection.</li><li><strong>Lesson fact:</strong> Wider society</li><li><strong>Lesson fact:</strong> Public safety, accessibility, innovation.</li><li><strong>Lesson fact:</strong> Surveillance culture, inequality, environmental impact.</li></ol>
-
-          </div>
+        <section class="v2-panel v2-route-menu" aria-labelledby="route-heading">
+          <div class="v2-heading"><p class="v2-eyebrow">Teacher choice</p><h2 id="route-heading">Choose the depth for this group</h2></div>
+          <div class="v2-route-grid"><article><h3>Quick route</h3><p>Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.</p></article><article><h3>Full route</h3><p>Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.</p></article><article><h3>Deep route</h3><p>Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.</p></article></div>
         </section>
-        <!-- stage10-explanation:end stakeholders -->
-        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus practice</p>
-            <h2>Professional ethics, professional bodies and ethical decisions: apply and assess</h2>
-          </div>
-          <div class="stage2-practice">
-            <h3>Targeted practice</h3>
-            <article class="stage2-question">
-              <p><strong>1.</strong> What is the purpose of professional ethics in computing?</p>
-              <details><summary>Show answer</summary><p>To guide competent, responsible and accountable decisions that protect clients, users and the public interest.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>2.</strong> Why is joining a professional body such as BCS or IEEE important?</p>
-              <details><summary>Show answer</summary><p>It provides a code of conduct, professional guidance and development, accountability and a community that supports consistent standards.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>3.</strong> In the unsafe-release situation, is concealing failed tests ethical or unethical?</p>
-              <details><summary>Show answer</summary><p>Unethical, because it hides foreseeable risk and can harm patients and public trust.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>4.</strong> State one impact of acting ethically and one impact of acting unethically in that situation.</p>
-              <details><summary>Show answer</summary><p>Ethical escalation may delay release but protects patients and supports correction; concealment may meet the deadline but risks harm, liability and loss of trust.</p></details>
-            </article>
-          </div>
-          <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>6 marks</span></div>
-            <p>A software engineer is asked to deploy a safety-critical update despite unresolved test failures. Determine whether complying silently would be ethical or unethical, explain two stakeholder impacts, and explain how membership of BCS or IEEE could support the engineer's response.</p>
-            <details>
-              <summary>Show MS</summary>
-              <table class="mark-scheme-table">
-                <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
-                <tbody>
-                  <tr><td>identifies silent deployment/concealment as unethical with a reason</td><td>Do not award a label such as 'unethical' without impact, or claim that joining a body removes the need for evidence and professional judgement.</td><td>1</td></tr>
-                  <tr><td>explains one impact on users or the public</td><td></td><td>1</td></tr>
-                  <tr><td>explains one impact on the organisation or professional</td><td></td><td>1</td></tr>
-                  <tr><td>explains that a BCS/IEEE code supplies professional standards or public-interest duties</td><td></td><td>1</td></tr>
-                  <tr><td>explains that professional membership supplies guidance, development, accountability or an escalation community</td><td></td><td>1</td></tr>
-                  <tr><td>gives a justified ethical action such as document, refuse concealment, escalate or delay release</td><td></td><td>1</td></tr>
-                </tbody>
-              </table>
-            </details>
-          </article>
-        </section>
-        <!-- stage2-completion:end -->
 
-<section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-073">
-          <div class="hero-copy">
-            <p class="lesson-meta">Lesson 073 | 45 minutes | Paper 1 Section 7 | Ethics and ownership</p>
-            <h2>Just because a system can do it does not mean it should.</h2>
-            <p>
-              Ethical decisions in Computer Science ask whether a computing action is responsible,
-              fair and justified. The exam skill is not to shout an opinion loudly. It is to identify
-              stakeholders, explain benefits and harms, then make a balanced judgement with evidence.
-            </p>
-            <div class="objective-grid" aria-label="Learning objectives">
-              <div><strong>Define</strong><span>ethics, stakeholder, responsibility and proportionality</span></div>
-              <div><strong>Analyse</strong><span>benefits, harms, rights and duties in computing scenarios</span></div>
-              <div><strong>Evaluate</strong><span>write balanced answers with a justified conclusion</span></div>
+        <section class="v2-panel" id="prerequisite">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 1 | optional depth</p><h2>Prerequisite knowledge and quick diagnostic</h2></div>
+          <div class="v2-diagnostic"><p>Recall S9.06 before starting this lesson.</p></div>
+          <p>Give one accurate definition or method step before continuing. If it is missing, revisit only that prerequisite.</p>
+          <details class="v2-prerequisite-detail"><summary>Open optional prerequisite refresher</summary><ul><li>The three basic algorithm constructs are sequence, selection and iteration (repetition); students must recognise and use each construct, including combinations of constructs.</li><li>Understand and use sequence, selection and iteration.</li></ul></details>
+        </section>
+
+        <section class="v2-panel" id="explanation">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 2 | deliberately over-complete</p><h2>Knowledge explanation</h2></div>
+          <h3>Learning objectives</h3><ul class="v2-objectives"><li>Use IF/ELSE/nested selection, CASE, count-controlled loops, post-condition and pre-condition loops.</li></ul>
+          <details class="v2-concept-menu"><summary>Open the concept checklist and choose what to teach</summary><ul><li>IF</li><li>ELSE</li><li>nested</li><li>selection</li><li>CASE</li><li>count-controlled</li><li>loop / loops</li><li>post-condition</li><li>pre-condition</li></ul></details>
+          <div class="v2-explanation-grid">
+            <div>
+              <article class="v2-core-facts"><h3>Detailed explanation</h3><p class="v2-teacher-note">Teach all points, or select only the ones this group needs. The list is intentionally fuller than a fixed lesson slot.</p><ul class="v2-facts"><li>Use IF statements, including the ELSE clause and nested IF statements; CASE statements; count-controlled loops; post-condition loops; and pre-condition loops.</li><li>Use IF...THEN...ELSE...ENDIF when a Boolean condition selects between paths. An ELSE clause supplies the false path. In nested IF statements, every inner and outer IF must be closed and the indentation must show which ELSE belongs to which IF.</li><li>Use CASE...OF...OTHERWISE...ENDCASE when one expression is compared with several discrete values. CASE is not a replacement for range or compound-condition decisions unless the stated values cover the requirement correctly.</li><li>A count-controlled loop uses FOR...TO...NEXT when the repetition count or inclusive counter range is known before the loop starts. The counter, start value and end value define the iterations; NEXT closes the loop.</li><li>Justify FOR from the problem: it is well suited when the count or bounds are known, but a pre-condition or post-condition loop is better when the number of repetitions depends on input or a stopping condition.</li><li>A WHILE...ENDWHILE loop is a pre-condition loop: it tests before the body and may run zero times. A REPEAT...UNTIL loop is a post-condition loop: it executes the body before testing and therefore runs at least once. A FOR...NEXT loop is count-controlled.</li><li>Select and justify the loop structure from the problem: use FOR when the count is known, WHILE when execution may be unnecessary and continuation is tested first, and REPEAT when the body must run once before a stopping condition can be tested. The justification must use the scenario, not only say that one loop is easier.</li></ul></article>
+              <article class="v2-example"><h3>Worked example</h3><p>Nested IF and CASE / Total a fixed array / Choose the loop from the stopping rule: For a grade, an outer IF tests Mark = 80; its ELSE contains an inner IF testing Mark = 50; each IF closes with ENDIF. For a menu, CASE Choice OF maps 1, 2 and 3 to actions and OTHERWISE handles every unlisted value before ENDCASE. For Marks[1:30], set Total &lt;- 0, use FOR Index &lt;- 1 TO 30, add Marks[Index] to Total, close with NEXT Index and output Total after all thirty elements have been processed. Input validation must request a value at least once, so REPEAT; INPUT Mark; UNTIL Mark = 0 AND Mark &lt;= 100 is suitable. Processing records while a file is not at EOF can use WHILE because an empty file may require zero iterations. Processing twelve months uses FOR because the count is fixed.</p></article>
+              <aside class="v2-extension"><h3>Beyond syllabus / 延伸知识（不要求背诵）</h3><p>consistent style, modularity and automated tests reduce maintenance errors in larger programs.</p></aside>
             </div>
-          </div>
-          <div class="ethics-card" aria-label="Ethical decision frame">
-            <div class="ethics-stack">
-              <span>Can we?</span>
-              <span>Who is affected?</span>
-              <span>What could go wrong?</span>
-              <span>What is justified?</span>
-              <span>What safeguards are needed?</span>
-            </div>
-            <p>"It depends" is a good start. The marks live in what it depends on.</p>
+            <figure class="v2-visual">
+              <img src="../assets/diagrams/stage10-infographics/stage10-lesson-128-case.jpg" alt="CASE compares one expression with several discrete values.. Each listed value has its own action and OTHERWISE handles unlisted values.. Close the complete multi-way selection with ENDCASE." loading="lazy" />
+              <figcaption>Use CASE for clear values of one expression. One maintained explanation is shown as an image on larger screens and as text on small screens.</figcaption>
+              <div class="v2-mobile-visual-text" aria-label="Mobile text alternative"><ul><li>CASE compares one expression with several discrete values.</li><li>Each listed value has its own action and OTHERWISE handles unlisted values.</li><li>Close the complete multi-way selection with ENDCASE.</li></ul></div>
+            </figure>
           </div>
         </section>
 
-        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-073">
-          <article class="why-card">
-            <h3>Why this matters</h3>
-            <p>Ethics questions often reward balance. A one-sided rant may be entertaining, but it usually leaks marks.</p>
-          </article>
-          <article class="trap-card">
-            <h3>Common error</h3>
-            <p>Ethics is not the same as security. Security asks how to protect a system; ethics asks whether the decision is responsible and justified.</p>
-          </article>
+        <section class="v2-panel" id="practice">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 3 | select by learner need</p><h2>Practice by question type</h2></div>
+          <div class="v2-question-list"><article class="v2-question" data-question-id="Q-L073-01" data-semantic-fingerprint="S11.04|if-else-and-case-selection|apply|suitable|visual|recall">
+              <div class="v2-question-head"><span class="v2-badge">apply</span><span class="v2-badge">recall</span><span class="v2-badge difficulty">foundation</span><span class="v2-badge">2 marks</span></div>
+              <p><strong>Question 1.</strong> When is CASE suitable?</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> When one expression has several discrete values that map to separate branches.</p><p><strong>Marking guidance:</strong> Award one mark for each distinct, technically accurate point or method step.</p><p><strong>Common error:</strong> For the command word apply, perform that exact action; do not replace it with an unrelated fact.</p></div></details>
+            </article><article class="v2-question" data-question-id="Q-L073-02" data-semantic-fingerprint="S11.04|if-else-and-case-selection|explain|many-endif-statements-close|written|explain">
+              <div class="v2-question-head"><span class="v2-badge">explain</span><span class="v2-badge">explain</span><span class="v2-badge difficulty">application</span><span class="v2-badge">2 marks</span></div>
+              <p><strong>Question 2.</strong> How many ENDIF statements close two nested IF statements?</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> Two: one closes the inner IF and one closes the outer IF.</p><p><strong>Marking guidance:</strong> Award one mark for each distinct, technically accurate point or method step.</p><p><strong>Common error:</strong> Do not repeat the same point in different words; each mark needs a separate idea or method step.</p></div></details>
+            </article><article class="v2-question" data-question-id="Q-L073-03" data-semantic-fingerprint="S11.04|if-else-and-case-selection|apply|structure-execute-zero-times|written|recall">
+              <div class="v2-question-head"><span class="v2-badge">apply</span><span class="v2-badge">recall</span><span class="v2-badge difficulty">transfer</span><span class="v2-badge">2 marks</span></div>
+              <p><strong>Question 3.</strong> Which structure may execute zero times?</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> WHILE, because it tests its condition before the body.</p><p><strong>Marking guidance:</strong> Award one mark for each distinct, technically accurate point or method step.</p><p><strong>Common error:</strong> Do not copy the worked example unchanged; transfer the method and check it against the new context.</p></div></details>
+            </article></div>
+          <div class="v2-paper-refs">
+          <h3>Related past-paper indexes</h3>
+          <table><thead><tr><th>Reference</th><th>Marks</th><th>Command word</th><th>Question type</th></tr></thead>
+          <tbody><tr><td>9618/22/W/25 Q1(a)</td><td>4</td><td>complete</td><td>recall</td></tr><tr><td>9618/23/W/24 Q1(a)</td><td>4</td><td>complete</td><td>recall</td></tr><tr><td>9618/22/W/24 Q5(c)</td><td>2</td><td>construct</td><td>diagram</td></tr></tbody></table>
+          <p class="v2-copyright-note">Index only: Cambridge question and mark-scheme wording is not reproduced on this public course page.</p>
+        </div>
         </section>
 
-        <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-073">
-          <div class="section-title">
-            <p class="eyebrow">Warm-up hook</p>
-            <h2>A school can install software that records every website students visit. Should it?</h2>
-            <p>If the first answer is "obviously yes" or "obviously no", the examiner has just prepared a follow-up with a raised eyebrow.</p>
-          </div>
-          <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="balanced">It depends on purpose, transparency, consent, proportionality and safeguards</button>
-            <button class="choice-card" type="button" data-hook="can">Yes, because if the technology exists then it should be used</button>
-            <button class="choice-card" type="button" data-hook="privacy">No, because privacy always overrides every other concern</button>
-            <button class="choice-card" type="button" data-hook="security">This is only a security question, not an ethical question</button>
-          </div>
-          <div class="feedback" id="hookFeedback" aria-live="polite">
-            Choose one. A strong ethics answer usually contains conditions.
-          </div>
+        <section class="v2-panel" id="summary">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 4 | close when ready</p><h2>Summary and exam reminders</h2></div>
+          <div class="v2-summary-grid"><div><h3>Summary</h3><ul class="v2-summary-list"><li>Define if, else and case selection with the exact technical vocabulary expected by the syllabus.</li><li>Use the lesson method on a fresh context and show the intermediate decision, representation or calculation.</li><li>Match the shape of the answer to the command word and the available marks.</li><li>Check the final answer against the scenario instead of repeating a memorised sentence.</li></ul></div><div class="v2-error"><h3>Common error to correct</h3><p>Students often think working Java automatically means good pseudocode. Correction: Paper 2 rewards clear Cambridge-style algorithm expression.</p></div></div>
+          <div class="v2-tip-box"><h3>Exam technique</h3><ul><li>Follow the command word: state gives a fact; explain links a cause to a consequence; compare covers both sides.</li><li>Match the number of independent points or method steps to the available marks.</li><li>For if, else and case selection, use the exact technical term before applying it to the scenario.</li></ul></div>
         </section>
 
-        <section class="panel" id="ethics" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-073">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 1</p>
-            <h2>Ethics is about responsible decision-making</h2>
-          </div>
-          <div class="concept-grid">
-            <article><strong>Ethics</strong><span>Principles about right and wrong behaviour, responsibility and fairness.</span></article>
-            <article><strong>Stakeholder</strong><span>A person or group affected by a decision, directly or indirectly.</span></article>
-            <article><strong>Responsibility</strong><span>The duty to consider consequences and act appropriately.</span></article>
-            <article><strong>Proportionality</strong><span>The response should be no more intrusive or harmful than needed for the aim.</span></article>
-          </div>
-          <div class="callout">Chinese support: ethics = 伦理；stakeholder = 利益相关者；responsibility = 责任；proportionality = 相称性/适度性。</div>
-        </section>
-
-        <!-- stage10-explanation:start ethics -->
-        <section class="panel explanation-panel" id="explanation-ethics" data-explains="ethics" data-explanation-kind="mechanism" aria-labelledby="explanation-ethics-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-073">
-          <h2 class="explanation-sr-only" id="explanation-ethics-title">Ethics is about responsible decision-making</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-073-ethics.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Ethics is about responsible decision-making with a structured visual model." />
-            <figcaption class="explanation-sr-only">Ethics is about responsible decision-making: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Ethics Principles about right and wrong behaviour, responsibility and fairness.</li><li><strong>Lesson fact:</strong> Stakeholder A person or group affected by a decision, directly or indirectly.</li><li><strong>Lesson fact:</strong> Responsibility The duty to consider consequences and act appropriately.</li><li><strong>Lesson fact:</strong> Proportionality The response should be no more intrusive or harmful than needed for the aim.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end ethics -->
-        <section class="panel" id="stakeholders" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-073">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 2</p>
-            <h2>Ethical answers start with stakeholders</h2>
-          </div>
-          <div class="risk-table" role="table" aria-label="Stakeholder analysis table">
-            <div class="table-row table-head" role="row">
-              <div role="columnheader">Stakeholder</div>
-              <div role="columnheader">Possible benefit</div>
-              <div role="columnheader">Possible harm or concern</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Users / students / patients</div>
-              <div role="cell">Better service, safety, convenience, personalisation.</div>
-              <div role="cell">Loss of privacy, unfair treatment, pressure, exclusion.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Organisation</div>
-              <div role="cell">Efficiency, security, reduced cost, legal compliance.</div>
-              <div role="cell">Reputation damage, misuse of data, over-collection.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Wider society</div>
-              <div role="cell">Public safety, accessibility, innovation.</div>
-              <div role="cell">Surveillance culture, inequality, environmental impact.</div>
-            </div>
-          </div>
-        </section>
-
-        <section class="panel" id="tradeoffs" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-073">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 3</p>
-            <h2>Most ethical issues are trade-offs, not slogans</h2>
-          </div>
-          <div class="concept-grid">
-            <article><strong>Privacy vs safety</strong><span>Monitoring may protect users, but can intrude into personal behaviour.</span></article>
-            <article><strong>Efficiency vs fairness</strong><span>Automation may save time, but may disadvantage some groups if data or rules are biased.</span></article>
-            <article><strong>Convenience vs consent</strong><span>Personalisation can help users, but data collection should be clear and justified.</span></article>
-            <article><strong>Innovation vs responsibility</strong><span>New systems can create benefits, but developers still need to consider harms.</span></article>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start tradeoffs -->
-        <section class="panel explanation-panel" id="explanation-tradeoffs" data-explains="tradeoffs" data-explanation-kind="mechanism" aria-labelledby="explanation-tradeoffs-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-073">
-          <h2 class="explanation-sr-only" id="explanation-tradeoffs-title">Most ethical issues are trade-offs, not slogans</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-073-tradeoffs.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Most ethical issues are trade-offs, not slogans with a structured visual model." />
-            <figcaption class="explanation-sr-only">Most ethical issues are trade-offs, not slogans: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Privacy vs safety Monitoring may protect users, but can intrude into personal behaviour.</li><li><strong>Lesson fact:</strong> Efficiency vs fairness Automation may save time, but may disadvantage some groups if data or rules are biased.</li><li><strong>Lesson fact:</strong> Convenience vs consent Personalisation can help users, but data collection should be clear and justified.</li><li><strong>Lesson fact:</strong> Innovation vs responsibility New systems can create benefits, but developers still need to consider harms.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end tradeoffs -->
-        <section class="panel" id="method" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-073">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 4</p>
-            <h2>Use a balanced evaluation structure</h2>
-          </div>
-          <div class="flow-grid">
-            <article><strong>1. Context</strong><span>State the decision and the computing system involved.</span></article>
-            <article><strong>2. For</strong><span>Explain a benefit for a named stakeholder, with scenario detail.</span></article>
-            <article><strong>3. Against</strong><span>Explain a harm or right that may be affected.</span></article>
-            <article><strong>4. Judgement</strong><span>Give a justified conclusion with conditions or safeguards.</span></article>
-          </div>
-          <div class="answer-frame">
-            <strong>Answer frame:</strong>
-            <span>Although [benefit] helps [stakeholder], [harm] may affect [stakeholder]. Therefore, the decision is justified only if [condition/safeguard].</span>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start method -->
-        <section class="panel explanation-panel" id="explanation-method" data-explains="method" data-explanation-kind="mechanism" aria-labelledby="explanation-method-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-073">
-          <h2 class="explanation-sr-only" id="explanation-method-title">Use a balanced evaluation structure</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-073-method.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Use a balanced evaluation structure with a structured visual model." />
-            <figcaption class="explanation-sr-only">Use a balanced evaluation structure: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> 1. Context State the decision and the computing system involved.</li><li><strong>Lesson fact:</strong> 2. For Explain a benefit for a named stakeholder, with scenario detail.</li><li><strong>Lesson fact:</strong> 3. Against Explain a harm or right that may be affected.</li><li><strong>Lesson fact:</strong> 4. Judgement Give a justified conclusion with conditions or safeguards.</li><li><strong>Lesson fact:</strong> Answer frame:</li><li><strong>Lesson fact:</strong> Although [benefit] helps [stakeholder], [harm] may affect [stakeholder]. Therefore, the decision is justified only if [condition/safeguard].</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end method -->
-        <section class="panel" id="mapper" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-073">
-          <div class="section-title">
-            <p class="eyebrow">Interactive stakeholder mapper</p>
-            <h2>Map a decision to stakeholders, benefits and concerns</h2>
-            <p>Select a scenario and compare the ethical tension. The aim is not to memorise one answer; it is to see the pattern.</p>
-          </div>
-          <div class="converter-grid">
-            <label>
-              Scenario
-              <select id="scenarioInput">
-                <option value="schoolMonitor">School monitors student laptops.</option>
-                <option value="facial">Shop uses facial recognition for security.</option>
-                <option value="aiMarking">Exam board uses automated marking support.</option>
-                <option value="healthApp">Health app collects sleep and location data.</option>
-                <option value="workTracker">Employer tracks worker productivity minute by minute.</option>
-              </select>
-            </label>
-            <button class="primary-button" type="button" id="mapBtn">Map ethics</button>
-          </div>
-          <div class="result-box" id="mapResult" aria-live="polite"></div>
-          <div class="method-box" id="mapBenefit"></div>
-          <div class="reject-box" id="mapConcern"></div>
-        </section>
-
-        <!-- stage10-explanation:start mapper -->
-        <section class="panel explanation-panel" id="explanation-mapper" data-explains="mapper" data-explanation-kind="mechanism" aria-labelledby="explanation-mapper-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-073">
-          <h2 class="explanation-sr-only" id="explanation-mapper-title">Map a decision to stakeholders, benefits and concerns</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-073-mapper.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Map a decision to stakeholders, benefits and concerns with a structured visual model." />
-            <figcaption class="explanation-sr-only">Map a decision to stakeholders, benefits and concerns: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Interactive stakeholder mapper</li><li><strong>Lesson fact:</strong> Select a scenario and compare the ethical tension. The aim is not to memorise one answer; it is to see the pattern.</li><li><strong>Lesson fact:</strong> Scenario</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end mapper -->
-        <section class="panel" id="builder" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-073">
-          <div class="section-title">
-            <p class="eyebrow">Interactive judgement builder</p>
-            <h2>Build a balanced paragraph</h2>
-            <p>Choose one benefit, one concern and one safeguard. Then read the model judgement.</p>
-          </div>
-          <div class="builder-grid">
-            <label>
-              Benefit
-              <select id="benefitInput">
-                <option value="safety">improves safety and safeguarding</option>
-                <option value="efficiency">saves time and reduces manual workload</option>
-                <option value="access">improves access to a useful service</option>
-              </select>
-            </label>
-            <label>
-              Concern
-              <select id="concernInput">
-                <option value="privacy">may collect more personal data than users expect</option>
-                <option value="bias">may treat some users unfairly if data or rules are biased</option>
-                <option value="pressure">may create pressure or reduce trust</option>
-              </select>
-            </label>
-            <label>
-              Safeguard
-              <select id="safeguardInput">
-                <option value="transparent">users are told clearly what is collected and why</option>
-                <option value="limited">data collection is limited to what is necessary</option>
-                <option value="appeal">there is a human review or appeal process</option>
-              </select>
-            </label>
-            <button class="primary-button" type="button" id="buildBtn">Build judgement</button>
-          </div>
-          <div class="result-box" id="judgementResult" aria-live="polite"></div>
-        </section>
-
-        <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-073">
-          <div class="section-title">
-            <p class="eyebrow">Worked examples</p>
-            <h2>Four balanced ethics answers</h2>
-          </div>
-          <div class="example-tabs" role="tablist" aria-label="Worked examples">
-            <button class="tab active" type="button" data-example="monitoring">School monitoring</button>
-            <button class="tab" type="button" data-example="facial">Facial recognition</button>
-            <button class="tab" type="button" data-example="automation">Automated decisions</button>
-            <button class="tab" type="button" data-example="data">Data collection</button>
-          </div>
-          <div class="example-box" id="exampleBox" aria-live="polite"></div>
-        </section>
-
-        <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-073">
-          <div class="section-title">
-            <p class="eyebrow">Practice with instant checking</p>
-            <h2>Check core vocabulary before writing paragraphs</h2>
-          </div>
-          <div class="practice-list" id="practiceList"></div>
-        </section>
-
-        <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-073">
-          <div class="section-title">
-            <p class="eyebrow">Mistake debugging</p>
-            <h2>Repair answers that sound opinionated but do not analyse</h2>
-          </div>
-          <div class="mistake-grid" id="mistakeGrid"></div>
-        </section>
-
-        <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-073">
-          <div class="section-title">
-            <p class="eyebrow">Exam-style questions</p>
-            <h2>Cambridge-style ethics questions with expandable MS</h2>
-            <p>Attempt first. Then check whether your answer names stakeholders, benefits, harms and a justified conclusion.</p>
-          </div>
-          <div class="exam-list" id="examList"></div>
-        </section>
-
-        <section class="panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-073">
-          <div class="section-title">
-            <p class="eyebrow">Summary</p>
-            <h2>Ethical issues in six exam-ready ideas</h2>
-          </div>
-          <div class="summary-grid">
-            <div><strong>Ethics</strong><span>Asks whether a computing decision is responsible and justified.</span></div>
-            <div><strong>Stakeholders</strong><span>Name who is affected, not just "people".</span></div>
-            <div><strong>Balance</strong><span>Give benefits and harms before judging.</span></div>
-            <div><strong>Evidence</strong><span>Link each point to the scenario.</span></div>
-            <div><strong>Safeguards</strong><span>Use transparency, consent, limits, review and accountability.</span></div>
-            <div><strong>Judgement</strong><span>Finish with a reasoned conclusion, not a slogan.</span></div>
-          </div>
-        </section>
-
-        <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
-          <div class="section-title">
-            <p class="eyebrow">Homework</p>
-            <h2>Practise balanced evaluation</h2>
-          </div>
-          <div class="homework-list">
-            <article>
-              <strong>Task 1: Stakeholder table</strong>
-              <span>Choose one system: school monitoring, facial recognition, health app or workplace tracking. Make a table with four stakeholders, one benefit and one concern for each.</span>
-            </article>
-            <article>
-              <strong>Task 2: Paragraph rewrite</strong>
-              <span>Rewrite: "This is bad because it invades privacy." Add stakeholder, benefit, harm, condition and justified conclusion.</span>
-            </article>
-            <article>
-              <strong>Task 3: Timed response</strong>
-              <span>Answer in 8 minutes: "Evaluate whether a school should use monitoring software on student devices." Use one argument for, one against and a final judgement.</span>
-            </article>
-          </div>
-        </section>
+        <nav class="v2-bottom-nav" aria-label="Previous and next lesson"><a href="../lesson-072/" >Previous lesson</a><a href="../lesson-074/" >Next lesson</a></nav>
       </div>
     </main>
-
-    <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=3"></script>
-    <script src="../lesson-toolbar.js?v=3"></script>
-    <script src="../stage7-accessibility.js?v=4"></script>
+    <script src="../course-v2.js?v=1"></script>
   </body>
 </html>

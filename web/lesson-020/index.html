@@ -3,384 +3,89 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 020 | Cloud, wired and wireless networking</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <title>AS9618 Lesson 020 | System buses, ports and processor performance</title>
     <link rel="icon" href="data:" />
-    <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
+    <link rel="stylesheet" href="../course-v2.css?v=3" />
   </head>
-  <body>
+  <body data-course-version="2" data-lesson-id="020" data-syllabus-ids="S4.04,S4.05,S4.06">
     <a class="skip-link" href="#main-content">Skip to main content</a>
-    <header class="topbar">
-      <div>
-        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 2</p>
-        <h1>Cloud, wired and wireless networking</h1>
-      </div>
-      <div class="action-panel" aria-label="Page controls">
-        <a class="course-home-link" href="../">Course home</a>
-        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
-      </div>
+    <header class="v2-topbar">
+      <div><p class="v2-eyebrow">Cambridge AS9618 | Paper 1 | Section 4: Processor fundamentals</p><h1>System buses, ports and processor performance</h1></div>
+      <nav class="v2-actions" aria-label="Lesson actions"><a href="../">Course home</a><a href="../assessments/">Assessment bank</a><button type="button" id="printLesson">Print</button></nav>
     </header>
-
-    <main class="layout" id="main-content" tabindex="-1">
-      <aside class="lesson-nav" aria-label="Lesson navigation">
-        <a href="#overview">Overview</a>
-        <a href="#hook">Warm-up</a>
-        <a href="#protocols">Protocols</a>
-        <a href="#rules">Protocol rules</a>
-        <a href="#layers">Layers</a>
-        <a href="#tool">Diagnostic tool</a>
-        <a href="#examples">Examples</a>
-        <a href="#practice">Practice</a>
-        <a href="#exam">Exam-style</a>
-        <a href="#homework">Homework</a>
-        <a href="#stage2-completion">Core syllabus content</a>
-      </aside>
-
-      <div class="lesson-content">
-        <!-- remediation-v2-stage3-scope:start -->
-        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.</p></aside>
-        <!-- remediation-v2-stage3-scope:end -->
-
-        <!-- remediation-v2-optional:start -->
-        <aside class="optional-enrichment-notice" aria-label="Optional enrichment scope">
-          <strong>Optional enrichment</strong>
-          <p>general protocol rules and layered communication. This material is excluded from compulsory syllabus coverage, first-use and assessment statistics.</p>
-          <p><strong>Formal AS prerequisite:</strong> S2.11 Ethernet and CSMA/CD.</p>
-        </aside>
-        <!-- remediation-v2-optional:end -->
-<!-- stage2-completion:start -->
-        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus content</p>
-            <h2>Cloud, wired and wireless networking</h2>
-          </div>
-          <div class="stage2-explanation">
-            <p>Cloud computing provides storage, processing or software as a service using remote shared infrastructure reached through a network. A public cloud is offered over shared provider infrastructure; a private cloud is restricted to one organisation.</p>
-            <p>A public cloud may scale quickly and reduce local hardware management: these are possible benefits. A private cloud is dedicated to one organisation and can give greater control over access and configuration. Each benefit or drawback must link availability, control, cost or security to the stated scenario.</p>
-            <p>A wired network carries signals through a physical cable. It can provide stable, predictable links and avoids radio interference, but installation restricts movement and may require disruptive cabling. A wireless network transmits through the air, supporting mobility and rapid installation, but shared radio capacity, interference, obstacles and interception risk can affect performance and security. The implications must be tied to a given use, not reduced to 'wired is faster'.</p>
-            <p>Copper cable carries electrical signals and is often economical for short LAN links, but suffers attenuation and electromagnetic interference. Fibre-optic cable carries pulses of light, supports high bandwidth and long distances and is resistant to electromagnetic interference, but equipment and installation may cost more.</p>
-            <p>Radio waves, including WiFi, support non-line-of-sight local wireless access but can be absorbed, reflected or interfered with. Terrestrial microwave links provide directional point-to-point communication and usually require clear line of sight. Satellite communication uses microwave/radio links to and from a satellite for wide or remote coverage, but long propagation distance can increase latency and weather can affect some links.</p>
-          </div>
-          <article class="stage2-example">
-            <h3>Worked example: Choose a cloud model / Connect a school campus and a remote weather station</h3>
-            <p>A school storing non-sensitive public resources may use a public cloud for scalable access. A hospital may choose a private cloud for tighter organisational control of patient-data access. Use copper for short fixed desktop links, fibre-optic cable between buildings requiring high bandwidth, WiFi radio waves for mobile tablets, a line-of-sight microwave link where cabling between two buildings is impractical, and satellite for the remote station without local cable infrastructure. Each choice follows distance, mobility, interference, bandwidth, latency and cost.</p>
-          </article>
+    <main class="v2-shell" id="main-content" tabindex="-1">
+      <nav class="v2-toc" aria-label="Lesson contents"><strong>Lesson 020</strong><a href="#overview">Overview</a><a href="#prerequisite">Prerequisite</a><a href="#explanation">Explanation</a><a href="#practice">Practice</a><a href="#summary">Summary</a></nav>
+      <div class="v2-content">
+        <section class="v2-hero" id="overview">
+          <div><p class="v2-eyebrow">Flexible-depth lesson</p><h2>System buses, ports and processor performance</h2><p>S4.04, S4.05, S4.06 | Select what to omit, teach briefly or explore in depth.</p></div>
+          <div class="v2-time-grid" aria-label="Available lesson depth"><div><strong>Quick</strong><span>diagnose + essentials</span></div><div><strong>Full</strong><span>complete explanation</span></div><div><strong>Deep</strong><span>prerequisites + extension</span></div><div><strong>Choose</strong><span>practice by need</span></div></div>
         </section>
-        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus practice</p>
-            <h2>Cloud, wired and wireless networking: apply and assess</h2>
-          </div>
-          <div class="stage2-practice">
-            <h3>Targeted practice</h3>
-            <article class="stage2-question">
-              <p><strong>1.</strong> Compare public from private cloud.</p>
-              <details><summary>Show answer</summary><p>Public cloud uses shared provider infrastructure; private cloud is dedicated or restricted to one organisation.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>2.</strong> State one cloud-computing service.</p>
-              <details><summary>Show answer</summary><p>Remote storage, processing or hosted software.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>3.</strong> Compare wired and wireless networks for fixed desktops and mobile tablets.</p>
-              <details><summary>Show answer</summary><p>Wired provides a stable physical link for fixed devices; wireless radio supports mobility but may suffer interference, obstacles and shared capacity.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>4.</strong> Compare copper cable with fibre-optic cable.</p>
-              <details><summary>Show answer</summary><p>Copper uses electrical signals and may be cheaper; fibre uses light, supports higher bandwidth/longer distance and resists electromagnetic interference.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>5.</strong> Compare WiFi radio waves, terrestrial microwave and satellite links.</p>
-              <details><summary>Show answer</summary><p>WiFi provides local wireless access; terrestrial microwave is directional and line-of-sight; satellite provides wide/remote coverage but commonly has greater latency.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>6.</strong> Suggest a medium for a remote location with no cable infrastructure.</p>
-              <details><summary>Show answer</summary><p>Satellite if wide remote coverage is required; justify the latency/cost/weather drawback.</p></details>
-            </article>
-          </div>
-          <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>9 marks</span></div>
-            <p>Compare public and private cloud for a medical organisation. Suggest transmission media for fixed classroom PCs, mobile tablets, an inter-building backbone and a remote field station.</p>
-            <details>
-              <summary>Show MS</summary>
-              <table class="mark-scheme-table">
-                <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
-                <tbody>
-                  <tr><td>public cloud characteristic</td><td>Do not equate cloud computing with the internet itself. Do not accept unqualified 'wireless is less secure' or 'fibre is faster'; require a mechanism or scenario consequence.</td><td>1</td></tr>
-                  <tr><td>private cloud characteristic</td><td></td><td>1</td></tr>
-                  <tr><td>scenario-linked comparison</td><td></td><td>1</td></tr>
-                  <tr><td>justified choice</td><td></td><td>1</td></tr>
-                  <tr><td>copper cable for short fixed links with a valid cost/stability reason</td><td></td><td>1</td></tr>
-                  <tr><td>WiFi/radio waves for mobile devices with an interference/security implication</td><td></td><td>1</td></tr>
-                  <tr><td>fibre-optic cable for the high-bandwidth/longer inter-building link</td><td></td><td>1</td></tr>
-                  <tr><td>satellite for remote coverage without cable infrastructure</td><td></td><td>1</td></tr>
-                  <tr><td>at least one limitation is correctly linked to the chosen medium</td><td></td><td>1</td></tr>
-                </tbody>
-              </table>
-            </details>
-          </article>
-        </section>
-        <!-- stage2-completion:end -->
 
-<section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-020">
-          <div class="hero-copy">
-            <p class="lesson-meta">Lesson 020 | 45 minutes | Paper 1 Section 2</p>
-            <h2>Communication works because everyone agrees on the rules.</h2>
-            <p>
-              A protocol is a set of rules for communication. Layered communication
-              separates a network task into levels, so each layer handles a specific
-              job and passes data to the next layer.
-            </p>
-            <div class="objective-grid" aria-label="Learning objectives">
-              <div><strong>Define</strong><span>protocol and explain why agreed rules are needed</span></div>
-              <div><strong>Identify</strong><span>common protocol rules: format, timing, error control and addressing</span></div>
-              <div><strong>Explain</strong><span>why layered communication simplifies network design</span></div>
+        <section class="v2-panel v2-route-menu" aria-labelledby="route-heading">
+          <div class="v2-heading"><p class="v2-eyebrow">Teacher choice</p><h2 id="route-heading">Choose the depth for this group</h2></div>
+          <div class="v2-route-grid"><article><h3>Quick route</h3><p>Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.</p></article><article><h3>Full route</h3><p>Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.</p></article><article><h3>Deep route</h3><p>Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.</p></article></div>
+        </section>
+
+        <section class="v2-panel" id="prerequisite">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 1 | optional depth</p><h2>Prerequisite knowledge and quick diagnostic</h2></div>
+          <div class="v2-diagnostic"><p>Recall S4.01 before starting this lesson.</p></div>
+          <p>Give one accurate definition or method step before continuing. If it is missing, revisit only that prerequisite.</p>
+          <details class="v2-prerequisite-detail"><summary>Open optional prerequisite refresher</summary><ul><li>Show understanding of the basic Von Neumann model and the stored-program concept: instructions are stored in binary in the same directly accessible memory as data and are fetched for execution.</li><li>Understand Von Neumann architecture and the stored-program concept.</li></ul></details>
+        </section>
+
+        <section class="v2-panel" id="explanation">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 2 | deliberately over-complete</p><h2>Knowledge explanation</h2></div>
+          <h3>Learning objectives</h3><ul class="v2-objectives"><li>Understand address, data and control buses.</li><li>Understand processor performance factors: processor type, cores, bus width, clock and cache.</li><li>Understand USB, HDMI and VGA ports.</li></ul>
+          <details class="v2-concept-menu"><summary>Open the concept checklist and choose what to teach</summary><ul><li>address</li><li>data</li><li>control</li><li>buses</li><li>processor type</li><li>cores</li><li>bus width</li><li>clock</li><li>cache</li><li>USB</li><li>HDMI</li><li>VGA</li><li>ports</li></ul></details>
+          <div class="v2-explanation-grid">
+            <div>
+              <article class="v2-core-facts"><h3>Detailed explanation</h3><p class="v2-teacher-note">Teach all points, or select only the ones this group needs. The list is intentionally fuller than a fixed lesson slot.</p><ul class="v2-facts"><li>Show how data are transferred between computer-system components using the address bus, data bus and control bus, including their directions and roles in read/write operations.</li><li>Show how processor type and number of cores, bus width, clock speed and cache memory can contribute to performance; no single factor guarantees faster execution for every workload.</li><li>Understand how ports connect peripheral devices, including Universal Serial Bus (USB), High Definition Multimedia Interface (HDMI) and Video Graphics Array (VGA), with accurate signal/use distinctions.</li><li>The address bus carries the address of the memory or I/O location being accessed and is normally directed from the processor. The data bus carries data and instructions in either direction. The control bus carries control and timing signals in both directions overall, including read/write signals from the CPU and interrupt or status signals toward it.</li><li>A memory read uses all three buses: the CPU places the required address on the address bus, sends a read signal on the control bus, and memory returns the requested data or instruction on the data bus. A bus transfers signals; it does not permanently store them.</li><li>USB is a general serial interface carrying digital data and often power for peripherals. HDMI carries digital video and audio. VGA carries analogue video and does not carry audio in the standard VGA signal. Port choice must match the peripheral and signal rather than rely on a claim that one connector is always best.</li><li>Processor performance depends on processor type, number of cores, bus width, clock speed and cache memory. Processor type means the processor architecture and instruction-set design, including how much useful work its execution units can perform for a particular instruction or workload; a clock-rate comparison alone is therefore not sufficient.</li><li>More cores can execute independent threads concurrently when software exposes parallel work. Wider data buses can transfer more bits per transfer, while address-bus width affects the address space. Higher clock speed provides more clock cycles per second, and cache reduces waiting when frequently used instructions or data are found close to the CPU.</li><li>No factor guarantees that every program runs faster. Performance must be justified for the stated workload, because software parallelism, instruction-set compatibility, cache behaviour, memory traffic, heat and other bottlenecks can limit the benefit.</li></ul></article>
+              <article class="v2-example"><h3>Worked example</h3><p>Read memory, then connect a display / Compare two processors for two workloads: To read address 240, the CPU puts 240 on the address bus and read on the control bus; memory returns the contents on the data bus. To connect the computer to a modern TV with one digital audio/video cable, choose HDMI. A keyboard or removable drive commonly uses USB, while a legacy analogue display may use VGA. Processor A has four faster general-purpose cores and a larger cache; Processor B has eight specialised cores but a lower clock speed. A lightly threaded office program may favour A&#39;s processor type, clock behaviour and cache, while a parallel workload written for B&#39;s processor type may use more cores. Bus width and memory traffic must also be considered before reaching a conclusion.</p></article>
+              <aside class="v2-extension"><h3>Beyond syllabus / 延伸知识（不要求背诵）</h3><p>modern processors add pipelining and several cache levels, but exam answers should begin with the syllabus processor model.</p></aside>
             </div>
-          </div>
-          <div class="protocol-card" aria-label="Protocol concept">
-            <span>rules -> layers -> communication</span>
-            <p>Without protocols, the network is just devices shouting politely incompatible nonsense.</p>
-          </div>
-        </section>
-
-        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-020">
-          <article class="why-card">
-            <h3>Why this matters</h3>
-            <p>Exam answers need functions of protocols and benefits of layers, not just names of protocols.</p>
-          </article>
-          <article class="trap-card">
-            <h3>Common error</h3>
-            <p>A protocol is not a device, a cable or a topology. It is a rule set used by communicating systems.</p>
-          </article>
-        </section>
-
-        <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-020">
-          <div class="section-title">
-            <p class="eyebrow">Warm-up hook</p>
-            <h2>Two devices try to send data. One expects bytes in groups of 8; the other sends random-length chunks. What is missing?</h2>
-          </div>
-          <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="protocol">An agreed protocol</button>
-            <button class="choice-card" type="button" data-hook="bigger">A bigger monitor</button>
-            <button class="choice-card" type="button" data-hook="topology">A star topology</button>
-            <button class="choice-card" type="button" data-hook="storage">More secondary storage</button>
-          </div>
-          <div class="feedback" id="hookFeedback" aria-live="polite">
-            Pick the answer about shared rules. The devices need agreement before they need confidence.
+            <figure class="v2-visual">
+              <img src="../assets/diagrams/stage10-infographics/stage10-lesson-052-retrieval.jpg" alt="PC holds the address of the next instruction; MAR holds the memory address being accessed.. The address bus carries addresses between the processor and memory.. MDR holds data or instructions transferred through the data bus.. CIR holds the current instruction while it is decoded and executed.. The control bus carries control and timing signals such as read, write and interrupt." loading="lazy" />
+              <figcaption>Retrieval grid: say the role, not just the name. One maintained explanation is shown as an image on larger screens and as text on small screens.</figcaption>
+              <div class="v2-mobile-visual-text" aria-label="Mobile text alternative"><ul><li>PC holds the address of the next instruction; MAR holds the memory address being accessed.</li><li>The address bus carries addresses between the processor and memory.</li><li>MDR holds data or instructions transferred through the data bus.</li><li>CIR holds the current instruction while it is decoded and executed.</li><li>The control bus carries control and timing signals such as read, write and interrupt.</li></ul></div>
+            </figure>
           </div>
         </section>
 
-        <section class="panel" id="protocols" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-020">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 1</p>
-            <h2>What a protocol is</h2>
-          </div>
-          <div class="concept-grid">
-            <article>
-              <h3>Definition</h3>
-              <p>A protocol is a set of rules that governs how data is transmitted and received.</p>
-            </article>
-            <article>
-              <h3>Shared meaning</h3>
-              <p>Both sender and receiver follow the same rules, so messages can be interpreted correctly.</p>
-            </article>
-            <article>
-              <h3>Interoperability</h3>
-              <p>Different devices and software can communicate if they implement the same protocol.</p>
-            </article>
-            <article>
-              <h3>Reliability</h3>
-              <p>Protocols can specify error checking, acknowledgements and retransmission rules.</p>
-            </article>
-          </div>
-          <div class="callout">Chinese support: protocol = 协议/规则集合；interoperability = 互操作性；acknowledgement = 确认信息。</div>
+        <section class="v2-panel" id="practice">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 3 | select by learner need</p><h2>Practice by question type</h2></div>
+          <div class="v2-question-list"><article class="v2-question" data-question-id="Q-L020-01" data-semantic-fingerprint="S4.04+S4.05+S4.06|system-buses-ports-and-processor-performance|describe|memory-read-address-control|written|explain">
+              <div class="v2-question-head"><span class="v2-badge">describe</span><span class="v2-badge">explain</span><span class="v2-badge difficulty">foundation</span><span class="v2-badge">8 marks</span></div>
+              <p><strong>Question 1.</strong> Describe a memory read using the address, data and control buses, then choose USB, HDMI or VGA for one stated peripheral connection. Two computers have different processor types. Explain how processor type, number of cores, bus width, clock speed and cache can affect their performance for a stated workload.</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> address bus carries the required memory/I/O address; control bus carries the read signal; data bus returns the requested data/instruction; USB matched to a suitable digital peripheral/data/power use; HDMI matched to digital video and audio; VGA matched to analogue video without standard audio; processor type linked to architecture/instruction-set/execution design and workload; cores linked to available parallel threads/tasks; bus width linked accurately to bits transferred or address space; clock speed linked to cycles per second; cache linked to reducing slower main-memory access; conclusion recognises workload and bottlenecks rather than claiming one factor guarantees speed</p><p><strong>Marking guidance:</strong> Do not swap the address and data buses or claim that VGA normally carries digital audio. Do not accept processor type as only a brand name, or claim that the highest clock speed or largest core count always wins.</p><p><strong>Common error:</strong> For the command word describe, perform that exact action; do not replace it with an unrelated fact.</p></div></details>
+            </article><article class="v2-question" data-question-id="Q-L020-02" data-semantic-fingerprint="S4.04+S4.05+S4.06|system-buses-ports-and-processor-performance|apply|what-does-type-mean|written|recall">
+              <div class="v2-question-head"><span class="v2-badge">apply</span><span class="v2-badge">recall</span><span class="v2-badge difficulty">application</span><span class="v2-badge">2 marks</span></div>
+              <p><strong>Question 2.</strong> What does processor type mean as a performance factor?</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> The processor architecture/instruction-set and execution design, which determines what work it can perform per instruction or for a particular workload.</p><p><strong>Marking guidance:</strong> Award one mark for each distinct, technically accurate point or method step.</p><p><strong>Common error:</strong> Do not repeat the same point in different words; each mark needs a separate idea or method step.</p></div></details>
+            </article><article class="v2-question" data-question-id="Q-L020-03" data-semantic-fingerprint="S4.04+S4.05+S4.06|system-buses-ports-and-processor-performance|explain|bus-width-affect|written|explain">
+              <div class="v2-question-head"><span class="v2-badge">explain</span><span class="v2-badge">explain</span><span class="v2-badge difficulty">transfer</span><span class="v2-badge">2 marks</span></div>
+              <p><strong>Question 3.</strong> How can bus width affect performance?</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> A wider data bus can transfer more bits per transfer; address-bus width affects the address space rather than directly guaranteeing speed.</p><p><strong>Marking guidance:</strong> Award one mark for each distinct, technically accurate point or method step.</p><p><strong>Common error:</strong> Do not copy the worked example unchanged; transfer the method and check it against the new context.</p></div></details>
+            </article></div>
+          <div class="v2-paper-refs">
+          <h3>Related past-paper indexes</h3>
+          <table><thead><tr><th>Reference</th><th>Marks</th><th>Command word</th><th>Question type</th></tr></thead>
+          <tbody><tr><td>9618/13/S/25 Q2(c)</td><td>2</td><td>describe</td><td>explain</td></tr><tr><td>9618/13/S/25 Q2(i)</td><td>2</td><td>explain</td><td>explain</td></tr><tr><td>9618/12/W/24 Q3(b)</td><td>4</td><td>complete</td><td>recall</td></tr><tr><td>9618/12/W/24 Q3(c)</td><td>4</td><td>complete</td><td>recall</td></tr></tbody></table>
+          <p class="v2-copyright-note">Index only: Cambridge question and mark-scheme wording is not reproduced on this public course page.</p>
+        </div>
         </section>
 
-        <!-- stage10-explanation:start protocols -->
-        <section class="panel explanation-panel" id="explanation-protocols" data-explains="protocols" data-explanation-kind="mechanism" aria-labelledby="explanation-protocols-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-020">
-          <h2 class="explanation-sr-only" id="explanation-protocols-title">What a protocol is</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-020-protocols.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining What a protocol is with a structured visual model." />
-            <figcaption class="explanation-sr-only">What a protocol is: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Definition</li><li><strong>Lesson fact:</strong> A protocol is a set of rules that governs how data is transmitted and received.</li><li><strong>Lesson fact:</strong> Shared meaning</li><li><strong>Lesson fact:</strong> Both sender and receiver follow the same rules, so messages can be interpreted correctly.</li><li><strong>Lesson fact:</strong> Interoperability</li><li><strong>Lesson fact:</strong> Different devices and software can communicate if they implement the same protocol.</li><li><strong>Lesson fact:</strong> Reliability</li><li><strong>Lesson fact:</strong> Protocols can specify error checking, acknowledgements and retransmission rules.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end protocols -->
-        <section class="panel" id="rules" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-020">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 2</p>
-            <h2>What protocol rules can specify</h2>
-          </div>
-          <div class="rule-grid">
-            <article><strong>Data format</strong><span>How data is structured, encoded or framed.</span></article>
-            <article><strong>Addressing</strong><span>How sender and receiver are identified.</span></article>
-            <article><strong>Timing</strong><span>When data can be sent and how long to wait for responses.</span></article>
-            <article><strong>Error control</strong><span>How errors are detected and how retransmission is handled.</span></article>
-            <article><strong>Flow control</strong><span>How to stop a fast sender overwhelming a slow receiver.</span></article>
-            <article><strong>Connection rules</strong><span>How communication starts, continues and ends.</span></article>
-          </div>
+        <section class="v2-panel" id="summary">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 4 | close when ready</p><h2>Summary and exam reminders</h2></div>
+          <div class="v2-summary-grid"><div><h3>Summary</h3><ul class="v2-summary-list"><li>Define system buses, ports and processor performance with the exact technical vocabulary expected by the syllabus.</li><li>Use the lesson method on a fresh context and show the intermediate decision, representation or calculation.</li><li>Match the shape of the answer to the command word and the available marks.</li><li>Check the final answer against the scenario instead of repeating a memorised sentence.</li></ul></div><div class="v2-error"><h3>Common error to correct</h3><p>Students often memorise register names without roles. Correction: a register earns its name by what it temporarily holds.</p></div></div>
+          <div class="v2-tip-box"><h3>Exam technique</h3><ul><li>Follow the command word: state gives a fact; explain links a cause to a consequence; compare covers both sides.</li><li>Match the number of independent points or method steps to the available marks.</li><li>For system buses, ports and processor performance, use the exact technical term before applying it to the scenario.</li></ul></div>
         </section>
 
-        <!-- stage10-explanation:start rules -->
-        <section class="panel explanation-panel" id="explanation-rules" data-explains="rules" data-explanation-kind="mechanism" aria-labelledby="explanation-rules-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-020">
-          <h2 class="explanation-sr-only" id="explanation-rules-title">What protocol rules can specify</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-020-rules.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining What protocol rules can specify with a structured visual model." />
-            <figcaption class="explanation-sr-only">What protocol rules can specify: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Protocols define rules for data format, addressing, timing, error handling, flow control and connection management.</li><li><strong>Lesson fact:</strong> A protocol may provide reliability and ordered delivery, but these are not guaranteed by every protocol.</li><li><strong>Lesson fact:</strong> TCP provides reliable ordered delivery; UDP does not guarantee reliability or ordering.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end rules -->
-        <section class="panel" id="layers" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-020">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 3</p>
-            <h2>Layered communication</h2>
-          </div>
-          <div class="layer-stack" aria-label="Layered communication stack">
-            <div><strong>Application layer idea</strong><span>What the user or application wants to do, such as send a web request.</span></div>
-            <div><strong>Transport layer idea</strong><span>Breaks data into segments, manages reliability or delivery style.</span></div>
-            <div><strong>Network layer idea</strong><span>Adds logical addressing and routing between networks.</span></div>
-            <div><strong>Link/physical layer idea</strong><span>Moves frames or bits across the local medium.</span></div>
-          </div>
-          <div class="encapsulation-box">
-            <h3>Encapsulation and de-encapsulation</h3>
-            <p>As data moves down layers, each layer may add control information. At the receiver, layers remove and interpret that control information in reverse order.</p>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start layers -->
-        <section class="panel explanation-panel" id="explanation-layers" data-explains="layers" data-explanation-kind="mechanism" aria-labelledby="explanation-layers-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-020">
-          <h2 class="explanation-sr-only" id="explanation-layers-title">Layered communication</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-020-layers.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Layered communication with a structured visual model." />
-            <figcaption class="explanation-sr-only">Layered communication: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Application layer idea What the user or application wants to do, such as send a web request.</li><li><strong>Lesson fact:</strong> Transport layer idea Breaks data into segments, manages reliability or delivery style.</li><li><strong>Lesson fact:</strong> Network layer idea Adds logical addressing and routing between networks.</li><li><strong>Lesson fact:</strong> Link/physical layer idea Moves frames or bits across the local medium.</li><li><strong>Lesson fact:</strong> Encapsulation and de-encapsulation</li><li><strong>Lesson fact:</strong> As data moves down layers, each layer may add control information. At the receiver, layers remove and interpret that control information in reverse order.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end layers -->
-        <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-020">
-          <div class="section-title">
-            <p class="eyebrow">Interactive tool</p>
-            <h2>Communication diagnostic helper</h2>
-          </div>
-          <div class="converter-grid">
-            <label>
-              Symptom
-              <select id="symptomInput">
-                <option value="format">Receiver cannot interpret message format</option>
-                <option value="timeout">Sender waits forever for a reply</option>
-                <option value="corrupt">Corrupt data is accepted as if correct</option>
-                <option value="layer">A network card changes but apps still work</option>
-              </select>
-            </label>
-            <button type="button" id="diagnoseBtn">Diagnose</button>
-          </div>
-          <div class="result-box" id="diagnoseResult" aria-live="polite"></div>
-          <div class="method-box" id="diagnoseMethod"></div>
-        </section>
-
-        <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-020">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge examples</p>
-            <h2>Worked examples</h2>
-          </div>
-          <div class="example-tabs" role="tablist" aria-label="Worked examples">
-            <button class="tab active" type="button" data-example="protocol">Protocol rule</button>
-            <button class="tab" type="button" data-example="layers">Layer benefit</button>
-            <button class="tab" type="button" data-example="encapsulation">Encapsulation</button>
-          </div>
-          <article class="example-box" id="exampleBox"></article>
-        </section>
-
-        <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-020">
-          <div class="section-title">
-            <p class="eyebrow">Your turn</p>
-            <h2>Practice with instant checking</h2>
-          </div>
-          <div class="practice-list" id="practiceList"></div>
-          <button class="primary-button" type="button" id="checkPractice">Check practice</button>
-          <div class="feedback" id="practiceFeedback" aria-live="polite"></div>
-        </section>
-
-        <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-020">
-          <div class="section-title">
-            <p class="eyebrow">Mistake debugging</p>
-            <h2>Fix the weak protocol answer</h2>
-          </div>
-          <div class="mistake-grid">
-            <article>
-              <p class="wrong">“A protocol is a program that makes the internet faster.”</p>
-              <button class="answer-toggle" type="button" data-answer="mistake1">Show correction</button>
-              <p class="answer" id="mistake1">A protocol is a set of rules for communication, such as how data is formatted, addressed, checked and acknowledged.</p>
-            </article>
-            <article>
-              <p class="wrong">“Layering is useful because it adds more steps.”</p>
-              <button class="answer-toggle" type="button" data-answer="mistake2">Show correction</button>
-              <p class="answer" id="mistake2">Layering is useful because each layer handles a specific responsibility, so layers can be developed, replaced or troubleshot more independently.</p>
-            </article>
-          </div>
-        </section>
-
-        <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-020">
-          <div class="section-title">
-            <p class="eyebrow">Exam-style questions</p>
-            <h2>Questions with expandable MS</h2>
-            <p>Attempt first, then expand the mark scheme. Strong answers name the rule and explain its communication purpose.</p>
-          </div>
-          <div class="exam-list" id="examList"></div>
-        </section>
-
-        <section class="panel summary-panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-020">
-          <div class="section-title">
-            <p class="eyebrow">Summary</p>
-            <h2>Protocols are rules; layers divide responsibility</h2>
-          </div>
-          <div class="summary-grid">
-            <div><strong>1</strong><span>A protocol is a set of agreed communication rules.</span></div>
-            <div><strong>2</strong><span>Rules may cover format, timing, addressing, error control and flow control.</span></div>
-            <div><strong>3</strong><span>Layering separates complex communication into manageable responsibilities.</span></div>
-            <div><strong>4</strong><span>Encapsulation adds control information; de-encapsulation removes and interprets it.</span></div>
-          </div>
-        </section>
-
-        <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
-          <div class="section-title">
-            <p class="eyebrow">Homework</p>
-            <h2>Clear tasks</h2>
-          </div>
-          <ol class="homework-list">
-            <li>Write a precise definition of protocol and give three types of rule a protocol may specify.</li>
-            <li>Explain two benefits of using layers in network communication.</li>
-            <li>Draw a four-layer communication stack and write one responsibility for each layer.</li>
-            <li>Write a 5-mark answer explaining encapsulation and de-encapsulation.</li>
-          </ol>
-          <button class="answer-toggle" type="button" data-answer="homeworkAnswers">Show homework guidance</button>
-          <div class="answer-panel" id="homeworkAnswers">
-            <p><strong>Protocol:</strong> include “rules” and “communication”, then examples such as format, timing and error checking.</p>
-            <p><strong>Layer benefits:</strong> mention reduced complexity, standard interfaces and easier replacement/troubleshooting.</p>
-            <p><strong>Stack:</strong> do not memorise only names; attach a responsibility to each layer.</p>
-            <p><strong>Encapsulation:</strong> describe adding control data at sender and removing it at receiver.</p>
-          </div>
-        </section>
+        <nav class="v2-bottom-nav" aria-label="Previous and next lesson"><a href="../lesson-019/" >Previous lesson</a><a href="../lesson-021/" >Next lesson</a></nav>
       </div>
     </main>
-
-    <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=3"></script>
-    <script src="../lesson-toolbar.js?v=3"></script>
-    <script src="../stage7-accessibility.js?v=4"></script>
+    <script src="../course-v2.js?v=1"></script>
   </body>
 </html>

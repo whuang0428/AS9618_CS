@@ -3,485 +3,89 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 069 | Firewall protection from a stand-alone PC to a network</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <title>AS9618 Lesson 069 | Translating descriptions into Cambridge pseudocode</title>
     <link rel="icon" href="data:" />
-    <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
+    <link rel="stylesheet" href="../course-v2.css?v=3" />
   </head>
-  <body>
+  <body data-course-version="2" data-lesson-id="069" data-syllabus-ids="S11.01">
     <a class="skip-link" href="#main-content">Skip to main content</a>
-    <header class="topbar">
-      <div>
-        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 6</p>
-        <h1>Firewall protection from a stand-alone PC to a network</h1>
-      </div>
-      <div class="action-panel" aria-label="Page controls">
-        <a class="course-home-link" href="../">Course home</a>
-        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
-      </div>
+    <header class="v2-topbar">
+      <div><p class="v2-eyebrow">Cambridge AS9618 | Paper 2 | Section 11: Programming</p><h1>Translating descriptions into Cambridge pseudocode</h1></div>
+      <nav class="v2-actions" aria-label="Lesson actions"><a href="../">Course home</a><a href="../assessments/">Assessment bank</a><button type="button" id="printLesson">Print</button></nav>
     </header>
-
-    <main class="layout" id="main-content" tabindex="-1">
-      <aside class="lesson-nav" aria-label="Lesson navigation">
-        <a href="#overview">Overview</a>
-        <a href="#hook">Warm-up</a>
-        <a href="#core">Core idea</a>
-        <a href="#firewall">Firewall</a>
-        <a href="#rules">Rules</a>
-        <a href="#proxy">Proxy</a>
-        <a href="#monitoring">Monitoring</a>
-        <a href="#limits">Limits</a>
-        <a href="#tool">Rule checker</a>
-        <a href="#event-tool">Event tool</a>
-        <a href="#examples">Examples</a>
-        <a href="#practice">Practice</a>
-        <a href="#debug">Debugging</a>
-        <a href="#exam">Exam-style</a>
-        <a href="#summary">Summary</a>
-        <a href="#homework">Homework</a>
-        <a href="#stage2-completion">Core syllabus content</a>
-      </aside>
-
-      <div class="lesson-content">
-        <!-- remediation-v2-stage3-scope:start -->
-        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.</p></aside>
-        <!-- remediation-v2-stage3-scope:end -->
-
-<!-- stage2-completion:start -->
-        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus content</p>
-            <h2>Firewall protection from a stand-alone PC to a network</h2>
-          </div>
-          <div class="stage2-explanation">
-            <p>A firewall filters traffic entering or leaving a computer or network by comparing packet or connection information with configured rules. Rules may use source/destination address, port, protocol or connection state and then allow, block, reject or log the traffic.</p>
-            <p>A host firewall can protect a stand-alone PC; a network firewall can protect a boundary between networks. This satisfies different scales of computer-system protection, but neither placement makes a firewall an anti-virus scanner or guarantees that allowed traffic is harmless.</p>
-            <p>Firewalls restrict risk from unwanted connections and some unauthorised-access routes. They should be combined with accounts/passwords, authentication, access rights, anti-virus, anti-spyware, encryption, patching, user training and monitoring because those controls address different threats.</p>
-            <p>During transfer, a parity check can be applied to a byte or a block, while a checksum provides a separate calculated verification value.</p>
-            <p>Each security measure has a distinct mechanism: a user account identifies a user; a password authenticates knowledge; a digital signature supports integrity and origin checks; a biometric compares a captured feature; a firewall filters traffic; anti-virus and anti-spyware detect known malicious software; encryption protects readable data. The threats include a virus, spyware, a hacker, phishing and pharming; each threat must be matched to a control whose mechanism reduces that risk.</p>
-          </div>
-          <article class="stage2-example">
-            <h3>Worked example: Protect a home laptop and a school network</h3>
-            <p>The laptop's host firewall blocks unsolicited inbound connections except an explicitly required service. The school's boundary firewall denies unrequested external traffic, permits web traffic under ordered rules and logs repeated blocked attempts. Anti-virus still scans downloaded files, and account/access controls still decide who may use data after traffic is allowed.</p>
-          </article>
+    <main class="v2-shell" id="main-content" tabindex="-1">
+      <nav class="v2-toc" aria-label="Lesson contents"><strong>Lesson 069</strong><a href="#overview">Overview</a><a href="#prerequisite">Prerequisite</a><a href="#explanation">Explanation</a><a href="#practice">Practice</a><a href="#summary">Summary</a></nav>
+      <div class="v2-content">
+        <section class="v2-hero" id="overview">
+          <div><p class="v2-eyebrow">Flexible-depth lesson</p><h2>Translating descriptions into Cambridge pseudocode</h2><p>S11.01 | Select what to omit, teach briefly or explore in depth.</p></div>
+          <div class="v2-time-grid" aria-label="Available lesson depth"><div><strong>Quick</strong><span>diagnose + essentials</span></div><div><strong>Full</strong><span>complete explanation</span></div><div><strong>Deep</strong><span>prerequisites + extension</span></div><div><strong>Choose</strong><span>practice by need</span></div></div>
         </section>
-        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus practice</p>
-            <h2>Firewall protection from a stand-alone PC to a network: apply and assess</h2>
-          </div>
-          <div class="stage2-practice">
-            <h3>Targeted practice</h3>
-            <article class="stage2-question">
-              <p><strong>1.</strong> What information may a firewall rule inspect?</p>
-              <details><summary>Show answer</summary><p>Source/destination address, port, protocol or connection state.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>2.</strong> Compare a host firewall from a network firewall.</p>
-              <details><summary>Show answer</summary><p>A host firewall runs on and protects one computer; a network firewall filters traffic at a boundary for multiple connected systems.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>3.</strong> Can a firewall replace anti-virus software?</p>
-              <details><summary>Show answer</summary><p>No. A firewall controls traffic; anti-virus scans for detected malicious code.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>4.</strong> Why may allowed traffic still be dangerous?</p>
-              <details><summary>Show answer</summary><p>A permitted connection can carry phishing content, stolen credentials or malware that the rule does not recognise.</p></details>
-            </article>
-          </div>
-          <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>6 marks</span></div>
-            <p>Describe how a firewall can protect both a stand-alone PC and a network, then explain two limitations that require other security measures.</p>
-            <details>
-              <summary>Show MS</summary>
-              <table class="mark-scheme-table">
-                <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
-                <tbody>
-                  <tr><td>firewall compares traffic/connection information with configured rules</td><td>Do not claim that a firewall removes viruses, detects every malicious payload or makes a computer system completely secure.</td><td>1</td></tr>
-                  <tr><td>allows/blocks/rejects/logs according to a rule</td><td></td><td>1</td></tr>
-                  <tr><td>host firewall protects one PC</td><td></td><td>1</td></tr>
-                  <tr><td>network firewall protects a network boundary</td><td></td><td>1</td></tr>
-                  <tr><td>allowed traffic or misconfiguration limitation</td><td></td><td>1</td></tr>
-                  <tr><td>matching additional measure such as anti-virus, authentication, access rights or user training</td><td></td><td>1</td></tr>
-                </tbody>
-              </table>
-            </details>
-          </article>
-        </section>
-        <!-- stage2-completion:end -->
 
-<section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-069">
-          <div class="hero-copy">
-            <p class="lesson-meta">Lesson 069 | 45 minutes | Paper 1 Section 6 | Security, privacy and data integrity</p>
-            <h2>Network security is not just one locked door.</h2>
-            <p>
-              Firewalls filter traffic using rules. Proxies sit between client and destination to forward,
-              filter, cache or log requests. Network monitoring observes traffic and events so unusual
-              behaviour can be detected and investigated.
-            </p>
-            <div class="objective-grid" aria-label="Learning objectives">
-              <div><strong>Explain</strong><span>how firewalls, proxies and monitoring work</span></div>
-              <div><strong>Apply</strong><span>rules and logs to realistic network scenarios</span></div>
-              <div><strong>Evaluate</strong><span>benefits and limits while recognising the limitations of each control</span></div>
+        <section class="v2-panel v2-route-menu" aria-labelledby="route-heading">
+          <div class="v2-heading"><p class="v2-eyebrow">Teacher choice</p><h2 id="route-heading">Choose the depth for this group</h2></div>
+          <div class="v2-route-grid"><article><h3>Quick route</h3><p>Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.</p></article><article><h3>Full route</h3><p>Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.</p></article><article><h3>Deep route</h3><p>Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.</p></article></div>
+        </section>
+
+        <section class="v2-panel" id="prerequisite">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 1 | optional depth</p><h2>Prerequisite knowledge and quick diagnostic</h2></div>
+          <div class="v2-diagnostic"><p>Recall S9.07 before starting this lesson.</p></div>
+          <p>Give one accurate definition or method step before continuing. If it is missing, revisit only that prerequisite.</p>
+          <details class="v2-prerequisite-detail"><summary>Open optional prerequisite refresher</summary><ul><li>Document an algorithm using structured English, a flowchart or pseudocode; write pseudocode from structured English or a flowchart, and draw a flowchart from structured English or pseudocode while preserving the same algorithm.</li><li>Use structured English, flowcharts and pseudocode; convert between representations.</li></ul></details>
+        </section>
+
+        <section class="v2-panel" id="explanation">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 2 | deliberately over-complete</p><h2>Knowledge explanation</h2></div>
+          <h3>Learning objectives</h3><ul class="v2-objectives"><li>Write pseudocode from a flowchart or structured-English description.</li></ul>
+          <details class="v2-concept-menu"><summary>Open the concept checklist and choose what to teach</summary><ul><li>pseudocode</li><li>flowchart</li><li>structured-English / structured English</li><li>description / descriptions / design</li></ul></details>
+          <div class="v2-explanation-grid">
+            <div>
+              <article class="v2-core-facts"><h3>Detailed explanation</h3><p class="v2-teacher-note">Teach all points, or select only the ones this group needs. The list is intentionally fuller than a fixed lesson slot.</p><ul class="v2-facts"><li>Implement and write pseudocode from a given design presented as either a flowchart or structured English.</li><li>To translate a flowchart, follow arrows from Start, convert input/output symbols directly, convert diamonds into IF/CASE or loop conditions, and preserve every branch and reconnection. To translate structured English, identify its controlled verbs and indentation before selecting Cambridge constructs.</li><li>The answer must be Cambridge pseudocode, not Java: use assignment arrow, THEN/ENDIF, FOR...NEXT, WHILE...ENDWHILE or REPEAT...UNTIL as appropriate. Trace both versions with the same data to confirm equivalence.</li><li>For translating descriptions into cambridge pseudocode, identify the required concept before describing its mechanism or consequence.</li></ul></article>
+              <article class="v2-example"><h3>Worked example</h3><p>Flowchart sum loop: A flowchart sets Total to 0 and repeats input/add until Value = -1. Pseudocode uses Total &lt;- 0; REPEAT; INPUT Value; IF Value &lt; -1 THEN Total &lt;- Total + Value; ENDIF; UNTIL Value = -1; OUTPUT Total.</p></article>
+              <aside class="v2-extension"><h3>Beyond syllabus / 延伸知识（不要求背诵）</h3><p>consistent style, modularity and automated tests reduce maintenance errors in larger programs.</p></aside>
             </div>
-          </div>
-          <div class="network-card" aria-label="Network control map">
-            <div class="network-stack">
-              <span>Firewall -> allow/block traffic</span>
-              <span>Proxy -> intermediary request handler</span>
-              <span>Monitoring -> observe and alert</span>
-              <span>Logs -> evidence for investigation</span>
-            </div>
-            <p>A firewall is a filter, not a cybersecurity force field.</p>
+            <figure class="v2-visual">
+              <img src="../assets/diagrams/stage10-infographics/stage10-lesson-141-standard.jpg" alt="Follow a flowchart from Start: translate input/output symbols, decisions, branches and loop-back arrows without losing a path.. From structured English, preserve the controlled verbs, conditions and indentation when selecting Cambridge pseudocode constructs.. Dry-run the source description and pseudocode with the same data; matching paths and outputs confirm equivalence." loading="lazy" />
+              <figcaption>Translate a flowchart or structured English into pseudocode. One maintained explanation is shown as an image on larger screens and as text on small screens.</figcaption>
+              <div class="v2-mobile-visual-text" aria-label="Mobile text alternative"><ul><li>Follow a flowchart from Start: translate input/output symbols, decisions, branches and loop-back arrows without losing a path.</li><li>From structured English, preserve the controlled verbs, conditions and indentation when selecting Cambridge pseudocode constructs.</li><li>Dry-run the source description and pseudocode with the same data; matching paths and outputs confirm equivalence.</li></ul></div>
+            </figure>
           </div>
         </section>
 
-        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-069">
-          <article class="why-card">
-            <h3>Why this matters</h3>
-            <p>Exam answers should say what traffic is inspected or logged and what decision is made.</p>
-          </article>
-          <article class="trap-card">
-            <h3>Common error</h3>
-            <p>Monitoring detects suspicious activity; it does not automatically prevent every attack unless linked to a response.</p>
-          </article>
+        <section class="v2-panel" id="practice">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 3 | select by learner need</p><h2>Practice by question type</h2></div>
+          <div class="v2-question-list"><article class="v2-question" data-question-id="Q-L069-01" data-semantic-fingerprint="S11.01|translating-descriptions-into-cambridge-pseudocode|design|translate-structured-english-design|pseudocode|recall">
+              <div class="v2-question-head"><span class="v2-badge">design</span><span class="v2-badge">recall</span><span class="v2-badge difficulty">foundation</span><span class="v2-badge">4 marks</span></div>
+              <p><strong>Question 1.</strong> Translate this structured-English design into Cambridge pseudocode: input five temperatures; count those below zero; output the count.</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> initialises count to 0; uses a five-iteration count-controlled loop with INPUT; tests Temperature &lt; 0 and increments count; outputs count after the loop with coherent Cambridge syntax</p><p><strong>Marking guidance:</strong> Do not accept Java syntax such as int, braces or System.out as Cambridge pseudocode.</p><p><strong>Common error:</strong> For the command word design, perform that exact action; do not replace it with an unrelated fact.</p></div></details>
+            </article><article class="v2-question" data-question-id="Q-L069-02" data-semantic-fingerprint="S11.01|translating-descriptions-into-cambridge-pseudocode|explain|flowchart-decision-normally-translated|written|explain">
+              <div class="v2-question-head"><span class="v2-badge">explain</span><span class="v2-badge">explain</span><span class="v2-badge difficulty">application</span><span class="v2-badge">2 marks</span></div>
+              <p><strong>Question 2.</strong> How is a flowchart decision normally translated?</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> As a selection or loop condition, depending on where arrows reconnect.</p><p><strong>Marking guidance:</strong> Award one mark for each distinct, technically accurate point or method step.</p><p><strong>Common error:</strong> Do not repeat the same point in different words; each mark needs a separate idea or method step.</p></div></details>
+            </article><article class="v2-question" data-question-id="Q-L069-03" data-semantic-fingerprint="S11.01|translating-descriptions-into-cambridge-pseudocode|state|precise-facts-about|pseudocode|recall">
+              <div class="v2-question-head"><span class="v2-badge">state</span><span class="v2-badge">recall</span><span class="v2-badge difficulty">transfer</span><span class="v2-badge">2 marks</span></div>
+              <p><strong>Question 3.</strong> State two precise facts about translating descriptions into cambridge pseudocode.</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> Implement and write pseudocode from a given design presented as either a flowchart or structured English. To translate a flowchart, follow arrows from Start, convert input/output symbols directly, convert diamonds into IF/CASE or loop conditions, and preserve every branch and reconnection. To translate structured English, identify its controlled verbs and indentation before selecting Cambridge constructs.</p><p><strong>Marking guidance:</strong> Award one mark for each distinct fact; do not credit a repeated point.</p><p><strong>Common error:</strong> Do not copy the worked example unchanged; transfer the method and check it against the new context.</p></div></details>
+            </article></div>
+          <div class="v2-paper-refs">
+          <h3>Related past-paper indexes</h3>
+          <table><thead><tr><th>Reference</th><th>Marks</th><th>Command word</th><th>Question type</th></tr></thead>
+          <tbody><tr><td>9618/22/S/25 Q10(a)</td><td>8</td><td>complete</td><td>trace</td></tr><tr><td>9618/21/S/25 Q7(a)</td><td>6</td><td>write</td><td>write</td></tr><tr><td>9618/23/S/25 Q7(a)(i)</td><td>5</td><td>write</td><td>write</td></tr><tr><td>9618/21/S/25 Q1(c)</td><td>3</td><td>complete</td><td>recall</td></tr></tbody></table>
+          <p class="v2-copyright-note">Index only: Cambridge question and mark-scheme wording is not reproduced on this public course page.</p>
+        </div>
         </section>
 
-        <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-069">
-          <div class="section-title">
-            <p class="eyebrow">Warm-up hook</p>
-            <h2>A school blocks outgoing traffic to port 25 except from the mail server. What control is doing the work?</h2>
-            <p>The network is saying, "Not everyone gets to run their own postal service from a backpack."</p>
-          </div>
-          <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="firewall">Firewall rule, because traffic is allowed or blocked by port/source</button>
-            <button class="choice-card" type="button" data-hook="proxy">Proxy, because all network controls are proxies</button>
-            <button class="choice-card" type="button" data-hook="hashing">Hashing, because the port number is checked</button>
-            <button class="choice-card" type="button" data-hook="validation">Validation, because the number 25 is in range</button>
-          </div>
-          <div class="feedback" id="hookFeedback" aria-live="polite">
-            Choose one. The clue is filtering by traffic rule.
-          </div>
+        <section class="v2-panel" id="summary">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 4 | close when ready</p><h2>Summary and exam reminders</h2></div>
+          <div class="v2-summary-grid"><div><h3>Summary</h3><ul class="v2-summary-list"><li>Define translating descriptions into cambridge pseudocode with the exact technical vocabulary expected by the syllabus.</li><li>Use the lesson method on a fresh context and show the intermediate decision, representation or calculation.</li><li>Match the shape of the answer to the command word and the available marks.</li><li>Check the final answer against the scenario instead of repeating a memorised sentence.</li></ul></div><div class="v2-error"><h3>Common error to correct</h3><p>Students often think working Java automatically means good pseudocode. Correction: Paper 2 rewards clear Cambridge-style algorithm expression.</p></div></div>
+          <div class="v2-tip-box"><h3>Exam technique</h3><ul><li>Follow the command word: state gives a fact; explain links a cause to a consequence; compare covers both sides.</li><li>Match the number of independent points or method steps to the available marks.</li><li>For translating descriptions into cambridge pseudocode, use the exact technical term before applying it to the scenario.</li></ul></div>
         </section>
 
-        <section class="panel" id="core" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-069">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 1</p>
-            <h2>Network controls sit between traffic and risk</h2>
-          </div>
-          <div class="concept-grid">
-            <article><strong>Traffic</strong><span>Data packets or requests moving across a network.</span></article>
-            <article><strong>Rule</strong><span>A condition that allows, blocks or logs traffic based on properties.</span></article>
-            <article><strong>Log</strong><span>A record of events, traffic, blocked attempts or user activity.</span></article>
-            <article><strong>Alert</strong><span>A warning generated when traffic or behaviour matches a suspicious pattern.</span></article>
-          </div>
-          <div class="callout">Chinese support: firewall = 防火墙；proxy = 代理服务器；network monitoring = 网络监控；log = 日志。</div>
-        </section>
-
-        <!-- stage10-explanation:start core -->
-        <section class="panel explanation-panel" id="explanation-core" data-explains="core" data-explanation-kind="mechanism" aria-labelledby="explanation-core-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-069">
-          <h2 class="explanation-sr-only" id="explanation-core-title">Network controls sit between traffic and risk</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-069-core.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Network controls sit between traffic and risk with a structured visual model." />
-            <figcaption class="explanation-sr-only">Network controls sit between traffic and risk: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Traffic Data packets or requests moving across a network.</li><li><strong>Lesson fact:</strong> Rule A condition that allows, blocks or logs traffic based on properties.</li><li><strong>Lesson fact:</strong> Log A record of events, traffic, blocked attempts or user activity.</li><li><strong>Lesson fact:</strong> Alert A warning generated when traffic or behaviour matches a suspicious pattern.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end core -->
-        <section class="panel" id="firewall" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-069">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 2</p>
-            <h2>Firewalls filter traffic using rules</h2>
-          </div>
-          <div class="concept-grid">
-            <article><strong>Purpose</strong><span>Control traffic entering or leaving a network/device.</span></article>
-            <article><strong>Checks</strong><span>Can inspect source/destination IP address, port number, protocol or connection state.</span></article>
-            <article><strong>Decision</strong><span>Allow, deny, reject or log traffic depending on rule match.</span></article>
-            <article><strong>Placement</strong><span>Can protect a network boundary or run on an individual host.</span></article>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start firewall -->
-        <section class="panel explanation-panel" id="explanation-firewall" data-explains="firewall" data-explanation-kind="mechanism" aria-labelledby="explanation-firewall-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-069">
-          <h2 class="explanation-sr-only" id="explanation-firewall-title">Firewalls filter traffic using rules</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-069-firewall.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Firewalls filter traffic using rules with a structured visual model." />
-            <figcaption class="explanation-sr-only">Firewalls filter traffic using rules: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Purpose Control traffic entering or leaving a network/device.</li><li><strong>Lesson fact:</strong> Checks Can inspect source/destination IP address, port number, protocol or connection state.</li><li><strong>Lesson fact:</strong> Decision Allow, deny, reject or log traffic depending on rule match.</li><li><strong>Lesson fact:</strong> Placement Can protect a network boundary or run on an individual host.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end firewall -->
-        <section class="panel" id="rules" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-069">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 3</p>
-            <h2>Firewall rules should be specific and ordered</h2>
-          </div>
-          <div class="comparison-table" role="table" aria-label="Firewall rule examples">
-            <div class="table-row table-head" role="row">
-              <div role="columnheader">Rule</div>
-              <div role="columnheader">Meaning</div>
-              <div role="columnheader">Reason</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Allow HTTPS from internal users to internet</div>
-              <div role="cell">Permit web traffic on port 443.</div>
-              <div role="cell">Needed for secure website access.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Block inbound unknown traffic</div>
-              <div role="cell">Deny unsolicited external connections.</div>
-              <div role="cell">Reduces unauthorised access attempts.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Allow admin only from management subnet</div>
-              <div role="cell">Restrict sensitive admin ports by source.</div>
-              <div role="cell">Limits attack surface and misuse.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Log repeated denied connections</div>
-              <div role="cell">Record unusual or repeated blocked attempts.</div>
-              <div role="cell">Supports monitoring and investigation.</div>
-            </div>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start rules -->
-        <section class="panel explanation-panel" id="explanation-rules" data-explains="rules" data-explanation-kind="mechanism" aria-labelledby="explanation-rules-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-069">
-          <h2 class="explanation-sr-only" id="explanation-rules-title">Firewall rules should be specific and ordered</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-069-rules.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Firewall rules should be specific and ordered with a structured visual model." />
-            <figcaption class="explanation-sr-only">Firewall rules should be specific and ordered: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Allow HTTPS from internal users to internet</li><li><strong>Lesson fact:</strong> Permit web traffic on port 443.</li><li><strong>Lesson fact:</strong> Needed for secure website access.</li><li><strong>Lesson fact:</strong> Block inbound unknown traffic</li><li><strong>Lesson fact:</strong> Deny unsolicited external connections.</li><li><strong>Lesson fact:</strong> Reduces unauthorised access attempts.</li><li><strong>Lesson fact:</strong> Allow admin only from management subnet</li><li><strong>Lesson fact:</strong> Restrict sensitive admin ports by source.</li><li><strong>Lesson fact:</strong> Limits attack surface and misuse.</li><li><strong>Lesson fact:</strong> Log repeated denied connections</li><li><strong>Lesson fact:</strong> Record unusual or repeated blocked attempts.</li><li><strong>Lesson fact:</strong> Supports monitoring and investigation.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end rules -->
-        <section class="panel" id="proxy" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-069">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 4</p>
-            <h2>A proxy acts as an intermediary</h2>
-          </div>
-          <div class="concept-grid">
-            <article><strong>Forward requests</strong><span>Client sends request to proxy; proxy requests the resource from the destination.</span></article>
-            <article><strong>Filtering</strong><span>Can block sites, content types, categories or requests that break policy.</span></article>
-            <article><strong>Caching</strong><span>Can store copies of frequently requested resources to reduce bandwidth and latency.</span></article>
-            <article><strong>Logging</strong><span>Can record user requests for audit, investigation or policy enforcement.</span></article>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start proxy -->
-        <section class="panel explanation-panel" id="explanation-proxy" data-explains="proxy" data-explanation-kind="mechanism" aria-labelledby="explanation-proxy-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-069">
-          <h2 class="explanation-sr-only" id="explanation-proxy-title">A proxy acts as an intermediary</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-069-proxy.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining A proxy acts as an intermediary with a structured visual model." />
-            <figcaption class="explanation-sr-only">A proxy acts as an intermediary: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Forward requests Client sends request to proxy; proxy requests the resource from the destination.</li><li><strong>Lesson fact:</strong> Filtering Can block sites, content types, categories or requests that break policy.</li><li><strong>Lesson fact:</strong> Caching Can store copies of frequently requested resources to reduce bandwidth and latency.</li><li><strong>Lesson fact:</strong> Logging Can record user requests for audit, investigation or policy enforcement.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end proxy -->
-        <section class="panel" id="monitoring" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-069">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 5</p>
-            <h2>Network monitoring watches for patterns and evidence</h2>
-          </div>
-          <div class="concept-grid">
-            <article><strong>Traffic volume</strong><span>Unusual spikes may suggest DoS, malware activity or misconfiguration.</span></article>
-            <article><strong>Connection attempts</strong><span>Repeated failed access attempts may suggest probing or brute force activity.</span></article>
-            <article><strong>Alerts</strong><span>Monitoring systems can notify staff when thresholds or signatures are triggered.</span></article>
-            <article><strong>Investigation</strong><span>Logs help reconstruct what happened, when, and from where.</span></article>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start monitoring -->
-        <section class="panel explanation-panel" id="explanation-monitoring" data-explains="monitoring" data-explanation-kind="mechanism" aria-labelledby="explanation-monitoring-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-069">
-          <h2 class="explanation-sr-only" id="explanation-monitoring-title">Network monitoring watches for patterns and evidence</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-069-monitoring.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Network monitoring watches for patterns and evidence with a structured visual model." />
-            <figcaption class="explanation-sr-only">Network monitoring watches for patterns and evidence: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Traffic volume Unusual spikes may suggest DoS, malware activity or misconfiguration.</li><li><strong>Lesson fact:</strong> Connection attempts Repeated failed access attempts may suggest probing or brute force activity.</li><li><strong>Lesson fact:</strong> Alerts Monitoring systems can notify staff when thresholds or signatures are triggered.</li><li><strong>Lesson fact:</strong> Investigation Logs help reconstruct what happened, when, and from where.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end monitoring -->
-        <section class="panel" id="limits" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-069">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 6</p>
-            <h2>Controls reduce risk but have limits</h2>
-          </div>
-          <div class="concept-grid">
-            <article><strong>Firewall limit</strong><span>Allowed traffic can still carry attacks, and rules may be misconfigured.</span></article>
-            <article><strong>Proxy limit</strong><span>Encrypted traffic and unmanaged devices can reduce visibility if not configured properly.</span></article>
-            <article><strong>Monitoring limit</strong><span>Alerts need review and response; too many false positives can be ignored.</span></article>
-            <article><strong>Layering</strong><span>Use with authentication, permissions, patching, encryption and user training.</span></article>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start limits -->
-        <section class="panel explanation-panel" id="explanation-limits" data-explains="limits" data-explanation-kind="mechanism" aria-labelledby="explanation-limits-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-069">
-          <h2 class="explanation-sr-only" id="explanation-limits-title">Controls reduce risk but have limits</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-069-limits.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Controls reduce risk but have limits with a structured visual model." />
-            <figcaption class="explanation-sr-only">Controls reduce risk but have limits: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Firewall limit Allowed traffic can still carry attacks, and rules may be misconfigured.</li><li><strong>Lesson fact:</strong> Proxy limit Encrypted traffic and unmanaged devices can reduce visibility if not configured properly.</li><li><strong>Lesson fact:</strong> Monitoring limit Alerts need review and response; too many false positives can be ignored.</li><li><strong>Lesson fact:</strong> Layering Use with authentication, permissions, patching, encryption and user training.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end limits -->
-        <section class="panel" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-069">
-          <div class="section-title">
-            <p class="eyebrow">Interactive firewall rule checker</p>
-            <h2>Allow, block or log?</h2>
-            <p>Select traffic and compare the decision with the reason and common wrong answer.</p>
-          </div>
-          <div class="converter-grid">
-            <label>
-              Traffic event
-              <select id="scenarioInput">
-                <option value="https">Internal user opens an HTTPS website on port 443.</option>
-                <option value="sshExternal">Unknown internet host tries SSH to a school server.</option>
-                <option value="mailServer">School mail server sends SMTP on port 25.</option>
-                <option value="studentSmtp">Student laptop sends SMTP directly on port 25.</option>
-                <option value="adminSubnet">Admin connects from management subnet to admin panel.</option>
-              </select>
-            </label>
-            <button class="primary-button" type="button" id="simulateBtn">Check rule</button>
-          </div>
-          <div class="result-box" id="simulateResult" aria-live="polite"></div>
-          <div class="method-box" id="simulateMethod"></div>
-          <div class="reject-box" id="simulateTrap"></div>
-        </section>
-
-        <section class="panel" id="event-tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-069">
-          <div class="section-title">
-            <p class="eyebrow">Interactive event classifier</p>
-            <h2>Which control is most relevant?</h2>
-          </div>
-          <div class="converter-grid">
-            <label>
-              Event
-              <select id="eventInput">
-                <option value="category">Block social media during exam hours.</option>
-                <option value="cache">Reduce repeated downloads of the same update file.</option>
-                <option value="spike">Alert staff to a sudden traffic spike.</option>
-                <option value="logs">Find which account repeatedly attempted a blocked site.</option>
-              </select>
-            </label>
-            <button class="primary-button" type="button" id="eventBtn">Classify</button>
-          </div>
-          <div class="result-box" id="eventResult" aria-live="polite"></div>
-          <div class="method-box" id="eventReason"></div>
-        </section>
-
-        <!-- stage10-explanation:start event-tool -->
-        <section class="panel explanation-panel" id="explanation-event-tool" data-explains="event-tool" data-explanation-kind="mechanism" aria-labelledby="explanation-event-tool-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-069">
-          <h2 class="explanation-sr-only" id="explanation-event-tool-title">Which control is most relevant?</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-069-event-tool.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Which control is most relevant? with a structured visual model." />
-            <figcaption class="explanation-sr-only">Which control is most relevant?: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Interactive event classifier</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end event-tool -->
-        <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-069">
-          <div class="section-title">
-            <p class="eyebrow">Worked examples</p>
-            <h2>Four model answers with mechanism and limitation</h2>
-          </div>
-          <div class="example-tabs" role="tablist" aria-label="Worked examples">
-            <button class="tab active" type="button" data-example="firewall">Firewall</button>
-            <button class="tab" type="button" data-example="proxy">Proxy</button>
-            <button class="tab" type="button" data-example="monitoring">Monitoring</button>
-            <button class="tab" type="button" data-example="layered">Layered controls</button>
-          </div>
-          <div class="example-box" id="exampleBox"></div>
-        </section>
-
-        <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-069">
-          <div class="section-title">
-            <p class="eyebrow">Practice with instant checking</p>
-            <h2>Short answers: name the control and mechanism</h2>
-            <p>Type a concise answer. Use the local answer button if you need a model response.</p>
-          </div>
-          <div class="practice-list" id="practiceList"></div>
-        </section>
-
-        <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-069">
-          <div class="section-title">
-            <p class="eyebrow">Mistake debugging</p>
-            <h2>Fix the sentence before it loses marks</h2>
-          </div>
-          <div class="mistake-grid" id="mistakeGrid"></div>
-        </section>
-
-        <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-069">
-          <div class="section-title">
-            <p class="eyebrow">Exam-style questions</p>
-            <h2>Original Cambridge-style questions with expandable MS</h2>
-            <p>Answer first. Then open the mark scheme and compare wording strictly.</p>
-          </div>
-          <div class="exam-list" id="examList"></div>
-        </section>
-
-        <section class="panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-069">
-          <div class="section-title">
-            <p class="eyebrow">Summary</p>
-            <h2>Each control has a different job</h2>
-          </div>
-          <div class="summary-grid">
-            <div><strong>Firewall</strong><span>Filters traffic by rules such as port, protocol, address or state.</span></div>
-            <div><strong>Proxy</strong><span>Acts as intermediary for requests; can filter, cache and log.</span></div>
-            <div><strong>Monitoring</strong><span>Observes traffic/events and produces alerts or evidence.</span></div>
-          </div>
-        </section>
-
-        <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
-          <div class="section-title">
-            <p class="eyebrow">Homework</p>
-            <h2>Homework tasks</h2>
-          </div>
-          <div class="homework-list">
-            <article>
-              <strong>Task 1: Rule table</strong>
-              <span>Create five firewall rules for a school network. For each, state allow/block/log and the reason.</span>
-            </article>
-            <article>
-              <strong>Task 2: Proxy vs monitoring</strong>
-              <span>Write one paragraph explaining how a proxy can enforce web policy and one paragraph explaining how monitoring helps incident response.</span>
-            </article>
-            <article>
-              <strong>Task 3: 6-mark answer</strong>
-              <span>Answer: "Explain how firewalls, proxies and network monitoring can reduce network security risks. Include one limitation." Use mechanism-first wording.</span>
-            </article>
-          </div>
-        </section>
+        <nav class="v2-bottom-nav" aria-label="Previous and next lesson"><a href="../lesson-068/" >Previous lesson</a><a href="../lesson-070/" >Next lesson</a></nav>
       </div>
     </main>
-
-    <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=3"></script>
-    <script src="../lesson-toolbar.js?v=3"></script>
-    <script src="../stage7-accessibility.js?v=4"></script>
+    <script src="../course-v2.js?v=1"></script>
   </body>
 </html>

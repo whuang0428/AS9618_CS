@@ -3,380 +3,89 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 060 | Error types: syntax, logic, runtime and translation diagnostics</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <title>AS9618 Lesson 060 | Linear search using arrays</title>
     <link rel="icon" href="data:" />
-    <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
+    <link rel="stylesheet" href="../course-v2.css?v=3" />
   </head>
-  <body>
+  <body data-course-version="2" data-lesson-id="060" data-syllabus-ids="S10.06">
     <a class="skip-link" href="#main-content">Skip to main content</a>
-    <header class="topbar">
-      <div>
-        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 5</p>
-        <h1>Error types: syntax, logic, runtime and translation diagnostics</h1>
-      </div>
-      <div class="action-panel" aria-label="Page controls">
-        <a class="course-home-link" href="../">Course home</a>
-        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
-      </div>
+    <header class="v2-topbar">
+      <div><p class="v2-eyebrow">Cambridge AS9618 | Paper 2 | Section 10: Data types and structures</p><h1>Linear search using arrays</h1></div>
+      <nav class="v2-actions" aria-label="Lesson actions"><a href="../">Course home</a><a href="../assessments/">Assessment bank</a><button type="button" id="printLesson">Print</button></nav>
     </header>
+    <main class="v2-shell" id="main-content" tabindex="-1">
+      <nav class="v2-toc" aria-label="Lesson contents"><strong>Lesson 060</strong><a href="#overview">Overview</a><a href="#prerequisite">Prerequisite</a><a href="#explanation">Explanation</a><a href="#practice">Practice</a><a href="#summary">Summary</a></nav>
+      <div class="v2-content">
+        <section class="v2-hero" id="overview">
+          <div><p class="v2-eyebrow">Flexible-depth lesson</p><h2>Linear search using arrays</h2><p>S10.06 | Select what to omit, teach briefly or explore in depth.</p></div>
+          <div class="v2-time-grid" aria-label="Available lesson depth"><div><strong>Quick</strong><span>diagnose + essentials</span></div><div><strong>Full</strong><span>complete explanation</span></div><div><strong>Deep</strong><span>prerequisites + extension</span></div><div><strong>Choose</strong><span>practice by need</span></div></div>
+        </section>
 
-    <main class="layout" id="main-content" tabindex="-1">
-      <aside class="lesson-nav" aria-label="Lesson navigation">
-        <a href="#overview">Overview</a>
-        <a href="#hook">Warm-up</a>
-        <a href="#concept">Core idea</a>
-        <a href="#syntax">Syntax errors</a>
-        <a href="#logic">Logic errors</a>
-        <a href="#runtime">Runtime errors</a>
-        <a href="#diagnostics">Diagnostics</a>
-        <a href="#compare">Comparison</a>
-        <a href="#tool">Error tool</a>
-        <a href="#examples">Examples</a>
-        <a href="#practice">Practice</a>
-        <a href="#debug">Debugging</a>
-        <a href="#exam">Exam-style</a>
-        <a href="#summary">Summary</a>
-        <a href="#homework">Homework</a>
-      </aside>
+        <section class="v2-panel v2-route-menu" aria-labelledby="route-heading">
+          <div class="v2-heading"><p class="v2-eyebrow">Teacher choice</p><h2 id="route-heading">Choose the depth for this group</h2></div>
+          <div class="v2-route-grid"><article><h3>Quick route</h3><p>Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.</p></article><article><h3>Full route</h3><p>Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.</p></article><article><h3>Deep route</h3><p>Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.</p></article></div>
+        </section>
 
-      <div class="lesson-content">
-        <!-- remediation-v2-stage3-scope:start -->
-        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>This lesson is Optional enrichment or review. It does not establish first use of a new syllabus requirement and is excluded from compulsory coverage and prerequisite statistics.</p></aside>
-        <!-- remediation-v2-stage3-scope:end -->
+        <section class="v2-panel" id="prerequisite">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 1 | optional depth</p><h2>Prerequisite knowledge and quick diagnostic</h2></div>
+          <div class="v2-diagnostic"><p>Recall S10.03 before starting this lesson.</p></div>
+          <p>Give one accurate definition or method step before continuing. If it is missing, revisit only that prerequisite.</p>
+          <details class="v2-prerequisite-detail"><summary>Open optional prerequisite refresher</summary><ul><li>Use the technical terms associated with arrays, including index, lower bound and upper bound. Bounds define the inclusive valid index range and an index selects one element.</li><li>Understand array, index, lower bound and upper bound terminology.</li></ul></details>
+        </section>
 
-        <!-- remediation-v2-optional:start -->
-        <aside class="optional-enrichment-notice" aria-label="Optional enrichment scope">
-          <strong>Optional enrichment</strong>
-          <p>early Section 12 error-classification treatment inside Section 5. This material is excluded from compulsory syllabus coverage, first-use and assessment statistics.</p>
-          <p><strong>Formal AS prerequisite:</strong> S12.01 lifecycle before S12.04 fault exposure, location and correction.</p>
-        </aside>
-        <!-- remediation-v2-optional:end -->
-<section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-060">
-          <div class="hero-copy">
-            <p class="lesson-meta">Lesson 060 | 45 minutes | Paper 1 Section 5 | System software</p>
-            <h2>Not all errors are equal. Some stop translation, some crash at run time, and some smile while giving the wrong answer.</h2>
-            <p>
-              This lesson classifies syntax, logic and runtime errors, then connects them to compiler and interpreter diagnostics.
-              The goal is to diagnose the error from evidence: when it happens, what the translator reports, and whether the program still runs.
-            </p>
-            <div class="objective-grid" aria-label="Learning objectives">
-              <div><strong>Classify</strong><span>syntax, logic and runtime errors from short scenarios</span></div>
-              <div><strong>Explain</strong><span>how compiler and interpreter diagnostics help programmers</span></div>
-              <div><strong>Justify</strong><span>why an error belongs to a category using evidence</span></div>
+        <section class="v2-panel" id="explanation">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 2 | deliberately over-complete</p><h2>Knowledge explanation</h2></div>
+          <h3>Learning objectives</h3><ul class="v2-objectives"><li>Write bubble sort and linear search algorithms.</li></ul>
+          <details class="v2-concept-menu"><summary>Open the concept checklist and choose what to teach</summary><ul><li>bubble sort</li><li>linear search</li><li>write</li></ul></details>
+          <div class="v2-explanation-grid">
+            <div>
+              <article class="v2-core-facts"><h3>Detailed explanation</h3><p class="v2-teacher-note">Teach all points, or select only the ones this group needs. The list is intentionally fuller than a fixed lesson slot.</p><ul class="v2-facts"><li>When processing array data, candidates must write a bubble-sort algorithm and a linear-search algorithm. A trace alone is not sufficient evidence of the ability to write each complete algorithm.</li><li>Before tracing a search, define the data structure it traverses. An array is a fixed-size indexed collection whose elements have one declared data type. The index selects one element; it is not the value stored in that element.</li><li>Cambridge pseudocode declares explicit inclusive bounds. In DECLARE Names : ARRAY[1:4] OF STRING, 1 is the lower bound, 4 is the upper bound and the valid indexes are 1, 2, 3 and 4. A search must start and stop within those declared bounds.</li><li>Linear search checks successive indexed elements until the target is found or every populated element has been checked. Binary search also uses indexes, but requires the array to be sorted so each comparison can discard one half of the remaining index range.</li><li>Candidates must be able to write a bubble sort and a linear search algorithm, not only describe or trace an existing algorithm.</li><li>Linear search examines array elements in index order until the target is found or all populated elements have been checked. A complete algorithm initialises its index and found state, keeps every access within the declared bounds, compares the current element and advances only when another element remains to be checked.</li><li>Bubble sort makes repeated passes through the unsorted part of an array. Each pass compares adjacent elements and swaps them when they are in the wrong order. After a complete ascending pass, the largest remaining value is at the high end; the algorithm repeats until the required passes are complete or a whole pass makes no swaps.</li><li>A trace is evidence about one execution, but the syllabus requires candidates to write the algorithms. The answer must therefore include initialisation, loop bounds, comparison, update or swap, and a valid stopping condition rather than only showing one example pass.</li></ul></article>
+              <article class="v2-example"><h3>Worked example</h3><p>Two complete array algorithms: A linear search of Code[1:Count] sets Found to FALSE and Index to 1, then compares Code[Index] with Target while Found is FALSE and Index is within Count. A bubble sort of Value[1:Count] uses nested passes, compares Value[Index] with Value[Index + 1], swaps an inverted pair through Temp and may stop early when a pass makes no swaps.</p></article>
+              <aside class="v2-extension"><h3>Beyond syllabus / 延伸知识（不要求背诵）</h3><p>programming libraries often provide tested ADT implementations, but the exam expects you to understand their behaviour and selection.</p></aside>
             </div>
-          </div>
-          <div class="error-card" aria-label="Error type sketch">
-            <div class="error-stack">
-              <span>Syntax: grammar broken</span>
-              <span>Logic: runs, wrong result</span>
-              <span>Runtime: fails while running</span>
-              <span>Diagnostics: messages to locate/fix</span>
-            </div>
-            <p>The compiler can complain loudly. The worst logic error just nods and lies.</p>
+            <figure class="v2-visual">
+              <img src="../assets/diagrams/stage10-infographics/stage10-lesson-118-pseudocode.jpg" alt="Both pseudocode and Java versions visit five score positions.. Increment the pass counter only when the current score is at least 50.. Close the conditional before advancing the loop.. Both complete versions output the final pass count after the loop." loading="lazy" />
+              <figcaption>Same algorithm, different array syntax. One maintained explanation is shown as an image on larger screens and as text on small screens.</figcaption>
+              <div class="v2-mobile-visual-text" aria-label="Mobile text alternative"><ul><li>Both pseudocode and Java versions visit five score positions.</li><li>Increment the pass counter only when the current score is at least 50.</li><li>Close the conditional before advancing the loop.</li><li>Both complete versions output the final pass count after the loop.</li></ul></div>
+            </figure>
           </div>
         </section>
 
-        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-060">
-          <article class="why-card">
-            <h3>Why this matters</h3>
-            <p>Exam answers need a category plus a reason. "There is an error" is not a diagnosis.</p>
-          </article>
-          <article class="trap-card">
-            <h3>Common error</h3>
-            <p>Do not call every incorrect answer a runtime error. If the program completes but calculates wrongly, it is usually a logic error.</p>
-          </article>
+        <section class="v2-panel" id="practice">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 3 | select by learner need</p><h2>Practice by question type</h2></div>
+          <div class="v2-question-list"><article class="v2-question" data-question-id="Q-L060-01" data-semantic-fingerprint="S10.06|linear-search-using-arrays|apply|must-stop|written|recall">
+              <div class="v2-question-head"><span class="v2-badge">apply</span><span class="v2-badge">recall</span><span class="v2-badge difficulty">foundation</span><span class="v2-badge">2 marks</span></div>
+              <p><strong>Question 1.</strong> When must a linear search stop?</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> When the target has been found or every populated element within the declared bounds has been checked.</p><p><strong>Marking guidance:</strong> Award one mark for each distinct, technically accurate point or method step.</p><p><strong>Common error:</strong> For the command word apply, perform that exact action; do not replace it with an unrelated fact.</p></div></details>
+            </article><article class="v2-question" data-question-id="Q-L060-02" data-semantic-fingerprint="S10.06|linear-search-using-arrays|write|declarations-array-called-code|written|recall">
+              <div class="v2-question-head"><span class="v2-badge">write</span><span class="v2-badge">recall</span><span class="v2-badge difficulty">application</span><span class="v2-badge">4 marks</span></div>
+              <p><strong>Question 2.</strong> Write declarations for an array called Code that stores 20 STRING values, then state the first and last valid indexes used by a search.</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> DECLARE Code : ARRAY[1:20] or another explicit 20-element bound range; OF STRING; first valid index matches the declared lower bound; last valid index matches the declared upper bound</p><p><strong>Marking guidance:</strong> Do not assume zero-based indexing when the declaration gives different bounds.</p><p><strong>Common error:</strong> Do not repeat the same point in different words; each mark needs a separate idea or method step.</p></div></details>
+            </article><article class="v2-question" data-question-id="Q-L060-03" data-semantic-fingerprint="S10.06|linear-search-using-arrays|explain|would-applied-suitable-computing|visual|explain">
+              <div class="v2-question-head"><span class="v2-badge">explain</span><span class="v2-badge">explain</span><span class="v2-badge difficulty">transfer</span><span class="v2-badge">3 marks</span></div>
+              <p><strong>Question 3.</strong> Explain how linear search using arrays would be applied in a suitable computing context.</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> Before tracing a search, define the data structure it traverses. An array is a fixed-size indexed collection whose elements have one declared data type. The index selects one element; it is not the value stored in that element. Cambridge pseudocode declares explicit inclusive bounds. In DECLARE Names : ARRAY[1:4] OF STRING, 1 is the lower bound, 4 is the upper bound and the valid indexes are 1, 2, 3 and 4. A search must start and stop within those declared bounds. Linear search checks successive indexed elements until the target is found or every populated element has been checked. Binary search also uses indexes, but requires the array to be sorted so each comparison can discard one half of the remaining index range.</p><p><strong>Marking guidance:</strong> Each mark needs a relevant point linked to the stated context.</p><p><strong>Common error:</strong> Do not copy the worked example unchanged; transfer the method and check it against the new context.</p></div></details>
+            </article></div>
+          <div class="v2-paper-refs">
+          <h3>Related past-paper indexes</h3>
+          <table><thead><tr><th>Reference</th><th>Marks</th><th>Command word</th><th>Question type</th></tr></thead>
+          <tbody><tr><td>9618/21/S/23 Q4(ii)</td><td>1</td><td>write</td><td>recall</td></tr></tbody></table>
+          <p class="v2-copyright-note">Index only: Cambridge question and mark-scheme wording is not reproduced on this public course page.</p>
+        </div>
         </section>
 
-        <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-060">
-          <div class="section-title">
-            <p class="eyebrow">Warm-up hook</p>
-            <h2>A program calculates a bill, runs without crashing, but charges everyone double. What type of error is most likely?</h2>
-            <p>Click the best answer. The program is confident, fast, and absolutely wrong.</p>
-          </div>
-          <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="logic">Logic error</button>
-            <button class="choice-card" type="button" data-hook="syntax">Syntax error</button>
-            <button class="choice-card" type="button" data-hook="runtime">Runtime error</button>
-            <button class="choice-card" type="button" data-hook="linker">Linker error</button>
-          </div>
-          <div class="feedback" id="hookFeedback" aria-live="polite">
-            Choose one. The timing and symptom of the error matter.
-          </div>
+        <section class="v2-panel" id="summary">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 4 | close when ready</p><h2>Summary and exam reminders</h2></div>
+          <div class="v2-summary-grid"><div><h3>Summary</h3><ul class="v2-summary-list"><li>Define linear search using arrays with the exact technical vocabulary expected by the syllabus.</li><li>Use the lesson method on a fresh context and show the intermediate decision, representation or calculation.</li><li>Match the shape of the answer to the command word and the available marks.</li><li>Check the final answer against the scenario instead of repeating a memorised sentence.</li></ul></div><div class="v2-error"><h3>Common error to correct</h3><p>Students often confuse the identifier of the whole structure with one element. Correction: access requires an index or field name.</p></div></div>
+          <div class="v2-tip-box"><h3>Exam technique</h3><ul><li>Follow the command word: state gives a fact; explain links a cause to a consequence; compare covers both sides.</li><li>Match the number of independent points or method steps to the available marks.</li><li>For linear search using arrays, use the exact technical term before applying it to the scenario.</li></ul></div>
         </section>
 
-        <section class="panel" id="concept" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-060">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 1</p>
-            <h2>Error classification depends on when and how the fault appears</h2>
-          </div>
-          <div class="concept-grid">
-            <article><strong>Before execution</strong><span>Syntax and translation errors may stop a program from being translated or run.</span></article>
-            <article><strong>During execution</strong><span>Runtime errors occur while the program is running.</span></article>
-            <article><strong>After execution</strong><span>Logic errors may allow completion but produce an incorrect result.</span></article>
-            <article><strong>Diagnostics</strong><span>Error messages and locations help the programmer identify and correct faults.</span></article>
-          </div>
-          <div class="callout">Chinese support: syntax error = 语法错误；logic error = 逻辑错误；runtime error = 运行时错误；diagnostic message = 诊断信息；debugging = 调试。</div>
-        </section>
-
-        <!-- stage10-explanation:start concept -->
-        <section class="panel explanation-panel" id="explanation-concept" data-explains="concept" data-explanation-kind="mechanism" aria-labelledby="explanation-concept-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-060">
-          <h2 class="explanation-sr-only" id="explanation-concept-title">Error classification depends on when and how the fault appears</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-060-concept.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Error classification depends on when and how the fault appears with a structured visual model." />
-            <figcaption class="explanation-sr-only">Error classification depends on when and how the fault appears: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Before execution Syntax and translation errors may stop a program from being translated or run.</li><li><strong>Lesson fact:</strong> During execution Runtime errors occur while the program is running.</li><li><strong>Lesson fact:</strong> After execution Logic errors may allow completion but produce an incorrect result.</li><li><strong>Lesson fact:</strong> Diagnostics Error messages and locations help the programmer identify and correct faults.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end concept -->
-        <section class="panel" id="syntax" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-060">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 2</p>
-            <h2>Syntax errors break the grammar rules of the language</h2>
-          </div>
-          <div class="concept-grid">
-            <article><strong>Meaning</strong><span>The code structure does not follow the language grammar.</span></article>
-            <article><strong>Examples</strong><span>Missing brackets, missing keywords, invalid statement structure or misplaced punctuation.</span></article>
-            <article><strong>Detection</strong><span>Detected by translator syntax analysis or parser before successful translation/execution.</span></article>
-            <article><strong>Diagnostic</strong><span>Usually reports a line number or location near the invalid syntax.</span></article>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start syntax -->
-        <section class="panel explanation-panel" id="explanation-syntax" data-explains="syntax" data-explanation-kind="mechanism" aria-labelledby="explanation-syntax-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-060">
-          <h2 class="explanation-sr-only" id="explanation-syntax-title">Syntax errors break the grammar rules of the language</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-060-syntax.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Syntax errors break the grammar rules of the language with a structured visual model." />
-            <figcaption class="explanation-sr-only">Syntax errors break the grammar rules of the language: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Meaning The code structure does not follow the language grammar.</li><li><strong>Lesson fact:</strong> Examples Missing brackets, missing keywords, invalid statement structure or misplaced punctuation.</li><li><strong>Lesson fact:</strong> Detection Detected by translator syntax analysis or parser before successful translation/execution.</li><li><strong>Lesson fact:</strong> Diagnostic Usually reports a line number or location near the invalid syntax.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end syntax -->
-        <section class="panel" id="logic" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-060">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 3</p>
-            <h2>Logic errors make the program do the wrong thing</h2>
-          </div>
-          <div class="concept-grid">
-            <article><strong>Meaning</strong><span>The code is syntactically valid and may run, but the algorithm or condition is wrong.</span></article>
-            <article><strong>Examples</strong><span>Using <code>&lt;</code> instead of <code>&lt;=</code>, wrong formula, wrong loop condition or off-by-one error.</span></article>
-            <article><strong>Detection</strong><span>Usually found by testing, tracing or comparing actual output with expected output.</span></article>
-            <article><strong>Common error</strong><span>A translator may not detect it because the instructions are legal.</span></article>
-          </div>
-        </section>
-        <section class="panel" id="runtime" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-060">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 4</p>
-            <h2>Runtime errors occur while the program is executing</h2>
-          </div>
-          <div class="concept-grid">
-            <article><strong>Meaning</strong><span>The program starts running but fails because of an event or invalid operation during execution.</span></article>
-            <article><strong>Examples</strong><span>Division by zero, file not found, array index out of range or insufficient memory.</span></article>
-            <article><strong>Result</strong><span>The program may crash, halt, raise an exception or display an error message.</span></article>
-            <article><strong>Handling</strong><span>Robust programs may use validation and exception handling to reduce runtime failure.</span></article>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start runtime -->
-        <section class="panel explanation-panel" id="explanation-runtime" data-explains="runtime" data-explanation-kind="mechanism" aria-labelledby="explanation-runtime-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-060">
-          <h2 class="explanation-sr-only" id="explanation-runtime-title">Runtime errors occur while the program is executing</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-060-runtime.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Runtime errors occur while the program is executing with a structured visual model." />
-            <figcaption class="explanation-sr-only">Runtime errors occur while the program is executing: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Meaning The program starts running but fails because of an event or invalid operation during execution.</li><li><strong>Lesson fact:</strong> Examples Division by zero, file not found, array index out of range or insufficient memory.</li><li><strong>Lesson fact:</strong> Result The program may crash, halt, raise an exception or display an error message.</li><li><strong>Lesson fact:</strong> Handling Robust programs may use validation and exception handling to reduce runtime failure.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end runtime -->
-        <section class="panel" id="diagnostics" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-060">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 5</p>
-            <h2>Translation diagnostics help locate and correct errors</h2>
-          </div>
-          <div class="concept-grid">
-            <article><strong>Compiler</strong><span>May report a list of errors after attempting translation.</span></article>
-            <article><strong>Interpreter</strong><span>May stop at or near the statement being translated/executed.</span></article>
-            <article><strong>Useful details</strong><span>Error type, line number, token, expected symbol or explanation of the fault.</span></article>
-            <article><strong>Limitation</strong><span>The reported line may be near the cause, not always the exact cause.</span></article>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start diagnostics -->
-        <section class="panel explanation-panel" id="explanation-diagnostics" data-explains="diagnostics" data-explanation-kind="mechanism" aria-labelledby="explanation-diagnostics-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-060">
-          <h2 class="explanation-sr-only" id="explanation-diagnostics-title">Translation diagnostics help locate and correct errors</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-060-diagnostics.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Translation diagnostics help locate and correct errors with a structured visual model." />
-            <figcaption class="explanation-sr-only">Translation diagnostics help locate and correct errors: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Compiler May report a list of errors after attempting translation.</li><li><strong>Lesson fact:</strong> Interpreter May stop at or near the statement being translated/executed.</li><li><strong>Lesson fact:</strong> Useful details Error type, line number, token, expected symbol or explanation of the fault.</li><li><strong>Lesson fact:</strong> Limitation The reported line may be near the cause, not always the exact cause.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end diagnostics -->
-        <section class="panel" id="compare" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-060">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 6</p>
-            <h2>Compare error types by evidence</h2>
-          </div>
-          <div class="comparison-table" role="table" aria-label="Error type comparison">
-            <div class="table-row table-head" role="row">
-              <div role="columnheader">Error type</div>
-              <div role="columnheader">When noticed</div>
-              <div role="columnheader">Evidence</div>
-              <div role="columnheader">Example</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Syntax</div>
-              <div role="cell">Translation/parsing time</div>
-              <div role="cell">Invalid grammar or structure.</div>
-              <div role="cell">Missing bracket or malformed IF statement.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Logic</div>
-              <div role="cell">Testing/output checking</div>
-              <div role="cell">Program runs but result is incorrect.</div>
-              <div role="cell">Average calculated with wrong divisor.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Runtime</div>
-              <div role="cell">While executing</div>
-              <div role="cell">Program fails due to operation or resource problem.</div>
-              <div role="cell">Division by zero or file not found.</div>
-            </div>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start compare -->
-        <section class="panel explanation-panel" id="explanation-compare" data-explains="compare" data-explanation-kind="comparison" aria-labelledby="explanation-compare-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-060">
-          <h2 class="explanation-sr-only" id="explanation-compare-title">Compare error types by evidence</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-060-compare.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Compare error types by evidence with a structured visual model." />
-            <figcaption class="explanation-sr-only">Compare error types by evidence: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Error type</li><li><strong>Lesson fact:</strong> When noticed</li><li><strong>Lesson fact:</strong> Evidence</li><li><strong>Lesson fact:</strong> Translation/parsing time</li><li><strong>Lesson fact:</strong> Invalid grammar or structure.</li><li><strong>Lesson fact:</strong> Missing bracket or malformed IF statement.</li><li><strong>Lesson fact:</strong> Testing/output checking</li><li><strong>Lesson fact:</strong> Program runs but result is incorrect.</li><li><strong>Lesson fact:</strong> Average calculated with wrong divisor.</li><li><strong>Lesson fact:</strong> While executing</li><li><strong>Lesson fact:</strong> Program fails due to operation or resource problem.</li><li><strong>Lesson fact:</strong> Division by zero or file not found.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end compare -->
-        <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-060">
-          <div class="section-title">
-            <p class="eyebrow">Interactive tool</p>
-            <h2>Error diagnosis tool</h2>
-            <p>Select a symptom and classify the most likely error type.</p>
-          </div>
-          <div class="converter-grid">
-            <label>
-              Symptom
-              <select id="scenarioInput">
-                <option value="missing">Translator reports: expected ) before ENDIF</option>
-                <option value="double">Program runs but doubles every price by mistake</option>
-                <option value="zero">Program crashes when denominator is 0</option>
-                <option value="file">Program starts but fails because a file is missing</option>
-                <option value="offbyone">Loop runs one fewer time than intended</option>
-                <option value="line">Diagnostic points to the line after the real missing symbol</option>
-              </select>
-            </label>
-            <button class="primary-button" type="button" id="simulateBtn">Diagnose</button>
-          </div>
-          <div class="result-box" id="simulateResult" aria-live="polite"></div>
-          <div class="method-box" id="simulateMethod"></div>
-          <div class="reject-box" id="simulateTrap"></div>
-        </section>
-
-        <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-060">
-          <div class="section-title">
-            <p class="eyebrow">Worked examples</p>
-            <h2>Diagnose from code behaviour</h2>
-          </div>
-          <div class="example-tabs" role="tablist" aria-label="Worked example tabs">
-            <button class="tab active" type="button" data-example="syntax">Syntax</button>
-            <button class="tab" type="button" data-example="logic">Logic</button>
-            <button class="tab" type="button" data-example="runtime">Runtime</button>
-            <button class="tab" type="button" data-example="diagnostic">Diagnostic</button>
-          </div>
-          <div class="example-box" id="exampleBox"></div>
-        </section>
-
-        <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-060">
-          <div class="section-title">
-            <p class="eyebrow">Practice</p>
-            <h2>Instant-check questions</h2>
-            <p>Type a short answer, then check. Reveal the expected wording only after trying.</p>
-          </div>
-          <div class="practice-list" id="practiceList"></div>
-        </section>
-
-        <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-060">
-          <div class="section-title">
-            <p class="eyebrow">Mistake debugging</p>
-            <h2>Fix the almost-right answers</h2>
-          </div>
-          <div class="mistake-grid" id="mistakeGrid"></div>
-        </section>
-
-        <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-060">
-          <div class="section-title">
-            <p class="eyebrow">Exam-style questions</p>
-            <h2>Answer first, then reveal the Cambridge-style mark scheme</h2>
-            <p>These are original Cambridge-style questions. The mark schemes include strict wording notes and follow-through guidance.</p>
-          </div>
-          <div class="exam-list" id="examList"></div>
-        </section>
-
-        <section class="panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-060">
-          <div class="section-title">
-            <p class="eyebrow">Summary</p>
-            <h2>Error diagnosis memory map</h2>
-          </div>
-          <div class="summary-grid">
-            <div><strong>Syntax</strong><span>Grammar invalid; translator can detect before successful running.</span></div>
-            <div><strong>Logic</strong><span>Program runs but algorithm gives wrong output.</span></div>
-            <div><strong>Runtime</strong><span>Program fails during execution.</span></div>
-            <div><strong>Compiler</strong><span>May report a list of errors after translation attempt.</span></div>
-            <div><strong>Interpreter</strong><span>May stop at the statement being executed.</span></div>
-            <div><strong>Exam rule</strong><span>Classify, justify with evidence, then give a relevant example.</span></div>
-          </div>
-        </section>
-
-        <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
-          <div class="section-title">
-            <p class="eyebrow">Homework</p>
-            <h2>Clear output, not vague revision</h2>
-          </div>
-          <div class="homework-list">
-            <article>
-              <strong>Task 1: Error evidence table</strong>
-              <span>Create a table for syntax, logic and runtime errors: when noticed, symptom, example and how to detect it.</span>
-            </article>
-            <article>
-              <strong>Task 2: Classification set</strong>
-              <span>Write five short code-behaviour scenarios and classify each error type with one-sentence evidence.</span>
-            </article>
-            <article>
-              <strong>Task 3: 6-mark answer</strong>
-              <span>Explain how translation diagnostics help programmers find errors, and why logic errors may still require testing.</span>
-            </article>
-          </div>
-        </section>
+        <nav class="v2-bottom-nav" aria-label="Previous and next lesson"><a href="../lesson-059/" >Previous lesson</a><a href="../lesson-061/" >Next lesson</a></nav>
       </div>
     </main>
-    <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=3"></script>
-    <script src="../lesson-toolbar.js?v=3"></script>
-    <script src="../stage7-accessibility.js?v=4"></script>
+    <script src="../course-v2.js?v=1"></script>
   </body>
 </html>

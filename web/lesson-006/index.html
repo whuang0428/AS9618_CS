@@ -3,446 +3,89 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 006 | BCD and hexadecimal in practical systems</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <title>AS9618 Lesson 006 | Sound representation and file compression</title>
     <link rel="icon" href="data:" />
-    <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
+    <link rel="stylesheet" href="../course-v2.css?v=3" />
   </head>
-  <body>
+  <body data-course-version="2" data-lesson-id="006" data-syllabus-ids="S1.10,S1.11">
     <a class="skip-link" href="#main-content">Skip to main content</a>
-    <header class="topbar">
-      <div>
-        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 1</p>
-        <h1>BCD and hexadecimal in practical systems</h1>
-      </div>
-      <div class="action-panel" aria-label="Page controls">
-        <a class="course-home-link" href="../">Course home</a>
-        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
-      </div>
+    <header class="v2-topbar">
+      <div><p class="v2-eyebrow">Cambridge AS9618 | Paper 1 | Section 1: Information representation</p><h1>Sound representation and file compression</h1></div>
+      <nav class="v2-actions" aria-label="Lesson actions"><a href="../">Course home</a><a href="../assessments/">Assessment bank</a><button type="button" id="printLesson">Print</button></nav>
     </header>
-
-    <main class="layout" id="main-content" tabindex="-1">
-      <aside class="lesson-nav" aria-label="Lesson navigation">
-        <a href="#overview">Overview</a>
-        <a href="#hook">Warm-up</a>
-        <a href="#point">Binary point</a>
-        <a href="#convert">Conversion</a>
-        <a href="#precision">Precision</a>
-        <a href="#tool">Converter</a>
-        <a href="#examples">Examples</a>
-        <a href="#practice">Practice</a>
-        <a href="#exam">Exam-style</a>
-        <a href="#homework">Homework</a>
-        <a href="#stage2-completion">Core syllabus content</a>
-      </aside>
-
-      <div class="lesson-content">
-        <!-- remediation-v2-stage3-scope:start -->
-        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.</p></aside>
-        <!-- remediation-v2-stage3-scope:end -->
-
-        <!-- remediation-v2-optional:start -->
-        <aside class="optional-enrichment-notice" aria-label="Optional enrichment scope">
-          <strong>Optional enrichment</strong>
-          <p>binary fractions and precision limits. This material is excluded from compulsory syllabus coverage, first-use and assessment statistics.</p>
-          <p><strong>Formal AS prerequisite:</strong> S1.02-S1.03 integer number systems and conversions.</p>
-        </aside>
-        <!-- remediation-v2-optional:end -->
-<!-- stage2-completion:start -->
-        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus content</p>
-            <h2>BCD and hexadecimal in practical systems</h2>
-          </div>
-          <div class="stage2-explanation">
-            <p>BCD encodes each denary digit separately in four bits. For example, 59 becomes 0101 1001, not the pure-binary value 00111011.</p>
-            <p>Only 0000 to 1001 are valid BCD digit groups. BCD is used where decimal digits must be displayed or processed exactly, such as digital clocks, calculators and financial displays, although it usually uses more bits than pure binary.</p>
-            <p>Hexadecimal is used as a compact human-readable form of binary. One hex digit represents four bits, so hexadecimal is practical for memory addresses, machine-code/debug displays and colour values.</p>
-            <p>A digital clock is a practical BCD application because each displayed denary digit maps directly to one four-bit BCD group.</p>
-            <p>Representation overview: the required integer representations are binary, denary, hexadecimal, BCD, one's-complement and two's-complement. Conversion means preserving the integer value while changing its base or signed representation.</p>
-          </div>
-          <article class="stage2-example">
-            <h3>Worked example: Choose representations for a clock and an address</h3>
-            <p>A clock can encode 407 as BCD 0100 0000 0111 so each displayed denary digit maps to one four-bit group. A binary memory address can be written compactly in hexadecimal because each hexadecimal digit maps exactly to one nibble.</p>
-          </article>
+    <main class="v2-shell" id="main-content" tabindex="-1">
+      <nav class="v2-toc" aria-label="Lesson contents"><strong>Lesson 006</strong><a href="#overview">Overview</a><a href="#prerequisite">Prerequisite</a><a href="#explanation">Explanation</a><a href="#practice">Practice</a><a href="#summary">Summary</a></nav>
+      <div class="v2-content">
+        <section class="v2-hero" id="overview">
+          <div><p class="v2-eyebrow">Flexible-depth lesson</p><h2>Sound representation and file compression</h2><p>S1.10, S1.11 | Select what to omit, teach briefly or explore in depth.</p></div>
+          <div class="v2-time-grid" aria-label="Available lesson depth"><div><strong>Quick</strong><span>diagnose + essentials</span></div><div><strong>Full</strong><span>complete explanation</span></div><div><strong>Deep</strong><span>prerequisites + extension</span></div><div><strong>Choose</strong><span>practice by need</span></div></div>
         </section>
-        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus practice</p>
-            <h2>BCD and hexadecimal in practical systems: apply and assess</h2>
-          </div>
-          <div class="stage2-practice">
-            <h3>Targeted practice</h3>
-            <article class="stage2-question">
-              <p><strong>1.</strong> Write denary 82 in BCD.</p>
-              <details><summary>Show answer</summary><p>1000 0010.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>2.</strong> Give the decoded form of BCD 0011 1001.</p>
-              <details><summary>Show answer</summary><p>39.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>3.</strong> Why is BCD suitable for a digital clock?</p>
-              <details><summary>Show answer</summary><p>Each displayed denary digit maps directly to one four-bit group.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>4.</strong> Why is hexadecimal suitable for a memory address?</p>
-              <details><summary>Show answer</summary><p>It is a compact form of binary with one digit per four-bit nibble.</p></details>
-            </article>
-          </div>
-          <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>4 marks</span></div>
-            <p>Explain one practical application of BCD and one practical application of hexadecimal.</p>
-            <details>
-              <summary>Show MS</summary>
-              <table class="mark-scheme-table">
-                <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
-                <tbody>
-                  <tr><td>BCD application such as a digital clock, calculator or financial display</td><td>Do not award a named application without explaining why the representation suits it.</td><td>1</td></tr>
-                  <tr><td>links BCD to separate exact denary digits</td><td></td><td>1</td></tr>
-                  <tr><td>hexadecimal application such as memory addresses, machine-code/debug output or colour values</td><td></td><td>1</td></tr>
-                  <tr><td>links hexadecimal to compact four-bit grouping</td><td></td><td>1</td></tr>
-                </tbody>
-              </table>
-            </details>
-          </article>
-        </section>
-        <!-- stage2-completion:end -->
 
-<section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-006">
-          <div class="hero-copy">
-            <p class="lesson-meta">Lesson 006 | 45 minutes | Informal questioning</p>
-            <h2>The binary point is not decoration. It moves the weights.</h2>
-            <p>
-              This lesson extends place value to fractional positions such as `1/2`, `1/4`
-              and `1/8`, then uses simple examples to explain why some denary fractions
-              cannot be represented exactly in a fixed number of binary places.
-            </p>
-            <div class="objective-grid" aria-label="Learning objectives">
-              <div>
-                <strong>Identify</strong>
-                <span>binary fractional place values after the binary point</span>
-              </div>
-              <div>
-                <strong>Convert</strong>
-                <span>simple fixed-point binary fractions and denary fractions</span>
-              </div>
-              <div>
-                <strong>Explain</strong>
-                <span>precision limits, truncation, rounding and representation error</span>
-              </div>
+        <section class="v2-panel v2-route-menu" aria-labelledby="route-heading">
+          <div class="v2-heading"><p class="v2-eyebrow">Teacher choice</p><h2 id="route-heading">Choose the depth for this group</h2></div>
+          <div class="v2-route-grid"><article><h3>Quick route</h3><p>Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.</p></article><article><h3>Full route</h3><p>Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.</p></article><article><h3>Deep route</h3><p>Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.</p></article></div>
+        </section>
+
+        <section class="v2-panel" id="prerequisite">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 1 | optional depth</p><h2>Prerequisite knowledge and quick diagnostic</h2></div>
+          <div class="v2-diagnostic"><p>Recall S1.01, S1.08, S1.09, S1.10 before starting this lesson.</p></div>
+          <p>Give one accurate definition or method step before continuing. If it is missing, revisit only that prerequisite.</p>
+          <details class="v2-prerequisite-detail"><summary>Open optional prerequisite refresher</summary><ul><li>Use and distinguish kibi/kilo, mebi/mega, gibi/giga and tebi/tera; binary prefixes use powers of 1024 and decimal prefixes use powers of 1000.</li><li>Show understanding of binary magnitudes and the difference between binary prefixes and decimal prefixes.</li><li>Use and understand the terms pixel, file header, image resolution, screen resolution and colour depth/bit depth. Required effects concern image resolution and colour depth/bit depth.</li><li>Show understanding of how data for a bitmapped image are encoded; perform calculations to estimate the file size for a bitmap image; show understanding of the effects of changing elements of a bitmap image on the image quality and file size.</li><li>Use drawing object, property and drawing list; a justification must connect bitmap/vector characteristics to the stated application.</li><li>Show understanding of vector-graphic encoding and justify bitmap or vector storage for a given task.</li></ul></details>
+        </section>
+
+        <section class="v2-panel" id="explanation">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 2 | deliberately over-complete</p><h2>Knowledge explanation</h2></div>
+          <h3>Learning objectives</h3><ul class="v2-objectives"><li>Show understanding of how sound is represented and encoded; show understanding of the impact of changing the sampling rate and resolution.</li><li>Show understanding of the need for and examples of file compression; show understanding of lossy and lossless compression and justify a method for a given application; show understanding of how a text, bitmap, vector graphic and sound file can be compressed.</li></ul>
+          <details class="v2-concept-menu"><summary>Open the concept checklist and choose what to teach</summary><ul><li>sound</li><li>digital representation</li><li>analogue-to-digital sampling</li><li>sampling rate</li><li>sampling resolution</li><li>file size</li><li>accuracy</li><li>compression</li><li>lossy</li><li>lossless</li><li>text</li><li>bitmap</li><li>vector</li><li>RLE / run-length encoding</li></ul></details>
+          <div class="v2-explanation-grid">
+            <div>
+              <article class="v2-core-facts"><h3>Detailed explanation</h3><p class="v2-teacher-note">Teach all points, or select only the ones this group needs. The list is intentionally fuller than a fixed lesson slot.</p><ul class="v2-facts"><li>Use the terms sampling, sampling rate and sampling resolution. Explain the impact of changing sampling rate and sampling resolution on file size and accuracy; sound-file-size calculation is not stated as a compulsory requirement.</li><li>Run-length encoding (RLE) is the named example in the adjacent Notes and guidance.</li><li>An analogue sound wave varies continuously. Analogue-to-digital sampling measures its amplitude at regular time intervals, quantises each measurement to one permitted level and stores the resulting sample value as a binary number. The sequence of binary sample values is the digital representation of the sound.</li><li>Sampling rate is the number of samples taken per second, measured in hertz (Hz). Sampling resolution is the number of bits used for each sample and therefore controls how many amplitude levels are available. &#39;Sample resolution&#39; is a common synonym, but sampling resolution is the official syllabus term.</li><li>Increasing sampling rate stores more measurements each second, which can improve time accuracy and increases file size. Increasing sampling resolution stores more bits for each sample, which gives more amplitude levels, can improve amplitude accuracy and increases file size. The syllabus requires these effects, not a sound-file-size calculation formula.</li><li>Compression represents a file using fewer bits. Lossless compression must reconstruct every original bit, so it is required where any change would alter meaning, such as program source or exact text. Lossy compression permanently discards selected detail and is suitable only when the resulting quality remains acceptable for the purpose.</li><li>Text can be compressed losslessly by run-length encoding repeated characters or by replacing repeated words/strings with shorter dictionary references. Bitmap data can use run-length encoding when adjacent pixels repeat; lossy bitmap compression may reduce colour precision or discard fine spatial detail. RLE is effective only when the runs save more space than their symbol-count representation.</li><li>A vector file stores drawing objects rather than pixels. It can be compressed losslessly by storing repeated shapes or properties once and referring to them, and by removing redundant object descriptions. Sound can use lossless pattern coding when exact samples are required, or lossy perceptual coding that removes less-audible sound information; reducing sample rate or sampling resolution also reduces data but changes the recording.</li><li>Method choice depends on file type, repetition, required fidelity and use. A valid justification must connect the chosen method to what may or may not be discarded; naming &#39;lossy&#39; or &#39;lossless&#39; alone is not enough.</li></ul></article>
+              <article class="v2-example"><h3>Worked example</h3><p>Choose methods for four files: Compress repeated spaces in a text log with RLE or a dictionary without changing the characters; compress a flat-colour bitmap logo with pixel-value RLE; store one repeated vector shape once and reference it; use lossless sound compression for an evidential recording, but perceptual lossy coding may suit streamed music when smaller size is worth a controlled quality loss.</p></article>
+              <aside class="v2-extension"><h3>Beyond syllabus / 延伸知识（不要求背诵）</h3><p>real file formats also store headers and metadata, so two files with the same visible content may still have different sizes.</p></aside>
             </div>
-          </div>
-          <div class="binary-display" aria-label="Binary fraction focus">
-            <span>10.101₂</span>
-            <p>`10.101₂` is not ten point one hundred and one. Binary is interpreted using binary place values.</p>
-          </div>
-        </section>
-
-        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-006">
-          <article class="why-card">
-            <h3>Why this matters</h3>
-            <p>Computer systems store numbers using limited bits, so some fractions are approximations rather than exact values.</p>
-          </article>
-          <article class="trap-card">
-            <h3>Common error</h3>
-            <p>Do not treat `0.1₂` as one tenth. It is one half because the first place after the point is `2⁻¹`.</p>
-          </article>
-        </section>
-
-        <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-006">
-          <div class="section-title">
-            <p class="eyebrow">Warm-up hook</p>
-            <h2>Which value is `0.1₂`?</h2>
-          </div>
-          <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="one-tenth">0.1₁₀</button>
-            <button class="choice-card" type="button" data-hook="half">0.5₁₀</button>
-            <button class="choice-card" type="button" data-hook="one">1₁₀</button>
-            <button class="choice-card" type="button" data-hook="unknown">It cannot be known</button>
-          </div>
-          <div class="feedback" id="hookFeedback" aria-live="polite">
-            Pick an answer. The first binary fractional place is worth `1/2`, not `1/10`.
+            <figure class="v2-visual">
+              <img src="../assets/diagrams/stage10-infographics/stage10-lesson-011-formula.jpg" alt="size in bits = sampling rate × sampling resolution × duration. size in bytes = bits ÷ 8" loading="lazy" />
+              <figcaption>Basic mono sound file size formula. One maintained explanation is shown as an image on larger screens and as text on small screens.</figcaption>
+              <div class="v2-mobile-visual-text" aria-label="Mobile text alternative"><ul><li>size in bits = sampling rate × sampling resolution × duration</li><li>size in bytes = bits ÷ 8</li></ul></div>
+            </figure>
           </div>
         </section>
 
-        <section class="panel" id="point" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-006">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 1</p>
-            <h2>Binary fractional place value</h2>
-          </div>
-          <div class="table-wrap">
-            <table class="place-table" aria-label="Binary fractional place value table">
-              <thead>
-                <tr>
-                  <th>Place</th>
-                  <th>2²</th>
-                  <th>2¹</th>
-                  <th>2⁰</th>
-                  <th class="point-cell">.</th>
-                  <th>2⁻¹</th>
-                  <th>2⁻²</th>
-                  <th>2⁻³</th>
-                  <th>2⁻⁴</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th>Value</th>
-                  <td>4</td>
-                  <td>2</td>
-                  <td>1</td>
-                  <td class="point-cell">.</td>
-                  <td>1/2</td>
-                  <td>1/4</td>
-                  <td>1/8</td>
-                  <td>1/16</td>
-                </tr>
-                <tr>
-                  <th>Example `10.101₂`</th>
-                  <td>0</td>
-                  <td>1</td>
-                  <td>0</td>
-                  <td class="point-cell">.</td>
-                  <td>1</td>
-                  <td>0</td>
-                  <td>1</td>
-                  <td>0</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <div class="worked-line">
-            `10.101₂ = 2 + 1/2 + 1/8 = 2.625₁₀`
-          </div>
+        <section class="v2-panel" id="practice">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 3 | select by learner need</p><h2>Practice by question type</h2></div>
+          <div class="v2-question-list"><article class="v2-question" data-question-id="Q-L006-01" data-semantic-fingerprint="S1.10+S1.11|sound-representation-and-file-compression|describe|text-bitmap-vector-suitable|visual|explain">
+              <div class="v2-question-head"><span class="v2-badge">describe</span><span class="v2-badge">explain</span><span class="v2-badge difficulty">foundation</span><span class="v2-badge">6 marks</span></div>
+              <p><strong>Question 1.</strong> For each of text, bitmap, vector and sound data, describe one suitable compression method and state whether it preserves the original data exactly.</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> text: lossless RLE or dictionary/token substitution with exact reconstruction; bitmap: RLE for repeated adjacent pixel values, or a valid lossy image method identified as non-exact; vector: stores repeated objects/properties once and uses references / removes redundant descriptions, losslessly; sound: lossless pattern coding for exact samples or perceptual lossy coding that removes less-audible detail; distinguishes exact lossless reconstruction from irreversible lossy removal; links at least one method to repetition, fidelity or intended use</p><p><strong>Marking guidance:</strong> Do not award generic &#39;make the file smaller&#39; statements without a method tied to the named media type.</p><p><strong>Common error:</strong> For the command word describe, perform that exact action; do not replace it with an unrelated fact.</p></div></details>
+            </article><article class="v2-question" data-question-id="Q-L006-02" data-semantic-fingerprint="S1.10+S1.11|sound-representation-and-file-compression|explain|increasing-sampling-rate-resolution|written|calculate">
+              <div class="v2-question-head"><span class="v2-badge">explain</span><span class="v2-badge">calculate</span><span class="v2-badge difficulty">application</span><span class="v2-badge">4 marks</span></div>
+              <p><strong>Question 2.</strong> Explain how increasing (i) sampling rate and (ii) sampling resolution can affect the accuracy and file size of a digital sound recording.</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> higher sampling rate means more samples are stored each second; higher sampling rate can improve time accuracy and increases file size; higher sampling resolution means more bits/amplitude levels per sample; higher sampling resolution can improve amplitude accuracy and increases file size</p><p><strong>Marking guidance:</strong> Do not interchange sampling rate and sampling resolution; rate controls measurements per second, while resolution controls bits/levels per measurement.</p><p><strong>Common error:</strong> Do not repeat the same point in different words; each mark needs a separate idea or method step.</p></div></details>
+            </article><article class="v2-question" data-question-id="Q-L006-03" data-semantic-fingerprint="S1.10+S1.11|sound-representation-and-file-compression|give|lossy-method-trade-off|written|recall">
+              <div class="v2-question-head"><span class="v2-badge">give</span><span class="v2-badge">recall</span><span class="v2-badge difficulty">transfer</span><span class="v2-badge">2 marks</span></div>
+              <p><strong>Question 3.</strong> Give one lossy method for sound and its trade-off.</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> Remove less-audible frequency/detail information, or reduce sample rate/resolution; the file is smaller but the discarded detail cannot be recovered.</p><p><strong>Marking guidance:</strong> Award one mark for each distinct, technically accurate point or method step.</p><p><strong>Common error:</strong> Do not copy the worked example unchanged; transfer the method and check it against the new context.</p></div></details>
+            </article></div>
+          <div class="v2-paper-refs">
+          <h3>Related past-paper indexes</h3>
+          <table><thead><tr><th>Reference</th><th>Marks</th><th>Command word</th><th>Question type</th></tr></thead>
+          <tbody><tr><td>9618/11/S/25 Q2(ii)</td><td>3</td><td>explain</td><td>explain</td></tr><tr><td>9618/13/S/25 Q1(b)</td><td>3</td><td>complete</td><td>calculate</td></tr><tr><td>9618/13/W/25 Q1(a)</td><td>3</td><td>draw</td><td>calculate</td></tr><tr><td>9618/11/S/25 Q2(c)</td><td>2</td><td>complete</td><td>recall</td></tr></tbody></table>
+          <p class="v2-copyright-note">Index only: Cambridge question and mark-scheme wording is not reproduced on this public course page.</p>
+        </div>
         </section>
 
-        <!-- stage10-explanation:start point -->
-        <section class="panel explanation-panel" id="explanation-point" data-explains="point" data-explanation-kind="mechanism" aria-labelledby="explanation-point-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-006">
-          <h2 class="explanation-sr-only" id="explanation-point-title">Binary fractional place value</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-006-point.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Binary fractional place value with a structured visual model." />
-            <figcaption class="explanation-sr-only">Binary fractional place value: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Example 10.101₂</li><li><strong>Lesson fact:</strong> 10.101₂ = 2 + 1/2 + 1/8 = 2.625₁₀</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end point -->
-        <section id="delivery-05" class="guidance-grid compact" aria-label="Fraction guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-006">
-          <article class="trap-card">
-            <h3>Common error</h3>
-            <p>Bits to the right of the point get smaller from left to right: `1/2`, `1/4`, `1/8`, `1/16`.</p>
-          </article>
+        <section class="v2-panel" id="summary">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 4 | close when ready</p><h2>Summary and exam reminders</h2></div>
+          <div class="v2-summary-grid"><div><h3>Summary</h3><ul class="v2-summary-list"><li>Define sound representation and file compression with the exact technical vocabulary expected by the syllabus.</li><li>Use the lesson method on a fresh context and show the intermediate decision, representation or calculation.</li><li>Match the shape of the answer to the command word and the available marks.</li><li>Check the final answer against the scenario instead of repeating a memorised sentence.</li></ul></div><div class="v2-error"><h3>Common error to correct</h3><p>Students often assume compression always makes a file smaller. Correction: compression has overhead and depends on patterns in the data.</p></div></div>
+          <div class="v2-tip-box"><h3>Exam technique</h3><ul><li>Follow the command word: state gives a fact; explain links a cause to a consequence; compare covers both sides.</li><li>Match the number of independent points or method steps to the available marks.</li><li>For sound representation and file compression, use the exact technical term before applying it to the scenario.</li></ul></div>
         </section>
 
-        <section class="panel" id="convert" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-006">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 2</p>
-            <h2>Converting simple binary fractions</h2>
-          </div>
-          <div class="method-grid">
-            <article>
-              <h3>Binary fraction to denary</h3>
-              <ol>
-                <li>Write the place values above and below the point.</li>
-                <li>Add the values for every `1` bit.</li>
-                <li>Keep the base label until the final answer.</li>
-                <li>State whether the answer is exact.</li>
-              </ol>
-            </article>
-            <article>
-              <h3>Denary fraction to binary</h3>
-              <ol>
-                <li>Use `1/2`, `1/4`, `1/8`, `1/16` as target values.</li>
-                <li>Subtract a target value when it fits.</li>
-                <li>Write `1` for a used value and `0` for a skipped value.</li>
-                <li>Stop when the remainder is zero or the bit limit is reached.</li>
-              </ol>
-            </article>
-          </div>
-          <div class="callout">Example: `0.625₁₀ = 0.101₂` because `0.5 + 0.125 = 0.625`.</div>
-        </section>
-
-        <!-- stage10-explanation:start convert -->
-        <section class="panel explanation-panel" id="explanation-convert" data-explains="convert" data-explanation-kind="mechanism" aria-labelledby="explanation-convert-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-006">
-          <h2 class="explanation-sr-only" id="explanation-convert-title">Converting simple binary fractions</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-006-convert.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Converting simple binary fractions with a structured visual model." />
-            <figcaption class="explanation-sr-only">Converting simple binary fractions: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Binary fractional place values are 1/2, 1/4, 1/8 and 1/16 from left to right.</li><li><strong>Lesson fact:</strong> 0.1010 binary equals 1/2 + 1/8 = 0.625 denary.</li><li><strong>Lesson fact:</strong> 0.1100 binary equals 1/2 + 1/4 = 0.75 denary.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end convert -->
-        <section class="panel" id="precision" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-006">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 3</p>
-            <h2>Precision limits: why computers sometimes approximate</h2>
-          </div>
-          <div class="precision-grid">
-            <article>
-              <h3>Exact</h3>
-              <p>`0.75₁₀ = 0.11₂` exactly because `1/2 + 1/4 = 3/4`.</p>
-            </article>
-            <article>
-              <h3>Limited precision</h3>
-              <p>With four fractional bits, `0.1₁₀` becomes approximately `0.0001₂`, which is `0.0625₁₀`.</p>
-            </article>
-            <article>
-              <h3>Error</h3>
-              <p>Representation error is the difference between the intended value and the stored approximation.</p>
-            </article>
-          </div>
-          <div class="callout warning">
-            This lesson uses fixed fractional places only. Mantissa, exponent and floating-point normalisation belong to later A Level content.
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start precision -->
-        <section class="panel explanation-panel" id="explanation-precision" data-explains="precision" data-explanation-kind="mechanism" aria-labelledby="explanation-precision-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-006">
-          <h2 class="explanation-sr-only" id="explanation-precision-title">Precision limits: why computers sometimes approximate</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-006-precision.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Precision limits: why computers sometimes approximate with a structured visual model." />
-            <figcaption class="explanation-sr-only">Precision limits: why computers sometimes approximate: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> 0.75 denary equals 0.1100 binary exactly.</li><li><strong>Lesson fact:</strong> With four fractional bits, truncating 0.1 gives 0.0001 binary, which equals 0.0625 denary.</li><li><strong>Lesson fact:</strong> The truncation error is 0.0375.</li><li><strong>Lesson fact:</strong> Rounding 0.1 to the nearest four-bit fractional value gives 0.0010 binary, which equals 0.125 denary.</li><li><strong>Lesson fact:</strong> The rounding error is 0.025, so 0.125 is nearer to 0.1 than 0.0625.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end precision -->
-        <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-006">
-          <div class="section-title">
-            <p class="eyebrow">Interactive tool</p>
-            <h2>Fixed binary fraction converter</h2>
-          </div>
-          <div class="converter-grid">
-            <label>
-              Direction
-              <select id="convertMode">
-                <option value="binaryToDenary">Binary fraction to denary</option>
-                <option value="denaryToBinary">Denary fraction to binary</option>
-              </select>
-            </label>
-            <label>
-              Value
-              <input id="convertValue" type="text" value="10.101" />
-            </label>
-            <label>
-              Fractional bits
-              <select id="precisionBits">
-                <option value="4">4 bits</option>
-                <option value="6">6 bits</option>
-                <option value="8">8 bits</option>
-              </select>
-            </label>
-            <button type="button" id="convertBtn">Convert</button>
-          </div>
-          <div class="result-box" id="convertResult" aria-live="polite"></div>
-          <div class="method-box" id="convertMethod"></div>
-          <div class="bit-visual" id="bitVisual" aria-label="Binary fraction bit visual"></div>
-        </section>
-
-        <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-006">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge examples</p>
-            <h2>Worked examples</h2>
-          </div>
-          <div class="example-tabs" role="tablist" aria-label="Worked examples">
-            <button class="tab active" type="button" data-example="binary">10.101₂ to denary</button>
-            <button class="tab" type="button" data-example="denary">0.625₁₀ to binary</button>
-            <button class="tab" type="button" data-example="precision">0.1₁₀ with 4 bits</button>
-          </div>
-          <article class="example-box" id="exampleBox"></article>
-        </section>
-
-        <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-006">
-          <div class="section-title">
-            <p class="eyebrow">Your turn</p>
-            <h2>Practice with instant checking</h2>
-          </div>
-          <div class="practice-list" id="practiceList"></div>
-          <button class="primary-button" type="button" id="checkPractice">Check practice</button>
-          <div class="feedback" id="practiceFeedback" aria-live="polite"></div>
-        </section>
-
-        <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-006">
-          <div class="section-title">
-            <p class="eyebrow">Mistake debugging</p>
-            <h2>Find the quiet arithmetic bug</h2>
-          </div>
-          <div class="mistake-grid">
-            <article>
-              <p class="wrong">`0.1₂ = 0.1₁₀`</p>
-              <button class="answer-toggle" type="button" data-answer="mistake1">Show correction</button>
-              <p class="answer" id="mistake1">`0.1₂ = 1/2 = 0.5₁₀`. The first binary fractional place is not tenths.</p>
-            </article>
-            <article>
-              <p class="wrong">`0.101₂ = 1/2 + 1/4 = 0.75₁₀`</p>
-              <button class="answer-toggle" type="button" data-answer="mistake2">Show correction</button>
-              <p class="answer" id="mistake2">The middle bit is 0, so skip `1/4`. `0.101₂ = 1/2 + 1/8 = 0.625₁₀`.</p>
-            </article>
-          </div>
-        </section>
-
-        <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-006">
-          <div class="section-title">
-            <p class="eyebrow">Exam-style questions</p>
-            <h2>Questions with expandable MS</h2>
-            <p>
-              Use the buttons under each question to expand the Cambridge-style mark scheme.
-              These are original questions written in Cambridge style, not copied past-paper items.
-            </p>
-          </div>
-          <div class="exam-list" id="examList"></div>
-        </section>
-
-        <section class="panel summary-panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-006">
-          <div class="section-title">
-            <p class="eyebrow">Summary</p>
-            <h2>Keep the point under control</h2>
-          </div>
-          <div class="summary-grid">
-            <div><strong>1</strong><span>Binary fractional places are `1/2`, `1/4`, `1/8`, `1/16`...</span></div>
-            <div><strong>2</strong><span>Convert by adding active place values or subtracting target fractions.</span></div>
-            <div><strong>3</strong><span>Limited bits can force truncation or rounding, creating representation error.</span></div>
-            <div><strong>4</strong><span>Do not mix fixed binary fractions with later floating-point normalisation.</span></div>
-          </div>
-        </section>
-
-        <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
-          <div class="section-title">
-            <p class="eyebrow">Homework</p>
-            <h2>Clear tasks, not “revise everything”</h2>
-          </div>
-          <ol class="homework-list">
-            <li>Convert `0.11₂`, `10.01₂` and `11.101₂` to denary.</li>
-            <li>Convert `0.25₁₀`, `0.875₁₀` and `2.625₁₀` to binary.</li>
-            <li>Using four fractional bits, approximate `0.3₁₀` by repeated subtraction and state the error.</li>
-            <li>Write a 4-mark explanation of why limited binary places can cause precision loss.</li>
-          </ol>
-          <button class="answer-toggle" type="button" data-answer="homeworkAnswers">Show homework answers</button>
-          <div class="answer-panel" id="homeworkAnswers">
-            <p><strong>Binary to denary:</strong> `0.11₂ = 0.75₁₀`; `10.01₂ = 2.25₁₀`; `11.101₂ = 3.625₁₀`.</p>
-            <p><strong>Denary to binary:</strong> `0.25₁₀ = 0.01₂`; `0.875₁₀ = 0.111₂`; `2.625₁₀ = 10.101₂`.</p>
-            <p><strong>0.3 with four fractional bits:</strong> `0.0100₂ = 0.25₁₀`, error `0.05`; if rounding to nearest four bits, `0.0101₂ = 0.3125₁₀`, error `0.0125`.</p>
-            <p><strong>Explanation focus:</strong> a fixed number of bits may stop before the exact fraction is reached, so the stored value is an approximation.</p>
-          </div>
-        </section>
+        <nav class="v2-bottom-nav" aria-label="Previous and next lesson"><a href="../lesson-005/" >Previous lesson</a><a href="../lesson-007/" >Next lesson</a></nav>
       </div>
     </main>
-
-    <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=3"></script>
-    <script src="../lesson-toolbar.js?v=3"></script>
-    <script src="../stage7-accessibility.js?v=4"></script>
+    <script src="../course-v2.js?v=1"></script>
   </body>
 </html>

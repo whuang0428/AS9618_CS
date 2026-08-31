@@ -80,7 +80,7 @@ function renderLessons() {
 }
 
 function init() {
-  if (lessons.length !== 151) {
+  if (lessons.length !== 90) {
     document.querySelector("#lessonGrid").innerHTML = '<div class="empty">The course catalogue could not be loaded.</div>';
     return;
   }

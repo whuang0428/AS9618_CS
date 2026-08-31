@@ -3,292 +3,89 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 015 | Choosing data representation for a real system</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <title>AS9618 Lesson 015 | Buffers and primary memory technologies</title>
     <link rel="icon" href="data:" />
-    <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
+    <link rel="stylesheet" href="../course-v2.css?v=3" />
   </head>
-  <body>
+  <body data-course-version="2" data-lesson-id="015" data-syllabus-ids="S3.04,S3.05,S3.06,S3.07">
     <a class="skip-link" href="#main-content">Skip to main content</a>
-    <header class="topbar">
-      <div>
-        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 1</p>
-        <h1>Choosing data representation for a real system</h1>
-      </div>
-      <div class="action-panel" aria-label="Page controls">
-        <a class="course-home-link" href="../">Course home</a>
-        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
-      </div>
+    <header class="v2-topbar">
+      <div><p class="v2-eyebrow">Cambridge AS9618 | Paper 1 | Section 3: Hardware</p><h1>Buffers and primary memory technologies</h1></div>
+      <nav class="v2-actions" aria-label="Lesson actions"><a href="../">Course home</a><a href="../assessments/">Assessment bank</a><button type="button" id="printLesson">Print</button></nav>
     </header>
+    <main class="v2-shell" id="main-content" tabindex="-1">
+      <nav class="v2-toc" aria-label="Lesson contents"><strong>Lesson 015</strong><a href="#overview">Overview</a><a href="#prerequisite">Prerequisite</a><a href="#explanation">Explanation</a><a href="#practice">Practice</a><a href="#summary">Summary</a></nav>
+      <div class="v2-content">
+        <section class="v2-hero" id="overview">
+          <div><p class="v2-eyebrow">Flexible-depth lesson</p><h2>Buffers and primary memory technologies</h2><p>S3.04, S3.05, S3.06, S3.07 | Select what to omit, teach briefly or explore in depth.</p></div>
+          <div class="v2-time-grid" aria-label="Available lesson depth"><div><strong>Quick</strong><span>diagnose + essentials</span></div><div><strong>Full</strong><span>complete explanation</span></div><div><strong>Deep</strong><span>prerequisites + extension</span></div><div><strong>Choose</strong><span>practice by need</span></div></div>
+        </section>
 
-    <main class="layout" id="main-content" tabindex="-1">
-      <aside class="lesson-nav" aria-label="Lesson navigation">
-        <a href="#overview">Overview</a>
-        <a href="#hook">Warm-up</a>
-        <a href="#framework">Framework</a>
-        <a href="#cases">System cases</a>
-        <a href="#tradeoffs">Trade-offs</a>
-        <a href="#tool">Decision tool</a>
-        <a href="#examples">Examples</a>
-        <a href="#practice">Practice</a>
-        <a href="#exam">Exam-style</a>
-        <a href="#homework">Homework</a>
-      </aside>
+        <section class="v2-panel v2-route-menu" aria-labelledby="route-heading">
+          <div class="v2-heading"><p class="v2-eyebrow">Teacher choice</p><h2 id="route-heading">Choose the depth for this group</h2></div>
+          <div class="v2-route-grid"><article><h3>Quick route</h3><p>Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.</p></article><article><h3>Full route</h3><p>Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.</p></article><article><h3>Deep route</h3><p>Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.</p></article></div>
+        </section>
 
-      <div class="lesson-content">
-        <section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
-          <div class="hero-copy">
-            <p class="lesson-meta">Lesson 015 | 45 minutes | Informal questioning</p>
-            <h2>Good representation is not “use more bits everywhere”.</h2>
-            <p>
-              Real systems choose representations based on range, accuracy, storage,
-              compatibility, transfer speed and whether exact reconstruction is required.
-              This lesson combines number, text, image, sound and compression choices.
-            </p>
-            <div class="objective-grid" aria-label="Learning objectives">
-              <div><strong>Select</strong><span>appropriate representation for a given system requirement</span></div>
-              <div><strong>Justify</strong><span>trade-offs using precise Section 1 vocabulary</span></div>
-              <div><strong>Apply</strong><span>calculations and explanation to exam-style scenarios</span></div>
+        <section class="v2-panel" id="prerequisite">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 1 | optional depth</p><h2>Prerequisite knowledge and quick diagnostic</h2></div>
+          <div class="v2-diagnostic"><p>Recall S3.05 before starting this lesson.</p></div>
+          <p>Give one accurate definition or method step before continuing. If it is missing, revisit only that prerequisite.</p>
+          <details class="v2-prerequisite-detail"><summary>Open optional prerequisite refresher</summary><ul><li>Explain the differences between RAM and ROM, including their use in a range of devices and systems.</li><li>Distinguish RAM and ROM.</li></ul></details>
+        </section>
+
+        <section class="v2-panel" id="explanation">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 2 | deliberately over-complete</p><h2>Knowledge explanation</h2></div>
+          <h3>Learning objectives</h3><ul class="v2-objectives"><li>Understand why buffers are used.</li><li>Distinguish RAM and ROM.</li><li>Explain uses of SRAM and DRAM and reasons for each use.</li></ul>
+          <details class="v2-concept-menu"><summary>Open the concept checklist and choose what to teach</summary><ul><li>buffer</li><li>temporarily</li><li>different / speed</li><li>RAM</li><li>ROM</li><li>SRAM</li><li>DRAM</li><li>cache</li><li>main memory</li><li>PROM</li><li>EPROM</li><li>EEPROM</li></ul></details>
+          <div class="v2-explanation-grid">
+            <div>
+              <article class="v2-core-facts"><h3>Detailed explanation</h3><p class="v2-teacher-note">Teach all points, or select only the ones this group needs. The list is intentionally fuller than a fixed lesson slot.</p><ul class="v2-facts"><li>Show understanding of the use of buffers, including temporary storage used to manage different producer and consumer rates.</li><li>Explain the differences between RAM and ROM, including their use in a range of devices and systems.</li><li>Explain the differences between SRAM and DRAM, including their uses in a range of devices and systems and the reasons for choosing one instead of the other.</li><li>Explain the difference between PROM, EPROM and EEPROM, including how each can be programmed or erased.</li><li>A speaker uses a DAC/amplifier to drive a coil and cone, producing pressure waves. An output buffer temporarily holds data because the processor can produce it faster or in different-sized bursts than a printer or audio device can consume it.</li><li>An HDD spins magnetic platters while an actuator positions read/write heads; writing changes magnetic orientation and reading senses it. Flash memory stores charge in floating-gate cells and has no moving parts.</li><li>An optical drive spins a disc and directs a laser at its track. Reflected-light differences are read as data; a writer uses a higher-power laser to change a dye or recording layer.</li><li>A magnetic HDD uses moving read/write heads over rotating platters. Flash memory stores charge electronically with no moving parts. An optical disc reader/writer uses a laser to read marks and, on writable media, to create or alter marks.</li><li>RAM is volatile read/write primary memory used for programs and data currently being processed. ROM is non-volatile primary memory used for instructions that must remain when power is removed, such as firmware or start-up instructions. ROM is not ordinary long-term storage for user files.</li><li>SRAM stores bits using flip-flop circuits, needs no refresh and is fast but expensive with lower density, so it is used for cache. DRAM stores charge in capacitors, requires refresh and is slower but cheaper and denser, so it is used for main memory.</li><li>PROM is programmed once. EPROM can be erased with ultraviolet light and reprogrammed. EEPROM is erased and rewritten electrically, often without removing it from the system. All three are non-volatile ROM technologies.</li><li>Required device overview: a laser printer uses an electrostatic drum, laser, toner and fuser; a 3D printer builds successive layers; a speaker converts an electrical signal into sound. An HDD or magnetic hard disk uses rotating magnetic platters, flash memory stores charge electronically, and an optical reader/writer uses a laser.</li></ul></article>
+              <article class="v2-example"><h3>Worked example</h3><p>Print a page / Read an HDD block / Choose a storage mechanism / Choose memory for a computer system: The operating system places page data in a print buffer. The CPU can continue other work while the slower printer consumes buffered data and performs drum, toner and fusing stages. The controller moves the head to the correct track, waits for the sector to rotate beneath it, senses magnetic patterns and transfers the decoded bits through a buffer. A portable device may use flash memory for shock resistance; an archive may use optical media when an optical disc reader/writer is available. Use DRAM as main RAM because its density and lower cost support a large working capacity. Use a small amount of SRAM for cache because faster, no-refresh access reduces processor waiting. Store updateable firmware in EEPROM because it remains without power but can be rewritten electrically.</p></article>
+              <aside class="v2-extension"><h3>Beyond syllabus / 延伸知识（不要求背诵）</h3><p>professional device selection also considers accessibility, reliability, repairability and energy use.</p></aside>
             </div>
-          </div>
-          <div class="system-card" aria-label="Representation decision focus">
-            <span>range + accuracy + storage + purpose</span>
-            <p>The best answer is the one that fits the system, not the one with the biggest number.</p>
-          </div>
-        </section>
-
-        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
-          <article class="why-card">
-            <h3>Why this matters</h3>
-            <p>Scenario questions reward decisions that match constraints, not memorised definitions pasted into the answer.</p>
-          </article>
-          <article class="trap-card">
-            <h3>Common error</h3>
-            <p>Higher resolution, higher colour depth or higher sample rate may waste storage if the system does not need it.</p>
-          </article>
-        </section>
-
-        <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
-          <div class="section-title">
-            <p class="eyebrow">Warm-up hook</p>
-            <h2>A weather sensor stores temperatures from -40°C to +60°C. Which representation issue matters first?</h2>
-          </div>
-          <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="unsigned">Use unsigned only</button>
-            <button class="choice-card" type="button" data-hook="signed">Need signed values / range</button>
-            <button class="choice-card" type="button" data-hook="unicode">Use Unicode</button>
-            <button class="choice-card" type="button" data-hook="lossy">Use lossy compression</button>
-          </div>
-          <div class="feedback" id="hookFeedback" aria-live="polite">
-            Pick an answer. Negative temperatures are a quiet hint that unsigned storage may be wrong.
+            <figure class="v2-visual">
+              <img src="../assets/diagrams/stage10-infographics/stage10-lesson-031-cache-vm.jpg" alt="Cache holds copies of recently or frequently used instructions and data close to the CPU.. A cache hit avoids a slower main-memory access.. Virtual memory uses secondary storage when RAM is insufficient and increases apparent capacity rather than physical RAM speed." loading="lazy" />
+              <figcaption>Why cache helps and virtual memory slows. One maintained explanation is shown as an image on larger screens and as text on small screens.</figcaption>
+              <div class="v2-mobile-visual-text" aria-label="Mobile text alternative"><ul><li>Cache holds copies of recently or frequently used instructions and data close to the CPU.</li><li>A cache hit avoids a slower main-memory access.</li><li>Virtual memory uses secondary storage when RAM is insufficient and increases apparent capacity rather than physical RAM speed.</li></ul></div>
+            </figure>
           </div>
         </section>
 
-        <section class="panel" id="framework" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="framework">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 1</p>
-            <h2>A decision framework</h2>
-          </div>
-          <div class="framework-grid">
-            <article><h3>1. What data?</h3><p>Integer, signed value, text, image, sound or repeated data.</p></article>
-            <article><h3>2. What range?</h3><p>Check minimum, maximum, precision and whether negative values are possible.</p></article>
-            <article><h3>3. What quality?</h3><p>Choose resolution, colour depth, sample rate or sampling resolution only as high as needed.</p></article>
-            <article><h3>4. What constraints?</h3><p>Storage, bandwidth, compatibility, exact reconstruction and processing cost.</p></article>
-          </div>
-          <div class="callout">Chinese support: requirement = 需求；constraint = 限制条件；trade-off = 权衡。</div>
+        <section class="v2-panel" id="practice">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 3 | select by learner need</p><h2>Practice by question type</h2></div>
+          <div class="v2-question-list"><article class="v2-question" data-question-id="Q-L015-01" data-semantic-fingerprint="S3.04+S3.05+S3.06+S3.07|buffers-and-primary-memory-technologies|explain|why-buffer-computer-sends|written|explain">
+              <div class="v2-question-head"><span class="v2-badge">explain</span><span class="v2-badge">explain</span><span class="v2-badge difficulty">foundation</span><span class="v2-badge">8 marks</span></div>
+              <p><strong>Question 1.</strong> Explain why a buffer is used when a computer sends a large document to a laser printer. Describe how data is read from a magnetic hard disk drive. Explain how an HDD, flash memory and an optical reader/writer store or retrieve data. Compare SRAM and DRAM and explain why DRAM is normally used for main memory.</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> processor/computer and printer operate at different speeds; buffer temporarily stores print data; printer reads data at its own rate; computer/processor can continue other processing without waiting for the full print; platters rotate; actuator positions read/write head over the required track; required sector passes beneath the head; head senses magnetic patterns which are decoded as data; HDD mechanism; flash mechanism; optical reader/writer mechanism; SRAM is faster / does not require refresh; DRAM requires refresh / is slower; DRAM has greater density / lower cost per bit; main memory needs large capacity, making DRAM more economical</p><p><strong>Marking guidance:</strong> Do not accept &#39;the buffer makes the printer faster&#39;; it manages transfer-rate differences. Do not accept a laser-based explanation for an HDD; lasers apply to optical media. Do not describe every storage device as magnetic. Do not award both comparison marks for merely expanding the abbreviations.</p><p><strong>Common error:</strong> For the command word explain, perform that exact action; do not replace it with an unrelated fact.</p></div></details>
+            </article><article class="v2-question" data-question-id="Q-L015-02" data-semantic-fingerprint="S3.04+S3.05+S3.06+S3.07|buffers-and-primary-memory-technologies|compare|compare-prom-eprom-eeprom|written|evaluate">
+              <div class="v2-question-head"><span class="v2-badge">compare</span><span class="v2-badge">evaluate</span><span class="v2-badge difficulty">application</span><span class="v2-badge">2 marks</span></div>
+              <p><strong>Question 2.</strong> Compare PROM, EPROM and EEPROM.</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> PROM is programmed once; EPROM is erased with ultraviolet light; EEPROM is erased and rewritten electrically.</p><p><strong>Marking guidance:</strong> Award one mark for each distinct, technically accurate point or method step.</p><p><strong>Common error:</strong> Do not repeat the same point in different words; each mark needs a separate idea or method step.</p></div></details>
+            </article><article class="v2-question" data-question-id="Q-L015-03" data-semantic-fingerprint="S3.04+S3.05+S3.06+S3.07|buffers-and-primary-memory-technologies|explain|why-dram-refreshed|written|explain">
+              <div class="v2-question-head"><span class="v2-badge">explain</span><span class="v2-badge">explain</span><span class="v2-badge difficulty">transfer</span><span class="v2-badge">2 marks</span></div>
+              <p><strong>Question 3.</strong> Why is DRAM refreshed?</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> Charge in its storage capacitors leaks and must be restored.</p><p><strong>Marking guidance:</strong> Award one mark for each distinct, technically accurate point or method step.</p><p><strong>Common error:</strong> Do not copy the worked example unchanged; transfer the method and check it against the new context.</p></div></details>
+            </article></div>
+          <div class="v2-paper-refs">
+          <h3>Related past-paper indexes</h3>
+          <table><thead><tr><th>Reference</th><th>Marks</th><th>Command word</th><th>Question type</th></tr></thead>
+          <tbody><tr><td>9618/11/W/25 Q10(b)</td><td>1</td><td>explain</td><td>explain</td></tr><tr><td>9618/13/W/24 Q2(b)</td><td>4</td><td>explain</td><td>explain</td></tr><tr><td>9618/13/W/24 Q3</td><td>3</td><td>explain</td><td>explain</td></tr><tr><td>9618/12/W/24 Q2(c)</td><td>2</td><td>describe</td><td>explain</td></tr></tbody></table>
+          <p class="v2-copyright-note">Index only: Cambridge question and mark-scheme wording is not reproduced on this public course page.</p>
+        </div>
         </section>
 
-        <!-- stage10-explanation:start framework -->
-        <section class="panel explanation-panel" id="explanation-framework" data-explains="framework" data-explanation-kind="mechanism" aria-labelledby="explanation-framework-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="framework">
-          <h2 class="explanation-sr-only" id="explanation-framework-title">A decision framework</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-015-framework.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining A decision framework with a structured visual model." />
-            <figcaption class="explanation-sr-only">A decision framework: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> 1. What data?</li><li><strong>Lesson fact:</strong> Integer, signed value, text, image, sound or repeated data.</li><li><strong>Lesson fact:</strong> 2. What range?</li><li><strong>Lesson fact:</strong> Check minimum, maximum, precision and whether negative values are possible.</li><li><strong>Lesson fact:</strong> 3. What quality?</li><li><strong>Lesson fact:</strong> Choose resolution, colour depth, sample rate or sampling resolution only as high as needed.</li><li><strong>Lesson fact:</strong> 4. What constraints?</li><li><strong>Lesson fact:</strong> Storage, bandwidth, compatibility, exact reconstruction and processing cost.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end framework -->
-        <section class="panel" id="cases" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="cases">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 2</p>
-            <h2>System cases</h2>
-          </div>
-          <div class="case-grid">
-            <article>
-              <h3>Multilingual chat app</h3>
-              <p>Use Unicode so messages can include characters from many languages.</p>
-            </article>
-            <article>
-              <h3>Sensor logger</h3>
-              <p>Use enough bits and signed representation if values may be negative.</p>
-            </article>
-            <article>
-              <h3>Website thumbnail</h3>
-              <p>Lower resolution and lossy compression may be acceptable to reduce transfer time.</p>
-            </article>
-            <article>
-              <h3>Legal archive</h3>
-              <p>Use lossless compression because exact reconstruction is required.</p>
-            </article>
-          </div>
+        <section class="v2-panel" id="summary">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 4 | close when ready</p><h2>Summary and exam reminders</h2></div>
+          <div class="v2-summary-grid"><div><h3>Summary</h3><ul class="v2-summary-list"><li>Define buffers and primary memory technologies with the exact technical vocabulary expected by the syllabus.</li><li>Use the lesson method on a fresh context and show the intermediate decision, representation or calculation.</li><li>Match the shape of the answer to the command word and the available marks.</li><li>Check the final answer against the scenario instead of repeating a memorised sentence.</li></ul></div><div class="v2-error"><h3>Common error to correct</h3><p>Students often list hardware without explaining suitability. Correction: the mark usually comes from matching a feature to a need.</p></div></div>
+          <div class="v2-tip-box"><h3>Exam technique</h3><ul><li>Follow the command word: state gives a fact; explain links a cause to a consequence; compare covers both sides.</li><li>Match the number of independent points or method steps to the available marks.</li><li>For buffers and primary memory technologies, use the exact technical term before applying it to the scenario.</li></ul></div>
         </section>
 
-        <!-- stage10-explanation:start cases -->
-        <section class="panel explanation-panel" id="explanation-cases" data-explains="cases" data-explanation-kind="mechanism" aria-labelledby="explanation-cases-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="cases">
-          <h2 class="explanation-sr-only" id="explanation-cases-title">System cases</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-015-cases.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining System cases with a structured visual model." />
-            <figcaption class="explanation-sr-only">System cases: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Multilingual chat app</li><li><strong>Lesson fact:</strong> Use Unicode so messages can include characters from many languages.</li><li><strong>Lesson fact:</strong> Sensor logger</li><li><strong>Lesson fact:</strong> Use enough bits and signed representation if values may be negative.</li><li><strong>Lesson fact:</strong> Website thumbnail</li><li><strong>Lesson fact:</strong> Lower resolution and lossy compression may be acceptable to reduce transfer time.</li><li><strong>Lesson fact:</strong> Legal archive</li><li><strong>Lesson fact:</strong> Use lossless compression because exact reconstruction is required.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end cases -->
-        <section class="panel" id="tradeoffs" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="tradeoffs">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 3</p>
-            <h2>Useful trade-off sentences</h2>
-          </div>
-          <div class="tradeoff-grid">
-            <article><h3>Range</h3><p>More bits increase the possible range but require more storage per value.</p></article>
-            <article><h3>Image quality</h3><p>Higher resolution or colour depth can improve detail or colour range but increases file size.</p></article>
-            <article><h3>Sound quality</h3><p>Higher sample rate or sampling resolution can improve accuracy but increases file size.</p></article>
-            <article><h3>Compression</h3><p>Lossless preserves exact data; lossy can reduce size more but loses data permanently.</p></article>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start tradeoffs -->
-        <section class="panel explanation-panel" id="explanation-tradeoffs" data-explains="tradeoffs" data-explanation-kind="mechanism" aria-labelledby="explanation-tradeoffs-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="tradeoffs">
-          <h2 class="explanation-sr-only" id="explanation-tradeoffs-title">Useful trade-off sentences</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-015-tradeoffs.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Useful trade-off sentences with a structured visual model." />
-            <figcaption class="explanation-sr-only">Useful trade-off sentences: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Higher image resolution or colour depth can improve image quality and increases image file size.</li><li><strong>Lesson fact:</strong> Higher sample rate or sample resolution can improve sound accuracy and increases audio file size.</li><li><strong>Lesson fact:</strong> Use an audio or neutral data-file symbol for sound data, not an image-file thumbnail.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end tradeoffs -->
-        <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="PRACTISE" data-delivery-group="tool">
-          <div class="section-title">
-            <p class="eyebrow">Interactive tool</p>
-            <h2>Representation decision helper</h2>
-          </div>
-          <div class="converter-grid">
-            <label>
-              Scenario
-              <select id="scenarioInput">
-                <option value="chat">Multilingual chat app</option>
-                <option value="sensor">Temperature sensor logger</option>
-                <option value="thumbnail">Website thumbnail</option>
-                <option value="archive">Legal document archive</option>
-              </select>
-            </label>
-            <button type="button" id="recommendBtn">Recommend</button>
-          </div>
-          <div class="result-box" id="recommendResult" aria-live="polite"></div>
-          <div class="method-box" id="recommendMethod"></div>
-        </section>
-
-        <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge examples</p>
-            <h2>Worked examples</h2>
-          </div>
-          <div class="example-tabs" role="tablist" aria-label="Worked examples">
-            <button class="tab active" type="button" data-example="sensor">Sensor logger</button>
-            <button class="tab" type="button" data-example="chat">Chat app</button>
-            <button class="tab" type="button" data-example="archive">Archive</button>
-          </div>
-          <article class="example-box" id="exampleBox"></article>
-        </section>
-
-        <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
-          <div class="section-title">
-            <p class="eyebrow">Your turn</p>
-            <h2>Practice with instant checking</h2>
-          </div>
-          <div class="practice-list" id="practiceList"></div>
-          <button class="primary-button" type="button" id="checkPractice">Check practice</button>
-          <div class="feedback" id="practiceFeedback" aria-live="polite"></div>
-        </section>
-
-        <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
-          <div class="section-title">
-            <p class="eyebrow">Mistake debugging</p>
-            <h2>Improve the weak justification</h2>
-          </div>
-          <div class="mistake-grid">
-            <article>
-              <p class="wrong">“Use Unicode because it is better.”</p>
-              <button class="answer-toggle" type="button" data-answer="mistake1">Show correction</button>
-              <p class="answer" id="mistake1">Use Unicode because it supports a wider range of characters, making it suitable for multilingual text.</p>
-            </article>
-            <article>
-              <p class="wrong">“Use maximum image quality for every thumbnail.”</p>
-              <button class="answer-toggle" type="button" data-answer="mistake2">Show correction</button>
-              <p class="answer" id="mistake2">A thumbnail is small on screen, so lower resolution or lossy compression may be acceptable and reduces file size / transfer time.</p>
-            </article>
-          </div>
-        </section>
-
-        <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
-          <div class="section-title">
-            <p class="eyebrow">Exam-style questions</p>
-            <h2>Questions with expandable MS</h2>
-            <p>Use the buttons under each question to expand the Cambridge-style mark scheme.</p>
-          </div>
-          <div class="exam-list" id="examList"></div>
-        </section>
-
-        <section class="panel summary-panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
-          <div class="section-title">
-            <p class="eyebrow">Summary</p>
-            <h2>Fit the representation to the job</h2>
-          </div>
-          <div class="summary-grid">
-            <div><strong>1</strong><span>Start from the system requirement, not from a favourite keyword.</span></div>
-            <div><strong>2</strong><span>Range, precision, quality and exact reconstruction all affect representation choice.</span></div>
-            <div><strong>3</strong><span>Higher settings increase storage unless another factor changes.</span></div>
-            <div><strong>4</strong><span>Strong exam answers include cause and consequence.</span></div>
-          </div>
-        </section>
-
-        <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
-          <div class="section-title">
-            <p class="eyebrow">Homework</p>
-            <h2>Clear tasks</h2>
-          </div>
-          <ol class="homework-list">
-            <li>For a parking sensor storing distances from 0 to 255 cm, choose a suitable integer representation and justify it.</li>
-            <li>For a multilingual school website, explain why Unicode is suitable.</li>
-            <li>For a photo gallery thumbnail, justify one setting that could be reduced to save space.</li>
-            <li>Write a 6-mark answer choosing representations for a hospital document archive.</li>
-          </ol>
-          <button class="answer-toggle" type="button" data-answer="homeworkAnswers">Show homework answers</button>
-          <div class="answer-panel" id="homeworkAnswers">
-            <p><strong>Parking sensor:</strong> 8-bit unsigned integer is enough for 0-255 if no negative values or fractions are needed.</p>
-            <p><strong>Website:</strong> Unicode supports many languages and symbols, so it fits multilingual text.</p>
-            <p><strong>Thumbnail:</strong> lower resolution or lossy compression can reduce file size because the image is displayed small.</p>
-            <p><strong>Archive:</strong> use lossless compression and suitable character encoding because exact reconstruction and legal accuracy are required.</p>
-          </div>
-        </section>
+        <nav class="v2-bottom-nav" aria-label="Previous and next lesson"><a href="../lesson-014/" >Previous lesson</a><a href="../lesson-016/" >Next lesson</a></nav>
       </div>
     </main>
-
-    <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=3"></script>
-    <script src="../lesson-toolbar.js?v=3"></script>
-    <script src="../stage7-accessibility.js?v=4"></script>
+    <script src="../course-v2.js?v=1"></script>
   </body>
 </html>

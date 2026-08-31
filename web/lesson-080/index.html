@@ -3,490 +3,89 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 080 | Relational terminology, keys and relationships</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <title>AS9618 Lesson 080 | Writing complete program fragments</title>
     <link rel="icon" href="data:" />
-    <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
+    <link rel="stylesheet" href="../course-v2.css?v=3" />
   </head>
-  <body>
+  <body data-course-version="2" data-lesson-id="080" data-syllabus-ids="S11.01,S11.04,S11.06,S11.07">
     <a class="skip-link" href="#main-content">Skip to main content</a>
-    <header class="topbar">
-      <div>
-        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 8</p>
-        <h1>Relational terminology, keys and relationships</h1>
-      </div>
-      <div class="action-panel" aria-label="Page controls">
-        <a class="course-home-link" href="../">Course home</a>
-        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
-      </div>
+    <header class="v2-topbar">
+      <div><p class="v2-eyebrow">Cambridge AS9618 | Paper 2 | Section 11: Programming</p><h1>Writing complete program fragments</h1></div>
+      <nav class="v2-actions" aria-label="Lesson actions"><a href="../">Course home</a><a href="../assessments/">Assessment bank</a><button type="button" id="printLesson">Print</button></nav>
     </header>
-
-    <main class="layout" id="main-content" tabindex="-1">
-      <aside class="lesson-nav" aria-label="Lesson navigation">
-        <a href="#overview">Overview</a>
-        <a href="#hook">Warm-up</a>
-        <a href="#flat">Flat-file</a>
-        <a href="#relational">Relational</a>
-        <a href="#compare">Comparison</a>
-        <a href="#anomalies">Anomalies</a>
-        <a href="#chooser">Structure chooser</a>
-        <a href="#checker">Anomaly checker</a>
-        <a href="#examples">Examples</a>
-        <a href="#practice">Practice</a>
-        <a href="#debug">Debugging</a>
-        <a href="#exam">Exam-style</a>
-        <a href="#summary">Summary</a>
-        <a href="#homework">Homework</a>
-        <a href="#stage2-completion">Core syllabus content</a>
-      </aside>
-
-      <div class="lesson-content">
-        <!-- remediation-v2-stage3-scope:start -->
-        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.</p></aside>
-        <!-- remediation-v2-stage3-scope:end -->
-
-<!-- stage2-completion:start -->
-        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus content</p>
-            <h2>Relational terminology, keys and relationships</h2>
-          </div>
-          <div class="stage2-explanation">
-            <p>An entity is a real-world thing about which data is stored and is commonly represented by a table. A table contains records (tuples); each record describes one entity occurrence. A field (attribute) is one named property or column. These paired terms are related but should not be collapsed into one definition.</p>
-            <p>A candidate key is a minimal field or field set that uniquely identifies a record. One candidate key is selected as the primary key. A secondary key is a field used as an additional retrieval or ordering route and need not be unique; it is not another name for an unselected candidate key. A foreign key refers to a key in a related table. An index is a lookup structure built on one or more fields: it can speed retrieval but uses storage and must be maintained after changes.</p>
-            <p>A foreign key is an attribute in one table that refers to a primary/candidate key in another table. Referential integrity requires every non-null foreign-key value to match an existing referenced key.</p>
-            <p>A one-to-one relationship links one record on each side. A one-to-many relationship links one parent record to many child records. A many-to-many relationship is normally implemented through a linking entity/table that creates two one-to-many relationships. Referential integrity prevents orphan records: insert, update and delete operations may be rejected or handled by a defined cascade/null policy, but must not silently leave an invalid reference.</p>
-            <p>A relational database stores data in tables made of records and fields. A primary key uniquely identifies a record; a foreign key links to a primary key in another table and creates a relationship.</p>
-            <p>Indexing creates an additional lookup structure for one or more fields so matching records can be located more quickly. The index consumes storage and must be updated when indexed data change.</p>
-            <p>A record is also called a tuple; both terms describe one row containing fields or attributes for one entity occurrence.</p>
-          </div>
-          <article class="stage2-example">
-            <h3>Worked example: Keys for a student table / Delete a department / Use keys and an index</h3>
-            <p>In Student(StudentID, Email, TutorGroup), StudentID and Email may be candidate keys if both are unique and minimal; StudentID is selected as primary. TutorGroup can be a secondary key for retrieving all students in one group even though many records share the value. An index on TutorGroup can provide a faster lookup route. If Employee.DepartmentID refers to Department.DepartmentID, deleting a department with employees would break referential integrity unless deletion is rejected or an authorised cascading policy handles dependent rows. StudentID is the primary key of Student. DepartmentID is a foreign key linking to Department. An index on Surname can speed searches by surname without changing which field is the primary key.</p>
-          </article>
+    <main class="v2-shell" id="main-content" tabindex="-1">
+      <nav class="v2-toc" aria-label="Lesson contents"><strong>Lesson 080</strong><a href="#overview">Overview</a><a href="#prerequisite">Prerequisite</a><a href="#explanation">Explanation</a><a href="#practice">Practice</a><a href="#summary">Summary</a></nav>
+      <div class="v2-content">
+        <section class="v2-hero" id="overview">
+          <div><p class="v2-eyebrow">Flexible-depth lesson</p><h2>Writing complete program fragments</h2><p>S11.01, S11.04, S11.06, S11.07 | Select what to omit, teach briefly or explore in depth.</p></div>
+          <div class="v2-time-grid" aria-label="Available lesson depth"><div><strong>Quick</strong><span>diagnose + essentials</span></div><div><strong>Full</strong><span>complete explanation</span></div><div><strong>Deep</strong><span>prerequisites + extension</span></div><div><strong>Choose</strong><span>practice by need</span></div></div>
         </section>
 
-        <!-- stage10-explanation:start referential -->
-        <section class="panel explanation-panel" id="explanation-referential" data-explains="referential" data-explanation-kind="mechanism" aria-labelledby="explanation-referential-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="referential">
-          <h2 class="explanation-sr-only" id="explanation-referential-title">Referential integrity</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-082-referential.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Referential integrity with a structured visual model." />
-            <figcaption class="explanation-sr-only">Referential integrity: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Referential integrity means a foreign key value must match an existing primary key value in the referenced table.</li><li><strong>Lesson fact:</strong> Valid Loan.StudentID = S0234 is valid if Student.StudentID = S0234 exists.</li><li><strong>Lesson fact:</strong> Invalid Loan.StudentID = S9999 is invalid if no student with that ID exists.</li><li><strong>Lesson fact:</strong> Why It prevents orphan records, such as a loan assigned to a non-existent student.</li></ol>
-
-          </div>
+        <section class="v2-panel v2-route-menu" aria-labelledby="route-heading">
+          <div class="v2-heading"><p class="v2-eyebrow">Teacher choice</p><h2 id="route-heading">Choose the depth for this group</h2></div>
+          <div class="v2-route-grid"><article><h3>Quick route</h3><p>Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.</p></article><article><h3>Full route</h3><p>Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.</p></article><article><h3>Deep route</h3><p>Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.</p></article></div>
         </section>
-        <!-- stage10-explanation:end referential -->
-        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus practice</p>
-            <h2>Relational terminology, keys and relationships: apply and assess</h2>
-          </div>
-          <div class="stage2-practice">
-            <h3>Targeted practice</h3>
-            <article class="stage2-question">
-              <p><strong>1.</strong> Compare a record/tuple from a field/attribute.</p>
-              <details><summary>Show answer</summary><p>A record/tuple is one complete row for an entity occurrence; a field/attribute is one named property or column.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>2.</strong> What makes a candidate key minimal?</p>
-              <details><summary>Show answer</summary><p>No field can be removed while retaining uniqueness.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>3.</strong> Must a secondary key uniquely identify one record?</p>
-              <details><summary>Show answer</summary><p>No. It may retrieve a set of records sharing the same value.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>4.</strong> Give one benefit and one cost of an index.</p>
-              <details><summary>Show answer</summary><p>It can speed lookup/ordering, but uses storage and must be updated when data changes.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>5.</strong> Where is the referenced key stored?</p>
-              <details><summary>Show answer</summary><p>In the parent/referenced table.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>6.</strong> What is an orphan record?</p>
-              <details><summary>Show answer</summary><p>A child record whose foreign key has no matching parent key.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>7.</strong> How is a many-to-many relationship represented relationally?</p>
-              <details><summary>Show answer</summary><p>Use a linking table/entity containing foreign keys to both original entities.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>8.</strong> Identify one valid delete response.</p>
-              <details><summary>Show answer</summary><p>Reject the delete, cascade it, or set nullable foreign keys to null according to defined rules.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>9.</strong> What does a primary key do?</p>
-              <details><summary>Show answer</summary><p>Uniquely identifies each record.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>10.</strong> What does indexing improve?</p>
-              <details><summary>Show answer</summary><p>The speed of locating records by indexed field values.</p></details>
-            </article>
-          </div>
-          <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>15 marks</span></div>
-            <p>For Student(StudentID, Email, TutorGroup), explain the roles of a candidate key, primary key, secondary key and index. Explain how a one-to-many relationship between Department and Employee is represented and protected. Explain primary key, foreign key and indexing for a Student table.</p>
-            <details>
-              <summary>Show MS</summary>
-              <table class="mark-scheme-table">
-                <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
-                <tbody>
-                  <tr><td>candidate key is a minimal unique identifier, such as StudentID or unique Email</td><td>Do not describe a secondary key as an alternate candidate key or require it to be unique. Do not accept that foreign-key values must be unique in the child table. Do not describe an index as a replacement primary key.</td><td>1</td></tr>
-                  <tr><td>primary key is the candidate selected to identify each record</td><td></td><td>1</td></tr>
-                  <tr><td>secondary key is an additional retrieval field such as non-unique TutorGroup</td><td></td><td>1</td></tr>
-                  <tr><td>secondary key need not be unique</td><td></td><td>1</td></tr>
-                  <tr><td>index maps field values to record locations to speed access</td><td></td><td>1</td></tr>
-                  <tr><td>index requires storage and update maintenance</td><td></td><td>1</td></tr>
-                  <tr><td>one Department record may relate to many Employee records</td><td></td><td>1</td></tr>
-                  <tr><td>DepartmentID is the primary/candidate key in Department</td><td></td><td>1</td></tr>
-                  <tr><td>DepartmentID is a foreign key in Employee and may repeat</td><td></td><td>1</td></tr>
-                  <tr><td>each non-null foreign-key value must match an existing Department key</td><td></td><td>1</td></tr>
-                  <tr><td>referential integrity prevents orphan Employee records</td><td></td><td>1</td></tr>
-                  <tr><td>primary key</td><td></td><td>1</td></tr>
-                  <tr><td>foreign key/relationship</td><td></td><td>1</td></tr>
-                  <tr><td>indexing lookup benefit</td><td></td><td>1</td></tr>
-                  <tr><td>storage/update trade-off</td><td></td><td>1</td></tr>
-                </tbody>
-              </table>
-            </details>
-          </article>
-        </section>
-        <!-- stage2-completion:end -->
 
-<section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-080">
-          <div class="hero-copy">
-            <p class="lesson-meta">Lesson 080 | 45 minutes | Paper 1 Section 8 | Database concepts</p>
-            <h2>One giant table looks simple until one phone number changes in twelve places.</h2>
-            <p>
-              This lesson compares flat-file databases with relational databases. The key idea is not that
-              flat files are "bad"; it is that repeated related data creates maintenance problems as the
-              data grows. Relational design separates data into linked tables to reduce redundancy and
-              inconsistency.
-            </p>
-            <div class="objective-grid" aria-label="Learning objectives">
-              <div><strong>Define</strong><span>flat-file and relational database structures</span></div>
-              <div><strong>Compare</strong><span>redundancy, consistency, update effort and complexity</span></div>
-              <div><strong>Choose</strong><span>a suitable structure for a scenario with justified reasons</span></div>
+        <section class="v2-panel" id="prerequisite">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 1 | optional depth</p><h2>Prerequisite knowledge and quick diagnostic</h2></div>
+          <div class="v2-diagnostic"><p>Recall S9.07, S9.06, S11.02 before starting this lesson.</p></div>
+          <p>Give one accurate definition or method step before continuing. If it is missing, revisit only that prerequisite.</p>
+          <details class="v2-prerequisite-detail"><summary>Open optional prerequisite refresher</summary><ul><li>Document an algorithm using structured English, a flowchart or pseudocode; write pseudocode from structured English or a flowchart, and draw a flowchart from structured English or pseudocode while preserving the same algorithm.</li><li>Use structured English, flowcharts and pseudocode; convert between representations.</li><li>The three basic algorithm constructs are sequence, selection and iteration (repetition); students must recognise and use each construct, including combinations of constructs.</li><li>Understand and use sequence, selection and iteration.</li><li>Write pseudocode for declaration and initialisation of constants; declaration of variables; assignment of values; expressions using arithmetic or logical operators; input from the keyboard; and output to the console.</li><li>Use declarations, constants, variables, assignment, arithmetic/logical operations and input/output.</li></ul></details>
+        </section>
+
+        <section class="v2-panel" id="explanation">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 2 | deliberately over-complete</p><h2>Knowledge explanation</h2></div>
+          <h3>Learning objectives</h3><ul class="v2-objectives"><li>Write pseudocode from a flowchart or structured-English description.</li><li>Use IF/ELSE/nested selection, CASE, count-controlled loops, post-condition and pre-condition loops.</li><li>Understand and use procedures with parameters passed by reference and by value.</li></ul>
+          <details class="v2-concept-menu"><summary>Open the concept checklist and choose what to teach</summary><ul><li>pseudocode</li><li>flowchart</li><li>structured-English / structured English</li><li>description / descriptions / design</li><li>IF</li><li>ELSE</li><li>nested</li><li>selection</li><li>CASE</li><li>count-controlled</li><li>loop / loops</li><li>post-condition</li><li>pre-condition</li><li>procedure / procedures</li><li>parameters</li><li>passed / passes / pass</li><li>reference / BYREF</li><li>value / BYVAL</li><li>functions</li><li>return</li><li>values</li><li>expression / expressions</li></ul></details>
+          <div class="v2-explanation-grid">
+            <div>
+              <article class="v2-core-facts"><h3>Detailed explanation</h3><p class="v2-teacher-note">Teach all points, or select only the ones this group needs. The list is intentionally fuller than a fixed lesson slot.</p><ul class="v2-facts"><li>Implement and write pseudocode from a given design presented as either a flowchart or structured English.</li><li>Use IF statements, including the ELSE clause and nested IF statements; CASE statements; count-controlled loops; post-condition loops; and pre-condition loops.</li><li>Define and use a procedure; explain when the use of a procedure is appropriate; use parameters with none, one or more values passed by reference or by value.</li><li>Define and use a function; explain when the use of a function is appropriate. A function is used in an expression and its return value replaces the function call.</li><li>To translate a flowchart, follow arrows from Start, convert input/output symbols directly, convert diamonds into IF/CASE or loop conditions, and preserve every branch and reconnection. To translate structured English, identify its controlled verbs and indentation before selecting Cambridge constructs.</li><li>The answer must be Cambridge pseudocode, not Java: use assignment arrow, THEN/ENDIF, FOR...NEXT, WHILE...ENDWHILE or REPEAT...UNTIL as appropriate. Trace both versions with the same data to confirm equivalence.</li><li>Use IF...THEN...ELSE...ENDIF when a Boolean condition selects between paths. An ELSE clause supplies the false path. In nested IF statements, every inner and outer IF must be closed and the indentation must show which ELSE belongs to which IF.</li><li>Use CASE...OF...OTHERWISE...ENDCASE when one expression is compared with several discrete values. CASE is not a replacement for range or compound-condition decisions unless the stated values cover the requirement correctly.</li><li>A count-controlled loop uses FOR...TO...NEXT when the repetition count or inclusive counter range is known before the loop starts. The counter, start value and end value define the iterations; NEXT closes the loop.</li><li>Justify FOR from the problem: it is well suited when the count or bounds are known, but a pre-condition or post-condition loop is better when the number of repetitions depends on input or a stopping condition.</li><li>A WHILE...ENDWHILE loop is a pre-condition loop: it tests before the body and may run zero times. A REPEAT...UNTIL loop is a post-condition loop: it executes the body before testing and therefore runs at least once. A FOR...NEXT loop is count-controlled.</li><li>Select and justify the loop structure from the problem: use FOR when the count is known, WHILE when execution may be unnecessary and continuation is tested first, and REPEAT when the body must run once before a stopping condition can be tested. The justification must use the scenario, not only say that one loop is easier.</li></ul></article>
+              <article class="v2-example"><h3>Worked example</h3><p>Use a procedure and a function: PROCEDURE Increase(BYREF Number : INTEGER, BYVAL Amount : INTEGER) changes the caller&#39;s Number by Amount. FUNCTION CalculateVAT(Price : REAL) RETURNS REAL returns Price 0.20, so Total &lt;- Price + CalculateVAT(Price) uses the returned value in an expression. In Increase(Score, 5), Number and Amount are parameters while Score and 5 are arguments.</p></article>
+              <aside class="v2-extension"><h3>Beyond syllabus / 延伸知识（不要求背诵）</h3><p>consistent style, modularity and automated tests reduce maintenance errors in larger programs.</p></aside>
             </div>
-          </div>
-          <div class="split-visual" aria-label="Flat-file and relational visual">
-            <div class="flat-block">
-              <strong>Flat-file</strong>
-              <span>one table</span>
-              <span>repeated customer details</span>
-              <span>easy to start, painful to maintain</span>
-            </div>
-            <div class="rel-block">
-              <strong>Relational</strong>
-              <span>several linked tables</span>
-              <span>shared data stored once</span>
-              <span>better consistency, more design needed</span>
-            </div>
+            <figure class="v2-visual">
+              <img src="../assets/diagrams/stage10-infographics/stage10-lesson-142-subroutines.jpg" alt="A function returns a value; a procedure performs an action.. IsPass returns a BOOLEAN based on whether Mark is at least 50.. Close the function&#39;s IF with ENDIF before ENDFUNCTION.. DisplayResult outputs its parameters and returns no value." loading="lazy" />
+              <figcaption>Use functions for returned values and procedures for actions. One maintained explanation is shown as an image on larger screens and as text on small screens.</figcaption>
+              <div class="v2-mobile-visual-text" aria-label="Mobile text alternative"><ul><li>A function returns a value; a procedure performs an action.</li><li>IsPass returns a BOOLEAN based on whether Mark is at least 50.</li><li>Close the function&#39;s IF with ENDIF before ENDFUNCTION.</li><li>DisplayResult outputs its parameters and returns no value.</li></ul></div>
+            </figure>
           </div>
         </section>
 
-        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-080">
-          <article class="why-card">
-            <h3>Why this matters</h3>
-            <p>Cambridge-style answers reward cause and consequence: relational design reduces redundancy because shared data is stored once.</p>
-          </article>
-          <article class="trap-card">
-            <h3>Common error</h3>
-            <p>Do not say relational databases are always better. For a very small single-user list, a flat file may be simpler and sufficient.</p>
-          </article>
+        <section class="v2-panel" id="practice">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 3 | select by learner need</p><h2>Practice by question type</h2></div>
+          <div class="v2-question-list"><article class="v2-question" data-question-id="Q-L080-01" data-semantic-fingerprint="S11.01+S11.04+S11.06+S11.07|writing-complete-program-fragments|apply|what-difference-between-byval|written|recall">
+              <div class="v2-question-head"><span class="v2-badge">apply</span><span class="v2-badge">recall</span><span class="v2-badge difficulty">foundation</span><span class="v2-badge">2 marks</span></div>
+              <p><strong>Question 1.</strong> What is the difference between BYVAL and BYREF?</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> BYVAL supplies a value/copy; BYREF aliases the caller variable so changes can persist.</p><p><strong>Marking guidance:</strong> Award one mark for each distinct, technically accurate point or method step.</p><p><strong>Common error:</strong> For the command word apply, perform that exact action; do not replace it with an unrelated fact.</p></div></details>
+            </article><article class="v2-question" data-question-id="Q-L080-02" data-semantic-fingerprint="S11.01+S11.04+S11.06+S11.07|writing-complete-program-fragments|apply|should-java-braces-appear|pseudocode|recall">
+              <div class="v2-question-head"><span class="v2-badge">apply</span><span class="v2-badge">recall</span><span class="v2-badge difficulty">application</span><span class="v2-badge">2 marks</span></div>
+              <p><strong>Question 2.</strong> Should Java braces appear in a Cambridge pseudocode answer?</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> No; use Cambridge keywords and terminators.</p><p><strong>Marking guidance:</strong> Award one mark for each distinct, technically accurate point or method step.</p><p><strong>Common error:</strong> Do not repeat the same point in different words; each mark needs a separate idea or method step.</p></div></details>
+            </article><article class="v2-question" data-question-id="Q-L080-03" data-semantic-fingerprint="S11.01+S11.04+S11.06+S11.07|writing-complete-program-fragments|state|precise-facts-about|written|write">
+              <div class="v2-question-head"><span class="v2-badge">state</span><span class="v2-badge">write</span><span class="v2-badge difficulty">transfer</span><span class="v2-badge">2 marks</span></div>
+              <p><strong>Question 3.</strong> State two precise facts about writing complete program fragments.</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> Implement and write pseudocode from a given design presented as either a flowchart or structured English. Use IF statements, including the ELSE clause and nested IF statements; CASE statements; count-controlled loops; post-condition loops; and pre-condition loops.</p><p><strong>Marking guidance:</strong> Award one mark for each distinct fact; do not credit a repeated point.</p><p><strong>Common error:</strong> Do not copy the worked example unchanged; transfer the method and check it against the new context.</p></div></details>
+            </article></div>
+          <div class="v2-paper-refs">
+          <h3>Related past-paper indexes</h3>
+          <table><thead><tr><th>Reference</th><th>Marks</th><th>Command word</th><th>Question type</th></tr></thead>
+          <tbody><tr><td>9618/22/S/25 Q10(a)</td><td>8</td><td>complete</td><td>trace</td></tr><tr><td>9618/22/S/25 Q10(b)</td><td>7</td><td>complete</td><td>trace</td></tr><tr><td>9618/21/S/25 Q7(a)</td><td>6</td><td>write</td><td>write</td></tr><tr><td>9618/23/S/25 Q1(b)</td><td>5</td><td>complete</td><td>recall</td></tr></tbody></table>
+          <p class="v2-copyright-note">Index only: Cambridge question and mark-scheme wording is not reproduced on this public course page.</p>
+        </div>
         </section>
 
-        <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-080">
-          <div class="section-title">
-            <p class="eyebrow">Warm-up hook</p>
-            <h2>A tutor keeps one spreadsheet: every lesson row repeats student name, phone, parent email and course.</h2>
-            <p>Then a parent changes email. The spreadsheet says, "I have twelve personalities now."</p>
-          </div>
-          <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="redundancy">Repeated same parent email in many rows</button>
-            <button class="choice-card" type="button" data-hook="password">Weak password for the spreadsheet</button>
-            <button class="choice-card" type="button" data-hook="binary">CourseID stored in binary</button>
-            <button class="choice-card" type="button" data-hook="processor">CPU cache stores recent rows</button>
-          </div>
-          <div class="feedback" id="hookFeedback" aria-live="polite">
-            Choose the issue most directly caused by flat-file structure.
-          </div>
+        <section class="v2-panel" id="summary">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 4 | close when ready</p><h2>Summary and exam reminders</h2></div>
+          <div class="v2-summary-grid"><div><h3>Summary</h3><ul class="v2-summary-list"><li>Define writing complete program fragments with the exact technical vocabulary expected by the syllabus.</li><li>Use the lesson method on a fresh context and show the intermediate decision, representation or calculation.</li><li>Match the shape of the answer to the command word and the available marks.</li><li>Check the final answer against the scenario instead of repeating a memorised sentence.</li></ul></div><div class="v2-error"><h3>Common error to correct</h3><p>Students often think working Java automatically means good pseudocode. Correction: Paper 2 rewards clear Cambridge-style algorithm expression.</p></div></div>
+          <div class="v2-tip-box"><h3>Exam technique</h3><ul><li>Follow the command word: state gives a fact; explain links a cause to a consequence; compare covers both sides.</li><li>Match the number of independent points or method steps to the available marks.</li><li>For writing complete program fragments, use the exact technical term before applying it to the scenario.</li></ul></div>
         </section>
 
-        <section class="panel" id="flat" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-080">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 1</p>
-            <h2>Flat-file database</h2>
-            <p>A flat-file database stores data in a single table. It is simple, but related data may be repeated in many records.</p>
-          </div>
-          <div class="flat-table" role="table" aria-label="Flat-file club records">
-            <div class="table-row table-head" role="row">
-              <div role="columnheader">MemberID</div>
-              <div role="columnheader">Name</div>
-              <div role="columnheader">ParentEmail</div>
-              <div role="columnheader">Session</div>
-              <div role="columnheader">FeePaid</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">M104</div><div role="cell">Amira Chen</div><div role="cell">lee@example.com</div><div role="cell">Python</div><div role="cell">TRUE</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">M104</div><div role="cell">Amira Chen</div><div role="cell">lee@example.com</div><div role="cell">Robotics</div><div role="cell">FALSE</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">M211</div><div role="cell">Leo Singh</div><div role="cell">patel@example.com</div><div role="cell">Python</div><div role="cell">TRUE</div>
-            </div>
-          </div>
-          <div class="callout">Chinese support: flat-file = 单表结构。The problem is not the word "file"; the problem is using one table for related repeated data.</div>
-        </section>
-
-        <!-- stage10-explanation:start flat -->
-        <section class="panel explanation-panel" id="explanation-flat" data-explains="flat" data-explanation-kind="mechanism" aria-labelledby="explanation-flat-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-080">
-          <h2 class="explanation-sr-only" id="explanation-flat-title">Flat-file database</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-080-flat.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Flat-file database with a structured visual model." />
-            <figcaption class="explanation-sr-only">Flat-file database: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> A flat-file database stores data in a single table. It is simple, but related data may be repeated in many records.</li><li><strong>Lesson fact:</strong> MemberID</li><li><strong>Lesson fact:</strong> ParentEmail</li><li><strong>Lesson fact:</strong> Amira Chen</li><li><strong>Lesson fact:</strong> lee@example.com</li><li><strong>Lesson fact:</strong> Robotics</li><li><strong>Lesson fact:</strong> Leo Singh</li><li><strong>Lesson fact:</strong> patel@example.com</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end flat -->
-        <section class="panel" id="relational" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-080">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 2</p>
-            <h2>Relational database</h2>
-            <p>A relational database stores data in multiple tables that are linked using shared fields. Shared facts can be stored once and referenced where needed.</p>
-          </div>
-          <div class="relational-preview">
-            <div class="mini-table">
-              <h3>Member</h3>
-              <p><strong>MemberID</strong> | Name | ParentEmail</p>
-              <p>M104 | Amira Chen | lee@example.com</p>
-              <p>M211 | Leo Singh | patel@example.com</p>
-            </div>
-            <div class="relation-arrow">linked by MemberID</div>
-            <div class="mini-table">
-              <h3>Enrolment</h3>
-              <p><strong>EnrolID</strong> | MemberID | Session | FeePaid</p>
-              <p>E501 | M104 | Python | TRUE</p>
-              <p>E502 | M104 | Robotics | FALSE</p>
-            </div>
-          </div>
-          <div class="answer-frame">
-            <strong>Exam sentence:</strong>
-            <span>A relational database reduces redundancy by separating related data into linked tables, so a fact such as a parent email is stored once instead of repeated in every lesson record.</span>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start relational -->
-        <section class="panel explanation-panel" id="explanation-relational" data-explains="relational" data-explanation-kind="mechanism" aria-labelledby="explanation-relational-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-080">
-          <h2 class="explanation-sr-only" id="explanation-relational-title">Relational database</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-080-relational.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Relational database with a structured visual model." />
-            <figcaption class="explanation-sr-only">Relational database: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> A relational database stores data in multiple tables that are linked using shared fields. Shared facts can be stored once and referenced where needed.</li><li><strong>Lesson fact:</strong> MemberID | Name | ParentEmail</li><li><strong>Lesson fact:</strong> M104 | Amira Chen | lee@example.com</li><li><strong>Lesson fact:</strong> M211 | Leo Singh | patel@example.com</li><li><strong>Lesson fact:</strong> linked by MemberID</li><li><strong>Lesson fact:</strong> Enrolment</li><li><strong>Lesson fact:</strong> EnrolID | MemberID | Session | FeePaid</li><li><strong>Lesson fact:</strong> E501 | M104 | Python | TRUE</li><li><strong>Lesson fact:</strong> E502 | M104 | Robotics | FALSE</li><li><strong>Lesson fact:</strong> Exam sentence:</li><li><strong>Lesson fact:</strong> A relational database reduces redundancy by separating related data into linked tables, so a fact such as a parent email is stored once instead of repeated in every lesson record.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end relational -->
-        <section class="panel" id="compare" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-080">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 3</p>
-            <h2>Flat-file vs relational comparison</h2>
-          </div>
-          <div class="comparison-table" role="table" aria-label="Flat-file relational comparison">
-            <div class="table-row table-head" role="row">
-              <div role="columnheader">Feature</div>
-              <div role="columnheader">Flat-file</div>
-              <div role="columnheader">Relational</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Structure</div>
-              <div role="cell">Single table</div>
-              <div role="cell">Multiple linked tables</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Redundancy</div>
-              <div role="cell">More likely because related details are repeated</div>
-              <div role="cell">Reduced because shared data can be stored once</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Consistency</div>
-              <div role="cell">Harder to maintain if repeated values are updated differently</div>
-              <div role="cell">Improved because updates can be made in one relevant table</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Complexity</div>
-              <div role="cell">Simpler to create for a small, simple dataset</div>
-              <div role="cell">Needs more planning and understanding of relationships</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Best fit</div>
-              <div role="cell">Small, single-purpose, low-change data</div>
-              <div role="cell">Data with repeated entities, many users, updates and queries</div>
-            </div>
-          </div>
-        </section>
-
-        <section class="panel" id="anomalies" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-080">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 4</p>
-            <h2>Why repeated data causes anomalies</h2>
-            <p>An anomaly is a problem caused when data is inserted, updated or deleted in a structure that stores repeated facts poorly.</p>
-          </div>
-          <div class="anomaly-grid">
-            <article><strong>Update anomaly</strong><span>A parent email is changed in one row but not in another, so the same member has two different emails.</span></article>
-            <article><strong>Insertion anomaly</strong><span>A new member cannot be recorded until they join a session, because member details only exist in lesson rows.</span></article>
-            <article><strong>Deletion anomaly</strong><span>Deleting a cancelled session row may accidentally delete the only copy of a member's contact details.</span></article>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start anomalies -->
-        <section class="panel explanation-panel" id="explanation-anomalies" data-explains="anomalies" data-explanation-kind="mechanism" aria-labelledby="explanation-anomalies-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-080">
-          <h2 class="explanation-sr-only" id="explanation-anomalies-title">Why repeated data causes anomalies</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-080-anomalies.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Why repeated data causes anomalies with a structured visual model." />
-            <figcaption class="explanation-sr-only">Why repeated data causes anomalies: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> An anomaly is a problem caused when data is inserted, updated or deleted in a structure that stores repeated facts poorly.</li><li><strong>Lesson fact:</strong> Update anomaly A parent email is changed in one row but not in another, so the same member has two different emails.</li><li><strong>Lesson fact:</strong> Insertion anomaly A new member cannot be recorded until they join a session, because member details only exist in lesson rows.</li><li><strong>Lesson fact:</strong> Deletion anomaly Deleting a cancelled session row may accidentally delete the only copy of a member's contact details.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end anomalies -->
-        <section class="panel" id="chooser" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-080">
-          <div class="section-title">
-            <p class="eyebrow">Interactive structure chooser</p>
-            <h2>Choose flat-file or relational for the scenario</h2>
-          </div>
-          <div class="converter-grid">
-            <label>
-              Scenario
-              <select id="scenarioInput">
-                <option value="singleList">A teacher keeps a one-off list of students attending one trip.</option>
-                <option value="club">A club records members, sessions, fees and changing contact details.</option>
-                <option value="shop">An online shop stores customers, orders and products.</option>
-                <option value="survey">A small survey stores one answer row per anonymous respondent.</option>
-                <option value="clinic">A clinic stores patients, appointments, staff and prescriptions.</option>
-              </select>
-            </label>
-            <button class="primary-button" type="button" id="scenarioBtn">Choose structure</button>
-          </div>
-          <div class="result-box" id="scenarioResult">Choose a scenario, then justify the structure.</div>
-          <div class="feedback" id="scenarioReason">A strong answer mentions data size, repetition, updates or relationships.</div>
-        </section>
-
-        <section class="panel" id="checker" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-080">
-          <div class="section-title">
-            <p class="eyebrow">Interactive anomaly checker</p>
-            <h2>What can go wrong in a flat file?</h2>
-          </div>
-          <div class="converter-grid">
-            <label>
-              Event
-              <select id="anomalyInput">
-                <option value="changedEmail">A parent email is edited in only one of four repeated rows.</option>
-                <option value="newMember">A new member has not chosen a session yet, so no row can be created.</option>
-                <option value="deleteLast">The only row for a cancelled session is deleted and member contact details disappear.</option>
-                <option value="smallList">A one-off trip list has no repeated contact details.</option>
-              </select>
-            </label>
-            <button class="primary-button" type="button" id="anomalyBtn">Check anomaly</button>
-          </div>
-          <div class="result-box" id="anomalyResult">Choose an event to classify the problem.</div>
-          <div class="feedback" id="anomalyReason">If there is no anomaly, explain why the simple structure may be acceptable.</div>
-        </section>
-
-        <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-080">
-          <div class="section-title">
-            <p class="eyebrow">Worked examples</p>
-            <h2>From scenario to justified design choice</h2>
-          </div>
-          <div class="example-tabs" role="tablist" aria-label="Worked examples">
-            <button class="tab active" type="button" data-example="club">Club records</button>
-            <button class="tab" type="button" data-example="shop">Online shop</button>
-            <button class="tab" type="button" data-example="survey">Small survey</button>
-            <button class="tab" type="button" data-example="mistake">Weak comparison</button>
-          </div>
-          <article class="example-box" id="exampleBox" aria-live="polite"></article>
-        </section>
-
-        <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-080">
-          <div class="section-title">
-            <p class="eyebrow">Practice with instant checking</p>
-            <h2>Short-answer checks</h2>
-            <p>Type concise answers. Use the answer button only after committing to an attempt.</p>
-          </div>
-          <div class="practice-list" id="practiceList"></div>
-        </section>
-
-        <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-080">
-          <div class="section-title">
-            <p class="eyebrow">Mistake debugging</p>
-            <h2>Repair common wording errors</h2>
-          </div>
-          <div class="mistake-grid" id="mistakeGrid"></div>
-        </section>
-
-        <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-080">
-          <div class="section-title">
-            <p class="eyebrow">Exam-style questions</p>
-            <h2>Original Cambridge-style practice with expandable MS</h2>
-            <p>These are original questions written in Cambridge style. The mark schemes are strict about cause-and-effect wording.</p>
-          </div>
-          <div class="exam-list" id="examList"></div>
-        </section>
-
-        <section class="panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-080">
-          <div class="section-title">
-            <p class="eyebrow">Summary</p>
-            <h2>What to remember</h2>
-          </div>
-          <div class="summary-grid">
-            <div><strong>Flat-file</strong><span>Single table; simple for small datasets but may repeat related data.</span></div>
-            <div><strong>Relational</strong><span>Multiple linked tables; reduces redundancy and supports consistent updates.</span></div>
-            <div><strong>Exam answer</strong><span>Name the structure, then explain a consequence such as reduced redundancy or increased design complexity.</span></div>
-          </div>
-        </section>
-
-        <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
-          <div class="section-title">
-            <p class="eyebrow">Homework</p>
-            <h2>Clear tasks for consolidation</h2>
-          </div>
-          <div class="homework-list">
-            <article>
-              <strong>Task 1: Definitions</strong>
-              <span>Write exam-ready definitions for flat-file database, relational database, redundancy and inconsistency. Add Chinese support notes for the two hardest terms.</span>
-            </article>
-            <article>
-              <strong>Task 2: Scenario design</strong>
-              <span>A music school stores students, teachers, instruments and weekly lessons. Choose flat-file or relational and give three reasons linked to the scenario.</span>
-            </article>
-            <article>
-              <strong>Task 3: 6-mark answer</strong>
-              <span>Answer: "Explain why a relational database may be more suitable than a flat-file database for a library loan system." Include redundancy, consistency and one possible disadvantage.</span>
-            </article>
-          </div>
-        </section>
+        <nav class="v2-bottom-nav" aria-label="Previous and next lesson"><a href="../lesson-079/" >Previous lesson</a><a href="../lesson-081/" >Next lesson</a></nav>
       </div>
     </main>
-
-    <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=3"></script>
-    <script src="../lesson-toolbar.js?v=3"></script>
-    <script src="../stage7-accessibility.js?v=4"></script>
+    <script src="../course-v2.js?v=1"></script>
   </body>
 </html>

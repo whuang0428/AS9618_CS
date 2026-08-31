@@ -3,413 +3,89 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 084 | DDL, DML and SQL roles</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <title>AS9618 Lesson 084 | Finding and correcting program errors</title>
     <link rel="icon" href="data:" />
-    <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
+    <link rel="stylesheet" href="../course-v2.css?v=3" />
   </head>
-  <body>
+  <body data-course-version="2" data-lesson-id="084" data-syllabus-ids="S12.04">
     <a class="skip-link" href="#main-content">Skip to main content</a>
-    <header class="topbar">
-      <div>
-        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 8</p>
-        <h1>DDL, DML and SQL roles</h1>
-      </div>
-      <div class="action-panel" aria-label="Page controls">
-        <a class="course-home-link" href="../">Course home</a>
-        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
-      </div>
+    <header class="v2-topbar">
+      <div><p class="v2-eyebrow">Cambridge AS9618 | Paper 2 | Section 12: Software development</p><h1>Finding and correcting program errors</h1></div>
+      <nav class="v2-actions" aria-label="Lesson actions"><a href="../">Course home</a><a href="../assessments/">Assessment bank</a><button type="button" id="printLesson">Print</button></nav>
     </header>
-
-    <main class="layout" id="main-content" tabindex="-1">
-      <aside class="lesson-nav" aria-label="Lesson navigation">
-        <a href="#overview">Overview</a>
-        <a href="#hook">Warm-up</a>
-        <a href="#purpose">Purpose</a>
-        <a href="#redundancy">Redundancy</a>
-        <a href="#anomalies">Anomalies</a>
-        <a href="#normal-forms">Normal forms</a>
-        <a href="#detector">Redundancy detector</a>
-        <a href="#classifier">Anomaly classifier</a>
-        <a href="#examples">Examples</a>
-        <a href="#practice">Practice</a>
-        <a href="#debug">Debugging</a>
-        <a href="#exam">Exam-style</a>
-        <a href="#summary">Summary</a>
-        <a href="#homework">Homework</a>
-        <a href="#stage2-completion">Core syllabus content</a>
-      </aside>
-
-      <div class="lesson-content">
-        <!-- remediation-v2-stage3-scope:start -->
-        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.</p></aside>
-        <!-- remediation-v2-stage3-scope:end -->
-
-<!-- stage2-completion:start -->
-        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus content</p>
-            <h2>DDL, DML and SQL roles</h2>
-          </div>
-          <div class="stage2-explanation">
-            <p>DDL is used for the creation and modification of database structure. DML is used for queries and maintenance of stored data. SQL is an industry-standard language that includes both kinds of operation.</p>
-            <p>Keep the schema and the records distinct: defining a table or constraint changes structure, while selecting, inserting, deleting or updating records works with stored data.</p>
-          </div>
-          <article class="stage2-example">
-            <h3>Worked example: Classify database operations</h3>
-            <p>CREATE TABLE is DDL because it creates database structure. SELECT and UPDATE are DML because they query or maintain stored data.</p>
-          </article>
+    <main class="v2-shell" id="main-content" tabindex="-1">
+      <nav class="v2-toc" aria-label="Lesson contents"><strong>Lesson 084</strong><a href="#overview">Overview</a><a href="#prerequisite">Prerequisite</a><a href="#explanation">Explanation</a><a href="#practice">Practice</a><a href="#summary">Summary</a></nav>
+      <div class="v2-content">
+        <section class="v2-hero" id="overview">
+          <div><p class="v2-eyebrow">Flexible-depth lesson</p><h2>Finding and correcting program errors</h2><p>S12.04 | Select what to omit, teach briefly or explore in depth.</p></div>
+          <div class="v2-time-grid" aria-label="Available lesson depth"><div><strong>Quick</strong><span>diagnose + essentials</span></div><div><strong>Full</strong><span>complete explanation</span></div><div><strong>Deep</strong><span>prerequisites + extension</span></div><div><strong>Choose</strong><span>practice by need</span></div></div>
         </section>
 
-        <!-- stage10-explanation:start dml -->
-        <section class="panel explanation-panel" id="explanation-dml" data-explains="dml" data-explanation-kind="mechanism" aria-labelledby="explanation-dml-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="dml">
-          <h2 class="explanation-sr-only" id="explanation-dml-title">INSERT, UPDATE and DELETE are data manipulation commands</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-088-dml.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining INSERT, UPDATE and DELETE are data manipulation commands with a structured visual model." />
-            <figcaption class="explanation-sr-only">INSERT, UPDATE and DELETE are data manipulation commands: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> They change stored data. In exam answers, be precise about command keywords and affected records.</li><li><strong>Lesson fact:</strong> INSERT Adds a new record to a table.</li><li><strong>Lesson fact:</strong> UPDATE Changes values in existing records.</li><li><strong>Lesson fact:</strong> DELETE Removes existing records from a table.</li></ol>
-
-          </div>
+        <section class="v2-panel v2-route-menu" aria-labelledby="route-heading">
+          <div class="v2-heading"><p class="v2-eyebrow">Teacher choice</p><h2 id="route-heading">Choose the depth for this group</h2></div>
+          <div class="v2-route-grid"><article><h3>Quick route</h3><p>Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.</p></article><article><h3>Full route</h3><p>Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.</p></article><article><h3>Deep route</h3><p>Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.</p></article></div>
         </section>
-        <!-- stage10-explanation:end dml -->
-        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus practice</p>
-            <h2>DDL, DML and SQL roles: apply and assess</h2>
-          </div>
-          <div class="stage2-practice">
-            <h3>Targeted practice</h3>
-            <article class="stage2-question">
-              <p><strong>1.</strong> Which language category creates structure?</p>
-              <details><summary>Show answer</summary><p>DDL.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>2.</strong> Which category queries and maintains data?</p>
-              <details><summary>Show answer</summary><p>DML.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>3.</strong> What is SQL?</p>
-              <details><summary>Show answer</summary><p>An industry-standard database language.</p></details>
-            </article>
-          </div>
-          <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>3 marks</span></div>
-            <p>Identify CREATE TABLE, SELECT and UPDATE as DDL or DML and explain the distinction.</p>
-            <details>
-              <summary>Show MS</summary>
-              <table class="mark-scheme-table">
-                <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
-                <tbody>
-                  <tr><td>DDL creation/modification of structure</td><td>Do not describe every SQL statement as changing stored records.</td><td>1</td></tr>
-                  <tr><td>DML queries/maintenance</td><td></td><td>1</td></tr>
-                  <tr><td>SQL identified as industry-standard language</td><td></td><td>1</td></tr>
-                </tbody>
-              </table>
-            </details>
-          </article>
-        </section>
-        <!-- stage2-completion:end -->
 
-<section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-084">
-          <div class="hero-copy">
-            <p class="lesson-meta">Lesson 084 | 45 minutes | Paper 1 Section 8 | Database design</p>
-            <h2>Normalisation is database tidying with consequences. It stops one changed email from becoming a treasure hunt.</h2>
-            <p>
-              This lesson explains why database designers normalise data: to reduce unnecessary duplication,
-              avoid update, insertion and deletion anomalies, and keep related data in appropriate tables.
-              We focus on design reasoning, not SQL queries.
-            </p>
-            <div class="objective-grid" aria-label="Learning objectives">
-              <div><strong>Detect</strong><span>repeated data and dependency problems in a table</span></div>
-              <div><strong>Explain</strong><span>update, insertion and deletion anomalies</span></div>
-              <div><strong>Improve</strong><span>a weak table design by separating related data</span></div>
+        <section class="v2-panel" id="prerequisite">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 1 | optional depth</p><h2>Prerequisite knowledge and quick diagnostic</h2></div>
+          <div class="v2-diagnostic"><p>Recall the main conclusion from Lesson 083: State-transition diagrams.</p></div>
+          <p>Give one accurate definition or method step before continuing. If it is missing, revisit only that prerequisite.</p>
+
+        </section>
+
+        <section class="v2-panel" id="explanation">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 2 | deliberately over-complete</p><h2>Knowledge explanation</h2></div>
+          <h3>Learning objectives</h3><ul class="v2-objectives"><li>Identify and correct syntax, logic and runtime errors.</li></ul>
+          <details class="v2-concept-menu"><summary>Open the concept checklist and choose what to teach</summary><ul><li>logic</li><li>runtime</li><li>errors</li></ul></details>
+          <div class="v2-explanation-grid">
+            <div>
+              <article class="v2-core-facts"><h3>Detailed explanation</h3><p class="v2-teacher-note">Teach all points, or select only the ones this group needs. The list is intentionally fuller than a fixed lesson slot.</p><ul class="v2-facts"><li>Understand different ways of exposing and avoiding faults in a program. Locate and identify syntax, logic and run-time errors in a program and correct identified errors.</li><li>A syntax error breaks the language grammar and is normally exposed by a translator or an IDE&#39;s dynamic syntax check. A logic error uses valid syntax but follows the wrong algorithm, so a trace, dry run, walkthrough or deliberately selected test can expose an unexpected result. A run-time error occurs during execution, such as division by zero or opening a missing file, so exception messages and run-time diagnostics help locate it.</li><li>After an error is exposed, locate the responsible statement and identify the error type before changing it. Correct the cause, not only the observed output, then rerun the failing test and relevant regression tests. Avoid faults by using clear identifiers, modular design, validation, desk checking, peer walkthroughs and a planned set of normal, abnormal and extreme/boundary tests.</li><li>No single method proves that a program has no remaining faults. Translation can expose syntax faults but not every logic fault; testing can reveal failures for selected cases but cannot demonstrate correctness for every possible input.</li><li>IDE presentation features include prettyprint and expand/collapse code blocks; expand/collapse changes the displayed view, not program execution.</li><li>A runtime error occurs while the program is executing; runtime diagnostics help locate the statement that caused the failure.</li><li>Program errors can be exposed by suitable test data and expected results, located with trace output or breakpoints, and corrected before the same tests are repeated to confirm the fix.</li></ul></article>
+              <article class="v2-example"><h3>Worked example</h3><p>Correct three different faults: A missing ENDIF is a syntax error exposed during translation and corrected by closing the selection. Mark 50 for a pass boundary of 50 is a logic error exposed by tracing Mark = 50 and corrected to Mark = 50. Total / Count when Count may be 0 is a run-time risk exposed during execution and avoided by testing Count before division.</p></article>
+              <aside class="v2-extension"><h3>Beyond syllabus / 延伸知识（不要求背诵）</h3><p>modern teams often use continuous integration to repeat building and testing whenever a program changes.</p></aside>
             </div>
-          </div>
-          <div class="normalise-visual" aria-label="Normalisation visual">
-            <div class="bad-table">One big table<br /><span>Member + Course + Tutor repeated</span></div>
-            <div class="arrow">-></div>
-            <div class="good-tables">
-              <span>Member</span>
-              <span>Course</span>
-              <span>Enrolment</span>
-            </div>
-            <p>Store each fact in the right place, then link it when needed.</p>
+            <figure class="v2-visual">
+              <img src="../assets/diagrams/stage10-infographics/stage10-lesson-060-logic.jpg" alt="Meaning The code is syntactically valid and may run, but the algorithm or condition is wrong.. Examples Using &lt; instead of &lt;= , wrong formula, wrong loop condition or off-by-one error.. Detection Usually found by testing, tracing or comparing actual output with expected output.. Common error A translator may not detect it because the instructions are legal." loading="lazy" />
+              <figcaption>Logic errors make the program do the wrong thing. One maintained explanation is shown as an image on larger screens and as text on small screens.</figcaption>
+              <div class="v2-mobile-visual-text" aria-label="Mobile text alternative"><ul><li>Meaning The code is syntactically valid and may run, but the algorithm or condition is wrong.</li><li>Examples Using &lt; instead of &lt;= , wrong formula, wrong loop condition or off-by-one error.</li><li>Detection Usually found by testing, tracing or comparing actual output with expected output.</li><li>Common error A translator may not detect it because the instructions are legal.</li></ul></div>
+            </figure>
           </div>
         </section>
 
-        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-084">
-          <article class="why-card">
-            <h3>Why this matters</h3>
-            <p>Cambridge-style answers need cause and consequence: repeated data causes anomalies; separating tables reduces the risk.</p>
-          </article>
-          <article class="trap-card">
-            <h3>Common error</h3>
-            <p>Do not say normalisation removes every duplicate value. Some key values repeat as links; unnecessary repeated facts are the target.</p>
-          </article>
+        <section class="v2-panel" id="practice">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 3 | select by learner need</p><h2>Practice by question type</h2></div>
+          <div class="v2-question-list"><article class="v2-question" data-question-id="Q-L084-01" data-semantic-fingerprint="S12.04|finding-and-correcting-program-errors|explain|why-translator-insufficient-all|written|debug">
+              <div class="v2-question-head"><span class="v2-badge">explain</span><span class="v2-badge">debug</span><span class="v2-badge difficulty">foundation</span><span class="v2-badge">2 marks</span></div>
+              <p><strong>Question 1.</strong> Why is a translator insufficient for all logic errors?</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> Logic errors can obey the language grammar, so translation may succeed even though the result is wrong.</p><p><strong>Marking guidance:</strong> Award one mark for each distinct, technically accurate point or method step.</p><p><strong>Common error:</strong> For the command word explain, perform that exact action; do not replace it with an unrelated fact.</p></div></details>
+            </article><article class="v2-question" data-question-id="Q-L084-02" data-semantic-fingerprint="S12.04|finding-and-correcting-program-errors|state|fault-type-way-expose|written|recall">
+              <div class="v2-question-head"><span class="v2-badge">state</span><span class="v2-badge">recall</span><span class="v2-badge difficulty">application</span><span class="v2-badge">6 marks</span></div>
+              <p><strong>Question 2.</strong> For each fault, state its type, one way to expose or locate it, and the correction: a missing ENDIF; IF Mark 50 when 50 should pass; Average &lt;- Total / Count when Count can be zero.</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> missing ENDIF identified as syntax error and translator/dynamic syntax check used; adds the required ENDIF; Mark 50 identified as logic error and boundary trace/test at 50 used; changes the condition to Mark = 50 or equivalent; division by zero identified as run-time error/risk and execution/test diagnostics used; guards the division by checking Count or handles the zero case</p><p><strong>Marking guidance:</strong> Do not accept changing the expected result to hide a program fault, or claim that successful translation proves the algorithm correct.</p><p><strong>Common error:</strong> Do not repeat the same point in different words; each mark needs a separate idea or method step.</p></div></details>
+            </article><article class="v2-question" data-question-id="Q-L084-03" data-semantic-fingerprint="S12.04|finding-and-correcting-program-errors|state|precise-facts-about|written|recall">
+              <div class="v2-question-head"><span class="v2-badge">state</span><span class="v2-badge">recall</span><span class="v2-badge difficulty">transfer</span><span class="v2-badge">2 marks</span></div>
+              <p><strong>Question 3.</strong> State two precise facts about finding and correcting program errors.</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> Understand different ways of exposing and avoiding faults in a program. Locate and identify syntax, logic and run-time errors in a program and correct identified errors. A syntax error breaks the language grammar and is normally exposed by a translator or an IDE&#39;s dynamic syntax check. A logic error uses valid syntax but follows the wrong algorithm, so a trace, dry run, walkthrough or deliberately selected test can expose an unexpected result. A run-time error occurs during execution, such as division by zero or opening a missing file, so exception messages and run-time diagnostics help locate it.</p><p><strong>Marking guidance:</strong> Award one mark for each distinct fact; do not credit a repeated point.</p><p><strong>Common error:</strong> Do not copy the worked example unchanged; transfer the method and check it against the new context.</p></div></details>
+            </article></div>
+          <div class="v2-paper-refs">
+          <h3>Related past-paper indexes</h3>
+          <table><thead><tr><th>Reference</th><th>Marks</th><th>Command word</th><th>Question type</th></tr></thead>
+          <tbody><tr><td>9618/21/W/25 Q6(a)</td><td>2</td><td>calculate</td><td>calculate</td></tr><tr><td>9618/21/S/25 Q2(i)</td><td>1</td><td>calculate</td><td>calculate</td></tr></tbody></table>
+          <p class="v2-copyright-note">Index only: Cambridge question and mark-scheme wording is not reproduced on this public course page.</p>
+        </div>
         </section>
 
-        <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-084">
-          <div class="section-title">
-            <p class="eyebrow">Warm-up hook</p>
-            <h2>A tutor's email appears in 38 course rows. The tutor changes email. What can go wrong?</h2>
-            <p>The database now has 38 chances to be wrong. Very generous. Terrible design.</p>
-          </div>
-          <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="update">Some rows are updated and others are not</button>
-            <button class="choice-card" type="button" data-hook="binary">The email becomes binary</button>
-            <button class="choice-card" type="button" data-hook="faster">Queries automatically become faster</button>
-            <button class="choice-card" type="button" data-hook="format">The email changes font</button>
-          </div>
-          <div class="feedback" id="hookFeedback" aria-live="polite">
-            Choose the database design problem.
-          </div>
+        <section class="v2-panel" id="summary">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 4 | close when ready</p><h2>Summary and exam reminders</h2></div>
+          <div class="v2-summary-grid"><div><h3>Summary</h3><ul class="v2-summary-list"><li>Define finding and correcting program errors with the exact technical vocabulary expected by the syllabus.</li><li>Use the lesson method on a fresh context and show the intermediate decision, representation or calculation.</li><li>Match the shape of the answer to the command word and the available marks.</li><li>Check the final answer against the scenario instead of repeating a memorised sentence.</li></ul></div><div class="v2-error"><h3>Common error to correct</h3><p>Students often describe the lifecycle as a fixed checklist. Correction: development is iterative; findings can send a project back to earlier stages.</p></div></div>
+          <div class="v2-tip-box"><h3>Exam technique</h3><ul><li>Follow the command word: state gives a fact; explain links a cause to a consequence; compare covers both sides.</li><li>Match the number of independent points or method steps to the available marks.</li><li>For finding and correcting program errors, use the exact technical term before applying it to the scenario.</li></ul></div>
         </section>
 
-        <section class="panel" id="purpose" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-084">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 1</p>
-            <h2>Purpose of normalisation</h2>
-            <p>Normalisation is the process of organising data into well-structured tables to reduce unnecessary redundancy and improve data integrity.</p>
-          </div>
-          <div class="concept-grid">
-            <article><strong>Reduce redundancy</strong><span>A fact such as TutorEmail is stored once in Tutor, not repeated in every course row.</span></article>
-            <article><strong>Improve integrity</strong><span>Fewer repeated facts means fewer chances for inconsistent versions.</span></article>
-            <article><strong>Prevent anomalies</strong><span>Insertion, update and deletion problems become less likely.</span></article>
-            <article><strong>Clarify dependencies</strong><span>Fields should depend on the key of their own table, not on unrelated fields.</span></article>
-          </div>
-          <div class="callout">Chinese support: normalisation = 规范化；redundancy = 冗余；anomaly = 异常；dependency = 依赖关系。</div>
-        </section>
-
-        <!-- stage10-explanation:start purpose -->
-        <section class="panel explanation-panel" id="explanation-purpose" data-explains="purpose" data-explanation-kind="mechanism" aria-labelledby="explanation-purpose-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-084">
-          <h2 class="explanation-sr-only" id="explanation-purpose-title">Why normalisation protects consistency</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-084-purpose.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Why normalisation protects consistency through a cause-and-effect diagram." />
-            <figcaption class="explanation-sr-only">Why normalisation protects consistency: mechanism, reason, result, analogy and boundary condition.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Mechanism:</strong> Each fact is stored in a relation where its determinant is clear.</li><li><strong>Reason:</strong> Other tables reference that fact instead of copying it repeatedly.</li><li><strong>Result:</strong> One update then changes the authoritative value once.</li></ol>
-
-            <p><strong>Analogy:</strong> Keep one catalogue record and let many loans point to it.</p>
-            <p><strong>Boundary:</strong> Normalisation improves consistency but joins may make some queries more complex.</p>
-          </div>
-        </section>
-        <!-- stage10-explanation:end purpose -->
-        <section class="panel" id="redundancy" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-084">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 2</p>
-            <h2>Spot unnecessary repeated facts</h2>
-            <p>A repeated linking value can be correct. Repeating descriptive facts about another entity is usually the warning sign.</p>
-          </div>
-          <div class="bad-data-table" role="table" aria-label="Unnormalised enrolment table">
-            <div class="table-row table-head" role="row">
-              <div role="columnheader">StudentID</div>
-              <div role="columnheader">StudentName</div>
-              <div role="columnheader">CourseID</div>
-              <div role="columnheader">CourseTitle</div>
-              <div role="columnheader">TutorEmail</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">S0234</div><div role="cell">Amira Chen</div><div role="cell">C10</div><div role="cell">Python</div><div role="cell" class="repeat">tutor@school.edu</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">S0318</div><div role="cell">Leo Singh</div><div role="cell">C10</div><div role="cell">Python</div><div role="cell" class="repeat">tutor@school.edu</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">S0440</div><div role="cell">Maya Patel</div><div role="cell">C10</div><div role="cell">Python</div><div role="cell" class="repeat">tutor@school.edu</div>
-            </div>
-          </div>
-          <div class="answer-frame">
-            <strong>Exam sentence:</strong>
-            <span><code>CourseTitle</code> and <code>TutorEmail</code> depend on <code>CourseID</code>, so repeating them in every enrolment row creates redundancy and possible update anomalies.</span>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start redundancy -->
-        <section class="panel explanation-panel" id="explanation-redundancy" data-explains="redundancy" data-explanation-kind="mechanism" aria-labelledby="explanation-redundancy-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-084">
-          <h2 class="explanation-sr-only" id="explanation-redundancy-title">How repeated facts become risky</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-084-redundancy.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining How repeated facts become risky through a cause-and-effect diagram." />
-            <figcaption class="explanation-sr-only">How repeated facts become risky: mechanism, reason, result, analogy and boundary condition.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Mechanism:</strong> The same real-world fact appears in several rows.</li><li><strong>Reason:</strong> A later update may change only some copies.</li><li><strong>Result:</strong> Queries then return conflicting versions of one fact.</li></ol>
-
-            <p><strong>Analogy:</strong> Several photocopies agree only until someone edits one copy.</p>
-            <p><strong>Boundary:</strong> Repeated transactional events are valid; repeated descriptive facts cause the risk.</p>
-          </div>
-        </section>
-        <!-- stage10-explanation:end redundancy -->
-        <section class="panel" id="anomalies" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-084">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 3</p>
-            <h2>Three anomaly types</h2>
-          </div>
-          <div class="anomaly-grid">
-            <article><strong>Update anomaly</strong><span>A repeated fact is updated in some rows but not others, so inconsistent data remains.</span></article>
-            <article><strong>Insertion anomaly</strong><span>A new fact cannot be stored until another unrelated fact exists, such as a new course with no enrolled student.</span></article>
-            <article><strong>Deletion anomaly</strong><span>Deleting a row accidentally removes the only stored copy of a separate fact.</span></article>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start anomalies -->
-        <section class="panel explanation-panel" id="explanation-anomalies" data-explains="anomalies" data-explanation-kind="tradeoff" aria-labelledby="explanation-anomalies-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-084">
-          <h2 class="explanation-sr-only" id="explanation-anomalies-title">Why one structure causes three anomalies</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-084-anomalies.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Why one structure causes three anomalies through a cause-and-effect diagram." />
-            <figcaption class="explanation-sr-only">Why one structure causes three anomalies: mechanism, reason, result, analogy and boundary condition.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Mechanism:</strong> Insertion may require an unrelated fact that is not yet known.</li><li><strong>Reason:</strong> Updating requires finding every repeated copy.</li><li><strong>Result:</strong> Deleting one event may accidentally remove the only descriptive fact.</li></ol>
-
-            <p><strong>Analogy:</strong> A form that mixes customers, products and orders ties unrelated lifetimes together.</p>
-            <p><strong>Boundary:</strong> The anomaly comes from dependency structure, not simply from a large table.</p>
-          </div>
-        </section>
-        <!-- stage10-explanation:end anomalies -->
-        <section class="panel" id="normal-forms" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-084">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 4</p>
-            <h2>From 1NF to 3NF</h2>
-            <p>AS-level questions usually expect the purpose and effect of normalisation more than a formal proof. Still, the normal form idea helps explain the method.</p>
-          </div>
-          <div class="normal-form-grid">
-            <article><strong>1NF</strong><span>Values are atomic; each field stores one value, not a repeating list.</span></article>
-            <article><strong>2NF idea</strong><span>Non-key fields should depend on the whole key, not part of a composite key.</span></article>
-            <article><strong>3NF idea</strong><span>Non-key fields should not depend on other non-key fields.</span></article>
-          </div>
-          <div class="callout">Keep this practical: identify the fact, decide which entity it describes, then move it to that table.</div>
-        </section>
-
-
-        <section class="panel" id="detector" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-084">
-          <div class="section-title">
-            <p class="eyebrow">Interactive redundancy detector</p>
-            <h2>Which fact should be moved?</h2>
-          </div>
-          <div class="converter-grid">
-            <label>
-              Repeated fact
-              <select id="redundancyInput">
-                <option value="courseTitle">CourseTitle repeats for every student enrolled on the same CourseID.</option>
-                <option value="studentId">StudentID appears in several enrolment rows because a student takes several courses.</option>
-                <option value="orderId">OrderID appears in several order-line rows for the same order.</option>
-                <option value="tutorEmail">TutorEmail repeats for every course taught by the same tutor.</option>
-                <option value="membershipId">MembershipID is unique in each Membership row.</option>
-              </select>
-            </label>
-            <button class="primary-button" type="button" id="redundancyBtn">Detect</button>
-          </div>
-          <div class="result-box" id="redundancyResult">Choose a repeated fact to classify it.</div>
-          <div class="feedback" id="redundancyReason">Not every repeated value is bad; repeated descriptive facts are the bigger warning.</div>
-        </section>
-
-        <section class="panel" id="classifier" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-084">
-          <div class="section-title">
-            <p class="eyebrow">Interactive anomaly classifier</p>
-            <h2>Classify the problem</h2>
-          </div>
-          <div class="converter-grid">
-            <label>
-              Scenario
-              <select id="anomalyInput">
-                <option value="update">TutorEmail is changed in two rows but missed in one row.</option>
-                <option value="insert">A new course cannot be stored until at least one student enrols.</option>
-                <option value="delete">Deleting the last enrolment row for C10 removes the only copy of CourseTitle.</option>
-                <option value="atomic">A PhoneNumbers field stores three phone numbers in one cell.</option>
-                <option value="validLink">CourseID repeats as a foreign key in Enrolment rows.</option>
-              </select>
-            </label>
-            <button class="primary-button" type="button" id="anomalyBtn">Classify</button>
-          </div>
-          <div class="result-box" id="anomalyResult">Choose a scenario to classify the design issue.</div>
-          <div class="feedback" id="anomalyReason">Name the anomaly and explain the mechanism.</div>
-        </section>
-
-        <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-084">
-          <div class="section-title">
-            <p class="eyebrow">Worked examples</p>
-            <h2>From one bad table to linked tables</h2>
-          </div>
-          <div class="example-tabs" role="tablist" aria-label="Worked examples">
-            <button class="tab active" type="button" data-example="course">Course enrolments</button>
-            <button class="tab" type="button" data-example="order">Order lines</button>
-            <button class="tab" type="button" data-example="phone">1NF issue</button>
-            <button class="tab" type="button" data-example="judge">Judgement answer</button>
-          </div>
-          <article class="example-box" id="exampleBox" aria-live="polite"></article>
-        </section>
-
-        <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-084">
-          <div class="section-title">
-            <p class="eyebrow">Practice with instant checking</p>
-            <h2>Short-answer checks</h2>
-            <p>Type concise answers. Use Show answer after committing to a response.</p>
-          </div>
-          <div class="practice-list" id="practiceList"></div>
-        </section>
-
-        <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-084">
-          <div class="section-title">
-            <p class="eyebrow">Mistake debugging</p>
-            <h2>Repair weak normalisation explanations</h2>
-          </div>
-          <div class="mistake-grid" id="mistakeGrid"></div>
-        </section>
-
-        <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-084">
-          <div class="section-title">
-            <p class="eyebrow">Exam-style questions</p>
-            <h2>Original Cambridge-style practice with expandable MS</h2>
-            <p>These are original questions written in Cambridge style. The mark schemes are strict about anomaly type and cause.</p>
-          </div>
-          <div class="exam-list" id="examList"></div>
-        </section>
-
-        <section class="panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-084">
-          <div class="section-title">
-            <p class="eyebrow">Summary</p>
-            <h2>Normalisation checklist</h2>
-          </div>
-          <div class="summary-grid">
-            <div><strong>Find repeated facts</strong><span>Ask whether a descriptive fact belongs to another entity.</span></div>
-            <div><strong>Name the anomaly</strong><span>Update, insertion and deletion anomalies explain the risk.</span></div>
-            <div><strong>Split and link</strong><span>Move data into related tables and use keys to preserve links.</span></div>
-          </div>
-        </section>
-
-        <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
-          <div class="section-title">
-            <p class="eyebrow">Homework</p>
-            <h2>Clear tasks for consolidation</h2>
-          </div>
-          <div class="homework-list">
-            <article>
-              <strong>Task 1: Identify problems</strong>
-              <span>Given Enrolment(StudentID, StudentName, CourseID, CourseTitle, TutorEmail), list two repeated facts and name one anomaly each could cause.</span>
-            </article>
-            <article>
-              <strong>Task 2: Decompose</strong>
-              <span>Propose Student, Course and Enrolment tables for the same data. State one primary key and one foreign key for each relevant table.</span>
-            </article>
-            <article>
-              <strong>Task 3: 6-mark answer</strong>
-              <span>Answer: "Explain why normalisation can improve data integrity in a school course database." Include redundancy and two anomaly types.</span>
-            </article>
-          </div>
-        </section>
+        <nav class="v2-bottom-nav" aria-label="Previous and next lesson"><a href="../lesson-083/" >Previous lesson</a><a href="../lesson-085/" >Next lesson</a></nav>
       </div>
     </main>
-
-    <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=3"></script>
-    <script src="../lesson-toolbar.js?v=3"></script>
-    <script src="../stage7-accessibility.js?v=4"></script>
+    <script src="../course-v2.js?v=1"></script>
   </body>
 </html>

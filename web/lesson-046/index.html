@@ -3,444 +3,84 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 046 | Assembly language and machine code</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <title>AS9618 Lesson 046 | Abstraction and abstract models</title>
     <link rel="icon" href="data:" />
-    <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
+    <link rel="stylesheet" href="../course-v2.css?v=3" />
   </head>
-  <body>
+  <body data-course-version="2" data-lesson-id="046" data-syllabus-ids="S9.01">
     <a class="skip-link" href="#main-content">Skip to main content</a>
-    <header class="topbar">
-      <div>
-        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 4</p>
-        <h1>Assembly language and machine code</h1>
-      </div>
-      <div class="action-panel" aria-label="Page controls">
-        <a class="course-home-link" href="../">Course home</a>
-        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
-      </div>
+    <header class="v2-topbar">
+      <div><p class="v2-eyebrow">Cambridge AS9618 | Paper 2 | Section 9: Algorithm design and problem-solving</p><h1>Abstraction and abstract models</h1></div>
+      <nav class="v2-actions" aria-label="Lesson actions"><a href="../">Course home</a><a href="../assessments/">Assessment bank</a><button type="button" id="printLesson">Print</button></nav>
     </header>
-
-    <main class="layout" id="main-content" tabindex="-1">
-      <aside class="lesson-nav" aria-label="Lesson navigation">
-        <a href="#overview">Overview</a>
-        <a href="#hook">Warm-up</a>
-        <a href="#instruction-set">Instruction set</a>
-        <a href="#machine-code">Machine code</a>
-        <a href="#opcode">Opcode and operand</a>
-        <a href="#compatibility">Compatibility</a>
-        <a href="#tool">Decoder</a>
-        <a href="#examples">Examples</a>
-        <a href="#practice">Practice</a>
-        <a href="#debug">Debugging</a>
-        <a href="#exam">Exam-style</a>
-        <a href="#summary">Summary</a>
-        <a href="#homework">Homework</a>
-        <a href="#stage2-completion">Core syllabus content</a>
-      </aside>
-
-      <div class="lesson-content">
-        <!-- remediation-v2-stage3-scope:start -->
-        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.</p></aside>
-        <!-- remediation-v2-stage3-scope:end -->
-
-<!-- stage2-completion:start -->
-        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus content</p>
-            <h2>Assembly language and machine code</h2>
-          </div>
-          <div class="stage2-explanation">
-            <p>Machine code is the binary instruction form executed directly by a processor. Each bit pattern is interpreted according to that processor's instruction set, so machine code is processor dependent.</p>
-            <p>Assembly language is a low-level, processor-specific symbolic representation of machine-code instructions. Mnemonics such as ADD make operations easier for a human to read and write, while operands name the value, register or address used. An assembler translates assembly source into the corresponding machine code; assembly is not executed directly as text.</p>
-            <p>The relationship is close but not based on English spelling: a mnemonic maps to an opcode defined by the target instruction set, and an operand must be encoded in the form required by that instruction. Labels are resolved to addresses during assembly.</p>
-          </div>
-          <article class="stage2-example">
-            <h3>Worked example: Translate one symbolic instruction</h3>
-            <p>For a target instruction set, ADD #3 is assembly source: ADD is the mnemonic and #3 is an immediate operand. The assembler selects that processor's binary ADD opcode and encodes the operand. A different processor type may use a different opcode or instruction format, so the same machine-code bit pattern is not portable by assumption.</p>
-          </article>
+    <main class="v2-shell" id="main-content" tabindex="-1">
+      <nav class="v2-toc" aria-label="Lesson contents"><strong>Lesson 046</strong><a href="#overview">Overview</a><a href="#prerequisite">Prerequisite</a><a href="#explanation">Explanation</a><a href="#practice">Practice</a><a href="#summary">Summary</a></nav>
+      <div class="v2-content">
+        <section class="v2-hero" id="overview">
+          <div><p class="v2-eyebrow">Flexible-depth lesson</p><h2>Abstraction and abstract models</h2><p>S9.01 | Select what to omit, teach briefly or explore in depth.</p></div>
+          <div class="v2-time-grid" aria-label="Available lesson depth"><div><strong>Quick</strong><span>diagnose + essentials</span></div><div><strong>Full</strong><span>complete explanation</span></div><div><strong>Deep</strong><span>prerequisites + extension</span></div><div><strong>Choose</strong><span>practice by need</span></div></div>
         </section>
 
-        <!-- stage10-explanation:start machine-code -->
-        <section class="panel explanation-panel" id="explanation-machine-code" data-explains="machine-code" data-explanation-kind="mechanism" aria-labelledby="explanation-machine-code-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="machine-code">
-          <h2 class="explanation-sr-only" id="explanation-machine-code-title">Machine code is binary instructions for the CPU</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-046-machine-code.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Machine code is binary instructions for the CPU with a structured visual model." />
-            <figcaption class="explanation-sr-only">Machine code is binary instructions for the CPU: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Lowest-level executable form</li><li><strong>Lesson fact:</strong> Machine code consists of binary instructions that can be executed directly by the processor.</li><li><strong>Lesson fact:</strong> Not friendly for humans</li><li><strong>Lesson fact:</strong> Binary instructions are difficult for people to read and write accurately, but they are the form the processor executes directly.</li><li><strong>Lesson fact:</strong> Stored in memory</li><li><strong>Lesson fact:</strong> Machine-code instructions are stored in memory and fetched by the CPU during the fetch-decode-execute cycle.</li><li><strong>Lesson fact:</strong> CPU-specific meaning</li><li><strong>Lesson fact:</strong> The same bit pattern can have different meanings on different architectures because opcodes are defined by the instruction set.</li></ol>
-
-          </div>
+        <section class="v2-panel v2-route-menu" aria-labelledby="route-heading">
+          <div class="v2-heading"><p class="v2-eyebrow">Teacher choice</p><h2 id="route-heading">Choose the depth for this group</h2></div>
+          <div class="v2-route-grid"><article><h3>Quick route</h3><p>Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.</p></article><article><h3>Full route</h3><p>Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.</p></article><article><h3>Deep route</h3><p>Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.</p></article></div>
         </section>
-        <!-- stage10-explanation:end machine-code -->
-        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus practice</p>
-            <h2>Assembly language and machine code: apply and assess</h2>
-          </div>
-          <div class="stage2-practice">
-            <h3>Targeted practice</h3>
-            <article class="stage2-question">
-              <p><strong>1.</strong> Which language form does the processor execute directly?</p>
-              <details><summary>Show answer</summary><p>Machine code: binary instructions defined by its instruction set.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>2.</strong> Why is assembly language easier for people to use than machine code?</p>
-              <details><summary>Show answer</summary><p>It uses symbolic mnemonics, operands and labels instead of raw binary bit patterns.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>3.</strong> What translates assembly language into machine code?</p>
-              <details><summary>Show answer</summary><p>An assembler.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>4.</strong> Why are both forms processor specific?</p>
-              <details><summary>Show answer</summary><p>Their operations, opcodes and instruction formats are defined by the target processor's instruction set.</p></details>
-            </article>
-          </div>
-          <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>6 marks</span></div>
-            <p>Explain the relationship between assembly language and machine code and why an assembler and a target instruction set are required.</p>
-            <details>
-              <summary>Show MS</summary>
-              <table class="mark-scheme-table">
-                <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
-                <tbody>
-                  <tr><td>machine code consists of binary instructions executed directly by the processor</td><td>Do not accept that assembly source is executed directly or that one machine-code instruction has a universal meaning across processors.</td><td>1</td></tr>
-                  <tr><td>assembly uses mnemonics/operands/labels as a symbolic low-level form</td><td></td><td>1</td></tr>
-                  <tr><td>assembler translates assembly source to machine code</td><td></td><td>1</td></tr>
-                  <tr><td>mnemonic maps to an opcode and operands are encoded</td><td></td><td>1</td></tr>
-                  <tr><td>instruction meanings/formats are defined by the processor instruction set</td><td></td><td>1</td></tr>
-                  <tr><td>therefore code for one processor may not execute correctly on another</td><td></td><td>1</td></tr>
-                </tbody>
-              </table>
-            </details>
-          </article>
-        </section>
-        <!-- stage2-completion:end -->
 
-<section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-046">
-          <div class="hero-copy">
-            <p class="lesson-meta">Lesson 046 | 45 minutes | Paper 1 Section 4 | Processor fundamentals</p>
-            <h2>A processor executes instructions defined by its instruction set.</h2>
-            <p>
-              An instruction set is the collection of machine-code instructions a
-              processor can recognise and execute. Machine code is binary, and each
-              instruction normally contains an opcode that says what to do and an
-              operand that says what to do it to.
-            </p>
-            <div class="objective-grid" aria-label="Learning objectives">
-              <div><strong>Define</strong><span>instruction set and machine code accurately</span></div>
-              <div><strong>Decode</strong><span>simple opcode and operand instruction formats</span></div>
-              <div><strong>Explain</strong><span>why instruction sets affect compatibility</span></div>
+        <section class="v2-panel" id="prerequisite">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 1 | optional depth</p><h2>Prerequisite knowledge and quick diagnostic</h2></div>
+          <div class="v2-diagnostic"><p>Recall the main conclusion from Lesson 045: Paper 1 integrated review and error clinic.</p></div>
+          <p>Give one accurate definition or method step before continuing. If it is missing, revisit only that prerequisite.</p>
+
+        </section>
+
+        <section class="v2-panel" id="explanation">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 2 | deliberately over-complete</p><h2>Knowledge explanation</h2></div>
+          <h3>Learning objectives</h3><ul class="v2-objectives"><li>Understand abstraction, its purpose/benefits and creation of an abstract model.</li></ul>
+          <details class="v2-concept-menu"><summary>Open the concept checklist and choose what to teach</summary><ul><li>abstraction</li><li>essential details</li><li>irrelevant detail</li><li>abstract model</li></ul></details>
+          <div class="v2-explanation-grid">
+            <div>
+              <article class="v2-core-facts"><h3>Detailed explanation</h3><p class="v2-teacher-note">Teach all points, or select only the ones this group needs. The list is intentionally fuller than a fixed lesson slot.</p><ul class="v2-facts"><li>Abstraction is required both as a concept and as a practical modelling skill: explain its need and benefits, then produce an abstract model containing only details essential to the problem.</li><li>Abstraction removes each irrelevant detail that does not affect the required inputs, rules, constraints or outputs. Producing an abstract model means recording the essential details that remain: the data, relationships and processes needed to solve the problem, not merely listing what was ignored.</li><li>Decomposition breaks a problem into smaller sub-problems with distinct responsibilities. Express the resulting design as program modules with clear inputs, processing and outputs; a module may later be implemented as a procedure that performs an action or a function that returns a value.</li><li>Abstraction decides what belongs in the model; decomposition decides how the retained problem is divided. The modules must connect into one complete solution and must not omit a requirement.</li><li>Algorithm design review: define an algorithm as a solution expressed as a sequence of defined steps; use abstraction to retain essential details in an abstract model; use decomposition to express the problem as connected modules; and choose meaningful identifiers recorded in an identifier table.</li></ul></article>
+              <article class="v2-example"><h3>Worked example</h3><p>Design a result-processing solution: Keep only student ID and required marks, decompose the task into InputResults, ValidateResult, CalculateMean and OutputReport, record meaningful identifiers and IPO, refine CalculateMean into defined steps, use a range logic statement, and represent the final control flow in Cambridge pseudocode or a matching flowchart.</p></article>
+              <aside class="v2-extension"><h3>Beyond syllabus / 延伸知识（不要求背诵）</h3><p>the same algorithm can be expressed in many programming languages; its logic should remain independent of syntax.</p></aside>
             </div>
-          </div>
-          <div class="machine-card" aria-label="Machine code sketch">
-            <div class="instruction-word">
-              <span class="opcode">0011</span>
-              <span class="operand">01011010</span>
-            </div>
-            <div class="legend">
-              <span>opcode: ADD</span>
-              <span>operand: address 90</span>
-            </div>
-            <p>Binary is not the mystery. The agreed meaning is the instruction set.</p>
+            <figure class="v2-visual">
+              <img src="../assets/diagrams/stage10-infographics/stage10-lesson-099-model.jpg" alt="List each input and record its type or range when the problem supplies them.. Write the required processing in ordered natural-language steps.. State the exact required output.. Record constraints and supported assumptions.. Confirm completeness before choosing a representation." loading="lazy" />
+              <figcaption>Use IPOC before choosing a representation. One maintained explanation is shown as an image on larger screens and as text on small screens.</figcaption>
+              <div class="v2-mobile-visual-text" aria-label="Mobile text alternative"><ul><li>List each input and record its type or range when the problem supplies them.</li><li>Write the required processing in ordered natural-language steps.</li><li>State the exact required output.</li><li>Record constraints and supported assumptions.</li><li>Confirm completeness before choosing a representation.</li></ul></div>
+            </figure>
           </div>
         </section>
 
-        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-046">
-          <article class="why-card">
-            <h3>Why this matters</h3>
-            <p>Questions often separate definition marks from "why can this CPU run/not run this code?" explanation marks.</p>
-          </article>
-          <article class="trap-card">
-            <h3>Common error</h3>
-            <p>An opcode is not the data itself. It specifies the operation; the operand supplies the associated value, address or register.</p>
-          </article>
+        <section class="v2-panel" id="practice">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 3 | select by learner need</p><h2>Practice by question type</h2></div>
+          <div class="v2-question-list"><article class="v2-question" data-question-id="Q-L046-01" data-semantic-fingerprint="S9.01|abstraction-and-abstract-models|write|model-school-meal-bill|written|recall">
+              <div class="v2-question-head"><span class="v2-badge">write</span><span class="v2-badge">recall</span><span class="v2-badge difficulty">foundation</span><span class="v2-badge">6 marks</span></div>
+              <p><strong>Question 1.</strong> Write an abstract model for a school meal bill, then decompose it into named program modules and identify one likely procedure and one likely function.</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> retains meal choice, quantity and price as essential details; states the calculation and total output in the abstract model; excludes a justified irrelevant detail such as tray colour; expresses the problem as connected modules with distinct responsibilities; identifies a suitable procedure module that performs an action; identifies a suitable function module that returns a value</p><p><strong>Marking guidance:</strong> Do not award only a list of omitted details, vague Part1/Part2 labels or modules that do not collectively solve the problem.</p><p><strong>Common error:</strong> For the command word write, perform that exact action; do not replace it with an unrelated fact.</p></div></details>
+            </article><article class="v2-question" data-question-id="Q-L046-02" data-semantic-fingerprint="S9.01|abstraction-and-abstract-models|show|develop-modular-algorithm-processing|pseudocode|recall">
+              <div class="v2-question-head"><span class="v2-badge">show</span><span class="v2-badge">recall</span><span class="v2-badge difficulty">application</span><span class="v2-badge">8 marks</span></div>
+              <p><strong>Question 2.</strong> Develop an abstract, modular algorithm for processing ten valid marks, then show one refinement level and the central validation logic statement.</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> abstract model keeps only essential data, rules and output; decomposition expresses connected program modules; identifier table uses meaningful names, types and purposes; IPO design forms a complete solution; sequence, selection and iteration are used appropriately; one representation is accurate and convertible without changing meaning; stepwise refinement replaces a complex step with implementable substeps; logic statement correctly enforces the required mark range</p><p><strong>Marking guidance:</strong> Do not award isolated terminology when the design omits the required model, modules, refinement or logic.</p><p><strong>Common error:</strong> Do not repeat the same point in different words; each mark needs a separate idea or method step.</p></div></details>
+            </article><article class="v2-question" data-question-id="Q-L046-03" data-semantic-fingerprint="S9.01|abstraction-and-abstract-models|explain|would-applied-suitable-computing|visual|explain">
+              <div class="v2-question-head"><span class="v2-badge">explain</span><span class="v2-badge">explain</span><span class="v2-badge difficulty">transfer</span><span class="v2-badge">3 marks</span></div>
+              <p><strong>Question 3.</strong> Explain how abstraction and abstract models would be applied in a suitable computing context.</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> Abstraction removes each irrelevant detail that does not affect the required inputs, rules, constraints or outputs. Producing an abstract model means recording the essential details that remain: the data, relationships and processes needed to solve the problem, not merely listing what was ignored. Decomposition breaks a problem into smaller sub-problems with distinct responsibilities. Express the resulting design as program modules with clear inputs, processing and outputs; a module may later be implemented as a procedure that performs an action or a function that returns a value. Abstraction decides what belongs in the model; decomposition decides how the retained problem is divided. The modules must connect into one complete solution and must not omit a requirement.</p><p><strong>Marking guidance:</strong> Each mark needs a relevant point linked to the stated context.</p><p><strong>Common error:</strong> Do not copy the worked example unchanged; transfer the method and check it against the new context.</p></div></details>
+            </article></div>
+
         </section>
 
-        <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-046">
-          <div class="section-title">
-            <p class="eyebrow">Warm-up hook</p>
-            <h2>Two CPUs see the same bits. Why might they do different things?</h2>
-            <p>Click the best reason. Bits are innocent; the instruction set gives them meaning.</p>
-          </div>
-          <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="isa">They use different instruction sets</button>
-            <button class="choice-card" type="button" data-hook="ram">They have different RAM colours</button>
-            <button class="choice-card" type="button" data-hook="font">The binary is written in a different font</button>
-            <button class="choice-card" type="button" data-hook="bus">The data bus refuses to cooperate</button>
-          </div>
-          <div class="feedback" id="hookFeedback" aria-live="polite">
-            Click one. The key idea is that instruction meaning is processor-specific.
-          </div>
+        <section class="v2-panel" id="summary">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 4 | close when ready</p><h2>Summary and exam reminders</h2></div>
+          <div class="v2-summary-grid"><div><h3>Summary</h3><ul class="v2-summary-list"><li>Define abstraction and abstract models with the exact technical vocabulary expected by the syllabus.</li><li>Use the lesson method on a fresh context and show the intermediate decision, representation or calculation.</li><li>Match the shape of the answer to the command word and the available marks.</li><li>Check the final answer against the scenario instead of repeating a memorised sentence.</li></ul></div><div class="v2-error"><h3>Common error to correct</h3><p>Students often start coding before defining the output. Correction: an algorithm is easier to design when the required result is known first.</p></div></div>
+          <div class="v2-tip-box"><h3>Exam technique</h3><ul><li>Follow the command word: state gives a fact; explain links a cause to a consequence; compare covers both sides.</li><li>Match the number of independent points or method steps to the available marks.</li><li>For abstraction and abstract models, use the exact technical term before applying it to the scenario.</li></ul></div>
         </section>
 
-        <section class="panel" id="instruction-set" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-046">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 1</p>
-            <h2>What is an instruction set?</h2>
-          </div>
-          <div class="concept-grid">
-            <article>
-              <strong>Definition</strong>
-              <span>The set of instructions that a particular processor can recognise and execute.</span>
-            </article>
-            <article>
-              <strong>Includes operations</strong>
-              <span>Examples include load, store, add, subtract, compare, jump and input/output instructions.</span>
-            </article>
-            <article>
-              <strong>Processor-specific</strong>
-              <span>Different processor families can have different instruction sets and instruction formats.</span>
-            </article>
-            <article>
-              <strong>Defines meaning</strong>
-              <span>The instruction set tells the CPU what each opcode means and how operands are interpreted.</span>
-            </article>
-          </div>
-          <div class="callout">Chinese support: instruction set = 指令集；machine code = 机器码；opcode = 操作码；operand = 操作数。</div>
-        </section>
-
-        <!-- stage10-explanation:start instruction-set -->
-        <section class="panel explanation-panel" id="explanation-instruction-set" data-explains="instruction-set" data-explanation-kind="mechanism" aria-labelledby="explanation-instruction-set-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-046">
-          <h2 class="explanation-sr-only" id="explanation-instruction-set-title">What is an instruction set?</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-046-instruction-set.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining What is an instruction set? with a structured visual model." />
-            <figcaption class="explanation-sr-only">What is an instruction set?: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Definition</li><li><strong>Lesson fact:</strong> The set of instructions that a particular processor can recognise and execute.</li><li><strong>Lesson fact:</strong> Includes operations</li><li><strong>Lesson fact:</strong> Examples include load, store, add, subtract, compare, jump and input/output instructions.</li><li><strong>Lesson fact:</strong> Processor-specific</li><li><strong>Lesson fact:</strong> Different processor families can have different instruction sets and instruction formats.</li><li><strong>Lesson fact:</strong> Defines meaning</li><li><strong>Lesson fact:</strong> The instruction set tells the CPU what each opcode means and how operands are interpreted.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end instruction-set -->
-        <section class="panel" id="machine-code" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-046">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 2</p>
-            <h2>Machine code is binary instructions for the CPU</h2>
-          </div>
-          <div class="machine-grid">
-            <article>
-              <h3>Lowest-level executable form</h3>
-              <p>Machine code consists of binary instructions that can be executed directly by the processor.</p>
-            </article>
-            <article>
-              <h3>Not friendly for humans</h3>
-              <p>Binary instructions are difficult for people to read and write accurately, but they are the form the processor executes directly.</p>
-            </article>
-            <article>
-              <h3>Stored in memory</h3>
-              <p>Machine-code instructions are stored in memory and fetched by the CPU during the fetch-decode-execute cycle.</p>
-            </article>
-            <article>
-              <h3>CPU-specific meaning</h3>
-              <p>The same bit pattern can have different meanings on different architectures because opcodes are defined by the instruction set.</p>
-            </article>
-          </div>
-        </section>
-
-        <section class="panel" id="opcode" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-046">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 3</p>
-            <h2>Opcode and operand</h2>
-          </div>
-          <div class="format-card">
-            <div class="format-word">
-              <span class="opcode">opcode</span>
-              <span class="operand">operand</span>
-            </div>
-            <p><strong>Opcode</strong> tells the CPU which operation to perform. <strong>Operand</strong> gives the data, register, address or value used by the operation.</p>
-          </div>
-          <div class="instruction-table" role="table" aria-label="Example instruction set">
-            <div class="table-row table-head" role="row">
-              <div role="columnheader">Opcode</div>
-              <div role="columnheader">Operation</div>
-              <div role="columnheader">Meaning</div>
-              <div role="columnheader">Example with operand</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">0001</div>
-              <div role="cell">LOAD</div>
-              <div role="cell">Load value from memory into ACC.</div>
-              <div role="cell">0001 01011010 = LOAD address 90</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">0010</div>
-              <div role="cell">STORE</div>
-              <div role="cell">Store ACC value into memory.</div>
-              <div role="cell">0010 01011010 = STORE address 90</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">0011</div>
-              <div role="cell">ADD</div>
-              <div role="cell">Add value from memory to ACC.</div>
-              <div role="cell">0011 01011010 = ADD value at address 90</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">0100</div>
-              <div role="cell">JMP</div>
-              <div role="cell">Jump to a different instruction address.</div>
-              <div role="cell">0100 00001100 = jump to address 12</div>
-            </div>
-          </div>
-          <div class="trap-card inline-card">
-            <h3>Common error</h3>
-            <p>The operand is not always data itself. It may be an address, a register identifier or an immediate value depending on the instruction format.</p>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start opcode -->
-        <section class="panel explanation-panel" id="explanation-opcode" data-explains="opcode" data-explanation-kind="mechanism" aria-labelledby="explanation-opcode-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-046">
-          <h2 class="explanation-sr-only" id="explanation-opcode-title">Opcode and operand</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-046-opcode.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Opcode and operand with a structured visual model." />
-            <figcaption class="explanation-sr-only">Opcode and operand: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Opcode tells the CPU which operation to perform. Operand gives the data, register, address or value used by the operation.</li><li><strong>Lesson fact:</strong> Operation</li><li><strong>Lesson fact:</strong> Example with operand</li><li><strong>Lesson fact:</strong> Load value from memory into ACC.</li><li><strong>Lesson fact:</strong> 0001 01011010 = LOAD address 90</li><li><strong>Lesson fact:</strong> Store ACC value into memory.</li><li><strong>Lesson fact:</strong> 0010 01011010 = STORE address 90</li><li><strong>Lesson fact:</strong> Add value from memory to ACC.</li><li><strong>Lesson fact:</strong> 0011 01011010 = ADD value at address 90</li><li><strong>Lesson fact:</strong> Jump to a different instruction address.</li><li><strong>Lesson fact:</strong> 0100 00001100 = jump to address 12</li><li><strong>Lesson fact:</strong> Common error</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end opcode -->
-        <section class="panel" id="compatibility" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-046">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 4</p>
-            <h2>Instruction sets and compatibility</h2>
-          </div>
-          <div class="compat-grid">
-            <article>
-              <strong>Same ISA</strong>
-              <span>A program compiled to one instruction set can run on compatible processors that implement that instruction set.</span>
-            </article>
-            <article>
-              <strong>Different ISA</strong>
-              <span>Machine code for one architecture may not run correctly on another architecture.</span>
-            </article>
-            <article>
-              <strong>Translation needed</strong>
-              <span>Source code may need to be recompiled, interpreted, emulated or translated for a different processor.</span>
-            </article>
-            <article>
-              <strong>Exam wording</strong>
-              <span>Say "the CPU cannot recognise/execute those opcodes" rather than simply "the CPU does not like it".</span>
-            </article>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start compatibility -->
-        <section class="panel explanation-panel" id="explanation-compatibility" data-explains="compatibility" data-explanation-kind="mechanism" aria-labelledby="explanation-compatibility-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-046">
-          <h2 class="explanation-sr-only" id="explanation-compatibility-title">Instruction sets and compatibility</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-046-compatibility.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Instruction sets and compatibility with a structured visual model." />
-            <figcaption class="explanation-sr-only">Instruction sets and compatibility: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Same ISA</li><li><strong>Lesson fact:</strong> A program compiled to one instruction set can run on compatible processors that implement that instruction set.</li><li><strong>Lesson fact:</strong> Different ISA</li><li><strong>Lesson fact:</strong> Machine code for one architecture may not run correctly on another architecture.</li><li><strong>Lesson fact:</strong> Translation needed</li><li><strong>Lesson fact:</strong> Source code may need to be recompiled, interpreted, emulated or translated for a different processor.</li><li><strong>Lesson fact:</strong> Exam wording</li><li><strong>Lesson fact:</strong> Say &quot;the CPU cannot recognise/execute those opcodes&quot; rather than simply &quot;the CPU does not like it&quot;.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end compatibility -->
-        <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-046">
-          <div class="section-title">
-            <p class="eyebrow">Interactive tool</p>
-            <h2>Simple instruction decoder</h2>
-            <p>Use the lesson's fake 12-bit format: first 4 bits are opcode, last 8 bits are operand.</p>
-          </div>
-          <div class="converter-grid">
-            <label>
-              Machine-code instruction
-              <select id="instructionInput">
-                <option value="000101011010">0001 01011010</option>
-                <option value="001001011010">0010 01011010</option>
-                <option value="001101011010">0011 01011010</option>
-                <option value="010000001100">0100 00001100</option>
-                <option value="111101011010">1111 01011010</option>
-              </select>
-            </label>
-            <button type="button" id="decodeBtn">Decode</button>
-          </div>
-          <div class="result-box" id="decodeResult" aria-live="polite"></div>
-          <div class="method-box" id="decodeMethod"></div>
-          <div class="reject-box" id="decodeTrap"></div>
-        </section>
-
-        <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-046">
-          <div class="section-title">
-            <p class="eyebrow">Worked examples</p>
-            <h2>Decode the instruction, then explain it</h2>
-          </div>
-          <div class="example-tabs" role="tablist" aria-label="Worked examples">
-            <button class="tab active" type="button" data-example="decode">Decode</button>
-            <button class="tab" type="button" data-example="compatibility">Compatibility</button>
-            <button class="tab" type="button" data-example="capacity">Format capacity</button>
-          </div>
-          <article class="example-box" id="exampleBox"></article>
-        </section>
-
-        <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-046">
-          <div class="section-title">
-            <p class="eyebrow">5-minute quiz</p>
-            <h2>Practice with instant checking</h2>
-            <p>Short answers are fine. "Binary spell" is not a recognised Cambridge keyword, tempting though it is.</p>
-          </div>
-          <div class="practice-list" id="practiceList"></div>
-        </section>
-
-        <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-046">
-          <div class="section-title">
-            <p class="eyebrow">Mistake debugging</p>
-            <h2>Fix the vocabulary</h2>
-          </div>
-          <div class="mistake-grid" id="mistakeList"></div>
-        </section>
-
-        <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-046">
-          <div class="section-title">
-            <p class="eyebrow">Exam-style questions</p>
-            <h2>Cambridge-style questions with expandable mark schemes</h2>
-            <p>These are original Cambridge-style questions. MS wording rewards exact definitions and role-based explanation.</p>
-          </div>
-          <div class="exam-list" id="examList"></div>
-        </section>
-
-        <section class="panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-046">
-          <div class="section-title">
-            <p class="eyebrow">Summary</p>
-            <h2>Meaning comes from the instruction set</h2>
-          </div>
-          <div class="summary-grid">
-            <div><strong>Instruction set</strong><span>Instructions a processor can recognise and execute.</span></div>
-            <div><strong>Machine code</strong><span>Binary instructions executable by the CPU.</span></div>
-            <div><strong>Opcode</strong><span>Specifies the operation to perform.</span></div>
-            <div><strong>Operand</strong><span>Specifies data, address, register or value used by the operation.</span></div>
-            <div><strong>Compatibility</strong><span>Machine code depends on the processor's instruction set.</span></div>
-            <div><strong>Bit allocation</strong><span>More opcode bits allow more operations but leave fewer operand bits in a fixed-length instruction.</span></div>
-          </div>
-        </section>
-
-        <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
-          <div class="section-title">
-            <p class="eyebrow">Homework</p>
-            <h2>Make instruction wording precise</h2>
-          </div>
-          <ol class="homework-list">
-            <li>Define instruction set, machine code, opcode and operand in one sentence each.</li>
-            <li>Decode these fake instructions using the lesson table: `0001 00001111`, `0011 00001010`, `0100 00100000`.</li>
-            <li>Write a 5-mark answer: "Explain why machine code written for one processor may not run on another processor."</li>
-            <li>For a fixed 12-bit instruction, explain the trade-off between opcode width and operand width.</li>
-            <li>Correct this sentence: "The operand tells the CPU what operation to perform and the opcode stores the data."</li>
-          </ol>
-        </section>
+        <nav class="v2-bottom-nav" aria-label="Previous and next lesson"><a href="../lesson-045/" >Previous lesson</a><a href="../lesson-047/" >Next lesson</a></nav>
       </div>
     </main>
-    <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=3"></script>
-    <script src="../lesson-toolbar.js?v=3"></script>
-    <script src="../stage7-accessibility.js?v=4"></script>
+    <script src="../course-v2.js?v=1"></script>
   </body>
 </html>

@@ -3,427 +3,89 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 008 | Bitmap file headers, image resolution and screen resolution</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <title>AS9618 Lesson 008 | Network topologies and packet transmission</title>
     <link rel="icon" href="data:" />
-    <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
+    <link rel="stylesheet" href="../course-v2.css?v=3" />
   </head>
-  <body>
+  <body data-course-version="2" data-lesson-id="008" data-syllabus-ids="S2.04,S2.05">
     <a class="skip-link" href="#main-content">Skip to main content</a>
-    <header class="topbar">
-      <div>
-        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 1</p>
-        <h1>Bitmap file headers, image resolution and screen resolution</h1>
-      </div>
-      <div class="action-panel" aria-label="Page controls">
-        <a class="course-home-link" href="../">Course home</a>
-        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
-      </div>
+    <header class="v2-topbar">
+      <div><p class="v2-eyebrow">Cambridge AS9618 | Paper 1 | Section 2: Communication</p><h1>Network topologies and packet transmission</h1></div>
+      <nav class="v2-actions" aria-label="Lesson actions"><a href="../">Course home</a><a href="../assessments/">Assessment bank</a><button type="button" id="printLesson">Print</button></nav>
     </header>
-
-    <main class="layout" id="main-content" tabindex="-1">
-      <aside class="lesson-nav" aria-label="Lesson navigation">
-        <a href="#overview">Overview</a>
-        <a href="#hook">Warm-up</a>
-        <a href="#pixels">Pixels</a>
-        <a href="#resolution">Resolution</a>
-        <a href="#depth">Colour depth</a>
-        <a href="#formula">File size</a>
-        <a href="#tool">Calculator</a>
-        <a href="#examples">Examples</a>
-        <a href="#practice">Practice</a>
-        <a href="#exam">Exam-style</a>
-        <a href="#homework">Homework</a>
-        <a href="#stage2-completion">Core syllabus content</a>
-      </aside>
-
-      <div class="lesson-content">
-        <!-- remediation-v2-stage3-scope:start -->
-        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.</p></aside>
-        <!-- remediation-v2-stage3-scope:end -->
-
-<!-- stage2-completion:start -->
-        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus content</p>
-            <h2>Bitmap file headers, image resolution and screen resolution</h2>
-          </div>
-          <div class="stage2-explanation">
-            <p>A bitmap file contains pixel data and a file header. The header stores metadata needed to interpret the file, such as its format and image properties; it is not one of the image pixels. When a calculation says to ignore the file header, calculate only width x height x colour depth.</p>
-            <p>Image resolution is the number of pixels stored in the image, commonly width x height. Screen resolution is the number of physical display pixels available on the screen. They are independent: scaling an image on a screen does not create new captured detail.</p>
-          </div>
-          <article class="stage2-example">
-            <h3>Worked example: 100 x 80 bitmap with an ignored header</h3>
-            <p>The pixel data is 100 x 80 x 8 = 64,000 bits = 8,000 bytes. Because the question says to ignore the file header, no metadata bytes are added to that total.</p>
-          </article>
+    <main class="v2-shell" id="main-content" tabindex="-1">
+      <nav class="v2-toc" aria-label="Lesson contents"><strong>Lesson 008</strong><a href="#overview">Overview</a><a href="#prerequisite">Prerequisite</a><a href="#explanation">Explanation</a><a href="#practice">Practice</a><a href="#summary">Summary</a></nav>
+      <div class="v2-content">
+        <section class="v2-hero" id="overview">
+          <div><p class="v2-eyebrow">Flexible-depth lesson</p><h2>Network topologies and packet transmission</h2><p>S2.04, S2.05 | Select what to omit, teach briefly or explore in depth.</p></div>
+          <div class="v2-time-grid" aria-label="Available lesson depth"><div><strong>Quick</strong><span>diagnose + essentials</span></div><div><strong>Full</strong><span>complete explanation</span></div><div><strong>Deep</strong><span>prerequisites + extension</span></div><div><strong>Choose</strong><span>practice by need</span></div></div>
         </section>
 
-        <!-- stage10-explanation:start pixels -->
-        <section class="panel explanation-panel" id="explanation-pixels" data-explains="pixels" data-explanation-kind="mechanism" aria-labelledby="explanation-pixels-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="pixels">
-          <h2 class="explanation-sr-only" id="explanation-pixels-title">Bitmap file header and pixel data</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-008-pixels.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Bitmap file header and pixel data with a structured visual model." />
-            <figcaption class="explanation-sr-only">Bitmap file header and pixel data: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> A bitmap file contains a file header and pixel data.</li><li><strong>Lesson fact:</strong> The file header stores metadata needed to interpret the bitmap; it is not an image pixel.</li><li><strong>Lesson fact:</strong> Pixel-data size is width x height x colour depth.</li><li><strong>Lesson fact:</strong> When a question says to ignore the file header, do not add metadata bytes to the pixel-data calculation.</li></ol>
-
-          </div>
+        <section class="v2-panel v2-route-menu" aria-labelledby="route-heading">
+          <div class="v2-heading"><p class="v2-eyebrow">Teacher choice</p><h2 id="route-heading">Choose the depth for this group</h2></div>
+          <div class="v2-route-grid"><article><h3>Quick route</h3><p>Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.</p></article><article><h3>Full route</h3><p>Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.</p></article><article><h3>Deep route</h3><p>Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.</p></article></div>
         </section>
-        <!-- stage10-explanation:end pixels -->
-        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus practice</p>
-            <h2>Bitmap file headers, image resolution and screen resolution: apply and assess</h2>
-          </div>
-          <div class="stage2-practice">
-            <h3>Targeted practice</h3>
-            <article class="stage2-question">
-              <p><strong>1.</strong> What is the purpose of a bitmap file header?</p>
-              <details><summary>Show answer</summary><p>It stores metadata that tells software how to interpret the file; it is separate from the pixel data.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>2.</strong> What does 3840 x 2160 describe for a monitor?</p>
-              <details><summary>Show answer</summary><p>Its screen resolution: the number of physical display pixels.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>3.</strong> Does a higher screen resolution automatically increase an image file's size?</p>
-              <details><summary>Show answer</summary><p>No. File size depends on stored image data, not the screen used to view it.</p></details>
-            </article>
-          </div>
-          <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>4 marks</span></div>
-            <p>A 200 by 100 bitmap uses 24-bit colour. Calculate its pixel-data size in bytes, ignoring the file header, and explain what has been excluded.</p>
-            <details>
-              <summary>Show MS</summary>
-              <table class="mark-scheme-table">
-                <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
-                <tbody>
-                  <tr><td>200 x 100 x 24 bits</td><td>Do not treat the file header as a pixel or silently add an invented header size.</td><td>1</td></tr>
-                  <tr><td>480,000 bits / 60,000 bytes</td><td></td><td>1</td></tr>
-                  <tr><td>file header contains metadata used to interpret the bitmap</td><td></td><td>1</td></tr>
-                  <tr><td>header data is excluded because the question requests pixel data only</td><td></td><td>1</td></tr>
-                </tbody>
-              </table>
-            </details>
-          </article>
-        </section>
-        <!-- stage2-completion:end -->
 
-<section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-008">
-          <div class="hero-copy">
-            <p class="lesson-meta">Lesson 008 | 45 minutes | Informal questioning</p>
-            <h2>A bitmap image is a grid of tiny colour decisions.</h2>
-            <p>
-              A bitmap stores an image as pixels. Each pixel is assigned a colour code.
-              Resolution tells us how many pixels are stored, and colour depth tells us
-              how many bits are used for each pixel.
-            </p>
-            <div class="objective-grid" aria-label="Learning objectives">
-              <div>
-                <strong>Define</strong>
-                <span>pixel, bitmap, resolution and colour depth</span>
-              </div>
-              <div>
-                <strong>Calculate</strong>
-                <span>image file size in bits and bytes, ignoring metadata</span>
-              </div>
-              <div>
-                <strong>Explain</strong>
-                <span>quality and storage trade-offs when parameters change</span>
-              </div>
+        <section class="v2-panel" id="prerequisite">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 1 | optional depth</p><h2>Prerequisite knowledge and quick diagnostic</h2></div>
+          <div class="v2-diagnostic"><p>Recall S2.04 before starting this lesson.</p></div>
+          <p>Give one accurate definition or method step before continuing. If it is missing, revisit only that prerequisite.</p>
+          <details class="v2-prerequisite-detail"><summary>Open optional prerequisite refresher</summary><ul><li>All four named topologies are required. A hybrid combines two or more topology patterns; it is not merely a large network.</li><li>Show understanding of bus, star, mesh and hybrid network topologies.</li></ul></details>
+        </section>
+
+        <section class="v2-panel" id="explanation">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 2 | deliberately over-complete</p><h2>Knowledge explanation</h2></div>
+          <h3>Learning objectives</h3><ul class="v2-objectives"><li>Show understanding of bus, star, mesh and hybrid network topologies.</li><li>Explain how packets are transmitted between two hosts for a given topology and justify topology choice for a given situation.</li></ul>
+          <details class="v2-concept-menu"><summary>Open the concept checklist and choose what to teach</summary><ul><li>bus topology</li><li>star topology</li><li>mesh topology</li><li>hybrid topology</li><li>between two hosts</li><li>bus</li><li>central switch</li><li>alternative routes</li><li>hybrid</li><li>justify</li></ul></details>
+          <div class="v2-explanation-grid">
+            <div>
+              <article class="v2-core-facts"><h3>Detailed explanation</h3><p class="v2-teacher-note">Teach all points, or select only the ones this group needs. The list is intentionally fuller than a fixed lesson slot.</p><ul class="v2-facts"><li>All four named topologies are required. A hybrid combines two or more topology patterns; it is not merely a large network.</li><li>Packet or signal paths must be explicit for bus, star, mesh and hybrid. A justification must link the path and failure behaviour to the scenario.</li><li>A topology describes the pattern of links between devices. In a bus topology devices share one backbone; in a star topology each device has a separate link to a central switch; in a mesh topology nodes have multiple interconnections; a hybrid topology combines two or more topology patterns.</li><li>Compare topologies using packet path, single points of failure, alternative routes, cabling, expansion and traffic. A topology name without a path or failure consequence is not a developed explanation.</li><li>To describe transmission between two hosts, identify the physical or logical path used. In a bus, the signal travels along the shared backbone and attached devices inspect it. In a star, the source sends a frame to the central switch, which forwards it towards the destination device. In a mesh, packets can be forwarded through one of several alternative routes. In a hybrid, the path follows each component topology, for example source to local switch, across a connecting backbone, then through the destination switch.</li><li>Topology justification must connect the packet path to the scenario: central-device failure, backbone failure, individual cable failure, congestion, expansion, redundancy and cabling cost are consequences of the structure.</li><li>To justify a topology choice, connect its packet path and failure behaviour to the stated scenario.</li></ul></article>
+              <article class="v2-example"><h3>Worked example</h3><p>Send a patient record across a hybrid hospital network: The source sends the frame to its ward switch as in a star. The packet crosses the link between ward segments, then the destination switch forwards the local frame to the receiving host. A redundant inter-switch route can keep packets moving after one link fails, but adds cost and management.</p></article>
+              <aside class="v2-extension"><h3>Beyond syllabus / 延伸知识（不要求背诵）</h3><p>real networks organise communication in layers so that hardware, addressing and application protocols can change independently.</p></aside>
             </div>
-          </div>
-          <div class="image-display" aria-label="Bitmap pixel focus">
-            <div class="pixel-icon" aria-hidden="true">
-              <span></span><span></span><span></span><span></span>
-              <span></span><span></span><span></span><span></span>
-              <span></span><span></span><span></span><span></span>
-              <span></span><span></span><span></span><span></span>
-            </div>
-            <p>`100 × 80 × 8` is not a secret password. It is a bitmap size calculation.</p>
+            <figure class="v2-visual">
+              <img src="../assets/diagrams/stage10-infographics/stage10-lesson-018-model-visual.jpg" alt="Visual explanation. Follow the arrows and identify which devices can provide a resource.. Peer-to-peer: every device can request and provide. The lines show possible direct sharing between peers. They do not define a physical topology: peer-to-peer describes device roles.. No dedicated central server is required." loading="lazy" />
+              <figcaption>One model has equal peers; the other has dedicated service roles. One maintained explanation is shown as an image on larger screens and as text on small screens.</figcaption>
+              <div class="v2-mobile-visual-text" aria-label="Mobile text alternative"><ul><li>Visual explanation</li><li>Follow the arrows and identify which devices can provide a resource.</li><li>Peer-to-peer: every device can request and provide</li><li>The lines show possible direct sharing between peers. They do not define a physical topology: peer-to-peer describes device roles.</li><li>No dedicated central server is required.</li></ul></div>
+            </figure>
           </div>
         </section>
 
-        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-008">
-          <article class="why-card">
-            <h3>Why this matters</h3>
-            <p>Image quality, storage space and download time are linked through resolution and colour depth.</p>
-          </article>
-          <article class="trap-card">
-            <h3>Common error</h3>
-            <p>Do not write width × height × colour depth and then call the answer bytes. That product is in bits.</p>
-          </article>
+        <section class="v2-panel" id="practice">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 3 | select by learner need</p><h2>Practice by question type</h2></div>
+          <div class="v2-question-list"><article class="v2-question" data-question-id="Q-L008-01" data-semantic-fingerprint="S2.04+S2.05|network-topologies-and-packet-transmission|compare|compare-star-mesh-hospital|written|evaluate">
+              <div class="v2-question-head"><span class="v2-badge">compare</span><span class="v2-badge">evaluate</span><span class="v2-badge difficulty">foundation</span><span class="v2-badge">4 marks</span></div>
+              <p><strong>Question 1.</strong> Compare star and mesh topologies for a hospital network and justify one choice.</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> accurate star path; accurate mesh path; developed failure or cost comparison; scenario-linked justification</p><p><strong>Marking guidance:</strong> Do not credit a topology name without an accurate connection pattern and consequence.</p><p><strong>Common error:</strong> For the command word compare, perform that exact action; do not replace it with an unrelated fact.</p></div></details>
+            </article><article class="v2-question" data-question-id="Q-L008-02" data-semantic-fingerprint="S2.04+S2.05|network-topologies-and-packet-transmission|explain|carried-between-hosts-bus|written|explain">
+              <div class="v2-question-head"><span class="v2-badge">explain</span><span class="v2-badge">explain</span><span class="v2-badge difficulty">application</span><span class="v2-badge">2 marks</span></div>
+              <p><strong>Question 2.</strong> How is a transmission carried between two hosts in a bus topology?</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> The signal travels along the shared backbone and the attached hosts inspect it.</p><p><strong>Marking guidance:</strong> Award one mark for each distinct, technically accurate point or method step.</p><p><strong>Common error:</strong> Do not repeat the same point in different words; each mark needs a separate idea or method step.</p></div></details>
+            </article><article class="v2-question" data-question-id="Q-L008-03" data-semantic-fingerprint="S2.04+S2.05|network-topologies-and-packet-transmission|describe|possible-path-through-hybrid|written|explain">
+              <div class="v2-question-head"><span class="v2-badge">describe</span><span class="v2-badge">explain</span><span class="v2-badge difficulty">transfer</span><span class="v2-badge">2 marks</span></div>
+              <p><strong>Question 3.</strong> Describe one possible packet path through a hybrid made from two stars.</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> Source to its switch, across the link between star segments, then through the destination switch to the receiving host.</p><p><strong>Marking guidance:</strong> Award one mark for each distinct, technically accurate point or method step.</p><p><strong>Common error:</strong> Do not copy the worked example unchanged; transfer the method and check it against the new context.</p></div></details>
+            </article></div>
+          <div class="v2-paper-refs">
+          <h3>Related past-paper indexes</h3>
+          <table><thead><tr><th>Reference</th><th>Marks</th><th>Command word</th><th>Question type</th></tr></thead>
+          <tbody><tr><td>9618/12/W/25 Q5(c)</td><td>3</td><td>complete</td><td>recall</td></tr><tr><td>9618/12/W/25 Q5(d)</td><td>3</td><td>complete</td><td>recall</td></tr><tr><td>9618/12/W/25 Q5(e)</td><td>3</td><td>complete</td><td>recall</td></tr><tr><td>9618/11/S/24 Q8(a)</td><td>5</td><td>identify</td><td>recall</td></tr></tbody></table>
+          <p class="v2-copyright-note">Index only: Cambridge question and mark-scheme wording is not reproduced on this public course page.</p>
+        </div>
         </section>
 
-        <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-008">
-          <div class="section-title">
-            <p class="eyebrow">Warm-up hook</p>
-            <h2>What is stored for one pixel?</h2>
-          </div>
-          <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="photo">A tiny photograph</button>
-            <button class="choice-card" type="button" data-hook="colour">A binary colour code</button>
-            <button class="choice-card" type="button" data-hook="word">The word “red”</button>
-            <button class="choice-card" type="button" data-hook="camera">The camera lens</button>
-          </div>
-          <div class="feedback" id="hookFeedback" aria-live="polite">
-            Pick an answer. A bitmap is less poetic than a painting: it stores codes for pixels.
-          </div>
+        <section class="v2-panel" id="summary">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 4 | close when ready</p><h2>Summary and exam reminders</h2></div>
+          <div class="v2-summary-grid"><div><h3>Summary</h3><ul class="v2-summary-list"><li>Define network topologies and packet transmission with the exact technical vocabulary expected by the syllabus.</li><li>Use the lesson method on a fresh context and show the intermediate decision, representation or calculation.</li><li>Match the shape of the answer to the command word and the available marks.</li><li>Check the final answer against the scenario instead of repeating a memorised sentence.</li></ul></div><div class="v2-error"><h3>Common error to correct</h3><p>Students often confuse bandwidth with speed in every sense. Correction: bandwidth is capacity; latency and congestion also affect perceived performance.</p></div></div>
+          <div class="v2-tip-box"><h3>Exam technique</h3><ul><li>Follow the command word: state gives a fact; explain links a cause to a consequence; compare covers both sides.</li><li>Match the number of independent points or method steps to the available marks.</li><li>For network topologies and packet transmission, use the exact technical term before applying it to the scenario.</li></ul></div>
         </section>
 
-        <section class="panel" id="pixels" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-008">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 1</p>
-            <h2>Bitmap images are pixel grids</h2>
-          </div>
-          <div class="concept-grid">
-            <article>
-              <h3>Bitmap</h3>
-              <p>An image represented as a grid of pixels, where each pixel has a stored colour value.</p>
-            </article>
-            <article>
-              <h3>Pixel</h3>
-              <p>The smallest addressable picture element in a bitmap image.</p>
-            </article>
-            <article>
-              <h3>Metadata</h3>
-              <p>Extra data about the file, such as dimensions or format. Exam calculations often say to ignore it.</p>
-            </article>
-          </div>
-          <div class="callout">
-            Chinese support: bitmap = 位图；pixel = 像素；resolution = 分辨率；colour depth = 色深。
-          </div>
-        </section>
-
-        <section class="panel" id="resolution" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-008">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 2</p>
-            <h2>Resolution: width × height</h2>
-          </div>
-          <div class="method-grid">
-            <article>
-              <h3>Pixel dimensions</h3>
-              <p>`100 × 80` means 100 pixels across and 80 pixels down.</p>
-              <p>Total pixels: `100 × 80 = 8000`.</p>
-            </article>
-            <article>
-              <h3>Quality effect</h3>
-              <p>Higher resolution can show more detail because more pixels are stored.</p>
-              <p>It also increases file size if colour depth stays the same.</p>
-            </article>
-          </div>
-          <div class="pixel-demo" id="pixelDemo" aria-label="Pixel grid demonstration"></div>
-          <div class="feedback" id="pixelDemoText">Click pixels to toggle them. Each square is one stored picture element.</div>
-        </section>
-
-        <!-- stage10-explanation:start resolution -->
-        <section class="panel explanation-panel" id="explanation-resolution" data-explains="resolution" data-explanation-kind="mechanism" aria-labelledby="explanation-resolution-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-008">
-          <h2 class="explanation-sr-only" id="explanation-resolution-title">Resolution: width × height</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-008-resolution.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Resolution: width × height with a structured visual model." />
-            <figcaption class="explanation-sr-only">Resolution: width × height: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Pixel dimensions</li><li><strong>Lesson fact:</strong> 100 × 80 means 100 pixels across and 80 pixels down.</li><li><strong>Lesson fact:</strong> Total pixels: 100 × 80 = 8000.</li><li><strong>Lesson fact:</strong> Quality effect</li><li><strong>Lesson fact:</strong> Higher resolution can show more detail because more pixels are stored.</li><li><strong>Lesson fact:</strong> It also increases file size if colour depth stays the same.</li><li><strong>Lesson fact:</strong> Click pixels to toggle them. Each square is one stored picture element.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end resolution -->
-        <section class="panel" id="depth" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-008">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 3</p>
-            <h2>Colour depth: bits per pixel</h2>
-          </div>
-          <div class="depth-grid">
-            <article>
-              <h3>1-bit colour</h3>
-              <p>`2¹ = 2` possible colours. Useful for black/white examples.</p>
-            </article>
-            <article>
-              <h3>4-bit colour</h3>
-              <p>`2⁴ = 16` possible colours.</p>
-            </article>
-            <article>
-              <h3>8-bit colour</h3>
-              <p>`2⁸ = 256` possible colours.</p>
-            </article>
-            <article>
-              <h3>24-bit colour</h3>
-              <p>`2²⁴ = 16 777 216` possible colours.</p>
-            </article>
-          </div>
-          <div class="callout warning">
-            Higher colour depth allows more possible colours, but it cannot add detail that is absent from the original image.
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start depth -->
-        <section class="panel explanation-panel" id="explanation-depth" data-explains="depth" data-explanation-kind="mechanism" aria-labelledby="explanation-depth-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-008">
-          <h2 class="explanation-sr-only" id="explanation-depth-title">Colour depth: bits per pixel</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-008-depth.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Colour depth: bits per pixel with a structured visual model." />
-            <figcaption class="explanation-sr-only">Colour depth: bits per pixel: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> 1-bit colour</li><li><strong>Lesson fact:</strong> 2¹ = 2 possible colours. Useful for black/white examples.</li><li><strong>Lesson fact:</strong> 4-bit colour</li><li><strong>Lesson fact:</strong> 2⁴ = 16 possible colours.</li><li><strong>Lesson fact:</strong> 8-bit colour</li><li><strong>Lesson fact:</strong> 2⁸ = 256 possible colours.</li><li><strong>Lesson fact:</strong> 24-bit colour</li><li><strong>Lesson fact:</strong> 2²⁴ = 16 777 216 possible colours.</li><li><strong>Lesson fact:</strong> Higher colour depth allows more possible colours, but it cannot add detail that is absent from the original image.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end depth -->
-        <section class="panel" id="formula" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-008">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 4</p>
-            <h2>Bitmap file size formula</h2>
-          </div>
-          <div class="formula-box">
-            <strong>file size in bits = width × height × colour depth</strong>
-            <span>file size in bytes = bits ÷ 8</span>
-          </div>
-          <div class="worked-line">
-            `100 × 80 × 8 = 64 000 bits = 8000 bytes`
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start formula -->
-        <section class="panel explanation-panel" id="explanation-formula" data-explains="formula" data-explanation-kind="mechanism" aria-labelledby="explanation-formula-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-008">
-          <h2 class="explanation-sr-only" id="explanation-formula-title">Bitmap file size formula</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-008-formula.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Bitmap file size formula with a structured visual model." />
-            <figcaption class="explanation-sr-only">Bitmap file size formula: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> file size in bits = width × height × colour depth</li><li><strong>Lesson fact:</strong> file size in bytes = bits ÷ 8</li><li><strong>Lesson fact:</strong> 100 × 80 × 8 = 64 000 bits = 8000 bytes</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end formula -->
-        <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-008">
-          <div class="section-title">
-            <p class="eyebrow">Interactive tool</p>
-            <h2>Bitmap file size calculator</h2>
-          </div>
-          <div class="converter-grid">
-            <label>
-              Width / pixels
-              <input id="widthInput" type="number" min="1" value="100" />
-            </label>
-            <label>
-              Height / pixels
-              <input id="heightInput" type="number" min="1" value="80" />
-            </label>
-            <label>
-              Colour depth / bits
-              <select id="depthInput">
-                <option value="1">1 bit</option>
-                <option value="4">4 bits</option>
-                <option value="8" selected>8 bits</option>
-                <option value="16">16 bits</option>
-                <option value="24">24 bits</option>
-              </select>
-            </label>
-            <button type="button" id="calculateBtn">Calculate</button>
-          </div>
-          <div class="result-box" id="calcResult" aria-live="polite"></div>
-          <div class="method-box" id="calcMethod"></div>
-        </section>
-
-        <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-008">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge examples</p>
-            <h2>Worked examples</h2>
-          </div>
-          <div class="example-tabs" role="tablist" aria-label="Worked examples">
-            <button class="tab active" type="button" data-example="basic">100 × 80, 8-bit</button>
-            <button class="tab" type="button" data-example="depth">Colour depth effect</button>
-            <button class="tab" type="button" data-example="resolution">Resolution effect</button>
-          </div>
-          <article class="example-box" id="exampleBox"></article>
-        </section>
-
-        <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-008">
-          <div class="section-title">
-            <p class="eyebrow">Your turn</p>
-            <h2>Practice with instant checking</h2>
-          </div>
-          <div class="practice-list" id="practiceList"></div>
-          <button class="primary-button" type="button" id="checkPractice">Check practice</button>
-          <div class="feedback" id="practiceFeedback" aria-live="polite"></div>
-        </section>
-
-        <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-008">
-          <div class="section-title">
-            <p class="eyebrow">Mistake debugging</p>
-            <h2>Fix the file size mistake</h2>
-          </div>
-          <div class="mistake-grid">
-            <article>
-              <p class="wrong">`100 × 80 × 8 = 64 000 bytes`</p>
-              <button class="answer-toggle" type="button" data-answer="mistake1">Show correction</button>
-              <p class="answer" id="mistake1">The formula first gives bits. `64 000 bits ÷ 8 = 8000 bytes`.</p>
-            </article>
-            <article>
-              <p class="wrong">“Doubling width only adds a small amount because height is unchanged.”</p>
-              <button class="answer-toggle" type="button" data-answer="mistake2">Show correction</button>
-              <p class="answer" id="mistake2">If height and colour depth stay the same, doubling width doubles the number of pixels and doubles the file size.</p>
-            </article>
-          </div>
-        </section>
-
-        <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-008">
-          <div class="section-title">
-            <p class="eyebrow">Exam-style questions</p>
-            <h2>Questions with expandable MS</h2>
-            <p>
-              Use the buttons under each question to expand the Cambridge-style mark scheme.
-              These are original questions written in Cambridge style, not copied past-paper items.
-            </p>
-          </div>
-          <div class="exam-list" id="examList"></div>
-        </section>
-
-        <section class="panel summary-panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-008">
-          <div class="section-title">
-            <p class="eyebrow">Summary</p>
-            <h2>Every pixel costs bits</h2>
-          </div>
-          <div class="summary-grid">
-            <div><strong>1</strong><span>A bitmap stores an image as a grid of pixels.</span></div>
-            <div><strong>2</strong><span>Resolution is the pixel dimensions: width × height.</span></div>
-            <div><strong>3</strong><span>Colour depth is the number of bits used to store each pixel colour.</span></div>
-            <div><strong>4</strong><span>Bits = width × height × colour depth; bytes = bits ÷ 8.</span></div>
-          </div>
-        </section>
-
-        <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
-          <div class="section-title">
-            <p class="eyebrow">Homework</p>
-            <h2>Clear tasks</h2>
-          </div>
-          <ol class="homework-list">
-            <li>Define bitmap, pixel, resolution and colour depth.</li>
-            <li>Calculate the size of a `200 × 150` image using 8-bit colour depth, ignoring metadata.</li>
-            <li>Calculate how many colours can be represented with 12-bit colour depth.</li>
-            <li>Write a 4-mark explanation of how increasing colour depth affects quality and file size.</li>
-          </ol>
-          <button class="answer-toggle" type="button" data-answer="homeworkAnswers">Show homework answers</button>
-          <div class="answer-panel" id="homeworkAnswers">
-            <p><strong>Definitions:</strong> bitmap = pixel grid image; pixel = smallest addressable picture element; resolution = width × height in pixels; colour depth = bits per pixel.</p>
-            <p><strong>Image size:</strong> `200 × 150 × 8 = 240 000 bits = 30 000 bytes`.</p>
-            <p><strong>Colours:</strong> `2¹² = 4096` possible colours.</p>
-            <p><strong>Explanation focus:</strong> higher colour depth allows more possible colours but uses more bits per pixel, increasing file size.</p>
-          </div>
-        </section>
+        <nav class="v2-bottom-nav" aria-label="Previous and next lesson"><a href="../lesson-007/" >Previous lesson</a><a href="../lesson-009/" >Next lesson</a></nav>
       </div>
     </main>
-
-    <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=3"></script>
-    <script src="../lesson-toolbar.js?v=3"></script>
-    <script src="../stage7-accessibility.js?v=4"></script>
+    <script src="../course-v2.js?v=1"></script>
   </body>
 </html>

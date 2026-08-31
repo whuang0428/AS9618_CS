@@ -3,317 +3,89 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 022 | HTTP, HTTPS, FTP, SMTP, POP3 and IMAP in context</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <title>AS9618 Lesson 022 | Interrupt causes, detection and handling</title>
     <link rel="icon" href="data:" />
-    <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
+    <link rel="stylesheet" href="../course-v2.css?v=3" />
   </head>
-  <body>
+  <body data-course-version="2" data-lesson-id="022" data-syllabus-ids="S4.08">
     <a class="skip-link" href="#main-content">Skip to main content</a>
-    <header class="topbar">
-      <div>
-        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 2</p>
-        <h1>HTTP, HTTPS, FTP, SMTP, POP3 and IMAP in context</h1>
-      </div>
-      <div class="action-panel" aria-label="Page controls">
-        <a class="course-home-link" href="../">Course home</a>
-        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
-      </div>
+    <header class="v2-topbar">
+      <div><p class="v2-eyebrow">Cambridge AS9618 | Paper 1 | Section 4: Processor fundamentals</p><h1>Interrupt causes, detection and handling</h1></div>
+      <nav class="v2-actions" aria-label="Lesson actions"><a href="../">Course home</a><a href="../assessments/">Assessment bank</a><button type="button" id="printLesson">Print</button></nav>
     </header>
+    <main class="v2-shell" id="main-content" tabindex="-1">
+      <nav class="v2-toc" aria-label="Lesson contents"><strong>Lesson 022</strong><a href="#overview">Overview</a><a href="#prerequisite">Prerequisite</a><a href="#explanation">Explanation</a><a href="#practice">Practice</a><a href="#summary">Summary</a></nav>
+      <div class="v2-content">
+        <section class="v2-hero" id="overview">
+          <div><p class="v2-eyebrow">Flexible-depth lesson</p><h2>Interrupt causes, detection and handling</h2><p>S4.08 | Select what to omit, teach briefly or explore in depth.</p></div>
+          <div class="v2-time-grid" aria-label="Available lesson depth"><div><strong>Quick</strong><span>diagnose + essentials</span></div><div><strong>Full</strong><span>complete explanation</span></div><div><strong>Deep</strong><span>prerequisites + extension</span></div><div><strong>Choose</strong><span>practice by need</span></div></div>
+        </section>
 
-    <main class="layout" id="main-content" tabindex="-1">
-      <aside class="lesson-nav" aria-label="Lesson navigation">
-        <a href="#overview">Overview</a>
-        <a href="#hook">Warm-up</a>
-        <a href="#web">Web protocols</a>
-        <a href="#file">File transfer</a>
-        <a href="#email">Email protocols</a>
-        <a href="#tool">Protocol tool</a>
-        <a href="#examples">Examples</a>
-        <a href="#practice">Practice</a>
-        <a href="#exam">Exam-style</a>
-        <a href="#homework">Homework</a>
-      </aside>
+        <section class="v2-panel v2-route-menu" aria-labelledby="route-heading">
+          <div class="v2-heading"><p class="v2-eyebrow">Teacher choice</p><h2 id="route-heading">Choose the depth for this group</h2></div>
+          <div class="v2-route-grid"><article><h3>Quick route</h3><p>Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.</p></article><article><h3>Full route</h3><p>Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.</p></article><article><h3>Deep route</h3><p>Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.</p></article></div>
+        </section>
 
-      <div class="lesson-content">
-        <!-- remediation-v2-optional:start -->
-        <aside class="optional-enrichment-notice" aria-label="Optional enrichment scope">
-          <strong>Optional enrichment</strong>
-          <p>HTTP, HTTPS, FTP, SMTP, POP3 and IMAP. This material is excluded from compulsory syllabus coverage, first-use and assessment statistics.</p>
-          <p><strong>Formal AS prerequisite:</strong> S2.13 WWW versus internet and S2.16 URL/DNS.</p>
-        </aside>
-        <!-- remediation-v2-optional:end -->
+        <section class="v2-panel" id="prerequisite">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 1 | optional depth</p><h2>Prerequisite knowledge and quick diagnostic</h2></div>
+          <div class="v2-diagnostic"><p>Recall S4.07 before starting this lesson.</p></div>
+          <p>Give one accurate definition or method step before continuing. If it is missing, revisit only that prerequisite.</p>
+          <details class="v2-prerequisite-detail"><summary>Open optional prerequisite refresher</summary><ul><li>Describe the stages of the Fetch-Execute cycle and use register-transfer notation, including MAR &lt;- PC, MDR &lt;- Memory[MAR], CIR &lt;- MDR and a coherent PC update.</li><li>Describe the fetch-execute cycle using register transfer notation.</li></ul></details>
+        </section>
 
-<!-- remediation-v2-stage3-scope:start -->
-        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice are the assessed sequence for this lesson. The earlier lesson-body activities are Optional enrichment and do not establish syllabus first use.</p></aside>
-        <!-- remediation-v2-stage3-scope:end -->
-<section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-optional-022">
-          <div class="hero-copy">
-            <p class="lesson-meta">Lesson 022 | 45 minutes | Informal questioning</p>
-            <h2>Protocols are not alphabet soup if you pair them with jobs.</h2>
-            <p>
-              This lesson matches common application protocols to their context:
-              web pages, secure web pages, file transfer, sending email and receiving
-              email. The exam usually rewards the job, not just expanding the acronym.
-            </p>
-            <div class="objective-grid" aria-label="Learning objectives">
-              <div><strong>Match</strong><span>HTTP, HTTPS, FTP, SMTP, POP3 and IMAP to correct uses</span></div>
-              <div><strong>Compare</strong><span>HTTP vs HTTPS and POP3 vs IMAP in context</span></div>
-              <div><strong>Explain</strong><span>which protocol is used at each step of realistic web and email workflows</span></div>
+        <section class="v2-panel" id="explanation">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 2 | deliberately over-complete</p><h2>Knowledge explanation</h2></div>
+          <h3>Learning objectives</h3><ul class="v2-objectives"><li>Understand causes/applications of interrupts, ISR, detection and handling.</li></ul>
+          <details class="v2-concept-menu"><summary>Open the concept checklist and choose what to teach</summary><ul><li>causes</li><li>applications</li><li>interrupts</li><li>ISR</li><li>detected</li><li>handling</li></ul></details>
+          <div class="v2-explanation-grid">
+            <div>
+              <article class="v2-core-facts"><h3>Detailed explanation</h3><p class="v2-teacher-note">Teach all points, or select only the ones this group needs. The list is intentionally fuller than a fixed lesson slot.</p><ul class="v2-facts"><li>Include possible causes and applications of interrupts, the use of an Interrupt Service Routine (ISR), when interrupts are detected during the fetch-execute cycle and the full save-handle-restore sequence.</li><li>An interrupt is a signal or condition requesting processor attention. Possible causes include input/output devices needing service, a timer used for scheduling, a hardware fault, and a software exception. Applications include responsive input, sharing processor time and dealing promptly with exceptional conditions without continuously polling every device.</li><li>For most maskable interrupts, the processor completes the current instruction and checks for pending enabled interrupts at the end of that fetch-execute cycle, before beginning the next instruction. Detection is therefore not the same as stopping halfway through an ordinary instruction.</li><li>If an interrupt is accepted, the processor checks priority, saves the state needed to resume (such as PC, registers and status), loads or locates the correct interrupt service routine (ISR), executes the ISR, restores the saved state and resumes the interrupted program at the correct next instruction. The ISR is a routine, not the interrupt signal itself.</li><li>An enabled interrupt request is detected at an instruction boundary before the processor begins the handling sequence.</li></ul></article>
+              <article class="v2-example"><h3>Worked example</h3><p>Handle a keyboard interrupt: A key press raises an interrupt while the CPU is executing another program. The CPU finishes its current instruction, detects the pending request at the cycle boundary, saves PC/register/status state, runs the keyboard ISR to read or acknowledge the input, restores the saved state and continues the original program.</p></article>
+              <aside class="v2-extension"><h3>Beyond syllabus / 延伸知识（不要求背诵）</h3><p>modern processors add pipelining and several cache levels, but exam answers should begin with the syllabus processor model.</p></aside>
             </div>
-          </div>
-          <div class="protocol-card" aria-label="Protocol matching concept">
-            <span>web | secure web | files | send mail | receive mail</span>
-            <p>The acronym is the label. The use case earns the mark.</p>
-          </div>
-        </section>
-
-        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-optional-022">
-          <article class="why-card">
-            <h3>Why this matters</h3>
-            <p>Protocol questions often use short scenarios. Students must identify the context and avoid swapping SMTP with POP3/IMAP.</p>
-          </article>
-          <article class="trap-card">
-            <h3>Common error</h3>
-            <p>SMTP sends email. POP3 and IMAP retrieve/access email. A mailbox is not delivered by wishful thinking.</p>
-          </article>
-        </section>
-
-        <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-optional-022">
-          <div class="section-title">
-            <p class="eyebrow">Warm-up hook</p>
-            <h2>A student sends homework by email, then checks the same mailbox on a phone and laptop. Which pair matters most?</h2>
-          </div>
-          <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="smtpimap">SMTP to send, IMAP to synchronise mailbox access</button>
-            <button class="choice-card" type="button" data-hook="ftphttp">FTP to send email, HTTP to receive it</button>
-            <button class="choice-card" type="button" data-hook="popsecure">POP3 encrypts every web page</button>
-            <button class="choice-card" type="button" data-hook="dns">DNS stores the email messages</button>
-          </div>
-          <div class="feedback" id="hookFeedback" aria-live="polite">
-            Pick the pair that separates sending email from synchronised mailbox access.
+            <figure class="v2-visual">
+              <img src="../assets/diagrams/stage10-infographics/stage10-lesson-045-three-buses.jpg" alt="The address bus carries the address of the location being accessed and is normally directed from the CPU.. The data bus carries data and instructions in both directions.. The control bus carries control and timing signals in both directions, including read/write from the CPU and interrupts toward the CPU." loading="lazy" />
+              <figcaption>The three buses. One maintained explanation is shown as an image on larger screens and as text on small screens.</figcaption>
+              <div class="v2-mobile-visual-text" aria-label="Mobile text alternative"><ul><li>The address bus carries the address of the location being accessed and is normally directed from the CPU.</li><li>The data bus carries data and instructions in both directions.</li><li>The control bus carries control and timing signals in both directions, including read/write from the CPU and interrupts toward the CPU.</li></ul></div>
+            </figure>
           </div>
         </section>
 
-        <section class="panel" id="web" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-optional-022">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 1</p>
-            <h2>HTTP and HTTPS</h2>
-          </div>
-          <div class="compare-table" role="table" aria-label="HTTP and HTTPS comparison">
-            <div class="table-row table-head" role="row">
-              <div role="columnheader">Protocol</div>
-              <div role="columnheader">Use</div>
-              <div role="columnheader">Exam distinction</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">HTTP</div>
-              <div role="cell">Transfers web pages and web resources between browser and web server.</div>
-              <div role="cell">Does not provide the same secure encrypted connection as HTTPS.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">HTTPS</div>
-              <div role="cell">Secure version of HTTP used for encrypted web communication.</div>
-              <div role="cell">Helps protect data such as logins, payments and form submissions in transit.</div>
-            </div>
-          </div>
-          <div class="callout">Chinese support: secure connection = 安全连接；encryption = 加密；web resource = 网页资源。</div>
+        <section class="v2-panel" id="practice">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 3 | select by learner need</p><h2>Practice by question type</h2></div>
+          <div class="v2-question-list"><article class="v2-question" data-question-id="Q-L022-01" data-semantic-fingerprint="S4.08|interrupt-causes-detection-and-handling|describe|cause-application-detected-fetch|written|trace">
+              <div class="v2-question-head"><span class="v2-badge">describe</span><span class="v2-badge">trace</span><span class="v2-badge difficulty">foundation</span><span class="v2-badge">6 marks</span></div>
+              <p><strong>Question 1.</strong> Describe one interrupt cause or application, state when it is detected in the fetch-execute cycle, and trace handling through the ISR to resumption.</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> valid cause/application such as I/O, timer, fault or exception; current instruction completes and interrupt is detected/checked at the cycle boundary; priority/enabled status is checked; PC/register/status state is saved; correct ISR is located and executed; state is restored and the interrupted program resumes</p><p><strong>Marking guidance:</strong> Do not accept that every interrupt stops an instruction halfway through, that the ISR is the signal, or that the whole interrupted program restarts.</p><p><strong>Common error:</strong> For the command word describe, perform that exact action; do not replace it with an unrelated fact.</p></div></details>
+            </article><article class="v2-question" data-question-id="Q-L022-02" data-semantic-fingerprint="S4.08|interrupt-causes-detection-and-handling|apply|list-sequence-after|written|recall">
+              <div class="v2-question-head"><span class="v2-badge">apply</span><span class="v2-badge">recall</span><span class="v2-badge difficulty">application</span><span class="v2-badge">2 marks</span></div>
+              <p><strong>Question 2.</strong> List the handling sequence after detection.</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> Check/accept, save state, locate and execute ISR, restore state, resume program.</p><p><strong>Marking guidance:</strong> Award one mark for each distinct, technically accurate point or method step.</p><p><strong>Common error:</strong> Do not repeat the same point in different words; each mark needs a separate idea or method step.</p></div></details>
+            </article><article class="v2-question" data-question-id="Q-L022-03" data-semantic-fingerprint="S4.08|interrupt-causes-detection-and-handling|apply|normal-maskable-detected-accepted|written|recall">
+              <div class="v2-question-head"><span class="v2-badge">apply</span><span class="v2-badge">recall</span><span class="v2-badge difficulty">transfer</span><span class="v2-badge">2 marks</span></div>
+              <p><strong>Question 3.</strong> When is a normal maskable interrupt detected and accepted?</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> After the current instruction completes, at the end of the fetch-execute cycle before the next instruction begins, subject to enabled/priority checks.</p><p><strong>Marking guidance:</strong> Award one mark for each distinct, technically accurate point or method step.</p><p><strong>Common error:</strong> Do not copy the worked example unchanged; transfer the method and check it against the new context.</p></div></details>
+            </article></div>
+          <div class="v2-paper-refs">
+          <h3>Related past-paper indexes</h3>
+          <table><thead><tr><th>Reference</th><th>Marks</th><th>Command word</th><th>Question type</th></tr></thead>
+          <tbody><tr><td>9618/11/S/23 Q6</td><td>5</td><td>explain</td><td>explain</td></tr><tr><td>9618/13/W/23 Q9(d)</td><td>3</td><td>complete</td><td>recall</td></tr></tbody></table>
+          <p class="v2-copyright-note">Index only: Cambridge question and mark-scheme wording is not reproduced on this public course page.</p>
+        </div>
         </section>
 
-        <!-- stage10-explanation:start web -->
-        <section class="panel explanation-panel" id="explanation-web" data-explains="web" data-explanation-kind="mechanism" aria-labelledby="explanation-web-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-optional-022">
-          <h2 class="explanation-sr-only" id="explanation-web-title">HTTP and HTTPS</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-022-web.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining HTTP and HTTPS with a structured visual model." />
-            <figcaption class="explanation-sr-only">HTTP and HTTPS: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Protocol</li><li><strong>Lesson fact:</strong> Exam distinction</li><li><strong>Lesson fact:</strong> Transfers web pages and web resources between browser and web server.</li><li><strong>Lesson fact:</strong> Does not provide the same secure encrypted connection as HTTPS.</li><li><strong>Lesson fact:</strong> Secure version of HTTP used for encrypted web communication.</li><li><strong>Lesson fact:</strong> Helps protect data such as logins, payments and form submissions in transit.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end web -->
-        <section class="panel" id="file" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-optional-022">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 2</p>
-            <h2>FTP for file transfer</h2>
-          </div>
-          <div class="file-card">
-            <h3>FTP: File Transfer Protocol</h3>
-            <p>FTP is used to transfer files between a client and a server, such as uploading website files or downloading files from a file server.</p>
-            <p>Do not use FTP as a generic answer for “anything on the internet”. It is specifically about file transfer.</p>
-          </div>
+        <section class="v2-panel" id="summary">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 4 | close when ready</p><h2>Summary and exam reminders</h2></div>
+          <div class="v2-summary-grid"><div><h3>Summary</h3><ul class="v2-summary-list"><li>Define interrupt causes, detection and handling with the exact technical vocabulary expected by the syllabus.</li><li>Use the lesson method on a fresh context and show the intermediate decision, representation or calculation.</li><li>Match the shape of the answer to the command word and the available marks.</li><li>Check the final answer against the scenario instead of repeating a memorised sentence.</li></ul></div><div class="v2-error"><h3>Common error to correct</h3><p>Students often memorise register names without roles. Correction: a register earns its name by what it temporarily holds.</p></div></div>
+          <div class="v2-tip-box"><h3>Exam technique</h3><ul><li>Follow the command word: state gives a fact; explain links a cause to a consequence; compare covers both sides.</li><li>Match the number of independent points or method steps to the available marks.</li><li>For interrupt causes, detection and handling, use the exact technical term before applying it to the scenario.</li></ul></div>
         </section>
 
-        <!-- stage10-explanation:start file -->
-        <section class="panel explanation-panel" id="explanation-file" data-explains="file" data-explanation-kind="mechanism" aria-labelledby="explanation-file-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-optional-022">
-          <h2 class="explanation-sr-only" id="explanation-file-title">FTP for file transfer</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-022-file.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining FTP for file transfer with a structured visual model." />
-            <figcaption class="explanation-sr-only">FTP for file transfer: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> FTP: File Transfer Protocol</li><li><strong>Lesson fact:</strong> FTP is used to transfer files between a client and a server, such as uploading website files or downloading files from a file server.</li><li><strong>Lesson fact:</strong> Do not use FTP as a generic answer for “anything on the internet”. It is specifically about file transfer.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end file -->
-        <section class="panel" id="email" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-optional-022">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 3</p>
-            <h2>Email protocols: SMTP, POP3 and IMAP</h2>
-          </div>
-          <div class="email-flow">
-            <article>
-              <h3>SMTP</h3>
-              <p>Used to send email from a client to a mail server and between mail servers.</p>
-            </article>
-            <article>
-              <h3>POP3</h3>
-              <p>Used to download email from a mail server to a client, often removing it from the server depending on settings.</p>
-            </article>
-            <article>
-              <h3>IMAP</h3>
-              <p>Used to access and synchronise email stored on a mail server across multiple devices.</p>
-            </article>
-          </div>
-          <div class="trap-card inline">
-            <h3>Common error</h3>
-            <p>IMAP is usually better for multiple devices because messages and folders stay on the server and remain synchronised.</p>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start email -->
-        <section class="panel explanation-panel" id="explanation-email" data-explains="email" data-explanation-kind="mechanism" aria-labelledby="explanation-email-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-optional-022">
-          <h2 class="explanation-sr-only" id="explanation-email-title">Email protocols: SMTP, POP3 and IMAP</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-022-email.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Email protocols: SMTP, POP3 and IMAP with a structured visual model." />
-            <figcaption class="explanation-sr-only">Email protocols: SMTP, POP3 and IMAP: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Used to send email from a client to a mail server and between mail servers.</li><li><strong>Lesson fact:</strong> Used to download email from a mail server to a client, often removing it from the server depending on settings.</li><li><strong>Lesson fact:</strong> Used to access and synchronise email stored on a mail server across multiple devices.</li><li><strong>Lesson fact:</strong> Common error</li><li><strong>Lesson fact:</strong> IMAP is usually better for multiple devices because messages and folders stay on the server and remain synchronised.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end email -->
-        <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="PRACTISE" data-delivery-group="tool">
-          <div class="section-title">
-            <p class="eyebrow">Interactive tool</p>
-            <h2>Protocol choice helper</h2>
-          </div>
-          <div class="converter-grid">
-            <label>
-              Task
-              <select id="taskInput">
-                <option value="web">View a normal web page</option>
-                <option value="secure">Submit login details on a website</option>
-                <option value="file">Upload files to a server</option>
-                <option value="sendmail">Send an email message</option>
-                <option value="downloadmail">Download email to one computer</option>
-                <option value="syncmail">Keep email folders synchronised on phone and laptop</option>
-              </select>
-            </label>
-            <button type="button" id="chooseBtn">Choose protocol</button>
-          </div>
-          <div class="result-box" id="protocolResult" aria-live="polite"></div>
-          <div class="method-box" id="protocolMethod"></div>
-        </section>
-
-        <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-optional-022">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge examples</p>
-            <h2>Worked examples</h2>
-          </div>
-          <div class="example-tabs" role="tablist" aria-label="Worked examples">
-            <button class="tab active" type="button" data-example="web">Secure web</button>
-            <button class="tab" type="button" data-example="email">Email journey</button>
-            <button class="tab" type="button" data-example="files">File transfer</button>
-          </div>
-          <article class="example-box" id="exampleBox"></article>
-        </section>
-
-        <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-optional-022">
-          <div class="section-title">
-            <p class="eyebrow">Your turn</p>
-            <h2>Practice with instant checking</h2>
-          </div>
-          <div class="practice-list" id="practiceList"></div>
-          <button class="primary-button" type="button" id="checkPractice">Check practice</button>
-          <div class="feedback" id="practiceFeedback" aria-live="polite"></div>
-        </section>
-
-        <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-optional-022">
-          <div class="section-title">
-            <p class="eyebrow">Mistake debugging</p>
-            <h2>Fix the weak protocol answer</h2>
-          </div>
-          <div class="mistake-grid">
-            <article>
-              <p class="wrong">“SMTP is used to read email from the server.”</p>
-              <button class="answer-toggle" type="button" data-answer="mistake1">Show correction</button>
-              <p class="answer" id="mistake1">SMTP is used to send email. POP3 or IMAP is used to retrieve/access email from a mail server.</p>
-            </article>
-            <article>
-              <p class="wrong">“HTTPS just means the page is faster.”</p>
-              <button class="answer-toggle" type="button" data-answer="mistake2">Show correction</button>
-              <p class="answer" id="mistake2">HTTPS is the secure version of HTTP and uses encryption to protect web communication in transit.</p>
-            </article>
-          </div>
-        </section>
-
-        <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-optional-022">
-          <div class="section-title">
-            <p class="eyebrow">Exam-style questions</p>
-            <h2>Questions with expandable MS</h2>
-            <p>Attempt first, then expand the mark scheme. Credit depends on correct protocol and correct context.</p>
-          </div>
-          <div class="exam-list" id="examList"></div>
-        </section>
-
-        <section class="panel summary-panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-optional-022">
-          <div class="section-title">
-            <p class="eyebrow">Summary</p>
-            <h2>Match the protocol to the job</h2>
-          </div>
-          <div class="summary-grid">
-            <div><strong>HTTP</strong><span>Web page/resource transfer.</span></div>
-            <div><strong>HTTPS</strong><span>Secure encrypted web communication.</span></div>
-            <div><strong>FTP</strong><span>File transfer between client and server.</span></div>
-            <div><strong>SMTP</strong><span>Sending email.</span></div>
-            <div><strong>POP3</strong><span>Downloading email to a client.</span></div>
-            <div><strong>IMAP</strong><span>Synchronised mailbox access across devices.</span></div>
-          </div>
-        </section>
-
-        <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
-          <div class="section-title">
-            <p class="eyebrow">Homework</p>
-            <h2>Clear tasks</h2>
-          </div>
-          <ol class="homework-list">
-            <li>Create six flashcards: HTTP, HTTPS, FTP, SMTP, POP3 and IMAP. Each card must include one use case.</li>
-            <li>Draw an email journey showing SMTP for sending and POP3/IMAP for receiving/accessing.</li>
-            <li>Explain why IMAP is usually suitable when a user reads email on multiple devices.</li>
-            <li>Write a 5-mark answer comparing HTTP and HTTPS.</li>
-          </ol>
-          <button class="answer-toggle" type="button" data-answer="homeworkAnswers">Show homework guidance</button>
-          <div class="answer-panel" id="homeworkAnswers">
-            <p><strong>Flashcards:</strong> include the job, not only the full name.</p>
-            <p><strong>Email journey:</strong> SMTP sends; POP3 downloads; IMAP synchronises/accesses server mailbox.</p>
-            <p><strong>IMAP:</strong> mention messages/folders remain on server and changes sync across devices.</p>
-            <p><strong>HTTP/HTTPS:</strong> both transfer web pages; HTTPS adds encryption/security for data in transit.</p>
-          </div>
-        </section>
+        <nav class="v2-bottom-nav" aria-label="Previous and next lesson"><a href="../lesson-021/" >Previous lesson</a><a href="../lesson-023/" >Next lesson</a></nav>
       </div>
     </main>
-
-    <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=3"></script>
-    <script src="../lesson-toolbar.js?v=3"></script>
-    <script src="../stage7-accessibility.js?v=4"></script>
+    <script src="../course-v2.js?v=1"></script>
   </body>
 </html>

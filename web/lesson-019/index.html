@@ -3,450 +3,89 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 019 | Packet transmission between two hosts in each required topology</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <title>AS9618 Lesson 019 | Von Neumann architecture, CPU components and registers</title>
     <link rel="icon" href="data:" />
-    <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../student-visuals.css?v=1" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
+    <link rel="stylesheet" href="../course-v2.css?v=3" />
   </head>
-  <body>
+  <body data-course-version="2" data-lesson-id="019" data-syllabus-ids="S4.01,S4.02,S4.03">
     <a class="skip-link" href="#main-content">Skip to main content</a>
-    <header class="topbar">
-      <div>
-        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 2</p>
-        <h1>Packet transmission between two hosts in each required topology</h1>
-      </div>
-      <div class="action-panel" aria-label="Page controls">
-        <a class="course-home-link" href="../">Course home</a>
-        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
-      </div>
+    <header class="v2-topbar">
+      <div><p class="v2-eyebrow">Cambridge AS9618 | Paper 1 | Section 4: Processor fundamentals</p><h1>Von Neumann architecture, CPU components and registers</h1></div>
+      <nav class="v2-actions" aria-label="Lesson actions"><a href="../">Course home</a><a href="../assessments/">Assessment bank</a><button type="button" id="printLesson">Print</button></nav>
     </header>
-
-    <main class="layout" id="main-content" tabindex="-1">
-      <aside class="lesson-nav" aria-label="Lesson navigation">
-        <a href="#overview">Overview</a>
-        <a href="#hook">Warm-up</a>
-        <a href="#switching">Packet switching</a>
-        <a href="#structure">Packet structure</a>
-        <a href="#routing">Routing</a>
-        <a href="#packet-journey">Packet journey</a>
-        <a href="#tool">Route tool</a>
-        <a href="#examples">Examples</a>
-        <a href="#practice">Practice</a>
-        <a href="#exam">Exam-style</a>
-        <a href="#homework">Homework</a>
-        <a href="#stage2-completion">Core syllabus content</a>
-      </aside>
-
-      <div class="lesson-content">
-        <!-- remediation-v2-stage3-scope:start -->
-        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.</p></aside>
-        <!-- remediation-v2-stage3-scope:end -->
-
-        <!-- remediation-v2-optional:start -->
-        <aside class="optional-enrichment-notice" aria-label="Optional enrichment scope">
-          <strong>Optional enrichment</strong>
-          <p>general packet switching, routing and packet structure beyond packet paths for the named topologies. This material is excluded from compulsory syllabus coverage, first-use and assessment statistics.</p>
-          <p><strong>Formal AS prerequisite:</strong> S2.04 bus, star, mesh and hybrid topologies.</p>
-        </aside>
-        <!-- remediation-v2-optional:end -->
-<!-- stage2-completion:start -->
-        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus content</p>
-            <h2>Packet transmission between two hosts in each required topology</h2>
-          </div>
-          <div class="stage2-explanation">
-            <p>To describe transmission between two hosts, identify the physical or logical path used. In a bus, the signal travels along the shared backbone and attached devices inspect it. In a star, the source sends a frame to the central switch, which forwards it towards the destination device. In a mesh, packets can be forwarded through one of several alternative routes. In a hybrid, the path follows each component topology, for example source to local switch, across a connecting backbone, then through the destination switch.</p>
-            <p>Topology justification must connect the packet path to the scenario: central-device failure, backbone failure, individual cable failure, congestion, expansion, redundancy and cabling cost are consequences of the structure.</p>
-            <p>To justify a topology choice, connect its packet path and failure behaviour to the stated scenario.</p>
-          </div>
-          <article class="stage2-example">
-            <h3>Worked example: Send a patient record across a hybrid hospital network</h3>
-            <p>The source sends the frame to its ward switch as in a star. The packet crosses the link between ward segments, then the destination switch forwards the local frame to the receiving host. A redundant inter-switch route can keep packets moving after one link fails, but adds cost and management.</p>
-          </article>
+    <main class="v2-shell" id="main-content" tabindex="-1">
+      <nav class="v2-toc" aria-label="Lesson contents"><strong>Lesson 019</strong><a href="#overview">Overview</a><a href="#prerequisite">Prerequisite</a><a href="#explanation">Explanation</a><a href="#practice">Practice</a><a href="#summary">Summary</a></nav>
+      <div class="v2-content">
+        <section class="v2-hero" id="overview">
+          <div><p class="v2-eyebrow">Flexible-depth lesson</p><h2>Von Neumann architecture, CPU components and registers</h2><p>S4.01, S4.02, S4.03 | Select what to omit, teach briefly or explore in depth.</p></div>
+          <div class="v2-time-grid" aria-label="Available lesson depth"><div><strong>Quick</strong><span>diagnose + essentials</span></div><div><strong>Full</strong><span>complete explanation</span></div><div><strong>Deep</strong><span>prerequisites + extension</span></div><div><strong>Choose</strong><span>practice by need</span></div></div>
         </section>
-        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus practice</p>
-            <h2>Packet transmission between two hosts in each required topology: apply and assess</h2>
-          </div>
-          <div class="stage2-practice">
-            <h3>Targeted practice</h3>
-            <article class="stage2-question">
-              <p><strong>1.</strong> How is a transmission carried between two hosts in a bus topology?</p>
-              <details><summary>Show answer</summary><p>The signal travels along the shared backbone and the attached hosts inspect it.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>2.</strong> Where does a frame pass in a star network?</p>
-              <details><summary>Show answer</summary><p>Through the central switch.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>3.</strong> Why can a mesh continue after one link fails?</p>
-              <details><summary>Show answer</summary><p>Packets may use an alternative link or route.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>4.</strong> Describe one possible packet path through a hybrid made from two stars.</p>
-              <details><summary>Show answer</summary><p>Source to its switch, across the link between star segments, then through the destination switch to the receiving host.</p></details>
-            </article>
-          </div>
-          <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>5 marks</span></div>
-            <p>Compare how a packet travels between two hosts in a star topology and a mesh topology, then justify one topology for a fault-sensitive system.</p>
-            <details>
-              <summary>Show MS</summary>
-              <table class="mark-scheme-table">
-                <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
-                <tbody>
-                  <tr><td>star packet/frame passes through a central switch</td><td>Do not accept 'mesh is better' without a packet-path or failure consequence.</td><td>1</td></tr>
-                  <tr><td>mesh provides multiple interconnected paths / possible routes</td><td></td><td>1</td></tr>
-                  <tr><td>star switch is a single point of failure</td><td></td><td>1</td></tr>
-                  <tr><td>mesh can use an alternative route when a link fails</td><td></td><td>1</td></tr>
-                  <tr><td>choice is justified from the stated fault-sensitivity and a path consequence</td><td></td><td>1</td></tr>
-                </tbody>
-              </table>
-            </details>
-          </article>
-        </section>
-        <!-- stage2-completion:end -->
 
-<section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-019">
-          <div class="hero-copy">
-            <p class="lesson-meta">Lesson 019 | 45 minutes | Paper 1 Section 2</p>
-            <h2>The internet does not send your file as one heroic lump.</h2>
-            <p>
-              Data is split into packets. Each packet carries control information and
-              payload, may travel by different routes, and is reassembled at the
-              destination using sequence information and error checks.
-            </p>
-            <div class="objective-grid" aria-label="Learning objectives">
-              <div><strong>Explain</strong><span>why packet switching splits data into packets</span></div>
-              <div><strong>Identify</strong><span>source address, destination address, sequence number, checksum and payload</span></div>
-              <div><strong>Trace</strong><span>routing, out-of-order arrival and retransmission in scenarios</span></div>
+        <section class="v2-panel v2-route-menu" aria-labelledby="route-heading">
+          <div class="v2-heading"><p class="v2-eyebrow">Teacher choice</p><h2 id="route-heading">Choose the depth for this group</h2></div>
+          <div class="v2-route-grid"><article><h3>Quick route</h3><p>Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.</p></article><article><h3>Full route</h3><p>Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.</p></article><article><h3>Deep route</h3><p>Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.</p></article></div>
+        </section>
+
+        <section class="v2-panel" id="prerequisite">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 1 | optional depth</p><h2>Prerequisite knowledge and quick diagnostic</h2></div>
+          <div class="v2-diagnostic"><p>Recall S4.01 before starting this lesson.</p></div>
+          <p>Give one accurate definition or method step before continuing. If it is missing, revisit only that prerequisite.</p>
+          <details class="v2-prerequisite-detail"><summary>Open optional prerequisite refresher</summary><ul><li>Show understanding of the basic Von Neumann model and the stored-program concept: instructions are stored in binary in the same directly accessible memory as data and are fetched for execution.</li><li>Understand Von Neumann architecture and the stored-program concept.</li></ul></details>
+        </section>
+
+        <section class="v2-panel" id="explanation">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 2 | deliberately over-complete</p><h2>Knowledge explanation</h2></div>
+          <h3>Learning objectives</h3><ul class="v2-objectives"><li>Understand Von Neumann architecture and the stored-program concept.</li><li>Understand general- and special-purpose registers: PC, MDR, MAR, ACC, IX, CIR and status register.</li><li>Understand ALU, CU, clock and immediate access store (IAS).</li></ul>
+          <details class="v2-concept-menu"><summary>Open the concept checklist and choose what to teach</summary><ul><li>Von</li><li>Neumann</li><li>architecture</li><li>stored-program</li><li>concept</li><li>general-purpose</li><li>special-purpose</li><li>registers</li><li>PC</li><li>MDR</li><li>MAR</li><li>ACC</li><li>IX</li><li>CIR</li><li>status</li><li>register</li><li>ALU</li><li>CU</li><li>clock</li><li>immediate</li><li>access</li><li>store</li><li>IAS</li></ul></details>
+          <div class="v2-explanation-grid">
+            <div>
+              <article class="v2-core-facts"><h3>Detailed explanation</h3><p class="v2-teacher-note">Teach all points, or select only the ones this group needs. The list is intentionally fuller than a fixed lesson slot.</p><ul class="v2-facts"><li>Show understanding of the basic Von Neumann model and the stored-program concept: instructions are stored in binary in the same directly accessible memory as data and are fetched for execution.</li><li>Distinguish general-purpose and special-purpose registers and explain PC, MDR, MAR, ACC, IX, CIR and status-register roles. Cambridge assembly questions assume ACC is the available general-purpose working register.</li><li>Show understanding of the purpose and roles of the ALU, CU, system clock and Immediate Access Store (IAS). IAS is directly accessible memory for current instructions and data, not a register or cache.</li><li>The basic Von Neumann architecture uses one immediate access store for the instructions and data currently required. This is the stored-program concept: program instructions are stored in memory as binary values alongside data, and the processor fetches instructions from memory rather than being physically rewired for each program.</li><li>The control unit (CU) fetches and decodes instructions and sends control signals. The arithmetic and logic unit (ALU) performs arithmetic and logical operations. Registers provide small, fast temporary storage, buses carry addresses, data and control signals, and the system clock supplies regular timing pulses that synchronise state changes.</li><li>The immediate access store (IAS) is processor-accessible main memory, not a register, cache or secondary-storage device. A program held on secondary storage must be loaded into IAS before its instructions can be fetched and executed normally.</li><li>A general-purpose register can temporarily hold data or intermediate results for a range of operations. A special-purpose register has a defined processor role. In the CPU-architecture requirement, the named roles are PC, MDR, MAR, ACC, IX, CIR and the status register. In Cambridge assembly-language questions, ACC is the only available general-purpose working register; this question convention does not remove the defined roles of the other named registers.</li><li>PC holds the address of the next instruction; MAR holds the address currently being accessed; MDR holds data or an instruction being transferred to or from memory; CIR holds the current instruction while it is decoded or executed.</li><li>ACC holds an intermediate or final ALU result. IX holds an offset used to form an indexed effective address. The status register holds flags about an operation or processor state, such as zero, carry or overflow; it does not hold the arithmetic result itself.</li></ul></article>
+              <article class="v2-example"><h3>Worked example</h3><p>Run one stored program / Follow registers through fetch and indexed execute: A program and its input data are copied from SSD into IAS. The PC supplies the address of the next instruction; the instruction is fetched through MDR into CIR, the CU decodes it, and the ALU or another component carries out the operation. The same memory can hold an instruction at one address and data at another because their use is determined by the fetch and instruction semantics. PC = 300 is copied to MAR; the instruction read from memory enters MDR and then CIR. If that instruction is LDX 500 while IX = 3, the effective address is 503 and the value at that address is loaded into ACC. A resulting condition can update a flag in the status register.</p></article>
+              <aside class="v2-extension"><h3>Beyond syllabus / 延伸知识（不要求背诵）</h3><p>modern processors add pipelining and several cache levels, but exam answers should begin with the syllabus processor model.</p></aside>
             </div>
-          </div>
-          <div class="packet-card" aria-label="Packet concept">
-            <span>header | payload | trailer</span>
-            <p>The payload contains the transmitted data; the header contains information needed to deliver and reassemble it.</p>
-          </div>
-        </section>
-
-        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-019">
-          <article class="why-card">
-            <h3>Why this matters</h3>
-            <p>Network explanation marks often come from naming the metadata and explaining exactly what it is used for.</p>
-          </article>
-          <article class="trap-card">
-            <h3>Common error</h3>
-            <p>Packets do not have to follow the same path or arrive in order. That is why sequence numbers matter.</p>
-          </article>
-        </section>
-
-        <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-019">
-          <div class="section-title">
-            <p class="eyebrow">Warm-up hook</p>
-            <h2>A 30 MB video is sent across a network. Why split it into packets?</h2>
-          </div>
-          <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="routes">Packets can be routed and handled separately</button>
-            <button class="choice-card" type="button" data-hook="hide">So the file becomes invisible</button>
-            <button class="choice-card" type="button" data-hook="one">So it must use one fixed path</button>
-            <button class="choice-card" type="button" data-hook="noaddress">So addresses are not needed</button>
-          </div>
-          <div class="feedback" id="hookFeedback" aria-live="polite">
-            Pick the answer that helps networks share capacity and recover from problems.
+            <figure class="v2-visual">
+              <img src="../assets/diagrams/stage10-infographics/stage10-lesson-044-acc-status.jpg" alt="Accumulator (ACC). The accumulator commonly holds intermediate results from the ALU. For example, after adding two values, the result may be stored in the ACC.. Status register. Can be set when an operation result is zero. Useful after comparisons or subtraction.. Carry / overflow flags" loading="lazy" />
+              <figcaption>ACC and status register: execute-stage evidence. One maintained explanation is shown as an image on larger screens and as text on small screens.</figcaption>
+              <div class="v2-mobile-visual-text" aria-label="Mobile text alternative"><ul><li>Accumulator (ACC)</li><li>The accumulator commonly holds intermediate results from the ALU. For example, after adding two values, the result may be stored in the ACC.</li><li>Status register</li><li>Can be set when an operation result is zero. Useful after comparisons or subtraction.</li><li>Carry / overflow flags</li></ul></div>
+            </figure>
           </div>
         </section>
 
-        <section class="panel" id="switching" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-019">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 1</p>
-            <h2>Packet switching</h2>
-          </div>
-          <div class="concept-grid">
-            <article>
-              <h3>Split</h3>
-              <p>A message or file is divided into smaller packets before transmission.</p>
-            </article>
-            <article>
-              <h3>Share</h3>
-              <p>Packets from many users can share network links instead of one message reserving a whole route.</p>
-            </article>
-            <article>
-              <h3>Route</h3>
-              <p>Each packet can be routed independently through available paths.</p>
-            </article>
-            <article>
-              <h3>Reassemble</h3>
-              <p>The destination uses sequence numbers to put packets back in the correct order.</p>
-            </article>
-          </div>
-          <div class="callout">Chinese support: packet = 数据包；payload = 有效载荷/实际数据；routing = 路由；reassemble = 重新组装。</div>
+        <section class="v2-panel" id="practice">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 3 | select by learner need</p><h2>Practice by question type</h2></div>
+          <div class="v2-question-list"><article class="v2-question" data-question-id="Q-L019-01" data-semantic-fingerprint="S4.01+S4.02+S4.03|von-neumann-architecture-cpu-components-and-registers|explain|stored-program-concept-ias|written|explain">
+              <div class="v2-question-head"><span class="v2-badge">explain</span><span class="v2-badge">explain</span><span class="v2-badge difficulty">foundation</span><span class="v2-badge">8 marks</span></div>
+              <p><strong>Question 1.</strong> Explain how the Von Neumann stored-program concept, IAS, CU, ALU and system clock cooperate when a program runs. Compare general-purpose and special-purpose registers, then state the roles of PC, MAR, MDR, CIR, ACC, IX and the status register.</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> instructions and data are stored together in IAS/main memory; program instructions are represented in binary and fetched from memory; CU fetches/decodes and sends control signals; ALU performs arithmetic or logical operations; clock supplies regular timing pulses to synchronise operations; IAS is directly accessible memory rather than a register or secondary storage; general-purpose register can hold values for varied operations; special-purpose register has a defined role; PC next-instruction address and CIR current instruction; MAR accessed address and MDR transferred data/instruction; ACC intermediate/final ALU result; IX offset used in indexed addressing; status register stores flags about a result or processor state</p><p><strong>Marking guidance:</strong> Do not accept that instructions are permanently built into the CU, that IAS is cache, or that the ALU decodes instructions. Do not swap MAR with MDR, PC with CIR, or claim that the status register stores the calculation result.</p><p><strong>Common error:</strong> For the command word explain, perform that exact action; do not replace it with an unrelated fact.</p></div></details>
+            </article><article class="v2-question" data-question-id="Q-L019-02" data-semantic-fingerprint="S4.01+S4.02+S4.03|von-neumann-architecture-cpu-components-and-registers|compare|compare-alu|written|evaluate">
+              <div class="v2-question-head"><span class="v2-badge">compare</span><span class="v2-badge">evaluate</span><span class="v2-badge difficulty">application</span><span class="v2-badge">2 marks</span></div>
+              <p><strong>Question 2.</strong> Compare the ALU from the CU.</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> The ALU performs arithmetic and logical operations; the CU decodes instructions and coordinates components using control signals.</p><p><strong>Marking guidance:</strong> Award one mark for each distinct, technically accurate point or method step.</p><p><strong>Common error:</strong> Do not repeat the same point in different words; each mark needs a separate idea or method step.</p></div></details>
+            </article><article class="v2-question" data-question-id="Q-L019-03" data-semantic-fingerprint="S4.01+S4.02+S4.03|von-neumann-architecture-cpu-components-and-registers|state|roles-acc-status-register|written|recall">
+              <div class="v2-question-head"><span class="v2-badge">state</span><span class="v2-badge">recall</span><span class="v2-badge difficulty">transfer</span><span class="v2-badge">2 marks</span></div>
+              <p><strong>Question 3.</strong> State the roles of ACC, IX and the status register.</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> ACC holds ALU results; IX an indexed-address offset; the status register holds flags about results or CPU state.</p><p><strong>Marking guidance:</strong> Award one mark for each distinct, technically accurate point or method step.</p><p><strong>Common error:</strong> Do not copy the worked example unchanged; transfer the method and check it against the new context.</p></div></details>
+            </article></div>
+          <div class="v2-paper-refs">
+          <h3>Related past-paper indexes</h3>
+          <table><thead><tr><th>Reference</th><th>Marks</th><th>Command word</th><th>Question type</th></tr></thead>
+          <tbody><tr><td>9618/12/S/25 Q1(c)</td><td>4</td><td>complete</td><td>recall</td></tr><tr><td>9618/13/W/25 Q6(b)</td><td>4</td><td>describe</td><td>explain</td></tr><tr><td>9618/11/W/25 Q6(c)</td><td>3</td><td>complete</td><td>recall</td></tr><tr><td>9618/12/S/25 Q1(a)</td><td>3</td><td>complete</td><td>recall</td></tr></tbody></table>
+          <p class="v2-copyright-note">Index only: Cambridge question and mark-scheme wording is not reproduced on this public course page.</p>
+        </div>
         </section>
 
-        <!-- stage10-explanation:start switching -->
-        <section class="panel explanation-panel" id="explanation-switching" data-explains="switching" data-explanation-kind="mechanism" aria-labelledby="explanation-switching-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-019">
-          <h2 class="explanation-sr-only" id="explanation-switching-title">Packet switching</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-019-switching.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Packet switching with a structured visual model." />
-            <figcaption class="explanation-sr-only">Packet switching: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> A message or file is divided into smaller packets before transmission.</li><li><strong>Lesson fact:</strong> Packets from many users can share network links instead of one message reserving a whole route.</li><li><strong>Lesson fact:</strong> Each packet can be routed independently through available paths.</li><li><strong>Lesson fact:</strong> Reassemble</li><li><strong>Lesson fact:</strong> The destination uses sequence numbers to put packets back in the correct order.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end switching -->
-        <section class="panel" id="structure" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-019">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 2</p>
-            <h2>Packet structure</h2>
-          </div>
-          <div class="packet-diagram" aria-label="Packet structure diagram">
-            <div class="packet-part header">
-              <h3>Header</h3>
-              <p>Source address, destination address, sequence number, protocol/control data.</p>
-            </div>
-            <div class="packet-part payload">
-              <h3>Payload</h3>
-              <p>The actual data being sent, such as part of a file or message.</p>
-            </div>
-            <div class="packet-part trailer">
-              <h3>Trailer</h3>
-              <p>Error-checking information such as checksum, depending on the protocol.</p>
-            </div>
-          </div>
-          <div class="trap-card inline">
-            <h3>Common error</h3>
-            <p>Do not describe the header as “extra information” only. Name what is inside it and what each item does.</p>
-          </div>
+        <section class="v2-panel" id="summary">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 4 | close when ready</p><h2>Summary and exam reminders</h2></div>
+          <div class="v2-summary-grid"><div><h3>Summary</h3><ul class="v2-summary-list"><li>Define von neumann architecture, cpu components and registers with the exact technical vocabulary expected by the syllabus.</li><li>Use the lesson method on a fresh context and show the intermediate decision, representation or calculation.</li><li>Match the shape of the answer to the command word and the available marks.</li><li>Check the final answer against the scenario instead of repeating a memorised sentence.</li></ul></div><div class="v2-error"><h3>Common error to correct</h3><p>Students often memorise register names without roles. Correction: a register earns its name by what it temporarily holds.</p></div></div>
+          <div class="v2-tip-box"><h3>Exam technique</h3><ul><li>Follow the command word: state gives a fact; explain links a cause to a consequence; compare covers both sides.</li><li>Match the number of independent points or method steps to the available marks.</li><li>For von neumann architecture, cpu components and registers, use the exact technical term before applying it to the scenario.</li></ul></div>
         </section>
 
-        <!-- stage10-explanation:start structure -->
-        <section class="panel explanation-panel" id="explanation-structure" data-explains="structure" data-explanation-kind="mechanism" aria-labelledby="explanation-structure-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-019">
-          <h2 class="explanation-sr-only" id="explanation-structure-title">Packet structure</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-019-structure.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Packet structure with a structured visual model." />
-            <figcaption class="explanation-sr-only">Packet structure: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Source address, destination address, sequence number, protocol/control data.</li><li><strong>Lesson fact:</strong> The actual data being sent, such as part of a file or message.</li><li><strong>Lesson fact:</strong> Error-checking information such as checksum, depending on the protocol.</li><li><strong>Lesson fact:</strong> Common error</li><li><strong>Lesson fact:</strong> Do not describe the header as “extra information” only. Name what is inside it and what each item does.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end structure -->
-        <section class="panel" id="routing" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-019">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 3</p>
-            <h2>Routing and arrival</h2>
-          </div>
-          <div class="route-grid">
-            <article><strong>Router decision</strong><span>Routers forward packets based on destination address and routing information.</span></article>
-            <article><strong>Different paths</strong><span>Packets from the same message may take different routes through the network.</span></article>
-            <article><strong>Out of order</strong><span>Packets may arrive in a different order because routes have different delays.</span></article>
-            <article><strong>Error handling</strong><span>Checksum/error checks can detect corruption; missing/corrupt packets may be requested again.</span></article>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start routing -->
-        <section class="panel explanation-panel" id="explanation-routing" data-explains="routing" data-explanation-kind="mechanism" aria-labelledby="explanation-routing-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-019">
-          <h2 class="explanation-sr-only" id="explanation-routing-title">Routing and arrival</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-019-routing.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Routing and arrival with a structured visual model." />
-            <figcaption class="explanation-sr-only">Routing and arrival: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Router decision Routers forward packets based on destination address and routing information.</li><li><strong>Lesson fact:</strong> Different paths Packets from the same message may take different routes through the network.</li><li><strong>Lesson fact:</strong> Out of order Packets may arrive in a different order because routes have different delays.</li><li><strong>Lesson fact:</strong> Error handling Checksum/error checks can detect corruption; missing/corrupt packets may be requested again.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end routing -->
-        <section class="panel visual-explainer" id="packet-journey" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-019">
-          <div class="section-title">
-            <p class="eyebrow">Visual explanation</p>
-            <h2>One message, several routes, one reassembled result</h2>
-            <p>Follow the numbered packets. Routers make next-hop decisions, so packets from one message do not need to travel together.</p>
-          </div>
-          <figure class="concept-figure">
-            <svg class="concept-svg" viewBox="0 0 960 500" role="img" aria-labelledby="packetJourneyTitle packetJourneyDesc">
-              <title id="packetJourneyTitle">Packet switching journey across alternative routes</title>
-              <desc id="packetJourneyDesc">A sender splits a message into three numbered packets. Routers send packets one and three on the upper route and packet two on the lower route. The receiver reorders the packets to recreate the message.</desc>
-              <defs>
-                <marker id="packetArrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#2563eb" /></marker>
-              </defs>
-              <rect class="svg-node svg-node--accent" x="24" y="170" width="170" height="150" rx="18" />
-              <text class="svg-node-label" x="109" y="205">Sender</text>
-              <text class="svg-node-detail" x="109" y="234">Message split into</text>
-              <g aria-hidden="true">
-                <rect class="svg-badge" x="53" y="255" width="34" height="34" rx="6" /><text class="svg-badge-text" x="70" y="272">1</text>
-                <rect class="svg-badge" x="92" y="255" width="34" height="34" rx="6" /><text class="svg-badge-text" x="109" y="272">2</text>
-                <rect class="svg-badge" x="131" y="255" width="34" height="34" rx="6" /><text class="svg-badge-text" x="148" y="272">3</text>
-              </g>
-              <rect class="svg-node svg-node--ink" x="270" y="188" width="130" height="114" rx="18" />
-              <text class="svg-node-label svg-on-dark" x="335" y="232">Router A</text>
-              <text class="svg-node-detail svg-on-dark" x="335" y="258">chooses next hop</text>
-              <rect class="svg-node svg-node--accent" x="500" y="68" width="130" height="90" rx="18" />
-              <text class="svg-node-label" x="565" y="108">Router B</text>
-              <text class="svg-node-detail" x="565" y="133">upper route</text>
-              <rect class="svg-node svg-node--warm" x="500" y="342" width="130" height="90" rx="18" />
-              <text class="svg-node-label" x="565" y="382">Router C</text>
-              <text class="svg-node-detail" x="565" y="407">lower route</text>
-              <rect class="svg-node svg-node--green" x="750" y="170" width="186" height="150" rx="18" />
-              <text class="svg-node-label" x="843" y="205">Receiver</text>
-              <text class="svg-node-detail" x="843" y="234">reorders by sequence</text>
-              <text class="svg-node-label" x="843" y="278">1 · 2 · 3</text>
-              <path class="svg-line" d="M194 245 H270" marker-end="url(#packetArrow)" />
-              <path class="svg-line" d="M400 218 C445 218 445 113 500 113" marker-end="url(#packetArrow)" />
-              <path class="svg-line svg-line--warm" d="M400 272 C445 272 445 387 500 387" marker-end="url(#packetArrow)" />
-              <path class="svg-line" d="M630 113 C690 113 690 215 750 215" marker-end="url(#packetArrow)" />
-              <path class="svg-line svg-line--warm" d="M630 387 C690 387 690 275 750 275" marker-end="url(#packetArrow)" />
-              <g aria-hidden="true">
-                <circle class="svg-badge" cx="438" cy="153" r="19" /><text class="svg-badge-text" x="438" y="153">1</text>
-                <circle class="svg-badge" cx="694" cy="158" r="19" /><text class="svg-badge-text" x="694" y="158">3</text>
-                <circle cx="438" cy="342" r="19" fill="#c26710" stroke="#fff" stroke-width="3" /><text class="svg-badge-text" x="438" y="342">2</text>
-              </g>
-            </svg>
-            <ol class="visual-steps">
-              <li><strong>1. Split and label</strong><span>Each packet carries payload plus control data such as addresses and a sequence number.</span></li>
-              <li><strong>2. Choose next hop</strong><span>Each router uses the destination address and routing information.</span></li>
-              <li><strong>3. Travel independently</strong><span>Different routes can produce different arrival times.</span></li>
-              <li><strong>4. Reassemble</strong><span>The receiver uses sequence numbers to restore the original order.</span></li>
-            </ol>
-          </figure>
-          <details class="diagram-check">
-            <summary>Check the diagram: why can packet 2 arrive after packet 3?</summary>
-            <p>Packet 2 can take a different route with a longer delay. The receiver uses sequence numbers to place it back between packets 1 and 3.</p>
-          </details>
-        </section>
-
-        <!-- stage10-explanation:start packet-journey -->
-        <section class="panel explanation-panel" id="explanation-packet-journey" data-explains="packet-journey" data-explanation-kind="mechanism" aria-labelledby="explanation-packet-journey-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-019">
-          <h2 class="explanation-sr-only" id="explanation-packet-journey-title">One message, several routes, one reassembled result</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-019-packet-journey.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining One message, several routes, one reassembled result with a structured visual model." />
-            <figcaption class="explanation-sr-only">One message, several routes, one reassembled result: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Visual explanation</li><li><strong>Lesson fact:</strong> Follow the numbered packets. Routers make next-hop decisions, so packets from one message do not need to travel together.</li><li><strong>Lesson fact:</strong> 1. Split and label Each packet carries payload plus control data such as addresses and a sequence number.</li><li><strong>Lesson fact:</strong> 2. Choose next hop Each router uses the destination address and routing information.</li><li><strong>Lesson fact:</strong> 3. Travel independently Different routes can produce different arrival times.</li><li><strong>Lesson fact:</strong> 4. Reassemble The receiver uses sequence numbers to restore the original order.</li><li><strong>Lesson fact:</strong> Check the diagram: why can packet 2 arrive after packet 3?</li><li><strong>Lesson fact:</strong> Packet 2 can take a different route with a longer delay. The receiver uses sequence numbers to place it back between packets 1 and 3.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end packet-journey -->
-        <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-019">
-          <div class="section-title">
-            <p class="eyebrow">Interactive tool</p>
-            <h2>Packet route simulator</h2>
-          </div>
-          <div class="converter-grid">
-            <label>
-              Network condition
-              <select id="routeInput">
-                <option value="normal">Normal route</option>
-                <option value="congested">One route is congested</option>
-                <option value="lost">One packet is lost</option>
-                <option value="corrupt">One packet is corrupt</option>
-              </select>
-            </label>
-            <button type="button" id="routeBtn">Simulate</button>
-          </div>
-          <div class="route-visual" id="routeVisual" aria-live="polite"></div>
-          <div class="result-box" id="routeResult"></div>
-          <div class="method-box" id="routeMethod"></div>
-        </section>
-
-        <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-019">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge examples</p>
-            <h2>Worked examples</h2>
-          </div>
-          <div class="example-tabs" role="tablist" aria-label="Worked examples">
-            <button class="tab active" type="button" data-example="structure">Packet structure</button>
-            <button class="tab" type="button" data-example="order">Out-of-order arrival</button>
-            <button class="tab" type="button" data-example="checksum">Checksum</button>
-          </div>
-          <article class="example-box" id="exampleBox"></article>
-        </section>
-
-        <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-019">
-          <div class="section-title">
-            <p class="eyebrow">Your turn</p>
-            <h2>Practice with instant checking</h2>
-          </div>
-          <div class="practice-list" id="practiceList"></div>
-          <button class="primary-button" type="button" id="checkPractice">Check practice</button>
-          <div class="feedback" id="practiceFeedback" aria-live="polite"></div>
-        </section>
-
-        <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-019">
-          <div class="section-title">
-            <p class="eyebrow">Mistake debugging</p>
-            <h2>Fix the weak packet answer</h2>
-          </div>
-          <div class="mistake-grid">
-            <article>
-              <p class="wrong">“Packets arrive in order because the internet sends them one by one.”</p>
-              <button class="answer-toggle" type="button" data-answer="mistake1">Show correction</button>
-              <p class="answer" id="mistake1">Packets may take different routes and arrive out of order. Sequence numbers allow the destination to reassemble them correctly.</p>
-            </article>
-            <article>
-              <p class="wrong">“A packet only contains data.”</p>
-              <button class="answer-toggle" type="button" data-answer="mistake2">Show correction</button>
-              <p class="answer" id="mistake2">A packet contains payload plus control information such as source address, destination address, sequence number and error-checking data.</p>
-            </article>
-          </div>
-        </section>
-
-        <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-019">
-          <div class="section-title">
-            <p class="eyebrow">Exam-style questions</p>
-            <h2>Questions with expandable MS</h2>
-            <p>Attempt first, then expand the mark scheme. Cambridge-style answers must name the packet item and its purpose.</p>
-          </div>
-          <div class="exam-list" id="examList"></div>
-        </section>
-
-        <section class="panel summary-panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-019">
-          <div class="section-title">
-            <p class="eyebrow">Summary</p>
-            <h2>Packets need labels, order and checks</h2>
-          </div>
-          <div class="summary-grid">
-            <div><strong>1</strong><span>Packet switching splits data into smaller packets for transmission.</span></div>
-            <div><strong>2</strong><span>Headers carry metadata such as source, destination and sequence number.</span></div>
-            <div><strong>3</strong><span>Packets may take different routes and arrive out of order.</span></div>
-            <div><strong>4</strong><span>Checksums/error checks help detect corruption; missing packets may be resent.</span></div>
-          </div>
-        </section>
-
-        <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
-          <div class="section-title">
-            <p class="eyebrow">Homework</p>
-            <h2>Clear tasks</h2>
-          </div>
-          <ol class="homework-list">
-            <li>Draw a packet and label header, payload and trailer. Add one example item inside each where appropriate.</li>
-            <li>Explain why sequence numbers are needed if packets may arrive out of order.</li>
-            <li>Write a 4-mark answer explaining two advantages of packet switching.</li>
-            <li>Write a 5-mark answer explaining how a receiver can detect and respond to missing or corrupt packets.</li>
-          </ol>
-          <button class="answer-toggle" type="button" data-answer="homeworkAnswers">Show homework guidance</button>
-          <div class="answer-panel" id="homeworkAnswers">
-            <p><strong>Packet drawing:</strong> include named metadata, not only "extra information".</p>
-            <p><strong>Sequence numbers:</strong> link them to reassembly in correct order.</p>
-            <p><strong>Advantages:</strong> mention sharing links, alternative routes and avoiding one large transmission failure.</p>
-            <p><strong>Error response:</strong> mention checksum/error check and retransmission request.</p>
-          </div>
-        </section>
+        <nav class="v2-bottom-nav" aria-label="Previous and next lesson"><a href="../lesson-018/" >Previous lesson</a><a href="../lesson-020/" >Next lesson</a></nav>
       </div>
     </main>
-
-    <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=3"></script>
-    <script src="../lesson-toolbar.js?v=3"></script>
-    <script src="../stage7-accessibility.js?v=4"></script>
+    <script src="../course-v2.js?v=1"></script>
   </body>
 </html>

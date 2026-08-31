@@ -3,337 +3,84 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 089 | Validation, verification, security and backup in databases</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <title>AS9618 Lesson 089 | Analysing and amending an existing program</title>
     <link rel="icon" href="data:" />
-    <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
+    <link rel="stylesheet" href="../course-v2.css?v=3" />
   </head>
-  <body>
+  <body data-course-version="2" data-lesson-id="089" data-syllabus-ids="S12.09">
     <a class="skip-link" href="#main-content">Skip to main content</a>
-    <header class="topbar">
-      <div>
-        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 8</p>
-        <h1>Validation, verification, security and backup in databases</h1>
-      </div>
-      <div class="action-panel" aria-label="Page controls">
-        <a class="course-home-link" href="../">Course home</a>
-        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
-      </div>
+    <header class="v2-topbar">
+      <div><p class="v2-eyebrow">Cambridge AS9618 | Paper 2 | Section 12: Software development</p><h1>Analysing and amending an existing program</h1></div>
+      <nav class="v2-actions" aria-label="Lesson actions"><a href="../">Course home</a><a href="../assessments/">Assessment bank</a><button type="button" id="printLesson">Print</button></nav>
     </header>
+    <main class="v2-shell" id="main-content" tabindex="-1">
+      <nav class="v2-toc" aria-label="Lesson contents"><strong>Lesson 089</strong><a href="#overview">Overview</a><a href="#prerequisite">Prerequisite</a><a href="#explanation">Explanation</a><a href="#practice">Practice</a><a href="#summary">Summary</a></nav>
+      <div class="v2-content">
+        <section class="v2-hero" id="overview">
+          <div><p class="v2-eyebrow">Flexible-depth lesson</p><h2>Analysing and amending an existing program</h2><p>S12.09 | Select what to omit, teach briefly or explore in depth.</p></div>
+          <div class="v2-time-grid" aria-label="Available lesson depth"><div><strong>Quick</strong><span>diagnose + essentials</span></div><div><strong>Full</strong><span>complete explanation</span></div><div><strong>Deep</strong><span>prerequisites + extension</span></div><div><strong>Choose</strong><span>practice by need</span></div></div>
+        </section>
 
-    <main class="layout" id="main-content" tabindex="-1">
-      <aside class="lesson-nav" aria-label="Lesson navigation">
-        <a href="#overview">Overview</a>
-        <a href="#hook">Warm-up</a>
-        <a href="#validation">Validation</a>
-        <a href="#verification">Verification</a>
-        <a href="#security">Security</a>
-        <a href="#backup">Backup</a>
-        <a href="#trace">Scenario table</a>
-        <a href="#classifier">Classifier</a>
-        <a href="#checker">Input checker</a>
-        <a href="#examples">Examples</a>
-        <a href="#practice">Practice</a>
-        <a href="#debug">Debugging</a>
-        <a href="#exam">Exam-style</a>
-        <a href="#summary">Summary</a>
-        <a href="#homework">Homework</a>
-      </aside>
+        <section class="v2-panel v2-route-menu" aria-labelledby="route-heading">
+          <div class="v2-heading"><p class="v2-eyebrow">Teacher choice</p><h2 id="route-heading">Choose the depth for this group</h2></div>
+          <div class="v2-route-grid"><article><h3>Quick route</h3><p>Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.</p></article><article><h3>Full route</h3><p>Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.</p></article><article><h3>Deep route</h3><p>Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.</p></article></div>
+        </section>
 
-      <div class="lesson-content">
-        <section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
-          <div class="hero-copy">
-            <p class="lesson-meta">Lesson 089 | 45 minutes | Paper 1 Section 8 | informal questioning</p>
-            <h2>Bad data enters quietly. Good database controls make it show ID at the door.</h2>
-            <p>
-              This lesson separates four ideas that students often blur together:
-              <code>validation</code>, <code>verification</code>, <code>security</code> and <code>backup</code>.
-              You will choose suitable controls for a database and explain what each control can and cannot guarantee.
-            </p>
-            <div class="objective-grid" aria-label="Learning objectives">
-              <div><strong>Check input</strong><span>apply validation rules such as range, type, presence and format checks</span></div>
-              <div><strong>Confirm accuracy</strong><span>distinguish verification from validation using realistic examples</span></div>
-              <div><strong>Protect data</strong><span>explain access controls, passwords, encryption and backup/recovery</span></div>
+        <section class="v2-panel" id="prerequisite">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 1 | optional depth</p><h2>Prerequisite knowledge and quick diagnostic</h2></div>
+          <div class="v2-diagnostic"><p>Recall S12.04 before starting this lesson.</p></div>
+          <p>Give one accurate definition or method step before continuing. If it is missing, revisit only that prerequisite.</p>
+          <details class="v2-prerequisite-detail"><summary>Open optional prerequisite refresher</summary><ul><li>Understand different ways of exposing and avoiding faults in a program. Locate and identify syntax, logic and run-time errors in a program and correct identified errors.</li><li>Identify and correct syntax, logic and runtime errors.</li></ul></details>
+        </section>
+
+        <section class="v2-panel" id="explanation">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 2 | deliberately over-complete</p><h2>Knowledge explanation</h2></div>
+          <h3>Learning objectives</h3><ul class="v2-objectives"><li>Analyse and amend an existing program.</li></ul>
+          <details class="v2-concept-menu"><summary>Open the concept checklist and choose what to teach</summary><ul><li>analyse / analyze</li><li>amend</li><li>existing</li><li>program</li></ul></details>
+          <div class="v2-explanation-grid">
+            <div>
+              <article class="v2-core-facts"><h3>Detailed explanation</h3><p class="v2-teacher-note">Teach all points, or select only the ones this group needs. The list is intentionally fuller than a fixed lesson slot.</p><ul class="v2-facts"><li>Analyse an existing program and make amendments to enhance functionality.</li><li>Maintenance continues after delivery because faults are discovered, operating environments and rules change, and users request improvements. Corrective maintenance fixes faults in required behaviour; adaptive maintenance changes software for a new environment, platform, law or external rule; perfective maintenance improves functionality, usability, performance or maintainability.</li><li>Analyse the supplied program before editing it: state its current purpose, inputs, outputs, data structures, control flow and assumptions. Trace representative data to identify where a new requirement belongs and record behaviour that must remain unchanged.</li><li>Amend the existing program with the smallest coherent change that enhances functionality. Update related declarations, initialisation, processing and output together; preserve established interfaces unless the requirement needs an interface change; and keep Cambridge pseudocode constructs complete.</li><li>Test the enhancement with data that exercises the new path and rerun regression tests for existing paths. Correcting a fault is corrective maintenance; adding or improving requested functionality is an enhancement and may be perfective maintenance.</li></ul></article>
+              <article class="v2-example"><h3>Worked example</h3><p>Test login through review, construction, integration and release / Test an inclusive mark range / Three changes to one booking system / Add a Merit count without breaking PassCount: First dry-run the lockout counter and conduct a walkthrough in which peers inspect the algorithm. White-box tests cover true/false paths; black-box tests valid, invalid and boundary inputs from requirements. During integration, a stub returns simulated account results before the database is ready. Internal staff perform alpha testing, selected external users perform beta testing, and the customer performs acceptance testing against the agreed lockout behaviour. For an allowed mark from 0 to 100 inclusive, 55 is normal, 0 and 100 are valid extreme/boundary values, and -1 or 101 is abnormal. Fixing a crash when saving is corrective. Updating tax or term-date rules imposed externally is adaptive.…</p></article>
+              <aside class="v2-extension"><h3>Beyond syllabus / 延伸知识（不要求背诵）</h3><p>modern teams often use continuous integration to repeat building and testing whenever a program changes.</p></aside>
             </div>
-          </div>
-          <div class="sql-visual" aria-label="Database protection visual">
-            <span class="keyword">Validation</span><span>Is it reasonable?</span>
-            <span class="keyword">Verification</span><span>Does it match the source?</span>
-            <span class="keyword">Security</span><span>Who can access it?</span>
-            <span class="keyword">Backup</span><span>Can it be restored?</span>
-            <p>Four different jobs. One messy database trying to survive Monday morning.</p>
+            <figure class="v2-visual">
+              <img src="../assets/diagrams/stage10-infographics/stage10-lesson-139-bug.jpg" alt="Analyse the existing program&#39;s purpose, inputs, outputs, control flow and behaviour that must remain unchanged before editing it.. Amend declarations, initialisation, processing and output coherently to add the requested functionality rather than rewriting unrelated code.. Test the new path and rerun regression tests for the existing path; adding functionality is an enhancement, not merely correcting a fault." loading="lazy" />
+              <figcaption>Analyse and amend an existing program. One maintained explanation is shown as an image on larger screens and as text on small screens.</figcaption>
+              <div class="v2-mobile-visual-text" aria-label="Mobile text alternative"><ul><li>Analyse the existing program&#39;s purpose, inputs, outputs, control flow and behaviour that must remain unchanged before editing it.</li><li>Amend declarations, initialisation, processing and output coherently to add the requested functionality rather than rewriting unrelated code.</li><li>Test the new path and rerun regression tests for the existing path; adding functionality is an enhancement, not merely correcting a fault.</li></ul></div>
+            </figure>
           </div>
         </section>
 
-        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
-          <article class="why-card">
-            <h3>Why this matters</h3>
-            <p>Cambridge-style questions often reject swapped terms: validation is not the same as verification.</p>
-          </article>
-          <article class="trap-card">
-            <h3>Common error</h3>
-            <p>Validation can reject impossible data, but it cannot prove the data is true. A valid phone number can still belong to the wrong person.</p>
-          </article>
+        <section class="v2-panel" id="practice">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 3 | select by learner need</p><h2>Practice by question type</h2></div>
+          <div class="v2-question-list"><article class="v2-question" data-question-id="Q-L089-01" data-semantic-fingerprint="S12.09|analysing-and-amending-an-existing-program|apply|what-should-recorded-before|written|recall">
+              <div class="v2-question-head"><span class="v2-badge">apply</span><span class="v2-badge">recall</span><span class="v2-badge difficulty">foundation</span><span class="v2-badge">2 marks</span></div>
+              <p><strong>Question 1.</strong> What should be recorded before changing existing code?</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> Its purpose, inputs, outputs, relevant control/data flow, assumptions and behaviour that must remain unchanged.</p><p><strong>Marking guidance:</strong> Award one mark for each distinct, technically accurate point or method step.</p><p><strong>Common error:</strong> For the command word apply, perform that exact action; do not replace it with an unrelated fact.</p></div></details>
+            </article><article class="v2-question" data-question-id="Q-L089-02" data-semantic-fingerprint="S12.09|analysing-and-amending-an-existing-program|explain|why-rerun-old-tests|written|explain">
+              <div class="v2-question-head"><span class="v2-badge">explain</span><span class="v2-badge">explain</span><span class="v2-badge difficulty">application</span><span class="v2-badge">2 marks</span></div>
+              <p><strong>Question 2.</strong> Why rerun old tests after adding a feature?</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> Regression tests check that the amendment has not broken existing behaviour.</p><p><strong>Marking guidance:</strong> Award one mark for each distinct, technically accurate point or method step.</p><p><strong>Common error:</strong> Do not repeat the same point in different words; each mark needs a separate idea or method step.</p></div></details>
+            </article><article class="v2-question" data-question-id="Q-L089-03" data-semantic-fingerprint="S12.09|analysing-and-amending-an-existing-program|apply|type-adds-useful-functionality|written|recall">
+              <div class="v2-question-head"><span class="v2-badge">apply</span><span class="v2-badge">recall</span><span class="v2-badge difficulty">transfer</span><span class="v2-badge">2 marks</span></div>
+              <p><strong>Question 3.</strong> Which type adds useful functionality or improves performance?</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> Perfective maintenance.</p><p><strong>Marking guidance:</strong> Award one mark for each distinct, technically accurate point or method step.</p><p><strong>Common error:</strong> Do not copy the worked example unchanged; transfer the method and check it against the new context.</p></div></details>
+            </article></div>
+
         </section>
 
-        <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
-          <div class="section-title">
-            <p class="eyebrow">Warm-up hook</p>
-            <h2>A student types age 216 for a school club member. Which control should catch it first?</h2>
-            <p>The database should not need a philosophy degree to decide that 216 is not a likely student age.</p>
-          </div>
-          <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="range">Range check on Age</button>
-            <button class="choice-card" type="button" data-hook="double">Double entry of surname</button>
-            <button class="choice-card" type="button" data-hook="password">Password on the database</button>
-            <button class="choice-card" type="button" data-hook="backup">Daily backup</button>
-          </div>
-          <div class="feedback" id="hookFeedback" aria-live="polite">
-            Choose the control that checks whether an input value is sensible for the field.
-          </div>
+        <section class="v2-panel" id="summary">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 4 | close when ready</p><h2>Summary and exam reminders</h2></div>
+          <div class="v2-summary-grid"><div><h3>Summary</h3><ul class="v2-summary-list"><li>Define analysing and amending an existing program with the exact technical vocabulary expected by the syllabus.</li><li>Use the lesson method on a fresh context and show the intermediate decision, representation or calculation.</li><li>Match the shape of the answer to the command word and the available marks.</li><li>Check the final answer against the scenario instead of repeating a memorised sentence.</li></ul></div><div class="v2-error"><h3>Common error to correct</h3><p>Students often describe the lifecycle as a fixed checklist. Correction: development is iterative; findings can send a project back to earlier stages.</p></div></div>
+          <div class="v2-tip-box"><h3>Exam technique</h3><ul><li>Follow the command word: state gives a fact; explain links a cause to a consequence; compare covers both sides.</li><li>Match the number of independent points or method steps to the available marks.</li><li>For analysing and amending an existing program, use the exact technical term before applying it to the scenario.</li></ul></div>
         </section>
 
-        <section class="panel" id="validation" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="validation">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 1</p>
-            <h2>Validation checks whether input is sensible or acceptable</h2>
-            <p>Validation applies rules before data is accepted into the database. It reduces errors but cannot prove truth.</p>
-          </div>
-          <div class="data-table rule-table" role="table" aria-label="Validation checks">
-            <div class="table-row table-head" role="row"><div>Check</div><div>Purpose</div><div>Example</div></div>
-            <div class="table-row" role="row"><div>Range check</div><div>Checks a value is within limits</div><div>Age must be 11 to 19</div></div>
-            <div class="table-row" role="row"><div>Type check</div><div>Checks data has the correct data type</div><div>PaymentAmount must be numeric</div></div>
-            <div class="table-row" role="row"><div>Presence check</div><div>Checks required data is not blank</div><div>StudentID must be entered</div></div>
-            <div class="table-row" role="row"><div>Format check</div><div>Checks data follows a pattern</div><div>Email contains suitable structure</div></div>
-            <div class="table-row" role="row"><div>Length check</div><div>Checks number of characters</div><div>Postcode length is acceptable</div></div>
-          </div>
-          <div class="callout">Chinese support: validation = 验证输入是否合理；range check = 范围检查；presence check = 存在性检查。</div>
-        </section>
-
-        <!-- stage10-explanation:start validation -->
-        <section class="panel explanation-panel" id="explanation-validation" data-explains="validation" data-explanation-kind="mechanism" aria-labelledby="explanation-validation-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="validation">
-          <h2 class="explanation-sr-only" id="explanation-validation-title">Validation checks whether input is sensible or acceptable</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-089-validation.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Validation checks whether input is sensible or acceptable with a structured visual model." />
-            <figcaption class="explanation-sr-only">Validation checks whether input is sensible or acceptable: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Validation applies rules before data is accepted into the database. It reduces errors but cannot prove truth.</li><li><strong>Lesson fact:</strong> Range check</li><li><strong>Lesson fact:</strong> Checks a value is within limits</li><li><strong>Lesson fact:</strong> Age must be 11 to 19</li><li><strong>Lesson fact:</strong> Type check</li><li><strong>Lesson fact:</strong> Checks data has the correct data type</li><li><strong>Lesson fact:</strong> PaymentAmount must be numeric</li><li><strong>Lesson fact:</strong> Presence check</li><li><strong>Lesson fact:</strong> Checks required data is not blank</li><li><strong>Lesson fact:</strong> StudentID must be entered</li><li><strong>Lesson fact:</strong> Format check</li><li><strong>Lesson fact:</strong> Checks data follows a pattern</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end validation -->
-        <section class="panel" id="verification" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="verification">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 2</p>
-            <h2>Verification checks data has been copied accurately</h2>
-            <p>Verification compares entered data with the source or repeats entry to reduce transcription errors.</p>
-          </div>
-          <div class="clause-grid">
-            <article><strong>Double entry</strong><span>The same data is entered twice and compared. Useful for passwords or email addresses.</span></article>
-            <article><strong>Proofreading</strong><span>A person checks entered data against the original source document.</span></article>
-            <article><strong>Key distinction</strong><span>Verification checks copying accuracy; it does not decide whether the original source was true.</span></article>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start verification -->
-        <section class="panel explanation-panel" id="explanation-verification" data-explains="verification" data-explanation-kind="mechanism" aria-labelledby="explanation-verification-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="verification">
-          <h2 class="explanation-sr-only" id="explanation-verification-title">Verification checks data has been copied accurately</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-089-verification.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Verification checks data has been copied accurately with a structured visual model." />
-            <figcaption class="explanation-sr-only">Verification checks data has been copied accurately: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Verification compares entered data with the source or repeats entry to reduce transcription errors.</li><li><strong>Lesson fact:</strong> Double entry The same data is entered twice and compared. Useful for passwords or email addresses.</li><li><strong>Lesson fact:</strong> Proofreading A person checks entered data against the original source document.</li><li><strong>Lesson fact:</strong> Key distinction Verification checks copying accuracy; it does not decide whether the original source was true.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end verification -->
-        <section class="panel" id="security" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="security">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 3</p>
-            <h2>Database security restricts access and protects confidentiality</h2>
-            <p>Security controls reduce unauthorised access, accidental damage and inappropriate disclosure of data.</p>
-          </div>
-          <div class="clause-grid">
-            <article><strong>Access rights</strong><span>Different users can view or edit only the data they need.</span></article>
-            <article><strong>Authentication</strong><span>Usernames, passwords and multi-factor methods check user identity.</span></article>
-            <article><strong>Encryption</strong><span>Data is encoded so it is unreadable without the correct key.</span></article>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start security -->
-        <section class="panel explanation-panel" id="explanation-security" data-explains="security" data-explanation-kind="tradeoff" aria-labelledby="explanation-security-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="security">
-          <h2 class="explanation-sr-only" id="explanation-security-title">Database security restricts access and protects confidentiality</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-089-security.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Database security restricts access and protects confidentiality with a structured visual model." />
-            <figcaption class="explanation-sr-only">Database security restricts access and protects confidentiality: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Security controls reduce unauthorised access, accidental damage and inappropriate disclosure of data.</li><li><strong>Lesson fact:</strong> Access rights Different users can view or edit only the data they need.</li><li><strong>Lesson fact:</strong> Authentication Usernames, passwords and multi-factor methods check user identity.</li><li><strong>Lesson fact:</strong> Encryption Data is encoded so it is unreadable without the correct key.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end security -->
-        <section class="panel" id="backup" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="backup">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 4</p>
-            <h2>Backups allow data recovery after loss or corruption</h2>
-            <p>A backup is a separate copy of data kept so the database can be restored after failure, deletion or corruption.</p>
-          </div>
-          <div class="clause-grid">
-            <article><strong>Frequency</strong><span>How often backups are made, such as daily or hourly.</span></article>
-            <article><strong>Location</strong><span>Copies should be stored separately, often off-site or in secure cloud storage.</span></article>
-            <article><strong>Testing</strong><span>A backup is only useful if restoration is tested. Untested backup plans are optimistic fiction.</span></article>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start backup -->
-        <section class="panel explanation-panel" id="explanation-backup" data-explains="backup" data-explanation-kind="mechanism" aria-labelledby="explanation-backup-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="backup">
-          <h2 class="explanation-sr-only" id="explanation-backup-title">Backups allow data recovery after loss or corruption</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-089-backup.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Backups allow data recovery after loss or corruption with a structured visual model." />
-            <figcaption class="explanation-sr-only">Backups allow data recovery after loss or corruption: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> A backup is a separate copy of data kept so the database can be restored after failure, deletion or corruption.</li><li><strong>Lesson fact:</strong> Frequency How often backups are made, such as daily or hourly.</li><li><strong>Lesson fact:</strong> Location Copies should be stored separately, often off-site or in secure cloud storage.</li><li><strong>Lesson fact:</strong> Testing A backup is only useful if restoration is tested. Untested backup plans are optimistic fiction.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end backup -->
-        <section class="panel" id="trace" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="trace">
-          <div class="section-title">
-            <p class="eyebrow">Scenario table</p>
-            <h2>ClubMember database: spot the protection needed</h2>
-          </div>
-          <div class="data-table member-table" role="table" aria-label="ClubMember table">
-            <div class="table-row table-head" role="row">
-              <div>MemberID</div><div>Name</div><div>Age</div><div>Email</div><div>Payment</div>
-            </div>
-            <div class="table-row" role="row"><div>M01</div><div>Amira Khan</div><div>16</div><div>amira@example.com</div><div>Paid</div></div>
-            <div class="table-row" role="row"><div>M02</div><div>Leo Chen</div><div>216</div><div>leo.example.com</div><div>Paid</div></div>
-            <div class="table-row" role="row"><div>M03</div><div></div><div>15</div><div>maya@example.com</div><div>Unpaid</div></div>
-          </div>
-        </section>
-
-
-        <section class="panel" id="classifier" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="classifier">
-          <div class="section-title">
-            <p class="eyebrow">Interactive classifier</p>
-            <h2>Choose the correct database protection idea</h2>
-          </div>
-          <div class="converter-grid">
-            <label>
-              Scenario
-              <select id="scenarioInput">
-                <option value="age">Reject Age = 216 before saving the record.</option>
-                <option value="emailCopy">Check the typed email address against the paper form.</option>
-                <option value="rights">Only office staff can edit PaymentStatus.</option>
-                <option value="lost">Restore the database after the server storage fails.</option>
-                <option value="encrypt">Make stolen database files unreadable without a key.</option>
-              </select>
-            </label>
-            <button class="primary-button" type="button" id="classifyBtn">Classify</button>
-          </div>
-          <div class="feedback" id="classifyResult">Choose a scenario to classify it.</div>
-        </section>
-
-        <section class="panel" id="checker" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="checker">
-          <div class="section-title">
-            <p class="eyebrow">Interactive input checker</p>
-            <h2>Run simple validation checks</h2>
-          </div>
-          <div class="input-grid">
-            <label>Age <input type="number" id="ageInput" value="216" /></label>
-            <label>Email <input type="text" id="emailInput" value="leo.example.com" /></label>
-            <label>MemberID <input type="text" id="memberInput" value="" /></label>
-            <button class="primary-button" type="button" id="checkBtn">Check inputs</button>
-          </div>
-          <div class="result-table" id="checkResult">Run the checks to see validation feedback.</div>
-        </section>
-
-        <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
-          <div class="section-title">
-            <p class="eyebrow">Worked examples</p>
-            <h2>Choose the control that matches the problem</h2>
-          </div>
-          <div class="example-tabs" role="tablist" aria-label="Worked examples">
-            <button class="tab active" type="button" data-example="validation">Validation</button>
-            <button class="tab" type="button" data-example="verification">Verification</button>
-            <button class="tab" type="button" data-example="security">Security</button>
-            <button class="tab" type="button" data-example="backup">Backup</button>
-          </div>
-          <article class="example-box" id="exampleBox" aria-live="polite"></article>
-        </section>
-
-        <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
-          <div class="section-title">
-            <p class="eyebrow">Practice with instant checking</p>
-            <h2>Short quiz and core checks</h2>
-            <p>Type concise answers. Use Show answer after committing to a response.</p>
-          </div>
-          <div class="practice-list" id="practiceList"></div>
-        </section>
-
-        <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
-          <div class="section-title">
-            <p class="eyebrow">Mistake debugging</p>
-            <h2>Repair weak protection answers</h2>
-          </div>
-          <div class="mistake-grid" id="mistakeGrid"></div>
-        </section>
-
-        <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
-          <div class="section-title">
-            <p class="eyebrow">Exam-style questions</p>
-            <h2>Original Cambridge-style practice with expandable MS</h2>
-            <p>These are original questions written in Cambridge style. The mark schemes are strict about using the correct term and consequence.</p>
-          </div>
-          <div class="exam-list" id="examList"></div>
-        </section>
-
-        <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
-          <div class="section-title">
-            <p class="eyebrow">Summary</p>
-            <h2>Protection checklist</h2>
-          </div>
-          <div class="summary-grid">
-            <div><strong>Validation</strong><span>Checks input is sensible before it is accepted.</span></div>
-            <div><strong>Verification</strong><span>Checks entered data matches the source.</span></div>
-            <div><strong>Security and backup</strong><span>Control access and recover data after loss.</span></div>
-          </div>
-        </section>
-
-        <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
-          <div class="section-title">
-            <p class="eyebrow">Homework</p>
-            <h2>Clear tasks for consolidation</h2>
-          </div>
-          <div class="homework-list">
-            <article>
-              <strong>Task 1: Four-control table</strong>
-              <span>Create a table with one example each of validation, verification, security and backup for a school club database.</span>
-            </article>
-            <article>
-              <strong>Task 2: Explain limitations</strong>
-              <span>Write two sentences explaining why validation does not prove data is accurate.</span>
-            </article>
-            <article>
-              <strong>Task 3: 6-mark response</strong>
-              <span>Answer: "Explain how a school could reduce errors and protect a database of student medical details." Use at least three named controls.</span>
-            </article>
-          </div>
-        </section>
+        <nav class="v2-bottom-nav" aria-label="Previous and next lesson"><a href="../lesson-088/" >Previous lesson</a><a href="../lesson-090/" >Next lesson</a></nav>
       </div>
     </main>
-
-    <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=3"></script>
-    <script src="../lesson-toolbar.js?v=3"></script>
-    <script src="../stage7-accessibility.js?v=4"></script>
+    <script src="../course-v2.js?v=1"></script>
   </body>
 </html>

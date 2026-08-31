@@ -3,139 +3,89 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 010 | Vector graphics and drawing lists</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <title>AS9618 Lesson 010 | LAN hardware, routers and Ethernet</title>
     <link rel="icon" href="data:" />
-    <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
+    <link rel="stylesheet" href="../course-v2.css?v=3" />
   </head>
-  <body>
+  <body data-course-version="2" data-lesson-id="010" data-syllabus-ids="S2.09,S2.10,S2.11">
     <a class="skip-link" href="#main-content">Skip to main content</a>
-    <header class="topbar">
-      <div><p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 1</p><h1>Vector graphics and drawing lists</h1></div>
-      <div class="action-panel" aria-label="Page controls"><a class="course-home-link" href="../">Course home</a><button id="printBtn" type="button">Print</button></div>
+    <header class="v2-topbar">
+      <div><p class="v2-eyebrow">Cambridge AS9618 | Paper 1 | Section 2: Communication</p><h1>LAN hardware, routers and Ethernet</h1></div>
+      <nav class="v2-actions" aria-label="Lesson actions"><a href="../">Course home</a><a href="../assessments/">Assessment bank</a><button type="button" id="printLesson">Print</button></nav>
     </header>
-    <nav class="lesson-nav" aria-label="Lesson contents">
-      <a href="#stage2-completion">Core syllabus content</a><a href="#model">Drawing-list model</a><a href="#choice">Bitmap or vector</a><a href="#exam">Exam questions</a><a href="#summary">Summary</a>
-    </nav>
-    <main id="main-content" tabindex="-1">
-      <div class="lesson-content">
-        <!-- remediation-v2-stage3-scope:start -->
-        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.</p></aside>
-        <!-- remediation-v2-stage3-scope:end -->
-
-<!-- stage2-completion:start -->
-        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus content</p>
-            <h2>Vector graphics and drawing lists</h2>
-          </div>
-          <div class="stage2-explanation">
-            <p>Vector encoding stores a graphic as a drawing list of drawing objects. Each object has properties such as type, coordinates, dimensions, line colour, fill colour and line thickness; software redraws the objects from these instructions.</p>
-            <p>Vectors scale without pixelation and suit logos, diagrams and shapes. Bitmaps store individual pixels and suit photographs or detailed textures. For a given application, the choice must be justified using the source image and intended editing or scaling.</p>
-            <p>For a given application, justify bitmap or vector storage by connecting the image content and required editing or scaling to the chosen representation.</p>
-          </div>
-          <article class="stage2-example">
-            <h3>Worked example: Store a red circle</h3>
-            <p>A drawing-list entry could record object = circle, centre = (80, 60), radius = 20, fill = red and outline = black. Enlarging it changes the geometry before redrawing, not a grid of stored pixels.</p>
-          </article>
+    <main class="v2-shell" id="main-content" tabindex="-1">
+      <nav class="v2-toc" aria-label="Lesson contents"><strong>Lesson 010</strong><a href="#overview">Overview</a><a href="#prerequisite">Prerequisite</a><a href="#explanation">Explanation</a><a href="#practice">Practice</a><a href="#summary">Summary</a></nav>
+      <div class="v2-content">
+        <section class="v2-hero" id="overview">
+          <div><p class="v2-eyebrow">Flexible-depth lesson</p><h2>LAN hardware, routers and Ethernet</h2><p>S2.09, S2.10, S2.11 | Select what to omit, teach briefly or explore in depth.</p></div>
+          <div class="v2-time-grid" aria-label="Available lesson depth"><div><strong>Quick</strong><span>diagnose + essentials</span></div><div><strong>Full</strong><span>complete explanation</span></div><div><strong>Deep</strong><span>prerequisites + extension</span></div><div><strong>Choose</strong><span>practice by need</span></div></div>
         </section>
 
-        <!-- stage10-explanation:start drawing-list -->
-        <section class="panel explanation-panel" id="explanation-drawing-list" data-explains="drawing-list" data-explanation-kind="mechanism" aria-labelledby="explanation-drawing-list-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="drawing-list">
-          <h2 class="explanation-sr-only" id="explanation-drawing-list-title">Vector drawing list: objects, properties and redrawing</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-010-drawing-list.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Vector drawing list: objects, properties and redrawing with a structured visual model." />
-            <figcaption class="explanation-sr-only">Vector drawing list: objects, properties and redrawing: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> A vector graphic stores a drawing list of drawing objects rather than a fixed grid of pixels.</li><li><strong>Lesson fact:</strong> Each object stores properties such as type, coordinates, dimensions, line colour, fill colour and line thickness.</li><li><strong>Lesson fact:</strong> Software follows the instructions to redraw the objects at the required size without pixelation.</li></ol>
+        <section class="v2-panel v2-route-menu" aria-labelledby="route-heading">
+          <div class="v2-heading"><p class="v2-eyebrow">Teacher choice</p><h2 id="route-heading">Choose the depth for this group</h2></div>
+          <div class="v2-route-grid"><article><h3>Quick route</h3><p>Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.</p></article><article><h3>Full route</h3><p>Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.</p></article><article><h3>Deep route</h3><p>Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.</p></article></div>
+        </section>
 
-          </div>
+        <section class="v2-panel" id="prerequisite">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 1 | optional depth</p><h2>Prerequisite knowledge and quick diagnostic</h2></div>
+          <div class="v2-diagnostic"><p>Recall S2.01 before starting this lesson.</p></div>
+          <p>Give one accurate definition or method step before continuing. If it is missing, revisit only that prerequisite.</p>
+          <details class="v2-prerequisite-detail"><summary>Open optional prerequisite refresher</summary><ul><li>A LAN covers a limited area and is normally managed by one organisation; a WAN connects sites across a large area and commonly uses provider infrastructure. Benefits must identify a shared or centrally managed resource and its consequence.</li><li>Show understanding of the purpose and benefits of networking devices and the characteristics of LANs and WANs.</li></ul></details>
         </section>
-        <!-- stage10-explanation:end drawing-list -->
-        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus practice</p>
-            <h2>Vector graphics and drawing lists: apply and assess</h2>
-          </div>
-          <div class="stage2-practice">
-            <h3>Targeted practice</h3>
-            <article class="stage2-question">
-              <p><strong>1.</strong> Identify two properties stored for a vector object.</p>
-              <details><summary>Show answer</summary><p>Any two of coordinates, dimensions, fill, line colour or line thickness.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>2.</strong> Suggest vector or bitmap for a company logo that must appear on a pen and a billboard.</p>
-              <details><summary>Show answer</summary><p>Vector, because geometric objects can be scaled without pixelation.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>3.</strong> Why is bitmap normally better for a photograph?</p>
-              <details><summary>Show answer</summary><p>A photograph contains complex per-pixel colour and texture that is inefficient to describe as drawing objects.</p></details>
-            </article>
-          </div>
-          <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>4 marks</span></div>
-            <p>A designer creates a simple icon from circles and rectangles. Explain how it is stored as a vector graphic and give one advantage over a bitmap when resized.</p>
-            <details>
-              <summary>Show MS</summary>
-              <table class="mark-scheme-table">
-                <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
-                <tbody>
-                  <tr><td>stored as a drawing list / list of objects</td><td>Do not accept 'vector has better quality' unless scalability or object-based storage is explained.</td><td>1</td></tr>
-                  <tr><td>stores object properties such as coordinates/dimensions/colour</td><td></td><td>1</td></tr>
-                  <tr><td>software redraws objects from the descriptions</td><td></td><td>1</td></tr>
-                  <tr><td>can be resized without pixelation / loss of shape quality</td><td></td><td>1</td></tr>
-                </tbody>
-              </table>
-            </details>
-          </article>
-        </section>
-        <!-- stage2-completion:end -->
 
-<section class="panel hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-010">
-          <p class="eyebrow">Lesson 010 | 45 minutes | S1.09</p>
-          <h2>Store instructions, not pixels</h2>
-          <p>A vector graphic records drawing objects and their properties. Software follows the drawing list to reconstruct the image at the required size.</p>
-        </section>
-        <section class="panel" id="model" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-010">
-          <div class="section-title"><p class="eyebrow">Mechanism</p><h2>Read a drawing list</h2></div>
-          <div class="vector-demo">
-            <svg viewBox="0 0 360 210" role="img" aria-label="A red circle and blue rectangle reconstructed from drawing-object properties">
-              <rect x="12" y="12" width="336" height="186" rx="16" fill="#f8fafc" stroke="#9aa9bd" />
-              <circle id="demoCircle" cx="105" cy="105" r="46" fill="#d94841" stroke="#742a2a" stroke-width="5" />
-              <rect id="demoRect" x="190" y="62" width="105" height="86" rx="8" fill="#2459a9" stroke="#102a56" stroke-width="5" />
-            </svg>
-            <pre id="drawingList" aria-live="polite">OBJECT circle
-centre = (105, 105)
-radius = 46
-fill = red
-outline = dark red</pre>
+        <section class="v2-panel" id="explanation">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 2 | deliberately over-complete</p><h2>Knowledge explanation</h2></div>
+          <h3>Learning objectives</h3><ul class="v2-objectives"><li>Describe LAN hardware: switch, server, NIC, WNIC, WAP, cables, bridge and repeater.</li><li>Describe the role and function of a router in a network.</li><li>Show understanding of Ethernet and how collisions are detected and handled using CSMA/CD.</li></ul>
+          <details class="v2-concept-menu"><summary>Open the concept checklist and choose what to teach</summary><ul><li>switch</li><li>server</li><li>NIC/WNIC</li><li>WAP</li><li>cables</li><li>bridge</li><li>repeater</li><li>router</li><li>different networks</li><li>forwards packets</li><li>IP addresses</li><li>routing information</li><li>Ethernet</li><li>CSMA/CD</li><li>Carrier Sense</li><li>collision</li><li>random backoff</li><li>retry</li></ul></details>
+          <div class="v2-explanation-grid">
+            <div>
+              <article class="v2-core-facts"><h3>Detailed explanation</h3><p class="v2-teacher-note">Teach all points, or select only the ones this group needs. The list is intentionally fuller than a fixed lesson slot.</p><ul class="v2-facts"><li>Every named hardware category is required and must be distinguished by its role; a combined consumer device does not merge the logical functions.</li><li>A router connects different networks and forwards packets using destination IP addresses and routing information; providing WiFi is not the defining role.</li><li>Carrier sensing occurs before transmission; collision detection occurs after transmission begins. A collision causes stop/jam, random backoff, sensing and retry.</li><li>LAN hardware includes a switch, server, NIC/WNIC, WAP, cables, bridge and repeater. A server provides network services. A NIC/WNIC connects a device by cable or wirelessly; a WAP connects wireless devices to a wired LAN. A switch forwards frames within a LAN, a bridge connects LAN segments, a repeater regenerates a weakened signal, and cables carry signals.</li><li>A router connects different networks and forwards packets using destination IP addresses and stored routing information. It is not a replacement name for a switch: the two devices make forwarding decisions at different scopes.</li><li>CSMA/CD means Carrier Sense Multiple Access with Collision Detection. A station listens to the shared medium; if idle it transmits, while continuing to detect a collision.</li><li>After a collision, stations stop transmitting, send/recognise a jam signal, wait for different random backoff periods and retry. The random delay reduces the chance of another simultaneous attempt.</li><li>A URL locates a WWW resource: DNS resolves the domain to an IP address, while the remaining URL components identify the required resource.</li><li>Bit streaming delivers media progressively so playback can begin before the whole file arrives. Real-time streaming carries a live event with minimal delay; on-demand streaming sends stored content selected by the user.</li><li>Bit rate is the number of bits transmitted each second. Available broadband speed must normally exceed the media bit rate and absorb variation; otherwise the player buffers, lowers quality or pauses. A buffer stores arriving data temporarily.</li><li>The internet is the global network infrastructure that interconnects networks and carries many services. The World Wide Web is one service that uses the internet to provide linked resources accessed with web protocols and browsers.</li><li>Internet hardware includes routers and transmission links that forward data between networks. Web servers store or generate web resources, while clients request those resources; the WWW is therefore not a synonym for all internet services.</li></ul></article>
+              <article class="v2-example"><h3>Worked example</h3><p>Trace a school request / Two stations sense an idle cable / 6 Mbit/s video on 4 Mbit/s link / Separate infrastructure from service / Home-to-provider path / Locate one resource on a school web server: A laptop sends a frame through its wireless interface to an access point. The LAN switch forwards it toward the router. The router then forwards the packet from the school LAN toward another network. Both may begin before either signal reaches the other. They detect the collision, stop, wait different random periods and the station whose timer expires first retries. The stream consumes data faster than the link supplies it. A starting buffer only delays the shortage; sustained playback requires a lower bit rate or faster connection. Sending email uses the internet but not the WWW.…</p></article>
+              <aside class="v2-extension"><h3>Beyond syllabus / 延伸知识（不要求背诵）</h3><p>real networks organise communication in layers so that hardware, addressing and application protocols can change independently.</p></aside>
+            </div>
+            <figure class="v2-visual">
+              <img src="../assets/diagrams/stage10-infographics/stage10-lesson-024-routing.jpg" alt="A router connects different networks and forwards packets towards their destination.. Uses: IP addresses and routing information to choose a path.. Common role: connects a LAN to the internet or to another network.. Careful wording: a router does not simply &quot;make WiFi&quot;. Some home boxes combine router and access point functions, but the jobs are distinct.. Between networks" loading="lazy" />
+              <figcaption>Routers: forwarding between networks. One maintained explanation is shown as an image on larger screens and as text on small screens.</figcaption>
+              <div class="v2-mobile-visual-text" aria-label="Mobile text alternative"><ul><li>A router connects different networks and forwards packets towards their destination.</li><li>Uses: IP addresses and routing information to choose a path.</li><li>Common role: connects a LAN to the internet or to another network.</li><li>Careful wording: a router does not simply &quot;make WiFi&quot;. Some home boxes combine router and access point functions, but the jobs are distinct.</li><li>Between networks</li></ul></div>
+            </figure>
           </div>
-          <div class="shape-controls" role="group" aria-label="Choose a drawing object"><button type="button" data-shape="circle">Inspect circle</button><button type="button" data-shape="rectangle">Inspect rectangle</button></div>
         </section>
-        <section class="panel" id="choice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-010">
-          <div class="section-title"><p class="eyebrow">Justification</p><h2>Choose bitmap or vector from the task</h2></div>
-          <table><thead><tr><th>Task</th><th>Choice</th><th>Reason</th></tr></thead><tbody><tr><td>Logo for a pen and billboard</td><td>Vector</td><td>Objects scale without pixelation.</td></tr><tr><td>Detailed photograph</td><td>Bitmap</td><td>Individual pixels represent complex colour and texture.</td></tr></tbody></table>
-          <p class="callout">Do not write only “vector is better quality”. Link the representation to image content, editing or scaling.</p>
+
+        <section class="v2-panel" id="practice">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 3 | select by learner need</p><h2>Practice by question type</h2></div>
+          <div class="v2-question-list"><article class="v2-question" data-question-id="Q-L010-01" data-semantic-fingerprint="S2.09+S2.10+S2.11|lan-hardware-routers-and-ethernet|explain|roles-nic-wireless-access|written|explain">
+              <div class="v2-question-head"><span class="v2-badge">explain</span><span class="v2-badge">explain</span><span class="v2-badge difficulty">foundation</span><span class="v2-badge">8 marks</span></div>
+              <p><strong>Question 1.</strong> Explain the roles of a NIC, wireless access point, switch and router in a school LAN connected to the internet. Describe how CSMA/CD handles two devices attempting to transmit on a shared Ethernet medium. A video has a bit rate of 8 Mbit/s. Explain why a connection advertised as 8 Mbit/s may still pause during playback. Explain why the internet and the World Wide Web are not the same. Describe the hardware path used when a home computer accesses a remote server. Compare IPv4 with IPv6, then explain how a URL and DNS are used to request a web resource.</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> NIC role; access-point role; switch role; router role; each device listens/senses the carrier before transmitting; transmits when the medium is idle; detects a collision and stops transmission; waits a random/backoff time before retrying; video requires about 8 million bits each second; actual available speed may be below advertised/maximum speed; other traffic, overhead or variation reduces throughput; buffer empties when data arrives more slowly than playback consumes it; internet infrastructure; WWW service; example or hardware path distinguishes them; end-device interface; LAN device; router role; modem/access-link role; IPv4 uses 32-bit addresses; IPv6 uses 128-bit addresses / provides a much larger address space; URL identifies a WWW resource and includes a domain plus resource path; DNS resolves the domain name to an IP address; IP address is used to route packets while the path identifies the requested resource</p><p><strong>Marking guidance:</strong> Do not describe every named device as routing packets between networks. Do not accept collision avoidance: CSMA/CD detects and responds to a collision after transmission has begun. Do not accept &#39;bandwidth is slow&#39; without comparing arrival rate with the stream bit rate. Do not define the internet as a collection of webpages. Do not use modem, router and switch as interchangeable terms. Do not accept that a private IP address guarantees security or that DNS converts the entire URL/stores the website.</p><p><strong>Common error:</strong> For the command word explain, perform that exact action; do not replace it with an unrelated fact.</p></div></details>
+            </article><article class="v2-question" data-question-id="Q-L010-02" data-semantic-fingerprint="S2.09+S2.10+S2.11|lan-hardware-routers-and-ethernet|apply|what-sensed-before-transmission|written|recall">
+              <div class="v2-question-head"><span class="v2-badge">apply</span><span class="v2-badge">recall</span><span class="v2-badge difficulty">application</span><span class="v2-badge">2 marks</span></div>
+              <p><strong>Question 2.</strong> What is sensed before Ethernet transmission?</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> Whether the shared carrier/medium is idle.</p><p><strong>Marking guidance:</strong> Award one mark for each distinct, technically accurate point or method step.</p><p><strong>Common error:</strong> Do not repeat the same point in different words; each mark needs a separate idea or method step.</p></div></details>
+            </article><article class="v2-question" data-question-id="Q-L010-03" data-semantic-fingerprint="S2.09+S2.10+S2.11|lan-hardware-routers-and-ethernet|apply|what-does-router-boundary|written|recall">
+              <div class="v2-question-head"><span class="v2-badge">apply</span><span class="v2-badge">recall</span><span class="v2-badge difficulty">transfer</span><span class="v2-badge">2 marks</span></div>
+              <p><strong>Question 3.</strong> What does the router do at the LAN boundary?</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> It forwards packets between the LAN and other networks.</p><p><strong>Marking guidance:</strong> Award one mark for each distinct, technically accurate point or method step.</p><p><strong>Common error:</strong> Do not copy the worked example unchanged; transfer the method and check it against the new context.</p></div></details>
+            </article></div>
+          <div class="v2-paper-refs">
+          <h3>Related past-paper indexes</h3>
+          <table><thead><tr><th>Reference</th><th>Marks</th><th>Command word</th><th>Question type</th></tr></thead>
+          <tbody><tr><td>9618/12/W/25 Q5(a)</td><td>2</td><td>describe</td><td>explain</td></tr><tr><td>9618/12/S/24 Q3(i)</td><td>2</td><td>describe</td><td>explain</td></tr><tr><td>9618/13/S/24 Q6(i)</td><td>2</td><td>define</td><td>recall</td></tr><tr><td>9618/11/W/23 Q2(a)</td><td>3</td><td>describe</td><td>explain</td></tr></tbody></table>
+          <p class="v2-copyright-note">Index only: Cambridge question and mark-scheme wording is not reproduced on this public course page.</p>
+        </div>
         </section>
-        <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-010">
-          <div class="section-title"><p class="eyebrow">Exam-style questions</p><h2>Questions with expandable mark schemes</h2></div>
-          <div class="exam-list" id="examList"></div>
+
+        <section class="v2-panel" id="summary">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 4 | close when ready</p><h2>Summary and exam reminders</h2></div>
+          <div class="v2-summary-grid"><div><h3>Summary</h3><ul class="v2-summary-list"><li>Define lan hardware, routers and ethernet with the exact technical vocabulary expected by the syllabus.</li><li>Use the lesson method on a fresh context and show the intermediate decision, representation or calculation.</li><li>Match the shape of the answer to the command word and the available marks.</li><li>Check the final answer against the scenario instead of repeating a memorised sentence.</li></ul></div><div class="v2-error"><h3>Common error to correct</h3><p>Students often confuse bandwidth with speed in every sense. Correction: bandwidth is capacity; latency and congestion also affect perceived performance.</p></div></div>
+          <div class="v2-tip-box"><h3>Exam technique</h3><ul><li>Follow the command word: state gives a fact; explain links a cause to a consequence; compare covers both sides.</li><li>Match the number of independent points or method steps to the available marks.</li><li>For lan hardware, routers and ethernet, use the exact technical term before applying it to the scenario.</li></ul></div>
         </section>
-        <section class="panel summary-panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-010">
-          <div class="section-title"><p class="eyebrow">Summary</p><h2>Vector encoding in three steps</h2></div>
-          <ol><li>Store each drawing object.</li><li>Store its properties.</li><li>Redraw the list at the required size.</li></ol>
-        </section>
-        <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework"><div class="section-title"><p class="eyebrow">Homework</p><h2>Apply the representation choice</h2></div><p>Choose bitmap or vector for a map icon, a portrait photograph and an editable technical diagram. Justify every choice.</p></section>
+
+        <nav class="v2-bottom-nav" aria-label="Previous and next lesson"><a href="../lesson-009/" >Previous lesson</a><a href="../lesson-011/" >Next lesson</a></nav>
       </div>
     </main>
-    <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=3"></script>
-    <script src="../lesson-toolbar.js?v=3"></script>
-    <script src="../stage7-accessibility.js?v=4"></script>
+    <script src="../course-v2.js?v=1"></script>
   </body>
 </html>

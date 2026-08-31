@@ -3,576 +3,89 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 081 | E-R design, normalisation and DBMS features</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <title>AS9618 Lesson 081 | Program-development lifecycle models</title>
     <link rel="icon" href="data:" />
-    <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
+    <link rel="stylesheet" href="../course-v2.css?v=3" />
   </head>
-  <body>
+  <body data-course-version="2" data-lesson-id="081" data-syllabus-ids="S12.01">
     <a class="skip-link" href="#main-content">Skip to main content</a>
-    <header class="topbar">
-      <div>
-        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 8</p>
-        <h1>E-R design, normalisation and DBMS features</h1>
-      </div>
-      <div class="action-panel" aria-label="Page controls">
-        <a class="course-home-link" href="../">Course home</a>
-        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
-      </div>
+    <header class="v2-topbar">
+      <div><p class="v2-eyebrow">Cambridge AS9618 | Paper 2 | Section 12: Software development</p><h1>Program-development lifecycle models</h1></div>
+      <nav class="v2-actions" aria-label="Lesson actions"><a href="../">Course home</a><a href="../assessments/">Assessment bank</a><button type="button" id="printLesson">Print</button></nav>
     </header>
-
-    <main class="layout" id="main-content" tabindex="-1">
-      <aside class="lesson-nav" aria-label="Lesson navigation">
-        <a href="#overview">Overview</a>
-        <a href="#hook">Warm-up</a>
-        <a href="#terms">Tables and records</a>
-        <a href="#fields">Fields</a>
-        <a href="#types">Data types</a>
-        <a href="#constraints">Constraints</a>
-        <a href="#type-tool">Type chooser</a>
-        <a href="#constraint-tool">Constraint checker</a>
-        <a href="#examples">Examples</a>
-        <a href="#practice">Practice</a>
-        <a href="#checkpoint">Checkpoint</a>
-        <a href="#debug">Debugging</a>
-        <a href="#exam">Exam-style</a>
-        <a href="#summary">Summary</a>
-        <a href="#homework">Homework</a>
-        <a href="#stage2-completion">Core syllabus content</a>
-      </aside>
-
-      <div class="lesson-content">
-        <!-- remediation-v2-stage3-scope:start -->
-        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.</p></aside>
-        <!-- remediation-v2-stage3-scope:end -->
-
-<!-- stage2-completion:start -->
-        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus content</p>
-            <h2>E-R design, normalisation and DBMS features</h2>
-          </div>
-          <div class="stage2-explanation">
-            <p>An entity-relationship (E-R) diagram documents a database design by showing the entities, their relevant attributes or keys, the relationships between entities and the relationship cardinality. Entity names should describe things about which the system stores multiple facts; attributes belong to the entity they describe.</p>
-            <p>To produce an E-R diagram, extract entity candidates from the scenario, assign identifiers, connect only supported relationships and label cardinality as one-to-one, one-to-many or many-to-many. Resolve a many-to-many relationship with a linking entity when converting the design to relational tables. A diagram must preserve the stated business rules rather than inventing links from similar field names.</p>
-            <p>1NF requires atomic values and no repeating groups. 2NF is 1NF with every non-key attribute dependent on the whole primary key, removing partial dependencies. 3NF is 2NF with no non-key attribute dependent on another non-key attribute, removing transitive dependencies.</p>
-            <p>Normalisation decomposes tables while preserving keys and relationships. A normalised 3NF design stores each fact once in the table identified by its determinant, reducing insertion, update and deletion anomalies.</p>
-            <p>A file-based approach can repeat facts in separate files, create inconsistent copies and isolate related data. A Database Management System (DBMS) addresses these file-based limitations by providing data management, including a data dictionary of metadata; data modelling; a logical schema; data integrity; and data security. Security includes backup procedures and access rights assigned to individual users or groups.</p>
-            <p>A developer interface provides tools used to define structures and build database applications, forms or reports. A query processor interprets and checks a query, chooses how to carry it out, accesses the stored data and returns or modifies the specified records while the DBMS applies access and integrity rules.</p>
-            <p>Relational databases address file-based duplication, inconsistency, isolation and access problems through related tables, keys, constraints and managed queries.</p>
-          </div>
-          <article class="stage2-example">
-            <h3>Worked example: Model students joining clubs / Order line data / Run a restricted query</h3>
-            <p>Draw Student(StudentID, Name) and Club(ClubID, ClubName). Because each student may join many clubs and each club may contain many students, add Membership(StudentID, ClubID, JoinDate) as a linking entity. The completed design has Student 1:M Membership and Club 1:M Membership. ORDER_LINE(OrderID, ProductID, ProductName, Quantity) has composite key OrderID+ProductID. ProductName depends only on ProductID, so split PRODUCT(ProductID, ProductName) and ORDER_LINE(OrderID, ProductID, Quantity) to reach 2NF for that dependency. A developer enters a SELECT statement through the developer interface. The query processor checks the statement and the user's access rights, works out an execution plan, retrieves the permitted rows and returns the result. The data dictionary supplies definitions such as field types, keys and constraints; it does not hold the ordinary user records.</p>
-          </article>
+    <main class="v2-shell" id="main-content" tabindex="-1">
+      <nav class="v2-toc" aria-label="Lesson contents"><strong>Lesson 081</strong><a href="#overview">Overview</a><a href="#prerequisite">Prerequisite</a><a href="#explanation">Explanation</a><a href="#practice">Practice</a><a href="#summary">Summary</a></nav>
+      <div class="v2-content">
+        <section class="v2-hero" id="overview">
+          <div><p class="v2-eyebrow">Flexible-depth lesson</p><h2>Program-development lifecycle models</h2><p>S12.01 | Select what to omit, teach briefly or explore in depth.</p></div>
+          <div class="v2-time-grid" aria-label="Available lesson depth"><div><strong>Quick</strong><span>diagnose + essentials</span></div><div><strong>Full</strong><span>complete explanation</span></div><div><strong>Deep</strong><span>prerequisites + extension</span></div><div><strong>Choose</strong><span>practice by need</span></div></div>
         </section>
 
-        <!-- stage10-explanation:start normal-forms -->
-        <section class="panel explanation-panel" id="explanation-normal-forms" data-explains="normal-forms" data-explanation-kind="process" aria-labelledby="explanation-normal-forms-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="normal-forms">
-          <h2 class="explanation-sr-only" id="explanation-normal-forms-title">How normal forms remove dependency problems</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-084-normal-forms.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining How normal forms remove dependency problems through a cause-and-effect diagram." />
-            <figcaption class="explanation-sr-only">How normal forms remove dependency problems: mechanism, reason, result, analogy and boundary condition.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Mechanism:</strong> First Normal Form (1NF) requires atomic values and no repeating groups.</li><li><strong>Reason:</strong> Second Normal Form (2NF) is in 1NF and removes partial dependency: each non-key attribute depends on the whole primary key.</li><li><strong>Result:</strong> Third Normal Form (3NF) is in 2NF and removes transitive dependency: a non-key attribute must not depend on another non-key attribute.</li><li><strong>Additional fact:</strong> A valid decomposition retains every original fact, preserves keys and relationships, and follows the stated functional dependencies.</li></ol>
-
-            <p><strong>Analogy:</strong> Each dependency belongs in the relation whose key determines it.</p>
-            <p><strong>Boundary:</strong> Check the forms in order; satisfying a later normal form assumes the earlier requirements are already met.</p>
-          </div>
+        <section class="v2-panel v2-route-menu" aria-labelledby="route-heading">
+          <div class="v2-heading"><p class="v2-eyebrow">Teacher choice</p><h2 id="route-heading">Choose the depth for this group</h2></div>
+          <div class="v2-route-grid"><article><h3>Quick route</h3><p>Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.</p></article><article><h3>Full route</h3><p>Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.</p></article><article><h3>Deep route</h3><p>Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.</p></article></div>
         </section>
-        <!-- stage10-explanation:end normal-forms -->
 
-        <!-- stage10-explanation:start dbms -->
-        <section class="panel explanation-panel" id="explanation-dbms" data-explains="dbms" data-explanation-kind="mechanism" aria-labelledby="explanation-dbms-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="dbms">
-          <h2 class="explanation-sr-only" id="explanation-dbms-title">What does a DBMS provide?</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-079-dbms.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining What does a DBMS provide? with a structured visual model." />
-            <figcaption class="explanation-sr-only">What does a DBMS provide?: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> A DBMS is software used to create, manage and control access to a database. It sits between users/applications and stored data.</li><li><strong>Lesson fact:</strong> Data management stores, organises, retrieves and updates data; maintains metadata in a data dictionary.</li><li><strong>Lesson fact:</strong> Data modelling helps define entities, tables, fields and the logical schema of the database.</li><li><strong>Lesson fact:</strong> Data integrity enforces rules so values are valid and relationships remain consistent.</li><li><strong>Lesson fact:</strong> Data security uses access rights for individuals or groups; supports backup and recovery procedures.</li><li><strong>Lesson fact:</strong> Developer interface provides tools for creating structures, forms, reports or database applications.</li><li><strong>Lesson fact:</strong> Query processor interprets and carries out queries so users can retrieve or change data.</li><li><strong>Lesson fact:</strong> Exam sentence:</li><li><strong>Lesson fact:</strong> The DBMS manages the database by controlling data definition, access, integrity, security and queries; the database is the organised data itself.</li></ol>
+        <section class="v2-panel" id="prerequisite">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 1 | optional depth</p><h2>Prerequisite knowledge and quick diagnostic</h2></div>
+          <div class="v2-diagnostic"><p>Recall the main conclusion from Lesson 080: Writing complete program fragments.</p></div>
+          <p>Give one accurate definition or method step before continuing. If it is missing, revisit only that prerequisite.</p>
 
-          </div>
         </section>
-        <!-- stage10-explanation:end dbms -->
-        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus practice</p>
-            <h2>E-R design, normalisation and DBMS features: apply and assess</h2>
-          </div>
-          <div class="stage2-practice">
-            <h3>Targeted practice</h3>
-            <article class="stage2-question">
-              <p><strong>1.</strong> What four kinds of information should an E-R diagram communicate here?</p>
-              <details><summary>Show answer</summary><p>Entities, relevant attributes/keys, relationships and cardinality.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>2.</strong> What relationship exists between one Customer and many Orders?</p>
-              <details><summary>Show answer</summary><p>One-to-many from Customer to Order.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>3.</strong> Why add Membership between Student and Club?</p>
-              <details><summary>Show answer</summary><p>It resolves the many-to-many relationship into two one-to-many relationships.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>4.</strong> Why is matching field spelling not enough to draw a relationship?</p>
-              <details><summary>Show answer</summary><p>The scenario/business rule must state or imply that the records are associated.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>5.</strong> What does 1NF remove?</p>
-              <details><summary>Show answer</summary><p>Repeating groups and non-atomic/multiple values in one field.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>6.</strong> What dependency violates 2NF?</p>
-              <details><summary>Show answer</summary><p>A non-key attribute depending on only part of a composite key.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>7.</strong> What dependency violates 3NF?</p>
-              <details><summary>Show answer</summary><p>A non-key attribute depending on another non-key attribute.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>8.</strong> What five broad DBMS feature areas are required?</p>
-              <details><summary>Show answer</summary><p>Data management including a data dictionary, data modelling, logical schema, data integrity, and data security including backup and access rights.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>9.</strong> What does a data dictionary store?</p>
-              <details><summary>Show answer</summary><p>Metadata such as table, field, type, key and constraint definitions.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>10.</strong> What is the purpose of a developer interface?</p>
-              <details><summary>Show answer</summary><p>To provide tools for defining structures or building database applications, forms and reports.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>11.</strong> What is the role of the query processor?</p>
-              <details><summary>Show answer</summary><p>To interpret/check, plan and carry out database queries or data-maintenance statements.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>12.</strong> Which DBMS feature limits users or groups to permitted operations?</p>
-              <details><summary>Show answer</summary><p>Access rights within data security.</p></details>
-            </article>
-          </div>
-          <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>16 marks</span></div>
-            <p>A clinic stores Patients, Doctors and Appointments. Write an E-R design in words or a labelled diagram and state the two relationship cardinalities. Explain why CUSTOMER(CustomerID, Postcode, Town) may not be in 3NF when each postcode determines one town, and give a 3NF design. A school is introducing a relational DBMS. Explain four DBMS features and the distinct purposes of the developer interface and query processor.</p>
-            <details>
-              <summary>Show MS</summary>
-              <table class="mark-scheme-table">
-                <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
-                <tbody>
-                  <tr><td>identifies Patient, Doctor and Appointment as entities</td><td>Do not award a collection of unconnected entity boxes as a complete E-R design. Do not award decomposition marks unless primary/foreign-key linkage can reconstruct the relationship. Do not treat the database, data dictionary, developer interface and query processor as interchangeable names.</td><td>1</td></tr>
-                  <tr><td>gives a suitable identifier/key for each entity</td><td></td><td>1</td></tr>
-                  <tr><td>Patient has a one-to-many relationship with Appointment</td><td></td><td>1</td></tr>
-                  <tr><td>Doctor has a one-to-many relationship with Appointment</td><td></td><td>1</td></tr>
-                  <tr><td>Appointment carries the linking foreign keys / resolves the patient-doctor many-to-many history</td><td></td><td>1</td></tr>
-                  <tr><td>attributes and relationship directions are consistent with the scenario</td><td></td><td>1</td></tr>
-                  <tr><td>CustomerID determines Postcode and Postcode determines Town</td><td></td><td>1</td></tr>
-                  <tr><td>Town is transitively dependent on CustomerID / depends on non-key Postcode</td><td></td><td>1</td></tr>
-                  <tr><td>CUSTOMER(CustomerID, Postcode)</td><td></td><td>1</td></tr>
-                  <tr><td>POSTCODE(Postcode, Town), with Postcode linked as foreign key</td><td></td><td>1</td></tr>
-                  <tr><td>data management/data dictionary stores metadata about structure</td><td></td><td>1</td></tr>
-                  <tr><td>data modelling or logical schema represents the database design</td><td></td><td>1</td></tr>
-                  <tr><td>integrity rules maintain valid and consistent data</td><td></td><td>1</td></tr>
-                  <tr><td>security uses access rights and backup procedures</td><td></td><td>1</td></tr>
-                  <tr><td>developer interface supports defining structures or building database applications/forms/reports</td><td></td><td>1</td></tr>
-                  <tr><td>query processor interprets/checks and carries out queries or maintenance statements</td><td></td><td>1</td></tr>
-                </tbody>
-              </table>
-            </details>
-          </article>
-        </section>
-        <!-- stage2-completion:end -->
 
-<section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-081">
-          <div class="hero-copy">
-            <p class="lesson-meta">Lesson 081 | 45 minutes | Paper 1 Section 8 | 5-minute quiz and monthly checkpoint</p>
-            <h2>A table is not just boxes. It is boxes with rules, otherwise the data starts doing parkour.</h2>
-            <p>
-              This lesson focuses on the inside of a database table: records, fields, data types, field sizes
-              and constraints. The aim is to design fields that store the right kind of data and reject values
-              that should not be accepted.
-            </p>
-            <div class="objective-grid" aria-label="Learning objectives">
-              <div><strong>Label</strong><span>table, record/tuple, field/attribute and value</span></div>
-              <div><strong>Select</strong><span>appropriate data types and field sizes for scenario data</span></div>
-              <div><strong>Apply</strong><span>constraints and validation rules to protect data integrity</span></div>
+        <section class="v2-panel" id="explanation">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 2 | deliberately over-complete</p><h2>Knowledge explanation</h2></div>
+          <h3>Learning objectives</h3><ul class="v2-objectives"><li>Understand why a program-development lifecycle is used; compare waterfall, iterative and RAD models and their stages.</li></ul>
+          <details class="v2-concept-menu"><summary>Open the concept checklist and choose what to teach</summary><ul><li>RAD</li><li>rapid prototyping</li><li>time-box / timebox / time-boxed / time-boxing</li><li>user involvement</li><li>waterfall</li><li>iterative</li><li>limitation / less suitable / unsuitable</li></ul></details>
+          <div class="v2-explanation-grid">
+            <div>
+              <article class="v2-core-facts"><h3>Detailed explanation</h3><p class="v2-teacher-note">Teach all points, or select only the ones this group needs. The list is intentionally fuller than a fixed lesson slot.</p><ul class="v2-facts"><li>Candidates should understand the purpose of a program-development lifecycle and the need for different lifecycles depending on the program being developed. Compare the principles, benefits and drawbacks of waterfall, iterative and Rapid Application Development (RAD). Lifecycle stages are analysis, design, coding, testing and maintenance.</li><li>Waterfall completes planned stages largely in sequence and supports documentation and traceability, but late change can cause substantial rework. Iterative development builds and reviews repeated versions so evidence can refine later cycles.</li><li>Rapid application development (RAD) uses rapid prototyping, time-boxed development and frequent user involvement to obtain feedback quickly. It can suit an interactive system with available users, but speed and repeated prototypes can conflict with exhaustive assurance or stable architecture. Agile is related extension context, not a replacement for the named RAD model.</li><li>A program-development lifecycle gives an organised sequence for analysis, design, implementation, testing and maintenance, with review and documentation linking decisions to evidence.</li><li>Waterfall supports planned sequential stages and traceability but its limitation is costly late change. Iterative development reviews repeated versions but can need careful scope control. RAD uses rapid prototyping, time-boxing and user involvement; it may be less suitable or unsuitable where exhaustive assurance and stable architecture are required.</li></ul></article>
+              <article class="v2-example"><h3>Worked example</h3><p>Choose a lifecycle model / Choose a lifecycle model: For a small booking interface with available users and changing requirements, RAD can use a time-boxed prototype and immediate user feedback. For safety-critical stable requirements, waterfall&#39;s formal traceability may be more suitable than rapid prototyping. RAD suits a small interface whose users can review frequent prototypes. Waterfall may suit stable, safety-critical requirements where formal traceability matters, although late change remains a limitation.</p></article>
+              <aside class="v2-extension"><h3>Beyond syllabus / 延伸知识（不要求背诵）</h3><p>modern teams often use continuous integration to repeat building and testing whenever a program changes.</p></aside>
             </div>
-          </div>
-          <div class="table-visual" aria-label="Annotated table visual">
-            <div class="visual-row head"><span>StudentID</span><span>Name</span><span>DOB</span><span>FeePaid</span></div>
-            <div class="visual-row"><span>S0234</span><span>Amira Chen</span><span>2009-04-18</span><span>TRUE</span></div>
-            <div class="visual-row"><span>S0318</span><span>Leo Singh</span><span>2008-11-02</span><span>FALSE</span></div>
-            <p>Fields are columns. Records are rows. Values live at the intersections.</p>
-          </div>
-        </section>
-
-        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-081">
-          <article class="why-card">
-            <h3>Why this matters</h3>
-            <p>Database design marks often come from precise choices: a date field for dates, Boolean for true/false, and a constraint with a clear purpose.</p>
-          </article>
-          <article class="trap-card">
-            <h3>Common error</h3>
-            <p>Do not choose Integer for phone numbers. You do not calculate with phone numbers, and leading zeroes may matter.</p>
-          </article>
-        </section>
-
-        <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-081">
-          <div class="section-title">
-            <p class="eyebrow">Warm-up hook</p>
-            <h2>A school stores a phone number as Integer. What could go wrong?</h2>
-            <p>The phone number is not trying to join a maths competition.</p>
-          </div>
-          <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="zero">A leading zero may be removed</button>
-            <button class="choice-card" type="button" data-hook="sum">The school can add two phone numbers</button>
-            <button class="choice-card" type="button" data-hook="date">It becomes a valid date</button>
-            <button class="choice-card" type="button" data-hook="image">It stores a profile photo</button>
-          </div>
-          <div class="feedback" id="hookFeedback" aria-live="polite">
-            Choose the database design issue.
+            <figure class="v2-visual">
+              <img src="../assets/diagrams/stage10-infographics/stage10-lesson-147-lifecycle.jpg" alt="The syllabus names analysis, design, coding, testing and maintenance as the program development lifecycle stages.. Implementation may be used only as an explanation of coding, not as a replacement stage that removes testing or maintenance.. Operation and evaluation are not substitutes for the five named syllabus stages." loading="lazy" />
+              <figcaption>One scenario, many stages. One maintained explanation is shown as an image on larger screens and as text on small screens.</figcaption>
+              <div class="v2-mobile-visual-text" aria-label="Mobile text alternative"><ul><li>The syllabus names analysis, design, coding, testing and maintenance as the program development lifecycle stages.</li><li>Implementation may be used only as an explanation of coding, not as a replacement stage that removes testing or maintenance.</li><li>Operation and evaluation are not substitutes for the five named syllabus stages.</li></ul></div>
+            </figure>
           </div>
         </section>
 
-        <section class="panel" id="terms" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-081">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 1</p>
-            <h2>Tables, records and fields</h2>
-            <p>A table stores records about one entity. A record is one complete row. A field is one column or attribute.</p>
-          </div>
-          <div class="term-table" role="table" aria-label="Table record field terms">
-            <div class="table-row table-head" role="row">
-              <div role="columnheader">Term</div>
-              <div role="columnheader">Meaning</div>
-              <div role="columnheader">Example</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Table</div>
-              <div role="cell">A collection of records for one entity</div>
-              <div role="cell">Student table</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Record / tuple</div>
-              <div role="cell">One complete row in a table</div>
-              <div role="cell">S0234, Amira Chen, 2009-04-18, TRUE</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Field / attribute</div>
-              <div role="cell">One column or property stored for each record</div>
-              <div role="cell">StudentID, Name, DateOfBirth, FeePaid</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Value</div>
-              <div role="cell">One item of data in a field for a record</div>
-              <div role="cell">TRUE in the FeePaid field</div>
-            </div>
-          </div>
+        <section class="v2-panel" id="practice">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 3 | select by learner need</p><h2>Practice by question type</h2></div>
+          <div class="v2-question-list"><article class="v2-question" data-question-id="Q-L081-01" data-semantic-fingerprint="S12.01|program-development-lifecycle-models|compare|compare-waterfall-iterative-rad|written|evaluate">
+              <div class="v2-question-head"><span class="v2-badge">compare</span><span class="v2-badge">evaluate</span><span class="v2-badge difficulty">foundation</span><span class="v2-badge">8 marks</span></div>
+              <p><strong>Question 1.</strong> Compare waterfall, iterative and RAD for a system whose users can review frequent prototypes. Compare waterfall, iterative and RAD, including one limitation of each model.</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> waterfall uses planned sequential stages and formal documentation; iterative development reviews repeated versions; RAD uses rapid prototypes/time-boxing; RAD uses frequent user involvement and is linked to the scenario; waterfall and limitation; iterative and limitation; RAD features; RAD limitation/less suitable context</p><p><strong>Marking guidance:</strong> Do not substitute Agile for RAD or describe all repeated development as the same model. Do not describe all lifecycle models as the same repeated process.</p><p><strong>Common error:</strong> For the command word compare, perform that exact action; do not replace it with an unrelated fact.</p></div></details>
+            </article><article class="v2-question" data-question-id="Q-L081-02" data-semantic-fingerprint="S12.01|program-development-lifecycle-models|identify|three-defining-features-rad|written|recall">
+              <div class="v2-question-head"><span class="v2-badge">identify</span><span class="v2-badge">recall</span><span class="v2-badge difficulty">application</span><span class="v2-badge">2 marks</span></div>
+              <p><strong>Question 2.</strong> Identify three defining features of RAD.</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> Rapid prototyping, time-boxing and frequent user involvement/feedback.</p><p><strong>Marking guidance:</strong> Award one mark for each distinct, technically accurate point or method step.</p><p><strong>Common error:</strong> Do not repeat the same point in different words; each mark needs a separate idea or method step.</p></div></details>
+            </article><article class="v2-question" data-question-id="Q-L081-03" data-semantic-fingerprint="S12.01|program-development-lifecycle-models|explain|why-might-rad-unsuitable|visual|explain">
+              <div class="v2-question-head"><span class="v2-badge">explain</span><span class="v2-badge">explain</span><span class="v2-badge difficulty">transfer</span><span class="v2-badge">2 marks</span></div>
+              <p><strong>Question 3.</strong> Why might RAD be unsuitable for a safety-critical system?</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> Rapid cycles may not provide the exhaustive assurance and traceability required.</p><p><strong>Marking guidance:</strong> Award one mark for each distinct, technically accurate point or method step.</p><p><strong>Common error:</strong> Do not copy the worked example unchanged; transfer the method and check it against the new context.</p></div></details>
+            </article></div>
+          <div class="v2-paper-refs">
+          <h3>Related past-paper indexes</h3>
+          <table><thead><tr><th>Reference</th><th>Marks</th><th>Command word</th><th>Question type</th></tr></thead>
+          <tbody><tr><td>9618/22/S/25 Q1(c)</td><td>4</td><td>complete</td><td>recall</td></tr><tr><td>9618/22/S/25 Q1(i)</td><td>3</td><td>explain</td><td>explain</td></tr><tr><td>9618/22/S/25 Q1(iii)</td><td>2</td><td>explain</td><td>explain</td></tr><tr><td>9618/22/S/25 Q1(i)</td><td>1</td><td>explain</td><td>explain</td></tr></tbody></table>
+          <p class="v2-copyright-note">Index only: Cambridge question and mark-scheme wording is not reproduced on this public course page.</p>
+        </div>
         </section>
 
-        <!-- stage10-explanation:start terms -->
-        <section class="panel explanation-panel" id="explanation-terms" data-explains="terms" data-explanation-kind="mechanism" aria-labelledby="explanation-terms-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-081">
-          <h2 class="explanation-sr-only" id="explanation-terms-title">Tables, records and fields</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-081-terms.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Tables, records and fields with a structured visual model." />
-            <figcaption class="explanation-sr-only">Tables, records and fields: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> A table stores records about one entity. A record is one complete row. A field is one column or attribute.</li><li><strong>Lesson fact:</strong> A collection of records for one entity</li><li><strong>Lesson fact:</strong> Student table</li><li><strong>Lesson fact:</strong> Record / tuple</li><li><strong>Lesson fact:</strong> One complete row in a table</li><li><strong>Lesson fact:</strong> S0234, Amira Chen, 2009-04-18, TRUE</li><li><strong>Lesson fact:</strong> Field / attribute</li><li><strong>Lesson fact:</strong> One column or property stored for each record</li><li><strong>Lesson fact:</strong> StudentID, Name, DateOfBirth, FeePaid</li><li><strong>Lesson fact:</strong> One item of data in a field for a record</li><li><strong>Lesson fact:</strong> TRUE in the FeePaid field</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end terms -->
-        <section class="panel" id="fields" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-081">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 2</p>
-            <h2>Designing fields properly</h2>
-            <p>Each field should have a name, data type, possible field size and constraints. Good design reduces invalid data at entry.</p>
-          </div>
-          <div class="field-design-grid">
-            <article><strong>Field name</strong><span>Clear and specific: <code>DateOfBirth</code>, not <code>date</code>.</span></article>
-            <article><strong>Data type</strong><span>Controls the kind of data: text, integer, real, date/time, Boolean.</span></article>
-            <article><strong>Field size</strong><span>Maximum storage length where relevant, such as 8 characters for StudentID.</span></article>
-            <article><strong>Constraint</strong><span>A rule that a value must satisfy before it is accepted.</span></article>
-          </div>
-          <div class="callout">Chinese support: field = 字段/列；record = 记录/行；constraint = 约束/限制规则；data integrity = 数据完整性。</div>
+        <section class="v2-panel" id="summary">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 4 | close when ready</p><h2>Summary and exam reminders</h2></div>
+          <div class="v2-summary-grid"><div><h3>Summary</h3><ul class="v2-summary-list"><li>Define program-development lifecycle models with the exact technical vocabulary expected by the syllabus.</li><li>Use the lesson method on a fresh context and show the intermediate decision, representation or calculation.</li><li>Match the shape of the answer to the command word and the available marks.</li><li>Check the final answer against the scenario instead of repeating a memorised sentence.</li></ul></div><div class="v2-error"><h3>Common error to correct</h3><p>Students often describe the lifecycle as a fixed checklist. Correction: development is iterative; findings can send a project back to earlier stages.</p></div></div>
+          <div class="v2-tip-box"><h3>Exam technique</h3><ul><li>Follow the command word: state gives a fact; explain links a cause to a consequence; compare covers both sides.</li><li>Match the number of independent points or method steps to the available marks.</li><li>For program-development lifecycle models, use the exact technical term before applying it to the scenario.</li></ul></div>
         </section>
 
-        <!-- stage10-explanation:start fields -->
-        <section class="panel explanation-panel" id="explanation-fields" data-explains="fields" data-explanation-kind="mechanism" aria-labelledby="explanation-fields-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-081">
-          <h2 class="explanation-sr-only" id="explanation-fields-title">Designing fields properly</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-081-fields.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Designing fields properly with a structured visual model." />
-            <figcaption class="explanation-sr-only">Designing fields properly: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Each field should have a name, data type, possible field size and constraints. Good design reduces invalid data at entry.</li><li><strong>Lesson fact:</strong> Field name Clear and specific: DateOfBirth , not date .</li><li><strong>Lesson fact:</strong> Data type Controls the kind of data: text, integer, real, date/time, Boolean.</li><li><strong>Lesson fact:</strong> Field size Maximum storage length where relevant, such as 8 characters for StudentID.</li><li><strong>Lesson fact:</strong> Constraint A rule that a value must satisfy before it is accepted.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end fields -->
-        <section class="panel" id="types" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-081">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 3</p>
-            <h2>Common database data types</h2>
-          </div>
-          <div class="data-type-table" role="table" aria-label="Common data types">
-            <div class="table-row table-head" role="row">
-              <div role="columnheader">Data type</div>
-              <div role="columnheader">Use when</div>
-              <div role="columnheader">Example</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Text / string</div>
-              <div role="cell">The value may contain letters, spaces, symbols or leading zeroes</div>
-              <div role="cell">PhoneNumber = "02071234567"</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Integer</div>
-              <div role="cell">Whole number used for counting or arithmetic</div>
-              <div role="cell">Quantity = 24</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Real / decimal</div>
-              <div role="cell">Number may include fractional part</div>
-              <div role="cell">MassKg = 62.5</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Boolean</div>
-              <div role="cell">Only two logical states are needed</div>
-              <div role="cell">FeePaid = TRUE</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Date/time</div>
-              <div role="cell">Date or time operations, ordering or validation are needed</div>
-              <div role="cell">AppointmentDate = 2026-06-15</div>
-            </div>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start types -->
-        <section class="panel explanation-panel" id="explanation-types" data-explains="types" data-explanation-kind="mechanism" aria-labelledby="explanation-types-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-081">
-          <h2 class="explanation-sr-only" id="explanation-types-title">Common database data types</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-081-types.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Common database data types with a structured visual model." />
-            <figcaption class="explanation-sr-only">Common database data types: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Data type</li><li><strong>Lesson fact:</strong> Use when</li><li><strong>Lesson fact:</strong> Text / string</li><li><strong>Lesson fact:</strong> The value may contain letters, spaces, symbols or leading zeroes</li><li><strong>Lesson fact:</strong> PhoneNumber = &quot;02071234567&quot;</li><li><strong>Lesson fact:</strong> Whole number used for counting or arithmetic</li><li><strong>Lesson fact:</strong> Quantity = 24</li><li><strong>Lesson fact:</strong> Real / decimal</li><li><strong>Lesson fact:</strong> Number may include fractional part</li><li><strong>Lesson fact:</strong> MassKg = 62.5</li><li><strong>Lesson fact:</strong> Only two logical states are needed</li><li><strong>Lesson fact:</strong> FeePaid = TRUE</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end types -->
-        <section class="panel" id="constraints" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-081">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 4</p>
-            <h2>Constraints and validation rules</h2>
-            <p>A constraint limits accepted values to help maintain data integrity. It does not prove the data is true; it helps reject impossible or invalid data.</p>
-          </div>
-          <div class="constraint-grid">
-            <article><strong>Presence check</strong><span>Value must not be blank. Example: Name is required.</span></article>
-            <article><strong>Range check</strong><span>Value must be within limits. Example: Mark is 0 to 100.</span></article>
-            <article><strong>Type check</strong><span>Value must match the data type. Example: Quantity must be Integer.</span></article>
-            <article><strong>Length check</strong><span>Value must have a permitted length. Example: StudentID has 5 characters.</span></article>
-            <article><strong>Format check</strong><span>Value must match a pattern. Example: postcode or email pattern.</span></article>
-            <article><strong>Lookup check</strong><span>Value must be from an allowed list. Example: Grade is A, B, C, D, E or U.</span></article>
-          </div>
-          <div class="answer-frame">
-            <strong>Exam sentence:</strong>
-            <span>A constraint improves data integrity by preventing values that do not meet a rule, such as rejecting a mark outside 0 to 100.</span>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start constraints -->
-        <section class="panel explanation-panel" id="explanation-constraints" data-explains="constraints" data-explanation-kind="mechanism" aria-labelledby="explanation-constraints-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-081">
-          <h2 class="explanation-sr-only" id="explanation-constraints-title">Constraints and validation rules</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-081-constraints.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Constraints and validation rules with a structured visual model." />
-            <figcaption class="explanation-sr-only">Constraints and validation rules: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> A constraint limits accepted values to help maintain data integrity. It does not prove the data is true; it helps reject impossible or invalid data.</li><li><strong>Lesson fact:</strong> Presence check Value must not be blank. Example: Name is required.</li><li><strong>Lesson fact:</strong> Range check Value must be within limits. Example: Mark is 0 to 100.</li><li><strong>Lesson fact:</strong> Type check Value must match the data type. Example: Quantity must be Integer.</li><li><strong>Lesson fact:</strong> Length check Value must have a permitted length. Example: StudentID has 5 characters.</li><li><strong>Lesson fact:</strong> Format check Value must match a pattern. Example: postcode or email pattern.</li><li><strong>Lesson fact:</strong> Lookup check Value must be from an allowed list. Example: Grade is A, B, C, D, E or U.</li><li><strong>Lesson fact:</strong> Exam sentence:</li><li><strong>Lesson fact:</strong> A constraint improves data integrity by preventing values that do not meet a rule, such as rejecting a mark outside 0 to 100.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end constraints -->
-        <section class="panel" id="type-tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-081">
-          <div class="section-title">
-            <p class="eyebrow">Interactive data type chooser</p>
-            <h2>Choose the best data type</h2>
-          </div>
-          <div class="converter-grid">
-            <label>
-              Field
-              <select id="typeInput">
-                <option value="phone">PhoneNumber stores 02071234567</option>
-                <option value="paid">FeePaid stores TRUE or FALSE</option>
-                <option value="height">HeightM stores 1.72</option>
-                <option value="quantity">QuantityInStock stores 54</option>
-                <option value="appointment">AppointmentDate stores 2026-06-15</option>
-              </select>
-            </label>
-            <button class="primary-button" type="button" id="typeBtn">Choose type</button>
-          </div>
-          <div class="result-box" id="typeResult">Choose a field, then decide the data type.</div>
-          <div class="feedback" id="typeReason">The best answer depends on how the value is used, not how numeric it looks.</div>
-        </section>
-
-        <!-- stage10-explanation:start type-tool -->
-        <section class="panel explanation-panel" id="explanation-type-tool" data-explains="type-tool" data-explanation-kind="mechanism" aria-labelledby="explanation-type-tool-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-081">
-          <h2 class="explanation-sr-only" id="explanation-type-tool-title">Choose the best data type</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-081-type-tool.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Choose the best data type with a structured visual model." />
-            <figcaption class="explanation-sr-only">Choose the best data type: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Interactive data type chooser</li><li><strong>Lesson fact:</strong> Choose a field, then decide the data type.</li><li><strong>Lesson fact:</strong> The best answer depends on how the value is used, not how numeric it looks.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end type-tool -->
-        <section class="panel" id="constraint-tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-081">
-          <div class="section-title">
-            <p class="eyebrow">Interactive constraint checker</p>
-            <h2>Which rule rejects the bad value?</h2>
-          </div>
-          <div class="converter-grid">
-            <label>
-              Bad value
-              <select id="constraintInput">
-                <option value="blankName">Name is blank</option>
-                <option value="badMark">ExamMark is 128</option>
-                <option value="badId">StudentID is S1234567 but should be 5 characters</option>
-                <option value="badGrade">Grade is X but allowed grades are A to E or U</option>
-                <option value="badQuantity">Quantity is "ten"</option>
-              </select>
-            </label>
-            <button class="primary-button" type="button" id="constraintBtn">Check rule</button>
-          </div>
-          <div class="result-box" id="constraintResult">Choose a bad value to identify the check.</div>
-          <div class="feedback" id="constraintReason">Name the rule and explain what it prevents.</div>
-        </section>
-
-        <!-- stage10-explanation:start constraint-tool -->
-        <section class="panel explanation-panel" id="explanation-constraint-tool" data-explains="constraint-tool" data-explanation-kind="mechanism" aria-labelledby="explanation-constraint-tool-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-081">
-          <h2 class="explanation-sr-only" id="explanation-constraint-tool-title">Which rule rejects the bad value?</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-081-constraint-tool.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Which rule rejects the bad value? with a structured visual model." />
-            <figcaption class="explanation-sr-only">Which rule rejects the bad value?: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Interactive constraint checker</li><li><strong>Lesson fact:</strong> Bad value</li><li><strong>Lesson fact:</strong> Choose a bad value to identify the check.</li><li><strong>Lesson fact:</strong> Name the rule and explain what it prevents.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end constraint-tool -->
-        <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-081">
-          <div class="section-title">
-            <p class="eyebrow">Worked examples</p>
-            <h2>Design fields that do not invite chaos</h2>
-          </div>
-          <div class="example-tabs" role="tablist" aria-label="Worked examples">
-            <button class="tab active" type="button" data-example="student">Student table</button>
-            <button class="tab" type="button" data-example="booking">Booking table</button>
-            <button class="tab" type="button" data-example="phone">Phone-number data type error</button>
-            <button class="tab" type="button" data-example="constraint">Constraint answer</button>
-          </div>
-          <article class="example-box" id="exampleBox" aria-live="polite"></article>
-        </section>
-
-        <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-081">
-          <div class="section-title">
-            <p class="eyebrow">Practice with instant checking</p>
-            <h2>5-minute quiz plus core checks</h2>
-            <p>Answer quickly, then use Show answer to mark with strict vocabulary.</p>
-          </div>
-          <div class="practice-list" id="practiceList"></div>
-        </section>
-
-        <section class="panel" id="checkpoint" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-081">
-          <div class="section-title">
-            <p class="eyebrow">Monthly checkpoint</p>
-            <h2>Section 8 basics so far</h2>
-            <p>This checkpoint connects Lessons 079-080 without becoming a full exam.</p>
-          </div>
-          <div class="checkpoint-grid">
-            <article><strong>1. Define</strong><span>data, information, database, DBMS, flat-file, relational database.</span></article>
-            <article><strong>2. Compare</strong><span>one-table repeated data vs linked tables with reduced redundancy.</span></article>
-            <article><strong>3. Design</strong><span>choose data types and constraints for five fields in a small scenario.</span></article>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start checkpoint -->
-        <section class="panel explanation-panel" id="explanation-checkpoint" data-explains="checkpoint" data-explanation-kind="mechanism" aria-labelledby="explanation-checkpoint-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-081">
-          <h2 class="explanation-sr-only" id="explanation-checkpoint-title">Section 8 basics so far</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-081-checkpoint.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Section 8 basics so far with a structured visual model." />
-            <figcaption class="explanation-sr-only">Section 8 basics so far: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Monthly checkpoint</li><li><strong>Lesson fact:</strong> This checkpoint connects Lessons 079-080 without becoming a full exam.</li><li><strong>Lesson fact:</strong> 1. Define data, information, database, DBMS, flat-file, relational database.</li><li><strong>Lesson fact:</strong> 2. Compare one-table repeated data vs linked tables with reduced redundancy.</li><li><strong>Lesson fact:</strong> 3. Design choose data types and constraints for five fields in a small scenario.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end checkpoint -->
-        <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-081">
-          <div class="section-title">
-            <p class="eyebrow">Mistake debugging</p>
-            <h2>Repair common field design errors</h2>
-          </div>
-          <div class="mistake-grid" id="mistakeGrid"></div>
-        </section>
-
-        <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-081">
-          <div class="section-title">
-            <p class="eyebrow">Exam-style questions</p>
-            <h2>Original Cambridge-style practice with expandable MS</h2>
-            <p>These are original questions written in Cambridge style. The mark schemes are strict about selecting and justifying types and constraints.</p>
-          </div>
-          <div class="exam-list" id="examList"></div>
-        </section>
-
-        <section class="panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-081">
-          <div class="section-title">
-            <p class="eyebrow">Summary</p>
-            <h2>What to remember</h2>
-          </div>
-          <div class="summary-grid">
-            <div><strong>Structure</strong><span>Table = collection of records; record = row; field = column.</span></div>
-            <div><strong>Types</strong><span>Choose the type based on use: text, integer, real, Boolean or date/time.</span></div>
-            <div><strong>Constraints</strong><span>Rules reject invalid values and help maintain data integrity.</span></div>
-          </div>
-        </section>
-
-        <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
-          <div class="section-title">
-            <p class="eyebrow">Homework</p>
-            <h2>Clear tasks for consolidation</h2>
-          </div>
-          <div class="homework-list">
-            <article>
-              <strong>Task 1: Field design table</strong>
-              <span>For fields StudentID, Name, DateOfBirth, PhoneNumber, ExamMark and FeePaid, give a suitable data type, field size if relevant, and one constraint.</span>
-            </article>
-            <article>
-              <strong>Task 2: Explain two choices</strong>
-              <span>Write two short paragraphs explaining why PhoneNumber should usually be text and why ExamMark should have a range check.</span>
-            </article>
-            <article>
-              <strong>Task 3: 6-mark answer</strong>
-              <span>Answer: "Explain how suitable data types and constraints can improve data integrity in a school database." Use two fields as examples.</span>
-            </article>
-          </div>
-        </section>
+        <nav class="v2-bottom-nav" aria-label="Previous and next lesson"><a href="../lesson-080/" >Previous lesson</a><a href="../lesson-082/" >Next lesson</a></nav>
       </div>
     </main>
-
-    <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=3"></script>
-    <script src="../lesson-toolbar.js?v=3"></script>
-    <script src="../stage7-accessibility.js?v=4"></script>
+    <script src="../course-v2.js?v=1"></script>
   </body>
 </html>

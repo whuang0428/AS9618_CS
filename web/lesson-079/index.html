@@ -3,500 +3,84 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 079 | File-based limitations and relational solutions</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <title>AS9618 Lesson 079 | Clear and efficient Cambridge pseudocode</title>
     <link rel="icon" href="data:" />
-    <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
+    <link rel="stylesheet" href="../course-v2.css?v=3" />
   </head>
-  <body>
+  <body data-course-version="2" data-lesson-id="079" data-syllabus-ids="S11.09">
     <a class="skip-link" href="#main-content">Skip to main content</a>
-    <header class="topbar">
-      <div>
-        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 8</p>
-        <h1>File-based limitations and relational solutions</h1>
-      </div>
-      <div class="action-panel" aria-label="Page controls">
-        <a class="course-home-link" href="../">Course home</a>
-        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
-      </div>
+    <header class="v2-topbar">
+      <div><p class="v2-eyebrow">Cambridge AS9618 | Paper 2 | Section 11: Programming</p><h1>Clear and efficient Cambridge pseudocode</h1></div>
+      <nav class="v2-actions" aria-label="Lesson actions"><a href="../">Course home</a><a href="../assessments/">Assessment bank</a><button type="button" id="printLesson">Print</button></nav>
     </header>
-
-    <main class="layout" id="main-content" tabindex="-1">
-      <aside class="lesson-nav" aria-label="Lesson navigation">
-        <a href="#overview">Overview</a>
-        <a href="#hook">Warm-up</a>
-        <a href="#data-info">Data vs information</a>
-        <a href="#database">Database</a>
-        <a href="#dbms">DBMS roles</a>
-        <a href="#terms">Core terms</a>
-        <a href="#sorter">Concept sorter</a>
-        <a href="#scenario">DBMS selector</a>
-        <a href="#examples">Examples</a>
-        <a href="#practice">Practice</a>
-        <a href="#debug">Debugging</a>
-        <a href="#exam">Exam-style</a>
-        <a href="#summary">Summary</a>
-        <a href="#homework">Homework</a>
-        <a href="#stage2-completion">Core syllabus content</a>
-      </aside>
-
-      <div class="lesson-content">
-        <!-- remediation-v2-stage3-scope:start -->
-        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.</p></aside>
-        <!-- remediation-v2-stage3-scope:end -->
-
-<!-- stage2-completion:start -->
-        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus content</p>
-            <h2>File-based limitations and relational solutions</h2>
-          </div>
-          <div class="stage2-explanation">
-            <p>A file-based approach stores data in separate application files. The same fact may be repeated in several files or records, causing redundancy and wasted storage. Updating only some copies creates inconsistency; insertion and deletion can also lose or require unrelated facts. Separate files may use incompatible formats, isolate data, duplicate validation/security code and make shared querying, concurrent access, backup and recovery harder to manage.</p>
-            <p>A relational database addresses these limitations by separating entities into linked tables, storing shared facts once, identifying records with keys and enforcing relationships and constraints centrally. A DBMS supplies shared query processing, integrity, security, access rights and backup. These mechanisms reduce particular file-based risks; a relational design is not automatically smaller, simpler or error-free.</p>
-            <p>Record and tuple are corresponding relational terms for one row; field and attribute are corresponding terms for one column.</p>
-            <p>Relational databases reduce selected file-based limitations by storing shared facts once in linked tables with centrally enforced rules.</p>
-          </div>
-          <article class="stage2-example">
-            <h3>Worked example: Replace a repeated order file</h3>
-            <p>A flat Order file repeats CustomerName and Address in every order row. Split it into Customer(CustomerID, CustomerName, Address) and Order(OrderID, CustomerID, OrderDate). CustomerID links each order to one stored customer, so an address is updated once instead of in every order row.</p>
-          </article>
+    <main class="v2-shell" id="main-content" tabindex="-1">
+      <nav class="v2-toc" aria-label="Lesson contents"><strong>Lesson 079</strong><a href="#overview">Overview</a><a href="#prerequisite">Prerequisite</a><a href="#explanation">Explanation</a><a href="#practice">Practice</a><a href="#summary">Summary</a></nav>
+      <div class="v2-content">
+        <section class="v2-hero" id="overview">
+          <div><p class="v2-eyebrow">Flexible-depth lesson</p><h2>Clear and efficient Cambridge pseudocode</h2><p>S11.09 | Select what to omit, teach briefly or explore in depth.</p></div>
+          <div class="v2-time-grid" aria-label="Available lesson depth"><div><strong>Quick</strong><span>diagnose + essentials</span></div><div><strong>Full</strong><span>complete explanation</span></div><div><strong>Deep</strong><span>prerequisites + extension</span></div><div><strong>Choose</strong><span>practice by need</span></div></div>
         </section>
 
-        <!-- stage10-explanation:start compare -->
-        <section class="panel explanation-panel" id="explanation-compare" data-explains="compare" data-explanation-kind="comparison" aria-labelledby="explanation-compare-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="compare">
-          <h2 class="explanation-sr-only" id="explanation-compare-title">Flat-file vs relational comparison</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-080-compare.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Flat-file vs relational comparison with a structured visual model." />
-            <figcaption class="explanation-sr-only">Flat-file vs relational comparison: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Flat-file</li><li><strong>Lesson fact:</strong> Relational</li><li><strong>Lesson fact:</strong> Structure</li><li><strong>Lesson fact:</strong> Single table</li><li><strong>Lesson fact:</strong> Multiple linked tables</li><li><strong>Lesson fact:</strong> Redundancy</li><li><strong>Lesson fact:</strong> More likely because related details are repeated</li><li><strong>Lesson fact:</strong> Reduced because shared data can be stored once</li><li><strong>Lesson fact:</strong> Consistency</li><li><strong>Lesson fact:</strong> Harder to maintain if repeated values are updated differently</li><li><strong>Lesson fact:</strong> Improved because updates can be made in one relevant table</li><li><strong>Lesson fact:</strong> Complexity</li></ol>
-
-          </div>
+        <section class="v2-panel v2-route-menu" aria-labelledby="route-heading">
+          <div class="v2-heading"><p class="v2-eyebrow">Teacher choice</p><h2 id="route-heading">Choose the depth for this group</h2></div>
+          <div class="v2-route-grid"><article><h3>Quick route</h3><p>Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.</p></article><article><h3>Full route</h3><p>Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.</p></article><article><h3>Deep route</h3><p>Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.</p></article></div>
         </section>
-        <!-- stage10-explanation:end compare -->
-        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus practice</p>
-            <h2>File-based limitations and relational solutions: apply and assess</h2>
-          </div>
-          <div class="stage2-practice">
-            <h3>Targeted practice</h3>
-            <article class="stage2-question">
-              <p><strong>1.</strong> Why can repeated data create inconsistency?</p>
-              <details><summary>Show answer</summary><p>One copy may be changed while another remains out of date.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>2.</strong> What is data isolation in a file-based system?</p>
-              <details><summary>Show answer</summary><p>Related data is kept in separate files or formats, making combined access and queries difficult.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>3.</strong> Which relational feature connects an order to its customer?</p>
-              <details><summary>Show answer</summary><p>A foreign key in Order referring to the Customer primary key.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>4.</strong> Why is 'relational databases are always simpler' not a valid benefit?</p>
-              <details><summary>Show answer</summary><p>Linked tables and DBMS administration add complexity; benefits must be tied to a file-based limitation.</p></details>
-            </article>
-          </div>
-          <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>6 marks</span></div>
-            <p>A clinic repeats patient details in separate appointment, billing and treatment files. Explain three file-based limitations and a relational-database feature that addresses each one.</p>
-            <details>
-              <summary>Show MS</summary>
-              <table class="mark-scheme-table">
-                <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
-                <tbody>
-                  <tr><td>repeated patient facts cause redundancy or wasted storage</td><td>Do not award a generic claim such as 'relational is better' without a named limitation, mechanism and consequence.</td><td>1</td></tr>
-                  <tr><td>linked tables store a shared patient fact once</td><td></td><td>1</td></tr>
-                  <tr><td>separate copies can become inconsistent after partial updates</td><td></td><td>1</td></tr>
-                  <tr><td>central keys/constraints and one stored fact improve consistency</td><td></td><td>1</td></tr>
-                  <tr><td>isolated files/formats make combined retrieval or control difficult</td><td></td><td>1</td></tr>
-                  <tr><td>DBMS query, integrity, access-right or backup service addresses the named difficulty</td><td></td><td>1</td></tr>
-                </tbody>
-              </table>
-            </details>
-          </article>
-        </section>
-        <!-- stage2-completion:end -->
 
-<section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-079">
-          <div class="hero-copy">
-            <p class="lesson-meta">Lesson 079 | 45 minutes | Paper 1 Section 8 | Database concepts</p>
-            <h2>A database is an organised collection of related data managed through defined structures and controls.</h2>
-            <p>
-              This lesson starts Section 8 by separating raw data from useful information, defining a database,
-              and explaining what a Database Management System (DBMS) provides. The focus is exam wording:
-              what the system stores, what the DBMS controls, and why this improves reliability.
-            </p>
-            <div class="objective-grid" aria-label="Learning objectives">
-              <div><strong>Distinguish</strong><span>data, information, database and DBMS</span></div>
-              <div><strong>Describe</strong><span>records, fields, tables/entities at an introductory level</span></div>
-              <div><strong>Explain</strong><span>DBMS roles such as dictionary, security, integrity and query processing</span></div>
+        <section class="v2-panel" id="prerequisite">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 1 | optional depth</p><h2>Prerequisite knowledge and quick diagnostic</h2></div>
+          <div class="v2-diagnostic"><p>Recall the main conclusion from Lesson 078: Functions, interfaces and return values.</p></div>
+          <p>Give one accurate definition or method step before continuing. If it is missing, revisit only that prerequisite.</p>
+
+        </section>
+
+        <section class="v2-panel" id="explanation">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 2 | deliberately over-complete</p><h2>Knowledge explanation</h2></div>
+          <h3>Learning objectives</h3><ul class="v2-objectives"><li>Write clear and efficient Cambridge pseudocode.</li></ul>
+          <details class="v2-concept-menu"><summary>Open the concept checklist and choose what to teach</summary><ul><li>clear</li><li>efficient</li><li>Cambridge</li><li>pseudocode</li></ul></details>
+          <div class="v2-explanation-grid">
+            <div>
+              <article class="v2-core-facts"><h3>Detailed explanation</h3><p class="v2-teacher-note">Teach all points, or select only the ones this group needs. The list is intentionally fuller than a fixed lesson slot.</p><ul class="v2-facts"><li>Write efficient pseudocode.</li><li>Efficient pseudocode avoids unnecessary repeated work and selects a structure suited to the data and stopping rule. For example, total and count can be updated during one traversal instead of scanning the same array twice when both results are needed.</li><li>Efficiency does not justify incorrect bounds, hidden assumptions or compressed code that cannot be traced. A strong answer remains clear: initialise once, access only valid data, avoid redundant calculations and use meaningful identifiers and coherent constructs.</li><li>At AS Level, justify an improvement from the actual algorithm, such as fewer repeated passes or stopping a search once the target is found. Do not claim that shorter text alone proves a more efficient algorithm.</li><li>Clear Cambridge pseudocode uses meaningful identifiers, consistent indentation, complete Cambridge constructs and a traceable control path. Efficient pseudocode avoids unnecessary repeated work while preserving correctness.</li></ul></article>
+              <article class="v2-example"><h3>Worked example</h3><p>Count passes and total in one traversal / Combine two traversals: Set Total and PassCount to 0 before one FOR loop through Marks[1:30]. Add each mark to Total and increment PassCount only when the mark is at least 50. Output both values after NEXT Index. This preserves clear control flow while avoiding a second full traversal. One traversal of Marks can update both Total and PassCount. The Cambridge pseudocode remains clear because initialisation, loop bounds, selection and outputs are explicit.</p></article>
+              <aside class="v2-extension"><h3>Beyond syllabus / 延伸知识（不要求背诵）</h3><p>consistent style, modularity and automated tests reduce maintenance errors in larger programs.</p></aside>
             </div>
-          </div>
-          <div class="db-stack" aria-label="Database stack">
-            <div class="stack-layer">Users and applications</div>
-            <div class="stack-layer accent">DBMS</div>
-            <div class="stack-grid">
-              <span>data dictionary</span>
-              <span>query processor</span>
-              <span>access rights</span>
-              <span>backup</span>
-            </div>
-            <div class="stack-layer">Database</div>
-            <p>Chinese support: DBMS = 数据库管理系统，不是数据库本身。</p>
+            <figure class="v2-visual">
+              <img src="../assets/diagrams/stage10-infographics/stage10-lesson-134-java.jpg" alt="Cambridge guide example: MID(Name, 1, 3) returns the first three characters as a STRING.. Java support example: name.substring(0, 3) uses start index 0 inclusive and end index 3 exclusive.. LEFT is not listed in the Cambridge pseudocode guide; a question may use it only when the signature and position convention are supplied.. Do not add UCASE around a STRING expression because UCASE accepts CHAR." loading="lazy" />
+              <figcaption>MID and Java substring use different positions. One maintained explanation is shown as an image on larger screens and as text on small screens.</figcaption>
+              <div class="v2-mobile-visual-text" aria-label="Mobile text alternative"><ul><li>Cambridge guide example: MID(Name, 1, 3) returns the first three characters as a STRING.</li><li>Java support example: name.substring(0, 3) uses start index 0 inclusive and end index 3 exclusive.</li><li>LEFT is not listed in the Cambridge pseudocode guide; a question may use it only when the signature and position convention are supplied.</li><li>Do not add UCASE around a STRING expression because UCASE accepts CHAR.</li></ul></div>
+            </figure>
           </div>
         </section>
 
-        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-079">
-          <article class="why-card">
-            <h3>Why this matters</h3>
-            <p>Section 8 answers need exact vocabulary. "It stores data" is often too thin; the exam asks what structure or DBMS feature solves the problem.</p>
-          </article>
-          <article class="trap-card">
-            <h3>Common error</h3>
-            <p>A spreadsheet file can store data, but calling every table a database does not explain management, integrity, security or querying.</p>
-          </article>
+        <section class="v2-panel" id="practice">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 3 | select by learner need</p><h2>Practice by question type</h2></div>
+          <div class="v2-question-list"><article class="v2-question" data-question-id="Q-L079-01" data-semantic-fingerprint="S11.09|clear-and-efficient-cambridge-pseudocode|write|algorithm-first-totals-marks|pseudocode|write">
+              <div class="v2-question-head"><span class="v2-badge">write</span><span class="v2-badge">write</span><span class="v2-badge difficulty">foundation</span><span class="v2-badge">8 marks</span></div>
+              <p><strong>Question 1.</strong> Write an algorithm that first totals Marks[1:30] and then makes a second pass to count passes, using one clear traversal. Explain the efficiency improvement. Write two full traversals as one clear and efficient Cambridge pseudocode traversal and justify the change.</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> initialises Total and PassCount once before the loop; uses one loop over valid indexes 1 to 30; updates Total and conditionally updates PassCount inside that loop; outputs both results after the loop; explains that the rewrite removes a redundant second traversal without changing the result; clear Cambridge pseudocode; one correct traversal; avoids repeated work; valid efficiency justification</p><p><strong>Marking guidance:</strong> Do not award an efficiency claim based only on fewer written lines; the revised pseudocode must perform less repeated work and remain correct. Do not credit an efficiency claim based only on line count.</p><p><strong>Common error:</strong> For the command word write, perform that exact action; do not replace it with an unrelated fact.</p></div></details>
+            </article><article class="v2-question" data-question-id="Q-L079-02" data-semantic-fingerprint="S11.09|clear-and-efficient-cambridge-pseudocode|explain|why-combined-traversal-more|written|explain">
+              <div class="v2-question-head"><span class="v2-badge">explain</span><span class="v2-badge">explain</span><span class="v2-badge difficulty">application</span><span class="v2-badge">2 marks</span></div>
+              <p><strong>Question 2.</strong> Why is one combined traversal more efficient than two separate full traversals here?</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> The same 30 elements are read once while both required results are updated, avoiding a redundant second pass.</p><p><strong>Marking guidance:</strong> Award one mark for each distinct, technically accurate point or method step.</p><p><strong>Common error:</strong> Do not repeat the same point in different words; each mark needs a separate idea or method step.</p></div></details>
+            </article><article class="v2-question" data-question-id="Q-L079-03" data-semantic-fingerprint="S11.09|clear-and-efficient-cambridge-pseudocode|apply|does-shorter-code-always|written|recall">
+              <div class="v2-question-head"><span class="v2-badge">apply</span><span class="v2-badge">recall</span><span class="v2-badge difficulty">transfer</span><span class="v2-badge">2 marks</span></div>
+              <p><strong>Question 3.</strong> Does shorter code always mean more efficient code?</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> No; the amount of work and correctness matter.</p><p><strong>Marking guidance:</strong> Award one mark for each distinct, technically accurate point or method step.</p><p><strong>Common error:</strong> Do not copy the worked example unchanged; transfer the method and check it against the new context.</p></div></details>
+            </article></div>
+
         </section>
 
-        <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-079">
-          <div class="section-title">
-            <p class="eyebrow">Warm-up hook</p>
-            <h2>A school has 700 rows of attendance marks. Which item is information?</h2>
-            <p>Raw marks are ingredients. Information is the meal. Please do not serve uncooked commas.</p>
-          </div>
-          <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="raw">09:00, A, S0234, Mon</button>
-            <button class="choice-card" type="button" data-hook="field">AttendanceStatus</button>
-            <button class="choice-card" type="button" data-hook="info">12% of Year 12 students were absent on Monday</button>
-            <button class="choice-card" type="button" data-hook="dbms">The query processor checks a SELECT statement</button>
-          </div>
-          <div class="feedback" id="hookFeedback" aria-live="polite">
-            Choose one. Ask: has the raw data been processed into meaning?
-          </div>
+        <section class="v2-panel" id="summary">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 4 | close when ready</p><h2>Summary and exam reminders</h2></div>
+          <div class="v2-summary-grid"><div><h3>Summary</h3><ul class="v2-summary-list"><li>Define clear and efficient cambridge pseudocode with the exact technical vocabulary expected by the syllabus.</li><li>Use the lesson method on a fresh context and show the intermediate decision, representation or calculation.</li><li>Match the shape of the answer to the command word and the available marks.</li><li>Check the final answer against the scenario instead of repeating a memorised sentence.</li></ul></div><div class="v2-error"><h3>Common error to correct</h3><p>Students often think working Java automatically means good pseudocode. Correction: Paper 2 rewards clear Cambridge-style algorithm expression.</p></div></div>
+          <div class="v2-tip-box"><h3>Exam technique</h3><ul><li>Follow the command word: state gives a fact; explain links a cause to a consequence; compare covers both sides.</li><li>Match the number of independent points or method steps to the available marks.</li><li>For clear and efficient cambridge pseudocode, use the exact technical term before applying it to the scenario.</li></ul></div>
         </section>
 
-        <section class="panel" id="data-info" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-079">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 1</p>
-            <h2>Data vs information</h2>
-            <p>Data is raw facts and values. Information is data that has been processed, organised or interpreted so it has meaning.</p>
-          </div>
-          <div class="data-flow">
-            <article>
-              <strong>Raw data</strong>
-              <span><code>BookID=B144</code>, <code>DueDate=2026-06-20</code>, <code>Returned=FALSE</code></span>
-            </article>
-            <article>
-              <strong>Processing</strong>
-              <span>compare due date, filter not returned, group by student</span>
-            </article>
-            <article>
-              <strong>Information</strong>
-              <span>"Amira has two overdue books and needs a reminder."</span>
-            </article>
-          </div>
-          <div class="info-table" role="table" aria-label="Data and information examples">
-            <div class="table-row table-head" role="row">
-              <div role="columnheader">Context</div>
-              <div role="columnheader">Data</div>
-              <div role="columnheader">Information</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Library</div>
-              <div role="cell">Loan dates, student IDs, book IDs</div>
-              <div role="cell">Which students have overdue loans</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Clinic</div>
-              <div role="cell">Temperatures, appointment times, patient IDs</div>
-              <div role="cell">Patients needing urgent triage</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Online shop</div>
-              <div role="cell">Product IDs, basket items, prices, timestamps</div>
-              <div role="cell">Best-selling product this week</div>
-            </div>
-          </div>
-          <div class="callout">Chinese support: data = 原始事实；information = 被处理后有意义的信息。Exam answers should state the processing or meaning.</div>
-        </section>
-
-        <!-- stage10-explanation:start data-info -->
-        <section class="panel explanation-panel" id="explanation-data-info" data-explains="data-info" data-explanation-kind="comparison" aria-labelledby="explanation-data-info-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-079">
-          <h2 class="explanation-sr-only" id="explanation-data-info-title">Data vs information</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-079-data-info.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Data vs information with a structured visual model." />
-            <figcaption class="explanation-sr-only">Data vs information: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Data is raw facts and values. Information is data that has been processed, organised or interpreted so it has meaning.</li><li><strong>Lesson fact:</strong> Raw data</li><li><strong>Lesson fact:</strong> BookID=B144 , DueDate=2026-06-20 , Returned=FALSE</li><li><strong>Lesson fact:</strong> Processing</li><li><strong>Lesson fact:</strong> compare due date, filter not returned, group by student</li><li><strong>Lesson fact:</strong> Information</li><li><strong>Lesson fact:</strong> &quot;Amira has two overdue books and needs a reminder.&quot;</li><li><strong>Lesson fact:</strong> Loan dates, student IDs, book IDs</li><li><strong>Lesson fact:</strong> Which students have overdue loans</li><li><strong>Lesson fact:</strong> Temperatures, appointment times, patient IDs</li><li><strong>Lesson fact:</strong> Patients needing urgent triage</li><li><strong>Lesson fact:</strong> Online shop</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end data-info -->
-        <section class="panel" id="database" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-079">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 2</p>
-            <h2>What is a database?</h2>
-            <p>A database is an organised collection of related data that can be stored, retrieved and updated.</p>
-          </div>
-          <div class="concept-grid">
-            <article><strong>Organised</strong><span>Data is arranged using defined structures, not random notes in one giant document.</span></article>
-            <article><strong>Related</strong><span>Records are connected by a shared context, such as students, books and loans.</span></article>
-            <article><strong>Retrievable</strong><span>Users can search, filter and query the data to produce information.</span></article>
-            <article><strong>Maintainable</strong><span>Data can be updated while rules help reduce invalid or inconsistent values.</span></article>
-          </div>
-          <div class="schema-preview">
-            <div class="mini-table">
-              <h3>Student</h3>
-              <p><strong>StudentID</strong> | Name | Form</p>
-              <p>S0234 | Amira Chen | 12A</p>
-              <p>S0318 | Leo Singh | 12B</p>
-            </div>
-            <div class="relation-arrow">linked by ID</div>
-            <div class="mini-table">
-              <h3>Loan</h3>
-              <p><strong>LoanID</strong> | StudentID | BookID | Returned</p>
-              <p>L9001 | S0234 | B144 | FALSE</p>
-              <p>L9002 | S0318 | B102 | TRUE</p>
-            </div>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start database -->
-        <section class="panel explanation-panel" id="explanation-database" data-explains="database" data-explanation-kind="mechanism" aria-labelledby="explanation-database-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-079">
-          <h2 class="explanation-sr-only" id="explanation-database-title">What is a database?</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-079-database.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining What is a database? with a structured visual model." />
-            <figcaption class="explanation-sr-only">What is a database?: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> A database is an organised collection of related data that can be stored, retrieved and updated.</li><li><strong>Lesson fact:</strong> Organised Data is arranged using defined structures, not random notes in one giant document.</li><li><strong>Lesson fact:</strong> Related Records are connected by a shared context, such as students, books and loans.</li><li><strong>Lesson fact:</strong> Retrievable Users can search, filter and query the data to produce information.</li><li><strong>Lesson fact:</strong> Maintainable Data can be updated while rules help reduce invalid or inconsistent values.</li><li><strong>Lesson fact:</strong> StudentID | Name | Form</li><li><strong>Lesson fact:</strong> S0234 | Amira Chen | 12A</li><li><strong>Lesson fact:</strong> S0318 | Leo Singh | 12B</li><li><strong>Lesson fact:</strong> linked by ID</li><li><strong>Lesson fact:</strong> LoanID | StudentID | BookID | Returned</li><li><strong>Lesson fact:</strong> L9001 | S0234 | B144 | FALSE</li><li><strong>Lesson fact:</strong> L9002 | S0318 | B102 | TRUE</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end database -->
-        <section class="panel" id="dbms" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-079">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 3</p>
-            <h2>What does a DBMS provide?</h2>
-            <p>A DBMS is software used to create, manage and control access to a database. It sits between users/applications and stored data.</p>
-          </div>
-          <div class="role-grid">
-            <article><strong>Data management</strong><span>stores, organises, retrieves and updates data; maintains metadata in a data dictionary.</span></article>
-            <article><strong>Data modelling</strong><span>helps define entities, tables, fields and the logical schema of the database.</span></article>
-            <article><strong>Data integrity</strong><span>enforces rules so values are valid and relationships remain consistent.</span></article>
-            <article><strong>Data security</strong><span>uses access rights for individuals or groups; supports backup and recovery procedures.</span></article>
-            <article><strong>Developer interface</strong><span>provides tools for creating structures, forms, reports or database applications.</span></article>
-            <article><strong>Query processor</strong><span>interprets and carries out queries so users can retrieve or change data.</span></article>
-          </div>
-          <div class="answer-frame">
-            <strong>Exam sentence:</strong>
-            <span>The DBMS manages the database by controlling data definition, access, integrity, security and queries; the database is the organised data itself.</span>
-          </div>
-        </section>
-        <section class="panel" id="terms" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-079">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 4</p>
-            <h2>Core relational words for this lesson</h2>
-            <p>This is the vocabulary doorway. Later lessons will go deeper into keys, relationships, E-R diagrams, normalisation and SQL.</p>
-          </div>
-          <div class="term-table" role="table" aria-label="Core relational terms">
-            <div class="table-row table-head" role="row">
-              <div role="columnheader">Term</div>
-              <div role="columnheader">Meaning</div>
-              <div role="columnheader">Example</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Entity</div>
-              <div role="cell">A thing about which data is stored</div>
-              <div role="cell">Student, Book, Loan</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Table</div>
-              <div role="cell">A set of records about one entity</div>
-              <div role="cell">Student table</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Record / tuple</div>
-              <div role="cell">One row in a table</div>
-              <div role="cell">S0234, Amira Chen, 12A</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Field / attribute</div>
-              <div role="cell">One column or property</div>
-              <div role="cell">StudentID, Name, Form</div>
-            </div>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start terms -->
-        <section class="panel explanation-panel" id="explanation-terms" data-explains="terms" data-explanation-kind="mechanism" aria-labelledby="explanation-terms-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-079">
-          <h2 class="explanation-sr-only" id="explanation-terms-title">Core relational words for this lesson</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-079-terms.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Core relational words for this lesson with a structured visual model." />
-            <figcaption class="explanation-sr-only">Core relational words for this lesson: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> This is the vocabulary doorway. Later lessons will go deeper into keys, relationships, E-R diagrams, normalisation and SQL.</li><li><strong>Lesson fact:</strong> A thing about which data is stored</li><li><strong>Lesson fact:</strong> Student, Book, Loan</li><li><strong>Lesson fact:</strong> A set of records about one entity</li><li><strong>Lesson fact:</strong> Student table</li><li><strong>Lesson fact:</strong> Record / tuple</li><li><strong>Lesson fact:</strong> One row in a table</li><li><strong>Lesson fact:</strong> S0234, Amira Chen, 12A</li><li><strong>Lesson fact:</strong> Field / attribute</li><li><strong>Lesson fact:</strong> One column or property</li><li><strong>Lesson fact:</strong> StudentID, Name, Form</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end terms -->
-        <section class="panel" id="sorter" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-079">
-          <div class="section-title">
-            <p class="eyebrow">Interactive concept sorter</p>
-            <h2>Is it data, information, database, or DBMS?</h2>
-          </div>
-          <div class="converter-grid">
-            <label>
-              Scenario item
-              <select id="sortInput">
-                <option value="rawMark">S0234, 2026-06-15, absent</option>
-                <option value="absenceRate">8% of students are absent today</option>
-                <option value="libraryTables">A set of related Student, Book and Loan tables</option>
-                <option value="queryProcessor">Software component that interprets a SELECT query</option>
-                <option value="backupTool">Software tool that restores data after failure</option>
-              </select>
-            </label>
-            <button class="primary-button" type="button" id="sortBtn">Classify</button>
-          </div>
-          <div class="result-box" id="sortResult">Choose an item, then classify it.</div>
-          <div class="feedback" id="sortReason">Reasoning will appear here.</div>
-        </section>
-
-        <!-- stage10-explanation:start sorter -->
-        <section class="panel explanation-panel" id="explanation-sorter" data-explains="sorter" data-explanation-kind="process" aria-labelledby="explanation-sorter-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-079">
-          <h2 class="explanation-sr-only" id="explanation-sorter-title">Is it data, information, database, or DBMS?</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-079-sorter.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Is it data, information, database, or DBMS? with a structured visual model." />
-            <figcaption class="explanation-sr-only">Is it data, information, database, or DBMS?: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Interactive concept sorter</li><li><strong>Lesson fact:</strong> Scenario item</li><li><strong>Lesson fact:</strong> Choose an item, then classify it.</li><li><strong>Lesson fact:</strong> Reasoning will appear here.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end sorter -->
-        <section class="panel" id="scenario" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-079">
-          <div class="section-title">
-            <p class="eyebrow">Interactive DBMS selector</p>
-            <h2>Which DBMS feature solves the problem?</h2>
-          </div>
-          <div class="converter-grid">
-            <label>
-              Problem
-              <select id="featureInput">
-                <option value="unknownField">A developer needs to know every table field and its data type.</option>
-                <option value="wrongValue">A loan record is saved with a return date before the loan date.</option>
-                <option value="privateData">Only nurses should see patient contact details.</option>
-                <option value="diskFailure">The storage device fails during the night.</option>
-                <option value="findRows">A user searches for all unpaid orders over $100.</option>
-              </select>
-            </label>
-            <button class="primary-button" type="button" id="featureBtn">Select feature</button>
-          </div>
-          <div class="result-box" id="featureResult">Choose a problem, then select the DBMS feature.</div>
-          <div class="feedback" id="featureReason">The answer should name a feature and explain its purpose.</div>
-        </section>
-
-        <!-- stage10-explanation:start scenario -->
-        <section class="panel explanation-panel" id="explanation-scenario" data-explains="scenario" data-explanation-kind="mechanism" aria-labelledby="explanation-scenario-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-079">
-          <h2 class="explanation-sr-only" id="explanation-scenario-title">Which DBMS feature solves the problem?</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-079-scenario.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Which DBMS feature solves the problem? with a structured visual model." />
-            <figcaption class="explanation-sr-only">Which DBMS feature solves the problem?: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Interactive DBMS selector</li><li><strong>Lesson fact:</strong> Choose a problem, then select the DBMS feature.</li><li><strong>Lesson fact:</strong> The answer should name a feature and explain its purpose.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end scenario -->
-        <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-079">
-          <div class="section-title">
-            <p class="eyebrow">Worked examples</p>
-            <h2>Move from messy values to exam-ready wording</h2>
-          </div>
-          <div class="example-tabs" role="tablist" aria-label="Worked examples">
-            <button class="tab active" type="button" data-example="dataInfo">Data to information</button>
-            <button class="tab" type="button" data-example="database">Database definition</button>
-            <button class="tab" type="button" data-example="dbms">DBMS feature</button>
-            <button class="tab" type="button" data-example="terms">Relational terms</button>
-          </div>
-          <article class="example-box" id="exampleBox" aria-live="polite"></article>
-        </section>
-
-        <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-079">
-          <div class="section-title">
-            <p class="eyebrow">Practice with instant checking</p>
-            <h2>Short-answer checks</h2>
-            <p>Type concise answers. Use the answer button only after committing to an attempt.</p>
-          </div>
-          <div class="practice-list" id="practiceList"></div>
-        </section>
-
-        <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-079">
-          <div class="section-title">
-            <p class="eyebrow">Mistake debugging</p>
-            <h2>Repair common database wording errors</h2>
-          </div>
-          <div class="mistake-grid" id="mistakeGrid"></div>
-        </section>
-
-        <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-079">
-          <div class="section-title">
-            <p class="eyebrow">Exam-style questions</p>
-            <h2>Original Cambridge-style practice with expandable MS</h2>
-            <p>These are original questions written in Cambridge style. The mark schemes are strict about terminology.</p>
-          </div>
-          <div class="exam-list" id="examList"></div>
-        </section>
-
-        <section class="panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-079">
-          <div class="section-title">
-            <p class="eyebrow">Summary</p>
-            <h2>Three distinctions to keep clean</h2>
-          </div>
-          <div class="summary-grid">
-            <div><strong>Data vs information</strong><span>Data is raw values; information is processed data with meaning.</span></div>
-            <div><strong>Database vs DBMS</strong><span>The database is organised related data; the DBMS is the software that manages it.</span></div>
-            <div><strong>Table words</strong><span>Entity/table, record/tuple and field/attribute describe relational database structure.</span></div>
-          </div>
-        </section>
-
-        <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
-          <div class="section-title">
-            <p class="eyebrow">Homework</p>
-            <h2>Clear tasks for consolidation</h2>
-          </div>
-          <div class="homework-list">
-            <article>
-              <strong>Task 1: Vocabulary precision</strong>
-              <span>Write one exam-ready definition each for data, information, database and DBMS. Add one Chinese support note beside each.</span>
-            </article>
-            <article>
-              <strong>Task 2: Scenario application</strong>
-              <span>A sports club stores member, payment and training attendance data. Write four bullet points explaining how a DBMS could help, naming a different feature each time.</span>
-            </article>
-            <article>
-              <strong>Task 3: 4-mark answer</strong>
-              <span>Answer: "Explain two features provided by a DBMS that help manage a school database." Use two distinct features and explain the effect of each.</span>
-            </article>
-          </div>
-        </section>
+        <nav class="v2-bottom-nav" aria-label="Previous and next lesson"><a href="../lesson-078/" >Previous lesson</a><a href="../lesson-080/" >Next lesson</a></nav>
       </div>
     </main>
-
-    <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=3"></script>
-    <script src="../lesson-toolbar.js?v=3"></script>
-    <script src="../stage7-accessibility.js?v=4"></script>
+    <script src="../course-v2.js?v=1"></script>
   </body>
 </html>

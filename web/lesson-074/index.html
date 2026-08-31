@@ -3,431 +3,89 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 074 | Privacy, surveillance, and data protection</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <title>AS9618 Lesson 074 | Count-controlled iteration</title>
     <link rel="icon" href="data:" />
-    <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
+    <link rel="stylesheet" href="../course-v2.css?v=3" />
   </head>
-  <body>
+  <body data-course-version="2" data-lesson-id="074" data-syllabus-ids="S11.04">
     <a class="skip-link" href="#main-content">Skip to main content</a>
-    <header class="topbar">
-      <div>
-        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 7</p>
-        <h1>Privacy, surveillance, and data protection</h1>
-      </div>
-      <div class="action-panel" aria-label="Page controls">
-        <a class="course-home-link" href="../">Course home</a>
-        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
-      </div>
+    <header class="v2-topbar">
+      <div><p class="v2-eyebrow">Cambridge AS9618 | Paper 2 | Section 11: Programming</p><h1>Count-controlled iteration</h1></div>
+      <nav class="v2-actions" aria-label="Lesson actions"><a href="../">Course home</a><a href="../assessments/">Assessment bank</a><button type="button" id="printLesson">Print</button></nav>
     </header>
+    <main class="v2-shell" id="main-content" tabindex="-1">
+      <nav class="v2-toc" aria-label="Lesson contents"><strong>Lesson 074</strong><a href="#overview">Overview</a><a href="#prerequisite">Prerequisite</a><a href="#explanation">Explanation</a><a href="#practice">Practice</a><a href="#summary">Summary</a></nav>
+      <div class="v2-content">
+        <section class="v2-hero" id="overview">
+          <div><p class="v2-eyebrow">Flexible-depth lesson</p><h2>Count-controlled iteration</h2><p>S11.04 | Select what to omit, teach briefly or explore in depth.</p></div>
+          <div class="v2-time-grid" aria-label="Available lesson depth"><div><strong>Quick</strong><span>diagnose + essentials</span></div><div><strong>Full</strong><span>complete explanation</span></div><div><strong>Deep</strong><span>prerequisites + extension</span></div><div><strong>Choose</strong><span>practice by need</span></div></div>
+        </section>
 
-    <main class="layout" id="main-content" tabindex="-1">
-      <aside class="lesson-nav" aria-label="Lesson navigation">
-        <a href="#overview">Overview</a>
-        <a href="#hook">Warm-up</a>
-        <a href="#privacy">Privacy</a>
-        <a href="#surveillance">Surveillance</a>
-        <a href="#protection">Data protection</a>
-        <a href="#principles">Principles</a>
-        <a href="#method">Answer method</a>
-        <a href="#scanner">Privacy scanner</a>
-        <a href="#checklist">Protection checklist</a>
-        <a href="#examples">Examples</a>
-        <a href="#practice">Practice</a>
-        <a href="#debug">Debugging</a>
-        <a href="#exam">Exam-style</a>
-        <a href="#summary">Summary</a>
-        <a href="#homework">Homework</a>
-      </aside>
+        <section class="v2-panel v2-route-menu" aria-labelledby="route-heading">
+          <div class="v2-heading"><p class="v2-eyebrow">Teacher choice</p><h2 id="route-heading">Choose the depth for this group</h2></div>
+          <div class="v2-route-grid"><article><h3>Quick route</h3><p>Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.</p></article><article><h3>Full route</h3><p>Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.</p></article><article><h3>Deep route</h3><p>Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.</p></article></div>
+        </section>
 
-      <div class="lesson-content">
-        <section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
-          <div class="hero-copy">
-            <p class="lesson-meta">Lesson 074 | 45 minutes | Paper 1 Section 7 | Ethics and ownership</p>
-            <h2>Data can be useful. It can also become a diary someone never agreed to write.</h2>
-            <p>
-              This lesson focuses on privacy, surveillance and data protection. Students learn how to
-              analyse what data is collected, why it is collected, who can access it, how long it is kept
-              and what safeguards reduce ethical risk.
-            </p>
-            <div class="objective-grid" aria-label="Learning objectives">
-              <div><strong>Explain</strong><span>privacy, surveillance, personal data and sensitive data</span></div>
-              <div><strong>Assess</strong><span>risks caused by monitoring, tracking and over-collection</span></div>
-              <div><strong>Recommend</strong><span>data protection safeguards with scenario-specific reasons</span></div>
+        <section class="v2-panel" id="prerequisite">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 1 | optional depth</p><h2>Prerequisite knowledge and quick diagnostic</h2></div>
+          <div class="v2-diagnostic"><p>Recall S9.06 before starting this lesson.</p></div>
+          <p>Give one accurate definition or method step before continuing. If it is missing, revisit only that prerequisite.</p>
+          <details class="v2-prerequisite-detail"><summary>Open optional prerequisite refresher</summary><ul><li>The three basic algorithm constructs are sequence, selection and iteration (repetition); students must recognise and use each construct, including combinations of constructs.</li><li>Understand and use sequence, selection and iteration.</li></ul></details>
+        </section>
+
+        <section class="v2-panel" id="explanation">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 2 | deliberately over-complete</p><h2>Knowledge explanation</h2></div>
+          <h3>Learning objectives</h3><ul class="v2-objectives"><li>Use IF/ELSE/nested selection, CASE, count-controlled loops, post-condition and pre-condition loops.</li></ul>
+          <details class="v2-concept-menu"><summary>Open the concept checklist and choose what to teach</summary><ul><li>IF</li><li>ELSE</li><li>nested</li><li>selection</li><li>CASE</li><li>count-controlled</li><li>loop / loops</li><li>post-condition</li><li>pre-condition</li></ul></details>
+          <div class="v2-explanation-grid">
+            <div>
+              <article class="v2-core-facts"><h3>Detailed explanation</h3><p class="v2-teacher-note">Teach all points, or select only the ones this group needs. The list is intentionally fuller than a fixed lesson slot.</p><ul class="v2-facts"><li>Use IF statements, including the ELSE clause and nested IF statements; CASE statements; count-controlled loops; post-condition loops; and pre-condition loops.</li><li>Use IF...THEN...ELSE...ENDIF when a Boolean condition selects between paths. An ELSE clause supplies the false path. In nested IF statements, every inner and outer IF must be closed and the indentation must show which ELSE belongs to which IF.</li><li>Use CASE...OF...OTHERWISE...ENDCASE when one expression is compared with several discrete values. CASE is not a replacement for range or compound-condition decisions unless the stated values cover the requirement correctly.</li><li>A count-controlled loop uses FOR...TO...NEXT when the repetition count or inclusive counter range is known before the loop starts. The counter, start value and end value define the iterations; NEXT closes the loop.</li><li>Justify FOR from the problem: it is well suited when the count or bounds are known, but a pre-condition or post-condition loop is better when the number of repetitions depends on input or a stopping condition.</li><li>A WHILE...ENDWHILE loop is a pre-condition loop: it tests before the body and may run zero times. A REPEAT...UNTIL loop is a post-condition loop: it executes the body before testing and therefore runs at least once. A FOR...NEXT loop is count-controlled.</li><li>Select and justify the loop structure from the problem: use FOR when the count is known, WHILE when execution may be unnecessary and continuation is tested first, and REPEAT when the body must run once before a stopping condition can be tested. The justification must use the scenario, not only say that one loop is easier.</li></ul></article>
+              <article class="v2-example"><h3>Worked example</h3><p>Nested IF and CASE / Total a fixed array / Choose the loop from the stopping rule: For a grade, an outer IF tests Mark = 80; its ELSE contains an inner IF testing Mark = 50; each IF closes with ENDIF. For a menu, CASE Choice OF maps 1, 2 and 3 to actions and OTHERWISE handles every unlisted value before ENDCASE. For Marks[1:30], set Total &lt;- 0, use FOR Index &lt;- 1 TO 30, add Marks[Index] to Total, close with NEXT Index and output Total after all thirty elements have been processed. Input validation must request a value at least once, so REPEAT; INPUT Mark; UNTIL Mark = 0 AND Mark &lt;= 100 is suitable. Processing records while a file is not at EOF can use WHILE because an empty file may require zero iterations. Processing twelve months uses FOR because the count is fixed.</p></article>
+              <aside class="v2-extension"><h3>Beyond syllabus / 延伸知识（不要求背诵）</h3><p>consistent style, modularity and automated tests reduce maintenance errors in larger programs.</p></aside>
             </div>
-          </div>
-          <div class="privacy-card" aria-label="Privacy impact chain">
-            <div class="privacy-stack">
-              <span>What data?</span>
-              <span>Why collect it?</span>
-              <span>Who can access it?</span>
-              <span>How long kept?</span>
-              <span>What could go wrong?</span>
-              <span>What safeguards?</span>
-            </div>
-            <p>If the answer to "why do you need this data?" is "because we can", the red flag has arrived early.</p>
+            <figure class="v2-visual">
+              <img src="../assets/diagrams/stage10-infographics/stage10-lesson-130-while.jpg" alt="A WHILE loop checks its condition before each iteration and may run zero times.. Input Password before testing whether it differs from CorrectPassword.. Inside the loop, output the retry message and input a replacement Password.. Output Access granted only after the WHILE condition becomes false." loading="lazy" />
+              <figcaption>Pre-condition loop: check before running. One maintained explanation is shown as an image on larger screens and as text on small screens.</figcaption>
+              <div class="v2-mobile-visual-text" aria-label="Mobile text alternative"><ul><li>A WHILE loop checks its condition before each iteration and may run zero times.</li><li>Input Password before testing whether it differs from CorrectPassword.</li><li>Inside the loop, output the retry message and input a replacement Password.</li><li>Output Access granted only after the WHILE condition becomes false.</li></ul></div>
+            </figure>
           </div>
         </section>
 
-        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
-          <article class="why-card">
-            <h3>Why this matters</h3>
-            <p>Exam answers need consequences: privacy loss, misuse, discrimination, reduced trust, or improved safety with safeguards.</p>
-          </article>
-          <article class="trap-card">
-            <h3>Common error</h3>
-            <p>Do not write "data protection means encrypt everything" only. Protection also includes consent, limits, access control, retention and accountability.</p>
-          </article>
+        <section class="v2-panel" id="practice">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 3 | select by learner need</p><h2>Practice by question type</h2></div>
+          <div class="v2-question-list"><article class="v2-question" data-question-id="Q-L074-01" data-semantic-fingerprint="S11.04|count-controlled-iteration|apply|keyword-closes-loop|written|recall">
+              <div class="v2-question-head"><span class="v2-badge">apply</span><span class="v2-badge">recall</span><span class="v2-badge difficulty">foundation</span><span class="v2-badge">2 marks</span></div>
+              <p><strong>Question 1.</strong> Which keyword closes the count-controlled loop?</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> NEXT followed by the counter name.</p><p><strong>Marking guidance:</strong> Award one mark for each distinct, technically accurate point or method step.</p><p><strong>Common error:</strong> For the command word apply, perform that exact action; do not replace it with an unrelated fact.</p></div></details>
+            </article><article class="v2-question" data-question-id="Q-L074-02" data-semantic-fingerprint="S11.04|count-controlled-iteration|state|precise-facts-about|written|recall">
+              <div class="v2-question-head"><span class="v2-badge">state</span><span class="v2-badge">recall</span><span class="v2-badge difficulty">application</span><span class="v2-badge">2 marks</span></div>
+              <p><strong>Question 2.</strong> State two precise facts about count-controlled iteration.</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> Use IF statements, including the ELSE clause and nested IF statements; CASE statements; count-controlled loops; post-condition loops; and pre-condition loops. Use IF...THEN...ELSE...ENDIF when a Boolean condition selects between paths. An ELSE clause supplies the false path. In nested IF statements, every inner and outer IF must be closed and the indentation must show which ELSE belongs to which IF.</p><p><strong>Marking guidance:</strong> Award one mark for each distinct fact; do not credit a repeated point.</p><p><strong>Common error:</strong> Do not repeat the same point in different words; each mark needs a separate idea or method step.</p></div></details>
+            </article><article class="v2-question" data-question-id="Q-L074-03" data-semantic-fingerprint="S11.04|count-controlled-iteration|explain|would-applied-suitable-computing|visual|explain">
+              <div class="v2-question-head"><span class="v2-badge">explain</span><span class="v2-badge">explain</span><span class="v2-badge difficulty">transfer</span><span class="v2-badge">3 marks</span></div>
+              <p><strong>Question 3.</strong> Explain how count-controlled iteration would be applied in a suitable computing context.</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> Use IF...THEN...ELSE...ENDIF when a Boolean condition selects between paths. An ELSE clause supplies the false path. In nested IF statements, every inner and outer IF must be closed and the indentation must show which ELSE belongs to which IF. Use CASE...OF...OTHERWISE...ENDCASE when one expression is compared with several discrete values. CASE is not a replacement for range or compound-condition decisions unless the stated values cover the requirement correctly. A count-controlled loop uses FOR...TO...NEXT when the repetition count or inclusive counter range is known before the loop starts. The counter, start value and end value define the iterations; NEXT closes the loop.</p><p><strong>Marking guidance:</strong> Each mark needs a relevant point linked to the stated context.</p><p><strong>Common error:</strong> Do not copy the worked example unchanged; transfer the method and check it against the new context.</p></div></details>
+            </article></div>
+          <div class="v2-paper-refs">
+          <h3>Related past-paper indexes</h3>
+          <table><thead><tr><th>Reference</th><th>Marks</th><th>Command word</th><th>Question type</th></tr></thead>
+          <tbody><tr><td>9618/22/W/25 Q1(a)</td><td>4</td><td>complete</td><td>recall</td></tr><tr><td>9618/23/W/24 Q1(a)</td><td>4</td><td>complete</td><td>recall</td></tr><tr><td>9618/22/W/24 Q5(c)</td><td>2</td><td>construct</td><td>diagram</td></tr></tbody></table>
+          <p class="v2-copyright-note">Index only: Cambridge question and mark-scheme wording is not reproduced on this public course page.</p>
+        </div>
         </section>
 
-        <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
-          <div class="section-title">
-            <p class="eyebrow">Warm-up hook</p>
-            <h2>A fitness app asks for step count, heart rate, location, contacts and microphone access. Which request is most suspicious for its stated purpose?</h2>
-            <p>The app counting your steps probably does not need to hear your lunch plans.</p>
-          </div>
-          <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="microphone">Microphone access, because it is not clearly needed for fitness tracking</button>
-            <button class="choice-card" type="button" data-hook="steps">Step count, because fitness apps should not collect any data</button>
-            <button class="choice-card" type="button" data-hook="heart">Heart rate, because all health data is useless</button>
-            <button class="choice-card" type="button" data-hook="contacts">Contacts, because friends may also enjoy exercise</button>
-          </div>
-          <div class="feedback" id="hookFeedback" aria-live="polite">
-            Choose one. Look for purpose limitation and data minimisation.
-          </div>
+        <section class="v2-panel" id="summary">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 4 | close when ready</p><h2>Summary and exam reminders</h2></div>
+          <div class="v2-summary-grid"><div><h3>Summary</h3><ul class="v2-summary-list"><li>Define count-controlled iteration with the exact technical vocabulary expected by the syllabus.</li><li>Use the lesson method on a fresh context and show the intermediate decision, representation or calculation.</li><li>Match the shape of the answer to the command word and the available marks.</li><li>Check the final answer against the scenario instead of repeating a memorised sentence.</li></ul></div><div class="v2-error"><h3>Common error to correct</h3><p>Students often think working Java automatically means good pseudocode. Correction: Paper 2 rewards clear Cambridge-style algorithm expression.</p></div></div>
+          <div class="v2-tip-box"><h3>Exam technique</h3><ul><li>Follow the command word: state gives a fact; explain links a cause to a consequence; compare covers both sides.</li><li>Match the number of independent points or method steps to the available marks.</li><li>For count-controlled iteration, use the exact technical term before applying it to the scenario.</li></ul></div>
         </section>
 
-        <section class="panel" id="privacy" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="privacy">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 1</p>
-            <h2>Privacy is control over personal information</h2>
-          </div>
-          <div class="concept-grid">
-            <article><strong>Privacy</strong><span>The ability to control how personal information is collected, used and shared.</span></article>
-            <article><strong>Personal data</strong><span>Data that can identify a person directly or indirectly.</span></article>
-            <article><strong>Sensitive data</strong><span>Data that could cause greater harm if misused, such as health, biometric or location data.</span></article>
-            <article><strong>Consent</strong><span>A clear agreement to a specific use of data, based on understandable information.</span></article>
-          </div>
-          <div class="callout">Chinese support: privacy = 隐私；personal data = 个人数据；sensitive data = 敏感数据；consent = 同意/授权。</div>
-        </section>
-
-        <!-- stage10-explanation:start privacy -->
-        <section class="panel explanation-panel" id="explanation-privacy" data-explains="privacy" data-explanation-kind="mechanism" aria-labelledby="explanation-privacy-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="privacy">
-          <h2 class="explanation-sr-only" id="explanation-privacy-title">Privacy is control over personal information</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-074-privacy.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Privacy is control over personal information with a structured visual model." />
-            <figcaption class="explanation-sr-only">Privacy is control over personal information: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Privacy The ability to control how personal information is collected, used and shared.</li><li><strong>Lesson fact:</strong> Personal data Data that can identify a person directly or indirectly.</li><li><strong>Lesson fact:</strong> Sensitive data Data that could cause greater harm if misused, such as health, biometric or location data.</li><li><strong>Lesson fact:</strong> Consent A clear agreement to a specific use of data, based on understandable information.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end privacy -->
-        <section class="panel" id="surveillance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="surveillance">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 2</p>
-            <h2>Surveillance can protect people, but it changes behaviour and trust</h2>
-          </div>
-          <div class="risk-table" role="table" aria-label="Surveillance trade-offs">
-            <div class="table-row table-head" role="row">
-              <div role="columnheader">Monitoring example</div>
-              <div role="columnheader">Possible benefit</div>
-              <div role="columnheader">Privacy concern</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">CCTV with analytics</div>
-              <div role="cell">Deter crime and support emergency response.</div>
-              <div role="cell">May track people who have done nothing wrong.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">School device monitoring</div>
-              <div role="cell">Detect unsafe websites, bullying or misuse.</div>
-              <div role="cell">May record personal activity if scope is unclear.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Workplace productivity tracking</div>
-              <div role="cell">Identify workload issues and bottlenecks.</div>
-              <div role="cell">May create pressure and reduce trust.</div>
-            </div>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start surveillance -->
-        <section class="panel explanation-panel" id="explanation-surveillance" data-explains="surveillance" data-explanation-kind="mechanism" aria-labelledby="explanation-surveillance-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="surveillance">
-          <h2 class="explanation-sr-only" id="explanation-surveillance-title">Surveillance can protect people, but it changes behaviour and trust</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-074-surveillance.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Surveillance can protect people, but it changes behaviour and trust with a structured visual model." />
-            <figcaption class="explanation-sr-only">Surveillance can protect people, but it changes behaviour and trust: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Monitoring example</li><li><strong>Lesson fact:</strong> Possible benefit</li><li><strong>Lesson fact:</strong> Privacy concern</li><li><strong>Lesson fact:</strong> CCTV with analytics</li><li><strong>Lesson fact:</strong> Deter crime and support emergency response.</li><li><strong>Lesson fact:</strong> May track people who have done nothing wrong.</li><li><strong>Lesson fact:</strong> School device monitoring</li><li><strong>Lesson fact:</strong> Detect unsafe websites, bullying or misuse.</li><li><strong>Lesson fact:</strong> May record personal activity if scope is unclear.</li><li><strong>Lesson fact:</strong> Workplace productivity tracking</li><li><strong>Lesson fact:</strong> Identify workload issues and bottlenecks.</li><li><strong>Lesson fact:</strong> May create pressure and reduce trust.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end surveillance -->
-        <section class="panel" id="protection" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="protection">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 3</p>
-            <h2>Data protection reduces misuse and unnecessary exposure</h2>
-          </div>
-          <div class="concept-grid">
-            <article><strong>Data minimisation</strong><span>Collect only what is necessary for the stated purpose.</span></article>
-            <article><strong>Purpose limitation</strong><span>Use data only for the purpose users were told about.</span></article>
-            <article><strong>Access control</strong><span>Limit who can view, edit or export personal data.</span></article>
-            <article><strong>Retention limit</strong><span>Delete data when it is no longer needed.</span></article>
-            <article><strong>Transparency</strong><span>Explain what data is collected, why and how it is used.</span></article>
-            <article><strong>Security</strong><span>Protect data using measures such as encryption, authentication and audit trails.</span></article>
-            <article><strong>Accuracy</strong><span>Keep personal data correct and allow errors to be corrected.</span></article>
-            <article><strong>Accountability</strong><span>Record and justify processing decisions so misuse can be investigated.</span></article>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start protection -->
-        <section class="panel explanation-panel" id="explanation-protection" data-explains="protection" data-explanation-kind="mechanism" aria-labelledby="explanation-protection-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="protection">
-          <h2 class="explanation-sr-only" id="explanation-protection-title">Data protection reduces misuse and unnecessary exposure</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-074-protection.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Data protection reduces misuse and unnecessary exposure with a structured visual model." />
-            <figcaption class="explanation-sr-only">Data protection reduces misuse and unnecessary exposure: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Data minimisation Collect only what is necessary for the stated purpose.</li><li><strong>Lesson fact:</strong> Purpose limitation Use data only for the purpose users were told about.</li><li><strong>Lesson fact:</strong> Access control Limit who can view, edit or export personal data.</li><li><strong>Lesson fact:</strong> Retention limit Delete data when it is no longer needed.</li><li><strong>Lesson fact:</strong> Transparency Explain what data is collected, why and how it is used.</li><li><strong>Lesson fact:</strong> Security Protect data using measures such as encryption, authentication and audit trails.</li><li><strong>Lesson fact:</strong> Accuracy Keep personal data correct and allow errors to be corrected.</li><li><strong>Lesson fact:</strong> Accountability Record and justify processing decisions so misuse can be investigated.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end protection -->
-        <section class="panel" id="principles" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="principles">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 4</p>
-            <h2>Good answers link a principle to a concrete risk</h2>
-          </div>
-          <div class="comparison-table" role="table" aria-label="Data protection principles">
-            <div class="table-row table-head" role="row">
-              <div role="columnheader">Principle</div>
-              <div role="columnheader">Plain English</div>
-              <div role="columnheader">Scenario use</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Fair and lawful use</div>
-              <div role="cell">Do not mislead users or use data in unexpected harmful ways.</div>
-              <div role="cell">A health app should not secretly sell location patterns.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Data minimisation</div>
-              <div role="cell">Collect less when less is enough.</div>
-              <div role="cell">A step counter may not need contacts or microphone access.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Retention</div>
-              <div role="cell">Do not keep personal data forever by default.</div>
-              <div role="cell">CCTV footage should be deleted after a defined period unless needed.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Access and security</div>
-              <div role="cell">Only authorised people should access protected data.</div>
-              <div role="cell">School monitoring logs should be restricted to safeguarding staff.</div>
-            </div>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start principles -->
-        <section class="panel explanation-panel" id="explanation-principles" data-explains="principles" data-explanation-kind="mechanism" aria-labelledby="explanation-principles-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="principles">
-          <h2 class="explanation-sr-only" id="explanation-principles-title">Good answers link a principle to a concrete risk</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-074-principles.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Good answers link a principle to a concrete risk with a structured visual model." />
-            <figcaption class="explanation-sr-only">Good answers link a principle to a concrete risk: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Principle</li><li><strong>Lesson fact:</strong> Plain English</li><li><strong>Lesson fact:</strong> Scenario use</li><li><strong>Lesson fact:</strong> Fair and lawful use</li><li><strong>Lesson fact:</strong> Do not mislead users or use data in unexpected harmful ways.</li><li><strong>Lesson fact:</strong> A health app should not secretly sell location patterns.</li><li><strong>Lesson fact:</strong> Data minimisation</li><li><strong>Lesson fact:</strong> Collect less when less is enough.</li><li><strong>Lesson fact:</strong> A step counter may not need contacts or microphone access.</li><li><strong>Lesson fact:</strong> Retention</li><li><strong>Lesson fact:</strong> Do not keep personal data forever by default.</li><li><strong>Lesson fact:</strong> CCTV footage should be deleted after a defined period unless needed.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end principles -->
-        <section class="panel" id="method" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="method">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 5</p>
-            <h2>Use a privacy impact answer structure</h2>
-          </div>
-          <div class="flow-grid">
-            <article><strong>1. Data</strong><span>Name the personal or sensitive data being collected.</span></article>
-            <article><strong>2. Purpose</strong><span>Explain why the organisation claims it is needed.</span></article>
-            <article><strong>3. Risk</strong><span>Describe misuse, over-collection, surveillance or unfair effect.</span></article>
-            <article><strong>4. Safeguard</strong><span>Recommend a specific protection and link it to the risk.</span></article>
-          </div>
-          <div class="answer-frame">
-            <strong>Answer frame:</strong>
-            <span>The system collects [data] for [purpose]. This may affect privacy because [risk]. A suitable safeguard is [control], which reduces the risk by [mechanism].</span>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start method -->
-        <section class="panel explanation-panel" id="explanation-method" data-explains="method" data-explanation-kind="mechanism" aria-labelledby="explanation-method-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="method">
-          <h2 class="explanation-sr-only" id="explanation-method-title">Use a privacy impact answer structure</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-074-method.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Use a privacy impact answer structure with a structured visual model." />
-            <figcaption class="explanation-sr-only">Use a privacy impact answer structure: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> 1. Data Name the personal or sensitive data being collected.</li><li><strong>Lesson fact:</strong> 2. Purpose Explain why the organisation claims it is needed.</li><li><strong>Lesson fact:</strong> 3. Risk Describe misuse, over-collection, surveillance or unfair effect.</li><li><strong>Lesson fact:</strong> 4. Safeguard Recommend a specific protection and link it to the risk.</li><li><strong>Lesson fact:</strong> Answer frame:</li><li><strong>Lesson fact:</strong> The system collects [data] for [purpose]. This may affect privacy because [risk]. A suitable safeguard is [control], which reduces the risk by [mechanism].</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end method -->
-        <section class="panel" id="scanner" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="scanner">
-          <div class="section-title">
-            <p class="eyebrow">Interactive privacy scanner</p>
-            <h2>Find the privacy risk in a data collection scenario</h2>
-            <p>Select a scenario and compare data collected, risk and safeguard.</p>
-          </div>
-          <div class="converter-grid">
-            <label>
-              Scenario
-              <select id="scenarioInput">
-                <option value="fitness">Fitness app asks for microphone and contacts.</option>
-                <option value="school">School monitors all browsing on student devices.</option>
-                <option value="cctv">City uses CCTV analytics in public spaces.</option>
-                <option value="workplace">Employer tracks every keystroke and screenshot.</option>
-                <option value="shop">Shop uses facial recognition for theft prevention.</option>
-              </select>
-            </label>
-            <button class="primary-button" type="button" id="scanBtn">Scan risk</button>
-          </div>
-          <div class="result-box" id="scanResult" aria-live="polite"></div>
-          <div class="method-box" id="scanRisk"></div>
-          <div class="reject-box" id="scanSafeguard"></div>
-        </section>
-
-        <!-- stage10-explanation:start scanner -->
-        <section class="panel explanation-panel" id="explanation-scanner" data-explains="scanner" data-explanation-kind="mechanism" aria-labelledby="explanation-scanner-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="scanner">
-          <h2 class="explanation-sr-only" id="explanation-scanner-title">Find the privacy risk in a data collection scenario</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-074-scanner.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Find the privacy risk in a data collection scenario with a structured visual model." />
-            <figcaption class="explanation-sr-only">Find the privacy risk in a data collection scenario: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Interactive privacy scanner</li><li><strong>Lesson fact:</strong> Select a scenario and compare data collected, risk and safeguard.</li><li><strong>Lesson fact:</strong> Scenario</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end scanner -->
-        <section class="panel" id="checklist" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="checklist">
-          <div class="section-title">
-            <p class="eyebrow">Interactive data protection checklist</p>
-            <h2>Choose a weak policy and see what is missing</h2>
-          </div>
-          <div class="converter-grid">
-            <label>
-              Weak policy
-              <select id="policyInput">
-                <option value="forever">Keep all user logs forever because storage is cheap.</option>
-                <option value="everyone">Allow all staff to download full customer records.</option>
-                <option value="hidden">Collect location data without mentioning it in the app.</option>
-                <option value="extra">Collect contacts for a single-player fitness challenge.</option>
-              </select>
-            </label>
-            <button class="primary-button" type="button" id="policyBtn">Check principle</button>
-          </div>
-          <div class="result-box" id="policyResult" aria-live="polite"></div>
-          <div class="method-box" id="policyReason"></div>
-        </section>
-
-        <!-- stage10-explanation:start checklist -->
-        <section class="panel explanation-panel" id="explanation-checklist" data-explains="checklist" data-explanation-kind="mechanism" aria-labelledby="explanation-checklist-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="checklist">
-          <h2 class="explanation-sr-only" id="explanation-checklist-title">Choose a weak policy and see what is missing</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-074-checklist.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Choose a weak policy and see what is missing with a structured visual model." />
-            <figcaption class="explanation-sr-only">Choose a weak policy and see what is missing: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Interactive data protection checklist</li><li><strong>Lesson fact:</strong> Weak policy</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end checklist -->
-        <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
-          <div class="section-title">
-            <p class="eyebrow">Worked examples</p>
-            <h2>Four model answers with privacy impact reasoning</h2>
-          </div>
-          <div class="example-tabs" role="tablist" aria-label="Worked examples">
-            <button class="tab active" type="button" data-example="fitness">Fitness app</button>
-            <button class="tab" type="button" data-example="school">School monitoring</button>
-            <button class="tab" type="button" data-example="city">Public CCTV</button>
-            <button class="tab" type="button" data-example="workplace">Workplace tracking</button>
-          </div>
-          <div class="example-box" id="exampleBox" aria-live="polite"></div>
-        </section>
-
-        <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
-          <div class="section-title">
-            <p class="eyebrow">Practice with instant checking</p>
-            <h2>Check the vocabulary before writing full explanations</h2>
-          </div>
-          <div class="practice-list" id="practiceList"></div>
-        </section>
-
-        <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
-          <div class="section-title">
-            <p class="eyebrow">Mistake debugging</p>
-            <h2>Fix privacy answers that are too vague or too absolute</h2>
-          </div>
-          <div class="mistake-grid" id="mistakeGrid"></div>
-        </section>
-
-        <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
-          <div class="section-title">
-            <p class="eyebrow">Exam-style questions</p>
-            <h2>Cambridge-style privacy and data protection questions with expandable MS</h2>
-            <p>Attempt first. Then open the mark scheme and check whether your answer links data, purpose, risk and safeguard.</p>
-          </div>
-          <div class="exam-list" id="examList"></div>
-        </section>
-
-        <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
-          <div class="section-title">
-            <p class="eyebrow">Summary</p>
-            <h2>Privacy and data protection in six exam-ready ideas</h2>
-          </div>
-          <div class="summary-grid">
-            <div><strong>Privacy</strong><span>People should have control over personal information.</span></div>
-            <div><strong>Surveillance</strong><span>Monitoring can protect people but may reduce privacy and trust.</span></div>
-            <div><strong>Minimisation</strong><span>Collect only what is necessary for a clear purpose.</span></div>
-            <div><strong>Transparency</strong><span>Tell users what is collected, why and how it is used.</span></div>
-            <div><strong>Retention</strong><span>Do not keep personal data longer than needed.</span></div>
-            <div><strong>Safeguards</strong><span>Use access control, encryption, audit trails and accountability.</span></div>
-          </div>
-        </section>
-
-        <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
-          <div class="section-title">
-            <p class="eyebrow">Homework</p>
-            <h2>Practise privacy impact analysis</h2>
-          </div>
-          <div class="homework-list">
-            <article>
-              <strong>Task 1: Data audit table</strong>
-              <span>Choose one app or school system. Make a table with columns: data collected, purpose, privacy risk, protection, retention period.</span>
-            </article>
-            <article>
-              <strong>Task 2: Rewrite a weak answer</strong>
-              <span>Rewrite: "The app should not collect data because privacy." Add the exact data, purpose, stakeholder, risk and one safeguard.</span>
-            </article>
-            <article>
-              <strong>Task 3: Timed response</strong>
-              <span>Answer in 8 minutes: "Evaluate the use of monitoring software in a school." Include one benefit, one privacy concern and two safeguards.</span>
-            </article>
-          </div>
-        </section>
+        <nav class="v2-bottom-nav" aria-label="Previous and next lesson"><a href="../lesson-073/" >Previous lesson</a><a href="../lesson-075/" >Next lesson</a></nav>
       </div>
     </main>
-
-    <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=3"></script>
-    <script src="../lesson-toolbar.js?v=3"></script>
-    <script src="../stage7-accessibility.js?v=4"></script>
+    <script src="../course-v2.js?v=1"></script>
   </body>
 </html>

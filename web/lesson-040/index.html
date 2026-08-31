@@ -3,322 +3,89 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 040 | Environmental and reliability considerations in hardware</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <title>AS9618 Lesson 040 | Entity-relationship design and normalisation</title>
     <link rel="icon" href="data:" />
-    <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
+    <link rel="stylesheet" href="../course-v2.css?v=3" />
   </head>
-  <body>
+  <body data-course-version="2" data-lesson-id="040" data-syllabus-ids="S8.03,S8.04">
     <a class="skip-link" href="#main-content">Skip to main content</a>
-    <header class="topbar">
-      <div>
-        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 3</p>
-        <h1>Environmental and reliability considerations in hardware</h1>
-      </div>
-      <div class="action-panel" aria-label="Page controls">
-        <a class="course-home-link" href="../">Course home</a>
-        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
-      </div>
+    <header class="v2-topbar">
+      <div><p class="v2-eyebrow">Cambridge AS9618 | Paper 1 | Section 8: Databases</p><h1>Entity-relationship design and normalisation</h1></div>
+      <nav class="v2-actions" aria-label="Lesson actions"><a href="../">Course home</a><a href="../assessments/">Assessment bank</a><button type="button" id="printLesson">Print</button></nav>
     </header>
+    <main class="v2-shell" id="main-content" tabindex="-1">
+      <nav class="v2-toc" aria-label="Lesson contents"><strong>Lesson 040</strong><a href="#overview">Overview</a><a href="#prerequisite">Prerequisite</a><a href="#explanation">Explanation</a><a href="#practice">Practice</a><a href="#summary">Summary</a></nav>
+      <div class="v2-content">
+        <section class="v2-hero" id="overview">
+          <div><p class="v2-eyebrow">Flexible-depth lesson</p><h2>Entity-relationship design and normalisation</h2><p>S8.03, S8.04 | Select what to omit, teach briefly or explore in depth.</p></div>
+          <div class="v2-time-grid" aria-label="Available lesson depth"><div><strong>Quick</strong><span>diagnose + essentials</span></div><div><strong>Full</strong><span>complete explanation</span></div><div><strong>Deep</strong><span>prerequisites + extension</span></div><div><strong>Choose</strong><span>practice by need</span></div></div>
+        </section>
 
-    <main class="layout" id="main-content" tabindex="-1">
-      <aside class="lesson-nav" aria-label="Lesson navigation">
-        <a href="#overview">Overview</a>
-        <a href="#hook">Warm-up</a>
-        <a href="#environment">Environment</a>
-        <a href="#reliability">Reliability</a>
-        <a href="#mitigation">Mitigation</a>
-        <a href="#tool">Risk tool</a>
-        <a href="#examples">Examples</a>
-        <a href="#practice">Practice</a>
-        <a href="#debug">Debugging</a>
-        <a href="#exam">Exam-style</a>
-        <a href="#homework">Homework</a>
-      </aside>
+        <section class="v2-panel v2-route-menu" aria-labelledby="route-heading">
+          <div class="v2-heading"><p class="v2-eyebrow">Teacher choice</p><h2 id="route-heading">Choose the depth for this group</h2></div>
+          <div class="v2-route-grid"><article><h3>Quick route</h3><p>Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.</p></article><article><h3>Full route</h3><p>Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.</p></article><article><h3>Deep route</h3><p>Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.</p></article></div>
+        </section>
 
-      <div class="lesson-content">
-        <section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
-          <div class="hero-copy">
-            <p class="lesson-meta">Lesson 040 | 45 minutes | Paper 1 Section 3</p>
-            <h2>Environmental conditions and power faults can reduce hardware reliability.</h2>
-            <p>
-              This lesson focuses on environmental and reliability considerations
-              when selecting hardware. You will identify risks, choose protective
-              measures, and explain how reliability affects a user's task.
-            </p>
-            <div class="objective-grid" aria-label="Learning objectives">
-              <div><strong>Identify</strong><span>environmental risks such as heat, moisture, dust and shock</span></div>
-              <div><strong>Explain</strong><span>reliability ideas such as redundancy, backup, maintenance and availability</span></div>
-              <div><strong>Justify</strong><span>hardware protection using risk, mitigation and consequence</span></div>
+        <section class="v2-panel" id="prerequisite">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 1 | optional depth</p><h2>Prerequisite knowledge and quick diagnostic</h2></div>
+          <div class="v2-diagnostic"><p>Recall S8.02 before starting this lesson.</p></div>
+          <p>Give one accurate definition or method step before continuing. If it is missing, revisit only that prerequisite.</p>
+          <details class="v2-prerequisite-detail"><summary>Open optional prerequisite refresher</summary><ul><li>Version 2 explicitly names entity, table, record, field, tuple, attribute, primary key, candidate key, secondary key, foreign key, one-to-one, one-to-many, many-to-many, referential integrity and indexing. Secondary key is retained as a distinct retrieval term, not an alias for an alternate candidate key.</li><li>Understand entity/table, record/tuple, field/attribute, primary/candidate/secondary/foreign key, relationships, referential integrity and indexing.</li></ul></details>
+        </section>
+
+        <section class="v2-panel" id="explanation">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 2 | deliberately over-complete</p><h2>Knowledge explanation</h2></div>
+          <h3>Learning objectives</h3><ul class="v2-objectives"><li>Produce and interpret entity-relationship diagrams.</li><li>Understand 1NF, 2NF and 3NF; explain 3NF and produce a normalised design.</li></ul>
+          <details class="v2-concept-menu"><summary>Open the concept checklist and choose what to teach</summary><ul><li>entity-relationship</li><li>diagram</li><li>3NF</li><li>normalised / normalized</li><li>design</li></ul></details>
+          <div class="v2-explanation-grid">
+            <div>
+              <article class="v2-core-facts"><h3>Detailed explanation</h3><p class="v2-teacher-note">Teach all points, or select only the ones this group needs. The list is intentionally fuller than a fixed lesson slot.</p><ul class="v2-facts"><li>Version 2 requires candidates to use an entity-relationship diagram to document a database design. Evidence must include entities, relationships and cardinality, not merely define entity and attribute.</li><li>Version 2 names First, Second and Third Normal Form and separately requires candidates to explain whether given tables are in 3NF and to produce a normalised design from a description, data or tables.</li><li>An entity-relationship (E-R) diagram documents a database design by showing the entities, their relevant attributes or keys, the relationships between entities and the relationship cardinality. Entity names should describe things about which the system stores multiple facts; attributes belong to the entity they describe.</li><li>To produce an E-R diagram, extract entity candidates from the scenario, assign identifiers, connect only supported relationships and label cardinality as one-to-one, one-to-many or many-to-many. Resolve a many-to-many relationship with a linking entity when converting the design to relational tables. A diagram must preserve the stated business rules rather than inventing links from similar field names.</li><li>1NF requires atomic values and no repeating groups. 2NF is 1NF with every non-key attribute dependent on the whole primary key, removing partial dependencies. 3NF is 2NF with no non-key attribute dependent on another non-key attribute, removing transitive dependencies.</li><li>Normalisation decomposes tables while preserving keys and relationships. A normalised 3NF design stores each fact once in the table identified by its determinant, reducing insertion, update and deletion anomalies.</li><li>A file-based approach can repeat facts in separate files, create inconsistent copies and isolate related data. A Database Management System (DBMS) addresses these file-based limitations by providing data management, including a data dictionary of metadata; data modelling; a logical schema; data integrity; and data security. Security includes backup procedures and access rights assigned to individual users or groups.</li><li>A developer interface provides tools used to define structures and build database applications, forms or reports. A query processor interprets and checks a query, chooses how to carry it out, accesses the stored data and returns or modifies the specified records while the DBMS applies access and integrity rules.</li><li>Relational databases address file-based duplication, inconsistency, isolation and access problems through related tables, keys, constraints and managed queries.</li><li>Database design review: connect each file-based limitation to a relational or DBMS mechanism; use entity/table, record/tuple and field/attribute precisely; distinguish candidate, primary, secondary and foreign keys; classify one-to-one, one-to-many and many-to-many relationships; apply referential integrity and indexing; document the design with an E-R diagram; and explain or produce 1NF, 2NF and 3NF designs.</li><li>DBMS and SQL review: identify data management/data dictionary, data modelling, logical schema, integrity, security/backup/access rights, developer interface and query processor. Distinguish DDL structure commands from DML query/maintenance commands, use every required data type and key clause, and keep SELECT queries to at most two tables with explicit INNER JOIN ... ON when two tables are needed.</li><li>A complete answer follows the scenario through design, statement and result. It does not claim that a primary key prevents every duplicate fact, that a secondary key must be unique, that normalisation guarantees correctness, or that a three-table/comma-style query is within the AS core boundary.</li></ul></article>
+              <article class="v2-example"><h3>Worked example</h3><p>Design and query a library database: Separate Student and Loan tables, identify StudentID as primary key in Student and foreign key in Loan, state the one-to-many relationship and referential-integrity rule, then write SELECT Student.StudentName, Loan.DueDate FROM Student INNER JOIN Loan ON Student.StudentID = Loan.StudentID WHERE Loan.Returned = FALSE; using exactly two tables.</p></article>
+              <aside class="v2-extension"><h3>Beyond syllabus / 延伸知识（不要求背诵）</h3><p>production databases also manage transactions and concurrent users; these ideas extend the syllabus model of integrity and access control.</p></aside>
             </div>
-          </div>
-          <div class="hardware-card" aria-label="Risk mitigation formula">
-            <span>risk -> mitigation -> consequence</span>
-            <p>"It is durable" is a start. "It is sealed, so dust cannot damage outdoor sensors" is an answer.</p>
-          </div>
-        </section>
-
-        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
-          <article class="why-card">
-            <h3>Why this matters</h3>
-            <p>Cambridge-style questions reward context. The same device can be suitable in an office and unsuitable on a windy roof in winter.</p>
-          </article>
-          <article class="trap-card">
-            <h3>Common error</h3>
-            <p>Reliability is not just "good quality". It is the chance the system continues to work correctly when it is needed.</p>
-          </article>
-        </section>
-
-        <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
-          <div class="section-title">
-            <p class="eyebrow">Warm-up hook</p>
-            <h2>A sensor works perfectly on a desk. Then it is placed outside in rain, dust and heat. What changed?</h2>
-            <p>Click the best first explanation. The sensor did not suddenly become lazy; its environment changed.</p>
-          </div>
-          <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="env">Environmental conditions can damage or disrupt hardware</button>
-            <button class="choice-card" type="button" data-hook="speed">The CPU must automatically run faster outside</button>
-            <button class="choice-card" type="button" data-hook="storage">More storage always fixes outdoor failure</button>
-            <button class="choice-card" type="button" data-hook="software">Only software matters once hardware is installed</button>
-          </div>
-          <div class="feedback" id="hookFeedback" aria-live="polite">
-            Think about heat, water, dust, vibration, power and maintenance access.
+            <figure class="v2-visual">
+              <img src="../assets/diagrams/stage10-infographics/stage10-lesson-084-normal-forms.jpg" alt="First Normal Form (1NF) requires atomic values and no repeating groups.. Second Normal Form (2NF) is in 1NF and removes partial dependency: each non-key attribute depends on the whole primary key.. Third Normal Form (3NF) is in 2NF and removes transitive dependency: a non-key attribute must not depend on another non-key attribute.. A valid decomposition retains every original fact, preserves keys and relationships, and follows the stated functional dependencies." loading="lazy" />
+              <figcaption>How normal forms remove dependency problems. One maintained explanation is shown as an image on larger screens and as text on small screens.</figcaption>
+              <div class="v2-mobile-visual-text" aria-label="Mobile text alternative"><ul><li>First Normal Form (1NF) requires atomic values and no repeating groups.</li><li>Second Normal Form (2NF) is in 1NF and removes partial dependency: each non-key attribute depends on the whole primary key.</li><li>Third Normal Form (3NF) is in 2NF and removes transitive dependency: a non-key attribute must not depend on another non-key attribute.</li><li>A valid decomposition retains every original fact, preserves keys and relationships, and follows the stated functional dependencies.</li></ul></div>
+            </figure>
           </div>
         </section>
 
-        <section class="panel" id="environment" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="environment">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 1</p>
-            <h2>Environmental factors change hardware suitability</h2>
-          </div>
-          <div class="risk-table" role="table" aria-label="Environmental risks">
-            <div class="table-row table-head" role="row">
-              <div role="columnheader">Factor</div>
-              <div role="columnheader">Possible effect</div>
-              <div role="columnheader">Suitable protection</div>
-              <div role="columnheader">Exam warning</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Temperature</div>
-              <div role="cell">Overheating can slow, shut down or damage components.</div>
-              <div role="cell">Cooling, heat sinks, ventilation, temperature-rated hardware</div>
-              <div role="cell">Do not just say "fast"; explain heat tolerance or cooling.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Moisture / water</div>
-              <div role="cell">Corrosion or short circuits can stop the system working.</div>
-              <div role="cell">Sealed casing, waterproof enclosure, humidity control</div>
-              <div role="cell">Name what water does to reliability.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Dust / dirt</div>
-              <div role="cell">Dust can block cooling or interfere with moving parts and sensors.</div>
-              <div role="cell">Dust filters, sealed enclosure, regular cleaning</div>
-              <div role="cell">Dust is not only untidy; it changes cooling and accuracy.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Shock / vibration</div>
-              <div role="cell">Movement can damage drives, connectors or screens.</div>
-              <div role="cell">Rugged casing, SSD, shock mounting</div>
-              <div role="cell">Link mobile use to physical impact.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Power instability</div>
-              <div role="cell">Power loss can corrupt data or interrupt service.</div>
-              <div role="cell">UPS, surge protection, battery backup</div>
-              <div role="cell">Explain continuity, not just "more power".</div>
-            </div>
-          </div>
-          <div class="callout">Chinese support: environmental factor = 环境因素；corrosion = 腐蚀；surge protection = 浪涌保护；rugged = 加固型。</div>
+        <section class="v2-panel" id="practice">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 3 | select by learner need</p><h2>Practice by question type</h2></div>
+          <div class="v2-question-list"><article class="v2-question" data-question-id="Q-L040-01" data-semantic-fingerprint="S8.03+S8.04|entity-relationship-design-and-normalisation|write|clinic-stores-patients-doctors|visual|recall">
+              <div class="v2-question-head"><span class="v2-badge">write</span><span class="v2-badge">recall</span><span class="v2-badge difficulty">foundation</span><span class="v2-badge">8 marks</span></div>
+              <p><strong>Question 1.</strong> A clinic stores Patients, Doctors and Appointments. Write an E-R design in words or a labelled diagram and state the two relationship cardinalities. Explain why CUSTOMER(CustomerID, Postcode, Town) may not be in 3NF when each postcode determines one town, and give a 3NF design. A school is introducing a relational DBMS. Explain four DBMS features and the distinct purposes of the developer interface and query processor.</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> identifies Patient, Doctor and Appointment as entities; gives a suitable identifier/key for each entity; Patient has a one-to-many relationship with Appointment; Doctor has a one-to-many relationship with Appointment; Appointment carries the linking foreign keys / resolves the patient-doctor many-to-many history; attributes and relationship directions are consistent with the scenario; CustomerID determines Postcode and Postcode determines Town; Town is transitively dependent on CustomerID / depends on non-key Postcode; CUSTOMER(CustomerID, Postcode); POSTCODE(Postcode, Town), with Postcode linked as foreign key; data management/data dictionary stores metadata about structure; data modelling or logical schema represents the database design; integrity rules maintain valid and consistent data; security uses access rights and backup procedures; developer interface supports defining structures or building database applications/forms/reports; query processor interprets/checks and carries out queries or maintenance statements</p><p><strong>Marking guidance:</strong> Do not award a collection of unconnected entity boxes as a complete E-R design. Do not award decomposition marks unless primary/foreign-key linkage can reconstruct the relationship. Do not treat the database, data dictionary, developer interface and query processor as interchangeable names.</p><p><strong>Common error:</strong> For the command word write, perform that exact action; do not replace it with an unrelated fact.</p></div></details>
+            </article><article class="v2-question" data-question-id="Q-L040-02" data-semantic-fingerprint="S8.03+S8.04|entity-relationship-design-and-normalisation|explain|why-add-membership-between|written|explain">
+              <div class="v2-question-head"><span class="v2-badge">explain</span><span class="v2-badge">explain</span><span class="v2-badge difficulty">application</span><span class="v2-badge">2 marks</span></div>
+              <p><strong>Question 2.</strong> Why add Membership between Student and Club?</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> It resolves the many-to-many relationship into two one-to-many relationships.</p><p><strong>Marking guidance:</strong> Award one mark for each distinct, technically accurate point or method step.</p><p><strong>Common error:</strong> Do not repeat the same point in different words; each mark needs a separate idea or method step.</p></div></details>
+            </article><article class="v2-question" data-question-id="Q-L040-03" data-semantic-fingerprint="S8.03+S8.04|entity-relationship-design-and-normalisation|draw|why-matching-field-spelling|written|diagram">
+              <div class="v2-question-head"><span class="v2-badge">draw</span><span class="v2-badge">diagram</span><span class="v2-badge difficulty">transfer</span><span class="v2-badge">2 marks</span></div>
+              <p><strong>Question 3.</strong> Why is matching field spelling not enough to draw a relationship?</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> The scenario/business rule must state or imply that the records are associated.</p><p><strong>Marking guidance:</strong> Award one mark for each distinct, technically accurate point or method step.</p><p><strong>Common error:</strong> Do not copy the worked example unchanged; transfer the method and check it against the new context.</p></div></details>
+            </article></div>
+          <div class="v2-paper-refs">
+          <h3>Related past-paper indexes</h3>
+          <table><thead><tr><th>Reference</th><th>Marks</th><th>Command word</th><th>Question type</th></tr></thead>
+          <tbody><tr><td>9618/11/W/25 Q2(ii)</td><td>4</td><td>complete</td><td>recall</td></tr><tr><td>9618/13/W/25 Q5(a)</td><td>3</td><td>complete</td><td>recall</td></tr><tr><td>9618/11/W/25 Q2(a)</td><td>2</td><td>complete</td><td>recall</td></tr><tr><td>9618/11/W/25 Q2(b)</td><td>2</td><td>complete</td><td>recall</td></tr></tbody></table>
+          <p class="v2-copyright-note">Index only: Cambridge question and mark-scheme wording is not reproduced on this public course page.</p>
+        </div>
         </section>
 
-        <!-- stage10-explanation:start environment -->
-        <section class="panel explanation-panel" id="explanation-environment" data-explains="environment" data-explanation-kind="tradeoff" aria-labelledby="explanation-environment-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="environment">
-          <h2 class="explanation-sr-only" id="explanation-environment-title">Environmental factors change hardware suitability</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-040-environment.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Environmental factors change hardware suitability with a structured visual model." />
-            <figcaption class="explanation-sr-only">Environmental factors change hardware suitability: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Possible effect</li><li><strong>Lesson fact:</strong> Suitable protection</li><li><strong>Lesson fact:</strong> Exam warning</li><li><strong>Lesson fact:</strong> Temperature</li><li><strong>Lesson fact:</strong> Overheating can slow, shut down or damage components.</li><li><strong>Lesson fact:</strong> Cooling, heat sinks, ventilation, temperature-rated hardware</li><li><strong>Lesson fact:</strong> Do not just say &quot;fast&quot;; explain heat tolerance or cooling.</li><li><strong>Lesson fact:</strong> Moisture / water</li><li><strong>Lesson fact:</strong> Corrosion or short circuits can stop the system working.</li><li><strong>Lesson fact:</strong> Sealed casing, waterproof enclosure, humidity control</li><li><strong>Lesson fact:</strong> Name what water does to reliability.</li><li><strong>Lesson fact:</strong> Dust / dirt</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end environment -->
-        <section class="panel" id="reliability" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="reliability">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 2</p>
-            <h2>Reliability is about continuing to work correctly</h2>
-          </div>
-          <div class="criteria-grid">
-            <article><strong>Availability</strong><span>The system is usable when required, such as a checkout system during opening hours.</span></article>
-            <article><strong>Redundancy</strong><span>Extra hardware can take over if one component fails, such as a spare disk or power supply.</span></article>
-            <article><strong>Backup</strong><span>Copies of data reduce the impact of storage failure or accidental loss.</span></article>
-            <article><strong>MTBF</strong><span>Mean time between failures indicates expected reliability, often used for comparing components.</span></article>
-            <article><strong>Maintenance</strong><span>Cleaning, updates and replacement schedules reduce unexpected failure.</span></article>
-            <article><strong>Monitoring</strong><span>Temperature, battery, disk and network monitoring can warn before failure becomes outage.</span></article>
-          </div>
-          <div class="callout">Reliability answer frame: "If X fails, Y prevents or reduces the impact, so the user can continue Z."</div>
+        <section class="v2-panel" id="summary">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 4 | close when ready</p><h2>Summary and exam reminders</h2></div>
+          <div class="v2-summary-grid"><div><h3>Summary</h3><ul class="v2-summary-list"><li>Define entity-relationship design and normalisation with the exact technical vocabulary expected by the syllabus.</li><li>Use the lesson method on a fresh context and show the intermediate decision, representation or calculation.</li><li>Match the shape of the answer to the command word and the available marks.</li><li>Check the final answer against the scenario instead of repeating a memorised sentence.</li></ul></div><div class="v2-error"><h3>Common error to correct</h3><p>Students often choose names as primary keys. Correction: a primary key must uniquely and reliably identify a record.</p></div></div>
+          <div class="v2-tip-box"><h3>Exam technique</h3><ul><li>Follow the command word: state gives a fact; explain links a cause to a consequence; compare covers both sides.</li><li>Match the number of independent points or method steps to the available marks.</li><li>For entity-relationship design and normalisation, use the exact technical term before applying it to the scenario.</li></ul></div>
         </section>
 
-        <!-- stage10-explanation:start reliability -->
-        <section class="panel explanation-panel" id="explanation-reliability" data-explains="reliability" data-explanation-kind="mechanism" aria-labelledby="explanation-reliability-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="reliability">
-          <h2 class="explanation-sr-only" id="explanation-reliability-title">Reliability is about continuing to work correctly</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-040-reliability.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Reliability is about continuing to work correctly with a structured visual model." />
-            <figcaption class="explanation-sr-only">Reliability is about continuing to work correctly: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Redundancy, failover and a UPS can support continuity when a component or power source fails.</li><li><strong>Lesson fact:</strong> Backup and restore support recovery after data loss or failure.</li><li><strong>Lesson fact:</strong> A backup copy reduces data loss and recovery time but does not by itself keep a live service running.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end reliability -->
-        <section class="panel" id="mitigation" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="mitigation">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 3</p>
-            <h2>Mitigation must match the risk</h2>
-          </div>
-          <div class="scenario-grid">
-            <article><strong>Outdoor weather station</strong><span>Weatherproof casing, low-power controller, battery/solar power and wireless communication.</span></article>
-            <article><strong>Hospital workstation</strong><span>Reliable power, backup, regular maintenance and quick replacement to reduce downtime.</span></article>
-            <article><strong>Delivery handheld</strong><span>Rugged case, long battery life, mobile data fallback and SSD/flash storage.</span></article>
-            <article><strong>Data server</strong><span>Cooling, UPS, RAID, backup, monitoring and controlled access.</span></article>
-          </div>
-          <div class="callout">A strong answer rejects an unsuitable protection. A UPS helps power cuts; it does not make a sensor waterproof.</div>
-        </section>
-
-        <!-- stage10-explanation:start mitigation -->
-        <section class="panel explanation-panel" id="explanation-mitigation" data-explains="mitigation" data-explanation-kind="mechanism" aria-labelledby="explanation-mitigation-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="mitigation">
-          <h2 class="explanation-sr-only" id="explanation-mitigation-title">Mitigation must match the risk</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-040-mitigation.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Mitigation must match the risk with a structured visual model." />
-            <figcaption class="explanation-sr-only">Mitigation must match the risk: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Outdoor weather station Weatherproof casing, low-power controller, battery/solar power and wireless communication.</li><li><strong>Lesson fact:</strong> Hospital workstation Reliable power, backup, regular maintenance and quick replacement to reduce downtime.</li><li><strong>Lesson fact:</strong> Delivery handheld Rugged case, long battery life, mobile data fallback and SSD/flash storage.</li><li><strong>Lesson fact:</strong> Data server Cooling, UPS, RAID, backup, monitoring and controlled access.</li><li><strong>Lesson fact:</strong> A strong answer rejects an unsuitable protection. A UPS helps power cuts; it does not make a sensor waterproof.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end mitigation -->
-        <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="PRACTISE" data-delivery-group="tool">
-          <div class="section-title">
-            <p class="eyebrow">Interactive tool</p>
-            <h2>Environmental risk evaluator</h2>
-          </div>
-          <div class="converter-grid">
-            <label>
-              Scenario
-              <select id="scenarioInput">
-                <option value="weather">Remote weather station</option>
-                <option value="server">School server room</option>
-                <option value="delivery">Delivery handheld device</option>
-                <option value="factory">Factory barcode scanner</option>
-                <option value="clinic">Clinic reception system</option>
-              </select>
-            </label>
-            <button type="button" id="evaluateBtn">Evaluate risk</button>
-          </div>
-          <div class="result-box" id="riskSummary" aria-live="polite"></div>
-          <div class="method-box" id="mitigationSummary"></div>
-          <div class="reject-box" id="rejectSummary"></div>
-        </section>
-
-        <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
-          <div class="section-title">
-            <p class="eyebrow">Worked examples</p>
-            <h2>Write reliability answers that earn marks</h2>
-          </div>
-          <div class="example-tabs" role="tablist" aria-label="Worked examples">
-            <button class="tab active" type="button" data-example="weather">Weather station</button>
-            <button class="tab" type="button" data-example="server">Server room</button>
-            <button class="tab" type="button" data-example="delivery">Delivery device</button>
-          </div>
-          <article class="example-box" id="exampleBox"></article>
-        </section>
-
-        <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
-          <div class="section-title">
-            <p class="eyebrow">Your turn</p>
-            <h2>Practice with instant checking</h2>
-          </div>
-          <div class="practice-list" id="practiceList"></div>
-          <button class="primary-button" type="button" id="checkPractice">Check practice</button>
-          <div class="feedback" id="practiceFeedback" aria-live="polite"></div>
-        </section>
-
-        <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
-          <div class="section-title">
-            <p class="eyebrow">Mistake debugging</p>
-            <h2>Fix the weak reliability answer</h2>
-          </div>
-          <div class="mistake-grid">
-            <article>
-              <p class="wrong">"Use a UPS because it makes the computer waterproof."</p>
-              <button class="answer-toggle" type="button" data-answer="mistake1">Show correction</button>
-              <p class="answer" id="mistake1">A UPS protects against short power cuts and allows safe shutdown. Waterproofing needs a sealed or weatherproof enclosure.</p>
-            </article>
-            <article>
-              <p class="wrong">"Reliability means the hardware is expensive and therefore good."</p>
-              <button class="answer-toggle" type="button" data-answer="mistake2">Show correction</button>
-              <p class="answer" id="mistake2">Reliability means the hardware continues to work correctly when required. Cost may be one factor, but redundancy, maintenance and environmental protection are more precise evidence.</p>
-            </article>
-          </div>
-        </section>
-
-        <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
-          <div class="section-title">
-            <p class="eyebrow">Exam-style questions</p>
-            <h2>Questions with expandable MS</h2>
-            <p>Attempt first, then expand the mark scheme. Credit depends on naming the risk, matching a mitigation, and explaining the effect on reliability.</p>
-          </div>
-          <div class="exam-list" id="examList"></div>
-        </section>
-
-        <section class="panel summary-panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
-          <div class="section-title">
-            <p class="eyebrow">Summary</p>
-            <h2>Environmental reliability in six exam sentences</h2>
-          </div>
-          <div class="summary-grid">
-            <div><strong>Heat</strong><span>Cooling and ventilation reduce overheating and shutdowns.</span></div>
-            <div><strong>Water</strong><span>Sealed enclosures reduce corrosion and short circuits.</span></div>
-            <div><strong>Dust</strong><span>Filters and cleaning protect cooling and sensors.</span></div>
-            <div><strong>Shock</strong><span>Rugged casing and SSDs reduce mobile damage.</span></div>
-            <div><strong>Power</strong><span>UPS and surge protection reduce interruption and data loss.</span></div>
-            <div><strong>Failure</strong><span>Backup, redundancy and maintenance reduce downtime.</span></div>
-          </div>
-        </section>
-
-        <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
-          <div class="section-title">
-            <p class="eyebrow">Homework</p>
-            <h2>Clear tasks</h2>
-          </div>
-          <ol class="homework-list">
-            <li>Write a 6-mark answer recommending hardware protections for a remote weather station.</li>
-            <li>Explain how a UPS, backup and RAID each improve reliability, using a different sentence for each.</li>
-            <li>Compare an office desktop and a rugged handheld device for a delivery driver using environmental risks.</li>
-            <li>Rewrite this weak sentence: "Use expensive hardware because it is reliable."</li>
-          </ol>
-          <button class="answer-toggle" type="button" data-answer="homeworkAnswers">Show homework guidance</button>
-          <div class="answer-panel" id="homeworkAnswers">
-            <p><strong>Weather station:</strong> mention weatherproof casing, low power, battery/solar, wireless communication and accurate sensors.</p>
-            <p><strong>UPS:</strong> keeps power briefly and allows safe shutdown. <strong>Backup:</strong> restores data. <strong>RAID:</strong> can keep service running after a disk failure depending on type.</p>
-            <p><strong>Delivery:</strong> rugged, portable, shock-resistant and long battery life are more relevant than desktop processing power.</p>
-            <p><strong>Rewrite:</strong> name a reliability feature such as redundancy, MTBF, protective casing or maintenance schedule.</p>
-          </div>
-        </section>
+        <nav class="v2-bottom-nav" aria-label="Previous and next lesson"><a href="../lesson-039/" >Previous lesson</a><a href="../lesson-041/" >Next lesson</a></nav>
       </div>
     </main>
-
-    <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=3"></script>
-    <script src="../lesson-toolbar.js?v=3"></script>
-    <script src="../stage7-accessibility.js?v=4"></script>
+    <script src="../course-v2.js?v=1"></script>
   </body>
 </html>

@@ -3,388 +3,89 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 036 | Logic gates: NOT, AND, OR, NAND, NOR, XOR</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <title>AS9618 Lesson 036 | Ethical decisions and their consequences</title>
     <link rel="icon" href="data:" />
-    <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../student-visuals.css?v=1" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
+    <link rel="stylesheet" href="../course-v2.css?v=3" />
   </head>
-  <body>
+  <body data-course-version="2" data-lesson-id="036" data-syllabus-ids="S7.03">
     <a class="skip-link" href="#main-content">Skip to main content</a>
-    <header class="topbar">
-      <div>
-        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 3</p>
-        <h1>Logic gates: NOT, AND, OR, NAND, NOR, XOR</h1>
-      </div>
-      <div class="action-panel" aria-label="Page controls">
-        <a class="course-home-link" href="../">Course home</a>
-        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
-      </div>
+    <header class="v2-topbar">
+      <div><p class="v2-eyebrow">Cambridge AS9618 | Paper 1 | Section 7: Ethics and ownership</p><h1>Ethical decisions and their consequences</h1></div>
+      <nav class="v2-actions" aria-label="Lesson actions"><a href="../">Course home</a><a href="../assessments/">Assessment bank</a><button type="button" id="printLesson">Print</button></nav>
     </header>
+    <main class="v2-shell" id="main-content" tabindex="-1">
+      <nav class="v2-toc" aria-label="Lesson contents"><strong>Lesson 036</strong><a href="#overview">Overview</a><a href="#prerequisite">Prerequisite</a><a href="#explanation">Explanation</a><a href="#practice">Practice</a><a href="#summary">Summary</a></nav>
+      <div class="v2-content">
+        <section class="v2-hero" id="overview">
+          <div><p class="v2-eyebrow">Flexible-depth lesson</p><h2>Ethical decisions and their consequences</h2><p>S7.03 | Select what to omit, teach briefly or explore in depth.</p></div>
+          <div class="v2-time-grid" aria-label="Available lesson depth"><div><strong>Quick</strong><span>diagnose + essentials</span></div><div><strong>Full</strong><span>complete explanation</span></div><div><strong>Deep</strong><span>prerequisites + extension</span></div><div><strong>Choose</strong><span>practice by need</span></div></div>
+        </section>
 
-    <main class="layout" id="main-content" tabindex="-1">
-      <aside class="lesson-nav" aria-label="Lesson navigation">
-        <a href="#overview">Overview</a>
-        <a href="#hook">Warm-up</a>
-        <a href="#signals">Binary signals</a>
-        <a href="#gates">Logic gates</a>
-        <a href="#symbols">Symbols</a>
-        <a href="#gate-visual">Gate map</a>
-        <a href="#tool">Truth-table tool</a>
-        <a href="#examples">Examples</a>
-        <a href="#practice">Practice</a>
-        <a href="#debug">Debugging</a>
-        <a href="#exam">Exam-style</a>
-        <a href="#homework">Homework</a>
-      </aside>
+        <section class="v2-panel v2-route-menu" aria-labelledby="route-heading">
+          <div class="v2-heading"><p class="v2-eyebrow">Teacher choice</p><h2 id="route-heading">Choose the depth for this group</h2></div>
+          <div class="v2-route-grid"><article><h3>Quick route</h3><p>Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.</p></article><article><h3>Full route</h3><p>Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.</p></article><article><h3>Deep route</h3><p>Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.</p></article></div>
+        </section>
 
-      <div class="lesson-content">
-        <!-- remediation-v2-stage3-scope:start -->
-        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.</p></aside>
-        <!-- remediation-v2-stage3-scope:end -->
+        <section class="v2-panel" id="prerequisite">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 1 | optional depth</p><h2>Prerequisite knowledge and quick diagnostic</h2></div>
+          <div class="v2-diagnostic"><p>Recall S7.01 before starting this lesson.</p></div>
+          <p>Give one accurate definition or method step before continuing. If it is missing, revisit only that prerequisite.</p>
+          <details class="v2-prerequisite-detail"><summary>Open optional prerequisite refresher</summary><ul><li>Version 2 requires both the need for professional ethics and its purpose; evidence must connect responsible professional decisions to public interest, competence and accountability.</li><li>Show understanding of the need for and purpose of ethics as a computing professional.</li></ul></details>
+        </section>
 
-<section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
-          <div class="hero-copy">
-            <p class="lesson-meta">Lesson 036 | 45 minutes | Paper 1 Section 3</p>
-            <h2>Logic gates are tiny decision machines: no mood, no maybe, just 0 or 1.</h2>
-            <p>
-              This lesson introduces the six AS-level logic gates: NOT, AND, OR,
-              NAND, NOR and XOR. You will read gate rules, complete truth tables,
-              and translate ordinary conditions into Boolean logic.
-            </p>
-            <div class="objective-grid" aria-label="Learning objectives">
-              <div><strong>Identify</strong><span>the purpose of each named logic gate</span></div>
-              <div><strong>Complete</strong><span>truth tables for one-input and two-input gates</span></div>
-              <div><strong>Compare</strong><span>OR and XOR without using everyday language</span></div>
+        <section class="v2-panel" id="explanation">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 2 | deliberately over-complete</p><h2>Knowledge explanation</h2></div>
+          <h3>Learning objectives</h3><ul class="v2-objectives"><li>Explain the need to act ethically and the impact of acting ethically or unethically for a given situation.</li></ul>
+          <details class="v2-concept-menu"><summary>Open the concept checklist and choose what to teach</summary><ul><li>situation</li><li>ethical</li><li>unethical</li><li>impact</li></ul></details>
+          <div class="v2-explanation-grid">
+            <div>
+              <article class="v2-core-facts"><h3>Detailed explanation</h3><p class="v2-teacher-note">Teach all points, or select only the ones this group needs. The list is intentionally fuller than a fixed lesson slot.</p><ul class="v2-facts"><li>Version 2 requires scenario judgement plus consequences. Evidence must identify stakeholders and explain impacts of both ethical and unethical action; a label or generic list is insufficient.</li><li>Professional ethics provides principles for deciding how a computing professional should act when technical choices can affect clients, users, colleagues or wider society. Its purpose is to protect the public interest, support competent and honest work, and make professionals accountable for foreseeable consequences rather than treating legal compliance or a manager&#39;s instruction as the whole decision.</li><li>Joining a professional ethical body is important because membership gives a practitioner an explicit code of conduct, current professional guidance, continuing professional development and a community through which standards and misconduct can be challenged. The British Computer Society (BCS) and the Institute of Electrical and Electronics Engineers (IEEE) are the two named syllabus examples. Their codes promote public interest, competence, integrity, privacy and accountability; a code guides judgement but does not replace law.</li><li>For a given situation, decide whether an action is ethical or unethical by identifying the decision, affected stakeholders, benefits, harms, rights and responsibilities. Then explain the impact of acting ethically and the impact of acting unethically. A defensible conclusion applies evidence, proportionality and safeguards; it is not a one-sided list or an unsupported personal opinion.</li><li>Professional ethics has a purpose: computing professionals must protect public interest, work competently and remain accountable for consequences. Joining a professional ethical body such as the British Computer Society (BCS) or the Institute of Electrical and Electronics Engineers (IEEE) provides codes of conduct, guidance, continuing professional development and a community that supports standards. In a situation, judge whether action is ethical or unethical and explain stakeholder impacts of both choices.</li><li>Artificial intelligence (AI) applications include classification, recommendation, prediction and autonomous control. Every AI evaluation should identify the application or decision mechanism and trace social, economic and environmental impacts before reaching a contextual judgement with realistic mitigations.</li><li>To evaluate an AI application, balance its social, economic and environmental impacts and reach a context-linked judgement.</li><li>The required licence categories include FSF and OSI open-source licences, shareware and commercial software. A justified licence choice links its permissions, restrictions and cost to the stated situation.</li></ul></article>
+              <article class="v2-example"><h3>Worked example</h3><p>Unsafe release pressure: A developer is told to hide failed safety tests so a medical system can launch on time. Concealing the evidence would be unethical because patients could be harmed and trust would be damaged. The developer acts ethically by documenting the risk, refusing to falsify the record and escalating through BCS/IEEE-style professional channels. This may delay release and cost money, but protects patients, supports accountability and allows the defect to be corrected.</p></article>
+              <aside class="v2-extension"><h3>Beyond syllabus / 延伸知识（不要求背诵）</h3><p>professional decisions are often reviewed against law, organisational policy, public interest and a published code of conduct.</p></aside>
             </div>
-          </div>
-          <div class="gate-card" aria-label="Logic gate expression">
-            <span>Q = (A AND B) OR NOT C</span>
-            <p>If this looks like a sentence with wires, that is exactly the point.</p>
-          </div>
-        </section>
-
-        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
-          <article class="why-card">
-            <h3>Why this matters</h3>
-            <p>Cambridge questions often combine gates. Students lose marks when they know gate names but cannot apply the exact output rule.</p>
-          </article>
-          <article class="trap-card">
-            <h3>Common error</h3>
-            <p>OR means at least one input is 1. XOR means exactly one input is 1. They are not the same gate wearing different shoes.</p>
-          </article>
-        </section>
-
-        <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
-          <div class="section-title">
-            <p class="eyebrow">Warm-up hook</p>
-            <h2>The classroom door opens if the teacher has a key AND today is not an exam.</h2>
-            <p>Click the condition that would make the output 1. The door is strict; it does not accept emotional arguments.</p>
-          </div>
-          <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="open">Key = 1, Exam = 0</button>
-            <button class="choice-card" type="button" data-hook="locked1">Key = 0, Exam = 0</button>
-            <button class="choice-card" type="button" data-hook="locked2">Key = 1, Exam = 1</button>
-            <button class="choice-card" type="button" data-hook="locked3">Key = 0, Exam = 1</button>
-          </div>
-          <div class="feedback" id="hookFeedback" aria-live="polite">
-            Rule: Output = Key AND NOT Exam. Try one row first, then trust the table.
+            <figure class="v2-visual">
+              <img src="../assets/diagrams/stage10-infographics/stage10-lesson-078-map.jpg" alt="Trigger words. Useful answer focus. Ethical decisions. stakeholders, consent, fairness, responsibility, proportionality. benefits, harms, rights, responsibilities and justified judgement" loading="lazy" />
+              <figcaption>Section 7 topic map. One maintained explanation is shown as an image on larger screens and as text on small screens.</figcaption>
+              <div class="v2-mobile-visual-text" aria-label="Mobile text alternative"><ul><li>Trigger words</li><li>Useful answer focus</li><li>Ethical decisions</li><li>stakeholders, consent, fairness, responsibility, proportionality</li><li>benefits, harms, rights, responsibilities and justified judgement</li></ul></div>
+            </figure>
           </div>
         </section>
 
-        <section class="panel" id="signals" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="signals">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 1</p>
-            <h2>Logic gates use binary signals</h2>
-          </div>
-          <div class="binary-grid">
-            <article>
-              <strong>0</strong>
-              <span>False, off, no signal, condition not met</span>
-            </article>
-            <article>
-              <strong>1</strong>
-              <span>True, on, signal present, condition met</span>
-            </article>
-            <article>
-              <strong>Input</strong>
-              <span>A value entering the gate, usually labelled A, B or C.</span>
-            </article>
-            <article>
-              <strong>Output</strong>
-              <span>The result produced by the gate, often labelled Q or X.</span>
-            </article>
-          </div>
-          <div class="callout">Chinese support: logic gate = 逻辑门；Boolean = 布尔；truth table = 真值表；output = 输出。</div>
+        <section class="v2-panel" id="practice">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 3 | select by learner need</p><h2>Practice by question type</h2></div>
+          <div class="v2-question-list"><article class="v2-question" data-question-id="Q-L036-01" data-semantic-fingerprint="S7.03|ethical-decisions-and-their-consequences|apply|what-must-follow-unethical|written|recall">
+              <div class="v2-question-head"><span class="v2-badge">apply</span><span class="v2-badge">recall</span><span class="v2-badge difficulty">foundation</span><span class="v2-badge">2 marks</span></div>
+              <p><strong>Question 1.</strong> What must follow an ethical or unethical label?</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> An explanation of stakeholder consequences, evidence and a justified action or safeguard.</p><p><strong>Marking guidance:</strong> Award one mark for each distinct, technically accurate point or method step.</p><p><strong>Common error:</strong> For the command word apply, perform that exact action; do not replace it with an unrelated fact.</p></div></details>
+            </article><article class="v2-question" data-question-id="Q-L036-02" data-semantic-fingerprint="S7.03|ethical-decisions-and-their-consequences|apply|what-purpose-professional-ethics|written|recall">
+              <div class="v2-question-head"><span class="v2-badge">apply</span><span class="v2-badge">recall</span><span class="v2-badge difficulty">application</span><span class="v2-badge">2 marks</span></div>
+              <p><strong>Question 2.</strong> What is the purpose of professional ethics in computing?</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> To guide competent, responsible and accountable decisions that protect clients, users and the public interest.</p><p><strong>Marking guidance:</strong> Award one mark for each distinct, technically accurate point or method step.</p><p><strong>Common error:</strong> Do not repeat the same point in different words; each mark needs a separate idea or method step.</p></div></details>
+            </article><article class="v2-question" data-question-id="Q-L036-03" data-semantic-fingerprint="S7.03|ethical-decisions-and-their-consequences|explain|would-applied-suitable-computing|visual|explain">
+              <div class="v2-question-head"><span class="v2-badge">explain</span><span class="v2-badge">explain</span><span class="v2-badge difficulty">transfer</span><span class="v2-badge">3 marks</span></div>
+              <p><strong>Question 3.</strong> Explain how ethical decisions and their consequences would be applied in a suitable computing context.</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> Professional ethics provides principles for deciding how a computing professional should act when technical choices can affect clients, users, colleagues or wider society. Its purpose is to protect the public interest, support competent and honest work, and make professionals accountable for foreseeable consequences rather than treating legal compliance or a manager&#39;s instruction as the whole decision. Joining a professional ethical body is important because membership gives a practitioner an explicit code of conduct, current professional guidance, continuing professional development and a community through which standards and misconduct can be challenged. The British Computer Society (BCS) and the Institute of Electrical and Electronics Engineers (IEEE) are the two named syllabus examples. Their codes promote public interest, competence, integrity, privacy and accountability; a code guides judgement but does not replace law. For a given situation, decide whether an action is ethical or unethical by identifying the decision, affected stakeholders, benefits, harms, rights and responsibilities. Then explain the impact of acting ethically and the impact of acting unethically. A defensible conclusion applies evidence, proportionality and safeguards; it is not a one-sided list or an unsupported personal opinion.</p><p><strong>Marking guidance:</strong> Each mark needs a relevant point linked to the stated context.</p><p><strong>Common error:</strong> Do not copy the worked example unchanged; transfer the method and check it against the new context.</p></div></details>
+            </article></div>
+          <div class="v2-paper-refs">
+          <h3>Related past-paper indexes</h3>
+          <table><thead><tr><th>Reference</th><th>Marks</th><th>Command word</th><th>Question type</th></tr></thead>
+          <tbody><tr><td>9618/13/W/25 Q7(a)</td><td>2</td><td>describe</td><td>explain</td></tr><tr><td>9618/12/W/24 Q5(a)</td><td>4</td><td>explain</td><td>explain</td></tr><tr><td>9618/12/W/24 Q5(i)</td><td>3</td><td>describe</td><td>explain</td></tr><tr><td>9618/12/W/24 Q5(ii)</td><td>2</td><td>describe</td><td>explain</td></tr></tbody></table>
+          <p class="v2-copyright-note">Index only: Cambridge question and mark-scheme wording is not reproduced on this public course page.</p>
+        </div>
         </section>
 
-        <!-- stage10-explanation:start signals -->
-        <section class="panel explanation-panel" id="explanation-signals" data-explains="signals" data-explanation-kind="mechanism" aria-labelledby="explanation-signals-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="signals">
-          <h2 class="explanation-sr-only" id="explanation-signals-title">Logic gates use binary signals</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-036-signals.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Logic gates use binary signals with a structured visual model." />
-            <figcaption class="explanation-sr-only">Logic gates use binary signals: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Logic 0 means false, off or a valid low logic level.</li><li><strong>Lesson fact:</strong> Logic 1 means true, on or a valid high logic level.</li><li><strong>Lesson fact:</strong> An absent, floating or undriven signal is not automatically a valid logic 0.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end signals -->
-        <section class="panel" id="gates" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="gates">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 2</p>
-            <h2>The six gate rules</h2>
-          </div>
-          <div class="gate-table" role="table" aria-label="Logic gate rules">
-            <div class="table-row table-head" role="row">
-              <div role="columnheader">Gate</div>
-              <div role="columnheader">Expression</div>
-              <div role="columnheader">Output is 1 when...</div>
-              <div role="columnheader">Common exam wording</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">NOT</div>
-              <div role="cell">Q = NOT A</div>
-              <div role="cell">A is 0.</div>
-              <div role="cell">Inverts the input.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">AND</div>
-              <div role="cell">Q = A AND B</div>
-              <div role="cell">A and B are both 1.</div>
-              <div role="cell">All conditions must be true.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">OR</div>
-              <div role="cell">Q = A OR B</div>
-              <div role="cell">At least one input is 1.</div>
-              <div role="cell">One or both conditions are true.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">NAND</div>
-              <div role="cell">Q = NOT (A AND B)</div>
-              <div role="cell">Not both inputs are 1.</div>
-              <div role="cell">Inverse of AND.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">NOR</div>
-              <div role="cell">Q = NOT (A OR B)</div>
-              <div role="cell">Both inputs are 0.</div>
-              <div role="cell">Inverse of OR.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">XOR</div>
-              <div role="cell">Q = A XOR B</div>
-              <div role="cell">Exactly one input is 1.</div>
-              <div role="cell">Inputs are different.</div>
-            </div>
-          </div>
+        <section class="v2-panel" id="summary">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 4 | close when ready</p><h2>Summary and exam reminders</h2></div>
+          <div class="v2-summary-grid"><div><h3>Summary</h3><ul class="v2-summary-list"><li>Define ethical decisions and their consequences with the exact technical vocabulary expected by the syllabus.</li><li>Use the lesson method on a fresh context and show the intermediate decision, representation or calculation.</li><li>Match the shape of the answer to the command word and the available marks.</li><li>Check the final answer against the scenario instead of repeating a memorised sentence.</li></ul></div><div class="v2-error"><h3>Common error to correct</h3><p>Students often write personal opinions only. Correction: ethics answers need stakeholders, evidence and balanced judgement.</p></div></div>
+          <div class="v2-tip-box"><h3>Exam technique</h3><ul><li>Follow the command word: state gives a fact; explain links a cause to a consequence; compare covers both sides.</li><li>Match the number of independent points or method steps to the available marks.</li><li>For ethical decisions and their consequences, use the exact technical term before applying it to the scenario.</li></ul></div>
         </section>
 
-        <!-- stage10-explanation:start gates -->
-        <section class="panel explanation-panel" id="explanation-gates" data-explains="gates" data-explanation-kind="mechanism" aria-labelledby="explanation-gates-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="gates">
-          <h2 class="explanation-sr-only" id="explanation-gates-title">The six gate rules</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-036-gates.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining The six gate rules with a structured visual model." />
-            <figcaption class="explanation-sr-only">The six gate rules: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> The six gates are NOT, AND, OR, NAND, NOR and XOR.</li><li><strong>Lesson fact:</strong> NAND is the negation of AND and NOR is the negation of OR.</li><li><strong>Lesson fact:</strong> XOR outputs 1 when exactly one of its two inputs is 1.</li><li><strong>Lesson fact:</strong> Ordinary OR also outputs 1 when both inputs are 1, so OR and XOR are different.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end gates -->
-        <section class="panel" id="symbols" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="symbols">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 3</p>
-            <h2>Recognise gate symbols and the inversion bubble</h2>
-          </div>
-          <div class="symbol-grid" aria-label="Gate symbols">
-            <article><span class="symbol">NOT</span><strong>Triangle + bubble</strong><p>One input. Bubble means inversion.</p></article>
-            <article><span class="symbol">AND</span><strong>Flat left, curved right</strong><p>Output 1 only when all inputs are 1.</p></article>
-            <article><span class="symbol">OR</span><strong>Curved input side</strong><p>Output 1 when at least one input is 1.</p></article>
-            <article><span class="symbol">NAND</span><strong>AND + bubble</strong><p>Complete AND first, then invert.</p></article>
-            <article><span class="symbol">NOR</span><strong>OR + bubble</strong><p>Complete OR first, then invert.</p></article>
-            <article><span class="symbol">XOR</span><strong>OR with extra curved line</strong><p>Output 1 when inputs differ.</p></article>
-          </div>
-          <div class="callout">Exam habit: if a symbol has a small bubble at the output, say "then invert the result" before writing the final column.</div>
-        </section>
-
-        <!-- stage10-explanation:start symbols -->
-        <section class="panel explanation-panel" id="explanation-symbols" data-explains="symbols" data-explanation-kind="mechanism" aria-labelledby="explanation-symbols-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="symbols">
-          <h2 class="explanation-sr-only" id="explanation-symbols-title">Recognise gate symbols and the inversion bubble</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-036-symbols.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Recognise gate symbols and the inversion bubble with a structured visual model." />
-            <figcaption class="explanation-sr-only">Recognise gate symbols and the inversion bubble: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> NOT Triangle + bubble One input. Bubble means inversion.</li><li><strong>Lesson fact:</strong> AND Flat left, curved right Output 1 only when all inputs are 1.</li><li><strong>Lesson fact:</strong> OR Curved input side Output 1 when at least one input is 1.</li><li><strong>Lesson fact:</strong> NAND AND + bubble Complete AND first, then invert.</li><li><strong>Lesson fact:</strong> NOR OR + bubble Complete OR first, then invert.</li><li><strong>Lesson fact:</strong> XOR OR with extra curved line Output 1 when inputs differ.</li><li><strong>Lesson fact:</strong> Exam habit: if a symbol has a small bubble at the output, say &quot;then invert the result&quot; before writing the final column.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end symbols -->
-        <section class="panel visual-explainer" id="gate-visual" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="gate-visual">
-          <div class="section-title">
-            <p class="eyebrow">Visual explanation</p>
-            <h2>Six symbols, six exact output rules</h2>
-            <p>Read each symbol from left to right. A small circle on the output means “invert”; the extra curved input line distinguishes XOR from OR.</p>
-          </div>
-          <figure class="concept-figure">
-            <svg class="concept-svg" viewBox="0 0 960 520" role="img" aria-labelledby="gateMapTitle gateMapDesc">
-              <title id="gateMapTitle">Standard symbols and output rules for six logic gates</title>
-              <desc id="gateMapDesc">NOT is a triangle with an output bubble. AND has a flat input side and curved output side. OR has curved sides. NAND and NOR add an output bubble to AND and OR. XOR adds a second curved line on the input side of OR.</desc>
-              <g fill="#fff" stroke="#8da2bd" stroke-width="2">
-                <rect x="20" y="20" width="286" height="220" rx="18" /><rect x="337" y="20" width="286" height="220" rx="18" /><rect x="654" y="20" width="286" height="220" rx="18" />
-                <rect x="20" y="280" width="286" height="220" rx="18" /><rect x="337" y="280" width="286" height="220" rx="18" /><rect x="654" y="280" width="286" height="220" rx="18" />
-              </g>
-              <g fill="none" stroke="#172033" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M74 126 H110 M110 82 L111 170 L196 126 Z M210 126 H256" /><circle cx="204" cy="126" r="8" fill="#fff" />
-                <path d="M383 95 H424 M383 157 H424 M424 76 H464 A50 50 0 0 1 464 176 H424 Z M514 126 H573" />
-                <path d="M697 95 H735 M697 157 H735 M726 76 Q770 126 726 176 Q814 176 846 126 Q814 76 726 76 Z M846 126 H890" />
-                <path d="M66 355 H107 M66 417 H107 M107 336 H147 A50 50 0 0 1 147 436 H107 Z M205 386 H256" /><circle cx="197" cy="386" r="8" fill="#fff" />
-                <path d="M380 355 H418 M380 417 H418 M409 336 Q453 386 409 436 Q497 436 529 386 Q497 336 409 336 Z M545 386 H573" /><circle cx="537" cy="386" r="8" fill="#fff" />
-                <path d="M697 355 H735 M697 417 H735 M716 336 Q760 386 716 436 M726 336 Q770 386 726 436 Q814 436 846 386 Q814 336 726 336 Z M846 386 H890" />
-              </g>
-              <g class="svg-node-label">
-                <text x="163" y="58">NOT</text><text x="480" y="58">AND</text><text x="797" y="58">OR</text>
-                <text x="163" y="318">NAND</text><text x="480" y="318">NOR</text><text x="797" y="318">XOR</text>
-              </g>
-              <g class="svg-node-detail">
-                <text x="163" y="211">Q = NOT A</text><text x="480" y="211">1 only when both are 1</text><text x="797" y="211">1 when at least one is 1</text>
-                <text x="163" y="471">NOT (A AND B)</text><text x="480" y="471">NOT (A OR B)</text><text x="797" y="471">1 when inputs differ</text>
-              </g>
-            </svg>
-            <ol class="visual-steps">
-              <li><strong>NOT</strong><span>One input; output is the opposite value.</span></li>
-              <li><strong>AND / NAND</strong><span>AND tests whether both are 1; NAND inverts that result.</span></li>
-              <li><strong>OR / NOR</strong><span>OR tests whether at least one is 1; NOR inverts that result.</span></li>
-              <li><strong>XOR</strong><span>Output is 1 only when the two inputs are different.</span></li>
-            </ol>
-          </figure>
-          <details class="diagram-check">
-            <summary>Check the diagram: what two visual clues separate NOR from XOR?</summary>
-            <p>NOR has an output bubble. XOR has no output bubble, but it has an extra curved line on the input side.</p>
-          </details>
-        </section>
-        <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="PRACTISE" data-delivery-group="tool">
-          <div class="section-title">
-            <p class="eyebrow">Interactive tool</p>
-            <h2>Generate a truth table</h2>
-          </div>
-          <div class="converter-grid">
-            <label>
-              Gate
-              <select id="gateInput">
-                <option value="NOT">NOT</option>
-                <option value="AND">AND</option>
-                <option value="OR">OR</option>
-                <option value="NAND">NAND</option>
-                <option value="NOR">NOR</option>
-                <option value="XOR">XOR</option>
-              </select>
-            </label>
-            <button type="button" id="truthBtn">Build table</button>
-          </div>
-          <div class="result-box" id="gateRule" aria-live="polite"></div>
-          <div class="truth-table-wrap" id="truthTable"></div>
-        </section>
-
-        <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
-          <div class="section-title">
-            <p class="eyebrow">Worked examples</p>
-            <h2>From condition to table</h2>
-          </div>
-          <div class="example-tabs" role="tablist" aria-label="Worked examples">
-            <button class="tab active" type="button" data-example="compound">Compound expression</button>
-            <button class="tab" type="button" data-example="xor">XOR vs OR</button>
-            <button class="tab" type="button" data-example="nand">NAND from AND</button>
-          </div>
-          <article class="example-box" id="exampleBox"></article>
-        </section>
-
-        <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
-          <div class="section-title">
-            <p class="eyebrow">Your turn</p>
-            <h2>Practice with instant checking</h2>
-          </div>
-          <div class="practice-list" id="practiceList"></div>
-          <button class="primary-button" type="button" id="checkPractice">Check practice</button>
-          <div class="feedback" id="practiceFeedback" aria-live="polite"></div>
-        </section>
-
-        <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
-          <div class="section-title">
-            <p class="eyebrow">Mistake debugging</p>
-            <h2>Fix the weak logic answer</h2>
-          </div>
-          <div class="mistake-grid">
-            <article>
-              <p class="wrong">"OR is true only when one input is true."</p>
-              <button class="answer-toggle" type="button" data-answer="mistake1">Show correction</button>
-              <p class="answer" id="mistake1">OR is true when at least one input is 1, so 01, 10 and 11 all produce 1. The phrase "only one" describes XOR, not OR.</p>
-            </article>
-            <article>
-              <p class="wrong">"NAND means A and B, so it is true only when both are 1."</p>
-              <button class="answer-toggle" type="button" data-answer="mistake2">Show correction</button>
-              <p class="answer" id="mistake2">NAND is NOT AND. First find A AND B, then invert it. NAND is 0 only when both inputs are 1.</p>
-            </article>
-          </div>
-        </section>
-
-        <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
-          <div class="section-title">
-            <p class="eyebrow">Exam-style questions</p>
-            <h2>Questions with expandable MS</h2>
-            <p>Attempt first, then expand the mark scheme. Credit depends on exact gate behaviour and correct truth-table rows.</p>
-          </div>
-          <div class="exam-list" id="examList"></div>
-        </section>
-
-        <section class="panel summary-panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
-          <div class="section-title">
-            <p class="eyebrow">Summary</p>
-            <h2>Six gate rules in exam language</h2>
-          </div>
-          <div class="summary-grid">
-            <div><strong>NOT</strong><span>Inverts a single input.</span></div>
-            <div><strong>AND</strong><span>1 only when all inputs are 1.</span></div>
-            <div><strong>OR</strong><span>1 when at least one input is 1.</span></div>
-            <div><strong>NAND</strong><span>Inverse of AND.</span></div>
-            <div><strong>NOR</strong><span>Inverse of OR.</span></div>
-            <div><strong>XOR</strong><span>1 when exactly one input is 1.</span></div>
-          </div>
-        </section>
-
-        <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
-          <div class="section-title">
-            <p class="eyebrow">Homework</p>
-            <h2>Clear tasks</h2>
-          </div>
-          <ol class="homework-list">
-            <li>Write the truth table for each gate: NOT, AND, OR, NAND, NOR and XOR.</li>
-            <li>Complete the full truth table for Q = (A AND B) OR NOT C, including intermediate columns.</li>
-            <li>Write a 4-mark comparison of OR and XOR using exact input combinations.</li>
-            <li>Create one real-life rule that uses AND and one that uses OR, then translate both into Boolean expressions.</li>
-          </ol>
-          <button class="answer-toggle" type="button" data-answer="homeworkAnswers">Show homework guidance</button>
-          <div class="answer-panel" id="homeworkAnswers">
-            <p><strong>Gate tables:</strong> NOT has two rows; the two-input gates have four rows: 00, 01, 10, 11.</p>
-            <p><strong>Compound expression:</strong> include columns for A AND B, NOT C, then final OR.</p>
-            <p><strong>OR vs XOR:</strong> OR gives 1 for 01, 10, 11; XOR gives 1 only for 01 and 10.</p>
-            <p><strong>Expressions:</strong> keep variables short, such as Key, Exam, Rain, Sensor.</p>
-          </div>
-        </section>
+        <nav class="v2-bottom-nav" aria-label="Previous and next lesson"><a href="../lesson-035/" >Previous lesson</a><a href="../lesson-037/" >Next lesson</a></nav>
       </div>
     </main>
-
-    <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=3"></script>
-    <script src="../lesson-toolbar.js?v=3"></script>
-    <script src="../stage7-accessibility.js?v=4"></script>
+    <script src="../course-v2.js?v=1"></script>
   </body>
 </html>

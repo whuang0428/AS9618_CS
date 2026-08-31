@@ -3,466 +3,89 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 047 | Two-pass assembly, program tracing and the instruction set</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <title>AS9618 Lesson 047 | Decomposition and modular problem solving</title>
     <link rel="icon" href="data:" />
-    <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
+    <link rel="stylesheet" href="../course-v2.css?v=3" />
   </head>
-  <body>
+  <body data-course-version="2" data-lesson-id="047" data-syllabus-ids="S9.02">
     <a class="skip-link" href="#main-content">Skip to main content</a>
-    <header class="topbar">
-      <div>
-        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 4</p>
-        <h1>Two-pass assembly, program tracing and the instruction set</h1>
-      </div>
-      <div class="action-panel" aria-label="Page controls">
-        <a class="course-home-link" href="../">Course home</a>
-        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
-      </div>
+    <header class="v2-topbar">
+      <div><p class="v2-eyebrow">Cambridge AS9618 | Paper 2 | Section 9: Algorithm design and problem-solving</p><h1>Decomposition and modular problem solving</h1></div>
+      <nav class="v2-actions" aria-label="Lesson actions"><a href="../">Course home</a><a href="../assessments/">Assessment bank</a><button type="button" id="printLesson">Print</button></nav>
     </header>
-
-    <main class="layout" id="main-content" tabindex="-1">
-      <aside class="lesson-nav" aria-label="Lesson navigation">
-        <a href="#overview">Overview</a>
-        <a href="#hook">Warm-up</a>
-        <a href="#assembly">Assembly language</a>
-        <a href="#mnemonics">Mnemonics</a>
-        <a href="#structure">Line structure</a>
-        <a href="#assembler">Assembler</a>
-        <a href="#tool">Instruction parser</a>
-        <a href="#examples">Examples</a>
-        <a href="#practice">Practice</a>
-        <a href="#debug">Debugging</a>
-        <a href="#exam">Exam-style</a>
-        <a href="#summary">Summary</a>
-        <a href="#homework">Homework</a>
-        <a href="#stage2-completion">Core syllabus content</a>
-      </aside>
-
-      <div class="lesson-content">
-        <!-- remediation-v2-stage3-scope:start -->
-        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.</p></aside>
-        <!-- remediation-v2-stage3-scope:end -->
-
-<!-- stage2-completion:start -->
-        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus content</p>
-            <h2>Two-pass assembly, program tracing and the instruction set</h2>
-          </div>
-          <div class="stage2-explanation">
-            <p>The two-pass assembler stages are Pass 1 and Pass 2. Pass 1 scans source, assigns addresses and builds a symbol table for labels, allowing forward references. Pass 2 translates mnemonics/operands using the completed table and produces machine code; invalid mnemonics or unresolved symbols are reported.</p>
-            <p>The source form &lt;label&gt;: &lt;opcode&gt; &lt;operand&gt; labels an instruction, while &lt;label&gt;: &lt;data&gt; assigns a symbolic address to a memory location containing data. Pass 1 records both kinds of label in the symbol table.</p>
-            <p>The five instruction groups are data movement (LDM, LDD, LDI, LDX, LDR, MOV, STO), input/output (IN, OUT), arithmetic (ADD, SUB, INC, DEC), unconditional branch and conditional branch. JMP is the unconditional branch instruction; CMP, CMI, JPE and JPN form the compare and conditional branch group. END returns control to the operating system.</p>
-            <p>Data movement: LDM #n loads immediate n into ACC; LDD &lt;address&gt; loads the directly addressed contents into ACC; LDI &lt;address&gt; follows the address stored at &lt;address&gt;; LDX &lt;address&gt; loads from &lt;address&gt; + IX; LDR #n loads n into IX; MOV &lt;register&gt; moves ACC to IX; STO &lt;address&gt; stores ACC at the address.</p>
-            <p>Arithmetic: ADD &lt;address&gt; or ADD #n/Bn/&amp;n adds a memory value or immediate denary/binary/hexadecimal value to ACC; SUB has the corresponding forms; INC &lt;register&gt; and DEC &lt;register&gt; change ACC or IX by one.</p>
-            <p>Control, comparison and I/O: JMP &lt;address&gt; is unconditional. CMP &lt;address&gt; or CMP #n compares ACC directly or with an immediate value. CMI &lt;address&gt; compares using indirect addressing. JPE jumps after a True comparison and JPN after a False comparison. IN inputs one ASCII character code to ACC; OUT outputs the character whose ASCII code is in ACC; END returns control to the operating system.</p>
-            <p>ACC is the accumulator and IX is the index register. An address can be absolute or symbolic. Prefix # gives immediate denary, B immediate binary and &amp; immediate hexadecimal data. These prefixes and operand forms are part of the instruction semantics, not optional decoration.</p>
-            <p>To trace a simple assembly-language program, make a table with one row per executed instruction and columns for the current instruction/address, ACC, IX, relevant memory or output, and branch result. Update only the state changed by that instruction, then use the updated PC or branch target to choose the next row; do not trace source lines that a taken jump skips.</p>
-          </div>
-          <article class="stage2-example">
-            <h3>Worked example: Assemble, classify and trace a short program</h3>
-            <p>For LDM #5; ADD #3; CMP #8; JPE MATCH; LDM #0; MATCH: OUT; END, the trace gives ACC 5, then 8, then a True comparison. JPE transfers control to MATCH, so LDM #0 is skipped; OUT outputs the character whose ASCII code is 8, and END returns control to the operating system. In LOOP: ADD ONE, LOOP labels an instruction; ONE: 1 labels the data location containing 1.</p>
-          </article>
+    <main class="v2-shell" id="main-content" tabindex="-1">
+      <nav class="v2-toc" aria-label="Lesson contents"><strong>Lesson 047</strong><a href="#overview">Overview</a><a href="#prerequisite">Prerequisite</a><a href="#explanation">Explanation</a><a href="#practice">Practice</a><a href="#summary">Summary</a></nav>
+      <div class="v2-content">
+        <section class="v2-hero" id="overview">
+          <div><p class="v2-eyebrow">Flexible-depth lesson</p><h2>Decomposition and modular problem solving</h2><p>S9.02 | Select what to omit, teach briefly or explore in depth.</p></div>
+          <div class="v2-time-grid" aria-label="Available lesson depth"><div><strong>Quick</strong><span>diagnose + essentials</span></div><div><strong>Full</strong><span>complete explanation</span></div><div><strong>Deep</strong><span>prerequisites + extension</span></div><div><strong>Choose</strong><span>practice by need</span></div></div>
         </section>
 
-        <!-- stage10-explanation:start effective -->
-        <section class="panel explanation-panel" id="explanation-effective" data-explains="effective" data-explanation-kind="mechanism" aria-labelledby="explanation-effective-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="effective">
-          <h2 class="explanation-sr-only" id="explanation-effective-title">Official LDR, CMI, JPE and JPN semantics</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-048-effective.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Official LDR, CMI, JPE and JPN semantics with a structured visual model." />
-            <figcaption class="explanation-sr-only">Official LDR, CMI, JPE and JPN semantics: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> LDR #n loads the immediate value n into the index register IX.</li><li><strong>Lesson fact:</strong> CMI &lt;address&gt; compares ACC with a value reached using indirect addressing.</li><li><strong>Lesson fact:</strong> JPE &lt;address&gt; jumps when the preceding comparison result is True.</li><li><strong>Lesson fact:</strong> JPN &lt;address&gt; jumps when the preceding comparison result is False.</li><li><strong>Lesson fact:</strong> Do not reinterpret these instructions as relative load, immediate compare, equal/zero branch or negative-status branch.</li></ol>
-
-          </div>
+        <section class="v2-panel v2-route-menu" aria-labelledby="route-heading">
+          <div class="v2-heading"><p class="v2-eyebrow">Teacher choice</p><h2 id="route-heading">Choose the depth for this group</h2></div>
+          <div class="v2-route-grid"><article><h3>Quick route</h3><p>Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.</p></article><article><h3>Full route</h3><p>Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.</p></article><article><h3>Deep route</h3><p>Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.</p></article></div>
         </section>
-        <!-- stage10-explanation:end effective -->
 
-        <!-- stage10-explanation:start assembler -->
-        <section class="panel explanation-panel" id="explanation-assembler" data-explains="assembler" data-explanation-kind="mechanism" aria-labelledby="explanation-assembler-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="assembler">
-          <h2 class="explanation-sr-only" id="explanation-assembler-title">Instruction groups: data movement, I/O, arithmetic, control and compare</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-047-assembler.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Instruction groups: data movement, I/O, arithmetic, control and compare with a structured visual model." />
-            <figcaption class="explanation-sr-only">Instruction groups: data movement, I/O, arithmetic, control and compare: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> The five groups are data movement, input/output, arithmetic, unconditional/conditional instructions and compare.</li><li><strong>Lesson fact:</strong> Data movement uses LDM, LDD, LDI, LDX, LDR, MOV and STO; LDR #n loads the immediate value n into IX.</li><li><strong>Lesson fact:</strong> Input/output uses IN and OUT; arithmetic uses ADD, SUB, INC and DEC.</li><li><strong>Lesson fact:</strong> JMP is unconditional; CMP and CMI compare; JPE jumps after True and JPN jumps after False.</li><li><strong>Lesson fact:</strong> END returns control to the operating system.</li></ol>
-
-          </div>
+        <section class="v2-panel" id="prerequisite">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 1 | optional depth</p><h2>Prerequisite knowledge and quick diagnostic</h2></div>
+          <div class="v2-diagnostic"><p>Recall S9.01 before starting this lesson.</p></div>
+          <p>Give one accurate definition or method step before continuing. If it is missing, revisit only that prerequisite.</p>
+          <details class="v2-prerequisite-detail"><summary>Open optional prerequisite refresher</summary><ul><li>Abstraction is required both as a concept and as a practical modelling skill: explain its need and benefits, then produce an abstract model containing only details essential to the problem.</li><li>Understand abstraction, its purpose/benefits and creation of an abstract model.</li></ul></details>
         </section>
-        <!-- stage10-explanation:end assembler -->
-        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus practice</p>
-            <h2>Two-pass assembly, program tracing and the instruction set: apply and assess</h2>
-          </div>
-          <div class="stage2-practice">
-            <h3>Targeted practice</h3>
-            <article class="stage2-question">
-              <p><strong>1.</strong> Which pass builds the symbol table?</p>
-              <details><summary>Show answer</summary><p>Pass 1.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>2.</strong> What does Pass 2 do?</p>
-              <details><summary>Show answer</summary><p>Pass 2 translates mnemonics and operands into machine code using the completed symbol table.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>3.</strong> What is the difference between LDM #5 and LDD 5?</p>
-              <details><summary>Show answer</summary><p>LDM loads literal 5; LDD loads the contents of memory address 5.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>4.</strong> What does LDR #7 do?</p>
-              <details><summary>Show answer</summary><p>It loads the immediate value 7 into the index register IX.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>5.</strong> Identify IN, SUB, JMP and JPN.</p>
-              <details><summary>Show answer</summary><p>IN is input/output; SUB is arithmetic; JMP is unconditional; JPN is conditional/compare.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>6.</strong> Compare CMP #4 from CMI 40.</p>
-              <details><summary>Show answer</summary><p>CMP #4 compares ACC with immediate value 4; CMI 40 follows the address stored at memory location 40 and compares ACC with the indirectly addressed value.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>7.</strong> What do MOV IX, STO TOTAL, OUT and END do?</p>
-              <details><summary>Show answer</summary><p>MOV IX copies ACC to IX; STO TOTAL stores ACC at the symbolic address TOTAL; OUT outputs the ASCII character whose code is in ACC; END returns control to the operating system.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>8.</strong> Trace LDM #2; ADD #3; STO TOTAL. What changes?</p>
-              <details><summary>Show answer</summary><p>ACC becomes 2, then 5; memory at symbolic address TOTAL becomes 5.</p></details>
-            </article>
-          </div>
-          <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>6 marks</span></div>
-            <p>Trace the supplied program and classify the instructions, showing each change to ACC, IX, memory, output and control flow.</p>
-            <details>
-              <summary>Show MS</summary>
-              <table class="mark-scheme-table">
-                <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
-                <tbody>
-                  <tr><td>uses one row per executed instruction in the correct control-flow order</td><td>Do not accept relative LDR, immediate CMI, equality/zero JPE, negative JPN, or a trace that executes a line skipped by a taken branch.</td><td>1</td></tr>
-                  <tr><td>updates ACC and IX correctly for data movement/arithmetic</td><td></td><td>1</td></tr>
-                  <tr><td>updates memory or output correctly for STO/OUT</td><td></td><td>1</td></tr>
-                  <tr><td>records compare result before evaluating JPE or JPN</td><td></td><td>1</td></tr>
-                  <tr><td>follows the correct taken/not-taken branch and skips non-executed lines</td><td></td><td>1</td></tr>
-                  <tr><td>classifies used instructions in the official data movement, input/output, arithmetic, unconditional/conditional and compare groups</td><td></td><td>1</td></tr>
-                </tbody>
-              </table>
-            </details>
-          </article>
-        </section>
-        <!-- stage2-completion:end -->
 
-<section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-047">
-          <div class="hero-copy">
-            <p class="lesson-meta">Lesson 047 | 45 minutes | Paper 1 Section 4 | Processor fundamentals</p>
-            <h2>Assembly is readable machine thinking, not friendly small talk.</h2>
-            <p>
-              Assembly language is a low-level language that uses mnemonics such as
-              LOAD, ADD and JMP to represent machine-code instructions. It is closer
-              to the processor than high-level language, but it still needs an
-              assembler before the CPU can execute it.
-            </p>
-            <div class="objective-grid" aria-label="Learning objectives">
-              <div><strong>Define</strong><span>assembly language, mnemonic and assembler</span></div>
-              <div><strong>Identify</strong><span>mnemonics, operands, labels and comments in simple lines</span></div>
-              <div><strong>Explain</strong><span>how assembly maps to machine code and why it is processor-specific</span></div>
+        <section class="v2-panel" id="explanation">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 2 | deliberately over-complete</p><h2>Knowledge explanation</h2></div>
+          <h3>Learning objectives</h3><ul class="v2-objectives"><li>Use decomposition and express a problem as modules.</li></ul>
+          <details class="v2-concept-menu"><summary>Open the concept checklist and choose what to teach</summary><ul><li>decomposition</li><li>problem</li><li>modules</li><li>procedure</li><li>function</li></ul></details>
+          <div class="v2-explanation-grid">
+            <div>
+              <article class="v2-core-facts"><h3>Detailed explanation</h3><p class="v2-teacher-note">Teach all points, or select only the ones this group needs. The list is intentionally fuller than a fixed lesson slot.</p><ul class="v2-facts"><li>Decomposition must break a problem into sub-problems and lead to a program module, identified at design level as a procedure or function with a distinct responsibility.</li><li>Abstraction removes each irrelevant detail that does not affect the required inputs, rules, constraints or outputs. Producing an abstract model means recording the essential details that remain: the data, relationships and processes needed to solve the problem, not merely listing what was ignored.</li><li>Decomposition breaks a problem into smaller sub-problems with distinct responsibilities. Express the resulting design as program modules with clear inputs, processing and outputs; a module may later be implemented as a procedure that performs an action or a function that returns a value.</li><li>Abstraction decides what belongs in the model; decomposition decides how the retained problem is divided. The modules must connect into one complete solution and must not omit a requirement.</li><li>Stepwise refinement starts with a high-level algorithm and repeatedly replaces each complex step with a smaller sequence of defined substeps. Refinement stops when every step is precise enough to implement and its input and output are clear.</li><li>At each level, preserve the parent step&#39;s purpose and input-process-output relationship. Related substeps can be expressed as program modules, including procedures that perform actions and functions that return calculated values.</li><li>Refinement supports review, implementation and testing because each module has a limited responsibility. It is not merely adding prose: every level must reduce ambiguity and collectively remain a complete solution.</li><li>Algorithm design review: define an algorithm as a solution expressed as a sequence of defined steps; use abstraction to retain essential details in an abstract model; use decomposition to express the problem as connected modules; and choose meaningful identifiers recorded in an identifier table.</li><li>Solution review: design with input-process-output, use sequence, selection and iteration, document the same algorithm in structured English, a flowchart or pseudocode, and convert between the specified representations without changing its control flow.</li><li>Development review: use stepwise refinement until steps are programmable, and construct and interpret logic statements that define decisions, loop conditions or Boolean values. Core answers must not replace these requirements with tracing, Java syntax or vague planning advice.</li></ul></article>
+              <article class="v2-example"><h3>Worked example</h3><p>Model and decompose a car-park charge: Keep entry time, exit time and tariff; omit car colour because it cannot change the charge. Express the solution as modules InputTimes, CalculateDuration, CalculateCharge and OutputCharge. CalculateCharge can become a function returning the charge, while OutputCharge can become a procedure that displays it.</p></article>
+              <aside class="v2-extension"><h3>Beyond syllabus / 延伸知识（不要求背诵）</h3><p>the same algorithm can be expressed in many programming languages; its logic should remain independent of syntax.</p></aside>
             </div>
-          </div>
-          <div class="assembly-card" aria-label="Assembly language sketch">
-            <pre><code>LOOP: LOAD  total
-      ADD   value
-      STORE total
-      JMP   LOOP</code></pre>
-            <p>Mnemonics make the operation readable; the assembler makes it executable.</p>
+            <figure class="v2-visual">
+              <img src="../assets/diagrams/stage10-infographics/stage10-lesson-113-retrieval.jpg" alt="Retrieval map. Signal words. Expected mechanism. Typical marking error. IPOC / decomposition" loading="lazy" />
+              <figcaption>Section 9 in one page. One maintained explanation is shown as an image on larger screens and as text on small screens.</figcaption>
+              <div class="v2-mobile-visual-text" aria-label="Mobile text alternative"><ul><li>Retrieval map</li><li>Signal words</li><li>Expected mechanism</li><li>Typical marking error</li><li>IPOC / decomposition</li></ul></div>
+            </figure>
           </div>
         </section>
 
-        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-047">
-          <article class="why-card">
-            <h3>Why this matters</h3>
-            <p>Exam answers often lose marks by calling assembly "machine code" or calling an assembler a compiler.</p>
-          </article>
-          <article class="trap-card">
-            <h3>Common error</h3>
-            <p>Assembly is low-level and uses mnemonics, but it is not directly executed as text by the CPU.</p>
-          </article>
+        <section class="v2-panel" id="practice">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 3 | select by learner need</p><h2>Practice by question type</h2></div>
+          <div class="v2-question-list"><article class="v2-question" data-question-id="Q-L047-01" data-semantic-fingerprint="S9.02|decomposition-and-modular-problem-solving|apply|what-difference-between-abstraction|written|recall">
+              <div class="v2-question-head"><span class="v2-badge">apply</span><span class="v2-badge">recall</span><span class="v2-badge difficulty">foundation</span><span class="v2-badge">2 marks</span></div>
+              <p><strong>Question 1.</strong> What is the difference between abstraction and decomposition?</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> Abstraction selects essential details for the model; decomposition splits the retained problem into sub-problems/modules.</p><p><strong>Marking guidance:</strong> Award one mark for each distinct, technically accurate point or method step.</p><p><strong>Common error:</strong> For the command word apply, perform that exact action; do not replace it with an unrelated fact.</p></div></details>
+            </article><article class="v2-question" data-question-id="Q-L047-02" data-semantic-fingerprint="S9.02|decomposition-and-modular-problem-solving|compare|compare-procedure-module-function|written|evaluate">
+              <div class="v2-question-head"><span class="v2-badge">compare</span><span class="v2-badge">evaluate</span><span class="v2-badge difficulty">application</span><span class="v2-badge">2 marks</span></div>
+              <p><strong>Question 2.</strong> Compare a procedure module from a function module at this design stage.</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> A procedure performs an action; a function returns a value to its caller.</p><p><strong>Marking guidance:</strong> Award one mark for each distinct, technically accurate point or method step.</p><p><strong>Common error:</strong> Do not repeat the same point in different words; each mark needs a separate idea or method step.</p></div></details>
+            </article><article class="v2-question" data-question-id="Q-L047-03" data-semantic-fingerprint="S9.02|decomposition-and-modular-problem-solving|explain|does-ipo-help-refinement|written|explain">
+              <div class="v2-question-head"><span class="v2-badge">explain</span><span class="v2-badge">explain</span><span class="v2-badge difficulty">transfer</span><span class="v2-badge">2 marks</span></div>
+              <p><strong>Question 3.</strong> How does IPO help one refinement level?</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> It checks that each module receives the data it needs, performs defined processing and supplies the required output.</p><p><strong>Marking guidance:</strong> Award one mark for each distinct, technically accurate point or method step.</p><p><strong>Common error:</strong> Do not copy the worked example unchanged; transfer the method and check it against the new context.</p></div></details>
+            </article></div>
+          <div class="v2-paper-refs">
+          <h3>Related past-paper indexes</h3>
+          <table><thead><tr><th>Reference</th><th>Marks</th><th>Command word</th><th>Question type</th></tr></thead>
+          <tbody><tr><td>9618/22/S/25 Q2(i)</td><td>2</td><td>calculate</td><td>calculate</td></tr><tr><td>9618/22/S/24 Q7(i)</td><td>5</td><td>complete</td><td>recall</td></tr><tr><td>9618/23/W/24 Q7(b)</td><td>4</td><td>calculate</td><td>calculate</td></tr><tr><td>9618/22/S/24 Q7(a)</td><td>3</td><td>describe</td><td>explain</td></tr></tbody></table>
+          <p class="v2-copyright-note">Index only: Cambridge question and mark-scheme wording is not reproduced on this public course page.</p>
+        </div>
         </section>
 
-        <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-047">
-          <div class="section-title">
-            <p class="eyebrow">Warm-up hook</p>
-            <h2>Which part of `ADD 90` is the mnemonic?</h2>
-            <p>Click the best answer. The mnemonic is the readable operation, not the number doing the heavy lifting.</p>
-          </div>
-          <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="add">ADD</button>
-            <button class="choice-card" type="button" data-hook="ninety">90</button>
-            <button class="choice-card" type="button" data-hook="both">ADD 90</button>
-            <button class="choice-card" type="button" data-hook="cpu">CPU</button>
-          </div>
-          <div class="feedback" id="hookFeedback" aria-live="polite">
-            Click one. Ask: which part represents the operation?
-          </div>
+        <section class="v2-panel" id="summary">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 4 | close when ready</p><h2>Summary and exam reminders</h2></div>
+          <div class="v2-summary-grid"><div><h3>Summary</h3><ul class="v2-summary-list"><li>Define decomposition and modular problem solving with the exact technical vocabulary expected by the syllabus.</li><li>Use the lesson method on a fresh context and show the intermediate decision, representation or calculation.</li><li>Match the shape of the answer to the command word and the available marks.</li><li>Check the final answer against the scenario instead of repeating a memorised sentence.</li></ul></div><div class="v2-error"><h3>Common error to correct</h3><p>Students often start coding before defining the output. Correction: an algorithm is easier to design when the required result is known first.</p></div></div>
+          <div class="v2-tip-box"><h3>Exam technique</h3><ul><li>Follow the command word: state gives a fact; explain links a cause to a consequence; compare covers both sides.</li><li>Match the number of independent points or method steps to the available marks.</li><li>For decomposition and modular problem solving, use the exact technical term before applying it to the scenario.</li></ul></div>
         </section>
 
-        <section class="panel" id="assembly" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-047">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 1</p>
-            <h2>What assembly language is</h2>
-          </div>
-          <div class="concept-grid">
-            <article>
-              <strong>Low-level language</strong>
-              <span>Assembly language is close to machine code and closely linked to a processor's instruction set.</span>
-            </article>
-            <article>
-              <strong>Uses mnemonics</strong>
-              <span>Human-readable abbreviations represent machine-code operations.</span>
-            </article>
-            <article>
-              <strong>Processor-specific</strong>
-              <span>Assembly syntax and available instructions depend on the target architecture.</span>
-            </article>
-            <article>
-              <strong>Needs translation</strong>
-              <span>An assembler converts assembly language into machine code.</span>
-            </article>
-          </div>
-          <div class="callout">Chinese support: assembly language = 汇编语言；mnemonic = 助记符；assembler = 汇编器；label = 标签；directive = 伪指令/指示语句。</div>
-        </section>
-
-        <!-- stage10-explanation:start assembly -->
-        <section class="panel explanation-panel" id="explanation-assembly" data-explains="assembly" data-explanation-kind="mechanism" aria-labelledby="explanation-assembly-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-047">
-          <h2 class="explanation-sr-only" id="explanation-assembly-title">What assembly language is</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-047-assembly.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining What assembly language is with a structured visual model." />
-            <figcaption class="explanation-sr-only">What assembly language is: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Low-level language</li><li><strong>Lesson fact:</strong> Assembly language is close to machine code and closely linked to a processor's instruction set.</li><li><strong>Lesson fact:</strong> Uses mnemonics</li><li><strong>Lesson fact:</strong> Human-readable abbreviations represent machine-code operations.</li><li><strong>Lesson fact:</strong> Processor-specific</li><li><strong>Lesson fact:</strong> Assembly syntax and available instructions depend on the target architecture.</li><li><strong>Lesson fact:</strong> Needs translation</li><li><strong>Lesson fact:</strong> An assembler converts assembly language into machine code.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end assembly -->
-        <section class="panel" id="mnemonics" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-047">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 2</p>
-            <h2>Mnemonics represent operations</h2>
-          </div>
-          <div class="mnemonic-table" role="table" aria-label="Mnemonic examples">
-            <div class="table-row table-head" role="row">
-              <div role="columnheader">Mnemonic</div>
-              <div role="columnheader">Likely operation</div>
-              <div role="columnheader">Example</div>
-              <div role="columnheader">Exam-safe wording</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">LOAD</div>
-              <div role="cell">Load a value into a register/ACC.</div>
-              <div role="cell">LOAD count</div>
-              <div role="cell">LOAD is a mnemonic for a machine-code load instruction.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">STORE</div>
-              <div role="cell">Store a register/ACC value in memory.</div>
-              <div role="cell">STORE total</div>
-              <div role="cell">STORE represents an operation that writes a value to memory.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">ADD</div>
-              <div role="cell">Add a value to a register/ACC.</div>
-              <div role="cell">ADD value</div>
-              <div role="cell">ADD is easier to read than a binary opcode for addition.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">JMP</div>
-              <div role="cell">Change program flow to another address/label.</div>
-              <div role="cell">JMP LOOP</div>
-              <div role="cell">JMP maps to a machine-code branch/jump instruction.</div>
-            </div>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start mnemonics -->
-        <section class="panel explanation-panel" id="explanation-mnemonics" data-explains="mnemonics" data-explanation-kind="process" aria-labelledby="explanation-mnemonics-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-047">
-          <h2 class="explanation-sr-only" id="explanation-mnemonics-title">Mnemonics represent operations</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-047-mnemonics.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Mnemonics represent operations with a structured visual model." />
-            <figcaption class="explanation-sr-only">Mnemonics represent operations: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Mnemonic</li><li><strong>Lesson fact:</strong> Likely operation</li><li><strong>Lesson fact:</strong> Exam-safe wording</li><li><strong>Lesson fact:</strong> Load a value into a register/ACC.</li><li><strong>Lesson fact:</strong> LOAD count</li><li><strong>Lesson fact:</strong> LOAD is a mnemonic for a machine-code load instruction.</li><li><strong>Lesson fact:</strong> Store a register/ACC value in memory.</li><li><strong>Lesson fact:</strong> STORE total</li><li><strong>Lesson fact:</strong> STORE represents an operation that writes a value to memory.</li><li><strong>Lesson fact:</strong> Add a value to a register/ACC.</li><li><strong>Lesson fact:</strong> ADD value</li><li><strong>Lesson fact:</strong> ADD is easier to read than a binary opcode for addition.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end mnemonics -->
-        <section class="panel" id="structure" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-047">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 3</p>
-            <h2>Structure of a simple assembly line</h2>
-          </div>
-          <div class="line-card">
-            <code>LOOP: ADD value ; add next item</code>
-            <div class="line-grid">
-              <span><strong>LOOP:</strong> label</span>
-              <span><strong>ADD</strong> mnemonic</span>
-              <span><strong>value</strong> operand</span>
-              <span><strong>; add next item</strong> comment</span>
-            </div>
-          </div>
-          <div class="structure-grid">
-            <article>
-              <h3>Label</h3>
-              <p>A symbolic name for an address or line, often used by jump/branch instructions.</p>
-            </article>
-            <article>
-              <h3>Operand</h3>
-              <p>The value, address, register or label used by the instruction.</p>
-            </article>
-            <article>
-              <h3>Comment</h3>
-              <p>Text for human readers. Comments are ignored by the assembler.</p>
-            </article>
-            <article>
-              <h3>Directive</h3>
-              <p>An instruction to the assembler, not a CPU instruction. It may reserve storage or define constants.</p>
-            </article>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start structure -->
-        <section class="panel explanation-panel" id="explanation-structure" data-explains="structure" data-explanation-kind="mechanism" aria-labelledby="explanation-structure-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-047">
-          <h2 class="explanation-sr-only" id="explanation-structure-title">Instruction labels and symbolic data addresses</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-047-structure.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Instruction labels and symbolic data addresses with a structured visual model." />
-            <figcaption class="explanation-sr-only">Instruction labels and symbolic data addresses: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> &lt;label&gt;: &lt;opcode&gt; &lt;operand&gt; gives a symbolic address to an instruction.</li><li><strong>Lesson fact:</strong> &lt;label&gt;: &lt;data&gt; gives a symbolic address to a memory location containing data.</li><li><strong>Lesson fact:</strong> Pass 1 records both instruction and data labels in the symbol table.</li><li><strong>Lesson fact:</strong> Pass 2 replaces a label reference with its resolved address while translating.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end structure -->
-        <section class="panel" id="assembler" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-047">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 4</p>
-            <h2>Assembler: text to machine code</h2>
-          </div>
-          <div class="flow-grid">
-            <article><strong>1. Read source</strong><span>Assembly source contains mnemonics, labels, operands, comments and directives.</span></article>
-            <article><strong>2. Resolve labels</strong><span>Labels are replaced with actual addresses or offsets.</span></article>
-            <article><strong>3. Translate mnemonics</strong><span>Mnemonics are converted to binary opcodes and operands are encoded.</span></article>
-            <article><strong>4. Output object/machine code</strong><span>The generated machine code can be loaded and executed by the processor.</span></article>
-          </div>
-          <div class="trap-card inline-card">
-            <h3>Common error</h3>
-            <p>An assembler translates assembly to machine code. A compiler usually translates high-level language to lower-level code.</p>
-          </div>
-        </section>
-
-
-        <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-047">
-          <div class="section-title">
-            <p class="eyebrow">Interactive tool</p>
-            <h2>Assembly instruction parser</h2>
-            <p>Select a line and identify its mnemonic, operand and translation role.</p>
-          </div>
-          <div class="converter-grid">
-            <label>
-              Assembly line
-              <select id="lineInput">
-                <option value="load">LOAD count</option>
-                <option value="add">ADD value</option>
-                <option value="jump">LOOP: JMP START</option>
-                <option value="comment">STORE total ; save result</option>
-                <option value="directive">COUNT: DAT 5</option>
-              </select>
-            </label>
-            <button type="button" id="parseBtn">Parse line</button>
-          </div>
-          <div class="result-box" id="parseResult" aria-live="polite"></div>
-          <div class="method-box" id="parseMethod"></div>
-          <div class="reject-box" id="parseTrap"></div>
-        </section>
-
-        <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-047">
-          <div class="section-title">
-            <p class="eyebrow">Worked examples</p>
-            <h2>Read assembly like a structured sentence</h2>
-          </div>
-          <div class="example-tabs" role="tablist" aria-label="Worked examples">
-            <button class="tab active" type="button" data-example="parse">Parse</button>
-            <button class="tab" type="button" data-example="translate">Translate concept</button>
-            <button class="tab" type="button" data-example="compare">Compare languages</button>
-          </div>
-          <article class="example-box" id="exampleBox"></article>
-        </section>
-
-        <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-047">
-          <div class="section-title">
-            <p class="eyebrow">5-minute quiz</p>
-            <h2>Practice with instant checking</h2>
-            <p>Use exact vocabulary. The CPU will not be offended, but the mark scheme might be.</p>
-          </div>
-          <div class="practice-list" id="practiceList"></div>
-        </section>
-
-        <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-047">
-          <div class="section-title">
-            <p class="eyebrow">Mistake debugging</p>
-            <h2>Fix the assembly misconception</h2>
-          </div>
-          <div class="mistake-grid" id="mistakeList"></div>
-        </section>
-
-        <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-047">
-          <div class="section-title">
-            <p class="eyebrow">Exam-style questions</p>
-            <h2>Cambridge-style questions with expandable mark schemes</h2>
-            <p>These are original Cambridge-style questions. MS wording is strict about assembler vs compiler and assembly vs machine code.</p>
-          </div>
-          <div class="exam-list" id="examList"></div>
-        </section>
-
-        <section class="panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-047">
-          <div class="section-title">
-            <p class="eyebrow">Summary</p>
-            <h2>Readable, low-level, still translated</h2>
-          </div>
-          <div class="summary-grid">
-            <div><strong>Assembly</strong><span>Low-level language close to machine code.</span></div>
-            <div><strong>Mnemonic</strong><span>Readable abbreviation for an operation, e.g. ADD.</span></div>
-            <div><strong>Operand</strong><span>Value, address, register or label used by instruction.</span></div>
-            <div><strong>Label</strong><span>Symbolic name for an address or line.</span></div>
-            <div><strong>Assembler</strong><span>Translates assembly into machine code.</span></div>
-            <div><strong>Machine code</strong><span>Binary instructions executed by the CPU.</span></div>
-          </div>
-        </section>
-
-        <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
-          <div class="section-title">
-            <p class="eyebrow">Homework</p>
-            <h2>Make assembly vocabulary exam-ready</h2>
-          </div>
-          <ol class="homework-list">
-            <li>Define assembly language, mnemonic, assembler, label and directive in one sentence each.</li>
-            <li>Annotate these lines: `START: LOAD count`, `ADD value`, `STORE total ; save answer`, `JMP START`.</li>
-            <li>Write a 5-mark answer: "Explain how an assembler translates assembly language into machine code."</li>
-            <li>Compare assembly language and machine code using the words mnemonic, binary and execute.</li>
-            <li>Correct this sentence: "Assembly is high-level machine code that is run directly by the CPU."</li>
-          </ol>
-        </section>
+        <nav class="v2-bottom-nav" aria-label="Previous and next lesson"><a href="../lesson-046/" >Previous lesson</a><a href="../lesson-048/" >Next lesson</a></nav>
       </div>
     </main>
-    <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=3"></script>
-    <script src="../lesson-toolbar.js?v=3"></script>
-    <script src="../stage7-accessibility.js?v=4"></script>
+    <script src="../course-v2.js?v=1"></script>
   </body>
 </html>

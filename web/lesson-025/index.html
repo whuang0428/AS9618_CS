@@ -3,347 +3,89 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 025 | Internet, intranet, extranet and cloud services</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <title>AS9618 Lesson 025 | Bit manipulation, masks and binary shifts</title>
     <link rel="icon" href="data:" />
-    <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
+    <link rel="stylesheet" href="../course-v2.css?v=3" />
   </head>
-  <body>
+  <body data-course-version="2" data-lesson-id="025" data-syllabus-ids="S4.15">
     <a class="skip-link" href="#main-content">Skip to main content</a>
-    <header class="topbar">
-      <div>
-        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 2</p>
-        <h1>Internet, intranet, extranet and cloud services</h1>
-      </div>
-      <div class="action-panel" aria-label="Page controls">
-        <a class="course-home-link" href="../">Course home</a>
-        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
-      </div>
+    <header class="v2-topbar">
+      <div><p class="v2-eyebrow">Cambridge AS9618 | Paper 1 | Section 4: Processor fundamentals</p><h1>Bit manipulation, masks and binary shifts</h1></div>
+      <nav class="v2-actions" aria-label="Lesson actions"><a href="../">Course home</a><a href="../assessments/">Assessment bank</a><button type="button" id="printLesson">Print</button></nav>
     </header>
+    <main class="v2-shell" id="main-content" tabindex="-1">
+      <nav class="v2-toc" aria-label="Lesson contents"><strong>Lesson 025</strong><a href="#overview">Overview</a><a href="#prerequisite">Prerequisite</a><a href="#explanation">Explanation</a><a href="#practice">Practice</a><a href="#summary">Summary</a></nav>
+      <div class="v2-content">
+        <section class="v2-hero" id="overview">
+          <div><p class="v2-eyebrow">Flexible-depth lesson</p><h2>Bit manipulation, masks and binary shifts</h2><p>S4.15 | Select what to omit, teach briefly or explore in depth.</p></div>
+          <div class="v2-time-grid" aria-label="Available lesson depth"><div><strong>Quick</strong><span>diagnose + essentials</span></div><div><strong>Full</strong><span>complete explanation</span></div><div><strong>Deep</strong><span>prerequisites + extension</span></div><div><strong>Choose</strong><span>practice by need</span></div></div>
+        </section>
 
-    <main class="layout" id="main-content" tabindex="-1">
-      <aside class="lesson-nav" aria-label="Lesson navigation">
-        <a href="#overview">Overview</a>
-        <a href="#hook">Warm-up</a>
-        <a href="#networks">Network types</a>
-        <a href="#cloud">Cloud services</a>
-        <a href="#compare">Comparison</a>
-        <a href="#tool">Choice tool</a>
-        <a href="#examples">Examples</a>
-        <a href="#practice">Practice</a>
-        <a href="#debug">Debugging</a>
-        <a href="#exam">Exam-style</a>
-        <a href="#homework">Homework</a>
-      </aside>
+        <section class="v2-panel v2-route-menu" aria-labelledby="route-heading">
+          <div class="v2-heading"><p class="v2-eyebrow">Teacher choice</p><h2 id="route-heading">Choose the depth for this group</h2></div>
+          <div class="v2-route-grid"><article><h3>Quick route</h3><p>Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.</p></article><article><h3>Full route</h3><p>Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.</p></article><article><h3>Deep route</h3><p>Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.</p></article></div>
+        </section>
 
-      <div class="lesson-content">
-        <!-- remediation-v2-stage3-scope:start -->
-        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>This lesson is Optional enrichment or review. It does not establish first use of a new syllabus requirement and is excluded from compulsory coverage and prerequisite statistics.</p></aside>
-        <!-- remediation-v2-stage3-scope:end -->
+        <section class="v2-panel" id="prerequisite">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 1 | optional depth</p><h2>Prerequisite knowledge and quick diagnostic</h2></div>
+          <div class="v2-diagnostic"><p>Recall S1.02 before starting this lesson.</p></div>
+          <p>Give one accurate definition or method step before continuing. If it is missing, revisit only that prerequisite.</p>
+          <details class="v2-prerequisite-detail"><summary>Open optional prerequisite refresher</summary><ul><li>The Version 2 row requires binary, denary, hexadecimal, Binary Coded Decimal (BCD), one&#39;s complement and two&#39;s complement; BCD and complements are representations rather than additional number bases.</li><li>Show understanding of binary, denary and hexadecimal number systems, BCD, and one&#39;s- and two&#39;s-complement representations.</li></ul></details>
+        </section>
 
-<section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-025">
-          <div class="hero-copy">
-            <p class="lesson-meta">Lesson 025 | 45 minutes | Paper 1 Section 2</p>
-            <h2>Distinguish networks by access, ownership and purpose.</h2>
-            <p>
-              This lesson compares public, private and partner-access networks, then
-              explains cloud services as remote computing resources delivered over a
-              network. The exam rewards access control, ownership, purpose and trade-offs.
-            </p>
-            <div class="objective-grid" aria-label="Learning objectives">
-              <div><strong>Distinguish</strong><span>internet, intranet and extranet by access and purpose</span></div>
-              <div><strong>Explain</strong><span>cloud storage/software/infrastructure as remote services</span></div>
-              <div><strong>Evaluate</strong><span>benefits and risks such as collaboration, cost, security and dependence on connection</span></div>
+        <section class="v2-panel" id="explanation">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 2 | deliberately over-complete</p><h2>Knowledge explanation</h2></div>
+          <h3>Learning objectives</h3><ul class="v2-objectives"><li>Use AND, OR, XOR, LSL and LSR for bit manipulation, including testing/setting bits with masks.</li></ul>
+          <details class="v2-concept-menu"><summary>Open the concept checklist and choose what to teach</summary><ul><li>AND mask / bitwise AND</li><li>OR mask / bitwise OR</li><li>XOR mask / bitwise XOR</li><li>LSL / logical left shift</li><li>LSR / logical right shift</li><li>logical</li><li>arithmetic</li><li>cyclic</li><li>left shift</li><li>right shift</li><li>test</li><li>set</li><li>clear</li><li>toggle</li><li>monitor</li><li>control</li></ul></details>
+          <div class="v2-explanation-grid">
+            <div>
+              <article class="v2-core-facts"><h3>Detailed explanation</h3><p class="v2-teacher-note">Teach all points, or select only the ones this group needs. The list is intentionally fuller than a fixed lesson slot.</p><ul class="v2-facts"><li>Use AND, OR and XOR masks to test, set, clear and toggle bits, and apply logical, arithmetic and cyclic left/right shifts at a stated fixed width. Include device monitoring/control and distinguish discarded, sign-filled and rotated bits.</li><li>A bitwise AND mask can test or clear selected bits; an OR mask can set selected bits; an XOR mask can toggle selected bits. These operations are used to monitor and control individual flags without changing unrelated bits.</li><li>LSL is a logical left shift and LSR is a logical right shift. Distinguish logical shifts from arithmetic shifts and cyclic shifts: a logical shift inserts zero, an arithmetic right shift preserves the sign bit, and a cyclic shift wraps the bit that leaves one end back to the other.</li><li>For bit manipulation, masks and binary shifts, identify the required concept before describing its mechanism or consequence.</li></ul></article>
+              <article class="v2-example"><h3>Worked example</h3><p>Test, set, clear and toggle one flag: For Status = 10110100, an AND mask tests a selected bit, an OR mask sets it, an AND mask with a zero at that position clears it, and an XOR mask toggles it. LSL moves bits left; LSR moves them right and fills with zero.</p></article>
+              <aside class="v2-extension"><h3>Beyond syllabus / 延伸知识（不要求背诵）</h3><p>modern processors add pipelining and several cache levels, but exam answers should begin with the syllabus processor model.</p></aside>
             </div>
-          </div>
-          <div class="cloud-card" aria-label="Network access concept">
-            <span>public | private | partner | remote service</span>
-            <p>Who can access it? Who controls it? Where is the service?</p>
-          </div>
-        </section>
-
-        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-025">
-          <article class="why-card">
-            <h3>Why this matters</h3>
-            <p>Exam answers often lose marks by saying "private internet". Use intranet or extranet when access is restricted.</p>
-          </article>
-          <article class="trap-card">
-            <h3>Common error</h3>
-            <p>Cloud service does not mean "stored nowhere". It means stored or processed on remote servers accessed over a network.</p>
-          </article>
-        </section>
-
-        <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-025">
-          <div class="section-title">
-            <p class="eyebrow">Warm-up hook</p>
-            <h2>A school shares staff policies internally, then shares selected timetable data with a bus company. What changed?</h2>
-          </div>
-          <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="extranet">From intranet to extranet, because an approved external organisation gets access</button>
-            <button class="choice-card" type="button" data-hook="internet">It became the internet, because two organisations are involved</button>
-            <button class="choice-card" type="button" data-hook="cloud">It became cloud computing, because data moved somewhere</button>
-            <button class="choice-card" type="button" data-hook="router">It became a router, because traffic crosses a boundary</button>
-          </div>
-          <div class="feedback" id="hookFeedback" aria-live="polite">
-            Pick the answer that focuses on access rights, not just the number of organisations.
+            <figure class="v2-visual">
+              <img src="../assets/diagrams/stage10-infographics/stage10-lesson-051-shifts.jpg" alt="Every shown input and stored result contains exactly eight bits.. Logical shifts insert zero; logical left 10110011 becomes 01100110 and logical right becomes 01011001.. Arithmetic left 10110011 becomes 01100110; arithmetic right copies sign bit 1 and becomes 11011001.. Cyclic left rotates the outgoing bit to give 01100111; cyclic right gives 11011001.. Unsigned logical-left overflow and signed arithmetic-left overflow both occur here; rotations do not use an overflow label." loading="lazy" />
+              <figcaption>Binary shifts: logical, arithmetic, cyclic. One maintained explanation is shown as an image on larger screens and as text on small screens.</figcaption>
+              <div class="v2-mobile-visual-text" aria-label="Mobile text alternative"><ul><li>Every shown input and stored result contains exactly eight bits.</li><li>Logical shifts insert zero; logical left 10110011 becomes 01100110 and logical right becomes 01011001.</li><li>Arithmetic left 10110011 becomes 01100110; arithmetic right copies sign bit 1 and becomes 11011001.</li><li>Cyclic left rotates the outgoing bit to give 01100111; cyclic right gives 11011001.</li><li>Unsigned logical-left overflow and signed arithmetic-left overflow both occur here; rotations do not use an overflow label.</li></ul></div>
+            </figure>
           </div>
         </section>
 
-        <section class="panel" id="networks" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-025">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 1</p>
-            <h2>Internet, intranet and extranet</h2>
-            <p>These terms describe access scope and purpose. Distinguish these terms by access scope and purpose.</p>
-          </div>
-          <div class="network-grid">
-            <article class="network-type">
-              <h3>Internet</h3>
-              <p>A global public network of interconnected networks. It allows public services such as websites, email and online platforms.</p>
-              <ul>
-                <li><strong>Access:</strong> public, though individual services may still require login.</li>
-                <li><strong>Use case:</strong> public website, online search, public cloud service access.</li>
-              </ul>
-            </article>
-            <article class="network-type">
-              <h3>Intranet</h3>
-              <p>A private network used within an organisation, often using web technologies but restricted to authorised users.</p>
-              <ul>
-                <li><strong>Access:</strong> internal staff or members only.</li>
-                <li><strong>Use case:</strong> staff policies, internal forms, private school resources.</li>
-              </ul>
-            </article>
-            <article class="network-type">
-              <h3>Extranet</h3>
-              <p>A private network that allows controlled access to selected external users or organisations.</p>
-              <ul>
-                <li><strong>Access:</strong> authorised internal users plus selected partners/customers/suppliers.</li>
-                <li><strong>Use case:</strong> supplier portal, parent portal, business partner data sharing.</li>
-              </ul>
-            </article>
-          </div>
-          <div class="callout">Chinese support: public network = 公共网络；private network = 私有网络；authorised user = 授权用户；partner = 合作方。</div>
+        <section class="v2-panel" id="practice">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 3 | select by learner need</p><h2>Practice by question type</h2></div>
+          <div class="v2-question-list"><article class="v2-question" data-question-id="Q-L025-01" data-semantic-fingerprint="S4.15|bit-manipulation-masks-and-binary-shifts|explain|xor-test-clear-set|written|explain">
+              <div class="v2-question-head"><span class="v2-badge">explain</span><span class="v2-badge">explain</span><span class="v2-badge difficulty">foundation</span><span class="v2-badge">6 marks</span></div>
+              <p><strong>Question 1.</strong> Explain how AND, OR and XOR masks test, clear, set and toggle control flags, then apply one LSL and one LSR.</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> AND test/clear; OR set; XOR toggle; correct LSL; correct LSR; monitor/control context</p><p><strong>Marking guidance:</strong> Do not treat logical, arithmetic and cyclic shifts as identical.</p><p><strong>Common error:</strong> For the command word explain, perform that exact action; do not replace it with an unrelated fact.</p></div></details>
+            </article><article class="v2-question" data-question-id="Q-L025-02" data-semantic-fingerprint="S4.15|bit-manipulation-masks-and-binary-shifts|apply|mask-operation-sets-selected|written|recall">
+              <div class="v2-question-head"><span class="v2-badge">apply</span><span class="v2-badge">recall</span><span class="v2-badge difficulty">application</span><span class="v2-badge">2 marks</span></div>
+              <p><strong>Question 2.</strong> Which mask operation sets selected bits?</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> Bitwise OR.</p><p><strong>Marking guidance:</strong> Award one mark for each distinct, technically accurate point or method step.</p><p><strong>Common error:</strong> Do not repeat the same point in different words; each mark needs a separate idea or method step.</p></div></details>
+            </article><article class="v2-question" data-question-id="Q-L025-03" data-semantic-fingerprint="S4.15|bit-manipulation-masks-and-binary-shifts|apply|what-inserted-logical-shift|written|recall">
+              <div class="v2-question-head"><span class="v2-badge">apply</span><span class="v2-badge">recall</span><span class="v2-badge difficulty">transfer</span><span class="v2-badge">2 marks</span></div>
+              <p><strong>Question 3.</strong> What is inserted by a logical shift?</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> Zero bits.</p><p><strong>Marking guidance:</strong> Award one mark for each distinct, technically accurate point or method step.</p><p><strong>Common error:</strong> Do not copy the worked example unchanged; transfer the method and check it against the new context.</p></div></details>
+            </article></div>
+          <div class="v2-paper-refs">
+          <h3>Related past-paper indexes</h3>
+          <table><thead><tr><th>Reference</th><th>Marks</th><th>Command word</th><th>Question type</th></tr></thead>
+          <tbody><tr><td>9618/13/W/25 Q6(a)</td><td>4</td><td>compare</td><td>evaluate</td></tr><tr><td>9618/11/W/25 Q4(a)</td><td>1</td><td>apply</td><td>recall</td></tr><tr><td>9618/11/W/25 Q4(b)</td><td>1</td><td>apply</td><td>recall</td></tr><tr><td>9618/11/W/25 Q4(c)</td><td>1</td><td>apply</td><td>recall</td></tr></tbody></table>
+          <p class="v2-copyright-note">Index only: Cambridge question and mark-scheme wording is not reproduced on this public course page.</p>
+        </div>
         </section>
 
-        <!-- stage10-explanation:start networks -->
-        <section class="panel explanation-panel" id="explanation-networks" data-explains="networks" data-explanation-kind="mechanism" aria-labelledby="explanation-networks-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-025">
-          <h2 class="explanation-sr-only" id="explanation-networks-title">Internet, intranet and extranet</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-025-networks.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Internet, intranet and extranet with a structured visual model." />
-            <figcaption class="explanation-sr-only">Internet, intranet and extranet: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> These terms describe access scope and purpose. Distinguish these terms by access scope and purpose.</li><li><strong>Lesson fact:</strong> Internet</li><li><strong>Lesson fact:</strong> A global public network of interconnected networks. It allows public services such as websites, email and online platforms.</li><li><strong>Lesson fact:</strong> Access: public, though individual services may still require login.</li><li><strong>Lesson fact:</strong> Use case: public website, online search, public cloud service access.</li><li><strong>Lesson fact:</strong> Intranet</li><li><strong>Lesson fact:</strong> A private network used within an organisation, often using web technologies but restricted to authorised users.</li><li><strong>Lesson fact:</strong> Access: internal staff or members only.</li><li><strong>Lesson fact:</strong> Use case: staff policies, internal forms, private school resources.</li><li><strong>Lesson fact:</strong> Extranet</li><li><strong>Lesson fact:</strong> A private network that allows controlled access to selected external users or organisations.</li><li><strong>Lesson fact:</strong> Access: authorised internal users plus selected partners/customers/suppliers.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end networks -->
-        <section class="panel" id="cloud" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-025">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 2</p>
-            <h2>Cloud services</h2>
-            <p>Cloud services provide storage, software or computing resources from remote servers over a network. The user does not need to own all the local infrastructure.</p>
-          </div>
-          <div class="service-grid">
-            <article class="service-card">
-              <h3>Cloud storage</h3>
-              <p>Files are stored on remote servers and accessed from different devices over a network.</p>
-              <p><strong>Example:</strong> a student saves project files online and opens them at home and school.</p>
-            </article>
-            <article class="service-card">
-              <h3>Cloud software</h3>
-              <p>Applications run through a browser or client while data and updates are managed by the provider.</p>
-              <p><strong>Example:</strong> collaborative documents or email systems.</p>
-            </article>
-            <article class="service-card">
-              <h3>Cloud infrastructure</h3>
-              <p>Servers, processing power or databases are rented from a provider instead of bought and maintained locally.</p>
-              <p><strong>Example:</strong> hosting a school portal on remote servers.</p>
-            </article>
-          </div>
-          <div class="trap-card inline">
-            <h3>Common error</h3>
-            <p>Cloud advantages are not automatic. A strong answer links the benefit or risk to a scenario: remote access, collaboration, backup, scalability, provider dependence, security, privacy or internet connection.</p>
-          </div>
+        <section class="v2-panel" id="summary">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 4 | close when ready</p><h2>Summary and exam reminders</h2></div>
+          <div class="v2-summary-grid"><div><h3>Summary</h3><ul class="v2-summary-list"><li>Define bit manipulation, masks and binary shifts with the exact technical vocabulary expected by the syllabus.</li><li>Use the lesson method on a fresh context and show the intermediate decision, representation or calculation.</li><li>Match the shape of the answer to the command word and the available marks.</li><li>Check the final answer against the scenario instead of repeating a memorised sentence.</li></ul></div><div class="v2-error"><h3>Common error to correct</h3><p>Students often memorise register names without roles. Correction: a register earns its name by what it temporarily holds.</p></div></div>
+          <div class="v2-tip-box"><h3>Exam technique</h3><ul><li>Follow the command word: state gives a fact; explain links a cause to a consequence; compare covers both sides.</li><li>Match the number of independent points or method steps to the available marks.</li><li>For bit manipulation, masks and binary shifts, use the exact technical term before applying it to the scenario.</li></ul></div>
         </section>
 
-        <!-- stage10-explanation:start cloud -->
-        <section class="panel explanation-panel" id="explanation-cloud" data-explains="cloud" data-explanation-kind="mechanism" aria-labelledby="explanation-cloud-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-025">
-          <h2 class="explanation-sr-only" id="explanation-cloud-title">Cloud services</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-025-cloud.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Cloud services with a structured visual model." />
-            <figcaption class="explanation-sr-only">Cloud services: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Cloud services provide storage, software or computing resources from remote servers over a network. The user does not need to own all the local infrastructure.</li><li><strong>Lesson fact:</strong> Cloud storage</li><li><strong>Lesson fact:</strong> Files are stored on remote servers and accessed from different devices over a network.</li><li><strong>Lesson fact:</strong> Example: a student saves project files online and opens them at home and school.</li><li><strong>Lesson fact:</strong> Cloud software</li><li><strong>Lesson fact:</strong> Applications run through a browser or client while data and updates are managed by the provider.</li><li><strong>Lesson fact:</strong> Example: collaborative documents or email systems.</li><li><strong>Lesson fact:</strong> Cloud infrastructure</li><li><strong>Lesson fact:</strong> Servers, processing power or databases are rented from a provider instead of bought and maintained locally.</li><li><strong>Lesson fact:</strong> Example: hosting a school portal on remote servers.</li><li><strong>Lesson fact:</strong> Common error</li><li><strong>Lesson fact:</strong> Cloud advantages are not automatic. A strong answer links the benefit or risk to a scenario: remote access, collaboration, backup, scalability, provider dependence, security, privacy or internet connection.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end cloud -->
-        <section class="panel" id="compare" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-025">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 3</p>
-            <h2>Compare networks by access and control</h2>
-          </div>
-          <div class="compare-table" role="table" aria-label="Network and cloud comparison">
-            <div class="table-row table-head" role="row">
-              <div role="columnheader">Concept</div>
-              <div role="columnheader">Access / control</div>
-              <div role="columnheader">Exam distinction</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Internet</div>
-              <div role="cell">Global public network; services may be public or login-protected.</div>
-              <div role="cell">Do not call every online service an intranet.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Intranet</div>
-              <div role="cell">Private internal network controlled by one organisation.</div>
-              <div role="cell">Restricted to authorised internal users.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Extranet</div>
-              <div role="cell">Private controlled access extended to selected external users.</div>
-              <div role="cell">Not fully public; access is still controlled.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Cloud service</div>
-              <div role="cell">Remote provider resources accessed over a network.</div>
-              <div role="cell">Discuss benefits and risks, not just "online".</div>
-            </div>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start compare -->
-        <section class="panel explanation-panel" id="explanation-compare" data-explains="compare" data-explanation-kind="comparison" aria-labelledby="explanation-compare-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-025">
-          <h2 class="explanation-sr-only" id="explanation-compare-title">Compare networks by access and control</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-025-compare.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Compare networks by access and control with a structured visual model." />
-            <figcaption class="explanation-sr-only">Compare networks by access and control: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Access / control</li><li><strong>Lesson fact:</strong> Exam distinction</li><li><strong>Lesson fact:</strong> Internet</li><li><strong>Lesson fact:</strong> Global public network; services may be public or login-protected.</li><li><strong>Lesson fact:</strong> Do not call every online service an intranet.</li><li><strong>Lesson fact:</strong> Intranet</li><li><strong>Lesson fact:</strong> Private internal network controlled by one organisation.</li><li><strong>Lesson fact:</strong> Restricted to authorised internal users.</li><li><strong>Lesson fact:</strong> Extranet</li><li><strong>Lesson fact:</strong> Private controlled access extended to selected external users.</li><li><strong>Lesson fact:</strong> Not fully public; access is still controlled.</li><li><strong>Lesson fact:</strong> Cloud service</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end compare -->
-        <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-025">
-          <div class="section-title">
-            <p class="eyebrow">Interactive tool</p>
-            <h2>Network/service choice helper</h2>
-          </div>
-          <div class="converter-grid">
-            <label>
-              Scenario
-              <select id="scenarioInput">
-                <option value="public">A company publishes product pages for anyone to view</option>
-                <option value="staff">Staff access internal policies and forms only inside the organisation</option>
-                <option value="supplier">A supplier logs in to see selected stock levels</option>
-                <option value="files">A student opens the same files at home and school from remote storage</option>
-                <option value="scale">A startup rents servers during busy periods instead of buying hardware</option>
-                <option value="risk">A hospital considers storing patient records with a remote provider</option>
-              </select>
-            </label>
-            <button type="button" id="chooseBtn">Choose concept</button>
-          </div>
-          <div class="result-box" id="choiceResult" aria-live="polite"></div>
-          <div class="method-box" id="choiceMethod"></div>
-        </section>
-
-        <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-025">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge examples</p>
-            <h2>Worked examples</h2>
-          </div>
-          <div class="example-tabs" role="tablist" aria-label="Worked examples">
-            <button class="tab active" type="button" data-example="school">School portal</button>
-            <button class="tab" type="button" data-example="supplier">Supplier portal</button>
-            <button class="tab" type="button" data-example="cloud">Cloud migration</button>
-          </div>
-          <article class="example-box" id="exampleBox"></article>
-        </section>
-
-        <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-025">
-          <div class="section-title">
-            <p class="eyebrow">Your turn</p>
-            <h2>Practice with instant checking</h2>
-          </div>
-          <div class="practice-list" id="practiceList"></div>
-          <button class="primary-button" type="button" id="checkPractice">Check practice</button>
-          <div class="feedback" id="practiceFeedback" aria-live="polite"></div>
-        </section>
-
-        <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-025">
-          <div class="section-title">
-            <p class="eyebrow">Mistake debugging</p>
-            <h2>Fix the weak network/cloud answer</h2>
-          </div>
-          <div class="mistake-grid">
-            <article>
-              <p class="wrong">"An intranet is just a smaller internet."</p>
-              <button class="answer-toggle" type="button" data-answer="mistake1">Show correction</button>
-              <p class="answer" id="mistake1">An intranet is a private internal network controlled by an organisation and restricted to authorised internal users.</p>
-            </article>
-            <article>
-              <p class="wrong">"Cloud storage means the files are stored in the air, so no one owns the hardware."</p>
-              <button class="answer-toggle" type="button" data-answer="mistake2">Show correction</button>
-              <p class="answer" id="mistake2">Cloud storage uses remote servers owned or managed by a provider. Users access files over a network.</p>
-            </article>
-          </div>
-        </section>
-
-        <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-025">
-          <div class="section-title">
-            <p class="eyebrow">Exam-style questions</p>
-            <h2>Questions with expandable MS</h2>
-            <p>Attempt first, then expand the mark scheme. Strong answers name the concept and link it to access control, ownership, benefit or risk.</p>
-          </div>
-          <div class="exam-list" id="examList"></div>
-        </section>
-
-        <section class="panel summary-panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-025">
-          <div class="section-title">
-            <p class="eyebrow">Summary</p>
-            <h2>Access scope is the shortcut</h2>
-          </div>
-          <div class="summary-grid">
-            <div><strong>Internet</strong><span>Global public network of interconnected networks.</span></div>
-            <div><strong>Intranet</strong><span>Private internal network for authorised users inside an organisation.</span></div>
-            <div><strong>Extranet</strong><span>Controlled private access for selected external users or partners.</span></div>
-            <div><strong>Cloud</strong><span>Remote storage/software/infrastructure accessed over a network.</span></div>
-            <div><strong>Benefits</strong><span>Remote access, collaboration, scalability, lower local maintenance, backup.</span></div>
-            <div><strong>Risks</strong><span>Dependence on connection/provider, privacy, security, ongoing cost, compliance.</span></div>
-          </div>
-        </section>
-
-        <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
-          <div class="section-title">
-            <p class="eyebrow">Homework</p>
-            <h2>Clear tasks</h2>
-          </div>
-          <ol class="homework-list">
-            <li>Create a comparison table for internet, intranet and extranet. Include access, owner/control and one example.</li>
-            <li>Write a 4-mark answer explaining why a school might use an intranet for staff documents.</li>
-            <li>Write a 4-mark answer explaining why a supplier portal is an extranet, not the public internet.</li>
-            <li>Evaluate two benefits and two risks of moving school file storage to a cloud service.</li>
-          </ol>
-          <button class="answer-toggle" type="button" data-answer="homeworkAnswers">Show homework guidance</button>
-          <div class="answer-panel" id="homeworkAnswers">
-            <p><strong>Comparison table:</strong> focus on access scope: public, internal-only, selected external users.</p>
-            <p><strong>Intranet:</strong> mention private internal access, organisation control and staff-only resources.</p>
-            <p><strong>Extranet:</strong> mention controlled access for suppliers/partners, not open public access.</p>
-            <p><strong>Cloud:</strong> pair each benefit or risk with a scenario consequence.</p>
-          </div>
-        </section>
+        <nav class="v2-bottom-nav" aria-label="Previous and next lesson"><a href="../lesson-024/" >Previous lesson</a><a href="../lesson-026/" >Next lesson</a></nav>
       </div>
     </main>
-
-    <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=3"></script>
-    <script src="../lesson-toolbar.js?v=3"></script>
-    <script src="../stage7-accessibility.js?v=4"></script>
+    <script src="../course-v2.js?v=1"></script>
   </body>
 </html>

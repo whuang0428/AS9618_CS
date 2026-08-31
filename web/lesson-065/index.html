@@ -3,476 +3,89 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 065 | Required internet threats and matching risk-reduction methods</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <title>AS9618 Lesson 065 | Queues and FIFO operations</title>
     <link rel="icon" href="data:" />
-    <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
+    <link rel="stylesheet" href="../course-v2.css?v=3" />
   </head>
-  <body>
+  <body data-course-version="2" data-lesson-id="065" data-syllabus-ids="S10.09,S10.10">
     <a class="skip-link" href="#main-content">Skip to main content</a>
-    <header class="topbar">
-      <div>
-        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 6</p>
-        <h1>Required internet threats and matching risk-reduction methods</h1>
-      </div>
-      <div class="action-panel" aria-label="Page controls">
-        <a class="course-home-link" href="../">Course home</a>
-        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
-      </div>
+    <header class="v2-topbar">
+      <div><p class="v2-eyebrow">Cambridge AS9618 | Paper 2 | Section 10: Data types and structures</p><h1>Queues and FIFO operations</h1></div>
+      <nav class="v2-actions" aria-label="Lesson actions"><a href="../">Course home</a><a href="../assessments/">Assessment bank</a><button type="button" id="printLesson">Print</button></nav>
     </header>
-
-    <main class="layout" id="main-content" tabindex="-1">
-      <aside class="lesson-nav" aria-label="Lesson navigation">
-        <a href="#overview">Overview</a>
-        <a href="#hook">Warm-up</a>
-        <a href="#core">Core idea</a>
-        <a href="#hacking">Hacking</a>
-        <a href="#phishing">Phishing</a>
-        <a href="#pharming">Pharming</a>
-        <a href="#dos">DoS</a>
-        <a href="#compare">Compare</a>
-        <a href="#controls">Controls</a>
-        <a href="#tool">Attack tool</a>
-        <a href="#examples">Examples</a>
-        <a href="#practice">Practice</a>
-        <a href="#debug">Debugging</a>
-        <a href="#exam">Exam-style</a>
-        <a href="#summary">Summary</a>
-        <a href="#homework">Homework</a>
-        <a href="#stage2-completion">Core syllabus content</a>
-      </aside>
-
-      <div class="lesson-content">
-        <!-- remediation-v2-stage3-scope:start -->
-        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.</p></aside>
-        <!-- remediation-v2-stage3-scope:end -->
-
-<!-- stage2-completion:start -->
-        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus content</p>
-            <h2>Required internet threats and matching risk-reduction methods</h2>
-          </div>
-          <div class="stage2-explanation">
-            <p>The required threats are malware (virus and spyware), hackers, phishing and pharming. A hacker gains unauthorised access to a computer system or data. Phishing uses a deceptive message, link or site to persuade a user to disclose information. Pharming redirects traffic to a fake website, possibly even after the user enters the correct address.</p>
-            <p>Methods restrict risk only when their mechanism matches the threat: updated anti-virus and anti-spyware can detect known malware; user training and independent contact checks reduce phishing; secure DNS, certificate/HTTPS checks and patched software reduce pharming risk; strong authentication, access rights, patching, firewalls and monitoring reduce unauthorised access by hackers.</p>
-            <p>A control reduces likelihood or impact; it rarely makes an attack impossible. Layered controls are needed because people, software, credentials and network traffic provide different attack routes.</p>
-          </div>
-          <article class="stage2-example">
-            <h3>Worked example: Protect an online payroll service</h3>
-            <p>Staff receive a phishing email while a hacker probes the server and pharming redirects one user towards a fake site. Training and an independent sender check reduce phishing risk; multi-factor authentication reduces the value of a stolen password; a firewall filters unwanted traffic; access rights limit what an authenticated account may change; updated anti-virus and anti-spyware detect known virus or spyware signatures; secure DNS and certificate warnings reduce pharming risk.</p>
-          </article>
+    <main class="v2-shell" id="main-content" tabindex="-1">
+      <nav class="v2-toc" aria-label="Lesson contents"><strong>Lesson 065</strong><a href="#overview">Overview</a><a href="#prerequisite">Prerequisite</a><a href="#explanation">Explanation</a><a href="#practice">Practice</a><a href="#summary">Summary</a></nav>
+      <div class="v2-content">
+        <section class="v2-hero" id="overview">
+          <div><p class="v2-eyebrow">Flexible-depth lesson</p><h2>Queues and FIFO operations</h2><p>S10.09, S10.10 | Select what to omit, teach briefly or explore in depth.</p></div>
+          <div class="v2-time-grid" aria-label="Available lesson depth"><div><strong>Quick</strong><span>diagnose + essentials</span></div><div><strong>Full</strong><span>complete explanation</span></div><div><strong>Deep</strong><span>prerequisites + extension</span></div><div><strong>Choose</strong><span>practice by need</span></div></div>
         </section>
-        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus practice</p>
-            <h2>Required internet threats and matching risk-reduction methods: apply and assess</h2>
-          </div>
-          <div class="stage2-practice">
-            <h3>Targeted practice</h3>
-            <article class="stage2-question">
-              <p><strong>1.</strong> Compare phishing from pharming.</p>
-              <details><summary>Show answer</summary><p>Phishing persuades through a deceptive message/link/site; pharming redirects traffic to a fake site, potentially after the correct address is entered.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>2.</strong> What is the syllabus meaning of a hacker threat?</p>
-              <details><summary>Show answer</summary><p>A person gaining or attempting unauthorised access to a computer system or data.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>3.</strong> Draw lines to match virus, spyware, phishing and pharming to one suitable risk-reduction method each.</p>
-              <details><summary>Show answer</summary><p>Updated anti-virus; updated anti-spyware; training/independent verification; secure DNS plus certificate/HTTPS checks, respectively.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>4.</strong> Why are layered controls required?</p>
-              <details><summary>Show answer</summary><p>Different controls address different attack routes, so failure or bypass of one control need not expose the whole system.</p></details>
-            </article>
-          </div>
-          <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>6 marks</span></div>
-            <p>For each of virus, spyware, hacking, phishing and pharming, describe the threat route and one matching method that restricts its risk.</p>
-            <details>
-              <summary>Show MS</summary>
-              <table class="mark-scheme-table">
-                <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
-                <tbody>
-                  <tr><td>virus route plus anti-virus mechanism</td><td>Do not define phishing and pharming identically or award a control that is unrelated to the stated attack route.</td><td>1</td></tr>
-                  <tr><td>spyware route plus anti-spyware mechanism</td><td></td><td>1</td></tr>
-                  <tr><td>hacker/unauthorised-access route plus a matching access/network control</td><td></td><td>1</td></tr>
-                  <tr><td>phishing/deception route plus training or independent verification</td><td></td><td>1</td></tr>
-                  <tr><td>pharming/redirection route plus secure DNS/certificate/HTTPS or patched-software control</td><td></td><td>1</td></tr>
-                  <tr><td>states that controls reduce rather than eliminate risk</td><td></td><td>1</td></tr>
-                </tbody>
-              </table>
-            </details>
-          </article>
-        </section>
-        <!-- stage2-completion:end -->
 
-<section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-065">
-          <div class="hero-copy">
-            <p class="lesson-meta">Lesson 065 | 45 minutes | Paper 1 Section 6 | Security, privacy and data integrity</p>
-            <h2>Same target, different route: access, trick, redirect, overload.</h2>
-            <p>
-              This lesson separates four common attack types. Hacking focuses on unauthorised access.
-              Phishing tricks users into giving information. Pharming redirects users to a fake site.
-              Denial-of-service attacks make a service unavailable.
-            </p>
-            <div class="objective-grid" aria-label="Learning objectives">
-              <div><strong>Define</strong><span>hacking, phishing, pharming and DoS with precise wording</span></div>
-              <div><strong>Classify</strong><span>attack scenarios by mechanism, not by panic level</span></div>
-              <div><strong>Explain</strong><span>impact and suitable controls using CIA and authenticity language</span></div>
+        <section class="v2-panel v2-route-menu" aria-labelledby="route-heading">
+          <div class="v2-heading"><p class="v2-eyebrow">Teacher choice</p><h2 id="route-heading">Choose the depth for this group</h2></div>
+          <div class="v2-route-grid"><article><h3>Quick route</h3><p>Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.</p></article><article><h3>Full route</h3><p>Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.</p></article><article><h3>Deep route</h3><p>Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.</p></article></div>
+        </section>
+
+        <section class="v2-panel" id="prerequisite">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 1 | optional depth</p><h2>Prerequisite knowledge and quick diagnostic</h2></div>
+          <div class="v2-diagnostic"><p>Recall S10.08, S10.03, S10.09 before starting this lesson.</p></div>
+          <p>Give one accurate definition or method step before continuing. If it is missing, revisit only that prerequisite.</p>
+          <details class="v2-prerequisite-detail"><summary>Open optional prerequisite refresher</summary><ul><li>An abstract data type (ADT) is a collection of data and a set of operations on those data. Its behaviour is defined independently of a particular storage implementation.</li><li>Understand the definition and purpose of an abstract data type.</li><li>Use the technical terms associated with arrays, including index, lower bound and upper bound. Bounds define the inclusive valid index range and an index selects one element.</li><li>Understand array, index, lower bound and upper bound terminology.</li><li>Stack, queue and linked list are examples of ADTs. Describe their key features and justify which structure suits a given situation using LIFO, FIFO or link-based traversal/insertion/deletion evidence.</li><li>Understand stack, queue and linked-list features; justify a structure.</li></ul></details>
+        </section>
+
+        <section class="v2-panel" id="explanation">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 2 | deliberately over-complete</p><h2>Knowledge explanation</h2></div>
+          <h3>Learning objectives</h3><ul class="v2-objectives"><li>Understand stack, queue and linked-list features; justify a structure.</li><li>Add, edit and delete data in the ADTs and implement them using arrays; pseudocode for operations is not required by the syllabus.</li></ul>
+          <details class="v2-concept-menu"><summary>Open the concept checklist and choose what to teach</summary><ul><li>stack</li><li>queue</li><li>linked list</li><li>LIFO</li><li>FIFO</li><li>justify</li><li>Add</li><li>edit</li><li>delete</li><li>array</li><li>not required</li><li>pseudocode</li></ul></details>
+          <div class="v2-explanation-grid">
+            <div>
+              <article class="v2-core-facts"><h3>Detailed explanation</h3><p class="v2-teacher-note">Teach all points, or select only the ones this group needs. The list is intentionally fuller than a fixed lesson slot.</p><ul class="v2-facts"><li>Stack, queue and linked list are examples of ADTs. Describe their key features and justify which structure suits a given situation using LIFO, FIFO or link-based traversal/insertion/deletion evidence.</li><li>Use stack, queue and linked list to store data; add, edit and delete data while preserving each ADT rule. Describe array implementations for all three. Candidates are not required to write pseudocode for these ADT operations.</li><li>An abstract data type (ADT) is a collection of data and a set of operations on those data. The permitted operations and their effects define the ADT; its internal storage can change without changing that behaviour. Stack, queue and linked list are examples of ADTs.</li><li>A stack is LIFO: add with push and delete with pop at the top. A queue is FIFO: add with enqueue at the rear and delete with dequeue at the front. A linked list stores data plus a next pointer/index in each node; start identifies the first node and null ends the chain.</li><li>All three can be implemented using arrays and state variables or indexes. Stack uses an array with a top/stack pointer; queue uses an array with front and rear; linked list uses Data and Next arrays (or an array of node records), start and a free list. Candidates must be able to add, edit and delete data conceptually, but the syllabus does not require pseudocode for these ADT operations.</li><li>Editing changes the stored data without breaking the access rule or links. Deleting from a linked list reconnects the predecessor to the removed node&#39;s successor and returns the freed array slot to the free list; physical array positions need not follow logical list order.</li><li>Justify a stack, queue or linked list from its operations and the scenario. Candidates are not required to write pseudocode for these ADT operations, but must be able to add, edit and delete data and describe array implementations.</li><li>Choose and justify a stack, queue or linked list from its LIFO, FIFO or linkage features. Add, edit and delete data in these ADTs and implement them using arrays; pseudocode for the ADT operations is not required by the syllabus.</li><li>A stack is LIFO with push/pop at the top; a queue is FIFO with enqueue at the rear and dequeue at the front; a linked list supports traversal and insertion/deletion through links.</li><li>Justification must name the required access order or update behaviour. Array implementations have fixed capacity unless resized and require overflow/underflow checks; linked structures require pointer management.</li></ul></article>
+              <article class="v2-example"><h3>Worked example</h3><p>Add, edit and delete without changing the ADT rule: Push D adds D at the stack top and pop deletes the current top. Enqueue D adds at the queue rear and dequeue deletes from the front. In an array-based linked list, edit Data[5] to change only the node value; insert or delete by changing Next indexes, Start and the free list rather than shifting every later array item.</p></article>
+              <aside class="v2-extension"><h3>Beyond syllabus / 延伸知识（不要求背诵）</h3><p>programming libraries often provide tested ADT implementations, but the exam expects you to understand their behaviour and selection.</p></aside>
             </div>
-          </div>
-          <div class="attack-card" aria-label="Attack routes">
-            <div class="route-stack">
-              <span>Hacking -> unauthorised access</span>
-              <span>Phishing -> fake request / fake page</span>
-              <span>Pharming -> redirected to fake site</span>
-              <span>DoS -> service overwhelmed</span>
-            </div>
-            <p>Exam shortcut: name the route, then explain the damage.</p>
+            <figure class="v2-visual">
+              <img src="../assets/diagrams/stage10-infographics/stage10-lesson-123-implementation.jpg" alt="An array stack uses Top; a queue uses Front and Rear; a linked list uses Data, Next, Start and a free list.. Add/delete preserve stack LIFO, queue FIFO and linked-list links; edit changes stored data without corrupting structure.. Candidates are not required to write pseudocode for these ADT operations; understand add, edit, delete and array implementation." loading="lazy" />
+              <figcaption>Implement stack, queue and linked list using arrays. One maintained explanation is shown as an image on larger screens and as text on small screens.</figcaption>
+              <div class="v2-mobile-visual-text" aria-label="Mobile text alternative"><ul><li>An array stack uses Top; a queue uses Front and Rear; a linked list uses Data, Next, Start and a free list.</li><li>Add/delete preserve stack LIFO, queue FIFO and linked-list links; edit changes stored data without corrupting structure.</li><li>Candidates are not required to write pseudocode for these ADT operations; understand add, edit, delete and array implementation.</li></ul></div>
+            </figure>
           </div>
         </section>
 
-        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-065">
-          <article class="why-card">
-            <h3>Why this matters</h3>
-            <p>Cambridge-style answers reward the mechanism. "It is dangerous" is true, but it is not a full mark machine.</p>
-          </article>
-          <article class="trap-card">
-            <h3>Common error</h3>
-            <p>Phishing and pharming both involve fake destinations, but phishing tricks the user; pharming redirects the traffic.</p>
-          </article>
+        <section class="v2-panel" id="practice">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 3 | select by learner need</p><h2>Practice by question type</h2></div>
+          <div class="v2-question-list"><article class="v2-question" data-question-id="Q-L065-01" data-semantic-fingerprint="S10.09+S10.10|queues-and-fifo-operations|justify|justify-suitable-adt-browser|visual|evaluate">
+              <div class="v2-question-head"><span class="v2-badge">justify</span><span class="v2-badge">evaluate</span><span class="v2-badge difficulty">foundation</span><span class="v2-badge">4 marks</span></div>
+              <p><strong>Question 1.</strong> Justify a suitable ADT for browser Back history and contrast it with a queue.</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> selects stack; most recently visited page is returned to first / LIFO; queue removes earliest item first / FIFO; explains why FIFO gives the wrong access order</p><p><strong>Marking guidance:</strong> Do not award the structure name without its access-order consequence.</p><p><strong>Common error:</strong> For the command word justify, perform that exact action; do not replace it with an unrelated fact.</p></div></details>
+            </article><article class="v2-question" data-question-id="Q-L065-02" data-semantic-fingerprint="S10.09+S10.10|queues-and-fifo-operations|suggest|suggest-adt-nested-function|written|explain">
+              <div class="v2-question-head"><span class="v2-badge">suggest</span><span class="v2-badge">explain</span><span class="v2-badge difficulty">application</span><span class="v2-badge">2 marks</span></div>
+              <p><strong>Question 2.</strong> Suggest an ADT for nested function return addresses.</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> Stack, because the most recent call returns first.</p><p><strong>Marking guidance:</strong> Award one mark for each distinct, technically accurate point or method step.</p><p><strong>Common error:</strong> Do not repeat the same point in different words; each mark needs a separate idea or method step.</p></div></details>
+            </article><article class="v2-question" data-question-id="Q-L065-03" data-semantic-fingerprint="S10.09+S10.10|queues-and-fifo-operations|state|precise-facts-about|written|recall">
+              <div class="v2-question-head"><span class="v2-badge">state</span><span class="v2-badge">recall</span><span class="v2-badge difficulty">transfer</span><span class="v2-badge">2 marks</span></div>
+              <p><strong>Question 3.</strong> State two precise facts about queues and fifo operations.</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> Stack, queue and linked list are examples of ADTs. Describe their key features and justify which structure suits a given situation using LIFO, FIFO or link-based traversal/insertion/deletion evidence. Use stack, queue and linked list to store data; add, edit and delete data while preserving each ADT rule. Describe array implementations for all three. Candidates are not required to write pseudocode for these ADT operations.</p><p><strong>Marking guidance:</strong> Award one mark for each distinct fact; do not credit a repeated point.</p><p><strong>Common error:</strong> Do not copy the worked example unchanged; transfer the method and check it against the new context.</p></div></details>
+            </article></div>
+          <div class="v2-paper-refs">
+          <h3>Related past-paper indexes</h3>
+          <table><thead><tr><th>Reference</th><th>Marks</th><th>Command word</th><th>Question type</th></tr></thead>
+          <tbody><tr><td>9618/23/S/25 Q5(b)</td><td>8</td><td>describe</td><td>write</td></tr><tr><td>9618/21/S/25 Q5</td><td>7</td><td>describe</td><td>explain</td></tr><tr><td>9618/23/S/25 Q5(c)</td><td>7</td><td>calculate</td><td>calculate</td></tr><tr><td>9618/23/S/25 Q5(a)</td><td>5</td><td>describe</td><td>explain</td></tr></tbody></table>
+          <p class="v2-copyright-note">Index only: Cambridge question and mark-scheme wording is not reproduced on this public course page.</p>
+        </div>
         </section>
 
-        <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-065">
-          <div class="section-title">
-            <p class="eyebrow">Warm-up hook</p>
-            <h2>A user types the correct bank URL but lands on a convincing fake banking page. What is the best diagnosis?</h2>
-            <p>The user did not mistype. The browser is basically saying, "I followed the map; the map lied."</p>
-          </div>
-          <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="pharming">Pharming, because redirection sends the user to a fake site</button>
-            <button class="choice-card" type="button" data-hook="phishing">Phishing only, because every fake site is phishing</button>
-            <button class="choice-card" type="button" data-hook="dos">DoS, because the bank service is unavailable</button>
-            <button class="choice-card" type="button" data-hook="hacking">Hacking only, because someone must have guessed a password</button>
-          </div>
-          <div class="feedback" id="hookFeedback" aria-live="polite">
-            Choose one. The clue is correct URL plus redirection.
-          </div>
+        <section class="v2-panel" id="summary">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 4 | close when ready</p><h2>Summary and exam reminders</h2></div>
+          <div class="v2-summary-grid"><div><h3>Summary</h3><ul class="v2-summary-list"><li>Define queues and fifo operations with the exact technical vocabulary expected by the syllabus.</li><li>Use the lesson method on a fresh context and show the intermediate decision, representation or calculation.</li><li>Match the shape of the answer to the command word and the available marks.</li><li>Check the final answer against the scenario instead of repeating a memorised sentence.</li></ul></div><div class="v2-error"><h3>Common error to correct</h3><p>Students often treat files like arrays already in memory. Correction: file data must be read into variables before processing.</p></div></div>
+          <div class="v2-tip-box"><h3>Exam technique</h3><ul><li>Follow the command word: state gives a fact; explain links a cause to a consequence; compare covers both sides.</li><li>Match the number of independent points or method steps to the available marks.</li><li>For queues and fifo operations, use the exact technical term before applying it to the scenario.</li></ul></div>
         </section>
 
-        <section class="panel" id="core" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-065">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 1</p>
-            <h2>Start from mechanism, then discuss impact</h2>
-          </div>
-          <div class="concept-grid">
-            <article><strong>Asset</strong><span>Data, account, system or service being protected.</span></article>
-            <article><strong>Attack vector</strong><span>The route used by the attacker: access, deception, redirection or flooding.</span></article>
-            <article><strong>Impact</strong><span>Loss of confidentiality, integrity, availability or authenticity.</span></article>
-            <article><strong>Control</strong><span>A safeguard that reduces risk, detects attack or supports recovery.</span></article>
-          </div>
-          <div class="callout">Chinese support: attack vector = 攻击途径；unauthorised access = 未授权访问；availability = 可用性；authenticity = 真实性/身份可信。</div>
-        </section>
-
-        <!-- stage10-explanation:start core -->
-        <section class="panel explanation-panel" id="explanation-core" data-explains="core" data-explanation-kind="mechanism" aria-labelledby="explanation-core-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-065">
-          <h2 class="explanation-sr-only" id="explanation-core-title">Start from mechanism, then discuss impact</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-065-core.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Start from mechanism, then discuss impact with a structured visual model." />
-            <figcaption class="explanation-sr-only">Start from mechanism, then discuss impact: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Asset Data, account, system or service being protected.</li><li><strong>Lesson fact:</strong> Attack vector The route used by the attacker: access, deception, redirection or flooding.</li><li><strong>Lesson fact:</strong> Impact Loss of confidentiality, integrity, availability or authenticity.</li><li><strong>Lesson fact:</strong> Control A safeguard that reduces risk, detects attack or supports recovery.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end core -->
-        <section class="panel" id="hacking" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-065">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 2</p>
-            <h2>Hacking: gaining unauthorised access to a system or data</h2>
-          </div>
-          <div class="concept-grid">
-            <article><strong>Mechanism</strong><span>Bypasses or abuses access controls to enter an account, device or system.</span></article>
-            <article><strong>Examples</strong><span>Using stolen credentials, exploiting a vulnerability or accessing an account without permission.</span></article>
-            <article><strong>Impact</strong><span>Data may be viewed, copied, changed or deleted; system settings may be altered.</span></article>
-            <article><strong>Common error</strong><span>Do not use "hacking" as a label for every cyber attack. It specifically involves unauthorised access.</span></article>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start hacking -->
-        <section class="panel explanation-panel" id="explanation-hacking" data-explains="hacking" data-explanation-kind="mechanism" aria-labelledby="explanation-hacking-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-065">
-          <h2 class="explanation-sr-only" id="explanation-hacking-title">Hacking: gaining unauthorised access to a system or data</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-065-hacking.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Hacking: gaining unauthorised access to a system or data with a structured visual model." />
-            <figcaption class="explanation-sr-only">Hacking: gaining unauthorised access to a system or data: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Mechanism Bypasses or abuses access controls to enter an account, device or system.</li><li><strong>Lesson fact:</strong> Examples Using stolen credentials, exploiting a vulnerability or accessing an account without permission.</li><li><strong>Lesson fact:</strong> Impact Data may be viewed, copied, changed or deleted; system settings may be altered.</li><li><strong>Lesson fact:</strong> Common error Do not use &quot;hacking&quot; as a label for every cyber attack. It specifically involves unauthorised access.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end hacking -->
-        <section class="panel" id="phishing" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-065">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 3</p>
-            <h2>Phishing: tricking users into revealing information or visiting a fake page</h2>
-          </div>
-          <div class="concept-grid">
-            <article><strong>Mechanism</strong><span>Uses deceptive emails, messages or websites that appear to come from a trusted source.</span></article>
-            <article><strong>User action</strong><span>The user may enter credentials, personal data or payment details.</span></article>
-            <article><strong>Clues</strong><span>Urgent language, suspicious sender, unexpected link, spelling issues or mismatched URL.</span></article>
-            <article><strong>Impact</strong><span>Credential theft can lead to unauthorised access and impersonation.</span></article>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start phishing -->
-        <section class="panel explanation-panel" id="explanation-phishing" data-explains="phishing" data-explanation-kind="mechanism" aria-labelledby="explanation-phishing-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-065">
-          <h2 class="explanation-sr-only" id="explanation-phishing-title">Phishing: tricking users into revealing information or visiting a fake page</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-065-phishing.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Phishing: tricking users into revealing information or visiting a fake page with a structured visual model." />
-            <figcaption class="explanation-sr-only">Phishing: tricking users into revealing information or visiting a fake page: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Mechanism Uses deceptive emails, messages or websites that appear to come from a trusted source.</li><li><strong>Lesson fact:</strong> User action The user may enter credentials, personal data or payment details.</li><li><strong>Lesson fact:</strong> Clues Urgent language, suspicious sender, unexpected link, spelling issues or mismatched URL.</li><li><strong>Lesson fact:</strong> Impact Credential theft can lead to unauthorised access and impersonation.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end phishing -->
-        <section class="panel" id="pharming" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-065">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 4</p>
-            <h2>Pharming: redirecting users to a fake website</h2>
-          </div>
-          <div class="concept-grid">
-            <article><strong>Mechanism</strong><span>Redirects traffic from a legitimate website to a fake one, often by attacking name resolution.</span></article>
-            <article><strong>User clue</strong><span>The user may type the correct URL but still arrive at a fraudulent page.</span></article>
-            <article><strong>Impact</strong><span>Users may submit credentials or payment details to the attacker.</span></article>
-            <article><strong>Common error</strong><span>Do not define pharming as just "sending a fake email"; that is phishing.</span></article>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start pharming -->
-        <section class="panel explanation-panel" id="explanation-pharming" data-explains="pharming" data-explanation-kind="mechanism" aria-labelledby="explanation-pharming-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-065">
-          <h2 class="explanation-sr-only" id="explanation-pharming-title">Pharming: redirecting users to a fake website</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-065-pharming.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Pharming: redirecting users to a fake website with a structured visual model." />
-            <figcaption class="explanation-sr-only">Pharming: redirecting users to a fake website: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Mechanism Redirects traffic from a legitimate website to a fake one, often by attacking name resolution.</li><li><strong>Lesson fact:</strong> User clue The user may type the correct URL but still arrive at a fraudulent page.</li><li><strong>Lesson fact:</strong> Impact Users may submit credentials or payment details to the attacker.</li><li><strong>Lesson fact:</strong> Common error Do not define pharming as just &quot;sending a fake email&quot;; that is phishing.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end pharming -->
-        <section class="panel" id="dos" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-065">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 5</p>
-            <h2>Denial-of-service: making a service unavailable</h2>
-          </div>
-          <div class="concept-grid">
-            <article><strong>Mechanism</strong><span>Floods a server, network or service with traffic or requests so legitimate users cannot access it.</span></article>
-            <article><strong>DDoS</strong><span>Distributed DoS uses many devices/sources, making filtering harder.</span></article>
-            <article><strong>Impact</strong><span>Loss of availability, lost sales, disrupted lessons or inability to access online services.</span></article>
-            <article><strong>Common error</strong><span>DoS does not primarily mean data is stolen; the main issue is service availability.</span></article>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start dos -->
-        <section class="panel explanation-panel" id="explanation-dos" data-explains="dos" data-explanation-kind="mechanism" aria-labelledby="explanation-dos-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-065">
-          <h2 class="explanation-sr-only" id="explanation-dos-title">Denial-of-service: making a service unavailable</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-065-dos.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Denial-of-service: making a service unavailable with a structured visual model." />
-            <figcaption class="explanation-sr-only">Denial-of-service: making a service unavailable: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Mechanism Floods a server, network or service with traffic or requests so legitimate users cannot access it.</li><li><strong>Lesson fact:</strong> DDoS Distributed DoS uses many devices/sources, making filtering harder.</li><li><strong>Lesson fact:</strong> Impact Loss of availability, lost sales, disrupted lessons or inability to access online services.</li><li><strong>Lesson fact:</strong> Common error DoS does not primarily mean data is stolen; the main issue is service availability.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end dos -->
-        <section class="panel" id="compare" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-065">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 6</p>
-            <h2>Compare by route and result</h2>
-          </div>
-          <div class="comparison-table" role="table" aria-label="Attack comparison">
-            <div class="table-row table-head" role="row">
-              <div role="columnheader">Attack</div>
-              <div role="columnheader">Route or mechanism</div>
-              <div role="columnheader">Direct result</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Hacking</div>
-              <div role="cell">Access controls are bypassed or abused.</div>
-              <div role="cell">Unauthorised access; data may then be viewed, copied, changed or deleted.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Phishing</div>
-              <div role="cell">A deceptive message, link or site persuades the user to reveal information.</div>
-              <div role="cell">Credentials or personal data are disclosed; later unauthorised access is possible but not guaranteed.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Pharming</div>
-              <div role="cell">Traffic is redirected to a fake site, possibly after the correct URL is entered.</div>
-              <div role="cell">The user may submit data to the fake site; later credential theft or misuse is possible but not guaranteed.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">DoS/DDoS</div>
-              <div role="cell">A server or network is overwhelmed by requests or traffic.</div>
-              <div role="cell">Legitimate users cannot access the service.</div>
-            </div>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start compare -->
-        <section class="panel explanation-panel" id="explanation-compare" data-explains="compare" data-explanation-kind="comparison" aria-labelledby="explanation-compare-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-065">
-          <h2 class="explanation-sr-only" id="explanation-compare-title">Compare by route and result</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-065-compare.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Compare by route and result with a structured visual model." />
-            <figcaption class="explanation-sr-only">Compare by route and result: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Route or mechanism</li><li><strong>Lesson fact:</strong> Direct result</li><li><strong>Lesson fact:</strong> Access controls are bypassed or abused.</li><li><strong>Lesson fact:</strong> Unauthorised access; data may then be viewed, copied, changed or deleted.</li><li><strong>Lesson fact:</strong> Phishing</li><li><strong>Lesson fact:</strong> A deceptive message, link or site persuades the user to reveal information.</li><li><strong>Lesson fact:</strong> Credentials or personal data are disclosed; later unauthorised access is possible but not guaranteed.</li><li><strong>Lesson fact:</strong> Pharming</li><li><strong>Lesson fact:</strong> Traffic is redirected to a fake site, possibly after the correct URL is entered.</li><li><strong>Lesson fact:</strong> The user may submit data to the fake site; later credential theft or misuse is possible but not guaranteed.</li><li><strong>Lesson fact:</strong> DoS/DDoS</li><li><strong>Lesson fact:</strong> A server or network is overwhelmed by requests or traffic.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end compare -->
-        <section class="panel" id="controls" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-065">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 7</p>
-            <h2>Controls must fit the attack route</h2>
-          </div>
-          <div class="concept-grid">
-            <article><strong>Against hacking</strong><span>Strong authentication, access rights, patching, audit logs and monitoring.</span></article>
-            <article><strong>Against phishing</strong><span>User training, checking URLs/senders, email filtering, reporting routes and MFA.</span></article>
-            <article><strong>Against pharming</strong><span>Secure DNS, certificate checks, HTTPS warnings, anti-malware and browser updates.</span></article>
-            <article><strong>Against DoS</strong><span>Traffic filtering, rate limiting, firewalls, load balancing and DDoS mitigation services.</span></article>
-          </div>
-          <div class="callout">Do not overclaim. A control reduces risk; it rarely makes the attack impossible.</div>
-        </section>
-
-        <!-- stage10-explanation:start controls -->
-        <section class="panel explanation-panel" id="explanation-controls" data-explains="controls" data-explanation-kind="mechanism" aria-labelledby="explanation-controls-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-065">
-          <h2 class="explanation-sr-only" id="explanation-controls-title">Controls must fit the attack route</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-065-controls.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Controls must fit the attack route with a structured visual model." />
-            <figcaption class="explanation-sr-only">Controls must fit the attack route: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Against hacking Strong authentication, access rights, patching, audit logs and monitoring.</li><li><strong>Lesson fact:</strong> Against phishing User training, checking URLs/senders, email filtering, reporting routes and MFA.</li><li><strong>Lesson fact:</strong> Against pharming Secure DNS, certificate checks, HTTPS warnings, anti-malware and browser updates.</li><li><strong>Lesson fact:</strong> Against DoS Traffic filtering, rate limiting, firewalls, load balancing and DDoS mitigation services.</li><li><strong>Lesson fact:</strong> Do not overclaim. A control reduces risk; it rarely makes the attack impossible.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end controls -->
-        <section class="panel" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-065">
-          <div class="section-title">
-            <p class="eyebrow">Interactive classifier</p>
-            <h2>Classify the attack by the clue</h2>
-            <p>Select a scenario and compare the route, impact and common wrong answer.</p>
-          </div>
-          <div class="converter-grid">
-            <label>
-              Scenario clue
-              <select id="scenarioInput">
-                <option value="access">An attacker logs in using stolen credentials and changes records.</option>
-                <option value="email">A fake delivery email asks the user to enter account details.</option>
-                <option value="redirect">The correct URL leads to a fake banking website.</option>
-                <option value="flood">Thousands of requests stop users accessing a ticket website.</option>
-                <option value="botnet">Many infected devices flood one server at the same time.</option>
-              </select>
-            </label>
-            <button class="primary-button" type="button" id="simulateBtn">Classify</button>
-          </div>
-          <div class="result-box" id="simulateResult" aria-live="polite"></div>
-          <div class="method-box" id="simulateMethod"></div>
-          <div class="reject-box" id="simulateTrap"></div>
-        </section>
-
-        <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-065">
-          <div class="section-title">
-            <p class="eyebrow">Worked examples</p>
-            <h2>Four model answers with the mark-winning mechanism visible</h2>
-          </div>
-          <div class="example-tabs" role="tablist" aria-label="Worked examples">
-            <button class="tab active" type="button" data-example="hacking">Hacking</button>
-            <button class="tab" type="button" data-example="phishing">Phishing</button>
-            <button class="tab" type="button" data-example="pharming">Pharming</button>
-            <button class="tab" type="button" data-example="dos">DoS</button>
-          </div>
-          <div class="example-box" id="exampleBox"></div>
-        </section>
-
-        <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-065">
-          <div class="section-title">
-            <p class="eyebrow">Practice with instant checking</p>
-            <h2>Short answers: be precise, then check</h2>
-            <p>Type a concise answer. Use the local answer button if you need a model response.</p>
-          </div>
-          <div class="practice-list" id="practiceList"></div>
-        </section>
-
-        <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-065">
-          <div class="section-title">
-            <p class="eyebrow">Mistake debugging</p>
-            <h2>Fix the sentence before it loses marks</h2>
-          </div>
-          <div class="mistake-grid" id="mistakeGrid"></div>
-        </section>
-
-        <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-065">
-          <div class="section-title">
-            <p class="eyebrow">Exam-style questions</p>
-            <h2>Original Cambridge-style questions with expandable MS</h2>
-            <p>Answer first. Then open the mark scheme and compare wording strictly.</p>
-          </div>
-          <div class="exam-list" id="examList"></div>
-        </section>
-
-        <section class="panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-065">
-          <div class="section-title">
-            <p class="eyebrow">Summary</p>
-            <h2>The four labels are not interchangeable</h2>
-          </div>
-          <div class="summary-grid">
-            <div><strong>Hacking</strong><span>Unauthorised access is the core idea.</span></div>
-            <div><strong>Phishing/pharming</strong><span>Phishing persuades; pharming redirects.</span></div>
-            <div><strong>DoS</strong><span>The main impact is unavailable service, not necessarily stolen data.</span></div>
-          </div>
-        </section>
-
-        <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
-          <div class="section-title">
-            <p class="eyebrow">Homework</p>
-            <h2>Homework tasks</h2>
-          </div>
-          <div class="homework-list">
-            <article>
-              <strong>Task 1: Four definitions</strong>
-              <span>Write one precise definition each for hacking, phishing, pharming and DoS. Each must include the attack route.</span>
-            </article>
-            <article>
-              <strong>Task 2: Scenario table</strong>
-              <span>Create a table with five new scenarios. For each, classify the attack, state the impact and recommend one control.</span>
-            </article>
-            <article>
-              <strong>Task 3: 6-mark answer</strong>
-              <span>Answer: "Compare phishing and pharming, and explain how each can lead to unauthorised access." Use two paragraphs and Cambridge-style keywords.</span>
-            </article>
-          </div>
-        </section>
+        <nav class="v2-bottom-nav" aria-label="Previous and next lesson"><a href="../lesson-064/" >Previous lesson</a><a href="../lesson-066/" >Next lesson</a></nav>
       </div>
     </main>
-
-    <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=3"></script>
-    <script src="../lesson-toolbar.js?v=3"></script>
-    <script src="../stage7-accessibility.js?v=4"></script>
+    <script src="../course-v2.js?v=1"></script>
   </body>
 </html>

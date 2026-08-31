@@ -3,488 +3,84 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 053 | Why an operating system is required and what it manages</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <title>AS9618 Lesson 053 | Constructing and interpreting logic statements</title>
     <link rel="icon" href="data:" />
-    <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
+    <link rel="stylesheet" href="../course-v2.css?v=3" />
   </head>
-  <body>
+  <body data-course-version="2" data-lesson-id="053" data-syllabus-ids="S9.09">
     <a class="skip-link" href="#main-content">Skip to main content</a>
-    <header class="topbar">
-      <div>
-        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 5</p>
-        <h1>Why an operating system is required and what it manages</h1>
-      </div>
-      <div class="action-panel" aria-label="Page controls">
-        <a class="course-home-link" href="../">Course home</a>
-        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
-      </div>
+    <header class="v2-topbar">
+      <div><p class="v2-eyebrow">Cambridge AS9618 | Paper 2 | Section 9: Algorithm design and problem-solving</p><h1>Constructing and interpreting logic statements</h1></div>
+      <nav class="v2-actions" aria-label="Lesson actions"><a href="../">Course home</a><a href="../assessments/">Assessment bank</a><button type="button" id="printLesson">Print</button></nav>
     </header>
-
-    <main class="layout" id="main-content" tabindex="-1">
-      <aside class="lesson-nav" aria-label="Lesson navigation">
-        <a href="#overview">Overview</a>
-        <a href="#hook">Warm-up</a>
-        <a href="#concept">Core idea</a>
-        <a href="#categories">Categories</a>
-        <a href="#os">Operating system</a>
-        <a href="#utility">Utility software</a>
-        <a href="#translators">Translators</a>
-        <a href="#pathway">Translation pathway</a>
-        <a href="#tool">Classifier</a>
-        <a href="#examples">Examples</a>
-        <a href="#practice">Practice</a>
-        <a href="#debug">Debugging</a>
-        <a href="#exam">Exam-style</a>
-        <a href="#summary">Summary</a>
-        <a href="#homework">Homework</a>
-        <a href="#stage2-completion">Core syllabus content</a>
-      </aside>
-
-      <div class="lesson-content">
-        <!-- remediation-v2-stage3-scope:start -->
-        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.</p></aside>
-        <!-- remediation-v2-stage3-scope:end -->
-
-<!-- stage2-completion:start -->
-        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus content</p>
-            <h2>Why an operating system is required and what it manages</h2>
-          </div>
-          <div class="stage2-explanation">
-            <p>An operating system is required to provide a controlled interface between applications, users and hardware, and to coordinate shared resources. Without it, each application would need its own incompatible routines for processor time, memory, files, security and devices.</p>
-            <p>Process management schedules CPU time and tracks running processes. Memory management allocates and protects RAM. File management organises files, folders, metadata and file operations. Security management authenticates users and enforces permissions or access rights.</p>
-            <p>Hardware management coordinates devices through drivers, interrupts, buffers and queues. These roles cooperate: security management decides whether a request is authorised, while file or hardware management performs the permitted operation. Antivirus remains a utility and must not replace the OS security-management role.</p>
-          </div>
-          <article class="stage2-example">
-            <h3>Worked example: Open a protected file and print it</h3>
-            <p>The OS authenticates the user and security management checks access rights. File management locates and opens the file; memory management allocates RAM; process management schedules the application; hardware management uses a printer driver, buffer and queue to send permitted output to the printer.</p>
-          </article>
+    <main class="v2-shell" id="main-content" tabindex="-1">
+      <nav class="v2-toc" aria-label="Lesson contents"><strong>Lesson 053</strong><a href="#overview">Overview</a><a href="#prerequisite">Prerequisite</a><a href="#explanation">Explanation</a><a href="#practice">Practice</a><a href="#summary">Summary</a></nav>
+      <div class="v2-content">
+        <section class="v2-hero" id="overview">
+          <div><p class="v2-eyebrow">Flexible-depth lesson</p><h2>Constructing and interpreting logic statements</h2><p>S9.09 | Select what to omit, teach briefly or explore in depth.</p></div>
+          <div class="v2-time-grid" aria-label="Available lesson depth"><div><strong>Quick</strong><span>diagnose + essentials</span></div><div><strong>Full</strong><span>complete explanation</span></div><div><strong>Deep</strong><span>prerequisites + extension</span></div><div><strong>Choose</strong><span>practice by need</span></div></div>
         </section>
 
-        <!-- stage10-explanation:start os -->
-        <section class="panel explanation-panel" id="explanation-os" data-explains="os" data-explanation-kind="mechanism" aria-labelledby="explanation-os-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="os">
-          <h2 class="explanation-sr-only" id="explanation-os-title">Operating system: the main coordinator</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-053-os.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Operating system: the main coordinator with a structured visual model." />
-            <figcaption class="explanation-sr-only">Operating system: the main coordinator: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> User interface Provides a way for users to interact with the computer, such as GUI or command line.</li><li><strong>Lesson fact:</strong> Resource management Allocates and controls hardware resources such as processor time, memory and devices.</li><li><strong>Lesson fact:</strong> File services Provides file organisation, storage access and permission support.</li><li><strong>Lesson fact:</strong> Application services Provides services and APIs that application software can use.</li><li><strong>Lesson fact:</strong> Boundary</li><li><strong>Lesson fact:</strong> Detailed process, memory, file and device management are developed in Lesson 054. Here the OS is introduced as the main system coordinator.</li></ol>
-
-          </div>
+        <section class="v2-panel v2-route-menu" aria-labelledby="route-heading">
+          <div class="v2-heading"><p class="v2-eyebrow">Teacher choice</p><h2 id="route-heading">Choose the depth for this group</h2></div>
+          <div class="v2-route-grid"><article><h3>Quick route</h3><p>Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.</p></article><article><h3>Full route</h3><p>Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.</p></article><article><h3>Deep route</h3><p>Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.</p></article></div>
         </section>
-        <!-- stage10-explanation:end os -->
-        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus practice</p>
-            <h2>Why an operating system is required and what it manages: apply and assess</h2>
-          </div>
-          <div class="stage2-practice">
-            <h3>Targeted practice</h3>
-            <article class="stage2-question">
-              <p><strong>1.</strong> Which OS role authenticates a user and enforces access rights?</p>
-              <details><summary>Show answer</summary><p>Security management.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>2.</strong> Which role allocates RAM to a running process?</p>
-              <details><summary>Show answer</summary><p>Memory management.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>3.</strong> Which role uses drivers, buffers and queues?</p>
-              <details><summary>Show answer</summary><p>Hardware management/device management.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>4.</strong> Why is an operating system required?</p>
-              <details><summary>Show answer</summary><p>It provides a controlled interface and coordinates shared hardware and software resources for applications and users.</p></details>
-            </article>
-          </div>
-          <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>6 marks</span></div>
-            <p>Explain why an operating system is required and describe its process, memory, file, security and hardware management roles.</p>
-            <details>
-              <summary>Show MS</summary>
-              <table class="mark-scheme-table">
-                <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
-                <tbody>
-                  <tr><td>required interface/control layer between applications, users and hardware</td><td>Do not substitute antivirus utility software for OS security management, and do not treat stored files as RAM.</td><td>1</td></tr>
-                  <tr><td>process management schedules CPU time or tracks processes</td><td></td><td>1</td></tr>
-                  <tr><td>memory management allocates/protects RAM</td><td></td><td>1</td></tr>
-                  <tr><td>file management organises stored files and operations</td><td></td><td>1</td></tr>
-                  <tr><td>security management authenticates users or enforces permissions/access rights</td><td></td><td>1</td></tr>
-                  <tr><td>hardware management uses drivers/interrupts/buffers/queues to coordinate devices</td><td></td><td>1</td></tr>
-                </tbody>
-              </table>
-            </details>
-          </article>
-        </section>
-        <!-- stage2-completion:end -->
 
-<section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-053">
-          <div class="hero-copy">
-            <p class="lesson-meta">Lesson 053 | 45 minutes | Paper 1 Section 5 | System software</p>
-            <h2>System software keeps the computer useful before the apps arrive.</h2>
-            <p>
-              System software manages the computer, supports application software
-              and helps programs run. This lesson separates operating systems,
-              utility software and language translators so students do not put
-              every program into the same digital drawer.
-            </p>
-            <div class="objective-grid" aria-label="Learning objectives">
-              <div><strong>Classify</strong><span>operating systems, utility software and language translators</span></div>
-              <div><strong>Explain</strong><span>how system software supports hardware, applications and users</span></div>
-              <div><strong>Compare</strong><span>compiler, interpreter and assembler at overview level</span></div>
+        <section class="v2-panel" id="prerequisite">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 1 | optional depth</p><h2>Prerequisite knowledge and quick diagnostic</h2></div>
+          <div class="v2-diagnostic"><p>Recall S9.06 before starting this lesson.</p></div>
+          <p>Give one accurate definition or method step before continuing. If it is missing, revisit only that prerequisite.</p>
+          <details class="v2-prerequisite-detail"><summary>Open optional prerequisite refresher</summary><ul><li>The three basic algorithm constructs are sequence, selection and iteration (repetition); students must recognise and use each construct, including combinations of constructs.</li><li>Understand and use sequence, selection and iteration.</li></ul></details>
+        </section>
+
+        <section class="v2-panel" id="explanation">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 2 | deliberately over-complete</p><h2>Knowledge explanation</h2></div>
+          <h3>Learning objectives</h3><ul class="v2-objectives"><li>Construct and interpret logic statements.</li></ul>
+          <details class="v2-concept-menu"><summary>Open the concept checklist and choose what to teach</summary><ul><li>logic</li><li>statements</li><li>condition</li><li>algorithm</li></ul></details>
+          <div class="v2-explanation-grid">
+            <div>
+              <article class="v2-core-facts"><h3>Detailed explanation</h3><p class="v2-teacher-note">Teach all points, or select only the ones this group needs. The list is intentionally fuller than a fixed lesson slot.</p><ul class="v2-facts"><li>Logic statements define parts of an algorithm solution, including decision conditions, loop conditions and Boolean assignments; students must both construct and interpret them.</li><li>A logic statement defines a decision, repetition condition or Boolean assignment in an algorithm solution. It combines comparisons such as =, &lt;, &lt;=, , = or &lt; with AND, OR or NOT when more than one condition is needed.</li><li>Construct a statement from the rule before choosing its branch: a valid mark from 0 to 100 inclusive is Mark = 0 AND Mark &lt;= 100. Interpret it by checking both comparisons; using OR would accept values outside the range.</li><li>Logic statements must preserve boundaries and intended truth conditions. Trace representative true, false and boundary values to expose reversed operators or incorrect connectors.</li><li>Algorithm design review: define an algorithm as a solution expressed as a sequence of defined steps; use abstraction to retain essential details in an abstract model; use decomposition to express the problem as connected modules; and choose meaningful identifiers recorded in an identifier table.</li><li>Solution review: design with input-process-output, use sequence, selection and iteration, document the same algorithm in structured English, a flowchart or pseudocode, and convert between the specified representations without changing its control flow.</li><li>Development review: use stepwise refinement until steps are programmable, and construct and interpret logic statements that define decisions, loop conditions or Boolean values. Core answers must not replace these requirements with tracing, Java syntax or vague planning advice.</li></ul></article>
+              <article class="v2-example"><h3>Worked example</h3><p>Design a result-processing solution: Keep only student ID and required marks, decompose the task into InputResults, ValidateResult, CalculateMean and OutputReport, record meaningful identifiers and IPO, refine CalculateMean into defined steps, use a range logic statement, and represent the final control flow in Cambridge pseudocode or a matching flowchart.</p></article>
+              <aside class="v2-extension"><h3>Beyond syllabus / 延伸知识（不要求背诵）</h3><p>the same algorithm can be expressed in many programming languages; its logic should remain independent of syntax.</p></aside>
             </div>
-          </div>
-          <div class="system-card" aria-label="System software sketch">
-            <div class="system-stack">
-              <span>Hardware</span>
-              <span>System software</span>
-              <span>Application software</span>
-              <span>User tasks</span>
-            </div>
-            <p>Distinguish the operating system, application software, translators and utility software by function.</p>
+            <figure class="v2-visual">
+              <img src="../assets/diagrams/stage10-infographics/stage10-lesson-113-patterns.jpg" alt="Pattern choice. Scenario clue. Core pseudocode feature. One precise explanation. exactly 10 readings" loading="lazy" />
+              <figcaption>Match the scenario to the correct algorithm pattern. One maintained explanation is shown as an image on larger screens and as text on small screens.</figcaption>
+              <div class="v2-mobile-visual-text" aria-label="Mobile text alternative"><ul><li>Pattern choice</li><li>Scenario clue</li><li>Core pseudocode feature</li><li>One precise explanation</li><li>exactly 10 readings</li></ul></div>
+            </figure>
           </div>
         </section>
 
-        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-053">
-          <article class="why-card">
-            <h3>Why this matters</h3>
-            <p>Section 5 answers often fail because students name software but do not state the service it provides.</p>
-          </article>
-          <article class="trap-card">
-            <h3>Common error</h3>
-            <p>Do not call a word processor an operating system. Application software performs user tasks; system software supports the system.</p>
-          </article>
+        <section class="v2-panel" id="practice">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 3 | select by learner need</p><h2>Practice by question type</h2></div>
+          <div class="v2-question-list"><article class="v2-question" data-question-id="Q-L053-01" data-semantic-fingerprint="S9.09|constructing-and-interpreting-logic-statements|write|statement-accepts-integer-temperature|written|recall">
+              <div class="v2-question-head"><span class="v2-badge">write</span><span class="v2-badge">recall</span><span class="v2-badge difficulty">foundation</span><span class="v2-badge">5 marks</span></div>
+              <p><strong>Question 1.</strong> Write and explain a logic statement that accepts an integer Temperature from -20 to 50 inclusive, then state its value for -21, -20, 50 and 51.</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> uses Temperature = -20; uses AND Temperature &lt;= 50; states FALSE for -21; states TRUE for -20 and 50; states FALSE for 51</p><p><strong>Marking guidance:</strong> Do not accept OR for a two-bound inclusive range or award outputs without a correctly constructed statement.</p><p><strong>Common error:</strong> For the command word write, perform that exact action; do not replace it with an unrelated fact.</p></div></details>
+            </article><article class="v2-question" data-question-id="Q-L053-02" data-semantic-fingerprint="S9.09|constructing-and-interpreting-logic-statements|apply|what-must-remain-unchanged|written|calculate">
+              <div class="v2-question-head"><span class="v2-badge">apply</span><span class="v2-badge">calculate</span><span class="v2-badge difficulty">application</span><span class="v2-badge">2 marks</span></div>
+              <p><strong>Question 2.</strong> What must remain unchanged when converting representations?</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> The algorithm&#39;s inputs, outputs, conditions, order, branches and loop behaviour.</p><p><strong>Marking guidance:</strong> Award one mark for each distinct, technically accurate point or method step.</p><p><strong>Common error:</strong> Do not repeat the same point in different words; each mark needs a separate idea or method step.</p></div></details>
+            </article><article class="v2-question" data-question-id="Q-L053-03" data-semantic-fingerprint="S9.09|constructing-and-interpreting-logic-statements|state|precise-facts-about|written|recall">
+              <div class="v2-question-head"><span class="v2-badge">state</span><span class="v2-badge">recall</span><span class="v2-badge difficulty">transfer</span><span class="v2-badge">2 marks</span></div>
+              <p><strong>Question 3.</strong> State two precise facts about constructing and interpreting logic statements.</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> Logic statements define parts of an algorithm solution, including decision conditions, loop conditions and Boolean assignments; students must both construct and interpret them. A logic statement defines a decision, repetition condition or Boolean assignment in an algorithm solution. It combines comparisons such as =, &lt;, &lt;=, , = or &lt; with AND, OR or NOT when more than one condition is needed.</p><p><strong>Marking guidance:</strong> Award one mark for each distinct fact; do not credit a repeated point.</p><p><strong>Common error:</strong> Do not copy the worked example unchanged; transfer the method and check it against the new context.</p></div></details>
+            </article></div>
+
         </section>
 
-        <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-053">
-          <div class="section-title">
-            <p class="eyebrow">Warm-up hook</p>
-            <h2>A user writes `PRINT("Hello")`. The CPU wants machine code. Who translates?</h2>
-            <p>Click the best answer. The processor is powerful, but it is not fluent in every high-level language.</p>
-          </div>
-          <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="translator">A language translator such as a compiler or interpreter</button>
-            <button class="choice-card" type="button" data-hook="word">A word processor</button>
-            <button class="choice-card" type="button" data-hook="antivirus">Antivirus software</button>
-            <button class="choice-card" type="button" data-hook="monitor">The monitor</button>
-          </div>
-          <div class="feedback" id="hookFeedback" aria-live="polite">
-            Choose one. Source code must be translated into code the processor can execute.
-          </div>
+        <section class="v2-panel" id="summary">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 4 | close when ready</p><h2>Summary and exam reminders</h2></div>
+          <div class="v2-summary-grid"><div><h3>Summary</h3><ul class="v2-summary-list"><li>Define constructing and interpreting logic statements with the exact technical vocabulary expected by the syllabus.</li><li>Use the lesson method on a fresh context and show the intermediate decision, representation or calculation.</li><li>Match the shape of the answer to the command word and the available marks.</li><li>Check the final answer against the scenario instead of repeating a memorised sentence.</li></ul></div><div class="v2-error"><h3>Common error to correct</h3><p>Students often start coding before defining the output. Correction: an algorithm is easier to design when the required result is known first.</p></div></div>
+          <div class="v2-tip-box"><h3>Exam technique</h3><ul><li>Follow the command word: state gives a fact; explain links a cause to a consequence; compare covers both sides.</li><li>Match the number of independent points or method steps to the available marks.</li><li>For constructing and interpreting logic statements, use the exact technical term before applying it to the scenario.</li></ul></div>
         </section>
 
-        <section class="panel" id="concept" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-053">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 1</p>
-            <h2>System software supports the running and maintenance of the computer</h2>
-          </div>
-          <div class="concept-grid">
-            <article>
-              <strong>System software</strong>
-              <span>Software that manages hardware, supports applications and helps maintain the computer system.</span>
-            </article>
-            <article>
-              <strong>Operating system</strong>
-              <span>System software that manages resources and provides an interface and services for users and applications.</span>
-            </article>
-            <article>
-              <strong>Utility software</strong>
-              <span>System software that performs maintenance, protection or optimisation tasks.</span>
-            </article>
-            <article>
-              <strong>Translator</strong>
-              <span>System software that converts source code into code that can be executed or further processed.</span>
-            </article>
-          </div>
-          <div class="callout">Chinese support: system software = 系统软件；operating system = 操作系统；utility software = 实用程序；translator = 语言翻译程序。</div>
-        </section>
-
-        <!-- stage10-explanation:start concept -->
-        <section class="panel explanation-panel" id="explanation-concept" data-explains="concept" data-explanation-kind="mechanism" aria-labelledby="explanation-concept-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-053">
-          <h2 class="explanation-sr-only" id="explanation-concept-title">System software supports the running and maintenance of the computer</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-053-concept.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining System software supports the running and maintenance of the computer with a structured visual model." />
-            <figcaption class="explanation-sr-only">System software supports the running and maintenance of the computer: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> System software</li><li><strong>Lesson fact:</strong> Software that manages hardware, supports applications and helps maintain the computer system.</li><li><strong>Lesson fact:</strong> Operating system</li><li><strong>Lesson fact:</strong> System software that manages resources and provides an interface and services for users and applications.</li><li><strong>Lesson fact:</strong> Utility software</li><li><strong>Lesson fact:</strong> System software that performs maintenance, protection or optimisation tasks.</li><li><strong>Lesson fact:</strong> Translator</li><li><strong>Lesson fact:</strong> System software that converts source code into code that can be executed or further processed.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end concept -->
-        <section class="panel" id="categories" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-053">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 2</p>
-            <h2>System software versus application software</h2>
-          </div>
-          <div class="compare-grid">
-            <article>
-              <h3>System software</h3>
-              <p>Runs, manages or maintains the computer system. It provides services that applications depend on.</p>
-              <ul>
-                <li>Operating system</li>
-                <li>Utility software</li>
-                <li>Language translators</li>
-              </ul>
-            </article>
-            <article>
-              <h3>Application software</h3>
-              <p>Helps the user perform a specific task, such as writing a document, editing a video or browsing the web.</p>
-              <ul>
-                <li>Word processor</li>
-                <li>Spreadsheet</li>
-                <li>Web browser</li>
-              </ul>
-            </article>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start categories -->
-        <section class="panel explanation-panel" id="explanation-categories" data-explains="categories" data-explanation-kind="mechanism" aria-labelledby="explanation-categories-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-053">
-          <h2 class="explanation-sr-only" id="explanation-categories-title">System software versus application software</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-053-categories.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining System software versus application software with a structured visual model." />
-            <figcaption class="explanation-sr-only">System software versus application software: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> System software</li><li><strong>Lesson fact:</strong> Runs, manages or maintains the computer system. It provides services that applications depend on.</li><li><strong>Lesson fact:</strong> Operating system</li><li><strong>Lesson fact:</strong> Utility software</li><li><strong>Lesson fact:</strong> Language translators</li><li><strong>Lesson fact:</strong> Application software</li><li><strong>Lesson fact:</strong> Helps the user perform a specific task, such as writing a document, editing a video or browsing the web.</li><li><strong>Lesson fact:</strong> Word processor</li><li><strong>Lesson fact:</strong> Spreadsheet</li><li><strong>Lesson fact:</strong> Web browser</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end categories -->
-        <section class="panel" id="os" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-053">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 3</p>
-            <h2>Operating system: the main coordinator</h2>
-          </div>
-          <div class="role-grid">
-            <article><strong>User interface</strong><span>Provides a way for users to interact with the computer, such as GUI or command line.</span></article>
-            <article><strong>Resource management</strong><span>Allocates and controls hardware resources such as processor time, memory and devices.</span></article>
-            <article><strong>File services</strong><span>Provides file organisation, storage access and permission support.</span></article>
-            <article><strong>Application services</strong><span>Provides services and APIs that application software can use.</span></article>
-          </div>
-          <div class="trap-card inline-card">
-            <h3>Boundary</h3>
-            <p>Detailed process, memory, file and device management are developed in Lesson 054. Here the OS is introduced as the main system coordinator.</p>
-          </div>
-        </section>
-
-        <section class="panel" id="utility" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-053">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 4</p>
-            <h2>Utility software: maintenance and protection tools</h2>
-          </div>
-          <div class="utility-table" role="table" aria-label="Utility software examples">
-            <div class="table-row table-head" role="row">
-              <div role="columnheader">Utility</div>
-              <div role="columnheader">Purpose</div>
-              <div role="columnheader">Exam-safe wording</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Antivirus</div>
-              <div role="cell">Detects, quarantines or removes malware.</div>
-              <div role="cell">Protects the system from malicious software.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Backup</div>
-              <div role="cell">Creates copies of files/data.</div>
-              <div role="cell">Allows recovery after data loss, corruption or hardware failure.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Compression</div>
-              <div role="cell">Reduces file size.</div>
-              <div role="cell">Saves storage space or reduces transmission time.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Disk/file tools</div>
-              <div role="cell">Manage storage, clean temporary files or check disks.</div>
-              <div role="cell">Maintains storage organisation and may improve usability.</div>
-            </div>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start utility -->
-        <section class="panel explanation-panel" id="explanation-utility" data-explains="utility" data-explanation-kind="mechanism" aria-labelledby="explanation-utility-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-053">
-          <h2 class="explanation-sr-only" id="explanation-utility-title">Utility software: maintenance and protection tools</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-053-utility.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Utility software: maintenance and protection tools with a structured visual model." />
-            <figcaption class="explanation-sr-only">Utility software: maintenance and protection tools: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Exam-safe wording</li><li><strong>Lesson fact:</strong> Antivirus</li><li><strong>Lesson fact:</strong> Detects, quarantines or removes malware.</li><li><strong>Lesson fact:</strong> Protects the system from malicious software.</li><li><strong>Lesson fact:</strong> Creates copies of files/data.</li><li><strong>Lesson fact:</strong> Allows recovery after data loss, corruption or hardware failure.</li><li><strong>Lesson fact:</strong> Compression</li><li><strong>Lesson fact:</strong> Reduces file size.</li><li><strong>Lesson fact:</strong> Saves storage space or reduces transmission time.</li><li><strong>Lesson fact:</strong> Disk/file tools</li><li><strong>Lesson fact:</strong> Manage storage, clean temporary files or check disks.</li><li><strong>Lesson fact:</strong> Maintains storage organisation and may improve usability.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end utility -->
-        <section class="panel" id="translators" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-053">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 5</p>
-            <h2>Language translators: source code to executable behaviour</h2>
-          </div>
-          <div class="translator-grid">
-            <article>
-              <strong>Compiler</strong>
-              <span>Translates the whole source program before execution, often producing object or executable code.</span>
-            </article>
-            <article>
-              <strong>Interpreter</strong>
-              <span>Translates and executes source code statement by statement, often useful during development and debugging.</span>
-            </article>
-            <article>
-              <strong>Assembler</strong>
-              <span>Translates assembly language mnemonics into machine code for a specific processor.</span>
-            </article>
-          </div>
-          <div class="trap-card inline-card">
-            <h3>Common error</h3>
-            <p>An interpreter is not a "bad compiler". It is a different translation approach with different trade-offs.</p>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start translators -->
-        <section class="panel explanation-panel" id="explanation-translators" data-explains="translators" data-explanation-kind="mechanism" aria-labelledby="explanation-translators-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-053">
-          <h2 class="explanation-sr-only" id="explanation-translators-title">Language translators: source code to executable behaviour</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-053-translators.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Language translators: source code to executable behaviour with a structured visual model." />
-            <figcaption class="explanation-sr-only">Language translators: source code to executable behaviour: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Compiler</li><li><strong>Lesson fact:</strong> Translates the whole source program before execution, often producing object or executable code.</li><li><strong>Lesson fact:</strong> Interpreter</li><li><strong>Lesson fact:</strong> Translates and executes source code statement by statement, often useful during development and debugging.</li><li><strong>Lesson fact:</strong> Assembler</li><li><strong>Lesson fact:</strong> Translates assembly language mnemonics into machine code for a specific processor.</li><li><strong>Lesson fact:</strong> Common error</li><li><strong>Lesson fact:</strong> An interpreter is not a &quot;bad compiler&quot;. It is a different translation approach with different trade-offs.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end translators -->
-        <section class="panel" id="pathway" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-053">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 6</p>
-            <h2>Translation pathway</h2>
-          </div>
-          <div class="pathway-grid">
-            <div><strong>High-level source code</strong><span>Human-readable instructions such as Python, Java or pseudocode-like code.</span></div>
-            <div><strong>Translator</strong><span>Compiler/interpreter converts or executes the source language.</span></div>
-            <div><strong>Object / executable / machine code</strong><span>Low-level code that the processor can execute directly or as part of a build process.</span></div>
-            <div><strong>Error feedback</strong><span>Syntax and translation errors must be reported so the programmer can correct them.</span></div>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start pathway -->
-        <section class="panel explanation-panel" id="explanation-pathway" data-explains="pathway" data-explanation-kind="mechanism" aria-labelledby="explanation-pathway-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-053">
-          <h2 class="explanation-sr-only" id="explanation-pathway-title">Translation pathway</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-053-pathway.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Translation pathway with a structured visual model." />
-            <figcaption class="explanation-sr-only">Translation pathway: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> High-level source code Human-readable instructions such as Python, Java or pseudocode-like code.</li><li><strong>Lesson fact:</strong> Translator Compiler/interpreter converts or executes the source language.</li><li><strong>Lesson fact:</strong> Object / executable / machine code Low-level code that the processor can execute directly or as part of a build process.</li><li><strong>Lesson fact:</strong> Error feedback Syntax and translation errors must be reported so the programmer can correct them.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end pathway -->
-        <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-053">
-          <div class="section-title">
-            <p class="eyebrow">Interactive tool</p>
-            <h2>System software classifier</h2>
-            <p>Select a scenario and classify the software type before reading the explanation.</p>
-          </div>
-          <div class="converter-grid">
-            <label>
-              Scenario
-              <select id="scenarioInput">
-                <option value="os">The software allocates memory and processor time to programs</option>
-                <option value="backup">The software creates copies of user files for recovery</option>
-                <option value="compiler">The software translates a complete high-level program before it runs</option>
-                <option value="interpreter">The software runs source code line by line during testing</option>
-                <option value="assembler">The software converts assembly mnemonics into machine code</option>
-                <option value="app">The software helps a user write an essay</option>
-              </select>
-            </label>
-            <button type="button" id="simulateBtn">Classify</button>
-          </div>
-          <div class="result-box" id="simulateResult" aria-live="polite"></div>
-          <div class="method-box" id="simulateMethod"></div>
-          <div class="reject-box" id="simulateTrap"></div>
-        </section>
-
-        <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-053">
-          <div class="section-title">
-            <p class="eyebrow">Worked examples</p>
-            <h2>Choose the category, then justify it</h2>
-          </div>
-          <div class="example-tabs" role="tablist" aria-label="Worked examples">
-            <button class="tab active" type="button" data-example="classify">Classify software</button>
-            <button class="tab" type="button" data-example="compiler">Choose compiler</button>
-            <button class="tab" type="button" data-example="interpreter">Choose interpreter</button>
-            <button class="tab" type="button" data-example="utility">Choose utility</button>
-          </div>
-          <article class="example-box" id="exampleBox"></article>
-        </section>
-
-        <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-053">
-          <div class="section-title">
-            <p class="eyebrow">5-minute quiz</p>
-            <h2>Practice with instant checking</h2>
-            <p>Type short answers. Classification questions reward exact category names.</p>
-          </div>
-          <div class="practice-list" id="practiceList"></div>
-        </section>
-
-        <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-053">
-          <div class="section-title">
-            <p class="eyebrow">Mistake debugging</p>
-            <h2>Fix the system software confusion</h2>
-          </div>
-          <div class="mistake-grid" id="mistakeList"></div>
-        </section>
-
-        <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-053">
-          <div class="section-title">
-            <p class="eyebrow">Exam-style questions</p>
-            <h2>Cambridge-style questions with expandable mark schemes</h2>
-            <p>These are original Cambridge-style questions. MS notes are strict about category, purpose and consequence.</p>
-          </div>
-          <div class="exam-list" id="examList"></div>
-        </section>
-
-        <section class="panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-053">
-          <div class="section-title">
-            <p class="eyebrow">Summary</p>
-            <h2>System software supports the system</h2>
-          </div>
-          <div class="summary-grid">
-            <div><strong>OS</strong><span>Manages resources and provides services/interface.</span></div>
-            <div><strong>Utility</strong><span>Maintains, protects or optimises the system.</span></div>
-            <div><strong>Translator</strong><span>Converts source code into executable or lower-level code.</span></div>
-            <div><strong>Compiler</strong><span>Translates the whole program before execution.</span></div>
-            <div><strong>Interpreter</strong><span>Translates and executes statement by statement.</span></div>
-            <div><strong>Exam habit</strong><span>Name the category, then state its purpose and consequence.</span></div>
-          </div>
-        </section>
-
-        <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
-          <div class="section-title">
-            <p class="eyebrow">Homework</p>
-            <h2>Build a clean Section 5 vocabulary base</h2>
-          </div>
-          <ol class="homework-list">
-            <li>Define system software, operating system, utility software and language translator.</li>
-            <li>Create a table with six examples: two OS roles, two utilities and two translators.</li>
-            <li>Write a 4-mark answer explaining why a compiler may be suitable for distributing a finished program.</li>
-            <li>Correct this sentence: "A spreadsheet is system software because it runs on the computer."</li>
-            <li>Prepare three questions you expect in Lesson 054 about operating system roles.</li>
-          </ol>
-        </section>
+        <nav class="v2-bottom-nav" aria-label="Previous and next lesson"><a href="../lesson-052/" >Previous lesson</a><a href="../lesson-054/" >Next lesson</a></nav>
       </div>
     </main>
-    <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=3"></script>
-    <script src="../lesson-toolbar.js?v=3"></script>
-    <script src="../stage7-accessibility.js?v=4"></script>
+    <script src="../course-v2.js?v=1"></script>
   </body>
 </html>

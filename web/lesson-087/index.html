@@ -3,328 +3,84 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 087 | SQL joins using related tables</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <title>AS9618 Lesson 087 | Normal, abnormal and boundary test data</title>
     <link rel="icon" href="data:" />
-    <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
+    <link rel="stylesheet" href="../course-v2.css?v=3" />
   </head>
-  <body>
+  <body data-course-version="2" data-lesson-id="087" data-syllabus-ids="S12.07">
     <a class="skip-link" href="#main-content">Skip to main content</a>
-    <header class="topbar">
-      <div>
-        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 8</p>
-        <h1>SQL joins using related tables</h1>
-      </div>
-      <div class="action-panel" aria-label="Page controls">
-        <a class="course-home-link" href="../">Course home</a>
-        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
-      </div>
+    <header class="v2-topbar">
+      <div><p class="v2-eyebrow">Cambridge AS9618 | Paper 2 | Section 12: Software development</p><h1>Normal, abnormal and boundary test data</h1></div>
+      <nav class="v2-actions" aria-label="Lesson actions"><a href="../">Course home</a><a href="../assessments/">Assessment bank</a><button type="button" id="printLesson">Print</button></nav>
     </header>
+    <main class="v2-shell" id="main-content" tabindex="-1">
+      <nav class="v2-toc" aria-label="Lesson contents"><strong>Lesson 087</strong><a href="#overview">Overview</a><a href="#prerequisite">Prerequisite</a><a href="#explanation">Explanation</a><a href="#practice">Practice</a><a href="#summary">Summary</a></nav>
+      <div class="v2-content">
+        <section class="v2-hero" id="overview">
+          <div><p class="v2-eyebrow">Flexible-depth lesson</p><h2>Normal, abnormal and boundary test data</h2><p>S12.07 | Select what to omit, teach briefly or explore in depth.</p></div>
+          <div class="v2-time-grid" aria-label="Available lesson depth"><div><strong>Quick</strong><span>diagnose + essentials</span></div><div><strong>Full</strong><span>complete explanation</span></div><div><strong>Deep</strong><span>prerequisites + extension</span></div><div><strong>Choose</strong><span>practice by need</span></div></div>
+        </section>
 
-    <main class="layout" id="main-content" tabindex="-1">
-      <aside class="lesson-nav" aria-label="Lesson navigation">
-        <a href="#overview">Overview</a>
-        <a href="#hook">Warm-up</a>
-        <a href="#relationships">Relationships</a>
-        <a href="#join">Join conditions</a>
-        <a href="#aliases">Aliases</a>
-        <a href="#trace">Trace results</a>
-        <a href="#builder">Join builder</a>
-        <a href="#runner">Result runner</a>
-        <a href="#examples">Examples</a>
-        <a href="#practice">Practice</a>
-        <a href="#debug">Debugging</a>
-        <a href="#exam">Exam-style</a>
-        <a href="#summary">Summary</a>
-        <a href="#homework">Homework</a>
-      </aside>
+        <section class="v2-panel v2-route-menu" aria-labelledby="route-heading">
+          <div class="v2-heading"><p class="v2-eyebrow">Teacher choice</p><h2 id="route-heading">Choose the depth for this group</h2></div>
+          <div class="v2-route-grid"><article><h3>Quick route</h3><p>Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.</p></article><article><h3>Full route</h3><p>Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.</p></article><article><h3>Deep route</h3><p>Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.</p></article></div>
+        </section>
 
-      <div class="lesson-content">
-        <!-- remediation-v2-stage3-scope:start -->
-        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>This lesson is Optional enrichment or review. It does not establish first use of a new syllabus requirement and is excluded from compulsory coverage and prerequisite statistics.</p></aside>
-        <!-- remediation-v2-stage3-scope:end -->
+        <section class="v2-panel" id="prerequisite">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 1 | optional depth</p><h2>Prerequisite knowledge and quick diagnostic</h2></div>
+          <div class="v2-diagnostic"><p>Recall the main conclusion from Lesson 086: Test strategies and test plans.</p></div>
+          <p>Give one accurate definition or method step before continuing. If it is missing, revisit only that prerequisite.</p>
 
-<section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-087">
-          <div class="hero-copy">
-            <p class="lesson-meta">Lesson 087 | 45 minutes | Paper 1 Section 8 | informal questioning</p>
-            <h2>A join is the database version of introducing two people who already have the same ID card.</h2>
-            <p>
-              This lesson shows how related tables are joined using matching key fields. You will read table
-              relationships, write join conditions, trace joined rows and avoid the classic exam mistake:
-              naming three tables but forgetting how they are connected.
-            </p>
-            <div class="objective-grid" aria-label="Learning objectives">
-              <div><strong>Connect</strong><span>tables using primary key and foreign key fields</span></div>
-              <div><strong>Write</strong><span>SQL joins with clear table-qualified field names</span></div>
-              <div><strong>Trace</strong><span>which rows appear in a joined result</span></div>
+        </section>
+
+        <section class="v2-panel" id="explanation">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 2 | deliberately over-complete</p><h2>Knowledge explanation</h2></div>
+          <h3>Learning objectives</h3><ul class="v2-objectives"><li>Select normal, abnormal and extreme/boundary test data.</li></ul>
+          <details class="v2-concept-menu"><summary>Open the concept checklist and choose what to teach</summary><ul><li>normal</li><li>abnormal</li><li>extreme / boundary</li></ul></details>
+          <div class="v2-explanation-grid">
+            <div>
+              <article class="v2-core-facts"><h3>Detailed explanation</h3><p class="v2-teacher-note">Teach all points, or select only the ones this group needs. The list is intentionally fuller than a fixed lesson slot.</p><ul class="v2-facts"><li>Choose suitable test data for a test plan, including normal, abnormal and extreme/boundary data.</li><li>Alpha testing is performed internally before release; beta testing uses selected external users in realistic settings; acceptance testing checks the delivered system against agreed requirements. A strategy states levels/methods/responsibility, while a test plan records test ID, purpose, data, expected result, actual result and pass/fail.</li><li>Normal data are valid values within the accepted range. Abnormal data are invalid and should be rejected. Extreme or boundary data are valid values at the limits of the accepted range; values immediately outside a limit are abnormal boundary checks.</li><li>Choose test data from the stated validation rule and give an expected result for each value. A label such as &#39;boundary&#39; is insufficient unless the value really tests a stated limit.</li><li>Every maintenance change requires impact analysis, controlled amendment, tests for the changed behaviour and regression tests for unaffected behaviour. Records should link the request, code change and test evidence.</li><li>Test the enhancement with data that exercises the new path and rerun regression tests for existing paths. Correcting a fault is corrective maintenance; adding or improving requested functionality is an enhancement and may be perfective maintenance.</li></ul></article>
+              <article class="v2-example"><h3>Worked example</h3><p>Test login through review, construction, integration and release / Test an inclusive mark range / Three changes to one booking system / Add a Merit count without breaking PassCount: First dry-run the lockout counter and conduct a walkthrough in which peers inspect the algorithm. White-box tests cover true/false paths; black-box tests valid, invalid and boundary inputs from requirements. During integration, a stub returns simulated account results before the database is ready. Internal staff perform alpha testing, selected external users perform beta testing, and the customer performs acceptance testing against the agreed lockout behaviour. For an allowed mark from 0 to 100 inclusive, 55 is normal, 0 and 100 are valid extreme/boundary values, and -1 or 101 is abnormal. Fixing a crash when saving is corrective. Updating tax or term-date rules imposed externally is adaptive.…</p></article>
+              <aside class="v2-extension"><h3>Beyond syllabus / 延伸知识（不要求背诵）</h3><p>modern teams often use continuous integration to repeat building and testing whenever a program changes.</p></aside>
             </div>
-          </div>
-          <div class="sql-visual" aria-label="SQL join visual">
-            <span class="keyword">Student.StudentID</span><span>= Loan.StudentID</span>
-            <span class="keyword">Loan.BookID</span><span>= Book.BookID</span>
-            <p>Do not just invite tables to the party. Tell SQL how they know each other.</p>
-          </div>
-        </section>
-
-        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-087">
-          <article class="why-card">
-            <h3>Why this matters</h3>
-            <p>Cambridge-style mark schemes often credit the correct join condition separately from SELECT and FROM.</p>
-          </article>
-          <article class="trap-card">
-            <h3>Common error</h3>
-            <p><code>Student.StudentID = Book.BookID</code> looks tidy but is logically wrong. Join fields must represent the same item.</p>
-          </article>
-        </section>
-
-        <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-087">
-          <div class="section-title">
-            <p class="eyebrow">Warm-up hook</p>
-            <h2>Which condition correctly links students to their loans?</h2>
-            <p>If a table relationship is a bridge, a wrong join is a bridge drawn in pencil over a lake. The join path must follow the defined relationships.</p>
-          </div>
-          <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="studentLoan">Student.StudentID = Loan.StudentID</button>
-            <button class="choice-card" type="button" data-hook="studentBook">Student.StudentID = Book.BookID</button>
-            <button class="choice-card" type="button" data-hook="title">Student.StudentName = Book.Title</button>
-            <button class="choice-card" type="button" data-hook="category">Loan.StudentID = Book.Category</button>
-          </div>
-          <div class="feedback" id="hookFeedback" aria-live="polite">
-            Choose the condition where both fields store the same kind of value.
+            <figure class="v2-visual">
+              <img src="../assets/diagrams/stage10-infographics/stage10-lesson-146-changeover.jpg" alt="A test strategy states the testing levels, methods, responsibilities, sequence and resources for the project.. A test plan records individual cases with a test ID, purpose, data, expected result, actual result and pass/fail outcome.. Normal, abnormal and extreme/boundary values are test-data categories; a list of values alone is neither a complete strategy nor a complete test plan." loading="lazy" />
+              <figcaption>Test strategy and test plan are different documents. One maintained explanation is shown as an image on larger screens and as text on small screens.</figcaption>
+              <div class="v2-mobile-visual-text" aria-label="Mobile text alternative"><ul><li>A test strategy states the testing levels, methods, responsibilities, sequence and resources for the project.</li><li>A test plan records individual cases with a test ID, purpose, data, expected result, actual result and pass/fail outcome.</li><li>Normal, abnormal and extreme/boundary values are test-data categories; a list of values alone is neither a complete strategy nor a complete test plan.</li></ul></div>
+            </figure>
           </div>
         </section>
 
-        <section class="panel" id="relationships" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-087">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 1</p>
-            <h2>Related tables use primary keys and foreign keys</h2>
-            <p>A join combines rows when matching key fields refer to the same real-world item.</p>
-          </div>
-          <div class="relationship-map">
-            <article>
-              <h3>Student</h3>
-              <p><code>StudentID</code> primary key</p>
-              <p><code>StudentName</code>, <code>TutorGroup</code></p>
-            </article>
-            <div class="connector">1 to many<br /><code>StudentID</code></div>
-            <article>
-              <h3>Loan</h3>
-              <p><code>LoanID</code> primary key</p>
-              <p><code>StudentID</code>, <code>BookID</code> foreign keys</p>
-            </article>
-            <div class="connector">many to 1<br /><code>BookID</code></div>
-            <article>
-              <h3>Book</h3>
-              <p><code>BookID</code> primary key</p>
-              <p><code>Title</code>, <code>Category</code></p>
-            </article>
-          </div>
-          <div class="callout">Chinese support: primary key = 主键；foreign key = 外键；join = 连接/关联查询；related tables = 相关联的数据表。</div>
+        <section class="v2-panel" id="practice">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 3 | select by learner need</p><h2>Practice by question type</h2></div>
+          <div class="v2-question-list"><article class="v2-question" data-question-id="Q-L087-01" data-semantic-fingerprint="S12.07|normal-abnormal-and-boundary-test-data|give|value|written|recall">
+              <div class="v2-question-head"><span class="v2-badge">give</span><span class="v2-badge">recall</span><span class="v2-badge difficulty">foundation</span><span class="v2-badge">2 marks</span></div>
+              <p><strong>Question 1.</strong> Give one abnormal boundary value.</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> -1 or 101.</p><p><strong>Marking guidance:</strong> Award one mark for each distinct, technically accurate point or method step.</p><p><strong>Common error:</strong> For the command word give, perform that exact action; do not replace it with an unrelated fact.</p></div></details>
+            </article><article class="v2-question" data-question-id="Q-L087-02" data-semantic-fingerprint="S12.07|normal-abnormal-and-boundary-test-data|give|mark-number-inclusive|written|recall">
+              <div class="v2-question-head"><span class="v2-badge">give</span><span class="v2-badge">recall</span><span class="v2-badge difficulty">application</span><span class="v2-badge">2 marks</span></div>
+              <p><strong>Question 2.</strong> Give one normal mark for 0 to 100 inclusive.</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> Any valid non-boundary value, for example 55.</p><p><strong>Marking guidance:</strong> Award one mark for each distinct, technically accurate point or method step.</p><p><strong>Common error:</strong> Do not repeat the same point in different words; each mark needs a separate idea or method step.</p></div></details>
+            </article><article class="v2-question" data-question-id="Q-L087-03" data-semantic-fingerprint="S12.07|normal-abnormal-and-boundary-test-data|explain|would-applied-suitable-computing|visual|explain">
+              <div class="v2-question-head"><span class="v2-badge">explain</span><span class="v2-badge">explain</span><span class="v2-badge difficulty">transfer</span><span class="v2-badge">3 marks</span></div>
+              <p><strong>Question 3.</strong> Explain how normal, abnormal and boundary test data would be applied in a suitable computing context.</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> Alpha testing is performed internally before release; beta testing uses selected external users in realistic settings; acceptance testing checks the delivered system against agreed requirements. A strategy states levels/methods/responsibility, while a test plan records test ID, purpose, data, expected result, actual result and pass/fail. Normal data are valid values within the accepted range. Abnormal data are invalid and should be rejected. Extreme or boundary data are valid values at the limits of the accepted range; values immediately outside a limit are abnormal boundary checks. Choose test data from the stated validation rule and give an expected result for each value. A label such as &#39;boundary&#39; is insufficient unless the value really tests a stated limit.</p><p><strong>Marking guidance:</strong> Each mark needs a relevant point linked to the stated context.</p><p><strong>Common error:</strong> Do not copy the worked example unchanged; transfer the method and check it against the new context.</p></div></details>
+            </article></div>
+
         </section>
 
-        <!-- stage10-explanation:start relationships -->
-        <section class="panel explanation-panel" id="explanation-relationships" data-explains="relationships" data-explanation-kind="mechanism" aria-labelledby="explanation-relationships-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-087">
-          <h2 class="explanation-sr-only" id="explanation-relationships-title">Related tables use primary keys and foreign keys</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-087-relationships.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Related tables use primary keys and foreign keys with a structured visual model." />
-            <figcaption class="explanation-sr-only">Related tables use primary keys and foreign keys: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> A join combines rows when matching key fields refer to the same real-world item.</li><li><strong>Lesson fact:</strong> StudentID primary key</li><li><strong>Lesson fact:</strong> StudentName , TutorGroup</li><li><strong>Lesson fact:</strong> 1 to many</li><li><strong>Lesson fact:</strong> StudentID</li><li><strong>Lesson fact:</strong> LoanID primary key</li><li><strong>Lesson fact:</strong> StudentID , BookID foreign keys</li><li><strong>Lesson fact:</strong> many to 1</li><li><strong>Lesson fact:</strong> BookID primary key</li><li><strong>Lesson fact:</strong> Title , Category</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end relationships -->
-        <section class="panel" id="join" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-087">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 2</p>
-            <h2>Join conditions say which fields match</h2>
-            <p>AS questions require explicit <code>INNER JOIN</code> syntax using at most two tables. Put the matching-key relationship after <code>ON</code>.</p>
-          </div>
-          <div class="answer-frame">
-            <strong>Two-table pattern:</strong>
-            <span><code>SELECT Student.StudentName, Loan.DueDate FROM Student INNER JOIN Loan ON Student.StudentID = Loan.StudentID</code></span>
-          </div>
-          <div class="clause-grid">
-            <article><strong>INNER JOIN</strong><span>Names the second table that supplies related fields.</span></article>
-            <article><strong>ON</strong><span><code>Student.StudentID = Loan.StudentID</code> matches rows describing the same student.</span></article>
-            <article><strong>Extra filter</strong><span>Use <code>WHERE Loan.Returned = FALSE</code> after the join for a separate row condition.</span></article>
-          </div>
-        </section>
-        <section class="panel" id="aliases" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-087">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 3</p>
-            <h2>Table-qualified names and aliases prevent ambiguity</h2>
-            <p>If two tables have a field with the same name, write the table name or alias before the field.</p>
-          </div>
-          <div class="clause-grid">
-            <article><strong>Full name</strong><span><code>Student.StudentID</code> clearly means the field from Student.</span></article>
-            <article><strong>Alias</strong><span><code>Student AS S</code> lets you write <code>S.StudentID</code>.</span></article>
-            <article><strong>Exam caution</strong><span>Only use aliases if they make the query clear. Do not hide the join logic.</span></article>
-          </div>
+        <section class="v2-panel" id="summary">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 4 | close when ready</p><h2>Summary and exam reminders</h2></div>
+          <div class="v2-summary-grid"><div><h3>Summary</h3><ul class="v2-summary-list"><li>Define normal, abnormal and boundary test data with the exact technical vocabulary expected by the syllabus.</li><li>Use the lesson method on a fresh context and show the intermediate decision, representation or calculation.</li><li>Match the shape of the answer to the command word and the available marks.</li><li>Check the final answer against the scenario instead of repeating a memorised sentence.</li></ul></div><div class="v2-error"><h3>Common error to correct</h3><p>Students often describe the lifecycle as a fixed checklist. Correction: development is iterative; findings can send a project back to earlier stages.</p></div></div>
+          <div class="v2-tip-box"><h3>Exam technique</h3><ul><li>Follow the command word: state gives a fact; explain links a cause to a consequence; compare covers both sides.</li><li>Match the number of independent points or method steps to the available marks.</li><li>For normal, abnormal and boundary test data, use the exact technical term before applying it to the scenario.</li></ul></div>
         </section>
 
-        <!-- stage10-explanation:start aliases -->
-        <section class="panel explanation-panel" id="explanation-aliases" data-explains="aliases" data-explanation-kind="mechanism" aria-labelledby="explanation-aliases-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-087">
-          <h2 class="explanation-sr-only" id="explanation-aliases-title">Table-qualified names and aliases prevent ambiguity</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-087-aliases.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Table-qualified names and aliases prevent ambiguity with a structured visual model." />
-            <figcaption class="explanation-sr-only">Table-qualified names and aliases prevent ambiguity: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> If two tables have a field with the same name, write the table name or alias before the field.</li><li><strong>Lesson fact:</strong> Full name Student.StudentID clearly means the field from Student.</li><li><strong>Lesson fact:</strong> Alias Student AS S lets you write S.StudentID .</li><li><strong>Lesson fact:</strong> Exam caution Only use aliases if they make the query clear. Do not hide the join logic.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end aliases -->
-        <section class="panel" id="trace" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-087">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 4</p>
-            <h2>Trace joined rows from small tables</h2>
-          </div>
-          <div class="table-stack">
-            <div class="data-table student-table" role="table" aria-label="Student table">
-              <div class="table-row table-head" role="row"><div>StudentID</div><div>StudentName</div><div>TutorGroup</div></div>
-              <div class="table-row" role="row"><div>S01</div><div>Amira</div><div>12A</div></div>
-              <div class="table-row" role="row"><div>S02</div><div>Leo</div><div>12B</div></div>
-              <div class="table-row" role="row"><div>S03</div><div>Maya</div><div>12A</div></div>
-            </div>
-            <div class="data-table loan-table" role="table" aria-label="Loan table">
-              <div class="table-row table-head" role="row"><div>LoanID</div><div>StudentID</div><div>BookID</div><div>Returned</div></div>
-              <div class="table-row" role="row"><div>L01</div><div>S01</div><div>B01</div><div>FALSE</div></div>
-              <div class="table-row" role="row"><div>L02</div><div>S02</div><div>B02</div><div>TRUE</div></div>
-              <div class="table-row" role="row"><div>L03</div><div>S03</div><div>B03</div><div>FALSE</div></div>
-              <div class="table-row" role="row"><div>L04</div><div>S01</div><div>B03</div><div>TRUE</div></div>
-            </div>
-          </div>
-        </section>
-
-
-        <section class="panel" id="builder" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-087">
-          <div class="section-title">
-            <p class="eyebrow">Interactive join builder</p>
-            <h2>Choose the join path for the request</h2>
-          </div>
-          <div class="converter-grid">
-            <label>
-              English request
-              <select id="builderInput">
-                <option value="studentLoans">Show StudentName and LoanID for all loans.</option>
-                <option value="loanTitles">Start from Loan and show LoanID with StudentName.</option>
-                <option value="currentBooks">Show StudentName and LoanID for current loans only.</option>
-                <option value="computingBorrowers">Show 12A students who have a loan.</option>
-                <option value="aliasCurrent">Use aliases for the current-loan query.</option>
-              </select>
-            </label>
-            <button class="primary-button" type="button" id="builderBtn">Build SQL</button>
-          </div>
-          <pre class="sql-output" id="builderResult">Choose a request, then build the SQL.</pre>
-          <div class="feedback" id="builderReason">The output will show which relationship path is needed.</div>
-        </section>
-
-        <section class="panel" id="runner" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-087">
-          <div class="section-title">
-            <p class="eyebrow">Interactive result runner</p>
-            <h2>Run preset joins against the sample tables</h2>
-          </div>
-          <div class="converter-grid">
-            <label>
-              Query
-              <select id="queryInput">
-                <option value="q1">StudentName and LoanID for all loans</option>
-                <option value="q2">LoanID and StudentName for all loans</option>
-                <option value="q3">StudentName and LoanID for current loans</option>
-                <option value="q4">12A students who have a loan</option>
-                <option value="q5">StudentName, LoanID and TutorGroup for returned loans</option>
-              </select>
-            </label>
-            <button class="primary-button" type="button" id="queryBtn">Run join</button>
-          </div>
-          <div class="result-table" id="queryResult">Choose a query to see the joined result.</div>
-        </section>
-
-        <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-087">
-          <div class="section-title">
-            <p class="eyebrow">Worked examples</p>
-            <h2>Build the relationship path first</h2>
-          </div>
-          <div class="example-tabs" role="tablist" aria-label="Worked examples">
-            <button class="tab active" type="button" data-example="twoTable">Two-table join</button>
-            <button class="tab" type="button" data-example="threeTable">Reverse table order</button>
-            <button class="tab" type="button" data-example="filter">Join plus filter</button>
-            <button class="tab" type="button" data-example="alias">Alias version</button>
-          </div>
-          <article class="example-box" id="exampleBox" aria-live="polite"></article>
-        </section>
-
-        <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-087">
-          <div class="section-title">
-            <p class="eyebrow">Practice with instant checking</p>
-            <h2>Short quiz and core checks</h2>
-            <p>Type concise answers. Use Show answer after committing to a response.</p>
-          </div>
-          <div class="practice-list" id="practiceList"></div>
-        </section>
-
-        <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-087">
-          <div class="section-title">
-            <p class="eyebrow">Mistake debugging</p>
-            <h2>Repair weak join logic</h2>
-          </div>
-          <div class="mistake-grid" id="mistakeGrid"></div>
-        </section>
-
-        <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-087">
-          <div class="section-title">
-            <p class="eyebrow">Exam-style questions</p>
-            <h2>Original Cambridge-style practice with expandable MS</h2>
-            <p>These are original questions written in Cambridge style. The mark schemes are strict about join paths and requested fields.</p>
-          </div>
-          <div class="exam-list" id="examList"></div>
-        </section>
-
-        <section class="panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-087">
-          <div class="section-title">
-            <p class="eyebrow">Summary</p>
-            <h2>Join checklist</h2>
-          </div>
-          <div class="summary-grid">
-            <div><strong>Identify keys</strong><span>Find the primary key and matching foreign key fields.</span></div>
-            <div><strong>Write conditions</strong><span>Use one join condition for each relationship bridge.</span></div>
-            <div><strong>Output exactly</strong><span>Select only the fields requested by the question.</span></div>
-          </div>
-        </section>
-
-        <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
-          <div class="section-title">
-            <p class="eyebrow">Homework</p>
-            <h2>Clear tasks for consolidation</h2>
-          </div>
-          <div class="homework-list">
-            <article>
-              <strong>Task 1: Draw the path</strong>
-              <span>Draw the relationship between <code>Student</code> and <code>Loan</code>. Label the primary key and matching foreign key.</span>
-            </article>
-            <article>
-              <strong>Task 2: Write three joins</strong>
-              <span>Using only <code>Student</code> and <code>Loan</code>, write SQL for: all matched loans; current loans; and current loans for TutorGroup 12A.</span>
-            </article>
-            <article>
-              <strong>Task 3: 6-mark correction</strong>
-              <span>Correct this query and explain the errors: <code>SELECT * FROM Student, Loan WHERE Student.StudentID = Loan.LoanID;</code></span>
-            </article>
-          </div>
-        </section>
+        <nav class="v2-bottom-nav" aria-label="Previous and next lesson"><a href="../lesson-086/" >Previous lesson</a><a href="../lesson-088/" >Next lesson</a></nav>
       </div>
     </main>
-
-    <script src="./app.js?v=2"></script>
-    <script src="../course-catalog.js?v=3"></script>
-    <script src="../lesson-toolbar.js?v=3"></script>
-    <script src="../stage7-accessibility.js?v=4"></script>
+    <script src="../course-v2.js?v=1"></script>
   </body>
 </html>

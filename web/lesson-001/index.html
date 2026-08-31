@@ -3,425 +3,89 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 001 | Binary and decimal magnitude prefixes</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <title>AS9618 Lesson 001 | Binary data units and magnitude prefixes</title>
     <link rel="icon" href="data:" />
-    <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
+    <link rel="stylesheet" href="../course-v2.css?v=3" />
   </head>
-  <body>
+  <body data-course-version="2" data-lesson-id="001" data-syllabus-ids="S1.01">
     <a class="skip-link" href="#main-content">Skip to main content</a>
-    <header class="topbar">
-      <div>
-        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 1</p>
-        <h1>Binary and decimal magnitude prefixes</h1>
-      </div>
-      <div class="action-panel" aria-label="Page controls">
-        <a class="course-home-link" href="../">Course home</a>
-        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
-      </div>
+    <header class="v2-topbar">
+      <div><p class="v2-eyebrow">Cambridge AS9618 | Paper 1 | Section 1: Information representation</p><h1>Binary data units and magnitude prefixes</h1></div>
+      <nav class="v2-actions" aria-label="Lesson actions"><a href="../">Course home</a><a href="../assessments/">Assessment bank</a><button type="button" id="printLesson">Print</button></nav>
     </header>
-
-    <main class="layout" id="main-content" tabindex="-1">
-      <aside class="lesson-nav" aria-label="Lesson navigation">
-        <a href="#overview">Overview</a>
-        <a href="#hook">Warm-up</a>
-        <a href="#knowledge">Knowledge</a>
-        <a href="#examples">Examples</a>
-        <a href="#practice">Your turn</a>
-        <a href="#exam">Exam-style</a>
-        <a href="#summary">Summary</a>
-        <a href="#homework">Homework</a>
-        <a href="#stage2-completion">Core syllabus content</a>
-      </aside>
-
-      <div class="lesson-content">
-        <!-- remediation-v2-stage3-scope:start -->
-        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.</p></aside>
-        <!-- remediation-v2-stage3-scope:end -->
-
-<!-- stage2-completion:start -->
-        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus content</p>
-            <h2>Binary and decimal magnitude prefixes</h2>
-          </div>
-          <div class="stage2-explanation">
-            <p>Binary prefixes use powers of 1024: kibi (Ki) means 2^10, mebi (Mi) means 2^20, gibi (Gi) means 2^30 and tebi (Ti) means 2^40. Therefore 1 KiB = 1024 bytes, 1 MiB = 2^20 bytes, 1 GiB = 2^30 bytes and 1 TiB = 2^40 bytes.</p>
-            <p>Decimal prefixes use powers of 1000: kilo (k) means 10^3, mega (M) means 10^6, giga (G) means 10^9 and tera (T) means 10^12. Therefore 1 kB = 1000 bytes, 1 MB = 10^6 bytes, 1 GB = 10^9 bytes and 1 TB = 10^12 bytes. Case and the i in KiB/MiB/GiB/TiB carry meaning.</p>
-          </div>
-          <article class="stage2-example">
-            <h3>Worked example: 2 TiB drive</h3>
-            <p>2 TiB = 2 x 2^40 = 2,199,023,255,552 bytes. A 2 TB drive is 2,000,000,000,000 bytes, so the labels are not interchangeable.</p>
-          </article>
+    <main class="v2-shell" id="main-content" tabindex="-1">
+      <nav class="v2-toc" aria-label="Lesson contents"><strong>Lesson 001</strong><a href="#overview">Overview</a><a href="#prerequisite">Prerequisite</a><a href="#explanation">Explanation</a><a href="#practice">Practice</a><a href="#summary">Summary</a></nav>
+      <div class="v2-content">
+        <section class="v2-hero" id="overview">
+          <div><p class="v2-eyebrow">Flexible-depth lesson</p><h2>Binary data units and magnitude prefixes</h2><p>S1.01 | Select what to omit, teach briefly or explore in depth.</p></div>
+          <div class="v2-time-grid" aria-label="Available lesson depth"><div><strong>Quick</strong><span>diagnose + essentials</span></div><div><strong>Full</strong><span>complete explanation</span></div><div><strong>Deep</strong><span>prerequisites + extension</span></div><div><strong>Choose</strong><span>practice by need</span></div></div>
         </section>
 
-        <!-- stage10-explanation:start knowledge -->
-        <section class="panel explanation-panel" id="explanation-knowledge" data-explains="knowledge" data-explanation-kind="mechanism" aria-labelledby="explanation-knowledge-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="knowledge">
-          <h2 class="explanation-sr-only" id="explanation-knowledge-title">The storage ladder</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-001-knowledge.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining The storage ladder with a structured visual model." />
-            <figcaption class="explanation-sr-only">The storage ladder: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> bit 0 or 1</li><li><strong>Lesson fact:</strong> nibble 4 bits</li><li><strong>Lesson fact:</strong> byte 8 bits = 2 nibbles</li><li><strong>Lesson fact:</strong> KiB 1024 bytes</li><li><strong>Lesson fact:</strong> MiB 1024 KiB</li><li><strong>Lesson fact:</strong> GiB 1024 MiB</li><li><strong>Lesson fact:</strong> TiB 1024 GiB</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end knowledge -->
-        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus practice</p>
-            <h2>Binary and decimal magnitude prefixes: apply and assess</h2>
-          </div>
-          <div class="stage2-practice">
-            <h3>Targeted practice</h3>
-            <article class="stage2-question">
-              <p><strong>1.</strong> How many bytes are in 4 GiB?</p>
-              <details><summary>Show answer</summary><p>4 x 2^30 = 4,294,967,296 bytes.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>2.</strong> Which is larger, 1 TB or 1 TiB?</p>
-              <details><summary>Show answer</summary><p>1 TiB, because 2^40 is greater than 10^12.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>3.</strong> Draw lines to match kibi, mebi, gibi and tebi to Ki, Mi, Gi and Ti.</p>
-              <details><summary>Show answer</summary><p>kibi = Ki, mebi = Mi, gibi = Gi and tebi = Ti.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>4.</strong> Convert 3,000,000 bytes to MB.</p>
-              <details><summary>Show answer</summary><p>3 MB using the decimal prefix mega; kilo, mega, giga and tera use powers of 1000.</p></details>
-            </article>
-          </div>
-          <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>4 marks</span></div>
-            <p>State the number of bytes represented by 1 GiB and explain why 1 GB represents a different number of bytes.</p>
-            <details>
-              <summary>Show MS</summary>
-              <table class="mark-scheme-table">
-                <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
-                <tbody>
-                  <tr><td>1 GiB = 2^30 bytes / 1,073,741,824 bytes</td><td>Do not accept 'GiB is bigger' without both numerical definitions.</td><td>1</td></tr>
-                  <tr><td>gibi uses a binary power / multiples of 1024</td><td></td><td>1</td></tr>
-                  <tr><td>1 GB = 10^9 bytes / 1,000,000,000 bytes</td><td></td><td>1</td></tr>
-                  <tr><td>giga uses a decimal power / multiples of 1000</td><td></td><td>1</td></tr>
-                </tbody>
-              </table>
-            </details>
-          </article>
-        </section>
-        <!-- stage2-completion:end -->
-
-<section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-001">
-          <div class="hero-copy">
-            <p class="lesson-meta">Lesson 001 | 45 minutes | Informal questioning</p>
-            <h2>Bit patterns acquire meaning from their representation.</h2>
-            <p>
-              This lesson builds the storage unit ladder, compares decimal and binary prefixes,
-              and practises Cambridge-style conversion explanations with the correct units shown at each stage.
-            </p>
-            <div class="objective-grid" aria-label="Learning objectives">
-              <div>
-                <strong>Define</strong>
-                <span>bit, nibble, byte, kB, KiB, MB, MiB, GB, GiB, TB, TiB</span>
-              </div>
-              <div>
-                <strong>Convert</strong>
-                <span>between storage units using 8, 1000 and 1024 correctly</span>
-              </div>
-              <div>
-                <strong>Explain</strong>
-                <span>why MB and MiB are not the same measurement</span>
-              </div>
-            </div>
-          </div>
-          <div class="binary-display" aria-label="Binary warm-up display">
-            <span>00000111</span>
-            <p>Number? character? colour value? The representation decides.</p>
-          </div>
+        <section class="v2-panel v2-route-menu" aria-labelledby="route-heading">
+          <div class="v2-heading"><p class="v2-eyebrow">Teacher choice</p><h2 id="route-heading">Choose the depth for this group</h2></div>
+          <div class="v2-route-grid"><article><h3>Quick route</h3><p>Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.</p></article><article><h3>Full route</h3><p>Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.</p></article><article><h3>Deep route</h3><p>Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.</p></article></div>
         </section>
 
-        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-001">
-          <article class="why-card">
-            <h3>Why this matters</h3>
-            <p>Exam marks often depend on choosing the right unit system before doing arithmetic.</p>
-          </article>
-          <article class="trap-card">
-            <h3>Common error</h3>
-            <p>同一串 bit 可以代表数值、字符、颜色或指令；单位只告诉你数据大小，不自动说明含义。</p>
-          </article>
+        <section class="v2-panel" id="prerequisite">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 1 | optional depth</p><h2>Prerequisite knowledge and quick diagnostic</h2></div>
+          <div class="v2-diagnostic"><p>Check that you can use place value and distinguish a value from the way it is represented.</p></div>
+          <p>Give one accurate definition or method step before continuing. If it is missing, revisit only that prerequisite.</p>
+
         </section>
 
-        <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-001">
-          <div class="section-title">
-            <p class="eyebrow">Warm-up hook</p>
-            <h2>What does the bit pattern `00000111` represent?</h2>
-          </div>
-          <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="number">It is a number</button>
-            <button class="choice-card" type="button" data-hook="colour">It is a colour value</button>
-            <button class="choice-card" type="button" data-hook="character">It is a character code</button>
-            <button class="choice-card" type="button" data-hook="context">It depends on context</button>
-          </div>
-          <div class="feedback" id="hookFeedback" aria-live="polite">
-            Select the answer that accounts for the representation context.
-          </div>
-        </section>
-
-        <section id="delivery-04" class="guidance-grid compact" aria-label="Warm-up guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-001">
-          <article class="trap-card">
-            <h3>Common error</h3>
-            <p>Do not treat binary digits as decoration. Every bit can matter once a representation is chosen.</p>
-          </article>
-        </section>
-
-        <section class="panel" id="knowledge" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-001">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 1</p>
-            <h2>The storage ladder</h2>
-          </div>
-          <div class="ladder" id="ladder">
-            <div class="ladder-step"><strong>bit</strong><span>0 or 1</span></div>
-            <div class="ladder-step"><strong>nibble</strong><span>4 bits</span></div>
-            <div class="ladder-step"><strong>byte</strong><span>8 bits = 2 nibbles</span></div>
-            <div class="ladder-step"><strong>KiB</strong><span>1024 bytes</span></div>
-            <div class="ladder-step"><strong>MiB</strong><span>1024 KiB</span></div>
-            <div class="ladder-step"><strong>GiB</strong><span>1024 MiB</span></div>
-            <div class="ladder-step"><strong>TiB</strong><span>1024 GiB</span></div>
-          </div>
-          <div class="vocab-strip" aria-label="Key vocabulary">
-            <span><b>binary</b> 二进制</span>
-            <span><b>denary</b> 十进制</span>
-            <span><b>hexadecimal</b> 十六进制</span>
-            <span><b>prefix</b> 前缀</span>
-          </div>
-        </section>
-
-        <section id="delivery-06" class="panel" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-001">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 2</p>
-            <h2>Binary magnitudes: powers of two, not a decorative 1024</h2>
-          </div>
-          <div class="magnitude-grid">
+        <section class="v2-panel" id="explanation">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 2 | deliberately over-complete</p><h2>Knowledge explanation</h2></div>
+          <h3>Learning objectives</h3><ul class="v2-objectives"><li>Show understanding of binary magnitudes and the difference between binary prefixes and decimal prefixes.</li></ul>
+          <details class="v2-concept-menu"><summary>Open the concept checklist and choose what to teach</summary><ul><li>binary prefixes</li><li>decimal prefixes</li><li>kibi / KiB</li><li>kilo / kB</li><li>mebi / MiB</li><li>mega / MB</li><li>gibi / GiB</li><li>giga / GB</li><li>tebi / TiB</li><li>tera / TB</li></ul></details>
+          <div class="v2-explanation-grid">
             <div>
-              <h3>What the phrase means</h3>
-              <p>
-                A binary magnitude is a size based on powers of two. Storage questions often
-                use 2<sup>10</sup>, 2<sup>20</sup>, 2<sup>30</sup> and 2<sup>40</sup>.
-              </p>
+              <article class="v2-core-facts"><h3>Detailed explanation</h3><p class="v2-teacher-note">Teach all points, or select only the ones this group needs. The list is intentionally fuller than a fixed lesson slot.</p><ul class="v2-facts"><li>Use and distinguish kibi/kilo, mebi/mega, gibi/giga and tebi/tera; binary prefixes use powers of 1024 and decimal prefixes use powers of 1000.</li><li>Binary prefixes use powers of 1024: kibi (Ki) means 2^10, mebi (Mi) means 2^20, gibi (Gi) means 2^30 and tebi (Ti) means 2^40. Therefore 1 KiB = 1024 bytes, 1 MiB = 2^20 bytes, 1 GiB = 2^30 bytes and 1 TiB = 2^40 bytes.</li><li>Decimal prefixes use powers of 1000: kilo (k) means 10^3, mega (M) means 10^6, giga (G) means 10^9 and tera (T) means 10^12. Therefore 1 kB = 1000 bytes, 1 MB = 10^6 bytes, 1 GB = 10^9 bytes and 1 TB = 10^12 bytes. Case and the i in KiB/MiB/GiB/TiB carry meaning.</li><li>For binary data units and magnitude prefixes, identify the required concept before describing its mechanism or consequence.</li></ul></article>
+              <article class="v2-example"><h3>Worked example</h3><p>2 TiB drive: 2 TiB = 2 x 2^40 = 2,199,023,255,552 bytes. A 2 TB drive is 2,000,000,000,000 bytes, so the labels are not interchangeable.</p></article>
+              <aside class="v2-extension"><h3>Beyond syllabus / 延伸知识（不要求背诵）</h3><p>real file formats also store headers and metadata, so two files with the same visible content may still have different sizes.</p></aside>
             </div>
-            <div>
-              <h3>Calculator-free anchors</h3>
-              <ul>
-                <li>2<sup>10</sup> = 1024</li>
-                <li>2<sup>20</sup> = 1,048,576</li>
-                <li>2<sup>30</sup> = 1,073,741,824</li>
-                <li>2<sup>40</sup> = 1,099,511,627,776</li>
-              </ul>
-            </div>
-            <div>
-              <h3>Exam consequence</h3>
-              <p>
-                If a question says KiB, MiB, GiB or TiB, use 1024 between adjacent units.
-                If it says kB, MB, GB or TB, use 1000 unless the question states otherwise.
-              </p>
-            </div>
+            <figure class="v2-visual">
+              <img src="../assets/diagrams/stage10-infographics/stage10-lesson-016-methods.jpg" alt="Storage units. 1 KiB = 1024 bytes. 1 MiB = 1024 KiB. Decimal prefixes use 1000, binary prefixes use 1024.. Binary to denary. Add active place values. For 8-bit unsigned, range is 0 to 255.. Image bits = width x height x colour depth. Sound bits = sample rate x sampling resolution x duration x channels." loading="lazy" />
+              <figcaption>Section 1 method bank. One maintained explanation is shown as an image on larger screens and as text on small screens.</figcaption>
+              <div class="v2-mobile-visual-text" aria-label="Mobile text alternative"><ul><li>Storage units</li><li>1 KiB = 1024 bytes. 1 MiB = 1024 KiB. Decimal prefixes use 1000, binary prefixes use 1024.</li><li>Binary to denary</li><li>Add active place values. For 8-bit unsigned, range is 0 to 255.</li><li>Image bits = width x height x colour depth. Sound bits = sample rate x sampling resolution x duration x channels.</li></ul></div>
+            </figure>
           </div>
         </section>
 
-        <section id="delivery-07" class="panel" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-001">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 3</p>
-            <h2>Decimal prefixes vs binary prefixes</h2>
-          </div>
-          <div class="compare-grid">
-            <div class="compare-column decimal">
-              <h3>Decimal prefixes</h3>
-              <p>Often used by storage manufacturers.</p>
-              <ul>
-                <li>1 kB = 1000 bytes</li>
-                <li>1 MB = 1000 kB</li>
-                <li>1 GB = 1000 MB</li>
-                <li>1 TB = 1000 GB</li>
-              </ul>
-            </div>
-            <div class="compare-column binary">
-              <h3>Binary prefixes</h3>
-              <p>Used when sizes are based on powers of two.</p>
-              <ul>
-                <li>1 KiB = 1024 bytes</li>
-                <li>1 MiB = 1024 KiB</li>
-                <li>1 GiB = 1024 MiB</li>
-                <li>1 TiB = 1024 GiB</li>
-              </ul>
-            </div>
-          </div>
-          <div class="callout">Exam habit: read the prefix before calculating.</div>
+        <section class="v2-panel" id="practice">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 3 | select by learner need</p><h2>Practice by question type</h2></div>
+          <div class="v2-question-list"><article class="v2-question" data-question-id="Q-L001-01" data-semantic-fingerprint="S1.01|binary-data-units-and-magnitude-prefixes|state|number-bytes-represented-gib|written|recall">
+              <div class="v2-question-head"><span class="v2-badge">state</span><span class="v2-badge">recall</span><span class="v2-badge difficulty">foundation</span><span class="v2-badge">4 marks</span></div>
+              <p><strong>Question 1.</strong> State the number of bytes represented by 1 GiB and explain why 1 GB represents a different number of bytes.</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> 1 GiB = 2^30 bytes / 1,073,741,824 bytes; gibi uses a binary power / multiples of 1024; 1 GB = 10^9 bytes / 1,000,000,000 bytes; giga uses a decimal power / multiples of 1000</p><p><strong>Marking guidance:</strong> Do not accept &#39;GiB is bigger&#39; without both numerical definitions.</p><p><strong>Common error:</strong> For the command word state, perform that exact action; do not replace it with an unrelated fact.</p></div></details>
+            </article><article class="v2-question" data-question-id="Q-L001-02" data-semantic-fingerprint="S1.01|binary-data-units-and-magnitude-prefixes|convert|convert-number-bytes|written|calculate">
+              <div class="v2-question-head"><span class="v2-badge">convert</span><span class="v2-badge">calculate</span><span class="v2-badge difficulty">application</span><span class="v2-badge">2 marks</span></div>
+              <p><strong>Question 2.</strong> Convert 3,000,000 bytes to MB.</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> 3 MB using the decimal prefix mega; kilo, mega, giga and tera use powers of 1000.</p><p><strong>Marking guidance:</strong> Award one mark for each distinct, technically accurate point or method step.</p><p><strong>Common error:</strong> Do not repeat the same point in different words; each mark needs a separate idea or method step.</p></div></details>
+            </article><article class="v2-question" data-question-id="Q-L001-03" data-semantic-fingerprint="S1.01|binary-data-units-and-magnitude-prefixes|draw|draw-lines-match-kibi|written|diagram">
+              <div class="v2-question-head"><span class="v2-badge">draw</span><span class="v2-badge">diagram</span><span class="v2-badge difficulty">transfer</span><span class="v2-badge">2 marks</span></div>
+              <p><strong>Question 3.</strong> Draw lines to match kibi, mebi, gibi and tebi to Ki, Mi, Gi and Ti.</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> kibi = Ki, mebi = Mi, gibi = Gi and tebi = Ti.</p><p><strong>Marking guidance:</strong> Award one mark for each distinct, technically accurate point or method step.</p><p><strong>Common error:</strong> Do not copy the worked example unchanged; transfer the method and check it against the new context.</p></div></details>
+            </article></div>
+          <div class="v2-paper-refs">
+          <h3>Related past-paper indexes</h3>
+          <table><thead><tr><th>Reference</th><th>Marks</th><th>Command word</th><th>Question type</th></tr></thead>
+          <tbody><tr><td>9618/13/S/24 Q1(a)</td><td>4</td><td>complete</td><td>recall</td></tr><tr><td>9618/11/W/24 Q1(a)</td><td>1</td><td>state</td><td>recall</td></tr><tr><td>9618/12/S/24 Q7(a)</td><td>1</td><td>identify</td><td>calculate</td></tr><tr><td>9618/12/W/23 Q3(a)</td><td>1</td><td>state</td><td>recall</td></tr></tbody></table>
+          <p class="v2-copyright-note">Index only: Cambridge question and mark-scheme wording is not reproduced on this public course page.</p>
+        </div>
         </section>
 
-
-        <section id="delivery-08" class="guidance-grid compact" aria-label="Prefix guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-001">
-          <article class="why-card">
-            <h3>Why this matters</h3>
-            <p>The syllabus explicitly expects the contrast between kibi/kilo, mebi/mega, gibi/giga and tebi/tera.</p>
-          </article>
-          <article class="trap-card">
-            <h3>Common error</h3>
-            <p>decimal prefixes 按 1000 进位；binary prefixes 按 1024 进位。MiB and MB use different magnitude prefixes.</p>
-          </article>
+        <section class="v2-panel" id="summary">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 4 | close when ready</p><h2>Summary and exam reminders</h2></div>
+          <div class="v2-summary-grid"><div><h3>Summary</h3><ul class="v2-summary-list"><li>Define binary data units and magnitude prefixes with the exact technical vocabulary expected by the syllabus.</li><li>Use the lesson method on a fresh context and show the intermediate decision, representation or calculation.</li><li>Match the shape of the answer to the command word and the available marks.</li><li>Check the final answer against the scenario instead of repeating a memorised sentence.</li></ul></div><div class="v2-error"><h3>Common error to correct</h3><p>Students often treat binary digits as decoration. Correction: every bit position has a value; if the position changes, the value changes.</p></div></div>
+          <div class="v2-tip-box"><h3>Exam technique</h3><ul><li>Follow the command word: state gives a fact; explain links a cause to a consequence; compare covers both sides.</li><li>Match the number of independent points or method steps to the available marks.</li><li>For binary data units and magnitude prefixes, use the exact technical term before applying it to the scenario.</li></ul></div>
         </section>
 
-        <section class="panel interactive" id="converter" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-001">
-          <div class="section-title">
-            <p class="eyebrow">Interactive tool</p>
-            <h2>Storage converter</h2>
-          </div>
-          <div class="converter-grid">
-            <label>
-              Value
-              <input id="convertValue" type="number" min="0" step="any" value="2048" />
-            </label>
-            <label>
-              From
-              <select id="fromUnit"></select>
-            </label>
-            <label>
-              To
-              <select id="toUnit"></select>
-            </label>
-            <button type="button" id="convertBtn">Convert</button>
-          </div>
-          <div class="result-box" id="convertResult" aria-live="polite"></div>
-          <div class="method-box" id="convertMethod"></div>
-        </section>
-
-        <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-001">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge examples</p>
-            <h2>Worked examples</h2>
-          </div>
-          <div class="example-tabs" role="tablist" aria-label="Worked examples">
-            <button class="tab active" type="button" data-example="icon">2048-bit icon</button>
-            <button class="tab" type="button" data-example="file">5 MiB file</button>
-            <button class="tab" type="button" data-example="drive">32 GB drive</button>
-          </div>
-          <article class="example-box" id="exampleBox"></article>
-        </section>
-
-        <section id="delivery-11" class="guidance-grid compact" aria-label="Worked example guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-001">
-          <article class="trap-card">
-            <h3>Common error</h3>
-            <p>Do not guess MB/MiB from memory. Read the prefix, choose 1000 or 1024, then calculate.</p>
-          </article>
-        </section>
-
-        <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-001">
-          <div class="section-title">
-            <p class="eyebrow">Your turn</p>
-            <h2>Practice with instant checking</h2>
-          </div>
-          <div class="practice-list" id="practiceList"></div>
-          <button type="button" id="checkPractice">Check answers</button>
-          <div class="feedback" id="practiceFeedback" aria-live="polite"></div>
-        </section>
-
-        <section id="delivery-13" class="panel mistake-panel" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-001">
-          <div class="section-title">
-            <p class="eyebrow">Debug the mistakes</p>
-            <h2>Identify and correct the error</h2>
-          </div>
-          <div class="mistake-grid">
-            <div>
-              <h3>Mistake 1</h3>
-              <p class="wrong">8 bytes = 8 bits</p>
-              <button type="button" class="reveal" data-reveal="mistake1">Show correction</button>
-              <p class="answer" id="mistake1">8 bytes = 64 bits because 1 byte = 8 bits.</p>
-            </div>
-            <div>
-              <h3>Mistake 2</h3>
-              <p class="wrong">2 MiB = 2000 KiB</p>
-              <button type="button" class="reveal" data-reveal="mistake2">Show correction</button>
-              <p class="answer" id="mistake2">2 MiB = 2048 KiB because MiB to KiB uses x1024.</p>
-            </div>
-          </div>
-        </section>
-
-        <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-001">
-          <div class="section-title">
-            <p class="eyebrow">Past-paper style</p>
-            <h2>Original exam-style questions</h2>
-          </div>
-          <div class="exam-grid" id="examGrid"></div>
-          <p class="source-note">
-            These are original past-paper-style questions, not copied Cambridge past paper text.
-            Use the buttons under each question to expand the Cambridge-style mark scheme.
-          </p>
-        </section>
-
-        <section id="delivery-15" class="guidance-grid compact" aria-label="Exam guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-001">
-          <article class="why-card">
-            <h3>Why this matters</h3>
-            <p>Method marks can survive an arithmetic slip, but using 1000 where KiB/MiB requires 1024 is a different error.</p>
-          </article>
-        </section>
-
-        <section class="panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-001">
-          <div class="section-title">
-            <p class="eyebrow">Summary</p>
-            <h2>Summary of required knowledge</h2>
-          </div>
-          <div class="summary-grid">
-            <div><strong>1</strong><span>bit = 0 or 1; nibble = 4 bits; byte = 8 bits</span></div>
-            <div><strong>2</strong><span>kB/MB/GB/TB use 1000; KiB/MiB/GiB/TiB use 1024</span></div>
-            <div><strong>3</strong><span>Conversions need visible working and units</span></div>
-          </div>
-          <div class="exit-ticket">
-            <label for="exitTicket">Exit ticket</label>
-            <textarea id="exitTicket" rows="3" placeholder="The key point about storage units is..., and a common mistake is..."></textarea>
-          </div>
-        </section>
-
-        <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
-          <div class="section-title">
-            <p class="eyebrow">Homework</p>
-            <h2>Homework tasks</h2>
-          </div>
-          <ol class="homework-list">
-            <li>Create a two-column vocabulary table for bit, nibble, byte, kB, KiB, MB, MiB, GB, GiB, TB, TiB.</li>
-            <li>Show working for: 6 bytes to bits; 8192 bytes to KiB; 3 MiB to bits; 1 TiB to GiB.</li>
-            <li>Write a 4-mark explanation: why can a 512 GB drive display as fewer GiB?</li>
-            <li>Extension: find one real file on your device and report its size in MB and approximate MiB.</li>
-          </ol>
-        </section>
-
-        <section id="delivery-19" class="panel homework-support" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-001">
-          <div class="section-title">
-            <p class="eyebrow">Homework support</p>
-            <h2>Check only after attempting</h2>
-          </div>
-          <button
-            type="button"
-            class="reveal"
-            data-reveal="homeworkAnswers"
-            data-open-label="Show homework answers"
-            data-close-label="Hide homework answers"
-          >
-            Show homework answers
-          </button>
-          <div class="answer-panel" id="homeworkAnswers">
-            <p><strong>Calculation answers:</strong> 6 bytes = 48 bits; 8192 bytes = 8 KiB; 3 MiB = 25,165,824 bits; 1 TiB = 1024 GiB.</p>
-            <p><strong>4-mark explanation focus:</strong> credit decimal vs binary prefixes, 1000 vs 1024, same byte count with different scale, and context.</p>
-          </div>
-        </section>
+        <nav class="v2-bottom-nav" aria-label="Previous and next lesson"><a href="../" aria-disabled="true">Previous lesson</a><a href="../lesson-002/" >Next lesson</a></nav>
       </div>
     </main>
-
-    <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=3"></script>
-    <script src="../lesson-toolbar.js?v=3"></script>
-    <script src="../stage7-accessibility.js?v=4"></script>
+    <script src="../course-v2.js?v=1"></script>
   </body>
 </html>

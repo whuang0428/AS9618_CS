@@ -3,507 +3,89 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 066 | User accounts, passwords and biometric authentication</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <title>AS9618 Lesson 066 | Linked-list features and operations</title>
     <link rel="icon" href="data:" />
-    <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
+    <link rel="stylesheet" href="../course-v2.css?v=3" />
   </head>
-  <body>
+  <body data-course-version="2" data-lesson-id="066" data-syllabus-ids="S10.09,S10.10">
     <a class="skip-link" href="#main-content">Skip to main content</a>
-    <header class="topbar">
-      <div>
-        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 6</p>
-        <h1>User accounts, passwords and biometric authentication</h1>
-      </div>
-      <div class="action-panel" aria-label="Page controls">
-        <a class="course-home-link" href="../">Course home</a>
-        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
-      </div>
+    <header class="v2-topbar">
+      <div><p class="v2-eyebrow">Cambridge AS9618 | Paper 2 | Section 10: Data types and structures</p><h1>Linked-list features and operations</h1></div>
+      <nav class="v2-actions" aria-label="Lesson actions"><a href="../">Course home</a><a href="../assessments/">Assessment bank</a><button type="button" id="printLesson">Print</button></nav>
     </header>
-
-    <main class="layout" id="main-content" tabindex="-1">
-      <aside class="lesson-nav" aria-label="Lesson navigation">
-        <a href="#overview">Overview</a>
-        <a href="#hook">Warm-up</a>
-        <a href="#core">Authentication</a>
-        <a href="#factors">Factors</a>
-        <a href="#passwords">Passwords</a>
-        <a href="#biometrics">Biometrics</a>
-        <a href="#tokens">Tokens</a>
-        <a href="#mfa">MFA</a>
-        <a href="#compare">Compare</a>
-        <a href="#tool">Auth tool</a>
-        <a href="#password-tool">Password tool</a>
-        <a href="#examples">Examples</a>
-        <a href="#practice">Practice</a>
-        <a href="#debug">Debugging</a>
-        <a href="#exam">Exam-style</a>
-        <a href="#summary">Summary</a>
-        <a href="#homework">Homework</a>
-        <a href="#stage2-completion">Core syllabus content</a>
-      </aside>
-
-      <div class="lesson-content">
-        <!-- remediation-v2-stage3-scope:start -->
-        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.</p></aside>
-        <!-- remediation-v2-stage3-scope:end -->
-
-<!-- stage2-completion:start -->
-        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus content</p>
-            <h2>User accounts, passwords and biometric authentication</h2>
-          </div>
-          <div class="stage2-explanation">
-            <p>A user account gives an individual or role a distinct system identity and supports accountability. A password is secret knowledge used to authenticate an identity claim. Accounts should not be shared; passwords should be difficult to guess, stored as salted hashes, protected by attempt limits and changed if compromised.</p>
-            <p>Biometrics use a physical or behavioural characteristic such as fingerprint, face, iris, retina, voice or typing pattern. A captured feature is converted to a template and compared with an enrolled template. A match authenticates the identity claim; authorisation is the separate decision about what that user may access or do.</p>
-            <p>False rejection denies a valid enrolled user by mistake; false acceptance authenticates an impostor by mistake. Biometrics can be convenient and cannot be casually shared like a password, but require sensors/templates, may raise privacy concerns and cannot normally be replaced as easily as a compromised password.</p>
-            <p>Each security measure has a distinct mechanism: a user account identifies a user; a password authenticates knowledge; a digital signature supports integrity and origin checks; a biometric compares a captured feature; a firewall filters traffic; anti-virus and anti-spyware detect known malicious software; encryption protects readable data. The threats include a virus, spyware, a hacker, phishing and pharming; each threat must be matched to a control whose mechanism reduces that risk.</p>
-          </div>
-          <article class="stage2-example">
-            <h3>Worked example: Account login with fingerprint</h3>
-            <p>A named staff account first supplies a password, then a fingerprint sensor captures a feature and compares its template with the enrolled template. A match authenticates the claimed identity. The access-rights system then separately decides whether that account may read payroll data; the biometric match itself does not grant every permission.</p>
-          </article>
+    <main class="v2-shell" id="main-content" tabindex="-1">
+      <nav class="v2-toc" aria-label="Lesson contents"><strong>Lesson 066</strong><a href="#overview">Overview</a><a href="#prerequisite">Prerequisite</a><a href="#explanation">Explanation</a><a href="#practice">Practice</a><a href="#summary">Summary</a></nav>
+      <div class="v2-content">
+        <section class="v2-hero" id="overview">
+          <div><p class="v2-eyebrow">Flexible-depth lesson</p><h2>Linked-list features and operations</h2><p>S10.09, S10.10 | Select what to omit, teach briefly or explore in depth.</p></div>
+          <div class="v2-time-grid" aria-label="Available lesson depth"><div><strong>Quick</strong><span>diagnose + essentials</span></div><div><strong>Full</strong><span>complete explanation</span></div><div><strong>Deep</strong><span>prerequisites + extension</span></div><div><strong>Choose</strong><span>practice by need</span></div></div>
         </section>
-        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus practice</p>
-            <h2>User accounts, passwords and biometric authentication: apply and assess</h2>
-          </div>
-          <div class="stage2-practice">
-            <h3>Targeted practice</h3>
-            <article class="stage2-question">
-              <p><strong>1.</strong> What is the purpose of a user account?</p>
-              <details><summary>Show answer</summary><p>It provides a distinct identity for authentication, access control and accountability.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>2.</strong> What does a biometric match establish?</p>
-              <details><summary>Show answer</summary><p>It provides evidence that the presented feature matches the enrolled identity template; it authenticates the identity claim.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>3.</strong> Does successful authentication decide every permitted action?</p>
-              <details><summary>Show answer</summary><p>No. Authorisation/access rights separately decide what the authenticated user may access or do.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>4.</strong> Compare false accept from false reject.</p>
-              <details><summary>Show answer</summary><p>False accept authenticates an impostor; false reject denies a valid enrolled user.</p></details>
-            </article>
-          </div>
-          <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>6 marks</span></div>
-            <p>Describe how user accounts, passwords and biometrics can protect a computer system, including one limitation of each authentication method.</p>
-            <details>
-              <summary>Show MS</summary>
-              <table class="mark-scheme-table">
-                <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
-                <tbody>
-                  <tr><td>account supplies a distinct identity/accountability record</td><td>Do not describe a biometric match as permission to access every resource or claim that biometrics cannot produce errors.</td><td>1</td></tr>
-                  <tr><td>password is secret knowledge checked during authentication</td><td></td><td>1</td></tr>
-                  <tr><td>password limitation such as guessing/phishing/reuse/sharing</td><td></td><td>1</td></tr>
-                  <tr><td>biometric feature is captured and compared with an enrolled template</td><td></td><td>1</td></tr>
-                  <tr><td>biometric limitation such as false accept/reject, sensor/template or privacy risk</td><td></td><td>1</td></tr>
-                  <tr><td>authentication is distinguished from later authorisation/access rights</td><td></td><td>1</td></tr>
-                </tbody>
-              </table>
-            </details>
-          </article>
-        </section>
-        <!-- stage2-completion:end -->
 
-<section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-066">
-          <div class="hero-copy">
-            <p class="lesson-meta">Lesson 066 | 45 minutes | Paper 1 Section 6 | Security, privacy and data integrity</p>
-            <h2>Authentication asks: are you really who you claim to be?</h2>
-            <p>
-              Authentication verifies identity before access is granted. Passwords, biometrics and tokens
-              each prove identity in a different way. Multi-factor authentication combines different factor
-              types so one stolen secret is not enough.
-            </p>
-            <div class="objective-grid" aria-label="Learning objectives">
-              <div><strong>Distinguish</strong><span>authentication from authorisation and access rights</span></div>
-              <div><strong>Compare</strong><span>passwords, biometrics, tokens and MFA using precise advantages and risks</span></div>
-              <div><strong>Recommend</strong><span>authentication choices for realistic security scenarios</span></div>
+        <section class="v2-panel v2-route-menu" aria-labelledby="route-heading">
+          <div class="v2-heading"><p class="v2-eyebrow">Teacher choice</p><h2 id="route-heading">Choose the depth for this group</h2></div>
+          <div class="v2-route-grid"><article><h3>Quick route</h3><p>Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.</p></article><article><h3>Full route</h3><p>Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.</p></article><article><h3>Deep route</h3><p>Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.</p></article></div>
+        </section>
+
+        <section class="v2-panel" id="prerequisite">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 1 | optional depth</p><h2>Prerequisite knowledge and quick diagnostic</h2></div>
+          <div class="v2-diagnostic"><p>Recall S10.08, S10.03, S10.09 before starting this lesson.</p></div>
+          <p>Give one accurate definition or method step before continuing. If it is missing, revisit only that prerequisite.</p>
+          <details class="v2-prerequisite-detail"><summary>Open optional prerequisite refresher</summary><ul><li>An abstract data type (ADT) is a collection of data and a set of operations on those data. Its behaviour is defined independently of a particular storage implementation.</li><li>Understand the definition and purpose of an abstract data type.</li><li>Use the technical terms associated with arrays, including index, lower bound and upper bound. Bounds define the inclusive valid index range and an index selects one element.</li><li>Understand array, index, lower bound and upper bound terminology.</li><li>Stack, queue and linked list are examples of ADTs. Describe their key features and justify which structure suits a given situation using LIFO, FIFO or link-based traversal/insertion/deletion evidence.</li><li>Understand stack, queue and linked-list features; justify a structure.</li></ul></details>
+        </section>
+
+        <section class="v2-panel" id="explanation">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 2 | deliberately over-complete</p><h2>Knowledge explanation</h2></div>
+          <h3>Learning objectives</h3><ul class="v2-objectives"><li>Understand stack, queue and linked-list features; justify a structure.</li><li>Add, edit and delete data in the ADTs and implement them using arrays; pseudocode for operations is not required by the syllabus.</li></ul>
+          <details class="v2-concept-menu"><summary>Open the concept checklist and choose what to teach</summary><ul><li>stack</li><li>queue</li><li>linked list</li><li>LIFO</li><li>FIFO</li><li>justify</li><li>Add</li><li>edit</li><li>delete</li><li>array</li><li>not required</li><li>pseudocode</li></ul></details>
+          <div class="v2-explanation-grid">
+            <div>
+              <article class="v2-core-facts"><h3>Detailed explanation</h3><p class="v2-teacher-note">Teach all points, or select only the ones this group needs. The list is intentionally fuller than a fixed lesson slot.</p><ul class="v2-facts"><li>Stack, queue and linked list are examples of ADTs. Describe their key features and justify which structure suits a given situation using LIFO, FIFO or link-based traversal/insertion/deletion evidence.</li><li>Use stack, queue and linked list to store data; add, edit and delete data while preserving each ADT rule. Describe array implementations for all three. Candidates are not required to write pseudocode for these ADT operations.</li><li>An abstract data type (ADT) is a collection of data and a set of operations on those data. The permitted operations and their effects define the ADT; its internal storage can change without changing that behaviour. Stack, queue and linked list are examples of ADTs.</li><li>A stack is LIFO: add with push and delete with pop at the top. A queue is FIFO: add with enqueue at the rear and delete with dequeue at the front. A linked list stores data plus a next pointer/index in each node; start identifies the first node and null ends the chain.</li><li>All three can be implemented using arrays and state variables or indexes. Stack uses an array with a top/stack pointer; queue uses an array with front and rear; linked list uses Data and Next arrays (or an array of node records), start and a free list. Candidates must be able to add, edit and delete data conceptually, but the syllabus does not require pseudocode for these ADT operations.</li><li>Editing changes the stored data without breaking the access rule or links. Deleting from a linked list reconnects the predecessor to the removed node&#39;s successor and returns the freed array slot to the free list; physical array positions need not follow logical list order.</li><li>Justify a stack, queue or linked list from its operations and the scenario. Candidates are not required to write pseudocode for these ADT operations, but must be able to add, edit and delete data and describe array implementations.</li><li>Choose and justify a stack, queue or linked list from its LIFO, FIFO or linkage features. Add, edit and delete data in these ADTs and implement them using arrays; pseudocode for the ADT operations is not required by the syllabus.</li><li>A stack is LIFO with push/pop at the top; a queue is FIFO with enqueue at the rear and dequeue at the front; a linked list supports traversal and insertion/deletion through links.</li><li>Justification must name the required access order or update behaviour. Array implementations have fixed capacity unless resized and require overflow/underflow checks; linked structures require pointer management.</li></ul></article>
+              <article class="v2-example"><h3>Worked example</h3><p>Add, edit and delete without changing the ADT rule: Push D adds D at the stack top and pop deletes the current top. Enqueue D adds at the queue rear and dequeue deletes from the front. In an array-based linked list, edit Data[5] to change only the node value; insert or delete by changing Next indexes, Start and the free list rather than shifting every later array item.</p></article>
+              <aside class="v2-extension"><h3>Beyond syllabus / 延伸知识（不要求背诵）</h3><p>programming libraries often provide tested ADT implementations, but the exam expects you to understand their behaviour and selection.</p></aside>
             </div>
-          </div>
-          <div class="auth-card" aria-label="Authentication factors">
-            <div class="factor-stack">
-              <span>Know: password / PIN</span>
-              <span>Have: token / card / phone</span>
-              <span>Are: fingerprint / face / iris</span>
-              <span>MFA: combine different factor types</span>
-            </div>
-            <p>Two passwords are two secrets, not two factors. The exam will notice.</p>
+            <figure class="v2-visual">
+              <img src="../assets/diagrams/stage10-infographics/stage10-lesson-123-implementation.jpg" alt="An array stack uses Top; a queue uses Front and Rear; a linked list uses Data, Next, Start and a free list.. Add/delete preserve stack LIFO, queue FIFO and linked-list links; edit changes stored data without corrupting structure.. Candidates are not required to write pseudocode for these ADT operations; understand add, edit, delete and array implementation." loading="lazy" />
+              <figcaption>Implement stack, queue and linked list using arrays. One maintained explanation is shown as an image on larger screens and as text on small screens.</figcaption>
+              <div class="v2-mobile-visual-text" aria-label="Mobile text alternative"><ul><li>An array stack uses Top; a queue uses Front and Rear; a linked list uses Data, Next, Start and a free list.</li><li>Add/delete preserve stack LIFO, queue FIFO and linked-list links; edit changes stored data without corrupting structure.</li><li>Candidates are not required to write pseudocode for these ADT operations; understand add, edit, delete and array implementation.</li></ul></div>
+            </figure>
           </div>
         </section>
 
-        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-066">
-          <article class="why-card">
-            <h3>Why this matters</h3>
-            <p>Many answers list "passwords are secure" without saying why, how they fail, or why MFA changes the risk.</p>
-          </article>
-          <article class="trap-card">
-            <h3>Common error</h3>
-            <p>A biometric characteristic cannot be changed as easily as a password if its stored representation is compromised.</p>
-          </article>
+        <section class="v2-panel" id="practice">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 3 | select by learner need</p><h2>Practice by question type</h2></div>
+          <div class="v2-question-list"><article class="v2-question" data-question-id="Q-L066-01" data-semantic-fingerprint="S10.09+S10.10|linked-list-features-and-operations|state|needed-array-based|written|recall">
+              <div class="v2-question-head"><span class="v2-badge">state</span><span class="v2-badge">recall</span><span class="v2-badge difficulty">foundation</span><span class="v2-badge">2 marks</span></div>
+              <p><strong>Question 1.</strong> Which state is needed for an array-based linked list?</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> Data and Next storage, a Start index and normally a free-list index.</p><p><strong>Marking guidance:</strong> Award one mark for each distinct, technically accurate point or method step.</p><p><strong>Common error:</strong> For the command word state, perform that exact action; do not replace it with an unrelated fact.</p></div></details>
+            </article><article class="v2-question" data-question-id="Q-L066-02" data-semantic-fingerprint="S10.09+S10.10|linked-list-features-and-operations|state|precise-facts-about|written|recall">
+              <div class="v2-question-head"><span class="v2-badge">state</span><span class="v2-badge">recall</span><span class="v2-badge difficulty">application</span><span class="v2-badge">2 marks</span></div>
+              <p><strong>Question 2.</strong> State two precise facts about linked-list features and operations.</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> Stack, queue and linked list are examples of ADTs. Describe their key features and justify which structure suits a given situation using LIFO, FIFO or link-based traversal/insertion/deletion evidence. Use stack, queue and linked list to store data; add, edit and delete data while preserving each ADT rule. Describe array implementations for all three. Candidates are not required to write pseudocode for these ADT operations.</p><p><strong>Marking guidance:</strong> Award one mark for each distinct fact; do not credit a repeated point.</p><p><strong>Common error:</strong> Do not repeat the same point in different words; each mark needs a separate idea or method step.</p></div></details>
+            </article><article class="v2-question" data-question-id="Q-L066-03" data-semantic-fingerprint="S10.09+S10.10|linked-list-features-and-operations|explain|would-applied-suitable-computing|visual|explain">
+              <div class="v2-question-head"><span class="v2-badge">explain</span><span class="v2-badge">explain</span><span class="v2-badge difficulty">transfer</span><span class="v2-badge">3 marks</span></div>
+              <p><strong>Question 3.</strong> Explain how linked-list features and operations would be applied in a suitable computing context.</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> Use stack, queue and linked list to store data; add, edit and delete data while preserving each ADT rule. Describe array implementations for all three. Candidates are not required to write pseudocode for these ADT operations. An abstract data type (ADT) is a collection of data and a set of operations on those data. The permitted operations and their effects define the ADT; its internal storage can change without changing that behaviour. Stack, queue and linked list are examples of ADTs. A stack is LIFO: add with push and delete with pop at the top. A queue is FIFO: add with enqueue at the rear and delete with dequeue at the front. A linked list stores data plus a next pointer/index in each node; start identifies the first node and null ends the chain.</p><p><strong>Marking guidance:</strong> Each mark needs a relevant point linked to the stated context.</p><p><strong>Common error:</strong> Do not copy the worked example unchanged; transfer the method and check it against the new context.</p></div></details>
+            </article></div>
+          <div class="v2-paper-refs">
+          <h3>Related past-paper indexes</h3>
+          <table><thead><tr><th>Reference</th><th>Marks</th><th>Command word</th><th>Question type</th></tr></thead>
+          <tbody><tr><td>9618/23/S/25 Q5(b)</td><td>8</td><td>describe</td><td>write</td></tr><tr><td>9618/21/S/25 Q5</td><td>7</td><td>describe</td><td>explain</td></tr><tr><td>9618/23/S/25 Q5(c)</td><td>7</td><td>calculate</td><td>calculate</td></tr><tr><td>9618/23/S/25 Q5(a)</td><td>5</td><td>describe</td><td>explain</td></tr></tbody></table>
+          <p class="v2-copyright-note">Index only: Cambridge question and mark-scheme wording is not reproduced on this public course page.</p>
+        </div>
         </section>
 
-        <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-066">
-          <div class="section-title">
-            <p class="eyebrow">Warm-up hook</p>
-            <h2>A website asks for a password and then a code from your phone. What is the security idea?</h2>
-            <p>The site is not being needy; it is checking two different kinds of evidence.</p>
-          </div>
-          <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="mfa">MFA, because it combines something you know and something you have</button>
-            <button class="choice-card" type="button" data-hook="two-passwords">Two passwords, because any two checks are two factors</button>
-            <button class="choice-card" type="button" data-hook="authorisation">Authorisation, because it decides file permissions</button>
-            <button class="choice-card" type="button" data-hook="encryption">Encryption, because a phone code hides data</button>
-          </div>
-          <div class="feedback" id="hookFeedback" aria-live="polite">
-            Choose one. Look for different factor types.
-          </div>
+        <section class="v2-panel" id="summary">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 4 | close when ready</p><h2>Summary and exam reminders</h2></div>
+          <div class="v2-summary-grid"><div><h3>Summary</h3><ul class="v2-summary-list"><li>Define linked-list features and operations with the exact technical vocabulary expected by the syllabus.</li><li>Use the lesson method on a fresh context and show the intermediate decision, representation or calculation.</li><li>Match the shape of the answer to the command word and the available marks.</li><li>Check the final answer against the scenario instead of repeating a memorised sentence.</li></ul></div><div class="v2-error"><h3>Common error to correct</h3><p>Students often treat files like arrays already in memory. Correction: file data must be read into variables before processing.</p></div></div>
+          <div class="v2-tip-box"><h3>Exam technique</h3><ul><li>Follow the command word: state gives a fact; explain links a cause to a consequence; compare covers both sides.</li><li>Match the number of independent points or method steps to the available marks.</li><li>For linked-list features and operations, use the exact technical term before applying it to the scenario.</li></ul></div>
         </section>
 
-        <section class="panel" id="core" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-066">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 1</p>
-            <h2>Authentication is identity checking</h2>
-          </div>
-          <div class="concept-grid">
-            <article><strong>Authentication</strong><span>Verifies that a user, device or process is who it claims to be.</span></article>
-            <article><strong>Claim</strong><span>The identity presented, such as a username, account or device ID.</span></article>
-            <article><strong>Credential</strong><span>Evidence used to prove the claim, such as a password, biometric or token.</span></article>
-            <article><strong>Authorisation</strong><span>Decides what an authenticated user is allowed to access or change.</span></article>
-          </div>
-          <div class="callout">Chinese support: authentication = 认证身份；authorisation = 授权权限；credential = 凭据/身份证明。</div>
-        </section>
-
-        <!-- stage10-explanation:start core -->
-        <section class="panel explanation-panel" id="explanation-core" data-explains="core" data-explanation-kind="mechanism" aria-labelledby="explanation-core-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-066">
-          <h2 class="explanation-sr-only" id="explanation-core-title">Authentication is identity checking</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-066-core.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Authentication is identity checking with a structured visual model." />
-            <figcaption class="explanation-sr-only">Authentication is identity checking: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Authentication Verifies that a user, device or process is who it claims to be.</li><li><strong>Lesson fact:</strong> Claim The identity presented, such as a username, account or device ID.</li><li><strong>Lesson fact:</strong> Credential Evidence used to prove the claim, such as a password, biometric or token.</li><li><strong>Lesson fact:</strong> Authorisation Decides what an authenticated user is allowed to access or change.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end core -->
-        <section class="panel" id="factors" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-066">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 2</p>
-            <h2>Authentication factors: know, have, are</h2>
-          </div>
-          <div class="concept-grid">
-            <article><strong>Something you know</strong><span>Password, passphrase or PIN. Risk: guessed, reused, shared or phished.</span></article>
-            <article><strong>Something you have</strong><span>Security token, smart card or one-time code device. Risk: lost, stolen or unavailable.</span></article>
-            <article><strong>Something you are</strong><span>Biometric characteristic such as fingerprint, face, iris or voice. Risk: false acceptance or privacy concerns.</span></article>
-            <article><strong>Factor type</strong><span>Two checks only become MFA when they come from different factor categories.</span></article>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start factors -->
-        <section class="panel explanation-panel" id="explanation-factors" data-explains="factors" data-explanation-kind="mechanism" aria-labelledby="explanation-factors-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-066">
-          <h2 class="explanation-sr-only" id="explanation-factors-title">Authentication factors: know, have, are</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-066-factors.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Authentication factors: know, have, are with a structured visual model." />
-            <figcaption class="explanation-sr-only">Authentication factors: know, have, are: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Something you know Password, passphrase or PIN. Risk: guessed, reused, shared or phished.</li><li><strong>Lesson fact:</strong> Something you have Security token, smart card or one-time code device. Risk: lost, stolen or unavailable.</li><li><strong>Lesson fact:</strong> Something you are Biometric characteristic such as fingerprint, face, iris or voice. Risk: false acceptance or privacy concerns.</li><li><strong>Lesson fact:</strong> Factor type Two checks only become MFA when they come from different factor categories.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end factors -->
-        <section class="panel" id="passwords" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-066">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 3</p>
-            <h2>Passwords: cheap, familiar and often ruined by humans</h2>
-          </div>
-          <div class="concept-grid">
-            <article><strong>Strength</strong><span>Longer passwords or passphrases with less predictable structure are harder to guess.</span></article>
-            <article><strong>Weakness</strong><span>Users may reuse, share, write down or choose predictable passwords.</span></article>
-            <article><strong>Storage</strong><span>Systems should not store plaintext passwords; hashes are commonly used for verification.</span></article>
-            <article><strong>Control</strong><span>Password policy, lockout/rate limiting, user education and MFA reduce risk.</span></article>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start passwords -->
-        <section class="panel explanation-panel" id="explanation-passwords" data-explains="passwords" data-explanation-kind="mechanism" aria-labelledby="explanation-passwords-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-066">
-          <h2 class="explanation-sr-only" id="explanation-passwords-title">Passwords: cheap, familiar and often ruined by humans</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-066-passwords.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Passwords: cheap, familiar and often ruined by humans with a structured visual model." />
-            <figcaption class="explanation-sr-only">Passwords: cheap, familiar and often ruined by humans: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Strength Longer passwords or passphrases with less predictable structure are harder to guess.</li><li><strong>Lesson fact:</strong> Weakness Users may reuse, share, write down or choose predictable passwords.</li><li><strong>Lesson fact:</strong> Storage Systems should not store plaintext passwords; hashes are commonly used for verification.</li><li><strong>Lesson fact:</strong> Control Password policy, lockout/rate limiting, user education and MFA reduce risk.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end passwords -->
-        <section class="panel" id="biometrics" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-066">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 4</p>
-            <h2>Biometrics: convenient identity evidence from physical or behavioural features</h2>
-          </div>
-          <div class="concept-grid">
-            <article><strong>Examples</strong><span>Fingerprint, face, iris, retina, voice or typing pattern.</span></article>
-            <article><strong>Advantage</strong><span>Difficult to forget, lose or share casually; quick for users.</span></article>
-            <article><strong>Limitation</strong><span>Requires sensors and stored biometric templates; may raise privacy concerns.</span></article>
-            <article><strong>Error types</strong><span>False reject blocks a valid user; false accept allows an unauthorised user.</span></article>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start biometrics -->
-        <section class="panel explanation-panel" id="explanation-biometrics" data-explains="biometrics" data-explanation-kind="mechanism" aria-labelledby="explanation-biometrics-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-066">
-          <h2 class="explanation-sr-only" id="explanation-biometrics-title">Biometrics: convenient identity evidence from physical or behavioural features</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-066-biometrics.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Biometrics: convenient identity evidence from physical or behavioural features with a structured visual model." />
-            <figcaption class="explanation-sr-only">Biometrics: convenient identity evidence from physical or behavioural features: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> A biometric sensor captures a physical or behavioural feature and the system compares its template with a stored enrolled template.</li><li><strong>Lesson fact:</strong> A match authenticates the identity claim; authorisation is a separate process that decides what an authenticated user may access or do.</li><li><strong>Lesson fact:</strong> A false reject denies a valid enrolled user by mistake; a false accept authenticates an impostor by mistake.</li><li><strong>Lesson fact:</strong> Biometrics require sensors and stored templates and may create privacy, false-accept and false-reject risks.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end biometrics -->
-        <section class="panel" id="tokens" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-066">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 5</p>
-            <h2>Tokens: proof that the user has a specific device or object</h2>
-          </div>
-          <div class="concept-grid">
-            <article><strong>Hardware token</strong><span>A physical device, card or key used during login.</span></article>
-            <article><strong>Software token</strong><span>An app or service that generates a one-time code.</span></article>
-            <article><strong>One-time code</strong><span>A code valid for a short time or single login attempt.</span></article>
-            <article><strong>Limitation</strong><span>Tokens can be lost, stolen, damaged, out of battery or unavailable without a phone/network.</span></article>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start tokens -->
-        <section class="panel explanation-panel" id="explanation-tokens" data-explains="tokens" data-explanation-kind="mechanism" aria-labelledby="explanation-tokens-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-066">
-          <h2 class="explanation-sr-only" id="explanation-tokens-title">Tokens: proof that the user has a specific device or object</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-066-tokens.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Tokens: proof that the user has a specific device or object with a structured visual model." />
-            <figcaption class="explanation-sr-only">Tokens: proof that the user has a specific device or object: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Hardware token A physical device, card or key used during login.</li><li><strong>Lesson fact:</strong> Software token An app or service that generates a one-time code.</li><li><strong>Lesson fact:</strong> One-time code A code valid for a short time or single login attempt.</li><li><strong>Lesson fact:</strong> Limitation Tokens can be lost, stolen, damaged, out of battery or unavailable without a phone/network.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end tokens -->
-        <section class="panel" id="mfa" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-066">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 6</p>
-            <h2>MFA combines different factor types</h2>
-          </div>
-          <div class="concept-grid">
-            <article><strong>Definition</strong><span>Multi-factor authentication requires evidence from two or more different factor categories.</span></article>
-            <article><strong>Example</strong><span>Password plus phone app code: something you know plus something you have.</span></article>
-            <article><strong>Benefit</strong><span>If a password is stolen, the attacker still needs the second factor.</span></article>
-            <article><strong>Cost</strong><span>More setup, recovery problems and user friction if a device is unavailable.</span></article>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start mfa -->
-        <section class="panel explanation-panel" id="explanation-mfa" data-explains="mfa" data-explanation-kind="mechanism" aria-labelledby="explanation-mfa-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-066">
-          <h2 class="explanation-sr-only" id="explanation-mfa-title">MFA combines different factor types</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-066-mfa.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining MFA combines different factor types with a structured visual model." />
-            <figcaption class="explanation-sr-only">MFA combines different factor types: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Definition Multi-factor authentication requires evidence from two or more different factor categories.</li><li><strong>Lesson fact:</strong> Example Password plus phone app code: something you know plus something you have.</li><li><strong>Lesson fact:</strong> Benefit If a password is stolen, the attacker still needs the second factor.</li><li><strong>Lesson fact:</strong> Cost More setup, recovery problems and user friction if a device is unavailable.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end mfa -->
-        <section class="panel" id="compare" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-066">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 7</p>
-            <h2>Compare methods by evidence, risk and context</h2>
-          </div>
-          <div class="comparison-table" role="table" aria-label="Authentication comparison">
-            <div class="table-row table-head" role="row">
-              <div role="columnheader">Method</div>
-              <div role="columnheader">Evidence</div>
-              <div role="columnheader">Strengths and limitations</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Password/PIN</div>
-              <div role="cell">Something the user knows.</div>
-              <div role="cell">Low cost and familiar; can be guessed, reused, shared, phished or forgotten.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Biometric</div>
-              <div role="cell">Something the user is.</div>
-              <div role="cell">Convenient and hard to forget; needs sensors and may have false accepts/rejects or privacy concerns.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Token</div>
-              <div role="cell">Something the user has.</div>
-              <div role="cell">Useful second factor; can be lost, stolen, damaged or unavailable.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">MFA</div>
-              <div role="cell">Two or more different factor categories.</div>
-              <div role="cell">Reduces account takeover risk; increases setup, support and recovery complexity.</div>
-            </div>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start compare -->
-        <section class="panel explanation-panel" id="explanation-compare" data-explains="compare" data-explanation-kind="comparison" aria-labelledby="explanation-compare-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-066">
-          <h2 class="explanation-sr-only" id="explanation-compare-title">Compare methods by evidence, risk and context</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-066-compare.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Compare methods by evidence, risk and context with a structured visual model." />
-            <figcaption class="explanation-sr-only">Compare methods by evidence, risk and context: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Evidence</li><li><strong>Lesson fact:</strong> Strengths and limitations</li><li><strong>Lesson fact:</strong> Password/PIN</li><li><strong>Lesson fact:</strong> Something the user knows.</li><li><strong>Lesson fact:</strong> Low cost and familiar; can be guessed, reused, shared, phished or forgotten.</li><li><strong>Lesson fact:</strong> Biometric</li><li><strong>Lesson fact:</strong> Something the user is.</li><li><strong>Lesson fact:</strong> Convenient and hard to forget; needs sensors and may have false accepts/rejects or privacy concerns.</li><li><strong>Lesson fact:</strong> Something the user has.</li><li><strong>Lesson fact:</strong> Useful second factor; can be lost, stolen, damaged or unavailable.</li><li><strong>Lesson fact:</strong> Two or more different factor categories.</li><li><strong>Lesson fact:</strong> Reduces account takeover risk; increases setup, support and recovery complexity.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end compare -->
-        <section class="panel" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-066">
-          <div class="section-title">
-            <p class="eyebrow">Interactive selector</p>
-            <h2>Choose the authentication approach for the scenario</h2>
-            <p>Select a scenario and compare suitable evidence, benefit and limitation.</p>
-          </div>
-          <div class="converter-grid">
-            <label>
-              Scenario
-              <select id="scenarioInput">
-                <option value="student">School portal for normal homework access.</option>
-                <option value="bank">Online banking login from a new device.</option>
-                <option value="lab">Secure laboratory door used by authorised staff.</option>
-                <option value="shared">Shared classroom computer used by many students.</option>
-                <option value="remote">Remote staff accessing company systems from home.</option>
-              </select>
-            </label>
-            <button class="primary-button" type="button" id="simulateBtn">Recommend</button>
-          </div>
-          <div class="result-box" id="simulateResult" aria-live="polite"></div>
-          <div class="method-box" id="simulateMethod"></div>
-          <div class="reject-box" id="simulateTrap"></div>
-        </section>
-
-        <section class="panel" id="password-tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-066">
-          <div class="section-title">
-            <p class="eyebrow">Interactive password check</p>
-            <h2>Estimate password quality without collecting real passwords</h2>
-            <p>Use a practice string only. Never type a real password into lesson tools, screenshots or chat.</p>
-          </div>
-          <div class="converter-grid">
-            <label>
-              Practice password
-              <input type="text" id="passwordInput" placeholder="Try: CorrectHorseBatteryStaple27" autocomplete="off" />
-            </label>
-            <button class="primary-button" type="button" id="passwordBtn">Check</button>
-          </div>
-          <div class="result-box" id="passwordResult" aria-live="polite"></div>
-          <div class="method-box" id="passwordAdvice"></div>
-        </section>
-
-        <!-- stage10-explanation:start password-tool -->
-        <section class="panel explanation-panel" id="explanation-password-tool" data-explains="password-tool" data-explanation-kind="mechanism" aria-labelledby="explanation-password-tool-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-066">
-          <h2 class="explanation-sr-only" id="explanation-password-tool-title">Estimate password quality without collecting real passwords</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-066-password-tool.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Estimate password quality without collecting real passwords with a structured visual model." />
-            <figcaption class="explanation-sr-only">Estimate password quality without collecting real passwords: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Interactive password check</li><li><strong>Lesson fact:</strong> Use a practice string only. Never type a real password into lesson tools, screenshots or chat.</li><li><strong>Lesson fact:</strong> Practice password</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end password-tool -->
-        <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-066">
-          <div class="section-title">
-            <p class="eyebrow">Worked examples</p>
-            <h2>Four model answers with method and trade-off</h2>
-          </div>
-          <div class="example-tabs" role="tablist" aria-label="Worked examples">
-            <button class="tab active" type="button" data-example="password">Password</button>
-            <button class="tab" type="button" data-example="biometric">Biometric</button>
-            <button class="tab" type="button" data-example="token">Token</button>
-            <button class="tab" type="button" data-example="mfa">MFA</button>
-          </div>
-          <div class="example-box" id="exampleBox"></div>
-        </section>
-
-        <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-066">
-          <div class="section-title">
-            <p class="eyebrow">Practice with instant checking</p>
-            <h2>Short answers: classify the method and factor</h2>
-            <p>Type a concise answer. Use the local answer button if you need a model response.</p>
-          </div>
-          <div class="practice-list" id="practiceList"></div>
-        </section>
-
-        <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-066">
-          <div class="section-title">
-            <p class="eyebrow">Mistake debugging</p>
-            <h2>Fix the sentence before it loses marks</h2>
-          </div>
-          <div class="mistake-grid" id="mistakeGrid"></div>
-        </section>
-
-        <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-066">
-          <div class="section-title">
-            <p class="eyebrow">Exam-style questions</p>
-            <h2>Original Cambridge-style questions with expandable MS</h2>
-            <p>Answer first. Then open the mark scheme and compare wording strictly.</p>
-          </div>
-          <div class="exam-list" id="examList"></div>
-        </section>
-
-        <section class="panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-066">
-          <div class="section-title">
-            <p class="eyebrow">Summary</p>
-            <h2>Authentication is about identity evidence</h2>
-          </div>
-          <div class="summary-grid">
-            <div><strong>Authentication</strong><span>Verifies identity; authorisation controls allowed actions.</span></div>
-            <div><strong>Factors</strong><span>Know, have and are are different categories of evidence.</span></div>
-            <div><strong>MFA</strong><span>Combines different factor types to reduce single-credential failure.</span></div>
-          </div>
-        </section>
-
-        <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
-          <div class="section-title">
-            <p class="eyebrow">Homework</p>
-            <h2>Homework tasks</h2>
-          </div>
-          <div class="homework-list">
-            <article>
-              <strong>Task 1: Factor table</strong>
-              <span>Create a table for password, fingerprint, phone code and security token. For each, state the factor category, one advantage and one limitation.</span>
-            </article>
-            <article>
-              <strong>Task 2: Scenario recommendation</strong>
-              <span>Recommend an authentication method for online banking, a school library account and a secure lab door. Give one reason and one trade-off for each.</span>
-            </article>
-            <article>
-              <strong>Task 3: 6-mark answer</strong>
-              <span>Answer: "Explain why MFA can reduce the risk of unauthorised access, and describe two possible limitations." Use precise factor vocabulary.</span>
-            </article>
-          </div>
-        </section>
+        <nav class="v2-bottom-nav" aria-label="Previous and next lesson"><a href="../lesson-065/" >Previous lesson</a><a href="../lesson-067/" >Next lesson</a></nav>
       </div>
     </main>
-
-    <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=3"></script>
-    <script src="../lesson-toolbar.js?v=3"></script>
-    <script src="../stage7-accessibility.js?v=4"></script>
+    <script src="../course-v2.js?v=1"></script>
   </body>
 </html>

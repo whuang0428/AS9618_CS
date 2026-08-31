@@ -3,398 +3,89 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 009 | Bitmap file-size calculations and metadata</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <title>AS9618 Lesson 009 | Cloud computing and transmission media</title>
     <link rel="icon" href="data:" />
-    <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
+    <link rel="stylesheet" href="../course-v2.css?v=3" />
   </head>
-  <body>
+  <body data-course-version="2" data-lesson-id="009" data-syllabus-ids="S2.06,S2.07,S2.08">
     <a class="skip-link" href="#main-content">Skip to main content</a>
-    <header class="topbar">
-      <div>
-        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 1</p>
-        <h1>Bitmap file-size calculations and metadata</h1>
-      </div>
-      <div class="action-panel" aria-label="Page controls">
-        <a class="course-home-link" href="../">Course home</a>
-        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
-      </div>
+    <header class="v2-topbar">
+      <div><p class="v2-eyebrow">Cambridge AS9618 | Paper 1 | Section 2: Communication</p><h1>Cloud computing and transmission media</h1></div>
+      <nav class="v2-actions" aria-label="Lesson actions"><a href="../">Course home</a><a href="../assessments/">Assessment bank</a><button type="button" id="printLesson">Print</button></nav>
     </header>
-
-    <main class="layout" id="main-content" tabindex="-1">
-      <aside class="lesson-nav" aria-label="Lesson navigation">
-        <a href="#overview">Overview</a>
-        <a href="#hook">Warm-up</a>
-        <a href="#chain">Calculation chain</a>
-        <a href="#metadata">Metadata</a>
-        <a href="#units">Units</a>
-        <a href="#tool">Calculator</a>
-        <a href="#examples">Examples</a>
-        <a href="#practice">Practice</a>
-        <a href="#exam">Exam-style</a>
-        <a href="#homework">Homework</a>
-        <a href="#stage2-completion">Core syllabus content</a>
-      </aside>
-
-      <div class="lesson-content">
-        <!-- remediation-v2-stage3-scope:start -->
-        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.</p></aside>
-        <!-- remediation-v2-stage3-scope:end -->
-
-<!-- stage2-completion:start -->
-        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus content</p>
-            <h2>Bitmap file-size calculations and metadata</h2>
-          </div>
-          <div class="stage2-explanation">
-            <p>For an uncompressed bitmap, pixel-data size in bits is width in pixels x height in pixels x colour depth in bits per pixel. Divide by 8 to convert bits to bytes. Use the units requested by the question.</p>
-            <p>Bitmap metadata is stored separately from pixel values, commonly in a file header. Add header or metadata bytes only when their size is supplied; when a question says to ignore the header, calculate pixel data only.</p>
-          </div>
-          <article class="stage2-example">
-            <h3>Worked example: Calculate pixel data and then account for metadata</h3>
-            <p>A 640 x 480 bitmap using 24-bit colour stores 640 x 480 x 24 = 7,372,800 bits = 921,600 bytes of pixel data. With a supplied 54-byte header, the total is 921,654 bytes.</p>
-          </article>
+    <main class="v2-shell" id="main-content" tabindex="-1">
+      <nav class="v2-toc" aria-label="Lesson contents"><strong>Lesson 009</strong><a href="#overview">Overview</a><a href="#prerequisite">Prerequisite</a><a href="#explanation">Explanation</a><a href="#practice">Practice</a><a href="#summary">Summary</a></nav>
+      <div class="v2-content">
+        <section class="v2-hero" id="overview">
+          <div><p class="v2-eyebrow">Flexible-depth lesson</p><h2>Cloud computing and transmission media</h2><p>S2.06, S2.07, S2.08 | Select what to omit, teach briefly or explore in depth.</p></div>
+          <div class="v2-time-grid" aria-label="Available lesson depth"><div><strong>Quick</strong><span>diagnose + essentials</span></div><div><strong>Full</strong><span>complete explanation</span></div><div><strong>Deep</strong><span>prerequisites + extension</span></div><div><strong>Choose</strong><span>practice by need</span></div></div>
         </section>
-        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus practice</p>
-            <h2>Bitmap file-size calculations and metadata: apply and assess</h2>
-          </div>
-          <div class="stage2-practice">
-            <h3>Targeted practice</h3>
-            <article class="stage2-question">
-              <p><strong>1.</strong> Calculate the pixel-data size of a 200 x 100 bitmap using 8-bit colour, in bytes.</p>
-              <details><summary>Show answer</summary><p>200 x 100 x 8 / 8 = 20,000 bytes.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>2.</strong> A bitmap has 60,000 bytes of pixel data and a supplied 54-byte header. What is its total uncompressed size?</p>
-              <details><summary>Show answer</summary><p>60,054 bytes.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>3.</strong> Why must a header not be invented in a file-size calculation?</p>
-              <details><summary>Show answer</summary><p>Its size depends on the file format; add it only when the question supplies the metadata size.</p></details>
-            </article>
-          </div>
-          <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>4 marks</span></div>
-            <p>A 1024 x 768 bitmap uses 16-bit colour and has a supplied 128-byte header. Calculate its pixel-data size and total uncompressed size in bytes.</p>
-            <details>
-              <summary>Show MS</summary>
-              <table class="mark-scheme-table">
-                <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
-                <tbody>
-                  <tr><td>1024 x 768 x 16 bits</td><td>Do not multiply metadata by the number of pixels or add an assumed header size.</td><td>1</td></tr>
-                  <tr><td>1,572,864 bytes of pixel data</td><td></td><td>1</td></tr>
-                  <tr><td>adds the supplied 128-byte header</td><td></td><td>1</td></tr>
-                  <tr><td>1,572,992 bytes total</td><td></td><td>1</td></tr>
-                </tbody>
-              </table>
-            </details>
-          </article>
-        </section>
-        <!-- stage2-completion:end -->
 
-<section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-009">
-          <div class="hero-copy">
-            <p class="lesson-meta">Lesson 009 | 45 minutes | Informal questioning</p>
-            <h2>Show each stage of the calculation and include the required units.</h2>
-            <p>
-              This lesson turns bitmap knowledge into reliable calculation habits:
-              calculate pixel data, convert bits to bytes, decide whether metadata is
-              included, and label every final answer clearly.
-            </p>
-            <div class="objective-grid" aria-label="Learning objectives">
-              <div>
-                <strong>Calculate</strong>
-                <span>uncompressed bitmap size from width, height and colour depth</span>
-              </div>
-              <div>
-                <strong>Handle</strong>
-                <span>metadata correctly when it is included or ignored</span>
-              </div>
-              <div>
-                <strong>Convert</strong>
-                <span>bits, bytes and KiB without changing the question by accident</span>
-              </div>
+        <section class="v2-panel v2-route-menu" aria-labelledby="route-heading">
+          <div class="v2-heading"><p class="v2-eyebrow">Teacher choice</p><h2 id="route-heading">Choose the depth for this group</h2></div>
+          <div class="v2-route-grid"><article><h3>Quick route</h3><p>Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.</p></article><article><h3>Full route</h3><p>Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.</p></article><article><h3>Deep route</h3><p>Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.</p></article></div>
+        </section>
+
+        <section class="v2-panel" id="prerequisite">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 1 | optional depth</p><h2>Prerequisite knowledge and quick diagnostic</h2></div>
+          <div class="v2-diagnostic"><p>Recall the main conclusion from Lesson 008: Network topologies and packet transmission.</p></div>
+          <p>Give one accurate definition or method step before continuing. If it is missing, revisit only that prerequisite.</p>
+
+        </section>
+
+        <section class="v2-panel" id="explanation">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 2 | deliberately over-complete</p><h2>Knowledge explanation</h2></div>
+          <h3>Learning objectives</h3><ul class="v2-objectives"><li>Show understanding of public and private cloud computing, including the benefits and drawbacks of cloud computing.</li><li>Show understanding of the differences between wired and wireless networks and the implications of using each.</li><li>Describe copper cable, fibre-optic cable, radio waves including WiFi, microwave and satellite transmission.</li></ul>
+          <details class="v2-concept-menu"><summary>Open the concept checklist and choose what to teach</summary><ul><li>public cloud</li><li>private cloud</li><li>benefit</li><li>drawback</li><li>dedicated to one organisation</li><li>wired network</li><li>wireless network</li><li>physical cable</li><li>radio</li><li>implications</li><li>copper cable</li><li>fibre-optic cable</li><li>radio waves</li><li>WiFi</li><li>microwave</li><li>satellite</li></ul></details>
+          <div class="v2-explanation-grid">
+            <div>
+              <article class="v2-core-facts"><h3>Detailed explanation</h3><p class="v2-teacher-note">Teach all points, or select only the ones this group needs. The list is intentionally fuller than a fixed lesson slot.</p><ul class="v2-facts"><li>Public refers to shared provider infrastructure, not unrestricted access to customer data. Private infrastructure is dedicated to one organisation but is not automatically secure.</li><li>Comparisons must connect physical cable or radio transmission to mobility, installation, interference, shared capacity, reliability or security in a stated use.</li><li>All named media are required. Explanations must include the signalling method or propagation condition and a use/limitation, not only relative speed.</li><li>Cloud computing provides storage, processing or software as a service using remote shared infrastructure reached through a network. A public cloud is offered over shared provider infrastructure; a private cloud is restricted to one organisation.</li><li>A public cloud may scale quickly and reduce local hardware management: these are possible benefits. A private cloud is dedicated to one organisation and can give greater control over access and configuration. Each benefit or drawback must link availability, control, cost or security to the stated scenario.</li><li>A wired network carries signals through a physical cable. It can provide stable, predictable links and avoids radio interference, but installation restricts movement and may require disruptive cabling. A wireless network transmits through the air, supporting mobility and rapid installation, but shared radio capacity, interference, obstacles and interception risk can affect performance and security. The implications must be tied to a given use, not reduced to &#39;wired is faster&#39;.</li><li>Copper cable carries electrical signals and is often economical for short LAN links, but suffers attenuation and electromagnetic interference. Fibre-optic cable carries pulses of light, supports high bandwidth and long distances and is resistant to electromagnetic interference, but equipment and installation may cost more.</li><li>Radio waves, including WiFi, support non-line-of-sight local wireless access but can be absorbed, reflected or interfered with. Terrestrial microwave links provide directional point-to-point communication and usually require clear line of sight. Satellite communication uses microwave/radio links to and from a satellite for wide or remote coverage, but long propagation distance can increase latency and weather can affect some links.</li></ul></article>
+              <article class="v2-example"><h3>Worked example</h3><p>Choose a cloud model / Connect a school campus and a remote weather station: A school storing non-sensitive public resources may use a public cloud for scalable access. A hospital may choose a private cloud for tighter organisational control of patient-data access. Use copper for short fixed desktop links, fibre-optic cable between buildings requiring high bandwidth, WiFi radio waves for mobile tablets, a line-of-sight microwave link where cabling between two buildings is impractical, and satellite for the remote station without local cable infrastructure. Each choice follows distance, mobility, interference, bandwidth, latency and cost.</p></article>
+              <aside class="v2-extension"><h3>Beyond syllabus / 延伸知识（不要求背诵）</h3><p>real networks organise communication in layers so that hardware, addressing and application protocols can change independently.</p></aside>
             </div>
-          </div>
-          <div class="file-card" aria-label="Image file calculation focus">
-            <span>100 × 80 × 8</span>
-            <p>Pixel data first. Metadata only joins the party if the question invites it.</p>
-          </div>
-        </section>
-
-        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-009">
-          <article class="why-card">
-            <h3>Why this matters</h3>
-            <p>Most wrong answers in this topic come from a correct formula followed by a careless unit or metadata decision.</p>
-          </article>
-          <article class="trap-card">
-            <h3>Common error</h3>
-            <p>If the question says “ignore metadata”, do not add headers, dimensions or file information to the answer.</p>
-          </article>
-        </section>
-
-        <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-009">
-          <div class="section-title">
-            <p class="eyebrow">Warm-up hook</p>
-            <h2>A file is 64 000 bits. Is that 64 000 bytes?</h2>
-          </div>
-          <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="yes">Yes, same number</button>
-            <button class="choice-card" type="button" data-hook="divide">No, divide by 8</button>
-            <button class="choice-card" type="button" data-hook="metadata">Only if metadata is present</button>
-            <button class="choice-card" type="button" data-hook="colour">Only with 8-bit colour</button>
-          </div>
-          <div class="feedback" id="hookFeedback" aria-live="polite">
-            Pick an answer. Bits are not bytes wearing a fake moustache.
+            <figure class="v2-visual">
+              <img src="../assets/diagrams/stage10-infographics/stage10-lesson-023-wireless.jpg" alt="Wireless media transmit through the air or space. They support mobility, but the signal can be affected by distance, obstacles and interference.. Radio waves are used by technologies such as WiFi to transmit data without a physical cable.. Good for: mobile devices, classrooms, homes, short-range wireless networking.. Limits: shared medium, interference from other devices, weaker security if poorly configured.. Microwave links can transmit data between fixed points, often using directional antennas." loading="lazy" />
+              <figcaption>Wireless transmission media. One maintained explanation is shown as an image on larger screens and as text on small screens.</figcaption>
+              <div class="v2-mobile-visual-text" aria-label="Mobile text alternative"><ul><li>Wireless media transmit through the air or space. They support mobility, but the signal can be affected by distance, obstacles and interference.</li><li>Radio waves are used by technologies such as WiFi to transmit data without a physical cable.</li><li>Good for: mobile devices, classrooms, homes, short-range wireless networking.</li><li>Limits: shared medium, interference from other devices, weaker security if poorly configured.</li><li>Microwave links can transmit data between fixed points, often using directional antennas.</li></ul></div>
+            </figure>
           </div>
         </section>
 
-        <section class="panel" id="chain" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-009">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 1</p>
-            <h2>The calculation chain</h2>
-          </div>
-          <div class="chain-grid">
-            <article>
-              <strong>1. Pixels</strong>
-              <span>width × height</span>
-            </article>
-            <article>
-              <strong>2. Bits</strong>
-              <span>pixels × colour depth</span>
-            </article>
-            <article>
-              <strong>3. Bytes</strong>
-              <span>bits ÷ 8</span>
-            </article>
-            <article>
-              <strong>4. Metadata</strong>
-              <span>add only if the question includes it</span>
-            </article>
-          </div>
-          <div class="worked-line">`100 × 80 × 8 = 64 000 bits = 8000 bytes`</div>
+        <section class="v2-panel" id="practice">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 3 | select by learner need</p><h2>Practice by question type</h2></div>
+          <div class="v2-question-list"><article class="v2-question" data-question-id="Q-L009-01" data-semantic-fingerprint="S2.06+S2.07+S2.08|cloud-computing-and-transmission-media|compare|compare-public-private-medical|visual|evaluate">
+              <div class="v2-question-head"><span class="v2-badge">compare</span><span class="v2-badge">evaluate</span><span class="v2-badge difficulty">foundation</span><span class="v2-badge">8 marks</span></div>
+              <p><strong>Question 1.</strong> Compare public and private cloud for a medical organisation. Suggest transmission media for fixed classroom PCs, mobile tablets, an inter-building backbone and a remote field station.</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> public cloud characteristic; private cloud characteristic; scenario-linked comparison; justified choice; copper cable for short fixed links with a valid cost/stability reason; WiFi/radio waves for mobile devices with an interference/security implication; fibre-optic cable for the high-bandwidth/longer inter-building link; satellite for remote coverage without cable infrastructure; at least one limitation is correctly linked to the chosen medium</p><p><strong>Marking guidance:</strong> Do not equate cloud computing with the internet itself. Do not accept unqualified &#39;wireless is less secure&#39; or &#39;fibre is faster&#39;; require a mechanism or scenario consequence.</p><p><strong>Common error:</strong> For the command word compare, perform that exact action; do not replace it with an unrelated fact.</p></div></details>
+            </article><article class="v2-question" data-question-id="Q-L009-02" data-semantic-fingerprint="S2.06+S2.07+S2.08|cloud-computing-and-transmission-media|state|service|written|recall">
+              <div class="v2-question-head"><span class="v2-badge">state</span><span class="v2-badge">recall</span><span class="v2-badge difficulty">application</span><span class="v2-badge">2 marks</span></div>
+              <p><strong>Question 2.</strong> State one cloud-computing service.</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> Remote storage, processing or hosted software.</p><p><strong>Marking guidance:</strong> Award one mark for each distinct, technically accurate point or method step.</p><p><strong>Common error:</strong> Do not repeat the same point in different words; each mark needs a separate idea or method step.</p></div></details>
+            </article><article class="v2-question" data-question-id="Q-L009-03" data-semantic-fingerprint="S2.06+S2.07+S2.08|cloud-computing-and-transmission-media|compare|compare-public-private|written|evaluate">
+              <div class="v2-question-head"><span class="v2-badge">compare</span><span class="v2-badge">evaluate</span><span class="v2-badge difficulty">transfer</span><span class="v2-badge">2 marks</span></div>
+              <p><strong>Question 3.</strong> Compare public from private cloud.</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> Public cloud uses shared provider infrastructure; private cloud is dedicated or restricted to one organisation.</p><p><strong>Marking guidance:</strong> Award one mark for each distinct, technically accurate point or method step.</p><p><strong>Common error:</strong> Do not copy the worked example unchanged; transfer the method and check it against the new context.</p></div></details>
+            </article></div>
+          <div class="v2-paper-refs">
+          <h3>Related past-paper indexes</h3>
+          <table><thead><tr><th>Reference</th><th>Marks</th><th>Command word</th><th>Question type</th></tr></thead>
+          <tbody><tr><td>9618/12/W/25 Q8(i)</td><td>4</td><td>explain</td><td>calculate</td></tr><tr><td>9618/13/W/25 Q4(a)</td><td>3</td><td>give</td><td>recall</td></tr><tr><td>9618/13/W/25 Q4(c)</td><td>3</td><td>complete</td><td>recall</td></tr><tr><td>9618/12/W/25 Q8(a)(i)</td><td>2</td><td>give</td><td>recall</td></tr></tbody></table>
+          <p class="v2-copyright-note">Index only: Cambridge question and mark-scheme wording is not reproduced on this public course page.</p>
+        </div>
         </section>
 
-        <!-- stage10-explanation:start chain -->
-        <section class="panel explanation-panel" id="explanation-chain" data-explains="chain" data-explanation-kind="mechanism" aria-labelledby="explanation-chain-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-009">
-          <h2 class="explanation-sr-only" id="explanation-chain-title">The calculation chain</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-009-chain.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining The calculation chain with a structured visual model." />
-            <figcaption class="explanation-sr-only">The calculation chain: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> 1. Pixels</li><li><strong>Lesson fact:</strong> width × height</li><li><strong>Lesson fact:</strong> pixels × colour depth</li><li><strong>Lesson fact:</strong> 3. Bytes</li><li><strong>Lesson fact:</strong> bits ÷ 8</li><li><strong>Lesson fact:</strong> 4. Metadata</li><li><strong>Lesson fact:</strong> add only if the question includes it</li><li><strong>Lesson fact:</strong> 100 × 80 × 8 = 64 000 bits = 8000 bytes</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end chain -->
-        <section class="panel" id="metadata" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-009">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 2</p>
-            <h2>Metadata is data about the image, not the pixels themselves</h2>
-          </div>
-          <div class="metadata-grid">
-            <article>
-              <h3>Examples</h3>
-              <p>Width, height, colour depth, file type, date created, camera model, location data or thumbnail data.</p>
-            </article>
-            <article>
-              <h3>Purpose</h3>
-              <p>Metadata helps software interpret, organise, search or display the image correctly.</p>
-            </article>
-            <article>
-              <h3>Calculation rule</h3>
-              <p>Add metadata size only when the question gives it and asks for total file size.</p>
-            </article>
-          </div>
-          <div class="callout warning">Exam wording matters: “ignore metadata” means pixel data only.</div>
+        <section class="v2-panel" id="summary">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 4 | close when ready</p><h2>Summary and exam reminders</h2></div>
+          <div class="v2-summary-grid"><div><h3>Summary</h3><ul class="v2-summary-list"><li>Define cloud computing and transmission media with the exact technical vocabulary expected by the syllabus.</li><li>Use the lesson method on a fresh context and show the intermediate decision, representation or calculation.</li><li>Match the shape of the answer to the command word and the available marks.</li><li>Check the final answer against the scenario instead of repeating a memorised sentence.</li></ul></div><div class="v2-error"><h3>Common error to correct</h3><p>Students often confuse bandwidth with speed in every sense. Correction: bandwidth is capacity; latency and congestion also affect perceived performance.</p></div></div>
+          <div class="v2-tip-box"><h3>Exam technique</h3><ul><li>Follow the command word: state gives a fact; explain links a cause to a consequence; compare covers both sides.</li><li>Match the number of independent points or method steps to the available marks.</li><li>For cloud computing and transmission media, use the exact technical term before applying it to the scenario.</li></ul></div>
         </section>
 
-        <!-- stage10-explanation:start metadata -->
-        <section class="panel explanation-panel" id="explanation-metadata" data-explains="metadata" data-explanation-kind="mechanism" aria-labelledby="explanation-metadata-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-009">
-          <h2 class="explanation-sr-only" id="explanation-metadata-title">Metadata is data about the image, not the pixels themselves</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-009-metadata.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Metadata is data about the image, not the pixels themselves with a structured visual model." />
-            <figcaption class="explanation-sr-only">Metadata is data about the image, not the pixels themselves: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Examples</li><li><strong>Lesson fact:</strong> Width, height, colour depth, file type, date created, camera model, location data or thumbnail data.</li><li><strong>Lesson fact:</strong> Metadata helps software interpret, organise, search or display the image correctly.</li><li><strong>Lesson fact:</strong> Calculation rule</li><li><strong>Lesson fact:</strong> Add metadata size only when the question gives it and asks for total file size.</li><li><strong>Lesson fact:</strong> Exam wording matters: “ignore metadata” means pixel data only.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end metadata -->
-        <section class="panel" id="units" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-009">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 3</p>
-            <h2>Units: do not trip at the finish line</h2>
-          </div>
-          <div class="unit-grid">
-            <article>
-              <h3>Bits to bytes</h3>
-              <p>`8 bits = 1 byte`, so divide bits by 8.</p>
-            </article>
-            <article>
-              <h3>Bytes to KiB</h3>
-              <p>`1 KiB = 1024 bytes`, so divide bytes by 1024 when binary units are requested.</p>
-            </article>
-            <article>
-              <h3>Rounding</h3>
-              <p>Only round if the question requests it. Otherwise keep an exact value or enough working.</p>
-            </article>
-          </div>
-          <div class="callout">Chinese support: metadata = 元数据；header = 文件头；pixel data = 像素数据。</div>
-        </section>
-
-        <!-- stage10-explanation:start units -->
-        <section class="panel explanation-panel" id="explanation-units" data-explains="units" data-explanation-kind="mechanism" aria-labelledby="explanation-units-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-009">
-          <h2 class="explanation-sr-only" id="explanation-units-title">Units: do not trip at the finish line</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-009-units.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Units: do not trip at the finish line with a structured visual model." />
-            <figcaption class="explanation-sr-only">Units: do not trip at the finish line: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> When a formula gives a size in bits, divide by 8 to convert to bytes.</li><li><strong>Lesson fact:</strong> When binary units are required, divide bytes by 1024 for KiB and continue by factors of 1024.</li><li><strong>Lesson fact:</strong> A quantity may already be supplied in bytes or a larger unit; not every measurement starts as bits.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end units -->
-        <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-009">
-          <div class="section-title">
-            <p class="eyebrow">Interactive tool</p>
-            <h2>Image size calculator with metadata</h2>
-          </div>
-          <div class="converter-grid">
-            <label>
-              Width / pixels
-              <input id="widthInput" type="number" min="1" value="100" />
-            </label>
-            <label>
-              Height / pixels
-              <input id="heightInput" type="number" min="1" value="80" />
-            </label>
-            <label>
-              Colour depth / bits
-              <select id="depthInput">
-                <option value="1">1 bit</option>
-                <option value="4">4 bits</option>
-                <option value="8" selected>8 bits</option>
-                <option value="16">16 bits</option>
-                <option value="24">24 bits</option>
-              </select>
-            </label>
-            <label>
-              Metadata / bytes
-              <input id="metadataInput" type="number" min="0" value="512" />
-            </label>
-            <label class="checkbox-label">
-              <input id="includeMetadata" type="checkbox" checked />
-              Include metadata
-            </label>
-            <button type="button" id="calculateBtn">Calculate</button>
-          </div>
-          <div class="result-box" id="calcResult" aria-live="polite"></div>
-          <div class="method-box" id="calcMethod"></div>
-        </section>
-
-        <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-009">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge examples</p>
-            <h2>Worked examples</h2>
-          </div>
-          <div class="example-tabs" role="tablist" aria-label="Worked examples">
-            <button class="tab active" type="button" data-example="ignore">Ignore metadata</button>
-            <button class="tab" type="button" data-example="include">Include metadata</button>
-            <button class="tab" type="button" data-example="kib">Convert to KiB</button>
-          </div>
-          <article class="example-box" id="exampleBox"></article>
-        </section>
-
-        <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-009">
-          <div class="section-title">
-            <p class="eyebrow">Your turn</p>
-            <h2>Practice with instant checking</h2>
-          </div>
-          <div class="practice-list" id="practiceList"></div>
-          <button class="primary-button" type="button" id="checkPractice">Check practice</button>
-          <div class="feedback" id="practiceFeedback" aria-live="polite"></div>
-        </section>
-
-        <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-009">
-          <div class="section-title">
-            <p class="eyebrow">Mistake debugging</p>
-            <h2>Catch the common wording error</h2>
-          </div>
-          <div class="mistake-grid">
-            <article>
-              <p class="wrong">Question says ignore metadata. Answer adds 512 bytes of metadata.</p>
-              <button class="answer-toggle" type="button" data-answer="mistake1">Show correction</button>
-              <p class="answer" id="mistake1">Do not add metadata when the question says ignore it. Use pixel data only.</p>
-            </article>
-            <article>
-              <p class="wrong">`8192 bytes = 8192 KiB`</p>
-              <button class="answer-toggle" type="button" data-answer="mistake2">Show correction</button>
-              <p class="answer" id="mistake2">`8192 bytes ÷ 1024 = 8 KiB`.</p>
-            </article>
-          </div>
-        </section>
-
-        <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-009">
-          <div class="section-title">
-            <p class="eyebrow">Exam-style questions</p>
-            <h2>Questions with expandable MS</h2>
-            <p>
-              Use the buttons under each question to expand the Cambridge-style mark scheme.
-              These are original questions written in Cambridge style, not copied past-paper items.
-            </p>
-          </div>
-          <div class="exam-list" id="examList"></div>
-        </section>
-
-        <section class="panel summary-panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-009">
-          <div class="section-title">
-            <p class="eyebrow">Summary</p>
-            <h2>Read the wording before the calculator</h2>
-          </div>
-          <div class="summary-grid">
-            <div><strong>1</strong><span>Pixel data bits = width × height × colour depth.</span></div>
-            <div><strong>2</strong><span>Bytes = bits ÷ 8.</span></div>
-            <div><strong>3</strong><span>Metadata is data about the image; add it only when required.</span></div>
-            <div><strong>4</strong><span>KiB uses 1024 bytes, not 1000 bytes.</span></div>
-          </div>
-        </section>
-
-        <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
-          <div class="section-title">
-            <p class="eyebrow">Homework</p>
-            <h2>Clear tasks</h2>
-          </div>
-          <ol class="homework-list">
-            <li>Calculate the pixel data size of a `128 × 128` image using 8-bit colour depth, in bytes.</li>
-            <li>Add 1024 bytes of metadata to the answer from task 1 and give the total in KiB.</li>
-            <li>List four examples of image metadata and explain one purpose of metadata.</li>
-            <li>Write a 4-mark explanation of why the phrase “ignore metadata” changes the calculation.</li>
-          </ol>
-          <button class="answer-toggle" type="button" data-answer="homeworkAnswers">Show homework answers</button>
-          <div class="answer-panel" id="homeworkAnswers">
-            <p><strong>Task 1:</strong> `128 × 128 × 8 = 131 072 bits = 16 384 bytes`.</p>
-            <p><strong>Task 2:</strong> `16 384 + 1024 = 17 408 bytes = 17 KiB`.</p>
-            <p><strong>Metadata examples:</strong> width, height, colour depth, file type, date created, camera model, GPS location.</p>
-            <p><strong>Explanation focus:</strong> ignoring metadata means calculating only the image pixel data, not additional data about the file.</p>
-          </div>
-        </section>
+        <nav class="v2-bottom-nav" aria-label="Previous and next lesson"><a href="../lesson-008/" >Previous lesson</a><a href="../lesson-010/" >Next lesson</a></nav>
       </div>
     </main>
-
-    <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=3"></script>
-    <script src="../lesson-toolbar.js?v=3"></script>
-    <script src="../stage7-accessibility.js?v=4"></script>
+    <script src="../course-v2.js?v=1"></script>
   </body>
 </html>

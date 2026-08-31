@@ -3,321 +3,89 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 038 | Building logic circuits from requirements</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <title>AS9618 Lesson 038 | Artificial intelligence applications and impacts</title>
     <link rel="icon" href="data:" />
-    <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
+    <link rel="stylesheet" href="../course-v2.css?v=3" />
   </head>
-  <body>
+  <body data-course-version="2" data-lesson-id="038" data-syllabus-ids="S7.06">
     <a class="skip-link" href="#main-content">Skip to main content</a>
-    <header class="topbar">
-      <div>
-        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 3</p>
-        <h1>Building logic circuits from requirements</h1>
-      </div>
-      <div class="action-panel" aria-label="Page controls">
-        <a class="course-home-link" href="../">Course home</a>
-        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
-      </div>
+    <header class="v2-topbar">
+      <div><p class="v2-eyebrow">Cambridge AS9618 | Paper 1 | Section 7: Ethics and ownership</p><h1>Artificial intelligence applications and impacts</h1></div>
+      <nav class="v2-actions" aria-label="Lesson actions"><a href="../">Course home</a><a href="../assessments/">Assessment bank</a><button type="button" id="printLesson">Print</button></nav>
     </header>
+    <main class="v2-shell" id="main-content" tabindex="-1">
+      <nav class="v2-toc" aria-label="Lesson contents"><strong>Lesson 038</strong><a href="#overview">Overview</a><a href="#prerequisite">Prerequisite</a><a href="#explanation">Explanation</a><a href="#practice">Practice</a><a href="#summary">Summary</a></nav>
+      <div class="v2-content">
+        <section class="v2-hero" id="overview">
+          <div><p class="v2-eyebrow">Flexible-depth lesson</p><h2>Artificial intelligence applications and impacts</h2><p>S7.06 | Select what to omit, teach briefly or explore in depth.</p></div>
+          <div class="v2-time-grid" aria-label="Available lesson depth"><div><strong>Quick</strong><span>diagnose + essentials</span></div><div><strong>Full</strong><span>complete explanation</span></div><div><strong>Deep</strong><span>prerequisites + extension</span></div><div><strong>Choose</strong><span>practice by need</span></div></div>
+        </section>
 
-    <main class="layout" id="main-content" tabindex="-1">
-      <aside class="lesson-nav" aria-label="Lesson navigation">
-        <a href="#overview">Overview</a>
-        <a href="#hook">Warm-up</a>
-        <a href="#parse">Parse requirements</a>
-        <a href="#design">Design method</a>
-        <a href="#diagram">Circuit structure</a>
-        <a href="#tool">Circuit builder</a>
-        <a href="#examples">Examples</a>
-        <a href="#practice">Practice</a>
-        <a href="#debug">Debugging</a>
-        <a href="#exam">Exam-style</a>
-        <a href="#homework">Homework</a>
-      </aside>
+        <section class="v2-panel v2-route-menu" aria-labelledby="route-heading">
+          <div class="v2-heading"><p class="v2-eyebrow">Teacher choice</p><h2 id="route-heading">Choose the depth for this group</h2></div>
+          <div class="v2-route-grid"><article><h3>Quick route</h3><p>Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.</p></article><article><h3>Full route</h3><p>Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.</p></article><article><h3>Deep route</h3><p>Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.</p></article></div>
+        </section>
 
-      <div class="lesson-content">
-        <!-- remediation-v2-stage3-scope:start -->
-        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>This lesson is Optional enrichment or review. It does not establish first use of a new syllabus requirement and is excluded from compulsory coverage and prerequisite statistics.</p></aside>
-        <!-- remediation-v2-stage3-scope:end -->
+        <section class="v2-panel" id="prerequisite">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 1 | optional depth</p><h2>Prerequisite knowledge and quick diagnostic</h2></div>
+          <div class="v2-diagnostic"><p>Recall S7.01 before starting this lesson.</p></div>
+          <p>Give one accurate definition or method step before continuing. If it is missing, revisit only that prerequisite.</p>
+          <details class="v2-prerequisite-detail"><summary>Open optional prerequisite refresher</summary><ul><li>Version 2 requires both the need for professional ethics and its purpose; evidence must connect responsible professional decisions to public interest, competence and accountability.</li><li>Show understanding of the need for and purpose of ethics as a computing professional.</li></ul></details>
+        </section>
 
-<section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-038">
-          <div class="hero-copy">
-            <p class="lesson-meta">Lesson 038 | 45 minutes | Paper 1 Section 3</p>
-            <h2>Requirements are English. Circuits are English after it has been through the gym.</h2>
-            <p>
-              This lesson trains the full design route: read a scenario, define
-              input variables, write a Boolean expression, build the gate sequence,
-              and verify the circuit with a truth table row.
-            </p>
-            <div class="objective-grid" aria-label="Learning objectives">
-              <div><strong>Identify</strong><span>input conditions and output action from a requirement</span></div>
-              <div><strong>Construct</strong><span>Boolean expressions and matching gate sequences</span></div>
-              <div><strong>Verify</strong><span>the circuit using a truth-table row</span></div>
+        <section class="v2-panel" id="explanation">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 2 | deliberately over-complete</p><h2>Knowledge explanation</h2></div>
+          <h3>Learning objectives</h3><ul class="v2-objectives"><li>Show understanding of artificial intelligence, its applications and its social, economic and environmental impacts.</li></ul>
+          <details class="v2-concept-menu"><summary>Open the concept checklist and choose what to teach</summary><ul><li>AI</li><li>applications</li><li>evaluate</li><li>social</li><li>economic</li><li>environmental</li><li>impacts</li></ul></details>
+          <div class="v2-explanation-grid">
+            <div>
+              <article class="v2-core-facts"><h3>Detailed explanation</h3><p class="v2-teacher-note">Teach all points, or select only the ones this group needs. The list is intentionally fuller than a fixed lesson slot.</p><ul class="v2-facts"><li>Version 2 requires applications of AI and impacts across all three named dimensions: social, economic and environmental. Evidence must connect an AI mechanism to stakeholder consequences, benefits, harms and a contextual judgement.</li><li>AI applications include medical image classification, recommendation, fraud detection, language processing, autonomous control and predictive maintenance. A valid impact answer names the AI decision mechanism and traces a consequence for a stakeholder.</li><li>Social impacts include access, bias and privacy; economic impacts include productivity, job redesign and error cost; environmental impacts include data-centre energy/material use and optimisation of transport or power. Evaluation balances benefits, harms and mitigations in context.</li><li>To evaluate an AI application, balance its social, economic and environmental impacts and reach a context-linked judgement.</li><li>Professional ethics has a purpose: computing professionals must protect public interest, work competently and remain accountable for consequences. Joining a professional ethical body such as the British Computer Society (BCS) or the Institute of Electrical and Electronics Engineers (IEEE) provides codes of conduct, guidance, continuing professional development and a community that supports standards. In a situation, judge whether action is ethical or unethical and explain stakeholder impacts of both choices.</li><li>Artificial intelligence (AI) applications include classification, recommendation, prediction and autonomous control. Every AI evaluation should identify the application or decision mechanism and trace social, economic and environmental impacts before reaching a contextual judgement with realistic mitigations.</li></ul></article>
+              <article class="v2-example"><h3>Worked example</h3><p>AI recruitment review: An AI recruitment system may speed initial screening and reduce administrative cost, but biased data can unfairly exclude applicants, automated rejection can remove accountability, and model operation consumes computing resources. Human review, representative data, appeal, data minimisation and efficient infrastructure address different harms. The system is justified only if measured benefits outweigh social, economic and environmental costs under those safeguards.</p></article>
+              <aside class="v2-extension"><h3>Beyond syllabus / 延伸知识（不要求背诵）</h3><p>professional decisions are often reviewed against law, organisational policy, public interest and a published code of conduct.</p></aside>
             </div>
-          </div>
-          <div class="gate-card" aria-label="Circuit expression">
-            <span>Alarm = Armed AND (Door OR Window)</span>
-            <p>Start with the rule. The circuit should simply obey it, without inventing new drama.</p>
-          </div>
-        </section>
-
-        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-038">
-          <article class="why-card">
-            <h3>Why this matters</h3>
-            <p>Cambridge questions often give worded requirements. Marks depend on turning words such as only if, either, and not into the right gates.</p>
-          </article>
-          <article class="trap-card">
-            <h3>Common error</h3>
-            <p>Do not draw gates before defining variables. A circuit with mystery inputs is not clever; it is just hard to mark.</p>
-          </article>
-        </section>
-
-        <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-038">
-          <div class="section-title">
-            <p class="eyebrow">Warm-up hook</p>
-            <h2>A school door unlocks only if the card is valid and the emergency stop is not active.</h2>
-            <p>Click the correct expression. The door is allergic to vague English.</p>
-          </div>
-          <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="wrong1">Unlock = Card OR NOT Emergency</button>
-            <button class="choice-card" type="button" data-hook="correct">Unlock = Card AND NOT Emergency</button>
-            <button class="choice-card" type="button" data-hook="wrong2">Unlock = NOT Card AND Emergency</button>
-            <button class="choice-card" type="button" data-hook="wrong3">Unlock = Card XOR Emergency</button>
-          </div>
-          <div class="feedback" id="hookFeedback" aria-live="polite">
-            Look for "only if" and "not active". Those two phrases usually decide the gate choices.
+            <figure class="v2-visual">
+              <img src="../assets/diagrams/stage10-infographics/stage10-lesson-078-map.jpg" alt="Trigger words. Useful answer focus. Ethical decisions. stakeholders, consent, fairness, responsibility, proportionality. benefits, harms, rights, responsibilities and justified judgement" loading="lazy" />
+              <figcaption>Section 7 topic map. One maintained explanation is shown as an image on larger screens and as text on small screens.</figcaption>
+              <div class="v2-mobile-visual-text" aria-label="Mobile text alternative"><ul><li>Trigger words</li><li>Useful answer focus</li><li>Ethical decisions</li><li>stakeholders, consent, fairness, responsibility, proportionality</li><li>benefits, harms, rights, responsibilities and justified judgement</li></ul></div>
+            </figure>
           </div>
         </section>
 
-        <section class="panel" id="parse" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-038">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 1</p>
-            <h2>Parse requirement wording into logic</h2>
-          </div>
-          <div class="phrase-table" role="table" aria-label="Requirement phrases and logic">
-            <div class="table-row table-head" role="row">
-              <div role="columnheader">Requirement phrase</div>
-              <div role="columnheader">Logic meaning</div>
-              <div role="columnheader">Gate / expression</div>
-              <div role="columnheader">Exam warning</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">both / all / only if X and Y</div>
-              <div role="cell">Every listed condition must be 1.</div>
-              <div role="cell">X AND Y</div>
-              <div role="cell">Do not replace AND with OR because one condition sounds important.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">either / at least one</div>
-              <div role="cell">One or more conditions may be 1.</div>
-              <div role="cell">X OR Y</div>
-              <div role="cell">OR includes the row where both inputs are 1.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">not / unless / inactive</div>
-              <div role="cell">Invert the condition.</div>
-              <div role="cell">NOT X</div>
-              <div role="cell">Check which variable is being inverted.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">exactly one</div>
-              <div role="cell">Inputs must be different.</div>
-              <div role="cell">X XOR Y</div>
-              <div role="cell">Do not use OR if both being 1 should produce 0.</div>
-            </div>
-          </div>
-          <div class="callout">Chinese support: requirement = 需求；variable = 变量；logic circuit = 逻辑电路；gate sequence = 逻辑门顺序。</div>
+        <section class="v2-panel" id="practice">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 3 | select by learner need</p><h2>Practice by question type</h2></div>
+          <div class="v2-question-list"><article class="v2-question" data-question-id="Q-L038-01" data-semantic-fingerprint="S7.06|artificial-intelligence-applications-and-impacts|apply|three-impact-dimensions-must|written|recall">
+              <div class="v2-question-head"><span class="v2-badge">apply</span><span class="v2-badge">recall</span><span class="v2-badge difficulty">foundation</span><span class="v2-badge">2 marks</span></div>
+              <p><strong>Question 1.</strong> Which three impact dimensions must an AI evaluation cover?</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> Social, economic and environmental impacts.</p><p><strong>Marking guidance:</strong> Award one mark for each distinct, technically accurate point or method step.</p><p><strong>Common error:</strong> For the command word apply, perform that exact action; do not replace it with an unrelated fact.</p></div></details>
+            </article><article class="v2-question" data-question-id="Q-L038-02" data-semantic-fingerprint="S7.06|artificial-intelligence-applications-and-impacts|evaluate|evaluate-select-applicants-jobs|written|evaluate">
+              <div class="v2-question-head"><span class="v2-badge">evaluate</span><span class="v2-badge">evaluate</span><span class="v2-badge difficulty">application</span><span class="v2-badge">4 marks</span></div>
+              <p><strong>Question 2.</strong> Evaluate the use of AI to select applicants for jobs.</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> valid benefit such as speed/consistent initial processing; valid risk such as bias, opacity, privacy or exclusion; explains a stakeholder consequence; balanced judgement or mitigation linked to the context</p><p><strong>Marking guidance:</strong> Do not accept a list of generic advantages/disadvantages without linking AI decisions to consequences.</p><p><strong>Common error:</strong> Do not repeat the same point in different words; each mark needs a separate idea or method step.</p></div></details>
+            </article><article class="v2-question" data-question-id="Q-L038-03" data-semantic-fingerprint="S7.06|artificial-intelligence-applications-and-impacts|give|economic-benefit-predictive-maintenance|written|recall">
+              <div class="v2-question-head"><span class="v2-badge">give</span><span class="v2-badge">recall</span><span class="v2-badge difficulty">transfer</span><span class="v2-badge">2 marks</span></div>
+              <p><strong>Question 3.</strong> Give one economic benefit of predictive maintenance.</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> Reduced downtime or repair cost by predicting failure.</p><p><strong>Marking guidance:</strong> Award one mark for each distinct, technically accurate point or method step.</p><p><strong>Common error:</strong> Do not copy the worked example unchanged; transfer the method and check it against the new context.</p></div></details>
+            </article></div>
+          <div class="v2-paper-refs">
+          <h3>Related past-paper indexes</h3>
+          <table><thead><tr><th>Reference</th><th>Marks</th><th>Command word</th><th>Question type</th></tr></thead>
+          <tbody><tr><td>9618/11/S/25 Q4(a)</td><td>4</td><td>explain</td><td>explain</td></tr><tr><td>9618/11/W/25 Q8(c)</td><td>4</td><td>complete</td><td>recall</td></tr><tr><td>9618/12/S/25 Q3(a)</td><td>4</td><td>explain</td><td>explain</td></tr><tr><td>9618/11/S/25 Q4(b)</td><td>2</td><td>explain</td><td>explain</td></tr></tbody></table>
+          <p class="v2-copyright-note">Index only: Cambridge question and mark-scheme wording is not reproduced on this public course page.</p>
+        </div>
         </section>
 
-        <!-- stage10-explanation:start parse -->
-        <section class="panel explanation-panel" id="explanation-parse" data-explains="parse" data-explanation-kind="mechanism" aria-labelledby="explanation-parse-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-038">
-          <h2 class="explanation-sr-only" id="explanation-parse-title">Parse requirement wording into logic</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-038-parse.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Parse requirement wording into logic with a structured visual model." />
-            <figcaption class="explanation-sr-only">Parse requirement wording into logic: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> AND means every listed condition must be true; OR means at least one condition is true.</li><li><strong>Lesson fact:</strong> NOT directly inverts a condition.</li><li><strong>Lesson fact:</strong> P unless Q means P when NOT Q; the full sentence determines which condition is negated.</li><li><strong>Lesson fact:</strong> Do not treat the word unless as a universal unary NOT operator.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end parse -->
-        <section class="panel" id="design" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-038">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 2</p>
-            <h2>A circuit design method that examiners can follow</h2>
-          </div>
-          <div class="method-list">
-            <div><strong>1. Name the output</strong><span>Use a clear output such as Alarm, Unlock, Fan or Light.</span></div>
-            <div><strong>2. Define variables</strong><span>Write what each input means, for example A = system armed.</span></div>
-            <div><strong>3. Write expression</strong><span>Translate the requirement with AND, OR, NOT, NAND, NOR or XOR.</span></div>
-            <div><strong>4. Draw in stages</strong><span>Draw inner gates first, then connect them to the final output gate.</span></div>
-          </div>
-          <div class="callout">A correct circuit is not just a pretty drawing. It must match the Boolean expression and produce the correct truth-table output.</div>
+        <section class="v2-panel" id="summary">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 4 | close when ready</p><h2>Summary and exam reminders</h2></div>
+          <div class="v2-summary-grid"><div><h3>Summary</h3><ul class="v2-summary-list"><li>Define artificial intelligence applications and impacts with the exact technical vocabulary expected by the syllabus.</li><li>Use the lesson method on a fresh context and show the intermediate decision, representation or calculation.</li><li>Match the shape of the answer to the command word and the available marks.</li><li>Check the final answer against the scenario instead of repeating a memorised sentence.</li></ul></div><div class="v2-error"><h3>Common error to correct</h3><p>Students often write personal opinions only. Correction: ethics answers need stakeholders, evidence and balanced judgement.</p></div></div>
+          <div class="v2-tip-box"><h3>Exam technique</h3><ul><li>Follow the command word: state gives a fact; explain links a cause to a consequence; compare covers both sides.</li><li>Match the number of independent points or method steps to the available marks.</li><li>For artificial intelligence applications and impacts, use the exact technical term before applying it to the scenario.</li></ul></div>
         </section>
 
-        <!-- stage10-explanation:start design -->
-        <section class="panel explanation-panel" id="explanation-design" data-explains="design" data-explanation-kind="mechanism" aria-labelledby="explanation-design-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-038">
-          <h2 class="explanation-sr-only" id="explanation-design-title">A circuit design method that examiners can follow</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-038-design.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining A circuit design method that examiners can follow with a structured visual model." />
-            <figcaption class="explanation-sr-only">A circuit design method that examiners can follow: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> 1. Name the output Use a clear output such as Alarm, Unlock, Fan or Light.</li><li><strong>Lesson fact:</strong> 2. Define variables Write what each input means, for example A = system armed.</li><li><strong>Lesson fact:</strong> 3. Write expression Translate the requirement with AND, OR, NOT, NAND, NOR or XOR.</li><li><strong>Lesson fact:</strong> 4. Draw in stages Draw inner gates first, then connect them to the final output gate.</li><li><strong>Lesson fact:</strong> A correct circuit is not just a pretty drawing. It must match the Boolean expression and produce the correct truth-table output.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end design -->
-        <section class="panel" id="diagram" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-038">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 3</p>
-            <h2>Gate sequence creates the circuit structure</h2>
-          </div>
-          <div class="circuit-flow" aria-label="Circuit build sequence">
-            <div><strong>Door</strong><span>Input D</span></div>
-            <div><strong>Window</strong><span>Input W</span></div>
-            <div><strong>OR</strong><span>D OR W</span></div>
-            <div><strong>Armed</strong><span>Input A</span></div>
-            <div><strong>AND</strong><span>A AND (D OR W)</span></div>
-            <div><strong>Alarm</strong><span>Final output Q</span></div>
-          </div>
-          <div class="callout">Draw the OR branch first, then feed it into AND with Armed. If the drawing order is unclear, label intermediate outputs.</div>
-        </section>
-
-        <!-- stage10-explanation:start diagram -->
-        <section class="panel explanation-panel" id="explanation-diagram" data-explains="diagram" data-explanation-kind="mechanism" aria-labelledby="explanation-diagram-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-038">
-          <h2 class="explanation-sr-only" id="explanation-diagram-title">Gate sequence creates the circuit structure</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-038-diagram.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Gate sequence creates the circuit structure with a structured visual model." />
-            <figcaption class="explanation-sr-only">Gate sequence creates the circuit structure: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Door Input D</li><li><strong>Lesson fact:</strong> Window Input W</li><li><strong>Lesson fact:</strong> OR D OR W</li><li><strong>Lesson fact:</strong> Armed Input A</li><li><strong>Lesson fact:</strong> AND A AND (D OR W)</li><li><strong>Lesson fact:</strong> Alarm Final output Q</li><li><strong>Lesson fact:</strong> Draw the OR branch first, then feed it into AND with Armed. If the drawing order is unclear, label intermediate outputs.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end diagram -->
-        <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-038">
-          <div class="section-title">
-            <p class="eyebrow">Interactive tool</p>
-            <h2>Build the circuit from a requirement</h2>
-          </div>
-          <div class="converter-grid">
-            <label>
-              Scenario
-              <select id="scenarioInput">
-                <option value="alarm">Alarm if armed and either door or window is open</option>
-                <option value="unlock">Unlock if card is valid and emergency stop is not active</option>
-                <option value="fan">Fan if room is hot and override is not active</option>
-                <option value="light">Light if motion is detected or test mode is active</option>
-                <option value="selector">Select output if exactly one button is pressed</option>
-              </select>
-            </label>
-            <button type="button" id="buildBtn">Build circuit</button>
-          </div>
-          <div class="result-box" id="scenarioExpression" aria-live="polite"></div>
-          <div class="method-box" id="scenarioVariables"></div>
-          <div class="sequence-box" id="scenarioSequence"></div>
-          <div class="truth-table-wrap" id="truthTable"></div>
-        </section>
-
-        <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-038">
-          <div class="section-title">
-            <p class="eyebrow">Worked examples</p>
-            <h2>From words to gates</h2>
-          </div>
-          <div class="example-tabs" role="tablist" aria-label="Worked examples">
-            <button class="tab active" type="button" data-example="alarm">Alarm circuit</button>
-            <button class="tab" type="button" data-example="unlock">Unlock circuit</button>
-            <button class="tab" type="button" data-example="xor">Exactly one condition</button>
-          </div>
-          <article class="example-box" id="exampleBox"></article>
-        </section>
-
-        <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-038">
-          <div class="section-title">
-            <p class="eyebrow">Your turn</p>
-            <h2>Practice with instant checking</h2>
-          </div>
-          <div class="practice-list" id="practiceList"></div>
-          <button class="primary-button" type="button" id="checkPractice">Check practice</button>
-          <div class="feedback" id="practiceFeedback" aria-live="polite"></div>
-        </section>
-
-        <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-038">
-          <div class="section-title">
-            <p class="eyebrow">Mistake debugging</p>
-            <h2>Fix the weak circuit design</h2>
-          </div>
-          <div class="mistake-grid">
-            <article>
-              <p class="wrong">"The alarm sounds if door OR window is open. The system armed condition can be drawn somewhere at the end."</p>
-              <button class="answer-toggle" type="button" data-answer="mistake1">Show correction</button>
-              <p class="answer" id="mistake1">If the requirement says the system must be armed, Armed must be part of the expression: Alarm = Armed AND (Door OR Window). The final AND is essential.</p>
-            </article>
-            <article>
-              <p class="wrong">"Emergency stop is not active, so I write NOT Card AND Emergency."</p>
-              <button class="answer-toggle" type="button" data-answer="mistake2">Show correction</button>
-              <p class="answer" id="mistake2">The NOT applies to Emergency, not Card. The correct expression is Unlock = Card AND NOT Emergency.</p>
-            </article>
-          </div>
-        </section>
-
-        <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-038">
-          <div class="section-title">
-            <p class="eyebrow">Exam-style questions</p>
-            <h2>Questions with expandable MS</h2>
-            <p>Attempt first, then expand the mark scheme. Credit depends on clear variables, correct gate choice, and a circuit sequence matching the requirement.</p>
-          </div>
-          <div class="exam-list" id="examList"></div>
-        </section>
-
-        <section class="panel summary-panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-038">
-          <div class="section-title">
-            <p class="eyebrow">Summary</p>
-            <h2>Circuit design in six exam sentences</h2>
-          </div>
-          <div class="summary-grid">
-            <div><strong>Variables</strong><span>Define every input before using it.</span></div>
-            <div><strong>Output</strong><span>Name the final action clearly.</span></div>
-            <div><strong>AND</strong><span>Use when all conditions are required.</span></div>
-            <div><strong>OR</strong><span>Use when at least one condition is enough.</span></div>
-            <div><strong>NOT</strong><span>Invert only the condition described as not/inactive.</span></div>
-            <div><strong>Verify</strong><span>Test one truth-table row against the original wording.</span></div>
-          </div>
-        </section>
-
-        <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
-          <div class="section-title">
-            <p class="eyebrow">Homework</p>
-            <h2>Clear tasks</h2>
-          </div>
-          <ol class="homework-list">
-            <li>For "A warning sounds if the system is armed and either a door or window is open", define variables, write the expression and describe the gate sequence.</li>
-            <li>For "A fan starts if the room is hot and manual override is not active", define variables and draw the gate structure in words.</li>
-            <li>Create one requirement that needs XOR and explain why OR would be wrong.</li>
-            <li>Verify one of your circuits with two truth-table rows: one where output is 1 and one where output is 0.</li>
-          </ol>
-          <button class="answer-toggle" type="button" data-answer="homeworkAnswers">Show homework guidance</button>
-          <div class="answer-panel" id="homeworkAnswers">
-            <p><strong>Alarm:</strong> let A = armed, D = door open, W = window open. Alarm = A AND (D OR W).</p>
-            <p><strong>Fan:</strong> let H = hot, O = override active. Fan = H AND NOT O.</p>
-            <p><strong>XOR:</strong> use "exactly one" wording, such as exactly one button pressed.</p>
-            <p><strong>Verification:</strong> write input values, intermediate gate result and final output.</p>
-          </div>
-        </section>
+        <nav class="v2-bottom-nav" aria-label="Previous and next lesson"><a href="../lesson-037/" >Previous lesson</a><a href="../lesson-039/" >Next lesson</a></nav>
       </div>
     </main>
-
-    <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=3"></script>
-    <script src="../lesson-toolbar.js?v=3"></script>
-    <script src="../stage7-accessibility.js?v=4"></script>
+    <script src="../course-v2.js?v=1"></script>
   </body>
 </html>

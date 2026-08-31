@@ -3,321 +3,89 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 016 | Section 1 review under exam timing</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <title>AS9618 Lesson 016 | Monitoring, control, sensors and actuators</title>
     <link rel="icon" href="data:" />
-    <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
+    <link rel="stylesheet" href="../course-v2.css?v=3" />
   </head>
-  <body>
+  <body data-course-version="2" data-lesson-id="016" data-syllabus-ids="S3.08,S3.09">
     <a class="skip-link" href="#main-content">Skip to main content</a>
-    <header class="topbar">
-      <div>
-        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 1</p>
-        <h1>Section 1 review under exam timing</h1>
-      </div>
-      <div class="action-panel" aria-label="Page controls">
-        <a class="course-home-link" href="../">Course home</a>
-        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
-      </div>
+    <header class="v2-topbar">
+      <div><p class="v2-eyebrow">Cambridge AS9618 | Paper 1 | Section 3: Hardware</p><h1>Monitoring, control, sensors and actuators</h1></div>
+      <nav class="v2-actions" aria-label="Lesson actions"><a href="../">Course home</a><a href="../assessments/">Assessment bank</a><button type="button" id="printLesson">Print</button></nav>
     </header>
+    <main class="v2-shell" id="main-content" tabindex="-1">
+      <nav class="v2-toc" aria-label="Lesson contents"><strong>Lesson 016</strong><a href="#overview">Overview</a><a href="#prerequisite">Prerequisite</a><a href="#explanation">Explanation</a><a href="#practice">Practice</a><a href="#summary">Summary</a></nav>
+      <div class="v2-content">
+        <section class="v2-hero" id="overview">
+          <div><p class="v2-eyebrow">Flexible-depth lesson</p><h2>Monitoring, control, sensors and actuators</h2><p>S3.08, S3.09 | Select what to omit, teach briefly or explore in depth.</p></div>
+          <div class="v2-time-grid" aria-label="Available lesson depth"><div><strong>Quick</strong><span>diagnose + essentials</span></div><div><strong>Full</strong><span>complete explanation</span></div><div><strong>Deep</strong><span>prerequisites + extension</span></div><div><strong>Choose</strong><span>practice by need</span></div></div>
+        </section>
 
-    <main class="layout" id="main-content" tabindex="-1">
-      <aside class="lesson-nav" aria-label="Lesson navigation">
-        <a href="#overview">Overview</a>
-        <a href="#hook">Warm-up</a>
-        <a href="#triage">Question triage</a>
-        <a href="#methods">Method bank</a>
-        <a href="#sprint">Timed sprint</a>
-        <a href="#tool">Triage tool</a>
-        <a href="#examples">Examples</a>
-        <a href="#practice">Practice</a>
-        <a href="#exam">Exam-style</a>
-        <a href="#homework">Homework</a>
-      </aside>
+        <section class="v2-panel v2-route-menu" aria-labelledby="route-heading">
+          <div class="v2-heading"><p class="v2-eyebrow">Teacher choice</p><h2 id="route-heading">Choose the depth for this group</h2></div>
+          <div class="v2-route-grid"><article><h3>Quick route</h3><p>Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.</p></article><article><h3>Full route</h3><p>Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.</p></article><article><h3>Deep route</h3><p>Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.</p></article></div>
+        </section>
 
-      <div class="lesson-content">
-        <section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
-          <div class="hero-copy">
-            <p class="lesson-meta">Lesson 016 | 45 minutes | Section 1 stage review</p>
-            <h2>Fast answers still need slow-thinking method.</h2>
-            <p>
-              Section 1 questions look varied, but most marks come from a small set of
-              repeatable decisions: identify the representation, choose the correct
-              method, show units, and write a consequence that fits the scenario.
-            </p>
-            <div class="objective-grid" aria-label="Learning objectives">
-              <div><strong>Recognise</strong><span>which Section 1 tool a question is testing</span></div>
-              <div><strong>Calculate</strong><span>storage, number base and file-size answers under time pressure</span></div>
-              <div><strong>Correct</strong><span>answers using Cambridge-style marking language</span></div>
+        <section class="v2-panel" id="prerequisite">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 1 | optional depth</p><h2>Prerequisite knowledge and quick diagnostic</h2></div>
+          <div class="v2-diagnostic"><p>Recall S3.08 before starting this lesson.</p></div>
+          <p>Give one accurate definition or method step before continuing. If it is missing, revisit only that prerequisite.</p>
+          <details class="v2-prerequisite-detail"><summary>Open optional prerequisite refresher</summary><ul><li>Show understanding of monitoring and control systems, including the difference between monitoring and control, the use of sensors and actuators, and the importance of feedback.</li><li>Distinguish monitoring and control; understand sensors, actuators and feedback.</li></ul></details>
+        </section>
+
+        <section class="v2-panel" id="explanation">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 2 | deliberately over-complete</p><h2>Knowledge explanation</h2></div>
+          <h3>Learning objectives</h3><ul class="v2-objectives"><li>Distinguish monitoring and control; understand sensors, actuators and feedback.</li><li>Understand temperature, pressure, infrared and sound sensors and appropriate applications.</li></ul>
+          <details class="v2-concept-menu"><summary>Open the concept checklist and choose what to teach</summary><ul><li>monitoring</li><li>control</li><li>sensors</li><li>actuators</li><li>feedback</li><li>temperature</li><li>pressure</li><li>infra-red / infrared</li><li>sound sensor</li></ul></details>
+          <div class="v2-explanation-grid">
+            <div>
+              <article class="v2-core-facts"><h3>Detailed explanation</h3><p class="v2-teacher-note">Teach all points, or select only the ones this group needs. The list is intentionally fuller than a fixed lesson slot.</p><ul class="v2-facts"><li>Show understanding of monitoring and control systems, including the difference between monitoring and control, the use of sensors and actuators, and the importance of feedback.</li><li>Required sensor types are temperature, pressure, infra-red and sound; teaching and assessment must connect each sensor to an appropriate application.</li><li>A monitoring system uses sensors to collect data for recording, display or alerts; it does not necessarily change the environment. A control system uses sensor input and a stored rule or target to send output to an actuator. In closed-loop control, feedback is the new sensor reading produced after the action, allowing the controller to adjust or stop the output.</li><li>A temperature sensor measures temperature, a pressure sensor measures force per unit area or pressure, an infra-red sensor detects infra-red radiation, and a sound sensor detects sound level or sound waves. The sensor supplies input data; it does not itself decide or perform the control action.</li><li>Choose a sensor by matching the physical quantity to the application: temperature for a greenhouse, pressure for a tyre or burglar mat, infra-red for a remote-control receiver or beam alarm, and sound for a noise monitor. A light-intensity sensor is useful supporting context but does not replace the named infra-red and sound sensors.</li><li>Actuators produce physical output actions such as moving a vent or switching a fan after the controller processes sensor input.</li></ul></article>
+              <article class="v2-example"><h3>Worked example</h3><p>Greenhouse monitoring and control: A monitoring system records and displays temperature readings. A control system also compares each reading with a threshold and activates a fan motor actuator when the greenhouse is too hot. New temperature readings provide feedback, so the fan can stop when the target is reached.</p></article>
+              <aside class="v2-extension"><h3>Beyond syllabus / 延伸知识（不要求背诵）</h3><p>professional device selection also considers accessibility, reliability, repairability and energy use.</p></aside>
             </div>
-          </div>
-          <div class="system-card" aria-label="Review focus">
-            <span>read -> choose -> calculate -> check</span>
-            <p>The stopwatch is not the enemy. The missing unit usually is.</p>
-          </div>
-        </section>
-
-        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
-          <article class="why-card">
-            <h3>Why this matters</h3>
-            <p>Cambridge marking rewards visible method, correct units and scenario links. A bare final answer is a very brave way to lose marks.</p>
-          </article>
-          <article class="trap-card">
-            <h3>Common error</h3>
-            <p>Mixing decimal prefixes with binary prefixes: MB is based on powers of 1000; MiB is based on powers of 1024.</p>
-          </article>
-        </section>
-
-        <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
-          <div class="section-title">
-            <p class="eyebrow">Warm-up hook</p>
-            <h2>Four questions walk into an exam. Which one steals the most marks?</h2>
-          </div>
-          <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="units">A file-size answer with no unit</button>
-            <button class="choice-card" type="button" data-hook="binary">A binary conversion with working</button>
-            <button class="choice-card" type="button" data-hook="lossless">A compression answer linked to exact reconstruction</button>
-            <button class="choice-card" type="button" data-hook="unicode">A Unicode answer linked to multilingual text</button>
-          </div>
-          <div class="feedback" id="hookFeedback" aria-live="polite">
-            Pick the most dangerous answer. Hint: the examiner cannot infer a missing unit just because the calculator looked confident.
+            <figure class="v2-visual">
+              <img src="../assets/diagrams/stage10-infographics/stage10-lesson-035-sensors.jpg" alt="A temperature sensor measures temperature and a pressure sensor measures pressure.. An infra-red sensor detects infra-red radiation, for example in a beam alarm or remote-control receiver.. A sound sensor detects sound level or sound waves, for example in a noise monitor.. A sensor supplies input data; the processor applies the rule and an actuator performs any physical output.. Light intensity is supporting context and does not replace the named infra-red or sound sensors." loading="lazy" />
+              <figcaption>Required sensor types and applications. One maintained explanation is shown as an image on larger screens and as text on small screens.</figcaption>
+              <div class="v2-mobile-visual-text" aria-label="Mobile text alternative"><ul><li>A temperature sensor measures temperature and a pressure sensor measures pressure.</li><li>An infra-red sensor detects infra-red radiation, for example in a beam alarm or remote-control receiver.</li><li>A sound sensor detects sound level or sound waves, for example in a noise monitor.</li><li>A sensor supplies input data; the processor applies the rule and an actuator performs any physical output.</li><li>Light intensity is supporting context and does not replace the named infra-red or sound sensors.</li></ul></div>
+            </figure>
           </div>
         </section>
 
-        <section class="panel" id="triage" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="triage">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 1</p>
-            <h2>Question triage: choose the toolbox first</h2>
-          </div>
-          <div class="triage-grid">
-            <article>
-              <h3>Number bases</h3>
-              <p>Look for binary, denary, hexadecimal, place values, carries, overflow or two's complement.</p>
-            </article>
-            <article>
-              <h3>Text representation</h3>
-              <p>Look for ASCII, Unicode, character set, character code, multilingual text or symbols.</p>
-            </article>
-            <article>
-              <h3>Images and sound</h3>
-              <p>Look for resolution, colour depth, sampling rate, sampling resolution, duration and file size.</p>
-            </article>
-            <article>
-              <h3>Compression</h3>
-              <p>Look for lossless, lossy, exact reconstruction, reduced quality, RLE or repeated data.</p>
-            </article>
-          </div>
-          <div class="callout">Chinese support: triage = 先判断题型；method = 解题方法；unit = 单位；follow-through = 后续步骤跟随前一步。</div>
+        <section class="v2-panel" id="practice">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 3 | select by learner need</p><h2>Practice by question type</h2></div>
+          <div class="v2-question-list"><article class="v2-question" data-question-id="Q-L016-01" data-semantic-fingerprint="S3.08+S3.09|monitoring-control-sensors-and-actuators|compare|greenhouse-records-temperature-automatically|written|evaluate">
+              <div class="v2-question-head"><span class="v2-badge">compare</span><span class="v2-badge">evaluate</span><span class="v2-badge difficulty">foundation</span><span class="v2-badge">5 marks</span></div>
+              <p><strong>Question 1.</strong> A greenhouse system records temperature and automatically opens a vent when necessary. Compare its monitoring and control functions and explain the feedback cycle.</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> monitoring records/displays temperature readings; control compares a reading with a rule/threshold; controller sends output to a vent motor or other actuator; new sensor readings provide feedback after the action; feedback is used to adjust or stop the actuator</p><p><strong>Marking guidance:</strong> Do not state that monitoring necessarily changes an actuator, or that a sensor performs the control decision.</p><p><strong>Common error:</strong> For the command word compare, perform that exact action; do not replace it with an unrelated fact.</p></div></details>
+            </article><article class="v2-question" data-question-id="Q-L016-02" data-semantic-fingerprint="S3.08+S3.09|monitoring-control-sensors-and-actuators|apply|what-feedback-closed-loop|written|recall">
+              <div class="v2-question-head"><span class="v2-badge">apply</span><span class="v2-badge">recall</span><span class="v2-badge difficulty">application</span><span class="v2-badge">2 marks</span></div>
+              <p><strong>Question 2.</strong> What is feedback in a closed-loop control system?</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> A new sensor reading after the action, used to adjust or stop the output.</p><p><strong>Marking guidance:</strong> Award one mark for each distinct, technically accurate point or method step.</p><p><strong>Common error:</strong> Do not repeat the same point in different words; each mark needs a separate idea or method step.</p></div></details>
+            </article><article class="v2-question" data-question-id="Q-L016-03" data-semantic-fingerprint="S3.08+S3.09|monitoring-control-sensors-and-actuators|apply|named-sensor-detects-radiation|written|recall">
+              <div class="v2-question-head"><span class="v2-badge">apply</span><span class="v2-badge">recall</span><span class="v2-badge difficulty">transfer</span><span class="v2-badge">2 marks</span></div>
+              <p><strong>Question 3.</strong> Which named sensor detects radiation used by a remote control?</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> An infra-red sensor.</p><p><strong>Marking guidance:</strong> Award one mark for each distinct, technically accurate point or method step.</p><p><strong>Common error:</strong> Do not copy the worked example unchanged; transfer the method and check it against the new context.</p></div></details>
+            </article></div>
+          <div class="v2-paper-refs">
+          <h3>Related past-paper indexes</h3>
+          <table><thead><tr><th>Reference</th><th>Marks</th><th>Command word</th><th>Question type</th></tr></thead>
+          <tbody><tr><td>9618/11/W/25 Q9</td><td>3</td><td>describe</td><td>explain</td></tr><tr><td>9618/13/S/24 Q7(d)</td><td>4</td><td>complete</td><td>recall</td></tr><tr><td>9618/13/S/24 Q7(i)</td><td>4</td><td>complete</td><td>recall</td></tr><tr><td>9618/11/W/24 Q5(c)</td><td>3</td><td>complete</td><td>recall</td></tr></tbody></table>
+          <p class="v2-copyright-note">Index only: Cambridge question and mark-scheme wording is not reproduced on this public course page.</p>
+        </div>
         </section>
 
-        <!-- stage10-explanation:start triage -->
-        <section class="panel explanation-panel" id="explanation-triage" data-explains="triage" data-explanation-kind="synthesis" aria-labelledby="explanation-triage-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="triage">
-          <h2 class="explanation-sr-only" id="explanation-triage-title">Question triage: choose the toolbox first</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-016-triage.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Question triage: choose the toolbox first with a structured visual model." />
-            <figcaption class="explanation-sr-only">Question triage: choose the toolbox first: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Number bases</li><li><strong>Lesson fact:</strong> Look for binary, denary, hexadecimal, place values, carries, overflow or two's complement.</li><li><strong>Lesson fact:</strong> Text representation</li><li><strong>Lesson fact:</strong> Look for ASCII, Unicode, character set, character code, multilingual text or symbols.</li><li><strong>Lesson fact:</strong> Images and sound</li><li><strong>Lesson fact:</strong> Look for resolution, colour depth, sampling rate, sampling resolution, duration and file size.</li><li><strong>Lesson fact:</strong> Compression</li><li><strong>Lesson fact:</strong> Look for lossless, lossy, exact reconstruction, reduced quality, RLE or repeated data.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end triage -->
-        <section class="panel" id="methods" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="methods">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 2</p>
-            <h2>Section 1 method bank</h2>
-          </div>
-          <div class="method-grid">
-            <article>
-              <h3>Storage units</h3>
-              <p>1 KiB = 1024 bytes. 1 MiB = 1024 KiB. Decimal prefixes use 1000, binary prefixes use 1024.</p>
-            </article>
-            <article>
-              <h3>Binary to denary</h3>
-              <p>Add active place values. For 8-bit unsigned, range is 0 to 255.</p>
-            </article>
-            <article>
-              <h3>File size</h3>
-              <p>Image bits = width x height x colour depth. Sound bits = sample rate x sampling resolution x duration x channels.</p>
-            </article>
-            <article>
-              <h3>Compression choice</h3>
-              <p>Lossless allows exact reconstruction. Lossy removes data permanently but can reduce file size more.</p>
-            </article>
-          </div>
+        <section class="v2-panel" id="summary">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 4 | close when ready</p><h2>Summary and exam reminders</h2></div>
+          <div class="v2-summary-grid"><div><h3>Summary</h3><ul class="v2-summary-list"><li>Define monitoring, control, sensors and actuators with the exact technical vocabulary expected by the syllabus.</li><li>Use the lesson method on a fresh context and show the intermediate decision, representation or calculation.</li><li>Match the shape of the answer to the command word and the available marks.</li><li>Check the final answer against the scenario instead of repeating a memorised sentence.</li></ul></div><div class="v2-error"><h3>Common error to correct</h3><p>Students often say the sensor &#39;does the action&#39;. Correction: sensors detect; actuators act.</p></div></div>
+          <div class="v2-tip-box"><h3>Exam technique</h3><ul><li>Follow the command word: state gives a fact; explain links a cause to a consequence; compare covers both sides.</li><li>Match the number of independent points or method steps to the available marks.</li><li>For monitoring, control, sensors and actuators, use the exact technical term before applying it to the scenario.</li></ul></div>
         </section>
 
-        <!-- stage10-explanation:start methods -->
-        <section class="panel explanation-panel" id="explanation-methods" data-explains="methods" data-explanation-kind="synthesis" aria-labelledby="explanation-methods-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="methods">
-          <h2 class="explanation-sr-only" id="explanation-methods-title">Section 1 method bank</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-016-methods.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Section 1 method bank with a structured visual model." />
-            <figcaption class="explanation-sr-only">Section 1 method bank: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Storage units</li><li><strong>Lesson fact:</strong> 1 KiB = 1024 bytes. 1 MiB = 1024 KiB. Decimal prefixes use 1000, binary prefixes use 1024.</li><li><strong>Lesson fact:</strong> Binary to denary</li><li><strong>Lesson fact:</strong> Add active place values. For 8-bit unsigned, range is 0 to 255.</li><li><strong>Lesson fact:</strong> File size</li><li><strong>Lesson fact:</strong> Image bits = width x height x colour depth. Sound bits = sample rate x sampling resolution x duration x channels.</li><li><strong>Lesson fact:</strong> Compression choice</li><li><strong>Lesson fact:</strong> Lossless allows exact reconstruction. Lossy removes data permanently but can reduce file size more.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end methods -->
-        <section class="panel" id="sprint" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="sprint">
-          <div class="section-title">
-            <p class="eyebrow">Timed section</p>
-            <h2>Six-minute review sprint</h2>
-            <p>Use the timer for a short retrieval round. The goal is not panic; the goal is clean method under a clock.</p>
-          </div>
-          <div class="timer-card">
-            <div class="timer-display" id="timerDisplay">06:00</div>
-            <div class="timer-actions">
-              <button type="button" id="startTimer">Start</button>
-              <button type="button" id="pauseTimer">Pause</button>
-              <button type="button" id="resetTimer">Reset</button>
-            </div>
-          </div>
-          <ol class="sprint-list">
-            <li>Convert <code>10101100</code> to denary.</li>
-            <li>Calculate the size in bits of a 100 x 50 bitmap image with 8-bit colour depth.</li>
-            <li>State why Unicode is suitable for a multilingual app.</li>
-            <li>Choose lossless or lossy compression for a legal document archive and justify the choice.</li>
-          </ol>
-          <button class="answer-toggle" type="button" data-answer="sprintAnswers">Show sprint answers</button>
-          <div class="answer-panel" id="sprintAnswers">
-            <p><strong>1:</strong> 172, because 128 + 32 + 8 + 4 = 172.</p>
-            <p><strong>2:</strong> 100 x 50 x 8 = 40 000 bits.</p>
-            <p><strong>3:</strong> Unicode supports a wider range of characters, so it can represent many languages.</p>
-            <p><strong>4:</strong> Lossless, because the document must be reconstructed exactly.</p>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start sprint -->
-        <section class="panel explanation-panel" id="explanation-sprint" data-explains="sprint" data-explanation-kind="synthesis" aria-labelledby="explanation-sprint-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="sprint">
-          <h2 class="explanation-sr-only" id="explanation-sprint-title">Six-minute review sprint</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-016-sprint.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Six-minute review sprint with a structured visual model." />
-            <figcaption class="explanation-sr-only">Six-minute review sprint: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Timed section</li><li><strong>Lesson fact:</strong> Use the timer for a short retrieval round. The goal is not panic; the goal is clean method under a clock.</li><li><strong>Lesson fact:</strong> Convert 10101100 to denary.</li><li><strong>Lesson fact:</strong> Calculate the size in bits of a 100 x 50 bitmap image with 8-bit colour depth.</li><li><strong>Lesson fact:</strong> State why Unicode is suitable for a multilingual app.</li><li><strong>Lesson fact:</strong> Choose lossless or lossy compression for a legal document archive and justify the choice.</li><li><strong>Lesson fact:</strong> 1: 172, because 128 + 32 + 8 + 4 = 172.</li><li><strong>Lesson fact:</strong> 2: 100 x 50 x 8 = 40 000 bits.</li><li><strong>Lesson fact:</strong> 3: Unicode supports a wider range of characters, so it can represent many languages.</li><li><strong>Lesson fact:</strong> 4: Lossless, because the document must be reconstructed exactly.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end sprint -->
-        <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="PRACTISE" data-delivery-group="tool">
-          <div class="section-title">
-            <p class="eyebrow">Interactive tool</p>
-            <h2>Question triage helper</h2>
-          </div>
-          <div class="converter-grid">
-            <label>
-              Exam clue
-              <select id="clueInput">
-                <option value="mib">MiB, KiB, bytes</option>
-                <option value="image">resolution and colour depth</option>
-                <option value="sound">sampling rate and duration</option>
-                <option value="negative">negative binary value</option>
-                <option value="exact">exact reconstruction</option>
-              </select>
-            </label>
-            <button type="button" id="triageBtn">Choose method</button>
-          </div>
-          <div class="result-box" id="triageResult" aria-live="polite"></div>
-          <div class="method-box" id="triageMethod"></div>
-        </section>
-
-        <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge examples</p>
-            <h2>Worked examples</h2>
-          </div>
-          <div class="example-tabs" role="tablist" aria-label="Worked examples">
-            <button class="tab active" type="button" data-example="units">Units</button>
-            <button class="tab" type="button" data-example="image">Image size</button>
-            <button class="tab" type="button" data-example="explain">Scenario answer</button>
-          </div>
-          <article class="example-box" id="exampleBox"></article>
-        </section>
-
-        <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
-          <div class="section-title">
-            <p class="eyebrow">Your turn</p>
-            <h2>Mixed practice with instant checking</h2>
-          </div>
-          <div class="practice-list" id="practiceList"></div>
-          <button class="primary-button" type="button" id="checkPractice">Check practice</button>
-          <div class="feedback" id="practiceFeedback" aria-live="polite"></div>
-        </section>
-
-        <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
-          <div class="section-title">
-            <p class="eyebrow">Mistake debugging</p>
-            <h2>Repair common review answers</h2>
-          </div>
-          <div class="mistake-grid">
-            <article>
-              <p class="wrong">“The image file is 240000.”</p>
-              <button class="answer-toggle" type="button" data-answer="mistake1">Show correction</button>
-              <p class="answer" id="mistake1">State the unit and method: 200 x 150 x 8 = 240 000 bits, which is 30 000 bytes.</p>
-            </article>
-            <article>
-              <p class="wrong">“Lossless is better because it is higher quality.”</p>
-              <button class="answer-toggle" type="button" data-answer="mistake2">Show correction</button>
-              <p class="answer" id="mistake2">Lossless is suitable when exact reconstruction is required; it is not automatically better for every purpose.</p>
-            </article>
-          </div>
-        </section>
-
-        <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
-          <div class="section-title">
-            <p class="eyebrow">Exam-style questions</p>
-            <h2>Questions with expandable MS</h2>
-            <p>Each mark scheme uses strict Cambridge-style credit points. Expand only after attempting the question.</p>
-          </div>
-          <div class="exam-list" id="examList"></div>
-        </section>
-
-        <section class="panel summary-panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
-          <div class="section-title">
-            <p class="eyebrow">Summary</p>
-            <h2>The Section 1 survival checklist</h2>
-          </div>
-          <div class="summary-grid">
-            <div><strong>1</strong><span>Identify the representation topic before solving.</span></div>
-            <div><strong>2</strong><span>Show method for calculations; do not jump to a lonely answer.</span></div>
-            <div><strong>3</strong><span>Write units: bits, bytes, KiB, MiB, colours, samples per second.</span></div>
-            <div><strong>4</strong><span>For explanations, include cause and consequence in the given scenario.</span></div>
-          </div>
-        </section>
-
-        <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
-          <div class="section-title">
-            <p class="eyebrow">Homework</p>
-            <h2>Clear tasks</h2>
-          </div>
-          <ol class="homework-list">
-            <li>Create a one-page Section 1 formula sheet with one example for each formula.</li>
-            <li>Complete the four exam-style questions again without looking at the MS.</li>
-            <li>Write one improved answer for every mistake you made in the practice section.</li>
-            <li>Prepare five flashcards: binary conversion, image file size, sound file size, Unicode, lossless/lossy.</li>
-          </ol>
-          <button class="answer-toggle" type="button" data-answer="homeworkAnswers">Show homework success criteria</button>
-          <div class="answer-panel" id="homeworkAnswers">
-            <p><strong>Formula sheet:</strong> must include units and one substituted example, not only symbols.</p>
-            <p><strong>Exam redo:</strong> mark with M1/B1/A1 points and correct missing units.</p>
-            <p><strong>Corrections:</strong> each improved answer should say what changed and why it now earns the mark.</p>
-            <p><strong>Flashcards:</strong> front = prompt; back = definition, method and one common error.</p>
-          </div>
-        </section>
+        <nav class="v2-bottom-nav" aria-label="Previous and next lesson"><a href="../lesson-015/" >Previous lesson</a><a href="../lesson-017/" >Next lesson</a></nav>
       </div>
     </main>
-
-    <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=3"></script>
-    <script src="../lesson-toolbar.js?v=3"></script>
-    <script src="../stage7-accessibility.js?v=4"></script>
+    <script src="../course-v2.js?v=1"></script>
   </body>
 </html>

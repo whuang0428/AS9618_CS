@@ -3,479 +3,89 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 017 | Network purpose and client/server models</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <title>AS9618 Lesson 017 | Logic gates, symbols and truth tables</title>
     <link rel="icon" href="data:" />
-    <link rel="stylesheet" href="./styles.css?v=2" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
+    <link rel="stylesheet" href="../course-v2.css?v=3" />
   </head>
-  <body>
+  <body data-course-version="2" data-lesson-id="017" data-syllabus-ids="S3.10">
     <a class="skip-link" href="#main-content">Skip to main content</a>
-    <header class="topbar">
-      <div>
-        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 2</p>
-        <h1>Network purpose and client/server models</h1>
-      </div>
-      <div class="action-panel" aria-label="Page controls">
-        <a class="course-home-link" href="../">Course home</a>
-        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
-      </div>
+    <header class="v2-topbar">
+      <div><p class="v2-eyebrow">Cambridge AS9618 | Paper 1 | Section 3: Hardware</p><h1>Logic gates, symbols and truth tables</h1></div>
+      <nav class="v2-actions" aria-label="Lesson actions"><a href="../">Course home</a><a href="../assessments/">Assessment bank</a><button type="button" id="printLesson">Print</button></nav>
     </header>
-
-    <main class="layout" id="main-content" tabindex="-1">
-      <aside class="lesson-nav" aria-label="Lesson navigation">
-        <a href="#overview">Overview</a>
-        <a href="#hook">Warm-up</a>
-        <a href="#purpose">Purpose</a>
-        <a href="#lanwan">LAN vs WAN</a>
-        <a href="#topologies">Topologies</a>
-        <a href="#tool">Topology tool</a>
-        <a href="#examples">Examples</a>
-        <a href="#practice">Practice</a>
-        <a href="#exam">Exam-style</a>
-        <a href="#homework">Homework</a>
-        <a href="#stage2-completion">Core syllabus content</a>
-      </aside>
-
-      <div class="lesson-content">
-        <!-- remediation-v2-stage3-scope:start -->
-        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.</p></aside>
-        <!-- remediation-v2-stage3-scope:end -->
-
-<!-- stage2-completion:start -->
-        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus content</p>
-            <h2>Network purpose and client/server models</h2>
-          </div>
-          <div class="stage2-explanation">
-            <p>Networking devices allow computers and users to share resources such as files, printers, storage and an internet connection. A network can also support communication, collaboration, central account management, central backup and access to shared services. A benefit must identify what is shared or managed and explain the consequence; 'it is easier' is not enough.</p>
-            <p>A LAN covers a limited geographical area such as one building or site and is normally owned or managed by one organisation. A WAN covers a large geographical area, connects separate LANs or sites and commonly uses telecommunications-provider infrastructure. LAN and WAN describe scope and management, not a guaranteed speed.</p>
-            <p>In a bus topology, devices attach to one shared backbone cable and a transmitted signal travels along that shared medium. In a star topology, every device has a separate link to a central switch and each frame passes through that switch. In a mesh topology, nodes have multiple interconnections so packets may use alternative routes. A hybrid topology combines two or more topology patterns, for example two star segments connected by a backbone.</p>
-            <p>Topology choice must be justified from packet path, failure effect, redundancy, cabling cost, expansion and traffic. A star isolates most individual cable faults but the central switch is a single point of failure; a mesh offers alternative paths but needs more links and management; a bus uses less cable but the shared backbone and shared traffic are weaknesses.</p>
-            <p>In a client-server model, clients request services or resources and one or more servers provide them. Dedicated server roles can include authentication, file storage, web hosting and backup. Central management, consistent access control and central backup are benefits; server cost, specialist administration, dependence on the server and a possible central failure are drawbacks.</p>
-            <p>In a peer-to-peer model, each peer may request and provide resources directly. It can be inexpensive and simple for a small trusted group because no dedicated server is required, but distributed accounts, backups, security and availability become harder to control. A model choice must be justified from number of users, trust, management, availability, cost and the required shared services.</p>
-            <p>A thin client relies mainly on a server for processing and/or storage. A thick client performs more processing locally and normally stores more software or data on the client device. Thin clients simplify central updates and can use lower-specification hardware, but depend heavily on the server and network. Thick clients can continue more work when disconnected, but local installation, security and maintenance are distributed.</p>
-            <p>To justify a topology, link the packet path, dependence on central hardware, alternative routes and failure behaviour to the given situation.</p>
-          </div>
-          <article class="stage2-example">
-            <h3>Worked example: Choose a topology for a two-building clinic / Choose a model and client type for a school examination room</h3>
-            <p>Use a star LAN inside each building so individual devices have independent links to a central switch. Connect the two stars to form a hybrid network. If the inter-building link is safety-critical, add a second path: packets can use the alternative route after one link fails, at extra cost. Use a client-server model so accounts, permissions, exam files and backups are controlled by servers. Thin clients support central software management and reduce local storage, but the school must provide resilient servers and networking because a failure can stop the room. Thick clients would reduce that dependence but distribute software and security maintenance.</p>
-          </article>
+    <main class="v2-shell" id="main-content" tabindex="-1">
+      <nav class="v2-toc" aria-label="Lesson contents"><strong>Lesson 017</strong><a href="#overview">Overview</a><a href="#prerequisite">Prerequisite</a><a href="#explanation">Explanation</a><a href="#practice">Practice</a><a href="#summary">Summary</a></nav>
+      <div class="v2-content">
+        <section class="v2-hero" id="overview">
+          <div><p class="v2-eyebrow">Flexible-depth lesson</p><h2>Logic gates, symbols and truth tables</h2><p>S3.10 | Select what to omit, teach briefly or explore in depth.</p></div>
+          <div class="v2-time-grid" aria-label="Available lesson depth"><div><strong>Quick</strong><span>diagnose + essentials</span></div><div><strong>Full</strong><span>complete explanation</span></div><div><strong>Deep</strong><span>prerequisites + extension</span></div><div><strong>Choose</strong><span>practice by need</span></div></div>
         </section>
-        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus practice</p>
-            <h2>Network purpose and client/server models: apply and assess</h2>
-          </div>
-          <div class="stage2-practice">
-            <h3>Targeted practice</h3>
-            <article class="stage2-question">
-              <p><strong>1.</strong> State two concrete benefits of networking school computers.</p>
-              <details><summary>Show answer</summary><p>Shared printers/files/services and central management, backup or communication; each benefit must name its consequence.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>2.</strong> Compare a LAN from a WAN using geographical scope and management.</p>
-              <details><summary>Show answer</summary><p>A LAN covers a limited site and is normally managed by one organisation; a WAN connects sites over a large area and often uses provider infrastructure.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>3.</strong> Describe the packet or signal path in bus, star, mesh and hybrid topologies.</p>
-              <details><summary>Show answer</summary><p>Bus: shared backbone; star: central switch; mesh: one of several interconnected routes; hybrid: the path follows the combined component topologies.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>4.</strong> Suggest star or mesh for a hospital network that prioritises resilience.</p>
-              <details><summary>Show answer</summary><p>Mesh, because alternative packet routes can maintain communication after a link failure; acknowledge the additional links/cost.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>5.</strong> State the roles of a client and server.</p>
-              <details><summary>Show answer</summary><p>A client requests a service or resource; a server provides and manages the service or resource.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>6.</strong> Give one benefit and one drawback of peer-to-peer networking.</p>
-              <details><summary>Show answer</summary><p>Benefit: no dedicated server / low setup cost. Drawback: distributed security, backup and availability are harder to manage.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>7.</strong> Justify client-server for 600 managed school users.</p>
-              <details><summary>Show answer</summary><p>Central accounts, permissions, storage, updates and backup suit many users, despite server cost and availability risk.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>8.</strong> Compare a thin client from a thick client.</p>
-              <details><summary>Show answer</summary><p>A thin client depends mainly on server processing/storage; a thick client performs and stores more locally.</p></details>
-            </article>
-          </div>
-          <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>10 marks</span></div>
-            <p>A college is replacing one shared bus network with star LANs connected into a hybrid topology. Explain two networking benefits and justify the topology change. A call centre is choosing a client-server model with thin clients. Explain two benefits and two drawbacks of this combined choice.</p>
-            <details>
-              <summary>Show MS</summary>
-              <table class="mark-scheme-table">
-                <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
-                <tbody>
-                  <tr><td>one developed resource-sharing, communication or central-management benefit</td><td>Do not award generic benefits or a topology name without a path/failure consequence. Do not award 'cheaper' unless the lower client specification or central administration explains why; do not confuse network model with topology.</td><td>1</td></tr>
-                  <tr><td>a second distinct developed networking benefit</td><td></td><td>1</td></tr>
-                  <tr><td>star frames pass through a central switch and an individual cable failure normally affects one device</td><td></td><td>1</td></tr>
-                  <tr><td>hybrid combines topology patterns / connects the star segments</td><td></td><td>1</td></tr>
-                  <tr><td>justification links reliability, expansion, traffic or cost to the college</td><td></td><td>1</td></tr>
-                  <tr><td>centralised accounts/software/update or data management</td><td></td><td>1</td></tr>
-                  <tr><td>lower client hardware/storage requirement</td><td></td><td>1</td></tr>
-                  <tr><td>depends on network/server availability or performance</td><td></td><td>1</td></tr>
-                  <tr><td>server infrastructure, administration or central-failure cost</td><td></td><td>1</td></tr>
-                  <tr><td>develops at least one point in the call-centre context</td><td></td><td>1</td></tr>
-                </tbody>
-              </table>
-            </details>
-          </article>
-        </section>
-        <!-- stage2-completion:end -->
 
-<section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-017">
-          <div class="hero-copy">
-            <p class="lesson-meta">Lesson 017 | 45 minutes | Paper 1 Section 2</p>
-            <h2>A network is not just “Wi-Fi exists”.</h2>
-            <p>
-              A network connects devices so they can communicate and share resources.
-              Today we separate purpose, scale and structure: why a network exists,
-              whether it is a LAN or WAN, and how topology affects cost, performance
-              and fault tolerance.
-            </p>
-            <div class="objective-grid" aria-label="Learning objectives">
-              <div><strong>Explain</strong><span>the purposes and advantages of computer networks</span></div>
-              <div><strong>Compare</strong><span>LAN and WAN using ownership, geography and infrastructure</span></div>
-              <div><strong>Evaluate</strong><span>bus, star, mesh and hybrid topology choices for scenarios</span></div>
+        <section class="v2-panel v2-route-menu" aria-labelledby="route-heading">
+          <div class="v2-heading"><p class="v2-eyebrow">Teacher choice</p><h2 id="route-heading">Choose the depth for this group</h2></div>
+          <div class="v2-route-grid"><article><h3>Quick route</h3><p>Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.</p></article><article><h3>Full route</h3><p>Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.</p></article><article><h3>Deep route</h3><p>Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.</p></article></div>
+        </section>
+
+        <section class="v2-panel" id="prerequisite">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 1 | optional depth</p><h2>Prerequisite knowledge and quick diagnostic</h2></div>
+          <div class="v2-diagnostic"><p>Recall S1.02 before starting this lesson.</p></div>
+          <p>Give one accurate definition or method step before continuing. If it is missing, revisit only that prerequisite.</p>
+          <details class="v2-prerequisite-detail"><summary>Open optional prerequisite refresher</summary><ul><li>The Version 2 row requires binary, denary, hexadecimal, Binary Coded Decimal (BCD), one&#39;s complement and two&#39;s complement; BCD and complements are representations rather than additional number bases.</li><li>Show understanding of binary, denary and hexadecimal number systems, BCD, and one&#39;s- and two&#39;s-complement representations.</li></ul></details>
+        </section>
+
+        <section class="v2-panel" id="explanation">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 2 | deliberately over-complete</p><h2>Knowledge explanation</h2></div>
+          <h3>Learning objectives</h3><ul class="v2-objectives"><li>Understand NOT, AND, OR, NAND, NOR and XOR; use symbols/functions/truth tables and convert among problem, expression, circuit and truth table.</li></ul>
+          <details class="v2-concept-menu"><summary>Open the concept checklist and choose what to teach</summary><ul><li>NOT</li><li>AND</li><li>OR</li><li>NAND</li><li>NOR</li><li>XOR</li><li>symbol</li><li>function</li><li>truth table</li><li>problem statement</li><li>expression</li><li>circuit</li><li>two inputs</li></ul></details>
+          <div class="v2-explanation-grid">
+            <div>
+              <article class="v2-core-facts"><h3>Detailed explanation</h3><p class="v2-teacher-note">Teach all points, or select only the ones this group needs. The list is intentionally fuller than a fixed lesson slot.</p><ul class="v2-facts"><li>Use the standard symbols and define the functions of NOT, AND, OR, NAND, NOR and XOR (EOR); all gates except NOT have two inputs. Construct circuits, truth tables and expressions from each of the other stated representations: problem statement, logic expression, logic circuit and truth table.</li><li>Use the standard symbols and exact functions of NOT, AND, OR, NAND, NOR and XOR (EOR). NOT has one input; each of the other five gates has two inputs for this syllabus. A truth table lists every input combination and the resulting output according to the gate or circuit function.</li><li>You must be able to construct a logic circuit from a problem statement, logic expression or truth table; construct a truth table from a problem statement, logic circuit or logic expression; and construct a logic expression from a problem statement, logic circuit or truth table. Move through variables and conditions first, then intermediate gate outputs, then the final output so every representation can be checked against the same rows.</li><li>Each standard gate symbol identifies its function; do not substitute a labelled box when a logic-circuit symbol is required.</li></ul></article>
+              <article class="v2-example"><h3>Worked example</h3><p>Convert one rule among four representations: Rule: an alarm sounds when the system is armed and either the door or window is open. Define A, D and W; write Alarm = A AND (D OR W); draw an OR gate for D and W feeding an AND gate with A; then list all eight input combinations and evaluate the intermediate OR column before Alarm.</p></article>
+              <aside class="v2-extension"><h3>Beyond syllabus / 延伸知识（不要求背诵）</h3><p>professional device selection also considers accessibility, reliability, repairability and energy use.</p></aside>
             </div>
-          </div>
-          <div class="network-card" aria-label="Network concept">
-            <span>device -> link -> device</span>
-            <p>When the link breaks, the excuses become very specific.</p>
-          </div>
-        </section>
-
-        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-017">
-          <article class="why-card">
-            <h3>Why this matters</h3>
-            <p>Network questions often look descriptive, but marks come from precise distinctions and scenario-linked consequences.</p>
-          </article>
-          <article class="trap-card">
-            <h3>Common error</h3>
-            <p>LAN does not mean “small and wireless”. LAN means a local network, usually privately owned within a limited area.</p>
-          </article>
-        </section>
-
-        <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-017">
-          <div class="section-title">
-            <p class="eyebrow">Warm-up hook</p>
-            <h2>The classroom printer is shared by 24 computers. What is the actual network purpose?</h2>
-          </div>
-          <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="resource">Sharing a resource</button>
-            <button class="choice-card" type="button" data-hook="wan">Creating a WAN</button>
-            <button class="choice-card" type="button" data-hook="protocol">Replacing protocols</button>
-            <button class="choice-card" type="button" data-hook="mesh">Using mesh topology</button>
-          </div>
-          <div class="feedback" id="hookFeedback" aria-live="polite">
-            Select the network purpose that applies to the shared printer.
+            <figure class="v2-visual">
+              <img src="../assets/diagrams/stage10-infographics/stage10-lesson-038-design.jpg" alt="1. Name the output Use a clear output such as Alarm, Unlock, Fan or Light.. 2. Define variables Write what each input means, for example A = system armed.. 3. Write expression Translate the requirement with AND, OR, NOT, NAND, NOR or XOR.. 4. Draw in stages Draw inner gates first, then connect them to the final output gate.. A correct circuit is not just a pretty drawing. It must match the Boolean expression and produce the correct truth-table output." loading="lazy" />
+              <figcaption>A circuit design method that examiners can follow. One maintained explanation is shown as an image on larger screens and as text on small screens.</figcaption>
+              <div class="v2-mobile-visual-text" aria-label="Mobile text alternative"><ul><li>1. Name the output Use a clear output such as Alarm, Unlock, Fan or Light.</li><li>2. Define variables Write what each input means, for example A = system armed.</li><li>3. Write expression Translate the requirement with AND, OR, NOT, NAND, NOR or XOR.</li><li>4. Draw in stages Draw inner gates first, then connect them to the final output gate.</li><li>A correct circuit is not just a pretty drawing. It must match the Boolean expression and produce the correct truth-table output.</li></ul></div>
+            </figure>
           </div>
         </section>
 
-        <section class="panel" id="purpose" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-017">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 1</p>
-            <h2>Why networks are used</h2>
-          </div>
-          <div class="purpose-grid">
-            <article>
-              <h3>Communication</h3>
-              <p>Users and devices exchange data, messages, files and requests.</p>
-            </article>
-            <article>
-              <h3>Resource sharing</h3>
-              <p>Printers, storage, internet connections and software can be shared instead of duplicated.</p>
-            </article>
-            <article>
-              <h3>Central management</h3>
-              <p>Accounts, permissions, backups and updates can be controlled from central systems.</p>
-            </article>
-            <article>
-              <h3>Collaboration</h3>
-              <p>Multiple users can work with shared files or services, sometimes at the same time.</p>
-            </article>
-          </div>
-          <div class="callout">Chinese support: resource sharing = 资源共享；central management = 集中管理；collaboration = 协作。</div>
+        <section class="v2-panel" id="practice">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 3 | select by learner need</p><h2>Practice by question type</h2></div>
+          <div class="v2-question-list"><article class="v2-question" data-question-id="Q-L017-01" data-semantic-fingerprint="S3.10|logic-gates-symbols-and-truth-tables|construct|table-gives-output-number|visual|diagram">
+              <div class="v2-question-head"><span class="v2-badge">construct</span><span class="v2-badge">diagram</span><span class="v2-badge difficulty">foundation</span><span class="v2-badge">4 marks</span></div>
+              <p><strong>Question 1.</strong> A truth table gives output 1 only when input A is 1 and input B is 0. Construct a logic expression and describe the corresponding circuit.</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> identifies that B must be inverted; constructs expression Q = A AND NOT B; B is connected to a NOT gate; A and the NOT-gate output are connected to an AND gate whose output is Q</p><p><strong>Marking guidance:</strong> Do not accept XOR: XOR is also 1 for A=0, B=1, which contradicts the given truth table.</p><p><strong>Common error:</strong> For the command word construct, perform that exact action; do not replace it with an unrelated fact.</p></div></details>
+            </article><article class="v2-question" data-question-id="Q-L017-02" data-semantic-fingerprint="S3.10|logic-gates-symbols-and-truth-tables|identify|three-possible-sources-circuit|visual|recall">
+              <div class="v2-question-head"><span class="v2-badge">identify</span><span class="v2-badge">recall</span><span class="v2-badge difficulty">application</span><span class="v2-badge">2 marks</span></div>
+              <p><strong>Question 2.</strong> Identify the three possible sources from which a logic circuit may be constructed.</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> A problem statement, a logic expression or a truth table.</p><p><strong>Marking guidance:</strong> Award one mark for each distinct, technically accurate point or method step.</p><p><strong>Common error:</strong> Do not repeat the same point in different words; each mark needs a separate idea or method step.</p></div></details>
+            </article><article class="v2-question" data-question-id="Q-L017-03" data-semantic-fingerprint="S3.10|logic-gates-symbols-and-truth-tables|explain|many-inputs-does-not|written|explain">
+              <div class="v2-question-head"><span class="v2-badge">explain</span><span class="v2-badge">explain</span><span class="v2-badge difficulty">transfer</span><span class="v2-badge">2 marks</span></div>
+              <p><strong>Question 3.</strong> How many inputs does NOT have, and how many do the other specified gates have in this syllabus?</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> NOT has one input; AND, OR, NAND, NOR and XOR each have two inputs.</p><p><strong>Marking guidance:</strong> Award one mark for each distinct, technically accurate point or method step.</p><p><strong>Common error:</strong> Do not copy the worked example unchanged; transfer the method and check it against the new context.</p></div></details>
+            </article></div>
+          <div class="v2-paper-refs">
+          <h3>Related past-paper indexes</h3>
+          <table><thead><tr><th>Reference</th><th>Marks</th><th>Command word</th><th>Question type</th></tr></thead>
+          <tbody><tr><td>9618/11/S/25 Q1(a)</td><td>2</td><td>write</td><td>recall</td></tr><tr><td>9618/11/S/25 Q1(b)</td><td>2</td><td>complete</td><td>recall</td></tr><tr><td>9618/11/W/25 Q3(a)</td><td>2</td><td>draw</td><td>diagram</td></tr><tr><td>9618/11/W/25 Q3(b)</td><td>2</td><td>draw</td><td>diagram</td></tr></tbody></table>
+          <p class="v2-copyright-note">Index only: Cambridge question and mark-scheme wording is not reproduced on this public course page.</p>
+        </div>
         </section>
 
-        <!-- stage10-explanation:start purpose -->
-        <section class="panel explanation-panel" id="explanation-purpose" data-explains="purpose" data-explanation-kind="mechanism" aria-labelledby="explanation-purpose-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-017">
-          <h2 class="explanation-sr-only" id="explanation-purpose-title">How a shared resource becomes useful</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-017-purpose.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining How a shared resource becomes useful through a cause-and-effect diagram." />
-            <figcaption class="explanation-sr-only">How a shared resource becomes useful: mechanism, reason, result, analogy and boundary condition.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Mechanism:</strong> A device packages a request and names the destination.</li><li><strong>Reason:</strong> The network carries that request to the shared resource.</li><li><strong>Result:</strong> One managed resource can then serve many authorised devices.</li></ol>
-
-            <p><strong>Analogy:</strong> A library serves many readers because requests reach one organised collection.</p>
-            <p><strong>Boundary:</strong> If the path or shared service fails, many users lose access together.</p>
-          </div>
-        </section>
-        <!-- stage10-explanation:end purpose -->
-        <section class="panel" id="lanwan" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-017">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 2</p>
-            <h2>LAN vs WAN</h2>
-          </div>
-          <div class="compare-table" role="table" aria-label="LAN and WAN comparison">
-            <div class="table-row table-head" role="row">
-              <div role="columnheader">Feature</div>
-              <div role="columnheader">LAN</div>
-              <div role="columnheader">WAN</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Area</div>
-              <div role="cell">Limited area, such as a room, building or school site.</div>
-              <div role="cell">Large geographical area, such as cities, countries or continents.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Ownership</div>
-              <div role="cell">Usually owned and managed by one organisation or individual.</div>
-              <div role="cell">Often uses infrastructure from telecommunications providers.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Example</div>
-              <div role="cell">A school network connecting classrooms and servers.</div>
-              <div role="cell">A bank connecting branches in different countries.</div>
-            </div>
-          </div>
+        <section class="v2-panel" id="summary">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 4 | close when ready</p><h2>Summary and exam reminders</h2></div>
+          <div class="v2-summary-grid"><div><h3>Summary</h3><ul class="v2-summary-list"><li>Define logic gates, symbols and truth tables with the exact technical vocabulary expected by the syllabus.</li><li>Use the lesson method on a fresh context and show the intermediate decision, representation or calculation.</li><li>Match the shape of the answer to the command word and the available marks.</li><li>Check the final answer against the scenario instead of repeating a memorised sentence.</li></ul></div><div class="v2-error"><h3>Common error to correct</h3><p>Students often use everyday &#39;or&#39; instead of logical OR. Correction: OR is true when at least one input is true unless XOR is specified.</p></div></div>
+          <div class="v2-tip-box"><h3>Exam technique</h3><ul><li>Follow the command word: state gives a fact; explain links a cause to a consequence; compare covers both sides.</li><li>Match the number of independent points or method steps to the available marks.</li><li>For logic gates, symbols and truth tables, use the exact technical term before applying it to the scenario.</li></ul></div>
         </section>
 
-        <!-- stage10-explanation:start lanwan -->
-        <section class="panel explanation-panel" id="explanation-lanwan" data-explains="lanwan" data-explanation-kind="comparison" aria-labelledby="explanation-lanwan-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-017">
-          <h2 class="explanation-sr-only" id="explanation-lanwan-title">Why LAN and WAN management differs</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-017-lanwan.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Why LAN and WAN management differs through a cause-and-effect diagram." />
-            <figcaption class="explanation-sr-only">Why LAN and WAN management differs: mechanism, reason, result, analogy and boundary condition.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Mechanism:</strong> A LAN usually stays within one organisation's controlled site.</li><li><strong>Reason:</strong> A WAN crosses distance and often uses provider-owned infrastructure.</li><li><strong>Result:</strong> More owners and routes add latency, cost and fault-finding complexity.</li></ol>
-
-            <p><strong>Analogy:</strong> Managing one campus is different from coordinating transport across several cities.</p>
-            <p><strong>Boundary:</strong> Wi-Fi does not make a network a WAN; scale and control do.</p>
-          </div>
-        </section>
-        <!-- stage10-explanation:end lanwan -->
-        <section class="panel" id="topologies" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-017">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 3</p>
-            <h2>Network topologies</h2>
-          </div>
-          <div class="topology-grid">
-            <article>
-              <svg class="topology-svg" viewBox="0 0 240 120" role="img" aria-labelledby="topology-bus-title topology-bus-desc">
-                <title id="topology-bus-title">Bus topology</title>
-                <desc id="topology-bus-desc">Four devices connect by short branches to one shared horizontal backbone cable.</desc>
-                <line class="topology-link" x1="20" y1="78" x2="220" y2="78" />
-                <line class="topology-link" x1="45" y1="42" x2="45" y2="78" />
-                <line class="topology-link" x1="95" y1="42" x2="95" y2="78" />
-                <line class="topology-link" x1="145" y1="42" x2="145" y2="78" />
-                <line class="topology-link" x1="195" y1="42" x2="195" y2="78" />
-                <circle class="topology-node" cx="45" cy="32" r="10" />
-                <circle class="topology-node" cx="95" cy="32" r="10" />
-                <circle class="topology-node" cx="145" cy="32" r="10" />
-                <circle class="topology-node" cx="195" cy="32" r="10" />
-                <text class="topology-label" x="120" y="103">shared backbone</text>
-              </svg>
-              <h3>Bus</h3>
-              <p>Devices share one backbone cable. Less cabling reduces cost, but traffic and failures are concentrated on the shared path.</p>
-            </article>
-            <article>
-              <svg class="topology-svg" viewBox="0 0 240 120" role="img" aria-labelledby="topology-star-title topology-star-desc">
-                <title id="topology-star-title">Star topology</title>
-                <desc id="topology-star-desc">Four devices each have an independent link to one central switch.</desc>
-                <line class="topology-link" x1="120" y1="60" x2="42" y2="26" />
-                <line class="topology-link" x1="120" y1="60" x2="198" y2="26" />
-                <line class="topology-link" x1="120" y1="60" x2="42" y2="94" />
-                <line class="topology-link" x1="120" y1="60" x2="198" y2="94" />
-                <circle class="topology-node" cx="42" cy="26" r="10" />
-                <circle class="topology-node" cx="198" cy="26" r="10" />
-                <circle class="topology-node" cx="42" cy="94" r="10" />
-                <circle class="topology-node" cx="198" cy="94" r="10" />
-                <rect class="topology-switch" x="94" y="44" width="52" height="32" rx="8" />
-                <text class="topology-switch-label" x="120" y="64">switch</text>
-              </svg>
-              <h3>Star</h3>
-              <p>Each device has an independent link to a central switch. Cable faults are isolated, but switch failure affects every attached device.</p>
-            </article>
-            <article>
-              <svg class="topology-svg" viewBox="0 0 240 120" role="img" aria-labelledby="topology-mesh-title topology-mesh-desc">
-                <title id="topology-mesh-title">Full mesh topology example</title>
-                <desc id="topology-mesh-desc">Four devices are fully connected: every device has a direct link to each of the other three devices, making six links.</desc>
-                <line class="topology-link" x1="48" y1="26" x2="192" y2="26" />
-                <line class="topology-link" x1="48" y1="94" x2="192" y2="94" />
-                <line class="topology-link" x1="48" y1="26" x2="48" y2="94" />
-                <line class="topology-link" x1="192" y1="26" x2="192" y2="94" />
-                <line class="topology-link" x1="48" y1="26" x2="192" y2="94" />
-                <line class="topology-link" x1="192" y1="26" x2="48" y2="94" />
-                <circle class="topology-node" cx="48" cy="26" r="10" />
-                <circle class="topology-node" cx="192" cy="26" r="10" />
-                <circle class="topology-node" cx="48" cy="94" r="10" />
-                <circle class="topology-node" cx="192" cy="94" r="10" />
-              </svg>
-              <h3>Full mesh example</h3>
-              <p>Every pair of devices has a direct link, creating alternative paths. Reliability increases, but links and ports grow rapidly.</p>
-            </article>
-            <article>
-              <svg class="topology-svg" viewBox="0 0 240 120" role="img" aria-labelledby="topology-hybrid-title topology-hybrid-desc">
-                <title id="topology-hybrid-title">Hybrid topology</title>
-                <desc id="topology-hybrid-desc">Two star segments are connected together. Each segment has a central switch and three attached devices.</desc>
-                <line class="topology-link topology-link--bridge" x1="82" y1="60" x2="158" y2="60" />
-                <line class="topology-link" x1="64" y1="60" x2="28" y2="24" />
-                <line class="topology-link" x1="64" y1="60" x2="28" y2="96" />
-                <line class="topology-link" x1="64" y1="60" x2="64" y2="18" />
-                <line class="topology-link" x1="176" y1="60" x2="212" y2="24" />
-                <line class="topology-link" x1="176" y1="60" x2="212" y2="96" />
-                <line class="topology-link" x1="176" y1="60" x2="176" y2="18" />
-                <circle class="topology-node" cx="28" cy="24" r="9" />
-                <circle class="topology-node" cx="28" cy="96" r="9" />
-                <circle class="topology-node" cx="64" cy="18" r="9" />
-                <circle class="topology-node" cx="212" cy="24" r="9" />
-                <circle class="topology-node" cx="212" cy="96" r="9" />
-                <circle class="topology-node" cx="176" cy="18" r="9" />
-                <rect class="topology-switch" x="48" y="46" width="34" height="28" rx="7" />
-                <rect class="topology-switch" x="158" y="46" width="36" height="28" rx="7" />
-              </svg>
-              <h3>Hybrid</h3>
-              <p>Two or more topology types are combined. The design can balance local simplicity, expansion and wider resilience.</p>
-            </article>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start topologies -->
-        <section class="panel explanation-panel" id="explanation-topologies" data-explains="topologies" data-explanation-kind="tradeoff" aria-labelledby="explanation-topologies-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-017">
-          <h2 class="explanation-sr-only" id="explanation-topologies-title">Why connection patterns change risk</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-017-topologies.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Why connection patterns change risk through a cause-and-effect diagram." />
-            <figcaption class="explanation-sr-only">Why connection patterns change risk: mechanism, reason, result, analogy and boundary condition.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Mechanism:</strong> A topology diagram's link count must match the physical links actually drawn.</li><li><strong>Reason:</strong> Alternative paths improve resilience but require additional links and ports.</li><li><strong>Result:</strong> Use one consistent topology in the mechanism and result views; this example has nine links including the inter-switch link.</li></ol>
-
-            <p><strong>Analogy:</strong> Road layouts trade construction cost against alternative routes after a closure.</p>
-            <p><strong>Boundary:</strong> No topology is universally best; cost, scale and failure tolerance decide.</p>
-          </div>
-        </section>
-        <!-- stage10-explanation:end topologies -->
-        <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-017">
-          <div class="section-title">
-            <p class="eyebrow">Interactive tool</p>
-            <h2>Topology recommendation helper</h2>
-          </div>
-          <div class="converter-grid">
-            <label>
-              Scenario
-              <select id="scenarioInput">
-                <option value="school">School computer room</option>
-                <option value="temporary">Temporary lab with very low budget</option>
-                <option value="critical">Hospital monitoring network</option>
-                <option value="branches">Company branches in several countries</option>
-              </select>
-            </label>
-            <button type="button" id="recommendBtn">Recommend</button>
-          </div>
-          <div class="result-box" id="recommendResult" aria-live="polite"></div>
-          <div class="method-box" id="recommendMethod"></div>
-        </section>
-
-        <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-017">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge examples</p>
-            <h2>Worked examples</h2>
-          </div>
-          <div class="example-tabs" role="tablist" aria-label="Worked examples">
-            <button class="tab active" type="button" data-example="lan">LAN vs WAN</button>
-            <button class="tab" type="button" data-example="star">Star topology</button>
-            <button class="tab" type="button" data-example="mesh">Mesh topology</button>
-          </div>
-          <article class="example-box" id="exampleBox"></article>
-        </section>
-
-        <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-017">
-          <div class="section-title">
-            <p class="eyebrow">Your turn</p>
-            <h2>Practice with instant checking</h2>
-          </div>
-          <div class="practice-list" id="practiceList"></div>
-          <button class="primary-button" type="button" id="checkPractice">Check practice</button>
-          <div class="feedback" id="practiceFeedback" aria-live="polite"></div>
-        </section>
-
-        <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-017">
-          <div class="section-title">
-            <p class="eyebrow">Mistake debugging</p>
-            <h2>Fix the weak network answer</h2>
-          </div>
-          <div class="mistake-grid">
-            <article>
-              <p class="wrong">“A WAN is just a bigger LAN.”</p>
-              <button class="answer-toggle" type="button" data-answer="mistake1">Show correction</button>
-              <p class="answer" id="mistake1">A WAN covers a large geographical area and often uses telecommunications provider infrastructure; a LAN is local and usually privately managed.</p>
-            </article>
-            <article>
-              <p class="wrong">“Star topology is always best because it is modern.”</p>
-              <button class="answer-toggle" type="button" data-answer="mistake2">Show correction</button>
-              <p class="answer" id="mistake2">Star topology is useful because devices connect through a central switch, making faults easier to isolate; however, the central switch is a potential single point of failure.</p>
-            </article>
-          </div>
-        </section>
-
-        <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-017">
-          <div class="section-title">
-            <p class="eyebrow">Exam-style questions</p>
-            <h2>Questions with expandable MS</h2>
-            <p>Attempt first, then expand the mark scheme. The wording matters: name the network feature and link it to the scenario.</p>
-          </div>
-          <div class="exam-list" id="examList"></div>
-        </section>
-
-        <section class="panel summary-panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-017">
-          <div class="section-title">
-            <p class="eyebrow">Summary</p>
-            <h2>Network answers need a comparison basis</h2>
-          </div>
-          <div class="summary-grid">
-            <div><strong>1</strong><span>Networks support communication, resource sharing, collaboration and central management.</span></div>
-            <div><strong>2</strong><span>LAN and WAN differ by geographical area, ownership and infrastructure.</span></div>
-            <div><strong>3</strong><span>Topology affects cost, installation, performance and fault tolerance.</span></div>
-            <div><strong>4</strong><span>Scenario answers must explain cause and consequence, not just name a topology.</span></div>
-          </div>
-        </section>
-
-        <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
-          <div class="section-title">
-            <p class="eyebrow">Homework</p>
-            <h2>Clear tasks</h2>
-          </div>
-          <ol class="homework-list">
-            <li>Write two precise differences between a LAN and a WAN. Include one example of each.</li>
-            <li>For a school computer room, choose a suitable topology and justify it with two reasons.</li>
-            <li>For a hospital monitoring system, explain why fault tolerance may be important.</li>
-            <li>Create a four-row comparison table for bus, star, mesh and hybrid topology.</li>
-          </ol>
-          <button class="answer-toggle" type="button" data-answer="homeworkAnswers">Show homework guidance</button>
-          <div class="answer-panel" id="homeworkAnswers">
-            <p><strong>LAN/WAN:</strong> use area and ownership/infrastructure, not only "small" and "large".</p>
-            <p><strong>School room:</strong> star is often suitable because devices connect through a switch and faults are easier to isolate.</p>
-            <p><strong>Hospital:</strong> fault tolerance matters because loss of communication could affect patient monitoring.</p>
-            <p><strong>Topology table:</strong> each row should include structure, one advantage and one disadvantage.</p>
-          </div>
-        </section>
+        <nav class="v2-bottom-nav" aria-label="Previous and next lesson"><a href="../lesson-016/" >Previous lesson</a><a href="../lesson-018/" >Next lesson</a></nav>
       </div>
     </main>
-
-    <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=3"></script>
-    <script src="../lesson-toolbar.js?v=3"></script>
-    <script src="../stage7-accessibility.js?v=4"></script>
+    <script src="../course-v2.js?v=1"></script>
   </body>
 </html>

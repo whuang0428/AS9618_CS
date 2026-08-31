@@ -3,477 +3,84 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 056 | Assembler, compiler and interpreter choices</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <title>AS9618 Lesson 056 | Records: defining, reading and saving structured data</title>
     <link rel="icon" href="data:" />
-    <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
+    <link rel="stylesheet" href="../course-v2.css?v=3" />
   </head>
-  <body>
+  <body data-course-version="2" data-lesson-id="056" data-syllabus-ids="S10.02">
     <a class="skip-link" href="#main-content">Skip to main content</a>
-    <header class="topbar">
-      <div>
-        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 5</p>
-        <h1>Assembler, compiler and interpreter choices</h1>
-      </div>
-      <div class="action-panel" aria-label="Page controls">
-        <a class="course-home-link" href="../">Course home</a>
-        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
-      </div>
+    <header class="v2-topbar">
+      <div><p class="v2-eyebrow">Cambridge AS9618 | Paper 2 | Section 10: Data types and structures</p><h1>Records: defining, reading and saving structured data</h1></div>
+      <nav class="v2-actions" aria-label="Lesson actions"><a href="../">Course home</a><a href="../assessments/">Assessment bank</a><button type="button" id="printLesson">Print</button></nav>
     </header>
-
-    <main class="layout" id="main-content" tabindex="-1">
-      <aside class="lesson-nav" aria-label="Lesson navigation">
-        <a href="#overview">Overview</a>
-        <a href="#hook">Warm-up</a>
-        <a href="#concept">Core idea</a>
-        <a href="#backup">Backup</a>
-        <a href="#compression">Compression</a>
-        <a href="#encryption">Encryption</a>
-        <a href="#defrag">Defragmentation</a>
-        <a href="#antivirus">Antivirus</a>
-        <a href="#compare">Comparison</a>
-        <a href="#tool">Utility tool</a>
-        <a href="#examples">Examples</a>
-        <a href="#practice">Practice</a>
-        <a href="#debug">Debugging</a>
-        <a href="#exam">Exam-style</a>
-        <a href="#summary">Summary</a>
-        <a href="#homework">Homework</a>
-        <a href="#stage2-completion">Core syllabus content</a>
-      </aside>
-
-      <div class="lesson-content">
-        <!-- remediation-v2-stage3-scope:start -->
-        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.</p></aside>
-        <!-- remediation-v2-stage3-scope:end -->
-
-<!-- stage2-completion:start -->
-        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus content</p>
-            <h2>Assembler, compiler and interpreter choices</h2>
-          </div>
-          <div class="stage2-explanation">
-            <p>An assembler is needed to translate a processor-specific assembly-language program into machine code or object code. A compiler is needed to translate a whole high-level language program before execution, normally producing target/object code. An interpreter translates and executes a high-level language program statement by statement during execution, normally without producing a separate permanent object-code file.</p>
-            <p>Compiler advantages include faster repeated execution after translation, distribution without the source code and translation checks across the whole program. Disadvantages include a separate compilation step and an error list that may need several corrections before execution. Interpreter advantages include immediate statement-level feedback and convenient incremental testing. Disadvantages include repeated translation overhead, slower execution and needing the interpreter and usually the source program at run time.</p>
-            <p>A justified choice must connect the mechanism to the scenario: an interpreter can suit development and debugging; a compiler can suit repeated use or distribution; an assembler is required for assembly source. These are advantages and disadvantages of the translation approaches, not universal claims that one tool is always better.</p>
-          </div>
-          <article class="stage2-example">
-            <h3>Worked example: Choose tools across development and deployment</h3>
-            <p>During development, an interpreter can execute each statement and stop near a fault, giving quick feedback. For final distribution, a compiler can translate the whole high-level program before execution and provide target/object or executable code without distributing the source. A processor-specific assembly routine requires an assembler because its mnemonic instructions must become the target processor's machine code.</p>
-          </article>
+    <main class="v2-shell" id="main-content" tabindex="-1">
+      <nav class="v2-toc" aria-label="Lesson contents"><strong>Lesson 056</strong><a href="#overview">Overview</a><a href="#prerequisite">Prerequisite</a><a href="#explanation">Explanation</a><a href="#practice">Practice</a><a href="#summary">Summary</a></nav>
+      <div class="v2-content">
+        <section class="v2-hero" id="overview">
+          <div><p class="v2-eyebrow">Flexible-depth lesson</p><h2>Records: defining, reading and saving structured data</h2><p>S10.02 | Select what to omit, teach briefly or explore in depth.</p></div>
+          <div class="v2-time-grid" aria-label="Available lesson depth"><div><strong>Quick</strong><span>diagnose + essentials</span></div><div><strong>Full</strong><span>complete explanation</span></div><div><strong>Deep</strong><span>prerequisites + extension</span></div><div><strong>Choose</strong><span>practice by need</span></div></div>
         </section>
-        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus practice</p>
-            <h2>Assembler, compiler and interpreter choices: apply and assess</h2>
-          </div>
-          <div class="stage2-practice">
-            <h3>Targeted practice</h3>
-            <article class="stage2-question">
-              <p><strong>1.</strong> Why is an assembler needed?</p>
-              <details><summary>Show answer</summary><p>It translates assembly-language mnemonics and operands into machine or object code for the target processor.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>2.</strong> Give one compiler advantage and its mechanism.</p>
-              <details><summary>Show answer</summary><p>A compiled program can run repeatedly without translating the source each time because translation occurred before execution.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>3.</strong> Give one compiler disadvantage.</p>
-              <details><summary>Show answer</summary><p>Compilation must complete before execution and the programmer may need to correct a list of reported errors.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>4.</strong> Give one interpreter advantage and one disadvantage.</p>
-              <details><summary>Show answer</summary><p>It provides immediate statement-level feedback, but repeated translation can make execution slower and requires the interpreter/source at run time.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>5.</strong> Which translator is required for assembly language?</p>
-              <details><summary>Show answer</summary><p>An assembler.</p></details>
-            </article>
-          </div>
-          <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>6 marks</span></div>
-            <p>Compare a compiler and an interpreter using two advantages and two disadvantages, then justify the translator used for an assembly-language routine.</p>
-            <details>
-              <summary>Show MS</summary>
-              <table class="mark-scheme-table">
-                <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
-                <tbody>
-                  <tr><td>compiler translates the whole high-level program before execution and produces target/object code</td><td>Do not award vague claims such as 'compiler is faster' or 'interpreter is easier' without the mechanism and scenario.</td><td>1</td></tr>
-                  <tr><td>compiler advantage linked to repeated execution or distribution without source</td><td></td><td>1</td></tr>
-                  <tr><td>compiler disadvantage linked to separate translation or error-list workflow</td><td></td><td>1</td></tr>
-                  <tr><td>interpreter translates/executes statements during execution and gives immediate feedback</td><td></td><td>1</td></tr>
-                  <tr><td>interpreter disadvantage linked to repeated translation, slower execution or run-time dependency</td><td></td><td>1</td></tr>
-                  <tr><td>assembler selected and justified for assembly-language-to-machine/object-code translation</td><td></td><td>1</td></tr>
-                </tbody>
-              </table>
-            </details>
-          </article>
-        </section>
-        <!-- stage2-completion:end -->
 
-<section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-056">
-          <div class="hero-copy">
-            <p class="lesson-meta">Lesson 056 | 45 minutes | Paper 1 Section 5 | System software</p>
-            <h2>Utility software is the toolkit that keeps a system usable, recoverable and safer.</h2>
-            <p>
-              Utility programs perform maintenance, protection and management tasks.
-              They are system software, but they are not the operating system itself.
-              The exam expects the exact purpose of each utility, plus a scenario where it is appropriate.
-            </p>
-            <div class="objective-grid" aria-label="Learning objectives">
-              <div><strong>Describe</strong><span>backup, compression, encryption, defragmentation and antivirus utilities</span></div>
-              <div><strong>Apply</strong><span>the correct utility to a user or organisation scenario</span></div>
-              <div><strong>Explain</strong><span>benefits, limitations and common common errors precisely</span></div>
+        <section class="v2-panel v2-route-menu" aria-labelledby="route-heading">
+          <div class="v2-heading"><p class="v2-eyebrow">Teacher choice</p><h2 id="route-heading">Choose the depth for this group</h2></div>
+          <div class="v2-route-grid"><article><h3>Quick route</h3><p>Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.</p></article><article><h3>Full route</h3><p>Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.</p></article><article><h3>Deep route</h3><p>Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.</p></article></div>
+        </section>
+
+        <section class="v2-panel" id="prerequisite">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 1 | optional depth</p><h2>Prerequisite knowledge and quick diagnostic</h2></div>
+          <div class="v2-diagnostic"><p>Recall S10.01 before starting this lesson.</p></div>
+          <p>Give one accurate definition or method step before continuing. If it is missing, revisit only that prerequisite.</p>
+          <details class="v2-prerequisite-detail"><summary>Open optional prerequisite refresher</summary><ul><li>Select and use appropriate types for a problem solution. The Version 2 Notes name integer, real, char, string, Boolean and date, and require the Cambridge pseudocode type names INTEGER, REAL, CHAR, STRING, BOOLEAN, DATE, ARRAY and FILE.</li><li>Understand integer, real, char, string, Boolean and date types and Cambridge pseudocode type names.</li></ul></details>
+        </section>
+
+        <section class="v2-panel" id="explanation">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 2 | deliberately over-complete</p><h2>Knowledge explanation</h2></div>
+          <h3>Learning objectives</h3><ul class="v2-objectives"><li>Understand record purpose and define, read and save record data.</li></ul>
+          <details class="v2-concept-menu"><summary>Open the concept checklist and choose what to teach</summary><ul><li>record</li><li>different data types</li><li>one identifier</li><li>define</li><li>read</li><li>save</li></ul></details>
+          <div class="v2-explanation-grid">
+            <div>
+              <article class="v2-core-facts"><h3>Detailed explanation</h3><p class="v2-teacher-note">Teach all points, or select only the ones this group needs. The list is intentionally fuller than a fixed lesson slot.</p><ul class="v2-facts"><li>A record holds a set of related data of different data types under one identifier. Candidates must write pseudocode to define a record structure, read data from its named fields and save data to its named fields.</li><li>A record structure groups a set of related fields, which may have different data types, under one identifier. Field names preserve the meaning of each value, so a record suits several facts about one entity better than an array of same-type indexed elements.</li><li>Define a Cambridge record type with TYPE, field declarations and ENDTYPE. Declare record variables only after the type definition is complete. A complete definition states every field name and its type.</li><li>Read data from a record by selecting a named field, for example OUTPUT Student1.Mark or CurrentMark &lt;- Student1.Mark. Save data to the record by assigning to a named field, for example Student1.Mark &lt;- 75. Reading or saving one field does not replace unrelated fields.</li></ul></article>
+              <article class="v2-example"><h3>Worked example</h3><p>Define and use one student record: TYPE TStudent declares Name : STRING, DateOfBirth : DATE, Mark : INTEGER and Enrolled : BOOLEAN, then closes with ENDTYPE. DECLARE Student1 : TStudent creates one record. Student1.Mark &lt;- 75 saves a value to the Mark field; OUTPUT Student1.Mark reads that field.</p></article>
+              <aside class="v2-extension"><h3>Beyond syllabus / 延伸知识（不要求背诵）</h3><p>programming libraries often provide tested ADT implementations, but the exam expects you to understand their behaviour and selection.</p></aside>
             </div>
-          </div>
-          <div class="utility-card" aria-label="Utility software sketch">
-            <div class="utility-stack">
-              <span>Backup: recover data</span>
-              <span>Compression: reduce file size</span>
-              <span>Encryption: protect confidentiality</span>
-              <span>Defrag: rearrange fragmented files</span>
-              <span>Antivirus: detect and remove malware</span>
-            </div>
-            <p>Name the specific task performed by the utility software.</p>
+            <figure class="v2-visual">
+              <img src="../assets/diagrams/stage10-infographics/stage10-lesson-119-declare.jpg" alt="A record groups related named fields of different data types under one identifier.. Define the record between TYPE and ENDTYPE, then declare a variable of that record type.. Student1.Mark &lt;- 75 saves a field value; OUTPUT Student1.Mark reads that named field." loading="lazy" />
+              <figcaption>Define a record, then save and read named fields. One maintained explanation is shown as an image on larger screens and as text on small screens.</figcaption>
+              <div class="v2-mobile-visual-text" aria-label="Mobile text alternative"><ul><li>A record groups related named fields of different data types under one identifier.</li><li>Define the record between TYPE and ENDTYPE, then declare a variable of that record type.</li><li>Student1.Mark &lt;- 75 saves a field value; OUTPUT Student1.Mark reads that named field.</li></ul></div>
+            </figure>
           </div>
         </section>
 
-        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-056">
-          <article class="why-card">
-            <h3>Why this matters</h3>
-            <p>Cambridge questions often give a scenario. Marks come from matching the utility to the exact problem.</p>
-          </article>
-          <article class="trap-card">
-            <h3>Common error</h3>
-            <p>Do not write "secure" or "efficient" alone. Explain what is protected, reduced, recovered or detected.</p>
-          </article>
+        <section class="v2-panel" id="practice">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 3 | select by learner need</p><h2>Practice by question type</h2></div>
+          <div class="v2-question-list"><article class="v2-question" data-question-id="Q-L056-01" data-semantic-fingerprint="S10.02|records-defining-reading-and-saving-structured-data|define|define-tproduct-code-description|written|recall">
+              <div class="v2-question-head"><span class="v2-badge">define</span><span class="v2-badge">recall</span><span class="v2-badge difficulty">foundation</span><span class="v2-badge">6 marks</span></div>
+              <p><strong>Question 1.</strong> Define TProduct with Code, Description, Price and InStock fields, Write declarations for Product1, save values to Price and InStock, then read both fields.</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> opens TYPE TProduct and declares suitable named fields; uses suitable STRING, REAL and BOOLEAN field types; closes the definition with ENDTYPE; declares Product1 : TProduct after ENDTYPE; assigns/saves values through Product1.Price and Product1.InStock; reads/outputs the two named fields without replacing other data</p><p><strong>Marking guidance:</strong> Do not use numeric array indexing for record fields or omit ENDTYPE from the type definition.</p><p><strong>Common error:</strong> For the command word define, perform that exact action; do not replace it with an unrelated fact.</p></div></details>
+            </article><article class="v2-question" data-question-id="Q-L056-02" data-semantic-fingerprint="S10.02|records-defining-reading-and-saving-structured-data|explain|why-record-contain-both|written|explain">
+              <div class="v2-question-head"><span class="v2-badge">explain</span><span class="v2-badge">explain</span><span class="v2-badge difficulty">application</span><span class="v2-badge">2 marks</span></div>
+              <p><strong>Question 2.</strong> Why can a record contain both STRING and DATE fields?</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> Record fields may have different data types but belong to one entity under one identifier.</p><p><strong>Marking guidance:</strong> Award one mark for each distinct, technically accurate point or method step.</p><p><strong>Common error:</strong> Do not repeat the same point in different words; each mark needs a separate idea or method step.</p></div></details>
+            </article><article class="v2-question" data-question-id="Q-L056-03" data-semantic-fingerprint="S10.02|records-defining-reading-and-saving-structured-data|state|precise-facts-about|written|recall">
+              <div class="v2-question-head"><span class="v2-badge">state</span><span class="v2-badge">recall</span><span class="v2-badge difficulty">transfer</span><span class="v2-badge">2 marks</span></div>
+              <p><strong>Question 3.</strong> State two precise facts about records: defining, reading and saving structured data.</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> A record holds a set of related data of different data types under one identifier. Candidates must write pseudocode to define a record structure, read data from its named fields and save data to its named fields. A record structure groups a set of related fields, which may have different data types, under one identifier. Field names preserve the meaning of each value, so a record suits several facts about one entity better than an array of same-type indexed elements.</p><p><strong>Marking guidance:</strong> Award one mark for each distinct fact; do not credit a repeated point.</p><p><strong>Common error:</strong> Do not copy the worked example unchanged; transfer the method and check it against the new context.</p></div></details>
+            </article></div>
+
         </section>
 
-        <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-056">
-          <div class="section-title">
-            <p class="eyebrow">Warm-up hook</p>
-            <h2>A student deletes their coursework folder five minutes before the deadline. Which utility matters most?</h2>
-            <p>Click the best answer. At this point, "I was going to save it later" is not a recovery strategy.</p>
-          </div>
-          <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="backup">Backup utility</button>
-            <button class="choice-card" type="button" data-hook="compression">Compression utility</button>
-            <button class="choice-card" type="button" data-hook="encryption">Encryption utility</button>
-            <button class="choice-card" type="button" data-hook="defrag">Defragmentation utility</button>
-          </div>
-          <div class="feedback" id="hookFeedback" aria-live="polite">
-            Choose one. The best utility depends on the problem being solved.
-          </div>
+        <section class="v2-panel" id="summary">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 4 | close when ready</p><h2>Summary and exam reminders</h2></div>
+          <div class="v2-summary-grid"><div><h3>Summary</h3><ul class="v2-summary-list"><li>Define records: defining, reading and saving structured data with the exact technical vocabulary expected by the syllabus.</li><li>Use the lesson method on a fresh context and show the intermediate decision, representation or calculation.</li><li>Match the shape of the answer to the command word and the available marks.</li><li>Check the final answer against the scenario instead of repeating a memorised sentence.</li></ul></div><div class="v2-error"><h3>Common error to correct</h3><p>Students often confuse the identifier of the whole structure with one element. Correction: access requires an index or field name.</p></div></div>
+          <div class="v2-tip-box"><h3>Exam technique</h3><ul><li>Follow the command word: state gives a fact; explain links a cause to a consequence; compare covers both sides.</li><li>Match the number of independent points or method steps to the available marks.</li><li>For records: defining, reading and saving structured data, use the exact technical term before applying it to the scenario.</li></ul></div>
         </section>
 
-        <section class="panel" id="concept" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-056">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 1</p>
-            <h2>Utility software performs maintenance and support tasks</h2>
-          </div>
-          <div class="concept-grid">
-            <article><strong>System software</strong><span>Software that supports the operation and management of the computer system.</span></article>
-            <article><strong>Utility software</strong><span>System software designed for a specific maintenance, protection or management task.</span></article>
-            <article><strong>Not application software</strong><span>It supports the system rather than directly producing user documents, games or media.</span></article>
-            <article><strong>Scenario link</strong><span>The correct utility depends on whether the problem is loss, size, confidentiality, fragmentation or malware.</span></article>
-          </div>
-          <div class="callout">Chinese support: utility software = 实用程序；backup = 备份；compression = 压缩；encryption = 加密；defragmentation = 磁盘碎片整理；antivirus = 防病毒软件。</div>
-        </section>
-
-        <!-- stage10-explanation:start concept -->
-        <section class="panel explanation-panel" id="explanation-concept" data-explains="concept" data-explanation-kind="mechanism" aria-labelledby="explanation-concept-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-056">
-          <h2 class="explanation-sr-only" id="explanation-concept-title">Utility software performs maintenance and support tasks</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-056-concept.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Utility software performs maintenance and support tasks with a structured visual model." />
-            <figcaption class="explanation-sr-only">Utility software performs maintenance and support tasks: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> System software Software that supports the operation and management of the computer system.</li><li><strong>Lesson fact:</strong> Utility software System software designed for a specific maintenance, protection or management task.</li><li><strong>Lesson fact:</strong> Not application software It supports the system rather than directly producing user documents, games or media.</li><li><strong>Lesson fact:</strong> Scenario link The correct utility depends on whether the problem is loss, size, confidentiality, fragmentation or malware.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end concept -->
-        <section class="panel" id="backup" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-056">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 2</p>
-            <h2>Backup utilities create copies so data can be restored</h2>
-          </div>
-          <div class="utility-grid">
-            <article><strong>Purpose</strong><span>Create copies of files or systems in another location or storage medium.</span></article>
-            <article><strong>Benefit</strong><span>Data can be restored after accidental deletion, hardware failure, corruption or ransomware.</span></article>
-            <article><strong>Good practice</strong><span>Use automatic scheduling, versioning and off-site/cloud copies where appropriate.</span></article>
-            <article><strong>Limitation</strong><span>A backup is only useful if it is recent, complete and can actually be restored.</span></article>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start backup -->
-        <section class="panel explanation-panel" id="explanation-backup" data-explains="backup" data-explanation-kind="mechanism" aria-labelledby="explanation-backup-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-056">
-          <h2 class="explanation-sr-only" id="explanation-backup-title">Backup utilities create copies so data can be restored</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-056-backup.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Backup utilities create copies so data can be restored with a structured visual model." />
-            <figcaption class="explanation-sr-only">Backup utilities create copies so data can be restored: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Purpose Create copies of files or systems in another location or storage medium.</li><li><strong>Lesson fact:</strong> Benefit Data can be restored after accidental deletion, hardware failure, corruption or ransomware.</li><li><strong>Lesson fact:</strong> Good practice Use automatic scheduling, versioning and off-site/cloud copies where appropriate.</li><li><strong>Lesson fact:</strong> Limitation A backup is only useful if it is recent, complete and can actually be restored.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end backup -->
-        <section class="panel" id="compression" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-056">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 3</p>
-            <h2>Compression utilities reduce file size</h2>
-          </div>
-          <div class="utility-grid">
-            <article><strong>Purpose</strong><span>Encode data so it takes up fewer bits than the original file.</span></article>
-            <article><strong>Uses</strong><span>Save storage space, reduce upload/download time and fit within attachment limits.</span></article>
-            <article><strong>Lossless</strong><span>Original data can be reconstructed exactly, suitable for text, programs and archives.</span></article>
-            <article><strong>Lossy</strong><span>Some detail is discarded, often suitable for media where small quality loss is acceptable.</span></article>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start compression -->
-        <section class="panel explanation-panel" id="explanation-compression" data-explains="compression" data-explanation-kind="mechanism" aria-labelledby="explanation-compression-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-056">
-          <h2 class="explanation-sr-only" id="explanation-compression-title">Compression utilities reduce file size</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-056-compression.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Compression utilities reduce file size with a structured visual model." />
-            <figcaption class="explanation-sr-only">Compression utilities reduce file size: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Purpose Encode data so it takes up fewer bits than the original file.</li><li><strong>Lesson fact:</strong> Uses Save storage space, reduce upload/download time and fit within attachment limits.</li><li><strong>Lesson fact:</strong> Lossless Original data can be reconstructed exactly, suitable for text, programs and archives.</li><li><strong>Lesson fact:</strong> Lossy Some detail is discarded, often suitable for media where small quality loss is acceptable.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end compression -->
-        <section class="panel" id="encryption" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-056">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 4</p>
-            <h2>Encryption utilities protect confidentiality</h2>
-          </div>
-          <div class="utility-grid">
-            <article><strong>Purpose</strong><span>Scramble plaintext into ciphertext using an algorithm and a key.</span></article>
-            <article><strong>Benefit</strong><span>Unauthorised users cannot read the data without the correct key.</span></article>
-            <article><strong>Examples</strong><span>Encrypting a laptop drive, a backup archive or files sent over a network.</span></article>
-            <article><strong>Limitation</strong><span>Encryption does not stop deletion or malware; losing the key can make data unrecoverable.</span></article>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start encryption -->
-        <section class="panel explanation-panel" id="explanation-encryption" data-explains="encryption" data-explanation-kind="mechanism" aria-labelledby="explanation-encryption-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-056">
-          <h2 class="explanation-sr-only" id="explanation-encryption-title">Encryption utilities protect confidentiality</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-056-encryption.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Encryption utilities protect confidentiality with a structured visual model." />
-            <figcaption class="explanation-sr-only">Encryption utilities protect confidentiality: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Purpose Scramble plaintext into ciphertext using an algorithm and a key.</li><li><strong>Lesson fact:</strong> Benefit Unauthorised users cannot read the data without the correct key.</li><li><strong>Lesson fact:</strong> Examples Encrypting a laptop drive, a backup archive or files sent over a network.</li><li><strong>Lesson fact:</strong> Limitation Encryption does not stop deletion or malware; losing the key can make data unrecoverable.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end encryption -->
-        <section class="panel" id="defrag" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-056">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 5</p>
-            <h2>Defragmentation rearranges fragmented files on magnetic disks</h2>
-          </div>
-          <div class="utility-grid">
-            <article><strong>Fragmentation</strong><span>Parts of a file are stored in non-contiguous blocks across a disk.</span></article>
-            <article><strong>Purpose</strong><span>Rearrange file blocks so related parts are stored closer together.</span></article>
-            <article><strong>Benefit</strong><span>Can reduce mechanical disk head movement and improve hard disk access time.</span></article>
-            <article><strong>Boundary</strong><span>Do not apply the same benefit to SSDs; they have no moving disk head.</span></article>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start defrag -->
-        <section class="panel explanation-panel" id="explanation-defrag" data-explains="defrag" data-explanation-kind="mechanism" aria-labelledby="explanation-defrag-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-056">
-          <h2 class="explanation-sr-only" id="explanation-defrag-title">Defragmentation rearranges fragmented files on magnetic disks</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-056-defrag.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Defragmentation rearranges fragmented files on magnetic disks with a structured visual model." />
-            <figcaption class="explanation-sr-only">Defragmentation rearranges fragmented files on magnetic disks: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Fragmentation Parts of a file are stored in non-contiguous blocks across a disk.</li><li><strong>Lesson fact:</strong> Purpose Rearrange file blocks so related parts are stored closer together.</li><li><strong>Lesson fact:</strong> Benefit Can reduce mechanical disk head movement and improve hard disk access time.</li><li><strong>Lesson fact:</strong> Boundary Do not apply the same benefit to SSDs; they have no moving disk head.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end defrag -->
-        <section class="panel" id="antivirus" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-056">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 6</p>
-            <h2>Antivirus utilities detect, quarantine and remove malware</h2>
-          </div>
-          <div class="utility-grid">
-            <article><strong>Purpose</strong><span>Scan files, memory or downloads for malware signatures or suspicious behaviour.</span></article>
-            <article><strong>Actions</strong><span>Warn the user, quarantine infected files, delete malware or block malicious activity.</span></article>
-            <article><strong>Updates</strong><span>Definitions and detection rules should be updated to recognise newer threats.</span></article>
-            <article><strong>Limitation</strong><span>Antivirus reduces risk but cannot guarantee protection against every new or disguised threat.</span></article>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start antivirus -->
-        <section class="panel explanation-panel" id="explanation-antivirus" data-explains="antivirus" data-explanation-kind="mechanism" aria-labelledby="explanation-antivirus-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-056">
-          <h2 class="explanation-sr-only" id="explanation-antivirus-title">Antivirus utilities detect, quarantine and remove malware</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-056-antivirus.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Antivirus utilities detect, quarantine and remove malware with a structured visual model." />
-            <figcaption class="explanation-sr-only">Antivirus utilities detect, quarantine and remove malware: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Purpose Scan files, memory or downloads for malware signatures or suspicious behaviour.</li><li><strong>Lesson fact:</strong> Actions Warn the user, quarantine infected files, delete malware or block malicious activity.</li><li><strong>Lesson fact:</strong> Updates Definitions and detection rules should be updated to recognise newer threats.</li><li><strong>Lesson fact:</strong> Limitation Antivirus reduces risk but cannot guarantee protection against every new or disguised threat.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end antivirus -->
-        <section class="panel" id="compare" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-056">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 7</p>
-            <h2>Choose the utility by diagnosing the problem</h2>
-          </div>
-          <div class="comparison-table" role="table" aria-label="Utility software comparison">
-            <div class="table-row table-head" role="row">
-              <div role="columnheader">Problem</div>
-              <div role="columnheader">Most relevant utility</div>
-              <div role="columnheader">Exam-quality reason</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Deleted work needs recovery</div>
-              <div role="cell">Backup</div>
-              <div role="cell">A previous copy can be restored if it was made before the loss.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">File is too large to email</div>
-              <div role="cell">Compression</div>
-              <div role="cell">Reduces file size, saving transmission time and storage space.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Sensitive file may be stolen</div>
-              <div role="cell">Encryption</div>
-              <div role="cell">Turns readable data into ciphertext that needs a key to read.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Old HDD opens files slowly</div>
-              <div role="cell">Defragmentation</div>
-              <div role="cell">Rearranges scattered file blocks to reduce disk head movement.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Downloaded file may contain malware</div>
-              <div role="cell">Antivirus</div>
-              <div role="cell">Scans, quarantines or removes malicious code.</div>
-            </div>
-          </div>
-        </section>
-
-
-        <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-056">
-          <div class="section-title">
-            <p class="eyebrow">Interactive tool</p>
-            <h2>Utility selector</h2>
-            <p>Select a problem and identify the most suitable utility.</p>
-          </div>
-          <div class="converter-grid">
-            <label>
-              Problem scenario
-              <select id="scenarioInput">
-                <option value="deleted">Coursework folder was deleted</option>
-                <option value="email">Video file is too large to upload</option>
-                <option value="stolen">A laptop with customer data may be stolen</option>
-                <option value="slowhdd">An old magnetic hard disk opens files slowly</option>
-                <option value="malware">A suspicious attachment may contain malware</option>
-                <option value="ssd">A laptop with SSD storage feels slow</option>
-              </select>
-            </label>
-            <button class="primary-button" type="button" id="simulateBtn">Diagnose</button>
-          </div>
-          <div class="result-box" id="simulateResult" aria-live="polite"></div>
-          <div class="method-box" id="simulateMethod"></div>
-          <div class="reject-box" id="simulateTrap"></div>
-        </section>
-
-        <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-056">
-          <div class="section-title">
-            <p class="eyebrow">Worked examples</p>
-            <h2>From scenario to utility choice</h2>
-          </div>
-          <div class="example-tabs" role="tablist" aria-label="Worked example tabs">
-            <button class="tab active" type="button" data-example="backup">Backup</button>
-            <button class="tab" type="button" data-example="compression">Compression</button>
-            <button class="tab" type="button" data-example="encryption">Encryption</button>
-            <button class="tab" type="button" data-example="defrag">Defrag</button>
-            <button class="tab" type="button" data-example="antivirus">Antivirus</button>
-          </div>
-          <div class="example-box" id="exampleBox"></div>
-        </section>
-
-        <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-056">
-          <div class="section-title">
-            <p class="eyebrow">Practice</p>
-            <h2>Instant-check questions</h2>
-            <p>Type a short answer, then check. Use the answer button if you need the expected wording.</p>
-          </div>
-          <div class="practice-list" id="practiceList"></div>
-        </section>
-
-        <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-056">
-          <div class="section-title">
-            <p class="eyebrow">Mistake debugging</p>
-            <h2>Fix the almost-right answers</h2>
-          </div>
-          <div class="mistake-grid" id="mistakeGrid"></div>
-        </section>
-
-        <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-056">
-          <div class="section-title">
-            <p class="eyebrow">Exam-style questions</p>
-            <h2>Answer first, then reveal the Cambridge-style mark scheme</h2>
-            <p>These are original Cambridge-style questions. The mark schemes use strict wording notes to train exam precision.</p>
-          </div>
-          <div class="exam-list" id="examList"></div>
-        </section>
-
-        <section class="panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-056">
-          <div class="section-title">
-            <p class="eyebrow">Summary</p>
-            <h2>The one-line memory map</h2>
-          </div>
-          <div class="summary-grid">
-            <div><strong>Backup</strong><span>Recover data from a copy.</span></div>
-            <div><strong>Compression</strong><span>Reduce file size.</span></div>
-            <div><strong>Encryption</strong><span>Protect confidentiality with ciphertext and a key.</span></div>
-            <div><strong>Defrag</strong><span>Rearrange file blocks on magnetic disks.</span></div>
-            <div><strong>Antivirus</strong><span>Detect, quarantine and remove malware.</span></div>
-            <div><strong>Exam rule</strong><span>Utility + mechanism + scenario consequence.</span></div>
-          </div>
-        </section>
-
-        <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
-          <div class="section-title">
-            <p class="eyebrow">Homework</p>
-            <h2>Clear output, not vague revision</h2>
-          </div>
-          <div class="homework-list">
-            <article>
-              <strong>Task 1: Five utility flashcards</strong>
-              <span>Create one flashcard for each utility. Front: utility name. Back: purpose, one scenario, one limitation.</span>
-            </article>
-            <article>
-              <strong>Task 2: Scenario paragraph</strong>
-              <span>Write a 6-mark answer recommending two utilities for a small business that stores customer data and has suffered malware before.</span>
-            </article>
-            <article>
-              <strong>Task 3: Marking check</strong>
-              <span>Underline each mechanism word in your answer: restore, reduce, encrypt, rearrange, scan, quarantine or remove.</span>
-            </article>
-          </div>
-        </section>
+        <nav class="v2-bottom-nav" aria-label="Previous and next lesson"><a href="../lesson-055/" >Previous lesson</a><a href="../lesson-057/" >Next lesson</a></nav>
       </div>
     </main>
-    <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=3"></script>
-    <script src="../lesson-toolbar.js?v=3"></script>
-    <script src="../stage7-accessibility.js?v=4"></script>
+    <script src="../course-v2.js?v=1"></script>
   </body>
 </html>

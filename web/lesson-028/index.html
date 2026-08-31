@@ -3,389 +3,85 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 028 | Why computer systems need input, output and storage</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <title>AS9618 Lesson 028 | Assemblers, compilers and interpreters</title>
     <link rel="icon" href="data:" />
-    <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
+    <link rel="stylesheet" href="../course-v2.css?v=3" />
   </head>
-  <body>
+  <body data-course-version="2" data-lesson-id="028" data-syllabus-ids="S5.04">
     <a class="skip-link" href="#main-content">Skip to main content</a>
-    <header class="topbar">
-      <div>
-        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 3</p>
-        <h1>Why computer systems need input, output and storage</h1>
-      </div>
-      <div class="action-panel" aria-label="Page controls">
-        <a class="course-home-link" href="../">Course home</a>
-        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
-      </div>
+    <header class="v2-topbar">
+      <div><p class="v2-eyebrow">Cambridge AS9618 | Paper 1 | Section 5: System software</p><h1>Assemblers, compilers and interpreters</h1></div>
+      <nav class="v2-actions" aria-label="Lesson actions"><a href="../">Course home</a><a href="../assessments/">Assessment bank</a><button type="button" id="printLesson">Print</button></nav>
     </header>
-
-    <main class="layout" id="main-content" tabindex="-1">
-      <aside class="lesson-nav" aria-label="Lesson navigation">
-        <a href="#overview">Overview</a>
-        <a href="#hook">Warm-up</a>
-        <a href="#flow">System flow</a>
-        <a href="#components">Components</a>
-        <a href="#memory-storage">Memory vs storage</a>
-        <a href="#tool">Choice tool</a>
-        <a href="#examples">Examples</a>
-        <a href="#practice">Practice</a>
-        <a href="#debug">Debugging</a>
-        <a href="#exam">Exam-style</a>
-        <a href="#homework">Homework</a>
-        <a href="#stage2-completion">Core syllabus content</a>
-      </aside>
-
-      <div class="lesson-content">
-        <!-- remediation-v2-stage3-scope:start -->
-        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.</p></aside>
-        <!-- remediation-v2-stage3-scope:end -->
-
-<!-- stage2-completion:start -->
-        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus content</p>
-            <h2>Why computer systems need input, output and storage</h2>
-          </div>
-          <div class="stage2-explanation">
-            <p>Input is needed to enter data and instructions into a computer system. Output is needed to communicate processed information to a user or to cause an action. A processor cannot perform a useful task unless it can receive the required data and make the result available.</p>
-            <p>Primary memory is needed to hold the instructions and data currently being used by the processor. Secondary storage is needed for non-volatile, long-term retention of programs and data. Removable storage is secondary storage that can be disconnected, so it can transfer data or hold an offline backup, although it can be lost or stolen.</p>
-          </div>
-          <article class="stage2-example">
-            <h3>Worked example: Field survey tablet</h3>
-            <p>A surveyor enters measurements through a touchscreen, sees validation messages on the display, uses RAM as primary memory while the survey application runs, saves records on internal secondary storage, and copies an encrypted backup to removable storage before leaving the site.</p>
-          </article>
+    <main class="v2-shell" id="main-content" tabindex="-1">
+      <nav class="v2-toc" aria-label="Lesson contents"><strong>Lesson 028</strong><a href="#overview">Overview</a><a href="#prerequisite">Prerequisite</a><a href="#explanation">Explanation</a><a href="#practice">Practice</a><a href="#summary">Summary</a></nav>
+      <div class="v2-content">
+        <section class="v2-hero" id="overview">
+          <div><p class="v2-eyebrow">Flexible-depth lesson</p><h2>Assemblers, compilers and interpreters</h2><p>S5.04 | Select what to omit, teach briefly or explore in depth.</p></div>
+          <div class="v2-time-grid" aria-label="Available lesson depth"><div><strong>Quick</strong><span>diagnose + essentials</span></div><div><strong>Full</strong><span>complete explanation</span></div><div><strong>Deep</strong><span>prerequisites + extension</span></div><div><strong>Choose</strong><span>practice by need</span></div></div>
         </section>
-        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus practice</p>
-            <h2>Why computer systems need input, output and storage: apply and assess</h2>
-          </div>
-          <div class="stage2-practice">
-            <h3>Targeted practice</h3>
-            <article class="stage2-question">
-              <p><strong>1.</strong> Why does a computer system need input?</p>
-              <details><summary>Show answer</summary><p>To receive data and instructions for processing.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>2.</strong> Why does a computer system need output?</p>
-              <details><summary>Show answer</summary><p>To communicate processed information or cause an action.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>3.</strong> Compare the need for primary memory from the need for secondary storage.</p>
-              <details><summary>Show answer</summary><p>Primary memory holds instructions/data currently in use; secondary storage retains programs/data long term without power.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>4.</strong> Give one purpose of removable storage.</p>
-              <details><summary>Show answer</summary><p>To transfer data between systems or keep a detachable/offline backup copy.</p></details>
-            </article>
-          </div>
-          <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>5 marks</span></div>
-            <p>A portable medical system receives patient measurements, processes them and stores the records. Explain why it needs input, output, primary memory, secondary storage and removable storage.</p>
-            <details>
-              <summary>Show MS</summary>
-              <table class="mark-scheme-table">
-                <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
-                <tbody>
-                  <tr><td>input receives patient measurements/data</td><td>Do not treat primary memory, secondary storage and removable storage as interchangeable terms.</td><td>1</td></tr>
-                  <tr><td>output communicates results or warnings</td><td></td><td>1</td></tr>
-                  <tr><td>primary memory holds current program instructions and working data</td><td></td><td>1</td></tr>
-                  <tr><td>secondary storage retains patient records long term without power</td><td></td><td>1</td></tr>
-                  <tr><td>removable storage supports transfer or an offline/detachable backup</td><td></td><td>1</td></tr>
-                </tbody>
-              </table>
-            </details>
-          </article>
-        </section>
-        <!-- stage2-completion:end -->
 
-<section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-028">
-          <div class="hero-copy">
-            <p class="lesson-meta">Lesson 028 | 45 minutes | Paper 1 Section 3</p>
-            <h2>A computer system contains components with distinct functions.</h2>
-            <p>
-              This lesson introduces the main parts of a computer system: input, processor,
-              memory, storage and output. The aim is to classify hardware by purpose and
-              explain how data moves through a system in a real scenario.
-            </p>
-            <div class="objective-grid" aria-label="Learning objectives">
-              <div><strong>Classify</strong><span>input, output, processor, memory and storage components</span></div>
-              <div><strong>Trace</strong><span>data flow through a simple computer system</span></div>
-              <div><strong>Justify</strong><span>suitable hardware choices using speed, capacity, durability, accuracy and cost</span></div>
+        <section class="v2-panel v2-route-menu" aria-labelledby="route-heading">
+          <div class="v2-heading"><p class="v2-eyebrow">Teacher choice</p><h2 id="route-heading">Choose the depth for this group</h2></div>
+          <div class="v2-route-grid"><article><h3>Quick route</h3><p>Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.</p></article><article><h3>Full route</h3><p>Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.</p></article><article><h3>Deep route</h3><p>Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.</p></article></div>
+        </section>
+
+        <section class="v2-panel" id="prerequisite">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 1 | optional depth</p><h2>Prerequisite knowledge and quick diagnostic</h2></div>
+          <div class="v2-diagnostic"><p>Recall the main conclusion from Lesson 027: Utility software, libraries and linked files.</p></div>
+          <p>Give one accurate definition or method step before continuing. If it is missing, revisit only that prerequisite.</p>
+
+        </section>
+
+        <section class="v2-panel" id="explanation">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 2 | deliberately over-complete</p><h2>Knowledge explanation</h2></div>
+          <h3>Learning objectives</h3><ul class="v2-objectives"><li>Explain why assembler, compiler and interpreter are needed.</li></ul>
+          <details class="v2-concept-menu"><summary>Open the concept checklist and choose what to teach</summary><ul><li>assembler</li><li>compiler</li><li>interpreter</li></ul></details>
+          <div class="v2-explanation-grid">
+            <div>
+              <article class="v2-core-facts"><h3>Detailed explanation</h3><p class="v2-teacher-note">Teach all points, or select only the ones this group needs. The list is intentionally fuller than a fixed lesson slot.</p><ul class="v2-facts"><li>An assembler translates assembly language, a compiler translates high-level language, and an interpreter translates and executes high-level language.</li><li>An assembler is needed to translate a processor-specific assembly-language program into machine code or object code. A compiler is needed to translate a whole high-level language program before execution, normally producing target/object code. An interpreter translates and executes a high-level language program statement by statement during execution, normally without producing a separate permanent object-code file.</li><li>Compiler advantages include faster repeated execution after translation, distribution without the source code and translation checks across the whole program. Disadvantages include a separate compilation step and an error list that may need several corrections before execution. Interpreter advantages include immediate statement-level feedback and convenient incremental testing. Disadvantages include repeated translation overhead, slower execution and needing the interpreter and usually the source program at run time.</li><li>A justified choice must connect the mechanism to the scenario: an interpreter can suit development and debugging; a compiler can suit repeated use or distribution; an assembler is required for assembly source. These are advantages and disadvantages of the translation approaches, not universal claims that one tool is always better.</li></ul></article>
+              <article class="v2-example"><h3>Worked example</h3><p>Choose tools across development and deployment: During development, an interpreter can execute each statement and stop near a fault, giving quick feedback. For final distribution, a compiler can translate the whole high-level program before execution and provide target/object or executable code without distributing the source. A processor-specific assembly routine requires an assembler because its mnemonic instructions must become the target processor&#39;s machine code.</p></article>
+              <aside class="v2-extension"><h3>Beyond syllabus / 延伸知识（不要求背诵）</h3><p>production build systems automate translation, linking, testing and packaging, while the syllabus examines the purpose of each stage separately.</p></aside>
             </div>
-          </div>
-          <div class="system-card" aria-label="Computer system data flow">
-            <span>input -> process -> memory/storage -> output</span>
-            <p>Data enters. Instructions run. Results leave. Files do not live inside the CPU.</p>
-          </div>
-        </section>
-
-        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-028">
-          <article class="why-card">
-            <h3>Why this matters</h3>
-            <p>Hardware questions often award marks for suitability. Naming a device starts the answer; matching its feature to the scenario earns it.</p>
-          </article>
-          <article class="trap-card">
-            <h3>Common error</h3>
-            <p>RAM and secondary storage both hold data, but not in the same way. RAM forgets when power is off; storage is the more dependable librarian.</p>
-          </article>
-        </section>
-
-        <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-028">
-          <div class="section-title">
-            <p class="eyebrow">Warm-up hook</p>
-            <h2>A phone scans a QR code, checks the ticket, saves the record and shows "Entry allowed". Which part does each job?</h2>
-          </div>
-          <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="camera">Camera captures the QR code as input</button>
-            <button class="choice-card" type="button" data-hook="processor">Processor checks the ticket data</button>
-            <button class="choice-card" type="button" data-hook="storage">Storage keeps the attendance record</button>
-            <button class="choice-card" type="button" data-hook="screen">Screen displays output feedback</button>
-          </div>
-          <div class="feedback" id="hookFeedback" aria-live="polite">
-            Click any job. The useful exam habit is matching component -> role -> reason.
-          </div>
-        </section>
-
-        <section class="panel" id="flow" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-028">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 1</p>
-            <h2>The basic system flow</h2>
-          </div>
-          <div class="flow-grid">
-            <article><strong>1. Input</strong><span>Data is captured by an input device, such as a keyboard, sensor, scanner, camera or microphone.</span></article>
-            <article><strong>2. Processing</strong><span>The processor executes instructions and performs operations on data.</span></article>
-            <article><strong>3. Memory</strong><span>Data and instructions in current use are held temporarily in primary memory such as RAM.</span></article>
-            <article><strong>4. Storage</strong><span>Files and data that must persist are saved in secondary storage such as SSD, HDD or optical media.</span></article>
-            <article><strong>5. Output</strong><span>Results are presented through output devices such as screens, speakers, printers or actuators.</span></article>
-          </div>
-          <div class="callout">Chinese support: input = 输入；output = 输出；processor = 处理器；memory = 内存/主存；storage = 存储/辅存。</div>
-        </section>
-
-        <!-- stage10-explanation:start flow -->
-        <section class="panel explanation-panel" id="explanation-flow" data-explains="flow" data-explanation-kind="mechanism" aria-labelledby="explanation-flow-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-028">
-          <h2 class="explanation-sr-only" id="explanation-flow-title">The basic system flow</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-028-flow.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining The basic system flow with a structured visual model." />
-            <figcaption class="explanation-sr-only">The basic system flow: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Input devices capture data for processing.</li><li><strong>Lesson fact:</strong> The processor works with instructions and data held in primary memory.</li><li><strong>Lesson fact:</strong> Processed results can go directly to output devices.</li><li><strong>Lesson fact:</strong> Secondary storage is a separate bidirectional persistence path and is not a compulsory stage before output.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end flow -->
-        <section class="panel" id="components" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-028">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 2</p>
-            <h2>Component roles and examples</h2>
-          </div>
-          <div class="component-grid">
-            <article>
-              <h3>Input devices</h3>
-              <p>Allow data to enter the system.</p>
-              <p><strong>Examples:</strong> keyboard, mouse, barcode reader, touch screen, microphone, camera, sensor.</p>
-            </article>
-            <article>
-              <h3>Output devices</h3>
-              <p>Present data or results from the system.</p>
-              <p><strong>Examples:</strong> monitor, speaker, printer, projector, actuator.</p>
-            </article>
-            <article>
-              <h3>Processor</h3>
-              <p>Executes instructions and coordinates operations. It processes data; it is not where user files are stored.</p>
-            </article>
-            <article>
-              <h3>Primary memory</h3>
-              <p>Stores instructions and data currently in use. RAM is volatile; ROM is non-volatile and stores startup instructions.</p>
-            </article>
-            <article>
-              <h3>Secondary storage</h3>
-              <p>Stores data and files long term, even when power is off.</p>
-              <p><strong>Examples:</strong> SSD, HDD, optical disc, flash storage.</p>
-            </article>
-            <article>
-              <h3>Interfaces</h3>
-              <p>Hardware and software work together. A useful answer explains how the chosen device fits the user task.</p>
-            </article>
-          </div>
+
+        <section class="v2-panel" id="practice">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 3 | select by learner need</p><h2>Practice by question type</h2></div>
+          <div class="v2-question-list"><article class="v2-question" data-question-id="Q-L028-01" data-semantic-fingerprint="S5.04|assemblers-compilers-and-interpreters|compare|compare-compiler-interpreter-advantages|written|evaluate">
+              <div class="v2-question-head"><span class="v2-badge">compare</span><span class="v2-badge">evaluate</span><span class="v2-badge difficulty">foundation</span><span class="v2-badge">6 marks</span></div>
+              <p><strong>Question 1.</strong> Compare a compiler and an interpreter using two advantages and two disadvantages, then justify the translator used for an assembly-language routine.</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> compiler translates the whole high-level program before execution and produces target/object code; compiler advantage linked to repeated execution or distribution without source; compiler disadvantage linked to separate translation or error-list workflow; interpreter translates/executes statements during execution and gives immediate feedback; interpreter disadvantage linked to repeated translation, slower execution or run-time dependency; assembler selected and justified for assembly-language-to-machine/object-code translation</p><p><strong>Marking guidance:</strong> Do not award vague claims such as &#39;compiler is faster&#39; or &#39;interpreter is easier&#39; without the mechanism and scenario.</p><p><strong>Common error:</strong> For the command word compare, perform that exact action; do not replace it with an unrelated fact.</p></div></details>
+            </article><article class="v2-question" data-question-id="Q-L028-02" data-semantic-fingerprint="S5.04|assemblers-compilers-and-interpreters|explain|why-assembler-needed|written|explain">
+              <div class="v2-question-head"><span class="v2-badge">explain</span><span class="v2-badge">explain</span><span class="v2-badge difficulty">application</span><span class="v2-badge">2 marks</span></div>
+              <p><strong>Question 2.</strong> Why is an assembler needed?</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> It translates assembly-language mnemonics and operands into machine or object code for the target processor.</p><p><strong>Marking guidance:</strong> Award one mark for each distinct, technically accurate point or method step.</p><p><strong>Common error:</strong> Do not repeat the same point in different words; each mark needs a separate idea or method step.</p></div></details>
+            </article><article class="v2-question" data-question-id="Q-L028-03" data-semantic-fingerprint="S5.04|assemblers-compilers-and-interpreters|apply|translator-required-assembly-language|written|recall">
+              <div class="v2-question-head"><span class="v2-badge">apply</span><span class="v2-badge">recall</span><span class="v2-badge difficulty">transfer</span><span class="v2-badge">2 marks</span></div>
+              <p><strong>Question 3.</strong> Which translator is required for assembly language?</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> An assembler.</p><p><strong>Marking guidance:</strong> Award one mark for each distinct, technically accurate point or method step.</p><p><strong>Common error:</strong> Do not copy the worked example unchanged; transfer the method and check it against the new context.</p></div></details>
+            </article></div>
+          <div class="v2-paper-refs">
+          <h3>Related past-paper indexes</h3>
+          <table><thead><tr><th>Reference</th><th>Marks</th><th>Command word</th><th>Question type</th></tr></thead>
+          <tbody><tr><td>9618/12/W/25 Q10(a)</td><td>4</td><td>explain</td><td>explain</td></tr><tr><td>9618/13/S/25 Q3(a)</td><td>4</td><td>complete</td><td>debug</td></tr><tr><td>9618/13/S/25 Q3(b)</td><td>4</td><td>complete</td><td>debug</td></tr><tr><td>9618/13/S/25 Q3(c)</td><td>4</td><td>complete</td><td>debug</td></tr></tbody></table>
+          <p class="v2-copyright-note">Index only: Cambridge question and mark-scheme wording is not reproduced on this public course page.</p>
+        </div>
         </section>
 
-        <!-- stage10-explanation:start components -->
-        <section class="panel explanation-panel" id="explanation-components" data-explains="components" data-explanation-kind="mechanism" aria-labelledby="explanation-components-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-028">
-          <h2 class="explanation-sr-only" id="explanation-components-title">Component roles and examples</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-028-components.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Component roles and examples with a structured visual model." />
-            <figcaption class="explanation-sr-only">Component roles and examples: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Input devices</li><li><strong>Lesson fact:</strong> Allow data to enter the system.</li><li><strong>Lesson fact:</strong> Examples: keyboard, mouse, barcode reader, touch screen, microphone, camera, sensor.</li><li><strong>Lesson fact:</strong> Output devices</li><li><strong>Lesson fact:</strong> Present data or results from the system.</li><li><strong>Lesson fact:</strong> Examples: monitor, speaker, printer, projector, actuator.</li><li><strong>Lesson fact:</strong> Processor</li><li><strong>Lesson fact:</strong> Executes instructions and coordinates operations. It processes data; it is not where user files are stored.</li><li><strong>Lesson fact:</strong> Primary memory</li><li><strong>Lesson fact:</strong> Stores instructions and data currently in use. RAM is volatile; ROM is non-volatile and stores startup instructions.</li><li><strong>Lesson fact:</strong> Secondary storage</li><li><strong>Lesson fact:</strong> Stores data and files long term, even when power is off.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end components -->
-        <section class="panel" id="memory-storage" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-028">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 3</p>
-            <h2>Memory is not the same as storage</h2>
-          </div>
-          <div class="compare-table" role="table" aria-label="Memory and storage comparison">
-            <div class="table-row table-head" role="row">
-              <div role="columnheader">Feature</div>
-              <div role="columnheader">Primary memory</div>
-              <div role="columnheader">Secondary storage</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Purpose</div>
-              <div role="cell">Holds data/instructions currently being used.</div>
-              <div role="cell">Holds files and data long term.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Volatility</div>
-              <div role="cell">RAM is volatile; contents are lost without power.</div>
-              <div role="cell">Non-volatile; data remains when power is off.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Speed and capacity</div>
-              <div role="cell">Usually faster but smaller and more expensive per unit.</div>
-              <div role="cell">Usually larger and cheaper per unit but slower than RAM.</div>
-            </div>
-          </div>
+        <section class="v2-panel" id="summary">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 4 | close when ready</p><h2>Summary and exam reminders</h2></div>
+          <div class="v2-summary-grid"><div><h3>Summary</h3><ul class="v2-summary-list"><li>Define assemblers, compilers and interpreters with the exact technical vocabulary expected by the syllabus.</li><li>Use the lesson method on a fresh context and show the intermediate decision, representation or calculation.</li><li>Match the shape of the answer to the command word and the available marks.</li><li>Check the final answer against the scenario instead of repeating a memorised sentence.</li></ul></div><div class="v2-error"><h3>Common error to correct</h3><p>Students often call every program an operating system. Correction: an OS manages resources and provides services; an app performs user tasks.</p></div></div>
+          <div class="v2-tip-box"><h3>Exam technique</h3><ul><li>Follow the command word: state gives a fact; explain links a cause to a consequence; compare covers both sides.</li><li>Match the number of independent points or method steps to the available marks.</li><li>For assemblers, compilers and interpreters, use the exact technical term before applying it to the scenario.</li></ul></div>
         </section>
 
-        <!-- stage10-explanation:start memory-storage -->
-        <section class="panel explanation-panel" id="explanation-memory-storage" data-explains="memory-storage" data-explanation-kind="mechanism" aria-labelledby="explanation-memory-storage-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-028">
-          <h2 class="explanation-sr-only" id="explanation-memory-storage-title">Memory is not the same as storage</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-028-memory-storage.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Memory is not the same as storage with a structured visual model." />
-            <figcaption class="explanation-sr-only">Memory is not the same as storage: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Primary memory</li><li><strong>Lesson fact:</strong> Secondary storage</li><li><strong>Lesson fact:</strong> Holds data/instructions currently being used.</li><li><strong>Lesson fact:</strong> Holds files and data long term.</li><li><strong>Lesson fact:</strong> Volatility</li><li><strong>Lesson fact:</strong> RAM is volatile; contents are lost without power.</li><li><strong>Lesson fact:</strong> Non-volatile; data remains when power is off.</li><li><strong>Lesson fact:</strong> Speed and capacity</li><li><strong>Lesson fact:</strong> Usually faster but smaller and more expensive per unit.</li><li><strong>Lesson fact:</strong> Usually larger and cheaper per unit but slower than RAM.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end memory-storage -->
-        <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-028">
-          <div class="section-title">
-            <p class="eyebrow">Interactive tool</p>
-            <h2>Component choice helper</h2>
-          </div>
-          <div class="converter-grid">
-            <label>
-              Scenario
-              <select id="scenarioInput">
-                <option value="barcode">A librarian scans book IDs quickly at a desk</option>
-                <option value="weather">A weather station measures temperature automatically</option>
-                <option value="attendance">A school stores attendance records after scanning ID cards</option>
-                <option value="exam">An exam office prints candidate timetables</option>
-                <option value="driver">A delivery driver needs turn-by-turn visual feedback</option>
-                <option value="editing">A laptop temporarily holds a large image while editing</option>
-              </select>
-            </label>
-            <button type="button" id="chooseBtn">Choose component</button>
-          </div>
-          <div class="result-box" id="componentResult" aria-live="polite"></div>
-          <div class="method-box" id="componentMethod"></div>
-        </section>
-
-        <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-028">
-          <div class="section-title">
-            <p class="eyebrow">Worked examples</p>
-            <h2>Hardware choices with reasons</h2>
-          </div>
-          <div class="example-tabs" role="tablist" aria-label="Worked examples">
-            <button class="tab active" type="button" data-example="attendance">Attendance system</button>
-            <button class="tab" type="button" data-example="weather">Weather station</button>
-            <button class="tab" type="button" data-example="library">Library desk</button>
-          </div>
-          <article class="example-box" id="exampleBox"></article>
-        </section>
-
-        <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-028">
-          <div class="section-title">
-            <p class="eyebrow">Your turn</p>
-            <h2>Practice with instant checking</h2>
-          </div>
-          <div class="practice-list" id="practiceList"></div>
-          <button class="primary-button" type="button" id="checkPractice">Check practice</button>
-          <div class="feedback" id="practiceFeedback" aria-live="polite"></div>
-        </section>
-
-        <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-028">
-          <div class="section-title">
-            <p class="eyebrow">Mistake debugging</p>
-            <h2>Fix the weak hardware answer</h2>
-          </div>
-          <div class="mistake-grid">
-            <article>
-              <p class="wrong">"The CPU stores all the files."</p>
-              <button class="answer-toggle" type="button" data-answer="mistake1">Show correction</button>
-              <p class="answer" id="mistake1">The CPU processes instructions and data. Files are stored in secondary storage; data in current use may be held in memory.</p>
-            </article>
-            <article>
-              <p class="wrong">"RAM and storage are the same because both hold data."</p>
-              <button class="answer-toggle" type="button" data-answer="mistake2">Show correction</button>
-              <p class="answer" id="mistake2">RAM is primary memory used for current tasks and is volatile. Secondary storage is non-volatile and keeps files long term.</p>
-            </article>
-          </div>
-        </section>
-
-        <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-028">
-          <div class="section-title">
-            <p class="eyebrow">Exam-style questions</p>
-            <h2>Questions with expandable MS</h2>
-            <p>Attempt first, then expand the mark scheme. Credit depends on classifying the component and linking its feature to the scenario.</p>
-          </div>
-          <div class="exam-list" id="examList"></div>
-        </section>
-
-        <section class="panel summary-panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-028">
-          <div class="section-title">
-            <p class="eyebrow">Summary</p>
-            <h2>System overview in one chain</h2>
-          </div>
-          <div class="summary-grid">
-            <div><strong>Input</strong><span>Captures data from the user or environment.</span></div>
-            <div><strong>Processor</strong><span>Executes instructions and processes data.</span></div>
-            <div><strong>Memory</strong><span>Holds data/instructions currently in use; RAM is volatile.</span></div>
-            <div><strong>Storage</strong><span>Holds files and data long term; non-volatile.</span></div>
-            <div><strong>Output</strong><span>Presents results or controls a physical action.</span></div>
-            <div><strong>Suitability</strong><span>Match device characteristics to the exact user need.</span></div>
-          </div>
-        </section>
-
-        <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
-          <div class="section-title">
-            <p class="eyebrow">Homework</p>
-            <h2>Clear tasks</h2>
-          </div>
-          <ol class="homework-list">
-            <li>Draw a data-flow diagram for a self-checkout system: input, processing, memory/storage and output.</li>
-            <li>Create a table comparing primary memory and secondary storage using purpose, volatility, speed and capacity.</li>
-            <li>Choose hardware for a school attendance system: one input, one storage, one output. Justify each choice.</li>
-            <li>Write a 4-mark answer explaining why listing hardware is not enough for a suitability question.</li>
-          </ol>
-          <button class="answer-toggle" type="button" data-answer="homeworkAnswers">Show homework guidance</button>
-          <div class="answer-panel" id="homeworkAnswers">
-            <p><strong>Data-flow diagram:</strong> barcode/touch input -> processor checks price -> memory holds current basket -> storage saves transaction -> screen/receipt output.</p>
-            <p><strong>Memory/storage:</strong> include volatile vs non-volatile and current use vs long-term files.</p>
-            <p><strong>Attendance:</strong> ID reader for accurate fast input; SSD/database storage for persistent records; screen/speaker for immediate feedback.</p>
-            <p><strong>Suitability:</strong> every device needs a reason linked to the scenario.</p>
-          </div>
-        </section>
+        <nav class="v2-bottom-nav" aria-label="Previous and next lesson"><a href="../lesson-027/" >Previous lesson</a><a href="../lesson-029/" >Next lesson</a></nav>
       </div>
     </main>
-
-    <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=3"></script>
-    <script src="../lesson-toolbar.js?v=3"></script>
-    <script src="../stage7-accessibility.js?v=4"></script>
+    <script src="../course-v2.js?v=1"></script>
   </body>
 </html>

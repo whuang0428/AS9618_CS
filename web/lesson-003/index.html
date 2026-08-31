@@ -3,410 +3,89 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 003 | Hexadecimal as a base-16 representation</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <title>AS9618 Lesson 003 | Signed binary arithmetic and overflow</title>
     <link rel="icon" href="data:" />
-    <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
+    <link rel="stylesheet" href="../course-v2.css?v=3" />
   </head>
-  <body>
+  <body data-course-version="2" data-lesson-id="003" data-syllabus-ids="S1.04,S1.05">
     <a class="skip-link" href="#main-content">Skip to main content</a>
-    <header class="topbar">
-      <div>
-        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 1</p>
-        <h1>Hexadecimal as a base-16 representation</h1>
-      </div>
-      <div class="action-panel" aria-label="Page controls">
-        <a class="course-home-link" href="../">Course home</a>
-        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
-      </div>
+    <header class="v2-topbar">
+      <div><p class="v2-eyebrow">Cambridge AS9618 | Paper 1 | Section 1: Information representation</p><h1>Signed binary arithmetic and overflow</h1></div>
+      <nav class="v2-actions" aria-label="Lesson actions"><a href="../">Course home</a><a href="../assessments/">Assessment bank</a><button type="button" id="printLesson">Print</button></nav>
     </header>
-
-    <main class="layout" id="main-content" tabindex="-1">
-      <aside class="lesson-nav" aria-label="Lesson navigation">
-        <a href="#overview">Overview</a>
-        <a href="#hook">Warm-up</a>
-        <a href="#digits">Hex digits</a>
-        <a href="#grouping">Grouping</a>
-        <a href="#padding">Padding</a>
-        <a href="#converter">Converter</a>
-        <a href="#examples">Examples</a>
-        <a href="#practice">Practice</a>
-        <a href="#exam">Exam-style</a>
-        <a href="#homework">Homework</a>
-        <a href="#stage2-completion">Core syllabus content</a>
-      </aside>
-
-      <div class="lesson-content">
-        <!-- remediation-v2-stage3-scope:start -->
-        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.</p></aside>
-        <!-- remediation-v2-stage3-scope:end -->
-
-<!-- stage2-completion:start -->
-        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus content</p>
-            <h2>Hexadecimal as a base-16 representation</h2>
-          </div>
-          <div class="stage2-explanation">
-            <p>Hexadecimal is base 16 and uses digits 0 to 9 and A to F. One hexadecimal digit represents one four-bit binary nibble, so grouping from the right gives an exact conversion between binary and hexadecimal integer representations.</p>
-            <p>To convert hexadecimal to denary, multiply each digit value by its power-of-16 place value. Binary, denary and hexadecimal may encode the same integer value even though their written representations differ.</p>
-            <p>Representation overview: the required integer representations are binary, denary, hexadecimal, BCD, one's-complement and two's-complement. Conversion means preserving the integer value while changing its base or signed representation.</p>
-          </div>
-          <article class="stage2-example">
-            <h3>Worked example: Convert D6 hexadecimal</h3>
-            <p>D6 hexadecimal = 1101 0110 binary. In denary, D6 = 13 x 16 + 6 = 214, so all three representations encode the integer 214.</p>
-          </article>
+    <main class="v2-shell" id="main-content" tabindex="-1">
+      <nav class="v2-toc" aria-label="Lesson contents"><strong>Lesson 003</strong><a href="#overview">Overview</a><a href="#prerequisite">Prerequisite</a><a href="#explanation">Explanation</a><a href="#practice">Practice</a><a href="#summary">Summary</a></nav>
+      <div class="v2-content">
+        <section class="v2-hero" id="overview">
+          <div><p class="v2-eyebrow">Flexible-depth lesson</p><h2>Signed binary arithmetic and overflow</h2><p>S1.04, S1.05 | Select what to omit, teach briefly or explore in depth.</p></div>
+          <div class="v2-time-grid" aria-label="Available lesson depth"><div><strong>Quick</strong><span>diagnose + essentials</span></div><div><strong>Full</strong><span>complete explanation</span></div><div><strong>Deep</strong><span>prerequisites + extension</span></div><div><strong>Choose</strong><span>practice by need</span></div></div>
         </section>
-        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus practice</p>
-            <h2>Hexadecimal as a base-16 representation: apply and assess</h2>
-          </div>
-          <div class="stage2-practice">
-            <h3>Targeted practice</h3>
-            <article class="stage2-question">
-              <p><strong>1.</strong> Convert A7 hexadecimal to binary.</p>
-              <details><summary>Show answer</summary><p>1010 0111.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>2.</strong> Convert 2D hexadecimal to denary.</p>
-              <details><summary>Show answer</summary><p>2 x 16 + 13 = 45.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>3.</strong> Convert binary 00111100 to hexadecimal.</p>
-              <details><summary>Show answer</summary><p>3C.</p></details>
-            </article>
-          </div>
-          <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>4 marks</span></div>
-            <p>Convert the integer 159 denary to hexadecimal and then to 8-bit binary.</p>
-            <details>
-              <summary>Show MS</summary>
-              <table class="mark-scheme-table">
-                <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
-                <tbody>
-                  <tr><td>159 = 9 x 16 + 15</td><td>Do not treat A to F as decimal two-digit values.</td><td>1</td></tr>
-                  <tr><td>9F hexadecimal</td><td></td><td>1</td></tr>
-                  <tr><td>maps 9 to 1001 and F to 1111</td><td></td><td>1</td></tr>
-                  <tr><td>10011111 binary</td><td></td><td>1</td></tr>
-                </tbody>
-              </table>
-            </details>
-          </article>
-        </section>
-        <!-- stage2-completion:end -->
 
-<section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-003">
-          <div class="hero-copy">
-            <p class="lesson-meta">Lesson 003 | 45 minutes | Informal questioning</p>
-            <h2>Hexadecimal is binary, packed into neat groups of four.</h2>
-            <p>
-              This lesson converts between binary and hexadecimal using nibbles. The exam skill is
-              grouping accurately from the right, mapping each 4-bit group to one hex digit, and
-              labelling the base clearly.
-            </p>
-            <div class="objective-grid" aria-label="Learning objectives">
-              <div>
-                <strong>Map</strong>
-                <span>4-bit binary nibbles to hexadecimal digits 0-9 and A-F</span>
-              </div>
-              <div>
-                <strong>Convert</strong>
-                <span>binary to hexadecimal and hexadecimal to binary</span>
-              </div>
-              <div>
-                <strong>Explain</strong>
-                <span>why grouping into four bits works and where padding is used</span>
-              </div>
+        <section class="v2-panel v2-route-menu" aria-labelledby="route-heading">
+          <div class="v2-heading"><p class="v2-eyebrow">Teacher choice</p><h2 id="route-heading">Choose the depth for this group</h2></div>
+          <div class="v2-route-grid"><article><h3>Quick route</h3><p>Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.</p></article><article><h3>Full route</h3><p>Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.</p></article><article><h3>Deep route</h3><p>Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.</p></article></div>
+        </section>
+
+        <section class="v2-panel" id="prerequisite">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 1 | optional depth</p><h2>Prerequisite knowledge and quick diagnostic</h2></div>
+          <div class="v2-diagnostic"><p>Recall S1.02, S1.04 before starting this lesson.</p></div>
+          <p>Give one accurate definition or method step before continuing. If it is missing, revisit only that prerequisite.</p>
+          <details class="v2-prerequisite-detail"><summary>Open optional prerequisite refresher</summary><ul><li>The Version 2 row requires binary, denary, hexadecimal, Binary Coded Decimal (BCD), one&#39;s complement and two&#39;s complement; BCD and complements are representations rather than additional number bases.</li><li>Show understanding of binary, denary and hexadecimal number systems, BCD, and one&#39;s- and two&#39;s-complement representations.</li><li>Version 2 explicitly requires both addition and subtraction using positive and negative binary integers; fixed-width representation must be retained throughout a calculation.</li><li>Perform binary addition and subtraction using positive and negative binary integers.</li></ul></details>
+        </section>
+
+        <section class="v2-panel" id="explanation">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 2 | deliberately over-complete</p><h2>Knowledge explanation</h2></div>
+          <h3>Learning objectives</h3><ul class="v2-objectives"><li>Perform binary addition and subtraction using positive and negative binary integers.</li><li>Show understanding of how overflow can occur in fixed-width binary arithmetic.</li></ul>
+          <details class="v2-concept-menu"><summary>Open the concept checklist and choose what to teach</summary><ul><li>binary addition</li><li>binary subtraction</li><li>positive</li><li>negative</li><li>integer</li><li>overflow</li><li>fixed-width / fixed width</li><li>representable range / range representable</li></ul></details>
+          <div class="v2-explanation-grid">
+            <div>
+              <article class="v2-core-facts"><h3>Detailed explanation</h3><p class="v2-teacher-note">Teach all points, or select only the ones this group needs. The list is intentionally fuller than a fixed lesson slot.</p><ul class="v2-facts"><li>Version 2 explicitly requires both addition and subtraction using positive and negative binary integers; fixed-width representation must be retained throughout a calculation.</li><li>Overflow occurs when the mathematical result is outside the range representable by the stated bit width and representation; it is not inferred from every internal carry or from a leading 1 alone.</li><li>Perform binary addition from the least-significant bit, carrying left when a column total is 2 or 3. Positive and negative integers must be interpreted using the stated representation and fixed bit width.</li><li>Overflow occurs when the mathematical result is outside the range representable in the available bits. For unsigned 8-bit addition, a carry beyond bit 7 shows that the true result is greater than 255. For signed arithmetic, compare the result with the signed representable range rather than treating every carry as overflow.</li><li>Binary subtraction applies to each positive or negative binary integer as well as binary addition; use the stated fixed width and signed representation when interpreting the result.</li><li>One&#39;s-complement representation forms a negative integer by inverting every bit of its positive fixed-width value. Two&#39;s-complement representation inverts every bit and adds 1. These are binary representations of signed integers, not separate number bases.</li><li>Unsigned subtraction can be performed column by column using borrowing, or by adding the two&#39;s complement of the subtrahend. For signed two&#39;s-complement subtraction A - B, form the two&#39;s complement of B and add it to A. Retain the fixed width, interpret the sign bit and check the representable range.</li><li>Representation overview: the required integer representations are binary, denary, hexadecimal, BCD, one&#39;s-complement and two&#39;s-complement. Conversion means preserving the integer value while changing its base or signed representation.</li></ul></article>
+              <article class="v2-example"><h3>Worked example</h3><p>Add two unsigned 8-bit integers: 11110000 + 00110000 = 1 00100000. The true result is 288, which is outside the unsigned 8-bit range 0 to 255, so the stored eight-bit result cannot represent the mathematical answer and overflow occurs.</p></article>
+              <aside class="v2-extension"><h3>Beyond syllabus / 延伸知识（不要求背诵）</h3><p>real file formats also store headers and metadata, so two files with the same visible content may still have different sizes.</p></aside>
             </div>
-          </div>
-          <div class="binary-display" aria-label="Hexadecimal lesson focus">
-            <span>1101 0110₂</span>
-            <p>Two nibbles. Two hex digits. One compact value: D6₁₆.</p>
-          </div>
-        </section>
-
-        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-003">
-          <article class="why-card">
-            <h3>Why this matters</h3>
-            <p>Hexadecimal is common in memory addresses, machine code displays and colour values.</p>
-          </article>
-          <article class="trap-card">
-            <h3>Common error</h3>
-            <p>Do not convert the whole binary number to denary first unless the question asks for denary.</p>
-          </article>
-        </section>
-
-        <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-003">
-          <div class="section-title">
-            <p class="eyebrow">Warm-up hook</p>
-            <h2>Which is easier to copy accurately: `11010110₂` or `D6₁₆`?</h2>
-          </div>
-          <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="binary">The binary value</button>
-            <button class="choice-card" type="button" data-hook="hex">The hex value</button>
-            <button class="choice-card" type="button" data-hook="same">They are unrelated</button>
-            <button class="choice-card" type="button" data-hook="depends">It depends on whether I know the code</button>
-          </div>
-          <div class="feedback" id="hookFeedback" aria-live="polite">
-            Pick an answer. The shorter notation is useful only if the mapping is reliable.
+            <figure class="v2-visual">
+              <img src="../assets/diagrams/stage10-infographics/stage10-lesson-004-method.jpg" alt="Align the two 8-bit operands and start at the rightmost column.. Add both bits and any carry-in; write the result bit and carry 1 left when required.. For unsigned addition, a carry-out beyond bit 7 means the true sum needs more than 8 bits.. Without a carry-out, the stored 8-bit result remains within the unsigned range 0 to 255.. A leftmost result bit of 1 is not by itself evidence of unsigned overflow." loading="lazy" />
+              <figcaption>8-bit addition method. One maintained explanation is shown as an image on larger screens and as text on small screens.</figcaption>
+              <div class="v2-mobile-visual-text" aria-label="Mobile text alternative"><ul><li>Align the two 8-bit operands and start at the rightmost column.</li><li>Add both bits and any carry-in; write the result bit and carry 1 left when required.</li><li>For unsigned addition, a carry-out beyond bit 7 means the true sum needs more than 8 bits.</li><li>Without a carry-out, the stored 8-bit result remains within the unsigned range 0 to 255.</li><li>A leftmost result bit of 1 is not by itself evidence of unsigned overflow.</li></ul></div>
+            </figure>
           </div>
         </section>
 
-        <section class="panel" id="digits" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-003">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 1</p>
-            <h2>Hexadecimal digits: 0-9 then A-F</h2>
-          </div>
-          <div class="hex-table" aria-label="Hexadecimal digit table">
-            <div class="hex-cell header">Denary</div>
-            <div class="hex-cell">0</div><div class="hex-cell">1</div><div class="hex-cell">2</div><div class="hex-cell">3</div>
-            <div class="hex-cell">4</div><div class="hex-cell">5</div><div class="hex-cell">6</div><div class="hex-cell">7</div>
-            <div class="hex-cell">8</div><div class="hex-cell">9</div><div class="hex-cell">10</div><div class="hex-cell">11</div>
-            <div class="hex-cell">12</div><div class="hex-cell">13</div><div class="hex-cell">14</div><div class="hex-cell">15</div>
-            <div class="hex-cell header">Hex</div>
-            <div class="hex-cell">0</div><div class="hex-cell">1</div><div class="hex-cell">2</div><div class="hex-cell">3</div>
-            <div class="hex-cell">4</div><div class="hex-cell">5</div><div class="hex-cell">6</div><div class="hex-cell">7</div>
-            <div class="hex-cell">8</div><div class="hex-cell">9</div><div class="hex-cell accent">A</div><div class="hex-cell accent">B</div>
-            <div class="hex-cell accent">C</div><div class="hex-cell accent">D</div><div class="hex-cell accent">E</div><div class="hex-cell accent">F</div>
-          </div>
-          <div class="vocab-strip" aria-label="Key vocabulary">
-            <span><b>hexadecimal</b> 十六进制</span>
-            <span><b>nibble</b> 4-bit group</span>
-            <span><b>binary</b> 二进制</span>
-            <span><b>base label</b> 数制标记</span>
-          </div>
+        <section class="v2-panel" id="practice">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 3 | select by learner need</p><h2>Practice by question type</h2></div>
+          <div class="v2-question-list"><article class="v2-question" data-question-id="Q-L003-01" data-semantic-fingerprint="S1.04+S1.05|signed-binary-arithmetic-and-overflow|explain|why-does-number-not|written|explain">
+              <div class="v2-question-head"><span class="v2-badge">explain</span><span class="v2-badge">explain</span><span class="v2-badge difficulty">foundation</span><span class="v2-badge">2 marks</span></div>
+              <p><strong>Question 1.</strong> Why does 01111111 + 00000001 not overflow as unsigned 8-bit arithmetic?</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> The result 10000000 is 128, which remains inside 0 to 255.</p><p><strong>Marking guidance:</strong> Award one mark for each distinct, technically accurate point or method step.</p><p><strong>Common error:</strong> For the command word explain, perform that exact action; do not replace it with an unrelated fact.</p></div></details>
+            </article><article class="v2-question" data-question-id="Q-L003-02" data-semantic-fingerprint="S1.04+S1.05|signed-binary-arithmetic-and-overflow|apply|what-general-test|written|recall">
+              <div class="v2-question-head"><span class="v2-badge">apply</span><span class="v2-badge">recall</span><span class="v2-badge difficulty">application</span><span class="v2-badge">2 marks</span></div>
+              <p><strong>Question 2.</strong> What is the general overflow test?</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> The mathematical result lies outside the range representable by the fixed-width binary representation.</p><p><strong>Marking guidance:</strong> Award one mark for each distinct, technically accurate point or method step.</p><p><strong>Common error:</strong> Do not repeat the same point in different words; each mark needs a separate idea or method step.</p></div></details>
+            </article><article class="v2-question" data-question-id="Q-L003-03" data-semantic-fingerprint="S1.04+S1.05|signed-binary-arithmetic-and-overflow|calculate|calculate-sum-number-unsigned|written|calculate">
+              <div class="v2-question-head"><span class="v2-badge">calculate</span><span class="v2-badge">calculate</span><span class="v2-badge difficulty">transfer</span><span class="v2-badge">4 marks</span></div>
+              <p><strong>Question 3.</strong> Calculate the sum of 11001010 and 01110101 as unsigned 8-bit integers and explain the overflow.</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> correct binary addition and carry method; 1 00111111 / stored result 00111111; true result needs a ninth bit / exceeds 255; therefore unsigned 8-bit overflow occurs</p><p><strong>Marking guidance:</strong> Do not infer unsigned overflow only from the leftmost stored bit being 1.</p><p><strong>Common error:</strong> Do not copy the worked example unchanged; transfer the method and check it against the new context.</p></div></details>
+            </article></div>
+          <div class="v2-paper-refs">
+          <h3>Related past-paper indexes</h3>
+          <table><thead><tr><th>Reference</th><th>Marks</th><th>Command word</th><th>Question type</th></tr></thead>
+          <tbody><tr><td>9618/13/S/25 Q7(c)</td><td>2</td><td>complete</td><td>calculate</td></tr><tr><td>9618/12/W/25 Q7(a)</td><td>1</td><td>complete</td><td>recall</td></tr><tr><td>9618/11/S/24 Q7</td><td>3</td><td>complete</td><td>calculate</td></tr></tbody></table>
+          <p class="v2-copyright-note">Index only: Cambridge question and mark-scheme wording is not reproduced on this public course page.</p>
+        </div>
         </section>
 
-        <!-- stage10-explanation:start digits -->
-        <section class="panel explanation-panel" id="explanation-digits" data-explains="digits" data-explanation-kind="mechanism" aria-labelledby="explanation-digits-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-003">
-          <h2 class="explanation-sr-only" id="explanation-digits-title">Hexadecimal digits: 0-9 then A-F</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-003-digits.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Hexadecimal digits: 0-9 then A-F with a structured visual model." />
-            <figcaption class="explanation-sr-only">Hexadecimal digits: 0-9 then A-F: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> nibble 4-bit group</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end digits -->
-        <section class="panel" id="grouping" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-003">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 2</p>
-            <h2>One hex digit represents one nibble</h2>
-          </div>
-          <div class="nibble-grid">
-            <article>
-              <h3>Why four bits?</h3>
-              <p>Four bits can represent 16 patterns: from `0000₂` to `1111₂`. Hexadecimal has exactly 16 digits: `0` to `F`.</p>
-            </article>
-            <article>
-              <h3>Binary to hex</h3>
-              <p>Group the binary value into nibbles from the right. Convert each nibble separately.</p>
-            </article>
-            <article>
-              <h3>Hex to binary</h3>
-              <p>Replace each hex digit with its 4-bit binary nibble. Keep all four bits for each digit.</p>
-            </article>
-          </div>
-          <div class="callout">`1101₂ = D₁₆` and `0110₂ = 6₁₆`, so `1101 0110₂ = D6₁₆`.</div>
+        <section class="v2-panel" id="summary">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 4 | close when ready</p><h2>Summary and exam reminders</h2></div>
+          <div class="v2-summary-grid"><div><h3>Summary</h3><ul class="v2-summary-list"><li>Define signed binary arithmetic and overflow with the exact technical vocabulary expected by the syllabus.</li><li>Use the lesson method on a fresh context and show the intermediate decision, representation or calculation.</li><li>Match the shape of the answer to the command word and the available marks.</li><li>Check the final answer against the scenario instead of repeating a memorised sentence.</li></ul></div><div class="v2-error"><h3>Common error to correct</h3><p>Students often treat binary digits as decoration. Correction: every bit position has a value; if the position changes, the value changes.</p></div></div>
+          <div class="v2-tip-box"><h3>Exam technique</h3><ul><li>Follow the command word: state gives a fact; explain links a cause to a consequence; compare covers both sides.</li><li>Match the number of independent points or method steps to the available marks.</li><li>For signed binary arithmetic and overflow, use the exact technical term before applying it to the scenario.</li></ul></div>
         </section>
 
-        <!-- stage10-explanation:start grouping -->
-        <section class="panel explanation-panel" id="explanation-grouping" data-explains="grouping" data-explanation-kind="mechanism" aria-labelledby="explanation-grouping-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-003">
-          <h2 class="explanation-sr-only" id="explanation-grouping-title">One hex digit represents one nibble</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-003-grouping.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining One hex digit represents one nibble with a structured visual model." />
-            <figcaption class="explanation-sr-only">One hex digit represents one nibble: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Why four bits?</li><li><strong>Lesson fact:</strong> Four bits can represent 16 patterns: from 0000₂ to 1111₂. Hexadecimal has exactly 16 digits: 0 to F.</li><li><strong>Lesson fact:</strong> Binary to hex</li><li><strong>Lesson fact:</strong> Group the binary value into nibbles from the right. Convert each nibble separately.</li><li><strong>Lesson fact:</strong> Hex to binary</li><li><strong>Lesson fact:</strong> Replace each hex digit with its 4-bit binary nibble. Keep all four bits for each digit.</li><li><strong>Lesson fact:</strong> 1101₂ = D₁₆ and 0110₂ = 6₁₆, so 1101 0110₂ = D6₁₆.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end grouping -->
-        <section id="delivery-06" class="guidance-grid compact" aria-label="Grouping guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-003">
-          <article class="trap-card">
-            <h3>Common error</h3>
-            <p>Grouping from the left gives the wrong answer when the number of bits is not a multiple of four.</p>
-          </article>
-        </section>
-
-        <section class="panel" id="padding" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-003">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 3</p>
-            <h2>Padding with leading zeros</h2>
-          </div>
-          <div class="padding-grid">
-            <article>
-              <h3>When padding is needed</h3>
-              <p>If the leftmost group has fewer than four bits, add leading zeros to complete the nibble.</p>
-            </article>
-            <article>
-              <h3>Example</h3>
-              <p class="range-value">101101₂ → 0010 1101₂ → 2D₁₆</p>
-              <p>The value does not change because leading zeros do not add active place values.</p>
-            </article>
-            <article>
-              <h3>Base labels</h3>
-              <p>`10` could mean denary ten or binary two. Use base labels when the notation could be ambiguous.</p>
-            </article>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start padding -->
-        <section class="panel explanation-panel" id="explanation-padding" data-explains="padding" data-explanation-kind="mechanism" aria-labelledby="explanation-padding-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-003">
-          <h2 class="explanation-sr-only" id="explanation-padding-title">Padding with leading zeros</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-003-padding.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Padding with leading zeros with a structured visual model." />
-            <figcaption class="explanation-sr-only">Padding with leading zeros: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> When padding is needed</li><li><strong>Lesson fact:</strong> If the leftmost group has fewer than four bits, add leading zeros to complete the nibble.</li><li><strong>Lesson fact:</strong> 101101₂ → 0010 1101₂ → 2D₁₆</li><li><strong>Lesson fact:</strong> The value does not change because leading zeros do not add active place values.</li><li><strong>Lesson fact:</strong> Base labels</li><li><strong>Lesson fact:</strong> 10 could mean denary ten or binary two. Use base labels when the notation could be ambiguous.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end padding -->
-        <section class="panel interactive" id="converter" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-003">
-          <div class="section-title">
-            <p class="eyebrow">Interactive tool</p>
-            <h2>Binary and hexadecimal converter</h2>
-          </div>
-          <div class="converter-grid">
-            <label>
-              Direction
-              <select id="convertMode">
-                <option value="binaryToHex">Binary to hexadecimal</option>
-                <option value="hexToBinary">Hexadecimal to binary</option>
-              </select>
-            </label>
-            <label>
-              Value
-              <input id="convertValue" type="text" value="11010110" />
-            </label>
-            <button type="button" id="convertBtn">Convert</button>
-          </div>
-          <div class="result-box" id="convertResult" aria-live="polite"></div>
-          <div class="method-box" id="convertMethod"></div>
-          <div class="nibble-visual" id="nibbleVisual" aria-label="Nibble grouping visual"></div>
-        </section>
-
-        <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-003">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge examples</p>
-            <h2>Worked examples</h2>
-          </div>
-          <div class="example-tabs" role="tablist" aria-label="Worked examples">
-            <button class="tab active" type="button" data-example="binary">1101 0110₂ to hex</button>
-            <button class="tab" type="button" data-example="hex">A7₁₆ to binary</button>
-            <button class="tab" type="button" data-example="padding">101101₂ to hex</button>
-          </div>
-          <article class="example-box" id="exampleBox"></article>
-        </section>
-
-        <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-003">
-          <div class="section-title">
-            <p class="eyebrow">Your turn</p>
-            <h2>Practice with instant checking</h2>
-          </div>
-          <div class="practice-list" id="practiceList"></div>
-          <button type="button" id="checkPractice">Check answers</button>
-          <div class="feedback" id="practiceFeedback" aria-live="polite"></div>
-        </section>
-
-        <section id="delivery-11" class="panel mistake-panel" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-003">
-          <div class="section-title">
-            <p class="eyebrow">Debug the mistakes</p>
-            <h2>Identify and correct the error</h2>
-          </div>
-          <div class="mistake-grid">
-            <article>
-              <h3>Mistake 1</h3>
-              <p class="wrong">101101₂ = B₁₆ because 1011₂ is B₁₆</p>
-              <button type="button" class="reveal" data-reveal="mistake1">Show correction</button>
-              <p class="answer" id="mistake1">Group from the right: 101101₂ → 0010 1101₂ → 2D₁₆.</p>
-            </article>
-            <article>
-              <h3>Mistake 2</h3>
-              <p class="wrong">A7₁₆ = 1010 111₂</p>
-              <button type="button" class="reveal" data-reveal="mistake2">Show correction</button>
-              <p class="answer" id="mistake2">Each hex digit needs four bits: A = 1010 and 7 = 0111, so A7₁₆ = 1010 0111₂.</p>
-            </article>
-          </div>
-        </section>
-
-        <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-003">
-          <div class="section-title">
-            <p class="eyebrow">Past-paper style</p>
-            <h2>Original exam-style questions</h2>
-          </div>
-          <div class="exam-grid" id="examGrid"></div>
-          <p class="source-note">
-            These are original Cambridge-style questions, not copied Cambridge past paper text.
-            Use the buttons under each question to expand the Cambridge-style mark scheme.
-          </p>
-        </section>
-
-        <section class="panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-003">
-          <div class="section-title">
-            <p class="eyebrow">Summary</p>
-            <h2>Summary of required knowledge</h2>
-          </div>
-          <div class="summary-grid">
-            <div><strong>1</strong><span>One hex digit represents exactly four binary bits.</span></div>
-            <div><strong>2</strong><span>Binary to hex groups bits from the right into nibbles.</span></div>
-            <div><strong>3</strong><span>Hex to binary keeps four bits for every hex digit.</span></div>
-          </div>
-          <div class="exit-ticket">
-            <label for="exitTicket">Exit ticket</label>
-            <textarea id="exitTicket" rows="3" placeholder="The key point about hexadecimal grouping is..., and a common mistake is..."></textarea>
-          </div>
-        </section>
-
-        <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
-          <div class="section-title">
-            <p class="eyebrow">Homework</p>
-            <h2>Homework tasks</h2>
-          </div>
-          <ol class="homework-list">
-            <li>Convert these binary values to hexadecimal: `11110000₂`, `10101010₂`, `101101₂`.</li>
-            <li>Convert these hexadecimal values to binary: `3C₁₆`, `B7₁₆`, `0F₁₆`.</li>
-            <li>Write a 3-mark explanation of why binary is grouped into four bits when converting to hexadecimal.</li>
-            <li>Extension: find one real-world example of hexadecimal notation and explain why compact notation helps.</li>
-          </ol>
-        </section>
-
-        <section id="delivery-15" class="panel homework-support" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-003">
-          <div class="section-title">
-            <p class="eyebrow">Homework support</p>
-            <h2>Check only after attempting</h2>
-          </div>
-          <button
-            type="button"
-            class="reveal"
-            data-reveal="homeworkAnswers"
-            data-open-label="Show homework answers"
-            data-close-label="Hide homework answers"
-          >
-            Show homework answers
-          </button>
-          <div class="answer-panel" id="homeworkAnswers">
-            <p><strong>Binary to hex:</strong> `11110000₂ = F0₁₆`; `10101010₂ = AA₁₆`; `101101₂ = 2D₁₆`.</p>
-            <p><strong>Hex to binary:</strong> `3C₁₆ = 0011 1100₂`; `B7₁₆ = 1011 0111₂`; `0F₁₆ = 0000 1111₂`.</p>
-            <p><strong>Explanation focus:</strong> four bits create 16 possible values, matching the 16 hexadecimal digits.</p>
-          </div>
-        </section>
+        <nav class="v2-bottom-nav" aria-label="Previous and next lesson"><a href="../lesson-002/" >Previous lesson</a><a href="../lesson-004/" >Next lesson</a></nav>
       </div>
     </main>
-
-    <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=3"></script>
-    <script src="../lesson-toolbar.js?v=3"></script>
-    <script src="../stage7-accessibility.js?v=4"></script>
+    <script src="../course-v2.js?v=1"></script>
   </body>
 </html>

@@ -3,553 +3,89 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 021 | LAN hardware, Ethernet, streaming, the internet, IP and URL</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <title>AS9618 Lesson 021 | The fetch-execute cycle in register-transfer notation</title>
     <link rel="icon" href="data:" />
-    <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../student-visuals.css?v=1" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
+    <link rel="stylesheet" href="../course-v2.css?v=3" />
   </head>
-  <body>
+  <body data-course-version="2" data-lesson-id="021" data-syllabus-ids="S4.07">
     <a class="skip-link" href="#main-content">Skip to main content</a>
-    <header class="topbar">
-      <div>
-        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 2</p>
-        <h1>LAN hardware, Ethernet, streaming, the internet, IP and URL</h1>
-      </div>
-      <div class="action-panel" aria-label="Page controls">
-        <a class="course-home-link" href="../">Course home</a>
-        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
-      </div>
+    <header class="v2-topbar">
+      <div><p class="v2-eyebrow">Cambridge AS9618 | Paper 1 | Section 4: Processor fundamentals</p><h1>The fetch-execute cycle in register-transfer notation</h1></div>
+      <nav class="v2-actions" aria-label="Lesson actions"><a href="../">Course home</a><a href="../assessments/">Assessment bank</a><button type="button" id="printLesson">Print</button></nav>
     </header>
-
-    <main class="layout" id="main-content" tabindex="-1">
-      <aside class="lesson-nav" aria-label="Lesson navigation">
-        <a href="#overview">Overview</a>
-        <a href="#hook">Warm-up</a>
-        <a href="#addresses">Addresses</a>
-        <a href="#dns">DNS</a>
-        <a href="#urls">URLs</a>
-        <a href="#address-journey">Address journey</a>
-        <a href="#tool">Lookup tool</a>
-        <a href="#examples">Examples</a>
-        <a href="#practice">Practice</a>
-        <a href="#exam">Exam-style</a>
-        <a href="#homework">Homework</a>
-        <a href="#stage2-completion">Core syllabus content</a>
-      </aside>
-
-      <div class="lesson-content">
-        <!-- remediation-v2-stage3-scope:start -->
-        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.</p></aside>
-        <!-- remediation-v2-stage3-scope:end -->
-
-<!-- remediation-v2-optional:start -->
-        <aside class="optional-enrichment-notice" aria-label="Optional enrichment scope">
-          <strong>Optional enrichment</strong>
-          <p>HTTP, HTTPS, FTP, SMTP, POP3 and IMAP. This material is excluded from compulsory syllabus coverage, first-use and assessment statistics.</p>
-          <p><strong>Formal AS prerequisite:</strong> S2.13 WWW versus internet and S2.16 URL/DNS.</p>
-        </aside>
-        <!-- remediation-v2-optional:end -->
-
-<!-- stage2-completion:start -->
-        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus content</p>
-            <h2>LAN hardware, Ethernet, streaming, the internet, IP and URL</h2>
-          </div>
-          <div class="stage2-explanation">
-            <p>LAN hardware includes a switch, server, NIC/WNIC, WAP, cables, bridge and repeater. A server provides network services. A NIC/WNIC connects a device by cable or wirelessly; a WAP connects wireless devices to a wired LAN. A switch forwards frames within a LAN, a bridge connects LAN segments, a repeater regenerates a weakened signal, and cables carry signals.</p>
-            <p>A router connects different networks and forwards packets using destination IP addresses and stored routing information. It is not a replacement name for a switch: the two devices make forwarding decisions at different scopes.</p>
-            <p>CSMA/CD means Carrier Sense Multiple Access with Collision Detection. A station listens to the shared medium; if idle it transmits, while continuing to detect a collision.</p>
-            <p>After a collision, stations stop transmitting, send/recognise a jam signal, wait for different random backoff periods and retry. The random delay reduces the chance of another simultaneous attempt.</p>
-            <p>A URL locates a WWW resource: DNS resolves the domain to an IP address, while the remaining URL components identify the required resource.</p>
-            <p>Bit streaming delivers media progressively so playback can begin before the whole file arrives. Real-time streaming carries a live event with minimal delay; on-demand streaming sends stored content selected by the user.</p>
-            <p>Bit rate is the number of bits transmitted each second. Available broadband speed must normally exceed the media bit rate and absorb variation; otherwise the player buffers, lowers quality or pauses. A buffer stores arriving data temporarily.</p>
-            <p>The internet is the global network infrastructure that interconnects networks and carries many services. The World Wide Web is one service that uses the internet to provide linked resources accessed with web protocols and browsers.</p>
-            <p>Internet hardware includes routers and transmission links that forward data between networks. Web servers store or generate web resources, while clients request those resources; the WWW is therefore not a synonym for all internet services.</p>
-            <p>A modem converts signals into a form suitable for the access link and back again. Internet-supporting connections include the PSTN (Public Switched Telephone Network), a dedicated line and a cell phone network or cellular phone network. Each has different sharing, mobility and availability characteristics.</p>
-            <p>When describing an internet connection, follow the path from the end device through its NIC, LAN switch or access point, router and access link. Name each device only for the job it performs.</p>
-            <p>IPv4 uses 32-bit addresses; IPv6 uses 128-bit addresses and provides a much larger address space. Subnetting divides a network into logical sections called subnets and uses part of the address to identify the network/subnet.</p>
-            <p>An IP address is associated with a device's network interface on a network and supplies the logical source or destination used for routing. A public address is routable on the internet; a private address is used inside a private network and is not directly routed across the public internet. This reduces direct unsolicited reachability but does not guarantee security. Static addresses remain fixed; dynamic addresses are allocated and may change.</p>
-            <p>A Uniform Resource Locator (URL) identifies the location of a resource on the World Wide Web. Its structure can include a scheme such as https, a domain name, an optional port, a path and optional query/fragment. DNS resolves the domain-name part to an IP address; it does not translate the path or store the web resource. The browser then uses the resolved IP address to send packets towards the server and the path to request the resource.</p>
-          </div>
-          <article class="stage2-example">
-            <h3>Worked example: Trace a school request / Two stations sense an idle cable / 6 Mbit/s video on 4 Mbit/s link / Separate infrastructure from service / Home-to-provider path / Locate one resource on a school web server</h3>
-            <p>A laptop sends a frame through its wireless interface to an access point. The LAN switch forwards it toward the router. The router then forwards the packet from the school LAN toward another network. Both may begin before either signal reaches the other. They detect the collision, stop, wait different random periods and the station whose timer expires first retries. The stream consumes data faster than the link supplies it. A starting buffer only delays the shortage; sustained playback requires a lower bit rate or faster connection. Sending email uses the internet but not the WWW. Opening a linked webpage uses the WWW service over internet infrastructure, with routers carrying the packets between client and web server. A laptop sends data through its wireless NIC to the access point/router. The router forwards the packet toward the provider; the modem function adapts signals for the broadband link. For https://portal.school.example:443/results/today, https is the scheme, portal.school.example is the domain name, 443 is the port and /results/today is the path. DNS resolves only the domain name to an IP address. An externally reachable server may use a static public IPv4 or IPv6 address; school laptops may use dynamic private addresses inside a subnet.</p>
-          </article>
+    <main class="v2-shell" id="main-content" tabindex="-1">
+      <nav class="v2-toc" aria-label="Lesson contents"><strong>Lesson 021</strong><a href="#overview">Overview</a><a href="#prerequisite">Prerequisite</a><a href="#explanation">Explanation</a><a href="#practice">Practice</a><a href="#summary">Summary</a></nav>
+      <div class="v2-content">
+        <section class="v2-hero" id="overview">
+          <div><p class="v2-eyebrow">Flexible-depth lesson</p><h2>The fetch-execute cycle in register-transfer notation</h2><p>S4.07 | Select what to omit, teach briefly or explore in depth.</p></div>
+          <div class="v2-time-grid" aria-label="Available lesson depth"><div><strong>Quick</strong><span>diagnose + essentials</span></div><div><strong>Full</strong><span>complete explanation</span></div><div><strong>Deep</strong><span>prerequisites + extension</span></div><div><strong>Choose</strong><span>practice by need</span></div></div>
         </section>
-        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus practice</p>
-            <h2>LAN hardware, Ethernet, streaming, the internet, IP and URL: apply and assess</h2>
-          </div>
-          <div class="stage2-practice">
-            <h3>Targeted practice</h3>
-            <article class="stage2-question">
-              <p><strong>1.</strong> Which device connects wireless clients to a wired LAN?</p>
-              <details><summary>Show answer</summary><p>A wireless access point.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>2.</strong> Which device connects different networks?</p>
-              <details><summary>Show answer</summary><p>A router.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>3.</strong> What is the role of a NIC?</p>
-              <details><summary>Show answer</summary><p>It provides the device's network interface for sending and receiving data.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>4.</strong> What is sensed before Ethernet transmission?</p>
-              <details><summary>Show answer</summary><p>Whether the shared carrier/medium is idle.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>5.</strong> What happens immediately after a collision is detected?</p>
-              <details><summary>Show answer</summary><p>Transmission stops and a retry is scheduled after a random backoff.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>6.</strong> Why must the delay be random?</p>
-              <details><summary>Show answer</summary><p>Different delays reduce repeated simultaneous retransmission.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>7.</strong> Why does a streaming player buffer data?</p>
-              <details><summary>Show answer</summary><p>To absorb short variations between arrival and playback rates.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>8.</strong> Identify a live sports broadcast.</p>
-              <details><summary>Show answer</summary><p>Real-time streaming.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>9.</strong> Identify a selected recorded film.</p>
-              <details><summary>Show answer</summary><p>On-demand streaming.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>10.</strong> State the distinction between the internet and the WWW.</p>
-              <details><summary>Show answer</summary><p>The internet is the interconnected network infrastructure; the WWW is a linked-resource service using it.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>11.</strong> Identify one internet service other than the WWW.</p>
-              <details><summary>Show answer</summary><p>Email or file transfer.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>12.</strong> What does a modem do?</p>
-              <details><summary>Show answer</summary><p>It converts/modulates and demodulates signals for the access medium.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>13.</strong> What does the router do at the LAN boundary?</p>
-              <details><summary>Show answer</summary><p>It forwards packets between the LAN and other networks.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>14.</strong> How many bits are in IPv6?</p>
-              <details><summary>Show answer</summary><p>128 bits.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>15.</strong> Why might a server use a static IP address?</p>
-              <details><summary>Show answer</summary><p>Clients/DNS need a predictable address for the service.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>16.</strong> What is the purpose of subnetting?</p>
-              <details><summary>Show answer</summary><p>To divide a network into logical subnetworks and identify which subnet an address belongs to.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>17.</strong> Identify the scheme, domain and path in https://shop.example.org/items/7.</p>
-              <details><summary>Show answer</summary><p>Scheme: https; domain: shop.example.org; path: /items/7.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>18.</strong> Which part of that URL is resolved by DNS?</p>
-              <details><summary>Show answer</summary><p>The domain name shop.example.org; DNS returns its IP address.</p></details>
-            </article>
-          </div>
-          <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>24 marks</span></div>
-            <p>Explain the roles of a NIC, wireless access point, switch and router in a school LAN connected to the internet. Describe how CSMA/CD handles two devices attempting to transmit on a shared Ethernet medium. A video has a bit rate of 8 Mbit/s. Explain why a connection advertised as 8 Mbit/s may still pause during playback. Explain why the internet and the World Wide Web are not the same. Describe the hardware path used when a home computer accesses a remote server. Compare IPv4 with IPv6, then explain how a URL and DNS are used to request a web resource.</p>
-            <details>
-              <summary>Show MS</summary>
-              <table class="mark-scheme-table">
-                <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
-                <tbody>
-                  <tr><td>NIC role</td><td>Do not describe every named device as routing packets between networks. Do not accept collision avoidance: CSMA/CD detects and responds to a collision after transmission has begun. Do not accept 'bandwidth is slow' without comparing arrival rate with the stream bit rate. Do not define the internet as a collection of webpages. Do not use modem, router and switch as interchangeable terms. Do not accept that a private IP address guarantees security or that DNS converts the entire URL/stores the website.</td><td>1</td></tr>
-                  <tr><td>access-point role</td><td></td><td>1</td></tr>
-                  <tr><td>switch role</td><td></td><td>1</td></tr>
-                  <tr><td>router role</td><td></td><td>1</td></tr>
-                  <tr><td>each device listens/senses the carrier before transmitting</td><td></td><td>1</td></tr>
-                  <tr><td>transmits when the medium is idle</td><td></td><td>1</td></tr>
-                  <tr><td>detects a collision and stops transmission</td><td></td><td>1</td></tr>
-                  <tr><td>waits a random/backoff time before retrying</td><td></td><td>1</td></tr>
-                  <tr><td>video requires about 8 million bits each second</td><td></td><td>1</td></tr>
-                  <tr><td>actual available speed may be below advertised/maximum speed</td><td></td><td>1</td></tr>
-                  <tr><td>other traffic, overhead or variation reduces throughput</td><td></td><td>1</td></tr>
-                  <tr><td>buffer empties when data arrives more slowly than playback consumes it</td><td></td><td>1</td></tr>
-                  <tr><td>internet infrastructure</td><td></td><td>1</td></tr>
-                  <tr><td>WWW service</td><td></td><td>1</td></tr>
-                  <tr><td>example or hardware path distinguishes them</td><td></td><td>1</td></tr>
-                  <tr><td>end-device interface</td><td></td><td>1</td></tr>
-                  <tr><td>LAN device</td><td></td><td>1</td></tr>
-                  <tr><td>router role</td><td></td><td>1</td></tr>
-                  <tr><td>modem/access-link role</td><td></td><td>1</td></tr>
-                  <tr><td>IPv4 uses 32-bit addresses</td><td></td><td>1</td></tr>
-                  <tr><td>IPv6 uses 128-bit addresses / provides a much larger address space</td><td></td><td>1</td></tr>
-                  <tr><td>URL identifies a WWW resource and includes a domain plus resource path</td><td></td><td>1</td></tr>
-                  <tr><td>DNS resolves the domain name to an IP address</td><td></td><td>1</td></tr>
-                  <tr><td>IP address is used to route packets while the path identifies the requested resource</td><td></td><td>1</td></tr>
-                </tbody>
-              </table>
-            </details>
-          </article>
-        </section>
-        <!-- stage2-completion:end -->
 
-<section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-021">
-          <div class="hero-copy">
-            <p class="lesson-meta">Lesson 021 | 45 minutes | 5-minute quiz + monthly checkpoint</p>
-            <h2>Names are for humans. Addresses are for routing.</h2>
-            <p>
-              A browser may start with a URL, but networks need addresses. DNS resolves
-              domain names to IP addresses, IP addresses identify devices on networks,
-              and MAC addresses identify network interfaces on a local network.
-            </p>
-            <div class="objective-grid" aria-label="Learning objectives">
-              <div><strong>Distinguish</strong><span>IP addresses, MAC addresses, domain names and URLs</span></div>
-              <div><strong>Trace</strong><span>how DNS helps a browser find a web server</span></div>
-              <div><strong>Diagnose</strong><span>addressing and name-resolution problems using precise vocabulary</span></div>
+        <section class="v2-panel v2-route-menu" aria-labelledby="route-heading">
+          <div class="v2-heading"><p class="v2-eyebrow">Teacher choice</p><h2 id="route-heading">Choose the depth for this group</h2></div>
+          <div class="v2-route-grid"><article><h3>Quick route</h3><p>Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.</p></article><article><h3>Full route</h3><p>Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.</p></article><article><h3>Deep route</h3><p>Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.</p></article></div>
+        </section>
+
+        <section class="v2-panel" id="prerequisite">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 1 | optional depth</p><h2>Prerequisite knowledge and quick diagnostic</h2></div>
+          <div class="v2-diagnostic"><p>Recall S4.01 before starting this lesson.</p></div>
+          <p>Give one accurate definition or method step before continuing. If it is missing, revisit only that prerequisite.</p>
+          <details class="v2-prerequisite-detail"><summary>Open optional prerequisite refresher</summary><ul><li>Show understanding of the basic Von Neumann model and the stored-program concept: instructions are stored in binary in the same directly accessible memory as data and are fetched for execution.</li><li>Understand Von Neumann architecture and the stored-program concept.</li></ul></details>
+        </section>
+
+        <section class="v2-panel" id="explanation">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 2 | deliberately over-complete</p><h2>Knowledge explanation</h2></div>
+          <h3>Learning objectives</h3><ul class="v2-objectives"><li>Describe the fetch-execute cycle using register transfer notation.</li></ul>
+          <details class="v2-concept-menu"><summary>Open the concept checklist and choose what to teach</summary><ul><li>fetch-execute cycle / fetch decode execute / fetch-decode-execute cycle</li><li>register transfer notation / register-transfer notation</li></ul></details>
+          <div class="v2-explanation-grid">
+            <div>
+              <article class="v2-core-facts"><h3>Detailed explanation</h3><p class="v2-teacher-note">Teach all points, or select only the ones this group needs. The list is intentionally fuller than a fixed lesson slot.</p><ul class="v2-facts"><li>Describe the stages of the Fetch-Execute cycle and use register-transfer notation, including MAR &lt;- PC, MDR &lt;- Memory[MAR], CIR &lt;- MDR and a coherent PC update.</li><li>Register-transfer notation describes a data transfer or register update. The arrow &lt;- means &#39;is loaded with&#39; or &#39;receives&#39;; it is not an equality sign. Memory[MAR] means the contents of the memory location whose address is currently held in MAR.</li><li>A coherent fetch sequence is MAR &lt;- PC; MDR &lt;- Memory[MAR]; CIR &lt;- MDR; and PC &lt;- PC + 1 at an appropriate point before the next fetch. The control unit then decodes the opcode and operand in CIR and sends control signals for execution.</li><li>During execution, notation such as ACC &lt;- ACC + MDR records an arithmetic result in ACC, while Memory[MAR] &lt;- MDR records a memory write. Read every statement from right to left: obtain the source value, then replace the destination contents.</li><li>The exact timing of PC increment may vary between coherent processor descriptions, but MAR must receive the current instruction address before that address is replaced. Register-transfer notation describes movement and updates; it does not imply that two registers permanently contain the same value.</li></ul></article>
+              <article class="v2-example"><h3>Worked example</h3><p>Trace one instruction fetch: Start with PC = 120 and Memory[120] = LDD 500. MAR &lt;- PC puts 120 in MAR. MDR &lt;- Memory[MAR] puts LDD 500 in MDR. CIR &lt;- MDR copies the instruction into CIR. PC &lt;- PC + 1 makes PC 121, ready to address the next instruction. The control unit then decodes LDD and executes it.</p></article>
+              <aside class="v2-extension"><h3>Beyond syllabus / 延伸知识（不要求背诵）</h3><p>modern processors add pipelining and several cache levels, but exam answers should begin with the syllabus processor model.</p></aside>
             </div>
-          </div>
-          <div class="address-card" aria-label="Addressing concept">
-            <span>URL -> DNS -> IP -> MAC</span>
-            <p>The browser likes names. The network prefers numbers. The local link wants hardware addresses.</p>
-          </div>
-        </section>
-
-        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-021">
-          <article class="why-card">
-            <h3>Why this matters</h3>
-            <p>Addressing questions reward clear distinctions: human-readable URL, domain name lookup, IP routing, local MAC delivery.</p>
-          </article>
-          <article class="trap-card">
-            <h3>Common error</h3>
-            <p>DNS does not store web pages. DNS resolves a domain name to an IP address.</p>
-          </article>
-        </section>
-
-        <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-021">
-          <div class="section-title">
-            <p class="eyebrow">Warm-up hook</p>
-            <h2>You type <code>www.cambridgeinternational.org</code>. What must happen before packets can be routed to the server?</h2>
-          </div>
-          <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="dns">DNS resolves the domain name to an IP address</button>
-            <button class="choice-card" type="button" data-hook="mac">The web page becomes a MAC address</button>
-            <button class="choice-card" type="button" data-hook="storage">The browser adds more RAM</button>
-            <button class="choice-card" type="button" data-hook="topology">The URL changes the network topology</button>
-          </div>
-          <div class="feedback" id="hookFeedback" aria-live="polite">
-            Pick the step that turns a human-readable name into a routable address.
+            <figure class="v2-visual">
+              <img src="../assets/diagrams/stage10-infographics/stage10-lesson-044-main-registers.jpg" alt="PC holds the address of the next instruction to be fetched.. CIR holds the instruction currently being decoded or executed.. MAR holds the address of the memory location being accessed.. MDR holds data or an instruction being transferred to or from memory.. ACC holds an intermediate or final ALU result." loading="lazy" />
+              <figcaption>The seven named register roles. One maintained explanation is shown as an image on larger screens and as text on small screens.</figcaption>
+              <div class="v2-mobile-visual-text" aria-label="Mobile text alternative"><ul><li>PC holds the address of the next instruction to be fetched.</li><li>CIR holds the instruction currently being decoded or executed.</li><li>MAR holds the address of the memory location being accessed.</li><li>MDR holds data or an instruction being transferred to or from memory.</li><li>ACC holds an intermediate or final ALU result.</li></ul></div>
+            </figure>
           </div>
         </section>
 
-        <section class="panel" id="addresses" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-021">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 1</p>
-            <h2>IP address vs MAC address</h2>
-          </div>
-          <div class="compare-table" role="table" aria-label="IP and MAC comparison">
-            <div class="table-row table-head" role="row">
-              <div role="columnheader">Feature</div>
-              <div role="columnheader">IP address</div>
-              <div role="columnheader">MAC address</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Main use</div>
-              <div role="cell">Logical address used to identify a device on a network and route packets between networks.</div>
-              <div role="cell">Hardware address used to identify a network interface on a local network.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Change</div>
-              <div role="cell">Can change, for example when joining a different network or using DHCP.</div>
-              <div role="cell">Normally fixed to the network interface by the manufacturer, though it can sometimes be spoofed.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Example</div>
-              <div role="cell"><code>192.168.1.24</code> or an IPv6 address.</div>
-              <div role="cell"><code>3C:52:82:AA:19:F0</code></div>
-            </div>
-          </div>
-          <div class="callout">Chinese support: logical address = 逻辑地址；hardware address = 硬件地址；network interface = 网络接口。</div>
+        <section class="v2-panel" id="practice">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 3 | select by learner need</p><h2>Practice by question type</h2></div>
+          <div class="v2-question-list"><article class="v2-question" data-question-id="Q-L021-01" data-semantic-fingerprint="S4.07|the-fetch-execute-cycle-in-register-transfer-notation|describe|instruction-meaning-memory-mar|written|explain">
+              <div class="v2-question-head"><span class="v2-badge">describe</span><span class="v2-badge">explain</span><span class="v2-badge difficulty">foundation</span><span class="v2-badge">6 marks</span></div>
+              <p><strong>Question 1.</strong> Using register-transfer notation, describe the fetch of one instruction and explain the meaning of Memory[MAR].</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> MAR &lt;- PC; MDR &lt;- Memory[MAR]; CIR &lt;- MDR; PC &lt;- PC + 1 at a coherent point; Memory[MAR] means the contents at the memory address held in MAR; CIR is decoded and control signals initiate execution</p><p><strong>Marking guidance:</strong> Do not accept PC &lt;- MAR as the first transfer or treat Memory[MAR] as the address value itself.</p><p><strong>Common error:</strong> For the command word describe, perform that exact action; do not replace it with an unrelated fact.</p></div></details>
+            </article><article class="v2-question" data-question-id="Q-L021-02" data-semantic-fingerprint="S4.07|the-fetch-execute-cycle-in-register-transfer-notation|write|adding-value-mdr-acc|written|recall">
+              <div class="v2-question-head"><span class="v2-badge">write</span><span class="v2-badge">recall</span><span class="v2-badge difficulty">application</span><span class="v2-badge">2 marks</span></div>
+              <p><strong>Question 2.</strong> Write register-transfer notation for adding the value in MDR to ACC.</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> ACC &lt;- ACC + MDR.</p><p><strong>Marking guidance:</strong> Award one mark for each distinct, technically accurate point or method step.</p><p><strong>Common error:</strong> Do not repeat the same point in different words; each mark needs a separate idea or method step.</p></div></details>
+            </article><article class="v2-question" data-question-id="Q-L021-03" data-semantic-fingerprint="S4.07|the-fetch-execute-cycle-in-register-transfer-notation|apply|what-does-mar-mean|written|recall">
+              <div class="v2-question-head"><span class="v2-badge">apply</span><span class="v2-badge">recall</span><span class="v2-badge difficulty">transfer</span><span class="v2-badge">2 marks</span></div>
+              <p><strong>Question 3.</strong> What does MAR &lt;- PC mean?</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> Copy the address currently in PC into MAR; PC is not changed by that transfer.</p><p><strong>Marking guidance:</strong> Award one mark for each distinct, technically accurate point or method step.</p><p><strong>Common error:</strong> Do not copy the worked example unchanged; transfer the method and check it against the new context.</p></div></details>
+            </article></div>
+          <div class="v2-paper-refs">
+          <h3>Related past-paper indexes</h3>
+          <table><thead><tr><th>Reference</th><th>Marks</th><th>Command word</th><th>Question type</th></tr></thead>
+          <tbody><tr><td>9618/13/S/25 Q2(ii)</td><td>4</td><td>explain</td><td>explain</td></tr><tr><td>9618/13/S/25 Q2(b)</td><td>2</td><td>describe</td><td>explain</td></tr><tr><td>9618/13/W/23 Q9(b)</td><td>4</td><td>complete</td><td>recall</td></tr><tr><td>9618/13/S/23 Q7(c)</td><td>2</td><td>complete</td><td>recall</td></tr></tbody></table>
+          <p class="v2-copyright-note">Index only: Cambridge question and mark-scheme wording is not reproduced on this public course page.</p>
+        </div>
         </section>
 
-        <!-- stage10-explanation:start addresses -->
-        <section class="panel explanation-panel" id="explanation-addresses" data-explains="addresses" data-explanation-kind="comparison" aria-labelledby="explanation-addresses-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-021">
-          <h2 class="explanation-sr-only" id="explanation-addresses-title">IP address vs MAC address</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-021-addresses.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining IP address vs MAC address with a structured visual model." />
-            <figcaption class="explanation-sr-only">IP address vs MAC address: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> IP and MAC addresses work together at different layers; they are not an either-or choice.</li><li><strong>Lesson fact:</strong> The destination IP identifies the endpoint for end-to-end packet delivery.</li><li><strong>Lesson fact:</strong> The destination MAC identifies the receiving interface for one local-link frame.</li><li><strong>Lesson fact:</strong> On a routed path, the frame normally targets the next-hop router MAC while the packet retains the remote destination IP.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end addresses -->
-        <section class="panel" id="dns" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-021">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 2</p>
-            <h2>DNS: name to IP address</h2>
-          </div>
-          <div class="flow-grid">
-            <article><strong>1. URL entered</strong><span>The user enters a URL containing a domain name.</span></article>
-            <article><strong>2. DNS lookup</strong><span>The device asks a DNS server to resolve the domain name.</span></article>
-            <article><strong>3. IP returned</strong><span>The DNS server returns the IP address for that domain name.</span></article>
-            <article><strong>4. Packets sent</strong><span>Packets can now be addressed and routed to the web server.</span></article>
-          </div>
-          <div class="trap-card inline">
-            <h3>Common error</h3>
-            <p>DNS failure may stop a domain name working even if the server is still reachable by IP address.</p>
-          </div>
+        <section class="v2-panel" id="summary">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 4 | close when ready</p><h2>Summary and exam reminders</h2></div>
+          <div class="v2-summary-grid"><div><h3>Summary</h3><ul class="v2-summary-list"><li>Define the fetch-execute cycle in register-transfer notation with the exact technical vocabulary expected by the syllabus.</li><li>Use the lesson method on a fresh context and show the intermediate decision, representation or calculation.</li><li>Match the shape of the answer to the command word and the available marks.</li><li>Check the final answer against the scenario instead of repeating a memorised sentence.</li></ul></div><div class="v2-error"><h3>Common error to correct</h3><p>Students often memorise register names without roles. Correction: a register earns its name by what it temporarily holds.</p></div></div>
+          <div class="v2-tip-box"><h3>Exam technique</h3><ul><li>Follow the command word: state gives a fact; explain links a cause to a consequence; compare covers both sides.</li><li>Match the number of independent points or method steps to the available marks.</li><li>For the fetch-execute cycle in register-transfer notation, use the exact technical term before applying it to the scenario.</li></ul></div>
         </section>
 
-        <!-- stage10-explanation:start dns -->
-        <section class="panel explanation-panel" id="explanation-dns" data-explains="dns" data-explanation-kind="mechanism" aria-labelledby="explanation-dns-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-021">
-          <h2 class="explanation-sr-only" id="explanation-dns-title">DNS: name to IP address</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-021-dns.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining DNS: name to IP address with a structured visual model." />
-            <figcaption class="explanation-sr-only">DNS: name to IP address: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> 1. URL entered The user enters a URL containing a domain name.</li><li><strong>Lesson fact:</strong> 2. DNS lookup The device asks a DNS server to resolve the domain name.</li><li><strong>Lesson fact:</strong> 3. IP returned The DNS server returns the IP address for that domain name.</li><li><strong>Lesson fact:</strong> 4. Packets sent Packets can now be addressed and routed to the web server.</li><li><strong>Lesson fact:</strong> Common error</li><li><strong>Lesson fact:</strong> DNS failure may stop a domain name working even if the server is still reachable by IP address.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end dns -->
-        <section class="panel" id="urls" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-021">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 3</p>
-            <h2>URL components</h2>
-          </div>
-          <div class="url-card">
-            <code>https://www.example.org/resources/page.html</code>
-            <div class="url-parts">
-              <div><strong>Protocol / scheme</strong><span><code>https</code> tells the browser which communication protocol to use.</span></div>
-              <div><strong>Domain name</strong><span><code>www.example.org</code> is resolved by DNS to an IP address.</span></div>
-              <div><strong>Path</strong><span><code>/resources/page.html</code> identifies the resource on the server.</span></div>
-            </div>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start urls -->
-        <section class="panel explanation-panel" id="explanation-urls" data-explains="urls" data-explanation-kind="mechanism" aria-labelledby="explanation-urls-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-021">
-          <h2 class="explanation-sr-only" id="explanation-urls-title">URL components</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-021-urls.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining URL components with a structured visual model." />
-            <figcaption class="explanation-sr-only">URL components: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> https://www.example.org/resources/page.html</li><li><strong>Lesson fact:</strong> Protocol / scheme https tells the browser which communication protocol to use.</li><li><strong>Lesson fact:</strong> Domain name www.example.org is resolved by DNS to an IP address.</li><li><strong>Lesson fact:</strong> Path /resources/page.html identifies the resource on the server.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end urls -->
-        <section class="panel visual-explainer" id="address-journey" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-021">
-          <div class="section-title">
-            <p class="eyebrow">Visual explanation</p>
-            <h2>From a URL to a packet on the local link</h2>
-            <p>These labels solve different problems. DNS resolves only the domain name; it does not return a web page or a MAC address.</p>
-          </div>
-          <figure class="concept-figure">
-            <svg class="concept-svg" viewBox="0 0 960 470" role="img" aria-labelledby="addressJourneyTitle addressJourneyDesc">
-              <title id="addressJourneyTitle">Roles of URL, DNS, IP address and MAC address</title>
-              <desc id="addressJourneyDesc">The user enters a URL. The domain-name part is sent to DNS, which returns an IP address. The IP address is used for routing between networks, while a MAC address identifies the network interface used for delivery on the current local link.</desc>
-              <defs><marker id="addressArrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 10 5 0 10z" fill="#2563eb" /></marker></defs>
-              <rect class="svg-node svg-node--accent" x="30" y="62" width="250" height="116" rx="18" />
-              <text class="svg-node-label" x="155" y="100">URL entered</text>
-              <text class="svg-node-detail" x="155" y="128">https://learn.example.org/page</text>
-              <text class="svg-node-detail" x="155" y="151">scheme · domain · path</text>
-              <rect class="svg-node svg-node--warm" x="355" y="62" width="250" height="116" rx="18" />
-              <text class="svg-node-label" x="480" y="100">DNS lookup</text>
-              <text class="svg-node-detail" x="480" y="128">learn.example.org</text>
-              <text class="svg-node-detail" x="480" y="151">domain → IP address</text>
-              <rect class="svg-node svg-node--green" x="680" y="62" width="250" height="116" rx="18" />
-              <text class="svg-node-label" x="805" y="100">IP routing</text>
-              <text class="svg-node-detail" x="805" y="128">203.0.113.24</text>
-              <text class="svg-node-detail" x="805" y="151">between networks</text>
-              <path class="svg-line" d="M280 120 H355" marker-end="url(#addressArrow)" />
-              <path class="svg-line" d="M605 120 H680" marker-end="url(#addressArrow)" />
-              <rect class="svg-node svg-node--ink" x="190" y="286" width="580" height="120" rx="18" />
-              <text class="svg-node-label svg-on-dark" x="480" y="325">Current local link</text>
-              <text class="svg-node-detail svg-on-dark" x="480" y="354">A MAC address identifies the network interface for local delivery</text>
-              <text class="svg-node-label svg-on-dark" x="480" y="383">3C:52:82:AA:19:F0</text>
-              <path class="svg-line svg-line--green svg-line--dashed" d="M805 178 C805 240 720 246 720 286" marker-end="url(#addressArrow)" />
-              <text class="svg-node-detail" x="738" y="238">next local hop</text>
-            </svg>
-            <ol class="visual-steps">
-              <li><strong>URL</strong><span>Includes a scheme, domain name and path to a resource.</span></li>
-              <li><strong>DNS</strong><span>Resolves the domain-name part to an IP address.</span></li>
-              <li><strong>IP address</strong><span>Provides a logical network address used for routing.</span></li>
-              <li><strong>MAC address</strong><span>Identifies a network interface for delivery on a local link.</span></li>
-            </ol>
-          </figure>
-          <details class="diagram-check">
-            <summary>Check the diagram: does DNS turn the whole URL into a MAC address?</summary>
-            <p>No. DNS resolves the domain-name part to an IP address. MAC addressing is used separately on a local network link.</p>
-          </details>
-        </section>
-
-        <!-- stage10-explanation:start address-journey -->
-        <section class="panel explanation-panel" id="explanation-address-journey" data-explains="address-journey" data-explanation-kind="mechanism" aria-labelledby="explanation-address-journey-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-021">
-          <h2 class="explanation-sr-only" id="explanation-address-journey-title">From a URL to a packet on the local link</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-021-address-journey.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining From a URL to a packet on the local link with a structured visual model." />
-            <figcaption class="explanation-sr-only">From a URL to a packet on the local link: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> DNS resolves a domain name to an IP address; it does not return a MAC address.</li><li><strong>Lesson fact:</strong> The network-layer packet header contains the destination IP address of the endpoint.</li><li><strong>Lesson fact:</strong> For one local hop, a link-layer frame contains the IP packet and a destination MAC address.</li><li><strong>Lesson fact:</strong> The destination IP and destination MAC belong to different encapsulation headers.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end address-journey -->
-        <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-021">
-          <div class="section-title">
-            <p class="eyebrow">Interactive tool</p>
-            <h2>Addressing diagnostic helper</h2>
-          </div>
-          <div class="converter-grid">
-            <label>
-              Symptom
-              <select id="symptomInput">
-                <option value="dns">Domain name does not work, but IP address works</option>
-                <option value="local">Device cannot be found on local Ethernet/Wi-Fi link</option>
-                <option value="route">Packets need to cross several networks</option>
-                <option value="url">User typed only part of a web address</option>
-              </select>
-            </label>
-            <button type="button" id="diagnoseBtn">Diagnose</button>
-          </div>
-          <div class="result-box" id="diagnoseResult" aria-live="polite"></div>
-          <div class="method-box" id="diagnoseMethod"></div>
-        </section>
-
-        <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-021">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge examples</p>
-            <h2>Worked examples</h2>
-          </div>
-          <div class="example-tabs" role="tablist" aria-label="Worked examples">
-            <button class="tab active" type="button" data-example="dns">DNS lookup</button>
-            <button class="tab" type="button" data-example="address">IP vs MAC</button>
-            <button class="tab" type="button" data-example="url">URL parts</button>
-          </div>
-          <article class="example-box" id="exampleBox"></article>
-        </section>
-
-        <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-021">
-          <div class="section-title">
-            <p class="eyebrow">Your turn</p>
-            <h2>Practice with instant checking</h2>
-          </div>
-          <div class="practice-list" id="practiceList"></div>
-          <button class="primary-button" type="button" id="checkPractice">Check practice</button>
-          <div class="feedback" id="practiceFeedback" aria-live="polite"></div>
-        </section>
-
-        <section class="panel" id="checkpoint" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-021">
-          <div class="section-title">
-            <p class="eyebrow">Monthly checkpoint</p>
-            <h2>5-minute mini assessment</h2>
-            <p>Use this as a short checkpoint before moving to named protocols. Expand the answer key after attempting.</p>
-          </div>
-          <ol class="homework-list">
-            <li>Explain why DNS is needed when a user enters a URL.</li>
-            <li>State one difference between an IP address and a MAC address.</li>
-            <li>Identify the domain name in <code>https://store.example.com/products/item7</code>.</li>
-          </ol>
-          <button class="answer-toggle" type="button" data-answer="checkpointAnswers">Show checkpoint answers</button>
-          <div class="answer-panel" id="checkpointAnswers">
-            <p><strong>1:</strong> DNS resolves the domain name in the URL to an IP address so packets can be routed to the server.</p>
-            <p><strong>2:</strong> IP is a logical network address that can change; MAC is a hardware/interface address used locally.</p>
-            <p><strong>3:</strong> <code>store.example.com</code>.</p>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start checkpoint -->
-        <section class="panel explanation-panel" id="explanation-checkpoint" data-explains="checkpoint" data-explanation-kind="mechanism" aria-labelledby="explanation-checkpoint-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-021">
-          <h2 class="explanation-sr-only" id="explanation-checkpoint-title">5-minute mini assessment</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-021-checkpoint.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining 5-minute mini assessment with a structured visual model." />
-            <figcaption class="explanation-sr-only">5-minute mini assessment: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Monthly checkpoint</li><li><strong>Lesson fact:</strong> Use this as a short checkpoint before moving to named protocols. Expand the answer key after attempting.</li><li><strong>Lesson fact:</strong> Explain why DNS is needed when a user enters a URL.</li><li><strong>Lesson fact:</strong> State one difference between an IP address and a MAC address.</li><li><strong>Lesson fact:</strong> Identify the domain name in https://store.example.com/products/item7 .</li><li><strong>Lesson fact:</strong> 1: DNS resolves the domain name in the URL to an IP address so packets can be routed to the server.</li><li><strong>Lesson fact:</strong> 2: IP is a logical network address that can change; MAC is a hardware/interface address used locally.</li><li><strong>Lesson fact:</strong> 3: store.example.com .</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end checkpoint -->
-        <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-021">
-          <div class="section-title">
-            <p class="eyebrow">Mistake debugging</p>
-            <h2>Fix the weak addressing answer</h2>
-          </div>
-          <div class="mistake-grid">
-            <article>
-              <p class="wrong">“DNS stores websites.”</p>
-              <button class="answer-toggle" type="button" data-answer="mistake1">Show correction</button>
-              <p class="answer" id="mistake1">DNS stores records that map domain names to IP addresses. The web content is stored on web servers.</p>
-            </article>
-            <article>
-              <p class="wrong">“A MAC address is used to route packets across the internet.”</p>
-              <button class="answer-toggle" type="button" data-answer="mistake2">Show correction</button>
-              <p class="answer" id="mistake2">A MAC address identifies a network interface on a local network. IP addresses are used for routing between networks.</p>
-            </article>
-          </div>
-        </section>
-
-        <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-021">
-          <div class="section-title">
-            <p class="eyebrow">Exam-style questions</p>
-            <h2>Questions with expandable MS</h2>
-            <p>Attempt first, then expand the mark scheme. Strong answers name the identifier and its exact purpose.</p>
-          </div>
-          <div class="exam-list" id="examList"></div>
-        </section>
-
-        <section class="panel summary-panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-021">
-          <div class="section-title">
-            <p class="eyebrow">Summary</p>
-            <h2>Use the right identifier for the right job</h2>
-          </div>
-          <div class="summary-grid">
-            <div><strong>1</strong><span>A URL identifies a resource and can include protocol, domain name and path.</span></div>
-            <div><strong>2</strong><span>DNS resolves domain names to IP addresses.</span></div>
-            <div><strong>3</strong><span>IP addresses support logical addressing and routing between networks.</span></div>
-            <div><strong>4</strong><span>MAC addresses identify network interfaces on a local network.</span></div>
-          </div>
-        </section>
-
-        <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
-          <div class="section-title">
-            <p class="eyebrow">Homework</p>
-            <h2>Clear tasks</h2>
-          </div>
-          <ol class="homework-list">
-            <li>Draw the URL -> DNS -> IP -> MAC journey for opening a web page.</li>
-            <li>Write two differences between an IP address and a MAC address.</li>
-            <li>Break down <code>https://news.example.net/world/story.html</code> into protocol, domain name and path.</li>
-            <li>Write a 5-mark answer explaining why DNS is useful and what happens if DNS lookup fails.</li>
-          </ol>
-          <button class="answer-toggle" type="button" data-answer="homeworkAnswers">Show homework guidance</button>
-          <div class="answer-panel" id="homeworkAnswers">
-            <p><strong>Journey:</strong> start with user-readable URL, then DNS lookup, then IP routing, then local MAC delivery.</p>
-            <p><strong>IP/MAC:</strong> compare use, scope and whether it normally changes.</p>
-            <p><strong>URL:</strong> protocol = <code>https</code>, domain = <code>news.example.net</code>, path = <code>/world/story.html</code>.</p>
-            <p><strong>DNS answer:</strong> mention domain-to-IP resolution and the consequence that names may not resolve.</p>
-          </div>
-        </section>
+        <nav class="v2-bottom-nav" aria-label="Previous and next lesson"><a href="../lesson-020/" >Previous lesson</a><a href="../lesson-022/" >Next lesson</a></nav>
       </div>
     </main>
-
-    <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=3"></script>
-    <script src="../lesson-toolbar.js?v=3"></script>
-    <script src="../stage7-accessibility.js?v=4"></script>
+    <script src="../course-v2.js?v=1"></script>
   </body>
 </html>

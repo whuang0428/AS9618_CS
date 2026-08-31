@@ -3,394 +3,89 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 061 | Choosing translation approaches for development and deployment</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <title>AS9618 Lesson 061 | Bubble sort using arrays</title>
     <link rel="icon" href="data:" />
-    <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
+    <link rel="stylesheet" href="../course-v2.css?v=3" />
   </head>
-  <body>
+  <body data-course-version="2" data-lesson-id="061" data-syllabus-ids="S10.06">
     <a class="skip-link" href="#main-content">Skip to main content</a>
-    <header class="topbar">
-      <div>
-        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 5</p>
-        <h1>Choosing translation approaches for development and deployment</h1>
-      </div>
-      <div class="action-panel" aria-label="Page controls">
-        <a class="course-home-link" href="../">Course home</a>
-        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
-      </div>
+    <header class="v2-topbar">
+      <div><p class="v2-eyebrow">Cambridge AS9618 | Paper 2 | Section 10: Data types and structures</p><h1>Bubble sort using arrays</h1></div>
+      <nav class="v2-actions" aria-label="Lesson actions"><a href="../">Course home</a><a href="../assessments/">Assessment bank</a><button type="button" id="printLesson">Print</button></nav>
     </header>
+    <main class="v2-shell" id="main-content" tabindex="-1">
+      <nav class="v2-toc" aria-label="Lesson contents"><strong>Lesson 061</strong><a href="#overview">Overview</a><a href="#prerequisite">Prerequisite</a><a href="#explanation">Explanation</a><a href="#practice">Practice</a><a href="#summary">Summary</a></nav>
+      <div class="v2-content">
+        <section class="v2-hero" id="overview">
+          <div><p class="v2-eyebrow">Flexible-depth lesson</p><h2>Bubble sort using arrays</h2><p>S10.06 | Select what to omit, teach briefly or explore in depth.</p></div>
+          <div class="v2-time-grid" aria-label="Available lesson depth"><div><strong>Quick</strong><span>diagnose + essentials</span></div><div><strong>Full</strong><span>complete explanation</span></div><div><strong>Deep</strong><span>prerequisites + extension</span></div><div><strong>Choose</strong><span>practice by need</span></div></div>
+        </section>
 
-    <main class="layout" id="main-content" tabindex="-1">
-      <aside class="lesson-nav" aria-label="Lesson navigation">
-        <a href="#overview">Overview</a>
-        <a href="#hook">Warm-up</a>
-        <a href="#decision">Decision frame</a>
-        <a href="#development">Development</a>
-        <a href="#deployment">Deployment</a>
-        <a href="#lowlevel">Low-level code</a>
-        <a href="#pipeline">Pipeline</a>
-        <a href="#diagnostics">Diagnostics</a>
-        <a href="#tool">Choice tool</a>
-        <a href="#examples">Examples</a>
-        <a href="#practice">Practice</a>
-        <a href="#debug">Debugging</a>
-        <a href="#exam">Exam-style</a>
-        <a href="#summary">Summary</a>
-        <a href="#homework">Homework</a>
-      </aside>
+        <section class="v2-panel v2-route-menu" aria-labelledby="route-heading">
+          <div class="v2-heading"><p class="v2-eyebrow">Teacher choice</p><h2 id="route-heading">Choose the depth for this group</h2></div>
+          <div class="v2-route-grid"><article><h3>Quick route</h3><p>Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.</p></article><article><h3>Full route</h3><p>Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.</p></article><article><h3>Deep route</h3><p>Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.</p></article></div>
+        </section>
 
-      <div class="lesson-content">
-        <!-- remediation-v2-stage3-scope:start -->
-        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>This lesson is Optional enrichment or review. It does not establish first use of a new syllabus requirement and is excluded from compulsory coverage and prerequisite statistics.</p></aside>
-        <!-- remediation-v2-stage3-scope:end -->
+        <section class="v2-panel" id="prerequisite">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 1 | optional depth</p><h2>Prerequisite knowledge and quick diagnostic</h2></div>
+          <div class="v2-diagnostic"><p>Recall S10.03 before starting this lesson.</p></div>
+          <p>Give one accurate definition or method step before continuing. If it is missing, revisit only that prerequisite.</p>
+          <details class="v2-prerequisite-detail"><summary>Open optional prerequisite refresher</summary><ul><li>Use the technical terms associated with arrays, including index, lower bound and upper bound. Bounds define the inclusive valid index range and an index selects one element.</li><li>Understand array, index, lower bound and upper bound terminology.</li></ul></details>
+        </section>
 
-<section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-061">
-          <div class="hero-copy">
-            <p class="lesson-meta">Lesson 061 | 45 minutes | Paper 1 Section 5 | System software</p>
-            <h2>The best translator depends on the stage, the code, and the job.</h2>
-            <p>
-              This lesson pulls together translators, compilation stages, linkers, loaders and diagnostics.
-              The exam usually gives a scenario; the answer must choose a suitable approach and justify it with precise technical reasons.
-            </p>
-            <div class="objective-grid" aria-label="Learning objectives">
-              <div><strong>Choose</strong><span>compiler, interpreter or assembler for realistic scenarios</span></div>
-              <div><strong>Justify</strong><span>development, deployment and low-level programming decisions</span></div>
-              <div><strong>Connect</strong><span>translation choices to linking, loading and diagnostics</span></div>
+        <section class="v2-panel" id="explanation">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 2 | deliberately over-complete</p><h2>Knowledge explanation</h2></div>
+          <h3>Learning objectives</h3><ul class="v2-objectives"><li>Write bubble sort and linear search algorithms.</li></ul>
+          <details class="v2-concept-menu"><summary>Open the concept checklist and choose what to teach</summary><ul><li>bubble sort</li><li>linear search</li><li>write</li></ul></details>
+          <div class="v2-explanation-grid">
+            <div>
+              <article class="v2-core-facts"><h3>Detailed explanation</h3><p class="v2-teacher-note">Teach all points, or select only the ones this group needs. The list is intentionally fuller than a fixed lesson slot.</p><ul class="v2-facts"><li>When processing array data, candidates must write a bubble-sort algorithm and a linear-search algorithm. A trace alone is not sufficient evidence of the ability to write each complete algorithm.</li><li>Before tracing a search, define the data structure it traverses. An array is a fixed-size indexed collection whose elements have one declared data type. The index selects one element; it is not the value stored in that element.</li><li>Cambridge pseudocode declares explicit inclusive bounds. In DECLARE Names : ARRAY[1:4] OF STRING, 1 is the lower bound, 4 is the upper bound and the valid indexes are 1, 2, 3 and 4. A search must start and stop within those declared bounds.</li><li>Linear search checks successive indexed elements until the target is found or every populated element has been checked. Binary search also uses indexes, but requires the array to be sorted so each comparison can discard one half of the remaining index range.</li><li>Candidates must be able to write a bubble sort and a linear search algorithm, not only describe or trace an existing algorithm.</li><li>Linear search examines array elements in index order until the target is found or all populated elements have been checked. A complete algorithm initialises its index and found state, keeps every access within the declared bounds, compares the current element and advances only when another element remains to be checked.</li><li>Bubble sort makes repeated passes through the unsorted part of an array. Each pass compares adjacent elements and swaps them when they are in the wrong order. After a complete ascending pass, the largest remaining value is at the high end; the algorithm repeats until the required passes are complete or a whole pass makes no swaps.</li><li>A trace is evidence about one execution, but the syllabus requires candidates to write the algorithms. The answer must therefore include initialisation, loop bounds, comparison, update or swap, and a valid stopping condition rather than only showing one example pass.</li></ul></article>
+              <article class="v2-example"><h3>Worked example</h3><p>Two complete array algorithms: A linear search of Code[1:Count] sets Found to FALSE and Index to 1, then compares Code[Index] with Target while Found is FALSE and Index is within Count. A bubble sort of Value[1:Count] uses nested passes, compares Value[Index] with Value[Index + 1], swaps an inverted pair through Temp and may stop early when a pass makes no swaps.</p></article>
+              <aside class="v2-extension"><h3>Beyond syllabus / 延伸知识（不要求背诵）</h3><p>programming libraries often provide tested ADT implementations, but the exam expects you to understand their behaviour and selection.</p></aside>
             </div>
-          </div>
-          <div class="choice-card-visual" aria-label="Translation choice sketch">
-            <div class="choice-stack">
-              <span>Development? interpreter may help</span>
-              <span>Distribution? compiler often fits</span>
-              <span>Assembly code? assembler</span>
-              <span>Object modules? linker</span>
-              <span>Ready to run? loader</span>
-            </div>
-            <p>Do not pick the fanciest word. Pick the tool that matches the evidence.</p>
+            <figure class="v2-visual">
+              <img src="../assets/diagrams/stage10-infographics/stage10-lesson-118-pseudocode.jpg" alt="Both pseudocode and Java versions visit five score positions.. Increment the pass counter only when the current score is at least 50.. Close the conditional before advancing the loop.. Both complete versions output the final pass count after the loop." loading="lazy" />
+              <figcaption>Same algorithm, different array syntax. One maintained explanation is shown as an image on larger screens and as text on small screens.</figcaption>
+              <div class="v2-mobile-visual-text" aria-label="Mobile text alternative"><ul><li>Both pseudocode and Java versions visit five score positions.</li><li>Increment the pass counter only when the current score is at least 50.</li><li>Close the conditional before advancing the loop.</li><li>Both complete versions output the final pass count after the loop.</li></ul></div>
+            </figure>
           </div>
         </section>
 
-        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-061">
-          <article class="why-card">
-            <h3>Why this matters</h3>
-            <p>Section 5 comparison questions often mix several tools. Marks come from separating their roles cleanly.</p>
-          </article>
-          <article class="trap-card">
-            <h3>Common error</h3>
-            <p>Do not recommend an assembler for every low-level-looking task. Assemblers translate assembly language only.</p>
-          </article>
+        <section class="v2-panel" id="practice">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 3 | select by learner need</p><h2>Practice by question type</h2></div>
+          <div class="v2-question-list"><article class="v2-question" data-question-id="Q-L061-01" data-semantic-fingerprint="S10.06|bubble-sort-using-arrays|apply|what-comparison-made-ascending|written|recall">
+              <div class="v2-question-head"><span class="v2-badge">apply</span><span class="v2-badge">recall</span><span class="v2-badge difficulty">foundation</span><span class="v2-badge">2 marks</span></div>
+              <p><strong>Question 1.</strong> What comparison is made by an ascending bubble sort?</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> Compare adjacent elements and swap when the left element is greater than the right element.</p><p><strong>Marking guidance:</strong> Award one mark for each distinct, technically accurate point or method step.</p><p><strong>Common error:</strong> For the command word apply, perform that exact action; do not replace it with an unrelated fact.</p></div></details>
+            </article><article class="v2-question" data-question-id="Q-L061-02" data-semantic-fingerprint="S10.06|bubble-sort-using-arrays|state|precise-facts-about|written|recall">
+              <div class="v2-question-head"><span class="v2-badge">state</span><span class="v2-badge">recall</span><span class="v2-badge difficulty">application</span><span class="v2-badge">2 marks</span></div>
+              <p><strong>Question 2.</strong> State two precise facts about bubble sort using arrays.</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> When processing array data, candidates must write a bubble-sort algorithm and a linear-search algorithm. A trace alone is not sufficient evidence of the ability to write each complete algorithm. Before tracing a search, define the data structure it traverses. An array is a fixed-size indexed collection whose elements have one declared data type. The index selects one element; it is not the value stored in that element.</p><p><strong>Marking guidance:</strong> Award one mark for each distinct fact; do not credit a repeated point.</p><p><strong>Common error:</strong> Do not repeat the same point in different words; each mark needs a separate idea or method step.</p></div></details>
+            </article><article class="v2-question" data-question-id="Q-L061-03" data-semantic-fingerprint="S10.06|bubble-sort-using-arrays|explain|would-applied-suitable-computing|visual|explain">
+              <div class="v2-question-head"><span class="v2-badge">explain</span><span class="v2-badge">explain</span><span class="v2-badge difficulty">transfer</span><span class="v2-badge">3 marks</span></div>
+              <p><strong>Question 3.</strong> Explain how bubble sort using arrays would be applied in a suitable computing context.</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> Before tracing a search, define the data structure it traverses. An array is a fixed-size indexed collection whose elements have one declared data type. The index selects one element; it is not the value stored in that element. Cambridge pseudocode declares explicit inclusive bounds. In DECLARE Names : ARRAY[1:4] OF STRING, 1 is the lower bound, 4 is the upper bound and the valid indexes are 1, 2, 3 and 4. A search must start and stop within those declared bounds. Linear search checks successive indexed elements until the target is found or every populated element has been checked. Binary search also uses indexes, but requires the array to be sorted so each comparison can discard one half of the remaining index range.</p><p><strong>Marking guidance:</strong> Each mark needs a relevant point linked to the stated context.</p><p><strong>Common error:</strong> Do not copy the worked example unchanged; transfer the method and check it against the new context.</p></div></details>
+            </article></div>
+          <div class="v2-paper-refs">
+          <h3>Related past-paper indexes</h3>
+          <table><thead><tr><th>Reference</th><th>Marks</th><th>Command word</th><th>Question type</th></tr></thead>
+          <tbody><tr><td>9618/21/S/23 Q4(ii)</td><td>1</td><td>write</td><td>recall</td></tr></tbody></table>
+          <p class="v2-copyright-note">Index only: Cambridge question and mark-scheme wording is not reproduced on this public course page.</p>
+        </div>
         </section>
 
-        <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-061">
-          <div class="section-title">
-            <p class="eyebrow">Warm-up hook</p>
-            <h2>A beginner wants to test one statement at a time and see errors quickly. Which approach fits best?</h2>
-            <p>Select the most appropriate answer. Debugging follows a systematic process.</p>
-          </div>
-          <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="interpreter">Use an interpreter during development.</button>
-            <button class="choice-card" type="button" data-hook="compiler">Use only a compiler because all programs should be final immediately.</button>
-            <button class="choice-card" type="button" data-hook="assembler">Use an assembler for the high-level source code.</button>
-            <button class="choice-card" type="button" data-hook="loader">Use a loader to find syntax errors.</button>
-          </div>
-          <div class="feedback" id="hookFeedback" aria-live="polite">
-            Choose one. Match the tool to the stage of work.
-          </div>
+        <section class="v2-panel" id="summary">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 4 | close when ready</p><h2>Summary and exam reminders</h2></div>
+          <div class="v2-summary-grid"><div><h3>Summary</h3><ul class="v2-summary-list"><li>Define bubble sort using arrays with the exact technical vocabulary expected by the syllabus.</li><li>Use the lesson method on a fresh context and show the intermediate decision, representation or calculation.</li><li>Match the shape of the answer to the command word and the available marks.</li><li>Check the final answer against the scenario instead of repeating a memorised sentence.</li></ul></div><div class="v2-error"><h3>Common error to correct</h3><p>Students often confuse the identifier of the whole structure with one element. Correction: access requires an index or field name.</p></div></div>
+          <div class="v2-tip-box"><h3>Exam technique</h3><ul><li>Follow the command word: state gives a fact; explain links a cause to a consequence; compare covers both sides.</li><li>Match the number of independent points or method steps to the available marks.</li><li>For bubble sort using arrays, use the exact technical term before applying it to the scenario.</li></ul></div>
         </section>
 
-        <section class="panel" id="decision" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-061">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 1</p>
-            <h2>A good translator choice starts with four questions</h2>
-          </div>
-          <div class="concept-grid">
-            <article><strong>What code?</strong><span>High-level source code, assembly language, object modules or executable code?</span></article>
-            <article><strong>What stage?</strong><span>Development, testing, deployment, linking or running?</span></article>
-            <article><strong>What output?</strong><span>Immediate execution, object code, executable code or program loaded in memory?</span></article>
-            <article><strong>What feedback?</strong><span>Line-by-line diagnostics, a compiler error list, linker errors or runtime messages?</span></article>
-          </div>
-          <div class="callout">Chinese support: development = 开发阶段；deployment = 部署/发布阶段；translation approach = 翻译方式；diagnostics = 诊断信息；executable = 可执行文件。</div>
-        </section>
-
-        <!-- stage10-explanation:start decision -->
-        <section class="panel explanation-panel" id="explanation-decision" data-explains="decision" data-explanation-kind="mechanism" aria-labelledby="explanation-decision-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-061">
-          <h2 class="explanation-sr-only" id="explanation-decision-title">A good translator choice starts with four questions</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-061-decision.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining A good translator choice starts with four questions with a structured visual model." />
-            <figcaption class="explanation-sr-only">A good translator choice starts with four questions: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> What code? High-level source code, assembly language, object modules or executable code?</li><li><strong>Lesson fact:</strong> What stage? Development, testing, deployment, linking or running?</li><li><strong>Lesson fact:</strong> What output? Immediate execution, object code, executable code or program loaded in memory?</li><li><strong>Lesson fact:</strong> What feedback? Line-by-line diagnostics, a compiler error list, linker errors or runtime messages?</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end decision -->
-        <section class="panel" id="development" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-061">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 2</p>
-            <h2>During development, an interpreter can support rapid testing</h2>
-          </div>
-          <div class="concept-grid">
-            <article><strong>Useful when</strong><span>The programmer wants immediate feedback while writing and testing code.</span></article>
-            <article><strong>Mechanism</strong><span>Translates and executes statements as the program runs.</span></article>
-            <article><strong>Benefit</strong><span>Can stop at or near the statement with an error, helping debugging.</span></article>
-            <article><strong>Trade-off</strong><span>Execution may be slower and source code/interpreter may be needed.</span></article>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start development -->
-        <section class="panel explanation-panel" id="explanation-development" data-explains="development" data-explanation-kind="mechanism" aria-labelledby="explanation-development-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-061">
-          <h2 class="explanation-sr-only" id="explanation-development-title">During development, an interpreter can support rapid testing</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-061-development.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining During development, an interpreter can support rapid testing with a structured visual model." />
-            <figcaption class="explanation-sr-only">During development, an interpreter can support rapid testing: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Useful when The programmer wants immediate feedback while writing and testing code.</li><li><strong>Lesson fact:</strong> Mechanism Translates and executes statements as the program runs.</li><li><strong>Lesson fact:</strong> Benefit Can stop at or near the statement with an error, helping debugging.</li><li><strong>Lesson fact:</strong> Trade-off Execution may be slower and source code/interpreter may be needed.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end development -->
-        <section class="panel" id="deployment" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-061">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 3</p>
-            <h2>For deployment, a compiler often produces a distributable executable</h2>
-          </div>
-          <div class="concept-grid">
-            <article><strong>Useful when</strong><span>A finished program will be distributed to users or run many times.</span></article>
-            <article><strong>Mechanism</strong><span>Translates the whole high-level program before execution.</span></article>
-            <article><strong>Benefit</strong><span>Executable/object code can run without giving users the source code.</span></article>
-            <article><strong>Trade-off</strong><span>Compilation must complete before running; errors may be reported as a list.</span></article>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start deployment -->
-        <section class="panel explanation-panel" id="explanation-deployment" data-explains="deployment" data-explanation-kind="mechanism" aria-labelledby="explanation-deployment-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-061">
-          <h2 class="explanation-sr-only" id="explanation-deployment-title">For deployment, a compiler often produces a distributable executable</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-061-deployment.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining For deployment, a compiler often produces a distributable executable with a structured visual model." />
-            <figcaption class="explanation-sr-only">For deployment, a compiler often produces a distributable executable: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Useful when A finished program will be distributed to users or run many times.</li><li><strong>Lesson fact:</strong> Mechanism Translates the whole high-level program before execution.</li><li><strong>Lesson fact:</strong> Benefit Executable/object code can run without giving users the source code.</li><li><strong>Lesson fact:</strong> Trade-off Compilation must complete before running; errors may be reported as a list.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end deployment -->
-        <section class="panel" id="lowlevel" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-061">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 4</p>
-            <h2>For assembly language, use an assembler</h2>
-          </div>
-          <div class="concept-grid">
-            <article><strong>Input</strong><span>Assembly language mnemonics for a specific processor.</span></article>
-            <article><strong>Output</strong><span>Machine code/object code.</span></article>
-            <article><strong>Use case</strong><span>Low-level code close to hardware or processor instructions.</span></article>
-            <article><strong>Boundary</strong><span>Assembler is not the correct tool for Java, Python or Cambridge pseudocode.</span></article>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start lowlevel -->
-        <section class="panel explanation-panel" id="explanation-lowlevel" data-explains="lowlevel" data-explanation-kind="mechanism" aria-labelledby="explanation-lowlevel-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-061">
-          <h2 class="explanation-sr-only" id="explanation-lowlevel-title">For assembly language, use an assembler</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-061-lowlevel.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining For assembly language, use an assembler with a structured visual model." />
-            <figcaption class="explanation-sr-only">For assembly language, use an assembler: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Input Assembly language mnemonics for a specific processor.</li><li><strong>Lesson fact:</strong> Output Machine code/object code.</li><li><strong>Lesson fact:</strong> Use case Low-level code close to hardware or processor instructions.</li><li><strong>Lesson fact:</strong> Boundary Assembler is not the correct tool for Java, Python or Cambridge pseudocode.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end lowlevel -->
-        <section class="panel" id="pipeline" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-061">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 5</p>
-            <h2>After translation, linking and loading may still be needed</h2>
-          </div>
-          <div class="pipeline-table" role="table" aria-label="Translation pipeline">
-            <div class="table-row table-head" role="row">
-              <div role="columnheader">Stage</div>
-              <div role="columnheader">Tool</div>
-              <div role="columnheader">Precise role</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">High-level source to object code</div>
-              <div role="cell">Compiler</div>
-              <div role="cell">Translates whole program before execution.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">High-level source during execution</div>
-              <div role="cell">Interpreter</div>
-              <div role="cell">Translates and executes statement by statement.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Assembly to machine code</div>
-              <div role="cell">Assembler</div>
-              <div role="cell">Translates mnemonics into machine code.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Object modules to executable</div>
-              <div role="cell">Linker</div>
-              <div role="cell">Combines modules and resolves external references.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Executable to memory</div>
-              <div role="cell">Loader</div>
-              <div role="cell">Places code/data into main memory ready to run.</div>
-            </div>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start pipeline -->
-        <section class="panel explanation-panel" id="explanation-pipeline" data-explains="pipeline" data-explanation-kind="mechanism" aria-labelledby="explanation-pipeline-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-061">
-          <h2 class="explanation-sr-only" id="explanation-pipeline-title">After translation, linking and loading may still be needed</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-061-pipeline.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining After translation, linking and loading may still be needed with a structured visual model." />
-            <figcaption class="explanation-sr-only">After translation, linking and loading may still be needed: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> A compiler translates a whole high-level program before execution.</li><li><strong>Lesson fact:</strong> An interpreter translates and executes high-level source statement by statement during execution.</li><li><strong>Lesson fact:</strong> An interpreter normally does not create a separate permanent executable file.</li><li><strong>Lesson fact:</strong> An assembler translates assembly mnemonics into machine or object code.</li><li><strong>Lesson fact:</strong> A linker combines object modules and resolves references; a loader places executable code and data into memory.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end pipeline -->
-        <section class="panel" id="diagnostics" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-061">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 6</p>
-            <h2>Error feedback affects the best choice during development</h2>
-          </div>
-          <div class="concept-grid">
-            <article><strong>Compiler</strong><span>May provide a list of syntax/translation errors after trying to compile.</span></article>
-            <article><strong>Interpreter</strong><span>May stop at the current statement, useful for step-by-step testing.</span></article>
-            <article><strong>Linker</strong><span>May report unresolved external references after object code exists.</span></article>
-            <article><strong>Testing</strong><span>Logic errors may still need test data and tracing regardless of translator.</span></article>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start diagnostics -->
-        <section class="panel explanation-panel" id="explanation-diagnostics" data-explains="diagnostics" data-explanation-kind="mechanism" aria-labelledby="explanation-diagnostics-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-061">
-          <h2 class="explanation-sr-only" id="explanation-diagnostics-title">Error feedback affects the best choice during development</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-061-diagnostics.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Error feedback affects the best choice during development with a structured visual model." />
-            <figcaption class="explanation-sr-only">Error feedback affects the best choice during development: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Compiler May provide a list of syntax/translation errors after trying to compile.</li><li><strong>Lesson fact:</strong> Interpreter May stop at the current statement, useful for step-by-step testing.</li><li><strong>Lesson fact:</strong> Linker May report unresolved external references after object code exists.</li><li><strong>Lesson fact:</strong> Testing Logic errors may still need test data and tracing regardless of translator.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end diagnostics -->
-        <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-061">
-          <div class="section-title">
-            <p class="eyebrow">Interactive tool</p>
-            <h2>Translation approach selector</h2>
-            <p>Select a scenario and identify the most suitable tool or approach.</p>
-          </div>
-          <div class="converter-grid">
-            <label>
-              Scenario
-              <select id="scenarioInput">
-                <option value="debug">Student wants line-by-line feedback while coding</option>
-                <option value="deploy">Company distributes a finished program without source code</option>
-                <option value="assembly">Programmer writes processor mnemonics</option>
-                <option value="modules">Object modules refer to routines in a library</option>
-                <option value="run">Executable must be placed in memory</option>
-                <option value="logic">Program compiles but gives wrong tax calculation</option>
-              </select>
-            </label>
-            <button class="primary-button" type="button" id="simulateBtn">Choose</button>
-          </div>
-          <div class="result-box" id="simulateResult" aria-live="polite"></div>
-          <div class="method-box" id="simulateMethod"></div>
-          <div class="reject-box" id="simulateTrap"></div>
-        </section>
-
-        <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-061">
-          <div class="section-title">
-            <p class="eyebrow">Worked examples</p>
-            <h2>Scenario choice with exam wording</h2>
-          </div>
-          <div class="example-tabs" role="tablist" aria-label="Worked example tabs">
-            <button class="tab active" type="button" data-example="debug">Development</button>
-            <button class="tab" type="button" data-example="deploy">Deployment</button>
-            <button class="tab" type="button" data-example="assembly">Assembly</button>
-            <button class="tab" type="button" data-example="pipeline">Pipeline</button>
-          </div>
-          <div class="example-box" id="exampleBox"></div>
-        </section>
-
-        <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-061">
-          <div class="section-title">
-            <p class="eyebrow">Practice</p>
-            <h2>Instant-check questions</h2>
-            <p>Type a short answer, then check. Reveal the expected wording only after trying.</p>
-          </div>
-          <div class="practice-list" id="practiceList"></div>
-        </section>
-
-        <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-061">
-          <div class="section-title">
-            <p class="eyebrow">Mistake debugging</p>
-            <h2>Fix the almost-right answers</h2>
-          </div>
-          <div class="mistake-grid" id="mistakeGrid"></div>
-        </section>
-
-        <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-061">
-          <div class="section-title">
-            <p class="eyebrow">Exam-style questions</p>
-            <h2>Answer first, then reveal the Cambridge-style mark scheme</h2>
-            <p>These are original Cambridge-style questions. The mark schemes include strict wording notes and follow-through guidance.</p>
-          </div>
-          <div class="exam-list" id="examList"></div>
-        </section>
-
-        <section class="panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-061">
-          <div class="section-title">
-            <p class="eyebrow">Summary</p>
-            <h2>Choice memory map</h2>
-          </div>
-          <div class="summary-grid">
-            <div><strong>Interpreter</strong><span>Development, rapid feedback, statement-by-statement execution.</span></div>
-            <div><strong>Compiler</strong><span>Deployment, whole program translation, executable/object code.</span></div>
-            <div><strong>Assembler</strong><span>Assembly mnemonics into machine code.</span></div>
-            <div><strong>Linker</strong><span>Object modules and libraries into linked executable code.</span></div>
-            <div><strong>Loader</strong><span>Executable into main memory ready to run.</span></div>
-            <div><strong>Testing</strong><span>Still needed for logic errors and scenario confidence.</span></div>
-          </div>
-        </section>
-
-        <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
-          <div class="section-title">
-            <p class="eyebrow">Homework</p>
-            <h2>Clear output, not vague revision</h2>
-          </div>
-          <div class="homework-list">
-            <article>
-              <strong>Task 1: Decision table</strong>
-              <span>Create a table for compiler, interpreter, assembler, linker and loader: input, output/result, best scenario and one limitation.</span>
-            </article>
-            <article>
-              <strong>Task 2: 6-mark answer</strong>
-              <span>Compare using an interpreter during development with using a compiler for final deployment.</span>
-            </article>
-            <article>
-              <strong>Task 3: Mixed pipeline</strong>
-              <span>Explain how high-level source code can become a running program, including compilation, linking and loading.</span>
-            </article>
-          </div>
-        </section>
+        <nav class="v2-bottom-nav" aria-label="Previous and next lesson"><a href="../lesson-060/" >Previous lesson</a><a href="../lesson-062/" >Next lesson</a></nav>
       </div>
     </main>
-    <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=3"></script>
-    <script src="../lesson-toolbar.js?v=3"></script>
-    <script src="../stage7-accessibility.js?v=4"></script>
+    <script src="../course-v2.js?v=1"></script>
   </body>
 </html>

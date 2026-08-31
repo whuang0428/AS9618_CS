@@ -3,492 +3,89 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 054 | Required utility software</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <title>AS9618 Lesson 054 | Integrated algorithm design from a word problem</title>
     <link rel="icon" href="data:" />
-    <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
+    <link rel="stylesheet" href="../course-v2.css?v=3" />
   </head>
-  <body>
+  <body data-course-version="2" data-lesson-id="054" data-syllabus-ids="S9.02,S9.05,S9.08">
     <a class="skip-link" href="#main-content">Skip to main content</a>
-    <header class="topbar">
-      <div>
-        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 5</p>
-        <h1>Required utility software</h1>
-      </div>
-      <div class="action-panel" aria-label="Page controls">
-        <a class="course-home-link" href="../">Course home</a>
-        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
-      </div>
+    <header class="v2-topbar">
+      <div><p class="v2-eyebrow">Cambridge AS9618 | Paper 2 | Section 9: Algorithm design and problem-solving</p><h1>Integrated algorithm design from a word problem</h1></div>
+      <nav class="v2-actions" aria-label="Lesson actions"><a href="../">Course home</a><a href="../assessments/">Assessment bank</a><button type="button" id="printLesson">Print</button></nav>
     </header>
-
-    <main class="layout" id="main-content" tabindex="-1">
-      <aside class="lesson-nav" aria-label="Lesson navigation">
-        <a href="#overview">Overview</a>
-        <a href="#hook">Warm-up</a>
-        <a href="#concept">Core idea</a>
-        <a href="#process">Process</a>
-        <a href="#memory">Memory</a>
-        <a href="#file">File</a>
-        <a href="#device">Device</a>
-        <a href="#services">Other services</a>
-        <a href="#tool">OS role tool</a>
-        <a href="#examples">Examples</a>
-        <a href="#practice">Practice</a>
-        <a href="#debug">Debugging</a>
-        <a href="#exam">Exam-style</a>
-        <a href="#summary">Summary</a>
-        <a href="#homework">Homework</a>
-        <a href="#stage2-completion">Core syllabus content</a>
-      </aside>
-
-      <div class="lesson-content">
-        <!-- remediation-v2-stage3-scope:start -->
-        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.</p></aside>
-        <!-- remediation-v2-stage3-scope:end -->
-
-<!-- remediation-v2-optional:start -->
-        <aside class="optional-enrichment-notice" aria-label="Optional enrichment scope">
-          <strong>Optional enrichment</strong>
-          <p>command-line, graphical, menu-driven and natural-language user-interface taxonomy. This material is excluded from compulsory syllabus coverage, first-use and assessment statistics.</p>
-          <p><strong>Formal AS prerequisite:</strong> S5.01 operating-system purpose and management roles.</p>
-        </aside>
-        <!-- remediation-v2-optional:end -->
-
-<!-- stage2-completion:start -->
-        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus content</p>
-            <h2>Required utility software</h2>
-          </div>
-          <div class="stage2-explanation">
-            <p>A disk formatter prepares a storage medium with file-system structures. A virus checker scans for, quarantines and removes malware. A disk defragmenter rearranges fragmented file blocks on a magnetic disk; it is not a speed treatment for SSDs.</p>
-            <p>A disk contents analysis/repair utility examines file-system structures, reports faults and attempts defined repairs. Compression reduces file size and backup creates a separate recoverable copy. Encryption may be useful additional protection, but it does not replace any of the six named syllabus utilities.</p>
-            <p>Defragmentation rearranges fragmented blocks on a magnetic disk; disk analysis can locate a file-system fault and a repair operation attempts to correct it.</p>
-          </div>
-          <article class="stage2-example">
-            <h3>Worked example: Choose the utility from the fault</h3>
-            <p>Use a formatter to prepare a new storage medium, disk analysis/repair for file-system errors, a backup to recover a deleted file, and compression to reduce transfer size. Choose by the operation required, not by calling every tool 'maintenance'.</p>
-          </article>
+    <main class="v2-shell" id="main-content" tabindex="-1">
+      <nav class="v2-toc" aria-label="Lesson contents"><strong>Lesson 054</strong><a href="#overview">Overview</a><a href="#prerequisite">Prerequisite</a><a href="#explanation">Explanation</a><a href="#practice">Practice</a><a href="#summary">Summary</a></nav>
+      <div class="v2-content">
+        <section class="v2-hero" id="overview">
+          <div><p class="v2-eyebrow">Flexible-depth lesson</p><h2>Integrated algorithm design from a word problem</h2><p>S9.02, S9.05, S9.08 | Select what to omit, teach briefly or explore in depth.</p></div>
+          <div class="v2-time-grid" aria-label="Available lesson depth"><div><strong>Quick</strong><span>diagnose + essentials</span></div><div><strong>Full</strong><span>complete explanation</span></div><div><strong>Deep</strong><span>prerequisites + extension</span></div><div><strong>Choose</strong><span>practice by need</span></div></div>
         </section>
 
-        <!-- stage10-explanation:start compare -->
-        <section class="panel explanation-panel" id="explanation-compare" data-explains="compare" data-explanation-kind="comparison" aria-labelledby="explanation-compare-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="compare">
-          <h2 class="explanation-sr-only" id="explanation-compare-title">Choose the required utility by its operation</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-056-compare.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Choose the required utility by its operation with a structured visual model." />
-            <figcaption class="explanation-sr-only">Choose the required utility by its operation: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> A disk formatter prepares a storage medium with file-system structures.</li><li><strong>Lesson fact:</strong> A virus checker scans for, quarantines and removes malware.</li><li><strong>Lesson fact:</strong> A disk defragmenter rearranges fragmented file blocks on a magnetic disk.</li><li><strong>Lesson fact:</strong> A disk contents analysis/repair utility examines file-system structures and attempts defined repairs.</li><li><strong>Lesson fact:</strong> Compression reduces file size; backup creates a separate recoverable copy.</li></ol>
-
-          </div>
+        <section class="v2-panel v2-route-menu" aria-labelledby="route-heading">
+          <div class="v2-heading"><p class="v2-eyebrow">Teacher choice</p><h2 id="route-heading">Choose the depth for this group</h2></div>
+          <div class="v2-route-grid"><article><h3>Quick route</h3><p>Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.</p></article><article><h3>Full route</h3><p>Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.</p></article><article><h3>Deep route</h3><p>Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.</p></article></div>
         </section>
-        <!-- stage10-explanation:end compare -->
-        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus practice</p>
-            <h2>Required utility software: apply and assess</h2>
-          </div>
-          <div class="stage2-practice">
-            <h3>Targeted practice</h3>
-            <article class="stage2-question">
-              <p><strong>1.</strong> Which utility prepares file-system structures on a storage medium?</p>
-              <details><summary>Show answer</summary><p>A disk formatter.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>2.</strong> Which utility checks file-system structures and attempts repairs?</p>
-              <details><summary>Show answer</summary><p>A disk contents analysis/repair utility.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>3.</strong> Why is compression not a backup?</p>
-              <details><summary>Show answer</summary><p>Compression reduces size; a backup creates a separate copy that can be restored.</p></details>
-            </article>
-          </div>
-          <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>4 marks</span></div>
-            <p>A computer has a new storage medium and another disk reports file-system errors. Identify the utility for each task and explain its purpose.</p>
-            <details>
-              <summary>Show MS</summary>
-              <table class="mark-scheme-table">
-                <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
-                <tbody>
-                  <tr><td>disk formatter for the new medium</td><td>Do not accept defragmentation as formatting or as a general file-system repair operation.</td><td>1</td></tr>
-                  <tr><td>formatter creates/prepares file-system structures</td><td></td><td>1</td></tr>
-                  <tr><td>disk contents analysis/repair utility for the faulty disk</td><td></td><td>1</td></tr>
-                  <tr><td>it examines structures and reports/attempts repair of faults</td><td></td><td>1</td></tr>
-                </tbody>
-              </table>
-            </details>
-          </article>
-        </section>
-        <!-- stage2-completion:end -->
 
-<section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-054">
-          <div class="hero-copy">
-            <p class="lesson-meta">Lesson 054 | 45 minutes | Paper 1 Section 5 | System software</p>
-            <h2>The operating system is the resource referee.</h2>
-            <p>
-              Programs want CPU time, memory, files and devices. The operating system
-              coordinates those requests so applications can run without each one
-              grabbing the whole machine and yelling "mine".
-            </p>
-            <div class="objective-grid" aria-label="Learning objectives">
-              <div><strong>Describe</strong><span>process, memory, file and device management roles</span></div>
-              <div><strong>Apply</strong><span>OS roles to realistic user and application scenarios</span></div>
-              <div><strong>Correct</strong><span>confusions between OS, utilities, applications and hardware</span></div>
+        <section class="v2-panel" id="prerequisite">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 1 | optional depth</p><h2>Prerequisite knowledge and quick diagnostic</h2></div>
+          <div class="v2-diagnostic"><p>Recall S9.01, S9.03, S9.04, S9.02 before starting this lesson.</p></div>
+          <p>Give one accurate definition or method step before continuing. If it is missing, revisit only that prerequisite.</p>
+          <details class="v2-prerequisite-detail"><summary>Open optional prerequisite refresher</summary><ul><li>Abstraction is required both as a concept and as a practical modelling skill: explain its need and benefits, then produce an abstract model containing only details essential to the problem.</li><li>Understand abstraction, its purpose/benefits and creation of an abstract model.</li><li>An algorithm is a solution to a problem expressed as a sequence of defined steps; the definition requires both the problem-solving purpose and the defined sequence.</li><li>Understand what an algorithm is.</li><li>Students must choose suitable meaningful identifier names and construct an identifier table that records each identifier&#39;s name, data type and purpose for the designed algorithm.</li><li>Choose meaningful identifier names and construct an identifier table.</li></ul></details>
+        </section>
+
+        <section class="v2-panel" id="explanation">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 2 | deliberately over-complete</p><h2>Knowledge explanation</h2></div>
+          <h3>Learning objectives</h3><ul class="v2-objectives"><li>Use decomposition and express a problem as modules.</li><li>Use input-process-output to design pseudocode solutions.</li><li>Use stepwise refinement to develop an algorithm.</li></ul>
+          <details class="v2-concept-menu"><summary>Open the concept checklist and choose what to teach</summary><ul><li>decomposition</li><li>problem</li><li>modules</li><li>procedure</li><li>function</li><li>input-process-output</li><li>design</li><li>pseudocode</li><li>solution</li><li>stepwise</li><li>refinement</li><li>algorithm</li><li>implement</li></ul></details>
+          <div class="v2-explanation-grid">
+            <div>
+              <article class="v2-core-facts"><h3>Detailed explanation</h3><p class="v2-teacher-note">Teach all points, or select only the ones this group needs. The list is intentionally fuller than a fixed lesson slot.</p><ul class="v2-facts"><li>Decomposition must break a problem into sub-problems and lead to a program module, identified at design level as a procedure or function with a distinct responsibility.</li><li>Use input, process and output as the design structure for a complete pseudocode solution; the three parts must connect, use meaningful identifiers and satisfy the stated problem.</li><li>Use stepwise refinement to develop an algorithm from a high-level solution to a level of detail from which a program can be written; each level must preserve the parent purpose.</li><li>Abstraction removes each irrelevant detail that does not affect the required inputs, rules, constraints or outputs. Producing an abstract model means recording the essential details that remain: the data, relationships and processes needed to solve the problem, not merely listing what was ignored.</li><li>Decomposition breaks a problem into smaller sub-problems with distinct responsibilities. Express the resulting design as program modules with clear inputs, processing and outputs; a module may later be implemented as a procedure that performs an action or a function that returns a value.</li><li>Abstraction decides what belongs in the model; decomposition decides how the retained problem is divided. The modules must connect into one complete solution and must not omit a requirement.</li><li>An algorithm is a solution to a problem expressed as a sequence of defined steps. Each step must be unambiguous, ordered where order matters and capable of being carried out; a vague instruction such as &#39;process the data&#39; is not a defined step.</li><li>Before writing pseudocode, identify the input data, the processing that transforms it and the required output. This input-process-output design must describe a complete solution rather than three unrelated lists.</li><li>Choose meaningful identifier names that describe each value&#39;s role. An identifier table records at least the identifier name, data type and purpose; its entries must match the pseudocode solution.</li><li>Stepwise refinement starts with a high-level algorithm and repeatedly replaces each complex step with a smaller sequence of defined substeps. Refinement stops when every step is precise enough to implement and its input and output are clear.</li><li>At each level, preserve the parent step&#39;s purpose and input-process-output relationship. Related substeps can be expressed as program modules, including procedures that perform actions and functions that return calculated values.</li><li>Refinement supports review, implementation and testing because each module has a limited responsibility. It is not merely adding prose: every level must reduce ambiguity and collectively remain a complete solution.</li></ul></article>
+              <article class="v2-example"><h3>Worked example</h3><p>Design a result-processing solution: Keep only student ID and required marks, decompose the task into InputResults, ValidateResult, CalculateMean and OutputReport, record meaningful identifiers and IPO, refine CalculateMean into defined steps, use a range logic statement, and represent the final control flow in Cambridge pseudocode or a matching flowchart.</p></article>
+              <aside class="v2-extension"><h3>Beyond syllabus / 延伸知识（不要求背诵）</h3><p>the same algorithm can be expressed in many programming languages; its logic should remain independent of syntax.</p></aside>
             </div>
-          </div>
-          <div class="os-card" aria-label="Operating system role sketch">
-            <div class="os-stack">
-              <span>Applications request resources</span>
-              <span>OS manages access</span>
-              <span>Hardware is used safely</span>
-              <span>User sees a usable system</span>
-            </div>
-            <p>The OS does not do your homework. It makes the computer able to run the homework app.</p>
+            <figure class="v2-visual">
+              <img src="../assets/diagrams/stage10-infographics/stage10-lesson-100-decomposition.jpg" alt="Split the whole task into meaningful sub-problems with distinct responsibilities.. Express the resulting design as program modules with clear inputs, processing and outputs.. A module may become a procedure that performs an action or a function that returns a value.. Confirm that all modules connect into one complete solution." loading="lazy" />
+              <figcaption>Decomposition: split the problem into sub-problems. One maintained explanation is shown as an image on larger screens and as text on small screens.</figcaption>
+              <div class="v2-mobile-visual-text" aria-label="Mobile text alternative"><ul><li>Split the whole task into meaningful sub-problems with distinct responsibilities.</li><li>Express the resulting design as program modules with clear inputs, processing and outputs.</li><li>A module may become a procedure that performs an action or a function that returns a value.</li><li>Confirm that all modules connect into one complete solution.</li></ul></div>
+            </figure>
           </div>
         </section>
 
-        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-054">
-          <article class="why-card">
-            <h3>Why this matters</h3>
-            <p>Exam answers need a role plus a service. "The OS manages things" is a start, not a complete mark.</p>
-          </article>
-          <article class="trap-card">
-            <h3>Common error</h3>
-            <p>An OS role is not the same as a utility tool. Antivirus and backup are utilities; process scheduling and memory allocation are OS roles.</p>
-          </article>
+        <section class="v2-panel" id="practice">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 3 | select by learner need</p><h2>Practice by question type</h2></div>
+          <div class="v2-question-list"><article class="v2-question" data-question-id="Q-L054-01" data-semantic-fingerprint="S9.02+S9.05+S9.08|integrated-algorithm-design-from-a-word-problem|apply|what-does-decomposition-produce|written|recall">
+              <div class="v2-question-head"><span class="v2-badge">apply</span><span class="v2-badge">recall</span><span class="v2-badge difficulty">foundation</span><span class="v2-badge">2 marks</span></div>
+              <p><strong>Question 1.</strong> What does decomposition produce here?</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> Smaller sub-problems expressed as connected program modules with clear responsibilities.</p><p><strong>Marking guidance:</strong> Award one mark for each distinct, technically accurate point or method step.</p><p><strong>Common error:</strong> For the command word apply, perform that exact action; do not replace it with an unrelated fact.</p></div></details>
+            </article><article class="v2-question" data-question-id="Q-L054-02" data-semantic-fingerprint="S9.02+S9.05+S9.08|integrated-algorithm-design-from-a-word-problem|state|precise-facts-about|pseudocode|recall">
+              <div class="v2-question-head"><span class="v2-badge">state</span><span class="v2-badge">recall</span><span class="v2-badge difficulty">application</span><span class="v2-badge">2 marks</span></div>
+              <p><strong>Question 2.</strong> State two precise facts about integrated algorithm design from a word problem.</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> Decomposition must break a problem into sub-problems and lead to a program module, identified at design level as a procedure or function with a distinct responsibility. Use input, process and output as the design structure for a complete pseudocode solution; the three parts must connect, use meaningful identifiers and satisfy the stated problem.</p><p><strong>Marking guidance:</strong> Award one mark for each distinct fact; do not credit a repeated point.</p><p><strong>Common error:</strong> Do not repeat the same point in different words; each mark needs a separate idea or method step.</p></div></details>
+            </article><article class="v2-question" data-question-id="Q-L054-03" data-semantic-fingerprint="S9.02+S9.05+S9.08|integrated-algorithm-design-from-a-word-problem|explain|would-applied-suitable-computing|pseudocode|explain">
+              <div class="v2-question-head"><span class="v2-badge">explain</span><span class="v2-badge">explain</span><span class="v2-badge difficulty">transfer</span><span class="v2-badge">3 marks</span></div>
+              <p><strong>Question 3.</strong> Explain how integrated algorithm design from a word problem would be applied in a suitable computing context.</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> Use input, process and output as the design structure for a complete pseudocode solution; the three parts must connect, use meaningful identifiers and satisfy the stated problem. Use stepwise refinement to develop an algorithm from a high-level solution to a level of detail from which a program can be written; each level must preserve the parent purpose. Abstraction removes each irrelevant detail that does not affect the required inputs, rules, constraints or outputs. Producing an abstract model means recording the essential details that remain: the data, relationships and processes needed to solve the problem, not merely listing what was ignored.</p><p><strong>Marking guidance:</strong> Each mark needs a relevant point linked to the stated context.</p><p><strong>Common error:</strong> Do not copy the worked example unchanged; transfer the method and check it against the new context.</p></div></details>
+            </article></div>
+          <div class="v2-paper-refs">
+          <h3>Related past-paper indexes</h3>
+          <table><thead><tr><th>Reference</th><th>Marks</th><th>Command word</th><th>Question type</th></tr></thead>
+          <tbody><tr><td>9618/23/W/25 Q2(a)</td><td>6</td><td>describe</td><td>explain</td></tr><tr><td>9618/22/S/25 Q2(a)</td><td>2</td><td>calculate</td><td>calculate</td></tr><tr><td>9618/22/S/25 Q2(i)</td><td>2</td><td>calculate</td><td>calculate</td></tr><tr><td>9618/22/S/25 Q2(ii)</td><td>2</td><td>calculate</td><td>calculate</td></tr></tbody></table>
+          <p class="v2-copyright-note">Index only: Cambridge question and mark-scheme wording is not reproduced on this public course page.</p>
+        </div>
         </section>
 
-        <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-054">
-          <div class="section-title">
-            <p class="eyebrow">Warm-up hook</p>
-            <h2>A video editor, browser and music player are open. Who decides who gets CPU time?</h2>
-            <p>Click the best answer. The browser may think it deserves everything, but the OS has the clipboard.</p>
-          </div>
-          <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="os">The operating system scheduler / process management</button>
-            <button class="choice-card" type="button" data-hook="printer">The printer driver</button>
-            <button class="choice-card" type="button" data-hook="spreadsheet">Spreadsheet software</button>
-            <button class="choice-card" type="button" data-hook="random">Whichever app asks most loudly</button>
-          </div>
-          <div class="feedback" id="hookFeedback" aria-live="polite">
-            Choose one. Multitasking needs controlled allocation of CPU time.
-          </div>
+        <section class="v2-panel" id="summary">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 4 | close when ready</p><h2>Summary and exam reminders</h2></div>
+          <div class="v2-summary-grid"><div><h3>Summary</h3><ul class="v2-summary-list"><li>Define integrated algorithm design from a word problem with the exact technical vocabulary expected by the syllabus.</li><li>Use the lesson method on a fresh context and show the intermediate decision, representation or calculation.</li><li>Match the shape of the answer to the command word and the available marks.</li><li>Check the final answer against the scenario instead of repeating a memorised sentence.</li></ul></div><div class="v2-error"><h3>Common error to correct</h3><p>Students often create one sub-problem per tiny action. Correction: each sub-problem needs a meaningful responsibility.</p></div></div>
+          <div class="v2-tip-box"><h3>Exam technique</h3><ul><li>Follow the command word: state gives a fact; explain links a cause to a consequence; compare covers both sides.</li><li>Match the number of independent points or method steps to the available marks.</li><li>For integrated algorithm design from a word problem, use the exact technical term before applying it to the scenario.</li></ul></div>
         </section>
 
-        <section class="panel" id="concept" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-054">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 1</p>
-            <h2>An OS manages resources and provides services</h2>
-          </div>
-          <div class="concept-grid">
-            <article>
-              <strong>Process management</strong>
-              <span>Controls running programs/processes and allocates processor time.</span>
-            </article>
-            <article>
-              <strong>Memory management</strong>
-              <span>Allocates memory to programs and helps prevent one process accessing another's memory incorrectly.</span>
-            </article>
-            <article>
-              <strong>File management</strong>
-              <span>Organises, stores, retrieves and controls access to files and directories.</span>
-            </article>
-            <article>
-              <strong>Device management</strong>
-              <span>Controls communication with peripherals using drivers, buffers and queues.</span>
-            </article>
-          </div>
-          <div class="callout">Chinese support: process management = 进程管理；memory management = 内存管理；file management = 文件管理；device management = 设备管理；scheduler = 调度程序。</div>
-        </section>
-
-        <!-- stage10-explanation:start concept -->
-        <section class="panel explanation-panel" id="explanation-concept" data-explains="concept" data-explanation-kind="mechanism" aria-labelledby="explanation-concept-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-054">
-          <h2 class="explanation-sr-only" id="explanation-concept-title">Why applications need an operating system</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-054-concept.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Why applications need an operating system through a cause-and-effect diagram." />
-            <figcaption class="explanation-sr-only">Why applications need an operating system: mechanism, reason, result, analogy and boundary condition.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Mechanism:</strong> Applications request services instead of controlling hardware directly.</li><li><strong>Reason:</strong> The operating system checks and schedules those requests.</li><li><strong>Result:</strong> Drivers translate approved requests for particular devices.</li></ol>
-
-            <p><strong>Analogy:</strong> A control centre coordinates many users of limited shared infrastructure.</p>
-            <p><strong>Boundary:</strong> The OS manages access; it cannot make finite hardware unlimited.</p>
-          </div>
-        </section>
-        <!-- stage10-explanation:end concept -->
-        <section class="panel" id="process" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-054">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 2</p>
-            <h2>Process management: sharing processor time</h2>
-          </div>
-          <div class="role-grid">
-            <article><strong>Process</strong><span>A program in execution, with its own state and resources.</span></article>
-            <article><strong>Scheduling</strong><span>Decides which process gets CPU time and when.</span></article>
-            <article><strong>Multitasking</strong><span>Allows several processes to appear to run at the same time by sharing CPU time.</span></article>
-            <article><strong>State tracking</strong><span>Keeps information such as running, ready or blocked/waiting status.</span></article>
-          </div>
-          <div class="why-card inline-card">
-            <h3>Why this matters</h3>
-            <p>When an app freezes, it may be waiting for I/O, blocked, or not receiving CPU time. The OS must track and manage that behaviour.</p>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start process -->
-        <section class="panel explanation-panel" id="explanation-process" data-explains="process" data-explanation-kind="process" aria-labelledby="explanation-process-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-054">
-          <h2 class="explanation-sr-only" id="explanation-process-title">How time-slicing creates apparent simultaneity</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-054-process.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining How time-slicing creates apparent simultaneity through a cause-and-effect diagram." />
-            <figcaption class="explanation-sr-only">How time-slicing creates apparent simultaneity: mechanism, reason, result, analogy and boundary condition.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Mechanism:</strong> A running process receives a short interval of CPU time.</li><li><strong>Reason:</strong> Its state is saved before another ready process runs.</li><li><strong>Result:</strong> Rapid switching keeps several programs responsive.</li></ol>
-
-            <p><strong>Analogy:</strong> One service desk handles many queues by switching between short tasks.</p>
-            <p><strong>Boundary:</strong> Switching has overhead; too much switching reduces useful work.</p>
-          </div>
-        </section>
-        <!-- stage10-explanation:end process -->
-        <section class="panel" id="memory" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-054">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 3</p>
-            <h2>Memory management: allocate, protect, reuse</h2>
-          </div>
-          <div class="memory-flow" aria-label="Memory management flow">
-            <div><strong>1. Program starts</strong><span>The OS allocates memory for code, data and stack/working space.</span></div>
-            <div><strong>2. Program runs</strong><span>The OS tracks which memory blocks are in use.</span></div>
-            <div><strong>3. Protection</strong><span>The OS helps stop processes overwriting each other's memory.</span></div>
-            <div><strong>4. Program ends</strong><span>The OS releases memory so it can be reused.</span></div>
-          </div>
-          <div class="trap-card inline-card">
-            <h3>Common error</h3>
-            <p>Memory management is not the same as file storage. RAM holds running program data; files are stored and organised on storage devices.</p>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start memory -->
-        <section class="panel explanation-panel" id="explanation-memory" data-explains="memory" data-explanation-kind="mechanism" aria-labelledby="explanation-memory-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-054">
-          <h2 class="explanation-sr-only" id="explanation-memory-title">Why memory needs allocation and protection</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-054-memory.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Why memory needs allocation and protection through a cause-and-effect diagram." />
-            <figcaption class="explanation-sr-only">Why memory needs allocation and protection: mechanism, reason, result, analogy and boundary condition.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Mechanism:</strong> Each process receives addresses for its code and data.</li><li><strong>Reason:</strong> Protection blocks one process from overwriting another's region.</li><li><strong>Result:</strong> Released memory can be reassigned safely to later work.</li></ol>
-
-            <p><strong>Analogy:</strong> Separate laboratory benches prevent experiments contaminating each other.</p>
-            <p><strong>Boundary:</strong> Isolation must still allow controlled sharing through OS services.</p>
-          </div>
-        </section>
-        <!-- stage10-explanation:end memory -->
-        <section class="panel" id="file" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-054">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 4</p>
-            <h2>File management: names, folders, access and storage</h2>
-          </div>
-          <div class="file-grid">
-            <article><strong>Directory structure</strong><span>Organises files into folders/directories so users and applications can locate them.</span></article>
-            <article><strong>Metadata</strong><span>Stores information such as file name, type, size, location and timestamps.</span></article>
-            <article><strong>Access control</strong><span>Uses permissions to control who can read, write or execute files.</span></article>
-            <article><strong>File operations</strong><span>Provides services to create, open, save, move, copy and delete files.</span></article>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start file -->
-        <section class="panel explanation-panel" id="explanation-file" data-explains="file" data-explanation-kind="mechanism" aria-labelledby="explanation-file-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-054">
-          <h2 class="explanation-sr-only" id="explanation-file-title">Why files need metadata and access rules</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-054-file.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Why files need metadata and access rules through a cause-and-effect diagram." />
-            <figcaption class="explanation-sr-only">Why files need metadata and access rules: mechanism, reason, result, analogy and boundary condition.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Mechanism:</strong> A name and path let software locate stored content.</li><li><strong>Reason:</strong> Metadata records size, timestamps, type and storage information.</li><li><strong>Result:</strong> Permissions determine which users may read or change it.</li></ol>
-
-            <p><strong>Analogy:</strong> A catalogue locates an archive item while rules control who may handle it.</p>
-            <p><strong>Boundary:</strong> A filename alone neither protects data nor proves its contents.</p>
-          </div>
-        </section>
-        <!-- stage10-explanation:end file -->
-        <section class="panel" id="device" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-054">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 5</p>
-            <h2>Device management: drivers, buffers and queues</h2>
-          </div>
-          <div class="device-table" role="table" aria-label="Device management roles">
-            <div class="table-row table-head" role="row">
-              <div role="columnheader">Feature</div>
-              <div role="columnheader">Purpose</div>
-              <div role="columnheader">Example</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Device driver</div>
-              <div role="cell">Software that allows the OS to communicate with a specific device.</div>
-              <div role="cell">Printer driver translates OS print requests into commands the printer understands.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Buffer</div>
-              <div role="cell">Temporary storage used when devices and CPU work at different speeds.</div>
-              <div role="cell">Keyboard buffer stores keystrokes before a program reads them.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Queue</div>
-              <div role="cell">Orders requests waiting for a device.</div>
-              <div role="cell">Print queue stores documents waiting to print.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Interrupt handling</div>
-              <div role="cell">Responds when a device needs attention.</div>
-              <div role="cell">Printer signals that it is ready for more data.</div>
-            </div>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start device -->
-        <section class="panel explanation-panel" id="explanation-device" data-explains="device" data-explanation-kind="process" aria-labelledby="explanation-device-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-054">
-          <h2 class="explanation-sr-only" id="explanation-device-title">Why drivers, buffers and queues work together</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-054-device.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Why drivers, buffers and queues work together through a cause-and-effect diagram." />
-            <figcaption class="explanation-sr-only">Why drivers, buffers and queues work together: mechanism, reason, result, analogy and boundary condition.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Mechanism:</strong> A driver converts a general request into device-specific commands.</li><li><strong>Reason:</strong> A buffer absorbs the speed difference between producer and device.</li><li><strong>Result:</strong> A queue preserves an orderly sequence of pending requests.</li></ol>
-
-            <p><strong>Analogy:</strong> A loading bay stages deliveries before a slower vehicle can collect them.</p>
-            <p><strong>Boundary:</strong> Buffering smooths bursts but cannot remove a permanently overloaded device.</p>
-          </div>
-        </section>
-        <!-- stage10-explanation:end device -->
-        <section class="panel" id="services" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-054">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 6</p>
-            <h2>Other OS services at overview level</h2>
-          </div>
-          <div class="service-grid">
-            <article><strong>User interface</strong><span>Provides a way for users to interact with the system; Lesson 055 expands interface types.</span></article>
-            <article><strong>Security</strong><span>Supports user accounts, authentication and access rights.</span></article>
-            <article><strong>Error handling</strong><span>Detects and reports system or application errors where possible.</span></article>
-            <article><strong>Application support</strong><span>Provides common services/APIs so applications do not control hardware directly.</span></article>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start services -->
-        <section class="panel explanation-panel" id="explanation-services" data-explains="services" data-explanation-kind="synthesis" aria-labelledby="explanation-services-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-054">
-          <h2 class="explanation-sr-only" id="explanation-services-title">How OS services form one control layer</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-054-services.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining How OS services form one control layer through a cause-and-effect diagram." />
-            <figcaption class="explanation-sr-only">How OS services form one control layer: mechanism, reason, result, analogy and boundary condition.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Mechanism:</strong> Process, memory, file and device managers track different resources.</li><li><strong>Reason:</strong> Common permissions and scheduling rules coordinate their decisions.</li><li><strong>Result:</strong> Applications receive a stable service interface above changing hardware.</li></ol>
-
-            <p><strong>Analogy:</strong> Departments share one operating policy instead of issuing conflicting instructions.</p>
-            <p><strong>Boundary:</strong> Weak coordination between services can still create deadlock or starvation.</p>
-          </div>
-        </section>
-        <!-- stage10-explanation:end services -->
-        <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-054">
-          <div class="section-title">
-            <p class="eyebrow">Interactive tool</p>
-            <h2>OS role classifier</h2>
-            <p>Select a scenario and identify the operating system role being tested.</p>
-          </div>
-          <div class="converter-grid">
-            <label>
-              Scenario
-              <select id="scenarioInput">
-                <option value="process">A game and browser both need CPU time</option>
-                <option value="memory">A program starts and needs RAM allocated</option>
-                <option value="file">A user saves a document into a folder</option>
-                <option value="device">A document waits in a print queue</option>
-                <option value="security">A user account is denied access to a file</option>
-                <option value="error">An application crashes and an error message is shown</option>
-              </select>
-            </label>
-            <button type="button" id="simulateBtn">Classify</button>
-          </div>
-          <div class="result-box" id="simulateResult" aria-live="polite"></div>
-          <div class="method-box" id="simulateMethod"></div>
-          <div class="reject-box" id="simulateTrap"></div>
-        </section>
-
-        <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-054">
-          <div class="section-title">
-            <p class="eyebrow">Worked examples</p>
-            <h2>Name the OS role and justify it</h2>
-          </div>
-          <div class="example-tabs" role="tablist" aria-label="Worked examples">
-            <button class="tab active" type="button" data-example="slow">Slow laptop</button>
-            <button class="tab" type="button" data-example="print">Print job</button>
-            <button class="tab" type="button" data-example="save">Save file</button>
-            <button class="tab" type="button" data-example="memory">Memory conflict</button>
-          </div>
-          <article class="example-box" id="exampleBox"></article>
-        </section>
-
-        <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-054">
-          <div class="section-title">
-            <p class="eyebrow">5-minute quiz</p>
-            <h2>Practice with instant checking</h2>
-            <p>Type the exact OS role or feature. The best answers are boringly precise.</p>
-          </div>
-          <div class="practice-list" id="practiceList"></div>
-        </section>
-
-        <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-054">
-          <div class="section-title">
-            <p class="eyebrow">Mistake debugging</p>
-            <h2>Fix the OS role confusion</h2>
-          </div>
-          <div class="mistake-grid" id="mistakeList"></div>
-        </section>
-
-        <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-054">
-          <div class="section-title">
-            <p class="eyebrow">Exam-style questions</p>
-            <h2>Cambridge-style questions with expandable mark schemes</h2>
-            <p>These are original Cambridge-style questions. MS notes are strict about role, mechanism and user/system consequence.</p>
-          </div>
-          <div class="exam-list" id="examList"></div>
-        </section>
-
-        <section class="panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-054">
-          <div class="section-title">
-            <p class="eyebrow">Summary</p>
-            <h2>The OS manages resources so applications can run</h2>
-          </div>
-          <div class="summary-grid">
-            <div><strong>Process</strong><span>Schedules and tracks running programs/processes.</span></div>
-            <div><strong>Memory</strong><span>Allocates, protects and releases RAM.</span></div>
-            <div><strong>File</strong><span>Organises, stores and controls access to files.</span></div>
-            <div><strong>Device</strong><span>Uses drivers, buffers and queues to manage peripherals.</span></div>
-            <div><strong>Services</strong><span>Provides interface, security, error handling and APIs.</span></div>
-            <div><strong>Exam habit</strong><span>Name the role, describe the mechanism, then state the benefit.</span></div>
-          </div>
-        </section>
-
-        <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
-          <div class="section-title">
-            <p class="eyebrow">Homework</p>
-            <h2>Connect each OS role to a real scenario</h2>
-          </div>
-          <ol class="homework-list">
-            <li>Define process management, memory management, file management and device management.</li>
-            <li>Create a four-column table: user action, OS role, mechanism, benefit.</li>
-            <li>Write a 5-mark answer explaining how an OS manages a print job.</li>
-            <li>Correct this sentence: "The application decides exactly where in memory every other program is stored."</li>
-            <li>Prepare one example each of a CLI, GUI, menu-driven interface and natural language interface for Lesson 055.</li>
-          </ol>
-        </section>
+        <nav class="v2-bottom-nav" aria-label="Previous and next lesson"><a href="../lesson-053/" >Previous lesson</a><a href="../lesson-055/" >Next lesson</a></nav>
       </div>
     </main>
-    <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=3"></script>
-    <script src="../lesson-toolbar.js?v=3"></script>
-    <script src="../stage7-accessibility.js?v=4"></script>
+    <script src="../course-v2.js?v=1"></script>
   </body>
 </html>

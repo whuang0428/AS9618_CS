@@ -3,436 +3,89 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 002 | Integer conversion between binary and denary</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <title>AS9618 Lesson 002 | Binary, denary and hexadecimal number systems</title>
     <link rel="icon" href="data:" />
-    <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
+    <link rel="stylesheet" href="../course-v2.css?v=3" />
   </head>
-  <body>
+  <body data-course-version="2" data-lesson-id="002" data-syllabus-ids="S1.02,S1.03">
     <a class="skip-link" href="#main-content">Skip to main content</a>
-    <header class="topbar">
-      <div>
-        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 1</p>
-        <h1>Integer conversion between binary and denary</h1>
-      </div>
-      <div class="action-panel" aria-label="Page controls">
-        <a class="course-home-link" href="../">Course home</a>
-        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
-      </div>
+    <header class="v2-topbar">
+      <div><p class="v2-eyebrow">Cambridge AS9618 | Paper 1 | Section 1: Information representation</p><h1>Binary, denary and hexadecimal number systems</h1></div>
+      <nav class="v2-actions" aria-label="Lesson actions"><a href="../">Course home</a><a href="../assessments/">Assessment bank</a><button type="button" id="printLesson">Print</button></nav>
     </header>
-
-    <main class="layout" id="main-content" tabindex="-1">
-      <aside class="lesson-nav" aria-label="Lesson navigation">
-        <a href="#overview">Overview</a>
-        <a href="#hook">Warm-up</a>
-        <a href="#knowledge">Place value</a>
-        <a href="#methods">Methods</a>
-        <a href="#range">Range</a>
-        <a href="#converter">Converter</a>
-        <a href="#examples">Examples</a>
-        <a href="#practice">Practice</a>
-        <a href="#exam">Exam-style</a>
-        <a href="#homework">Homework</a>
-        <a href="#stage2-completion">Core syllabus content</a>
-      </aside>
-
-      <div class="lesson-content">
-        <!-- remediation-v2-stage3-scope:start -->
-        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.</p></aside>
-        <!-- remediation-v2-stage3-scope:end -->
-
-<!-- stage2-completion:start -->
-        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus content</p>
-            <h2>Integer conversion between binary and denary</h2>
-          </div>
-          <div class="stage2-explanation">
-            <p>Binary is base 2 and uses place values that are powers of 2. Denary is base 10 and uses place values that are powers of 10. A base label identifies the representation; it does not change the integer value.</p>
-            <p>To convert a binary integer to denary, add the binary place values whose bits are 1. To convert a denary integer to binary, select powers of 2 that sum to the value and write every required bit position, including zeros.</p>
-            <p>Representation overview: the required integer representations are binary, denary, hexadecimal, BCD, one's-complement and two's-complement. Conversion means preserving the integer value while changing its base or signed representation.</p>
-          </div>
-          <article class="stage2-example">
-            <h3>Worked example: Convert the same integer in both directions</h3>
-            <p>10110110 binary = 128 + 32 + 16 + 4 + 2 = 182 denary. Reversing the process, 182 = 128 + 32 + 16 + 4 + 2, so the 8-bit binary representation is 10110110.</p>
-          </article>
+    <main class="v2-shell" id="main-content" tabindex="-1">
+      <nav class="v2-toc" aria-label="Lesson contents"><strong>Lesson 002</strong><a href="#overview">Overview</a><a href="#prerequisite">Prerequisite</a><a href="#explanation">Explanation</a><a href="#practice">Practice</a><a href="#summary">Summary</a></nav>
+      <div class="v2-content">
+        <section class="v2-hero" id="overview">
+          <div><p class="v2-eyebrow">Flexible-depth lesson</p><h2>Binary, denary and hexadecimal number systems</h2><p>S1.02, S1.03 | Select what to omit, teach briefly or explore in depth.</p></div>
+          <div class="v2-time-grid" aria-label="Available lesson depth"><div><strong>Quick</strong><span>diagnose + essentials</span></div><div><strong>Full</strong><span>complete explanation</span></div><div><strong>Deep</strong><span>prerequisites + extension</span></div><div><strong>Choose</strong><span>practice by need</span></div></div>
         </section>
 
-        <!-- stage10-explanation:start systems -->
-        <section class="panel explanation-panel" id="explanation-systems" data-explains="systems" data-explanation-kind="mechanism" aria-labelledby="explanation-systems-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="systems">
-          <h2 class="explanation-sr-only" id="explanation-systems-title">Three ways to represent negative binary values</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-005-systems.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Three ways to represent negative binary values with a structured visual model." />
-            <figcaption class="explanation-sr-only">Three ways to represent negative binary values: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Positive 23 in 8 bits is 00010111.</li><li><strong>Lesson fact:</strong> The 8-bit sign-and-magnitude representation of -23 is 10010111.</li><li><strong>Lesson fact:</strong> The 8-bit one's-complement representation of -23 is 11101000.</li><li><strong>Lesson fact:</strong> The 8-bit two's-complement representation of -23 is 11101001.</li><li><strong>Lesson fact:</strong> Every input, intermediate state and result must contain exactly 8 bits.</li></ol>
-
-          </div>
+        <section class="v2-panel v2-route-menu" aria-labelledby="route-heading">
+          <div class="v2-heading"><p class="v2-eyebrow">Teacher choice</p><h2 id="route-heading">Choose the depth for this group</h2></div>
+          <div class="v2-route-grid"><article><h3>Quick route</h3><p>Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.</p></article><article><h3>Full route</h3><p>Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.</p></article><article><h3>Deep route</h3><p>Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.</p></article></div>
         </section>
-        <!-- stage10-explanation:end systems -->
 
-        <!-- stage10-explanation:start methods -->
-        <section class="panel explanation-panel" id="explanation-methods" data-explains="methods" data-explanation-kind="mechanism" aria-labelledby="explanation-methods-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="methods">
-          <h2 class="explanation-sr-only" id="explanation-methods-title">Two conversion directions, two reliable methods</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-002-methods.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Two conversion directions, two reliable methods with a structured visual model." />
-            <figcaption class="explanation-sr-only">Two conversion directions, two reliable methods: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Binary to denary</li><li><strong>Lesson fact:</strong> Write the place-value row: 128, 64, 32, 16, 8, 4, 2, 1.</li><li><strong>Lesson fact:</strong> Place the binary digits under the row.</li><li><strong>Lesson fact:</strong> Add only the values with a 1 above them.</li><li><strong>Lesson fact:</strong> Label the answer as denary.</li><li><strong>Lesson fact:</strong> Denary to binary</li><li><strong>Lesson fact:</strong> Start at 128 and move right.</li><li><strong>Lesson fact:</strong> Write 1 if the place value fits into the remaining number.</li><li><strong>Lesson fact:</strong> Subtract that place value when a 1 is used.</li><li><strong>Lesson fact:</strong> Write 0 when it does not fit.</li></ol>
-
-          </div>
+        <section class="v2-panel" id="prerequisite">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 1 | optional depth</p><h2>Prerequisite knowledge and quick diagnostic</h2></div>
+          <div class="v2-diagnostic"><p>Recall S1.02 before starting this lesson.</p></div>
+          <p>Give one accurate definition or method step before continuing. If it is missing, revisit only that prerequisite.</p>
+          <details class="v2-prerequisite-detail"><summary>Open optional prerequisite refresher</summary><ul><li>The Version 2 row requires binary, denary, hexadecimal, Binary Coded Decimal (BCD), one&#39;s complement and two&#39;s complement; BCD and complements are representations rather than additional number bases.</li><li>Show understanding of binary, denary and hexadecimal number systems, BCD, and one&#39;s- and two&#39;s-complement representations.</li></ul></details>
         </section>
-        <!-- stage10-explanation:end methods -->
-        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus practice</p>
-            <h2>Integer conversion between binary and denary: apply and assess</h2>
-          </div>
-          <div class="stage2-practice">
-            <h3>Targeted practice</h3>
-            <article class="stage2-question">
-              <p><strong>1.</strong> Convert the binary integer 01001101 to denary.</p>
-              <details><summary>Show answer</summary><p>77.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>2.</strong> Convert the denary integer 129 to 8-bit binary.</p>
-              <details><summary>Show answer</summary><p>10000001.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>3.</strong> Why must a base or representation be stated?</p>
-              <details><summary>Show answer</summary><p>The same digit string can represent different integer values in different number bases.</p></details>
-            </article>
-          </div>
-          <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>4 marks</span></div>
-            <p>Convert 156 denary to 8-bit binary, then convert your binary answer back to denary as a check.</p>
-            <details>
-              <summary>Show MS</summary>
-              <table class="mark-scheme-table">
-                <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
-                <tbody>
-                  <tr><td>selects 128 + 16 + 8 + 4</td><td>Do not award an unlabelled digit string when the base is ambiguous.</td><td>1</td></tr>
-                  <tr><td>10011100</td><td></td><td>1</td></tr>
-                  <tr><td>re-expands the binary place values</td><td></td><td>1</td></tr>
-                  <tr><td>returns to 156 denary</td><td></td><td>1</td></tr>
-                </tbody>
-              </table>
-            </details>
-          </article>
-        </section>
-        <!-- stage2-completion:end -->
 
-<section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-002">
-          <div class="hero-copy">
-            <p class="lesson-meta">Lesson 002 | 45 minutes | Informal questioning</p>
-            <h2>Binary is place value with only two digits.</h2>
-            <p>
-              This lesson converts between positive denary integers and 8-bit binary values.
-              The core exam skill is showing which place values are counted, not just producing
-              a number that looks plausible.
-            </p>
-            <div class="objective-grid" aria-label="Learning objectives">
-              <div>
-                <strong>Read</strong>
-                <span>8-bit binary using place values from 128 to 1</span>
-              </div>
-              <div>
-                <strong>Convert</strong>
-                <span>binary to denary and denary to binary with working</span>
-              </div>
-              <div>
-                <strong>Check</strong>
-                <span>range, leading zeros and base labels in exam answers</span>
-              </div>
+        <section class="v2-panel" id="explanation">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 2 | deliberately over-complete</p><h2>Knowledge explanation</h2></div>
+          <h3>Learning objectives</h3><ul class="v2-objectives"><li>Show understanding of binary, denary and hexadecimal number systems, BCD, and one&#39;s- and two&#39;s-complement representations.</li><li>Convert an integer value from one required number base or representation to another.</li></ul>
+          <details class="v2-concept-menu"><summary>Open the concept checklist and choose what to teach</summary><ul><li>binary</li><li>denary</li><li>hexadecimal</li><li>BCD</li><li>one&#39;s-complement / one&#39;s complement</li><li>two&#39;s-complement / two&#39;s complement</li><li>integer</li><li>convert / conversion</li></ul></details>
+          <div class="v2-explanation-grid">
+            <div>
+              <article class="v2-core-facts"><h3>Detailed explanation</h3><p class="v2-teacher-note">Teach all points, or select only the ones this group needs. The list is intentionally fuller than a fixed lesson slot.</p><ul class="v2-facts"><li>The Version 2 row requires binary, denary, hexadecimal, Binary Coded Decimal (BCD), one&#39;s complement and two&#39;s complement; BCD and complements are representations rather than additional number bases.</li><li>Conversions apply to integer values and the binary, denary, hexadecimal, BCD, one&#39;s-complement and two&#39;s-complement representations named in the preceding Version 2 row.</li><li>Binary is base 2 and uses place values that are powers of 2. Denary is base 10 and uses place values that are powers of 10. A base label identifies the representation; it does not change the integer value.</li><li>To convert a binary integer to denary, add the binary place values whose bits are 1. To convert a denary integer to binary, select powers of 2 that sum to the value and write every required bit position, including zeros.</li><li>Representation overview: the required integer representations are binary, denary, hexadecimal, BCD, one&#39;s-complement and two&#39;s-complement. Conversion means preserving the integer value while changing its base or signed representation.</li><li>Hexadecimal is base 16 and uses digits 0 to 9 and A to F. One hexadecimal digit represents one four-bit binary nibble, so grouping from the right gives an exact conversion between binary and hexadecimal integer representations.</li><li>To convert hexadecimal to denary, multiply each digit value by its power-of-16 place value. Binary, denary and hexadecimal may encode the same integer value even though their written representations differ.</li><li>One&#39;s-complement representation forms a negative integer by inverting every bit of its positive fixed-width value. Two&#39;s-complement representation inverts every bit and adds 1. These are binary representations of signed integers, not separate number bases.</li><li>Unsigned subtraction can be performed column by column using borrowing, or by adding the two&#39;s complement of the subtrahend. For signed two&#39;s-complement subtraction A - B, form the two&#39;s complement of B and add it to A. Retain the fixed width, interpret the sign bit and check the representable range.</li><li>Binary subtraction applies to each positive or negative binary integer as well as binary addition; use the stated fixed width and signed representation when interpreting the result.</li><li>BCD encodes each denary digit separately in four bits. For example, 59 becomes 0101 1001, not the pure-binary value 00111011.</li><li>Only 0000 to 1001 are valid BCD digit groups. BCD is used where decimal digits must be displayed or processed exactly, such as digital clocks, calculators and financial displays, although it usually uses more bits than pure binary.</li></ul></article>
+              <article class="v2-example"><h3>Worked example</h3><p>Convert D6 hexadecimal: D6 hexadecimal = 1101 0110 binary. In denary, D6 = 13 x 16 + 6 = 214, so all three representations encode the integer 214.</p></article>
+              <aside class="v2-extension"><h3>Beyond syllabus / 延伸知识（不要求背诵）</h3><p>real file formats also store headers and metadata, so two files with the same visible content may still have different sizes.</p></aside>
             </div>
-          </div>
-          <div class="binary-display" aria-label="Binary lesson focus">
-            <span>10110110₂</span>
-            <p>Which place values are switched on?</p>
-          </div>
-        </section>
-
-        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-002">
-          <article class="why-card">
-            <h3>Why this matters</h3>
-            <p>Cambridge-style calculation marks often reward visible columns and base labels.</p>
-          </article>
-          <article class="trap-card">
-            <h3>Common error</h3>
-            <p>Do not count every column. Only count a place value when the bit above it is 1.</p>
-          </article>
-        </section>
-
-        <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-002">
-          <div class="section-title">
-            <p class="eyebrow">Warm-up hook</p>
-            <h2>Is `10110110₂` closer to 100 or 200?</h2>
-          </div>
-          <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="low">Closer to 100</button>
-            <button class="choice-card" type="button" data-hook="high">Closer to 200</button>
-            <button class="choice-card" type="button" data-hook="unknown">Impossible without columns</button>
-            <button class="choice-card" type="button" data-hook="decimal">It is already denary</button>
-          </div>
-          <div class="feedback" id="hookFeedback" aria-live="polite">
-            Pick an answer. Then prove it with place values.
+            <figure class="v2-visual">
+              <img src="../assets/diagrams/stage10-infographics/stage10-lesson-005-systems.jpg" alt="Positive 23 in 8 bits is 00010111.. The 8-bit sign-and-magnitude representation of -23 is 10010111.. The 8-bit one&#39;s-complement representation of -23 is 11101000.. The 8-bit two&#39;s-complement representation of -23 is 11101001.. Every input, intermediate state and result must contain exactly 8 bits." loading="lazy" />
+              <figcaption>Three ways to represent negative binary values. One maintained explanation is shown as an image on larger screens and as text on small screens.</figcaption>
+              <div class="v2-mobile-visual-text" aria-label="Mobile text alternative"><ul><li>Positive 23 in 8 bits is 00010111.</li><li>The 8-bit sign-and-magnitude representation of -23 is 10010111.</li><li>The 8-bit one&#39;s-complement representation of -23 is 11101000.</li><li>The 8-bit two&#39;s-complement representation of -23 is 11101001.</li><li>Every input, intermediate state and result must contain exactly 8 bits.</li></ul></div>
+            </figure>
           </div>
         </section>
 
-        <section class="panel" id="knowledge" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-002">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 1</p>
-            <h2>8-bit binary place values</h2>
-          </div>
-          <div class="place-table" aria-label="8-bit binary place value table">
-            <div class="table-row header">
-              <span>Bit position</span><span>7</span><span>6</span><span>5</span><span>4</span><span>3</span><span>2</span><span>1</span><span>0</span>
-            </div>
-            <div class="table-row">
-              <span>Place value</span><span>128</span><span>64</span><span>32</span><span>16</span><span>8</span><span>4</span><span>2</span><span>1</span>
-            </div>
-            <div class="table-row sample">
-              <span>Example bits</span><span>1</span><span>0</span><span>1</span><span>1</span><span>0</span><span>1</span><span>1</span><span>0</span>
-            </div>
-            <div class="table-row active">
-              <span>Count?</span><span>yes</span><span>no</span><span>yes</span><span>yes</span><span>no</span><span>yes</span><span>yes</span><span>no</span>
-            </div>
-          </div>
-          <div class="callout">`10110110₂ = 128 + 32 + 16 + 4 + 2 = 182₁₀`</div>
-          <div class="vocab-strip" aria-label="Key vocabulary">
-            <span><b>binary</b> 二进制</span>
-            <span><b>denary</b> 十进制</span>
-            <span><b>place value</b> 位值</span>
-            <span><b>most significant bit</b> 最高有效位</span>
-            <span><b>least significant bit</b> 最低有效位</span>
-          </div>
+        <section class="v2-panel" id="practice">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 3 | select by learner need</p><h2>Practice by question type</h2></div>
+          <div class="v2-question-list"><article class="v2-question" data-question-id="Q-L002-01" data-semantic-fingerprint="S1.02+S1.03|binary-denary-and-hexadecimal-number-systems|convert|convert-integer-then-bit|written|calculate">
+              <div class="v2-question-head"><span class="v2-badge">convert</span><span class="v2-badge">calculate</span><span class="v2-badge difficulty">foundation</span><span class="v2-badge">4 marks</span></div>
+              <p><strong>Question 1.</strong> Convert the integer 159 denary to hexadecimal and then to 8-bit binary.</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> 159 = 9 x 16 + 15; 9F hexadecimal; maps 9 to 1001 and F to 1111; 10011111 binary</p><p><strong>Marking guidance:</strong> Do not treat A to F as decimal two-digit values.</p><p><strong>Common error:</strong> For the command word convert, perform that exact action; do not replace it with an unrelated fact.</p></div></details>
+            </article><article class="v2-question" data-question-id="Q-L002-02" data-semantic-fingerprint="S1.02+S1.03|binary-denary-and-hexadecimal-number-systems|explain|practical-application-bcd|written|explain">
+              <div class="v2-question-head"><span class="v2-badge">explain</span><span class="v2-badge">explain</span><span class="v2-badge difficulty">application</span><span class="v2-badge">4 marks</span></div>
+              <p><strong>Question 2.</strong> Explain one practical application of BCD and one practical application of hexadecimal.</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> BCD application such as a digital clock, calculator or financial display; links BCD to separate exact denary digits; hexadecimal application such as memory addresses, machine-code/debug output or colour values; links hexadecimal to compact four-bit grouping</p><p><strong>Marking guidance:</strong> Do not award a named application without explaining why the representation suits it.</p><p><strong>Common error:</strong> Do not repeat the same point in different words; each mark needs a separate idea or method step.</p></div></details>
+            </article><article class="v2-question" data-question-id="Q-L002-03" data-semantic-fingerprint="S1.02+S1.03|binary-denary-and-hexadecimal-number-systems|explain|why-suitable-memory-address|visual|explain">
+              <div class="v2-question-head"><span class="v2-badge">explain</span><span class="v2-badge">explain</span><span class="v2-badge difficulty">transfer</span><span class="v2-badge">2 marks</span></div>
+              <p><strong>Question 3.</strong> Why is hexadecimal suitable for a memory address?</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> It is a compact form of binary with one digit per four-bit nibble.</p><p><strong>Marking guidance:</strong> Award one mark for each distinct, technically accurate point or method step.</p><p><strong>Common error:</strong> Do not copy the worked example unchanged; transfer the method and check it against the new context.</p></div></details>
+            </article></div>
+          <div class="v2-paper-refs">
+          <h3>Related past-paper indexes</h3>
+          <table><thead><tr><th>Reference</th><th>Marks</th><th>Command word</th><th>Question type</th></tr></thead>
+          <tbody><tr><td>9618/13/W/25 Q2(a)</td><td>3</td><td>identify</td><td>recall</td></tr><tr><td>9618/11/W/25 Q1(ii)</td><td>2</td><td>complete</td><td>calculate</td></tr><tr><td>9618/11/W/25 Q1(iii)</td><td>2</td><td>convert</td><td>calculate</td></tr><tr><td>9618/12/S/25 Q2(a)</td><td>2</td><td>convert</td><td>calculate</td></tr></tbody></table>
+          <p class="v2-copyright-note">Index only: Cambridge question and mark-scheme wording is not reproduced on this public course page.</p>
+        </div>
         </section>
 
-        <!-- stage10-explanation:start knowledge -->
-        <section class="panel explanation-panel" id="explanation-knowledge" data-explains="knowledge" data-explanation-kind="mechanism" aria-labelledby="explanation-knowledge-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-002">
-          <h2 class="explanation-sr-only" id="explanation-knowledge-title">8-bit binary place values</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-002-knowledge.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining 8-bit binary place values with a structured visual model." />
-            <figcaption class="explanation-sr-only">8-bit binary place values: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Bit position 7 6 5 4 3 2 1 0</li><li><strong>Lesson fact:</strong> Place value 128 64 32 16 8 4 2 1</li><li><strong>Lesson fact:</strong> Example bits 1 0 1 1 0 1 1 0</li><li><strong>Lesson fact:</strong> Count? yes no yes yes no yes yes no</li><li><strong>Lesson fact:</strong> 10110110₂ = 128 + 32 + 16 + 4 + 2 = 182₁₀</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end knowledge -->
-        <section class="panel" id="methods" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-002">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge points 2-3</p>
-            <h2>Two conversion directions, two reliable methods</h2>
-          </div>
-          <div class="method-grid">
-            <article>
-              <h3>Binary to denary</h3>
-              <ol>
-                <li>Write the place-value row: 128, 64, 32, 16, 8, 4, 2, 1.</li>
-                <li>Place the binary digits under the row.</li>
-                <li>Add only the values with a `1` above them.</li>
-                <li>Label the answer as denary.</li>
-              </ol>
-            </article>
-            <article>
-              <h3>Denary to binary</h3>
-              <ol>
-                <li>Start at 128 and move right.</li>
-                <li>Write `1` if the place value fits into the remaining number.</li>
-                <li>Subtract that place value when a `1` is used.</li>
-                <li>Write `0` when it does not fit.</li>
-              </ol>
-            </article>
-          </div>
+        <section class="v2-panel" id="summary">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 4 | close when ready</p><h2>Summary and exam reminders</h2></div>
+          <div class="v2-summary-grid"><div><h3>Summary</h3><ul class="v2-summary-list"><li>Define binary, denary and hexadecimal number systems with the exact technical vocabulary expected by the syllabus.</li><li>Use the lesson method on a fresh context and show the intermediate decision, representation or calculation.</li><li>Match the shape of the answer to the command word and the available marks.</li><li>Check the final answer against the scenario instead of repeating a memorised sentence.</li></ul></div><div class="v2-error"><h3>Common error to correct</h3><p>Students often treat binary digits as decoration. Correction: every bit position has a value; if the position changes, the value changes.</p></div></div>
+          <div class="v2-tip-box"><h3>Exam technique</h3><ul><li>Follow the command word: state gives a fact; explain links a cause to a consequence; compare covers both sides.</li><li>Match the number of independent points or method steps to the available marks.</li><li>For binary, denary and hexadecimal number systems, use the exact technical term before applying it to the scenario.</li></ul></div>
         </section>
 
-        <section id="delivery-06" class="guidance-grid compact" aria-label="Conversion guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-002">
-          <article class="trap-card">
-            <h3>Common error</h3>
-            <p>Students often add a zero column or skip a column. Eight-bit answers need exactly eight bits.</p>
-          </article>
-        </section>
-
-        <section class="panel" id="range" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-002">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 4</p>
-            <h2>Range and leading zeros</h2>
-          </div>
-          <div class="range-grid">
-            <article>
-              <h3>Smallest 8-bit value</h3>
-              <p class="range-value">00000000₂ = 0₁₀</p>
-              <p>All place values are off.</p>
-            </article>
-            <article>
-              <h3>Largest 8-bit value</h3>
-              <p class="range-value">11111111₂ = 255₁₀</p>
-              <p>All place values are on: 128 + 64 + 32 + 16 + 8 + 4 + 2 + 1.</p>
-            </article>
-            <article>
-              <h3>Leading zeros</h3>
-              <p class="range-value">00000111₂ = 111₂ = 7₁₀</p>
-              <p>Leading zeros preserve fixed bit width; they do not change the value.</p>
-            </article>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start range -->
-        <section class="panel explanation-panel" id="explanation-range" data-explains="range" data-explanation-kind="mechanism" aria-labelledby="explanation-range-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-002">
-          <h2 class="explanation-sr-only" id="explanation-range-title">Range and leading zeros</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-002-range.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Range and leading zeros with a structured visual model." />
-            <figcaption class="explanation-sr-only">Range and leading zeros: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Smallest 8-bit value</li><li><strong>Lesson fact:</strong> 00000000₂ = 0₁₀</li><li><strong>Lesson fact:</strong> All place values are off.</li><li><strong>Lesson fact:</strong> Largest 8-bit value</li><li><strong>Lesson fact:</strong> 11111111₂ = 255₁₀</li><li><strong>Lesson fact:</strong> All place values are on: 128 + 64 + 32 + 16 + 8 + 4 + 2 + 1.</li><li><strong>Lesson fact:</strong> Leading zeros</li><li><strong>Lesson fact:</strong> 00000111₂ = 111₂ = 7₁₀</li><li><strong>Lesson fact:</strong> Leading zeros preserve fixed bit width; they do not change the value.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end range -->
-        <section class="panel interactive" id="converter" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-002">
-          <div class="section-title">
-            <p class="eyebrow">Interactive tool</p>
-            <h2>8-bit binary and denary converter</h2>
-          </div>
-          <div class="converter-grid">
-            <label>
-              Direction
-              <select id="convertMode">
-                <option value="binaryToDenary">Binary to denary</option>
-                <option value="denaryToBinary">Denary to binary</option>
-              </select>
-            </label>
-            <label>
-              Value
-              <input id="convertValue" type="text" value="10110110" />
-            </label>
-            <button type="button" id="convertBtn">Convert</button>
-          </div>
-          <div class="result-box" id="convertResult" aria-live="polite"></div>
-          <div class="method-box" id="convertMethod"></div>
-          <div class="bit-visual" id="bitVisual" aria-label="Interactive place-value visual"></div>
-        </section>
-
-        <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-002">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge examples</p>
-            <h2>Worked examples</h2>
-          </div>
-          <div class="example-tabs" role="tablist" aria-label="Worked examples">
-            <button class="tab active" type="button" data-example="binary">10110110₂ to denary</button>
-            <button class="tab" type="button" data-example="denary">77 to binary</button>
-            <button class="tab" type="button" data-example="zero">Leading zeros</button>
-          </div>
-          <article class="example-box" id="exampleBox"></article>
-        </section>
-
-        <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-002">
-          <div class="section-title">
-            <p class="eyebrow">Your turn</p>
-            <h2>Practice with instant checking</h2>
-          </div>
-          <div class="practice-list" id="practiceList"></div>
-          <button type="button" id="checkPractice">Check answers</button>
-          <div class="feedback" id="practiceFeedback" aria-live="polite"></div>
-        </section>
-
-        <section id="delivery-11" class="panel mistake-panel" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-002">
-          <div class="section-title">
-            <p class="eyebrow">Debug the mistakes</p>
-            <h2>Identify and correct the error</h2>
-          </div>
-          <div class="mistake-grid">
-            <article>
-              <h3>Mistake 1</h3>
-              <p class="wrong">10110110₂ = 128 + 64 + 32 + 16 + 8 + 4 + 2 + 1</p>
-              <button type="button" class="reveal" data-reveal="mistake1">Show correction</button>
-              <p class="answer" id="mistake1">Only columns with a `1` are counted: 128 + 32 + 16 + 4 + 2 = 182.</p>
-            </article>
-            <article>
-              <h3>Mistake 2</h3>
-              <p class="wrong">7₁₀ = 1111111₂</p>
-              <button type="button" class="reveal" data-reveal="mistake2">Show correction</button>
-              <p class="answer" id="mistake2">As an 8-bit value, 7 is `00000111₂`. Leading zeros keep the bit width.</p>
-            </article>
-          </div>
-        </section>
-
-        <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-002">
-          <div class="section-title">
-            <p class="eyebrow">Past-paper style</p>
-            <h2>Original exam-style questions</h2>
-          </div>
-          <div class="exam-grid" id="examGrid"></div>
-          <p class="source-note">
-            These are original Cambridge-style questions, not copied Cambridge past paper text.
-            Use the buttons under each question to expand the Cambridge-style mark scheme.
-          </p>
-        </section>
-
-        <section class="panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-002">
-          <div class="section-title">
-            <p class="eyebrow">Summary</p>
-            <h2>Summary of required knowledge</h2>
-          </div>
-          <div class="summary-grid">
-            <div><strong>1</strong><span>Binary place values double from right to left.</span></div>
-            <div><strong>2</strong><span>Binary to denary means adding only the active columns.</span></div>
-            <div><strong>3</strong><span>8-bit positive integers range from 0 to 255.</span></div>
-          </div>
-          <div class="exit-ticket">
-            <label for="exitTicket">Exit ticket</label>
-            <textarea id="exitTicket" rows="3" placeholder="The key point about binary place value is..., and a common mistake is..."></textarea>
-          </div>
-        </section>
-
-        <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
-          <div class="section-title">
-            <p class="eyebrow">Homework</p>
-            <h2>Homework tasks</h2>
-          </div>
-          <ol class="homework-list">
-            <li>Convert these binary values to denary, showing columns: `01010101₂`, `11100010₂`, `00011111₂`.</li>
-            <li>Convert these denary values to 8-bit binary: `19`, `104`, `250`.</li>
-            <li>Write a 3-mark explanation of why `00001010₂` and `1010₂` have the same value but not the same bit width.</li>
-            <li>Extension: create one wrong solution and annotate exactly where the mistake happens.</li>
-          </ol>
-        </section>
-
-        <section id="delivery-15" class="panel homework-support" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-002">
-          <div class="section-title">
-            <p class="eyebrow">Homework support</p>
-            <h2>Check only after attempting</h2>
-          </div>
-          <button
-            type="button"
-            class="reveal"
-            data-reveal="homeworkAnswers"
-            data-open-label="Show homework answers"
-            data-close-label="Hide homework answers"
-          >
-            Show homework answers
-          </button>
-          <div class="answer-panel" id="homeworkAnswers">
-            <p><strong>Binary to denary:</strong> `01010101₂ = 85`; `11100010₂ = 226`; `00011111₂ = 31`.</p>
-            <p><strong>Denary to 8-bit binary:</strong> `19 = 00010011₂`; `104 = 01101000₂`; `250 = 11111010₂`.</p>
-            <p><strong>Explanation focus:</strong> leading zeros do not change value, but they preserve fixed 8-bit width.</p>
-          </div>
-        </section>
+        <nav class="v2-bottom-nav" aria-label="Previous and next lesson"><a href="../lesson-001/" >Previous lesson</a><a href="../lesson-003/" >Next lesson</a></nav>
       </div>
     </main>
-
-    <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=3"></script>
-    <script src="../lesson-toolbar.js?v=3"></script>
-    <script src="../stage7-accessibility.js?v=4"></script>
+    <script src="../course-v2.js?v=1"></script>
   </body>
 </html>

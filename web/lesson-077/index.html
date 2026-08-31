@@ -3,468 +3,89 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 077 | AI applications and impact chains</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <title>AS9618 Lesson 077 | Procedures and parameter passing</title>
     <link rel="icon" href="data:" />
-    <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
+    <link rel="stylesheet" href="../course-v2.css?v=3" />
   </head>
-  <body>
+  <body data-course-version="2" data-lesson-id="077" data-syllabus-ids="S11.06">
     <a class="skip-link" href="#main-content">Skip to main content</a>
-    <header class="topbar">
-      <div>
-        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 7</p>
-        <h1>AI applications and impact chains</h1>
-      </div>
-      <div class="action-panel" aria-label="Page controls">
-        <a class="course-home-link" href="../">Course home</a>
-        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
-      </div>
+    <header class="v2-topbar">
+      <div><p class="v2-eyebrow">Cambridge AS9618 | Paper 2 | Section 11: Programming</p><h1>Procedures and parameter passing</h1></div>
+      <nav class="v2-actions" aria-label="Lesson actions"><a href="../">Course home</a><a href="../assessments/">Assessment bank</a><button type="button" id="printLesson">Print</button></nav>
     </header>
-
-    <main class="layout" id="main-content" tabindex="-1">
-      <aside class="lesson-nav" aria-label="Lesson navigation">
-        <a href="#overview">Overview</a>
-        <a href="#hook">Warm-up</a>
-        <a href="#environment">Environment</a>
-        <a href="#ewaste">E-waste</a>
-        <a href="#social">Social impacts</a>
-        <a href="#digital-divide">Digital divide</a>
-        <a href="#method">Answer method</a>
-        <a href="#analyser">Impact analyser</a>
-        <a href="#builder">Response builder</a>
-        <a href="#examples">Examples</a>
-        <a href="#practice">Practice</a>
-        <a href="#debug">Debugging</a>
-        <a href="#exam">Exam-style</a>
-        <a href="#summary">Summary</a>
-        <a href="#homework">Homework</a>
-        <a href="#stage2-completion">Core syllabus content</a>
-      </aside>
-
-      <div class="lesson-content">
-        <!-- remediation-v2-stage3-scope:start -->
-        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.</p></aside>
-        <!-- remediation-v2-stage3-scope:end -->
-
-<!-- stage2-completion:start -->
-        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus content</p>
-            <h2>AI applications and impact chains</h2>
-          </div>
-          <div class="stage2-explanation">
-            <p>AI applications include medical image classification, recommendation, fraud detection, language processing, autonomous control and predictive maintenance. A valid impact answer names the AI decision mechanism and traces a consequence for a stakeholder.</p>
-            <p>Social impacts include access, bias and privacy; economic impacts include productivity, job redesign and error cost; environmental impacts include data-centre energy/material use and optimisation of transport or power. Evaluation balances benefits, harms and mitigations in context.</p>
-            <p>To evaluate an AI application, balance its social, economic and environmental impacts and reach a context-linked judgement.</p>
-          </div>
-          <article class="stage2-example">
-            <h3>Worked example: Medical triage model</h3>
-            <p>The model prioritises scans, reducing waiting time, but biased training data may miss a patient group. Human review, representative validation data and monitoring can reduce rather than eliminate the risk.</p>
-          </article>
+    <main class="v2-shell" id="main-content" tabindex="-1">
+      <nav class="v2-toc" aria-label="Lesson contents"><strong>Lesson 077</strong><a href="#overview">Overview</a><a href="#prerequisite">Prerequisite</a><a href="#explanation">Explanation</a><a href="#practice">Practice</a><a href="#summary">Summary</a></nav>
+      <div class="v2-content">
+        <section class="v2-hero" id="overview">
+          <div><p class="v2-eyebrow">Flexible-depth lesson</p><h2>Procedures and parameter passing</h2><p>S11.06 | Select what to omit, teach briefly or explore in depth.</p></div>
+          <div class="v2-time-grid" aria-label="Available lesson depth"><div><strong>Quick</strong><span>diagnose + essentials</span></div><div><strong>Full</strong><span>complete explanation</span></div><div><strong>Deep</strong><span>prerequisites + extension</span></div><div><strong>Choose</strong><span>practice by need</span></div></div>
         </section>
 
-        <!-- stage10-explanation:start environment -->
-        <section class="panel explanation-panel" id="explanation-environment" data-explains="environment" data-explanation-kind="mechanism" aria-labelledby="explanation-environment-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="environment">
-          <h2 class="explanation-sr-only" id="explanation-environment-title">Environmental impacts include energy use and resource consumption</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-077-environment.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Environmental impacts include energy use and resource consumption with a structured visual model." />
-            <figcaption class="explanation-sr-only">Environmental impacts include energy use and resource consumption: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Energy use Devices, networks and data centres consume electricity during operation.</li><li><strong>Lesson fact:</strong> Carbon emissions Emissions depend on electricity source, device manufacture and transport.</li><li><strong>Lesson fact:</strong> Resource extraction Manufacturing hardware requires metals, rare materials, water and energy.</li><li><strong>Lesson fact:</strong> Lifespan Short upgrade cycles increase manufacturing and disposal impact.</li></ol>
-
-          </div>
+        <section class="v2-panel v2-route-menu" aria-labelledby="route-heading">
+          <div class="v2-heading"><p class="v2-eyebrow">Teacher choice</p><h2 id="route-heading">Choose the depth for this group</h2></div>
+          <div class="v2-route-grid"><article><h3>Quick route</h3><p>Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.</p></article><article><h3>Full route</h3><p>Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.</p></article><article><h3>Deep route</h3><p>Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.</p></article></div>
         </section>
-        <!-- stage10-explanation:end environment -->
-        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus practice</p>
-            <h2>AI applications and impact chains: apply and assess</h2>
-          </div>
-          <div class="stage2-practice">
-            <h3>Targeted practice</h3>
-            <article class="stage2-question">
-              <p><strong>1.</strong> Give one economic benefit of predictive maintenance.</p>
-              <details><summary>Show answer</summary><p>Reduced downtime or repair cost by predicting failure.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>2.</strong> Give one environmental cost of training a large model.</p>
-              <details><summary>Show answer</summary><p>Electricity use and associated emissions/resource demand.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>3.</strong> Why can biased training data create social harm?</p>
-              <details><summary>Show answer</summary><p>The model may produce systematically poorer decisions for under-represented groups.</p></details>
-            </article>
-          </div>
-          <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>4 marks</span></div>
-            <p>Evaluate the use of AI to select applicants for jobs.</p>
-            <details>
-              <summary>Show MS</summary>
-              <table class="mark-scheme-table">
-                <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
-                <tbody>
-                  <tr><td>valid benefit such as speed/consistent initial processing</td><td>Do not accept a list of generic advantages/disadvantages without linking AI decisions to consequences.</td><td>1</td></tr>
-                  <tr><td>valid risk such as bias, opacity, privacy or exclusion</td><td></td><td>1</td></tr>
-                  <tr><td>explains a stakeholder consequence</td><td></td><td>1</td></tr>
-                  <tr><td>balanced judgement or mitigation linked to the context</td><td></td><td>1</td></tr>
-                </tbody>
-              </table>
-            </details>
-          </article>
-        </section>
-        <!-- stage2-completion:end -->
 
-<section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-077">
-          <div class="hero-copy">
-            <p class="lesson-meta">Lesson 077 | 45 minutes | Paper 1 Section 7 | Ethics and ownership</p>
-            <h2>Computing changes the world. Sometimes the electricity bill is only the first clue.</h2>
-            <p>
-              Computing affects energy use, e-waste, work, access to services, communication, inclusion and
-              inequality. Good exam answers balance benefits with harms and connect each point to a specific
-              stakeholder or consequence.
-            </p>
-            <div class="objective-grid" aria-label="Learning objectives">
-              <div><strong>Explain</strong><span>environmental impacts such as energy use, emissions and e-waste</span></div>
-              <div><strong>Analyse</strong><span>social impacts including work, access, inclusion and inequality</span></div>
-              <div><strong>Evaluate</strong><span>write balanced answers with realistic mitigations</span></div>
+        <section class="v2-panel" id="prerequisite">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 1 | optional depth</p><h2>Prerequisite knowledge and quick diagnostic</h2></div>
+          <div class="v2-diagnostic"><p>Recall the main conclusion from Lesson 076: Selecting and justifying a loop structure.</p></div>
+          <p>Give one accurate definition or method step before continuing. If it is missing, revisit only that prerequisite.</p>
+
+        </section>
+
+        <section class="v2-panel" id="explanation">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 2 | deliberately over-complete</p><h2>Knowledge explanation</h2></div>
+          <h3>Learning objectives</h3><ul class="v2-objectives"><li>Understand and use procedures with parameters passed by reference and by value.</li></ul>
+          <details class="v2-concept-menu"><summary>Open the concept checklist and choose what to teach</summary><ul><li>procedure / procedures</li><li>parameters</li><li>passed / passes / pass</li><li>reference / BYREF</li><li>value / BYVAL</li></ul></details>
+          <div class="v2-explanation-grid">
+            <div>
+              <article class="v2-core-facts"><h3>Detailed explanation</h3><p class="v2-teacher-note">Teach all points, or select only the ones this group needs. The list is intentionally fuller than a fixed lesson slot.</p><ul class="v2-facts"><li>Define and use a procedure; explain when the use of a procedure is appropriate; use parameters with none, one or more values passed by reference or by value.</li><li>Define and use a procedure when an algorithm needs a named action. A procedure may have no parameters, one parameter or several parameters. BYVAL passes a value that the procedure can use without changing the caller&#39;s variable; BYREF gives access to the caller&#39;s variable so an assignment can persist after the call.</li><li>Define and use a function when the caller needs one returned value. A function has a return type and RETURN statement; the call can appear in an expression, for example Total &lt;- Price + CalculateVAT(Price). Use procedures for actions and functions for calculated, searched or checked values.</li><li>A procedure header or function header names the subprogram and declares its parameters; a function header also declares its return type. The procedure/function interface is the information a caller needs to use the subprogram: its name, parameter list and types, and any returned value/type.</li><li>A parameter is the named variable in the header, while an argument is the actual value or variable supplied at a call. RETURN sends a function value back to the caller; output displayed by a procedure is an effect, not a return value.</li></ul></article>
+              <article class="v2-example"><h3>Worked example</h3><p>Use a procedure and a function: PROCEDURE Increase(BYREF Number : INTEGER, BYVAL Amount : INTEGER) changes the caller&#39;s Number by Amount. FUNCTION CalculateVAT(Price : REAL) RETURNS REAL returns Price 0.20, so Total &lt;- Price + CalculateVAT(Price) uses the returned value in an expression. In Increase(Score, 5), Number and Amount are parameters while Score and 5 are arguments.</p></article>
+              <aside class="v2-extension"><h3>Beyond syllabus / 延伸知识（不要求背诵）</h3><p>consistent style, modularity and automated tests reduce maintenance errors in larger programs.</p></aside>
             </div>
-          </div>
-          <div class="impact-card" aria-label="Impact analysis chain">
-            <div class="impact-stack">
-              <span>Technology</span>
-              <span>Stakeholders</span>
-              <span>Benefit</span>
-              <span>Harm</span>
-              <span>Mitigation</span>
-              <span>Judgement</span>
-            </div>
-            <p>"Technology improves life" is not an answer. It is a poster waiting for evidence.</p>
+            <figure class="v2-visual">
+              <img src="../assets/diagrams/stage10-infographics/stage10-lesson-132-compare.jpg" alt="Side-by-side comparison. By reference. Number : INTEGER. What is passed. a copy of the value" loading="lazy" />
+              <figcaption>Same procedure body, different final result. One maintained explanation is shown as an image on larger screens and as text on small screens.</figcaption>
+              <div class="v2-mobile-visual-text" aria-label="Mobile text alternative"><ul><li>Side-by-side comparison</li><li>By reference</li><li>Number : INTEGER</li><li>What is passed</li><li>a copy of the value</li></ul></div>
+            </figure>
           </div>
         </section>
 
-        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-077">
-          <article class="why-card">
-            <h3>Why this matters</h3>
-            <p>Environmental and social impact questions reward balanced evaluation, not a list of unsupported opinions.</p>
-          </article>
-          <article class="trap-card">
-            <h3>Common error</h3>
-            <p>Do not claim computing is simply good or bad for the environment. The impact depends on use, energy source, lifespan and disposal.</p>
-          </article>
+        <section class="v2-panel" id="practice">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 3 | select by learner need</p><h2>Practice by question type</h2></div>
+          <div class="v2-question-list"><article class="v2-question" data-question-id="Q-L077-01" data-semantic-fingerprint="S11.06|procedures-and-parameter-passing|define|define-procedure-addbonus-byref|written|recall">
+              <div class="v2-question-head"><span class="v2-badge">define</span><span class="v2-badge">recall</span><span class="v2-badge difficulty">foundation</span><span class="v2-badge">6 marks</span></div>
+              <p><strong>Question 1.</strong> Define a procedure AddBonus(BYREF Mark : INTEGER, BYVAL Bonus : INTEGER), define a function IsPass(Mark : INTEGER) returning BOOLEAN, and use both from a caller with IsPass(Score) inside an IF expression. Identify headers, parameters, arguments and return value.</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> procedure header and coherent BYREF/BYVAL parameters; procedure changes Mark using Bonus and closes correctly; function header declares BOOLEAN return type; function returns the result of the pass comparison; caller supplies arguments and uses IsPass(Score) in an expression/condition; correctly identifies parameter, argument and returned value terminology</p><p><strong>Marking guidance:</strong> Do not use parameter and argument as synonyms, describe procedure output as a function return, or claim BYVAL changes the caller variable.</p><p><strong>Common error:</strong> For the command word define, perform that exact action; do not replace it with an unrelated fact.</p></div></details>
+            </article><article class="v2-question" data-question-id="Q-L077-02" data-semantic-fingerprint="S11.06|procedures-and-parameter-passing|explain|does-function-return-differ|written|explain">
+              <div class="v2-question-head"><span class="v2-badge">explain</span><span class="v2-badge">explain</span><span class="v2-badge difficulty">application</span><span class="v2-badge">2 marks</span></div>
+              <p><strong>Question 2.</strong> How does a function return differ from procedure output?</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> RETURN supplies a value to the caller; OUTPUT displays data as an action.</p><p><strong>Marking guidance:</strong> Award one mark for each distinct, technically accurate point or method step.</p><p><strong>Common error:</strong> Do not repeat the same point in different words; each mark needs a separate idea or method step.</p></div></details>
+            </article><article class="v2-question" data-question-id="Q-L077-03" data-semantic-fingerprint="S11.06|procedures-and-parameter-passing|state|precise-facts-about|written|recall">
+              <div class="v2-question-head"><span class="v2-badge">state</span><span class="v2-badge">recall</span><span class="v2-badge difficulty">transfer</span><span class="v2-badge">2 marks</span></div>
+              <p><strong>Question 3.</strong> State two precise facts about procedures and parameter passing.</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> Define and use a procedure; explain when the use of a procedure is appropriate; use parameters with none, one or more values passed by reference or by value. Define and use a procedure when an algorithm needs a named action. A procedure may have no parameters, one parameter or several parameters. BYVAL passes a value that the procedure can use without changing the caller&#39;s variable; BYREF gives access to the caller&#39;s variable so an assignment can persist after the call.</p><p><strong>Marking guidance:</strong> Award one mark for each distinct fact; do not credit a repeated point.</p><p><strong>Common error:</strong> Do not copy the worked example unchanged; transfer the method and check it against the new context.</p></div></details>
+            </article></div>
+          <div class="v2-paper-refs">
+          <h3>Related past-paper indexes</h3>
+          <table><thead><tr><th>Reference</th><th>Marks</th><th>Command word</th><th>Question type</th></tr></thead>
+          <tbody><tr><td>9618/22/S/25 Q10(b)</td><td>7</td><td>complete</td><td>trace</td></tr><tr><td>9618/23/W/25 Q5(a)</td><td>5</td><td>complete</td><td>trace</td></tr><tr><td>9618/22/S/25 Q10(ii)</td><td>3</td><td>complete</td><td>trace</td></tr><tr><td>9618/22/W/25 Q1(b)</td><td>3</td><td>complete</td><td>recall</td></tr></tbody></table>
+          <p class="v2-copyright-note">Index only: Cambridge question and mark-scheme wording is not reproduced on this public course page.</p>
+        </div>
         </section>
 
-        <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-077">
-          <div class="section-title">
-            <p class="eyebrow">Warm-up hook</p>
-            <h2>A company moves meetings online and buys new laptops for every worker. Is this environmentally positive?</h2>
-            <p>The answer has more branches than a badly planned flowchart.</p>
-          </div>
-          <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="balanced">It may reduce travel, but device manufacture, energy use and e-waste also matter</button>
-            <button class="choice-card" type="button" data-hook="alwaysGood">Yes, because online meetings have no environmental cost</button>
-            <button class="choice-card" type="button" data-hook="alwaysBad">No, because all computers are bad for the environment</button>
-            <button class="choice-card" type="button" data-hook="onlyCost">Only the price of laptops matters</button>
-          </div>
-          <div class="feedback" id="hookFeedback" aria-live="polite">
-            Choose one. Look for more than one impact.
-          </div>
+        <section class="v2-panel" id="summary">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 4 | close when ready</p><h2>Summary and exam reminders</h2></div>
+          <div class="v2-summary-grid"><div><h3>Summary</h3><ul class="v2-summary-list"><li>Define procedures and parameter passing with the exact technical vocabulary expected by the syllabus.</li><li>Use the lesson method on a fresh context and show the intermediate decision, representation or calculation.</li><li>Match the shape of the answer to the command word and the available marks.</li><li>Check the final answer against the scenario instead of repeating a memorised sentence.</li></ul></div><div class="v2-error"><h3>Common error to correct</h3><p>Students often think working Java automatically means good pseudocode. Correction: Paper 2 rewards clear Cambridge-style algorithm expression.</p></div></div>
+          <div class="v2-tip-box"><h3>Exam technique</h3><ul><li>Follow the command word: state gives a fact; explain links a cause to a consequence; compare covers both sides.</li><li>Match the number of independent points or method steps to the available marks.</li><li>For procedures and parameter passing, use the exact technical term before applying it to the scenario.</li></ul></div>
         </section>
 
-        <section class="panel" id="environment" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-077">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 1</p>
-            <h2>Environmental impacts include energy use and resource consumption</h2>
-          </div>
-          <div class="concept-grid">
-            <article><strong>Energy use</strong><span>Devices, networks and data centres consume electricity during operation.</span></article>
-            <article><strong>Carbon emissions</strong><span>Emissions depend on electricity source, device manufacture and transport.</span></article>
-            <article><strong>Resource extraction</strong><span>Manufacturing hardware requires metals, rare materials, water and energy.</span></article>
-            <article><strong>Lifespan</strong><span>Short upgrade cycles increase manufacturing and disposal impact.</span></article>
-          </div>
-          <div class="callout">Chinese support: environmental impact = 环境影响；energy use = 能源使用；carbon emissions = 碳排放；resource extraction = 资源开采。</div>
-        </section>
-
-        <section class="panel" id="ewaste" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-077">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 2</p>
-            <h2>E-waste is an ethical issue, not just a rubbish-bin issue</h2>
-          </div>
-          <div class="concept-grid">
-            <article><strong>E-waste</strong><span>Discarded electronic devices and components.</span></article>
-            <article><strong>Toxic materials</strong><span>Some components contain harmful substances that can pollute soil or water if mishandled.</span></article>
-            <article><strong>Recycling</strong><span>Responsible recycling can recover materials and reduce landfill, but must be managed safely.</span></article>
-            <article><strong>Reuse and repair</strong><span>Extending device life reduces demand for new manufacturing.</span></article>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start ewaste -->
-        <section class="panel explanation-panel" id="explanation-ewaste" data-explains="ewaste" data-explanation-kind="mechanism" aria-labelledby="explanation-ewaste-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-077">
-          <h2 class="explanation-sr-only" id="explanation-ewaste-title">E-waste is an ethical issue, not just a rubbish-bin issue</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-077-ewaste.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining E-waste is an ethical issue, not just a rubbish-bin issue with a structured visual model." />
-            <figcaption class="explanation-sr-only">E-waste is an ethical issue, not just a rubbish-bin issue: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> E-waste Discarded electronic devices and components.</li><li><strong>Lesson fact:</strong> Toxic materials Some components contain harmful substances that can pollute soil or water if mishandled.</li><li><strong>Lesson fact:</strong> Recycling Responsible recycling can recover materials and reduce landfill, but must be managed safely.</li><li><strong>Lesson fact:</strong> Reuse and repair Extending device life reduces demand for new manufacturing.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end ewaste -->
-        <section class="panel" id="social" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-077">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 3</p>
-            <h2>Social impacts affect work, communication and daily life</h2>
-          </div>
-          <div class="risk-table" role="table" aria-label="Social impact table">
-            <div class="table-row table-head" role="row">
-              <div role="columnheader">Computing change</div>
-              <div role="columnheader">Possible benefit</div>
-              <div role="columnheader">Possible harm</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Remote work</div>
-              <div role="cell">Less commuting, flexible work, access to wider jobs.</div>
-              <div role="cell">Isolation, blurred work-life boundaries, unequal home access.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Automation</div>
-              <div role="cell">Efficiency, safer handling of dangerous or repetitive tasks.</div>
-              <div role="cell">Job displacement, need for retraining, deskilling.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Online services</div>
-              <div role="cell">Access to education, banking, healthcare and communication.</div>
-              <div role="cell">Excludes users without devices, internet, skills or accessible design.</div>
-            </div>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start social -->
-        <section class="panel explanation-panel" id="explanation-social" data-explains="social" data-explanation-kind="mechanism" aria-labelledby="explanation-social-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-077">
-          <h2 class="explanation-sr-only" id="explanation-social-title">Social impacts affect work, communication and daily life</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-077-social.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Social impacts affect work, communication and daily life with a structured visual model." />
-            <figcaption class="explanation-sr-only">Social impacts affect work, communication and daily life: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Computing change</li><li><strong>Lesson fact:</strong> Possible benefit</li><li><strong>Lesson fact:</strong> Possible harm</li><li><strong>Lesson fact:</strong> Remote work</li><li><strong>Lesson fact:</strong> Less commuting, flexible work, access to wider jobs.</li><li><strong>Lesson fact:</strong> Isolation, blurred work-life boundaries, unequal home access.</li><li><strong>Lesson fact:</strong> Automation</li><li><strong>Lesson fact:</strong> Efficiency, safer handling of dangerous or repetitive tasks.</li><li><strong>Lesson fact:</strong> Job displacement, need for retraining, deskilling.</li><li><strong>Lesson fact:</strong> Online services</li><li><strong>Lesson fact:</strong> Access to education, banking, healthcare and communication.</li><li><strong>Lesson fact:</strong> Excludes users without devices, internet, skills or accessible design.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end social -->
-        <section class="panel" id="digital-divide" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-077">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 4</p>
-            <h2>The digital divide is about access, skills and inclusion</h2>
-          </div>
-          <div class="concept-grid">
-            <article><strong>Device access</strong><span>Some users cannot afford suitable hardware.</span></article>
-            <article><strong>Connectivity</strong><span>Reliable high-speed internet is not equally available.</span></article>
-            <article><strong>Digital skills</strong><span>Users may lack confidence or training to use online systems.</span></article>
-            <article><strong>Accessibility</strong><span>Systems should support users with disabilities or different needs.</span></article>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start digital-divide -->
-        <section class="panel explanation-panel" id="explanation-digital-divide" data-explains="digital-divide" data-explanation-kind="mechanism" aria-labelledby="explanation-digital-divide-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-077">
-          <h2 class="explanation-sr-only" id="explanation-digital-divide-title">The digital divide is about access, skills and inclusion</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-077-digital-divide.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining The digital divide is about access, skills and inclusion with a structured visual model." />
-            <figcaption class="explanation-sr-only">The digital divide is about access, skills and inclusion: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Device access Some users cannot afford suitable hardware.</li><li><strong>Lesson fact:</strong> Connectivity Reliable high-speed internet is not equally available.</li><li><strong>Lesson fact:</strong> Digital skills Users may lack confidence or training to use online systems.</li><li><strong>Lesson fact:</strong> Accessibility Systems should support users with disabilities or different needs.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end digital-divide -->
-        <section class="panel" id="method" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-077">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 5</p>
-            <h2>Use a balanced impact structure</h2>
-          </div>
-          <div class="flow-grid">
-            <article><strong>1. Change</strong><span>Name the computing change, such as automation or online services.</span></article>
-            <article><strong>2. Benefit</strong><span>Explain a positive impact for a named stakeholder.</span></article>
-            <article><strong>3. Harm</strong><span>Explain a negative impact with a realistic consequence.</span></article>
-            <article><strong>4. Mitigation</strong><span>Suggest a practical way to reduce harm.</span></article>
-          </div>
-          <div class="answer-frame">
-            <strong>Answer frame:</strong>
-            <span>[Technology] benefits [stakeholder] because [reason]. However, it may harm [stakeholder] by [consequence]. This can be reduced by [mitigation].</span>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start method -->
-        <section class="panel explanation-panel" id="explanation-method" data-explains="method" data-explanation-kind="mechanism" aria-labelledby="explanation-method-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-077">
-          <h2 class="explanation-sr-only" id="explanation-method-title">Use a balanced impact structure</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-077-method.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Use a balanced impact structure with a structured visual model." />
-            <figcaption class="explanation-sr-only">Use a balanced impact structure: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> 1. Change Name the computing change, such as automation or online services.</li><li><strong>Lesson fact:</strong> 2. Benefit Explain a positive impact for a named stakeholder.</li><li><strong>Lesson fact:</strong> 3. Harm Explain a negative impact with a realistic consequence.</li><li><strong>Lesson fact:</strong> 4. Mitigation Suggest a practical way to reduce harm.</li><li><strong>Lesson fact:</strong> Answer frame:</li><li><strong>Lesson fact:</strong> [Technology] benefits [stakeholder] because [reason]. However, it may harm [stakeholder] by [consequence]. This can be reduced by [mitigation].</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end method -->
-        <section class="panel" id="analyser" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-077">
-          <div class="section-title">
-            <p class="eyebrow">Interactive impact analyser</p>
-            <h2>Classify the impact and choose a mitigation</h2>
-            <p>Select a scenario and compare the positive impact, negative impact and mitigation.</p>
-          </div>
-          <div class="converter-grid">
-            <label>
-              Scenario
-              <select id="scenarioInput">
-                <option value="remoteWork">Company moves most meetings online.</option>
-                <option value="dataCentre">Business expands cloud data storage.</option>
-                <option value="newDevices">School replaces tablets every two years.</option>
-                <option value="automation">Factory automates repetitive assembly tasks.</option>
-                <option value="onlineBanking">Bank closes branches and moves services online.</option>
-              </select>
-            </label>
-            <button class="primary-button" type="button" id="analyseBtn">Analyse</button>
-          </div>
-          <div class="result-box" id="analyseResult" aria-live="polite"></div>
-          <div class="method-box" id="analyseBenefit"></div>
-          <div class="reject-box" id="analyseMitigation"></div>
-        </section>
-
-        <!-- stage10-explanation:start analyser -->
-        <section class="panel explanation-panel" id="explanation-analyser" data-explains="analyser" data-explanation-kind="mechanism" aria-labelledby="explanation-analyser-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-077">
-          <h2 class="explanation-sr-only" id="explanation-analyser-title">Classify the impact and choose a mitigation</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-077-analyser.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Classify the impact and choose a mitigation with a structured visual model." />
-            <figcaption class="explanation-sr-only">Classify the impact and choose a mitigation: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Interactive impact analyser</li><li><strong>Lesson fact:</strong> Select a scenario and compare the positive impact, negative impact and mitigation.</li><li><strong>Lesson fact:</strong> Scenario</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end analyser -->
-        <section class="panel" id="builder" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-077">
-          <div class="section-title">
-            <p class="eyebrow">Interactive balanced response builder</p>
-            <h2>Build a mark-worthy evaluation sentence</h2>
-          </div>
-          <div class="builder-grid">
-            <label>
-              Technology
-              <select id="techInput">
-                <option value="automation">automation</option>
-                <option value="remote">remote work</option>
-                <option value="online">online public services</option>
-              </select>
-            </label>
-            <label>
-              Benefit
-              <select id="benefitInput">
-                <option value="efficiency">improves efficiency and reduces repetitive work</option>
-                <option value="travel">reduces travel and commuting</option>
-                <option value="access">improves access for some users</option>
-              </select>
-            </label>
-            <label>
-              Harm
-              <select id="harmInput">
-                <option value="jobs">may displace workers who need retraining</option>
-                <option value="isolation">may increase isolation or blur work-life boundaries</option>
-                <option value="divide">may exclude users without devices, internet or skills</option>
-              </select>
-            </label>
-            <button class="primary-button" type="button" id="buildBtn">Build</button>
-          </div>
-          <div class="result-box" id="buildResult" aria-live="polite"></div>
-        </section>
-
-        <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-077">
-          <div class="section-title">
-            <p class="eyebrow">Worked examples</p>
-            <h2>Four model answers with balanced impacts</h2>
-          </div>
-          <div class="example-tabs" role="tablist" aria-label="Worked examples">
-            <button class="tab active" type="button" data-example="remote">Remote work</button>
-            <button class="tab" type="button" data-example="ewaste">E-waste</button>
-            <button class="tab" type="button" data-example="automation">Automation</button>
-            <button class="tab" type="button" data-example="divide">Digital divide</button>
-          </div>
-          <div class="example-box" id="exampleBox" aria-live="polite"></div>
-        </section>
-
-        <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-077">
-          <div class="section-title">
-            <p class="eyebrow">Practice with instant checking</p>
-            <h2>Check vocabulary before writing full evaluations</h2>
-          </div>
-          <div class="practice-list" id="practiceList"></div>
-        </section>
-
-        <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-077">
-          <div class="section-title">
-            <p class="eyebrow">Mistake debugging</p>
-            <h2>Fix answers that make one-sided claims</h2>
-          </div>
-          <div class="mistake-grid" id="mistakeGrid"></div>
-        </section>
-
-        <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-077">
-          <div class="section-title">
-            <p class="eyebrow">Exam-style questions</p>
-            <h2>Cambridge-style environmental and social impact questions with expandable MS</h2>
-            <p>Attempt first. Then check whether each point includes a stakeholder, consequence and realistic mitigation where appropriate.</p>
-          </div>
-          <div class="exam-list" id="examList"></div>
-        </section>
-
-        <section class="panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-077">
-          <div class="section-title">
-            <p class="eyebrow">Summary</p>
-            <h2>Environmental and social impacts in six exam-ready ideas</h2>
-          </div>
-          <div class="summary-grid">
-            <div><strong>Energy</strong><span>Devices, networks and data centres use electricity.</span></div>
-            <div><strong>E-waste</strong><span>Short device lifespans create disposal and toxic-material risks.</span></div>
-            <div><strong>Work</strong><span>Automation and remote work can help some workers and harm others.</span></div>
-            <div><strong>Access</strong><span>Online services can improve access but widen the digital divide.</span></div>
-            <div><strong>Mitigation</strong><span>Use recycling, repair, efficient design, training and inclusive access.</span></div>
-            <div><strong>Balance</strong><span>Give both benefit and harm before reaching a judgement.</span></div>
-          </div>
-        </section>
-
-        <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
-          <div class="section-title">
-            <p class="eyebrow">Homework</p>
-            <h2>Practise balanced impact evaluation</h2>
-          </div>
-          <div class="homework-list">
-            <article>
-              <strong>Task 1: Impact table</strong>
-              <span>Choose one technology: online learning, automation, cloud storage or remote work. Make a table with environmental benefit, environmental harm, social benefit, social harm and mitigation.</span>
-            </article>
-            <article>
-              <strong>Task 2: Rewrite weak claims</strong>
-              <span>Rewrite: "Online services are better because they are convenient." Add stakeholder, exclusion risk, environmental consideration and one mitigation.</span>
-            </article>
-            <article>
-              <strong>Task 3: Timed response</strong>
-              <span>Answer in 8 minutes: "Evaluate the environmental and social impacts of replacing face-to-face services with online services." Include a balanced conclusion.</span>
-            </article>
-          </div>
-        </section>
+        <nav class="v2-bottom-nav" aria-label="Previous and next lesson"><a href="../lesson-076/" >Previous lesson</a><a href="../lesson-078/" >Next lesson</a></nav>
       </div>
     </main>
-
-    <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=3"></script>
-    <script src="../lesson-toolbar.js?v=3"></script>
-    <script src="../stage7-accessibility.js?v=4"></script>
+    <script src="../course-v2.js?v=1"></script>
   </body>
 </html>

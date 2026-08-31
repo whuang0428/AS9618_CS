@@ -1,53 +1,54 @@
-# AS9618 Computer Science 2027-2029 AS Lesson Plans
+# AS9618 Computer Science 2027-2029 — 90-lesson course
 
-This repository contains the completed ten-stage classroom teaching and self-study course pack for Cambridge International AS Level Computer Science 9618, syllabus years 2027-2029.
+This repository contains an AS Level-only course for Cambridge International Computer Science 9618, syllabus years 2027-2029 Version 2.
+
+The active curriculum contains 90 lessons in official Section 1-12 order. Paper 1 and Paper 2 each contain 44 teaching lessons and one integrated review/error-diagnosis lesson. Lesson numbers are content units, not fixed-duration promises: every lesson is deliberately over-complete so a teacher can omit, teach briefly or explore material in depth.
 
 Official qualification page: <https://www.cambridgeinternational.org/programmes-and-qualifications/cambridge-international-as-and-a-level-computer-science-9618/>
 
-Syllabus reference used for this pack: Cambridge International AS & A Level Computer Science 9618 syllabus for examination in 2027, 2028 and 2029, Version 2.
-
-## Project Status
-
-All 151 lesson numbers have both a teacher-facing Markdown plan and an interactive webpage. The requirement-level syllabus audit is generated from a 121-requirement coverage contract and maps each requirement to direct teaching, practice/mark-scheme and assessment evidence. The assessment bank provides 30 ten-mark quizzes, 7 thirty-mark monthly checkpoints and 14 twenty-mark stage reviews. Stage 5 reviewed and approved all 968 exam-style mark schemes (755 lesson questions and 213 assessment questions); 295 questions in System Software, Security, Ethics and Databases received a specialist second review. Stage 6 completed desktop and mobile full-page QA for all 151 lessons plus the course, assessment and resource hubs. Stage 7 completed keyboard, semantic, contrast and bilingual-language accessibility QA for the same 154 pages. Stage 8 provides a versioned, checksummed and source-matched offline release. Stage 9 adds a fixed lesson toolbar, audited delivery metadata, teacher filters in the Assessment Bank and a static 151-lesson catalogue. Stage 10 adds 784 maintained academic infographics with source-grounded text alternatives across all 151 lessons.
-
-The shared web version prioritises classroom teaching while preserving each complete lesson for student preview and revision. Every lesson provides `Course home`, previous/next lesson controls and section shortcuts without changing or hiding lesson content. The comprehensive visual register tracks 971 diagrams and interactive visuals, including 784 Stage 10 knowledge-point infographics. Those 784 images have two recorded semantic review passes, while automated checks cover structure, dimensions, file budgets, accessible transcripts and current asset hashes.
-
-## Course Design
+## Active course design
 
 - Target: AS Level only.
-- Papers: Paper 1, Sections 1-8; Paper 2, Sections 9-12.
-- Length: 151 lessons, 45 minutes each.
-- Orientation-only lessons are not included; Lesson 001 starts with syllabus content.
-- Included: stage review, short quizzes, monthly assessments, marking guidance.
-- Excluded: school midterm and final examinations.
-- Language style: English first, Chinese support for difficult concepts.
-- Programming approach: Cambridge pseudocode is the exam standard; Java is used only as a supporting implementation language.
+- Structure: Paper 1 lessons 001-045; Paper 2 lessons 046-090.
+- Sequence: Cambridge syllabus Sections 1-12.
+- Teaching depth: `Quick`, `Full` and `Deep` routes on every lesson page.
+- Lesson flow: prerequisite/diagnostic → rich explanation → varied practice → summary and exam reminders.
+- Practice: 272 original lesson questions, normally three per teaching lesson and four in each integrated review.
+- Assessment Bank: 12 cumulative section checks and two original 75-mark paper mocks.
+- Coverage: all 121 syllabus requirements have direct teaching and practice evidence.
+- Exam language: Cambridge pseudocode is the standard; Java is supporting material only.
+- Copyright boundary: the public repository stores past-paper indexes and statistics, never Cambridge question or mark-scheme wording.
 
-## Folder Structure
+The former Targeted Practice, Exam-style and fixed Homework columns are no longer active. Valuable explanations, examples and visuals were consolidated into one lesson flow. Old `/lesson-091/` to `/lesson-151/` routes are lightweight redirects to the corresponding new lessons.
 
-- `course-map.md`: syllabus mapping, pacing, and assessment rhythm.
-- `syllabus-audit.md`: requirement-level coverage evidence, gaps, and fixed repair targets.
-- `stage4-assessment-audit.md`: Stage 4 assessment acceptance criteria and verification evidence.
-- `audits/`: Stage 5 question-level approvals, Stage 6 visual QA, Stage 7 accessibility, Stage 8 release evidence and the Stage 9 classroom-delivery register.
-- `lessons/`: 151 generated lesson plans undergoing syllabus coverage and content-quality review.
-- `assessments/`: 51 topic-specific assessment items: 30 quizzes, 7 monthly checkpoints and 14 stage reviews, all with answer keys/MS.
-- `resources/`: glossary, pseudocode-Java guide, misconception bank, and Cambridge-style MS conventions.
-- `web/`: 151 independent teaching/self-study lesson webpages, a searchable course index, and the interactive assessment bank.
-- `release/`: final release metadata and handover notes.
-- `dist/`: generated final ZIP and SHA-256 sidecar; ignored because they are reproducible build outputs.
+## Teaching a lesson
 
-## How To Use
+Each page offers three routes:
 
-1. Start with `course-map.md` to see the full pacing plan, then use `syllabus-audit.md` to check current coverage status.
-2. Teach lessons in numerical order unless your school timetable requires rearrangement.
-3. Use the mini-quiz inside each lesson for retrieval practice.
-4. Use `assessments/quizzes.md` every 4-5 lessons, `assessments/monthly-assessments.md` roughly every 18-20 lessons, and `assessments/stage-reviews.md` at the mapped review points.
-5. For Paper 2, keep reminding students that Java examples are practice scaffolds, not Cambridge pseudocode answers.
-6. Apply `resources/cambridge-ms-conventions.md` when marking original course questions; use current official Cambridge papers for final wording calibration.
+- **Quick:** use the diagnostic, objectives, first worked example and foundation question.
+- **Full:** teach every detailed explanation point, the worked example and all questions.
+- **Deep:** add prerequisite refreshers, connect the concept checklist, discuss the clearly labelled beyond-syllabus material and use the transfer task.
 
-## Web Version
+These are choices, not time limits. The lesson content is intentionally richer than a single fixed classroom slot.
 
-Run a local static server from the project root:
+## Repository structure
+
+- `course-map.md`: evidence-based allocation and the complete 90-lesson sequence.
+- `lessons/`: 90 active Markdown lesson plans.
+- `web/`: searchable course index, 90 active pages, 61 legacy redirects, resources and Assessment Bank.
+- `assessments/assessment-bank.md`: 12 section checks and two paper mocks.
+- `scripts/course-v2-content.json`: the active lesson-content contract.
+- `scripts/course-v2-coverage-contract.json`: 121-requirement active coverage evidence.
+- `scripts/question-bank-contract.json`: original question metadata and semantic fingerprints.
+- `scripts/past-paper-frequency-contract.json`: copyright-safe frequency metadata for 36 papers and 36 mark schemes.
+- `scripts/course-v2-migration.json`: complete 151→90 migration registry.
+- `audits/course-v2-redundancy-and-migration-report.md`: plain-language redundancy findings and consolidation result.
+- `audits/`: previous Stage audit files retained as historical evidence; they are not the active V2 acceptance standard.
+- `dist/`: reproducible ZIP and SHA-256 outputs; ignored by Git.
+
+## Local web version
+
+Run from the repository root:
 
 ```bash
 python3 -m http.server 8769 --directory web
@@ -55,83 +56,47 @@ python3 -m http.server 8769 --directory web
 
 Then open:
 
-- Course web index: <http://127.0.0.1:8769/>
-- Interactive assessment bank: <http://127.0.0.1:8769/assessments/>
+- Course index: <http://127.0.0.1:8769/>
+- Assessment Bank: <http://127.0.0.1:8769/assessments/>
 - Resource centre: <http://127.0.0.1:8769/resources/>
 - Example lesson: <http://127.0.0.1:8769/lesson-001/>
 
-Each lesson always displays the complete teaching and revision page. The lesson contents navigation is collapsed by default so the teaching content can use the full width; use `Show contents` to open it when needed. Use the fixed bottom toolbar to move between lessons, jump to Warm-up/Core/Practice/Exam/Homework or open the Assessment Bank.
+At 390px mobile width, retained infographics are replaced by text cards from the same maintained fact source instead of showing the full image and duplicate text together.
 
-All 154 web pages load `web/academic-theme.css` after their page-specific styles. This shared offline theme supplies the academic editorial typography, colour, spacing and responsive masthead while preserving each lesson's specialised diagrams and interactions. The assessment and resource generators, plus the classroom-delivery pass, retain the theme link when generated HTML is rebuilt.
+## Regeneration
 
-If lesson HTML is regenerated, restore the shared course-home control with the idempotent command:
-
-```bash
-node scripts/apply-student-navigation.mjs
-```
-
-Then rebuild the static course catalogue, delivery metadata and lesson toolbar references:
+The one-time course consolidation reads the former 151-lesson source from Git history and writes the active contracts:
 
 ```bash
-node scripts/generate-course-catalog.mjs
-node scripts/apply-classroom-delivery.mjs
+node scripts/build-course-v2-content.mjs
+node scripts/render-course-v2.mjs
+node scripts/generate-course-v2-coverage.mjs
 ```
 
-Stage 10 visual explanations are maintained as explicit reviewed content and synchronised to lesson HTML and Markdown:
+To refresh the frequency contract from teacher-owned PDFs outside the repository:
 
 ```bash
-node scripts/apply-stage10-explanations.mjs
-node scripts/apply-classroom-delivery.mjs
-node scripts/generate-stage10-semantic-audit.mjs
-node scripts/generate-stage10-audits.mjs
+python3 tools/extract_past_paper_frequency.py \
+  --source-dir "/Users/kw/Documents/Teaching/AS CS 9618/past-papers" \
+  --syllabus-contract scripts/syllabus-coverage-contract.json \
+  --output scripts/past-paper-frequency-contract.json
 ```
 
-The requirement-level syllabus audit is generated and verified from the machine-readable coverage contract:
+Only references, marks, command words, question types and syllabus tags are written to the repository.
 
-```bash
-node scripts/generate-syllabus-audit.mjs
-node scripts/verify-syllabus-coverage.mjs
-node scripts/generate-question-ao-contract.mjs
-node scripts/generate-scientific-final-audit.mjs
-```
+## Verification and release build
 
-Stage 10 covers all 784 maintained visual explanations across all 151 lessons. Each target declares its delivery role and classroom activity and uses an academically styled infographic grounded in the corresponding lesson facts, with a synchronised screen-reader transcript and matching Markdown record. At mobile width, the image is replaced by the complete transcript as readable cards instead of forcing a 720 px horizontal-scroll container.
-
-## Verification
-
-```bash
-node scripts/verify-cie-wording.mjs
-node scripts/verify-academic-theme.mjs
-node scripts/verify-student-navigation.mjs
-node scripts/verify-educational-visuals.mjs
-node scripts/verify-visual-semantic-remediation.mjs
-node scripts/verify-syllabus-coverage.mjs
-node scripts/verify-question-ao-contract.mjs
-node scripts/verify-batch18-scientific-closure.mjs
-node scripts/verify-scientific-audit.mjs
-node scripts/verify-stage2.mjs
-node scripts/verify-assessments.mjs
-node scripts/verify-lesson-mark-schemes.mjs
-node scripts/verify-stage5-mark-schemes.mjs
-node scripts/verify-stage6-qa.mjs
-node scripts/verify-stage7-accessibility.mjs
-node scripts/verify-stage9-classroom.mjs
-node scripts/verify-stage10.mjs
-node scripts/verify-stage10.mjs --audit-only
-python3 scripts/build-stage8-release.py
-node scripts/verify-stage8-release.mjs
-```
-
-`verify-stage10.mjs --audit-only` validates the 784-row two-pass review coverage, current asset hashes, register consistency and defect accounting without requiring a clean defect gate. The default Stage 10 verifier fails while any unresolved Critical or Major semantic defect remains, so the unified verifier and release build stop before packaging.
-
-For the complete final acceptance workflow, run:
+Run the active V2 acceptance workflow:
 
 ```bash
 node scripts/verify-all.mjs
 ```
 
-This runs every Stage 2-10 verifier plus the 121-requirement syllabus coverage gate, including the permanent visual semantic remediation gate, builds `dist/AS9618-CS-2027-2029-v1.0.0.zip`, verifies its sidecar and internal SHA-256 manifests, checks source parity and validates the packaged course inventory. Visual and OCR counts are derived from the current explanation and register data; the gate requires all repaired visuals to retain two-pass evidence, untouched visuals to match the frozen baseline, every recorded semantic defect to remain resolved, and the deterministic renderer, OCR/source transcripts, Markdown and HTML to agree.
+This verifies lesson count and order, 121-requirement teaching/practice coverage, 2700 past-paper marks, question and explanation de-duplication, flexible teaching depth, Assessment Bank separation, redirects and public copyright boundaries. It then builds and verifies:
 
-## Generated Lesson Count
+```text
+dist/AS9618-CS-2027-2029-v2.0.0.zip
+dist/AS9618-CS-2027-2029-v2.0.0.zip.sha256
+```
 
-Total lessons generated: 151
+No remote publication is performed by any build or verification command.

@@ -3,467 +3,89 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 067 | Access rights and encryption as data-security methods</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <title>AS9618 Lesson 067 | Implementing ADT operations with arrays</title>
     <link rel="icon" href="data:" />
-    <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
+    <link rel="stylesheet" href="../course-v2.css?v=3" />
   </head>
-  <body>
+  <body data-course-version="2" data-lesson-id="067" data-syllabus-ids="S10.10">
     <a class="skip-link" href="#main-content">Skip to main content</a>
-    <header class="topbar">
-      <div>
-        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 6</p>
-        <h1>Access rights and encryption as data-security methods</h1>
-      </div>
-      <div class="action-panel" aria-label="Page controls">
-        <a class="course-home-link" href="../">Course home</a>
-        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
-      </div>
+    <header class="v2-topbar">
+      <div><p class="v2-eyebrow">Cambridge AS9618 | Paper 2 | Section 10: Data types and structures</p><h1>Implementing ADT operations with arrays</h1></div>
+      <nav class="v2-actions" aria-label="Lesson actions"><a href="../">Course home</a><a href="../assessments/">Assessment bank</a><button type="button" id="printLesson">Print</button></nav>
     </header>
-
-    <main class="layout" id="main-content" tabindex="-1">
-      <aside class="lesson-nav" aria-label="Lesson navigation">
-        <a href="#overview">Overview</a>
-        <a href="#hook">Warm-up</a>
-        <a href="#core">Core idea</a>
-        <a href="#rights">Rights</a>
-        <a href="#users">Users/roles</a>
-        <a href="#matrix">Matrix</a>
-        <a href="#least">Least privilege</a>
-        <a href="#review">Review</a>
-        <a href="#tool">Decision tool</a>
-        <a href="#examples">Examples</a>
-        <a href="#practice">Practice</a>
-        <a href="#debug">Debugging</a>
-        <a href="#exam">Exam-style</a>
-        <a href="#summary">Summary</a>
-        <a href="#homework">Homework</a>
-        <a href="#stage2-completion">Core syllabus content</a>
-      </aside>
-
-      <div class="lesson-content">
-        <!-- remediation-v2-stage3-scope:start -->
-        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.</p></aside>
-        <!-- remediation-v2-stage3-scope:end -->
-
-<!-- stage2-completion:start -->
-        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus content</p>
-            <h2>Access rights and encryption as data-security methods</h2>
-          </div>
-          <div class="stage2-explanation">
-            <p>Access rights restrict authorised actions on resources. Read permission controls viewing; write/modify controls alteration; delete controls removal; execute or administrative rights control running software or changing system settings. Least privilege grants only the permissions needed for a role and removes temporary rights when no longer required.</p>
-            <p>Encryption transforms plaintext into ciphertext using an algorithm and key. Without the correct decryption key, intercepted or stolen ciphertext should not reveal readable content. Encryption therefore protects confidentiality, while access rights can protect confidentiality and integrity by preventing unauthorised viewing or alteration.</p>
-            <p>The methods do different jobs: encryption does not decide which logged-in user may edit a record, and access rights do not make a stolen unencrypted copy unreadable. Neither method guarantees availability, data truth or protection after an authorised account is misused.</p>
-          </div>
-          <article class="stage2-example">
-            <h3>Worked example: Protect a payroll file</h3>
-            <p>The payroll file is encrypted at rest so a stolen storage device does not reveal readable salaries without the key. The payroll application grants read/write rights only to payroll staff and read-only rights to an auditor. A compromised ordinary account cannot open the file through the application, while an attacker who steals only the encrypted file still lacks readable plaintext.</p>
-          </article>
+    <main class="v2-shell" id="main-content" tabindex="-1">
+      <nav class="v2-toc" aria-label="Lesson contents"><strong>Lesson 067</strong><a href="#overview">Overview</a><a href="#prerequisite">Prerequisite</a><a href="#explanation">Explanation</a><a href="#practice">Practice</a><a href="#summary">Summary</a></nav>
+      <div class="v2-content">
+        <section class="v2-hero" id="overview">
+          <div><p class="v2-eyebrow">Flexible-depth lesson</p><h2>Implementing ADT operations with arrays</h2><p>S10.10 | Select what to omit, teach briefly or explore in depth.</p></div>
+          <div class="v2-time-grid" aria-label="Available lesson depth"><div><strong>Quick</strong><span>diagnose + essentials</span></div><div><strong>Full</strong><span>complete explanation</span></div><div><strong>Deep</strong><span>prerequisites + extension</span></div><div><strong>Choose</strong><span>practice by need</span></div></div>
         </section>
 
-        <!-- stage10-explanation:start controls -->
-        <section class="panel explanation-panel" id="explanation-controls" data-explains="controls" data-explanation-kind="mechanism" aria-labelledby="explanation-controls-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="controls">
-          <h2 class="explanation-sr-only" id="explanation-controls-title">One control can support more than one goal, but not every goal</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-063-controls.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining One control can support more than one goal, but not every goal with a structured visual model." />
-            <figcaption class="explanation-sr-only">One control can support more than one goal, but not every goal: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Encryption makes data unreadable without the correct key and supports confidentiality.</li><li><strong>Lesson fact:</strong> Access rights prevent unauthorised viewing and prevent unauthorised alteration; they support confidentiality and integrity but do not detect whether data changed.</li><li><strong>Lesson fact:</strong> Backups allow recovery after data loss or corruption and support availability.</li><li><strong>Lesson fact:</strong> Hash/checksum comparison can detect whether data changed and supports integrity, but it does not prevent unauthorised alteration.</li></ol>
-
-          </div>
+        <section class="v2-panel v2-route-menu" aria-labelledby="route-heading">
+          <div class="v2-heading"><p class="v2-eyebrow">Teacher choice</p><h2 id="route-heading">Choose the depth for this group</h2></div>
+          <div class="v2-route-grid"><article><h3>Quick route</h3><p>Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.</p></article><article><h3>Full route</h3><p>Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.</p></article><article><h3>Deep route</h3><p>Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.</p></article></div>
         </section>
-        <!-- stage10-explanation:end controls -->
-        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus practice</p>
-            <h2>Access rights and encryption as data-security methods: apply and assess</h2>
-          </div>
-          <div class="stage2-practice">
-            <h3>Targeted practice</h3>
-            <article class="stage2-question">
-              <p><strong>1.</strong> How do access rights protect confidentiality?</p>
-              <details><summary>Show answer</summary><p>They prevent users without read permission from viewing the data.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>2.</strong> How do access rights protect integrity?</p>
-              <details><summary>Show answer</summary><p>They prevent users without write/delete permission from altering or removing the data.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>3.</strong> How does encryption protect data?</p>
-              <details><summary>Show answer</summary><p>It converts plaintext to ciphertext that is unreadable without the correct key.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>4.</strong> Why are both methods useful?</p>
-              <details><summary>Show answer</summary><p>Access rights govern permitted actions in the system; encryption protects the content of an intercepted or stolen copy.</p></details>
-            </article>
-          </div>
-          <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>6 marks</span></div>
-            <p>Explain how access rights and encryption protect a payroll file, and state one limitation of each method.</p>
-            <details>
-              <summary>Show MS</summary>
-              <table class="mark-scheme-table">
-                <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
-                <tbody>
-                  <tr><td>access rights restrict viewing to users/roles with read permission</td><td>Do not claim that access rights detect changes, that encryption guarantees integrity, or that either method replaces the other.</td><td>1</td></tr>
-                  <tr><td>access rights restrict modification/deletion to permitted users/roles</td><td></td><td>1</td></tr>
-                  <tr><td>encryption converts plaintext to ciphertext using a key</td><td></td><td>1</td></tr>
-                  <tr><td>without the correct key the stolen/intercepted data is not readable</td><td></td><td>1</td></tr>
-                  <tr><td>access-rights limitation developed</td><td></td><td>1</td></tr>
-                  <tr><td>encryption limitation developed</td><td></td><td>1</td></tr>
-                </tbody>
-              </table>
-            </details>
-          </article>
-        </section>
-        <!-- stage2-completion:end -->
 
-<section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-067">
-          <div class="hero-copy">
-            <p class="lesson-meta">Lesson 067 | 45 minutes | Paper 1 Section 6 | Security, privacy and data integrity</p>
-            <h2>Logging in proves who you are. Permissions decide what you can touch.</h2>
-            <p>
-              Access rights define what an authenticated user can read, write, delete, execute or administer.
-              Least privilege means users receive only the permissions needed for their role. It is the opposite
-              of giving everyone the digital master key and hoping nobody presses the shiny red button.
-            </p>
-            <div class="objective-grid" aria-label="Learning objectives">
-              <div><strong>Define</strong><span>access rights, permissions, roles and least privilege</span></div>
-              <div><strong>Apply</strong><span>permission matrices to realistic files, databases and accounts</span></div>
-              <div><strong>Justify</strong><span>how limiting permissions protects confidentiality and integrity</span></div>
+        <section class="v2-panel" id="prerequisite">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 1 | optional depth</p><h2>Prerequisite knowledge and quick diagnostic</h2></div>
+          <div class="v2-diagnostic"><p>Recall S10.03, S10.09 before starting this lesson.</p></div>
+          <p>Give one accurate definition or method step before continuing. If it is missing, revisit only that prerequisite.</p>
+          <details class="v2-prerequisite-detail"><summary>Open optional prerequisite refresher</summary><ul><li>Use the technical terms associated with arrays, including index, lower bound and upper bound. Bounds define the inclusive valid index range and an index selects one element.</li><li>Understand array, index, lower bound and upper bound terminology.</li><li>Stack, queue and linked list are examples of ADTs. Describe their key features and justify which structure suits a given situation using LIFO, FIFO or link-based traversal/insertion/deletion evidence.</li><li>Understand stack, queue and linked-list features; justify a structure.</li></ul></details>
+        </section>
+
+        <section class="v2-panel" id="explanation">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 2 | deliberately over-complete</p><h2>Knowledge explanation</h2></div>
+          <h3>Learning objectives</h3><ul class="v2-objectives"><li>Add, edit and delete data in the ADTs and implement them using arrays; pseudocode for operations is not required by the syllabus.</li></ul>
+          <details class="v2-concept-menu"><summary>Open the concept checklist and choose what to teach</summary><ul><li>Add</li><li>edit</li><li>delete</li><li>stack</li><li>queue</li><li>linked list</li><li>array</li><li>not required</li><li>pseudocode</li></ul></details>
+          <div class="v2-explanation-grid">
+            <div>
+              <article class="v2-core-facts"><h3>Detailed explanation</h3><p class="v2-teacher-note">Teach all points, or select only the ones this group needs. The list is intentionally fuller than a fixed lesson slot.</p><ul class="v2-facts"><li>Use stack, queue and linked list to store data; add, edit and delete data while preserving each ADT rule. Describe array implementations for all three. Candidates are not required to write pseudocode for these ADT operations.</li><li>An abstract data type (ADT) is a collection of data and a set of operations on those data. The permitted operations and their effects define the ADT; its internal storage can change without changing that behaviour. Stack, queue and linked list are examples of ADTs.</li><li>A stack is LIFO: add with push and delete with pop at the top. A queue is FIFO: add with enqueue at the rear and delete with dequeue at the front. A linked list stores data plus a next pointer/index in each node; start identifies the first node and null ends the chain.</li><li>All three can be implemented using arrays and state variables or indexes. Stack uses an array with a top/stack pointer; queue uses an array with front and rear; linked list uses Data and Next arrays (or an array of node records), start and a free list. Candidates must be able to add, edit and delete data conceptually, but the syllabus does not require pseudocode for these ADT operations.</li><li>Editing changes the stored data without breaking the access rule or links. Deleting from a linked list reconnects the predecessor to the removed node&#39;s successor and returns the freed array slot to the free list; physical array positions need not follow logical list order.</li><li>Justify a stack, queue or linked list from its operations and the scenario. Candidates are not required to write pseudocode for these ADT operations, but must be able to add, edit and delete data and describe array implementations.</li><li>Choose and justify a stack, queue or linked list from its LIFO, FIFO or linkage features. Add, edit and delete data in these ADTs and implement them using arrays; pseudocode for the ADT operations is not required by the syllabus.</li><li>A stack is LIFO with push/pop at the top; a queue is FIFO with enqueue at the rear and dequeue at the front; a linked list supports traversal and insertion/deletion through links.</li><li>Justification must name the required access order or update behaviour. Array implementations have fixed capacity unless resized and require overflow/underflow checks; linked structures require pointer management.</li></ul></article>
+              <article class="v2-example"><h3>Worked example</h3><p>Add, edit and delete without changing the ADT rule: Push D adds D at the stack top and pop deletes the current top. Enqueue D adds at the queue rear and dequeue deletes from the front. In an array-based linked list, edit Data[5] to change only the node value; insert or delete by changing Next indexes, Start and the free list rather than shifting every later array item.</p></article>
+              <aside class="v2-extension"><h3>Beyond syllabus / 延伸知识（不要求背诵）</h3><p>programming libraries often provide tested ADT implementations, but the exam expects you to understand their behaviour and selection.</p></aside>
             </div>
-          </div>
-          <div class="access-card" aria-label="Permission flow">
-            <div class="permission-stack">
-              <span>Authenticate -> identify user</span>
-              <span>Authorise -> check permission</span>
-              <span>Allow only needed actions</span>
-              <span>Log and review access</span>
-            </div>
-            <p>A correct login is not a permission slip for everything.</p>
+            <figure class="v2-visual">
+              <img src="../assets/diagrams/stage10-infographics/stage10-lesson-123-implementation.jpg" alt="An array stack uses Top; a queue uses Front and Rear; a linked list uses Data, Next, Start and a free list.. Add/delete preserve stack LIFO, queue FIFO and linked-list links; edit changes stored data without corrupting structure.. Candidates are not required to write pseudocode for these ADT operations; understand add, edit, delete and array implementation." loading="lazy" />
+              <figcaption>Implement stack, queue and linked list using arrays. One maintained explanation is shown as an image on larger screens and as text on small screens.</figcaption>
+              <div class="v2-mobile-visual-text" aria-label="Mobile text alternative"><ul><li>An array stack uses Top; a queue uses Front and Rear; a linked list uses Data, Next, Start and a free list.</li><li>Add/delete preserve stack LIFO, queue FIFO and linked-list links; edit changes stored data without corrupting structure.</li><li>Candidates are not required to write pseudocode for these ADT operations; understand add, edit, delete and array implementation.</li></ul></div>
+            </figure>
           </div>
         </section>
 
-        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-067">
-          <article class="why-card">
-            <h3>Why this matters</h3>
-            <p>Good exam answers connect a permission to a protected security goal, not just to the word "secure".</p>
-          </article>
-          <article class="trap-card">
-            <h3>Common error</h3>
-            <p>Authentication is not the same as authorisation. Being known by the system does not mean being allowed to edit everything.</p>
-          </article>
+        <section class="v2-panel" id="practice">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 3 | select by learner need</p><h2>Practice by question type</h2></div>
+          <div class="v2-question-list"><article class="v2-question" data-question-id="Q-L067-01" data-semantic-fingerprint="S10.10|implementing-adt-operations-with-arrays|explain|stack-queue-removal-rules|written|explain">
+              <div class="v2-question-head"><span class="v2-badge">explain</span><span class="v2-badge">explain</span><span class="v2-badge difficulty">foundation</span><span class="v2-badge">2 marks</span></div>
+              <p><strong>Question 1.</strong> How are stack and queue removal rules different?</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> Stack removes the most recently added item (LIFO); queue removes the earliest added item (FIFO).</p><p><strong>Marking guidance:</strong> Award one mark for each distinct, technically accurate point or method step.</p><p><strong>Common error:</strong> For the command word explain, perform that exact action; do not replace it with an unrelated fact.</p></div></details>
+            </article><article class="v2-question" data-question-id="Q-L067-02" data-semantic-fingerprint="S10.10|implementing-adt-operations-with-arrays|state|precise-facts-about|written|recall">
+              <div class="v2-question-head"><span class="v2-badge">state</span><span class="v2-badge">recall</span><span class="v2-badge difficulty">application</span><span class="v2-badge">2 marks</span></div>
+              <p><strong>Question 2.</strong> State two precise facts about implementing adt operations with arrays.</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> Use stack, queue and linked list to store data; add, edit and delete data while preserving each ADT rule. Describe array implementations for all three. Candidates are not required to write pseudocode for these ADT operations. An abstract data type (ADT) is a collection of data and a set of operations on those data. The permitted operations and their effects define the ADT; its internal storage can change without changing that behaviour. Stack, queue and linked list are examples of ADTs.</p><p><strong>Marking guidance:</strong> Award one mark for each distinct fact; do not credit a repeated point.</p><p><strong>Common error:</strong> Do not repeat the same point in different words; each mark needs a separate idea or method step.</p></div></details>
+            </article><article class="v2-question" data-question-id="Q-L067-03" data-semantic-fingerprint="S10.10|implementing-adt-operations-with-arrays|explain|would-applied-suitable-computing|visual|explain">
+              <div class="v2-question-head"><span class="v2-badge">explain</span><span class="v2-badge">explain</span><span class="v2-badge difficulty">transfer</span><span class="v2-badge">3 marks</span></div>
+              <p><strong>Question 3.</strong> Explain how implementing adt operations with arrays would be applied in a suitable computing context.</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> An abstract data type (ADT) is a collection of data and a set of operations on those data. The permitted operations and their effects define the ADT; its internal storage can change without changing that behaviour. Stack, queue and linked list are examples of ADTs. A stack is LIFO: add with push and delete with pop at the top. A queue is FIFO: add with enqueue at the rear and delete with dequeue at the front. A linked list stores data plus a next pointer/index in each node; start identifies the first node and null ends the chain. All three can be implemented using arrays and state variables or indexes. Stack uses an array with a top/stack pointer; queue uses an array with front and rear; linked list uses Data and Next arrays (or an array of node records), start and a free list. Candidates must be able to add, edit and delete data conceptually, but the syllabus does not require pseudocode for these ADT operations.</p><p><strong>Marking guidance:</strong> Each mark needs a relevant point linked to the stated context.</p><p><strong>Common error:</strong> Do not copy the worked example unchanged; transfer the method and check it against the new context.</p></div></details>
+            </article></div>
+          <div class="v2-paper-refs">
+          <h3>Related past-paper indexes</h3>
+          <table><thead><tr><th>Reference</th><th>Marks</th><th>Command word</th><th>Question type</th></tr></thead>
+          <tbody><tr><td>9618/23/S/25 Q5(b)</td><td>8</td><td>describe</td><td>write</td></tr><tr><td>9618/21/S/25 Q5</td><td>7</td><td>describe</td><td>explain</td></tr><tr><td>9618/23/S/25 Q5(c)</td><td>7</td><td>calculate</td><td>calculate</td></tr><tr><td>9618/23/S/25 Q5(a)</td><td>5</td><td>describe</td><td>explain</td></tr></tbody></table>
+          <p class="v2-copyright-note">Index only: Cambridge question and mark-scheme wording is not reproduced on this public course page.</p>
+        </div>
         </section>
 
-        <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-067">
-          <div class="section-title">
-            <p class="eyebrow">Warm-up hook</p>
-            <h2>A student can log into the school system but cannot edit exam grades. What control is this?</h2>
-            <p>The system recognises the student. It just does not hand over the gradebook and a confetti cannon.</p>
-          </div>
-          <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="permissions">Access rights limit what the authenticated student can do</button>
-            <button class="choice-card" type="button" data-hook="authentication">Authentication, because the student logged in</button>
-            <button class="choice-card" type="button" data-hook="encryption">Encryption, because marks are hidden from students</button>
-            <button class="choice-card" type="button" data-hook="backup">Backup, because grades can be restored later</button>
-          </div>
-          <div class="feedback" id="hookFeedback" aria-live="polite">
-            Choose one. Focus on the action the user is allowed or denied.
-          </div>
+        <section class="v2-panel" id="summary">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 4 | close when ready</p><h2>Summary and exam reminders</h2></div>
+          <div class="v2-summary-grid"><div><h3>Summary</h3><ul class="v2-summary-list"><li>Define implementing adt operations with arrays with the exact technical vocabulary expected by the syllabus.</li><li>Use the lesson method on a fresh context and show the intermediate decision, representation or calculation.</li><li>Match the shape of the answer to the command word and the available marks.</li><li>Check the final answer against the scenario instead of repeating a memorised sentence.</li></ul></div><div class="v2-error"><h3>Common error to correct</h3><p>Students often treat files like arrays already in memory. Correction: file data must be read into variables before processing.</p></div></div>
+          <div class="v2-tip-box"><h3>Exam technique</h3><ul><li>Follow the command word: state gives a fact; explain links a cause to a consequence; compare covers both sides.</li><li>Match the number of independent points or method steps to the available marks.</li><li>For implementing adt operations with arrays, use the exact technical term before applying it to the scenario.</li></ul></div>
         </section>
 
-        <section class="panel" id="core" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-067">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 1</p>
-            <h2>Access control decides what authenticated users may do</h2>
-          </div>
-          <div class="concept-grid">
-            <article><strong>Access right</strong><span>A permission to perform an action on a resource, such as read or write.</span></article>
-            <article><strong>Resource</strong><span>A file, database table, account, device, folder, application or network service.</span></article>
-            <article><strong>Authorisation</strong><span>The decision to allow or deny an action after identity has been checked.</span></article>
-            <article><strong>Policy</strong><span>The rule set that maps users, groups or roles to permitted actions.</span></article>
-          </div>
-          <div class="callout">Chinese support: access rights = 访问权限；permission = 权限；least privilege = 最小权限原则；authorisation = 授权。</div>
-        </section>
-
-        <!-- stage10-explanation:start core -->
-        <section class="panel explanation-panel" id="explanation-core" data-explains="core" data-explanation-kind="mechanism" aria-labelledby="explanation-core-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-067">
-          <h2 class="explanation-sr-only" id="explanation-core-title">Access control decides what authenticated users may do</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-067-core.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Access control decides what authenticated users may do with a structured visual model." />
-            <figcaption class="explanation-sr-only">Access control decides what authenticated users may do: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Access right A permission to perform an action on a resource, such as read or write.</li><li><strong>Lesson fact:</strong> Resource A file, database table, account, device, folder, application or network service.</li><li><strong>Lesson fact:</strong> Authorisation The decision to allow or deny an action after identity has been checked.</li><li><strong>Lesson fact:</strong> Policy The rule set that maps users, groups or roles to permitted actions.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end core -->
-        <section class="panel" id="rights" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-067">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 2</p>
-            <h2>Common permission types</h2>
-          </div>
-          <div class="concept-grid">
-            <article><strong>Read</strong><span>View or open data without changing it. Protects confidentiality when restricted.</span></article>
-            <article><strong>Write/modify</strong><span>Create or change data. Protects integrity when restricted.</span></article>
-            <article><strong>Delete</strong><span>Remove data or accounts. Often high risk because loss may affect availability.</span></article>
-            <article><strong>Execute/admin</strong><span>Run programs, install software or manage settings. Usually limited to trusted roles.</span></article>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start rights -->
-        <section class="panel explanation-panel" id="explanation-rights" data-explains="rights" data-explanation-kind="mechanism" aria-labelledby="explanation-rights-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-067">
-          <h2 class="explanation-sr-only" id="explanation-rights-title">Common permission types</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-067-rights.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Common permission types with a structured visual model." />
-            <figcaption class="explanation-sr-only">Common permission types: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Read View or open data without changing it. Protects confidentiality when restricted.</li><li><strong>Lesson fact:</strong> Write/modify Create or change data. Protects integrity when restricted.</li><li><strong>Lesson fact:</strong> Delete Remove data or accounts. Often high risk because loss may affect availability.</li><li><strong>Lesson fact:</strong> Execute/admin Run programs, install software or manage settings. Usually limited to trusted roles.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end rights -->
-        <section class="panel" id="users" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-067">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 3</p>
-            <h2>Users, groups and roles keep permissions manageable</h2>
-          </div>
-          <div class="concept-grid">
-            <article><strong>User account</strong><span>Individual identity, useful for accountability and audit trails.</span></article>
-            <article><strong>Group</strong><span>A collection of accounts that share permissions, such as "Students" or "Finance".</span></article>
-            <article><strong>Role</strong><span>A job-based permission set, such as teacher, receptionist, technician or administrator.</span></article>
-            <article><strong>Audit log</strong><span>Records access attempts or changes, helping detect misuse and investigate incidents.</span></article>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start users -->
-        <section class="panel explanation-panel" id="explanation-users" data-explains="users" data-explanation-kind="mechanism" aria-labelledby="explanation-users-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-067">
-          <h2 class="explanation-sr-only" id="explanation-users-title">Users, groups and roles keep permissions manageable</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-067-users.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Users, groups and roles keep permissions manageable with a structured visual model." />
-            <figcaption class="explanation-sr-only">Users, groups and roles keep permissions manageable: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> User account Individual identity, useful for accountability and audit trails.</li><li><strong>Lesson fact:</strong> Group A collection of accounts that share permissions, such as &quot;Students&quot; or &quot;Finance&quot;.</li><li><strong>Lesson fact:</strong> Role A job-based permission set, such as teacher, receptionist, technician or administrator.</li><li><strong>Lesson fact:</strong> Audit log Records access attempts or changes, helping detect misuse and investigate incidents.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end users -->
-        <section class="panel" id="matrix" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-067">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 4</p>
-            <h2>A permission matrix makes access decisions visible</h2>
-          </div>
-          <div class="comparison-table" role="table" aria-label="Permission matrix">
-            <div class="table-row table-head" role="row">
-              <div role="columnheader">Role</div>
-              <div role="columnheader">Student records</div>
-              <div role="columnheader">Exam marks</div>
-              <div role="columnheader">System settings</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Student</div>
-              <div role="cell">Read own record</div>
-              <div role="cell">No access</div>
-              <div role="cell">No access</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Teacher</div>
-              <div role="cell">Read class records</div>
-              <div role="cell">Write marks for own classes</div>
-              <div role="cell">No access</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Exam officer</div>
-              <div role="cell">Read relevant records</div>
-              <div role="cell">Read/write exam data</div>
-              <div role="cell">No access</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Administrator</div>
-              <div role="cell">Manage accounts</div>
-              <div role="cell">Access only if required</div>
-              <div role="cell">Change settings</div>
-            </div>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start matrix -->
-        <section class="panel explanation-panel" id="explanation-matrix" data-explains="matrix" data-explanation-kind="mechanism" aria-labelledby="explanation-matrix-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-067">
-          <h2 class="explanation-sr-only" id="explanation-matrix-title">A permission matrix makes access decisions visible</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-067-matrix.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining A permission matrix makes access decisions visible with a structured visual model." />
-            <figcaption class="explanation-sr-only">A permission matrix makes access decisions visible: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Student records</li><li><strong>Lesson fact:</strong> Exam marks</li><li><strong>Lesson fact:</strong> System settings</li><li><strong>Lesson fact:</strong> Read own record</li><li><strong>Lesson fact:</strong> No access</li><li><strong>Lesson fact:</strong> Read class records</li><li><strong>Lesson fact:</strong> Write marks for own classes</li><li><strong>Lesson fact:</strong> Exam officer</li><li><strong>Lesson fact:</strong> Read relevant records</li><li><strong>Lesson fact:</strong> Read/write exam data</li><li><strong>Lesson fact:</strong> Administrator</li><li><strong>Lesson fact:</strong> Manage accounts</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end matrix -->
-        <section class="panel" id="least" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-067">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 5</p>
-            <h2>Least privilege reduces unnecessary damage</h2>
-          </div>
-          <div class="concept-grid">
-            <article><strong>Definition</strong><span>Give users only the minimum permissions needed to perform their role.</span></article>
-            <article><strong>Confidentiality</strong><span>Users cannot view data that is not needed for their work.</span></article>
-            <article><strong>Integrity</strong><span>Users cannot accidentally or deliberately change data outside their responsibility.</span></article>
-            <article><strong>Availability</strong><span>Fewer users can delete files, disable services or change critical settings.</span></article>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start least -->
-        <section class="panel explanation-panel" id="explanation-least" data-explains="least" data-explanation-kind="mechanism" aria-labelledby="explanation-least-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-067">
-          <h2 class="explanation-sr-only" id="explanation-least-title">Least privilege reduces unnecessary damage</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-067-least.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Least privilege reduces unnecessary damage with a structured visual model." />
-            <figcaption class="explanation-sr-only">Least privilege reduces unnecessary damage: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Definition Give users only the minimum permissions needed to perform their role.</li><li><strong>Lesson fact:</strong> Confidentiality Users cannot view data that is not needed for their work.</li><li><strong>Lesson fact:</strong> Integrity Users cannot accidentally or deliberately change data outside their responsibility.</li><li><strong>Lesson fact:</strong> Availability Fewer users can delete files, disable services or change critical settings.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end least -->
-        <section class="panel" id="review" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-067">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 6</p>
-            <h2>Permissions need review, not just setup day optimism</h2>
-          </div>
-          <div class="concept-grid">
-            <article><strong>Joiner</strong><span>New user receives permissions based on role, not copied blindly from a friend.</span></article>
-            <article><strong>Mover</strong><span>User changes role; old permissions are removed and new ones are added.</span></article>
-            <article><strong>Leaver</strong><span>Account is disabled or removed when the user leaves.</span></article>
-            <article><strong>Review</strong><span>Regular checks remove excessive, stale or temporary permissions.</span></article>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start review -->
-        <section class="panel explanation-panel" id="explanation-review" data-explains="review" data-explanation-kind="mechanism" aria-labelledby="explanation-review-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-067">
-          <h2 class="explanation-sr-only" id="explanation-review-title">Permissions need review, not just setup day optimism</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-067-review.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Permissions need review, not just setup day optimism with a structured visual model." />
-            <figcaption class="explanation-sr-only">Permissions need review, not just setup day optimism: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Joiner New user receives permissions based on role, not copied blindly from a friend.</li><li><strong>Lesson fact:</strong> Mover User changes role; old permissions are removed and new ones are added.</li><li><strong>Lesson fact:</strong> Leaver Account is disabled or removed when the user leaves.</li><li><strong>Lesson fact:</strong> Review Regular checks remove excessive, stale or temporary permissions.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end review -->
-        <section class="panel" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-067">
-          <div class="section-title">
-            <p class="eyebrow">Interactive decision tool</p>
-            <h2>Should the action be allowed?</h2>
-            <p>Select a scenario and compare the decision with the reason and common error.</p>
-          </div>
-          <div class="converter-grid">
-            <label>
-              Access request
-              <select id="scenarioInput">
-                <option value="studentOwn">Student reads their own timetable.</option>
-                <option value="studentMarks">Student tries to edit exam marks.</option>
-                <option value="teacherClass">Teacher enters marks for their own class.</option>
-                <option value="teacherAll">Teacher tries to view all school medical records.</option>
-                <option value="adminTemp">Temporary technician asks for permanent admin rights.</option>
-              </select>
-            </label>
-            <button class="primary-button" type="button" id="simulateBtn">Decide</button>
-          </div>
-          <div class="result-box" id="simulateResult" aria-live="polite"></div>
-          <div class="method-box" id="simulateMethod"></div>
-          <div class="reject-box" id="simulateTrap"></div>
-        </section>
-
-        <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-067">
-          <div class="section-title">
-            <p class="eyebrow">Worked examples</p>
-            <h2>Four model answers using role, action and consequence</h2>
-          </div>
-          <div class="example-tabs" role="tablist" aria-label="Worked examples">
-            <button class="tab active" type="button" data-example="grades">Exam marks</button>
-            <button class="tab" type="button" data-example="files">Shared files</button>
-            <button class="tab" type="button" data-example="temporary">Temporary admin</button>
-            <button class="tab" type="button" data-example="leaver">Leaver account</button>
-          </div>
-          <div class="example-box" id="exampleBox"></div>
-        </section>
-
-        <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-067">
-          <div class="section-title">
-            <p class="eyebrow">Practice with instant checking</p>
-            <h2>Short answers: permission, role, reason</h2>
-            <p>Type a concise answer. Use the local answer button if you need a model response.</p>
-          </div>
-          <div class="practice-list" id="practiceList"></div>
-        </section>
-
-        <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-067">
-          <div class="section-title">
-            <p class="eyebrow">Mistake debugging</p>
-            <h2>Fix the sentence before it loses marks</h2>
-          </div>
-          <div class="mistake-grid" id="mistakeGrid"></div>
-        </section>
-
-        <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-067">
-          <div class="section-title">
-            <p class="eyebrow">Exam-style questions</p>
-            <h2>Original Cambridge-style questions with expandable MS</h2>
-            <p>Answer first. Then open the mark scheme and compare wording strictly.</p>
-          </div>
-          <div class="exam-list" id="examList"></div>
-        </section>
-
-        <section class="panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-067">
-          <div class="section-title">
-            <p class="eyebrow">Summary</p>
-            <h2>Permissions are practical security rules</h2>
-          </div>
-          <div class="summary-grid">
-            <div><strong>Access rights</strong><span>Define permitted actions on resources.</span></div>
-            <div><strong>Roles/groups</strong><span>Make permissions consistent and easier to manage.</span></div>
-            <div><strong>Least privilege</strong><span>Limits unnecessary access and reduces damage.</span></div>
-          </div>
-        </section>
-
-        <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
-          <div class="section-title">
-            <p class="eyebrow">Homework</p>
-            <h2>Homework tasks</h2>
-          </div>
-          <div class="homework-list">
-            <article>
-              <strong>Task 1: Permission matrix</strong>
-              <span>Create a 4-role permission matrix for a hospital system: patient, doctor, receptionist and administrator. Use read, write, delete and no access.</span>
-            </article>
-            <article>
-              <strong>Task 2: Least privilege explanation</strong>
-              <span>Write two paragraphs explaining how least privilege protects confidentiality and integrity in a school database.</span>
-            </article>
-            <article>
-              <strong>Task 3: 6-mark answer</strong>
-              <span>Answer: "A temporary worker needs access for one week. Explain how access rights should be managed and why." Include review/removal.</span>
-            </article>
-          </div>
-        </section>
+        <nav class="v2-bottom-nav" aria-label="Previous and next lesson"><a href="../lesson-066/" >Previous lesson</a><a href="../lesson-068/" >Next lesson</a></nav>
       </div>
     </main>
-
-    <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=3"></script>
-    <script src="../lesson-toolbar.js?v=3"></script>
-    <script src="../stage7-accessibility.js?v=4"></script>
+    <script src="../course-v2.js?v=1"></script>
   </body>
 </html>

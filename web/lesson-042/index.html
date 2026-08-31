@@ -3,513 +3,89 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 042 | Von Neumann architecture, CPU components and registers</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <title>AS9618 Lesson 042 | DDL, DML and the role of SQL</title>
     <link rel="icon" href="data:" />
-    <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../student-visuals.css?v=1" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
+    <link rel="stylesheet" href="../course-v2.css?v=3" />
   </head>
-  <body>
+  <body data-course-version="2" data-lesson-id="042" data-syllabus-ids="S8.07">
     <a class="skip-link" href="#main-content">Skip to main content</a>
-    <header class="topbar">
-      <div>
-        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 4</p>
-        <h1>Von Neumann architecture, CPU components and registers</h1>
-      </div>
-      <div class="action-panel" aria-label="Page controls">
-        <a class="course-home-link" href="../">Course home</a>
-        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
-      </div>
+    <header class="v2-topbar">
+      <div><p class="v2-eyebrow">Cambridge AS9618 | Paper 1 | Section 8: Databases</p><h1>DDL, DML and the role of SQL</h1></div>
+      <nav class="v2-actions" aria-label="Lesson actions"><a href="../">Course home</a><a href="../assessments/">Assessment bank</a><button type="button" id="printLesson">Print</button></nav>
     </header>
-
-    <main class="layout" id="main-content" tabindex="-1">
-      <aside class="lesson-nav" aria-label="Lesson navigation">
-        <a href="#overview">Overview</a>
-        <a href="#hook">Warm-up</a>
-        <a href="#architecture">CPU architecture</a>
-        <a href="#cpu-map">CPU map</a>
-        <a href="#alu-cu">ALU and CU</a>
-        <a href="#registers">Registers, buses, clock</a>
-        <a href="#tool">CPU mapper</a>
-        <a href="#examples">Examples</a>
-        <a href="#practice">Practice</a>
-        <a href="#debug">Debugging</a>
-        <a href="#exam">Exam-style</a>
-        <a href="#summary">Summary</a>
-        <a href="#homework">Homework</a>
-        <a href="#stage2-completion">Core syllabus content</a>
-      </aside>
-
-      <div class="lesson-content">
-        <!-- remediation-v2-stage3-scope:start -->
-        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.</p></aside>
-        <!-- remediation-v2-stage3-scope:end -->
-
-<!-- stage2-completion:start -->
-        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus content</p>
-            <h2>Von Neumann architecture, CPU components and registers</h2>
-          </div>
-          <div class="stage2-explanation">
-            <p>The basic Von Neumann architecture uses one immediate access store for the instructions and data currently required. This is the stored-program concept: program instructions are stored in memory as binary values alongside data, and the processor fetches instructions from memory rather than being physically rewired for each program.</p>
-            <p>The control unit (CU) fetches and decodes instructions and sends control signals. The arithmetic and logic unit (ALU) performs arithmetic and logical operations. Registers provide small, fast temporary storage, buses carry addresses, data and control signals, and the system clock supplies regular timing pulses that synchronise state changes.</p>
-            <p>The immediate access store (IAS) is processor-accessible main memory, not a register, cache or secondary-storage device. A program held on secondary storage must be loaded into IAS before its instructions can be fetched and executed normally.</p>
-            <p>A general-purpose register can temporarily hold data or intermediate results for a range of operations. A special-purpose register has a defined processor role. In the CPU-architecture requirement, the named roles are PC, MDR, MAR, ACC, IX, CIR and the status register. In Cambridge assembly-language questions, ACC is the only available general-purpose working register; this question convention does not remove the defined roles of the other named registers.</p>
-            <p>PC holds the address of the next instruction; MAR holds the address currently being accessed; MDR holds data or an instruction being transferred to or from memory; CIR holds the current instruction while it is decoded or executed.</p>
-            <p>ACC holds an intermediate or final ALU result. IX holds an offset used to form an indexed effective address. The status register holds flags about an operation or processor state, such as zero, carry or overflow; it does not hold the arithmetic result itself.</p>
-          </div>
-          <article class="stage2-example">
-            <h3>Worked example: Run one stored program / Follow registers through fetch and indexed execute</h3>
-            <p>A program and its input data are copied from SSD into IAS. The PC supplies the address of the next instruction; the instruction is fetched through MDR into CIR, the CU decodes it, and the ALU or another component carries out the operation. The same memory can hold an instruction at one address and data at another because their use is determined by the fetch and instruction semantics. PC = 300 is copied to MAR; the instruction read from memory enters MDR and then CIR. If that instruction is LDX 500 while IX = 3, the effective address is 503 and the value at that address is loaded into ACC. A resulting condition can update a flag in the status register.</p>
-          </article>
+    <main class="v2-shell" id="main-content" tabindex="-1">
+      <nav class="v2-toc" aria-label="Lesson contents"><strong>Lesson 042</strong><a href="#overview">Overview</a><a href="#prerequisite">Prerequisite</a><a href="#explanation">Explanation</a><a href="#practice">Practice</a><a href="#summary">Summary</a></nav>
+      <div class="v2-content">
+        <section class="v2-hero" id="overview">
+          <div><p class="v2-eyebrow">Flexible-depth lesson</p><h2>DDL, DML and the role of SQL</h2><p>S8.07 | Select what to omit, teach briefly or explore in depth.</p></div>
+          <div class="v2-time-grid" aria-label="Available lesson depth"><div><strong>Quick</strong><span>diagnose + essentials</span></div><div><strong>Full</strong><span>complete explanation</span></div><div><strong>Deep</strong><span>prerequisites + extension</span></div><div><strong>Choose</strong><span>practice by need</span></div></div>
         </section>
 
-        <!-- stage10-explanation:start architecture -->
-        <section class="panel explanation-panel" id="explanation-architecture" data-explains="architecture" data-explanation-kind="mechanism" aria-labelledby="explanation-architecture-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="architecture">
-          <h2 class="explanation-sr-only" id="explanation-architecture-title">Why a CPU divides specialised work</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-042-architecture.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Why a CPU divides specialised work through a cause-and-effect diagram." />
-            <figcaption class="explanation-sr-only">Why a CPU divides specialised work: mechanism, reason, result, analogy and boundary condition.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Mechanism:</strong> The control unit interprets the current instruction.</li><li><strong>Reason:</strong> The ALU performs the required arithmetic or logical operation.</li><li><strong>Result:</strong> Registers and buses hold and move the immediate values.</li></ol>
-
-            <p><strong>Analogy:</strong> A laboratory separates coordination, processing, temporary trays and transport lanes.</p>
-            <p><strong>Boundary:</strong> The components form one system; none executes a program alone.</p>
-          </div>
+        <section class="v2-panel v2-route-menu" aria-labelledby="route-heading">
+          <div class="v2-heading"><p class="v2-eyebrow">Teacher choice</p><h2 id="route-heading">Choose the depth for this group</h2></div>
+          <div class="v2-route-grid"><article><h3>Quick route</h3><p>Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.</p></article><article><h3>Full route</h3><p>Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.</p></article><article><h3>Deep route</h3><p>Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.</p></article></div>
         </section>
-        <!-- stage10-explanation:end architecture -->
 
-        <!-- stage10-explanation:start acc-status -->
-        <section class="panel explanation-panel" id="explanation-acc-status" data-explains="acc-status" data-explanation-kind="process" aria-labelledby="explanation-acc-status-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="acc-status">
-          <h2 class="explanation-sr-only" id="explanation-acc-status-title">ACC and status register: execute-stage evidence</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-044-acc-status.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining ACC and status register: execute-stage evidence with a structured visual model." />
-            <figcaption class="explanation-sr-only">ACC and status register: execute-stage evidence: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Accumulator (ACC)</li><li><strong>Lesson fact:</strong> The accumulator commonly holds intermediate results from the ALU. For example, after adding two values, the result may be stored in the ACC.</li><li><strong>Lesson fact:</strong> Status register</li><li><strong>Lesson fact:</strong> The status register holds flags that describe the outcome of an operation or the processor state.</li><li><strong>Lesson fact:</strong> Zero flag</li><li><strong>Lesson fact:</strong> Can be set when an operation result is zero. Useful after comparisons or subtraction.</li><li><strong>Lesson fact:</strong> Carry / overflow flags</li><li><strong>Lesson fact:</strong> Can indicate a carry out or arithmetic overflow. Exact flag names vary by architecture, but the exam idea is that flags record result conditions.</li><li><strong>Lesson fact:</strong> Common error</li><li><strong>Lesson fact:</strong> The status register does not store the calculation result itself. It stores flags about the result.</li></ol>
+        <section class="v2-panel" id="prerequisite">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 1 | optional depth</p><h2>Prerequisite knowledge and quick diagnostic</h2></div>
+          <div class="v2-diagnostic"><p>Recall the main conclusion from Lesson 041: DBMS architecture, integrity, security and backup.</p></div>
+          <p>Give one accurate definition or method step before continuing. If it is missing, revisit only that prerequisite.</p>
 
-          </div>
         </section>
-        <!-- stage10-explanation:end acc-status -->
-        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus practice</p>
-            <h2>Von Neumann architecture, CPU components and registers: apply and assess</h2>
-          </div>
-          <div class="stage2-practice">
-            <h3>Targeted practice</h3>
-            <article class="stage2-question">
-              <p><strong>1.</strong> What is the stored-program concept?</p>
-              <details><summary>Show answer</summary><p>Program instructions are stored in memory in binary form alongside data and are fetched by the processor for execution.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>2.</strong> Why is this a Von Neumann model?</p>
-              <details><summary>Show answer</summary><p>The basic model uses the same directly accessible memory for instructions and data.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>3.</strong> Compare the ALU from the CU.</p>
-              <details><summary>Show answer</summary><p>The ALU performs arithmetic and logical operations; the CU decodes instructions and coordinates components using control signals.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>4.</strong> What does the system clock do?</p>
-              <details><summary>Show answer</summary><p>It supplies regular timing pulses that synchronise processor operations and state changes.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>5.</strong> Why is IAS not a CPU register?</p>
-              <details><summary>Show answer</summary><p>IAS is processor-accessible main memory for current instructions and data; registers are smaller temporary locations inside the CPU.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>6.</strong> Compare a general-purpose register from a special-purpose register.</p>
-              <details><summary>Show answer</summary><p>A general-purpose register can hold values for varied operations; a special-purpose register has a defined processor role.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>7.</strong> State the roles of PC, MAR, MDR and CIR.</p>
-              <details><summary>Show answer</summary><p>PC holds the next-instruction address; MAR the accessed address; MDR transferred data/instruction; CIR the current instruction.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>8.</strong> State the roles of ACC, IX and the status register.</p>
-              <details><summary>Show answer</summary><p>ACC holds ALU results; IX an indexed-address offset; the status register holds flags about results or CPU state.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>9.</strong> Which general-purpose working register is assumed in Cambridge assembly questions?</p>
-              <details><summary>Show answer</summary><p>The accumulator, ACC.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>10.</strong> Base 120 plus IX 7 gives which indexed effective address?</p>
-              <details><summary>Show answer</summary><p>127.</p></details>
-            </article>
-          </div>
-          <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>12 marks</span></div>
-            <p>Explain how the Von Neumann stored-program concept, IAS, CU, ALU and system clock cooperate when a program runs. Compare general-purpose and special-purpose registers, then state the roles of PC, MAR, MDR, CIR, ACC, IX and the status register.</p>
-            <details>
-              <summary>Show MS</summary>
-              <table class="mark-scheme-table">
-                <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
-                <tbody>
-                  <tr><td>instructions and data are stored together in IAS/main memory</td><td>Do not accept that instructions are permanently built into the CU, that IAS is cache, or that the ALU decodes instructions. Do not swap MAR with MDR, PC with CIR, or claim that the status register stores the calculation result.</td><td>1</td></tr>
-                  <tr><td>program instructions are represented in binary and fetched from memory</td><td></td><td>1</td></tr>
-                  <tr><td>CU fetches/decodes and sends control signals</td><td></td><td>1</td></tr>
-                  <tr><td>ALU performs arithmetic or logical operations</td><td></td><td>1</td></tr>
-                  <tr><td>clock supplies regular timing pulses to synchronise operations</td><td></td><td>1</td></tr>
-                  <tr><td>IAS is directly accessible memory rather than a register or secondary storage</td><td></td><td>1</td></tr>
-                  <tr><td>general-purpose register can hold values for varied operations; special-purpose register has a defined role</td><td></td><td>1</td></tr>
-                  <tr><td>PC next-instruction address and CIR current instruction</td><td></td><td>1</td></tr>
-                  <tr><td>MAR accessed address and MDR transferred data/instruction</td><td></td><td>1</td></tr>
-                  <tr><td>ACC intermediate/final ALU result</td><td></td><td>1</td></tr>
-                  <tr><td>IX offset used in indexed addressing</td><td></td><td>1</td></tr>
-                  <tr><td>status register stores flags about a result or processor state</td><td></td><td>1</td></tr>
-                </tbody>
-              </table>
-            </details>
-          </article>
-        </section>
-        <!-- stage2-completion:end -->
 
-<section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-042">
-          <div class="hero-copy">
-            <p class="lesson-meta">Lesson 042 | 45 minutes | Paper 1 Section 4 | Processor fundamentals</p>
-            <h2>CPU components perform distinct and coordinated functions.</h2>
-            <p>
-              A processor works because specialised parts cooperate: the ALU performs calculations
-              and logical operations, the CU coordinates activity, registers hold tiny but fast
-              working values, buses move signals, and the clock keeps timing organised.
-            </p>
-            <div class="objective-grid" aria-label="Learning objectives">
-              <div><strong>Describe</strong><span>the roles of ALU, CU, registers, buses and clock</span></div>
-              <div><strong>Distinguish</strong><span>CPU components from memory and storage</span></div>
-              <div><strong>Apply</strong><span>component roles to Cambridge-style explanations</span></div>
+        <section class="v2-panel" id="explanation">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 2 | deliberately over-complete</p><h2>Knowledge explanation</h2></div>
+          <h3>Learning objectives</h3><ul class="v2-objectives"><li>Understand DDL creates/modifies structure, DML queries/maintains data, and SQL is an industry-standard language.</li></ul>
+          <details class="v2-concept-menu"><summary>Open the concept checklist and choose what to teach</summary><ul><li>DDL</li><li>creation</li><li>modification</li><li>database structure</li><li>DML</li><li>queries</li><li>maintenance</li><li>SQL</li><li>industry-standard</li><li>language</li></ul></details>
+          <div class="v2-explanation-grid">
+            <div>
+              <article class="v2-core-facts"><h3>Detailed explanation</h3><p class="v2-teacher-note">Teach all points, or select only the ones this group needs. The list is intentionally fuller than a fixed lesson slot.</p><ul class="v2-facts"><li>Version 2 distinguishes DBMS creation/modification of database structure through DDL from queries and data maintenance through DML, and identifies SQL as the industry standard for both.</li><li>DDL is used for the creation and modification of database structure. DML is used for queries and maintenance of stored data. SQL is an industry-standard language that includes both kinds of operation.</li><li>Keep the schema and the records distinct: defining a table or constraint changes structure, while selecting, inserting, deleting or updating records works with stored data.</li><li>Database design review: connect each file-based limitation to a relational or DBMS mechanism; use entity/table, record/tuple and field/attribute precisely; distinguish candidate, primary, secondary and foreign keys; classify one-to-one, one-to-many and many-to-many relationships; apply referential integrity and indexing; document the design with an E-R diagram; and explain or produce 1NF, 2NF and 3NF designs.</li><li>DBMS and SQL review: identify data management/data dictionary, data modelling, logical schema, integrity, security/backup/access rights, developer interface and query processor. Distinguish DDL structure commands from DML query/maintenance commands, use every required data type and key clause, and keep SELECT queries to at most two tables with explicit INNER JOIN ... ON when two tables are needed.</li><li>A complete answer follows the scenario through design, statement and result. It does not claim that a primary key prevents every duplicate fact, that a secondary key must be unique, that normalisation guarantees correctness, or that a three-table/comma-style query is within the AS core boundary.</li><li>A record is also called a tuple; both terms describe one row containing fields or attributes for one entity occurrence.</li><li>A query uses SELECT fields FROM a table, may filter rows with WHERE, sort with ORDER BY and form aggregate groups with GROUP BY. SUM totals values, COUNT counts rows or values, and AVG calculates a mean. An INNER JOIN uses ON to match at most two tables in the required AS queries.</li></ul></article>
+              <article class="v2-example"><h3>Worked example</h3><p>Classify database operations: CREATE TABLE is DDL because it creates database structure. SELECT and UPDATE are DML because they query or maintain stored data.</p></article>
+              <aside class="v2-extension"><h3>Beyond syllabus / 延伸知识（不要求背诵）</h3><p>production databases also manage transactions and concurrent users; these ideas extend the syllabus model of integrity and access control.</p></aside>
             </div>
-          </div>
-          <div class="cpu-card" aria-label="CPU architecture sketch">
-            <div class="cpu-shell">
-              <span class="chip-title">CPU</span>
-              <div class="chip-row">
-                <span>CU</span>
-                <span>ALU</span>
-              </div>
-              <div class="register-strip">registers</div>
-              <div class="bus-strip">data bus | address bus | control bus</div>
-              <div class="clock-pulse">clock ticks: 1, 2, 3...</div>
-            </div>
-            <p>Cambridge answers need roles, not decorative labels.</p>
+            <figure class="v2-visual">
+              <img src="../assets/diagrams/stage10-infographics/stage10-lesson-090-map.jpg" alt="Retrieval map. Data and DBMS data vs information; DBMS roles; avoiding flat-file limitations. Tables and keys records, fields, data types, constraints, primary keys and foreign keys. Design entity-relationship modelling and normalisation to reduce duplication. SQL retrieval SELECT , FROM , WHERE , ORDER BY , aggregates and joins" loading="lazy" />
+              <figcaption>Section 8 knowledge map. One maintained explanation is shown as an image on larger screens and as text on small screens.</figcaption>
+              <div class="v2-mobile-visual-text" aria-label="Mobile text alternative"><ul><li>Retrieval map</li><li>Data and DBMS data vs information; DBMS roles; avoiding flat-file limitations</li><li>Tables and keys records, fields, data types, constraints, primary keys and foreign keys</li><li>Design entity-relationship modelling and normalisation to reduce duplication</li><li>SQL retrieval SELECT , FROM , WHERE , ORDER BY , aggregates and joins</li></ul></div>
+            </figure>
           </div>
         </section>
 
-        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-042">
-          <article class="why-card">
-            <h3>Why this matters</h3>
-            <p>Section 4 questions often reward precise verbs: calculates, coordinates, stores temporarily, transfers, synchronises.</p>
-          </article>
-          <article class="trap-card">
-            <h3>Common error</h3>
-            <p>Students write "the CPU stores data". Better: registers temporarily hold data or instructions currently being processed.</p>
-          </article>
+        <section class="v2-panel" id="practice">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 3 | select by learner need</p><h2>Practice by question type</h2></div>
+          <div class="v2-question-list"><article class="v2-question" data-question-id="Q-L042-01" data-semantic-fingerprint="S8.07|ddl-dml-and-the-role-of-sql|identify|create-table-select-update|visual|recall">
+              <div class="v2-question-head"><span class="v2-badge">identify</span><span class="v2-badge">recall</span><span class="v2-badge difficulty">foundation</span><span class="v2-badge">3 marks</span></div>
+              <p><strong>Question 1.</strong> Identify CREATE TABLE, SELECT and UPDATE as DDL or DML and explain the distinction.</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> DDL creation/modification of structure; DML queries/maintenance; SQL identified as industry-standard language</p><p><strong>Marking guidance:</strong> Do not describe every SQL statement as changing stored records.</p><p><strong>Common error:</strong> For the command word identify, perform that exact action; do not replace it with an unrelated fact.</p></div></details>
+            </article><article class="v2-question" data-question-id="Q-L042-02" data-semantic-fingerprint="S8.07|ddl-dml-and-the-role-of-sql|apply|language-category-changes-table|visual|recall">
+              <div class="v2-question-head"><span class="v2-badge">apply</span><span class="v2-badge">recall</span><span class="v2-badge difficulty">application</span><span class="v2-badge">2 marks</span></div>
+              <p><strong>Question 2.</strong> Which SQL language category changes table structure?</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> DDL.</p><p><strong>Marking guidance:</strong> Award one mark for each distinct, technically accurate point or method step.</p><p><strong>Common error:</strong> Do not repeat the same point in different words; each mark needs a separate idea or method step.</p></div></details>
+            </article><article class="v2-question" data-question-id="Q-L042-03" data-semantic-fingerprint="S8.07|ddl-dml-and-the-role-of-sql|explain|would-applied-suitable-computing|visual|explain">
+              <div class="v2-question-head"><span class="v2-badge">explain</span><span class="v2-badge">explain</span><span class="v2-badge difficulty">transfer</span><span class="v2-badge">3 marks</span></div>
+              <p><strong>Question 3.</strong> Explain how ddl, dml and the role of sql would be applied in a suitable computing context.</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> DDL is used for the creation and modification of database structure. DML is used for queries and maintenance of stored data. SQL is an industry-standard language that includes both kinds of operation. Keep the schema and the records distinct: defining a table or constraint changes structure, while selecting, inserting, deleting or updating records works with stored data. Database design review: connect each file-based limitation to a relational or DBMS mechanism; use entity/table, record/tuple and field/attribute precisely; distinguish candidate, primary, secondary and foreign keys; classify one-to-one, one-to-many and many-to-many relationships; apply referential integrity and indexing; document the design with an E-R diagram; and explain or produce 1NF, 2NF and 3NF designs.</p><p><strong>Marking guidance:</strong> Each mark needs a relevant point linked to the stated context.</p><p><strong>Common error:</strong> Do not copy the worked example unchanged; transfer the method and check it against the new context.</p></div></details>
+            </article></div>
+          <div class="v2-paper-refs">
+          <h3>Related past-paper indexes</h3>
+          <table><thead><tr><th>Reference</th><th>Marks</th><th>Command word</th><th>Question type</th></tr></thead>
+          <tbody><tr><td>9618/13/W/25 Q5(b)</td><td>4</td><td>complete</td><td>recall</td></tr><tr><td>9618/11/W/24 Q2(ii)</td><td>5</td><td>define</td><td>recall</td></tr><tr><td>9618/12/S/24 Q4(d)</td><td>5</td><td>define</td><td>recall</td></tr><tr><td>9618/13/S/24 Q6</td><td>4</td><td>define</td><td>recall</td></tr></tbody></table>
+          <p class="v2-copyright-note">Index only: Cambridge question and mark-scheme wording is not reproduced on this public course page.</p>
+        </div>
         </section>
 
-        <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-042">
-          <div class="section-title">
-            <p class="eyebrow">Warm-up hook</p>
-            <h2>A computer adds 23 and 19. Which CPU part deserves the credit?</h2>
-            <p>Click a component. The joke: if every part says "I did the maths", the ALU files a very formal complaint.</p>
-          </div>
-          <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="alu">ALU</button>
-            <button class="choice-card" type="button" data-hook="cu">CU</button>
-            <button class="choice-card" type="button" data-hook="register">Register</button>
-            <button class="choice-card" type="button" data-hook="bus">Bus</button>
-          </div>
-          <div class="feedback" id="hookFeedback" aria-live="polite">
-            Click one. Your answer should name a role, not just a component.
-          </div>
+        <section class="v2-panel" id="summary">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 4 | close when ready</p><h2>Summary and exam reminders</h2></div>
+          <div class="v2-summary-grid"><div><h3>Summary</h3><ul class="v2-summary-list"><li>Define ddl, dml and the role of sql with the exact technical vocabulary expected by the syllabus.</li><li>Use the lesson method on a fresh context and show the intermediate decision, representation or calculation.</li><li>Match the shape of the answer to the command word and the available marks.</li><li>Check the final answer against the scenario instead of repeating a memorised sentence.</li></ul></div><div class="v2-error"><h3>Common error to correct</h3><p>Students often choose names as primary keys. Correction: a primary key must uniquely and reliably identify a record.</p></div></div>
+          <div class="v2-tip-box"><h3>Exam technique</h3><ul><li>Follow the command word: state gives a fact; explain links a cause to a consequence; compare covers both sides.</li><li>Match the number of independent points or method steps to the available marks.</li><li>For ddl, dml and the role of sql, use the exact technical term before applying it to the scenario.</li></ul></div>
         </section>
 
-        <section class="panel" id="architecture" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-042">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 1</p>
-            <h2>CPU architecture is about cooperating parts</h2>
-          </div>
-          <div class="architecture-grid">
-            <article>
-              <strong>Processor / CPU</strong>
-              <span>The hardware that executes instructions. It is inside the computer system, but it is not the same as RAM or secondary storage.</span>
-            </article>
-            <article>
-              <strong>Internal components</strong>
-              <span>The ALU, CU and registers are inside the CPU and are involved in processing instructions.</span>
-            </article>
-            <article>
-              <strong>Connections</strong>
-              <span>Buses provide pathways for data, addresses and control signals between CPU, memory and other components.</span>
-            </article>
-            <article>
-              <strong>Timing</strong>
-              <span>The clock provides regular pulses so CPU operations occur in a synchronised order.</span>
-            </article>
-          </div>
-          <div class="callout">Chinese support: architecture = 结构/体系结构；processor = 处理器；component = 组成部分；synchronise = 同步。</div>
-        </section>
-
-        <section class="panel visual-explainer" id="cpu-map" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-042">
-          <div class="section-title">
-            <p class="eyebrow">Visual explanation</p>
-            <h2>Inside the CPU, outside the CPU, and what connects them</h2>
-            <p>The ALU, CU and registers are processor components. Main memory is outside the CPU; buses carry addresses, data and control signals between them.</p>
-          </div>
-          <figure class="concept-figure">
-            <svg class="concept-svg" viewBox="0 0 960 520" role="img" aria-labelledby="cpuMapTitle cpuMapDesc">
-              <title id="cpuMapTitle">CPU architecture and system buses</title>
-              <desc id="cpuMapDesc">A CPU contains the control unit, arithmetic logic unit, registers and clock. Main memory sits outside the CPU. The address bus points from CPU to memory, while data and control buses carry signals between them.</desc>
-              <defs>
-                <marker id="cpuArrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 10 5 0 10z" fill="#2563eb" /></marker>
-                <marker id="cpuArrowStart" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M10 0 0 5 10 10z" fill="#047857" /></marker>
-                <marker id="cpuArrowEnd" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 10 5 0 10z" fill="#047857" /></marker>
-              </defs>
-              <rect class="svg-node svg-node--ink" x="30" y="40" width="500" height="430" rx="24" />
-              <text class="svg-node-label svg-on-dark" x="280" y="78">CPU</text>
-              <rect class="svg-node svg-node--accent" x="70" y="110" width="190" height="110" rx="16" />
-              <text class="svg-node-label" x="165" y="150">Control unit</text><text class="svg-node-detail" x="165" y="178">coordinates operations</text>
-              <rect class="svg-node svg-node--green" x="300" y="110" width="190" height="110" rx="16" />
-              <text class="svg-node-label" x="395" y="150">ALU</text><text class="svg-node-detail" x="395" y="178">arithmetic and logic</text>
-              <rect class="svg-node svg-node--warm" x="70" y="260" width="420" height="100" rx="16" />
-              <text class="svg-node-label" x="280" y="300">Registers</text><text class="svg-node-detail" x="280" y="330">very small, fast working storage inside the CPU</text>
-              <rect class="svg-node" x="145" y="392" width="270" height="48" rx="16" />
-              <text class="svg-node-label" x="280" y="423">Clock: timing pulses</text>
-              <rect class="svg-node svg-node--accent" x="720" y="155" width="210" height="210" rx="22" />
-              <text class="svg-node-label" x="825" y="220">Main memory</text><text class="svg-node-detail" x="825" y="250">instructions and data</text><text class="svg-node-detail" x="825" y="278">outside the CPU</text>
-              <path class="svg-line" d="M530 175 H720" marker-end="url(#cpuArrow)" />
-              <text class="svg-node-detail" x="625" y="158">address bus →</text>
-              <path class="svg-line svg-line--green" d="M530 260 H720" marker-start="url(#cpuArrowStart)" marker-end="url(#cpuArrowEnd)" />
-              <text class="svg-node-detail" x="625" y="246">↔ data bus</text>
-              <path class="svg-line svg-line--warm" d="M530 345 H720" marker-start="url(#cpuArrowStart)" marker-end="url(#cpuArrowEnd)" />
-              <text class="svg-node-detail" x="625" y="330">↔ control bus</text>
-            </svg>
-            <ol class="visual-steps">
-              <li><strong>CU</strong><span>Coordinates the fetch-decode-execute cycle and sends control signals.</span></li>
-              <li><strong>ALU</strong><span>Performs arithmetic operations, comparisons and Boolean logic.</span></li>
-              <li><strong>Registers + clock</strong><span>Registers hold immediate working values; clock pulses coordinate timing.</span></li>
-              <li><strong>Buses + memory</strong><span>Buses connect the CPU to memory without making memory part of the CPU.</span></li>
-            </ol>
-          </figure>
-          <details class="diagram-check">
-            <summary>Check the diagram: is main memory a register inside the CPU?</summary>
-            <p>No. Registers are small, fast storage locations inside the CPU. Main memory is a separate component connected to the CPU by buses.</p>
-          </details>
-        </section>
-
-        <!-- stage10-explanation:start cpu-map -->
-        <section class="panel explanation-panel" id="explanation-cpu-map" data-explains="cpu-map" data-explanation-kind="mechanism" aria-labelledby="explanation-cpu-map-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-042">
-          <h2 class="explanation-sr-only" id="explanation-cpu-map-title">Inside the CPU, outside the CPU, and what connects them</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-042-cpu-map.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Inside the CPU, outside the CPU, and what connects them with a structured visual model." />
-            <figcaption class="explanation-sr-only">Inside the CPU, outside the CPU, and what connects them: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> The address bus normally carries addresses from the CPU to memory or I/O.</li><li><strong>Lesson fact:</strong> The data bus is bidirectional and carries data or instructions.</li><li><strong>Lesson fact:</strong> The control bus is bidirectional overall: the CPU sends read/write signals and devices or controllers can send interrupts and status signals back.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end cpu-map -->
-        <section class="panel" id="alu-cu" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-042">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 2</p>
-            <h2>ALU and CU: do not swap their jobs</h2>
-          </div>
-          <div class="compare-table" role="table" aria-label="ALU and CU comparison">
-            <div class="table-row table-head" role="row">
-              <div role="columnheader">Component</div>
-              <div role="columnheader">Full name</div>
-              <div role="columnheader">Role</div>
-              <div role="columnheader">Exam-safe wording</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">ALU</div>
-              <div role="cell">Arithmetic Logic Unit</div>
-              <div role="cell">Performs arithmetic calculations and logical operations.</div>
-              <div role="cell">The ALU performs addition, subtraction and comparisons such as AND/OR or greater-than tests.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">CU</div>
-              <div role="cell">Control Unit</div>
-              <div role="cell">Coordinates CPU activity and issues control signals.</div>
-              <div role="cell">The CU decodes instructions and controls the sequence of operations in the fetch-decode-execute cycle.</div>
-            </div>
-          </div>
-          <div class="trap-card inline-card">
-            <h3>Common error</h3>
-            <p>"The CU calculates" is wrong. The CU controls; the ALU calculates. The CU is the traffic controller, not the calculator.</p>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start alu-cu -->
-        <section class="panel explanation-panel" id="explanation-alu-cu" data-explains="alu-cu" data-explanation-kind="comparison" aria-labelledby="explanation-alu-cu-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-042">
-          <h2 class="explanation-sr-only" id="explanation-alu-cu-title">Why control and calculation are separate</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-042-alu-cu.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Why control and calculation are separate through a cause-and-effect diagram." />
-            <figcaption class="explanation-sr-only">Why control and calculation are separate: mechanism, reason, result, analogy and boundary condition.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Mechanism:</strong> The control unit decodes what the instruction demands.</li><li><strong>Reason:</strong> It sends signals that select data movement and an ALU operation.</li><li><strong>Result:</strong> The ALU returns a result and status information.</li></ol>
-
-            <p><strong>Analogy:</strong> A coordinator chooses the operation; a specialist instrument performs it.</p>
-            <p><strong>Boundary:</strong> The control unit coordinates calculation but does not replace the ALU.</p>
-          </div>
-        </section>
-        <!-- stage10-explanation:end alu-cu -->
-        <section class="panel" id="registers" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-042">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 3</p>
-            <h2>Registers, buses and clock</h2>
-          </div>
-          <div class="component-grid">
-            <article>
-              <h3>Registers</h3>
-              <p>Registers are small, very fast storage locations inside the CPU. They temporarily hold data, instructions, addresses or intermediate results while processing takes place.</p>
-              <p class="mini-note">Specific registers such as PC, MAR, MDR and CIR are handled more deeply in later lessons.</p>
-            </article>
-            <article>
-              <h3>Data bus</h3>
-              <p>Carries data and instructions between the CPU, memory and other components. It is about the value being transferred.</p>
-            </article>
-            <article>
-              <h3>Address bus</h3>
-              <p>Carries the memory address that identifies where data or an instruction should be read from or written to.</p>
-            </article>
-            <article>
-              <h3>Control bus</h3>
-              <p>Carries control signals such as read, write, interrupt and timing signals between CPU and other components.</p>
-            </article>
-            <article>
-              <h3>Clock</h3>
-              <p>Produces regular pulses used to synchronise CPU operations. Clock speed is measured in hertz, often GHz for modern processors.</p>
-            </article>
-            <article>
-              <h3>Performance caution</h3>
-              <p>A higher clock speed may allow more cycles per second, but performance also depends on architecture, cache, cores, instruction type and memory access.</p>
-            </article>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start registers -->
-        <section class="panel explanation-panel" id="explanation-registers" data-explains="registers" data-explanation-kind="mechanism" aria-labelledby="explanation-registers-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-042">
-          <h2 class="explanation-sr-only" id="explanation-registers-title">How registers, buses and clock stay aligned</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-042-registers.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining How registers, buses and clock stay aligned through a cause-and-effect diagram." />
-            <figcaption class="explanation-sr-only">How registers, buses and clock stay aligned: mechanism, reason, result, analogy and boundary condition.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Mechanism:</strong> Registers expose small values needed immediately.</li><li><strong>Reason:</strong> Buses carry values, addresses and control signals on distinct paths.</li><li><strong>Result:</strong> Clock events determine when components may capture a new state.</li></ol>
-
-            <p><strong>Analogy:</strong> Timed transfer gates stop items arriving halfway through an operation.</p>
-            <p><strong>Boundary:</strong> A faster clock helps only when the rest of the architecture can keep up.</p>
-          </div>
-        </section>
-        <!-- stage10-explanation:end registers -->
-        <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-042">
-          <div class="section-title">
-            <p class="eyebrow">Interactive tool</p>
-            <h2>CPU component mapper</h2>
-            <p>Select a CPU architecture item and read the role, a mark-worthy sentence and the likely error.</p>
-          </div>
-          <div class="converter-grid">
-            <label>
-              Component
-              <select id="componentInput">
-                <option value="alu">ALU</option>
-                <option value="cu">Control unit</option>
-                <option value="register">Register</option>
-                <option value="dataBus">Data bus</option>
-                <option value="addressBus">Address bus</option>
-                <option value="controlBus">Control bus</option>
-                <option value="clock">Clock</option>
-              </select>
-            </label>
-            <button type="button" id="mapBtn">Map role</button>
-          </div>
-          <div class="result-box" id="mapResult" aria-live="polite"></div>
-          <div class="method-box" id="mapSentence"></div>
-          <div class="reject-box" id="mapTrap"></div>
-        </section>
-
-        <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-042">
-          <div class="section-title">
-            <p class="eyebrow">Worked examples</p>
-            <h2>Build answers from exact component roles</h2>
-          </div>
-          <div class="example-tabs" role="tablist" aria-label="Worked examples">
-            <button class="tab active" type="button" data-example="identify">Identify</button>
-            <button class="tab" type="button" data-example="add">ADD instruction</button>
-            <button class="tab" type="button" data-example="clock">Clock speed</button>
-          </div>
-          <article class="example-box" id="exampleBox"></article>
-        </section>
-
-        <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-042">
-          <div class="section-title">
-            <p class="eyebrow">5-minute quiz</p>
-            <h2>Practice with instant checking</h2>
-            <p>Use exact terms. "Thingy inside the CPU" is not an exam technique, even if the thingy is emotionally important.</p>
-          </div>
-          <div class="practice-list" id="practiceList"></div>
-        </section>
-
-        <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-042">
-          <div class="section-title">
-            <p class="eyebrow">Mistake debugging</p>
-            <h2>Fix the wording before it loses marks</h2>
-          </div>
-          <div class="mistake-grid" id="mistakeList"></div>
-        </section>
-
-        <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-042">
-          <div class="section-title">
-            <p class="eyebrow">Exam-style questions</p>
-            <h2>Cambridge-style questions with expandable mark schemes</h2>
-            <p>These are original questions written in Cambridge style. Mark schemes are strict about roles and wording.</p>
-          </div>
-          <div class="exam-list" id="examList"></div>
-        </section>
-
-        <section class="panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-042">
-          <div class="section-title">
-            <p class="eyebrow">Summary</p>
-            <h2>One CPU, several specialised jobs</h2>
-          </div>
-          <div class="summary-grid">
-            <div><strong>ALU</strong><span>Performs arithmetic and logical operations.</span></div>
-            <div><strong>CU</strong><span>Coordinates activity, decodes instructions and sends control signals.</span></div>
-            <div><strong>Registers</strong><span>Hold small, fast, temporary values inside the CPU.</span></div>
-            <div><strong>Buses</strong><span>Move data, addresses and control signals.</span></div>
-            <div><strong>Clock</strong><span>Synchronises operations using regular pulses.</span></div>
-            <div><strong>Exam habit</strong><span>Name the component, state its role, link it to the scenario.</span></div>
-          </div>
-        </section>
-
-        <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
-          <div class="section-title">
-            <p class="eyebrow">Homework</p>
-            <h2>Make the architecture answer-ready</h2>
-          </div>
-          <ol class="homework-list">
-            <li>Draw a labelled CPU architecture diagram showing ALU, CU, registers, data bus, address bus, control bus and clock.</li>
-            <li>Write a 6-mark answer: "Describe the roles of three buses in a computer system."</li>
-            <li>Explain in 4-5 sentences why registers are used instead of repeatedly accessing RAM for every tiny working value.</li>
-            <li>Rewrite this weak sentence into a mark-worthy answer: "The ALU controls the CPU and the CU does maths."</li>
-            <li>Create five flashcards: ALU, CU, register, bus, clock. Each card must include English term, Chinese support and one exam-safe sentence.</li>
-          </ol>
-        </section>
+        <nav class="v2-bottom-nav" aria-label="Previous and next lesson"><a href="../lesson-041/" >Previous lesson</a><a href="../lesson-043/" >Next lesson</a></nav>
       </div>
     </main>
-    <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=3"></script>
-    <script src="../lesson-toolbar.js?v=3"></script>
-    <script src="../stage7-accessibility.js?v=4"></script>
+    <script src="../course-v2.js?v=1"></script>
   </body>
 </html>

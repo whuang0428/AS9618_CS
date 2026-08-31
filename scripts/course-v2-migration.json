@@ -1,0 +1,2592 @@
+{
+  "schemaVersion": 1,
+  "sourceLessonCount": 151,
+  "targetLessonCount": 90,
+  "rows": [
+    {
+      "oldLesson": 1,
+      "oldId": "001",
+      "oldTitle": "Binary and decimal magnitude prefixes",
+      "primaryNewLesson": 1,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "Binary data units and magnitude prefixes",
+      "syllabusIds": [
+        "S1.01"
+      ]
+    },
+    {
+      "oldLesson": 2,
+      "oldId": "002",
+      "oldTitle": "Integer conversion between binary and denary",
+      "primaryNewLesson": 2,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "Binary, denary and hexadecimal number systems",
+      "syllabusIds": [
+        "S1.02",
+        "S1.03"
+      ]
+    },
+    {
+      "oldLesson": 3,
+      "oldId": "003",
+      "oldTitle": "Hexadecimal as a base-16 representation",
+      "primaryNewLesson": 2,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "Binary, denary and hexadecimal number systems",
+      "syllabusIds": [
+        "S1.02",
+        "S1.03"
+      ]
+    },
+    {
+      "oldLesson": 4,
+      "oldId": "004",
+      "oldTitle": "Binary addition and fixed-width overflow",
+      "primaryNewLesson": 3,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "Signed binary arithmetic and overflow",
+      "syllabusIds": [
+        "S1.04",
+        "S1.05"
+      ]
+    },
+    {
+      "oldLesson": 5,
+      "oldId": "005",
+      "oldTitle": "Signed representations and binary subtraction",
+      "primaryNewLesson": 3,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "Signed binary arithmetic and overflow",
+      "syllabusIds": [
+        "S1.04",
+        "S1.05"
+      ]
+    },
+    {
+      "oldLesson": 6,
+      "oldId": "006",
+      "oldTitle": "BCD and hexadecimal in practical systems",
+      "primaryNewLesson": 4,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "BCD, hexadecimal applications and character encoding",
+      "syllabusIds": [
+        "S1.06",
+        "S1.07"
+      ]
+    },
+    {
+      "oldLesson": 7,
+      "oldId": "007",
+      "oldTitle": "Character sets and internal binary character data",
+      "primaryNewLesson": 4,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "BCD, hexadecimal applications and character encoding",
+      "syllabusIds": [
+        "S1.06",
+        "S1.07"
+      ]
+    },
+    {
+      "oldLesson": 8,
+      "oldId": "008",
+      "oldTitle": "Bitmap file headers, image resolution and screen resolution",
+      "primaryNewLesson": 5,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "Bitmap and vector graphics",
+      "syllabusIds": [
+        "S1.08",
+        "S1.09"
+      ]
+    },
+    {
+      "oldLesson": 9,
+      "oldId": "009",
+      "oldTitle": "Bitmap file-size calculations and metadata",
+      "primaryNewLesson": 5,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "Bitmap and vector graphics",
+      "syllabusIds": [
+        "S1.08",
+        "S1.09"
+      ]
+    },
+    {
+      "oldLesson": 10,
+      "oldId": "010",
+      "oldTitle": "Vector graphics and drawing lists",
+      "primaryNewLesson": 5,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "Bitmap and vector graphics",
+      "syllabusIds": [
+        "S1.08",
+        "S1.09"
+      ]
+    },
+    {
+      "oldLesson": 11,
+      "oldId": "011",
+      "oldTitle": "Sound sampling, sampling resolution, accuracy and storage",
+      "primaryNewLesson": 6,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "Sound representation and file compression",
+      "syllabusIds": [
+        "S1.10",
+        "S1.11"
+      ]
+    },
+    {
+      "oldLesson": 12,
+      "oldId": "012",
+      "oldTitle": "Sound file size calculations",
+      "primaryNewLesson": 5,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "Bitmap and vector graphics",
+      "syllabusIds": [
+        "S1.08",
+        "S1.09"
+      ]
+    },
+    {
+      "oldLesson": 13,
+      "oldId": "013",
+      "oldTitle": "Compression methods for text, bitmap, vector and sound files",
+      "primaryNewLesson": 6,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "Sound representation and file compression",
+      "syllabusIds": [
+        "S1.10",
+        "S1.11"
+      ]
+    },
+    {
+      "oldLesson": 14,
+      "oldId": "014",
+      "oldTitle": "Run-length encoding and dictionary-style compression",
+      "primaryNewLesson": 6,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "Sound representation and file compression",
+      "syllabusIds": [
+        "S1.10",
+        "S1.11"
+      ]
+    },
+    {
+      "oldLesson": 15,
+      "oldId": "015",
+      "oldTitle": "Choosing data representation for a real system",
+      "primaryNewLesson": 2,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "Binary, denary and hexadecimal number systems",
+      "syllabusIds": [
+        "S1.02",
+        "S1.03"
+      ]
+    },
+    {
+      "oldLesson": 16,
+      "oldId": "016",
+      "oldTitle": "Section 1 review under exam timing",
+      "primaryNewLesson": 1,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "Binary data units and magnitude prefixes",
+      "syllabusIds": [
+        "S1.01"
+      ]
+    },
+    {
+      "oldLesson": 17,
+      "oldId": "017",
+      "oldTitle": "Network purpose and client/server models",
+      "primaryNewLesson": 7,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "Network purposes, LANs, WANs and computer roles",
+      "syllabusIds": [
+        "S2.01",
+        "S2.02",
+        "S2.03"
+      ]
+    },
+    {
+      "oldLesson": 18,
+      "oldId": "018",
+      "oldTitle": "Bus, star, mesh and hybrid topologies",
+      "primaryNewLesson": 8,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "Network topologies and packet transmission",
+      "syllabusIds": [
+        "S2.04",
+        "S2.05"
+      ]
+    },
+    {
+      "oldLesson": 19,
+      "oldId": "019",
+      "oldTitle": "Packet transmission between two hosts in each required topology",
+      "primaryNewLesson": 8,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "Network topologies and packet transmission",
+      "syllabusIds": [
+        "S2.04",
+        "S2.05"
+      ]
+    },
+    {
+      "oldLesson": 20,
+      "oldId": "020",
+      "oldTitle": "Cloud, wired and wireless networking",
+      "primaryNewLesson": 9,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "Cloud computing and transmission media",
+      "syllabusIds": [
+        "S2.06",
+        "S2.07",
+        "S2.08"
+      ]
+    },
+    {
+      "oldLesson": 21,
+      "oldId": "021",
+      "oldTitle": "LAN hardware, Ethernet, streaming, the internet, IP and URL",
+      "primaryNewLesson": 11,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "Streaming, the internet and connection infrastructure",
+      "syllabusIds": [
+        "S2.12",
+        "S2.13",
+        "S2.14"
+      ]
+    },
+    {
+      "oldLesson": 22,
+      "oldId": "022",
+      "oldTitle": "HTTP, HTTPS, FTP, SMTP, POP3 and IMAP in context",
+      "primaryNewLesson": 12,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "IP addressing, subnetting, URLs and DNS",
+      "syllabusIds": [
+        "S2.15",
+        "S2.16"
+      ]
+    },
+    {
+      "oldLesson": 23,
+      "oldId": "023",
+      "oldTitle": "Wired and wireless transmission media",
+      "primaryNewLesson": 9,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "Cloud computing and transmission media",
+      "syllabusIds": [
+        "S2.06",
+        "S2.07",
+        "S2.08"
+      ]
+    },
+    {
+      "oldLesson": 24,
+      "oldId": "024",
+      "oldTitle": "Network hardware: switches, routers, access points and gateways",
+      "primaryNewLesson": 10,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "LAN hardware, routers and Ethernet",
+      "syllabusIds": [
+        "S2.09",
+        "S2.10",
+        "S2.11"
+      ]
+    },
+    {
+      "oldLesson": 25,
+      "oldId": "025",
+      "oldTitle": "Internet, intranet, extranet and cloud services",
+      "primaryNewLesson": 11,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "Streaming, the internet and connection infrastructure",
+      "syllabusIds": [
+        "S2.12",
+        "S2.13",
+        "S2.14"
+      ]
+    },
+    {
+      "oldLesson": 26,
+      "oldId": "026",
+      "oldTitle": "Network performance, latency, bandwidth and congestion",
+      "primaryNewLesson": 7,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "Network purposes, LANs, WANs and computer roles",
+      "syllabusIds": [
+        "S2.01",
+        "S2.02",
+        "S2.03"
+      ]
+    },
+    {
+      "oldLesson": 27,
+      "oldId": "027",
+      "oldTitle": "Section 2 review: explaining communication with precision",
+      "primaryNewLesson": 12,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "IP addressing, subnetting, URLs and DNS",
+      "syllabusIds": [
+        "S2.15",
+        "S2.16"
+      ]
+    },
+    {
+      "oldLesson": 28,
+      "oldId": "028",
+      "oldTitle": "Why computer systems need input, output and storage",
+      "primaryNewLesson": 13,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "Input, output, storage and embedded systems",
+      "syllabusIds": [
+        "S3.01",
+        "S3.02"
+      ]
+    },
+    {
+      "oldLesson": 29,
+      "oldId": "029",
+      "oldTitle": "Embedded systems: purpose, benefits and drawbacks",
+      "primaryNewLesson": 13,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "Input, output, storage and embedded systems",
+      "syllabusIds": [
+        "S3.01",
+        "S3.02"
+      ]
+    },
+    {
+      "oldLesson": 30,
+      "oldId": "030",
+      "oldTitle": "Microphone, touchscreen and VR headset operation",
+      "primaryNewLesson": 14,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "How input, output and storage devices work",
+      "syllabusIds": [
+        "S3.03"
+      ]
+    },
+    {
+      "oldLesson": 31,
+      "oldId": "031",
+      "oldTitle": "Output, storage devices and primary memory",
+      "primaryNewLesson": 15,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "Buffers and primary memory technologies",
+      "syllabusIds": [
+        "S3.04",
+        "S3.05",
+        "S3.06",
+        "S3.07"
+      ]
+    },
+    {
+      "oldLesson": 32,
+      "oldId": "032",
+      "oldTitle": "Monitoring, control, feedback and required sensors",
+      "primaryNewLesson": 16,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "Monitoring, control, sensors and actuators",
+      "syllabusIds": [
+        "S3.08",
+        "S3.09"
+      ]
+    },
+    {
+      "oldLesson": 33,
+      "oldId": "033",
+      "oldTitle": "Logic-gate symbols, functions and representation conversions",
+      "primaryNewLesson": 17,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "Logic gates, symbols and truth tables",
+      "syllabusIds": [
+        "S3.10"
+      ]
+    },
+    {
+      "oldLesson": 34,
+      "oldId": "034",
+      "oldTitle": "Embedded systems and microcontrollers",
+      "primaryNewLesson": 13,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "Input, output, storage and embedded systems",
+      "syllabusIds": [
+        "S3.01",
+        "S3.02"
+      ]
+    },
+    {
+      "oldLesson": 35,
+      "oldId": "035",
+      "oldTitle": "Sensors, actuators and control systems",
+      "primaryNewLesson": 16,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "Monitoring, control, sensors and actuators",
+      "syllabusIds": [
+        "S3.08",
+        "S3.09"
+      ]
+    },
+    {
+      "oldLesson": 36,
+      "oldId": "036",
+      "oldTitle": "Logic gates: NOT, AND, OR, NAND, NOR, XOR",
+      "primaryNewLesson": 17,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "Logic gates, symbols and truth tables",
+      "syllabusIds": [
+        "S3.10"
+      ]
+    },
+    {
+      "oldLesson": 37,
+      "oldId": "037",
+      "oldTitle": "Truth tables and Boolean expressions",
+      "primaryNewLesson": 18,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "Boolean expressions and logic-circuit design",
+      "syllabusIds": [
+        "S3.10"
+      ]
+    },
+    {
+      "oldLesson": 38,
+      "oldId": "038",
+      "oldTitle": "Building logic circuits from requirements",
+      "primaryNewLesson": 17,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "Logic gates, symbols and truth tables",
+      "syllabusIds": [
+        "S3.10"
+      ]
+    },
+    {
+      "oldLesson": 39,
+      "oldId": "039",
+      "oldTitle": "Hardware selection for different users",
+      "primaryNewLesson": 13,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "Input, output, storage and embedded systems",
+      "syllabusIds": [
+        "S3.01",
+        "S3.02"
+      ]
+    },
+    {
+      "oldLesson": 40,
+      "oldId": "040",
+      "oldTitle": "Environmental and reliability considerations in hardware",
+      "primaryNewLesson": 13,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "Input, output, storage and embedded systems",
+      "syllabusIds": [
+        "S3.01",
+        "S3.02"
+      ]
+    },
+    {
+      "oldLesson": 41,
+      "oldId": "041",
+      "oldTitle": "Section 3 review: compare, justify, calculate",
+      "primaryNewLesson": 14,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "How input, output and storage devices work",
+      "syllabusIds": [
+        "S3.03"
+      ]
+    },
+    {
+      "oldLesson": 42,
+      "oldId": "042",
+      "oldTitle": "Von Neumann architecture, CPU components and registers",
+      "primaryNewLesson": 19,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "Von Neumann architecture, CPU components and registers",
+      "syllabusIds": [
+        "S4.01",
+        "S4.02",
+        "S4.03"
+      ]
+    },
+    {
+      "oldLesson": 43,
+      "oldId": "043",
+      "oldTitle": "System buses, ports and processor performance",
+      "primaryNewLesson": 20,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "System buses, ports and processor performance",
+      "syllabusIds": [
+        "S4.04",
+        "S4.05",
+        "S4.06"
+      ]
+    },
+    {
+      "oldLesson": 44,
+      "oldId": "044",
+      "oldTitle": "Register-transfer notation for the fetch-decode-execute cycle",
+      "primaryNewLesson": 21,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "The fetch-execute cycle in register-transfer notation",
+      "syllabusIds": [
+        "S4.07"
+      ]
+    },
+    {
+      "oldLesson": 45,
+      "oldId": "045",
+      "oldTitle": "Interrupt causes, detection and handling",
+      "primaryNewLesson": 22,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "Interrupt causes, detection and handling",
+      "syllabusIds": [
+        "S4.08"
+      ]
+    },
+    {
+      "oldLesson": 46,
+      "oldId": "046",
+      "oldTitle": "Assembly language and machine code",
+      "primaryNewLesson": 23,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "Assembly language and the two-pass assembler",
+      "syllabusIds": [
+        "S4.09",
+        "S4.10"
+      ]
+    },
+    {
+      "oldLesson": 47,
+      "oldId": "047",
+      "oldTitle": "Two-pass assembly, program tracing and the instruction set",
+      "primaryNewLesson": 24,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "Tracing instructions and addressing modes",
+      "syllabusIds": [
+        "S4.11",
+        "S4.12",
+        "S4.13",
+        "S4.14"
+      ]
+    },
+    {
+      "oldLesson": 48,
+      "oldId": "048",
+      "oldTitle": "Addressing modes and address-sensitive instructions",
+      "primaryNewLesson": 24,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "Tracing instructions and addressing modes",
+      "syllabusIds": [
+        "S4.11",
+        "S4.12",
+        "S4.13",
+        "S4.14"
+      ]
+    },
+    {
+      "oldLesson": 49,
+      "oldId": "049",
+      "oldTitle": "Section 4 semantic checkpoint",
+      "primaryNewLesson": 24,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "Tracing instructions and addressing modes",
+      "syllabusIds": [
+        "S4.11",
+        "S4.12",
+        "S4.13",
+        "S4.14"
+      ]
+    },
+    {
+      "oldLesson": 50,
+      "oldId": "050",
+      "oldTitle": "Bit manipulation with masks and shifts",
+      "primaryNewLesson": 25,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "Bit manipulation, masks and binary shifts",
+      "syllabusIds": [
+        "S4.15"
+      ]
+    },
+    {
+      "oldLesson": 51,
+      "oldId": "051",
+      "oldTitle": "Bit manipulation: masks and binary shifts",
+      "primaryNewLesson": 25,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "Bit manipulation, masks and binary shifts",
+      "syllabusIds": [
+        "S4.15"
+      ]
+    },
+    {
+      "oldLesson": 52,
+      "oldId": "052",
+      "oldTitle": "Section 4 review: tracing processor behaviour",
+      "primaryNewLesson": 20,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "System buses, ports and processor performance",
+      "syllabusIds": [
+        "S4.04",
+        "S4.05",
+        "S4.06"
+      ]
+    },
+    {
+      "oldLesson": 53,
+      "oldId": "053",
+      "oldTitle": "Why an operating system is required and what it manages",
+      "primaryNewLesson": 26,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "Why operating systems are required",
+      "syllabusIds": [
+        "S5.01"
+      ]
+    },
+    {
+      "oldLesson": 54,
+      "oldId": "054",
+      "oldTitle": "Required utility software",
+      "primaryNewLesson": 27,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "Utility software, libraries and linked files",
+      "syllabusIds": [
+        "S5.02",
+        "S5.03"
+      ]
+    },
+    {
+      "oldLesson": 55,
+      "oldId": "055",
+      "oldTitle": "Libraries and dynamically linked library files",
+      "primaryNewLesson": 27,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "Utility software, libraries and linked files",
+      "syllabusIds": [
+        "S5.02",
+        "S5.03"
+      ]
+    },
+    {
+      "oldLesson": 56,
+      "oldId": "056",
+      "oldTitle": "Assembler, compiler and interpreter choices",
+      "primaryNewLesson": 28,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "Assemblers, compilers and interpreters",
+      "syllabusIds": [
+        "S5.04"
+      ]
+    },
+    {
+      "oldLesson": 57,
+      "oldId": "057",
+      "oldTitle": "Java translation and required IDE features",
+      "primaryNewLesson": 30,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "IDE features and practical debugging support",
+      "syllabusIds": [
+        "S5.07"
+      ]
+    },
+    {
+      "oldLesson": 58,
+      "oldId": "058",
+      "oldTitle": "Compilation stages: lexical analysis to object code",
+      "primaryNewLesson": 27,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "Utility software, libraries and linked files",
+      "syllabusIds": [
+        "S5.02",
+        "S5.03"
+      ]
+    },
+    {
+      "oldLesson": 59,
+      "oldId": "059",
+      "oldTitle": "Linkers, loaders and libraries",
+      "primaryNewLesson": 27,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "Utility software, libraries and linked files",
+      "syllabusIds": [
+        "S5.02",
+        "S5.03"
+      ]
+    },
+    {
+      "oldLesson": 60,
+      "oldId": "060",
+      "oldTitle": "Error types: syntax, logic, runtime and translation diagnostics",
+      "primaryNewLesson": 29,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "Choosing a translator and understanding Java translation",
+      "syllabusIds": [
+        "S5.05",
+        "S5.06"
+      ]
+    },
+    {
+      "oldLesson": 61,
+      "oldId": "061",
+      "oldTitle": "Choosing translation approaches for development and deployment",
+      "primaryNewLesson": 29,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "Choosing a translator and understanding Java translation",
+      "syllabusIds": [
+        "S5.05",
+        "S5.06"
+      ]
+    },
+    {
+      "oldLesson": 62,
+      "oldId": "062",
+      "oldTitle": "Section 5 review: precise software comparisons",
+      "primaryNewLesson": 27,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "Utility software, libraries and linked files",
+      "syllabusIds": [
+        "S5.02",
+        "S5.03"
+      ]
+    },
+    {
+      "oldLesson": 63,
+      "oldId": "063",
+      "oldTitle": "Security, privacy and data integrity",
+      "primaryNewLesson": 31,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "Security, privacy, integrity and the need for protection",
+      "syllabusIds": [
+        "S6.01",
+        "S6.02"
+      ]
+    },
+    {
+      "oldLesson": 64,
+      "oldId": "064",
+      "oldTitle": "Virus, spyware, anti-virus and anti-spyware",
+      "primaryNewLesson": 33,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "Authentication, encryption and network protection",
+      "syllabusIds": [
+        "S6.03",
+        "S6.06"
+      ]
+    },
+    {
+      "oldLesson": 65,
+      "oldId": "065",
+      "oldTitle": "Required internet threats and matching risk-reduction methods",
+      "primaryNewLesson": 32,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "Internet threats, malware and access restriction",
+      "syllabusIds": [
+        "S6.04",
+        "S6.05"
+      ]
+    },
+    {
+      "oldLesson": 66,
+      "oldId": "066",
+      "oldTitle": "User accounts, passwords and biometric authentication",
+      "primaryNewLesson": 33,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "Authentication, encryption and network protection",
+      "syllabusIds": [
+        "S6.03",
+        "S6.06"
+      ]
+    },
+    {
+      "oldLesson": 67,
+      "oldId": "067",
+      "oldTitle": "Access rights and encryption as data-security methods",
+      "primaryNewLesson": 33,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "Authentication, encryption and network protection",
+      "syllabusIds": [
+        "S6.03",
+        "S6.06"
+      ]
+    },
+    {
+      "oldLesson": 68,
+      "oldId": "068",
+      "oldTitle": "Digital signatures and encryption",
+      "primaryNewLesson": 33,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "Authentication, encryption and network protection",
+      "syllabusIds": [
+        "S6.03",
+        "S6.06"
+      ]
+    },
+    {
+      "oldLesson": 69,
+      "oldId": "069",
+      "oldTitle": "Firewall protection from a stand-alone PC to a network",
+      "primaryNewLesson": 33,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "Authentication, encryption and network protection",
+      "syllabusIds": [
+        "S6.03",
+        "S6.06"
+      ]
+    },
+    {
+      "oldLesson": 70,
+      "oldId": "070",
+      "oldTitle": "Complete validation and verification methods",
+      "primaryNewLesson": 34,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "Validation, verification, parity and checksums",
+      "syllabusIds": [
+        "S6.07",
+        "S6.08"
+      ]
+    },
+    {
+      "oldLesson": 71,
+      "oldId": "071",
+      "oldTitle": "Backup strategies, disaster recovery, and audit trails",
+      "primaryNewLesson": 31,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "Security, privacy, integrity and the need for protection",
+      "syllabusIds": [
+        "S6.01",
+        "S6.02"
+      ]
+    },
+    {
+      "oldLesson": 72,
+      "oldId": "072",
+      "oldTitle": "Section 6 review: matching risks to controls",
+      "primaryNewLesson": 32,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "Internet threats, malware and access restriction",
+      "syllabusIds": [
+        "S6.04",
+        "S6.05"
+      ]
+    },
+    {
+      "oldLesson": 73,
+      "oldId": "073",
+      "oldTitle": "Professional ethics, professional bodies and ethical decisions",
+      "primaryNewLesson": 35,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "Professional ethics and professional bodies",
+      "syllabusIds": [
+        "S7.01",
+        "S7.02"
+      ]
+    },
+    {
+      "oldLesson": 74,
+      "oldId": "074",
+      "oldTitle": "Privacy, surveillance, and data protection",
+      "primaryNewLesson": 35,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "Professional ethics and professional bodies",
+      "syllabusIds": [
+        "S7.01",
+        "S7.02"
+      ]
+    },
+    {
+      "oldLesson": 75,
+      "oldId": "075",
+      "oldTitle": "Copyright legislation, FSF, OSI and licence permissions",
+      "primaryNewLesson": 37,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "Copyright and software licences",
+      "syllabusIds": [
+        "S7.04",
+        "S7.05"
+      ]
+    },
+    {
+      "oldLesson": 76,
+      "oldId": "076",
+      "oldTitle": "Shareware and commercial licences",
+      "primaryNewLesson": 37,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "Copyright and software licences",
+      "syllabusIds": [
+        "S7.04",
+        "S7.05"
+      ]
+    },
+    {
+      "oldLesson": 77,
+      "oldId": "077",
+      "oldTitle": "AI applications and impact chains",
+      "primaryNewLesson": 38,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "Artificial intelligence applications and impacts",
+      "syllabusIds": [
+        "S7.06"
+      ]
+    },
+    {
+      "oldLesson": 78,
+      "oldId": "078",
+      "oldTitle": "Section 7 required-content checkpoint",
+      "primaryNewLesson": 37,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "Copyright and software licences",
+      "syllabusIds": [
+        "S7.04",
+        "S7.05"
+      ]
+    },
+    {
+      "oldLesson": 79,
+      "oldId": "079",
+      "oldTitle": "File-based limitations and relational solutions",
+      "primaryNewLesson": 39,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "From file-based systems to relational databases",
+      "syllabusIds": [
+        "S8.01",
+        "S8.02"
+      ]
+    },
+    {
+      "oldLesson": 80,
+      "oldId": "080",
+      "oldTitle": "Relational terminology, keys and relationships",
+      "primaryNewLesson": 39,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "From file-based systems to relational databases",
+      "syllabusIds": [
+        "S8.01",
+        "S8.02"
+      ]
+    },
+    {
+      "oldLesson": 81,
+      "oldId": "081",
+      "oldTitle": "E-R design, normalisation and DBMS features",
+      "primaryNewLesson": 41,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "DBMS architecture, integrity, security and backup",
+      "syllabusIds": [
+        "S8.05",
+        "S8.06"
+      ]
+    },
+    {
+      "oldLesson": 82,
+      "oldId": "082",
+      "oldTitle": "Primary keys, foreign keys and relationships",
+      "primaryNewLesson": 39,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "From file-based systems to relational databases",
+      "syllabusIds": [
+        "S8.01",
+        "S8.02"
+      ]
+    },
+    {
+      "oldLesson": 83,
+      "oldId": "083",
+      "oldTitle": "Entity-relationship modelling",
+      "primaryNewLesson": 40,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "Entity-relationship design and normalisation",
+      "syllabusIds": [
+        "S8.03",
+        "S8.04"
+      ]
+    },
+    {
+      "oldLesson": 84,
+      "oldId": "084",
+      "oldTitle": "DDL, DML and SQL roles",
+      "primaryNewLesson": 42,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "DDL, DML and the role of SQL",
+      "syllabusIds": [
+        "S8.07"
+      ]
+    },
+    {
+      "oldLesson": 85,
+      "oldId": "085",
+      "oldTitle": "Read and write SQL statements by their semantics",
+      "primaryNewLesson": 43,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "Reading and writing SQL queries",
+      "syllabusIds": [
+        "S8.08",
+        "S8.10"
+      ]
+    },
+    {
+      "oldLesson": 86,
+      "oldId": "086",
+      "oldTitle": "DDL and two-table data queries",
+      "primaryNewLesson": 44,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "Creating and maintaining database data",
+      "syllabusIds": [
+        "S8.09",
+        "S8.11"
+      ]
+    },
+    {
+      "oldLesson": 87,
+      "oldId": "087",
+      "oldTitle": "SQL joins using related tables",
+      "primaryNewLesson": 43,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "Reading and writing SQL queries",
+      "syllabusIds": [
+        "S8.08",
+        "S8.10"
+      ]
+    },
+    {
+      "oldLesson": 88,
+      "oldId": "088",
+      "oldTitle": "INSERT, DELETE and UPDATE",
+      "primaryNewLesson": 44,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "Creating and maintaining database data",
+      "syllabusIds": [
+        "S8.09",
+        "S8.11"
+      ]
+    },
+    {
+      "oldLesson": 89,
+      "oldId": "089",
+      "oldTitle": "Validation, verification, security and backup in databases",
+      "primaryNewLesson": 41,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "DBMS architecture, integrity, security and backup",
+      "syllabusIds": [
+        "S8.05",
+        "S8.06"
+      ]
+    },
+    {
+      "oldLesson": 90,
+      "oldId": "090",
+      "oldTitle": "Section 8 required-content checkpoint",
+      "primaryNewLesson": 39,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "From file-based systems to relational databases",
+      "syllabusIds": [
+        "S8.01",
+        "S8.02"
+      ]
+    },
+    {
+      "oldLesson": 91,
+      "oldId": "091",
+      "oldTitle": "Paper 1 review: representation and communication",
+      "primaryNewLesson": 45,
+      "reason": "Paper 1 review consolidated into L045",
+      "newTitle": "Paper 1 integrated review and error clinic",
+      "syllabusIds": [
+        "S1.01",
+        "S1.02",
+        "S1.03",
+        "S1.04",
+        "S1.05",
+        "S1.06",
+        "S1.07",
+        "S1.08",
+        "S1.09",
+        "S1.10",
+        "S1.11",
+        "S2.01",
+        "S2.02",
+        "S2.03",
+        "S2.04",
+        "S2.05",
+        "S2.06",
+        "S2.07",
+        "S2.08",
+        "S2.09",
+        "S2.10",
+        "S2.11",
+        "S2.12",
+        "S2.13",
+        "S2.14",
+        "S2.15",
+        "S2.16",
+        "S3.01",
+        "S3.02",
+        "S3.03",
+        "S3.04",
+        "S3.05",
+        "S3.06",
+        "S3.07",
+        "S3.08",
+        "S3.09",
+        "S3.10",
+        "S4.01",
+        "S4.02",
+        "S4.03",
+        "S4.04",
+        "S4.05",
+        "S4.06",
+        "S4.07",
+        "S4.08",
+        "S4.09",
+        "S4.10",
+        "S4.11",
+        "S4.12",
+        "S4.13",
+        "S4.14",
+        "S4.15",
+        "S5.01",
+        "S5.02",
+        "S5.03",
+        "S5.04",
+        "S5.05",
+        "S5.06",
+        "S5.07",
+        "S6.01",
+        "S6.02",
+        "S6.03",
+        "S6.04",
+        "S6.05",
+        "S6.06",
+        "S6.07",
+        "S6.08",
+        "S7.01",
+        "S7.02",
+        "S7.03",
+        "S7.04",
+        "S7.05",
+        "S7.06",
+        "S8.01",
+        "S8.02",
+        "S8.03",
+        "S8.04",
+        "S8.05",
+        "S8.06",
+        "S8.07",
+        "S8.08",
+        "S8.09",
+        "S8.10",
+        "S8.11"
+      ]
+    },
+    {
+      "oldLesson": 92,
+      "oldId": "092",
+      "oldTitle": "Paper 1 review: hardware and processor fundamentals",
+      "primaryNewLesson": 45,
+      "reason": "Paper 1 review consolidated into L045",
+      "newTitle": "Paper 1 integrated review and error clinic",
+      "syllabusIds": [
+        "S1.01",
+        "S1.02",
+        "S1.03",
+        "S1.04",
+        "S1.05",
+        "S1.06",
+        "S1.07",
+        "S1.08",
+        "S1.09",
+        "S1.10",
+        "S1.11",
+        "S2.01",
+        "S2.02",
+        "S2.03",
+        "S2.04",
+        "S2.05",
+        "S2.06",
+        "S2.07",
+        "S2.08",
+        "S2.09",
+        "S2.10",
+        "S2.11",
+        "S2.12",
+        "S2.13",
+        "S2.14",
+        "S2.15",
+        "S2.16",
+        "S3.01",
+        "S3.02",
+        "S3.03",
+        "S3.04",
+        "S3.05",
+        "S3.06",
+        "S3.07",
+        "S3.08",
+        "S3.09",
+        "S3.10",
+        "S4.01",
+        "S4.02",
+        "S4.03",
+        "S4.04",
+        "S4.05",
+        "S4.06",
+        "S4.07",
+        "S4.08",
+        "S4.09",
+        "S4.10",
+        "S4.11",
+        "S4.12",
+        "S4.13",
+        "S4.14",
+        "S4.15",
+        "S5.01",
+        "S5.02",
+        "S5.03",
+        "S5.04",
+        "S5.05",
+        "S5.06",
+        "S5.07",
+        "S6.01",
+        "S6.02",
+        "S6.03",
+        "S6.04",
+        "S6.05",
+        "S6.06",
+        "S6.07",
+        "S6.08",
+        "S7.01",
+        "S7.02",
+        "S7.03",
+        "S7.04",
+        "S7.05",
+        "S7.06",
+        "S8.01",
+        "S8.02",
+        "S8.03",
+        "S8.04",
+        "S8.05",
+        "S8.06",
+        "S8.07",
+        "S8.08",
+        "S8.09",
+        "S8.10",
+        "S8.11"
+      ]
+    },
+    {
+      "oldLesson": 93,
+      "oldId": "093",
+      "oldTitle": "Paper 1 review: system software and security",
+      "primaryNewLesson": 45,
+      "reason": "Paper 1 review consolidated into L045",
+      "newTitle": "Paper 1 integrated review and error clinic",
+      "syllabusIds": [
+        "S1.01",
+        "S1.02",
+        "S1.03",
+        "S1.04",
+        "S1.05",
+        "S1.06",
+        "S1.07",
+        "S1.08",
+        "S1.09",
+        "S1.10",
+        "S1.11",
+        "S2.01",
+        "S2.02",
+        "S2.03",
+        "S2.04",
+        "S2.05",
+        "S2.06",
+        "S2.07",
+        "S2.08",
+        "S2.09",
+        "S2.10",
+        "S2.11",
+        "S2.12",
+        "S2.13",
+        "S2.14",
+        "S2.15",
+        "S2.16",
+        "S3.01",
+        "S3.02",
+        "S3.03",
+        "S3.04",
+        "S3.05",
+        "S3.06",
+        "S3.07",
+        "S3.08",
+        "S3.09",
+        "S3.10",
+        "S4.01",
+        "S4.02",
+        "S4.03",
+        "S4.04",
+        "S4.05",
+        "S4.06",
+        "S4.07",
+        "S4.08",
+        "S4.09",
+        "S4.10",
+        "S4.11",
+        "S4.12",
+        "S4.13",
+        "S4.14",
+        "S4.15",
+        "S5.01",
+        "S5.02",
+        "S5.03",
+        "S5.04",
+        "S5.05",
+        "S5.06",
+        "S5.07",
+        "S6.01",
+        "S6.02",
+        "S6.03",
+        "S6.04",
+        "S6.05",
+        "S6.06",
+        "S6.07",
+        "S6.08",
+        "S7.01",
+        "S7.02",
+        "S7.03",
+        "S7.04",
+        "S7.05",
+        "S7.06",
+        "S8.01",
+        "S8.02",
+        "S8.03",
+        "S8.04",
+        "S8.05",
+        "S8.06",
+        "S8.07",
+        "S8.08",
+        "S8.09",
+        "S8.10",
+        "S8.11"
+      ]
+    },
+    {
+      "oldLesson": 94,
+      "oldId": "094",
+      "oldTitle": "Paper 1 review: ethics and databases",
+      "primaryNewLesson": 45,
+      "reason": "Paper 1 review consolidated into L045",
+      "newTitle": "Paper 1 integrated review and error clinic",
+      "syllabusIds": [
+        "S1.01",
+        "S1.02",
+        "S1.03",
+        "S1.04",
+        "S1.05",
+        "S1.06",
+        "S1.07",
+        "S1.08",
+        "S1.09",
+        "S1.10",
+        "S1.11",
+        "S2.01",
+        "S2.02",
+        "S2.03",
+        "S2.04",
+        "S2.05",
+        "S2.06",
+        "S2.07",
+        "S2.08",
+        "S2.09",
+        "S2.10",
+        "S2.11",
+        "S2.12",
+        "S2.13",
+        "S2.14",
+        "S2.15",
+        "S2.16",
+        "S3.01",
+        "S3.02",
+        "S3.03",
+        "S3.04",
+        "S3.05",
+        "S3.06",
+        "S3.07",
+        "S3.08",
+        "S3.09",
+        "S3.10",
+        "S4.01",
+        "S4.02",
+        "S4.03",
+        "S4.04",
+        "S4.05",
+        "S4.06",
+        "S4.07",
+        "S4.08",
+        "S4.09",
+        "S4.10",
+        "S4.11",
+        "S4.12",
+        "S4.13",
+        "S4.14",
+        "S4.15",
+        "S5.01",
+        "S5.02",
+        "S5.03",
+        "S5.04",
+        "S5.05",
+        "S5.06",
+        "S5.07",
+        "S6.01",
+        "S6.02",
+        "S6.03",
+        "S6.04",
+        "S6.05",
+        "S6.06",
+        "S6.07",
+        "S6.08",
+        "S7.01",
+        "S7.02",
+        "S7.03",
+        "S7.04",
+        "S7.05",
+        "S7.06",
+        "S8.01",
+        "S8.02",
+        "S8.03",
+        "S8.04",
+        "S8.05",
+        "S8.06",
+        "S8.07",
+        "S8.08",
+        "S8.09",
+        "S8.10",
+        "S8.11"
+      ]
+    },
+    {
+      "oldLesson": 95,
+      "oldId": "095",
+      "oldTitle": "Paper 1 mixed question strategy",
+      "primaryNewLesson": 45,
+      "reason": "Paper 1 review consolidated into L045",
+      "newTitle": "Paper 1 integrated review and error clinic",
+      "syllabusIds": [
+        "S1.01",
+        "S1.02",
+        "S1.03",
+        "S1.04",
+        "S1.05",
+        "S1.06",
+        "S1.07",
+        "S1.08",
+        "S1.09",
+        "S1.10",
+        "S1.11",
+        "S2.01",
+        "S2.02",
+        "S2.03",
+        "S2.04",
+        "S2.05",
+        "S2.06",
+        "S2.07",
+        "S2.08",
+        "S2.09",
+        "S2.10",
+        "S2.11",
+        "S2.12",
+        "S2.13",
+        "S2.14",
+        "S2.15",
+        "S2.16",
+        "S3.01",
+        "S3.02",
+        "S3.03",
+        "S3.04",
+        "S3.05",
+        "S3.06",
+        "S3.07",
+        "S3.08",
+        "S3.09",
+        "S3.10",
+        "S4.01",
+        "S4.02",
+        "S4.03",
+        "S4.04",
+        "S4.05",
+        "S4.06",
+        "S4.07",
+        "S4.08",
+        "S4.09",
+        "S4.10",
+        "S4.11",
+        "S4.12",
+        "S4.13",
+        "S4.14",
+        "S4.15",
+        "S5.01",
+        "S5.02",
+        "S5.03",
+        "S5.04",
+        "S5.05",
+        "S5.06",
+        "S5.07",
+        "S6.01",
+        "S6.02",
+        "S6.03",
+        "S6.04",
+        "S6.05",
+        "S6.06",
+        "S6.07",
+        "S6.08",
+        "S7.01",
+        "S7.02",
+        "S7.03",
+        "S7.04",
+        "S7.05",
+        "S7.06",
+        "S8.01",
+        "S8.02",
+        "S8.03",
+        "S8.04",
+        "S8.05",
+        "S8.06",
+        "S8.07",
+        "S8.08",
+        "S8.09",
+        "S8.10",
+        "S8.11"
+      ]
+    },
+    {
+      "oldLesson": 96,
+      "oldId": "096",
+      "oldTitle": "Paper 1 timed short-answer practice",
+      "primaryNewLesson": 45,
+      "reason": "Paper 1 review consolidated into L045",
+      "newTitle": "Paper 1 integrated review and error clinic",
+      "syllabusIds": [
+        "S1.01",
+        "S1.02",
+        "S1.03",
+        "S1.04",
+        "S1.05",
+        "S1.06",
+        "S1.07",
+        "S1.08",
+        "S1.09",
+        "S1.10",
+        "S1.11",
+        "S2.01",
+        "S2.02",
+        "S2.03",
+        "S2.04",
+        "S2.05",
+        "S2.06",
+        "S2.07",
+        "S2.08",
+        "S2.09",
+        "S2.10",
+        "S2.11",
+        "S2.12",
+        "S2.13",
+        "S2.14",
+        "S2.15",
+        "S2.16",
+        "S3.01",
+        "S3.02",
+        "S3.03",
+        "S3.04",
+        "S3.05",
+        "S3.06",
+        "S3.07",
+        "S3.08",
+        "S3.09",
+        "S3.10",
+        "S4.01",
+        "S4.02",
+        "S4.03",
+        "S4.04",
+        "S4.05",
+        "S4.06",
+        "S4.07",
+        "S4.08",
+        "S4.09",
+        "S4.10",
+        "S4.11",
+        "S4.12",
+        "S4.13",
+        "S4.14",
+        "S4.15",
+        "S5.01",
+        "S5.02",
+        "S5.03",
+        "S5.04",
+        "S5.05",
+        "S5.06",
+        "S5.07",
+        "S6.01",
+        "S6.02",
+        "S6.03",
+        "S6.04",
+        "S6.05",
+        "S6.06",
+        "S6.07",
+        "S6.08",
+        "S7.01",
+        "S7.02",
+        "S7.03",
+        "S7.04",
+        "S7.05",
+        "S7.06",
+        "S8.01",
+        "S8.02",
+        "S8.03",
+        "S8.04",
+        "S8.05",
+        "S8.06",
+        "S8.07",
+        "S8.08",
+        "S8.09",
+        "S8.10",
+        "S8.11"
+      ]
+    },
+    {
+      "oldLesson": 97,
+      "oldId": "097",
+      "oldTitle": "Paper 1 extended-response practice",
+      "primaryNewLesson": 45,
+      "reason": "Paper 1 review consolidated into L045",
+      "newTitle": "Paper 1 integrated review and error clinic",
+      "syllabusIds": [
+        "S1.01",
+        "S1.02",
+        "S1.03",
+        "S1.04",
+        "S1.05",
+        "S1.06",
+        "S1.07",
+        "S1.08",
+        "S1.09",
+        "S1.10",
+        "S1.11",
+        "S2.01",
+        "S2.02",
+        "S2.03",
+        "S2.04",
+        "S2.05",
+        "S2.06",
+        "S2.07",
+        "S2.08",
+        "S2.09",
+        "S2.10",
+        "S2.11",
+        "S2.12",
+        "S2.13",
+        "S2.14",
+        "S2.15",
+        "S2.16",
+        "S3.01",
+        "S3.02",
+        "S3.03",
+        "S3.04",
+        "S3.05",
+        "S3.06",
+        "S3.07",
+        "S3.08",
+        "S3.09",
+        "S3.10",
+        "S4.01",
+        "S4.02",
+        "S4.03",
+        "S4.04",
+        "S4.05",
+        "S4.06",
+        "S4.07",
+        "S4.08",
+        "S4.09",
+        "S4.10",
+        "S4.11",
+        "S4.12",
+        "S4.13",
+        "S4.14",
+        "S4.15",
+        "S5.01",
+        "S5.02",
+        "S5.03",
+        "S5.04",
+        "S5.05",
+        "S5.06",
+        "S5.07",
+        "S6.01",
+        "S6.02",
+        "S6.03",
+        "S6.04",
+        "S6.05",
+        "S6.06",
+        "S6.07",
+        "S6.08",
+        "S7.01",
+        "S7.02",
+        "S7.03",
+        "S7.04",
+        "S7.05",
+        "S7.06",
+        "S8.01",
+        "S8.02",
+        "S8.03",
+        "S8.04",
+        "S8.05",
+        "S8.06",
+        "S8.07",
+        "S8.08",
+        "S8.09",
+        "S8.10",
+        "S8.11"
+      ]
+    },
+    {
+      "oldLesson": 98,
+      "oldId": "098",
+      "oldTitle": "Paper 1 mock review and correction clinic",
+      "primaryNewLesson": 45,
+      "reason": "Paper 1 review consolidated into L045",
+      "newTitle": "Paper 1 integrated review and error clinic",
+      "syllabusIds": [
+        "S1.01",
+        "S1.02",
+        "S1.03",
+        "S1.04",
+        "S1.05",
+        "S1.06",
+        "S1.07",
+        "S1.08",
+        "S1.09",
+        "S1.10",
+        "S1.11",
+        "S2.01",
+        "S2.02",
+        "S2.03",
+        "S2.04",
+        "S2.05",
+        "S2.06",
+        "S2.07",
+        "S2.08",
+        "S2.09",
+        "S2.10",
+        "S2.11",
+        "S2.12",
+        "S2.13",
+        "S2.14",
+        "S2.15",
+        "S2.16",
+        "S3.01",
+        "S3.02",
+        "S3.03",
+        "S3.04",
+        "S3.05",
+        "S3.06",
+        "S3.07",
+        "S3.08",
+        "S3.09",
+        "S3.10",
+        "S4.01",
+        "S4.02",
+        "S4.03",
+        "S4.04",
+        "S4.05",
+        "S4.06",
+        "S4.07",
+        "S4.08",
+        "S4.09",
+        "S4.10",
+        "S4.11",
+        "S4.12",
+        "S4.13",
+        "S4.14",
+        "S4.15",
+        "S5.01",
+        "S5.02",
+        "S5.03",
+        "S5.04",
+        "S5.05",
+        "S5.06",
+        "S5.07",
+        "S6.01",
+        "S6.02",
+        "S6.03",
+        "S6.04",
+        "S6.05",
+        "S6.06",
+        "S6.07",
+        "S6.08",
+        "S7.01",
+        "S7.02",
+        "S7.03",
+        "S7.04",
+        "S7.05",
+        "S7.06",
+        "S8.01",
+        "S8.02",
+        "S8.03",
+        "S8.04",
+        "S8.05",
+        "S8.06",
+        "S8.07",
+        "S8.08",
+        "S8.09",
+        "S8.10",
+        "S8.11"
+      ]
+    },
+    {
+      "oldLesson": 99,
+      "oldId": "099",
+      "oldTitle": "Abstraction and decomposition into program modules",
+      "primaryNewLesson": 54,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "Integrated algorithm design from a word problem",
+      "syllabusIds": [
+        "S9.02",
+        "S9.05",
+        "S9.08"
+      ]
+    },
+    {
+      "oldLesson": 100,
+      "oldId": "100",
+      "oldTitle": "Algorithms, IPO solutions and identifier tables",
+      "primaryNewLesson": 48,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "Algorithms and meaningful identifiers",
+      "syllabusIds": [
+        "S9.03",
+        "S9.04"
+      ]
+    },
+    {
+      "oldLesson": 101,
+      "oldId": "101",
+      "oldTitle": "Sequence, selection and iteration",
+      "primaryNewLesson": 50,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "Sequence, selection and iteration",
+      "syllabusIds": [
+        "S9.06"
+      ]
+    },
+    {
+      "oldLesson": 102,
+      "oldId": "102",
+      "oldTitle": "Structured English, flowcharts and pseudocode conversion",
+      "primaryNewLesson": 51,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "Structured English, flowcharts and pseudocode",
+      "syllabusIds": [
+        "S9.07"
+      ]
+    },
+    {
+      "oldLesson": 103,
+      "oldId": "103",
+      "oldTitle": "Stepwise refinement from IPO design to modules",
+      "primaryNewLesson": 54,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "Integrated algorithm design from a word problem",
+      "syllabusIds": [
+        "S9.02",
+        "S9.05",
+        "S9.08"
+      ]
+    },
+    {
+      "oldLesson": 104,
+      "oldId": "104",
+      "oldTitle": "Logic statements define parts of an algorithm",
+      "primaryNewLesson": 53,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "Constructing and interpreting logic statements",
+      "syllabusIds": [
+        "S9.09"
+      ]
+    },
+    {
+      "oldLesson": 105,
+      "oldId": "105",
+      "oldTitle": "Linear search and binary search",
+      "primaryNewLesson": 46,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "Abstraction and abstract models",
+      "syllabusIds": [
+        "S9.01"
+      ]
+    },
+    {
+      "oldLesson": 106,
+      "oldId": "106",
+      "oldTitle": "Bubble sort and insertion sort",
+      "primaryNewLesson": 46,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "Abstraction and abstract models",
+      "syllabusIds": [
+        "S9.01"
+      ]
+    },
+    {
+      "oldLesson": 107,
+      "oldId": "107",
+      "oldTitle": "Maximum, minimum, count and total",
+      "primaryNewLesson": 46,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "Abstraction and abstract models",
+      "syllabusIds": [
+        "S9.01"
+      ]
+    },
+    {
+      "oldLesson": 108,
+      "oldId": "108",
+      "oldTitle": "String-processing algorithms",
+      "primaryNewLesson": 48,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "Algorithms and meaningful identifiers",
+      "syllabusIds": [
+        "S9.03",
+        "S9.04"
+      ]
+    },
+    {
+      "oldLesson": 109,
+      "oldId": "109",
+      "oldTitle": "Nested loops and table-style problems",
+      "primaryNewLesson": 47,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "Decomposition and modular problem solving",
+      "syllabusIds": [
+        "S9.02"
+      ]
+    },
+    {
+      "oldLesson": 110,
+      "oldId": "110",
+      "oldTitle": "Algorithm efficiency at AS level",
+      "primaryNewLesson": 52,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "Stepwise refinement",
+      "syllabusIds": [
+        "S9.08"
+      ]
+    },
+    {
+      "oldLesson": 111,
+      "oldId": "111",
+      "oldTitle": "Cambridge pseudocode conventions and exam readability",
+      "primaryNewLesson": 49,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "Input-process-output solution design",
+      "syllabusIds": [
+        "S9.05"
+      ]
+    },
+    {
+      "oldLesson": 112,
+      "oldId": "112",
+      "oldTitle": "Designing algorithms from word problems",
+      "primaryNewLesson": 54,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "Integrated algorithm design from a word problem",
+      "syllabusIds": [
+        "S9.02",
+        "S9.05",
+        "S9.08"
+      ]
+    },
+    {
+      "oldLesson": 113,
+      "oldId": "113",
+      "oldTitle": "Section 9 required-content checkpoint",
+      "primaryNewLesson": 54,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "Integrated algorithm design from a word problem",
+      "syllabusIds": [
+        "S9.02",
+        "S9.05",
+        "S9.08"
+      ]
+    },
+    {
+      "oldLesson": 114,
+      "oldId": "114",
+      "oldTitle": "Select and use the official Cambridge data types",
+      "primaryNewLesson": 55,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "Cambridge data types and declarations",
+      "syllabusIds": [
+        "S10.01"
+      ]
+    },
+    {
+      "oldLesson": 115,
+      "oldId": "115",
+      "oldTitle": "Define, read and save record data",
+      "primaryNewLesson": 56,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "Records: defining, reading and saving structured data",
+      "syllabusIds": [
+        "S10.02"
+      ]
+    },
+    {
+      "oldLesson": 116,
+      "oldId": "116",
+      "oldTitle": "Array terminology, selection and one-dimensional pseudocode",
+      "primaryNewLesson": 58,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "Selecting and using one-dimensional arrays",
+      "syllabusIds": [
+        "S10.04",
+        "S10.05"
+      ]
+    },
+    {
+      "oldLesson": 117,
+      "oldId": "117",
+      "oldTitle": "Select and write two-dimensional arrays",
+      "primaryNewLesson": 58,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "Selecting and using one-dimensional arrays",
+      "syllabusIds": [
+        "S10.04",
+        "S10.05"
+      ]
+    },
+    {
+      "oldLesson": 118,
+      "oldId": "118",
+      "oldTitle": "Array model required by search algorithms",
+      "primaryNewLesson": 60,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "Linear search using arrays",
+      "syllabusIds": [
+        "S10.06"
+      ]
+    },
+    {
+      "oldLesson": 119,
+      "oldId": "119",
+      "oldTitle": "Write linear-search and bubble-sort algorithms",
+      "primaryNewLesson": 60,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "Linear search using arrays",
+      "syllabusIds": [
+        "S10.06"
+      ]
+    },
+    {
+      "oldLesson": 120,
+      "oldId": "120",
+      "oldTitle": "Why files are needed and how text-file pseudocode works",
+      "primaryNewLesson": 62,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "Why files are needed and text-file pseudocode",
+      "syllabusIds": [
+        "S10.07"
+      ]
+    },
+    {
+      "oldLesson": 121,
+      "oldId": "121",
+      "oldTitle": "Abstract data types and array-based operations",
+      "primaryNewLesson": 64,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "Stacks and LIFO operations",
+      "syllabusIds": [
+        "S10.09",
+        "S10.10"
+      ]
+    },
+    {
+      "oldLesson": 122,
+      "oldId": "122",
+      "oldTitle": "Choosing stack, queue or linked list",
+      "primaryNewLesson": 64,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "Stacks and LIFO operations",
+      "syllabusIds": [
+        "S10.09",
+        "S10.10"
+      ]
+    },
+    {
+      "oldLesson": 123,
+      "oldId": "123",
+      "oldTitle": "Stacks and queues as abstract data types",
+      "primaryNewLesson": 63,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "Abstract data types",
+      "syllabusIds": [
+        "S10.08"
+      ]
+    },
+    {
+      "oldLesson": 124,
+      "oldId": "124",
+      "oldTitle": "Choosing appropriate data structures",
+      "primaryNewLesson": 68,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "Choosing and combining data structures",
+      "syllabusIds": [
+        "S10.04",
+        "S10.09"
+      ]
+    },
+    {
+      "oldLesson": 125,
+      "oldId": "125",
+      "oldTitle": "Pseudocode data declarations vs Java declarations",
+      "primaryNewLesson": 55,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "Cambridge data types and declarations",
+      "syllabusIds": [
+        "S10.01"
+      ]
+    },
+    {
+      "oldLesson": 126,
+      "oldId": "126",
+      "oldTitle": "Section 10 review: data modelling in algorithms",
+      "primaryNewLesson": 60,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "Linear search using arrays",
+      "syllabusIds": [
+        "S10.06"
+      ]
+    },
+    {
+      "oldLesson": 127,
+      "oldId": "127",
+      "oldTitle": "Translate descriptions into Cambridge pseudocode",
+      "primaryNewLesson": 69,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "Translating descriptions into Cambridge pseudocode",
+      "syllabusIds": [
+        "S11.01"
+      ]
+    },
+    {
+      "oldLesson": 128,
+      "oldId": "128",
+      "oldTitle": "Complete Cambridge pseudocode statements",
+      "primaryNewLesson": 70,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "Declarations, assignment and input/output",
+      "syllabusIds": [
+        "S11.02"
+      ]
+    },
+    {
+      "oldLesson": 129,
+      "oldId": "129",
+      "oldTitle": "Use supplied built-in and library routines",
+      "primaryNewLesson": 72,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "Built-in routines and string functions",
+      "syllabusIds": [
+        "S11.03"
+      ]
+    },
+    {
+      "oldLesson": 130,
+      "oldId": "130",
+      "oldTitle": "Selection and loop structures",
+      "primaryNewLesson": 80,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "Writing complete program fragments",
+      "syllabusIds": [
+        "S11.01",
+        "S11.04",
+        "S11.06",
+        "S11.07"
+      ]
+    },
+    {
+      "oldLesson": 131,
+      "oldId": "131",
+      "oldTitle": "Procedures, functions and their interfaces",
+      "primaryNewLesson": 78,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "Functions, interfaces and return values",
+      "syllabusIds": [
+        "S11.07",
+        "S11.08"
+      ]
+    },
+    {
+      "oldLesson": 132,
+      "oldId": "132",
+      "oldTitle": "Parameters: by value and by reference",
+      "primaryNewLesson": 77,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "Procedures and parameter passing",
+      "syllabusIds": [
+        "S11.06"
+      ]
+    },
+    {
+      "oldLesson": 133,
+      "oldId": "133",
+      "oldTitle": "Scope, lifetime, and local/global variables",
+      "primaryNewLesson": 70,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "Declarations, assignment and input/output",
+      "syllabusIds": [
+        "S11.02"
+      ]
+    },
+    {
+      "oldLesson": 134,
+      "oldId": "134",
+      "oldTitle": "Clear and efficient Cambridge pseudocode",
+      "primaryNewLesson": 79,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "Clear and efficient Cambridge pseudocode",
+      "syllabusIds": [
+        "S11.09"
+      ]
+    },
+    {
+      "oldLesson": 135,
+      "oldId": "135",
+      "oldTitle": "Arithmetic operators, integer division, and MOD",
+      "primaryNewLesson": 70,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "Declarations, assignment and input/output",
+      "syllabusIds": [
+        "S11.02"
+      ]
+    },
+    {
+      "oldLesson": 136,
+      "oldId": "136",
+      "oldTitle": "Input and output formatting",
+      "primaryNewLesson": 70,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "Declarations, assignment and input/output",
+      "syllabusIds": [
+        "S11.02"
+      ]
+    },
+    {
+      "oldLesson": 137,
+      "oldId": "137",
+      "oldTitle": "File handling patterns in pseudocode and Java",
+      "primaryNewLesson": 69,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "Translating descriptions into Cambridge pseudocode",
+      "syllabusIds": [
+        "S11.01"
+      ]
+    },
+    {
+      "oldLesson": 138,
+      "oldId": "138",
+      "oldTitle": "Testing with normal, abnormal, and extreme/boundary data",
+      "primaryNewLesson": 69,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "Translating descriptions into Cambridge pseudocode",
+      "syllabusIds": [
+        "S11.01"
+      ]
+    },
+    {
+      "oldLesson": 139,
+      "oldId": "139",
+      "oldTitle": "Debugging using traces and breakpoints",
+      "primaryNewLesson": 69,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "Translating descriptions into Cambridge pseudocode",
+      "syllabusIds": [
+        "S11.01"
+      ]
+    },
+    {
+      "oldLesson": 140,
+      "oldId": "140",
+      "oldTitle": "Robust program design: validation and modularity",
+      "primaryNewLesson": 80,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "Writing complete program fragments",
+      "syllabusIds": [
+        "S11.01",
+        "S11.04",
+        "S11.06",
+        "S11.07"
+      ]
+    },
+    {
+      "oldLesson": 141,
+      "oldId": "141",
+      "oldTitle": "Converting Java habits into Cambridge pseudocode",
+      "primaryNewLesson": 69,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "Translating descriptions into Cambridge pseudocode",
+      "syllabusIds": [
+        "S11.01"
+      ]
+    },
+    {
+      "oldLesson": 142,
+      "oldId": "142",
+      "oldTitle": "Section 11 review: writing complete program fragments",
+      "primaryNewLesson": 80,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "Writing complete program fragments",
+      "syllabusIds": [
+        "S11.01",
+        "S11.04",
+        "S11.06",
+        "S11.07"
+      ]
+    },
+    {
+      "oldLesson": 143,
+      "oldId": "143",
+      "oldTitle": "Lifecycle models, purpose and limitations",
+      "primaryNewLesson": 81,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "Program-development lifecycle models",
+      "syllabusIds": [
+        "S12.01"
+      ]
+    },
+    {
+      "oldLesson": 144,
+      "oldId": "144",
+      "oldTitle": "Structure charts and the purpose of state-transition diagrams",
+      "primaryNewLesson": 82,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "Structure charts and module interfaces",
+      "syllabusIds": [
+        "S12.02"
+      ]
+    },
+    {
+      "oldLesson": 145,
+      "oldId": "145",
+      "oldTitle": "Expose, locate and correct program errors",
+      "primaryNewLesson": 84,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "Finding and correcting program errors",
+      "syllabusIds": [
+        "S12.04"
+      ]
+    },
+    {
+      "oldLesson": 146,
+      "oldId": "146",
+      "oldTitle": "Testing, maintenance and enhancement",
+      "primaryNewLesson": 85,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "Testing methods through the development process",
+      "syllabusIds": [
+        "S12.05"
+      ]
+    },
+    {
+      "oldLesson": 147,
+      "oldId": "147",
+      "oldTitle": "Section 12 review: software development case study",
+      "primaryNewLesson": 81,
+      "reason": "Mapped by official section, syllabus teaching evidence and topic similarity",
+      "newTitle": "Program-development lifecycle models",
+      "syllabusIds": [
+        "S12.01"
+      ]
+    },
+    {
+      "oldLesson": 148,
+      "oldId": "148",
+      "oldTitle": "Paper 2 review: algorithm design and data structures",
+      "primaryNewLesson": 90,
+      "reason": "Paper 2 review consolidated into L090",
+      "newTitle": "Paper 2 integrated review and pseudocode clinic",
+      "syllabusIds": [
+        "S9.01",
+        "S9.02",
+        "S9.03",
+        "S9.04",
+        "S9.05",
+        "S9.06",
+        "S9.07",
+        "S9.08",
+        "S9.09",
+        "S10.01",
+        "S10.02",
+        "S10.03",
+        "S10.04",
+        "S10.05",
+        "S10.06",
+        "S10.07",
+        "S10.08",
+        "S10.09",
+        "S10.10",
+        "S11.01",
+        "S11.02",
+        "S11.03",
+        "S11.04",
+        "S11.05",
+        "S11.06",
+        "S11.07",
+        "S11.08",
+        "S11.09",
+        "S12.01",
+        "S12.02",
+        "S12.03",
+        "S12.04",
+        "S12.05",
+        "S12.06",
+        "S12.07",
+        "S12.08",
+        "S12.09"
+      ]
+    },
+    {
+      "oldLesson": 149,
+      "oldId": "149",
+      "oldTitle": "Paper 2 review: programming constructs and file handling",
+      "primaryNewLesson": 90,
+      "reason": "Paper 2 review consolidated into L090",
+      "newTitle": "Paper 2 integrated review and pseudocode clinic",
+      "syllabusIds": [
+        "S9.01",
+        "S9.02",
+        "S9.03",
+        "S9.04",
+        "S9.05",
+        "S9.06",
+        "S9.07",
+        "S9.08",
+        "S9.09",
+        "S10.01",
+        "S10.02",
+        "S10.03",
+        "S10.04",
+        "S10.05",
+        "S10.06",
+        "S10.07",
+        "S10.08",
+        "S10.09",
+        "S10.10",
+        "S11.01",
+        "S11.02",
+        "S11.03",
+        "S11.04",
+        "S11.05",
+        "S11.06",
+        "S11.07",
+        "S11.08",
+        "S11.09",
+        "S12.01",
+        "S12.02",
+        "S12.03",
+        "S12.04",
+        "S12.05",
+        "S12.06",
+        "S12.07",
+        "S12.08",
+        "S12.09"
+      ]
+    },
+    {
+      "oldLesson": 150,
+      "oldId": "150",
+      "oldTitle": "Paper 2 timed pseudocode practice",
+      "primaryNewLesson": 90,
+      "reason": "Paper 2 review consolidated into L090",
+      "newTitle": "Paper 2 integrated review and pseudocode clinic",
+      "syllabusIds": [
+        "S9.01",
+        "S9.02",
+        "S9.03",
+        "S9.04",
+        "S9.05",
+        "S9.06",
+        "S9.07",
+        "S9.08",
+        "S9.09",
+        "S10.01",
+        "S10.02",
+        "S10.03",
+        "S10.04",
+        "S10.05",
+        "S10.06",
+        "S10.07",
+        "S10.08",
+        "S10.09",
+        "S10.10",
+        "S11.01",
+        "S11.02",
+        "S11.03",
+        "S11.04",
+        "S11.05",
+        "S11.06",
+        "S11.07",
+        "S11.08",
+        "S11.09",
+        "S12.01",
+        "S12.02",
+        "S12.03",
+        "S12.04",
+        "S12.05",
+        "S12.06",
+        "S12.07",
+        "S12.08",
+        "S12.09"
+      ]
+    },
+    {
+      "oldLesson": 151,
+      "oldId": "151",
+      "oldTitle": "Paper 2 mock review and correction clinic",
+      "primaryNewLesson": 90,
+      "reason": "Paper 2 review consolidated into L090",
+      "newTitle": "Paper 2 integrated review and pseudocode clinic",
+      "syllabusIds": [
+        "S9.01",
+        "S9.02",
+        "S9.03",
+        "S9.04",
+        "S9.05",
+        "S9.06",
+        "S9.07",
+        "S9.08",
+        "S9.09",
+        "S10.01",
+        "S10.02",
+        "S10.03",
+        "S10.04",
+        "S10.05",
+        "S10.06",
+        "S10.07",
+        "S10.08",
+        "S10.09",
+        "S10.10",
+        "S11.01",
+        "S11.02",
+        "S11.03",
+        "S11.04",
+        "S11.05",
+        "S11.06",
+        "S11.07",
+        "S11.08",
+        "S11.09",
+        "S12.01",
+        "S12.02",
+        "S12.03",
+        "S12.04",
+        "S12.05",
+        "S12.06",
+        "S12.07",
+        "S12.08",
+        "S12.09"
+      ]
+    }
+  ]
+}

@@ -3,465 +3,89 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 049 | Section 4 semantic checkpoint</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <title>AS9618 Lesson 049 | Input-process-output solution design</title>
     <link rel="icon" href="data:" />
-    <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
+    <link rel="stylesheet" href="../course-v2.css?v=3" />
   </head>
-  <body>
+  <body data-course-version="2" data-lesson-id="049" data-syllabus-ids="S9.05">
     <a class="skip-link" href="#main-content">Skip to main content</a>
-    <header class="topbar">
-      <div>
-        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 4</p>
-        <h1>Section 4 semantic checkpoint</h1>
-      </div>
-      <div class="action-panel" aria-label="Page controls">
-        <a class="course-home-link" href="../">Course home</a>
-        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
-      </div>
+    <header class="v2-topbar">
+      <div><p class="v2-eyebrow">Cambridge AS9618 | Paper 2 | Section 9: Algorithm design and problem-solving</p><h1>Input-process-output solution design</h1></div>
+      <nav class="v2-actions" aria-label="Lesson actions"><a href="../">Course home</a><a href="../assessments/">Assessment bank</a><button type="button" id="printLesson">Print</button></nav>
     </header>
-
-    <main class="layout" id="main-content" tabindex="-1">
-      <aside class="lesson-nav" aria-label="Lesson navigation">
-        <a href="#overview">Overview</a>
-        <a href="#hook">Warm-up</a>
-        <a href="#concept">Core idea</a>
-        <a href="#sources">Sources</a>
-        <a href="#cycle">Interrupt cycle</a>
-        <a href="#priority">Priority</a>
-        <a href="#polling">Polling</a>
-        <a href="#tool">ISR simulator</a>
-        <a href="#examples">Examples</a>
-        <a href="#practice">Practice</a>
-        <a href="#debug">Debugging</a>
-        <a href="#exam">Exam-style</a>
-        <a href="#summary">Summary</a>
-        <a href="#homework">Homework</a>
-        <a href="#stage2-completion">Core syllabus content</a>
-      </aside>
-
-      <div class="lesson-content">
-        <!-- remediation-v2-stage3-scope:start -->
-        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.</p></aside>
-        <!-- remediation-v2-stage3-scope:end -->
-
-<!-- stage2-completion:start -->
-        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus content</p>
-            <h2>Section 4 semantic checkpoint</h2>
-          </div>
-          <div class="stage2-explanation">
-            <p>Read each instruction by its specified effect: LDR #n loads the immediate value n into IX; CMI &lt;address&gt; compares ACC with a value reached by indirect addressing; JPE &lt;address&gt; jumps after a True comparison; JPN &lt;address&gt; jumps after a False comparison.</p>
-            <p>For bit manipulation, identify the fixed width and bit numbering before tracing. AND tests or clears selected bits, OR sets selected bits, XOR toggles selected bits, and logical, arithmetic and cyclic shifts differ in fill and rotation behaviour.</p>
-          </div>
-          <article class="stage2-example">
-            <h3>Worked example: Resolve four instruction cards</h3>
-            <p>Match LDR #4 to IX &lt;- 4, trace CMI POINTER through the address stored at POINTER, send a True comparison to JPE MATCH and a False comparison to JPN DIFFERENT. None of the four names should be decoded by an English guess.</p>
-          </article>
+    <main class="v2-shell" id="main-content" tabindex="-1">
+      <nav class="v2-toc" aria-label="Lesson contents"><strong>Lesson 049</strong><a href="#overview">Overview</a><a href="#prerequisite">Prerequisite</a><a href="#explanation">Explanation</a><a href="#practice">Practice</a><a href="#summary">Summary</a></nav>
+      <div class="v2-content">
+        <section class="v2-hero" id="overview">
+          <div><p class="v2-eyebrow">Flexible-depth lesson</p><h2>Input-process-output solution design</h2><p>S9.05 | Select what to omit, teach briefly or explore in depth.</p></div>
+          <div class="v2-time-grid" aria-label="Available lesson depth"><div><strong>Quick</strong><span>diagnose + essentials</span></div><div><strong>Full</strong><span>complete explanation</span></div><div><strong>Deep</strong><span>prerequisites + extension</span></div><div><strong>Choose</strong><span>practice by need</span></div></div>
         </section>
-        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus practice</p>
-            <h2>Section 4 semantic checkpoint: apply and assess</h2>
-          </div>
-          <div class="stage2-practice">
-            <h3>Targeted practice</h3>
-            <article class="stage2-question">
-              <p><strong>1.</strong> What does LDR #6 change?</p>
-              <details><summary>Show answer</summary><p>It loads the immediate value 6 into IX.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>2.</strong> How does CMI &lt;address&gt; obtain the comparison value?</p>
-              <details><summary>Show answer</summary><p>It uses indirect addressing: the operand location contains the address of the value compared with ACC.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>3.</strong> Which branch follows a True comparison, and which follows a False comparison?</p>
-              <details><summary>Show answer</summary><p>JPE follows True; JPN follows False.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>4.</strong> Which operation toggles selected device bits?</p>
-              <details><summary>Show answer</summary><p>XOR with a mask containing 1 at each bit to toggle.</p></details>
-            </article>
-          </div>
-          <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>5 marks</span></div>
-            <p>State the exact effects of LDR #n, CMI &lt;address&gt;, JPE &lt;address&gt; and JPN &lt;address&gt;.</p>
-            <details>
-              <summary>Show MS</summary>
-              <table class="mark-scheme-table">
-                <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
-                <tbody>
-                  <tr><td>LDR loads immediate n into IX</td><td>Do not infer an instruction effect from the mnemonic letters; use the specified instruction-set semantics.</td><td>1</td></tr>
-                  <tr><td>CMI obtains the comparison value by indirect addressing</td><td></td><td>1</td></tr>
-                  <tr><td>CMI compares that value with ACC</td><td></td><td>1</td></tr>
-                  <tr><td>JPE branches after a True comparison</td><td></td><td>1</td></tr>
-                  <tr><td>JPN branches after a False comparison</td><td></td><td>1</td></tr>
-                </tbody>
-              </table>
-            </details>
-          </article>
-        </section>
-        <!-- stage2-completion:end -->
 
-<section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-049">
-          <div class="hero-copy">
-            <p class="lesson-meta">Lesson 049 | 45 minutes | Paper 1 Section 4 | Processor fundamentals</p>
-            <h2>An interrupt is the CPU's polite emergency bell.</h2>
-            <p>
-              A processor normally follows the fetch-decode-execute cycle. An interrupt
-              signal asks it to pause that flow, save its current state, run an
-              interrupt service routine, and then return to the interrupted program.
-            </p>
-            <div class="objective-grid" aria-label="Learning objectives">
-              <div><strong>Define</strong><span>interrupt, ISR, interrupt flag and processor state</span></div>
-              <div><strong>Trace</strong><span>the steps taken when an interrupt is accepted</span></div>
-              <div><strong>Compare</strong><span>interrupt-driven input with polling</span></div>
+        <section class="v2-panel v2-route-menu" aria-labelledby="route-heading">
+          <div class="v2-heading"><p class="v2-eyebrow">Teacher choice</p><h2 id="route-heading">Choose the depth for this group</h2></div>
+          <div class="v2-route-grid"><article><h3>Quick route</h3><p>Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.</p></article><article><h3>Full route</h3><p>Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.</p></article><article><h3>Deep route</h3><p>Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.</p></article></div>
+        </section>
+
+        <section class="v2-panel" id="prerequisite">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 1 | optional depth</p><h2>Prerequisite knowledge and quick diagnostic</h2></div>
+          <div class="v2-diagnostic"><p>Recall S9.03, S9.04 before starting this lesson.</p></div>
+          <p>Give one accurate definition or method step before continuing. If it is missing, revisit only that prerequisite.</p>
+          <details class="v2-prerequisite-detail"><summary>Open optional prerequisite refresher</summary><ul><li>An algorithm is a solution to a problem expressed as a sequence of defined steps; the definition requires both the problem-solving purpose and the defined sequence.</li><li>Understand what an algorithm is.</li><li>Students must choose suitable meaningful identifier names and construct an identifier table that records each identifier&#39;s name, data type and purpose for the designed algorithm.</li><li>Choose meaningful identifier names and construct an identifier table.</li></ul></details>
+        </section>
+
+        <section class="v2-panel" id="explanation">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 2 | deliberately over-complete</p><h2>Knowledge explanation</h2></div>
+          <h3>Learning objectives</h3><ul class="v2-objectives"><li>Use input-process-output to design pseudocode solutions.</li></ul>
+          <details class="v2-concept-menu"><summary>Open the concept checklist and choose what to teach</summary><ul><li>input-process-output</li><li>design</li><li>pseudocode</li><li>solution</li></ul></details>
+          <div class="v2-explanation-grid">
+            <div>
+              <article class="v2-core-facts"><h3>Detailed explanation</h3><p class="v2-teacher-note">Teach all points, or select only the ones this group needs. The list is intentionally fuller than a fixed lesson slot.</p><ul class="v2-facts"><li>Use input, process and output as the design structure for a complete pseudocode solution; the three parts must connect, use meaningful identifiers and satisfy the stated problem.</li><li>An algorithm is a solution to a problem expressed as a sequence of defined steps. Each step must be unambiguous, ordered where order matters and capable of being carried out; a vague instruction such as &#39;process the data&#39; is not a defined step.</li><li>Before writing pseudocode, identify the input data, the processing that transforms it and the required output. This input-process-output design must describe a complete solution rather than three unrelated lists.</li><li>Choose meaningful identifier names that describe each value&#39;s role. An identifier table records at least the identifier name, data type and purpose; its entries must match the pseudocode solution.</li><li>Stepwise refinement starts with a high-level algorithm and repeatedly replaces each complex step with a smaller sequence of defined substeps. Refinement stops when every step is precise enough to implement and its input and output are clear.</li><li>At each level, preserve the parent step&#39;s purpose and input-process-output relationship. Related substeps can be expressed as program modules, including procedures that perform actions and functions that return calculated values.</li><li>Refinement supports review, implementation and testing because each module has a limited responsibility. It is not merely adding prose: every level must reduce ambiguity and collectively remain a complete solution.</li><li>Algorithm design review: define an algorithm as a solution expressed as a sequence of defined steps; use abstraction to retain essential details in an abstract model; use decomposition to express the problem as connected modules; and choose meaningful identifiers recorded in an identifier table.</li><li>Solution review: design with input-process-output, use sequence, selection and iteration, document the same algorithm in structured English, a flowchart or pseudocode, and convert between the specified representations without changing its control flow.</li><li>Development review: use stepwise refinement until steps are programmable, and construct and interpret logic statements that define decisions, loop conditions or Boolean values. Core answers must not replace these requirements with tracing, Java syntax or vague planning advice.</li></ul></article>
+              <article class="v2-example"><h3>Worked example</h3><p>Design a result-processing solution: Keep only student ID and required marks, decompose the task into InputResults, ValidateResult, CalculateMean and OutputReport, record meaningful identifiers and IPO, refine CalculateMean into defined steps, use a range logic statement, and represent the final control flow in Cambridge pseudocode or a matching flowchart.</p></article>
+              <aside class="v2-extension"><h3>Beyond syllabus / 延伸知识（不要求背诵）</h3><p>the same algorithm can be expressed in many programming languages; its logic should remain independent of syntax.</p></aside>
             </div>
-          </div>
-          <div class="interrupt-card" aria-label="Interrupt handling sketch">
-            <div class="isr-stack">
-              <span>Current program</span>
-              <span>Interrupt signal</span>
-              <span>Save state</span>
-              <span>Run ISR</span>
-              <span>Restore state</span>
-            </div>
-            <p>The CPU is interrupted. The plan is not destroyed; it is bookmarked.</p>
+            <figure class="v2-visual">
+              <img src="../assets/diagrams/stage10-infographics/stage10-lesson-100-decomposition.jpg" alt="Split the whole task into meaningful sub-problems with distinct responsibilities.. Express the resulting design as program modules with clear inputs, processing and outputs.. A module may become a procedure that performs an action or a function that returns a value.. Confirm that all modules connect into one complete solution." loading="lazy" />
+              <figcaption>Decomposition: split the problem into sub-problems. One maintained explanation is shown as an image on larger screens and as text on small screens.</figcaption>
+              <div class="v2-mobile-visual-text" aria-label="Mobile text alternative"><ul><li>Split the whole task into meaningful sub-problems with distinct responsibilities.</li><li>Express the resulting design as program modules with clear inputs, processing and outputs.</li><li>A module may become a procedure that performs an action or a function that returns a value.</li><li>Confirm that all modules connect into one complete solution.</li></ul></div>
+            </figure>
           </div>
         </section>
 
-        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-049">
-          <article class="why-card">
-            <h3>Why this matters</h3>
-            <p>Section 4 questions often ask for a sequence. Marks are lost when answers say only "the CPU stops and deals with it".</p>
-          </article>
-          <article class="trap-card">
-            <h3>Common error</h3>
-            <p>An interrupt is not an error by definition. It is a signal that can come from hardware, software, a timer or an exception.</p>
-          </article>
+        <section class="v2-panel" id="practice">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 3 | select by learner need</p><h2>Practice by question type</h2></div>
+          <div class="v2-question-list"><article class="v2-question" data-question-id="Q-L049-01" data-semantic-fingerprint="S9.05|input-process-output-solution-design|state|rectangle-area|written|recall">
+              <div class="v2-question-head"><span class="v2-badge">state</span><span class="v2-badge">recall</span><span class="v2-badge difficulty">foundation</span><span class="v2-badge">2 marks</span></div>
+              <p><strong>Question 1.</strong> State the input, process and output for rectangle area.</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> Inputs Length and Width; process multiply Length by Width; output Area.</p><p><strong>Marking guidance:</strong> Award one mark for each distinct, technically accurate point or method step.</p><p><strong>Common error:</strong> For the command word state, perform that exact action; do not replace it with an unrelated fact.</p></div></details>
+            </article><article class="v2-question" data-question-id="Q-L049-02" data-semantic-fingerprint="S9.05|input-process-output-solution-design|state|precise-facts-about|written|recall">
+              <div class="v2-question-head"><span class="v2-badge">state</span><span class="v2-badge">recall</span><span class="v2-badge difficulty">application</span><span class="v2-badge">2 marks</span></div>
+              <p><strong>Question 2.</strong> State two precise facts about input-process-output solution design.</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> Use input, process and output as the design structure for a complete pseudocode solution; the three parts must connect, use meaningful identifiers and satisfy the stated problem. An algorithm is a solution to a problem expressed as a sequence of defined steps. Each step must be unambiguous, ordered where order matters and capable of being carried out; a vague instruction such as &#39;process the data&#39; is not a defined step.</p><p><strong>Marking guidance:</strong> Award one mark for each distinct fact; do not credit a repeated point.</p><p><strong>Common error:</strong> Do not repeat the same point in different words; each mark needs a separate idea or method step.</p></div></details>
+            </article><article class="v2-question" data-question-id="Q-L049-03" data-semantic-fingerprint="S9.05|input-process-output-solution-design|explain|would-applied-suitable-computing|visual|explain">
+              <div class="v2-question-head"><span class="v2-badge">explain</span><span class="v2-badge">explain</span><span class="v2-badge difficulty">transfer</span><span class="v2-badge">3 marks</span></div>
+              <p><strong>Question 3.</strong> Explain how input-process-output solution design would be applied in a suitable computing context.</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> An algorithm is a solution to a problem expressed as a sequence of defined steps. Each step must be unambiguous, ordered where order matters and capable of being carried out; a vague instruction such as &#39;process the data&#39; is not a defined step. Before writing pseudocode, identify the input data, the processing that transforms it and the required output. This input-process-output design must describe a complete solution rather than three unrelated lists. Choose meaningful identifier names that describe each value&#39;s role. An identifier table records at least the identifier name, data type and purpose; its entries must match the pseudocode solution.</p><p><strong>Marking guidance:</strong> Each mark needs a relevant point linked to the stated context.</p><p><strong>Common error:</strong> Do not copy the worked example unchanged; transfer the method and check it against the new context.</p></div></details>
+            </article></div>
+          <div class="v2-paper-refs">
+          <h3>Related past-paper indexes</h3>
+          <table><thead><tr><th>Reference</th><th>Marks</th><th>Command word</th><th>Question type</th></tr></thead>
+          <tbody><tr><td>9618/21/S/24 Q2(a)</td><td>5</td><td>complete</td><td>recall</td></tr><tr><td>9618/22/S/24 Q2(a)</td><td>5</td><td>complete</td><td>recall</td></tr><tr><td>9618/22/S/24 Q2(b)</td><td>5</td><td>complete</td><td>write</td></tr><tr><td>9618/23/S/23 Q1(d)</td><td>4</td><td>complete</td><td>recall</td></tr></tbody></table>
+          <p class="v2-copyright-note">Index only: Cambridge question and mark-scheme wording is not reproduced on this public course page.</p>
+        </div>
         </section>
 
-        <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-049">
-          <div class="section-title">
-            <p class="eyebrow">Warm-up hook</p>
-            <h2>The keyboard needs attention while a program is running. What should the CPU do?</h2>
-            <p>Click the best answer. The wrong choices are what computers would do if they had no manners.</p>
-          </div>
-          <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="save">Pause, save state, run ISR, then resume</button>
-            <button class="choice-card" type="button" data-hook="delete">Delete the current program and start again</button>
-            <button class="choice-card" type="button" data-hook="ignore">Ignore every device until the program finishes</button>
-            <button class="choice-card" type="button" data-hook="random">Jump to a random memory address</button>
-          </div>
-          <div class="feedback" id="hookFeedback" aria-live="polite">
-            Choose one. A good interrupt explanation keeps the interrupted program recoverable.
-          </div>
+        <section class="v2-panel" id="summary">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 4 | close when ready</p><h2>Summary and exam reminders</h2></div>
+          <div class="v2-summary-grid"><div><h3>Summary</h3><ul class="v2-summary-list"><li>Define input-process-output solution design with the exact technical vocabulary expected by the syllabus.</li><li>Use the lesson method on a fresh context and show the intermediate decision, representation or calculation.</li><li>Match the shape of the answer to the command word and the available marks.</li><li>Check the final answer against the scenario instead of repeating a memorised sentence.</li></ul></div><div class="v2-error"><h3>Common error to correct</h3><p>Students often create one sub-problem per tiny action. Correction: each sub-problem needs a meaningful responsibility.</p></div></div>
+          <div class="v2-tip-box"><h3>Exam technique</h3><ul><li>Follow the command word: state gives a fact; explain links a cause to a consequence; compare covers both sides.</li><li>Match the number of independent points or method steps to the available marks.</li><li>For input-process-output solution design, use the exact technical term before applying it to the scenario.</li></ul></div>
         </section>
 
-        <section class="panel" id="concept" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-049">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 1</p>
-            <h2>What an interrupt is</h2>
-          </div>
-          <div class="concept-grid">
-            <article>
-              <strong>Interrupt</strong>
-              <span>A signal that causes the processor to pause normal execution and deal with an event.</span>
-            </article>
-            <article>
-              <strong>Interrupt service routine</strong>
-              <span>A program routine that handles a specific interrupt.</span>
-            </article>
-            <article>
-              <strong>Processor state</strong>
-              <span>The information needed to continue later, such as PC, registers and status flags.</span>
-            </article>
-            <article>
-              <strong>Interrupt flag</strong>
-              <span>A stored indication that an interrupt has occurred or is waiting to be handled.</span>
-            </article>
-          </div>
-          <div class="callout">Chinese support: interrupt = 中断信号；ISR = 中断服务程序；processor state = 处理器当前状态；resume = 恢复继续执行。</div>
-        </section>
-
-        <!-- stage10-explanation:start concept -->
-        <section class="panel explanation-panel" id="explanation-concept" data-explains="concept" data-explanation-kind="mechanism" aria-labelledby="explanation-concept-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-049">
-          <h2 class="explanation-sr-only" id="explanation-concept-title">What an interrupt is</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-049-concept.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining What an interrupt is with a structured visual model." />
-            <figcaption class="explanation-sr-only">What an interrupt is: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Interrupt</li><li><strong>Lesson fact:</strong> A signal that causes the processor to pause normal execution and deal with an event.</li><li><strong>Lesson fact:</strong> Interrupt service routine</li><li><strong>Lesson fact:</strong> A program routine that handles a specific interrupt.</li><li><strong>Lesson fact:</strong> Processor state</li><li><strong>Lesson fact:</strong> The information needed to continue later, such as PC, registers and status flags.</li><li><strong>Lesson fact:</strong> Interrupt flag</li><li><strong>Lesson fact:</strong> A stored indication that an interrupt has occurred or is waiting to be handled.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end concept -->
-        <section class="panel" id="sources" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-049">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 2</p>
-            <h2>Where interrupts come from</h2>
-          </div>
-          <div class="source-grid">
-            <article>
-              <strong>Input/output device</strong>
-              <span>A keyboard, printer or network interface signals that it needs CPU attention.</span>
-              <em>Example: key pressed; printer buffer ready.</em>
-            </article>
-            <article>
-              <strong>Timer</strong>
-              <span>A timer interrupt lets an operating system share CPU time between tasks.</span>
-              <em>Example: scheduler checks whether another process should run.</em>
-            </article>
-            <article>
-              <strong>Hardware fault</strong>
-              <span>A device or hardware condition signals a problem that must be handled.</span>
-              <em>Example: power warning or device failure signal.</em>
-            </article>
-            <article>
-              <strong>Software / exception</strong>
-              <span>A program event requires special handling.</span>
-              <em>Example: division by zero or system call, depending on architecture.</em>
-            </article>
-          </div>
-          <div class="trap-card inline-card">
-            <h3>Common error</h3>
-            <p>Do not write that all interrupts are "high priority errors". Some are routine, such as timer and I/O interrupts.</p>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start sources -->
-        <section class="panel explanation-panel" id="explanation-sources" data-explains="sources" data-explanation-kind="mechanism" aria-labelledby="explanation-sources-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-049">
-          <h2 class="explanation-sr-only" id="explanation-sources-title">Where interrupts come from</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-049-sources.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Where interrupts come from with a structured visual model." />
-            <figcaption class="explanation-sr-only">Where interrupts come from: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Input/output device</li><li><strong>Lesson fact:</strong> A keyboard, printer or network interface signals that it needs CPU attention.</li><li><strong>Lesson fact:</strong> Example: key pressed; printer buffer ready.</li><li><strong>Lesson fact:</strong> A timer interrupt lets an operating system share CPU time between tasks.</li><li><strong>Lesson fact:</strong> Example: scheduler checks whether another process should run.</li><li><strong>Lesson fact:</strong> Hardware fault</li><li><strong>Lesson fact:</strong> A device or hardware condition signals a problem that must be handled.</li><li><strong>Lesson fact:</strong> Example: power warning or device failure signal.</li><li><strong>Lesson fact:</strong> Software / exception</li><li><strong>Lesson fact:</strong> A program event requires special handling.</li><li><strong>Lesson fact:</strong> Example: division by zero or system call, depending on architecture.</li><li><strong>Lesson fact:</strong> Common error</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end sources -->
-        <section class="panel" id="cycle" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-049">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 3</p>
-            <h2>The interrupt handling cycle</h2>
-          </div>
-          <div class="timeline" aria-label="Interrupt handling sequence">
-            <div><strong>1. Execute instruction</strong><span>The CPU finishes the current instruction before accepting most maskable interrupts.</span></div>
-            <div><strong>2. Check interrupt</strong><span>The control unit checks whether an interrupt is pending and enabled.</span></div>
-            <div><strong>3. Save state</strong><span>Important registers, PC and status information are stored, often on a stack.</span></div>
-            <div><strong>4. Find ISR</strong><span>The interrupt type is used to locate the correct interrupt service routine.</span></div>
-            <div><strong>5. Run ISR</strong><span>The routine handles the event, such as reading a key or acknowledging a device.</span></div>
-            <div><strong>6. Restore and return</strong><span>The saved state is restored and the interrupted program continues.</span></div>
-          </div>
-          <div class="why-card inline-card">
-            <h3>Why this matters</h3>
-            <p>Saving state is the "bookmark". Without it, the CPU may not know where or how to resume the interrupted program.</p>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start cycle -->
-        <section class="panel explanation-panel" id="explanation-cycle" data-explains="cycle" data-explanation-kind="process" aria-labelledby="explanation-cycle-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-049">
-          <h2 class="explanation-sr-only" id="explanation-cycle-title">The interrupt handling cycle</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-049-cycle.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining The interrupt handling cycle with a structured visual model." />
-            <figcaption class="explanation-sr-only">The interrupt handling cycle: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> 1. Execute instruction The CPU finishes the current instruction before accepting most maskable interrupts.</li><li><strong>Lesson fact:</strong> 2. Check interrupt The control unit checks whether an interrupt is pending and enabled.</li><li><strong>Lesson fact:</strong> 3. Save state Important registers, PC and status information are stored, often on a stack.</li><li><strong>Lesson fact:</strong> 4. Find ISR The interrupt type is used to locate the correct interrupt service routine.</li><li><strong>Lesson fact:</strong> 5. Run ISR The routine handles the event, such as reading a key or acknowledging a device.</li><li><strong>Lesson fact:</strong> 6. Restore and return The saved state is restored and the interrupted program continues.</li><li><strong>Lesson fact:</strong> Why this matters</li><li><strong>Lesson fact:</strong> Saving state is the &quot;bookmark&quot;. Without it, the CPU may not know where or how to resume the interrupted program.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end cycle -->
-        <section class="panel" id="priority" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-049">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 4</p>
-            <h2>Priority and masking</h2>
-          </div>
-          <div class="priority-table" role="table" aria-label="Interrupt priority">
-            <div class="table-row table-head" role="row">
-              <div role="columnheader">Idea</div>
-              <div role="columnheader">Meaning</div>
-              <div role="columnheader">Exam-safe wording</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Priority</div>
-              <div role="cell">Some interrupts are more urgent than others.</div>
-              <div role="cell">A higher-priority interrupt may be handled before a lower-priority one.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Maskable interrupt</div>
-              <div role="cell">Can be disabled or delayed by the processor.</div>
-              <div role="cell">Used when a less urgent event can wait.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Non-maskable interrupt</div>
-              <div role="cell">Cannot normally be ignored.</div>
-              <div role="cell">Used for critical events such as serious hardware faults.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Nested interrupt</div>
-              <div role="cell">An interrupt occurs while another ISR is running.</div>
-              <div role="cell">Only handled immediately if the system allows it and priority rules permit it.</div>
-            </div>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start priority -->
-        <section class="panel explanation-panel" id="explanation-priority" data-explains="priority" data-explanation-kind="mechanism" aria-labelledby="explanation-priority-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-049">
-          <h2 class="explanation-sr-only" id="explanation-priority-title">Priority and masking</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-049-priority.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Priority and masking with a structured visual model." />
-            <figcaption class="explanation-sr-only">Priority and masking: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Exam-safe wording</li><li><strong>Lesson fact:</strong> Priority</li><li><strong>Lesson fact:</strong> Some interrupts are more urgent than others.</li><li><strong>Lesson fact:</strong> A higher-priority interrupt may be handled before a lower-priority one.</li><li><strong>Lesson fact:</strong> Maskable interrupt</li><li><strong>Lesson fact:</strong> Can be disabled or delayed by the processor.</li><li><strong>Lesson fact:</strong> Used when a less urgent event can wait.</li><li><strong>Lesson fact:</strong> Non-maskable interrupt</li><li><strong>Lesson fact:</strong> Cannot normally be ignored.</li><li><strong>Lesson fact:</strong> Used for critical events such as serious hardware faults.</li><li><strong>Lesson fact:</strong> Nested interrupt</li><li><strong>Lesson fact:</strong> An interrupt occurs while another ISR is running.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end priority -->
-        <section class="panel" id="polling" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-049">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 5</p>
-            <h2>Interrupts versus polling</h2>
-          </div>
-          <div class="compare-grid">
-            <article>
-              <h3>Interrupt-driven input</h3>
-              <p>The device signals the CPU when attention is needed. The CPU can do useful work meanwhile.</p>
-              <ul>
-                <li>Efficient when events are unpredictable.</li>
-                <li>Requires interrupt handling and state saving.</li>
-                <li>Good exam phrase: "CPU does not continually check the device."</li>
-              </ul>
-            </article>
-            <article>
-              <h3>Polling</h3>
-              <p>The CPU repeatedly checks a device or flag to see whether attention is needed.</p>
-              <ul>
-                <li>Simple to understand and implement.</li>
-                <li>Can waste processor time if checks are frequent and no event has occurred.</li>
-                <li>Good exam phrase: "regularly checks the status of the device."</li>
-              </ul>
-            </article>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start polling -->
-        <section class="panel explanation-panel" id="explanation-polling" data-explains="polling" data-explanation-kind="mechanism" aria-labelledby="explanation-polling-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-049">
-          <h2 class="explanation-sr-only" id="explanation-polling-title">Interrupts versus polling</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-049-polling.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Interrupts versus polling with a structured visual model." />
-            <figcaption class="explanation-sr-only">Interrupts versus polling: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Interrupt-driven input</li><li><strong>Lesson fact:</strong> The device signals the CPU when attention is needed. The CPU can do useful work meanwhile.</li><li><strong>Lesson fact:</strong> Efficient when events are unpredictable.</li><li><strong>Lesson fact:</strong> Requires interrupt handling and state saving.</li><li><strong>Lesson fact:</strong> Good exam phrase: &quot;CPU does not continually check the device.&quot;</li><li><strong>Lesson fact:</strong> The CPU repeatedly checks a device or flag to see whether attention is needed.</li><li><strong>Lesson fact:</strong> Simple to understand and implement.</li><li><strong>Lesson fact:</strong> Can waste processor time if checks are frequent and no event has occurred.</li><li><strong>Lesson fact:</strong> Good exam phrase: &quot;regularly checks the status of the device.&quot;</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end polling -->
-        <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-049">
-          <div class="section-title">
-            <p class="eyebrow">Interactive tool</p>
-            <h2>Interrupt handling simulator</h2>
-            <p>Select an event. Follow what is saved, which ISR runs and what happens after the service routine finishes.</p>
-          </div>
-          <div class="converter-grid">
-            <label>
-              Interrupt scenario
-              <select id="interruptInput">
-                <option value="keyboard">Keyboard key pressed</option>
-                <option value="timer">Timer tick for multitasking</option>
-                <option value="printer">Printer ready signal</option>
-                <option value="fault">Critical hardware fault</option>
-              </select>
-            </label>
-            <button type="button" id="simulateBtn">Simulate</button>
-          </div>
-          <div class="result-box" id="simulateResult" aria-live="polite"></div>
-          <div class="method-box" id="simulateMethod"></div>
-          <div class="reject-box" id="simulateTrap"></div>
-        </section>
-
-        <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-049">
-          <div class="section-title">
-            <p class="eyebrow">Worked examples</p>
-            <h2>Trace the interrupt, not just the device</h2>
-          </div>
-          <div class="example-tabs" role="tablist" aria-label="Worked examples">
-            <button class="tab active" type="button" data-example="keyboard">Keyboard input</button>
-            <button class="tab" type="button" data-example="timer">Timer interrupt</button>
-            <button class="tab" type="button" data-example="polling">Polling comparison</button>
-          </div>
-          <article class="example-box" id="exampleBox"></article>
-        </section>
-
-        <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-049">
-          <div class="section-title">
-            <p class="eyebrow">5-minute quiz</p>
-            <h2>Practice with instant checking</h2>
-            <p>Short answers are fine, but they must name the mechanism. "It sorts itself out" is still not a processor feature.</p>
-          </div>
-          <div class="practice-list" id="practiceList"></div>
-        </section>
-
-        <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-049">
-          <div class="section-title">
-            <p class="eyebrow">Mistake debugging</p>
-            <h2>Repair the interrupt explanation</h2>
-          </div>
-          <div class="mistake-grid" id="mistakeList"></div>
-        </section>
-
-        <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-049">
-          <div class="section-title">
-            <p class="eyebrow">Exam-style questions</p>
-            <h2>Cambridge-style questions with expandable mark schemes</h2>
-            <p>These are original Cambridge-style questions. MS notes are strict about pause, save state, ISR, restore and resume.</p>
-          </div>
-          <div class="exam-list" id="examList"></div>
-        </section>
-
-        <section class="panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-049">
-          <div class="section-title">
-            <p class="eyebrow">Summary</p>
-            <h2>Interrupts are controlled pauses</h2>
-          </div>
-          <div class="summary-grid">
-            <div><strong>Interrupt</strong><span>A signal requesting processor attention.</span></div>
-            <div><strong>ISR</strong><span>The routine that handles a specific interrupt.</span></div>
-            <div><strong>State saving</strong><span>Stores PC, registers and flags so execution can resume.</span></div>
-            <div><strong>Priority</strong><span>More urgent interrupts may be serviced first.</span></div>
-            <div><strong>Polling</strong><span>CPU repeatedly checks device status instead of waiting for a signal.</span></div>
-            <div><strong>Exam habit</strong><span>Write the sequence: finish instruction, check, save, service, restore, resume.</span></div>
-          </div>
-        </section>
-
-        <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
-          <div class="section-title">
-            <p class="eyebrow">Homework</p>
-            <h2>Make the interrupt sequence exam-ready</h2>
-          </div>
-          <ol class="homework-list">
-            <li>Define interrupt and interrupt service routine in one sentence each.</li>
-            <li>Write the six-step sequence used when a keyboard interrupt is accepted.</li>
-            <li>Explain why saving the program counter and registers is necessary before running an ISR.</li>
-            <li>Compare interrupt-driven input with polling in a 4-mark answer.</li>
-            <li>Correct this sentence: "An interrupt always means the current program has crashed."</li>
-          </ol>
-        </section>
+        <nav class="v2-bottom-nav" aria-label="Previous and next lesson"><a href="../lesson-048/" >Previous lesson</a><a href="../lesson-050/" >Next lesson</a></nav>
       </div>
     </main>
-    <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=3"></script>
-    <script src="../lesson-toolbar.js?v=3"></script>
-    <script src="../stage7-accessibility.js?v=4"></script>
+    <script src="../course-v2.js?v=1"></script>
   </body>
 </html>

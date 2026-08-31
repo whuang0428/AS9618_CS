@@ -3,409 +3,89 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 005 | Signed representations and binary subtraction</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <title>AS9618 Lesson 005 | Bitmap and vector graphics</title>
     <link rel="icon" href="data:" />
-    <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
+    <link rel="stylesheet" href="../course-v2.css?v=3" />
   </head>
-  <body>
+  <body data-course-version="2" data-lesson-id="005" data-syllabus-ids="S1.08,S1.09">
     <a class="skip-link" href="#main-content">Skip to main content</a>
-    <header class="topbar">
-      <div>
-        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 1</p>
-        <h1>Signed representations and binary subtraction</h1>
-      </div>
-      <div class="action-panel" aria-label="Page controls">
-        <a class="course-home-link" href="../">Course home</a>
-        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
-      </div>
+    <header class="v2-topbar">
+      <div><p class="v2-eyebrow">Cambridge AS9618 | Paper 1 | Section 1: Information representation</p><h1>Bitmap and vector graphics</h1></div>
+      <nav class="v2-actions" aria-label="Lesson actions"><a href="../">Course home</a><a href="../assessments/">Assessment bank</a><button type="button" id="printLesson">Print</button></nav>
     </header>
-
-    <main class="layout" id="main-content" tabindex="-1">
-      <aside class="lesson-nav" aria-label="Lesson navigation">
-        <a href="#overview">Overview</a>
-        <a href="#hook">Warm-up</a>
-        <a href="#systems">Systems</a>
-        <a href="#twos">Two’s comp</a>
-        <a href="#range">Range</a>
-        <a href="#converter">Converter</a>
-        <a href="#examples">Examples</a>
-        <a href="#practice">Practice</a>
-        <a href="#exam">Exam-style</a>
-        <a href="#homework">Homework</a>
-        <a href="#stage2-completion">Core syllabus content</a>
-      </aside>
-
-      <div class="lesson-content">
-        <!-- remediation-v2-stage3-scope:start -->
-        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.</p></aside>
-        <!-- remediation-v2-stage3-scope:end -->
-
-<!-- stage2-completion:start -->
-        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus content</p>
-            <h2>Signed representations and binary subtraction</h2>
-          </div>
-          <div class="stage2-explanation">
-            <p>One's-complement representation forms a negative integer by inverting every bit of its positive fixed-width value. Two's-complement representation inverts every bit and adds 1. These are binary representations of signed integers, not separate number bases.</p>
-            <p>Unsigned subtraction can be performed column by column using borrowing, or by adding the two's complement of the subtrahend. For signed two's-complement subtraction A - B, form the two's complement of B and add it to A. Retain the fixed width, interpret the sign bit and check the representable range.</p>
-            <p>Representation overview: the required integer representations are binary, denary, hexadecimal, BCD, one's-complement and two's-complement. Conversion means preserving the integer value while changing its base or signed representation.</p>
-            <p>Binary subtraction applies to each positive or negative binary integer as well as binary addition; use the stated fixed width and signed representation when interpreting the result.</p>
-          </div>
-          <article class="stage2-example">
-            <h3>Worked example: Convert -23 to 8-bit one's complement</h3>
-            <p>+23 is 00010111. Invert every bit once to obtain 11101000, so -23 is 11101000 in 8-bit one's-complement representation. Do not add 1; that extra step would form two's complement.</p>
-          </article>
+    <main class="v2-shell" id="main-content" tabindex="-1">
+      <nav class="v2-toc" aria-label="Lesson contents"><strong>Lesson 005</strong><a href="#overview">Overview</a><a href="#prerequisite">Prerequisite</a><a href="#explanation">Explanation</a><a href="#practice">Practice</a><a href="#summary">Summary</a></nav>
+      <div class="v2-content">
+        <section class="v2-hero" id="overview">
+          <div><p class="v2-eyebrow">Flexible-depth lesson</p><h2>Bitmap and vector graphics</h2><p>S1.08, S1.09 | Select what to omit, teach briefly or explore in depth.</p></div>
+          <div class="v2-time-grid" aria-label="Available lesson depth"><div><strong>Quick</strong><span>diagnose + essentials</span></div><div><strong>Full</strong><span>complete explanation</span></div><div><strong>Deep</strong><span>prerequisites + extension</span></div><div><strong>Choose</strong><span>practice by need</span></div></div>
         </section>
-        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus practice</p>
-            <h2>Signed representations and binary subtraction: apply and assess</h2>
-          </div>
-          <div class="stage2-practice">
-            <h3>Targeted practice</h3>
-            <article class="stage2-question">
-              <p><strong>1.</strong> Convert -18 to 8-bit one's complement.</p>
-              <details><summary>Show answer</summary><p>+18 is 00010010; invert every bit to obtain 11101101.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>2.</strong> Calculate 00110110 - 00010100.</p>
-              <details><summary>Show answer</summary><p>00100010, which is 34.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>3.</strong> In 8-bit two's complement, calculate 7 - 12.</p>
-              <details><summary>Show answer</summary><p>00000111 + 11110100 = 11111011, which is -5.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>4.</strong> Why is a carry beyond bit 8 discarded?</p>
-              <details><summary>Show answer</summary><p>The operation has a fixed 8-bit width; the ninth bit lies outside that representation.</p></details>
-            </article>
-          </div>
-          <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>4 marks</span></div>
-            <p>Convert -23 to 8-bit one's-complement representation, showing the positive value and the conversion step.</p>
-            <details>
-              <summary>Show MS</summary>
-              <table class="mark-scheme-table">
-                <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
-                <tbody>
-                  <tr><td>writes +23 as 00010111</td><td>Do not accept 11101001; adding 1 produces two's complement rather than one's complement.</td><td>1</td></tr>
-                  <tr><td>inverts every bit exactly once</td><td></td><td>1</td></tr>
-                  <tr><td>obtains 11101000</td><td></td><td>1</td></tr>
-                  <tr><td>identifies the result as 8-bit one's complement</td><td></td><td>1</td></tr>
-                </tbody>
-              </table>
-            </details>
-          </article>
-        </section>
-        <!-- stage2-completion:end -->
 
-<section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-005">
-          <div class="hero-copy">
-            <p class="lesson-meta">Lesson 005 | 45 minutes | Informal questioning</p>
-            <h2>A leading 1 does not always mean the same thing.</h2>
-            <p>
-              This lesson compares signed binary representations and focuses on converting
-              values using 8-bit two’s complement, the method most often needed for binary
-              arithmetic and exam explanation.
-            </p>
-            <div class="objective-grid" aria-label="Learning objectives">
-              <div>
-                <strong>Compare</strong>
-                <span>sign-and-magnitude, one’s complement and two’s complement</span>
-              </div>
-              <div>
-                <strong>Convert</strong>
-                <span>denary values from -128 to +127 using 8-bit two’s complement</span>
-              </div>
-              <div>
-                <strong>Explain</strong>
-                <span>range, sign bit and why two’s complement has one zero</span>
-              </div>
+        <section class="v2-panel v2-route-menu" aria-labelledby="route-heading">
+          <div class="v2-heading"><p class="v2-eyebrow">Teacher choice</p><h2 id="route-heading">Choose the depth for this group</h2></div>
+          <div class="v2-route-grid"><article><h3>Quick route</h3><p>Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.</p></article><article><h3>Full route</h3><p>Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.</p></article><article><h3>Deep route</h3><p>Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.</p></article></div>
+        </section>
+
+        <section class="v2-panel" id="prerequisite">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 1 | optional depth</p><h2>Prerequisite knowledge and quick diagnostic</h2></div>
+          <div class="v2-diagnostic"><p>Recall S1.01 before starting this lesson.</p></div>
+          <p>Give one accurate definition or method step before continuing. If it is missing, revisit only that prerequisite.</p>
+          <details class="v2-prerequisite-detail"><summary>Open optional prerequisite refresher</summary><ul><li>Use and distinguish kibi/kilo, mebi/mega, gibi/giga and tebi/tera; binary prefixes use powers of 1024 and decimal prefixes use powers of 1000.</li><li>Show understanding of binary magnitudes and the difference between binary prefixes and decimal prefixes.</li></ul></details>
+        </section>
+
+        <section class="v2-panel" id="explanation">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 2 | deliberately over-complete</p><h2>Knowledge explanation</h2></div>
+          <h3>Learning objectives</h3><ul class="v2-objectives"><li>Show understanding of how data for a bitmapped image are encoded; perform calculations to estimate the file size for a bitmap image; show understanding of the effects of changing elements of a bitmap image on the image quality and file size.</li><li>Show understanding of vector-graphic encoding and justify bitmap or vector storage for a given task.</li></ul>
+          <details class="v2-concept-menu"><summary>Open the concept checklist and choose what to teach</summary><ul><li>pixel</li><li>file header</li><li>pixel data</li><li>image resolution</li><li>screen resolution</li><li>colour depth / color depth</li><li>ignore / header</li><li>vector encoding</li><li>drawing objects / drawing object</li><li>properties</li><li>drawing list</li><li>bitmap</li><li>given application</li></ul></details>
+          <div class="v2-explanation-grid">
+            <div>
+              <article class="v2-core-facts"><h3>Detailed explanation</h3><p class="v2-teacher-note">Teach all points, or select only the ones this group needs. The list is intentionally fuller than a fixed lesson slot.</p><ul class="v2-facts"><li>Use and understand the terms pixel, file header, image resolution, screen resolution and colour depth/bit depth. Required effects concern image resolution and colour depth/bit depth.</li><li>Use drawing object, property and drawing list; a justification must connect bitmap/vector characteristics to the stated application.</li><li>A bitmap file contains pixel data and a file header. The header stores metadata needed to interpret the file, such as its format and image properties; it is not one of the image pixels. When a calculation says to ignore the file header, calculate only width x height x colour depth.</li><li>Image resolution is the number of pixels stored in the image, commonly width x height. Screen resolution is the number of physical display pixels available on the screen. They are independent: scaling an image on a screen does not create new captured detail.</li><li>For an uncompressed bitmap, pixel-data size in bits is width in pixels x height in pixels x colour depth in bits per pixel. Divide by 8 to convert bits to bytes. Use the units requested by the question.</li><li>Bitmap metadata is stored separately from pixel values, commonly in a file header. Add header or metadata bytes only when their size is supplied; when a question says to ignore the header, calculate pixel data only.</li><li>Vector encoding stores a graphic as a drawing list of drawing objects. Each object has properties such as type, coordinates, dimensions, line colour, fill colour and line thickness; software redraws the objects from these instructions.</li><li>Vectors scale without pixelation and suit logos, diagrams and shapes. Bitmaps store individual pixels and suit photographs or detailed textures. For a given application, the choice must be justified using the source image and intended editing or scaling.</li><li>For a given application, justify bitmap or vector storage by connecting the image content and required editing or scaling to the chosen representation.</li></ul></article>
+              <article class="v2-example"><h3>Worked example</h3><p>Calculate pixel data and then account for metadata: A 640 x 480 bitmap using 24-bit colour stores 640 x 480 x 24 = 7,372,800 bits = 921,600 bytes of pixel data. With a supplied 54-byte header, the total is 921,654 bytes.</p></article>
+              <aside class="v2-extension"><h3>Beyond syllabus / 延伸知识（不要求背诵）</h3><p>real file formats also store headers and metadata, so two files with the same visible content may still have different sizes.</p></aside>
             </div>
-          </div>
-          <div class="binary-display" aria-label="Signed binary focus">
-            <span>11101001₂</span>
-            <p>Is this 233, -23, or something else? It depends on the representation.</p>
-          </div>
-        </section>
-
-        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-005">
-          <article class="why-card">
-            <h3>Why this matters</h3>
-            <p>The same bit pattern can represent different values under unsigned and signed schemes.</p>
-          </article>
-          <article class="trap-card">
-            <h3>Common error</h3>
-            <p>Do not read every leading 1 as “negative” unless the question states a signed representation.</p>
-          </article>
-        </section>
-
-        <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-005">
-          <div class="section-title">
-            <p class="eyebrow">Warm-up hook</p>
-            <h2>What does `11101001₂` represent?</h2>
-          </div>
-          <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="unsigned">233 unsigned</button>
-            <button class="choice-card" type="button" data-hook="twos">-23 in two’s complement</button>
-            <button class="choice-card" type="button" data-hook="signmag">-105 in sign-and-magnitude</button>
-            <button class="choice-card" type="button" data-hook="depends">It depends on representation</button>
-          </div>
-          <div class="feedback" id="hookFeedback" aria-live="polite">
-            Pick an answer. The trick is that more than one can be true in a different representation.
+            <figure class="v2-visual">
+              <img src="../assets/diagrams/stage10-infographics/stage10-lesson-010-drawing-list.jpg" alt="A vector graphic stores a drawing list of drawing objects rather than a fixed grid of pixels.. Each object stores properties such as type, coordinates, dimensions, line colour, fill colour and line thickness.. Software follows the instructions to redraw the objects at the required size without pixelation." loading="lazy" />
+              <figcaption>Vector drawing list: objects, properties and redrawing. One maintained explanation is shown as an image on larger screens and as text on small screens.</figcaption>
+              <div class="v2-mobile-visual-text" aria-label="Mobile text alternative"><ul><li>A vector graphic stores a drawing list of drawing objects rather than a fixed grid of pixels.</li><li>Each object stores properties such as type, coordinates, dimensions, line colour, fill colour and line thickness.</li><li>Software follows the instructions to redraw the objects at the required size without pixelation.</li></ul></div>
+            </figure>
           </div>
         </section>
 
-        <section class="panel" id="systems" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-005">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 1</p>
-            <h2>Three ways to represent negative binary values</h2>
-          </div>
-          <div class="system-grid">
-            <article>
-              <h3>Sign-and-magnitude</h3>
-              <p>The leftmost bit is the sign: `0` positive, `1` negative. The remaining bits store the magnitude.</p>
-              <p class="range-value">Example: `10010111₂` = -23</p>
-            </article>
-            <article>
-              <h3>One’s complement</h3>
-              <p>Start with the positive binary value and invert every bit to make the negative value.</p>
-              <p class="range-value">`00010111₂` → `11101000₂` = -23</p>
-            </article>
-            <article>
-              <h3>Two’s complement</h3>
-              <p>Invert every bit, then add 1. This gives one zero and a range from -128 to +127.</p>
-              <p class="range-value">`11101000₂ + 1 = 11101001₂` = -23</p>
-            </article>
-          </div>
+        <section class="v2-panel" id="practice">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 3 | select by learner need</p><h2>Practice by question type</h2></div>
+          <div class="v2-question-list"><article class="v2-question" data-question-id="Q-L005-01" data-semantic-fingerprint="S1.08+S1.09|bitmap-and-vector-graphics|explain|designer-creates-simple-icon|written|explain">
+              <div class="v2-question-head"><span class="v2-badge">explain</span><span class="v2-badge">explain</span><span class="v2-badge difficulty">foundation</span><span class="v2-badge">4 marks</span></div>
+              <p><strong>Question 1.</strong> A designer creates a simple icon from circles and rectangles. Explain how it is stored as a vector graphic and give one advantage over a bitmap when resized.</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> stored as a drawing list / list of objects; stores object properties such as coordinates/dimensions/colour; software redraws objects from the descriptions; can be resized without pixelation / loss of shape quality</p><p><strong>Marking guidance:</strong> Do not accept &#39;vector has better quality&#39; unless scalability or object-based storage is explained.</p><p><strong>Common error:</strong> For the command word explain, perform that exact action; do not replace it with an unrelated fact.</p></div></details>
+            </article><article class="v2-question" data-question-id="Q-L005-02" data-semantic-fingerprint="S1.08+S1.09|bitmap-and-vector-graphics|calculate|number-uses-bit-colour|written|calculate">
+              <div class="v2-question-head"><span class="v2-badge">calculate</span><span class="v2-badge">calculate</span><span class="v2-badge difficulty">application</span><span class="v2-badge">4 marks</span></div>
+              <p><strong>Question 2.</strong> A 200 by 100 bitmap uses 24-bit colour. Calculate its pixel-data size in bytes, ignoring the file header, and explain what has been excluded.</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> 200 x 100 x 24 bits; 480,000 bits / 60,000 bytes; file header contains metadata used to interpret the bitmap; header data is excluded because the question requests pixel data only</p><p><strong>Marking guidance:</strong> Do not treat the file header as a pixel or silently add an invented header size.</p><p><strong>Common error:</strong> Do not repeat the same point in different words; each mark needs a separate idea or method step.</p></div></details>
+            </article><article class="v2-question" data-question-id="Q-L005-03" data-semantic-fingerprint="S1.08+S1.09|bitmap-and-vector-graphics|identify|properties-stored-object|written|recall">
+              <div class="v2-question-head"><span class="v2-badge">identify</span><span class="v2-badge">recall</span><span class="v2-badge difficulty">transfer</span><span class="v2-badge">2 marks</span></div>
+              <p><strong>Question 3.</strong> Identify two properties stored for a vector object.</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> Any two of coordinates, dimensions, fill, line colour or line thickness.</p><p><strong>Marking guidance:</strong> Award one mark for each distinct, technically accurate point or method step.</p><p><strong>Common error:</strong> Do not copy the worked example unchanged; transfer the method and check it against the new context.</p></div></details>
+            </article></div>
+          <div class="v2-paper-refs">
+          <h3>Related past-paper indexes</h3>
+          <table><thead><tr><th>Reference</th><th>Marks</th><th>Command word</th><th>Question type</th></tr></thead>
+          <tbody><tr><td>9618/13/S/25 Q1(ii)</td><td>4</td><td>calculate</td><td>calculate</td></tr><tr><td>9618/13/W/25 Q7(d)</td><td>4</td><td>calculate</td><td>calculate</td></tr><tr><td>9618/11/S/25 Q3(a)</td><td>3</td><td>complete</td><td>recall</td></tr><tr><td>9618/13/W/25 Q7(c)</td><td>3</td><td>calculate</td><td>calculate</td></tr></tbody></table>
+          <p class="v2-copyright-note">Index only: Cambridge question and mark-scheme wording is not reproduced on this public course page.</p>
+        </div>
         </section>
 
-        <section id="delivery-05" class="guidance-grid compact" aria-label="Representation guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-005">
-          <article class="trap-card">
-            <h3>Common error</h3>
-            <p>Sign-and-magnitude, one’s complement and two’s complement do not interpret the same 8 bits in the same way.</p>
-          </article>
+        <section class="v2-panel" id="summary">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 4 | close when ready</p><h2>Summary and exam reminders</h2></div>
+          <div class="v2-summary-grid"><div><h3>Summary</h3><ul class="v2-summary-list"><li>Define bitmap and vector graphics with the exact technical vocabulary expected by the syllabus.</li><li>Use the lesson method on a fresh context and show the intermediate decision, representation or calculation.</li><li>Match the shape of the answer to the command word and the available marks.</li><li>Check the final answer against the scenario instead of repeating a memorised sentence.</li></ul></div><div class="v2-error"><h3>Common error to correct</h3><p>Students often say &#39;higher quality is always better&#39;. Correction: higher quality can be wasteful if storage, bandwidth or purpose does not justify it.</p></div></div>
+          <div class="v2-tip-box"><h3>Exam technique</h3><ul><li>Follow the command word: state gives a fact; explain links a cause to a consequence; compare covers both sides.</li><li>Match the number of independent points or method steps to the available marks.</li><li>For bitmap and vector graphics, use the exact technical term before applying it to the scenario.</li></ul></div>
         </section>
 
-        <section class="panel" id="twos" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-005">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 2</p>
-            <h2>Two’s complement method</h2>
-          </div>
-          <div class="method-grid">
-            <article>
-              <h3>Positive denary to negative two’s complement</h3>
-              <ol>
-                <li>Write the positive magnitude in 8-bit binary.</li>
-                <li>Invert every bit.</li>
-                <li>Add 1.</li>
-                <li>Label the result as two’s complement.</li>
-              </ol>
-            </article>
-            <article>
-              <h3>Two’s complement binary to denary</h3>
-              <ol>
-                <li>If the leftmost bit is 0, convert as normal positive binary.</li>
-                <li>If the leftmost bit is 1, subtract 256 from the unsigned value.</li>
-                <li>Alternatively: invert, add 1, then add a negative sign.</li>
-                <li>State the representation in the answer.</li>
-              </ol>
-            </article>
-          </div>
-          <div class="callout">For 8-bit two’s complement, a quick decode is: unsigned value - 256 when the MSB is 1.</div>
-        </section>
-
-        <!-- stage10-explanation:start twos -->
-        <section class="panel explanation-panel" id="explanation-twos" data-explains="twos" data-explanation-kind="mechanism" aria-labelledby="explanation-twos-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-005">
-          <h2 class="explanation-sr-only" id="explanation-twos-title">Two’s complement method</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-005-twos.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Two’s complement method with a structured visual model." />
-            <figcaption class="explanation-sr-only">Two’s complement method: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Write the positive magnitude using exactly 8 bits.</li><li><strong>Lesson fact:</strong> Invert every bit, then add 1 to form the negative two's-complement value.</li><li><strong>Lesson fact:</strong> For +45: 00101101 becomes 11010010 after inversion, then 11010011 after adding 1.</li><li><strong>Lesson fact:</strong> The 8-bit value 11010011 represents -45 in two's complement.</li><li><strong>Lesson fact:</strong> When the MSB is 1, quick decode uses unsigned value minus 256.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end twos -->
-        <section class="panel" id="range" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-005">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 3</p>
-            <h2>8-bit signed ranges and zero</h2>
-          </div>
-          <div class="range-grid">
-            <article>
-              <h3>Sign-and-magnitude</h3>
-              <p class="range-value">-127 to +127</p>
-              <p>Has two zeros: `00000000₂` and `10000000₂`.</p>
-            </article>
-            <article>
-              <h3>One’s complement</h3>
-              <p class="range-value">-127 to +127</p>
-              <p>Also has two zeros: `00000000₂` and `11111111₂`.</p>
-            </article>
-            <article>
-              <h3>Two’s complement</h3>
-              <p class="range-value">-128 to +127</p>
-              <p>Has one zero and one extra negative value.</p>
-            </article>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start range -->
-        <section class="panel explanation-panel" id="explanation-range" data-explains="range" data-explanation-kind="mechanism" aria-labelledby="explanation-range-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-005">
-          <h2 class="explanation-sr-only" id="explanation-range-title">8-bit signed ranges and zero</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-005-range.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining 8-bit signed ranges and zero with a structured visual model." />
-            <figcaption class="explanation-sr-only">8-bit signed ranges and zero: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Sign-and-magnitude uses one sign bit and seven magnitude bits; its range is -127 to +127 and it has two zero patterns.</li><li><strong>Lesson fact:</strong> One's complement forms a negative value by inverting all eight bits; its range is -127 to +127 and it has two zero patterns.</li><li><strong>Lesson fact:</strong> Two's complement uses all eight bits as one weighted value with MSB place value -128.</li><li><strong>Lesson fact:</strong> The 8-bit two's-complement range is -128 to +127 and it has one zero pattern.</li><li><strong>Lesson fact:</strong> One's complement and two's complement do not store a separate magnitude field.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end range -->
-        <section class="panel interactive" id="converter" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-005">
-          <div class="section-title">
-            <p class="eyebrow">Interactive tool</p>
-            <h2>8-bit two’s complement converter</h2>
-          </div>
-          <div class="converter-grid">
-            <label>
-              Direction
-              <select id="convertMode">
-                <option value="denaryToTwos">Denary to two’s complement</option>
-                <option value="twosToDenary">Two’s complement to denary</option>
-              </select>
-            </label>
-            <label>
-              Value
-              <input id="convertValue" type="text" value="-23" />
-            </label>
-            <button type="button" id="convertBtn">Convert</button>
-          </div>
-          <div class="result-box" id="convertResult" aria-live="polite"></div>
-          <div class="method-box" id="convertMethod"></div>
-          <div class="bit-visual" id="bitVisual" aria-label="Two's complement bit visual"></div>
-        </section>
-
-        <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-005">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge examples</p>
-            <h2>Worked examples</h2>
-          </div>
-          <div class="example-tabs" role="tablist" aria-label="Worked examples">
-            <button class="tab active" type="button" data-example="negative">-23 to two’s comp</button>
-            <button class="tab" type="button" data-example="decode">11101001₂ to denary</button>
-            <button class="tab" type="button" data-example="compare">Compare representations</button>
-          </div>
-          <article class="example-box" id="exampleBox"></article>
-        </section>
-
-        <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-005">
-          <div class="section-title">
-            <p class="eyebrow">Your turn</p>
-            <h2>Practice with instant checking</h2>
-          </div>
-          <div class="practice-list" id="practiceList"></div>
-          <button type="button" id="checkPractice">Check answers</button>
-          <div class="feedback" id="practiceFeedback" aria-live="polite"></div>
-        </section>
-
-        <section id="delivery-11" class="panel mistake-panel" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-005">
-          <div class="section-title">
-            <p class="eyebrow">Debug the mistakes</p>
-            <h2>Identify and correct the error</h2>
-          </div>
-          <div class="mistake-grid">
-            <article>
-              <h3>Mistake 1</h3>
-              <p class="wrong">-23 in two’s complement is `11101000₂`</p>
-              <button type="button" class="reveal" data-reveal="mistake1">Show correction</button>
-              <p class="answer" id="mistake1">`11101000₂` is one’s complement for -23. Two’s complement adds 1, so the answer is `11101001₂`.</p>
-            </article>
-            <article>
-              <h3>Mistake 2</h3>
-              <p class="wrong">`10000000₂` in two’s complement is negative zero</p>
-              <button type="button" class="reveal" data-reveal="mistake2">Show correction</button>
-              <p class="answer" id="mistake2">Two’s complement has one zero. `10000000₂` represents -128.</p>
-            </article>
-          </div>
-        </section>
-
-        <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-005">
-          <div class="section-title">
-            <p class="eyebrow">Past-paper style</p>
-            <h2>Original exam-style questions</h2>
-          </div>
-          <div class="exam-grid" id="examGrid"></div>
-          <p class="source-note">
-            These are original Cambridge-style questions, not copied Cambridge past paper text.
-            Use the buttons under each question to expand the Cambridge-style mark scheme.
-          </p>
-        </section>
-
-        <section class="panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-005">
-          <div class="section-title">
-            <p class="eyebrow">Summary</p>
-            <h2>Summary of required knowledge</h2>
-          </div>
-          <div class="summary-grid">
-            <div><strong>1</strong><span>One’s complement inverts bits; two’s complement inverts bits and adds 1.</span></div>
-            <div><strong>2</strong><span>8-bit two’s complement range is -128 to +127.</span></div>
-            <div><strong>3</strong><span>A bit pattern needs a representation before it has a signed value.</span></div>
-          </div>
-          <div class="exit-ticket">
-            <label for="exitTicket">Exit ticket</label>
-            <textarea id="exitTicket" rows="3" placeholder="The key point about signed binary is..., and a common mistake is..."></textarea>
-          </div>
-        </section>
-
-        <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
-          <div class="section-title">
-            <p class="eyebrow">Homework</p>
-            <h2>Homework tasks</h2>
-          </div>
-          <ol class="homework-list">
-            <li>Convert `-18`, `-64` and `-1` into 8-bit two’s complement.</li>
-            <li>Convert `11110010₂`, `11000000₂` and `01111111₂` from 8-bit two’s complement to denary.</li>
-            <li>Write a 4-mark explanation comparing one’s complement and two’s complement.</li>
-            <li>Extension: explain why two’s complement has a range of -128 to +127, not -127 to +127.</li>
-          </ol>
-        </section>
-
-        <section id="delivery-15" class="panel homework-support" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-005">
-          <div class="section-title">
-            <p class="eyebrow">Homework support</p>
-            <h2>Check only after attempting</h2>
-          </div>
-          <button
-            type="button"
-            class="reveal"
-            data-reveal="homeworkAnswers"
-            data-open-label="Show homework answers"
-            data-close-label="Hide homework answers"
-          >
-            Show homework answers
-          </button>
-          <div class="answer-panel" id="homeworkAnswers">
-            <p><strong>Denary to two’s complement:</strong> `-18 = 11101110₂`; `-64 = 11000000₂`; `-1 = 11111111₂`.</p>
-            <p><strong>Two’s complement to denary:</strong> `11110010₂ = -14`; `11000000₂ = -64`; `01111111₂ = 127`.</p>
-            <p><strong>Explanation focus:</strong> one’s complement inverts bits and has two zeros; two’s complement adds 1 and has one zero plus the extra value -128.</p>
-          </div>
-        </section>
+        <nav class="v2-bottom-nav" aria-label="Previous and next lesson"><a href="../lesson-004/" >Previous lesson</a><a href="../lesson-006/" >Next lesson</a></nav>
       </div>
     </main>
-
-    <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=3"></script>
-    <script src="../lesson-toolbar.js?v=3"></script>
-    <script src="../stage7-accessibility.js?v=4"></script>
+    <script src="../course-v2.js?v=1"></script>
   </body>
 </html>

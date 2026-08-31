@@ -3,393 +3,84 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 088 | INSERT, DELETE and UPDATE</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <title>AS9618 Lesson 088 | Corrective, adaptive and perfective maintenance</title>
     <link rel="icon" href="data:" />
-    <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
+    <link rel="stylesheet" href="../course-v2.css?v=3" />
   </head>
-  <body>
+  <body data-course-version="2" data-lesson-id="088" data-syllabus-ids="S12.08">
     <a class="skip-link" href="#main-content">Skip to main content</a>
-    <header class="topbar">
-      <div>
-        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 8</p>
-        <h1>INSERT, DELETE and UPDATE</h1>
-      </div>
-      <div class="action-panel" aria-label="Page controls">
-        <a class="course-home-link" href="../">Course home</a>
-        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
-      </div>
+    <header class="v2-topbar">
+      <div><p class="v2-eyebrow">Cambridge AS9618 | Paper 2 | Section 12: Software development</p><h1>Corrective, adaptive and perfective maintenance</h1></div>
+      <nav class="v2-actions" aria-label="Lesson actions"><a href="../">Course home</a><a href="../assessments/">Assessment bank</a><button type="button" id="printLesson">Print</button></nav>
     </header>
-
-    <main class="layout" id="main-content" tabindex="-1">
-      <aside class="lesson-nav" aria-label="Lesson navigation">
-        <a href="#overview">Overview</a>
-        <a href="#hook">Warm-up</a>
-        <a href="#dml">DML purpose</a>
-        <a href="#insert">INSERT</a>
-        <a href="#update">UPDATE</a>
-        <a href="#delete">DELETE</a>
-        <a href="#trace">Trace changes</a>
-        <a href="#builder">Statement builder</a>
-        <a href="#simulator">Change simulator</a>
-        <a href="#examples">Examples</a>
-        <a href="#practice">Practice</a>
-        <a href="#debug">Debugging</a>
-        <a href="#exam">Exam-style</a>
-        <a href="#summary">Summary</a>
-        <a href="#homework">Homework</a>
-        <a href="#stage2-completion">Core syllabus content</a>
-      </aside>
-
-      <div class="lesson-content">
-        <!-- remediation-v2-stage3-scope:start -->
-        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.</p></aside>
-        <!-- remediation-v2-stage3-scope:end -->
-
-<!-- stage2-completion:start -->
-        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus content</p>
-            <h2>INSERT, DELETE and UPDATE</h2>
-          </div>
-          <div class="stage2-explanation">
-            <p>INSERT adds a new row, DELETE removes matching rows, and UPDATE changes values in matching rows. These DML statements maintain stored data.</p>
-            <p>Use a WHERE condition for DELETE and UPDATE when only specified rows should change. Check field order, value types and conditions against the supplied schema.</p>
-          </div>
-          <article class="stage2-example">
-            <h3>Worked example: Maintain one student row</h3>
-            <p>INSERT adds StudentID 104. UPDATE changes only that row when WHERE StudentID = 104 is used. DELETE removes it with the same key condition.</p>
-          </article>
+    <main class="v2-shell" id="main-content" tabindex="-1">
+      <nav class="v2-toc" aria-label="Lesson contents"><strong>Lesson 088</strong><a href="#overview">Overview</a><a href="#prerequisite">Prerequisite</a><a href="#explanation">Explanation</a><a href="#practice">Practice</a><a href="#summary">Summary</a></nav>
+      <div class="v2-content">
+        <section class="v2-hero" id="overview">
+          <div><p class="v2-eyebrow">Flexible-depth lesson</p><h2>Corrective, adaptive and perfective maintenance</h2><p>S12.08 | Select what to omit, teach briefly or explore in depth.</p></div>
+          <div class="v2-time-grid" aria-label="Available lesson depth"><div><strong>Quick</strong><span>diagnose + essentials</span></div><div><strong>Full</strong><span>complete explanation</span></div><div><strong>Deep</strong><span>prerequisites + extension</span></div><div><strong>Choose</strong><span>practice by need</span></div></div>
         </section>
-        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus practice</p>
-            <h2>INSERT, DELETE and UPDATE: apply and assess</h2>
-          </div>
-          <div class="stage2-practice">
-            <h3>Targeted practice</h3>
-            <article class="stage2-question">
-              <p><strong>1.</strong> Which statement adds a row?</p>
-              <details><summary>Show answer</summary><p>INSERT.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>2.</strong> Which statement removes rows?</p>
-              <details><summary>Show answer</summary><p>DELETE.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>3.</strong> Which statement changes existing values?</p>
-              <details><summary>Show answer</summary><p>UPDATE.</p></details>
-            </article>
-          </div>
-          <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>3 marks</span></div>
-            <p>Write INSERT, UPDATE and DELETE statements for StudentID 104.</p>
-            <details>
-              <summary>Show MS</summary>
-              <table class="mark-scheme-table">
-                <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
-                <tbody>
-                  <tr><td>valid INSERT</td><td>Do not credit an UPDATE or DELETE that unintentionally affects every row.</td><td>1</td></tr>
-                  <tr><td>valid UPDATE with condition</td><td></td><td>1</td></tr>
-                  <tr><td>valid DELETE with condition</td><td></td><td>1</td></tr>
-                </tbody>
-              </table>
-            </details>
-          </article>
-        </section>
-        <!-- stage2-completion:end -->
 
-<section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-088">
-          <div class="hero-copy">
-            <p class="lesson-meta">Lesson 088 | 45 minutes | Paper 1 Section 8 | informal questioning</p>
-            <h2>SELECT asks politely. INSERT, UPDATE and DELETE move the furniture.</h2>
-            <p>
-              This lesson covers SQL statements that change table contents. You will add records with
-              <code>INSERT</code>, change existing records with <code>UPDATE</code>, remove records with
-              <code>DELETE</code>, and explain why <code>WHERE</code> is not decorative confetti.
-            </p>
-            <div class="objective-grid" aria-label="Learning objectives">
-              <div><strong>Add</strong><span>new records using <code>INSERT INTO</code> and <code>VALUES</code></span></div>
-              <div><strong>Change</strong><span>existing records using <code>UPDATE</code>, <code>SET</code> and <code>WHERE</code></span></div>
-              <div><strong>Remove</strong><span>records using <code>DELETE FROM</code> with a precise condition</span></div>
+        <section class="v2-panel v2-route-menu" aria-labelledby="route-heading">
+          <div class="v2-heading"><p class="v2-eyebrow">Teacher choice</p><h2 id="route-heading">Choose the depth for this group</h2></div>
+          <div class="v2-route-grid"><article><h3>Quick route</h3><p>Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.</p></article><article><h3>Full route</h3><p>Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.</p></article><article><h3>Deep route</h3><p>Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.</p></article></div>
+        </section>
+
+        <section class="v2-panel" id="prerequisite">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 1 | optional depth</p><h2>Prerequisite knowledge and quick diagnostic</h2></div>
+          <div class="v2-diagnostic"><p>Recall S12.01 before starting this lesson.</p></div>
+          <p>Give one accurate definition or method step before continuing. If it is missing, revisit only that prerequisite.</p>
+          <details class="v2-prerequisite-detail"><summary>Open optional prerequisite refresher</summary><ul><li>Candidates should understand the purpose of a program-development lifecycle and the need for different lifecycles depending on the program being developed. Compare the principles, benefits and drawbacks of waterfall, iterative and Rapid Application Development (RAD). Lifecycle stages are analysis, design, coding, testing and maintenance.</li><li>Understand why a program-development lifecycle is used; compare waterfall, iterative and RAD models and their stages.</li></ul></details>
+        </section>
+
+        <section class="v2-panel" id="explanation">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 2 | deliberately over-complete</p><h2>Knowledge explanation</h2></div>
+          <h3>Learning objectives</h3><ul class="v2-objectives"><li>Understand perfective, adaptive and corrective maintenance.</li></ul>
+          <details class="v2-concept-menu"><summary>Open the concept checklist and choose what to teach</summary><ul><li>perfective</li><li>adaptive</li><li>corrective</li><li>maintenance</li></ul></details>
+          <div class="v2-explanation-grid">
+            <div>
+              <article class="v2-core-facts"><h3>Detailed explanation</h3><p class="v2-teacher-note">Teach all points, or select only the ones this group needs. The list is intentionally fuller than a fixed lesson slot.</p><ul class="v2-facts"><li>Understand the need for continuing maintenance of a program and the differences between perfective, adaptive and corrective maintenance.</li><li>Maintenance continues after delivery because faults are discovered, operating environments and rules change, and users request improvements. Corrective maintenance fixes faults in required behaviour; adaptive maintenance changes software for a new environment, platform, law or external rule; perfective maintenance improves functionality, usability, performance or maintainability.</li><li>Classify the reason for the change, not the code edited. The same module could receive a corrective change for a crash, an adaptive change for a new operating-system interface, or a perfective change for faster search and a clearer result display.</li><li>Every maintenance change requires impact analysis, controlled amendment, tests for the changed behaviour and regression tests for unaffected behaviour. Records should link the request, code change and test evidence.</li><li>Analyse the supplied program before editing it: state its current purpose, inputs, outputs, data structures, control flow and assumptions. Trace representative data to identify where a new requirement belongs and record behaviour that must remain unchanged.</li><li>Amend the existing program with the smallest coherent change that enhances functionality. Update related declarations, initialisation, processing and output together; preserve established interfaces unless the requirement needs an interface change; and keep Cambridge pseudocode constructs complete.</li><li>Test the enhancement with data that exercises the new path and rerun regression tests for existing paths. Correcting a fault is corrective maintenance; adding or improving requested functionality is an enhancement and may be perfective maintenance.</li></ul></article>
+              <article class="v2-example"><h3>Worked example</h3><p>Test login through review, construction, integration and release / Test an inclusive mark range / Three changes to one booking system / Add a Merit count without breaking PassCount: First dry-run the lockout counter and conduct a walkthrough in which peers inspect the algorithm. White-box tests cover true/false paths; black-box tests valid, invalid and boundary inputs from requirements. During integration, a stub returns simulated account results before the database is ready. Internal staff perform alpha testing, selected external users perform beta testing, and the customer performs acceptance testing against the agreed lockout behaviour. For an allowed mark from 0 to 100 inclusive, 55 is normal, 0 and 100 are valid extreme/boundary values, and -1 or 101 is abnormal. Fixing a crash when saving is corrective. Updating tax or term-date rules imposed externally is adaptive.…</p></article>
+              <aside class="v2-extension"><h3>Beyond syllabus / 延伸知识（不要求背诵）</h3><p>modern teams often use continuous integration to repeat building and testing whenever a program changes.</p></aside>
             </div>
-          </div>
-          <div class="sql-visual" aria-label="SQL data modification visual">
-            <span class="keyword">INSERT</span><span>adds a row</span>
-            <span class="keyword">UPDATE</span><span>changes matching rows</span>
-            <span class="keyword">DELETE</span><span>removes matching rows</span>
-            <p>These commands are powerful. So is a chainsaw. Use the WHERE clause.</p>
-          </div>
-        </section>
-
-        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-088">
-          <article class="why-card">
-            <h3>Why this matters</h3>
-            <p>Mark schemes credit exact command structure and conditions. A missing <code>WHERE</code> can change every record.</p>
-          </article>
-          <article class="trap-card">
-            <h3>Common error</h3>
-            <p><code>DELETE</code> removes records. It is not the command for clearing one field value in a record.</p>
-          </article>
-        </section>
-
-        <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-088">
-          <div class="section-title">
-            <p class="eyebrow">Warm-up hook</p>
-            <h2>Which statement changes only Amira's tutor group?</h2>
-            <p>A missing WHERE clause is the SQL equivalent of replying-all to the whole school. Technically fast, socially expensive.</p>
-          </div>
-          <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="correct">UPDATE Student SET TutorGroup = '12C' WHERE StudentID = 'S01'</button>
-            <button class="choice-card" type="button" data-hook="all">UPDATE Student SET TutorGroup = '12C'</button>
-            <button class="choice-card" type="button" data-hook="insert">INSERT INTO Student VALUES ('S01', 'Amira', '12C')</button>
-            <button class="choice-card" type="button" data-hook="delete">DELETE FROM Student WHERE StudentID = 'S01'</button>
-          </div>
-          <div class="feedback" id="hookFeedback" aria-live="polite">
-            Choose the statement that changes one existing record without adding or removing a record.
+            <figure class="v2-visual">
+              <img src="../assets/diagrams/stage10-infographics/stage10-lesson-146-maintenance.jpg" alt="Fixing faults found after release, such as a booking clash that was not rejected.. Changing the system because the environment changes, such as a new timetable structure.. Improving performance, usability or features, such as faster room search." loading="lazy" />
+              <figcaption>Maintenance changes a system after it has been delivered. One maintained explanation is shown as an image on larger screens and as text on small screens.</figcaption>
+              <div class="v2-mobile-visual-text" aria-label="Mobile text alternative"><ul><li>Fixing faults found after release, such as a booking clash that was not rejected.</li><li>Changing the system because the environment changes, such as a new timetable structure.</li><li>Improving performance, usability or features, such as faster room search.</li></ul></div>
+            </figure>
           </div>
         </section>
 
-        <section class="panel" id="dml" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-088">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 1</p>
-            <h2>INSERT, UPDATE and DELETE are data manipulation commands</h2>
-            <p>They change stored data. In exam answers, be precise about command keywords and affected records.</p>
-          </div>
-          <div class="clause-grid">
-            <article><strong><code>INSERT</code></strong><span>Adds a new record to a table.</span></article>
-            <article><strong><code>UPDATE</code></strong><span>Changes values in existing records.</span></article>
-            <article><strong><code>DELETE</code></strong><span>Removes existing records from a table.</span></article>
-          </div>
+        <section class="v2-panel" id="practice">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 3 | select by learner need</p><h2>Practice by question type</h2></div>
+          <div class="v2-question-list"><article class="v2-question" data-question-id="Q-L088-01" data-semantic-fingerprint="S12.08|corrective-adaptive-and-perfective-maintenance|apply|type-changes-software-new|written|recall">
+              <div class="v2-question-head"><span class="v2-badge">apply</span><span class="v2-badge">recall</span><span class="v2-badge difficulty">foundation</span><span class="v2-badge">2 marks</span></div>
+              <p><strong>Question 1.</strong> Which type changes software for a new external rule?</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> Adaptive maintenance.</p><p><strong>Marking guidance:</strong> Award one mark for each distinct, technically accurate point or method step.</p><p><strong>Common error:</strong> For the command word apply, perform that exact action; do not replace it with an unrelated fact.</p></div></details>
+            </article><article class="v2-question" data-question-id="Q-L088-02" data-semantic-fingerprint="S12.08|corrective-adaptive-and-perfective-maintenance|explain|why-does-continue-after|written|explain">
+              <div class="v2-question-head"><span class="v2-badge">explain</span><span class="v2-badge">explain</span><span class="v2-badge difficulty">application</span><span class="v2-badge">2 marks</span></div>
+              <p><strong>Question 2.</strong> Why does maintenance continue after acceptance?</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> Faults, environmental changes and requested improvements continue after delivery.</p><p><strong>Marking guidance:</strong> Award one mark for each distinct, technically accurate point or method step.</p><p><strong>Common error:</strong> Do not repeat the same point in different words; each mark needs a separate idea or method step.</p></div></details>
+            </article><article class="v2-question" data-question-id="Q-L088-03" data-semantic-fingerprint="S12.08|corrective-adaptive-and-perfective-maintenance|state|precise-facts-about|written|recall">
+              <div class="v2-question-head"><span class="v2-badge">state</span><span class="v2-badge">recall</span><span class="v2-badge difficulty">transfer</span><span class="v2-badge">2 marks</span></div>
+              <p><strong>Question 3.</strong> State two precise facts about corrective, adaptive and perfective maintenance.</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> Understand the need for continuing maintenance of a program and the differences between perfective, adaptive and corrective maintenance. Maintenance continues after delivery because faults are discovered, operating environments and rules change, and users request improvements. Corrective maintenance fixes faults in required behaviour; adaptive maintenance changes software for a new environment, platform, law or external rule; perfective maintenance improves functionality, usability, performance or maintainability.</p><p><strong>Marking guidance:</strong> Award one mark for each distinct fact; do not credit a repeated point.</p><p><strong>Common error:</strong> Do not copy the worked example unchanged; transfer the method and check it against the new context.</p></div></details>
+            </article></div>
+
         </section>
 
-        <section class="panel" id="insert" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-088">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 2</p>
-            <h2><code>INSERT INTO</code> adds a record</h2>
-            <p>List the fields, then list matching values in the same order. Text values use quotes.</p>
-          </div>
-          <div class="answer-frame">
-            <strong>Pattern:</strong>
-            <span><code>INSERT INTO Student (StudentID, StudentName, TutorGroup) VALUES ('S04', 'Nina', '12C');</code></span>
-          </div>
-          <div class="callout">Chinese support: insert = 插入/新增；record = 记录；field = 字段；value = 值。</div>
+        <section class="v2-panel" id="summary">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 4 | close when ready</p><h2>Summary and exam reminders</h2></div>
+          <div class="v2-summary-grid"><div><h3>Summary</h3><ul class="v2-summary-list"><li>Define corrective, adaptive and perfective maintenance with the exact technical vocabulary expected by the syllabus.</li><li>Use the lesson method on a fresh context and show the intermediate decision, representation or calculation.</li><li>Match the shape of the answer to the command word and the available marks.</li><li>Check the final answer against the scenario instead of repeating a memorised sentence.</li></ul></div><div class="v2-error"><h3>Common error to correct</h3><p>Students often describe the lifecycle as a fixed checklist. Correction: development is iterative; findings can send a project back to earlier stages.</p></div></div>
+          <div class="v2-tip-box"><h3>Exam technique</h3><ul><li>Follow the command word: state gives a fact; explain links a cause to a consequence; compare covers both sides.</li><li>Match the number of independent points or method steps to the available marks.</li><li>For corrective, adaptive and perfective maintenance, use the exact technical term before applying it to the scenario.</li></ul></div>
         </section>
 
-        <!-- stage10-explanation:start insert -->
-        <section class="panel explanation-panel" id="explanation-insert" data-explains="insert" data-explanation-kind="mechanism" aria-labelledby="explanation-insert-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-088">
-          <h2 class="explanation-sr-only" id="explanation-insert-title">INSERT INTO adds a record</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-088-insert.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining INSERT INTO adds a record with a structured visual model." />
-            <figcaption class="explanation-sr-only">INSERT INTO adds a record: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> List the fields, then list matching values in the same order. Text values use quotes.</li><li><strong>Lesson fact:</strong> Pattern:</li><li><strong>Lesson fact:</strong> INSERT INTO Student (StudentID, StudentName, TutorGroup) VALUES ('S04', 'Nina', '12C');</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end insert -->
-        <section class="panel" id="update" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-088">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 3</p>
-            <h2><code>UPDATE</code> changes existing records</h2>
-            <p><code>SET</code> names the field and new value. <code>WHERE</code> restricts which rows are changed.</p>
-          </div>
-          <div class="answer-frame">
-            <strong>Pattern:</strong>
-            <span><code>UPDATE Student SET TutorGroup = '12C' WHERE StudentID = 'S01';</code></span>
-          </div>
-          <div class="clause-grid">
-            <article><strong>Table</strong><span><code>UPDATE Student</code> chooses the table.</span></article>
-            <article><strong>New value</strong><span><code>SET TutorGroup = '12C'</code> changes the field.</span></article>
-            <article><strong>Target rows</strong><span><code>WHERE StudentID = 'S01'</code> prevents changing every student.</span></article>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start update -->
-        <section class="panel explanation-panel" id="explanation-update" data-explains="update" data-explanation-kind="mechanism" aria-labelledby="explanation-update-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-088">
-          <h2 class="explanation-sr-only" id="explanation-update-title">UPDATE changes existing records</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-088-update.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining UPDATE changes existing records with a structured visual model." />
-            <figcaption class="explanation-sr-only">UPDATE changes existing records: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> SET names the field and new value. WHERE restricts which rows are changed.</li><li><strong>Lesson fact:</strong> Pattern:</li><li><strong>Lesson fact:</strong> UPDATE Student SET TutorGroup = '12C' WHERE StudentID = 'S01';</li><li><strong>Lesson fact:</strong> Table UPDATE Student chooses the table.</li><li><strong>Lesson fact:</strong> New value SET TutorGroup = '12C' changes the field.</li><li><strong>Lesson fact:</strong> Target rows WHERE StudentID = 'S01' prevents changing every student.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end update -->
-        <section class="panel" id="delete" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-088">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 4</p>
-            <h2><code>DELETE FROM</code> removes records</h2>
-            <p>Use <code>DELETE</code> only when the whole record should be removed. A missing condition can remove all records.</p>
-          </div>
-          <div class="answer-frame">
-            <strong>Pattern:</strong>
-            <span><code>DELETE FROM Student WHERE StudentID = 'S03';</code></span>
-          </div>
-          <div class="callout">Exam caution: <code>DELETE FROM Student;</code> has no <code>WHERE</code>, so it targets every record in the table.</div>
-        </section>
-
-        <!-- stage10-explanation:start delete -->
-        <section class="panel explanation-panel" id="explanation-delete" data-explains="delete" data-explanation-kind="mechanism" aria-labelledby="explanation-delete-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-088">
-          <h2 class="explanation-sr-only" id="explanation-delete-title">DELETE FROM removes records</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-088-delete.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining DELETE FROM removes records with a structured visual model." />
-            <figcaption class="explanation-sr-only">DELETE FROM removes records: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Use DELETE only when the whole record should be removed. A missing condition can remove all records.</li><li><strong>Lesson fact:</strong> Pattern:</li><li><strong>Lesson fact:</strong> DELETE FROM Student WHERE StudentID = 'S03';</li><li><strong>Lesson fact:</strong> Exam caution: DELETE FROM Student; has no WHERE , so it targets every record in the table.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end delete -->
-        <section class="panel" id="trace" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-088">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 5</p>
-            <h2>Trace changes from a small table</h2>
-          </div>
-          <div class="data-table" role="table" aria-label="Student table">
-            <div class="table-row table-head" role="row">
-              <div role="columnheader">StudentID</div>
-              <div role="columnheader">StudentName</div>
-              <div role="columnheader">TutorGroup</div>
-              <div role="columnheader">Active</div>
-            </div>
-            <div class="table-row" role="row"><div>S01</div><div>Amira</div><div>12A</div><div>TRUE</div></div>
-            <div class="table-row" role="row"><div>S02</div><div>Leo</div><div>12B</div><div>TRUE</div></div>
-            <div class="table-row" role="row"><div>S03</div><div>Maya</div><div>12A</div><div>FALSE</div></div>
-          </div>
-        </section>
-
-
-        <section class="panel" id="builder" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-088">
-          <div class="section-title">
-            <p class="eyebrow">Interactive statement builder</p>
-            <h2>Choose the right data modification command</h2>
-          </div>
-          <div class="converter-grid">
-            <label>
-              English request
-              <select id="builderInput">
-                <option value="insertNina">Add a new student S04 called Nina in tutor group 12C.</option>
-                <option value="updateAmira">Change Amira's tutor group to 12C using StudentID S01.</option>
-                <option value="updateInactive">Set Active to FALSE for Leo using StudentID S02.</option>
-                <option value="deleteMaya">Remove the record for student S03.</option>
-                <option value="deleteInactive">Remove all records where Active is FALSE.</option>
-              </select>
-            </label>
-            <button class="primary-button" type="button" id="builderBtn">Build SQL</button>
-          </div>
-          <pre class="sql-output" id="builderResult">Choose a request, then build the SQL.</pre>
-          <div class="feedback" id="builderReason">The output will show command choice and condition logic.</div>
-        </section>
-
-        <section class="panel" id="simulator" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-088">
-          <div class="section-title">
-            <p class="eyebrow">Interactive change simulator</p>
-            <h2>Preview the result before the database gets nervous</h2>
-          </div>
-          <div class="converter-grid">
-            <label>
-              Statement
-              <select id="statementInput">
-                <option value="s1">INSERT new student S04, Nina, 12C, TRUE</option>
-                <option value="s2">UPDATE S01 TutorGroup to 12C</option>
-                <option value="s3">UPDATE every row TutorGroup to 12C without WHERE</option>
-                <option value="s4">DELETE student S03</option>
-                <option value="s5">DELETE every row without WHERE</option>
-              </select>
-            </label>
-            <button class="primary-button" type="button" id="simulateBtn">Simulate</button>
-          </div>
-          <div class="feedback" id="simulationNote">Choose a statement to see the table after execution.</div>
-          <div class="result-table" id="simulationResult">The after-table will appear here.</div>
-        </section>
-
-        <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-088">
-          <div class="section-title">
-            <p class="eyebrow">Worked examples</p>
-            <h2>Write the command that matches the intention</h2>
-          </div>
-          <div class="example-tabs" role="tablist" aria-label="Worked examples">
-            <button class="tab active" type="button" data-example="insert">INSERT</button>
-            <button class="tab" type="button" data-example="update">UPDATE</button>
-            <button class="tab" type="button" data-example="delete">DELETE</button>
-            <button class="tab" type="button" data-example="unsafe">Unsafe WHERE</button>
-          </div>
-          <article class="example-box" id="exampleBox" aria-live="polite"></article>
-        </section>
-
-        <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-088">
-          <div class="section-title">
-            <p class="eyebrow">Practice with instant checking</p>
-            <h2>Short quiz and core checks</h2>
-            <p>Type concise answers. Use Show answer after committing to a response.</p>
-          </div>
-          <div class="practice-list" id="practiceList"></div>
-        </section>
-
-        <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-088">
-          <div class="section-title">
-            <p class="eyebrow">Mistake debugging</p>
-            <h2>Repair weak modification statements</h2>
-          </div>
-          <div class="mistake-grid" id="mistakeGrid"></div>
-        </section>
-
-        <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-088">
-          <div class="section-title">
-            <p class="eyebrow">Exam-style questions</p>
-            <h2>Original Cambridge-style practice with expandable MS</h2>
-            <p>These are original questions written in Cambridge style. The mark schemes are strict about command syntax and affected records.</p>
-          </div>
-          <div class="exam-list" id="examList"></div>
-        </section>
-
-        <section class="panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-088">
-          <div class="section-title">
-            <p class="eyebrow">Summary</p>
-            <h2>Modification command checklist</h2>
-          </div>
-          <div class="summary-grid">
-            <div><strong>INSERT</strong><span>Adds a new record; fields and values must match.</span></div>
-            <div><strong>UPDATE</strong><span>Changes existing records; <code>SET</code> gives the new value.</span></div>
-            <div><strong>DELETE</strong><span>Removes records; <code>WHERE</code> controls which records go.</span></div>
-          </div>
-        </section>
-
-        <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
-          <div class="section-title">
-            <p class="eyebrow">Homework</p>
-            <h2>Clear tasks for consolidation</h2>
-          </div>
-          <div class="homework-list">
-            <article>
-              <strong>Task 1: Write three statements</strong>
-              <span>Write one <code>INSERT</code>, one <code>UPDATE</code> and one <code>DELETE</code> for the Student table. Each must include realistic field names and values.</span>
-            </article>
-            <article>
-              <strong>Task 2: Trace before and after</strong>
-              <span>Draw the Student table after <code>UPDATE Student SET Active = FALSE WHERE StudentID = 'S02';</code>.</span>
-            </article>
-            <article>
-              <strong>Task 3: 6-mark correction</strong>
-              <span>Correct and explain: <code>UPDATE Student TutorGroup = '12C';</code>. Include the missing keyword and the risk of omitting <code>WHERE</code>.</span>
-            </article>
-          </div>
-        </section>
+        <nav class="v2-bottom-nav" aria-label="Previous and next lesson"><a href="../lesson-087/" >Previous lesson</a><a href="../lesson-089/" >Next lesson</a></nav>
       </div>
     </main>
-
-    <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=3"></script>
-    <script src="../lesson-toolbar.js?v=3"></script>
-    <script src="../stage7-accessibility.js?v=4"></script>
+    <script src="../course-v2.js?v=1"></script>
   </body>
 </html>

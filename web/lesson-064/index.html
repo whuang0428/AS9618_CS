@@ -3,489 +3,89 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 064 | Virus, spyware, anti-virus and anti-spyware</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <title>AS9618 Lesson 064 | Stacks and LIFO operations</title>
     <link rel="icon" href="data:" />
-    <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../stage6-qa.css?v=10" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=4" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
+    <link rel="stylesheet" href="../course-v2.css?v=3" />
   </head>
-  <body>
+  <body data-course-version="2" data-lesson-id="064" data-syllabus-ids="S10.09,S10.10">
     <a class="skip-link" href="#main-content">Skip to main content</a>
-    <header class="topbar">
-      <div>
-        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 6</p>
-        <h1>Virus, spyware, anti-virus and anti-spyware</h1>
-      </div>
-      <div class="action-panel" aria-label="Page controls">
-        <a class="course-home-link" href="../">Course home</a>
-        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
-      </div>
+    <header class="v2-topbar">
+      <div><p class="v2-eyebrow">Cambridge AS9618 | Paper 2 | Section 10: Data types and structures</p><h1>Stacks and LIFO operations</h1></div>
+      <nav class="v2-actions" aria-label="Lesson actions"><a href="../">Course home</a><a href="../assessments/">Assessment bank</a><button type="button" id="printLesson">Print</button></nav>
     </header>
-
-    <main class="layout" id="main-content" tabindex="-1">
-      <aside class="lesson-nav" aria-label="Lesson navigation">
-        <a href="#overview">Overview</a>
-        <a href="#hook">Warm-up</a>
-        <a href="#concept">Core idea</a>
-        <a href="#virus">Virus/worm</a>
-        <a href="#trojan">Trojan</a>
-        <a href="#spyware">Spyware</a>
-        <a href="#ransomware">Ransomware</a>
-        <a href="#social">Social engineering</a>
-        <a href="#controls">Controls</a>
-        <a href="#tool">Threat tool</a>
-        <a href="#examples">Examples</a>
-        <a href="#practice">Practice</a>
-        <a href="#debug">Debugging</a>
-        <a href="#exam">Exam-style</a>
-        <a href="#summary">Summary</a>
-        <a href="#homework">Homework</a>
-        <a href="#stage2-completion">Core syllabus content</a>
-      </aside>
-
-      <div class="lesson-content">
-        <!-- remediation-v2-stage3-scope:start -->
-        <aside class="optional-enrichment-notice stage3-sequence-notice" aria-label="Lesson sequence scope"><strong>Lesson sequence scope</strong><p>The sections labelled Core syllabus content and Core syllabus practice contain the assessed syllabus points added for this lesson. Other activities remain part of this lesson unless they are individually labelled Optional.</p></aside>
-        <!-- remediation-v2-stage3-scope:end -->
-
-<!-- stage2-completion:start -->
-        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus content</p>
-            <h2>Virus, spyware, anti-virus and anti-spyware</h2>
-          </div>
-          <div class="stage2-explanation">
-            <p>A virus is malware that attaches to a host file or program and spreads when the infected host is run or shared. Spyware secretly monitors activity or collects data, such as keystrokes, credentials or browsing behaviour. These threats can damage the security of both data and the computer system.</p>
-            <p>Anti-virus software scans files, memory and activity for virus signatures or suspicious behaviour, then blocks, quarantines or removes detected malicious code. Anti-spyware performs corresponding detection and removal for spyware; the categories may be combined in one security product, but their syllabus roles must still be stated accurately.</p>
-            <p>Anti-virus and anti-spyware definitions and detection rules must be updated because new threats appear. Both measures reduce risk but cannot guarantee detection of every new, modified or concealed threat.</p>
-            <p>Each security measure has a distinct mechanism: a user account identifies a user; a password authenticates knowledge; a digital signature supports integrity and origin checks; a biometric compares a captured feature; a firewall filters traffic; anti-virus and anti-spyware detect known malicious software; encryption protects readable data. The threats include a virus, spyware, a hacker, phishing and pharming; each threat must be matched to a control whose mechanism reduces that risk.</p>
-          </div>
-          <article class="stage2-example">
-            <h3>Worked example: Infected attachment and keylogger</h3>
-            <p>Anti-virus scans an attachment, matches a virus signature and quarantines the infected host file before it runs. Anti-spyware detects a keylogger process, blocks it and quarantines its file so it cannot continue recording credentials. Each control is matched to the threat mechanism rather than described as a universal guarantee.</p>
-          </article>
+    <main class="v2-shell" id="main-content" tabindex="-1">
+      <nav class="v2-toc" aria-label="Lesson contents"><strong>Lesson 064</strong><a href="#overview">Overview</a><a href="#prerequisite">Prerequisite</a><a href="#explanation">Explanation</a><a href="#practice">Practice</a><a href="#summary">Summary</a></nav>
+      <div class="v2-content">
+        <section class="v2-hero" id="overview">
+          <div><p class="v2-eyebrow">Flexible-depth lesson</p><h2>Stacks and LIFO operations</h2><p>S10.09, S10.10 | Select what to omit, teach briefly or explore in depth.</p></div>
+          <div class="v2-time-grid" aria-label="Available lesson depth"><div><strong>Quick</strong><span>diagnose + essentials</span></div><div><strong>Full</strong><span>complete explanation</span></div><div><strong>Deep</strong><span>prerequisites + extension</span></div><div><strong>Choose</strong><span>practice by need</span></div></div>
         </section>
-        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
-          <div class="section-title">
-            <p class="eyebrow">Core syllabus practice</p>
-            <h2>Virus, spyware, anti-virus and anti-spyware: apply and assess</h2>
-          </div>
-          <div class="stage2-practice">
-            <h3>Targeted practice</h3>
-            <article class="stage2-question">
-              <p><strong>1.</strong> How does a virus differ from spyware?</p>
-              <details><summary>Show answer</summary><p>A virus attaches to a host and spreads when that host runs or is shared; spyware secretly monitors activity or collects data.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>2.</strong> What is the role of anti-virus software?</p>
-              <details><summary>Show answer</summary><p>It scans for virus signatures or suspicious behaviour and can block, quarantine or remove detected malicious code.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>3.</strong> What is spyware designed to do?</p>
-              <details><summary>Show answer</summary><p>Secretly monitor activity or collect user/system data.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>4.</strong> What does quarantine do?</p>
-              <details><summary>Show answer</summary><p>Isolates suspicious code so it cannot execute normally.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>5.</strong> Why update anti-spyware definitions?</p>
-              <details><summary>Show answer</summary><p>To recognise newly identified spyware.</p></details>
-            </article>
-          </div>
-          <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>6 marks</span></div>
-            <p>Explain how anti-virus and anti-spyware software reduce different malware risks.</p>
-            <details>
-              <summary>Show MS</summary>
-              <table class="mark-scheme-table">
-                <thead><tr><th>Answer</th><th>Guidance</th><th>Marks</th></tr></thead>
-                <tbody>
-                  <tr><td>anti-virus scans for virus signatures/suspicious behaviour</td><td>Do not accept that virus and spyware are synonyms, or that either security measure prevents every form of malware.</td><td>1</td></tr>
-                  <tr><td>blocks/quarantines/removes detected infected code</td><td></td><td>1</td></tr>
-                  <tr><td>anti-spyware scans for secret monitoring/data collection</td><td></td><td>1</td></tr>
-                  <tr><td>blocks/quarantines/removes detected spyware</td><td></td><td>1</td></tr>
-                  <tr><td>updates improve recognition of newly identified threats</td><td></td><td>1</td></tr>
-                  <tr><td>neither measure guarantees detection of every threat</td><td></td><td>1</td></tr>
-                </tbody>
-              </table>
-            </details>
-          </article>
-        </section>
-        <!-- stage2-completion:end -->
 
-<section class="hero" id="overview" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-064">
-          <div class="hero-copy">
-            <p class="lesson-meta">Lesson 064 | 45 minutes | Paper 1 Section 6 | Security, privacy and data integrity</p>
-            <h2>Some attacks target software. Some target the person holding the keyboard.</h2>
-            <p>
-              Malware is malicious software designed to damage, disrupt, steal or gain unauthorised access.
-              Social engineering manipulates people into giving access, information or permission.
-              Exam answers need the mechanism, not just a scary label.
-            </p>
-            <div class="objective-grid" aria-label="Learning objectives">
-              <div><strong>Classify</strong><span>common malware types by mechanism and impact</span></div>
-              <div><strong>Explain</strong><span>how social engineering exploits human trust or pressure</span></div>
-              <div><strong>Recommend</strong><span>controls that match the threat and protected security goal</span></div>
+        <section class="v2-panel v2-route-menu" aria-labelledby="route-heading">
+          <div class="v2-heading"><p class="v2-eyebrow">Teacher choice</p><h2 id="route-heading">Choose the depth for this group</h2></div>
+          <div class="v2-route-grid"><article><h3>Quick route</h3><p>Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.</p></article><article><h3>Full route</h3><p>Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.</p></article><article><h3>Deep route</h3><p>Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.</p></article></div>
+        </section>
+
+        <section class="v2-panel" id="prerequisite">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 1 | optional depth</p><h2>Prerequisite knowledge and quick diagnostic</h2></div>
+          <div class="v2-diagnostic"><p>Recall S10.08, S10.03, S10.09 before starting this lesson.</p></div>
+          <p>Give one accurate definition or method step before continuing. If it is missing, revisit only that prerequisite.</p>
+          <details class="v2-prerequisite-detail"><summary>Open optional prerequisite refresher</summary><ul><li>An abstract data type (ADT) is a collection of data and a set of operations on those data. Its behaviour is defined independently of a particular storage implementation.</li><li>Understand the definition and purpose of an abstract data type.</li><li>Use the technical terms associated with arrays, including index, lower bound and upper bound. Bounds define the inclusive valid index range and an index selects one element.</li><li>Understand array, index, lower bound and upper bound terminology.</li><li>Stack, queue and linked list are examples of ADTs. Describe their key features and justify which structure suits a given situation using LIFO, FIFO or link-based traversal/insertion/deletion evidence.</li><li>Understand stack, queue and linked-list features; justify a structure.</li></ul></details>
+        </section>
+
+        <section class="v2-panel" id="explanation">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 2 | deliberately over-complete</p><h2>Knowledge explanation</h2></div>
+          <h3>Learning objectives</h3><ul class="v2-objectives"><li>Understand stack, queue and linked-list features; justify a structure.</li><li>Add, edit and delete data in the ADTs and implement them using arrays; pseudocode for operations is not required by the syllabus.</li></ul>
+          <details class="v2-concept-menu"><summary>Open the concept checklist and choose what to teach</summary><ul><li>stack</li><li>queue</li><li>linked list</li><li>LIFO</li><li>FIFO</li><li>justify</li><li>Add</li><li>edit</li><li>delete</li><li>array</li><li>not required</li><li>pseudocode</li></ul></details>
+          <div class="v2-explanation-grid">
+            <div>
+              <article class="v2-core-facts"><h3>Detailed explanation</h3><p class="v2-teacher-note">Teach all points, or select only the ones this group needs. The list is intentionally fuller than a fixed lesson slot.</p><ul class="v2-facts"><li>Stack, queue and linked list are examples of ADTs. Describe their key features and justify which structure suits a given situation using LIFO, FIFO or link-based traversal/insertion/deletion evidence.</li><li>Use stack, queue and linked list to store data; add, edit and delete data while preserving each ADT rule. Describe array implementations for all three. Candidates are not required to write pseudocode for these ADT operations.</li><li>An abstract data type (ADT) is a collection of data and a set of operations on those data. The permitted operations and their effects define the ADT; its internal storage can change without changing that behaviour. Stack, queue and linked list are examples of ADTs.</li><li>A stack is LIFO: add with push and delete with pop at the top. A queue is FIFO: add with enqueue at the rear and delete with dequeue at the front. A linked list stores data plus a next pointer/index in each node; start identifies the first node and null ends the chain.</li><li>All three can be implemented using arrays and state variables or indexes. Stack uses an array with a top/stack pointer; queue uses an array with front and rear; linked list uses Data and Next arrays (or an array of node records), start and a free list. Candidates must be able to add, edit and delete data conceptually, but the syllabus does not require pseudocode for these ADT operations.</li><li>Editing changes the stored data without breaking the access rule or links. Deleting from a linked list reconnects the predecessor to the removed node&#39;s successor and returns the freed array slot to the free list; physical array positions need not follow logical list order.</li><li>Justify a stack, queue or linked list from its operations and the scenario. Candidates are not required to write pseudocode for these ADT operations, but must be able to add, edit and delete data and describe array implementations.</li><li>Choose and justify a stack, queue or linked list from its LIFO, FIFO or linkage features. Add, edit and delete data in these ADTs and implement them using arrays; pseudocode for the ADT operations is not required by the syllabus.</li><li>A stack is LIFO with push/pop at the top; a queue is FIFO with enqueue at the rear and dequeue at the front; a linked list supports traversal and insertion/deletion through links.</li><li>Justification must name the required access order or update behaviour. Array implementations have fixed capacity unless resized and require overflow/underflow checks; linked structures require pointer management.</li></ul></article>
+              <article class="v2-example"><h3>Worked example</h3><p>Add, edit and delete without changing the ADT rule: Push D adds D at the stack top and pop deletes the current top. Enqueue D adds at the queue rear and dequeue deletes from the front. In an array-based linked list, edit Data[5] to change only the node value; insert or delete by changing Next indexes, Start and the free list rather than shifting every later array item.</p></article>
+              <aside class="v2-extension"><h3>Beyond syllabus / 延伸知识（不要求背诵）</h3><p>programming libraries often provide tested ADT implementations, but the exam expects you to understand their behaviour and selection.</p></aside>
             </div>
-          </div>
-          <div class="threat-card" aria-label="Threat map">
-            <div class="threat-stack">
-              <span>Virus: attaches, needs host/action</span>
-              <span>Worm: self-replicates across networks</span>
-              <span>Trojan: disguised as legitimate</span>
-              <span>Spyware: secretly monitors/steals</span>
-              <span>Social engineering: manipulates people</span>
-            </div>
-            <p>If the attack starts with "just click this", check both the device and the decision.</p>
+            <figure class="v2-visual">
+              <img src="../assets/diagrams/stage10-infographics/stage10-lesson-123-implementation.jpg" alt="An array stack uses Top; a queue uses Front and Rear; a linked list uses Data, Next, Start and a free list.. Add/delete preserve stack LIFO, queue FIFO and linked-list links; edit changes stored data without corrupting structure.. Candidates are not required to write pseudocode for these ADT operations; understand add, edit, delete and array implementation." loading="lazy" />
+              <figcaption>Implement stack, queue and linked list using arrays. One maintained explanation is shown as an image on larger screens and as text on small screens.</figcaption>
+              <div class="v2-mobile-visual-text" aria-label="Mobile text alternative"><ul><li>An array stack uses Top; a queue uses Front and Rear; a linked list uses Data, Next, Start and a free list.</li><li>Add/delete preserve stack LIFO, queue FIFO and linked-list links; edit changes stored data without corrupting structure.</li><li>Candidates are not required to write pseudocode for these ADT operations; understand add, edit, delete and array implementation.</li></ul></div>
+            </figure>
           </div>
         </section>
 
-        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-064">
-          <article class="why-card">
-            <h3>Why this matters</h3>
-            <p>Many candidates list names of malware but do not describe what each one does. Names alone are low-yield.</p>
-          </article>
-          <article class="trap-card">
-            <h3>Common error</h3>
-            <p>Do not use encryption as a cure for every threat. It may protect confidentiality but does not remove malware or train users.</p>
-          </article>
+        <section class="v2-panel" id="practice">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 3 | select by learner need</p><h2>Practice by question type</h2></div>
+          <div class="v2-question-list"><article class="v2-question" data-question-id="Q-L064-01" data-semantic-fingerprint="S10.09+S10.10|stacks-and-lifo-operations|suggest|suggest-adt-breadth-first|written|explain">
+              <div class="v2-question-head"><span class="v2-badge">suggest</span><span class="v2-badge">explain</span><span class="v2-badge difficulty">foundation</span><span class="v2-badge">2 marks</span></div>
+              <p><strong>Question 1.</strong> Suggest an ADT for breadth-first waiting jobs.</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> Queue, because first in is first out.</p><p><strong>Marking guidance:</strong> Award one mark for each distinct, technically accurate point or method step.</p><p><strong>Common error:</strong> For the command word suggest, perform that exact action; do not replace it with an unrelated fact.</p></div></details>
+            </article><article class="v2-question" data-question-id="Q-L064-02" data-semantic-fingerprint="S10.09+S10.10|stacks-and-lifo-operations|apply|what-must-checked-before|written|recall">
+              <div class="v2-question-head"><span class="v2-badge">apply</span><span class="v2-badge">recall</span><span class="v2-badge difficulty">application</span><span class="v2-badge">2 marks</span></div>
+              <p><strong>Question 2.</strong> What must be checked before pushing to a full array stack?</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> Overflow/capacity.</p><p><strong>Marking guidance:</strong> Award one mark for each distinct, technically accurate point or method step.</p><p><strong>Common error:</strong> Do not repeat the same point in different words; each mark needs a separate idea or method step.</p></div></details>
+            </article><article class="v2-question" data-question-id="Q-L064-03" data-semantic-fingerprint="S10.09+S10.10|stacks-and-lifo-operations|state|precise-facts-about|written|recall">
+              <div class="v2-question-head"><span class="v2-badge">state</span><span class="v2-badge">recall</span><span class="v2-badge difficulty">transfer</span><span class="v2-badge">2 marks</span></div>
+              <p><strong>Question 3.</strong> State two precise facts about stacks and lifo operations.</p>
+              <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> Stack, queue and linked list are examples of ADTs. Describe their key features and justify which structure suits a given situation using LIFO, FIFO or link-based traversal/insertion/deletion evidence. Use stack, queue and linked list to store data; add, edit and delete data while preserving each ADT rule. Describe array implementations for all three. Candidates are not required to write pseudocode for these ADT operations.</p><p><strong>Marking guidance:</strong> Award one mark for each distinct fact; do not credit a repeated point.</p><p><strong>Common error:</strong> Do not copy the worked example unchanged; transfer the method and check it against the new context.</p></div></details>
+            </article></div>
+          <div class="v2-paper-refs">
+          <h3>Related past-paper indexes</h3>
+          <table><thead><tr><th>Reference</th><th>Marks</th><th>Command word</th><th>Question type</th></tr></thead>
+          <tbody><tr><td>9618/23/S/25 Q5(b)</td><td>8</td><td>describe</td><td>write</td></tr><tr><td>9618/21/S/25 Q5</td><td>7</td><td>describe</td><td>explain</td></tr><tr><td>9618/23/S/25 Q5(c)</td><td>7</td><td>calculate</td><td>calculate</td></tr><tr><td>9618/23/S/25 Q5(a)</td><td>5</td><td>describe</td><td>explain</td></tr></tbody></table>
+          <p class="v2-copyright-note">Index only: Cambridge question and mark-scheme wording is not reproduced on this public course page.</p>
+        </div>
         </section>
 
-        <section class="panel" id="hook" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-064">
-          <div class="section-title">
-            <p class="eyebrow">Warm-up hook</p>
-            <h2>A user installs a "free game update" that secretly records keystrokes. What is the best diagnosis?</h2>
-            <p>Click the best answer. The update was free in the same way a trapdoor is open-plan architecture.</p>
-          </div>
-          <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="trojan-spyware">Trojan delivery with spyware/keylogging behaviour</button>
-            <button class="choice-card" type="button" data-hook="worm">Worm only, because all malware spreads by itself</button>
-            <button class="choice-card" type="button" data-hook="availability">Availability control, because it is always about uptime</button>
-            <button class="choice-card" type="button" data-hook="backup">Backup, because every security question wants backup</button>
-          </div>
-          <div class="feedback" id="hookFeedback" aria-live="polite">
-            Choose one. Look for disguise, behaviour and data impact.
-          </div>
+        <section class="v2-panel" id="summary">
+          <div class="v2-heading"><p class="v2-eyebrow">Part 4 | close when ready</p><h2>Summary and exam reminders</h2></div>
+          <div class="v2-summary-grid"><div><h3>Summary</h3><ul class="v2-summary-list"><li>Define stacks and lifo operations with the exact technical vocabulary expected by the syllabus.</li><li>Use the lesson method on a fresh context and show the intermediate decision, representation or calculation.</li><li>Match the shape of the answer to the command word and the available marks.</li><li>Check the final answer against the scenario instead of repeating a memorised sentence.</li></ul></div><div class="v2-error"><h3>Common error to correct</h3><p>Students often treat files like arrays already in memory. Correction: file data must be read into variables before processing.</p></div></div>
+          <div class="v2-tip-box"><h3>Exam technique</h3><ul><li>Follow the command word: state gives a fact; explain links a cause to a consequence; compare covers both sides.</li><li>Match the number of independent points or method steps to the available marks.</li><li>For stacks and lifo operations, use the exact technical term before applying it to the scenario.</li></ul></div>
         </section>
 
-        <section class="panel" id="concept" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-064">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 1</p>
-            <h2>Malware is malicious software; social engineering manipulates people</h2>
-          </div>
-          <div class="concept-grid">
-            <article><strong>Malware</strong><span>Software created to disrupt, damage, steal data or gain unauthorised access.</span></article>
-            <article><strong>Payload</strong><span>The harmful action, such as deleting files, encrypting data or stealing credentials.</span></article>
-            <article><strong>Propagation</strong><span>How it spreads, such as infected files, networks, removable media or deceptive downloads.</span></article>
-            <article><strong>Social engineering</strong><span>Manipulating a person into revealing information or performing an unsafe action.</span></article>
-          </div>
-          <div class="callout">Chinese support: malware = 恶意软件；payload = 有害载荷/破坏行为；propagation = 传播方式；social engineering = 社会工程学攻击。</div>
-        </section>
-
-        <!-- stage10-explanation:start concept -->
-        <section class="panel explanation-panel" id="explanation-concept" data-explains="concept" data-explanation-kind="mechanism" aria-labelledby="explanation-concept-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-064">
-          <h2 class="explanation-sr-only" id="explanation-concept-title">Malware is malicious software; social engineering manipulates people</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-064-concept.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Malware is malicious software; social engineering manipulates people with a structured visual model." />
-            <figcaption class="explanation-sr-only">Malware is malicious software; social engineering manipulates people: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Malware Software created to disrupt, damage, steal data or gain unauthorised access.</li><li><strong>Lesson fact:</strong> Payload The harmful action, such as deleting files, encrypting data or stealing credentials.</li><li><strong>Lesson fact:</strong> Propagation How it spreads, such as infected files, networks, removable media or deceptive downloads.</li><li><strong>Lesson fact:</strong> Social engineering Manipulating a person into revealing information or performing an unsafe action.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end concept -->
-        <section class="panel" id="virus" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-064">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 2</p>
-            <h2>Virus and worm: both can spread, but not in the same way</h2>
-          </div>
-          <div class="concept-grid">
-            <article><strong>Virus</strong><span>Attaches to a host file/program and often needs the host to be run or shared.</span></article>
-            <article><strong>Worm</strong><span>Self-replicates, often across networks, without needing to attach to a host file.</span></article>
-            <article><strong>Impact</strong><span>Can corrupt data, slow systems, consume bandwidth or install further malware.</span></article>
-            <article><strong>Common error</strong><span>Do not say every self-spreading threat is a virus.</span></article>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start virus -->
-        <section class="panel explanation-panel" id="explanation-virus" data-explains="virus" data-explanation-kind="mechanism" aria-labelledby="explanation-virus-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-064">
-          <h2 class="explanation-sr-only" id="explanation-virus-title">Virus and worm: both can spread, but not in the same way</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-064-virus.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Virus and worm: both can spread, but not in the same way with a structured visual model." />
-            <figcaption class="explanation-sr-only">Virus and worm: both can spread, but not in the same way: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Virus Attaches to a host file/program and often needs the host to be run or shared.</li><li><strong>Lesson fact:</strong> Worm Self-replicates, often across networks, without needing to attach to a host file.</li><li><strong>Lesson fact:</strong> Impact Can corrupt data, slow systems, consume bandwidth or install further malware.</li><li><strong>Lesson fact:</strong> Common error Do not say every self-spreading threat is a virus.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end virus -->
-        <section class="panel" id="trojan" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-064">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 3</p>
-            <h2>Trojan: malicious code disguised as legitimate software</h2>
-          </div>
-          <div class="concept-grid">
-            <article><strong>Mechanism</strong><span>Appears useful or harmless so a user installs or runs it.</span></article>
-            <article><strong>Impact</strong><span>May create a backdoor, steal data, install other malware or change settings.</span></article>
-            <article><strong>Control</strong><span>Download from trusted sources, check permissions, use anti-malware and user education.</span></article>
-            <article><strong>Common error</strong><span>A Trojan does not need to self-replicate to be harmful.</span></article>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start trojan -->
-        <section class="panel explanation-panel" id="explanation-trojan" data-explains="trojan" data-explanation-kind="mechanism" aria-labelledby="explanation-trojan-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-064">
-          <h2 class="explanation-sr-only" id="explanation-trojan-title">Trojan: malicious code disguised as legitimate software</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-064-trojan.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Trojan: malicious code disguised as legitimate software with a structured visual model." />
-            <figcaption class="explanation-sr-only">Trojan: malicious code disguised as legitimate software: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Mechanism Appears useful or harmless so a user installs or runs it.</li><li><strong>Lesson fact:</strong> Impact May create a backdoor, steal data, install other malware or change settings.</li><li><strong>Lesson fact:</strong> Control Download from trusted sources, check permissions, use anti-malware and user education.</li><li><strong>Lesson fact:</strong> Common error A Trojan does not need to self-replicate to be harmful.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end trojan -->
-        <section class="panel" id="spyware" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-064">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 4</p>
-            <h2>Spyware secretly monitors activity or collects data</h2>
-          </div>
-          <div class="concept-grid">
-            <article><strong>Mechanism</strong><span>Runs without clear user awareness and gathers information.</span></article>
-            <article><strong>Examples</strong><span>Keylogger, screen monitoring or browser tracking used to capture credentials.</span></article>
-            <article><strong>Goal affected</strong><span>Often threatens confidentiality and authenticity if credentials are stolen.</span></article>
-            <article><strong>Control</strong><span>Anti-malware, least privilege, patching, browser controls and caution with downloads.</span></article>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start spyware -->
-        <section class="panel explanation-panel" id="explanation-spyware" data-explains="spyware" data-explanation-kind="mechanism" aria-labelledby="explanation-spyware-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-064">
-          <h2 class="explanation-sr-only" id="explanation-spyware-title">Spyware secretly monitors activity or collects data</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-064-spyware.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Spyware secretly monitors activity or collects data with a structured visual model." />
-            <figcaption class="explanation-sr-only">Spyware secretly monitors activity or collects data: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Mechanism Runs without clear user awareness and gathers information.</li><li><strong>Lesson fact:</strong> Examples Keylogger, screen monitoring or browser tracking used to capture credentials.</li><li><strong>Lesson fact:</strong> Goal affected Often threatens confidentiality and authenticity if credentials are stolen.</li><li><strong>Lesson fact:</strong> Control Anti-malware, least privilege, patching, browser controls and caution with downloads.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end spyware -->
-        <section class="panel" id="ransomware" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-064">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 5</p>
-            <h2>Ransomware denies access by encrypting or locking data</h2>
-          </div>
-          <div class="concept-grid">
-            <article><strong>Mechanism</strong><span>Encrypts files or locks systems, then demands payment for restoration.</span></article>
-            <article><strong>Goal affected</strong><span>Mainly threatens availability; may also threaten confidentiality if data is stolen.</span></article>
-            <article><strong>Control</strong><span>Offline backups, patching, anti-malware, restricted permissions and user training.</span></article>
-            <article><strong>Common error</strong><span>Paying is not a reliable recovery strategy in an exam answer.</span></article>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start ransomware -->
-        <section class="panel explanation-panel" id="explanation-ransomware" data-explains="ransomware" data-explanation-kind="mechanism" aria-labelledby="explanation-ransomware-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-064">
-          <h2 class="explanation-sr-only" id="explanation-ransomware-title">Ransomware denies access by encrypting or locking data</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-064-ransomware.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Ransomware denies access by encrypting or locking data with a structured visual model." />
-            <figcaption class="explanation-sr-only">Ransomware denies access by encrypting or locking data: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Mechanism Encrypts files or locks systems, then demands payment for restoration.</li><li><strong>Lesson fact:</strong> Goal affected Mainly threatens availability; may also threaten confidentiality if data is stolen.</li><li><strong>Lesson fact:</strong> Control Offline backups, patching, anti-malware, restricted permissions and user training.</li><li><strong>Lesson fact:</strong> Common error Paying is not a reliable recovery strategy in an exam answer.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end ransomware -->
-        <section class="panel" id="social" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-064">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 6</p>
-            <h2>Social engineering exploits people rather than code</h2>
-          </div>
-          <div class="concept-grid">
-            <article><strong>Mechanism</strong><span>Uses trust, urgency, authority, curiosity or fear to influence a user.</span></article>
-            <article><strong>Action</strong><span>User may reveal passwords, approve access, install software or transfer data.</span></article>
-            <article><strong>Goal affected</strong><span>Often threatens confidentiality and authenticity through impersonation or credential theft.</span></article>
-            <article><strong>Control</strong><span>User training, verification procedures, MFA, reporting routes and least privilege.</span></article>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start social -->
-        <section class="panel explanation-panel" id="explanation-social" data-explains="social" data-explanation-kind="mechanism" aria-labelledby="explanation-social-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-064">
-          <h2 class="explanation-sr-only" id="explanation-social-title">Social engineering exploits people rather than code</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-064-social.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Social engineering exploits people rather than code with a structured visual model." />
-            <figcaption class="explanation-sr-only">Social engineering exploits people rather than code: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Mechanism Uses trust, urgency, authority, curiosity or fear to influence a user.</li><li><strong>Lesson fact:</strong> Action User may reveal passwords, approve access, install software or transfer data.</li><li><strong>Lesson fact:</strong> Goal affected Often threatens confidentiality and authenticity through impersonation or credential theft.</li><li><strong>Lesson fact:</strong> Control User training, verification procedures, MFA, reporting routes and least privilege.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end social -->
-        <section class="panel" id="controls" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-064">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 7</p>
-            <h2>Match controls to mechanism, not just the word "malware"</h2>
-          </div>
-          <div class="comparison-table" role="table" aria-label="Threat control comparison">
-            <div class="table-row table-head" role="row">
-              <div role="columnheader">Threat</div>
-              <div role="columnheader">Likely impact</div>
-              <div role="columnheader">Suitable controls</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Virus/worm</div>
-              <div role="cell">Corrupts data, spreads, slows systems, uses resources.</div>
-              <div role="cell">Anti-malware, patching, scanning removable media, network monitoring.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Trojan</div>
-              <div role="cell">Disguised malicious installation or backdoor.</div>
-              <div role="cell">Trusted sources, permissions review, user education, anti-malware.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Spyware</div>
-              <div role="cell">Secret monitoring, credential/data theft.</div>
-              <div role="cell">Anti-spyware, least privilege, MFA, patching, download caution.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Ransomware</div>
-              <div role="cell">Loss of access to files/services.</div>
-              <div role="cell">Offline backups, patching, anti-malware, restricted write access.</div>
-            </div>
-            <div class="table-row" role="row">
-              <div role="cell">Social engineering</div>
-              <div role="cell">User reveals credentials or performs unsafe action.</div>
-              <div role="cell">Training, verification, MFA, clear reporting procedure.</div>
-            </div>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start controls -->
-        <section class="panel explanation-panel" id="explanation-controls" data-explains="controls" data-explanation-kind="mechanism" aria-labelledby="explanation-controls-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-064">
-          <h2 class="explanation-sr-only" id="explanation-controls-title">Match controls to mechanism, not just the word &quot;malware&quot;</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-064-controls.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Match controls to mechanism, not just the word &quot;malware&quot; with a structured visual model." />
-            <figcaption class="explanation-sr-only">Match controls to mechanism, not just the word &quot;malware&quot;: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Likely impact</li><li><strong>Lesson fact:</strong> Suitable controls</li><li><strong>Lesson fact:</strong> Virus/worm</li><li><strong>Lesson fact:</strong> Corrupts data, spreads, slows systems, uses resources.</li><li><strong>Lesson fact:</strong> Anti-malware, patching, scanning removable media, network monitoring.</li><li><strong>Lesson fact:</strong> Disguised malicious installation or backdoor.</li><li><strong>Lesson fact:</strong> Trusted sources, permissions review, user education, anti-malware.</li><li><strong>Lesson fact:</strong> Secret monitoring, credential/data theft.</li><li><strong>Lesson fact:</strong> Anti-spyware, least privilege, MFA, patching, download caution.</li><li><strong>Lesson fact:</strong> Ransomware</li><li><strong>Lesson fact:</strong> Loss of access to files/services.</li><li><strong>Lesson fact:</strong> Offline backups, patching, anti-malware, restricted write access.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end controls -->
-        <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-064">
-          <div class="section-title">
-            <p class="eyebrow">Interactive tool</p>
-            <h2>Threat classifier</h2>
-            <p>Select a clue and identify the most likely malware/social engineering category.</p>
-          </div>
-          <div class="converter-grid">
-            <label>
-              Scenario clue
-              <select id="scenarioInput">
-                <option value="host">Malicious code attaches to a document and runs when opened</option>
-                <option value="network">Malicious code self-replicates across a network</option>
-                <option value="disguise">A useful-looking installer secretly opens a backdoor</option>
-                <option value="keys">Software secretly records keystrokes</option>
-                <option value="locked">Files are encrypted and payment is demanded</option>
-                <option value="urgent">A caller pressures staff to reveal a password urgently</option>
-              </select>
-            </label>
-            <button class="primary-button" type="button" id="simulateBtn">Classify</button>
-          </div>
-          <div class="result-box" id="simulateResult" aria-live="polite"></div>
-          <div class="method-box" id="simulateMethod"></div>
-          <div class="reject-box" id="simulateTrap"></div>
-        </section>
-
-        <section class="panel" id="examples" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-064">
-          <div class="section-title">
-            <p class="eyebrow">Worked examples</p>
-            <h2>Threat, impact, control</h2>
-          </div>
-          <div class="example-tabs" role="tablist" aria-label="Worked example tabs">
-            <button class="tab active" type="button" data-example="worm">Worm</button>
-            <button class="tab" type="button" data-example="trojan">Trojan</button>
-            <button class="tab" type="button" data-example="ransomware">Ransomware</button>
-            <button class="tab" type="button" data-example="social">Social engineering</button>
-          </div>
-          <div class="example-box" id="exampleBox"></div>
-        </section>
-
-        <section class="panel" id="practice" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-064">
-          <div class="section-title">
-            <p class="eyebrow">Practice</p>
-            <h2>Instant-check questions</h2>
-            <p>Type a short answer, then check. Reveal the expected wording only after trying.</p>
-          </div>
-          <div class="practice-list" id="practiceList"></div>
-        </section>
-
-        <section class="panel" id="debug" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-064">
-          <div class="section-title">
-            <p class="eyebrow">Mistake debugging</p>
-            <h2>Fix the almost-right answers</h2>
-          </div>
-          <div class="mistake-grid" id="mistakeGrid"></div>
-        </section>
-
-        <section class="panel" id="exam" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-064">
-          <div class="section-title">
-            <p class="eyebrow">Exam-style questions</p>
-            <h2>Answer first, then reveal the Cambridge-style mark scheme</h2>
-            <p>These are original Cambridge-style questions. The mark schemes reward mechanism, impact and control linkage.</p>
-          </div>
-          <div class="exam-list" id="examList"></div>
-        </section>
-
-        <section class="panel" id="summary" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="remediation-v2-stage3-optional-064">
-          <div class="section-title">
-            <p class="eyebrow">Summary</p>
-            <h2>Threat memory map</h2>
-          </div>
-          <div class="summary-grid">
-            <div><strong>Virus</strong><span>Attaches to host file/program and spreads when run/shared.</span></div>
-            <div><strong>Worm</strong><span>Self-replicates, often across networks.</span></div>
-            <div><strong>Trojan</strong><span>Disguised as legitimate software.</span></div>
-            <div><strong>Spyware</strong><span>Secretly monitors or steals information.</span></div>
-            <div><strong>Ransomware</strong><span>Locks/encrypts data and demands payment.</span></div>
-            <div><strong>Social engineering</strong><span>Manipulates people into unsafe actions.</span></div>
-          </div>
-        </section>
-
-        <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
-          <div class="section-title">
-            <p class="eyebrow">Homework</p>
-            <h2>Clear output, not vague revision</h2>
-          </div>
-          <div class="homework-list">
-            <article>
-              <strong>Task 1: Threat comparison cards</strong>
-              <span>Create six cards: virus, worm, Trojan, spyware, ransomware and social engineering. Include mechanism, impact and control.</span>
-            </article>
-            <article>
-              <strong>Task 2: Risk-control table</strong>
-              <span>For a school network, list three malware/social engineering risks and one suitable control for each.</span>
-            </article>
-            <article>
-              <strong>Task 3: 6-mark answer</strong>
-              <span>Compare ransomware and spyware, then recommend two controls that reduce risk from both technical and human weaknesses.</span>
-            </article>
-          </div>
-        </section>
+        <nav class="v2-bottom-nav" aria-label="Previous and next lesson"><a href="../lesson-063/" >Previous lesson</a><a href="../lesson-065/" >Next lesson</a></nav>
       </div>
     </main>
-    <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=3"></script>
-    <script src="../lesson-toolbar.js?v=3"></script>
-    <script src="../stage7-accessibility.js?v=4"></script>
+    <script src="../course-v2.js?v=1"></script>
   </body>
 </html>
