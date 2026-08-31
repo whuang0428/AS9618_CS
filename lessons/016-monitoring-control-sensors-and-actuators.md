@@ -4,12 +4,12 @@
 **Paper:** Paper 1<br>
 **Syllabus:** Section 3: Hardware<br>
 **Syllabus requirements:** S3.08, S3.09<br>
-**Pacing:** Flexible. This lesson is deliberately over-complete; select a quick, full or deep route for the learners in front of you.
+**Pacing:** Flexible. Select the material set and practice depth needed by the learner.
 
 ## Teaching-depth menu
 
 - **Quick route:** Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.
-- **Full route:** Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.
+- **Full route:** Use every knowledge-point material set, the worked method, the terminology check and all questions.
 - **Deep route:** Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.
 
 ## 1. Prerequisite knowledge and quick diagnostic
@@ -26,24 +26,176 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ## 2. Knowledge explanation
 
-### Learning objectives
+### 1. Monitoring · Control · Sensors · Actuators (S3.08)
 
-- Distinguish monitoring and control; understand sensors, actuators and feedback.
-- Understand temperature, pressure, infrared and sound sensors and appropriate applications.
+**Concept map:** monitoring → control → sensors → actuators → feedback
 
-### Concept checklist for teacher choice
+**Three-part explanation:**
 
-- monitoring
-- control
-- sensors
-- actuators
-- feedback
-- temperature
-- pressure
-- infra-red / infrared
-- sound sensor
+1. Show understanding of monitoring and control systems, including the difference between monitoring and control, the use of sensors and actuators, and the importance of feedback
+2. A control system uses sensor input and a stored rule or target to send output to an actuator
+3. In closed-loop control, feedback is the new sensor reading produced after the action, allowing the controller to adjust or stop the output
 
-### Detailed explanation
+**Concrete cue:** Show understanding of monitoring and control systems, including the difference between monitoring and control, the use of sensors and actuators, and the importance of feedback.
+
+#### Control systems use rules and feedback
+
+![Control systems use rules and feedback](../web/assets/diagrams/stage10-infographics/stage10-lesson-035-control.jpg)
+
+<details><summary>Text transcript</summary>
+
+- 1 Sensor reads
+- 2 Processor compares
+- 3 Fan and vent act
+- The solid arrows show input and output signals. The dashed arrow shows feedback: the changed temperature is measured again.
+- Sense: the temperature sensor produces a reading.
+- Compare: the controller compares the reading with its threshold.
+- Act: an output signal switches or adjusts the fan and vent.
+- Repeat: a new reading checks whether further action is needed.
+
+</details>
+
+#### Required sensor types and applications
+
+![Required sensor types and applications](../web/assets/diagrams/stage10-infographics/stage10-lesson-035-sensors.jpg)
+
+<details><summary>Text transcript</summary>
+
+- A temperature sensor measures temperature and a pressure sensor measures pressure.
+- An infra-red sensor detects infra-red radiation, for example in a beam alarm or remote-control receiver.
+- A sound sensor detects sound level or sound waves, for example in a noise monitor.
+- A sensor supplies input data; the processor applies the rule and an actuator performs any physical output.
+- Light intensity is supporting context and does not replace the named infra-red or sound sensors.
+
+</details>
+
+#### Actuators turn output signals into physical action
+
+![Actuators turn output signals into physical action](../web/assets/diagrams/stage10-infographics/stage10-lesson-035-actuators.jpg)
+
+<details><summary>Text transcript</summary>
+
+- Motor Creates movement, such as opening a door or spinning a fan.
+- Valve Controls flow of water, gas or air.
+- Heater Changes temperature by producing heat.
+- Light Turns visual warning or illumination on/off.
+- Lock / brake Controls physical safety or movement.
+- An actuator receives an output signal. It does not decide the rule; the processor/controller does that.
+
+</details>
+
+#### User feedback must fit the situation
+
+![User feedback must fit the situation](../web/assets/diagrams/stage10-infographics/stage10-lesson-030-feedback.jpg)
+
+<details><summary>Text transcript</summary>
+
+- Display, auditory and haptic feedback are alternative output forms, not inputs.
+- Printed records and actuator actions are separate output types rather than downstream results of display, sound or touch feedback.
+- Haptic feedback requires physical contact and may be missed when vibration is weak or the device is not being held.
+
+</details>
+
+<details><summary>Precise syllabus wording</summary>
+
+Distinguish monitoring and control; understand sensors, actuators and feedback.
+
+Show understanding of monitoring and control systems, including the difference between monitoring and control, the use of sensors and actuators, and the importance of feedback.
+
+</details>
+
+### 2. Temperature · Pressure · Infra-red · Sound sensor (S3.09)
+
+**Concept map:** temperature → pressure → infra-red → sound sensor
+
+**Three-part explanation:**
+
+1. teaching and assessment must connect each sensor to an appropriate application
+2. Required sensor types are temperature, pressure, infra-red and sound
+3. A temperature sensor measures temperature, a pressure sensor measures force per unit area or pressure, an infra-red sensor detects infra-red radiation, and a sound sensor detects…
+
+**Concrete cue:** Required sensor types are temperature, pressure, infra-red and sound; teaching and assessment must connect each sensor to an appropriate application.
+
+#### Required sensor types and applications
+
+![Required sensor types and applications](../web/assets/diagrams/stage10-infographics/stage10-lesson-035-sensors.jpg)
+
+<details><summary>Text transcript</summary>
+
+- A temperature sensor measures temperature and a pressure sensor measures pressure.
+- An infra-red sensor detects infra-red radiation, for example in a beam alarm or remote-control receiver.
+- A sound sensor detects sound level or sound waves, for example in a noise monitor.
+- A sensor supplies input data; the processor applies the rule and an actuator performs any physical output.
+- Light intensity is supporting context and does not replace the named infra-red or sound sensors.
+
+</details>
+
+<details><summary>Precise syllabus wording</summary>
+
+Understand temperature, pressure, infrared and sound sensors and appropriate applications.
+
+Required sensor types are temperature, pressure, infra-red and sound; teaching and assessment must connect each sensor to an appropriate application.
+
+</details>
+
+### Supporting diagram library
+
+#### Compare by scenario, not by favourite brand
+
+![Compare by scenario, not by favourite brand](../web/assets/diagrams/stage10-infographics/stage10-lesson-032-compare.jpg)
+
+<details><summary>Text transcript</summary>
+
+- An HDD provides high capacity at relatively low cost and suits large file libraries or cost-sensitive backups.
+- Magnetic tape provides high capacity with sequential access and suits archival backups.
+- Optical media suits distributing read-only content or archiving data that changes rarely.
+
+</details>
+
+#### Three main storage media
+
+![Three main storage media](../web/assets/diagrams/stage10-infographics/stage10-lesson-032-media.jpg)
+
+<details><summary>Text transcript</summary>
+
+- Magnetic storage uses magnetised areas; examples include HDD and tape.
+- Optical storage uses laser light to read marks on a disc.
+- Solid-state secondary storage uses non-volatile flash memory with no moving parts; an SSD or NAND flash chip is the correct illustration.
+- A volatile RAM DIMM is primary memory and is not an SSD.
+
+</details>
+
+#### What secondary storage does
+
+![What secondary storage does](../web/assets/diagrams/stage10-infographics/stage10-lesson-032-purpose.jpg)
+
+<details><summary>Text transcript</summary>
+
+- Non-volatile Data remains when power is switched off.
+- Long-term Stores files, programs, backups and operating system data.
+- Usually slower Secondary storage is usually slower than RAM for direct access.
+- Scenario-based The best medium depends on speed, capacity, durability, portability and cost.
+
+</details>
+
+#### Look at the storage mechanism before comparing performance
+
+![Look at the storage mechanism before comparing performance](../web/assets/diagrams/stage10-infographics/stage10-lesson-032-storage-visual.jpg)
+
+<details><summary>Text transcript</summary>
+
+- Visual explanation
+- The physical mechanism helps explain speed, durability and suitable uses.
+- Magnetic
+- Solid-state
+- Three ways to store data when power is off. The illustration identifies the mechanism; the cards below state the exam-safe explanation.
+- Magnetic HDD
+- Magnetised areas store data on rotating platters. A moving actuator positions the read/write head.
+- Consequence: high capacity and low cost per GB, but mechanical parts are vulnerable to shock.
+
+</details>
+
+<details><summary>Open precise terminology and exam facts</summary>
 
 - Show understanding of monitoring and control systems, including the difference between monitoring and control, the use of sensors and actuators, and the importance of feedback.
 - Required sensor types are temperature, pressure, infra-red and sound; teaching and assessment must connect each sensor to an appropriate application.
@@ -52,18 +204,16 @@ Ask the learner to give one accurate definition or method step before continuing
 - Choose a sensor by matching the physical quantity to the application: temperature for a greenhouse, pressure for a tyre or burglar mat, infra-red for a remote-control receiver or beam alarm, and sound for a noise monitor. A light-intensity sensor is useful supporting context but does not replace the named infra-red and sound sensors.
 - Actuators produce physical output actions such as moving a vent or switching a fan after the controller processes sensor input.
 
+</details>
+
 ### Worked example
 
-Greenhouse monitoring and control: A monitoring system records and displays temperature readings. A control system also compares each reading with a threshold and activates a fan motor actuator when the greenhouse is too hot. New temperature readings provide feedback, so the fan can stop when the target is reached.
+1. Greenhouse monitoring and control
+2. A monitoring system records and displays temperature readings.
+3. A control system also compares each reading with a threshold and activates a fan motor actuator when the greenhouse is too hot.
+4. New temperature readings provide feedback, so the fan can stop when the target is reached.
 
 Beyond syllabus / 延伸知识（不要求背诵）: professional device selection also considers accessibility, reliability, repairability and energy use.
-
-### Retained visual explanation
-
-![Required sensor types and applications](../web/assets/diagrams/stage10-infographics/stage10-lesson-035-sensors.jpg)
-
-_Required sensor types and applications. The image and mobile text alternative come from one maintained fact source._
-
 ## 3. Practice by question type
 
 ### Question 1 - foundation - compare - 5 marks

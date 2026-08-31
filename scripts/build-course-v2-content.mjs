@@ -5,10 +5,11 @@ import { execFileSync } from "node:child_process";
 import { courseV2Blueprint, sectionTitles } from "./v2-course-blueprint.mjs";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
+const legacySourceRef = "559eb16";
 const currentIdentity = JSON.parse(fs.readFileSync(path.join(root, "scripts", "lesson-identity-contract.json"), "utf8"));
 const identity = currentIdentity.lessons.length === 151
   ? currentIdentity
-  : JSON.parse(execFileSync("git", ["show", "HEAD:scripts/lesson-identity-contract.json"], { cwd: root, encoding: "utf8" }));
+  : JSON.parse(execFileSync("git", ["show", `${legacySourceRef}:scripts/lesson-identity-contract.json`], { cwd: root, encoding: "utf8" }));
 const syllabus = JSON.parse(fs.readFileSync(path.join(root, "scripts", "syllabus-coverage-contract.json"), "utf8"));
 const frequency = JSON.parse(fs.readFileSync(path.join(root, "scripts", "past-paper-frequency-contract.json"), "utf8"));
 const requirementById = new Map(syllabus.requirements.map((requirement) => [requirement.id, requirement]));
@@ -151,7 +152,7 @@ function extractLessonRecord(entry) {
   const sourcePath = path.join(root, "lessons", entry.markdownFile);
   const source = fs.existsSync(sourcePath)
     ? fs.readFileSync(sourcePath, "utf8")
-    : execFileSync("git", ["show", `HEAD:lessons/${entry.markdownFile}`], { cwd: root, encoding: "utf8", maxBuffer: 16 * 1024 * 1024 });
+    : execFileSync("git", ["show", `${legacySourceRef}:lessons/${entry.markdownFile}`], { cwd: root, encoding: "utf8", maxBuffer: 16 * 1024 * 1024 });
   const unit = unitForOldLesson(entry.lesson);
   const direct = extractBetween(source, /### Direct explanation\s*/i, /### Worked example/i)
     .split("\n")

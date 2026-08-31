@@ -8,7 +8,7 @@
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
-    <link rel="stylesheet" href="../course-v2.css?v=3" />
+    <link rel="stylesheet" href="../course-v2.css?v=6" />
   </head>
   <body data-course-version="2" data-lesson-id="057" data-syllabus-ids="S10.03">
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -17,16 +17,11 @@
       <nav class="v2-actions" aria-label="Lesson actions"><a href="../">Course home</a><a href="../assessments/">Assessment bank</a><button type="button" id="printLesson">Print</button></nav>
     </header>
     <main class="v2-shell" id="main-content" tabindex="-1">
-      <nav class="v2-toc" aria-label="Lesson contents"><strong>Lesson 057</strong><a href="#overview">Overview</a><a href="#prerequisite">Prerequisite</a><a href="#explanation">Explanation</a><a href="#practice">Practice</a><a href="#summary">Summary</a></nav>
+      <nav class="v2-jump-nav" aria-label="Lesson contents"><strong>Lesson 057</strong><a href="#overview">Overview</a><a href="#prerequisite">Prerequisite</a><a href="#explanation">Explanation</a><a href="#practice">Practice</a><a href="#summary">Summary</a></nav>
       <div class="v2-content">
-        <section class="v2-hero" id="overview">
-          <div><p class="v2-eyebrow">Flexible-depth lesson</p><h2>Array terminology, indices and bounds</h2><p>S10.03 | Select what to omit, teach briefly or explore in depth.</p></div>
-          <div class="v2-time-grid" aria-label="Available lesson depth"><div><strong>Quick</strong><span>diagnose + essentials</span></div><div><strong>Full</strong><span>complete explanation</span></div><div><strong>Deep</strong><span>prerequisites + extension</span></div><div><strong>Choose</strong><span>practice by need</span></div></div>
-        </section>
-
-        <section class="v2-panel v2-route-menu" aria-labelledby="route-heading">
-          <div class="v2-heading"><p class="v2-eyebrow">Teacher choice</p><h2 id="route-heading">Choose the depth for this group</h2></div>
-          <div class="v2-route-grid"><article><h3>Quick route</h3><p>Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.</p></article><article><h3>Full route</h3><p>Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.</p></article><article><h3>Deep route</h3><p>Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.</p></article></div>
+        <section class="v2-overview" id="overview">
+          <div><p class="v2-eyebrow">Flexible-depth lesson</p><p class="v2-overview-copy">S10.03 | Learn from the diagrams, test the method, then choose the practice you need.</p></div>
+          <details class="v2-route-menu"><summary>Choose a Quick, Full or Deep route</summary><div class="v2-route-grid"><article><h3>Quick route</h3><p>Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.</p></article><article><h3>Full route</h3><p>Use every knowledge-point material set, the worked method, the terminology check and all questions.</p></article><article><h3>Deep route</h3><p>Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.</p></article></div></details>
         </section>
 
         <section class="v2-panel" id="prerequisite">
@@ -37,21 +32,104 @@
         </section>
 
         <section class="v2-panel" id="explanation">
-          <div class="v2-heading"><p class="v2-eyebrow">Part 2 | deliberately over-complete</p><h2>Knowledge explanation</h2></div>
-          <h3>Learning objectives</h3><ul class="v2-objectives"><li>Understand array, index, lower bound and upper bound terminology.</li></ul>
+          <div class="v2-heading v2-heading--wide"><p class="v2-eyebrow">Part 2 | knowledge-point material sets</p><h2>Learn each point through visuals</h2><p>Follow the map, the three-part explanation and the concrete cue. Open precise wording only after the idea is clear.</p></div>
           <details class="v2-concept-menu"><summary>Open the concept checklist and choose what to teach</summary><ul><li>array</li><li>index</li><li>lower bound</li><li>upper bound</li></ul></details>
-          <div class="v2-explanation-grid">
-            <div>
-              <article class="v2-core-facts"><h3>Detailed explanation</h3><p class="v2-teacher-note">Teach all points, or select only the ones this group needs. The list is intentionally fuller than a fixed lesson slot.</p><ul class="v2-facts"><li>Use the technical terms associated with arrays, including index, lower bound and upper bound. Bounds define the inclusive valid index range and an index selects one element.</li><li>An array is a collection of elements stored under one identifier. An index selects one element. The lower bound is the first valid index and the upper bound is the last valid index; both bounds are inclusive in a Cambridge declaration such as ARRAY[1:20] OF INTEGER.</li><li>Choose a one-dimensional array when each element needs one position, such as twenty marks or a list of names. Choose a two-dimensional array when each value naturally needs a row and a column, such as marks for several students across several tests. Do not choose 2D merely because there are many values.</li><li>One-dimensional array pseudocode must declare explicit bounds and an element type, access elements with one index and use loop bounds that match the declared lower and upper bounds. The number of elements is upper bound - lower bound + 1.</li><li>Before tracing a search, define the data structure it traverses. An array is a fixed-size indexed collection whose elements have one declared data type. The index selects one element; it is not the value stored in that element.</li><li>Cambridge pseudocode declares explicit inclusive bounds. In DECLARE Names : ARRAY[1:4] OF STRING, 1 is the lower bound, 4 is the upper bound and the valid indexes are 1, 2, 3 and 4. A search must start and stop within those declared bounds.</li><li>Linear search checks successive indexed elements until the target is found or every populated element has been checked. Binary search also uses indexes, but requires the array to be sorted so each comparison can discard one half of the remaining index range.</li></ul></article>
-              <article class="v2-example"><h3>Worked example</h3><p>Declare the search data before tracing it: DECLARE Names : ARRAY[1:4] OF STRING defines four string elements. For Names = [&#39;Asha&#39;, &#39;Ben&#39;, &#39;Chen&#39;, &#39;Dina&#39;], a one-based linear search compares Names[1], then Names[2], and stops when it finds &#39;Ben&#39;. Index 0 is invalid because it is below the declared lower bound.</p></article>
-              <aside class="v2-extension"><h3>Beyond syllabus / 延伸知识（不要求背诵）</h3><p>programming libraries often provide tested ADT implementations, but the exam expects you to understand their behaviour and selection.</p></aside>
-            </div>
-            <figure class="v2-visual">
-              <img src="../assets/diagrams/stage10-infographics/stage10-lesson-116-access.jpg" alt="Cambridge array declarations state an explicit lower and upper bound.. Valid indexes follow the declared bounds and are not universally zero-based.. Label 0 to n-1 as a chosen zero-based example, or use the lesson&#39;s declared bounds consistently." loading="lazy" />
-              <figcaption>The index points to exactly one element. One maintained explanation is shown as an image on larger screens and as text on small screens.</figcaption>
-              <div class="v2-mobile-visual-text" aria-label="Mobile text alternative"><ul><li>Cambridge array declarations state an explicit lower and upper bound.</li><li>Valid indexes follow the declared bounds and are not universally zero-based.</li><li>Label 0 to n-1 as a chosen zero-based example, or use the lesson&#39;s declared bounds consistently.</li></ul></div>
-            </figure>
-          </div>
+          <nav class="v2-knowledge-index" aria-label="Knowledge points in this lesson"><a href="#knowledge-s10-03"><span>01</span>S10.03</a></nav><div class="v2-knowledge-point-list"><section class="v2-knowledge-point" id="knowledge-s10-03" data-syllabus-id="S10.03" data-visual-mode="decision" data-material-count="7">
+      <header class="v2-knowledge-point-head"><span>01</span><div><p>S10.03 · decision</p><h3>Array · Index · Lower bound · Upper bound</h3></div></header>
+      <div class="v2-material-triad">
+        <article class="v2-native-material v2-native-material--map"><h4>Concept map</h4><div class="v2-concept-map" aria-label="Concept map for S10.03"><span class="v2-concept-node" data-node-index="1">array</span><span class="v2-concept-node" data-node-index="2">index</span><span class="v2-concept-node" data-node-index="3">lower bound</span><span class="v2-concept-node" data-node-index="4">upper bound</span></div></article>
+        <article class="v2-native-material v2-native-material--story"><h4>See how it works</h4><ol><li><span>Evidence</span><strong>Use the technical terms associated with arrays, including index, lower bound and upper bound</strong></li><li><span>Choice</span><strong>Bounds define the inclusive valid index range and an index selects one element</strong></li><li><span>Reason</span><strong>ARRAY[1:4] OF STRING, 1 is the lower bound, 4 is the upper bound and the valid indexes are 1, 2, 3 and 4</strong></li></ol></article>
+        <aside class="v2-native-material v2-native-material--cue"><h4>Concrete cue</h4><p>Use the technical terms associated with arrays, including index, lower bound and upper bound. Bounds define the inclusive valid index range and an index selects one element.</p></aside>
+      </div>
+      <section class="v2-material-library" aria-label="S10.03 diagrams">
+    <div class="v2-material-library-head"><h3>S10.03 diagrams</h3><div class="v2-material-controls">
+        <button type="button" data-material-prev aria-controls="materials-057-s10-03" aria-label="Previous diagram"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" /></svg></button>
+        <span data-material-position>1 / 4</span>
+        <button type="button" data-material-next aria-controls="materials-057-s10-03" aria-label="Next diagram"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" /></svg></button>
+      </div></div>
+    <div class="v2-material-rail" id="materials-057-s10-03" data-material-rail><figure class="v2-visual" data-material-kind="example">
+            <div class="v2-visual-heading"><span>01</span><div><p>Concrete example · 1 of 4</p><h4>The index points to exactly one element</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: The index points to exactly one element"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-116-access.jpg" alt="The index points to exactly one element" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Cambridge array declarations state an explicit lower and upper bound.</li><li>Valid indexes follow the declared bounds and are not universally zero-based.</li><li>Label 0 to n-1 as a chosen zero-based example, or use the lesson&#39;s declared bounds consistently.</li></ul></details>
+          </figure><figure class="v2-visual" data-material-kind="diagram">
+            <div class="v2-visual-heading"><span>02</span><div><p>Diagram · 2 of 4</p><h4>Change selected elements</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Change selected elements"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-118-update.jpg" alt="Change selected elements" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Traverse the array with a FOR loop so Index is defined for every access.</li><li>Place the conditional update inside the traversal.</li><li>FOR Index &lt;- 1 TO 10</li></ul></details>
+          </figure><figure class="v2-visual" data-material-kind="comparison">
+            <div class="v2-visual-heading"><span>03</span><div><p>Comparison · 3 of 4</p><h4>Bounds say which indexes are valid</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Bounds say which indexes are valid"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-116-declare.jpg" alt="Bounds say which indexes are valid" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Declare arrays</li><li>Cambridge-style pseudocode</li><li>Valid indexes</li><li>Five integer scores</li><li>DECLARE Scores : ARRAY[1:5] OF INTEGER</li><li>1, 2, 3, 4, 5</li><li>Ten names</li><li>DECLARE Names : ARRAY[1:10] OF STRING</li></ul></details>
+          </figure><figure class="v2-visual" data-material-kind="process">
+            <div class="v2-visual-heading"><span>04</span><div><p>Process · 4 of 4</p><h4>Four array algorithm patterns</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Four array algorithm patterns"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-118-patterns.jpg" alt="Four array algorithm patterns" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Pattern map</li><li>Question wording</li><li>Core idea</li><li>Key variable</li><li>Traversal</li><li>output all, process each</li><li>visit every valid index</li><li>increase, replace, apply discount</li></ul></details>
+          </figure></div>
+  </section>
+      <details class="v2-point-precision"><summary>Open precise syllabus wording</summary><p><strong>Understand array, index, lower bound and upper bound terminology.</strong></p><p>Use the technical terms associated with arrays, including index, lower bound and upper bound. Bounds define the inclusive valid index range and an index selects one element.</p></details>
+    </section></div>
+          <section class="v2-material-library" aria-label="Supporting diagram library">
+    <div class="v2-material-library-head"><h3>Supporting diagram library</h3><div class="v2-material-controls">
+        <button type="button" data-material-prev aria-controls="materials-057-supporting" aria-label="Previous diagram"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" /></svg></button>
+        <span data-material-position>1 / 13</span>
+        <button type="button" data-material-next aria-controls="materials-057-supporting" aria-label="Next diagram"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" /></svg></button>
+      </div></div>
+    <div class="v2-material-rail" id="materials-057-supporting" data-material-rail><figure class="v2-visual" data-material-kind="diagram">
+            <div class="v2-visual-heading"><span>01</span><div><p>Diagram · 1 of 13</p><h4>Access one element</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Access one element"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-116-lookup.jpg" alt="Access one element" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Interactive index lookup</li><li>Array: Scores[1:5] = 42, 67, 55, 81, 49.</li></ul></details>
+          </figure><figure class="v2-visual" data-material-kind="diagram">
+            <div class="v2-visual-heading"><span>02</span><div><p>Diagram · 2 of 13</p><h4>A one-dimensional array is a linear collection</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: A one-dimensional array is a linear collection"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-116-model.jpg" alt="A one-dimensional array is a linear collection" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Array model</li><li>Same identifier</li><li>All elements belong to one array name.</li><li>Same type</li><li>At AS level, an array stores elements of the same data type.</li><li>ARRAY[1:5] OF INTEGER</li><li>Indexed access</li><li>An index selects one element.</li></ul></details>
+          </figure><figure class="v2-visual" data-material-kind="diagram">
+            <div class="v2-visual-heading"><span>03</span><div><p>Diagram · 3 of 13</p><h4>Rows and columns create coordinates</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Rows and columns create coordinates"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-117-model.jpg" alt="Rows and columns create coordinates" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>2D model</li><li>Same identifier</li><li>The whole grid has one array name.</li><li>Two indexes</li><li>The first index usually selects the row; the second index selects the column.</li><li>Marks[Row, Column]</li><li>Same type</li><li>Each cell stores the same data type.</li></ul></details>
+          </figure><figure class="v2-visual" data-material-kind="diagram">
+            <div class="v2-visual-heading"><span>04</span><div><p>Diagram · 4 of 13</p><h4>Cambridge bounds and Java indexes are not the same habit</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Cambridge bounds and Java indexes are not the same habit"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-116-pseudocode.jpg" alt="Cambridge bounds and Java indexes are not the same habit" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Pseudocode vs Java</li><li>Cambridge-style pseudocode</li><li>DECLARE Scores : ARRAY[1:5] OF INTEGER</li><li>FOR Index &lt;- 1 TO 5</li><li>INPUT Scores[Index]</li><li>NEXT Index</li><li>Java support only</li><li>int[] scores = new int[5];</li></ul></details>
+          </figure><figure class="v2-visual" data-material-kind="diagram">
+            <div class="v2-visual-heading"><span>05</span><div><p>Diagram · 5 of 13</p><h4>Do not import Java indexing into Cambridge answers</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Do not import Java indexing into Cambridge answers"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-117-pseudocode.jpg" alt="Do not import Java indexing into Cambridge answers" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Traverse a 3 by 4 array with nested loops.</li><li>Output the current cell inside the inner loop.</li><li>A corresponding Java support version must also output every current cell.</li><li>The two versions use explicitly stated indexing conventions.</li></ul></details>
+          </figure><figure class="v2-visual" data-material-kind="diagram">
+            <div class="v2-visual-heading"><span>06</span><div><p>Diagram · 6 of 13</p><h4>Use a loop to visit every element</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Use a loop to visit every element"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-116-traversal.jpg" alt="Use a loop to visit every element" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Traversal</li><li>Input all scores</li><li>FOR Index &lt;- 1 TO 5</li><li>INPUT Scores[Index]</li><li>NEXT Index</li><li>Total all scores</li><li>Total &lt;- 0</li><li>Total &lt;- Total + Scores[Index]</li></ul></details>
+          </figure><figure class="v2-visual" data-material-kind="diagram">
+            <div class="v2-visual-heading"><span>07</span><div><p>Diagram · 7 of 13</p><h4>Why bubble sort repeats adjacent comparisons</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Why bubble sort repeats adjacent comparisons"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-106-bubble.jpg" alt="Why bubble sort repeats adjacent comparisons" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Bubble sort compares adjacent items and swaps an inverted pair.</li><li>For [1, 4, 2, 5, 8], pass 2 makes one swap: 4 and 2.</li><li>The resulting list is [1, 2, 4, 5, 8], and the next pass makes zero swaps.</li></ul></details>
+          </figure><figure class="v2-visual" data-material-kind="diagram">
+            <div class="v2-visual-heading"><span>08</span><div><p>Diagram · 8 of 13</p><h4>Increment only when a condition is true</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Increment only when a condition is true"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-118-count.jpg" alt="Increment only when a condition is true" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Initialise PassCount to zero before traversing five scores.</li><li>Increment PassCount only when the current score is at least 50.</li><li>Close the selection with ENDIF before NEXT Index.</li><li>Output PassCount after the loop.</li></ul></details>
+          </figure><figure class="v2-visual" data-material-kind="diagram">
+            <div class="v2-visual-heading"><span>09</span><div><p>Diagram · 9 of 13</p><h4>Linear search checks each item in order</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Linear search checks each item in order"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-105-linear.jpg" alt="Linear search checks each item in order" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Knowledge explanation</li><li>How it works</li><li>Start at the first item. Compare it with the target. If it matches, stop. If not, move to the next item until found or the list ends.</li><li>When it is suitable</li><li>Use it when data is unsorted, the list is small, or simplicity matters more than speed.</li><li>Worst case: the target is last or absent, so every item may be checked.</li></ul></details>
+          </figure><figure class="v2-visual" data-material-kind="diagram">
+            <div class="v2-visual-heading"><span>10</span><div><p>Diagram · 10 of 13</p><h4>Same algorithm, different array syntax</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Same algorithm, different array syntax"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-118-pseudocode.jpg" alt="Same algorithm, different array syntax" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Both pseudocode and Java versions visit five score positions.</li><li>Increment the pass counter only when the current score is at least 50.</li><li>Close the conditional before advancing the loop.</li><li>Both complete versions output the final pass count after the loop.</li></ul></details>
+          </figure><figure class="v2-visual" data-material-kind="diagram">
+            <div class="v2-visual-heading"><span>11</span><div><p>Diagram · 11 of 13</p><h4>Use a flag to remember whether the target appeared</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Use a flag to remember whether the target appeared"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-118-search.jpg" alt="Use a flag to remember whether the target appeared" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Initialise Found to FALSE before traversing the names.</li><li>Set Found to TRUE only when the current name equals TargetName.</li><li>Close the match selection with ENDIF before NEXT Index.</li><li>Output Found after the traversal.</li></ul></details>
+          </figure><figure class="v2-visual" data-material-kind="diagram">
+            <div class="v2-visual-heading"><span>12</span><div><p>Diagram · 12 of 13</p><h4>Choose a scenario and inspect the matching template</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Choose a scenario and inspect the matching template"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-118-selector.jpg" alt="Choose a scenario and inspect the matching template" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Interactive pattern selector</li><li>Scenario</li><li>Choose a scenario to see the algorithm pattern.</li></ul></details>
+          </figure><figure class="v2-visual" data-material-kind="diagram">
+            <div class="v2-visual-heading"><span>13</span><div><p>Diagram · 13 of 13</p><h4>Visit every element once</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Visit every element once"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-118-traversal.jpg" alt="Visit every element once" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Traversal</li><li>FOR Index &lt;- 1 TO 5</li><li>OUTPUT Scores[Index]</li><li>NEXT Index</li><li>Traversal is the skeleton. Update, search and count usually add logic inside this skeleton.</li></ul></details>
+          </figure></div>
+  </section>
+          <article class="v2-example"><div><p class="v2-eyebrow">Apply the idea</p><h3>Worked method</h3></div><ol class="v2-worked-flow"><li><span>01</span><strong>Declare the search data before tracing it</strong></li><li><span>02</span><strong>ARRAY[1:4] OF STRING defines four string elements.</strong></li><li><span>03</span><strong>For Names = [&#39;Asha&#39;, &#39;Ben&#39;, &#39;Chen&#39;, &#39;Dina&#39;], a one-based linear search compares Names[1], then Names[2], and stops when it finds &#39;Ben&#39;.</strong></li><li><span>04</span><strong>Index 0 is invalid because it is below the declared lower bound.</strong></li></ol></article>
+          <details class="v2-core-facts"><summary>Open precise terminology and exam facts</summary><ul class="v2-facts"><li>Use the technical terms associated with arrays, including index, lower bound and upper bound. Bounds define the inclusive valid index range and an index selects one element.</li><li>An array is a collection of elements stored under one identifier. An index selects one element. The lower bound is the first valid index and the upper bound is the last valid index; both bounds are inclusive in a Cambridge declaration such as ARRAY[1:20] OF INTEGER.</li><li>Choose a one-dimensional array when each element needs one position, such as twenty marks or a list of names. Choose a two-dimensional array when each value naturally needs a row and a column, such as marks for several students across several tests. Do not choose 2D merely because there are many values.</li><li>One-dimensional array pseudocode must declare explicit bounds and an element type, access elements with one index and use loop bounds that match the declared lower and upper bounds. The number of elements is upper bound - lower bound + 1.</li><li>Before tracing a search, define the data structure it traverses. An array is a fixed-size indexed collection whose elements have one declared data type. The index selects one element; it is not the value stored in that element.</li><li>Cambridge pseudocode declares explicit inclusive bounds. In DECLARE Names : ARRAY[1:4] OF STRING, 1 is the lower bound, 4 is the upper bound and the valid indexes are 1, 2, 3 and 4. A search must start and stop within those declared bounds.</li><li>Linear search checks successive indexed elements until the target is found or every populated element has been checked. Binary search also uses indexes, but requires the array to be sorted so each comparison can discard one half of the remaining index range.</li></ul></details>
+          <details class="v2-extension"><summary>Beyond syllabus / 延伸知识（不要求背诵）</summary><p>programming libraries often provide tested ADT implementations, but the exam expects you to understand their behaviour and selection.</p></details>
         </section>
 
         <section class="v2-panel" id="practice">
@@ -86,6 +164,6 @@
         <nav class="v2-bottom-nav" aria-label="Previous and next lesson"><a href="../lesson-056/" >Previous lesson</a><a href="../lesson-058/" >Next lesson</a></nav>
       </div>
     </main>
-    <script src="../course-v2.js?v=1"></script>
+    <script src="../course-v2.js?v=2"></script>
   </body>
 </html>

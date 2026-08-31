@@ -8,7 +8,7 @@
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
-    <link rel="stylesheet" href="../course-v2.css?v=3" />
+    <link rel="stylesheet" href="../course-v2.css?v=6" />
   </head>
   <body data-course-version="2" data-lesson-id="046" data-syllabus-ids="S9.01">
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -17,16 +17,11 @@
       <nav class="v2-actions" aria-label="Lesson actions"><a href="../">Course home</a><a href="../assessments/">Assessment bank</a><button type="button" id="printLesson">Print</button></nav>
     </header>
     <main class="v2-shell" id="main-content" tabindex="-1">
-      <nav class="v2-toc" aria-label="Lesson contents"><strong>Lesson 046</strong><a href="#overview">Overview</a><a href="#prerequisite">Prerequisite</a><a href="#explanation">Explanation</a><a href="#practice">Practice</a><a href="#summary">Summary</a></nav>
+      <nav class="v2-jump-nav" aria-label="Lesson contents"><strong>Lesson 046</strong><a href="#overview">Overview</a><a href="#prerequisite">Prerequisite</a><a href="#explanation">Explanation</a><a href="#practice">Practice</a><a href="#summary">Summary</a></nav>
       <div class="v2-content">
-        <section class="v2-hero" id="overview">
-          <div><p class="v2-eyebrow">Flexible-depth lesson</p><h2>Abstraction and abstract models</h2><p>S9.01 | Select what to omit, teach briefly or explore in depth.</p></div>
-          <div class="v2-time-grid" aria-label="Available lesson depth"><div><strong>Quick</strong><span>diagnose + essentials</span></div><div><strong>Full</strong><span>complete explanation</span></div><div><strong>Deep</strong><span>prerequisites + extension</span></div><div><strong>Choose</strong><span>practice by need</span></div></div>
-        </section>
-
-        <section class="v2-panel v2-route-menu" aria-labelledby="route-heading">
-          <div class="v2-heading"><p class="v2-eyebrow">Teacher choice</p><h2 id="route-heading">Choose the depth for this group</h2></div>
-          <div class="v2-route-grid"><article><h3>Quick route</h3><p>Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.</p></article><article><h3>Full route</h3><p>Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.</p></article><article><h3>Deep route</h3><p>Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.</p></article></div>
+        <section class="v2-overview" id="overview">
+          <div><p class="v2-eyebrow">Flexible-depth lesson</p><p class="v2-overview-copy">S9.01 | Learn from the diagrams, test the method, then choose the practice you need.</p></div>
+          <details class="v2-route-menu"><summary>Choose a Quick, Full or Deep route</summary><div class="v2-route-grid"><article><h3>Quick route</h3><p>Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.</p></article><article><h3>Full route</h3><p>Use every knowledge-point material set, the worked method, the terminology check and all questions.</p></article><article><h3>Deep route</h3><p>Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.</p></article></div></details>
         </section>
 
         <section class="v2-panel" id="prerequisite">
@@ -37,21 +32,132 @@
         </section>
 
         <section class="v2-panel" id="explanation">
-          <div class="v2-heading"><p class="v2-eyebrow">Part 2 | deliberately over-complete</p><h2>Knowledge explanation</h2></div>
-          <h3>Learning objectives</h3><ul class="v2-objectives"><li>Understand abstraction, its purpose/benefits and creation of an abstract model.</li></ul>
+          <div class="v2-heading v2-heading--wide"><p class="v2-eyebrow">Part 2 | knowledge-point material sets</p><h2>Learn each point through visuals</h2><p>Follow the map, the three-part explanation and the concrete cue. Open precise wording only after the idea is clear.</p></div>
           <details class="v2-concept-menu"><summary>Open the concept checklist and choose what to teach</summary><ul><li>abstraction</li><li>essential details</li><li>irrelevant detail</li><li>abstract model</li></ul></details>
-          <div class="v2-explanation-grid">
-            <div>
-              <article class="v2-core-facts"><h3>Detailed explanation</h3><p class="v2-teacher-note">Teach all points, or select only the ones this group needs. The list is intentionally fuller than a fixed lesson slot.</p><ul class="v2-facts"><li>Abstraction is required both as a concept and as a practical modelling skill: explain its need and benefits, then produce an abstract model containing only details essential to the problem.</li><li>Abstraction removes each irrelevant detail that does not affect the required inputs, rules, constraints or outputs. Producing an abstract model means recording the essential details that remain: the data, relationships and processes needed to solve the problem, not merely listing what was ignored.</li><li>Decomposition breaks a problem into smaller sub-problems with distinct responsibilities. Express the resulting design as program modules with clear inputs, processing and outputs; a module may later be implemented as a procedure that performs an action or a function that returns a value.</li><li>Abstraction decides what belongs in the model; decomposition decides how the retained problem is divided. The modules must connect into one complete solution and must not omit a requirement.</li><li>Algorithm design review: define an algorithm as a solution expressed as a sequence of defined steps; use abstraction to retain essential details in an abstract model; use decomposition to express the problem as connected modules; and choose meaningful identifiers recorded in an identifier table.</li></ul></article>
-              <article class="v2-example"><h3>Worked example</h3><p>Design a result-processing solution: Keep only student ID and required marks, decompose the task into InputResults, ValidateResult, CalculateMean and OutputReport, record meaningful identifiers and IPO, refine CalculateMean into defined steps, use a range logic statement, and represent the final control flow in Cambridge pseudocode or a matching flowchart.</p></article>
-              <aside class="v2-extension"><h3>Beyond syllabus / 延伸知识（不要求背诵）</h3><p>the same algorithm can be expressed in many programming languages; its logic should remain independent of syntax.</p></aside>
-            </div>
-            <figure class="v2-visual">
-              <img src="../assets/diagrams/stage10-infographics/stage10-lesson-099-model.jpg" alt="List each input and record its type or range when the problem supplies them.. Write the required processing in ordered natural-language steps.. State the exact required output.. Record constraints and supported assumptions.. Confirm completeness before choosing a representation." loading="lazy" />
-              <figcaption>Use IPOC before choosing a representation. One maintained explanation is shown as an image on larger screens and as text on small screens.</figcaption>
-              <div class="v2-mobile-visual-text" aria-label="Mobile text alternative"><ul><li>List each input and record its type or range when the problem supplies them.</li><li>Write the required processing in ordered natural-language steps.</li><li>State the exact required output.</li><li>Record constraints and supported assumptions.</li><li>Confirm completeness before choosing a representation.</li></ul></div>
-            </figure>
-          </div>
+          <nav class="v2-knowledge-index" aria-label="Knowledge points in this lesson"><a href="#knowledge-s9-01"><span>01</span>S9.01</a></nav><div class="v2-knowledge-point-list"><section class="v2-knowledge-point" id="knowledge-s9-01" data-syllabus-id="S9.01" data-visual-mode="comparison" data-material-count="6">
+      <header class="v2-knowledge-point-head"><span>01</span><div><p>S9.01 · comparison</p><h3>Abstraction · Essential details · Irrelevant detail · Abstract model</h3></div></header>
+      <div class="v2-material-triad">
+        <article class="v2-native-material v2-native-material--map"><h4>Concept map</h4><div class="v2-concept-map" aria-label="Concept map for S9.01"><span class="v2-concept-node" data-node-index="1">abstraction</span><span class="v2-concept-node" data-node-index="2">essential details</span><span class="v2-concept-node" data-node-index="3">irrelevant detail</span><span class="v2-concept-node" data-node-index="4">abstract model</span></div></article>
+        <article class="v2-native-material v2-native-material--story"><h4>See how it works</h4><ol><li><span>Contrast</span><strong>explain its need and benefits, then produce an abstract model containing only details essential to the problem</strong></li><li><span>Evidence</span><strong>use abstraction to retain essential details in an abstract model</strong></li><li><span>Decision</span><strong>Abstraction is required both as a concept and as a practical modelling skill</strong></li></ol></article>
+        <aside class="v2-native-material v2-native-material--cue"><h4>Concrete cue</h4><p>Abstraction is required both as a concept and as a practical modelling skill: explain its need and benefits, then produce an abstract model containing only details essential to the problem.</p></aside>
+      </div>
+      <section class="v2-material-library" aria-label="S9.01 diagrams">
+    <div class="v2-material-library-head"><h3>S9.01 diagrams</h3><div class="v2-material-controls">
+        <button type="button" data-material-prev aria-controls="materials-046-s9-01" aria-label="Previous diagram"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" /></svg></button>
+        <span data-material-position>1 / 3</span>
+        <button type="button" data-material-next aria-controls="materials-046-s9-01" aria-label="Next diagram"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" /></svg></button>
+      </div></div>
+    <div class="v2-material-rail" id="materials-046-s9-01" data-material-rail><figure class="v2-visual" data-material-kind="diagram">
+            <div class="v2-visual-heading"><span>01</span><div><p>Diagram · 1 of 3</p><h4>Produce an abstract model</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Produce an abstract model"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-100-pattern.jpg" alt="Produce an abstract model" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Underline the required output and keep only details that affect it.</li><li>Create verb-based sub-problems with distinct responsibilities.</li><li>State each sub-problem&#39;s input and output.</li><li>Check that the parts collectively meet every requirement without gaps or overlap.</li><li>The result is a natural-language responsibility plan ready for a later representation lesson.</li></ul></details>
+          </figure><figure class="v2-visual" data-material-kind="example">
+            <div class="v2-visual-heading"><span>02</span><div><p>Concrete example · 2 of 3</p><h4>Abstraction: keep the details that affect the algorithm</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Abstraction: keep the details that affect the algorithm"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-100-abstraction.jpg" alt="Abstraction: keep the details that affect the algorithm" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Keep details that affect an input, rule, calculation, constraint or output.</li><li>Ignore decoration that does not change the required result.</li><li>Ask whether removing a detail would change the result.</li><li>Explain why a detail is relevant or irrelevant rather than only labelling it.</li></ul></details>
+          </figure><figure class="v2-visual" data-material-kind="diagram">
+            <div class="v2-visual-heading"><span>03</span><div><p>Diagram · 3 of 3</p><h4>Keep or ignore details</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Keep or ignore details"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-100-filter.jpg" alt="Keep or ignore details" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Interactive abstraction filter</li></ul></details>
+          </figure></div>
+  </section>
+      <details class="v2-point-precision"><summary>Open precise syllabus wording</summary><p><strong>Understand abstraction, its purpose/benefits and creation of an abstract model.</strong></p><p>Abstraction is required both as a concept and as a practical modelling skill: explain its need and benefits, then produce an abstract model containing only details essential to the problem.</p></details>
+    </section></div>
+          <section class="v2-material-library" aria-label="Supporting diagram library">
+    <div class="v2-material-library-head"><h3>Supporting diagram library</h3><div class="v2-material-controls">
+        <button type="button" data-material-prev aria-controls="materials-046-supporting" aria-label="Previous diagram"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" /></svg></button>
+        <span data-material-position>1 / 21</span>
+        <button type="button" data-material-next aria-controls="materials-046-supporting" aria-label="Next diagram"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" /></svg></button>
+      </div></div>
+    <div class="v2-material-rail" id="materials-046-supporting" data-material-rail><figure class="v2-visual" data-material-kind="diagram">
+            <div class="v2-visual-heading"><span>01</span><div><p>Diagram · 1 of 21</p><h4>Constraints stop algorithms from wandering off</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Constraints stop algorithms from wandering off"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-099-constraints.jpg" alt="Constraints stop algorithms from wandering off" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>A range of 0 to 100 requires both limits to be checked.</li><li>Exactly 10 supplied readings means the plan must process all 10 readings.</li><li>A capacity of 30 bookings means a request beyond the remaining capacity must be rejected.</li><li>Each stated constraint must have a specific consequence in the plan.</li></ul></details>
+          </figure><figure class="v2-visual" data-material-kind="diagram">
+            <div class="v2-visual-heading"><span>02</span><div><p>Diagram · 2 of 21</p><h4>Use IPOC before choosing a representation</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Use IPOC before choosing a representation"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-099-model.jpg" alt="Use IPOC before choosing a representation" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>List each input and record its type or range when the problem supplies them.</li><li>Write the required processing in ordered natural-language steps.</li><li>State the exact required output.</li><li>Record constraints and supported assumptions.</li><li>Confirm completeness before choosing a representation.</li></ul></details>
+          </figure><figure class="v2-visual" data-material-kind="diagram">
+            <div class="v2-visual-heading"><span>03</span><div><p>Diagram · 3 of 21</p><h4>Binary search repeatedly halves a sorted list</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Binary search repeatedly halves a sorted list"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-105-binary.jpg" alt="Binary search repeatedly halves a sorted list" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Binary search requires sorted data and repeatedly narrows the search interval.</li><li>In Cambridge pseudocode, / performs real division and DIV performs integer division.</li><li>Mid &lt;- (Low + High) DIV 2</li></ul></details>
+          </figure><figure class="v2-visual" data-material-kind="diagram">
+            <div class="v2-visual-heading"><span>04</span><div><p>Diagram · 4 of 21</p><h4>Trace binary search on sorted data</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Trace binary search on sorted data"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-105-binary-tool.jpg" alt="Trace binary search on sorted data" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Interactive binary trace</li><li>Target in [13, 21, 42, 56, 70, 88, 91]</li><li>Choose a target to trace low, mid and high.</li></ul></details>
+          </figure><figure class="v2-visual" data-material-kind="diagram">
+            <div class="v2-visual-heading"><span>05</span><div><p>Diagram · 5 of 21</p><h4>Choosing the right search</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Choosing the right search"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-105-compare.jpg" alt="Choosing the right search" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Comparison</li><li>Linear search</li><li>Binary search</li><li>Data order</li><li>works on unsorted or sorted data</li><li>requires sorted data</li><li>checks each item one by one</li><li>checks middle and discards half</li></ul></details>
+          </figure><figure class="v2-visual" data-material-kind="diagram">
+            <div class="v2-visual-heading"><span>06</span><div><p>Diagram · 6 of 21</p><h4>Trace linear search</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Trace linear search"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-105-linear-tool.jpg" alt="Trace linear search" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Interactive linear trace</li><li>Target in [13, 42, 56, 70]</li><li>Choose a target to trace comparisons.</li></ul></details>
+          </figure><figure class="v2-visual" data-material-kind="diagram">
+            <div class="v2-visual-heading"><span>07</span><div><p>Diagram · 7 of 21</p><h4>Cambridge pseudocode is the exam format</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Cambridge pseudocode is the exam format"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-105-pseudocode.jpg" alt="Cambridge pseudocode is the exam format" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Initialise Found to FALSE and Index to the first valid position.</li><li>While the target is not found and Index remains valid, compare the current item.</li><li>Close the match selection with ENDIF, then increment Index.</li><li>ENDWHILE closes the surrounding search loop.</li></ul></details>
+          </figure><figure class="v2-visual" data-material-kind="diagram">
+            <div class="v2-visual-heading"><span>08</span><div><p>Diagram · 8 of 21</p><h4>Why the sorts move data differently</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Why the sorts move data differently"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-106-compare.jpg" alt="Why the sorts move data differently" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Bubble sort repairs local inversions through repeated neighbouring swaps.</li><li>Insertion sort moves one key through an existing sorted region.</li><li>Their movement patterns produce different trace states and operation counts.</li></ul></details>
+          </figure><figure class="v2-visual" data-material-kind="diagram">
+            <div class="v2-visual-heading"><span>09</span><div><p>Diagram · 9 of 21</p><h4>How insertion sort grows a sorted region</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: How insertion sort grows a sorted region"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-106-insertion.jpg" alt="How insertion sort grows a sorted region" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Treat the first item as an already sorted region.</li><li>Remove the next key and shift larger sorted items right.</li><li>Insert the key into the gap, expanding the sorted region.</li></ul></details>
+          </figure><figure class="v2-visual" data-material-kind="diagram">
+            <div class="v2-visual-heading"><span>10</span><div><p>Diagram · 10 of 21</p><h4>Why a trace follows state</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Why a trace follows state"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-106-pseudocode.jpg" alt="Why a trace follows state" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Record the variables and list at the agreed trace point.</li><li>Apply exactly one comparison, swap, shift or insertion step.</li><li>Write the new state before advancing the loop.</li></ul></details>
+          </figure><figure class="v2-visual" data-material-kind="diagram">
+            <div class="v2-visual-heading"><span>11</span><div><p>Diagram · 11 of 21</p><h4>When the number of values is known, use a count-controlled loop</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: When the number of values is known, use a count-controlled loop"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-107-fixed.jpg" alt="When the number of values is known, use a count-controlled loop" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Fixed-count input</li><li>Example: total and average of 4 scores</li><li>Total &lt;- 0</li><li>FOR Index &lt;- 1 TO 4</li><li>INPUT Score</li><li>Total &lt;- Total + Score</li><li>NEXT Index</li><li>Average &lt;- Total / 4</li></ul></details>
+          </figure><figure class="v2-visual" data-material-kind="diagram">
+            <div class="v2-visual-heading"><span>12</span><div><p>Diagram · 12 of 21</p><h4>The starting value decides whether the algorithm is honest</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: The starting value decides whether the algorithm is honest"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-107-initialise.jpg" alt="The starting value decides whether the algorithm is honest" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Initialise totals and counters to zero before processing values.</li><li>Initialise Maximum and Minimum from the first real input value or from proven safe bounds.</li><li>Compare each remaining value with Maximum and Minimum.</li><li>Replace Maximum only when a larger value is found and Minimum only when a smaller value is found.</li></ul></details>
+          </figure><figure class="v2-visual" data-material-kind="diagram">
+            <div class="v2-visual-heading"><span>13</span><div><p>Diagram · 13 of 21</p><h4>Four running-value patterns</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Four running-value patterns"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-107-patterns.jpg" alt="Four running-value patterns" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Knowledge explanation</li><li>Start with a concrete list, then name the algorithm pattern.</li><li>Variable</li><li>Update rule</li><li>Total &lt;- Total + Value</li><li>running sum of values</li><li>Count &lt;- Count + 1 when a value is processed or meets a condition</li><li>number of items</li></ul></details>
+          </figure><figure class="v2-visual" data-material-kind="diagram">
+            <div class="v2-visual-heading"><span>14</span><div><p>Diagram · 14 of 21</p><h4>Use Cambridge assignment and loop keywords in exam answers</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Use Cambridge assignment and loop keywords in exam answers"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-107-pseudocode.jpg" alt="Use Cambridge assignment and loop keywords in exam answers" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Initialise Total and PassCount to zero before processing five marks.</li><li>Every input mark is added to Total.</li><li>Increment PassCount only when Mark is at least 50 and close that selection with ENDIF.</li><li>Output Total and PassCount after NEXT Index.</li></ul></details>
+          </figure><figure class="v2-visual" data-material-kind="diagram">
+            <div class="v2-visual-heading"><span>15</span><div><p>Diagram · 15 of 21</p><h4>When input stops on a special value, do not process the sentinel</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: When input stops on a special value, do not process the sentinel"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-107-sentinel.jpg" alt="When input stops on a special value, do not process the sentinel" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Initialise Total and Count, then input the first Number.</li><li>While Number is not -1, add it to Total and increment Count.</li><li>Input the next Number at the end of the WHILE body before ENDWHILE.</li><li>The sentinel -1 stops the loop and is not added or counted.</li></ul></details>
+          </figure><figure class="v2-visual" data-material-kind="diagram">
+            <div class="v2-visual-heading"><span>16</span><div><p>Diagram · 16 of 21</p><h4>Watch running variables change</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Watch running variables change"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-107-trace-tool.jpg" alt="Watch running variables change" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Interactive trace simulator</li><li>Data set</li><li>Choose a data set and goal, then trace the algorithm.</li></ul></details>
+          </figure><figure class="v2-visual" data-material-kind="diagram">
+            <div class="v2-visual-heading"><span>17</span><div><p>Diagram · 17 of 21</p><h4>Turn vague answers into mark-worthy answers</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Turn vague answers into mark-worthy answers"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-113-fixer.jpg" alt="Turn vague answers into mark-worthy answers" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Interactive answer fixer</li><li>Weak answer</li><li>Choose a weak answer to see a stricter version.</li></ul></details>
+          </figure><figure class="v2-visual" data-material-kind="diagram">
+            <div class="v2-visual-heading"><span>18</span><div><p>Diagram · 18 of 21</p><h4>Match the scenario to the correct algorithm pattern</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Match the scenario to the correct algorithm pattern"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-113-patterns.jpg" alt="Match the scenario to the correct algorithm pattern" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Pattern choice</li><li>Scenario clue</li><li>Core pseudocode feature</li><li>One precise explanation</li><li>exactly 10 readings</li><li>Count-controlled loop</li><li>FOR Index &lt;- 1 TO 10</li><li>The number of repetitions is known before the loop starts.</li></ul></details>
+          </figure><figure class="v2-visual" data-material-kind="diagram">
+            <div class="v2-visual-heading"><span>19</span><div><p>Diagram · 19 of 21</p><h4>Paper 2 wants readable Cambridge-style pseudocode</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Paper 2 wants readable Cambridge-style pseudocode"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-113-pseudocode.jpg" alt="Paper 2 wants readable Cambridge-style pseudocode" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Initialise Total and Count, then input the first Value.</li><li>While Value is not -1, add it to Total and increment Count.</li><li>Input the next Value inside the WHILE body before ENDWHILE.</li><li>If Count is greater than zero, calculate Average using real division and output it.</li><li>Java may support understanding but is not the Cambridge pseudocode answer format.</li></ul></details>
+          </figure><figure class="v2-visual" data-material-kind="diagram">
+            <div class="v2-visual-heading"><span>20</span><div><p>Diagram · 20 of 21</p><h4>Section 9 in one page</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Section 9 in one page"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-113-retrieval.jpg" alt="Section 9 in one page" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Retrieval map</li><li>Signal words</li><li>Expected mechanism</li><li>Typical marking error</li><li>IPOC / decomposition</li><li>scenario, requirements, constraints</li><li>break problem into inputs, processing, outputs and rules</li><li>copying the story without design decisions</li></ul></details>
+          </figure><figure class="v2-visual" data-material-kind="diagram">
+            <div class="v2-visual-heading"><span>21</span><div><p>Diagram · 21 of 21</p><h4>Turn question wording into an algorithm plan</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Turn question wording into an algorithm plan"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-113-triage.jpg" alt="Turn question wording into an algorithm plan" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Scenario triage</li><li>Step 1: Output first</li><li>Ask: what must be displayed, returned or stored at the end? The final output tells you which variables need to exist.</li><li>Output needed: average rainfall</li><li>Therefore:</li><li>Total is needed</li><li>Count is needed</li><li>Average &lt;- Total / Count</li></ul></details>
+          </figure></div>
+  </section>
+          <article class="v2-example"><div><p class="v2-eyebrow">Apply the idea</p><h3>Worked method</h3></div><ol class="v2-worked-flow"><li><span>01</span><strong>Design a result-processing solution</strong></li><li><span>02</span><strong>Keep only student ID and required marks, decompose the task into InputResults, ValidateResult, CalculateMean and OutputReport, record meaningful identifiers and IPO, refine CalculateMean into defined steps, use a range logic statement, and…</strong></li></ol></article>
+          <details class="v2-core-facts"><summary>Open precise terminology and exam facts</summary><ul class="v2-facts"><li>Abstraction is required both as a concept and as a practical modelling skill: explain its need and benefits, then produce an abstract model containing only details essential to the problem.</li><li>Abstraction removes each irrelevant detail that does not affect the required inputs, rules, constraints or outputs. Producing an abstract model means recording the essential details that remain: the data, relationships and processes needed to solve the problem, not merely listing what was ignored.</li><li>Decomposition breaks a problem into smaller sub-problems with distinct responsibilities. Express the resulting design as program modules with clear inputs, processing and outputs; a module may later be implemented as a procedure that performs an action or a function that returns a value.</li><li>Abstraction decides what belongs in the model; decomposition decides how the retained problem is divided. The modules must connect into one complete solution and must not omit a requirement.</li><li>Algorithm design review: define an algorithm as a solution expressed as a sequence of defined steps; use abstraction to retain essential details in an abstract model; use decomposition to express the problem as connected modules; and choose meaningful identifiers recorded in an identifier table.</li></ul></details>
+          <details class="v2-extension"><summary>Beyond syllabus / 延伸知识（不要求背诵）</summary><p>the same algorithm can be expressed in many programming languages; its logic should remain independent of syntax.</p></details>
         </section>
 
         <section class="v2-panel" id="practice">
@@ -81,6 +187,6 @@
         <nav class="v2-bottom-nav" aria-label="Previous and next lesson"><a href="../lesson-045/" >Previous lesson</a><a href="../lesson-047/" >Next lesson</a></nav>
       </div>
     </main>
-    <script src="../course-v2.js?v=1"></script>
+    <script src="../course-v2.js?v=2"></script>
   </body>
 </html>

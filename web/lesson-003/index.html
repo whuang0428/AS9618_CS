@@ -8,7 +8,7 @@
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
-    <link rel="stylesheet" href="../course-v2.css?v=3" />
+    <link rel="stylesheet" href="../course-v2.css?v=6" />
   </head>
   <body data-course-version="2" data-lesson-id="003" data-syllabus-ids="S1.04,S1.05">
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -17,16 +17,11 @@
       <nav class="v2-actions" aria-label="Lesson actions"><a href="../">Course home</a><a href="../assessments/">Assessment bank</a><button type="button" id="printLesson">Print</button></nav>
     </header>
     <main class="v2-shell" id="main-content" tabindex="-1">
-      <nav class="v2-toc" aria-label="Lesson contents"><strong>Lesson 003</strong><a href="#overview">Overview</a><a href="#prerequisite">Prerequisite</a><a href="#explanation">Explanation</a><a href="#practice">Practice</a><a href="#summary">Summary</a></nav>
+      <nav class="v2-jump-nav" aria-label="Lesson contents"><strong>Lesson 003</strong><a href="#overview">Overview</a><a href="#prerequisite">Prerequisite</a><a href="#explanation">Explanation</a><a href="#practice">Practice</a><a href="#summary">Summary</a></nav>
       <div class="v2-content">
-        <section class="v2-hero" id="overview">
-          <div><p class="v2-eyebrow">Flexible-depth lesson</p><h2>Signed binary arithmetic and overflow</h2><p>S1.04, S1.05 | Select what to omit, teach briefly or explore in depth.</p></div>
-          <div class="v2-time-grid" aria-label="Available lesson depth"><div><strong>Quick</strong><span>diagnose + essentials</span></div><div><strong>Full</strong><span>complete explanation</span></div><div><strong>Deep</strong><span>prerequisites + extension</span></div><div><strong>Choose</strong><span>practice by need</span></div></div>
-        </section>
-
-        <section class="v2-panel v2-route-menu" aria-labelledby="route-heading">
-          <div class="v2-heading"><p class="v2-eyebrow">Teacher choice</p><h2 id="route-heading">Choose the depth for this group</h2></div>
-          <div class="v2-route-grid"><article><h3>Quick route</h3><p>Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.</p></article><article><h3>Full route</h3><p>Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.</p></article><article><h3>Deep route</h3><p>Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.</p></article></div>
+        <section class="v2-overview" id="overview">
+          <div><p class="v2-eyebrow">Flexible-depth lesson</p><p class="v2-overview-copy">S1.04, S1.05 | Learn from the diagrams, test the method, then choose the practice you need.</p></div>
+          <details class="v2-route-menu"><summary>Choose a Quick, Full or Deep route</summary><div class="v2-route-grid"><article><h3>Quick route</h3><p>Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.</p></article><article><h3>Full route</h3><p>Use every knowledge-point material set, the worked method, the terminology check and all questions.</p></article><article><h3>Deep route</h3><p>Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.</p></article></div></details>
         </section>
 
         <section class="v2-panel" id="prerequisite">
@@ -37,21 +32,88 @@
         </section>
 
         <section class="v2-panel" id="explanation">
-          <div class="v2-heading"><p class="v2-eyebrow">Part 2 | deliberately over-complete</p><h2>Knowledge explanation</h2></div>
-          <h3>Learning objectives</h3><ul class="v2-objectives"><li>Perform binary addition and subtraction using positive and negative binary integers.</li><li>Show understanding of how overflow can occur in fixed-width binary arithmetic.</li></ul>
+          <div class="v2-heading v2-heading--wide"><p class="v2-eyebrow">Part 2 | knowledge-point material sets</p><h2>Learn each point through visuals</h2><p>Follow the map, the three-part explanation and the concrete cue. Open precise wording only after the idea is clear.</p></div>
           <details class="v2-concept-menu"><summary>Open the concept checklist and choose what to teach</summary><ul><li>binary addition</li><li>binary subtraction</li><li>positive</li><li>negative</li><li>integer</li><li>overflow</li><li>fixed-width / fixed width</li><li>representable range / range representable</li></ul></details>
-          <div class="v2-explanation-grid">
-            <div>
-              <article class="v2-core-facts"><h3>Detailed explanation</h3><p class="v2-teacher-note">Teach all points, or select only the ones this group needs. The list is intentionally fuller than a fixed lesson slot.</p><ul class="v2-facts"><li>Version 2 explicitly requires both addition and subtraction using positive and negative binary integers; fixed-width representation must be retained throughout a calculation.</li><li>Overflow occurs when the mathematical result is outside the range representable by the stated bit width and representation; it is not inferred from every internal carry or from a leading 1 alone.</li><li>Perform binary addition from the least-significant bit, carrying left when a column total is 2 or 3. Positive and negative integers must be interpreted using the stated representation and fixed bit width.</li><li>Overflow occurs when the mathematical result is outside the range representable in the available bits. For unsigned 8-bit addition, a carry beyond bit 7 shows that the true result is greater than 255. For signed arithmetic, compare the result with the signed representable range rather than treating every carry as overflow.</li><li>Binary subtraction applies to each positive or negative binary integer as well as binary addition; use the stated fixed width and signed representation when interpreting the result.</li><li>One&#39;s-complement representation forms a negative integer by inverting every bit of its positive fixed-width value. Two&#39;s-complement representation inverts every bit and adds 1. These are binary representations of signed integers, not separate number bases.</li><li>Unsigned subtraction can be performed column by column using borrowing, or by adding the two&#39;s complement of the subtrahend. For signed two&#39;s-complement subtraction A - B, form the two&#39;s complement of B and add it to A. Retain the fixed width, interpret the sign bit and check the representable range.</li><li>Representation overview: the required integer representations are binary, denary, hexadecimal, BCD, one&#39;s-complement and two&#39;s-complement. Conversion means preserving the integer value while changing its base or signed representation.</li></ul></article>
-              <article class="v2-example"><h3>Worked example</h3><p>Add two unsigned 8-bit integers: 11110000 + 00110000 = 1 00100000. The true result is 288, which is outside the unsigned 8-bit range 0 to 255, so the stored eight-bit result cannot represent the mathematical answer and overflow occurs.</p></article>
-              <aside class="v2-extension"><h3>Beyond syllabus / 延伸知识（不要求背诵）</h3><p>real file formats also store headers and metadata, so two files with the same visible content may still have different sizes.</p></aside>
-            </div>
-            <figure class="v2-visual">
-              <img src="../assets/diagrams/stage10-infographics/stage10-lesson-004-method.jpg" alt="Align the two 8-bit operands and start at the rightmost column.. Add both bits and any carry-in; write the result bit and carry 1 left when required.. For unsigned addition, a carry-out beyond bit 7 means the true sum needs more than 8 bits.. Without a carry-out, the stored 8-bit result remains within the unsigned range 0 to 255.. A leftmost result bit of 1 is not by itself evidence of unsigned overflow." loading="lazy" />
-              <figcaption>8-bit addition method. One maintained explanation is shown as an image on larger screens and as text on small screens.</figcaption>
-              <div class="v2-mobile-visual-text" aria-label="Mobile text alternative"><ul><li>Align the two 8-bit operands and start at the rightmost column.</li><li>Add both bits and any carry-in; write the result bit and carry 1 left when required.</li><li>For unsigned addition, a carry-out beyond bit 7 means the true sum needs more than 8 bits.</li><li>Without a carry-out, the stored 8-bit result remains within the unsigned range 0 to 255.</li><li>A leftmost result bit of 1 is not by itself evidence of unsigned overflow.</li></ul></div>
-            </figure>
-          </div>
+          <nav class="v2-knowledge-index" aria-label="Knowledge points in this lesson"><a href="#knowledge-s1-04"><span>01</span>S1.04</a><a href="#knowledge-s1-05"><span>02</span>S1.05</a></nav><div class="v2-knowledge-point-list"><section class="v2-knowledge-point" id="knowledge-s1-04" data-syllabus-id="S1.04" data-visual-mode="process" data-material-count="7">
+      <header class="v2-knowledge-point-head"><span>01</span><div><p>S1.04 · process</p><h3>Binary addition · Binary subtraction · Positive · Negative</h3></div></header>
+      <div class="v2-material-triad">
+        <article class="v2-native-material v2-native-material--map"><h4>Concept map</h4><div class="v2-concept-map" aria-label="Concept map for S1.04"><span class="v2-concept-node" data-node-index="1">binary addition</span><span class="v2-concept-node" data-node-index="2">binary subtraction</span><span class="v2-concept-node" data-node-index="3">positive</span><span class="v2-concept-node" data-node-index="4">negative</span><span class="v2-concept-node" data-node-index="5">integer</span></div></article>
+        <article class="v2-native-material v2-native-material--story"><h4>See how it works</h4><ol><li><span>Start</span><strong>Version 2 explicitly requires both addition and subtraction using positive and negative binary integers</strong></li><li><span>Change</span><strong>fixed-width representation must be retained throughout a calculation</strong></li><li><span>Check</span><strong>Binary subtraction applies to each positive or negative binary integer as well as binary addition</strong></li></ol></article>
+        <aside class="v2-native-material v2-native-material--cue"><h4>Concrete cue</h4><p>Version 2 explicitly requires both addition and subtraction using positive and negative binary integers; fixed-width representation must be retained throughout a calculation.</p></aside>
+      </div>
+      <section class="v2-material-library" aria-label="S1.04 diagrams">
+    <div class="v2-material-library-head"><h3>S1.04 diagrams</h3><div class="v2-material-controls">
+        <button type="button" data-material-prev aria-controls="materials-003-s1-04" aria-label="Previous diagram"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" /></svg></button>
+        <span data-material-position>1 / 4</span>
+        <button type="button" data-material-next aria-controls="materials-003-s1-04" aria-label="Next diagram"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" /></svg></button>
+      </div></div>
+    <div class="v2-material-rail" id="materials-003-s1-04" data-material-rail><figure class="v2-visual" data-material-kind="diagram">
+            <div class="v2-visual-heading"><span>01</span><div><p>Diagram · 1 of 4</p><h4>Three ways to represent negative binary values</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Three ways to represent negative binary values"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-005-systems.jpg" alt="Three ways to represent negative binary values" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Positive 23 in 8 bits is 00010111.</li><li>The 8-bit sign-and-magnitude representation of -23 is 10010111.</li><li>The 8-bit one&#39;s-complement representation of -23 is 11101000.</li><li>The 8-bit two&#39;s-complement representation of -23 is 11101001.</li><li>Every input, intermediate state and result must contain exactly 8 bits.</li></ul></details>
+          </figure><figure class="v2-visual" data-material-kind="comparison">
+            <div class="v2-visual-heading"><span>02</span><div><p>Comparison · 2 of 4</p><h4>A decision framework</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: A decision framework"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-015-framework.jpg" alt="A decision framework" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>1. What data?</li><li>Integer, signed value, text, image, sound or repeated data.</li><li>2. What range?</li><li>Check minimum, maximum, precision and whether negative values are possible.</li><li>3. What quality?</li><li>Choose resolution, colour depth, sample rate or sampling resolution only as high as needed.</li><li>4. What constraints?</li><li>Storage, bandwidth, compatibility, exact reconstruction and processing cost.</li></ul></details>
+          </figure><figure class="v2-visual" data-material-kind="diagram">
+            <div class="v2-visual-heading"><span>03</span><div><p>Diagram · 3 of 4</p><h4>Two’s complement method</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Two’s complement method"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-005-twos.jpg" alt="Two’s complement method" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Write the positive magnitude using exactly 8 bits.</li><li>Invert every bit, then add 1 to form the negative two&#39;s-complement value.</li><li>For +45: 00101101 becomes 11010010 after inversion, then 11010011 after adding 1.</li><li>The 8-bit value 11010011 represents -45 in two&#39;s complement.</li><li>When the MSB is 1, quick decode uses unsigned value minus 256.</li></ul></details>
+          </figure><figure class="v2-visual" data-material-kind="process">
+            <div class="v2-visual-heading"><span>04</span><div><p>Process · 4 of 4</p><h4>System cases</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: System cases"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-015-cases.jpg" alt="System cases" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Multilingual chat app</li><li>Use Unicode so messages can include characters from many languages.</li><li>Sensor logger</li><li>Use enough bits and signed representation if values may be negative.</li><li>Website thumbnail</li><li>Lower resolution and lossy compression may be acceptable to reduce transfer time.</li><li>Legal archive</li><li>Use lossless compression because exact reconstruction is required.</li></ul></details>
+          </figure></div>
+  </section>
+      <details class="v2-point-precision"><summary>Open precise syllabus wording</summary><p><strong>Perform binary addition and subtraction using positive and negative binary integers.</strong></p><p>Version 2 explicitly requires both addition and subtraction using positive and negative binary integers; fixed-width representation must be retained throughout a calculation.</p></details>
+    </section><section class="v2-knowledge-point" id="knowledge-s1-05" data-syllabus-id="S1.05" data-visual-mode="concept" data-material-count="6">
+      <header class="v2-knowledge-point-head"><span>02</span><div><p>S1.05 · concept</p><h3>Overflow · Fixed-width · Representable range</h3></div></header>
+      <div class="v2-material-triad">
+        <article class="v2-native-material v2-native-material--map"><h4>Concept map</h4><div class="v2-concept-map" aria-label="Concept map for S1.05"><span class="v2-concept-node" data-node-index="1">overflow</span><span class="v2-concept-node" data-node-index="2">fixed-width</span><span class="v2-concept-node" data-node-index="3">representable range</span></div></article>
+        <article class="v2-native-material v2-native-material--story"><h4>See how it works</h4><ol><li><span>Meaning</span><strong>Overflow occurs when the mathematical result is outside the range representable by the stated bit width and representation</strong></li><li><span>Mechanism</span><strong>Overflow occurs when the mathematical result is outside the range representable in the available bits</strong></li><li><span>Consequence</span><strong>For signed arithmetic, compare the result with the signed representable range rather than treating every carry as overflow</strong></li></ol></article>
+        <aside class="v2-native-material v2-native-material--cue"><h4>Concrete cue</h4><p>Overflow occurs when the mathematical result is outside the range representable by the stated bit width and representation; it is not inferred from every internal carry or from a leading…</p></aside>
+      </div>
+      <section class="v2-material-library" aria-label="S1.05 diagrams">
+    <div class="v2-material-library-head"><h3>S1.05 diagrams</h3><div class="v2-material-controls">
+        <button type="button" data-material-prev aria-controls="materials-003-s1-05" aria-label="Previous diagram"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" /></svg></button>
+        <span data-material-position>1 / 3</span>
+        <button type="button" data-material-next aria-controls="materials-003-s1-05" aria-label="Next diagram"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" /></svg></button>
+      </div></div>
+    <div class="v2-material-rail" id="materials-003-s1-05" data-material-rail><figure class="v2-visual" data-material-kind="comparison">
+            <div class="v2-visual-heading"><span>01</span><div><p>Comparison · 1 of 3</p><h4>Unsigned 8-bit overflow</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Unsigned 8-bit overflow"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-004-overflow.jpg" alt="Unsigned 8-bit overflow" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>00000000₂ to 11111111₂ = 0 to 255</li><li>An unsigned 8-bit result cannot store a value above 255.</li><li>Carry-out</li><li>11110000₂ + 00010000₂ = 1 00000000₂</li><li>The ninth bit is a carry-out beyond the 8-bit storage width.</li><li>Boundary warning</li><li>01111111₂ + 00000001₂ = 10000000₂</li><li>No unsigned overflow: the result is 128, which still fits in 8 bits.</li></ul></details>
+          </figure><figure class="v2-visual" data-material-kind="process">
+            <div class="v2-visual-heading"><span>02</span><div><p>Process · 2 of 3</p><h4>8-bit addition method</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: 8-bit addition method"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-004-method.jpg" alt="8-bit addition method" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Align the two 8-bit operands and start at the rightmost column.</li><li>Add both bits and any carry-in; write the result bit and carry 1 left when required.</li><li>For unsigned addition, a carry-out beyond bit 7 means the true sum needs more than 8 bits.</li><li>Without a carry-out, the stored 8-bit result remains within the unsigned range 0 to 255.</li><li>A leftmost result bit of 1 is not by itself evidence of unsigned overflow.</li></ul></details>
+          </figure><figure class="v2-visual" data-material-kind="comparison">
+            <div class="v2-visual-heading"><span>03</span><div><p>Comparison · 3 of 3</p><h4>Question triage: choose the toolbox first</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Question triage: choose the toolbox first"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-016-triage.jpg" alt="Question triage: choose the toolbox first" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Number bases</li><li>Look for binary, denary, hexadecimal, place values, carries, overflow or two&#39;s complement.</li><li>Text representation</li><li>Look for ASCII, Unicode, character set, character code, multilingual text or symbols.</li><li>Images and sound</li><li>Look for resolution, colour depth, sampling rate, sampling resolution, duration and file size.</li><li>Compression</li><li>Look for lossless, lossy, exact reconstruction, reduced quality, RLE or repeated data.</li></ul></details>
+          </figure></div>
+  </section>
+      <details class="v2-point-precision"><summary>Open precise syllabus wording</summary><p><strong>Show understanding of how overflow can occur in fixed-width binary arithmetic.</strong></p><p>Overflow occurs when the mathematical result is outside the range representable by the stated bit width and representation; it is not inferred from every internal carry or from a leading 1 alone.</p></details>
+    </section></div>
+          <section class="v2-material-library" aria-label="Supporting diagram library">
+    <div class="v2-material-library-head"><h3>Supporting diagram library</h3><div class="v2-material-controls">
+        <button type="button" data-material-prev aria-controls="materials-003-supporting" aria-label="Previous diagram"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" /></svg></button>
+        <span data-material-position>1 / 2</span>
+        <button type="button" data-material-next aria-controls="materials-003-supporting" aria-label="Next diagram"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" /></svg></button>
+      </div></div>
+    <div class="v2-material-rail" id="materials-003-supporting" data-material-rail><figure class="v2-visual" data-material-kind="diagram">
+            <div class="v2-visual-heading"><span>01</span><div><p>Diagram · 1 of 2</p><h4>Single-bit addition rules</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Single-bit addition rules"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-004-rules.jpg" alt="Single-bit addition rules" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>A full-adder truth table has eight A, B and carry-in combinations.</li><li>000 gives sum 0 carry 0; 001 and 010 give sum 1 carry 0; 011 gives sum 0 carry 1.</li><li>100 gives sum 1 carry 0; 101 and 110 give sum 0 carry 1; 111 gives sum 1 carry 1.</li></ul></details>
+          </figure><figure class="v2-visual" data-material-kind="diagram">
+            <div class="v2-visual-heading"><span>02</span><div><p>Diagram · 2 of 2</p><h4>8-bit signed ranges and zero</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: 8-bit signed ranges and zero"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-005-range.jpg" alt="8-bit signed ranges and zero" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Sign-and-magnitude uses one sign bit and seven magnitude bits; its range is -127 to +127 and it has two zero patterns.</li><li>One&#39;s complement forms a negative value by inverting all eight bits; its range is -127 to +127 and it has two zero patterns.</li><li>Two&#39;s complement uses all eight bits as one weighted value with MSB place value -128.</li><li>The 8-bit two&#39;s-complement range is -128 to +127 and it has one zero pattern.</li><li>One&#39;s complement and two&#39;s complement do not store a separate magnitude field.</li></ul></details>
+          </figure></div>
+  </section>
+          <article class="v2-example"><div><p class="v2-eyebrow">Apply the idea</p><h3>Worked method</h3></div><ol class="v2-worked-flow"><li><span>01</span><strong>Add two unsigned 8-bit integers</strong></li><li><span>02</span><strong>11110000 + 00110000 = 1 00100000.</strong></li><li><span>03</span><strong>The true result is 288, which is outside the unsigned 8-bit range 0 to 255, so the stored eight-bit result cannot represent the mathematical answer and overflow occurs.</strong></li></ol></article>
+          <details class="v2-core-facts"><summary>Open precise terminology and exam facts</summary><ul class="v2-facts"><li>Version 2 explicitly requires both addition and subtraction using positive and negative binary integers; fixed-width representation must be retained throughout a calculation.</li><li>Overflow occurs when the mathematical result is outside the range representable by the stated bit width and representation; it is not inferred from every internal carry or from a leading 1 alone.</li><li>Perform binary addition from the least-significant bit, carrying left when a column total is 2 or 3. Positive and negative integers must be interpreted using the stated representation and fixed bit width.</li><li>Overflow occurs when the mathematical result is outside the range representable in the available bits. For unsigned 8-bit addition, a carry beyond bit 7 shows that the true result is greater than 255. For signed arithmetic, compare the result with the signed representable range rather than treating every carry as overflow.</li><li>Binary subtraction applies to each positive or negative binary integer as well as binary addition; use the stated fixed width and signed representation when interpreting the result.</li><li>One&#39;s-complement representation forms a negative integer by inverting every bit of its positive fixed-width value. Two&#39;s-complement representation inverts every bit and adds 1. These are binary representations of signed integers, not separate number bases.</li><li>Unsigned subtraction can be performed column by column using borrowing, or by adding the two&#39;s complement of the subtrahend. For signed two&#39;s-complement subtraction A - B, form the two&#39;s complement of B and add it to A. Retain the fixed width, interpret the sign bit and check the representable range.</li><li>Representation overview: the required integer representations are binary, denary, hexadecimal, BCD, one&#39;s-complement and two&#39;s-complement. Conversion means preserving the integer value while changing its base or signed representation.</li></ul></details>
+          <details class="v2-extension"><summary>Beyond syllabus / 延伸知识（不要求背诵）</summary><p>real file formats also store headers and metadata, so two files with the same visible content may still have different sizes.</p></details>
         </section>
 
         <section class="v2-panel" id="practice">
@@ -86,6 +148,6 @@
         <nav class="v2-bottom-nav" aria-label="Previous and next lesson"><a href="../lesson-002/" >Previous lesson</a><a href="../lesson-004/" >Next lesson</a></nav>
       </div>
     </main>
-    <script src="../course-v2.js?v=1"></script>
+    <script src="../course-v2.js?v=2"></script>
   </body>
 </html>

@@ -8,7 +8,7 @@
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
-    <link rel="stylesheet" href="../course-v2.css?v=3" />
+    <link rel="stylesheet" href="../course-v2.css?v=6" />
   </head>
   <body data-course-version="2" data-lesson-id="055" data-syllabus-ids="S10.01">
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -17,16 +17,11 @@
       <nav class="v2-actions" aria-label="Lesson actions"><a href="../">Course home</a><a href="../assessments/">Assessment bank</a><button type="button" id="printLesson">Print</button></nav>
     </header>
     <main class="v2-shell" id="main-content" tabindex="-1">
-      <nav class="v2-toc" aria-label="Lesson contents"><strong>Lesson 055</strong><a href="#overview">Overview</a><a href="#prerequisite">Prerequisite</a><a href="#explanation">Explanation</a><a href="#practice">Practice</a><a href="#summary">Summary</a></nav>
+      <nav class="v2-jump-nav" aria-label="Lesson contents"><strong>Lesson 055</strong><a href="#overview">Overview</a><a href="#prerequisite">Prerequisite</a><a href="#explanation">Explanation</a><a href="#practice">Practice</a><a href="#summary">Summary</a></nav>
       <div class="v2-content">
-        <section class="v2-hero" id="overview">
-          <div><p class="v2-eyebrow">Flexible-depth lesson</p><h2>Cambridge data types and declarations</h2><p>S10.01 | Select what to omit, teach briefly or explore in depth.</p></div>
-          <div class="v2-time-grid" aria-label="Available lesson depth"><div><strong>Quick</strong><span>diagnose + essentials</span></div><div><strong>Full</strong><span>complete explanation</span></div><div><strong>Deep</strong><span>prerequisites + extension</span></div><div><strong>Choose</strong><span>practice by need</span></div></div>
-        </section>
-
-        <section class="v2-panel v2-route-menu" aria-labelledby="route-heading">
-          <div class="v2-heading"><p class="v2-eyebrow">Teacher choice</p><h2 id="route-heading">Choose the depth for this group</h2></div>
-          <div class="v2-route-grid"><article><h3>Quick route</h3><p>Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.</p></article><article><h3>Full route</h3><p>Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.</p></article><article><h3>Deep route</h3><p>Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.</p></article></div>
+        <section class="v2-overview" id="overview">
+          <div><p class="v2-eyebrow">Flexible-depth lesson</p><p class="v2-overview-copy">S10.01 | Learn from the diagrams, test the method, then choose the practice you need.</p></div>
+          <details class="v2-route-menu"><summary>Choose a Quick, Full or Deep route</summary><div class="v2-route-grid"><article><h3>Quick route</h3><p>Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.</p></article><article><h3>Full route</h3><p>Use every knowledge-point material set, the worked method, the terminology check and all questions.</p></article><article><h3>Deep route</h3><p>Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.</p></article></div></details>
         </section>
 
         <section class="v2-panel" id="prerequisite">
@@ -37,21 +32,92 @@
         </section>
 
         <section class="v2-panel" id="explanation">
-          <div class="v2-heading"><p class="v2-eyebrow">Part 2 | deliberately over-complete</p><h2>Knowledge explanation</h2></div>
-          <h3>Learning objectives</h3><ul class="v2-objectives"><li>Understand integer, real, char, string, Boolean and date types and Cambridge pseudocode type names.</li></ul>
+          <div class="v2-heading v2-heading--wide"><p class="v2-eyebrow">Part 2 | knowledge-point material sets</p><h2>Learn each point through visuals</h2><p>Follow the map, the three-part explanation and the concrete cue. Open precise wording only after the idea is clear.</p></div>
           <details class="v2-concept-menu"><summary>Open the concept checklist and choose what to teach</summary><ul><li>integer</li><li>real</li><li>char</li><li>string</li><li>Boolean</li><li>date</li><li>ARRAY</li><li>FILE</li></ul></details>
-          <div class="v2-explanation-grid">
-            <div>
-              <article class="v2-core-facts"><h3>Detailed explanation</h3><p class="v2-teacher-note">Teach all points, or select only the ones this group needs. The list is intentionally fuller than a fixed lesson slot.</p><ul class="v2-facts"><li>Select and use appropriate types for a problem solution. The Version 2 Notes name integer, real, char, string, Boolean and date, and require the Cambridge pseudocode type names INTEGER, REAL, CHAR, STRING, BOOLEAN, DATE, ARRAY and FILE.</li><li>Select a type from the meaning and operations required by the problem. INTEGER stores whole numbers, REAL stores values that may contain a fractional part, CHAR stores one character, STRING stores a sequence of characters, BOOLEAN stores TRUE or FALSE, and DATE stores a calendar date.</li><li>Cambridge pseudocode uses the type names INTEGER, REAL, CHAR, STRING, BOOLEAN, DATE, ARRAY and FILE. ARRAY and FILE describe structured or persistent data; their declarations also state an element type, bounds or file usage as required by the problem.</li><li>An identifier that contains digits is not automatically INTEGER. Codes, telephone numbers and identifiers with leading zeroes normally use STRING because arithmetic is not required. Type selection does not replace validation of permitted values.</li></ul></article>
-              <article class="v2-example"><h3>Worked example</h3><p>Choose types for a booking: Use STRING for BookingCode because it may contain letters or leading zeroes; DATE for VisitDate; INTEGER for TicketCount; REAL for TotalCost; CHAR for a one-letter Zone; BOOLEAN for HasPaid; ARRAY for a fixed indexed set of attendee names; and FILE when bookings must persist between program runs.</p></article>
-              <aside class="v2-extension"><h3>Beyond syllabus / 延伸知识（不要求背诵）</h3><p>programming libraries often provide tested ADT implementations, but the exam expects you to understand their behaviour and selection.</p></aside>
-            </div>
-            <figure class="v2-visual">
-              <img src="../assets/diagrams/stage10-infographics/stage10-lesson-114-pseudocode.jpg" alt="Cambridge pseudocode uses INTEGER, REAL, CHAR, STRING, BOOLEAN and DATE for scalar values.. The Version 2 Notes also name ARRAY and FILE among the pseudocode data types.. Select a type from the value&#39;s meaning and required operations; numeric-looking identifiers may still require STRING." loading="lazy" />
-              <figcaption>The eight Cambridge pseudocode type names. One maintained explanation is shown as an image on larger screens and as text on small screens.</figcaption>
-              <div class="v2-mobile-visual-text" aria-label="Mobile text alternative"><ul><li>Cambridge pseudocode uses INTEGER, REAL, CHAR, STRING, BOOLEAN and DATE for scalar values.</li><li>The Version 2 Notes also name ARRAY and FILE among the pseudocode data types.</li><li>Select a type from the value&#39;s meaning and required operations; numeric-looking identifiers may still require STRING.</li></ul></div>
-            </figure>
-          </div>
+          <nav class="v2-knowledge-index" aria-label="Knowledge points in this lesson"><a href="#knowledge-s10-01"><span>01</span>S10.01</a></nav><div class="v2-knowledge-point-list"><section class="v2-knowledge-point" id="knowledge-s10-01" data-syllabus-id="S10.01" data-visual-mode="decision" data-material-count="8">
+      <header class="v2-knowledge-point-head"><span>01</span><div><p>S10.01 · decision</p><h3>Integer · Real · Char · String</h3></div></header>
+      <div class="v2-material-triad">
+        <article class="v2-native-material v2-native-material--map"><h4>Concept map</h4><div class="v2-concept-map" aria-label="Concept map for S10.01"><span class="v2-concept-node" data-node-index="1">integer</span><span class="v2-concept-node" data-node-index="2">real</span><span class="v2-concept-node" data-node-index="3">char</span><span class="v2-concept-node" data-node-index="4">string</span><span class="v2-concept-node" data-node-index="5">Boolean</span><span class="v2-concept-node" data-node-index="6">date</span><span class="v2-concept-node" data-node-index="7">ARRAY</span><span class="v2-concept-node" data-node-index="8">FILE</span></div></article>
+        <article class="v2-native-material v2-native-material--story"><h4>See how it works</h4><ol><li><span>Evidence</span><strong>The Version 2 Notes name integer, real, char, string, Boolean and date, and require the Cambridge pseudocode type names INTEGER, REAL, CHAR, STRING, BOOLEAN, DATE, ARRAY…</strong></li><li><span>Choice</span><strong>Cambridge pseudocode uses the type names INTEGER, REAL, CHAR, STRING, BOOLEAN, DATE, ARRAY and FILE</strong></li><li><span>Reason</span><strong>Select and use appropriate types for a problem solution</strong></li></ol></article>
+        <aside class="v2-native-material v2-native-material--cue"><h4>Concrete cue</h4><p>Select and use appropriate types for a problem solution. The Version 2 Notes name integer, real, char, string, Boolean and date, and require the Cambridge pseudocode type names INTEGER, REAL,…</p></aside>
+      </div>
+      <section class="v2-material-library" aria-label="S10.01 diagrams">
+    <div class="v2-material-library-head"><h3>S10.01 diagrams</h3><div class="v2-material-controls">
+        <button type="button" data-material-prev aria-controls="materials-055-s10-01" aria-label="Previous diagram"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" /></svg></button>
+        <span data-material-position>1 / 5</span>
+        <button type="button" data-material-next aria-controls="materials-055-s10-01" aria-label="Next diagram"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" /></svg></button>
+      </div></div>
+    <div class="v2-material-rail" id="materials-055-s10-01" data-material-rail><figure class="v2-visual" data-material-kind="diagram">
+            <div class="v2-visual-heading"><span>01</span><div><p>Diagram · 1 of 5</p><h4>The eight Cambridge pseudocode type names</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: The eight Cambridge pseudocode type names"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-114-pseudocode.jpg" alt="The eight Cambridge pseudocode type names" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Cambridge pseudocode uses INTEGER, REAL, CHAR, STRING, BOOLEAN and DATE for scalar values.</li><li>The Version 2 Notes also name ARRAY and FILE among the pseudocode data types.</li><li>Select a type from the value&#39;s meaning and required operations; numeric-looking identifiers may still require STRING.</li></ul></details>
+          </figure><figure class="v2-visual" data-material-kind="process">
+            <div class="v2-visual-heading"><span>02</span><div><p>Process · 2 of 5</p><h4>Core AS-level data types</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Core AS-level data types"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-114-built-in.jpg" alt="Core AS-level data types" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>INTEGER stores whole numbers, while REAL stores values that may contain a fractional part.</li><li>CHAR stores one character and STRING stores a sequence of characters.</li><li>BOOLEAN stores TRUE or FALSE, and DATE stores a calendar date.</li></ul></details>
+          </figure><figure class="v2-visual" data-material-kind="diagram">
+            <div class="v2-visual-heading"><span>03</span><div><p>Diagram · 3 of 5</p><h4>Cambridge array bounds are stated explicitly</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Cambridge array bounds are stated explicitly"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-125-arrays.jpg" alt="Cambridge array bounds are stated explicitly" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Cambridge-style pseudocode</li><li>DECLARE Scores : ARRAY[1:30] OF INTEGER</li><li>Scores[1] &lt;- 72</li><li>Java support only</li><li>int[] scores = new int[30];</li><li>scores[0] = 72;</li><li>Index warning: if pseudocode declares ARRAY[1:30] , do not automatically use Java&#39;s index 0 in the exam answer.</li></ul></details>
+          </figure><figure class="v2-visual" data-material-kind="comparison">
+            <div class="v2-visual-heading"><span>04</span><div><p>Comparison · 4 of 5</p><h4>Use the scenario, not the surface appearance</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Use the scenario, not the surface appearance"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-114-choose.jpg" alt="Use the scenario, not the surface appearance" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>INTEGER stores whole numbers and REAL stores values that may have a fractional part.</li><li>Both INTEGER and REAL values can be used in arithmetic.</li><li>First decide whether a value is numeric, then choose INTEGER for whole-only values or REAL when fractions are possible.</li></ul></details>
+          </figure><figure class="v2-visual" data-material-kind="comparison">
+            <div class="v2-visual-heading"><span>05</span><div><p>Comparison · 5 of 5</p><h4>Question-supplied functions versus Java methods</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Question-supplied functions versus Java methods"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-122-pseudocode.jpg" alt="Question-supplied functions versus Java methods" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>SPLIT and STRINGTOINTEGER are not standard functions in the Cambridge pseudocode guide; this example uses signatures supplied by the question.</li><li>FUNCTION SPLIT(Line : STRING, Delimiter : CHAR) RETURNS ARRAY OF STRING; its first returned element is at index 1.</li><li>FUNCTION STRINGTOINTEGER(Value : STRING) RETURNS INTEGER.</li><li>Java split and parseInt are support examples only and use different syntax and zero-based array indexes.</li></ul></details>
+          </figure></div>
+  </section>
+      <details class="v2-point-precision"><summary>Open precise syllabus wording</summary><p><strong>Understand integer, real, char, string, Boolean and date types and Cambridge pseudocode type names.</strong></p><p>Select and use appropriate types for a problem solution. The Version 2 Notes name integer, real, char, string, Boolean and date, and require the Cambridge pseudocode type names INTEGER, REAL, CHAR, STRING, BOOLEAN, DATE, ARRAY and FILE.</p></details>
+    </section></div>
+          <section class="v2-material-library" aria-label="Supporting diagram library">
+    <div class="v2-material-library-head"><h3>Supporting diagram library</h3><div class="v2-material-controls">
+        <button type="button" data-material-prev aria-controls="materials-055-supporting" aria-label="Previous diagram"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" /></svg></button>
+        <span data-material-position>1 / 9</span>
+        <button type="button" data-material-next aria-controls="materials-055-supporting" aria-label="Next diagram"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" /></svg></button>
+      </div></div>
+    <div class="v2-material-rail" id="materials-055-supporting" data-material-rail><figure class="v2-visual" data-material-kind="diagram">
+            <div class="v2-visual-heading"><span>01</span><div><p>Diagram · 1 of 9</p><h4>When built-in types are not descriptive enough</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: When built-in types are not descriptive enough"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-114-user-defined.jpg" alt="When built-in types are not descriptive enough" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>TYPE TStudent</li><li>Fields of different data types are declared between TYPE and ENDTYPE.</li><li>DECLARE Student1 : TStudent</li></ul></details>
+          </figure><figure class="v2-visual" data-material-kind="diagram">
+            <div class="v2-visual-heading"><span>02</span><div><p>Diagram · 2 of 9</p><h4>A type controls meaning and valid operations</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: A type controls meaning and valid operations"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-114-why-types.jpg" alt="A type controls meaning and valid operations" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>A data type determines which operations are meaningful for a stored value.</li><li>A BOOLEAN can control a decision and a DATE can be compared with another date.</li><li>Close every structured IF example with ENDIF.</li><li>Choosing the correct type does not replace validation against the problem&#39;s allowed range.</li></ul></details>
+          </figure><figure class="v2-visual" data-material-kind="diagram">
+            <div class="v2-visual-heading"><span>03</span><div><p>Diagram · 3 of 9</p><h4>&lt;- changes a value; = usually tests equality in conditions</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: &lt;- changes a value; = usually tests equality in conditions"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-125-assignment.jpg" alt="&lt;- changes a value; = usually tests equality in conditions" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Assignment versus comparison</li><li>Pseudocode</li><li>Count &lt;- Count + 1</li><li>store a new value in Count</li><li>IF Count = 10 THEN</li><li>test whether Count equals 10</li><li>Java warning</li><li>count == 10</li></ul></details>
+          </figure><figure class="v2-visual" data-material-kind="diagram">
+            <div class="v2-visual-heading"><span>04</span><div><p>Diagram · 4 of 9</p><h4>Constants are named values that should not change</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Constants are named values that should not change"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-125-constants.jpg" alt="Constants are named values that should not change" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Constants</li><li>Cambridge-style pseudocode</li><li>CONSTANT MaxSize = 100</li><li>CONSTANT PassMark = 40</li><li>Java support only</li><li>final int MAXSIZE = 100;</li><li>final int PASSMARK = 40;</li><li>Java naming conventions may use capitals for constants. Cambridge pseudocode credit comes from clear constant declaration and use.</li></ul></details>
+          </figure><figure class="v2-visual" data-material-kind="diagram">
+            <div class="v2-visual-heading"><span>05</span><div><p>Diagram · 5 of 9</p><h4>Do not mix the two languages inside one answer</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Do not mix the two languages inside one answer"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-125-principle.jpg" alt="Do not mix the two languages inside one answer" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Core principle</li><li>Cambridge-style pseudocode</li><li>Java support only</li><li>Variable declaration</li><li>DECLARE Count : INTEGER</li><li>int count;</li><li>Assignment</li><li>Count &lt;- 0</li></ul></details>
+          </figure><figure class="v2-visual" data-material-kind="diagram">
+            <div class="v2-visual-heading"><span>06</span><div><p>Diagram · 6 of 9</p><h4>Record declarations use TYPE and ENDTYPE</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Record declarations use TYPE and ENDTYPE"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-125-records.jpg" alt="Record declarations use TYPE and ENDTYPE" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Cambridge-style pseudocode</li><li>TYPE TStudent</li><li>DECLARE Name : STRING</li><li>DECLARE Mark : INTEGER</li><li>DECLARE Student1 : TStudent</li><li>Java support only</li><li>class Student {</li><li>String name;</li></ul></details>
+          </figure><figure class="v2-visual" data-material-kind="diagram">
+            <div class="v2-visual-heading"><span>07</span><div><p>Diagram · 7 of 9</p><h4>Which syntax belongs to which answer style?</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Which syntax belongs to which answer style?"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-125-sorter.jpg" alt="Which syntax belongs to which answer style?" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Syntax sorter</li><li>Click a statement to identify whether it is pseudocode or Java-style.</li></ul></details>
+          </figure><figure class="v2-visual" data-material-kind="diagram">
+            <div class="v2-visual-heading"><span>08</span><div><p>Diagram · 8 of 9</p><h4>Map concepts, not spelling</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Map concepts, not spelling"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-125-types.jpg" alt="Map concepts, not spelling" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Data type mapping</li><li>Pseudocode type</li><li>Java support example</li><li>whole number</li><li>decimal number</li><li>single character</li><li>true/false</li></ul></details>
+          </figure><figure class="v2-visual" data-material-kind="diagram">
+            <div class="v2-visual-heading"><span>09</span><div><p>Diagram · 9 of 9</p><h4>Declare first; initialise separately when needed</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Declare first; initialise separately when needed"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-125-variables.jpg" alt="Declare first; initialise separately when needed" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Variables</li><li>Cambridge-style pseudocode</li><li>DECLARE Count : INTEGER</li><li>Count &lt;- 0</li><li>DECLARE Name : STRING</li><li>Name &lt;- &quot;Ali&quot;</li><li>Java support only</li><li>int count = 0;</li></ul></details>
+          </figure></div>
+  </section>
+          <article class="v2-example"><div><p class="v2-eyebrow">Apply the idea</p><h3>Worked method</h3></div><ol class="v2-worked-flow"><li><span>01</span><strong>Choose types for a booking</strong></li><li><span>02</span><strong>Use STRING for BookingCode because it may contain letters or leading zeroes; DATE for VisitDate; INTEGER for TicketCount; REAL for TotalCost; CHAR for a one-letter Zone; BOOLEAN for HasPaid; ARRAY for a…</strong></li></ol></article>
+          <details class="v2-core-facts"><summary>Open precise terminology and exam facts</summary><ul class="v2-facts"><li>Select and use appropriate types for a problem solution. The Version 2 Notes name integer, real, char, string, Boolean and date, and require the Cambridge pseudocode type names INTEGER, REAL, CHAR, STRING, BOOLEAN, DATE, ARRAY and FILE.</li><li>Select a type from the meaning and operations required by the problem. INTEGER stores whole numbers, REAL stores values that may contain a fractional part, CHAR stores one character, STRING stores a sequence of characters, BOOLEAN stores TRUE or FALSE, and DATE stores a calendar date.</li><li>Cambridge pseudocode uses the type names INTEGER, REAL, CHAR, STRING, BOOLEAN, DATE, ARRAY and FILE. ARRAY and FILE describe structured or persistent data; their declarations also state an element type, bounds or file usage as required by the problem.</li><li>An identifier that contains digits is not automatically INTEGER. Codes, telephone numbers and identifiers with leading zeroes normally use STRING because arithmetic is not required. Type selection does not replace validation of permitted values.</li></ul></details>
+          <details class="v2-extension"><summary>Beyond syllabus / 延伸知识（不要求背诵）</summary><p>programming libraries often provide tested ADT implementations, but the exam expects you to understand their behaviour and selection.</p></details>
         </section>
 
         <section class="v2-panel" id="practice">
@@ -86,6 +152,6 @@
         <nav class="v2-bottom-nav" aria-label="Previous and next lesson"><a href="../lesson-054/" >Previous lesson</a><a href="../lesson-056/" >Next lesson</a></nav>
       </div>
     </main>
-    <script src="../course-v2.js?v=1"></script>
+    <script src="../course-v2.js?v=2"></script>
   </body>
 </html>

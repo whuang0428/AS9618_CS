@@ -8,7 +8,7 @@
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
-    <link rel="stylesheet" href="../course-v2.css?v=3" />
+    <link rel="stylesheet" href="../course-v2.css?v=6" />
   </head>
   <body data-course-version="2" data-lesson-id="086" data-syllabus-ids="S12.06">
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -17,16 +17,11 @@
       <nav class="v2-actions" aria-label="Lesson actions"><a href="../">Course home</a><a href="../assessments/">Assessment bank</a><button type="button" id="printLesson">Print</button></nav>
     </header>
     <main class="v2-shell" id="main-content" tabindex="-1">
-      <nav class="v2-toc" aria-label="Lesson contents"><strong>Lesson 086</strong><a href="#overview">Overview</a><a href="#prerequisite">Prerequisite</a><a href="#explanation">Explanation</a><a href="#practice">Practice</a><a href="#summary">Summary</a></nav>
+      <nav class="v2-jump-nav" aria-label="Lesson contents"><strong>Lesson 086</strong><a href="#overview">Overview</a><a href="#prerequisite">Prerequisite</a><a href="#explanation">Explanation</a><a href="#practice">Practice</a><a href="#summary">Summary</a></nav>
       <div class="v2-content">
-        <section class="v2-hero" id="overview">
-          <div><p class="v2-eyebrow">Flexible-depth lesson</p><h2>Test strategies and test plans</h2><p>S12.06 | Select what to omit, teach briefly or explore in depth.</p></div>
-          <div class="v2-time-grid" aria-label="Available lesson depth"><div><strong>Quick</strong><span>diagnose + essentials</span></div><div><strong>Full</strong><span>complete explanation</span></div><div><strong>Deep</strong><span>prerequisites + extension</span></div><div><strong>Choose</strong><span>practice by need</span></div></div>
-        </section>
-
-        <section class="v2-panel v2-route-menu" aria-labelledby="route-heading">
-          <div class="v2-heading"><p class="v2-eyebrow">Teacher choice</p><h2 id="route-heading">Choose the depth for this group</h2></div>
-          <div class="v2-route-grid"><article><h3>Quick route</h3><p>Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.</p></article><article><h3>Full route</h3><p>Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.</p></article><article><h3>Deep route</h3><p>Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.</p></article></div>
+        <section class="v2-overview" id="overview">
+          <div><p class="v2-eyebrow">Flexible-depth lesson</p><p class="v2-overview-copy">S12.06 | Learn from the diagrams, test the method, then choose the practice you need.</p></div>
+          <details class="v2-route-menu"><summary>Choose a Quick, Full or Deep route</summary><div class="v2-route-grid"><article><h3>Quick route</h3><p>Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.</p></article><article><h3>Full route</h3><p>Use every knowledge-point material set, the worked method, the terminology check and all questions.</p></article><article><h3>Deep route</h3><p>Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.</p></article></div></details>
         </section>
 
         <section class="v2-panel" id="prerequisite">
@@ -37,21 +32,84 @@
         </section>
 
         <section class="v2-panel" id="explanation">
-          <div class="v2-heading"><p class="v2-eyebrow">Part 2 | deliberately over-complete</p><h2>Knowledge explanation</h2></div>
-          <h3>Learning objectives</h3><ul class="v2-objectives"><li>Show understanding of the need for a test strategy and test plan and their likely contents.</li></ul>
+          <div class="v2-heading v2-heading--wide"><p class="v2-eyebrow">Part 2 | knowledge-point material sets</p><h2>Learn each point through visuals</h2><p>Follow the map, the three-part explanation and the concrete cue. Open precise wording only after the idea is clear.</p></div>
           <details class="v2-concept-menu"><summary>Open the concept checklist and choose what to teach</summary><ul><li>test</li><li>strategy</li><li>plan</li></ul></details>
-          <div class="v2-explanation-grid">
-            <div>
-              <article class="v2-core-facts"><h3>Detailed explanation</h3><p class="v2-teacher-note">Teach all points, or select only the ones this group needs. The list is intentionally fuller than a fixed lesson slot.</p><ul class="v2-facts"><li>The Version 2 table requires understanding the need and likely contents; it does not require candidates to produce either document.</li><li>Alpha testing is performed internally before release; beta testing uses selected external users in realistic settings; acceptance testing checks the delivered system against agreed requirements. A strategy states levels/methods/responsibility, while a test plan records test ID, purpose, data, expected result, actual result and pass/fail.</li><li>Choose test data from the stated validation rule and give an expected result for each value. A label such as &#39;boundary&#39; is insufficient unless the value really tests a stated limit.</li><li>Classify the reason for the change, not the code edited. The same module could receive a corrective change for a crash, an adaptive change for a new operating-system interface, or a perfective change for faster search and a clearer result display.</li><li>Every maintenance change requires impact analysis, controlled amendment, tests for the changed behaviour and regression tests for unaffected behaviour. Records should link the request, code change and test evidence.</li><li>Test the enhancement with data that exercises the new path and rerun regression tests for existing paths. Correcting a fault is corrective maintenance; adding or improving requested functionality is an enhancement and may be perfective maintenance.</li></ul></article>
-              <article class="v2-example"><h3>Worked example</h3><p>Test login through review, construction, integration and release / Test an inclusive mark range / Three changes to one booking system / Add a Merit count without breaking PassCount: First dry-run the lockout counter and conduct a walkthrough in which peers inspect the algorithm. White-box tests cover true/false paths; black-box tests valid, invalid and boundary inputs from requirements. During integration, a stub returns simulated account results before the database is ready. Internal staff perform alpha testing, selected external users perform beta testing, and the customer performs acceptance testing against the agreed lockout behaviour. For an allowed mark from 0 to 100 inclusive, 55 is normal, 0 and 100 are valid extreme/boundary values, and -1 or 101 is abnormal. Fixing a crash when saving is corrective. Updating tax or term-date rules imposed externally is adaptive.…</p></article>
-              <aside class="v2-extension"><h3>Beyond syllabus / 延伸知识（不要求背诵）</h3><p>modern teams often use continuous integration to repeat building and testing whenever a program changes.</p></aside>
-            </div>
-            <figure class="v2-visual">
-              <img src="../assets/diagrams/stage10-infographics/stage10-lesson-146-changeover.jpg" alt="A test strategy states the testing levels, methods, responsibilities, sequence and resources for the project.. A test plan records individual cases with a test ID, purpose, data, expected result, actual result and pass/fail outcome.. Normal, abnormal and extreme/boundary values are test-data categories; a list of values alone is neither a complete strategy nor a complete test plan." loading="lazy" />
-              <figcaption>Test strategy and test plan are different documents. One maintained explanation is shown as an image on larger screens and as text on small screens.</figcaption>
-              <div class="v2-mobile-visual-text" aria-label="Mobile text alternative"><ul><li>A test strategy states the testing levels, methods, responsibilities, sequence and resources for the project.</li><li>A test plan records individual cases with a test ID, purpose, data, expected result, actual result and pass/fail outcome.</li><li>Normal, abnormal and extreme/boundary values are test-data categories; a list of values alone is neither a complete strategy nor a complete test plan.</li></ul></div>
-            </figure>
-          </div>
+          <nav class="v2-knowledge-index" aria-label="Knowledge points in this lesson"><a href="#knowledge-s12-06"><span>01</span>S12.06</a></nav><div class="v2-knowledge-point-list"><section class="v2-knowledge-point" id="knowledge-s12-06" data-syllabus-id="S12.06" data-visual-mode="concept" data-material-count="6">
+      <header class="v2-knowledge-point-head"><span>01</span><div><p>S12.06 · concept</p><h3>Test strategies and test plans</h3></div></header>
+      <div class="v2-material-triad">
+        <article class="v2-native-material v2-native-material--map"><h4>Concept map</h4><div class="v2-concept-map" aria-label="Concept map for S12.06"><span class="v2-concept-node" data-node-index="1">test</span><span class="v2-concept-node" data-node-index="2">strategy</span><span class="v2-concept-node" data-node-index="3">plan</span></div></article>
+        <article class="v2-native-material v2-native-material--story"><h4>See how it works</h4><ol><li><span>Meaning</span><strong>it does not require candidates to produce either document</strong></li><li><span>Mechanism</span><strong>The Version 2 table requires understanding the need and likely contents</strong></li><li><span>Consequence</span><strong>A strategy states levels/methods/responsibility, while a test plan records test ID, purpose, data, expected result, actual result and pass/fail</strong></li></ol></article>
+        <aside class="v2-native-material v2-native-material--cue"><h4>Concrete cue</h4><p>The Version 2 table requires understanding the need and likely contents; it does not require candidates to produce either document.</p></aside>
+      </div>
+      <section class="v2-material-library" aria-label="S12.06 diagrams">
+    <div class="v2-material-library-head"><h3>S12.06 diagrams</h3><div class="v2-material-controls">
+        <button type="button" data-material-prev aria-controls="materials-086-s12-06" aria-label="Previous diagram"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" /></svg></button>
+        <span data-material-position>1 / 3</span>
+        <button type="button" data-material-next aria-controls="materials-086-s12-06" aria-label="Next diagram"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" /></svg></button>
+      </div></div>
+    <div class="v2-material-rail" id="materials-086-s12-06" data-material-rail><figure class="v2-visual" data-material-kind="process">
+            <div class="v2-visual-heading"><span>01</span><div><p>Process · 1 of 3</p><h4>Test strategy and test plan are different documents</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Test strategy and test plan are different documents"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-146-changeover.jpg" alt="Test strategy and test plan are different documents" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>A test strategy states the testing levels, methods, responsibilities, sequence and resources for the project.</li><li>A test plan records individual cases with a test ID, purpose, data, expected result, actual result and pass/fail outcome.</li><li>Normal, abnormal and extreme/boundary values are test-data categories; a list of values alone is neither a complete strategy nor a complete test plan.</li></ul></details>
+          </figure><figure class="v2-visual" data-material-kind="example">
+            <div class="v2-visual-heading"><span>02</span><div><p>Concrete example · 2 of 3</p><h4>Design documents translate requirements into a buildable plan</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Design documents translate requirements into a buildable plan"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-145-purpose.jpg" alt="Design documents translate requirements into a buildable plan" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Design documentation purpose</li><li>Before coding</li><li>They decide data structures, processing logic and user interaction before the implementation language takes over.</li><li>For testers</li><li>They provide expected rules and interface behaviour so tests can check more than “it seems fine”.</li><li>For maintenance</li><li>They help future developers understand why the system works in a particular way.</li><li>A useful design document is specific enough to guide construction, but not just a pasted block of final program code.</li></ul></details>
+          </figure><figure class="v2-visual" data-material-kind="analogy">
+            <div class="v2-visual-heading"><span>03</span><div><p>Analogy / use · 3 of 3</p><h4>Test cases need data, expected result and purpose</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Test cases need data, expected result and purpose"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-147-testing.jpg" alt="Test cases need data, expected result and purpose" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Normal data is valid and typical; boundary data is at an accepted limit; abnormal data violates the stated validation rule.</li><li>A 21st valid reservation at a capacity boundary requires the defined business outcome, such as waiting list or rejection due to capacity.</li><li>Do not call a request invalid unless it violates a stated input-validity rule.</li></ul></details>
+          </figure></div>
+  </section>
+      <details class="v2-point-precision"><summary>Open precise syllabus wording</summary><p><strong>Show understanding of the need for a test strategy and test plan and their likely contents.</strong></p><p>The Version 2 table requires understanding the need and likely contents; it does not require candidates to produce either document.</p></details>
+    </section></div>
+          <section class="v2-material-library" aria-label="Supporting diagram library">
+    <div class="v2-material-library-head"><h3>Supporting diagram library</h3><div class="v2-material-controls">
+        <button type="button" data-material-prev aria-controls="materials-086-supporting" aria-label="Previous diagram"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" /></svg></button>
+        <span data-material-position>1 / 9</span>
+        <button type="button" data-material-next aria-controls="materials-086-supporting" aria-label="Next diagram"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" /></svg></button>
+      </div></div>
+    <div class="v2-material-rail" id="materials-086-supporting" data-material-rail><figure class="v2-visual" data-material-kind="diagram">
+            <div class="v2-visual-heading"><span>01</span><div><p>Diagram · 1 of 9</p><h4>Extreme or boundary data uses valid values at accepted limits</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Extreme or boundary data uses valid values at accepted limits"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-138-boundary.jpg" alt="Extreme or boundary data uses valid values at accepted limits" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Extreme/boundary data uses valid values at the accepted lower or upper limit.</li><li>For an accepted mark range of 0 to 100 inclusive, 0 and 100 are valid extreme/boundary values.</li><li>Values just outside the limits, such as -1 and 101, are abnormal and should be rejected.</li></ul></details>
+          </figure><figure class="v2-visual" data-material-kind="diagram">
+            <div class="v2-visual-heading"><span>02</span><div><p>Diagram · 2 of 9</p><h4>Analyse and amend an existing program</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Analyse and amend an existing program"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-139-bug.jpg" alt="Analyse and amend an existing program" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Analyse the existing program&#39;s purpose, inputs, outputs, control flow and behaviour that must remain unchanged before editing it.</li><li>Amend declarations, initialisation, processing and output coherently to add the requested functionality rather than rewriting unrelated code.</li><li>Test the new path and rerun regression tests for the existing path; adding functionality is an enhancement, not merely correcting a fault.</li></ul></details>
+          </figure><figure class="v2-visual" data-material-kind="diagram">
+            <div class="v2-visual-heading"><span>03</span><div><p>Diagram · 3 of 9</p><h4>Classify input for NumberOfStudents, valid range 1 to 30</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Classify input for NumberOfStudents, valid range 1 to 30"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-146-data-tool.jpg" alt="Classify input for NumberOfStudents, valid range 1 to 30" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Test data classifier</li><li>Test value</li></ul></details>
+          </figure><figure class="v2-visual" data-material-kind="diagram">
+            <div class="v2-visual-heading"><span>04</span><div><p>Diagram · 4 of 9</p><h4>Evaluation uses requirements and measurable success criteria</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Evaluation uses requirements and measurable success criteria"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-146-evaluation.jpg" alt="Evaluation uses requirements and measurable success criteria" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>A success criterion must state a measurable threshold before evidence can be judged against it.</li><li>If 8 of 10 users or 95 of 100 searches is sufficient, state that threshold explicitly.</li><li>Without a threshold, do not label partial evidence as an unqualified criterion met.</li></ul></details>
+          </figure><figure class="v2-visual" data-material-kind="diagram">
+            <div class="v2-visual-heading"><span>05</span><div><p>Diagram · 5 of 9</p><h4>Implementation turns the design into a working system</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Implementation turns the design into a working system"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-146-implementation.jpg" alt="Implementation turns the design into a working system" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Implementation</li><li>Program modules, create files or databases, implement interfaces and connect components.</li><li>Put the system into the user environment, configure hardware, accounts, permissions and data.</li><li>Document</li><li>Prepare user instructions and technical notes so the system can be used and supported.</li><li>Implementation should follow the design documentation. If implementation silently changes the design, testing may no longer match the intended system.</li></ul></details>
+          </figure><figure class="v2-visual" data-material-kind="diagram">
+            <div class="v2-visual-heading"><span>06</span><div><p>Diagram · 6 of 9</p><h4>Maintenance changes a system after it has been delivered</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Maintenance changes a system after it has been delivered"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-146-maintenance.jpg" alt="Maintenance changes a system after it has been delivered" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Maintenance</li><li>Corrective</li><li>Fixing faults found after release, such as a booking clash that was not rejected.</li><li>Adaptive</li><li>Changing the system because the environment changes, such as a new timetable structure.</li><li>Perfective</li><li>Improving performance, usability or features, such as faster room search.</li></ul></details>
+          </figure><figure class="v2-visual" data-material-kind="diagram">
+            <div class="v2-visual-heading"><span>07</span><div><p>Diagram · 7 of 9</p><h4>Which lifecycle stage is being described?</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Which lifecycle stage is being described?"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-146-stage-tool.jpg" alt="Which lifecycle stage is being described?" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Interactive stage chooser</li><li>Scenario</li></ul></details>
+          </figure><figure class="v2-visual" data-material-kind="diagram">
+            <div class="v2-visual-heading"><span>08</span><div><p>Diagram · 8 of 9</p><h4>Good testing uses different categories of data</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Good testing uses different categories of data"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-146-test-data.jpg" alt="Good testing uses different categories of data" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Test data</li><li>Category</li><li>Room capacity example</li><li>Expected result</li><li>valid typical data</li><li>24 students for capacity 30</li><li>accepted</li><li>Boundary</li></ul></details>
+          </figure><figure class="v2-visual" data-material-kind="diagram">
+            <div class="v2-visual-heading"><span>09</span><div><p>Diagram · 9 of 9</p><h4>Testing is planned evidence that the system behaves as expected</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Testing is planned evidence that the system behaves as expected"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-146-testing.jpg" alt="Testing is planned evidence that the system behaves as expected" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Evidence</li><li>Unit testing</li><li>one module or subroutine</li><li>check clash detection function</li><li>actual output compared with expected output</li><li>Integration testing</li><li>modules working together</li><li>booking form sends data to save module</li></ul></details>
+          </figure></div>
+  </section>
+          <article class="v2-example"><div><p class="v2-eyebrow">Apply the idea</p><h3>Worked method</h3></div><ol class="v2-worked-flow"><li><span>01</span><strong>Test login through review, construction, integration and release</strong></li><li><span>02</span><strong>Test an inclusive mark range</strong></li><li><span>03</span><strong>Three changes to one booking system</strong></li><li><span>04</span><strong>Add a Merit count without breaking PassCount</strong></li><li><span>05</span><strong>First dry-run the lockout counter and conduct a walkthrough in which peers inspect the algorithm.</strong></li><li><span>06</span><strong>White-box tests cover true/false paths; black-box tests valid, invalid and boundary inputs from requirements.</strong></li></ol></article>
+          <details class="v2-core-facts"><summary>Open precise terminology and exam facts</summary><ul class="v2-facts"><li>The Version 2 table requires understanding the need and likely contents; it does not require candidates to produce either document.</li><li>Alpha testing is performed internally before release; beta testing uses selected external users in realistic settings; acceptance testing checks the delivered system against agreed requirements. A strategy states levels/methods/responsibility, while a test plan records test ID, purpose, data, expected result, actual result and pass/fail.</li><li>Choose test data from the stated validation rule and give an expected result for each value. A label such as &#39;boundary&#39; is insufficient unless the value really tests a stated limit.</li><li>Classify the reason for the change, not the code edited. The same module could receive a corrective change for a crash, an adaptive change for a new operating-system interface, or a perfective change for faster search and a clearer result display.</li><li>Every maintenance change requires impact analysis, controlled amendment, tests for the changed behaviour and regression tests for unaffected behaviour. Records should link the request, code change and test evidence.</li><li>Test the enhancement with data that exercises the new path and rerun regression tests for existing paths. Correcting a fault is corrective maintenance; adding or improving requested functionality is an enhancement and may be perfective maintenance.</li></ul></details>
+          <details class="v2-extension"><summary>Beyond syllabus / 延伸知识（不要求背诵）</summary><p>modern teams often use continuous integration to repeat building and testing whenever a program changes.</p></details>
         </section>
 
         <section class="v2-panel" id="practice">
@@ -86,6 +144,6 @@
         <nav class="v2-bottom-nav" aria-label="Previous and next lesson"><a href="../lesson-085/" >Previous lesson</a><a href="../lesson-087/" >Next lesson</a></nav>
       </div>
     </main>
-    <script src="../course-v2.js?v=1"></script>
+    <script src="../course-v2.js?v=2"></script>
   </body>
 </html>

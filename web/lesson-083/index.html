@@ -8,7 +8,7 @@
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
-    <link rel="stylesheet" href="../course-v2.css?v=3" />
+    <link rel="stylesheet" href="../course-v2.css?v=6" />
   </head>
   <body data-course-version="2" data-lesson-id="083" data-syllabus-ids="S12.03">
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -17,16 +17,11 @@
       <nav class="v2-actions" aria-label="Lesson actions"><a href="../">Course home</a><a href="../assessments/">Assessment bank</a><button type="button" id="printLesson">Print</button></nav>
     </header>
     <main class="v2-shell" id="main-content" tabindex="-1">
-      <nav class="v2-toc" aria-label="Lesson contents"><strong>Lesson 083</strong><a href="#overview">Overview</a><a href="#prerequisite">Prerequisite</a><a href="#explanation">Explanation</a><a href="#practice">Practice</a><a href="#summary">Summary</a></nav>
+      <nav class="v2-jump-nav" aria-label="Lesson contents"><strong>Lesson 083</strong><a href="#overview">Overview</a><a href="#prerequisite">Prerequisite</a><a href="#explanation">Explanation</a><a href="#practice">Practice</a><a href="#summary">Summary</a></nav>
       <div class="v2-content">
-        <section class="v2-hero" id="overview">
-          <div><p class="v2-eyebrow">Flexible-depth lesson</p><h2>State-transition diagrams</h2><p>S12.03 | Select what to omit, teach briefly or explore in depth.</p></div>
-          <div class="v2-time-grid" aria-label="Available lesson depth"><div><strong>Quick</strong><span>diagnose + essentials</span></div><div><strong>Full</strong><span>complete explanation</span></div><div><strong>Deep</strong><span>prerequisites + extension</span></div><div><strong>Choose</strong><span>practice by need</span></div></div>
-        </section>
-
-        <section class="v2-panel v2-route-menu" aria-labelledby="route-heading">
-          <div class="v2-heading"><p class="v2-eyebrow">Teacher choice</p><h2 id="route-heading">Choose the depth for this group</h2></div>
-          <div class="v2-route-grid"><article><h3>Quick route</h3><p>Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.</p></article><article><h3>Full route</h3><p>Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.</p></article><article><h3>Deep route</h3><p>Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.</p></article></div>
+        <section class="v2-overview" id="overview">
+          <div><p class="v2-eyebrow">Flexible-depth lesson</p><p class="v2-overview-copy">S12.03 | Learn from the diagrams, test the method, then choose the practice you need.</p></div>
+          <details class="v2-route-menu"><summary>Choose a Quick, Full or Deep route</summary><div class="v2-route-grid"><article><h3>Quick route</h3><p>Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.</p></article><article><h3>Full route</h3><p>Use every knowledge-point material set, the worked method, the terminology check and all questions.</p></article><article><h3>Deep route</h3><p>Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.</p></article></div></details>
         </section>
 
         <section class="v2-panel" id="prerequisite">
@@ -37,21 +32,76 @@
         </section>
 
         <section class="v2-panel" id="explanation">
-          <div class="v2-heading"><p class="v2-eyebrow">Part 2 | deliberately over-complete</p><h2>Knowledge explanation</h2></div>
-          <h3>Learning objectives</h3><ul class="v2-objectives"><li>Show understanding of the purpose of state-transition diagrams to document an algorithm.</li></ul>
+          <div class="v2-heading v2-heading--wide"><p class="v2-eyebrow">Part 2 | knowledge-point material sets</p><h2>Learn each point through visuals</h2><p>Follow the map, the three-part explanation and the concrete cue. Open precise wording only after the idea is clear.</p></div>
           <details class="v2-concept-menu"><summary>Open the concept checklist and choose what to teach</summary><ul><li>state-transition</li><li>diagrams</li></ul></details>
-          <div class="v2-explanation-grid">
-            <div>
-              <article class="v2-core-facts"><h3>Detailed explanation</h3><p class="v2-teacher-note">Teach all points, or select only the ones this group needs. The list is intentionally fuller than a fixed lesson slot.</p><ul class="v2-facts"><li>The Version 2 table requires understanding the purpose; it does not require candidates to construct a state-transition diagram.</li><li>A structure chart documents decomposition into modules, procedures and functions. Boxes name modules; hierarchy lines show which module calls another; labelled arrows show data or control parameters passed between them. Its purpose is to communicate modular structure and interfaces before coding.</li><li>To construct a structure chart, place the controlling module at the top, split the problem into one-responsibility subtasks, connect each caller to its called modules, and label every value passed. To derive equivalent pseudocode, turn each box into a complete PROCEDURE or FUNCTION header with corresponding parameters, add calls in the parent body with matching arguments, and preserve the shown hierarchy.</li><li>A state-transition diagram documents an algorithm by showing persistent states and the events that cause changes between them. Its syllabus requirement is to understand that purpose; constructing a state-transition diagram is retained only as Optional enrichment.</li></ul></article>
-              <article class="v2-example"><h3>Worked example</h3><p>Door controller: two design views: A structure chart places ControlDoor above ReadCard(CardID), ValidateCard(CardID, IsValid) and SetLock(IsValid). Equivalent pseudocode declares those interfaces and calls them from ControlDoor with matching arguments. A provided state-transition diagram with Locked and Unlocked states serves a different purpose: it documents event-driven changes rather than module hierarchy or processing sequence.</p></article>
-              <aside class="v2-extension"><h3>Beyond syllabus / 延伸知识（不要求背诵）</h3><p>modern teams often use continuous integration to repeat building and testing whenever a program changes.</p></aside>
-            </div>
-            <figure class="v2-visual">
-              <img src="../assets/diagrams/stage10-infographics/stage10-lesson-145-algorithms.jpg" alt="A structure chart shows module hierarchy, calling relationships and labelled parameters passed between modules, procedures or functions.. Derive pseudocode by turning each box into a complete subprogram header and each hierarchy connection into a matching call with arguments.. A separate state-transition diagram marks the start state and uses directed, event-labelled transitions between persistent states; it is not a flowchart of processing steps." loading="lazy" />
-              <figcaption>Structure charts, derived pseudocode and state transitions. One maintained explanation is shown as an image on larger screens and as text on small screens.</figcaption>
-              <div class="v2-mobile-visual-text" aria-label="Mobile text alternative"><ul><li>A structure chart shows module hierarchy, calling relationships and labelled parameters passed between modules, procedures or functions.</li><li>Derive pseudocode by turning each box into a complete subprogram header and each hierarchy connection into a matching call with arguments.</li><li>A separate state-transition diagram marks the start state and uses directed, event-labelled transitions between persistent states; it is not a flowchart of processing steps.</li></ul></div>
-            </figure>
-          </div>
+          <nav class="v2-knowledge-index" aria-label="Knowledge points in this lesson"><a href="#knowledge-s12-03"><span>01</span>S12.03</a></nav><div class="v2-knowledge-point-list"><section class="v2-knowledge-point" id="knowledge-s12-03" data-syllabus-id="S12.03" data-visual-mode="process" data-material-count="5">
+      <header class="v2-knowledge-point-head"><span>01</span><div><p>S12.03 · process</p><h3>State-transition diagrams</h3></div></header>
+      <div class="v2-material-triad">
+        <article class="v2-native-material v2-native-material--map"><h4>Concept map</h4><div class="v2-concept-map" aria-label="Concept map for S12.03"><span class="v2-concept-node" data-node-index="1">state-transition</span><span class="v2-concept-node" data-node-index="2">diagrams</span></div></article>
+        <article class="v2-native-material v2-native-material--story"><h4>See how it works</h4><ol><li><span>Start</span><strong>it does not require candidates to construct a state-transition diagram</strong></li><li><span>Change</span><strong>A state-transition diagram documents an algorithm by showing persistent states and the events that cause changes between them</strong></li><li><span>Check</span><strong>constructing a state-transition diagram is retained only as Optional enrichment</strong></li></ol></article>
+        <aside class="v2-native-material v2-native-material--cue"><h4>Concrete cue</h4><p>The Version 2 table requires understanding the purpose; it does not require candidates to construct a state-transition diagram.</p></aside>
+      </div>
+      <section class="v2-material-library" aria-label="S12.03 diagrams">
+    <div class="v2-material-library-head"><h3>S12.03 diagrams</h3><div class="v2-material-controls">
+        <button type="button" data-material-prev aria-controls="materials-083-s12-03" aria-label="Previous diagram"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" /></svg></button>
+        <span data-material-position>1 / 2</span>
+        <button type="button" data-material-next aria-controls="materials-083-s12-03" aria-label="Next diagram"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" /></svg></button>
+      </div></div>
+    <div class="v2-material-rail" id="materials-083-s12-03" data-material-rail><figure class="v2-visual" data-material-kind="comparison">
+            <div class="v2-visual-heading"><span>01</span><div><p>Comparison · 1 of 2</p><h4>State-transition diagrams: states, events and directed change</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: State-transition diagrams: states, events and directed change"><img src="../assets/diagrams/stage10-infographics/v2-lesson-083-state-transitions.png" alt="State-transition diagrams: states, events and directed change" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>A state is a persistent condition and an event is a trigger that may cause change.</li><li>A directed arrow records a permitted transition and its event label explains what triggers it.</li><li>The incoming start arrow marks the initial state.</li><li>The door-controller example moves among LOCKED, UNLOCKED and ALARM states in response to card, door and reset events.</li><li>A state-transition diagram documents states and event-driven change; a flowchart documents processing steps and decisions.</li></ul></details>
+          </figure><figure class="v2-visual" data-material-kind="example">
+            <div class="v2-visual-heading"><span>02</span><div><p>Concrete example · 2 of 2</p><h4>Structure charts, derived pseudocode and state transitions</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Structure charts, derived pseudocode and state transitions"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-145-algorithms.jpg" alt="Structure charts, derived pseudocode and state transitions" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>A state-transition diagram marks the initial state and uses directed, event-labelled transitions between persistent states.</li><li>A state-transition diagram is not a flowchart of processing steps.</li><li>The AS9618 requirement here is to explain the purpose of the diagram rather than construct one.</li></ul></details>
+          </figure></div>
+  </section>
+      <details class="v2-point-precision"><summary>Open precise syllabus wording</summary><p><strong>Show understanding of the purpose of state-transition diagrams to document an algorithm.</strong></p><p>The Version 2 table requires understanding the purpose; it does not require candidates to construct a state-transition diagram.</p></details>
+    </section></div>
+          <section class="v2-material-library" aria-label="Supporting diagram library">
+    <div class="v2-material-library-head"><h3>Supporting diagram library</h3><div class="v2-material-controls">
+        <button type="button" data-material-prev aria-controls="materials-083-supporting" aria-label="Previous diagram"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" /></svg></button>
+        <span data-material-position>1 / 8</span>
+        <button type="button" data-material-next aria-controls="materials-083-supporting" aria-label="Next diagram"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" /></svg></button>
+      </div></div>
+    <div class="v2-material-rail" id="materials-083-supporting" data-material-rail><figure class="v2-visual" data-material-kind="diagram">
+            <div class="v2-visual-heading"><span>01</span><div><p>Diagram · 1 of 8</p><h4>Acceptance tests check whether requirements are met</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Acceptance tests check whether requirements are met"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-144-acceptance.jpg" alt="Acceptance tests check whether requirements are met" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Acceptance tests</li><li>Requirement</li><li>Test data/action</li><li>Expected result</li><li>Evidence</li><li>reject double booking</li><li>try to book Room 12 at an occupied time</li><li>booking rejected with message</li></ul></details>
+          </figure><figure class="v2-visual" data-material-kind="diagram">
+            <div class="v2-visual-heading"><span>02</span><div><p>Diagram · 2 of 8</p><h4>Analysis turns user needs into a requirements specification</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Analysis turns user needs into a requirements specification"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-144-analysis.jpg" alt="Analysis turns user needs into a requirements specification" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Requirements analysis</li><li>Use interviews, questionnaires, observation or document analysis to find needs.</li><li>Remove ambiguity by asking about users, tasks, data, constraints and priorities.</li><li>Write requirements that can guide design and later testing.</li></ul></details>
+          </figure><figure class="v2-visual" data-material-kind="diagram">
+            <div class="v2-visual-heading"><span>03</span><div><p>Diagram · 3 of 8</p><h4>Is the criterion testable?</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Is the criterion testable?"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-144-criteria-tool.jpg" alt="Is the criterion testable?" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Criteria checker</li><li>Criterion</li></ul></details>
+          </figure><figure class="v2-visual" data-material-kind="diagram">
+            <div class="v2-visual-heading"><span>04</span><div><p>Diagram · 4 of 8</p><h4>Functional requirements describe what the system must do</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Functional requirements describe what the system must do"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-144-functional.jpg" alt="Functional requirements describe what the system must do" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Functional requirements</li><li>Vague request</li><li>Functional requirement</li><li>Why stronger</li><li>manage bookings</li><li>allow teachers to create, edit and cancel room bookings</li><li>states actions and user</li><li>avoid clashes</li></ul></details>
+          </figure><figure class="v2-visual" data-material-kind="diagram">
+            <div class="v2-visual-heading"><span>05</span><div><p>Diagram · 5 of 8</p><h4>Non-functional requirements describe qualities or constraints</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Non-functional requirements describe qualities or constraints"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-144-non-functional.jpg" alt="Non-functional requirements describe qualities or constraints" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Non-functional requirements</li><li>Measurable requirement</li><li>Possible evidence</li><li>performance</li><li>room search results display within 2 seconds</li><li>timed test</li><li>usability</li><li>a new teacher can create a booking in under 2 minutes after one demonstration</li></ul></details>
+          </figure><figure class="v2-visual" data-material-kind="diagram">
+            <div class="v2-visual-heading"><span>06</span><div><p>Diagram · 6 of 8</p><h4>Turn vague requests into stronger requirements</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Turn vague requests into stronger requirements"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-144-rewriter.jpg" alt="Turn vague requests into stronger requirements" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Interactive rewriter</li><li>Vague request</li></ul></details>
+          </figure><figure class="v2-visual" data-material-kind="diagram">
+            <div class="v2-visual-heading"><span>07</span><div><p>Diagram · 7 of 8</p><h4>Different users reveal different requirements</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Different users reveal different requirements"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-144-stakeholders.jpg" alt="Different users reveal different requirements" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Stakeholders</li><li>Teachers</li><li>Need quick booking and clear room availability.</li><li>Admin staff</li><li>Need reports, conflict resolution and permission controls.</li><li>IT support</li><li>Need backup, user management and maintainable configuration.</li></ul></details>
+          </figure><figure class="v2-visual" data-material-kind="diagram">
+            <div class="v2-visual-heading"><span>08</span><div><p>Diagram · 8 of 8</p><h4>Success criteria make evaluation possible</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Success criteria make evaluation possible"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-144-success.jpg" alt="Success criteria make evaluation possible" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Success criteria</li><li>“The system should be easy to use.”</li><li>Stronger</li><li>“At least 8 out of 10 teachers can create a booking without help in under 2 minutes.”</li><li>A success criterion should be specific enough that two people can test it and reach the same conclusion.</li></ul></details>
+          </figure></div>
+  </section>
+          <article class="v2-example"><div><p class="v2-eyebrow">Apply the idea</p><h3>Worked method</h3></div><ol class="v2-worked-flow"><li><span>01</span><strong>two design views</strong></li><li><span>02</span><strong>A structure chart places ControlDoor above ReadCard(CardID), ValidateCard(CardID, IsValid) and SetLock(IsValid).</strong></li><li><span>03</span><strong>Equivalent pseudocode declares those interfaces and calls them from ControlDoor with matching arguments.</strong></li><li><span>04</span><strong>A provided state-transition diagram with Locked and Unlocked states serves a different purpose</strong></li><li><span>05</span><strong>it documents event-driven changes rather than module hierarchy or processing sequence.</strong></li></ol></article>
+          <details class="v2-core-facts"><summary>Open precise terminology and exam facts</summary><ul class="v2-facts"><li>The Version 2 table requires understanding the purpose; it does not require candidates to construct a state-transition diagram.</li><li>A structure chart documents decomposition into modules, procedures and functions. Boxes name modules; hierarchy lines show which module calls another; labelled arrows show data or control parameters passed between them. Its purpose is to communicate modular structure and interfaces before coding.</li><li>To construct a structure chart, place the controlling module at the top, split the problem into one-responsibility subtasks, connect each caller to its called modules, and label every value passed. To derive equivalent pseudocode, turn each box into a complete PROCEDURE or FUNCTION header with corresponding parameters, add calls in the parent body with matching arguments, and preserve the shown hierarchy.</li><li>A state-transition diagram documents an algorithm by showing persistent states and the events that cause changes between them. Its syllabus requirement is to understand that purpose; constructing a state-transition diagram is retained only as Optional enrichment.</li></ul></details>
+          <details class="v2-extension"><summary>Beyond syllabus / 延伸知识（不要求背诵）</summary><p>modern teams often use continuous integration to repeat building and testing whenever a program changes.</p></details>
         </section>
 
         <section class="v2-panel" id="practice">
@@ -86,6 +136,6 @@
         <nav class="v2-bottom-nav" aria-label="Previous and next lesson"><a href="../lesson-082/" >Previous lesson</a><a href="../lesson-084/" >Next lesson</a></nav>
       </div>
     </main>
-    <script src="../course-v2.js?v=1"></script>
+    <script src="../course-v2.js?v=2"></script>
   </body>
 </html>

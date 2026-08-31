@@ -4,12 +4,12 @@
 **Paper:** Paper 2<br>
 **Syllabus:** Section 12: Software development<br>
 **Syllabus requirements:** S12.04<br>
-**Pacing:** Flexible. This lesson is deliberately over-complete; select a quick, full or deep route for the learners in front of you.
+**Pacing:** Flexible. Select the material set and practice depth needed by the learner.
 
 ## Teaching-depth menu
 
 - **Quick route:** Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.
-- **Full route:** Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.
+- **Full route:** Use every knowledge-point material set, the worked method, the terminology check and all questions.
 - **Deep route:** Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.
 
 ## 1. Prerequisite knowledge and quick diagnostic
@@ -22,17 +22,135 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ## 2. Knowledge explanation
 
-### Learning objectives
+### 1. Logic and runtime errors (S12.04)
 
-- Identify and correct syntax, logic and runtime errors.
+**Concept map:** logic → runtime → errors
 
-### Concept checklist for teacher choice
+**Three-part explanation:**
 
-- logic
-- runtime
-- errors
+1. Locate and identify syntax, logic and run-time errors in a program and correct identified errors
+2. Understand different ways of exposing and avoiding faults in a program
+3. A missing ENDIF is a syntax error exposed during translation and corrected by closing the selection
 
-### Detailed explanation
+**Concrete cue:** Understand different ways of exposing and avoiding faults in a program. Locate and identify syntax, logic and run-time errors in a program and correct identified errors.
+
+#### Logic errors make the program do the wrong thing
+
+![Logic errors make the program do the wrong thing](../web/assets/diagrams/stage10-infographics/stage10-lesson-060-logic.jpg)
+
+<details><summary>Text transcript</summary>
+
+- Meaning The code is syntactically valid and may run, but the algorithm or condition is wrong.
+- Examples Using < instead of <= , wrong formula, wrong loop condition or off-by-one error.
+- Detection Usually found by testing, tracing or comparing actual output with expected output.
+- Common error A translator may not detect it because the instructions are legal.
+
+</details>
+
+<details><summary>Precise syllabus wording</summary>
+
+Identify and correct syntax, logic and runtime errors.
+
+Understand different ways of exposing and avoiding faults in a program. Locate and identify syntax, logic and run-time errors in a program and correct identified errors.
+
+</details>
+
+### Supporting diagram library
+
+#### A data dictionary defines each data item consistently
+
+![A data dictionary defines each data item consistently](../web/assets/diagrams/stage10-infographics/stage10-lesson-145-dictionary.jpg)
+
+<details><summary>Text transcript</summary>
+
+- Data dictionary
+- Validation
+- letter plus digits
+- not blank; exists in room file
+- identifies the room
+- BookingDate
+- YYYY-MM-DD
+- school day; not in past
+
+</details>
+
+#### Inspect a field definition
+
+![Inspect a field definition](../web/assets/diagrams/stage10-infographics/stage10-lesson-145-dictionary-tool.jpg)
+
+<details><summary>Text transcript</summary>
+
+- Data dictionary checker
+- Data item
+
+</details>
+
+#### Interface designs show how users will enter data and navigate the system
+
+![Interface designs show how users will enter data and navigate the system](../web/assets/diagrams/stage10-infographics/stage10-lesson-145-interfaces.jpg)
+
+<details><summary>Text transcript</summary>
+
+- Interface designs
+- Create room booking
+- Date calendar control
+- Period drop-down list
+- Room searchable list
+- Error message area: “Room already booked for this time.”
+- Interface design is not just “make the screen pretty”. It specifies controls, navigation, prompts, validation messages and user feedback.
+
+</details>
+
+#### Design documentation supports implementation, testing and maintenance
+
+![Design documentation supports implementation, testing and maintenance](../web/assets/diagrams/stage10-infographics/stage10-lesson-145-lifecycle.jpg)
+
+<details><summary>Text transcript</summary>
+
+- Using design docs later
+- Implementation
+- Developers know which data fields, algorithms and interface behaviours to build.
+- Testers compare actual behaviour with the designed rules, validation and expected messages.
+- Maintenance
+- Future changes are safer because developers can see existing data rules and processing assumptions.
+
+</details>
+
+#### Design documents translate requirements into a buildable plan
+
+![Design documents translate requirements into a buildable plan](../web/assets/diagrams/stage10-infographics/stage10-lesson-145-purpose.jpg)
+
+<details><summary>Text transcript</summary>
+
+- Design documentation purpose
+- Before coding
+- They decide data structures, processing logic and user interaction before the implementation language takes over.
+- For testers
+- They provide expected rules and interface behaviour so tests can check more than “it seems fine”.
+- For maintenance
+- They help future developers understand why the system works in a particular way.
+- A useful design document is specific enough to guide construction, but not just a pasted block of final program code.
+
+</details>
+
+#### Traceability keeps the design connected to the original need
+
+![Traceability keeps the design connected to the original need](../web/assets/diagrams/stage10-infographics/stage10-lesson-145-traceability.jpg)
+
+<details><summary>Text transcript</summary>
+
+- Linking requirements to design
+- Requirement
+- Algorithm design
+- Data dictionary
+- Interface design
+- Prevent double booking
+- compare requested time with existing bookings
+- RoomID, date, start and end times
+
+</details>
+
+<details><summary>Open precise terminology and exam facts</summary>
 
 - Understand different ways of exposing and avoiding faults in a program. Locate and identify syntax, logic and run-time errors in a program and correct identified errors.
 - A syntax error breaks the language grammar and is normally exposed by a translator or an IDE's dynamic syntax check. A logic error uses valid syntax but follows the wrong algorithm, so a trace, dry run, walkthrough or deliberately selected test can expose an unexpected result. A run-time error occurs during execution, such as division by zero or opening a missing file, so exception messages and run-time diagnostics help locate it.
@@ -42,18 +160,16 @@ Ask the learner to give one accurate definition or method step before continuing
 - A runtime error occurs while the program is executing; runtime diagnostics help locate the statement that caused the failure.
 - Program errors can be exposed by suitable test data and expected results, located with trace output or breakpoints, and corrected before the same tests are repeated to confirm the fix.
 
+</details>
+
 ### Worked example
 
-Correct three different faults: A missing ENDIF is a syntax error exposed during translation and corrected by closing the selection. Mark 50 for a pass boundary of 50 is a logic error exposed by tracing Mark = 50 and corrected to Mark = 50. Total / Count when Count may be 0 is a run-time risk exposed during execution and avoided by testing Count before division.
+1. Correct three different faults
+2. A missing ENDIF is a syntax error exposed during translation and corrected by closing the selection.
+3. Mark 50 for a pass boundary of 50 is a logic error exposed by tracing Mark = 50 and corrected to Mark = 50.
+4. Count when Count may be 0 is a run-time risk exposed during execution and avoided by testing Count before division.
 
 Beyond syllabus / 延伸知识（不要求背诵）: modern teams often use continuous integration to repeat building and testing whenever a program changes.
-
-### Retained visual explanation
-
-![Logic errors make the program do the wrong thing](../web/assets/diagrams/stage10-infographics/stage10-lesson-060-logic.jpg)
-
-_Logic errors make the program do the wrong thing. The image and mobile text alternative come from one maintained fact source._
-
 ## 3. Practice by question type
 
 ### Question 1 - foundation - explain - 2 marks

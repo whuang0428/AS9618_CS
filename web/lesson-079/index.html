@@ -8,7 +8,7 @@
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
-    <link rel="stylesheet" href="../course-v2.css?v=3" />
+    <link rel="stylesheet" href="../course-v2.css?v=6" />
   </head>
   <body data-course-version="2" data-lesson-id="079" data-syllabus-ids="S11.09">
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -17,16 +17,11 @@
       <nav class="v2-actions" aria-label="Lesson actions"><a href="../">Course home</a><a href="../assessments/">Assessment bank</a><button type="button" id="printLesson">Print</button></nav>
     </header>
     <main class="v2-shell" id="main-content" tabindex="-1">
-      <nav class="v2-toc" aria-label="Lesson contents"><strong>Lesson 079</strong><a href="#overview">Overview</a><a href="#prerequisite">Prerequisite</a><a href="#explanation">Explanation</a><a href="#practice">Practice</a><a href="#summary">Summary</a></nav>
+      <nav class="v2-jump-nav" aria-label="Lesson contents"><strong>Lesson 079</strong><a href="#overview">Overview</a><a href="#prerequisite">Prerequisite</a><a href="#explanation">Explanation</a><a href="#practice">Practice</a><a href="#summary">Summary</a></nav>
       <div class="v2-content">
-        <section class="v2-hero" id="overview">
-          <div><p class="v2-eyebrow">Flexible-depth lesson</p><h2>Clear and efficient Cambridge pseudocode</h2><p>S11.09 | Select what to omit, teach briefly or explore in depth.</p></div>
-          <div class="v2-time-grid" aria-label="Available lesson depth"><div><strong>Quick</strong><span>diagnose + essentials</span></div><div><strong>Full</strong><span>complete explanation</span></div><div><strong>Deep</strong><span>prerequisites + extension</span></div><div><strong>Choose</strong><span>practice by need</span></div></div>
-        </section>
-
-        <section class="v2-panel v2-route-menu" aria-labelledby="route-heading">
-          <div class="v2-heading"><p class="v2-eyebrow">Teacher choice</p><h2 id="route-heading">Choose the depth for this group</h2></div>
-          <div class="v2-route-grid"><article><h3>Quick route</h3><p>Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.</p></article><article><h3>Full route</h3><p>Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.</p></article><article><h3>Deep route</h3><p>Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.</p></article></div>
+        <section class="v2-overview" id="overview">
+          <div><p class="v2-eyebrow">Flexible-depth lesson</p><p class="v2-overview-copy">S11.09 | Learn from the diagrams, test the method, then choose the practice you need.</p></div>
+          <details class="v2-route-menu"><summary>Choose a Quick, Full or Deep route</summary><div class="v2-route-grid"><article><h3>Quick route</h3><p>Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.</p></article><article><h3>Full route</h3><p>Use every knowledge-point material set, the worked method, the terminology check and all questions.</p></article><article><h3>Deep route</h3><p>Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.</p></article></div></details>
         </section>
 
         <section class="v2-panel" id="prerequisite">
@@ -37,21 +32,76 @@
         </section>
 
         <section class="v2-panel" id="explanation">
-          <div class="v2-heading"><p class="v2-eyebrow">Part 2 | deliberately over-complete</p><h2>Knowledge explanation</h2></div>
-          <h3>Learning objectives</h3><ul class="v2-objectives"><li>Write clear and efficient Cambridge pseudocode.</li></ul>
+          <div class="v2-heading v2-heading--wide"><p class="v2-eyebrow">Part 2 | knowledge-point material sets</p><h2>Learn each point through visuals</h2><p>Follow the map, the three-part explanation and the concrete cue. Open precise wording only after the idea is clear.</p></div>
           <details class="v2-concept-menu"><summary>Open the concept checklist and choose what to teach</summary><ul><li>clear</li><li>efficient</li><li>Cambridge</li><li>pseudocode</li></ul></details>
-          <div class="v2-explanation-grid">
-            <div>
-              <article class="v2-core-facts"><h3>Detailed explanation</h3><p class="v2-teacher-note">Teach all points, or select only the ones this group needs. The list is intentionally fuller than a fixed lesson slot.</p><ul class="v2-facts"><li>Write efficient pseudocode.</li><li>Efficient pseudocode avoids unnecessary repeated work and selects a structure suited to the data and stopping rule. For example, total and count can be updated during one traversal instead of scanning the same array twice when both results are needed.</li><li>Efficiency does not justify incorrect bounds, hidden assumptions or compressed code that cannot be traced. A strong answer remains clear: initialise once, access only valid data, avoid redundant calculations and use meaningful identifiers and coherent constructs.</li><li>At AS Level, justify an improvement from the actual algorithm, such as fewer repeated passes or stopping a search once the target is found. Do not claim that shorter text alone proves a more efficient algorithm.</li><li>Clear Cambridge pseudocode uses meaningful identifiers, consistent indentation, complete Cambridge constructs and a traceable control path. Efficient pseudocode avoids unnecessary repeated work while preserving correctness.</li></ul></article>
-              <article class="v2-example"><h3>Worked example</h3><p>Count passes and total in one traversal / Combine two traversals: Set Total and PassCount to 0 before one FOR loop through Marks[1:30]. Add each mark to Total and increment PassCount only when the mark is at least 50. Output both values after NEXT Index. This preserves clear control flow while avoiding a second full traversal. One traversal of Marks can update both Total and PassCount. The Cambridge pseudocode remains clear because initialisation, loop bounds, selection and outputs are explicit.</p></article>
-              <aside class="v2-extension"><h3>Beyond syllabus / 延伸知识（不要求背诵）</h3><p>consistent style, modularity and automated tests reduce maintenance errors in larger programs.</p></aside>
-            </div>
-            <figure class="v2-visual">
-              <img src="../assets/diagrams/stage10-infographics/stage10-lesson-134-java.jpg" alt="Cambridge guide example: MID(Name, 1, 3) returns the first three characters as a STRING.. Java support example: name.substring(0, 3) uses start index 0 inclusive and end index 3 exclusive.. LEFT is not listed in the Cambridge pseudocode guide; a question may use it only when the signature and position convention are supplied.. Do not add UCASE around a STRING expression because UCASE accepts CHAR." loading="lazy" />
-              <figcaption>MID and Java substring use different positions. One maintained explanation is shown as an image on larger screens and as text on small screens.</figcaption>
-              <div class="v2-mobile-visual-text" aria-label="Mobile text alternative"><ul><li>Cambridge guide example: MID(Name, 1, 3) returns the first three characters as a STRING.</li><li>Java support example: name.substring(0, 3) uses start index 0 inclusive and end index 3 exclusive.</li><li>LEFT is not listed in the Cambridge pseudocode guide; a question may use it only when the signature and position convention are supplied.</li><li>Do not add UCASE around a STRING expression because UCASE accepts CHAR.</li></ul></div>
-            </figure>
-          </div>
+          <nav class="v2-knowledge-index" aria-label="Knowledge points in this lesson"><a href="#knowledge-s11-09"><span>01</span>S11.09</a></nav><div class="v2-knowledge-point-list"><section class="v2-knowledge-point" id="knowledge-s11-09" data-syllabus-id="S11.09" data-visual-mode="concept" data-material-count="7">
+      <header class="v2-knowledge-point-head"><span>01</span><div><p>S11.09 · concept</p><h3>Clear · Efficient · Cambridge · Pseudocode</h3></div></header>
+      <div class="v2-material-triad">
+        <article class="v2-native-material v2-native-material--map"><h4>Concept map</h4><div class="v2-concept-map" aria-label="Concept map for S11.09"><span class="v2-concept-node" data-node-index="1">clear</span><span class="v2-concept-node" data-node-index="2">efficient</span><span class="v2-concept-node" data-node-index="3">Cambridge</span><span class="v2-concept-node" data-node-index="4">pseudocode</span></div></article>
+        <article class="v2-native-material v2-native-material--story"><h4>See how it works</h4><ol><li><span>Meaning</span><strong>The Cambridge pseudocode remains clear because initialisation, loop bounds, selection and outputs are explicit</strong></li><li><span>Mechanism</span><strong>Clear Cambridge pseudocode uses meaningful identifiers, consistent indentation, complete Cambridge constructs and a traceable control path</strong></li><li><span>Consequence</span><strong>Efficient pseudocode avoids unnecessary repeated work while preserving correctness</strong></li></ol></article>
+        <aside class="v2-native-material v2-native-material--cue"><h4>Concrete cue</h4><p>Clear Cambridge pseudocode uses meaningful identifiers, consistent indentation, complete Cambridge constructs and a traceable control path. Efficient pseudocode avoids unnecessary repeated work while preserving correctness.</p></aside>
+      </div>
+      <section class="v2-material-library" aria-label="S11.09 diagrams">
+    <div class="v2-material-library-head"><h3>S11.09 diagrams</h3><div class="v2-material-controls">
+        <button type="button" data-material-prev aria-controls="materials-079-s11-09" aria-label="Previous diagram"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" /></svg></button>
+        <span data-material-position>1 / 4</span>
+        <button type="button" data-material-next aria-controls="materials-079-s11-09" aria-label="Next diagram"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" /></svg></button>
+      </div></div>
+    <div class="v2-material-rail" id="materials-079-s11-09" data-material-rail><figure class="v2-visual" data-material-kind="example">
+            <div class="v2-visual-heading"><span>01</span><div><p>Concrete example · 1 of 4</p><h4>Java methods can model modularity, but Cambridge pseudocode remains the exam format</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Java methods can model modularity, but Cambridge pseudocode remains the exam format"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-140-java.jpg" alt="Java methods can model modularity, but Cambridge pseudocode remains the exam format" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Java support only</li><li>Cambridge-style pseudocode</li><li>FUNCTION IsValidMark(Mark : INTEGER) RETURNS BOOLEAN</li><li>RETURN Mark = 0 AND Mark &lt;= 100</li><li>ENDFUNCTION</li><li>Java support example only</li><li>static boolean isValidMark(int mark) {</li><li>return mark = 0 &amp;&amp; mark &lt;= 100;</li></ul></details>
+          </figure><figure class="v2-visual" data-material-kind="diagram">
+            <div class="v2-visual-heading"><span>02</span><div><p>Diagram · 2 of 4</p><h4>Java can support practice; the review answer should be Cambridge pseudocode</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Java can support practice; the review answer should be Cambridge pseudocode"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-142-java.jpg" alt="Java can support practice; the review answer should be Cambridge pseudocode" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Java may support practice but the review answer uses Cambridge pseudocode.</li><li>Increment PassCount only when the current mark is at least 50.</li><li>Close the pseudocode selection with ENDIF before NEXT Index.</li><li>Keep Java and pseudocode indexing conventions explicit.</li></ul></details>
+          </figure><figure class="v2-visual" data-material-kind="process">
+            <div class="v2-visual-heading"><span>03</span><div><p>Process · 3 of 4</p><h4>A string is a sequence of characters</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: A string is a sequence of characters"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-134-strings.jpg" alt="A string is a sequence of characters" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Cambridge-style assignment</li><li>Name &lt;- &quot;Ada&quot;</li><li>Message &lt;- &quot;Hello, &quot; &amp; Name</li><li>OUTPUT Message</li><li>Reasoning</li><li>&quot;Ada&quot; is a string of three characters. &amp; is used here for concatenation.</li><li>If a question uses a different concatenation operator, follow the question. The mark is for clear string construction.</li></ul></details>
+          </figure><figure class="v2-visual" data-material-kind="example">
+            <div class="v2-visual-heading"><span>04</span><div><p>Concrete example · 4 of 4</p><h4>Java I/O syntax is not Cambridge pseudocode</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Java I/O syntax is not Cambridge pseudocode"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-136-java.jpg" alt="Java I/O syntax is not Cambridge pseudocode" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Java support only</li><li>Cambridge-style pseudocode</li><li>OUTPUT &quot;Enter mark&quot;</li><li>INPUT Mark</li><li>OUTPUT &quot;Mark: &quot; &amp; Mark</li><li>Java support example only</li><li>Scanner input = new Scanner(System.in);</li><li>System.out.print(&quot;Enter mark: &quot;);</li></ul></details>
+          </figure></div>
+  </section>
+      <details class="v2-point-precision"><summary>Open precise syllabus wording</summary><p><strong>Write clear and efficient Cambridge pseudocode.</strong></p><p>Write efficient pseudocode.</p></details>
+    </section></div>
+          <section class="v2-material-library" aria-label="Supporting diagram library">
+    <div class="v2-material-library-head"><h3>Supporting diagram library</h3><div class="v2-material-controls">
+        <button type="button" data-material-prev aria-controls="materials-079-supporting" aria-label="Previous diagram"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" /></svg></button>
+        <span data-material-position>1 / 6</span>
+        <button type="button" data-material-next aria-controls="materials-079-supporting" aria-label="Next diagram"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" /></svg></button>
+      </div></div>
+    <div class="v2-material-rail" id="materials-079-supporting" data-material-rail><figure class="v2-visual" data-material-kind="diagram">
+            <div class="v2-visual-heading"><span>01</span><div><p>Diagram · 1 of 6</p><h4>LCASE and UCASE convert one CHAR</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: LCASE and UCASE convert one CHAR"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-134-case.jpg" alt="LCASE and UCASE convert one CHAR" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Declare Answer as CHAR, input one character and normalise it with UCASE before comparison.</li><li>UCASE(Answer) returns CHAR, so compare the result with the CHAR literal &#39;Y&#39;.</li><li>Close the selection with ENDIF.</li><li>LCASE and UCASE accept CHAR, not STRING; case conversion does not remove spaces or correct spelling.</li></ul></details>
+          </figure><figure class="v2-visual" data-material-kind="diagram">
+            <div class="v2-visual-heading"><span>02</span><div><p>Diagram · 2 of 6</p><h4>Concatenation joins STRING values</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Concatenation joins STRING values"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-134-concat.jpg" alt="Concatenation joins STRING values" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Concatenation joins STRING values with the &amp; operator.</li><li>FirstName is &quot;Lin&quot; and YearText is &quot;2029&quot;; Username &lt;- FirstName &amp; YearText returns &quot;Lin2029&quot;.</li><li>Do not pass the STRING FirstName to LCASE; that function accepts CHAR.</li></ul></details>
+          </figure><figure class="v2-visual" data-material-kind="diagram">
+            <div class="v2-visual-heading"><span>03</span><div><p>Diagram · 3 of 6</p><h4>MID and Java substring use different positions</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: MID and Java substring use different positions"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-134-java.jpg" alt="MID and Java substring use different positions" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Cambridge guide example: MID(Name, 1, 3) returns the first three characters as a STRING.</li><li>Java support example: name.substring(0, 3) uses start index 0 inclusive and end index 3 exclusive.</li><li>LEFT is not listed in the Cambridge pseudocode guide; a question may use it only when the signature and position convention are supplied.</li><li>Do not add UCASE around a STRING expression because UCASE accepts CHAR.</li></ul></details>
+          </figure><figure class="v2-visual" data-material-kind="diagram">
+            <div class="v2-visual-heading"><span>04</span><div><p>Diagram · 4 of 6</p><h4>Test a built-in function</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Test a built-in function"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-134-lab.jpg" alt="Test a built-in function" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Interactive string lab</li><li>Use a short string and compare the returned value. For MID , positions start at 1.</li><li>Function</li><li>Choose a function and run it.</li></ul></details>
+          </figure><figure class="v2-visual" data-material-kind="diagram">
+            <div class="v2-visual-heading"><span>05</span><div><p>Diagram · 5 of 6</p><h4>LENGTH(String) returns the number of characters</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: LENGTH(String) returns the number of characters"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-134-length.jpg" alt="LENGTH(String) returns the number of characters" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Word &lt;- &quot;ALGORITHM&quot;</li><li>Size &lt;- LENGTH(Word)</li><li>OUTPUT Size</li><li>Word &quot;ALGORITHM&quot;</li><li>LENGTH(Word) 9</li></ul></details>
+          </figure><figure class="v2-visual" data-material-kind="diagram">
+            <div class="v2-visual-heading"><span>06</span><div><p>Diagram · 6 of 6</p><h4>Exam traces must follow the position convention stated or implied</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Exam traces must follow the position convention stated or implied"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-134-position.jpg" alt="Exam traces must follow the position convention stated or implied" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Positions and indexing</li><li>Cambridge-style trace</li><li>Word &lt;- &quot;DATA&quot;</li><li>Part &lt;- MID(Word, 2, 2)</li><li>OUTPUT Part</li><li>Using 1-based positions, the output is &quot;AT&quot; .</li><li>Common error</li><li>Do not import Java&#39;s zero-based indexing into a pseudocode trace unless the question explicitly tells you to.</li></ul></details>
+          </figure></div>
+  </section>
+          <article class="v2-example"><div><p class="v2-eyebrow">Apply the idea</p><h3>Worked method</h3></div><ol class="v2-worked-flow"><li><span>01</span><strong>Count passes and total in one traversal</strong></li><li><span>02</span><strong>Combine two traversals</strong></li><li><span>03</span><strong>Set Total and PassCount to 0 before one FOR loop through Marks[1:30].</strong></li><li><span>04</span><strong>Add each mark to Total and increment PassCount only when the mark is at least 50.</strong></li><li><span>05</span><strong>Output both values after NEXT Index.</strong></li><li><span>06</span><strong>This preserves clear control flow while avoiding a second full traversal.</strong></li></ol></article>
+          <details class="v2-core-facts"><summary>Open precise terminology and exam facts</summary><ul class="v2-facts"><li>Write efficient pseudocode.</li><li>Efficient pseudocode avoids unnecessary repeated work and selects a structure suited to the data and stopping rule. For example, total and count can be updated during one traversal instead of scanning the same array twice when both results are needed.</li><li>Efficiency does not justify incorrect bounds, hidden assumptions or compressed code that cannot be traced. A strong answer remains clear: initialise once, access only valid data, avoid redundant calculations and use meaningful identifiers and coherent constructs.</li><li>At AS Level, justify an improvement from the actual algorithm, such as fewer repeated passes or stopping a search once the target is found. Do not claim that shorter text alone proves a more efficient algorithm.</li><li>Clear Cambridge pseudocode uses meaningful identifiers, consistent indentation, complete Cambridge constructs and a traceable control path. Efficient pseudocode avoids unnecessary repeated work while preserving correctness.</li></ul></details>
+          <details class="v2-extension"><summary>Beyond syllabus / 延伸知识（不要求背诵）</summary><p>consistent style, modularity and automated tests reduce maintenance errors in larger programs.</p></details>
         </section>
 
         <section class="v2-panel" id="practice">
@@ -81,6 +131,6 @@
         <nav class="v2-bottom-nav" aria-label="Previous and next lesson"><a href="../lesson-078/" >Previous lesson</a><a href="../lesson-080/" >Next lesson</a></nav>
       </div>
     </main>
-    <script src="../course-v2.js?v=1"></script>
+    <script src="../course-v2.js?v=2"></script>
   </body>
 </html>

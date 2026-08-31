@@ -8,7 +8,7 @@
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
-    <link rel="stylesheet" href="../course-v2.css?v=3" />
+    <link rel="stylesheet" href="../course-v2.css?v=6" />
   </head>
   <body data-course-version="2" data-lesson-id="063" data-syllabus-ids="S10.08">
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -17,16 +17,11 @@
       <nav class="v2-actions" aria-label="Lesson actions"><a href="../">Course home</a><a href="../assessments/">Assessment bank</a><button type="button" id="printLesson">Print</button></nav>
     </header>
     <main class="v2-shell" id="main-content" tabindex="-1">
-      <nav class="v2-toc" aria-label="Lesson contents"><strong>Lesson 063</strong><a href="#overview">Overview</a><a href="#prerequisite">Prerequisite</a><a href="#explanation">Explanation</a><a href="#practice">Practice</a><a href="#summary">Summary</a></nav>
+      <nav class="v2-jump-nav" aria-label="Lesson contents"><strong>Lesson 063</strong><a href="#overview">Overview</a><a href="#prerequisite">Prerequisite</a><a href="#explanation">Explanation</a><a href="#practice">Practice</a><a href="#summary">Summary</a></nav>
       <div class="v2-content">
-        <section class="v2-hero" id="overview">
-          <div><p class="v2-eyebrow">Flexible-depth lesson</p><h2>Abstract data types</h2><p>S10.08 | Select what to omit, teach briefly or explore in depth.</p></div>
-          <div class="v2-time-grid" aria-label="Available lesson depth"><div><strong>Quick</strong><span>diagnose + essentials</span></div><div><strong>Full</strong><span>complete explanation</span></div><div><strong>Deep</strong><span>prerequisites + extension</span></div><div><strong>Choose</strong><span>practice by need</span></div></div>
-        </section>
-
-        <section class="v2-panel v2-route-menu" aria-labelledby="route-heading">
-          <div class="v2-heading"><p class="v2-eyebrow">Teacher choice</p><h2 id="route-heading">Choose the depth for this group</h2></div>
-          <div class="v2-route-grid"><article><h3>Quick route</h3><p>Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.</p></article><article><h3>Full route</h3><p>Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.</p></article><article><h3>Deep route</h3><p>Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.</p></article></div>
+        <section class="v2-overview" id="overview">
+          <div><p class="v2-eyebrow">Flexible-depth lesson</p><p class="v2-overview-copy">S10.08 | Learn from the diagrams, test the method, then choose the practice you need.</p></div>
+          <details class="v2-route-menu"><summary>Choose a Quick, Full or Deep route</summary><div class="v2-route-grid"><article><h3>Quick route</h3><p>Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.</p></article><article><h3>Full route</h3><p>Use every knowledge-point material set, the worked method, the terminology check and all questions.</p></article><article><h3>Deep route</h3><p>Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.</p></article></div></details>
         </section>
 
         <section class="v2-panel" id="prerequisite">
@@ -37,21 +32,108 @@
         </section>
 
         <section class="v2-panel" id="explanation">
-          <div class="v2-heading"><p class="v2-eyebrow">Part 2 | deliberately over-complete</p><h2>Knowledge explanation</h2></div>
-          <h3>Learning objectives</h3><ul class="v2-objectives"><li>Understand the definition and purpose of an abstract data type.</li></ul>
+          <div class="v2-heading v2-heading--wide"><p class="v2-eyebrow">Part 2 | knowledge-point material sets</p><h2>Learn each point through visuals</h2><p>Follow the map, the three-part explanation and the concrete cue. Open precise wording only after the idea is clear.</p></div>
           <details class="v2-concept-menu"><summary>Open the concept checklist and choose what to teach</summary><ul><li>abstract</li><li>type</li><li>collection of data</li><li>set of operations</li></ul></details>
-          <div class="v2-explanation-grid">
-            <div>
-              <article class="v2-core-facts"><h3>Detailed explanation</h3><p class="v2-teacher-note">Teach all points, or select only the ones this group needs. The list is intentionally fuller than a fixed lesson slot.</p><ul class="v2-facts"><li>An abstract data type (ADT) is a collection of data and a set of operations on those data. Its behaviour is defined independently of a particular storage implementation.</li><li>An abstract data type (ADT) is a collection of data and a set of operations on those data. The permitted operations and their effects define the ADT; its internal storage can change without changing that behaviour. Stack, queue and linked list are examples of ADTs.</li><li>All three can be implemented using arrays and state variables or indexes. Stack uses an array with a top/stack pointer; queue uses an array with front and rear; linked list uses Data and Next arrays (or an array of node records), start and a free list. Candidates must be able to add, edit and delete data conceptually, but the syllabus does not require pseudocode for these ADT operations.</li><li>Justify a stack, queue or linked list from its operations and the scenario. Candidates are not required to write pseudocode for these ADT operations, but must be able to add, edit and delete data and describe array implementations.</li><li>Choose and justify a stack, queue or linked list from its LIFO, FIFO or linkage features. Add, edit and delete data in these ADTs and implement them using arrays; pseudocode for the ADT operations is not required by the syllabus.</li></ul></article>
-              <article class="v2-example"><h3>Worked example</h3><p>Add, edit and delete without changing the ADT rule: Push D adds D at the stack top and pop deletes the current top. Enqueue D adds at the queue rear and dequeue deletes from the front. In an array-based linked list, edit Data[5] to change only the node value; insert or delete by changing Next indexes, Start and the free list rather than shifting every later array item.</p></article>
-              <aside class="v2-extension"><h3>Beyond syllabus / 延伸知识（不要求背诵）</h3><p>programming libraries often provide tested ADT implementations, but the exam expects you to understand their behaviour and selection.</p></aside>
-            </div>
-            <figure class="v2-visual">
-              <img src="../assets/diagrams/stage10-infographics/stage10-lesson-123-concept.jpg" alt="An abstract data type is a collection of data and a set of operations on those data.. Stack, queue and linked list are examples whose permitted operations define their behaviour.. The implementation may use arrays and indexes without changing the ADT&#39;s observable rules." loading="lazy" />
-              <figcaption>An ADT is data together with permitted operations. One maintained explanation is shown as an image on larger screens and as text on small screens.</figcaption>
-              <div class="v2-mobile-visual-text" aria-label="Mobile text alternative"><ul><li>An abstract data type is a collection of data and a set of operations on those data.</li><li>Stack, queue and linked list are examples whose permitted operations define their behaviour.</li><li>The implementation may use arrays and indexes without changing the ADT&#39;s observable rules.</li></ul></div>
-            </figure>
-          </div>
+          <nav class="v2-knowledge-index" aria-label="Knowledge points in this lesson"><a href="#knowledge-s10-08"><span>01</span>S10.08</a></nav><div class="v2-knowledge-point-list"><section class="v2-knowledge-point" id="knowledge-s10-08" data-syllabus-id="S10.08" data-visual-mode="process" data-material-count="7">
+      <header class="v2-knowledge-point-head"><span>01</span><div><p>S10.08 · process</p><h3>Abstract data types</h3></div></header>
+      <div class="v2-material-triad">
+        <article class="v2-native-material v2-native-material--map"><h4>Concept map</h4><div class="v2-concept-map" aria-label="Concept map for S10.08"><span class="v2-concept-node" data-node-index="1">abstract</span><span class="v2-concept-node" data-node-index="2">type</span><span class="v2-concept-node" data-node-index="3">collection of data</span><span class="v2-concept-node" data-node-index="4">set of operations</span></div></article>
+        <article class="v2-native-material v2-native-material--story"><h4>See how it works</h4><ol><li><span>Start</span><strong>Its behaviour is defined independently of a particular storage implementation</strong></li><li><span>Change</span><strong>An abstract data type (ADT) is a collection of data and a set of operations on those data</strong></li><li><span>Check</span><strong>Candidates are not required to write pseudocode for these ADT operations, but must be able to add, edit and delete data and describe array implementations</strong></li></ol></article>
+        <aside class="v2-native-material v2-native-material--cue"><h4>Concrete cue</h4><p>An abstract data type (ADT) is a collection of data and a set of operations on those data. Its behaviour is defined independently of a particular storage implementation.</p></aside>
+      </div>
+      <section class="v2-material-library" aria-label="S10.08 diagrams">
+    <div class="v2-material-library-head"><h3>S10.08 diagrams</h3><div class="v2-material-controls">
+        <button type="button" data-material-prev aria-controls="materials-063-s10-08" aria-label="Previous diagram"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" /></svg></button>
+        <span data-material-position>1 / 4</span>
+        <button type="button" data-material-next aria-controls="materials-063-s10-08" aria-label="Next diagram"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" /></svg></button>
+      </div></div>
+    <div class="v2-material-rail" id="materials-063-s10-08" data-material-rail><figure class="v2-visual" data-material-kind="example">
+            <div class="v2-visual-heading"><span>01</span><div><p>Concrete example · 1 of 4</p><h4>An ADT is data together with permitted operations</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: An ADT is data together with permitted operations"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-123-concept.jpg" alt="An ADT is data together with permitted operations" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>An abstract data type is a collection of data and a set of operations on those data.</li><li>Stack, queue and linked list are examples whose permitted operations define their behaviour.</li><li>The implementation may use arrays and indexes without changing the ADT&#39;s observable rules.</li></ul></details>
+          </figure><figure class="v2-visual" data-material-kind="comparison">
+            <div class="v2-visual-heading"><span>02</span><div><p>Comparison · 2 of 4</p><h4>A type controls meaning and valid operations</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: A type controls meaning and valid operations"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-114-why-types.jpg" alt="A type controls meaning and valid operations" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>A data type determines which operations are meaningful for a stored value.</li><li>A BOOLEAN can control a decision and a DATE can be compared with another date.</li><li>Close every structured IF example with ENDIF.</li><li>Choosing the correct type does not replace validation against the problem&#39;s allowed range.</li></ul></details>
+          </figure><figure class="v2-visual" data-material-kind="analogy">
+            <div class="v2-visual-heading"><span>03</span><div><p>Analogy / use · 3 of 4</p><h4>Start with the data and operations, not the keyword</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Start with the data and operations, not the keyword"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-124-criteria.jpg" alt="Start with the data and operations, not the keyword" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Selection criteria</li><li>Question to ask</li><li>Why it matters</li><li>Likely structure</li><li>Are there many values of the same type?</li><li>indexed traversal/search</li><li>Does one item have several named fields?</li><li>mixed types and meaningful field names</li></ul></details>
+          </figure><figure class="v2-visual" data-material-kind="diagram">
+            <div class="v2-visual-heading"><span>04</span><div><p>Diagram · 4 of 4</p><h4>A one-dimensional array is a linear collection</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: A one-dimensional array is a linear collection"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-116-model.jpg" alt="A one-dimensional array is a linear collection" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Array model</li><li>Same identifier</li><li>All elements belong to one array name.</li><li>Same type</li><li>At AS level, an array stores elements of the same data type.</li><li>ARRAY[1:5] OF INTEGER</li><li>Indexed access</li><li>An index selects one element.</li></ul></details>
+          </figure></div>
+  </section>
+      <details class="v2-point-precision"><summary>Open precise syllabus wording</summary><p><strong>Understand the definition and purpose of an abstract data type.</strong></p><p>An abstract data type (ADT) is a collection of data and a set of operations on those data. Its behaviour is defined independently of a particular storage implementation.</p></details>
+    </section></div>
+          <section class="v2-material-library" aria-label="Supporting diagram library">
+    <div class="v2-material-library-head"><h3>Supporting diagram library</h3><div class="v2-material-controls">
+        <button type="button" data-material-prev aria-controls="materials-063-supporting" aria-label="Previous diagram"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" /></svg></button>
+        <span data-material-position>1 / 14</span>
+        <button type="button" data-material-next aria-controls="materials-063-supporting" aria-label="Next diagram"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" /></svg></button>
+      </div></div>
+    <div class="v2-material-rail" id="materials-063-supporting" data-material-rail><figure class="v2-visual" data-material-kind="diagram">
+            <div class="v2-visual-heading"><span>01</span><div><p>Diagram · 1 of 14</p><h4>A text file stores characters, usually processed one line at a time</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: A text file stores characters, usually processed one line at a time"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-121-concept.jpg" alt="A text file stores characters, usually processed one line at a time" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Exam clue</li><li>Text file</li><li>file containing character data</li><li>&quot;Scores.txt&quot;</li><li>get data from an existing file</li><li>FOR READ</li><li>store data to a file, often replacing previous contents</li><li>FOR WRITE</li></ul></details>
+          </figure><figure class="v2-visual" data-material-kind="diagram">
+            <div class="v2-visual-heading"><span>02</span><div><p>Diagram · 2 of 14</p><h4>Implement stack, queue and linked list using arrays</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Implement stack, queue and linked list using arrays"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-123-implementation.jpg" alt="Implement stack, queue and linked list using arrays" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>An array stack uses Top; a queue uses Front and Rear; a linked list uses Data, Next, Start and a free list.</li><li>Add/delete preserve stack LIFO, queue FIFO and linked-list links; edit changes stored data without corrupting structure.</li><li>Candidates are not required to write pseudocode for these ADT operations; understand add, edit, delete and array implementation.</li></ul></details>
+          </figure><figure class="v2-visual" data-material-kind="diagram">
+            <div class="v2-visual-heading"><span>03</span><div><p>Diagram · 3 of 14</p><h4>Open, process, close</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Open, process, close"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-121-lifecycle.jpg" alt="Open, process, close" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>File lifecycle</li><li>1. Open choose READ, WRITE or APPEND</li><li>2. Process READFILE or WRITEFILE using variables</li><li>3. Close release the file and finalise changes</li><li>A file algorithm without CLOSEFILE is like leaving the exam hall without submitting the answer booklet.</li></ul></details>
+          </figure><figure class="v2-visual" data-material-kind="diagram">
+            <div class="v2-visual-heading"><span>04</span><div><p>Diagram · 4 of 14</p><h4>Choose the correct file mode</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Choose the correct file mode"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-121-mode-lab.jpg" alt="Choose the correct file mode" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Interactive mode lab</li><li>Scenario</li><li>Choose a scenario and a mode.</li></ul></details>
+          </figure><figure class="v2-visual" data-material-kind="diagram">
+            <div class="v2-visual-heading"><span>05</span><div><p>Diagram · 5 of 14</p><h4>Choose the mode before touching the file</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Choose the mode before touching the file"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-121-modes.jpg" alt="Choose the mode before touching the file" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>File modes</li><li>Use when</li><li>Risk if wrong</li><li>existing file contents are needed</li><li>cannot write new lines</li><li>creating/replacing output contents</li><li>old contents may be overwritten</li><li>adding new data to the end</li></ul></details>
+          </figure><figure class="v2-visual" data-material-kind="diagram">
+            <div class="v2-visual-heading"><span>06</span><div><p>Diagram · 6 of 14</p><h4>Why two ends create FIFO</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Why two ends create FIFO"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-123-queue.jpg" alt="Why two ends create FIFO" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Enqueue adds a new item at the rear.</li><li>Dequeue removes the waiting item at the front.</li><li>Earlier arrivals remain ahead of later arrivals.</li></ul></details>
+          </figure><figure class="v2-visual" data-material-kind="diagram">
+            <div class="v2-visual-heading"><span>07</span><div><p>Diagram · 7 of 14</p><h4>Use EOF so the loop stops at the end of the file</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Use EOF so the loop stops at the end of the file"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-121-read.jpg" alt="Use EOF so the loop stops at the end of the file" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Read loop</li><li>OPENFILE &quot;Scores.txt&quot; FOR READ</li><li>WHILE NOT EOF(&quot;Scores.txt&quot;)</li><li>READFILE &quot;Scores.txt&quot;, Line</li><li>OUTPUT Line</li><li>ENDWHILE</li><li>CLOSEFILE &quot;Scores.txt&quot;</li><li>The file line is read into Line . Only after that can the program output, split or validate it.</li></ul></details>
+          </figure><figure class="v2-visual" data-material-kind="diagram">
+            <div class="v2-visual-heading"><span>08</span><div><p>Diagram · 8 of 14</p><h4>Step through a WHILE NOT EOF loop</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Step through a WHILE NOT EOF loop"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-121-reader.jpg" alt="Step through a WHILE NOT EOF loop" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Open the file for reading before entering the loop.</li><li>Check NOT EOF before attempting READFILE.</li><li>When more data exists, read and process the next line.</li><li>When EOF is true, skip READFILE, leave the loop and close the file.</li></ul></details>
+          </figure><figure class="v2-visual" data-material-kind="diagram">
+            <div class="v2-visual-heading"><span>09</span><div><p>Diagram · 9 of 14</p><h4>A text line often represents one record</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: A text line often represents one record"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-121-records.jpg" alt="A text line often represents one record" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Text records</li><li>In simple exam-style examples, one line may contain fields separated by a comma. The delimiter must be consistent.</li><li>Name = Ali</li><li>Mark = 72</li><li>Name = Bea</li><li>Mark = 64</li></ul></details>
+          </figure><figure class="v2-visual" data-material-kind="diagram">
+            <div class="v2-visual-heading"><span>10</span><div><p>Diagram · 10 of 14</p><h4>Why one open end creates LIFO</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Why one open end creates LIFO"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-123-stack.jpg" alt="Why one open end creates LIFO" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Push adds the new item at the top position.</li><li>Only the current top item is available to pop.</li><li>The most recently pushed item therefore leaves first.</li></ul></details>
+          </figure><figure class="v2-visual" data-material-kind="diagram">
+            <div class="v2-visual-heading"><span>11</span><div><p>Diagram · 11 of 14</p><h4>Write creates a new result; append adds to the existing story</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Write creates a new result; append adds to the existing story"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-121-write.jpg" alt="Write creates a new result; append adds to the existing story" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Write and append</li><li>Write a new report</li><li>OPENFILE &quot;Report.txt&quot; FOR WRITE</li><li>WRITEFILE &quot;Report.txt&quot;, &quot;Pass count: &quot; &amp; Count</li><li>CLOSEFILE &quot;Report.txt&quot;</li><li>Append a new score</li><li>OPENFILE &quot;Scores.txt&quot; FOR APPEND</li><li>WRITEFILE &quot;Scores.txt&quot;, &quot;Dina,91&quot;</li></ul></details>
+          </figure><figure class="v2-visual" data-material-kind="diagram">
+            <div class="v2-visual-heading"><span>12</span><div><p>Diagram · 12 of 14</p><h4>Why boundary checks come first</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Why boundary checks come first"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-123-errors.jpg" alt="Why boundary checks come first" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Underflow occurs when removal is requested from an empty structure.</li><li>Overflow occurs when fixed storage has no free position.</li><li>Checking first prevents invalid reads, writes and pointer changes.</li></ul></details>
+          </figure><figure class="v2-visual" data-material-kind="diagram">
+            <div class="v2-visual-heading"><span>13</span><div><p>Diagram · 13 of 14</p><h4>Why operation names preserve meaning</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Why operation names preserve meaning"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-123-operations.jpg" alt="Why operation names preserve meaning" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Push and pop describe changes at a stack&#39;s top.</li><li>Enqueue and dequeue describe changes at opposite queue ends.</li><li>Using the correct operation prevents accidental access-rule changes.</li></ul></details>
+          </figure><figure class="v2-visual" data-material-kind="diagram">
+            <div class="v2-visual-heading"><span>14</span><div><p>Diagram · 14 of 14</p><h4>Why pseudocode must expose state change</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Why pseudocode must expose state change"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-123-pseudocode.jpg" alt="Why pseudocode must expose state change" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Test the empty or full condition before accessing storage.</li><li>Read or write the element at the correct pointer.</li><li>Update the pointer so the invariant remains true.</li></ul></details>
+          </figure></div>
+  </section>
+          <article class="v2-example"><div><p class="v2-eyebrow">Apply the idea</p><h3>Worked method</h3></div><ol class="v2-worked-flow"><li><span>01</span><strong>Add, edit and delete without changing the ADT rule</strong></li><li><span>02</span><strong>Push D adds D at the stack top and pop deletes the current top.</strong></li><li><span>03</span><strong>Enqueue D adds at the queue rear and dequeue deletes from the front.</strong></li><li><span>04</span><strong>In an array-based linked list, edit Data[5] to change only the node value; insert or delete by changing Next indexes, Start and the free list rather than shifting every later array item.</strong></li></ol></article>
+          <details class="v2-core-facts"><summary>Open precise terminology and exam facts</summary><ul class="v2-facts"><li>An abstract data type (ADT) is a collection of data and a set of operations on those data. Its behaviour is defined independently of a particular storage implementation.</li><li>An abstract data type (ADT) is a collection of data and a set of operations on those data. The permitted operations and their effects define the ADT; its internal storage can change without changing that behaviour. Stack, queue and linked list are examples of ADTs.</li><li>All three can be implemented using arrays and state variables or indexes. Stack uses an array with a top/stack pointer; queue uses an array with front and rear; linked list uses Data and Next arrays (or an array of node records), start and a free list. Candidates must be able to add, edit and delete data conceptually, but the syllabus does not require pseudocode for these ADT operations.</li><li>Justify a stack, queue or linked list from its operations and the scenario. Candidates are not required to write pseudocode for these ADT operations, but must be able to add, edit and delete data and describe array implementations.</li><li>Choose and justify a stack, queue or linked list from its LIFO, FIFO or linkage features. Add, edit and delete data in these ADTs and implement them using arrays; pseudocode for the ADT operations is not required by the syllabus.</li></ul></details>
+          <details class="v2-extension"><summary>Beyond syllabus / 延伸知识（不要求背诵）</summary><p>programming libraries often provide tested ADT implementations, but the exam expects you to understand their behaviour and selection.</p></details>
         </section>
 
         <section class="v2-panel" id="practice">
@@ -86,6 +168,6 @@
         <nav class="v2-bottom-nav" aria-label="Previous and next lesson"><a href="../lesson-062/" >Previous lesson</a><a href="../lesson-064/" >Next lesson</a></nav>
       </div>
     </main>
-    <script src="../course-v2.js?v=1"></script>
+    <script src="../course-v2.js?v=2"></script>
   </body>
 </html>

@@ -4,12 +4,12 @@
 **Paper:** Paper 1<br>
 **Syllabus:** Section 8: Databases<br>
 **Syllabus requirements:** S8.03, S8.04<br>
-**Pacing:** Flexible. This lesson is deliberately over-complete; select a quick, full or deep route for the learners in front of you.
+**Pacing:** Flexible. Select the material set and practice depth needed by the learner.
 
 ## Teaching-depth menu
 
 - **Quick route:** Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.
-- **Full route:** Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.
+- **Full route:** Use every knowledge-point material set, the worked method, the terminology check and all questions.
 - **Deep route:** Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.
 
 ## 1. Prerequisite knowledge and quick diagnostic
@@ -26,20 +26,327 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ## 2. Knowledge explanation
 
-### Learning objectives
+### 1. Entity-relationship · Diagram (S8.03)
 
-- Produce and interpret entity-relationship diagrams.
-- Understand 1NF, 2NF and 3NF; explain 3NF and produce a normalised design.
+**Concept map:** entity-relationship → diagram
 
-### Concept checklist for teacher choice
+**Three-part explanation:**
 
-- entity-relationship
-- diagram
-- 3NF
-- normalised / normalized
-- design
+1. Evidence must include entities, relationships and cardinality, not merely define entity and attribute
+2. Version 2 requires candidates to use an entity-relationship diagram to document a database design
+3. An entity-relationship (E-R) diagram documents a database design by showing the entities, their relevant attributes or keys, the relationships between entities and the relationship cardinality
 
-### Detailed explanation
+**Concrete cue:** Version 2 requires candidates to use an entity-relationship diagram to document a database design. Evidence must include entities, relationships and cardinality, not merely define entity and attribute.
+
+#### Section 8 knowledge map
+
+![Section 8 knowledge map](../web/assets/diagrams/stage10-infographics/stage10-lesson-090-map.jpg)
+
+<details><summary>Text transcript</summary>
+
+- Retrieval map
+- Data and DBMS data vs information; DBMS roles; avoiding flat-file limitations
+- Tables and keys records, fields, data types, constraints, primary keys and foreign keys
+- Design entity-relationship modelling and normalisation to reduce duplication
+- SQL retrieval SELECT , FROM , WHERE , ORDER BY , aggregates and joins
+- SQL modification INSERT , UPDATE , DELETE , field/value matching and safe WHERE
+- Protection validation, verification, security controls, backups and restore testing
+
+</details>
+
+<details><summary>Precise syllabus wording</summary>
+
+Produce and interpret entity-relationship diagrams.
+
+Version 2 requires candidates to use an entity-relationship diagram to document a database design. Evidence must include entities, relationships and cardinality, not merely define entity and attribute.
+
+</details>
+
+### 2. 1NF · 2NF · 3NF · Normalised (S8.04)
+
+**Concept map:** 1NF → 2NF → 3NF → normalised → design
+
+**Three-part explanation:**
+
+1. Version 2 names First, Second and Third Normal Form and separately requires candidates to explain whether given tables are in 3NF and to produce a normalised…
+2. and explain or produce 1NF, 2NF and 3NF designs
+3. Version 2 requires candidates to use an entity-relationship diagram to document a database design
+
+**Concrete cue:** Version 2 names First, Second and Third Normal Form and separately requires candidates to explain whether given tables are in 3NF and to produce a normalised design from a description,…
+
+#### How normal forms remove dependency problems
+
+![How normal forms remove dependency problems](../web/assets/diagrams/stage10-infographics/stage10-lesson-084-normal-forms.jpg)
+
+<details><summary>Text transcript</summary>
+
+- First Normal Form (1NF) requires atomic values and no repeating groups.
+- Second Normal Form (2NF) is in 1NF and removes partial dependency: each non-key attribute depends on the whole primary key.
+- Third Normal Form (3NF) is in 2NF and removes transitive dependency: a non-key attribute must not depend on another non-key attribute.
+- A valid decomposition retains every original fact, preserves keys and relationships, and follows the stated functional dependencies.
+
+</details>
+
+#### Relational design: what earns marks?
+
+![Relational design: what earns marks?](../web/assets/diagrams/stage10-infographics/stage10-lesson-090-design.jpg)
+
+<details><summary>Text transcript</summary>
+
+- Design review
+- Primary key Uniquely identifies a record in one table. It must be unique and reliable.
+- Foreign key Stores a value that matches a primary key in another table, creating a relationship.
+- Normalisation Separates repeated data into related tables to reduce duplication and update errors.
+
+</details>
+
+#### Designing fields properly
+
+![Designing fields properly](../web/assets/diagrams/stage10-infographics/stage10-lesson-081-fields.jpg)
+
+<details><summary>Text transcript</summary>
+
+- Each field should have a name, data type, possible field size and constraints. Good design reduces invalid data at entry.
+- Field name Clear and specific: DateOfBirth , not date .
+- Data type Controls the kind of data: text, integer, real, date/time, Boolean.
+- Field size Maximum storage length where relevant, such as 8 characters for StudentID.
+- Constraint A rule that a value must satisfy before it is accepted.
+
+</details>
+
+<details><summary>Precise syllabus wording</summary>
+
+Understand 1NF, 2NF and 3NF; explain 3NF and produce a normalised design.
+
+Version 2 names First, Second and Third Normal Form and separately requires candidates to explain whether given tables are in 3NF and to produce a normalised design from a description, data or tables.
+
+</details>
+
+### Supporting diagram library
+
+#### Section 8 basics so far
+
+![Section 8 basics so far](../web/assets/diagrams/stage10-infographics/stage10-lesson-081-checkpoint.jpg)
+
+<details><summary>Text transcript</summary>
+
+- Monthly checkpoint
+- This checkpoint connects Lessons 079-080 without becoming a full exam.
+- 1. Define data, information, database, DBMS, flat-file, relational database.
+- 2. Compare one-table repeated data vs linked tables with reduced redundancy.
+- 3. Design choose data types and constraints for five fields in a small scenario.
+
+</details>
+
+#### Which rule rejects the bad value?
+
+![Which rule rejects the bad value?](../web/assets/diagrams/stage10-infographics/stage10-lesson-081-constraint-tool.jpg)
+
+<details><summary>Text transcript</summary>
+
+- Interactive constraint checker
+- Bad value
+- Choose a bad value to identify the check.
+- Name the rule and explain what it prevents.
+
+</details>
+
+#### Constraints and validation rules
+
+![Constraints and validation rules](../web/assets/diagrams/stage10-infographics/stage10-lesson-081-constraints.jpg)
+
+<details><summary>Text transcript</summary>
+
+- A constraint limits accepted values to help maintain data integrity. It does not prove the data is true; it helps reject impossible or invalid data.
+- Presence check Value must not be blank. Example: Name is required.
+- Range check Value must be within limits. Example: Mark is 0 to 100.
+- Type check Value must match the data type. Example: Quantity must be Integer.
+- Length check Value must have a permitted length. Example: StudentID has 5 characters.
+- Format check Value must match a pattern. Example: postcode or email pattern.
+- Lookup check Value must be from an allowed list. Example: Grade is A, B, C, D, E or U.
+- Exam sentence:
+
+</details>
+
+#### What does a DBMS provide?
+
+![What does a DBMS provide?](../web/assets/diagrams/stage10-infographics/stage10-lesson-079-dbms.jpg)
+
+<details><summary>Text transcript</summary>
+
+- A DBMS is software used to create, manage and control access to a database. It sits between users/applications and stored data.
+- Data management stores, organises, retrieves and updates data; maintains metadata in a data dictionary.
+- Data modelling helps define entities, tables, fields and the logical schema of the database.
+- Data integrity enforces rules so values are valid and relationships remain consistent.
+- Data security uses access rights for individuals or groups; supports backup and recovery procedures.
+- Developer interface provides tools for creating structures, forms, reports or database applications.
+- Query processor interprets and carries out queries so users can retrieve or change data.
+- Exam sentence:
+
+</details>
+
+#### Tables, records and fields
+
+![Tables, records and fields](../web/assets/diagrams/stage10-infographics/stage10-lesson-081-terms.jpg)
+
+<details><summary>Text transcript</summary>
+
+- A table stores records about one entity. A record is one complete row. A field is one column or attribute.
+- A collection of records for one entity
+- Student table
+- Record / tuple
+- One complete row in a table
+- S0234, Amira Chen, 2009-04-18, TRUE
+- Field / attribute
+- One column or property stored for each record
+
+</details>
+
+#### Choose the best data type
+
+![Choose the best data type](../web/assets/diagrams/stage10-infographics/stage10-lesson-081-type-tool.jpg)
+
+<details><summary>Text transcript</summary>
+
+- Interactive data type chooser
+- Choose a field, then decide the data type.
+- The best answer depends on how the value is used, not how numeric it looks.
+
+</details>
+
+#### Common database data types
+
+![Common database data types](../web/assets/diagrams/stage10-infographics/stage10-lesson-081-types.jpg)
+
+<details><summary>Text transcript</summary>
+
+- Data type
+- Use when
+- Text / string
+- The value may contain letters, spaces, symbols or leading zeroes
+- PhoneNumber = "02071234567"
+- Whole number used for counting or arithmetic
+- Quantity = 24
+- Real / decimal
+
+</details>
+
+#### Attributes describe an entity
+
+![Attributes describe an entity](../web/assets/diagrams/stage10-infographics/stage10-lesson-083-attributes.jpg)
+
+<details><summary>Text transcript</summary>
+
+- An attribute is a property stored about an entity. It often becomes a field in the table for that entity.
+- Possible attributes
+- Not usually an attribute here
+- StudentID, Name, DateOfBirth, TutorGroup
+- BookTitle, LoanDate
+- BookID, ISBN, Title, Author
+- StudentName, ReturnDate
+- LoanID, StudentID, BookID, DateBorrowed, DateReturned
+
+</details>
+
+#### Cardinality describes how many records may be linked
+
+![Cardinality describes how many records may be linked](../web/assets/diagrams/stage10-infographics/stage10-lesson-083-cardinality.jpg)
+
+<details><summary>Text transcript</summary>
+
+- Cardinality states how many records in one entity can be associated with records in another entity.
+- One-to-one One record in A links to one record in B. Example: one person has one passport in a simplified model.
+- One-to-many One record in A links to many records in B. Example: one customer can place many orders.
+- Many-to-many Many records in A link to many records in B. Usually resolved by a linking entity.
+- 1 - many
+
+</details>
+
+#### Entities are things the database stores data about
+
+![Entities are things the database stores data about](../web/assets/diagrams/stage10-infographics/stage10-lesson-083-entities.jpg)
+
+<details><summary>Text transcript</summary>
+
+- An entity is a person, object, event or concept about which data is stored. In a relational design, an entity often becomes a table.
+- Person Student, Customer, Doctor, Teacher.
+- Object Book, Product, Vehicle, Equipment.
+- Event Loan, Appointment, Order, Booking.
+- Concept Course, Club, Department, Module.
+- Exam wording: say why it is an entity. "Student is an entity because the system stores multiple facts about each student."
+
+</details>
+
+#### Identify entities and attributes
+
+![Identify entities and attributes](../web/assets/diagrams/stage10-infographics/stage10-lesson-083-parser.jpg)
+
+<details><summary>Text transcript</summary>
+
+- Interactive scenario parser
+- Scenario
+- Choose a scenario to identify likely entities.
+- The answer will separate entities from attributes and relationship events.
+
+</details>
+
+#### Optional and mandatory participation
+
+![Optional and mandatory participation](../web/assets/diagrams/stage10-infographics/stage10-lesson-083-participation.jpg)
+
+<details><summary>Text transcript</summary>
+
+- Participation describes whether a record must be linked. This is often written using minimum and maximum values such as 0.. or 1..1.
+- 0.. Optional many: a student may have no loans, or many loans.
+- 1.. Mandatory many: an order must have at least one order line.
+- 0..1 Optional one: a member may have zero or one parking permit.
+- 1..1 Mandatory one: each loan must refer to exactly one student.
+
+</details>
+
+#### Do not swap the security vocabulary
+
+![Do not swap the security vocabulary](../web/assets/diagrams/stage10-infographics/stage10-lesson-090-protection.jpg)
+
+<details><summary>Text transcript</summary>
+
+- Protection review
+- Validation Checks data follows rules, such as range, type, format or presence.
+- Verification Checks entered data matches a source, using proofreading or double entry.
+- Security and backup Security restricts access; backup enables recovery after loss or corruption.
+
+</details>
+
+#### SQL clauses: choose the clause that matches the request
+
+![SQL clauses: choose the clause that matches the request](../web/assets/diagrams/stage10-infographics/stage10-lesson-090-sql.jpg)
+
+<details><summary>Text transcript</summary>
+
+- For the clauses shown, written syntax order is SELECT, FROM, WHERE, GROUP BY, ORDER BY.
+- A simplified logical processing order is FROM, WHERE, GROUP BY, SELECT, ORDER BY.
+- GROUP BY forms groups and ORDER BY sorts the final rows.
+- Written syntax order and logical processing order are different.
+
+</details>
+
+#### Trace one mixed SQL result
+
+![Trace one mixed SQL result](../web/assets/diagrams/stage10-infographics/stage10-lesson-090-tracer.jpg)
+
+<details><summary>Text transcript</summary>
+
+- Interactive SQL tracer
+- Category
+- Networks
+- Computing
+- Literature
+- Databases
+- Choose a query to see the result.
+
+</details>
+
+<details><summary>Open precise terminology and exam facts</summary>
 
 - Version 2 requires candidates to use an entity-relationship diagram to document a database design. Evidence must include entities, relationships and cardinality, not merely define entity and attribute.
 - Version 2 names First, Second and Third Normal Form and separately requires candidates to explain whether given tables are in 3NF and to produce a normalised design from a description, data or tables.
@@ -54,18 +361,14 @@ Ask the learner to give one accurate definition or method step before continuing
 - DBMS and SQL review: identify data management/data dictionary, data modelling, logical schema, integrity, security/backup/access rights, developer interface and query processor. Distinguish DDL structure commands from DML query/maintenance commands, use every required data type and key clause, and keep SELECT queries to at most two tables with explicit INNER JOIN ... ON when two tables are needed.
 - A complete answer follows the scenario through design, statement and result. It does not claim that a primary key prevents every duplicate fact, that a secondary key must be unique, that normalisation guarantees correctness, or that a three-table/comma-style query is within the AS core boundary.
 
+</details>
+
 ### Worked example
 
-Design and query a library database: Separate Student and Loan tables, identify StudentID as primary key in Student and foreign key in Loan, state the one-to-many relationship and referential-integrity rule, then write SELECT Student.StudentName, Loan.DueDate FROM Student INNER JOIN Loan ON Student.StudentID = Loan.StudentID WHERE Loan.Returned = FALSE; using exactly two tables.
+1. Design and query a library database
+2. Separate Student and Loan tables, identify StudentID as primary key in Student and foreign key in Loan, state the one-to-many relationship and referential-integrity rule, then write SELECT Student.StudentName, Loan.DueDate FROM Student INNER…
 
 Beyond syllabus / 延伸知识（不要求背诵）: production databases also manage transactions and concurrent users; these ideas extend the syllabus model of integrity and access control.
-
-### Retained visual explanation
-
-![How normal forms remove dependency problems](../web/assets/diagrams/stage10-infographics/stage10-lesson-084-normal-forms.jpg)
-
-_How normal forms remove dependency problems. The image and mobile text alternative come from one maintained fact source._
-
 ## 3. Practice by question type
 
 ### Question 1 - foundation - write - 8 marks

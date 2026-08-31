@@ -8,7 +8,7 @@
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
-    <link rel="stylesheet" href="../course-v2.css?v=3" />
+    <link rel="stylesheet" href="../course-v2.css?v=6" />
   </head>
   <body data-course-version="2" data-lesson-id="028" data-syllabus-ids="S5.04">
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -17,16 +17,11 @@
       <nav class="v2-actions" aria-label="Lesson actions"><a href="../">Course home</a><a href="../assessments/">Assessment bank</a><button type="button" id="printLesson">Print</button></nav>
     </header>
     <main class="v2-shell" id="main-content" tabindex="-1">
-      <nav class="v2-toc" aria-label="Lesson contents"><strong>Lesson 028</strong><a href="#overview">Overview</a><a href="#prerequisite">Prerequisite</a><a href="#explanation">Explanation</a><a href="#practice">Practice</a><a href="#summary">Summary</a></nav>
+      <nav class="v2-jump-nav" aria-label="Lesson contents"><strong>Lesson 028</strong><a href="#overview">Overview</a><a href="#prerequisite">Prerequisite</a><a href="#explanation">Explanation</a><a href="#practice">Practice</a><a href="#summary">Summary</a></nav>
       <div class="v2-content">
-        <section class="v2-hero" id="overview">
-          <div><p class="v2-eyebrow">Flexible-depth lesson</p><h2>Assemblers, compilers and interpreters</h2><p>S5.04 | Select what to omit, teach briefly or explore in depth.</p></div>
-          <div class="v2-time-grid" aria-label="Available lesson depth"><div><strong>Quick</strong><span>diagnose + essentials</span></div><div><strong>Full</strong><span>complete explanation</span></div><div><strong>Deep</strong><span>prerequisites + extension</span></div><div><strong>Choose</strong><span>practice by need</span></div></div>
-        </section>
-
-        <section class="v2-panel v2-route-menu" aria-labelledby="route-heading">
-          <div class="v2-heading"><p class="v2-eyebrow">Teacher choice</p><h2 id="route-heading">Choose the depth for this group</h2></div>
-          <div class="v2-route-grid"><article><h3>Quick route</h3><p>Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.</p></article><article><h3>Full route</h3><p>Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.</p></article><article><h3>Deep route</h3><p>Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.</p></article></div>
+        <section class="v2-overview" id="overview">
+          <div><p class="v2-eyebrow">Flexible-depth lesson</p><p class="v2-overview-copy">S5.04 | Learn from the diagrams, test the method, then choose the practice you need.</p></div>
+          <details class="v2-route-menu"><summary>Choose a Quick, Full or Deep route</summary><div class="v2-route-grid"><article><h3>Quick route</h3><p>Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.</p></article><article><h3>Full route</h3><p>Use every knowledge-point material set, the worked method, the terminology check and all questions.</p></article><article><h3>Deep route</h3><p>Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.</p></article></div></details>
         </section>
 
         <section class="v2-panel" id="prerequisite">
@@ -37,17 +32,72 @@
         </section>
 
         <section class="v2-panel" id="explanation">
-          <div class="v2-heading"><p class="v2-eyebrow">Part 2 | deliberately over-complete</p><h2>Knowledge explanation</h2></div>
-          <h3>Learning objectives</h3><ul class="v2-objectives"><li>Explain why assembler, compiler and interpreter are needed.</li></ul>
+          <div class="v2-heading v2-heading--wide"><p class="v2-eyebrow">Part 2 | knowledge-point material sets</p><h2>Learn each point through visuals</h2><p>Follow the map, the three-part explanation and the concrete cue. Open precise wording only after the idea is clear.</p></div>
           <details class="v2-concept-menu"><summary>Open the concept checklist and choose what to teach</summary><ul><li>assembler</li><li>compiler</li><li>interpreter</li></ul></details>
-          <div class="v2-explanation-grid">
-            <div>
-              <article class="v2-core-facts"><h3>Detailed explanation</h3><p class="v2-teacher-note">Teach all points, or select only the ones this group needs. The list is intentionally fuller than a fixed lesson slot.</p><ul class="v2-facts"><li>An assembler translates assembly language, a compiler translates high-level language, and an interpreter translates and executes high-level language.</li><li>An assembler is needed to translate a processor-specific assembly-language program into machine code or object code. A compiler is needed to translate a whole high-level language program before execution, normally producing target/object code. An interpreter translates and executes a high-level language program statement by statement during execution, normally without producing a separate permanent object-code file.</li><li>Compiler advantages include faster repeated execution after translation, distribution without the source code and translation checks across the whole program. Disadvantages include a separate compilation step and an error list that may need several corrections before execution. Interpreter advantages include immediate statement-level feedback and convenient incremental testing. Disadvantages include repeated translation overhead, slower execution and needing the interpreter and usually the source program at run time.</li><li>A justified choice must connect the mechanism to the scenario: an interpreter can suit development and debugging; a compiler can suit repeated use or distribution; an assembler is required for assembly source. These are advantages and disadvantages of the translation approaches, not universal claims that one tool is always better.</li></ul></article>
-              <article class="v2-example"><h3>Worked example</h3><p>Choose tools across development and deployment: During development, an interpreter can execute each statement and stop near a fault, giving quick feedback. For final distribution, a compiler can translate the whole high-level program before execution and provide target/object or executable code without distributing the source. A processor-specific assembly routine requires an assembler because its mnemonic instructions must become the target processor&#39;s machine code.</p></article>
-              <aside class="v2-extension"><h3>Beyond syllabus / 延伸知识（不要求背诵）</h3><p>production build systems automate translation, linking, testing and packaging, while the syllabus examines the purpose of each stage separately.</p></aside>
-            </div>
-
-          </div>
+          <nav class="v2-knowledge-index" aria-label="Knowledge points in this lesson"><a href="#knowledge-s5-04"><span>01</span>S5.04</a></nav><div class="v2-knowledge-point-list"><section class="v2-knowledge-point" id="knowledge-s5-04" data-syllabus-id="S5.04" data-visual-mode="concept" data-material-count="6">
+      <header class="v2-knowledge-point-head"><span>01</span><div><p>S5.04 · concept</p><h3>Assembler · Compiler · Interpreter</h3></div></header>
+      <div class="v2-material-triad">
+        <article class="v2-native-material v2-native-material--map"><h4>Concept map</h4><div class="v2-concept-map" aria-label="Concept map for S5.04"><span class="v2-concept-node" data-node-index="1">assembler</span><span class="v2-concept-node" data-node-index="2">compiler</span><span class="v2-concept-node" data-node-index="3">interpreter</span></div></article>
+        <article class="v2-native-material v2-native-material--story"><h4>See how it works</h4><ol><li><span>Meaning</span><strong>An assembler translates assembly language, a compiler translates high-level language, and an interpreter translates and executes high-level language</strong></li><li><span>Mechanism</span><strong>An interpreter translates and executes a high-level language program statement by statement during execution, normally without producing a separate permanent object-code file</strong></li><li><span>Consequence</span><strong>An assembler is needed to translate a processor-specific assembly-language program into machine code or object code</strong></li></ol></article>
+        <aside class="v2-native-material v2-native-material--cue"><h4>Concrete cue</h4><p>An assembler is needed to translate a processor-specific assembly-language program into machine code or object code. A compiler is needed to translate a whole high-level language program before execution, normally…</p></aside>
+      </div>
+      <section class="v2-material-library" aria-label="S5.04 diagrams">
+    <div class="v2-material-library-head"><h3>S5.04 diagrams</h3><div class="v2-material-controls">
+        <button type="button" data-material-prev aria-controls="materials-028-s5-04" aria-label="Previous diagram"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" /></svg></button>
+        <span data-material-position>1 / 3</span>
+        <button type="button" data-material-next aria-controls="materials-028-s5-04" aria-label="Next diagram"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" /></svg></button>
+      </div></div>
+    <div class="v2-material-rail" id="materials-028-s5-04" data-material-rail><figure class="v2-visual" data-material-kind="process">
+            <div class="v2-visual-heading"><span>01</span><div><p>Process · 1 of 3</p><h4>Language translators: source code to executable behaviour</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Language translators: source code to executable behaviour"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-053-translators.jpg" alt="Language translators: source code to executable behaviour" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Compiler</li><li>Translates the whole source program before execution, often producing object or executable code.</li><li>Interpreter</li><li>Translates and executes source code statement by statement, often useful during development and debugging.</li><li>Assembler</li><li>Translates assembly language mnemonics into machine code for a specific processor.</li><li>Common error</li><li>An interpreter is not a &quot;bad compiler&quot;. It is a different translation approach with different trade-offs.</li></ul></details>
+          </figure><figure class="v2-visual" data-material-kind="process">
+            <div class="v2-visual-heading"><span>02</span><div><p>Process · 2 of 3</p><h4>An assembler translates assembly language into machine code</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: An assembler translates assembly language into machine code"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-057-assembler.jpg" alt="An assembler translates assembly language into machine code" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>An assembler translates assembly-language mnemonics into machine code or an object-code module.</li><li>Machine code uses the instruction set and binary encodings of the target processor.</li><li>An object module may still need a linker to combine modules and resolve external library references before an executable can be produced.</li><li>An assembler does not translate high-level languages such as Java or Cambridge pseudocode.</li></ul></details>
+          </figure><figure class="v2-visual" data-material-kind="diagram">
+            <div class="v2-visual-heading"><span>03</span><div><p>Diagram · 3 of 3</p><h4>After translation, linking and loading may still be needed</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: After translation, linking and loading may still be needed"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-061-pipeline.jpg" alt="After translation, linking and loading may still be needed" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>A compiler translates a whole high-level program before execution.</li><li>An interpreter translates and executes high-level source statement by statement during execution.</li><li>An interpreter normally does not create a separate permanent executable file.</li><li>An assembler translates assembly mnemonics into machine or object code.</li><li>A linker combines object modules and resolves references; a loader places executable code and data into memory.</li></ul></details>
+          </figure></div>
+  </section>
+      <details class="v2-point-precision"><summary>Open precise syllabus wording</summary><p><strong>Explain why assembler, compiler and interpreter are needed.</strong></p><p>An assembler translates assembly language, a compiler translates high-level language, and an interpreter translates and executes high-level language.</p></details>
+    </section></div>
+          <section class="v2-material-library" aria-label="Supporting diagram library">
+    <div class="v2-material-library-head"><h3>Supporting diagram library</h3><div class="v2-material-controls">
+        <button type="button" data-material-prev aria-controls="materials-028-supporting" aria-label="Previous diagram"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" /></svg></button>
+        <span data-material-position>1 / 6</span>
+        <button type="button" data-material-next aria-controls="materials-028-supporting" aria-label="Next diagram"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" /></svg></button>
+      </div></div>
+    <div class="v2-material-rail" id="materials-028-supporting" data-material-rail><figure class="v2-visual" data-material-kind="diagram">
+            <div class="v2-visual-heading"><span>01</span><div><p>Diagram · 1 of 6</p><h4>Antivirus utilities detect, quarantine and remove malware</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Antivirus utilities detect, quarantine and remove malware"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-056-antivirus.jpg" alt="Antivirus utilities detect, quarantine and remove malware" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Purpose Scan files, memory or downloads for malware signatures or suspicious behaviour.</li><li>Actions Warn the user, quarantine infected files, delete malware or block malicious activity.</li><li>Updates Definitions and detection rules should be updated to recognise newer threats.</li><li>Limitation Antivirus reduces risk but cannot guarantee protection against every new or disguised threat.</li></ul></details>
+          </figure><figure class="v2-visual" data-material-kind="diagram">
+            <div class="v2-visual-heading"><span>02</span><div><p>Diagram · 2 of 6</p><h4>Backup utilities create copies so data can be restored</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Backup utilities create copies so data can be restored"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-056-backup.jpg" alt="Backup utilities create copies so data can be restored" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Purpose Create copies of files or systems in another location or storage medium.</li><li>Benefit Data can be restored after accidental deletion, hardware failure, corruption or ransomware.</li><li>Good practice Use automatic scheduling, versioning and off-site/cloud copies where appropriate.</li><li>Limitation A backup is only useful if it is recent, complete and can actually be restored.</li></ul></details>
+          </figure><figure class="v2-visual" data-material-kind="diagram">
+            <div class="v2-visual-heading"><span>03</span><div><p>Diagram · 3 of 6</p><h4>Compression utilities reduce file size</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Compression utilities reduce file size"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-056-compression.jpg" alt="Compression utilities reduce file size" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Purpose Encode data so it takes up fewer bits than the original file.</li><li>Uses Save storage space, reduce upload/download time and fit within attachment limits.</li><li>Lossless Original data can be reconstructed exactly, suitable for text, programs and archives.</li><li>Lossy Some detail is discarded, often suitable for media where small quality loss is acceptable.</li></ul></details>
+          </figure><figure class="v2-visual" data-material-kind="diagram">
+            <div class="v2-visual-heading"><span>04</span><div><p>Diagram · 4 of 6</p><h4>Utility software performs maintenance and support tasks</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Utility software performs maintenance and support tasks"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-056-concept.jpg" alt="Utility software performs maintenance and support tasks" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>System software Software that supports the operation and management of the computer system.</li><li>Utility software System software designed for a specific maintenance, protection or management task.</li><li>Not application software It supports the system rather than directly producing user documents, games or media.</li><li>Scenario link The correct utility depends on whether the problem is loss, size, confidentiality, fragmentation or malware.</li></ul></details>
+          </figure><figure class="v2-visual" data-material-kind="diagram">
+            <div class="v2-visual-heading"><span>05</span><div><p>Diagram · 5 of 6</p><h4>Defragmentation rearranges fragmented files on magnetic disks</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Defragmentation rearranges fragmented files on magnetic disks"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-056-defrag.jpg" alt="Defragmentation rearranges fragmented files on magnetic disks" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Fragmentation Parts of a file are stored in non-contiguous blocks across a disk.</li><li>Purpose Rearrange file blocks so related parts are stored closer together.</li><li>Benefit Can reduce mechanical disk head movement and improve hard disk access time.</li><li>Boundary Do not apply the same benefit to SSDs; they have no moving disk head.</li></ul></details>
+          </figure><figure class="v2-visual" data-material-kind="diagram">
+            <div class="v2-visual-heading"><span>06</span><div><p>Diagram · 6 of 6</p><h4>Encryption utilities protect confidentiality</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Encryption utilities protect confidentiality"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-056-encryption.jpg" alt="Encryption utilities protect confidentiality" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Purpose Scramble plaintext into ciphertext using an algorithm and a key.</li><li>Benefit Unauthorised users cannot read the data without the correct key.</li><li>Examples Encrypting a laptop drive, a backup archive or files sent over a network.</li><li>Limitation Encryption does not stop deletion or malware; losing the key can make data unrecoverable.</li></ul></details>
+          </figure></div>
+  </section>
+          <article class="v2-example"><div><p class="v2-eyebrow">Apply the idea</p><h3>Worked method</h3></div><ol class="v2-worked-flow"><li><span>01</span><strong>Choose tools across development and deployment</strong></li><li><span>02</span><strong>During development, an interpreter can execute each statement and stop near a fault, giving quick feedback.</strong></li><li><span>03</span><strong>For final distribution, a compiler can translate the whole high-level program before execution and provide target/object or executable code without distributing the source.</strong></li><li><span>04</span><strong>A processor-specific assembly routine requires an assembler because its mnemonic instructions must become the target processor&#39;s machine code.</strong></li></ol></article>
+          <details class="v2-core-facts"><summary>Open precise terminology and exam facts</summary><ul class="v2-facts"><li>An assembler translates assembly language, a compiler translates high-level language, and an interpreter translates and executes high-level language.</li><li>An assembler is needed to translate a processor-specific assembly-language program into machine code or object code. A compiler is needed to translate a whole high-level language program before execution, normally producing target/object code. An interpreter translates and executes a high-level language program statement by statement during execution, normally without producing a separate permanent object-code file.</li><li>Compiler advantages include faster repeated execution after translation, distribution without the source code and translation checks across the whole program. Disadvantages include a separate compilation step and an error list that may need several corrections before execution. Interpreter advantages include immediate statement-level feedback and convenient incremental testing. Disadvantages include repeated translation overhead, slower execution and needing the interpreter and usually the source program at run time.</li><li>A justified choice must connect the mechanism to the scenario: an interpreter can suit development and debugging; a compiler can suit repeated use or distribution; an assembler is required for assembly source. These are advantages and disadvantages of the translation approaches, not universal claims that one tool is always better.</li></ul></details>
+          <details class="v2-extension"><summary>Beyond syllabus / 延伸知识（不要求背诵）</summary><p>production build systems automate translation, linking, testing and packaging, while the syllabus examines the purpose of each stage separately.</p></details>
         </section>
 
         <section class="v2-panel" id="practice">
@@ -82,6 +132,6 @@
         <nav class="v2-bottom-nav" aria-label="Previous and next lesson"><a href="../lesson-027/" >Previous lesson</a><a href="../lesson-029/" >Next lesson</a></nav>
       </div>
     </main>
-    <script src="../course-v2.js?v=1"></script>
+    <script src="../course-v2.js?v=2"></script>
   </body>
 </html>

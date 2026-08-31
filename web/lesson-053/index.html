@@ -8,7 +8,7 @@
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
-    <link rel="stylesheet" href="../course-v2.css?v=3" />
+    <link rel="stylesheet" href="../course-v2.css?v=6" />
   </head>
   <body data-course-version="2" data-lesson-id="053" data-syllabus-ids="S9.09">
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -17,16 +17,11 @@
       <nav class="v2-actions" aria-label="Lesson actions"><a href="../">Course home</a><a href="../assessments/">Assessment bank</a><button type="button" id="printLesson">Print</button></nav>
     </header>
     <main class="v2-shell" id="main-content" tabindex="-1">
-      <nav class="v2-toc" aria-label="Lesson contents"><strong>Lesson 053</strong><a href="#overview">Overview</a><a href="#prerequisite">Prerequisite</a><a href="#explanation">Explanation</a><a href="#practice">Practice</a><a href="#summary">Summary</a></nav>
+      <nav class="v2-jump-nav" aria-label="Lesson contents"><strong>Lesson 053</strong><a href="#overview">Overview</a><a href="#prerequisite">Prerequisite</a><a href="#explanation">Explanation</a><a href="#practice">Practice</a><a href="#summary">Summary</a></nav>
       <div class="v2-content">
-        <section class="v2-hero" id="overview">
-          <div><p class="v2-eyebrow">Flexible-depth lesson</p><h2>Constructing and interpreting logic statements</h2><p>S9.09 | Select what to omit, teach briefly or explore in depth.</p></div>
-          <div class="v2-time-grid" aria-label="Available lesson depth"><div><strong>Quick</strong><span>diagnose + essentials</span></div><div><strong>Full</strong><span>complete explanation</span></div><div><strong>Deep</strong><span>prerequisites + extension</span></div><div><strong>Choose</strong><span>practice by need</span></div></div>
-        </section>
-
-        <section class="v2-panel v2-route-menu" aria-labelledby="route-heading">
-          <div class="v2-heading"><p class="v2-eyebrow">Teacher choice</p><h2 id="route-heading">Choose the depth for this group</h2></div>
-          <div class="v2-route-grid"><article><h3>Quick route</h3><p>Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.</p></article><article><h3>Full route</h3><p>Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.</p></article><article><h3>Deep route</h3><p>Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.</p></article></div>
+        <section class="v2-overview" id="overview">
+          <div><p class="v2-eyebrow">Flexible-depth lesson</p><p class="v2-overview-copy">S9.09 | Learn from the diagrams, test the method, then choose the practice you need.</p></div>
+          <details class="v2-route-menu"><summary>Choose a Quick, Full or Deep route</summary><div class="v2-route-grid"><article><h3>Quick route</h3><p>Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.</p></article><article><h3>Full route</h3><p>Use every knowledge-point material set, the worked method, the terminology check and all questions.</p></article><article><h3>Deep route</h3><p>Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.</p></article></div></details>
         </section>
 
         <section class="v2-panel" id="prerequisite">
@@ -37,21 +32,92 @@
         </section>
 
         <section class="v2-panel" id="explanation">
-          <div class="v2-heading"><p class="v2-eyebrow">Part 2 | deliberately over-complete</p><h2>Knowledge explanation</h2></div>
-          <h3>Learning objectives</h3><ul class="v2-objectives"><li>Construct and interpret logic statements.</li></ul>
+          <div class="v2-heading v2-heading--wide"><p class="v2-eyebrow">Part 2 | knowledge-point material sets</p><h2>Learn each point through visuals</h2><p>Follow the map, the three-part explanation and the concrete cue. Open precise wording only after the idea is clear.</p></div>
           <details class="v2-concept-menu"><summary>Open the concept checklist and choose what to teach</summary><ul><li>logic</li><li>statements</li><li>condition</li><li>algorithm</li></ul></details>
-          <div class="v2-explanation-grid">
-            <div>
-              <article class="v2-core-facts"><h3>Detailed explanation</h3><p class="v2-teacher-note">Teach all points, or select only the ones this group needs. The list is intentionally fuller than a fixed lesson slot.</p><ul class="v2-facts"><li>Logic statements define parts of an algorithm solution, including decision conditions, loop conditions and Boolean assignments; students must both construct and interpret them.</li><li>A logic statement defines a decision, repetition condition or Boolean assignment in an algorithm solution. It combines comparisons such as =, &lt;, &lt;=, , = or &lt; with AND, OR or NOT when more than one condition is needed.</li><li>Construct a statement from the rule before choosing its branch: a valid mark from 0 to 100 inclusive is Mark = 0 AND Mark &lt;= 100. Interpret it by checking both comparisons; using OR would accept values outside the range.</li><li>Logic statements must preserve boundaries and intended truth conditions. Trace representative true, false and boundary values to expose reversed operators or incorrect connectors.</li><li>Algorithm design review: define an algorithm as a solution expressed as a sequence of defined steps; use abstraction to retain essential details in an abstract model; use decomposition to express the problem as connected modules; and choose meaningful identifiers recorded in an identifier table.</li><li>Solution review: design with input-process-output, use sequence, selection and iteration, document the same algorithm in structured English, a flowchart or pseudocode, and convert between the specified representations without changing its control flow.</li><li>Development review: use stepwise refinement until steps are programmable, and construct and interpret logic statements that define decisions, loop conditions or Boolean values. Core answers must not replace these requirements with tracing, Java syntax or vague planning advice.</li></ul></article>
-              <article class="v2-example"><h3>Worked example</h3><p>Design a result-processing solution: Keep only student ID and required marks, decompose the task into InputResults, ValidateResult, CalculateMean and OutputReport, record meaningful identifiers and IPO, refine CalculateMean into defined steps, use a range logic statement, and represent the final control flow in Cambridge pseudocode or a matching flowchart.</p></article>
-              <aside class="v2-extension"><h3>Beyond syllabus / 延伸知识（不要求背诵）</h3><p>the same algorithm can be expressed in many programming languages; its logic should remain independent of syntax.</p></aside>
-            </div>
-            <figure class="v2-visual">
-              <img src="../assets/diagrams/stage10-infographics/stage10-lesson-113-patterns.jpg" alt="Pattern choice. Scenario clue. Core pseudocode feature. One precise explanation. exactly 10 readings" loading="lazy" />
-              <figcaption>Match the scenario to the correct algorithm pattern. One maintained explanation is shown as an image on larger screens and as text on small screens.</figcaption>
-              <div class="v2-mobile-visual-text" aria-label="Mobile text alternative"><ul><li>Pattern choice</li><li>Scenario clue</li><li>Core pseudocode feature</li><li>One precise explanation</li><li>exactly 10 readings</li></ul></div>
-            </figure>
-          </div>
+          <nav class="v2-knowledge-index" aria-label="Knowledge points in this lesson"><a href="#knowledge-s9-09"><span>01</span>S9.09</a></nav><div class="v2-knowledge-point-list"><section class="v2-knowledge-point" id="knowledge-s9-09" data-syllabus-id="S9.09" data-visual-mode="process" data-material-count="7">
+      <header class="v2-knowledge-point-head"><span>01</span><div><p>S9.09 · process</p><h3>Logic · Statements · Condition · Algorithm</h3></div></header>
+      <div class="v2-material-triad">
+        <article class="v2-native-material v2-native-material--map"><h4>Concept map</h4><div class="v2-concept-map" aria-label="Concept map for S9.09"><span class="v2-concept-node" data-node-index="1">logic</span><span class="v2-concept-node" data-node-index="2">statements</span><span class="v2-concept-node" data-node-index="3">condition</span><span class="v2-concept-node" data-node-index="4">algorithm</span></div></article>
+        <article class="v2-native-material v2-native-material--story"><h4>See how it works</h4><ol><li><span>Start</span><strong>Logic statements define parts of an algorithm solution, including decision conditions, loop conditions and Boolean assignments</strong></li><li><span>Change</span><strong>A logic statement defines a decision, repetition condition or Boolean assignment in an algorithm solution</strong></li><li><span>Check</span><strong>use stepwise refinement until steps are programmable, and construct and interpret logic statements that define decisions, loop conditions or Boolean values</strong></li></ol></article>
+        <aside class="v2-native-material v2-native-material--cue"><h4>Concrete cue</h4><p>Logic statements define parts of an algorithm solution, including decision conditions, loop conditions and Boolean assignments; students must both construct and interpret them.</p></aside>
+      </div>
+      <section class="v2-material-library" aria-label="S9.09 diagrams">
+    <div class="v2-material-library-head"><h3>S9.09 diagrams</h3><div class="v2-material-controls">
+        <button type="button" data-material-prev aria-controls="materials-053-s9-09" aria-label="Previous diagram"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" /></svg></button>
+        <span data-material-position>1 / 4</span>
+        <button type="button" data-material-next aria-controls="materials-053-s9-09" aria-label="Next diagram"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" /></svg></button>
+      </div></div>
+    <div class="v2-material-rail" id="materials-053-s9-09" data-material-rail><figure class="v2-visual" data-material-kind="comparison">
+            <div class="v2-visual-heading"><span>01</span><div><p>Comparison · 1 of 4</p><h4>Selection: choose a path using a condition</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Selection: choose a path using a condition"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-101-selection.jpg" alt="Selection: choose a path using a condition" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Knowledge explanation</li><li>Selection is used when the algorithm must decide between different actions.</li><li>INPUT Mark</li><li>IF Mark = 50 THEN</li><li>OUTPUT &quot;Pass&quot;</li><li>OUTPUT &quot;Resit&quot;</li></ul></details>
+          </figure><figure class="v2-visual" data-material-kind="process">
+            <div class="v2-visual-heading"><span>02</span><div><p>Process · 2 of 4</p><h4>An algorithm is a solution expressed as defined steps</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: An algorithm is a solution expressed as defined steps"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-099-concept.jpg" alt="An algorithm is a solution expressed as defined steps" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>An algorithm is a solution to a problem expressed as a sequence of defined steps.</li><li>Each step must be unambiguous, ordered where order matters and capable of being carried out.</li><li>Identify what data is supplied, state the required transformation and state the exact result.</li><li>Record limits, quantity requirements and supported assumptions.</li><li>Check that every requirement maps to an input, process, output, constraint or assumption.</li></ul></details>
+          </figure><figure class="v2-visual" data-material-kind="example">
+            <div class="v2-visual-heading"><span>03</span><div><p>Concrete example · 3 of 4</p><h4>Use Cambridge-style validation loops in the exam</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Use Cambridge-style validation loops in the exam"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-104-pseudocode.jpg" alt="Use Cambridge-style validation loops in the exam" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>A post-condition validation loop starts with REPEAT and ends with UNTIL.</li><li>Input Mark inside the loop so every retry obtains a replacement value.</li><li>Close the invalid-mark selection with ENDIF before UNTIL.</li><li>A Java do-while support version must begin with do and close its blocks correctly.</li></ul></details>
+          </figure><figure class="v2-visual" data-material-kind="comparison">
+            <div class="v2-visual-heading"><span>04</span><div><p>Comparison · 4 of 4</p><h4>Real algorithms usually combine the three structures</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Real algorithms usually combine the three structures"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-101-combining.jpg" alt="Real algorithms usually combine the three structures" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Combining structures</li><li>1 Use sequence to initialise variables and read inputs.</li><li>2 Use iteration when the same action happens repeatedly.</li><li>3 Use selection inside the loop when each item needs a decision.</li><li>4 Use sequence after the loop to calculate or output final results.</li><li>5 Indent nested structures so the examiner can see the logic.</li></ul></details>
+          </figure></div>
+  </section>
+      <details class="v2-point-precision"><summary>Open precise syllabus wording</summary><p><strong>Construct and interpret logic statements.</strong></p><p>Logic statements define parts of an algorithm solution, including decision conditions, loop conditions and Boolean assignments; students must both construct and interpret them.</p></details>
+    </section></div>
+          <section class="v2-material-library" aria-label="Supporting diagram library">
+    <div class="v2-material-library-head"><h3>Supporting diagram library</h3><div class="v2-material-controls">
+        <button type="button" data-material-prev aria-controls="materials-053-supporting" aria-label="Previous diagram"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" /></svg></button>
+        <span data-material-position>1 / 10</span>
+        <button type="button" data-material-next aria-controls="materials-053-supporting" aria-label="Next diagram"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" /></svg></button>
+      </div></div>
+    <div class="v2-material-rail" id="materials-053-supporting" data-material-rail><figure class="v2-visual" data-material-kind="diagram">
+            <div class="v2-visual-heading"><span>01</span><div><p>Diagram · 1 of 10</p><h4>Match the rule to the risk</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Match the rule to the risk"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-104-checks.jpg" alt="Match the rule to the risk" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>LENGTH(Postcode) &lt;= 8 is a maximum-length check.</li><li>The rule accepts no more than eight characters and prevents input that is too long.</li><li>It does not require exactly eight characters.</li><li>Use equality or bounded limits only when an exact or minimum-and-maximum length is intended.</li></ul></details>
+          </figure><figure class="v2-visual" data-material-kind="diagram">
+            <div class="v2-visual-heading"><span>02</span><div><p>Diagram · 2 of 10</p><h4>Reject bad input, then ask again</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Reject bad input, then ask again"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-104-defensive.jpg" alt="Reject bad input, then ask again" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Defensive input handling</li><li>1 Input the value.</li><li>2 Test the validation condition.</li><li>3 If invalid, output a helpful message.</li><li>4 Repeat input until valid.</li><li>5 Process only the accepted value.</li></ul></details>
+          </figure><figure class="v2-visual" data-material-kind="diagram">
+            <div class="v2-visual-heading"><span>03</span><div><p>Diagram · 3 of 10</p><h4>A diamond becomes IF...THEN...ELSE</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: A diamond becomes IF...THEN...ELSE"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-102-equivalence.jpg" alt="A diamond becomes IF...THEN...ELSE" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>A flowchart decision diamond becomes an IF condition in pseudocode.</li><li>The labelled Yes and No branches become THEN and ELSE branches.</li><li>Close the selection with ENDIF after the two branches rejoin.</li><li>Input Age before testing whether it is between 11 and 18 inclusive.</li></ul></details>
+          </figure><figure class="v2-visual" data-material-kind="diagram">
+            <div class="v2-visual-heading"><span>04</span><div><p>Diagram · 4 of 10</p><h4>Test a mark against 0-100</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Test a mark against 0-100"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-104-tester.jpg" alt="Test a mark against 0-100" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Interactive input tester</li><li>Enter a mark and test whether it is valid.</li></ul></details>
+          </figure><figure class="v2-visual" data-material-kind="diagram">
+            <div class="v2-visual-heading"><span>05</span><div><p>Diagram · 5 of 10</p><h4>Validation checks whether input follows a rule</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Validation checks whether input follows a rule"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-104-validation.jpg" alt="Validation checks whether input follows a rule" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Knowledge explanation</li><li>What validation does</li><li>Validation rejects unacceptable input before processing. It can check range, presence, length, type, format, existence or check digit rules.</li><li>What validation does not do</li><li>Validation does not prove input is true. It checks whether input is reasonable or follows the expected pattern.</li><li>Example: age 15 passes a school-age range check, but it might still be a lie.</li></ul></details>
+          </figure><figure class="v2-visual" data-material-kind="diagram">
+            <div class="v2-visual-heading"><span>06</span><div><p>Diagram · 6 of 10</p><h4>Turn vague answers into mark-worthy answers</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Turn vague answers into mark-worthy answers"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-113-fixer.jpg" alt="Turn vague answers into mark-worthy answers" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Interactive answer fixer</li><li>Weak answer</li><li>Choose a weak answer to see a stricter version.</li></ul></details>
+          </figure><figure class="v2-visual" data-material-kind="diagram">
+            <div class="v2-visual-heading"><span>07</span><div><p>Diagram · 7 of 10</p><h4>Match the scenario to the correct algorithm pattern</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Match the scenario to the correct algorithm pattern"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-113-patterns.jpg" alt="Match the scenario to the correct algorithm pattern" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Pattern choice</li><li>Scenario clue</li><li>Core pseudocode feature</li><li>One precise explanation</li><li>exactly 10 readings</li><li>Count-controlled loop</li><li>FOR Index &lt;- 1 TO 10</li><li>The number of repetitions is known before the loop starts.</li></ul></details>
+          </figure><figure class="v2-visual" data-material-kind="diagram">
+            <div class="v2-visual-heading"><span>08</span><div><p>Diagram · 8 of 10</p><h4>Paper 2 wants readable Cambridge-style pseudocode</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Paper 2 wants readable Cambridge-style pseudocode"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-113-pseudocode.jpg" alt="Paper 2 wants readable Cambridge-style pseudocode" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Initialise Total and Count, then input the first Value.</li><li>While Value is not -1, add it to Total and increment Count.</li><li>Input the next Value inside the WHILE body before ENDWHILE.</li><li>If Count is greater than zero, calculate Average using real division and output it.</li><li>Java may support understanding but is not the Cambridge pseudocode answer format.</li></ul></details>
+          </figure><figure class="v2-visual" data-material-kind="diagram">
+            <div class="v2-visual-heading"><span>09</span><div><p>Diagram · 9 of 10</p><h4>Section 9 in one page</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Section 9 in one page"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-113-retrieval.jpg" alt="Section 9 in one page" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Retrieval map</li><li>Signal words</li><li>Expected mechanism</li><li>Typical marking error</li><li>IPOC / decomposition</li><li>scenario, requirements, constraints</li><li>break problem into inputs, processing, outputs and rules</li><li>copying the story without design decisions</li></ul></details>
+          </figure><figure class="v2-visual" data-material-kind="diagram">
+            <div class="v2-visual-heading"><span>10</span><div><p>Diagram · 10 of 10</p><h4>Turn question wording into an algorithm plan</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Turn question wording into an algorithm plan"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-113-triage.jpg" alt="Turn question wording into an algorithm plan" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Scenario triage</li><li>Step 1: Output first</li><li>Ask: what must be displayed, returned or stored at the end? The final output tells you which variables need to exist.</li><li>Output needed: average rainfall</li><li>Therefore:</li><li>Total is needed</li><li>Count is needed</li><li>Average &lt;- Total / Count</li></ul></details>
+          </figure></div>
+  </section>
+          <article class="v2-example"><div><p class="v2-eyebrow">Apply the idea</p><h3>Worked method</h3></div><ol class="v2-worked-flow"><li><span>01</span><strong>Design a result-processing solution</strong></li><li><span>02</span><strong>Keep only student ID and required marks, decompose the task into InputResults, ValidateResult, CalculateMean and OutputReport, record meaningful identifiers and IPO, refine CalculateMean into defined steps, use a range logic statement, and…</strong></li></ol></article>
+          <details class="v2-core-facts"><summary>Open precise terminology and exam facts</summary><ul class="v2-facts"><li>Logic statements define parts of an algorithm solution, including decision conditions, loop conditions and Boolean assignments; students must both construct and interpret them.</li><li>A logic statement defines a decision, repetition condition or Boolean assignment in an algorithm solution. It combines comparisons such as =, &lt;, &lt;=, , = or &lt; with AND, OR or NOT when more than one condition is needed.</li><li>Construct a statement from the rule before choosing its branch: a valid mark from 0 to 100 inclusive is Mark = 0 AND Mark &lt;= 100. Interpret it by checking both comparisons; using OR would accept values outside the range.</li><li>Logic statements must preserve boundaries and intended truth conditions. Trace representative true, false and boundary values to expose reversed operators or incorrect connectors.</li><li>Algorithm design review: define an algorithm as a solution expressed as a sequence of defined steps; use abstraction to retain essential details in an abstract model; use decomposition to express the problem as connected modules; and choose meaningful identifiers recorded in an identifier table.</li><li>Solution review: design with input-process-output, use sequence, selection and iteration, document the same algorithm in structured English, a flowchart or pseudocode, and convert between the specified representations without changing its control flow.</li><li>Development review: use stepwise refinement until steps are programmable, and construct and interpret logic statements that define decisions, loop conditions or Boolean values. Core answers must not replace these requirements with tracing, Java syntax or vague planning advice.</li></ul></details>
+          <details class="v2-extension"><summary>Beyond syllabus / 延伸知识（不要求背诵）</summary><p>the same algorithm can be expressed in many programming languages; its logic should remain independent of syntax.</p></details>
         </section>
 
         <section class="v2-panel" id="practice">
@@ -81,6 +147,6 @@
         <nav class="v2-bottom-nav" aria-label="Previous and next lesson"><a href="../lesson-052/" >Previous lesson</a><a href="../lesson-054/" >Next lesson</a></nav>
       </div>
     </main>
-    <script src="../course-v2.js?v=1"></script>
+    <script src="../course-v2.js?v=2"></script>
   </body>
 </html>

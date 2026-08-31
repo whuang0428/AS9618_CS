@@ -4,12 +4,12 @@
 **Paper:** Paper 1<br>
 **Syllabus:** Section 2: Communication<br>
 **Syllabus requirements:** S2.06, S2.07, S2.08<br>
-**Pacing:** Flexible. This lesson is deliberately over-complete; select a quick, full or deep route for the learners in front of you.
+**Pacing:** Flexible. Select the material set and practice depth needed by the learner.
 
 ## Teaching-depth menu
 
 - **Quick route:** Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.
-- **Full route:** Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.
+- **Full route:** Use every knowledge-point material set, the worked method, the terminology check and all questions.
 - **Deep route:** Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.
 
 ## 1. Prerequisite knowledge and quick diagnostic
@@ -22,32 +22,229 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ## 2. Knowledge explanation
 
-### Learning objectives
+### 1. Public cloud · Private cloud · Benefit · Drawback (S2.06)
 
-- Show understanding of public and private cloud computing, including the benefits and drawbacks of cloud computing.
-- Show understanding of the differences between wired and wireless networks and the implications of using each.
-- Describe copper cable, fibre-optic cable, radio waves including WiFi, microwave and satellite transmission.
+**Concept map:** public cloud → private cloud → benefit → drawback → dedicated to one organisation
 
-### Concept checklist for teacher choice
+**Three-part explanation:**
 
-- public cloud
-- private cloud
-- benefit
-- drawback
-- dedicated to one organisation
-- wired network
-- wireless network
-- physical cable
-- radio
-- implications
-- copper cable
-- fibre-optic cable
-- radio waves
-- WiFi
-- microwave
-- satellite
+1. Private infrastructure is dedicated to one organisation but is not automatically secure
+2. Public refers to shared provider infrastructure, not unrestricted access to customer data
+3. A public cloud is offered over shared provider infrastructure
 
-### Detailed explanation
+**Concrete cue:** Public refers to shared provider infrastructure, not unrestricted access to customer data. Private infrastructure is dedicated to one organisation but is not automatically secure.
+
+#### Internet, intranet and extranet
+
+![Internet, intranet and extranet](../web/assets/diagrams/stage10-infographics/stage10-lesson-025-networks.jpg)
+
+<details><summary>Text transcript</summary>
+
+- These terms describe access scope and purpose. Distinguish these terms by access scope and purpose.
+- Internet
+- A global public network of interconnected networks. It allows public services such as websites, email and online platforms.
+- Access: public, though individual services may still require login.
+- Use case: public website, online search, public cloud service access.
+- Intranet
+- A private network used within an organisation, often using web technologies but restricted to authorised users.
+- Access: internal staff or members only.
+
+</details>
+
+<details><summary>Precise syllabus wording</summary>
+
+Show understanding of public and private cloud computing, including the benefits and drawbacks of cloud computing.
+
+Public refers to shared provider infrastructure, not unrestricted access to customer data. Private infrastructure is dedicated to one organisation but is not automatically secure.
+
+</details>
+
+### 2. Wired network · Wireless network · Physical cable · Radio (S2.07)
+
+**Concept map:** wired network → wireless network → physical cable → radio → implications
+
+**Three-part explanation:**
+
+1. Comparisons must connect physical cable or radio transmission to mobility, installation, interference, shared capacity, reliability or security in a stated use
+2. A wireless network transmits through the air, supporting mobility and rapid installation, but shared radio capacity, interference, obstacles and interception risk can affect performance and security
+3. A wired network carries signals through a physical cable
+
+**Concrete cue:** Comparisons must connect physical cable or radio transmission to mobility, installation, interference, shared capacity, reliability or security in a stated use.
+
+#### Wireless transmission media
+
+![Wireless transmission media](../web/assets/diagrams/stage10-infographics/stage10-lesson-023-wireless.jpg)
+
+<details><summary>Text transcript</summary>
+
+- Wireless media transmit through the air or space. They support mobility, but the signal can be affected by distance, obstacles and interference.
+- Radio waves
+- Radio waves are used by technologies such as WiFi to transmit data without a physical cable.
+- Good for: mobile devices, classrooms, homes, short-range wireless networking.
+- Limits: shared medium, interference from other devices, weaker security if poorly configured.
+- Microwaves
+- Microwave links can transmit data between fixed points, often using directional antennas.
+- Good for: point-to-point links where a line of sight is available.
+
+</details>
+
+#### Wired transmission media
+
+![Wired transmission media](../web/assets/diagrams/stage10-infographics/stage10-lesson-023-wired.jpg)
+
+<details><summary>Text transcript</summary>
+
+- Wired media carry signals through a physical cable. They are usually suitable for fixed devices and controlled environments.
+- Copper cable
+- Copper cable transmits data using electrical signals. It is common in local networks because it is relatively cheap and easy to install.
+- Good for: short local links, desktop PCs, classroom networks.
+- Limits: affected by electromagnetic interference; lower bandwidth and distance than fibre in many contexts.
+- Exam wording: say "electrical signals", not "data flows like water". The cable is not a tiny plumbing system.
+- Fibre-optic cable
+- Fibre-optic cable transmits data as pulses of light through glass or plastic fibres.
+
+</details>
+
+#### Compare by factor, not by vibe
+
+![Compare by factor, not by vibe](../web/assets/diagrams/stage10-infographics/stage10-lesson-023-compare.jpg)
+
+<details><summary>Text transcript</summary>
+
+- Wired networks
+- Wireless networks
+- Mobility
+- Poor for moving devices because a cable is required.
+- Better for mobile devices because no physical cable is needed.
+- Interference
+- Copper may suffer electromagnetic interference; fibre is less affected.
+- Can be affected by walls, distance, other devices and weather.
+
+</details>
+
+#### Wireless access points: joining wireless devices
+
+![Wireless access points: joining wireless devices](../web/assets/diagrams/stage10-infographics/stage10-lesson-024-wireless.jpg)
+
+<details><summary>Text transcript</summary>
+
+- Wireless access point
+- A wireless access point allows wireless devices to connect to a network using radio waves, often linking them to a wired LAN.
+- Good exam phrase: provides wireless access to a network.
+- Not enough: "it gives internet". Internet access may also require a router and wider network connection.
+- Security link: access points can use authentication and encryption, but this lesson focuses on their network role.
+
+</details>
+
+<details><summary>Precise syllabus wording</summary>
+
+Show understanding of the differences between wired and wireless networks and the implications of using each.
+
+Comparisons must connect physical cable or radio transmission to mobility, installation, interference, shared capacity, reliability or security in a stated use.
+
+</details>
+
+### 3. Copper cable · Fibre-optic cable · Radio waves · WiFi (S2.08)
+
+**Concept map:** copper cable → fibre-optic cable → radio waves → WiFi → microwave → satellite
+
+**Three-part explanation:**
+
+1. Explanations must include the signalling method or propagation condition and a use/limitation, not only relative speed
+2. Use copper for short fixed desktop links, fibre-optic cable between buildings requiring high bandwidth, WiFi radio waves for mobile tablets, a line-of-sight microwave link where cabling…
+3. Satellite communication uses microwave/radio links to and from a satellite for wide or remote coverage, but long propagation distance can increase latency and weather can affect…
+
+**Concrete cue:** All named media are required. Explanations must include the signalling method or propagation condition and a use/limitation, not only relative speed.
+
+#### Wireless transmission media
+
+![Wireless transmission media](../web/assets/diagrams/stage10-infographics/stage10-lesson-023-wireless.jpg)
+
+<details><summary>Text transcript</summary>
+
+- Wireless media transmit through the air or space. They support mobility, but the signal can be affected by distance, obstacles and interference.
+- Radio waves
+- Radio waves are used by technologies such as WiFi to transmit data without a physical cable.
+- Good for: mobile devices, classrooms, homes, short-range wireless networking.
+- Limits: shared medium, interference from other devices, weaker security if poorly configured.
+- Microwaves
+- Microwave links can transmit data between fixed points, often using directional antennas.
+- Good for: point-to-point links where a line of sight is available.
+
+</details>
+
+#### Wired transmission media
+
+![Wired transmission media](../web/assets/diagrams/stage10-infographics/stage10-lesson-023-wired.jpg)
+
+<details><summary>Text transcript</summary>
+
+- Wired media carry signals through a physical cable. They are usually suitable for fixed devices and controlled environments.
+- Copper cable
+- Copper cable transmits data using electrical signals. It is common in local networks because it is relatively cheap and easy to install.
+- Good for: short local links, desktop PCs, classroom networks.
+- Limits: affected by electromagnetic interference; lower bandwidth and distance than fibre in many contexts.
+- Exam wording: say "electrical signals", not "data flows like water". The cable is not a tiny plumbing system.
+- Fibre-optic cable
+- Fibre-optic cable transmits data as pulses of light through glass or plastic fibres.
+
+</details>
+
+<details><summary>Precise syllabus wording</summary>
+
+Describe copper cable, fibre-optic cable, radio waves including WiFi, microwave and satellite transmission.
+
+All named media are required. Explanations must include the signalling method or propagation condition and a use/limitation, not only relative speed.
+
+</details>
+
+### Supporting diagram library
+
+#### Layered communication
+
+![Layered communication](../web/assets/diagrams/stage10-infographics/stage10-lesson-020-layers.jpg)
+
+<details><summary>Text transcript</summary>
+
+- Application layer idea What the user or application wants to do, such as send a web request.
+- Transport layer idea Breaks data into segments, manages reliability or delivery style.
+- Network layer idea Adds logical addressing and routing between networks.
+- Link/physical layer idea Moves frames or bits across the local medium.
+- Encapsulation and de-encapsulation
+- As data moves down layers, each layer may add control information. At the receiver, layers remove and interpret that control information in reverse order.
+
+</details>
+
+#### What a protocol is
+
+![What a protocol is](../web/assets/diagrams/stage10-infographics/stage10-lesson-020-protocols.jpg)
+
+<details><summary>Text transcript</summary>
+
+- Definition
+- A protocol is a set of rules that governs how data is transmitted and received.
+- Shared meaning
+- Both sender and receiver follow the same rules, so messages can be interpreted correctly.
+- Interoperability
+- Different devices and software can communicate if they implement the same protocol.
+- Reliability
+- Protocols can specify error checking, acknowledgements and retransmission rules.
+
+</details>
+
+#### What protocol rules can specify
+
+![What protocol rules can specify](../web/assets/diagrams/stage10-infographics/stage10-lesson-020-rules.jpg)
+
+<details><summary>Text transcript</summary>
+
+- Protocols define rules for data format, addressing, timing, error handling, flow control and connection management.
+- A protocol may provide reliability and ordered delivery, but these are not guaranteed by every protocol.
+- TCP provides reliable ordered delivery; UDP does not guarantee reliability or ordering.
+
+</details>
+
+<details><summary>Open precise terminology and exam facts</summary>
 
 - Public refers to shared provider infrastructure, not unrestricted access to customer data. Private infrastructure is dedicated to one organisation but is not automatically secure.
 - Comparisons must connect physical cable or radio transmission to mobility, installation, interference, shared capacity, reliability or security in a stated use.
@@ -58,18 +255,18 @@ Ask the learner to give one accurate definition or method step before continuing
 - Copper cable carries electrical signals and is often economical for short LAN links, but suffers attenuation and electromagnetic interference. Fibre-optic cable carries pulses of light, supports high bandwidth and long distances and is resistant to electromagnetic interference, but equipment and installation may cost more.
 - Radio waves, including WiFi, support non-line-of-sight local wireless access but can be absorbed, reflected or interfered with. Terrestrial microwave links provide directional point-to-point communication and usually require clear line of sight. Satellite communication uses microwave/radio links to and from a satellite for wide or remote coverage, but long propagation distance can increase latency and weather can affect some links.
 
+</details>
+
 ### Worked example
 
-Choose a cloud model / Connect a school campus and a remote weather station: A school storing non-sensitive public resources may use a public cloud for scalable access. A hospital may choose a private cloud for tighter organisational control of patient-data access. Use copper for short fixed desktop links, fibre-optic cable between buildings requiring high bandwidth, WiFi radio waves for mobile tablets, a line-of-sight microwave link where cabling between two buildings is impractical, and satellite for the remote station without local cable infrastructure. Each choice follows distance, mobility, interference, bandwidth, latency and cost.
+1. Choose a cloud model
+2. Connect a school campus and a remote weather station
+3. A school storing non-sensitive public resources may use a public cloud for scalable access.
+4. A hospital may choose a private cloud for tighter organisational control of patient-data access.
+5. Use copper for short fixed desktop links, fibre-optic cable between buildings requiring high bandwidth, WiFi radio waves for mobile tablets, a line-of-sight microwave link where cabling between two buildings is impractical, and…
+6. Each choice follows distance, mobility, interference, bandwidth, latency and cost.
 
 Beyond syllabus / 延伸知识（不要求背诵）: real networks organise communication in layers so that hardware, addressing and application protocols can change independently.
-
-### Retained visual explanation
-
-![Wireless transmission media](../web/assets/diagrams/stage10-infographics/stage10-lesson-023-wireless.jpg)
-
-_Wireless transmission media. The image and mobile text alternative come from one maintained fact source._
-
 ## 3. Practice by question type
 
 ### Question 1 - foundation - compare - 8 marks

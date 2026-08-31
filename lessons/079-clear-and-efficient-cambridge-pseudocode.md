@@ -4,12 +4,12 @@
 **Paper:** Paper 2<br>
 **Syllabus:** Section 11: Programming<br>
 **Syllabus requirements:** S11.09<br>
-**Pacing:** Flexible. This lesson is deliberately over-complete; select a quick, full or deep route for the learners in front of you.
+**Pacing:** Flexible. Select the material set and practice depth needed by the learner.
 
 ## Teaching-depth menu
 
 - **Quick route:** Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.
-- **Full route:** Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.
+- **Full route:** Use every knowledge-point material set, the worked method, the terminology check and all questions.
 - **Deep route:** Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.
 
 ## 1. Prerequisite knowledge and quick diagnostic
@@ -22,18 +22,174 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ## 2. Knowledge explanation
 
-### Learning objectives
+### 1. Clear · Efficient · Cambridge · Pseudocode (S11.09)
 
-- Write clear and efficient Cambridge pseudocode.
+**Concept map:** clear → efficient → Cambridge → pseudocode
 
-### Concept checklist for teacher choice
+**Three-part explanation:**
 
-- clear
-- efficient
-- Cambridge
-- pseudocode
+1. The Cambridge pseudocode remains clear because initialisation, loop bounds, selection and outputs are explicit
+2. Clear Cambridge pseudocode uses meaningful identifiers, consistent indentation, complete Cambridge constructs and a traceable control path
+3. Efficient pseudocode avoids unnecessary repeated work while preserving correctness
 
-### Detailed explanation
+**Concrete cue:** Clear Cambridge pseudocode uses meaningful identifiers, consistent indentation, complete Cambridge constructs and a traceable control path. Efficient pseudocode avoids unnecessary repeated work while preserving correctness.
+
+#### Java methods can model modularity, but Cambridge pseudocode remains the exam format
+
+![Java methods can model modularity, but Cambridge pseudocode remains the exam format](../web/assets/diagrams/stage10-infographics/stage10-lesson-140-java.jpg)
+
+<details><summary>Text transcript</summary>
+
+- Java support only
+- Cambridge-style pseudocode
+- FUNCTION IsValidMark(Mark : INTEGER) RETURNS BOOLEAN
+- RETURN Mark = 0 AND Mark <= 100
+- ENDFUNCTION
+- Java support example only
+- static boolean isValidMark(int mark) {
+- return mark = 0 && mark <= 100;
+
+</details>
+
+#### Java can support practice; the review answer should be Cambridge pseudocode
+
+![Java can support practice; the review answer should be Cambridge pseudocode](../web/assets/diagrams/stage10-infographics/stage10-lesson-142-java.jpg)
+
+<details><summary>Text transcript</summary>
+
+- Java may support practice but the review answer uses Cambridge pseudocode.
+- Increment PassCount only when the current mark is at least 50.
+- Close the pseudocode selection with ENDIF before NEXT Index.
+- Keep Java and pseudocode indexing conventions explicit.
+
+</details>
+
+#### A string is a sequence of characters
+
+![A string is a sequence of characters](../web/assets/diagrams/stage10-infographics/stage10-lesson-134-strings.jpg)
+
+<details><summary>Text transcript</summary>
+
+- Cambridge-style assignment
+- Name <- "Ada"
+- Message <- "Hello, " & Name
+- OUTPUT Message
+- Reasoning
+- "Ada" is a string of three characters. & is used here for concatenation.
+- If a question uses a different concatenation operator, follow the question. The mark is for clear string construction.
+
+</details>
+
+#### Java I/O syntax is not Cambridge pseudocode
+
+![Java I/O syntax is not Cambridge pseudocode](../web/assets/diagrams/stage10-infographics/stage10-lesson-136-java.jpg)
+
+<details><summary>Text transcript</summary>
+
+- Java support only
+- Cambridge-style pseudocode
+- OUTPUT "Enter mark"
+- INPUT Mark
+- OUTPUT "Mark: " & Mark
+- Java support example only
+- Scanner input = new Scanner(System.in);
+- System.out.print("Enter mark: ");
+
+</details>
+
+<details><summary>Precise syllabus wording</summary>
+
+Write clear and efficient Cambridge pseudocode.
+
+Write efficient pseudocode.
+
+</details>
+
+### Supporting diagram library
+
+#### LCASE and UCASE convert one CHAR
+
+![LCASE and UCASE convert one CHAR](../web/assets/diagrams/stage10-infographics/stage10-lesson-134-case.jpg)
+
+<details><summary>Text transcript</summary>
+
+- Declare Answer as CHAR, input one character and normalise it with UCASE before comparison.
+- UCASE(Answer) returns CHAR, so compare the result with the CHAR literal 'Y'.
+- Close the selection with ENDIF.
+- LCASE and UCASE accept CHAR, not STRING; case conversion does not remove spaces or correct spelling.
+
+</details>
+
+#### Concatenation joins STRING values
+
+![Concatenation joins STRING values](../web/assets/diagrams/stage10-infographics/stage10-lesson-134-concat.jpg)
+
+<details><summary>Text transcript</summary>
+
+- Concatenation joins STRING values with the & operator.
+- FirstName is "Lin" and YearText is "2029"; Username <- FirstName & YearText returns "Lin2029".
+- Do not pass the STRING FirstName to LCASE; that function accepts CHAR.
+
+</details>
+
+#### MID and Java substring use different positions
+
+![MID and Java substring use different positions](../web/assets/diagrams/stage10-infographics/stage10-lesson-134-java.jpg)
+
+<details><summary>Text transcript</summary>
+
+- Cambridge guide example: MID(Name, 1, 3) returns the first three characters as a STRING.
+- Java support example: name.substring(0, 3) uses start index 0 inclusive and end index 3 exclusive.
+- LEFT is not listed in the Cambridge pseudocode guide; a question may use it only when the signature and position convention are supplied.
+- Do not add UCASE around a STRING expression because UCASE accepts CHAR.
+
+</details>
+
+#### Test a built-in function
+
+![Test a built-in function](../web/assets/diagrams/stage10-infographics/stage10-lesson-134-lab.jpg)
+
+<details><summary>Text transcript</summary>
+
+- Interactive string lab
+- Use a short string and compare the returned value. For MID , positions start at 1.
+- Function
+- Choose a function and run it.
+
+</details>
+
+#### LENGTH(String) returns the number of characters
+
+![LENGTH(String) returns the number of characters](../web/assets/diagrams/stage10-infographics/stage10-lesson-134-length.jpg)
+
+<details><summary>Text transcript</summary>
+
+- Word <- "ALGORITHM"
+- Size <- LENGTH(Word)
+- OUTPUT Size
+- Word "ALGORITHM"
+- LENGTH(Word) 9
+
+</details>
+
+#### Exam traces must follow the position convention stated or implied
+
+![Exam traces must follow the position convention stated or implied](../web/assets/diagrams/stage10-infographics/stage10-lesson-134-position.jpg)
+
+<details><summary>Text transcript</summary>
+
+- Positions and indexing
+- Cambridge-style trace
+- Word <- "DATA"
+- Part <- MID(Word, 2, 2)
+- OUTPUT Part
+- Using 1-based positions, the output is "AT" .
+- Common error
+- Do not import Java's zero-based indexing into a pseudocode trace unless the question explicitly tells you to.
+
+</details>
+
+<details><summary>Open precise terminology and exam facts</summary>
 
 - Write efficient pseudocode.
 - Efficient pseudocode avoids unnecessary repeated work and selects a structure suited to the data and stopping rule. For example, total and count can be updated during one traversal instead of scanning the same array twice when both results are needed.
@@ -41,18 +197,18 @@ Ask the learner to give one accurate definition or method step before continuing
 - At AS Level, justify an improvement from the actual algorithm, such as fewer repeated passes or stopping a search once the target is found. Do not claim that shorter text alone proves a more efficient algorithm.
 - Clear Cambridge pseudocode uses meaningful identifiers, consistent indentation, complete Cambridge constructs and a traceable control path. Efficient pseudocode avoids unnecessary repeated work while preserving correctness.
 
+</details>
+
 ### Worked example
 
-Count passes and total in one traversal / Combine two traversals: Set Total and PassCount to 0 before one FOR loop through Marks[1:30]. Add each mark to Total and increment PassCount only when the mark is at least 50. Output both values after NEXT Index. This preserves clear control flow while avoiding a second full traversal. One traversal of Marks can update both Total and PassCount. The Cambridge pseudocode remains clear because initialisation, loop bounds, selection and outputs are explicit.
+1. Count passes and total in one traversal
+2. Combine two traversals
+3. Set Total and PassCount to 0 before one FOR loop through Marks[1:30].
+4. Add each mark to Total and increment PassCount only when the mark is at least 50.
+5. Output both values after NEXT Index.
+6. This preserves clear control flow while avoiding a second full traversal.
 
 Beyond syllabus / 延伸知识（不要求背诵）: consistent style, modularity and automated tests reduce maintenance errors in larger programs.
-
-### Retained visual explanation
-
-![MID and Java substring use different positions](../web/assets/diagrams/stage10-infographics/stage10-lesson-134-java.jpg)
-
-_MID and Java substring use different positions. The image and mobile text alternative come from one maintained fact source._
-
 ## 3. Practice by question type
 
 ### Question 1 - foundation - write - 8 marks

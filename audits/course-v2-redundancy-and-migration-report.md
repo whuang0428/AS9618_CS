@@ -17,7 +17,7 @@ The old course repeated the same idea in several places: first as targeted pract
 - 151 active lessons became 90 syllabus-order lessons.
 - Targeted Practice, Exam-style and fixed Homework were replaced by one practice-by-question-type block.
 - 272 lesson questions are tracked in one bank with semantic fingerprints.
-- 784 old explanation panels were not carried forward as a quota; 89 useful visuals were retained, and the mobile text alternative is not shown alongside the same image.
+- 784 old explanation panels were not carried forward as a quota; 1240 relevant visuals are now grouped by lesson, with optional text transcripts and readable mobile scrolling.
 - 51 old assessment sets became 12 section checks and two paper mocks.
 - Past-paper PDFs remained outside the repository. The tracked contract stores 915 question-part references and statistics, not question wording.
 

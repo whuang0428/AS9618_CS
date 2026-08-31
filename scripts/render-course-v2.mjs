@@ -34,6 +34,19 @@ function slugify(value) {
     .slice(0, 88);
 }
 
+function shorten(value, maximumWords = 30) {
+  const words = String(value ?? "").split(/\s+/).filter(Boolean);
+  return words.length <= maximumWords ? words.join(" ") : `${words.slice(0, maximumWords).join(" ")}…`;
+}
+
+function displaySteps(value, maximumSteps = 6) {
+  const fragments = String(value ?? "")
+    .split(/(?<=[.!?])\s+|\s+\/\s+|:\s+/)
+    .map((fragment) => fragment.trim())
+    .filter((fragment) => fragment.split(/\s+/).length >= 3);
+  return (fragments.length ? fragments : [value]).slice(0, maximumSteps).map((fragment) => shorten(fragment, 32));
+}
+
 function lessonFilename(lesson) {
   return `${lesson.id}-${slugify(lesson.title)}.md`;
 }
@@ -48,8 +61,35 @@ function sectionLabel(lesson) {
 
 function renderMarkdown(lesson) {
   const questions = lesson.questionIds.map((id) => questionById.get(id));
-  const visual = lesson.visual
-    ? `\n### Retained visual explanation\n\n![${markdownEscape(lesson.visual.title)}](../web/${lesson.visual.path})\n\n_${markdownEscape(lesson.visual.title)}. The image and mobile text alternative come from one maintained fact source._\n`
+  const knowledgeMaterial = lesson.knowledgePoints.map((point, pointIndex) => `### ${pointIndex + 1}. ${markdownEscape(point.displayTitle)} (${point.id})
+
+**Concept map:** ${point.keyTerms.map(markdownEscape).join(" → ")}
+
+**Three-part explanation:**
+
+${point.explanationSteps.map((step, index) => `${index + 1}. ${markdownEscape(step)}`).join("\n")}
+
+**Concrete cue:** ${markdownEscape(point.cue)}
+
+${point.visuals.map((visual) => `#### ${markdownEscape(visual.title)}
+
+![${markdownEscape(visual.title)}](../web/${visual.path})
+
+<details><summary>Text transcript</summary>
+
+${visual.altFacts.map((fact) => `- ${markdownEscape(fact)}`).join("\n")}
+
+</details>`).join("\n\n")}
+
+<details><summary>Precise syllabus wording</summary>
+
+${markdownEscape(point.title)}
+
+${markdownEscape(point.notes)}
+
+</details>`).join("\n\n");
+  const supportingMaterial = lesson.supportingVisuals.length
+    ? `\n### Supporting diagram library\n\n${lesson.supportingVisuals.map((visual) => `#### ${markdownEscape(visual.title)}\n\n![${markdownEscape(visual.title)}](../web/${visual.path})\n\n<details><summary>Text transcript</summary>\n\n${visual.altFacts.map((fact) => `- ${markdownEscape(fact)}`).join("\n")}\n\n</details>`).join("\n\n")}\n`
     : "";
   const references = lesson.pastPaperRefs.length
     ? `\n### Related past-paper indexes\n\n| Reference | Marks | Command word | Question type |\n|---|---:|---|---|\n${lesson.pastPaperRefs.map((reference) => `| ${markdownEscape(reference.sourceRef)} | ${reference.marks} | ${reference.commandWord} | ${reference.questionType} |`).join("\n")}\n\nThese are indexes only. Cambridge question and mark-scheme wording is not reproduced.\n`
@@ -60,7 +100,7 @@ function renderMarkdown(lesson) {
 **Paper:** ${paperLabel(lesson)}<br>
 **Syllabus:** ${sectionLabel(lesson)}<br>
 **Syllabus requirements:** ${lesson.syllabusIds.join(", ")}<br>
-**Pacing:** Flexible. This lesson is deliberately over-complete; select a quick, full or deep route for the learners in front of you.
+**Pacing:** Flexible. Select the material set and practice depth needed by the learner.
 
 ## Teaching-depth menu
 
@@ -78,24 +118,19 @@ ${lesson.prerequisiteKnowledge.length ? `### Optional prerequisite refresher\n\n
 
 ## 2. Knowledge explanation
 
-### Learning objectives
-
-${lesson.learningObjectives.map((objective) => `- ${objective}`).join("\n")}
-
-### Concept checklist for teacher choice
-
-${lesson.conceptChecklist.map((concept) => `- ${concept}`).join("\n")}
-
-### Detailed explanation
+${knowledgeMaterial}
+${supportingMaterial}
+<details><summary>Open precise terminology and exam facts</summary>
 
 ${lesson.coreFacts.map((fact) => `- ${fact}`).join("\n")}
 
+</details>
+
 ### Worked example
 
-${lesson.workedExample}
+${displaySteps(lesson.workedExample).map((step, index) => `${index + 1}. ${step}`).join("\n")}
 
 ${lesson.extension}
-${visual}
 ## 3. Practice by question type
 
 ${questions.map((question, index) => `### Question ${index + 1} - ${question.difficulty} - ${question.commandWord} - ${question.marks} marks
@@ -125,15 +160,64 @@ ${lesson.examTips.map((tip) => `- ${tip}`).join("\n")}
 ${lesson.focus === "integrated-review" ? "**Optional extra practice:** Correct one answer from a timed attempt and record the exact reason each lost mark was lost.\n" : ""}`.trimEnd() + "\n";
 }
 
-function renderVisual(lesson) {
-  if (!lesson.visual) return "";
-  const altFacts = lesson.visual.altFacts.length ? lesson.visual.altFacts : [`Visual summary of ${lesson.visual.title}`];
-  const alt = altFacts.join(". ");
-  return `<figure class="v2-visual">
-              <img src="../${escapeHtml(lesson.visual.path)}" alt="${escapeHtml(alt)}" loading="lazy" />
-              <figcaption>${escapeHtml(lesson.visual.title)}. One maintained explanation is shown as an image on larger screens and as text on small screens.</figcaption>
-              <div class="v2-mobile-visual-text" aria-label="Mobile text alternative"><ul>${altFacts.map((fact) => `<li>${escapeHtml(fact)}</li>`).join("")}</ul></div>
-            </figure>`;
+const materialKindLabels = {
+  analogy: "Analogy / use",
+  comparison: "Comparison",
+  diagram: "Diagram",
+  example: "Concrete example",
+  process: "Process",
+};
+
+function renderVisualFigure(visual, index, total) {
+  const altFacts = visual.altFacts.length ? visual.altFacts : [`Visual summary of ${visual.title}`];
+  return `<figure class="v2-visual" data-material-kind="${escapeHtml(visual.kind ?? "diagram")}">
+            <div class="v2-visual-heading"><span>${String(index + 1).padStart(2, "0")}</span><div><p>${escapeHtml(materialKindLabels[visual.kind] ?? "Diagram")} · ${index + 1} of ${total}</p><h4>${escapeHtml(visual.title)}</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: ${escapeHtml(visual.title)}"><img src="../${escapeHtml(visual.path)}" alt="${escapeHtml(visual.title)}" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul>${altFacts.map((fact) => `<li>${escapeHtml(fact)}</li>`).join("")}</ul></details>
+          </figure>`;
+}
+
+function renderVisualRail(visuals, label, railId) {
+  if (!visuals.length) return "";
+  const controls = visuals.length > 1
+    ? `<div class="v2-material-controls">
+        <button type="button" data-material-prev aria-controls="${railId}" aria-label="Previous diagram"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" /></svg></button>
+        <span data-material-position>1 / ${visuals.length}</span>
+        <button type="button" data-material-next aria-controls="${railId}" aria-label="Next diagram"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" /></svg></button>
+      </div>`
+    : "";
+  return `<section class="v2-material-library" aria-label="${escapeHtml(label)}">
+    <div class="v2-material-library-head"><h3>${escapeHtml(label)}</h3>${controls}</div>
+    <div class="v2-material-rail" id="${railId}" data-material-rail>${visuals.map((visual, index) => renderVisualFigure(visual, index, visuals.length)).join("")}</div>
+  </section>`;
+}
+
+function renderConceptMap(point) {
+  return `<div class="v2-concept-map" aria-label="Concept map for ${escapeHtml(point.id)}">${point.keyTerms.map((term, index) => `<span class="v2-concept-node" data-node-index="${index + 1}">${escapeHtml(term)}</span>`).join("")}</div>`;
+}
+
+function renderKnowledgePoints(lesson) {
+  const index = `<nav class="v2-knowledge-index" aria-label="Knowledge points in this lesson">${lesson.knowledgePoints.map((point, pointIndex) => `<a href="#knowledge-${slugify(point.id)}"><span>${String(pointIndex + 1).padStart(2, "0")}</span>${escapeHtml(point.id)}</a>`).join("")}</nav>`;
+  const points = lesson.knowledgePoints.map((point, pointIndex) => {
+    const labels = {
+      comparison: ["Contrast", "Evidence", "Decision"],
+      concept: ["Meaning", "Mechanism", "Consequence"],
+      decision: ["Evidence", "Choice", "Reason"],
+      process: ["Start", "Change", "Check"],
+      structure: ["Parts", "Connections", "Purpose"],
+    }[point.visualMode] ?? ["Meaning", "Mechanism", "Consequence"];
+    return `<section class="v2-knowledge-point" id="knowledge-${slugify(point.id)}" data-syllabus-id="${escapeHtml(point.id)}" data-visual-mode="${escapeHtml(point.visualMode)}" data-material-count="${point.materialCount}">
+      <header class="v2-knowledge-point-head"><span>${String(pointIndex + 1).padStart(2, "0")}</span><div><p>${escapeHtml(point.id)} · ${escapeHtml(point.visualMode)}</p><h3>${escapeHtml(point.displayTitle)}</h3></div></header>
+      <div class="v2-material-triad">
+        <article class="v2-native-material v2-native-material--map"><h4>Concept map</h4>${renderConceptMap(point)}</article>
+        <article class="v2-native-material v2-native-material--story"><h4>See how it works</h4><ol>${point.explanationSteps.map((step, index) => `<li><span>${escapeHtml(labels[index])}</span><strong>${escapeHtml(step)}</strong></li>`).join("")}</ol></article>
+        <aside class="v2-native-material v2-native-material--cue"><h4>Concrete cue</h4><p>${escapeHtml(point.cue)}</p></aside>
+      </div>
+      ${renderVisualRail(point.visuals, `${point.id} diagrams`, `materials-${lesson.id}-${slugify(point.id)}`)}
+      <details class="v2-point-precision"><summary>Open precise syllabus wording</summary><p><strong>${escapeHtml(point.title)}</strong></p><p>${escapeHtml(point.notes)}</p></details>
+    </section>`;
+  }).join("");
+  return `${index}<div class="v2-knowledge-point-list">${points}</div>`;
 }
 
 function renderLessonHtml(lesson) {
@@ -158,7 +242,7 @@ function renderLessonHtml(lesson) {
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
-    <link rel="stylesheet" href="../course-v2.css?v=3" />
+    <link rel="stylesheet" href="../course-v2.css?v=6" />
   </head>
   <body data-course-version="2" data-lesson-id="${lesson.id}" data-syllabus-ids="${escapeHtml(lesson.syllabusIds.join(","))}">
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -167,16 +251,11 @@ function renderLessonHtml(lesson) {
       <nav class="v2-actions" aria-label="Lesson actions"><a href="../">Course home</a><a href="../assessments/">Assessment bank</a><button type="button" id="printLesson">Print</button></nav>
     </header>
     <main class="v2-shell" id="main-content" tabindex="-1">
-      <nav class="v2-toc" aria-label="Lesson contents"><strong>Lesson ${lesson.id}</strong><a href="#overview">Overview</a><a href="#prerequisite">Prerequisite</a><a href="#explanation">Explanation</a><a href="#practice">Practice</a><a href="#summary">Summary</a></nav>
+      <nav class="v2-jump-nav" aria-label="Lesson contents"><strong>Lesson ${lesson.id}</strong><a href="#overview">Overview</a><a href="#prerequisite">Prerequisite</a><a href="#explanation">Explanation</a><a href="#practice">Practice</a><a href="#summary">Summary</a></nav>
       <div class="v2-content">
-        <section class="v2-hero" id="overview">
-          <div><p class="v2-eyebrow">Flexible-depth lesson</p><h2>${escapeHtml(lesson.title)}</h2><p>${escapeHtml(lesson.syllabusIds.join(", "))} | Select what to omit, teach briefly or explore in depth.</p></div>
-          <div class="v2-time-grid" aria-label="Available lesson depth"><div><strong>Quick</strong><span>diagnose + essentials</span></div><div><strong>Full</strong><span>complete explanation</span></div><div><strong>Deep</strong><span>prerequisites + extension</span></div><div><strong>Choose</strong><span>practice by need</span></div></div>
-        </section>
-
-        <section class="v2-panel v2-route-menu" aria-labelledby="route-heading">
-          <div class="v2-heading"><p class="v2-eyebrow">Teacher choice</p><h2 id="route-heading">Choose the depth for this group</h2></div>
-          <div class="v2-route-grid"><article><h3>Quick route</h3><p>${escapeHtml(lesson.teachingRoutes.quick)}</p></article><article><h3>Full route</h3><p>${escapeHtml(lesson.teachingRoutes.full)}</p></article><article><h3>Deep route</h3><p>${escapeHtml(lesson.teachingRoutes.deep)}</p></article></div>
+        <section class="v2-overview" id="overview">
+          <div><p class="v2-eyebrow">Flexible-depth lesson</p><p class="v2-overview-copy">${escapeHtml(lesson.syllabusIds.join(", "))} | Learn from the diagrams, test the method, then choose the practice you need.</p></div>
+          <details class="v2-route-menu"><summary>Choose a Quick, Full or Deep route</summary><div class="v2-route-grid"><article><h3>Quick route</h3><p>${escapeHtml(lesson.teachingRoutes.quick)}</p></article><article><h3>Full route</h3><p>${escapeHtml(lesson.teachingRoutes.full)}</p></article><article><h3>Deep route</h3><p>${escapeHtml(lesson.teachingRoutes.deep)}</p></article></div></details>
         </section>
 
         <section class="v2-panel" id="prerequisite">
@@ -187,17 +266,13 @@ function renderLessonHtml(lesson) {
         </section>
 
         <section class="v2-panel" id="explanation">
-          <div class="v2-heading"><p class="v2-eyebrow">Part 2 | deliberately over-complete</p><h2>Knowledge explanation</h2></div>
-          <h3>Learning objectives</h3><ul class="v2-objectives">${lesson.learningObjectives.map((objective) => `<li>${escapeHtml(objective)}</li>`).join("")}</ul>
+          <div class="v2-heading v2-heading--wide"><p class="v2-eyebrow">Part 2 | knowledge-point material sets</p><h2>Learn each point through visuals</h2><p>Follow the map, the three-part explanation and the concrete cue. Open precise wording only after the idea is clear.</p></div>
           <details class="v2-concept-menu"><summary>Open the concept checklist and choose what to teach</summary><ul>${lesson.conceptChecklist.map((concept) => `<li>${escapeHtml(concept)}</li>`).join("")}</ul></details>
-          <div class="v2-explanation-grid">
-            <div>
-              <article class="v2-core-facts"><h3>Detailed explanation</h3><p class="v2-teacher-note">Teach all points, or select only the ones this group needs. The list is intentionally fuller than a fixed lesson slot.</p><ul class="v2-facts">${lesson.coreFacts.map((fact) => `<li>${escapeHtml(fact)}</li>`).join("")}</ul></article>
-              <article class="v2-example"><h3>Worked example</h3><p>${escapeHtml(lesson.workedExample)}</p></article>
-              <aside class="v2-extension"><h3>Beyond syllabus / 延伸知识（不要求背诵）</h3><p>${escapeHtml(lesson.extension.replace(/^Beyond syllabus \/ 延伸知识（不要求背诵）:\s*/, ""))}</p></aside>
-            </div>
-            ${renderVisual(lesson)}
-          </div>
+          ${renderKnowledgePoints(lesson)}
+          ${renderVisualRail(lesson.supportingVisuals, "Supporting diagram library", `materials-${lesson.id}-supporting`)}
+          <article class="v2-example"><div><p class="v2-eyebrow">Apply the idea</p><h3>Worked method</h3></div><ol class="v2-worked-flow">${displaySteps(lesson.workedExample).map((step, index) => `<li><span>${String(index + 1).padStart(2, "0")}</span><strong>${escapeHtml(step)}</strong></li>`).join("")}</ol></article>
+          <details class="v2-core-facts"><summary>Open precise terminology and exam facts</summary><ul class="v2-facts">${lesson.coreFacts.map((fact) => `<li>${escapeHtml(fact)}</li>`).join("")}</ul></details>
+          <details class="v2-extension"><summary>Beyond syllabus / 延伸知识（不要求背诵）</summary><p>${escapeHtml(lesson.extension.replace(/^Beyond syllabus \/ 延伸知识（不要求背诵）:\s*/, ""))}</p></details>
         </section>
 
         <section class="v2-panel" id="practice">
@@ -219,7 +294,7 @@ function renderLessonHtml(lesson) {
         <nav class="v2-bottom-nav" aria-label="Previous and next lesson"><a href="${previous}" ${lesson.previousLesson ? "" : 'aria-disabled="true"'}>Previous lesson</a><a href="${next}" ${lesson.nextLesson ? "" : 'aria-disabled="true"'}>Next lesson</a></nav>
       </div>
     </main>
-    <script src="../course-v2.js?v=1"></script>
+    <script src="../course-v2.js?v=2"></script>
   </body>
 </html>\n`;
 }
@@ -350,7 +425,7 @@ fs.writeFileSync(
   assessmentHtml
     .replace('<meta name="viewport" content="width=device-width, initial-scale=1" />', '<meta name="viewport" content="width=device-width, initial-scale=1" /><meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />')
     .replace("<title>AS9618 Assessment Bank</title>", '<link rel="icon" href="data:" /><title>AS9618 Assessment Bank</title>')
-    .replace(/\.\.\/course-v2\.css\?v=\d+/, "../course-v2.css?v=3"),
+    .replace(/\.\.\/course-v2\.css\?v=\d+/, "../course-v2.css?v=5"),
 );
 
 const sectionRows = Object.entries(frequency.sectionStatistics).map(([section, stats]) => {
@@ -368,7 +443,7 @@ const duplicateLists = {
   worked: "002, 003, 005, 006, 009, 011, 012, 014, 036, 037, 038, 041, 048, 085, 091, 097, 103, 106, 107, 134",
   visuals: "001, 002, 004, 007, 008, 010, 011, 013, 032, 033, 042, 043, 044, 046, 047, 048, 050, 053, 054, 055, 067, 070, 073, 075, 077, 079, 080, 081, 084, 085, 086, 100, 102, 103, 104, 114, 115, 116, 118, 120, 121, 127, 128, 129, 130, 131, 134, 143, 144, 145, 146",
 };
-const report = `# Course redundancy audit and 151-to-90 migration report\n\n## Plain-language conclusion\n\nThe old course repeated the same idea in several places: first as targeted practice, again as exam-style practice, and often again as homework. Some worked examples also reappeared as questions. Knowledge infographics frequently repeated the paragraph immediately above or below them. The new course has one explanation flow, one practice-by-type block and one summary/error block per lesson.\n\n## Confirmed old locations\n\n- Exact or near-exact exercise repetition: ${duplicateLists.high}.\n- Same method with only numbers or context changed: ${duplicateLists.method}.\n- Homework repeated earlier practice: ${duplicateLists.homework}.\n- Worked examples repeated later questions: ${duplicateLists.worked}.\n- Priority visual/text overlap review: ${duplicateLists.visuals}.\n\n## What changed\n\n- 151 active lessons became 90 syllabus-order lessons.\n- Targeted Practice, Exam-style and fixed Homework were replaced by one practice-by-question-type block.\n- 272 lesson questions are tracked in one bank with semantic fingerprints.\n- 784 old explanation panels were not carried forward as a quota; 89 useful visuals were retained, and the mobile text alternative is not shown alongside the same image.\n- 51 old assessment sets became 12 section checks and two paper mocks.\n- Past-paper PDFs remained outside the repository. The tracked contract stores 915 question-part references and statistics, not question wording.\n\n## Migration register\n\n| Old lesson | Old title | New lesson | New title | Reason |\n|---|---|---|---|---|\n${migration.rows.map((row) => `| L${String(row.oldLesson).padStart(3, "0")} | ${markdownEscape(row.oldTitle)} | L${String(row.primaryNewLesson).padStart(3, "0")} | ${markdownEscape(row.newTitle)} | ${markdownEscape(row.reason)} |`).join("\n")}\n`;
+const report = `# Course redundancy audit and 151-to-90 migration report\n\n## Plain-language conclusion\n\nThe old course repeated the same idea in several places: first as targeted practice, again as exam-style practice, and often again as homework. Some worked examples also reappeared as questions. Knowledge infographics frequently repeated the paragraph immediately above or below them. The new course has one explanation flow, one practice-by-type block and one summary/error block per lesson.\n\n## Confirmed old locations\n\n- Exact or near-exact exercise repetition: ${duplicateLists.high}.\n- Same method with only numbers or context changed: ${duplicateLists.method}.\n- Homework repeated earlier practice: ${duplicateLists.homework}.\n- Worked examples repeated later questions: ${duplicateLists.worked}.\n- Priority visual/text overlap review: ${duplicateLists.visuals}.\n\n## What changed\n\n- 151 active lessons became 90 syllabus-order lessons.\n- Targeted Practice, Exam-style and fixed Homework were replaced by one practice-by-question-type block.\n- 272 lesson questions are tracked in one bank with semantic fingerprints.\n- 784 old explanation panels were not carried forward as a quota; ${content.lessons.reduce((sum, lesson) => sum + (lesson.visuals?.length ?? (lesson.visual ? 1 : 0)), 0)} relevant visuals are now grouped by lesson, with optional text transcripts and readable mobile scrolling.\n- 51 old assessment sets became 12 section checks and two paper mocks.\n- Past-paper PDFs remained outside the repository. The tracked contract stores 915 question-part references and statistics, not question wording.\n\n## Migration register\n\n| Old lesson | Old title | New lesson | New title | Reason |\n|---|---|---|---|---|\n${migration.rows.map((row) => `| L${String(row.oldLesson).padStart(3, "0")} | ${markdownEscape(row.oldTitle)} | L${String(row.primaryNewLesson).padStart(3, "0")} | ${markdownEscape(row.newTitle)} | ${markdownEscape(row.reason)} |`).join("\n")}\n`;
 fs.writeFileSync(path.join(root, "audits", "course-v2-redundancy-and-migration-report.md"), report);
 fs.writeFileSync(path.join(root, "audits", "course-v2-migration-register.csv"), `old_lesson,old_title,new_lesson,new_title,reason\n${migration.rows.map((row) => [row.oldLesson, row.oldTitle, row.primaryNewLesson, row.newTitle, row.reason].map((value) => `"${String(value).replaceAll('"', '""')}"`).join(",")).join("\n")}\n`);
 

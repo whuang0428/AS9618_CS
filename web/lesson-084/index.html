@@ -8,7 +8,7 @@
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
-    <link rel="stylesheet" href="../course-v2.css?v=3" />
+    <link rel="stylesheet" href="../course-v2.css?v=6" />
   </head>
   <body data-course-version="2" data-lesson-id="084" data-syllabus-ids="S12.04">
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -17,16 +17,11 @@
       <nav class="v2-actions" aria-label="Lesson actions"><a href="../">Course home</a><a href="../assessments/">Assessment bank</a><button type="button" id="printLesson">Print</button></nav>
     </header>
     <main class="v2-shell" id="main-content" tabindex="-1">
-      <nav class="v2-toc" aria-label="Lesson contents"><strong>Lesson 084</strong><a href="#overview">Overview</a><a href="#prerequisite">Prerequisite</a><a href="#explanation">Explanation</a><a href="#practice">Practice</a><a href="#summary">Summary</a></nav>
+      <nav class="v2-jump-nav" aria-label="Lesson contents"><strong>Lesson 084</strong><a href="#overview">Overview</a><a href="#prerequisite">Prerequisite</a><a href="#explanation">Explanation</a><a href="#practice">Practice</a><a href="#summary">Summary</a></nav>
       <div class="v2-content">
-        <section class="v2-hero" id="overview">
-          <div><p class="v2-eyebrow">Flexible-depth lesson</p><h2>Finding and correcting program errors</h2><p>S12.04 | Select what to omit, teach briefly or explore in depth.</p></div>
-          <div class="v2-time-grid" aria-label="Available lesson depth"><div><strong>Quick</strong><span>diagnose + essentials</span></div><div><strong>Full</strong><span>complete explanation</span></div><div><strong>Deep</strong><span>prerequisites + extension</span></div><div><strong>Choose</strong><span>practice by need</span></div></div>
-        </section>
-
-        <section class="v2-panel v2-route-menu" aria-labelledby="route-heading">
-          <div class="v2-heading"><p class="v2-eyebrow">Teacher choice</p><h2 id="route-heading">Choose the depth for this group</h2></div>
-          <div class="v2-route-grid"><article><h3>Quick route</h3><p>Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.</p></article><article><h3>Full route</h3><p>Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.</p></article><article><h3>Deep route</h3><p>Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.</p></article></div>
+        <section class="v2-overview" id="overview">
+          <div><p class="v2-eyebrow">Flexible-depth lesson</p><p class="v2-overview-copy">S12.04 | Learn from the diagrams, test the method, then choose the practice you need.</p></div>
+          <details class="v2-route-menu"><summary>Choose a Quick, Full or Deep route</summary><div class="v2-route-grid"><article><h3>Quick route</h3><p>Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.</p></article><article><h3>Full route</h3><p>Use every knowledge-point material set, the worked method, the terminology check and all questions.</p></article><article><h3>Deep route</h3><p>Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.</p></article></div></details>
         </section>
 
         <section class="v2-panel" id="prerequisite">
@@ -37,21 +32,60 @@
         </section>
 
         <section class="v2-panel" id="explanation">
-          <div class="v2-heading"><p class="v2-eyebrow">Part 2 | deliberately over-complete</p><h2>Knowledge explanation</h2></div>
-          <h3>Learning objectives</h3><ul class="v2-objectives"><li>Identify and correct syntax, logic and runtime errors.</li></ul>
+          <div class="v2-heading v2-heading--wide"><p class="v2-eyebrow">Part 2 | knowledge-point material sets</p><h2>Learn each point through visuals</h2><p>Follow the map, the three-part explanation and the concrete cue. Open precise wording only after the idea is clear.</p></div>
           <details class="v2-concept-menu"><summary>Open the concept checklist and choose what to teach</summary><ul><li>logic</li><li>runtime</li><li>errors</li></ul></details>
-          <div class="v2-explanation-grid">
-            <div>
-              <article class="v2-core-facts"><h3>Detailed explanation</h3><p class="v2-teacher-note">Teach all points, or select only the ones this group needs. The list is intentionally fuller than a fixed lesson slot.</p><ul class="v2-facts"><li>Understand different ways of exposing and avoiding faults in a program. Locate and identify syntax, logic and run-time errors in a program and correct identified errors.</li><li>A syntax error breaks the language grammar and is normally exposed by a translator or an IDE&#39;s dynamic syntax check. A logic error uses valid syntax but follows the wrong algorithm, so a trace, dry run, walkthrough or deliberately selected test can expose an unexpected result. A run-time error occurs during execution, such as division by zero or opening a missing file, so exception messages and run-time diagnostics help locate it.</li><li>After an error is exposed, locate the responsible statement and identify the error type before changing it. Correct the cause, not only the observed output, then rerun the failing test and relevant regression tests. Avoid faults by using clear identifiers, modular design, validation, desk checking, peer walkthroughs and a planned set of normal, abnormal and extreme/boundary tests.</li><li>No single method proves that a program has no remaining faults. Translation can expose syntax faults but not every logic fault; testing can reveal failures for selected cases but cannot demonstrate correctness for every possible input.</li><li>IDE presentation features include prettyprint and expand/collapse code blocks; expand/collapse changes the displayed view, not program execution.</li><li>A runtime error occurs while the program is executing; runtime diagnostics help locate the statement that caused the failure.</li><li>Program errors can be exposed by suitable test data and expected results, located with trace output or breakpoints, and corrected before the same tests are repeated to confirm the fix.</li></ul></article>
-              <article class="v2-example"><h3>Worked example</h3><p>Correct three different faults: A missing ENDIF is a syntax error exposed during translation and corrected by closing the selection. Mark 50 for a pass boundary of 50 is a logic error exposed by tracing Mark = 50 and corrected to Mark = 50. Total / Count when Count may be 0 is a run-time risk exposed during execution and avoided by testing Count before division.</p></article>
-              <aside class="v2-extension"><h3>Beyond syllabus / 延伸知识（不要求背诵）</h3><p>modern teams often use continuous integration to repeat building and testing whenever a program changes.</p></aside>
-            </div>
-            <figure class="v2-visual">
-              <img src="../assets/diagrams/stage10-infographics/stage10-lesson-060-logic.jpg" alt="Meaning The code is syntactically valid and may run, but the algorithm or condition is wrong.. Examples Using &lt; instead of &lt;= , wrong formula, wrong loop condition or off-by-one error.. Detection Usually found by testing, tracing or comparing actual output with expected output.. Common error A translator may not detect it because the instructions are legal." loading="lazy" />
-              <figcaption>Logic errors make the program do the wrong thing. One maintained explanation is shown as an image on larger screens and as text on small screens.</figcaption>
-              <div class="v2-mobile-visual-text" aria-label="Mobile text alternative"><ul><li>Meaning The code is syntactically valid and may run, but the algorithm or condition is wrong.</li><li>Examples Using &lt; instead of &lt;= , wrong formula, wrong loop condition or off-by-one error.</li><li>Detection Usually found by testing, tracing or comparing actual output with expected output.</li><li>Common error A translator may not detect it because the instructions are legal.</li></ul></div>
-            </figure>
-          </div>
+          <nav class="v2-knowledge-index" aria-label="Knowledge points in this lesson"><a href="#knowledge-s12-04"><span>01</span>S12.04</a></nav><div class="v2-knowledge-point-list"><section class="v2-knowledge-point" id="knowledge-s12-04" data-syllabus-id="S12.04" data-visual-mode="concept" data-material-count="4">
+      <header class="v2-knowledge-point-head"><span>01</span><div><p>S12.04 · concept</p><h3>Logic and runtime errors</h3></div></header>
+      <div class="v2-material-triad">
+        <article class="v2-native-material v2-native-material--map"><h4>Concept map</h4><div class="v2-concept-map" aria-label="Concept map for S12.04"><span class="v2-concept-node" data-node-index="1">logic</span><span class="v2-concept-node" data-node-index="2">runtime</span><span class="v2-concept-node" data-node-index="3">errors</span></div></article>
+        <article class="v2-native-material v2-native-material--story"><h4>See how it works</h4><ol><li><span>Meaning</span><strong>Locate and identify syntax, logic and run-time errors in a program and correct identified errors</strong></li><li><span>Mechanism</span><strong>Understand different ways of exposing and avoiding faults in a program</strong></li><li><span>Consequence</span><strong>A missing ENDIF is a syntax error exposed during translation and corrected by closing the selection</strong></li></ol></article>
+        <aside class="v2-native-material v2-native-material--cue"><h4>Concrete cue</h4><p>Understand different ways of exposing and avoiding faults in a program. Locate and identify syntax, logic and run-time errors in a program and correct identified errors.</p></aside>
+      </div>
+      <section class="v2-material-library" aria-label="S12.04 diagrams">
+    <div class="v2-material-library-head"><h3>S12.04 diagrams</h3></div>
+    <div class="v2-material-rail" id="materials-084-s12-04" data-material-rail><figure class="v2-visual" data-material-kind="example">
+            <div class="v2-visual-heading"><span>01</span><div><p>Concrete example · 1 of 1</p><h4>Logic errors make the program do the wrong thing</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Logic errors make the program do the wrong thing"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-060-logic.jpg" alt="Logic errors make the program do the wrong thing" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Meaning The code is syntactically valid and may run, but the algorithm or condition is wrong.</li><li>Examples Using &lt; instead of &lt;= , wrong formula, wrong loop condition or off-by-one error.</li><li>Detection Usually found by testing, tracing or comparing actual output with expected output.</li><li>Common error A translator may not detect it because the instructions are legal.</li></ul></details>
+          </figure></div>
+  </section>
+      <details class="v2-point-precision"><summary>Open precise syllabus wording</summary><p><strong>Identify and correct syntax, logic and runtime errors.</strong></p><p>Understand different ways of exposing and avoiding faults in a program. Locate and identify syntax, logic and run-time errors in a program and correct identified errors.</p></details>
+    </section></div>
+          <section class="v2-material-library" aria-label="Supporting diagram library">
+    <div class="v2-material-library-head"><h3>Supporting diagram library</h3><div class="v2-material-controls">
+        <button type="button" data-material-prev aria-controls="materials-084-supporting" aria-label="Previous diagram"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" /></svg></button>
+        <span data-material-position>1 / 6</span>
+        <button type="button" data-material-next aria-controls="materials-084-supporting" aria-label="Next diagram"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" /></svg></button>
+      </div></div>
+    <div class="v2-material-rail" id="materials-084-supporting" data-material-rail><figure class="v2-visual" data-material-kind="diagram">
+            <div class="v2-visual-heading"><span>01</span><div><p>Diagram · 1 of 6</p><h4>A data dictionary defines each data item consistently</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: A data dictionary defines each data item consistently"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-145-dictionary.jpg" alt="A data dictionary defines each data item consistently" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Data dictionary</li><li>Validation</li><li>letter plus digits</li><li>not blank; exists in room file</li><li>identifies the room</li><li>BookingDate</li><li>YYYY-MM-DD</li><li>school day; not in past</li></ul></details>
+          </figure><figure class="v2-visual" data-material-kind="diagram">
+            <div class="v2-visual-heading"><span>02</span><div><p>Diagram · 2 of 6</p><h4>Inspect a field definition</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Inspect a field definition"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-145-dictionary-tool.jpg" alt="Inspect a field definition" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Data dictionary checker</li><li>Data item</li></ul></details>
+          </figure><figure class="v2-visual" data-material-kind="diagram">
+            <div class="v2-visual-heading"><span>03</span><div><p>Diagram · 3 of 6</p><h4>Interface designs show how users will enter data and navigate the system</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Interface designs show how users will enter data and navigate the system"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-145-interfaces.jpg" alt="Interface designs show how users will enter data and navigate the system" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Interface designs</li><li>Create room booking</li><li>Date calendar control</li><li>Period drop-down list</li><li>Room searchable list</li><li>Error message area: “Room already booked for this time.”</li><li>Interface design is not just “make the screen pretty”. It specifies controls, navigation, prompts, validation messages and user feedback.</li></ul></details>
+          </figure><figure class="v2-visual" data-material-kind="diagram">
+            <div class="v2-visual-heading"><span>04</span><div><p>Diagram · 4 of 6</p><h4>Design documentation supports implementation, testing and maintenance</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Design documentation supports implementation, testing and maintenance"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-145-lifecycle.jpg" alt="Design documentation supports implementation, testing and maintenance" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Using design docs later</li><li>Implementation</li><li>Developers know which data fields, algorithms and interface behaviours to build.</li><li>Testers compare actual behaviour with the designed rules, validation and expected messages.</li><li>Maintenance</li><li>Future changes are safer because developers can see existing data rules and processing assumptions.</li></ul></details>
+          </figure><figure class="v2-visual" data-material-kind="diagram">
+            <div class="v2-visual-heading"><span>05</span><div><p>Diagram · 5 of 6</p><h4>Design documents translate requirements into a buildable plan</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Design documents translate requirements into a buildable plan"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-145-purpose.jpg" alt="Design documents translate requirements into a buildable plan" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Design documentation purpose</li><li>Before coding</li><li>They decide data structures, processing logic and user interaction before the implementation language takes over.</li><li>For testers</li><li>They provide expected rules and interface behaviour so tests can check more than “it seems fine”.</li><li>For maintenance</li><li>They help future developers understand why the system works in a particular way.</li><li>A useful design document is specific enough to guide construction, but not just a pasted block of final program code.</li></ul></details>
+          </figure><figure class="v2-visual" data-material-kind="diagram">
+            <div class="v2-visual-heading"><span>06</span><div><p>Diagram · 6 of 6</p><h4>Traceability keeps the design connected to the original need</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Traceability keeps the design connected to the original need"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-145-traceability.jpg" alt="Traceability keeps the design connected to the original need" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Linking requirements to design</li><li>Requirement</li><li>Algorithm design</li><li>Data dictionary</li><li>Interface design</li><li>Prevent double booking</li><li>compare requested time with existing bookings</li><li>RoomID, date, start and end times</li></ul></details>
+          </figure></div>
+  </section>
+          <article class="v2-example"><div><p class="v2-eyebrow">Apply the idea</p><h3>Worked method</h3></div><ol class="v2-worked-flow"><li><span>01</span><strong>Correct three different faults</strong></li><li><span>02</span><strong>A missing ENDIF is a syntax error exposed during translation and corrected by closing the selection.</strong></li><li><span>03</span><strong>Mark 50 for a pass boundary of 50 is a logic error exposed by tracing Mark = 50 and corrected to Mark = 50.</strong></li><li><span>04</span><strong>Count when Count may be 0 is a run-time risk exposed during execution and avoided by testing Count before division.</strong></li></ol></article>
+          <details class="v2-core-facts"><summary>Open precise terminology and exam facts</summary><ul class="v2-facts"><li>Understand different ways of exposing and avoiding faults in a program. Locate and identify syntax, logic and run-time errors in a program and correct identified errors.</li><li>A syntax error breaks the language grammar and is normally exposed by a translator or an IDE&#39;s dynamic syntax check. A logic error uses valid syntax but follows the wrong algorithm, so a trace, dry run, walkthrough or deliberately selected test can expose an unexpected result. A run-time error occurs during execution, such as division by zero or opening a missing file, so exception messages and run-time diagnostics help locate it.</li><li>After an error is exposed, locate the responsible statement and identify the error type before changing it. Correct the cause, not only the observed output, then rerun the failing test and relevant regression tests. Avoid faults by using clear identifiers, modular design, validation, desk checking, peer walkthroughs and a planned set of normal, abnormal and extreme/boundary tests.</li><li>No single method proves that a program has no remaining faults. Translation can expose syntax faults but not every logic fault; testing can reveal failures for selected cases but cannot demonstrate correctness for every possible input.</li><li>IDE presentation features include prettyprint and expand/collapse code blocks; expand/collapse changes the displayed view, not program execution.</li><li>A runtime error occurs while the program is executing; runtime diagnostics help locate the statement that caused the failure.</li><li>Program errors can be exposed by suitable test data and expected results, located with trace output or breakpoints, and corrected before the same tests are repeated to confirm the fix.</li></ul></details>
+          <details class="v2-extension"><summary>Beyond syllabus / 延伸知识（不要求背诵）</summary><p>modern teams often use continuous integration to repeat building and testing whenever a program changes.</p></details>
         </section>
 
         <section class="v2-panel" id="practice">
@@ -86,6 +120,6 @@
         <nav class="v2-bottom-nav" aria-label="Previous and next lesson"><a href="../lesson-083/" >Previous lesson</a><a href="../lesson-085/" >Next lesson</a></nav>
       </div>
     </main>
-    <script src="../course-v2.js?v=1"></script>
+    <script src="../course-v2.js?v=2"></script>
   </body>
 </html>
