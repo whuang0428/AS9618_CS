@@ -1,15 +1,15 @@
 # Lesson 041: DBMS architecture, integrity, security and backup
 
-**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029 Version 2<br>
+**Course:** Cambridge International AS Level Computer Science 9618, syllabus for examination in 2027-2029<br>
 **Paper:** Paper 1<br>
 **Syllabus:** Section 8: Databases<br>
 **Syllabus requirements:** S8.05, S8.06<br>
-**Pacing:** Flexible. This lesson is deliberately over-complete; select a quick, full or deep route for the learners in front of you.
+**Pacing:** Flexible. Select a quick, full or deep route for the learners in front of you.
 
 ## Teaching-depth menu
 
 - **Quick route:** Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.
-- **Full route:** Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.
+- **Full route:** Teach every knowledge-point material set, the worked method and all lesson questions.
 - **Deep route:** Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.
 
 ## 1. Prerequisite knowledge and quick diagnostic
@@ -20,41 +20,91 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ### Optional prerequisite refresher
 
-- Version 2 requires both sides of the comparison: limitations of file-based storage/retrieval and relational-database features that address those limitations. Benefits must be linked to a mechanism rather than asserted generically.
+- The syllabus requires both sides of the comparison: limitations of file-based storage/retrieval and relational-database features that address those limitations. Benefits must be linked to a mechanism rather than asserted generically.
 - Explain limitations of file-based systems and how relational databases address them.
-- Version 2 explicitly requires data management including a data dictionary, data modelling, logical schema, data integrity and data security including backup procedures and access rights for individuals or groups.
+- The syllabus explicitly requires data management including a data dictionary, data modelling, logical schema, data integrity and data security including backup procedures and access rights for individuals or groups.
 - Understand DBMS features: data dictionary, data modelling, logical schema, integrity, security, backup and access rights.
 
 
 ## 2. Knowledge explanation
 
-### Learning objectives
+### 1. DBMS features: data dictionary, data modelling, logical schema, integrity, security, backup and access rights (S8.05)
 
-- Understand DBMS features: data dictionary, data modelling, logical schema, integrity, security, backup and access rights.
-- Understand the developer interface and query processor.
+**Concept relationships**
 
-### Concept checklist for teacher choice
+- **DBMS:** The DBMS manages the database by controlling data…
+- **features:** DBMS features
+- **dictionary:** Identify data management/data dictionary, data modelling, logical schema,…
+- **modeling:** Data dictionary, data modelling, logical schema, integrity, security,…
+- **logical:** Data management including a data dictionary, data modelling,…
+- **schema:** Data modelling helps define entities, tables, fields and…
 
-- DBMS
-- features
-- dictionary
-- modelling / modeling
-- logical
-- schema
-- integrity
-- security
-- backup
-- access
-- rights
-- developer
-- interface
-- query
-- processor
+**Mechanism**
 
-### Detailed explanation
+1. **Identify what needs protection** — Data dictionary, data modelling, logical schema, integrity, security, backup and access rights.
+2. **Trace the attack or error route** — Data management including a data dictionary, data modelling, logical schema, data integrity and data security including backup procedures…
+3. **Match a safeguard and limitation** — Security includes backup procedures and access rights assigned to individual users or groups.
 
-- Version 2 explicitly requires data management including a data dictionary, data modelling, logical schema, data integrity and data security including backup procedures and access rights for individuals or groups.
-- Version 2 names the developer interface and query processor as DBMS software tools whose use and purpose must be understood in practice. They must be distinguished rather than listed without function.
+**What does a DBMS provide?:** A DBMS is software used to create, manage and control access to a database. It sits between users/applications and stored data. Data management stores, organises, retrieves and updates data; maintains metadata in a data…
+
+#### What does a DBMS provide?
+
+![What does a DBMS provide?](../web/assets/diagrams/stage10-infographics/stage10-lesson-079-dbms.jpg)
+
+<details><summary>Text transcript</summary>
+
+- A DBMS is software used to create, manage and control access to a database. It sits between users/applications and stored data.
+- Data management stores, organises, retrieves and updates data; maintains metadata in a data dictionary.
+- Data modelling helps define entities, tables, fields and the logical schema of the database.
+- Data integrity enforces rules so values are valid and relationships remain consistent.
+- Data security uses access rights for individuals or groups; supports backup and recovery procedures.
+- Developer interface provides tools for creating structures, forms, reports or database applications.
+- Query processor interprets and carries out queries so users can retrieve or change data.
+- Exam sentence:
+- The DBMS manages the database by controlling data definition, access, integrity, security and queries; the database is the organised data itself.
+
+</details>
+
+<details><summary>Precise syllabus wording</summary>
+
+Understand DBMS features: data dictionary, data modelling, logical schema, integrity, security, backup and access rights.
+
+The syllabus explicitly requires data management including a data dictionary, data modelling, logical schema, data integrity and data security including backup procedures and access rights for individuals or groups.
+
+</details>
+
+### 2. The developer interface and query processor (S8.06)
+
+**Concept relationships**
+
+- **developer:** Identify data management/data dictionary, data modelling, logical schema,…
+- **interface:** The developer interface and query processor as DBMS…
+- **query:** The developer interface and query processor.
+- **processor:** A query processor interprets and checks a query,…
+- **DBMS:** A Database Management System (DBMS) addresses these file-based…
+
+**Mechanism**
+
+1. **Translate the stated design** — The developer interface and query processor as DBMS software tools whose use and purpose must be understood in…
+2. **Apply one complete operation** — The developer interface and query processor.
+3. **Trace state and boundaries** — A query processor interprets and checks a query, chooses how to carry it out, accesses the stored data…
+
+**Concrete case: developer:** The developer interface and query processor as DBMS software tools whose use and purpose must be understood in practice.
+
+
+
+<details><summary>Precise syllabus wording</summary>
+
+Understand the developer interface and query processor.
+
+the syllabus names the developer interface and query processor as DBMS software tools whose use and purpose must be understood in practice. They must be distinguished rather than listed without function.
+
+</details>
+
+<details><summary>Open precise terminology and exam facts</summary>
+
+- The syllabus explicitly requires data management including a data dictionary, data modelling, logical schema, data integrity and data security including backup procedures and access rights for individuals or groups.
+- the syllabus names the developer interface and query processor as DBMS software tools whose use and purpose must be understood in practice. They must be distinguished rather than listed without function.
 - An entity-relationship (E-R) diagram documents a database design by showing the entities, their relevant attributes or keys, the relationships between entities and the relationship cardinality. Entity names should describe things about which the system stores multiple facts; attributes belong to the entity they describe.
 - To produce an E-R diagram, extract entity candidates from the scenario, assign identifiers, connect only supported relationships and label cardinality as one-to-one, one-to-many or many-to-many. Resolve a many-to-many relationship with a linking entity when converting the design to relational tables. A diagram must preserve the stated business rules rather than inventing links from similar field names.
 - 1NF requires atomic values and no repeating groups. 2NF is 1NF with every non-key attribute dependent on the whole primary key, removing partial dependencies. 3NF is 2NF with no non-key attribute dependent on another non-key attribute, removing transitive dependencies.
@@ -66,18 +116,17 @@ Ask the learner to give one accurate definition or method step before continuing
 - DBMS and SQL review: identify data management/data dictionary, data modelling, logical schema, integrity, security/backup/access rights, developer interface and query processor. Distinguish DDL structure commands from DML query/maintenance commands, use every required data type and key clause, and keep SELECT queries to at most two tables with explicit INNER JOIN ... ON when two tables are needed.
 - A complete answer follows the scenario through design, statement and result. It does not claim that a primary key prevents every duplicate fact, that a secondary key must be unique, that normalisation guarantees correctness, or that a three-table/comma-style query is within the AS core boundary.
 
-### Worked example
+</details>
 
-Model students joining clubs / Order line data / Run a restricted query: Draw Student(StudentID, Name) and Club(ClubID, ClubName). Because each student may join many clubs and each club may contain many students, add Membership(StudentID, ClubID, JoinDate) as a linking entity. The completed design has Student 1:M Membership and Club 1:M Membership. ORDERLINE(OrderID, ProductID, ProductName, Quantity) has composite key OrderID+ProductID. ProductName depends only on ProductID, so split PRODUCT(ProductID, ProductName) and ORDERLINE(OrderID, ProductID, Quantity) to reach 2NF for that dependency. A developer enters a SELECT statement through the developer interface. The query processor checks the statement and the user's access rights, works out an execution plan, retrieves the permitted rows and returns the result.…
+### Worked method
+
+1. Model students joining clubs
+2. Order line data
+3. Run a restricted query
+4. Draw Student(StudentID, Name) and Club(ClubID, ClubName).
+5. Because each student may join many clubs and each club may contain many students, add Membership(StudentID, ClubID, JoinDate) as a linking entity.
 
 Beyond syllabus / 延伸知识（不要求背诵）: production databases also manage transactions and concurrent users; these ideas extend the syllabus model of integrity and access control.
-
-### Retained visual explanation
-
-![What does a DBMS provide?](../web/assets/diagrams/stage10-infographics/stage10-lesson-079-dbms.jpg)
-
-_What does a DBMS provide?. The image and mobile text alternative come from one maintained fact source._
-
 ## 3. Practice by question type
 
 ### Question 1 - foundation - apply - 2 marks
@@ -104,7 +153,7 @@ Which DBMS feature limits users or groups to permitted operations?
 
 Explain how dbms architecture, integrity, security and backup would be applied in a suitable computing context.
 
-**Answer:** Version 2 names the developer interface and query processor as DBMS software tools whose use and purpose must be understood in practice. They must be distinguished rather than listed without function. An entity-relationship (E-R) diagram documents a database design by showing the entities, their relevant attributes or keys, the relationships between entities and the relationship cardinality. Entity names should describe things about which the system stores multiple facts; attributes belong to the entity they describe. To produce an E-R diagram, extract entity candidates from the scenario, assign identifiers, connect only supported relationships and label cardinality as one-to-one, one-to-many or many-to-many. Resolve a many-to-many relationship with a linking entity when converting the design to relational tables. A diagram must preserve the stated business rules rather than inventing links from similar field names.
+**Answer:** the syllabus names the developer interface and query processor as DBMS software tools whose use and purpose must be understood in practice. They must be distinguished rather than listed without function. An entity-relationship (E-R) diagram documents a database design by showing the entities, their relevant attributes or keys, the relationships between entities and the relationship cardinality. Entity names should describe things about which the system stores multiple facts; attributes belong to the entity they describe. To produce an E-R diagram, extract entity candidates from the scenario, assign identifiers, connect only supported relationships and label cardinality as one-to-one, one-to-many or many-to-many. Resolve a many-to-many relationship with a linking entity when converting the design to relational tables. A diagram must preserve the stated business rules rather than inventing links from similar field names.
 
 **Marking guidance:** Each mark needs a relevant point linked to the stated context.
 

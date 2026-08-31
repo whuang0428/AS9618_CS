@@ -1,15 +1,15 @@
 # Lesson 049: Input-process-output solution design
 
-**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029 Version 2<br>
+**Course:** Cambridge International AS Level Computer Science 9618, syllabus for examination in 2027-2029<br>
 **Paper:** Paper 2<br>
 **Syllabus:** Section 9: Algorithm design and problem-solving<br>
 **Syllabus requirements:** S9.05<br>
-**Pacing:** Flexible. This lesson is deliberately over-complete; select a quick, full or deep route for the learners in front of you.
+**Pacing:** Flexible. Select a quick, full or deep route for the learners in front of you.
 
 ## Teaching-depth menu
 
 - **Quick route:** Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.
-- **Full route:** Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.
+- **Full route:** Teach every knowledge-point material set, the worked method and all lesson questions.
 - **Deep route:** Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.
 
 ## 1. Prerequisite knowledge and quick diagnostic
@@ -28,18 +28,54 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ## 2. Knowledge explanation
 
-### Learning objectives
+### 1. Input-process-output to design pseudocode solutions: Input-process-output solution design (S9.05)
 
-- Use input-process-output to design pseudocode solutions.
+**Concept relationships**
 
-### Concept checklist for teacher choice
+- **input-process-output:** Input-process-output to design pseudocode solutions.
+- **solution:** Input, process and output as the design structure…
+- **design:** This input-process-output design must describe a complete solution…
+- **pseudocode:** Design with input-process-output, use sequence, selection and iteration,…
+- **input:** Before writing pseudocode, identify the input data, the…
 
-- input-process-output
-- design
-- pseudocode
-- solution
+**Mechanism**
 
-### Detailed explanation
+1. **Translate the stated design** — Input, process and output as the design structure for a complete pseudocode solution
+2. **Apply one complete operation** — Input-process-output to design pseudocode solutions.
+3. **Trace state and boundaries** — This input-process-output design must describe a complete solution rather than three unrelated lists.
+
+**Turn paragraphs into a design table:** IPOC reading Question to ask
+
+#### Turn paragraphs into a design table
+
+![Turn paragraphs into a design table](../web/assets/diagrams/stage10-infographics/stage10-lesson-112-ipoc.jpg)
+
+<details><summary>Text transcript</summary>
+
+- IPOC reading
+- Question to ask
+- Example evidence
+- Algorithm consequence
+- What data is provided?
+- mark, price, password, reading
+- use INPUT or given array/list item
+- What must be calculated or checked?
+- total, maximum, validation, search
+- choose assignment, IF, loop
+- What must be displayed or returned?
+- message, total, average, position
+
+</details>
+
+<details><summary>Precise syllabus wording</summary>
+
+Use input-process-output to design pseudocode solutions.
+
+Use input, process and output as the design structure for a complete pseudocode solution; the three parts must connect, use meaningful identifiers and satisfy the stated problem.
+
+</details>
+
+<details><summary>Open precise terminology and exam facts</summary>
 
 - Use input, process and output as the design structure for a complete pseudocode solution; the three parts must connect, use meaningful identifiers and satisfy the stated problem.
 - An algorithm is a solution to a problem expressed as a sequence of defined steps. Each step must be unambiguous, ordered where order matters and capable of being carried out; a vague instruction such as 'process the data' is not a defined step.
@@ -52,18 +88,14 @@ Ask the learner to give one accurate definition or method step before continuing
 - Solution review: design with input-process-output, use sequence, selection and iteration, document the same algorithm in structured English, a flowchart or pseudocode, and convert between the specified representations without changing its control flow.
 - Development review: use stepwise refinement until steps are programmable, and construct and interpret logic statements that define decisions, loop conditions or Boolean values. Core answers must not replace these requirements with tracing, Java syntax or vague planning advice.
 
-### Worked example
+</details>
 
-Design a result-processing solution: Keep only student ID and required marks, decompose the task into InputResults, ValidateResult, CalculateMean and OutputReport, record meaningful identifiers and IPO, refine CalculateMean into defined steps, use a range logic statement, and represent the final control flow in Cambridge pseudocode or a matching flowchart.
+### Worked method
+
+1. Design a result-processing solution
+2. Keep only student ID and required marks, decompose the task into InputResults, ValidateResult, CalculateMean and OutputReport, record meaningful identifiers and IPO, refine CalculateMean into defined steps, use a range logic…
 
 Beyond syllabus / 延伸知识（不要求背诵）: the same algorithm can be expressed in many programming languages; its logic should remain independent of syntax.
-
-### Retained visual explanation
-
-![Decomposition: split the problem into sub-problems](../web/assets/diagrams/stage10-infographics/stage10-lesson-100-decomposition.jpg)
-
-_Decomposition: split the problem into sub-problems. The image and mobile text alternative come from one maintained fact source._
-
 ## 3. Practice by question type
 
 ### Question 1 - foundation - state - 2 marks

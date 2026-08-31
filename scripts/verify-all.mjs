@@ -6,6 +6,7 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const nodeChecks = [
   "generate-course-v2-coverage.mjs",
   "verify-course-v2.mjs",
+  "verify-course-v2-material-ownership.mjs",
 ];
 
 for (const script of nodeChecks) {
@@ -19,4 +20,4 @@ for (const script of ["build-course-v2-release.py", "verify-course-v2-release.py
   execFileSync(python, [path.join(root, "scripts", script)], { cwd: root, stdio: "inherit" });
 }
 
-console.log("\nAll active 90-lesson course checks and the V2 release build passed.");
+console.log("\nAll active course checks, the whole-course material rollout and the release build passed.");

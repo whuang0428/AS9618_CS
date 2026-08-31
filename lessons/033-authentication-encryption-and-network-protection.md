@@ -1,15 +1,15 @@
 # Lesson 033: Authentication, encryption and network protection
 
-**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029 Version 2<br>
+**Course:** Cambridge International AS Level Computer Science 9618, syllabus for examination in 2027-2029<br>
 **Paper:** Paper 1<br>
 **Syllabus:** Section 6: Security, privacy and data integrity<br>
 **Syllabus requirements:** S6.03, S6.06<br>
-**Pacing:** Flexible. This lesson is deliberately over-complete; select a quick, full or deep route for the learners in front of you.
+**Pacing:** Flexible. Select a quick, full or deep route for the learners in front of you.
 
 ## Teaching-depth menu
 
 - **Quick route:** Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.
-- **Full route:** Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.
+- **Full route:** Teach every knowledge-point material set, the worked method and all lesson questions.
 - **Deep route:** Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.
 
 ## 1. Prerequisite knowledge and quick diagnostic
@@ -26,27 +26,86 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ## 2. Knowledge explanation
 
-### Learning objectives
+### 1. User accounts/passwords, digital signatures, biometrics, firewall, antivirus, anti-spyware and encryption as security measures (S6.03)
 
-- Understand user accounts/passwords, digital signatures, biometrics, firewall, antivirus, anti-spyware and encryption as security measures.
-- Explain how encryption and access rights protect data.
+**Concept relationships**
 
-### Concept checklist for teacher choice
+- **user account:** User accounts/passwords, digital signatures, biometrics, firewall, antivirus, anti-spyware…
+- **digital signature:** User accounts, passwords, digital signatures, biometrics, firewall, anti-virus,…
+- **anti-spyware:** Anti-virus and anti-spyware detect known malicious software
+- **security measure:** Security measures for computer systems from a stand-alone…
+- **antivirus:** Anti-virus software scans files, memory and activity for…
+- **password:** Biometrics can be convenient and cannot be casually…
 
-- user account / user accounts
-- password
-- digital signature
-- biometric
-- firewall
-- anti-virus / antivirus
-- anti-spyware
-- encryption
-- security measure / security measures
-- access
-- rights
-- protect
+**Mechanism**
 
-### Detailed explanation
+1. **Identify what needs protection** — User accounts/passwords, digital signatures, biometrics, firewall, antivirus, anti-spyware and encryption as security measures.
+2. **Trace the attack or error route** — User accounts, passwords, digital signatures, biometrics, firewall, anti-virus, anti-spyware and encryption are all required named evidence.
+3. **Match a safeguard and limitation** — Anti-virus software scans files, memory and activity for virus signatures or suspicious behaviour, then blocks, quarantines or removes…
+
+**Biometrics: convenient identity evidence from physical or behavioural…:** A biometric sensor captures a physical or behavioural feature and the system compares its template with a stored enrolled template. A match authenticates the identity claim; authorisation is a separate process that decides what…
+
+#### Biometrics: convenient identity evidence from physical or behavioural features
+
+![Biometrics: convenient identity evidence from physical or behavioural features](../web/assets/diagrams/stage10-infographics/stage10-lesson-066-biometrics.jpg)
+
+<details><summary>Text transcript</summary>
+
+- A biometric sensor captures a physical or behavioural feature and the system compares its template with a stored enrolled template.
+- A match authenticates the identity claim; authorisation is a separate process that decides what an authenticated user may access or do.
+- A false reject denies a valid enrolled user by mistake; a false accept authenticates an impostor by mistake.
+- Biometrics require sensors and stored templates and may create privacy, false-accept and false-reject risks.
+
+</details>
+
+<details><summary>Precise syllabus wording</summary>
+
+Understand user accounts/passwords, digital signatures, biometrics, firewall, antivirus, anti-spyware and encryption as security measures.
+
+Describe security measures for computer systems from a stand-alone PC to a network: user accounts, passwords, digital signatures, biometrics, firewall, anti-virus, anti-spyware and encryption are all required named evidence.
+
+</details>
+
+### 2. How encryption and access rights protect data (S6.06)
+
+**Concept relationships**
+
+- **encryption:** Security methods designed to protect data, including encryption…
+- **access:** How encryption and access rights protect data.
+- **rights:** Encryption therefore protects confidentiality, while access rights can…
+- **protect:** Encryption protects readable data.
+- **user account:** Encryption does not decide which logged-in user may…
+
+**Mechanism**
+
+1. **Identify what needs protection** — Security methods designed to protect data, including encryption and access rights
+2. **Trace the attack or error route** — How encryption and access rights protect data.
+3. **Match a safeguard and limitation** — Encryption therefore protects confidentiality, while access rights can protect confidentiality and integrity by preventing unauthorised viewing or alteration.
+
+**One control can support more than one goal,…:** Encryption makes data unreadable without the correct key and supports confidentiality. Access rights prevent unauthorised viewing and prevent unauthorised alteration; they support confidentiality and integrity but do not detect whether data changed.
+
+#### One control can support more than one goal, but not every goal
+
+![One control can support more than one goal, but not every goal](../web/assets/diagrams/stage10-infographics/stage10-lesson-063-controls.jpg)
+
+<details><summary>Text transcript</summary>
+
+- Encryption makes data unreadable without the correct key and supports confidentiality.
+- Access rights prevent unauthorised viewing and prevent unauthorised alteration; they support confidentiality and integrity but do not detect whether data changed.
+- Backups allow recovery after data loss or corruption and support availability.
+- Hash/checksum comparison can detect whether data changed and supports integrity, but it does not prevent unauthorised alteration.
+
+</details>
+
+<details><summary>Precise syllabus wording</summary>
+
+Explain how encryption and access rights protect data.
+
+Describe security methods designed to protect data, including encryption and access rights; evidence must explain their different mechanisms and limitations.
+
+</details>
+
+<details><summary>Open precise terminology and exam facts</summary>
 
 - Describe security measures for computer systems from a stand-alone PC to a network: user accounts, passwords, digital signatures, biometrics, firewall, anti-virus, anti-spyware and encryption are all required named evidence.
 - Describe security methods designed to protect data, including encryption and access rights; evidence must explain their different mechanisms and limitations.
@@ -61,18 +120,16 @@ Ask the learner to give one accurate definition or method step before continuing
 - Encryption transforms plaintext into ciphertext using an algorithm and key. Without the correct decryption key, intercepted or stolen ciphertext should not reveal readable content. Encryption therefore protects confidentiality, while access rights can protect confidentiality and integrity by preventing unauthorised viewing or alteration.
 - The methods do different jobs: encryption does not decide which logged-in user may edit a record, and access rights do not make a stolen unencrypted copy unreadable. Neither method guarantees availability, data truth or protection after an authorised account is misused.
 
-### Worked example
+</details>
 
-Protect a home laptop and a school network: The laptop's host firewall blocks unsolicited inbound connections except an explicitly required service. The school's boundary firewall denies unrequested external traffic, permits web traffic under ordered rules and logs repeated blocked attempts. Anti-virus still scans downloaded files, and account/access controls still decide who may use data after traffic is allowed.
+### Worked method
+
+1. Protect a home laptop and a school network
+2. The laptop's host firewall blocks unsolicited inbound connections except an explicitly required service.
+3. The school's boundary firewall denies unrequested external traffic, permits web traffic under ordered rules and logs repeated blocked attempts.
+4. Anti-virus still scans downloaded files, and account/access controls still decide who may use data after traffic is allowed.
 
 Beyond syllabus / 延伸知识（不要求背诵）: real security uses defence in depth, combining controls so that one failed control does not expose the whole system.
-
-### Retained visual explanation
-
-![Controls reduce risk but have limits](../web/assets/diagrams/stage10-infographics/stage10-lesson-069-limits.jpg)
-
-_Controls reduce risk but have limits. The image and mobile text alternative come from one maintained fact source._
-
 ## 3. Practice by question type
 
 ### Question 1 - foundation - describe - 6 marks

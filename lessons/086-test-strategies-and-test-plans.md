@@ -1,15 +1,15 @@
 # Lesson 086: Test strategies and test plans
 
-**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029 Version 2<br>
+**Course:** Cambridge International AS Level Computer Science 9618, syllabus for examination in 2027-2029<br>
 **Paper:** Paper 2<br>
 **Syllabus:** Section 12: Software development<br>
 **Syllabus requirements:** S12.06<br>
-**Pacing:** Flexible. This lesson is deliberately over-complete; select a quick, full or deep route for the learners in front of you.
+**Pacing:** Flexible. Select a quick, full or deep route for the learners in front of you.
 
 ## Teaching-depth menu
 
 - **Quick route:** Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.
-- **Full route:** Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.
+- **Full route:** Teach every knowledge-point material set, the worked method and all lesson questions.
 - **Deep route:** Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.
 
 ## 1. Prerequisite knowledge and quick diagnostic
@@ -25,37 +25,64 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ## 2. Knowledge explanation
 
-### Learning objectives
+### 1. The need for a test strategy and test plan and their likely contents (S12.06)
 
-- Show understanding of the need for a test strategy and test plan and their likely contents.
+**Concept relationships**
 
-### Concept checklist for teacher choice
+- **Strategy:** Overall testing approach
+- **Plan:** Tests data and expected results
+- **Need:** Systematic evidence of correctness
+- **Contents:** Purpose data result and status
+- **test:** The need for a test strategy and test…
 
-- test
-- strategy
-- plan
+**Mechanism**
 
-### Detailed explanation
+1. **Translate the stated design** — The need for a test strategy and test plan and their likely contents.
+2. **Apply one complete operation** — Understanding the need and likely contents
+3. **Trace state and boundaries** — A list of values alone is neither a complete strategy nor a complete test plan.
 
-- The Version 2 table requires understanding the need and likely contents; it does not require candidates to produce either document.
+**Test strategy and test plan are different documents:** A test strategy states the testing levels, methods, responsibilities, sequence and resources for the project. A test plan records individual cases with a test ID, purpose, data, expected result, actual result and pass/fail outcome.
+
+#### Test strategy and test plan are different documents
+
+![Test strategy and test plan are different documents](../web/assets/diagrams/stage10-infographics/stage10-lesson-146-changeover.jpg)
+
+<details><summary>Text transcript</summary>
+
+- A test strategy states the testing levels, methods, responsibilities, sequence and resources for the project.
+- A test plan records individual cases with a test ID, purpose, data, expected result, actual result and pass/fail outcome.
+- Normal, abnormal and extreme/boundary values are test-data categories; a list of values alone is neither a complete strategy nor a complete test plan.
+
+</details>
+
+<details><summary>Precise syllabus wording</summary>
+
+Show understanding of the need for a test strategy and test plan and their likely contents.
+
+The syllabus requires understanding the need and likely contents; it does not require candidates to produce either document.
+
+</details>
+
+<details><summary>Open precise terminology and exam facts</summary>
+
+- The syllabus requires understanding the need and likely contents; it does not require candidates to produce either document.
 - Alpha testing is performed internally before release; beta testing uses selected external users in realistic settings; acceptance testing checks the delivered system against agreed requirements. A strategy states levels/methods/responsibility, while a test plan records test ID, purpose, data, expected result, actual result and pass/fail.
 - Choose test data from the stated validation rule and give an expected result for each value. A label such as 'boundary' is insufficient unless the value really tests a stated limit.
 - Classify the reason for the change, not the code edited. The same module could receive a corrective change for a crash, an adaptive change for a new operating-system interface, or a perfective change for faster search and a clearer result display.
 - Every maintenance change requires impact analysis, controlled amendment, tests for the changed behaviour and regression tests for unaffected behaviour. Records should link the request, code change and test evidence.
 - Test the enhancement with data that exercises the new path and rerun regression tests for existing paths. Correcting a fault is corrective maintenance; adding or improving requested functionality is an enhancement and may be perfective maintenance.
 
-### Worked example
+</details>
 
-Test login through review, construction, integration and release / Test an inclusive mark range / Three changes to one booking system / Add a Merit count without breaking PassCount: First dry-run the lockout counter and conduct a walkthrough in which peers inspect the algorithm. White-box tests cover true/false paths; black-box tests valid, invalid and boundary inputs from requirements. During integration, a stub returns simulated account results before the database is ready. Internal staff perform alpha testing, selected external users perform beta testing, and the customer performs acceptance testing against the agreed lockout behaviour. For an allowed mark from 0 to 100 inclusive, 55 is normal, 0 and 100 are valid extreme/boundary values, and -1 or 101 is abnormal. Fixing a crash when saving is corrective. Updating tax or term-date rules imposed externally is adaptive.…
+### Worked method
+
+1. Test login through review, construction, integration and release
+2. Test an inclusive mark range
+3. Three changes to one booking system
+4. Add a Merit count without breaking PassCount
+5. First dry-run the lockout counter and conduct a walkthrough in which peers inspect the algorithm.
 
 Beyond syllabus / 延伸知识（不要求背诵）: modern teams often use continuous integration to repeat building and testing whenever a program changes.
-
-### Retained visual explanation
-
-![Test strategy and test plan are different documents](../web/assets/diagrams/stage10-infographics/stage10-lesson-146-changeover.jpg)
-
-_Test strategy and test plan are different documents. The image and mobile text alternative come from one maintained fact source._
-
 ## 3. Practice by question type
 
 ### Question 1 - foundation - apply - 2 marks
@@ -72,7 +99,7 @@ What does a stub replace?
 
 State two precise facts about test strategies and test plans.
 
-**Answer:** The Version 2 table requires understanding the need and likely contents; it does not require candidates to produce either document. Alpha testing is performed internally before release; beta testing uses selected external users in realistic settings; acceptance testing checks the delivered system against agreed requirements. A strategy states levels/methods/responsibility, while a test plan records test ID, purpose, data, expected result, actual result and pass/fail.
+**Answer:** The syllabus requires understanding the need and likely contents; it does not require candidates to produce either document. Alpha testing is performed internally before release; beta testing uses selected external users in realistic settings; acceptance testing checks the delivered system against agreed requirements. A strategy states levels/methods/responsibility, while a test plan records test ID, purpose, data, expected result, actual result and pass/fail.
 
 **Marking guidance:** Award one mark for each distinct fact; do not credit a repeated point.
 

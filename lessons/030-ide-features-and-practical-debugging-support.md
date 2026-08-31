@@ -1,15 +1,15 @@
 # Lesson 030: IDE features and practical debugging support
 
-**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029 Version 2<br>
+**Course:** Cambridge International AS Level Computer Science 9618, syllabus for examination in 2027-2029<br>
 **Paper:** Paper 1<br>
 **Syllabus:** Section 5: System software<br>
 **Syllabus requirements:** S5.07<br>
-**Pacing:** Flexible. This lesson is deliberately over-complete; select a quick, full or deep route for the learners in front of you.
+**Pacing:** Flexible. Select a quick, full or deep route for the learners in front of you.
 
 ## Teaching-depth menu
 
 - **Quick route:** Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.
-- **Full route:** Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.
+- **Full route:** Teach every knowledge-point material set, the worked method and all lesson questions.
 - **Deep route:** Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.
 
 ## 1. Prerequisite knowledge and quick diagnostic
@@ -26,46 +26,66 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ## 2. Knowledge explanation
 
-### Learning objectives
+### 1. IDE features: context-sensitive prompts, dynamic syntax checking, prettyprint, expand/collapse, single-step, breakpoints, variable/expression inspection and report window (S5.07)
 
-- Understand IDE features: context-sensitive prompts, dynamic syntax checking, prettyprint, expand/collapse, single-step, breakpoints, variable/expression inspection and report window.
+**Concept relationships**
 
-### Concept checklist for teacher choice
+- **single-step:** Context-sensitive prompts, dynamic syntax checking, prettyprint, expand/collapse, single-step,…
+- **context-sensitive:** For coding, an IDE can provide context-sensitive prompts.
+- **expand:** Prettyprint and expand/collapse presentation
+- **variable:** Variable/expression inspection exposes changing values.
+- **IDE:** For debugging, an IDE can provide single stepping,…
+- **features:** IDE features
 
-- IDE
-- features
-- context-sensitive
-- prompts
-- dynamic
-- checking
-- prettyprint
-- expand/collapse
-- single-step / single stepping
-- breakpoints
-- variable/expression
-- inspection
-- report
-- window
+**Mechanism**
 
-### Detailed explanation
+1. **Identify incoming data or signal** — Context-sensitive prompts, dynamic syntax checking, prettyprint, expand/collapse, single-step, breakpoints, variable/expression inspection and report window.
+2. **Follow the physical or logical path** — For debugging, an IDE can provide single stepping, breakpoints, inspection of variables and expressions, and a report window…
+3. **Connect output to its use** — And debugging with single stepping, breakpoints, variables, expressions and a report window.
+
+**A breakpoint pauses execution at a chosen line:** Breakpoint Best place
+
+#### A breakpoint pauses execution at a chosen line
+
+![A breakpoint pauses execution at a chosen line](../web/assets/diagrams/stage10-infographics/stage10-lesson-139-breakpoint.jpg)
+
+<details><summary>Text transcript</summary>
+
+- Breakpoint
+- Best place
+- Place a breakpoint before or on the line where the suspected decision or calculation happens.
+- What to inspect
+- Check variable values, the next line to execute, and whether the condition is true or false.
+- What not to do
+- Do not scatter breakpoints randomly. Random pausing is just procrastination wearing a technical hat.
+
+</details>
+
+<details><summary>Precise syllabus wording</summary>
+
+Understand IDE features: context-sensitive prompts, dynamic syntax checking, prettyprint, expand/collapse, single-step, breakpoints, variable/expression inspection and report window.
+
+IDE evidence must cover coding prompts; dynamic syntax error detection; prettyprint and expand/collapse presentation; and debugging with single stepping, breakpoints, variables, expressions and a report window.
+
+</details>
+
+<details><summary>Open precise terminology and exam facts</summary>
 
 - IDE evidence must cover coding prompts; dynamic syntax error detection; prettyprint and expand/collapse presentation; and debugging with single stepping, breakpoints, variables, expressions and a report window.
 - For coding, an IDE can provide context-sensitive prompts. For initial error detection it can perform dynamic syntax checks. For presentation it can prettyprint code and expand or collapse code blocks. These features help create and navigate source code but do not prove that its algorithm is correct.
 - For debugging, an IDE can provide single stepping, breakpoints, inspection of variables and expressions, and a report window for diagnostic or output information. Single stepping executes one statement at a time; a breakpoint pauses at a chosen point; variable/expression inspection exposes changing values.
 - The expand/collapse feature hides or reveals a code block in the editor without changing program execution.
 
-### Worked example
+</details>
 
-Trace Java and locate a loop fault: First the Java compiler produces bytecode; the JVM then interprets the bytecode or JIT-compiles parts for the host. In the IDE, a breakpoint pauses before the faulty loop, single stepping advances one statement at a time, the variable/expression view exposes Index, and the report window records diagnostics. Dynamic syntax checking can flag malformed syntax but not a syntactically valid wrong boundary.
+### Worked method
+
+1. Trace Java and locate a loop fault
+2. First the Java compiler produces bytecode; the JVM then interprets the bytecode or JIT-compiles parts for the host.
+3. In the IDE, a breakpoint pauses before the faulty loop, single stepping advances one statement at a time, the variable/expression view exposes Index, and the report window records diagnostics.
+4. Dynamic syntax checking can flag malformed syntax but not a syntactically valid wrong boundary.
 
 Beyond syllabus / 延伸知识（不要求背诵）: production build systems automate translation, linking, testing and packaging, while the syllabus examines the purpose of each stage separately.
-
-### Retained visual explanation
-
-![A compiler translates the whole high-level program before execution](../web/assets/diagrams/stage10-infographics/stage10-lesson-057-compiler.jpg)
-
-_A compiler translates the whole high-level program before execution. The image and mobile text alternative come from one maintained fact source._
-
 ## 3. Practice by question type
 
 ### Question 1 - foundation - identify - 2 marks

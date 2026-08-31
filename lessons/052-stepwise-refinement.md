@@ -1,15 +1,15 @@
 # Lesson 052: Stepwise refinement
 
-**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029 Version 2<br>
+**Course:** Cambridge International AS Level Computer Science 9618, syllabus for examination in 2027-2029<br>
 **Paper:** Paper 2<br>
 **Syllabus:** Section 9: Algorithm design and problem-solving<br>
 **Syllabus requirements:** S9.08<br>
-**Pacing:** Flexible. This lesson is deliberately over-complete; select a quick, full or deep route for the learners in front of you.
+**Pacing:** Flexible. Select a quick, full or deep route for the learners in front of you.
 
 ## Teaching-depth menu
 
 - **Quick route:** Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.
-- **Full route:** Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.
+- **Full route:** Teach every knowledge-point material set, the worked method and all lesson questions.
 - **Deep route:** Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.
 
 ## 1. Prerequisite knowledge and quick diagnostic
@@ -28,18 +28,35 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ## 2. Knowledge explanation
 
-### Learning objectives
+### 1. Stepwise refinement to develop an algorithm: Stepwise refinement (S9.08)
 
-- Use stepwise refinement to develop an algorithm.
+**Concept relationships**
 
-### Concept checklist for teacher choice
+- **stepwise:** Stepwise refinement to develop an algorithm.
+- **refinement:** Stepwise refinement to develop an algorithm from a…
+- **algorithm:** Stepwise refinement starts with a high-level algorithm and…
+- **implement:** Refinement stops when every step is precise enough…
+- **develop:** Stepwise refinement until steps are programmable, and construct…
 
-- stepwise
-- refinement
-- algorithm
-- implement
+**Mechanism**
 
-### Detailed explanation
+1. **Translate the stated design** — Stepwise refinement to develop an algorithm.
+2. **Apply one complete operation** — Stepwise refinement to develop an algorithm from a high-level solution to a level of detail from which a…
+3. **Trace state and boundaries** — Stepwise refinement starts with a high-level algorithm and repeatedly replaces each complex step with a smaller sequence of…
+
+**Concrete case: stepwise:** Stepwise refinement to develop an algorithm.
+
+
+
+<details><summary>Precise syllabus wording</summary>
+
+Use stepwise refinement to develop an algorithm.
+
+Use stepwise refinement to develop an algorithm from a high-level solution to a level of detail from which a program can be written; each level must preserve the parent purpose.
+
+</details>
+
+<details><summary>Open precise terminology and exam facts</summary>
 
 - Use stepwise refinement to develop an algorithm from a high-level solution to a level of detail from which a program can be written; each level must preserve the parent purpose.
 - Stepwise refinement starts with a high-level algorithm and repeatedly replaces each complex step with a smaller sequence of defined substeps. Refinement stops when every step is precise enough to implement and its input and output are clear.
@@ -49,18 +66,16 @@ Ask the learner to give one accurate definition or method step before continuing
 - Solution review: design with input-process-output, use sequence, selection and iteration, document the same algorithm in structured English, a flowchart or pseudocode, and convert between the specified representations without changing its control flow.
 - Development review: use stepwise refinement until steps are programmable, and construct and interpret logic statements that define decisions, loop conditions or Boolean values. Core answers must not replace these requirements with tracing, Java syntax or vague planning advice.
 
-### Worked example
+</details>
 
-Refine an order-processing algorithm: Level 1: InputOrder; ValidateOrder; CalculateTotal; ProduceReceipt. Refine CalculateTotal into Set Total to 0; for each item validate Quantity; add Price Quantity; apply Discount; return Total. CalculateTotal can be a function returning Total, while ProduceReceipt can be a procedure receiving the completed total.
+### Worked method
+
+1. Refine an order-processing algorithm
+2. InputOrder; ValidateOrder; CalculateTotal; ProduceReceipt.
+3. Refine CalculateTotal into Set Total to 0; for each item validate Quantity; add Price Quantity; apply Discount; return Total.
+4. CalculateTotal can be a function returning Total, while ProduceReceipt can be a procedure receiving the completed total.
 
 Beyond syllabus / 延伸知识（不要求背诵）: the same algorithm can be expressed in many programming languages; its logic should remain independent of syntax.
-
-### Retained visual explanation
-
-![Stepwise refinement turns a high-level algorithm into implementable modules](../web/assets/diagrams/stage10-infographics/stage10-lesson-112-analyser.jpg)
-
-_Stepwise refinement turns a high-level algorithm into implementable modules. The image and mobile text alternative come from one maintained fact source._
-
 ## 3. Practice by question type
 
 ### Question 1 - foundation - apply - 2 marks

@@ -8,25 +8,25 @@
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
-    <link rel="stylesheet" href="../course-v2.css?v=3" />
+    <link rel="stylesheet" href="../course-v2.css?v=4" />
   </head>
-  <body data-course-version="2" data-lesson-id="060" data-syllabus-ids="S10.06">
+  <body data-course-version="2" data-lesson-id="060" data-syllabus-ids="S10.06" data-material-status="complete">
     <a class="skip-link" href="#main-content">Skip to main content</a>
     <header class="v2-topbar">
       <div><p class="v2-eyebrow">Cambridge AS9618 | Paper 2 | Section 10: Data types and structures</p><h1>Linear search using arrays</h1></div>
       <nav class="v2-actions" aria-label="Lesson actions"><a href="../">Course home</a><a href="../assessments/">Assessment bank</a><button type="button" id="printLesson">Print</button></nav>
     </header>
+    <nav class="v2-jump-nav" aria-label="Lesson contents"><strong>Lesson 060</strong><a href="#overview">Overview</a><a href="#prerequisite">Prerequisite</a><a href="#explanation">Explanation</a><a href="#practice">Practice</a><a href="#summary">Summary</a></nav>
     <main class="v2-shell" id="main-content" tabindex="-1">
-      <nav class="v2-toc" aria-label="Lesson contents"><strong>Lesson 060</strong><a href="#overview">Overview</a><a href="#prerequisite">Prerequisite</a><a href="#explanation">Explanation</a><a href="#practice">Practice</a><a href="#summary">Summary</a></nav>
       <div class="v2-content">
         <section class="v2-hero" id="overview">
-          <div><p class="v2-eyebrow">Flexible-depth lesson</p><h2>Linear search using arrays</h2><p>S10.06 | Select what to omit, teach briefly or explore in depth.</p></div>
+          <div><p class="v2-eyebrow">Flexible-depth lesson</p><h2>Linear search using arrays</h2><p>S10.06 | Visual relationships, mechanisms and worked examples.</p></div>
           <div class="v2-time-grid" aria-label="Available lesson depth"><div><strong>Quick</strong><span>diagnose + essentials</span></div><div><strong>Full</strong><span>complete explanation</span></div><div><strong>Deep</strong><span>prerequisites + extension</span></div><div><strong>Choose</strong><span>practice by need</span></div></div>
         </section>
 
         <section class="v2-panel v2-route-menu" aria-labelledby="route-heading">
           <div class="v2-heading"><p class="v2-eyebrow">Teacher choice</p><h2 id="route-heading">Choose the depth for this group</h2></div>
-          <div class="v2-route-grid"><article><h3>Quick route</h3><p>Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.</p></article><article><h3>Full route</h3><p>Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.</p></article><article><h3>Deep route</h3><p>Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.</p></article></div>
+          <div class="v2-route-grid"><article><h3>Quick route</h3><p>Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.</p></article><article><h3>Full route</h3><p>Teach every knowledge-point material set, the worked method and all lesson questions.</p></article><article><h3>Deep route</h3><p>Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.</p></article></div>
         </section>
 
         <section class="v2-panel" id="prerequisite">
@@ -37,21 +37,35 @@
         </section>
 
         <section class="v2-panel" id="explanation">
-          <div class="v2-heading"><p class="v2-eyebrow">Part 2 | deliberately over-complete</p><h2>Knowledge explanation</h2></div>
-          <h3>Learning objectives</h3><ul class="v2-objectives"><li>Write bubble sort and linear search algorithms.</li></ul>
-          <details class="v2-concept-menu"><summary>Open the concept checklist and choose what to teach</summary><ul><li>bubble sort</li><li>linear search</li><li>write</li></ul></details>
-          <div class="v2-explanation-grid">
-            <div>
-              <article class="v2-core-facts"><h3>Detailed explanation</h3><p class="v2-teacher-note">Teach all points, or select only the ones this group needs. The list is intentionally fuller than a fixed lesson slot.</p><ul class="v2-facts"><li>When processing array data, candidates must write a bubble-sort algorithm and a linear-search algorithm. A trace alone is not sufficient evidence of the ability to write each complete algorithm.</li><li>Before tracing a search, define the data structure it traverses. An array is a fixed-size indexed collection whose elements have one declared data type. The index selects one element; it is not the value stored in that element.</li><li>Cambridge pseudocode declares explicit inclusive bounds. In DECLARE Names : ARRAY[1:4] OF STRING, 1 is the lower bound, 4 is the upper bound and the valid indexes are 1, 2, 3 and 4. A search must start and stop within those declared bounds.</li><li>Linear search checks successive indexed elements until the target is found or every populated element has been checked. Binary search also uses indexes, but requires the array to be sorted so each comparison can discard one half of the remaining index range.</li><li>Candidates must be able to write a bubble sort and a linear search algorithm, not only describe or trace an existing algorithm.</li><li>Linear search examines array elements in index order until the target is found or all populated elements have been checked. A complete algorithm initialises its index and found state, keeps every access within the declared bounds, compares the current element and advances only when another element remains to be checked.</li><li>Bubble sort makes repeated passes through the unsorted part of an array. Each pass compares adjacent elements and swaps them when they are in the wrong order. After a complete ascending pass, the largest remaining value is at the high end; the algorithm repeats until the required passes are complete or a whole pass makes no swaps.</li><li>A trace is evidence about one execution, but the syllabus requires candidates to write the algorithms. The answer must therefore include initialisation, loop bounds, comparison, update or swap, and a valid stopping condition rather than only showing one example pass.</li></ul></article>
-              <article class="v2-example"><h3>Worked example</h3><p>Two complete array algorithms: A linear search of Code[1:Count] sets Found to FALSE and Index to 1, then compares Code[Index] with Target while Found is FALSE and Index is within Count. A bubble sort of Value[1:Count] uses nested passes, compares Value[Index] with Value[Index + 1], swaps an inverted pair through Temp and may stop early when a pass makes no swaps.</p></article>
-              <aside class="v2-extension"><h3>Beyond syllabus / 延伸知识（不要求背诵）</h3><p>programming libraries often provide tested ADT implementations, but the exam expects you to understand their behaviour and selection.</p></aside>
-            </div>
-            <figure class="v2-visual">
-              <img src="../assets/diagrams/stage10-infographics/stage10-lesson-118-pseudocode.jpg" alt="Both pseudocode and Java versions visit five score positions.. Increment the pass counter only when the current score is at least 50.. Close the conditional before advancing the loop.. Both complete versions output the final pass count after the loop." loading="lazy" />
-              <figcaption>Same algorithm, different array syntax. One maintained explanation is shown as an image on larger screens and as text on small screens.</figcaption>
-              <div class="v2-mobile-visual-text" aria-label="Mobile text alternative"><ul><li>Both pseudocode and Java versions visit five score positions.</li><li>Increment the pass counter only when the current score is at least 50.</li><li>Close the conditional before advancing the loop.</li><li>Both complete versions output the final pass count after the loop.</li></ul></div>
-            </figure>
-          </div>
+          <div class="v2-heading"><p class="v2-eyebrow">Part 2 | visual explanation</p><h2>Learn each point through visuals</h2><p>Use the relationship map, mechanism and concrete cue before opening precise wording.</p></div>
+    <nav class="v2-knowledge-index" aria-label="Knowledge points in this lesson"><a href="#knowledge-s10-06"><span>01</span>S10.06</a></nav><div class="v2-knowledge-point-list"><section class="v2-knowledge-point" id="knowledge-s10-06" data-syllabus-id="S10.06" data-visual-mode="process" data-material-count="5">
+      <header class="v2-knowledge-point-head"><span>01</span><div><p>S10.06 · process</p><h3>Bubble sort and linear search algorithms: Linear search using arrays</h3></div></header>
+      <div class="v2-material-triad">
+        <article class="v2-native-material v2-native-material--map"><h4>Concept relationships</h4><div class="v2-concept-map"><div><strong>Linear search</strong><span>Inspect items in order</span></div><div><strong>Bubble sort</strong><span>Swap adjacent out-of-order items</span></div><div><strong>Pass</strong><span>One traversal of the array</span></div><div><strong>Complete algorithm</strong><span>Initialise loop and finish correctly</span></div><div><strong>target</strong><span>Linear search examines array elements in index order…</span></div><div><strong>found</strong><span>Linear search checks successive indexed elements until the…</span></div></div></article>
+        <article class="v2-native-material v2-native-material--story"><h4>See how it works</h4><ol><li><span>Plan</span><div><strong>Translate the stated design</strong><p>Bubble sort and linear search algorithms.</p></div></li><li><span>Execute</span><div><strong>Apply one complete operation</strong><p>Linear search examines array elements in index order until the target is found or all populated elements have…</p></div></li><li><span>Test</span><div><strong>Trace state and boundaries</strong><p>When processing array data, candidates must write a bubble-sort algorithm and a linear-search algorithm.</p></div></li></ol></article>
+        <aside class="v2-native-material v2-native-material--cue"><h4>Linear search checks each item in order</h4><p>Knowledge explanation How it works</p></aside>
+      </div>
+      <section class="v2-material-library" aria-label="S10.06 diagrams">
+    <div class="v2-material-library-head"><h3>S10.06 diagrams</h3><div class="v2-material-controls">
+        <button type="button" data-material-prev aria-controls="materials-060-s10-06" aria-label="Previous diagram">‹</button>
+        <span data-material-position>1 / 2</span>
+        <button type="button" data-material-next aria-controls="materials-060-s10-06" aria-label="Next diagram">›</button>
+      </div></div>
+    <div class="v2-material-rail" id="materials-060-s10-06" data-material-rail><figure class="v2-visual" data-material-kind="diagram">
+            <div class="v2-visual-heading"><span>01</span><div><p>Diagram · 1 of 2</p><h4>Linear search checks each item in order</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Linear search checks each item in order"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-105-linear.jpg" alt="Linear search checks each item in order" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Knowledge explanation</li><li>How it works</li><li>Start at the first item. Compare it with the target. If it matches, stop. If not, move to the next item until found or the list ends.</li><li>When it is suitable</li><li>Use it when data is unsorted, the list is small, or simplicity matters more than speed.</li><li>Worst case: the target is last or absent, so every item may be checked.</li></ul></details>
+          </figure><figure class="v2-visual" data-material-kind="diagram">
+            <div class="v2-visual-heading"><span>02</span><div><p>Diagram · 2 of 2</p><h4>Why bubble sort repeats adjacent comparisons</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Why bubble sort repeats adjacent comparisons"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-106-bubble.jpg" alt="Why bubble sort repeats adjacent comparisons" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Bubble sort compares adjacent items and swaps an inverted pair.</li><li>For [1, 4, 2, 5, 8], pass 2 makes one swap: 4 and 2.</li><li>The resulting list is [1, 2, 4, 5, 8], and the next pass makes zero swaps.</li></ul></details>
+          </figure></div>
+  </section>
+      <details class="v2-point-precision"><summary>Open precise syllabus wording</summary><p><strong>Write bubble sort and linear search algorithms.</strong></p><p>When processing array data, candidates must write a bubble-sort algorithm and a linear-search algorithm. A trace alone is not sufficient evidence of the ability to write each complete algorithm.</p></details>
+    </section></div>
+    <details class="v2-core-facts"><summary>Open precise terminology and exam facts</summary><ul class="v2-facts"><li>When processing array data, candidates must write a bubble-sort algorithm and a linear-search algorithm. A trace alone is not sufficient evidence of the ability to write each complete algorithm.</li><li>Before tracing a search, define the data structure it traverses. An array is a fixed-size indexed collection whose elements have one declared data type. The index selects one element; it is not the value stored in that element.</li><li>Cambridge pseudocode declares explicit inclusive bounds. In DECLARE Names : ARRAY[1:4] OF STRING, 1 is the lower bound, 4 is the upper bound and the valid indexes are 1, 2, 3 and 4. A search must start and stop within those declared bounds.</li><li>Linear search checks successive indexed elements until the target is found or every populated element has been checked. Binary search also uses indexes, but requires the array to be sorted so each comparison can discard one half of the remaining index range.</li><li>Candidates must be able to write a bubble sort and a linear search algorithm, not only describe or trace an existing algorithm.</li><li>Linear search examines array elements in index order until the target is found or all populated elements have been checked. A complete algorithm initialises its index and found state, keeps every access within the declared bounds, compares the current element and advances only when another element remains to be checked.</li><li>Bubble sort makes repeated passes through the unsorted part of an array. Each pass compares adjacent elements and swaps them when they are in the wrong order. After a complete ascending pass, the largest remaining value is at the high end; the algorithm repeats until the required passes are complete or a whole pass makes no swaps.</li><li>A trace is evidence about one execution, but the syllabus requires candidates to write the algorithms. The answer must therefore include initialisation, loop bounds, comparison, update or swap, and a valid stopping condition rather than only showing one example pass.</li></ul></details>
+    <article class="v2-example"><h3>Worked method</h3><ol><li>Two complete array algorithms</li><li>A linear search of Code[1:Count] sets Found to FALSE and Index to 1, then compares Code[Index] with Target while Found is FALSE and Index is within Count.</li><li>A bubble sort of Value[1:Count] uses nested passes, compares Value[Index] with Value[Index + 1], swaps an inverted pair through Temp and may stop early when a pass makes no swaps.</li></ol></article>
+    <aside class="v2-extension"><h3>Beyond syllabus / 延伸知识（不要求背诵）</h3><p>programming libraries often provide tested ADT implementations, but the exam expects you to understand their behaviour and selection.</p></aside>
         </section>
 
         <section class="v2-panel" id="practice">
@@ -86,6 +100,6 @@
         <nav class="v2-bottom-nav" aria-label="Previous and next lesson"><a href="../lesson-059/" >Previous lesson</a><a href="../lesson-061/" >Next lesson</a></nav>
       </div>
     </main>
-    <script src="../course-v2.js?v=1"></script>
+    <script src="../course-v2.js?v=2"></script>
   </body>
 </html>

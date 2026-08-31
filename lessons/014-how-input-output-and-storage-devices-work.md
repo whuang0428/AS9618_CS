@@ -1,15 +1,15 @@
 # Lesson 014: How input, output and storage devices work
 
-**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029 Version 2<br>
+**Course:** Cambridge International AS Level Computer Science 9618, syllabus for examination in 2027-2029<br>
 **Paper:** Paper 1<br>
 **Syllabus:** Section 3: Hardware<br>
 **Syllabus requirements:** S3.03<br>
-**Pacing:** Flexible. This lesson is deliberately over-complete; select a quick, full or deep route for the learners in front of you.
+**Pacing:** Flexible. Select a quick, full or deep route for the learners in front of you.
 
 ## Teaching-depth menu
 
 - **Quick route:** Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.
-- **Full route:** Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.
+- **Full route:** Teach every knowledge-point material set, the worked method and all lesson questions.
 - **Deep route:** Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.
 
 ## 1. Prerequisite knowledge and quick diagnostic
@@ -25,23 +25,36 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ## 2. Knowledge explanation
 
-### Learning objectives
+### 1. Principal operation of laser printer, 3D printer, microphone, speakers, HDD, flash memory, optical reader/writer, touchscreen and… (S3.03)
 
-- Describe principal operation of laser printer, 3D printer, microphone, speakers, HDD, flash memory, optical reader/writer, touchscreen and VR headset.
+**Concept relationships**
 
-### Concept checklist for teacher choice
+- **optical reader:** Principal operation of laser printer, 3D printer, microphone,…
+- **laser printer:** Laser printer, 3D printer, microphone, speakers, magnetic hard…
+- **flash memory:** An HDD or magnetic hard disk uses rotating…
+- **speaker:** A speaker converts an electrical signal into sound.
+- **3D printer:** A 3D printer builds successive layers
+- **microphone:** A microphone diaphragm vibrates with sound
 
-- laser printer
-- 3D printer
-- microphone
-- speaker
-- HDD / magnetic hard disk
-- flash memory
-- optical reader/writer / optical disc reader/writer
-- touchscreen
-- VR headset / virtual reality headset
+**Mechanism**
 
-### Detailed explanation
+1. **Identify incoming data or signal** — Laser printer, 3D printer, microphone, speakers, magnetic hard disk, solid state (flash) memory, optical disc reader/writer, touchscreen and…
+2. **Follow the physical or logical path** — Principal operation of laser printer, 3D printer, microphone, speakers, HDD, flash memory, optical reader/writer, touchscreen and VR headset.
+3. **Connect output to its use** — An HDD or magnetic hard disk uses rotating magnetic platters, flash memory stores charge electronically, and an optical…
+
+**Concrete case: optical reader:** Laser printer, 3D printer, microphone, speakers, magnetic hard disk, solid state (flash) memory, optical disc reader/writer, touchscreen and virtual reality headset.
+
+
+
+<details><summary>Precise syllabus wording</summary>
+
+Describe principal operation of laser printer, 3D printer, microphone, speakers, HDD, flash memory, optical reader/writer, touchscreen and VR headset.
+
+Describe the principal operations of: laser printer, 3D printer, microphone, speakers, magnetic hard disk, solid state (flash) memory, optical disc reader/writer, touchscreen and virtual reality headset.
+
+</details>
+
+<details><summary>Open precise terminology and exam facts</summary>
 
 - Describe the principal operations of: laser printer, 3D printer, microphone, speakers, magnetic hard disk, solid state (flash) memory, optical disc reader/writer, touchscreen and virtual reality headset.
 - A microphone diaphragm vibrates with sound; a transducer converts the movement into an analogue electrical signal, which an ADC samples into digital values. A capacitive touchscreen detects a change in an electric field and calculates touch coordinates.
@@ -55,18 +68,17 @@ Ask the learner to give one accurate definition or method step before continuing
 - RAM is volatile read/write primary memory used for programs and data currently being processed. ROM is non-volatile primary memory used for instructions that must remain when power is removed, such as firmware or start-up instructions. ROM is not ordinary long-term storage for user files.
 - SRAM stores bits using flip-flop circuits, needs no refresh and is fast but expensive with lower density, so it is used for cache. DRAM stores charge in capacitors, requires refresh and is slower but cheaper and denser, so it is used for main memory.
 
-### Worked example
+</details>
 
-Print a page / Read an HDD block / Choose a storage mechanism / Choose memory for a computer system: The operating system places page data in a print buffer. The CPU can continue other work while the slower printer consumes buffered data and performs drum, toner and fusing stages. The controller moves the head to the correct track, waits for the sector to rotate beneath it, senses magnetic patterns and transfers the decoded bits through a buffer. A portable device may use flash memory for shock resistance; an archive may use optical media when an optical disc reader/writer is available. Use DRAM as main RAM because its density and lower cost support a large working capacity. Use a small amount of SRAM for cache because faster, no-refresh access reduces processor waiting. Store updateable firmware in EEPROM because it remains without power but can be rewritten electrically.
+### Worked method
+
+1. Print a page
+2. Read an HDD block
+3. Choose a storage mechanism
+4. Choose memory for a computer system
+5. The operating system places page data in a print buffer.
 
 Beyond syllabus / 延伸知识（不要求背诵）: professional device selection also considers accessibility, reliability, repairability and energy use.
-
-### Retained visual explanation
-
-![Section 3 topic map](../web/assets/diagrams/stage10-infographics/stage10-lesson-041-map.jpg)
-
-_Section 3 topic map. The image and mobile text alternative come from one maintained fact source._
-
 ## 3. Practice by question type
 
 ### Question 1 - foundation - describe - 4 marks

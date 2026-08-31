@@ -1,15 +1,15 @@
 # Lesson 020: System buses, ports and processor performance
 
-**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029 Version 2<br>
+**Course:** Cambridge International AS Level Computer Science 9618, syllabus for examination in 2027-2029<br>
 **Paper:** Paper 1<br>
 **Syllabus:** Section 4: Processor fundamentals<br>
 **Syllabus requirements:** S4.04, S4.05, S4.06<br>
-**Pacing:** Flexible. This lesson is deliberately over-complete; select a quick, full or deep route for the learners in front of you.
+**Pacing:** Flexible. Select a quick, full or deep route for the learners in front of you.
 
 ## Teaching-depth menu
 
 - **Quick route:** Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.
-- **Full route:** Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.
+- **Full route:** Teach every knowledge-point material set, the worked method and all lesson questions.
 - **Deep route:** Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.
 
 ## 1. Prerequisite knowledge and quick diagnostic
@@ -26,29 +26,115 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ## 2. Knowledge explanation
 
-### Learning objectives
+### 1. Address, data and control buses (S4.04)
 
-- Understand address, data and control buses.
-- Understand processor performance factors: processor type, cores, bus width, clock and cache.
-- Understand USB, HDMI and VGA ports.
+**Concept relationships**
 
-### Concept checklist for teacher choice
+- **address:** Address, data and control buses.
+- **control:** The CPU places the required address on the…
+- **buses:** Wider data buses can transfer more bits per…
+- **data:** Show how data are transferred between computer-system components…
+- **processor type:** Processor performance depends on processor type, number of…
 
-- address
-- data
-- control
-- buses
-- processor type
-- cores
-- bus width
-- clock
-- cache
-- USB
-- HDMI
-- VGA
-- ports
+**Mechanism**
 
-### Detailed explanation
+1. **Identify incoming data or signal** — Address, data and control buses.
+2. **Follow the physical or logical path** — The CPU places the required address on the address bus, sends a read signal on the control bus,…
+3. **Connect output to its use** — Show how data are transferred between computer-system components using the address bus, data bus and control bus, including…
+
+**The three buses:** The address bus carries the address of the location being accessed and is normally directed from the CPU. The data bus carries data and instructions in both directions.
+
+#### The three buses
+
+![The three buses](../web/assets/diagrams/stage10-infographics/stage10-lesson-045-three-buses.jpg)
+
+<details><summary>Text transcript</summary>
+
+- The address bus carries the address of the location being accessed and is normally directed from the CPU.
+- The data bus carries data and instructions in both directions.
+- The control bus carries control and timing signals in both directions, including read/write from the CPU and interrupts toward the CPU.
+
+</details>
+
+<details><summary>Precise syllabus wording</summary>
+
+Understand address, data and control buses.
+
+Show how data are transferred between computer-system components using the address bus, data bus and control bus, including their directions and roles in read/write operations.
+
+</details>
+
+### 2. Processor performance factors: processor type, cores, bus width, clock and cache (S4.05)
+
+**Concept relationships**
+
+- **processor type:** Processor performance depends on processor type, number of…
+- **bus width:** Show how processor type and number of cores,…
+- **cores:** Processor type, cores, bus width, clock and cache.
+- **clock:** Higher clock speed provides more clock cycles per…
+- **cache:** Performance must be justified for the stated workload,…
+
+**Mechanism**
+
+1. **Identify incoming data or signal** — Processor performance depends on processor type, number of cores, bus width, clock speed and cache memory.
+2. **Follow the physical or logical path** — Show how processor type and number of cores, bus width, clock speed and cache memory can contribute to…
+3. **Connect output to its use** — Processor type, cores, bus width, clock and cache.
+
+**Bus width and addressable locations:** Address bus width If the address bus has n lines, it can represent 2^n different addresses.
+
+#### Bus width and addressable locations
+
+![Bus width and addressable locations](../web/assets/diagrams/stage10-infographics/stage10-lesson-045-width.jpg)
+
+<details><summary>Text transcript</summary>
+
+- Address bus width
+- If the address bus has n lines, it can represent 2^n different addresses.
+- A 16-bit address bus can address 2^16 = 65,536 memory locations.
+- Data bus width
+- A wider data bus can transfer more bits at once, which can affect throughput.
+- Precision
+- Address bus width affects address range; data bus width affects transfer size.
+
+</details>
+
+<details><summary>Precise syllabus wording</summary>
+
+Understand processor performance factors: processor type, cores, bus width, clock and cache.
+
+Show how processor type and number of cores, bus width, clock speed and cache memory can contribute to performance; no single factor guarantees faster execution for every workload.
+
+</details>
+
+### 3. USB, HDMI and VGA ports (S4.06)
+
+**Concept relationships**
+
+- **USB:** How ports connect peripheral devices, including Universal Serial…
+- **HDMI:** USB, HDMI and VGA ports.
+- **VGA:** VGA carries analogue video and does not carry…
+- **ports:** HDMI carries digital video and audio.
+- **address:** Wider data buses can transfer more bits per…
+
+**Mechanism**
+
+1. **Translate the stated design** — How ports connect peripheral devices, including Universal Serial Bus (USB), High Definition Multimedia Interface (HDMI) and Video Graphics…
+2. **Apply one complete operation** — USB, HDMI and VGA ports.
+3. **Trace state and boundaries** — HDMI carries digital video and audio.
+
+**Concrete case: USB:** How ports connect peripheral devices, including Universal Serial Bus (USB), High Definition Multimedia Interface (HDMI) and Video Graphics Array (VGA), with accurate signal/use distinctions.
+
+
+
+<details><summary>Precise syllabus wording</summary>
+
+Understand USB, HDMI and VGA ports.
+
+Understand how ports connect peripheral devices, including Universal Serial Bus (USB), High Definition Multimedia Interface (HDMI) and Video Graphics Array (VGA), with accurate signal/use distinctions.
+
+</details>
+
+<details><summary>Open precise terminology and exam facts</summary>
 
 - Show how data are transferred between computer-system components using the address bus, data bus and control bus, including their directions and roles in read/write operations.
 - Show how processor type and number of cores, bus width, clock speed and cache memory can contribute to performance; no single factor guarantees faster execution for every workload.
@@ -60,18 +146,17 @@ Ask the learner to give one accurate definition or method step before continuing
 - More cores can execute independent threads concurrently when software exposes parallel work. Wider data buses can transfer more bits per transfer, while address-bus width affects the address space. Higher clock speed provides more clock cycles per second, and cache reduces waiting when frequently used instructions or data are found close to the CPU.
 - No factor guarantees that every program runs faster. Performance must be justified for the stated workload, because software parallelism, instruction-set compatibility, cache behaviour, memory traffic, heat and other bottlenecks can limit the benefit.
 
-### Worked example
+</details>
 
-Read memory, then connect a display / Compare two processors for two workloads: To read address 240, the CPU puts 240 on the address bus and read on the control bus; memory returns the contents on the data bus. To connect the computer to a modern TV with one digital audio/video cable, choose HDMI. A keyboard or removable drive commonly uses USB, while a legacy analogue display may use VGA. Processor A has four faster general-purpose cores and a larger cache; Processor B has eight specialised cores but a lower clock speed. A lightly threaded office program may favour A's processor type, clock behaviour and cache, while a parallel workload written for B's processor type may use more cores. Bus width and memory traffic must also be considered before reaching a conclusion.
+### Worked method
+
+1. Read memory, then connect a display
+2. Compare two processors for two workloads
+3. To read address 240, the CPU puts 240 on the address bus and read on the control bus; memory returns the contents on the data bus.
+4. To connect the computer to a modern TV with one digital audio/video cable, choose HDMI.
+5. A keyboard or removable drive commonly uses USB, while a legacy analogue display may use VGA.
 
 Beyond syllabus / 延伸知识（不要求背诵）: modern processors add pipelining and several cache levels, but exam answers should begin with the syllabus processor model.
-
-### Retained visual explanation
-
-![Retrieval grid: say the role, not just the name](../web/assets/diagrams/stage10-infographics/stage10-lesson-052-retrieval.jpg)
-
-_Retrieval grid: say the role, not just the name. The image and mobile text alternative come from one maintained fact source._
-
 ## 3. Practice by question type
 
 ### Question 1 - foundation - describe - 8 marks

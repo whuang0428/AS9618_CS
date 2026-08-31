@@ -1,15 +1,15 @@
 # Lesson 036: Ethical decisions and their consequences
 
-**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029 Version 2<br>
+**Course:** Cambridge International AS Level Computer Science 9618, syllabus for examination in 2027-2029<br>
 **Paper:** Paper 1<br>
 **Syllabus:** Section 7: Ethics and ownership<br>
 **Syllabus requirements:** S7.03<br>
-**Pacing:** Flexible. This lesson is deliberately over-complete; select a quick, full or deep route for the learners in front of you.
+**Pacing:** Flexible. Select a quick, full or deep route for the learners in front of you.
 
 ## Teaching-depth menu
 
 - **Quick route:** Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.
-- **Full route:** Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.
+- **Full route:** Teach every knowledge-point material set, the worked method and all lesson questions.
 - **Deep route:** Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.
 
 ## 1. Prerequisite knowledge and quick diagnostic
@@ -20,26 +20,62 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ### Optional prerequisite refresher
 
-- Version 2 requires both the need for professional ethics and its purpose; evidence must connect responsible professional decisions to public interest, competence and accountability.
+- The syllabus requires both the need for professional ethics and its purpose; evidence must connect responsible professional decisions to public interest, competence and accountability.
 - Show understanding of the need for and purpose of ethics as a computing professional.
 
 
 ## 2. Knowledge explanation
 
-### Learning objectives
+### 1. The need to act ethically and the impact of acting ethically or unethically for a given… (S7.03)
 
-- Explain the need to act ethically and the impact of acting ethically or unethically for a given situation.
+**Concept relationships**
 
-### Concept checklist for teacher choice
+- **ethical:** The need to act ethically and the impact…
+- **unethical:** For a given situation, decide whether an action…
+- **impact:** Then explain the impact of acting ethically and…
+- **situation:** In a situation, judge whether action is ethical…
+- **need:** Stakeholders and explain impacts of both ethical and…
 
-- situation
-- ethical
-- unethical
-- impact
+**Mechanism**
 
-### Detailed explanation
+1. **Identify who is affected** — The need to act ethically and the impact of acting ethically or unethically for a given situation.
+2. **Trace benefit and harm** — For a given situation, decide whether an action is ethical or unethical by identifying the decision, affected stakeholders,…
+3. **Justify the responsible choice** — Then explain the impact of acting ethically and the impact of acting unethically.
 
-- Version 2 requires scenario judgement plus consequences. Evidence must identify stakeholders and explain impacts of both ethical and unethical action; a label or generic list is insufficient.
+**Ethical answers start with stakeholders:** Stakeholder Possible benefit
+
+#### Ethical answers start with stakeholders
+
+![Ethical answers start with stakeholders](../web/assets/diagrams/stage10-infographics/stage10-lesson-073-stakeholders.jpg)
+
+<details><summary>Text transcript</summary>
+
+- Stakeholder
+- Possible benefit
+- Possible harm or concern
+- Users / students / patients
+- Better service, safety, convenience, personalisation.
+- Loss of privacy, unfair treatment, pressure, exclusion.
+- Organisation
+- Efficiency, security, reduced cost, legal compliance.
+- Reputation damage, misuse of data, over-collection.
+- Wider society
+- Public safety, accessibility, innovation.
+- Surveillance culture, inequality, environmental impact.
+
+</details>
+
+<details><summary>Precise syllabus wording</summary>
+
+Explain the need to act ethically and the impact of acting ethically or unethically for a given situation.
+
+The syllabus requires scenario judgement plus consequences. Evidence must identify stakeholders and explain impacts of both ethical and unethical action; a label or generic list is insufficient.
+
+</details>
+
+<details><summary>Open precise terminology and exam facts</summary>
+
+- The syllabus requires scenario judgement plus consequences. Evidence must identify stakeholders and explain impacts of both ethical and unethical action; a label or generic list is insufficient.
 - Professional ethics provides principles for deciding how a computing professional should act when technical choices can affect clients, users, colleagues or wider society. Its purpose is to protect the public interest, support competent and honest work, and make professionals accountable for foreseeable consequences rather than treating legal compliance or a manager's instruction as the whole decision.
 - Joining a professional ethical body is important because membership gives a practitioner an explicit code of conduct, current professional guidance, continuing professional development and a community through which standards and misconduct can be challenged. The British Computer Society (BCS) and the Institute of Electrical and Electronics Engineers (IEEE) are the two named syllabus examples. Their codes promote public interest, competence, integrity, privacy and accountability; a code guides judgement but does not replace law.
 - For a given situation, decide whether an action is ethical or unethical by identifying the decision, affected stakeholders, benefits, harms, rights and responsibilities. Then explain the impact of acting ethically and the impact of acting unethically. A defensible conclusion applies evidence, proportionality and safeguards; it is not a one-sided list or an unsupported personal opinion.
@@ -48,18 +84,17 @@ Ask the learner to give one accurate definition or method step before continuing
 - To evaluate an AI application, balance its social, economic and environmental impacts and reach a context-linked judgement.
 - The required licence categories include FSF and OSI open-source licences, shareware and commercial software. A justified licence choice links its permissions, restrictions and cost to the stated situation.
 
-### Worked example
+</details>
 
-Unsafe release pressure: A developer is told to hide failed safety tests so a medical system can launch on time. Concealing the evidence would be unethical because patients could be harmed and trust would be damaged. The developer acts ethically by documenting the risk, refusing to falsify the record and escalating through BCS/IEEE-style professional channels. This may delay release and cost money, but protects patients, supports accountability and allows the defect to be corrected.
+### Worked method
+
+1. Unsafe release pressure
+2. A developer is told to hide failed safety tests so a medical system can launch on time.
+3. Concealing the evidence would be unethical because patients could be harmed and trust would be damaged.
+4. The developer acts ethically by documenting the risk, refusing to falsify the record and escalating through BCS/IEEE-style professional channels.
+5. This may delay release and cost money, but protects patients, supports accountability and allows the defect to be corrected.
 
 Beyond syllabus / 延伸知识（不要求背诵）: professional decisions are often reviewed against law, organisational policy, public interest and a published code of conduct.
-
-### Retained visual explanation
-
-![Section 7 topic map](../web/assets/diagrams/stage10-infographics/stage10-lesson-078-map.jpg)
-
-_Section 7 topic map. The image and mobile text alternative come from one maintained fact source._
-
 ## 3. Practice by question type
 
 ### Question 1 - foundation - apply - 2 marks

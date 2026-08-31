@@ -1,15 +1,15 @@
 # Lesson 050: Sequence, selection and iteration
 
-**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029 Version 2<br>
+**Course:** Cambridge International AS Level Computer Science 9618, syllabus for examination in 2027-2029<br>
 **Paper:** Paper 2<br>
 **Syllabus:** Section 9: Algorithm design and problem-solving<br>
 **Syllabus requirements:** S9.06<br>
-**Pacing:** Flexible. This lesson is deliberately over-complete; select a quick, full or deep route for the learners in front of you.
+**Pacing:** Flexible. Select a quick, full or deep route for the learners in front of you.
 
 ## Teaching-depth menu
 
 - **Quick route:** Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.
-- **Full route:** Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.
+- **Full route:** Teach every knowledge-point material set, the worked method and all lesson questions.
 - **Deep route:** Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.
 
 ## 1. Prerequisite knowledge and quick diagnostic
@@ -26,17 +26,48 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ## 2. Knowledge explanation
 
-### Learning objectives
+### 1. And use sequence, selection and iteration (S9.06)
 
-- Understand and use sequence, selection and iteration.
+**Concept relationships**
 
-### Concept checklist for teacher choice
+- **Sequence:** Steps in order
+- **Selection:** Choose a branch
+- **Iteration:** Repeat controlled steps
+- **Combination:** Constructs can be nested
+- **Control flow:** Determines the next executed step
 
-- sequence
-- selection
-- iteration
+**Mechanism**
 
-### Detailed explanation
+1. **Translate the stated design** — And use sequence, selection and iteration.
+2. **Apply one complete operation** — The three basic algorithm constructs are sequence, selection and iteration (repetition)
+3. **Trace state and boundaries** — Sequence to initialise and input, iteration to process repeated items, and selection inside the loop when each item…
+
+**Real algorithms usually combine the three structures:** Combining structures 1 Use sequence to initialise variables and read inputs.
+
+#### Real algorithms usually combine the three structures
+
+![Real algorithms usually combine the three structures](../web/assets/diagrams/stage10-infographics/stage10-lesson-101-combining.jpg)
+
+<details><summary>Text transcript</summary>
+
+- Combining structures
+- 1 Use sequence to initialise variables and read inputs.
+- 2 Use iteration when the same action happens repeatedly.
+- 3 Use selection inside the loop when each item needs a decision.
+- 4 Use sequence after the loop to calculate or output final results.
+- 5 Indent nested structures so the examiner can see the logic.
+
+</details>
+
+<details><summary>Precise syllabus wording</summary>
+
+Understand and use sequence, selection and iteration.
+
+The three basic algorithm constructs are sequence, selection and iteration (repetition); students must recognise and use each construct, including combinations of constructs.
+
+</details>
+
+<details><summary>Open precise terminology and exam facts</summary>
 
 - The three basic algorithm constructs are sequence, selection and iteration (repetition); students must recognise and use each construct, including combinations of constructs.
 - Sequence executes defined steps once in order. Selection chooses one of two or more paths using a condition. Iteration repeats one or more steps using a count or a condition.
@@ -46,18 +77,17 @@ Ask the learner to give one accurate definition or method step before continuing
 - Solution review: design with input-process-output, use sequence, selection and iteration, document the same algorithm in structured English, a flowchart or pseudocode, and convert between the specified representations without changing its control flow.
 - Development review: use stepwise refinement until steps are programmable, and construct and interpret logic statements that define decisions, loop conditions or Boolean values. Core answers must not replace these requirements with tracing, Java syntax or vague planning advice.
 
-### Worked example
+</details>
 
-Count five passing marks: Sequence sets PassCount to 0. A FOR loop iterates through five marks. Inside the loop, selection tests Mark = 50 and increments PassCount only on the true path. Sequence after the loop outputs PassCount.
+### Worked method
+
+1. Count five passing marks
+2. Sequence sets PassCount to 0.
+3. A FOR loop iterates through five marks.
+4. Inside the loop, selection tests Mark = 50 and increments PassCount only on the true path.
+5. Sequence after the loop outputs PassCount.
 
 Beyond syllabus / 延伸知识（不要求背诵）: the same algorithm can be expressed in many programming languages; its logic should remain independent of syntax.
-
-### Retained visual explanation
-
-![Real algorithms usually combine the three structures](../web/assets/diagrams/stage10-infographics/stage10-lesson-101-combining.jpg)
-
-_Real algorithms usually combine the three structures. The image and mobile text alternative come from one maintained fact source._
-
 ## 3. Practice by question type
 
 ### Question 1 - foundation - explain - 4 marks

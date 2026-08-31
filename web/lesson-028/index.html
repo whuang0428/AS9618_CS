@@ -8,25 +8,25 @@
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
-    <link rel="stylesheet" href="../course-v2.css?v=3" />
+    <link rel="stylesheet" href="../course-v2.css?v=4" />
   </head>
-  <body data-course-version="2" data-lesson-id="028" data-syllabus-ids="S5.04">
+  <body data-course-version="2" data-lesson-id="028" data-syllabus-ids="S5.04" data-material-status="complete">
     <a class="skip-link" href="#main-content">Skip to main content</a>
     <header class="v2-topbar">
       <div><p class="v2-eyebrow">Cambridge AS9618 | Paper 1 | Section 5: System software</p><h1>Assemblers, compilers and interpreters</h1></div>
       <nav class="v2-actions" aria-label="Lesson actions"><a href="../">Course home</a><a href="../assessments/">Assessment bank</a><button type="button" id="printLesson">Print</button></nav>
     </header>
+    <nav class="v2-jump-nav" aria-label="Lesson contents"><strong>Lesson 028</strong><a href="#overview">Overview</a><a href="#prerequisite">Prerequisite</a><a href="#explanation">Explanation</a><a href="#practice">Practice</a><a href="#summary">Summary</a></nav>
     <main class="v2-shell" id="main-content" tabindex="-1">
-      <nav class="v2-toc" aria-label="Lesson contents"><strong>Lesson 028</strong><a href="#overview">Overview</a><a href="#prerequisite">Prerequisite</a><a href="#explanation">Explanation</a><a href="#practice">Practice</a><a href="#summary">Summary</a></nav>
       <div class="v2-content">
         <section class="v2-hero" id="overview">
-          <div><p class="v2-eyebrow">Flexible-depth lesson</p><h2>Assemblers, compilers and interpreters</h2><p>S5.04 | Select what to omit, teach briefly or explore in depth.</p></div>
+          <div><p class="v2-eyebrow">Flexible-depth lesson</p><h2>Assemblers, compilers and interpreters</h2><p>S5.04 | Visual relationships, mechanisms and worked examples.</p></div>
           <div class="v2-time-grid" aria-label="Available lesson depth"><div><strong>Quick</strong><span>diagnose + essentials</span></div><div><strong>Full</strong><span>complete explanation</span></div><div><strong>Deep</strong><span>prerequisites + extension</span></div><div><strong>Choose</strong><span>practice by need</span></div></div>
         </section>
 
         <section class="v2-panel v2-route-menu" aria-labelledby="route-heading">
           <div class="v2-heading"><p class="v2-eyebrow">Teacher choice</p><h2 id="route-heading">Choose the depth for this group</h2></div>
-          <div class="v2-route-grid"><article><h3>Quick route</h3><p>Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.</p></article><article><h3>Full route</h3><p>Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.</p></article><article><h3>Deep route</h3><p>Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.</p></article></div>
+          <div class="v2-route-grid"><article><h3>Quick route</h3><p>Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.</p></article><article><h3>Full route</h3><p>Teach every knowledge-point material set, the worked method and all lesson questions.</p></article><article><h3>Deep route</h3><p>Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.</p></article></div>
         </section>
 
         <section class="v2-panel" id="prerequisite">
@@ -37,17 +37,27 @@
         </section>
 
         <section class="v2-panel" id="explanation">
-          <div class="v2-heading"><p class="v2-eyebrow">Part 2 | deliberately over-complete</p><h2>Knowledge explanation</h2></div>
-          <h3>Learning objectives</h3><ul class="v2-objectives"><li>Explain why assembler, compiler and interpreter are needed.</li></ul>
-          <details class="v2-concept-menu"><summary>Open the concept checklist and choose what to teach</summary><ul><li>assembler</li><li>compiler</li><li>interpreter</li></ul></details>
-          <div class="v2-explanation-grid">
-            <div>
-              <article class="v2-core-facts"><h3>Detailed explanation</h3><p class="v2-teacher-note">Teach all points, or select only the ones this group needs. The list is intentionally fuller than a fixed lesson slot.</p><ul class="v2-facts"><li>An assembler translates assembly language, a compiler translates high-level language, and an interpreter translates and executes high-level language.</li><li>An assembler is needed to translate a processor-specific assembly-language program into machine code or object code. A compiler is needed to translate a whole high-level language program before execution, normally producing target/object code. An interpreter translates and executes a high-level language program statement by statement during execution, normally without producing a separate permanent object-code file.</li><li>Compiler advantages include faster repeated execution after translation, distribution without the source code and translation checks across the whole program. Disadvantages include a separate compilation step and an error list that may need several corrections before execution. Interpreter advantages include immediate statement-level feedback and convenient incremental testing. Disadvantages include repeated translation overhead, slower execution and needing the interpreter and usually the source program at run time.</li><li>A justified choice must connect the mechanism to the scenario: an interpreter can suit development and debugging; a compiler can suit repeated use or distribution; an assembler is required for assembly source. These are advantages and disadvantages of the translation approaches, not universal claims that one tool is always better.</li></ul></article>
-              <article class="v2-example"><h3>Worked example</h3><p>Choose tools across development and deployment: During development, an interpreter can execute each statement and stop near a fault, giving quick feedback. For final distribution, a compiler can translate the whole high-level program before execution and provide target/object or executable code without distributing the source. A processor-specific assembly routine requires an assembler because its mnemonic instructions must become the target processor&#39;s machine code.</p></article>
-              <aside class="v2-extension"><h3>Beyond syllabus / 延伸知识（不要求背诵）</h3><p>production build systems automate translation, linking, testing and packaging, while the syllabus examines the purpose of each stage separately.</p></aside>
-            </div>
-
-          </div>
+          <div class="v2-heading"><p class="v2-eyebrow">Part 2 | visual explanation</p><h2>Learn each point through visuals</h2><p>Use the relationship map, mechanism and concrete cue before opening precise wording.</p></div>
+    <nav class="v2-knowledge-index" aria-label="Knowledge points in this lesson"><a href="#knowledge-s5-04"><span>01</span>S5.04</a></nav><div class="v2-knowledge-point-list"><section class="v2-knowledge-point" id="knowledge-s5-04" data-syllabus-id="S5.04" data-visual-mode="structure" data-material-count="4">
+      <header class="v2-knowledge-point-head"><span>01</span><div><p>S5.04 · structure</p><h3>Why assembler, compiler and interpreter are needed</h3></div></header>
+      <div class="v2-material-triad">
+        <article class="v2-native-material v2-native-material--map"><h4>Concept relationships</h4><div class="v2-concept-map"><div><strong>Assembler</strong><span>Assembly to machine code</span></div><div><strong>Compiler</strong><span>Whole high-level program translated</span></div><div><strong>Interpreter</strong><span>Translate and execute while running</span></div><div><strong>Need</strong><span>Processor executes machine instructions</span></div><div><strong>why</strong><span>Why assembler, compiler and interpreter are needed.</span></div></div></article>
+        <article class="v2-native-material v2-native-material--story"><h4>See how it works</h4><ol><li><span>Meaning</span><div><strong>Name the exact concept</strong><p>Why assembler, compiler and interpreter are needed.</p></div></li><li><span>Mechanism</span><div><strong>Explain how its parts connect</strong><p>An assembler translates assembly language, a compiler translates high-level language, and an interpreter translates and executes high-level language.</p></div></li><li><span>Application</span><div><strong>Use it in a concrete context</strong><p>An assembler is needed to translate a processor-specific assembly-language program into machine code or object code.</p></div></li></ol></article>
+        <aside class="v2-native-material v2-native-material--cue"><h4>An assembler translates assembly language into machine code</h4><p>An assembler translates assembly-language mnemonics into machine code or an object-code module. Machine code uses the instruction set and binary encodings of the target processor.</p></aside>
+      </div>
+      <section class="v2-material-library" aria-label="S5.04 diagrams">
+    <div class="v2-material-library-head"><h3>S5.04 diagrams</h3></div>
+    <div class="v2-material-rail" id="materials-028-s5-04" data-material-rail><figure class="v2-visual" data-material-kind="diagram">
+            <div class="v2-visual-heading"><span>01</span><div><p>Diagram · 1 of 1</p><h4>An assembler translates assembly language into machine code</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: An assembler translates assembly language into machine code"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-057-assembler.jpg" alt="An assembler translates assembly language into machine code" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>An assembler translates assembly-language mnemonics into machine code or an object-code module.</li><li>Machine code uses the instruction set and binary encodings of the target processor.</li><li>An object module may still need a linker to combine modules and resolve external library references before an executable can be produced.</li><li>An assembler does not translate high-level languages such as Java or Cambridge pseudocode.</li></ul></details>
+          </figure></div>
+  </section>
+      <details class="v2-point-precision"><summary>Open precise syllabus wording</summary><p><strong>Explain why assembler, compiler and interpreter are needed.</strong></p><p>An assembler translates assembly language, a compiler translates high-level language, and an interpreter translates and executes high-level language.</p></details>
+    </section></div>
+    <details class="v2-core-facts"><summary>Open precise terminology and exam facts</summary><ul class="v2-facts"><li>An assembler translates assembly language, a compiler translates high-level language, and an interpreter translates and executes high-level language.</li><li>An assembler is needed to translate a processor-specific assembly-language program into machine code or object code. A compiler is needed to translate a whole high-level language program before execution, normally producing target/object code. An interpreter translates and executes a high-level language program statement by statement during execution, normally without producing a separate permanent object-code file.</li><li>Compiler advantages include faster repeated execution after translation, distribution without the source code and translation checks across the whole program. Disadvantages include a separate compilation step and an error list that may need several corrections before execution. Interpreter advantages include immediate statement-level feedback and convenient incremental testing. Disadvantages include repeated translation overhead, slower execution and needing the interpreter and usually the source program at run time.</li><li>A justified choice must connect the mechanism to the scenario: an interpreter can suit development and debugging; a compiler can suit repeated use or distribution; an assembler is required for assembly source. These are advantages and disadvantages of the translation approaches, not universal claims that one tool is always better.</li></ul></details>
+    <article class="v2-example"><h3>Worked method</h3><ol><li>Choose tools across development and deployment</li><li>During development, an interpreter can execute each statement and stop near a fault, giving quick feedback.</li><li>For final distribution, a compiler can translate the whole high-level program before execution and provide target/object or executable code without distributing the source.</li><li>A processor-specific assembly routine requires an assembler because its mnemonic instructions must become the target processor&#39;s machine code.</li></ol></article>
+    <aside class="v2-extension"><h3>Beyond syllabus / 延伸知识（不要求背诵）</h3><p>production build systems automate translation, linking, testing and packaging, while the syllabus examines the purpose of each stage separately.</p></aside>
         </section>
 
         <section class="v2-panel" id="practice">
@@ -82,6 +92,6 @@
         <nav class="v2-bottom-nav" aria-label="Previous and next lesson"><a href="../lesson-027/" >Previous lesson</a><a href="../lesson-029/" >Next lesson</a></nav>
       </div>
     </main>
-    <script src="../course-v2.js?v=1"></script>
+    <script src="../course-v2.js?v=2"></script>
   </body>
 </html>

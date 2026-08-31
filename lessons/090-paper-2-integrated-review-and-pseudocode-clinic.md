@@ -1,15 +1,15 @@
 # Lesson 090: Paper 2 integrated review and pseudocode clinic
 
-**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029 Version 2<br>
+**Course:** Cambridge International AS Level Computer Science 9618, syllabus for examination in 2027-2029<br>
 **Paper:** Paper 2<br>
 **Syllabus:** Paper 2 integrated review<br>
 **Syllabus requirements:** S9.01, S9.02, S9.03, S9.04, S9.05, S9.06, S9.07, S9.08, S9.09, S10.01, S10.02, S10.03, S10.04, S10.05, S10.06, S10.07, S10.08, S10.09, S10.10, S11.01, S11.02, S11.03, S11.04, S11.05, S11.06, S11.07, S11.08, S11.09, S12.01, S12.02, S12.03, S12.04, S12.05, S12.06, S12.07, S12.08, S12.09<br>
-**Pacing:** Flexible. This lesson is deliberately over-complete; select a quick, full or deep route for the learners in front of you.
+**Pacing:** Flexible. Select a quick, full or deep route for the learners in front of you.
 
 ## Teaching-depth menu
 
 - **Quick route:** Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.
-- **Full route:** Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.
+- **Full route:** Review each section lane, diagnose weak links and complete all lesson questions.
 - **Deep route:** Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.
 
 ## 1. Prerequisite knowledge and quick diagnostic
@@ -30,58 +30,41 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ## 2. Knowledge explanation
 
-### Learning objectives
+### Review lanes
+
+#### Section 9: Algorithm design and problem-solving
 
 - Understand abstraction, its purpose/benefits and creation of an abstract model.
 - Use decomposition and express a problem as modules.
 - Understand what an algorithm is.
+- Choose meaningful identifier names and construct an identifier table.
 
-### Concept checklist for teacher choice
+#### Section 10: Data types and structures
 
-- abstraction
-- essential details
-- irrelevant detail
-- abstract model
-- decomposition
-- problem
-- modules
-- procedure
-- function
-- algorithm
-- solution
-- sequence
-- defined steps
-- meaningful
-- identifier
-- names
-- table
-- input-process-output
-- design
-- pseudocode
-- selection
-- iteration
-- structured
-- English
+- Understand integer, real, char, string, Boolean and date types and Cambridge pseudocode type names.
+- Understand record purpose and define, read and save record data.
+- Understand array, index, lower bound and upper bound terminology.
+- Select one- or two-dimensional arrays for a scenario.
 
-### Detailed explanation
+#### Section 11: Programming
 
-- Use stepwise refinement to develop an algorithm from a high-level solution to a level of detail from which a program can be written; each level must preserve the parent purpose.
-- Select and use appropriate types for a problem solution. The Version 2 Notes name integer, real, char, string, Boolean and date, and require the Cambridge pseudocode type names INTEGER, REAL, CHAR, STRING, BOOLEAN, DATE, ARRAY and FILE.
-- Define and use a procedure; explain when the use of a procedure is appropriate; use parameters with none, one or more values passed by reference or by value.
-- Candidates should understand the purpose of a program-development lifecycle and the need for different lifecycles depending on the program being developed. Compare the principles, benefits and drawbacks of waterfall, iterative and Rapid Application Development (RAD). Lifecycle stages are analysis, design, coding, testing and maintenance.
+- Write pseudocode from a flowchart or structured-English description.
+- Use declarations, constants, variables, assignment, arithmetic/logical operations and input/output.
+- Use built-in/library and string functions.
+- Use IF/ELSE/nested selection, CASE, count-controlled loops, post-condition and pre-condition loops.
 
-### Worked example
+#### Section 12: Software development
 
-Use one fresh scenario to apply paper 2 integrated review and pseudocode clinic, showing each decision or calculation step and checking the result against the question context.
+- Understand why a program-development lifecycle is used; compare waterfall, iterative and RAD models and their stages.
+- Understand, construct and use structure charts, including parameters, and derive pseudocode.
+- Show understanding of the purpose of state-transition diagrams to document an algorithm.
+- Identify and correct syntax, logic and runtime errors.
 
-Beyond syllabus / 延伸知识（不要求背诵）: modern teams often use continuous integration to repeat building and testing whenever a program changes.
+### Review method
 
-### Retained visual explanation
-
-![Translate feedback into a repeatable checklist](../web/assets/diagrams/stage10-infographics/stage10-lesson-151-marking.jpg)
-
-_Translate feedback into a repeatable checklist. The image and mobile text alternative come from one maintained fact source._
-
+1. Choose one lane and explain the links between its ideas without notes.
+2. Check the precise term or method that caused hesitation.
+3. Correct one answer, then state exactly why the correction earns the mark.
 ## 3. Practice by question type
 
 ### Question 1 - foundation - write - 8 marks

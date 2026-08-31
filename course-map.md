@@ -1,6 +1,6 @@
 # AS9618 90-lesson course map
 
-The course follows Cambridge 9618 2027-2029 Version 2 Sections 1-12. Paper 1 and Paper 2 each receive 44 teaching lessons plus one integrated review lesson.
+The course follows Cambridge 9618 syllabus Sections 1-12 for examination in 2027-2029. Paper 1 and Paper 2 each receive 44 teaching lessons plus one integrated review lesson.
 
 ## Allocation evidence
 

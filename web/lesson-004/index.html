@@ -8,50 +8,73 @@
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
-    <link rel="stylesheet" href="../course-v2.css?v=3" />
+    <link rel="stylesheet" href="../course-v2.css?v=4" />
   </head>
-  <body data-course-version="2" data-lesson-id="004" data-syllabus-ids="S1.06,S1.07">
+  <body data-course-version="2" data-lesson-id="004" data-syllabus-ids="S1.06,S1.07" data-material-status="complete">
     <a class="skip-link" href="#main-content">Skip to main content</a>
     <header class="v2-topbar">
       <div><p class="v2-eyebrow">Cambridge AS9618 | Paper 1 | Section 1: Information representation</p><h1>BCD, hexadecimal applications and character encoding</h1></div>
       <nav class="v2-actions" aria-label="Lesson actions"><a href="../">Course home</a><a href="../assessments/">Assessment bank</a><button type="button" id="printLesson">Print</button></nav>
     </header>
+    <nav class="v2-jump-nav" aria-label="Lesson contents"><strong>Lesson 004</strong><a href="#overview">Overview</a><a href="#prerequisite">Prerequisite</a><a href="#explanation">Explanation</a><a href="#practice">Practice</a><a href="#summary">Summary</a></nav>
     <main class="v2-shell" id="main-content" tabindex="-1">
-      <nav class="v2-toc" aria-label="Lesson contents"><strong>Lesson 004</strong><a href="#overview">Overview</a><a href="#prerequisite">Prerequisite</a><a href="#explanation">Explanation</a><a href="#practice">Practice</a><a href="#summary">Summary</a></nav>
       <div class="v2-content">
         <section class="v2-hero" id="overview">
-          <div><p class="v2-eyebrow">Flexible-depth lesson</p><h2>BCD, hexadecimal applications and character encoding</h2><p>S1.06, S1.07 | Select what to omit, teach briefly or explore in depth.</p></div>
+          <div><p class="v2-eyebrow">Flexible-depth lesson</p><h2>BCD, hexadecimal applications and character encoding</h2><p>S1.06, S1.07 | Visual relationships, mechanisms and worked examples.</p></div>
           <div class="v2-time-grid" aria-label="Available lesson depth"><div><strong>Quick</strong><span>diagnose + essentials</span></div><div><strong>Full</strong><span>complete explanation</span></div><div><strong>Deep</strong><span>prerequisites + extension</span></div><div><strong>Choose</strong><span>practice by need</span></div></div>
         </section>
 
         <section class="v2-panel v2-route-menu" aria-labelledby="route-heading">
           <div class="v2-heading"><p class="v2-eyebrow">Teacher choice</p><h2 id="route-heading">Choose the depth for this group</h2></div>
-          <div class="v2-route-grid"><article><h3>Quick route</h3><p>Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.</p></article><article><h3>Full route</h3><p>Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.</p></article><article><h3>Deep route</h3><p>Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.</p></article></div>
+          <div class="v2-route-grid"><article><h3>Quick route</h3><p>Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.</p></article><article><h3>Full route</h3><p>Teach every knowledge-point material set, the worked method and all lesson questions.</p></article><article><h3>Deep route</h3><p>Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.</p></article></div>
         </section>
 
         <section class="v2-panel" id="prerequisite">
           <div class="v2-heading"><p class="v2-eyebrow">Part 1 | optional depth</p><h2>Prerequisite knowledge and quick diagnostic</h2></div>
           <div class="v2-diagnostic"><p>Recall S1.02 before starting this lesson.</p></div>
           <p>Give one accurate definition or method step before continuing. If it is missing, revisit only that prerequisite.</p>
-          <details class="v2-prerequisite-detail"><summary>Open optional prerequisite refresher</summary><ul><li>The Version 2 row requires binary, denary, hexadecimal, Binary Coded Decimal (BCD), one&#39;s complement and two&#39;s complement; BCD and complements are representations rather than additional number bases.</li><li>Show understanding of binary, denary and hexadecimal number systems, BCD, and one&#39;s- and two&#39;s-complement representations.</li></ul></details>
+          <details class="v2-prerequisite-detail"><summary>Open optional prerequisite refresher</summary><ul><li>The syllabus requires binary, denary, hexadecimal, Binary Coded Decimal (BCD), one&#39;s complement and two&#39;s complement; BCD and complements are representations rather than additional number bases.</li><li>Show understanding of binary, denary and hexadecimal number systems, BCD, and one&#39;s- and two&#39;s-complement representations.</li></ul></details>
         </section>
 
         <section class="v2-panel" id="explanation">
-          <div class="v2-heading"><p class="v2-eyebrow">Part 2 | deliberately over-complete</p><h2>Knowledge explanation</h2></div>
-          <h3>Learning objectives</h3><ul class="v2-objectives"><li>Describe practical applications where BCD and hexadecimal are used.</li><li>Show understanding of character data in internal binary form using ASCII, extended ASCII and Unicode.</li></ul>
-          <details class="v2-concept-menu"><summary>Open the concept checklist and choose what to teach</summary><ul><li>BCD</li><li>hexadecimal</li><li>digital clock</li><li>memory address</li><li>ASCII</li><li>extended ASCII</li><li>Unicode</li><li>character set</li><li>binary</li><li>not expected to memorise / not expected to memorize</li></ul></details>
-          <div class="v2-explanation-grid">
-            <div>
-              <article class="v2-core-facts"><h3>Detailed explanation</h3><p class="v2-teacher-note">Teach all points, or select only the ones this group needs. The list is intentionally fuller than a fixed lesson slot.</p><ul class="v2-facts"><li>Candidates must connect each representation to a practical use and explain why it suits that use, rather than only performing a conversion.</li><li>Students should understand ASCII, extended ASCII and Unicode but are not expected to memorise particular character codes.</li><li>BCD encodes each denary digit separately in four bits. For example, 59 becomes 0101 1001, not the pure-binary value 00111011.</li><li>Only 0000 to 1001 are valid BCD digit groups. BCD is used where decimal digits must be displayed or processed exactly, such as digital clocks, calculators and financial displays, although it usually uses more bits than pure binary.</li><li>Hexadecimal is used as a compact human-readable form of binary. One hex digit represents four bits, so hexadecimal is practical for memory addresses, machine-code/debug displays and colour values.</li><li>A digital clock is a practical BCD application because each displayed denary digit maps directly to one four-bit BCD group.</li><li>Representation overview: the required integer representations are binary, denary, hexadecimal, BCD, one&#39;s-complement and two&#39;s-complement. Conversion means preserving the integer value while changing its base or signed representation.</li><li>A character set defines a collection of characters and assigns a numeric character code to each one. The code is stored internally in binary; the bit pattern is meaningful only when software interprets it using the agreed character set.</li><li>Standard ASCII uses 7-bit codes, extended ASCII uses 8-bit codes, and Unicode provides code points for a much wider range of languages and symbols. Candidates are not expected to memorise particular character codes; a question must provide any code value needed for a conversion.</li></ul></article>
-              <article class="v2-example"><h3>Worked example</h3><p>Choose a character set for worldwide text: A messaging system containing English, Chinese and Arabic text needs Unicode because its character repertoire is much wider than ASCII or extended ASCII. The chosen Unicode encoding stores the character codes as binary data.</p></article>
-              <aside class="v2-extension"><h3>Beyond syllabus / 延伸知识（不要求背诵）</h3><p>real file formats also store headers and metadata, so two files with the same visible content may still have different sizes.</p></aside>
-            </div>
-            <figure class="v2-visual">
-              <img src="../assets/diagrams/stage10-infographics/stage10-lesson-007-ascii.jpg" alt="Standard ASCII. Uses 7 bits, so it can represent 2⁷ = 128 possible codes.. It covers common English letters, digits, punctuation and control characters.. Extended ASCII. It adds extra characters, but still cannot cover the world’s writing systems." loading="lazy" />
-              <figcaption>ASCII and extended ASCII. One maintained explanation is shown as an image on larger screens and as text on small screens.</figcaption>
-              <div class="v2-mobile-visual-text" aria-label="Mobile text alternative"><ul><li>Standard ASCII</li><li>Uses 7 bits, so it can represent 2⁷ = 128 possible codes.</li><li>It covers common English letters, digits, punctuation and control characters.</li><li>Extended ASCII</li><li>It adds extra characters, but still cannot cover the world’s writing systems.</li></ul></div>
-            </figure>
-          </div>
+          <div class="v2-heading"><p class="v2-eyebrow">Part 2 | visual explanation</p><h2>Learn each point through visuals</h2><p>Use the relationship map, mechanism and concrete cue before opening precise wording.</p></div>
+    <nav class="v2-knowledge-index" aria-label="Knowledge points in this lesson"><a href="#knowledge-s1-06"><span>01</span>S1.06</a><a href="#knowledge-s1-07"><span>02</span>S1.07</a></nav><div class="v2-knowledge-point-list"><section class="v2-knowledge-point" id="knowledge-s1-06" data-syllabus-id="S1.06" data-visual-mode="comparison" data-material-count="3">
+      <header class="v2-knowledge-point-head"><span>01</span><div><p>S1.06 · comparison</p><h3>BCD and hexadecimal suit different real uses</h3></div></header>
+      <div class="v2-material-triad">
+        <article class="v2-native-material v2-native-material--map"><h4>Concept relationships</h4><div class="v2-concept-map"><div><strong>BCD</strong><span>digit-by-digit</span></div><div><strong>Clock</strong><span>direct decimal display</span></div><div><strong>Hex</strong><span>one digit per nibble</span></div><div><strong>Address</strong><span>compact binary</span></div><div><strong>Colour</strong><span>readable byte values</span></div></div></article>
+        <article class="v2-native-material v2-native-material--story"><h4>See how it works</h4><ol><li><span>Need</span><div><strong>Identify the practical task</strong><p>Ask whether exact decimal digits or compact binary notation matters.</p></div></li><li><span>Choose</span><div><strong>Match the representation</strong><p>Use BCD for digit displays and hex for compact bit patterns.</p></div></li><li><span>Justify</span><div><strong>State why it fits</strong><p>Connect the representation&#39;s structure directly to the application.</p></div></li></ol></article>
+        <aside class="v2-native-material v2-native-material--cue"><h4>Display versus shorthand</h4><p>A clock stores 59 as BCD 0101 1001. A debugger writes 1101 0110 compactly as D6.</p></aside>
+      </div>
+
+      <details class="v2-point-precision"><summary>Open precise syllabus wording</summary><p><strong>Describe practical applications where BCD and hexadecimal are used.</strong></p><p>Candidates must connect each representation to a practical use and explain why it suits that use, rather than only performing a conversion.</p></details>
+    </section><section class="v2-knowledge-point" id="knowledge-s1-07" data-syllabus-id="S1.07" data-visual-mode="process" data-material-count="5">
+      <header class="v2-knowledge-point-head"><span>02</span><div><p>S1.07 · process</p><h3>Character sets map symbols to binary codes</h3></div></header>
+      <div class="v2-material-triad">
+        <article class="v2-native-material v2-native-material--map"><h4>Concept relationships</h4><div class="v2-concept-map"><div><strong>Character</strong><span>symbol</span></div><div><strong>Code</strong><span>assigned number</span></div><div><strong>Binary</strong><span>stored bit pattern</span></div><div><strong>ASCII</strong><span>7-bit, 128 codes</span></div><div><strong>Extended</strong><span>8-bit, 256 codes</span></div><div><strong>Unicode</strong><span>global character range</span></div></div></article>
+        <article class="v2-native-material v2-native-material--story"><h4>See how it works</h4><ol><li><span>Map</span><div><strong>Character becomes a number</strong><p>The character set defines the numeric code for each symbol.</p></div></li><li><span>Store</span><div><strong>Code becomes bits</strong><p>The numeric code is represented internally in binary.</p></div></li><li><span>Choose</span><div><strong>Match the needed range</strong><p>Unicode is suitable when many languages and symbols are required.</p></div></li></ol></article>
+        <aside class="v2-native-material v2-native-material--cue"><h4>A numbered library catalogue</h4><p>The computer stores a catalogue number, not the drawn symbol. The character set tells it which symbol that number means.</p></aside>
+      </div>
+      <section class="v2-material-library" aria-label="S1.07 diagrams">
+    <div class="v2-material-library-head"><h3>S1.07 diagrams</h3><div class="v2-material-controls">
+        <button type="button" data-material-prev aria-controls="materials-004-s1-07" aria-label="Previous diagram">‹</button>
+        <span data-material-position>1 / 2</span>
+        <button type="button" data-material-next aria-controls="materials-004-s1-07" aria-label="Next diagram">›</button>
+      </div></div>
+    <div class="v2-material-rail" id="materials-004-s1-07" data-material-rail><figure class="v2-visual" data-material-kind="diagram">
+            <div class="v2-visual-heading"><span>01</span><div><p>Diagram · 1 of 2</p><h4>ASCII and extended ASCII</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: ASCII and extended ASCII"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-007-ascii.jpg" alt="ASCII and extended ASCII" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Standard ASCII</li><li>Uses 7 bits, so it can represent 2⁷ = 128 possible codes.</li><li>It covers common English letters, digits, punctuation and control characters.</li><li>Extended ASCII</li><li>Uses 8 bits, so it can represent 2⁸ = 256 possible codes.</li><li>It adds extra characters, but still cannot cover the world’s writing systems.</li><li>Character</li><li>Denary code</li><li>8-bit binary</li><li>Exam note</li><li>01000001</li><li>Example only; no need to memorise.</li></ul></details>
+          </figure><figure class="v2-visual" data-material-kind="diagram">
+            <div class="v2-visual-heading"><span>02</span><div><p>Diagram · 2 of 2</p><h4>Unicode: more characters, more global use</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Unicode: more characters, more global use"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-007-unicode.jpg" alt="Unicode: more characters, more global use" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Unicode is designed to represent characters from many languages and symbol systems.</li><li>Unicode supports far more characters than ASCII, including Chinese characters and many symbols.</li><li>Trade-off</li><li>More possible characters may require more bits per character, depending on the encoding used.</li><li>Emoji are characters assigned Unicode code points and rendered by software using available fonts or graphics.</li></ul></details>
+          </figure></div>
+  </section>
+      <details class="v2-point-precision"><summary>Open precise syllabus wording</summary><p><strong>Show understanding of character data in internal binary form using ASCII, extended ASCII and Unicode.</strong></p><p>Students should understand ASCII, extended ASCII and Unicode but are not expected to memorise particular character codes.</p></details>
+    </section></div>
+    <details class="v2-core-facts"><summary>Open precise terminology and exam facts</summary><ul class="v2-facts"><li>Candidates must connect each representation to a practical use and explain why it suits that use, rather than only performing a conversion.</li><li>Students should understand ASCII, extended ASCII and Unicode but are not expected to memorise particular character codes.</li><li>BCD encodes each denary digit separately in four bits. For example, 59 becomes 0101 1001, not the pure-binary value 00111011.</li><li>Only 0000 to 1001 are valid BCD digit groups. BCD is used where decimal digits must be displayed or processed exactly, such as digital clocks, calculators and financial displays, although it usually uses more bits than pure binary.</li><li>Hexadecimal is used as a compact human-readable form of binary. One hex digit represents four bits, so hexadecimal is practical for memory addresses, machine-code/debug displays and colour values.</li><li>A digital clock is a practical BCD application because each displayed denary digit maps directly to one four-bit BCD group.</li><li>Representation overview: the required integer representations are binary, denary, hexadecimal, BCD, one&#39;s-complement and two&#39;s-complement. Conversion means preserving the integer value while changing its base or signed representation.</li><li>A character set defines a collection of characters and assigns a numeric character code to each one. The code is stored internally in binary; the bit pattern is meaningful only when software interprets it using the agreed character set.</li><li>Standard ASCII uses 7-bit codes, extended ASCII uses 8-bit codes, and Unicode provides code points for a much wider range of languages and symbols. Candidates are not expected to memorise particular character codes; a question must provide any code value needed for a conversion.</li></ul></details>
+    <article class="v2-example"><h3>Worked method</h3><ol><li>Choose a character set for worldwide text</li><li>A messaging system containing English, Chinese and Arabic text needs Unicode because its character repertoire is much wider than ASCII or extended ASCII.</li><li>The chosen Unicode encoding stores the character codes as binary data.</li></ol></article>
+    <aside class="v2-extension"><h3>Beyond syllabus / 延伸知识（不要求背诵）</h3><p>real file formats also store headers and metadata, so two files with the same visible content may still have different sizes.</p></aside>
         </section>
 
         <section class="v2-panel" id="practice">
@@ -86,6 +109,6 @@
         <nav class="v2-bottom-nav" aria-label="Previous and next lesson"><a href="../lesson-003/" >Previous lesson</a><a href="../lesson-005/" >Next lesson</a></nav>
       </div>
     </main>
-    <script src="../course-v2.js?v=1"></script>
+    <script src="../course-v2.js?v=2"></script>
   </body>
 </html>

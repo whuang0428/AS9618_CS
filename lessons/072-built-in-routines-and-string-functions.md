@@ -1,15 +1,15 @@
 # Lesson 072: Built-in routines and string functions
 
-**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029 Version 2<br>
+**Course:** Cambridge International AS Level Computer Science 9618, syllabus for examination in 2027-2029<br>
 **Paper:** Paper 2<br>
 **Syllabus:** Section 11: Programming<br>
 **Syllabus requirements:** S11.03<br>
-**Pacing:** Flexible. This lesson is deliberately over-complete; select a quick, full or deep route for the learners in front of you.
+**Pacing:** Flexible. Select a quick, full or deep route for the learners in front of you.
 
 ## Teaching-depth menu
 
 - **Quick route:** Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.
-- **Full route:** Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.
+- **Full route:** Teach every knowledge-point material set, the worked method and all lesson questions.
 - **Deep route:** Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.
 
 ## 1. Prerequisite knowledge and quick diagnostic
@@ -22,35 +22,63 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ## 2. Knowledge explanation
 
-### Learning objectives
+### 1. Built-in/library and string functions (S11.03)
 
-- Use built-in/library and string functions.
+**Concept relationships**
 
-### Concept checklist for teacher choice
+- **Built-in:** Available without user definition
+- **Library:** Reusable supplied routine
+- **String function:** Question provides unfamiliar syntax
+- **Return value:** Result used by the algorithm
+- **string:** Built-in/library and string functions.
+- **functions:** Built-in functions and library routines.
 
-- built-in / library
-- string
-- functions
+**Mechanism**
 
-### Detailed explanation
+1. **Translate the stated design** — Built-in/library and string functions.
+2. **Apply one complete operation** — Built-in functions and library routines.
+3. **Trace state and boundaries** — For built-in routines and string functions, identify the required concept before describing its mechanism or consequence.
+
+**Use the string-function definition supplied in the question:** String manipulation functions are supplied in the question; use the stated name, parameter order and position convention. Trace the supplied routine exactly, then use its returned string in an assignment, comparison, output or expression.
+
+#### Use the string-function definition supplied in the question
+
+![Use the string-function definition supplied in the question](../web/assets/diagrams/stage10-infographics/stage10-lesson-134-substring.jpg)
+
+<details><summary>Text transcript</summary>
+
+- String manipulation functions are supplied in the question; use the stated name, parameter order and position convention.
+- Trace the supplied routine exactly, then use its returned string in an assignment, comparison, output or expression.
+- Do not import Java's zero-based substring convention or memorise an unstated course-specific signature.
+
+</details>
+
+<details><summary>Precise syllabus wording</summary>
+
+Use built-in/library and string functions.
+
+Use built-in functions and library routines. Any function not given in the pseudocode guide will be provided; string manipulation functions will always be given in the question.
+
+</details>
+
+<details><summary>Open precise terminology and exam facts</summary>
 
 - Use built-in functions and library routines. Any function not given in the pseudocode guide will be provided; string manipulation functions will always be given in the question.
 - Read the supplied function name, parameter order, position convention and returned type before using it. LENGTH is a familiar built-in example; LEFT, RIGHT, MID or SUBSTRING examples in this course illustrate a mechanism only when their definition and indexing convention are stated.
 - A function call returns a value, so it can be assigned, compared, output or combined in an expression. Do not import Java's zero-based substring convention unless the question explicitly specifies it.
 - For built-in routines and string functions, identify the required concept before describing its mechanism or consequence.
 
-### Worked example
+</details>
 
-Apply a supplied string routine: A question supplies FUNCTION EXTRACT(Text : STRING, Start : INTEGER, Count : INTEGER) RETURNS STRING and states that positions start at 1. LENGTH("NETWORK") returns 7; EXTRACT("NETWORK", 4, 2) returns "WO". Code <- EXTRACT(Name, 1, 3) uses the supplied routine in an assignment without importing Java indexing.
+### Worked method
+
+1. Apply a supplied string routine
+2. A question supplies FUNCTION EXTRACT(Text
+3. INTEGER) RETURNS STRING and states that positions start at 1.
+4. LENGTH("NETWORK") returns 7; EXTRACT("NETWORK", 4, 2) returns "WO".
+5. Code <- EXTRACT(Name, 1, 3) uses the supplied routine in an assignment without importing Java indexing.
 
 Beyond syllabus / 延伸知识（不要求背诵）: consistent style, modularity and automated tests reduce maintenance errors in larger programs.
-
-### Retained visual explanation
-
-![Use the string-function definition supplied in the question](../web/assets/diagrams/stage10-infographics/stage10-lesson-134-substring.jpg)
-
-_Use the string-function definition supplied in the question. The image and mobile text alternative come from one maintained fact source._
-
 ## 3. Practice by question type
 
 ### Question 1 - foundation - apply - 2 marks

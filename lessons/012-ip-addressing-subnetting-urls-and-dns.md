@@ -1,15 +1,15 @@
 # Lesson 012: IP addressing, subnetting, URLs and DNS
 
-**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029 Version 2<br>
+**Course:** Cambridge International AS Level Computer Science 9618, syllabus for examination in 2027-2029<br>
 **Paper:** Paper 1<br>
 **Syllabus:** Section 2: Communication<br>
 **Syllabus requirements:** S2.15, S2.16<br>
-**Pacing:** Flexible. This lesson is deliberately over-complete; select a quick, full or deep route for the learners in front of you.
+**Pacing:** Flexible. Select a quick, full or deep route for the learners in front of you.
 
 ## Teaching-depth menu
 
 - **Quick route:** Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.
-- **Full route:** Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.
+- **Full route:** Teach every knowledge-point material set, the worked method and all lesson questions.
 - **Deep route:** Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.
 
 ## 1. Prerequisite knowledge and quick diagnostic
@@ -26,31 +26,91 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ## 2. Knowledge explanation
 
-### Learning objectives
+### 1. IP-address use, including IPv4/IPv6 format, subnetting, device association, public/private and static/dynamic addresses, and security implications (S2.15)
 
-- Explain IP-address use, including IPv4/IPv6 format, subnetting, device association, public/private and static/dynamic addresses, and security implications.
-- Explain how a URL locates a WWW resource and the role of DNS.
+**Concept relationships**
 
-### Concept checklist for teacher choice
+- **does not guarantee security:** Private addressing reduces direct public reachability but does…
+- **public address:** IP-address use, including IPv4/IPv6 format, subnetting, device association,…
+- **private address:** IPv4 is 32-bit and IPv6 is 128-bit.
+- **static addresses:** An address is associated with a network interface…
+- **dynamic addresses:** It does not resolve the path or store…
+- **128-bit:** Internet-supporting connections include the PSTN (Public Switched Telephone…
 
-- IPv6
-- 128-bit
-- subnetting
-- network interface
-- public address
-- private address
-- static addresses
-- dynamic addresses
-- does not guarantee security
-- Uniform Resource Locator
-- scheme
-- domain name
-- path
-- DNS resolves
-- IP address
-- WWW resource
+**Mechanism**
 
-### Detailed explanation
+1. **Identify what needs protection** — IP-address use, including IPv4/IPv6 format, subnetting, device association, public/private and static/dynamic addresses, and security implications.
+2. **Trace the attack or error route** — Private addressing reduces direct public reachability but does not guarantee security.
+3. **Match a safeguard and limitation** — IPv4 is 32-bit and IPv6 is 128-bit.
+
+**Concrete case: does not guarantee security:** IP-address use, including IPv4/IPv6 format, subnetting, device association, public/private and static/dynamic addresses, and security implications.
+
+
+
+<details><summary>Precise syllabus wording</summary>
+
+Explain IP-address use, including IPv4/IPv6 format, subnetting, device association, public/private and static/dynamic addresses, and security implications.
+
+IPv4 is 32-bit and IPv6 is 128-bit. An address is associated with a network interface on a network. Private addressing reduces direct public reachability but does not guarantee security.
+
+</details>
+
+### 2. How a URL locates a WWW resource and the role of DNS (S2.16)
+
+**Concept relationships**
+
+- **Uniform Resource Locator:** DNS resolves the domain to an IP address,…
+- **domain name:** DNS resolves the domain name to an IP…
+- **DNS resolves:** How a URL locates a WWW resource and…
+- **WWW resource:** A URL locates a WWW resource
+- **scheme:** A URL may contain scheme, domain, optional port,…
+- **path:** It does not resolve the path or store…
+
+**Mechanism**
+
+1. **Identify incoming data or signal** — DNS resolves the domain to an IP address, while the remaining URL components identify the required resource.
+2. **Follow the physical or logical path** — How a URL locates a WWW resource and the role of DNS.
+3. **Connect output to its use** — DNS resolves the domain name to an IP address
+
+**DNS: name to IP address:** 1. URL entered The user enters a URL containing a domain name. 2. DNS lookup The device asks a DNS server to resolve the domain name.
+
+#### DNS: name to IP address
+
+![DNS: name to IP address](../web/assets/diagrams/stage10-infographics/stage10-lesson-021-dns.jpg)
+
+<details><summary>Text transcript</summary>
+
+- 1. URL entered The user enters a URL containing a domain name.
+- 2. DNS lookup The device asks a DNS server to resolve the domain name.
+- 3. IP returned The DNS server returns the IP address for that domain name.
+- 4. Packets sent Packets can now be addressed and routed to the web server.
+- Common error
+- DNS failure may stop a domain name working even if the server is still reachable by IP address.
+
+</details>
+
+#### URL components
+
+![URL components](../web/assets/diagrams/stage10-infographics/stage10-lesson-021-urls.jpg)
+
+<details><summary>Text transcript</summary>
+
+- https://www.example.org/resources/page.html
+- Protocol / scheme https tells the browser which communication protocol to use.
+- Domain name www.example.org is resolved by DNS to an IP address.
+- Path /resources/page.html identifies the resource on the server.
+
+</details>
+
+<details><summary>Precise syllabus wording</summary>
+
+Explain how a URL locates a WWW resource and the role of DNS.
+
+A URL may contain scheme, domain, optional port, path and optional query/fragment. DNS resolves the domain name to an IP address; it does not resolve the path or store the resource.
+
+</details>
+
+<details><summary>Open precise terminology and exam facts</summary>
 
 - IPv4 is 32-bit and IPv6 is 128-bit. An address is associated with a network interface on a network. Private addressing reduces direct public reachability but does not guarantee security.
 - A URL may contain scheme, domain, optional port, path and optional query/fragment. DNS resolves the domain name to an IP address; it does not resolve the path or store the resource.
@@ -65,18 +125,17 @@ Ask the learner to give one accurate definition or method step before continuing
 - A modem converts signals into a form suitable for the access link and back again. Internet-supporting connections include the PSTN (Public Switched Telephone Network), a dedicated line and a cell phone network or cellular phone network. Each has different sharing, mobility and availability characteristics.
 - When describing an internet connection, follow the path from the end device through its NIC, LAN switch or access point, router and access link. Name each device only for the job it performs.
 
-### Worked example
+</details>
 
-Trace a school request / Two stations sense an idle cable / 6 Mbit/s video on 4 Mbit/s link / Separate infrastructure from service / Home-to-provider path / Locate one resource on a school web server: A laptop sends a frame through its wireless interface to an access point. The LAN switch forwards it toward the router. The router then forwards the packet from the school LAN toward another network. Both may begin before either signal reaches the other. They detect the collision, stop, wait different random periods and the station whose timer expires first retries. The stream consumes data faster than the link supplies it. A starting buffer only delays the shortage; sustained playback requires a lower bit rate or faster connection. Sending email uses the internet but not the WWW.…
+### Worked method
+
+1. Trace a school request
+2. Two stations sense an idle cable
+3. 6 Mbit/s video on 4 Mbit/s link
+4. Separate infrastructure from service
+5. Locate one resource on a school web server
 
 Beyond syllabus / 延伸知识（不要求背诵）: real networks organise communication in layers so that hardware, addressing and application protocols can change independently.
-
-### Retained visual explanation
-
-![5-minute mini assessment](../web/assets/diagrams/stage10-infographics/stage10-lesson-021-checkpoint.jpg)
-
-_5-minute mini assessment. The image and mobile text alternative come from one maintained fact source._
-
 ## 3. Practice by question type
 
 ### Question 1 - foundation - apply - 2 marks

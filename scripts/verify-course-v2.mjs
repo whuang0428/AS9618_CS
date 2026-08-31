@@ -128,7 +128,16 @@ for (const lesson of content.lessons) {
   for (const source of [markdown, html]) {
     assert(!/Targeted practice|Exam-style question|## Homework|45-minute|45 minutes|\| \d+ minutes/i.test(source), `L${lesson.id} contains an obsolete column or fixed-duration promise`);
   }
-  assert(/Quick route/.test(html) && /Full route/.test(html) && /Deep route/.test(html) && /deliberately over-complete/.test(html), `L${lesson.id} does not expose flexible teaching depth`);
+  assert(/Quick route/.test(html) && /Full route/.test(html) && /Deep route/.test(html), `L${lesson.id} does not expose flexible teaching depth`);
+  assert(/class="v2-jump-nav"/.test(html) && !/class="v2-toc"/.test(html), `L${lesson.id} must use the full-width jump navigation without a sidebar`);
+  assert(!/Version 2|Detailed explanation|Question triage|Supporting diagram library|approved material|pending material|pilot-complete/i.test(`${markdown}\n${html}`), `L${lesson.id} exposes retired editorial or rollout wording`);
+  if (lesson.focus === "integrated-review") {
+    assert(lesson.materialStatus === "review-complete" && /data-material-status="review-complete"/.test(html), `L${lesson.id} must be a complete integrated-review lesson`);
+    assert(Array.isArray(lesson.reviewMaterials) && lesson.reviewMaterials.length > 0 && /class="v2-review-grid"/.test(html), `L${lesson.id} is missing its connected review materials`);
+  } else {
+    assert(lesson.materialStatus === "complete" && /data-material-status="complete"/.test(html), `L${lesson.id} must have complete point-level materials`);
+    assert(Array.isArray(lesson.knowledgePoints) && lesson.knowledgePoints.length === lesson.syllabusIds.length, `L${lesson.id} has incomplete knowledge-point materials`);
+  }
   assert((html.match(/class="v2-question"/g) ?? []).length === expectedCount, `L${lesson.id} rendered question count mismatch`);
   if (lesson.visual) assert(fs.existsSync(path.join(root, "web", lesson.visual.path)), `L${lesson.id} visual file is missing`);
 }
@@ -174,4 +183,9 @@ console.log(JSON.stringify({
   assessmentSets: assessments.setCount,
   pastPaperMarks: frequency.totals,
   flexibleDepth: true,
+  materialRollout: {
+    completedTeachingLessons: content.lessons.filter((lesson) => lesson.materialStatus === "complete").length,
+    completedReviewLessons: content.lessons.filter((lesson) => lesson.materialStatus === "review-complete").length,
+    pendingLessons: content.lessons.filter((lesson) => lesson.materialStatus === "pending").length,
+  },
 }, null, 2));

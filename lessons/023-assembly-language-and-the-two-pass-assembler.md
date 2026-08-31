@@ -1,15 +1,15 @@
 # Lesson 023: Assembly language and the two-pass assembler
 
-**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029 Version 2<br>
+**Course:** Cambridge International AS Level Computer Science 9618, syllabus for examination in 2027-2029<br>
 **Paper:** Paper 1<br>
 **Syllabus:** Section 4: Processor fundamentals<br>
 **Syllabus requirements:** S4.09, S4.10<br>
-**Pacing:** Flexible. This lesson is deliberately over-complete; select a quick, full or deep route for the learners in front of you.
+**Pacing:** Flexible. Select a quick, full or deep route for the learners in front of you.
 
 ## Teaching-depth menu
 
 - **Quick route:** Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.
-- **Full route:** Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.
+- **Full route:** Teach every knowledge-point material set, the worked method and all lesson questions.
 - **Deep route:** Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.
 
 ## 1. Prerequisite knowledge and quick diagnostic
@@ -28,22 +28,79 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ## 2. Knowledge explanation
 
-### Learning objectives
+### 1. Assembly language and machine code (S4.09)
 
-- Distinguish assembly language and machine code.
-- Describe and apply the stages of a two-pass assembler.
+**Concept relationships**
 
-### Concept checklist for teacher choice
+- **assembly:** Assembly language and machine code.
+- **language:** Show the relationship between assembly language and machine…
+- **machine:** Assembly language is a low-level, processor-specific symbolic representation…
+- **code:** An assembler translates assembly source into the corresponding…
+- **distinguish:** Pass 2 translates mnemonics/operands using the completed table…
 
-- assembly
-- language
-- machine
-- code
-- stages
-- two-pass
-- assembler
+**Mechanism**
 
-### Detailed explanation
+1. **Name both alternatives precisely** — Assembly language and machine code.
+2. **Connect structure to consequence** — Show the relationship between assembly language and machine code
+3. **Justify against the scenario** — Assembly language is a low-level, processor-specific symbolic representation of machine-code instructions.
+
+**Machine code is binary instructions for the CPU:** Lowest-level executable form Machine code consists of binary instructions that can be executed directly by the processor.
+
+#### Machine code is binary instructions for the CPU
+
+![Machine code is binary instructions for the CPU](../web/assets/diagrams/stage10-infographics/stage10-lesson-046-machine-code.jpg)
+
+<details><summary>Text transcript</summary>
+
+- Lowest-level executable form
+- Machine code consists of binary instructions that can be executed directly by the processor.
+- Not friendly for humans
+- Binary instructions are difficult for people to read and write accurately, but they are the form the processor executes directly.
+- Stored in memory
+- Machine-code instructions are stored in memory and fetched by the CPU during the fetch-decode-execute cycle.
+- CPU-specific meaning
+- The same bit pattern can have different meanings on different architectures because opcodes are defined by the instruction set.
+
+</details>
+
+<details><summary>Precise syllabus wording</summary>
+
+Distinguish assembly language and machine code.
+
+Show the relationship between assembly language and machine code: assembly is a processor-specific symbolic low-level form translated by an assembler into binary instructions defined by the target instruction set.
+
+</details>
+
+### 2. And apply the stages of a two-pass assembler (S4.10)
+
+**Concept relationships**
+
+- **Pass 1:** Assign addresses and record labels
+- **Symbol table:** Maps labels to addresses
+- **Pass 2:** Translate using resolved symbols
+- **Error:** Report an undefined label
+- **stages:** And apply the stages of a two-pass assembler.
+- **two-pass:** The different stages of a two-pass assembler and…
+
+**Mechanism**
+
+1. **Name the exact concept** — And apply the stages of a two-pass assembler.
+2. **Explain how its parts connect** — The different stages of a two-pass assembler and apply the process to a simple program
+3. **Use it in a concrete context** — The two-pass assembler stages are Pass 1 and Pass 2.
+
+**Concrete case: Pass 1:** And apply the stages of a two-pass assembler.
+
+
+
+<details><summary>Precise syllabus wording</summary>
+
+Describe and apply the stages of a two-pass assembler.
+
+Describe the different stages of a two-pass assembler and apply the process to a simple program: pass 1 assigns addresses/builds the symbol table and pass 2 translates with resolved symbols.
+
+</details>
+
+<details><summary>Open precise terminology and exam facts</summary>
 
 - Show the relationship between assembly language and machine code: assembly is a processor-specific symbolic low-level form translated by an assembler into binary instructions defined by the target instruction set.
 - Describe the different stages of a two-pass assembler and apply the process to a simple program: pass 1 assigns addresses/builds the symbol table and pass 2 translates with resolved symbols.
@@ -58,18 +115,17 @@ Ask the learner to give one accurate definition or method step before continuing
 - Control, comparison and I/O: JMP <address is unconditional. CMP <address or CMP n compares ACC directly or with an immediate value. CMI <address compares using indirect addressing. JPE jumps after a True comparison and JPN after a False comparison. IN inputs one ASCII character code to ACC; OUT outputs the character whose ASCII code is in ACC; END returns control to the operating system.
 - ACC is the accumulator and IX is the index register. An address can be absolute or symbolic. Prefix gives immediate denary, B immediate binary and & immediate hexadecimal data. These prefixes and operand forms are part of the instruction semantics, not optional decoration.
 
-### Worked example
+</details>
 
-Translate one symbolic instruction: For a target instruction set, ADD 3 is assembly source: ADD is the mnemonic and 3 is an immediate operand. The assembler selects that processor's binary ADD opcode and encodes the operand. A different processor type may use a different opcode or instruction format, so the same machine-code bit pattern is not portable by assumption.
+### Worked method
+
+1. Translate one symbolic instruction
+2. For a target instruction set, ADD 3 is assembly source
+3. ADD is the mnemonic and 3 is an immediate operand.
+4. The assembler selects that processor's binary ADD opcode and encodes the operand.
+5. A different processor type may use a different opcode or instruction format, so the same machine-code bit pattern is not portable by assumption.
 
 Beyond syllabus / 延伸知识（不要求背诵）: modern processors add pipelining and several cache levels, but exam answers should begin with the syllabus processor model.
-
-### Retained visual explanation
-
-![What assembly language is](../web/assets/diagrams/stage10-infographics/stage10-lesson-047-assembly.jpg)
-
-_What assembly language is. The image and mobile text alternative come from one maintained fact source._
-
 ## 3. Practice by question type
 
 ### Question 1 - foundation - explain - 6 marks

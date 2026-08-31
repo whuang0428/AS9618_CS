@@ -1,15 +1,15 @@
 # Lesson 006: Sound representation and file compression
 
-**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029 Version 2<br>
+**Course:** Cambridge International AS Level Computer Science 9618, syllabus for examination in 2027-2029<br>
 **Paper:** Paper 1<br>
 **Syllabus:** Section 1: Information representation<br>
 **Syllabus requirements:** S1.10, S1.11<br>
-**Pacing:** Flexible. This lesson is deliberately over-complete; select a quick, full or deep route for the learners in front of you.
+**Pacing:** Flexible. Select a quick, full or deep route for the learners in front of you.
 
 ## Teaching-depth menu
 
 - **Quick route:** Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.
-- **Full route:** Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.
+- **Full route:** Teach every knowledge-point material set, the worked method and all lesson questions.
 - **Deep route:** Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.
 
 ## 1. Prerequisite knowledge and quick diagnostic
@@ -30,29 +30,160 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ## 2. Knowledge explanation
 
-### Learning objectives
+### 1. Sampling measures a wave at discrete moments (S1.10)
 
-- Show understanding of how sound is represented and encoded; show understanding of the impact of changing the sampling rate and resolution.
-- Show understanding of the need for and examples of file compression; show understanding of lossy and lossless compression and justify a method for a given application; show understanding of how a text, bitmap, vector graphic and sound file can be compressed.
+**Concept relationships**
 
-### Concept checklist for teacher choice
+- **Analogue:** continuous wave
+- **Sample:** one measurement
+- **Rate:** samples per second
+- **Resolution:** bits per sample
+- **Accuracy:** closer approximation
+- **File size:** more stored bits
 
-- sound
-- digital representation
-- analogue-to-digital sampling
-- sampling rate
-- sampling resolution
-- file size
-- accuracy
-- compression
-- lossy
-- lossless
-- text
-- bitmap
-- vector
-- RLE / run-length encoding
+**Mechanism**
 
-### Detailed explanation
+1. **Measure the wave repeatedly** — Sampling rate controls how often amplitude is measured.
+2. **Encode each measurement** — Sampling resolution controls the available amplitude levels.
+3. **Balance accuracy and size** — Higher rate or resolution improves approximation but stores more data.
+
+**Graph paper for sound:** Sampling rate adds more columns in time; sampling resolution adds more rows for amplitude. A finer grid follows the wave more closely.
+
+#### Sampling rate: samples per second
+
+![Sampling rate: samples per second](../web/assets/diagrams/stage10-infographics/stage10-lesson-011-rate.jpg)
+
+<details><summary>Text transcript</summary>
+
+- Definition
+- Sampling rate is the number of samples taken each second.
+- It is commonly measured in hertz, Hz.
+- A higher sampling rate records more measurements each second.
+- This can improve accuracy, but increases file size.
+
+</details>
+
+#### Sampling resolution: bits per sample
+
+![Sampling resolution: bits per sample](../web/assets/diagrams/stage10-infographics/stage10-lesson-011-resolution.jpg)
+
+<details><summary>Text transcript</summary>
+
+- Sampling resolution is the official syllabus term; sample resolution is a common synonym.
+- An 8-bit sampling resolution provides 2^8 = 256 possible amplitude levels.
+- A 16-bit sampling resolution provides 2^16 = 65,536 possible amplitude levels.
+- More bits per sample can represent amplitude more precisely, but use more storage.
+
+</details>
+
+#### Sampling turns an analogue wave into digital values
+
+![Sampling turns an analogue wave into digital values](../web/assets/diagrams/stage10-infographics/stage10-lesson-011-sampling.jpg)
+
+<details><summary>Text transcript</summary>
+
+- Analogue sound
+- A continuous wave. The pressure changes smoothly over time.
+- A measurement of the wave amplitude at one moment in time.
+- Digital sound
+- A sequence of sample values stored as binary numbers.
+
+</details>
+
+<details><summary>Precise syllabus wording</summary>
+
+Show understanding of how sound is represented and encoded; show understanding of the impact of changing the sampling rate and resolution.
+
+Use the terms sampling, sampling rate and sampling resolution. Explain the impact of changing sampling rate and sampling resolution on file size and accuracy; sound-file-size calculation is not stated as a compulsory requirement.
+
+</details>
+
+### 2. Compression removes or rewrites repeated information (S1.11)
+
+**Concept relationships**
+
+- **Need:** less storage or transfer
+- **Lossless:** exact reconstruction
+- **Lossy:** discarded detail
+- **RLE:** count repeated runs
+- **Text:** must preserve symbols
+- **Media:** quality trade-off
+
+**Mechanism**
+
+1. **Find repeated or removable data** — Different file types contain different kinds of redundancy.
+2. **Decide whether exactness matters** — Use lossless when every original bit must be reconstructed.
+3. **Connect method to application** — State the size benefit and the acceptable quality consequence.
+
+**Packing versus trimming:** RLE packs AAAABB as 4A2B without losing data. Lossy media compression trims detail that the chosen application can tolerate.
+
+#### Lossless compression: exact reconstruction
+
+![Lossless compression: exact reconstruction](../web/assets/diagrams/stage10-infographics/stage10-lesson-013-lossless.jpg)
+
+<details><summary>Text transcript</summary>
+
+- Definition
+- Lossless compression reduces file size while allowing the original data to be restored exactly.
+- Suitable uses
+- Text files, program files, spreadsheets, databases, medical records and backups.
+- If one changed bit could change meaning or break the file, lossless is the safer answer.
+
+</details>
+
+#### Lossy compression: smaller, but not exact
+
+![Lossy compression: smaller, but not exact](../web/assets/diagrams/stage10-infographics/stage10-lesson-013-lossy.jpg)
+
+<details><summary>Text transcript</summary>
+
+- Definition
+- Lossy compression reduces file size by permanently removing some data.
+- Suitable uses
+- Images, video and sound where small quality loss may be acceptable.
+- Lossy is not suitable when exact reconstruction is required.
+
+</details>
+
+#### Why compress data?
+
+![Why compress data?](../web/assets/diagrams/stage10-infographics/stage10-lesson-013-purpose.jpg)
+
+<details><summary>Text transcript</summary>
+
+- Less storage
+- Smaller files use less disk or memory space.
+- Faster transfer
+- Smaller files need less bandwidth and may download or upload faster.
+- Trade-off
+- Compression and decompression may require processing time.
+
+</details>
+
+#### Run-length encoding
+
+![Run-length encoding](../web/assets/diagrams/stage10-infographics/stage10-lesson-014-rle.jpg)
+
+<details><summary>Text transcript</summary>
+
+- Encoding rule
+- Replace each consecutive run with count + value.
+- AAAAAABBBBCCCCCCCC → 6A4B8C
+- Decoding rule
+- Expand each count and value back into repeated data.
+- 3A2B1C → AAABBC
+
+</details>
+
+<details><summary>Precise syllabus wording</summary>
+
+Show understanding of the need for and examples of file compression; show understanding of lossy and lossless compression and justify a method for a given application; show understanding of how a text, bitmap, vector graphic and sound file can be compressed.
+
+Run-length encoding (RLE) is the named example in the adjacent Notes and guidance.
+
+</details>
+
+<details><summary>Open precise terminology and exam facts</summary>
 
 - Use the terms sampling, sampling rate and sampling resolution. Explain the impact of changing sampling rate and sampling resolution on file size and accuracy; sound-file-size calculation is not stated as a compulsory requirement.
 - Run-length encoding (RLE) is the named example in the adjacent Notes and guidance.
@@ -64,18 +195,14 @@ Ask the learner to give one accurate definition or method step before continuing
 - A vector file stores drawing objects rather than pixels. It can be compressed losslessly by storing repeated shapes or properties once and referring to them, and by removing redundant object descriptions. Sound can use lossless pattern coding when exact samples are required, or lossy perceptual coding that removes less-audible sound information; reducing sample rate or sampling resolution also reduces data but changes the recording.
 - Method choice depends on file type, repetition, required fidelity and use. A valid justification must connect the chosen method to what may or may not be discarded; naming 'lossy' or 'lossless' alone is not enough.
 
-### Worked example
+</details>
 
-Choose methods for four files: Compress repeated spaces in a text log with RLE or a dictionary without changing the characters; compress a flat-colour bitmap logo with pixel-value RLE; store one repeated vector shape once and reference it; use lossless sound compression for an evidential recording, but perceptual lossy coding may suit streamed music when smaller size is worth a controlled quality loss.
+### Worked method
+
+1. Choose methods for four files
+2. Compress repeated spaces in a text log with RLE or a dictionary without changing the characters; compress a flat-colour bitmap logo with pixel-value RLE; store one repeated vector shape once…
 
 Beyond syllabus / 延伸知识（不要求背诵）: real file formats also store headers and metadata, so two files with the same visible content may still have different sizes.
-
-### Retained visual explanation
-
-![Basic mono sound file size formula](../web/assets/diagrams/stage10-infographics/stage10-lesson-011-formula.jpg)
-
-_Basic mono sound file size formula. The image and mobile text alternative come from one maintained fact source._
-
 ## 3. Practice by question type
 
 ### Question 1 - foundation - describe - 6 marks

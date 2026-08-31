@@ -1,15 +1,15 @@
 # Lesson 053: Constructing and interpreting logic statements
 
-**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029 Version 2<br>
+**Course:** Cambridge International AS Level Computer Science 9618, syllabus for examination in 2027-2029<br>
 **Paper:** Paper 2<br>
 **Syllabus:** Section 9: Algorithm design and problem-solving<br>
 **Syllabus requirements:** S9.09<br>
-**Pacing:** Flexible. This lesson is deliberately over-complete; select a quick, full or deep route for the learners in front of you.
+**Pacing:** Flexible. Select a quick, full or deep route for the learners in front of you.
 
 ## Teaching-depth menu
 
 - **Quick route:** Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.
-- **Full route:** Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.
+- **Full route:** Teach every knowledge-point material set, the worked method and all lesson questions.
 - **Deep route:** Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.
 
 ## 1. Prerequisite knowledge and quick diagnostic
@@ -26,18 +26,46 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ## 2. Knowledge explanation
 
-### Learning objectives
+### 1. Logic statements (S9.09)
 
-- Construct and interpret logic statements.
+**Concept relationships**
 
-### Concept checklist for teacher choice
+- **logic:** Stepwise refinement until steps are programmable, and construct…
+- **statements:** Logic statements define parts of an algorithm solution,…
+- **condition:** A logic statement defines a decision, repetition condition…
+- **algorithm:** Algorithm design review
+- **construct:** Both construct and interpret them.
 
-- logic
-- statements
-- condition
-- algorithm
+**Mechanism**
 
-### Detailed explanation
+1. **Translate the stated design** — Stepwise refinement until steps are programmable, and construct and interpret logic statements that define decisions, loop conditions or…
+2. **Apply one complete operation** — A logic statement defines a decision, repetition condition or Boolean assignment in an algorithm solution.
+3. **Trace state and boundaries** — Logic statements define parts of an algorithm solution, including decision conditions, loop conditions and Boolean assignments
+
+**A diamond becomes IF...THEN...ELSE:** A flowchart decision diamond becomes an IF condition in pseudocode. The labelled Yes and No branches become THEN and ELSE branches.
+
+#### A diamond becomes IF...THEN...ELSE
+
+![A diamond becomes IF...THEN...ELSE](../web/assets/diagrams/stage10-infographics/stage10-lesson-102-equivalence.jpg)
+
+<details><summary>Text transcript</summary>
+
+- A flowchart decision diamond becomes an IF condition in pseudocode.
+- The labelled Yes and No branches become THEN and ELSE branches.
+- Close the selection with ENDIF after the two branches rejoin.
+- Input Age before testing whether it is between 11 and 18 inclusive.
+
+</details>
+
+<details><summary>Precise syllabus wording</summary>
+
+Construct and interpret logic statements.
+
+Logic statements define parts of an algorithm solution, including decision conditions, loop conditions and Boolean assignments; students must both construct and interpret them.
+
+</details>
+
+<details><summary>Open precise terminology and exam facts</summary>
 
 - Logic statements define parts of an algorithm solution, including decision conditions, loop conditions and Boolean assignments; students must both construct and interpret them.
 - A logic statement defines a decision, repetition condition or Boolean assignment in an algorithm solution. It combines comparisons such as =, <, <=, , = or < with AND, OR or NOT when more than one condition is needed.
@@ -47,18 +75,14 @@ Ask the learner to give one accurate definition or method step before continuing
 - Solution review: design with input-process-output, use sequence, selection and iteration, document the same algorithm in structured English, a flowchart or pseudocode, and convert between the specified representations without changing its control flow.
 - Development review: use stepwise refinement until steps are programmable, and construct and interpret logic statements that define decisions, loop conditions or Boolean values. Core answers must not replace these requirements with tracing, Java syntax or vague planning advice.
 
-### Worked example
+</details>
 
-Design a result-processing solution: Keep only student ID and required marks, decompose the task into InputResults, ValidateResult, CalculateMean and OutputReport, record meaningful identifiers and IPO, refine CalculateMean into defined steps, use a range logic statement, and represent the final control flow in Cambridge pseudocode or a matching flowchart.
+### Worked method
+
+1. Design a result-processing solution
+2. Keep only student ID and required marks, decompose the task into InputResults, ValidateResult, CalculateMean and OutputReport, record meaningful identifiers and IPO, refine CalculateMean into defined steps, use a range logic…
 
 Beyond syllabus / 延伸知识（不要求背诵）: the same algorithm can be expressed in many programming languages; its logic should remain independent of syntax.
-
-### Retained visual explanation
-
-![Match the scenario to the correct algorithm pattern](../web/assets/diagrams/stage10-infographics/stage10-lesson-113-patterns.jpg)
-
-_Match the scenario to the correct algorithm pattern. The image and mobile text alternative come from one maintained fact source._
-
 ## 3. Practice by question type
 
 ### Question 1 - foundation - write - 5 marks

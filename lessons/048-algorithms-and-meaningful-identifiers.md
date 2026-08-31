@@ -1,15 +1,15 @@
 # Lesson 048: Algorithms and meaningful identifiers
 
-**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029 Version 2<br>
+**Course:** Cambridge International AS Level Computer Science 9618, syllabus for examination in 2027-2029<br>
 **Paper:** Paper 2<br>
 **Syllabus:** Section 9: Algorithm design and problem-solving<br>
 **Syllabus requirements:** S9.03, S9.04<br>
-**Pacing:** Flexible. This lesson is deliberately over-complete; select a quick, full or deep route for the learners in front of you.
+**Pacing:** Flexible. Select a quick, full or deep route for the learners in front of you.
 
 ## Teaching-depth menu
 
 - **Quick route:** Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.
-- **Full route:** Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.
+- **Full route:** Teach every knowledge-point material set, the worked method and all lesson questions.
 - **Deep route:** Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.
 
 ## 1. Prerequisite knowledge and quick diagnostic
@@ -22,23 +22,89 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ## 2. Knowledge explanation
 
-### Learning objectives
+### 1. What an algorithm is (S9.03)
 
-- Understand what an algorithm is.
-- Choose meaningful identifier names and construct an identifier table.
+**Concept relationships**
 
-### Concept checklist for teacher choice
+- **defined steps:** Define an algorithm as a solution expressed as…
+- **algorithm:** An algorithm is a solution to a problem…
+- **solution:** Its entries must match the pseudocode solution.
+- **sequence:** Design with input-process-output, use sequence, selection and iteration,…
+- **what:** What an algorithm is.
 
-- algorithm
-- solution
-- sequence
-- defined steps
-- meaningful
-- identifier
-- names
-- table
+**Mechanism**
 
-### Detailed explanation
+1. **Translate the stated design** — Define an algorithm as a solution expressed as a sequence of defined steps
+2. **Apply one complete operation** — An algorithm is a solution to a problem expressed as a sequence of defined steps.
+3. **Trace state and boundaries** — Design with input-process-output, use sequence, selection and iteration, document the same algorithm in structured English, a flowchart or…
+
+**An algorithm is a solution expressed as defined…:** An algorithm is a solution to a problem expressed as a sequence of defined steps. Each step must be unambiguous, ordered where order matters and capable of being carried out.
+
+#### An algorithm is a solution expressed as defined steps
+
+![An algorithm is a solution expressed as defined steps](../web/assets/diagrams/stage10-infographics/stage10-lesson-099-concept.jpg)
+
+<details><summary>Text transcript</summary>
+
+- An algorithm is a solution to a problem expressed as a sequence of defined steps.
+- Each step must be unambiguous, ordered where order matters and capable of being carried out.
+- Identify what data is supplied, state the required transformation and state the exact result.
+- Record limits, quantity requirements and supported assumptions.
+- Check that every requirement maps to an input, process, output, constraint or assumption.
+
+</details>
+
+<details><summary>Precise syllabus wording</summary>
+
+Understand what an algorithm is.
+
+An algorithm is a solution to a problem expressed as a sequence of defined steps; the definition requires both the problem-solving purpose and the defined sequence.
+
+</details>
+
+### 2. Choose meaningful identifier names and construct an identifier table (S9.04)
+
+**Concept relationships**
+
+- **meaningful:** Choose suitable meaningful identifier names and construct an…
+- **identifier:** Choose meaningful identifier names and construct an identifier…
+- **names:** Choose meaningful identifier names that describe each value's…
+- **table:** And choose meaningful identifiers recorded in an identifier…
+- **choose:** An identifier table records at least the identifier…
+
+**Mechanism**
+
+1. **Translate the stated design** — Choose suitable meaningful identifier names and construct an identifier table that records each identifier's name, data type and…
+2. **Apply one complete operation** — Choose meaningful identifier names and construct an identifier table.
+3. **Trace state and boundaries** — And choose meaningful identifiers recorded in an identifier table.
+
+**Readable notation earns marks more easily:** Notation rules One entry Flowcharts should have a clear start and a clear direction of travel.
+
+#### Readable notation earns marks more easily
+
+![Readable notation earns marks more easily](../web/assets/diagrams/stage10-infographics/stage10-lesson-102-notation.jpg)
+
+<details><summary>Text transcript</summary>
+
+- Notation rules
+- One entry Flowcharts should have a clear start and a clear direction of travel.
+- Decision labels Decision outputs should be labelled, usually Yes/No or True/False.
+- Indentation Indented pseudocode shows which statements belong inside a branch or loop.
+- Matching endings Use ENDIF, NEXT, ENDWHILE or equivalent to close a structure clearly.
+- Meaningful names Use Mark, Total, Count, Found instead of X1 unless the question gives X1.
+- No mixed syntax Do not mix Java braces with Cambridge pseudocode keywords in the same answer.
+
+</details>
+
+<details><summary>Precise syllabus wording</summary>
+
+Choose meaningful identifier names and construct an identifier table.
+
+Students must choose suitable meaningful identifier names and construct an identifier table that records each identifier's name, data type and purpose for the designed algorithm.
+
+</details>
+
+<details><summary>Open precise terminology and exam facts</summary>
 
 - An algorithm is a solution to a problem expressed as a sequence of defined steps; the definition requires both the problem-solving purpose and the defined sequence.
 - Students must choose suitable meaningful identifier names and construct an identifier table that records each identifier's name, data type and purpose for the designed algorithm.
@@ -49,18 +115,17 @@ Ask the learner to give one accurate definition or method step before continuing
 - Solution review: design with input-process-output, use sequence, selection and iteration, document the same algorithm in structured English, a flowchart or pseudocode, and convert between the specified representations without changing its control flow.
 - Development review: use stepwise refinement until steps are programmable, and construct and interpret logic statements that define decisions, loop conditions or Boolean values. Core answers must not replace these requirements with tracing, Java syntax or vague planning advice.
 
-### Worked example
+</details>
 
-Define and plan a ticket algorithm: Problem: input TicketCount and TicketPrice, then output TotalCost. The algorithm is the defined sequence INPUT TicketCount; INPUT TicketPrice; TotalCost <- TicketCount TicketPrice; OUTPUT TotalCost. The identifier table records TicketCount: INTEGER, number requested; TicketPrice: REAL, price of one ticket; TotalCost: REAL, calculated cost.
+### Worked method
+
+1. Define and plan a ticket algorithm
+2. input TicketCount and TicketPrice, then output TotalCost.
+3. The algorithm is the defined sequence INPUT TicketCount; INPUT TicketPrice; TotalCost <- TicketCount TicketPrice; OUTPUT TotalCost.
+4. The identifier table records TicketCount
+5. INTEGER, number requested; TicketPrice
 
 Beyond syllabus / 延伸知识（不要求背诵）: the same algorithm can be expressed in many programming languages; its logic should remain independent of syntax.
-
-### Retained visual explanation
-
-![An algorithm is a solution expressed as defined steps](../web/assets/diagrams/stage10-infographics/stage10-lesson-099-concept.jpg)
-
-_An algorithm is a solution expressed as defined steps. The image and mobile text alternative come from one maintained fact source._
-
 ## 3. Practice by question type
 
 ### Question 1 - foundation - complete - 6 marks

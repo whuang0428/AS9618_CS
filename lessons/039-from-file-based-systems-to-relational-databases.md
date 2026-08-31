@@ -1,15 +1,15 @@
 # Lesson 039: From file-based systems to relational databases
 
-**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029 Version 2<br>
+**Course:** Cambridge International AS Level Computer Science 9618, syllabus for examination in 2027-2029<br>
 **Paper:** Paper 1<br>
 **Syllabus:** Section 8: Databases<br>
 **Syllabus requirements:** S8.01, S8.02<br>
-**Pacing:** Flexible. This lesson is deliberately over-complete; select a quick, full or deep route for the learners in front of you.
+**Pacing:** Flexible. Select a quick, full or deep route for the learners in front of you.
 
 ## Teaching-depth menu
 
 - **Quick route:** Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.
-- **Full route:** Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.
+- **Full route:** Teach every knowledge-point material set, the worked method and all lesson questions.
 - **Deep route:** Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.
 
 ## 1. Prerequisite knowledge and quick diagnostic
@@ -20,48 +20,104 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ### Optional prerequisite refresher
 
-- Version 2 requires both sides of the comparison: limitations of file-based storage/retrieval and relational-database features that address those limitations. Benefits must be linked to a mechanism rather than asserted generically.
+- The syllabus requires both sides of the comparison: limitations of file-based storage/retrieval and relational-database features that address those limitations. Benefits must be linked to a mechanism rather than asserted generically.
 - Explain limitations of file-based systems and how relational databases address them.
 
 
 ## 2. Knowledge explanation
 
-### Learning objectives
+### 1. Limitations of file-based systems and how relational databases address them (S8.01)
 
-- Explain limitations of file-based systems and how relational databases address them.
-- Understand entity/table, record/tuple, field/attribute, primary/candidate/secondary/foreign key, relationships, referential integrity and indexing.
+**Concept relationships**
 
-### Concept checklist for teacher choice
+- **file-based:** Relational databases reduce selected file-based limitations by storing…
+- **linked tables:** A relational database addresses these limitations by separating…
+- **limitations:** Limitations of file-based systems and how relational databases…
+- **relational:** Limitations of file-based storage/retrieval and relational-database features that…
+- **databases:** A relational database stores data in tables made…
+- **redundancy:** The same fact may be repeated in several…
 
-- limitations
-- file-based
-- relational
-- databases
-- redundancy
-- inconsistency
-- linked tables
-- entity
-- table
-- record
-- tuple
-- field
-- attribute
-- primary key
-- candidate key
-- secondary key
-- foreign key
-- relationships
-- one-to-one
-- one-to-many
-- many-to-many
-- referential
-- integrity
-- indexing
+**Mechanism**
 
-### Detailed explanation
+1. **Identify structure and target data** — Relational databases reduce selected file-based limitations by storing shared facts once in linked tables with centrally enforced rules.
+2. **Apply the database rule** — Limitations of file-based systems and how relational databases address them.
+3. **Check keys rows and conditions** — Limitations of file-based storage/retrieval and relational-database features that address those limitations.
 
-- Version 2 requires both sides of the comparison: limitations of file-based storage/retrieval and relational-database features that address those limitations. Benefits must be linked to a mechanism rather than asserted generically.
-- Version 2 explicitly names entity, table, record, field, tuple, attribute, primary key, candidate key, secondary key, foreign key, one-to-one, one-to-many, many-to-many, referential integrity and indexing. Secondary key is retained as a distinct retrieval term, not an alias for an alternate candidate key.
+**Flat-file vs relational comparison:** Flat-file Relational
+
+#### Flat-file vs relational comparison
+
+![Flat-file vs relational comparison](../web/assets/diagrams/stage10-infographics/stage10-lesson-080-compare.jpg)
+
+<details><summary>Text transcript</summary>
+
+- Flat-file
+- Relational
+- Structure
+- Single table
+- Multiple linked tables
+- Redundancy
+- More likely because related details are repeated
+- Reduced because shared data can be stored once
+- Consistency
+- Harder to maintain if repeated values are updated differently
+- Improved because updates can be made in one relevant table
+- Complexity
+
+</details>
+
+<details><summary>Precise syllabus wording</summary>
+
+Explain limitations of file-based systems and how relational databases address them.
+
+The syllabus requires both sides of the comparison: limitations of file-based storage/retrieval and relational-database features that address those limitations. Benefits must be linked to a mechanism rather than asserted generically.
+
+</details>
+
+### 2. Entity/table, record/tuple, field/attribute, primary/candidate/secondary/foreign key, relationships, referential integrity and indexing (S8.02)
+
+**Concept relationships**
+
+- **primary key:** Entity, table, record, field, tuple, attribute, primary key,…
+- **candidate key:** A foreign key is an attribute in one…
+- **secondary key:** A secondary key is a field used as…
+- **foreign key:** Entity/table, record/tuple, field/attribute, primary/candidate/secondary/foreign key, relationships, referential integrity…
+- **entity:** A many-to-many relationship is normally implemented through a…
+- **table:** Referential integrity means a foreign key value must…
+
+**Mechanism**
+
+1. **Identify incoming data or signal** — Entity/table, record/tuple, field/attribute, primary/candidate/secondary/foreign key, relationships, referential integrity and indexing.
+2. **Follow the physical or logical path** — Entity, table, record, field, tuple, attribute, primary key, candidate key, secondary key, foreign key, one-to-one, one-to-many, many-to-many, referential…
+3. **Connect output to its use** — A foreign key is an attribute in one table that refers to a primary/candidate key in another table.
+
+**Referential integrity:** Referential integrity means a foreign key value must match an existing primary key value in the referenced table. Valid Loan.StudentID = S0234 is valid if Student.StudentID = S0234 exists.
+
+#### Referential integrity
+
+![Referential integrity](../web/assets/diagrams/stage10-infographics/stage10-lesson-082-referential.jpg)
+
+<details><summary>Text transcript</summary>
+
+- Referential integrity means a foreign key value must match an existing primary key value in the referenced table.
+- Valid Loan.StudentID = S0234 is valid if Student.StudentID = S0234 exists.
+- Invalid Loan.StudentID = S9999 is invalid if no student with that ID exists.
+- Why It prevents orphan records, such as a loan assigned to a non-existent student.
+
+</details>
+
+<details><summary>Precise syllabus wording</summary>
+
+Understand entity/table, record/tuple, field/attribute, primary/candidate/secondary/foreign key, relationships, referential integrity and indexing.
+
+the syllabus explicitly names entity, table, record, field, tuple, attribute, primary key, candidate key, secondary key, foreign key, one-to-one, one-to-many, many-to-many, referential integrity and indexing. Secondary key is retained as a distinct retrieval term, not an alias for an alternate candidate key.
+
+</details>
+
+<details><summary>Open precise terminology and exam facts</summary>
+
+- The syllabus requires both sides of the comparison: limitations of file-based storage/retrieval and relational-database features that address those limitations. Benefits must be linked to a mechanism rather than asserted generically.
+- the syllabus explicitly names entity, table, record, field, tuple, attribute, primary key, candidate key, secondary key, foreign key, one-to-one, one-to-many, many-to-many, referential integrity and indexing. Secondary key is retained as a distinct retrieval term, not an alias for an alternate candidate key.
 - A file-based approach stores data in separate application files. The same fact may be repeated in several files or records, causing redundancy and wasted storage. Updating only some copies creates inconsistency; insertion and deletion can also lose or require unrelated facts. Separate files may use incompatible formats, isolate data, duplicate validation/security code and make shared querying, concurrent access, backup and recovery harder to manage.
 - A relational database addresses these limitations by separating entities into linked tables, storing shared facts once, identifying records with keys and enforcing relationships and constraints centrally. A DBMS supplies shared query processing, integrity, security, access rights and backup. These mechanisms reduce particular file-based risks; a relational design is not automatically smaller, simpler or error-free.
 - Record and tuple are corresponding relational terms for one row; field and attribute are corresponding terms for one column.
@@ -73,18 +129,17 @@ Ask the learner to give one accurate definition or method step before continuing
 - A relational database stores data in tables made of records and fields. A primary key uniquely identifies a record; a foreign key links to a primary key in another table and creates a relationship.
 - Indexing creates an additional lookup structure for one or more fields so matching records can be located more quickly. The index consumes storage and must be updated when indexed data change.
 
-### Worked example
+</details>
 
-Keys for a student table / Delete a department / Use keys and an index: In Student(StudentID, Email, TutorGroup), StudentID and Email may be candidate keys if both are unique and minimal; StudentID is selected as primary. TutorGroup can be a secondary key for retrieving all students in one group even though many records share the value. An index on TutorGroup can provide a faster lookup route. If Employee.DepartmentID refers to Department.DepartmentID, deleting a department with employees would break referential integrity unless deletion is rejected or an authorised cascading policy handles dependent rows. StudentID is the primary key of Student. DepartmentID is a foreign key linking to Department. An index on Surname can speed searches by surname without changing which field is the primary key.
+### Worked method
+
+1. Keys for a student table
+2. Delete a department
+3. Use keys and an index
+4. In Student(StudentID, Email, TutorGroup), StudentID and Email may be candidate keys if both are unique and minimal; StudentID is selected as primary.
+5. TutorGroup can be a secondary key for retrieving all students in one group even though many records share the value.
 
 Beyond syllabus / 延伸知识（不要求背诵）: production databases also manage transactions and concurrent users; these ideas extend the syllabus model of integrity and access control.
-
-### Retained visual explanation
-
-![Core relational words for this lesson](../web/assets/diagrams/stage10-infographics/stage10-lesson-079-terms.jpg)
-
-_Core relational words for this lesson. The image and mobile text alternative come from one maintained fact source._
-
 ## 3. Practice by question type
 
 ### Question 1 - foundation - explain - 6 marks

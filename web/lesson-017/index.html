@@ -8,50 +8,56 @@
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
-    <link rel="stylesheet" href="../course-v2.css?v=3" />
+    <link rel="stylesheet" href="../course-v2.css?v=4" />
   </head>
-  <body data-course-version="2" data-lesson-id="017" data-syllabus-ids="S3.10">
+  <body data-course-version="2" data-lesson-id="017" data-syllabus-ids="S3.10" data-material-status="complete">
     <a class="skip-link" href="#main-content">Skip to main content</a>
     <header class="v2-topbar">
       <div><p class="v2-eyebrow">Cambridge AS9618 | Paper 1 | Section 3: Hardware</p><h1>Logic gates, symbols and truth tables</h1></div>
       <nav class="v2-actions" aria-label="Lesson actions"><a href="../">Course home</a><a href="../assessments/">Assessment bank</a><button type="button" id="printLesson">Print</button></nav>
     </header>
+    <nav class="v2-jump-nav" aria-label="Lesson contents"><strong>Lesson 017</strong><a href="#overview">Overview</a><a href="#prerequisite">Prerequisite</a><a href="#explanation">Explanation</a><a href="#practice">Practice</a><a href="#summary">Summary</a></nav>
     <main class="v2-shell" id="main-content" tabindex="-1">
-      <nav class="v2-toc" aria-label="Lesson contents"><strong>Lesson 017</strong><a href="#overview">Overview</a><a href="#prerequisite">Prerequisite</a><a href="#explanation">Explanation</a><a href="#practice">Practice</a><a href="#summary">Summary</a></nav>
       <div class="v2-content">
         <section class="v2-hero" id="overview">
-          <div><p class="v2-eyebrow">Flexible-depth lesson</p><h2>Logic gates, symbols and truth tables</h2><p>S3.10 | Select what to omit, teach briefly or explore in depth.</p></div>
+          <div><p class="v2-eyebrow">Flexible-depth lesson</p><h2>Logic gates, symbols and truth tables</h2><p>S3.10 | Visual relationships, mechanisms and worked examples.</p></div>
           <div class="v2-time-grid" aria-label="Available lesson depth"><div><strong>Quick</strong><span>diagnose + essentials</span></div><div><strong>Full</strong><span>complete explanation</span></div><div><strong>Deep</strong><span>prerequisites + extension</span></div><div><strong>Choose</strong><span>practice by need</span></div></div>
         </section>
 
         <section class="v2-panel v2-route-menu" aria-labelledby="route-heading">
           <div class="v2-heading"><p class="v2-eyebrow">Teacher choice</p><h2 id="route-heading">Choose the depth for this group</h2></div>
-          <div class="v2-route-grid"><article><h3>Quick route</h3><p>Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.</p></article><article><h3>Full route</h3><p>Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.</p></article><article><h3>Deep route</h3><p>Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.</p></article></div>
+          <div class="v2-route-grid"><article><h3>Quick route</h3><p>Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.</p></article><article><h3>Full route</h3><p>Teach every knowledge-point material set, the worked method and all lesson questions.</p></article><article><h3>Deep route</h3><p>Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.</p></article></div>
         </section>
 
         <section class="v2-panel" id="prerequisite">
           <div class="v2-heading"><p class="v2-eyebrow">Part 1 | optional depth</p><h2>Prerequisite knowledge and quick diagnostic</h2></div>
           <div class="v2-diagnostic"><p>Recall S1.02 before starting this lesson.</p></div>
           <p>Give one accurate definition or method step before continuing. If it is missing, revisit only that prerequisite.</p>
-          <details class="v2-prerequisite-detail"><summary>Open optional prerequisite refresher</summary><ul><li>The Version 2 row requires binary, denary, hexadecimal, Binary Coded Decimal (BCD), one&#39;s complement and two&#39;s complement; BCD and complements are representations rather than additional number bases.</li><li>Show understanding of binary, denary and hexadecimal number systems, BCD, and one&#39;s- and two&#39;s-complement representations.</li></ul></details>
+          <details class="v2-prerequisite-detail"><summary>Open optional prerequisite refresher</summary><ul><li>The syllabus requires binary, denary, hexadecimal, Binary Coded Decimal (BCD), one&#39;s complement and two&#39;s complement; BCD and complements are representations rather than additional number bases.</li><li>Show understanding of binary, denary and hexadecimal number systems, BCD, and one&#39;s- and two&#39;s-complement representations.</li></ul></details>
         </section>
 
         <section class="v2-panel" id="explanation">
-          <div class="v2-heading"><p class="v2-eyebrow">Part 2 | deliberately over-complete</p><h2>Knowledge explanation</h2></div>
-          <h3>Learning objectives</h3><ul class="v2-objectives"><li>Understand NOT, AND, OR, NAND, NOR and XOR; use symbols/functions/truth tables and convert among problem, expression, circuit and truth table.</li></ul>
-          <details class="v2-concept-menu"><summary>Open the concept checklist and choose what to teach</summary><ul><li>NOT</li><li>AND</li><li>OR</li><li>NAND</li><li>NOR</li><li>XOR</li><li>symbol</li><li>function</li><li>truth table</li><li>problem statement</li><li>expression</li><li>circuit</li><li>two inputs</li></ul></details>
-          <div class="v2-explanation-grid">
-            <div>
-              <article class="v2-core-facts"><h3>Detailed explanation</h3><p class="v2-teacher-note">Teach all points, or select only the ones this group needs. The list is intentionally fuller than a fixed lesson slot.</p><ul class="v2-facts"><li>Use the standard symbols and define the functions of NOT, AND, OR, NAND, NOR and XOR (EOR); all gates except NOT have two inputs. Construct circuits, truth tables and expressions from each of the other stated representations: problem statement, logic expression, logic circuit and truth table.</li><li>Use the standard symbols and exact functions of NOT, AND, OR, NAND, NOR and XOR (EOR). NOT has one input; each of the other five gates has two inputs for this syllabus. A truth table lists every input combination and the resulting output according to the gate or circuit function.</li><li>You must be able to construct a logic circuit from a problem statement, logic expression or truth table; construct a truth table from a problem statement, logic circuit or logic expression; and construct a logic expression from a problem statement, logic circuit or truth table. Move through variables and conditions first, then intermediate gate outputs, then the final output so every representation can be checked against the same rows.</li><li>Each standard gate symbol identifies its function; do not substitute a labelled box when a logic-circuit symbol is required.</li></ul></article>
-              <article class="v2-example"><h3>Worked example</h3><p>Convert one rule among four representations: Rule: an alarm sounds when the system is armed and either the door or window is open. Define A, D and W; write Alarm = A AND (D OR W); draw an OR gate for D and W feeding an AND gate with A; then list all eight input combinations and evaluate the intermediate OR column before Alarm.</p></article>
-              <aside class="v2-extension"><h3>Beyond syllabus / 延伸知识（不要求背诵）</h3><p>professional device selection also considers accessibility, reliability, repairability and energy use.</p></aside>
-            </div>
-            <figure class="v2-visual">
-              <img src="../assets/diagrams/stage10-infographics/stage10-lesson-038-design.jpg" alt="1. Name the output Use a clear output such as Alarm, Unlock, Fan or Light.. 2. Define variables Write what each input means, for example A = system armed.. 3. Write expression Translate the requirement with AND, OR, NOT, NAND, NOR or XOR.. 4. Draw in stages Draw inner gates first, then connect them to the final output gate.. A correct circuit is not just a pretty drawing. It must match the Boolean expression and produce the correct truth-table output." loading="lazy" />
-              <figcaption>A circuit design method that examiners can follow. One maintained explanation is shown as an image on larger screens and as text on small screens.</figcaption>
-              <div class="v2-mobile-visual-text" aria-label="Mobile text alternative"><ul><li>1. Name the output Use a clear output such as Alarm, Unlock, Fan or Light.</li><li>2. Define variables Write what each input means, for example A = system armed.</li><li>3. Write expression Translate the requirement with AND, OR, NOT, NAND, NOR or XOR.</li><li>4. Draw in stages Draw inner gates first, then connect them to the final output gate.</li><li>A correct circuit is not just a pretty drawing. It must match the Boolean expression and produce the correct truth-table output.</li></ul></div>
-            </figure>
-          </div>
+          <div class="v2-heading"><p class="v2-eyebrow">Part 2 | visual explanation</p><h2>Learn each point through visuals</h2><p>Use the relationship map, mechanism and concrete cue before opening precise wording.</p></div>
+    <nav class="v2-knowledge-index" aria-label="Knowledge points in this lesson"><a href="#knowledge-s3-10"><span>01</span>S3.10</a></nav><div class="v2-knowledge-point-list"><section class="v2-knowledge-point" id="knowledge-s3-10" data-syllabus-id="S3.10" data-visual-mode="process" data-material-count="4">
+      <header class="v2-knowledge-point-head"><span>01</span><div><p>S3.10 · process</p><h3>NOT, AND, OR, NAND, NOR and XOR; use symbols/functions/truth tables and convert among problem, expression, circuit…</h3></div></header>
+      <div class="v2-material-triad">
+        <article class="v2-native-material v2-native-material--map"><h4>Concept relationships</h4><div class="v2-concept-map"><div><strong>truth table</strong><span>Symbols/functions/truth tables and convert among problem, expression, circuit…</span></div><div><strong>problem statement</strong><span>Problem statement, logic expression, logic circuit and truth…</span></div><div><strong>NAND</strong><span>The standard symbols and exact functions of NOT,…</span></div><div><strong>NOR</strong><span>The standard symbols and define the functions of…</span></div><div><strong>XOR</strong><span>NOT, AND, OR, NAND, NOR and XOR</span></div><div><strong>symbol</strong><span>Do not substitute a labelled box when a…</span></div></div></article>
+        <article class="v2-native-material v2-native-material--story"><h4>See how it works</h4><ol><li><span>Plan</span><div><strong>Translate the stated design</strong><p>Symbols/functions/truth tables and convert among problem, expression, circuit and truth table.</p></div></li><li><span>Execute</span><div><strong>Apply one complete operation</strong><p>The standard symbols and exact functions of NOT, AND, OR, NAND, NOR and XOR (EOR).</p></div></li><li><span>Test</span><div><strong>Trace state and boundaries</strong><p>The standard symbols and define the functions of NOT, AND, OR, NAND, NOR and XOR (EOR)</p></div></li></ol></article>
+        <aside class="v2-native-material v2-native-material--cue"><h4>Six symbols, six exact output rules</h4><p>Visual explanation Read each symbol from left to right. A small circle on the output means “invert”; the extra curved input line distinguishes XOR from OR.</p></aside>
+      </div>
+      <section class="v2-material-library" aria-label="S3.10 diagrams">
+    <div class="v2-material-library-head"><h3>S3.10 diagrams</h3></div>
+    <div class="v2-material-rail" id="materials-017-s3-10" data-material-rail><figure class="v2-visual" data-material-kind="diagram">
+            <div class="v2-visual-heading"><span>01</span><div><p>Diagram · 1 of 1</p><h4>Six symbols, six exact output rules</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Six symbols, six exact output rules"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-036-gate-visual.jpg" alt="Six symbols, six exact output rules" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Visual explanation</li><li>Read each symbol from left to right. A small circle on the output means “invert”; the extra curved input line distinguishes XOR from OR.</li><li>NOT One input; output is the opposite value.</li><li>AND / NAND AND tests whether both are 1; NAND inverts that result.</li><li>OR / NOR OR tests whether at least one is 1; NOR inverts that result.</li><li>XOR Output is 1 only when the two inputs are different.</li><li>Check the diagram: what two visual clues separate NOR from XOR?</li><li>NOR has an output bubble. XOR has no output bubble, but it has an extra curved line on the input side.</li></ul></details>
+          </figure></div>
+  </section>
+      <details class="v2-point-precision"><summary>Open precise syllabus wording</summary><p><strong>Understand NOT, AND, OR, NAND, NOR and XOR; use symbols/functions/truth tables and convert among problem, expression, circuit and truth table.</strong></p><p>Use the standard symbols and define the functions of NOT, AND, OR, NAND, NOR and XOR (EOR); all gates except NOT have two inputs. Construct circuits, truth tables and expressions from each of the other stated representations: problem statement, logic expression, logic circuit and truth table.</p></details>
+    </section></div>
+    <details class="v2-core-facts"><summary>Open precise terminology and exam facts</summary><ul class="v2-facts"><li>Use the standard symbols and define the functions of NOT, AND, OR, NAND, NOR and XOR (EOR); all gates except NOT have two inputs. Construct circuits, truth tables and expressions from each of the other stated representations: problem statement, logic expression, logic circuit and truth table.</li><li>Use the standard symbols and exact functions of NOT, AND, OR, NAND, NOR and XOR (EOR). NOT has one input; each of the other five gates has two inputs for this syllabus. A truth table lists every input combination and the resulting output according to the gate or circuit function.</li><li>You must be able to construct a logic circuit from a problem statement, logic expression or truth table; construct a truth table from a problem statement, logic circuit or logic expression; and construct a logic expression from a problem statement, logic circuit or truth table. Move through variables and conditions first, then intermediate gate outputs, then the final output so every representation can be checked against the same rows.</li><li>Each standard gate symbol identifies its function; do not substitute a labelled box when a logic-circuit symbol is required.</li></ul></details>
+    <article class="v2-example"><h3>Worked method</h3><ol><li>Convert one rule among four representations</li><li>an alarm sounds when the system is armed and either the door or window is open.</li><li>Define A, D and W; write Alarm = A AND (D OR W); draw an OR gate for D and W feeding an AND gate with A; then list all…</li></ol></article>
+    <aside class="v2-extension"><h3>Beyond syllabus / 延伸知识（不要求背诵）</h3><p>professional device selection also considers accessibility, reliability, repairability and energy use.</p></aside>
         </section>
 
         <section class="v2-panel" id="practice">
@@ -86,6 +92,6 @@
         <nav class="v2-bottom-nav" aria-label="Previous and next lesson"><a href="../lesson-016/" >Previous lesson</a><a href="../lesson-018/" >Next lesson</a></nav>
       </div>
     </main>
-    <script src="../course-v2.js?v=1"></script>
+    <script src="../course-v2.js?v=2"></script>
   </body>
 </html>

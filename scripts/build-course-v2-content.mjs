@@ -5,10 +5,12 @@ import { execFileSync } from "node:child_process";
 import { courseV2Blueprint, sectionTitles } from "./v2-course-blueprint.mjs";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
+const legacyRef = "559eb16";
 const currentIdentity = JSON.parse(fs.readFileSync(path.join(root, "scripts", "lesson-identity-contract.json"), "utf8"));
-const identity = currentIdentity.lessons.length === 151
+const usingCurrentLegacyIdentity = currentIdentity.lessons.length === 151;
+const identity = usingCurrentLegacyIdentity
   ? currentIdentity
-  : JSON.parse(execFileSync("git", ["show", "HEAD:scripts/lesson-identity-contract.json"], { cwd: root, encoding: "utf8" }));
+  : JSON.parse(execFileSync("git", ["show", `${legacyRef}:scripts/lesson-identity-contract.json`], { cwd: root, encoding: "utf8" }));
 const syllabus = JSON.parse(fs.readFileSync(path.join(root, "scripts", "syllabus-coverage-contract.json"), "utf8"));
 const frequency = JSON.parse(fs.readFileSync(path.join(root, "scripts", "past-paper-frequency-contract.json"), "utf8"));
 const requirementById = new Map(syllabus.requirements.map((requirement) => [requirement.id, requirement]));
@@ -30,6 +32,22 @@ const legacyCourseUnits = Object.freeze([
 ]);
 
 const stopwords = new Set("a an and are as at be been by can data describe different each explain for from give how identify in including is it its may of on one or other show state system systems that the their these this to two understand understanding use used using when where which with write".split(" "));
+
+function sanitizeStudentText(value) {
+  return String(value ?? "")
+    .replace(/The Version 2 Notes also name/gi, "The syllabus also names")
+    .replace(/The Version 2 Notes name/gi, "The syllabus names")
+    .replace(/The Version 2 (?:row|table) requires/gi, "The syllabus requires")
+    .replace(/Version 2 explicitly includes/gi, "The syllabus explicitly includes")
+    .replace(/Version 2 explicitly requires/gi, "The syllabus explicitly requires")
+    .replace(/Version 2 requires/gi, "The syllabus requires")
+    .replace(/the preceding Version 2 row/gi, "the syllabus list above")
+    .replace(/the Version 2 (?:row|table)/gi, "the syllabus")
+    .replace(/Use the complete Version 2 instruction set/gi, "Use the complete specified instruction set")
+    .replace(/\bVersion 2\b/gi, "the syllabus")
+    .replace(/\s+/g, " ")
+    .trim();
+}
 
 function normalise(value) {
   return String(value ?? "")
@@ -68,13 +86,16 @@ function relevance(text, focus) {
 }
 
 function stripMarkdown(value) {
-  return String(value ?? "")
+  return sanitizeStudentText(String(value ?? "")
+    .replace(/`\*`/g, "__SQL_WILDCARD__")
+    .replace(/\bSELECT\s+\*/gi, (match) => match.replace("*", "__SQL_WILDCARD__"))
     .replace(/<!--[^]*?-->/g, " ")
     .replace(/!\[[^\]]*\]\([^)]*\)/g, " ")
     .replace(/\[([^\]]+)\]\([^)]*\)/g, "$1")
     .replace(/[*_`>#]/g, "")
+    .replace(/SQLWILDCARD/g, "*")
     .replace(/\s+/g, " ")
-    .trim();
+    .trim());
 }
 
 function trimText(value, maximum = 900) {
@@ -149,9 +170,9 @@ function extractQuestions(source, oldLesson, section) {
 
 function extractLessonRecord(entry) {
   const sourcePath = path.join(root, "lessons", entry.markdownFile);
-  const source = fs.existsSync(sourcePath)
+  const source = usingCurrentLegacyIdentity && fs.existsSync(sourcePath)
     ? fs.readFileSync(sourcePath, "utf8")
-    : execFileSync("git", ["show", `HEAD:lessons/${entry.markdownFile}`], { cwd: root, encoding: "utf8", maxBuffer: 16 * 1024 * 1024 });
+    : execFileSync("git", ["show", `${legacyRef}:lessons/${entry.markdownFile}`], { cwd: root, encoding: "utf8", maxBuffer: 16 * 1024 * 1024 });
   const unit = unitForOldLesson(entry.lesson);
   const direct = extractBetween(source, /### Direct explanation\s*/i, /### Worked example/i)
     .split("\n")

@@ -1,15 +1,15 @@
 # Lesson 026: Why operating systems are required
 
-**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029 Version 2<br>
+**Course:** Cambridge International AS Level Computer Science 9618, syllabus for examination in 2027-2029<br>
 **Paper:** Paper 1<br>
 **Syllabus:** Section 5: System software<br>
 **Syllabus requirements:** S5.01<br>
-**Pacing:** Flexible. This lesson is deliberately over-complete; select a quick, full or deep route for the learners in front of you.
+**Pacing:** Flexible. Select a quick, full or deep route for the learners in front of you.
 
 ## Teaching-depth menu
 
 - **Quick route:** Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.
-- **Full route:** Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.
+- **Full route:** Teach every knowledge-point material set, the worked method and all lesson questions.
 - **Deep route:** Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.
 
 ## 1. Prerequisite knowledge and quick diagnostic
@@ -22,38 +22,64 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ## 2. Knowledge explanation
 
-### Learning objectives
+### 1. Why an operating system is required and its memory, file, security, hardware and process management roles (S5.01)
 
-- Explain why an operating system is required and its memory, file, security, hardware and process management roles.
+**Concept relationships**
 
-### Concept checklist for teacher choice
+- **memory management:** Memory management allocates and protects RAM.
+- **file management:** File management organises files, folders, metadata and file…
+- **security management:** Security management decides whether a request is authorised,…
+- **hardware management:** Hardware management coordinates devices through drivers, interrupts, buffers…
+- **process management:** Why an operating system is required and its…
+- **operating system:** The operating system is required to provide a…
 
-- operating system
-- memory management
-- file management
-- security management
-- hardware management
-- process management
+**Mechanism**
 
-### Detailed explanation
+1. **Identify what needs protection** — Why an operating system is required and its memory, file, security, hardware and process management roles.
+2. **Trace the attack or error route** — The operating system is required to provide a platform and manage memory, files, security, hardware input/output and peripherals,…
+3. **Match a safeguard and limitation** — Detailed process, memory, file and device management are developed in Lesson 054.
+
+**Operating system: the main coordinator:** User interface Provides a way for users to interact with the computer, such as GUI or command line. Resource management Allocates and controls hardware resources such as processor time, memory and devices.
+
+#### Operating system: the main coordinator
+
+![Operating system: the main coordinator](../web/assets/diagrams/stage10-infographics/stage10-lesson-053-os.jpg)
+
+<details><summary>Text transcript</summary>
+
+- User interface Provides a way for users to interact with the computer, such as GUI or command line.
+- Resource management Allocates and controls hardware resources such as processor time, memory and devices.
+- File services Provides file organisation, storage access and permission support.
+- Application services Provides services and APIs that application software can use.
+- Boundary
+- Detailed process, memory, file and device management are developed in Lesson 054. Here the OS is introduced as the main system coordinator.
+
+</details>
+
+<details><summary>Precise syllabus wording</summary>
+
+Explain why an operating system is required and its memory, file, security, hardware and process management roles.
+
+The operating system is required to provide a platform and manage memory, files, security, hardware input/output and peripherals, and processes.
+
+</details>
+
+<details><summary>Open precise terminology and exam facts</summary>
 
 - The operating system is required to provide a platform and manage memory, files, security, hardware input/output and peripherals, and processes.
 - An operating system is required to provide a controlled interface between applications, users and hardware, and to coordinate shared resources. Without it, each application would need its own incompatible routines for processor time, memory, files, security and devices.
 - Process management schedules CPU time and tracks running processes. Memory management allocates and protects RAM. File management organises files, folders, metadata and file operations. Security management authenticates users and enforces permissions or access rights.
 - Hardware management coordinates devices through drivers, interrupts, buffers and queues. These roles cooperate: security management decides whether a request is authorised, while file or hardware management performs the permitted operation. Antivirus remains a utility and must not replace the OS security-management role.
 
-### Worked example
+</details>
 
-Open a protected file and print it: The OS authenticates the user and security management checks access rights. File management locates and opens the file; memory management allocates RAM; process management schedules the application; hardware management uses a printer driver, buffer and queue to send permitted output to the printer.
+### Worked method
+
+1. Open a protected file and print it
+2. The OS authenticates the user and security management checks access rights.
+3. File management locates and opens the file; memory management allocates RAM; process management schedules the application; hardware management uses a printer driver, buffer and queue to send permitted output to…
 
 Beyond syllabus / 延伸知识（不要求背诵）: production build systems automate translation, linking, testing and packaging, while the syllabus examines the purpose of each stage separately.
-
-### Retained visual explanation
-
-![Operating system: the main coordinator](../web/assets/diagrams/stage10-infographics/stage10-lesson-053-os.jpg)
-
-_Operating system: the main coordinator. The image and mobile text alternative come from one maintained fact source._
-
 ## 3. Practice by question type
 
 ### Question 1 - foundation - explain - 6 marks

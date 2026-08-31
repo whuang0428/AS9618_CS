@@ -1,15 +1,15 @@
 # Lesson 021: The fetch-execute cycle in register-transfer notation
 
-**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029 Version 2<br>
+**Course:** Cambridge International AS Level Computer Science 9618, syllabus for examination in 2027-2029<br>
 **Paper:** Paper 1<br>
 **Syllabus:** Section 4: Processor fundamentals<br>
 **Syllabus requirements:** S4.07<br>
-**Pacing:** Flexible. This lesson is deliberately over-complete; select a quick, full or deep route for the learners in front of you.
+**Pacing:** Flexible. Select a quick, full or deep route for the learners in front of you.
 
 ## Teaching-depth menu
 
 - **Quick route:** Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.
-- **Full route:** Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.
+- **Full route:** Teach every knowledge-point material set, the worked method and all lesson questions.
 - **Deep route:** Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.
 
 ## 1. Prerequisite knowledge and quick diagnostic
@@ -26,16 +26,47 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ## 2. Knowledge explanation
 
-### Learning objectives
+### 1. The fetch-execute cycle using register transfer notation (S4.07)
 
-- Describe the fetch-execute cycle using register transfer notation.
+**Concept relationships**
 
-### Concept checklist for teacher choice
+- **PC:** Address of next instruction
+- **MAR:** Address currently accessed
+- **MDR:** Word transferred to or from memory
+- **CIR:** Current instruction being decoded
+- **fetch-execute cycle:** The fetch-execute cycle using register transfer notation.
+- **register transfer notation:** The stages of the Fetch-Execute cycle and use…
 
-- fetch-execute cycle / fetch decode execute / fetch-decode-execute cycle
-- register transfer notation / register-transfer notation
+**Mechanism**
 
-### Detailed explanation
+1. **Identify incoming data or signal** — The fetch-execute cycle using register transfer notation.
+2. **Follow the physical or logical path** — The stages of the Fetch-Execute cycle and use register-transfer notation, including MAR <- PC, MDR <- Memory[MAR], CIR…
+3. **Connect output to its use** — Register-transfer notation describes movement and updates
+
+**Registers and buses: the FDE cycle vocabulary:** Processor review PC Stores the address of the next instruction to be fetched.
+
+#### Registers and buses: the FDE cycle vocabulary
+
+![Registers and buses: the FDE cycle vocabulary](../web/assets/diagrams/stage10-infographics/stage10-lesson-092-processor.jpg)
+
+<details><summary>Text transcript</summary>
+
+- Processor review
+- PC Stores the address of the next instruction to be fetched.
+- MAR / MDR MAR stores an address; MDR stores data/instruction being transferred.
+- CIR / ACC CIR stores current instruction; ACC stores intermediate arithmetic/logic results.
+
+</details>
+
+<details><summary>Precise syllabus wording</summary>
+
+Describe the fetch-execute cycle using register transfer notation.
+
+Describe the stages of the Fetch-Execute cycle and use register-transfer notation, including MAR <- PC, MDR <- Memory[MAR], CIR <- MDR and a coherent PC update.
+
+</details>
+
+<details><summary>Open precise terminology and exam facts</summary>
 
 - Describe the stages of the Fetch-Execute cycle and use register-transfer notation, including MAR <- PC, MDR <- Memory[MAR], CIR <- MDR and a coherent PC update.
 - Register-transfer notation describes a data transfer or register update. The arrow <- means 'is loaded with' or 'receives'; it is not an equality sign. Memory[MAR] means the contents of the memory location whose address is currently held in MAR.
@@ -43,18 +74,17 @@ Ask the learner to give one accurate definition or method step before continuing
 - During execution, notation such as ACC <- ACC + MDR records an arithmetic result in ACC, while Memory[MAR] <- MDR records a memory write. Read every statement from right to left: obtain the source value, then replace the destination contents.
 - The exact timing of PC increment may vary between coherent processor descriptions, but MAR must receive the current instruction address before that address is replaced. Register-transfer notation describes movement and updates; it does not imply that two registers permanently contain the same value.
 
-### Worked example
+</details>
 
-Trace one instruction fetch: Start with PC = 120 and Memory[120] = LDD 500. MAR <- PC puts 120 in MAR. MDR <- Memory[MAR] puts LDD 500 in MDR. CIR <- MDR copies the instruction into CIR. PC <- PC + 1 makes PC 121, ready to address the next instruction. The control unit then decodes LDD and executes it.
+### Worked method
+
+1. Trace one instruction fetch
+2. Start with PC = 120 and Memory[120] = LDD 500.
+3. MAR <- PC puts 120 in MAR.
+4. MDR <- Memory[MAR] puts LDD 500 in MDR.
+5. CIR <- MDR copies the instruction into CIR.
 
 Beyond syllabus / 延伸知识（不要求背诵）: modern processors add pipelining and several cache levels, but exam answers should begin with the syllabus processor model.
-
-### Retained visual explanation
-
-![The seven named register roles](../web/assets/diagrams/stage10-infographics/stage10-lesson-044-main-registers.jpg)
-
-_The seven named register roles. The image and mobile text alternative come from one maintained fact source._
-
 ## 3. Practice by question type
 
 ### Question 1 - foundation - describe - 6 marks

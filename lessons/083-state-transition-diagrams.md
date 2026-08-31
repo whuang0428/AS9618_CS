@@ -1,15 +1,15 @@
 # Lesson 083: State-transition diagrams
 
-**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029 Version 2<br>
+**Course:** Cambridge International AS Level Computer Science 9618, syllabus for examination in 2027-2029<br>
 **Paper:** Paper 2<br>
 **Syllabus:** Section 12: Software development<br>
 **Syllabus requirements:** S12.03<br>
-**Pacing:** Flexible. This lesson is deliberately over-complete; select a quick, full or deep route for the learners in front of you.
+**Pacing:** Flexible. Select a quick, full or deep route for the learners in front of you.
 
 ## Teaching-depth menu
 
 - **Quick route:** Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.
-- **Full route:** Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.
+- **Full route:** Teach every knowledge-point material set, the worked method and all lesson questions.
 - **Deep route:** Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.
 
 ## 1. Prerequisite knowledge and quick diagnostic
@@ -26,34 +26,53 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ## 2. Knowledge explanation
 
-### Learning objectives
+### 1. The purpose of state-transition diagrams to document an algorithm (S12.03)
 
-- Show understanding of the purpose of state-transition diagrams to document an algorithm.
+**Concept relationships**
 
-### Concept checklist for teacher choice
+- **State:** Persistent condition of the system
+- **Transition:** Change from one state
+- **Event:** Label that triggers change
+- **Purpose:** Document state-based behaviour
+- **state-transition:** The purpose of state-transition diagrams to document an…
+- **diagrams:** A state-transition diagram documents an algorithm by showing…
 
-- state-transition
-- diagrams
+**Mechanism**
 
-### Detailed explanation
+1. **Translate the stated design** — The purpose of state-transition diagrams to document an algorithm.
+2. **Apply one complete operation** — A state-transition diagram documents an algorithm by showing persistent states and the events that cause changes between them.
+3. **Trace state and boundaries** — No need to construct a state-transition diagram.
 
-- The Version 2 table requires understanding the purpose; it does not require candidates to construct a state-transition diagram.
+**Concrete case: State:** The purpose of state-transition diagrams to document an algorithm.
+
+
+
+<details><summary>Precise syllabus wording</summary>
+
+Show understanding of the purpose of state-transition diagrams to document an algorithm.
+
+The syllabus requires understanding the purpose; it does not require candidates to construct a state-transition diagram.
+
+</details>
+
+<details><summary>Open precise terminology and exam facts</summary>
+
+- The syllabus requires understanding the purpose; it does not require candidates to construct a state-transition diagram.
 - A structure chart documents decomposition into modules, procedures and functions. Boxes name modules; hierarchy lines show which module calls another; labelled arrows show data or control parameters passed between them. Its purpose is to communicate modular structure and interfaces before coding.
 - To construct a structure chart, place the controlling module at the top, split the problem into one-responsibility subtasks, connect each caller to its called modules, and label every value passed. To derive equivalent pseudocode, turn each box into a complete PROCEDURE or FUNCTION header with corresponding parameters, add calls in the parent body with matching arguments, and preserve the shown hierarchy.
 - A state-transition diagram documents an algorithm by showing persistent states and the events that cause changes between them. Its syllabus requirement is to understand that purpose; constructing a state-transition diagram is retained only as Optional enrichment.
 
-### Worked example
+</details>
 
-Door controller: two design views: A structure chart places ControlDoor above ReadCard(CardID), ValidateCard(CardID, IsValid) and SetLock(IsValid). Equivalent pseudocode declares those interfaces and calls them from ControlDoor with matching arguments. A provided state-transition diagram with Locked and Unlocked states serves a different purpose: it documents event-driven changes rather than module hierarchy or processing sequence.
+### Worked method
+
+1. two design views
+2. A structure chart places ControlDoor above ReadCard(CardID), ValidateCard(CardID, IsValid) and SetLock(IsValid).
+3. Equivalent pseudocode declares those interfaces and calls them from ControlDoor with matching arguments.
+4. A provided state-transition diagram with Locked and Unlocked states serves a different purpose
+5. it documents event-driven changes rather than module hierarchy or processing sequence.
 
 Beyond syllabus / 延伸知识（不要求背诵）: modern teams often use continuous integration to repeat building and testing whenever a program changes.
-
-### Retained visual explanation
-
-![Structure charts, derived pseudocode and state transitions](../web/assets/diagrams/stage10-infographics/stage10-lesson-145-algorithms.jpg)
-
-_Structure charts, derived pseudocode and state transitions. The image and mobile text alternative come from one maintained fact source._
-
 ## 3. Practice by question type
 
 ### Question 1 - foundation - state - 2 marks
@@ -80,7 +99,7 @@ How does a walkthrough differ from a dry run?
 
 State two precise facts about state-transition diagrams.
 
-**Answer:** The Version 2 table requires understanding the purpose; it does not require candidates to construct a state-transition diagram. A structure chart documents decomposition into modules, procedures and functions. Boxes name modules; hierarchy lines show which module calls another; labelled arrows show data or control parameters passed between them. Its purpose is to communicate modular structure and interfaces before coding.
+**Answer:** The syllabus requires understanding the purpose; it does not require candidates to construct a state-transition diagram. A structure chart documents decomposition into modules, procedures and functions. Boxes name modules; hierarchy lines show which module calls another; labelled arrows show data or control parameters passed between them. Its purpose is to communicate modular structure and interfaces before coding.
 
 **Marking guidance:** Award one mark for each distinct fact; do not credit a repeated point.
 

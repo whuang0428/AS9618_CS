@@ -1,15 +1,15 @@
 # Lesson 001: Binary data units and magnitude prefixes
 
-**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029 Version 2<br>
+**Course:** Cambridge International AS Level Computer Science 9618, syllabus for examination in 2027-2029<br>
 **Paper:** Paper 1<br>
 **Syllabus:** Section 1: Information representation<br>
 **Syllabus requirements:** S1.01<br>
-**Pacing:** Flexible. This lesson is deliberately over-complete; select a quick, full or deep route for the learners in front of you.
+**Pacing:** Flexible. Select a quick, full or deep route for the learners in front of you.
 
 ## Teaching-depth menu
 
 - **Quick route:** Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.
-- **Full route:** Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.
+- **Full route:** Teach every knowledge-point material set, the worked method and all lesson questions.
 - **Deep route:** Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.
 
 ## 1. Prerequisite knowledge and quick diagnostic
@@ -22,42 +22,65 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ## 2. Knowledge explanation
 
-### Learning objectives
+### 1. Binary and decimal prefixes use different scales (S1.01)
 
-- Show understanding of binary magnitudes and the difference between binary prefixes and decimal prefixes.
+**Concept relationships**
 
-### Concept checklist for teacher choice
+- **Binary:** powers of 1024
+- **Decimal:** powers of 1000
+- **KiB:** 2^10 bytes
+- **kB:** 10^3 bytes
+- **TiB:** 2^40 bytes
+- **TB:** 10^12 bytes
 
-- binary prefixes
-- decimal prefixes
-- kibi / KiB
-- kilo / kB
-- mebi / MiB
-- mega / MB
-- gibi / GiB
-- giga / GB
-- tebi / TiB
-- tera / TB
+**Mechanism**
 
-### Detailed explanation
+1. **Look for the i** — Ki, Mi, Gi and Ti signal the binary scale.
+2. **Select 1024 or 1000** — Binary prefixes climb by 1024; decimal prefixes climb by 1000.
+3. **Keep the unit exact** — KiB and kB are not interchangeable labels.
+
+**Two staircases:** A binary staircase has 1024 steps per level; a decimal staircase has 1000. The labels tell you which staircase to climb.
+
+#### The storage ladder
+
+![The storage ladder](../web/assets/diagrams/stage10-infographics/stage10-lesson-001-knowledge.jpg)
+
+<details><summary>Text transcript</summary>
+
+- bit 0 or 1
+- nibble 4 bits
+- byte 8 bits = 2 nibbles
+- KiB 1024 bytes
+- MiB 1024 KiB
+- GiB 1024 MiB
+- TiB 1024 GiB
+
+</details>
+
+<details><summary>Precise syllabus wording</summary>
+
+Show understanding of binary magnitudes and the difference between binary prefixes and decimal prefixes.
+
+Use and distinguish kibi/kilo, mebi/mega, gibi/giga and tebi/tera; binary prefixes use powers of 1024 and decimal prefixes use powers of 1000.
+
+</details>
+
+<details><summary>Open precise terminology and exam facts</summary>
 
 - Use and distinguish kibi/kilo, mebi/mega, gibi/giga and tebi/tera; binary prefixes use powers of 1024 and decimal prefixes use powers of 1000.
 - Binary prefixes use powers of 1024: kibi (Ki) means 2^10, mebi (Mi) means 2^20, gibi (Gi) means 2^30 and tebi (Ti) means 2^40. Therefore 1 KiB = 1024 bytes, 1 MiB = 2^20 bytes, 1 GiB = 2^30 bytes and 1 TiB = 2^40 bytes.
 - Decimal prefixes use powers of 1000: kilo (k) means 10^3, mega (M) means 10^6, giga (G) means 10^9 and tera (T) means 10^12. Therefore 1 kB = 1000 bytes, 1 MB = 10^6 bytes, 1 GB = 10^9 bytes and 1 TB = 10^12 bytes. Case and the i in KiB/MiB/GiB/TiB carry meaning.
 - For binary data units and magnitude prefixes, identify the required concept before describing its mechanism or consequence.
 
-### Worked example
+</details>
 
-2 TiB drive: 2 TiB = 2 x 2^40 = 2,199,023,255,552 bytes. A 2 TB drive is 2,000,000,000,000 bytes, so the labels are not interchangeable.
+### Worked method
+
+1. 2 TiB drive
+2. 2 TiB = 2 x 2^40 = 2,199,023,255,552 bytes.
+3. A 2 TB drive is 2,000,000,000,000 bytes, so the labels are not interchangeable.
 
 Beyond syllabus / 延伸知识（不要求背诵）: real file formats also store headers and metadata, so two files with the same visible content may still have different sizes.
-
-### Retained visual explanation
-
-![Section 1 method bank](../web/assets/diagrams/stage10-infographics/stage10-lesson-016-methods.jpg)
-
-_Section 1 method bank. The image and mobile text alternative come from one maintained fact source._
-
 ## 3. Practice by question type
 
 ### Question 1 - foundation - state - 4 marks

@@ -1,15 +1,15 @@
 # Lesson 022: Interrupt causes, detection and handling
 
-**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029 Version 2<br>
+**Course:** Cambridge International AS Level Computer Science 9618, syllabus for examination in 2027-2029<br>
 **Paper:** Paper 1<br>
 **Syllabus:** Section 4: Processor fundamentals<br>
 **Syllabus requirements:** S4.08<br>
-**Pacing:** Flexible. This lesson is deliberately over-complete; select a quick, full or deep route for the learners in front of you.
+**Pacing:** Flexible. Select a quick, full or deep route for the learners in front of you.
 
 ## Teaching-depth menu
 
 - **Quick route:** Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.
-- **Full route:** Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.
+- **Full route:** Teach every knowledge-point material set, the worked method and all lesson questions.
 - **Deep route:** Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.
 
 ## 1. Prerequisite knowledge and quick diagnostic
@@ -26,20 +26,51 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ## 2. Knowledge explanation
 
-### Learning objectives
+### 1. Causes/applications of interrupts, ISR, detection and handling (S4.08)
 
-- Understand causes/applications of interrupts, ISR, detection and handling.
+**Concept relationships**
 
-### Concept checklist for teacher choice
+- **causes:** Causes/applications of interrupts, ISR, detection and handling.
+- **applications:** Include possible causes and applications of interrupts, the…
+- **interrupts:** Execute instruction The CPU finishes the current instruction…
+- **ISR:** The ISR is a routine, not the interrupt…
+- **detected:** An enabled interrupt request is detected at an…
+- **handling:** Find ISR The interrupt type is used to…
 
-- causes
-- applications
-- interrupts
-- ISR
-- detected
-- handling
+**Mechanism**
 
-### Detailed explanation
+1. **Identify incoming data or signal** — Causes/applications of interrupts, ISR, detection and handling.
+2. **Follow the physical or logical path** — Include possible causes and applications of interrupts, the use of an Interrupt Service Routine (ISR), when interrupts are…
+3. **Connect output to its use** — An enabled interrupt request is detected at an instruction boundary before the processor begins the handling sequence.
+
+**The interrupt handling cycle:** 1. Execute instruction The CPU finishes the current instruction before accepting most maskable interrupts. 2. Check interrupt The control unit checks whether an interrupt is pending and enabled.
+
+#### The interrupt handling cycle
+
+![The interrupt handling cycle](../web/assets/diagrams/stage10-infographics/stage10-lesson-049-cycle.jpg)
+
+<details><summary>Text transcript</summary>
+
+- 1. Execute instruction The CPU finishes the current instruction before accepting most maskable interrupts.
+- 2. Check interrupt The control unit checks whether an interrupt is pending and enabled.
+- 3. Save state Important registers, PC and status information are stored, often on a stack.
+- 4. Find ISR The interrupt type is used to locate the correct interrupt service routine.
+- 5. Run ISR The routine handles the event, such as reading a key or acknowledging a device.
+- 6. Restore and return The saved state is restored and the interrupted program continues.
+- Why this matters
+- Saving state is the "bookmark". Without it, the CPU may not know where or how to resume the interrupted program.
+
+</details>
+
+<details><summary>Precise syllabus wording</summary>
+
+Understand causes/applications of interrupts, ISR, detection and handling.
+
+Include possible causes and applications of interrupts, the use of an Interrupt Service Routine (ISR), when interrupts are detected during the fetch-execute cycle and the full save-handle-restore sequence.
+
+</details>
+
+<details><summary>Open precise terminology and exam facts</summary>
 
 - Include possible causes and applications of interrupts, the use of an Interrupt Service Routine (ISR), when interrupts are detected during the fetch-execute cycle and the full save-handle-restore sequence.
 - An interrupt is a signal or condition requesting processor attention. Possible causes include input/output devices needing service, a timer used for scheduling, a hardware fault, and a software exception. Applications include responsive input, sharing processor time and dealing promptly with exceptional conditions without continuously polling every device.
@@ -47,18 +78,15 @@ Ask the learner to give one accurate definition or method step before continuing
 - If an interrupt is accepted, the processor checks priority, saves the state needed to resume (such as PC, registers and status), loads or locates the correct interrupt service routine (ISR), executes the ISR, restores the saved state and resumes the interrupted program at the correct next instruction. The ISR is a routine, not the interrupt signal itself.
 - An enabled interrupt request is detected at an instruction boundary before the processor begins the handling sequence.
 
-### Worked example
+</details>
 
-Handle a keyboard interrupt: A key press raises an interrupt while the CPU is executing another program. The CPU finishes its current instruction, detects the pending request at the cycle boundary, saves PC/register/status state, runs the keyboard ISR to read or acknowledge the input, restores the saved state and continues the original program.
+### Worked method
+
+1. Handle a keyboard interrupt
+2. A key press raises an interrupt while the CPU is executing another program.
+3. The CPU finishes its current instruction, detects the pending request at the cycle boundary, saves PC/register/status state, runs the keyboard ISR to read or acknowledge the input, restores the saved…
 
 Beyond syllabus / 延伸知识（不要求背诵）: modern processors add pipelining and several cache levels, but exam answers should begin with the syllabus processor model.
-
-### Retained visual explanation
-
-![The three buses](../web/assets/diagrams/stage10-infographics/stage10-lesson-045-three-buses.jpg)
-
-_The three buses. The image and mobile text alternative come from one maintained fact source._
-
 ## 3. Practice by question type
 
 ### Question 1 - foundation - describe - 6 marks

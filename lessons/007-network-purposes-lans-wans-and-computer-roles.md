@@ -1,15 +1,15 @@
 # Lesson 007: Network purposes, LANs, WANs and computer roles
 
-**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029 Version 2<br>
+**Course:** Cambridge International AS Level Computer Science 9618, syllabus for examination in 2027-2029<br>
 **Paper:** Paper 1<br>
 **Syllabus:** Section 2: Communication<br>
 **Syllabus requirements:** S2.01, S2.02, S2.03<br>
-**Pacing:** Flexible. This lesson is deliberately over-complete; select a quick, full or deep route for the learners in front of you.
+**Pacing:** Flexible. Select a quick, full or deep route for the learners in front of you.
 
 ## Teaching-depth menu
 
 - **Quick route:** Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.
-- **Full route:** Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.
+- **Full route:** Teach every knowledge-point material set, the worked method and all lesson questions.
 - **Deep route:** Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.
 
 ## 1. Prerequisite knowledge and quick diagnostic
@@ -26,32 +26,122 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ## 2. Knowledge explanation
 
-### Learning objectives
+### 1. The purpose and benefits of networking devices and the characteristics of LANs and WANs (S2.01)
 
-- Show understanding of the purpose and benefits of networking devices and the characteristics of LANs and WANs.
-- Explain client-server and peer-to-peer models, their computer roles, benefits and drawbacks, and justify a model for a given situation.
-- Show understanding of thin-client and thick-client computers and the differences between them.
+**Concept relationships**
 
-### Concept checklist for teacher choice
+- **limited geographical area:** A LAN covers a limited geographical area such…
+- **large geographical area:** A WAN covers a large geographical area, connects…
+- **networking devices:** The purpose and benefits of networking devices and…
+- **LAN:** A LAN covers a limited area and is…
+- **WAN:** A WAN connects sites across a large area…
+- **benefits:** The different computer roles in each model, balanced…
 
-- networking devices
-- benefits
-- LAN
-- WAN
-- limited geographical area
-- large geographical area
-- client-server
-- peer-to-peer
-- clients request
-- servers provide
-- drawbacks
-- justified
-- thin client
-- thick client
-- server processing / server for processing
-- local processing / processing locally
+**Mechanism**
 
-### Detailed explanation
+1. **Name both alternatives precisely** — The purpose and benefits of networking devices and the characteristics of LANs and WANs.
+2. **Connect structure to consequence** — A WAN covers a large geographical area, connects separate LANs or sites and commonly uses telecommunications-provider infrastructure.
+3. **Justify against the scenario** — A LAN covers a limited geographical area such as one building or site and is normally owned or…
+
+**How a shared resource becomes useful:** A device packages a request and names the destination. The network carries that request to the shared resource.
+
+#### How a shared resource becomes useful
+
+![How a shared resource becomes useful](../web/assets/diagrams/stage10-infographics/stage10-lesson-017-purpose.jpg)
+
+<details><summary>Text transcript</summary>
+
+- A device packages a request and names the destination.
+- The network carries that request to the shared resource.
+- One managed resource can then serve many authorised devices.
+
+</details>
+
+<details><summary>Precise syllabus wording</summary>
+
+Show understanding of the purpose and benefits of networking devices and the characteristics of LANs and WANs.
+
+A LAN covers a limited area and is normally managed by one organisation; a WAN connects sites across a large area and commonly uses provider infrastructure. Benefits must identify a shared or centrally managed resource and its consequence.
+
+</details>
+
+### 2. Client-server and peer-to-peer models, their computer roles, benefits and drawbacks, and justify a model for a… (S2.02)
+
+**Concept relationships**
+
+- **client-server:** Client-server and peer-to-peer models, their computer roles, benefits…
+- **clients request:** In a client-server model, clients request services or…
+- **servers provide:** The different computer roles in each model, balanced…
+- **peer-to-peer:** In a peer-to-peer model, each peer may request…
+- **benefits:** Central management, consistent access control and central backup…
+- **drawbacks:** Server cost, specialist administration, dependence on the server…
+
+**Mechanism**
+
+1. **Name both alternatives precisely** — Client-server and peer-to-peer models, their computer roles, benefits and drawbacks, and justify a model for a given situation.
+2. **Connect structure to consequence** — In a client-server model, clients request services or resources and one or more servers provide them.
+3. **Justify against the scenario** — The different computer roles in each model, balanced benefits and drawbacks, and a scenario-linked choice
+
+**Client-server vs peer-to-peer:** Client-server Peer-to-peer
+
+#### Client-server vs peer-to-peer
+
+![Client-server vs peer-to-peer](../web/assets/diagrams/stage10-infographics/stage10-lesson-018-compare.jpg)
+
+<details><summary>Text transcript</summary>
+
+- Client-server
+- Peer-to-peer
+- Centralised management, security, backups and permissions.
+- Decentralised control; each peer may manage its own resources.
+- May need dedicated server hardware, software and administration.
+- Can be cheaper for small networks because no dedicated server is required.
+- Reliability
+- Server failure may affect many clients unless redundancy is used.
+- No single central server, but availability depends on peers being online.
+- Typical use
+- School login, file server, web server, email server.
+- Small file sharing, local collaboration, distributed sharing.
+
+</details>
+
+<details><summary>Precise syllabus wording</summary>
+
+Explain client-server and peer-to-peer models, their computer roles, benefits and drawbacks, and justify a model for a given situation.
+
+Evidence must cover the different computer roles in each model, balanced benefits and drawbacks, and a scenario-linked choice; a topology cannot substitute for a network model.
+
+</details>
+
+### 3. Thin-client and thick-client computers and the differences between them (S2.03)
+
+**Concept relationships**
+
+- **local processing:** Thin-client and thick-client computers and the differences between…
+- **thin client:** A thin client relies mainly on a server…
+- **thick client:** A thick client performs more processing locally and…
+- **server processing:** In a client-server model, clients request services or…
+- **understanding:** Thin/thick describes where processing, software and storage reside
+
+**Mechanism**
+
+1. **Name both alternatives precisely** — Thin-client and thick-client computers and the differences between them.
+2. **Connect structure to consequence** — A thick client performs more processing locally and normally stores more software or data on the client device.
+3. **Justify against the scenario** — A thin client relies mainly on a server for processing and/or storage.
+
+**Concrete case: local processing:** Thin-client and thick-client computers and the differences between them.
+
+
+
+<details><summary>Precise syllabus wording</summary>
+
+Show understanding of thin-client and thick-client computers and the differences between them.
+
+Thin/thick describes where processing, software and storage reside; it must not be treated as a synonym for client-server/peer-to-peer.
+
+</details>
+
+<details><summary>Open precise terminology and exam facts</summary>
 
 - A LAN covers a limited area and is normally managed by one organisation; a WAN connects sites across a large area and commonly uses provider infrastructure. Benefits must identify a shared or centrally managed resource and its consequence.
 - Evidence must cover the different computer roles in each model, balanced benefits and drawbacks, and a scenario-linked choice; a topology cannot substitute for a network model.
@@ -65,18 +155,17 @@ Ask the learner to give one accurate definition or method step before continuing
 - A thin client relies mainly on a server for processing and/or storage. A thick client performs more processing locally and normally stores more software or data on the client device. Thin clients simplify central updates and can use lower-specification hardware, but depend heavily on the server and network. Thick clients can continue more work when disconnected, but local installation, security and maintenance are distributed.
 - To justify a topology, link the packet path, dependence on central hardware, alternative routes and failure behaviour to the given situation.
 
-### Worked example
+</details>
 
-Choose a topology for a two-building clinic / Choose a model and client type for a school examination room: Use a star LAN inside each building so individual devices have independent links to a central switch. Connect the two stars to form a hybrid network. If the inter-building link is safety-critical, add a second path: packets can use the alternative route after one link fails, at extra cost. Use a client-server model so accounts, permissions, exam files and backups are controlled by servers. Thin clients support central software management and reduce local storage, but the school must provide resilient servers and networking because a failure can stop the room. Thick clients would reduce that dependence but distribute software and security maintenance.
+### Worked method
+
+1. Choose a topology for a two-building clinic
+2. Choose a model and client type for a school examination room
+3. Use a star LAN inside each building so individual devices have independent links to a central switch.
+4. Connect the two stars to form a hybrid network.
+5. If the inter-building link is safety-critical, add a second path
 
 Beyond syllabus / 延伸知识（不要求背诵）: real networks organise communication in layers so that hardware, addressing and application protocols can change independently.
-
-### Retained visual explanation
-
-![Why LAN and WAN management differs](../web/assets/diagrams/stage10-infographics/stage10-lesson-017-lanwan.jpg)
-
-_Why LAN and WAN management differs. The image and mobile text alternative come from one maintained fact source._
-
 ## 3. Practice by question type
 
 ### Question 1 - foundation - explain - 8 marks

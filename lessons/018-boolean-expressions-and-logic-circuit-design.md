@@ -1,15 +1,15 @@
 # Lesson 018: Boolean expressions and logic-circuit design
 
-**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029 Version 2<br>
+**Course:** Cambridge International AS Level Computer Science 9618, syllabus for examination in 2027-2029<br>
 **Paper:** Paper 1<br>
 **Syllabus:** Section 3: Hardware<br>
 **Syllabus requirements:** S3.10<br>
-**Pacing:** Flexible. This lesson is deliberately over-complete; select a quick, full or deep route for the learners in front of you.
+**Pacing:** Flexible. Select a quick, full or deep route for the learners in front of you.
 
 ## Teaching-depth menu
 
 - **Quick route:** Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.
-- **Full route:** Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.
+- **Full route:** Teach every knowledge-point material set, the worked method and all lesson questions.
 - **Deep route:** Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.
 
 ## 1. Prerequisite knowledge and quick diagnostic
@@ -20,51 +20,57 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ### Optional prerequisite refresher
 
-- The Version 2 row requires binary, denary, hexadecimal, Binary Coded Decimal (BCD), one's complement and two's complement; BCD and complements are representations rather than additional number bases.
+- The syllabus requires binary, denary, hexadecimal, Binary Coded Decimal (BCD), one's complement and two's complement; BCD and complements are representations rather than additional number bases.
 - Show understanding of binary, denary and hexadecimal number systems, BCD, and one's- and two's-complement representations.
 
 
 ## 2. Knowledge explanation
 
-### Learning objectives
+### 1. NOT, AND, OR, NAND, NOR and XOR; use symbols/functions/truth tables and convert among problem, expression, circuit… (S3.10)
 
-- Understand NOT, AND, OR, NAND, NOR and XOR; use symbols/functions/truth tables and convert among problem, expression, circuit and truth table.
+**Concept relationships**
 
-### Concept checklist for teacher choice
+- **truth table:** Symbols/functions/truth tables and convert among problem, expression, circuit…
+- **problem statement:** Problem statement, logic expression, logic circuit and truth…
+- **logic expression:** Construct a truth table from a problem statement,…
+- **logic circuit:** And construct a logic expression from a problem…
+- **symbol:** The standard symbols and exact functions of NOT,…
+- **function:** The standard symbols and define the functions of…
 
-- NOT
-- AND
-- OR
-- NAND
-- NOR
-- XOR
-- symbol
-- function
-- truth table
-- problem statement
-- expression
-- circuit
-- two inputs
+**Mechanism**
 
-### Detailed explanation
+1. **Translate the stated design** — Symbols/functions/truth tables and convert among problem, expression, circuit and truth table.
+2. **Apply one complete operation** — Problem statement, logic expression, logic circuit and truth table.
+3. **Trace state and boundaries** — And construct a logic expression from a problem statement, logic circuit or truth table.
+
+**Concrete case: truth table:** Symbols/functions/truth tables and convert among problem, expression, circuit and truth table.
+
+
+
+<details><summary>Precise syllabus wording</summary>
+
+Understand NOT, AND, OR, NAND, NOR and XOR; use symbols/functions/truth tables and convert among problem, expression, circuit and truth table.
+
+Use the standard symbols and define the functions of NOT, AND, OR, NAND, NOR and XOR (EOR); all gates except NOT have two inputs. Construct circuits, truth tables and expressions from each of the other stated representations: problem statement, logic expression, logic circuit and truth table.
+
+</details>
+
+<details><summary>Open precise terminology and exam facts</summary>
 
 - Use the standard symbols and define the functions of NOT, AND, OR, NAND, NOR and XOR (EOR); all gates except NOT have two inputs. Construct circuits, truth tables and expressions from each of the other stated representations: problem statement, logic expression, logic circuit and truth table.
 - Use the standard symbols and exact functions of NOT, AND, OR, NAND, NOR and XOR (EOR). NOT has one input; each of the other five gates has two inputs for this syllabus. A truth table lists every input combination and the resulting output according to the gate or circuit function.
 - You must be able to construct a logic circuit from a problem statement, logic expression or truth table; construct a truth table from a problem statement, logic circuit or logic expression; and construct a logic expression from a problem statement, logic circuit or truth table. Move through variables and conditions first, then intermediate gate outputs, then the final output so every representation can be checked against the same rows.
 - Each standard gate symbol identifies its function; do not substitute a labelled box when a logic-circuit symbol is required.
 
-### Worked example
+</details>
 
-Convert one rule among four representations: Rule: an alarm sounds when the system is armed and either the door or window is open. Define A, D and W; write Alarm = A AND (D OR W); draw an OR gate for D and W feeding an AND gate with A; then list all eight input combinations and evaluate the intermediate OR column before Alarm.
+### Worked method
+
+1. Convert one rule among four representations
+2. an alarm sounds when the system is armed and either the door or window is open.
+3. Define A, D and W; write Alarm = A AND (D OR W); draw an OR gate for D and W feeding an AND gate with A; then list all…
 
 Beyond syllabus / 延伸知识（不要求背诵）: professional device selection also considers accessibility, reliability, repairability and energy use.
-
-### Retained visual explanation
-
-![Boolean expressions describe gate behaviour](../web/assets/diagrams/stage10-infographics/stage10-lesson-037-expressions.jpg)
-
-_Boolean expressions describe gate behaviour. The image and mobile text alternative come from one maintained fact source._
-
 ## 3. Practice by question type
 
 ### Question 1 - foundation - convert - 2 marks

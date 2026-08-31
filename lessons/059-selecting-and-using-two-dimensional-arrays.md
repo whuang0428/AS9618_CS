@@ -1,15 +1,15 @@
 # Lesson 059: Selecting and using two-dimensional arrays
 
-**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029 Version 2<br>
+**Course:** Cambridge International AS Level Computer Science 9618, syllabus for examination in 2027-2029<br>
 **Paper:** Paper 2<br>
 **Syllabus:** Section 10: Data types and structures<br>
 **Syllabus requirements:** S10.04, S10.05<br>
-**Pacing:** Flexible. This lesson is deliberately over-complete; select a quick, full or deep route for the learners in front of you.
+**Pacing:** Flexible. Select a quick, full or deep route for the learners in front of you.
 
 ## Teaching-depth menu
 
 - **Quick route:** Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.
-- **Full route:** Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.
+- **Full route:** Teach every knowledge-point material set, the worked method and all lesson questions.
 - **Deep route:** Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.
 
 ## 1. Prerequisite knowledge and quick diagnostic
@@ -26,20 +26,64 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ## 2. Knowledge explanation
 
-### Learning objectives
+### 1. Select one- or two-dimensional arrays for a scenario: Selecting and using two-dimensional arrays (S10.04)
 
-- Select one- or two-dimensional arrays for a scenario.
-- Write pseudocode using one- and two-dimensional arrays.
+**Concept relationships**
 
-### Concept checklist for teacher choice
+- **1D array:** One index selects an item
+- **2D array:** Two indexes select a cell
+- **Scenario:** Data shape determines dimensions
+- **Bounds:** Valid index range
+- **two-dimensional:** Select one- or two-dimensional arrays for a scenario.
+- **one-dimensional:** Select a suitable one-dimensional (1D) or two-dimensional (2D)…
 
-- one-dimensional / 1D
-- two-dimensional / 2D
-- select / suitable
-- pseudocode
-- ARRAY
+**Mechanism**
 
-### Detailed explanation
+1. **Translate the stated design** — A two-dimensional array uses two indexes, normally interpreted as row and column.
+2. **Apply one complete operation** — Choose a two-dimensional array when each value naturally needs a row and a column, such as marks for…
+3. **Trace state and boundaries** — ARRAY[1:30, 1:4] OF INTEGER, the first range gives 30 valid row indexes and the second gives 4 valid…
+
+**Concrete case: 1D array:** A two-dimensional array uses two indexes, normally interpreted as row and column.
+
+
+
+<details><summary>Precise syllabus wording</summary>
+
+Select one- or two-dimensional arrays for a scenario.
+
+Select a suitable one-dimensional (1D) or two-dimensional (2D) array for a given task. One index suits a linear collection; two indexes suit data with a genuine row-column or equivalent two-coordinate relationship.
+
+</details>
+
+### 2. Pseudocode using one- and two-dimensional arrays: Selecting and using two-dimensional arrays (S10.05)
+
+**Concept relationships**
+
+- **ARRAY:** Pseudocode using one- and two-dimensional arrays.
+- **pseudocode:** One-dimensional array pseudocode must declare explicit bounds and…
+- **1D:** Select a suitable one-dimensional (1D) or two-dimensional (2D)…
+- **2D:** Cambridge pseudocode for 1D and 2D arrays
+- **dimensional:** A two-dimensional array uses two indexes, normally interpreted…
+
+**Mechanism**
+
+1. **Translate the stated design** — Pseudocode using one- and two-dimensional arrays.
+2. **Apply one complete operation** — One-dimensional array pseudocode must declare explicit bounds and an element type, access elements with one index and use…
+3. **Trace state and boundaries** — Cambridge pseudocode for 1D and 2D arrays
+
+**Concrete case: ARRAY:** Pseudocode using one- and two-dimensional arrays.
+
+
+
+<details><summary>Precise syllabus wording</summary>
+
+Write pseudocode using one- and two-dimensional arrays.
+
+Write Cambridge pseudocode for 1D and 2D arrays: declare explicit inclusive bounds and an element type, use the required number of indexes, and traverse only valid positions.
+
+</details>
+
+<details><summary>Open precise terminology and exam facts</summary>
 
 - Select a suitable one-dimensional (1D) or two-dimensional (2D) array for a given task. One index suits a linear collection; two indexes suit data with a genuine row-column or equivalent two-coordinate relationship.
 - Write Cambridge pseudocode for 1D and 2D arrays: declare explicit inclusive bounds and an element type, use the required number of indexes, and traverse only valid positions.
@@ -50,18 +94,16 @@ Ask the learner to give one accurate definition or method step before continuing
 - Select 2D when the scenario has two independent position dimensions, such as Student and Test, Row and Column, or Day and Period. A simple list, sequence or one category of positions remains 1D even when it contains many elements.
 - Two-dimensional pseudocode declares both ranges, accesses one cell as Marks[Student, Test] and normally uses nested loops: one loop traverses rows and the inner loop traverses every column for the current row.
 
-### Worked example
+</details>
 
-Choose and declare the dimension: Twenty daily temperatures need one position per day, so DECLARE Temperature : ARRAY[1:20] OF REAL is suitable and valid indexes are 1 to 20. Marks for 30 students in 4 tests need row and column positions, so a 2D array is suitable instead.
+### Worked method
+
+1. Choose and declare the dimension
+2. Twenty daily temperatures need one position per day, so DECLARE Temperature
+3. ARRAY[1:20] OF REAL is suitable and valid indexes are 1 to 20.
+4. Marks for 30 students in 4 tests need row and column positions, so a 2D array is suitable instead.
 
 Beyond syllabus / 延伸知识（不要求背诵）: programming libraries often provide tested ADT implementations, but the exam expects you to understand their behaviour and selection.
-
-### Retained visual explanation
-
-![Bounds say which indexes are valid](../web/assets/diagrams/stage10-infographics/stage10-lesson-116-declare.jpg)
-
-_Bounds say which indexes are valid. The image and mobile text alternative come from one maintained fact source._
-
 ## 3. Practice by question type
 
 ### Question 1 - foundation - write - 2 marks

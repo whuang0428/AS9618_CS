@@ -1,15 +1,15 @@
 # Lesson 078: Functions, interfaces and return values
 
-**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029 Version 2<br>
+**Course:** Cambridge International AS Level Computer Science 9618, syllabus for examination in 2027-2029<br>
 **Paper:** Paper 2<br>
 **Syllabus:** Section 11: Programming<br>
 **Syllabus requirements:** S11.07, S11.08<br>
-**Pacing:** Flexible. This lesson is deliberately over-complete; select a quick, full or deep route for the learners in front of you.
+**Pacing:** Flexible. Select a quick, full or deep route for the learners in front of you.
 
 ## Teaching-depth menu
 
 - **Quick route:** Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.
-- **Full route:** Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.
+- **Full route:** Teach every knowledge-point material set, the worked method and all lesson questions.
 - **Deep route:** Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.
 
 ## 1. Prerequisite knowledge and quick diagnostic
@@ -30,25 +30,92 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ## 2. Knowledge explanation
 
-### Learning objectives
+### 1. And use functions, including return values in expressions: Functions, interfaces and return values (S11.07)
 
-- Understand and use functions, including return values in expressions.
-- Use precise terminology: procedure/function header, interface, parameter, argument and return value.
+**Concept relationships**
 
-### Concept checklist for teacher choice
+- **return value:** A function is used in an expression and…
+- **function:** And use functions, including return values in expressions.
+- **expression:** The call can appear in an expression, for…
+- **functions:** Procedures for actions and functions for calculated, searched…
+- **return:** RETURN sends a function value back to the…
+- **call:** Define and use a function when the caller…
 
-- functions
-- return
-- values
-- expression / expressions
-- procedure header
-- function header
-- interface
-- parameter
-- argument
-- return value
+**Mechanism**
 
-### Detailed explanation
+1. **Translate the stated design** — A function is used in an expression and its return value replaces the function call.
+2. **Apply one complete operation** — And use functions, including return values in expressions.
+3. **Trace state and boundaries** — RETURN sends a function value back to the caller
+
+**Function calls can appear where a value is…:** Calls and returned values CALL DisplayMenu()
+
+#### Function calls can appear where a value is needed
+
+![Function calls can appear where a value is needed](../web/assets/diagrams/stage10-infographics/stage10-lesson-131-calls.jpg)
+
+<details><summary>Text transcript</summary>
+
+- Calls and returned values
+- CALL DisplayMenu()
+- procedure call performs an action
+- VAT <- CalculateVAT(Price)
+- function return value is stored
+- Total <- DisplayMenu()
+- procedure does not return a value
+- OUTPUT CalculateVAT(Price)
+- function return value can be output
+
+</details>
+
+<details><summary>Precise syllabus wording</summary>
+
+Understand and use functions, including return values in expressions.
+
+Define and use a function; explain when the use of a function is appropriate. A function is used in an expression and its return value replaces the function call.
+
+</details>
+
+### 2. Precise terminology: procedure/function header, interface, parameter, argument and return value (S11.08)
+
+**Concept relationships**
+
+- **procedure header:** A procedure header or function header declares that…
+- **function header:** Procedure/function header, interface, parameter, argument and return value.
+- **return value:** The terminology procedure/function interface, header, parameter, argument and…
+- **interface:** A subprogram interface gives the caller the name,…
+- **parameter:** A parameter is the named variable in the…
+- **argument:** An argument is the actual value or variable…
+
+**Mechanism**
+
+1. **Translate the stated design** — The terminology procedure/function interface, header, parameter, argument and return value, and explain the relationship between these terms.
+2. **Apply one complete operation** — Procedure/function header, interface, parameter, argument and return value.
+3. **Trace state and boundaries** — A procedure header or function header declares that interface
+
+**A subprogram interface connects caller and header:** A subprogram interface gives the caller the name, parameter list and types, and any return value/type. A procedure header or function header declares that interface; a function header also declares its return type.
+
+#### A subprogram interface connects caller and header
+
+![A subprogram interface connects caller and header](../web/assets/diagrams/stage10-infographics/stage10-lesson-131-parameters.jpg)
+
+<details><summary>Text transcript</summary>
+
+- A subprogram interface gives the caller the name, parameter list and types, and any return value/type.
+- A procedure header or function header declares that interface; a function header also declares its return type.
+- A parameter is named in the header; an argument is the actual value or variable supplied at a call.
+- RETURN sends a function value to the caller; displayed output is an effect, not a return value.
+
+</details>
+
+<details><summary>Precise syllabus wording</summary>
+
+Use precise terminology: procedure/function header, interface, parameter, argument and return value.
+
+Use the terminology procedure/function interface, header, parameter, argument and return value, and explain the relationship between these terms.
+
+</details>
+
+<details><summary>Open precise terminology and exam facts</summary>
 
 - Define and use a function; explain when the use of a function is appropriate. A function is used in an expression and its return value replaces the function call.
 - Use the terminology procedure/function interface, header, parameter, argument and return value, and explain the relationship between these terms.
@@ -57,18 +124,17 @@ Ask the learner to give one accurate definition or method step before continuing
 - A procedure header or function header names the subprogram and declares its parameters; a function header also declares its return type. The procedure/function interface is the information a caller needs to use the subprogram: its name, parameter list and types, and any returned value/type.
 - A parameter is the named variable in the header, while an argument is the actual value or variable supplied at a call. RETURN sends a function value back to the caller; output displayed by a procedure is an effect, not a return value.
 
-### Worked example
+</details>
 
-Use a procedure and a function: PROCEDURE Increase(BYREF Number : INTEGER, BYVAL Amount : INTEGER) changes the caller's Number by Amount. FUNCTION CalculateVAT(Price : REAL) RETURNS REAL returns Price 0.20, so Total <- Price + CalculateVAT(Price) uses the returned value in an expression. In Increase(Score, 5), Number and Amount are parameters while Score and 5 are arguments.
+### Worked method
+
+1. Use a procedure and a function
+2. PROCEDURE Increase(BYREF Number
+3. INTEGER, BYVAL Amount
+4. INTEGER) changes the caller's Number by Amount.
+5. REAL) RETURNS REAL returns Price 0.20, so Total <- Price + CalculateVAT(Price) uses the returned value in an expression.
 
 Beyond syllabus / 延伸知识（不要求背诵）: consistent style, modularity and automated tests reduce maintenance errors in larger programs.
-
-### Retained visual explanation
-
-![A subprogram interface connects caller and header](../web/assets/diagrams/stage10-infographics/stage10-lesson-131-parameters.jpg)
-
-_A subprogram interface connects caller and header. The image and mobile text alternative come from one maintained fact source._
-
 ## 3. Practice by question type
 
 ### Question 1 - foundation - apply - 2 marks

@@ -1,15 +1,15 @@
 # Lesson 046: Abstraction and abstract models
 
-**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029 Version 2<br>
+**Course:** Cambridge International AS Level Computer Science 9618, syllabus for examination in 2027-2029<br>
 **Paper:** Paper 2<br>
 **Syllabus:** Section 9: Algorithm design and problem-solving<br>
 **Syllabus requirements:** S9.01<br>
-**Pacing:** Flexible. This lesson is deliberately over-complete; select a quick, full or deep route for the learners in front of you.
+**Pacing:** Flexible. Select a quick, full or deep route for the learners in front of you.
 
 ## Teaching-depth menu
 
 - **Quick route:** Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.
-- **Full route:** Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.
+- **Full route:** Teach every knowledge-point material set, the worked method and all lesson questions.
 - **Deep route:** Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.
 
 ## 1. Prerequisite knowledge and quick diagnostic
@@ -22,18 +22,46 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ## 2. Knowledge explanation
 
-### Learning objectives
+### 1. Abstraction, its purpose/benefits and creation of an abstract model (S9.01)
 
-- Understand abstraction, its purpose/benefits and creation of an abstract model.
+**Concept relationships**
 
-### Concept checklist for teacher choice
+- **essential details:** Abstraction to retain essential details in an abstract…
+- **irrelevant detail:** Abstraction removes each irrelevant detail that does not…
+- **abstract model:** Abstraction, its purpose/benefits and creation of an abstract…
+- **abstraction:** Abstraction decides what belongs in the model
+- **purpose:** Its need and benefits, then produce an abstract…
 
-- abstraction
-- essential details
-- irrelevant detail
-- abstract model
+**Mechanism**
 
-### Detailed explanation
+1. **Translate the stated design** — Abstraction, its purpose/benefits and creation of an abstract model.
+2. **Apply one complete operation** — Its need and benefits, then produce an abstract model containing only details essential to the problem.
+3. **Trace state and boundaries** — Abstraction to retain essential details in an abstract model
+
+**Abstraction: keep the details that affect the algorithm:** Keep details that affect an input, rule, calculation, constraint or output. Ignore decoration that does not change the required result.
+
+#### Abstraction: keep the details that affect the algorithm
+
+![Abstraction: keep the details that affect the algorithm](../web/assets/diagrams/stage10-infographics/stage10-lesson-100-abstraction.jpg)
+
+<details><summary>Text transcript</summary>
+
+- Keep details that affect an input, rule, calculation, constraint or output.
+- Ignore decoration that does not change the required result.
+- Ask whether removing a detail would change the result.
+- Explain why a detail is relevant or irrelevant rather than only labelling it.
+
+</details>
+
+<details><summary>Precise syllabus wording</summary>
+
+Understand abstraction, its purpose/benefits and creation of an abstract model.
+
+Abstraction is required both as a concept and as a practical modelling skill: explain its need and benefits, then produce an abstract model containing only details essential to the problem.
+
+</details>
+
+<details><summary>Open precise terminology and exam facts</summary>
 
 - Abstraction is required both as a concept and as a practical modelling skill: explain its need and benefits, then produce an abstract model containing only details essential to the problem.
 - Abstraction removes each irrelevant detail that does not affect the required inputs, rules, constraints or outputs. Producing an abstract model means recording the essential details that remain: the data, relationships and processes needed to solve the problem, not merely listing what was ignored.
@@ -41,18 +69,14 @@ Ask the learner to give one accurate definition or method step before continuing
 - Abstraction decides what belongs in the model; decomposition decides how the retained problem is divided. The modules must connect into one complete solution and must not omit a requirement.
 - Algorithm design review: define an algorithm as a solution expressed as a sequence of defined steps; use abstraction to retain essential details in an abstract model; use decomposition to express the problem as connected modules; and choose meaningful identifiers recorded in an identifier table.
 
-### Worked example
+</details>
 
-Design a result-processing solution: Keep only student ID and required marks, decompose the task into InputResults, ValidateResult, CalculateMean and OutputReport, record meaningful identifiers and IPO, refine CalculateMean into defined steps, use a range logic statement, and represent the final control flow in Cambridge pseudocode or a matching flowchart.
+### Worked method
+
+1. Design a result-processing solution
+2. Keep only student ID and required marks, decompose the task into InputResults, ValidateResult, CalculateMean and OutputReport, record meaningful identifiers and IPO, refine CalculateMean into defined steps, use a range logic…
 
 Beyond syllabus / 延伸知识（不要求背诵）: the same algorithm can be expressed in many programming languages; its logic should remain independent of syntax.
-
-### Retained visual explanation
-
-![Use IPOC before choosing a representation](../web/assets/diagrams/stage10-infographics/stage10-lesson-099-model.jpg)
-
-_Use IPOC before choosing a representation. The image and mobile text alternative come from one maintained fact source._
-
 ## 3. Practice by question type
 
 ### Question 1 - foundation - write - 6 marks

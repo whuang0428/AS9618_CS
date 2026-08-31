@@ -1,15 +1,15 @@
 # Lesson 003: Signed binary arithmetic and overflow
 
-**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029 Version 2<br>
+**Course:** Cambridge International AS Level Computer Science 9618, syllabus for examination in 2027-2029<br>
 **Paper:** Paper 1<br>
 **Syllabus:** Section 1: Information representation<br>
 **Syllabus requirements:** S1.04, S1.05<br>
-**Pacing:** Flexible. This lesson is deliberately over-complete; select a quick, full or deep route for the learners in front of you.
+**Pacing:** Flexible. Select a quick, full or deep route for the learners in front of you.
 
 ## Teaching-depth menu
 
 - **Quick route:** Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.
-- **Full route:** Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.
+- **Full route:** Teach every knowledge-point material set, the worked method and all lesson questions.
 - **Deep route:** Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.
 
 ## 1. Prerequisite knowledge and quick diagnostic
@@ -20,33 +20,115 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ### Optional prerequisite refresher
 
-- The Version 2 row requires binary, denary, hexadecimal, Binary Coded Decimal (BCD), one's complement and two's complement; BCD and complements are representations rather than additional number bases.
+- The syllabus requires binary, denary, hexadecimal, Binary Coded Decimal (BCD), one's complement and two's complement; BCD and complements are representations rather than additional number bases.
 - Show understanding of binary, denary and hexadecimal number systems, BCD, and one's- and two's-complement representations.
-- Version 2 explicitly requires both addition and subtraction using positive and negative binary integers; fixed-width representation must be retained throughout a calculation.
+- The syllabus explicitly requires both addition and subtraction using positive and negative binary integers; fixed-width representation must be retained throughout a calculation.
 - Perform binary addition and subtraction using positive and negative binary integers.
 
 
 ## 2. Knowledge explanation
 
-### Learning objectives
+### 1. Signed arithmetic keeps one fixed-width bit pattern (S1.04)
 
-- Perform binary addition and subtraction using positive and negative binary integers.
-- Show understanding of how overflow can occur in fixed-width binary arithmetic.
+**Concept relationships**
 
-### Concept checklist for teacher choice
+- **Align:** same bit width
+- **Add:** right to left
+- **Carry:** carry into next column
+- **Negative:** two's complement
+- **Subtract:** add the negative
+- **Read:** interpret stored result
 
-- binary addition
-- binary subtraction
-- positive
-- negative
-- integer
-- overflow
-- fixed-width / fixed width
-- representable range / range representable
+**Mechanism**
 
-### Detailed explanation
+1. **Prepare both operands** — Use the same width and encode a negative operand correctly.
+2. **Add column by column** — Subtraction can be performed by adding the two's-complement negative.
+3. **Keep the stored width** — Discard only a carry beyond the fixed width, then decode the result.
 
-- Version 2 explicitly requires both addition and subtraction using positive and negative binary integers; fixed-width representation must be retained throughout a calculation.
+**A four-bit number line:** 0101 + 1101 represents 5 + (-3). The stored four-bit result is 0010, which represents 2.
+
+#### 8-bit addition method
+
+![8-bit addition method](../web/assets/diagrams/stage10-infographics/stage10-lesson-004-method.jpg)
+
+<details><summary>Text transcript</summary>
+
+- Align the two 8-bit operands and start at the rightmost column.
+- Add both bits and any carry-in; write the result bit and carry 1 left when required.
+- For unsigned addition, a carry-out beyond bit 7 means the true sum needs more than 8 bits.
+- Without a carry-out, the stored 8-bit result remains within the unsigned range 0 to 255.
+- A leftmost result bit of 1 is not by itself evidence of unsigned overflow.
+
+</details>
+
+#### Two’s complement method
+
+![Two’s complement method](../web/assets/diagrams/stage10-infographics/stage10-lesson-005-twos.jpg)
+
+<details><summary>Text transcript</summary>
+
+- Write the positive magnitude using exactly 8 bits.
+- Invert every bit, then add 1 to form the negative two's-complement value.
+- For +45: 00101101 becomes 11010010 after inversion, then 11010011 after adding 1.
+- The 8-bit value 11010011 represents -45 in two's complement.
+- When the MSB is 1, quick decode uses unsigned value minus 256.
+
+</details>
+
+<details><summary>Precise syllabus wording</summary>
+
+Perform binary addition and subtraction using positive and negative binary integers.
+
+The syllabus explicitly requires both addition and subtraction using positive and negative binary integers; fixed-width representation must be retained throughout a calculation.
+
+</details>
+
+### 2. Overflow means the true result does not fit (S1.05)
+
+**Concept relationships**
+
+- **Width:** fixed number of bits
+- **Unsigned 8-bit:** 0 to 255
+- **Signed 8-bit:** -128 to 127
+- **True result:** mathematical answer
+- **Stored result:** bits that remain
+
+**Mechanism**
+
+1. **Find representable limits** — Use both the bit width and the stated signed representation.
+2. **Find the true result** — Do the arithmetic without assuming every carry means overflow.
+3. **Compare result with range** — Overflow occurs only when the true result lies outside the limits.
+
+**A box with fixed capacity:** Eight-bit two's complement ends at 127. Therefore 127 + 1 overflows even though an 8-bit pattern is still stored.
+
+#### Unsigned 8-bit overflow
+
+![Unsigned 8-bit overflow](../web/assets/diagrams/stage10-infographics/stage10-lesson-004-overflow.jpg)
+
+<details><summary>Text transcript</summary>
+
+- 00000000₂ to 11111111₂ = 0 to 255
+- An unsigned 8-bit result cannot store a value above 255.
+- Carry-out
+- 11110000₂ + 00010000₂ = 1 00000000₂
+- The ninth bit is a carry-out beyond the 8-bit storage width.
+- Boundary warning
+- 01111111₂ + 00000001₂ = 10000000₂
+- No unsigned overflow: the result is 128, which still fits in 8 bits.
+
+</details>
+
+<details><summary>Precise syllabus wording</summary>
+
+Show understanding of how overflow can occur in fixed-width binary arithmetic.
+
+Overflow occurs when the mathematical result is outside the range representable by the stated bit width and representation; it is not inferred from every internal carry or from a leading 1 alone.
+
+</details>
+
+<details><summary>Open precise terminology and exam facts</summary>
+
+- The syllabus explicitly requires both addition and subtraction using positive and negative binary integers; fixed-width representation must be retained throughout a calculation.
 - Overflow occurs when the mathematical result is outside the range representable by the stated bit width and representation; it is not inferred from every internal carry or from a leading 1 alone.
 - Perform binary addition from the least-significant bit, carrying left when a column total is 2 or 3. Positive and negative integers must be interpreted using the stated representation and fixed bit width.
 - Overflow occurs when the mathematical result is outside the range representable in the available bits. For unsigned 8-bit addition, a carry beyond bit 7 shows that the true result is greater than 255. For signed arithmetic, compare the result with the signed representable range rather than treating every carry as overflow.
@@ -55,18 +137,15 @@ Ask the learner to give one accurate definition or method step before continuing
 - Unsigned subtraction can be performed column by column using borrowing, or by adding the two's complement of the subtrahend. For signed two's-complement subtraction A - B, form the two's complement of B and add it to A. Retain the fixed width, interpret the sign bit and check the representable range.
 - Representation overview: the required integer representations are binary, denary, hexadecimal, BCD, one's-complement and two's-complement. Conversion means preserving the integer value while changing its base or signed representation.
 
-### Worked example
+</details>
 
-Add two unsigned 8-bit integers: 11110000 + 00110000 = 1 00100000. The true result is 288, which is outside the unsigned 8-bit range 0 to 255, so the stored eight-bit result cannot represent the mathematical answer and overflow occurs.
+### Worked method
+
+1. Add two unsigned 8-bit integers
+2. 11110000 + 00110000 = 1 00100000.
+3. The true result is 288, which is outside the unsigned 8-bit range 0 to 255, so the stored eight-bit result cannot represent the mathematical answer and overflow occurs.
 
 Beyond syllabus / 延伸知识（不要求背诵）: real file formats also store headers and metadata, so two files with the same visible content may still have different sizes.
-
-### Retained visual explanation
-
-![8-bit addition method](../web/assets/diagrams/stage10-infographics/stage10-lesson-004-method.jpg)
-
-_8-bit addition method. The image and mobile text alternative come from one maintained fact source._
-
 ## 3. Practice by question type
 
 ### Question 1 - foundation - explain - 2 marks

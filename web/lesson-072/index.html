@@ -8,25 +8,25 @@
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
-    <link rel="stylesheet" href="../course-v2.css?v=3" />
+    <link rel="stylesheet" href="../course-v2.css?v=4" />
   </head>
-  <body data-course-version="2" data-lesson-id="072" data-syllabus-ids="S11.03">
+  <body data-course-version="2" data-lesson-id="072" data-syllabus-ids="S11.03" data-material-status="complete">
     <a class="skip-link" href="#main-content">Skip to main content</a>
     <header class="v2-topbar">
       <div><p class="v2-eyebrow">Cambridge AS9618 | Paper 2 | Section 11: Programming</p><h1>Built-in routines and string functions</h1></div>
       <nav class="v2-actions" aria-label="Lesson actions"><a href="../">Course home</a><a href="../assessments/">Assessment bank</a><button type="button" id="printLesson">Print</button></nav>
     </header>
+    <nav class="v2-jump-nav" aria-label="Lesson contents"><strong>Lesson 072</strong><a href="#overview">Overview</a><a href="#prerequisite">Prerequisite</a><a href="#explanation">Explanation</a><a href="#practice">Practice</a><a href="#summary">Summary</a></nav>
     <main class="v2-shell" id="main-content" tabindex="-1">
-      <nav class="v2-toc" aria-label="Lesson contents"><strong>Lesson 072</strong><a href="#overview">Overview</a><a href="#prerequisite">Prerequisite</a><a href="#explanation">Explanation</a><a href="#practice">Practice</a><a href="#summary">Summary</a></nav>
       <div class="v2-content">
         <section class="v2-hero" id="overview">
-          <div><p class="v2-eyebrow">Flexible-depth lesson</p><h2>Built-in routines and string functions</h2><p>S11.03 | Select what to omit, teach briefly or explore in depth.</p></div>
+          <div><p class="v2-eyebrow">Flexible-depth lesson</p><h2>Built-in routines and string functions</h2><p>S11.03 | Visual relationships, mechanisms and worked examples.</p></div>
           <div class="v2-time-grid" aria-label="Available lesson depth"><div><strong>Quick</strong><span>diagnose + essentials</span></div><div><strong>Full</strong><span>complete explanation</span></div><div><strong>Deep</strong><span>prerequisites + extension</span></div><div><strong>Choose</strong><span>practice by need</span></div></div>
         </section>
 
         <section class="v2-panel v2-route-menu" aria-labelledby="route-heading">
           <div class="v2-heading"><p class="v2-eyebrow">Teacher choice</p><h2 id="route-heading">Choose the depth for this group</h2></div>
-          <div class="v2-route-grid"><article><h3>Quick route</h3><p>Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.</p></article><article><h3>Full route</h3><p>Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.</p></article><article><h3>Deep route</h3><p>Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.</p></article></div>
+          <div class="v2-route-grid"><article><h3>Quick route</h3><p>Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.</p></article><article><h3>Full route</h3><p>Teach every knowledge-point material set, the worked method and all lesson questions.</p></article><article><h3>Deep route</h3><p>Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.</p></article></div>
         </section>
 
         <section class="v2-panel" id="prerequisite">
@@ -37,21 +37,27 @@
         </section>
 
         <section class="v2-panel" id="explanation">
-          <div class="v2-heading"><p class="v2-eyebrow">Part 2 | deliberately over-complete</p><h2>Knowledge explanation</h2></div>
-          <h3>Learning objectives</h3><ul class="v2-objectives"><li>Use built-in/library and string functions.</li></ul>
-          <details class="v2-concept-menu"><summary>Open the concept checklist and choose what to teach</summary><ul><li>built-in / library</li><li>string</li><li>functions</li></ul></details>
-          <div class="v2-explanation-grid">
-            <div>
-              <article class="v2-core-facts"><h3>Detailed explanation</h3><p class="v2-teacher-note">Teach all points, or select only the ones this group needs. The list is intentionally fuller than a fixed lesson slot.</p><ul class="v2-facts"><li>Use built-in functions and library routines. Any function not given in the pseudocode guide will be provided; string manipulation functions will always be given in the question.</li><li>Read the supplied function name, parameter order, position convention and returned type before using it. LENGTH is a familiar built-in example; LEFT, RIGHT, MID or SUBSTRING examples in this course illustrate a mechanism only when their definition and indexing convention are stated.</li><li>A function call returns a value, so it can be assigned, compared, output or combined in an expression. Do not import Java&#39;s zero-based substring convention unless the question explicitly specifies it.</li><li>For built-in routines and string functions, identify the required concept before describing its mechanism or consequence.</li></ul></article>
-              <article class="v2-example"><h3>Worked example</h3><p>Apply a supplied string routine: A question supplies FUNCTION EXTRACT(Text : STRING, Start : INTEGER, Count : INTEGER) RETURNS STRING and states that positions start at 1. LENGTH(&quot;NETWORK&quot;) returns 7; EXTRACT(&quot;NETWORK&quot;, 4, 2) returns &quot;WO&quot;. Code &lt;- EXTRACT(Name, 1, 3) uses the supplied routine in an assignment without importing Java indexing.</p></article>
-              <aside class="v2-extension"><h3>Beyond syllabus / 延伸知识（不要求背诵）</h3><p>consistent style, modularity and automated tests reduce maintenance errors in larger programs.</p></aside>
-            </div>
-            <figure class="v2-visual">
-              <img src="../assets/diagrams/stage10-infographics/stage10-lesson-134-substring.jpg" alt="String manipulation functions are supplied in the question; use the stated name, parameter order and position convention.. Trace the supplied routine exactly, then use its returned string in an assignment, comparison, output or expression.. Do not import Java&#39;s zero-based substring convention or memorise an unstated course-specific signature." loading="lazy" />
-              <figcaption>Use the string-function definition supplied in the question. One maintained explanation is shown as an image on larger screens and as text on small screens.</figcaption>
-              <div class="v2-mobile-visual-text" aria-label="Mobile text alternative"><ul><li>String manipulation functions are supplied in the question; use the stated name, parameter order and position convention.</li><li>Trace the supplied routine exactly, then use its returned string in an assignment, comparison, output or expression.</li><li>Do not import Java&#39;s zero-based substring convention or memorise an unstated course-specific signature.</li></ul></div>
-            </figure>
-          </div>
+          <div class="v2-heading"><p class="v2-eyebrow">Part 2 | visual explanation</p><h2>Learn each point through visuals</h2><p>Use the relationship map, mechanism and concrete cue before opening precise wording.</p></div>
+    <nav class="v2-knowledge-index" aria-label="Knowledge points in this lesson"><a href="#knowledge-s11-03"><span>01</span>S11.03</a></nav><div class="v2-knowledge-point-list"><section class="v2-knowledge-point" id="knowledge-s11-03" data-syllabus-id="S11.03" data-visual-mode="process" data-material-count="4">
+      <header class="v2-knowledge-point-head"><span>01</span><div><p>S11.03 · process</p><h3>Built-in/library and string functions</h3></div></header>
+      <div class="v2-material-triad">
+        <article class="v2-native-material v2-native-material--map"><h4>Concept relationships</h4><div class="v2-concept-map"><div><strong>Built-in</strong><span>Available without user definition</span></div><div><strong>Library</strong><span>Reusable supplied routine</span></div><div><strong>String function</strong><span>Question provides unfamiliar syntax</span></div><div><strong>Return value</strong><span>Result used by the algorithm</span></div><div><strong>string</strong><span>Built-in/library and string functions.</span></div><div><strong>functions</strong><span>Built-in functions and library routines.</span></div></div></article>
+        <article class="v2-native-material v2-native-material--story"><h4>See how it works</h4><ol><li><span>Plan</span><div><strong>Translate the stated design</strong><p>Built-in/library and string functions.</p></div></li><li><span>Execute</span><div><strong>Apply one complete operation</strong><p>Built-in functions and library routines.</p></div></li><li><span>Test</span><div><strong>Trace state and boundaries</strong><p>For built-in routines and string functions, identify the required concept before describing its mechanism or consequence.</p></div></li></ol></article>
+        <aside class="v2-native-material v2-native-material--cue"><h4>Use the string-function definition supplied in the question</h4><p>String manipulation functions are supplied in the question; use the stated name, parameter order and position convention. Trace the supplied routine exactly, then use its returned string in an assignment, comparison, output or expression.</p></aside>
+      </div>
+      <section class="v2-material-library" aria-label="S11.03 diagrams">
+    <div class="v2-material-library-head"><h3>S11.03 diagrams</h3></div>
+    <div class="v2-material-rail" id="materials-072-s11-03" data-material-rail><figure class="v2-visual" data-material-kind="diagram">
+            <div class="v2-visual-heading"><span>01</span><div><p>Diagram · 1 of 1</p><h4>Use the string-function definition supplied in the question</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Use the string-function definition supplied in the question"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-134-substring.jpg" alt="Use the string-function definition supplied in the question" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>String manipulation functions are supplied in the question; use the stated name, parameter order and position convention.</li><li>Trace the supplied routine exactly, then use its returned string in an assignment, comparison, output or expression.</li><li>Do not import Java&#39;s zero-based substring convention or memorise an unstated course-specific signature.</li></ul></details>
+          </figure></div>
+  </section>
+      <details class="v2-point-precision"><summary>Open precise syllabus wording</summary><p><strong>Use built-in/library and string functions.</strong></p><p>Use built-in functions and library routines. Any function not given in the pseudocode guide will be provided; string manipulation functions will always be given in the question.</p></details>
+    </section></div>
+    <details class="v2-core-facts"><summary>Open precise terminology and exam facts</summary><ul class="v2-facts"><li>Use built-in functions and library routines. Any function not given in the pseudocode guide will be provided; string manipulation functions will always be given in the question.</li><li>Read the supplied function name, parameter order, position convention and returned type before using it. LENGTH is a familiar built-in example; LEFT, RIGHT, MID or SUBSTRING examples in this course illustrate a mechanism only when their definition and indexing convention are stated.</li><li>A function call returns a value, so it can be assigned, compared, output or combined in an expression. Do not import Java&#39;s zero-based substring convention unless the question explicitly specifies it.</li><li>For built-in routines and string functions, identify the required concept before describing its mechanism or consequence.</li></ul></details>
+    <article class="v2-example"><h3>Worked method</h3><ol><li>Apply a supplied string routine</li><li>A question supplies FUNCTION EXTRACT(Text</li><li>INTEGER) RETURNS STRING and states that positions start at 1.</li><li>LENGTH(&quot;NETWORK&quot;) returns 7; EXTRACT(&quot;NETWORK&quot;, 4, 2) returns &quot;WO&quot;.</li><li>Code &lt;- EXTRACT(Name, 1, 3) uses the supplied routine in an assignment without importing Java indexing.</li></ol></article>
+    <aside class="v2-extension"><h3>Beyond syllabus / 延伸知识（不要求背诵）</h3><p>consistent style, modularity and automated tests reduce maintenance errors in larger programs.</p></aside>
         </section>
 
         <section class="v2-panel" id="practice">
@@ -86,6 +92,6 @@
         <nav class="v2-bottom-nav" aria-label="Previous and next lesson"><a href="../lesson-071/" >Previous lesson</a><a href="../lesson-073/" >Next lesson</a></nav>
       </div>
     </main>
-    <script src="../course-v2.js?v=1"></script>
+    <script src="../course-v2.js?v=2"></script>
   </body>
 </html>

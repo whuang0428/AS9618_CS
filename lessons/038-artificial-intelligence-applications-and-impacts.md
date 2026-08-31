@@ -1,15 +1,15 @@
 # Lesson 038: Artificial intelligence applications and impacts
 
-**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029 Version 2<br>
+**Course:** Cambridge International AS Level Computer Science 9618, syllabus for examination in 2027-2029<br>
 **Paper:** Paper 1<br>
 **Syllabus:** Section 7: Ethics and ownership<br>
 **Syllabus requirements:** S7.06<br>
-**Pacing:** Flexible. This lesson is deliberately over-complete; select a quick, full or deep route for the learners in front of you.
+**Pacing:** Flexible. Select a quick, full or deep route for the learners in front of you.
 
 ## Teaching-depth menu
 
 - **Quick route:** Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.
-- **Full route:** Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.
+- **Full route:** Teach every knowledge-point material set, the worked method and all lesson questions.
 - **Deep route:** Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.
 
 ## 1. Prerequisite knowledge and quick diagnostic
@@ -20,47 +20,71 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ### Optional prerequisite refresher
 
-- Version 2 requires both the need for professional ethics and its purpose; evidence must connect responsible professional decisions to public interest, competence and accountability.
+- The syllabus requires both the need for professional ethics and its purpose; evidence must connect responsible professional decisions to public interest, competence and accountability.
 - Show understanding of the need for and purpose of ethics as a computing professional.
 
 
 ## 2. Knowledge explanation
 
-### Learning objectives
+### 1. Artificial intelligence, its applications and its social, economic and environmental impacts (S7.06)
 
-- Show understanding of artificial intelligence, its applications and its social, economic and environmental impacts.
+**Concept relationships**
 
-### Concept checklist for teacher choice
+- **applications:** Artificial intelligence, its applications and its social, economic…
+- **evaluate:** To evaluate an AI application, balance its social,…
+- **social:** Every AI evaluation should identify the application or…
+- **economic:** Social, economic and environmental.
+- **environmental:** Environmental impacts include data-centre energy/material use and optimisation…
+- **impacts:** Social impacts include access, bias and privacy
 
-- AI
-- applications
-- evaluate
-- social
-- economic
-- environmental
-- impacts
+**Mechanism**
 
-### Detailed explanation
+1. **Identify who is affected** — Artificial intelligence, its applications and its social, economic and environmental impacts.
+2. **Trace benefit and harm** — To evaluate an AI application, balance its social, economic and environmental impacts and reach a context-linked judgement.
+3. **Justify the responsible choice** — Every AI evaluation should identify the application or decision mechanism and trace social, economic and environmental impacts before…
 
-- Version 2 requires applications of AI and impacts across all three named dimensions: social, economic and environmental. Evidence must connect an AI mechanism to stakeholder consequences, benefits, harms and a contextual judgement.
+**Environmental impacts include energy use and resource consumption:** Energy use Devices, networks and data centres consume electricity during operation. Carbon emissions Emissions depend on electricity source, device manufacture and transport.
+
+#### Environmental impacts include energy use and resource consumption
+
+![Environmental impacts include energy use and resource consumption](../web/assets/diagrams/stage10-infographics/stage10-lesson-077-environment.jpg)
+
+<details><summary>Text transcript</summary>
+
+- Energy use Devices, networks and data centres consume electricity during operation.
+- Carbon emissions Emissions depend on electricity source, device manufacture and transport.
+- Resource extraction Manufacturing hardware requires metals, rare materials, water and energy.
+- Lifespan Short upgrade cycles increase manufacturing and disposal impact.
+
+</details>
+
+<details><summary>Precise syllabus wording</summary>
+
+Show understanding of artificial intelligence, its applications and its social, economic and environmental impacts.
+
+The syllabus requires applications of AI and impacts across all three named dimensions: social, economic and environmental. Evidence must connect an AI mechanism to stakeholder consequences, benefits, harms and a contextual judgement.
+
+</details>
+
+<details><summary>Open precise terminology and exam facts</summary>
+
+- The syllabus requires applications of AI and impacts across all three named dimensions: social, economic and environmental. Evidence must connect an AI mechanism to stakeholder consequences, benefits, harms and a contextual judgement.
 - AI applications include medical image classification, recommendation, fraud detection, language processing, autonomous control and predictive maintenance. A valid impact answer names the AI decision mechanism and traces a consequence for a stakeholder.
 - Social impacts include access, bias and privacy; economic impacts include productivity, job redesign and error cost; environmental impacts include data-centre energy/material use and optimisation of transport or power. Evaluation balances benefits, harms and mitigations in context.
 - To evaluate an AI application, balance its social, economic and environmental impacts and reach a context-linked judgement.
 - Professional ethics has a purpose: computing professionals must protect public interest, work competently and remain accountable for consequences. Joining a professional ethical body such as the British Computer Society (BCS) or the Institute of Electrical and Electronics Engineers (IEEE) provides codes of conduct, guidance, continuing professional development and a community that supports standards. In a situation, judge whether action is ethical or unethical and explain stakeholder impacts of both choices.
 - Artificial intelligence (AI) applications include classification, recommendation, prediction and autonomous control. Every AI evaluation should identify the application or decision mechanism and trace social, economic and environmental impacts before reaching a contextual judgement with realistic mitigations.
 
-### Worked example
+</details>
 
-AI recruitment review: An AI recruitment system may speed initial screening and reduce administrative cost, but biased data can unfairly exclude applicants, automated rejection can remove accountability, and model operation consumes computing resources. Human review, representative data, appeal, data minimisation and efficient infrastructure address different harms. The system is justified only if measured benefits outweigh social, economic and environmental costs under those safeguards.
+### Worked method
+
+1. AI recruitment review
+2. An AI recruitment system may speed initial screening and reduce administrative cost, but biased data can unfairly exclude applicants, automated rejection can remove accountability, and model operation consumes computing resources.
+3. Human review, representative data, appeal, data minimisation and efficient infrastructure address different harms.
+4. The system is justified only if measured benefits outweigh social, economic and environmental costs under those safeguards.
 
 Beyond syllabus / 延伸知识（不要求背诵）: professional decisions are often reviewed against law, organisational policy, public interest and a published code of conduct.
-
-### Retained visual explanation
-
-![Section 7 topic map](../web/assets/diagrams/stage10-infographics/stage10-lesson-078-map.jpg)
-
-_Section 7 topic map. The image and mobile text alternative come from one maintained fact source._
-
 ## 3. Practice by question type
 
 ### Question 1 - foundation - apply - 2 marks

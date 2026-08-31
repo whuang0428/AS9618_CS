@@ -1,15 +1,15 @@
 # Lesson 077: Procedures and parameter passing
 
-**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029 Version 2<br>
+**Course:** Cambridge International AS Level Computer Science 9618, syllabus for examination in 2027-2029<br>
 **Paper:** Paper 2<br>
 **Syllabus:** Section 11: Programming<br>
 **Syllabus requirements:** S11.06<br>
-**Pacing:** Flexible. This lesson is deliberately over-complete; select a quick, full or deep route for the learners in front of you.
+**Pacing:** Flexible. Select a quick, full or deep route for the learners in front of you.
 
 ## Teaching-depth menu
 
 - **Quick route:** Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.
-- **Full route:** Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.
+- **Full route:** Teach every knowledge-point material set, the worked method and all lesson questions.
 - **Deep route:** Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.
 
 ## 1. Prerequisite knowledge and quick diagnostic
@@ -22,19 +22,55 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ## 2. Knowledge explanation
 
-### Learning objectives
+### 1. And use procedures with parameters passed by reference and by value: Procedures and parameter passing (S11.06)
 
-- Understand and use procedures with parameters passed by reference and by value.
+**Concept relationships**
 
-### Concept checklist for teacher choice
+- **pass:** And use procedures with parameters passed by reference…
+- **procedure:** BYVAL passes a value that the procedure can…
+- **parameter:** Parameters with none, one or more values passed…
+- **parameters:** A procedure may have no parameters, one parameter…
+- **reference:** A reference to the caller's variable
+- **value:** Its name, parameter list and types, and any…
 
-- procedure / procedures
-- parameters
-- passed / passes / pass
-- reference / BYREF
-- value / BYVAL
+**Mechanism**
 
-### Detailed explanation
+1. **Translate the stated design** — And use procedures with parameters passed by reference and by value.
+2. **Apply one complete operation** — Parameters with none, one or more values passed by reference or by value.
+3. **Trace state and boundaries** — BYVAL passes a value that the procedure can use without changing the caller's variable
+
+**Same procedure body, different final result:** Side-by-side comparison By value
+
+#### Same procedure body, different final result
+
+![Same procedure body, different final result](../web/assets/diagrams/stage10-infographics/stage10-lesson-132-compare.jpg)
+
+<details><summary>Text transcript</summary>
+
+- Side-by-side comparison
+- By value
+- By reference
+- Header clue
+- Number : INTEGER
+- BYREF Number : INTEGER
+- What is passed
+- a copy of the value
+- a reference to the caller's variable
+- Change inside subroutine
+- affects local parameter only
+- can affect original variable
+
+</details>
+
+<details><summary>Precise syllabus wording</summary>
+
+Understand and use procedures with parameters passed by reference and by value.
+
+Define and use a procedure; explain when the use of a procedure is appropriate; use parameters with none, one or more values passed by reference or by value.
+
+</details>
+
+<details><summary>Open precise terminology and exam facts</summary>
 
 - Define and use a procedure; explain when the use of a procedure is appropriate; use parameters with none, one or more values passed by reference or by value.
 - Define and use a procedure when an algorithm needs a named action. A procedure may have no parameters, one parameter or several parameters. BYVAL passes a value that the procedure can use without changing the caller's variable; BYREF gives access to the caller's variable so an assignment can persist after the call.
@@ -42,18 +78,17 @@ Ask the learner to give one accurate definition or method step before continuing
 - A procedure header or function header names the subprogram and declares its parameters; a function header also declares its return type. The procedure/function interface is the information a caller needs to use the subprogram: its name, parameter list and types, and any returned value/type.
 - A parameter is the named variable in the header, while an argument is the actual value or variable supplied at a call. RETURN sends a function value back to the caller; output displayed by a procedure is an effect, not a return value.
 
-### Worked example
+</details>
 
-Use a procedure and a function: PROCEDURE Increase(BYREF Number : INTEGER, BYVAL Amount : INTEGER) changes the caller's Number by Amount. FUNCTION CalculateVAT(Price : REAL) RETURNS REAL returns Price 0.20, so Total <- Price + CalculateVAT(Price) uses the returned value in an expression. In Increase(Score, 5), Number and Amount are parameters while Score and 5 are arguments.
+### Worked method
+
+1. Use a procedure and a function
+2. PROCEDURE Increase(BYREF Number
+3. INTEGER, BYVAL Amount
+4. INTEGER) changes the caller's Number by Amount.
+5. REAL) RETURNS REAL returns Price 0.20, so Total <- Price + CalculateVAT(Price) uses the returned value in an expression.
 
 Beyond syllabus / 延伸知识（不要求背诵）: consistent style, modularity and automated tests reduce maintenance errors in larger programs.
-
-### Retained visual explanation
-
-![Same procedure body, different final result](../web/assets/diagrams/stage10-infographics/stage10-lesson-132-compare.jpg)
-
-_Same procedure body, different final result. The image and mobile text alternative come from one maintained fact source._
-
 ## 3. Practice by question type
 
 ### Question 1 - foundation - define - 6 marks

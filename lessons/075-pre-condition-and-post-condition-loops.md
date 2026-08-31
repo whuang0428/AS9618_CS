@@ -1,15 +1,15 @@
 # Lesson 075: Pre-condition and post-condition loops
 
-**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029 Version 2<br>
+**Course:** Cambridge International AS Level Computer Science 9618, syllabus for examination in 2027-2029<br>
 **Paper:** Paper 2<br>
 **Syllabus:** Section 11: Programming<br>
 **Syllabus requirements:** S11.04<br>
-**Pacing:** Flexible. This lesson is deliberately over-complete; select a quick, full or deep route for the learners in front of you.
+**Pacing:** Flexible. Select a quick, full or deep route for the learners in front of you.
 
 ## Teaching-depth menu
 
 - **Quick route:** Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.
-- **Full route:** Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.
+- **Full route:** Teach every knowledge-point material set, the worked method and all lesson questions.
 - **Deep route:** Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.
 
 ## 1. Prerequisite knowledge and quick diagnostic
@@ -26,23 +26,36 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ## 2. Knowledge explanation
 
-### Learning objectives
+### 1. IF/ELSE/nested selection, CASE, count-controlled loops, post-condition and pre-condition loops: Pre-condition and post-condition loops (S11.04)
 
-- Use IF/ELSE/nested selection, CASE, count-controlled loops, post-condition and pre-condition loops.
+**Concept relationships**
 
-### Concept checklist for teacher choice
+- **pre-condition:** IF/ELSE/nested selection, CASE, count-controlled loops, post-condition and pre-condition…
+- **post-condition:** It is well suited when the count or…
+- **count-controlled:** A FOR...NEXT loop is count-controlled.
+- **loop:** A REPEAT...UNTIL loop is a post-condition loop
+- **WHILE:** A WHILE...ENDWHILE loop is a pre-condition loop
+- **REPEAT:** FOR when the count is known, WHILE when…
 
-- IF
-- ELSE
-- nested
-- selection
-- CASE
-- count-controlled
-- loop / loops
-- post-condition
-- pre-condition
+**Mechanism**
 
-### Detailed explanation
+1. **Translate the stated design** — IF/ELSE/nested selection, CASE, count-controlled loops, post-condition and pre-condition loops.
+2. **Apply one complete operation** — It is well suited when the count or bounds are known, but a pre-condition or post-condition loop is…
+3. **Trace state and boundaries** — A REPEAT...UNTIL loop is a post-condition loop
+
+**Concrete case: pre-condition:** IF/ELSE/nested selection, CASE, count-controlled loops, post-condition and pre-condition loops.
+
+
+
+<details><summary>Precise syllabus wording</summary>
+
+Use IF/ELSE/nested selection, CASE, count-controlled loops, post-condition and pre-condition loops.
+
+Use IF statements, including the ELSE clause and nested IF statements; CASE statements; count-controlled loops; post-condition loops; and pre-condition loops.
+
+</details>
+
+<details><summary>Open precise terminology and exam facts</summary>
 
 - Use IF statements, including the ELSE clause and nested IF statements; CASE statements; count-controlled loops; post-condition loops; and pre-condition loops.
 - Use IF...THEN...ELSE...ENDIF when a Boolean condition selects between paths. An ELSE clause supplies the false path. In nested IF statements, every inner and outer IF must be closed and the indentation must show which ELSE belongs to which IF.
@@ -52,18 +65,17 @@ Ask the learner to give one accurate definition or method step before continuing
 - A WHILE...ENDWHILE loop is a pre-condition loop: it tests before the body and may run zero times. A REPEAT...UNTIL loop is a post-condition loop: it executes the body before testing and therefore runs at least once. A FOR...NEXT loop is count-controlled.
 - Select and justify the loop structure from the problem: use FOR when the count is known, WHILE when execution may be unnecessary and continuation is tested first, and REPEAT when the body must run once before a stopping condition can be tested. The justification must use the scenario, not only say that one loop is easier.
 
-### Worked example
+</details>
 
-Nested IF and CASE / Total a fixed array / Choose the loop from the stopping rule: For a grade, an outer IF tests Mark = 80; its ELSE contains an inner IF testing Mark = 50; each IF closes with ENDIF. For a menu, CASE Choice OF maps 1, 2 and 3 to actions and OTHERWISE handles every unlisted value before ENDCASE. For Marks[1:30], set Total <- 0, use FOR Index <- 1 TO 30, add Marks[Index] to Total, close with NEXT Index and output Total after all thirty elements have been processed. Input validation must request a value at least once, so REPEAT; INPUT Mark; UNTIL Mark = 0 AND Mark <= 100 is suitable. Processing records while a file is not at EOF can use WHILE because an empty file may require zero iterations. Processing twelve months uses FOR because the count is fixed.
+### Worked method
+
+1. Nested IF and CASE
+2. Total a fixed array
+3. Choose the loop from the stopping rule
+4. For a grade, an outer IF tests Mark = 80; its ELSE contains an inner IF testing Mark = 50; each IF closes with ENDIF.
+5. For a menu, CASE Choice OF maps 1, 2 and 3 to actions and OTHERWISE handles every unlisted value before ENDCASE.
 
 Beyond syllabus / 延伸知识（不要求背诵）: consistent style, modularity and automated tests reduce maintenance errors in larger programs.
-
-### Retained visual explanation
-
-![Use CASE for clear values of one expression](../web/assets/diagrams/stage10-infographics/stage10-lesson-128-case.jpg)
-
-_Use CASE for clear values of one expression. The image and mobile text alternative come from one maintained fact source._
-
 ## 3. Practice by question type
 
 ### Question 1 - foundation - state - 2 marks

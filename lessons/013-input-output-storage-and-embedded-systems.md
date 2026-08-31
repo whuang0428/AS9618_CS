@@ -1,15 +1,15 @@
 # Lesson 013: Input, output, storage and embedded systems
 
-**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029 Version 2<br>
+**Course:** Cambridge International AS Level Computer Science 9618, syllabus for examination in 2027-2029<br>
 **Paper:** Paper 1<br>
 **Syllabus:** Section 3: Hardware<br>
 **Syllabus requirements:** S3.01, S3.02<br>
-**Pacing:** Flexible. This lesson is deliberately over-complete; select a quick, full or deep route for the learners in front of you.
+**Pacing:** Flexible. Select a quick, full or deep route for the learners in front of you.
 
 ## Teaching-depth menu
 
 - **Quick route:** Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.
-- **Full route:** Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.
+- **Full route:** Teach every knowledge-point material set, the worked method and all lesson questions.
 - **Deep route:** Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.
 
 ## 1. Prerequisite knowledge and quick diagnostic
@@ -22,24 +22,126 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ## 2. Knowledge explanation
 
-### Learning objectives
+### 1. The need for input, output, primary storage, secondary storage and removable storage (S3.01)
 
-- Explain the need for input, output, primary storage, secondary storage and removable storage.
-- Understand embedded systems and their benefits/drawbacks.
+**Concept relationships**
 
-### Concept checklist for teacher choice
+- **primary memory:** The need for input, output, primary memory and…
+- **secondary storage:** The need for input, output, primary storage, secondary…
+- **removable storage:** Removable storage is secondary storage that can be…
+- **input:** A microcontroller may integrate the processor, memory and…
+- **output:** Secondary storage is a separate bidirectional persistence path…
 
-- input
-- output
-- primary memory
-- secondary storage
-- removable storage
-- embedded system
-- dedicated
-- benefit
-- drawback
+**Mechanism**
 
-### Detailed explanation
+1. **Name the exact concept** — The need for input, output, primary memory and secondary storage, including removable storage.
+2. **Explain how its parts connect** — The need for input, output, primary storage, secondary storage and removable storage.
+3. **Use it in a concrete context** — A microcontroller may integrate the processor, memory and input/output interfaces needed for that task.
+
+**Component roles and examples:** Input devices Allow data to enter the system.
+
+#### Component roles and examples
+
+![Component roles and examples](../web/assets/diagrams/stage10-infographics/stage10-lesson-028-components.jpg)
+
+<details><summary>Text transcript</summary>
+
+- Input devices
+- Allow data to enter the system.
+- Examples: keyboard, mouse, barcode reader, touch screen, microphone, camera, sensor.
+- Output devices
+- Present data or results from the system.
+- Examples: monitor, speaker, printer, projector, actuator.
+- Processor
+- Executes instructions and coordinates operations. It processes data; it is not where user files are stored.
+- Primary memory
+- Stores instructions and data currently in use. RAM is volatile; ROM is non-volatile and stores startup instructions.
+- Secondary storage
+- Stores data and files long term, even when power is off.
+
+</details>
+
+#### The basic system flow
+
+![The basic system flow](../web/assets/diagrams/stage10-infographics/stage10-lesson-028-flow.jpg)
+
+<details><summary>Text transcript</summary>
+
+- Input devices capture data for processing.
+- The processor works with instructions and data held in primary memory.
+- Processed results can go directly to output devices.
+- Secondary storage is a separate bidirectional persistence path and is not a compulsory stage before output.
+
+</details>
+
+#### Memory is not the same as storage
+
+![Memory is not the same as storage](../web/assets/diagrams/stage10-infographics/stage10-lesson-028-memory-storage.jpg)
+
+<details><summary>Text transcript</summary>
+
+- Primary memory
+- Secondary storage
+- Holds data/instructions currently being used.
+- Holds files and data long term.
+- Volatility
+- RAM is volatile; contents are lost without power.
+- Non-volatile; data remains when power is off.
+- Speed and capacity
+- Usually faster but smaller and more expensive per unit.
+- Usually larger and cheaper per unit but slower than RAM.
+
+</details>
+
+<details><summary>Precise syllabus wording</summary>
+
+Explain the need for input, output, primary storage, secondary storage and removable storage.
+
+Show understanding of the need for input, output, primary memory and secondary storage, including removable storage.
+
+</details>
+
+### 2. Embedded systems and their benefits/drawbacks (S3.02)
+
+**Concept relationships**
+
+- **benefit:** Embedded systems and their benefits/drawbacks.
+- **drawback:** Embedded systems, including their benefits and drawbacks.
+- **embedded system:** An embedded system is a computer system built…
+- **dedicated:** Drawbacks can include limited processing, storage and user…
+- **embedded:** Define an embedded system by purpose and context,…
+
+**Mechanism**
+
+1. **Name both alternatives precisely** — Embedded systems and their benefits/drawbacks.
+2. **Connect structure to consequence** — Embedded systems, including their benefits and drawbacks.
+3. **Justify against the scenario** — Drawbacks can include limited processing, storage and user interface, difficulty adding new functions, and dependence on the embedded…
+
+**What is an embedded system?:** An embedded system is designed to perform a specific task or closely related set of tasks. It forms part of a larger product, such as a washing machine, microwave oven or router.
+
+#### What is an embedded system?
+
+![What is an embedded system?](../web/assets/diagrams/stage10-infographics/stage10-lesson-034-embedded.jpg)
+
+<details><summary>Text transcript</summary>
+
+- An embedded system is designed to perform a specific task or closely related set of tasks.
+- It forms part of a larger product, such as a washing machine, microwave oven or router.
+- It often uses a limited interface and task-specific resources.
+- Low cost, low power and reliable repeated operation may be relevant design priorities.
+- Define an embedded system by purpose and context, not only by physical size.
+
+</details>
+
+<details><summary>Precise syllabus wording</summary>
+
+Understand embedded systems and their benefits/drawbacks.
+
+Show understanding of embedded systems, including their benefits and drawbacks.
+
+</details>
+
+<details><summary>Open precise terminology and exam facts</summary>
 
 - Show understanding of the need for input, output, primary memory and secondary storage, including removable storage.
 - Show understanding of embedded systems, including their benefits and drawbacks.
@@ -49,18 +151,14 @@ Ask the learner to give one accurate definition or method step before continuing
 - Benefits can include low cost, low power use, small size and reliable, predictable automatic operation because the hardware and software are designed for a limited purpose. Drawbacks can include limited processing, storage and user interface, difficulty adding new functions, and dependence on the embedded controller: if it fails, the larger device may stop working. A valid comparison must link each point to the device and task.
 - A control system sends output signals to actuators and uses sensor feedback to determine the next control action.
 
-### Worked example
+</details>
 
-Field survey tablet: A surveyor enters measurements through a touchscreen, sees validation messages on the display, uses RAM as primary memory while the survey application runs, saves records on internal secondary storage, and copies an encrypted backup to removable storage before leaving the site.
+### Worked method
+
+1. Field survey tablet
+2. A surveyor enters measurements through a touchscreen, sees validation messages on the display, uses RAM as primary memory while the survey application runs, saves records on internal secondary storage, and…
 
 Beyond syllabus / 延伸知识（不要求背诵）: professional device selection also considers accessibility, reliability, repairability and energy use.
-
-### Retained visual explanation
-
-![Component roles and examples](../web/assets/diagrams/stage10-infographics/stage10-lesson-028-components.jpg)
-
-_Component roles and examples. The image and mobile text alternative come from one maintained fact source._
-
 ## 3. Practice by question type
 
 ### Question 1 - foundation - explain - 5 marks

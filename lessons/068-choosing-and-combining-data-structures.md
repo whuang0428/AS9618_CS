@@ -1,15 +1,15 @@
 # Lesson 068: Choosing and combining data structures
 
-**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029 Version 2<br>
+**Course:** Cambridge International AS Level Computer Science 9618, syllabus for examination in 2027-2029<br>
 **Paper:** Paper 2<br>
 **Syllabus:** Section 10: Data types and structures<br>
 **Syllabus requirements:** S10.04, S10.09<br>
-**Pacing:** Flexible. This lesson is deliberately over-complete; select a quick, full or deep route for the learners in front of you.
+**Pacing:** Flexible. Select a quick, full or deep route for the learners in front of you.
 
 ## Teaching-depth menu
 
 - **Quick route:** Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.
-- **Full route:** Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.
+- **Full route:** Teach every knowledge-point material set, the worked method and all lesson questions.
 - **Deep route:** Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.
 
 ## 1. Prerequisite knowledge and quick diagnostic
@@ -28,24 +28,65 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ## 2. Knowledge explanation
 
-### Learning objectives
+### 1. Select one- or two-dimensional arrays for a scenario: Choosing and combining data structures (S10.04)
 
-- Select one- or two-dimensional arrays for a scenario.
-- Understand stack, queue and linked-list features; justify a structure.
+**Concept relationships**
 
-### Concept checklist for teacher choice
+- **1D array:** One index selects an item
+- **2D array:** Two indexes select a cell
+- **Scenario:** Data shape determines dimensions
+- **Bounds:** Valid index range
+- **select:** Select one- or two-dimensional arrays for a scenario.
+- **dimensions:** Select 2D when the scenario has two independent…
 
-- one-dimensional / 1D
-- two-dimensional / 2D
-- select / suitable
-- stack
-- queue
-- linked list
-- LIFO
-- FIFO
-- justify
+**Mechanism**
 
-### Detailed explanation
+1. **Translate the stated design** — Choose a one-dimensional array when each element needs one position, such as twenty marks or a list of…
+2. **Apply one complete operation** — A two-dimensional array uses two indexes, normally interpreted as row and column.
+3. **Trace state and boundaries** — Choose a two-dimensional array when each value naturally needs a row and a column, such as marks for…
+
+**Concrete case: 1D array:** Choose a one-dimensional array when each element needs one position, such as twenty marks or a list of names.
+
+
+
+<details><summary>Precise syllabus wording</summary>
+
+Select one- or two-dimensional arrays for a scenario.
+
+Select a suitable one-dimensional (1D) or two-dimensional (2D) array for a given task. One index suits a linear collection; two indexes suit data with a genuine row-column or equivalent two-coordinate relationship.
+
+</details>
+
+### 2. Stack, queue and linked-list features; justify a structure: Choosing and combining data structures (S10.09)
+
+**Concept relationships**
+
+- **linked list:** Stack, queue and linked-list features
+- **justify:** Their key features and justify which structure suits…
+- **LIFO:** A stack is LIFO
+- **FIFO:** A queue is FIFO
+- **stack:** Stack, queue and linked list are examples of…
+- **queue:** Queue uses an array with front and rear
+
+**Mechanism**
+
+1. **Translate the stated design** — Their key features and justify which structure suits a given situation using LIFO, FIFO or link-based traversal/insertion/deletion evidence.
+2. **Apply one complete operation** — Stack, queue and linked-list features
+3. **Trace state and boundaries** — Stack, queue and linked list are examples of ADTs.
+
+**Concrete case: linked list:** Their key features and justify which structure suits a given situation using LIFO, FIFO or link-based traversal/insertion/deletion evidence.
+
+
+
+<details><summary>Precise syllabus wording</summary>
+
+Understand stack, queue and linked-list features; justify a structure.
+
+Stack, queue and linked list are examples of ADTs. Describe their key features and justify which structure suits a given situation using LIFO, FIFO or link-based traversal/insertion/deletion evidence.
+
+</details>
+
+<details><summary>Open precise terminology and exam facts</summary>
 
 - Select a suitable one-dimensional (1D) or two-dimensional (2D) array for a given task. One index suits a linear collection; two indexes suit data with a genuine row-column or equivalent two-coordinate relationship.
 - Stack, queue and linked list are examples of ADTs. Describe their key features and justify which structure suits a given situation using LIFO, FIFO or link-based traversal/insertion/deletion evidence.
@@ -60,18 +101,15 @@ Ask the learner to give one accurate definition or method step before continuing
 - All three can be implemented using arrays and state variables or indexes. Stack uses an array with a top/stack pointer; queue uses an array with front and rear; linked list uses Data and Next arrays (or an array of node records), start and a free list. Candidates must be able to add, edit and delete data conceptually, but the syllabus does not require pseudocode for these ADT operations.
 - Editing changes the stored data without breaking the access rule or links. Deleting from a linked list reconnects the predecessor to the removed node's successor and returns the freed array slot to the free list; physical array positions need not follow logical list order.
 
-### Worked example
+</details>
 
-Choose structures: Undo history uses a stack because the most recent action is undone first. Print jobs use a queue because the earliest accepted job prints first. A changing ordered playlist can use a linked list for link-based insertion/deletion.
+### Worked method
+
+1. Undo history uses a stack because the most recent action is undone first.
+2. Print jobs use a queue because the earliest accepted job prints first.
+3. A changing ordered playlist can use a linked list for link-based insertion/deletion.
 
 Beyond syllabus / 延伸知识（不要求背诵）: programming libraries often provide tested ADT implementations, but the exam expects you to understand their behaviour and selection.
-
-### Retained visual explanation
-
-![Match scenario evidence to structure features](../web/assets/diagrams/stage10-infographics/stage10-lesson-124-decision.jpg)
-
-_Match scenario evidence to structure features. The image and mobile text alternative come from one maintained fact source._
-
 ## 3. Practice by question type
 
 ### Question 1 - foundation - apply - 2 marks

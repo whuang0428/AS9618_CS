@@ -1,15 +1,15 @@
 # Lesson 031: Security, privacy, integrity and the need for protection
 
-**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029 Version 2<br>
+**Course:** Cambridge International AS Level Computer Science 9618, syllabus for examination in 2027-2029<br>
 **Paper:** Paper 1<br>
 **Syllabus:** Section 6: Security, privacy and data integrity<br>
 **Syllabus requirements:** S6.01, S6.02<br>
-**Pacing:** Flexible. This lesson is deliberately over-complete; select a quick, full or deep route for the learners in front of you.
+**Pacing:** Flexible. Select a quick, full or deep route for the learners in front of you.
 
 ## Teaching-depth menu
 
 - **Quick route:** Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.
-- **Full route:** Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.
+- **Full route:** Teach every knowledge-point material set, the worked method and all lesson questions.
 - **Deep route:** Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.
 
 ## 1. Prerequisite knowledge and quick diagnostic
@@ -22,20 +22,87 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ## 2. Knowledge explanation
 
-### Learning objectives
+### 1. Data security, privacy and integrity (S6.01)
 
-- Distinguish data security, privacy and integrity.
-- Explain the need for data and computer-system security.
+**Concept relationships**
 
-### Concept checklist for teacher choice
+- **Security:** Protection from unauthorised action
+- **Privacy:** Appropriate use of personal data
+- **Integrity:** Accuracy and consistency
+- **Confidentiality:** One part of security
+- **distinguish:** Data security, privacy and integrity.
 
-- security
-- privacy
-- integrity
-- computer-system
-- data
+**Mechanism**
 
-### Detailed explanation
+1. **Identify what needs protection** — Data security, privacy and integrity.
+2. **Trace the attack or error route** — Data security, data privacy and data integrity as separate concepts
+3. **Match a safeguard and limitation** — Authorised publication may preserve integrity while violating privacy.
+
+**Integrity protects data from unauthorised or accidental alteration:** Goal Data should remain accurate, complete and unaltered unless changed by an authorised process. Risk Exam marks, bank balances or stock levels are changed incorrectly.
+
+#### Integrity protects data from unauthorised or accidental alteration
+
+![Integrity protects data from unauthorised or accidental alteration](../web/assets/diagrams/stage10-infographics/stage10-lesson-063-integrity.jpg)
+
+<details><summary>Text transcript</summary>
+
+- Goal Data should remain accurate, complete and unaltered unless changed by an authorised process.
+- Risk Exam marks, bank balances or stock levels are changed incorrectly.
+- Validation and verification Validation checks stated rules; verification checks entered or transferred data against its source, not whether the source is true or complete.
+- Other controls Access rights, checksums, hashes and audit trails can prevent, detect or record some changes, but no control guarantees integrity.
+- Exam wording Explain exactly how the named control prevents, detects or records an incorrect change.
+
+</details>
+
+<details><summary>Precise syllabus wording</summary>
+
+Distinguish data security, privacy and integrity.
+
+Distinguish data security, data privacy and data integrity as separate concepts; evidence must not treat confidentiality, lawful/appropriate use and correctness/consistency as interchangeable.
+
+</details>
+
+### 2. The need for data and computer-system security (S6.02)
+
+**Concept relationships**
+
+- **Data:** Valuable information to protect
+- **System:** Hardware and services to protect
+- **Threat:** Possible cause of harm
+- **Control:** Reduces likelihood or impact
+- **computer-system:** The need for data and computer-system security.
+- **security:** The need for both security of data and…
+
+**Mechanism**
+
+1. **Identify what needs protection** — The need for data and computer-system security.
+2. **Trace the attack or error route** — The need for both security of data and security of the computer system
+3. **Match a safeguard and limitation** — Both data security and computer-system security are necessary.
+
+**Use the risk chain before naming a control:** Asset Something valuable that needs protection, such as exam marks, passwords or customer records. Threat A possible cause of harm, such as unauthorised access, data corruption or service failure.
+
+#### Use the risk chain before naming a control
+
+![Use the risk chain before naming a control](../web/assets/diagrams/stage10-infographics/stage10-lesson-063-risk-chain.jpg)
+
+<details><summary>Text transcript</summary>
+
+- Asset Something valuable that needs protection, such as exam marks, passwords or customer records.
+- Threat A possible cause of harm, such as unauthorised access, data corruption or service failure.
+- Vulnerability A weakness that a threat could exploit, such as weak passwords or poor permissions.
+- Control A safeguard that reduces likelihood or impact, such as access rights, backups or authentication.
+
+</details>
+
+<details><summary>Precise syllabus wording</summary>
+
+Explain the need for data and computer-system security.
+
+Show appreciation of the need for both security of data and security of the computer system; evidence must explain why protecting one layer does not replace the other.
+
+</details>
+
+<details><summary>Open precise terminology and exam facts</summary>
 
 - Distinguish data security, data privacy and data integrity as separate concepts; evidence must not treat confidentiality, lawful/appropriate use and correctness/consistency as interchangeable.
 - Show appreciation of the need for both security of data and security of the computer system; evidence must explain why protecting one layer does not replace the other.
@@ -43,18 +110,17 @@ Ask the learner to give one accurate definition or method step before continuing
 - The concepts overlap but are not synonyms: encrypted inaccurate data may be secure but lack integrity; authorised publication may preserve integrity while violating privacy.
 - Both data security and computer-system security are necessary. Protecting only a data file is insufficient if an attacker can control the operating system, install malware, steal credentials or make the computer system unavailable; protecting only the device is insufficient if copied data is disclosed, altered or lost.
 
-### Worked example
+</details>
 
-Medical records on a compromised computer system: Encryption restricts unauthorised reading of the record data. Access rights restrict who may view or alter it. Anti-virus and a firewall help protect the computer system that stores and processes the records. If malware controls the system, it may steal decrypted data, alter records or stop authorised access even though the stored file was encrypted.
+### Worked method
+
+1. Medical records on a compromised computer system
+2. Encryption restricts unauthorised reading of the record data.
+3. Access rights restrict who may view or alter it.
+4. Anti-virus and a firewall help protect the computer system that stores and processes the records.
+5. If malware controls the system, it may steal decrypted data, alter records or stop authorised access even though the stored file was encrypted.
 
 Beyond syllabus / 延伸知识（不要求背诵）: real security uses defence in depth, combining controls so that one failed control does not expose the whole system.
-
-### Retained visual explanation
-
-![Compare by purpose, not by "security word"](../web/assets/diagrams/stage10-infographics/stage10-lesson-071-compare.jpg)
-
-_Compare by purpose, not by "security word". The image and mobile text alternative come from one maintained fact source._
-
 ## 3. Practice by question type
 
 ### Question 1 - foundation - compare - 5 marks

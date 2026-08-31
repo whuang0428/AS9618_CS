@@ -8,25 +8,25 @@
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
-    <link rel="stylesheet" href="../course-v2.css?v=3" />
+    <link rel="stylesheet" href="../course-v2.css?v=4" />
   </head>
-  <body data-course-version="2" data-lesson-id="059" data-syllabus-ids="S10.04,S10.05">
+  <body data-course-version="2" data-lesson-id="059" data-syllabus-ids="S10.04,S10.05" data-material-status="complete">
     <a class="skip-link" href="#main-content">Skip to main content</a>
     <header class="v2-topbar">
       <div><p class="v2-eyebrow">Cambridge AS9618 | Paper 2 | Section 10: Data types and structures</p><h1>Selecting and using two-dimensional arrays</h1></div>
       <nav class="v2-actions" aria-label="Lesson actions"><a href="../">Course home</a><a href="../assessments/">Assessment bank</a><button type="button" id="printLesson">Print</button></nav>
     </header>
+    <nav class="v2-jump-nav" aria-label="Lesson contents"><strong>Lesson 059</strong><a href="#overview">Overview</a><a href="#prerequisite">Prerequisite</a><a href="#explanation">Explanation</a><a href="#practice">Practice</a><a href="#summary">Summary</a></nav>
     <main class="v2-shell" id="main-content" tabindex="-1">
-      <nav class="v2-toc" aria-label="Lesson contents"><strong>Lesson 059</strong><a href="#overview">Overview</a><a href="#prerequisite">Prerequisite</a><a href="#explanation">Explanation</a><a href="#practice">Practice</a><a href="#summary">Summary</a></nav>
       <div class="v2-content">
         <section class="v2-hero" id="overview">
-          <div><p class="v2-eyebrow">Flexible-depth lesson</p><h2>Selecting and using two-dimensional arrays</h2><p>S10.04, S10.05 | Select what to omit, teach briefly or explore in depth.</p></div>
+          <div><p class="v2-eyebrow">Flexible-depth lesson</p><h2>Selecting and using two-dimensional arrays</h2><p>S10.04, S10.05 | Visual relationships, mechanisms and worked examples.</p></div>
           <div class="v2-time-grid" aria-label="Available lesson depth"><div><strong>Quick</strong><span>diagnose + essentials</span></div><div><strong>Full</strong><span>complete explanation</span></div><div><strong>Deep</strong><span>prerequisites + extension</span></div><div><strong>Choose</strong><span>practice by need</span></div></div>
         </section>
 
         <section class="v2-panel v2-route-menu" aria-labelledby="route-heading">
           <div class="v2-heading"><p class="v2-eyebrow">Teacher choice</p><h2 id="route-heading">Choose the depth for this group</h2></div>
-          <div class="v2-route-grid"><article><h3>Quick route</h3><p>Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.</p></article><article><h3>Full route</h3><p>Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.</p></article><article><h3>Deep route</h3><p>Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.</p></article></div>
+          <div class="v2-route-grid"><article><h3>Quick route</h3><p>Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.</p></article><article><h3>Full route</h3><p>Teach every knowledge-point material set, the worked method and all lesson questions.</p></article><article><h3>Deep route</h3><p>Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.</p></article></div>
         </section>
 
         <section class="v2-panel" id="prerequisite">
@@ -37,21 +37,29 @@
         </section>
 
         <section class="v2-panel" id="explanation">
-          <div class="v2-heading"><p class="v2-eyebrow">Part 2 | deliberately over-complete</p><h2>Knowledge explanation</h2></div>
-          <h3>Learning objectives</h3><ul class="v2-objectives"><li>Select one- or two-dimensional arrays for a scenario.</li><li>Write pseudocode using one- and two-dimensional arrays.</li></ul>
-          <details class="v2-concept-menu"><summary>Open the concept checklist and choose what to teach</summary><ul><li>one-dimensional / 1D</li><li>two-dimensional / 2D</li><li>select / suitable</li><li>pseudocode</li><li>ARRAY</li></ul></details>
-          <div class="v2-explanation-grid">
-            <div>
-              <article class="v2-core-facts"><h3>Detailed explanation</h3><p class="v2-teacher-note">Teach all points, or select only the ones this group needs. The list is intentionally fuller than a fixed lesson slot.</p><ul class="v2-facts"><li>Select a suitable one-dimensional (1D) or two-dimensional (2D) array for a given task. One index suits a linear collection; two indexes suit data with a genuine row-column or equivalent two-coordinate relationship.</li><li>Write Cambridge pseudocode for 1D and 2D arrays: declare explicit inclusive bounds and an element type, use the required number of indexes, and traverse only valid positions.</li><li>An array is a collection of elements stored under one identifier. An index selects one element. The lower bound is the first valid index and the upper bound is the last valid index; both bounds are inclusive in a Cambridge declaration such as ARRAY[1:20] OF INTEGER.</li><li>Choose a one-dimensional array when each element needs one position, such as twenty marks or a list of names. Choose a two-dimensional array when each value naturally needs a row and a column, such as marks for several students across several tests. Do not choose 2D merely because there are many values.</li><li>One-dimensional array pseudocode must declare explicit bounds and an element type, access elements with one index and use loop bounds that match the declared lower and upper bounds. The number of elements is upper bound - lower bound + 1.</li><li>A two-dimensional array uses two indexes, normally interpreted as row and column. In DECLARE Marks : ARRAY[1:30, 1:4] OF INTEGER, the first range gives 30 valid row indexes and the second gives 4 valid column indexes, for 120 cells.</li><li>Select 2D when the scenario has two independent position dimensions, such as Student and Test, Row and Column, or Day and Period. A simple list, sequence or one category of positions remains 1D even when it contains many elements.</li><li>Two-dimensional pseudocode declares both ranges, accesses one cell as Marks[Student, Test] and normally uses nested loops: one loop traverses rows and the inner loop traverses every column for the current row.</li></ul></article>
-              <article class="v2-example"><h3>Worked example</h3><p>Choose and declare the dimension: Twenty daily temperatures need one position per day, so DECLARE Temperature : ARRAY[1:20] OF REAL is suitable and valid indexes are 1 to 20. Marks for 30 students in 4 tests need row and column positions, so a 2D array is suitable instead.</p></article>
-              <aside class="v2-extension"><h3>Beyond syllabus / 延伸知识（不要求背诵）</h3><p>programming libraries often provide tested ADT implementations, but the exam expects you to understand their behaviour and selection.</p></aside>
-            </div>
-            <figure class="v2-visual">
-              <img src="../assets/diagrams/stage10-infographics/stage10-lesson-116-declare.jpg" alt="Declare arrays. Cambridge-style pseudocode. Valid indexes. Five integer scores. DECLARE Scores : ARRAY[1:5] OF INTEGER" loading="lazy" />
-              <figcaption>Bounds say which indexes are valid. One maintained explanation is shown as an image on larger screens and as text on small screens.</figcaption>
-              <div class="v2-mobile-visual-text" aria-label="Mobile text alternative"><ul><li>Declare arrays</li><li>Cambridge-style pseudocode</li><li>Valid indexes</li><li>Five integer scores</li><li>DECLARE Scores : ARRAY[1:5] OF INTEGER</li></ul></div>
-            </figure>
-          </div>
+          <div class="v2-heading"><p class="v2-eyebrow">Part 2 | visual explanation</p><h2>Learn each point through visuals</h2><p>Use the relationship map, mechanism and concrete cue before opening precise wording.</p></div>
+    <nav class="v2-knowledge-index" aria-label="Knowledge points in this lesson"><a href="#knowledge-s10-04"><span>01</span>S10.04</a><a href="#knowledge-s10-05"><span>02</span>S10.05</a></nav><div class="v2-knowledge-point-list"><section class="v2-knowledge-point" id="knowledge-s10-04" data-syllabus-id="S10.04" data-visual-mode="process" data-material-count="3">
+      <header class="v2-knowledge-point-head"><span>01</span><div><p>S10.04 · process</p><h3>Select one- or two-dimensional arrays for a scenario: Selecting and using two-dimensional arrays</h3></div></header>
+      <div class="v2-material-triad">
+        <article class="v2-native-material v2-native-material--map"><h4>Concept relationships</h4><div class="v2-concept-map"><div><strong>1D array</strong><span>One index selects an item</span></div><div><strong>2D array</strong><span>Two indexes select a cell</span></div><div><strong>Scenario</strong><span>Data shape determines dimensions</span></div><div><strong>Bounds</strong><span>Valid index range</span></div><div><strong>two-dimensional</strong><span>Select one- or two-dimensional arrays for a scenario.</span></div><div><strong>one-dimensional</strong><span>Select a suitable one-dimensional (1D) or two-dimensional (2D)…</span></div></div></article>
+        <article class="v2-native-material v2-native-material--story"><h4>See how it works</h4><ol><li><span>Plan</span><div><strong>Translate the stated design</strong><p>A two-dimensional array uses two indexes, normally interpreted as row and column.</p></div></li><li><span>Execute</span><div><strong>Apply one complete operation</strong><p>Choose a two-dimensional array when each value naturally needs a row and a column, such as marks for…</p></div></li><li><span>Test</span><div><strong>Trace state and boundaries</strong><p>ARRAY[1:30, 1:4] OF INTEGER, the first range gives 30 valid row indexes and the second gives 4 valid…</p></div></li></ol></article>
+        <aside class="v2-native-material v2-native-material--cue"><h4>Concrete case: 1D array</h4><p>A two-dimensional array uses two indexes, normally interpreted as row and column.</p></aside>
+      </div>
+
+      <details class="v2-point-precision"><summary>Open precise syllabus wording</summary><p><strong>Select one- or two-dimensional arrays for a scenario.</strong></p><p>Select a suitable one-dimensional (1D) or two-dimensional (2D) array for a given task. One index suits a linear collection; two indexes suit data with a genuine row-column or equivalent two-coordinate relationship.</p></details>
+    </section><section class="v2-knowledge-point" id="knowledge-s10-05" data-syllabus-id="S10.05" data-visual-mode="process" data-material-count="3">
+      <header class="v2-knowledge-point-head"><span>02</span><div><p>S10.05 · process</p><h3>Pseudocode using one- and two-dimensional arrays: Selecting and using two-dimensional arrays</h3></div></header>
+      <div class="v2-material-triad">
+        <article class="v2-native-material v2-native-material--map"><h4>Concept relationships</h4><div class="v2-concept-map"><div><strong>ARRAY</strong><span>Pseudocode using one- and two-dimensional arrays.</span></div><div><strong>pseudocode</strong><span>One-dimensional array pseudocode must declare explicit bounds and…</span></div><div><strong>1D</strong><span>Select a suitable one-dimensional (1D) or two-dimensional (2D)…</span></div><div><strong>2D</strong><span>Cambridge pseudocode for 1D and 2D arrays</span></div><div><strong>dimensional</strong><span>A two-dimensional array uses two indexes, normally interpreted…</span></div></div></article>
+        <article class="v2-native-material v2-native-material--story"><h4>See how it works</h4><ol><li><span>Plan</span><div><strong>Translate the stated design</strong><p>Pseudocode using one- and two-dimensional arrays.</p></div></li><li><span>Execute</span><div><strong>Apply one complete operation</strong><p>One-dimensional array pseudocode must declare explicit bounds and an element type, access elements with one index and use…</p></div></li><li><span>Test</span><div><strong>Trace state and boundaries</strong><p>Cambridge pseudocode for 1D and 2D arrays</p></div></li></ol></article>
+        <aside class="v2-native-material v2-native-material--cue"><h4>Concrete case: ARRAY</h4><p>Pseudocode using one- and two-dimensional arrays.</p></aside>
+      </div>
+
+      <details class="v2-point-precision"><summary>Open precise syllabus wording</summary><p><strong>Write pseudocode using one- and two-dimensional arrays.</strong></p><p>Write Cambridge pseudocode for 1D and 2D arrays: declare explicit inclusive bounds and an element type, use the required number of indexes, and traverse only valid positions.</p></details>
+    </section></div>
+    <details class="v2-core-facts"><summary>Open precise terminology and exam facts</summary><ul class="v2-facts"><li>Select a suitable one-dimensional (1D) or two-dimensional (2D) array for a given task. One index suits a linear collection; two indexes suit data with a genuine row-column or equivalent two-coordinate relationship.</li><li>Write Cambridge pseudocode for 1D and 2D arrays: declare explicit inclusive bounds and an element type, use the required number of indexes, and traverse only valid positions.</li><li>An array is a collection of elements stored under one identifier. An index selects one element. The lower bound is the first valid index and the upper bound is the last valid index; both bounds are inclusive in a Cambridge declaration such as ARRAY[1:20] OF INTEGER.</li><li>Choose a one-dimensional array when each element needs one position, such as twenty marks or a list of names. Choose a two-dimensional array when each value naturally needs a row and a column, such as marks for several students across several tests. Do not choose 2D merely because there are many values.</li><li>One-dimensional array pseudocode must declare explicit bounds and an element type, access elements with one index and use loop bounds that match the declared lower and upper bounds. The number of elements is upper bound - lower bound + 1.</li><li>A two-dimensional array uses two indexes, normally interpreted as row and column. In DECLARE Marks : ARRAY[1:30, 1:4] OF INTEGER, the first range gives 30 valid row indexes and the second gives 4 valid column indexes, for 120 cells.</li><li>Select 2D when the scenario has two independent position dimensions, such as Student and Test, Row and Column, or Day and Period. A simple list, sequence or one category of positions remains 1D even when it contains many elements.</li><li>Two-dimensional pseudocode declares both ranges, accesses one cell as Marks[Student, Test] and normally uses nested loops: one loop traverses rows and the inner loop traverses every column for the current row.</li></ul></details>
+    <article class="v2-example"><h3>Worked method</h3><ol><li>Choose and declare the dimension</li><li>Twenty daily temperatures need one position per day, so DECLARE Temperature</li><li>ARRAY[1:20] OF REAL is suitable and valid indexes are 1 to 20.</li><li>Marks for 30 students in 4 tests need row and column positions, so a 2D array is suitable instead.</li></ol></article>
+    <aside class="v2-extension"><h3>Beyond syllabus / 延伸知识（不要求背诵）</h3><p>programming libraries often provide tested ADT implementations, but the exam expects you to understand their behaviour and selection.</p></aside>
         </section>
 
         <section class="v2-panel" id="practice">
@@ -86,6 +94,6 @@
         <nav class="v2-bottom-nav" aria-label="Previous and next lesson"><a href="../lesson-058/" >Previous lesson</a><a href="../lesson-060/" >Next lesson</a></nav>
       </div>
     </main>
-    <script src="../course-v2.js?v=1"></script>
+    <script src="../course-v2.js?v=2"></script>
   </body>
 </html>

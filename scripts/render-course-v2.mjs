@@ -12,8 +12,24 @@ const questionById = new Map(questionBank.questions.map((question) => [question.
 if (content.lessonCount !== 90 || content.lessons.length !== 90) throw new Error("Course V2 must contain exactly 90 lessons");
 if (questionBank.questionCount !== 272) throw new Error("Course V2 question bank must contain 272 lesson questions");
 
-function escapeHtml(value) {
+function sanitizeStudentText(value) {
   return String(value ?? "")
+    .replace(/The Version 2 Notes also name/gi, "The syllabus also names")
+    .replace(/The Version 2 Notes name/gi, "The syllabus names")
+    .replace(/The Version 2 (?:row|table) requires/gi, "The syllabus requires")
+    .replace(/Version 2 explicitly includes/gi, "The syllabus explicitly includes")
+    .replace(/Version 2 explicitly requires/gi, "The syllabus explicitly requires")
+    .replace(/Version 2 requires/gi, "The syllabus requires")
+    .replace(/the preceding Version 2 row/gi, "the syllabus list above")
+    .replace(/the Version 2 (?:row|table)/gi, "the syllabus")
+    .replace(/Use the complete Version 2 instruction set/gi, "Use the complete specified instruction set")
+    .replace(/\bVersion 2\b/gi, "the syllabus")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function escapeHtml(value) {
+  return sanitizeStudentText(value)
     .replaceAll("&", "&amp;")
     .replaceAll("<", "&lt;")
     .replaceAll(">", "&gt;")
@@ -22,7 +38,7 @@ function escapeHtml(value) {
 }
 
 function markdownEscape(value) {
-  return String(value ?? "").replaceAll("|", "\\|");
+  return sanitizeStudentText(value).replaceAll("|", "\\|");
 }
 
 function slugify(value) {
@@ -32,6 +48,19 @@ function slugify(value) {
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/^-|-$/g, "")
     .slice(0, 88);
+}
+
+function shorten(value, maximumWords = 30) {
+  const words = String(value ?? "").split(/\s+/).filter(Boolean);
+  return words.length <= maximumWords ? words.join(" ") : `${words.slice(0, maximumWords).join(" ")}…`;
+}
+
+function displaySteps(value, maximumSteps = 5) {
+  const fragments = String(value ?? "")
+    .split(/(?<=[.!?])\s+|\s+\/\s+|:\s+/)
+    .map((fragment) => fragment.trim())
+    .filter((fragment) => fragment.split(/\s+/).length >= 3);
+  return (fragments.length ? fragments : [value]).slice(0, maximumSteps).map((fragment) => shorten(fragment, 30));
 }
 
 function lessonFilename(lesson) {
@@ -46,6 +75,52 @@ function sectionLabel(lesson) {
   return lesson.section === "Review" ? lesson.sectionTitle : `Section ${lesson.section}: ${lesson.sectionTitle}`;
 }
 
+function renderKnowledgeMarkdown(lesson) {
+  return lesson.knowledgePoints.map((point, index) => `### ${index + 1}. ${markdownEscape(point.displayTitle)} (${point.id})
+
+**Concept relationships**
+
+${point.nodes.map((node) => `- **${markdownEscape(node.label)}:** ${markdownEscape(node.value)}`).join("\n")}
+
+**Mechanism**
+
+${point.steps.map((step, stepIndex) => `${stepIndex + 1}. **${markdownEscape(step.title)}** — ${markdownEscape(step.detail)}`).join("\n")}
+
+**${markdownEscape(point.cue.title)}:** ${markdownEscape(point.cue.text)}
+
+${point.visuals.map((visual) => `#### ${markdownEscape(visual.title)}
+
+![${markdownEscape(visual.title)}](../web/${visual.path})
+
+<details><summary>Text transcript</summary>
+
+${visual.altFacts.map((fact) => `- ${markdownEscape(fact)}`).join("\n")}
+
+</details>`).join("\n\n")}
+
+<details><summary>Precise syllabus wording</summary>
+
+${markdownEscape(point.title)}
+
+${markdownEscape(point.notes)}
+
+</details>`).join("\n\n");
+}
+
+function renderReviewMarkdown(lesson) {
+  return `### Review lanes
+
+${lesson.reviewMaterials.map((lane) => `#### ${markdownEscape(lane.title)}
+
+${lane.points.map((point) => `- ${markdownEscape(point)}`).join("\n")}`).join("\n\n")}
+
+### Review method
+
+1. Choose one lane and explain the links between its ideas without notes.
+2. Check the precise term or method that caused hesitation.
+3. Correct one answer, then state exactly why the correction earns the mark.`;
+}
+
 function renderMarkdown(lesson) {
   const questions = lesson.questionIds.map((id) => questionById.get(id));
   const visual = lesson.visual
@@ -54,13 +129,30 @@ function renderMarkdown(lesson) {
   const references = lesson.pastPaperRefs.length
     ? `\n### Related past-paper indexes\n\n| Reference | Marks | Command word | Question type |\n|---|---:|---|---|\n${lesson.pastPaperRefs.map((reference) => `| ${markdownEscape(reference.sourceRef)} | ${reference.marks} | ${reference.commandWord} | ${reference.questionType} |`).join("\n")}\n\nThese are indexes only. Cambridge question and mark-scheme wording is not reproduced.\n`
     : "";
+  const knowledgeBody = lesson.materialStatus === "complete"
+    ? `${renderKnowledgeMarkdown(lesson)}
+
+<details><summary>Open precise terminology and exam facts</summary>
+
+${lesson.coreFacts.map((fact) => `- ${fact}`).join("\n")}
+
+</details>
+
+### Worked method
+
+${displaySteps(lesson.workedExample).map((step, index) => `${index + 1}. ${step}`).join("\n")}
+
+${lesson.extension}`
+    : lesson.materialStatus === "review-complete"
+      ? renderReviewMarkdown(lesson)
+      : (() => { throw new Error(`L${lesson.id} has no complete material status`); })();
   return `# Lesson ${lesson.id}: ${lesson.title}
 
-**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029 Version 2<br>
+**Course:** Cambridge International AS Level Computer Science 9618, syllabus for examination in 2027-2029<br>
 **Paper:** ${paperLabel(lesson)}<br>
 **Syllabus:** ${sectionLabel(lesson)}<br>
 **Syllabus requirements:** ${lesson.syllabusIds.join(", ")}<br>
-**Pacing:** Flexible. This lesson is deliberately over-complete; select a quick, full or deep route for the learners in front of you.
+**Pacing:** Flexible. Select a quick, full or deep route for the learners in front of you.
 
 ## Teaching-depth menu
 
@@ -78,24 +170,7 @@ ${lesson.prerequisiteKnowledge.length ? `### Optional prerequisite refresher\n\n
 
 ## 2. Knowledge explanation
 
-### Learning objectives
-
-${lesson.learningObjectives.map((objective) => `- ${objective}`).join("\n")}
-
-### Concept checklist for teacher choice
-
-${lesson.conceptChecklist.map((concept) => `- ${concept}`).join("\n")}
-
-### Detailed explanation
-
-${lesson.coreFacts.map((fact) => `- ${fact}`).join("\n")}
-
-### Worked example
-
-${lesson.workedExample}
-
-${lesson.extension}
-${visual}
+${knowledgeBody}
 ## 3. Practice by question type
 
 ${questions.map((question, index) => `### Question ${index + 1} - ${question.difficulty} - ${question.commandWord} - ${question.marks} marks
@@ -136,6 +211,67 @@ function renderVisual(lesson) {
             </figure>`;
 }
 
+const materialKindLabels = {
+  comparison: "Comparison",
+  diagram: "Diagram",
+  example: "Concrete example",
+  process: "Process",
+};
+
+function renderVisualFigure(visual, index, total) {
+  const facts = visual.altFacts.length ? visual.altFacts : [`Visual summary of ${visual.title}`];
+  return `<figure class="v2-visual" data-material-kind="${escapeHtml(visual.kind ?? "diagram")}">
+            <div class="v2-visual-heading"><span>${String(index + 1).padStart(2, "0")}</span><div><p>${escapeHtml(materialKindLabels[visual.kind] ?? "Diagram")} · ${index + 1} of ${total}</p><h4>${escapeHtml(visual.title)}</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: ${escapeHtml(visual.title)}"><img src="../${escapeHtml(visual.path)}" alt="${escapeHtml(visual.title)}" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul>${facts.map((fact) => `<li>${escapeHtml(fact)}</li>`).join("")}</ul></details>
+          </figure>`;
+}
+
+function renderVisualRail(visuals, label, railId) {
+  if (!visuals.length) return "";
+  const controls = visuals.length > 1
+    ? `<div class="v2-material-controls">
+        <button type="button" data-material-prev aria-controls="${railId}" aria-label="Previous diagram">‹</button>
+        <span data-material-position>1 / ${visuals.length}</span>
+        <button type="button" data-material-next aria-controls="${railId}" aria-label="Next diagram">›</button>
+      </div>`
+    : "";
+  return `<section class="v2-material-library" aria-label="${escapeHtml(label)}">
+    <div class="v2-material-library-head"><h3>${escapeHtml(label)}</h3>${controls}</div>
+    <div class="v2-material-rail" id="${railId}" data-material-rail>${visuals.map((visual, index) => renderVisualFigure(visual, index, visuals.length)).join("")}</div>
+  </section>`;
+}
+
+function renderKnowledgePoints(lesson) {
+  const index = `<nav class="v2-knowledge-index" aria-label="Knowledge points in this lesson">${lesson.knowledgePoints.map((point, pointIndex) => `<a href="#knowledge-${slugify(point.id)}"><span>${String(pointIndex + 1).padStart(2, "0")}</span>${escapeHtml(point.id)}</a>`).join("")}</nav>`;
+  const points = lesson.knowledgePoints.map((point, pointIndex) => `<section class="v2-knowledge-point" id="knowledge-${slugify(point.id)}" data-syllabus-id="${escapeHtml(point.id)}" data-visual-mode="${escapeHtml(point.visualMode)}" data-material-count="${point.materialCount}">
+      <header class="v2-knowledge-point-head"><span>${String(pointIndex + 1).padStart(2, "0")}</span><div><p>${escapeHtml(point.id)} · ${escapeHtml(point.visualMode)}</p><h3>${escapeHtml(point.displayTitle)}</h3></div></header>
+      <div class="v2-material-triad">
+        <article class="v2-native-material v2-native-material--map"><h4>Concept relationships</h4><div class="v2-concept-map">${point.nodes.map((node) => `<div><strong>${escapeHtml(node.label)}</strong><span>${escapeHtml(node.value)}</span></div>`).join("")}</div></article>
+        <article class="v2-native-material v2-native-material--story"><h4>See how it works</h4><ol>${point.steps.map((step) => `<li><span>${escapeHtml(step.label)}</span><div><strong>${escapeHtml(step.title)}</strong><p>${escapeHtml(step.detail)}</p></div></li>`).join("")}</ol></article>
+        <aside class="v2-native-material v2-native-material--cue"><h4>${escapeHtml(point.cue.title)}</h4><p>${escapeHtml(point.cue.text)}</p></aside>
+      </div>
+      ${renderVisualRail(point.visuals, `${point.id} diagrams`, `materials-${lesson.id}-${slugify(point.id)}`)}
+      <details class="v2-point-precision"><summary>Open precise syllabus wording</summary><p><strong>${escapeHtml(point.title)}</strong></p><p>${escapeHtml(point.notes)}</p></details>
+    </section>`).join("");
+  return `${index}<div class="v2-knowledge-point-list">${points}</div>`;
+}
+
+function renderReviewMaterials(lesson) {
+  return `<div class="v2-review-grid">${lesson.reviewMaterials.map((lane) => `<article class="v2-review-lane"><div><span>${String(lane.section).padStart(2, "0")}</span><h3>${escapeHtml(lane.title)}</h3></div><ul>${lane.points.map((point) => `<li>${escapeHtml(point)}</li>`).join("")}</ul></article>`).join("")}</div>
+    <article class="v2-review-method"><h3>Review method</h3><ol><li>Choose one lane and explain the links without notes.</li><li>Check the exact term or method that caused hesitation.</li><li>Correct one answer and name the reason it now earns the mark.</li></ol></article>`;
+}
+
+function renderExplanation(lesson) {
+  if (lesson.materialStatus === "complete") return `<div class="v2-heading"><p class="v2-eyebrow">Part 2 | visual explanation</p><h2>Learn each point through visuals</h2><p>Use the relationship map, mechanism and concrete cue before opening precise wording.</p></div>
+    ${renderKnowledgePoints(lesson)}
+    <details class="v2-core-facts"><summary>Open precise terminology and exam facts</summary><ul class="v2-facts">${lesson.coreFacts.map((fact) => `<li>${escapeHtml(fact)}</li>`).join("")}</ul></details>
+    <article class="v2-example"><h3>Worked method</h3><ol>${displaySteps(lesson.workedExample).map((step) => `<li>${escapeHtml(step)}</li>`).join("")}</ol></article>
+    <aside class="v2-extension"><h3>Beyond syllabus / 延伸知识（不要求背诵）</h3><p>${escapeHtml(lesson.extension.replace(/^Beyond syllabus \/ 延伸知识（不要求背诵）:\s*/, ""))}</p></aside>`;
+  if (lesson.materialStatus === "review-complete") return `<div class="v2-heading"><p class="v2-eyebrow">Part 2 | connected review</p><h2>Reconnect the course before practising</h2><p>Use each lane to retrieve a small cluster of related ideas, then repair one weak link.</p></div>${renderReviewMaterials(lesson)}`;
+  throw new Error(`L${lesson.id} has no complete material status`);
+}
+
 function renderLessonHtml(lesson) {
   const questions = lesson.questionIds.map((id) => questionById.get(id));
   const previous = lesson.previousLesson ? `../lesson-${lesson.previousLesson}/` : "../";
@@ -158,19 +294,19 @@ function renderLessonHtml(lesson) {
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
-    <link rel="stylesheet" href="../course-v2.css?v=3" />
+    <link rel="stylesheet" href="../course-v2.css?v=4" />
   </head>
-  <body data-course-version="2" data-lesson-id="${lesson.id}" data-syllabus-ids="${escapeHtml(lesson.syllabusIds.join(","))}">
+  <body data-course-version="2" data-lesson-id="${lesson.id}" data-syllabus-ids="${escapeHtml(lesson.syllabusIds.join(","))}" data-material-status="${escapeHtml(lesson.materialStatus ?? "pending")}">
     <a class="skip-link" href="#main-content">Skip to main content</a>
     <header class="v2-topbar">
       <div><p class="v2-eyebrow">Cambridge AS9618 | ${paperLabel(lesson)} | ${escapeHtml(sectionLabel(lesson))}</p><h1>${escapeHtml(lesson.title)}</h1></div>
       <nav class="v2-actions" aria-label="Lesson actions"><a href="../">Course home</a><a href="../assessments/">Assessment bank</a><button type="button" id="printLesson">Print</button></nav>
     </header>
+    <nav class="v2-jump-nav" aria-label="Lesson contents"><strong>Lesson ${lesson.id}</strong><a href="#overview">Overview</a><a href="#prerequisite">Prerequisite</a><a href="#explanation">Explanation</a><a href="#practice">Practice</a><a href="#summary">Summary</a></nav>
     <main class="v2-shell" id="main-content" tabindex="-1">
-      <nav class="v2-toc" aria-label="Lesson contents"><strong>Lesson ${lesson.id}</strong><a href="#overview">Overview</a><a href="#prerequisite">Prerequisite</a><a href="#explanation">Explanation</a><a href="#practice">Practice</a><a href="#summary">Summary</a></nav>
       <div class="v2-content">
         <section class="v2-hero" id="overview">
-          <div><p class="v2-eyebrow">Flexible-depth lesson</p><h2>${escapeHtml(lesson.title)}</h2><p>${escapeHtml(lesson.syllabusIds.join(", "))} | Select what to omit, teach briefly or explore in depth.</p></div>
+          <div><p class="v2-eyebrow">Flexible-depth lesson</p><h2>${escapeHtml(lesson.title)}</h2><p>${escapeHtml(lesson.syllabusIds.join(", "))} | ${lesson.materialStatus === "review-complete" ? "Connected review lanes and error diagnosis." : "Visual relationships, mechanisms and worked examples."}</p></div>
           <div class="v2-time-grid" aria-label="Available lesson depth"><div><strong>Quick</strong><span>diagnose + essentials</span></div><div><strong>Full</strong><span>complete explanation</span></div><div><strong>Deep</strong><span>prerequisites + extension</span></div><div><strong>Choose</strong><span>practice by need</span></div></div>
         </section>
 
@@ -187,17 +323,7 @@ function renderLessonHtml(lesson) {
         </section>
 
         <section class="v2-panel" id="explanation">
-          <div class="v2-heading"><p class="v2-eyebrow">Part 2 | deliberately over-complete</p><h2>Knowledge explanation</h2></div>
-          <h3>Learning objectives</h3><ul class="v2-objectives">${lesson.learningObjectives.map((objective) => `<li>${escapeHtml(objective)}</li>`).join("")}</ul>
-          <details class="v2-concept-menu"><summary>Open the concept checklist and choose what to teach</summary><ul>${lesson.conceptChecklist.map((concept) => `<li>${escapeHtml(concept)}</li>`).join("")}</ul></details>
-          <div class="v2-explanation-grid">
-            <div>
-              <article class="v2-core-facts"><h3>Detailed explanation</h3><p class="v2-teacher-note">Teach all points, or select only the ones this group needs. The list is intentionally fuller than a fixed lesson slot.</p><ul class="v2-facts">${lesson.coreFacts.map((fact) => `<li>${escapeHtml(fact)}</li>`).join("")}</ul></article>
-              <article class="v2-example"><h3>Worked example</h3><p>${escapeHtml(lesson.workedExample)}</p></article>
-              <aside class="v2-extension"><h3>Beyond syllabus / 延伸知识（不要求背诵）</h3><p>${escapeHtml(lesson.extension.replace(/^Beyond syllabus \/ 延伸知识（不要求背诵）:\s*/, ""))}</p></aside>
-            </div>
-            ${renderVisual(lesson)}
-          </div>
+          ${renderExplanation(lesson)}
         </section>
 
         <section class="v2-panel" id="practice">
@@ -219,7 +345,7 @@ function renderLessonHtml(lesson) {
         <nav class="v2-bottom-nav" aria-label="Previous and next lesson"><a href="${previous}" ${lesson.previousLesson ? "" : 'aria-disabled="true"'}>Previous lesson</a><a href="${next}" ${lesson.nextLesson ? "" : 'aria-disabled="true"'}>Next lesson</a></nav>
       </div>
     </main>
-    <script src="../course-v2.js?v=1"></script>
+    <script src="../course-v2.js?v=2"></script>
   </body>
 </html>\n`;
 }
@@ -358,7 +484,7 @@ const sectionRows = Object.entries(frequency.sectionStatistics).map(([section, s
   const lastLesson = [...content.lessons].reverse().find((lesson) => lesson.section === Number(section));
   return `| ${section} | ${stats.marks} | ${stats.paperAppearances} | ${frequency.lessonAllocation.sections[section]} | L${firstLesson.id}-L${lastLesson.id} |`;
 }).join("\n");
-const courseMap = `# AS9618 90-lesson course map\n\nThe course follows Cambridge 9618 2027-2029 Version 2 Sections 1-12. Paper 1 and Paper 2 each receive 44 teaching lessons plus one integrated review lesson.\n\n## Allocation evidence\n\n| Section | 2023-2025 marks | Distinct-paper appearances | Lessons | Range |\n|---:|---:|---:|---:|---|\n${sectionRows}\n\nAllocation formula: minimum two lessons per section, then 50% syllabus breadth, 25% distinct-paper appearances and 25% marks, rounded by largest remainder in official section order.\n\n## Lesson sequence\n\n${content.lessons.map((lesson) => `- **L${lesson.id}** ${lesson.title} - ${paperLabel(lesson)}, ${sectionLabel(lesson)} - ${lesson.syllabusIds.join(", ")}`).join("\n")}\n`;
+const courseMap = `# AS9618 90-lesson course map\n\nThe course follows Cambridge 9618 syllabus Sections 1-12 for examination in 2027-2029. Paper 1 and Paper 2 each receive 44 teaching lessons plus one integrated review lesson.\n\n## Allocation evidence\n\n| Section | 2023-2025 marks | Distinct-paper appearances | Lessons | Range |\n|---:|---:|---:|---:|---|\n${sectionRows}\n\nAllocation formula: minimum two lessons per section, then 50% syllabus breadth, 25% distinct-paper appearances and 25% marks, rounded by largest remainder in official section order.\n\n## Lesson sequence\n\n${content.lessons.map((lesson) => `- **L${lesson.id}** ${lesson.title} - ${paperLabel(lesson)}, ${sectionLabel(lesson)} - ${lesson.syllabusIds.join(", ")}`).join("\n")}\n`;
 fs.writeFileSync(path.join(root, "course-map.md"), courseMap);
 
 const duplicateLists = {

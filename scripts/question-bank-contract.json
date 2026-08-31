@@ -3183,7 +3183,7 @@
       "marks": 3,
       "difficulty": "transfer",
       "prompt": "Explain how dbms architecture, integrity, security and backup would be applied in a suitable computing context.",
-      "answer": "Version 2 names the developer interface and query processor as DBMS software tools whose use and purpose must be understood in practice. They must be distinguished rather than listed without function. An entity-relationship (E-R) diagram documents a database design by showing the entities, their relevant attributes or keys, the relationships between entities and the relationship cardinality. Entity names should describe things about which the system stores multiple facts; attributes belong to the entity they describe. To produce an E-R diagram, extract entity candidates from the scenario, assign identifiers, connect only supported relationships and label cardinality as one-to-one, one-to-many or many-to-many. Resolve a many-to-many relationship with a linking entity when converting the design to relational tables. A diagram must preserve the stated business rules rather than inventing links from similar field names.",
+      "answer": "the syllabus names the developer interface and query processor as DBMS software tools whose use and purpose must be understood in practice. They must be distinguished rather than listed without function. An entity-relationship (E-R) diagram documents a database design by showing the entities, their relevant attributes or keys, the relationships between entities and the relationship cardinality. Entity names should describe things about which the system stores multiple facts; attributes belong to the entity they describe. To produce an E-R diagram, extract entity candidates from the scenario, assign identifiers, connect only supported relationships and label cardinality as one-to-one, one-to-many or many-to-many. Resolve a many-to-many relationship with a linking entity when converting the design to relational tables. A diagram must preserve the stated business rules rather than inventing links from similar field names.",
       "guidance": "Each mark needs a relevant point linked to the stated context.",
       "commonError": "Do not copy the worked example unchanged; transfer the method and check it against the new context.",
       "semanticFingerprint": {
@@ -3460,7 +3460,7 @@
       "marks": 3,
       "difficulty": "application",
       "prompt": "Explain one common error from Section 8: Databases, and give the corrected reasoning.",
-      "answer": "Version 2 requires CREATE DATABASE, CREATE TABLE, ALTER TABLE, CHARACTER, VARCHAR(n), BOOLEAN, INTEGER, REAL, DATE, TIME, PRIMARY KEY(field) and FOREIGN KEY(field) REFERENCES Table(Field). Each named item remains core.",
+      "answer": "The syllabus requires CREATE DATABASE, CREATE TABLE, ALTER TABLE, CHARACTER, VARCHAR(n), BOOLEAN, INTEGER, REAL, DATE, TIME, PRIMARY KEY(field) and FOREIGN KEY(field) REFERENCES Table(Field). Each named item remains core.",
       "guidance": "Credit distinct syllabus-accurate points that follow the command word.",
       "commonError": "Do not repeat the same point in different words; each mark needs a separate idea or method step.",
       "semanticFingerprint": {
@@ -3506,7 +3506,7 @@
       "marks": 4,
       "difficulty": "transfer",
       "prompt": "Apply one method from Section 1: Information representation to a fresh exam context.",
-      "answer": "Conversions apply to integer values and the binary, denary, hexadecimal, BCD, one's-complement and two's-complement representations named in the preceding Version 2 row.",
+      "answer": "Conversions apply to integer values and the binary, denary, hexadecimal, BCD, one's-complement and two's-complement representations named in the syllabus list above.",
       "guidance": "Credit distinct syllabus-accurate points that follow the command word.",
       "commonError": "Do not copy the worked example unchanged; transfer the method and check it against the new context.",
       "semanticFingerprint": {
@@ -6395,7 +6395,7 @@
       "marks": 2,
       "difficulty": "transfer",
       "prompt": "State two precise facts about state-transition diagrams.",
-      "answer": "The Version 2 table requires understanding the purpose; it does not require candidates to construct a state-transition diagram. A structure chart documents decomposition into modules, procedures and functions. Boxes name modules; hierarchy lines show which module calls another; labelled arrows show data or control parameters passed between them. Its purpose is to communicate modular structure and interfaces before coding.",
+      "answer": "The syllabus requires understanding the purpose; it does not require candidates to construct a state-transition diagram. A structure chart documents decomposition into modules, procedures and functions. Boxes name modules; hierarchy lines show which module calls another; labelled arrows show data or control parameters passed between them. Its purpose is to communicate modular structure and interfaces before coding.",
       "guidance": "Award one mark for each distinct fact; do not credit a repeated point.",
       "commonError": "Do not copy the worked example unchanged; transfer the method and check it against the new context.",
       "semanticFingerprint": {
@@ -6595,7 +6595,7 @@
       "marks": 2,
       "difficulty": "application",
       "prompt": "State two precise facts about test strategies and test plans.",
-      "answer": "The Version 2 table requires understanding the need and likely contents; it does not require candidates to produce either document. Alpha testing is performed internally before release; beta testing uses selected external users in realistic settings; acceptance testing checks the delivered system against agreed requirements. A strategy states levels/methods/responsibility, while a test plan records test ID, purpose, data, expected result, actual result and pass/fail.",
+      "answer": "The syllabus requires understanding the need and likely contents; it does not require candidates to produce either document. Alpha testing is performed internally before release; beta testing uses selected external users in realistic settings; acceptance testing checks the delivered system against agreed requirements. A strategy states levels/methods/responsibility, while a test plan records test ID, purpose, data, expected result, actual result and pass/fail.",
       "guidance": "Award one mark for each distinct fact; do not credit a repeated point.",
       "commonError": "Do not repeat the same point in different words; each mark needs a separate idea or method step.",
       "semanticFingerprint": {

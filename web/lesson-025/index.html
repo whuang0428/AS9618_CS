@@ -8,50 +8,56 @@
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
-    <link rel="stylesheet" href="../course-v2.css?v=3" />
+    <link rel="stylesheet" href="../course-v2.css?v=4" />
   </head>
-  <body data-course-version="2" data-lesson-id="025" data-syllabus-ids="S4.15">
+  <body data-course-version="2" data-lesson-id="025" data-syllabus-ids="S4.15" data-material-status="complete">
     <a class="skip-link" href="#main-content">Skip to main content</a>
     <header class="v2-topbar">
       <div><p class="v2-eyebrow">Cambridge AS9618 | Paper 1 | Section 4: Processor fundamentals</p><h1>Bit manipulation, masks and binary shifts</h1></div>
       <nav class="v2-actions" aria-label="Lesson actions"><a href="../">Course home</a><a href="../assessments/">Assessment bank</a><button type="button" id="printLesson">Print</button></nav>
     </header>
+    <nav class="v2-jump-nav" aria-label="Lesson contents"><strong>Lesson 025</strong><a href="#overview">Overview</a><a href="#prerequisite">Prerequisite</a><a href="#explanation">Explanation</a><a href="#practice">Practice</a><a href="#summary">Summary</a></nav>
     <main class="v2-shell" id="main-content" tabindex="-1">
-      <nav class="v2-toc" aria-label="Lesson contents"><strong>Lesson 025</strong><a href="#overview">Overview</a><a href="#prerequisite">Prerequisite</a><a href="#explanation">Explanation</a><a href="#practice">Practice</a><a href="#summary">Summary</a></nav>
       <div class="v2-content">
         <section class="v2-hero" id="overview">
-          <div><p class="v2-eyebrow">Flexible-depth lesson</p><h2>Bit manipulation, masks and binary shifts</h2><p>S4.15 | Select what to omit, teach briefly or explore in depth.</p></div>
+          <div><p class="v2-eyebrow">Flexible-depth lesson</p><h2>Bit manipulation, masks and binary shifts</h2><p>S4.15 | Visual relationships, mechanisms and worked examples.</p></div>
           <div class="v2-time-grid" aria-label="Available lesson depth"><div><strong>Quick</strong><span>diagnose + essentials</span></div><div><strong>Full</strong><span>complete explanation</span></div><div><strong>Deep</strong><span>prerequisites + extension</span></div><div><strong>Choose</strong><span>practice by need</span></div></div>
         </section>
 
         <section class="v2-panel v2-route-menu" aria-labelledby="route-heading">
           <div class="v2-heading"><p class="v2-eyebrow">Teacher choice</p><h2 id="route-heading">Choose the depth for this group</h2></div>
-          <div class="v2-route-grid"><article><h3>Quick route</h3><p>Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.</p></article><article><h3>Full route</h3><p>Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.</p></article><article><h3>Deep route</h3><p>Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.</p></article></div>
+          <div class="v2-route-grid"><article><h3>Quick route</h3><p>Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.</p></article><article><h3>Full route</h3><p>Teach every knowledge-point material set, the worked method and all lesson questions.</p></article><article><h3>Deep route</h3><p>Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.</p></article></div>
         </section>
 
         <section class="v2-panel" id="prerequisite">
           <div class="v2-heading"><p class="v2-eyebrow">Part 1 | optional depth</p><h2>Prerequisite knowledge and quick diagnostic</h2></div>
           <div class="v2-diagnostic"><p>Recall S1.02 before starting this lesson.</p></div>
           <p>Give one accurate definition or method step before continuing. If it is missing, revisit only that prerequisite.</p>
-          <details class="v2-prerequisite-detail"><summary>Open optional prerequisite refresher</summary><ul><li>The Version 2 row requires binary, denary, hexadecimal, Binary Coded Decimal (BCD), one&#39;s complement and two&#39;s complement; BCD and complements are representations rather than additional number bases.</li><li>Show understanding of binary, denary and hexadecimal number systems, BCD, and one&#39;s- and two&#39;s-complement representations.</li></ul></details>
+          <details class="v2-prerequisite-detail"><summary>Open optional prerequisite refresher</summary><ul><li>The syllabus requires binary, denary, hexadecimal, Binary Coded Decimal (BCD), one&#39;s complement and two&#39;s complement; BCD and complements are representations rather than additional number bases.</li><li>Show understanding of binary, denary and hexadecimal number systems, BCD, and one&#39;s- and two&#39;s-complement representations.</li></ul></details>
         </section>
 
         <section class="v2-panel" id="explanation">
-          <div class="v2-heading"><p class="v2-eyebrow">Part 2 | deliberately over-complete</p><h2>Knowledge explanation</h2></div>
-          <h3>Learning objectives</h3><ul class="v2-objectives"><li>Use AND, OR, XOR, LSL and LSR for bit manipulation, including testing/setting bits with masks.</li></ul>
-          <details class="v2-concept-menu"><summary>Open the concept checklist and choose what to teach</summary><ul><li>AND mask / bitwise AND</li><li>OR mask / bitwise OR</li><li>XOR mask / bitwise XOR</li><li>LSL / logical left shift</li><li>LSR / logical right shift</li><li>logical</li><li>arithmetic</li><li>cyclic</li><li>left shift</li><li>right shift</li><li>test</li><li>set</li><li>clear</li><li>toggle</li><li>monitor</li><li>control</li></ul></details>
-          <div class="v2-explanation-grid">
-            <div>
-              <article class="v2-core-facts"><h3>Detailed explanation</h3><p class="v2-teacher-note">Teach all points, or select only the ones this group needs. The list is intentionally fuller than a fixed lesson slot.</p><ul class="v2-facts"><li>Use AND, OR and XOR masks to test, set, clear and toggle bits, and apply logical, arithmetic and cyclic left/right shifts at a stated fixed width. Include device monitoring/control and distinguish discarded, sign-filled and rotated bits.</li><li>A bitwise AND mask can test or clear selected bits; an OR mask can set selected bits; an XOR mask can toggle selected bits. These operations are used to monitor and control individual flags without changing unrelated bits.</li><li>LSL is a logical left shift and LSR is a logical right shift. Distinguish logical shifts from arithmetic shifts and cyclic shifts: a logical shift inserts zero, an arithmetic right shift preserves the sign bit, and a cyclic shift wraps the bit that leaves one end back to the other.</li><li>For bit manipulation, masks and binary shifts, identify the required concept before describing its mechanism or consequence.</li></ul></article>
-              <article class="v2-example"><h3>Worked example</h3><p>Test, set, clear and toggle one flag: For Status = 10110100, an AND mask tests a selected bit, an OR mask sets it, an AND mask with a zero at that position clears it, and an XOR mask toggles it. LSL moves bits left; LSR moves them right and fills with zero.</p></article>
-              <aside class="v2-extension"><h3>Beyond syllabus / 延伸知识（不要求背诵）</h3><p>modern processors add pipelining and several cache levels, but exam answers should begin with the syllabus processor model.</p></aside>
-            </div>
-            <figure class="v2-visual">
-              <img src="../assets/diagrams/stage10-infographics/stage10-lesson-051-shifts.jpg" alt="Every shown input and stored result contains exactly eight bits.. Logical shifts insert zero; logical left 10110011 becomes 01100110 and logical right becomes 01011001.. Arithmetic left 10110011 becomes 01100110; arithmetic right copies sign bit 1 and becomes 11011001.. Cyclic left rotates the outgoing bit to give 01100111; cyclic right gives 11011001.. Unsigned logical-left overflow and signed arithmetic-left overflow both occur here; rotations do not use an overflow label." loading="lazy" />
-              <figcaption>Binary shifts: logical, arithmetic, cyclic. One maintained explanation is shown as an image on larger screens and as text on small screens.</figcaption>
-              <div class="v2-mobile-visual-text" aria-label="Mobile text alternative"><ul><li>Every shown input and stored result contains exactly eight bits.</li><li>Logical shifts insert zero; logical left 10110011 becomes 01100110 and logical right becomes 01011001.</li><li>Arithmetic left 10110011 becomes 01100110; arithmetic right copies sign bit 1 and becomes 11011001.</li><li>Cyclic left rotates the outgoing bit to give 01100111; cyclic right gives 11011001.</li><li>Unsigned logical-left overflow and signed arithmetic-left overflow both occur here; rotations do not use an overflow label.</li></ul></div>
-            </figure>
-          </div>
+          <div class="v2-heading"><p class="v2-eyebrow">Part 2 | visual explanation</p><h2>Learn each point through visuals</h2><p>Use the relationship map, mechanism and concrete cue before opening precise wording.</p></div>
+    <nav class="v2-knowledge-index" aria-label="Knowledge points in this lesson"><a href="#knowledge-s4-15"><span>01</span>S4.15</a></nav><div class="v2-knowledge-point-list"><section class="v2-knowledge-point" id="knowledge-s4-15" data-syllabus-id="S4.15" data-visual-mode="process" data-material-count="4">
+      <header class="v2-knowledge-point-head"><span>01</span><div><p>S4.15 · process</p><h3>AND, OR, XOR, LSL and LSR for bit manipulation, including testing/setting bits with masks</h3></div></header>
+      <div class="v2-material-triad">
+        <article class="v2-native-material v2-native-material--map"><h4>Concept relationships</h4><div class="v2-concept-map"><div><strong>XOR mask</strong><span>AND, OR and XOR masks to test, set,…</span></div><div><strong>left shift</strong><span>LSL is a logical left shift and LSR…</span></div><div><strong>right shift</strong><span>A logical shift inserts zero, an arithmetic right…</span></div><div><strong>AND mask</strong><span>A bitwise AND mask can test or clear…</span></div><div><strong>OR mask</strong><span>An XOR mask can toggle selected bits.</span></div><div><strong>test</strong><span>AND, OR, XOR, LSL and LSR for bit…</span></div></div></article>
+        <article class="v2-native-material v2-native-material--story"><h4>See how it works</h4><ol><li><span>Given</span><div><strong>Write values units and width</strong><p>AND, OR and XOR masks to test, set, clear and toggle bits, and apply logical, arithmetic and cyclic…</p></div></li><li><span>Process</span><div><strong>Apply the required method</strong><p>AND, OR, XOR, LSL and LSR for bit manipulation, including testing/setting bits with masks.</p></div></li><li><span>Check</span><div><strong>Reverse or range-check the result</strong><p>A logical shift inserts zero, an arithmetic right shift preserves the sign bit, and a cyclic shift wraps…</p></div></li></ol></article>
+        <aside class="v2-native-material v2-native-material--cue"><h4>Binary shifts: logical, arithmetic, cyclic</h4><p>Every shown input and stored result contains exactly eight bits. Logical shifts insert zero; logical left 10110011 becomes 01100110 and logical right becomes 01011001.</p></aside>
+      </div>
+      <section class="v2-material-library" aria-label="S4.15 diagrams">
+    <div class="v2-material-library-head"><h3>S4.15 diagrams</h3></div>
+    <div class="v2-material-rail" id="materials-025-s4-15" data-material-rail><figure class="v2-visual" data-material-kind="comparison">
+            <div class="v2-visual-heading"><span>01</span><div><p>Comparison · 1 of 1</p><h4>Binary shifts: logical, arithmetic, cyclic</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Binary shifts: logical, arithmetic, cyclic"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-051-shifts.jpg" alt="Binary shifts: logical, arithmetic, cyclic" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Every shown input and stored result contains exactly eight bits.</li><li>Logical shifts insert zero; logical left 10110011 becomes 01100110 and logical right becomes 01011001.</li><li>Arithmetic left 10110011 becomes 01100110; arithmetic right copies sign bit 1 and becomes 11011001.</li><li>Cyclic left rotates the outgoing bit to give 01100111; cyclic right gives 11011001.</li><li>Unsigned logical-left overflow and signed arithmetic-left overflow both occur here; rotations do not use an overflow label.</li></ul></details>
+          </figure></div>
+  </section>
+      <details class="v2-point-precision"><summary>Open precise syllabus wording</summary><p><strong>Use AND, OR, XOR, LSL and LSR for bit manipulation, including testing/setting bits with masks.</strong></p><p>Use AND, OR and XOR masks to test, set, clear and toggle bits, and apply logical, arithmetic and cyclic left/right shifts at a stated fixed width. Include device monitoring/control and distinguish discarded, sign-filled and rotated bits.</p></details>
+    </section></div>
+    <details class="v2-core-facts"><summary>Open precise terminology and exam facts</summary><ul class="v2-facts"><li>Use AND, OR and XOR masks to test, set, clear and toggle bits, and apply logical, arithmetic and cyclic left/right shifts at a stated fixed width. Include device monitoring/control and distinguish discarded, sign-filled and rotated bits.</li><li>A bitwise AND mask can test or clear selected bits; an OR mask can set selected bits; an XOR mask can toggle selected bits. These operations are used to monitor and control individual flags without changing unrelated bits.</li><li>LSL is a logical left shift and LSR is a logical right shift. Distinguish logical shifts from arithmetic shifts and cyclic shifts: a logical shift inserts zero, an arithmetic right shift preserves the sign bit, and a cyclic shift wraps the bit that leaves one end back to the other.</li><li>For bit manipulation, masks and binary shifts, identify the required concept before describing its mechanism or consequence.</li></ul></details>
+    <article class="v2-example"><h3>Worked method</h3><ol><li>Test, set, clear and toggle one flag</li><li>For Status = 10110100, an AND mask tests a selected bit, an OR mask sets it, an AND mask with a zero at that position clears it, and an XOR…</li><li>LSL moves bits left; LSR moves them right and fills with zero.</li></ol></article>
+    <aside class="v2-extension"><h3>Beyond syllabus / 延伸知识（不要求背诵）</h3><p>modern processors add pipelining and several cache levels, but exam answers should begin with the syllabus processor model.</p></aside>
         </section>
 
         <section class="v2-panel" id="practice">
@@ -86,6 +92,6 @@
         <nav class="v2-bottom-nav" aria-label="Previous and next lesson"><a href="../lesson-024/" >Previous lesson</a><a href="../lesson-026/" >Next lesson</a></nav>
       </div>
     </main>
-    <script src="../course-v2.js?v=1"></script>
+    <script src="../course-v2.js?v=2"></script>
   </body>
 </html>

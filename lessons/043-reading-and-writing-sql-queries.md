@@ -1,15 +1,15 @@
 # Lesson 043: Reading and writing SQL queries
 
-**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029 Version 2<br>
+**Course:** Cambridge International AS Level Computer Science 9618, syllabus for examination in 2027-2029<br>
 **Paper:** Paper 1<br>
 **Syllabus:** Section 8: Databases<br>
 **Syllabus requirements:** S8.08, S8.10<br>
-**Pacing:** Flexible. This lesson is deliberately over-complete; select a quick, full or deep route for the learners in front of you.
+**Pacing:** Flexible. Select a quick, full or deep route for the learners in front of you.
 
 ## Teaching-depth menu
 
 - **Quick route:** Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.
-- **Full route:** Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.
+- **Full route:** Teach every knowledge-point material set, the worked method and all lesson questions.
 - **Deep route:** Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.
 
 ## 1. Prerequisite knowledge and quick diagnostic
@@ -20,41 +20,99 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ### Optional prerequisite refresher
 
-- Version 2 explicitly names entity, table, record, field, tuple, attribute, primary key, candidate key, secondary key, foreign key, one-to-one, one-to-many, many-to-many, referential integrity and indexing. Secondary key is retained as a distinct retrieval term, not an alias for an alternate candidate key.
+- the syllabus explicitly names entity, table, record, field, tuple, attribute, primary key, candidate key, secondary key, foreign key, one-to-one, one-to-many, many-to-many, referential integrity and indexing. Secondary key is retained as a distinct retrieval term, not an alias for an alternate candidate key.
 - Understand entity/table, record/tuple, field/attribute, primary/candidate/secondary/foreign key, relationships, referential integrity and indexing.
-- Version 2 explicitly requires understanding a given SQL statement. Evidence must show what a statement does to its result or stored data, not only recognise isolated keywords.
+- The syllabus explicitly requires understanding a given SQL statement. Evidence must show what a statement does to its result or stored data, not only recognise isolated keywords.
 - Understand a given SQL statement and explain the semantics of its clauses, identifiers, operators and values.
 
 
 ## 2. Knowledge explanation
 
-### Learning objectives
+### 1. A given SQL statement and explain the semantics of its clauses, identifiers, operators and values (S8.08)
 
-- Understand a given SQL statement and explain the semantics of its clauses, identifiers, operators and values.
-- Use DML on at most two tables: SELECT, FROM, WHERE, ORDER BY, GROUP BY, INNER JOIN, SUM, COUNT and AVG.
+**Concept relationships**
 
-### Concept checklist for teacher choice
+- **SQL:** A given SQL statement and explain the semantics…
+- **SELECT:** SELECT chooses output fields, FROM identifies the source…
+- **fields:** A query uses SELECT fields FROM a table,…
+- **table:** Keywords, field names, table names, operators, literal values…
+- **condition:** An explicit INNER JOIN between those tables and…
+- **FROM:** DDL structure commands from DML query/maintenance commands, use…
 
-- SQL
-- SELECT
-- FROM
-- WHERE
-- fields
-- table
-- condition
-- ORDER BY
-- GROUP BY
-- INNER JOIN
--  ON
-- SUM
-- COUNT
-- AVG
-- at most two / two table / two-table
+**Mechanism**
 
-### Detailed explanation
+1. **Identify structure and target data** — A given SQL statement and explain the semantics of its clauses, identifiers, operators and values.
+2. **Apply the database rule** — A query uses SELECT fields FROM a table, may filter rows with WHERE, sort with ORDER BY and…
+3. **Check keys rows and conditions** — Keywords, field names, table names, operators, literal values and punctuation have different roles.
 
-- Version 2 explicitly requires understanding a given SQL statement. Evidence must show what a statement does to its result or stored data, not only recognise isolated keywords.
-- Version 2 limits DML scripts to data stored in at most two tables and names SELECT, FROM, WHERE, ORDER BY, GROUP BY, INNER JOIN, SUM, COUNT and AVG. The course uses explicit INNER JOIN ... ON for two-table core queries.
+**The three foundation clauses:** SELECT Names the fields to output, such as Title, DueDate . FROM Names the table to use, such as Loan .
+
+#### The three foundation clauses
+
+![The three foundation clauses](../web/assets/diagrams/stage10-infographics/stage10-lesson-085-clauses.jpg)
+
+<details><summary>Text transcript</summary>
+
+- SELECT Names the fields to output, such as Title, DueDate .
+- FROM Names the table to use, such as Loan .
+- WHERE Filters records using a condition, such as Returned = FALSE .
+- Thinking order:
+- What fields do I need? Which table contains them? Which records should be included?
+
+</details>
+
+<details><summary>Precise syllabus wording</summary>
+
+Understand a given SQL statement and explain the semantics of its clauses, identifiers, operators and values.
+
+The syllabus explicitly requires understanding a given SQL statement. Evidence must show what a statement does to its result or stored data, not only recognise isolated keywords.
+
+</details>
+
+### 2. DML on at most two tables: SELECT, FROM, WHERE, ORDER BY, GROUP BY, INNER JOIN, SUM,… (S8.10)
+
+**Concept relationships**
+
+- **INNER JOIN:** DML scripts to data stored in at most…
+- **two table:** DDL structure commands from DML query/maintenance commands, use…
+- **SELECT:** SELECT, FROM, WHERE, ORDER BY, GROUP BY, INNER…
+- **ORDER BY:** A query uses SELECT fields FROM a table,…
+- **GROUP BY:** An INNER JOIN uses ON to match at…
+- **SUM:** SUM totals values, COUNT counts rows or values,…
+
+**Mechanism**
+
+1. **Identify structure and target data** — DML scripts to data stored in at most two tables and names SELECT, FROM, WHERE, ORDER BY, GROUP…
+2. **Apply the database rule** — DDL structure commands from DML query/maintenance commands, use every required data type and key clause, and keep SELECT…
+3. **Check keys rows and conditions** — A query uses SELECT fields FROM a table, may filter rows with WHERE, sort with ORDER BY and…
+
+**Two-table INNER JOIN with ON:** AS DML questions use at most two tables. SELECT Student.StudentName FROM Student INNER JOIN Loan ON Student.StudentID = Loan.StudentID uses an explicit two-table join.
+
+#### Two-table INNER JOIN with ON
+
+![Two-table INNER JOIN with ON](../web/assets/diagrams/stage10-infographics/stage10-lesson-087-join.jpg)
+
+<details><summary>Text transcript</summary>
+
+- AS DML questions use at most two tables.
+- SELECT Student.StudentName FROM Student INNER JOIN Loan ON Student.StudentID = Loan.StudentID uses an explicit two-table join.
+- ON states the matching key relationship between the tables.
+- WHERE adds a separate row filter after the join; it does not replace the required INNER JOIN syntax.
+
+</details>
+
+<details><summary>Precise syllabus wording</summary>
+
+Use DML on at most two tables: SELECT, FROM, WHERE, ORDER BY, GROUP BY, INNER JOIN, SUM, COUNT and AVG.
+
+the syllabus limits DML scripts to data stored in at most two tables and names SELECT, FROM, WHERE, ORDER BY, GROUP BY, INNER JOIN, SUM, COUNT and AVG. The course uses explicit INNER JOIN ... ON for two-table core queries.
+
+</details>
+
+<details><summary>Open precise terminology and exam facts</summary>
+
+- The syllabus explicitly requires understanding a given SQL statement. Evidence must show what a statement does to its result or stored data, not only recognise isolated keywords.
+- the syllabus limits DML scripts to data stored in at most two tables and names SELECT, FROM, WHERE, ORDER BY, GROUP BY, INNER JOIN, SUM, COUNT and AVG. The course uses explicit INNER JOIN ... ON for two-table core queries.
 - Structured Query Language (SQL) is the industry-standard language used by a DBMS for DDL and DML. To understand a statement, read each clause by its effect: SELECT chooses output fields, FROM identifies the source table, and WHERE filters records using a condition. Keywords, field names, table names, operators, literal values and punctuation have different roles.
 - A valid answer must preserve the requested semantics, not merely contain familiar keywords. Text and date values are normally quoted in this course's standard SQL style; numeric and Boolean values are not quoted. Clause order, comparison operators and requested output fields determine which records and columns appear.
 - Required DDL includes CREATE DATABASE, CREATE TABLE and ALTER TABLE. Field types include CHARACTER, VARCHAR, BOOLEAN, INTEGER, REAL, DATE and TIME.
@@ -66,18 +124,17 @@ Ask the learner to give one accurate definition or method step before continuing
 - DBMS and SQL review: identify data management/data dictionary, data modelling, logical schema, integrity, security/backup/access rights, developer interface and query processor. Distinguish DDL structure commands from DML query/maintenance commands, use every required data type and key clause, and keep SELECT queries to at most two tables with explicit INNER JOIN ... ON when two tables are needed.
 - A complete answer follows the scenario through design, statement and result. It does not claim that a primary key prevents every duplicate fact, that a secondary key must be unique, that normalisation guarantees correctness, or that a three-table/comma-style query is within the AS core boundary.
 
-### Worked example
+</details>
 
-Define two related tables / List overdue borrowers: CREATE DATABASE College; then CREATE TABLE Department and CREATE TABLE Student. Student uses INTEGER for StudentID, VARCHAR for Name, DATE for DateOfBirth, BOOLEAN for Active and a DepartmentID foreign key REFERENCES Department(DepartmentID). ALTER TABLE can modify the structure later. SELECT Student.StudentName FROM Student INNER JOIN Loan ON Student.StudentID = Loan.StudentID WHERE Loan.DueDate < '2027-05-01'; uses two tables, one explicit join condition and one separate filter.
+### Worked method
+
+1. Define two related tables
+2. List overdue borrowers
+3. CREATE DATABASE College; then CREATE TABLE Department and CREATE TABLE Student.
+4. Student uses INTEGER for StudentID, VARCHAR for Name, DATE for DateOfBirth, BOOLEAN for Active and a DepartmentID foreign key REFERENCES Department(DepartmentID).
+5. ALTER TABLE can modify the structure later.
 
 Beyond syllabus / 延伸知识（不要求背诵）: production databases also manage transactions and concurrent users; these ideas extend the syllabus model of integrity and access control.
-
-### Retained visual explanation
-
-![Two-table INNER JOIN with ON](../web/assets/diagrams/stage10-infographics/stage10-lesson-087-join.jpg)
-
-_Two-table INNER JOIN with ON. The image and mobile text alternative come from one maintained fact source._
-
 ## 3. Practice by question type
 
 ### Question 1 - foundation - identify - 2 marks
@@ -132,7 +189,7 @@ These are indexes only. Cambridge question and mark-scheme wording is not reprod
 
 ### Common error to correct
 
-Students often select every field with . Correction: exam questions usually specify exactly which fields are required.
+Students often select every field with *. Correction: exam questions usually specify exactly which fields are required.
 
 ### Exam technique
 

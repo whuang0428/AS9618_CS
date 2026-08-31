@@ -8,25 +8,25 @@
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
-    <link rel="stylesheet" href="../course-v2.css?v=3" />
+    <link rel="stylesheet" href="../course-v2.css?v=4" />
   </head>
-  <body data-course-version="2" data-lesson-id="077" data-syllabus-ids="S11.06">
+  <body data-course-version="2" data-lesson-id="077" data-syllabus-ids="S11.06" data-material-status="complete">
     <a class="skip-link" href="#main-content">Skip to main content</a>
     <header class="v2-topbar">
       <div><p class="v2-eyebrow">Cambridge AS9618 | Paper 2 | Section 11: Programming</p><h1>Procedures and parameter passing</h1></div>
       <nav class="v2-actions" aria-label="Lesson actions"><a href="../">Course home</a><a href="../assessments/">Assessment bank</a><button type="button" id="printLesson">Print</button></nav>
     </header>
+    <nav class="v2-jump-nav" aria-label="Lesson contents"><strong>Lesson 077</strong><a href="#overview">Overview</a><a href="#prerequisite">Prerequisite</a><a href="#explanation">Explanation</a><a href="#practice">Practice</a><a href="#summary">Summary</a></nav>
     <main class="v2-shell" id="main-content" tabindex="-1">
-      <nav class="v2-toc" aria-label="Lesson contents"><strong>Lesson 077</strong><a href="#overview">Overview</a><a href="#prerequisite">Prerequisite</a><a href="#explanation">Explanation</a><a href="#practice">Practice</a><a href="#summary">Summary</a></nav>
       <div class="v2-content">
         <section class="v2-hero" id="overview">
-          <div><p class="v2-eyebrow">Flexible-depth lesson</p><h2>Procedures and parameter passing</h2><p>S11.06 | Select what to omit, teach briefly or explore in depth.</p></div>
+          <div><p class="v2-eyebrow">Flexible-depth lesson</p><h2>Procedures and parameter passing</h2><p>S11.06 | Visual relationships, mechanisms and worked examples.</p></div>
           <div class="v2-time-grid" aria-label="Available lesson depth"><div><strong>Quick</strong><span>diagnose + essentials</span></div><div><strong>Full</strong><span>complete explanation</span></div><div><strong>Deep</strong><span>prerequisites + extension</span></div><div><strong>Choose</strong><span>practice by need</span></div></div>
         </section>
 
         <section class="v2-panel v2-route-menu" aria-labelledby="route-heading">
           <div class="v2-heading"><p class="v2-eyebrow">Teacher choice</p><h2 id="route-heading">Choose the depth for this group</h2></div>
-          <div class="v2-route-grid"><article><h3>Quick route</h3><p>Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.</p></article><article><h3>Full route</h3><p>Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.</p></article><article><h3>Deep route</h3><p>Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.</p></article></div>
+          <div class="v2-route-grid"><article><h3>Quick route</h3><p>Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.</p></article><article><h3>Full route</h3><p>Teach every knowledge-point material set, the worked method and all lesson questions.</p></article><article><h3>Deep route</h3><p>Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.</p></article></div>
         </section>
 
         <section class="v2-panel" id="prerequisite">
@@ -37,21 +37,27 @@
         </section>
 
         <section class="v2-panel" id="explanation">
-          <div class="v2-heading"><p class="v2-eyebrow">Part 2 | deliberately over-complete</p><h2>Knowledge explanation</h2></div>
-          <h3>Learning objectives</h3><ul class="v2-objectives"><li>Understand and use procedures with parameters passed by reference and by value.</li></ul>
-          <details class="v2-concept-menu"><summary>Open the concept checklist and choose what to teach</summary><ul><li>procedure / procedures</li><li>parameters</li><li>passed / passes / pass</li><li>reference / BYREF</li><li>value / BYVAL</li></ul></details>
-          <div class="v2-explanation-grid">
-            <div>
-              <article class="v2-core-facts"><h3>Detailed explanation</h3><p class="v2-teacher-note">Teach all points, or select only the ones this group needs. The list is intentionally fuller than a fixed lesson slot.</p><ul class="v2-facts"><li>Define and use a procedure; explain when the use of a procedure is appropriate; use parameters with none, one or more values passed by reference or by value.</li><li>Define and use a procedure when an algorithm needs a named action. A procedure may have no parameters, one parameter or several parameters. BYVAL passes a value that the procedure can use without changing the caller&#39;s variable; BYREF gives access to the caller&#39;s variable so an assignment can persist after the call.</li><li>Define and use a function when the caller needs one returned value. A function has a return type and RETURN statement; the call can appear in an expression, for example Total &lt;- Price + CalculateVAT(Price). Use procedures for actions and functions for calculated, searched or checked values.</li><li>A procedure header or function header names the subprogram and declares its parameters; a function header also declares its return type. The procedure/function interface is the information a caller needs to use the subprogram: its name, parameter list and types, and any returned value/type.</li><li>A parameter is the named variable in the header, while an argument is the actual value or variable supplied at a call. RETURN sends a function value back to the caller; output displayed by a procedure is an effect, not a return value.</li></ul></article>
-              <article class="v2-example"><h3>Worked example</h3><p>Use a procedure and a function: PROCEDURE Increase(BYREF Number : INTEGER, BYVAL Amount : INTEGER) changes the caller&#39;s Number by Amount. FUNCTION CalculateVAT(Price : REAL) RETURNS REAL returns Price 0.20, so Total &lt;- Price + CalculateVAT(Price) uses the returned value in an expression. In Increase(Score, 5), Number and Amount are parameters while Score and 5 are arguments.</p></article>
-              <aside class="v2-extension"><h3>Beyond syllabus / 延伸知识（不要求背诵）</h3><p>consistent style, modularity and automated tests reduce maintenance errors in larger programs.</p></aside>
-            </div>
-            <figure class="v2-visual">
-              <img src="../assets/diagrams/stage10-infographics/stage10-lesson-132-compare.jpg" alt="Side-by-side comparison. By reference. Number : INTEGER. What is passed. a copy of the value" loading="lazy" />
-              <figcaption>Same procedure body, different final result. One maintained explanation is shown as an image on larger screens and as text on small screens.</figcaption>
-              <div class="v2-mobile-visual-text" aria-label="Mobile text alternative"><ul><li>Side-by-side comparison</li><li>By reference</li><li>Number : INTEGER</li><li>What is passed</li><li>a copy of the value</li></ul></div>
-            </figure>
-          </div>
+          <div class="v2-heading"><p class="v2-eyebrow">Part 2 | visual explanation</p><h2>Learn each point through visuals</h2><p>Use the relationship map, mechanism and concrete cue before opening precise wording.</p></div>
+    <nav class="v2-knowledge-index" aria-label="Knowledge points in this lesson"><a href="#knowledge-s11-06"><span>01</span>S11.06</a></nav><div class="v2-knowledge-point-list"><section class="v2-knowledge-point" id="knowledge-s11-06" data-syllabus-id="S11.06" data-visual-mode="process" data-material-count="4">
+      <header class="v2-knowledge-point-head"><span>01</span><div><p>S11.06 · process</p><h3>And use procedures with parameters passed by reference and by value: Procedures and parameter passing</h3></div></header>
+      <div class="v2-material-triad">
+        <article class="v2-native-material v2-native-material--map"><h4>Concept relationships</h4><div class="v2-concept-map"><div><strong>pass</strong><span>And use procedures with parameters passed by reference…</span></div><div><strong>procedure</strong><span>BYVAL passes a value that the procedure can…</span></div><div><strong>parameter</strong><span>Parameters with none, one or more values passed…</span></div><div><strong>parameters</strong><span>A procedure may have no parameters, one parameter…</span></div><div><strong>reference</strong><span>A reference to the caller&#39;s variable</span></div><div><strong>value</strong><span>Its name, parameter list and types, and any…</span></div></div></article>
+        <article class="v2-native-material v2-native-material--story"><h4>See how it works</h4><ol><li><span>Plan</span><div><strong>Translate the stated design</strong><p>And use procedures with parameters passed by reference and by value.</p></div></li><li><span>Execute</span><div><strong>Apply one complete operation</strong><p>Parameters with none, one or more values passed by reference or by value.</p></div></li><li><span>Test</span><div><strong>Trace state and boundaries</strong><p>BYVAL passes a value that the procedure can use without changing the caller&#39;s variable</p></div></li></ol></article>
+        <aside class="v2-native-material v2-native-material--cue"><h4>Same procedure body, different final result</h4><p>Side-by-side comparison By value</p></aside>
+      </div>
+      <section class="v2-material-library" aria-label="S11.06 diagrams">
+    <div class="v2-material-library-head"><h3>S11.06 diagrams</h3></div>
+    <div class="v2-material-rail" id="materials-077-s11-06" data-material-rail><figure class="v2-visual" data-material-kind="comparison">
+            <div class="v2-visual-heading"><span>01</span><div><p>Comparison · 1 of 1</p><h4>Same procedure body, different final result</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Same procedure body, different final result"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-132-compare.jpg" alt="Same procedure body, different final result" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Side-by-side comparison</li><li>By value</li><li>By reference</li><li>Header clue</li><li>Number : INTEGER</li><li>BYREF Number : INTEGER</li><li>What is passed</li><li>a copy of the value</li><li>a reference to the caller&#39;s variable</li><li>Change inside subroutine</li><li>affects local parameter only</li><li>can affect original variable</li></ul></details>
+          </figure></div>
+  </section>
+      <details class="v2-point-precision"><summary>Open precise syllabus wording</summary><p><strong>Understand and use procedures with parameters passed by reference and by value.</strong></p><p>Define and use a procedure; explain when the use of a procedure is appropriate; use parameters with none, one or more values passed by reference or by value.</p></details>
+    </section></div>
+    <details class="v2-core-facts"><summary>Open precise terminology and exam facts</summary><ul class="v2-facts"><li>Define and use a procedure; explain when the use of a procedure is appropriate; use parameters with none, one or more values passed by reference or by value.</li><li>Define and use a procedure when an algorithm needs a named action. A procedure may have no parameters, one parameter or several parameters. BYVAL passes a value that the procedure can use without changing the caller&#39;s variable; BYREF gives access to the caller&#39;s variable so an assignment can persist after the call.</li><li>Define and use a function when the caller needs one returned value. A function has a return type and RETURN statement; the call can appear in an expression, for example Total &lt;- Price + CalculateVAT(Price). Use procedures for actions and functions for calculated, searched or checked values.</li><li>A procedure header or function header names the subprogram and declares its parameters; a function header also declares its return type. The procedure/function interface is the information a caller needs to use the subprogram: its name, parameter list and types, and any returned value/type.</li><li>A parameter is the named variable in the header, while an argument is the actual value or variable supplied at a call. RETURN sends a function value back to the caller; output displayed by a procedure is an effect, not a return value.</li></ul></details>
+    <article class="v2-example"><h3>Worked method</h3><ol><li>Use a procedure and a function</li><li>PROCEDURE Increase(BYREF Number</li><li>INTEGER, BYVAL Amount</li><li>INTEGER) changes the caller&#39;s Number by Amount.</li><li>REAL) RETURNS REAL returns Price 0.20, so Total &lt;- Price + CalculateVAT(Price) uses the returned value in an expression.</li></ol></article>
+    <aside class="v2-extension"><h3>Beyond syllabus / 延伸知识（不要求背诵）</h3><p>consistent style, modularity and automated tests reduce maintenance errors in larger programs.</p></aside>
         </section>
 
         <section class="v2-panel" id="practice">
@@ -86,6 +92,6 @@
         <nav class="v2-bottom-nav" aria-label="Previous and next lesson"><a href="../lesson-076/" >Previous lesson</a><a href="../lesson-078/" >Next lesson</a></nav>
       </div>
     </main>
-    <script src="../course-v2.js?v=1"></script>
+    <script src="../course-v2.js?v=2"></script>
   </body>
 </html>

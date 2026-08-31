@@ -1,15 +1,15 @@
 # Lesson 084: Finding and correcting program errors
 
-**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029 Version 2<br>
+**Course:** Cambridge International AS Level Computer Science 9618, syllabus for examination in 2027-2029<br>
 **Paper:** Paper 2<br>
 **Syllabus:** Section 12: Software development<br>
 **Syllabus requirements:** S12.04<br>
-**Pacing:** Flexible. This lesson is deliberately over-complete; select a quick, full or deep route for the learners in front of you.
+**Pacing:** Flexible. Select a quick, full or deep route for the learners in front of you.
 
 ## Teaching-depth menu
 
 - **Quick route:** Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.
-- **Full route:** Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.
+- **Full route:** Teach every knowledge-point material set, the worked method and all lesson questions.
 - **Deep route:** Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.
 
 ## 1. Prerequisite knowledge and quick diagnostic
@@ -22,17 +22,46 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ## 2. Knowledge explanation
 
-### Learning objectives
+### 1. Syntax, logic and runtime errors (S12.04)
 
-- Identify and correct syntax, logic and runtime errors.
+**Concept relationships**
 
-### Concept checklist for teacher choice
+- **Syntax:** Breaks language grammar
+- **Logic:** Runs but gives wrong result
+- **Runtime:** Fails during execution
+- **Correction:** Remove the identified cause
+- **errors:** Locate and identify syntax, logic and run-time errors…
 
-- logic
-- runtime
-- errors
+**Mechanism**
 
-### Detailed explanation
+1. **Name the exact concept** — Locate and identify syntax, logic and run-time errors in a program and correct identified errors.
+2. **Explain how its parts connect** — Syntax, logic and runtime errors.
+3. **Use it in a concrete context** — A logic error uses valid syntax but follows the wrong algorithm, so a trace, dry run, walkthrough or…
+
+**Logic errors make the program do the wrong…:** Meaning The code is syntactically valid and may run, but the algorithm or condition is wrong. Examples Using < instead of <= , wrong formula, wrong loop condition or off-by-one error.
+
+#### Logic errors make the program do the wrong thing
+
+![Logic errors make the program do the wrong thing](../web/assets/diagrams/stage10-infographics/stage10-lesson-060-logic.jpg)
+
+<details><summary>Text transcript</summary>
+
+- Meaning The code is syntactically valid and may run, but the algorithm or condition is wrong.
+- Examples Using < instead of <= , wrong formula, wrong loop condition or off-by-one error.
+- Detection Usually found by testing, tracing or comparing actual output with expected output.
+- Common error A translator may not detect it because the instructions are legal.
+
+</details>
+
+<details><summary>Precise syllabus wording</summary>
+
+Identify and correct syntax, logic and runtime errors.
+
+Understand different ways of exposing and avoiding faults in a program. Locate and identify syntax, logic and run-time errors in a program and correct identified errors.
+
+</details>
+
+<details><summary>Open precise terminology and exam facts</summary>
 
 - Understand different ways of exposing and avoiding faults in a program. Locate and identify syntax, logic and run-time errors in a program and correct identified errors.
 - A syntax error breaks the language grammar and is normally exposed by a translator or an IDE's dynamic syntax check. A logic error uses valid syntax but follows the wrong algorithm, so a trace, dry run, walkthrough or deliberately selected test can expose an unexpected result. A run-time error occurs during execution, such as division by zero or opening a missing file, so exception messages and run-time diagnostics help locate it.
@@ -42,18 +71,16 @@ Ask the learner to give one accurate definition or method step before continuing
 - A runtime error occurs while the program is executing; runtime diagnostics help locate the statement that caused the failure.
 - Program errors can be exposed by suitable test data and expected results, located with trace output or breakpoints, and corrected before the same tests are repeated to confirm the fix.
 
-### Worked example
+</details>
 
-Correct three different faults: A missing ENDIF is a syntax error exposed during translation and corrected by closing the selection. Mark 50 for a pass boundary of 50 is a logic error exposed by tracing Mark = 50 and corrected to Mark = 50. Total / Count when Count may be 0 is a run-time risk exposed during execution and avoided by testing Count before division.
+### Worked method
+
+1. Correct three different faults
+2. A missing ENDIF is a syntax error exposed during translation and corrected by closing the selection.
+3. Mark 50 for a pass boundary of 50 is a logic error exposed by tracing Mark = 50 and corrected to Mark = 50.
+4. Count when Count may be 0 is a run-time risk exposed during execution and avoided by testing Count before division.
 
 Beyond syllabus / 延伸知识（不要求背诵）: modern teams often use continuous integration to repeat building and testing whenever a program changes.
-
-### Retained visual explanation
-
-![Logic errors make the program do the wrong thing](../web/assets/diagrams/stage10-infographics/stage10-lesson-060-logic.jpg)
-
-_Logic errors make the program do the wrong thing. The image and mobile text alternative come from one maintained fact source._
-
 ## 3. Practice by question type
 
 ### Question 1 - foundation - explain - 2 marks

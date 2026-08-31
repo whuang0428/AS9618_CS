@@ -1,15 +1,15 @@
 # Lesson 087: Normal, abnormal and boundary test data
 
-**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029 Version 2<br>
+**Course:** Cambridge International AS Level Computer Science 9618, syllabus for examination in 2027-2029<br>
 **Paper:** Paper 2<br>
 **Syllabus:** Section 12: Software development<br>
 **Syllabus requirements:** S12.07<br>
-**Pacing:** Flexible. This lesson is deliberately over-complete; select a quick, full or deep route for the learners in front of you.
+**Pacing:** Flexible. Select a quick, full or deep route for the learners in front of you.
 
 ## Teaching-depth menu
 
 - **Quick route:** Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.
-- **Full route:** Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.
+- **Full route:** Teach every knowledge-point material set, the worked method and all lesson questions.
 - **Deep route:** Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.
 
 ## 1. Prerequisite knowledge and quick diagnostic
@@ -22,17 +22,45 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ## 2. Knowledge explanation
 
-### Learning objectives
+### 1. Select normal, abnormal and extreme/boundary test data (S12.07)
 
-- Select normal, abnormal and extreme/boundary test data.
+**Concept relationships**
 
-### Concept checklist for teacher choice
+- **Normal:** Valid typical value
+- **Abnormal:** Invalid value
+- **Boundary:** At or around a limit
+- **Expected result:** Predicted system response
+- **extreme:** Select normal, abnormal and extreme/boundary test data.
 
-- normal
-- abnormal
-- extreme / boundary
+**Mechanism**
 
-### Detailed explanation
+1. **Name both alternatives precisely** — Choose suitable test data for a test plan, including normal, abnormal and extreme/boundary data.
+2. **Connect structure to consequence** — Values immediately outside a limit are abnormal boundary checks.
+3. **Justify against the scenario** — Extreme/boundary data uses valid values at the accepted lower or upper limit.
+
+**Extreme or boundary data uses valid values at…:** Extreme/boundary data uses valid values at the accepted lower or upper limit. For an accepted mark range of 0 to 100 inclusive, 0 and 100 are valid extreme/boundary values.
+
+#### Extreme or boundary data uses valid values at accepted limits
+
+![Extreme or boundary data uses valid values at accepted limits](../web/assets/diagrams/stage10-infographics/stage10-lesson-138-boundary.jpg)
+
+<details><summary>Text transcript</summary>
+
+- Extreme/boundary data uses valid values at the accepted lower or upper limit.
+- For an accepted mark range of 0 to 100 inclusive, 0 and 100 are valid extreme/boundary values.
+- Values just outside the limits, such as -1 and 101, are abnormal and should be rejected.
+
+</details>
+
+<details><summary>Precise syllabus wording</summary>
+
+Select normal, abnormal and extreme/boundary test data.
+
+Choose suitable test data for a test plan, including normal, abnormal and extreme/boundary data.
+
+</details>
+
+<details><summary>Open precise terminology and exam facts</summary>
 
 - Choose suitable test data for a test plan, including normal, abnormal and extreme/boundary data.
 - Alpha testing is performed internally before release; beta testing uses selected external users in realistic settings; acceptance testing checks the delivered system against agreed requirements. A strategy states levels/methods/responsibility, while a test plan records test ID, purpose, data, expected result, actual result and pass/fail.
@@ -41,18 +69,17 @@ Ask the learner to give one accurate definition or method step before continuing
 - Every maintenance change requires impact analysis, controlled amendment, tests for the changed behaviour and regression tests for unaffected behaviour. Records should link the request, code change and test evidence.
 - Test the enhancement with data that exercises the new path and rerun regression tests for existing paths. Correcting a fault is corrective maintenance; adding or improving requested functionality is an enhancement and may be perfective maintenance.
 
-### Worked example
+</details>
 
-Test login through review, construction, integration and release / Test an inclusive mark range / Three changes to one booking system / Add a Merit count without breaking PassCount: First dry-run the lockout counter and conduct a walkthrough in which peers inspect the algorithm. White-box tests cover true/false paths; black-box tests valid, invalid and boundary inputs from requirements. During integration, a stub returns simulated account results before the database is ready. Internal staff perform alpha testing, selected external users perform beta testing, and the customer performs acceptance testing against the agreed lockout behaviour. For an allowed mark from 0 to 100 inclusive, 55 is normal, 0 and 100 are valid extreme/boundary values, and -1 or 101 is abnormal. Fixing a crash when saving is corrective. Updating tax or term-date rules imposed externally is adaptive.…
+### Worked method
+
+1. Test login through review, construction, integration and release
+2. Test an inclusive mark range
+3. Three changes to one booking system
+4. Add a Merit count without breaking PassCount
+5. First dry-run the lockout counter and conduct a walkthrough in which peers inspect the algorithm.
 
 Beyond syllabus / 延伸知识（不要求背诵）: modern teams often use continuous integration to repeat building and testing whenever a program changes.
-
-### Retained visual explanation
-
-![Test strategy and test plan are different documents](../web/assets/diagrams/stage10-infographics/stage10-lesson-146-changeover.jpg)
-
-_Test strategy and test plan are different documents. The image and mobile text alternative come from one maintained fact source._
-
 ## 3. Practice by question type
 
 ### Question 1 - foundation - give - 2 marks

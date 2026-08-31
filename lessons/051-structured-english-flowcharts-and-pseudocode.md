@@ -1,15 +1,15 @@
 # Lesson 051: Structured English, flowcharts and pseudocode
 
-**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029 Version 2<br>
+**Course:** Cambridge International AS Level Computer Science 9618, syllabus for examination in 2027-2029<br>
 **Paper:** Paper 2<br>
 **Syllabus:** Section 9: Algorithm design and problem-solving<br>
 **Syllabus requirements:** S9.07<br>
-**Pacing:** Flexible. This lesson is deliberately over-complete; select a quick, full or deep route for the learners in front of you.
+**Pacing:** Flexible. Select a quick, full or deep route for the learners in front of you.
 
 ## Teaching-depth menu
 
 - **Quick route:** Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.
-- **Full route:** Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.
+- **Full route:** Teach every knowledge-point material set, the worked method and all lesson questions.
 - **Deep route:** Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.
 
 ## 1. Prerequisite knowledge and quick diagnostic
@@ -28,19 +28,47 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ## 2. Knowledge explanation
 
-### Learning objectives
+### 1. Structured English, flowcharts and pseudocode; convert between representations (S9.07)
 
-- Use structured English, flowcharts and pseudocode; convert between representations.
+**Concept relationships**
 
-### Concept checklist for teacher choice
+- **structured:** Design with input-process-output, use sequence, selection and iteration,…
+- **English:** Structured English, flowcharts and pseudocode
+- **flowcharts:** Document an algorithm using structured English, a flowchart…
+- **pseudocode:** Pseudocode from structured English or a flowchart, and…
+- **convert:** Convert between representations.
 
-- structured
-- English
-- flowcharts
-- pseudocode
-- convert
+**Mechanism**
 
-### Detailed explanation
+1. **Translate the stated design** — Design with input-process-output, use sequence, selection and iteration, document the same algorithm in structured English, a flowchart or…
+2. **Apply one complete operation** — Structured English, flowcharts and pseudocode
+3. **Trace state and boundaries** — Document an algorithm using structured English, a flowchart or pseudocode
+
+**Flowcharts use symbols to show control flow:** A terminator marks START or END; a parallelogram marks INPUT or OUTPUT. A rectangle marks a calculation or assignment; a diamond marks a yes/no decision.
+
+#### Flowcharts use symbols to show control flow
+
+![Flowcharts use symbols to show control flow](../web/assets/diagrams/stage10-infographics/stage10-lesson-102-flowcharts.jpg)
+
+<details><summary>Text transcript</summary>
+
+- A terminator marks START or END; a parallelogram marks INPUT or OUTPUT.
+- A rectangle marks a calculation or assignment; a diamond marks a yes/no decision.
+- Flow lines show the next step and decision branches must be labelled.
+- Every output value must first be assigned or input.
+- A loop must contain a route that can change its condition.
+
+</details>
+
+<details><summary>Precise syllabus wording</summary>
+
+Use structured English, flowcharts and pseudocode; convert between representations.
+
+Document an algorithm using structured English, a flowchart or pseudocode; write pseudocode from structured English or a flowchart, and draw a flowchart from structured English or pseudocode while preserving the same algorithm.
+
+</details>
+
+<details><summary>Open precise terminology and exam facts</summary>
 
 - Document an algorithm using structured English, a flowchart or pseudocode; write pseudocode from structured English or a flowchart, and draw a flowchart from structured English or pseudocode while preserving the same algorithm.
 - Structured English expresses sequence, selection and repetition using controlled natural-language statements and indentation. A flowchart uses standard symbols and arrows; pseudocode uses Cambridge constructs. All three must preserve the same decisions and loop boundaries.
@@ -48,18 +76,15 @@ Ask the learner to give one accurate definition or method step before continuing
 - Algorithm design review: define an algorithm as a solution expressed as a sequence of defined steps; use abstraction to retain essential details in an abstract model; use decomposition to express the problem as connected modules; and choose meaningful identifiers recorded in an identifier table.
 - Solution review: design with input-process-output, use sequence, selection and iteration, document the same algorithm in structured English, a flowchart or pseudocode, and convert between the specified representations without changing its control flow.
 
-### Worked example
+</details>
 
-Validate a mark: Structured English: INPUT Mark; WHILE Mark < 0 OR Mark 100, OUTPUT error and INPUT Mark; ENDWHILE. The flowchart returns from the invalid decision branch to input; pseudocode uses a pre-condition WHILE loop.
+### Worked method
+
+1. Validate a mark
+2. INPUT Mark; WHILE Mark < 0 OR Mark 100, OUTPUT error and INPUT Mark; ENDWHILE.
+3. The flowchart returns from the invalid decision branch to input; pseudocode uses a pre-condition WHILE loop.
 
 Beyond syllabus / 延伸知识（不要求背诵）: the same algorithm can be expressed in many programming languages; its logic should remain independent of syntax.
-
-### Retained visual explanation
-
-![Readable notation earns marks more easily](../web/assets/diagrams/stage10-infographics/stage10-lesson-102-notation.jpg)
-
-_Readable notation earns marks more easily. The image and mobile text alternative come from one maintained fact source._
-
 ## 3. Practice by question type
 
 ### Question 1 - foundation - convert - 4 marks

@@ -1,15 +1,15 @@
 # Lesson 057: Array terminology, indices and bounds
 
-**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029 Version 2<br>
+**Course:** Cambridge International AS Level Computer Science 9618, syllabus for examination in 2027-2029<br>
 **Paper:** Paper 2<br>
 **Syllabus:** Section 10: Data types and structures<br>
 **Syllabus requirements:** S10.03<br>
-**Pacing:** Flexible. This lesson is deliberately over-complete; select a quick, full or deep route for the learners in front of you.
+**Pacing:** Flexible. Select a quick, full or deep route for the learners in front of you.
 
 ## Teaching-depth menu
 
 - **Quick route:** Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.
-- **Full route:** Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.
+- **Full route:** Teach every knowledge-point material set, the worked method and all lesson questions.
 - **Deep route:** Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.
 
 ## 1. Prerequisite knowledge and quick diagnostic
@@ -22,18 +22,45 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ## 2. Knowledge explanation
 
-### Learning objectives
+### 1. Array, index, lower bound and upper bound terminology (S10.03)
 
-- Understand array, index, lower bound and upper bound terminology.
+**Concept relationships**
 
-### Concept checklist for teacher choice
+- **lower bound:** Array, index, lower bound and upper bound terminology.
+- **upper bound:** One-dimensional array pseudocode must declare explicit bounds and…
+- **array:** The technical terms associated with arrays, including index,…
+- **index:** ARRAY[1:4] OF STRING, 1 is the lower bound,…
+- **lower:** Cambridge array declarations state an explicit lower and…
 
-- array
-- index
-- lower bound
-- upper bound
+**Mechanism**
 
-### Detailed explanation
+1. **Translate the stated design** — Array, index, lower bound and upper bound terminology.
+2. **Apply one complete operation** — One-dimensional array pseudocode must declare explicit bounds and an element type, access elements with one index and use…
+3. **Trace state and boundaries** — The technical terms associated with arrays, including index, lower bound and upper bound.
+
+**The index points to exactly one element:** Cambridge array declarations state an explicit lower and upper bound. Valid indexes follow the declared bounds and are not universally zero-based.
+
+#### The index points to exactly one element
+
+![The index points to exactly one element](../web/assets/diagrams/stage10-infographics/stage10-lesson-116-access.jpg)
+
+<details><summary>Text transcript</summary>
+
+- Cambridge array declarations state an explicit lower and upper bound.
+- Valid indexes follow the declared bounds and are not universally zero-based.
+- Label 0 to n-1 as a chosen zero-based example, or use the lesson's declared bounds consistently.
+
+</details>
+
+<details><summary>Precise syllabus wording</summary>
+
+Understand array, index, lower bound and upper bound terminology.
+
+Use the technical terms associated with arrays, including index, lower bound and upper bound. Bounds define the inclusive valid index range and an index selects one element.
+
+</details>
+
+<details><summary>Open precise terminology and exam facts</summary>
 
 - Use the technical terms associated with arrays, including index, lower bound and upper bound. Bounds define the inclusive valid index range and an index selects one element.
 - An array is a collection of elements stored under one identifier. An index selects one element. The lower bound is the first valid index and the upper bound is the last valid index; both bounds are inclusive in a Cambridge declaration such as ARRAY[1:20] OF INTEGER.
@@ -43,18 +70,16 @@ Ask the learner to give one accurate definition or method step before continuing
 - Cambridge pseudocode declares explicit inclusive bounds. In DECLARE Names : ARRAY[1:4] OF STRING, 1 is the lower bound, 4 is the upper bound and the valid indexes are 1, 2, 3 and 4. A search must start and stop within those declared bounds.
 - Linear search checks successive indexed elements until the target is found or every populated element has been checked. Binary search also uses indexes, but requires the array to be sorted so each comparison can discard one half of the remaining index range.
 
-### Worked example
+</details>
 
-Declare the search data before tracing it: DECLARE Names : ARRAY[1:4] OF STRING defines four string elements. For Names = ['Asha', 'Ben', 'Chen', 'Dina'], a one-based linear search compares Names[1], then Names[2], and stops when it finds 'Ben'. Index 0 is invalid because it is below the declared lower bound.
+### Worked method
+
+1. Declare the search data before tracing it
+2. ARRAY[1:4] OF STRING defines four string elements.
+3. For Names = ['Asha', 'Ben', 'Chen', 'Dina'], a one-based linear search compares Names[1], then Names[2], and stops when it finds 'Ben'.
+4. Index 0 is invalid because it is below the declared lower bound.
 
 Beyond syllabus / 延伸知识（不要求背诵）: programming libraries often provide tested ADT implementations, but the exam expects you to understand their behaviour and selection.
-
-### Retained visual explanation
-
-![The index points to exactly one element](../web/assets/diagrams/stage10-infographics/stage10-lesson-116-access.jpg)
-
-_The index points to exactly one element. The image and mobile text alternative come from one maintained fact source._
-
 ## 3. Practice by question type
 
 ### Question 1 - foundation - write - 6 marks

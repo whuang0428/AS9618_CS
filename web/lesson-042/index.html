@@ -8,25 +8,25 @@
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
-    <link rel="stylesheet" href="../course-v2.css?v=3" />
+    <link rel="stylesheet" href="../course-v2.css?v=4" />
   </head>
-  <body data-course-version="2" data-lesson-id="042" data-syllabus-ids="S8.07">
+  <body data-course-version="2" data-lesson-id="042" data-syllabus-ids="S8.07" data-material-status="complete">
     <a class="skip-link" href="#main-content">Skip to main content</a>
     <header class="v2-topbar">
       <div><p class="v2-eyebrow">Cambridge AS9618 | Paper 1 | Section 8: Databases</p><h1>DDL, DML and the role of SQL</h1></div>
       <nav class="v2-actions" aria-label="Lesson actions"><a href="../">Course home</a><a href="../assessments/">Assessment bank</a><button type="button" id="printLesson">Print</button></nav>
     </header>
+    <nav class="v2-jump-nav" aria-label="Lesson contents"><strong>Lesson 042</strong><a href="#overview">Overview</a><a href="#prerequisite">Prerequisite</a><a href="#explanation">Explanation</a><a href="#practice">Practice</a><a href="#summary">Summary</a></nav>
     <main class="v2-shell" id="main-content" tabindex="-1">
-      <nav class="v2-toc" aria-label="Lesson contents"><strong>Lesson 042</strong><a href="#overview">Overview</a><a href="#prerequisite">Prerequisite</a><a href="#explanation">Explanation</a><a href="#practice">Practice</a><a href="#summary">Summary</a></nav>
       <div class="v2-content">
         <section class="v2-hero" id="overview">
-          <div><p class="v2-eyebrow">Flexible-depth lesson</p><h2>DDL, DML and the role of SQL</h2><p>S8.07 | Select what to omit, teach briefly or explore in depth.</p></div>
+          <div><p class="v2-eyebrow">Flexible-depth lesson</p><h2>DDL, DML and the role of SQL</h2><p>S8.07 | Visual relationships, mechanisms and worked examples.</p></div>
           <div class="v2-time-grid" aria-label="Available lesson depth"><div><strong>Quick</strong><span>diagnose + essentials</span></div><div><strong>Full</strong><span>complete explanation</span></div><div><strong>Deep</strong><span>prerequisites + extension</span></div><div><strong>Choose</strong><span>practice by need</span></div></div>
         </section>
 
         <section class="v2-panel v2-route-menu" aria-labelledby="route-heading">
           <div class="v2-heading"><p class="v2-eyebrow">Teacher choice</p><h2 id="route-heading">Choose the depth for this group</h2></div>
-          <div class="v2-route-grid"><article><h3>Quick route</h3><p>Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.</p></article><article><h3>Full route</h3><p>Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.</p></article><article><h3>Deep route</h3><p>Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.</p></article></div>
+          <div class="v2-route-grid"><article><h3>Quick route</h3><p>Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.</p></article><article><h3>Full route</h3><p>Teach every knowledge-point material set, the worked method and all lesson questions.</p></article><article><h3>Deep route</h3><p>Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.</p></article></div>
         </section>
 
         <section class="v2-panel" id="prerequisite">
@@ -37,21 +37,27 @@
         </section>
 
         <section class="v2-panel" id="explanation">
-          <div class="v2-heading"><p class="v2-eyebrow">Part 2 | deliberately over-complete</p><h2>Knowledge explanation</h2></div>
-          <h3>Learning objectives</h3><ul class="v2-objectives"><li>Understand DDL creates/modifies structure, DML queries/maintains data, and SQL is an industry-standard language.</li></ul>
-          <details class="v2-concept-menu"><summary>Open the concept checklist and choose what to teach</summary><ul><li>DDL</li><li>creation</li><li>modification</li><li>database structure</li><li>DML</li><li>queries</li><li>maintenance</li><li>SQL</li><li>industry-standard</li><li>language</li></ul></details>
-          <div class="v2-explanation-grid">
-            <div>
-              <article class="v2-core-facts"><h3>Detailed explanation</h3><p class="v2-teacher-note">Teach all points, or select only the ones this group needs. The list is intentionally fuller than a fixed lesson slot.</p><ul class="v2-facts"><li>Version 2 distinguishes DBMS creation/modification of database structure through DDL from queries and data maintenance through DML, and identifies SQL as the industry standard for both.</li><li>DDL is used for the creation and modification of database structure. DML is used for queries and maintenance of stored data. SQL is an industry-standard language that includes both kinds of operation.</li><li>Keep the schema and the records distinct: defining a table or constraint changes structure, while selecting, inserting, deleting or updating records works with stored data.</li><li>Database design review: connect each file-based limitation to a relational or DBMS mechanism; use entity/table, record/tuple and field/attribute precisely; distinguish candidate, primary, secondary and foreign keys; classify one-to-one, one-to-many and many-to-many relationships; apply referential integrity and indexing; document the design with an E-R diagram; and explain or produce 1NF, 2NF and 3NF designs.</li><li>DBMS and SQL review: identify data management/data dictionary, data modelling, logical schema, integrity, security/backup/access rights, developer interface and query processor. Distinguish DDL structure commands from DML query/maintenance commands, use every required data type and key clause, and keep SELECT queries to at most two tables with explicit INNER JOIN ... ON when two tables are needed.</li><li>A complete answer follows the scenario through design, statement and result. It does not claim that a primary key prevents every duplicate fact, that a secondary key must be unique, that normalisation guarantees correctness, or that a three-table/comma-style query is within the AS core boundary.</li><li>A record is also called a tuple; both terms describe one row containing fields or attributes for one entity occurrence.</li><li>A query uses SELECT fields FROM a table, may filter rows with WHERE, sort with ORDER BY and form aggregate groups with GROUP BY. SUM totals values, COUNT counts rows or values, and AVG calculates a mean. An INNER JOIN uses ON to match at most two tables in the required AS queries.</li></ul></article>
-              <article class="v2-example"><h3>Worked example</h3><p>Classify database operations: CREATE TABLE is DDL because it creates database structure. SELECT and UPDATE are DML because they query or maintain stored data.</p></article>
-              <aside class="v2-extension"><h3>Beyond syllabus / 延伸知识（不要求背诵）</h3><p>production databases also manage transactions and concurrent users; these ideas extend the syllabus model of integrity and access control.</p></aside>
-            </div>
-            <figure class="v2-visual">
-              <img src="../assets/diagrams/stage10-infographics/stage10-lesson-090-map.jpg" alt="Retrieval map. Data and DBMS data vs information; DBMS roles; avoiding flat-file limitations. Tables and keys records, fields, data types, constraints, primary keys and foreign keys. Design entity-relationship modelling and normalisation to reduce duplication. SQL retrieval SELECT , FROM , WHERE , ORDER BY , aggregates and joins" loading="lazy" />
-              <figcaption>Section 8 knowledge map. One maintained explanation is shown as an image on larger screens and as text on small screens.</figcaption>
-              <div class="v2-mobile-visual-text" aria-label="Mobile text alternative"><ul><li>Retrieval map</li><li>Data and DBMS data vs information; DBMS roles; avoiding flat-file limitations</li><li>Tables and keys records, fields, data types, constraints, primary keys and foreign keys</li><li>Design entity-relationship modelling and normalisation to reduce duplication</li><li>SQL retrieval SELECT , FROM , WHERE , ORDER BY , aggregates and joins</li></ul></div>
-            </figure>
-          </div>
+          <div class="v2-heading"><p class="v2-eyebrow">Part 2 | visual explanation</p><h2>Learn each point through visuals</h2><p>Use the relationship map, mechanism and concrete cue before opening precise wording.</p></div>
+    <nav class="v2-knowledge-index" aria-label="Knowledge points in this lesson"><a href="#knowledge-s8-07"><span>01</span>S8.07</a></nav><div class="v2-knowledge-point-list"><section class="v2-knowledge-point" id="knowledge-s8-07" data-syllabus-id="S8.07" data-visual-mode="structure" data-material-count="4">
+      <header class="v2-knowledge-point-head"><span>01</span><div><p>S8.07 · structure</p><h3>DDL creates/modifies structure, DML queries/maintains data, and SQL is an industry-standard language</h3></div></header>
+      <div class="v2-material-triad">
+        <article class="v2-native-material v2-native-material--map"><h4>Concept relationships</h4><div class="v2-concept-map"><div><strong>database structure</strong><span>DBMS creation/modification of database structure through DDL from…</span></div><div><strong>industry-standard</strong><span>DDL creates/modifies structure, DML queries/maintains data, and SQL…</span></div><div><strong>DDL</strong><span>DDL is used for the creation and modification…</span></div><div><strong>creation</strong><span>DDL structure commands from DML query/maintenance commands, use…</span></div><div><strong>modification</strong><span>SQL is an industry-standard language that includes both…</span></div><div><strong>DML</strong><span>DML is used for queries and maintenance of…</span></div></div></article>
+        <article class="v2-native-material v2-native-material--story"><h4>See how it works</h4><ol><li><span>Read</span><div><strong>Identify structure and target data</strong><p>DBMS creation/modification of database structure through DDL from queries and data maintenance through DML, and identifies SQL as…</p></div></li><li><span>Build</span><div><strong>Apply the database rule</strong><p>DDL creates/modifies structure, DML queries/maintains data, and SQL is an industry-standard language.</p></div></li><li><span>Verify</span><div><strong>Check keys rows and conditions</strong><p>DDL is used for the creation and modification of database structure.</p></div></li></ol></article>
+        <aside class="v2-native-material v2-native-material--cue"><h4>INSERT, UPDATE and DELETE are data manipulation commands</h4><p>They change stored data. In exam answers, be precise about command keywords and affected records. INSERT Adds a new record to a table.</p></aside>
+      </div>
+      <section class="v2-material-library" aria-label="S8.07 diagrams">
+    <div class="v2-material-library-head"><h3>S8.07 diagrams</h3></div>
+    <div class="v2-material-rail" id="materials-042-s8-07" data-material-rail><figure class="v2-visual" data-material-kind="diagram">
+            <div class="v2-visual-heading"><span>01</span><div><p>Diagram · 1 of 1</p><h4>INSERT, UPDATE and DELETE are data manipulation commands</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: INSERT, UPDATE and DELETE are data manipulation commands"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-088-dml.jpg" alt="INSERT, UPDATE and DELETE are data manipulation commands" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>They change stored data. In exam answers, be precise about command keywords and affected records.</li><li>INSERT Adds a new record to a table.</li><li>UPDATE Changes values in existing records.</li><li>DELETE Removes existing records from a table.</li></ul></details>
+          </figure></div>
+  </section>
+      <details class="v2-point-precision"><summary>Open precise syllabus wording</summary><p><strong>Understand DDL creates/modifies structure, DML queries/maintains data, and SQL is an industry-standard language.</strong></p><p>the syllabus distinguishes DBMS creation/modification of database structure through DDL from queries and data maintenance through DML, and identifies SQL as the industry standard for both.</p></details>
+    </section></div>
+    <details class="v2-core-facts"><summary>Open precise terminology and exam facts</summary><ul class="v2-facts"><li>the syllabus distinguishes DBMS creation/modification of database structure through DDL from queries and data maintenance through DML, and identifies SQL as the industry standard for both.</li><li>DDL is used for the creation and modification of database structure. DML is used for queries and maintenance of stored data. SQL is an industry-standard language that includes both kinds of operation.</li><li>Keep the schema and the records distinct: defining a table or constraint changes structure, while selecting, inserting, deleting or updating records works with stored data.</li><li>Database design review: connect each file-based limitation to a relational or DBMS mechanism; use entity/table, record/tuple and field/attribute precisely; distinguish candidate, primary, secondary and foreign keys; classify one-to-one, one-to-many and many-to-many relationships; apply referential integrity and indexing; document the design with an E-R diagram; and explain or produce 1NF, 2NF and 3NF designs.</li><li>DBMS and SQL review: identify data management/data dictionary, data modelling, logical schema, integrity, security/backup/access rights, developer interface and query processor. Distinguish DDL structure commands from DML query/maintenance commands, use every required data type and key clause, and keep SELECT queries to at most two tables with explicit INNER JOIN ... ON when two tables are needed.</li><li>A complete answer follows the scenario through design, statement and result. It does not claim that a primary key prevents every duplicate fact, that a secondary key must be unique, that normalisation guarantees correctness, or that a three-table/comma-style query is within the AS core boundary.</li><li>A record is also called a tuple; both terms describe one row containing fields or attributes for one entity occurrence.</li><li>A query uses SELECT fields FROM a table, may filter rows with WHERE, sort with ORDER BY and form aggregate groups with GROUP BY. SUM totals values, COUNT counts rows or values, and AVG calculates a mean. An INNER JOIN uses ON to match at most two tables in the required AS queries.</li></ul></details>
+    <article class="v2-example"><h3>Worked method</h3><ol><li>Classify database operations</li><li>CREATE TABLE is DDL because it creates database structure.</li><li>SELECT and UPDATE are DML because they query or maintain stored data.</li></ol></article>
+    <aside class="v2-extension"><h3>Beyond syllabus / 延伸知识（不要求背诵）</h3><p>production databases also manage transactions and concurrent users; these ideas extend the syllabus model of integrity and access control.</p></aside>
         </section>
 
         <section class="v2-panel" id="practice">
@@ -86,6 +92,6 @@
         <nav class="v2-bottom-nav" aria-label="Previous and next lesson"><a href="../lesson-041/" >Previous lesson</a><a href="../lesson-043/" >Next lesson</a></nav>
       </div>
     </main>
-    <script src="../course-v2.js?v=1"></script>
+    <script src="../course-v2.js?v=2"></script>
   </body>
 </html>

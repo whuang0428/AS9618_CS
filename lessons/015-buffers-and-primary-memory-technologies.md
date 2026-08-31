@@ -1,15 +1,15 @@
 # Lesson 015: Buffers and primary memory technologies
 
-**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029 Version 2<br>
+**Course:** Cambridge International AS Level Computer Science 9618, syllabus for examination in 2027-2029<br>
 **Paper:** Paper 1<br>
 **Syllabus:** Section 3: Hardware<br>
 **Syllabus requirements:** S3.04, S3.05, S3.06, S3.07<br>
-**Pacing:** Flexible. This lesson is deliberately over-complete; select a quick, full or deep route for the learners in front of you.
+**Pacing:** Flexible. Select a quick, full or deep route for the learners in front of you.
 
 ## Teaching-depth menu
 
 - **Quick route:** Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.
-- **Full route:** Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.
+- **Full route:** Teach every knowledge-point material set, the worked method and all lesson questions.
 - **Deep route:** Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.
 
 ## 1. Prerequisite knowledge and quick diagnostic
@@ -26,28 +26,140 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ## 2. Knowledge explanation
 
-### Learning objectives
+### 1. Why buffers are used (S3.04)
 
-- Understand why buffers are used.
-- Distinguish RAM and ROM.
-- Explain uses of SRAM and DRAM and reasons for each use.
+**Concept relationships**
 
-### Concept checklist for teacher choice
+- **Producer:** Creates data at one rate
+- **Buffer:** Temporary holding area
+- **Consumer:** Uses data at another rate
+- **Mismatch:** Speeds differ temporarily
+- **temporarily:** An output buffer temporarily holds data because the…
+- **speed:** A buffer absorbs the speed difference between producer…
 
-- buffer
-- temporarily
-- different / speed
-- RAM
-- ROM
-- SRAM
-- DRAM
-- cache
-- main memory
-- PROM
-- EPROM
-- EEPROM
+**Mechanism**
 
-### Detailed explanation
+1. **Translate the stated design** — A buffer absorbs the speed difference between producer and device.
+2. **Apply one complete operation** — An output buffer temporarily holds data because the processor can produce it faster or in different-sized bursts than…
+3. **Trace state and boundaries** — Why buffers are used.
+
+**Why drivers, buffers and queues work together:** A driver converts a general request into device-specific commands. A buffer absorbs the speed difference between producer and device.
+
+#### Why drivers, buffers and queues work together
+
+![Why drivers, buffers and queues work together](../web/assets/diagrams/stage10-infographics/stage10-lesson-054-device.jpg)
+
+<details><summary>Text transcript</summary>
+
+- A driver converts a general request into device-specific commands.
+- A buffer absorbs the speed difference between producer and device.
+- A queue preserves an orderly sequence of pending requests.
+
+</details>
+
+<details><summary>Precise syllabus wording</summary>
+
+Understand why buffers are used.
+
+Show understanding of the use of buffers, including temporary storage used to manage different producer and consumer rates.
+
+</details>
+
+### 2. RAM and ROM (S3.05)
+
+**Concept relationships**
+
+- **RAM:** Volatile working memory
+- **ROM:** Non-volatile startup memory
+- **Power loss:** RAM contents disappear
+- **Writing:** RAM changes during operation
+- **distinguish:** RAM and ROM.
+
+**Mechanism**
+
+1. **Name both alternatives precisely** — RAM and ROM.
+2. **Connect structure to consequence** — The differences between RAM and ROM, including their use in a range of devices and systems.
+3. **Justify against the scenario** — ROM is non-volatile primary memory used for instructions that must remain when power is removed, such as firmware…
+
+**Why RAM changes while ROM remains stable:** RAM holds the changing state of running programs. Most RAM needs continuous power to preserve that state.
+
+#### Why RAM changes while ROM remains stable
+
+![Why RAM changes while ROM remains stable](../web/assets/diagrams/stage10-infographics/stage10-lesson-031-ram-rom.jpg)
+
+<details><summary>Text transcript</summary>
+
+- RAM holds the changing state of running programs.
+- Most RAM needs continuous power to preserve that state.
+- ROM retains fixed startup instructions when power is removed.
+
+</details>
+
+<details><summary>Precise syllabus wording</summary>
+
+Distinguish RAM and ROM.
+
+Explain the differences between RAM and ROM, including their use in a range of devices and systems.
+
+</details>
+
+### 3. Uses of SRAM and DRAM and reasons for each use (S3.06)
+
+**Concept relationships**
+
+- **main memory:** DRAM stores charge in capacitors, requires refresh and…
+- **SRAM:** Uses of SRAM and DRAM and reasons for…
+- **DRAM:** The differences between SRAM and DRAM, including their…
+- **cache:** SRAM stores bits using flip-flop circuits, needs no…
+- **uses:** An HDD or magnetic hard disk uses rotating…
+
+**Mechanism**
+
+1. **Name both alternatives precisely** — Uses of SRAM and DRAM and reasons for each use.
+2. **Connect structure to consequence** — The differences between SRAM and DRAM, including their uses in a range of devices and systems and the…
+3. **Justify against the scenario** — DRAM stores charge in capacitors, requires refresh and is slower but cheaper and denser, so it is used…
+
+**Concrete case: main memory:** Uses of SRAM and DRAM and reasons for each use.
+
+
+
+<details><summary>Precise syllabus wording</summary>
+
+Explain uses of SRAM and DRAM and reasons for each use.
+
+Explain the differences between SRAM and DRAM, including their uses in a range of devices and systems and the reasons for choosing one instead of the other.
+
+</details>
+
+### 4. PROM, EPROM and EEPROM (S3.07)
+
+**Concept relationships**
+
+- **PROM:** Programmed once
+- **EPROM:** Erased with ultraviolet light
+- **EEPROM:** Erased electrically
+- **All three:** Retain contents without power
+- **buffer:** An output buffer temporarily holds data because the…
+
+**Mechanism**
+
+1. **Name both alternatives precisely** — The difference between PROM, EPROM and EEPROM, including how each can be programmed or erased.
+2. **Connect structure to consequence** — PROM, EPROM and EEPROM.
+3. **Justify against the scenario** — PROM is programmed once.
+
+**Concrete case: PROM:** The difference between PROM, EPROM and EEPROM, including how each can be programmed or erased.
+
+
+
+<details><summary>Precise syllabus wording</summary>
+
+Understand PROM, EPROM and EEPROM.
+
+Explain the difference between PROM, EPROM and EEPROM, including how each can be programmed or erased.
+
+</details>
+
+<details><summary>Open precise terminology and exam facts</summary>
 
 - Show understanding of the use of buffers, including temporary storage used to manage different producer and consumer rates.
 - Explain the differences between RAM and ROM, including their use in a range of devices and systems.
@@ -62,18 +174,17 @@ Ask the learner to give one accurate definition or method step before continuing
 - PROM is programmed once. EPROM can be erased with ultraviolet light and reprogrammed. EEPROM is erased and rewritten electrically, often without removing it from the system. All three are non-volatile ROM technologies.
 - Required device overview: a laser printer uses an electrostatic drum, laser, toner and fuser; a 3D printer builds successive layers; a speaker converts an electrical signal into sound. An HDD or magnetic hard disk uses rotating magnetic platters, flash memory stores charge electronically, and an optical reader/writer uses a laser.
 
-### Worked example
+</details>
 
-Print a page / Read an HDD block / Choose a storage mechanism / Choose memory for a computer system: The operating system places page data in a print buffer. The CPU can continue other work while the slower printer consumes buffered data and performs drum, toner and fusing stages. The controller moves the head to the correct track, waits for the sector to rotate beneath it, senses magnetic patterns and transfers the decoded bits through a buffer. A portable device may use flash memory for shock resistance; an archive may use optical media when an optical disc reader/writer is available. Use DRAM as main RAM because its density and lower cost support a large working capacity. Use a small amount of SRAM for cache because faster, no-refresh access reduces processor waiting. Store updateable firmware in EEPROM because it remains without power but can be rewritten electrically.
+### Worked method
+
+1. Print a page
+2. Read an HDD block
+3. Choose a storage mechanism
+4. Choose memory for a computer system
+5. The operating system places page data in a print buffer.
 
 Beyond syllabus / 延伸知识（不要求背诵）: professional device selection also considers accessibility, reliability, repairability and energy use.
-
-### Retained visual explanation
-
-![Why cache helps and virtual memory slows](../web/assets/diagrams/stage10-infographics/stage10-lesson-031-cache-vm.jpg)
-
-_Why cache helps and virtual memory slows. The image and mobile text alternative come from one maintained fact source._
-
 ## 3. Practice by question type
 
 ### Question 1 - foundation - explain - 8 marks

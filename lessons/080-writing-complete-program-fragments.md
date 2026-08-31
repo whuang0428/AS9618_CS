@@ -1,15 +1,15 @@
 # Lesson 080: Writing complete program fragments
 
-**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029 Version 2<br>
+**Course:** Cambridge International AS Level Computer Science 9618, syllabus for examination in 2027-2029<br>
 **Paper:** Paper 2<br>
 **Syllabus:** Section 11: Programming<br>
 **Syllabus requirements:** S11.01, S11.04, S11.06, S11.07<br>
-**Pacing:** Flexible. This lesson is deliberately over-complete; select a quick, full or deep route for the learners in front of you.
+**Pacing:** Flexible. Select a quick, full or deep route for the learners in front of you.
 
 ## Teaching-depth menu
 
 - **Quick route:** Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.
-- **Full route:** Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.
+- **Full route:** Teach every knowledge-point material set, the worked method and all lesson questions.
 - **Deep route:** Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.
 
 ## 1. Prerequisite knowledge and quick diagnostic
@@ -30,38 +30,154 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ## 2. Knowledge explanation
 
-### Learning objectives
+### 1. Pseudocode from a flowchart or structured-English description: Writing complete program fragments (S11.01)
 
-- Write pseudocode from a flowchart or structured-English description.
-- Use IF/ELSE/nested selection, CASE, count-controlled loops, post-condition and pre-condition loops.
-- Understand and use procedures with parameters passed by reference and by value.
+**Concept relationships**
 
-### Concept checklist for teacher choice
+- **structured-English:** Pseudocode from a flowchart or structured-English description.
+- **design:** Implement and write pseudocode from a given design…
+- **pseudocode:** The answer must be Cambridge pseudocode, not Java
+- **test:** FOR when the count is known, WHILE when…
+- **flowchart:** To translate a flowchart, follow arrows from Start,…
+- **complete fragment:** To translate structured English, identify its controlled verbs…
 
-- pseudocode
-- flowchart
-- structured-English / structured English
-- description / descriptions / design
-- IF
-- ELSE
-- nested
-- selection
-- CASE
-- count-controlled
-- loop / loops
-- post-condition
-- pre-condition
-- procedure / procedures
-- parameters
-- passed / passes / pass
-- reference / BYREF
-- value / BYVAL
-- functions
-- return
-- values
-- expression / expressions
+**Mechanism**
 
-### Detailed explanation
+1. **Translate the stated design** — Pseudocode from a flowchart or structured-English description.
+2. **Apply one complete operation** — Implement and write pseudocode from a given design presented as either a flowchart or structured English.
+3. **Trace state and boundaries** — To translate structured English, identify its controlled verbs and indentation before selecting Cambridge constructs.
+
+**Concrete case: structured-English:** Pseudocode from a flowchart or structured-English description.
+
+
+
+<details><summary>Precise syllabus wording</summary>
+
+Write pseudocode from a flowchart or structured-English description.
+
+Implement and write pseudocode from a given design presented as either a flowchart or structured English.
+
+</details>
+
+### 2. IF/ELSE/nested selection, CASE, count-controlled loops, post-condition and pre-condition loops: Writing complete program fragments (S11.04)
+
+**Concept relationships**
+
+- **count-controlled:** IF/ELSE/nested selection, CASE, count-controlled loops, post-condition and pre-condition…
+- **post-condition:** It is well suited when the count or…
+- **pre-condition:** And pre-condition loops.
+- **loop:** A WHILE...ENDWHILE loop is a pre-condition loop
+- **selection:** Close the complete multi-way selection with ENDCASE.
+- **iteration:** The counter, start value and end value define…
+
+**Mechanism**
+
+1. **Translate the stated design** — IF/ELSE/nested selection, CASE, count-controlled loops, post-condition and pre-condition loops.
+2. **Apply one complete operation** — It is well suited when the count or bounds are known, but a pre-condition or post-condition loop is…
+3. **Trace state and boundaries** — And pre-condition loops.
+
+**Use CASE for clear values of one expression:** CASE compares one expression with several discrete values. Each listed value has its own action and OTHERWISE handles unlisted values.
+
+#### Use CASE for clear values of one expression
+
+![Use CASE for clear values of one expression](../web/assets/diagrams/stage10-infographics/stage10-lesson-128-case.jpg)
+
+<details><summary>Text transcript</summary>
+
+- CASE compares one expression with several discrete values.
+- Each listed value has its own action and OTHERWISE handles unlisted values.
+- Close the complete multi-way selection with ENDCASE.
+
+</details>
+
+#### A FOR loop has a counter, a start value and an end value
+
+![A FOR loop has a counter, a start value and an end value](../web/assets/diagrams/stage10-infographics/stage10-lesson-129-for.jpg)
+
+<details><summary>Text transcript</summary>
+
+- FOR loop structure
+- General pattern
+- FOR Counter <- StartValue TO EndValue
+- // repeated statements
+- NEXT Counter
+- Concrete example
+- Total <- 0
+- FOR Count <- 1 TO 5
+- Total <- Total + Count
+- NEXT Count
+- OUTPUT Total
+- Use a FOR loop when the number of repetitions is known before the loop starts.
+
+</details>
+
+<details><summary>Precise syllabus wording</summary>
+
+Use IF/ELSE/nested selection, CASE, count-controlled loops, post-condition and pre-condition loops.
+
+Use IF statements, including the ELSE clause and nested IF statements; CASE statements; count-controlled loops; post-condition loops; and pre-condition loops.
+
+</details>
+
+### 3. And use procedures with parameters passed by reference and by value: Writing complete program fragments (S11.06)
+
+**Concept relationships**
+
+- **procedure call:** And use procedures with parameters passed by reference…
+- **procedure:** Define and use a procedure
+- **pass:** Parameters with none, one or more values passed…
+- **argument:** When the use of a procedure is appropriate
+- **interface:** A function is used in an expression and…
+- **parameters:** The counter, start value and end value define…
+
+**Mechanism**
+
+1. **Translate the stated design** — And use procedures with parameters passed by reference and by value.
+2. **Apply one complete operation** — Parameters with none, one or more values passed by reference or by value.
+3. **Trace state and boundaries** — Define and use a procedure
+
+**Concrete case: procedure call:** And use procedures with parameters passed by reference and by value.
+
+
+
+<details><summary>Precise syllabus wording</summary>
+
+Understand and use procedures with parameters passed by reference and by value.
+
+Define and use a procedure; explain when the use of a procedure is appropriate; use parameters with none, one or more values passed by reference or by value.
+
+</details>
+
+### 4. And use functions, including return values in expressions: Writing complete program fragments (S11.07)
+
+**Concept relationships**
+
+- **expression:** And use functions, including return values in expressions.
+- **return:** A function is used in an expression and…
+- **functions:** CASE...OF...OTHERWISE...ENDCASE when one expression is compared with several…
+- **values:** Parameters with none, one or more values passed…
+- **function call:** CASE is not a replacement for range or…
+- **complete fragment:** It is well suited when the count or…
+
+**Mechanism**
+
+1. **Translate the stated design** — And use functions, including return values in expressions.
+2. **Apply one complete operation** — A function is used in an expression and its return value replaces the function call.
+3. **Trace state and boundaries** — CASE...OF...OTHERWISE...ENDCASE when one expression is compared with several discrete values.
+
+**Concrete case: expression:** And use functions, including return values in expressions.
+
+
+
+<details><summary>Precise syllabus wording</summary>
+
+Understand and use functions, including return values in expressions.
+
+Define and use a function; explain when the use of a function is appropriate. A function is used in an expression and its return value replaces the function call.
+
+</details>
+
+<details><summary>Open precise terminology and exam facts</summary>
 
 - Implement and write pseudocode from a given design presented as either a flowchart or structured English.
 - Use IF statements, including the ELSE clause and nested IF statements; CASE statements; count-controlled loops; post-condition loops; and pre-condition loops.
@@ -76,18 +192,17 @@ Ask the learner to give one accurate definition or method step before continuing
 - A WHILE...ENDWHILE loop is a pre-condition loop: it tests before the body and may run zero times. A REPEAT...UNTIL loop is a post-condition loop: it executes the body before testing and therefore runs at least once. A FOR...NEXT loop is count-controlled.
 - Select and justify the loop structure from the problem: use FOR when the count is known, WHILE when execution may be unnecessary and continuation is tested first, and REPEAT when the body must run once before a stopping condition can be tested. The justification must use the scenario, not only say that one loop is easier.
 
-### Worked example
+</details>
 
-Use a procedure and a function: PROCEDURE Increase(BYREF Number : INTEGER, BYVAL Amount : INTEGER) changes the caller's Number by Amount. FUNCTION CalculateVAT(Price : REAL) RETURNS REAL returns Price 0.20, so Total <- Price + CalculateVAT(Price) uses the returned value in an expression. In Increase(Score, 5), Number and Amount are parameters while Score and 5 are arguments.
+### Worked method
+
+1. Use a procedure and a function
+2. PROCEDURE Increase(BYREF Number
+3. INTEGER, BYVAL Amount
+4. INTEGER) changes the caller's Number by Amount.
+5. REAL) RETURNS REAL returns Price 0.20, so Total <- Price + CalculateVAT(Price) uses the returned value in an expression.
 
 Beyond syllabus / 延伸知识（不要求背诵）: consistent style, modularity and automated tests reduce maintenance errors in larger programs.
-
-### Retained visual explanation
-
-![Use functions for returned values and procedures for actions](../web/assets/diagrams/stage10-infographics/stage10-lesson-142-subroutines.jpg)
-
-_Use functions for returned values and procedures for actions. The image and mobile text alternative come from one maintained fact source._
-
 ## 3. Practice by question type
 
 ### Question 1 - foundation - apply - 2 marks

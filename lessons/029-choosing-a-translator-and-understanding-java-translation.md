@@ -1,15 +1,15 @@
 # Lesson 029: Choosing a translator and understanding Java translation
 
-**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029 Version 2<br>
+**Course:** Cambridge International AS Level Computer Science 9618, syllabus for examination in 2027-2029<br>
 **Paper:** Paper 1<br>
 **Syllabus:** Section 5: System software<br>
 **Syllabus requirements:** S5.05, S5.06<br>
-**Pacing:** Flexible. This lesson is deliberately over-complete; select a quick, full or deep route for the learners in front of you.
+**Pacing:** Flexible. Select a quick, full or deep route for the learners in front of you.
 
 ## Teaching-depth menu
 
 - **Quick route:** Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.
-- **Full route:** Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.
+- **Full route:** Teach every knowledge-point material set, the worked method and all lesson questions.
 - **Deep route:** Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.
 
 ## 1. Prerequisite knowledge and quick diagnostic
@@ -26,23 +26,74 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ## 2. Knowledge explanation
 
-### Learning objectives
+### 1. Compare compiler and interpreter advantages/disadvantages and justify use (S5.05)
 
-- Compare compiler and interpreter advantages/disadvantages and justify use.
-- Understand that Java is partly compiled and partly interpreted.
+**Concept relationships**
 
-### Concept checklist for teacher choice
+- **compiler:** Compare compiler and interpreter advantages/disadvantages and justify use.
+- **interpreter:** The benefits and drawbacks of a compiler and…
+- **benefits:** Disadvantages include repeated translation overhead, slower execution and…
+- **drawbacks:** Compiler advantages include faster repeated execution after translation,…
+- **compare:** Interpreter advantages include immediate statement-level feedback and convenient…
 
-- compiler
-- interpreter
-- advantages / benefits
-- disadvantages / drawbacks
-- Java
-- partly
-- compiled
-- interpreted
+**Mechanism**
 
-### Detailed explanation
+1. **Name both alternatives precisely** — Compare compiler and interpreter advantages/disadvantages and justify use.
+2. **Connect structure to consequence** — The benefits and drawbacks of a compiler and an interpreter, and justify which translator is appropriate for a…
+3. **Justify against the scenario** — Disadvantages include repeated translation overhead, slower execution and needing the interpreter and usually the source program at run…
+
+**A compiler translates the whole high-level program before…:** Input High-level language source code. Output Object code or executable code after translation.
+
+#### A compiler translates the whole high-level program before execution
+
+![A compiler translates the whole high-level program before execution](../web/assets/diagrams/stage10-infographics/stage10-lesson-057-compiler.jpg)
+
+<details><summary>Text transcript</summary>
+
+- Input High-level language source code.
+- Output Object code or executable code after translation.
+- Advantages Executable can run without source code; repeated execution may be faster after compilation.
+- Limitations Errors are often reported after compilation, so debugging may involve checking a list of errors.
+
+</details>
+
+<details><summary>Precise syllabus wording</summary>
+
+Compare compiler and interpreter advantages/disadvantages and justify use.
+
+Explain the benefits and drawbacks of a compiler and an interpreter, and justify which translator is appropriate for a stated use.
+
+</details>
+
+### 2. That Java is partly compiled and partly interpreted (S5.06)
+
+**Concept relationships**
+
+- **Java:** That Java is partly compiled and partly interpreted.
+- **partly:** Java in console mode is partly compiled and…
+- **compiled:** A high-level program may be partly compiled and…
+- **interpreted:** The Java compiler translates source code into platform-independent…
+- **compiler:** The benefits and drawbacks of a compiler and…
+
+**Mechanism**
+
+1. **Name the exact concept** — That Java is partly compiled and partly interpreted.
+2. **Explain how its parts connect** — Java in console mode is partly compiled and partly interpreted
+3. **Use it in a concrete context** — A high-level program may be partly compiled and partly interpreted
+
+**Concrete case: Java:** That Java is partly compiled and partly interpreted.
+
+
+
+<details><summary>Precise syllabus wording</summary>
+
+Understand that Java is partly compiled and partly interpreted.
+
+A high-level program may be partly compiled and partly interpreted; Java in console mode is the required example.
+
+</details>
+
+<details><summary>Open precise terminology and exam facts</summary>
 
 - Explain the benefits and drawbacks of a compiler and an interpreter, and justify which translator is appropriate for a stated use.
 - A high-level program may be partly compiled and partly interpreted; Java in console mode is the required example.
@@ -52,18 +103,16 @@ Ask the learner to give one accurate definition or method step before continuing
 - Java in console mode is partly compiled and partly interpreted: the Java compiler translates source code into platform-independent bytecode, then a Java Virtual Machine (JVM) interprets that bytecode and may just-in-time compile parts for the host processor. Bytecode is not universal processor machine code.
 - The expand/collapse feature hides or reveals a code block in the editor without changing program execution.
 
-### Worked example
+</details>
 
-Choose tools across development and deployment: During development, an interpreter can execute each statement and stop near a fault, giving quick feedback. For final distribution, a compiler can translate the whole high-level program before execution and provide target/object or executable code without distributing the source. A processor-specific assembly routine requires an assembler because its mnemonic instructions must become the target processor's machine code.
+### Worked method
+
+1. Choose tools across development and deployment
+2. During development, an interpreter can execute each statement and stop near a fault, giving quick feedback.
+3. For final distribution, a compiler can translate the whole high-level program before execution and provide target/object or executable code without distributing the source.
+4. A processor-specific assembly routine requires an assembler because its mnemonic instructions must become the target processor's machine code.
 
 Beyond syllabus / 延伸知识（不要求背诵）: production build systems automate translation, linking, testing and packaging, while the syllabus examines the purpose of each stage separately.
-
-### Retained visual explanation
-
-![Comparison: same goal, different route](../web/assets/diagrams/stage10-infographics/stage10-lesson-057-compare.jpg)
-
-_Comparison: same goal, different route. The image and mobile text alternative come from one maintained fact source._
-
 ## 3. Practice by question type
 
 ### Question 1 - foundation - give - 2 marks

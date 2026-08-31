@@ -1,15 +1,15 @@
 # Lesson 088: Corrective, adaptive and perfective maintenance
 
-**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029 Version 2<br>
+**Course:** Cambridge International AS Level Computer Science 9618, syllabus for examination in 2027-2029<br>
 **Paper:** Paper 2<br>
 **Syllabus:** Section 12: Software development<br>
 **Syllabus requirements:** S12.08<br>
-**Pacing:** Flexible. This lesson is deliberately over-complete; select a quick, full or deep route for the learners in front of you.
+**Pacing:** Flexible. Select a quick, full or deep route for the learners in front of you.
 
 ## Teaching-depth menu
 
 - **Quick route:** Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.
-- **Full route:** Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.
+- **Full route:** Teach every knowledge-point material set, the worked method and all lesson questions.
 - **Deep route:** Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.
 
 ## 1. Prerequisite knowledge and quick diagnostic
@@ -26,18 +26,49 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ## 2. Knowledge explanation
 
-### Learning objectives
+### 1. Perfective, adaptive and corrective maintenance (S12.08)
 
-- Understand perfective, adaptive and corrective maintenance.
+**Concept relationships**
 
-### Concept checklist for teacher choice
+- **Corrective:** Repairs a discovered fault
+- **Adaptive:** Responds to an environment change
+- **Perfective:** Improves performance or usability
+- **Maintenance:** Changes a delivered program
+- **Regression test:** Checks existing behaviour still works
 
-- perfective
-- adaptive
-- corrective
-- maintenance
+**Mechanism**
 
-### Detailed explanation
+1. **Name both alternatives precisely** — Perfective, adaptive and corrective maintenance.
+2. **Connect structure to consequence** — The need for continuing maintenance of a program and the differences between perfective, adaptive and corrective maintenance.
+3. **Justify against the scenario** — The same module could receive a corrective change for a crash, an adaptive change for a new operating-system…
+
+**Maintenance changes a system after it has been…:** Maintenance Corrective
+
+#### Maintenance changes a system after it has been delivered
+
+![Maintenance changes a system after it has been delivered](../web/assets/diagrams/stage10-infographics/stage10-lesson-146-maintenance.jpg)
+
+<details><summary>Text transcript</summary>
+
+- Maintenance
+- Corrective
+- Fixing faults found after release, such as a booking clash that was not rejected.
+- Adaptive
+- Changing the system because the environment changes, such as a new timetable structure.
+- Perfective
+- Improving performance, usability or features, such as faster room search.
+
+</details>
+
+<details><summary>Precise syllabus wording</summary>
+
+Understand perfective, adaptive and corrective maintenance.
+
+Understand the need for continuing maintenance of a program and the differences between perfective, adaptive and corrective maintenance.
+
+</details>
+
+<details><summary>Open precise terminology and exam facts</summary>
 
 - Understand the need for continuing maintenance of a program and the differences between perfective, adaptive and corrective maintenance.
 - Maintenance continues after delivery because faults are discovered, operating environments and rules change, and users request improvements. Corrective maintenance fixes faults in required behaviour; adaptive maintenance changes software for a new environment, platform, law or external rule; perfective maintenance improves functionality, usability, performance or maintainability.
@@ -47,18 +78,17 @@ Ask the learner to give one accurate definition or method step before continuing
 - Amend the existing program with the smallest coherent change that enhances functionality. Update related declarations, initialisation, processing and output together; preserve established interfaces unless the requirement needs an interface change; and keep Cambridge pseudocode constructs complete.
 - Test the enhancement with data that exercises the new path and rerun regression tests for existing paths. Correcting a fault is corrective maintenance; adding or improving requested functionality is an enhancement and may be perfective maintenance.
 
-### Worked example
+</details>
 
-Test login through review, construction, integration and release / Test an inclusive mark range / Three changes to one booking system / Add a Merit count without breaking PassCount: First dry-run the lockout counter and conduct a walkthrough in which peers inspect the algorithm. White-box tests cover true/false paths; black-box tests valid, invalid and boundary inputs from requirements. During integration, a stub returns simulated account results before the database is ready. Internal staff perform alpha testing, selected external users perform beta testing, and the customer performs acceptance testing against the agreed lockout behaviour. For an allowed mark from 0 to 100 inclusive, 55 is normal, 0 and 100 are valid extreme/boundary values, and -1 or 101 is abnormal. Fixing a crash when saving is corrective. Updating tax or term-date rules imposed externally is adaptive.…
+### Worked method
+
+1. Test login through review, construction, integration and release
+2. Test an inclusive mark range
+3. Three changes to one booking system
+4. Add a Merit count without breaking PassCount
+5. First dry-run the lockout counter and conduct a walkthrough in which peers inspect the algorithm.
 
 Beyond syllabus / 延伸知识（不要求背诵）: modern teams often use continuous integration to repeat building and testing whenever a program changes.
-
-### Retained visual explanation
-
-![Maintenance changes a system after it has been delivered](../web/assets/diagrams/stage10-infographics/stage10-lesson-146-maintenance.jpg)
-
-_Maintenance changes a system after it has been delivered. The image and mobile text alternative come from one maintained fact source._
-
 ## 3. Practice by question type
 
 ### Question 1 - foundation - apply - 2 marks

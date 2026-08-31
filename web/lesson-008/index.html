@@ -8,25 +8,25 @@
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
-    <link rel="stylesheet" href="../course-v2.css?v=3" />
+    <link rel="stylesheet" href="../course-v2.css?v=4" />
   </head>
-  <body data-course-version="2" data-lesson-id="008" data-syllabus-ids="S2.04,S2.05">
+  <body data-course-version="2" data-lesson-id="008" data-syllabus-ids="S2.04,S2.05" data-material-status="complete">
     <a class="skip-link" href="#main-content">Skip to main content</a>
     <header class="v2-topbar">
       <div><p class="v2-eyebrow">Cambridge AS9618 | Paper 1 | Section 2: Communication</p><h1>Network topologies and packet transmission</h1></div>
       <nav class="v2-actions" aria-label="Lesson actions"><a href="../">Course home</a><a href="../assessments/">Assessment bank</a><button type="button" id="printLesson">Print</button></nav>
     </header>
+    <nav class="v2-jump-nav" aria-label="Lesson contents"><strong>Lesson 008</strong><a href="#overview">Overview</a><a href="#prerequisite">Prerequisite</a><a href="#explanation">Explanation</a><a href="#practice">Practice</a><a href="#summary">Summary</a></nav>
     <main class="v2-shell" id="main-content" tabindex="-1">
-      <nav class="v2-toc" aria-label="Lesson contents"><strong>Lesson 008</strong><a href="#overview">Overview</a><a href="#prerequisite">Prerequisite</a><a href="#explanation">Explanation</a><a href="#practice">Practice</a><a href="#summary">Summary</a></nav>
       <div class="v2-content">
         <section class="v2-hero" id="overview">
-          <div><p class="v2-eyebrow">Flexible-depth lesson</p><h2>Network topologies and packet transmission</h2><p>S2.04, S2.05 | Select what to omit, teach briefly or explore in depth.</p></div>
+          <div><p class="v2-eyebrow">Flexible-depth lesson</p><h2>Network topologies and packet transmission</h2><p>S2.04, S2.05 | Visual relationships, mechanisms and worked examples.</p></div>
           <div class="v2-time-grid" aria-label="Available lesson depth"><div><strong>Quick</strong><span>diagnose + essentials</span></div><div><strong>Full</strong><span>complete explanation</span></div><div><strong>Deep</strong><span>prerequisites + extension</span></div><div><strong>Choose</strong><span>practice by need</span></div></div>
         </section>
 
         <section class="v2-panel v2-route-menu" aria-labelledby="route-heading">
           <div class="v2-heading"><p class="v2-eyebrow">Teacher choice</p><h2 id="route-heading">Choose the depth for this group</h2></div>
-          <div class="v2-route-grid"><article><h3>Quick route</h3><p>Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.</p></article><article><h3>Full route</h3><p>Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.</p></article><article><h3>Deep route</h3><p>Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.</p></article></div>
+          <div class="v2-route-grid"><article><h3>Quick route</h3><p>Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.</p></article><article><h3>Full route</h3><p>Teach every knowledge-point material set, the worked method and all lesson questions.</p></article><article><h3>Deep route</h3><p>Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.</p></article></div>
         </section>
 
         <section class="v2-panel" id="prerequisite">
@@ -37,21 +37,43 @@
         </section>
 
         <section class="v2-panel" id="explanation">
-          <div class="v2-heading"><p class="v2-eyebrow">Part 2 | deliberately over-complete</p><h2>Knowledge explanation</h2></div>
-          <h3>Learning objectives</h3><ul class="v2-objectives"><li>Show understanding of bus, star, mesh and hybrid network topologies.</li><li>Explain how packets are transmitted between two hosts for a given topology and justify topology choice for a given situation.</li></ul>
-          <details class="v2-concept-menu"><summary>Open the concept checklist and choose what to teach</summary><ul><li>bus topology</li><li>star topology</li><li>mesh topology</li><li>hybrid topology</li><li>between two hosts</li><li>bus</li><li>central switch</li><li>alternative routes</li><li>hybrid</li><li>justify</li></ul></details>
-          <div class="v2-explanation-grid">
-            <div>
-              <article class="v2-core-facts"><h3>Detailed explanation</h3><p class="v2-teacher-note">Teach all points, or select only the ones this group needs. The list is intentionally fuller than a fixed lesson slot.</p><ul class="v2-facts"><li>All four named topologies are required. A hybrid combines two or more topology patterns; it is not merely a large network.</li><li>Packet or signal paths must be explicit for bus, star, mesh and hybrid. A justification must link the path and failure behaviour to the scenario.</li><li>A topology describes the pattern of links between devices. In a bus topology devices share one backbone; in a star topology each device has a separate link to a central switch; in a mesh topology nodes have multiple interconnections; a hybrid topology combines two or more topology patterns.</li><li>Compare topologies using packet path, single points of failure, alternative routes, cabling, expansion and traffic. A topology name without a path or failure consequence is not a developed explanation.</li><li>To describe transmission between two hosts, identify the physical or logical path used. In a bus, the signal travels along the shared backbone and attached devices inspect it. In a star, the source sends a frame to the central switch, which forwards it towards the destination device. In a mesh, packets can be forwarded through one of several alternative routes. In a hybrid, the path follows each component topology, for example source to local switch, across a connecting backbone, then through the destination switch.</li><li>Topology justification must connect the packet path to the scenario: central-device failure, backbone failure, individual cable failure, congestion, expansion, redundancy and cabling cost are consequences of the structure.</li><li>To justify a topology choice, connect its packet path and failure behaviour to the stated scenario.</li></ul></article>
-              <article class="v2-example"><h3>Worked example</h3><p>Send a patient record across a hybrid hospital network: The source sends the frame to its ward switch as in a star. The packet crosses the link between ward segments, then the destination switch forwards the local frame to the receiving host. A redundant inter-switch route can keep packets moving after one link fails, but adds cost and management.</p></article>
-              <aside class="v2-extension"><h3>Beyond syllabus / 延伸知识（不要求背诵）</h3><p>real networks organise communication in layers so that hardware, addressing and application protocols can change independently.</p></aside>
-            </div>
-            <figure class="v2-visual">
-              <img src="../assets/diagrams/stage10-infographics/stage10-lesson-018-model-visual.jpg" alt="Visual explanation. Follow the arrows and identify which devices can provide a resource.. Peer-to-peer: every device can request and provide. The lines show possible direct sharing between peers. They do not define a physical topology: peer-to-peer describes device roles.. No dedicated central server is required." loading="lazy" />
-              <figcaption>One model has equal peers; the other has dedicated service roles. One maintained explanation is shown as an image on larger screens and as text on small screens.</figcaption>
-              <div class="v2-mobile-visual-text" aria-label="Mobile text alternative"><ul><li>Visual explanation</li><li>Follow the arrows and identify which devices can provide a resource.</li><li>Peer-to-peer: every device can request and provide</li><li>The lines show possible direct sharing between peers. They do not define a physical topology: peer-to-peer describes device roles.</li><li>No dedicated central server is required.</li></ul></div>
-            </figure>
-          </div>
+          <div class="v2-heading"><p class="v2-eyebrow">Part 2 | visual explanation</p><h2>Learn each point through visuals</h2><p>Use the relationship map, mechanism and concrete cue before opening precise wording.</p></div>
+    <nav class="v2-knowledge-index" aria-label="Knowledge points in this lesson"><a href="#knowledge-s2-04"><span>01</span>S2.04</a><a href="#knowledge-s2-05"><span>02</span>S2.05</a></nav><div class="v2-knowledge-point-list"><section class="v2-knowledge-point" id="knowledge-s2-04" data-syllabus-id="S2.04" data-visual-mode="process" data-material-count="4">
+      <header class="v2-knowledge-point-head"><span>01</span><div><p>S2.04 · process</p><h3>Bus, star, mesh and hybrid network topologies</h3></div></header>
+      <div class="v2-material-triad">
+        <article class="v2-native-material v2-native-material--map"><h4>Concept relationships</h4><div class="v2-concept-map"><div><strong>bus topology</strong><span>In a bus topology devices share one backbone</span></div><div><strong>star topology</strong><span>In a star topology each device has a…</span></div><div><strong>mesh topology</strong><span>In a mesh topology nodes have multiple interconnections</span></div><div><strong>hybrid topology</strong><span>A hybrid topology combines two or more topology…</span></div><div><strong>understanding</strong><span>Bus, star, mesh and hybrid network topologies.</span></div></div></article>
+        <article class="v2-native-material v2-native-material--story"><h4>See how it works</h4><ol><li><span>Input</span><div><strong>Identify incoming data or signal</strong><p>Bus, star, mesh and hybrid network topologies.</p></div></li><li><span>Mechanism</span><div><strong>Follow the physical or logical path</strong><p>Packet or signal paths must be explicit for bus, star, mesh and hybrid.</p></div></li><li><span>Result</span><div><strong>Connect output to its use</strong><p>In a star topology each device has a separate link to a central switch</p></div></li></ol></article>
+        <aside class="v2-native-material v2-native-material--cue"><h4>Why connection patterns change risk</h4><p>A topology diagram&#39;s link count must match the physical links actually drawn. Alternative paths improve resilience but require additional links and ports.</p></aside>
+      </div>
+      <section class="v2-material-library" aria-label="S2.04 diagrams">
+    <div class="v2-material-library-head"><h3>S2.04 diagrams</h3></div>
+    <div class="v2-material-rail" id="materials-008-s2-04" data-material-rail><figure class="v2-visual" data-material-kind="diagram">
+            <div class="v2-visual-heading"><span>01</span><div><p>Diagram · 1 of 1</p><h4>Why connection patterns change risk</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Why connection patterns change risk"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-017-topologies.jpg" alt="Why connection patterns change risk" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>A topology diagram&#39;s link count must match the physical links actually drawn.</li><li>Alternative paths improve resilience but require additional links and ports.</li><li>Use one consistent topology in the mechanism and result views; this example has nine links including the inter-switch link.</li></ul></details>
+          </figure></div>
+  </section>
+      <details class="v2-point-precision"><summary>Open precise syllabus wording</summary><p><strong>Show understanding of bus, star, mesh and hybrid network topologies.</strong></p><p>All four named topologies are required. A hybrid combines two or more topology patterns; it is not merely a large network.</p></details>
+    </section><section class="v2-knowledge-point" id="knowledge-s2-05" data-syllabus-id="S2.05" data-visual-mode="comparison" data-material-count="4">
+      <header class="v2-knowledge-point-head"><span>02</span><div><p>S2.05 · comparison</p><h3>How packets are transmitted between two hosts for a given topology and justify topology choice for…</h3></div></header>
+      <div class="v2-material-triad">
+        <article class="v2-native-material v2-native-material--map"><h4>Concept relationships</h4><div class="v2-concept-map"><div><strong>between two hosts</strong><span>How packets are transmitted between two hosts for…</span></div><div><strong>central switch</strong><span>In a star topology each device has a…</span></div><div><strong>alternative routes</strong><span>In a mesh, packets can be forwarded through…</span></div><div><strong>bus</strong><span>Packet or signal paths must be explicit for…</span></div><div><strong>hybrid</strong><span>In a hybrid, the path follows each component…</span></div><div><strong>justify</strong><span>To justify a topology choice, connect its packet…</span></div></div></article>
+        <article class="v2-native-material v2-native-material--story"><h4>See how it works</h4><ol><li><span>Identify</span><div><strong>Name both alternatives precisely</strong><p>How packets are transmitted between two hosts for a given topology and justify topology choice for a given…</p></div></li><li><span>Contrast</span><div><strong>Connect structure to consequence</strong><p>To justify a topology choice, connect its packet path and failure behaviour to the stated scenario.</p></div></li><li><span>Choose</span><div><strong>Justify against the scenario</strong><p>In a star topology each device has a separate link to a central switch</p></div></li></ol></article>
+        <aside class="v2-native-material v2-native-material--cue"><h4>One message, several routes, one reassembled result</h4><p>Visual explanation Follow the numbered packets. Routers make next-hop decisions, so packets from one message do not need to travel together.</p></aside>
+      </div>
+      <section class="v2-material-library" aria-label="S2.05 diagrams">
+    <div class="v2-material-library-head"><h3>S2.05 diagrams</h3></div>
+    <div class="v2-material-rail" id="materials-008-s2-05" data-material-rail><figure class="v2-visual" data-material-kind="diagram">
+            <div class="v2-visual-heading"><span>01</span><div><p>Diagram · 1 of 1</p><h4>One message, several routes, one reassembled result</h4></div></div>
+            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: One message, several routes, one reassembled result"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-019-packet-journey.jpg" alt="One message, several routes, one reassembled result" loading="lazy" /></div>
+            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Visual explanation</li><li>Follow the numbered packets. Routers make next-hop decisions, so packets from one message do not need to travel together.</li><li>1. Split and label Each packet carries payload plus control data such as addresses and a sequence number.</li><li>2. Choose next hop Each router uses the destination address and routing information.</li><li>3. Travel independently Different routes can produce different arrival times.</li><li>4. Reassemble The receiver uses sequence numbers to restore the original order.</li><li>Check the diagram: why can packet 2 arrive after packet 3?</li><li>Packet 2 can take a different route with a longer delay. The receiver uses sequence numbers to place it back between packets 1 and 3.</li></ul></details>
+          </figure></div>
+  </section>
+      <details class="v2-point-precision"><summary>Open precise syllabus wording</summary><p><strong>Explain how packets are transmitted between two hosts for a given topology and justify topology choice for a given situation.</strong></p><p>Packet or signal paths must be explicit for bus, star, mesh and hybrid. A justification must link the path and failure behaviour to the scenario.</p></details>
+    </section></div>
+    <details class="v2-core-facts"><summary>Open precise terminology and exam facts</summary><ul class="v2-facts"><li>All four named topologies are required. A hybrid combines two or more topology patterns; it is not merely a large network.</li><li>Packet or signal paths must be explicit for bus, star, mesh and hybrid. A justification must link the path and failure behaviour to the scenario.</li><li>A topology describes the pattern of links between devices. In a bus topology devices share one backbone; in a star topology each device has a separate link to a central switch; in a mesh topology nodes have multiple interconnections; a hybrid topology combines two or more topology patterns.</li><li>Compare topologies using packet path, single points of failure, alternative routes, cabling, expansion and traffic. A topology name without a path or failure consequence is not a developed explanation.</li><li>To describe transmission between two hosts, identify the physical or logical path used. In a bus, the signal travels along the shared backbone and attached devices inspect it. In a star, the source sends a frame to the central switch, which forwards it towards the destination device. In a mesh, packets can be forwarded through one of several alternative routes. In a hybrid, the path follows each component topology, for example source to local switch, across a connecting backbone, then through the destination switch.</li><li>Topology justification must connect the packet path to the scenario: central-device failure, backbone failure, individual cable failure, congestion, expansion, redundancy and cabling cost are consequences of the structure.</li><li>To justify a topology choice, connect its packet path and failure behaviour to the stated scenario.</li></ul></details>
+    <article class="v2-example"><h3>Worked method</h3><ol><li>Send a patient record across a hybrid hospital network</li><li>The source sends the frame to its ward switch as in a star.</li><li>The packet crosses the link between ward segments, then the destination switch forwards the local frame to the receiving host.</li><li>A redundant inter-switch route can keep packets moving after one link fails, but adds cost and management.</li></ol></article>
+    <aside class="v2-extension"><h3>Beyond syllabus / 延伸知识（不要求背诵）</h3><p>real networks organise communication in layers so that hardware, addressing and application protocols can change independently.</p></aside>
         </section>
 
         <section class="v2-panel" id="practice">
@@ -86,6 +108,6 @@
         <nav class="v2-bottom-nav" aria-label="Previous and next lesson"><a href="../lesson-007/" >Previous lesson</a><a href="../lesson-009/" >Next lesson</a></nav>
       </div>
     </main>
-    <script src="../course-v2.js?v=1"></script>
+    <script src="../course-v2.js?v=2"></script>
   </body>
 </html>

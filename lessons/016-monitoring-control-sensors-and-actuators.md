@@ -1,15 +1,15 @@
 # Lesson 016: Monitoring, control, sensors and actuators
 
-**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029 Version 2<br>
+**Course:** Cambridge International AS Level Computer Science 9618, syllabus for examination in 2027-2029<br>
 **Paper:** Paper 1<br>
 **Syllabus:** Section 3: Hardware<br>
 **Syllabus requirements:** S3.08, S3.09<br>
-**Pacing:** Flexible. This lesson is deliberately over-complete; select a quick, full or deep route for the learners in front of you.
+**Pacing:** Flexible. Select a quick, full or deep route for the learners in front of you.
 
 ## Teaching-depth menu
 
 - **Quick route:** Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.
-- **Full route:** Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.
+- **Full route:** Teach every knowledge-point material set, the worked method and all lesson questions.
 - **Deep route:** Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.
 
 ## 1. Prerequisite knowledge and quick diagnostic
@@ -26,24 +26,94 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ## 2. Knowledge explanation
 
-### Learning objectives
+### 1. Monitoring and control; understand sensors, actuators and feedback (S3.08)
 
-- Distinguish monitoring and control; understand sensors, actuators and feedback.
-- Understand temperature, pressure, infrared and sound sensors and appropriate applications.
+**Concept relationships**
 
-### Concept checklist for teacher choice
+- **monitoring:** Monitoring and control systems, including the difference between…
+- **control:** In closed-loop control, feedback is the new sensor…
+- **sensors:** Sensors, actuators and feedback.
+- **actuators:** Actuators produce physical output actions such as moving…
+- **feedback:** Feedback New sensor readings check the result.
 
-- monitoring
-- control
-- sensors
-- actuators
-- feedback
-- temperature
-- pressure
-- infra-red / infrared
-- sound sensor
+**Mechanism**
 
-### Detailed explanation
+1. **Name both alternatives precisely** — Monitoring and control systems, including the difference between monitoring and control, the use of sensors and actuators, and…
+2. **Connect structure to consequence** — Sensors, actuators and feedback.
+3. **Justify against the scenario** — In closed-loop control, feedback is the new sensor reading produced after the action, allowing the controller to adjust…
+
+**Control systems use rules and feedback:** 1 Sensor reads 2 Processor compares
+
+#### Control systems use rules and feedback
+
+![Control systems use rules and feedback](../web/assets/diagrams/stage10-infographics/stage10-lesson-035-control.jpg)
+
+<details><summary>Text transcript</summary>
+
+- 1 Sensor reads
+- 2 Processor compares
+- 3 Fan and vent act
+- The solid arrows show input and output signals. The dashed arrow shows feedback: the changed temperature is measured again.
+- Sense: the temperature sensor produces a reading.
+- Compare: the controller compares the reading with its threshold.
+- Act: an output signal switches or adjusts the fan and vent.
+- Repeat: a new reading checks whether further action is needed.
+- Input Sensor reads the physical condition.
+- Decision Processor compares the reading with a threshold or rule.
+- Output Signal is sent to an actuator.
+- Feedback New sensor readings check the result.
+
+</details>
+
+<details><summary>Precise syllabus wording</summary>
+
+Distinguish monitoring and control; understand sensors, actuators and feedback.
+
+Show understanding of monitoring and control systems, including the difference between monitoring and control, the use of sensors and actuators, and the importance of feedback.
+
+</details>
+
+### 2. Temperature, pressure, infrared and sound sensors and appropriate applications (S3.09)
+
+**Concept relationships**
+
+- **sound sensor:** Temperature, pressure, infrared and sound sensors and appropriate…
+- **infrared:** Required sensor types are temperature, pressure, infra-red and…
+- **temperature:** A temperature sensor measures temperature, a pressure sensor…
+- **pressure:** Temperature for a greenhouse, pressure for a tyre…
+- **sound:** A light-intensity sensor is useful supporting context but…
+
+**Mechanism**
+
+1. **Identify incoming data or signal** — Temperature, pressure, infrared and sound sensors and appropriate applications.
+2. **Follow the physical or logical path** — Required sensor types are temperature, pressure, infra-red and sound
+3. **Connect output to its use** — A temperature sensor measures temperature, a pressure sensor measures force per unit area or pressure, an infra-red sensor…
+
+**Required sensor types and applications:** A temperature sensor measures temperature and a pressure sensor measures pressure. An infra-red sensor detects infra-red radiation, for example in a beam alarm or remote-control receiver.
+
+#### Required sensor types and applications
+
+![Required sensor types and applications](../web/assets/diagrams/stage10-infographics/stage10-lesson-035-sensors.jpg)
+
+<details><summary>Text transcript</summary>
+
+- A temperature sensor measures temperature and a pressure sensor measures pressure.
+- An infra-red sensor detects infra-red radiation, for example in a beam alarm or remote-control receiver.
+- A sound sensor detects sound level or sound waves, for example in a noise monitor.
+- A sensor supplies input data; the processor applies the rule and an actuator performs any physical output.
+- Light intensity is supporting context and does not replace the named infra-red or sound sensors.
+
+</details>
+
+<details><summary>Precise syllabus wording</summary>
+
+Understand temperature, pressure, infrared and sound sensors and appropriate applications.
+
+Required sensor types are temperature, pressure, infra-red and sound; teaching and assessment must connect each sensor to an appropriate application.
+
+</details>
+
+<details><summary>Open precise terminology and exam facts</summary>
 
 - Show understanding of monitoring and control systems, including the difference between monitoring and control, the use of sensors and actuators, and the importance of feedback.
 - Required sensor types are temperature, pressure, infra-red and sound; teaching and assessment must connect each sensor to an appropriate application.
@@ -52,18 +122,16 @@ Ask the learner to give one accurate definition or method step before continuing
 - Choose a sensor by matching the physical quantity to the application: temperature for a greenhouse, pressure for a tyre or burglar mat, infra-red for a remote-control receiver or beam alarm, and sound for a noise monitor. A light-intensity sensor is useful supporting context but does not replace the named infra-red and sound sensors.
 - Actuators produce physical output actions such as moving a vent or switching a fan after the controller processes sensor input.
 
-### Worked example
+</details>
 
-Greenhouse monitoring and control: A monitoring system records and displays temperature readings. A control system also compares each reading with a threshold and activates a fan motor actuator when the greenhouse is too hot. New temperature readings provide feedback, so the fan can stop when the target is reached.
+### Worked method
+
+1. Greenhouse monitoring and control
+2. A monitoring system records and displays temperature readings.
+3. A control system also compares each reading with a threshold and activates a fan motor actuator when the greenhouse is too hot.
+4. New temperature readings provide feedback, so the fan can stop when the target is reached.
 
 Beyond syllabus / 延伸知识（不要求背诵）: professional device selection also considers accessibility, reliability, repairability and energy use.
-
-### Retained visual explanation
-
-![Required sensor types and applications](../web/assets/diagrams/stage10-infographics/stage10-lesson-035-sensors.jpg)
-
-_Required sensor types and applications. The image and mobile text alternative come from one maintained fact source._
-
 ## 3. Practice by question type
 
 ### Question 1 - foundation - compare - 5 marks

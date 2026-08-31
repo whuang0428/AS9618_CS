@@ -1,15 +1,15 @@
 # Lesson 027: Utility software, libraries and linked files
 
-**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029 Version 2<br>
+**Course:** Cambridge International AS Level Computer Science 9618, syllabus for examination in 2027-2029<br>
 **Paper:** Paper 1<br>
 **Syllabus:** Section 5: System software<br>
 **Syllabus requirements:** S5.02, S5.03<br>
-**Pacing:** Flexible. This lesson is deliberately over-complete; select a quick, full or deep route for the learners in front of you.
+**Pacing:** Flexible. Select a quick, full or deep route for the learners in front of you.
 
 ## Teaching-depth menu
 
 - **Quick route:** Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.
-- **Full route:** Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.
+- **Full route:** Teach every knowledge-point material set, the worked method and all lesson questions.
 - **Deep route:** Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.
 
 ## 1. Prerequisite knowledge and quick diagnostic
@@ -26,28 +26,88 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ## 2. Knowledge explanation
 
-### Learning objectives
+### 1. Disk formatter, antivirus, defragmentation, disk analysis/repair, compression and backup utilities (S5.02)
 
-- Understand disk formatter, antivirus, defragmentation, disk analysis/repair, compression and backup utilities.
-- Understand libraries and benefits of dynamically linked library files.
+**Concept relationships**
 
-### Concept checklist for teacher choice
+- **disk formatter:** Required utility categories are disk formatter, virus checker,…
+- **disk analysis:** Disk formatter, antivirus, defragmentation, disk analysis/repair, compression and…
+- **antivirus:** A disk contents analysis/repair utility examines file-system structures…
+- **defragmentation:** Defragmentation rearranges fragmented blocks on a magnetic disk
+- **repair:** Disk analysis can locate a file-system fault and…
+- **compression:** Compression reduces file size and backup creates a…
 
-- disk formatter
-- virus checker / antivirus
-- defragmentation
-- disk contents analysis / disk analysis / disk contents analysis/repair
-- repair
-- compression
-- backup
-- software under development
-- existing code
-- program libraries
-- developer
-- benefit
-- dynamically linked library / DLL
+**Mechanism**
 
-### Detailed explanation
+1. **Name the exact concept** — Required utility categories are disk formatter, virus checker, defragmentation, disk contents analysis and repair, file compression and backup…
+2. **Explain how its parts connect** — Disk formatter, antivirus, defragmentation, disk analysis/repair, compression and backup utilities.
+3. **Use it in a concrete context** — A disk contents analysis/repair utility examines file-system structures and attempts defined repairs.
+
+**Choose the required utility by its operation:** A disk formatter prepares a storage medium with file-system structures. A virus checker scans for, quarantines and removes malware.
+
+#### Choose the required utility by its operation
+
+![Choose the required utility by its operation](../web/assets/diagrams/stage10-infographics/stage10-lesson-056-compare.jpg)
+
+<details><summary>Text transcript</summary>
+
+- A disk formatter prepares a storage medium with file-system structures.
+- A virus checker scans for, quarantines and removes malware.
+- A disk defragmenter rearranges fragmented file blocks on a magnetic disk.
+- A disk contents analysis/repair utility examines file-system structures and attempts defined repairs.
+- Compression reduces file size; backup creates a separate recoverable copy.
+
+</details>
+
+<details><summary>Precise syllabus wording</summary>
+
+Understand disk formatter, antivirus, defragmentation, disk analysis/repair, compression and backup utilities.
+
+Required utility categories are disk formatter, virus checker, defragmentation, disk contents analysis and repair, file compression and backup software.
+
+</details>
+
+### 2. Libraries and benefits of dynamically linked library files (S5.03)
+
+**Concept relationships**
+
+- **software under development:** Software under development is often constructed using existing…
+- **existing code:** One benefit of a program library is that…
+- **program libraries:** Libraries and benefits of dynamically linked library files.
+- **benefit:** Developer benefits, including the use of dynamically linked…
+- **developer:** Benefits to the developer include shorter development time,…
+- **DLL:** A dynamically linked library (DLL) is connected when…
+
+**Mechanism**
+
+1. **Translate the stated design** — One benefit of a program library is that a developer can reuse existing tested code while software is…
+2. **Apply one complete operation** — Software under development is often constructed using existing code from program libraries.
+3. **Trace state and boundaries** — Libraries and benefits of dynamically linked library files.
+
+**Libraries provide reusable routines and modules:** Purpose Provide pre-written, tested routines that programs can use. Examples Mathematical functions, input/output routines, graphics or string-handling routines.
+
+#### Libraries provide reusable routines and modules
+
+![Libraries provide reusable routines and modules](../web/assets/diagrams/stage10-infographics/stage10-lesson-059-libraries.jpg)
+
+<details><summary>Text transcript</summary>
+
+- Purpose Provide pre-written, tested routines that programs can use.
+- Examples Mathematical functions, input/output routines, graphics or string-handling routines.
+- Benefits Saves development time, reduces duplication and may improve reliability.
+- Requirement Calls to library routines must be linked or made available at run time.
+
+</details>
+
+<details><summary>Precise syllabus wording</summary>
+
+Understand libraries and benefits of dynamically linked library files.
+
+Software under development is often constructed using existing code from program libraries. Explain developer benefits, including the use of dynamically linked library files.
+
+</details>
+
+<details><summary>Open precise terminology and exam facts</summary>
 
 - Required utility categories are disk formatter, virus checker, defragmentation, disk contents analysis and repair, file compression and backup software.
 - Software under development is often constructed using existing code from program libraries. Explain developer benefits, including the use of dynamically linked library files.
@@ -60,18 +120,15 @@ Ask the learner to give one accurate definition or method step before continuing
 - A runtime error (run-time error) occurs during execution; identify its cause, use runtime diagnostics to locate it and correct the responsible code.
 - One benefit of a program library is that a developer can reuse existing tested code while software is under development.
 
-### Worked example
+</details>
 
-Choose the utility from the fault: Use a formatter to prepare a new storage medium, disk analysis/repair for file-system errors, a backup to recover a deleted file, and compression to reduce transfer size. Choose by the operation required, not by calling every tool 'maintenance'.
+### Worked method
+
+1. Choose the utility from the fault
+2. Use a formatter to prepare a new storage medium, disk analysis/repair for file-system errors, a backup to recover a deleted file, and compression to reduce transfer size.
+3. Choose by the operation required, not by calling every tool 'maintenance'.
 
 Beyond syllabus / 延伸知识（不要求背诵）: production build systems automate translation, linking, testing and packaging, while the syllabus examines the purpose of each stage separately.
-
-### Retained visual explanation
-
-![Choose the required utility by its operation](../web/assets/diagrams/stage10-infographics/stage10-lesson-056-compare.jpg)
-
-_Choose the required utility by its operation. The image and mobile text alternative come from one maintained fact source._
-
 ## 3. Practice by question type
 
 ### Question 1 - foundation - explain - 2 marks

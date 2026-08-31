@@ -1,15 +1,15 @@
 # Lesson 070: Declarations, assignment and input/output
 
-**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029 Version 2<br>
+**Course:** Cambridge International AS Level Computer Science 9618, syllabus for examination in 2027-2029<br>
 **Paper:** Paper 2<br>
 **Syllabus:** Section 11: Programming<br>
 **Syllabus requirements:** S11.02<br>
-**Pacing:** Flexible. This lesson is deliberately over-complete; select a quick, full or deep route for the learners in front of you.
+**Pacing:** Flexible. Select a quick, full or deep route for the learners in front of you.
 
 ## Teaching-depth menu
 
 - **Quick route:** Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.
-- **Full route:** Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.
+- **Full route:** Teach every knowledge-point material set, the worked method and all lesson questions.
 - **Deep route:** Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.
 
 ## 1. Prerequisite knowledge and quick diagnostic
@@ -20,7 +20,7 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ### Optional prerequisite refresher
 
-- Select and use appropriate types for a problem solution. The Version 2 Notes name integer, real, char, string, Boolean and date, and require the Cambridge pseudocode type names INTEGER, REAL, CHAR, STRING, BOOLEAN, DATE, ARRAY and FILE.
+- Select and use appropriate types for a problem solution. The syllabus names integer, real, char, string, Boolean and date, and require the Cambridge pseudocode type names INTEGER, REAL, CHAR, STRING, BOOLEAN, DATE, ARRAY and FILE.
 - Understand integer, real, char, string, Boolean and date types and Cambridge pseudocode type names.
 - The three basic algorithm constructs are sequence, selection and iteration (repetition); students must recognise and use each construct, including combinations of constructs.
 - Understand and use sequence, selection and iteration.
@@ -28,40 +28,72 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ## 2. Knowledge explanation
 
-### Learning objectives
+### 1. Declarations, constants, variables, assignment, arithmetic/logical operations and input/output: Declarations, assignment and input/output (S11.02)
 
-- Use declarations, constants, variables, assignment, arithmetic/logical operations and input/output.
+**Concept relationships**
 
-### Concept checklist for teacher choice
+- **declaration:** Declarations, constants, variables, assignment, arithmetic/logical operations and input/output.
+- **constant:** Pseudocode for declaration and initialisation of constants
+- **variable:** Declaration of variables
+- **constants:** For declarations, assignment and input/output, identify the required…
+- **variables:** Assignment evaluates the expression on the right of…
+- **assignment:** Assignment of values
 
-- declaration / declarations
-- constants
-- variables
-- assignment
-- arithmetic
-- logical
-- input
-- output
+**Mechanism**
 
-### Detailed explanation
+1. **Translate the stated design** — Declarations, constants, variables, assignment, arithmetic/logical operations and input/output.
+2. **Apply one complete operation** — For declarations, assignment and input/output, identify the required concept before describing its mechanism or consequence.
+3. **Trace state and boundaries** — Declaration of variables
+
+**The symbol changes, the update idea does not:** Pseudocode vs Java Cambridge-style pseudocode
+
+#### The symbol changes, the update idea does not
+
+![The symbol changes, the update idea does not](../web/assets/diagrams/stage10-infographics/stage10-lesson-115-pseudocode.jpg)
+
+<details><summary>Text transcript</summary>
+
+- Pseudocode vs Java
+- Cambridge-style pseudocode
+- CONSTANT PassMark = 50
+- DECLARE Mark : INTEGER
+- DECLARE Passed : BOOLEAN
+- INPUT Mark
+- Passed <- Mark = PassMark
+- Java support only
+- final int PASSMARK = 50;
+- int mark = input.nextInt();
+- boolean passed = mark = PASSMARK;
+- Paper 2 reminder: use Cambridge-style assignment <- in pseudocode. Java uses = for assignment.
+
+</details>
+
+<details><summary>Precise syllabus wording</summary>
+
+Use declarations, constants, variables, assignment, arithmetic/logical operations and input/output.
+
+Write pseudocode for declaration and initialisation of constants; declaration of variables; assignment of values; expressions using arithmetic or logical operators; input from the keyboard; and output to the console.
+
+</details>
+
+<details><summary>Open precise terminology and exam facts</summary>
 
 - Write pseudocode for declaration and initialisation of constants; declaration of variables; assignment of values; expressions using arithmetic or logical operators; input from the keyboard; and output to the console.
 - CONSTANT defines and initialises a fixed named value. DECLARE gives a variable a name and data type. Assignment evaluates the expression on the right of <- and stores the result in the variable on the left. INPUT obtains a value from the keyboard; OUTPUT sends a value to the console.
 - Arithmetic expressions use operators such as +, -, , /, DIV and MOD. Logical expressions combine comparisons with AND, OR or NOT and produce BOOLEAN results. Use = for comparison and <- for assignment.
 - For declarations, assignment and input/output, identify the required concept before describing its mechanism or consequence.
 
-### Worked example
+</details>
 
-Declare, input, calculate and output: CONSTANT PassMark = 50 defines and initialises a constant. DECLARE Mark : INTEGER and DECLARE Passed : BOOLEAN declare variables. INPUT Mark obtains keyboard input; Passed <- Mark = PassMark assigns the result of a logical expression; OUTPUT Mark 2 and OUTPUT Passed send arithmetic and Boolean results to the console.
+### Worked method
+
+1. Declare, input, calculate and output
+2. CONSTANT PassMark = 50 defines and initialises a constant.
+3. INTEGER and DECLARE Passed
+4. BOOLEAN declare variables.
+5. INPUT Mark obtains keyboard input; Passed <- Mark = PassMark assigns the result of a logical expression; OUTPUT Mark 2 and OUTPUT Passed send arithmetic and Boolean results to the…
 
 Beyond syllabus / 延伸知识（不要求背诵）: consistent style, modularity and automated tests reduce maintenance errors in larger programs.
-
-### Retained visual explanation
-
-![The symbol changes, the update idea does not](../web/assets/diagrams/stage10-infographics/stage10-lesson-115-pseudocode.jpg)
-
-_The symbol changes, the update idea does not. The image and mobile text alternative come from one maintained fact source._
-
 ## 3. Practice by question type
 
 ### Question 1 - foundation - write - 5 marks

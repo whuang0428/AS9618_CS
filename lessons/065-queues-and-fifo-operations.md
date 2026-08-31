@@ -1,15 +1,15 @@
 # Lesson 065: Queues and FIFO operations
 
-**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029 Version 2<br>
+**Course:** Cambridge International AS Level Computer Science 9618, syllabus for examination in 2027-2029<br>
 **Paper:** Paper 2<br>
 **Syllabus:** Section 10: Data types and structures<br>
 **Syllabus requirements:** S10.09, S10.10<br>
-**Pacing:** Flexible. This lesson is deliberately over-complete; select a quick, full or deep route for the learners in front of you.
+**Pacing:** Flexible. Select a quick, full or deep route for the learners in front of you.
 
 ## Teaching-depth menu
 
 - **Quick route:** Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.
-- **Full route:** Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.
+- **Full route:** Teach every knowledge-point material set, the worked method and all lesson questions.
 - **Deep route:** Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.
 
 ## 1. Prerequisite knowledge and quick diagnostic
@@ -30,27 +30,65 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ## 2. Knowledge explanation
 
-### Learning objectives
+### 1. Stack, queue and linked-list features; justify a structure: Queues and FIFO operations (S10.09)
 
-- Understand stack, queue and linked-list features; justify a structure.
-- Add, edit and delete data in the ADTs and implement them using arrays; pseudocode for operations is not required by the syllabus.
+**Concept relationships**
 
-### Concept checklist for teacher choice
+- **linked list:** Choose and justify a stack, queue or linked…
+- **queue:** Justify a stack, queue or linked list from…
+- **FIFO:** Their key features and justify which structure suits…
+- **front:** A queue is FIFO with enqueue at the…
+- **rear:** Queue uses an array with front and rear
+- **stack:** Stack, queue and linked-list features
 
-- stack
-- queue
-- linked list
-- LIFO
-- FIFO
-- justify
-- Add
-- edit
-- delete
-- array
-- not required
-- pseudocode
+**Mechanism**
 
-### Detailed explanation
+1. **Translate the stated design** — Choose and justify a stack, queue or linked list from its LIFO, FIFO or linkage features.
+2. **Apply one complete operation** — Their key features and justify which structure suits a given situation using LIFO, FIFO or link-based traversal/insertion/deletion evidence.
+3. **Trace state and boundaries** — Justify a stack, queue or linked list from its operations and the scenario.
+
+**Concrete case: linked list:** Choose and justify a stack, queue or linked list from its LIFO, FIFO or linkage features.
+
+
+
+<details><summary>Precise syllabus wording</summary>
+
+Understand stack, queue and linked-list features; justify a structure.
+
+Stack, queue and linked list are examples of ADTs. Describe their key features and justify which structure suits a given situation using LIFO, FIFO or link-based traversal/insertion/deletion evidence.
+
+</details>
+
+### 2. Add, edit and delete data in the ADTs and implement them using arrays; pseudocode for operations… (S10.10)
+
+**Concept relationships**
+
+- **linked list:** Justify a stack, queue or linked list from…
+- **not required:** Candidates are not required to write pseudocode for…
+- **array:** Add, edit and delete data in the ADTs…
+- **queue:** Stack, queue and linked list are examples of…
+- **front:** Queue uses an array with front and rear
+- **rear:** Add with enqueue at the rear and delete…
+
+**Mechanism**
+
+1. **Translate the stated design** — Candidates are not required to write pseudocode for these ADT operations, but must be able to add, edit…
+2. **Apply one complete operation** — Be able to add, edit and delete data conceptually, but the syllabus does not require pseudocode for these…
+3. **Trace state and boundaries** — Add, edit and delete data in the ADTs and implement them using arrays
+
+**Concrete case: linked list:** Candidates are not required to write pseudocode for these ADT operations, but must be able to add, edit and delete data and describe array implementations.
+
+
+
+<details><summary>Precise syllabus wording</summary>
+
+Add, edit and delete data in the ADTs and implement them using arrays; pseudocode for operations is not required by the syllabus.
+
+Use stack, queue and linked list to store data; add, edit and delete data while preserving each ADT rule. Describe array implementations for all three. Candidates are not required to write pseudocode for these ADT operations.
+
+</details>
+
+<details><summary>Open precise terminology and exam facts</summary>
 
 - Stack, queue and linked list are examples of ADTs. Describe their key features and justify which structure suits a given situation using LIFO, FIFO or link-based traversal/insertion/deletion evidence.
 - Use stack, queue and linked list to store data; add, edit and delete data while preserving each ADT rule. Describe array implementations for all three. Candidates are not required to write pseudocode for these ADT operations.
@@ -63,18 +101,16 @@ Ask the learner to give one accurate definition or method step before continuing
 - A stack is LIFO with push/pop at the top; a queue is FIFO with enqueue at the rear and dequeue at the front; a linked list supports traversal and insertion/deletion through links.
 - Justification must name the required access order or update behaviour. Array implementations have fixed capacity unless resized and require overflow/underflow checks; linked structures require pointer management.
 
-### Worked example
+</details>
 
-Add, edit and delete without changing the ADT rule: Push D adds D at the stack top and pop deletes the current top. Enqueue D adds at the queue rear and dequeue deletes from the front. In an array-based linked list, edit Data[5] to change only the node value; insert or delete by changing Next indexes, Start and the free list rather than shifting every later array item.
+### Worked method
+
+1. Add, edit and delete without changing the ADT rule
+2. Push D adds D at the stack top and pop deletes the current top.
+3. Enqueue D adds at the queue rear and dequeue deletes from the front.
+4. In an array-based linked list, edit Data[5] to change only the node value; insert or delete by changing Next indexes, Start and the free list rather than shifting every later…
 
 Beyond syllabus / 延伸知识（不要求背诵）: programming libraries often provide tested ADT implementations, but the exam expects you to understand their behaviour and selection.
-
-### Retained visual explanation
-
-![Implement stack, queue and linked list using arrays](../web/assets/diagrams/stage10-infographics/stage10-lesson-123-implementation.jpg)
-
-_Implement stack, queue and linked list using arrays. The image and mobile text alternative come from one maintained fact source._
-
 ## 3. Practice by question type
 
 ### Question 1 - foundation - justify - 4 marks

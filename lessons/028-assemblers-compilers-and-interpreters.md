@@ -1,15 +1,15 @@
 # Lesson 028: Assemblers, compilers and interpreters
 
-**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029 Version 2<br>
+**Course:** Cambridge International AS Level Computer Science 9618, syllabus for examination in 2027-2029<br>
 **Paper:** Paper 1<br>
 **Syllabus:** Section 5: System software<br>
 **Syllabus requirements:** S5.04<br>
-**Pacing:** Flexible. This lesson is deliberately over-complete; select a quick, full or deep route for the learners in front of you.
+**Pacing:** Flexible. Select a quick, full or deep route for the learners in front of you.
 
 ## Teaching-depth menu
 
 - **Quick route:** Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.
-- **Full route:** Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.
+- **Full route:** Teach every knowledge-point material set, the worked method and all lesson questions.
 - **Deep route:** Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.
 
 ## 1. Prerequisite knowledge and quick diagnostic
@@ -22,29 +22,62 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ## 2. Knowledge explanation
 
-### Learning objectives
+### 1. Why assembler, compiler and interpreter are needed (S5.04)
 
-- Explain why assembler, compiler and interpreter are needed.
+**Concept relationships**
 
-### Concept checklist for teacher choice
+- **Assembler:** Assembly to machine code
+- **Compiler:** Whole high-level program translated
+- **Interpreter:** Translate and execute while running
+- **Need:** Processor executes machine instructions
+- **why:** Why assembler, compiler and interpreter are needed.
 
-- assembler
-- compiler
-- interpreter
+**Mechanism**
 
-### Detailed explanation
+1. **Name the exact concept** — Why assembler, compiler and interpreter are needed.
+2. **Explain how its parts connect** — An assembler translates assembly language, a compiler translates high-level language, and an interpreter translates and executes high-level language.
+3. **Use it in a concrete context** — An assembler is needed to translate a processor-specific assembly-language program into machine code or object code.
+
+**An assembler translates assembly language into machine code:** An assembler translates assembly-language mnemonics into machine code or an object-code module. Machine code uses the instruction set and binary encodings of the target processor.
+
+#### An assembler translates assembly language into machine code
+
+![An assembler translates assembly language into machine code](../web/assets/diagrams/stage10-infographics/stage10-lesson-057-assembler.jpg)
+
+<details><summary>Text transcript</summary>
+
+- An assembler translates assembly-language mnemonics into machine code or an object-code module.
+- Machine code uses the instruction set and binary encodings of the target processor.
+- An object module may still need a linker to combine modules and resolve external library references before an executable can be produced.
+- An assembler does not translate high-level languages such as Java or Cambridge pseudocode.
+
+</details>
+
+<details><summary>Precise syllabus wording</summary>
+
+Explain why assembler, compiler and interpreter are needed.
+
+An assembler translates assembly language, a compiler translates high-level language, and an interpreter translates and executes high-level language.
+
+</details>
+
+<details><summary>Open precise terminology and exam facts</summary>
 
 - An assembler translates assembly language, a compiler translates high-level language, and an interpreter translates and executes high-level language.
 - An assembler is needed to translate a processor-specific assembly-language program into machine code or object code. A compiler is needed to translate a whole high-level language program before execution, normally producing target/object code. An interpreter translates and executes a high-level language program statement by statement during execution, normally without producing a separate permanent object-code file.
 - Compiler advantages include faster repeated execution after translation, distribution without the source code and translation checks across the whole program. Disadvantages include a separate compilation step and an error list that may need several corrections before execution. Interpreter advantages include immediate statement-level feedback and convenient incremental testing. Disadvantages include repeated translation overhead, slower execution and needing the interpreter and usually the source program at run time.
 - A justified choice must connect the mechanism to the scenario: an interpreter can suit development and debugging; a compiler can suit repeated use or distribution; an assembler is required for assembly source. These are advantages and disadvantages of the translation approaches, not universal claims that one tool is always better.
 
-### Worked example
+</details>
 
-Choose tools across development and deployment: During development, an interpreter can execute each statement and stop near a fault, giving quick feedback. For final distribution, a compiler can translate the whole high-level program before execution and provide target/object or executable code without distributing the source. A processor-specific assembly routine requires an assembler because its mnemonic instructions must become the target processor's machine code.
+### Worked method
+
+1. Choose tools across development and deployment
+2. During development, an interpreter can execute each statement and stop near a fault, giving quick feedback.
+3. For final distribution, a compiler can translate the whole high-level program before execution and provide target/object or executable code without distributing the source.
+4. A processor-specific assembly routine requires an assembler because its mnemonic instructions must become the target processor's machine code.
 
 Beyond syllabus / 延伸知识（不要求背诵）: production build systems automate translation, linking, testing and packaging, while the syllabus examines the purpose of each stage separately.
-
 ## 3. Practice by question type
 
 ### Question 1 - foundation - compare - 6 marks

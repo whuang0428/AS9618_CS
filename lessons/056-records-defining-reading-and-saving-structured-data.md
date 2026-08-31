@@ -1,15 +1,15 @@
 # Lesson 056: Records: defining, reading and saving structured data
 
-**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029 Version 2<br>
+**Course:** Cambridge International AS Level Computer Science 9618, syllabus for examination in 2027-2029<br>
 **Paper:** Paper 2<br>
 **Syllabus:** Section 10: Data types and structures<br>
 **Syllabus requirements:** S10.02<br>
-**Pacing:** Flexible. This lesson is deliberately over-complete; select a quick, full or deep route for the learners in front of you.
+**Pacing:** Flexible. Select a quick, full or deep route for the learners in front of you.
 
 ## Teaching-depth menu
 
 - **Quick route:** Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.
-- **Full route:** Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.
+- **Full route:** Teach every knowledge-point material set, the worked method and all lesson questions.
 - **Deep route:** Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.
 
 ## 1. Prerequisite knowledge and quick diagnostic
@@ -20,44 +20,69 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ### Optional prerequisite refresher
 
-- Select and use appropriate types for a problem solution. The Version 2 Notes name integer, real, char, string, Boolean and date, and require the Cambridge pseudocode type names INTEGER, REAL, CHAR, STRING, BOOLEAN, DATE, ARRAY and FILE.
+- Select and use appropriate types for a problem solution. The syllabus names integer, real, char, string, Boolean and date, and require the Cambridge pseudocode type names INTEGER, REAL, CHAR, STRING, BOOLEAN, DATE, ARRAY and FILE.
 - Understand integer, real, char, string, Boolean and date types and Cambridge pseudocode type names.
 
 
 ## 2. Knowledge explanation
 
-### Learning objectives
+### 1. Record purpose and define, read and save record data (S10.02)
 
-- Understand record purpose and define, read and save record data.
+**Concept relationships**
 
-### Concept checklist for teacher choice
+- **record:** Record purpose and define, read and save record…
+- **different data types:** A record structure groups a set of related…
+- **one identifier:** A record groups related named fields of different…
+- **define:** Pseudocode to define a record structure, read data…
+- **read:** Read data from a record by selecting a…
+- **save:** Save data to the record by assigning to…
 
-- record
-- different data types
-- one identifier
-- define
-- read
-- save
+**Mechanism**
 
-### Detailed explanation
+1. **Translate the stated design** — Record purpose and define, read and save record data.
+2. **Apply one complete operation** — A record structure groups a set of related fields, which may have different data types, under one identifier.
+3. **Trace state and boundaries** — A record groups related named fields of different data types under one identifier.
+
+**Define a record, then save and read named…:** A record groups related named fields of different data types under one identifier. Define the record between TYPE and ENDTYPE, then declare a variable of that record type.
+
+#### Define a record, then save and read named fields
+
+![Define a record, then save and read named fields](../web/assets/diagrams/stage10-infographics/stage10-lesson-119-declare.jpg)
+
+<details><summary>Text transcript</summary>
+
+- A record groups related named fields of different data types under one identifier.
+- Define the record between TYPE and ENDTYPE, then declare a variable of that record type.
+- Student1.Mark <- 75 saves a field value; OUTPUT Student1.Mark reads that named field.
+
+</details>
+
+<details><summary>Precise syllabus wording</summary>
+
+Understand record purpose and define, read and save record data.
+
+A record holds a set of related data of different data types under one identifier. Candidates must write pseudocode to define a record structure, read data from its named fields and save data to its named fields.
+
+</details>
+
+<details><summary>Open precise terminology and exam facts</summary>
 
 - A record holds a set of related data of different data types under one identifier. Candidates must write pseudocode to define a record structure, read data from its named fields and save data to its named fields.
 - A record structure groups a set of related fields, which may have different data types, under one identifier. Field names preserve the meaning of each value, so a record suits several facts about one entity better than an array of same-type indexed elements.
 - Define a Cambridge record type with TYPE, field declarations and ENDTYPE. Declare record variables only after the type definition is complete. A complete definition states every field name and its type.
 - Read data from a record by selecting a named field, for example OUTPUT Student1.Mark or CurrentMark <- Student1.Mark. Save data to the record by assigning to a named field, for example Student1.Mark <- 75. Reading or saving one field does not replace unrelated fields.
 
-### Worked example
+</details>
 
-Define and use one student record: TYPE TStudent declares Name : STRING, DateOfBirth : DATE, Mark : INTEGER and Enrolled : BOOLEAN, then closes with ENDTYPE. DECLARE Student1 : TStudent creates one record. Student1.Mark <- 75 saves a value to the Mark field; OUTPUT Student1.Mark reads that field.
+### Worked method
+
+1. Define and use one student record
+2. TYPE TStudent declares Name
+3. INTEGER and Enrolled
+4. BOOLEAN, then closes with ENDTYPE.
+5. TStudent creates one record.
 
 Beyond syllabus / 延伸知识（不要求背诵）: programming libraries often provide tested ADT implementations, but the exam expects you to understand their behaviour and selection.
-
-### Retained visual explanation
-
-![Define a record, then save and read named fields](../web/assets/diagrams/stage10-infographics/stage10-lesson-119-declare.jpg)
-
-_Define a record, then save and read named fields. The image and mobile text alternative come from one maintained fact source._
-
 ## 3. Practice by question type
 
 ### Question 1 - foundation - define - 6 marks

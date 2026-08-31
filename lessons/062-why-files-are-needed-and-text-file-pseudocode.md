@@ -1,15 +1,15 @@
 # Lesson 062: Why files are needed and text-file pseudocode
 
-**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029 Version 2<br>
+**Course:** Cambridge International AS Level Computer Science 9618, syllabus for examination in 2027-2029<br>
 **Paper:** Paper 2<br>
 **Syllabus:** Section 10: Data types and structures<br>
 **Syllabus requirements:** S10.07<br>
-**Pacing:** Flexible. This lesson is deliberately over-complete; select a quick, full or deep route for the learners in front of you.
+**Pacing:** Flexible. Select a quick, full or deep route for the learners in front of you.
 
 ## Teaching-depth menu
 
 - **Quick route:** Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.
-- **Full route:** Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.
+- **Full route:** Teach every knowledge-point material set, the worked method and all lesson questions.
 - **Deep route:** Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.
 
 ## 1. Prerequisite knowledge and quick diagnostic
@@ -20,42 +20,77 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ### Optional prerequisite refresher
 
-- Select and use appropriate types for a problem solution. The Version 2 Notes name integer, real, char, string, Boolean and date, and require the Cambridge pseudocode type names INTEGER, REAL, CHAR, STRING, BOOLEAN, DATE, ARRAY and FILE.
+- Select and use appropriate types for a problem solution. The syllabus names integer, real, char, string, Boolean and date, and require the Cambridge pseudocode type names INTEGER, REAL, CHAR, STRING, BOOLEAN, DATE, ARRAY and FILE.
 - Understand integer, real, char, string, Boolean and date types and Cambridge pseudocode type names.
 
 
 ## 2. Knowledge explanation
 
-### Learning objectives
+### 1. The need for files and use text-file pseudocode (S10.07)
 
-- Explain the need for files and use text-file pseudocode.
+**Concept relationships**
 
-### Concept checklist for teacher choice
+- **text file:** The need for files and use text-file pseudocode.
+- **files:** Show why files are needed for persistent data…
+- **persistent:** Files provide persistent storage so data can be…
+- **pseudocode:** Pseudocode vs Java
+- **need:** For a text file containing one or more…
 
-- files
-- persistent
-- text file
-- pseudocode
+**Mechanism**
 
-### Detailed explanation
+1. **Translate the stated design** — The need for files and use text-file pseudocode.
+2. **Apply one complete operation** — Show why files are needed for persistent data beyond one program run, and write Cambridge pseudocode to handle…
+3. **Trace state and boundaries** — For a text file containing one or more lines, select the mode before processing
+
+**Cambridge pseudocode is the exam answer format:** Pseudocode vs Java Cambridge-style pseudocode
+
+#### Cambridge pseudocode is the exam answer format
+
+![Cambridge pseudocode is the exam answer format](../web/assets/diagrams/stage10-infographics/stage10-lesson-121-pseudocode.jpg)
+
+<details><summary>Text transcript</summary>
+
+- Pseudocode vs Java
+- Cambridge-style pseudocode
+- OPENFILE "Scores.txt" FOR READ
+- WHILE NOT EOF("Scores.txt")
+- READFILE "Scores.txt", Line
+- OUTPUT Line
+- ENDWHILE
+- CLOSEFILE "Scores.txt"
+- Java support only
+- try (Scanner file = new Scanner(new File("Scores.txt"))) {
+- while (file.hasNextLine()) {
+- String line = file.nextLine();
+
+</details>
+
+<details><summary>Precise syllabus wording</summary>
+
+Explain the need for files and use text-file pseudocode.
+
+Show why files are needed for persistent data beyond one program run, and write Cambridge pseudocode to handle text files consisting of one or more lines, including opening, processing and closing in the correct mode.
+
+</details>
+
+<details><summary>Open precise terminology and exam facts</summary>
 
 - Show why files are needed for persistent data beyond one program run, and write Cambridge pseudocode to handle text files consisting of one or more lines, including opening, processing and closing in the correct mode.
 - Variables, arrays and records in main memory normally lose their contents when a program ends or power is removed. Files provide persistent storage so data can be reloaded by a later run, transferred or shared as required. A file is not merely a larger array.
 - For a text file containing one or more lines, select the mode before processing: READ obtains existing data, WRITE creates or replaces output content, and APPEND adds after existing content. Every opened file must be closed after processing.
 - A complete read algorithm uses OPENFILE for READ, checks NOT EOF before READFILE, processes each line and then CLOSEFILE. WRITEFILE stores a line in a file opened for WRITE or APPEND. Reading after EOF or using WRITE when old content must remain are boundary errors.
 
-### Worked example
+</details>
 
-Copy selected lines between text files: Open Results.txt FOR READ and Pass.txt FOR WRITE. While NOT EOF(Results.txt), READFILE the next Line; if it contains PASS, WRITEFILE it to Pass.txt. Close both files after the loop. Results remain available from storage, while Pass.txt is deliberately created as a new output file.
+### Worked method
+
+1. Copy selected lines between text files
+2. Open Results.txt FOR READ and Pass.txt FOR WRITE.
+3. While NOT EOF(Results.txt), READFILE the next Line; if it contains PASS, WRITEFILE it to Pass.txt.
+4. Close both files after the loop.
+5. Results remain available from storage, while Pass.txt is deliberately created as a new output file.
 
 Beyond syllabus / 延伸知识（不要求背诵）: programming libraries often provide tested ADT implementations, but the exam expects you to understand their behaviour and selection.
-
-### Retained visual explanation
-
-![Cambridge pseudocode is the exam answer format](../web/assets/diagrams/stage10-infographics/stage10-lesson-121-pseudocode.jpg)
-
-_Cambridge pseudocode is the exam answer format. The image and mobile text alternative come from one maintained fact source._
-
 ## 3. Practice by question type
 
 ### Question 1 - foundation - write - 6 marks

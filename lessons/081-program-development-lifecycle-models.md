@@ -1,15 +1,15 @@
 # Lesson 081: Program-development lifecycle models
 
-**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029 Version 2<br>
+**Course:** Cambridge International AS Level Computer Science 9618, syllabus for examination in 2027-2029<br>
 **Paper:** Paper 2<br>
 **Syllabus:** Section 12: Software development<br>
 **Syllabus requirements:** S12.01<br>
-**Pacing:** Flexible. This lesson is deliberately over-complete; select a quick, full or deep route for the learners in front of you.
+**Pacing:** Flexible. Select a quick, full or deep route for the learners in front of you.
 
 ## Teaching-depth menu
 
 - **Quick route:** Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.
-- **Full route:** Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.
+- **Full route:** Teach every knowledge-point material set, the worked method and all lesson questions.
 - **Deep route:** Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.
 
 ## 1. Prerequisite knowledge and quick diagnostic
@@ -22,21 +22,46 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ## 2. Knowledge explanation
 
-### Learning objectives
+### 1. Why a program-development lifecycle is used; compare waterfall, iterative and RAD models and their stages (S12.01)
 
-- Understand why a program-development lifecycle is used; compare waterfall, iterative and RAD models and their stages.
+**Concept relationships**
 
-### Concept checklist for teacher choice
+- **rapid prototyping:** Rapid application development (RAD) uses rapid prototyping, time-boxed…
+- **user involvement:** RAD uses rapid prototyping, time-boxing and user involvement
+- **timebox:** Compare the principles, benefits and drawbacks of waterfall,…
+- **RAD:** Compare waterfall, iterative and RAD models and their…
+- **waterfall:** Waterfall supports planned sequential stages and traceability but…
+- **iterative:** Iterative development reviews repeated versions but can need…
 
-- RAD
-- rapid prototyping
-- time-box / timebox / time-boxed / time-boxing
-- user involvement
-- waterfall
-- iterative
-- limitation / less suitable / unsuitable
+**Mechanism**
 
-### Detailed explanation
+1. **Name both alternatives precisely** — Rapid application development (RAD) uses rapid prototyping, time-boxed development and frequent user involvement to obtain feedback quickly.
+2. **Connect structure to consequence** — RAD uses rapid prototyping, time-boxing and user involvement
+3. **Justify against the scenario** — Compare the principles, benefits and drawbacks of waterfall, iterative and Rapid Application Development (RAD).
+
+**Rapid application development (RAD):** RAD builds rapid prototypes inside short time boxes. Users review prototypes frequently and their feedback changes the next version.
+
+#### Rapid application development (RAD)
+
+![Rapid application development (RAD)](../web/assets/diagrams/stage10-infographics/stage10-lesson-143-rad.jpg)
+
+<details><summary>Text transcript</summary>
+
+- RAD builds rapid prototypes inside short time boxes.
+- Users review prototypes frequently and their feedback changes the next version.
+- RAD can respond quickly, but may not suit work requiring exhaustive assurance and stable architecture.
+
+</details>
+
+<details><summary>Precise syllabus wording</summary>
+
+Understand why a program-development lifecycle is used; compare waterfall, iterative and RAD models and their stages.
+
+Candidates should understand the purpose of a program-development lifecycle and the need for different lifecycles depending on the program being developed. Compare the principles, benefits and drawbacks of waterfall, iterative and Rapid Application Development (RAD). Lifecycle stages are analysis, design, coding, testing and maintenance.
+
+</details>
+
+<details><summary>Open precise terminology and exam facts</summary>
 
 - Candidates should understand the purpose of a program-development lifecycle and the need for different lifecycles depending on the program being developed. Compare the principles, benefits and drawbacks of waterfall, iterative and Rapid Application Development (RAD). Lifecycle stages are analysis, design, coding, testing and maintenance.
 - Waterfall completes planned stages largely in sequence and supports documentation and traceability, but late change can cause substantial rework. Iterative development builds and reviews repeated versions so evidence can refine later cycles.
@@ -44,18 +69,17 @@ Ask the learner to give one accurate definition or method step before continuing
 - A program-development lifecycle gives an organised sequence for analysis, design, implementation, testing and maintenance, with review and documentation linking decisions to evidence.
 - Waterfall supports planned sequential stages and traceability but its limitation is costly late change. Iterative development reviews repeated versions but can need careful scope control. RAD uses rapid prototyping, time-boxing and user involvement; it may be less suitable or unsuitable where exhaustive assurance and stable architecture are required.
 
-### Worked example
+</details>
 
-Choose a lifecycle model / Choose a lifecycle model: For a small booking interface with available users and changing requirements, RAD can use a time-boxed prototype and immediate user feedback. For safety-critical stable requirements, waterfall's formal traceability may be more suitable than rapid prototyping. RAD suits a small interface whose users can review frequent prototypes. Waterfall may suit stable, safety-critical requirements where formal traceability matters, although late change remains a limitation.
+### Worked method
+
+1. Choose a lifecycle model
+2. Choose a lifecycle model
+3. For a small booking interface with available users and changing requirements, RAD can use a time-boxed prototype and immediate user feedback.
+4. For safety-critical stable requirements, waterfall's formal traceability may be more suitable than rapid prototyping.
+5. RAD suits a small interface whose users can review frequent prototypes.
 
 Beyond syllabus / 延伸知识（不要求背诵）: modern teams often use continuous integration to repeat building and testing whenever a program changes.
-
-### Retained visual explanation
-
-![One scenario, many stages](../web/assets/diagrams/stage10-infographics/stage10-lesson-147-lifecycle.jpg)
-
-_One scenario, many stages. The image and mobile text alternative come from one maintained fact source._
-
 ## 3. Practice by question type
 
 ### Question 1 - foundation - compare - 8 marks

@@ -1,15 +1,15 @@
 # Lesson 047: Decomposition and modular problem solving
 
-**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029 Version 2<br>
+**Course:** Cambridge International AS Level Computer Science 9618, syllabus for examination in 2027-2029<br>
 **Paper:** Paper 2<br>
 **Syllabus:** Section 9: Algorithm design and problem-solving<br>
 **Syllabus requirements:** S9.02<br>
-**Pacing:** Flexible. This lesson is deliberately over-complete; select a quick, full or deep route for the learners in front of you.
+**Pacing:** Flexible. Select a quick, full or deep route for the learners in front of you.
 
 ## Teaching-depth menu
 
 - **Quick route:** Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.
-- **Full route:** Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.
+- **Full route:** Teach every knowledge-point material set, the worked method and all lesson questions.
 - **Deep route:** Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.
 
 ## 1. Prerequisite knowledge and quick diagnostic
@@ -26,19 +26,47 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ## 2. Knowledge explanation
 
-### Learning objectives
+### 1. Decomposition and express a problem as modules: Decomposition and modular problem solving (S9.02)
 
-- Use decomposition and express a problem as modules.
+**Concept relationships**
 
-### Concept checklist for teacher choice
+- **module:** Decomposition must break a problem into sub-problems and…
+- **modules:** Decomposition and express a problem as modules.
+- **decomposition:** Decomposition to express the problem as connected modules
+- **procedure:** A module may become a procedure that performs…
+- **function:** A module may later be implemented as a…
+- **problem:** Decomposition decides how the retained problem is divided.
 
-- decomposition
-- problem
-- modules
-- procedure
-- function
+**Mechanism**
 
-### Detailed explanation
+1. **Translate the stated design** — Decomposition must break a problem into sub-problems and lead to a program module, identified at design level as…
+2. **Apply one complete operation** — Decomposition and express a problem as modules.
+3. **Trace state and boundaries** — Decomposition to express the problem as connected modules
+
+**Decomposition: split the problem into sub-problems:** Split the whole task into meaningful sub-problems with distinct responsibilities. Express the resulting design as program modules with clear inputs, processing and outputs.
+
+#### Decomposition: split the problem into sub-problems
+
+![Decomposition: split the problem into sub-problems](../web/assets/diagrams/stage10-infographics/stage10-lesson-100-decomposition.jpg)
+
+<details><summary>Text transcript</summary>
+
+- Split the whole task into meaningful sub-problems with distinct responsibilities.
+- Express the resulting design as program modules with clear inputs, processing and outputs.
+- A module may become a procedure that performs an action or a function that returns a value.
+- Confirm that all modules connect into one complete solution.
+
+</details>
+
+<details><summary>Precise syllabus wording</summary>
+
+Use decomposition and express a problem as modules.
+
+Decomposition must break a problem into sub-problems and lead to a program module, identified at design level as a procedure or function with a distinct responsibility.
+
+</details>
+
+<details><summary>Open precise terminology and exam facts</summary>
 
 - Decomposition must break a problem into sub-problems and lead to a program module, identified at design level as a procedure or function with a distinct responsibility.
 - Abstraction removes each irrelevant detail that does not affect the required inputs, rules, constraints or outputs. Producing an abstract model means recording the essential details that remain: the data, relationships and processes needed to solve the problem, not merely listing what was ignored.
@@ -51,18 +79,16 @@ Ask the learner to give one accurate definition or method step before continuing
 - Solution review: design with input-process-output, use sequence, selection and iteration, document the same algorithm in structured English, a flowchart or pseudocode, and convert between the specified representations without changing its control flow.
 - Development review: use stepwise refinement until steps are programmable, and construct and interpret logic statements that define decisions, loop conditions or Boolean values. Core answers must not replace these requirements with tracing, Java syntax or vague planning advice.
 
-### Worked example
+</details>
 
-Model and decompose a car-park charge: Keep entry time, exit time and tariff; omit car colour because it cannot change the charge. Express the solution as modules InputTimes, CalculateDuration, CalculateCharge and OutputCharge. CalculateCharge can become a function returning the charge, while OutputCharge can become a procedure that displays it.
+### Worked method
+
+1. Model and decompose a car-park charge
+2. Keep entry time, exit time and tariff; omit car colour because it cannot change the charge.
+3. Express the solution as modules InputTimes, CalculateDuration, CalculateCharge and OutputCharge.
+4. CalculateCharge can become a function returning the charge, while OutputCharge can become a procedure that displays it.
 
 Beyond syllabus / 延伸知识（不要求背诵）: the same algorithm can be expressed in many programming languages; its logic should remain independent of syntax.
-
-### Retained visual explanation
-
-![Section 9 in one page](../web/assets/diagrams/stage10-infographics/stage10-lesson-113-retrieval.jpg)
-
-_Section 9 in one page. The image and mobile text alternative come from one maintained fact source._
-
 ## 3. Practice by question type
 
 ### Question 1 - foundation - apply - 2 marks

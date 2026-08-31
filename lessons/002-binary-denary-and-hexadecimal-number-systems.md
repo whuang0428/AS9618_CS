@@ -1,15 +1,15 @@
 # Lesson 002: Binary, denary and hexadecimal number systems
 
-**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029 Version 2<br>
+**Course:** Cambridge International AS Level Computer Science 9618, syllabus for examination in 2027-2029<br>
 **Paper:** Paper 1<br>
 **Syllabus:** Section 1: Information representation<br>
 **Syllabus requirements:** S1.02, S1.03<br>
-**Pacing:** Flexible. This lesson is deliberately over-complete; select a quick, full or deep route for the learners in front of you.
+**Pacing:** Flexible. Select a quick, full or deep route for the learners in front of you.
 
 ## Teaching-depth menu
 
 - **Quick route:** Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.
-- **Full route:** Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.
+- **Full route:** Teach every knowledge-point material set, the worked method and all lesson questions.
 - **Deep route:** Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.
 
 ## 1. Prerequisite knowledge and quick diagnostic
@@ -20,32 +20,118 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ### Optional prerequisite refresher
 
-- The Version 2 row requires binary, denary, hexadecimal, Binary Coded Decimal (BCD), one's complement and two's complement; BCD and complements are representations rather than additional number bases.
+- The syllabus requires binary, denary, hexadecimal, Binary Coded Decimal (BCD), one's complement and two's complement; BCD and complements are representations rather than additional number bases.
 - Show understanding of binary, denary and hexadecimal number systems, BCD, and one's- and two's-complement representations.
 
 
 ## 2. Knowledge explanation
 
-### Learning objectives
+### 1. Bases and signed representations answer different questions (S1.02)
 
-- Show understanding of binary, denary and hexadecimal number systems, BCD, and one's- and two's-complement representations.
-- Convert an integer value from one required number base or representation to another.
+**Concept relationships**
 
-### Concept checklist for teacher choice
+- **Binary:** base 2
+- **Denary:** base 10
+- **Hex:** base 16
+- **BCD:** four bits per digit
+- **One's:** invert every bit
+- **Two's:** invert then add 1
 
-- binary
-- denary
-- hexadecimal
-- BCD
-- one's-complement / one's complement
-- two's-complement / two's complement
-- integer
-- convert / conversion
+**Mechanism**
 
-### Detailed explanation
+1. **Base or representation?** — Binary, denary and hex are bases; BCD and complements encode values.
+2. **Keep the bit width** — Signed representations only make sense when every value uses the stated width.
+3. **Apply the stated rule** — The same bits can mean a different value under a different representation.
 
-- The Version 2 row requires binary, denary, hexadecimal, Binary Coded Decimal (BCD), one's complement and two's complement; BCD and complements are representations rather than additional number bases.
-- Conversions apply to integer values and the binary, denary, hexadecimal, BCD, one's-complement and two's-complement representations named in the preceding Version 2 row.
+**One value, several name tags:** +23 is 00010111 in 8-bit binary; the rules create different 8-bit patterns for -23.
+
+#### Three ways to represent negative binary values
+
+![Three ways to represent negative binary values](../web/assets/diagrams/stage10-infographics/stage10-lesson-005-systems.jpg)
+
+<details><summary>Text transcript</summary>
+
+- Positive 23 in 8 bits is 00010111.
+- The 8-bit sign-and-magnitude representation of -23 is 10010111.
+- The 8-bit one's-complement representation of -23 is 11101000.
+- The 8-bit two's-complement representation of -23 is 11101001.
+- Every input, intermediate state and result must contain exactly 8 bits.
+
+</details>
+
+<details><summary>Precise syllabus wording</summary>
+
+Show understanding of binary, denary and hexadecimal number systems, BCD, and one's- and two's-complement representations.
+
+The syllabus requires binary, denary, hexadecimal, Binary Coded Decimal (BCD), one's complement and two's complement; BCD and complements are representations rather than additional number bases.
+
+</details>
+
+### 2. Choose the conversion method from the target (S1.03)
+
+**Concept relationships**
+
+- **To denary:** add place values
+- **From denary:** select powers
+- **Binary ↔ hex:** group four bits
+- **BCD:** encode each digit
+- **Negative:** keep fixed width
+
+**Mechanism**
+
+1. **Name the destination** — Write the required base or representation before starting.
+2. **Use its shortest route** — Use place values, four-bit groups or digit-by-digit BCD.
+3. **Convert back** — Reverse the method and confirm the value and bit width.
+
+**45 takes different forms:** 45 denary is 00101101 binary, 2D hexadecimal and 0100 0101 in BCD.
+
+#### Two conversion directions, two reliable methods
+
+![Two conversion directions, two reliable methods](../web/assets/diagrams/stage10-infographics/stage10-lesson-002-methods.jpg)
+
+<details><summary>Text transcript</summary>
+
+- Binary to denary
+- Write the place-value row: 128, 64, 32, 16, 8, 4, 2, 1.
+- Place the binary digits under the row.
+- Add only the values with a 1 above them.
+- Label the answer as denary.
+- Denary to binary
+- Start at 128 and move right.
+- Write 1 if the place value fits into the remaining number.
+- Subtract that place value when a 1 is used.
+- Write 0 when it does not fit.
+
+</details>
+
+#### One hex digit represents one nibble
+
+![One hex digit represents one nibble](../web/assets/diagrams/stage10-infographics/stage10-lesson-003-grouping.jpg)
+
+<details><summary>Text transcript</summary>
+
+- Why four bits?
+- Four bits can represent 16 patterns: from 0000₂ to 1111₂. Hexadecimal has exactly 16 digits: 0 to F.
+- Binary to hex
+- Group the binary value into nibbles from the right. Convert each nibble separately.
+- Hex to binary
+- Replace each hex digit with its 4-bit binary nibble. Keep all four bits for each digit.
+- 1101₂ = D₁₆ and 0110₂ = 6₁₆, so 1101 0110₂ = D6₁₆.
+
+</details>
+
+<details><summary>Precise syllabus wording</summary>
+
+Convert an integer value from one required number base or representation to another.
+
+Conversions apply to integer values and the binary, denary, hexadecimal, BCD, one's-complement and two's-complement representations named in the syllabus list above.
+
+</details>
+
+<details><summary>Open precise terminology and exam facts</summary>
+
+- The syllabus requires binary, denary, hexadecimal, Binary Coded Decimal (BCD), one's complement and two's complement; BCD and complements are representations rather than additional number bases.
+- Conversions apply to integer values and the binary, denary, hexadecimal, BCD, one's-complement and two's-complement representations named in the syllabus list above.
 - Binary is base 2 and uses place values that are powers of 2. Denary is base 10 and uses place values that are powers of 10. A base label identifies the representation; it does not change the integer value.
 - To convert a binary integer to denary, add the binary place values whose bits are 1. To convert a denary integer to binary, select powers of 2 that sum to the value and write every required bit position, including zeros.
 - Representation overview: the required integer representations are binary, denary, hexadecimal, BCD, one's-complement and two's-complement. Conversion means preserving the integer value while changing its base or signed representation.
@@ -57,18 +143,15 @@ Ask the learner to give one accurate definition or method step before continuing
 - BCD encodes each denary digit separately in four bits. For example, 59 becomes 0101 1001, not the pure-binary value 00111011.
 - Only 0000 to 1001 are valid BCD digit groups. BCD is used where decimal digits must be displayed or processed exactly, such as digital clocks, calculators and financial displays, although it usually uses more bits than pure binary.
 
-### Worked example
+</details>
 
-Convert D6 hexadecimal: D6 hexadecimal = 1101 0110 binary. In denary, D6 = 13 x 16 + 6 = 214, so all three representations encode the integer 214.
+### Worked method
+
+1. Convert D6 hexadecimal
+2. D6 hexadecimal = 1101 0110 binary.
+3. In denary, D6 = 13 x 16 + 6 = 214, so all three representations encode the integer 214.
 
 Beyond syllabus / 延伸知识（不要求背诵）: real file formats also store headers and metadata, so two files with the same visible content may still have different sizes.
-
-### Retained visual explanation
-
-![Three ways to represent negative binary values](../web/assets/diagrams/stage10-infographics/stage10-lesson-005-systems.jpg)
-
-_Three ways to represent negative binary values. The image and mobile text alternative come from one maintained fact source._
-
 ## 3. Practice by question type
 
 ### Question 1 - foundation - convert - 4 marks

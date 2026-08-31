@@ -1,15 +1,15 @@
 # Lesson 042: DDL, DML and the role of SQL
 
-**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029 Version 2<br>
+**Course:** Cambridge International AS Level Computer Science 9618, syllabus for examination in 2027-2029<br>
 **Paper:** Paper 1<br>
 **Syllabus:** Section 8: Databases<br>
 **Syllabus requirements:** S8.07<br>
-**Pacing:** Flexible. This lesson is deliberately over-complete; select a quick, full or deep route for the learners in front of you.
+**Pacing:** Flexible. Select a quick, full or deep route for the learners in front of you.
 
 ## Teaching-depth menu
 
 - **Quick route:** Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.
-- **Full route:** Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.
+- **Full route:** Teach every knowledge-point material set, the worked method and all lesson questions.
 - **Deep route:** Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.
 
 ## 1. Prerequisite knowledge and quick diagnostic
@@ -22,26 +22,49 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ## 2. Knowledge explanation
 
-### Learning objectives
+### 1. DDL creates/modifies structure, DML queries/maintains data, and SQL is an industry-standard language (S8.07)
 
-- Understand DDL creates/modifies structure, DML queries/maintains data, and SQL is an industry-standard language.
+**Concept relationships**
 
-### Concept checklist for teacher choice
+- **database structure:** DBMS creation/modification of database structure through DDL from…
+- **industry-standard:** DDL creates/modifies structure, DML queries/maintains data, and SQL…
+- **DDL:** DDL is used for the creation and modification…
+- **creation:** DDL structure commands from DML query/maintenance commands, use…
+- **modification:** SQL is an industry-standard language that includes both…
+- **DML:** DML is used for queries and maintenance of…
 
-- DDL
-- creation
-- modification
-- database structure
-- DML
-- queries
-- maintenance
-- SQL
-- industry-standard
-- language
+**Mechanism**
 
-### Detailed explanation
+1. **Identify structure and target data** — DBMS creation/modification of database structure through DDL from queries and data maintenance through DML, and identifies SQL as…
+2. **Apply the database rule** — DDL creates/modifies structure, DML queries/maintains data, and SQL is an industry-standard language.
+3. **Check keys rows and conditions** — DDL is used for the creation and modification of database structure.
 
-- Version 2 distinguishes DBMS creation/modification of database structure through DDL from queries and data maintenance through DML, and identifies SQL as the industry standard for both.
+**INSERT, UPDATE and DELETE are data manipulation commands:** They change stored data. In exam answers, be precise about command keywords and affected records. INSERT Adds a new record to a table.
+
+#### INSERT, UPDATE and DELETE are data manipulation commands
+
+![INSERT, UPDATE and DELETE are data manipulation commands](../web/assets/diagrams/stage10-infographics/stage10-lesson-088-dml.jpg)
+
+<details><summary>Text transcript</summary>
+
+- They change stored data. In exam answers, be precise about command keywords and affected records.
+- INSERT Adds a new record to a table.
+- UPDATE Changes values in existing records.
+- DELETE Removes existing records from a table.
+
+</details>
+
+<details><summary>Precise syllabus wording</summary>
+
+Understand DDL creates/modifies structure, DML queries/maintains data, and SQL is an industry-standard language.
+
+the syllabus distinguishes DBMS creation/modification of database structure through DDL from queries and data maintenance through DML, and identifies SQL as the industry standard for both.
+
+</details>
+
+<details><summary>Open precise terminology and exam facts</summary>
+
+- the syllabus distinguishes DBMS creation/modification of database structure through DDL from queries and data maintenance through DML, and identifies SQL as the industry standard for both.
 - DDL is used for the creation and modification of database structure. DML is used for queries and maintenance of stored data. SQL is an industry-standard language that includes both kinds of operation.
 - Keep the schema and the records distinct: defining a table or constraint changes structure, while selecting, inserting, deleting or updating records works with stored data.
 - Database design review: connect each file-based limitation to a relational or DBMS mechanism; use entity/table, record/tuple and field/attribute precisely; distinguish candidate, primary, secondary and foreign keys; classify one-to-one, one-to-many and many-to-many relationships; apply referential integrity and indexing; document the design with an E-R diagram; and explain or produce 1NF, 2NF and 3NF designs.
@@ -50,18 +73,15 @@ Ask the learner to give one accurate definition or method step before continuing
 - A record is also called a tuple; both terms describe one row containing fields or attributes for one entity occurrence.
 - A query uses SELECT fields FROM a table, may filter rows with WHERE, sort with ORDER BY and form aggregate groups with GROUP BY. SUM totals values, COUNT counts rows or values, and AVG calculates a mean. An INNER JOIN uses ON to match at most two tables in the required AS queries.
 
-### Worked example
+</details>
 
-Classify database operations: CREATE TABLE is DDL because it creates database structure. SELECT and UPDATE are DML because they query or maintain stored data.
+### Worked method
+
+1. Classify database operations
+2. CREATE TABLE is DDL because it creates database structure.
+3. SELECT and UPDATE are DML because they query or maintain stored data.
 
 Beyond syllabus / 延伸知识（不要求背诵）: production databases also manage transactions and concurrent users; these ideas extend the syllabus model of integrity and access control.
-
-### Retained visual explanation
-
-![Section 8 knowledge map](../web/assets/diagrams/stage10-infographics/stage10-lesson-090-map.jpg)
-
-_Section 8 knowledge map. The image and mobile text alternative come from one maintained fact source._
-
 ## 3. Practice by question type
 
 ### Question 1 - foundation - identify - 3 marks
