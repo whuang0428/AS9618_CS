@@ -8,7 +8,7 @@
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
-    <link rel="stylesheet" href="../course-v2.css?v=6" />
+    <link rel="stylesheet" href="../course-v2.css?v=3" />
   </head>
   <body data-course-version="2" data-lesson-id="021" data-syllabus-ids="S4.07">
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -17,11 +17,16 @@
       <nav class="v2-actions" aria-label="Lesson actions"><a href="../">Course home</a><a href="../assessments/">Assessment bank</a><button type="button" id="printLesson">Print</button></nav>
     </header>
     <main class="v2-shell" id="main-content" tabindex="-1">
-      <nav class="v2-jump-nav" aria-label="Lesson contents"><strong>Lesson 021</strong><a href="#overview">Overview</a><a href="#prerequisite">Prerequisite</a><a href="#explanation">Explanation</a><a href="#practice">Practice</a><a href="#summary">Summary</a></nav>
+      <nav class="v2-toc" aria-label="Lesson contents"><strong>Lesson 021</strong><a href="#overview">Overview</a><a href="#prerequisite">Prerequisite</a><a href="#explanation">Explanation</a><a href="#practice">Practice</a><a href="#summary">Summary</a></nav>
       <div class="v2-content">
-        <section class="v2-overview" id="overview">
-          <div><p class="v2-eyebrow">Flexible-depth lesson</p><p class="v2-overview-copy">S4.07 | Learn from the diagrams, test the method, then choose the practice you need.</p></div>
-          <details class="v2-route-menu"><summary>Choose a Quick, Full or Deep route</summary><div class="v2-route-grid"><article><h3>Quick route</h3><p>Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.</p></article><article><h3>Full route</h3><p>Use every knowledge-point material set, the worked method, the terminology check and all questions.</p></article><article><h3>Deep route</h3><p>Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.</p></article></div></details>
+        <section class="v2-hero" id="overview">
+          <div><p class="v2-eyebrow">Flexible-depth lesson</p><h2>The fetch-execute cycle in register-transfer notation</h2><p>S4.07 | Select what to omit, teach briefly or explore in depth.</p></div>
+          <div class="v2-time-grid" aria-label="Available lesson depth"><div><strong>Quick</strong><span>diagnose + essentials</span></div><div><strong>Full</strong><span>complete explanation</span></div><div><strong>Deep</strong><span>prerequisites + extension</span></div><div><strong>Choose</strong><span>practice by need</span></div></div>
+        </section>
+
+        <section class="v2-panel v2-route-menu" aria-labelledby="route-heading">
+          <div class="v2-heading"><p class="v2-eyebrow">Teacher choice</p><h2 id="route-heading">Choose the depth for this group</h2></div>
+          <div class="v2-route-grid"><article><h3>Quick route</h3><p>Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.</p></article><article><h3>Full route</h3><p>Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.</p></article><article><h3>Deep route</h3><p>Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.</p></article></div>
         </section>
 
         <section class="v2-panel" id="prerequisite">
@@ -32,56 +37,21 @@
         </section>
 
         <section class="v2-panel" id="explanation">
-          <div class="v2-heading v2-heading--wide"><p class="v2-eyebrow">Part 2 | knowledge-point material sets</p><h2>Learn each point through visuals</h2><p>Follow the map, the three-part explanation and the concrete cue. Open precise wording only after the idea is clear.</p></div>
+          <div class="v2-heading"><p class="v2-eyebrow">Part 2 | deliberately over-complete</p><h2>Knowledge explanation</h2></div>
+          <h3>Learning objectives</h3><ul class="v2-objectives"><li>Describe the fetch-execute cycle using register transfer notation.</li></ul>
           <details class="v2-concept-menu"><summary>Open the concept checklist and choose what to teach</summary><ul><li>fetch-execute cycle / fetch decode execute / fetch-decode-execute cycle</li><li>register transfer notation / register-transfer notation</li></ul></details>
-          <nav class="v2-knowledge-index" aria-label="Knowledge points in this lesson"><a href="#knowledge-s4-07"><span>01</span>S4.07</a></nav><div class="v2-knowledge-point-list"><section class="v2-knowledge-point" id="knowledge-s4-07" data-syllabus-id="S4.07" data-visual-mode="process" data-material-count="5">
-      <header class="v2-knowledge-point-head"><span>01</span><div><p>S4.07 · process</p><h3>Fetch-execute cycle · Register transfer notation</h3></div></header>
-      <div class="v2-material-triad">
-        <article class="v2-native-material v2-native-material--map"><h4>Concept map</h4><div class="v2-concept-map" aria-label="Concept map for S4.07"><span class="v2-concept-node" data-node-index="1">fetch-execute cycle</span><span class="v2-concept-node" data-node-index="2">register transfer notation</span></div></article>
-        <article class="v2-native-material v2-native-material--story"><h4>See how it works</h4><ol><li><span>Start</span><strong>Describe the stages of the Fetch-Execute cycle and use register-transfer notation, including MAR &lt;- PC, MDR &lt;- Memory[MAR], CIR &lt;- MDR and a coherent PC update</strong></li><li><span>Change</span><strong>Register-transfer notation describes a data transfer or register update</strong></li><li><span>Check</span><strong>During execution, notation such as ACC &lt;- ACC + MDR records an arithmetic result in ACC, while Memory[MAR] &lt;- MDR records a memory write</strong></li></ol></article>
-        <aside class="v2-native-material v2-native-material--cue"><h4>Concrete cue</h4><p>Describe the stages of the Fetch-Execute cycle and use register-transfer notation, including MAR &lt;- PC, MDR &lt;- Memory[MAR], CIR &lt;- MDR and a coherent PC update.</p></aside>
-      </div>
-      <section class="v2-material-library" aria-label="S4.07 diagrams">
-    <div class="v2-material-library-head"><h3>S4.07 diagrams</h3><div class="v2-material-controls">
-        <button type="button" data-material-prev aria-controls="materials-021-s4-07" aria-label="Previous diagram"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" /></svg></button>
-        <span data-material-position>1 / 2</span>
-        <button type="button" data-material-next aria-controls="materials-021-s4-07" aria-label="Next diagram"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" /></svg></button>
-      </div></div>
-    <div class="v2-material-rail" id="materials-021-s4-07" data-material-rail><figure class="v2-visual" data-material-kind="process">
-            <div class="v2-visual-heading"><span>01</span><div><p>Process · 1 of 2</p><h4>Machine code is binary instructions for the CPU</h4></div></div>
-            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Machine code is binary instructions for the CPU"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-046-machine-code.jpg" alt="Machine code is binary instructions for the CPU" loading="lazy" /></div>
-            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Lowest-level executable form</li><li>Machine code consists of binary instructions that can be executed directly by the processor.</li><li>Not friendly for humans</li><li>Binary instructions are difficult for people to read and write accurately, but they are the form the processor executes directly.</li><li>Stored in memory</li><li>Machine-code instructions are stored in memory and fetched by the CPU during the fetch-decode-execute cycle.</li><li>CPU-specific meaning</li><li>The same bit pattern can have different meanings on different architectures because opcodes are defined by the instruction set.</li></ul></details>
-          </figure><figure class="v2-visual" data-material-kind="process">
-            <div class="v2-visual-heading"><span>02</span><div><p>Process · 2 of 2</p><h4>Clock speed: more cycles per second</h4></div></div>
-            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Clock speed: more cycles per second"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-050-clock.jpg" alt="Clock speed: more cycles per second" loading="lazy" /></div>
-            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Mechanism</li><li>A higher clock speed means more fetch-decode-execute cycle steps can be started per second, if other parts keep up.</li><li>3.6 GHz means 3.6 billion clock cycles per second, not automatically 3.6 billion completed programs.</li><li>Limitation</li><li>Memory access, heat, power use and CPU architecture can limit the real improvement.</li></ul></details>
-          </figure></div>
-  </section>
-      <details class="v2-point-precision"><summary>Open precise syllabus wording</summary><p><strong>Describe the fetch-execute cycle using register transfer notation.</strong></p><p>Describe the stages of the Fetch-Execute cycle and use register-transfer notation, including MAR &lt;- PC, MDR &lt;- Memory[MAR], CIR &lt;- MDR and a coherent PC update.</p></details>
-    </section></div>
-          <section class="v2-material-library" aria-label="Supporting diagram library">
-    <div class="v2-material-library-head"><h3>Supporting diagram library</h3><div class="v2-material-controls">
-        <button type="button" data-material-prev aria-controls="materials-021-supporting" aria-label="Previous diagram"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" /></svg></button>
-        <span data-material-position>1 / 3</span>
-        <button type="button" data-material-next aria-controls="materials-021-supporting" aria-label="Next diagram"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" /></svg></button>
-      </div></div>
-    <div class="v2-material-rail" id="materials-021-supporting" data-material-rail><figure class="v2-visual" data-material-kind="diagram">
-            <div class="v2-visual-heading"><span>01</span><div><p>Diagram · 1 of 3</p><h4>The seven named register roles</h4></div></div>
-            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: The seven named register roles"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-044-main-registers.jpg" alt="The seven named register roles" loading="lazy" /></div>
-            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>PC holds the address of the next instruction to be fetched.</li><li>CIR holds the instruction currently being decoded or executed.</li><li>MAR holds the address of the memory location being accessed.</li><li>MDR holds data or an instruction being transferred to or from memory.</li><li>ACC holds an intermediate or final ALU result.</li><li>IX holds an offset used in indexed addressing.</li><li>The status register holds flags about a result or processor state.</li><li>A general-purpose register can hold varied working values; a special-purpose register has a defined processor role.</li></ul></details>
-          </figure><figure class="v2-visual" data-material-kind="diagram">
-            <div class="v2-visual-heading"><span>02</span><div><p>Diagram · 2 of 3</p><h4>Registers and buses: the FDE cycle vocabulary</h4></div></div>
-            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Registers and buses: the FDE cycle vocabulary"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-092-processor.jpg" alt="Registers and buses: the FDE cycle vocabulary" loading="lazy" /></div>
-            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Processor review</li><li>PC Stores the address of the next instruction to be fetched.</li><li>MAR / MDR MAR stores an address; MDR stores data/instruction being transferred.</li><li>CIR / ACC CIR stores current instruction; ACC stores intermediate arithmetic/logic results.</li></ul></details>
-          </figure><figure class="v2-visual" data-material-kind="diagram">
-            <div class="v2-visual-heading"><span>03</span><div><p>Diagram · 3 of 3</p><h4>Why registers exist</h4></div></div>
-            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Why registers exist"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-044-purpose.jpg" alt="Why registers exist" loading="lazy" /></div>
-            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Inside the CPU</li><li>Registers are located inside the processor, so they can be accessed very quickly.</li><li>Small capacity</li><li>They hold only a small amount of data, usually one value, address, instruction or set of flags.</li><li>Temporary role</li><li>They hold values needed immediately during fetch, decode or execute.</li><li>Specific jobs</li><li>Different registers are designed for different temporary values.</li></ul></details>
-          </figure></div>
-  </section>
-          <article class="v2-example"><div><p class="v2-eyebrow">Apply the idea</p><h3>Worked method</h3></div><ol class="v2-worked-flow"><li><span>01</span><strong>Trace one instruction fetch</strong></li><li><span>02</span><strong>Start with PC = 120 and Memory[120] = LDD 500.</strong></li><li><span>03</span><strong>MAR &lt;- PC puts 120 in MAR.</strong></li><li><span>04</span><strong>MDR &lt;- Memory[MAR] puts LDD 500 in MDR.</strong></li><li><span>05</span><strong>CIR &lt;- MDR copies the instruction into CIR.</strong></li><li><span>06</span><strong>PC &lt;- PC + 1 makes PC 121, ready to address the next instruction.</strong></li></ol></article>
-          <details class="v2-core-facts"><summary>Open precise terminology and exam facts</summary><ul class="v2-facts"><li>Describe the stages of the Fetch-Execute cycle and use register-transfer notation, including MAR &lt;- PC, MDR &lt;- Memory[MAR], CIR &lt;- MDR and a coherent PC update.</li><li>Register-transfer notation describes a data transfer or register update. The arrow &lt;- means &#39;is loaded with&#39; or &#39;receives&#39;; it is not an equality sign. Memory[MAR] means the contents of the memory location whose address is currently held in MAR.</li><li>A coherent fetch sequence is MAR &lt;- PC; MDR &lt;- Memory[MAR]; CIR &lt;- MDR; and PC &lt;- PC + 1 at an appropriate point before the next fetch. The control unit then decodes the opcode and operand in CIR and sends control signals for execution.</li><li>During execution, notation such as ACC &lt;- ACC + MDR records an arithmetic result in ACC, while Memory[MAR] &lt;- MDR records a memory write. Read every statement from right to left: obtain the source value, then replace the destination contents.</li><li>The exact timing of PC increment may vary between coherent processor descriptions, but MAR must receive the current instruction address before that address is replaced. Register-transfer notation describes movement and updates; it does not imply that two registers permanently contain the same value.</li></ul></details>
-          <details class="v2-extension"><summary>Beyond syllabus / 延伸知识（不要求背诵）</summary><p>modern processors add pipelining and several cache levels, but exam answers should begin with the syllabus processor model.</p></details>
+          <div class="v2-explanation-grid">
+            <div>
+              <article class="v2-core-facts"><h3>Detailed explanation</h3><p class="v2-teacher-note">Teach all points, or select only the ones this group needs. The list is intentionally fuller than a fixed lesson slot.</p><ul class="v2-facts"><li>Describe the stages of the Fetch-Execute cycle and use register-transfer notation, including MAR &lt;- PC, MDR &lt;- Memory[MAR], CIR &lt;- MDR and a coherent PC update.</li><li>Register-transfer notation describes a data transfer or register update. The arrow &lt;- means &#39;is loaded with&#39; or &#39;receives&#39;; it is not an equality sign. Memory[MAR] means the contents of the memory location whose address is currently held in MAR.</li><li>A coherent fetch sequence is MAR &lt;- PC; MDR &lt;- Memory[MAR]; CIR &lt;- MDR; and PC &lt;- PC + 1 at an appropriate point before the next fetch. The control unit then decodes the opcode and operand in CIR and sends control signals for execution.</li><li>During execution, notation such as ACC &lt;- ACC + MDR records an arithmetic result in ACC, while Memory[MAR] &lt;- MDR records a memory write. Read every statement from right to left: obtain the source value, then replace the destination contents.</li><li>The exact timing of PC increment may vary between coherent processor descriptions, but MAR must receive the current instruction address before that address is replaced. Register-transfer notation describes movement and updates; it does not imply that two registers permanently contain the same value.</li></ul></article>
+              <article class="v2-example"><h3>Worked example</h3><p>Trace one instruction fetch: Start with PC = 120 and Memory[120] = LDD 500. MAR &lt;- PC puts 120 in MAR. MDR &lt;- Memory[MAR] puts LDD 500 in MDR. CIR &lt;- MDR copies the instruction into CIR. PC &lt;- PC + 1 makes PC 121, ready to address the next instruction. The control unit then decodes LDD and executes it.</p></article>
+              <aside class="v2-extension"><h3>Beyond syllabus / 延伸知识（不要求背诵）</h3><p>modern processors add pipelining and several cache levels, but exam answers should begin with the syllabus processor model.</p></aside>
+            </div>
+            <figure class="v2-visual">
+              <img src="../assets/diagrams/stage10-infographics/stage10-lesson-044-main-registers.jpg" alt="PC holds the address of the next instruction to be fetched.. CIR holds the instruction currently being decoded or executed.. MAR holds the address of the memory location being accessed.. MDR holds data or an instruction being transferred to or from memory.. ACC holds an intermediate or final ALU result." loading="lazy" />
+              <figcaption>The seven named register roles. One maintained explanation is shown as an image on larger screens and as text on small screens.</figcaption>
+              <div class="v2-mobile-visual-text" aria-label="Mobile text alternative"><ul><li>PC holds the address of the next instruction to be fetched.</li><li>CIR holds the instruction currently being decoded or executed.</li><li>MAR holds the address of the memory location being accessed.</li><li>MDR holds data or an instruction being transferred to or from memory.</li><li>ACC holds an intermediate or final ALU result.</li></ul></div>
+            </figure>
+          </div>
         </section>
 
         <section class="v2-panel" id="practice">
@@ -116,6 +86,6 @@
         <nav class="v2-bottom-nav" aria-label="Previous and next lesson"><a href="../lesson-020/" >Previous lesson</a><a href="../lesson-022/" >Next lesson</a></nav>
       </div>
     </main>
-    <script src="../course-v2.js?v=2"></script>
+    <script src="../course-v2.js?v=1"></script>
   </body>
 </html>

@@ -4,12 +4,12 @@
 **Paper:** Paper 2<br>
 **Syllabus:** Section 10: Data types and structures<br>
 **Syllabus requirements:** S10.02<br>
-**Pacing:** Flexible. Select the material set and practice depth needed by the learner.
+**Pacing:** Flexible. This lesson is deliberately over-complete; select a quick, full or deep route for the learners in front of you.
 
 ## Teaching-depth menu
 
 - **Quick route:** Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.
-- **Full route:** Use every knowledge-point material set, the worked method, the terminology check and all questions.
+- **Full route:** Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.
 - **Deep route:** Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.
 
 ## 1. Prerequisite knowledge and quick diagnostic
@@ -26,175 +26,38 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ## 2. Knowledge explanation
 
-### 1. Record · Different data types · One identifier · Define (S10.02)
+### Learning objectives
 
-**Concept map:** record → different data types → one identifier → define → read → save
+- Understand record purpose and define, read and save record data.
 
-**Three-part explanation:**
+### Concept checklist for teacher choice
 
-1. Candidates must write pseudocode to define a record structure, read data from its named fields and save data to its named fields
-2. A record structure groups a set of related fields, which may have different data types, under one identifier
-3. A record holds a set of related data of different data types under one identifier
+- record
+- different data types
+- one identifier
+- define
+- read
+- save
 
-**Concrete cue:** A record holds a set of related data of different data types under one identifier. Candidates must write pseudocode to define a record structure, read data from its named fields…
-
-#### Define a record, then save and read named fields
-
-![Define a record, then save and read named fields](../web/assets/diagrams/stage10-infographics/stage10-lesson-119-declare.jpg)
-
-<details><summary>Text transcript</summary>
-
-- A record groups related named fields of different data types under one identifier.
-- Define the record between TYPE and ENDTYPE, then declare a variable of that record type.
-- Student1.Mark <- 75 saves a field value; OUTPUT Student1.Mark reads that named field.
-
-</details>
-
-#### Read a field from a selected record
-
-![Read a field from a selected record](../web/assets/diagrams/stage10-infographics/stage10-lesson-120-explorer.jpg)
-
-<details><summary>Text transcript</summary>
-
-- Interactive record explorer
-- Record index
-- Choose an index and a field to read from the array of records.
-
-</details>
-
-#### Composite data groups fields into one type
-
-![Composite data groups fields into one type](../web/assets/diagrams/stage10-infographics/stage10-lesson-119-concept.jpg)
-
-<details><summary>Text transcript</summary>
-
-- A record is a composite structure containing named fields.
-- A record type groups several components that describe one entity.
-- Dot notation selects a named field from a record value.
-
-</details>
-
-#### Why pseudocode must expose state change
-
-![Why pseudocode must expose state change](../web/assets/diagrams/stage10-infographics/stage10-lesson-123-pseudocode.jpg)
-
-<details><summary>Text transcript</summary>
-
-- Test the empty or full condition before accessing storage.
-- Read or write the element at the correct pointer.
-- Update the pointer so the invariant remains true.
-
-</details>
-
-<details><summary>Precise syllabus wording</summary>
-
-Understand record purpose and define, read and save record data.
-
-A record holds a set of related data of different data types under one identifier. Candidates must write pseudocode to define a record structure, read data from its named fields and save data to its named fields.
-
-</details>
-
-### Supporting diagram library
-
-#### Use the field name, not a numeric index
-
-![Use the field name, not a numeric index](../web/assets/diagrams/stage10-infographics/stage10-lesson-119-access.jpg)
-
-<details><summary>Text transcript</summary>
-
-- OUTPUT Student1.Name reads the Name field.
-- Student1.Mark <- 80 changes only the Mark field.
-- Record access uses meaningful field names rather than numeric array positions.
-
-</details>
-
-#### Right side first, left side second
-
-![Right side first, left side second](../web/assets/diagrams/stage10-infographics/stage10-lesson-115-assignment.jpg)
-
-<details><summary>Text transcript</summary>
-
-- Assignment
-- Statement
-- Total <- 0
-- Total is set to 0
-- initialises Total
-- Total <- Total + Mark
-- Total becomes old Total plus Mark
-- running total update
-
-</details>
-
-#### Name fixed values so the algorithm explains itself
-
-![Name fixed values so the algorithm explains itself](../web/assets/diagrams/stage10-infographics/stage10-lesson-115-constants.jpg)
-
-<details><summary>Text transcript</summary>
-
-- Constants
-- Without a constant
-- IF Mark = 50 THEN
-- OUTPUT "Pass"
-- The value 50 appears without explaining its role.
-- With a constant
-- CONSTANT PassMark = 50
-- IF Mark = PassMark THEN
-
-</details>
-
-#### Declaration gives a name and a type before use
-
-![Declaration gives a name and a type before use](../web/assets/diagrams/stage10-infographics/stage10-lesson-115-declare.jpg)
-
-<details><summary>Text transcript</summary>
-
-- Declare variables
-- Cambridge-style pseudocode
-- Whole-number counter
-- DECLARE Count : INTEGER
-- Count can store whole numbers
-- Decimal total
-- DECLARE Price : REAL
-- Price can store decimal values
-
-</details>
-
-#### Identifiers name storage locations
-
-![Identifiers name storage locations](../web/assets/diagrams/stage10-infographics/stage10-lesson-115-model.jpg)
-
-<details><summary>Text transcript</summary>
-
-- Memory model
-- Variable
-- A named storage location whose value can change while the algorithm runs.
-- DECLARE Count : INTEGER
-- Count <- 0
-- Count <- Count + 1
-- Constant
-- A named value that should remain fixed. Use it when the same fixed value is used in several places.
-
-</details>
-
-<details><summary>Open precise terminology and exam facts</summary>
+### Detailed explanation
 
 - A record holds a set of related data of different data types under one identifier. Candidates must write pseudocode to define a record structure, read data from its named fields and save data to its named fields.
 - A record structure groups a set of related fields, which may have different data types, under one identifier. Field names preserve the meaning of each value, so a record suits several facts about one entity better than an array of same-type indexed elements.
 - Define a Cambridge record type with TYPE, field declarations and ENDTYPE. Declare record variables only after the type definition is complete. A complete definition states every field name and its type.
 - Read data from a record by selecting a named field, for example OUTPUT Student1.Mark or CurrentMark <- Student1.Mark. Save data to the record by assigning to a named field, for example Student1.Mark <- 75. Reading or saving one field does not replace unrelated fields.
 
-</details>
-
 ### Worked example
 
-1. Define and use one student record
-2. TYPE TStudent declares Name
-3. INTEGER and Enrolled
-4. BOOLEAN, then closes with ENDTYPE.
-5. TStudent creates one record.
-6. Student1.Mark <- 75 saves a value to the Mark field; OUTPUT Student1.Mark reads that field.
+Define and use one student record: TYPE TStudent declares Name : STRING, DateOfBirth : DATE, Mark : INTEGER and Enrolled : BOOLEAN, then closes with ENDTYPE. DECLARE Student1 : TStudent creates one record. Student1.Mark <- 75 saves a value to the Mark field; OUTPUT Student1.Mark reads that field.
 
 Beyond syllabus / 延伸知识（不要求背诵）: programming libraries often provide tested ADT implementations, but the exam expects you to understand their behaviour and selection.
+
+### Retained visual explanation
+
+![Define a record, then save and read named fields](../web/assets/diagrams/stage10-infographics/stage10-lesson-119-declare.jpg)
+
+_Define a record, then save and read named fields. The image and mobile text alternative come from one maintained fact source._
+
 ## 3. Practice by question type
 
 ### Question 1 - foundation - define - 6 marks

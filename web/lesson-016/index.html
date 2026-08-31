@@ -8,7 +8,7 @@
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
-    <link rel="stylesheet" href="../course-v2.css?v=6" />
+    <link rel="stylesheet" href="../course-v2.css?v=3" />
   </head>
   <body data-course-version="2" data-lesson-id="016" data-syllabus-ids="S3.08,S3.09">
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -17,11 +17,16 @@
       <nav class="v2-actions" aria-label="Lesson actions"><a href="../">Course home</a><a href="../assessments/">Assessment bank</a><button type="button" id="printLesson">Print</button></nav>
     </header>
     <main class="v2-shell" id="main-content" tabindex="-1">
-      <nav class="v2-jump-nav" aria-label="Lesson contents"><strong>Lesson 016</strong><a href="#overview">Overview</a><a href="#prerequisite">Prerequisite</a><a href="#explanation">Explanation</a><a href="#practice">Practice</a><a href="#summary">Summary</a></nav>
+      <nav class="v2-toc" aria-label="Lesson contents"><strong>Lesson 016</strong><a href="#overview">Overview</a><a href="#prerequisite">Prerequisite</a><a href="#explanation">Explanation</a><a href="#practice">Practice</a><a href="#summary">Summary</a></nav>
       <div class="v2-content">
-        <section class="v2-overview" id="overview">
-          <div><p class="v2-eyebrow">Flexible-depth lesson</p><p class="v2-overview-copy">S3.08, S3.09 | Learn from the diagrams, test the method, then choose the practice you need.</p></div>
-          <details class="v2-route-menu"><summary>Choose a Quick, Full or Deep route</summary><div class="v2-route-grid"><article><h3>Quick route</h3><p>Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.</p></article><article><h3>Full route</h3><p>Use every knowledge-point material set, the worked method, the terminology check and all questions.</p></article><article><h3>Deep route</h3><p>Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.</p></article></div></details>
+        <section class="v2-hero" id="overview">
+          <div><p class="v2-eyebrow">Flexible-depth lesson</p><h2>Monitoring, control, sensors and actuators</h2><p>S3.08, S3.09 | Select what to omit, teach briefly or explore in depth.</p></div>
+          <div class="v2-time-grid" aria-label="Available lesson depth"><div><strong>Quick</strong><span>diagnose + essentials</span></div><div><strong>Full</strong><span>complete explanation</span></div><div><strong>Deep</strong><span>prerequisites + extension</span></div><div><strong>Choose</strong><span>practice by need</span></div></div>
+        </section>
+
+        <section class="v2-panel v2-route-menu" aria-labelledby="route-heading">
+          <div class="v2-heading"><p class="v2-eyebrow">Teacher choice</p><h2 id="route-heading">Choose the depth for this group</h2></div>
+          <div class="v2-route-grid"><article><h3>Quick route</h3><p>Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.</p></article><article><h3>Full route</h3><p>Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.</p></article><article><h3>Deep route</h3><p>Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.</p></article></div>
         </section>
 
         <section class="v2-panel" id="prerequisite">
@@ -32,84 +37,21 @@
         </section>
 
         <section class="v2-panel" id="explanation">
-          <div class="v2-heading v2-heading--wide"><p class="v2-eyebrow">Part 2 | knowledge-point material sets</p><h2>Learn each point through visuals</h2><p>Follow the map, the three-part explanation and the concrete cue. Open precise wording only after the idea is clear.</p></div>
+          <div class="v2-heading"><p class="v2-eyebrow">Part 2 | deliberately over-complete</p><h2>Knowledge explanation</h2></div>
+          <h3>Learning objectives</h3><ul class="v2-objectives"><li>Distinguish monitoring and control; understand sensors, actuators and feedback.</li><li>Understand temperature, pressure, infrared and sound sensors and appropriate applications.</li></ul>
           <details class="v2-concept-menu"><summary>Open the concept checklist and choose what to teach</summary><ul><li>monitoring</li><li>control</li><li>sensors</li><li>actuators</li><li>feedback</li><li>temperature</li><li>pressure</li><li>infra-red / infrared</li><li>sound sensor</li></ul></details>
-          <nav class="v2-knowledge-index" aria-label="Knowledge points in this lesson"><a href="#knowledge-s3-08"><span>01</span>S3.08</a><a href="#knowledge-s3-09"><span>02</span>S3.09</a></nav><div class="v2-knowledge-point-list"><section class="v2-knowledge-point" id="knowledge-s3-08" data-syllabus-id="S3.08" data-visual-mode="comparison" data-material-count="7">
-      <header class="v2-knowledge-point-head"><span>01</span><div><p>S3.08 · comparison</p><h3>Monitoring · Control · Sensors · Actuators</h3></div></header>
-      <div class="v2-material-triad">
-        <article class="v2-native-material v2-native-material--map"><h4>Concept map</h4><div class="v2-concept-map" aria-label="Concept map for S3.08"><span class="v2-concept-node" data-node-index="1">monitoring</span><span class="v2-concept-node" data-node-index="2">control</span><span class="v2-concept-node" data-node-index="3">sensors</span><span class="v2-concept-node" data-node-index="4">actuators</span><span class="v2-concept-node" data-node-index="5">feedback</span></div></article>
-        <article class="v2-native-material v2-native-material--story"><h4>See how it works</h4><ol><li><span>Contrast</span><strong>Show understanding of monitoring and control systems, including the difference between monitoring and control, the use of sensors and actuators, and the importance of feedback</strong></li><li><span>Evidence</span><strong>A control system uses sensor input and a stored rule or target to send output to an actuator</strong></li><li><span>Decision</span><strong>In closed-loop control, feedback is the new sensor reading produced after the action, allowing the controller to adjust or stop the output</strong></li></ol></article>
-        <aside class="v2-native-material v2-native-material--cue"><h4>Concrete cue</h4><p>Show understanding of monitoring and control systems, including the difference between monitoring and control, the use of sensors and actuators, and the importance of feedback.</p></aside>
-      </div>
-      <section class="v2-material-library" aria-label="S3.08 diagrams">
-    <div class="v2-material-library-head"><h3>S3.08 diagrams</h3><div class="v2-material-controls">
-        <button type="button" data-material-prev aria-controls="materials-016-s3-08" aria-label="Previous diagram"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" /></svg></button>
-        <span data-material-position>1 / 4</span>
-        <button type="button" data-material-next aria-controls="materials-016-s3-08" aria-label="Next diagram"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" /></svg></button>
-      </div></div>
-    <div class="v2-material-rail" id="materials-016-s3-08" data-material-rail><figure class="v2-visual" data-material-kind="comparison">
-            <div class="v2-visual-heading"><span>01</span><div><p>Comparison · 1 of 4</p><h4>Control systems use rules and feedback</h4></div></div>
-            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Control systems use rules and feedback"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-035-control.jpg" alt="Control systems use rules and feedback" loading="lazy" /></div>
-            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>1 Sensor reads</li><li>2 Processor compares</li><li>3 Fan and vent act</li><li>The solid arrows show input and output signals. The dashed arrow shows feedback: the changed temperature is measured again.</li><li>Sense: the temperature sensor produces a reading.</li><li>Compare: the controller compares the reading with its threshold.</li><li>Act: an output signal switches or adjusts the fan and vent.</li><li>Repeat: a new reading checks whether further action is needed.</li></ul></details>
-          </figure><figure class="v2-visual" data-material-kind="example">
-            <div class="v2-visual-heading"><span>02</span><div><p>Concrete example · 2 of 4</p><h4>Required sensor types and applications</h4></div></div>
-            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Required sensor types and applications"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-035-sensors.jpg" alt="Required sensor types and applications" loading="lazy" /></div>
-            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>A temperature sensor measures temperature and a pressure sensor measures pressure.</li><li>An infra-red sensor detects infra-red radiation, for example in a beam alarm or remote-control receiver.</li><li>A sound sensor detects sound level or sound waves, for example in a noise monitor.</li><li>A sensor supplies input data; the processor applies the rule and an actuator performs any physical output.</li><li>Light intensity is supporting context and does not replace the named infra-red or sound sensors.</li></ul></details>
-          </figure><figure class="v2-visual" data-material-kind="process">
-            <div class="v2-visual-heading"><span>03</span><div><p>Process · 3 of 4</p><h4>Actuators turn output signals into physical action</h4></div></div>
-            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Actuators turn output signals into physical action"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-035-actuators.jpg" alt="Actuators turn output signals into physical action" loading="lazy" /></div>
-            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Motor Creates movement, such as opening a door or spinning a fan.</li><li>Valve Controls flow of water, gas or air.</li><li>Heater Changes temperature by producing heat.</li><li>Light Turns visual warning or illumination on/off.</li><li>Lock / brake Controls physical safety or movement.</li><li>An actuator receives an output signal. It does not decide the rule; the processor/controller does that.</li></ul></details>
-          </figure><figure class="v2-visual" data-material-kind="diagram">
-            <div class="v2-visual-heading"><span>04</span><div><p>Diagram · 4 of 4</p><h4>User feedback must fit the situation</h4></div></div>
-            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: User feedback must fit the situation"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-030-feedback.jpg" alt="User feedback must fit the situation" loading="lazy" /></div>
-            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Display, auditory and haptic feedback are alternative output forms, not inputs.</li><li>Printed records and actuator actions are separate output types rather than downstream results of display, sound or touch feedback.</li><li>Haptic feedback requires physical contact and may be missed when vibration is weak or the device is not being held.</li></ul></details>
-          </figure></div>
-  </section>
-      <details class="v2-point-precision"><summary>Open precise syllabus wording</summary><p><strong>Distinguish monitoring and control; understand sensors, actuators and feedback.</strong></p><p>Show understanding of monitoring and control systems, including the difference between monitoring and control, the use of sensors and actuators, and the importance of feedback.</p></details>
-    </section><section class="v2-knowledge-point" id="knowledge-s3-09" data-syllabus-id="S3.09" data-visual-mode="decision" data-material-count="4">
-      <header class="v2-knowledge-point-head"><span>02</span><div><p>S3.09 · decision</p><h3>Temperature · Pressure · Infra-red · Sound sensor</h3></div></header>
-      <div class="v2-material-triad">
-        <article class="v2-native-material v2-native-material--map"><h4>Concept map</h4><div class="v2-concept-map" aria-label="Concept map for S3.09"><span class="v2-concept-node" data-node-index="1">temperature</span><span class="v2-concept-node" data-node-index="2">pressure</span><span class="v2-concept-node" data-node-index="3">infra-red</span><span class="v2-concept-node" data-node-index="4">sound sensor</span></div></article>
-        <article class="v2-native-material v2-native-material--story"><h4>See how it works</h4><ol><li><span>Evidence</span><strong>teaching and assessment must connect each sensor to an appropriate application</strong></li><li><span>Choice</span><strong>Required sensor types are temperature, pressure, infra-red and sound</strong></li><li><span>Reason</span><strong>A temperature sensor measures temperature, a pressure sensor measures force per unit area or pressure, an infra-red sensor detects infra-red radiation, and a sound sensor detects…</strong></li></ol></article>
-        <aside class="v2-native-material v2-native-material--cue"><h4>Concrete cue</h4><p>Required sensor types are temperature, pressure, infra-red and sound; teaching and assessment must connect each sensor to an appropriate application.</p></aside>
-      </div>
-      <section class="v2-material-library" aria-label="S3.09 diagrams">
-    <div class="v2-material-library-head"><h3>S3.09 diagrams</h3></div>
-    <div class="v2-material-rail" id="materials-016-s3-09" data-material-rail><figure class="v2-visual" data-material-kind="example">
-            <div class="v2-visual-heading"><span>01</span><div><p>Concrete example · 1 of 1</p><h4>Required sensor types and applications</h4></div></div>
-            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Required sensor types and applications"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-035-sensors.jpg" alt="Required sensor types and applications" loading="lazy" /></div>
-            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>A temperature sensor measures temperature and a pressure sensor measures pressure.</li><li>An infra-red sensor detects infra-red radiation, for example in a beam alarm or remote-control receiver.</li><li>A sound sensor detects sound level or sound waves, for example in a noise monitor.</li><li>A sensor supplies input data; the processor applies the rule and an actuator performs any physical output.</li><li>Light intensity is supporting context and does not replace the named infra-red or sound sensors.</li></ul></details>
-          </figure></div>
-  </section>
-      <details class="v2-point-precision"><summary>Open precise syllabus wording</summary><p><strong>Understand temperature, pressure, infrared and sound sensors and appropriate applications.</strong></p><p>Required sensor types are temperature, pressure, infra-red and sound; teaching and assessment must connect each sensor to an appropriate application.</p></details>
-    </section></div>
-          <section class="v2-material-library" aria-label="Supporting diagram library">
-    <div class="v2-material-library-head"><h3>Supporting diagram library</h3><div class="v2-material-controls">
-        <button type="button" data-material-prev aria-controls="materials-016-supporting" aria-label="Previous diagram"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" /></svg></button>
-        <span data-material-position>1 / 4</span>
-        <button type="button" data-material-next aria-controls="materials-016-supporting" aria-label="Next diagram"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" /></svg></button>
-      </div></div>
-    <div class="v2-material-rail" id="materials-016-supporting" data-material-rail><figure class="v2-visual" data-material-kind="diagram">
-            <div class="v2-visual-heading"><span>01</span><div><p>Diagram · 1 of 4</p><h4>Compare by scenario, not by favourite brand</h4></div></div>
-            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Compare by scenario, not by favourite brand"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-032-compare.jpg" alt="Compare by scenario, not by favourite brand" loading="lazy" /></div>
-            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>An HDD provides high capacity at relatively low cost and suits large file libraries or cost-sensitive backups.</li><li>Magnetic tape provides high capacity with sequential access and suits archival backups.</li><li>Optical media suits distributing read-only content or archiving data that changes rarely.</li></ul></details>
-          </figure><figure class="v2-visual" data-material-kind="diagram">
-            <div class="v2-visual-heading"><span>02</span><div><p>Diagram · 2 of 4</p><h4>Three main storage media</h4></div></div>
-            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Three main storage media"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-032-media.jpg" alt="Three main storage media" loading="lazy" /></div>
-            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Magnetic storage uses magnetised areas; examples include HDD and tape.</li><li>Optical storage uses laser light to read marks on a disc.</li><li>Solid-state secondary storage uses non-volatile flash memory with no moving parts; an SSD or NAND flash chip is the correct illustration.</li><li>A volatile RAM DIMM is primary memory and is not an SSD.</li></ul></details>
-          </figure><figure class="v2-visual" data-material-kind="diagram">
-            <div class="v2-visual-heading"><span>03</span><div><p>Diagram · 3 of 4</p><h4>What secondary storage does</h4></div></div>
-            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: What secondary storage does"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-032-purpose.jpg" alt="What secondary storage does" loading="lazy" /></div>
-            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Non-volatile Data remains when power is switched off.</li><li>Long-term Stores files, programs, backups and operating system data.</li><li>Usually slower Secondary storage is usually slower than RAM for direct access.</li><li>Scenario-based The best medium depends on speed, capacity, durability, portability and cost.</li></ul></details>
-          </figure><figure class="v2-visual" data-material-kind="diagram">
-            <div class="v2-visual-heading"><span>04</span><div><p>Diagram · 4 of 4</p><h4>Look at the storage mechanism before comparing performance</h4></div></div>
-            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Look at the storage mechanism before comparing performance"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-032-storage-visual.jpg" alt="Look at the storage mechanism before comparing performance" loading="lazy" /></div>
-            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Visual explanation</li><li>The physical mechanism helps explain speed, durability and suitable uses.</li><li>Magnetic</li><li>Solid-state</li><li>Three ways to store data when power is off. The illustration identifies the mechanism; the cards below state the exam-safe explanation.</li><li>Magnetic HDD</li><li>Magnetised areas store data on rotating platters. A moving actuator positions the read/write head.</li><li>Consequence: high capacity and low cost per GB, but mechanical parts are vulnerable to shock.</li></ul></details>
-          </figure></div>
-  </section>
-          <article class="v2-example"><div><p class="v2-eyebrow">Apply the idea</p><h3>Worked method</h3></div><ol class="v2-worked-flow"><li><span>01</span><strong>Greenhouse monitoring and control</strong></li><li><span>02</span><strong>A monitoring system records and displays temperature readings.</strong></li><li><span>03</span><strong>A control system also compares each reading with a threshold and activates a fan motor actuator when the greenhouse is too hot.</strong></li><li><span>04</span><strong>New temperature readings provide feedback, so the fan can stop when the target is reached.</strong></li></ol></article>
-          <details class="v2-core-facts"><summary>Open precise terminology and exam facts</summary><ul class="v2-facts"><li>Show understanding of monitoring and control systems, including the difference between monitoring and control, the use of sensors and actuators, and the importance of feedback.</li><li>Required sensor types are temperature, pressure, infra-red and sound; teaching and assessment must connect each sensor to an appropriate application.</li><li>A monitoring system uses sensors to collect data for recording, display or alerts; it does not necessarily change the environment. A control system uses sensor input and a stored rule or target to send output to an actuator. In closed-loop control, feedback is the new sensor reading produced after the action, allowing the controller to adjust or stop the output.</li><li>A temperature sensor measures temperature, a pressure sensor measures force per unit area or pressure, an infra-red sensor detects infra-red radiation, and a sound sensor detects sound level or sound waves. The sensor supplies input data; it does not itself decide or perform the control action.</li><li>Choose a sensor by matching the physical quantity to the application: temperature for a greenhouse, pressure for a tyre or burglar mat, infra-red for a remote-control receiver or beam alarm, and sound for a noise monitor. A light-intensity sensor is useful supporting context but does not replace the named infra-red and sound sensors.</li><li>Actuators produce physical output actions such as moving a vent or switching a fan after the controller processes sensor input.</li></ul></details>
-          <details class="v2-extension"><summary>Beyond syllabus / 延伸知识（不要求背诵）</summary><p>professional device selection also considers accessibility, reliability, repairability and energy use.</p></details>
+          <div class="v2-explanation-grid">
+            <div>
+              <article class="v2-core-facts"><h3>Detailed explanation</h3><p class="v2-teacher-note">Teach all points, or select only the ones this group needs. The list is intentionally fuller than a fixed lesson slot.</p><ul class="v2-facts"><li>Show understanding of monitoring and control systems, including the difference between monitoring and control, the use of sensors and actuators, and the importance of feedback.</li><li>Required sensor types are temperature, pressure, infra-red and sound; teaching and assessment must connect each sensor to an appropriate application.</li><li>A monitoring system uses sensors to collect data for recording, display or alerts; it does not necessarily change the environment. A control system uses sensor input and a stored rule or target to send output to an actuator. In closed-loop control, feedback is the new sensor reading produced after the action, allowing the controller to adjust or stop the output.</li><li>A temperature sensor measures temperature, a pressure sensor measures force per unit area or pressure, an infra-red sensor detects infra-red radiation, and a sound sensor detects sound level or sound waves. The sensor supplies input data; it does not itself decide or perform the control action.</li><li>Choose a sensor by matching the physical quantity to the application: temperature for a greenhouse, pressure for a tyre or burglar mat, infra-red for a remote-control receiver or beam alarm, and sound for a noise monitor. A light-intensity sensor is useful supporting context but does not replace the named infra-red and sound sensors.</li><li>Actuators produce physical output actions such as moving a vent or switching a fan after the controller processes sensor input.</li></ul></article>
+              <article class="v2-example"><h3>Worked example</h3><p>Greenhouse monitoring and control: A monitoring system records and displays temperature readings. A control system also compares each reading with a threshold and activates a fan motor actuator when the greenhouse is too hot. New temperature readings provide feedback, so the fan can stop when the target is reached.</p></article>
+              <aside class="v2-extension"><h3>Beyond syllabus / 延伸知识（不要求背诵）</h3><p>professional device selection also considers accessibility, reliability, repairability and energy use.</p></aside>
+            </div>
+            <figure class="v2-visual">
+              <img src="../assets/diagrams/stage10-infographics/stage10-lesson-035-sensors.jpg" alt="A temperature sensor measures temperature and a pressure sensor measures pressure.. An infra-red sensor detects infra-red radiation, for example in a beam alarm or remote-control receiver.. A sound sensor detects sound level or sound waves, for example in a noise monitor.. A sensor supplies input data; the processor applies the rule and an actuator performs any physical output.. Light intensity is supporting context and does not replace the named infra-red or sound sensors." loading="lazy" />
+              <figcaption>Required sensor types and applications. One maintained explanation is shown as an image on larger screens and as text on small screens.</figcaption>
+              <div class="v2-mobile-visual-text" aria-label="Mobile text alternative"><ul><li>A temperature sensor measures temperature and a pressure sensor measures pressure.</li><li>An infra-red sensor detects infra-red radiation, for example in a beam alarm or remote-control receiver.</li><li>A sound sensor detects sound level or sound waves, for example in a noise monitor.</li><li>A sensor supplies input data; the processor applies the rule and an actuator performs any physical output.</li><li>Light intensity is supporting context and does not replace the named infra-red or sound sensors.</li></ul></div>
+            </figure>
+          </div>
         </section>
 
         <section class="v2-panel" id="practice">
@@ -144,6 +86,6 @@
         <nav class="v2-bottom-nav" aria-label="Previous and next lesson"><a href="../lesson-015/" >Previous lesson</a><a href="../lesson-017/" >Next lesson</a></nav>
       </div>
     </main>
-    <script src="../course-v2.js?v=2"></script>
+    <script src="../course-v2.js?v=1"></script>
   </body>
 </html>

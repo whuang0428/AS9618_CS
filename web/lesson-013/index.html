@@ -8,7 +8,7 @@
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
-    <link rel="stylesheet" href="../course-v2.css?v=6" />
+    <link rel="stylesheet" href="../course-v2.css?v=3" />
   </head>
   <body data-course-version="2" data-lesson-id="013" data-syllabus-ids="S3.01,S3.02">
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -17,11 +17,16 @@
       <nav class="v2-actions" aria-label="Lesson actions"><a href="../">Course home</a><a href="../assessments/">Assessment bank</a><button type="button" id="printLesson">Print</button></nav>
     </header>
     <main class="v2-shell" id="main-content" tabindex="-1">
-      <nav class="v2-jump-nav" aria-label="Lesson contents"><strong>Lesson 013</strong><a href="#overview">Overview</a><a href="#prerequisite">Prerequisite</a><a href="#explanation">Explanation</a><a href="#practice">Practice</a><a href="#summary">Summary</a></nav>
+      <nav class="v2-toc" aria-label="Lesson contents"><strong>Lesson 013</strong><a href="#overview">Overview</a><a href="#prerequisite">Prerequisite</a><a href="#explanation">Explanation</a><a href="#practice">Practice</a><a href="#summary">Summary</a></nav>
       <div class="v2-content">
-        <section class="v2-overview" id="overview">
-          <div><p class="v2-eyebrow">Flexible-depth lesson</p><p class="v2-overview-copy">S3.01, S3.02 | Learn from the diagrams, test the method, then choose the practice you need.</p></div>
-          <details class="v2-route-menu"><summary>Choose a Quick, Full or Deep route</summary><div class="v2-route-grid"><article><h3>Quick route</h3><p>Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.</p></article><article><h3>Full route</h3><p>Use every knowledge-point material set, the worked method, the terminology check and all questions.</p></article><article><h3>Deep route</h3><p>Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.</p></article></div></details>
+        <section class="v2-hero" id="overview">
+          <div><p class="v2-eyebrow">Flexible-depth lesson</p><h2>Input, output, storage and embedded systems</h2><p>S3.01, S3.02 | Select what to omit, teach briefly or explore in depth.</p></div>
+          <div class="v2-time-grid" aria-label="Available lesson depth"><div><strong>Quick</strong><span>diagnose + essentials</span></div><div><strong>Full</strong><span>complete explanation</span></div><div><strong>Deep</strong><span>prerequisites + extension</span></div><div><strong>Choose</strong><span>practice by need</span></div></div>
+        </section>
+
+        <section class="v2-panel v2-route-menu" aria-labelledby="route-heading">
+          <div class="v2-heading"><p class="v2-eyebrow">Teacher choice</p><h2 id="route-heading">Choose the depth for this group</h2></div>
+          <div class="v2-route-grid"><article><h3>Quick route</h3><p>Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.</p></article><article><h3>Full route</h3><p>Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.</p></article><article><h3>Deep route</h3><p>Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.</p></article></div>
         </section>
 
         <section class="v2-panel" id="prerequisite">
@@ -32,108 +37,21 @@
         </section>
 
         <section class="v2-panel" id="explanation">
-          <div class="v2-heading v2-heading--wide"><p class="v2-eyebrow">Part 2 | knowledge-point material sets</p><h2>Learn each point through visuals</h2><p>Follow the map, the three-part explanation and the concrete cue. Open precise wording only after the idea is clear.</p></div>
+          <div class="v2-heading"><p class="v2-eyebrow">Part 2 | deliberately over-complete</p><h2>Knowledge explanation</h2></div>
+          <h3>Learning objectives</h3><ul class="v2-objectives"><li>Explain the need for input, output, primary storage, secondary storage and removable storage.</li><li>Understand embedded systems and their benefits/drawbacks.</li></ul>
           <details class="v2-concept-menu"><summary>Open the concept checklist and choose what to teach</summary><ul><li>input</li><li>output</li><li>primary memory</li><li>secondary storage</li><li>removable storage</li><li>embedded system</li><li>dedicated</li><li>benefit</li><li>drawback</li></ul></details>
-          <nav class="v2-knowledge-index" aria-label="Knowledge points in this lesson"><a href="#knowledge-s3-01"><span>01</span>S3.01</a><a href="#knowledge-s3-02"><span>02</span>S3.02</a></nav><div class="v2-knowledge-point-list"><section class="v2-knowledge-point" id="knowledge-s3-01" data-syllabus-id="S3.01" data-visual-mode="concept" data-material-count="7">
-      <header class="v2-knowledge-point-head"><span>01</span><div><p>S3.01 · concept</p><h3>Input · Output · Primary memory · Secondary storage</h3></div></header>
-      <div class="v2-material-triad">
-        <article class="v2-native-material v2-native-material--map"><h4>Concept map</h4><div class="v2-concept-map" aria-label="Concept map for S3.01"><span class="v2-concept-node" data-node-index="1">input</span><span class="v2-concept-node" data-node-index="2">output</span><span class="v2-concept-node" data-node-index="3">primary memory</span><span class="v2-concept-node" data-node-index="4">secondary storage</span><span class="v2-concept-node" data-node-index="5">removable storage</span></div></article>
-        <article class="v2-native-material v2-native-material--story"><h4>See how it works</h4><ol><li><span>Meaning</span><strong>Show understanding of the need for input, output, primary memory and secondary storage, including removable storage</strong></li><li><span>Mechanism</span><strong>A surveyor enters measurements through a touchscreen, sees validation messages on the display, uses RAM as primary memory while the survey application runs, saves records on…</strong></li><li><span>Consequence</span><strong>Removable storage is secondary storage that can be disconnected, so it can transfer data or hold an offline backup, although it can be lost or stolen</strong></li></ol></article>
-        <aside class="v2-native-material v2-native-material--cue"><h4>Concrete cue</h4><p>Show understanding of the need for input, output, primary memory and secondary storage, including removable storage.</p></aside>
-      </div>
-      <section class="v2-material-library" aria-label="S3.01 diagrams">
-    <div class="v2-material-library-head"><h3>S3.01 diagrams</h3><div class="v2-material-controls">
-        <button type="button" data-material-prev aria-controls="materials-013-s3-01" aria-label="Previous diagram"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" /></svg></button>
-        <span data-material-position>1 / 4</span>
-        <button type="button" data-material-next aria-controls="materials-013-s3-01" aria-label="Next diagram"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" /></svg></button>
-      </div></div>
-    <div class="v2-material-rail" id="materials-013-s3-01" data-material-rail><figure class="v2-visual" data-material-kind="process">
-            <div class="v2-visual-heading"><span>01</span><div><p>Process · 1 of 4</p><h4>The basic system flow</h4></div></div>
-            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: The basic system flow"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-028-flow.jpg" alt="The basic system flow" loading="lazy" /></div>
-            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Input devices capture data for processing.</li><li>The processor works with instructions and data held in primary memory.</li><li>Processed results can go directly to output devices.</li><li>Secondary storage is a separate bidirectional persistence path and is not a compulsory stage before output.</li></ul></details>
-          </figure><figure class="v2-visual" data-material-kind="diagram">
-            <div class="v2-visual-heading"><span>02</span><div><p>Diagram · 2 of 4</p><h4>Memory is not the same as storage</h4></div></div>
-            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Memory is not the same as storage"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-028-memory-storage.jpg" alt="Memory is not the same as storage" loading="lazy" /></div>
-            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Primary memory</li><li>Secondary storage</li><li>Holds data/instructions currently being used.</li><li>Holds files and data long term.</li><li>Volatility</li><li>RAM is volatile; contents are lost without power.</li><li>Non-volatile; data remains when power is off.</li><li>Speed and capacity</li></ul></details>
-          </figure><figure class="v2-visual" data-material-kind="example">
-            <div class="v2-visual-heading"><span>03</span><div><p>Concrete example · 3 of 4</p><h4>What secondary storage does</h4></div></div>
-            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: What secondary storage does"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-032-purpose.jpg" alt="What secondary storage does" loading="lazy" /></div>
-            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Non-volatile Data remains when power is switched off.</li><li>Long-term Stores files, programs, backups and operating system data.</li><li>Usually slower Secondary storage is usually slower than RAM for direct access.</li><li>Scenario-based The best medium depends on speed, capacity, durability, portability and cost.</li></ul></details>
-          </figure><figure class="v2-visual" data-material-kind="comparison">
-            <div class="v2-visual-heading"><span>04</span><div><p>Comparison · 4 of 4</p><h4>Classify the hardware before choosing it</h4></div></div>
-            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Classify the hardware before choosing it"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-039-categories.jpg" alt="Classify the hardware before choosing it" loading="lazy" /></div>
-            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>The touch-sensing layer of a touchscreen is an input device.</li><li>The display layer of a touchscreen is an output device.</li><li>A touchscreen is therefore a combined input/output device.</li></ul></details>
-          </figure></div>
-  </section>
-      <details class="v2-point-precision"><summary>Open precise syllabus wording</summary><p><strong>Explain the need for input, output, primary storage, secondary storage and removable storage.</strong></p><p>Show understanding of the need for input, output, primary memory and secondary storage, including removable storage.</p></details>
-    </section><section class="v2-knowledge-point" id="knowledge-s3-02" data-syllabus-id="S3.02" data-visual-mode="comparison" data-material-count="4">
-      <header class="v2-knowledge-point-head"><span>02</span><div><p>S3.02 · comparison</p><h3>Embedded system · Dedicated · Benefit · Drawback</h3></div></header>
-      <div class="v2-material-triad">
-        <article class="v2-native-material v2-native-material--map"><h4>Concept map</h4><div class="v2-concept-map" aria-label="Concept map for S3.02"><span class="v2-concept-node" data-node-index="1">embedded system</span><span class="v2-concept-node" data-node-index="2">dedicated</span><span class="v2-concept-node" data-node-index="3">benefit</span><span class="v2-concept-node" data-node-index="4">drawback</span></div></article>
-        <article class="v2-native-material v2-native-material--story"><h4>See how it works</h4><ol><li><span>Contrast</span><strong>Show understanding of embedded systems, including their benefits and drawbacks</strong></li><li><span>Evidence</span><strong>Drawbacks can include limited processing, storage and user interface, difficulty adding new functions, and dependence on the embedded controller</strong></li><li><span>Decision</span><strong>An embedded system is a computer system built into a larger device to perform one dedicated task or a closely related set of tasks</strong></li></ol></article>
-        <aside class="v2-native-material v2-native-material--cue"><h4>Concrete cue</h4><p>Show understanding of embedded systems, including their benefits and drawbacks.</p></aside>
-      </div>
-      <section class="v2-material-library" aria-label="S3.02 diagrams">
-    <div class="v2-material-library-head"><h3>S3.02 diagrams</h3></div>
-    <div class="v2-material-rail" id="materials-013-s3-02" data-material-rail><figure class="v2-visual" data-material-kind="analogy">
-            <div class="v2-visual-heading"><span>01</span><div><p>Analogy / use · 1 of 1</p><h4>What is an embedded system?</h4></div></div>
-            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: What is an embedded system?"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-034-embedded.jpg" alt="What is an embedded system?" loading="lazy" /></div>
-            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>An embedded system is designed to perform a specific task or closely related set of tasks.</li><li>It forms part of a larger product, such as a washing machine, microwave oven or router.</li><li>It often uses a limited interface and task-specific resources.</li><li>Low cost, low power and reliable repeated operation may be relevant design priorities.</li><li>Define an embedded system by purpose and context, not only by physical size.</li></ul></details>
-          </figure></div>
-  </section>
-      <details class="v2-point-precision"><summary>Open precise syllabus wording</summary><p><strong>Understand embedded systems and their benefits/drawbacks.</strong></p><p>Show understanding of embedded systems, including their benefits and drawbacks.</p></details>
-    </section></div>
-          <section class="v2-material-library" aria-label="Supporting diagram library">
-    <div class="v2-material-library-head"><h3>Supporting diagram library</h3><div class="v2-material-controls">
-        <button type="button" data-material-prev aria-controls="materials-013-supporting" aria-label="Previous diagram"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" /></svg></button>
-        <span data-material-position>1 / 10</span>
-        <button type="button" data-material-next aria-controls="materials-013-supporting" aria-label="Next diagram"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" /></svg></button>
-      </div></div>
-    <div class="v2-material-rail" id="materials-013-supporting" data-material-rail><figure class="v2-visual" data-material-kind="diagram">
-            <div class="v2-visual-heading"><span>01</span><div><p>Diagram · 1 of 10</p><h4>Component roles and examples</h4></div></div>
-            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Component roles and examples"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-028-components.jpg" alt="Component roles and examples" loading="lazy" /></div>
-            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Input devices</li><li>Allow data to enter the system.</li><li>Examples: keyboard, mouse, barcode reader, touch screen, microphone, camera, sensor.</li><li>Output devices</li><li>Present data or results from the system.</li><li>Examples: monitor, speaker, printer, projector, actuator.</li><li>Processor</li><li>Executes instructions and coordinates operations. It processes data; it is not where user files are stored.</li></ul></details>
-          </figure><figure class="v2-visual" data-material-kind="diagram">
-            <div class="v2-visual-heading"><span>02</span><div><p>Diagram · 2 of 10</p><h4>Manual input vs automatic data capture</h4></div></div>
-            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Manual input vs automatic data capture"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-029-automatic.jpg" alt="Manual input vs automatic data capture" loading="lazy" /></div>
-            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Manual input</li><li>Automatic data capture</li><li>A person enters data, such as typing into a form.</li><li>A device captures data directly, such as scanning or sensing.</li><li>Advantages</li><li>Flexible, cheap for occasional input, useful for unusual data.</li><li>Fast, consistent, reduces transcription errors, suitable for high volume.</li><li>Limitations</li></ul></details>
-          </figure><figure class="v2-visual" data-material-kind="diagram">
-            <div class="v2-visual-heading"><span>03</span><div><p>Diagram · 3 of 10</p><h4>What input devices do</h4></div></div>
-            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: What input devices do"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-029-capture.jpg" alt="What input devices do" loading="lazy" /></div>
-            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>1. Capture The device captures data from a user, document, object or environment.</li><li>2. Convert The data is converted into a digital form the computer can process.</li><li>3. Validate later Input is not automatically correct. Validation and verification may still be needed.</li></ul></details>
-          </figure><figure class="v2-visual" data-material-kind="diagram">
-            <div class="v2-visual-heading"><span>04</span><div><p>Diagram · 4 of 10</p><h4>Common input devices and what they capture</h4></div></div>
-            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Common input devices and what they capture"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-029-devices.jpg" alt="Common input devices and what they capture" loading="lazy" /></div>
-            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Captures</li><li>Good use</li><li>Exam warning</li><li>Keyboard</li><li>Typed text/numbers</li><li>Short manual entries, corrections, commands</li><li>Slow and error-prone for long repeated codes</li><li>Barcode / QR reader</li></ul></details>
-          </figure><figure class="v2-visual" data-material-kind="diagram">
-            <div class="v2-visual-heading"><span>05</span><div><p>Diagram · 5 of 10</p><h4>Microcontroller vs general-purpose computer</h4></div></div>
-            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Microcontroller vs general-purpose computer"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-034-microcontroller.jpg" alt="Microcontroller vs general-purpose computer" loading="lazy" /></div>
-            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Microcontroller / embedded system</li><li>General-purpose computer</li><li>Designed for a specific control task.</li><li>Designed to run many different programs.</li><li>Hardware</li><li>Often integrates CPU, memory and I/O on one chip.</li><li>Separate high-performance components are common.</li><li>Interface</li></ul></details>
-          </figure><figure class="v2-visual" data-material-kind="diagram">
-            <div class="v2-visual-heading"><span>06</span><div><p>Diagram · 6 of 10</p><h4>Choose hardware using stated criteria</h4></div></div>
-            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Choose hardware using stated criteria"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-039-criteria.jpg" alt="Choose hardware using stated criteria" loading="lazy" /></div>
-            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Speed Needed for real-time input, rapid searches, video editing or low-delay output.</li><li>Capacity Needed for large files, media archives, backups or databases.</li><li>Cost Matters when many devices must be purchased or the user has a fixed budget.</li><li>Durability Important for mobile, outdoor or high-use environments.</li><li>Accuracy Important for barcode scanning, sensors, medical data and attendance records.</li><li>Compatibility Hardware must connect to existing software, ports, networks and operating systems.</li><li>Exam sentence frame: &quot;I would choose X because it has Y, which matters for Z, so the user can...&quot;</li></ul></details>
-          </figure><figure class="v2-visual" data-material-kind="diagram">
-            <div class="v2-visual-heading"><span>07</span><div><p>Diagram · 7 of 10</p><h4>Different users value different trade-offs</h4></div></div>
-            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Different users value different trade-offs"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-039-users.jpg" alt="Different users value different trade-offs" loading="lazy" /></div>
-            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Librarian Needs fast, accurate item input and reliable local/network database access.</li><li>Delivery driver Needs portable, durable, wireless hardware and quick barcode/QR capture.</li><li>Video editor Needs high-speed storage, strong CPU/GPU performance and colour-accurate display.</li><li>Weather station Needs accurate sensors, durable enclosure, low power use and stable communication.</li><li>A strong answer rejects one tempting unsuitable option. This proves the choice was evaluated, not guessed.</li></ul></details>
-          </figure><figure class="v2-visual" data-material-kind="diagram">
-            <div class="v2-visual-heading"><span>08</span><div><p>Diagram · 8 of 10</p><h4>Environmental factors change hardware suitability</h4></div></div>
-            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Environmental factors change hardware suitability"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-040-environment.jpg" alt="Environmental factors change hardware suitability" loading="lazy" /></div>
-            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Possible effect</li><li>Suitable protection</li><li>Exam warning</li><li>Temperature</li><li>Overheating can slow, shut down or damage components.</li><li>Cooling, heat sinks, ventilation, temperature-rated hardware</li><li>Do not just say &quot;fast&quot;; explain heat tolerance or cooling.</li><li>Moisture / water</li></ul></details>
-          </figure><figure class="v2-visual" data-material-kind="diagram">
-            <div class="v2-visual-heading"><span>09</span><div><p>Diagram · 9 of 10</p><h4>Mitigation must match the risk</h4></div></div>
-            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Mitigation must match the risk"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-040-mitigation.jpg" alt="Mitigation must match the risk" loading="lazy" /></div>
-            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Outdoor weather station Weatherproof casing, low-power controller, battery/solar power and wireless communication.</li><li>Hospital workstation Reliable power, backup, regular maintenance and quick replacement to reduce downtime.</li><li>Delivery handheld Rugged case, long battery life, mobile data fallback and SSD/flash storage.</li><li>Data server Cooling, UPS, RAID, backup, monitoring and controlled access.</li><li>A strong answer rejects an unsuitable protection. A UPS helps power cuts; it does not make a sensor waterproof.</li></ul></details>
-          </figure><figure class="v2-visual" data-material-kind="diagram">
-            <div class="v2-visual-heading"><span>10</span><div><p>Diagram · 10 of 10</p><h4>Reliability is about continuing to work correctly</h4></div></div>
-            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Reliability is about continuing to work correctly"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-040-reliability.jpg" alt="Reliability is about continuing to work correctly" loading="lazy" /></div>
-            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Redundancy, failover and a UPS can support continuity when a component or power source fails.</li><li>Backup and restore support recovery after data loss or failure.</li><li>A backup copy reduces data loss and recovery time but does not by itself keep a live service running.</li></ul></details>
-          </figure></div>
-  </section>
-          <article class="v2-example"><div><p class="v2-eyebrow">Apply the idea</p><h3>Worked method</h3></div><ol class="v2-worked-flow"><li><span>01</span><strong>Field survey tablet</strong></li><li><span>02</span><strong>A surveyor enters measurements through a touchscreen, sees validation messages on the display, uses RAM as primary memory while the survey application runs, saves records on internal secondary storage, and copies an…</strong></li></ol></article>
-          <details class="v2-core-facts"><summary>Open precise terminology and exam facts</summary><ul class="v2-facts"><li>Show understanding of the need for input, output, primary memory and secondary storage, including removable storage.</li><li>Show understanding of embedded systems, including their benefits and drawbacks.</li><li>Input is needed to enter data and instructions into a computer system. Output is needed to communicate processed information to a user or to cause an action. A processor cannot perform a useful task unless it can receive the required data and make the result available.</li><li>Primary memory is needed to hold the instructions and data currently being used by the processor. Secondary storage is needed for non-volatile, long-term retention of programs and data. Removable storage is secondary storage that can be disconnected, so it can transfer data or hold an offline backup, although it can be lost or stolen.</li><li>An embedded system is a computer system built into a larger device to perform one dedicated task or a closely related set of tasks. A microcontroller may integrate the processor, memory and input/output interfaces needed for that task.</li><li>Benefits can include low cost, low power use, small size and reliable, predictable automatic operation because the hardware and software are designed for a limited purpose. Drawbacks can include limited processing, storage and user interface, difficulty adding new functions, and dependence on the embedded controller: if it fails, the larger device may stop working. A valid comparison must link each point to the device and task.</li><li>A control system sends output signals to actuators and uses sensor feedback to determine the next control action.</li></ul></details>
-          <details class="v2-extension"><summary>Beyond syllabus / 延伸知识（不要求背诵）</summary><p>professional device selection also considers accessibility, reliability, repairability and energy use.</p></details>
+          <div class="v2-explanation-grid">
+            <div>
+              <article class="v2-core-facts"><h3>Detailed explanation</h3><p class="v2-teacher-note">Teach all points, or select only the ones this group needs. The list is intentionally fuller than a fixed lesson slot.</p><ul class="v2-facts"><li>Show understanding of the need for input, output, primary memory and secondary storage, including removable storage.</li><li>Show understanding of embedded systems, including their benefits and drawbacks.</li><li>Input is needed to enter data and instructions into a computer system. Output is needed to communicate processed information to a user or to cause an action. A processor cannot perform a useful task unless it can receive the required data and make the result available.</li><li>Primary memory is needed to hold the instructions and data currently being used by the processor. Secondary storage is needed for non-volatile, long-term retention of programs and data. Removable storage is secondary storage that can be disconnected, so it can transfer data or hold an offline backup, although it can be lost or stolen.</li><li>An embedded system is a computer system built into a larger device to perform one dedicated task or a closely related set of tasks. A microcontroller may integrate the processor, memory and input/output interfaces needed for that task.</li><li>Benefits can include low cost, low power use, small size and reliable, predictable automatic operation because the hardware and software are designed for a limited purpose. Drawbacks can include limited processing, storage and user interface, difficulty adding new functions, and dependence on the embedded controller: if it fails, the larger device may stop working. A valid comparison must link each point to the device and task.</li><li>A control system sends output signals to actuators and uses sensor feedback to determine the next control action.</li></ul></article>
+              <article class="v2-example"><h3>Worked example</h3><p>Field survey tablet: A surveyor enters measurements through a touchscreen, sees validation messages on the display, uses RAM as primary memory while the survey application runs, saves records on internal secondary storage, and copies an encrypted backup to removable storage before leaving the site.</p></article>
+              <aside class="v2-extension"><h3>Beyond syllabus / 延伸知识（不要求背诵）</h3><p>professional device selection also considers accessibility, reliability, repairability and energy use.</p></aside>
+            </div>
+            <figure class="v2-visual">
+              <img src="../assets/diagrams/stage10-infographics/stage10-lesson-028-components.jpg" alt="Input devices. Allow data to enter the system.. Examples: keyboard, mouse, barcode reader, touch screen, microphone, camera, sensor.. Output devices. Present data or results from the system." loading="lazy" />
+              <figcaption>Component roles and examples. One maintained explanation is shown as an image on larger screens and as text on small screens.</figcaption>
+              <div class="v2-mobile-visual-text" aria-label="Mobile text alternative"><ul><li>Input devices</li><li>Allow data to enter the system.</li><li>Examples: keyboard, mouse, barcode reader, touch screen, microphone, camera, sensor.</li><li>Output devices</li><li>Present data or results from the system.</li></ul></div>
+            </figure>
+          </div>
         </section>
 
         <section class="v2-panel" id="practice">
@@ -168,6 +86,6 @@
         <nav class="v2-bottom-nav" aria-label="Previous and next lesson"><a href="../lesson-012/" >Previous lesson</a><a href="../lesson-014/" >Next lesson</a></nav>
       </div>
     </main>
-    <script src="../course-v2.js?v=2"></script>
+    <script src="../course-v2.js?v=1"></script>
   </body>
 </html>

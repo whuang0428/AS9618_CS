@@ -4,12 +4,12 @@
 **Paper:** Paper 2<br>
 **Syllabus:** Section 11: Programming<br>
 **Syllabus requirements:** S11.03<br>
-**Pacing:** Flexible. Select the material set and practice depth needed by the learner.
+**Pacing:** Flexible. This lesson is deliberately over-complete; select a quick, full or deep route for the learners in front of you.
 
 ## Teaching-depth menu
 
 - **Quick route:** Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.
-- **Full route:** Use every knowledge-point material set, the worked method, the terminology check and all questions.
+- **Full route:** Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.
 - **Deep route:** Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.
 
 ## 1. Prerequisite knowledge and quick diagnostic
@@ -22,152 +22,35 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ## 2. Knowledge explanation
 
-### 1. Built-in and string functions (S11.03)
+### Learning objectives
 
-**Concept map:** built-in → string → functions
+- Use built-in/library and string functions.
 
-**Three-part explanation:**
+### Concept checklist for teacher choice
 
-1. Any function not given in the pseudocode guide will be provided
-2. string manipulation functions will always be given in the question
-3. Use built-in functions and library routines
+- built-in / library
+- string
+- functions
 
-**Concrete cue:** Use built-in functions and library routines. Any function not given in the pseudocode guide will be provided; string manipulation functions will always be given in the question.
-
-#### Use the string-function definition supplied in the question
-
-![Use the string-function definition supplied in the question](../web/assets/diagrams/stage10-infographics/stage10-lesson-134-substring.jpg)
-
-<details><summary>Text transcript</summary>
-
-- String manipulation functions are supplied in the question; use the stated name, parameter order and position convention.
-- Trace the supplied routine exactly, then use its returned string in an assignment, comparison, output or expression.
-- Do not import Java's zero-based substring convention or memorise an unstated course-specific signature.
-
-</details>
-
-#### Test a built-in function
-
-![Test a built-in function](../web/assets/diagrams/stage10-infographics/stage10-lesson-134-lab.jpg)
-
-<details><summary>Text transcript</summary>
-
-- Interactive string lab
-- Use a short string and compare the returned value. For MID , positions start at 1.
-- Function
-- Choose a function and run it.
-
-</details>
-
-#### Use functions for returned values and procedures for actions
-
-![Use functions for returned values and procedures for actions](../web/assets/diagrams/stage10-infographics/stage10-lesson-142-subroutines.jpg)
-
-<details><summary>Text transcript</summary>
-
-- A function returns a value; a procedure performs an action.
-- IsPass returns a BOOLEAN based on whether Mark is at least 50.
-- Close the function's IF with ENDIF before ENDFUNCTION.
-- DisplayResult outputs its parameters and returns no value.
-
-</details>
-
-<details><summary>Precise syllabus wording</summary>
-
-Use built-in/library and string functions.
-
-Use built-in functions and library routines. Any function not given in the pseudocode guide will be provided; string manipulation functions will always be given in the question.
-
-</details>
-
-### Supporting diagram library
-
-#### FOR loops are natural for fixed array bounds
-
-![FOR loops are natural for fixed array bounds](../web/assets/diagrams/stage10-infographics/stage10-lesson-129-arrays.jpg)
-
-<details><summary>Text transcript</summary>
-
-- Array processing
-- Output all marks
-- FOR Index <- 1 TO 30
-- OUTPUT Marks[Index]
-- NEXT Index
-- Total all marks
-- Total <- 0
-- Total <- Total + Marks[Index]
-
-</details>
-
-#### One wrong bound can miss or invent an iteration
-
-![One wrong bound can miss or invent an iteration](../web/assets/diagrams/stage10-infographics/stage10-lesson-129-bounds.jpg)
-
-<details><summary>Text transcript</summary>
-
-- Bounds and off-by-one errors
-- Counter values
-- Iterations
-- Common issue
-- 1, 2, 3, 4, 5
-- 0, 1, 2, 3, 4
-- only if array uses 0-based bounds
-- 1, 2, 3, 4
-
-</details>
-
-#### Do not confuse the counter with the running total
-
-![Do not confuse the counter with the running total](../web/assets/diagrams/stage10-infographics/stage10-lesson-129-counter.jpg)
-
-<details><summary>Text transcript</summary>
-
-- Counter and accumulator
-- Variable
-- loop counter; controls the current iteration
-- 1, 2, 3, 4, 5
-- accumulator; stores a running total
-- 0, 1, 3, 6, 10, 15
-- bound; controls where the loop stops
-- 5 in 1 TO 5
-
-</details>
-
-#### Java for loops are useful, but not the exam answer format
-
-![Java for loops are useful, but not the exam answer format](../web/assets/diagrams/stage10-infographics/stage10-lesson-129-java.jpg)
-
-<details><summary>Text transcript</summary>
-
-- Java support only
-- Cambridge-style pseudocode
-- FOR Count <- 1 TO 5
-- OUTPUT Count
-- NEXT Count
-- Java support example only
-- for (int count = 1; count <= 5; count++) {
-- System.out.println(count);
-
-</details>
-
-<details><summary>Open precise terminology and exam facts</summary>
+### Detailed explanation
 
 - Use built-in functions and library routines. Any function not given in the pseudocode guide will be provided; string manipulation functions will always be given in the question.
 - Read the supplied function name, parameter order, position convention and returned type before using it. LENGTH is a familiar built-in example; LEFT, RIGHT, MID or SUBSTRING examples in this course illustrate a mechanism only when their definition and indexing convention are stated.
 - A function call returns a value, so it can be assigned, compared, output or combined in an expression. Do not import Java's zero-based substring convention unless the question explicitly specifies it.
 - For built-in routines and string functions, identify the required concept before describing its mechanism or consequence.
 
-</details>
-
 ### Worked example
 
-1. Apply a supplied string routine
-2. A question supplies FUNCTION EXTRACT(Text
-3. INTEGER) RETURNS STRING and states that positions start at 1.
-4. LENGTH("NETWORK") returns 7; EXTRACT("NETWORK", 4, 2) returns "WO".
-5. Code <- EXTRACT(Name, 1, 3) uses the supplied routine in an assignment without importing Java indexing.
+Apply a supplied string routine: A question supplies FUNCTION EXTRACT(Text : STRING, Start : INTEGER, Count : INTEGER) RETURNS STRING and states that positions start at 1. LENGTH("NETWORK") returns 7; EXTRACT("NETWORK", 4, 2) returns "WO". Code <- EXTRACT(Name, 1, 3) uses the supplied routine in an assignment without importing Java indexing.
 
 Beyond syllabus / 延伸知识（不要求背诵）: consistent style, modularity and automated tests reduce maintenance errors in larger programs.
+
+### Retained visual explanation
+
+![Use the string-function definition supplied in the question](../web/assets/diagrams/stage10-infographics/stage10-lesson-134-substring.jpg)
+
+_Use the string-function definition supplied in the question. The image and mobile text alternative come from one maintained fact source._
+
 ## 3. Practice by question type
 
 ### Question 1 - foundation - apply - 2 marks

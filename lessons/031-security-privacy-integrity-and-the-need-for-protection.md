@@ -4,12 +4,12 @@
 **Paper:** Paper 1<br>
 **Syllabus:** Section 6: Security, privacy and data integrity<br>
 **Syllabus requirements:** S6.01, S6.02<br>
-**Pacing:** Flexible. Select the material set and practice depth needed by the learner.
+**Pacing:** Flexible. This lesson is deliberately over-complete; select a quick, full or deep route for the learners in front of you.
 
 ## Teaching-depth menu
 
 - **Quick route:** Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.
-- **Full route:** Use every knowledge-point material set, the worked method, the terminology check and all questions.
+- **Full route:** Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.
 - **Deep route:** Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.
 
 ## 1. Prerequisite knowledge and quick diagnostic
@@ -22,250 +22,20 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ## 2. Knowledge explanation
 
-### 1. Security · Privacy · Integrity (S6.01)
+### Learning objectives
 
-**Concept map:** security → privacy → integrity
+- Distinguish data security, privacy and integrity.
+- Explain the need for data and computer-system security.
 
-**Three-part explanation:**
+### Concept checklist for teacher choice
 
-1. evidence must not treat confidentiality, lawful/appropriate use and correctness/consistency as interchangeable
-2. Distinguish data security, data privacy and data integrity as separate concepts
-3. evidence must explain why protecting one layer does not replace the other
+- security
+- privacy
+- integrity
+- computer-system
+- data
 
-**Concrete cue:** Distinguish data security, data privacy and data integrity as separate concepts; evidence must not treat confidentiality, lawful/appropriate use and correctness/consistency as interchangeable.
-
-#### Why security methods cannot substitute
-
-![Why security methods cannot substitute](../web/assets/diagrams/stage10-infographics/stage10-lesson-068-core.jpg)
-
-<details><summary>Text transcript</summary>
-
-- Encryption hides readable content from unauthorised viewers.
-- Hashing creates a comparison value for integrity checks.
-- Certificates bind an identity to a public key through trust.
-
-</details>
-
-#### Compare methods by evidence, risk and context
-
-![Compare methods by evidence, risk and context](../web/assets/diagrams/stage10-infographics/stage10-lesson-066-compare.jpg)
-
-<details><summary>Text transcript</summary>
-
-- Evidence
-- Strengths and limitations
-- Password/PIN
-- Something the user knows.
-- Low cost and familiar; can be guessed, reused, shared, phished or forgotten.
-- Biometric
-- Something the user is.
-- Convenient and hard to forget; needs sensors and may have false accepts/rejects or privacy concerns.
-
-</details>
-
-#### Recovery planning is about availability, integrity and accountability
-
-![Recovery planning is about availability, integrity and accountability](../web/assets/diagrams/stage10-infographics/stage10-lesson-071-core.jpg)
-
-<details><summary>Text transcript</summary>
-
-- Backup A separate copy of data that can be used to restore the original after loss or corruption.
-- Restore The process of recovering data or systems from a backup.
-- Disaster recovery Planned actions to restore systems and services after a major incident.
-- Audit trail A chronological record of actions, changes and access events.
-
-</details>
-
-<details><summary>Precise syllabus wording</summary>
-
-Distinguish data security, privacy and integrity.
-
-Distinguish data security, data privacy and data integrity as separate concepts; evidence must not treat confidentiality, lawful/appropriate use and correctness/consistency as interchangeable.
-
-</details>
-
-### 2. Protecting computer systems and data (S6.02)
-
-**Concept map:** computer-system → security → data
-
-**Three-part explanation:**
-
-1. evidence must explain why protecting one layer does not replace the other
-2. Show appreciation of the need for both security of data and security of the computer system
-3. Both data security and computer-system security are necessary
-
-**Concrete cue:** Show appreciation of the need for both security of data and security of the computer system; evidence must explain why protecting one layer does not replace the other.
-
-#### Compare by purpose, not by "security word"
-
-![Compare by purpose, not by "security word"](../web/assets/diagrams/stage10-infographics/stage10-lesson-071-compare.jpg)
-
-<details><summary>Text transcript</summary>
-
-- Main purpose
-- Limitation
-- Restore data after deletion, corruption, hardware failure or ransomware.
-- May be too old, corrupted, inaccessible or affected by same incident.
-- Disaster recovery plan
-- Restore systems and services in a planned order after major disruption.
-- Needs testing, clear roles and updated documentation.
-- Audit trail
-
-</details>
-
-#### Why key ownership changes capability
-
-![Why key ownership changes capability](../web/assets/diagrams/stage10-infographics/stage10-lesson-068-keys.jpg)
-
-<details><summary>Text transcript</summary>
-
-- A symmetric key can both encrypt and decrypt shared data.
-- An asymmetric key pair separates public and private operations.
-- Protecting the private or shared secret preserves the security boundary.
-
-</details>
-
-#### A strategy defines location, frequency, retention and security
-
-![A strategy defines location, frequency, retention and security](../web/assets/diagrams/stage10-infographics/stage10-lesson-071-strategy.jpg)
-
-<details><summary>Text transcript</summary>
-
-- Onsite Fast to access, but vulnerable to the same fire, flood, theft or ransomware incident.
-- Offsite Stored in a different physical location, reducing site-wide disaster risk.
-- Cloud Remote provider storage; useful for offsite copies but needs network access and access control.
-- Retention How long versions are kept, so accidental deletion or corruption can be rolled back.
-
-</details>
-
-<details><summary>Precise syllabus wording</summary>
-
-Explain the need for data and computer-system security.
-
-Show appreciation of the need for both security of data and security of the computer system; evidence must explain why protecting one layer does not replace the other.
-
-</details>
-
-### Supporting diagram library
-
-#### Authenticity checks that identity or data origin is genuine
-
-![Authenticity checks that identity or data origin is genuine](../web/assets/diagrams/stage10-infographics/stage10-lesson-063-authenticity.jpg)
-
-<details><summary>Text transcript</summary>
-
-- Goal Users, devices, messages or files should be verified as genuine.
-- Risk An attacker pretends to be a valid user, sender or website.
-- Controls Authentication, digital certificates, digital signatures and multi-factor authentication can support authenticity.
-- Exam wording Say what identity or source is being verified, not just "make it secure".
-
-</details>
-
-#### Availability keeps systems and data accessible when needed
-
-![Availability keeps systems and data accessible when needed](../web/assets/diagrams/stage10-infographics/stage10-lesson-063-availability.jpg)
-
-<details><summary>Text transcript</summary>
-
-- Goal Authorised users should be able to access data and services when required.
-- Risk Hardware failure, network failure or overload prevents legitimate use.
-- Controls Backups, redundancy, disaster recovery, UPS and monitoring can support availability.
-- Exam wording State what remains accessible or recoverable, and for whom.
-
-</details>
-
-#### Confidentiality protects data from unauthorised access
-
-![Confidentiality protects data from unauthorised access](../web/assets/diagrams/stage10-infographics/stage10-lesson-063-confidentiality.jpg)
-
-<details><summary>Text transcript</summary>
-
-- Goal Only authorised users should be able to view or access the data.
-- Risk Personal details, passwords or exam marks are viewed by unauthorised people.
-- Controls Access rights, authentication, encryption and least privilege can support confidentiality.
-- Exam wording Say who is prevented from reading what, and why they are unauthorised.
-
-</details>
-
-#### Integrity protects data from unauthorised or accidental alteration
-
-![Integrity protects data from unauthorised or accidental alteration](../web/assets/diagrams/stage10-infographics/stage10-lesson-063-integrity.jpg)
-
-<details><summary>Text transcript</summary>
-
-- Goal Data should remain accurate, complete and unaltered unless changed by an authorised process.
-- Risk Exam marks, bank balances or stock levels are changed incorrectly.
-- Validation and verification Validation checks stated rules; verification checks entered or transferred data against its source, not whether the source is true or complete.
-- Other controls Access rights, checksums, hashes and audit trails can prevent, detect or record some changes, but no control guarantees integrity.
-- Exam wording Explain exactly how the named control prevents, detects or records an incorrect change.
-
-</details>
-
-#### Use the risk chain before naming a control
-
-![Use the risk chain before naming a control](../web/assets/diagrams/stage10-infographics/stage10-lesson-063-risk-chain.jpg)
-
-<details><summary>Text transcript</summary>
-
-- Asset Something valuable that needs protection, such as exam marks, passwords or customer records.
-- Threat A possible cause of harm, such as unauthorised access, data corruption or service failure.
-- Vulnerability A weakness that a threat could exploit, such as weak passwords or poor permissions.
-- Control A safeguard that reduces likelihood or impact, such as access rights, backups or authentication.
-
-</details>
-
-#### Audit trails support accountability and investigation
-
-![Audit trails support accountability and investigation](../web/assets/diagrams/stage10-infographics/stage10-lesson-071-audit-trails.jpg)
-
-<details><summary>Text transcript</summary>
-
-- Who User ID, account, device or process involved.
-- What Action such as login, read, edit, delete, approve or restore.
-- When/where Timestamp, location, device or IP address.
-- Use Trace errors, detect misuse, investigate incidents and prove compliance.
-
-</details>
-
-#### Backup type affects speed, storage and recovery complexity
-
-![Backup type affects speed, storage and recovery complexity](../web/assets/diagrams/stage10-infographics/stage10-lesson-071-backups.jpg)
-
-<details><summary>Text transcript</summary>
-
-- Full backup Copies all selected data. Simple to restore, but uses more time and storage.
-- Incremental backup Copies only data changed since the last backup. Faster and smaller, but restore may need a chain.
-- Differential idea Copies changes since last full backup. Useful comparison, though full/incremental is the main contrast here.
-- Testing Backups must be tested by restoring sample data, not only by checking that a file exists.
-
-</details>
-
-#### Disaster recovery is more than data copying
-
-![Disaster recovery is more than data copying](../web/assets/diagrams/stage10-infographics/stage10-lesson-071-recovery.jpg)
-
-<details><summary>Text transcript</summary>
-
-- 1. Identify incident Detect failure, confirm scope and prevent further damage.
-- 2. Communicate Notify staff/users and assign responsibilities.
-- 3. Restore systems Recover data, applications, hardware/network access and configuration.
-- 4. Test and review Check service works, document lessons and improve the plan.
-- Useful exam language: RPO = how much data loss is acceptable; RTO = how quickly service must be restored.
-
-</details>
-
-#### Match backup frequency to acceptable data loss
-
-![Match backup frequency to acceptable data loss](../web/assets/diagrams/stage10-infographics/stage10-lesson-071-rpo-tool.jpg)
-
-<details><summary>Text transcript</summary>
-
-- Interactive recovery objective tool
-- Maximum acceptable data loss
-
-</details>
-
-<details><summary>Open precise terminology and exam facts</summary>
+### Detailed explanation
 
 - Distinguish data security, data privacy and data integrity as separate concepts; evidence must not treat confidentiality, lawful/appropriate use and correctness/consistency as interchangeable.
 - Show appreciation of the need for both security of data and security of the computer system; evidence must explain why protecting one layer does not replace the other.
@@ -273,17 +43,18 @@ Show appreciation of the need for both security of data and security of the comp
 - The concepts overlap but are not synonyms: encrypted inaccurate data may be secure but lack integrity; authorised publication may preserve integrity while violating privacy.
 - Both data security and computer-system security are necessary. Protecting only a data file is insufficient if an attacker can control the operating system, install malware, steal credentials or make the computer system unavailable; protecting only the device is insufficient if copied data is disclosed, altered or lost.
 
-</details>
-
 ### Worked example
 
-1. Medical records on a compromised computer system
-2. Encryption restricts unauthorised reading of the record data.
-3. Access rights restrict who may view or alter it.
-4. Anti-virus and a firewall help protect the computer system that stores and processes the records.
-5. If malware controls the system, it may steal decrypted data, alter records or stop authorised access even though the stored file was encrypted.
+Medical records on a compromised computer system: Encryption restricts unauthorised reading of the record data. Access rights restrict who may view or alter it. Anti-virus and a firewall help protect the computer system that stores and processes the records. If malware controls the system, it may steal decrypted data, alter records or stop authorised access even though the stored file was encrypted.
 
 Beyond syllabus / 延伸知识（不要求背诵）: real security uses defence in depth, combining controls so that one failed control does not expose the whole system.
+
+### Retained visual explanation
+
+![Compare by purpose, not by "security word"](../web/assets/diagrams/stage10-infographics/stage10-lesson-071-compare.jpg)
+
+_Compare by purpose, not by "security word". The image and mobile text alternative come from one maintained fact source._
+
 ## 3. Practice by question type
 
 ### Question 1 - foundation - compare - 5 marks

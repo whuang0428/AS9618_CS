@@ -4,12 +4,12 @@
 **Paper:** Paper 1<br>
 **Syllabus:** Section 3: Hardware<br>
 **Syllabus requirements:** S3.03<br>
-**Pacing:** Flexible. Select the material set and practice depth needed by the learner.
+**Pacing:** Flexible. This lesson is deliberately over-complete; select a quick, full or deep route for the learners in front of you.
 
 ## Teaching-depth menu
 
 - **Quick route:** Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.
-- **Full route:** Use every knowledge-point material set, the worked method, the terminology check and all questions.
+- **Full route:** Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.
 - **Deep route:** Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.
 
 ## 1. Prerequisite knowledge and quick diagnostic
@@ -25,208 +25,23 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ## 2. Knowledge explanation
 
-### 1. Laser printer · 3D printer · Microphone · Speaker (S3.03)
-
-**Concept map:** laser printer → 3D printer → microphone → speaker → HDD → flash memory → optical reader/writer → touchscreen → VR headset
-
-**Three-part explanation:**
-
-1. laser printer, 3D printer, microphone, speakers, magnetic hard disk, solid state (flash) memory, optical disc reader/writer, touchscreen and virtual reality headset
-2. An HDD or magnetic hard disk uses rotating magnetic platters, flash memory stores charge electronically, and an optical reader/writer uses a laser
-3. Describe the principal operations of
-
-**Concrete cue:** Describe the principal operations of: laser printer, 3D printer, microphone, speakers, magnetic hard disk, solid state (flash) memory, optical disc reader/writer, touchscreen and virtual reality headset.
-
-#### Three main storage media
-
-![Three main storage media](../web/assets/diagrams/stage10-infographics/stage10-lesson-032-media.jpg)
-
-<details><summary>Text transcript</summary>
-
-- Magnetic storage uses magnetised areas; examples include HDD and tape.
-- Optical storage uses laser light to read marks on a disc.
-- Solid-state secondary storage uses non-volatile flash memory with no moving parts; an SSD or NAND flash chip is the correct illustration.
-- A volatile RAM DIMM is primary memory and is not an SSD.
-
-</details>
-
-#### Component roles and examples
-
-![Component roles and examples](../web/assets/diagrams/stage10-infographics/stage10-lesson-028-components.jpg)
-
-<details><summary>Text transcript</summary>
-
-- Input devices
-- Allow data to enter the system.
-- Examples: keyboard, mouse, barcode reader, touch screen, microphone, camera, sensor.
-- Output devices
-- Present data or results from the system.
-- Examples: monitor, speaker, printer, projector, actuator.
-- Processor
-- Executes instructions and coordinates operations. It processes data; it is not where user files are stored.
-
-</details>
-
-#### Compare by scenario, not by favourite brand
-
-![Compare by scenario, not by favourite brand](../web/assets/diagrams/stage10-infographics/stage10-lesson-032-compare.jpg)
-
-<details><summary>Text transcript</summary>
-
-- An HDD provides high capacity at relatively low cost and suits large file libraries or cost-sensitive backups.
-- Magnetic tape provides high capacity with sequential access and suits archival backups.
-- Optical media suits distributing read-only content or archiving data that changes rarely.
-
-</details>
-
-#### Look at the storage mechanism before comparing performance
-
-![Look at the storage mechanism before comparing performance](../web/assets/diagrams/stage10-infographics/stage10-lesson-032-storage-visual.jpg)
-
-<details><summary>Text transcript</summary>
-
-- Visual explanation
-- The physical mechanism helps explain speed, durability and suitable uses.
-- Magnetic
-- Solid-state
-- Three ways to store data when power is off. The illustration identifies the mechanism; the cards below state the exam-safe explanation.
-- Magnetic HDD
-- Magnetised areas store data on rotating platters. A moving actuator positions the read/write head.
-- Consequence: high capacity and low cost per GB, but mechanical parts are vulnerable to shock.
-
-</details>
-
-#### Section 3 topic map
-
-![Section 3 topic map](../web/assets/diagrams/stage10-infographics/stage10-lesson-041-map.jpg)
-
-<details><summary>Text transcript</summary>
-
-- RAM and ROM are primary memory; SSD, HDD and optical media are secondary storage.
-- Virtual memory is a memory-management technique that uses secondary storage to supplement RAM.
-- Do not classify virtual memory as a type of primary memory.
-
-</details>
-
-<details><summary>Precise syllabus wording</summary>
-
-Describe principal operation of laser printer, 3D printer, microphone, speakers, HDD, flash memory, optical reader/writer, touchscreen and VR headset.
-
-Describe the principal operations of: laser printer, 3D printer, microphone, speakers, magnetic hard disk, solid state (flash) memory, optical disc reader/writer, touchscreen and virtual reality headset.
-
-</details>
-
-### Supporting diagram library
-
-#### Common output devices and when they fit
-
-![Common output devices and when they fit](../web/assets/diagrams/stage10-infographics/stage10-lesson-030-devices.jpg)
-
-<details><summary>Text transcript</summary>
-
-- Output form
-- Good use
-- Exam warning
-- Monitor / screen
-- Visual soft copy
-- Live results, interfaces, dashboards, maps
-- Not suitable when permanent paper evidence is required
-- Hard copy on paper or labels
-
-</details>
-
-#### User feedback must fit the situation
-
-![User feedback must fit the situation](../web/assets/diagrams/stage10-infographics/stage10-lesson-030-feedback.jpg)
-
-<details><summary>Text transcript</summary>
-
-- Display, auditory and haptic feedback are alternative output forms, not inputs.
-- Printed records and actuator actions are separate output types rather than downstream results of display, sound or touch feedback.
-- Haptic feedback requires physical contact and may be missed when vibration is weak or the device is not being held.
-
-</details>
-
-#### What output devices do
-
-![What output devices do](../web/assets/diagrams/stage10-infographics/stage10-lesson-030-purpose.jpg)
-
-<details><summary>Text transcript</summary>
-
-- 1. Present Output devices present processed data to a user, such as text, images or sound.
-- 2. Record Some output creates a physical record, such as a printout or receipt.
-- 3. Act Actuators convert computer output into physical movement or control.
-
-</details>
-
-#### Why cache helps and virtual memory slows
-
-![Why cache helps and virtual memory slows](../web/assets/diagrams/stage10-infographics/stage10-lesson-031-cache-vm.jpg)
-
-<details><summary>Text transcript</summary>
-
-- Cache holds copies of recently or frequently used instructions and data close to the CPU.
-- A cache hit avoids a slower main-memory access.
-- Virtual memory uses secondary storage when RAM is insufficient and increases apparent capacity rather than physical RAM speed.
-
-</details>
-
-#### Why active data stays close to the CPU
-
-![Why active data stays close to the CPU](../web/assets/diagrams/stage10-infographics/stage10-lesson-031-primary.jpg)
-
-<details><summary>Text transcript</summary>
-
-- The CPU repeatedly requests current instructions and data.
-- Nearby electronic storage answers with less delay than secondary storage.
-- Faster access prevents the processor waiting as often.
-
-</details>
-
-#### Why RAM changes while ROM remains stable
-
-![Why RAM changes while ROM remains stable](../web/assets/diagrams/stage10-infographics/stage10-lesson-031-ram-rom.jpg)
-
-<details><summary>Text transcript</summary>
-
-- RAM holds the changing state of running programs.
-- Most RAM needs continuous power to preserve that state.
-- ROM retains fixed startup instructions when power is removed.
-
-</details>
-
-#### Short timed review structure
-
-![Short timed review structure](../web/assets/diagrams/stage10-infographics/stage10-lesson-041-checkpoint.jpg)
-
-<details><summary>Text transcript</summary>
-
-- Monthly checkpoint
-- 3 minutes Classify five questions by topic and command word.
-- 8 minutes Answer one 6-mark scenario question.
-- 5 minutes Complete one truth table or Boolean trace.
-- 7 minutes Mark with MS, identify missing marks, rewrite one answer.
-- The checkpoint is included as lesson practice, not a midterm or final exam.
-
-</details>
-
-#### Three review skills: compare, justify, calculate
-
-![Three review skills: compare, justify, calculate](../web/assets/diagrams/stage10-infographics/stage10-lesson-041-skills.jpg)
-
-<details><summary>Text transcript</summary>
-
-- Compare Give both sides and use the same criterion, e.g. SSD is faster than HDD, but HDD may be cheaper per GB.
-- Justify Name a choice, name a feature, link it to the user's need, then explain the consequence.
-- Calculate / trace Show working: input values, intermediate result, final output.
-- Describe Use a sequence, such as sensor reading - comparison - output signal - actuator.
-- Explain Include cause and effect, not only a definition.
-- Correct Find the missing mark, then rewrite the answer with specific wording.
-- Exam answer frame: "Because [feature], it meets [need], so [practical consequence]."
-
-</details>
-
-<details><summary>Open precise terminology and exam facts</summary>
+### Learning objectives
+
+- Describe principal operation of laser printer, 3D printer, microphone, speakers, HDD, flash memory, optical reader/writer, touchscreen and VR headset.
+
+### Concept checklist for teacher choice
+
+- laser printer
+- 3D printer
+- microphone
+- speaker
+- HDD / magnetic hard disk
+- flash memory
+- optical reader/writer / optical disc reader/writer
+- touchscreen
+- VR headset / virtual reality headset
+
+### Detailed explanation
 
 - Describe the principal operations of: laser printer, 3D printer, microphone, speakers, magnetic hard disk, solid state (flash) memory, optical disc reader/writer, touchscreen and virtual reality headset.
 - A microphone diaphragm vibrates with sound; a transducer converts the movement into an analogue electrical signal, which an ADC samples into digital values. A capacitive touchscreen detects a change in an electric field and calculates touch coordinates.
@@ -240,18 +55,18 @@ Describe the principal operations of: laser printer, 3D printer, microphone, spe
 - RAM is volatile read/write primary memory used for programs and data currently being processed. ROM is non-volatile primary memory used for instructions that must remain when power is removed, such as firmware or start-up instructions. ROM is not ordinary long-term storage for user files.
 - SRAM stores bits using flip-flop circuits, needs no refresh and is fast but expensive with lower density, so it is used for cache. DRAM stores charge in capacitors, requires refresh and is slower but cheaper and denser, so it is used for main memory.
 
-</details>
-
 ### Worked example
 
-1. Print a page
-2. Read an HDD block
-3. Choose a storage mechanism
-4. Choose memory for a computer system
-5. The operating system places page data in a print buffer.
-6. The CPU can continue other work while the slower printer consumes buffered data and performs drum, toner and fusing stages.
+Print a page / Read an HDD block / Choose a storage mechanism / Choose memory for a computer system: The operating system places page data in a print buffer. The CPU can continue other work while the slower printer consumes buffered data and performs drum, toner and fusing stages. The controller moves the head to the correct track, waits for the sector to rotate beneath it, senses magnetic patterns and transfers the decoded bits through a buffer. A portable device may use flash memory for shock resistance; an archive may use optical media when an optical disc reader/writer is available. Use DRAM as main RAM because its density and lower cost support a large working capacity. Use a small amount of SRAM for cache because faster, no-refresh access reduces processor waiting. Store updateable firmware in EEPROM because it remains without power but can be rewritten electrically.
 
 Beyond syllabus / 延伸知识（不要求背诵）: professional device selection also considers accessibility, reliability, repairability and energy use.
+
+### Retained visual explanation
+
+![Section 3 topic map](../web/assets/diagrams/stage10-infographics/stage10-lesson-041-map.jpg)
+
+_Section 3 topic map. The image and mobile text alternative come from one maintained fact source._
+
 ## 3. Practice by question type
 
 ### Question 1 - foundation - describe - 4 marks

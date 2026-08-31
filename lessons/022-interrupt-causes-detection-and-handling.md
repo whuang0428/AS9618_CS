@@ -4,12 +4,12 @@
 **Paper:** Paper 1<br>
 **Syllabus:** Section 4: Processor fundamentals<br>
 **Syllabus requirements:** S4.08<br>
-**Pacing:** Flexible. Select the material set and practice depth needed by the learner.
+**Pacing:** Flexible. This lesson is deliberately over-complete; select a quick, full or deep route for the learners in front of you.
 
 ## Teaching-depth menu
 
 - **Quick route:** Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.
-- **Full route:** Use every knowledge-point material set, the worked method, the terminology check and all questions.
+- **Full route:** Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.
 - **Deep route:** Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.
 
 ## 1. Prerequisite knowledge and quick diagnostic
@@ -26,143 +26,20 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ## 2. Knowledge explanation
 
-### 1. Causes · Applications · Interrupts · ISR (S4.08)
+### Learning objectives
 
-**Concept map:** causes → applications → interrupts → ISR → detected → handling
+- Understand causes/applications of interrupts, ISR, detection and handling.
 
-**Three-part explanation:**
+### Concept checklist for teacher choice
 
-1. Include possible causes and applications of interrupts, the use of an Interrupt Service Routine (ISR), when interrupts are detected during the fetch-execute cycle and the full…
-2. An enabled interrupt request is detected at an instruction boundary before the processor begins the handling sequence
-3. Possible causes include input/output devices needing service, a timer used for scheduling, a hardware fault, and a software exception
+- causes
+- applications
+- interrupts
+- ISR
+- detected
+- handling
 
-**Concrete cue:** Include possible causes and applications of interrupts, the use of an Interrupt Service Routine (ISR), when interrupts are detected during the fetch-execute cycle and the full save-handle-restore sequence.
-
-#### The interrupt handling cycle
-
-![The interrupt handling cycle](../web/assets/diagrams/stage10-infographics/stage10-lesson-049-cycle.jpg)
-
-<details><summary>Text transcript</summary>
-
-- 1. Execute instruction The CPU finishes the current instruction before accepting most maskable interrupts.
-- 2. Check interrupt The control unit checks whether an interrupt is pending and enabled.
-- 3. Save state Important registers, PC and status information are stored, often on a stack.
-- 4. Find ISR The interrupt type is used to locate the correct interrupt service routine.
-- 5. Run ISR The routine handles the event, such as reading a key or acknowledging a device.
-- 6. Restore and return The saved state is restored and the interrupted program continues.
-- Why this matters
-- Saving state is the "bookmark". Without it, the CPU may not know where or how to resume the interrupted program.
-
-</details>
-
-#### What an interrupt is
-
-![What an interrupt is](../web/assets/diagrams/stage10-infographics/stage10-lesson-049-concept.jpg)
-
-<details><summary>Text transcript</summary>
-
-- Interrupt
-- A signal that causes the processor to pause normal execution and deal with an event.
-- Interrupt service routine
-- A program routine that handles a specific interrupt.
-- Processor state
-- The information needed to continue later, such as PC, registers and status flags.
-- Interrupt flag
-- A stored indication that an interrupt has occurred or is waiting to be handled.
-
-</details>
-
-#### Interrupts versus polling
-
-![Interrupts versus polling](../web/assets/diagrams/stage10-infographics/stage10-lesson-049-polling.jpg)
-
-<details><summary>Text transcript</summary>
-
-- Interrupt-driven input
-- The device signals the CPU when attention is needed. The CPU can do useful work meanwhile.
-- Efficient when events are unpredictable.
-- Requires interrupt handling and state saving.
-- Good exam phrase: "CPU does not continually check the device."
-- The CPU repeatedly checks a device or flag to see whether attention is needed.
-- Simple to understand and implement.
-- Can waste processor time if checks are frequent and no event has occurred.
-
-</details>
-
-#### Where interrupts come from
-
-![Where interrupts come from](../web/assets/diagrams/stage10-infographics/stage10-lesson-049-sources.jpg)
-
-<details><summary>Text transcript</summary>
-
-- Input/output device
-- A keyboard, printer or network interface signals that it needs CPU attention.
-- Example: key pressed; printer buffer ready.
-- A timer interrupt lets an operating system share CPU time between tasks.
-- Example: scheduler checks whether another process should run.
-- Hardware fault
-- A device or hardware condition signals a problem that must be handled.
-- Example: power warning or device failure signal.
-
-</details>
-
-<details><summary>Precise syllabus wording</summary>
-
-Understand causes/applications of interrupts, ISR, detection and handling.
-
-Include possible causes and applications of interrupts, the use of an Interrupt Service Routine (ISR), when interrupts are detected during the fetch-execute cycle and the full save-handle-restore sequence.
-
-</details>
-
-### Supporting diagram library
-
-#### What a system bus does
-
-![What a system bus does](../web/assets/diagrams/stage10-infographics/stage10-lesson-045-concept.jpg)
-
-<details><summary>Text transcript</summary>
-
-- Communication pathway
-- A bus is a set of parallel wires or connections used to carry signals.
-- Connects components
-- System buses connect CPU, main memory and other devices through controlled transfers.
-- Not storage
-- A bus transfers signals; it does not permanently store data or instructions.
-- Part of a trace
-- In processor questions, bus roles often appear inside fetch, read and write sequences.
-
-</details>
-
-#### Read and write traces
-
-![Read and write traces](../web/assets/diagrams/stage10-infographics/stage10-lesson-045-read-write.jpg)
-
-<details><summary>Text transcript</summary>
-
-- Memory read
-- CPU places the required address on the address bus.
-- CPU sends a read signal on the control bus.
-- Memory places the requested data/instruction on the data bus.
-- CPU receives the data, often through the MDR.
-- Memory write
-- CPU places the target address on the address bus.
-- CPU places the data to be stored on the data bus.
-
-</details>
-
-#### The three buses
-
-![The three buses](../web/assets/diagrams/stage10-infographics/stage10-lesson-045-three-buses.jpg)
-
-<details><summary>Text transcript</summary>
-
-- The address bus carries the address of the location being accessed and is normally directed from the CPU.
-- The data bus carries data and instructions in both directions.
-- The control bus carries control and timing signals in both directions, including read/write from the CPU and interrupts toward the CPU.
-
-</details>
-
-<details><summary>Open precise terminology and exam facts</summary>
+### Detailed explanation
 
 - Include possible causes and applications of interrupts, the use of an Interrupt Service Routine (ISR), when interrupts are detected during the fetch-execute cycle and the full save-handle-restore sequence.
 - An interrupt is a signal or condition requesting processor attention. Possible causes include input/output devices needing service, a timer used for scheduling, a hardware fault, and a software exception. Applications include responsive input, sharing processor time and dealing promptly with exceptional conditions without continuously polling every device.
@@ -170,15 +47,18 @@ Include possible causes and applications of interrupts, the use of an Interrupt 
 - If an interrupt is accepted, the processor checks priority, saves the state needed to resume (such as PC, registers and status), loads or locates the correct interrupt service routine (ISR), executes the ISR, restores the saved state and resumes the interrupted program at the correct next instruction. The ISR is a routine, not the interrupt signal itself.
 - An enabled interrupt request is detected at an instruction boundary before the processor begins the handling sequence.
 
-</details>
-
 ### Worked example
 
-1. Handle a keyboard interrupt
-2. A key press raises an interrupt while the CPU is executing another program.
-3. The CPU finishes its current instruction, detects the pending request at the cycle boundary, saves PC/register/status state, runs the keyboard ISR to read or acknowledge the input, restores the saved state and…
+Handle a keyboard interrupt: A key press raises an interrupt while the CPU is executing another program. The CPU finishes its current instruction, detects the pending request at the cycle boundary, saves PC/register/status state, runs the keyboard ISR to read or acknowledge the input, restores the saved state and continues the original program.
 
 Beyond syllabus / 延伸知识（不要求背诵）: modern processors add pipelining and several cache levels, but exam answers should begin with the syllabus processor model.
+
+### Retained visual explanation
+
+![The three buses](../web/assets/diagrams/stage10-infographics/stage10-lesson-045-three-buses.jpg)
+
+_The three buses. The image and mobile text alternative come from one maintained fact source._
+
 ## 3. Practice by question type
 
 ### Question 1 - foundation - describe - 6 marks

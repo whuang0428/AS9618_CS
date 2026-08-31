@@ -5,7 +5,6 @@ import { fileURLToPath } from "node:url";
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const nodeChecks = [
   "generate-course-v2-coverage.mjs",
-  "audit-course-v2-material-coverage.mjs",
   "verify-course-v2.mjs",
 ];
 

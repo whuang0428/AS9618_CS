@@ -4,12 +4,12 @@
 **Paper:** Paper 1<br>
 **Syllabus:** Section 8: Databases<br>
 **Syllabus requirements:** S8.08, S8.10<br>
-**Pacing:** Flexible. Select the material set and practice depth needed by the learner.
+**Pacing:** Flexible. This lesson is deliberately over-complete; select a quick, full or deep route for the learners in front of you.
 
 ## Teaching-depth menu
 
 - **Quick route:** Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.
-- **Full route:** Use every knowledge-point material set, the worked method, the terminology check and all questions.
+- **Full route:** Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.
 - **Deep route:** Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.
 
 ## 1. Prerequisite knowledge and quick diagnostic
@@ -28,270 +28,30 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ## 2. Knowledge explanation
 
-### 1. SQL · SELECT · FROM · WHERE (S8.08)
-
-**Concept map:** SQL → SELECT → FROM → WHERE → fields → table → condition
-
-**Three-part explanation:**
-
-1. Evidence must show what a statement does to its result or stored data, not only recognise isolated keywords
-2. Version 2 explicitly requires understanding a given SQL statement
-3. Keywords, field names, table names, operators, literal values and punctuation have different roles
-
-**Concrete cue:** Version 2 explicitly requires understanding a given SQL statement. Evidence must show what a statement does to its result or stored data, not only recognise isolated keywords.
-
-#### The three foundation clauses
-
-![The three foundation clauses](../web/assets/diagrams/stage10-infographics/stage10-lesson-085-clauses.jpg)
-
-<details><summary>Text transcript</summary>
-
-- SELECT Names the fields to output, such as Title, DueDate .
-- FROM Names the table to use, such as Loan .
-- WHERE Filters records using a condition, such as Returned = FALSE .
-- Thinking order:
-- What fields do I need? Which table contains them? Which records should be included?
-
-</details>
-
-#### Text values need quotes; numbers usually do not
-
-![Text values need quotes; numbers usually do not](../web/assets/diagrams/stage10-infographics/stage10-lesson-085-strings.jpg)
-
-<details><summary>Text transcript</summary>
-
-- Text/string Category = 'Fiction' . The text value is quoted.
-- Number Price < 10.00 . Numeric values are not quoted in basic exam SQL.
-- Boolean Returned = FALSE . Use the Boolean value expected by the question/table.
-- Field names Usually not quoted: SELECT Title , not SELECT 'Title' .
-
-</details>
-
-#### WHERE conditions and comparison operators
-
-![WHERE conditions and comparison operators](../web/assets/diagrams/stage10-infographics/stage10-lesson-085-conditions.jpg)
-
-<details><summary>Text transcript</summary>
-
-- A WHERE clause tests each record and returns only records where the condition is true.
-- Operator
-- equal to
-- Category = 'Fiction'
-- not equal to
-- Status < 'Returned'
-- greater than, less than
-- Price < 10.00
-
-</details>
-
-#### SQL clauses: choose the clause that matches the request
-
-![SQL clauses: choose the clause that matches the request](../web/assets/diagrams/stage10-infographics/stage10-lesson-090-sql.jpg)
-
-<details><summary>Text transcript</summary>
-
-- For the clauses shown, written syntax order is SELECT, FROM, WHERE, GROUP BY, ORDER BY.
-- A simplified logical processing order is FROM, WHERE, GROUP BY, SELECT, ORDER BY.
-- GROUP BY forms groups and ORDER BY sorts the final rows.
-- Written syntax order and logical processing order are different.
-
-</details>
-
-#### Two-table INNER JOIN with ON
-
-![Two-table INNER JOIN with ON](../web/assets/diagrams/stage10-infographics/stage10-lesson-087-join.jpg)
-
-<details><summary>Text transcript</summary>
-
-- AS DML questions use at most two tables.
-- SELECT Student.StudentName FROM Student INNER JOIN Loan ON Student.StudentID = Loan.StudentID uses an explicit two-table join.
-- ON states the matching key relationship between the tables.
-- WHERE adds a separate row filter after the join; it does not replace the required INNER JOIN syntax.
-
-</details>
-
-<details><summary>Precise syllabus wording</summary>
-
-Understand a given SQL statement and explain the semantics of its clauses, identifiers, operators and values.
-
-Version 2 explicitly requires understanding a given SQL statement. Evidence must show what a statement does to its result or stored data, not only recognise isolated keywords.
-
-</details>
-
-### 2. SELECT · FROM · WHERE · ORDER BY (S8.10)
-
-**Concept map:** SELECT → FROM → WHERE → ORDER BY → GROUP BY → INNER JOIN → ON → SUM → COUNT → AVG → at most two
-
-**Three-part explanation:**
-
-1. Version 2 limits DML scripts to data stored in at most two tables and names SELECT, FROM, WHERE, ORDER BY, GROUP BY, INNER JOIN, SUM, COUNT…
-2. Distinguish DDL structure commands from DML query/maintenance commands, use every required data type and key clause, and keep SELECT queries to at most two tables with…
-3. The course uses explicit INNER JOIN
-
-**Concrete cue:** Version 2 limits DML scripts to data stored in at most two tables and names SELECT, FROM, WHERE, ORDER BY, GROUP BY, INNER JOIN, SUM, COUNT and AVG. The course…
-
-#### Two-table INNER JOIN with ON
-
-![Two-table INNER JOIN with ON](../web/assets/diagrams/stage10-infographics/stage10-lesson-087-join.jpg)
-
-<details><summary>Text transcript</summary>
-
-- AS DML questions use at most two tables.
-- SELECT Student.StudentName FROM Student INNER JOIN Loan ON Student.StudentID = Loan.StudentID uses an explicit two-table join.
-- ON states the matching key relationship between the tables.
-- WHERE adds a separate row filter after the join; it does not replace the required INNER JOIN syntax.
-
-</details>
-
-#### Aggregate functions calculate one summary value
-
-![Aggregate functions calculate one summary value](../web/assets/diagrams/stage10-infographics/stage10-lesson-086-aggregates.jpg)
-
-<details><summary>Text transcript</summary>
-
-- COUNT() counts all rows in the result, including rows containing null values.
-- COUNT(column) counts only non-null values in the named column.
-- SUM, AVG and COUNT operate on the rows remaining after filtering and grouping rules are applied.
-
-</details>
-
-#### SQL clauses: choose the clause that matches the request
-
-![SQL clauses: choose the clause that matches the request](../web/assets/diagrams/stage10-infographics/stage10-lesson-090-sql.jpg)
-
-<details><summary>Text transcript</summary>
-
-- For the clauses shown, written syntax order is SELECT, FROM, WHERE, GROUP BY, ORDER BY.
-- A simplified logical processing order is FROM, WHERE, GROUP BY, SELECT, ORDER BY.
-- GROUP BY forms groups and ORDER BY sorts the final rows.
-- Written syntax order and logical processing order are different.
-
-</details>
-
-#### Table-qualified names and aliases prevent ambiguity
-
-![Table-qualified names and aliases prevent ambiguity](../web/assets/diagrams/stage10-infographics/stage10-lesson-087-aliases.jpg)
-
-<details><summary>Text transcript</summary>
-
-- If two tables have a field with the same name, write the table name or alias before the field.
-- Full name Student.StudentID clearly means the field from Student.
-- Alias Student AS S lets you write S.StudentID .
-- Exam caution Only use aliases if they make the query clear. Do not hide the join logic.
-
-</details>
-
-#### GROUP BY calculates summaries per group
-
-![GROUP BY calculates summaries per group](../web/assets/diagrams/stage10-infographics/stage10-lesson-086-groupby.jpg)
-
-<details><summary>Text transcript</summary>
-
-- Use GROUP BY when the question asks for a summary for each category, each borrower, each course or each group.
-- Pattern:
-- SELECT Category, COUNT() FROM Book GROUP BY Category;
-
-</details>
-
-#### ORDER BY sorts output rows
-
-![ORDER BY sorts output rows](../web/assets/diagrams/stage10-infographics/stage10-lesson-086-orderby.jpg)
-
-<details><summary>Text transcript</summary>
-
-- ORDER BY controls the order of the result rows. ASC means ascending; DESC means descending.
-- Ascending ORDER BY Price ASC : low to high, A to Z, oldest to newest.
-- Descending ORDER BY Price DESC : high to low, Z to A, newest to oldest.
-- Default Many SQL systems default to ascending, but exams may expect explicit ASC if asked.
-
-</details>
-
-<details><summary>Precise syllabus wording</summary>
-
-Use DML on at most two tables: SELECT, FROM, WHERE, ORDER BY, GROUP BY, INNER JOIN, SUM, COUNT and AVG.
-
-Version 2 limits DML scripts to data stored in at most two tables and names SELECT, FROM, WHERE, ORDER BY, GROUP BY, INNER JOIN, SUM, COUNT and AVG. The course uses explicit INNER JOIN ... ON for two-table core queries.
-
-</details>
-
-### Supporting diagram library
-
-#### Related tables use primary keys and foreign keys
-
-![Related tables use primary keys and foreign keys](../web/assets/diagrams/stage10-infographics/stage10-lesson-087-relationships.jpg)
-
-<details><summary>Text transcript</summary>
-
-- A join combines rows when matching key fields refer to the same real-world item.
-- StudentID primary key
-- StudentName , TutorGroup
-- 1 to many
-- StudentID
-- LoanID primary key
-- StudentID , BookID foreign keys
-- many to 1
-
-</details>
-
-#### Relational design: what earns marks?
-
-![Relational design: what earns marks?](../web/assets/diagrams/stage10-infographics/stage10-lesson-090-design.jpg)
-
-<details><summary>Text transcript</summary>
-
-- Design review
-- Primary key Uniquely identifies a record in one table. It must be unique and reliable.
-- Foreign key Stores a value that matches a primary key in another table, creating a relationship.
-- Normalisation Separates repeated data into related tables to reduce duplication and update errors.
-
-</details>
-
-#### Section 8 knowledge map
-
-![Section 8 knowledge map](../web/assets/diagrams/stage10-infographics/stage10-lesson-090-map.jpg)
-
-<details><summary>Text transcript</summary>
-
-- Retrieval map
-- Data and DBMS data vs information; DBMS roles; avoiding flat-file limitations
-- Tables and keys records, fields, data types, constraints, primary keys and foreign keys
-- Design entity-relationship modelling and normalisation to reduce duplication
-- SQL retrieval SELECT , FROM , WHERE , ORDER BY , aggregates and joins
-- SQL modification INSERT , UPDATE , DELETE , field/value matching and safe WHERE
-- Protection validation, verification, security controls, backups and restore testing
-
-</details>
-
-#### Do not swap the security vocabulary
-
-![Do not swap the security vocabulary](../web/assets/diagrams/stage10-infographics/stage10-lesson-090-protection.jpg)
-
-<details><summary>Text transcript</summary>
-
-- Protection review
-- Validation Checks data follows rules, such as range, type, format or presence.
-- Verification Checks entered data matches a source, using proofreading or double entry.
-- Security and backup Security restricts access; backup enables recovery after loss or corruption.
-
-</details>
-
-#### Trace one mixed SQL result
-
-![Trace one mixed SQL result](../web/assets/diagrams/stage10-infographics/stage10-lesson-090-tracer.jpg)
-
-<details><summary>Text transcript</summary>
-
-- Interactive SQL tracer
-- Category
-- Networks
-- Computing
-- Literature
-- Databases
-- Choose a query to see the result.
-
-</details>
-
-<details><summary>Open precise terminology and exam facts</summary>
+### Learning objectives
+
+- Understand a given SQL statement and explain the semantics of its clauses, identifiers, operators and values.
+- Use DML on at most two tables: SELECT, FROM, WHERE, ORDER BY, GROUP BY, INNER JOIN, SUM, COUNT and AVG.
+
+### Concept checklist for teacher choice
+
+- SQL
+- SELECT
+- FROM
+- WHERE
+- fields
+- table
+- condition
+- ORDER BY
+- GROUP BY
+- INNER JOIN
+-  ON
+- SUM
+- COUNT
+- AVG
+- at most two / two table / two-table
+
+### Detailed explanation
 
 - Version 2 explicitly requires understanding a given SQL statement. Evidence must show what a statement does to its result or stored data, not only recognise isolated keywords.
 - Version 2 limits DML scripts to data stored in at most two tables and names SELECT, FROM, WHERE, ORDER BY, GROUP BY, INNER JOIN, SUM, COUNT and AVG. The course uses explicit INNER JOIN ... ON for two-table core queries.
@@ -306,18 +66,18 @@ Version 2 limits DML scripts to data stored in at most two tables and names SELE
 - DBMS and SQL review: identify data management/data dictionary, data modelling, logical schema, integrity, security/backup/access rights, developer interface and query processor. Distinguish DDL structure commands from DML query/maintenance commands, use every required data type and key clause, and keep SELECT queries to at most two tables with explicit INNER JOIN ... ON when two tables are needed.
 - A complete answer follows the scenario through design, statement and result. It does not claim that a primary key prevents every duplicate fact, that a secondary key must be unique, that normalisation guarantees correctness, or that a three-table/comma-style query is within the AS core boundary.
 
-</details>
-
 ### Worked example
 
-1. Define two related tables
-2. List overdue borrowers
-3. CREATE DATABASE College; then CREATE TABLE Department and CREATE TABLE Student.
-4. Student uses INTEGER for StudentID, VARCHAR for Name, DATE for DateOfBirth, BOOLEAN for Active and a DepartmentID foreign key REFERENCES Department(DepartmentID).
-5. ALTER TABLE can modify the structure later.
-6. SELECT Student.StudentName FROM Student INNER JOIN Loan ON Student.StudentID = Loan.StudentID WHERE Loan.DueDate < '2027-05-01'; uses two tables, one explicit join condition and one separate filter.
+Define two related tables / List overdue borrowers: CREATE DATABASE College; then CREATE TABLE Department and CREATE TABLE Student. Student uses INTEGER for StudentID, VARCHAR for Name, DATE for DateOfBirth, BOOLEAN for Active and a DepartmentID foreign key REFERENCES Department(DepartmentID). ALTER TABLE can modify the structure later. SELECT Student.StudentName FROM Student INNER JOIN Loan ON Student.StudentID = Loan.StudentID WHERE Loan.DueDate < '2027-05-01'; uses two tables, one explicit join condition and one separate filter.
 
 Beyond syllabus / 延伸知识（不要求背诵）: production databases also manage transactions and concurrent users; these ideas extend the syllabus model of integrity and access control.
+
+### Retained visual explanation
+
+![Two-table INNER JOIN with ON](../web/assets/diagrams/stage10-infographics/stage10-lesson-087-join.jpg)
+
+_Two-table INNER JOIN with ON. The image and mobile text alternative come from one maintained fact source._
+
 ## 3. Practice by question type
 
 ### Question 1 - foundation - identify - 2 marks

@@ -8,7 +8,7 @@
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
-    <link rel="stylesheet" href="../course-v2.css?v=6" />
+    <link rel="stylesheet" href="../course-v2.css?v=3" />
   </head>
   <body data-course-version="2" data-lesson-id="075" data-syllabus-ids="S11.04">
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -17,11 +17,16 @@
       <nav class="v2-actions" aria-label="Lesson actions"><a href="../">Course home</a><a href="../assessments/">Assessment bank</a><button type="button" id="printLesson">Print</button></nav>
     </header>
     <main class="v2-shell" id="main-content" tabindex="-1">
-      <nav class="v2-jump-nav" aria-label="Lesson contents"><strong>Lesson 075</strong><a href="#overview">Overview</a><a href="#prerequisite">Prerequisite</a><a href="#explanation">Explanation</a><a href="#practice">Practice</a><a href="#summary">Summary</a></nav>
+      <nav class="v2-toc" aria-label="Lesson contents"><strong>Lesson 075</strong><a href="#overview">Overview</a><a href="#prerequisite">Prerequisite</a><a href="#explanation">Explanation</a><a href="#practice">Practice</a><a href="#summary">Summary</a></nav>
       <div class="v2-content">
-        <section class="v2-overview" id="overview">
-          <div><p class="v2-eyebrow">Flexible-depth lesson</p><p class="v2-overview-copy">S11.04 | Learn from the diagrams, test the method, then choose the practice you need.</p></div>
-          <details class="v2-route-menu"><summary>Choose a Quick, Full or Deep route</summary><div class="v2-route-grid"><article><h3>Quick route</h3><p>Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.</p></article><article><h3>Full route</h3><p>Use every knowledge-point material set, the worked method, the terminology check and all questions.</p></article><article><h3>Deep route</h3><p>Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.</p></article></div></details>
+        <section class="v2-hero" id="overview">
+          <div><p class="v2-eyebrow">Flexible-depth lesson</p><h2>Pre-condition and post-condition loops</h2><p>S11.04 | Select what to omit, teach briefly or explore in depth.</p></div>
+          <div class="v2-time-grid" aria-label="Available lesson depth"><div><strong>Quick</strong><span>diagnose + essentials</span></div><div><strong>Full</strong><span>complete explanation</span></div><div><strong>Deep</strong><span>prerequisites + extension</span></div><div><strong>Choose</strong><span>practice by need</span></div></div>
+        </section>
+
+        <section class="v2-panel v2-route-menu" aria-labelledby="route-heading">
+          <div class="v2-heading"><p class="v2-eyebrow">Teacher choice</p><h2 id="route-heading">Choose the depth for this group</h2></div>
+          <div class="v2-route-grid"><article><h3>Quick route</h3><p>Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.</p></article><article><h3>Full route</h3><p>Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.</p></article><article><h3>Deep route</h3><p>Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.</p></article></div>
         </section>
 
         <section class="v2-panel" id="prerequisite">
@@ -32,80 +37,21 @@
         </section>
 
         <section class="v2-panel" id="explanation">
-          <div class="v2-heading v2-heading--wide"><p class="v2-eyebrow">Part 2 | knowledge-point material sets</p><h2>Learn each point through visuals</h2><p>Follow the map, the three-part explanation and the concrete cue. Open precise wording only after the idea is clear.</p></div>
+          <div class="v2-heading"><p class="v2-eyebrow">Part 2 | deliberately over-complete</p><h2>Knowledge explanation</h2></div>
+          <h3>Learning objectives</h3><ul class="v2-objectives"><li>Use IF/ELSE/nested selection, CASE, count-controlled loops, post-condition and pre-condition loops.</li></ul>
           <details class="v2-concept-menu"><summary>Open the concept checklist and choose what to teach</summary><ul><li>IF</li><li>ELSE</li><li>nested</li><li>selection</li><li>CASE</li><li>count-controlled</li><li>loop / loops</li><li>post-condition</li><li>pre-condition</li></ul></details>
-          <nav class="v2-knowledge-index" aria-label="Knowledge points in this lesson"><a href="#knowledge-s11-04"><span>01</span>S11.04</a></nav><div class="v2-knowledge-point-list"><section class="v2-knowledge-point" id="knowledge-s11-04" data-syllabus-id="S11.04" data-visual-mode="decision" data-material-count="8">
-      <header class="v2-knowledge-point-head"><span>01</span><div><p>S11.04 · decision</p><h3>IF · ELSE · Nested · Selection</h3></div></header>
-      <div class="v2-material-triad">
-        <article class="v2-native-material v2-native-material--map"><h4>Concept map</h4><div class="v2-concept-map" aria-label="Concept map for S11.04"><span class="v2-concept-node" data-node-index="1">IF</span><span class="v2-concept-node" data-node-index="2">ELSE</span><span class="v2-concept-node" data-node-index="3">nested</span><span class="v2-concept-node" data-node-index="4">selection</span><span class="v2-concept-node" data-node-index="5">CASE</span><span class="v2-concept-node" data-node-index="6">count-controlled</span><span class="v2-concept-node" data-node-index="7">loop</span><span class="v2-concept-node" data-node-index="8">post-condition</span><span class="v2-concept-node" data-node-index="9">pre-condition</span></div></article>
-        <article class="v2-native-material v2-native-material--story"><h4>See how it works</h4><ol><li><span>Evidence</span><strong>it is well suited when the count or bounds are known, but a pre-condition or post-condition loop is better when the number of repetitions depends on…</strong></li><li><span>Choice</span><strong>Use IF statements, including the ELSE clause and nested IF statements</strong></li><li><span>Reason</span><strong>A FOR...NEXT loop is count-controlled</strong></li></ol></article>
-        <aside class="v2-native-material v2-native-material--cue"><h4>Concrete cue</h4><p>Use IF statements, including the ELSE clause and nested IF statements; CASE statements; count-controlled loops; post-condition loops; and pre-condition loops.</p></aside>
-      </div>
-      <section class="v2-material-library" aria-label="S11.04 diagrams">
-    <div class="v2-material-library-head"><h3>S11.04 diagrams</h3><div class="v2-material-controls">
-        <button type="button" data-material-prev aria-controls="materials-075-s11-04" aria-label="Previous diagram"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" /></svg></button>
-        <span data-material-position>1 / 5</span>
-        <button type="button" data-material-next aria-controls="materials-075-s11-04" aria-label="Next diagram"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" /></svg></button>
-      </div></div>
-    <div class="v2-material-rail" id="materials-075-s11-04" data-material-rail><figure class="v2-visual" data-material-kind="diagram">
-            <div class="v2-visual-heading"><span>01</span><div><p>Diagram · 1 of 5</p><h4>Use IF when a Boolean condition decides the route</h4></div></div>
-            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Use IF when a Boolean condition decides the route"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-128-if.jpg" alt="Use IF when a Boolean condition decides the route" loading="lazy" /></div>
-            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>IF selection</li><li>Use when</li><li>Cambridge-style pattern</li><li>action is needed only when condition is true</li><li>IF Found THEN ... ENDIF</li><li>IF...ELSE</li><li>two paths are needed</li><li>IF Mark = 50 THEN ... ELSE ... ENDIF</li></ul></details>
-          </figure><figure class="v2-visual" data-material-kind="example">
-            <div class="v2-visual-heading"><span>02</span><div><p>Concrete example · 2 of 5</p><h4>Pre-condition loop: check before running</h4></div></div>
-            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Pre-condition loop: check before running"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-130-while.jpg" alt="Pre-condition loop: check before running" loading="lazy" /></div>
-            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>A WHILE loop checks its condition before each iteration and may run zero times.</li><li>Input Password before testing whether it differs from CorrectPassword.</li><li>Inside the loop, output the retry message and input a replacement Password.</li><li>Output Access granted only after the WHILE condition becomes false.</li></ul></details>
-          </figure><figure class="v2-visual" data-material-kind="diagram">
-            <div class="v2-visual-heading"><span>03</span><div><p>Diagram · 3 of 5</p><h4>Post-condition loop: run once, then check</h4></div></div>
-            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Post-condition loop: run once, then check"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-130-repeat.jpg" alt="Post-condition loop: run once, then check" loading="lazy" /></div>
-            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>A REPEAT...UNTIL loop checks its condition after executing the body.</li><li>Place INPUT Mark once inside REPEAT so each attempt obtains one value.</li><li>Do not add a duplicate INPUT before the loop.</li><li>Stop when Mark is between 0 and 100 inclusive.</li></ul></details>
-          </figure><figure class="v2-visual" data-material-kind="analogy">
-            <div class="v2-visual-heading"><span>04</span><div><p>Analogy / use · 4 of 5</p><h4>Conditions decide the path</h4></div></div>
-            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Conditions decide the path"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-127-selection.jpg" alt="Conditions decide the path" loading="lazy" /></div>
-            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Use IF for a Boolean condition or range and close it with ENDIF.</li><li>Use CASE for several discrete values of one expression and close it with ENDCASE.</li><li>Test marks 49, 50 and 51 to verify the pass boundary.</li></ul></details>
-          </figure><figure class="v2-visual" data-material-kind="comparison">
-            <div class="v2-visual-heading"><span>05</span><div><p>Comparison · 5 of 5</p><h4>A decision inside another decision</h4></div></div>
-            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: A decision inside another decision"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-128-nested.jpg" alt="A decision inside another decision" loading="lazy" /></div>
-            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Nested selection</li><li>Discount example</li><li>IF Age = 18 THEN</li><li>IF Member = TRUE THEN</li><li>Discount &lt;- 0.20</li><li>Discount &lt;- 0.10</li><li>Discount &lt;- 0.05</li><li>Trace the paths</li></ul></details>
-          </figure></div>
-  </section>
-      <details class="v2-point-precision"><summary>Open precise syllabus wording</summary><p><strong>Use IF/ELSE/nested selection, CASE, count-controlled loops, post-condition and pre-condition loops.</strong></p><p>Use IF statements, including the ELSE clause and nested IF statements; CASE statements; count-controlled loops; post-condition loops; and pre-condition loops.</p></details>
-    </section></div>
-          <section class="v2-material-library" aria-label="Supporting diagram library">
-    <div class="v2-material-library-head"><h3>Supporting diagram library</h3><div class="v2-material-controls">
-        <button type="button" data-material-prev aria-controls="materials-075-supporting" aria-label="Previous diagram"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" /></svg></button>
-        <span data-material-position>1 / 6</span>
-        <button type="button" data-material-next aria-controls="materials-075-supporting" aria-label="Next diagram"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" /></svg></button>
-      </div></div>
-    <div class="v2-material-rail" id="materials-075-supporting" data-material-rail><figure class="v2-visual" data-material-kind="diagram">
-            <div class="v2-visual-heading"><span>01</span><div><p>Diagram · 1 of 6</p><h4>Use CASE for clear values of one expression</h4></div></div>
-            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Use CASE for clear values of one expression"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-128-case.jpg" alt="Use CASE for clear values of one expression" loading="lazy" /></div>
-            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>CASE compares one expression with several discrete values.</li><li>Each listed value has its own action and OTHERWISE handles unlisted values.</li><li>Close the complete multi-way selection with ENDCASE.</li></ul></details>
-          </figure><figure class="v2-visual" data-material-kind="diagram">
-            <div class="v2-visual-heading"><span>02</span><div><p>Diagram · 2 of 6</p><h4>The difference is when the condition is tested</h4></div></div>
-            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: The difference is when the condition is tested"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-130-compare.jpg" alt="The difference is when the condition is tested" loading="lazy" /></div>
-            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>WHILE vs REPEAT</li><li>REPEAT...UNTIL</li><li>Condition checked</li><li>before the loop body</li><li>after the loop body</li><li>Minimum iterations</li><li>Continues when</li><li>condition is TRUE</li></ul></details>
-          </figure><figure class="v2-visual" data-material-kind="diagram">
-            <div class="v2-visual-heading"><span>03</span><div><p>Diagram · 3 of 6</p><h4>A FOR loop has a counter, a start value and an end value</h4></div></div>
-            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: A FOR loop has a counter, a start value and an end value"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-129-for.jpg" alt="A FOR loop has a counter, a start value and an end value" loading="lazy" /></div>
-            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>FOR loop structure</li><li>General pattern</li><li>FOR Counter &lt;- StartValue TO EndValue</li><li>// repeated statements</li><li>NEXT Counter</li><li>Concrete example</li><li>Total &lt;- 0</li><li>FOR Count &lt;- 1 TO 5</li></ul></details>
-          </figure><figure class="v2-visual" data-material-kind="diagram">
-            <div class="v2-visual-heading"><span>04</span><div><p>Diagram · 4 of 6</p><h4>Java syntax is support, not Cambridge pseudocode</h4></div></div>
-            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Java syntax is support, not Cambridge pseudocode"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-130-java.jpg" alt="Java syntax is support, not Cambridge pseudocode" loading="lazy" /></div>
-            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Java support only</li><li>Cambridge-style pseudocode</li><li>WHILE Mark &lt; 0 OR Mark 100</li><li>INPUT Mark</li><li>ENDWHILE</li><li>Java support example only</li><li>while (mark &lt; 0 || mark 100) {</li><li>mark = scanner.nextInt();</li></ul></details>
-          </figure><figure class="v2-visual" data-material-kind="diagram">
-            <div class="v2-visual-heading"><span>05</span><div><p>Diagram · 5 of 6</p><h4>A special value can stop the loop</h4></div></div>
-            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: A special value can stop the loop"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-130-sentinel.jpg" alt="A special value can stop the loop" loading="lazy" /></div>
-            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Initialise Total and input the first Number before WHILE.</li><li>While Number is not -1, add Number to Total and input the next Number.</li><li>The repeated input changes the condition and allows the loop to terminate.</li><li>The sentinel -1 stops the loop and is not included in Total.</li></ul></details>
-          </figure><figure class="v2-visual" data-material-kind="diagram">
-            <div class="v2-visual-heading"><span>06</span><div><p>Diagram · 6 of 6</p><h4>Keep asking until the input is valid</h4></div></div>
-            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Keep asking until the input is valid"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-130-validation.jpg" alt="Keep asking until the input is valid" loading="lazy" /></div>
-            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Validation pattern</li><li>REPEAT version</li><li>OUTPUT &quot;Enter mark 0 to 100&quot;</li><li>INPUT Mark</li><li>UNTIL Mark = 0 AND Mark &lt;= 100</li><li>WHILE version</li><li>WHILE Mark &lt; 0 OR Mark 100</li><li>OUTPUT &quot;Invalid&quot;</li></ul></details>
-          </figure></div>
-  </section>
-          <article class="v2-example"><div><p class="v2-eyebrow">Apply the idea</p><h3>Worked method</h3></div><ol class="v2-worked-flow"><li><span>01</span><strong>Nested IF and CASE</strong></li><li><span>02</span><strong>Total a fixed array</strong></li><li><span>03</span><strong>Choose the loop from the stopping rule</strong></li><li><span>04</span><strong>For a grade, an outer IF tests Mark = 80; its ELSE contains an inner IF testing Mark = 50; each IF closes with ENDIF.</strong></li><li><span>05</span><strong>For a menu, CASE Choice OF maps 1, 2 and 3 to actions and OTHERWISE handles every unlisted value before ENDCASE.</strong></li><li><span>06</span><strong>For Marks[1:30], set Total &lt;- 0, use FOR Index &lt;- 1 TO 30, add Marks[Index] to Total, close with NEXT Index and output Total after all thirty elements have been processed.</strong></li></ol></article>
-          <details class="v2-core-facts"><summary>Open precise terminology and exam facts</summary><ul class="v2-facts"><li>Use IF statements, including the ELSE clause and nested IF statements; CASE statements; count-controlled loops; post-condition loops; and pre-condition loops.</li><li>Use IF...THEN...ELSE...ENDIF when a Boolean condition selects between paths. An ELSE clause supplies the false path. In nested IF statements, every inner and outer IF must be closed and the indentation must show which ELSE belongs to which IF.</li><li>Use CASE...OF...OTHERWISE...ENDCASE when one expression is compared with several discrete values. CASE is not a replacement for range or compound-condition decisions unless the stated values cover the requirement correctly.</li><li>A count-controlled loop uses FOR...TO...NEXT when the repetition count or inclusive counter range is known before the loop starts. The counter, start value and end value define the iterations; NEXT closes the loop.</li><li>Justify FOR from the problem: it is well suited when the count or bounds are known, but a pre-condition or post-condition loop is better when the number of repetitions depends on input or a stopping condition.</li><li>A WHILE...ENDWHILE loop is a pre-condition loop: it tests before the body and may run zero times. A REPEAT...UNTIL loop is a post-condition loop: it executes the body before testing and therefore runs at least once. A FOR...NEXT loop is count-controlled.</li><li>Select and justify the loop structure from the problem: use FOR when the count is known, WHILE when execution may be unnecessary and continuation is tested first, and REPEAT when the body must run once before a stopping condition can be tested. The justification must use the scenario, not only say that one loop is easier.</li></ul></details>
-          <details class="v2-extension"><summary>Beyond syllabus / 延伸知识（不要求背诵）</summary><p>consistent style, modularity and automated tests reduce maintenance errors in larger programs.</p></details>
+          <div class="v2-explanation-grid">
+            <div>
+              <article class="v2-core-facts"><h3>Detailed explanation</h3><p class="v2-teacher-note">Teach all points, or select only the ones this group needs. The list is intentionally fuller than a fixed lesson slot.</p><ul class="v2-facts"><li>Use IF statements, including the ELSE clause and nested IF statements; CASE statements; count-controlled loops; post-condition loops; and pre-condition loops.</li><li>Use IF...THEN...ELSE...ENDIF when a Boolean condition selects between paths. An ELSE clause supplies the false path. In nested IF statements, every inner and outer IF must be closed and the indentation must show which ELSE belongs to which IF.</li><li>Use CASE...OF...OTHERWISE...ENDCASE when one expression is compared with several discrete values. CASE is not a replacement for range or compound-condition decisions unless the stated values cover the requirement correctly.</li><li>A count-controlled loop uses FOR...TO...NEXT when the repetition count or inclusive counter range is known before the loop starts. The counter, start value and end value define the iterations; NEXT closes the loop.</li><li>Justify FOR from the problem: it is well suited when the count or bounds are known, but a pre-condition or post-condition loop is better when the number of repetitions depends on input or a stopping condition.</li><li>A WHILE...ENDWHILE loop is a pre-condition loop: it tests before the body and may run zero times. A REPEAT...UNTIL loop is a post-condition loop: it executes the body before testing and therefore runs at least once. A FOR...NEXT loop is count-controlled.</li><li>Select and justify the loop structure from the problem: use FOR when the count is known, WHILE when execution may be unnecessary and continuation is tested first, and REPEAT when the body must run once before a stopping condition can be tested. The justification must use the scenario, not only say that one loop is easier.</li></ul></article>
+              <article class="v2-example"><h3>Worked example</h3><p>Nested IF and CASE / Total a fixed array / Choose the loop from the stopping rule: For a grade, an outer IF tests Mark = 80; its ELSE contains an inner IF testing Mark = 50; each IF closes with ENDIF. For a menu, CASE Choice OF maps 1, 2 and 3 to actions and OTHERWISE handles every unlisted value before ENDCASE. For Marks[1:30], set Total &lt;- 0, use FOR Index &lt;- 1 TO 30, add Marks[Index] to Total, close with NEXT Index and output Total after all thirty elements have been processed. Input validation must request a value at least once, so REPEAT; INPUT Mark; UNTIL Mark = 0 AND Mark &lt;= 100 is suitable. Processing records while a file is not at EOF can use WHILE because an empty file may require zero iterations. Processing twelve months uses FOR because the count is fixed.</p></article>
+              <aside class="v2-extension"><h3>Beyond syllabus / 延伸知识（不要求背诵）</h3><p>consistent style, modularity and automated tests reduce maintenance errors in larger programs.</p></aside>
+            </div>
+            <figure class="v2-visual">
+              <img src="../assets/diagrams/stage10-infographics/stage10-lesson-128-case.jpg" alt="CASE compares one expression with several discrete values.. Each listed value has its own action and OTHERWISE handles unlisted values.. Close the complete multi-way selection with ENDCASE." loading="lazy" />
+              <figcaption>Use CASE for clear values of one expression. One maintained explanation is shown as an image on larger screens and as text on small screens.</figcaption>
+              <div class="v2-mobile-visual-text" aria-label="Mobile text alternative"><ul><li>CASE compares one expression with several discrete values.</li><li>Each listed value has its own action and OTHERWISE handles unlisted values.</li><li>Close the complete multi-way selection with ENDCASE.</li></ul></div>
+            </figure>
+          </div>
         </section>
 
         <section class="v2-panel" id="practice">
@@ -140,6 +86,6 @@
         <nav class="v2-bottom-nav" aria-label="Previous and next lesson"><a href="../lesson-074/" >Previous lesson</a><a href="../lesson-076/" >Next lesson</a></nav>
       </div>
     </main>
-    <script src="../course-v2.js?v=2"></script>
+    <script src="../course-v2.js?v=1"></script>
   </body>
 </html>

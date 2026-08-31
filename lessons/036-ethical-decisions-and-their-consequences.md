@@ -4,12 +4,12 @@
 **Paper:** Paper 1<br>
 **Syllabus:** Section 7: Ethics and ownership<br>
 **Syllabus requirements:** S7.03<br>
-**Pacing:** Flexible. Select the material set and practice depth needed by the learner.
+**Pacing:** Flexible. This lesson is deliberately over-complete; select a quick, full or deep route for the learners in front of you.
 
 ## Teaching-depth menu
 
 - **Quick route:** Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.
-- **Full route:** Use every knowledge-point material set, the worked method, the terminology check and all questions.
+- **Full route:** Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.
 - **Deep route:** Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.
 
 ## 1. Prerequisite knowledge and quick diagnostic
@@ -26,189 +26,18 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ## 2. Knowledge explanation
 
-### 1. Ethical and unethical choices (S7.03)
+### Learning objectives
 
-**Concept map:** situation → ethical → unethical → impact
+- Explain the need to act ethically and the impact of acting ethically or unethically for a given situation.
 
-**Three-part explanation:**
+### Concept checklist for teacher choice
 
-1. Evidence must identify stakeholders and explain impacts of both ethical and unethical action
-2. In a situation, judge whether action is ethical or unethical and explain stakeholder impacts of both choices
-3. Version 2 requires scenario judgement plus consequences
+- situation
+- ethical
+- unethical
+- impact
 
-**Concrete cue:** Version 2 requires scenario judgement plus consequences. Evidence must identify stakeholders and explain impacts of both ethical and unethical action; a label or generic list is insufficient.
-
-#### Ethical answers start with stakeholders
-
-![Ethical answers start with stakeholders](../web/assets/diagrams/stage10-infographics/stage10-lesson-073-stakeholders.jpg)
-
-<details><summary>Text transcript</summary>
-
-- Stakeholder
-- Possible benefit
-- Possible harm or concern
-- Users / students / patients
-- Better service, safety, convenience, personalisation.
-- Loss of privacy, unfair treatment, pressure, exclusion.
-- Organisation
-- Efficiency, security, reduced cost, legal compliance.
-
-</details>
-
-#### Map a decision to stakeholders, benefits and concerns
-
-![Map a decision to stakeholders, benefits and concerns](../web/assets/diagrams/stage10-infographics/stage10-lesson-073-mapper.jpg)
-
-<details><summary>Text transcript</summary>
-
-- Interactive stakeholder mapper
-- Select a scenario and compare the ethical tension. The aim is not to memorise one answer; it is to see the pattern.
-- Scenario
-
-</details>
-
-#### Use a balanced impact structure
-
-![Use a balanced impact structure](../web/assets/diagrams/stage10-infographics/stage10-lesson-077-method.jpg)
-
-<details><summary>Text transcript</summary>
-
-- 1. Change Name the computing change, such as automation or online services.
-- 2. Benefit Explain a positive impact for a named stakeholder.
-- 3. Harm Explain a negative impact with a realistic consequence.
-- 4. Mitigation Suggest a practical way to reduce harm.
-- Answer frame:
-- [Technology] benefits [stakeholder] because [reason]. However, it may harm [stakeholder] by [consequence]. This can be reduced by [mitigation].
-
-</details>
-
-#### Classify the impact and choose a mitigation
-
-![Classify the impact and choose a mitigation](../web/assets/diagrams/stage10-infographics/stage10-lesson-077-analyser.jpg)
-
-<details><summary>Text transcript</summary>
-
-- Interactive impact analyser
-- Select a scenario and compare the positive impact, negative impact and mitigation.
-- Scenario
-
-</details>
-
-<details><summary>Precise syllabus wording</summary>
-
-Explain the need to act ethically and the impact of acting ethically or unethically for a given situation.
-
-Version 2 requires scenario judgement plus consequences. Evidence must identify stakeholders and explain impacts of both ethical and unethical action; a label or generic list is insufficient.
-
-</details>
-
-### Supporting diagram library
-
-#### Ethics is about responsible decision-making
-
-![Ethics is about responsible decision-making](../web/assets/diagrams/stage10-infographics/stage10-lesson-073-ethics.jpg)
-
-<details><summary>Text transcript</summary>
-
-- Ethics Principles about right and wrong behaviour, responsibility and fairness.
-- Stakeholder A person or group affected by a decision, directly or indirectly.
-- Responsibility The duty to consider consequences and act appropriately.
-- Proportionality The response should be no more intrusive or harmful than needed for the aim.
-
-</details>
-
-#### Use a balanced evaluation structure
-
-![Use a balanced evaluation structure](../web/assets/diagrams/stage10-infographics/stage10-lesson-073-method.jpg)
-
-<details><summary>Text transcript</summary>
-
-- 1. Context State the decision and the computing system involved.
-- 2. For Explain a benefit for a named stakeholder, with scenario detail.
-- 3. Against Explain a harm or right that may be affected.
-- 4. Judgement Give a justified conclusion with conditions or safeguards.
-- Answer frame:
-- Although [benefit] helps [stakeholder], [harm] may affect [stakeholder]. Therefore, the decision is justified only if [condition/safeguard].
-
-</details>
-
-#### Most ethical issues are trade-offs, not slogans
-
-![Most ethical issues are trade-offs, not slogans](../web/assets/diagrams/stage10-infographics/stage10-lesson-073-tradeoffs.jpg)
-
-<details><summary>Text transcript</summary>
-
-- Privacy vs safety Monitoring may protect users, but can intrude into personal behaviour.
-- Efficiency vs fairness Automation may save time, but may disadvantage some groups if data or rules are biased.
-- Convenience vs consent Personalisation can help users, but data collection should be clear and justified.
-- Innovation vs responsibility New systems can create benefits, but developers still need to consider harms.
-
-</details>
-
-#### Common contrasts that stop vague answers
-
-![Common contrasts that stop vague answers](../web/assets/diagrams/stage10-infographics/stage10-lesson-078-compare.jpg)
-
-<details><summary>Text transcript</summary>
-
-- Contrast
-- Difference
-- Common error
-- Privacy vs security
-- Privacy concerns control of personal data; security protects systems/data from threats.
-- Encryption alone does not answer every privacy ethics question.
-- Copyright vs licence
-- Copyright protects the work; a licence grants permission under conditions.
-
-</details>
-
-#### Section 7 topic map
-
-![Section 7 topic map](../web/assets/diagrams/stage10-infographics/stage10-lesson-078-map.jpg)
-
-<details><summary>Text transcript</summary>
-
-- Trigger words
-- Useful answer focus
-- Ethical decisions
-- stakeholders, consent, fairness, responsibility, proportionality
-- benefits, harms, rights, responsibilities and justified judgement
-- Privacy/data protection
-- personal data, monitoring, surveillance, retention, access, consent
-- data collected, purpose, risk, safeguard and transparency
-
-</details>
-
-#### What Cambridge-style marking usually rewards
-
-![What Cambridge-style marking usually rewards](../web/assets/diagrams/stage10-infographics/stage10-lesson-078-marking.jpg)
-
-<details><summary>Text transcript</summary>
-
-- Precise term privacy, copyright, e-waste, digital divide, open source, stakeholder.
-- Scenario link Explain how the issue affects the school, company, user or worker in the question.
-- Consequence Say what happens: exclusion, legal risk, privacy loss, job displacement, reduced emissions.
-- Balance Include both benefit and concern before final judgement in evaluate/discuss questions.
-
-</details>
-
-#### The five-part evaluation answer
-
-![The five-part evaluation answer](../web/assets/diagrams/stage10-infographics/stage10-lesson-078-structure.jpg)
-
-<details><summary>Text transcript</summary>
-
-- 1. Context Use the actual scenario, not a memorised opening sentence.
-- 2. Benefit Explain one advantage for a named stakeholder.
-- 3. Concern Explain one risk, harm or right that may be affected.
-- 4. Safeguard Suggest a condition, limit, policy or technical measure.
-- 5. Judgement Reach a supported conclusion using "if", "provided that" or "unless".
-- Answer frame:
-- Although [benefit] helps [stakeholder], [concern] may harm [stakeholder]. Therefore, [decision] is justified only if [condition/safeguard].
-
-</details>
-
-<details><summary>Open precise terminology and exam facts</summary>
+### Detailed explanation
 
 - Version 2 requires scenario judgement plus consequences. Evidence must identify stakeholders and explain impacts of both ethical and unethical action; a label or generic list is insufficient.
 - Professional ethics provides principles for deciding how a computing professional should act when technical choices can affect clients, users, colleagues or wider society. Its purpose is to protect the public interest, support competent and honest work, and make professionals accountable for foreseeable consequences rather than treating legal compliance or a manager's instruction as the whole decision.
@@ -219,17 +48,18 @@ Version 2 requires scenario judgement plus consequences. Evidence must identify 
 - To evaluate an AI application, balance its social, economic and environmental impacts and reach a context-linked judgement.
 - The required licence categories include FSF and OSI open-source licences, shareware and commercial software. A justified licence choice links its permissions, restrictions and cost to the stated situation.
 
-</details>
-
 ### Worked example
 
-1. Unsafe release pressure
-2. A developer is told to hide failed safety tests so a medical system can launch on time.
-3. Concealing the evidence would be unethical because patients could be harmed and trust would be damaged.
-4. The developer acts ethically by documenting the risk, refusing to falsify the record and escalating through BCS/IEEE-style professional channels.
-5. This may delay release and cost money, but protects patients, supports accountability and allows the defect to be corrected.
+Unsafe release pressure: A developer is told to hide failed safety tests so a medical system can launch on time. Concealing the evidence would be unethical because patients could be harmed and trust would be damaged. The developer acts ethically by documenting the risk, refusing to falsify the record and escalating through BCS/IEEE-style professional channels. This may delay release and cost money, but protects patients, supports accountability and allows the defect to be corrected.
 
 Beyond syllabus / 延伸知识（不要求背诵）: professional decisions are often reviewed against law, organisational policy, public interest and a published code of conduct.
+
+### Retained visual explanation
+
+![Section 7 topic map](../web/assets/diagrams/stage10-infographics/stage10-lesson-078-map.jpg)
+
+_Section 7 topic map. The image and mobile text alternative come from one maintained fact source._
+
 ## 3. Practice by question type
 
 ### Question 1 - foundation - apply - 2 marks

@@ -4,12 +4,12 @@
 **Paper:** Paper 1<br>
 **Syllabus:** Section 4: Processor fundamentals<br>
 **Syllabus requirements:** S4.09, S4.10<br>
-**Pacing:** Flexible. Select the material set and practice depth needed by the learner.
+**Pacing:** Flexible. This lesson is deliberately over-complete; select a quick, full or deep route for the learners in front of you.
 
 ## Teaching-depth menu
 
 - **Quick route:** Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.
-- **Full route:** Use every knowledge-point material set, the worked method, the terminology check and all questions.
+- **Full route:** Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.
 - **Deep route:** Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.
 
 ## 1. Prerequisite knowledge and quick diagnostic
@@ -28,206 +28,22 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ## 2. Knowledge explanation
 
-### 1. Assembly language and machine code (S4.09)
+### Learning objectives
 
-**Concept map:** assembly → language → machine → code
+- Distinguish assembly language and machine code.
+- Describe and apply the stages of a two-pass assembler.
 
-**Three-part explanation:**
+### Concept checklist for teacher choice
 
-1. assembly is a processor-specific symbolic low-level form translated by an assembler into binary instructions defined by the target instruction set
-2. Assembly language is a low-level, processor-specific symbolic representation of machine-code instructions
-3. Show the relationship between assembly language and machine code
+- assembly
+- language
+- machine
+- code
+- stages
+- two-pass
+- assembler
 
-**Concrete cue:** Show the relationship between assembly language and machine code: assembly is a processor-specific symbolic low-level form translated by an assembler into binary instructions defined by the target instruction set.
-
-#### What assembly language is
-
-![What assembly language is](../web/assets/diagrams/stage10-infographics/stage10-lesson-047-assembly.jpg)
-
-<details><summary>Text transcript</summary>
-
-- Low-level language
-- Assembly language is close to machine code and closely linked to a processor's instruction set.
-- Uses mnemonics
-- Human-readable abbreviations represent machine-code operations.
-- Processor-specific
-- Assembly syntax and available instructions depend on the target architecture.
-- Needs translation
-- An assembler converts assembly language into machine code.
-
-</details>
-
-#### Machine code is binary instructions for the CPU
-
-![Machine code is binary instructions for the CPU](../web/assets/diagrams/stage10-infographics/stage10-lesson-046-machine-code.jpg)
-
-<details><summary>Text transcript</summary>
-
-- Lowest-level executable form
-- Machine code consists of binary instructions that can be executed directly by the processor.
-- Not friendly for humans
-- Binary instructions are difficult for people to read and write accurately, but they are the form the processor executes directly.
-- Stored in memory
-- Machine-code instructions are stored in memory and fetched by the CPU during the fetch-decode-execute cycle.
-- CPU-specific meaning
-- The same bit pattern can have different meanings on different architectures because opcodes are defined by the instruction set.
-
-</details>
-
-#### Instruction sets and compatibility
-
-![Instruction sets and compatibility](../web/assets/diagrams/stage10-infographics/stage10-lesson-046-compatibility.jpg)
-
-<details><summary>Text transcript</summary>
-
-- Same ISA
-- A program compiled to one instruction set can run on compatible processors that implement that instruction set.
-- Different ISA
-- Machine code for one architecture may not run correctly on another architecture.
-- Translation needed
-- Source code may need to be recompiled, interpreted, emulated or translated for a different processor.
-- Exam wording
-- Say "the CPU cannot recognise/execute those opcodes" rather than simply "the CPU does not like it".
-
-</details>
-
-#### Mnemonics represent operations
-
-![Mnemonics represent operations](../web/assets/diagrams/stage10-infographics/stage10-lesson-047-mnemonics.jpg)
-
-<details><summary>Text transcript</summary>
-
-- Mnemonic
-- Likely operation
-- Exam-safe wording
-- Load a value into a register/ACC.
-- LOAD count
-- LOAD is a mnemonic for a machine-code load instruction.
-- Store a register/ACC value in memory.
-- STORE total
-
-</details>
-
-<details><summary>Precise syllabus wording</summary>
-
-Distinguish assembly language and machine code.
-
-Show the relationship between assembly language and machine code: assembly is a processor-specific symbolic low-level form translated by an assembler into binary instructions defined by the target instruction set.
-
-</details>
-
-### 2. Two-pass assembler stages (S4.10)
-
-**Concept map:** stages → two-pass → assembler
-
-**Three-part explanation:**
-
-1. pass 1 assigns addresses/builds the symbol table and pass 2 translates with resolved symbols
-2. Describe the different stages of a two-pass assembler and apply the process to a simple program
-3. Pass 1 scans source, assigns addresses and builds a symbol table for labels, allowing forward references
-
-**Concrete cue:** Describe the different stages of a two-pass assembler and apply the process to a simple program: pass 1 assigns addresses/builds the symbol table and pass 2 translates with resolved symbols.
-
-#### Pipelining overlaps instruction-cycle stages
-
-![Pipelining overlaps instruction-cycle stages](../web/assets/diagrams/stage10-infographics/stage10-lesson-051-concept.jpg)
-
-<details><summary>Text transcript</summary>
-
-- Pipeline
-- A processor technique where multiple instructions are at different stages of execution at the same time.
-- The next instruction is fetched from memory using the program counter and memory registers.
-- The control unit interprets the instruction and prepares required operands/control signals.
-- The instruction is carried out, such as arithmetic, memory access or a branch.
-
-</details>
-
-<details><summary>Precise syllabus wording</summary>
-
-Describe and apply the stages of a two-pass assembler.
-
-Describe the different stages of a two-pass assembler and apply the process to a simple program: pass 1 assigns addresses/builds the symbol table and pass 2 translates with resolved symbols.
-
-</details>
-
-### Supporting diagram library
-
-#### What is an instruction set?
-
-![What is an instruction set?](../web/assets/diagrams/stage10-infographics/stage10-lesson-046-instruction-set.jpg)
-
-<details><summary>Text transcript</summary>
-
-- Definition
-- The set of instructions that a particular processor can recognise and execute.
-- Includes operations
-- Examples include load, store, add, subtract, compare, jump and input/output instructions.
-- Processor-specific
-- Different processor families can have different instruction sets and instruction formats.
-- Defines meaning
-- The instruction set tells the CPU what each opcode means and how operands are interpreted.
-
-</details>
-
-#### Opcode and operand
-
-![Opcode and operand](../web/assets/diagrams/stage10-infographics/stage10-lesson-046-opcode.jpg)
-
-<details><summary>Text transcript</summary>
-
-- Opcode tells the CPU which operation to perform. Operand gives the data, register, address or value used by the operation.
-- Operation
-- Example with operand
-- Load value from memory into ACC.
-- 0001 01011010 = LOAD address 90
-- Store ACC value into memory.
-- 0010 01011010 = STORE address 90
-- Add value from memory to ACC.
-
-</details>
-
-#### Instruction groups: data movement, I/O, arithmetic, control and compare
-
-![Instruction groups: data movement, I/O, arithmetic, control and compare](../web/assets/diagrams/stage10-infographics/stage10-lesson-047-assembler.jpg)
-
-<details><summary>Text transcript</summary>
-
-- The five groups are data movement, input/output, arithmetic, unconditional/conditional instructions and compare.
-- Data movement uses LDM, LDD, LDI, LDX, LDR, MOV and STO; LDR n loads the immediate value n into IX.
-- Input/output uses IN and OUT; arithmetic uses ADD, SUB, INC and DEC.
-- JMP is unconditional; CMP and CMI compare; JPE jumps after True and JPN jumps after False.
-- END returns control to the operating system.
-
-</details>
-
-#### Official LDR, CMI, JPE and JPN semantics
-
-![Official LDR, CMI, JPE and JPN semantics](../web/assets/diagrams/stage10-infographics/stage10-lesson-048-effective.jpg)
-
-<details><summary>Text transcript</summary>
-
-- LDR n loads the immediate value n into the index register IX.
-- CMI <address compares ACC with a value reached using indirect addressing.
-- JPE <address jumps when the preceding comparison result is True.
-- JPN <address jumps when the preceding comparison result is False.
-- Do not reinterpret these instructions as relative load, immediate compare, equal/zero branch or negative-status branch.
-
-</details>
-
-#### Instruction labels and symbolic data addresses
-
-![Instruction labels and symbolic data addresses](../web/assets/diagrams/stage10-infographics/stage10-lesson-047-structure.jpg)
-
-<details><summary>Text transcript</summary>
-
-- <label: <opcode <operand gives a symbolic address to an instruction.
-- <label: <data gives a symbolic address to a memory location containing data.
-- Pass 1 records both instruction and data labels in the symbol table.
-- Pass 2 replaces a label reference with its resolved address while translating.
-
-</details>
-
-<details><summary>Open precise terminology and exam facts</summary>
+### Detailed explanation
 
 - Show the relationship between assembly language and machine code: assembly is a processor-specific symbolic low-level form translated by an assembler into binary instructions defined by the target instruction set.
 - Describe the different stages of a two-pass assembler and apply the process to a simple program: pass 1 assigns addresses/builds the symbol table and pass 2 translates with resolved symbols.
@@ -242,17 +58,18 @@ Describe the different stages of a two-pass assembler and apply the process to a
 - Control, comparison and I/O: JMP <address is unconditional. CMP <address or CMP n compares ACC directly or with an immediate value. CMI <address compares using indirect addressing. JPE jumps after a True comparison and JPN after a False comparison. IN inputs one ASCII character code to ACC; OUT outputs the character whose ASCII code is in ACC; END returns control to the operating system.
 - ACC is the accumulator and IX is the index register. An address can be absolute or symbolic. Prefix gives immediate denary, B immediate binary and & immediate hexadecimal data. These prefixes and operand forms are part of the instruction semantics, not optional decoration.
 
-</details>
-
 ### Worked example
 
-1. Translate one symbolic instruction
-2. For a target instruction set, ADD 3 is assembly source
-3. ADD is the mnemonic and 3 is an immediate operand.
-4. The assembler selects that processor's binary ADD opcode and encodes the operand.
-5. A different processor type may use a different opcode or instruction format, so the same machine-code bit pattern is not portable by assumption.
+Translate one symbolic instruction: For a target instruction set, ADD 3 is assembly source: ADD is the mnemonic and 3 is an immediate operand. The assembler selects that processor's binary ADD opcode and encodes the operand. A different processor type may use a different opcode or instruction format, so the same machine-code bit pattern is not portable by assumption.
 
 Beyond syllabus / 延伸知识（不要求背诵）: modern processors add pipelining and several cache levels, but exam answers should begin with the syllabus processor model.
+
+### Retained visual explanation
+
+![What assembly language is](../web/assets/diagrams/stage10-infographics/stage10-lesson-047-assembly.jpg)
+
+_What assembly language is. The image and mobile text alternative come from one maintained fact source._
+
 ## 3. Practice by question type
 
 ### Question 1 - foundation - explain - 6 marks

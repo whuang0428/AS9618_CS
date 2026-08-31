@@ -4,12 +4,12 @@
 **Paper:** Paper 2<br>
 **Syllabus:** Section 12: Software development<br>
 **Syllabus requirements:** S12.08<br>
-**Pacing:** Flexible. Select the material set and practice depth needed by the learner.
+**Pacing:** Flexible. This lesson is deliberately over-complete; select a quick, full or deep route for the learners in front of you.
 
 ## Teaching-depth menu
 
 - **Quick route:** Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.
-- **Full route:** Use every knowledge-point material set, the worked method, the terminology check and all questions.
+- **Full route:** Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.
 - **Deep route:** Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.
 
 ## 1. Prerequisite knowledge and quick diagnostic
@@ -26,196 +26,18 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ## 2. Knowledge explanation
 
-### 1. Perfective · Adaptive · Corrective · Maintenance (S12.08)
+### Learning objectives
 
-**Concept map:** perfective → adaptive → corrective → maintenance
+- Understand perfective, adaptive and corrective maintenance.
 
-**Three-part explanation:**
+### Concept checklist for teacher choice
 
-1. Understand the need for continuing maintenance of a program and the differences between perfective, adaptive and corrective maintenance
-2. The same module could receive a corrective change for a crash, an adaptive change for a new operating-system interface, or a perfective change for faster search…
-3. Correcting a fault is corrective maintenance
+- perfective
+- adaptive
+- corrective
+- maintenance
 
-**Concrete cue:** Understand the need for continuing maintenance of a program and the differences between perfective, adaptive and corrective maintenance.
-
-#### Maintenance changes a system after it has been delivered
-
-![Maintenance changes a system after it has been delivered](../web/assets/diagrams/stage10-infographics/stage10-lesson-146-maintenance.jpg)
-
-<details><summary>Text transcript</summary>
-
-- Maintenance
-- Corrective
-- Fixing faults found after release, such as a booking clash that was not rejected.
-- Adaptive
-- Changing the system because the environment changes, such as a new timetable structure.
-- Perfective
-- Improving performance, usability or features, such as faster room search.
-
-</details>
-
-#### After release, classify changes and judge success with evidence
-
-![After release, classify changes and judge success with evidence](../web/assets/diagrams/stage10-infographics/stage10-lesson-147-evaluation.jpg)
-
-<details><summary>Text transcript</summary>
-
-- Maintenance and evaluation review
-- Maintenance examples
-- Corrective: fix a crash when cancelling a reservation.
-- Adaptive: change the system for a new two-term activity structure.
-- Perfective: make the activity search faster or clearer.
-- Evaluation evidence
-- Timing logs from sign-up tasks.
-- User survey results linked to success criteria.
-
-</details>
-
-#### Design documentation supports implementation, testing and maintenance
-
-![Design documentation supports implementation, testing and maintenance](../web/assets/diagrams/stage10-infographics/stage10-lesson-145-lifecycle.jpg)
-
-<details><summary>Text transcript</summary>
-
-- Using design docs later
-- Implementation
-- Developers know which data fields, algorithms and interface behaviours to build.
-- Testers compare actual behaviour with the designed rules, validation and expected messages.
-- Maintenance
-- Future changes are safer because developers can see existing data rules and processing assumptions.
-
-</details>
-
-<details><summary>Precise syllabus wording</summary>
-
-Understand perfective, adaptive and corrective maintenance.
-
-Understand the need for continuing maintenance of a program and the differences between perfective, adaptive and corrective maintenance.
-
-</details>
-
-### Supporting diagram library
-
-#### Extreme or boundary data uses valid values at accepted limits
-
-![Extreme or boundary data uses valid values at accepted limits](../web/assets/diagrams/stage10-infographics/stage10-lesson-138-boundary.jpg)
-
-<details><summary>Text transcript</summary>
-
-- Extreme/boundary data uses valid values at the accepted lower or upper limit.
-- For an accepted mark range of 0 to 100 inclusive, 0 and 100 are valid extreme/boundary values.
-- Values just outside the limits, such as -1 and 101, are abnormal and should be rejected.
-
-</details>
-
-#### Analyse and amend an existing program
-
-![Analyse and amend an existing program](../web/assets/diagrams/stage10-infographics/stage10-lesson-139-bug.jpg)
-
-<details><summary>Text transcript</summary>
-
-- Analyse the existing program's purpose, inputs, outputs, control flow and behaviour that must remain unchanged before editing it.
-- Amend declarations, initialisation, processing and output coherently to add the requested functionality rather than rewriting unrelated code.
-- Test the new path and rerun regression tests for the existing path; adding functionality is an enhancement, not merely correcting a fault.
-
-</details>
-
-#### Test strategy and test plan are different documents
-
-![Test strategy and test plan are different documents](../web/assets/diagrams/stage10-infographics/stage10-lesson-146-changeover.jpg)
-
-<details><summary>Text transcript</summary>
-
-- A test strategy states the testing levels, methods, responsibilities, sequence and resources for the project.
-- A test plan records individual cases with a test ID, purpose, data, expected result, actual result and pass/fail outcome.
-- Normal, abnormal and extreme/boundary values are test-data categories; a list of values alone is neither a complete strategy nor a complete test plan.
-
-</details>
-
-#### Classify input for NumberOfStudents, valid range 1 to 30
-
-![Classify input for NumberOfStudents, valid range 1 to 30](../web/assets/diagrams/stage10-infographics/stage10-lesson-146-data-tool.jpg)
-
-<details><summary>Text transcript</summary>
-
-- Test data classifier
-- Test value
-
-</details>
-
-#### Evaluation uses requirements and measurable success criteria
-
-![Evaluation uses requirements and measurable success criteria](../web/assets/diagrams/stage10-infographics/stage10-lesson-146-evaluation.jpg)
-
-<details><summary>Text transcript</summary>
-
-- A success criterion must state a measurable threshold before evidence can be judged against it.
-- If 8 of 10 users or 95 of 100 searches is sufficient, state that threshold explicitly.
-- Without a threshold, do not label partial evidence as an unqualified criterion met.
-
-</details>
-
-#### Implementation turns the design into a working system
-
-![Implementation turns the design into a working system](../web/assets/diagrams/stage10-infographics/stage10-lesson-146-implementation.jpg)
-
-<details><summary>Text transcript</summary>
-
-- Implementation
-- Program modules, create files or databases, implement interfaces and connect components.
-- Put the system into the user environment, configure hardware, accounts, permissions and data.
-- Document
-- Prepare user instructions and technical notes so the system can be used and supported.
-- Implementation should follow the design documentation. If implementation silently changes the design, testing may no longer match the intended system.
-
-</details>
-
-#### Which lifecycle stage is being described?
-
-![Which lifecycle stage is being described?](../web/assets/diagrams/stage10-infographics/stage10-lesson-146-stage-tool.jpg)
-
-<details><summary>Text transcript</summary>
-
-- Interactive stage chooser
-- Scenario
-
-</details>
-
-#### Good testing uses different categories of data
-
-![Good testing uses different categories of data](../web/assets/diagrams/stage10-infographics/stage10-lesson-146-test-data.jpg)
-
-<details><summary>Text transcript</summary>
-
-- Test data
-- Category
-- Room capacity example
-- Expected result
-- valid typical data
-- 24 students for capacity 30
-- accepted
-- Boundary
-
-</details>
-
-#### Testing is planned evidence that the system behaves as expected
-
-![Testing is planned evidence that the system behaves as expected](../web/assets/diagrams/stage10-infographics/stage10-lesson-146-testing.jpg)
-
-<details><summary>Text transcript</summary>
-
-- Evidence
-- Unit testing
-- one module or subroutine
-- check clash detection function
-- actual output compared with expected output
-- Integration testing
-- modules working together
-- booking form sends data to save module
-
-</details>
-
-<details><summary>Open precise terminology and exam facts</summary>
+### Detailed explanation
 
 - Understand the need for continuing maintenance of a program and the differences between perfective, adaptive and corrective maintenance.
 - Maintenance continues after delivery because faults are discovered, operating environments and rules change, and users request improvements. Corrective maintenance fixes faults in required behaviour; adaptive maintenance changes software for a new environment, platform, law or external rule; perfective maintenance improves functionality, usability, performance or maintainability.
@@ -225,18 +47,18 @@ Understand the need for continuing maintenance of a program and the differences 
 - Amend the existing program with the smallest coherent change that enhances functionality. Update related declarations, initialisation, processing and output together; preserve established interfaces unless the requirement needs an interface change; and keep Cambridge pseudocode constructs complete.
 - Test the enhancement with data that exercises the new path and rerun regression tests for existing paths. Correcting a fault is corrective maintenance; adding or improving requested functionality is an enhancement and may be perfective maintenance.
 
-</details>
-
 ### Worked example
 
-1. Test login through review, construction, integration and release
-2. Test an inclusive mark range
-3. Three changes to one booking system
-4. Add a Merit count without breaking PassCount
-5. First dry-run the lockout counter and conduct a walkthrough in which peers inspect the algorithm.
-6. White-box tests cover true/false paths; black-box tests valid, invalid and boundary inputs from requirements.
+Test login through review, construction, integration and release / Test an inclusive mark range / Three changes to one booking system / Add a Merit count without breaking PassCount: First dry-run the lockout counter and conduct a walkthrough in which peers inspect the algorithm. White-box tests cover true/false paths; black-box tests valid, invalid and boundary inputs from requirements. During integration, a stub returns simulated account results before the database is ready. Internal staff perform alpha testing, selected external users perform beta testing, and the customer performs acceptance testing against the agreed lockout behaviour. For an allowed mark from 0 to 100 inclusive, 55 is normal, 0 and 100 are valid extreme/boundary values, and -1 or 101 is abnormal. Fixing a crash when saving is corrective. Updating tax or term-date rules imposed externally is adaptive.…
 
 Beyond syllabus / 延伸知识（不要求背诵）: modern teams often use continuous integration to repeat building and testing whenever a program changes.
+
+### Retained visual explanation
+
+![Maintenance changes a system after it has been delivered](../web/assets/diagrams/stage10-infographics/stage10-lesson-146-maintenance.jpg)
+
+_Maintenance changes a system after it has been delivered. The image and mobile text alternative come from one maintained fact source._
+
 ## 3. Practice by question type
 
 ### Question 1 - foundation - apply - 2 marks

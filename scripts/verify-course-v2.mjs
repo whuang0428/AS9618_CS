@@ -39,7 +39,7 @@ function similarity(left, right) {
 }
 
 assert(identity.schemaVersion === 3 && identity.lessons.length === 90, "Identity contract must be schema-v3 with 90 lessons");
-assert(content.schemaVersion === 3 && content.lessonCount === 90 && content.lessons.length === 90, "Content contract must be schema-v3 with 90 lessons and knowledge-point material sets");
+assert(content.lessonCount === 90 && content.lessons.length === 90, "Content contract must contain 90 lessons");
 assert(questions.questionCount === 272 && questions.questions.length === 272, "Question bank must contain 272 questions");
 assert(migration.sourceLessonCount === 151 && migration.targetLessonCount === 90 && migration.rows.length === 151, "Migration register must map all 151 former lessons into 90 lessons");
 
@@ -113,18 +113,12 @@ for (const lesson of content.lessons) {
   assert(lesson.pacing === "flexible" && lesson.teachingChoice.join(",") === "quick,full,deep", `L${lesson.id} must use flexible teaching depth`);
   assert(lesson.coreFacts.length >= 4, `L${lesson.id} needs at least four detailed explanation points`);
   assert(lesson.conceptChecklist.length > 0 && lesson.summaryPoints.length >= 3 && lesson.summaryPoints.length <= 5, `L${lesson.id} is missing its explanation checklist or summary`);
-  assert(Array.isArray(lesson.knowledgePoints) && lesson.knowledgePoints.length > 0, `L${lesson.id} needs knowledge-point material sets`);
-  assert(Array.isArray(lesson.visuals) && lesson.visuals.length >= 3, `L${lesson.id} needs at least three source diagrams`);
-  assert(new Set(lesson.visuals.map((visual) => visual.path)).size === lesson.visuals.length, `L${lesson.id} repeats a visual asset`);
-  for (const point of lesson.knowledgePoints) {
-    assert(point.keyTerms.length > 0 && point.explanationSteps.length === 3 && point.cue, `L${lesson.id}:${point.id} has an incomplete native material set`);
-    assert(point.materialCount === point.visuals.length + 3 && point.materialCount >= 3, `L${lesson.id}:${point.id} has an invalid material count`);
-  }
   for (let index = 0; index < lesson.coreFacts.length; index += 1) {
     for (let other = index + 1; other < lesson.coreFacts.length; other += 1) {
       assert(normalise(lesson.coreFacts[index]) !== normalise(lesson.coreFacts[other]), `L${lesson.id} repeats a detailed explanation fact`);
     }
     assert(!lesson.summaryPoints.some((point) => normalise(point) === normalise(lesson.coreFacts[index])), `L${lesson.id} repeats a full explanation fact in the summary`);
+    assert(!lesson.visual?.altFacts.some((point) => similarity(point, lesson.coreFacts[index]) >= 0.62), `L${lesson.id} repeats an explanation fact in the retained visual transcript`);
   }
 
   const markdown = fs.readFileSync(path.join(root, "lessons", identity.lessons[lesson.lesson - 1].markdownFile), "utf8");
@@ -134,26 +128,10 @@ for (const lesson of content.lessons) {
   for (const source of [markdown, html]) {
     assert(!/Targeted practice|Exam-style question|## Homework|45-minute|45 minutes|\| \d+ minutes/i.test(source), `L${lesson.id} contains an obsolete column or fixed-duration promise`);
   }
-  assert(/Quick route/.test(html) && /Full route/.test(html) && /Deep route/.test(html) && /Learn each point through visuals/.test(html), `L${lesson.id} does not expose flexible teaching depth and knowledge-point materials`);
-  assert(/class="v2-jump-nav"/.test(html) && !/class="v2-toc"/.test(html), `L${lesson.id} must use the full-width jump navigation without a sidebar`);
-  assert(!/Detailed explanation|Teach all points|list is intentionally fuller/.test(html), `L${lesson.id} still exposes a long-form teacher editorial note`);
-  const expectedRenderedVisuals = lesson.knowledgePoints.reduce((sum, point) => sum + point.visuals.length, 0) + lesson.supportingVisuals.length;
-  assert((html.match(/class="v2-knowledge-point"/g) ?? []).length === lesson.knowledgePoints.length, `L${lesson.id} rendered knowledge-point count mismatch`);
-  assert((html.match(/class="v2-native-material /g) ?? []).length === lesson.knowledgePoints.length * 3, `L${lesson.id} must render three native materials for every knowledge point`);
-  assert((html.match(/class="v2-visual"/g) ?? []).length === expectedRenderedVisuals, `L${lesson.id} rendered visual count mismatch`);
-  assert((html.match(/data-material-count="/g) ?? []).length === lesson.knowledgePoints.length, `L${lesson.id} does not expose material-count evidence for every point`);
-  assert(/<details class="v2-core-facts">/.test(html), `L${lesson.id} must keep the long precision notes collapsed by default`);
+  assert(/Quick route/.test(html) && /Full route/.test(html) && /Deep route/.test(html) && /deliberately over-complete/.test(html), `L${lesson.id} does not expose flexible teaching depth`);
   assert((html.match(/class="v2-question"/g) ?? []).length === expectedCount, `L${lesson.id} rendered question count mismatch`);
-  for (const visual of lesson.visuals) {
-    assert(visual.altFacts.length > 0, `L${lesson.id} visual ${visual.title} needs a text transcript`);
-    assert(fs.existsSync(path.join(root, "web", visual.path)), `L${lesson.id} visual file is missing: ${visual.path}`);
-  }
+  if (lesson.visual) assert(fs.existsSync(path.join(root, "web", lesson.visual.path)), `L${lesson.id} visual file is missing`);
 }
-
-const lesson004Visuals = content.lessons[3].visuals.map((visual) => visual.path).join(" ");
-assert(/v2-lesson-004-bcd/.test(lesson004Visuals) && /v2-lesson-004-hex/.test(lesson004Visuals) && /lesson-007-ascii/.test(lesson004Visuals), "L004 must visually cover BCD, hexadecimal and character encoding");
-const lesson005Visuals = content.lessons[4].visuals.map((visual) => `${visual.title} ${visual.path}`).join(" ");
-assert(content.lessons[4].visuals.length >= 5 && /bitmap/i.test(lesson005Visuals) && /resolution/i.test(lesson005Visuals) && /colour depth/i.test(lesson005Visuals) && /vector/i.test(lesson005Visuals), "L005 must visually cover bitmap structure, resolution, colour depth, file size and vector graphics");
 
 assert(assessments.setCount === 14 && assessments.sets.length === 14, "Assessment Bank must contain 14 sets");
 assert(assessments.sets.filter((set) => /^SECTION-\d+-CHECK$/.test(set.id)).length === 12, "Assessment Bank needs 12 section checks");
@@ -196,10 +174,4 @@ console.log(JSON.stringify({
   assessmentSets: assessments.setCount,
   pastPaperMarks: frequency.totals,
   flexibleDepth: true,
-  visualExplanations: content.lessons.reduce((sum, lesson) => sum + lesson.visuals.length, 0),
-  knowledgePointMaterialSets: content.lessons.reduce((sum, lesson) => sum + lesson.knowledgePoints.length, 0),
-  nativeMaterialPlacements: content.lessons.reduce((sum, lesson) => sum + lesson.knowledgePoints.length * 3, 0),
-  pointDiagramPlacements: content.lessons.reduce((sum, lesson) => sum + lesson.knowledgePoints.reduce((pointSum, point) => pointSum + point.visuals.length, 0), 0),
-  minimumMaterialsPerPoint: Math.min(...content.lessons.flatMap((lesson) => lesson.knowledgePoints.map((point) => point.materialCount))),
-  lessonsWithMultipleVisuals: content.lessons.filter((lesson) => lesson.visuals.length > 1).length,
 }, null, 2));

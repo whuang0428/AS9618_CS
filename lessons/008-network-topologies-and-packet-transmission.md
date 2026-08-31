@@ -4,12 +4,12 @@
 **Paper:** Paper 1<br>
 **Syllabus:** Section 2: Communication<br>
 **Syllabus requirements:** S2.04, S2.05<br>
-**Pacing:** Flexible. Select the material set and practice depth needed by the learner.
+**Pacing:** Flexible. This lesson is deliberately over-complete; select a quick, full or deep route for the learners in front of you.
 
 ## Teaching-depth menu
 
 - **Quick route:** Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.
-- **Full route:** Use every knowledge-point material set, the worked method, the terminology check and all questions.
+- **Full route:** Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.
 - **Deep route:** Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.
 
 ## 1. Prerequisite knowledge and quick diagnostic
@@ -26,175 +26,25 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ## 2. Knowledge explanation
 
-### 1. Bus topology · Star topology · Mesh topology · Hybrid topology (S2.04)
+### Learning objectives
 
-**Concept map:** bus topology → star topology → mesh topology → hybrid topology
+- Show understanding of bus, star, mesh and hybrid network topologies.
+- Explain how packets are transmitted between two hosts for a given topology and justify topology choice for a given situation.
 
-**Three-part explanation:**
+### Concept checklist for teacher choice
 
-1. A hybrid combines two or more topology patterns
-2. All four named topologies are required
-3. it is not merely a large network
+- bus topology
+- star topology
+- mesh topology
+- hybrid topology
+- between two hosts
+- bus
+- central switch
+- alternative routes
+- hybrid
+- justify
 
-**Concrete cue:** In a star network, one broken cable isolates one device; a failed central switch can disconnect every attached device.
-
-
-
-<details><summary>Precise syllabus wording</summary>
-
-Show understanding of bus, star, mesh and hybrid network topologies.
-
-All four named topologies are required. A hybrid combines two or more topology patterns; it is not merely a large network.
-
-</details>
-
-### 2. Packet paths in bus, star, mesh and hybrid networks (S2.05)
-
-**Concept map:** between two hosts → bus → central switch → alternative routes → hybrid → justify
-
-**Three-part explanation:**
-
-1. To justify a topology choice, connect its packet path and failure behaviour to the stated scenario
-2. A justification must link the path and failure behaviour to the scenario
-3. Topology justification must connect the packet path to the scenario
-
-**Concrete cue:** In a mesh, a packet can take another route after a link fails; on a bus, every device shares the same backbone.
-
-
-
-<details><summary>Precise syllabus wording</summary>
-
-Explain how packets are transmitted between two hosts for a given topology and justify topology choice for a given situation.
-
-Packet or signal paths must be explicit for bus, star, mesh and hybrid. A justification must link the path and failure behaviour to the scenario.
-
-</details>
-
-### Supporting diagram library
-
-#### Client-server vs peer-to-peer
-
-![Client-server vs peer-to-peer](../web/assets/diagrams/stage10-infographics/stage10-lesson-018-compare.jpg)
-
-<details><summary>Text transcript</summary>
-
-- Client-server
-- Peer-to-peer
-- Centralised management, security, backups and permissions.
-- Decentralised control; each peer may manage its own resources.
-- May need dedicated server hardware, software and administration.
-- Can be cheaper for small networks because no dedicated server is required.
-- Reliability
-- Server failure may affect many clients unless redundancy is used.
-
-</details>
-
-#### One model has equal peers; the other has dedicated service roles
-
-![One model has equal peers; the other has dedicated service roles](../web/assets/diagrams/stage10-infographics/stage10-lesson-018-model-visual.jpg)
-
-<details><summary>Text transcript</summary>
-
-- Visual explanation
-- Follow the arrows and identify which devices can provide a resource.
-- Peer-to-peer: every device can request and provide
-- The lines show possible direct sharing between peers. They do not define a physical topology: peer-to-peer describes device roles.
-- No dedicated central server is required.
-- Each peer can request a file and provide one.
-- A peer going offline can make its shared resource unavailable.
-- Client-server: clients request a managed service
-
-</details>
-
-#### Core roles
-
-![Core roles](../web/assets/diagrams/stage10-infographics/stage10-lesson-018-roles.jpg)
-
-<details><summary>Text transcript</summary>
-
-- A client requests a service or resource, such as a web page, file, login or print job.
-- A server provides a service or resource to clients, often with central control over data and access.
-- A peer can request and provide resources directly, so devices share responsibility instead of relying on one central server.
-- A service is the function provided, such as file storage, authentication, email, printing or web hosting.
-
-</details>
-
-#### Scenario choices
-
-![Scenario choices](../web/assets/diagrams/stage10-infographics/stage10-lesson-018-usecases.jpg)
-
-<details><summary>Text transcript</summary>
-
-- School accounts
-- Client-server fits because logins, permissions and backups can be centrally managed.
-- Small home sharing
-- Peer-to-peer may fit when a few devices share files directly without a dedicated server.
-- Public web app
-- Client-server fits because many clients request data from managed servers.
-- Distributed file sharing
-- Peer-to-peer can spread sharing across peers, reducing reliance on one central source.
-
-</details>
-
-#### One message, several routes, one reassembled result
-
-![One message, several routes, one reassembled result](../web/assets/diagrams/stage10-infographics/stage10-lesson-019-packet-journey.jpg)
-
-<details><summary>Text transcript</summary>
-
-- Visual explanation
-- Follow the numbered packets. Routers make next-hop decisions, so packets from one message do not need to travel together.
-- 1. Split and label Each packet carries payload plus control data such as addresses and a sequence number.
-- 2. Choose next hop Each router uses the destination address and routing information.
-- 3. Travel independently Different routes can produce different arrival times.
-- 4. Reassemble The receiver uses sequence numbers to restore the original order.
-- Check the diagram: why can packet 2 arrive after packet 3?
-- Packet 2 can take a different route with a longer delay. The receiver uses sequence numbers to place it back between packets 1 and 3.
-
-</details>
-
-#### Routing and arrival
-
-![Routing and arrival](../web/assets/diagrams/stage10-infographics/stage10-lesson-019-routing.jpg)
-
-<details><summary>Text transcript</summary>
-
-- Router decision Routers forward packets based on destination address and routing information.
-- Different paths Packets from the same message may take different routes through the network.
-- Out of order Packets may arrive in a different order because routes have different delays.
-- Error handling Checksum/error checks can detect corruption; missing/corrupt packets may be requested again.
-
-</details>
-
-#### Packet structure
-
-![Packet structure](../web/assets/diagrams/stage10-infographics/stage10-lesson-019-structure.jpg)
-
-<details><summary>Text transcript</summary>
-
-- Source address, destination address, sequence number, protocol/control data.
-- The actual data being sent, such as part of a file or message.
-- Error-checking information such as checksum, depending on the protocol.
-- Common error
-- Do not describe the header as “extra information” only. Name what is inside it and what each item does.
-
-</details>
-
-#### Packet switching
-
-![Packet switching](../web/assets/diagrams/stage10-infographics/stage10-lesson-019-switching.jpg)
-
-<details><summary>Text transcript</summary>
-
-- A message or file is divided into smaller packets before transmission.
-- Packets from many users can share network links instead of one message reserving a whole route.
-- Each packet can be routed independently through available paths.
-- Reassemble
-- The destination uses sequence numbers to put packets back in the correct order.
-
-</details>
-
-<details><summary>Open precise terminology and exam facts</summary>
+### Detailed explanation
 
 - All four named topologies are required. A hybrid combines two or more topology patterns; it is not merely a large network.
 - Packet or signal paths must be explicit for bus, star, mesh and hybrid. A justification must link the path and failure behaviour to the scenario.
@@ -204,16 +54,18 @@ Packet or signal paths must be explicit for bus, star, mesh and hybrid. A justif
 - Topology justification must connect the packet path to the scenario: central-device failure, backbone failure, individual cable failure, congestion, expansion, redundancy and cabling cost are consequences of the structure.
 - To justify a topology choice, connect its packet path and failure behaviour to the stated scenario.
 
-</details>
-
 ### Worked example
 
-1. Send a patient record across a hybrid hospital network
-2. The source sends the frame to its ward switch as in a star.
-3. The packet crosses the link between ward segments, then the destination switch forwards the local frame to the receiving host.
-4. A redundant inter-switch route can keep packets moving after one link fails, but adds cost and management.
+Send a patient record across a hybrid hospital network: The source sends the frame to its ward switch as in a star. The packet crosses the link between ward segments, then the destination switch forwards the local frame to the receiving host. A redundant inter-switch route can keep packets moving after one link fails, but adds cost and management.
 
 Beyond syllabus / 延伸知识（不要求背诵）: real networks organise communication in layers so that hardware, addressing and application protocols can change independently.
+
+### Retained visual explanation
+
+![One model has equal peers; the other has dedicated service roles](../web/assets/diagrams/stage10-infographics/stage10-lesson-018-model-visual.jpg)
+
+_One model has equal peers; the other has dedicated service roles. The image and mobile text alternative come from one maintained fact source._
+
 ## 3. Practice by question type
 
 ### Question 1 - foundation - compare - 4 marks

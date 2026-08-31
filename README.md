@@ -2,7 +2,7 @@
 
 This repository contains an AS Level-only course for Cambridge International Computer Science 9618, syllabus years 2027-2029 Version 2.
 
-The active curriculum contains 90 lessons in official Section 1-12 order. Paper 1 and Paper 2 each contain 44 teaching lessons and one integrated review/error-diagnosis lesson. Lesson numbers are content units, not fixed-duration promises. Each syllabus knowledge point is taught through a compact material set instead of a long explanation paragraph.
+The active curriculum contains 90 lessons in official Section 1-12 order. Paper 1 and Paper 2 each contain 44 teaching lessons and one integrated review/error-diagnosis lesson. Lesson numbers are content units, not fixed-duration promises: every lesson is deliberately over-complete so a teacher can omit, teach briefly or explore material in depth.
 
 Official qualification page: <https://www.cambridgeinternational.org/programmes-and-qualifications/cambridge-international-as-and-a-level-computer-science-9618/>
 
@@ -12,8 +12,7 @@ Official qualification page: <https://www.cambridgeinternational.org/programmes-
 - Structure: Paper 1 lessons 001-045; Paper 2 lessons 046-090.
 - Sequence: Cambridge syllabus Sections 1-12.
 - Teaching depth: `Quick`, `Full` and `Deep` routes on every lesson page.
-- Lesson flow: prerequisite/diagnostic → one named material set per knowledge point → worked method → optional precise terminology → varied practice → summary and exam reminders.
-- Material standard: every knowledge point has a concept map, a three-step mechanism/comparison/process story and a concrete cue; semantically matched raster diagrams are added without counting unrelated images as coverage.
+- Lesson flow: prerequisite/diagnostic → rich explanation → varied practice → summary and exam reminders.
 - Practice: 272 original lesson questions, normally three per teaching lesson and four in each integrated review.
 - Assessment Bank: 12 cumulative section checks and two original 75-mark paper mocks.
 - Coverage: all 121 syllabus requirements have direct teaching and practice evidence.
@@ -27,7 +26,7 @@ The former Targeted Practice, Exam-style and fixed Homework columns are no longe
 Each page offers three routes:
 
 - **Quick:** use the diagnostic, objectives, first worked example and foundation question.
-- **Full:** use every visual explanation, the worked example, the terminology check and all questions.
+- **Full:** teach every detailed explanation point, the worked example and all questions.
 - **Deep:** add prerequisite refreshers, connect the concept checklist, discuss the clearly labelled beyond-syllabus material and use the transfer task.
 
 These are choices, not time limits. The lesson content is intentionally richer than a single fixed classroom slot.
@@ -44,7 +43,6 @@ These are choices, not time limits. The lesson content is intentionally richer t
 - `scripts/past-paper-frequency-contract.json`: copyright-safe frequency metadata for 36 papers and 36 mark schemes.
 - `scripts/course-v2-migration.json`: complete 151→90 migration registry.
 - `audits/course-v2-redundancy-and-migration-report.md`: plain-language redundancy findings and consolidation result.
-- `audits/course-v2-visual-material-coverage-report.md`: generated 90-lesson, 121-requirement material coverage register.
 - `audits/`: previous Stage audit files retained as historical evidence; they are not the active V2 acceptance standard.
 - `dist/`: reproducible ZIP and SHA-256 outputs; ignored by Git.
 
@@ -63,7 +61,7 @@ Then open:
 - Resource centre: <http://127.0.0.1:8769/resources/>
 - Example lesson: <http://127.0.0.1:8769/lesson-001/>
 
-At 390px mobile width, each infographic remains at a readable 720px width inside its own horizontal scroller. An optional text transcript is available beneath every image.
+At 390px mobile width, retained infographics are replaced by text cards from the same maintained fact source instead of showing the full image and duplicate text together.
 
 ## Regeneration
 
@@ -71,10 +69,8 @@ The one-time course consolidation reads the former 151-lesson source from Git hi
 
 ```bash
 node scripts/build-course-v2-content.mjs
-node scripts/enrich-course-v2-visuals.mjs
 node scripts/render-course-v2.mjs
 node scripts/generate-course-v2-coverage.mjs
-node scripts/audit-course-v2-material-coverage.mjs
 ```
 
 To refresh the frequency contract from teacher-owned PDFs outside the repository:
@@ -96,7 +92,7 @@ Run the active V2 acceptance workflow:
 node scripts/verify-all.mjs
 ```
 
-This verifies lesson count and order, 121-requirement teaching/practice coverage, per-knowledge-point material sets, diagram transcripts and files, 2700 past-paper marks, question and explanation de-duplication, flexible teaching depth, Assessment Bank separation, redirects and public copyright boundaries. It then builds and verifies:
+This verifies lesson count and order, 121-requirement teaching/practice coverage, 2700 past-paper marks, question and explanation de-duplication, flexible teaching depth, Assessment Bank separation, redirects and public copyright boundaries. It then builds and verifies:
 
 ```text
 dist/AS9618-CS-2027-2029-v2.0.0.zip

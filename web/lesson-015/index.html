@@ -8,7 +8,7 @@
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
-    <link rel="stylesheet" href="../course-v2.css?v=6" />
+    <link rel="stylesheet" href="../course-v2.css?v=3" />
   </head>
   <body data-course-version="2" data-lesson-id="015" data-syllabus-ids="S3.04,S3.05,S3.06,S3.07">
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -17,11 +17,16 @@
       <nav class="v2-actions" aria-label="Lesson actions"><a href="../">Course home</a><a href="../assessments/">Assessment bank</a><button type="button" id="printLesson">Print</button></nav>
     </header>
     <main class="v2-shell" id="main-content" tabindex="-1">
-      <nav class="v2-jump-nav" aria-label="Lesson contents"><strong>Lesson 015</strong><a href="#overview">Overview</a><a href="#prerequisite">Prerequisite</a><a href="#explanation">Explanation</a><a href="#practice">Practice</a><a href="#summary">Summary</a></nav>
+      <nav class="v2-toc" aria-label="Lesson contents"><strong>Lesson 015</strong><a href="#overview">Overview</a><a href="#prerequisite">Prerequisite</a><a href="#explanation">Explanation</a><a href="#practice">Practice</a><a href="#summary">Summary</a></nav>
       <div class="v2-content">
-        <section class="v2-overview" id="overview">
-          <div><p class="v2-eyebrow">Flexible-depth lesson</p><p class="v2-overview-copy">S3.04, S3.05, S3.06, S3.07 | Learn from the diagrams, test the method, then choose the practice you need.</p></div>
-          <details class="v2-route-menu"><summary>Choose a Quick, Full or Deep route</summary><div class="v2-route-grid"><article><h3>Quick route</h3><p>Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.</p></article><article><h3>Full route</h3><p>Use every knowledge-point material set, the worked method, the terminology check and all questions.</p></article><article><h3>Deep route</h3><p>Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.</p></article></div></details>
+        <section class="v2-hero" id="overview">
+          <div><p class="v2-eyebrow">Flexible-depth lesson</p><h2>Buffers and primary memory technologies</h2><p>S3.04, S3.05, S3.06, S3.07 | Select what to omit, teach briefly or explore in depth.</p></div>
+          <div class="v2-time-grid" aria-label="Available lesson depth"><div><strong>Quick</strong><span>diagnose + essentials</span></div><div><strong>Full</strong><span>complete explanation</span></div><div><strong>Deep</strong><span>prerequisites + extension</span></div><div><strong>Choose</strong><span>practice by need</span></div></div>
+        </section>
+
+        <section class="v2-panel v2-route-menu" aria-labelledby="route-heading">
+          <div class="v2-heading"><p class="v2-eyebrow">Teacher choice</p><h2 id="route-heading">Choose the depth for this group</h2></div>
+          <div class="v2-route-grid"><article><h3>Quick route</h3><p>Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.</p></article><article><h3>Full route</h3><p>Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.</p></article><article><h3>Deep route</h3><p>Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.</p></article></div>
         </section>
 
         <section class="v2-panel" id="prerequisite">
@@ -32,89 +37,21 @@
         </section>
 
         <section class="v2-panel" id="explanation">
-          <div class="v2-heading v2-heading--wide"><p class="v2-eyebrow">Part 2 | knowledge-point material sets</p><h2>Learn each point through visuals</h2><p>Follow the map, the three-part explanation and the concrete cue. Open precise wording only after the idea is clear.</p></div>
+          <div class="v2-heading"><p class="v2-eyebrow">Part 2 | deliberately over-complete</p><h2>Knowledge explanation</h2></div>
+          <h3>Learning objectives</h3><ul class="v2-objectives"><li>Understand why buffers are used.</li><li>Distinguish RAM and ROM.</li><li>Explain uses of SRAM and DRAM and reasons for each use.</li></ul>
           <details class="v2-concept-menu"><summary>Open the concept checklist and choose what to teach</summary><ul><li>buffer</li><li>temporarily</li><li>different / speed</li><li>RAM</li><li>ROM</li><li>SRAM</li><li>DRAM</li><li>cache</li><li>main memory</li><li>PROM</li><li>EPROM</li><li>EEPROM</li></ul></details>
-          <nav class="v2-knowledge-index" aria-label="Knowledge points in this lesson"><a href="#knowledge-s3-04"><span>01</span>S3.04</a><a href="#knowledge-s3-05"><span>02</span>S3.05</a><a href="#knowledge-s3-06"><span>03</span>S3.06</a><a href="#knowledge-s3-07"><span>04</span>S3.07</a></nav><div class="v2-knowledge-point-list"><section class="v2-knowledge-point" id="knowledge-s3-04" data-syllabus-id="S3.04" data-visual-mode="concept" data-material-count="6">
-      <header class="v2-knowledge-point-head"><span>01</span><div><p>S3.04 · concept</p><h3>Buffers between different-speed devices</h3></div></header>
-      <div class="v2-material-triad">
-        <article class="v2-native-material v2-native-material--map"><h4>Concept map</h4><div class="v2-concept-map" aria-label="Concept map for S3.04"><span class="v2-concept-node" data-node-index="1">buffer</span><span class="v2-concept-node" data-node-index="2">temporarily</span><span class="v2-concept-node" data-node-index="3">different</span></div></article>
-        <article class="v2-native-material v2-native-material--story"><h4>See how it works</h4><ol><li><span>Meaning</span><strong>Show understanding of the use of buffers, including temporary storage used to manage different producer and consumer rates</strong></li><li><span>Mechanism</span><strong>An output buffer temporarily holds data because the processor can produce it faster or in different-sized bursts than a printer or audio device can consume it</strong></li><li><span>Consequence</span><strong>ROM is not ordinary long-term storage for user files</strong></li></ol></article>
-        <aside class="v2-native-material v2-native-material--cue"><h4>Concrete cue</h4><p>Show understanding of the use of buffers, including temporary storage used to manage different producer and consumer rates.</p></aside>
-      </div>
-      <section class="v2-material-library" aria-label="S3.04 diagrams">
-    <div class="v2-material-library-head"><h3>S3.04 diagrams</h3><div class="v2-material-controls">
-        <button type="button" data-material-prev aria-controls="materials-015-s3-04" aria-label="Previous diagram"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" /></svg></button>
-        <span data-material-position>1 / 3</span>
-        <button type="button" data-material-next aria-controls="materials-015-s3-04" aria-label="Next diagram"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" /></svg></button>
-      </div></div>
-    <div class="v2-material-rail" id="materials-015-s3-04" data-material-rail><figure class="v2-visual" data-material-kind="analogy">
-            <div class="v2-visual-heading"><span>01</span><div><p>Analogy / use · 1 of 3</p><h4>Why cache helps and virtual memory slows</h4></div></div>
-            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Why cache helps and virtual memory slows"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-031-cache-vm.jpg" alt="Why cache helps and virtual memory slows" loading="lazy" /></div>
-            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Cache holds copies of recently or frequently used instructions and data close to the CPU.</li><li>A cache hit avoids a slower main-memory access.</li><li>Virtual memory uses secondary storage when RAM is insufficient and increases apparent capacity rather than physical RAM speed.</li></ul></details>
-          </figure><figure class="v2-visual" data-material-kind="example">
-            <div class="v2-visual-heading"><span>02</span><div><p>Concrete example · 2 of 3</p><h4>What secondary storage does</h4></div></div>
-            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: What secondary storage does"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-032-purpose.jpg" alt="What secondary storage does" loading="lazy" /></div>
-            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Non-volatile Data remains when power is switched off.</li><li>Long-term Stores files, programs, backups and operating system data.</li><li>Usually slower Secondary storage is usually slower than RAM for direct access.</li><li>Scenario-based The best medium depends on speed, capacity, durability, portability and cost.</li></ul></details>
-          </figure><figure class="v2-visual" data-material-kind="diagram">
-            <div class="v2-visual-heading"><span>03</span><div><p>Diagram · 3 of 3</p><h4>Memory is not the same as storage</h4></div></div>
-            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Memory is not the same as storage"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-028-memory-storage.jpg" alt="Memory is not the same as storage" loading="lazy" /></div>
-            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Primary memory</li><li>Secondary storage</li><li>Holds data/instructions currently being used.</li><li>Holds files and data long term.</li><li>Volatility</li><li>RAM is volatile; contents are lost without power.</li><li>Non-volatile; data remains when power is off.</li><li>Speed and capacity</li></ul></details>
-          </figure></div>
-  </section>
-      <details class="v2-point-precision"><summary>Open precise syllabus wording</summary><p><strong>Understand why buffers are used.</strong></p><p>Show understanding of the use of buffers, including temporary storage used to manage different producer and consumer rates.</p></details>
-    </section><section class="v2-knowledge-point" id="knowledge-s3-05" data-syllabus-id="S3.05" data-visual-mode="comparison" data-material-count="4">
-      <header class="v2-knowledge-point-head"><span>02</span><div><p>S3.05 · comparison</p><h3>RAM · ROM</h3></div></header>
-      <div class="v2-material-triad">
-        <article class="v2-native-material v2-native-material--map"><h4>Concept map</h4><div class="v2-concept-map" aria-label="Concept map for S3.05"><span class="v2-concept-node" data-node-index="1">RAM</span><span class="v2-concept-node" data-node-index="2">ROM</span></div></article>
-        <article class="v2-native-material v2-native-material--story"><h4>See how it works</h4><ol><li><span>Contrast</span><strong>Explain the differences between RAM and ROM, including their use in a range of devices and systems</strong></li><li><span>Evidence</span><strong>Explain the differences between SRAM and DRAM, including their uses in a range of devices and systems and the reasons for choosing one instead of the…</strong></li><li><span>Decision</span><strong>Reflected-light differences are read as data</strong></li></ol></article>
-        <aside class="v2-native-material v2-native-material--cue"><h4>Concrete cue</h4><p>Explain the differences between RAM and ROM, including their use in a range of devices and systems.</p></aside>
-      </div>
-      <section class="v2-material-library" aria-label="S3.05 diagrams">
-    <div class="v2-material-library-head"><h3>S3.05 diagrams</h3></div>
-    <div class="v2-material-rail" id="materials-015-s3-05" data-material-rail><figure class="v2-visual" data-material-kind="analogy">
-            <div class="v2-visual-heading"><span>01</span><div><p>Analogy / use · 1 of 1</p><h4>Why RAM changes while ROM remains stable</h4></div></div>
-            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Why RAM changes while ROM remains stable"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-031-ram-rom.jpg" alt="Why RAM changes while ROM remains stable" loading="lazy" /></div>
-            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>RAM holds the changing state of running programs.</li><li>Most RAM needs continuous power to preserve that state.</li><li>ROM retains fixed startup instructions when power is removed.</li></ul></details>
-          </figure></div>
-  </section>
-      <details class="v2-point-precision"><summary>Open precise syllabus wording</summary><p><strong>Distinguish RAM and ROM.</strong></p><p>Explain the differences between RAM and ROM, including their use in a range of devices and systems.</p></details>
-    </section><section class="v2-knowledge-point" id="knowledge-s3-06" data-syllabus-id="S3.06" data-visual-mode="comparison" data-material-count="4">
-      <header class="v2-knowledge-point-head"><span>03</span><div><p>S3.06 · comparison</p><h3>SRAM · DRAM · Cache · Main memory</h3></div></header>
-      <div class="v2-material-triad">
-        <article class="v2-native-material v2-native-material--map"><h4>Concept map</h4><div class="v2-concept-map" aria-label="Concept map for S3.06"><span class="v2-concept-node" data-node-index="1">SRAM</span><span class="v2-concept-node" data-node-index="2">DRAM</span><span class="v2-concept-node" data-node-index="3">cache</span><span class="v2-concept-node" data-node-index="4">main memory</span></div></article>
-        <article class="v2-native-material v2-native-material--story"><h4>See how it works</h4><ol><li><span>Contrast</span><strong>Explain the differences between SRAM and DRAM, including their uses in a range of devices and systems and the reasons for choosing one instead of the…</strong></li><li><span>Evidence</span><strong>Explain the differences between RAM and ROM, including their use in a range of devices and systems</strong></li><li><span>Decision</span><strong>DRAM stores charge in capacitors, requires refresh and is slower but cheaper and denser, so it is used for main memory</strong></li></ol></article>
-        <aside class="v2-native-material v2-native-material--cue"><h4>Concrete cue</h4><p>Explain the differences between SRAM and DRAM, including their uses in a range of devices and systems and the reasons for choosing one instead of the other.</p></aside>
-      </div>
-      <section class="v2-material-library" aria-label="S3.06 diagrams">
-    <div class="v2-material-library-head"><h3>S3.06 diagrams</h3></div>
-    <div class="v2-material-rail" id="materials-015-s3-06" data-material-rail><figure class="v2-visual" data-material-kind="analogy">
-            <div class="v2-visual-heading"><span>01</span><div><p>Analogy / use · 1 of 1</p><h4>Why cache helps and virtual memory slows</h4></div></div>
-            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Why cache helps and virtual memory slows"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-031-cache-vm.jpg" alt="Why cache helps and virtual memory slows" loading="lazy" /></div>
-            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Cache holds copies of recently or frequently used instructions and data close to the CPU.</li><li>A cache hit avoids a slower main-memory access.</li><li>Virtual memory uses secondary storage when RAM is insufficient and increases apparent capacity rather than physical RAM speed.</li></ul></details>
-          </figure></div>
-  </section>
-      <details class="v2-point-precision"><summary>Open precise syllabus wording</summary><p><strong>Explain uses of SRAM and DRAM and reasons for each use.</strong></p><p>Explain the differences between SRAM and DRAM, including their uses in a range of devices and systems and the reasons for choosing one instead of the other.</p></details>
-    </section><section class="v2-knowledge-point" id="knowledge-s3-07" data-syllabus-id="S3.07" data-visual-mode="comparison" data-material-count="3">
-      <header class="v2-knowledge-point-head"><span>04</span><div><p>S3.07 · comparison</p><h3>PROM · EPROM · EEPROM</h3></div></header>
-      <div class="v2-material-triad">
-        <article class="v2-native-material v2-native-material--map"><h4>Concept map</h4><div class="v2-concept-map" aria-label="Concept map for S3.07"><span class="v2-concept-node" data-node-index="1">PROM</span><span class="v2-concept-node" data-node-index="2">EPROM</span><span class="v2-concept-node" data-node-index="3">EEPROM</span></div></article>
-        <article class="v2-native-material v2-native-material--story"><h4>See how it works</h4><ol><li><span>Contrast</span><strong>Explain the difference between PROM, EPROM and EEPROM, including how each can be programmed or erased</strong></li><li><span>Evidence</span><strong>EPROM can be erased with ultraviolet light and reprogrammed</strong></li><li><span>Decision</span><strong>EEPROM is erased and rewritten electrically, often without removing it from the system</strong></li></ol></article>
-        <aside class="v2-native-material v2-native-material--cue"><h4>Concrete cue</h4><p>A one-time configuration may use PROM; UV-erasable lab firmware may use EPROM; updateable device firmware commonly uses EEPROM.</p></aside>
-      </div>
-
-      <details class="v2-point-precision"><summary>Open precise syllabus wording</summary><p><strong>Understand PROM, EPROM and EEPROM.</strong></p><p>Explain the difference between PROM, EPROM and EEPROM, including how each can be programmed or erased.</p></details>
-    </section></div>
-          <section class="v2-material-library" aria-label="Supporting diagram library">
-    <div class="v2-material-library-head"><h3>Supporting diagram library</h3></div>
-    <div class="v2-material-rail" id="materials-015-supporting" data-material-rail><figure class="v2-visual" data-material-kind="diagram">
-            <div class="v2-visual-heading"><span>01</span><div><p>Diagram · 1 of 1</p><h4>Why active data stays close to the CPU</h4></div></div>
-            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Why active data stays close to the CPU"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-031-primary.jpg" alt="Why active data stays close to the CPU" loading="lazy" /></div>
-            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>The CPU repeatedly requests current instructions and data.</li><li>Nearby electronic storage answers with less delay than secondary storage.</li><li>Faster access prevents the processor waiting as often.</li></ul></details>
-          </figure></div>
-  </section>
-          <article class="v2-example"><div><p class="v2-eyebrow">Apply the idea</p><h3>Worked method</h3></div><ol class="v2-worked-flow"><li><span>01</span><strong>Print a page</strong></li><li><span>02</span><strong>Read an HDD block</strong></li><li><span>03</span><strong>Choose a storage mechanism</strong></li><li><span>04</span><strong>Choose memory for a computer system</strong></li><li><span>05</span><strong>The operating system places page data in a print buffer.</strong></li><li><span>06</span><strong>The CPU can continue other work while the slower printer consumes buffered data and performs drum, toner and fusing stages.</strong></li></ol></article>
-          <details class="v2-core-facts"><summary>Open precise terminology and exam facts</summary><ul class="v2-facts"><li>Show understanding of the use of buffers, including temporary storage used to manage different producer and consumer rates.</li><li>Explain the differences between RAM and ROM, including their use in a range of devices and systems.</li><li>Explain the differences between SRAM and DRAM, including their uses in a range of devices and systems and the reasons for choosing one instead of the other.</li><li>Explain the difference between PROM, EPROM and EEPROM, including how each can be programmed or erased.</li><li>A speaker uses a DAC/amplifier to drive a coil and cone, producing pressure waves. An output buffer temporarily holds data because the processor can produce it faster or in different-sized bursts than a printer or audio device can consume it.</li><li>An HDD spins magnetic platters while an actuator positions read/write heads; writing changes magnetic orientation and reading senses it. Flash memory stores charge in floating-gate cells and has no moving parts.</li><li>An optical drive spins a disc and directs a laser at its track. Reflected-light differences are read as data; a writer uses a higher-power laser to change a dye or recording layer.</li><li>A magnetic HDD uses moving read/write heads over rotating platters. Flash memory stores charge electronically with no moving parts. An optical disc reader/writer uses a laser to read marks and, on writable media, to create or alter marks.</li><li>RAM is volatile read/write primary memory used for programs and data currently being processed. ROM is non-volatile primary memory used for instructions that must remain when power is removed, such as firmware or start-up instructions. ROM is not ordinary long-term storage for user files.</li><li>SRAM stores bits using flip-flop circuits, needs no refresh and is fast but expensive with lower density, so it is used for cache. DRAM stores charge in capacitors, requires refresh and is slower but cheaper and denser, so it is used for main memory.</li><li>PROM is programmed once. EPROM can be erased with ultraviolet light and reprogrammed. EEPROM is erased and rewritten electrically, often without removing it from the system. All three are non-volatile ROM technologies.</li><li>Required device overview: a laser printer uses an electrostatic drum, laser, toner and fuser; a 3D printer builds successive layers; a speaker converts an electrical signal into sound. An HDD or magnetic hard disk uses rotating magnetic platters, flash memory stores charge electronically, and an optical reader/writer uses a laser.</li></ul></details>
-          <details class="v2-extension"><summary>Beyond syllabus / 延伸知识（不要求背诵）</summary><p>professional device selection also considers accessibility, reliability, repairability and energy use.</p></details>
+          <div class="v2-explanation-grid">
+            <div>
+              <article class="v2-core-facts"><h3>Detailed explanation</h3><p class="v2-teacher-note">Teach all points, or select only the ones this group needs. The list is intentionally fuller than a fixed lesson slot.</p><ul class="v2-facts"><li>Show understanding of the use of buffers, including temporary storage used to manage different producer and consumer rates.</li><li>Explain the differences between RAM and ROM, including their use in a range of devices and systems.</li><li>Explain the differences between SRAM and DRAM, including their uses in a range of devices and systems and the reasons for choosing one instead of the other.</li><li>Explain the difference between PROM, EPROM and EEPROM, including how each can be programmed or erased.</li><li>A speaker uses a DAC/amplifier to drive a coil and cone, producing pressure waves. An output buffer temporarily holds data because the processor can produce it faster or in different-sized bursts than a printer or audio device can consume it.</li><li>An HDD spins magnetic platters while an actuator positions read/write heads; writing changes magnetic orientation and reading senses it. Flash memory stores charge in floating-gate cells and has no moving parts.</li><li>An optical drive spins a disc and directs a laser at its track. Reflected-light differences are read as data; a writer uses a higher-power laser to change a dye or recording layer.</li><li>A magnetic HDD uses moving read/write heads over rotating platters. Flash memory stores charge electronically with no moving parts. An optical disc reader/writer uses a laser to read marks and, on writable media, to create or alter marks.</li><li>RAM is volatile read/write primary memory used for programs and data currently being processed. ROM is non-volatile primary memory used for instructions that must remain when power is removed, such as firmware or start-up instructions. ROM is not ordinary long-term storage for user files.</li><li>SRAM stores bits using flip-flop circuits, needs no refresh and is fast but expensive with lower density, so it is used for cache. DRAM stores charge in capacitors, requires refresh and is slower but cheaper and denser, so it is used for main memory.</li><li>PROM is programmed once. EPROM can be erased with ultraviolet light and reprogrammed. EEPROM is erased and rewritten electrically, often without removing it from the system. All three are non-volatile ROM technologies.</li><li>Required device overview: a laser printer uses an electrostatic drum, laser, toner and fuser; a 3D printer builds successive layers; a speaker converts an electrical signal into sound. An HDD or magnetic hard disk uses rotating magnetic platters, flash memory stores charge electronically, and an optical reader/writer uses a laser.</li></ul></article>
+              <article class="v2-example"><h3>Worked example</h3><p>Print a page / Read an HDD block / Choose a storage mechanism / Choose memory for a computer system: The operating system places page data in a print buffer. The CPU can continue other work while the slower printer consumes buffered data and performs drum, toner and fusing stages. The controller moves the head to the correct track, waits for the sector to rotate beneath it, senses magnetic patterns and transfers the decoded bits through a buffer. A portable device may use flash memory for shock resistance; an archive may use optical media when an optical disc reader/writer is available. Use DRAM as main RAM because its density and lower cost support a large working capacity. Use a small amount of SRAM for cache because faster, no-refresh access reduces processor waiting. Store updateable firmware in EEPROM because it remains without power but can be rewritten electrically.</p></article>
+              <aside class="v2-extension"><h3>Beyond syllabus / 延伸知识（不要求背诵）</h3><p>professional device selection also considers accessibility, reliability, repairability and energy use.</p></aside>
+            </div>
+            <figure class="v2-visual">
+              <img src="../assets/diagrams/stage10-infographics/stage10-lesson-031-cache-vm.jpg" alt="Cache holds copies of recently or frequently used instructions and data close to the CPU.. A cache hit avoids a slower main-memory access.. Virtual memory uses secondary storage when RAM is insufficient and increases apparent capacity rather than physical RAM speed." loading="lazy" />
+              <figcaption>Why cache helps and virtual memory slows. One maintained explanation is shown as an image on larger screens and as text on small screens.</figcaption>
+              <div class="v2-mobile-visual-text" aria-label="Mobile text alternative"><ul><li>Cache holds copies of recently or frequently used instructions and data close to the CPU.</li><li>A cache hit avoids a slower main-memory access.</li><li>Virtual memory uses secondary storage when RAM is insufficient and increases apparent capacity rather than physical RAM speed.</li></ul></div>
+            </figure>
+          </div>
         </section>
 
         <section class="v2-panel" id="practice">
@@ -149,6 +86,6 @@
         <nav class="v2-bottom-nav" aria-label="Previous and next lesson"><a href="../lesson-014/" >Previous lesson</a><a href="../lesson-016/" >Next lesson</a></nav>
       </div>
     </main>
-    <script src="../course-v2.js?v=2"></script>
+    <script src="../course-v2.js?v=1"></script>
   </body>
 </html>

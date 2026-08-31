@@ -8,7 +8,7 @@
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
-    <link rel="stylesheet" href="../course-v2.css?v=6" />
+    <link rel="stylesheet" href="../course-v2.css?v=3" />
   </head>
   <body data-course-version="2" data-lesson-id="062" data-syllabus-ids="S10.07">
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -17,11 +17,16 @@
       <nav class="v2-actions" aria-label="Lesson actions"><a href="../">Course home</a><a href="../assessments/">Assessment bank</a><button type="button" id="printLesson">Print</button></nav>
     </header>
     <main class="v2-shell" id="main-content" tabindex="-1">
-      <nav class="v2-jump-nav" aria-label="Lesson contents"><strong>Lesson 062</strong><a href="#overview">Overview</a><a href="#prerequisite">Prerequisite</a><a href="#explanation">Explanation</a><a href="#practice">Practice</a><a href="#summary">Summary</a></nav>
+      <nav class="v2-toc" aria-label="Lesson contents"><strong>Lesson 062</strong><a href="#overview">Overview</a><a href="#prerequisite">Prerequisite</a><a href="#explanation">Explanation</a><a href="#practice">Practice</a><a href="#summary">Summary</a></nav>
       <div class="v2-content">
-        <section class="v2-overview" id="overview">
-          <div><p class="v2-eyebrow">Flexible-depth lesson</p><p class="v2-overview-copy">S10.07 | Learn from the diagrams, test the method, then choose the practice you need.</p></div>
-          <details class="v2-route-menu"><summary>Choose a Quick, Full or Deep route</summary><div class="v2-route-grid"><article><h3>Quick route</h3><p>Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.</p></article><article><h3>Full route</h3><p>Use every knowledge-point material set, the worked method, the terminology check and all questions.</p></article><article><h3>Deep route</h3><p>Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.</p></article></div></details>
+        <section class="v2-hero" id="overview">
+          <div><p class="v2-eyebrow">Flexible-depth lesson</p><h2>Why files are needed and text-file pseudocode</h2><p>S10.07 | Select what to omit, teach briefly or explore in depth.</p></div>
+          <div class="v2-time-grid" aria-label="Available lesson depth"><div><strong>Quick</strong><span>diagnose + essentials</span></div><div><strong>Full</strong><span>complete explanation</span></div><div><strong>Deep</strong><span>prerequisites + extension</span></div><div><strong>Choose</strong><span>practice by need</span></div></div>
+        </section>
+
+        <section class="v2-panel v2-route-menu" aria-labelledby="route-heading">
+          <div class="v2-heading"><p class="v2-eyebrow">Teacher choice</p><h2 id="route-heading">Choose the depth for this group</h2></div>
+          <div class="v2-route-grid"><article><h3>Quick route</h3><p>Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.</p></article><article><h3>Full route</h3><p>Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.</p></article><article><h3>Deep route</h3><p>Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.</p></article></div>
         </section>
 
         <section class="v2-panel" id="prerequisite">
@@ -32,80 +37,21 @@
         </section>
 
         <section class="v2-panel" id="explanation">
-          <div class="v2-heading v2-heading--wide"><p class="v2-eyebrow">Part 2 | knowledge-point material sets</p><h2>Learn each point through visuals</h2><p>Follow the map, the three-part explanation and the concrete cue. Open precise wording only after the idea is clear.</p></div>
+          <div class="v2-heading"><p class="v2-eyebrow">Part 2 | deliberately over-complete</p><h2>Knowledge explanation</h2></div>
+          <h3>Learning objectives</h3><ul class="v2-objectives"><li>Explain the need for files and use text-file pseudocode.</li></ul>
           <details class="v2-concept-menu"><summary>Open the concept checklist and choose what to teach</summary><ul><li>files</li><li>persistent</li><li>text file</li><li>pseudocode</li></ul></details>
-          <nav class="v2-knowledge-index" aria-label="Knowledge points in this lesson"><a href="#knowledge-s10-07"><span>01</span>S10.07</a></nav><div class="v2-knowledge-point-list"><section class="v2-knowledge-point" id="knowledge-s10-07" data-syllabus-id="S10.07" data-visual-mode="process" data-material-count="7">
-      <header class="v2-knowledge-point-head"><span>01</span><div><p>S10.07 · process</p><h3>Files · Persistent · Text file · Pseudocode</h3></div></header>
-      <div class="v2-material-triad">
-        <article class="v2-native-material v2-native-material--map"><h4>Concept map</h4><div class="v2-concept-map" aria-label="Concept map for S10.07"><span class="v2-concept-node" data-node-index="1">files</span><span class="v2-concept-node" data-node-index="2">persistent</span><span class="v2-concept-node" data-node-index="3">text file</span><span class="v2-concept-node" data-node-index="4">pseudocode</span></div></article>
-        <article class="v2-native-material v2-native-material--story"><h4>See how it works</h4><ol><li><span>Start</span><strong>Show why files are needed for persistent data beyond one program run, and write Cambridge pseudocode to handle text files consisting of one or more lines,…</strong></li><li><span>Change</span><strong>For a text file containing one or more lines, select the mode before processing</strong></li><li><span>Check</span><strong>Every opened file must be closed after processing</strong></li></ol></article>
-        <aside class="v2-native-material v2-native-material--cue"><h4>Concrete cue</h4><p>Show why files are needed for persistent data beyond one program run, and write Cambridge pseudocode to handle text files consisting of one or more lines, including opening, processing and…</p></aside>
-      </div>
-      <section class="v2-material-library" aria-label="S10.07 diagrams">
-    <div class="v2-material-library-head"><h3>S10.07 diagrams</h3><div class="v2-material-controls">
-        <button type="button" data-material-prev aria-controls="materials-062-s10-07" aria-label="Previous diagram"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" /></svg></button>
-        <span data-material-position>1 / 4</span>
-        <button type="button" data-material-next aria-controls="materials-062-s10-07" aria-label="Next diagram"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" /></svg></button>
-      </div></div>
-    <div class="v2-material-rail" id="materials-062-s10-07" data-material-rail><figure class="v2-visual" data-material-kind="diagram">
-            <div class="v2-visual-heading"><span>01</span><div><p>Diagram · 1 of 4</p><h4>Cambridge pseudocode is the exam answer format</h4></div></div>
-            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Cambridge pseudocode is the exam answer format"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-121-pseudocode.jpg" alt="Cambridge pseudocode is the exam answer format" loading="lazy" /></div>
-            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Pseudocode vs Java</li><li>Cambridge-style pseudocode</li><li>OPENFILE &quot;Scores.txt&quot; FOR READ</li><li>WHILE NOT EOF(&quot;Scores.txt&quot;)</li><li>READFILE &quot;Scores.txt&quot;, Line</li><li>OUTPUT Line</li><li>ENDWHILE</li><li>CLOSEFILE &quot;Scores.txt&quot;</li></ul></details>
-          </figure><figure class="v2-visual" data-material-kind="process">
-            <div class="v2-visual-heading"><span>02</span><div><p>Process · 2 of 4</p><h4>A text file stores characters, usually processed one line at a time</h4></div></div>
-            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: A text file stores characters, usually processed one line at a time"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-121-concept.jpg" alt="A text file stores characters, usually processed one line at a time" loading="lazy" /></div>
-            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Exam clue</li><li>Text file</li><li>file containing character data</li><li>&quot;Scores.txt&quot;</li><li>get data from an existing file</li><li>FOR READ</li><li>store data to a file, often replacing previous contents</li><li>FOR WRITE</li></ul></details>
-          </figure><figure class="v2-visual" data-material-kind="diagram">
-            <div class="v2-visual-heading"><span>03</span><div><p>Diagram · 3 of 4</p><h4>Files preserve data beyond the running program</h4></div></div>
-            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Files preserve data beyond the running program"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-126-files.jpg" alt="Files preserve data beyond the running program" loading="lazy" /></div>
-            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>TYPE TStudent</li><li>DECLARE Students : ARRAY[1:120] OF TStudent</li><li>File storage preserves data between program runs and is separate from record-type syntax.</li></ul></details>
-          </figure><figure class="v2-visual" data-material-kind="diagram">
-            <div class="v2-visual-heading"><span>04</span><div><p>Diagram · 4 of 4</p><h4>The eight Cambridge pseudocode type names</h4></div></div>
-            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: The eight Cambridge pseudocode type names"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-114-pseudocode.jpg" alt="The eight Cambridge pseudocode type names" loading="lazy" /></div>
-            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Cambridge pseudocode uses INTEGER, REAL, CHAR, STRING, BOOLEAN and DATE for scalar values.</li><li>The Version 2 Notes also name ARRAY and FILE among the pseudocode data types.</li><li>Select a type from the value&#39;s meaning and required operations; numeric-looking identifiers may still require STRING.</li></ul></details>
-          </figure></div>
-  </section>
-      <details class="v2-point-precision"><summary>Open precise syllabus wording</summary><p><strong>Explain the need for files and use text-file pseudocode.</strong></p><p>Show why files are needed for persistent data beyond one program run, and write Cambridge pseudocode to handle text files consisting of one or more lines, including opening, processing and closing in the correct mode.</p></details>
-    </section></div>
-          <section class="v2-material-library" aria-label="Supporting diagram library">
-    <div class="v2-material-library-head"><h3>Supporting diagram library</h3><div class="v2-material-controls">
-        <button type="button" data-material-prev aria-controls="materials-062-supporting" aria-label="Previous diagram"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" /></svg></button>
-        <span data-material-position>1 / 7</span>
-        <button type="button" data-material-next aria-controls="materials-062-supporting" aria-label="Next diagram"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" /></svg></button>
-      </div></div>
-    <div class="v2-material-rail" id="materials-062-supporting" data-material-rail><figure class="v2-visual" data-material-kind="diagram">
-            <div class="v2-visual-heading"><span>01</span><div><p>Diagram · 1 of 7</p><h4>Index first, then field name</h4></div></div>
-            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Index first, then field name"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-120-access.jpg" alt="Index first, then field name" loading="lazy" /></div>
-            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Access pattern</li><li>Pseudocode</li><li>Read one field</li><li>OUTPUT Students[3].Name</li><li>name field of record 3</li><li>Update one field</li><li>Students[3].Mark &lt;- 80</li><li>mark field of record 3</li></ul></details>
-          </figure><figure class="v2-visual" data-material-kind="diagram">
-            <div class="v2-visual-heading"><span>02</span><div><p>Diagram · 2 of 7</p><h4>One array, many records, same record shape</h4></div></div>
-            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: One array, many records, same record shape"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-120-concept.jpg" alt="One array, many records, same record shape" loading="lazy" /></div>
-            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Students[5] selects the complete record at array position 5.</li><li>Students[5].Mark selects the Mark field in that record.</li><li>Array indexing and record field selection are separate operations.</li></ul></details>
-          </figure><figure class="v2-visual" data-material-kind="diagram">
-            <div class="v2-visual-heading"><span>03</span><div><p>Diagram · 3 of 7</p><h4>Define the record type, then declare the array</h4></div></div>
-            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Define the record type, then declare the array"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-120-declare.jpg" alt="Define the record type, then declare the array" loading="lazy" /></div>
-            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>TYPE TStudent</li><li>DECLARE Students : ARRAY[1:30] OF TStudent</li><li>The record type and the array declaration are separate declarations.</li></ul></details>
-          </figure><figure class="v2-visual" data-material-kind="diagram">
-            <div class="v2-visual-heading"><span>04</span><div><p>Diagram · 4 of 7</p><h4>Read a field from a selected record</h4></div></div>
-            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Read a field from a selected record"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-120-explorer.jpg" alt="Read a field from a selected record" loading="lazy" /></div>
-            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Interactive record explorer</li><li>Record index</li><li>Choose an index and a field to read from the array of records.</li></ul></details>
-          </figure><figure class="v2-visual" data-material-kind="diagram">
-            <div class="v2-visual-heading"><span>05</span><div><p>Diagram · 5 of 7</p><h4>Search, count and update fields</h4></div></div>
-            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Search, count and update fields"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-120-operations.jpg" alt="Search, count and update fields" loading="lazy" /></div>
-            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Search, count and update are alternative record operations, not mandatory consecutive stages.</li><li>A search condition locates a matching record and outputs its position or details.</li><li>A count condition increments a counter for qualifying records.</li><li>An update condition changes the required field of qualifying records.</li></ul></details>
-          </figure><figure class="v2-visual" data-material-kind="diagram">
-            <div class="v2-visual-heading"><span>06</span><div><p>Diagram · 6 of 7</p><h4>Same structure, different syntax</h4></div></div>
-            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Same structure, different syntax"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-120-pseudocode.jpg" alt="Same structure, different syntax" loading="lazy" /></div>
-            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Pseudocode vs Java</li><li>Cambridge-style pseudocode</li><li>DECLARE Students : ARRAY[1:30] OF TStudent</li><li>FOR Index &lt;- 1 TO 30</li><li>OUTPUT Students[Index].Name</li><li>NEXT Index</li><li>Java support only</li><li>Student[] students = new Student[30];</li></ul></details>
-          </figure><figure class="v2-visual" data-material-kind="diagram">
-            <div class="v2-visual-heading"><span>07</span><div><p>Diagram · 7 of 7</p><h4>A loop visits each record; field access uses the loop index</h4></div></div>
-            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: A loop visits each record; field access uses the loop index"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-120-traversal.jpg" alt="A loop visits each record; field access uses the loop index" loading="lazy" /></div>
-            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Use Index to select each Students record in turn.</li><li>Test the Mark field of the current record.</li><li>Output the Name field only when Mark is at least 70.</li><li>Close the selection with ENDIF before NEXT Index.</li></ul></details>
-          </figure></div>
-  </section>
-          <article class="v2-example"><div><p class="v2-eyebrow">Apply the idea</p><h3>Worked method</h3></div><ol class="v2-worked-flow"><li><span>01</span><strong>Copy selected lines between text files</strong></li><li><span>02</span><strong>Open Results.txt FOR READ and Pass.txt FOR WRITE.</strong></li><li><span>03</span><strong>While NOT EOF(Results.txt), READFILE the next Line; if it contains PASS, WRITEFILE it to Pass.txt.</strong></li><li><span>04</span><strong>Close both files after the loop.</strong></li><li><span>05</span><strong>Results remain available from storage, while Pass.txt is deliberately created as a new output file.</strong></li></ol></article>
-          <details class="v2-core-facts"><summary>Open precise terminology and exam facts</summary><ul class="v2-facts"><li>Show why files are needed for persistent data beyond one program run, and write Cambridge pseudocode to handle text files consisting of one or more lines, including opening, processing and closing in the correct mode.</li><li>Variables, arrays and records in main memory normally lose their contents when a program ends or power is removed. Files provide persistent storage so data can be reloaded by a later run, transferred or shared as required. A file is not merely a larger array.</li><li>For a text file containing one or more lines, select the mode before processing: READ obtains existing data, WRITE creates or replaces output content, and APPEND adds after existing content. Every opened file must be closed after processing.</li><li>A complete read algorithm uses OPENFILE for READ, checks NOT EOF before READFILE, processes each line and then CLOSEFILE. WRITEFILE stores a line in a file opened for WRITE or APPEND. Reading after EOF or using WRITE when old content must remain are boundary errors.</li></ul></details>
-          <details class="v2-extension"><summary>Beyond syllabus / 延伸知识（不要求背诵）</summary><p>programming libraries often provide tested ADT implementations, but the exam expects you to understand their behaviour and selection.</p></details>
+          <div class="v2-explanation-grid">
+            <div>
+              <article class="v2-core-facts"><h3>Detailed explanation</h3><p class="v2-teacher-note">Teach all points, or select only the ones this group needs. The list is intentionally fuller than a fixed lesson slot.</p><ul class="v2-facts"><li>Show why files are needed for persistent data beyond one program run, and write Cambridge pseudocode to handle text files consisting of one or more lines, including opening, processing and closing in the correct mode.</li><li>Variables, arrays and records in main memory normally lose their contents when a program ends or power is removed. Files provide persistent storage so data can be reloaded by a later run, transferred or shared as required. A file is not merely a larger array.</li><li>For a text file containing one or more lines, select the mode before processing: READ obtains existing data, WRITE creates or replaces output content, and APPEND adds after existing content. Every opened file must be closed after processing.</li><li>A complete read algorithm uses OPENFILE for READ, checks NOT EOF before READFILE, processes each line and then CLOSEFILE. WRITEFILE stores a line in a file opened for WRITE or APPEND. Reading after EOF or using WRITE when old content must remain are boundary errors.</li></ul></article>
+              <article class="v2-example"><h3>Worked example</h3><p>Copy selected lines between text files: Open Results.txt FOR READ and Pass.txt FOR WRITE. While NOT EOF(Results.txt), READFILE the next Line; if it contains PASS, WRITEFILE it to Pass.txt. Close both files after the loop. Results remain available from storage, while Pass.txt is deliberately created as a new output file.</p></article>
+              <aside class="v2-extension"><h3>Beyond syllabus / 延伸知识（不要求背诵）</h3><p>programming libraries often provide tested ADT implementations, but the exam expects you to understand their behaviour and selection.</p></aside>
+            </div>
+            <figure class="v2-visual">
+              <img src="../assets/diagrams/stage10-infographics/stage10-lesson-121-pseudocode.jpg" alt="Pseudocode vs Java. Cambridge-style pseudocode. OPENFILE &quot;Scores.txt&quot; FOR READ. WHILE NOT EOF(&quot;Scores.txt&quot;). READFILE &quot;Scores.txt&quot;, Line" loading="lazy" />
+              <figcaption>Cambridge pseudocode is the exam answer format. One maintained explanation is shown as an image on larger screens and as text on small screens.</figcaption>
+              <div class="v2-mobile-visual-text" aria-label="Mobile text alternative"><ul><li>Pseudocode vs Java</li><li>Cambridge-style pseudocode</li><li>OPENFILE &quot;Scores.txt&quot; FOR READ</li><li>WHILE NOT EOF(&quot;Scores.txt&quot;)</li><li>READFILE &quot;Scores.txt&quot;, Line</li></ul></div>
+            </figure>
+          </div>
         </section>
 
         <section class="v2-panel" id="practice">
@@ -140,6 +86,6 @@
         <nav class="v2-bottom-nav" aria-label="Previous and next lesson"><a href="../lesson-061/" >Previous lesson</a><a href="../lesson-063/" >Next lesson</a></nav>
       </div>
     </main>
-    <script src="../course-v2.js?v=2"></script>
+    <script src="../course-v2.js?v=1"></script>
   </body>
 </html>

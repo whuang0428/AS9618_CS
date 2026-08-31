@@ -8,7 +8,7 @@
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
     <link rel="stylesheet" href="../academic-theme.css?v=7" />
-    <link rel="stylesheet" href="../course-v2.css?v=6" />
+    <link rel="stylesheet" href="../course-v2.css?v=3" />
   </head>
   <body data-course-version="2" data-lesson-id="026" data-syllabus-ids="S5.01">
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -17,11 +17,16 @@
       <nav class="v2-actions" aria-label="Lesson actions"><a href="../">Course home</a><a href="../assessments/">Assessment bank</a><button type="button" id="printLesson">Print</button></nav>
     </header>
     <main class="v2-shell" id="main-content" tabindex="-1">
-      <nav class="v2-jump-nav" aria-label="Lesson contents"><strong>Lesson 026</strong><a href="#overview">Overview</a><a href="#prerequisite">Prerequisite</a><a href="#explanation">Explanation</a><a href="#practice">Practice</a><a href="#summary">Summary</a></nav>
+      <nav class="v2-toc" aria-label="Lesson contents"><strong>Lesson 026</strong><a href="#overview">Overview</a><a href="#prerequisite">Prerequisite</a><a href="#explanation">Explanation</a><a href="#practice">Practice</a><a href="#summary">Summary</a></nav>
       <div class="v2-content">
-        <section class="v2-overview" id="overview">
-          <div><p class="v2-eyebrow">Flexible-depth lesson</p><p class="v2-overview-copy">S5.01 | Learn from the diagrams, test the method, then choose the practice you need.</p></div>
-          <details class="v2-route-menu"><summary>Choose a Quick, Full or Deep route</summary><div class="v2-route-grid"><article><h3>Quick route</h3><p>Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.</p></article><article><h3>Full route</h3><p>Use every knowledge-point material set, the worked method, the terminology check and all questions.</p></article><article><h3>Deep route</h3><p>Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.</p></article></div></details>
+        <section class="v2-hero" id="overview">
+          <div><p class="v2-eyebrow">Flexible-depth lesson</p><h2>Why operating systems are required</h2><p>S5.01 | Select what to omit, teach briefly or explore in depth.</p></div>
+          <div class="v2-time-grid" aria-label="Available lesson depth"><div><strong>Quick</strong><span>diagnose + essentials</span></div><div><strong>Full</strong><span>complete explanation</span></div><div><strong>Deep</strong><span>prerequisites + extension</span></div><div><strong>Choose</strong><span>practice by need</span></div></div>
+        </section>
+
+        <section class="v2-panel v2-route-menu" aria-labelledby="route-heading">
+          <div class="v2-heading"><p class="v2-eyebrow">Teacher choice</p><h2 id="route-heading">Choose the depth for this group</h2></div>
+          <div class="v2-route-grid"><article><h3>Quick route</h3><p>Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.</p></article><article><h3>Full route</h3><p>Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.</p></article><article><h3>Deep route</h3><p>Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.</p></article></div>
         </section>
 
         <section class="v2-panel" id="prerequisite">
@@ -32,64 +37,21 @@
         </section>
 
         <section class="v2-panel" id="explanation">
-          <div class="v2-heading v2-heading--wide"><p class="v2-eyebrow">Part 2 | knowledge-point material sets</p><h2>Learn each point through visuals</h2><p>Follow the map, the three-part explanation and the concrete cue. Open precise wording only after the idea is clear.</p></div>
+          <div class="v2-heading"><p class="v2-eyebrow">Part 2 | deliberately over-complete</p><h2>Knowledge explanation</h2></div>
+          <h3>Learning objectives</h3><ul class="v2-objectives"><li>Explain why an operating system is required and its memory, file, security, hardware and process management roles.</li></ul>
           <details class="v2-concept-menu"><summary>Open the concept checklist and choose what to teach</summary><ul><li>operating system</li><li>memory management</li><li>file management</li><li>security management</li><li>hardware management</li><li>process management</li></ul></details>
-          <nav class="v2-knowledge-index" aria-label="Knowledge points in this lesson"><a href="#knowledge-s5-01"><span>01</span>S5.01</a></nav><div class="v2-knowledge-point-list"><section class="v2-knowledge-point" id="knowledge-s5-01" data-syllabus-id="S5.01" data-visual-mode="process" data-material-count="6">
-      <header class="v2-knowledge-point-head"><span>01</span><div><p>S5.01 · process</p><h3>Operating system · Memory management · File management · Security management</h3></div></header>
-      <div class="v2-material-triad">
-        <article class="v2-native-material v2-native-material--map"><h4>Concept map</h4><div class="v2-concept-map" aria-label="Concept map for S5.01"><span class="v2-concept-node" data-node-index="1">operating system</span><span class="v2-concept-node" data-node-index="2">memory management</span><span class="v2-concept-node" data-node-index="3">file management</span><span class="v2-concept-node" data-node-index="4">security management</span><span class="v2-concept-node" data-node-index="5">hardware management</span><span class="v2-concept-node" data-node-index="6">process management</span></div></article>
-        <article class="v2-native-material v2-native-material--story"><h4>See how it works</h4><ol><li><span>Start</span><strong>The operating system is required to provide a platform and manage memory, files, security, hardware input/output and peripherals, and processes</strong></li><li><span>Change</span><strong>security management decides whether a request is authorised, while file or hardware management performs the permitted operation</strong></li><li><span>Check</span><strong>hardware management uses a printer driver, buffer and queue to send permitted output to the printer</strong></li></ol></article>
-        <aside class="v2-native-material v2-native-material--cue"><h4>Concrete cue</h4><p>The operating system is required to provide a platform and manage memory, files, security, hardware input/output and peripherals, and processes.</p></aside>
-      </div>
-      <section class="v2-material-library" aria-label="S5.01 diagrams">
-    <div class="v2-material-library-head"><h3>S5.01 diagrams</h3><div class="v2-material-controls">
-        <button type="button" data-material-prev aria-controls="materials-026-s5-01" aria-label="Previous diagram"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" /></svg></button>
-        <span data-material-position>1 / 3</span>
-        <button type="button" data-material-next aria-controls="materials-026-s5-01" aria-label="Next diagram"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" /></svg></button>
-      </div></div>
-    <div class="v2-material-rail" id="materials-026-s5-01" data-material-rail><figure class="v2-visual" data-material-kind="process">
-            <div class="v2-visual-heading"><span>01</span><div><p>Process · 1 of 3</p><h4>Operating system: the main coordinator</h4></div></div>
-            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Operating system: the main coordinator"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-053-os.jpg" alt="Operating system: the main coordinator" loading="lazy" /></div>
-            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>User interface Provides a way for users to interact with the computer, such as GUI or command line.</li><li>Resource management Allocates and controls hardware resources such as processor time, memory and devices.</li><li>File services Provides file organisation, storage access and permission support.</li><li>Application services Provides services and APIs that application software can use.</li><li>Boundary</li><li>Detailed process, memory, file and device management are developed in Lesson 054. Here the OS is introduced as the main system coordinator.</li></ul></details>
-          </figure><figure class="v2-visual" data-material-kind="analogy">
-            <div class="v2-visual-heading"><span>02</span><div><p>Analogy / use · 2 of 3</p><h4>Why applications need an operating system</h4></div></div>
-            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Why applications need an operating system"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-054-concept.jpg" alt="Why applications need an operating system" loading="lazy" /></div>
-            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Applications request services instead of controlling hardware directly.</li><li>The operating system checks and schedules those requests.</li><li>Drivers translate approved requests for particular devices.</li></ul></details>
-          </figure><figure class="v2-visual" data-material-kind="example">
-            <div class="v2-visual-heading"><span>03</span><div><p>Concrete example · 3 of 3</p><h4>System software supports the running and maintenance of the computer</h4></div></div>
-            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: System software supports the running and maintenance of the computer"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-053-concept.jpg" alt="System software supports the running and maintenance of the computer" loading="lazy" /></div>
-            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>System software</li><li>Software that manages hardware, supports applications and helps maintain the computer system.</li><li>Operating system</li><li>System software that manages resources and provides an interface and services for users and applications.</li><li>Utility software</li><li>System software that performs maintenance, protection or optimisation tasks.</li><li>Translator</li><li>System software that converts source code into code that can be executed or further processed.</li></ul></details>
-          </figure></div>
-  </section>
-      <details class="v2-point-precision"><summary>Open precise syllabus wording</summary><p><strong>Explain why an operating system is required and its memory, file, security, hardware and process management roles.</strong></p><p>The operating system is required to provide a platform and manage memory, files, security, hardware input/output and peripherals, and processes.</p></details>
-    </section></div>
-          <section class="v2-material-library" aria-label="Supporting diagram library">
-    <div class="v2-material-library-head"><h3>Supporting diagram library</h3><div class="v2-material-controls">
-        <button type="button" data-material-prev aria-controls="materials-026-supporting" aria-label="Previous diagram"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" /></svg></button>
-        <span data-material-position>1 / 4</span>
-        <button type="button" data-material-next aria-controls="materials-026-supporting" aria-label="Next diagram"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" /></svg></button>
-      </div></div>
-    <div class="v2-material-rail" id="materials-026-supporting" data-material-rail><figure class="v2-visual" data-material-kind="diagram">
-            <div class="v2-visual-heading"><span>01</span><div><p>Diagram · 1 of 4</p><h4>System software versus application software</h4></div></div>
-            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: System software versus application software"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-053-categories.jpg" alt="System software versus application software" loading="lazy" /></div>
-            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>System software</li><li>Runs, manages or maintains the computer system. It provides services that applications depend on.</li><li>Operating system</li><li>Utility software</li><li>Language translators</li><li>Application software</li><li>Helps the user perform a specific task, such as writing a document, editing a video or browsing the web.</li><li>Word processor</li></ul></details>
-          </figure><figure class="v2-visual" data-material-kind="diagram">
-            <div class="v2-visual-heading"><span>02</span><div><p>Diagram · 2 of 4</p><h4>Translation pathway</h4></div></div>
-            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Translation pathway"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-053-pathway.jpg" alt="Translation pathway" loading="lazy" /></div>
-            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>High-level source code Human-readable instructions such as Python, Java or pseudocode-like code.</li><li>Translator Compiler/interpreter converts or executes the source language.</li><li>Object / executable / machine code Low-level code that the processor can execute directly or as part of a build process.</li><li>Error feedback Syntax and translation errors must be reported so the programmer can correct them.</li></ul></details>
-          </figure><figure class="v2-visual" data-material-kind="diagram">
-            <div class="v2-visual-heading"><span>03</span><div><p>Diagram · 3 of 4</p><h4>Language translators: source code to executable behaviour</h4></div></div>
-            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Language translators: source code to executable behaviour"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-053-translators.jpg" alt="Language translators: source code to executable behaviour" loading="lazy" /></div>
-            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Compiler</li><li>Translates the whole source program before execution, often producing object or executable code.</li><li>Interpreter</li><li>Translates and executes source code statement by statement, often useful during development and debugging.</li><li>Assembler</li><li>Translates assembly language mnemonics into machine code for a specific processor.</li><li>Common error</li><li>An interpreter is not a &quot;bad compiler&quot;. It is a different translation approach with different trade-offs.</li></ul></details>
-          </figure><figure class="v2-visual" data-material-kind="diagram">
-            <div class="v2-visual-heading"><span>04</span><div><p>Diagram · 4 of 4</p><h4>Utility software: maintenance and protection tools</h4></div></div>
-            <div class="v2-visual-media" tabindex="0" aria-label="Scrollable infographic: Utility software: maintenance and protection tools"><img src="../assets/diagrams/stage10-infographics/stage10-lesson-053-utility.jpg" alt="Utility software: maintenance and protection tools" loading="lazy" /></div>
-            <details class="v2-visual-transcript"><summary>Open text transcript</summary><ul><li>Exam-safe wording</li><li>Antivirus</li><li>Detects, quarantines or removes malware.</li><li>Protects the system from malicious software.</li><li>Creates copies of files/data.</li><li>Allows recovery after data loss, corruption or hardware failure.</li><li>Compression</li><li>Reduces file size.</li></ul></details>
-          </figure></div>
-  </section>
-          <article class="v2-example"><div><p class="v2-eyebrow">Apply the idea</p><h3>Worked method</h3></div><ol class="v2-worked-flow"><li><span>01</span><strong>Open a protected file and print it</strong></li><li><span>02</span><strong>The OS authenticates the user and security management checks access rights.</strong></li><li><span>03</span><strong>File management locates and opens the file; memory management allocates RAM; process management schedules the application; hardware management uses a printer driver, buffer and queue to send permitted output to the printer.</strong></li></ol></article>
-          <details class="v2-core-facts"><summary>Open precise terminology and exam facts</summary><ul class="v2-facts"><li>The operating system is required to provide a platform and manage memory, files, security, hardware input/output and peripherals, and processes.</li><li>An operating system is required to provide a controlled interface between applications, users and hardware, and to coordinate shared resources. Without it, each application would need its own incompatible routines for processor time, memory, files, security and devices.</li><li>Process management schedules CPU time and tracks running processes. Memory management allocates and protects RAM. File management organises files, folders, metadata and file operations. Security management authenticates users and enforces permissions or access rights.</li><li>Hardware management coordinates devices through drivers, interrupts, buffers and queues. These roles cooperate: security management decides whether a request is authorised, while file or hardware management performs the permitted operation. Antivirus remains a utility and must not replace the OS security-management role.</li></ul></details>
-          <details class="v2-extension"><summary>Beyond syllabus / 延伸知识（不要求背诵）</summary><p>production build systems automate translation, linking, testing and packaging, while the syllabus examines the purpose of each stage separately.</p></details>
+          <div class="v2-explanation-grid">
+            <div>
+              <article class="v2-core-facts"><h3>Detailed explanation</h3><p class="v2-teacher-note">Teach all points, or select only the ones this group needs. The list is intentionally fuller than a fixed lesson slot.</p><ul class="v2-facts"><li>The operating system is required to provide a platform and manage memory, files, security, hardware input/output and peripherals, and processes.</li><li>An operating system is required to provide a controlled interface between applications, users and hardware, and to coordinate shared resources. Without it, each application would need its own incompatible routines for processor time, memory, files, security and devices.</li><li>Process management schedules CPU time and tracks running processes. Memory management allocates and protects RAM. File management organises files, folders, metadata and file operations. Security management authenticates users and enforces permissions or access rights.</li><li>Hardware management coordinates devices through drivers, interrupts, buffers and queues. These roles cooperate: security management decides whether a request is authorised, while file or hardware management performs the permitted operation. Antivirus remains a utility and must not replace the OS security-management role.</li></ul></article>
+              <article class="v2-example"><h3>Worked example</h3><p>Open a protected file and print it: The OS authenticates the user and security management checks access rights. File management locates and opens the file; memory management allocates RAM; process management schedules the application; hardware management uses a printer driver, buffer and queue to send permitted output to the printer.</p></article>
+              <aside class="v2-extension"><h3>Beyond syllabus / 延伸知识（不要求背诵）</h3><p>production build systems automate translation, linking, testing and packaging, while the syllabus examines the purpose of each stage separately.</p></aside>
+            </div>
+            <figure class="v2-visual">
+              <img src="../assets/diagrams/stage10-infographics/stage10-lesson-053-os.jpg" alt="User interface Provides a way for users to interact with the computer, such as GUI or command line.. Resource management Allocates and controls hardware resources such as processor time, memory and devices.. File services Provides file organisation, storage access and permission support.. Application services Provides services and APIs that application software can use.. Detailed process, memory, file and device management are developed in Lesson 054. Here the OS is introduced as the main system coordinator." loading="lazy" />
+              <figcaption>Operating system: the main coordinator. One maintained explanation is shown as an image on larger screens and as text on small screens.</figcaption>
+              <div class="v2-mobile-visual-text" aria-label="Mobile text alternative"><ul><li>User interface Provides a way for users to interact with the computer, such as GUI or command line.</li><li>Resource management Allocates and controls hardware resources such as processor time, memory and devices.</li><li>File services Provides file organisation, storage access and permission support.</li><li>Application services Provides services and APIs that application software can use.</li><li>Detailed process, memory, file and device management are developed in Lesson 054. Here the OS is introduced as the main system coordinator.</li></ul></div>
+            </figure>
+          </div>
         </section>
 
         <section class="v2-panel" id="practice">
@@ -124,6 +86,6 @@
         <nav class="v2-bottom-nav" aria-label="Previous and next lesson"><a href="../lesson-025/" >Previous lesson</a><a href="../lesson-027/" >Next lesson</a></nav>
       </div>
     </main>
-    <script src="../course-v2.js?v=2"></script>
+    <script src="../course-v2.js?v=1"></script>
   </body>
 </html>

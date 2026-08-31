@@ -4,12 +4,12 @@
 **Paper:** Paper 1<br>
 **Syllabus:** Section 8: Databases<br>
 **Syllabus requirements:** S8.07<br>
-**Pacing:** Flexible. Select the material set and practice depth needed by the learner.
+**Pacing:** Flexible. This lesson is deliberately over-complete; select a quick, full or deep route for the learners in front of you.
 
 ## Teaching-depth menu
 
 - **Quick route:** Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.
-- **Full route:** Use every knowledge-point material set, the worked method, the terminology check and all questions.
+- **Full route:** Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.
 - **Deep route:** Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.
 
 ## 1. Prerequisite knowledge and quick diagnostic
@@ -22,166 +22,24 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ## 2. Knowledge explanation
 
-### 1. DDL · Creation · Modification · Database structure (S8.07)
+### Learning objectives
 
-**Concept map:** DDL → creation → modification → database structure → DML → queries → maintenance → SQL → industry-standard → language
+- Understand DDL creates/modifies structure, DML queries/maintains data, and SQL is an industry-standard language.
 
-**Three-part explanation:**
+### Concept checklist for teacher choice
 
-1. Version 2 distinguishes DBMS creation/modification of database structure through DDL from queries and data maintenance through DML, and identifies SQL as the industry standard for both
-2. DDL is used for the creation and modification of database structure
-3. Distinguish DDL structure commands from DML query/maintenance commands, use every required data type and key clause, and keep SELECT queries to at most two tables with…
+- DDL
+- creation
+- modification
+- database structure
+- DML
+- queries
+- maintenance
+- SQL
+- industry-standard
+- language
 
-**Concrete cue:** Version 2 distinguishes DBMS creation/modification of database structure through DDL from queries and data maintenance through DML, and identifies SQL as the industry standard for both.
-
-#### What does a DBMS provide?
-
-![What does a DBMS provide?](../web/assets/diagrams/stage10-infographics/stage10-lesson-079-dbms.jpg)
-
-<details><summary>Text transcript</summary>
-
-- A DBMS is software used to create, manage and control access to a database. It sits between users/applications and stored data.
-- Data management stores, organises, retrieves and updates data; maintains metadata in a data dictionary.
-- Data modelling helps define entities, tables, fields and the logical schema of the database.
-- Data integrity enforces rules so values are valid and relationships remain consistent.
-- Data security uses access rights for individuals or groups; supports backup and recovery procedures.
-- Developer interface provides tools for creating structures, forms, reports or database applications.
-- Query processor interprets and carries out queries so users can retrieve or change data.
-- Exam sentence:
-
-</details>
-
-#### Section 8 knowledge map
-
-![Section 8 knowledge map](../web/assets/diagrams/stage10-infographics/stage10-lesson-090-map.jpg)
-
-<details><summary>Text transcript</summary>
-
-- Retrieval map
-- Data and DBMS data vs information; DBMS roles; avoiding flat-file limitations
-- Tables and keys records, fields, data types, constraints, primary keys and foreign keys
-- Design entity-relationship modelling and normalisation to reduce duplication
-- SQL retrieval SELECT , FROM , WHERE , ORDER BY , aggregates and joins
-- SQL modification INSERT , UPDATE , DELETE , field/value matching and safe WHERE
-- Protection validation, verification, security controls, backups and restore testing
-
-</details>
-
-#### Trace one mixed SQL result
-
-![Trace one mixed SQL result](../web/assets/diagrams/stage10-infographics/stage10-lesson-090-tracer.jpg)
-
-<details><summary>Text transcript</summary>
-
-- Interactive SQL tracer
-- Category
-- Networks
-- Computing
-- Literature
-- Databases
-- Choose a query to see the result.
-
-</details>
-
-<details><summary>Precise syllabus wording</summary>
-
-Understand DDL creates/modifies structure, DML queries/maintains data, and SQL is an industry-standard language.
-
-Version 2 distinguishes DBMS creation/modification of database structure through DDL from queries and data maintenance through DML, and identifies SQL as the industry standard for both.
-
-</details>
-
-### Supporting diagram library
-
-#### Why one structure causes three anomalies
-
-![Why one structure causes three anomalies](../web/assets/diagrams/stage10-infographics/stage10-lesson-084-anomalies.jpg)
-
-<details><summary>Text transcript</summary>
-
-- Insertion may require an unrelated fact that is not yet known.
-- Updating requires finding every repeated copy.
-- Deleting one event may accidentally remove the only descriptive fact.
-
-</details>
-
-#### INSERT, UPDATE and DELETE are data manipulation commands
-
-![INSERT, UPDATE and DELETE are data manipulation commands](../web/assets/diagrams/stage10-infographics/stage10-lesson-088-dml.jpg)
-
-<details><summary>Text transcript</summary>
-
-- They change stored data. In exam answers, be precise about command keywords and affected records.
-- INSERT Adds a new record to a table.
-- UPDATE Changes values in existing records.
-- DELETE Removes existing records from a table.
-
-</details>
-
-#### Why normalisation protects consistency
-
-![Why normalisation protects consistency](../web/assets/diagrams/stage10-infographics/stage10-lesson-084-purpose.jpg)
-
-<details><summary>Text transcript</summary>
-
-- Each fact is stored in a relation where its determinant is clear.
-- Other tables reference that fact instead of copying it repeatedly.
-- One update then changes the authoritative value once.
-
-</details>
-
-#### How repeated facts become risky
-
-![How repeated facts become risky](../web/assets/diagrams/stage10-infographics/stage10-lesson-084-redundancy.jpg)
-
-<details><summary>Text transcript</summary>
-
-- The same real-world fact appears in several rows.
-- A later update may change only some copies.
-- Queries then return conflicting versions of one fact.
-
-</details>
-
-#### Relational design: what earns marks?
-
-![Relational design: what earns marks?](../web/assets/diagrams/stage10-infographics/stage10-lesson-090-design.jpg)
-
-<details><summary>Text transcript</summary>
-
-- Design review
-- Primary key Uniquely identifies a record in one table. It must be unique and reliable.
-- Foreign key Stores a value that matches a primary key in another table, creating a relationship.
-- Normalisation Separates repeated data into related tables to reduce duplication and update errors.
-
-</details>
-
-#### Do not swap the security vocabulary
-
-![Do not swap the security vocabulary](../web/assets/diagrams/stage10-infographics/stage10-lesson-090-protection.jpg)
-
-<details><summary>Text transcript</summary>
-
-- Protection review
-- Validation Checks data follows rules, such as range, type, format or presence.
-- Verification Checks entered data matches a source, using proofreading or double entry.
-- Security and backup Security restricts access; backup enables recovery after loss or corruption.
-
-</details>
-
-#### SQL clauses: choose the clause that matches the request
-
-![SQL clauses: choose the clause that matches the request](../web/assets/diagrams/stage10-infographics/stage10-lesson-090-sql.jpg)
-
-<details><summary>Text transcript</summary>
-
-- For the clauses shown, written syntax order is SELECT, FROM, WHERE, GROUP BY, ORDER BY.
-- A simplified logical processing order is FROM, WHERE, GROUP BY, SELECT, ORDER BY.
-- GROUP BY forms groups and ORDER BY sorts the final rows.
-- Written syntax order and logical processing order are different.
-
-</details>
-
-<details><summary>Open precise terminology and exam facts</summary>
+### Detailed explanation
 
 - Version 2 distinguishes DBMS creation/modification of database structure through DDL from queries and data maintenance through DML, and identifies SQL as the industry standard for both.
 - DDL is used for the creation and modification of database structure. DML is used for queries and maintenance of stored data. SQL is an industry-standard language that includes both kinds of operation.
@@ -192,15 +50,18 @@ Version 2 distinguishes DBMS creation/modification of database structure through
 - A record is also called a tuple; both terms describe one row containing fields or attributes for one entity occurrence.
 - A query uses SELECT fields FROM a table, may filter rows with WHERE, sort with ORDER BY and form aggregate groups with GROUP BY. SUM totals values, COUNT counts rows or values, and AVG calculates a mean. An INNER JOIN uses ON to match at most two tables in the required AS queries.
 
-</details>
-
 ### Worked example
 
-1. Classify database operations
-2. CREATE TABLE is DDL because it creates database structure.
-3. SELECT and UPDATE are DML because they query or maintain stored data.
+Classify database operations: CREATE TABLE is DDL because it creates database structure. SELECT and UPDATE are DML because they query or maintain stored data.
 
 Beyond syllabus / 延伸知识（不要求背诵）: production databases also manage transactions and concurrent users; these ideas extend the syllabus model of integrity and access control.
+
+### Retained visual explanation
+
+![Section 8 knowledge map](../web/assets/diagrams/stage10-infographics/stage10-lesson-090-map.jpg)
+
+_Section 8 knowledge map. The image and mobile text alternative come from one maintained fact source._
+
 ## 3. Practice by question type
 
 ### Question 1 - foundation - identify - 3 marks

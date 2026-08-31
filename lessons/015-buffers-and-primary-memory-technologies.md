@@ -4,12 +4,12 @@
 **Paper:** Paper 1<br>
 **Syllabus:** Section 3: Hardware<br>
 **Syllabus requirements:** S3.04, S3.05, S3.06, S3.07<br>
-**Pacing:** Flexible. Select the material set and practice depth needed by the learner.
+**Pacing:** Flexible. This lesson is deliberately over-complete; select a quick, full or deep route for the learners in front of you.
 
 ## Teaching-depth menu
 
 - **Quick route:** Use the diagnostic, learning objectives, first worked example and foundation question. Stop once the learner can explain the central distinction accurately.
-- **Full route:** Use every knowledge-point material set, the worked method, the terminology check and all questions.
+- **Full route:** Teach every core explanation point, the worked example and all lesson questions. Use the visual only when it adds a different representation.
 - **Deep route:** Add the prerequisite refresher, ask learners to connect the concept checklist, discuss the labelled extension and complete a transfer question without a model answer.
 
 ## 1. Prerequisite knowledge and quick diagnostic
@@ -26,169 +26,28 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ## 2. Knowledge explanation
 
-### 1. Buffers between different-speed devices (S3.04)
-
-**Concept map:** buffer → temporarily → different
-
-**Three-part explanation:**
-
-1. Show understanding of the use of buffers, including temporary storage used to manage different producer and consumer rates
-2. An output buffer temporarily holds data because the processor can produce it faster or in different-sized bursts than a printer or audio device can consume it
-3. ROM is not ordinary long-term storage for user files
-
-**Concrete cue:** Show understanding of the use of buffers, including temporary storage used to manage different producer and consumer rates.
-
-#### Why cache helps and virtual memory slows
-
-![Why cache helps and virtual memory slows](../web/assets/diagrams/stage10-infographics/stage10-lesson-031-cache-vm.jpg)
-
-<details><summary>Text transcript</summary>
-
-- Cache holds copies of recently or frequently used instructions and data close to the CPU.
-- A cache hit avoids a slower main-memory access.
-- Virtual memory uses secondary storage when RAM is insufficient and increases apparent capacity rather than physical RAM speed.
-
-</details>
-
-#### What secondary storage does
-
-![What secondary storage does](../web/assets/diagrams/stage10-infographics/stage10-lesson-032-purpose.jpg)
-
-<details><summary>Text transcript</summary>
-
-- Non-volatile Data remains when power is switched off.
-- Long-term Stores files, programs, backups and operating system data.
-- Usually slower Secondary storage is usually slower than RAM for direct access.
-- Scenario-based The best medium depends on speed, capacity, durability, portability and cost.
-
-</details>
-
-#### Memory is not the same as storage
-
-![Memory is not the same as storage](../web/assets/diagrams/stage10-infographics/stage10-lesson-028-memory-storage.jpg)
-
-<details><summary>Text transcript</summary>
-
-- Primary memory
-- Secondary storage
-- Holds data/instructions currently being used.
-- Holds files and data long term.
-- Volatility
-- RAM is volatile; contents are lost without power.
-- Non-volatile; data remains when power is off.
-- Speed and capacity
-
-</details>
-
-<details><summary>Precise syllabus wording</summary>
-
-Understand why buffers are used.
-
-Show understanding of the use of buffers, including temporary storage used to manage different producer and consumer rates.
-
-</details>
-
-### 2. RAM · ROM (S3.05)
-
-**Concept map:** RAM → ROM
-
-**Three-part explanation:**
-
-1. Explain the differences between RAM and ROM, including their use in a range of devices and systems
-2. Explain the differences between SRAM and DRAM, including their uses in a range of devices and systems and the reasons for choosing one instead of the…
-3. Reflected-light differences are read as data
-
-**Concrete cue:** Explain the differences between RAM and ROM, including their use in a range of devices and systems.
-
-#### Why RAM changes while ROM remains stable
-
-![Why RAM changes while ROM remains stable](../web/assets/diagrams/stage10-infographics/stage10-lesson-031-ram-rom.jpg)
-
-<details><summary>Text transcript</summary>
-
-- RAM holds the changing state of running programs.
-- Most RAM needs continuous power to preserve that state.
-- ROM retains fixed startup instructions when power is removed.
-
-</details>
-
-<details><summary>Precise syllabus wording</summary>
-
-Distinguish RAM and ROM.
-
-Explain the differences between RAM and ROM, including their use in a range of devices and systems.
-
-</details>
-
-### 3. SRAM · DRAM · Cache · Main memory (S3.06)
-
-**Concept map:** SRAM → DRAM → cache → main memory
-
-**Three-part explanation:**
-
-1. Explain the differences between SRAM and DRAM, including their uses in a range of devices and systems and the reasons for choosing one instead of the…
-2. Explain the differences between RAM and ROM, including their use in a range of devices and systems
-3. DRAM stores charge in capacitors, requires refresh and is slower but cheaper and denser, so it is used for main memory
-
-**Concrete cue:** Explain the differences between SRAM and DRAM, including their uses in a range of devices and systems and the reasons for choosing one instead of the other.
-
-#### Why cache helps and virtual memory slows
-
-![Why cache helps and virtual memory slows](../web/assets/diagrams/stage10-infographics/stage10-lesson-031-cache-vm.jpg)
-
-<details><summary>Text transcript</summary>
-
-- Cache holds copies of recently or frequently used instructions and data close to the CPU.
-- A cache hit avoids a slower main-memory access.
-- Virtual memory uses secondary storage when RAM is insufficient and increases apparent capacity rather than physical RAM speed.
-
-</details>
-
-<details><summary>Precise syllabus wording</summary>
-
-Explain uses of SRAM and DRAM and reasons for each use.
-
-Explain the differences between SRAM and DRAM, including their uses in a range of devices and systems and the reasons for choosing one instead of the other.
-
-</details>
-
-### 4. PROM · EPROM · EEPROM (S3.07)
-
-**Concept map:** PROM → EPROM → EEPROM
-
-**Three-part explanation:**
-
-1. Explain the difference between PROM, EPROM and EEPROM, including how each can be programmed or erased
-2. EPROM can be erased with ultraviolet light and reprogrammed
-3. EEPROM is erased and rewritten electrically, often without removing it from the system
-
-**Concrete cue:** A one-time configuration may use PROM; UV-erasable lab firmware may use EPROM; updateable device firmware commonly uses EEPROM.
-
-
-
-<details><summary>Precise syllabus wording</summary>
-
-Understand PROM, EPROM and EEPROM.
-
-Explain the difference between PROM, EPROM and EEPROM, including how each can be programmed or erased.
-
-</details>
-
-### Supporting diagram library
-
-#### Why active data stays close to the CPU
-
-![Why active data stays close to the CPU](../web/assets/diagrams/stage10-infographics/stage10-lesson-031-primary.jpg)
-
-<details><summary>Text transcript</summary>
-
-- The CPU repeatedly requests current instructions and data.
-- Nearby electronic storage answers with less delay than secondary storage.
-- Faster access prevents the processor waiting as often.
-
-</details>
-
-<details><summary>Open precise terminology and exam facts</summary>
+### Learning objectives
+
+- Understand why buffers are used.
+- Distinguish RAM and ROM.
+- Explain uses of SRAM and DRAM and reasons for each use.
+
+### Concept checklist for teacher choice
+
+- buffer
+- temporarily
+- different / speed
+- RAM
+- ROM
+- SRAM
+- DRAM
+- cache
+- main memory
+- PROM
+- EPROM
+- EEPROM
+
+### Detailed explanation
 
 - Show understanding of the use of buffers, including temporary storage used to manage different producer and consumer rates.
 - Explain the differences between RAM and ROM, including their use in a range of devices and systems.
@@ -203,18 +62,18 @@ Explain the difference between PROM, EPROM and EEPROM, including how each can be
 - PROM is programmed once. EPROM can be erased with ultraviolet light and reprogrammed. EEPROM is erased and rewritten electrically, often without removing it from the system. All three are non-volatile ROM technologies.
 - Required device overview: a laser printer uses an electrostatic drum, laser, toner and fuser; a 3D printer builds successive layers; a speaker converts an electrical signal into sound. An HDD or magnetic hard disk uses rotating magnetic platters, flash memory stores charge electronically, and an optical reader/writer uses a laser.
 
-</details>
-
 ### Worked example
 
-1. Print a page
-2. Read an HDD block
-3. Choose a storage mechanism
-4. Choose memory for a computer system
-5. The operating system places page data in a print buffer.
-6. The CPU can continue other work while the slower printer consumes buffered data and performs drum, toner and fusing stages.
+Print a page / Read an HDD block / Choose a storage mechanism / Choose memory for a computer system: The operating system places page data in a print buffer. The CPU can continue other work while the slower printer consumes buffered data and performs drum, toner and fusing stages. The controller moves the head to the correct track, waits for the sector to rotate beneath it, senses magnetic patterns and transfers the decoded bits through a buffer. A portable device may use flash memory for shock resistance; an archive may use optical media when an optical disc reader/writer is available. Use DRAM as main RAM because its density and lower cost support a large working capacity. Use a small amount of SRAM for cache because faster, no-refresh access reduces processor waiting. Store updateable firmware in EEPROM because it remains without power but can be rewritten electrically.
 
 Beyond syllabus / 延伸知识（不要求背诵）: professional device selection also considers accessibility, reliability, repairability and energy use.
+
+### Retained visual explanation
+
+![Why cache helps and virtual memory slows](../web/assets/diagrams/stage10-infographics/stage10-lesson-031-cache-vm.jpg)
+
+_Why cache helps and virtual memory slows. The image and mobile text alternative come from one maintained fact source._
+
 ## 3. Practice by question type
 
 ### Question 1 - foundation - explain - 8 marks
