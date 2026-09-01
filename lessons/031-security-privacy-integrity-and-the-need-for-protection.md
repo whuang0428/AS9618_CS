@@ -24,7 +24,59 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ### 1. Data security, privacy and integrity (S6.01)
 
-**Concept relationships**
+**Atomic learning targets**
+
+- **S6.01.A01:** security
+- **S6.01.A02:** privacy
+- **S6.01.A03:** integrity
+
+**Core explanation**
+
+- Both data security and computer-system security are necessary. Protecting only a data file is insufficient if an attacker can control the operating system, install malware, steal credentials or make the computer system unavailable; protecting only the device is insufficient if copied data is disclosed, altered or lost.
+- Data security is protection against unauthorised access, loss or damage. Privacy concerns appropriate collection, use and disclosure of personal data. Integrity means data remains accurate, complete and unaltered except by authorised processes.
+- The concepts overlap but are not synonyms: encrypted inaccurate data may be secure but lack integrity; authorised publication may preserve integrity while violating privacy.
+
+**Mechanism or method**
+
+1. **Identify the relevant condition or input** — Both data security and computer-system security are necessary.
+2. **Trace how the process works** — Protecting only a data file is insufficient if an attacker can control the operating system, install malware, steal credentials or make the computer system unavailable;
+3. **Connect the mechanism to its result** — protecting only the device is insufficient if copied data is disclosed, altered or lost.
+
+#### Worked example: Data security, privacy and integrity: complete worked route
+
+1. **Identify the relevant condition or input**
+
+Both data security and computer-system security are necessary.
+
+2. **Trace how the process works**
+
+Protecting only a data file is insufficient if an attacker can control the operating system, install malware, steal credentials or make the computer system unavailable;
+
+3. **Connect the mechanism to its result**
+
+protecting only the device is insufficient if copied data is disclosed, altered or lost.
+
+4. **Complete example**
+
+Medical records on a compromised computer system: Encryption restricts unauthorised reading of the record data. Access rights restrict who may view or alter it. Anti-virus and a firewall help protect the computer system that stores and processes the records. If malware controls the system, it may steal decrypted data, alter records or stop authorised access even though the stored file was encrypted.
+
+**Misconceptions to correct**
+
+- Students often propose encryption for every problem. Correction: encryption protects confidentiality but does not fix poor permissions, phishing or missing backups.
+
+#### Mastery check (MC-L031-S6.01)
+
+Distinguish the following targets in one connected answer, using a concrete example for each: security; privacy; integrity.
+
+<details><summary>Answer criteria</summary>
+
+- Both data security and computer-system security are necessary. Protecting only a data file is insufficient if an attacker can control the operating system, install malware, steal credentials or make the computer system unavailable; protecting only the device is insufficient if copied data is disclosed, altered or lost.
+- Data security is protection against unauthorised access, loss or damage. Privacy concerns appropriate collection, use and disclosure of personal data. Integrity means data remains accurate, complete and unaltered except by authorised processes.
+- The concepts overlap but are not synonyms: encrypted inaccurate data may be secure but lack integrity; authorised publication may preserve integrity while violating privacy.
+
+</details>
+
+**Supplementary concept map**
 
 - **Security:** Protection from unauthorised action
 - **Privacy:** Appropriate use of personal data
@@ -32,7 +84,7 @@ Ask the learner to give one accurate definition or method step before continuing
 - **Confidentiality:** One part of security
 - **distinguish:** Data security, privacy and integrity.
 
-**Mechanism**
+**Supplementary three-step recap**
 
 1. **Identify what needs protection** — Data security, privacy and integrity.
 2. **Trace the attack or error route** — Data security, data privacy and data integrity as separate concepts
@@ -64,7 +116,59 @@ Distinguish data security, data privacy and data integrity as separate concepts;
 
 ### 2. The need for data and computer-system security (S6.02)
 
-**Concept relationships**
+**Atomic learning targets**
+
+- **S6.02.A01:** computer-system
+- **S6.02.A02:** security
+- **S6.02.A03:** data
+
+**Core explanation**
+
+- Both data security and computer-system security are necessary. Protecting only a data file is insufficient if an attacker can control the operating system, install malware, steal credentials or make the computer system unavailable; protecting only the device is insufficient if copied data is disclosed, altered or lost.
+- Data security is protection against unauthorised access, loss or damage. Privacy concerns appropriate collection, use and disclosure of personal data. Integrity means data remains accurate, complete and unaltered except by authorised processes.
+- The concepts overlap but are not synonyms: encrypted inaccurate data may be secure but lack integrity; authorised publication may preserve integrity while violating privacy.
+
+**Mechanism or method**
+
+1. **Identify the relevant condition or input** — Both data security and computer-system security are necessary.
+2. **Trace how the process works** — Protecting only a data file is insufficient if an attacker can control the operating system, install malware, steal credentials or make the computer system unavailable;
+3. **Connect the mechanism to its result** — protecting only the device is insufficient if copied data is disclosed, altered or lost.
+
+#### Worked example: The need for data and computer-system security: complete worked route
+
+1. **Identify the relevant condition or input**
+
+Both data security and computer-system security are necessary.
+
+2. **Trace how the process works**
+
+Protecting only a data file is insufficient if an attacker can control the operating system, install malware, steal credentials or make the computer system unavailable;
+
+3. **Connect the mechanism to its result**
+
+protecting only the device is insufficient if copied data is disclosed, altered or lost.
+
+4. **Complete example**
+
+Medical records on a compromised computer system: Encryption restricts unauthorised reading of the record data. Anti-virus and a firewall help protect the computer system that stores and processes the records. If malware controls the system, it may steal decrypted data, alter records or stop authorised access even though the stored file was encrypted.
+
+**Misconceptions to correct**
+
+- Students often propose encryption for every problem. Correction: encryption protects confidentiality but does not fix poor permissions, phishing or missing backups.
+
+#### Mastery check (MC-L031-S6.02)
+
+Explain the following targets in one connected answer, using a concrete example for each: computer-system; security; data.
+
+<details><summary>Answer criteria</summary>
+
+- Both data security and computer-system security are necessary. Protecting only a data file is insufficient if an attacker can control the operating system, install malware, steal credentials or make the computer system unavailable; protecting only the device is insufficient if copied data is disclosed, altered or lost.
+- Data security is protection against unauthorised access, loss or damage. Privacy concerns appropriate collection, use and disclosure of personal data. Integrity means data remains accurate, complete and unaltered except by authorised processes.
+- The concepts overlap but are not synonyms: encrypted inaccurate data may be secure but lack integrity; authorised publication may preserve integrity while violating privacy.
+
+</details>
+
+**Supplementary concept map**
 
 - **Data:** Valuable information to protect
 - **System:** Hardware and services to protect
@@ -73,7 +177,7 @@ Distinguish data security, data privacy and data integrity as separate concepts;
 - **computer-system:** The need for data and computer-system security.
 - **security:** The need for both security of data and…
 
-**Mechanism**
+**Supplementary three-step recap**
 
 1. **Identify what needs protection** — The need for data and computer-system security.
 2. **Trace the attack or error route** — The need for both security of data and security of the computer system
@@ -102,23 +206,13 @@ Show appreciation of the need for both security of data and security of the comp
 
 </details>
 
-<details><summary>Open precise terminology and exam facts</summary>
+### Lesson technical reference
 
 - Distinguish data security, data privacy and data integrity as separate concepts; evidence must not treat confidentiality, lawful/appropriate use and correctness/consistency as interchangeable.
 - Show appreciation of the need for both security of data and security of the computer system; evidence must explain why protecting one layer does not replace the other.
 - Data security is protection against unauthorised access, loss or damage. Privacy concerns appropriate collection, use and disclosure of personal data. Integrity means data remains accurate, complete and unaltered except by authorised processes.
 - The concepts overlap but are not synonyms: encrypted inaccurate data may be secure but lack integrity; authorised publication may preserve integrity while violating privacy.
 - Both data security and computer-system security are necessary. Protecting only a data file is insufficient if an attacker can control the operating system, install malware, steal credentials or make the computer system unavailable; protecting only the device is insufficient if copied data is disclosed, altered or lost.
-
-</details>
-
-### Worked method
-
-1. Medical records on a compromised computer system
-2. Encryption restricts unauthorised reading of the record data.
-3. Access rights restrict who may view or alter it.
-4. Anti-virus and a firewall help protect the computer system that stores and processes the records.
-5. If malware controls the system, it may steal decrypted data, alter records or stop authorised access even though the stored file was encrypted.
 
 Beyond syllabus / 延伸知识（不要求背诵）: real security uses defence in depth, combining controls so that one failed control does not expose the whole system.
 ## 3. Practice by question type
@@ -166,10 +260,11 @@ These are indexes only. Cambridge question and mark-scheme wording is not reprod
 
 ### Summary
 
-- Define security, privacy, integrity and the need for protection with the exact technical vocabulary expected by the syllabus.
-- Use the lesson method on a fresh context and show the intermediate decision, representation or calculation.
-- Match the shape of the answer to the command word and the available marks.
-- Check the final answer against the scenario instead of repeating a memorised sentence.
+- S6.01: explain security, privacy, integrity.
+- S6.01 method: Identify the relevant condition or input → Trace how the process works → Connect the mechanism to its result.
+- S6.02: explain computer-system, security, data.
+- S6.02 method: Identify the relevant condition or input → Trace how the process works → Connect the mechanism to its result.
+- Correction to remember: Students often propose encryption for every problem. Correction: encryption protects confidentiality but does not fix poor permissions, phishing or missing backups.
 
 ### Common error to correct
 

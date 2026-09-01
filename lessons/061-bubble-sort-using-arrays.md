@@ -28,7 +28,93 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ### 1. Bubble sort and linear search algorithms: Bubble sort using arrays (S10.06)
 
-**Concept relationships**
+**Atomic learning targets**
+
+- **S10.06.A01:** bubble sort
+- **S10.06.A02:** linear search
+- **S10.06.A03:** write
+
+**Core explanation**
+
+- Bubble sort makes repeated passes through the unsorted part of an array. It compares adjacent elements and swaps them when they are in the wrong order.
+- After each ascending pass, the largest remaining value has moved to the high end, so the next inner loop can stop one position earlier.
+- A complete algorithm requires nested loop bounds, an adjacent comparison, a three-assignment swap and a valid stopping rule. Showing one swap or one pass is not the same as writing the algorithm.
+- Linear search checks successive array elements until it finds the target or exhausts the populated bounds. It works on unsorted data and must include both the found and not-found outcomes.
+
+**Mechanism or method**
+
+1. **Choose the unsorted range** — Run Count−1 passes and shorten the compared range because the high end becomes sorted after each pass.
+2. **Inspect adjacent values** — For ascending order, swap when Value[Index] is greater than Value[Index+1].
+3. **Use a temporary variable safely** — Store one value in Temp before overwriting it, then complete all three assignments.
+
+#### Worked example: Write and trace an ascending bubble sort
+
+1. **Code**
+
+```text
+FOR Pass <- 1 TO Count - 1
+FOR Index <- 1 TO Count - Pass
+IF Value[Index] > Value[Index + 1] THEN
+Temp <- Value[Index]
+Value[Index] <- Value[Index + 1]
+Value[Index + 1] <- Temp
+ENDIF
+NEXT Index
+NEXT Pass
+```
+
+2. **Pass 1**
+
+For [4, 1, 3], compare 4/1 and swap → [1,4,3]; compare 4/3 and swap → [1,3,4]. The largest value is now fixed at the end.
+
+3. **Pass 2**
+
+Compare 1/3; no swap is needed, so the final array is [1,3,4].
+
+#### Worked example: Write and test a bounded linear search
+
+1. **Code**
+
+```text
+DECLARE Found : BOOLEAN
+DECLARE Index : INTEGER
+Found <- FALSE
+Index <- 1
+WHILE Index <= Count AND NOT Found
+IF Code[Index] = Target THEN
+Found <- TRUE
+ELSE
+Index <- Index + 1
+ENDIF
+ENDWHILE
+```
+
+2. **Found case**
+
+Searching [K4, M2, P7] for M2 checks indexes 1 then 2 and stops with Found=TRUE and Index=2.
+
+3. **Absent case**
+
+Searching for Z9 checks all three valid indexes and stops with Index=4 without reading beyond the array.
+
+**Misconceptions to correct**
+
+- Bubble sort compares adjacent values. It does not select the smallest value from the whole remaining array in one step.
+
+#### Mastery check (MC-L061-S10.06)
+
+Complete a fresh example that demonstrates every target: bubble sort; linear search; write. Show all intermediate steps and check the result.
+
+<details><summary>Answer criteria</summary>
+
+- Bubble sort makes repeated passes through the unsorted part of an array. It compares adjacent elements and swaps them when they are in the wrong order.
+- After each ascending pass, the largest remaining value has moved to the high end, so the next inner loop can stop one position earlier.
+- A complete algorithm requires nested loop bounds, an adjacent comparison, a three-assignment swap and a valid stopping rule. Showing one swap or one pass is not the same as writing the algorithm.
+- Linear search checks successive array elements until it finds the target or exhausts the populated bounds. It works on unsorted data and must include both the found and not-found outcomes.
+
+</details>
+
+**Supplementary concept map**
 
 - **Linear search:** Inspect items in order
 - **Bubble sort:** Swap adjacent out-of-order items
@@ -37,11 +123,11 @@ Ask the learner to give one accurate definition or method step before continuing
 - **adjacent:** Each pass compares adjacent elements and swaps them…
 - **swap:** The answer must therefore include initialisation, loop bounds,…
 
-**Mechanism**
+**Supplementary three-step recap**
 
-1. **Translate the stated design** — Bubble sort and linear search algorithms.
-2. **Apply one complete operation** — When processing array data, candidates must write a bubble-sort algorithm and a linear-search algorithm.
-3. **Trace state and boundaries** — Be able to write a bubble sort and a linear search algorithm, not only describe or trace an…
+1. **Choose the unsorted range** — Run Count−1 passes and shorten the compared range because the high end becomes sorted after each pass.
+2. **Inspect adjacent values** — For ascending order, swap when Value[Index] is greater than Value[Index+1].
+3. **Use a temporary variable safely** — Store one value in Temp before overwriting it, then complete all three assignments.
 
 **Concrete case: Linear search:** Bubble sort and linear search algorithms.
 
@@ -55,7 +141,7 @@ When processing array data, candidates must write a bubble-sort algorithm and a 
 
 </details>
 
-<details><summary>Open precise terminology and exam facts</summary>
+### Lesson technical reference
 
 - When processing array data, candidates must write a bubble-sort algorithm and a linear-search algorithm. A trace alone is not sufficient evidence of the ability to write each complete algorithm.
 - Before tracing a search, define the data structure it traverses. An array is a fixed-size indexed collection whose elements have one declared data type. The index selects one element; it is not the value stored in that element.
@@ -66,46 +152,38 @@ When processing array data, candidates must write a bubble-sort algorithm and a 
 - Bubble sort makes repeated passes through the unsorted part of an array. Each pass compares adjacent elements and swaps them when they are in the wrong order. After a complete ascending pass, the largest remaining value is at the high end; the algorithm repeats until the required passes are complete or a whole pass makes no swaps.
 - A trace is evidence about one execution, but the syllabus requires candidates to write the algorithms. The answer must therefore include initialisation, loop bounds, comparison, update or swap, and a valid stopping condition rather than only showing one example pass.
 
-</details>
-
-### Worked method
-
-1. Two complete array algorithms
-2. A linear search of Code[1:Count] sets Found to FALSE and Index to 1, then compares Code[Index] with Target while Found is FALSE and Index is within Count.
-3. A bubble sort of Value[1:Count] uses nested passes, compares Value[Index] with Value[Index + 1], swaps an inverted pair through Temp and may stop early when a pass makes no swaps.
-
 Beyond syllabus / 延伸知识（不要求背诵）: programming libraries often provide tested ADT implementations, but the exam expects you to understand their behaviour and selection.
 ## 3. Practice by question type
 
-### Question 1 - foundation - apply - 2 marks
+### Question 1 - foundation - write - 9 marks
 
-What comparison is made by an ascending bubble sort?
+Write complete Cambridge pseudocode for an ascending bubble sort of Value[1:Count]. Include both loop bounds, the adjacent comparison and a safe swap.
 
-**Answer:** Compare adjacent elements and swap when the left element is greater than the right element.
+**Answer:** outer loop Pass 1 to Count-1; inner loop Index 1 to Count-Pass; compares Value[Index] > Value[Index+1]; uses Temp and three assignments to swap; closes IF and both loops
 
-**Marking guidance:** Award one mark for each distinct, technically accurate point or method step.
+**Marking guidance:** A single pass or verbal description is not a complete algorithm.
 
-**Common error:** For the command word apply, perform that exact action; do not replace it with an unrelated fact.
+**Common error:** The inner bound must keep Index+1 inside the array.
 
-### Question 2 - application - state - 2 marks
+### Question 2 - application - trace - 6 marks
 
-State two precise facts about bubble sort using arrays.
+Trace every adjacent comparison and swap when bubble sorting [4, 1, 3] into ascending order. Show the array after each comparison and identify the value fixed after the first pass.
 
-**Answer:** When processing array data, candidates must write a bubble-sort algorithm and a linear-search algorithm. A trace alone is not sufficient evidence of the ability to write each complete algorithm. Before tracing a search, define the data structure it traverses. An array is a fixed-size indexed collection whose elements have one declared data type. The index selects one element; it is not the value stored in that element.
+**Answer:** 4/1 swap -> [1,4,3]; 4/3 swap -> [1,3,4], fixing 4 at the high end; pass 2 compares 1/3 with no swap; final [1,3,4]
 
-**Marking guidance:** Award one mark for each distinct fact; do not credit a repeated point.
+**Marking guidance:** Require the state after each comparison, not only the final array.
 
-**Common error:** Do not repeat the same point in different words; each mark needs a separate idea or method step.
+**Common error:** Do not skip the no-swap comparison in the trace.
 
-### Question 3 - transfer - explain - 3 marks
+### Question 3 - transfer - explain - 4 marks
 
-Explain how bubble sort using arrays would be applied in a suitable computing context.
+Explain why the inner loop of an ascending bubble sort can end at Count - Pass and why Index + 1 remains within bounds.
 
-**Answer:** Before tracing a search, define the data structure it traverses. An array is a fixed-size indexed collection whose elements have one declared data type. The index selects one element; it is not the value stored in that element. Cambridge pseudocode declares explicit inclusive bounds. In DECLARE Names : ARRAY[1:4] OF STRING, 1 is the lower bound, 4 is the upper bound and the valid indexes are 1, 2, 3 and 4. A search must start and stop within those declared bounds. Linear search checks successive indexed elements until the target is found or every populated element has been checked. Binary search also uses indexes, but requires the array to be sorted so each comparison can discard one half of the remaining index range.
+**Answer:** each completed pass fixes the largest remaining item at the high end; those fixed items need not be compared again; ending at Count-Pass makes the last right-hand access Index+1 no greater than Count
 
-**Marking guidance:** Each mark needs a relevant point linked to the stated context.
+**Marking guidance:** Connect both the optimisation and the array-bound consequence.
 
-**Common error:** Do not copy the worked example unchanged; transfer the method and check it against the new context.
+**Common error:** Count-Pass is not an arbitrary speed trick; it follows from the sorted high-end invariant.
 
 ### Related past-paper indexes
 
@@ -119,10 +197,9 @@ These are indexes only. Cambridge question and mark-scheme wording is not reprod
 
 ### Summary
 
-- Define bubble sort using arrays with the exact technical vocabulary expected by the syllabus.
-- Use the lesson method on a fresh context and show the intermediate decision, representation or calculation.
-- Match the shape of the answer to the command word and the available marks.
-- Check the final answer against the scenario instead of repeating a memorised sentence.
+- S10.06: explain bubble sort, linear search, write.
+- S10.06 method: Choose the unsorted range → Inspect adjacent values → Use a temporary variable safely.
+- Correction to remember: Bubble sort compares adjacent values. It does not select the smallest value from the whole remaining array in one step.
 
 ### Common error to correct
 

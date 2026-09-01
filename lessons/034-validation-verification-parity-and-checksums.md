@@ -28,7 +28,71 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ### 1. How data validation and data verification help protect the integrity of data; describe and use methods… (S6.07)
 
-**Concept relationships**
+**Atomic learning targets**
+
+- **S6.07.A01:** range check
+- **S6.07.A02:** format check
+- **S6.07.A03:** length check
+- **S6.07.A04:** presence check
+- **S6.07.A05:** existence check
+- **S6.07.A06:** limit check
+- **S6.07.A07:** check digit
+- **S6.07.A08:** verification
+- **S6.07.A09:** integrity / data integrity
+
+**Core explanation**
+
+- Validation checks whether data is reasonable and follows rules: range, format, length, presence, existence, limit and check digit. It cannot prove truth. A range check applies both a lower and an upper bound, such as 0 to 75. A limit check applies one stated upper or lower limit, such as file size no greater than 10 MiB or temperature at least -20 degrees Celsius.
+- A format check tests a required pattern; a length check tests the number of characters; a presence check rejects a blank required field; an existence check confirms a value is stored in a specified lookup file; and a check digit is calculated from the other digits and compared. Verification checks whether data was copied accurately, using visual checking or double entry.
+- Data validation and data verification help protect data integrity by detecting or preventing many input, copying and transfer errors before inaccurate or corrupted data are accepted. They reduce these risks but do not prove that the original source is true or replace access control and backup.
+- Describe and use verification during data entry (visual check and double entry) and during data transfer (parity check on a byte, block parity and checksum).
+- Validation methods include range, format, length, presence, existence and limit checks, plus a check digit.
+- The seven required validation methods are range, format, length, presence, existence, limit and check digit.
+
+**Mechanism or method**
+
+1. **Establish the exact components or states** — Validation checks whether data is reasonable and follows rules: range, format, length, presence, existence, limit and check digit.
+2. **Trace the relationship or change** — A range check applies both a lower and an upper bound, such as 0 to 75.
+3. **Use the explanation in a concrete case** — A limit check applies one stated upper or lower limit, such as file size no greater than 10 MiB or temperature at least -20 degrees Celsius.
+
+#### Worked example: How data validation and data verification help protect the integrity of data; describe and use methods: complete worked route
+
+1. **Establish the exact components or states**
+
+Validation checks whether data is reasonable and follows rules: range, format, length, presence, existence, limit and check digit.
+
+2. **Trace the relationship or change**
+
+A range check applies both a lower and an upper bound, such as 0 to 75.
+
+3. **Use the explanation in a concrete case**
+
+A limit check applies one stated upper or lower limit, such as file size no greater than 10 MiB or temperature at least -20 degrees Celsius.
+
+4. **Complete example**
+
+Validate input, then verify a transferred record: A 10 MiB maximum uses an upper limit check because it has one permitted limit; a mark from 0 to 75 uses a range check because it has both lower and upper bounds. A product code uses presence, length, format, existence and check-digit rules.
+
+**Misconceptions to correct**
+
+- Students often propose encryption for every problem. Correction: encryption protects confidentiality but does not fix poor permissions, phishing or missing backups.
+
+#### Mastery check (MC-L034-S6.07)
+
+Describe the following targets in one connected answer, using a concrete example for each: range check; format check; length check; presence check; existence check; limit check; check digit; verification; integrity / data integrity.
+
+<details><summary>Answer criteria</summary>
+
+- Validation checks whether data is reasonable and follows rules: range, format, length, presence, existence, limit and check digit. It cannot prove truth. A range check applies both a lower and an upper bound, such as 0 to 75. A limit check applies one stated upper or lower limit, such as file size no greater than 10 MiB or temperature at least -20 degrees Celsius.
+- A format check tests a required pattern; a length check tests the number of characters; a presence check rejects a blank required field; an existence check confirms a value is stored in a specified lookup file; and a check digit is calculated from the other digits and compared. Verification checks whether data was copied accurately, using visual checking or double entry.
+- Data validation and data verification help protect data integrity by detecting or preventing many input, copying and transfer errors before inaccurate or corrupted data are accepted. They reduce these risks but do not prove that the original source is true or replace access control and backup.
+- Describe and use verification during data entry (visual check and double entry) and during data transfer (parity check on a byte, block parity and checksum).
+- Validation methods include range, format, length, presence, existence and limit checks, plus a check digit.
+- The seven required validation methods are range, format, length, presence, existence, limit and check digit.
+
+</details>
+
+**Supplementary concept map**
 
 - **range check:** A range check applies both a lower and…
 - **format check:** A format check tests a required pattern
@@ -37,7 +101,7 @@ Ask the learner to give one accurate definition or method step before continuing
 - **existence check:** An existence check confirms a value is stored…
 - **limit check:** Validation methods include range, format, length, presence, existence…
 
-**Mechanism**
+**Supplementary three-step recap**
 
 1. **Identify what needs protection** — Validation methods include range, format, length, presence, existence and limit checks, plus a check digit.
 2. **Trace the attack or error route** — The seven required validation methods are range, format, length, presence, existence, limit and check digit.
@@ -69,7 +133,69 @@ Validation and verification reduce input, copying and transfer errors and theref
 
 ### 2. Verification: visual and double entry; parity byte/block and checksum (S6.08)
 
-**Concept relationships**
+**Atomic learning targets**
+
+- **S6.08.A01:** verification
+- **S6.08.A02:** visual check / visual checking
+- **S6.08.A03:** double entry
+- **S6.08.A04:** parity check
+- **S6.08.A05:** byte
+- **S6.08.A06:** block parity
+- **S6.08.A07:** checksum
+
+**Core explanation**
+
+- A format check tests a required pattern; a length check tests the number of characters; a presence check rejects a blank required field; an existence check confirms a value is stored in a specified lookup file; and a check digit is calculated from the other digits and compared. Verification checks whether data was copied accurately, using visual checking or double entry.
+- A parity check compares the expected odd or even parity of a byte; block parity adds row and column evidence.
+- Error detection includes parity: a parity byte checks one group and block parity adds row/column checks; a checksum is calculated from a data block and compared after transmission. These detect many errors but do not correct every error.
+- Data validation and data verification help protect data integrity by detecting or preventing many input, copying and transfer errors before inaccurate or corrupted data are accepted. They reduce these risks but do not prove that the original source is true or replace access control and backup.
+- Validation and verification reduce input, copying and transfer errors and therefore help protect data integrity. Validation methods include range, format, length, presence, existence and limit checks, plus a check digit.
+- Verification checks whether data was copied accurately, using visual checking or double entry.
+
+**Mechanism or method**
+
+1. **Identify the relevant condition or input** — A format check tests a required pattern;
+2. **Trace how the process works** — a length check tests the number of characters;
+3. **Connect the mechanism to its result** — a presence check rejects a blank required field;
+
+#### Worked example: Verification: visual and double entry; parity byte/block and checksum: complete worked route
+
+1. **Identify the relevant condition or input**
+
+A format check tests a required pattern;
+
+2. **Trace how the process works**
+
+a length check tests the number of characters;
+
+3. **Connect the mechanism to its result**
+
+a presence check rejects a blank required field;
+
+4. **Complete example**
+
+During entry, visual checking or double entry compares values. During transfer, byte parity detects many single-bit errors, block parity adds row/column evidence and a checksum is recalculated from the received data block.
+
+**Misconceptions to correct**
+
+- Students often propose encryption for every problem. Correction: encryption protects confidentiality but does not fix poor permissions, phishing or missing backups.
+
+#### Mastery check (MC-L034-S6.08)
+
+Explain the following targets in one connected answer, using a concrete example for each: verification; visual check / visual checking; double entry; parity check; byte; block parity; checksum.
+
+<details><summary>Answer criteria</summary>
+
+- A format check tests a required pattern; a length check tests the number of characters; a presence check rejects a blank required field; an existence check confirms a value is stored in a specified lookup file; and a check digit is calculated from the other digits and compared. Verification checks whether data was copied accurately, using visual checking or double entry.
+- A parity check compares the expected odd or even parity of a byte; block parity adds row and column evidence.
+- Error detection includes parity: a parity byte checks one group and block parity adds row/column checks; a checksum is calculated from a data block and compared after transmission. These detect many errors but do not correct every error.
+- Data validation and data verification help protect data integrity by detecting or preventing many input, copying and transfer errors before inaccurate or corrupted data are accepted. They reduce these risks but do not prove that the original source is true or replace access control and backup.
+- Validation and verification reduce input, copying and transfer errors and therefore help protect data integrity. Validation methods include range, format, length, presence, existence and limit checks, plus a check digit.
+- Verification checks whether data was copied accurately, using visual checking or double entry.
+
+</details>
+
+**Supplementary concept map**
 
 - **visual check:** And use verification during data entry (visual check…
 - **parity check:** A parity check compares the expected odd or…
@@ -78,7 +204,7 @@ Validation and verification reduce input, copying and transfer errors and theref
 - **checksum:** Parity byte/block and checksum.
 - **verification:** Validation and verification reduce input, copying and transfer…
 
-**Mechanism**
+**Supplementary three-step recap**
 
 1. **Name the exact concept** — And use verification during data entry (visual check and double entry) and during data transfer (parity check on…
 2. **Explain how its parts connect** — Verification checks whether data was copied accurately, using visual checking or double entry.
@@ -108,7 +234,7 @@ Describe and use verification during data entry (visual check and double entry) 
 
 </details>
 
-<details><summary>Open precise terminology and exam facts</summary>
+### Lesson technical reference
 
 - Validation and verification reduce input, copying and transfer errors and therefore help protect data integrity. Validation methods include range, format, length, presence, existence and limit checks, plus a check digit.
 - Describe and use verification during data entry (visual check and double entry) and during data transfer (parity check on a byte, block parity and checksum).
@@ -117,16 +243,6 @@ Describe and use verification during data entry (visual check and double entry) 
 - Error detection includes parity: a parity byte checks one group and block parity adds row/column checks; a checksum is calculated from a data block and compared after transmission. These detect many errors but do not correct every error.
 - A parity check compares the expected odd or even parity of a byte; block parity adds row and column evidence.
 - Data validation and data verification help protect data integrity by detecting or preventing many input, copying and transfer errors before inaccurate or corrupted data are accepted. They reduce these risks but do not prove that the original source is true or replace access control and backup.
-
-</details>
-
-### Worked method
-
-1. Validate input, then verify a transferred record
-2. A 10 MiB maximum uses an upper limit check because it has one permitted limit; a mark from 0 to 75 uses a range check because it has both lower…
-3. A product code uses presence, length, format, existence and check-digit rules.
-4. During entry, visual checking or double entry compares values.
-5. During transfer, byte parity detects many single-bit errors, block parity adds row/column evidence and a checksum is recalculated from the received data block.
 
 Beyond syllabus / 延伸知识（不要求背诵）: real security uses defence in depth, combining controls so that one failed control does not expose the whole system.
 ## 3. Practice by question type
@@ -176,10 +292,11 @@ These are indexes only. Cambridge question and mark-scheme wording is not reprod
 
 ### Summary
 
-- Define validation, verification, parity and checksums with the exact technical vocabulary expected by the syllabus.
-- Use the lesson method on a fresh context and show the intermediate decision, representation or calculation.
-- Match the shape of the answer to the command word and the available marks.
-- Check the final answer against the scenario instead of repeating a memorised sentence.
+- S6.07: explain range check, format check, length check, presence check, existence check, limit check, check digit, verification, integrity / data integrity.
+- S6.07 method: Establish the exact components or states → Trace the relationship or change → Use the explanation in a concrete case.
+- S6.08: explain verification, visual check / visual checking, double entry, parity check, byte, block parity, checksum.
+- S6.08 method: Identify the relevant condition or input → Trace how the process works → Connect the mechanism to its result.
+- Correction to remember: Students often propose encryption for every problem. Correction: encryption protects confidentiality but does not fix poor permissions, phishing or missing backups.
 
 ### Common error to correct
 

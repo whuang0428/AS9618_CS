@@ -30,7 +30,62 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ### 1. Stepwise refinement to develop an algorithm: Stepwise refinement (S9.08)
 
-**Concept relationships**
+**Atomic learning targets**
+
+- **S9.08.A01:** stepwise
+- **S9.08.A02:** refinement
+- **S9.08.A03:** algorithm
+- **S9.08.A04:** implement
+
+**Core explanation**
+
+- Development review: use stepwise refinement until steps are programmable, and construct and interpret logic statements that define decisions, loop conditions or Boolean values. Core answers must not replace these requirements with tracing, Java syntax or vague planning advice.
+- Algorithm design review: define an algorithm as a solution expressed as a sequence of defined steps; use abstraction to retain essential details in an abstract model; use decomposition to express the problem as connected modules; and choose meaningful identifiers recorded in an identifier table.
+- Stepwise refinement starts with a high-level algorithm and repeatedly replaces each complex step with a smaller sequence of defined substeps. Refinement stops when every step is precise enough to implement and its input and output are clear.
+- Solution review: design with input-process-output, use sequence, selection and iteration, document the same algorithm in structured English, a flowchart or pseudocode, and convert between the specified representations without changing its control flow.
+
+**Mechanism or method**
+
+1. **Set up the required data and conditions** — Development review: use stepwise refinement until steps are programmable, and construct and interpret logic statements that define decisions, loop conditions or Boolean values.
+2. **Carry out the complete method** — Core answers must not replace these requirements with tracing, Java syntax or vague planning advice.
+3. **Trace or test the result** — Algorithm design review: define an algorithm as a solution expressed as a sequence of defined steps;
+
+#### Worked example: Stepwise refinement to develop an algorithm: Stepwise refinement: complete worked route
+
+1. **Set up the required data and conditions**
+
+Development review: use stepwise refinement until steps are programmable, and construct and interpret logic statements that define decisions, loop conditions or Boolean values.
+
+2. **Carry out the complete method**
+
+Core answers must not replace these requirements with tracing, Java syntax or vague planning advice.
+
+3. **Trace or test the result**
+
+Algorithm design review: define an algorithm as a solution expressed as a sequence of defined steps;
+
+4. **Complete example**
+
+Refine an order-processing algorithm: Level 1: InputOrder;
+
+**Misconceptions to correct**
+
+- Students often start coding before defining the output. Correction: an algorithm is easier to design when the required result is known first.
+
+#### Mastery check (MC-L052-S9.08)
+
+Complete a fresh example that demonstrates every target: stepwise; refinement; algorithm; implement. Show all intermediate steps and check the result.
+
+<details><summary>Answer criteria</summary>
+
+- Development review: use stepwise refinement until steps are programmable, and construct and interpret logic statements that define decisions, loop conditions or Boolean values. Core answers must not replace these requirements with tracing, Java syntax or vague planning advice.
+- Algorithm design review: define an algorithm as a solution expressed as a sequence of defined steps; use abstraction to retain essential details in an abstract model; use decomposition to express the problem as connected modules; and choose meaningful identifiers recorded in an identifier table.
+- Stepwise refinement starts with a high-level algorithm and repeatedly replaces each complex step with a smaller sequence of defined substeps. Refinement stops when every step is precise enough to implement and its input and output are clear.
+- Solution review: design with input-process-output, use sequence, selection and iteration, document the same algorithm in structured English, a flowchart or pseudocode, and convert between the specified representations without changing its control flow.
+
+</details>
+
+**Supplementary concept map**
 
 - **stepwise:** Stepwise refinement to develop an algorithm.
 - **refinement:** Stepwise refinement to develop an algorithm from a…
@@ -38,7 +93,7 @@ Ask the learner to give one accurate definition or method step before continuing
 - **implement:** Refinement stops when every step is precise enough…
 - **develop:** Stepwise refinement until steps are programmable, and construct…
 
-**Mechanism**
+**Supplementary three-step recap**
 
 1. **Translate the stated design** — Stepwise refinement to develop an algorithm.
 2. **Apply one complete operation** — Stepwise refinement to develop an algorithm from a high-level solution to a level of detail from which a…
@@ -56,7 +111,7 @@ Use stepwise refinement to develop an algorithm from a high-level solution to a 
 
 </details>
 
-<details><summary>Open precise terminology and exam facts</summary>
+### Lesson technical reference
 
 - Use stepwise refinement to develop an algorithm from a high-level solution to a level of detail from which a program can be written; each level must preserve the parent purpose.
 - Stepwise refinement starts with a high-level algorithm and repeatedly replaces each complex step with a smaller sequence of defined substeps. Refinement stops when every step is precise enough to implement and its input and output are clear.
@@ -65,15 +120,6 @@ Use stepwise refinement to develop an algorithm from a high-level solution to a 
 - Algorithm design review: define an algorithm as a solution expressed as a sequence of defined steps; use abstraction to retain essential details in an abstract model; use decomposition to express the problem as connected modules; and choose meaningful identifiers recorded in an identifier table.
 - Solution review: design with input-process-output, use sequence, selection and iteration, document the same algorithm in structured English, a flowchart or pseudocode, and convert between the specified representations without changing its control flow.
 - Development review: use stepwise refinement until steps are programmable, and construct and interpret logic statements that define decisions, loop conditions or Boolean values. Core answers must not replace these requirements with tracing, Java syntax or vague planning advice.
-
-</details>
-
-### Worked method
-
-1. Refine an order-processing algorithm
-2. InputOrder; ValidateOrder; CalculateTotal; ProduceReceipt.
-3. Refine CalculateTotal into Set Total to 0; for each item validate Quantity; add Price Quantity; apply Discount; return Total.
-4. CalculateTotal can be a function returning Total, while ProduceReceipt can be a procedure receiving the completed total.
 
 Beyond syllabus / 延伸知识（不要求背诵）: the same algorithm can be expressed in many programming languages; its logic should remain independent of syntax.
 ## 3. Practice by question type
@@ -123,10 +169,9 @@ These are indexes only. Cambridge question and mark-scheme wording is not reprod
 
 ### Summary
 
-- Define stepwise refinement with the exact technical vocabulary expected by the syllabus.
-- Use the lesson method on a fresh context and show the intermediate decision, representation or calculation.
-- Match the shape of the answer to the command word and the available marks.
-- Check the final answer against the scenario instead of repeating a memorised sentence.
+- S9.08: explain stepwise, refinement, algorithm, implement.
+- S9.08 method: Set up the required data and conditions → Carry out the complete method → Trace or test the result.
+- Correction to remember: Students often start coding before defining the output. Correction: an algorithm is easier to design when the required result is known first.
 
 ### Common error to correct
 

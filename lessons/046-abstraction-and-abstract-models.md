@@ -24,7 +24,62 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ### 1. Abstraction, its purpose/benefits and creation of an abstract model (S9.01)
 
-**Concept relationships**
+**Atomic learning targets**
+
+- **S9.01.A01:** abstraction
+- **S9.01.A02:** essential details
+- **S9.01.A03:** irrelevant detail
+- **S9.01.A04:** abstract model
+
+**Core explanation**
+
+- Algorithm design review: define an algorithm as a solution expressed as a sequence of defined steps; use abstraction to retain essential details in an abstract model; use decomposition to express the problem as connected modules; and choose meaningful identifiers recorded in an identifier table.
+- Abstraction removes each irrelevant detail that does not affect the required inputs, rules, constraints or outputs. Producing an abstract model means recording the essential details that remain: the data, relationships and processes needed to solve the problem, not merely listing what was ignored.
+- Abstraction decides what belongs in the model; decomposition decides how the retained problem is divided. The modules must connect into one complete solution and must not omit a requirement.
+- Its need and benefits, then produce an abstract model containing only details essential to the problem.
+
+**Mechanism or method**
+
+1. **Identify the relevant condition or input** — Algorithm design review: define an algorithm as a solution expressed as a sequence of defined steps;
+2. **Trace how the process works** — use abstraction to retain essential details in an abstract model;
+3. **Connect the mechanism to its result** — use decomposition to express the problem as connected modules;
+
+#### Worked example: Abstraction, its purpose/benefits and creation of an abstract model: complete worked route
+
+1. **Identify the relevant condition or input**
+
+Algorithm design review: define an algorithm as a solution expressed as a sequence of defined steps;
+
+2. **Trace how the process works**
+
+use abstraction to retain essential details in an abstract model;
+
+3. **Connect the mechanism to its result**
+
+use decomposition to express the problem as connected modules;
+
+4. **Complete example**
+
+Design a result-processing solution: Keep only student ID and required marks, decompose the task into InputResults, ValidateResult, CalculateMean and OutputReport, record meaningful identifiers and IPO, refine CalculateMean into defined steps, use a range logic statement, and represent the final control flow in Cambridge pseudocode or a matching flowchart.
+
+**Misconceptions to correct**
+
+- Students often start coding before defining the output. Correction: an algorithm is easier to design when the required result is known first.
+
+#### Mastery check (MC-L046-S9.01)
+
+Explain the following targets in one connected answer, using a concrete example for each: abstraction; essential details; irrelevant detail; abstract model.
+
+<details><summary>Answer criteria</summary>
+
+- Algorithm design review: define an algorithm as a solution expressed as a sequence of defined steps; use abstraction to retain essential details in an abstract model; use decomposition to express the problem as connected modules; and choose meaningful identifiers recorded in an identifier table.
+- Abstraction removes each irrelevant detail that does not affect the required inputs, rules, constraints or outputs. Producing an abstract model means recording the essential details that remain: the data, relationships and processes needed to solve the problem, not merely listing what was ignored.
+- Abstraction decides what belongs in the model; decomposition decides how the retained problem is divided. The modules must connect into one complete solution and must not omit a requirement.
+- Its need and benefits, then produce an abstract model containing only details essential to the problem.
+
+</details>
+
+**Supplementary concept map**
 
 - **essential details:** Abstraction to retain essential details in an abstract…
 - **irrelevant detail:** Abstraction removes each irrelevant detail that does not…
@@ -32,7 +87,7 @@ Ask the learner to give one accurate definition or method step before continuing
 - **abstraction:** Abstraction decides what belongs in the model
 - **purpose:** Its need and benefits, then produce an abstract…
 
-**Mechanism**
+**Supplementary three-step recap**
 
 1. **Translate the stated design** — Abstraction, its purpose/benefits and creation of an abstract model.
 2. **Apply one complete operation** — Its need and benefits, then produce an abstract model containing only details essential to the problem.
@@ -61,20 +116,13 @@ Abstraction is required both as a concept and as a practical modelling skill: ex
 
 </details>
 
-<details><summary>Open precise terminology and exam facts</summary>
+### Lesson technical reference
 
 - Abstraction is required both as a concept and as a practical modelling skill: explain its need and benefits, then produce an abstract model containing only details essential to the problem.
 - Abstraction removes each irrelevant detail that does not affect the required inputs, rules, constraints or outputs. Producing an abstract model means recording the essential details that remain: the data, relationships and processes needed to solve the problem, not merely listing what was ignored.
 - Decomposition breaks a problem into smaller sub-problems with distinct responsibilities. Express the resulting design as program modules with clear inputs, processing and outputs; a module may later be implemented as a procedure that performs an action or a function that returns a value.
 - Abstraction decides what belongs in the model; decomposition decides how the retained problem is divided. The modules must connect into one complete solution and must not omit a requirement.
 - Algorithm design review: define an algorithm as a solution expressed as a sequence of defined steps; use abstraction to retain essential details in an abstract model; use decomposition to express the problem as connected modules; and choose meaningful identifiers recorded in an identifier table.
-
-</details>
-
-### Worked method
-
-1. Design a result-processing solution
-2. Keep only student ID and required marks, decompose the task into InputResults, ValidateResult, CalculateMean and OutputReport, record meaningful identifiers and IPO, refine CalculateMean into defined steps, use a range logic…
 
 Beyond syllabus / 延伸知识（不要求背诵）: the same algorithm can be expressed in many programming languages; its logic should remain independent of syntax.
 ## 3. Practice by question type
@@ -113,10 +161,9 @@ Explain how abstraction and abstract models would be applied in a suitable compu
 
 ### Summary
 
-- Define abstraction and abstract models with the exact technical vocabulary expected by the syllabus.
-- Use the lesson method on a fresh context and show the intermediate decision, representation or calculation.
-- Match the shape of the answer to the command word and the available marks.
-- Check the final answer against the scenario instead of repeating a memorised sentence.
+- S9.01: explain abstraction, essential details, irrelevant detail, abstract model.
+- S9.01 method: Identify the relevant condition or input → Trace how the process works → Connect the mechanism to its result.
+- Correction to remember: Students often start coding before defining the output. Correction: an algorithm is easier to design when the required result is known first.
 
 ### Common error to correct
 

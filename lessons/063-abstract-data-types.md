@@ -24,7 +24,62 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ### 1. The definition and purpose of an abstract data type (S10.08)
 
-**Concept relationships**
+**Atomic learning targets**
+
+- **S10.08.A01:** abstract
+- **S10.08.A02:** type
+- **S10.08.A03:** collection of data
+- **S10.08.A04:** set of operations
+
+**Core explanation**
+
+- An abstract data type (ADT) is a collection of data and a set of operations on those data. The permitted operations and their effects define the ADT; its internal storage can change without changing that behaviour. Stack, queue and linked list are examples of ADTs.
+- An abstract data type is a collection of data and a set of operations on those data. Stack, queue and linked list are examples whose permitted operations define their behaviour.
+- An abstract data type (ADT) is a collection of data and a set of operations on those data.
+- An abstract data type is a collection of data and a set of operations on those data.
+
+**Mechanism or method**
+
+1. **Identify the relevant condition or input** — An abstract data type (ADT) is a collection of data and a set of operations on those data.
+2. **Trace how the process works** — The permitted operations and their effects define the ADT;
+3. **Connect the mechanism to its result** — its internal storage can change without changing that behaviour.
+
+#### Worked example: The definition and purpose of an abstract data type: complete worked route
+
+1. **Identify the relevant condition or input**
+
+An abstract data type (ADT) is a collection of data and a set of operations on those data.
+
+2. **Trace how the process works**
+
+The permitted operations and their effects define the ADT;
+
+3. **Connect the mechanism to its result**
+
+its internal storage can change without changing that behaviour.
+
+4. **Complete example**
+
+Add, edit and delete without changing the ADT rule: Push D adds D at the stack top and pop deletes the current top. Enqueue D adds at the queue rear and dequeue deletes from the front. In an array-based linked list, edit Data[5] to change only the node value; insert or delete by changing Next indexes, Start and the free list rather than shifting every later array item.
+
+**Misconceptions to correct**
+
+- Students often describe stacks and queues as just arrays. Correction: the defining feature is the access rule, not the storage implementation.
+
+#### Mastery check (MC-L063-S10.08)
+
+Explain the following targets in one connected answer, using a concrete example for each: abstract; type; collection of data; set of operations.
+
+<details><summary>Answer criteria</summary>
+
+- An abstract data type (ADT) is a collection of data and a set of operations on those data. The permitted operations and their effects define the ADT; its internal storage can change without changing that behaviour. Stack, queue and linked list are examples of ADTs.
+- An abstract data type is a collection of data and a set of operations on those data. Stack, queue and linked list are examples whose permitted operations define their behaviour.
+- An abstract data type (ADT) is a collection of data and a set of operations on those data.
+- An abstract data type is a collection of data and a set of operations on those data.
+
+</details>
+
+**Supplementary concept map**
 
 - **set of operations:** An abstract data type is a collection of…
 - **abstract:** An abstract data type (ADT) is a collection…
@@ -32,7 +87,7 @@ Ask the learner to give one accurate definition or method step before continuing
 - **collection of data:** The permitted operations and their effects define the…
 - **definition:** Pseudocode for the ADT operations is not required…
 
-**Mechanism**
+**Supplementary three-step recap**
 
 1. **Identify incoming data or signal** — An abstract data type is a collection of data and a set of operations on those data.
 2. **Follow the physical or logical path** — An abstract data type (ADT) is a collection of data and a set of operations on those data.
@@ -60,22 +115,13 @@ An abstract data type (ADT) is a collection of data and a set of operations on t
 
 </details>
 
-<details><summary>Open precise terminology and exam facts</summary>
+### Lesson technical reference
 
 - An abstract data type (ADT) is a collection of data and a set of operations on those data. Its behaviour is defined independently of a particular storage implementation.
 - An abstract data type (ADT) is a collection of data and a set of operations on those data. The permitted operations and their effects define the ADT; its internal storage can change without changing that behaviour. Stack, queue and linked list are examples of ADTs.
 - All three can be implemented using arrays and state variables or indexes. Stack uses an array with a top/stack pointer; queue uses an array with front and rear; linked list uses Data and Next arrays (or an array of node records), start and a free list. Candidates must be able to add, edit and delete data conceptually, but the syllabus does not require pseudocode for these ADT operations.
 - Justify a stack, queue or linked list from its operations and the scenario. Candidates are not required to write pseudocode for these ADT operations, but must be able to add, edit and delete data and describe array implementations.
 - Choose and justify a stack, queue or linked list from its LIFO, FIFO or linkage features. Add, edit and delete data in these ADTs and implement them using arrays; pseudocode for the ADT operations is not required by the syllabus.
-
-</details>
-
-### Worked method
-
-1. Add, edit and delete without changing the ADT rule
-2. Push D adds D at the stack top and pop deletes the current top.
-3. Enqueue D adds at the queue rear and dequeue deletes from the front.
-4. In an array-based linked list, edit Data[5] to change only the node value; insert or delete by changing Next indexes, Start and the free list rather than shifting every later…
 
 Beyond syllabus / 延伸知识（不要求背诵）: programming libraries often provide tested ADT implementations, but the exam expects you to understand their behaviour and selection.
 ## 3. Practice by question type
@@ -124,10 +170,9 @@ These are indexes only. Cambridge question and mark-scheme wording is not reprod
 
 ### Summary
 
-- Define abstract data types with the exact technical vocabulary expected by the syllabus.
-- Use the lesson method on a fresh context and show the intermediate decision, representation or calculation.
-- Match the shape of the answer to the command word and the available marks.
-- Check the final answer against the scenario instead of repeating a memorised sentence.
+- S10.08: explain abstract, type, collection of data, set of operations.
+- S10.08 method: Identify the relevant condition or input → Trace how the process works → Connect the mechanism to its result.
+- Correction to remember: Students often describe stacks and queues as just arrays. Correction: the defining feature is the access rule, not the storage implementation.
 
 ### Common error to correct
 

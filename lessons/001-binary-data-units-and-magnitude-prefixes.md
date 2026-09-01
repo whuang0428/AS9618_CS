@@ -24,7 +24,70 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ### 1. Binary and decimal prefixes use different scales (S1.01)
 
-**Concept relationships**
+**Atomic learning targets**
+
+- **S1.01.A01:** binary prefixes
+- **S1.01.A02:** decimal prefixes
+- **S1.01.A03:** kibi / KiB
+- **S1.01.A04:** kilo / kB
+- **S1.01.A05:** mebi / MiB
+- **S1.01.A06:** mega / MB
+- **S1.01.A07:** gibi / GiB
+- **S1.01.A08:** giga / GB
+- **S1.01.A09:** tebi / TiB
+- **S1.01.A10:** tera / TB
+
+**Core explanation**
+
+- Binary prefixes use powers of 1024: kibi (Ki) means 2^10, mebi (Mi) means 2^20, gibi (Gi) means 2^30 and tebi (Ti) means 2^40. Therefore 1 KiB = 1024 bytes, 1 MiB = 2^20 bytes, 1 GiB = 2^30 bytes and 1 TiB = 2^40 bytes.
+- Decimal prefixes use powers of 1000: kilo (k) means 10^3, mega (M) means 10^6, giga (G) means 10^9 and tera (T) means 10^12. Therefore 1 kB = 1000 bytes, 1 MB = 10^6 bytes, 1 GB = 10^9 bytes and 1 TB = 10^12 bytes. Case and the i in KiB/MiB/GiB/TiB carry meaning.
+- A binary staircase has 1024 steps per level; a decimal staircase has 1000. The labels tell you which staircase to climb.
+- Binary prefixes climb by 1024; decimal prefixes climb by 1000.
+- KiB and kB are not interchangeable labels.
+
+**Mechanism or method**
+
+1. **Establish the exact components or states** — Binary prefixes use powers of 1024: kibi (Ki) means 2^10, mebi (Mi) means 2^20, gibi (Gi) means 2^30 and tebi (Ti) means 2^40.
+2. **Trace the relationship or change** — Therefore 1 KiB = 1024 bytes, 1 MiB = 2^20 bytes, 1 GiB = 2^30 bytes and 1 TiB = 2^40 bytes.
+3. **Use the explanation in a concrete case** — Decimal prefixes use powers of 1000: kilo (k) means 10^3, mega (M) means 10^6, giga (G) means 10^9 and tera (T) means 10^12.
+
+#### Worked example: Binary and decimal prefixes use different scales: complete worked route
+
+1. **Establish the exact components or states**
+
+Binary prefixes use powers of 1024: kibi (Ki) means 2^10, mebi (Mi) means 2^20, gibi (Gi) means 2^30 and tebi (Ti) means 2^40.
+
+2. **Trace the relationship or change**
+
+Therefore 1 KiB = 1024 bytes, 1 MiB = 2^20 bytes, 1 GiB = 2^30 bytes and 1 TiB = 2^40 bytes.
+
+3. **Use the explanation in a concrete case**
+
+Decimal prefixes use powers of 1000: kilo (k) means 10^3, mega (M) means 10^6, giga (G) means 10^9 and tera (T) means 10^12.
+
+4. **Complete example**
+
+2 TiB drive: 2 TiB = 2 x 2^40 = 2,199,023,255,552 bytes. A 2 TB drive is 2,000,000,000,000 bytes, so the labels are not interchangeable.
+
+**Misconceptions to correct**
+
+- Students often treat binary digits as decoration. Correction: every bit position has a value; if the position changes, the value changes.
+
+#### Mastery check (MC-L001-S1.01)
+
+Show the following targets in one connected answer, using a concrete example for each: binary prefixes; decimal prefixes; kibi / KiB; kilo / kB; mebi / MiB; mega / MB; gibi / GiB; giga / GB; tebi / TiB; tera / TB.
+
+<details><summary>Answer criteria</summary>
+
+- Binary prefixes use powers of 1024: kibi (Ki) means 2^10, mebi (Mi) means 2^20, gibi (Gi) means 2^30 and tebi (Ti) means 2^40. Therefore 1 KiB = 1024 bytes, 1 MiB = 2^20 bytes, 1 GiB = 2^30 bytes and 1 TiB = 2^40 bytes.
+- Decimal prefixes use powers of 1000: kilo (k) means 10^3, mega (M) means 10^6, giga (G) means 10^9 and tera (T) means 10^12. Therefore 1 kB = 1000 bytes, 1 MB = 10^6 bytes, 1 GB = 10^9 bytes and 1 TB = 10^12 bytes. Case and the i in KiB/MiB/GiB/TiB carry meaning.
+- A binary staircase has 1024 steps per level; a decimal staircase has 1000. The labels tell you which staircase to climb.
+- Binary prefixes climb by 1024; decimal prefixes climb by 1000.
+- KiB and kB are not interchangeable labels.
+
+</details>
+
+**Supplementary concept map**
 
 - **Binary:** powers of 1024
 - **Decimal:** powers of 1000
@@ -33,7 +96,7 @@ Ask the learner to give one accurate definition or method step before continuing
 - **TiB:** 2^40 bytes
 - **TB:** 10^12 bytes
 
-**Mechanism**
+**Supplementary three-step recap**
 
 1. **Look for the i** — Ki, Mi, Gi and Ti signal the binary scale.
 2. **Select 1024 or 1000** — Binary prefixes climb by 1024; decimal prefixes climb by 1000.
@@ -65,20 +128,12 @@ Use and distinguish kibi/kilo, mebi/mega, gibi/giga and tebi/tera; binary prefix
 
 </details>
 
-<details><summary>Open precise terminology and exam facts</summary>
+### Lesson technical reference
 
 - Use and distinguish kibi/kilo, mebi/mega, gibi/giga and tebi/tera; binary prefixes use powers of 1024 and decimal prefixes use powers of 1000.
 - Binary prefixes use powers of 1024: kibi (Ki) means 2^10, mebi (Mi) means 2^20, gibi (Gi) means 2^30 and tebi (Ti) means 2^40. Therefore 1 KiB = 1024 bytes, 1 MiB = 2^20 bytes, 1 GiB = 2^30 bytes and 1 TiB = 2^40 bytes.
 - Decimal prefixes use powers of 1000: kilo (k) means 10^3, mega (M) means 10^6, giga (G) means 10^9 and tera (T) means 10^12. Therefore 1 kB = 1000 bytes, 1 MB = 10^6 bytes, 1 GB = 10^9 bytes and 1 TB = 10^12 bytes. Case and the i in KiB/MiB/GiB/TiB carry meaning.
 - For binary data units and magnitude prefixes, identify the required concept before describing its mechanism or consequence.
-
-</details>
-
-### Worked method
-
-1. 2 TiB drive
-2. 2 TiB = 2 x 2^40 = 2,199,023,255,552 bytes.
-3. A 2 TB drive is 2,000,000,000,000 bytes, so the labels are not interchangeable.
 
 Beyond syllabus / 延伸知识（不要求背诵）: real file formats also store headers and metadata, so two files with the same visible content may still have different sizes.
 ## 3. Practice by question type
@@ -128,10 +183,9 @@ These are indexes only. Cambridge question and mark-scheme wording is not reprod
 
 ### Summary
 
-- Define binary data units and magnitude prefixes with the exact technical vocabulary expected by the syllabus.
-- Use the lesson method on a fresh context and show the intermediate decision, representation or calculation.
-- Match the shape of the answer to the command word and the available marks.
-- Check the final answer against the scenario instead of repeating a memorised sentence.
+- S1.01: explain binary prefixes, decimal prefixes, kibi / KiB, kilo / kB, mebi / MiB, mega / MB, gibi / GiB, giga / GB, tebi / TiB, tera / TB.
+- S1.01 method: Establish the exact components or states → Trace the relationship or change → Use the explanation in a concrete case.
+- Correction to remember: Students often treat binary digits as decoration. Correction: every bit position has a value; if the position changes, the value changes.
 
 ### Common error to correct
 

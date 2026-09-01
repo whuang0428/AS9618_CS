@@ -28,7 +28,69 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ### 1. A bitmap stores metadata plus a grid of pixels (S1.08)
 
-**Concept relationships**
+**Atomic learning targets**
+
+- **S1.08.A01:** pixel
+- **S1.08.A02:** file header
+- **S1.08.A03:** pixel data
+- **S1.08.A04:** image resolution
+- **S1.08.A05:** screen resolution
+- **S1.08.A06:** colour depth / color depth
+- **S1.08.A07:** ignore / header
+
+**Core explanation**
+
+- A bitmap file contains pixel data and a file header. The header stores metadata needed to interpret the file, such as its format and image properties; it is not one of the image pixels. When a calculation says to ignore the file header, calculate only width x height x colour depth.
+- Image resolution is the number of pixels stored in the image, commonly width x height. Screen resolution is the number of physical display pixels available on the screen. They are independent: scaling an image on a screen does not create new captured detail.
+- Bitmap metadata is stored separately from pixel values, commonly in a file header. Add header or metadata bytes only when their size is supplied; when a question says to ignore the header, calculate pixel data only.
+- For an uncompressed bitmap, pixel-data size in bits is width in pixels x height in pixels x colour depth in bits per pixel. Divide by 8 to convert bits to bytes. Use the units requested by the question.
+- Vectors scale without pixelation and suit logos, diagrams and shapes. Bitmaps store individual pixels and suit photographs or detailed textures. For a given application, the choice must be justified using the source image and intended editing or scaling.
+- The pixel grid is the mosaic; the header is the label card. A 100 × 80 image at 8 bits per pixel uses 64,000 pixel-data bits.
+
+**Mechanism or method**
+
+1. **Establish the exact components or states** — A bitmap file contains pixel data and a file header.
+2. **Trace the relationship or change** — The header stores metadata needed to interpret the file, such as its format and image properties;
+3. **Use the explanation in a concrete case** — it is not one of the image pixels.
+
+#### Worked example: A bitmap stores metadata plus a grid of pixels: complete worked route
+
+1. **Establish the exact components or states**
+
+A bitmap file contains pixel data and a file header.
+
+2. **Trace the relationship or change**
+
+The header stores metadata needed to interpret the file, such as its format and image properties;
+
+3. **Use the explanation in a concrete case**
+
+it is not one of the image pixels.
+
+4. **Complete example**
+
+Calculate pixel data and then account for metadata: A 640 x 480 bitmap using 24-bit colour stores 640 x 480 x 24 = 7,372,800 bits = 921,600 bytes of pixel data. With a supplied 54-byte header, the total is 921,654 bytes.
+
+**Misconceptions to correct**
+
+- Students often say 'higher quality is always better'. Correction: higher quality can be wasteful if storage, bandwidth or purpose does not justify it.
+
+#### Mastery check (MC-L005-S1.08)
+
+Show the following targets in one connected answer, using a concrete example for each: pixel; file header; pixel data; image resolution; screen resolution; colour depth / color depth; ignore / header.
+
+<details><summary>Answer criteria</summary>
+
+- A bitmap file contains pixel data and a file header. The header stores metadata needed to interpret the file, such as its format and image properties; it is not one of the image pixels. When a calculation says to ignore the file header, calculate only width x height x colour depth.
+- Image resolution is the number of pixels stored in the image, commonly width x height. Screen resolution is the number of physical display pixels available on the screen. They are independent: scaling an image on a screen does not create new captured detail.
+- Bitmap metadata is stored separately from pixel values, commonly in a file header. Add header or metadata bytes only when their size is supplied; when a question says to ignore the header, calculate pixel data only.
+- For an uncompressed bitmap, pixel-data size in bits is width in pixels x height in pixels x colour depth in bits per pixel. Divide by 8 to convert bits to bytes. Use the units requested by the question.
+- Vectors scale without pixelation and suit logos, diagrams and shapes. Bitmaps store individual pixels and suit photographs or detailed textures. For a given application, the choice must be justified using the source image and intended editing or scaling.
+- The pixel grid is the mosaic; the header is the label card. A 100 × 80 image at 8 bits per pixel uses 64,000 pixel-data bits.
+
+</details>
+
+**Supplementary concept map**
 
 - **Header:** image metadata
 - **Pixel:** one grid cell
@@ -37,7 +99,7 @@ Ask the learner to give one accurate definition or method step before continuing
 - **Pixel bits:** width × height × depth
 - **Screen:** display pixel grid
 
-**Mechanism**
+**Supplementary three-step recap**
 
 1. **Find the number of pixels** — Multiply image width by image height.
 2. **Apply bits per pixel** — Multiply the pixel count by colour depth.
@@ -114,7 +176,68 @@ Use and understand the terms pixel, file header, image resolution, screen resolu
 
 ### 2. A vector file stores drawing instructions (S1.09)
 
-**Concept relationships**
+**Atomic learning targets**
+
+- **S1.09.A01:** vector encoding
+- **S1.09.A02:** drawing objects / drawing object
+- **S1.09.A03:** properties
+- **S1.09.A04:** drawing list
+- **S1.09.A05:** bitmap
+- **S1.09.A06:** given application
+
+**Core explanation**
+
+- Vector encoding stores a graphic as a drawing list of drawing objects. Each object has properties such as type, coordinates, dimensions, line colour, fill colour and line thickness; software redraws the objects from these instructions.
+- A bitmap file contains pixel data and a file header. The header stores metadata needed to interpret the file, such as its format and image properties; it is not one of the image pixels. When a calculation says to ignore the file header, calculate only width x height x colour depth.
+- Vectors scale without pixelation and suit logos, diagrams and shapes. Bitmaps store individual pixels and suit photographs or detailed textures. For a given application, the choice must be justified using the source image and intended editing or scaling.
+- Bitmap metadata is stored separately from pixel values, commonly in a file header. Add header or metadata bytes only when their size is supplied; when a question says to ignore the header, calculate pixel data only.
+- For an uncompressed bitmap, pixel-data size in bits is width in pixels x height in pixels x colour depth in bits per pixel. Divide by 8 to convert bits to bytes. Use the units requested by the question.
+- A vector logo is a recipe that can be cooked at any size; a bitmap photograph is a fixed mosaic of sampled colours.
+
+**Mechanism or method**
+
+1. **Establish the exact components or states** — Vector encoding stores a graphic as a drawing list of drawing objects.
+2. **Trace the relationship or change** — Each object has properties such as type, coordinates, dimensions, line colour, fill colour and line thickness;
+3. **Use the explanation in a concrete case** — software redraws the objects from these instructions.
+
+#### Worked example: A vector file stores drawing instructions: complete worked route
+
+1. **Establish the exact components or states**
+
+Vector encoding stores a graphic as a drawing list of drawing objects.
+
+2. **Trace the relationship or change**
+
+Each object has properties such as type, coordinates, dimensions, line colour, fill colour and line thickness;
+
+3. **Use the explanation in a concrete case**
+
+software redraws the objects from these instructions.
+
+4. **Complete example**
+
+Calculate pixel data and then account for metadata: A 640 x 480 bitmap using 24-bit colour stores 640 x 480 x 24 = 7,372,800 bits = 921,600 bytes of pixel data.
+
+**Misconceptions to correct**
+
+- Students often say 'higher quality is always better'. Correction: higher quality can be wasteful if storage, bandwidth or purpose does not justify it.
+
+#### Mastery check (MC-L005-S1.09)
+
+Show the following targets in one connected answer, using a concrete example for each: vector encoding; drawing objects / drawing object; properties; drawing list; bitmap; given application.
+
+<details><summary>Answer criteria</summary>
+
+- Vector encoding stores a graphic as a drawing list of drawing objects. Each object has properties such as type, coordinates, dimensions, line colour, fill colour and line thickness; software redraws the objects from these instructions.
+- A bitmap file contains pixel data and a file header. The header stores metadata needed to interpret the file, such as its format and image properties; it is not one of the image pixels. When a calculation says to ignore the file header, calculate only width x height x colour depth.
+- Vectors scale without pixelation and suit logos, diagrams and shapes. Bitmaps store individual pixels and suit photographs or detailed textures. For a given application, the choice must be justified using the source image and intended editing or scaling.
+- Bitmap metadata is stored separately from pixel values, commonly in a file header. Add header or metadata bytes only when their size is supplied; when a question says to ignore the header, calculate pixel data only.
+- For an uncompressed bitmap, pixel-data size in bits is width in pixels x height in pixels x colour depth in bits per pixel. Divide by 8 to convert bits to bytes. Use the units requested by the question.
+- A vector logo is a recipe that can be cooked at any size; a bitmap photograph is a fixed mosaic of sampled colours.
+
+</details>
+
+**Supplementary concept map**
 
 - **Object:** shape or line
 - **Properties:** size, colour, position
@@ -122,7 +245,7 @@ Use and understand the terms pixel, file header, image resolution, screen resolu
 - **Redraw:** render at any scale
 - **Bitmap:** fixed pixel grid
 
-**Mechanism**
+**Supplementary three-step recap**
 
 1. **Save objects and properties** — The file records how each object should be drawn.
 2. **Follow the drawing list** — Software redraws the objects at the requested size.
@@ -150,7 +273,7 @@ Use drawing object, property and drawing list; a justification must connect bitm
 
 </details>
 
-<details><summary>Open precise terminology and exam facts</summary>
+### Lesson technical reference
 
 - Use and understand the terms pixel, file header, image resolution, screen resolution and colour depth/bit depth. Required effects concern image resolution and colour depth/bit depth.
 - Use drawing object, property and drawing list; a justification must connect bitmap/vector characteristics to the stated application.
@@ -161,14 +284,6 @@ Use drawing object, property and drawing list; a justification must connect bitm
 - Vector encoding stores a graphic as a drawing list of drawing objects. Each object has properties such as type, coordinates, dimensions, line colour, fill colour and line thickness; software redraws the objects from these instructions.
 - Vectors scale without pixelation and suit logos, diagrams and shapes. Bitmaps store individual pixels and suit photographs or detailed textures. For a given application, the choice must be justified using the source image and intended editing or scaling.
 - For a given application, justify bitmap or vector storage by connecting the image content and required editing or scaling to the chosen representation.
-
-</details>
-
-### Worked method
-
-1. Calculate pixel data and then account for metadata
-2. A 640 x 480 bitmap using 24-bit colour stores 640 x 480 x 24 = 7,372,800 bits = 921,600 bytes of pixel data.
-3. With a supplied 54-byte header, the total is 921,654 bytes.
 
 Beyond syllabus / 延伸知识（不要求背诵）: real file formats also store headers and metadata, so two files with the same visible content may still have different sizes.
 ## 3. Practice by question type
@@ -218,10 +333,11 @@ These are indexes only. Cambridge question and mark-scheme wording is not reprod
 
 ### Summary
 
-- Define bitmap and vector graphics with the exact technical vocabulary expected by the syllabus.
-- Use the lesson method on a fresh context and show the intermediate decision, representation or calculation.
-- Match the shape of the answer to the command word and the available marks.
-- Check the final answer against the scenario instead of repeating a memorised sentence.
+- S1.08: explain pixel, file header, pixel data, image resolution, screen resolution, colour depth / color depth, ignore / header.
+- S1.08 method: Establish the exact components or states → Trace the relationship or change → Use the explanation in a concrete case.
+- S1.09: explain vector encoding, drawing objects / drawing object, properties, drawing list, bitmap, given application.
+- S1.09 method: Establish the exact components or states → Trace the relationship or change → Use the explanation in a concrete case.
+- Correction to remember: Students often say 'higher quality is always better'. Correction: higher quality can be wasteful if storage, bandwidth or purpose does not justify it.
 
 ### Common error to correct
 

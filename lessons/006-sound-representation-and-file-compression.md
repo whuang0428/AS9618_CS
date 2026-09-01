@@ -32,7 +32,69 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ### 1. Sampling measures a wave at discrete moments (S1.10)
 
-**Concept relationships**
+**Atomic learning targets**
+
+- **S1.10.A01:** sound
+- **S1.10.A02:** digital representation
+- **S1.10.A03:** analogue-to-digital sampling
+- **S1.10.A04:** sampling rate
+- **S1.10.A05:** sampling resolution
+- **S1.10.A06:** file size
+- **S1.10.A07:** accuracy
+
+**Core explanation**
+
+- A vector file stores drawing objects rather than pixels. It can be compressed losslessly by storing repeated shapes or properties once and referring to them, and by removing redundant object descriptions. Sound can use lossless pattern coding when exact samples are required, or lossy perceptual coding that removes less-audible sound information; reducing sample rate or sampling resolution also reduces data but changes the recording.
+- An analogue sound wave varies continuously. Analogue-to-digital sampling measures its amplitude at regular time intervals, quantises each measurement to one permitted level and stores the resulting sample value as a binary number. The sequence of binary sample values is the digital representation of the sound.
+- Increasing sampling rate stores more measurements each second, which can improve time accuracy and increases file size. Increasing sampling resolution stores more bits for each sample, which gives more amplitude levels, can improve amplitude accuracy and increases file size. The syllabus requires these effects, not a sound-file-size calculation formula.
+- Sampling rate is the number of samples taken per second, measured in hertz (Hz). Sampling resolution is the number of bits used for each sample and therefore controls how many amplitude levels are available. 'Sample resolution' is a common synonym, but sampling resolution is the official syllabus term.
+- Sampling rate adds more columns in time; sampling resolution adds more rows for amplitude. A finer grid follows the wave more closely.
+- Sampling rate controls how often amplitude is measured.
+
+**Mechanism or method**
+
+1. **Establish the exact components or states** — A vector file stores drawing objects rather than pixels.
+2. **Trace the relationship or change** — It can be compressed losslessly by storing repeated shapes or properties once and referring to them, and by removing redundant object descriptions.
+3. **Use the explanation in a concrete case** — Sound can use lossless pattern coding when exact samples are required, or lossy perceptual coding that removes less-audible sound information;
+
+#### Worked example: Sampling measures a wave at discrete moments: complete worked route
+
+1. **Establish the exact components or states**
+
+A vector file stores drawing objects rather than pixels.
+
+2. **Trace the relationship or change**
+
+It can be compressed losslessly by storing repeated shapes or properties once and referring to them, and by removing redundant object descriptions.
+
+3. **Use the explanation in a concrete case**
+
+Sound can use lossless pattern coding when exact samples are required, or lossy perceptual coding that removes less-audible sound information;
+
+4. **Complete example**
+
+use lossless sound compression for an evidential recording, but perceptual lossy coding may suit streamed music when smaller size is worth a controlled quality loss.
+
+**Misconceptions to correct**
+
+- Students often assume compression always makes a file smaller. Correction: compression has overhead and depends on patterns in the data.
+
+#### Mastery check (MC-L006-S1.10)
+
+Show the following targets in one connected answer, using a concrete example for each: sound; digital representation; analogue-to-digital sampling; sampling rate; sampling resolution; file size; accuracy.
+
+<details><summary>Answer criteria</summary>
+
+- A vector file stores drawing objects rather than pixels. It can be compressed losslessly by storing repeated shapes or properties once and referring to them, and by removing redundant object descriptions. Sound can use lossless pattern coding when exact samples are required, or lossy perceptual coding that removes less-audible sound information; reducing sample rate or sampling resolution also reduces data but changes the recording.
+- An analogue sound wave varies continuously. Analogue-to-digital sampling measures its amplitude at regular time intervals, quantises each measurement to one permitted level and stores the resulting sample value as a binary number. The sequence of binary sample values is the digital representation of the sound.
+- Increasing sampling rate stores more measurements each second, which can improve time accuracy and increases file size. Increasing sampling resolution stores more bits for each sample, which gives more amplitude levels, can improve amplitude accuracy and increases file size. The syllabus requires these effects, not a sound-file-size calculation formula.
+- Sampling rate is the number of samples taken per second, measured in hertz (Hz). Sampling resolution is the number of bits used for each sample and therefore controls how many amplitude levels are available. 'Sample resolution' is a common synonym, but sampling resolution is the official syllabus term.
+- Sampling rate adds more columns in time; sampling resolution adds more rows for amplitude. A finer grid follows the wave more closely.
+- Sampling rate controls how often amplitude is measured.
+
+</details>
+
+**Supplementary concept map**
 
 - **Analogue:** continuous wave
 - **Sample:** one measurement
@@ -41,7 +103,7 @@ Ask the learner to give one accurate definition or method step before continuing
 - **Accuracy:** closer approximation
 - **File size:** more stored bits
 
-**Mechanism**
+**Supplementary three-step recap**
 
 1. **Measure the wave repeatedly** — Sampling rate controls how often amplitude is measured.
 2. **Encode each measurement** — Sampling resolution controls the available amplitude levels.
@@ -100,7 +162,91 @@ Use the terms sampling, sampling rate and sampling resolution. Explain the impac
 
 ### 2. Compression removes or rewrites repeated information (S1.11)
 
-**Concept relationships**
+**Atomic learning targets**
+
+- **S1.11.A01:** compression
+- **S1.11.A02:** lossy
+- **S1.11.A03:** lossless
+- **S1.11.A04:** text
+- **S1.11.A05:** bitmap
+- **S1.11.A06:** vector
+- **S1.11.A07:** sound
+- **S1.11.A08:** RLE / run-length encoding
+
+**Core explanation**
+
+- Compression represents the same useful information with fewer bits. Lossless compression reconstructs every original bit; lossy compression permanently removes selected detail and cannot recreate the exact original.
+- Ordinary text, program source and other symbol data normally require lossless compression because changing or removing a character can change the meaning. RLE and dictionary references are lossless when their decoding rules reproduce every symbol exactly.
+- A bitmap can use lossless RLE when neighbouring pixels have long repeated colour runs. A photographic bitmap may instead use lossy compression that removes fine colour or spatial detail, accepting some quality reduction for a smaller file.
+- A vector file can store a repeated object or property once and refer to it, without changing the drawing instructions. Sound can use lossless pattern coding for exact samples or lossy perceptual coding that removes less-audible information when the application accepts a quality trade-off.
+- RLE stores each run as a count and a value. It is effective for long runs when the saved repetitions outweigh the count/value overhead; short or constantly changing runs can make the encoded data larger.
+
+**Mechanism or method**
+
+1. **Decide whether exact reconstruction is required** — Choose lossless for text or evidence that must be reproduced bit for bit; choose lossy only when discarded detail is acceptable.
+2. **Inspect the data for usable redundancy** — Look for repeated symbols, pixel runs, repeated vector objects or less-perceptible sound detail instead of choosing by filename alone.
+3. **Compare size and quality after encoding** — Decode lossless data to confirm equality; for lossy data, judge whether the irreversible quality loss remains acceptable for its purpose.
+
+#### Worked example: Encode and decode a run-length sequence
+
+1. **Source**
+
+Start with AAAABBCCCCCCCCDD.
+
+2. **Runs**
+
+Separate the data into AAAA \| BB \| CCCCCCCC \| DD.
+
+3. **Encode**
+
+Write a count/value pair for every run: 4A 2B 8C 2D.
+
+4. **Decode**
+
+Expand the pairs to four A values, two B values, eight C values and two D values; the result exactly matches the source.
+
+5. **Counterexample**
+
+ABC becomes 1A 1B 1C. The counts add overhead, so RLE is unsuitable for this data even though it is lossless.
+
+#### Worked example: Choose a method for four file types
+
+1. **Text**
+
+Use lossless RLE for repeated characters or a lossless dictionary for repeated strings; every original character must return.
+
+2. **Bitmap**
+
+Use RLE for a flat-colour logo with long pixel runs, or controlled lossy compression for a photograph when smaller size is worth reduced detail.
+
+3. **Vector**
+
+Store a repeated shape or property once and reference it, preserving the drawing instructions exactly.
+
+4. **Sound**
+
+Use lossless coding for an evidential recording; perceptual lossy coding can suit streamed music when the irreversible quality loss is acceptable.
+
+**Misconceptions to correct**
+
+- Lossless does not guarantee a smaller result: RLE can grow data that has few useful runs.
+- Lossy compression is not normally suitable for ordinary text because a discarded symbol can change meaning.
+
+#### Mastery check (MC-L006-S1.11)
+
+Show the following targets in one connected answer, using a concrete example for each: compression; lossy; lossless; text; bitmap; vector; sound; RLE / run-length encoding.
+
+<details><summary>Answer criteria</summary>
+
+- Compression represents the same useful information with fewer bits. Lossless compression reconstructs every original bit; lossy compression permanently removes selected detail and cannot recreate the exact original.
+- Ordinary text, program source and other symbol data normally require lossless compression because changing or removing a character can change the meaning. RLE and dictionary references are lossless when their decoding rules reproduce every symbol exactly.
+- A bitmap can use lossless RLE when neighbouring pixels have long repeated colour runs. A photographic bitmap may instead use lossy compression that removes fine colour or spatial detail, accepting some quality reduction for a smaller file.
+- A vector file can store a repeated object or property once and refer to it, without changing the drawing instructions. Sound can use lossless pattern coding for exact samples or lossy perceptual coding that removes less-audible information when the application accepts a quality trade-off.
+- RLE stores each run as a count and a value. It is effective for long runs when the saved repetitions outweigh the count/value overhead; short or constantly changing runs can make the encoded data larger.
+
+</details>
+
+**Supplementary concept map**
 
 - **Need:** less storage or transfer
 - **Lossless:** exact reconstruction
@@ -109,11 +255,11 @@ Use the terms sampling, sampling rate and sampling resolution. Explain the impac
 - **Text:** must preserve symbols
 - **Media:** quality trade-off
 
-**Mechanism**
+**Supplementary three-step recap**
 
-1. **Find repeated or removable data** — Different file types contain different kinds of redundancy.
-2. **Decide whether exactness matters** — Use lossless when every original bit must be reconstructed.
-3. **Connect method to application** — State the size benefit and the acceptable quality consequence.
+1. **Decide whether exact reconstruction is required** — Choose lossless for text or evidence that must be reproduced bit for bit; choose lossy only when discarded detail is acceptable.
+2. **Inspect the data for usable redundancy** — Look for repeated symbols, pixel runs, repeated vector objects or less-perceptible sound detail instead of choosing by filename alone.
+3. **Compare size and quality after encoding** — Decode lossless data to confirm equality; for lossy data, judge whether the irreversible quality loss remains acceptable for its purpose.
 
 **Packing versus trimming:** RLE packs AAAABB as 4A2B without losing data. Lossy media compression trims detail that the chosen application can tolerate.
 
@@ -183,7 +329,7 @@ Run-length encoding (RLE) is the named example in the adjacent Notes and guidanc
 
 </details>
 
-<details><summary>Open precise terminology and exam facts</summary>
+### Lesson technical reference
 
 - Use the terms sampling, sampling rate and sampling resolution. Explain the impact of changing sampling rate and sampling resolution on file size and accuracy; sound-file-size calculation is not stated as a compulsory requirement.
 - Run-length encoding (RLE) is the named example in the adjacent Notes and guidance.
@@ -194,13 +340,6 @@ Run-length encoding (RLE) is the named example in the adjacent Notes and guidanc
 - Text can be compressed losslessly by run-length encoding repeated characters or by replacing repeated words/strings with shorter dictionary references. Bitmap data can use run-length encoding when adjacent pixels repeat; lossy bitmap compression may reduce colour precision or discard fine spatial detail. RLE is effective only when the runs save more space than their symbol-count representation.
 - A vector file stores drawing objects rather than pixels. It can be compressed losslessly by storing repeated shapes or properties once and referring to them, and by removing redundant object descriptions. Sound can use lossless pattern coding when exact samples are required, or lossy perceptual coding that removes less-audible sound information; reducing sample rate or sampling resolution also reduces data but changes the recording.
 - Method choice depends on file type, repetition, required fidelity and use. A valid justification must connect the chosen method to what may or may not be discarded; naming 'lossy' or 'lossless' alone is not enough.
-
-</details>
-
-### Worked method
-
-1. Choose methods for four files
-2. Compress repeated spaces in a text log with RLE or a dictionary without changing the characters; compress a flat-colour bitmap logo with pixel-value RLE; store one repeated vector shape once…
 
 Beyond syllabus / 延伸知识（不要求背诵）: real file formats also store headers and metadata, so two files with the same visible content may still have different sizes.
 ## 3. Practice by question type
@@ -250,10 +389,11 @@ These are indexes only. Cambridge question and mark-scheme wording is not reprod
 
 ### Summary
 
-- Define sound representation and file compression with the exact technical vocabulary expected by the syllabus.
-- Use the lesson method on a fresh context and show the intermediate decision, representation or calculation.
-- Match the shape of the answer to the command word and the available marks.
-- Check the final answer against the scenario instead of repeating a memorised sentence.
+- S1.10: explain sound, digital representation, analogue-to-digital sampling, sampling rate, sampling resolution, file size, accuracy.
+- S1.10 method: Establish the exact components or states → Trace the relationship or change → Use the explanation in a concrete case.
+- S1.11: explain compression, lossy, lossless, text, bitmap, vector, sound, RLE / run-length encoding.
+- S1.11 method: Decide whether exact reconstruction is required → Inspect the data for usable redundancy → Compare size and quality after encoding.
+- Correction to remember: Students often assume compression always makes a file smaller. Correction: compression has overhead and depends on patterns in the data.
 
 ### Common error to correct
 

@@ -267,6 +267,39 @@ a { color: var(--course-blue); }
 }
 .v2-knowledge-point-head p { margin: 0; color: var(--course-blue); font-size: 0.76rem; font-weight: 850; letter-spacing: 0.06em; text-transform: uppercase; }
 .v2-knowledge-point-head h3 { margin: 2px 0 0; font-size: clamp(1.3rem, 2.1vw, 1.7rem); line-height: 1.2; }
+.v2-teaching-unit { display: grid; gap: 16px; margin-bottom: 24px; }
+.v2-learning-targets, .v2-point-explanation, .v2-point-mechanism, .v2-misconceptions, .v2-mastery-check {
+  min-width: 0;
+  padding: 18px;
+  border: 1px solid var(--course-line);
+  border-radius: 10px;
+  background: #ffffff;
+}
+.v2-teaching-unit h4, .v2-supplementary-heading h4 { margin: 0 0 11px; color: var(--course-blue); font-size: 1.02rem; }
+.v2-learning-targets { background: var(--course-blue-soft); }
+.v2-learning-targets ul, .v2-misconceptions ul, .v2-mastery-check ul { display: grid; gap: 7px; margin: 0; padding-left: 1.25rem; }
+.v2-learning-targets strong { margin-right: 5px; color: #123f7d; }
+.v2-point-explanation p { margin: 0 0 10px; line-height: 1.62; }
+.v2-point-explanation p:last-child { margin-bottom: 0; }
+.v2-point-mechanism { border-top: 4px solid var(--course-blue); }
+.v2-point-mechanism ol { display: grid; gap: 12px; margin: 0; padding: 0; list-style: none; }
+.v2-point-mechanism li { display: grid; grid-template-columns: 92px minmax(0, 1fr); gap: 12px; }
+.v2-point-mechanism li > span { color: var(--course-blue); font-size: 0.78rem; font-weight: 900; letter-spacing: 0.04em; text-transform: uppercase; }
+.v2-point-mechanism p { margin: 3px 0 0; color: var(--course-muted); }
+.v2-worked-example-list { display: grid; gap: 14px; }
+.v2-worked-example h4 { margin: 0 0 12px; }
+.v2-worked-example ol { display: grid; gap: 12px; margin: 0; padding-left: 1.35rem; }
+.v2-worked-example li > strong { display: block; margin-bottom: 4px; color: var(--course-green); }
+.v2-worked-example p { margin: 0; }
+.v2-worked-example pre { max-width: 100%; margin: 7px 0 0; overflow-x: auto; padding: 13px; border: 1px solid #bddac8; border-radius: 8px; background: #ffffff; color: #183526; font-size: 0.88rem; line-height: 1.5; white-space: pre; }
+.v2-misconceptions { border-left: 5px solid var(--course-red); background: var(--course-red-soft); }
+.v2-mastery-check { border-left: 5px solid var(--course-blue); background: #f8fbff; }
+.v2-mastery-check > p { font-weight: 700; }
+.v2-mastery-check details { margin-top: 12px; padding-top: 10px; border-top: 1px solid var(--course-line); }
+.v2-mastery-check summary { color: var(--course-blue); font-weight: 850; cursor: pointer; }
+.v2-supplementary-heading { margin: 26px 0 12px; padding-top: 18px; border-top: 1px dashed var(--course-line); }
+.v2-supplementary-heading h4 { margin-bottom: 4px; }
+.v2-supplementary-heading p { margin: 0; color: var(--course-muted); }
 .v2-material-triad {
   display: grid;
   grid-template-columns: minmax(250px, 0.9fr) minmax(360px, 1.4fr) minmax(240px, 0.85fr);
@@ -331,6 +364,8 @@ a { color: var(--course-blue); }
 .v2-review-lane > div > span { display: grid; flex: 0 0 38px; width: 38px; height: 38px; place-items: center; border-radius: 50%; background: var(--course-blue-soft); color: var(--course-blue); font-size: 0.78rem; font-weight: 900; }
 .v2-review-lane h3 { margin: 3px 0 0; font-size: 1.05rem; line-height: 1.25; }
 .v2-review-lane ul { display: grid; gap: 8px; margin: 16px 0 0; padding-left: 1.2rem; color: var(--course-muted); font-size: 0.9rem; }
+.v2-review-prompts { display: grid !important; gap: 9px !important; margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--course-line); }
+.v2-review-prompts p { margin: 0; color: #26384f; font-size: 0.9rem; line-height: 1.5; }
 .v2-review-method { margin-top: 18px; padding: 18px; border-left: 5px solid var(--course-green); border-radius: 8px; background: var(--course-green-soft); }
 .v2-review-method h3 { margin: 0 0 10px; }
 .v2-review-method ol { display: grid; gap: 8px; margin: 0; padding-left: 1.3rem; }
@@ -401,6 +436,7 @@ a { color: var(--course-blue); }
   .v2-material-triad { grid-template-columns: 1fr; }
   .v2-native-material--story { grid-column: auto; }
   .v2-concept-map { grid-template-columns: 1fr 1fr; }
+  .v2-point-mechanism li { grid-template-columns: 1fr; gap: 3px; }
   .v2-material-library-head { align-items: flex-end; }
   .v2-material-rail { overflow-x: hidden; }
   .v2-visual-media img { width: 720px; max-width: none; }

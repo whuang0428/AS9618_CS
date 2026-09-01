@@ -32,7 +32,65 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ### 1. Decomposition and express a problem as modules: Integrated algorithm design from a word problem (S9.02)
 
-**Concept relationships**
+**Atomic learning targets**
+
+- **S9.02.A01:** decomposition
+- **S9.02.A02:** problem
+- **S9.02.A03:** modules
+- **S9.02.A04:** procedure
+- **S9.02.A05:** function
+
+**Core explanation**
+
+- Decomposition breaks a problem into smaller sub-problems with distinct responsibilities. Express the resulting design as program modules with clear inputs, processing and outputs; a module may later be implemented as a procedure that performs an action or a function that returns a value.
+- Abstraction removes each irrelevant detail that does not affect the required inputs, rules, constraints or outputs. Producing an abstract model means recording the essential details that remain: the data, relationships and processes needed to solve the problem, not merely listing what was ignored.
+- An algorithm is a solution to a problem expressed as a sequence of defined steps. Each step must be unambiguous, ordered where order matters and capable of being carried out; a vague instruction such as 'process the data' is not a defined step.
+- Use input, process and output as the design structure for a complete pseudocode solution; the three parts must connect, use meaningful identifiers and satisfy the stated problem.
+- At each level, preserve the parent step's purpose and input-process-output relationship. Related substeps can be expressed as program modules, including procedures that perform actions and functions that return calculated values.
+
+**Mechanism or method**
+
+1. **Set up the required data and conditions** — Decomposition breaks a problem into smaller sub-problems with distinct responsibilities.
+2. **Carry out the complete method** — Express the resulting design as program modules with clear inputs, processing and outputs;
+3. **Trace or test the result** — a module may later be implemented as a procedure that performs an action or a function that returns a value.
+
+#### Worked example: Decomposition and express a problem as modules: Integrated algorithm design from a word problem: complete worked route
+
+1. **Set up the required data and conditions**
+
+Decomposition breaks a problem into smaller sub-problems with distinct responsibilities.
+
+2. **Carry out the complete method**
+
+Express the resulting design as program modules with clear inputs, processing and outputs;
+
+3. **Trace or test the result**
+
+a module may later be implemented as a procedure that performs an action or a function that returns a value.
+
+4. **Complete example**
+
+Design a result-processing solution: Keep only student ID and required marks, decompose the task into InputResults, ValidateResult, CalculateMean and OutputReport, record meaningful identifiers and IPO, refine CalculateMean into defined steps, use a range logic statement, and represent the final control flow in Cambridge pseudocode or a matching flowchart.
+
+**Misconceptions to correct**
+
+- Students often create one sub-problem per tiny action. Correction: each sub-problem needs a meaningful responsibility.
+
+#### Mastery check (MC-L054-S9.02)
+
+Complete a fresh example that demonstrates every target: decomposition; problem; modules; procedure; function. Show all intermediate steps and check the result.
+
+<details><summary>Answer criteria</summary>
+
+- Decomposition breaks a problem into smaller sub-problems with distinct responsibilities. Express the resulting design as program modules with clear inputs, processing and outputs; a module may later be implemented as a procedure that performs an action or a function that returns a value.
+- Abstraction removes each irrelevant detail that does not affect the required inputs, rules, constraints or outputs. Producing an abstract model means recording the essential details that remain: the data, relationships and processes needed to solve the problem, not merely listing what was ignored.
+- An algorithm is a solution to a problem expressed as a sequence of defined steps. Each step must be unambiguous, ordered where order matters and capable of being carried out; a vague instruction such as 'process the data' is not a defined step.
+- Use input, process and output as the design structure for a complete pseudocode solution; the three parts must connect, use meaningful identifiers and satisfy the stated problem.
+- At each level, preserve the parent step's purpose and input-process-output relationship. Related substeps can be expressed as program modules, including procedures that perform actions and functions that return calculated values.
+
+</details>
+
+**Supplementary concept map**
 
 - **sub-problem:** Decomposition must break a problem into sub-problems and…
 - **module:** Decomposition and express a problem as modules.
@@ -41,7 +99,7 @@ Ask the learner to give one accurate definition or method step before continuing
 - **responsibility:** Refinement supports review, implementation and testing because each…
 - **interface:** A module may later be implemented as a…
 
-**Mechanism**
+**Supplementary three-step recap**
 
 1. **Translate the stated design** — Decomposition must break a problem into sub-problems and lead to a program module, identified at design level as…
 2. **Apply one complete operation** — Decomposition and express a problem as modules.
@@ -61,7 +119,62 @@ Decomposition must break a problem into sub-problems and lead to a program modul
 
 ### 2. Input-process-output to design pseudocode solutions: Integrated algorithm design from a word problem (S9.05)
 
-**Concept relationships**
+**Atomic learning targets**
+
+- **S9.05.A01:** input-process-output
+- **S9.05.A02:** design
+- **S9.05.A03:** pseudocode
+- **S9.05.A04:** solution
+
+**Core explanation**
+
+- At each level, preserve the parent step's purpose and input-process-output relationship. Related substeps can be expressed as program modules, including procedures that perform actions and functions that return calculated values.
+- Decomposition breaks a problem into smaller sub-problems with distinct responsibilities. Express the resulting design as program modules with clear inputs, processing and outputs; a module may later be implemented as a procedure that performs an action or a function that returns a value.
+- Before writing pseudocode, identify the input data, the processing that transforms it and the required output. This input-process-output design must describe a complete solution rather than three unrelated lists.
+- An algorithm is a solution to a problem expressed as a sequence of defined steps. Each step must be unambiguous, ordered where order matters and capable of being carried out; a vague instruction such as 'process the data' is not a defined step.
+
+**Mechanism or method**
+
+1. **Set up the required data and conditions** — At each level, preserve the parent step's purpose and input-process-output relationship.
+2. **Carry out the complete method** — Related substeps can be expressed as program modules, including procedures that perform actions and functions that return calculated values.
+3. **Trace or test the result** — Decomposition breaks a problem into smaller sub-problems with distinct responsibilities.
+
+#### Worked example: Input-process-output to design pseudocode solutions: Integrated algorithm design from a word problem: complete worked route
+
+1. **Set up the required data and conditions**
+
+At each level, preserve the parent step's purpose and input-process-output relationship.
+
+2. **Carry out the complete method**
+
+Related substeps can be expressed as program modules, including procedures that perform actions and functions that return calculated values.
+
+3. **Trace or test the result**
+
+Decomposition breaks a problem into smaller sub-problems with distinct responsibilities.
+
+4. **Complete example**
+
+Design a result-processing solution: Keep only student ID and required marks, decompose the task into InputResults, ValidateResult, CalculateMean and OutputReport, record meaningful identifiers and IPO, refine CalculateMean into defined steps, use a range logic statement, and represent the final control flow in Cambridge pseudocode or a matching flowchart.
+
+**Misconceptions to correct**
+
+- Students often create one sub-problem per tiny action. Correction: each sub-problem needs a meaningful responsibility.
+
+#### Mastery check (MC-L054-S9.05)
+
+Complete a fresh example that demonstrates every target: input-process-output; design; pseudocode; solution. Show all intermediate steps and check the result.
+
+<details><summary>Answer criteria</summary>
+
+- At each level, preserve the parent step's purpose and input-process-output relationship. Related substeps can be expressed as program modules, including procedures that perform actions and functions that return calculated values.
+- Decomposition breaks a problem into smaller sub-problems with distinct responsibilities. Express the resulting design as program modules with clear inputs, processing and outputs; a module may later be implemented as a procedure that performs an action or a function that returns a value.
+- Before writing pseudocode, identify the input data, the processing that transforms it and the required output. This input-process-output design must describe a complete solution rather than three unrelated lists.
+- An algorithm is a solution to a problem expressed as a sequence of defined steps. Each step must be unambiguous, ordered where order matters and capable of being carried out; a vague instruction such as 'process the data' is not a defined step.
+
+</details>
+
+**Supplementary concept map**
 
 - **input-process-output:** Input-process-output to design pseudocode solutions.
 - **solution:** Input, process and output as the design structure…
@@ -69,7 +182,7 @@ Decomposition must break a problem into sub-problems and lead to a program modul
 - **pseudocode:** Before writing pseudocode, identify the input data, the…
 - **input:** At each level, preserve the parent step's purpose…
 
-**Mechanism**
+**Supplementary three-step recap**
 
 1. **Translate the stated design** — Input, process and output as the design structure for a complete pseudocode solution
 2. **Apply one complete operation** — Input-process-output to design pseudocode solutions.
@@ -89,7 +202,62 @@ Use input, process and output as the design structure for a complete pseudocode 
 
 ### 3. Stepwise refinement to develop an algorithm: Integrated algorithm design from a word problem (S9.08)
 
-**Concept relationships**
+**Atomic learning targets**
+
+- **S9.08.A01:** stepwise
+- **S9.08.A02:** refinement
+- **S9.08.A03:** algorithm
+- **S9.08.A04:** implement
+
+**Core explanation**
+
+- Stepwise refinement starts with a high-level algorithm and repeatedly replaces each complex step with a smaller sequence of defined substeps. Refinement stops when every step is precise enough to implement and its input and output are clear.
+- An algorithm is a solution to a problem expressed as a sequence of defined steps. Each step must be unambiguous, ordered where order matters and capable of being carried out; a vague instruction such as 'process the data' is not a defined step.
+- Decomposition breaks a problem into smaller sub-problems with distinct responsibilities. Express the resulting design as program modules with clear inputs, processing and outputs; a module may later be implemented as a procedure that performs an action or a function that returns a value.
+- Refinement supports review, implementation and testing because each module has a limited responsibility. It is not merely adding prose: every level must reduce ambiguity and collectively remain a complete solution.
+
+**Mechanism or method**
+
+1. **Set up the required data and conditions** — Stepwise refinement starts with a high-level algorithm and repeatedly replaces each complex step with a smaller sequence of defined substeps.
+2. **Carry out the complete method** — Refinement stops when every step is precise enough to implement and its input and output are clear.
+3. **Trace or test the result** — An algorithm is a solution to a problem expressed as a sequence of defined steps.
+
+#### Worked example: Stepwise refinement to develop an algorithm: Integrated algorithm design from a word problem: complete worked route
+
+1. **Set up the required data and conditions**
+
+Stepwise refinement starts with a high-level algorithm and repeatedly replaces each complex step with a smaller sequence of defined substeps.
+
+2. **Carry out the complete method**
+
+Refinement stops when every step is precise enough to implement and its input and output are clear.
+
+3. **Trace or test the result**
+
+An algorithm is a solution to a problem expressed as a sequence of defined steps.
+
+4. **Complete example**
+
+Design a result-processing solution: Keep only student ID and required marks, decompose the task into InputResults, ValidateResult, CalculateMean and OutputReport, record meaningful identifiers and IPO, refine CalculateMean into defined steps, use a range logic statement, and represent the final control flow in Cambridge pseudocode or a matching flowchart.
+
+**Misconceptions to correct**
+
+- Students often create one sub-problem per tiny action. Correction: each sub-problem needs a meaningful responsibility.
+
+#### Mastery check (MC-L054-S9.08)
+
+Complete a fresh example that demonstrates every target: stepwise; refinement; algorithm; implement. Show all intermediate steps and check the result.
+
+<details><summary>Answer criteria</summary>
+
+- Stepwise refinement starts with a high-level algorithm and repeatedly replaces each complex step with a smaller sequence of defined substeps. Refinement stops when every step is precise enough to implement and its input and output are clear.
+- An algorithm is a solution to a problem expressed as a sequence of defined steps. Each step must be unambiguous, ordered where order matters and capable of being carried out; a vague instruction such as 'process the data' is not a defined step.
+- Decomposition breaks a problem into smaller sub-problems with distinct responsibilities. Express the resulting design as program modules with clear inputs, processing and outputs; a module may later be implemented as a procedure that performs an action or a function that returns a value.
+- Refinement supports review, implementation and testing because each module has a limited responsibility. It is not merely adding prose: every level must reduce ambiguity and collectively remain a complete solution.
+
+</details>
+
+**Supplementary concept map**
 
 - **stepwise:** Stepwise refinement to develop an algorithm from a…
 - **refinement:** Stepwise refinement to develop an algorithm.
@@ -97,7 +265,7 @@ Use input, process and output as the design structure for a complete pseudocode 
 - **implement:** Refinement stops when every step is precise enough…
 - **develop:** Refinement supports review, implementation and testing because each…
 
-**Mechanism**
+**Supplementary three-step recap**
 
 1. **Translate the stated design** — Stepwise refinement to develop an algorithm from a high-level solution to a level of detail from which a…
 2. **Apply one complete operation** — Stepwise refinement to develop an algorithm.
@@ -127,7 +295,7 @@ Use stepwise refinement to develop an algorithm from a high-level solution to a 
 
 </details>
 
-<details><summary>Open precise terminology and exam facts</summary>
+### Lesson technical reference
 
 - Decomposition must break a problem into sub-problems and lead to a program module, identified at design level as a procedure or function with a distinct responsibility.
 - Use input, process and output as the design structure for a complete pseudocode solution; the three parts must connect, use meaningful identifiers and satisfy the stated problem.
@@ -141,13 +309,6 @@ Use stepwise refinement to develop an algorithm from a high-level solution to a 
 - Stepwise refinement starts with a high-level algorithm and repeatedly replaces each complex step with a smaller sequence of defined substeps. Refinement stops when every step is precise enough to implement and its input and output are clear.
 - At each level, preserve the parent step's purpose and input-process-output relationship. Related substeps can be expressed as program modules, including procedures that perform actions and functions that return calculated values.
 - Refinement supports review, implementation and testing because each module has a limited responsibility. It is not merely adding prose: every level must reduce ambiguity and collectively remain a complete solution.
-
-</details>
-
-### Worked method
-
-1. Design a result-processing solution
-2. Keep only student ID and required marks, decompose the task into InputResults, ValidateResult, CalculateMean and OutputReport, record meaningful identifiers and IPO, refine CalculateMean into defined steps, use a range logic…
 
 Beyond syllabus / 延伸知识（不要求背诵）: the same algorithm can be expressed in many programming languages; its logic should remain independent of syntax.
 ## 3. Practice by question type
@@ -197,10 +358,11 @@ These are indexes only. Cambridge question and mark-scheme wording is not reprod
 
 ### Summary
 
-- Define integrated algorithm design from a word problem with the exact technical vocabulary expected by the syllabus.
-- Use the lesson method on a fresh context and show the intermediate decision, representation or calculation.
-- Match the shape of the answer to the command word and the available marks.
-- Check the final answer against the scenario instead of repeating a memorised sentence.
+- S9.02: explain decomposition, problem, modules, procedure, function.
+- S9.02 method: Set up the required data and conditions → Carry out the complete method → Trace or test the result.
+- S9.05: explain input-process-output, design, pseudocode, solution.
+- S9.05 method: Set up the required data and conditions → Carry out the complete method → Trace or test the result.
+- S9.08: explain stepwise, refinement, algorithm, implement.
 
 ### Common error to correct
 

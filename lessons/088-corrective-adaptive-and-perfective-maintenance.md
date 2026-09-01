@@ -28,7 +28,62 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ### 1. Perfective, adaptive and corrective maintenance (S12.08)
 
-**Concept relationships**
+**Atomic learning targets**
+
+- **S12.08.A01:** perfective
+- **S12.08.A02:** adaptive
+- **S12.08.A03:** corrective
+- **S12.08.A04:** maintenance
+
+**Core explanation**
+
+- Maintenance continues after delivery because faults are discovered, operating environments and rules change, and users request improvements. Corrective maintenance fixes faults in required behaviour; adaptive maintenance changes software for a new environment, platform, law or external rule; perfective maintenance improves functionality, usability, performance or maintainability.
+- Classify the reason for the change, not the code edited. The same module could receive a corrective change for a crash, an adaptive change for a new operating-system interface, or a perfective change for faster search and a clearer result display.
+- Test the enhancement with data that exercises the new path and rerun regression tests for existing paths. Correcting a fault is corrective maintenance; adding or improving requested functionality is an enhancement and may be perfective maintenance.
+- Every maintenance change requires impact analysis, controlled amendment, tests for the changed behaviour and regression tests for unaffected behaviour. Records should link the request, code change and test evidence.
+
+**Mechanism or method**
+
+1. **Identify the relevant condition or input** — Maintenance continues after delivery because faults are discovered, operating environments and rules change, and users request improvements.
+2. **Trace how the process works** — Corrective maintenance fixes faults in required behaviour;
+3. **Connect the mechanism to its result** — adaptive maintenance changes software for a new environment, platform, law or external rule;
+
+#### Worked example: Perfective, adaptive and corrective maintenance: complete worked route
+
+1. **Identify the relevant condition or input**
+
+Maintenance continues after delivery because faults are discovered, operating environments and rules change, and users request improvements.
+
+2. **Trace how the process works**
+
+Corrective maintenance fixes faults in required behaviour;
+
+3. **Connect the mechanism to its result**
+
+adaptive maintenance changes software for a new environment, platform, law or external rule;
+
+4. **Complete example**
+
+Fixing a crash when saving is corrective.
+
+**Misconceptions to correct**
+
+- Students often describe the lifecycle as a fixed checklist. Correction: development is iterative; findings can send a project back to earlier stages.
+
+#### Mastery check (MC-L088-S12.08)
+
+Explain the following targets in one connected answer, using a concrete example for each: perfective; adaptive; corrective; maintenance.
+
+<details><summary>Answer criteria</summary>
+
+- Maintenance continues after delivery because faults are discovered, operating environments and rules change, and users request improvements. Corrective maintenance fixes faults in required behaviour; adaptive maintenance changes software for a new environment, platform, law or external rule; perfective maintenance improves functionality, usability, performance or maintainability.
+- Classify the reason for the change, not the code edited. The same module could receive a corrective change for a crash, an adaptive change for a new operating-system interface, or a perfective change for faster search and a clearer result display.
+- Test the enhancement with data that exercises the new path and rerun regression tests for existing paths. Correcting a fault is corrective maintenance; adding or improving requested functionality is an enhancement and may be perfective maintenance.
+- Every maintenance change requires impact analysis, controlled amendment, tests for the changed behaviour and regression tests for unaffected behaviour. Records should link the request, code change and test evidence.
+
+</details>
+
+**Supplementary concept map**
 
 - **Corrective:** Repairs a discovered fault
 - **Adaptive:** Responds to an environment change
@@ -36,7 +91,7 @@ Ask the learner to give one accurate definition or method step before continuing
 - **Maintenance:** Changes a delivered program
 - **Regression test:** Checks existing behaviour still works
 
-**Mechanism**
+**Supplementary three-step recap**
 
 1. **Name both alternatives precisely** — Perfective, adaptive and corrective maintenance.
 2. **Connect structure to consequence** — The need for continuing maintenance of a program and the differences between perfective, adaptive and corrective maintenance.
@@ -68,7 +123,7 @@ Understand the need for continuing maintenance of a program and the differences 
 
 </details>
 
-<details><summary>Open precise terminology and exam facts</summary>
+### Lesson technical reference
 
 - Understand the need for continuing maintenance of a program and the differences between perfective, adaptive and corrective maintenance.
 - Maintenance continues after delivery because faults are discovered, operating environments and rules change, and users request improvements. Corrective maintenance fixes faults in required behaviour; adaptive maintenance changes software for a new environment, platform, law or external rule; perfective maintenance improves functionality, usability, performance or maintainability.
@@ -77,16 +132,6 @@ Understand the need for continuing maintenance of a program and the differences 
 - Analyse the supplied program before editing it: state its current purpose, inputs, outputs, data structures, control flow and assumptions. Trace representative data to identify where a new requirement belongs and record behaviour that must remain unchanged.
 - Amend the existing program with the smallest coherent change that enhances functionality. Update related declarations, initialisation, processing and output together; preserve established interfaces unless the requirement needs an interface change; and keep Cambridge pseudocode constructs complete.
 - Test the enhancement with data that exercises the new path and rerun regression tests for existing paths. Correcting a fault is corrective maintenance; adding or improving requested functionality is an enhancement and may be perfective maintenance.
-
-</details>
-
-### Worked method
-
-1. Test login through review, construction, integration and release
-2. Test an inclusive mark range
-3. Three changes to one booking system
-4. Add a Merit count without breaking PassCount
-5. First dry-run the lockout counter and conduct a walkthrough in which peers inspect the algorithm.
 
 Beyond syllabus / 延伸知识（不要求背诵）: modern teams often use continuous integration to repeat building and testing whenever a program changes.
 ## 3. Practice by question type
@@ -125,10 +170,9 @@ State two precise facts about corrective, adaptive and perfective maintenance.
 
 ### Summary
 
-- Define corrective, adaptive and perfective maintenance with the exact technical vocabulary expected by the syllabus.
-- Use the lesson method on a fresh context and show the intermediate decision, representation or calculation.
-- Match the shape of the answer to the command word and the available marks.
-- Check the final answer against the scenario instead of repeating a memorised sentence.
+- S12.08: explain perfective, adaptive, corrective, maintenance.
+- S12.08 method: Identify the relevant condition or input → Trace how the process works → Connect the mechanism to its result.
+- Correction to remember: Students often describe the lifecycle as a fixed checklist. Correction: development is iterative; findings can send a project back to earlier stages.
 
 ### Common error to correct
 

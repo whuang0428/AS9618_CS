@@ -30,7 +30,69 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ### 1. A given SQL statement and explain the semantics of its clauses, identifiers, operators and values (S8.08)
 
-**Concept relationships**
+**Atomic learning targets**
+
+- **S8.08.A01:** SQL
+- **S8.08.A02:** SELECT
+- **S8.08.A03:** FROM
+- **S8.08.A04:** WHERE
+- **S8.08.A05:** fields
+- **S8.08.A06:** table
+- **S8.08.A07:** condition
+
+**Core explanation**
+
+- Structured Query Language (SQL) is the industry-standard language used by a DBMS for DDL and DML. To understand a statement, read each clause by its effect: SELECT chooses output fields, FROM identifies the source table, and WHERE filters records using a condition. Keywords, field names, table names, operators, literal values and punctuation have different roles.
+- A query uses SELECT fields FROM a table, may filter rows with WHERE, sort with ORDER BY and form aggregate groups with GROUP BY. SUM totals values, COUNT counts rows or values, and AVG calculates a mean. An INNER JOIN uses ON to match at most two tables in the required AS queries.
+- Database design review: connect each file-based limitation to a relational or DBMS mechanism; use entity/table, record/tuple and field/attribute precisely; distinguish candidate, primary, secondary and foreign keys; classify one-to-one, one-to-many and many-to-many relationships; apply referential integrity and indexing; document the design with an E-R diagram; and explain or produce 1NF, 2NF and 3NF designs.
+- A valid answer must preserve the requested semantics, not merely contain familiar keywords. Text and date values are normally quoted in this course's standard SQL style; numeric and Boolean values are not quoted. Clause order, comparison operators and requested output fields determine which records and columns appear.
+- AS DML questions use at most two tables. Write an explicit INNER JOIN between those tables and place the matching key condition after ON; use table-qualified field names where the same field name could be ambiguous.
+- A complete answer follows the scenario through design, statement and result. It does not claim that a primary key prevents every duplicate fact, that a secondary key must be unique, that normalisation guarantees correctness, or that a three-table/comma-style query is within the AS core boundary.
+
+**Mechanism or method**
+
+1. **Identify the relevant condition or input** — Structured Query Language (SQL) is the industry-standard language used by a DBMS for DDL and DML.
+2. **Trace how the process works** — To understand a statement, read each clause by its effect: SELECT chooses output fields, FROM identifies the source table, and WHERE filters records using a condition.
+3. **Connect the mechanism to its result** — Keywords, field names, table names, operators, literal values and punctuation have different roles.
+
+#### Worked example: A given SQL statement and explain the semantics of its clauses, identifiers, operators and values: complete worked route
+
+1. **Identify the relevant condition or input**
+
+Structured Query Language (SQL) is the industry-standard language used by a DBMS for DDL and DML.
+
+2. **Trace how the process works**
+
+To understand a statement, read each clause by its effect: SELECT chooses output fields, FROM identifies the source table, and WHERE filters records using a condition.
+
+3. **Connect the mechanism to its result**
+
+Keywords, field names, table names, operators, literal values and punctuation have different roles.
+
+4. **Complete example**
+
+Define two related tables / List overdue borrowers: CREATE DATABASE College; then CREATE TABLE Department and CREATE TABLE Student. ALTER TABLE can modify the structure later. SELECT Student.StudentName FROM Student INNER JOIN Loan ON Student.StudentID = Loan.StudentID WHERE Loan.DueDate < '2027-05-01'; uses two tables, one explicit join condition and one separate filter.
+
+**Misconceptions to correct**
+
+- Students often select every field with *. Correction: exam questions usually specify exactly which fields are required.
+
+#### Mastery check (MC-L043-S8.08)
+
+Explain the following targets in one connected answer, using a concrete example for each: SQL; SELECT; FROM; WHERE; fields; table; condition.
+
+<details><summary>Answer criteria</summary>
+
+- Structured Query Language (SQL) is the industry-standard language used by a DBMS for DDL and DML. To understand a statement, read each clause by its effect: SELECT chooses output fields, FROM identifies the source table, and WHERE filters records using a condition. Keywords, field names, table names, operators, literal values and punctuation have different roles.
+- A query uses SELECT fields FROM a table, may filter rows with WHERE, sort with ORDER BY and form aggregate groups with GROUP BY. SUM totals values, COUNT counts rows or values, and AVG calculates a mean. An INNER JOIN uses ON to match at most two tables in the required AS queries.
+- Database design review: connect each file-based limitation to a relational or DBMS mechanism; use entity/table, record/tuple and field/attribute precisely; distinguish candidate, primary, secondary and foreign keys; classify one-to-one, one-to-many and many-to-many relationships; apply referential integrity and indexing; document the design with an E-R diagram; and explain or produce 1NF, 2NF and 3NF designs.
+- A valid answer must preserve the requested semantics, not merely contain familiar keywords. Text and date values are normally quoted in this course's standard SQL style; numeric and Boolean values are not quoted. Clause order, comparison operators and requested output fields determine which records and columns appear.
+- AS DML questions use at most two tables. Write an explicit INNER JOIN between those tables and place the matching key condition after ON; use table-qualified field names where the same field name could be ambiguous.
+- A complete answer follows the scenario through design, statement and result. It does not claim that a primary key prevents every duplicate fact, that a secondary key must be unique, that normalisation guarantees correctness, or that a three-table/comma-style query is within the AS core boundary.
+
+</details>
+
+**Supplementary concept map**
 
 - **SQL:** A given SQL statement and explain the semantics…
 - **SELECT:** SELECT chooses output fields, FROM identifies the source…
@@ -39,7 +101,7 @@ Ask the learner to give one accurate definition or method step before continuing
 - **condition:** An explicit INNER JOIN between those tables and…
 - **FROM:** DDL structure commands from DML query/maintenance commands, use…
 
-**Mechanism**
+**Supplementary three-step recap**
 
 1. **Identify structure and target data** — A given SQL statement and explain the semantics of its clauses, identifiers, operators and values.
 2. **Apply the database rule** — A query uses SELECT fields FROM a table, may filter rows with WHERE, sort with ORDER BY and…
@@ -71,7 +133,73 @@ The syllabus explicitly requires understanding a given SQL statement. Evidence m
 
 ### 2. DML on at most two tables: SELECT, FROM, WHERE, ORDER BY, GROUP BY, INNER JOIN, SUM,… (S8.10)
 
-**Concept relationships**
+**Atomic learning targets**
+
+- **S8.10.A01:** SELECT
+- **S8.10.A02:** FROM
+- **S8.10.A03:** WHERE
+- **S8.10.A04:** ORDER BY
+- **S8.10.A05:** GROUP BY
+- **S8.10.A06:** INNER JOIN
+- **S8.10.A07:** ON
+- **S8.10.A08:** SUM
+- **S8.10.A09:** COUNT
+- **S8.10.A10:** AVG
+- **S8.10.A11:** at most two / two table / two-table
+
+**Core explanation**
+
+- A query uses SELECT fields FROM a table, may filter rows with WHERE, sort with ORDER BY and form aggregate groups with GROUP BY. SUM totals values, COUNT counts rows or values, and AVG calculates a mean. An INNER JOIN uses ON to match at most two tables in the required AS queries.
+- Database design review: connect each file-based limitation to a relational or DBMS mechanism; use entity/table, record/tuple and field/attribute precisely; distinguish candidate, primary, secondary and foreign keys; classify one-to-one, one-to-many and many-to-many relationships; apply referential integrity and indexing; document the design with an E-R diagram; and explain or produce 1NF, 2NF and 3NF designs.
+- Structured Query Language (SQL) is the industry-standard language used by a DBMS for DDL and DML. To understand a statement, read each clause by its effect: SELECT chooses output fields, FROM identifies the source table, and WHERE filters records using a condition. Keywords, field names, table names, operators, literal values and punctuation have different roles.
+- A valid answer must preserve the requested semantics, not merely contain familiar keywords. Text and date values are normally quoted in this course's standard SQL style; numeric and Boolean values are not quoted. Clause order, comparison operators and requested output fields determine which records and columns appear.
+- AS DML questions use at most two tables. Write an explicit INNER JOIN between those tables and place the matching key condition after ON; use table-qualified field names where the same field name could be ambiguous.
+- A complete answer follows the scenario through design, statement and result. It does not claim that a primary key prevents every duplicate fact, that a secondary key must be unique, that normalisation guarantees correctness, or that a three-table/comma-style query is within the AS core boundary.
+
+**Mechanism or method**
+
+1. **Set up the required data and conditions** — A query uses SELECT fields FROM a table, may filter rows with WHERE, sort with ORDER BY and form aggregate groups with GROUP BY.
+2. **Carry out the complete method** — SUM totals values, COUNT counts rows or values, and AVG calculates a mean.
+3. **Trace or test the result** — An INNER JOIN uses ON to match at most two tables in the required AS queries.
+
+#### Worked example: DML on at most two tables: SELECT, FROM, WHERE, ORDER BY, GROUP BY, INNER JOIN, SUM,: complete worked route
+
+1. **Set up the required data and conditions**
+
+A query uses SELECT fields FROM a table, may filter rows with WHERE, sort with ORDER BY and form aggregate groups with GROUP BY.
+
+2. **Carry out the complete method**
+
+SUM totals values, COUNT counts rows or values, and AVG calculates a mean.
+
+3. **Trace or test the result**
+
+An INNER JOIN uses ON to match at most two tables in the required AS queries.
+
+4. **Complete example**
+
+SELECT Student.StudentName FROM Student INNER JOIN Loan ON Student.StudentID = Loan.StudentID WHERE Loan.DueDate < '2027-05-01'; uses two tables, one explicit join condition and one separate filter.
+
+**Misconceptions to correct**
+
+- Students often select every field with *. Correction: exam questions usually specify exactly which fields are required.
+
+#### Mastery check (MC-L043-S8.10)
+
+Complete a fresh example that demonstrates every target: SELECT; FROM; WHERE; ORDER BY; GROUP BY; INNER JOIN; ON ; SUM; COUNT; AVG; at most two / two table / two-table. Show all intermediate steps and check the result.
+
+<details><summary>Answer criteria</summary>
+
+- A query uses SELECT fields FROM a table, may filter rows with WHERE, sort with ORDER BY and form aggregate groups with GROUP BY. SUM totals values, COUNT counts rows or values, and AVG calculates a mean. An INNER JOIN uses ON to match at most two tables in the required AS queries.
+- Database design review: connect each file-based limitation to a relational or DBMS mechanism; use entity/table, record/tuple and field/attribute precisely; distinguish candidate, primary, secondary and foreign keys; classify one-to-one, one-to-many and many-to-many relationships; apply referential integrity and indexing; document the design with an E-R diagram; and explain or produce 1NF, 2NF and 3NF designs.
+- Structured Query Language (SQL) is the industry-standard language used by a DBMS for DDL and DML. To understand a statement, read each clause by its effect: SELECT chooses output fields, FROM identifies the source table, and WHERE filters records using a condition. Keywords, field names, table names, operators, literal values and punctuation have different roles.
+- A valid answer must preserve the requested semantics, not merely contain familiar keywords. Text and date values are normally quoted in this course's standard SQL style; numeric and Boolean values are not quoted. Clause order, comparison operators and requested output fields determine which records and columns appear.
+- AS DML questions use at most two tables. Write an explicit INNER JOIN between those tables and place the matching key condition after ON; use table-qualified field names where the same field name could be ambiguous.
+- A complete answer follows the scenario through design, statement and result. It does not claim that a primary key prevents every duplicate fact, that a secondary key must be unique, that normalisation guarantees correctness, or that a three-table/comma-style query is within the AS core boundary.
+
+</details>
+
+**Supplementary concept map**
 
 - **INNER JOIN:** DML scripts to data stored in at most…
 - **two table:** DDL structure commands from DML query/maintenance commands, use…
@@ -80,7 +208,7 @@ The syllabus explicitly requires understanding a given SQL statement. Evidence m
 - **GROUP BY:** An INNER JOIN uses ON to match at…
 - **SUM:** SUM totals values, COUNT counts rows or values,…
 
-**Mechanism**
+**Supplementary three-step recap**
 
 1. **Identify structure and target data** — DML scripts to data stored in at most two tables and names SELECT, FROM, WHERE, ORDER BY, GROUP…
 2. **Apply the database rule** — DDL structure commands from DML query/maintenance commands, use every required data type and key clause, and keep SELECT…
@@ -109,7 +237,7 @@ the syllabus limits DML scripts to data stored in at most two tables and names S
 
 </details>
 
-<details><summary>Open precise terminology and exam facts</summary>
+### Lesson technical reference
 
 - The syllabus explicitly requires understanding a given SQL statement. Evidence must show what a statement does to its result or stored data, not only recognise isolated keywords.
 - the syllabus limits DML scripts to data stored in at most two tables and names SELECT, FROM, WHERE, ORDER BY, GROUP BY, INNER JOIN, SUM, COUNT and AVG. The course uses explicit INNER JOIN ... ON for two-table core queries.
@@ -123,16 +251,6 @@ the syllabus limits DML scripts to data stored in at most two tables and names S
 - Database design review: connect each file-based limitation to a relational or DBMS mechanism; use entity/table, record/tuple and field/attribute precisely; distinguish candidate, primary, secondary and foreign keys; classify one-to-one, one-to-many and many-to-many relationships; apply referential integrity and indexing; document the design with an E-R diagram; and explain or produce 1NF, 2NF and 3NF designs.
 - DBMS and SQL review: identify data management/data dictionary, data modelling, logical schema, integrity, security/backup/access rights, developer interface and query processor. Distinguish DDL structure commands from DML query/maintenance commands, use every required data type and key clause, and keep SELECT queries to at most two tables with explicit INNER JOIN ... ON when two tables are needed.
 - A complete answer follows the scenario through design, statement and result. It does not claim that a primary key prevents every duplicate fact, that a secondary key must be unique, that normalisation guarantees correctness, or that a three-table/comma-style query is within the AS core boundary.
-
-</details>
-
-### Worked method
-
-1. Define two related tables
-2. List overdue borrowers
-3. CREATE DATABASE College; then CREATE TABLE Department and CREATE TABLE Student.
-4. Student uses INTEGER for StudentID, VARCHAR for Name, DATE for DateOfBirth, BOOLEAN for Active and a DepartmentID foreign key REFERENCES Department(DepartmentID).
-5. ALTER TABLE can modify the structure later.
 
 Beyond syllabus / 延伸知识（不要求背诵）: production databases also manage transactions and concurrent users; these ideas extend the syllabus model of integrity and access control.
 ## 3. Practice by question type
@@ -182,10 +300,11 @@ These are indexes only. Cambridge question and mark-scheme wording is not reprod
 
 ### Summary
 
-- Define reading and writing sql queries with the exact technical vocabulary expected by the syllabus.
-- Use the lesson method on a fresh context and show the intermediate decision, representation or calculation.
-- Match the shape of the answer to the command word and the available marks.
-- Check the final answer against the scenario instead of repeating a memorised sentence.
+- S8.08: explain SQL, SELECT, FROM, WHERE, fields, table, condition.
+- S8.08 method: Identify the relevant condition or input → Trace how the process works → Connect the mechanism to its result.
+- S8.10: explain SELECT, FROM, WHERE, ORDER BY, GROUP BY, INNER JOIN, ON, SUM, COUNT, AVG, at most two / two table / two-table.
+- S8.10 method: Set up the required data and conditions → Carry out the complete method → Trace or test the result.
+- Correction to remember: Students often select every field with *. Correction: exam questions usually specify exactly which fields are required.
 
 ### Common error to correct
 

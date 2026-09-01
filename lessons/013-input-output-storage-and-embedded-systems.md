@@ -24,7 +24,65 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ### 1. The need for input, output, primary storage, secondary storage and removable storage (S3.01)
 
-**Concept relationships**
+**Atomic learning targets**
+
+- **S3.01.A01:** input
+- **S3.01.A02:** output
+- **S3.01.A03:** primary memory
+- **S3.01.A04:** secondary storage
+- **S3.01.A05:** removable storage
+
+**Core explanation**
+
+- Input is needed to enter data and instructions into a computer system. Output is needed to communicate processed information to a user or to cause an action. A processor cannot perform a useful task unless it can receive the required data and make the result available.
+- Primary memory is needed to hold the instructions and data currently being used by the processor. Secondary storage is needed for non-volatile, long-term retention of programs and data. Removable storage is secondary storage that can be disconnected, so it can transfer data or hold an offline backup, although it can be lost or stolen.
+- An embedded system is a computer system built into a larger device to perform one dedicated task or a closely related set of tasks. A microcontroller may integrate the processor, memory and input/output interfaces needed for that task.
+- A control system sends output signals to actuators and uses sensor feedback to determine the next control action.
+- Input devices Allow data to enter the system.
+
+**Mechanism or method**
+
+1. **Identify the relevant condition or input** — Input is needed to enter data and instructions into a computer system.
+2. **Trace how the process works** — Output is needed to communicate processed information to a user or to cause an action.
+3. **Connect the mechanism to its result** — A processor cannot perform a useful task unless it can receive the required data and make the result available.
+
+#### Worked example: The need for input, output, primary storage, secondary storage and removable storage: complete worked route
+
+1. **Identify the relevant condition or input**
+
+Input is needed to enter data and instructions into a computer system.
+
+2. **Trace how the process works**
+
+Output is needed to communicate processed information to a user or to cause an action.
+
+3. **Connect the mechanism to its result**
+
+A processor cannot perform a useful task unless it can receive the required data and make the result available.
+
+4. **Complete example**
+
+Field survey tablet: A surveyor enters measurements through a touchscreen, sees validation messages on the display, uses RAM as primary memory while the survey application runs, saves records on internal secondary storage, and copies an encrypted backup to removable storage before leaving the site.
+
+**Misconceptions to correct**
+
+- Students often list hardware without explaining suitability. Correction: the mark usually comes from matching a feature to a need.
+
+#### Mastery check (MC-L013-S3.01)
+
+Explain the following targets in one connected answer, using a concrete example for each: input; output; primary memory; secondary storage; removable storage.
+
+<details><summary>Answer criteria</summary>
+
+- Input is needed to enter data and instructions into a computer system. Output is needed to communicate processed information to a user or to cause an action. A processor cannot perform a useful task unless it can receive the required data and make the result available.
+- Primary memory is needed to hold the instructions and data currently being used by the processor. Secondary storage is needed for non-volatile, long-term retention of programs and data. Removable storage is secondary storage that can be disconnected, so it can transfer data or hold an offline backup, although it can be lost or stolen.
+- An embedded system is a computer system built into a larger device to perform one dedicated task or a closely related set of tasks. A microcontroller may integrate the processor, memory and input/output interfaces needed for that task.
+- A control system sends output signals to actuators and uses sensor feedback to determine the next control action.
+- Input devices Allow data to enter the system.
+
+</details>
+
+**Supplementary concept map**
 
 - **primary memory:** The need for input, output, primary memory and…
 - **secondary storage:** The need for input, output, primary storage, secondary…
@@ -32,7 +90,7 @@ Ask the learner to give one accurate definition or method step before continuing
 - **input:** A microcontroller may integrate the processor, memory and…
 - **output:** Secondary storage is a separate bidirectional persistence path…
 
-**Mechanism**
+**Supplementary three-step recap**
 
 1. **Name the exact concept** — The need for input, output, primary memory and secondary storage, including removable storage.
 2. **Explain how its parts connect** — The need for input, output, primary storage, secondary storage and removable storage.
@@ -103,7 +161,62 @@ Show understanding of the need for input, output, primary memory and secondary s
 
 ### 2. Embedded systems and their benefits/drawbacks (S3.02)
 
-**Concept relationships**
+**Atomic learning targets**
+
+- **S3.02.A01:** embedded system
+- **S3.02.A02:** dedicated
+- **S3.02.A03:** benefit
+- **S3.02.A04:** drawback
+
+**Core explanation**
+
+- An embedded system is a computer system built into a larger device to perform one dedicated task or a closely related set of tasks. A microcontroller may integrate the processor, memory and input/output interfaces needed for that task.
+- Benefits can include low cost, low power use, small size and reliable, predictable automatic operation because the hardware and software are designed for a limited purpose. Drawbacks can include limited processing, storage and user interface, difficulty adding new functions, and dependence on the embedded controller: if it fails, the larger device may stop working. A valid comparison must link each point to the device and task.
+- An embedded system is designed to perform a specific task or closely related set of tasks. It forms part of a larger product, such as a washing machine, microwave oven or router.
+- Embedded systems, including their benefits and drawbacks.
+
+**Mechanism or method**
+
+1. **Identify the relevant condition or input** — An embedded system is a computer system built into a larger device to perform one dedicated task or a closely related set of tasks.
+2. **Trace how the process works** — A microcontroller may integrate the processor, memory and input/output interfaces needed for that task.
+3. **Connect the mechanism to its result** — Benefits can include low cost, low power use, small size and reliable, predictable automatic operation because the hardware and software are designed for a limited purpose.
+
+#### Worked example: Embedded systems and their benefits/drawbacks: complete worked route
+
+1. **Identify the relevant condition or input**
+
+An embedded system is a computer system built into a larger device to perform one dedicated task or a closely related set of tasks.
+
+2. **Trace how the process works**
+
+A microcontroller may integrate the processor, memory and input/output interfaces needed for that task.
+
+3. **Connect the mechanism to its result**
+
+Benefits can include low cost, low power use, small size and reliable, predictable automatic operation because the hardware and software are designed for a limited purpose.
+
+4. **Complete example**
+
+Field survey tablet: A surveyor enters measurements through a touchscreen, sees validation messages on the display, uses RAM as primary memory while the survey application runs, saves records on internal secondary storage, and copies an encrypted backup to removable storage before leaving the site.
+
+**Misconceptions to correct**
+
+- Students often list hardware without explaining suitability. Correction: the mark usually comes from matching a feature to a need.
+
+#### Mastery check (MC-L013-S3.02)
+
+Explain the following targets in one connected answer, using a concrete example for each: embedded system; dedicated; benefit; drawback.
+
+<details><summary>Answer criteria</summary>
+
+- An embedded system is a computer system built into a larger device to perform one dedicated task or a closely related set of tasks. A microcontroller may integrate the processor, memory and input/output interfaces needed for that task.
+- Benefits can include low cost, low power use, small size and reliable, predictable automatic operation because the hardware and software are designed for a limited purpose. Drawbacks can include limited processing, storage and user interface, difficulty adding new functions, and dependence on the embedded controller: if it fails, the larger device may stop working. A valid comparison must link each point to the device and task.
+- An embedded system is designed to perform a specific task or closely related set of tasks. It forms part of a larger product, such as a washing machine, microwave oven or router.
+- Embedded systems, including their benefits and drawbacks.
+
+</details>
+
+**Supplementary concept map**
 
 - **benefit:** Embedded systems and their benefits/drawbacks.
 - **drawback:** Embedded systems, including their benefits and drawbacks.
@@ -111,7 +224,7 @@ Show understanding of the need for input, output, primary memory and secondary s
 - **dedicated:** Drawbacks can include limited processing, storage and user…
 - **embedded:** Define an embedded system by purpose and context,…
 
-**Mechanism**
+**Supplementary three-step recap**
 
 1. **Name both alternatives precisely** — Embedded systems and their benefits/drawbacks.
 2. **Connect structure to consequence** — Embedded systems, including their benefits and drawbacks.
@@ -141,7 +254,7 @@ Show understanding of embedded systems, including their benefits and drawbacks.
 
 </details>
 
-<details><summary>Open precise terminology and exam facts</summary>
+### Lesson technical reference
 
 - Show understanding of the need for input, output, primary memory and secondary storage, including removable storage.
 - Show understanding of embedded systems, including their benefits and drawbacks.
@@ -150,13 +263,6 @@ Show understanding of embedded systems, including their benefits and drawbacks.
 - An embedded system is a computer system built into a larger device to perform one dedicated task or a closely related set of tasks. A microcontroller may integrate the processor, memory and input/output interfaces needed for that task.
 - Benefits can include low cost, low power use, small size and reliable, predictable automatic operation because the hardware and software are designed for a limited purpose. Drawbacks can include limited processing, storage and user interface, difficulty adding new functions, and dependence on the embedded controller: if it fails, the larger device may stop working. A valid comparison must link each point to the device and task.
 - A control system sends output signals to actuators and uses sensor feedback to determine the next control action.
-
-</details>
-
-### Worked method
-
-1. Field survey tablet
-2. A surveyor enters measurements through a touchscreen, sees validation messages on the display, uses RAM as primary memory while the survey application runs, saves records on internal secondary storage, and…
 
 Beyond syllabus / 延伸知识（不要求背诵）: professional device selection also considers accessibility, reliability, repairability and energy use.
 ## 3. Practice by question type
@@ -206,10 +312,11 @@ These are indexes only. Cambridge question and mark-scheme wording is not reprod
 
 ### Summary
 
-- Define input, output, storage and embedded systems with the exact technical vocabulary expected by the syllabus.
-- Use the lesson method on a fresh context and show the intermediate decision, representation or calculation.
-- Match the shape of the answer to the command word and the available marks.
-- Check the final answer against the scenario instead of repeating a memorised sentence.
+- S3.01: explain input, output, primary memory, secondary storage, removable storage.
+- S3.01 method: Identify the relevant condition or input → Trace how the process works → Connect the mechanism to its result.
+- S3.02: explain embedded system, dedicated, benefit, drawback.
+- S3.02 method: Identify the relevant condition or input → Trace how the process works → Connect the mechanism to its result.
+- Correction to remember: Students often list hardware without explaining suitability. Correction: the mark usually comes from matching a feature to a need.
 
 ### Common error to correct
 

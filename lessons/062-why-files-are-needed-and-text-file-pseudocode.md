@@ -28,7 +28,62 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ### 1. The need for files and use text-file pseudocode (S10.07)
 
-**Concept relationships**
+**Atomic learning targets**
+
+- **S10.07.A01:** files
+- **S10.07.A02:** persistent
+- **S10.07.A03:** text file
+- **S10.07.A04:** pseudocode
+
+**Core explanation**
+
+- Variables, arrays and records in main memory normally lose their contents when a program ends or power is removed. Files provide persistent storage so data can be reloaded by a later run, transferred or shared as required. A file is not merely a larger array.
+- For a text file containing one or more lines, select the mode before processing: READ obtains existing data, WRITE creates or replaces output content, and APPEND adds after existing content. Every opened file must be closed after processing.
+- The need for files and use text-file pseudocode.
+- For a text file containing one or more lines, select the mode before processing
+
+**Mechanism or method**
+
+1. **Identify the relevant condition or input** — Variables, arrays and records in main memory normally lose their contents when a program ends or power is removed.
+2. **Trace how the process works** — Files provide persistent storage so data can be reloaded by a later run, transferred or shared as required.
+3. **Connect the mechanism to its result** — A file is not merely a larger array.
+
+#### Worked example: The need for files and use text-file pseudocode: complete worked route
+
+1. **Identify the relevant condition or input**
+
+Variables, arrays and records in main memory normally lose their contents when a program ends or power is removed.
+
+2. **Trace how the process works**
+
+Files provide persistent storage so data can be reloaded by a later run, transferred or shared as required.
+
+3. **Connect the mechanism to its result**
+
+A file is not merely a larger array.
+
+4. **Complete example**
+
+Copy selected lines between text files: Open Results.txt FOR READ and Pass.txt FOR WRITE.
+
+**Misconceptions to correct**
+
+- Students often confuse the identifier of the whole structure with one element. Correction: access requires an index or field name.
+
+#### Mastery check (MC-L062-S10.07)
+
+Explain the following targets in one connected answer, using a concrete example for each: files; persistent; text file; pseudocode.
+
+<details><summary>Answer criteria</summary>
+
+- Variables, arrays and records in main memory normally lose their contents when a program ends or power is removed. Files provide persistent storage so data can be reloaded by a later run, transferred or shared as required. A file is not merely a larger array.
+- For a text file containing one or more lines, select the mode before processing: READ obtains existing data, WRITE creates or replaces output content, and APPEND adds after existing content. Every opened file must be closed after processing.
+- The need for files and use text-file pseudocode.
+- For a text file containing one or more lines, select the mode before processing
+
+</details>
+
+**Supplementary concept map**
 
 - **text file:** The need for files and use text-file pseudocode.
 - **files:** Show why files are needed for persistent data…
@@ -36,7 +91,7 @@ Ask the learner to give one accurate definition or method step before continuing
 - **pseudocode:** Pseudocode vs Java
 - **need:** For a text file containing one or more…
 
-**Mechanism**
+**Supplementary three-step recap**
 
 1. **Translate the stated design** — The need for files and use text-file pseudocode.
 2. **Apply one complete operation** — Show why files are needed for persistent data beyond one program run, and write Cambridge pseudocode to handle…
@@ -73,22 +128,12 @@ Show why files are needed for persistent data beyond one program run, and write 
 
 </details>
 
-<details><summary>Open precise terminology and exam facts</summary>
+### Lesson technical reference
 
 - Show why files are needed for persistent data beyond one program run, and write Cambridge pseudocode to handle text files consisting of one or more lines, including opening, processing and closing in the correct mode.
 - Variables, arrays and records in main memory normally lose their contents when a program ends or power is removed. Files provide persistent storage so data can be reloaded by a later run, transferred or shared as required. A file is not merely a larger array.
 - For a text file containing one or more lines, select the mode before processing: READ obtains existing data, WRITE creates or replaces output content, and APPEND adds after existing content. Every opened file must be closed after processing.
 - A complete read algorithm uses OPENFILE for READ, checks NOT EOF before READFILE, processes each line and then CLOSEFILE. WRITEFILE stores a line in a file opened for WRITE or APPEND. Reading after EOF or using WRITE when old content must remain are boundary errors.
-
-</details>
-
-### Worked method
-
-1. Copy selected lines between text files
-2. Open Results.txt FOR READ and Pass.txt FOR WRITE.
-3. While NOT EOF(Results.txt), READFILE the next Line; if it contains PASS, WRITEFILE it to Pass.txt.
-4. Close both files after the loop.
-5. Results remain available from storage, while Pass.txt is deliberately created as a new output file.
 
 Beyond syllabus / 延伸知识（不要求背诵）: programming libraries often provide tested ADT implementations, but the exam expects you to understand their behaviour and selection.
 ## 3. Practice by question type
@@ -138,10 +183,9 @@ These are indexes only. Cambridge question and mark-scheme wording is not reprod
 
 ### Summary
 
-- Define why files are needed and text-file pseudocode with the exact technical vocabulary expected by the syllabus.
-- Use the lesson method on a fresh context and show the intermediate decision, representation or calculation.
-- Match the shape of the answer to the command word and the available marks.
-- Check the final answer against the scenario instead of repeating a memorised sentence.
+- S10.07: explain files, persistent, text file, pseudocode.
+- S10.07 method: Identify the relevant condition or input → Trace how the process works → Connect the mechanism to its result.
+- Correction to remember: Students often confuse the identifier of the whole structure with one element. Correction: access requires an index or field name.
 
 ### Common error to correct
 

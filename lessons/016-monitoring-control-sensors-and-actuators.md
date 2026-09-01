@@ -28,7 +28,63 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ### 1. Monitoring and control; understand sensors, actuators and feedback (S3.08)
 
-**Concept relationships**
+**Atomic learning targets**
+
+- **S3.08.A01:** monitoring
+- **S3.08.A02:** control
+- **S3.08.A03:** sensors
+- **S3.08.A04:** actuators
+- **S3.08.A05:** feedback
+
+**Core explanation**
+
+- A monitoring system uses sensors to collect data for recording, display or alerts; it does not necessarily change the environment. A control system uses sensor input and a stored rule or target to send output to an actuator. In closed-loop control, feedback is the new sensor reading produced after the action, allowing the controller to adjust or stop the output.
+- Actuators produce physical output actions such as moving a vent or switching a fan after the controller processes sensor input.
+- Choose a sensor by matching the physical quantity to the application: temperature for a greenhouse, pressure for a tyre or burglar mat, infra-red for a remote-control receiver or beam alarm, and sound for a noise monitor. A light-intensity sensor is useful supporting context but does not replace the named infra-red and sound sensors.
+- A temperature sensor measures temperature, a pressure sensor measures force per unit area or pressure, an infra-red sensor detects infra-red radiation, and a sound sensor detects sound level or sound waves. The sensor supplies input data; it does not itself decide or perform the control action.
+
+**Mechanism or method**
+
+1. **Identify the relevant condition or input** — A monitoring system uses sensors to collect data for recording, display or alerts;
+2. **Trace how the process works** — it does not necessarily change the environment.
+3. **Connect the mechanism to its result** — A control system uses sensor input and a stored rule or target to send output to an actuator.
+
+#### Worked example: Monitoring and control; understand sensors, actuators and feedback: complete worked route
+
+1. **Identify the relevant condition or input**
+
+A monitoring system uses sensors to collect data for recording, display or alerts;
+
+2. **Trace how the process works**
+
+it does not necessarily change the environment.
+
+3. **Connect the mechanism to its result**
+
+A control system uses sensor input and a stored rule or target to send output to an actuator.
+
+4. **Complete example**
+
+Greenhouse monitoring and control: A monitoring system records and displays temperature readings. A control system also compares each reading with a threshold and activates a fan motor actuator when the greenhouse is too hot. New temperature readings provide feedback, so the fan can stop when the target is reached.
+
+**Misconceptions to correct**
+
+- Students often say the sensor 'does the action'. Correction: sensors detect; actuators act.
+
+#### Mastery check (MC-L016-S3.08)
+
+Distinguish the following targets in one connected answer, using a concrete example for each: monitoring; control; sensors; actuators; feedback.
+
+<details><summary>Answer criteria</summary>
+
+- A monitoring system uses sensors to collect data for recording, display or alerts; it does not necessarily change the environment. A control system uses sensor input and a stored rule or target to send output to an actuator. In closed-loop control, feedback is the new sensor reading produced after the action, allowing the controller to adjust or stop the output.
+- Actuators produce physical output actions such as moving a vent or switching a fan after the controller processes sensor input.
+- Choose a sensor by matching the physical quantity to the application: temperature for a greenhouse, pressure for a tyre or burglar mat, infra-red for a remote-control receiver or beam alarm, and sound for a noise monitor. A light-intensity sensor is useful supporting context but does not replace the named infra-red and sound sensors.
+- A temperature sensor measures temperature, a pressure sensor measures force per unit area or pressure, an infra-red sensor detects infra-red radiation, and a sound sensor detects sound level or sound waves. The sensor supplies input data; it does not itself decide or perform the control action.
+
+</details>
+
+**Supplementary concept map**
 
 - **monitoring:** Monitoring and control systems, including the difference between…
 - **control:** In closed-loop control, feedback is the new sensor…
@@ -36,7 +92,7 @@ Ask the learner to give one accurate definition or method step before continuing
 - **actuators:** Actuators produce physical output actions such as moving…
 - **feedback:** Feedback New sensor readings check the result.
 
-**Mechanism**
+**Supplementary three-step recap**
 
 1. **Name both alternatives precisely** — Monitoring and control systems, including the difference between monitoring and control, the use of sensors and actuators, and…
 2. **Connect structure to consequence** — Sensors, actuators and feedback.
@@ -75,7 +131,62 @@ Show understanding of monitoring and control systems, including the difference b
 
 ### 2. Temperature, pressure, infrared and sound sensors and appropriate applications (S3.09)
 
-**Concept relationships**
+**Atomic learning targets**
+
+- **S3.09.A01:** temperature
+- **S3.09.A02:** pressure
+- **S3.09.A03:** infra-red / infrared
+- **S3.09.A04:** sound sensor
+
+**Core explanation**
+
+- Choose a sensor by matching the physical quantity to the application: temperature for a greenhouse, pressure for a tyre or burglar mat, infra-red for a remote-control receiver or beam alarm, and sound for a noise monitor. A light-intensity sensor is useful supporting context but does not replace the named infra-red and sound sensors.
+- A temperature sensor measures temperature, a pressure sensor measures force per unit area or pressure, an infra-red sensor detects infra-red radiation, and a sound sensor detects sound level or sound waves. The sensor supplies input data; it does not itself decide or perform the control action.
+- A temperature sensor measures temperature and a pressure sensor measures pressure. An infra-red sensor detects infra-red radiation, for example in a beam alarm or remote-control receiver.
+- Temperature, pressure, infrared and sound sensors and appropriate applications.
+
+**Mechanism or method**
+
+1. **Identify the relevant condition or input** — Choose a sensor by matching the physical quantity to the application: temperature for a greenhouse, pressure for a tyre or burglar mat, infra-red for a remote-control receiver or beam alarm, and sound for a noise monitor.
+2. **Trace how the process works** — A light-intensity sensor is useful supporting context but does not replace the named infra-red and sound sensors.
+3. **Connect the mechanism to its result** — A temperature sensor measures temperature, a pressure sensor measures force per unit area or pressure, an infra-red sensor detects infra-red radiation, and a sound sensor detects sound level or sound waves.
+
+#### Worked example: Temperature, pressure, infrared and sound sensors and appropriate applications: complete worked route
+
+1. **Identify the relevant condition or input**
+
+Choose a sensor by matching the physical quantity to the application: temperature for a greenhouse, pressure for a tyre or burglar mat, infra-red for a remote-control receiver or beam alarm, and sound for a noise monitor.
+
+2. **Trace how the process works**
+
+A light-intensity sensor is useful supporting context but does not replace the named infra-red and sound sensors.
+
+3. **Connect the mechanism to its result**
+
+A temperature sensor measures temperature, a pressure sensor measures force per unit area or pressure, an infra-red sensor detects infra-red radiation, and a sound sensor detects sound level or sound waves.
+
+4. **Complete example**
+
+Greenhouse monitoring and control: A monitoring system records and displays temperature readings. New temperature readings provide feedback, so the fan can stop when the target is reached.
+
+**Misconceptions to correct**
+
+- Students often say the sensor 'does the action'. Correction: sensors detect; actuators act.
+
+#### Mastery check (MC-L016-S3.09)
+
+Explain the following targets in one connected answer, using a concrete example for each: temperature; pressure; infra-red / infrared; sound sensor.
+
+<details><summary>Answer criteria</summary>
+
+- Choose a sensor by matching the physical quantity to the application: temperature for a greenhouse, pressure for a tyre or burglar mat, infra-red for a remote-control receiver or beam alarm, and sound for a noise monitor. A light-intensity sensor is useful supporting context but does not replace the named infra-red and sound sensors.
+- A temperature sensor measures temperature, a pressure sensor measures force per unit area or pressure, an infra-red sensor detects infra-red radiation, and a sound sensor detects sound level or sound waves. The sensor supplies input data; it does not itself decide or perform the control action.
+- A temperature sensor measures temperature and a pressure sensor measures pressure. An infra-red sensor detects infra-red radiation, for example in a beam alarm or remote-control receiver.
+- Temperature, pressure, infrared and sound sensors and appropriate applications.
+
+</details>
+
+**Supplementary concept map**
 
 - **sound sensor:** Temperature, pressure, infrared and sound sensors and appropriate…
 - **infrared:** Required sensor types are temperature, pressure, infra-red and…
@@ -83,7 +194,7 @@ Show understanding of monitoring and control systems, including the difference b
 - **pressure:** Temperature for a greenhouse, pressure for a tyre…
 - **sound:** A light-intensity sensor is useful supporting context but…
 
-**Mechanism**
+**Supplementary three-step recap**
 
 1. **Identify incoming data or signal** — Temperature, pressure, infrared and sound sensors and appropriate applications.
 2. **Follow the physical or logical path** — Required sensor types are temperature, pressure, infra-red and sound
@@ -113,7 +224,7 @@ Required sensor types are temperature, pressure, infra-red and sound; teaching a
 
 </details>
 
-<details><summary>Open precise terminology and exam facts</summary>
+### Lesson technical reference
 
 - Show understanding of monitoring and control systems, including the difference between monitoring and control, the use of sensors and actuators, and the importance of feedback.
 - Required sensor types are temperature, pressure, infra-red and sound; teaching and assessment must connect each sensor to an appropriate application.
@@ -121,15 +232,6 @@ Required sensor types are temperature, pressure, infra-red and sound; teaching a
 - A temperature sensor measures temperature, a pressure sensor measures force per unit area or pressure, an infra-red sensor detects infra-red radiation, and a sound sensor detects sound level or sound waves. The sensor supplies input data; it does not itself decide or perform the control action.
 - Choose a sensor by matching the physical quantity to the application: temperature for a greenhouse, pressure for a tyre or burglar mat, infra-red for a remote-control receiver or beam alarm, and sound for a noise monitor. A light-intensity sensor is useful supporting context but does not replace the named infra-red and sound sensors.
 - Actuators produce physical output actions such as moving a vent or switching a fan after the controller processes sensor input.
-
-</details>
-
-### Worked method
-
-1. Greenhouse monitoring and control
-2. A monitoring system records and displays temperature readings.
-3. A control system also compares each reading with a threshold and activates a fan motor actuator when the greenhouse is too hot.
-4. New temperature readings provide feedback, so the fan can stop when the target is reached.
 
 Beyond syllabus / 延伸知识（不要求背诵）: professional device selection also considers accessibility, reliability, repairability and energy use.
 ## 3. Practice by question type
@@ -179,10 +281,11 @@ These are indexes only. Cambridge question and mark-scheme wording is not reprod
 
 ### Summary
 
-- Define monitoring, control, sensors and actuators with the exact technical vocabulary expected by the syllabus.
-- Use the lesson method on a fresh context and show the intermediate decision, representation or calculation.
-- Match the shape of the answer to the command word and the available marks.
-- Check the final answer against the scenario instead of repeating a memorised sentence.
+- S3.08: explain monitoring, control, sensors, actuators, feedback.
+- S3.08 method: Identify the relevant condition or input → Trace how the process works → Connect the mechanism to its result.
+- S3.09: explain temperature, pressure, infra-red / infrared, sound sensor.
+- S3.09 method: Identify the relevant condition or input → Trace how the process works → Connect the mechanism to its result.
+- Correction to remember: Students often say the sensor 'does the action'. Correction: sensors detect; actuators act.
 
 ### Common error to correct
 

@@ -28,7 +28,65 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ### 1. Understand, construct and use structure charts, including parameters, and derive pseudocode (S12.02)
 
-**Concept relationships**
+**Atomic learning targets**
+
+- **S12.02.A01:** structure
+- **S12.02.A02:** charts
+- **S12.02.A03:** parameters
+- **S12.02.A04:** derive
+- **S12.02.A05:** pseudocode
+
+**Core explanation**
+
+- A structure chart documents decomposition before coding. Each box names a module, procedure or function; hierarchy lines show which module calls another; labelled arrows show the parameters passed across an interface.
+- To construct the chart, put the controlling module at the top, split the task into single-responsibility subtasks, connect each caller to the modules it invokes, and label every data or control value passed.
+- Parameters make module interfaces explicit. An input parameter supplies a value needed by the called module, while an output or by-reference parameter carries a changed result back where that interface is intended.
+- To derive equivalent pseudocode, turn every chart box into a PROCEDURE or FUNCTION with matching formal parameters, then write calls in the parent modules using arguments in the same order and with compatible types.
+- The pseudocode is equivalent only if it preserves the chart's hierarchy, call relationships and parameter flow; merely listing module names does not implement the design.
+
+**Mechanism or method**
+
+1. **Identify the relevant condition or input** — A structure chart documents decomposition before coding.
+2. **Trace how the process works** — Each box names a module, procedure or function;
+3. **Connect the mechanism to its result** — hierarchy lines show which module calls another;
+
+#### Worked example: Understand, construct and use structure charts, including parameters, and derive pseudocode: complete worked route
+
+1. **Identify the relevant condition or input**
+
+A structure chart documents decomposition before coding.
+
+2. **Trace how the process works**
+
+Each box names a module, procedure or function;
+
+3. **Connect the mechanism to its result**
+
+hierarchy lines show which module calls another;
+
+4. **Complete example**
+
+Door controller: two design views: A structure chart places ControlDoor above ReadCard(CardID), ValidateCard(CardID, IsValid) and SetLock(IsValid). Equivalent pseudocode declares those interfaces and calls them from ControlDoor with matching arguments.
+
+**Misconceptions to correct**
+
+- Students often describe the lifecycle as a fixed checklist. Correction: development is iterative; findings can send a project back to earlier stages.
+
+#### Mastery check (MC-L082-S12.02)
+
+Explain the following targets in one connected answer, using a concrete example for each: structure; charts; parameters; derive; pseudocode.
+
+<details><summary>Answer criteria</summary>
+
+- A structure chart documents decomposition before coding. Each box names a module, procedure or function; hierarchy lines show which module calls another; labelled arrows show the parameters passed across an interface.
+- To construct the chart, put the controlling module at the top, split the task into single-responsibility subtasks, connect each caller to the modules it invokes, and label every data or control value passed.
+- Parameters make module interfaces explicit. An input parameter supplies a value needed by the called module, while an output or by-reference parameter carries a changed result back where that interface is intended.
+- To derive equivalent pseudocode, turn every chart box into a PROCEDURE or FUNCTION with matching formal parameters, then write calls in the parent modules using arguments in the same order and with compatible types.
+- The pseudocode is equivalent only if it preserves the chart's hierarchy, call relationships and parameter flow; merely listing module names does not implement the design.
+
+</details>
+
+**Supplementary concept map**
 
 - **structure:** Understand, construct and use structure charts, including parameters,…
 - **charts:** To derive equivalent pseudocode, turn each box into…
@@ -36,7 +94,7 @@ Ask the learner to give one accurate definition or method step before continuing
 - **derive:** Its purpose, construct one for a given problem…
 - **pseudocode:** Derive pseudocode by turning each box into a…
 
-**Mechanism**
+**Supplementary three-step recap**
 
 1. **Translate the stated design** — To derive equivalent pseudocode, turn each box into a complete PROCEDURE or FUNCTION header with corresponding parameters, add…
 2. **Apply one complete operation** — Its purpose, construct one for a given problem and derive equivalent pseudocode from it.
@@ -64,22 +122,12 @@ Use a structure chart to decompose a problem into subtasks and express the param
 
 </details>
 
-<details><summary>Open precise terminology and exam facts</summary>
+### Lesson technical reference
 
 - Use a structure chart to decompose a problem into subtasks and express the parameters passed between modules, procedures and functions. Describe its purpose, construct one for a given problem and derive equivalent pseudocode from it.
 - A structure chart documents decomposition into modules, procedures and functions. Boxes name modules; hierarchy lines show which module calls another; labelled arrows show data or control parameters passed between them. Its purpose is to communicate modular structure and interfaces before coding.
 - To construct a structure chart, place the controlling module at the top, split the problem into one-responsibility subtasks, connect each caller to its called modules, and label every value passed. To derive equivalent pseudocode, turn each box into a complete PROCEDURE or FUNCTION header with corresponding parameters, add calls in the parent body with matching arguments, and preserve the shown hierarchy.
 - A state-transition diagram documents an algorithm by showing persistent states and the events that cause changes between them. Its syllabus requirement is to understand that purpose; constructing a state-transition diagram is retained only as Optional enrichment.
-
-</details>
-
-### Worked method
-
-1. two design views
-2. A structure chart places ControlDoor above ReadCard(CardID), ValidateCard(CardID, IsValid) and SetLock(IsValid).
-3. Equivalent pseudocode declares those interfaces and calls them from ControlDoor with matching arguments.
-4. A provided state-transition diagram with Locked and Unlocked states serves a different purpose
-5. it documents event-driven changes rather than module hierarchy or processing sequence.
 
 Beyond syllabus / 延伸知识（不要求背诵）: modern teams often use continuous integration to repeat building and testing whenever a program changes.
 ## 3. Practice by question type
@@ -129,10 +177,9 @@ These are indexes only. Cambridge question and mark-scheme wording is not reprod
 
 ### Summary
 
-- Define structure charts and module interfaces with the exact technical vocabulary expected by the syllabus.
-- Use the lesson method on a fresh context and show the intermediate decision, representation or calculation.
-- Match the shape of the answer to the command word and the available marks.
-- Check the final answer against the scenario instead of repeating a memorised sentence.
+- S12.02: explain structure, charts, parameters, derive, pseudocode.
+- S12.02 method: Identify the relevant condition or input → Trace how the process works → Connect the mechanism to its result.
+- Correction to remember: Students often describe the lifecycle as a fixed checklist. Correction: development is iterative; findings can send a project back to earlier stages.
 
 ### Common error to correct
 

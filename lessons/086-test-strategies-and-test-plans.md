@@ -27,7 +27,59 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ### 1. The need for a test strategy and test plan and their likely contents (S12.06)
 
-**Concept relationships**
+**Atomic learning targets**
+
+- **S12.06.A01:** test
+- **S12.06.A02:** strategy
+- **S12.06.A03:** plan
+
+**Core explanation**
+
+- Alpha testing is performed internally before release; beta testing uses selected external users in realistic settings; acceptance testing checks the delivered system against agreed requirements. A strategy states levels/methods/responsibility, while a test plan records test ID, purpose, data, expected result, actual result and pass/fail.
+- Test the enhancement with data that exercises the new path and rerun regression tests for existing paths. Correcting a fault is corrective maintenance; adding or improving requested functionality is an enhancement and may be perfective maintenance.
+- A test strategy states the testing levels, methods, responsibilities, sequence and resources for the project. A test plan records individual cases with a test ID, purpose, data, expected result, actual result and pass/fail outcome.
+
+**Mechanism or method**
+
+1. **Establish the exact components or states** — Alpha testing is performed internally before release;
+2. **Trace the relationship or change** — beta testing uses selected external users in realistic settings;
+3. **Use the explanation in a concrete case** — acceptance testing checks the delivered system against agreed requirements.
+
+#### Worked example: The need for a test strategy and test plan and their likely contents: complete worked route
+
+1. **Establish the exact components or states**
+
+Alpha testing is performed internally before release;
+
+2. **Trace the relationship or change**
+
+beta testing uses selected external users in realistic settings;
+
+3. **Use the explanation in a concrete case**
+
+acceptance testing checks the delivered system against agreed requirements.
+
+4. **Complete example**
+
+Test login through review, construction, integration and release / Test an inclusive mark range / Three changes to one booking system / Add a Merit count without breaking PassCount: First dry-run the lockout counter and conduct a walkthrough in which peers inspect the algorithm. black-box tests valid, invalid and boundary inputs from requirements. Internal staff perform alpha testing, selected external users perform beta testing, and the customer performs acceptance testing against the agreed lockout behaviour.
+
+**Misconceptions to correct**
+
+- Students often describe the lifecycle as a fixed checklist. Correction: development is iterative; findings can send a project back to earlier stages.
+
+#### Mastery check (MC-L086-S12.06)
+
+Show the following targets in one connected answer, using a concrete example for each: test; strategy; plan.
+
+<details><summary>Answer criteria</summary>
+
+- Alpha testing is performed internally before release; beta testing uses selected external users in realistic settings; acceptance testing checks the delivered system against agreed requirements. A strategy states levels/methods/responsibility, while a test plan records test ID, purpose, data, expected result, actual result and pass/fail.
+- Test the enhancement with data that exercises the new path and rerun regression tests for existing paths. Correcting a fault is corrective maintenance; adding or improving requested functionality is an enhancement and may be perfective maintenance.
+- A test strategy states the testing levels, methods, responsibilities, sequence and resources for the project. A test plan records individual cases with a test ID, purpose, data, expected result, actual result and pass/fail outcome.
+
+</details>
+
+**Supplementary concept map**
 
 - **Strategy:** Overall testing approach
 - **Plan:** Tests data and expected results
@@ -35,7 +87,7 @@ Ask the learner to give one accurate definition or method step before continuing
 - **Contents:** Purpose data result and status
 - **test:** The need for a test strategy and test…
 
-**Mechanism**
+**Supplementary three-step recap**
 
 1. **Translate the stated design** — The need for a test strategy and test plan and their likely contents.
 2. **Apply one complete operation** — Understanding the need and likely contents
@@ -63,7 +115,7 @@ The syllabus requires understanding the need and likely contents; it does not re
 
 </details>
 
-<details><summary>Open precise terminology and exam facts</summary>
+### Lesson technical reference
 
 - The syllabus requires understanding the need and likely contents; it does not require candidates to produce either document.
 - Alpha testing is performed internally before release; beta testing uses selected external users in realistic settings; acceptance testing checks the delivered system against agreed requirements. A strategy states levels/methods/responsibility, while a test plan records test ID, purpose, data, expected result, actual result and pass/fail.
@@ -71,16 +123,6 @@ The syllabus requires understanding the need and likely contents; it does not re
 - Classify the reason for the change, not the code edited. The same module could receive a corrective change for a crash, an adaptive change for a new operating-system interface, or a perfective change for faster search and a clearer result display.
 - Every maintenance change requires impact analysis, controlled amendment, tests for the changed behaviour and regression tests for unaffected behaviour. Records should link the request, code change and test evidence.
 - Test the enhancement with data that exercises the new path and rerun regression tests for existing paths. Correcting a fault is corrective maintenance; adding or improving requested functionality is an enhancement and may be perfective maintenance.
-
-</details>
-
-### Worked method
-
-1. Test login through review, construction, integration and release
-2. Test an inclusive mark range
-3. Three changes to one booking system
-4. Add a Merit count without breaking PassCount
-5. First dry-run the lockout counter and conduct a walkthrough in which peers inspect the algorithm.
 
 Beyond syllabus / 延伸知识（不要求背诵）: modern teams often use continuous integration to repeat building and testing whenever a program changes.
 ## 3. Practice by question type
@@ -128,10 +170,9 @@ These are indexes only. Cambridge question and mark-scheme wording is not reprod
 
 ### Summary
 
-- Define test strategies and test plans with the exact technical vocabulary expected by the syllabus.
-- Use the lesson method on a fresh context and show the intermediate decision, representation or calculation.
-- Match the shape of the answer to the command word and the available marks.
-- Check the final answer against the scenario instead of repeating a memorised sentence.
+- S12.06: explain test, strategy, plan.
+- S12.06 method: Establish the exact components or states → Trace the relationship or change → Use the explanation in a concrete case.
+- Correction to remember: Students often describe the lifecycle as a fixed checklist. Correction: development is iterative; findings can send a project back to earlier stages.
 
 ### Common error to correct
 

@@ -27,7 +27,59 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ### 1. A suitable loop structure (S11.05)
 
-**Concept relationships**
+**Atomic learning targets**
+
+- **S11.05.A01:** loop
+- **S11.05.A02:** structure
+- **S11.05.A03:** justify
+
+**Core explanation**
+
+- Select and justify the loop structure from the problem: use FOR when the count is known, WHILE when execution may be unnecessary and continuation is tested first, and REPEAT when the body must run once before a stopping condition can be tested. The justification must use the scenario, not only say that one loop is easier.
+- Justify FOR from the problem: it is well suited when the count or bounds are known, but a pre-condition or post-condition loop is better when the number of repetitions depends on input or a stopping condition.
+- Match the loop bounds to the declared data. Initialise accumulators before the loop, update them inside it and output a final result after the loop unless intermediate output is explicitly required.
+
+**Mechanism or method**
+
+1. **Extract the constraints from the scenario** — Select and justify the loop structure from the problem: use FOR when the count is known, WHILE when execution may be unnecessary and continuation is tested first, and REPEAT when the body must run once before a stopping condition can be tested.
+2. **Match mechanisms to those constraints** — The justification must use the scenario, not only say that one loop is easier.
+3. **Link the choice to a consequence** — Justify FOR from the problem: it is well suited when the count or bounds are known, but a pre-condition or post-condition loop is better when the number of repetitions depends on input or a stopping condition.
+
+#### Worked example: A suitable loop structure: complete worked route
+
+1. **Extract the constraints from the scenario**
+
+Select and justify the loop structure from the problem: use FOR when the count is known, WHILE when execution may be unnecessary and continuation is tested first, and REPEAT when the body must run once before a stopping condition can be tested.
+
+2. **Match mechanisms to those constraints**
+
+The justification must use the scenario, not only say that one loop is easier.
+
+3. **Link the choice to a consequence**
+
+Justify FOR from the problem: it is well suited when the count or bounds are known, but a pre-condition or post-condition loop is better when the number of repetitions depends on input or a stopping condition.
+
+4. **Complete example**
+
+Nested IF and CASE / Total a fixed array / Choose the loop from the stopping rule: For a grade, an outer IF tests Mark = 80;
+
+**Misconceptions to correct**
+
+- Students often think working Java automatically means good pseudocode. Correction: Paper 2 rewards clear Cambridge-style algorithm expression.
+
+#### Mastery check (MC-L076-S11.05)
+
+Select and justify a suitable choice in a fresh scenario, explicitly using every target: loop; structure; justify.
+
+<details><summary>Answer criteria</summary>
+
+- Select and justify the loop structure from the problem: use FOR when the count is known, WHILE when execution may be unnecessary and continuation is tested first, and REPEAT when the body must run once before a stopping condition can be tested. The justification must use the scenario, not only say that one loop is easier.
+- Justify FOR from the problem: it is well suited when the count or bounds are known, but a pre-condition or post-condition loop is better when the number of repetitions depends on input or a stopping condition.
+- Match the loop bounds to the declared data. Initialise accumulators before the loop, update them inside it and output a final result after the loop unless intermediate output is explicitly required.
+
+</details>
+
+**Supplementary concept map**
 
 - **FOR:** Known repetition count
 - **WHILE:** Test before the body
@@ -36,7 +88,7 @@ Ask the learner to give one accurate definition or method step before continuing
 - **loop:** Justify why one loop structure may be better…
 - **structure:** A suitable loop structure.
 
-**Mechanism**
+**Supplementary three-step recap**
 
 1. **Translate the stated design** — Justify why one loop structure may be better suited to a problem than another.
 2. **Apply one complete operation** — A suitable loop structure.
@@ -73,7 +125,7 @@ Justify why one loop structure may be better suited to a problem than another.
 
 </details>
 
-<details><summary>Open precise terminology and exam facts</summary>
+### Lesson technical reference
 
 - Justify why one loop structure may be better suited to a problem than another.
 - A count-controlled loop uses FOR...TO...NEXT when the repetition count or inclusive counter range is known before the loop starts. The counter, start value and end value define the iterations; NEXT closes the loop.
@@ -81,16 +133,6 @@ Justify why one loop structure may be better suited to a problem than another.
 - Justify FOR from the problem: it is well suited when the count or bounds are known, but a pre-condition or post-condition loop is better when the number of repetitions depends on input or a stopping condition.
 - A WHILE...ENDWHILE loop is a pre-condition loop: it tests before the body and may run zero times. A REPEAT...UNTIL loop is a post-condition loop: it executes the body before testing and therefore runs at least once. A FOR...NEXT loop is count-controlled.
 - Select and justify the loop structure from the problem: use FOR when the count is known, WHILE when execution may be unnecessary and continuation is tested first, and REPEAT when the body must run once before a stopping condition can be tested. The justification must use the scenario, not only say that one loop is easier.
-
-</details>
-
-### Worked method
-
-1. Nested IF and CASE
-2. Total a fixed array
-3. Choose the loop from the stopping rule
-4. For a grade, an outer IF tests Mark = 80; its ELSE contains an inner IF testing Mark = 50; each IF closes with ENDIF.
-5. For a menu, CASE Choice OF maps 1, 2 and 3 to actions and OTHERWISE handles every unlisted value before ENDCASE.
 
 Beyond syllabus / 延伸知识（不要求背诵）: consistent style, modularity and automated tests reduce maintenance errors in larger programs.
 ## 3. Practice by question type
@@ -137,10 +179,9 @@ These are indexes only. Cambridge question and mark-scheme wording is not reprod
 
 ### Summary
 
-- Define selecting and justifying a loop structure with the exact technical vocabulary expected by the syllabus.
-- Use the lesson method on a fresh context and show the intermediate decision, representation or calculation.
-- Match the shape of the answer to the command word and the available marks.
-- Check the final answer against the scenario instead of repeating a memorised sentence.
+- S11.05: explain loop, structure, justify.
+- S11.05 method: Extract the constraints from the scenario → Match mechanisms to those constraints → Link the choice to a consequence.
+- Correction to remember: Students often think working Java automatically means good pseudocode. Correction: Paper 2 rewards clear Cambridge-style algorithm expression.
 
 ### Common error to correct
 

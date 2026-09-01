@@ -1,0 +1,1057 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "deterministic",
+  "section": {
+    "schemaVersion": 1,
+    "section": 2,
+    "title": "Communication",
+    "syllabusYears": "2027–2029",
+    "requirementOrder": [
+      "S2.01",
+      "S2.02",
+      "S2.03",
+      "S2.04",
+      "S2.05",
+      "S2.06",
+      "S2.07",
+      "S2.08",
+      "S2.09",
+      "S2.10",
+      "S2.11",
+      "S2.12",
+      "S2.13",
+      "S2.14",
+      "S2.15",
+      "S2.16"
+    ],
+    "officialSyllabusUrl": "https://www.cambridgeinternational.org/Images/721397-2027-2029-syllabus.pdf",
+    "officialSyllabusSha256": "c8a4c6d033c07c6d8025689abed5ef481d581c28bae640986d275303ed6c08bc",
+    "officialPages": [
+      16,
+      17
+    ],
+    "lessonOrder": [
+      "S2-L01",
+      "S2-L02",
+      "S2-L03",
+      "S2-L04",
+      "S2-L05",
+      "S2-L06",
+      "S2-L07",
+      "S2-L08"
+    ]
+  },
+  "lessons": [
+    {
+      "lessonKey": "S2-L01",
+      "sequenceIndex": 1,
+      "route": "web/course-v3/section-2/unit-01/index.html",
+      "syllabusIds": [
+        "S2.01",
+        "S2.02",
+        "S2.03"
+      ],
+      "objectives": [
+        {
+          "id": "S2.01.A01",
+          "description": "Explain why devices are networked and link each benefit to a consequence.",
+          "explanationUnits": [
+            "Networking creates shared access; LAN and WAN describe scope"
+          ],
+          "materialTitles": [
+            "One managed site; several distant sites",
+            "Turn a feature into a benefit"
+          ],
+          "questionIds": [
+            "S2-L01-Q1"
+          ],
+          "pastPaperAnalysis": null
+        },
+        {
+          "id": "S2.01.A02",
+          "description": "Distinguish a LAN by limited area and organisational control.",
+          "explanationUnits": [
+            "Networking creates shared access; LAN and WAN describe scope"
+          ],
+          "materialTitles": [
+            "One managed site; several distant sites",
+            "LAN and WAN: describe scope before performance"
+          ],
+          "questionIds": [
+            "S2-L01-Q2"
+          ],
+          "pastPaperAnalysis": null
+        },
+        {
+          "id": "S2.01.A03",
+          "description": "Distinguish a WAN by large area, linked sites and provider infrastructure.",
+          "explanationUnits": [
+            "Networking creates shared access; LAN and WAN describe scope"
+          ],
+          "materialTitles": [
+            "One managed site; several distant sites",
+            "LAN and WAN: describe scope before performance"
+          ],
+          "questionIds": [
+            "S2-L01-Q2"
+          ],
+          "pastPaperAnalysis": null
+        },
+        {
+          "id": "S2.02.A01",
+          "description": "Explain client and server roles.",
+          "explanationUnits": [
+            "Network models describe who requests and who provides"
+          ],
+          "materialTitles": [
+            "Client-server request cycle",
+            "Peer-to-peer exchange"
+          ],
+          "questionIds": [
+            "S2-L01-Q2"
+          ],
+          "pastPaperAnalysis": "9618/11/S/24 Q5(a)"
+        },
+        {
+          "id": "S2.02.A02",
+          "description": "Compare client-server and peer-to-peer benefits and drawbacks.",
+          "explanationUnits": [
+            "Network models describe who requests and who provides"
+          ],
+          "materialTitles": [
+            "Choose the model from the consequence"
+          ],
+          "questionIds": [
+            "S2-L01-Q2"
+          ],
+          "pastPaperAnalysis": "9618/11/S/24 Q5(a)"
+        },
+        {
+          "id": "S2.02.A03",
+          "description": "Justify a network model from a scenario.",
+          "explanationUnits": [
+            "Network models describe who requests and who provides"
+          ],
+          "materialTitles": [
+            "Choose the model from the consequence"
+          ],
+          "questionIds": [
+            "S2-L01-Q2"
+          ],
+          "pastPaperAnalysis": "9618/11/S/24 Q5(a)"
+        },
+        {
+          "id": "S2.03.A01",
+          "description": "Explain where a thin client performs processing and stores resources.",
+          "explanationUnits": [
+            "Thin and thick describe where the client work happens"
+          ],
+          "materialTitles": [
+            "Where processing, storage and maintenance sit"
+          ],
+          "questionIds": [
+            "S2-L01-Q3"
+          ],
+          "pastPaperAnalysis": null
+        },
+        {
+          "id": "S2.03.A02",
+          "description": "Explain where a thick client performs processing and stores resources.",
+          "explanationUnits": [
+            "Thin and thick describe where the client work happens"
+          ],
+          "materialTitles": [
+            "Where processing, storage and maintenance sit"
+          ],
+          "questionIds": [
+            "S2-L01-Q3"
+          ],
+          "pastPaperAnalysis": null
+        },
+        {
+          "id": "S2.03.A03",
+          "description": "Choose a client type from dependence, management and offline-work requirements.",
+          "explanationUnits": [
+            "Thin and thick describe where the client work happens"
+          ],
+          "materialTitles": [
+            "Where processing, storage and maintenance sit"
+          ],
+          "questionIds": [
+            "S2-L01-Q3"
+          ],
+          "pastPaperAnalysis": null
+        }
+      ]
+    },
+    {
+      "lessonKey": "S2-L02",
+      "sequenceIndex": 2,
+      "route": "web/course-v3/section-2/unit-02/index.html",
+      "syllabusIds": [
+        "S2.04",
+        "S2.05"
+      ],
+      "objectives": [
+        {
+          "id": "S2.04.A01",
+          "description": "Recognise and explain a bus topology.",
+          "explanationUnits": [
+            "The topology is the link pattern"
+          ],
+          "materialTitles": [
+            "Count links first; trace the path second"
+          ],
+          "questionIds": [
+            "S2-L02-Q1"
+          ],
+          "pastPaperAnalysis": "9618/11/S/24 Q8(a)–(b)"
+        },
+        {
+          "id": "S2.04.A02",
+          "description": "Recognise and explain a star topology.",
+          "explanationUnits": [
+            "The topology is the link pattern"
+          ],
+          "materialTitles": [
+            "Count links first; trace the path second"
+          ],
+          "questionIds": [
+            "S2-L02-Q1",
+            "S2-L02-Q3"
+          ],
+          "pastPaperAnalysis": "9618/11/S/24 Q8(a)–(b)"
+        },
+        {
+          "id": "S2.04.A03",
+          "description": "Recognise and explain a mesh topology.",
+          "explanationUnits": [
+            "The topology is the link pattern"
+          ],
+          "materialTitles": [
+            "Count links first; trace the path second"
+          ],
+          "questionIds": [
+            "S2-L02-Q1"
+          ],
+          "pastPaperAnalysis": "9618/11/S/24 Q8(a)–(b)"
+        },
+        {
+          "id": "S2.04.A04",
+          "description": "Recognise and explain a hybrid topology.",
+          "explanationUnits": [
+            "The topology is the link pattern"
+          ],
+          "materialTitles": [
+            "Count links first; trace the path second"
+          ],
+          "questionIds": [
+            "S2-L02-Q1",
+            "S2-L02-Q2"
+          ],
+          "pastPaperAnalysis": "9618/11/S/24 Q8(a)–(b)"
+        },
+        {
+          "id": "S2.05.A01",
+          "description": "Trace transmission between two hosts for a given topology.",
+          "explanationUnits": [
+            "The topology is the link pattern"
+          ],
+          "materialTitles": [
+            "Count links first; trace the path second"
+          ],
+          "questionIds": [
+            "S2-L02-Q2"
+          ],
+          "pastPaperAnalysis": "9618/11/S/24 Q8(a)–(b)"
+        },
+        {
+          "id": "S2.05.A02",
+          "description": "Explain failure effects, traffic and redundancy.",
+          "explanationUnits": [
+            "A good choice connects structure to consequence"
+          ],
+          "materialTitles": [
+            "Failure and design trade-offs"
+          ],
+          "questionIds": [
+            "S2-L02-Q2",
+            "S2-L02-Q3"
+          ],
+          "pastPaperAnalysis": "9618/11/S/24 Q8(a)–(b)"
+        },
+        {
+          "id": "S2.05.A03",
+          "description": "Justify a topology for a scenario.",
+          "explanationUnits": [
+            "A good choice connects structure to consequence"
+          ],
+          "materialTitles": [
+            "Failure and design trade-offs",
+            "Justification checklist"
+          ],
+          "questionIds": [
+            "S2-L02-Q3"
+          ],
+          "pastPaperAnalysis": "9618/11/S/24 Q8(a)–(b)"
+        }
+      ]
+    },
+    {
+      "lessonKey": "S2-L03",
+      "sequenceIndex": 3,
+      "route": "web/course-v3/section-2/unit-03/index.html",
+      "syllabusIds": [
+        "S2.06"
+      ],
+      "objectives": [
+        {
+          "id": "S2.06.A01",
+          "description": "Explain cloud computing as remote computing resources accessed through a network.",
+          "explanationUnits": [
+            "Cloud changes where resources run and who controls the infrastructure"
+          ],
+          "materialTitles": [
+            "Shared facility and dedicated facility",
+            "One cloud request"
+          ],
+          "questionIds": [
+            "S2-L03-Q1"
+          ],
+          "pastPaperAnalysis": "9618/13/W/23 Q3(a)(i)"
+        },
+        {
+          "id": "S2.06.A02",
+          "description": "Distinguish public and private cloud control and tenancy.",
+          "explanationUnits": [
+            "Cloud changes where resources run and who controls the infrastructure"
+          ],
+          "materialTitles": [
+            "Shared facility and dedicated facility",
+            "Public and private cloud"
+          ],
+          "questionIds": [
+            "S2-L03-Q1",
+            "S2-L03-Q3"
+          ],
+          "pastPaperAnalysis": null
+        },
+        {
+          "id": "S2.06.A03",
+          "description": "Explain benefits and drawbacks of cloud computing.",
+          "explanationUnits": [
+            "Cloud benefits and risks must be connected to dependence"
+          ],
+          "materialTitles": [
+            "Claim → mechanism → consequence"
+          ],
+          "questionIds": [
+            "S2-L03-Q2",
+            "S2-L03-Q3"
+          ],
+          "pastPaperAnalysis": "9618/13/W/23 Q3(a)(i)"
+        },
+        {
+          "id": "S2.06.A04",
+          "description": "Justify a cloud choice for a scenario.",
+          "explanationUnits": [
+            "Cloud benefits and risks must be connected to dependence"
+          ],
+          "materialTitles": [
+            "Claim → mechanism → consequence",
+            "Scenario decision"
+          ],
+          "questionIds": [
+            "S2-L03-Q2",
+            "S2-L03-Q3"
+          ],
+          "pastPaperAnalysis": null
+        }
+      ]
+    },
+    {
+      "lessonKey": "S2-L04",
+      "sequenceIndex": 4,
+      "route": "web/course-v3/section-2/unit-04/index.html",
+      "syllabusIds": [
+        "S2.07",
+        "S2.08"
+      ],
+      "objectives": [
+        {
+          "id": "S2.07.A01",
+          "description": "Compare wired and wireless networks and explain implications.",
+          "explanationUnits": [
+            "Wired and wireless create different constraints"
+          ],
+          "materialTitles": [
+            "Wired and wireless implications"
+          ],
+          "questionIds": [
+            "S2-L04-Q2",
+            "S2-L04-Q3"
+          ],
+          "pastPaperAnalysis": "9618/13/W/25 Q4(a)–(c)"
+        },
+        {
+          "id": "S2.08.A01",
+          "description": "Describe copper-cable signal characteristics.",
+          "explanationUnits": [
+            "The carrier determines capacity, attenuation and interference"
+          ],
+          "materialTitles": [
+            "Three carrier mechanisms",
+            "Medium selection matrix"
+          ],
+          "questionIds": [
+            "S2-L04-Q1"
+          ],
+          "pastPaperAnalysis": "9618/13/W/25 Q4(a)–(c)"
+        },
+        {
+          "id": "S2.08.A02",
+          "description": "Describe fibre-optic signal characteristics.",
+          "explanationUnits": [
+            "The carrier determines capacity, attenuation and interference"
+          ],
+          "materialTitles": [
+            "Three carrier mechanisms",
+            "Medium selection matrix"
+          ],
+          "questionIds": [
+            "S2-L04-Q1",
+            "S2-L04-Q3"
+          ],
+          "pastPaperAnalysis": "9618/13/W/25 Q4(a)–(c)"
+        },
+        {
+          "id": "S2.08.A03",
+          "description": "Describe radio waves including WiFi.",
+          "explanationUnits": [
+            "The carrier determines capacity, attenuation and interference"
+          ],
+          "materialTitles": [
+            "Three carrier mechanisms",
+            "Medium selection matrix"
+          ],
+          "questionIds": [
+            "S2-L04-Q1",
+            "S2-L04-Q2",
+            "S2-L04-Q3"
+          ],
+          "pastPaperAnalysis": "9618/13/W/25 Q4(a)–(c)"
+        },
+        {
+          "id": "S2.08.A04",
+          "description": "Describe terrestrial microwave links.",
+          "explanationUnits": [
+            "The carrier determines capacity, attenuation and interference"
+          ],
+          "materialTitles": [
+            "Medium selection matrix"
+          ],
+          "questionIds": [
+            "S2-L04-Q1"
+          ],
+          "pastPaperAnalysis": null
+        },
+        {
+          "id": "S2.08.A05",
+          "description": "Describe satellite links.",
+          "explanationUnits": [
+            "The carrier determines capacity, attenuation and interference"
+          ],
+          "materialTitles": [
+            "Medium selection matrix"
+          ],
+          "questionIds": [
+            "S2-L04-Q1"
+          ],
+          "pastPaperAnalysis": null
+        },
+        {
+          "id": "S2.08.A06",
+          "description": "Justify a transmission medium for a scenario.",
+          "explanationUnits": [
+            "The carrier determines capacity, attenuation and interference"
+          ],
+          "materialTitles": [
+            "Medium selection matrix",
+            "Choose a medium"
+          ],
+          "questionIds": [
+            "S2-L04-Q2",
+            "S2-L04-Q3"
+          ],
+          "pastPaperAnalysis": "9618/13/W/25 Q4(a)–(c)"
+        }
+      ]
+    },
+    {
+      "lessonKey": "S2-L05",
+      "sequenceIndex": 5,
+      "route": "web/course-v3/section-2/unit-05/index.html",
+      "syllabusIds": [
+        "S2.09",
+        "S2.10",
+        "S2.11"
+      ],
+      "objectives": [
+        {
+          "id": "S2.09.A01",
+          "description": "Describe switch and server roles.",
+          "explanationUnits": [
+            "Every LAN device has a specific job"
+          ],
+          "materialTitles": [
+            "One wireless request to a local server",
+            "LAN hardware role map"
+          ],
+          "questionIds": [
+            "S2-L05-Q1",
+            "S2-L05-Q2",
+            "S2-L05-Q4"
+          ],
+          "pastPaperAnalysis": "9618/11/W/23 Q2(a)–(d)"
+        },
+        {
+          "id": "S2.09.A02",
+          "description": "Describe NIC and WNIC roles.",
+          "explanationUnits": [
+            "Every LAN device has a specific job"
+          ],
+          "materialTitles": [
+            "One wireless request to a local server",
+            "LAN hardware role map"
+          ],
+          "questionIds": [
+            "S2-L05-Q1",
+            "S2-L05-Q2"
+          ],
+          "pastPaperAnalysis": "9618/11/W/23 Q2(a)–(d)"
+        },
+        {
+          "id": "S2.09.A03",
+          "description": "Describe WAP and cable roles.",
+          "explanationUnits": [
+            "Every LAN device has a specific job"
+          ],
+          "materialTitles": [
+            "One wireless request to a local server",
+            "LAN hardware role map"
+          ],
+          "questionIds": [
+            "S2-L05-Q1",
+            "S2-L05-Q2"
+          ],
+          "pastPaperAnalysis": "9618/11/W/23 Q2(a)–(d)"
+        },
+        {
+          "id": "S2.09.A04",
+          "description": "Describe bridge and repeater roles.",
+          "explanationUnits": [
+            "Every LAN device has a specific job"
+          ],
+          "materialTitles": [
+            "LAN hardware role map"
+          ],
+          "questionIds": [
+            "S2-L05-Q1"
+          ],
+          "pastPaperAnalysis": "9618/11/W/23 Q2(a)–(d)"
+        },
+        {
+          "id": "S2.10.A01",
+          "description": "Explain how a router forwards packets between networks.",
+          "explanationUnits": [
+            "The router crosses a network boundary"
+          ],
+          "materialTitles": [
+            "From LAN to another network",
+            "Switch and router boundary"
+          ],
+          "questionIds": [
+            "S2-L05-Q2",
+            "S2-L05-Q4"
+          ],
+          "pastPaperAnalysis": "9618/11/W/23 Q2(a)–(d)"
+        },
+        {
+          "id": "S2.10.A02",
+          "description": "Distinguish router and switch scope.",
+          "explanationUnits": [
+            "The router crosses a network boundary"
+          ],
+          "materialTitles": [
+            "Switch and router boundary"
+          ],
+          "questionIds": [
+            "S2-L05-Q2",
+            "S2-L05-Q4"
+          ],
+          "pastPaperAnalysis": "9618/11/W/23 Q2(a)–(d)"
+        },
+        {
+          "id": "S2.11.A01",
+          "description": "Explain Ethernet frames and a shared medium.",
+          "explanationUnits": [
+            "CSMA/CD detects a collision, stops, waits and retries"
+          ],
+          "materialTitles": [
+            "One shared lane, two simultaneous users"
+          ],
+          "questionIds": [
+            "S2-L05-Q3"
+          ],
+          "pastPaperAnalysis": null
+        },
+        {
+          "id": "S2.11.A02",
+          "description": "Describe the complete CSMA/CD sequence.",
+          "explanationUnits": [
+            "CSMA/CD detects a collision, stops, waits and retries"
+          ],
+          "materialTitles": [
+            "CSMA/CD timeline"
+          ],
+          "questionIds": [
+            "S2-L05-Q3"
+          ],
+          "pastPaperAnalysis": null
+        },
+        {
+          "id": "S2.11.A03",
+          "description": "Explain why random backoff reduces repeated collisions.",
+          "explanationUnits": [
+            "CSMA/CD detects a collision, stops, waits and retries"
+          ],
+          "materialTitles": [
+            "CSMA/CD timeline"
+          ],
+          "questionIds": [
+            "S2-L05-Q3"
+          ],
+          "pastPaperAnalysis": null
+        }
+      ]
+    },
+    {
+      "lessonKey": "S2-L06",
+      "sequenceIndex": 6,
+      "route": "web/course-v3/section-2/unit-06/index.html",
+      "syllabusIds": [
+        "S2.12"
+      ],
+      "objectives": [
+        {
+          "id": "S2.12.A01",
+          "description": "Explain bit streaming and progressive playback.",
+          "explanationUnits": [
+            "Streaming begins before the complete media file arrives"
+          ],
+          "materialTitles": [
+            "Real-time and on-demand"
+          ],
+          "questionIds": [
+            "S2-L06-Q1"
+          ],
+          "pastPaperAnalysis": "9618/11/S/25 Q2(a)–(b)(i)"
+        },
+        {
+          "id": "S2.12.A02",
+          "description": "Distinguish real-time and on-demand streaming.",
+          "explanationUnits": [
+            "Streaming begins before the complete media file arrives"
+          ],
+          "materialTitles": [
+            "Real-time and on-demand"
+          ],
+          "questionIds": [
+            "S2-L06-Q1"
+          ],
+          "pastPaperAnalysis": "9618/11/S/25 Q2(a)–(b)(i)"
+        },
+        {
+          "id": "S2.12.A03",
+          "description": "Explain bit rate as bits transmitted/consumed per second.",
+          "explanationUnits": [
+            "The buffer level is the difference between two rates over time"
+          ],
+          "materialTitles": [
+            "Reservoir analogy: fill rate, stored level and drain rate",
+            "Read the sign of the rate difference",
+            "Worked rate example"
+          ],
+          "questionIds": [
+            "S2-L06-Q2",
+            "S2-L06-Q3"
+          ],
+          "pastPaperAnalysis": "9618/11/S/25 Q2(a)–(b)(i)"
+        },
+        {
+          "id": "S2.12.A04",
+          "description": "Explain how a buffer temporarily stores arriving data.",
+          "explanationUnits": [
+            "The buffer level is the difference between two rates over time"
+          ],
+          "materialTitles": [
+            "Reservoir analogy: fill rate, stored level and drain rate"
+          ],
+          "questionIds": [
+            "S2-L06-Q2",
+            "S2-L06-Q3"
+          ],
+          "pastPaperAnalysis": "9618/11/S/25 Q2(a)–(b)(i)"
+        },
+        {
+          "id": "S2.12.A05",
+          "description": "Predict buffer change from incoming and playback rates.",
+          "explanationUnits": [
+            "The buffer level is the difference between two rates over time"
+          ],
+          "materialTitles": [
+            "Reservoir analogy: fill rate, stored level and drain rate",
+            "Read the sign of the rate difference",
+            "Worked rate example"
+          ],
+          "questionIds": [
+            "S2-L06-Q2",
+            "S2-L06-Q3"
+          ],
+          "pastPaperAnalysis": "9618/11/S/25 Q2(a)–(b)(i)"
+        },
+        {
+          "id": "S2.12.A06",
+          "description": "Explain why sustained insufficient broadband speed causes adaptation or interruption.",
+          "explanationUnits": [
+            "The buffer level is the difference between two rates over time"
+          ],
+          "materialTitles": [
+            "Reservoir analogy: fill rate, stored level and drain rate",
+            "Worked rate example"
+          ],
+          "questionIds": [
+            "S2-L06-Q3"
+          ],
+          "pastPaperAnalysis": "9618/11/S/25 Q2(a)–(b)(i)"
+        }
+      ]
+    },
+    {
+      "lessonKey": "S2-L07",
+      "sequenceIndex": 7,
+      "route": "web/course-v3/section-2/unit-07/index.html",
+      "syllabusIds": [
+        "S2.13",
+        "S2.14"
+      ],
+      "objectives": [
+        {
+          "id": "S2.13.A01",
+          "description": "Explain the internet as a global network of networks.",
+          "explanationUnits": [
+            "The internet carries many services; the WWW is one"
+          ],
+          "materialTitles": [
+            "One infrastructure, several services",
+            "Infrastructure or service?"
+          ],
+          "questionIds": [
+            "S2-L07-Q1"
+          ],
+          "pastPaperAnalysis": null
+        },
+        {
+          "id": "S2.13.A02",
+          "description": "Explain the WWW as one internet service of linked resources.",
+          "explanationUnits": [
+            "The internet carries many services; the WWW is one"
+          ],
+          "materialTitles": [
+            "One infrastructure, several services",
+            "Infrastructure or service?"
+          ],
+          "questionIds": [
+            "S2-L07-Q1"
+          ],
+          "pastPaperAnalysis": null
+        },
+        {
+          "id": "S2.13.A03",
+          "description": "Classify non-WWW internet services correctly.",
+          "explanationUnits": [
+            "The internet carries many services; the WWW is one"
+          ],
+          "materialTitles": [
+            "One infrastructure, several services",
+            "Infrastructure or service?"
+          ],
+          "questionIds": [
+            "S2-L07-Q1"
+          ],
+          "pastPaperAnalysis": null
+        },
+        {
+          "id": "S2.14.A01",
+          "description": "Explain a modem’s role at an access link.",
+          "explanationUnits": [
+            "Access infrastructure connects the local router to wider networks"
+          ],
+          "materialTitles": [
+            "From a home device to the internet",
+            "Router is not modem"
+          ],
+          "questionIds": [
+            "S2-L07-Q2"
+          ],
+          "pastPaperAnalysis": "9618/12/S/24 Q3(i)–(ii)"
+        },
+        {
+          "id": "S2.14.A02",
+          "description": "Describe PSTN connectivity.",
+          "explanationUnits": [
+            "Access infrastructure connects the local router to wider networks"
+          ],
+          "materialTitles": [
+            "Connection route and trade-off"
+          ],
+          "questionIds": [
+            "S2-L07-Q2"
+          ],
+          "pastPaperAnalysis": "9618/12/S/24 Q3(i)–(ii)"
+        },
+        {
+          "id": "S2.14.A03",
+          "description": "Describe a dedicated line.",
+          "explanationUnits": [
+            "Access infrastructure connects the local router to wider networks"
+          ],
+          "materialTitles": [
+            "Connection route and trade-off"
+          ],
+          "questionIds": [
+            "S2-L07-Q3"
+          ],
+          "pastPaperAnalysis": "9618/12/S/24 Q3(i)–(ii)"
+        },
+        {
+          "id": "S2.14.A04",
+          "description": "Describe a cell phone/cellular network connection.",
+          "explanationUnits": [
+            "Access infrastructure connects the local router to wider networks"
+          ],
+          "materialTitles": [
+            "Connection route and trade-off"
+          ],
+          "questionIds": [
+            "S2-L07-Q3"
+          ],
+          "pastPaperAnalysis": "9618/12/S/24 Q3(i)–(ii)"
+        },
+        {
+          "id": "S2.14.A05",
+          "description": "Choose connection infrastructure for a scenario.",
+          "explanationUnits": [
+            "Access infrastructure connects the local router to wider networks"
+          ],
+          "materialTitles": [
+            "Connection route and trade-off"
+          ],
+          "questionIds": [
+            "S2-L07-Q3"
+          ],
+          "pastPaperAnalysis": null
+        }
+      ]
+    },
+    {
+      "lessonKey": "S2-L08",
+      "sequenceIndex": 8,
+      "route": "web/course-v3/section-2/unit-08/index.html",
+      "syllabusIds": [
+        "S2.15",
+        "S2.16"
+      ],
+      "objectives": [
+        {
+          "id": "S2.15.A01",
+          "description": "Describe IPv4 format and 32-bit length.",
+          "explanationUnits": [
+            "An IP address identifies a network interface for routing"
+          ],
+          "materialTitles": [
+            "Read version and interface separately"
+          ],
+          "questionIds": [
+            "S2-L08-Q1"
+          ],
+          "pastPaperAnalysis": "9618/11/W/25 Q7(a)–(c)"
+        },
+        {
+          "id": "S2.15.A02",
+          "description": "Describe IPv6 format and 128-bit length.",
+          "explanationUnits": [
+            "An IP address identifies a network interface for routing"
+          ],
+          "materialTitles": [
+            "Read version and interface separately"
+          ],
+          "questionIds": [
+            "S2-L08-Q1"
+          ],
+          "pastPaperAnalysis": "9618/11/W/25 Q7(a)–(c)"
+        },
+        {
+          "id": "S2.15.A03",
+          "description": "Explain that an IP address is associated with a network interface.",
+          "explanationUnits": [
+            "An IP address identifies a network interface for routing"
+          ],
+          "materialTitles": [
+            "Read version and interface separately"
+          ],
+          "questionIds": [
+            "S2-L08-Q1"
+          ],
+          "pastPaperAnalysis": "9618/11/W/25 Q7(a)–(c)"
+        },
+        {
+          "id": "S2.15.A04",
+          "description": "Use subnet information to decide local or routed delivery.",
+          "explanationUnits": [
+            "Subnet, public/private and static/dynamic answer different questions"
+          ],
+          "materialTitles": [
+            "Worked local-or-router decision"
+          ],
+          "questionIds": [
+            "S2-L08-Q2"
+          ],
+          "pastPaperAnalysis": "9618/11/W/25 Q7(a)–(c)"
+        },
+        {
+          "id": "S2.15.A05",
+          "description": "Compare public and private addresses and security implications.",
+          "explanationUnits": [
+            "Subnet, public/private and static/dynamic answer different questions"
+          ],
+          "materialTitles": [
+            "Do not mix scope and assignment"
+          ],
+          "questionIds": [
+            "S2-L08-Q3"
+          ],
+          "pastPaperAnalysis": "9618/11/W/25 Q7(a)–(c)"
+        },
+        {
+          "id": "S2.15.A06",
+          "description": "Compare static and dynamic assignment.",
+          "explanationUnits": [
+            "Subnet, public/private and static/dynamic answer different questions"
+          ],
+          "materialTitles": [
+            "Do not mix scope and assignment"
+          ],
+          "questionIds": [
+            "S2-L08-Q3"
+          ],
+          "pastPaperAnalysis": "9618/11/W/25 Q7(a)–(c)"
+        },
+        {
+          "id": "S2.16.A01",
+          "description": "Break a URL into scheme, domain and path.",
+          "explanationUnits": [
+            "DNS resolves the domain; the browser requests the path"
+          ],
+          "materialTitles": [
+            "Break the URL before resolving it"
+          ],
+          "questionIds": [
+            "S2-L08-Q4"
+          ],
+          "pastPaperAnalysis": "9618/11/W/25 Q7(a)–(c)"
+        },
+        {
+          "id": "S2.16.A02",
+          "description": "Explain DNS domain-to-IP resolution.",
+          "explanationUnits": [
+            "DNS resolves the domain; the browser requests the path"
+          ],
+          "materialTitles": [
+            "DNS and browser sequence"
+          ],
+          "questionIds": [
+            "S2-L08-Q4"
+          ],
+          "pastPaperAnalysis": "9618/11/W/25 Q7(a)–(c)"
+        },
+        {
+          "id": "S2.16.A03",
+          "description": "Trace browser contact and resource request after DNS.",
+          "explanationUnits": [
+            "DNS resolves the domain; the browser requests the path"
+          ],
+          "materialTitles": [
+            "DNS and browser sequence"
+          ],
+          "questionIds": [
+            "S2-L08-Q4"
+          ],
+          "pastPaperAnalysis": "9618/11/W/25 Q7(a)–(c)"
+        }
+      ]
+    }
+  ],
+  "assets": [
+    {
+      "name": "network-purpose-lan-wan-analogy.png",
+      "path": "web/assets/course-v3/section-2/network-purpose-lan-wan-analogy.png",
+      "sha256": "c86a5f1b2944a8f7b84e6a321d6547e43ec5345bda5232e818b33d0cff3c42dc"
+    },
+    {
+      "name": "topology-bus.png",
+      "path": "web/assets/course-v3/section-2/topology-bus.png",
+      "sha256": "886e48db0525a4d44f5e67faf73889dbc47cc695997a15aa9212986e2750b0a6"
+    },
+    {
+      "name": "topology-star.png",
+      "path": "web/assets/course-v3/section-2/topology-star.png",
+      "sha256": "f6b5b1701be376b9f21bdd866a41612757c52be4211c285e21f87ca595fbb709"
+    },
+    {
+      "name": "topology-mesh.png",
+      "path": "web/assets/course-v3/section-2/topology-mesh.png",
+      "sha256": "2e571df5836b13d097b83b3cbc0b2c4ace34c8899cf2306eb734ea78f4a4a793"
+    },
+    {
+      "name": "topology-hybrid.png",
+      "path": "web/assets/course-v3/section-2/topology-hybrid.png",
+      "sha256": "92ae189a65994350a38699b544b5c240ed08d27b348534e05852e15ec3260c48"
+    },
+    {
+      "name": "public-private-cloud-analogy.png",
+      "path": "web/assets/course-v3/section-2/public-private-cloud-analogy.png",
+      "sha256": "caec584e99e00dc91ef046f3f47ef011bb9c26435bd125ba30994fdd83b78147"
+    },
+    {
+      "name": "transmission-media-analogy.png",
+      "path": "web/assets/course-v3/section-2/transmission-media-analogy.png",
+      "sha256": "7e692d9ab1dbdd94bcae64a2c8200f6d1f038bebc0801f9c135e3df16fbd4b38"
+    },
+    {
+      "name": "ethernet-collision-analogy.png",
+      "path": "web/assets/course-v3/section-2/ethernet-collision-analogy.png",
+      "sha256": "76e01edd2310624a48b30b16d0b5aa8f32110bc791f2a4e16678714b309434ac"
+    },
+    {
+      "name": "streaming-buffer-reservoir.png",
+      "path": "web/assets/course-v3/section-2/streaming-buffer-reservoir.png",
+      "sha256": "aaf5d6db4ef0e471e3627736a591901e1be90fb818a9b79d0a73ef151b7b0135"
+    },
+    {
+      "name": "internet-www-services-analogy.png",
+      "path": "web/assets/course-v3/section-2/internet-www-services-analogy.png",
+      "sha256": "1461f76b186c4753ca95c71f937512c1759f928cad45c1a44b11f7fd56bd4ba9"
+    }
+  ]
+}

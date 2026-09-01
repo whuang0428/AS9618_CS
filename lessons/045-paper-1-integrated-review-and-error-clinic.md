@@ -39,12 +39,20 @@ Ask the learner to give one accurate definition or method step before continuing
 - Convert an integer value from one required number base or representation to another.
 - Perform binary addition and subtraction using positive and negative binary integers.
 
+- **Retrieve:** Without notes, explain how the listed Section 1 ideas connect. Give one mechanism, calculation or construction step rather than a list of terms.
+- **Correct:** Correct one plausible error about show understanding of binary magnitudes and the difference between binary prefixes and decimal prefixes. and state exactly why the corrected version is accurate.
+- **Transfer:** Apply one Section 1 method to a new scenario, show the intermediate reasoning and check the final result.
+
 #### Section 2: Communication
 
 - Show understanding of the purpose and benefits of networking devices and the characteristics of LANs and…
 - Explain client-server and peer-to-peer models, their computer roles, benefits and drawbacks, and justify a model for…
 - Show understanding of thin-client and thick-client computers and the differences between them.
 - Show understanding of bus, star, mesh and hybrid network topologies.
+
+- **Retrieve:** Without notes, explain how the listed Section 2 ideas connect. Give one mechanism, calculation or construction step rather than a list of terms.
+- **Correct:** Correct one plausible error about show understanding of the purpose and benefits of networking devices and the characteristics of lans and… and state exactly why the corrected version is accurate.
+- **Transfer:** Apply one Section 2 method to a new scenario, show the intermediate reasoning and check the final result.
 
 #### Section 3: Hardware
 
@@ -53,12 +61,20 @@ Ask the learner to give one accurate definition or method step before continuing
 - Describe principal operation of laser printer, 3D printer, microphone, speakers, HDD, flash memory, optical reader/writer, touchscreen…
 - Understand why buffers are used.
 
+- **Retrieve:** Without notes, explain how the listed Section 3 ideas connect. Give one mechanism, calculation or construction step rather than a list of terms.
+- **Correct:** Correct one plausible error about explain the need for input, output, primary storage, secondary storage and removable storage. and state exactly why the corrected version is accurate.
+- **Transfer:** Apply one Section 3 method to a new scenario, show the intermediate reasoning and check the final result.
+
 #### Section 4: Processor fundamentals
 
 - Understand Von Neumann architecture and the stored-program concept.
 - Understand general- and special-purpose registers: PC, MDR, MAR, ACC, IX, CIR and status register.
 - Understand ALU, CU, clock and immediate access store (IAS).
 - Understand address, data and control buses.
+
+- **Retrieve:** Without notes, explain how the listed Section 4 ideas connect. Give one mechanism, calculation or construction step rather than a list of terms.
+- **Correct:** Correct one plausible error about understand von neumann architecture and the stored-program concept. and state exactly why the corrected version is accurate.
+- **Transfer:** Apply one Section 4 method to a new scenario, show the intermediate reasoning and check the final result.
 
 #### Section 5: System software
 
@@ -67,12 +83,20 @@ Ask the learner to give one accurate definition or method step before continuing
 - Understand libraries and benefits of dynamically linked library files.
 - Explain why assembler, compiler and interpreter are needed.
 
+- **Retrieve:** Without notes, explain how the listed Section 5 ideas connect. Give one mechanism, calculation or construction step rather than a list of terms.
+- **Correct:** Correct one plausible error about explain why an operating system is required and its memory, file, security, hardware and process management… and state exactly why the corrected version is accurate.
+- **Transfer:** Apply one Section 5 method to a new scenario, show the intermediate reasoning and check the final result.
+
 #### Section 6: Security, privacy and data integrity
 
 - Distinguish data security, privacy and integrity.
 - Explain the need for data and computer-system security.
 - Understand user accounts/passwords, digital signatures, biometrics, firewall, antivirus, anti-spyware and encryption as security measures.
 - Understand virus, spyware, hackers, phishing and pharming threats.
+
+- **Retrieve:** Without notes, explain how the listed Section 6 ideas connect. Give one mechanism, calculation or construction step rather than a list of terms.
+- **Correct:** Correct one plausible error about distinguish data security, privacy and integrity. and state exactly why the corrected version is accurate.
+- **Transfer:** Apply one Section 6 method to a new scenario, show the intermediate reasoning and check the final result.
 
 #### Section 7: Ethics and ownership
 
@@ -81,12 +105,20 @@ Ask the learner to give one accurate definition or method step before continuing
 - Explain the need to act ethically and the impact of acting ethically or unethically for a…
 - Show understanding of the need for copyright legislation for software.
 
+- **Retrieve:** Without notes, explain how the listed Section 7 ideas connect. Give one mechanism, calculation or construction step rather than a list of terms.
+- **Correct:** Correct one plausible error about show understanding of the need for and purpose of ethics as a computing professional. and state exactly why the corrected version is accurate.
+- **Transfer:** Apply one Section 7 method to a new scenario, show the intermediate reasoning and check the final result.
+
 #### Section 8: Databases
 
 - Explain limitations of file-based systems and how relational databases address them.
 - Understand entity/table, record/tuple, field/attribute, primary/candidate/secondary/foreign key, relationships, referential integrity and indexing.
 - Produce and interpret entity-relationship diagrams.
 - Understand 1NF, 2NF and 3NF; explain 3NF and produce a normalised design.
+
+- **Retrieve:** Without notes, explain how the listed Section 8 ideas connect. Give one mechanism, calculation or construction step rather than a list of terms.
+- **Correct:** Correct one plausible error about explain limitations of file-based systems and how relational databases address them. and state exactly why the corrected version is accurate.
+- **Transfer:** Apply one Section 8 method to a new scenario, show the intermediate reasoning and check the final result.
 
 ### Review method
 

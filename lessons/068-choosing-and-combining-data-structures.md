@@ -30,7 +30,59 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ### 1. Select one- or two-dimensional arrays for a scenario: Choosing and combining data structures (S10.04)
 
-**Concept relationships**
+**Atomic learning targets**
+
+- **S10.04.A01:** one-dimensional / 1D
+- **S10.04.A02:** two-dimensional / 2D
+- **S10.04.A03:** select / suitable
+
+**Core explanation**
+
+- Choose a one-dimensional array when each element needs one position, such as twenty marks or a list of names. Choose a two-dimensional array when each value naturally needs a row and a column, such as marks for several students across several tests. Do not choose 2D merely because there are many values.
+- An array is a collection of elements stored under one identifier. An index selects one element. The lower bound is the first valid index and the upper bound is the last valid index; both bounds are inclusive in a Cambridge declaration such as ARRAY[1:20] OF INTEGER.
+- A two-dimensional array uses two indexes, normally interpreted as row and column. In DECLARE Marks : ARRAY[1:30, 1:4] OF INTEGER, the first range gives 30 valid row indexes and the second gives 4 valid column indexes, for 120 cells.
+
+**Mechanism or method**
+
+1. **Extract the constraints from the scenario** — Choose a one-dimensional array when each element needs one position, such as twenty marks or a list of names.
+2. **Match mechanisms to those constraints** — Choose a two-dimensional array when each value naturally needs a row and a column, such as marks for several students across several tests.
+3. **Link the choice to a consequence** — Do not choose 2D merely because there are many values.
+
+#### Worked example: Select one- or two-dimensional arrays for a scenario: Choosing and combining data structures: complete worked route
+
+1. **Extract the constraints from the scenario**
+
+Choose a one-dimensional array when each element needs one position, such as twenty marks or a list of names.
+
+2. **Match mechanisms to those constraints**
+
+Choose a two-dimensional array when each value naturally needs a row and a column, such as marks for several students across several tests.
+
+3. **Link the choice to a consequence**
+
+Do not choose 2D merely because there are many values.
+
+4. **Complete example**
+
+Choose structures: Undo history uses a stack because the most recent action is undone first. Print jobs use a queue because the earliest accepted job prints first. A changing ordered playlist can use a linked list for link-based insertion/deletion.
+
+**Misconceptions to correct**
+
+- Students often confuse the identifier of the whole structure with one element. Correction: access requires an index or field name.
+
+#### Mastery check (MC-L068-S10.04)
+
+Select and justify a suitable choice in a fresh scenario, explicitly using every target: one-dimensional / 1D; two-dimensional / 2D; select / suitable.
+
+<details><summary>Answer criteria</summary>
+
+- Choose a one-dimensional array when each element needs one position, such as twenty marks or a list of names. Choose a two-dimensional array when each value naturally needs a row and a column, such as marks for several students across several tests. Do not choose 2D merely because there are many values.
+- An array is a collection of elements stored under one identifier. An index selects one element. The lower bound is the first valid index and the upper bound is the last valid index; both bounds are inclusive in a Cambridge declaration such as ARRAY[1:20] OF INTEGER.
+- A two-dimensional array uses two indexes, normally interpreted as row and column. In DECLARE Marks : ARRAY[1:30, 1:4] OF INTEGER, the first range gives 30 valid row indexes and the second gives 4 valid column indexes, for 120 cells.
+
+</details>
+
+**Supplementary concept map**
 
 - **1D array:** One index selects an item
 - **2D array:** Two indexes select a cell
@@ -39,7 +91,7 @@ Ask the learner to give one accurate definition or method step before continuing
 - **select:** Select one- or two-dimensional arrays for a scenario.
 - **dimensions:** Select 2D when the scenario has two independent…
 
-**Mechanism**
+**Supplementary three-step recap**
 
 1. **Translate the stated design** — Choose a one-dimensional array when each element needs one position, such as twenty marks or a list of…
 2. **Apply one complete operation** — A two-dimensional array uses two indexes, normally interpreted as row and column.
@@ -59,7 +111,68 @@ Select a suitable one-dimensional (1D) or two-dimensional (2D) array for a given
 
 ### 2. Stack, queue and linked-list features; justify a structure: Choosing and combining data structures (S10.09)
 
-**Concept relationships**
+**Atomic learning targets**
+
+- **S10.09.A01:** stack
+- **S10.09.A02:** queue
+- **S10.09.A03:** linked list
+- **S10.09.A04:** LIFO
+- **S10.09.A05:** FIFO
+- **S10.09.A06:** justify
+
+**Core explanation**
+
+- All three can be implemented using arrays and state variables or indexes. Stack uses an array with a top/stack pointer; queue uses an array with front and rear; linked list uses Data and Next arrays (or an array of node records), start and a free list. Candidates must be able to add, edit and delete data conceptually, but the syllabus does not require pseudocode for these ADT operations.
+- A stack is LIFO: add with push and delete with pop at the top. A queue is FIFO: add with enqueue at the rear and delete with dequeue at the front. A linked list stores data plus a next pointer/index in each node; start identifies the first node and null ends the chain.
+- Their key features and justify which structure suits a given situation using LIFO, FIFO or link-based traversal/insertion/deletion evidence.
+- Editing changes the stored data without breaking the access rule or links. Deleting from a linked list reconnects the predecessor to the removed node's successor and returns the freed array slot to the free list; physical array positions need not follow logical list order.
+- An abstract data type (ADT) is a collection of data and a set of operations on those data. The permitted operations and their effects define the ADT; its internal storage can change without changing that behaviour. Stack, queue and linked list are examples of ADTs.
+- Stack, queue and linked list are examples of ADTs.
+
+**Mechanism or method**
+
+1. **Identify the relevant condition or input** — All three can be implemented using arrays and state variables or indexes.
+2. **Trace how the process works** — Stack uses an array with a top/stack pointer;
+3. **Connect the mechanism to its result** — queue uses an array with front and rear;
+
+#### Worked example: Stack, queue and linked-list features; justify a structure: Choosing and combining data structures: complete worked route
+
+1. **Identify the relevant condition or input**
+
+All three can be implemented using arrays and state variables or indexes.
+
+2. **Trace how the process works**
+
+Stack uses an array with a top/stack pointer;
+
+3. **Connect the mechanism to its result**
+
+queue uses an array with front and rear;
+
+4. **Complete example**
+
+Choose structures: Undo history uses a stack because the most recent action is undone first. Print jobs use a queue because the earliest accepted job prints first. A changing ordered playlist can use a linked list for link-based insertion/deletion.
+
+**Misconceptions to correct**
+
+- Students often confuse the identifier of the whole structure with one element. Correction: access requires an index or field name.
+
+#### Mastery check (MC-L068-S10.09)
+
+Explain the following targets in one connected answer, using a concrete example for each: stack; queue; linked list; LIFO; FIFO; justify.
+
+<details><summary>Answer criteria</summary>
+
+- All three can be implemented using arrays and state variables or indexes. Stack uses an array with a top/stack pointer; queue uses an array with front and rear; linked list uses Data and Next arrays (or an array of node records), start and a free list. Candidates must be able to add, edit and delete data conceptually, but the syllabus does not require pseudocode for these ADT operations.
+- A stack is LIFO: add with push and delete with pop at the top. A queue is FIFO: add with enqueue at the rear and delete with dequeue at the front. A linked list stores data plus a next pointer/index in each node; start identifies the first node and null ends the chain.
+- Their key features and justify which structure suits a given situation using LIFO, FIFO or link-based traversal/insertion/deletion evidence.
+- Editing changes the stored data without breaking the access rule or links. Deleting from a linked list reconnects the predecessor to the removed node's successor and returns the freed array slot to the free list; physical array positions need not follow logical list order.
+- An abstract data type (ADT) is a collection of data and a set of operations on those data. The permitted operations and their effects define the ADT; its internal storage can change without changing that behaviour. Stack, queue and linked list are examples of ADTs.
+- Stack, queue and linked list are examples of ADTs.
+
+</details>
+
+**Supplementary concept map**
 
 - **linked list:** Stack, queue and linked-list features
 - **justify:** Their key features and justify which structure suits…
@@ -68,7 +181,7 @@ Select a suitable one-dimensional (1D) or two-dimensional (2D) array for a given
 - **stack:** Stack, queue and linked list are examples of…
 - **queue:** Queue uses an array with front and rear
 
-**Mechanism**
+**Supplementary three-step recap**
 
 1. **Translate the stated design** — Their key features and justify which structure suits a given situation using LIFO, FIFO or link-based traversal/insertion/deletion evidence.
 2. **Apply one complete operation** — Stack, queue and linked-list features
@@ -86,7 +199,7 @@ Stack, queue and linked list are examples of ADTs. Describe their key features a
 
 </details>
 
-<details><summary>Open precise terminology and exam facts</summary>
+### Lesson technical reference
 
 - Select a suitable one-dimensional (1D) or two-dimensional (2D) array for a given task. One index suits a linear collection; two indexes suit data with a genuine row-column or equivalent two-coordinate relationship.
 - Stack, queue and linked list are examples of ADTs. Describe their key features and justify which structure suits a given situation using LIFO, FIFO or link-based traversal/insertion/deletion evidence.
@@ -100,14 +213,6 @@ Stack, queue and linked list are examples of ADTs. Describe their key features a
 - A stack is LIFO: add with push and delete with pop at the top. A queue is FIFO: add with enqueue at the rear and delete with dequeue at the front. A linked list stores data plus a next pointer/index in each node; start identifies the first node and null ends the chain.
 - All three can be implemented using arrays and state variables or indexes. Stack uses an array with a top/stack pointer; queue uses an array with front and rear; linked list uses Data and Next arrays (or an array of node records), start and a free list. Candidates must be able to add, edit and delete data conceptually, but the syllabus does not require pseudocode for these ADT operations.
 - Editing changes the stored data without breaking the access rule or links. Deleting from a linked list reconnects the predecessor to the removed node's successor and returns the freed array slot to the free list; physical array positions need not follow logical list order.
-
-</details>
-
-### Worked method
-
-1. Undo history uses a stack because the most recent action is undone first.
-2. Print jobs use a queue because the earliest accepted job prints first.
-3. A changing ordered playlist can use a linked list for link-based insertion/deletion.
 
 Beyond syllabus / 延伸知识（不要求背诵）: programming libraries often provide tested ADT implementations, but the exam expects you to understand their behaviour and selection.
 ## 3. Practice by question type
@@ -157,10 +262,11 @@ These are indexes only. Cambridge question and mark-scheme wording is not reprod
 
 ### Summary
 
-- Define choosing and combining data structures with the exact technical vocabulary expected by the syllabus.
-- Use the lesson method on a fresh context and show the intermediate decision, representation or calculation.
-- Match the shape of the answer to the command word and the available marks.
-- Check the final answer against the scenario instead of repeating a memorised sentence.
+- S10.04: explain one-dimensional / 1D, two-dimensional / 2D, select / suitable.
+- S10.04 method: Extract the constraints from the scenario → Match mechanisms to those constraints → Link the choice to a consequence.
+- S10.09: explain stack, queue, linked list, LIFO, FIFO, justify.
+- S10.09 method: Identify the relevant condition or input → Trace how the process works → Connect the mechanism to its result.
+- Correction to remember: Students often confuse the identifier of the whole structure with one element. Correction: access requires an index or field name.
 
 ### Common error to correct
 

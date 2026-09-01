@@ -37,6 +37,15 @@ function escapeHtml(value) {
     .replaceAll("'", "&#39;");
 }
 
+function escapeLiteral(value) {
+  return String(value ?? "")
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#39;");
+}
+
 function markdownEscape(value) {
   return sanitizeStudentText(value).replaceAll("|", "\\|");
 }
@@ -55,14 +64,6 @@ function shorten(value, maximumWords = 30) {
   return words.length <= maximumWords ? words.join(" ") : `${words.slice(0, maximumWords).join(" ")}…`;
 }
 
-function displaySteps(value, maximumSteps = 5) {
-  const fragments = String(value ?? "")
-    .split(/(?<=[.!?])\s+|\s+\/\s+|:\s+/)
-    .map((fragment) => fragment.trim())
-    .filter((fragment) => fragment.split(/\s+/).length >= 3);
-  return (fragments.length ? fragments : [value]).slice(0, maximumSteps).map((fragment) => shorten(fragment, 30));
-}
-
 function lessonFilename(lesson) {
   return `${lesson.id}-${slugify(lesson.title)}.md`;
 }
@@ -78,11 +79,41 @@ function sectionLabel(lesson) {
 function renderKnowledgeMarkdown(lesson) {
   return lesson.knowledgePoints.map((point, index) => `### ${index + 1}. ${markdownEscape(point.displayTitle)} (${point.id})
 
-**Concept relationships**
+**Atomic learning targets**
+
+${point.atomicObjectives.map((objective) => `- **${objective.id}:** ${markdownEscape(objective.label)}`).join("\n")}
+
+**Core explanation**
+
+${point.explanations.map((explanation) => `- ${markdownEscape(explanation)}`).join("\n")}
+
+**Mechanism or method**
+
+${point.mechanismSteps.map((step, stepIndex) => `${stepIndex + 1}. **${markdownEscape(step.title)}** — ${markdownEscape(step.detail)}`).join("\n")}
+
+${point.workedExamples.map((example) => `#### Worked example: ${markdownEscape(example.title)}
+
+${example.steps.map((step, stepIndex) => `${stepIndex + 1}. **${markdownEscape(step.label)}**\n\n${step.text.includes("\n") ? `\`\`\`text\n${step.text}\n\`\`\`` : markdownEscape(step.text)}`).join("\n\n")}`).join("\n\n")}
+
+**Misconceptions to correct**
+
+${point.misconceptions.map((misconception) => `- ${markdownEscape(misconception)}`).join("\n")}
+
+#### Mastery check (${point.masteryCheck.id})
+
+${markdownEscape(point.masteryCheck.prompt)}
+
+<details><summary>Answer criteria</summary>
+
+${point.masteryCheck.answerCriteria.map((criterion) => `- ${markdownEscape(criterion)}`).join("\n")}
+
+</details>
+
+**Supplementary concept map**
 
 ${point.nodes.map((node) => `- **${markdownEscape(node.label)}:** ${markdownEscape(node.value)}`).join("\n")}
 
-**Mechanism**
+**Supplementary three-step recap**
 
 ${point.steps.map((step, stepIndex) => `${stepIndex + 1}. **${markdownEscape(step.title)}** — ${markdownEscape(step.detail)}`).join("\n")}
 
@@ -112,7 +143,11 @@ function renderReviewMarkdown(lesson) {
 
 ${lesson.reviewMaterials.map((lane) => `#### ${markdownEscape(lane.title)}
 
-${lane.points.map((point) => `- ${markdownEscape(point)}`).join("\n")}`).join("\n\n")}
+${lane.points.map((point) => `- ${markdownEscape(point)}`).join("\n")}
+
+- **Retrieve:** ${markdownEscape(lane.retrievalPrompt)}
+- **Correct:** ${markdownEscape(lane.correctionPrompt)}
+- **Transfer:** ${markdownEscape(lane.transferPrompt)}`).join("\n\n")}
 
 ### Review method
 
@@ -132,15 +167,9 @@ function renderMarkdown(lesson) {
   const knowledgeBody = lesson.materialStatus === "complete"
     ? `${renderKnowledgeMarkdown(lesson)}
 
-<details><summary>Open precise terminology and exam facts</summary>
+### Lesson technical reference
 
 ${lesson.coreFacts.map((fact) => `- ${fact}`).join("\n")}
-
-</details>
-
-### Worked method
-
-${displaySteps(lesson.workedExample).map((step, index) => `${index + 1}. ${step}`).join("\n")}
 
 ${lesson.extension}`
     : lesson.materialStatus === "review-complete"
@@ -242,14 +271,40 @@ function renderVisualRail(visuals, label, railId) {
   </section>`;
 }
 
+function renderWorkedStep(step) {
+  const body = step.text.includes("\n")
+    ? `<pre><code>${escapeLiteral(step.text)}</code></pre>`
+    : `<p>${escapeHtml(step.text)}</p>`;
+  return `<li><strong>${escapeHtml(step.label)}</strong>${body}</li>`;
+}
+
+function renderTeachingUnit(point) {
+  return `<div class="v2-teaching-unit">
+      <article class="v2-learning-targets"><h4>Atomic learning targets</h4><ul>${point.atomicObjectives.map((objective) => `<li data-objective-id="${escapeHtml(objective.id)}"><strong>${escapeHtml(objective.id)}</strong> ${escapeHtml(objective.label)}</li>`).join("")}</ul></article>
+      <article class="v2-point-explanation"><h4>Core explanation</h4>${point.explanations.map((explanation) => `<p>${escapeHtml(explanation)}</p>`).join("")}</article>
+      <article class="v2-point-mechanism"><h4>Mechanism or method</h4><ol>${point.mechanismSteps.map((step) => `<li><span>${escapeHtml(step.label)}</span><div><strong>${escapeHtml(step.title)}</strong><p>${escapeHtml(step.detail)}</p></div></li>`).join("")}</ol></article>
+      <div class="v2-worked-example-list">${point.workedExamples.map((example) => `<article class="v2-example v2-worked-example"><h4>Worked example: ${escapeHtml(example.title)}</h4><ol>${example.steps.map(renderWorkedStep).join("")}</ol></article>`).join("")}</div>
+      <aside class="v2-misconceptions"><h4>Misconceptions to correct</h4><ul>${point.misconceptions.map((misconception) => `<li>${escapeHtml(misconception)}</li>`).join("")}</ul></aside>
+      <article class="v2-mastery-check" data-question-id="${escapeHtml(point.masteryCheck.id)}" data-objective-ids="${escapeHtml(point.masteryCheck.objectiveIds.join(","))}"><h4>Mastery check</h4><p>${escapeHtml(point.masteryCheck.prompt)}</p><details><summary>Show answer criteria</summary><ul>${point.masteryCheck.answerCriteria.map((criterion) => `<li>${escapeHtml(criterion)}</li>`).join("")}</ul></details></article>
+    </div>`;
+}
+
+function pointEvidence(point, objective) {
+  const terms = objective.terms.map((term) => term.toLowerCase());
+  return point.explanations.find((explanation) => terms.some((term) => explanation.toLowerCase().includes(term)))
+    ?? point.explanations[0];
+}
+
 function renderKnowledgePoints(lesson) {
   const index = `<nav class="v2-knowledge-index" aria-label="Knowledge points in this lesson">${lesson.knowledgePoints.map((point, pointIndex) => `<a href="#knowledge-${slugify(point.id)}"><span>${String(pointIndex + 1).padStart(2, "0")}</span>${escapeHtml(point.id)}</a>`).join("")}</nav>`;
   const points = lesson.knowledgePoints.map((point, pointIndex) => `<section class="v2-knowledge-point" id="knowledge-${slugify(point.id)}" data-syllabus-id="${escapeHtml(point.id)}" data-visual-mode="${escapeHtml(point.visualMode)}" data-material-count="${point.materialCount}">
       <header class="v2-knowledge-point-head"><span>${String(pointIndex + 1).padStart(2, "0")}</span><div><p>${escapeHtml(point.id)} · ${escapeHtml(point.visualMode)}</p><h3>${escapeHtml(point.displayTitle)}</h3></div></header>
+      ${renderTeachingUnit(point)}
+      <div class="v2-supplementary-heading"><h4>Supplementary visual recap</h4><p>Use these cards and diagrams to reinforce the explanation above; they are not a substitute for it.</p></div>
       <div class="v2-material-triad">
-        <article class="v2-native-material v2-native-material--map"><h4>Concept relationships</h4><div class="v2-concept-map">${point.nodes.map((node) => `<div><strong>${escapeHtml(node.label)}</strong><span>${escapeHtml(node.value)}</span></div>`).join("")}</div></article>
-        <article class="v2-native-material v2-native-material--story"><h4>See how it works</h4><ol>${point.steps.map((step) => `<li><span>${escapeHtml(step.label)}</span><div><strong>${escapeHtml(step.title)}</strong><p>${escapeHtml(step.detail)}</p></div></li>`).join("")}</ol></article>
-        <aside class="v2-native-material v2-native-material--cue"><h4>${escapeHtml(point.cue.title)}</h4><p>${escapeHtml(point.cue.text)}</p></aside>
+        <article class="v2-native-material v2-native-material--map"><h4>Concept relationships</h4><div class="v2-concept-map">${point.atomicObjectives.slice(0, 6).map((objective) => `<div><strong>${escapeHtml(objective.label)}</strong><span>${escapeHtml(pointEvidence(point, objective))}</span></div>`).join("")}</div></article>
+        <article class="v2-native-material v2-native-material--story"><h4>Method recap</h4><ol>${point.mechanismSteps.map((step) => `<li><span>${escapeHtml(step.label)}</span><div><strong>${escapeHtml(step.title)}</strong><p>${escapeHtml(step.detail)}</p></div></li>`).join("")}</ol></article>
+        <aside class="v2-native-material v2-native-material--cue"><h4>Boundary to remember</h4><p>${escapeHtml(point.misconceptions[0])}</p></aside>
       </div>
       ${renderVisualRail(point.visuals, `${point.id} diagrams`, `materials-${lesson.id}-${slugify(point.id)}`)}
       <details class="v2-point-precision"><summary>Open precise syllabus wording</summary><p><strong>${escapeHtml(point.title)}</strong></p><p>${escapeHtml(point.notes)}</p></details>
@@ -258,15 +313,14 @@ function renderKnowledgePoints(lesson) {
 }
 
 function renderReviewMaterials(lesson) {
-  return `<div class="v2-review-grid">${lesson.reviewMaterials.map((lane) => `<article class="v2-review-lane"><div><span>${String(lane.section).padStart(2, "0")}</span><h3>${escapeHtml(lane.title)}</h3></div><ul>${lane.points.map((point) => `<li>${escapeHtml(point)}</li>`).join("")}</ul></article>`).join("")}</div>
+  return `<div class="v2-review-grid">${lesson.reviewMaterials.map((lane) => `<article class="v2-review-lane"><div><span>${String(lane.section).padStart(2, "0")}</span><h3>${escapeHtml(lane.title)}</h3></div><ul>${lane.points.map((point) => `<li>${escapeHtml(point)}</li>`).join("")}</ul><div class="v2-review-prompts"><p><strong>Retrieve:</strong> ${escapeHtml(lane.retrievalPrompt)}</p><p><strong>Correct:</strong> ${escapeHtml(lane.correctionPrompt)}</p><p><strong>Transfer:</strong> ${escapeHtml(lane.transferPrompt)}</p></div></article>`).join("")}</div>
     <article class="v2-review-method"><h3>Review method</h3><ol><li>Choose one lane and explain the links without notes.</li><li>Check the exact term or method that caused hesitation.</li><li>Correct one answer and name the reason it now earns the mark.</li></ol></article>`;
 }
 
 function renderExplanation(lesson) {
-  if (lesson.materialStatus === "complete") return `<div class="v2-heading"><p class="v2-eyebrow">Part 2 | visual explanation</p><h2>Learn each point through visuals</h2><p>Use the relationship map, mechanism and concrete cue before opening precise wording.</p></div>
+  if (lesson.materialStatus === "complete") return `<div class="v2-heading"><p class="v2-eyebrow">Part 2 | explicit teaching</p><h2>Learn each point through explanation, method and practice</h2><p>Complete the default-visible explanation and worked example before using the visual recap.</p></div>
     ${renderKnowledgePoints(lesson)}
-    <details class="v2-core-facts"><summary>Open precise terminology and exam facts</summary><ul class="v2-facts">${lesson.coreFacts.map((fact) => `<li>${escapeHtml(fact)}</li>`).join("")}</ul></details>
-    <article class="v2-example"><h3>Worked method</h3><ol>${displaySteps(lesson.workedExample).map((step) => `<li>${escapeHtml(step)}</li>`).join("")}</ol></article>
+    <article class="v2-core-facts"><h3>Lesson technical reference</h3><ul class="v2-facts">${lesson.coreFacts.map((fact) => `<li>${escapeHtml(fact)}</li>`).join("")}</ul></article>
     <aside class="v2-extension"><h3>Beyond syllabus / 延伸知识（不要求背诵）</h3><p>${escapeHtml(lesson.extension.replace(/^Beyond syllabus \/ 延伸知识（不要求背诵）:\s*/, ""))}</p></aside>`;
   if (lesson.materialStatus === "review-complete") return `<div class="v2-heading"><p class="v2-eyebrow">Part 2 | connected review</p><h2>Reconnect the course before practising</h2><p>Use each lane to retrieve a small cluster of related ideas, then repair one weak link.</p></div>${renderReviewMaterials(lesson)}`;
   throw new Error(`L${lesson.id} has no complete material status`);
@@ -328,7 +382,7 @@ function renderLessonHtml(lesson) {
 
         <section class="v2-panel" id="practice">
           <div class="v2-heading"><p class="v2-eyebrow">Part 3 | select by learner need</p><h2>Practice by question type</h2></div>
-          <div class="v2-question-list">${questions.map((question, index) => `<article class="v2-question" data-question-id="${question.id}" data-semantic-fingerprint="${escapeHtml(Object.values(question.semanticFingerprint).join("|"))}">
+          <div class="v2-question-list">${questions.map((question, index) => `<article class="v2-question" data-question-id="${question.id}" data-syllabus-ids="${escapeHtml(question.syllabusIds.join(","))}" data-semantic-fingerprint="${escapeHtml(Object.values(question.semanticFingerprint).join("|"))}">
               <div class="v2-question-head"><span class="v2-badge">${escapeHtml(question.commandWord)}</span><span class="v2-badge">${escapeHtml(question.questionType)}</span><span class="v2-badge difficulty">${escapeHtml(question.difficulty)}</span><span class="v2-badge">${question.marks} marks</span></div>
               <p><strong>Question ${index + 1}.</strong> ${escapeHtml(question.prompt)}</p>
               <details><summary>Show answer and marking guidance</summary><div class="v2-answer-grid"><p><strong>Answer:</strong> ${escapeHtml(question.answer)}</p><p><strong>Marking guidance:</strong> ${escapeHtml(question.guidance)}</p><p><strong>Common error:</strong> ${escapeHtml(question.commonError)}</p></div></details>

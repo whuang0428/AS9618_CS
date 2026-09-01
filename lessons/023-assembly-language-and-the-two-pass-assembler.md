@@ -30,7 +30,62 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ### 1. Assembly language and machine code (S4.09)
 
-**Concept relationships**
+**Atomic learning targets**
+
+- **S4.09.A01:** assembly
+- **S4.09.A02:** language
+- **S4.09.A03:** machine
+- **S4.09.A04:** code
+
+**Core explanation**
+
+- Assembly language is a low-level, processor-specific symbolic representation of machine-code instructions. Mnemonics such as ADD make operations easier for a human to read and write, while operands name the value, register or address used. An assembler translates assembly source into the corresponding machine code; assembly is not executed directly as text.
+- Control, comparison and I/O: JMP <address is unconditional. CMP <address or CMP n compares ACC directly or with an immediate value. CMI <address compares using indirect addressing. JPE jumps after a True comparison and JPN after a False comparison. IN inputs one ASCII character code to ACC; OUT outputs the character whose ASCII code is in ACC; END returns control to the operating system.
+- The two-pass assembler stages are Pass 1 and Pass 2. Pass 1 scans source, assigns addresses and builds a symbol table for labels, allowing forward references. Pass 2 translates mnemonics/operands using the completed table and produces machine code; invalid mnemonics or unresolved symbols are reported.
+- The relationship is close but not based on English spelling: a mnemonic maps to an opcode defined by the target instruction set, and an operand must be encoded in the form required by that instruction. Labels are resolved to addresses during assembly.
+
+**Mechanism or method**
+
+1. **Identify the relevant condition or input** — Assembly language is a low-level, processor-specific symbolic representation of machine-code instructions.
+2. **Trace how the process works** — Mnemonics such as ADD make operations easier for a human to read and write, while operands name the value, register or address used.
+3. **Connect the mechanism to its result** — An assembler translates assembly source into the corresponding machine code;
+
+#### Worked example: Assembly language and machine code: complete worked route
+
+1. **Identify the relevant condition or input**
+
+Assembly language is a low-level, processor-specific symbolic representation of machine-code instructions.
+
+2. **Trace how the process works**
+
+Mnemonics such as ADD make operations easier for a human to read and write, while operands name the value, register or address used.
+
+3. **Connect the mechanism to its result**
+
+An assembler translates assembly source into the corresponding machine code;
+
+4. **Complete example**
+
+Translate one symbolic instruction: For a target instruction set, ADD 3 is assembly source: ADD is the mnemonic and 3 is an immediate operand. The assembler selects that processor's binary ADD opcode and encodes the operand. A different processor type may use a different opcode or instruction format, so the same machine-code bit pattern is not portable by assumption.
+
+**Misconceptions to correct**
+
+- Students often memorise register names without roles. Correction: a register earns its name by what it temporarily holds.
+
+#### Mastery check (MC-L023-S4.09)
+
+Distinguish the following targets in one connected answer, using a concrete example for each: assembly; language; machine; code.
+
+<details><summary>Answer criteria</summary>
+
+- Assembly language is a low-level, processor-specific symbolic representation of machine-code instructions. Mnemonics such as ADD make operations easier for a human to read and write, while operands name the value, register or address used. An assembler translates assembly source into the corresponding machine code; assembly is not executed directly as text.
+- Control, comparison and I/O: JMP <address is unconditional. CMP <address or CMP n compares ACC directly or with an immediate value. CMI <address compares using indirect addressing. JPE jumps after a True comparison and JPN after a False comparison. IN inputs one ASCII character code to ACC; OUT outputs the character whose ASCII code is in ACC; END returns control to the operating system.
+- The two-pass assembler stages are Pass 1 and Pass 2. Pass 1 scans source, assigns addresses and builds a symbol table for labels, allowing forward references. Pass 2 translates mnemonics/operands using the completed table and produces machine code; invalid mnemonics or unresolved symbols are reported.
+- The relationship is close but not based on English spelling: a mnemonic maps to an opcode defined by the target instruction set, and an operand must be encoded in the form required by that instruction. Labels are resolved to addresses during assembly.
+
+</details>
+
+**Supplementary concept map**
 
 - **assembly:** Assembly language and machine code.
 - **language:** Show the relationship between assembly language and machine…
@@ -38,7 +93,7 @@ Ask the learner to give one accurate definition or method step before continuing
 - **code:** An assembler translates assembly source into the corresponding…
 - **distinguish:** Pass 2 translates mnemonics/operands using the completed table…
 
-**Mechanism**
+**Supplementary three-step recap**
 
 1. **Name both alternatives precisely** — Assembly language and machine code.
 2. **Connect structure to consequence** — Show the relationship between assembly language and machine code
@@ -73,7 +128,59 @@ Show the relationship between assembly language and machine code: assembly is a 
 
 ### 2. And apply the stages of a two-pass assembler (S4.10)
 
-**Concept relationships**
+**Atomic learning targets**
+
+- **S4.10.A01:** stages
+- **S4.10.A02:** two-pass
+- **S4.10.A03:** assembler
+
+**Core explanation**
+
+- The two-pass assembler stages are Pass 1 and Pass 2. Pass 1 scans source, assigns addresses and builds a symbol table for labels, allowing forward references. Pass 2 translates mnemonics/operands using the completed table and produces machine code; invalid mnemonics or unresolved symbols are reported.
+- Assembly language is a low-level, processor-specific symbolic representation of machine-code instructions. Mnemonics such as ADD make operations easier for a human to read and write, while operands name the value, register or address used. An assembler translates assembly source into the corresponding machine code; assembly is not executed directly as text.
+- Show the relationship between assembly language and machine code: assembly is a processor-specific symbolic low-level form translated by an assembler into binary instructions defined by the target instruction set.
+
+**Mechanism or method**
+
+1. **Establish the exact components or states** — The two-pass assembler stages are Pass 1 and Pass 2.
+2. **Trace the relationship or change** — Pass 1 scans source, assigns addresses and builds a symbol table for labels, allowing forward references.
+3. **Use the explanation in a concrete case** — Pass 2 translates mnemonics/operands using the completed table and produces machine code;
+
+#### Worked example: And apply the stages of a two-pass assembler: complete worked route
+
+1. **Establish the exact components or states**
+
+The two-pass assembler stages are Pass 1 and Pass 2.
+
+2. **Trace the relationship or change**
+
+Pass 1 scans source, assigns addresses and builds a symbol table for labels, allowing forward references.
+
+3. **Use the explanation in a concrete case**
+
+Pass 2 translates mnemonics/operands using the completed table and produces machine code;
+
+4. **Complete example**
+
+The assembler selects that processor's binary ADD opcode and encodes the operand.
+
+**Misconceptions to correct**
+
+- Students often memorise register names without roles. Correction: a register earns its name by what it temporarily holds.
+
+#### Mastery check (MC-L023-S4.10)
+
+Describe the following targets in one connected answer, using a concrete example for each: stages; two-pass; assembler.
+
+<details><summary>Answer criteria</summary>
+
+- The two-pass assembler stages are Pass 1 and Pass 2. Pass 1 scans source, assigns addresses and builds a symbol table for labels, allowing forward references. Pass 2 translates mnemonics/operands using the completed table and produces machine code; invalid mnemonics or unresolved symbols are reported.
+- Assembly language is a low-level, processor-specific symbolic representation of machine-code instructions. Mnemonics such as ADD make operations easier for a human to read and write, while operands name the value, register or address used. An assembler translates assembly source into the corresponding machine code; assembly is not executed directly as text.
+- Show the relationship between assembly language and machine code: assembly is a processor-specific symbolic low-level form translated by an assembler into binary instructions defined by the target instruction set.
+
+</details>
+
+**Supplementary concept map**
 
 - **Pass 1:** Assign addresses and record labels
 - **Symbol table:** Maps labels to addresses
@@ -82,7 +189,7 @@ Show the relationship between assembly language and machine code: assembly is a 
 - **stages:** And apply the stages of a two-pass assembler.
 - **two-pass:** The different stages of a two-pass assembler and…
 
-**Mechanism**
+**Supplementary three-step recap**
 
 1. **Name the exact concept** — And apply the stages of a two-pass assembler.
 2. **Explain how its parts connect** — The different stages of a two-pass assembler and apply the process to a simple program
@@ -100,7 +207,7 @@ Describe the different stages of a two-pass assembler and apply the process to a
 
 </details>
 
-<details><summary>Open precise terminology and exam facts</summary>
+### Lesson technical reference
 
 - Show the relationship between assembly language and machine code: assembly is a processor-specific symbolic low-level form translated by an assembler into binary instructions defined by the target instruction set.
 - Describe the different stages of a two-pass assembler and apply the process to a simple program: pass 1 assigns addresses/builds the symbol table and pass 2 translates with resolved symbols.
@@ -114,16 +221,6 @@ Describe the different stages of a two-pass assembler and apply the process to a
 - Arithmetic: ADD <address or ADD n/Bn/&n adds a memory value or immediate denary/binary/hexadecimal value to ACC; SUB has the corresponding forms; INC <register and DEC <register change ACC or IX by one.
 - Control, comparison and I/O: JMP <address is unconditional. CMP <address or CMP n compares ACC directly or with an immediate value. CMI <address compares using indirect addressing. JPE jumps after a True comparison and JPN after a False comparison. IN inputs one ASCII character code to ACC; OUT outputs the character whose ASCII code is in ACC; END returns control to the operating system.
 - ACC is the accumulator and IX is the index register. An address can be absolute or symbolic. Prefix gives immediate denary, B immediate binary and & immediate hexadecimal data. These prefixes and operand forms are part of the instruction semantics, not optional decoration.
-
-</details>
-
-### Worked method
-
-1. Translate one symbolic instruction
-2. For a target instruction set, ADD 3 is assembly source
-3. ADD is the mnemonic and 3 is an immediate operand.
-4. The assembler selects that processor's binary ADD opcode and encodes the operand.
-5. A different processor type may use a different opcode or instruction format, so the same machine-code bit pattern is not portable by assumption.
 
 Beyond syllabus / 延伸知识（不要求背诵）: modern processors add pipelining and several cache levels, but exam answers should begin with the syllabus processor model.
 ## 3. Practice by question type
@@ -173,10 +270,11 @@ These are indexes only. Cambridge question and mark-scheme wording is not reprod
 
 ### Summary
 
-- Define assembly language and the two-pass assembler with the exact technical vocabulary expected by the syllabus.
-- Use the lesson method on a fresh context and show the intermediate decision, representation or calculation.
-- Match the shape of the answer to the command word and the available marks.
-- Check the final answer against the scenario instead of repeating a memorised sentence.
+- S4.09: explain assembly, language, machine, code.
+- S4.09 method: Identify the relevant condition or input → Trace how the process works → Connect the mechanism to its result.
+- S4.10: explain stages, two-pass, assembler.
+- S4.10 method: Establish the exact components or states → Trace the relationship or change → Use the explanation in a concrete case.
+- Correction to remember: Students often memorise register names without roles. Correction: a register earns its name by what it temporarily holds.
 
 ### Common error to correct
 

@@ -28,7 +28,93 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ### 1. Bubble sort and linear search algorithms: Linear search using arrays (S10.06)
 
-**Concept relationships**
+**Atomic learning targets**
+
+- **S10.06.A01:** bubble sort
+- **S10.06.A02:** linear search
+- **S10.06.A03:** write
+
+**Core explanation**
+
+- Linear search examines array elements in index order until the target is found or every populated element has been checked. It works on unsorted data.
+- A complete algorithm initialises the index and found flag, keeps every array access within declared bounds, compares the current element, advances after a failed comparison and reports both found and not-found outcomes.
+- Stopping the loop immediately after the last valid comparison prevents an out-of-bounds access. A trace of one search is useful evidence, but the syllabus also requires the learner to write the complete algorithm.
+- Bubble sort repeatedly compares adjacent elements and swaps a pair when it is in the wrong order. Each ascending pass fixes the largest remaining value at the high end, so the next pass can use a shorter inner-loop bound.
+
+**Mechanism or method**
+
+1. **Set the first index and found state** — Start at the declared lower bound with Found set to FALSE before reading an array element.
+2. **Compare within the valid bounds** — Test the current item against Target and advance the index only when the current item does not match.
+3. **Report found or exhausted** — Stop on a match or after the upper populated bound and return an index or a clear not-found result.
+
+#### Worked example: Write a bounded linear search
+
+1. **Code**
+
+```text
+DECLARE Found : BOOLEAN
+DECLARE Index : INTEGER
+Found <- FALSE
+Index <- 1
+WHILE Index <= Count AND NOT Found
+IF Code[Index] = Target THEN
+Found <- TRUE
+ELSE
+Index <- Index + 1
+ENDIF
+ENDWHILE
+```
+
+2. **Found case**
+
+Searching [K4, M2, P7] for M2 checks indexes 1 then 2 and stops with Found=TRUE and Index=2.
+
+3. **Absent case**
+
+Searching the same array for Z9 checks indexes 1, 2 and 3, then stops when Index=4 without accessing Code[4].
+
+#### Worked example: Write and trace an ascending bubble sort
+
+1. **Code**
+
+```text
+FOR Pass <- 1 TO Count - 1
+FOR Index <- 1 TO Count - Pass
+IF Value[Index] > Value[Index + 1] THEN
+Temp <- Value[Index]
+Value[Index] <- Value[Index + 1]
+Value[Index + 1] <- Temp
+ENDIF
+NEXT Index
+NEXT Pass
+```
+
+2. **Pass 1**
+
+For [4, 1, 3], compare 4/1 and swap to [1,4,3]; compare 4/3 and swap to [1,3,4].
+
+3. **Pass 2**
+
+Compare 1/3; no swap is needed and the array remains [1,3,4].
+
+**Misconceptions to correct**
+
+- A linear search does not require sorted data, but it must still respect the declared array bounds.
+
+#### Mastery check (MC-L060-S10.06)
+
+Complete a fresh example that demonstrates every target: bubble sort; linear search; write. Show all intermediate steps and check the result.
+
+<details><summary>Answer criteria</summary>
+
+- Linear search examines array elements in index order until the target is found or every populated element has been checked. It works on unsorted data.
+- A complete algorithm initialises the index and found flag, keeps every array access within declared bounds, compares the current element, advances after a failed comparison and reports both found and not-found outcomes.
+- Stopping the loop immediately after the last valid comparison prevents an out-of-bounds access. A trace of one search is useful evidence, but the syllabus also requires the learner to write the complete algorithm.
+- Bubble sort repeatedly compares adjacent elements and swaps a pair when it is in the wrong order. Each ascending pass fixes the largest remaining value at the high end, so the next pass can use a shorter inner-loop bound.
+
+</details>
+
+**Supplementary concept map**
 
 - **Linear search:** Inspect items in order
 - **Bubble sort:** Swap adjacent out-of-order items
@@ -37,11 +123,11 @@ Ask the learner to give one accurate definition or method step before continuing
 - **target:** Linear search examines array elements in index order…
 - **found:** Linear search checks successive indexed elements until the…
 
-**Mechanism**
+**Supplementary three-step recap**
 
-1. **Translate the stated design** — Bubble sort and linear search algorithms.
-2. **Apply one complete operation** — Linear search examines array elements in index order until the target is found or all populated elements have…
-3. **Trace state and boundaries** — When processing array data, candidates must write a bubble-sort algorithm and a linear-search algorithm.
+1. **Set the first index and found state** — Start at the declared lower bound with Found set to FALSE before reading an array element.
+2. **Compare within the valid bounds** — Test the current item against Target and advance the index only when the current item does not match.
+3. **Report found or exhausted** — Stop on a match or after the upper populated bound and return an index or a clear not-found result.
 
 **Linear search checks each item in order:** Knowledge explanation How it works
 
@@ -80,7 +166,7 @@ When processing array data, candidates must write a bubble-sort algorithm and a 
 
 </details>
 
-<details><summary>Open precise terminology and exam facts</summary>
+### Lesson technical reference
 
 - When processing array data, candidates must write a bubble-sort algorithm and a linear-search algorithm. A trace alone is not sufficient evidence of the ability to write each complete algorithm.
 - Before tracing a search, define the data structure it traverses. An array is a fixed-size indexed collection whose elements have one declared data type. The index selects one element; it is not the value stored in that element.
@@ -91,36 +177,28 @@ When processing array data, candidates must write a bubble-sort algorithm and a 
 - Bubble sort makes repeated passes through the unsorted part of an array. Each pass compares adjacent elements and swaps them when they are in the wrong order. After a complete ascending pass, the largest remaining value is at the high end; the algorithm repeats until the required passes are complete or a whole pass makes no swaps.
 - A trace is evidence about one execution, but the syllabus requires candidates to write the algorithms. The answer must therefore include initialisation, loop bounds, comparison, update or swap, and a valid stopping condition rather than only showing one example pass.
 
-</details>
-
-### Worked method
-
-1. Two complete array algorithms
-2. A linear search of Code[1:Count] sets Found to FALSE and Index to 1, then compares Code[Index] with Target while Found is FALSE and Index is within Count.
-3. A bubble sort of Value[1:Count] uses nested passes, compares Value[Index] with Value[Index + 1], swaps an inverted pair through Temp and may stop early when a pass makes no swaps.
-
 Beyond syllabus / 延伸知识（不要求背诵）: programming libraries often provide tested ADT implementations, but the exam expects you to understand their behaviour and selection.
 ## 3. Practice by question type
 
-### Question 1 - foundation - apply - 2 marks
+### Question 1 - foundation - write - 8 marks
 
-When must a linear search stop?
+Write complete Cambridge pseudocode for a linear search of Code[1:Count] for Target. Initialise all state, stay within the bounds, and report both found and not-found outcomes.
 
-**Answer:** When the target has been found or every populated element within the declared bounds has been checked.
+**Answer:** initialises Found to FALSE and Index to 1; loops while Index <= Count and not Found; compares Code[Index] with Target; sets Found on match; otherwise increments Index; never accesses beyond Count; reports Index/found or a clear not-found result
 
-**Marking guidance:** Award one mark for each distinct, technically accurate point or method step.
+**Marking guidance:** A trace or prose description alone earns no algorithm-construction marks.
 
-**Common error:** For the command word apply, perform that exact action; do not replace it with an unrelated fact.
+**Common error:** Test the bound before every array access.
 
-### Question 2 - application - write - 4 marks
+### Question 2 - application - trace - 5 marks
 
-Write declarations for an array called Code that stores 20 STRING values, then state the first and last valid indexes used by a search.
+Trace the linear-search algorithm for [K4, M2, P7] with targets M2 and Z9. Show Index, current value and Found after each valid comparison.
 
-**Answer:** DECLARE Code : ARRAY[1:20] or another explicit 20-element bound range; OF STRING; first valid index matches the declared lower bound; last valid index matches the declared upper bound
+**Answer:** M2: index1 K4 false, index2 M2 true and stop; Z9: indexes1 K4 false, 2 M2 false, 3 P7 false, then stop not found without reading index4
 
-**Marking guidance:** Do not assume zero-based indexing when the declaration gives different bounds.
+**Marking guidance:** The absent trace must demonstrate safe termination after the upper bound.
 
-**Common error:** Do not repeat the same point in different words; each mark needs a separate idea or method step.
+**Common error:** Do not read a fourth element from a three-element array.
 
 ### Question 3 - transfer - explain - 3 marks
 
@@ -144,10 +222,9 @@ These are indexes only. Cambridge question and mark-scheme wording is not reprod
 
 ### Summary
 
-- Define linear search using arrays with the exact technical vocabulary expected by the syllabus.
-- Use the lesson method on a fresh context and show the intermediate decision, representation or calculation.
-- Match the shape of the answer to the command word and the available marks.
-- Check the final answer against the scenario instead of repeating a memorised sentence.
+- S10.06: explain bubble sort, linear search, write.
+- S10.06 method: Set the first index and found state → Compare within the valid bounds → Report found or exhausted.
+- Correction to remember: A linear search does not require sorted data, but it must still respect the declared array bounds.
 
 ### Common error to correct
 

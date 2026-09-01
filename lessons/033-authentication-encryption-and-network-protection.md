@@ -28,7 +28,71 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ### 1. User accounts/passwords, digital signatures, biometrics, firewall, antivirus, anti-spyware and encryption as security measures (S6.03)
 
-**Concept relationships**
+**Atomic learning targets**
+
+- **S6.03.A01:** user account / user accounts
+- **S6.03.A02:** password
+- **S6.03.A03:** digital signature
+- **S6.03.A04:** biometric
+- **S6.03.A05:** firewall
+- **S6.03.A06:** anti-virus / antivirus
+- **S6.03.A07:** anti-spyware
+- **S6.03.A08:** encryption
+- **S6.03.A09:** security measure / security measures
+
+**Core explanation**
+
+- Each security measure has a distinct mechanism: a user account identifies a user; a password authenticates knowledge; a digital signature supports integrity and origin checks; a biometric compares a captured feature; a firewall filters traffic; anti-virus and anti-spyware detect known malicious software; encryption protects readable data. The threats include a virus, spyware, a hacker, phishing and pharming; each threat must be matched to a control whose mechanism reduces that risk.
+- Biometrics use a physical or behavioural characteristic such as fingerprint, face, iris, retina, voice or typing pattern. A captured feature is converted to a template and compared with an enrolled template. A match authenticates the identity claim; authorisation is the separate decision about what that user may access or do.
+- A user account gives an individual or role a distinct system identity and supports accountability. A password is secret knowledge used to authenticate an identity claim. Accounts should not be shared; passwords should be difficult to guess, stored as salted hashes, protected by attempt limits and changed if compromised.
+- Encryption transforms plaintext into ciphertext using an algorithm and key. Without the correct decryption key, intercepted or stolen ciphertext should not reveal readable content. Encryption therefore protects confidentiality, while access rights can protect confidentiality and integrity by preventing unauthorised viewing or alteration.
+- Anti-virus software scans files, memory and activity for virus signatures or suspicious behaviour, then blocks, quarantines or removes detected malicious code. Anti-spyware performs corresponding detection and removal for spyware; the categories may be combined in one security product, but their syllabus roles must still be stated accurately.
+- The methods do different jobs: encryption does not decide which logged-in user may edit a record, and access rights do not make a stolen unencrypted copy unreadable. Neither method guarantees availability, data truth or protection after an authorised account is misused.
+
+**Mechanism or method**
+
+1. **Identify the relevant condition or input** — Each security measure has a distinct mechanism: a user account identifies a user;
+2. **Trace how the process works** — a digital signature supports integrity and origin checks;
+3. **Connect the mechanism to its result** — anti-virus and anti-spyware detect known malicious software;
+
+#### Worked example: User accounts/passwords, digital signatures, biometrics, firewall, antivirus, anti-spyware and encryption as security measures: complete worked route
+
+1. **Identify the relevant condition or input**
+
+Each security measure has a distinct mechanism: a user account identifies a user;
+
+2. **Trace how the process works**
+
+a digital signature supports integrity and origin checks;
+
+3. **Connect the mechanism to its result**
+
+anti-virus and anti-spyware detect known malicious software;
+
+4. **Complete example**
+
+Protect a home laptop and a school network: The laptop's host firewall blocks unsolicited inbound connections except an explicitly required service. The school's boundary firewall denies unrequested external traffic, permits web traffic under ordered rules and logs repeated blocked attempts. Anti-virus still scans downloaded files, and account/access controls still decide who may use data after traffic is allowed.
+
+**Misconceptions to correct**
+
+- Students often propose encryption for every problem. Correction: encryption protects confidentiality but does not fix poor permissions, phishing or missing backups.
+
+#### Mastery check (MC-L033-S6.03)
+
+Explain the following targets in one connected answer, using a concrete example for each: user account / user accounts; password; digital signature; biometric; firewall; anti-virus / antivirus; anti-spyware; encryption; security measure / security measures.
+
+<details><summary>Answer criteria</summary>
+
+- Each security measure has a distinct mechanism: a user account identifies a user; a password authenticates knowledge; a digital signature supports integrity and origin checks; a biometric compares a captured feature; a firewall filters traffic; anti-virus and anti-spyware detect known malicious software; encryption protects readable data. The threats include a virus, spyware, a hacker, phishing and pharming; each threat must be matched to a control whose mechanism reduces that risk.
+- Biometrics use a physical or behavioural characteristic such as fingerprint, face, iris, retina, voice or typing pattern. A captured feature is converted to a template and compared with an enrolled template. A match authenticates the identity claim; authorisation is the separate decision about what that user may access or do.
+- A user account gives an individual or role a distinct system identity and supports accountability. A password is secret knowledge used to authenticate an identity claim. Accounts should not be shared; passwords should be difficult to guess, stored as salted hashes, protected by attempt limits and changed if compromised.
+- Encryption transforms plaintext into ciphertext using an algorithm and key. Without the correct decryption key, intercepted or stolen ciphertext should not reveal readable content. Encryption therefore protects confidentiality, while access rights can protect confidentiality and integrity by preventing unauthorised viewing or alteration.
+- Anti-virus software scans files, memory and activity for virus signatures or suspicious behaviour, then blocks, quarantines or removes detected malicious code. Anti-spyware performs corresponding detection and removal for spyware; the categories may be combined in one security product, but their syllabus roles must still be stated accurately.
+- The methods do different jobs: encryption does not decide which logged-in user may edit a record, and access rights do not make a stolen unencrypted copy unreadable. Neither method guarantees availability, data truth or protection after an authorised account is misused.
+
+</details>
+
+**Supplementary concept map**
 
 - **user account:** User accounts/passwords, digital signatures, biometrics, firewall, antivirus, anti-spyware…
 - **digital signature:** User accounts, passwords, digital signatures, biometrics, firewall, anti-virus,…
@@ -37,7 +101,7 @@ Ask the learner to give one accurate definition or method step before continuing
 - **antivirus:** Anti-virus software scans files, memory and activity for…
 - **password:** Biometrics can be convenient and cannot be casually…
 
-**Mechanism**
+**Supplementary three-step recap**
 
 1. **Identify what needs protection** — User accounts/passwords, digital signatures, biometrics, firewall, antivirus, anti-spyware and encryption as security measures.
 2. **Trace the attack or error route** — User accounts, passwords, digital signatures, biometrics, firewall, anti-virus, anti-spyware and encryption are all required named evidence.
@@ -68,7 +132,62 @@ Describe security measures for computer systems from a stand-alone PC to a netwo
 
 ### 2. How encryption and access rights protect data (S6.06)
 
-**Concept relationships**
+**Atomic learning targets**
+
+- **S6.06.A01:** encryption
+- **S6.06.A02:** access
+- **S6.06.A03:** rights
+- **S6.06.A04:** protect
+
+**Core explanation**
+
+- Each security measure has a distinct mechanism: a user account identifies a user; a password authenticates knowledge; a digital signature supports integrity and origin checks; a biometric compares a captured feature; a firewall filters traffic; anti-virus and anti-spyware detect known malicious software; encryption protects readable data. The threats include a virus, spyware, a hacker, phishing and pharming; each threat must be matched to a control whose mechanism reduces that risk.
+- Access rights restrict authorised actions on resources. Read permission controls viewing; write/modify controls alteration; delete controls removal; execute or administrative rights control running software or changing system settings. Least privilege grants only the permissions needed for a role and removes temporary rights when no longer required.
+- Biometrics use a physical or behavioural characteristic such as fingerprint, face, iris, retina, voice or typing pattern. A captured feature is converted to a template and compared with an enrolled template. A match authenticates the identity claim; authorisation is the separate decision about what that user may access or do.
+- A user account gives an individual or role a distinct system identity and supports accountability. A password is secret knowledge used to authenticate an identity claim. Accounts should not be shared; passwords should be difficult to guess, stored as salted hashes, protected by attempt limits and changed if compromised.
+
+**Mechanism or method**
+
+1. **Identify the relevant condition or input** — Each security measure has a distinct mechanism: a user account identifies a user;
+2. **Trace how the process works** — a digital signature supports integrity and origin checks;
+3. **Connect the mechanism to its result** — anti-virus and anti-spyware detect known malicious software;
+
+#### Worked example: How encryption and access rights protect data: complete worked route
+
+1. **Identify the relevant condition or input**
+
+Each security measure has a distinct mechanism: a user account identifies a user;
+
+2. **Trace how the process works**
+
+a digital signature supports integrity and origin checks;
+
+3. **Connect the mechanism to its result**
+
+anti-virus and anti-spyware detect known malicious software;
+
+4. **Complete example**
+
+Protect a home laptop and a school network: The laptop's host firewall blocks unsolicited inbound connections except an explicitly required service. Anti-virus still scans downloaded files, and account/access controls still decide who may use data after traffic is allowed.
+
+**Misconceptions to correct**
+
+- Students often propose encryption for every problem. Correction: encryption protects confidentiality but does not fix poor permissions, phishing or missing backups.
+
+#### Mastery check (MC-L033-S6.06)
+
+Explain the following targets in one connected answer, using a concrete example for each: encryption; access; rights; protect.
+
+<details><summary>Answer criteria</summary>
+
+- Each security measure has a distinct mechanism: a user account identifies a user; a password authenticates knowledge; a digital signature supports integrity and origin checks; a biometric compares a captured feature; a firewall filters traffic; anti-virus and anti-spyware detect known malicious software; encryption protects readable data. The threats include a virus, spyware, a hacker, phishing and pharming; each threat must be matched to a control whose mechanism reduces that risk.
+- Access rights restrict authorised actions on resources. Read permission controls viewing; write/modify controls alteration; delete controls removal; execute or administrative rights control running software or changing system settings. Least privilege grants only the permissions needed for a role and removes temporary rights when no longer required.
+- Biometrics use a physical or behavioural characteristic such as fingerprint, face, iris, retina, voice or typing pattern. A captured feature is converted to a template and compared with an enrolled template. A match authenticates the identity claim; authorisation is the separate decision about what that user may access or do.
+- A user account gives an individual or role a distinct system identity and supports accountability. A password is secret knowledge used to authenticate an identity claim. Accounts should not be shared; passwords should be difficult to guess, stored as salted hashes, protected by attempt limits and changed if compromised.
+
+</details>
+
+**Supplementary concept map**
 
 - **encryption:** Security methods designed to protect data, including encryption…
 - **access:** How encryption and access rights protect data.
@@ -76,7 +195,7 @@ Describe security measures for computer systems from a stand-alone PC to a netwo
 - **protect:** Encryption protects readable data.
 - **user account:** Encryption does not decide which logged-in user may…
 
-**Mechanism**
+**Supplementary three-step recap**
 
 1. **Identify what needs protection** — Security methods designed to protect data, including encryption and access rights
 2. **Trace the attack or error route** — How encryption and access rights protect data.
@@ -105,7 +224,7 @@ Describe security methods designed to protect data, including encryption and acc
 
 </details>
 
-<details><summary>Open precise terminology and exam facts</summary>
+### Lesson technical reference
 
 - Describe security measures for computer systems from a stand-alone PC to a network: user accounts, passwords, digital signatures, biometrics, firewall, anti-virus, anti-spyware and encryption are all required named evidence.
 - Describe security methods designed to protect data, including encryption and access rights; evidence must explain their different mechanisms and limitations.
@@ -119,15 +238,6 @@ Describe security methods designed to protect data, including encryption and acc
 - Access rights restrict authorised actions on resources. Read permission controls viewing; write/modify controls alteration; delete controls removal; execute or administrative rights control running software or changing system settings. Least privilege grants only the permissions needed for a role and removes temporary rights when no longer required.
 - Encryption transforms plaintext into ciphertext using an algorithm and key. Without the correct decryption key, intercepted or stolen ciphertext should not reveal readable content. Encryption therefore protects confidentiality, while access rights can protect confidentiality and integrity by preventing unauthorised viewing or alteration.
 - The methods do different jobs: encryption does not decide which logged-in user may edit a record, and access rights do not make a stolen unencrypted copy unreadable. Neither method guarantees availability, data truth or protection after an authorised account is misused.
-
-</details>
-
-### Worked method
-
-1. Protect a home laptop and a school network
-2. The laptop's host firewall blocks unsolicited inbound connections except an explicitly required service.
-3. The school's boundary firewall denies unrequested external traffic, permits web traffic under ordered rules and logs repeated blocked attempts.
-4. Anti-virus still scans downloaded files, and account/access controls still decide who may use data after traffic is allowed.
 
 Beyond syllabus / 延伸知识（不要求背诵）: real security uses defence in depth, combining controls so that one failed control does not expose the whole system.
 ## 3. Practice by question type
@@ -177,10 +287,11 @@ These are indexes only. Cambridge question and mark-scheme wording is not reprod
 
 ### Summary
 
-- Define authentication, encryption and network protection with the exact technical vocabulary expected by the syllabus.
-- Use the lesson method on a fresh context and show the intermediate decision, representation or calculation.
-- Match the shape of the answer to the command word and the available marks.
-- Check the final answer against the scenario instead of repeating a memorised sentence.
+- S6.03: explain user account / user accounts, password, digital signature, biometric, firewall, anti-virus / antivirus, anti-spyware, encryption, security measure / security measures.
+- S6.03 method: Identify the relevant condition or input → Trace how the process works → Connect the mechanism to its result.
+- S6.06: explain encryption, access, rights, protect.
+- S6.06 method: Identify the relevant condition or input → Trace how the process works → Connect the mechanism to its result.
+- Correction to remember: Students often propose encryption for every problem. Correction: encryption protects confidentiality but does not fix poor permissions, phishing or missing backups.
 
 ### Common error to correct
 

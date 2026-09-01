@@ -137,6 +137,12 @@ for (const lesson of content.lessons) {
   } else {
     assert(lesson.materialStatus === "complete" && /data-material-status="complete"/.test(html), `L${lesson.id} must have complete point-level materials`);
     assert(Array.isArray(lesson.knowledgePoints) && lesson.knowledgePoints.length === lesson.syllabusIds.length, `L${lesson.id} has incomplete knowledge-point materials`);
+    for (const point of lesson.knowledgePoints) {
+      assert(point.atomicObjectives?.length && point.explanations?.length >= 1, `L${lesson.id}:${point.id} lacks atomic objectives or visible explanations`);
+      assert(point.mechanismSteps?.length >= 3 && point.workedExamples?.every((example) => example.steps.length >= 2), `L${lesson.id}:${point.id} lacks a complete mechanism or worked example`);
+      assert(point.misconceptions?.length && point.masteryCheck?.objectiveIds.length === point.atomicObjectives.length, `L${lesson.id}:${point.id} lacks misconception or practice mapping`);
+      assert(!/…|\.\.\./.test(JSON.stringify(point.workedExamples)), `L${lesson.id}:${point.id} contains a truncated worked example`);
+    }
   }
   assert((html.match(/class="v2-question"/g) ?? []).length === expectedCount, `L${lesson.id} rendered question count mismatch`);
   if (lesson.visual) assert(fs.existsSync(path.join(root, "web", lesson.visual.path)), `L${lesson.id} visual file is missing`);

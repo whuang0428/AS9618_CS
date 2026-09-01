@@ -28,7 +28,69 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ### 1. Disk formatter, antivirus, defragmentation, disk analysis/repair, compression and backup utilities (S5.02)
 
-**Concept relationships**
+**Atomic learning targets**
+
+- **S5.02.A01:** disk formatter
+- **S5.02.A02:** virus checker / antivirus
+- **S5.02.A03:** defragmentation
+- **S5.02.A04:** disk contents analysis / disk analysis / disk contents analysis/repair
+- **S5.02.A05:** repair
+- **S5.02.A06:** compression
+- **S5.02.A07:** backup
+
+**Core explanation**
+
+- A disk formatter prepares a storage medium with file-system structures. A virus checker scans for, quarantines and removes malware. A disk defragmenter rearranges fragmented file blocks on a magnetic disk; it is not a speed treatment for SSDs.
+- Defragmentation rearranges fragmented blocks on a magnetic disk; disk analysis can locate a file-system fault and a repair operation attempts to correct it.
+- A disk contents analysis/repair utility examines file-system structures, reports faults and attempts defined repairs. Compression reduces file size and backup creates a separate recoverable copy. Encryption may be useful additional protection, but it does not replace any of the six named syllabus utilities.
+- A disk formatter prepares a storage medium with file-system structures. A virus checker scans for, quarantines and removes malware.
+- A disk contents analysis/repair utility examines file-system structures and attempts defined repairs.
+- Disk formatter, antivirus, defragmentation, disk analysis/repair, compression and backup utilities.
+
+**Mechanism or method**
+
+1. **Identify the relevant condition or input** — A disk formatter prepares a storage medium with file-system structures.
+2. **Trace how the process works** — A virus checker scans for, quarantines and removes malware.
+3. **Connect the mechanism to its result** — A disk defragmenter rearranges fragmented file blocks on a magnetic disk;
+
+#### Worked example: Disk formatter, antivirus, defragmentation, disk analysis/repair, compression and backup utilities: complete worked route
+
+1. **Identify the relevant condition or input**
+
+A disk formatter prepares a storage medium with file-system structures.
+
+2. **Trace how the process works**
+
+A virus checker scans for, quarantines and removes malware.
+
+3. **Connect the mechanism to its result**
+
+A disk defragmenter rearranges fragmented file blocks on a magnetic disk;
+
+4. **Complete example**
+
+Choose the utility from the fault: Use a formatter to prepare a new storage medium, disk analysis/repair for file-system errors, a backup to recover a deleted file, and compression to reduce transfer size.
+
+**Misconceptions to correct**
+
+- Students often call every program an operating system. Correction: an OS manages resources and provides services; an app performs user tasks.
+
+#### Mastery check (MC-L027-S5.02)
+
+Explain the following targets in one connected answer, using a concrete example for each: disk formatter; virus checker / antivirus; defragmentation; disk contents analysis / disk analysis / disk contents analysis/repair; repair; compression; backup.
+
+<details><summary>Answer criteria</summary>
+
+- A disk formatter prepares a storage medium with file-system structures. A virus checker scans for, quarantines and removes malware. A disk defragmenter rearranges fragmented file blocks on a magnetic disk; it is not a speed treatment for SSDs.
+- Defragmentation rearranges fragmented blocks on a magnetic disk; disk analysis can locate a file-system fault and a repair operation attempts to correct it.
+- A disk contents analysis/repair utility examines file-system structures, reports faults and attempts defined repairs. Compression reduces file size and backup creates a separate recoverable copy. Encryption may be useful additional protection, but it does not replace any of the six named syllabus utilities.
+- A disk formatter prepares a storage medium with file-system structures. A virus checker scans for, quarantines and removes malware.
+- A disk contents analysis/repair utility examines file-system structures and attempts defined repairs.
+- Disk formatter, antivirus, defragmentation, disk analysis/repair, compression and backup utilities.
+
+</details>
+
+**Supplementary concept map**
 
 - **disk formatter:** Required utility categories are disk formatter, virus checker,…
 - **disk analysis:** Disk formatter, antivirus, defragmentation, disk analysis/repair, compression and…
@@ -37,7 +99,7 @@ Ask the learner to give one accurate definition or method step before continuing
 - **repair:** Disk analysis can locate a file-system fault and…
 - **compression:** Compression reduces file size and backup creates a…
 
-**Mechanism**
+**Supplementary three-step recap**
 
 1. **Name the exact concept** — Required utility categories are disk formatter, virus checker, defragmentation, disk contents analysis and repair, file compression and backup…
 2. **Explain how its parts connect** — Disk formatter, antivirus, defragmentation, disk analysis/repair, compression and backup utilities.
@@ -69,7 +131,68 @@ Required utility categories are disk formatter, virus checker, defragmentation, 
 
 ### 2. Libraries and benefits of dynamically linked library files (S5.03)
 
-**Concept relationships**
+**Atomic learning targets**
+
+- **S5.03.A01:** software under development
+- **S5.03.A02:** existing code
+- **S5.03.A03:** program libraries
+- **S5.03.A04:** developer
+- **S5.03.A05:** benefit
+- **S5.03.A06:** dynamically linked library / DLL
+
+**Core explanation**
+
+- Software under development is often constructed using existing code from program libraries. A program library is a collection of reusable routines or modules, so a developer can call tested implementations instead of rewriting common mathematical, input/output, graphics or string operations.
+- Benefits to the developer include shorter development time, less duplicated source code, reuse of tested routines and more consistent maintenance. A dynamically linked library (DLL) is connected when a program loads or calls it rather than copying all library code into every executable.
+- DLL files can reduce executable size and memory duplication, support reuse and allow one shared update. They also create dependency and version risks: a missing or incompatible DLL can stop a program loading or change behaviour.
+- One benefit of a program library is that a developer can reuse existing tested code while software is under development.
+- Software under development is often constructed using existing code from program libraries.
+- Libraries and benefits of dynamically linked library files.
+
+**Mechanism or method**
+
+1. **Identify the relevant condition or input** — Software under development is often constructed using existing code from program libraries.
+2. **Trace how the process works** — A program library is a collection of reusable routines or modules, so a developer can call tested implementations instead of rewriting common mathematical, input/output, graphics or string operations.
+3. **Connect the mechanism to its result** — Benefits to the developer include shorter development time, less duplicated source code, reuse of tested routines and more consistent maintenance.
+
+#### Worked example: Libraries and benefits of dynamically linked library files: complete worked route
+
+1. **Identify the relevant condition or input**
+
+Software under development is often constructed using existing code from program libraries.
+
+2. **Trace how the process works**
+
+A program library is a collection of reusable routines or modules, so a developer can call tested implementations instead of rewriting common mathematical, input/output, graphics or string operations.
+
+3. **Connect the mechanism to its result**
+
+Benefits to the developer include shorter development time, less duplicated source code, reuse of tested routines and more consistent maintenance.
+
+4. **Complete example**
+
+Choose the utility from the fault: Use a formatter to prepare a new storage medium, disk analysis/repair for file-system errors, a backup to recover a deleted file, and compression to reduce transfer size. Choose by the operation required, not by calling every tool 'maintenance'.
+
+**Misconceptions to correct**
+
+- Students often call every program an operating system. Correction: an OS manages resources and provides services; an app performs user tasks.
+
+#### Mastery check (MC-L027-S5.03)
+
+Explain the following targets in one connected answer, using a concrete example for each: software under development; existing code; program libraries; developer; benefit; dynamically linked library / DLL.
+
+<details><summary>Answer criteria</summary>
+
+- Software under development is often constructed using existing code from program libraries. A program library is a collection of reusable routines or modules, so a developer can call tested implementations instead of rewriting common mathematical, input/output, graphics or string operations.
+- Benefits to the developer include shorter development time, less duplicated source code, reuse of tested routines and more consistent maintenance. A dynamically linked library (DLL) is connected when a program loads or calls it rather than copying all library code into every executable.
+- DLL files can reduce executable size and memory duplication, support reuse and allow one shared update. They also create dependency and version risks: a missing or incompatible DLL can stop a program loading or change behaviour.
+- One benefit of a program library is that a developer can reuse existing tested code while software is under development.
+- Software under development is often constructed using existing code from program libraries.
+- Libraries and benefits of dynamically linked library files.
+
+</details>
+
+**Supplementary concept map**
 
 - **software under development:** Software under development is often constructed using existing…
 - **existing code:** One benefit of a program library is that…
@@ -78,7 +201,7 @@ Required utility categories are disk formatter, virus checker, defragmentation, 
 - **developer:** Benefits to the developer include shorter development time,…
 - **DLL:** A dynamically linked library (DLL) is connected when…
 
-**Mechanism**
+**Supplementary three-step recap**
 
 1. **Translate the stated design** — One benefit of a program library is that a developer can reuse existing tested code while software is…
 2. **Apply one complete operation** — Software under development is often constructed using existing code from program libraries.
@@ -107,7 +230,7 @@ Software under development is often constructed using existing code from program
 
 </details>
 
-<details><summary>Open precise terminology and exam facts</summary>
+### Lesson technical reference
 
 - Required utility categories are disk formatter, virus checker, defragmentation, disk contents analysis and repair, file compression and backup software.
 - Software under development is often constructed using existing code from program libraries. Explain developer benefits, including the use of dynamically linked library files.
@@ -119,14 +242,6 @@ Software under development is often constructed using existing code from program
 - DLL files can reduce executable size and memory duplication, support reuse and allow one shared update. They also create dependency and version risks: a missing or incompatible DLL can stop a program loading or change behaviour.
 - A runtime error (run-time error) occurs during execution; identify its cause, use runtime diagnostics to locate it and correct the responsible code.
 - One benefit of a program library is that a developer can reuse existing tested code while software is under development.
-
-</details>
-
-### Worked method
-
-1. Choose the utility from the fault
-2. Use a formatter to prepare a new storage medium, disk analysis/repair for file-system errors, a backup to recover a deleted file, and compression to reduce transfer size.
-3. Choose by the operation required, not by calling every tool 'maintenance'.
 
 Beyond syllabus / 延伸知识（不要求背诵）: production build systems automate translation, linking, testing and packaging, while the syllabus examines the purpose of each stage separately.
 ## 3. Practice by question type
@@ -176,10 +291,11 @@ These are indexes only. Cambridge question and mark-scheme wording is not reprod
 
 ### Summary
 
-- Define utility software, libraries and linked files with the exact technical vocabulary expected by the syllabus.
-- Use the lesson method on a fresh context and show the intermediate decision, representation or calculation.
-- Match the shape of the answer to the command word and the available marks.
-- Check the final answer against the scenario instead of repeating a memorised sentence.
+- S5.02: explain disk formatter, virus checker / antivirus, defragmentation, disk contents analysis / disk analysis / disk contents analysis/repair, repair, compression, backup.
+- S5.02 method: Identify the relevant condition or input → Trace how the process works → Connect the mechanism to its result.
+- S5.03: explain software under development, existing code, program libraries, developer, benefit, dynamically linked library / DLL.
+- S5.03 method: Identify the relevant condition or input → Trace how the process works → Connect the mechanism to its result.
+- Correction to remember: Students often call every program an operating system. Correction: an OS manages resources and provides services; an app performs user tasks.
 
 ### Common error to correct
 

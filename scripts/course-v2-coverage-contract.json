@@ -159,9 +159,7 @@
         45
       ],
       "practiceQuestions": [
-        "Q-L006-01",
-        "Q-L006-02",
-        "Q-L006-03"
+        "Q-L006-02"
       ],
       "directTeachingCovered": true,
       "practiceCovered": true
@@ -176,7 +174,6 @@
       ],
       "practiceQuestions": [
         "Q-L006-01",
-        "Q-L006-02",
         "Q-L006-03"
       ],
       "directTeachingCovered": true,
@@ -367,9 +364,7 @@
         45
       ],
       "practiceQuestions": [
-        "Q-L011-01",
-        "Q-L011-02",
-        "Q-L011-03"
+        "Q-L011-02"
       ],
       "directTeachingCovered": true,
       "practiceCovered": true
@@ -383,9 +378,7 @@
         45
       ],
       "practiceQuestions": [
-        "Q-L011-01",
-        "Q-L011-02",
-        "Q-L011-03"
+        "Q-L011-01"
       ],
       "directTeachingCovered": true,
       "practiceCovered": true
@@ -399,8 +392,6 @@
         45
       ],
       "practiceQuestions": [
-        "Q-L011-01",
-        "Q-L011-02",
         "Q-L011-03"
       ],
       "directTeachingCovered": true,
@@ -416,8 +407,7 @@
       ],
       "practiceQuestions": [
         "Q-L012-01",
-        "Q-L012-02",
-        "Q-L012-03"
+        "Q-L012-02"
       ],
       "directTeachingCovered": true,
       "practiceCovered": true
@@ -431,8 +421,6 @@
         45
       ],
       "practiceQuestions": [
-        "Q-L012-01",
-        "Q-L012-02",
         "Q-L012-03"
       ],
       "directTeachingCovered": true,
@@ -772,8 +760,7 @@
       ],
       "practiceQuestions": [
         "Q-L024-01",
-        "Q-L024-02",
-        "Q-L024-03"
+        "Q-L024-02"
       ],
       "directTeachingCovered": true,
       "practiceCovered": true
@@ -788,8 +775,7 @@
       ],
       "practiceQuestions": [
         "Q-L024-01",
-        "Q-L024-02",
-        "Q-L024-03"
+        "Q-L024-02"
       ],
       "directTeachingCovered": true,
       "practiceCovered": true
@@ -820,8 +806,7 @@
       ],
       "practiceQuestions": [
         "Q-L024-01",
-        "Q-L024-02",
-        "Q-L024-03"
+        "Q-L024-02"
       ],
       "directTeachingCovered": true,
       "practiceCovered": true
@@ -1315,9 +1300,7 @@
         45
       ],
       "practiceQuestions": [
-        "Q-L044-01",
-        "Q-L044-02",
-        "Q-L044-03"
+        "Q-L044-01"
       ],
       "directTeachingCovered": true,
       "practiceCovered": true
@@ -1347,7 +1330,6 @@
         45
       ],
       "practiceQuestions": [
-        "Q-L044-01",
         "Q-L044-02",
         "Q-L044-03"
       ],
@@ -1723,9 +1705,7 @@
         "Q-L069-01",
         "Q-L069-02",
         "Q-L069-03",
-        "Q-L080-01",
-        "Q-L080-02",
-        "Q-L080-03"
+        "Q-L080-02"
       ],
       "directTeachingCovered": true,
       "practiceCovered": true
@@ -1787,9 +1767,7 @@
         "Q-L075-01",
         "Q-L075-02",
         "Q-L075-03",
-        "Q-L080-01",
-        "Q-L080-02",
-        "Q-L080-03"
+        "Q-L080-02"
       ],
       "directTeachingCovered": true,
       "practiceCovered": true
@@ -1823,9 +1801,7 @@
         "Q-L077-01",
         "Q-L077-02",
         "Q-L077-03",
-        "Q-L080-01",
-        "Q-L080-02",
-        "Q-L080-03"
+        "Q-L080-01"
       ],
       "directTeachingCovered": true,
       "practiceCovered": true
@@ -1843,8 +1819,6 @@
         "Q-L078-01",
         "Q-L078-02",
         "Q-L078-03",
-        "Q-L080-01",
-        "Q-L080-02",
         "Q-L080-03"
       ],
       "directTeachingCovered": true,

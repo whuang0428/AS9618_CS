@@ -28,7 +28,69 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ### 1. Dry run, walkthrough, white-box, black-box, integration, alpha, beta, acceptance and stub testing (S12.05)
 
-**Concept relationships**
+**Atomic learning targets**
+
+- **S12.05.A01:** walkthrough
+- **S12.05.A02:** white-box
+- **S12.05.A03:** black-box
+- **S12.05.A04:** integration
+- **S12.05.A05:** alpha
+- **S12.05.A06:** beta
+- **S12.05.A07:** acceptance
+- **S12.05.A08:** stub
+- **S12.05.A09:** testing
+
+**Core explanation**
+
+- Dry run manually traces code; walkthrough is a structured peer review; white-box derives tests from internal paths; black-box derives tests from specifications. Integration tests combined modules, using a stub to imitate an unavailable called module.
+- Alpha testing is performed internally before release; beta testing uses selected external users in realistic settings; acceptance testing checks the delivered system against agreed requirements. A strategy states levels/methods/responsibility, while a test plan records test ID, purpose, data, expected result, actual result and pass/fail.
+- Dry run, walkthrough, white-box, black-box, integration, alpha, beta and acceptance testing, and use of a stub.
+- Dry run, walkthrough, white-box, black-box, integration, alpha, beta, acceptance and stub testing.
+- White-box derives tests from internal paths
+
+**Mechanism or method**
+
+1. **Identify the relevant condition or input** — Integration tests combined modules, using a stub to imitate an unavailable called module.
+2. **Trace how the process works** — Alpha testing is performed internally before release;
+3. **Connect the mechanism to its result** — beta testing uses selected external users in realistic settings;
+
+#### Worked example: Dry run, walkthrough, white-box, black-box, integration, alpha, beta, acceptance and stub testing: complete worked route
+
+1. **Identify the relevant condition or input**
+
+Integration tests combined modules, using a stub to imitate an unavailable called module.
+
+2. **Trace how the process works**
+
+Alpha testing is performed internally before release;
+
+3. **Connect the mechanism to its result**
+
+beta testing uses selected external users in realistic settings;
+
+4. **Complete example**
+
+Test login through review, construction, integration and release / Test an inclusive mark range / Three changes to one booking system / Add a Merit count without breaking PassCount: First dry-run the lockout counter and conduct a walkthrough in which peers inspect the algorithm. black-box tests valid, invalid and boundary inputs from requirements. During integration, a stub returns simulated account results before the database is ready. Internal staff perform alpha testing, selected external users perform beta testing, and the customer performs acceptance testing against the agreed lockout behaviour.
+
+**Misconceptions to correct**
+
+- Students often describe the lifecycle as a fixed checklist. Correction: development is iterative; findings can send a project back to earlier stages.
+
+#### Mastery check (MC-L085-S12.05)
+
+Explain the following targets in one connected answer, using a concrete example for each: walkthrough; white-box; black-box; integration; alpha; beta; acceptance; stub; testing.
+
+<details><summary>Answer criteria</summary>
+
+- Dry run manually traces code; walkthrough is a structured peer review; white-box derives tests from internal paths; black-box derives tests from specifications. Integration tests combined modules, using a stub to imitate an unavailable called module.
+- Alpha testing is performed internally before release; beta testing uses selected external users in realistic settings; acceptance testing checks the delivered system against agreed requirements. A strategy states levels/methods/responsibility, while a test plan records test ID, purpose, data, expected result, actual result and pass/fail.
+- Dry run, walkthrough, white-box, black-box, integration, alpha, beta and acceptance testing, and use of a stub.
+- Dry run, walkthrough, white-box, black-box, integration, alpha, beta, acceptance and stub testing.
+- White-box derives tests from internal paths
+
+</details>
+
+**Supplementary concept map**
 
 - **white-box:** Dry run, walkthrough, white-box, black-box, integration, alpha, beta,…
 - **black-box:** Black-box derives tests from specifications.
@@ -37,7 +99,7 @@ Ask the learner to give one accurate definition or method step before continuing
 - **alpha:** Alpha testing is performed internally before release
 - **beta:** Beta testing uses selected external users in realistic…
 
-**Mechanism**
+**Supplementary three-step recap**
 
 1. **Name both alternatives precisely** — Dry run, walkthrough, white-box, black-box, integration, alpha, beta, acceptance and stub testing.
 2. **Connect structure to consequence** — Dry run, walkthrough, white-box, black-box, integration, alpha, beta and acceptance testing, and use of a stub.
@@ -74,7 +136,7 @@ Describe testing methods and select suitable test data: dry run, walkthrough, wh
 
 </details>
 
-<details><summary>Open precise terminology and exam facts</summary>
+### Lesson technical reference
 
 - Describe testing methods and select suitable test data: dry run, walkthrough, white-box, black-box, integration, alpha, beta and acceptance testing, and use of a stub.
 - Dry run manually traces code; walkthrough is a structured peer review; white-box derives tests from internal paths; black-box derives tests from specifications. Integration tests combined modules, using a stub to imitate an unavailable called module.
@@ -82,16 +144,6 @@ Describe testing methods and select suitable test data: dry run, walkthrough, wh
 - Choose test data from the stated validation rule and give an expected result for each value. A label such as 'boundary' is insufficient unless the value really tests a stated limit.
 - Every maintenance change requires impact analysis, controlled amendment, tests for the changed behaviour and regression tests for unaffected behaviour. Records should link the request, code change and test evidence.
 - Test the enhancement with data that exercises the new path and rerun regression tests for existing paths. Correcting a fault is corrective maintenance; adding or improving requested functionality is an enhancement and may be perfective maintenance.
-
-</details>
-
-### Worked method
-
-1. Test login through review, construction, integration and release
-2. Test an inclusive mark range
-3. Three changes to one booking system
-4. Add a Merit count without breaking PassCount
-5. First dry-run the lockout counter and conduct a walkthrough in which peers inspect the algorithm.
 
 Beyond syllabus / 延伸知识（不要求背诵）: modern teams often use continuous integration to repeat building and testing whenever a program changes.
 ## 3. Practice by question type
@@ -140,10 +192,9 @@ These are indexes only. Cambridge question and mark-scheme wording is not reprod
 
 ### Summary
 
-- Define testing methods through the development process with the exact technical vocabulary expected by the syllabus.
-- Use the lesson method on a fresh context and show the intermediate decision, representation or calculation.
-- Match the shape of the answer to the command word and the available marks.
-- Check the final answer against the scenario instead of repeating a memorised sentence.
+- S12.05: explain walkthrough, white-box, black-box, integration, alpha, beta, acceptance, stub, testing.
+- S12.05 method: Identify the relevant condition or input → Trace how the process works → Connect the mechanism to its result.
+- Correction to remember: Students often describe the lifecycle as a fixed checklist. Correction: development is iterative; findings can send a project back to earlier stages.
 
 ### Common error to correct
 

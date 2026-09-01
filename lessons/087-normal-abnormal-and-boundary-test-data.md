@@ -24,7 +24,59 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ### 1. Select normal, abnormal and extreme/boundary test data (S12.07)
 
-**Concept relationships**
+**Atomic learning targets**
+
+- **S12.07.A01:** normal
+- **S12.07.A02:** abnormal
+- **S12.07.A03:** extreme / boundary
+
+**Core explanation**
+
+- Normal data are valid values within the accepted range. Abnormal data are invalid and should be rejected. Extreme or boundary data are valid values at the limits of the accepted range; values immediately outside a limit are abnormal boundary checks.
+- Extreme/boundary data uses valid values at the accepted lower or upper limit. For an accepted mark range of 0 to 100 inclusive, 0 and 100 are valid extreme/boundary values.
+- Choose test data from the stated validation rule and give an expected result for each value. A label such as 'boundary' is insufficient unless the value really tests a stated limit.
+
+**Mechanism or method**
+
+1. **Extract the constraints from the scenario** — Normal data are valid values within the accepted range.
+2. **Match mechanisms to those constraints** — Abnormal data are invalid and should be rejected.
+3. **Link the choice to a consequence** — Extreme or boundary data are valid values at the limits of the accepted range;
+
+#### Worked example: Select normal, abnormal and extreme/boundary test data: complete worked route
+
+1. **Extract the constraints from the scenario**
+
+Normal data are valid values within the accepted range.
+
+2. **Match mechanisms to those constraints**
+
+Abnormal data are invalid and should be rejected.
+
+3. **Link the choice to a consequence**
+
+Extreme or boundary data are valid values at the limits of the accepted range;
+
+4. **Complete example**
+
+black-box tests valid, invalid and boundary inputs from requirements. For an allowed mark from 0 to 100 inclusive, 55 is normal, 0 and 100 are valid extreme/boundary values, and -1 or 101 is abnormal.
+
+**Misconceptions to correct**
+
+- Students often describe the lifecycle as a fixed checklist. Correction: development is iterative; findings can send a project back to earlier stages.
+
+#### Mastery check (MC-L087-S12.07)
+
+Select and justify a suitable choice in a fresh scenario, explicitly using every target: normal; abnormal; extreme / boundary.
+
+<details><summary>Answer criteria</summary>
+
+- Normal data are valid values within the accepted range. Abnormal data are invalid and should be rejected. Extreme or boundary data are valid values at the limits of the accepted range; values immediately outside a limit are abnormal boundary checks.
+- Extreme/boundary data uses valid values at the accepted lower or upper limit. For an accepted mark range of 0 to 100 inclusive, 0 and 100 are valid extreme/boundary values.
+- Choose test data from the stated validation rule and give an expected result for each value. A label such as 'boundary' is insufficient unless the value really tests a stated limit.
+
+</details>
+
+**Supplementary concept map**
 
 - **Normal:** Valid typical value
 - **Abnormal:** Invalid value
@@ -32,7 +84,7 @@ Ask the learner to give one accurate definition or method step before continuing
 - **Expected result:** Predicted system response
 - **extreme:** Select normal, abnormal and extreme/boundary test data.
 
-**Mechanism**
+**Supplementary three-step recap**
 
 1. **Name both alternatives precisely** — Choose suitable test data for a test plan, including normal, abnormal and extreme/boundary data.
 2. **Connect structure to consequence** — Values immediately outside a limit are abnormal boundary checks.
@@ -60,7 +112,7 @@ Choose suitable test data for a test plan, including normal, abnormal and extrem
 
 </details>
 
-<details><summary>Open precise terminology and exam facts</summary>
+### Lesson technical reference
 
 - Choose suitable test data for a test plan, including normal, abnormal and extreme/boundary data.
 - Alpha testing is performed internally before release; beta testing uses selected external users in realistic settings; acceptance testing checks the delivered system against agreed requirements. A strategy states levels/methods/responsibility, while a test plan records test ID, purpose, data, expected result, actual result and pass/fail.
@@ -68,16 +120,6 @@ Choose suitable test data for a test plan, including normal, abnormal and extrem
 - Choose test data from the stated validation rule and give an expected result for each value. A label such as 'boundary' is insufficient unless the value really tests a stated limit.
 - Every maintenance change requires impact analysis, controlled amendment, tests for the changed behaviour and regression tests for unaffected behaviour. Records should link the request, code change and test evidence.
 - Test the enhancement with data that exercises the new path and rerun regression tests for existing paths. Correcting a fault is corrective maintenance; adding or improving requested functionality is an enhancement and may be perfective maintenance.
-
-</details>
-
-### Worked method
-
-1. Test login through review, construction, integration and release
-2. Test an inclusive mark range
-3. Three changes to one booking system
-4. Add a Merit count without breaking PassCount
-5. First dry-run the lockout counter and conduct a walkthrough in which peers inspect the algorithm.
 
 Beyond syllabus / 延伸知识（不要求背诵）: modern teams often use continuous integration to repeat building and testing whenever a program changes.
 ## 3. Practice by question type
@@ -116,10 +158,9 @@ Explain how normal, abnormal and boundary test data would be applied in a suitab
 
 ### Summary
 
-- Define normal, abnormal and boundary test data with the exact technical vocabulary expected by the syllabus.
-- Use the lesson method on a fresh context and show the intermediate decision, representation or calculation.
-- Match the shape of the answer to the command word and the available marks.
-- Check the final answer against the scenario instead of repeating a memorised sentence.
+- S12.07: explain normal, abnormal, extreme / boundary.
+- S12.07 method: Extract the constraints from the scenario → Match mechanisms to those constraints → Link the choice to a consequence.
+- Correction to remember: Students often describe the lifecycle as a fixed checklist. Correction: development is iterative; findings can send a project back to earlier stages.
 
 ### Common error to correct
 

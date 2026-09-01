@@ -24,7 +24,62 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ### 1. What an algorithm is (S9.03)
 
-**Concept relationships**
+**Atomic learning targets**
+
+- **S9.03.A01:** algorithm
+- **S9.03.A02:** solution
+- **S9.03.A03:** sequence
+- **S9.03.A04:** defined steps
+
+**Core explanation**
+
+- Algorithm design review: define an algorithm as a solution expressed as a sequence of defined steps; use abstraction to retain essential details in an abstract model; use decomposition to express the problem as connected modules; and choose meaningful identifiers recorded in an identifier table.
+- Solution review: design with input-process-output, use sequence, selection and iteration, document the same algorithm in structured English, a flowchart or pseudocode, and convert between the specified representations without changing its control flow.
+- An algorithm is a solution to a problem expressed as a sequence of defined steps. Each step must be unambiguous, ordered where order matters and capable of being carried out; a vague instruction such as 'process the data' is not a defined step.
+- Before writing pseudocode, identify the input data, the processing that transforms it and the required output. This input-process-output design must describe a complete solution rather than three unrelated lists.
+
+**Mechanism or method**
+
+1. **Identify the relevant condition or input** — Algorithm design review: define an algorithm as a solution expressed as a sequence of defined steps;
+2. **Trace how the process works** — use abstraction to retain essential details in an abstract model;
+3. **Connect the mechanism to its result** — use decomposition to express the problem as connected modules;
+
+#### Worked example: What an algorithm is: complete worked route
+
+1. **Identify the relevant condition or input**
+
+Algorithm design review: define an algorithm as a solution expressed as a sequence of defined steps;
+
+2. **Trace how the process works**
+
+use abstraction to retain essential details in an abstract model;
+
+3. **Connect the mechanism to its result**
+
+use decomposition to express the problem as connected modules;
+
+4. **Complete example**
+
+Define and plan a ticket algorithm: Problem: input TicketCount and TicketPrice, then output TotalCost. The algorithm is the defined sequence INPUT TicketCount;
+
+**Misconceptions to correct**
+
+- Students often create one sub-problem per tiny action. Correction: each sub-problem needs a meaningful responsibility.
+
+#### Mastery check (MC-L048-S9.03)
+
+Explain the following targets in one connected answer, using a concrete example for each: algorithm; solution; sequence; defined steps.
+
+<details><summary>Answer criteria</summary>
+
+- Algorithm design review: define an algorithm as a solution expressed as a sequence of defined steps; use abstraction to retain essential details in an abstract model; use decomposition to express the problem as connected modules; and choose meaningful identifiers recorded in an identifier table.
+- Solution review: design with input-process-output, use sequence, selection and iteration, document the same algorithm in structured English, a flowchart or pseudocode, and convert between the specified representations without changing its control flow.
+- An algorithm is a solution to a problem expressed as a sequence of defined steps. Each step must be unambiguous, ordered where order matters and capable of being carried out; a vague instruction such as 'process the data' is not a defined step.
+- Before writing pseudocode, identify the input data, the processing that transforms it and the required output. This input-process-output design must describe a complete solution rather than three unrelated lists.
+
+</details>
+
+**Supplementary concept map**
 
 - **defined steps:** Define an algorithm as a solution expressed as…
 - **algorithm:** An algorithm is a solution to a problem…
@@ -32,7 +87,7 @@ Ask the learner to give one accurate definition or method step before continuing
 - **sequence:** Design with input-process-output, use sequence, selection and iteration,…
 - **what:** What an algorithm is.
 
-**Mechanism**
+**Supplementary three-step recap**
 
 1. **Translate the stated design** — Define an algorithm as a solution expressed as a sequence of defined steps
 2. **Apply one complete operation** — An algorithm is a solution to a problem expressed as a sequence of defined steps.
@@ -64,7 +119,60 @@ An algorithm is a solution to a problem expressed as a sequence of defined steps
 
 ### 2. Choose meaningful identifier names and construct an identifier table (S9.04)
 
-**Concept relationships**
+**Atomic learning targets**
+
+- **S9.04.A01:** meaningful
+- **S9.04.A02:** identifier
+- **S9.04.A03:** names
+- **S9.04.A04:** table
+
+**Core explanation**
+
+- Algorithm design review: define an algorithm as a solution expressed as a sequence of defined steps; use abstraction to retain essential details in an abstract model; use decomposition to express the problem as connected modules; and choose meaningful identifiers recorded in an identifier table.
+- Choose meaningful identifier names that describe each value's role. An identifier table records at least the identifier name, data type and purpose; its entries must match the pseudocode solution.
+- And choose meaningful identifiers recorded in an identifier table.
+
+**Mechanism or method**
+
+1. **Identify the relevant condition or input** — Algorithm design review: define an algorithm as a solution expressed as a sequence of defined steps;
+2. **Trace how the process works** — use abstraction to retain essential details in an abstract model;
+3. **Connect the mechanism to its result** — use decomposition to express the problem as connected modules;
+
+#### Worked example: Choose meaningful identifier names and construct an identifier table: complete worked route
+
+1. **Identify the relevant condition or input**
+
+Algorithm design review: define an algorithm as a solution expressed as a sequence of defined steps;
+
+2. **Trace how the process works**
+
+use abstraction to retain essential details in an abstract model;
+
+3. **Connect the mechanism to its result**
+
+use decomposition to express the problem as connected modules;
+
+4. **Complete example**
+
+The identifier table records TicketCount: INTEGER, number requested;
+
+**Misconceptions to correct**
+
+- Students often create one sub-problem per tiny action. Correction: each sub-problem needs a meaningful responsibility.
+
+#### Mastery check (MC-L048-S9.04)
+
+Explain the following targets in one connected answer, using a concrete example for each: meaningful; identifier; names; table.
+
+<details><summary>Answer criteria</summary>
+
+- Algorithm design review: define an algorithm as a solution expressed as a sequence of defined steps; use abstraction to retain essential details in an abstract model; use decomposition to express the problem as connected modules; and choose meaningful identifiers recorded in an identifier table.
+- Choose meaningful identifier names that describe each value's role. An identifier table records at least the identifier name, data type and purpose; its entries must match the pseudocode solution.
+- And choose meaningful identifiers recorded in an identifier table.
+
+</details>
+
+**Supplementary concept map**
 
 - **meaningful:** Choose suitable meaningful identifier names and construct an…
 - **identifier:** Choose meaningful identifier names and construct an identifier…
@@ -72,7 +180,7 @@ An algorithm is a solution to a problem expressed as a sequence of defined steps
 - **table:** And choose meaningful identifiers recorded in an identifier…
 - **choose:** An identifier table records at least the identifier…
 
-**Mechanism**
+**Supplementary three-step recap**
 
 1. **Translate the stated design** — Choose suitable meaningful identifier names and construct an identifier table that records each identifier's name, data type and…
 2. **Apply one complete operation** — Choose meaningful identifier names and construct an identifier table.
@@ -104,7 +212,7 @@ Students must choose suitable meaningful identifier names and construct an ident
 
 </details>
 
-<details><summary>Open precise terminology and exam facts</summary>
+### Lesson technical reference
 
 - An algorithm is a solution to a problem expressed as a sequence of defined steps; the definition requires both the problem-solving purpose and the defined sequence.
 - Students must choose suitable meaningful identifier names and construct an identifier table that records each identifier's name, data type and purpose for the designed algorithm.
@@ -114,16 +222,6 @@ Students must choose suitable meaningful identifier names and construct an ident
 - Algorithm design review: define an algorithm as a solution expressed as a sequence of defined steps; use abstraction to retain essential details in an abstract model; use decomposition to express the problem as connected modules; and choose meaningful identifiers recorded in an identifier table.
 - Solution review: design with input-process-output, use sequence, selection and iteration, document the same algorithm in structured English, a flowchart or pseudocode, and convert between the specified representations without changing its control flow.
 - Development review: use stepwise refinement until steps are programmable, and construct and interpret logic statements that define decisions, loop conditions or Boolean values. Core answers must not replace these requirements with tracing, Java syntax or vague planning advice.
-
-</details>
-
-### Worked method
-
-1. Define and plan a ticket algorithm
-2. input TicketCount and TicketPrice, then output TotalCost.
-3. The algorithm is the defined sequence INPUT TicketCount; INPUT TicketPrice; TotalCost <- TicketCount TicketPrice; OUTPUT TotalCost.
-4. The identifier table records TicketCount
-5. INTEGER, number requested; TicketPrice
 
 Beyond syllabus / 延伸知识（不要求背诵）: the same algorithm can be expressed in many programming languages; its logic should remain independent of syntax.
 ## 3. Practice by question type
@@ -173,10 +271,11 @@ These are indexes only. Cambridge question and mark-scheme wording is not reprod
 
 ### Summary
 
-- Define algorithms and meaningful identifiers with the exact technical vocabulary expected by the syllabus.
-- Use the lesson method on a fresh context and show the intermediate decision, representation or calculation.
-- Match the shape of the answer to the command word and the available marks.
-- Check the final answer against the scenario instead of repeating a memorised sentence.
+- S9.03: explain algorithm, solution, sequence, defined steps.
+- S9.03 method: Identify the relevant condition or input → Trace how the process works → Connect the mechanism to its result.
+- S9.04: explain meaningful, identifier, names, table.
+- S9.04 method: Identify the relevant condition or input → Trace how the process works → Connect the mechanism to its result.
+- Correction to remember: Students often create one sub-problem per tiny action. Correction: each sub-problem needs a meaningful responsibility.
 
 ### Common error to correct
 

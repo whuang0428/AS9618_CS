@@ -28,7 +28,65 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ### 1. Decomposition and express a problem as modules: Decomposition and modular problem solving (S9.02)
 
-**Concept relationships**
+**Atomic learning targets**
+
+- **S9.02.A01:** decomposition
+- **S9.02.A02:** problem
+- **S9.02.A03:** modules
+- **S9.02.A04:** procedure
+- **S9.02.A05:** function
+
+**Core explanation**
+
+- Algorithm design review: define an algorithm as a solution expressed as a sequence of defined steps; use abstraction to retain essential details in an abstract model; use decomposition to express the problem as connected modules; and choose meaningful identifiers recorded in an identifier table.
+- Decomposition breaks a problem into smaller sub-problems with distinct responsibilities. Express the resulting design as program modules with clear inputs, processing and outputs; a module may later be implemented as a procedure that performs an action or a function that returns a value.
+- Abstraction removes each irrelevant detail that does not affect the required inputs, rules, constraints or outputs. Producing an abstract model means recording the essential details that remain: the data, relationships and processes needed to solve the problem, not merely listing what was ignored.
+- At each level, preserve the parent step's purpose and input-process-output relationship. Related substeps can be expressed as program modules, including procedures that perform actions and functions that return calculated values.
+- Abstraction decides what belongs in the model; decomposition decides how the retained problem is divided. The modules must connect into one complete solution and must not omit a requirement.
+
+**Mechanism or method**
+
+1. **Set up the required data and conditions** — Algorithm design review: define an algorithm as a solution expressed as a sequence of defined steps;
+2. **Carry out the complete method** — use abstraction to retain essential details in an abstract model;
+3. **Trace or test the result** — use decomposition to express the problem as connected modules;
+
+#### Worked example: Decomposition and express a problem as modules: Decomposition and modular problem solving: complete worked route
+
+1. **Set up the required data and conditions**
+
+Algorithm design review: define an algorithm as a solution expressed as a sequence of defined steps;
+
+2. **Carry out the complete method**
+
+use abstraction to retain essential details in an abstract model;
+
+3. **Trace or test the result**
+
+use decomposition to express the problem as connected modules;
+
+4. **Complete example**
+
+Express the solution as modules InputTimes, CalculateDuration, CalculateCharge and OutputCharge. CalculateCharge can become a function returning the charge, while OutputCharge can become a procedure that displays it.
+
+**Misconceptions to correct**
+
+- Students often start coding before defining the output. Correction: an algorithm is easier to design when the required result is known first.
+
+#### Mastery check (MC-L047-S9.02)
+
+Complete a fresh example that demonstrates every target: decomposition; problem; modules; procedure; function. Show all intermediate steps and check the result.
+
+<details><summary>Answer criteria</summary>
+
+- Algorithm design review: define an algorithm as a solution expressed as a sequence of defined steps; use abstraction to retain essential details in an abstract model; use decomposition to express the problem as connected modules; and choose meaningful identifiers recorded in an identifier table.
+- Decomposition breaks a problem into smaller sub-problems with distinct responsibilities. Express the resulting design as program modules with clear inputs, processing and outputs; a module may later be implemented as a procedure that performs an action or a function that returns a value.
+- Abstraction removes each irrelevant detail that does not affect the required inputs, rules, constraints or outputs. Producing an abstract model means recording the essential details that remain: the data, relationships and processes needed to solve the problem, not merely listing what was ignored.
+- At each level, preserve the parent step's purpose and input-process-output relationship. Related substeps can be expressed as program modules, including procedures that perform actions and functions that return calculated values.
+- Abstraction decides what belongs in the model; decomposition decides how the retained problem is divided. The modules must connect into one complete solution and must not omit a requirement.
+
+</details>
+
+**Supplementary concept map**
 
 - **module:** Decomposition must break a problem into sub-problems and…
 - **modules:** Decomposition and express a problem as modules.
@@ -37,7 +95,7 @@ Ask the learner to give one accurate definition or method step before continuing
 - **function:** A module may later be implemented as a…
 - **problem:** Decomposition decides how the retained problem is divided.
 
-**Mechanism**
+**Supplementary three-step recap**
 
 1. **Translate the stated design** — Decomposition must break a problem into sub-problems and lead to a program module, identified at design level as…
 2. **Apply one complete operation** — Decomposition and express a problem as modules.
@@ -66,7 +124,7 @@ Decomposition must break a problem into sub-problems and lead to a program modul
 
 </details>
 
-<details><summary>Open precise terminology and exam facts</summary>
+### Lesson technical reference
 
 - Decomposition must break a problem into sub-problems and lead to a program module, identified at design level as a procedure or function with a distinct responsibility.
 - Abstraction removes each irrelevant detail that does not affect the required inputs, rules, constraints or outputs. Producing an abstract model means recording the essential details that remain: the data, relationships and processes needed to solve the problem, not merely listing what was ignored.
@@ -78,15 +136,6 @@ Decomposition must break a problem into sub-problems and lead to a program modul
 - Algorithm design review: define an algorithm as a solution expressed as a sequence of defined steps; use abstraction to retain essential details in an abstract model; use decomposition to express the problem as connected modules; and choose meaningful identifiers recorded in an identifier table.
 - Solution review: design with input-process-output, use sequence, selection and iteration, document the same algorithm in structured English, a flowchart or pseudocode, and convert between the specified representations without changing its control flow.
 - Development review: use stepwise refinement until steps are programmable, and construct and interpret logic statements that define decisions, loop conditions or Boolean values. Core answers must not replace these requirements with tracing, Java syntax or vague planning advice.
-
-</details>
-
-### Worked method
-
-1. Model and decompose a car-park charge
-2. Keep entry time, exit time and tariff; omit car colour because it cannot change the charge.
-3. Express the solution as modules InputTimes, CalculateDuration, CalculateCharge and OutputCharge.
-4. CalculateCharge can become a function returning the charge, while OutputCharge can become a procedure that displays it.
 
 Beyond syllabus / 延伸知识（不要求背诵）: the same algorithm can be expressed in many programming languages; its logic should remain independent of syntax.
 ## 3. Practice by question type
@@ -136,10 +185,9 @@ These are indexes only. Cambridge question and mark-scheme wording is not reprod
 
 ### Summary
 
-- Define decomposition and modular problem solving with the exact technical vocabulary expected by the syllabus.
-- Use the lesson method on a fresh context and show the intermediate decision, representation or calculation.
-- Match the shape of the answer to the command word and the available marks.
-- Check the final answer against the scenario instead of repeating a memorised sentence.
+- S9.02: explain decomposition, problem, modules, procedure, function.
+- S9.02 method: Set up the required data and conditions → Carry out the complete method → Trace or test the result.
+- Correction to remember: Students often start coding before defining the output. Correction: an algorithm is easier to design when the required result is known first.
 
 ### Common error to correct
 

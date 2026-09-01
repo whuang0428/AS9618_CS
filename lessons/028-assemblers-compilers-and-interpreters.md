@@ -24,7 +24,59 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ### 1. Why assembler, compiler and interpreter are needed (S5.04)
 
-**Concept relationships**
+**Atomic learning targets**
+
+- **S5.04.A01:** assembler
+- **S5.04.A02:** compiler
+- **S5.04.A03:** interpreter
+
+**Core explanation**
+
+- A justified choice must connect the mechanism to the scenario: an interpreter can suit development and debugging; a compiler can suit repeated use or distribution; an assembler is required for assembly source. These are advantages and disadvantages of the translation approaches, not universal claims that one tool is always better.
+- Compiler advantages include faster repeated execution after translation, distribution without the source code and translation checks across the whole program. Disadvantages include a separate compilation step and an error list that may need several corrections before execution. Interpreter advantages include immediate statement-level feedback and convenient incremental testing. Disadvantages include repeated translation overhead, slower execution and needing the interpreter and usually the source program at run time.
+- An assembler is needed to translate a processor-specific assembly-language program into machine code or object code. A compiler is needed to translate a whole high-level language program before execution, normally producing target/object code. An interpreter translates and executes a high-level language program statement by statement during execution, normally without producing a separate permanent object-code file.
+
+**Mechanism or method**
+
+1. **Identify the relevant condition or input** — A justified choice must connect the mechanism to the scenario: an interpreter can suit development and debugging;
+2. **Trace how the process works** — a compiler can suit repeated use or distribution;
+3. **Connect the mechanism to its result** — an assembler is required for assembly source.
+
+#### Worked example: Why assembler, compiler and interpreter are needed: complete worked route
+
+1. **Identify the relevant condition or input**
+
+A justified choice must connect the mechanism to the scenario: an interpreter can suit development and debugging;
+
+2. **Trace how the process works**
+
+a compiler can suit repeated use or distribution;
+
+3. **Connect the mechanism to its result**
+
+an assembler is required for assembly source.
+
+4. **Complete example**
+
+Choose tools across development and deployment: During development, an interpreter can execute each statement and stop near a fault, giving quick feedback. For final distribution, a compiler can translate the whole high-level program before execution and provide target/object or executable code without distributing the source. A processor-specific assembly routine requires an assembler because its mnemonic instructions must become the target processor's machine code.
+
+**Misconceptions to correct**
+
+- Students often call every program an operating system. Correction: an OS manages resources and provides services; an app performs user tasks.
+
+#### Mastery check (MC-L028-S5.04)
+
+Explain the following targets in one connected answer, using a concrete example for each: assembler; compiler; interpreter.
+
+<details><summary>Answer criteria</summary>
+
+- A justified choice must connect the mechanism to the scenario: an interpreter can suit development and debugging; a compiler can suit repeated use or distribution; an assembler is required for assembly source. These are advantages and disadvantages of the translation approaches, not universal claims that one tool is always better.
+- Compiler advantages include faster repeated execution after translation, distribution without the source code and translation checks across the whole program. Disadvantages include a separate compilation step and an error list that may need several corrections before execution. Interpreter advantages include immediate statement-level feedback and convenient incremental testing. Disadvantages include repeated translation overhead, slower execution and needing the interpreter and usually the source program at run time.
+- An assembler is needed to translate a processor-specific assembly-language program into machine code or object code. A compiler is needed to translate a whole high-level language program before execution, normally producing target/object code. An interpreter translates and executes a high-level language program statement by statement during execution, normally without producing a separate permanent object-code file.
+
+</details>
+
+**Supplementary concept map**
 
 - **Assembler:** Assembly to machine code
 - **Compiler:** Whole high-level program translated
@@ -32,7 +84,7 @@ Ask the learner to give one accurate definition or method step before continuing
 - **Need:** Processor executes machine instructions
 - **why:** Why assembler, compiler and interpreter are needed.
 
-**Mechanism**
+**Supplementary three-step recap**
 
 1. **Name the exact concept** — Why assembler, compiler and interpreter are needed.
 2. **Explain how its parts connect** — An assembler translates assembly language, a compiler translates high-level language, and an interpreter translates and executes high-level language.
@@ -61,21 +113,12 @@ An assembler translates assembly language, a compiler translates high-level lang
 
 </details>
 
-<details><summary>Open precise terminology and exam facts</summary>
+### Lesson technical reference
 
 - An assembler translates assembly language, a compiler translates high-level language, and an interpreter translates and executes high-level language.
 - An assembler is needed to translate a processor-specific assembly-language program into machine code or object code. A compiler is needed to translate a whole high-level language program before execution, normally producing target/object code. An interpreter translates and executes a high-level language program statement by statement during execution, normally without producing a separate permanent object-code file.
 - Compiler advantages include faster repeated execution after translation, distribution without the source code and translation checks across the whole program. Disadvantages include a separate compilation step and an error list that may need several corrections before execution. Interpreter advantages include immediate statement-level feedback and convenient incremental testing. Disadvantages include repeated translation overhead, slower execution and needing the interpreter and usually the source program at run time.
 - A justified choice must connect the mechanism to the scenario: an interpreter can suit development and debugging; a compiler can suit repeated use or distribution; an assembler is required for assembly source. These are advantages and disadvantages of the translation approaches, not universal claims that one tool is always better.
-
-</details>
-
-### Worked method
-
-1. Choose tools across development and deployment
-2. During development, an interpreter can execute each statement and stop near a fault, giving quick feedback.
-3. For final distribution, a compiler can translate the whole high-level program before execution and provide target/object or executable code without distributing the source.
-4. A processor-specific assembly routine requires an assembler because its mnemonic instructions must become the target processor's machine code.
 
 Beyond syllabus / 延伸知识（不要求背诵）: production build systems automate translation, linking, testing and packaging, while the syllabus examines the purpose of each stage separately.
 ## 3. Practice by question type
@@ -125,10 +168,9 @@ These are indexes only. Cambridge question and mark-scheme wording is not reprod
 
 ### Summary
 
-- Define assemblers, compilers and interpreters with the exact technical vocabulary expected by the syllabus.
-- Use the lesson method on a fresh context and show the intermediate decision, representation or calculation.
-- Match the shape of the answer to the command word and the available marks.
-- Check the final answer against the scenario instead of repeating a memorised sentence.
+- S5.04: explain assembler, compiler, interpreter.
+- S5.04 method: Identify the relevant condition or input → Trace how the process works → Connect the mechanism to its result.
+- Correction to remember: Students often call every program an operating system. Correction: an OS manages resources and provides services; an app performs user tasks.
 
 ### Common error to correct
 

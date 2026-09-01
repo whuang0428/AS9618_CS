@@ -28,7 +28,65 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ### 1. IF/ELSE/nested selection, CASE, count-controlled loops, post-condition and pre-condition loops: Count-controlled iteration (S11.04)
 
-**Concept relationships**
+**Atomic learning targets**
+
+- **S11.04.A01:** IF
+- **S11.04.A02:** ELSE
+- **S11.04.A03:** nested
+- **S11.04.A04:** selection
+- **S11.04.A05:** CASE
+- **S11.04.A06:** count-controlled
+- **S11.04.A07:** loop / loops
+- **S11.04.A08:** post-condition
+- **S11.04.A09:** pre-condition
+
+**Core explanation**
+
+- Select and justify the loop structure from the problem: use FOR when the count is known, WHILE when execution may be unnecessary and continuation is tested first, and REPEAT when the body must run once before a stopping condition can be tested. The justification must use the scenario, not only say that one loop is easier.
+- IF/ELSE/nested selection, CASE, count-controlled loops, post-condition and pre-condition loops.
+- Justify FOR from the problem: it is well suited when the count or bounds are known, but a pre-condition or post-condition loop is better when the number of repetitions depends on input or a stopping condition.
+
+**Mechanism or method**
+
+1. **Set up the required data and conditions** — Select and justify the loop structure from the problem: use FOR when the count is known, WHILE when execution may be unnecessary and continuation is tested first, and REPEAT when the body must run once before a stopping condition can be tested.
+2. **Carry out the complete method** — The justification must use the scenario, not only say that one loop is easier.
+3. **Trace or test the result** — IF/ELSE/nested selection, CASE, count-controlled loops, post-condition and pre-condition loops.
+
+#### Worked example: IF/ELSE/nested selection, CASE, count-controlled loops, post-condition and pre-condition loops: Count-controlled iteration: complete worked route
+
+1. **Set up the required data and conditions**
+
+Select and justify the loop structure from the problem: use FOR when the count is known, WHILE when execution may be unnecessary and continuation is tested first, and REPEAT when the body must run once before a stopping condition can be tested.
+
+2. **Carry out the complete method**
+
+The justification must use the scenario, not only say that one loop is easier.
+
+3. **Trace or test the result**
+
+IF/ELSE/nested selection, CASE, count-controlled loops, post-condition and pre-condition loops.
+
+4. **Complete example**
+
+Nested IF and CASE / Total a fixed array / Choose the loop from the stopping rule: For a grade, an outer IF tests Mark = 80; its ELSE contains an inner IF testing Mark = 50; For a menu, CASE Choice OF maps 1, 2 and 3 to actions and OTHERWISE handles every unlisted value before ENDCASE.
+
+**Misconceptions to correct**
+
+- Students often think working Java automatically means good pseudocode. Correction: Paper 2 rewards clear Cambridge-style algorithm expression.
+
+#### Mastery check (MC-L074-S11.04)
+
+Complete a fresh example that demonstrates every target: IF; ELSE; nested; selection; CASE; count-controlled; loop / loops; post-condition; pre-condition. Show all intermediate steps and check the result.
+
+<details><summary>Answer criteria</summary>
+
+- Select and justify the loop structure from the problem: use FOR when the count is known, WHILE when execution may be unnecessary and continuation is tested first, and REPEAT when the body must run once before a stopping condition can be tested. The justification must use the scenario, not only say that one loop is easier.
+- IF/ELSE/nested selection, CASE, count-controlled loops, post-condition and pre-condition loops.
+- Justify FOR from the problem: it is well suited when the count or bounds are known, but a pre-condition or post-condition loop is better when the number of repetitions depends on input or a stopping condition.
+
+</details>
+
+**Supplementary concept map**
 
 - **count-controlled:** IF/ELSE/nested selection, CASE, count-controlled loops, post-condition and pre-condition…
 - **post-condition:** It is well suited when the count or…
@@ -37,7 +95,7 @@ Ask the learner to give one accurate definition or method step before continuing
 - **loop:** A FOR...NEXT loop is count-controlled.
 - **range:** CASE is not a replacement for range or…
 
-**Mechanism**
+**Supplementary three-step recap**
 
 1. **Translate the stated design** — IF/ELSE/nested selection, CASE, count-controlled loops, post-condition and pre-condition loops.
 2. **Apply one complete operation** — It is well suited when the count or bounds are known, but a pre-condition or post-condition loop is…
@@ -55,7 +113,7 @@ Use IF statements, including the ELSE clause and nested IF statements; CASE stat
 
 </details>
 
-<details><summary>Open precise terminology and exam facts</summary>
+### Lesson technical reference
 
 - Use IF statements, including the ELSE clause and nested IF statements; CASE statements; count-controlled loops; post-condition loops; and pre-condition loops.
 - Use IF...THEN...ELSE...ENDIF when a Boolean condition selects between paths. An ELSE clause supplies the false path. In nested IF statements, every inner and outer IF must be closed and the indentation must show which ELSE belongs to which IF.
@@ -64,16 +122,6 @@ Use IF statements, including the ELSE clause and nested IF statements; CASE stat
 - Justify FOR from the problem: it is well suited when the count or bounds are known, but a pre-condition or post-condition loop is better when the number of repetitions depends on input or a stopping condition.
 - A WHILE...ENDWHILE loop is a pre-condition loop: it tests before the body and may run zero times. A REPEAT...UNTIL loop is a post-condition loop: it executes the body before testing and therefore runs at least once. A FOR...NEXT loop is count-controlled.
 - Select and justify the loop structure from the problem: use FOR when the count is known, WHILE when execution may be unnecessary and continuation is tested first, and REPEAT when the body must run once before a stopping condition can be tested. The justification must use the scenario, not only say that one loop is easier.
-
-</details>
-
-### Worked method
-
-1. Nested IF and CASE
-2. Total a fixed array
-3. Choose the loop from the stopping rule
-4. For a grade, an outer IF tests Mark = 80; its ELSE contains an inner IF testing Mark = 50; each IF closes with ENDIF.
-5. For a menu, CASE Choice OF maps 1, 2 and 3 to actions and OTHERWISE handles every unlisted value before ENDCASE.
 
 Beyond syllabus / 延伸知识（不要求背诵）: consistent style, modularity and automated tests reduce maintenance errors in larger programs.
 ## 3. Practice by question type
@@ -122,10 +170,9 @@ These are indexes only. Cambridge question and mark-scheme wording is not reprod
 
 ### Summary
 
-- Define count-controlled iteration with the exact technical vocabulary expected by the syllabus.
-- Use the lesson method on a fresh context and show the intermediate decision, representation or calculation.
-- Match the shape of the answer to the command word and the available marks.
-- Check the final answer against the scenario instead of repeating a memorised sentence.
+- S11.04: explain IF, ELSE, nested, selection, CASE, count-controlled, loop / loops, post-condition, pre-condition.
+- S11.04 method: Set up the required data and conditions → Carry out the complete method → Trace or test the result.
+- Correction to remember: Students often think working Java automatically means good pseudocode. Correction: Paper 2 rewards clear Cambridge-style algorithm expression.
 
 ### Common error to correct
 

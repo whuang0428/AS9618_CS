@@ -28,7 +28,68 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ### 1. Bases and signed representations answer different questions (S1.02)
 
-**Concept relationships**
+**Atomic learning targets**
+
+- **S1.02.A01:** binary
+- **S1.02.A02:** denary
+- **S1.02.A03:** hexadecimal
+- **S1.02.A04:** BCD
+- **S1.02.A05:** one's-complement / one's complement
+- **S1.02.A06:** two's-complement / two's complement
+
+**Core explanation**
+
+- Binary is base 2 and uses place values that are powers of 2. Denary is base 10 and uses place values that are powers of 10. A base label identifies the representation; it does not change the integer value.
+- Hexadecimal is base 16 and uses digits 0 to 9 and A to F. One hexadecimal digit represents one four-bit binary nibble, so grouping from the right gives an exact conversion between binary and hexadecimal integer representations.
+- Only 0000 to 1001 are valid BCD digit groups. BCD is used where decimal digits must be displayed or processed exactly, such as digital clocks, calculators and financial displays, although it usually uses more bits than pure binary.
+- Representation overview: the required integer representations are binary, denary, hexadecimal, BCD, one's-complement and two's-complement. Conversion means preserving the integer value while changing its base or signed representation.
+- Unsigned subtraction can be performed column by column using borrowing, or by adding the two's complement of the subtrahend. For signed two's-complement subtraction A - B, form the two's complement of B and add it to A. Retain the fixed width, interpret the sign bit and check the representable range.
+- To convert a binary integer to denary, add the binary place values whose bits are 1. To convert a denary integer to binary, select powers of 2 that sum to the value and write every required bit position, including zeros.
+
+**Mechanism or method**
+
+1. **Establish the exact components or states** — Binary is base 2 and uses place values that are powers of 2.
+2. **Trace the relationship or change** — Denary is base 10 and uses place values that are powers of 10.
+3. **Use the explanation in a concrete case** — it does not change the integer value.
+
+#### Worked example: Bases and signed representations answer different questions: complete worked route
+
+1. **Establish the exact components or states**
+
+Binary is base 2 and uses place values that are powers of 2.
+
+2. **Trace the relationship or change**
+
+Denary is base 10 and uses place values that are powers of 10.
+
+3. **Use the explanation in a concrete case**
+
+it does not change the integer value.
+
+4. **Complete example**
+
+Convert D6 hexadecimal: D6 hexadecimal = 1101 0110 binary. In denary, D6 = 13 x 16 + 6 = 214, so all three representations encode the integer 214.
+
+**Misconceptions to correct**
+
+- Students often treat binary digits as decoration. Correction: every bit position has a value; if the position changes, the value changes.
+
+#### Mastery check (MC-L002-S1.02)
+
+Show the following targets in one connected answer, using a concrete example for each: binary; denary; hexadecimal; BCD; one's-complement / one's complement; two's-complement / two's complement.
+
+<details><summary>Answer criteria</summary>
+
+- Binary is base 2 and uses place values that are powers of 2. Denary is base 10 and uses place values that are powers of 10. A base label identifies the representation; it does not change the integer value.
+- Hexadecimal is base 16 and uses digits 0 to 9 and A to F. One hexadecimal digit represents one four-bit binary nibble, so grouping from the right gives an exact conversion between binary and hexadecimal integer representations.
+- Only 0000 to 1001 are valid BCD digit groups. BCD is used where decimal digits must be displayed or processed exactly, such as digital clocks, calculators and financial displays, although it usually uses more bits than pure binary.
+- Representation overview: the required integer representations are binary, denary, hexadecimal, BCD, one's-complement and two's-complement. Conversion means preserving the integer value while changing its base or signed representation.
+- Unsigned subtraction can be performed column by column using borrowing, or by adding the two's complement of the subtrahend. For signed two's-complement subtraction A - B, form the two's complement of B and add it to A. Retain the fixed width, interpret the sign bit and check the representable range.
+- To convert a binary integer to denary, add the binary place values whose bits are 1. To convert a denary integer to binary, select powers of 2 that sum to the value and write every required bit position, including zeros.
+
+</details>
+
+**Supplementary concept map**
 
 - **Binary:** base 2
 - **Denary:** base 10
@@ -37,7 +98,7 @@ Ask the learner to give one accurate definition or method step before continuing
 - **One's:** invert every bit
 - **Two's:** invert then add 1
 
-**Mechanism**
+**Supplementary three-step recap**
 
 1. **Base or representation?** — Binary, denary and hex are bases; BCD and complements encode values.
 2. **Keep the bit width** — Signed representations only make sense when every value uses the stated width.
@@ -69,7 +130,70 @@ The syllabus requires binary, denary, hexadecimal, Binary Coded Decimal (BCD), o
 
 ### 2. Choose the conversion method from the target (S1.03)
 
-**Concept relationships**
+**Atomic learning targets**
+
+- **S1.03.A01:** integer
+- **S1.03.A02:** convert / conversion
+- **S1.03.A03:** binary
+- **S1.03.A04:** denary
+- **S1.03.A05:** hexadecimal
+- **S1.03.A06:** BCD
+- **S1.03.A07:** two's-complement / two's complement
+- **S1.03.A08:** one's-complement / one's complement
+
+**Core explanation**
+
+- Binary is base 2 and uses place values that are powers of 2. Denary is base 10 and uses place values that are powers of 10. A base label identifies the representation; it does not change the integer value.
+- To convert a binary integer to denary, add the binary place values whose bits are 1. To convert a denary integer to binary, select powers of 2 that sum to the value and write every required bit position, including zeros.
+- Hexadecimal is base 16 and uses digits 0 to 9 and A to F. One hexadecimal digit represents one four-bit binary nibble, so grouping from the right gives an exact conversion between binary and hexadecimal integer representations.
+- Only 0000 to 1001 are valid BCD digit groups. BCD is used where decimal digits must be displayed or processed exactly, such as digital clocks, calculators and financial displays, although it usually uses more bits than pure binary.
+- Unsigned subtraction can be performed column by column using borrowing, or by adding the two's complement of the subtrahend. For signed two's-complement subtraction A - B, form the two's complement of B and add it to A. Retain the fixed width, interpret the sign bit and check the representable range.
+- Representation overview: the required integer representations are binary, denary, hexadecimal, BCD, one's-complement and two's-complement. Conversion means preserving the integer value while changing its base or signed representation.
+
+**Mechanism or method**
+
+1. **Identify the relevant condition or input** — Binary is base 2 and uses place values that are powers of 2.
+2. **Trace how the process works** — Denary is base 10 and uses place values that are powers of 10.
+3. **Connect the mechanism to its result** — it does not change the integer value.
+
+#### Worked example: Choose the conversion method from the target: complete worked route
+
+1. **Identify the relevant condition or input**
+
+Binary is base 2 and uses place values that are powers of 2.
+
+2. **Trace how the process works**
+
+Denary is base 10 and uses place values that are powers of 10.
+
+3. **Connect the mechanism to its result**
+
+it does not change the integer value.
+
+4. **Complete example**
+
+Convert D6 hexadecimal: D6 hexadecimal = 1101 0110 binary. In denary, D6 = 13 x 16 + 6 = 214, so all three representations encode the integer 214.
+
+**Misconceptions to correct**
+
+- Students often treat binary digits as decoration. Correction: every bit position has a value; if the position changes, the value changes.
+
+#### Mastery check (MC-L002-S1.03)
+
+Explain the following targets in one connected answer, using a concrete example for each: integer; convert / conversion; binary; denary; hexadecimal; BCD; two's-complement / two's complement; one's-complement / one's complement.
+
+<details><summary>Answer criteria</summary>
+
+- Binary is base 2 and uses place values that are powers of 2. Denary is base 10 and uses place values that are powers of 10. A base label identifies the representation; it does not change the integer value.
+- To convert a binary integer to denary, add the binary place values whose bits are 1. To convert a denary integer to binary, select powers of 2 that sum to the value and write every required bit position, including zeros.
+- Hexadecimal is base 16 and uses digits 0 to 9 and A to F. One hexadecimal digit represents one four-bit binary nibble, so grouping from the right gives an exact conversion between binary and hexadecimal integer representations.
+- Only 0000 to 1001 are valid BCD digit groups. BCD is used where decimal digits must be displayed or processed exactly, such as digital clocks, calculators and financial displays, although it usually uses more bits than pure binary.
+- Unsigned subtraction can be performed column by column using borrowing, or by adding the two's complement of the subtrahend. For signed two's-complement subtraction A - B, form the two's complement of B and add it to A. Retain the fixed width, interpret the sign bit and check the representable range.
+- Representation overview: the required integer representations are binary, denary, hexadecimal, BCD, one's-complement and two's-complement. Conversion means preserving the integer value while changing its base or signed representation.
+
+</details>
+
+**Supplementary concept map**
 
 - **To denary:** add place values
 - **From denary:** select powers
@@ -77,7 +201,7 @@ The syllabus requires binary, denary, hexadecimal, Binary Coded Decimal (BCD), o
 - **BCD:** encode each digit
 - **Negative:** keep fixed width
 
-**Mechanism**
+**Supplementary three-step recap**
 
 1. **Name the destination** — Write the required base or representation before starting.
 2. **Use its shortest route** — Use place values, four-bit groups or digit-by-digit BCD.
@@ -128,7 +252,7 @@ Conversions apply to integer values and the binary, denary, hexadecimal, BCD, on
 
 </details>
 
-<details><summary>Open precise terminology and exam facts</summary>
+### Lesson technical reference
 
 - The syllabus requires binary, denary, hexadecimal, Binary Coded Decimal (BCD), one's complement and two's complement; BCD and complements are representations rather than additional number bases.
 - Conversions apply to integer values and the binary, denary, hexadecimal, BCD, one's-complement and two's-complement representations named in the syllabus list above.
@@ -142,14 +266,6 @@ Conversions apply to integer values and the binary, denary, hexadecimal, BCD, on
 - Binary subtraction applies to each positive or negative binary integer as well as binary addition; use the stated fixed width and signed representation when interpreting the result.
 - BCD encodes each denary digit separately in four bits. For example, 59 becomes 0101 1001, not the pure-binary value 00111011.
 - Only 0000 to 1001 are valid BCD digit groups. BCD is used where decimal digits must be displayed or processed exactly, such as digital clocks, calculators and financial displays, although it usually uses more bits than pure binary.
-
-</details>
-
-### Worked method
-
-1. Convert D6 hexadecimal
-2. D6 hexadecimal = 1101 0110 binary.
-3. In denary, D6 = 13 x 16 + 6 = 214, so all three representations encode the integer 214.
 
 Beyond syllabus / 延伸知识（不要求背诵）: real file formats also store headers and metadata, so two files with the same visible content may still have different sizes.
 ## 3. Practice by question type
@@ -199,10 +315,11 @@ These are indexes only. Cambridge question and mark-scheme wording is not reprod
 
 ### Summary
 
-- Define binary, denary and hexadecimal number systems with the exact technical vocabulary expected by the syllabus.
-- Use the lesson method on a fresh context and show the intermediate decision, representation or calculation.
-- Match the shape of the answer to the command word and the available marks.
-- Check the final answer against the scenario instead of repeating a memorised sentence.
+- S1.02: explain binary, denary, hexadecimal, BCD, one's-complement / one's complement, two's-complement / two's complement.
+- S1.02 method: Establish the exact components or states → Trace the relationship or change → Use the explanation in a concrete case.
+- S1.03: explain integer, convert / conversion, binary, denary, hexadecimal, BCD, two's-complement / two's complement, one's-complement / one's complement.
+- S1.03 method: Identify the relevant condition or input → Trace how the process works → Connect the mechanism to its result.
+- Correction to remember: Students often treat binary digits as decoration. Correction: every bit position has a value; if the position changes, the value changes.
 
 ### Common error to correct
 

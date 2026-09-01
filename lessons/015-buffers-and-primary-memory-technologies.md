@@ -28,7 +28,59 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ### 1. Why buffers are used (S3.04)
 
-**Concept relationships**
+**Atomic learning targets**
+
+- **S3.04.A01:** buffer
+- **S3.04.A02:** temporarily
+- **S3.04.A03:** different / speed
+
+**Core explanation**
+
+- A speaker uses a DAC/amplifier to drive a coil and cone, producing pressure waves. An output buffer temporarily holds data because the processor can produce it faster or in different-sized bursts than a printer or audio device can consume it.
+- A driver converts a general request into device-specific commands. A buffer absorbs the speed difference between producer and device.
+- A buffer absorbs the speed difference between producer and device.
+
+**Mechanism or method**
+
+1. **Identify the relevant condition or input** — A speaker uses a DAC/amplifier to drive a coil and cone, producing pressure waves.
+2. **Trace how the process works** — An output buffer temporarily holds data because the processor can produce it faster or in different-sized bursts than a printer or audio device can consume it.
+3. **Connect the mechanism to its result** — A driver converts a general request into device-specific commands.
+
+#### Worked example: Why buffers are used: complete worked route
+
+1. **Identify the relevant condition or input**
+
+A speaker uses a DAC/amplifier to drive a coil and cone, producing pressure waves.
+
+2. **Trace how the process works**
+
+An output buffer temporarily holds data because the processor can produce it faster or in different-sized bursts than a printer or audio device can consume it.
+
+3. **Connect the mechanism to its result**
+
+A driver converts a general request into device-specific commands.
+
+4. **Complete example**
+
+Print a page / Read an HDD block / Choose a storage mechanism / Choose memory for a computer system: The operating system places page data in a print buffer. The CPU can continue other work while the slower printer consumes buffered data and performs drum, toner and fusing stages. The controller moves the head to the correct track, waits for the sector to rotate beneath it, senses magnetic patterns and transfers the decoded bits through a buffer.
+
+**Misconceptions to correct**
+
+- Students often list hardware without explaining suitability. Correction: the mark usually comes from matching a feature to a need.
+
+#### Mastery check (MC-L015-S3.04)
+
+Explain the following targets in one connected answer, using a concrete example for each: buffer; temporarily; different / speed.
+
+<details><summary>Answer criteria</summary>
+
+- A speaker uses a DAC/amplifier to drive a coil and cone, producing pressure waves. An output buffer temporarily holds data because the processor can produce it faster or in different-sized bursts than a printer or audio device can consume it.
+- A driver converts a general request into device-specific commands. A buffer absorbs the speed difference between producer and device.
+- A buffer absorbs the speed difference between producer and device.
+
+</details>
+
+**Supplementary concept map**
 
 - **Producer:** Creates data at one rate
 - **Buffer:** Temporary holding area
@@ -37,7 +89,7 @@ Ask the learner to give one accurate definition or method step before continuing
 - **temporarily:** An output buffer temporarily holds data because the…
 - **speed:** A buffer absorbs the speed difference between producer…
 
-**Mechanism**
+**Supplementary three-step recap**
 
 1. **Translate the stated design** — A buffer absorbs the speed difference between producer and device.
 2. **Apply one complete operation** — An output buffer temporarily holds data because the processor can produce it faster or in different-sized bursts than…
@@ -67,7 +119,58 @@ Show understanding of the use of buffers, including temporary storage used to ma
 
 ### 2. RAM and ROM (S3.05)
 
-**Concept relationships**
+**Atomic learning targets**
+
+- **S3.05.A01:** RAM
+- **S3.05.A02:** ROM
+
+**Core explanation**
+
+- SRAM stores bits using flip-flop circuits, needs no refresh and is fast but expensive with lower density, so it is used for cache. DRAM stores charge in capacitors, requires refresh and is slower but cheaper and denser, so it is used for main memory.
+- RAM is volatile read/write primary memory used for programs and data currently being processed. ROM is non-volatile primary memory used for instructions that must remain when power is removed, such as firmware or start-up instructions. ROM is not ordinary long-term storage for user files.
+- Explain the differences between SRAM and DRAM, including their uses in a range of devices and systems and the reasons for choosing one instead of the other.
+
+**Mechanism or method**
+
+1. **Identify the relevant condition or input** — SRAM stores bits using flip-flop circuits, needs no refresh and is fast but expensive with lower density, so it is used for cache.
+2. **Trace how the process works** — DRAM stores charge in capacitors, requires refresh and is slower but cheaper and denser, so it is used for main memory.
+3. **Connect the mechanism to its result** — RAM is volatile read/write primary memory used for programs and data currently being processed.
+
+#### Worked example: RAM and ROM: complete worked route
+
+1. **Identify the relevant condition or input**
+
+SRAM stores bits using flip-flop circuits, needs no refresh and is fast but expensive with lower density, so it is used for cache.
+
+2. **Trace how the process works**
+
+DRAM stores charge in capacitors, requires refresh and is slower but cheaper and denser, so it is used for main memory.
+
+3. **Connect the mechanism to its result**
+
+RAM is volatile read/write primary memory used for programs and data currently being processed.
+
+4. **Complete example**
+
+Use DRAM as main RAM because its density and lower cost support a large working capacity. Use a small amount of SRAM for cache because faster, no-refresh access reduces processor waiting. Store updateable firmware in EEPROM because it remains without power but can be rewritten electrically.
+
+**Misconceptions to correct**
+
+- Students often list hardware without explaining suitability. Correction: the mark usually comes from matching a feature to a need.
+
+#### Mastery check (MC-L015-S3.05)
+
+Distinguish the following targets in one connected answer, using a concrete example for each: RAM; ROM.
+
+<details><summary>Answer criteria</summary>
+
+- SRAM stores bits using flip-flop circuits, needs no refresh and is fast but expensive with lower density, so it is used for cache. DRAM stores charge in capacitors, requires refresh and is slower but cheaper and denser, so it is used for main memory.
+- RAM is volatile read/write primary memory used for programs and data currently being processed. ROM is non-volatile primary memory used for instructions that must remain when power is removed, such as firmware or start-up instructions. ROM is not ordinary long-term storage for user files.
+- Explain the differences between SRAM and DRAM, including their uses in a range of devices and systems and the reasons for choosing one instead of the other.
+
+</details>
+
+**Supplementary concept map**
 
 - **RAM:** Volatile working memory
 - **ROM:** Non-volatile startup memory
@@ -75,7 +178,7 @@ Show understanding of the use of buffers, including temporary storage used to ma
 - **Writing:** RAM changes during operation
 - **distinguish:** RAM and ROM.
 
-**Mechanism**
+**Supplementary three-step recap**
 
 1. **Name both alternatives precisely** — RAM and ROM.
 2. **Connect structure to consequence** — The differences between RAM and ROM, including their use in a range of devices and systems.
@@ -105,7 +208,58 @@ Explain the differences between RAM and ROM, including their use in a range of d
 
 ### 3. Uses of SRAM and DRAM and reasons for each use (S3.06)
 
-**Concept relationships**
+**Atomic learning targets**
+
+- **S3.06.A01:** SRAM
+- **S3.06.A02:** DRAM
+- **S3.06.A03:** cache
+- **S3.06.A04:** main memory
+
+**Core explanation**
+
+- SRAM stores bits using flip-flop circuits, needs no refresh and is fast but expensive with lower density, so it is used for cache. DRAM stores charge in capacitors, requires refresh and is slower but cheaper and denser, so it is used for main memory.
+- Uses of SRAM and DRAM and reasons for each use.
+
+**Mechanism or method**
+
+1. **Identify the relevant condition or input** — SRAM stores bits using flip-flop circuits, needs no refresh and is fast but expensive with lower density, so it is used for cache.
+2. **Trace how the process works** — DRAM stores charge in capacitors, requires refresh and is slower but cheaper and denser, so it is used for main memory.
+3. **Connect the mechanism to its result** — Uses of SRAM and DRAM and reasons for each use.
+
+#### Worked example: Uses of SRAM and DRAM and reasons for each use: complete worked route
+
+1. **Identify the relevant condition or input**
+
+SRAM stores bits using flip-flop circuits, needs no refresh and is fast but expensive with lower density, so it is used for cache.
+
+2. **Trace how the process works**
+
+DRAM stores charge in capacitors, requires refresh and is slower but cheaper and denser, so it is used for main memory.
+
+3. **Connect the mechanism to its result**
+
+Uses of SRAM and DRAM and reasons for each use.
+
+4. **Complete example**
+
+Use DRAM as main RAM because its density and lower cost support a large working capacity. Use a small amount of SRAM for cache because faster, no-refresh access reduces processor waiting.
+
+**Misconceptions to correct**
+
+- Students often list hardware without explaining suitability. Correction: the mark usually comes from matching a feature to a need.
+
+#### Mastery check (MC-L015-S3.06)
+
+Explain the following targets in one connected answer, using a concrete example for each: SRAM; DRAM; cache; main memory.
+
+<details><summary>Answer criteria</summary>
+
+- SRAM stores bits using flip-flop circuits, needs no refresh and is fast but expensive with lower density, so it is used for cache. DRAM stores charge in capacitors, requires refresh and is slower but cheaper and denser, so it is used for main memory.
+- Uses of SRAM and DRAM and reasons for each use.
+
+</details>
+
+**Supplementary concept map**
 
 - **main memory:** DRAM stores charge in capacitors, requires refresh and…
 - **SRAM:** Uses of SRAM and DRAM and reasons for…
@@ -113,7 +267,7 @@ Explain the differences between RAM and ROM, including their use in a range of d
 - **cache:** SRAM stores bits using flip-flop circuits, needs no…
 - **uses:** An HDD or magnetic hard disk uses rotating…
 
-**Mechanism**
+**Supplementary three-step recap**
 
 1. **Name both alternatives precisely** — Uses of SRAM and DRAM and reasons for each use.
 2. **Connect structure to consequence** — The differences between SRAM and DRAM, including their uses in a range of devices and systems and the…
@@ -133,7 +287,57 @@ Explain the differences between SRAM and DRAM, including their uses in a range o
 
 ### 4. PROM, EPROM and EEPROM (S3.07)
 
-**Concept relationships**
+**Atomic learning targets**
+
+- **S3.07.A01:** PROM
+- **S3.07.A02:** EPROM
+- **S3.07.A03:** EEPROM
+
+**Core explanation**
+
+- PROM is programmed once. EPROM can be erased with ultraviolet light and reprogrammed. EEPROM is erased and rewritten electrically, often without removing it from the system. All three are non-volatile ROM technologies.
+- The difference between PROM, EPROM and EEPROM, including how each can be programmed or erased.
+
+**Mechanism or method**
+
+1. **Identify the relevant condition or input** — EPROM can be erased with ultraviolet light and reprogrammed.
+2. **Trace how the process works** — EEPROM is erased and rewritten electrically, often without removing it from the system.
+3. **Connect the mechanism to its result** — The difference between PROM, EPROM and EEPROM, including how each can be programmed or erased.
+
+#### Worked example: PROM, EPROM and EEPROM: complete worked route
+
+1. **Identify the relevant condition or input**
+
+EPROM can be erased with ultraviolet light and reprogrammed.
+
+2. **Trace how the process works**
+
+EEPROM is erased and rewritten electrically, often without removing it from the system.
+
+3. **Connect the mechanism to its result**
+
+The difference between PROM, EPROM and EEPROM, including how each can be programmed or erased.
+
+4. **Complete example**
+
+Store updateable firmware in EEPROM because it remains without power but can be rewritten electrically.
+
+**Misconceptions to correct**
+
+- Students often list hardware without explaining suitability. Correction: the mark usually comes from matching a feature to a need.
+
+#### Mastery check (MC-L015-S3.07)
+
+Explain the following targets in one connected answer, using a concrete example for each: PROM; EPROM; EEPROM.
+
+<details><summary>Answer criteria</summary>
+
+- PROM is programmed once. EPROM can be erased with ultraviolet light and reprogrammed. EEPROM is erased and rewritten electrically, often without removing it from the system. All three are non-volatile ROM technologies.
+- The difference between PROM, EPROM and EEPROM, including how each can be programmed or erased.
+
+</details>
+
+**Supplementary concept map**
 
 - **PROM:** Programmed once
 - **EPROM:** Erased with ultraviolet light
@@ -141,7 +345,7 @@ Explain the differences between SRAM and DRAM, including their uses in a range o
 - **All three:** Retain contents without power
 - **buffer:** An output buffer temporarily holds data because the…
 
-**Mechanism**
+**Supplementary three-step recap**
 
 1. **Name both alternatives precisely** — The difference between PROM, EPROM and EEPROM, including how each can be programmed or erased.
 2. **Connect structure to consequence** — PROM, EPROM and EEPROM.
@@ -159,7 +363,7 @@ Explain the difference between PROM, EPROM and EEPROM, including how each can be
 
 </details>
 
-<details><summary>Open precise terminology and exam facts</summary>
+### Lesson technical reference
 
 - Show understanding of the use of buffers, including temporary storage used to manage different producer and consumer rates.
 - Explain the differences between RAM and ROM, including their use in a range of devices and systems.
@@ -173,16 +377,6 @@ Explain the difference between PROM, EPROM and EEPROM, including how each can be
 - SRAM stores bits using flip-flop circuits, needs no refresh and is fast but expensive with lower density, so it is used for cache. DRAM stores charge in capacitors, requires refresh and is slower but cheaper and denser, so it is used for main memory.
 - PROM is programmed once. EPROM can be erased with ultraviolet light and reprogrammed. EEPROM is erased and rewritten electrically, often without removing it from the system. All three are non-volatile ROM technologies.
 - Required device overview: a laser printer uses an electrostatic drum, laser, toner and fuser; a 3D printer builds successive layers; a speaker converts an electrical signal into sound. An HDD or magnetic hard disk uses rotating magnetic platters, flash memory stores charge electronically, and an optical reader/writer uses a laser.
-
-</details>
-
-### Worked method
-
-1. Print a page
-2. Read an HDD block
-3. Choose a storage mechanism
-4. Choose memory for a computer system
-5. The operating system places page data in a print buffer.
 
 Beyond syllabus / 延伸知识（不要求背诵）: professional device selection also considers accessibility, reliability, repairability and energy use.
 ## 3. Practice by question type
@@ -232,10 +426,11 @@ These are indexes only. Cambridge question and mark-scheme wording is not reprod
 
 ### Summary
 
-- Define buffers and primary memory technologies with the exact technical vocabulary expected by the syllabus.
-- Use the lesson method on a fresh context and show the intermediate decision, representation or calculation.
-- Match the shape of the answer to the command word and the available marks.
-- Check the final answer against the scenario instead of repeating a memorised sentence.
+- S3.04: explain buffer, temporarily, different / speed.
+- S3.04 method: Identify the relevant condition or input → Trace how the process works → Connect the mechanism to its result.
+- S3.05: explain RAM, ROM.
+- S3.05 method: Identify the relevant condition or input → Trace how the process works → Connect the mechanism to its result.
+- S3.06: explain SRAM, DRAM, cache, main memory.
 
 ### Common error to correct
 

@@ -30,7 +30,71 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ### 1. Add, edit and delete data in the ADTs and implement them using arrays; pseudocode for operations… (S10.10)
 
-**Concept relationships**
+**Atomic learning targets**
+
+- **S10.10.A01:** Add
+- **S10.10.A02:** edit
+- **S10.10.A03:** delete
+- **S10.10.A04:** stack
+- **S10.10.A05:** queue
+- **S10.10.A06:** linked list
+- **S10.10.A07:** array
+- **S10.10.A08:** not required
+- **S10.10.A09:** pseudocode
+
+**Core explanation**
+
+- All three can be implemented using arrays and state variables or indexes. Stack uses an array with a top/stack pointer; queue uses an array with front and rear; linked list uses Data and Next arrays (or an array of node records), start and a free list. Candidates must be able to add, edit and delete data conceptually, but the syllabus does not require pseudocode for these ADT operations.
+- Choose and justify a stack, queue or linked list from its LIFO, FIFO or linkage features. Add, edit and delete data in these ADTs and implement them using arrays; pseudocode for the ADT operations is not required by the syllabus.
+- A stack is LIFO: add with push and delete with pop at the top. A queue is FIFO: add with enqueue at the rear and delete with dequeue at the front. A linked list stores data plus a next pointer/index in each node; start identifies the first node and null ends the chain.
+- Editing changes the stored data without breaking the access rule or links. Deleting from a linked list reconnects the predecessor to the removed node's successor and returns the freed array slot to the free list; physical array positions need not follow logical list order.
+- An abstract data type (ADT) is a collection of data and a set of operations on those data. The permitted operations and their effects define the ADT; its internal storage can change without changing that behaviour. Stack, queue and linked list are examples of ADTs.
+- Justify a stack, queue or linked list from its operations and the scenario. Candidates are not required to write pseudocode for these ADT operations, but must be able to add, edit and delete data and describe array implementations.
+
+**Mechanism or method**
+
+1. **Identify the relevant condition or input** — All three can be implemented using arrays and state variables or indexes.
+2. **Trace how the process works** — Stack uses an array with a top/stack pointer;
+3. **Connect the mechanism to its result** — queue uses an array with front and rear;
+
+#### Worked example: Add, edit and delete data in the ADTs and implement them using arrays; pseudocode for operations: complete worked route
+
+1. **Identify the relevant condition or input**
+
+All three can be implemented using arrays and state variables or indexes.
+
+2. **Trace how the process works**
+
+Stack uses an array with a top/stack pointer;
+
+3. **Connect the mechanism to its result**
+
+queue uses an array with front and rear;
+
+4. **Complete example**
+
+Add, edit and delete without changing the ADT rule: Push D adds D at the stack top and pop deletes the current top. Enqueue D adds at the queue rear and dequeue deletes from the front. In an array-based linked list, edit Data[5] to change only the node value; insert or delete by changing Next indexes, Start and the free list rather than shifting every later array item.
+
+**Misconceptions to correct**
+
+- Students often treat files like arrays already in memory. Correction: file data must be read into variables before processing.
+
+#### Mastery check (MC-L067-S10.10)
+
+Explain the following targets in one connected answer, using a concrete example for each: Add; edit; delete; stack; queue; linked list; array; not required; pseudocode.
+
+<details><summary>Answer criteria</summary>
+
+- All three can be implemented using arrays and state variables or indexes. Stack uses an array with a top/stack pointer; queue uses an array with front and rear; linked list uses Data and Next arrays (or an array of node records), start and a free list. Candidates must be able to add, edit and delete data conceptually, but the syllabus does not require pseudocode for these ADT operations.
+- Choose and justify a stack, queue or linked list from its LIFO, FIFO or linkage features. Add, edit and delete data in these ADTs and implement them using arrays; pseudocode for the ADT operations is not required by the syllabus.
+- A stack is LIFO: add with push and delete with pop at the top. A queue is FIFO: add with enqueue at the rear and delete with dequeue at the front. A linked list stores data plus a next pointer/index in each node; start identifies the first node and null ends the chain.
+- Editing changes the stored data without breaking the access rule or links. Deleting from a linked list reconnects the predecessor to the removed node's successor and returns the freed array slot to the free list; physical array positions need not follow logical list order.
+- An abstract data type (ADT) is a collection of data and a set of operations on those data. The permitted operations and their effects define the ADT; its internal storage can change without changing that behaviour. Stack, queue and linked list are examples of ADTs.
+- Justify a stack, queue or linked list from its operations and the scenario. Candidates are not required to write pseudocode for these ADT operations, but must be able to add, edit and delete data and describe array implementations.
+
+</details>
+
+**Supplementary concept map**
 
 - **linked list:** Justify a stack, queue or linked list from…
 - **not required:** Candidates are not required to write pseudocode for…
@@ -39,7 +103,7 @@ Ask the learner to give one accurate definition or method step before continuing
 - **add:** Be able to add, edit and delete data…
 - **edit:** Add, edit and delete data while preserving each…
 
-**Mechanism**
+**Supplementary three-step recap**
 
 1. **Translate the stated design** — Candidates are not required to write pseudocode for these ADT operations, but must be able to add, edit…
 2. **Apply one complete operation** — Be able to add, edit and delete data conceptually, but the syllabus does not require pseudocode for these…
@@ -57,7 +121,7 @@ Use stack, queue and linked list to store data; add, edit and delete data while 
 
 </details>
 
-<details><summary>Open precise terminology and exam facts</summary>
+### Lesson technical reference
 
 - Use stack, queue and linked list to store data; add, edit and delete data while preserving each ADT rule. Describe array implementations for all three. Candidates are not required to write pseudocode for these ADT operations.
 - An abstract data type (ADT) is a collection of data and a set of operations on those data. The permitted operations and their effects define the ADT; its internal storage can change without changing that behaviour. Stack, queue and linked list are examples of ADTs.
@@ -68,15 +132,6 @@ Use stack, queue and linked list to store data; add, edit and delete data while 
 - Choose and justify a stack, queue or linked list from its LIFO, FIFO or linkage features. Add, edit and delete data in these ADTs and implement them using arrays; pseudocode for the ADT operations is not required by the syllabus.
 - A stack is LIFO with push/pop at the top; a queue is FIFO with enqueue at the rear and dequeue at the front; a linked list supports traversal and insertion/deletion through links.
 - Justification must name the required access order or update behaviour. Array implementations have fixed capacity unless resized and require overflow/underflow checks; linked structures require pointer management.
-
-</details>
-
-### Worked method
-
-1. Add, edit and delete without changing the ADT rule
-2. Push D adds D at the stack top and pop deletes the current top.
-3. Enqueue D adds at the queue rear and dequeue deletes from the front.
-4. In an array-based linked list, edit Data[5] to change only the node value; insert or delete by changing Next indexes, Start and the free list rather than shifting every later…
 
 Beyond syllabus / 延伸知识（不要求背诵）: programming libraries often provide tested ADT implementations, but the exam expects you to understand their behaviour and selection.
 ## 3. Practice by question type
@@ -126,10 +181,9 @@ These are indexes only. Cambridge question and mark-scheme wording is not reprod
 
 ### Summary
 
-- Define implementing adt operations with arrays with the exact technical vocabulary expected by the syllabus.
-- Use the lesson method on a fresh context and show the intermediate decision, representation or calculation.
-- Match the shape of the answer to the command word and the available marks.
-- Check the final answer against the scenario instead of repeating a memorised sentence.
+- S10.10: explain Add, edit, delete, stack, queue, linked list, array, not required, pseudocode.
+- S10.10 method: Identify the relevant condition or input → Trace how the process works → Connect the mechanism to its result.
+- Correction to remember: Students often treat files like arrays already in memory. Correction: file data must be read into variables before processing.
 
 ### Common error to correct
 

@@ -27,7 +27,77 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ### 1. Principal operation of laser printer, 3D printer, microphone, speakers, HDD, flash memory, optical reader/writer, touchscreen and… (S3.03)
 
-**Concept relationships**
+**Atomic learning targets**
+
+- **S3.03.A01:** laser printer
+- **S3.03.A02:** 3D printer
+- **S3.03.A03:** microphone
+- **S3.03.A04:** speaker
+- **S3.03.A05:** HDD / magnetic hard disk
+- **S3.03.A06:** flash memory
+- **S3.03.A07:** optical reader/writer / optical disc reader/writer
+- **S3.03.A08:** touchscreen
+- **S3.03.A09:** VR headset / virtual reality headset
+
+**Core explanation**
+
+- Laser printer: a drum is charged, a laser changes the charge at image positions, toner adheres to those positions, the toner transfers to paper, and heat and pressure fuse it permanently.
+- 3D printer: software slices a digital model into layers; the printer deposits, melts or solidifies material one layer at a time until the physical object is built.
+- Microphone: sound vibrates a diaphragm; a transducer produces an analogue electrical signal, and an analogue-to-digital converter samples it into binary values.
+- Speaker: a digital-to-analogue converter and amplifier drive a coil in a magnetic field; the attached cone vibrates and creates pressure waves that are heard as sound.
+- Magnetic hard disk: platters rotate while an actuator positions a read/write head. Writing changes magnetic orientation; reading senses the stored magnetic pattern.
+- Flash memory: electrical charge is stored in floating-gate cells. The controller reads charge states and erases or programs blocks electronically, so no moving parts are required.
+- Optical disc reader/writer: the disc spins while a laser follows its track. Reflected-light differences are read as data; a higher-power writing laser changes a dye or recording layer on writable media.
+- Capacitive touchscreen: a transparent electrode grid creates an electric field. A finger changes capacitance, and the controller calculates the touch coordinates from the measured changes.
+- Virtual-reality headset: separate images are displayed to the two eyes while orientation and motion sensors measure head movement. The computer updates the viewpoint with low latency so the scene follows the user's movement.
+
+**Mechanism or method**
+
+1. **Identify the incoming energy or data** — Name the light, sound, touch, electrical data or stored pattern presented to the device.
+2. **Trace the physical conversion** — Follow charge, magnetism, light, motion or material through the named internal components in the correct order.
+3. **State the resulting data or physical effect** — Finish with the printed page, object, binary data, sound, touch coordinates, stored data or updated visual scene.
+
+#### Worked example: Trace three different conversions
+
+1. **Microphone**
+
+Sound wave → diaphragm motion → analogue electrical signal → ADC samples → binary sample values.
+
+2. **Speaker**
+
+Binary sample values → DAC analogue signal → amplified coil movement → cone vibration → sound wave.
+
+3. **Laser printer**
+
+Page description → laser charge pattern on drum → toner image → transfer to paper → fuser bonds toner.
+
+4. **Compare**
+
+The microphone and touchscreen are input devices, the speaker and printers are output devices, and HDD/flash/optical media store data; the mechanism justifies the category.
+
+**Misconceptions to correct**
+
+- Naming a component is not enough: a principal-operation answer must connect input, internal conversion and output in order.
+
+#### Mastery check (MC-L014-S3.03)
+
+Describe the following targets in one connected answer, using a concrete example for each: laser printer; 3D printer; microphone; speaker; HDD / magnetic hard disk; flash memory; optical reader/writer / optical disc reader/writer; touchscreen; VR headset / virtual reality headset.
+
+<details><summary>Answer criteria</summary>
+
+- Laser printer: a drum is charged, a laser changes the charge at image positions, toner adheres to those positions, the toner transfers to paper, and heat and pressure fuse it permanently.
+- 3D printer: software slices a digital model into layers; the printer deposits, melts or solidifies material one layer at a time until the physical object is built.
+- Microphone: sound vibrates a diaphragm; a transducer produces an analogue electrical signal, and an analogue-to-digital converter samples it into binary values.
+- Speaker: a digital-to-analogue converter and amplifier drive a coil in a magnetic field; the attached cone vibrates and creates pressure waves that are heard as sound.
+- Magnetic hard disk: platters rotate while an actuator positions a read/write head. Writing changes magnetic orientation; reading senses the stored magnetic pattern.
+- Flash memory: electrical charge is stored in floating-gate cells. The controller reads charge states and erases or programs blocks electronically, so no moving parts are required.
+- Optical disc reader/writer: the disc spins while a laser follows its track. Reflected-light differences are read as data; a higher-power writing laser changes a dye or recording layer on writable media.
+- Capacitive touchscreen: a transparent electrode grid creates an electric field. A finger changes capacitance, and the controller calculates the touch coordinates from the measured changes.
+- Virtual-reality headset: separate images are displayed to the two eyes while orientation and motion sensors measure head movement. The computer updates the viewpoint with low latency so the scene follows the user's movement.
+
+</details>
+
+**Supplementary concept map**
 
 - **optical reader:** Principal operation of laser printer, 3D printer, microphone,…
 - **laser printer:** Laser printer, 3D printer, microphone, speakers, magnetic hard…
@@ -36,11 +106,11 @@ Ask the learner to give one accurate definition or method step before continuing
 - **3D printer:** A 3D printer builds successive layers
 - **microphone:** A microphone diaphragm vibrates with sound
 
-**Mechanism**
+**Supplementary three-step recap**
 
-1. **Identify incoming data or signal** — Laser printer, 3D printer, microphone, speakers, magnetic hard disk, solid state (flash) memory, optical disc reader/writer, touchscreen and…
-2. **Follow the physical or logical path** — Principal operation of laser printer, 3D printer, microphone, speakers, HDD, flash memory, optical reader/writer, touchscreen and VR headset.
-3. **Connect output to its use** — An HDD or magnetic hard disk uses rotating magnetic platters, flash memory stores charge electronically, and an optical…
+1. **Identify the incoming energy or data** — Name the light, sound, touch, electrical data or stored pattern presented to the device.
+2. **Trace the physical conversion** — Follow charge, magnetism, light, motion or material through the named internal components in the correct order.
+3. **State the resulting data or physical effect** — Finish with the printed page, object, binary data, sound, touch coordinates, stored data or updated visual scene.
 
 **Concrete case: optical reader:** Laser printer, 3D printer, microphone, speakers, magnetic hard disk, solid state (flash) memory, optical disc reader/writer, touchscreen and virtual reality headset.
 
@@ -54,7 +124,7 @@ Describe the principal operations of: laser printer, 3D printer, microphone, spe
 
 </details>
 
-<details><summary>Open precise terminology and exam facts</summary>
+### Lesson technical reference
 
 - Describe the principal operations of: laser printer, 3D printer, microphone, speakers, magnetic hard disk, solid state (flash) memory, optical disc reader/writer, touchscreen and virtual reality headset.
 - A microphone diaphragm vibrates with sound; a transducer converts the movement into an analogue electrical signal, which an ADC samples into digital values. A capacitive touchscreen detects a change in an electric field and calculates touch coordinates.
@@ -68,48 +138,38 @@ Describe the principal operations of: laser printer, 3D printer, microphone, spe
 - RAM is volatile read/write primary memory used for programs and data currently being processed. ROM is non-volatile primary memory used for instructions that must remain when power is removed, such as firmware or start-up instructions. ROM is not ordinary long-term storage for user files.
 - SRAM stores bits using flip-flop circuits, needs no refresh and is fast but expensive with lower density, so it is used for cache. DRAM stores charge in capacitors, requires refresh and is slower but cheaper and denser, so it is used for main memory.
 
-</details>
-
-### Worked method
-
-1. Print a page
-2. Read an HDD block
-3. Choose a storage mechanism
-4. Choose memory for a computer system
-5. The operating system places page data in a print buffer.
-
 Beyond syllabus / 延伸知识（不要求背诵）: professional device selection also considers accessibility, reliability, repairability and energy use.
 ## 3. Practice by question type
 
-### Question 1 - foundation - describe - 4 marks
+### Question 1 - foundation - describe - 9 marks
 
-Describe how a microphone captures sound for storage in a computer.
+Describe the principal operation of a laser printer, a 3D printer and a microphone. For each device, connect the input to the internal mechanism and output.
 
-**Answer:** sound waves vibrate a diaphragm; transducer converts vibration to an analogue electrical signal; ADC samples/measures the signal; sample values are encoded/stored as binary
+**Answer:** laser printer: charged drum, laser charge pattern, toner, paper transfer and fuser; 3D printer: digital model sliced into layers and material deposited/solidified layer by layer; microphone: diaphragm vibration, transducer analogue signal and ADC binary samples
 
 **Marking guidance:** Do not accept that the microphone directly records binary without an analogue signal and conversion stage.
 
 **Common error:** For the command word describe, perform that exact action; do not replace it with an unrelated fact.
 
-### Question 2 - application - apply - 2 marks
+### Question 2 - application - describe - 9 marks
 
-Which device uses a laser?
+Describe the principal operation of a speaker, magnetic hard disk and flash memory. Name the physical conversion or storage mechanism in each case.
 
-**Answer:** An optical reader/writer.
+**Answer:** speaker: DAC/amplifier drives coil and cone to make pressure waves; HDD: rotating magnetic platters and positioned read/write heads change or sense magnetic orientation; flash: charge states stored and read electronically in floating-gate cells with no moving parts
 
-**Marking guidance:** Award one mark for each distinct, technically accurate point or method step.
+**Marking guidance:** Award mechanism-linked points rather than device names alone.
 
-**Common error:** Do not repeat the same point in different words; each mark needs a separate idea or method step.
+**Common error:** Do not describe RAM when the question asks for flash storage.
 
-### Question 3 - transfer - apply - 2 marks
+### Question 3 - transfer - compare - 9 marks
 
-What physical property stores HDD data?
+Compare the principal operation of an optical disc reader/writer, a capacitive touchscreen and a virtual-reality headset. For each one, trace its distinct input, conversion mechanism and result.
 
-**Answer:** Magnetic orientation/patterns on a platter.
+**Answer:** optical drive: spinning track and reflected laser differences, with a higher-power laser changing writable media; touchscreen: finger changes capacitance in an electrode grid and controller calculates coordinates; VR headset: separate eye images and motion/orientation sensors update the viewpoint with low latency
 
-**Marking guidance:** Award one mark for each distinct, technically accurate point or method step.
+**Marking guidance:** Each description must include an input, mechanism and result.
 
-**Common error:** Do not copy the worked example unchanged; transfer the method and check it against the new context.
+**Common error:** A laser is not a complete optical-drive explanation; state what reflected light or writing power does.
 
 ### Related past-paper indexes
 
@@ -126,10 +186,9 @@ These are indexes only. Cambridge question and mark-scheme wording is not reprod
 
 ### Summary
 
-- Define how input, output and storage devices work with the exact technical vocabulary expected by the syllabus.
-- Use the lesson method on a fresh context and show the intermediate decision, representation or calculation.
-- Match the shape of the answer to the command word and the available marks.
-- Check the final answer against the scenario instead of repeating a memorised sentence.
+- S3.03: explain laser printer, 3D printer, microphone, speaker, HDD / magnetic hard disk, flash memory, optical reader/writer / optical disc reader/writer, touchscreen, VR headset / virtual reality headset.
+- S3.03 method: Identify the incoming energy or data → Trace the physical conversion → State the resulting data or physical effect.
+- Correction to remember: Naming a component is not enough: a principal-operation answer must connect input, internal conversion and output in order.
 
 ### Common error to correct
 

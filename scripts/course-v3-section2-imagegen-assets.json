@@ -1,0 +1,76 @@
+{
+  "schemaVersion": 1,
+  "generationMode": "built-in-imagegen",
+  "stylePolicy": {
+    "required": [
+      "academic textbook or editorial illustration",
+      "realistic proportions and materials",
+      "restrained navy, slate, neutral and muted teal palette",
+      "clean negative space for deterministic HTML labels"
+    ],
+    "forbidden": [
+      "clay",
+      "plastic toy",
+      "cartoon",
+      "cute characters",
+      "childish classroom styling",
+      "generated technical text or arrows"
+    ]
+  },
+  "accepted": [
+    {
+      "id": "network-purpose-lan-wan",
+      "workspacePath": "web/assets/course-v3/section-2/network-purpose-lan-wan-analogy.png",
+      "generatedPath": "/Users/kw/.codex/generated_images/01a05a80-5d9f-73c3-bae7-12c6e73cf49f/exec-53d38ab0-26d9-42ca-b196-832b26052920.png",
+      "sha256": "c86a5f1b2944a8f7b84e6a321d6547e43ec5345bda5232e818b33d0cff3c42dc",
+      "prompt": "Create one wide 16:9 academic editorial cutaway for an AS Computer Science textbook. Show a realistic modern school computer laboratory in the foreground with workstations, one rack server and one shared printer, and three distant institutional buildings across a wider regional landscape connected by a restrained communications corridor. Use sophisticated architectural visualisation, precise proportions, restrained navy, slate and muted teal. No words, letters, numerals, logos, arrows, clay, toy, cartoon, childish styling or saturated colours.",
+      "review": { "academicStyle": true, "subjectCountChecked": true, "generatedTextAbsent": true, "technicalFactsDelegatedToHtml": true }
+    },
+    {
+      "id": "public-private-cloud",
+      "workspacePath": "web/assets/course-v3/section-2/public-private-cloud-analogy.png",
+      "generatedPath": "/Users/kw/.codex/generated_images/01a05a80-5d9f-73c3-bae7-12c6e73cf49f/exec-e49e88b2-e9f9-4bd8-95ea-aec5ae86812b.png",
+      "sha256": "caec584e99e00dc91ef046f3f47ef011bb9c26435bd125ba30994fdd83b78147",
+      "prompt": "Create one wide 16:9 academic data-centre cutaway for an AS Computer Science textbook. On the left show provider infrastructure divided into several physically separated tenant zones; on the right show dedicated infrastructure reserved for one organisation. Use sophisticated architectural visualisation, realistic racks and services, restrained navy, slate and muted teal. No literal cloud, readable text, arrows, clay, toy, cartoon, cute padlocks or childish styling.",
+      "review": { "academicStyle": true, "sharedAndDedicatedZonesVisible": true, "generatedTextAbsent": true, "technicalFactsDelegatedToHtml": true }
+    },
+    {
+      "id": "transmission-media",
+      "workspacePath": "web/assets/course-v3/section-2/transmission-media-analogy.png",
+      "generatedPath": "/Users/kw/.codex/generated_images/01a05a80-5d9f-73c3-bae7-12c6e73cf49f/exec-a089df94-1290-4e13-b6ba-2db5f97bb3cb.png",
+      "sha256": "7e692d9ab1dbdd94bcae64a2c8200f6d1f038bebc0801f9c135e3df16fbd4b38",
+      "prompt": "Create one wide 16:9 high-school-to-undergraduate science textbook plate with exactly three separate realistic specimens: a cutaway copper cable carrying an electrical pulse, a fibre-optic cable carrying a light pulse, and open air between two antennas with electromagnetic wave fronts. White studio background, precise materials, restrained colours. No words, arrows, flame, sparks, clay, toy, cartoon or childish styling.",
+      "review": { "academicStyle": true, "threeMechanismsVisible": true, "generatedTextAbsent": true, "technicalFactsDelegatedToHtml": true }
+    },
+    {
+      "id": "ethernet-collision",
+      "workspacePath": "web/assets/course-v3/section-2/ethernet-collision-analogy.png",
+      "generatedPath": "/Users/kw/.codex/generated_images/01a05a80-5d9f-73c3-bae7-12c6e73cf49f/exec-2569fac6-03e0-4a9d-b1a0-2dd32339fe59.png",
+      "sha256": "76e01edd2310624a48b30b16d0b5aa8f32110bc791f2a4e16678714b309434ac",
+      "prompt": "Create one wide 16:9 academic editorial illustration for an AS Computer Science textbook explaining the analogy behind an Ethernet collision on a shared medium. Show one narrow industrial bridge shared by exactly two realistic autonomous cargo carts approaching from opposite ends and meeting in the middle. Use precise perspective, realistic metal and concrete, restrained navy, slate and muted amber. No words, arrows, sparks, crash, people, clay, toy, cartoon or childish styling.",
+      "review": { "academicStyle": true, "exactlyTwoTransmittersVisible": true, "generatedTextAbsent": true, "technicalFactsDelegatedToHtml": true }
+    },
+    {
+      "id": "internet-www-services",
+      "workspacePath": "web/assets/course-v3/section-2/internet-www-services-analogy.png",
+      "generatedPath": "/Users/kw/.codex/generated_images/01a05a80-5d9f-73c3-bae7-12c6e73cf49f/exec-2d499548-00be-4995-83a2-c52303caa238.png",
+      "sha256": "1461f76b186c4753ca95c71f937512c1759f928cad45c1a44b11f7fd56bd4ba9",
+      "prompt": "Create one wide 16:9 sophisticated academic editorial communications environment establishing that the Internet is common infrastructure while the World Wide Web is one service. Show one common data backbone feeding exactly four distinct professional service bays: browser page, email/message, file transfer/archive, and real-time voice/video. Use realistic architectural visualisation and restrained navy, slate, off-white and muted teal. No readable text, literal cloud, toy trucks, clay, cartoon, cute objects or childish styling.",
+      "review": { "academicStyle": true, "commonInfrastructureVisible": true, "fourServiceBaysVisible": true, "generatedTextAbsent": true, "technicalFactsDelegatedToHtml": true }
+    }
+  ],
+  "approvedPilotAssets": [
+    "web/assets/course-v3/section-2/topology-bus.png",
+    "web/assets/course-v3/section-2/topology-star.png",
+    "web/assets/course-v3/section-2/topology-mesh.png",
+    "web/assets/course-v3/section-2/topology-hybrid.png",
+    "web/assets/course-v3/section-2/streaming-buffer-reservoir.png"
+  ],
+  "rejectedCandidates": [
+    { "id": "network-purpose-lan-wan-clay", "generatedPath": "/Users/kw/.codex/generated_images/01a05a80-5d9f-73c3-bae7-12c6e73cf49f/exec-2234e7db-b358-4d6b-a36b-416aa4a40faf.png", "reason": "Clay/toy rendering was too childlike for the approved academic course direction." },
+    { "id": "public-private-cloud-clay", "generatedPath": "/Users/kw/.codex/generated_images/01a05a80-5d9f-73c3-bae7-12c6e73cf49f/exec-8f568d78-39c3-4ebc-ba96-85b1ff3379c8.png", "reason": "Clay/toy rendering was too childlike for the approved academic course direction." },
+    { "id": "transmission-media-clay", "generatedPath": "/Users/kw/.codex/generated_images/01a05a80-5d9f-73c3-bae7-12c6e73cf49f/exec-6ce5f66e-c3fa-49f2-81c8-4afd04951d31.png", "reason": "Clay/toy rendering was too childlike for the approved academic course direction." },
+    { "id": "ethernet-collision-clay", "generatedPath": "/Users/kw/.codex/generated_images/01a05a80-5d9f-73c3-bae7-12c6e73cf49f/exec-a6f4d93d-f31a-42ee-a331-e86fb60058d6.png", "reason": "Clay/toy rendering was too childlike for the approved academic course direction." },
+    { "id": "internet-www-services-clay", "generatedPath": "/Users/kw/.codex/generated_images/01a05a80-5d9f-73c3-bae7-12c6e73cf49f/exec-96df84ff-dbb9-4bc6-a5f4-3c29f9245422.png", "reason": "Clay/toy rendering was too childlike for the approved academic course direction." }
+  ]
+}

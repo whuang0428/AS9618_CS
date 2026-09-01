@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "mode": "built-in ImageGen",
+  "useCase": "scientific-educational",
+  "sharedPolicy": {
+    "technicalTextInImage": false,
+    "pathArrowsInImage": false,
+    "failureOverlaysInImage": false,
+    "explanationPlacement": "native HTML ordered steps and comparison table beside or below the generated image"
+  },
+  "finalPrompts": {
+    "bus": "Use case: scientific-educational. Asset type: AS Level Computer Science website teaching illustration. Primary request: a physical classroom teaching model of a bus network topology, shown as real miniature network equipment rather than a flat vector diagram. Exactly four identical desktop computers are arranged in one row above exactly one long horizontal shared network cable; exactly one short vertical drop cable connects each computer to that same horizontal backbone; one small terminator cap appears at each end of the backbone, exactly two terminators total. Use a polished isometric educational illustration on a clean white studio background. Exactly four computers, one backbone, four drops and two terminators; no central switch, extra devices, text, arrows, path highlights, logos or watermark.",
+    "star": "Use case: scientific-educational. Asset type: AS Level Computer Science website teaching illustration. Primary request: an unmistakably correct star network topology as a top-down physical classroom model. One simple square central network switch tile has no visible sockets or loose leads. Exactly four small desktop-computer models appear at the four cardinal directions: one above, one below, one left and one right. Exactly four short separate teal cables form a plus sign, each joining one computer to one side of the central switch tile. Exactly five objects total and four cables total. Every cable stops at the switch edge. No diagonal cables, crossings, continuous line through the switch, loops, extra ports, extra devices, text, arrows, logos or watermark.",
+    "mesh": "Use case: scientific-educational. Asset type: AS Level Computer Science website teaching illustration. Primary request: a physical classroom teaching model of a full mesh network topology. Exactly four identical network routers are placed at the four corners of a wide rectangle. Every router has one direct physical cable to each of the other three routers, making exactly six router-to-router cables total and no central router. Use gentle cable curves and subtle vertical separation at crossings so all six connections can be counted. No computers, extra nodes, duplicated pair, text, arrows, logos or watermark.",
+    "hybrid": "Use case: scientific-educational. Asset type: AS Level Computer Science website teaching illustration. Primary request: a physical classroom teaching model of a hybrid topology made from two star segments. Exactly two Ethernet switches appear, one left and one right. Exactly two desktop computers connect separately to each switch. Exactly one backbone cable connects the two switches. Exactly four computers, two switches and five cables total. No computer-to-computer cable, second inter-switch cable, extra devices, text, arrows, logos or watermark."
+  },
+  "rejectedCandidates": [
+    {
+      "topology": "star",
+      "sourcePath": "/Users/kw/.codex/generated_images/01a05a80-5d9f-73c3-bae7-12c6e73cf49f/exec-bf18bbc4-c562-4624-87b4-513e0815e652.png",
+      "reason": "Four computers were present, but two additional dangling switch-only cable loops created more than four connections."
+    },
+    {
+      "topology": "star",
+      "sourcePath": "/Users/kw/.codex/generated_images/01a05a80-5d9f-73c3-bae7-12c6e73cf49f/exec-71ea994e-eae4-44c2-9e0d-044ecd535b1a.png",
+      "reason": "Two upper cables entered the switch sides while four front cables were also drawn, again creating more than four connections."
+    }
+  ]
+}

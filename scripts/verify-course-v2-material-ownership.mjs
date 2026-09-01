@@ -65,6 +65,7 @@ assert(materials.teachingLessons === 88 && materials.knowledgePointInstances ===
 
 const activePathOwners = new Map();
 const nativeSignatures = new Map();
+const atomicObjectiveIds = new Set();
 const genericPattern = /question triage|method bank|review sprint|section \d+ (?:topic |knowledge )?map|mini assessment|retrieval grid/i;
 const editorialPattern = /Version 2|Version 2 row|Version 2 Notes|Detailed explanation|Question triage|Supporting diagram library|approved material|pending material|pilot-complete/i;
 
@@ -78,10 +79,25 @@ for (const lesson of teaching) {
     assert(point.nodes.every((node) => wordCount(node.label) <= 4 && wordCount(node.value) <= 8), `L${lesson.id}:${point.id} has an overlong concept relationship card`);
     assert(new Set(point.nodes.map((node) => normalise(node.label))).size === point.nodes.length, `L${lesson.id}:${point.id} repeats a concept label`);
     assert(new Set(point.nodes.map((node) => normalise(node.value))).size >= 4, `L${lesson.id}:${point.id} repeats one fact across its concept map`);
-    assert(point.steps.length === 3 && point.steps.every((step) => step.label && wordCount(step.title) <= 12 && wordCount(step.detail) <= 18), `L${lesson.id}:${point.id} has an invalid mechanism step`);
+    assert(point.steps.length === 3 && point.steps.every((step) => step.label && wordCount(step.title) <= 14 && wordCount(step.detail) <= 36), `L${lesson.id}:${point.id} has an invalid mechanism step`);
     assert(point.cue.title && wordCount(point.cue.text) <= 34, `L${lesson.id}:${point.id} has an overlong or missing concrete cue`);
     assert(point.materialCount === point.visuals.length + 3, `L${lesson.id}:${point.id} material count is inconsistent`);
     const requirement = requirementById.get(point.id);
+    assert(point.atomicObjectives.length === requirement.requiredGroups.length, `L${lesson.id}:${point.id} atomic objectives do not match the syllabus groups`);
+    assert(point.atomicObjectives.every((objective) => objective.id && objective.label && objective.terms.length), `L${lesson.id}:${point.id} has an incomplete atomic objective`);
+    for (const objective of point.atomicObjectives) {
+      assert(!atomicObjectiveIds.has(`${lesson.id}:${objective.id}`), `L${lesson.id}:${point.id} repeats atomic objective ${objective.id}`);
+      atomicObjectiveIds.add(`${lesson.id}:${objective.id}`);
+    }
+    assert(point.explanations.length >= 1 && point.explanations.every((explanation) => wordCount(explanation) >= 5), `L${lesson.id}:${point.id} lacks default-visible explanations`);
+    const syllabusRestatements = new Set([normalise(requirement.requirement), normalise(requirement.notes)]);
+    assert(!point.explanations.some((explanation) => syllabusRestatements.has(normalise(explanation))), `L${lesson.id}:${point.id} exposes a syllabus restatement as its core explanation`);
+    assert(point.mechanismSteps.length >= 3 && point.mechanismSteps.every((step) => step.label && step.title && step.detail), `L${lesson.id}:${point.id} lacks a structured mechanism`);
+    assert(point.workedExamples.length >= 1 && point.workedExamples.every((example) => example.title && example.steps.length >= 2), `L${lesson.id}:${point.id} lacks a structured worked example`);
+    assert(!point.workedExamples.some((example) => /…|\.\.\./.test(JSON.stringify(example))), `L${lesson.id}:${point.id} contains a truncated worked example`);
+    assert(point.misconceptions.length >= 1, `L${lesson.id}:${point.id} lacks a misconception correction`);
+    assert(point.masteryCheck.id && point.masteryCheck.objectiveIds.length === point.atomicObjectives.length && point.masteryCheck.prompt && point.masteryCheck.answerCriteria.length, `L${lesson.id}:${point.id} lacks a mapped mastery check`);
+    assert(point.questionIds.includes(point.masteryCheck.id), `L${lesson.id}:${point.id} does not own its mastery-check question`);
     const pointTeaching = [...point.nodes.map((node) => node.value), ...point.steps.map((step) => step.detail), point.cue.text].join(" ");
     const pointFocus = `${requirement.requirement} ${(requirement.requiredGroups ?? []).flat().join(" ")}`;
     assert(overlapCount(pointTeaching, pointFocus) > 0, `L${lesson.id}:${point.id} teaching materials do not contain the point's own terminology`);
@@ -108,6 +124,9 @@ for (const lesson of teaching) {
   assert(/data-material-status="complete"/.test(html), `L${lesson.id} does not expose complete material state`);
   assert(/class="v2-jump-nav"/.test(html) && !/class="v2-toc"/.test(html), `L${lesson.id} still renders the wasteful sidebar`);
   assert((html.match(/class="v2-knowledge-point"/g) ?? []).length === lesson.knowledgePoints.length, `L${lesson.id} rendered knowledge-point count mismatch`);
+  assert((html.match(/class="v2-learning-targets"/g) ?? []).length === lesson.knowledgePoints.length, `L${lesson.id} does not render atomic targets for every point`);
+  assert((html.match(/class="v2-point-explanation"/g) ?? []).length === lesson.knowledgePoints.length, `L${lesson.id} does not render default-visible explanation for every point`);
+  assert((html.match(/class="v2-mastery-check"/g) ?? []).length === lesson.knowledgePoints.length, `L${lesson.id} does not render mapped mastery checks`);
   assert((html.match(/class="v2-native-material /g) ?? []).length === lesson.knowledgePoints.length * 3, `L${lesson.id} does not render three complementary native materials per point`);
   const expectedVisuals = lesson.knowledgePoints.reduce((sum, point) => sum + point.visuals.length, 0);
   assert((html.match(/class="v2-visual"/g) ?? []).length === expectedVisuals, `L${lesson.id} rendered visual count mismatch`);
@@ -116,6 +135,7 @@ for (const lesson of teaching) {
 for (const lesson of reviews) {
   assert(!lesson.visual && !lesson.knowledgePoints, `L${lesson.id} review page reuses teaching visuals or point cards`);
   assert(Array.isArray(lesson.reviewMaterials) && lesson.reviewMaterials.length === (lesson.id === "045" ? 8 : 4), `L${lesson.id} has incomplete review lanes`);
+  assert(lesson.reviewMaterials.every((lane) => lane.retrievalPrompt && lane.correctionPrompt && lane.transferPrompt), `L${lesson.id} has an incomplete retrieval/correction/transfer review loop`);
   const html = fs.readFileSync(path.join(root, "web", `lesson-${lesson.id}`, "index.html"), "utf8");
   assert(/data-material-status="review-complete"/.test(html), `L${lesson.id} does not expose review-complete state`);
   assert((html.match(/class="v2-review-lane"/g) ?? []).length === lesson.reviewMaterials.length, `L${lesson.id} rendered review-lane count mismatch`);

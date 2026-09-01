@@ -28,7 +28,62 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ### 1. Pseudocode from a flowchart or structured-English description: Translating descriptions into Cambridge pseudocode (S11.01)
 
-**Concept relationships**
+**Atomic learning targets**
+
+- **S11.01.A01:** pseudocode
+- **S11.01.A02:** flowchart
+- **S11.01.A03:** structured-English / structured English
+- **S11.01.A04:** description / descriptions / design
+
+**Core explanation**
+
+- Follow a flowchart from Start: translate input/output symbols, decisions, branches and loop-back arrows without losing a path. From structured English, preserve the controlled verbs, conditions and indentation when selecting Cambridge pseudocode constructs.
+- To translate a flowchart, follow arrows from Start, convert input/output symbols directly, convert diamonds into IF/CASE or loop conditions, and preserve every branch and reconnection. To translate structured English, identify its controlled verbs and indentation before selecting Cambridge constructs.
+- For translating descriptions into cambridge pseudocode, identify the required concept before describing its mechanism or consequence.
+- From structured English, preserve the controlled verbs, conditions and indentation when selecting Cambridge pseudocode constructs.
+
+**Mechanism or method**
+
+1. **Set up the required data and conditions** — Follow a flowchart from Start: translate input/output symbols, decisions, branches and loop-back arrows without losing a path.
+2. **Carry out the complete method** — From structured English, preserve the controlled verbs, conditions and indentation when selecting Cambridge pseudocode constructs.
+3. **Trace or test the result** — To translate a flowchart, follow arrows from Start, convert input/output symbols directly, convert diamonds into IF/CASE or loop conditions, and preserve every branch and reconnection.
+
+#### Worked example: Pseudocode from a flowchart or structured-English description: Translating descriptions into Cambridge pseudocode: complete worked route
+
+1. **Set up the required data and conditions**
+
+Follow a flowchart from Start: translate input/output symbols, decisions, branches and loop-back arrows without losing a path.
+
+2. **Carry out the complete method**
+
+From structured English, preserve the controlled verbs, conditions and indentation when selecting Cambridge pseudocode constructs.
+
+3. **Trace or test the result**
+
+To translate a flowchart, follow arrows from Start, convert input/output symbols directly, convert diamonds into IF/CASE or loop conditions, and preserve every branch and reconnection.
+
+4. **Complete example**
+
+Flowchart sum loop: A flowchart sets Total to 0 and repeats input/add until Value = -1.
+
+**Misconceptions to correct**
+
+- Students often think working Java automatically means good pseudocode. Correction: Paper 2 rewards clear Cambridge-style algorithm expression.
+
+#### Mastery check (MC-L069-S11.01)
+
+Complete a fresh example that demonstrates every target: pseudocode; flowchart; structured-English / structured English; description / descriptions / design. Show all intermediate steps and check the result.
+
+<details><summary>Answer criteria</summary>
+
+- Follow a flowchart from Start: translate input/output symbols, decisions, branches and loop-back arrows without losing a path. From structured English, preserve the controlled verbs, conditions and indentation when selecting Cambridge pseudocode constructs.
+- To translate a flowchart, follow arrows from Start, convert input/output symbols directly, convert diamonds into IF/CASE or loop conditions, and preserve every branch and reconnection. To translate structured English, identify its controlled verbs and indentation before selecting Cambridge constructs.
+- For translating descriptions into cambridge pseudocode, identify the required concept before describing its mechanism or consequence.
+- From structured English, preserve the controlled verbs, conditions and indentation when selecting Cambridge pseudocode constructs.
+
+</details>
+
+**Supplementary concept map**
 
 - **structured English:** Pseudocode from a flowchart or structured-English description.
 - **flowchart:** Implement and write pseudocode from a given design…
@@ -36,7 +91,7 @@ Ask the learner to give one accurate definition or method step before continuing
 - **design:** For translating descriptions into cambridge pseudocode, identify the…
 - **preserve logic:** To translate structured English, identify its controlled verbs…
 
-**Mechanism**
+**Supplementary three-step recap**
 
 1. **Translate the stated design** — Pseudocode from a flowchart or structured-English description.
 2. **Apply one complete operation** — Implement and write pseudocode from a given design presented as either a flowchart or structured English.
@@ -64,20 +119,12 @@ Implement and write pseudocode from a given design presented as either a flowcha
 
 </details>
 
-<details><summary>Open precise terminology and exam facts</summary>
+### Lesson technical reference
 
 - Implement and write pseudocode from a given design presented as either a flowchart or structured English.
 - To translate a flowchart, follow arrows from Start, convert input/output symbols directly, convert diamonds into IF/CASE or loop conditions, and preserve every branch and reconnection. To translate structured English, identify its controlled verbs and indentation before selecting Cambridge constructs.
 - The answer must be Cambridge pseudocode, not Java: use assignment arrow, THEN/ENDIF, FOR...NEXT, WHILE...ENDWHILE or REPEAT...UNTIL as appropriate. Trace both versions with the same data to confirm equivalence.
 - For translating descriptions into cambridge pseudocode, identify the required concept before describing its mechanism or consequence.
-
-</details>
-
-### Worked method
-
-1. Flowchart sum loop
-2. A flowchart sets Total to 0 and repeats input/add until Value = -1.
-3. Pseudocode uses Total <- 0; REPEAT; INPUT Value; IF Value < -1 THEN Total <- Total + Value; ENDIF; UNTIL Value = -1; OUTPUT Total.
 
 Beyond syllabus / 延伸知识（不要求背诵）: consistent style, modularity and automated tests reduce maintenance errors in larger programs.
 ## 3. Practice by question type
@@ -127,10 +174,9 @@ These are indexes only. Cambridge question and mark-scheme wording is not reprod
 
 ### Summary
 
-- Define translating descriptions into cambridge pseudocode with the exact technical vocabulary expected by the syllabus.
-- Use the lesson method on a fresh context and show the intermediate decision, representation or calculation.
-- Match the shape of the answer to the command word and the available marks.
-- Check the final answer against the scenario instead of repeating a memorised sentence.
+- S11.01: explain pseudocode, flowchart, structured-English / structured English, description / descriptions / design.
+- S11.01 method: Set up the required data and conditions → Carry out the complete method → Trace or test the result.
+- Correction to remember: Students often think working Java automatically means good pseudocode. Correction: Paper 2 rewards clear Cambridge-style algorithm expression.
 
 ### Common error to correct
 

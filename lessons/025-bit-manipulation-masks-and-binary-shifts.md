@@ -28,7 +28,74 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ### 1. AND, OR, XOR, LSL and LSR for bit manipulation, including testing/setting bits with masks (S4.15)
 
-**Concept relationships**
+**Atomic learning targets**
+
+- **S4.15.A01:** AND mask / bitwise AND
+- **S4.15.A02:** OR mask / bitwise OR
+- **S4.15.A03:** XOR mask / bitwise XOR
+- **S4.15.A04:** LSL / logical left shift
+- **S4.15.A05:** LSR / logical right shift
+- **S4.15.A06:** logical
+- **S4.15.A07:** arithmetic
+- **S4.15.A08:** cyclic
+- **S4.15.A09:** left shift
+- **S4.15.A10:** right shift
+- **S4.15.A11:** test
+- **S4.15.A12:** set
+- **S4.15.A13:** clear
+- **S4.15.A14:** toggle
+- **S4.15.A15:** monitor
+- **S4.15.A16:** control
+
+**Core explanation**
+
+- A bitwise AND mask can test or clear selected bits; an OR mask can set selected bits; an XOR mask can toggle selected bits. These operations are used to monitor and control individual flags without changing unrelated bits.
+- LSL is a logical left shift and LSR is a logical right shift. Distinguish logical shifts from arithmetic shifts and cyclic shifts: a logical shift inserts zero, an arithmetic right shift preserves the sign bit, and a cyclic shift wraps the bit that leaves one end back to the other.
+- Every shown input and stored result contains exactly eight bits. Logical shifts insert zero; logical left 10110011 becomes 01100110 and logical right becomes 01011001.
+- AND, OR, XOR, LSL and LSR for bit manipulation, including testing/setting bits with masks.
+
+**Mechanism or method**
+
+1. **Set up the required data and conditions** — A bitwise AND mask can test or clear selected bits;
+2. **Carry out the complete method** — an OR mask can set selected bits;
+3. **Trace or test the result** — an XOR mask can toggle selected bits.
+
+#### Worked example: AND, OR, XOR, LSL and LSR for bit manipulation, including testing/setting bits with masks: complete worked route
+
+1. **Set up the required data and conditions**
+
+A bitwise AND mask can test or clear selected bits;
+
+2. **Carry out the complete method**
+
+an OR mask can set selected bits;
+
+3. **Trace or test the result**
+
+an XOR mask can toggle selected bits.
+
+4. **Complete example**
+
+Test, set, clear and toggle one flag: For Status = 10110100, an AND mask tests a selected bit, an OR mask sets it, an AND mask with a zero at that position clears it, and an XOR mask toggles it. LSR moves them right and fills with zero.
+
+**Misconceptions to correct**
+
+- Students often memorise register names without roles. Correction: a register earns its name by what it temporarily holds.
+
+#### Mastery check (MC-L025-S4.15)
+
+Complete a fresh example that demonstrates every target: AND mask / bitwise AND; OR mask / bitwise OR; XOR mask / bitwise XOR; LSL / logical left shift; LSR / logical right shift; logical; arithmetic; cyclic; left shift; right shift; test; set; clear; toggle; monitor; control. Show all intermediate steps and check the result.
+
+<details><summary>Answer criteria</summary>
+
+- A bitwise AND mask can test or clear selected bits; an OR mask can set selected bits; an XOR mask can toggle selected bits. These operations are used to monitor and control individual flags without changing unrelated bits.
+- LSL is a logical left shift and LSR is a logical right shift. Distinguish logical shifts from arithmetic shifts and cyclic shifts: a logical shift inserts zero, an arithmetic right shift preserves the sign bit, and a cyclic shift wraps the bit that leaves one end back to the other.
+- Every shown input and stored result contains exactly eight bits. Logical shifts insert zero; logical left 10110011 becomes 01100110 and logical right becomes 01011001.
+- AND, OR, XOR, LSL and LSR for bit manipulation, including testing/setting bits with masks.
+
+</details>
+
+**Supplementary concept map**
 
 - **XOR mask:** AND, OR and XOR masks to test, set,…
 - **left shift:** LSL is a logical left shift and LSR…
@@ -37,7 +104,7 @@ Ask the learner to give one accurate definition or method step before continuing
 - **OR mask:** An XOR mask can toggle selected bits.
 - **test:** AND, OR, XOR, LSL and LSR for bit…
 
-**Mechanism**
+**Supplementary three-step recap**
 
 1. **Write values units and width** — AND, OR and XOR masks to test, set, clear and toggle bits, and apply logical, arithmetic and cyclic…
 2. **Apply the required method** — AND, OR, XOR, LSL and LSR for bit manipulation, including testing/setting bits with masks.
@@ -67,20 +134,12 @@ Use AND, OR and XOR masks to test, set, clear and toggle bits, and apply logical
 
 </details>
 
-<details><summary>Open precise terminology and exam facts</summary>
+### Lesson technical reference
 
 - Use AND, OR and XOR masks to test, set, clear and toggle bits, and apply logical, arithmetic and cyclic left/right shifts at a stated fixed width. Include device monitoring/control and distinguish discarded, sign-filled and rotated bits.
 - A bitwise AND mask can test or clear selected bits; an OR mask can set selected bits; an XOR mask can toggle selected bits. These operations are used to monitor and control individual flags without changing unrelated bits.
 - LSL is a logical left shift and LSR is a logical right shift. Distinguish logical shifts from arithmetic shifts and cyclic shifts: a logical shift inserts zero, an arithmetic right shift preserves the sign bit, and a cyclic shift wraps the bit that leaves one end back to the other.
 - For bit manipulation, masks and binary shifts, identify the required concept before describing its mechanism or consequence.
-
-</details>
-
-### Worked method
-
-1. Test, set, clear and toggle one flag
-2. For Status = 10110100, an AND mask tests a selected bit, an OR mask sets it, an AND mask with a zero at that position clears it, and an XOR…
-3. LSL moves bits left; LSR moves them right and fills with zero.
 
 Beyond syllabus / 延伸知识（不要求背诵）: modern processors add pipelining and several cache levels, but exam answers should begin with the syllabus processor model.
 ## 3. Practice by question type
@@ -130,10 +189,9 @@ These are indexes only. Cambridge question and mark-scheme wording is not reprod
 
 ### Summary
 
-- Define bit manipulation, masks and binary shifts with the exact technical vocabulary expected by the syllabus.
-- Use the lesson method on a fresh context and show the intermediate decision, representation or calculation.
-- Match the shape of the answer to the command word and the available marks.
-- Check the final answer against the scenario instead of repeating a memorised sentence.
+- S4.15: explain AND mask / bitwise AND, OR mask / bitwise OR, XOR mask / bitwise XOR, LSL / logical left shift, LSR / logical right shift, logical, arithmetic, cyclic, left shift, right shift, test, set, clear, toggle, monitor, control.
+- S4.15 method: Set up the required data and conditions → Carry out the complete method → Trace or test the result.
+- Correction to remember: Students often memorise register names without roles. Correction: a register earns its name by what it temporarily holds.
 
 ### Common error to correct
 

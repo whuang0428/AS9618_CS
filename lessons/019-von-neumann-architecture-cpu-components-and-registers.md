@@ -28,7 +28,65 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ### 1. Von Neumann architecture and the stored-program concept (S4.01)
 
-**Concept relationships**
+**Atomic learning targets**
+
+- **S4.01.A01:** Von
+- **S4.01.A02:** Neumann
+- **S4.01.A03:** architecture
+- **S4.01.A04:** stored-program
+- **S4.01.A05:** concept
+
+**Core explanation**
+
+- The basic Von Neumann architecture uses one immediate access store for the instructions and data currently required. This is the stored-program concept: program instructions are stored in memory as binary values alongside data, and the processor fetches instructions from memory rather than being physically rewired for each program.
+- A general-purpose register can temporarily hold data or intermediate results for a range of operations. A special-purpose register has a defined processor role. In the CPU-architecture requirement, the named roles are PC, MDR, MAR, ACC, IX, CIR and the status register. In Cambridge assembly-language questions, ACC is the only available general-purpose working register; this question convention does not remove the defined roles of the other named registers.
+- The basic Von Neumann architecture uses one immediate access store for the instructions and data currently required.
+- The basic Von Neumann model and the stored-program concept
+- Von Neumann architecture and the stored-program concept.
+
+**Mechanism or method**
+
+1. **Identify the relevant condition or input** — The basic Von Neumann architecture uses one immediate access store for the instructions and data currently required.
+2. **Trace how the process works** — This is the stored-program concept: program instructions are stored in memory as binary values alongside data, and the processor fetches instructions from memory rather than being physically rewired for each program.
+3. **Connect the mechanism to its result** — A general-purpose register can temporarily hold data or intermediate results for a range of operations.
+
+#### Worked example: Von Neumann architecture and the stored-program concept: complete worked route
+
+1. **Identify the relevant condition or input**
+
+The basic Von Neumann architecture uses one immediate access store for the instructions and data currently required.
+
+2. **Trace how the process works**
+
+This is the stored-program concept: program instructions are stored in memory as binary values alongside data, and the processor fetches instructions from memory rather than being physically rewired for each program.
+
+3. **Connect the mechanism to its result**
+
+A general-purpose register can temporarily hold data or intermediate results for a range of operations.
+
+4. **Complete example**
+
+Run one stored program / Follow registers through fetch and indexed execute: A program and its input data are copied from SSD into IAS.
+
+**Misconceptions to correct**
+
+- Students often memorise register names without roles. Correction: a register earns its name by what it temporarily holds.
+
+#### Mastery check (MC-L019-S4.01)
+
+Explain the following targets in one connected answer, using a concrete example for each: Von; Neumann; architecture; stored-program; concept.
+
+<details><summary>Answer criteria</summary>
+
+- The basic Von Neumann architecture uses one immediate access store for the instructions and data currently required. This is the stored-program concept: program instructions are stored in memory as binary values alongside data, and the processor fetches instructions from memory rather than being physically rewired for each program.
+- A general-purpose register can temporarily hold data or intermediate results for a range of operations. A special-purpose register has a defined processor role. In the CPU-architecture requirement, the named roles are PC, MDR, MAR, ACC, IX, CIR and the status register. In Cambridge assembly-language questions, ACC is the only available general-purpose working register; this question convention does not remove the defined roles of the other named registers.
+- The basic Von Neumann architecture uses one immediate access store for the instructions and data currently required.
+- The basic Von Neumann model and the stored-program concept
+- Von Neumann architecture and the stored-program concept.
+
+</details>
+
+**Supplementary concept map**
 
 - **stored-program:** Von Neumann architecture and the stored-program concept.
 - **Von:** The basic Von Neumann model and the stored-program…
@@ -36,7 +94,7 @@ Ask the learner to give one accurate definition or method step before continuing
 - **architecture:** In the CPU-architecture requirement, the named roles are…
 - **concept:** This is the stored-program concept
 
-**Mechanism**
+**Supplementary three-step recap**
 
 1. **Name the exact concept** — Von Neumann architecture and the stored-program concept.
 2. **Explain how its parts connect** — The basic Von Neumann model and the stored-program concept
@@ -66,7 +124,73 @@ Show understanding of the basic Von Neumann model and the stored-program concept
 
 ### 2. General- and special-purpose registers: PC, MDR, MAR, ACC, IX, CIR and status register (S4.02)
 
-**Concept relationships**
+**Atomic learning targets**
+
+- **S4.02.A01:** general-purpose
+- **S4.02.A02:** special-purpose
+- **S4.02.A03:** registers
+- **S4.02.A04:** PC
+- **S4.02.A05:** MDR
+- **S4.02.A06:** MAR
+- **S4.02.A07:** ACC
+- **S4.02.A08:** IX
+- **S4.02.A09:** CIR
+- **S4.02.A10:** status
+- **S4.02.A11:** register
+
+**Core explanation**
+
+- A general-purpose register can temporarily hold data or intermediate results for a range of operations. A special-purpose register has a defined processor role. In the CPU-architecture requirement, the named roles are PC, MDR, MAR, ACC, IX, CIR and the status register. In Cambridge assembly-language questions, ACC is the only available general-purpose working register; this question convention does not remove the defined roles of the other named registers.
+- The basic Von Neumann architecture uses one immediate access store for the instructions and data currently required. This is the stored-program concept: program instructions are stored in memory as binary values alongside data, and the processor fetches instructions from memory rather than being physically rewired for each program.
+- PC holds the address of the next instruction; MAR holds the address currently being accessed; MDR holds data or an instruction being transferred to or from memory; CIR holds the current instruction while it is decoded or executed.
+- The control unit (CU) fetches and decodes instructions and sends control signals. The arithmetic and logic unit (ALU) performs arithmetic and logical operations. Registers provide small, fast temporary storage, buses carry addresses, data and control signals, and the system clock supplies regular timing pulses that synchronise state changes.
+- ACC holds an intermediate or final ALU result. IX holds an offset used to form an indexed effective address. The status register holds flags about an operation or processor state, such as zero, carry or overflow; it does not hold the arithmetic result itself.
+- The immediate access store (IAS) is processor-accessible main memory, not a register, cache or secondary-storage device. A program held on secondary storage must be loaded into IAS before its instructions can be fetched and executed normally.
+
+**Mechanism or method**
+
+1. **Identify the relevant condition or input** — A general-purpose register can temporarily hold data or intermediate results for a range of operations.
+2. **Trace how the process works** — A special-purpose register has a defined processor role.
+3. **Connect the mechanism to its result** — In the CPU-architecture requirement, the named roles are PC, MDR, MAR, ACC, IX, CIR and the status register.
+
+#### Worked example: General- and special-purpose registers: PC, MDR, MAR, ACC, IX, CIR and status register: complete worked route
+
+1. **Identify the relevant condition or input**
+
+A general-purpose register can temporarily hold data or intermediate results for a range of operations.
+
+2. **Trace how the process works**
+
+A special-purpose register has a defined processor role.
+
+3. **Connect the mechanism to its result**
+
+In the CPU-architecture requirement, the named roles are PC, MDR, MAR, ACC, IX, CIR and the status register.
+
+4. **Complete example**
+
+Run one stored program / Follow registers through fetch and indexed execute: A program and its input data are copied from SSD into IAS. The PC supplies the address of the next instruction; the instruction is fetched through MDR into CIR, the CU decodes it, and the ALU or another component carries out the operation. PC = 300 is copied to MAR; the instruction read from memory enters MDR and then CIR. If that instruction is LDX 500 while IX = 3, the effective address is 503 and the value at that address is loaded into ACC. A resulting condition can update a flag in the status register.
+
+**Misconceptions to correct**
+
+- Students often memorise register names without roles. Correction: a register earns its name by what it temporarily holds.
+
+#### Mastery check (MC-L019-S4.02)
+
+Explain the following targets in one connected answer, using a concrete example for each: general-purpose; special-purpose; registers; PC; MDR; MAR; ACC; IX; CIR; status; register.
+
+<details><summary>Answer criteria</summary>
+
+- A general-purpose register can temporarily hold data or intermediate results for a range of operations. A special-purpose register has a defined processor role. In the CPU-architecture requirement, the named roles are PC, MDR, MAR, ACC, IX, CIR and the status register. In Cambridge assembly-language questions, ACC is the only available general-purpose working register; this question convention does not remove the defined roles of the other named registers.
+- The basic Von Neumann architecture uses one immediate access store for the instructions and data currently required. This is the stored-program concept: program instructions are stored in memory as binary values alongside data, and the processor fetches instructions from memory rather than being physically rewired for each program.
+- PC holds the address of the next instruction; MAR holds the address currently being accessed; MDR holds data or an instruction being transferred to or from memory; CIR holds the current instruction while it is decoded or executed.
+- The control unit (CU) fetches and decodes instructions and sends control signals. The arithmetic and logic unit (ALU) performs arithmetic and logical operations. Registers provide small, fast temporary storage, buses carry addresses, data and control signals, and the system clock supplies regular timing pulses that synchronise state changes.
+- ACC holds an intermediate or final ALU result. IX holds an offset used to form an indexed effective address. The status register holds flags about an operation or processor state, such as zero, carry or overflow; it does not hold the arithmetic result itself.
+- The immediate access store (IAS) is processor-accessible main memory, not a register, cache or secondary-storage device. A program held on secondary storage must be loaded into IAS before its instructions can be fetched and executed normally.
+
+</details>
+
+**Supplementary concept map**
 
 - **general-purpose:** General-purpose and special-purpose registers and explain PC, MDR,…
 - **special-purpose:** General- and special-purpose registers
@@ -75,7 +199,7 @@ Show understanding of the basic Von Neumann model and the stored-program concept
 - **MDR:** PC, MDR, MAR, ACC, IX, CIR and status…
 - **MAR:** MAR holds the address currently being accessed
 
-**Mechanism**
+**Supplementary three-step recap**
 
 1. **Name both alternatives precisely** — General-purpose and special-purpose registers and explain PC, MDR, MAR, ACC, IX, CIR and status-register roles.
 2. **Connect structure to consequence** — In the CPU-architecture requirement, the named roles are PC, MDR, MAR, ACC, IX, CIR and the status register.
@@ -112,7 +236,69 @@ Distinguish general-purpose and special-purpose registers and explain PC, MDR, M
 
 ### 3. ALU, CU, clock and immediate access store (IAS) (S4.03)
 
-**Concept relationships**
+**Atomic learning targets**
+
+- **S4.03.A01:** ALU
+- **S4.03.A02:** CU
+- **S4.03.A03:** clock
+- **S4.03.A04:** immediate
+- **S4.03.A05:** access
+- **S4.03.A06:** store
+- **S4.03.A07:** IAS
+
+**Core explanation**
+
+- The basic Von Neumann architecture uses one immediate access store for the instructions and data currently required. This is the stored-program concept: program instructions are stored in memory as binary values alongside data, and the processor fetches instructions from memory rather than being physically rewired for each program.
+- The control unit (CU) fetches and decodes instructions and sends control signals. The arithmetic and logic unit (ALU) performs arithmetic and logical operations. Registers provide small, fast temporary storage, buses carry addresses, data and control signals, and the system clock supplies regular timing pulses that synchronise state changes.
+- The immediate access store (IAS) is processor-accessible main memory, not a register, cache or secondary-storage device. A program held on secondary storage must be loaded into IAS before its instructions can be fetched and executed normally.
+- PC holds the address of the next instruction; MAR holds the address currently being accessed; MDR holds data or an instruction being transferred to or from memory; CIR holds the current instruction while it is decoded or executed.
+- ACC holds an intermediate or final ALU result. IX holds an offset used to form an indexed effective address. The status register holds flags about an operation or processor state, such as zero, carry or overflow; it does not hold the arithmetic result itself.
+- Show understanding of the basic Von Neumann model and the stored-program concept: instructions are stored in binary in the same directly accessible memory as data and are fetched for execution.
+
+**Mechanism or method**
+
+1. **Identify the relevant condition or input** — The basic Von Neumann architecture uses one immediate access store for the instructions and data currently required.
+2. **Trace how the process works** — This is the stored-program concept: program instructions are stored in memory as binary values alongside data, and the processor fetches instructions from memory rather than being physically rewired for each program.
+3. **Connect the mechanism to its result** — The control unit (CU) fetches and decodes instructions and sends control signals.
+
+#### Worked example: ALU, CU, clock and immediate access store (IAS): complete worked route
+
+1. **Identify the relevant condition or input**
+
+The basic Von Neumann architecture uses one immediate access store for the instructions and data currently required.
+
+2. **Trace how the process works**
+
+This is the stored-program concept: program instructions are stored in memory as binary values alongside data, and the processor fetches instructions from memory rather than being physically rewired for each program.
+
+3. **Connect the mechanism to its result**
+
+The control unit (CU) fetches and decodes instructions and sends control signals.
+
+4. **Complete example**
+
+Run one stored program / Follow registers through fetch and indexed execute: A program and its input data are copied from SSD into IAS. the instruction is fetched through MDR into CIR, the CU decodes it, and the ALU or another component carries out the operation. If that instruction is LDX 500 while IX = 3, the effective address is 503 and the value at that address is loaded into ACC.
+
+**Misconceptions to correct**
+
+- Students often memorise register names without roles. Correction: a register earns its name by what it temporarily holds.
+
+#### Mastery check (MC-L019-S4.03)
+
+Explain the following targets in one connected answer, using a concrete example for each: ALU; CU; clock; immediate; access; store; IAS.
+
+<details><summary>Answer criteria</summary>
+
+- The basic Von Neumann architecture uses one immediate access store for the instructions and data currently required. This is the stored-program concept: program instructions are stored in memory as binary values alongside data, and the processor fetches instructions from memory rather than being physically rewired for each program.
+- The control unit (CU) fetches and decodes instructions and sends control signals. The arithmetic and logic unit (ALU) performs arithmetic and logical operations. Registers provide small, fast temporary storage, buses carry addresses, data and control signals, and the system clock supplies regular timing pulses that synchronise state changes.
+- The immediate access store (IAS) is processor-accessible main memory, not a register, cache or secondary-storage device. A program held on secondary storage must be loaded into IAS before its instructions can be fetched and executed normally.
+- PC holds the address of the next instruction; MAR holds the address currently being accessed; MDR holds data or an instruction being transferred to or from memory; CIR holds the current instruction while it is decoded or executed.
+- ACC holds an intermediate or final ALU result. IX holds an offset used to form an indexed effective address. The status register holds flags about an operation or processor state, such as zero, carry or overflow; it does not hold the arithmetic result itself.
+- Show understanding of the basic Von Neumann model and the stored-program concept: instructions are stored in binary in the same directly accessible memory as data and are fetched for execution.
+
+</details>
+
+**Supplementary concept map**
 
 - **ALU:** The purpose and roles of the ALU, CU,…
 - **clock:** ALU, CU, clock and immediate access store (IAS).
@@ -121,7 +307,7 @@ Distinguish general-purpose and special-purpose registers and explain PC, MDR, M
 - **store:** Program instructions are stored in memory as binary…
 - **IAS:** IAS is directly accessible memory for current instructions…
 
-**Mechanism**
+**Supplementary three-step recap**
 
 1. **Identify incoming data or signal** — The purpose and roles of the ALU, CU, system clock and Immediate Access Store (IAS).
 2. **Follow the physical or logical path** — ALU, CU, clock and immediate access store (IAS).
@@ -149,7 +335,7 @@ Show understanding of the purpose and roles of the ALU, CU, system clock and Imm
 
 </details>
 
-<details><summary>Open precise terminology and exam facts</summary>
+### Lesson technical reference
 
 - Show understanding of the basic Von Neumann model and the stored-program concept: instructions are stored in binary in the same directly accessible memory as data and are fetched for execution.
 - Distinguish general-purpose and special-purpose registers and explain PC, MDR, MAR, ACC, IX, CIR and status-register roles. Cambridge assembly questions assume ACC is the available general-purpose working register.
@@ -160,16 +346,6 @@ Show understanding of the purpose and roles of the ALU, CU, system clock and Imm
 - A general-purpose register can temporarily hold data or intermediate results for a range of operations. A special-purpose register has a defined processor role. In the CPU-architecture requirement, the named roles are PC, MDR, MAR, ACC, IX, CIR and the status register. In Cambridge assembly-language questions, ACC is the only available general-purpose working register; this question convention does not remove the defined roles of the other named registers.
 - PC holds the address of the next instruction; MAR holds the address currently being accessed; MDR holds data or an instruction being transferred to or from memory; CIR holds the current instruction while it is decoded or executed.
 - ACC holds an intermediate or final ALU result. IX holds an offset used to form an indexed effective address. The status register holds flags about an operation or processor state, such as zero, carry or overflow; it does not hold the arithmetic result itself.
-
-</details>
-
-### Worked method
-
-1. Run one stored program
-2. Follow registers through fetch and indexed execute
-3. A program and its input data are copied from SSD into IAS.
-4. The PC supplies the address of the next instruction; the instruction is fetched through MDR into CIR, the CU decodes it, and the ALU or another component carries out the…
-5. The same memory can hold an instruction at one address and data at another because their use is determined by the fetch and instruction semantics.
 
 Beyond syllabus / 延伸知识（不要求背诵）: modern processors add pipelining and several cache levels, but exam answers should begin with the syllabus processor model.
 ## 3. Practice by question type
@@ -219,10 +395,11 @@ These are indexes only. Cambridge question and mark-scheme wording is not reprod
 
 ### Summary
 
-- Define von neumann architecture, cpu components and registers with the exact technical vocabulary expected by the syllabus.
-- Use the lesson method on a fresh context and show the intermediate decision, representation or calculation.
-- Match the shape of the answer to the command word and the available marks.
-- Check the final answer against the scenario instead of repeating a memorised sentence.
+- S4.01: explain Von, Neumann, architecture, stored-program, concept.
+- S4.01 method: Identify the relevant condition or input → Trace how the process works → Connect the mechanism to its result.
+- S4.02: explain general-purpose, special-purpose, registers, PC, MDR, MAR, ACC, IX, CIR, status, register.
+- S4.02 method: Identify the relevant condition or input → Trace how the process works → Connect the mechanism to its result.
+- S4.03: explain ALU, CU, clock, immediate, access, store, IAS.
 
 ### Common error to correct
 

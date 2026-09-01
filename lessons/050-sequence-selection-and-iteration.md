@@ -28,7 +28,59 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ### 1. And use sequence, selection and iteration (S9.06)
 
-**Concept relationships**
+**Atomic learning targets**
+
+- **S9.06.A01:** sequence
+- **S9.06.A02:** selection
+- **S9.06.A03:** iteration
+
+**Core explanation**
+
+- Algorithm design review: define an algorithm as a solution expressed as a sequence of defined steps; use abstraction to retain essential details in an abstract model; use decomposition to express the problem as connected modules; and choose meaningful identifiers recorded in an identifier table.
+- Solution review: design with input-process-output, use sequence, selection and iteration, document the same algorithm in structured English, a flowchart or pseudocode, and convert between the specified representations without changing its control flow.
+- A complete algorithm often combines the three constructs: use sequence to initialise and input, iteration to process repeated items, and selection inside the loop when each item needs a decision.
+
+**Mechanism or method**
+
+1. **Identify the relevant condition or input** — Algorithm design review: define an algorithm as a solution expressed as a sequence of defined steps;
+2. **Trace how the process works** — use abstraction to retain essential details in an abstract model;
+3. **Connect the mechanism to its result** — use decomposition to express the problem as connected modules;
+
+#### Worked example: And use sequence, selection and iteration: complete worked route
+
+1. **Identify the relevant condition or input**
+
+Algorithm design review: define an algorithm as a solution expressed as a sequence of defined steps;
+
+2. **Trace how the process works**
+
+use abstraction to retain essential details in an abstract model;
+
+3. **Connect the mechanism to its result**
+
+use decomposition to express the problem as connected modules;
+
+4. **Complete example**
+
+Count five passing marks: Sequence sets PassCount to 0. Inside the loop, selection tests Mark = 50 and increments PassCount only on the true path.
+
+**Misconceptions to correct**
+
+- Students often start coding before defining the output. Correction: an algorithm is easier to design when the required result is known first.
+
+#### Mastery check (MC-L050-S9.06)
+
+Explain the following targets in one connected answer, using a concrete example for each: sequence; selection; iteration.
+
+<details><summary>Answer criteria</summary>
+
+- Algorithm design review: define an algorithm as a solution expressed as a sequence of defined steps; use abstraction to retain essential details in an abstract model; use decomposition to express the problem as connected modules; and choose meaningful identifiers recorded in an identifier table.
+- Solution review: design with input-process-output, use sequence, selection and iteration, document the same algorithm in structured English, a flowchart or pseudocode, and convert between the specified representations without changing its control flow.
+- A complete algorithm often combines the three constructs: use sequence to initialise and input, iteration to process repeated items, and selection inside the loop when each item needs a decision.
+
+</details>
+
+**Supplementary concept map**
 
 - **Sequence:** Steps in order
 - **Selection:** Choose a branch
@@ -36,7 +88,7 @@ Ask the learner to give one accurate definition or method step before continuing
 - **Combination:** Constructs can be nested
 - **Control flow:** Determines the next executed step
 
-**Mechanism**
+**Supplementary three-step recap**
 
 1. **Translate the stated design** — And use sequence, selection and iteration.
 2. **Apply one complete operation** — The three basic algorithm constructs are sequence, selection and iteration (repetition)
@@ -67,7 +119,7 @@ The three basic algorithm constructs are sequence, selection and iteration (repe
 
 </details>
 
-<details><summary>Open precise terminology and exam facts</summary>
+### Lesson technical reference
 
 - The three basic algorithm constructs are sequence, selection and iteration (repetition); students must recognise and use each construct, including combinations of constructs.
 - Sequence executes defined steps once in order. Selection chooses one of two or more paths using a condition. Iteration repeats one or more steps using a count or a condition.
@@ -76,16 +128,6 @@ The three basic algorithm constructs are sequence, selection and iteration (repe
 - Algorithm design review: define an algorithm as a solution expressed as a sequence of defined steps; use abstraction to retain essential details in an abstract model; use decomposition to express the problem as connected modules; and choose meaningful identifiers recorded in an identifier table.
 - Solution review: design with input-process-output, use sequence, selection and iteration, document the same algorithm in structured English, a flowchart or pseudocode, and convert between the specified representations without changing its control flow.
 - Development review: use stepwise refinement until steps are programmable, and construct and interpret logic statements that define decisions, loop conditions or Boolean values. Core answers must not replace these requirements with tracing, Java syntax or vague planning advice.
-
-</details>
-
-### Worked method
-
-1. Count five passing marks
-2. Sequence sets PassCount to 0.
-3. A FOR loop iterates through five marks.
-4. Inside the loop, selection tests Mark = 50 and increments PassCount only on the true path.
-5. Sequence after the loop outputs PassCount.
 
 Beyond syllabus / 延伸知识（不要求背诵）: the same algorithm can be expressed in many programming languages; its logic should remain independent of syntax.
 ## 3. Practice by question type
@@ -124,10 +166,9 @@ Which construct chooses between Pass and Resit?
 
 ### Summary
 
-- Define sequence, selection and iteration with the exact technical vocabulary expected by the syllabus.
-- Use the lesson method on a fresh context and show the intermediate decision, representation or calculation.
-- Match the shape of the answer to the command word and the available marks.
-- Check the final answer against the scenario instead of repeating a memorised sentence.
+- S9.06: explain sequence, selection, iteration.
+- S9.06 method: Identify the relevant condition or input → Trace how the process works → Connect the mechanism to its result.
+- Correction to remember: Students often start coding before defining the output. Correction: an algorithm is easier to design when the required result is known first.
 
 ### Common error to correct
 

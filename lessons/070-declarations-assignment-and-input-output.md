@@ -30,7 +30,66 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ### 1. Declarations, constants, variables, assignment, arithmetic/logical operations and input/output: Declarations, assignment and input/output (S11.02)
 
-**Concept relationships**
+**Atomic learning targets**
+
+- **S11.02.A01:** declaration / declarations
+- **S11.02.A02:** constants
+- **S11.02.A03:** variables
+- **S11.02.A04:** assignment
+- **S11.02.A05:** arithmetic
+- **S11.02.A06:** logical
+- **S11.02.A07:** input
+- **S11.02.A08:** output
+
+**Core explanation**
+
+- For declarations, assignment and input/output, identify the required concept before describing its mechanism or consequence.
+- Declarations, constants, variables, assignment, arithmetic/logical operations and input/output.
+- CONSTANT defines and initialises a fixed named value. DECLARE gives a variable a name and data type. Assignment evaluates the expression on the right of <- and stores the result in the variable on the left. INPUT obtains a value from the keyboard; OUTPUT sends a value to the console.
+- Arithmetic expressions use operators such as +, -, , /, DIV and MOD. Logical expressions combine comparisons with AND, OR or NOT and produce BOOLEAN results. Use = for comparison and <- for assignment.
+
+**Mechanism or method**
+
+1. **Set up the required data and conditions** — For declarations, assignment and input/output, identify the required concept before describing its mechanism or consequence.
+2. **Carry out the complete method** — Declarations, constants, variables, assignment, arithmetic/logical operations and input/output.
+3. **Trace or test the result** — CONSTANT defines and initialises a fixed named value.
+
+#### Worked example: Declarations, constants, variables, assignment, arithmetic/logical operations and input/output: Declarations, assignment and input/output: complete worked route
+
+1. **Set up the required data and conditions**
+
+For declarations, assignment and input/output, identify the required concept before describing its mechanism or consequence.
+
+2. **Carry out the complete method**
+
+Declarations, constants, variables, assignment, arithmetic/logical operations and input/output.
+
+3. **Trace or test the result**
+
+CONSTANT defines and initialises a fixed named value.
+
+4. **Complete example**
+
+Declare, input, calculate and output: CONSTANT PassMark = 50 defines and initialises a constant. DECLARE Mark : INTEGER and DECLARE Passed : BOOLEAN declare variables. Passed <- Mark = PassMark assigns the result of a logical expression; OUTPUT Mark 2 and OUTPUT Passed send arithmetic and Boolean results to the console.
+
+**Misconceptions to correct**
+
+- Students often think working Java automatically means good pseudocode. Correction: Paper 2 rewards clear Cambridge-style algorithm expression.
+
+#### Mastery check (MC-L070-S11.02)
+
+Complete a fresh example that demonstrates every target: declaration / declarations; constants; variables; assignment; arithmetic; logical; input; output. Show all intermediate steps and check the result.
+
+<details><summary>Answer criteria</summary>
+
+- For declarations, assignment and input/output, identify the required concept before describing its mechanism or consequence.
+- Declarations, constants, variables, assignment, arithmetic/logical operations and input/output.
+- CONSTANT defines and initialises a fixed named value. DECLARE gives a variable a name and data type. Assignment evaluates the expression on the right of <- and stores the result in the variable on the left. INPUT obtains a value from the keyboard; OUTPUT sends a value to the console.
+- Arithmetic expressions use operators such as +, -, , /, DIV and MOD. Logical expressions combine comparisons with AND, OR or NOT and produce BOOLEAN results. Use = for comparison and <- for assignment.
+
+</details>
+
+**Supplementary concept map**
 
 - **declaration:** Declarations, constants, variables, assignment, arithmetic/logical operations and input/output.
 - **constant:** Pseudocode for declaration and initialisation of constants
@@ -39,7 +98,7 @@ Ask the learner to give one accurate definition or method step before continuing
 - **variables:** Assignment evaluates the expression on the right of…
 - **assignment:** Assignment of values
 
-**Mechanism**
+**Supplementary three-step recap**
 
 1. **Translate the stated design** — Declarations, constants, variables, assignment, arithmetic/logical operations and input/output.
 2. **Apply one complete operation** — For declarations, assignment and input/output, identify the required concept before describing its mechanism or consequence.
@@ -76,22 +135,12 @@ Write pseudocode for declaration and initialisation of constants; declaration of
 
 </details>
 
-<details><summary>Open precise terminology and exam facts</summary>
+### Lesson technical reference
 
 - Write pseudocode for declaration and initialisation of constants; declaration of variables; assignment of values; expressions using arithmetic or logical operators; input from the keyboard; and output to the console.
 - CONSTANT defines and initialises a fixed named value. DECLARE gives a variable a name and data type. Assignment evaluates the expression on the right of <- and stores the result in the variable on the left. INPUT obtains a value from the keyboard; OUTPUT sends a value to the console.
 - Arithmetic expressions use operators such as +, -, , /, DIV and MOD. Logical expressions combine comparisons with AND, OR or NOT and produce BOOLEAN results. Use = for comparison and <- for assignment.
 - For declarations, assignment and input/output, identify the required concept before describing its mechanism or consequence.
-
-</details>
-
-### Worked method
-
-1. Declare, input, calculate and output
-2. CONSTANT PassMark = 50 defines and initialises a constant.
-3. INTEGER and DECLARE Passed
-4. BOOLEAN declare variables.
-5. INPUT Mark obtains keyboard input; Passed <- Mark = PassMark assigns the result of a logical expression; OUTPUT Mark 2 and OUTPUT Passed send arithmetic and Boolean results to the…
 
 Beyond syllabus / 延伸知识（不要求背诵）: consistent style, modularity and automated tests reduce maintenance errors in larger programs.
 ## 3. Practice by question type
@@ -141,10 +190,9 @@ These are indexes only. Cambridge question and mark-scheme wording is not reprod
 
 ### Summary
 
-- Define declarations, assignment and input/output with the exact technical vocabulary expected by the syllabus.
-- Use the lesson method on a fresh context and show the intermediate decision, representation or calculation.
-- Match the shape of the answer to the command word and the available marks.
-- Check the final answer against the scenario instead of repeating a memorised sentence.
+- S11.02: explain declaration / declarations, constants, variables, assignment, arithmetic, logical, input, output.
+- S11.02 method: Set up the required data and conditions → Carry out the complete method → Trace or test the result.
+- Correction to remember: Students often think working Java automatically means good pseudocode. Correction: Paper 2 rewards clear Cambridge-style algorithm expression.
 
 ### Common error to correct
 

@@ -30,7 +30,62 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ### 1. Input-process-output to design pseudocode solutions: Input-process-output solution design (S9.05)
 
-**Concept relationships**
+**Atomic learning targets**
+
+- **S9.05.A01:** input-process-output
+- **S9.05.A02:** design
+- **S9.05.A03:** pseudocode
+- **S9.05.A04:** solution
+
+**Core explanation**
+
+- Solution review: design with input-process-output, use sequence, selection and iteration, document the same algorithm in structured English, a flowchart or pseudocode, and convert between the specified representations without changing its control flow.
+- Algorithm design review: define an algorithm as a solution expressed as a sequence of defined steps; use abstraction to retain essential details in an abstract model; use decomposition to express the problem as connected modules; and choose meaningful identifiers recorded in an identifier table.
+- An algorithm is a solution to a problem expressed as a sequence of defined steps. Each step must be unambiguous, ordered where order matters and capable of being carried out; a vague instruction such as 'process the data' is not a defined step.
+- Refinement supports review, implementation and testing because each module has a limited responsibility. It is not merely adding prose: every level must reduce ambiguity and collectively remain a complete solution.
+
+**Mechanism or method**
+
+1. **Set up the required data and conditions** — Solution review: design with input-process-output, use sequence, selection and iteration, document the same algorithm in structured English, a flowchart or pseudocode, and convert between the specified representations without changing its control flow.
+2. **Carry out the complete method** — Algorithm design review: define an algorithm as a solution expressed as a sequence of defined steps;
+3. **Trace or test the result** — use abstraction to retain essential details in an abstract model;
+
+#### Worked example: Input-process-output to design pseudocode solutions: Input-process-output solution design: complete worked route
+
+1. **Set up the required data and conditions**
+
+Solution review: design with input-process-output, use sequence, selection and iteration, document the same algorithm in structured English, a flowchart or pseudocode, and convert between the specified representations without changing its control flow.
+
+2. **Carry out the complete method**
+
+Algorithm design review: define an algorithm as a solution expressed as a sequence of defined steps;
+
+3. **Trace or test the result**
+
+use abstraction to retain essential details in an abstract model;
+
+4. **Complete example**
+
+Design a result-processing solution: Keep only student ID and required marks, decompose the task into InputResults, ValidateResult, CalculateMean and OutputReport, record meaningful identifiers and IPO, refine CalculateMean into defined steps, use a range logic statement, and represent the final control flow in Cambridge pseudocode or a matching flowchart.
+
+**Misconceptions to correct**
+
+- Students often create one sub-problem per tiny action. Correction: each sub-problem needs a meaningful responsibility.
+
+#### Mastery check (MC-L049-S9.05)
+
+Complete a fresh example that demonstrates every target: input-process-output; design; pseudocode; solution. Show all intermediate steps and check the result.
+
+<details><summary>Answer criteria</summary>
+
+- Solution review: design with input-process-output, use sequence, selection and iteration, document the same algorithm in structured English, a flowchart or pseudocode, and convert between the specified representations without changing its control flow.
+- Algorithm design review: define an algorithm as a solution expressed as a sequence of defined steps; use abstraction to retain essential details in an abstract model; use decomposition to express the problem as connected modules; and choose meaningful identifiers recorded in an identifier table.
+- An algorithm is a solution to a problem expressed as a sequence of defined steps. Each step must be unambiguous, ordered where order matters and capable of being carried out; a vague instruction such as 'process the data' is not a defined step.
+- Refinement supports review, implementation and testing because each module has a limited responsibility. It is not merely adding prose: every level must reduce ambiguity and collectively remain a complete solution.
+
+</details>
+
+**Supplementary concept map**
 
 - **input-process-output:** Input-process-output to design pseudocode solutions.
 - **solution:** Input, process and output as the design structure…
@@ -38,7 +93,7 @@ Ask the learner to give one accurate definition or method step before continuing
 - **pseudocode:** Design with input-process-output, use sequence, selection and iteration,…
 - **input:** Before writing pseudocode, identify the input data, the…
 
-**Mechanism**
+**Supplementary three-step recap**
 
 1. **Translate the stated design** — Input, process and output as the design structure for a complete pseudocode solution
 2. **Apply one complete operation** — Input-process-output to design pseudocode solutions.
@@ -75,7 +130,7 @@ Use input, process and output as the design structure for a complete pseudocode 
 
 </details>
 
-<details><summary>Open precise terminology and exam facts</summary>
+### Lesson technical reference
 
 - Use input, process and output as the design structure for a complete pseudocode solution; the three parts must connect, use meaningful identifiers and satisfy the stated problem.
 - An algorithm is a solution to a problem expressed as a sequence of defined steps. Each step must be unambiguous, ordered where order matters and capable of being carried out; a vague instruction such as 'process the data' is not a defined step.
@@ -87,13 +142,6 @@ Use input, process and output as the design structure for a complete pseudocode 
 - Algorithm design review: define an algorithm as a solution expressed as a sequence of defined steps; use abstraction to retain essential details in an abstract model; use decomposition to express the problem as connected modules; and choose meaningful identifiers recorded in an identifier table.
 - Solution review: design with input-process-output, use sequence, selection and iteration, document the same algorithm in structured English, a flowchart or pseudocode, and convert between the specified representations without changing its control flow.
 - Development review: use stepwise refinement until steps are programmable, and construct and interpret logic statements that define decisions, loop conditions or Boolean values. Core answers must not replace these requirements with tracing, Java syntax or vague planning advice.
-
-</details>
-
-### Worked method
-
-1. Design a result-processing solution
-2. Keep only student ID and required marks, decompose the task into InputResults, ValidateResult, CalculateMean and OutputReport, record meaningful identifiers and IPO, refine CalculateMean into defined steps, use a range logic…
 
 Beyond syllabus / 延伸知识（不要求背诵）: the same algorithm can be expressed in many programming languages; its logic should remain independent of syntax.
 ## 3. Practice by question type
@@ -143,10 +191,9 @@ These are indexes only. Cambridge question and mark-scheme wording is not reprod
 
 ### Summary
 
-- Define input-process-output solution design with the exact technical vocabulary expected by the syllabus.
-- Use the lesson method on a fresh context and show the intermediate decision, representation or calculation.
-- Match the shape of the answer to the command word and the available marks.
-- Check the final answer against the scenario instead of repeating a memorised sentence.
+- S9.05: explain input-process-output, design, pseudocode, solution.
+- S9.05 method: Set up the required data and conditions → Carry out the complete method → Trace or test the result.
+- Correction to remember: Students often create one sub-problem per tiny action. Correction: each sub-problem needs a meaningful responsibility.
 
 ### Common error to correct
 

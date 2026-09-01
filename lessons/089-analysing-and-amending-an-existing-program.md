@@ -28,7 +28,62 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ### 1. Analyse and amend an existing program (S12.09)
 
-**Concept relationships**
+**Atomic learning targets**
+
+- **S12.09.A01:** analyse / analyze
+- **S12.09.A02:** amend
+- **S12.09.A03:** existing
+- **S12.09.A04:** program
+
+**Core explanation**
+
+- Analyse the supplied program before editing it: state its current purpose, inputs, outputs, data structures, control flow and assumptions. Trace representative data to identify where a new requirement belongs and record behaviour that must remain unchanged.
+- Amend the existing program with the smallest coherent change that enhances functionality. Update related declarations, initialisation, processing and output together; preserve established interfaces unless the requirement needs an interface change; and keep Cambridge pseudocode constructs complete.
+- Test the enhancement with data that exercises the new path and rerun regression tests for existing paths. Correcting a fault is corrective maintenance; adding or improving requested functionality is an enhancement and may be perfective maintenance.
+- Amend the existing program with the smallest coherent change that enhances functionality.
+
+**Mechanism or method**
+
+1. **Identify the relevant condition or input** — Analyse the supplied program before editing it: state its current purpose, inputs, outputs, data structures, control flow and assumptions.
+2. **Trace how the process works** — Trace representative data to identify where a new requirement belongs and record behaviour that must remain unchanged.
+3. **Connect the mechanism to its result** — Amend the existing program with the smallest coherent change that enhances functionality.
+
+#### Worked example: Analyse and amend an existing program: complete worked route
+
+1. **Identify the relevant condition or input**
+
+Analyse the supplied program before editing it: state its current purpose, inputs, outputs, data structures, control flow and assumptions.
+
+2. **Trace how the process works**
+
+Trace representative data to identify where a new requirement belongs and record behaviour that must remain unchanged.
+
+3. **Connect the mechanism to its result**
+
+Amend the existing program with the smallest coherent change that enhances functionality.
+
+4. **Complete example**
+
+Maintenance continues after delivery because faults are discovered, operating environments and rules change, and users request improvements. Corrective maintenance fixes faults in required behaviour; adaptive maintenance changes software for a new environment, platform, law or external rule; perfective maintenance improves functionality, usability, performance or maintainability.
+
+**Misconceptions to correct**
+
+- Students often describe the lifecycle as a fixed checklist. Correction: development is iterative; findings can send a project back to earlier stages.
+
+#### Mastery check (MC-L089-S12.09)
+
+Explain the following targets in one connected answer, using a concrete example for each: analyse / analyze; amend; existing; program.
+
+<details><summary>Answer criteria</summary>
+
+- Analyse the supplied program before editing it: state its current purpose, inputs, outputs, data structures, control flow and assumptions. Trace representative data to identify where a new requirement belongs and record behaviour that must remain unchanged.
+- Amend the existing program with the smallest coherent change that enhances functionality. Update related declarations, initialisation, processing and output together; preserve established interfaces unless the requirement needs an interface change; and keep Cambridge pseudocode constructs complete.
+- Test the enhancement with data that exercises the new path and rerun regression tests for existing paths. Correcting a fault is corrective maintenance; adding or improving requested functionality is an enhancement and may be perfective maintenance.
+- Amend the existing program with the smallest coherent change that enhances functionality.
+
+</details>
+
+**Supplementary concept map**
 
 - **Analyse:** Trace purpose inputs and outputs
 - **Locate:** Find the responsible code
@@ -37,7 +92,7 @@ Ask the learner to give one accurate definition or method step before continuing
 - **Regression:** Confirm unaffected behaviour remains correct
 - **existing:** Analyse and amend an existing program.
 
-**Mechanism**
+**Supplementary three-step recap**
 
 1. **Translate the stated design** — Analyse and amend an existing program.
 2. **Apply one complete operation** — Analyse an existing program and make amendments to enhance functionality.
@@ -65,23 +120,13 @@ Analyse an existing program and make amendments to enhance functionality.
 
 </details>
 
-<details><summary>Open precise terminology and exam facts</summary>
+### Lesson technical reference
 
 - Analyse an existing program and make amendments to enhance functionality.
 - Maintenance continues after delivery because faults are discovered, operating environments and rules change, and users request improvements. Corrective maintenance fixes faults in required behaviour; adaptive maintenance changes software for a new environment, platform, law or external rule; perfective maintenance improves functionality, usability, performance or maintainability.
 - Analyse the supplied program before editing it: state its current purpose, inputs, outputs, data structures, control flow and assumptions. Trace representative data to identify where a new requirement belongs and record behaviour that must remain unchanged.
 - Amend the existing program with the smallest coherent change that enhances functionality. Update related declarations, initialisation, processing and output together; preserve established interfaces unless the requirement needs an interface change; and keep Cambridge pseudocode constructs complete.
 - Test the enhancement with data that exercises the new path and rerun regression tests for existing paths. Correcting a fault is corrective maintenance; adding or improving requested functionality is an enhancement and may be perfective maintenance.
-
-</details>
-
-### Worked method
-
-1. Test login through review, construction, integration and release
-2. Test an inclusive mark range
-3. Three changes to one booking system
-4. Add a Merit count without breaking PassCount
-5. First dry-run the lockout counter and conduct a walkthrough in which peers inspect the algorithm.
 
 Beyond syllabus / 延伸知识（不要求背诵）: modern teams often use continuous integration to repeat building and testing whenever a program changes.
 ## 3. Practice by question type
@@ -120,10 +165,9 @@ Which type adds useful functionality or improves performance?
 
 ### Summary
 
-- Define analysing and amending an existing program with the exact technical vocabulary expected by the syllabus.
-- Use the lesson method on a fresh context and show the intermediate decision, representation or calculation.
-- Match the shape of the answer to the command word and the available marks.
-- Check the final answer against the scenario instead of repeating a memorised sentence.
+- S12.09: explain analyse / analyze, amend, existing, program.
+- S12.09 method: Identify the relevant condition or input → Trace how the process works → Connect the mechanism to its result.
+- Correction to remember: Students often describe the lifecycle as a fixed checklist. Correction: development is iterative; findings can send a project back to earlier stages.
 
 ### Common error to correct
 

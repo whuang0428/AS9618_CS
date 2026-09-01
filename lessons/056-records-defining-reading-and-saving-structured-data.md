@@ -28,7 +28,68 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ### 1. Record purpose and define, read and save record data (S10.02)
 
-**Concept relationships**
+**Atomic learning targets**
+
+- **S10.02.A01:** record
+- **S10.02.A02:** different data types
+- **S10.02.A03:** one identifier
+- **S10.02.A04:** define
+- **S10.02.A05:** read
+- **S10.02.A06:** save
+
+**Core explanation**
+
+- A record structure groups a set of related fields, which may have different data types, under one identifier. Field names preserve the meaning of each value, so a record suits several facts about one entity better than an array of same-type indexed elements.
+- Define a Cambridge record type with TYPE, field declarations and ENDTYPE. Declare record variables only after the type definition is complete. A complete definition states every field name and its type.
+- Read data from a record by selecting a named field, for example OUTPUT Student1.Mark or CurrentMark <- Student1.Mark. Save data to the record by assigning to a named field, for example Student1.Mark <- 75. Reading or saving one field does not replace unrelated fields.
+- A record groups related named fields of different data types under one identifier. Define the record between TYPE and ENDTYPE, then declare a variable of that record type.
+- A record structure groups a set of related fields, which may have different data types, under one identifier.
+- A record groups related named fields of different data types under one identifier.
+
+**Mechanism or method**
+
+1. **Identify the relevant condition or input** — A record structure groups a set of related fields, which may have different data types, under one identifier.
+2. **Trace how the process works** — Field names preserve the meaning of each value, so a record suits several facts about one entity better than an array of same-type indexed elements.
+3. **Connect the mechanism to its result** — Define a Cambridge record type with TYPE, field declarations and ENDTYPE.
+
+#### Worked example: Record purpose and define, read and save record data: complete worked route
+
+1. **Identify the relevant condition or input**
+
+A record structure groups a set of related fields, which may have different data types, under one identifier.
+
+2. **Trace how the process works**
+
+Field names preserve the meaning of each value, so a record suits several facts about one entity better than an array of same-type indexed elements.
+
+3. **Connect the mechanism to its result**
+
+Define a Cambridge record type with TYPE, field declarations and ENDTYPE.
+
+4. **Complete example**
+
+Define and use one student record: TYPE TStudent declares Name : STRING, DateOfBirth : DATE, Mark : INTEGER and Enrolled : BOOLEAN, then closes with ENDTYPE. DECLARE Student1 : TStudent creates one record. Student1.Mark <- 75 saves a value to the Mark field;
+
+**Misconceptions to correct**
+
+- Students often confuse the identifier of the whole structure with one element. Correction: access requires an index or field name.
+
+#### Mastery check (MC-L056-S10.02)
+
+Explain the following targets in one connected answer, using a concrete example for each: record; different data types; one identifier; define; read; save.
+
+<details><summary>Answer criteria</summary>
+
+- A record structure groups a set of related fields, which may have different data types, under one identifier. Field names preserve the meaning of each value, so a record suits several facts about one entity better than an array of same-type indexed elements.
+- Define a Cambridge record type with TYPE, field declarations and ENDTYPE. Declare record variables only after the type definition is complete. A complete definition states every field name and its type.
+- Read data from a record by selecting a named field, for example OUTPUT Student1.Mark or CurrentMark <- Student1.Mark. Save data to the record by assigning to a named field, for example Student1.Mark <- 75. Reading or saving one field does not replace unrelated fields.
+- A record groups related named fields of different data types under one identifier. Define the record between TYPE and ENDTYPE, then declare a variable of that record type.
+- A record structure groups a set of related fields, which may have different data types, under one identifier.
+- A record groups related named fields of different data types under one identifier.
+
+</details>
+
+**Supplementary concept map**
 
 - **record:** Record purpose and define, read and save record…
 - **different data types:** A record structure groups a set of related…
@@ -37,7 +98,7 @@ Ask the learner to give one accurate definition or method step before continuing
 - **read:** Read data from a record by selecting a…
 - **save:** Save data to the record by assigning to…
 
-**Mechanism**
+**Supplementary three-step recap**
 
 1. **Translate the stated design** — Record purpose and define, read and save record data.
 2. **Apply one complete operation** — A record structure groups a set of related fields, which may have different data types, under one identifier.
@@ -65,22 +126,12 @@ A record holds a set of related data of different data types under one identifie
 
 </details>
 
-<details><summary>Open precise terminology and exam facts</summary>
+### Lesson technical reference
 
 - A record holds a set of related data of different data types under one identifier. Candidates must write pseudocode to define a record structure, read data from its named fields and save data to its named fields.
 - A record structure groups a set of related fields, which may have different data types, under one identifier. Field names preserve the meaning of each value, so a record suits several facts about one entity better than an array of same-type indexed elements.
 - Define a Cambridge record type with TYPE, field declarations and ENDTYPE. Declare record variables only after the type definition is complete. A complete definition states every field name and its type.
 - Read data from a record by selecting a named field, for example OUTPUT Student1.Mark or CurrentMark <- Student1.Mark. Save data to the record by assigning to a named field, for example Student1.Mark <- 75. Reading or saving one field does not replace unrelated fields.
-
-</details>
-
-### Worked method
-
-1. Define and use one student record
-2. TYPE TStudent declares Name
-3. INTEGER and Enrolled
-4. BOOLEAN, then closes with ENDTYPE.
-5. TStudent creates one record.
 
 Beyond syllabus / 延伸知识（不要求背诵）: programming libraries often provide tested ADT implementations, but the exam expects you to understand their behaviour and selection.
 ## 3. Practice by question type
@@ -119,10 +170,9 @@ State two precise facts about records: defining, reading and saving structured d
 
 ### Summary
 
-- Define records: defining, reading and saving structured data with the exact technical vocabulary expected by the syllabus.
-- Use the lesson method on a fresh context and show the intermediate decision, representation or calculation.
-- Match the shape of the answer to the command word and the available marks.
-- Check the final answer against the scenario instead of repeating a memorised sentence.
+- S10.02: explain record, different data types, one identifier, define, read, save.
+- S10.02 method: Identify the relevant condition or input → Trace how the process works → Connect the mechanism to its result.
+- Correction to remember: Students often confuse the identifier of the whole structure with one element. Correction: access requires an index or field name.
 
 ### Common error to correct
 

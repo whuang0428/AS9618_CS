@@ -28,7 +28,68 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ### 1. Causes/applications of interrupts, ISR, detection and handling (S4.08)
 
-**Concept relationships**
+**Atomic learning targets**
+
+- **S4.08.A01:** causes
+- **S4.08.A02:** applications
+- **S4.08.A03:** interrupts
+- **S4.08.A04:** ISR
+- **S4.08.A05:** detected
+- **S4.08.A06:** handling
+
+**Core explanation**
+
+- An interrupt is a signal or condition requesting processor attention. Possible causes include input/output devices needing service, a timer used for scheduling, a hardware fault, and a software exception. Applications include responsive input, sharing processor time and dealing promptly with exceptional conditions without continuously polling every device.
+- For most maskable interrupts, the processor completes the current instruction and checks for pending enabled interrupts at the end of that fetch-execute cycle, before beginning the next instruction. Detection is therefore not the same as stopping halfway through an ordinary instruction.
+- If an interrupt is accepted, the processor checks priority, saves the state needed to resume (such as PC, registers and status), loads or locates the correct interrupt service routine (ISR), executes the ISR, restores the saved state and resumes the interrupted program at the correct next instruction. The ISR is a routine, not the interrupt signal itself.
+- An enabled interrupt request is detected at an instruction boundary before the processor begins the handling sequence.
+- 1. Execute instruction The CPU finishes the current instruction before accepting most maskable interrupts. 2. Check interrupt The control unit checks whether an interrupt is pending and enabled.
+- Causes/applications of interrupts, ISR, detection and handling.
+
+**Mechanism or method**
+
+1. **Identify the relevant condition or input** — An interrupt is a signal or condition requesting processor attention.
+2. **Trace how the process works** — Possible causes include input/output devices needing service, a timer used for scheduling, a hardware fault, and a software exception.
+3. **Connect the mechanism to its result** — Applications include responsive input, sharing processor time and dealing promptly with exceptional conditions without continuously polling every device.
+
+#### Worked example: Causes/applications of interrupts, ISR, detection and handling: complete worked route
+
+1. **Identify the relevant condition or input**
+
+An interrupt is a signal or condition requesting processor attention.
+
+2. **Trace how the process works**
+
+Possible causes include input/output devices needing service, a timer used for scheduling, a hardware fault, and a software exception.
+
+3. **Connect the mechanism to its result**
+
+Applications include responsive input, sharing processor time and dealing promptly with exceptional conditions without continuously polling every device.
+
+4. **Complete example**
+
+The CPU finishes its current instruction, detects the pending request at the cycle boundary, saves PC/register/status state, runs the keyboard ISR to read or acknowledge the input, restores the saved state and continues the original program.
+
+**Misconceptions to correct**
+
+- Students often memorise register names without roles. Correction: a register earns its name by what it temporarily holds.
+
+#### Mastery check (MC-L022-S4.08)
+
+Explain the following targets in one connected answer, using a concrete example for each: causes; applications; interrupts; ISR; detected; handling.
+
+<details><summary>Answer criteria</summary>
+
+- An interrupt is a signal or condition requesting processor attention. Possible causes include input/output devices needing service, a timer used for scheduling, a hardware fault, and a software exception. Applications include responsive input, sharing processor time and dealing promptly with exceptional conditions without continuously polling every device.
+- For most maskable interrupts, the processor completes the current instruction and checks for pending enabled interrupts at the end of that fetch-execute cycle, before beginning the next instruction. Detection is therefore not the same as stopping halfway through an ordinary instruction.
+- If an interrupt is accepted, the processor checks priority, saves the state needed to resume (such as PC, registers and status), loads or locates the correct interrupt service routine (ISR), executes the ISR, restores the saved state and resumes the interrupted program at the correct next instruction. The ISR is a routine, not the interrupt signal itself.
+- An enabled interrupt request is detected at an instruction boundary before the processor begins the handling sequence.
+- 1. Execute instruction The CPU finishes the current instruction before accepting most maskable interrupts. 2. Check interrupt The control unit checks whether an interrupt is pending and enabled.
+- Causes/applications of interrupts, ISR, detection and handling.
+
+</details>
+
+**Supplementary concept map**
 
 - **causes:** Causes/applications of interrupts, ISR, detection and handling.
 - **applications:** Include possible causes and applications of interrupts, the…
@@ -37,7 +98,7 @@ Ask the learner to give one accurate definition or method step before continuing
 - **detected:** An enabled interrupt request is detected at an…
 - **handling:** Find ISR The interrupt type is used to…
 
-**Mechanism**
+**Supplementary three-step recap**
 
 1. **Identify incoming data or signal** — Causes/applications of interrupts, ISR, detection and handling.
 2. **Follow the physical or logical path** — Include possible causes and applications of interrupts, the use of an Interrupt Service Routine (ISR), when interrupts are…
@@ -70,21 +131,13 @@ Include possible causes and applications of interrupts, the use of an Interrupt 
 
 </details>
 
-<details><summary>Open precise terminology and exam facts</summary>
+### Lesson technical reference
 
 - Include possible causes and applications of interrupts, the use of an Interrupt Service Routine (ISR), when interrupts are detected during the fetch-execute cycle and the full save-handle-restore sequence.
 - An interrupt is a signal or condition requesting processor attention. Possible causes include input/output devices needing service, a timer used for scheduling, a hardware fault, and a software exception. Applications include responsive input, sharing processor time and dealing promptly with exceptional conditions without continuously polling every device.
 - For most maskable interrupts, the processor completes the current instruction and checks for pending enabled interrupts at the end of that fetch-execute cycle, before beginning the next instruction. Detection is therefore not the same as stopping halfway through an ordinary instruction.
 - If an interrupt is accepted, the processor checks priority, saves the state needed to resume (such as PC, registers and status), loads or locates the correct interrupt service routine (ISR), executes the ISR, restores the saved state and resumes the interrupted program at the correct next instruction. The ISR is a routine, not the interrupt signal itself.
 - An enabled interrupt request is detected at an instruction boundary before the processor begins the handling sequence.
-
-</details>
-
-### Worked method
-
-1. Handle a keyboard interrupt
-2. A key press raises an interrupt while the CPU is executing another program.
-3. The CPU finishes its current instruction, detects the pending request at the cycle boundary, saves PC/register/status state, runs the keyboard ISR to read or acknowledge the input, restores the saved…
 
 Beyond syllabus / 延伸知识（不要求背诵）: modern processors add pipelining and several cache levels, but exam answers should begin with the syllabus processor model.
 ## 3. Practice by question type
@@ -132,10 +185,9 @@ These are indexes only. Cambridge question and mark-scheme wording is not reprod
 
 ### Summary
 
-- Define interrupt causes, detection and handling with the exact technical vocabulary expected by the syllabus.
-- Use the lesson method on a fresh context and show the intermediate decision, representation or calculation.
-- Match the shape of the answer to the command word and the available marks.
-- Check the final answer against the scenario instead of repeating a memorised sentence.
+- S4.08: explain causes, applications, interrupts, ISR, detected, handling.
+- S4.08 method: Identify the relevant condition or input → Trace how the process works → Connect the mechanism to its result.
+- Correction to remember: Students often memorise register names without roles. Correction: a register earns its name by what it temporarily holds.
 
 ### Common error to correct
 

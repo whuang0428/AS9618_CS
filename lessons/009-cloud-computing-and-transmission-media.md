@@ -24,7 +24,65 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ### 1. Public and private cloud computing, including the benefits and drawbacks of cloud computing (S2.06)
 
-**Concept relationships**
+**Atomic learning targets**
+
+- **S2.06.A01:** public cloud
+- **S2.06.A02:** private cloud
+- **S2.06.A03:** benefit
+- **S2.06.A04:** drawback
+- **S2.06.A05:** dedicated to one organisation
+
+**Core explanation**
+
+- A public cloud may scale quickly and reduce local hardware management: these are possible benefits. A private cloud is dedicated to one organisation and can give greater control over access and configuration. Each benefit or drawback must link availability, control, cost or security to the stated scenario.
+- Cloud computing provides storage, processing or software as a service using remote shared infrastructure reached through a network. A public cloud is offered over shared provider infrastructure; a private cloud is restricted to one organisation.
+- A private cloud is dedicated to one organisation and can give greater control over access and configuration.
+- Public and private cloud computing, including the benefits and drawbacks of cloud computing.
+- A private cloud is restricted to one organisation.
+
+**Mechanism or method**
+
+1. **Establish the exact components or states** — A public cloud may scale quickly and reduce local hardware management: these are possible benefits.
+2. **Trace the relationship or change** — A private cloud is dedicated to one organisation and can give greater control over access and configuration.
+3. **Use the explanation in a concrete case** — Each benefit or drawback must link availability, control, cost or security to the stated scenario.
+
+#### Worked example: Public and private cloud computing, including the benefits and drawbacks of cloud computing: complete worked route
+
+1. **Establish the exact components or states**
+
+A public cloud may scale quickly and reduce local hardware management: these are possible benefits.
+
+2. **Trace the relationship or change**
+
+A private cloud is dedicated to one organisation and can give greater control over access and configuration.
+
+3. **Use the explanation in a concrete case**
+
+Each benefit or drawback must link availability, control, cost or security to the stated scenario.
+
+4. **Complete example**
+
+Choose a cloud model / Connect a school campus and a remote weather station: A school storing non-sensitive public resources may use a public cloud for scalable access. A hospital may choose a private cloud for tighter organisational control of patient-data access.
+
+**Misconceptions to correct**
+
+- Students often confuse bandwidth with speed in every sense. Correction: bandwidth is capacity; latency and congestion also affect perceived performance.
+
+#### Mastery check (MC-L009-S2.06)
+
+Show the following targets in one connected answer, using a concrete example for each: public cloud; private cloud; benefit; drawback; dedicated to one organisation.
+
+<details><summary>Answer criteria</summary>
+
+- A public cloud may scale quickly and reduce local hardware management: these are possible benefits. A private cloud is dedicated to one organisation and can give greater control over access and configuration. Each benefit or drawback must link availability, control, cost or security to the stated scenario.
+- Cloud computing provides storage, processing or software as a service using remote shared infrastructure reached through a network. A public cloud is offered over shared provider infrastructure; a private cloud is restricted to one organisation.
+- A private cloud is dedicated to one organisation and can give greater control over access and configuration.
+- Public and private cloud computing, including the benefits and drawbacks of cloud computing.
+- A private cloud is restricted to one organisation.
+
+</details>
+
+**Supplementary concept map**
 
 - **public cloud:** A public cloud is offered over shared provider…
 - **private cloud:** Public and private cloud computing, including the benefits…
@@ -32,7 +90,7 @@ Ask the learner to give one accurate definition or method step before continuing
 - **benefit:** Each benefit or drawback must link availability, control,…
 - **drawback:** A private cloud is restricted to one organisation.
 
-**Mechanism**
+**Supplementary three-step recap**
 
 1. **Name both alternatives precisely** — Public and private cloud computing, including the benefits and drawbacks of cloud computing.
 2. **Connect structure to consequence** — A private cloud is dedicated to one organisation and can give greater control over access and configuration.
@@ -71,7 +129,63 @@ Public refers to shared provider infrastructure, not unrestricted access to cust
 
 ### 2. The differences between wired and wireless networks and the implications of using each (S2.07)
 
-**Concept relationships**
+**Atomic learning targets**
+
+- **S2.07.A01:** wired network
+- **S2.07.A02:** wireless network
+- **S2.07.A03:** physical cable
+- **S2.07.A04:** radio
+- **S2.07.A05:** implications
+
+**Core explanation**
+
+- A wired network carries signals through a physical cable. It can provide stable, predictable links and avoids radio interference, but installation restricts movement and may require disruptive cabling. A wireless network transmits through the air, supporting mobility and rapid installation, but shared radio capacity, interference, obstacles and interception risk can affect performance and security. The implications must be tied to a given use, not reduced to 'wired is faster'.
+- Radio waves, including WiFi, support non-line-of-sight local wireless access but can be absorbed, reflected or interfered with. Terrestrial microwave links provide directional point-to-point communication and usually require clear line of sight. Satellite communication uses microwave/radio links to and from a satellite for wide or remote coverage, but long propagation distance can increase latency and weather can affect some links.
+- A wired network carries signals through a physical cable.
+- The differences between wired and wireless networks and the implications of using each.
+
+**Mechanism or method**
+
+1. **Establish the exact components or states** — A wired network carries signals through a physical cable.
+2. **Trace the relationship or change** — It can provide stable, predictable links and avoids radio interference, but installation restricts movement and may require disruptive cabling.
+3. **Use the explanation in a concrete case** — A wireless network transmits through the air, supporting mobility and rapid installation, but shared radio capacity, interference, obstacles and interception risk can affect performance and security.
+
+#### Worked example: The differences between wired and wireless networks and the implications of using each: complete worked route
+
+1. **Establish the exact components or states**
+
+A wired network carries signals through a physical cable.
+
+2. **Trace the relationship or change**
+
+It can provide stable, predictable links and avoids radio interference, but installation restricts movement and may require disruptive cabling.
+
+3. **Use the explanation in a concrete case**
+
+A wireless network transmits through the air, supporting mobility and rapid installation, but shared radio capacity, interference, obstacles and interception risk can affect performance and security.
+
+4. **Complete example**
+
+Use copper for short fixed desktop links, fibre-optic cable between buildings requiring high bandwidth, WiFi radio waves for mobile tablets, a line-of-sight microwave link where cabling between two buildings is impractical, and satellite for the remote station without local cable infrastructure.
+
+**Misconceptions to correct**
+
+- Students often confuse bandwidth with speed in every sense. Correction: bandwidth is capacity; latency and congestion also affect perceived performance.
+
+#### Mastery check (MC-L009-S2.07)
+
+Show the following targets in one connected answer, using a concrete example for each: wired network; wireless network; physical cable; radio; implications.
+
+<details><summary>Answer criteria</summary>
+
+- A wired network carries signals through a physical cable. It can provide stable, predictable links and avoids radio interference, but installation restricts movement and may require disruptive cabling. A wireless network transmits through the air, supporting mobility and rapid installation, but shared radio capacity, interference, obstacles and interception risk can affect performance and security. The implications must be tied to a given use, not reduced to 'wired is faster'.
+- Radio waves, including WiFi, support non-line-of-sight local wireless access but can be absorbed, reflected or interfered with. Terrestrial microwave links provide directional point-to-point communication and usually require clear line of sight. Satellite communication uses microwave/radio links to and from a satellite for wide or remote coverage, but long propagation distance can increase latency and weather can affect some links.
+- A wired network carries signals through a physical cable.
+- The differences between wired and wireless networks and the implications of using each.
+
+</details>
+
+**Supplementary concept map**
 
 - **wired network:** A wired network carries signals through a physical…
 - **wireless network:** The differences between wired and wireless networks and…
@@ -79,7 +193,7 @@ Public refers to shared provider infrastructure, not unrestricted access to cust
 - **radio:** A wireless network transmits through the air, supporting…
 - **implications:** The implications must be tied to a given…
 
-**Mechanism**
+**Supplementary three-step recap**
 
 1. **Identify what needs protection** — The differences between wired and wireless networks and the implications of using each.
 2. **Trace the attack or error route** — A wired network carries signals through a physical cable.
@@ -118,7 +232,68 @@ Comparisons must connect physical cable or radio transmission to mobility, insta
 
 ### 3. Copper cable, fibre-optic cable, radio waves including WiFi, microwave and satellite transmission (S2.08)
 
-**Concept relationships**
+**Atomic learning targets**
+
+- **S2.08.A01:** copper cable
+- **S2.08.A02:** fibre-optic cable
+- **S2.08.A03:** radio waves
+- **S2.08.A04:** WiFi
+- **S2.08.A05:** microwave
+- **S2.08.A06:** satellite
+
+**Core explanation**
+
+- Copper cable carries electrical signals and is often economical for short LAN links, but suffers attenuation and electromagnetic interference. Fibre-optic cable carries pulses of light, supports high bandwidth and long distances and is resistant to electromagnetic interference, but equipment and installation may cost more.
+- Radio waves, including WiFi, support non-line-of-sight local wireless access but can be absorbed, reflected or interfered with. Terrestrial microwave links provide directional point-to-point communication and usually require clear line of sight. Satellite communication uses microwave/radio links to and from a satellite for wide or remote coverage, but long propagation distance can increase latency and weather can affect some links.
+- Wired media carry signals through a physical cable. They are usually suitable for fixed devices and controlled environments. Copper cable
+- Radio waves, including WiFi, support non-line-of-sight local wireless access but can be absorbed, reflected or interfered with.
+- Radio waves are used by technologies such as WiFi to transmit data without a physical cable.
+- Copper cable, fibre-optic cable, radio waves including WiFi, microwave and satellite transmission.
+
+**Mechanism or method**
+
+1. **Establish the exact components or states** — Copper cable carries electrical signals and is often economical for short LAN links, but suffers attenuation and electromagnetic interference.
+2. **Trace the relationship or change** — Fibre-optic cable carries pulses of light, supports high bandwidth and long distances and is resistant to electromagnetic interference, but equipment and installation may cost more.
+3. **Use the explanation in a concrete case** — Radio waves, including WiFi, support non-line-of-sight local wireless access but can be absorbed, reflected or interfered with.
+
+#### Worked example: Copper cable, fibre-optic cable, radio waves including WiFi, microwave and satellite transmission: complete worked route
+
+1. **Establish the exact components or states**
+
+Copper cable carries electrical signals and is often economical for short LAN links, but suffers attenuation and electromagnetic interference.
+
+2. **Trace the relationship or change**
+
+Fibre-optic cable carries pulses of light, supports high bandwidth and long distances and is resistant to electromagnetic interference, but equipment and installation may cost more.
+
+3. **Use the explanation in a concrete case**
+
+Radio waves, including WiFi, support non-line-of-sight local wireless access but can be absorbed, reflected or interfered with.
+
+4. **Complete example**
+
+Use copper for short fixed desktop links, fibre-optic cable between buildings requiring high bandwidth, WiFi radio waves for mobile tablets, a line-of-sight microwave link where cabling between two buildings is impractical, and satellite for the remote station without local cable infrastructure.
+
+**Misconceptions to correct**
+
+- Students often confuse bandwidth with speed in every sense. Correction: bandwidth is capacity; latency and congestion also affect perceived performance.
+
+#### Mastery check (MC-L009-S2.08)
+
+Describe the following targets in one connected answer, using a concrete example for each: copper cable; fibre-optic cable; radio waves; WiFi; microwave; satellite.
+
+<details><summary>Answer criteria</summary>
+
+- Copper cable carries electrical signals and is often economical for short LAN links, but suffers attenuation and electromagnetic interference. Fibre-optic cable carries pulses of light, supports high bandwidth and long distances and is resistant to electromagnetic interference, but equipment and installation may cost more.
+- Radio waves, including WiFi, support non-line-of-sight local wireless access but can be absorbed, reflected or interfered with. Terrestrial microwave links provide directional point-to-point communication and usually require clear line of sight. Satellite communication uses microwave/radio links to and from a satellite for wide or remote coverage, but long propagation distance can increase latency and weather can affect some links.
+- Wired media carry signals through a physical cable. They are usually suitable for fixed devices and controlled environments. Copper cable
+- Radio waves, including WiFi, support non-line-of-sight local wireless access but can be absorbed, reflected or interfered with.
+- Radio waves are used by technologies such as WiFi to transmit data without a physical cable.
+- Copper cable, fibre-optic cable, radio waves including WiFi, microwave and satellite transmission.
+
+</details>
+
+**Supplementary concept map**
 
 - **fibre-optic cable:** Copper cable, fibre-optic cable, radio waves including WiFi,…
 - **copper cable:** Copper cable transmits data using electrical signals.
@@ -127,7 +302,7 @@ Comparisons must connect physical cable or radio transmission to mobility, insta
 - **microwave:** Satellite communication uses microwave/radio links to and from…
 - **satellite:** Satellite communication uses signals to and from satellites…
 
-**Mechanism**
+**Supplementary three-step recap**
 
 1. **Identify incoming data or signal** — Copper cable, fibre-optic cable, radio waves including WiFi, microwave and satellite transmission.
 2. **Follow the physical or logical path** — Radio waves are used by technologies such as WiFi to transmit data without a physical cable.
@@ -184,7 +359,7 @@ All named media are required. Explanations must include the signalling method or
 
 </details>
 
-<details><summary>Open precise terminology and exam facts</summary>
+### Lesson technical reference
 
 - Public refers to shared provider infrastructure, not unrestricted access to customer data. Private infrastructure is dedicated to one organisation but is not automatically secure.
 - Comparisons must connect physical cable or radio transmission to mobility, installation, interference, shared capacity, reliability or security in a stated use.
@@ -194,16 +369,6 @@ All named media are required. Explanations must include the signalling method or
 - A wired network carries signals through a physical cable. It can provide stable, predictable links and avoids radio interference, but installation restricts movement and may require disruptive cabling. A wireless network transmits through the air, supporting mobility and rapid installation, but shared radio capacity, interference, obstacles and interception risk can affect performance and security. The implications must be tied to a given use, not reduced to 'wired is faster'.
 - Copper cable carries electrical signals and is often economical for short LAN links, but suffers attenuation and electromagnetic interference. Fibre-optic cable carries pulses of light, supports high bandwidth and long distances and is resistant to electromagnetic interference, but equipment and installation may cost more.
 - Radio waves, including WiFi, support non-line-of-sight local wireless access but can be absorbed, reflected or interfered with. Terrestrial microwave links provide directional point-to-point communication and usually require clear line of sight. Satellite communication uses microwave/radio links to and from a satellite for wide or remote coverage, but long propagation distance can increase latency and weather can affect some links.
-
-</details>
-
-### Worked method
-
-1. Choose a cloud model
-2. Connect a school campus and a remote weather station
-3. A school storing non-sensitive public resources may use a public cloud for scalable access.
-4. A hospital may choose a private cloud for tighter organisational control of patient-data access.
-5. Use copper for short fixed desktop links, fibre-optic cable between buildings requiring high bandwidth, WiFi radio waves for mobile tablets, a line-of-sight microwave link where cabling between two buildings is…
 
 Beyond syllabus / 延伸知识（不要求背诵）: real networks organise communication in layers so that hardware, addressing and application protocols can change independently.
 ## 3. Practice by question type
@@ -253,10 +418,11 @@ These are indexes only. Cambridge question and mark-scheme wording is not reprod
 
 ### Summary
 
-- Define cloud computing and transmission media with the exact technical vocabulary expected by the syllabus.
-- Use the lesson method on a fresh context and show the intermediate decision, representation or calculation.
-- Match the shape of the answer to the command word and the available marks.
-- Check the final answer against the scenario instead of repeating a memorised sentence.
+- S2.06: explain public cloud, private cloud, benefit, drawback, dedicated to one organisation.
+- S2.06 method: Establish the exact components or states → Trace the relationship or change → Use the explanation in a concrete case.
+- S2.07: explain wired network, wireless network, physical cable, radio, implications.
+- S2.07 method: Establish the exact components or states → Trace the relationship or change → Use the explanation in a concrete case.
+- S2.08: explain copper cable, fibre-optic cable, radio waves, WiFi, microwave, satellite.
 
 ### Common error to correct
 

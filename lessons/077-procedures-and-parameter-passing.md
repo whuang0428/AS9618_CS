@@ -24,7 +24,65 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ### 1. And use procedures with parameters passed by reference and by value: Procedures and parameter passing (S11.06)
 
-**Concept relationships**
+**Atomic learning targets**
+
+- **S11.06.A01:** procedure / procedures
+- **S11.06.A02:** parameters
+- **S11.06.A03:** passed / passes / pass
+- **S11.06.A04:** reference / BYREF
+- **S11.06.A05:** value / BYVAL
+
+**Core explanation**
+
+- Define and use a function when the caller needs one returned value. A function has a return type and RETURN statement; the call can appear in an expression, for example Total <- Price + CalculateVAT(Price). Use procedures for actions and functions for calculated, searched or checked values.
+- Define and use a procedure when an algorithm needs a named action. A procedure may have no parameters, one parameter or several parameters. BYVAL passes a value that the procedure can use without changing the caller's variable; BYREF gives access to the caller's variable so an assignment can persist after the call.
+- A parameter is the named variable in the header, while an argument is the actual value or variable supplied at a call. RETURN sends a function value back to the caller; output displayed by a procedure is an effect, not a return value.
+- A procedure header or function header names the subprogram and declares its parameters; a function header also declares its return type. The procedure/function interface is the information a caller needs to use the subprogram: its name, parameter list and types, and any returned value/type.
+- BYVAL passes a value that the procedure can use without changing the caller's variable
+
+**Mechanism or method**
+
+1. **Identify the relevant condition or input** — Define and use a function when the caller needs one returned value.
+2. **Trace how the process works** — A function has a return type and RETURN statement;
+3. **Connect the mechanism to its result** — the call can appear in an expression, for example Total <- Price + CalculateVAT(Price).
+
+#### Worked example: And use procedures with parameters passed by reference and by value: Procedures and parameter passing: complete worked route
+
+1. **Identify the relevant condition or input**
+
+Define and use a function when the caller needs one returned value.
+
+2. **Trace how the process works**
+
+A function has a return type and RETURN statement;
+
+3. **Connect the mechanism to its result**
+
+the call can appear in an expression, for example Total <- Price + CalculateVAT(Price).
+
+4. **Complete example**
+
+Use a procedure and a function: PROCEDURE Increase(BYREF Number : INTEGER, BYVAL Amount : INTEGER) changes the caller's Number by Amount. FUNCTION CalculateVAT(Price : REAL) RETURNS REAL returns Price 0.20, so Total <- Price + CalculateVAT(Price) uses the returned value in an expression. In Increase(Score, 5), Number and Amount are parameters while Score and 5 are arguments.
+
+**Misconceptions to correct**
+
+- Students often think working Java automatically means good pseudocode. Correction: Paper 2 rewards clear Cambridge-style algorithm expression.
+
+#### Mastery check (MC-L077-S11.06)
+
+Explain the following targets in one connected answer, using a concrete example for each: procedure / procedures; parameters; passed / passes / pass; reference / BYREF; value / BYVAL.
+
+<details><summary>Answer criteria</summary>
+
+- Define and use a function when the caller needs one returned value. A function has a return type and RETURN statement; the call can appear in an expression, for example Total <- Price + CalculateVAT(Price). Use procedures for actions and functions for calculated, searched or checked values.
+- Define and use a procedure when an algorithm needs a named action. A procedure may have no parameters, one parameter or several parameters. BYVAL passes a value that the procedure can use without changing the caller's variable; BYREF gives access to the caller's variable so an assignment can persist after the call.
+- A parameter is the named variable in the header, while an argument is the actual value or variable supplied at a call. RETURN sends a function value back to the caller; output displayed by a procedure is an effect, not a return value.
+- A procedure header or function header names the subprogram and declares its parameters; a function header also declares its return type. The procedure/function interface is the information a caller needs to use the subprogram: its name, parameter list and types, and any returned value/type.
+- BYVAL passes a value that the procedure can use without changing the caller's variable
+
+</details>
+
+**Supplementary concept map**
 
 - **pass:** And use procedures with parameters passed by reference…
 - **procedure:** BYVAL passes a value that the procedure can…
@@ -33,7 +91,7 @@ Ask the learner to give one accurate definition or method step before continuing
 - **reference:** A reference to the caller's variable
 - **value:** Its name, parameter list and types, and any…
 
-**Mechanism**
+**Supplementary three-step recap**
 
 1. **Translate the stated design** — And use procedures with parameters passed by reference and by value.
 2. **Apply one complete operation** — Parameters with none, one or more values passed by reference or by value.
@@ -70,23 +128,13 @@ Define and use a procedure; explain when the use of a procedure is appropriate; 
 
 </details>
 
-<details><summary>Open precise terminology and exam facts</summary>
+### Lesson technical reference
 
 - Define and use a procedure; explain when the use of a procedure is appropriate; use parameters with none, one or more values passed by reference or by value.
 - Define and use a procedure when an algorithm needs a named action. A procedure may have no parameters, one parameter or several parameters. BYVAL passes a value that the procedure can use without changing the caller's variable; BYREF gives access to the caller's variable so an assignment can persist after the call.
 - Define and use a function when the caller needs one returned value. A function has a return type and RETURN statement; the call can appear in an expression, for example Total <- Price + CalculateVAT(Price). Use procedures for actions and functions for calculated, searched or checked values.
 - A procedure header or function header names the subprogram and declares its parameters; a function header also declares its return type. The procedure/function interface is the information a caller needs to use the subprogram: its name, parameter list and types, and any returned value/type.
 - A parameter is the named variable in the header, while an argument is the actual value or variable supplied at a call. RETURN sends a function value back to the caller; output displayed by a procedure is an effect, not a return value.
-
-</details>
-
-### Worked method
-
-1. Use a procedure and a function
-2. PROCEDURE Increase(BYREF Number
-3. INTEGER, BYVAL Amount
-4. INTEGER) changes the caller's Number by Amount.
-5. REAL) RETURNS REAL returns Price 0.20, so Total <- Price + CalculateVAT(Price) uses the returned value in an expression.
 
 Beyond syllabus / 延伸知识（不要求背诵）: consistent style, modularity and automated tests reduce maintenance errors in larger programs.
 ## 3. Practice by question type
@@ -136,10 +184,9 @@ These are indexes only. Cambridge question and mark-scheme wording is not reprod
 
 ### Summary
 
-- Define procedures and parameter passing with the exact technical vocabulary expected by the syllabus.
-- Use the lesson method on a fresh context and show the intermediate decision, representation or calculation.
-- Match the shape of the answer to the command word and the available marks.
-- Check the final answer against the scenario instead of repeating a memorised sentence.
+- S11.06: explain procedure / procedures, parameters, passed / passes / pass, reference / BYREF, value / BYVAL.
+- S11.06 method: Identify the relevant condition or input → Trace how the process works → Connect the mechanism to its result.
+- Correction to remember: Students often think working Java automatically means good pseudocode. Correction: Paper 2 rewards clear Cambridge-style algorithm expression.
 
 ### Common error to correct
 

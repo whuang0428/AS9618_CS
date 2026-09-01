@@ -28,7 +28,62 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ### 1. The need to act ethically and the impact of acting ethically or unethically for a given… (S7.03)
 
-**Concept relationships**
+**Atomic learning targets**
+
+- **S7.03.A01:** situation
+- **S7.03.A02:** ethical
+- **S7.03.A03:** unethical
+- **S7.03.A04:** impact
+
+**Core explanation**
+
+- Professional ethics has a purpose: computing professionals must protect public interest, work competently and remain accountable for consequences. Joining a professional ethical body such as the British Computer Society (BCS) or the Institute of Electrical and Electronics Engineers (IEEE) provides codes of conduct, guidance, continuing professional development and a community that supports standards. In a situation, judge whether action is ethical or unethical and explain stakeholder impacts of both choices.
+- Joining a professional ethical body is important because membership gives a practitioner an explicit code of conduct, current professional guidance, continuing professional development and a community through which standards and misconduct can be challenged. The British Computer Society (BCS) and the Institute of Electrical and Electronics Engineers (IEEE) are the two named syllabus examples. Their codes promote public interest, competence, integrity, privacy and accountability; a code guides judgement but does not replace law.
+- For a given situation, decide whether an action is ethical or unethical by identifying the decision, affected stakeholders, benefits, harms, rights and responsibilities. Then explain the impact of acting ethically and the impact of acting unethically. A defensible conclusion applies evidence, proportionality and safeguards; it is not a one-sided list or an unsupported personal opinion.
+- Artificial intelligence (AI) applications include classification, recommendation, prediction and autonomous control. Every AI evaluation should identify the application or decision mechanism and trace social, economic and environmental impacts before reaching a contextual judgement with realistic mitigations.
+
+**Mechanism or method**
+
+1. **Identify the relevant condition or input** — Professional ethics has a purpose: computing professionals must protect public interest, work competently and remain accountable for consequences.
+2. **Trace how the process works** — Joining a professional ethical body such as the British Computer Society (BCS) or the Institute of Electrical and Electronics Engineers (IEEE) provides codes of conduct, guidance, continuing professional development and a community that supports standards.
+3. **Connect the mechanism to its result** — In a situation, judge whether action is ethical or unethical and explain stakeholder impacts of both choices.
+
+#### Worked example: The need to act ethically and the impact of acting ethically or unethically for a given: complete worked route
+
+1. **Identify the relevant condition or input**
+
+Professional ethics has a purpose: computing professionals must protect public interest, work competently and remain accountable for consequences.
+
+2. **Trace how the process works**
+
+Joining a professional ethical body such as the British Computer Society (BCS) or the Institute of Electrical and Electronics Engineers (IEEE) provides codes of conduct, guidance, continuing professional development and a community that supports standards.
+
+3. **Connect the mechanism to its result**
+
+In a situation, judge whether action is ethical or unethical and explain stakeholder impacts of both choices.
+
+4. **Complete example**
+
+Concealing the evidence would be unethical because patients could be harmed and trust would be damaged. The developer acts ethically by documenting the risk, refusing to falsify the record and escalating through BCS/IEEE-style professional channels.
+
+**Misconceptions to correct**
+
+- Students often write personal opinions only. Correction: ethics answers need stakeholders, evidence and balanced judgement.
+
+#### Mastery check (MC-L036-S7.03)
+
+Explain the following targets in one connected answer, using a concrete example for each: situation; ethical; unethical; impact.
+
+<details><summary>Answer criteria</summary>
+
+- Professional ethics has a purpose: computing professionals must protect public interest, work competently and remain accountable for consequences. Joining a professional ethical body such as the British Computer Society (BCS) or the Institute of Electrical and Electronics Engineers (IEEE) provides codes of conduct, guidance, continuing professional development and a community that supports standards. In a situation, judge whether action is ethical or unethical and explain stakeholder impacts of both choices.
+- Joining a professional ethical body is important because membership gives a practitioner an explicit code of conduct, current professional guidance, continuing professional development and a community through which standards and misconduct can be challenged. The British Computer Society (BCS) and the Institute of Electrical and Electronics Engineers (IEEE) are the two named syllabus examples. Their codes promote public interest, competence, integrity, privacy and accountability; a code guides judgement but does not replace law.
+- For a given situation, decide whether an action is ethical or unethical by identifying the decision, affected stakeholders, benefits, harms, rights and responsibilities. Then explain the impact of acting ethically and the impact of acting unethically. A defensible conclusion applies evidence, proportionality and safeguards; it is not a one-sided list or an unsupported personal opinion.
+- Artificial intelligence (AI) applications include classification, recommendation, prediction and autonomous control. Every AI evaluation should identify the application or decision mechanism and trace social, economic and environmental impacts before reaching a contextual judgement with realistic mitigations.
+
+</details>
+
+**Supplementary concept map**
 
 - **ethical:** The need to act ethically and the impact…
 - **unethical:** For a given situation, decide whether an action…
@@ -36,7 +91,7 @@ Ask the learner to give one accurate definition or method step before continuing
 - **situation:** In a situation, judge whether action is ethical…
 - **need:** Stakeholders and explain impacts of both ethical and…
 
-**Mechanism**
+**Supplementary three-step recap**
 
 1. **Identify who is affected** — The need to act ethically and the impact of acting ethically or unethically for a given situation.
 2. **Trace benefit and harm** — For a given situation, decide whether an action is ethical or unethical by identifying the decision, affected stakeholders,…
@@ -73,7 +128,7 @@ The syllabus requires scenario judgement plus consequences. Evidence must identi
 
 </details>
 
-<details><summary>Open precise terminology and exam facts</summary>
+### Lesson technical reference
 
 - The syllabus requires scenario judgement plus consequences. Evidence must identify stakeholders and explain impacts of both ethical and unethical action; a label or generic list is insufficient.
 - Professional ethics provides principles for deciding how a computing professional should act when technical choices can affect clients, users, colleagues or wider society. Its purpose is to protect the public interest, support competent and honest work, and make professionals accountable for foreseeable consequences rather than treating legal compliance or a manager's instruction as the whole decision.
@@ -83,16 +138,6 @@ The syllabus requires scenario judgement plus consequences. Evidence must identi
 - Artificial intelligence (AI) applications include classification, recommendation, prediction and autonomous control. Every AI evaluation should identify the application or decision mechanism and trace social, economic and environmental impacts before reaching a contextual judgement with realistic mitigations.
 - To evaluate an AI application, balance its social, economic and environmental impacts and reach a context-linked judgement.
 - The required licence categories include FSF and OSI open-source licences, shareware and commercial software. A justified licence choice links its permissions, restrictions and cost to the stated situation.
-
-</details>
-
-### Worked method
-
-1. Unsafe release pressure
-2. A developer is told to hide failed safety tests so a medical system can launch on time.
-3. Concealing the evidence would be unethical because patients could be harmed and trust would be damaged.
-4. The developer acts ethically by documenting the risk, refusing to falsify the record and escalating through BCS/IEEE-style professional channels.
-5. This may delay release and cost money, but protects patients, supports accountability and allows the defect to be corrected.
 
 Beyond syllabus / 延伸知识（不要求背诵）: professional decisions are often reviewed against law, organisational policy, public interest and a published code of conduct.
 ## 3. Practice by question type
@@ -142,10 +187,9 @@ These are indexes only. Cambridge question and mark-scheme wording is not reprod
 
 ### Summary
 
-- Define ethical decisions and their consequences with the exact technical vocabulary expected by the syllabus.
-- Use the lesson method on a fresh context and show the intermediate decision, representation or calculation.
-- Match the shape of the answer to the command word and the available marks.
-- Check the final answer against the scenario instead of repeating a memorised sentence.
+- S7.03: explain situation, ethical, unethical, impact.
+- S7.03 method: Identify the relevant condition or input → Trace how the process works → Connect the mechanism to its result.
+- Correction to remember: Students often write personal opinions only. Correction: ethics answers need stakeholders, evidence and balanced judgement.
 
 ### Common error to correct
 

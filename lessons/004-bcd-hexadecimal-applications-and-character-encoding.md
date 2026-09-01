@@ -28,7 +28,62 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ### 1. BCD and hexadecimal suit different real uses (S1.06)
 
-**Concept relationships**
+**Atomic learning targets**
+
+- **S1.06.A01:** BCD
+- **S1.06.A02:** hexadecimal
+- **S1.06.A03:** digital clock
+- **S1.06.A04:** memory address
+
+**Core explanation**
+
+- Only 0000 to 1001 are valid BCD digit groups. BCD is used where decimal digits must be displayed or processed exactly, such as digital clocks, calculators and financial displays, although it usually uses more bits than pure binary.
+- Representation overview: the required integer representations are binary, denary, hexadecimal, BCD, one's-complement and two's-complement. Conversion means preserving the integer value while changing its base or signed representation.
+- Hexadecimal is used as a compact human-readable form of binary. One hex digit represents four bits, so hexadecimal is practical for memory addresses, machine-code/debug displays and colour values.
+- A digital clock is a practical BCD application because each displayed denary digit maps directly to one four-bit BCD group.
+
+**Mechanism or method**
+
+1. **Establish the exact components or states** — Only 0000 to 1001 are valid BCD digit groups.
+2. **Trace the relationship or change** — BCD is used where decimal digits must be displayed or processed exactly, such as digital clocks, calculators and financial displays, although it usually uses more bits than pure binary.
+3. **Use the explanation in a concrete case** — Representation overview: the required integer representations are binary, denary, hexadecimal, BCD, one's-complement and two's-complement.
+
+#### Worked example: BCD and hexadecimal suit different real uses: complete worked route
+
+1. **Establish the exact components or states**
+
+Only 0000 to 1001 are valid BCD digit groups.
+
+2. **Trace the relationship or change**
+
+BCD is used where decimal digits must be displayed or processed exactly, such as digital clocks, calculators and financial displays, although it usually uses more bits than pure binary.
+
+3. **Use the explanation in a concrete case**
+
+Representation overview: the required integer representations are binary, denary, hexadecimal, BCD, one's-complement and two's-complement.
+
+4. **Complete example**
+
+Choose a character set for worldwide text: A messaging system containing English, Chinese and Arabic text needs Unicode because its character repertoire is much wider than ASCII or extended ASCII. The chosen Unicode encoding stores the character codes as binary data.
+
+**Misconceptions to correct**
+
+- Students often treat binary digits as decoration. Correction: every bit position has a value; if the position changes, the value changes.
+
+#### Mastery check (MC-L004-S1.06)
+
+Describe the following targets in one connected answer, using a concrete example for each: BCD; hexadecimal; digital clock; memory address.
+
+<details><summary>Answer criteria</summary>
+
+- Only 0000 to 1001 are valid BCD digit groups. BCD is used where decimal digits must be displayed or processed exactly, such as digital clocks, calculators and financial displays, although it usually uses more bits than pure binary.
+- Representation overview: the required integer representations are binary, denary, hexadecimal, BCD, one's-complement and two's-complement. Conversion means preserving the integer value while changing its base or signed representation.
+- Hexadecimal is used as a compact human-readable form of binary. One hex digit represents four bits, so hexadecimal is practical for memory addresses, machine-code/debug displays and colour values.
+- A digital clock is a practical BCD application because each displayed denary digit maps directly to one four-bit BCD group.
+
+</details>
+
+**Supplementary concept map**
 
 - **BCD:** digit-by-digit
 - **Clock:** direct decimal display
@@ -36,7 +91,7 @@ Ask the learner to give one accurate definition or method step before continuing
 - **Address:** compact binary
 - **Colour:** readable byte values
 
-**Mechanism**
+**Supplementary three-step recap**
 
 1. **Identify the practical task** — Ask whether exact decimal digits or compact binary notation matters.
 2. **Match the representation** — Use BCD for digit displays and hex for compact bit patterns.
@@ -56,7 +111,68 @@ Candidates must connect each representation to a practical use and explain why i
 
 ### 2. Character sets map symbols to binary codes (S1.07)
 
-**Concept relationships**
+**Atomic learning targets**
+
+- **S1.07.A01:** ASCII
+- **S1.07.A02:** extended ASCII
+- **S1.07.A03:** Unicode
+- **S1.07.A04:** character set
+- **S1.07.A05:** binary
+- **S1.07.A06:** not expected to memorise / not expected to memorize
+
+**Core explanation**
+
+- Standard ASCII uses 7-bit codes, extended ASCII uses 8-bit codes, and Unicode provides code points for a much wider range of languages and symbols. Candidates are not expected to memorise particular character codes; a question must provide any code value needed for a conversion.
+- A character set defines a collection of characters and assigns a numeric character code to each one. The code is stored internally in binary; the bit pattern is meaningful only when software interprets it using the agreed character set.
+- Only 0000 to 1001 are valid BCD digit groups. BCD is used where decimal digits must be displayed or processed exactly, such as digital clocks, calculators and financial displays, although it usually uses more bits than pure binary.
+- Representation overview: the required integer representations are binary, denary, hexadecimal, BCD, one's-complement and two's-complement. Conversion means preserving the integer value while changing its base or signed representation.
+- The computer stores a catalogue number, not the drawn symbol. The character set tells it which symbol that number means.
+- Hexadecimal is used as a compact human-readable form of binary. One hex digit represents four bits, so hexadecimal is practical for memory addresses, machine-code/debug displays and colour values.
+
+**Mechanism or method**
+
+1. **Establish the exact components or states** — Standard ASCII uses 7-bit codes, extended ASCII uses 8-bit codes, and Unicode provides code points for a much wider range of languages and symbols.
+2. **Trace the relationship or change** — Candidates are not expected to memorise particular character codes;
+3. **Use the explanation in a concrete case** — a question must provide any code value needed for a conversion.
+
+#### Worked example: Character sets map symbols to binary codes: complete worked route
+
+1. **Establish the exact components or states**
+
+Standard ASCII uses 7-bit codes, extended ASCII uses 8-bit codes, and Unicode provides code points for a much wider range of languages and symbols.
+
+2. **Trace the relationship or change**
+
+Candidates are not expected to memorise particular character codes;
+
+3. **Use the explanation in a concrete case**
+
+a question must provide any code value needed for a conversion.
+
+4. **Complete example**
+
+Choose a character set for worldwide text: A messaging system containing English, Chinese and Arabic text needs Unicode because its character repertoire is much wider than ASCII or extended ASCII. The chosen Unicode encoding stores the character codes as binary data.
+
+**Misconceptions to correct**
+
+- Students often treat binary digits as decoration. Correction: every bit position has a value; if the position changes, the value changes.
+
+#### Mastery check (MC-L004-S1.07)
+
+Show the following targets in one connected answer, using a concrete example for each: ASCII; extended ASCII; Unicode; character set; binary; not expected to memorise / not expected to memorize.
+
+<details><summary>Answer criteria</summary>
+
+- Standard ASCII uses 7-bit codes, extended ASCII uses 8-bit codes, and Unicode provides code points for a much wider range of languages and symbols. Candidates are not expected to memorise particular character codes; a question must provide any code value needed for a conversion.
+- A character set defines a collection of characters and assigns a numeric character code to each one. The code is stored internally in binary; the bit pattern is meaningful only when software interprets it using the agreed character set.
+- Only 0000 to 1001 are valid BCD digit groups. BCD is used where decimal digits must be displayed or processed exactly, such as digital clocks, calculators and financial displays, although it usually uses more bits than pure binary.
+- Representation overview: the required integer representations are binary, denary, hexadecimal, BCD, one's-complement and two's-complement. Conversion means preserving the integer value while changing its base or signed representation.
+- The computer stores a catalogue number, not the drawn symbol. The character set tells it which symbol that number means.
+- Hexadecimal is used as a compact human-readable form of binary. One hex digit represents four bits, so hexadecimal is practical for memory addresses, machine-code/debug displays and colour values.
+
+</details>
+
+**Supplementary concept map**
 
 - **Character:** symbol
 - **Code:** assigned number
@@ -65,7 +181,7 @@ Candidates must connect each representation to a practical use and explain why i
 - **Extended:** 8-bit, 256 codes
 - **Unicode:** global character range
 
-**Mechanism**
+**Supplementary three-step recap**
 
 1. **Character becomes a number** — The character set defines the numeric code for each symbol.
 2. **Code becomes bits** — The numeric code is represented internally in binary.
@@ -116,7 +232,7 @@ Students should understand ASCII, extended ASCII and Unicode but are not expecte
 
 </details>
 
-<details><summary>Open precise terminology and exam facts</summary>
+### Lesson technical reference
 
 - Candidates must connect each representation to a practical use and explain why it suits that use, rather than only performing a conversion.
 - Students should understand ASCII, extended ASCII and Unicode but are not expected to memorise particular character codes.
@@ -127,14 +243,6 @@ Students should understand ASCII, extended ASCII and Unicode but are not expecte
 - Representation overview: the required integer representations are binary, denary, hexadecimal, BCD, one's-complement and two's-complement. Conversion means preserving the integer value while changing its base or signed representation.
 - A character set defines a collection of characters and assigns a numeric character code to each one. The code is stored internally in binary; the bit pattern is meaningful only when software interprets it using the agreed character set.
 - Standard ASCII uses 7-bit codes, extended ASCII uses 8-bit codes, and Unicode provides code points for a much wider range of languages and symbols. Candidates are not expected to memorise particular character codes; a question must provide any code value needed for a conversion.
-
-</details>
-
-### Worked method
-
-1. Choose a character set for worldwide text
-2. A messaging system containing English, Chinese and Arabic text needs Unicode because its character repertoire is much wider than ASCII or extended ASCII.
-3. The chosen Unicode encoding stores the character codes as binary data.
 
 Beyond syllabus / 延伸知识（不要求背诵）: real file formats also store headers and metadata, so two files with the same visible content may still have different sizes.
 ## 3. Practice by question type
@@ -184,10 +292,11 @@ These are indexes only. Cambridge question and mark-scheme wording is not reprod
 
 ### Summary
 
-- Define bcd, hexadecimal applications and character encoding with the exact technical vocabulary expected by the syllabus.
-- Use the lesson method on a fresh context and show the intermediate decision, representation or calculation.
-- Match the shape of the answer to the command word and the available marks.
-- Check the final answer against the scenario instead of repeating a memorised sentence.
+- S1.06: explain BCD, hexadecimal, digital clock, memory address.
+- S1.06 method: Establish the exact components or states → Trace the relationship or change → Use the explanation in a concrete case.
+- S1.07: explain ASCII, extended ASCII, Unicode, character set, binary, not expected to memorise / not expected to memorize.
+- S1.07 method: Establish the exact components or states → Trace the relationship or change → Use the explanation in a concrete case.
+- Correction to remember: Students often treat binary digits as decoration. Correction: every bit position has a value; if the position changes, the value changes.
 
 ### Common error to correct
 

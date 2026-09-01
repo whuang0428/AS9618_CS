@@ -1,0 +1,120 @@
+{
+  "schemaVersion": 1,
+  "generator": "built-in ImageGen",
+  "mode": "academic editorial analogy; no generated technical labels",
+  "sharedConstraints": [
+    "16:9 mature academic or university-textbook composition",
+    "restrained navy, slate, off-white and teal palette",
+    "no readable words, letters, numbers, labels, arrows, logos or code",
+    "no cartoon, toy, clay, childish, glossy icon or playful-poster style",
+    "image establishes an analogy only; exact facts are supplied by reviewed HTML, code, tables and image transcripts"
+  ],
+  "assets": [
+    {
+      "section": 1,
+      "path": "web/assets/course-v3/section-anchors/section-1-data-representation.png",
+      "sha256": "59ddc509e53a7a113560194b9c8bdac7517431a69f6b8bd8c7238f2f960e34b7",
+      "source": "/Users/kw/.codex/generated_images/01a05a80-5d9f-73c3-bae7-12c6e73cf49f/exec-80149b8e-9ed6-461c-9148-1732dc65b224.png",
+      "prompt": "Academic institutional archive for data representation and compression: full text, photographic image, sound waveform and geometric drawing plans beside compact archival cases; exact-copy preservation route contrasted with perceptual simplification; no technical labels.",
+      "review": "approved",
+      "reviewNotes": "Mature archival metaphor; any small paper marks are unreadable and carry no technical claim. Page copy states the exact lossless/lossy boundary."
+    },
+    {
+      "section": 3,
+      "path": "web/assets/course-v3/section-anchors/section-3-hardware.png",
+      "sha256": "5be58e8883d94be8ea13692a3ba7837a51fc41e59ab5122855b312d333353891",
+      "source": "/Users/kw/.codex/generated_images/01a05a80-5d9f-73c3-bae7-12c6e73cf49f/exec-71dfbb3c-5bc0-4c09-b3c9-a2e7d75edb41.png",
+      "prompt": "Professional automated greenhouse research facility with sensors, a central control cabinet, physical ventilation/irrigation/shading actuators and a separate monitoring-only observation station; academic architectural cutaway; no labels.",
+      "review": "approved",
+      "reviewNotes": "Credible monitoring/control setting. Exact sensor types, actuator actions and feedback directions remain in HTML."
+    },
+    {
+      "section": 4,
+      "path": "web/assets/course-v3/section-anchors/section-4-processor.png",
+      "sha256": "2c56bfa909d188337db8970ae794d2b4dd6b041d2e979cdaedc983bc0819c00a",
+      "source": "/Users/kw/.codex/generated_images/01a05a80-5d9f-73c3-bae7-12c6e73cf49f/exec-174d6e41-c1ab-4bc9-a459-f428129f30b8.png",
+      "prompt": "Disciplined industrial operations-room analogy for processor architecture: ordered archive, central coordinator, distinct conduits, calculation workbench, clock and nearby high-speed staging shelf; not a literal CPU schematic; no labels.",
+      "review": "approved",
+      "reviewNotes": "No register or bus value is asserted by the picture. Exact architecture is taught by reviewed diagrams and register-transfer traces."
+    },
+    {
+      "section": 5,
+      "path": "web/assets/course-v3/section-anchors/section-5-system-software.png",
+      "sha256": "d68c9536f53d39f8d4732353e32b42cf7228666d9a8c82c54fff34a867b71332",
+      "source": "/Users/kw/.codex/generated_images/01a05a80-5d9f-73c3-bae7-12c6e73cf49f/exec-19c80e80-be8e-44f0-ad97-8261387b2709.png",
+      "prompt": "Professional engineering production studio where human-readable plans pass through translation and inspection stations, reusable components feed the build and a finished artefact leaves; system-software analogy; no literal code or phase labels.",
+      "review": "approved",
+      "reviewNotes": "Mature production metaphor. The page explicitly limits the analogy and supplies the actual assembler/compiler/interpreter mechanisms."
+    },
+    {
+      "section": 6,
+      "path": "web/assets/course-v3/section-anchors/section-6-security.png",
+      "sha256": "d0b9586ceab10dd01723b0f51ae23915d70d8856c32a7b169da89a4f092c417c",
+      "source": "/Users/kw/.codex/generated_images/01a05a80-5d9f-73c3-bae7-12c6e73cf49f/exec-ffd0745a-cf47-40c1-9017-bf54fdd8b7c5.png",
+      "prompt": "Credible institutional records facility with reception identity checkpoint, controlled inner doorway, compartmented records rooms, locked cabinets and a physically separate backup vault; architecture alone suggests defence in depth; no overlays or icons.",
+      "review": "approved",
+      "reviewNotes": "Replacement candidate contains no floating security icons or invented data paths. The technical role of each digital control is supplied outside the image."
+    },
+    {
+      "section": 7,
+      "path": "web/assets/course-v3/section-anchors/section-7-ethics.png",
+      "sha256": "2a840c9f1c664a7f70f362e9037e9f3f45a86250b3d6a6957d7fddd06c824b51",
+      "source": "/Users/kw/.codex/generated_images/01a05a80-5d9f-73c3-bae7-12c6e73cf49f/exec-7838683d-b34b-47af-9e60-73b28c90e444.png",
+      "prompt": "Formal technology review chamber with engineers, legal and public-interest representatives examining authorship, permission, public benefit, risk and environmental cost; balanced academic policy-journal scene; no text or robot cliché.",
+      "review": "approved",
+      "reviewNotes": "Stakeholder-review metaphor only; the page requires evidence-led ethical and licensing justification."
+    },
+    {
+      "section": 8,
+      "path": "web/assets/course-v3/section-anchors/section-8-databases.png",
+      "sha256": "75ec7361ac31d68173c16aff2b569785c1be5d23c5a7dbb81005f2ca1691c864",
+      "source": "/Users/kw/.codex/generated_images/01a05a80-5d9f-73c3-bae7-12c6e73cf49f/exec-b51f3d8b-630b-4e67-95e6-4fbbef3abe1e.png",
+      "prompt": "Professional research archive moving from duplicate loose folders to a disciplined central catalogue with related collections, controlled access and a separate backup; no literal ER diagram, keys or readable cards.",
+      "review": "approved",
+      "reviewNotes": "The physical archive is explicitly bounded from tables, keys, normal forms and SQL."
+    },
+    {
+      "section": 9,
+      "path": "web/assets/course-v3/section-anchors/section-9-algorithm-design.png",
+      "sha256": "47d10ee58c80e466d27d67a599e394176e87cfb9d949ff1c699eab142ce52cb4",
+      "source": "/Users/kw/.codex/generated_images/01a05a80-5d9f-73c3-bae7-12c6e73cf49f/exec-0d9d0cfb-46e4-475d-9add-6f267a002631.png",
+      "prompt": "Professional urban-planning studio decomposing a complex transport problem across abstraction, input-process-output, decisions, repeated patterns and progressive refinement; plans deliberately unreadable; no exact flowchart claim.",
+      "review": "approved",
+      "reviewNotes": "Maps contain no readable labels. Exact flowchart and pseudocode conventions are rendered separately."
+    },
+    {
+      "section": 10,
+      "path": "web/assets/course-v3/section-anchors/section-10-data-structures.png",
+      "sha256": "cddaf3bda4832f420e69fd39c9999a5152a5bdfed05e0d46fff8d64df7f8468e",
+      "source": "/Users/kw/.codex/generated_images/01a05a80-5d9f-73c3-bae7-12c6e73cf49f/exec-cffc34ec-a6aa-49fc-a308-73fb08a9915d.png",
+      "prompt": "Serious research archive showing physical analogies for a one-ended tray tower, orderly waiting line, linked movable containers, uniform drawer grid and multi-field case folders; not a technical ADT diagram; no labels.",
+      "review": "approved",
+      "reviewNotes": "The objects do not define LIFO/FIFO/link behaviour. Those rules and operations are explicitly stated in page components."
+    },
+    {
+      "section": 11,
+      "path": "web/assets/course-v3/section-anchors/section-11-programming.png",
+      "sha256": "7134089e5ea08cddc065d4b7eae9384cea866bd2b424770258d8c2eff79e95e6",
+      "source": "/Users/kw/.codex/generated_images/01a05a80-5d9f-73c3-bae7-12c6e73cf49f/exec-6ebdb3b9-e32c-46e8-b04a-a67f02378d1a.png",
+      "prompt": "Disciplined scientific analysis laboratory separating a complex job into reusable action and value-producing modules with input and result trays whose returned results are combined centrally; no code or syntax labels.",
+      "review": "approved",
+      "reviewNotes": "The visual only introduces modularity. Procedure/function interfaces and return semantics are provided by complete pseudocode."
+    },
+    {
+      "section": 12,
+      "path": "web/assets/course-v3/section-anchors/section-12-development.png",
+      "sha256": "4208bf53147fc4a3df2ae9ed48a6b870210ee6e0aff10e7e893309248011a8ce",
+      "source": "/Users/kw/.codex/generated_images/01a05a80-5d9f-73c3-bae7-12c6e73cf49f/exec-8a752420-0a22-46e3-9907-9d8222bb30ac.png",
+      "prompt": "Professional engineering assurance laboratory with requirement analysis, design modelling, implementation, systematic test, fault diagnosis, acceptance and maintenance zones plus prototypes at different maturity; no lifecycle arrows or labels.",
+      "review": "approved",
+      "reviewNotes": "The scene does not impose a lifecycle order. Waterfall, iterative and RAD choices are taught in the adjacent comparison."
+    }
+  ],
+  "rejectedCandidates": [
+    {
+      "section": 6,
+      "source": "/Users/kw/.codex/generated_images/01a05a80-5d9f-73c3-bae7-12c6e73cf49f/exec-e5115f1f-60d2-4e89-a3c8-87afc2db6ce5.png",
+      "reason": "Rejected before use: uncontrolled floating icons, dotted paths and network overlays could be read as technical relationships not established by the prompt."
+    }
+  ]
+}

@@ -28,7 +28,76 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ### 1. DDL: CREATE DATABASE, CREATE TABLE with CHARACTER/VARCHAR/BOOLEAN/INTEGER/REAL/DATE/TIME, ALTER TABLE, primary and foreign keys (S8.09)
 
-**Concept relationships**
+**Atomic learning targets**
+
+- **S8.09.A01:** DDL
+- **S8.09.A02:** DATABASE
+- **S8.09.A03:** TABLE
+- **S8.09.A04:** CHARACTER
+- **S8.09.A05:** VARCHAR
+- **S8.09.A06:** BOOLEAN
+- **S8.09.A07:** INTEGER
+- **S8.09.A08:** REAL
+- **S8.09.A09:** DATE
+- **S8.09.A10:** TIME
+- **S8.09.A11:** ALTER
+- **S8.09.A12:** primary
+- **S8.09.A13:** foreign
+- **S8.09.A14:** REFERENCES
+
+**Core explanation**
+
+- Required DDL includes CREATE DATABASE, CREATE TABLE and ALTER TABLE. Field types include CHARACTER, VARCHAR, BOOLEAN, INTEGER, REAL, DATE and TIME.
+- Database design review: connect each file-based limitation to a relational or DBMS mechanism; use entity/table, record/tuple and field/attribute precisely; distinguish candidate, primary, secondary and foreign keys; classify one-to-one, one-to-many and many-to-many relationships; apply referential integrity and indexing; document the design with an E-R diagram; and explain or produce 1NF, 2NF and 3NF designs.
+- A PRIMARY KEY uniquely identifies a row. A FOREIGN KEY with REFERENCES links a field to a key in another table and supports referential integrity.
+- A query uses SELECT fields FROM a table, may filter rows with WHERE, sort with ORDER BY and form aggregate groups with GROUP BY. SUM totals values, COUNT counts rows or values, and AVG calculates a mean. An INNER JOIN uses ON to match at most two tables in the required AS queries.
+- AS DML questions use at most two tables. Write an explicit INNER JOIN between those tables and place the matching key condition after ON; use table-qualified field names where the same field name could be ambiguous.
+- A complete answer follows the scenario through design, statement and result. It does not claim that a primary key prevents every duplicate fact, that a secondary key must be unique, that normalisation guarantees correctness, or that a three-table/comma-style query is within the AS core boundary.
+
+**Mechanism or method**
+
+1. **Set up the required data and conditions** — Required DDL includes CREATE DATABASE, CREATE TABLE and ALTER TABLE.
+2. **Carry out the complete method** — Field types include CHARACTER, VARCHAR, BOOLEAN, INTEGER, REAL, DATE and TIME.
+3. **Trace or test the result** — Database design review: connect each file-based limitation to a relational or DBMS mechanism;
+
+#### Worked example: DDL: CREATE DATABASE, CREATE TABLE with CHARACTER/VARCHAR/BOOLEAN/INTEGER/REAL/DATE/TIME, ALTER TABLE, primary and foreign keys: complete worked route
+
+1. **Set up the required data and conditions**
+
+Required DDL includes CREATE DATABASE, CREATE TABLE and ALTER TABLE.
+
+2. **Carry out the complete method**
+
+Field types include CHARACTER, VARCHAR, BOOLEAN, INTEGER, REAL, DATE and TIME.
+
+3. **Trace or test the result**
+
+Database design review: connect each file-based limitation to a relational or DBMS mechanism;
+
+4. **Complete example**
+
+Define two related tables / List overdue borrowers: CREATE DATABASE College; then CREATE TABLE Department and CREATE TABLE Student. Student uses INTEGER for StudentID, VARCHAR for Name, DATE for DateOfBirth, BOOLEAN for Active and a DepartmentID foreign key REFERENCES Department(DepartmentID). ALTER TABLE can modify the structure later. SELECT Student.StudentName FROM Student INNER JOIN Loan ON Student.StudentID = Loan.StudentID WHERE Loan.DueDate < '2027-05-01'; uses two tables, one explicit join condition and one separate filter.
+
+**Misconceptions to correct**
+
+- Students often select every field with *. Correction: exam questions usually specify exactly which fields are required.
+
+#### Mastery check (MC-L044-S8.09)
+
+Complete a fresh example that demonstrates every target: DDL; DATABASE; TABLE; CHARACTER; VARCHAR; BOOLEAN; INTEGER; REAL; DATE; TIME; ALTER; primary; foreign; REFERENCES. Show all intermediate steps and check the result.
+
+<details><summary>Answer criteria</summary>
+
+- Required DDL includes CREATE DATABASE, CREATE TABLE and ALTER TABLE. Field types include CHARACTER, VARCHAR, BOOLEAN, INTEGER, REAL, DATE and TIME.
+- Database design review: connect each file-based limitation to a relational or DBMS mechanism; use entity/table, record/tuple and field/attribute precisely; distinguish candidate, primary, secondary and foreign keys; classify one-to-one, one-to-many and many-to-many relationships; apply referential integrity and indexing; document the design with an E-R diagram; and explain or produce 1NF, 2NF and 3NF designs.
+- A PRIMARY KEY uniquely identifies a row. A FOREIGN KEY with REFERENCES links a field to a key in another table and supports referential integrity.
+- A query uses SELECT fields FROM a table, may filter rows with WHERE, sort with ORDER BY and form aggregate groups with GROUP BY. SUM totals values, COUNT counts rows or values, and AVG calculates a mean. An INNER JOIN uses ON to match at most two tables in the required AS queries.
+- AS DML questions use at most two tables. Write an explicit INNER JOIN between those tables and place the matching key condition after ON; use table-qualified field names where the same field name could be ambiguous.
+- A complete answer follows the scenario through design, statement and result. It does not claim that a primary key prevents every duplicate fact, that a secondary key must be unique, that normalisation guarantees correctness, or that a three-table/comma-style query is within the AS core boundary.
+
+</details>
+
+**Supplementary concept map**
 
 - **DDL:** Required DDL includes CREATE DATABASE, CREATE TABLE and…
 - **DATABASE:** CREATE DATABASE, CREATE TABLE, ALTER TABLE, CHARACTER, VARCHAR(n),…
@@ -37,7 +106,7 @@ Ask the learner to give one accurate definition or method step before continuing
 - **VARCHAR:** A FOREIGN KEY with REFERENCES links a field…
 - **BOOLEAN:** Candidate, primary, secondary and foreign keys
 
-**Mechanism**
+**Supplementary three-step recap**
 
 1. **Identify structure and target data** — CREATE DATABASE, CREATE TABLE, ALTER TABLE, CHARACTER, VARCHAR(n), BOOLEAN, INTEGER, REAL, DATE, TIME, PRIMARY KEY(field) and FOREIGN KEY(field)…
 2. **Apply the database rule** — CREATE DATABASE, CREATE TABLE with CHARACTER/VARCHAR/BOOLEAN/INTEGER/REAL/DATE/TIME, ALTER TABLE, primary and foreign keys.
@@ -57,7 +126,61 @@ The syllabus requires CREATE DATABASE, CREATE TABLE, ALTER TABLE, CHARACTER, VAR
 
 ### 2. INSERT, DELETE and UPDATE to maintain data (S8.11)
 
-**Concept relationships**
+**Atomic learning targets**
+
+- **S8.11.A01:** INSERT
+- **S8.11.A02:** DELETE
+- **S8.11.A03:** UPDATE
+
+**Core explanation**
+
+- INSERT INTO adds a new row. Name the target fields when possible and supply values in the same order with types that match the table definition.
+- UPDATE changes values in existing rows. SET gives the new value and WHERE selects the rows; omitting WHERE can update every row.
+- DELETE FROM removes complete rows. WHERE selects which rows are deleted; use UPDATE instead when the record should remain but one field must change.
+- Before executing UPDATE or DELETE, test the WHERE condition with a SELECT query or otherwise verify which rows match. The condition is part of the data-safety reasoning, not optional punctuation.
+
+**Mechanism or method**
+
+1. **Choose add, change or remove** — Use INSERT for a new row, UPDATE for changed field values and DELETE when selected rows must be removed.
+2. **Match fields, values and conditions** — Check the table schema, field types and WHERE condition before constructing the statement.
+3. **Predict the affected rows** — State which rows are added, changed or removed and check that no unintended row matches.
+
+#### Worked example: Maintain one Student record safely
+
+1. **Insert**
+
+INSERT INTO Student (StudentID, StudentName, Active) VALUES (17, 'Mina', TRUE); adds one row.
+
+2. **Update**
+
+UPDATE Student SET Active = FALSE WHERE StudentID = 17; changes only Mina's Active field.
+
+3. **Delete**
+
+DELETE FROM Student WHERE StudentID = 17; removes the selected row when the record is no longer required.
+
+4. **Risk**
+
+Without WHERE, the UPDATE or DELETE statement could affect every row in Student.
+
+**Misconceptions to correct**
+
+- DELETE removes rows, not selected field values. UPDATE changes fields in rows that remain.
+
+#### Mastery check (MC-L044-S8.11)
+
+Complete a fresh example that demonstrates every target: INSERT; DELETE; UPDATE. Show all intermediate steps and check the result.
+
+<details><summary>Answer criteria</summary>
+
+- INSERT INTO adds a new row. Name the target fields when possible and supply values in the same order with types that match the table definition.
+- UPDATE changes values in existing rows. SET gives the new value and WHERE selects the rows; omitting WHERE can update every row.
+- DELETE FROM removes complete rows. WHERE selects which rows are deleted; use UPDATE instead when the record should remain but one field must change.
+- Before executing UPDATE or DELETE, test the WHERE condition with a SELECT query or otherwise verify which rows match. The condition is part of the data-safety reasoning, not optional punctuation.
+
+</details>
+
+**Supplementary concept map**
 
 - **INSERT:** Add a new record
 - **UPDATE:** Change existing records
@@ -65,11 +188,11 @@ The syllabus requires CREATE DATABASE, CREATE TABLE, ALTER TABLE, CHARACTER, VAR
 - **WHERE:** Limit affected records
 - **Safety:** Check the condition before execution
 
-**Mechanism**
+**Supplementary three-step recap**
 
-1. **Name both alternatives precisely** — INSERT, DELETE and UPDATE to maintain data.
-2. **Connect structure to consequence** — INSERT INTO, DELETE FROM and UPDATE as required data-maintenance statements.
-3. **Justify against the scenario** — INSERT adds a new row, DELETE removes matching rows, and UPDATE changes values in matching rows.
+1. **Choose add, change or remove** — Use INSERT for a new row, UPDATE for changed field values and DELETE when selected rows must be removed.
+2. **Match fields, values and conditions** — Check the table schema, field types and WHERE condition before constructing the statement.
+3. **Predict the affected rows** — State which rows are added, changed or removed and check that no unintended row matches.
 
 **DELETE FROM removes records:** Use DELETE only when the whole record should be removed. A missing condition can remove all records. Pattern:
 
@@ -121,7 +244,7 @@ the syllabus names INSERT INTO, DELETE FROM and UPDATE as required data-maintena
 
 </details>
 
-<details><summary>Open precise terminology and exam facts</summary>
+### Lesson technical reference
 
 - The syllabus requires CREATE DATABASE, CREATE TABLE, ALTER TABLE, CHARACTER, VARCHAR(n), BOOLEAN, INTEGER, REAL, DATE, TIME, PRIMARY KEY(field) and FOREIGN KEY(field) REFERENCES Table(Field). Each named item remains core.
 - the syllabus names INSERT INTO, DELETE FROM and UPDATE as required data-maintenance statements. Evidence must distinguish adding, removing and changing records and use WHERE when only selected records should be affected.
@@ -136,16 +259,6 @@ the syllabus names INSERT INTO, DELETE FROM and UPDATE as required data-maintena
 - DBMS and SQL review: identify data management/data dictionary, data modelling, logical schema, integrity, security/backup/access rights, developer interface and query processor. Distinguish DDL structure commands from DML query/maintenance commands, use every required data type and key clause, and keep SELECT queries to at most two tables with explicit INNER JOIN ... ON when two tables are needed.
 - A complete answer follows the scenario through design, statement and result. It does not claim that a primary key prevents every duplicate fact, that a secondary key must be unique, that normalisation guarantees correctness, or that a three-table/comma-style query is within the AS core boundary.
 
-</details>
-
-### Worked method
-
-1. Define two related tables
-2. List overdue borrowers
-3. CREATE DATABASE College; then CREATE TABLE Department and CREATE TABLE Student.
-4. Student uses INTEGER for StudentID, VARCHAR for Name, DATE for DateOfBirth, BOOLEAN for Active and a DepartmentID foreign key REFERENCES Department(DepartmentID).
-5. ALTER TABLE can modify the structure later.
-
 Beyond syllabus / 延伸知识（不要求背诵）: production databases also manage transactions and concurrent users; these ideas extend the syllabus model of integrity and access control.
 ## 3. Practice by question type
 
@@ -159,25 +272,25 @@ Write DDL to create a Student table with suitable data types, a primary key and 
 
 **Common error:** For the command word write, perform that exact action; do not replace it with an unrelated fact.
 
-### Question 2 - application - explain - 2 marks
+### Question 2 - application - write - 6 marks
 
-How many tables are required at most in the AS syllabus query?
+For Student(StudentID, StudentName, Active), write: (a) an INSERT statement adding StudentID 17 named Mina; (b) an UPDATE making that student's Active value FALSE; and (c) a DELETE removing only that student.
 
-**Answer:** Two.
+**Answer:** INSERT INTO Student (StudentID, StudentName, Active) VALUES (17, 'Mina', TRUE); UPDATE Student SET Active = FALSE WHERE StudentID = 17; DELETE FROM Student WHERE StudentID = 17;
 
-**Marking guidance:** Award one mark for each distinct, technically accurate point or method step.
+**Marking guidance:** Award statement keyword/structure, matching fields and values, and a safe WHERE condition for UPDATE and DELETE.
 
-**Common error:** Do not repeat the same point in different words; each mark needs a separate idea or method step.
+**Common error:** Without WHERE, UPDATE or DELETE can affect every row.
 
-### Question 3 - transfer - explain - 2 marks
+### Question 3 - transfer - explain - 4 marks
 
-Why qualify Student.StudentID and Loan.StudentID?
+Explain why UPDATE and DELETE normally need a checked WHERE condition, and distinguish changing a field from removing a row.
 
-**Answer:** To identify which table supplies each otherwise identical field name.
+**Answer:** WHERE limits the affected rows; an unchecked or missing condition can change/delete every row; UPDATE changes selected field values while retaining the row; DELETE removes the selected row
 
-**Marking guidance:** Award one mark for each distinct, technically accurate point or method step.
+**Marking guidance:** Require both the safety consequence and the UPDATE/DELETE distinction.
 
-**Common error:** Do not copy the worked example unchanged; transfer the method and check it against the new context.
+**Common error:** DELETE does not clear one field; it removes the row.
 
 ### Related past-paper indexes
 
@@ -194,10 +307,11 @@ These are indexes only. Cambridge question and mark-scheme wording is not reprod
 
 ### Summary
 
-- Define creating and maintaining database data with the exact technical vocabulary expected by the syllabus.
-- Use the lesson method on a fresh context and show the intermediate decision, representation or calculation.
-- Match the shape of the answer to the command word and the available marks.
-- Check the final answer against the scenario instead of repeating a memorised sentence.
+- S8.09: explain DDL, DATABASE, TABLE, CHARACTER, VARCHAR, BOOLEAN, INTEGER, REAL, DATE, TIME, ALTER, primary, foreign, REFERENCES.
+- S8.09 method: Set up the required data and conditions → Carry out the complete method → Trace or test the result.
+- S8.11: explain INSERT, DELETE, UPDATE.
+- S8.11 method: Choose add, change or remove → Match fields, values and conditions → Predict the affected rows.
+- Correction to remember: Students often select every field with *. Correction: exam questions usually specify exactly which fields are required.
 
 ### Common error to correct
 

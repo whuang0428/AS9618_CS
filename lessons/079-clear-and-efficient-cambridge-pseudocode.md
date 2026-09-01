@@ -24,7 +24,62 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ### 1. Clear and efficient Cambridge pseudocode (S11.09)
 
-**Concept relationships**
+**Atomic learning targets**
+
+- **S11.09.A01:** clear
+- **S11.09.A02:** efficient
+- **S11.09.A03:** Cambridge
+- **S11.09.A04:** pseudocode
+
+**Core explanation**
+
+- Efficiency does not justify incorrect bounds, hidden assumptions or compressed code that cannot be traced. A strong answer remains clear: initialise once, access only valid data, avoid redundant calculations and use meaningful identifiers and coherent constructs.
+- Efficient pseudocode avoids unnecessary repeated work and selects a structure suited to the data and stopping rule. For example, total and count can be updated during one traversal instead of scanning the same array twice when both results are needed.
+- Clear Cambridge pseudocode uses meaningful identifiers, consistent indentation, complete Cambridge constructs and a traceable control path. Efficient pseudocode avoids unnecessary repeated work while preserving correctness.
+- At AS Level, justify an improvement from the actual algorithm, such as fewer repeated passes or stopping a search once the target is found. Do not claim that shorter text alone proves a more efficient algorithm.
+
+**Mechanism or method**
+
+1. **Set up the required data and conditions** — Efficiency does not justify incorrect bounds, hidden assumptions or compressed code that cannot be traced.
+2. **Carry out the complete method** — A strong answer remains clear: initialise once, access only valid data, avoid redundant calculations and use meaningful identifiers and coherent constructs.
+3. **Trace or test the result** — Efficient pseudocode avoids unnecessary repeated work and selects a structure suited to the data and stopping rule.
+
+#### Worked example: Clear and efficient Cambridge pseudocode: complete worked route
+
+1. **Set up the required data and conditions**
+
+Efficiency does not justify incorrect bounds, hidden assumptions or compressed code that cannot be traced.
+
+2. **Carry out the complete method**
+
+A strong answer remains clear: initialise once, access only valid data, avoid redundant calculations and use meaningful identifiers and coherent constructs.
+
+3. **Trace or test the result**
+
+Efficient pseudocode avoids unnecessary repeated work and selects a structure suited to the data and stopping rule.
+
+4. **Complete example**
+
+This preserves clear control flow while avoiding a second full traversal. The Cambridge pseudocode remains clear because initialisation, loop bounds, selection and outputs are explicit.
+
+**Misconceptions to correct**
+
+- Students often think working Java automatically means good pseudocode. Correction: Paper 2 rewards clear Cambridge-style algorithm expression.
+
+#### Mastery check (MC-L079-S11.09)
+
+Complete a fresh example that demonstrates every target: clear; efficient; Cambridge; pseudocode. Show all intermediate steps and check the result.
+
+<details><summary>Answer criteria</summary>
+
+- Efficiency does not justify incorrect bounds, hidden assumptions or compressed code that cannot be traced. A strong answer remains clear: initialise once, access only valid data, avoid redundant calculations and use meaningful identifiers and coherent constructs.
+- Efficient pseudocode avoids unnecessary repeated work and selects a structure suited to the data and stopping rule. For example, total and count can be updated during one traversal instead of scanning the same array twice when both results are needed.
+- Clear Cambridge pseudocode uses meaningful identifiers, consistent indentation, complete Cambridge constructs and a traceable control path. Efficient pseudocode avoids unnecessary repeated work while preserving correctness.
+- At AS Level, justify an improvement from the actual algorithm, such as fewer repeated passes or stopping a search once the target is found. Do not claim that shorter text alone proves a more efficient algorithm.
+
+</details>
+
+**Supplementary concept map**
 
 - **Identifiers:** Names reveal purpose
 - **Indentation:** Shows nested control structure
@@ -33,7 +88,7 @@ Ask the learner to give one accurate definition or method step before continuing
 - **Correctness:** Optimisation must preserve results
 - **clear:** Clear and efficient Cambridge pseudocode.
 
-**Mechanism**
+**Supplementary three-step recap**
 
 1. **Translate the stated design** — Clear and efficient Cambridge pseudocode.
 2. **Apply one complete operation** — Clear Cambridge pseudocode uses meaningful identifiers, consistent indentation, complete Cambridge constructs and a traceable control path.
@@ -67,23 +122,13 @@ Write efficient pseudocode.
 
 </details>
 
-<details><summary>Open precise terminology and exam facts</summary>
+### Lesson technical reference
 
 - Write efficient pseudocode.
 - Efficient pseudocode avoids unnecessary repeated work and selects a structure suited to the data and stopping rule. For example, total and count can be updated during one traversal instead of scanning the same array twice when both results are needed.
 - Efficiency does not justify incorrect bounds, hidden assumptions or compressed code that cannot be traced. A strong answer remains clear: initialise once, access only valid data, avoid redundant calculations and use meaningful identifiers and coherent constructs.
 - At AS Level, justify an improvement from the actual algorithm, such as fewer repeated passes or stopping a search once the target is found. Do not claim that shorter text alone proves a more efficient algorithm.
 - Clear Cambridge pseudocode uses meaningful identifiers, consistent indentation, complete Cambridge constructs and a traceable control path. Efficient pseudocode avoids unnecessary repeated work while preserving correctness.
-
-</details>
-
-### Worked method
-
-1. Count passes and total in one traversal
-2. Combine two traversals
-3. Set Total and PassCount to 0 before one FOR loop through Marks[1:30].
-4. Add each mark to Total and increment PassCount only when the mark is at least 50.
-5. Output both values after NEXT Index.
 
 Beyond syllabus / 延伸知识（不要求背诵）: consistent style, modularity and automated tests reduce maintenance errors in larger programs.
 ## 3. Practice by question type
@@ -122,10 +167,9 @@ Does shorter code always mean more efficient code?
 
 ### Summary
 
-- Define clear and efficient cambridge pseudocode with the exact technical vocabulary expected by the syllabus.
-- Use the lesson method on a fresh context and show the intermediate decision, representation or calculation.
-- Match the shape of the answer to the command word and the available marks.
-- Check the final answer against the scenario instead of repeating a memorised sentence.
+- S11.09: explain clear, efficient, Cambridge, pseudocode.
+- S11.09 method: Set up the required data and conditions → Carry out the complete method → Trace or test the result.
+- Correction to remember: Students often think working Java automatically means good pseudocode. Correction: Paper 2 rewards clear Cambridge-style algorithm expression.
 
 ### Common error to correct
 

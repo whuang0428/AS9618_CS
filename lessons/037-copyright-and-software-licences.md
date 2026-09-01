@@ -28,7 +28,62 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ### 1. The need for copyright legislation for software (S7.04)
 
-**Concept relationships**
+**Atomic learning targets**
+
+- **S7.04.A01:** copyright
+- **S7.04.A02:** software
+- **S7.04.A03:** legislation
+- **S7.04.A04:** needed
+
+**Core explanation**
+
+- Copyright legislation is needed because software can be copied and distributed at very low cost while its creation requires time, skill and investment. It gives the copyright holder legal control over protected expression such as source code and documentation, including copying, distribution and adaptation, so unauthorised use can be challenged and creators can license work and receive revenue. Copyright protects expression rather than every abstract idea, and a limited legal exception is not permission for unrestricted copying.
+- A software licence is the copyright holder's permission to use protected work under stated conditions; paying for or downloading software does not normally transfer ownership. The licence may allow or restrict installation, copying, modification and redistribution. Copyright legislation establishes the rights, while the licence defines which of those acts the user is permitted to perform.
+- The Free Software Foundation (FSF) emphasises freedoms to run, study, modify and share software; source access is necessary for study and modification. The Open Source Initiative (OSI) defines open-source criteria and approves licences that meet them. Free/open-source software can still be sold and remains protected by copyright; users must follow conditions such as preserving notices, attribution or sharing derivative source under compatible terms.
+- Copyright legislation is needed to give creators enforceable control over software expression that can otherwise be copied and distributed cheaply. A licence grants permission without normally transferring ownership. The required licence categories are the Free Software Foundation (FSF), Open Source Initiative (OSI), shareware and commercial software; justify a choice from the scenario's permissions, restrictions, support, cost and redistribution needs.
+
+**Mechanism or method**
+
+1. **Establish the exact components or states** — Copyright legislation is needed because software can be copied and distributed at very low cost while its creation requires time, skill and investment.
+2. **Trace the relationship or change** — It gives the copyright holder legal control over protected expression such as source code and documentation, including copying, distribution and adaptation, so unauthorised use can be challenged and creators can license work and receive revenue.
+3. **Use the explanation in a concrete case** — Copyright protects expression rather than every abstract idea, and a limited legal exception is not permission for unrestricted copying.
+
+#### Worked example: The need for copyright legislation for software: complete worked route
+
+1. **Establish the exact components or states**
+
+Copyright legislation is needed because software can be copied and distributed at very low cost while its creation requires time, skill and investment.
+
+2. **Trace the relationship or change**
+
+It gives the copyright holder legal control over protected expression such as source code and documentation, including copying, distribution and adaptation, so unauthorised use can be challenged and creators can license work and receive revenue.
+
+3. **Use the explanation in a concrete case**
+
+Copyright protects expression rather than every abstract idea, and a limited legal exception is not permission for unrestricted copying.
+
+4. **Complete example**
+
+Copyright still protects the code, so visibility alone is not permission.
+
+**Misconceptions to correct**
+
+- Students often write personal opinions only. Correction: ethics answers need stakeholders, evidence and balanced judgement.
+
+#### Mastery check (MC-L037-S7.04)
+
+Show the following targets in one connected answer, using a concrete example for each: copyright; software; legislation; needed.
+
+<details><summary>Answer criteria</summary>
+
+- Copyright legislation is needed because software can be copied and distributed at very low cost while its creation requires time, skill and investment. It gives the copyright holder legal control over protected expression such as source code and documentation, including copying, distribution and adaptation, so unauthorised use can be challenged and creators can license work and receive revenue. Copyright protects expression rather than every abstract idea, and a limited legal exception is not permission for unrestricted copying.
+- A software licence is the copyright holder's permission to use protected work under stated conditions; paying for or downloading software does not normally transfer ownership. The licence may allow or restrict installation, copying, modification and redistribution. Copyright legislation establishes the rights, while the licence defines which of those acts the user is permitted to perform.
+- The Free Software Foundation (FSF) emphasises freedoms to run, study, modify and share software; source access is necessary for study and modification. The Open Source Initiative (OSI) defines open-source criteria and approves licences that meet them. Free/open-source software can still be sold and remains protected by copyright; users must follow conditions such as preserving notices, attribution or sharing derivative source under compatible terms.
+- Copyright legislation is needed to give creators enforceable control over software expression that can otherwise be copied and distributed cheaply. A licence grants permission without normally transferring ownership. The required licence categories are the Free Software Foundation (FSF), Open Source Initiative (OSI), shareware and commercial software; justify a choice from the scenario's permissions, restrictions, support, cost and redistribution needs.
+
+</details>
+
+**Supplementary concept map**
 
 - **needed:** Copyright legislation is needed to give creators enforceable…
 - **copyright:** Copyright legislation is needed because software can be…
@@ -36,7 +91,7 @@ Ask the learner to give one accurate definition or method step before continuing
 - **legislation:** The need for copyright legislation, not only a…
 - **understanding:** A software licence is the copyright holder's permission…
 
-**Mechanism**
+**Supplementary three-step recap**
 
 1. **Identify who is affected** — Copyright legislation is needed to give creators enforceable control over software expression that can otherwise be copied and…
 2. **Trace benefit and harm** — Copyright legislation is needed because software can be copied and distributed at very low cost while its creation…
@@ -67,7 +122,68 @@ The syllabus requires the need for copyright legislation, not only a definition.
 
 ### 2. Different software licensing types and justify a licence for a given situation (S7.05)
 
-**Concept relationships**
+**Atomic learning targets**
+
+- **S7.05.A01:** FSF
+- **S7.05.A02:** OSI
+- **S7.05.A03:** shareware
+- **S7.05.A04:** commercial
+- **S7.05.A05:** licences
+- **S7.05.A06:** licence
+
+**Core explanation**
+
+- The Free Software Foundation (FSF) emphasises freedoms to run, study, modify and share software; source access is necessary for study and modification. The Open Source Initiative (OSI) defines open-source criteria and approves licences that meet them. Free/open-source software can still be sold and remains protected by copyright; users must follow conditions such as preserving notices, attribution or sharing derivative source under compatible terms.
+- Copyright legislation is needed to give creators enforceable control over software expression that can otherwise be copied and distributed cheaply. A licence grants permission without normally transferring ownership. The required licence categories are the Free Software Foundation (FSF), Open Source Initiative (OSI), shareware and commercial software; justify a choice from the scenario's permissions, restrictions, support, cost and redistribution needs.
+- A software licence is the copyright holder's permission to use protected work under stated conditions; paying for or downloading software does not normally transfer ownership. The licence may allow or restrict installation, copying, modification and redistribution. Copyright legislation establishes the rights, while the licence defines which of those acts the user is permitted to perform.
+- Shareware is distributed for trial or limited use, with payment commonly required for continued, full or unrestricted use. A commercial/proprietary licence grants defined use while normally restricting copying, modification and redistribution.
+- Licence choice must fit the scenario: budget, support, source modification, redistribution, trial period, compatibility and legal obligations are relevant. 'Free to download' does not mean public domain.
+- The required licence categories include FSF and OSI open-source licences, shareware and commercial software. A justified licence choice links its permissions, restrictions and cost to the stated situation.
+
+**Mechanism or method**
+
+1. **Identify the relevant condition or input** — The Free Software Foundation (FSF) emphasises freedoms to run, study, modify and share software;
+2. **Trace how the process works** — source access is necessary for study and modification.
+3. **Connect the mechanism to its result** — The Open Source Initiative (OSI) defines open-source criteria and approves licences that meet them.
+
+#### Worked example: Different software licensing types and justify a licence for a given situation: complete worked route
+
+1. **Identify the relevant condition or input**
+
+The Free Software Foundation (FSF) emphasises freedoms to run, study, modify and share software;
+
+2. **Trace how the process works**
+
+source access is necessary for study and modification.
+
+3. **Connect the mechanism to its result**
+
+The Open Source Initiative (OSI) defines open-source criteria and approves licences that meet them.
+
+4. **Complete example**
+
+Modify and redistribute a library: A developer finds source code in a public repository. An OSI-approved licence may allow modification and redistribution, while an FSF-aligned copyleft licence may require a distributed derivative to preserve notices and use compatible terms. The developer must check and follow the exact licence before copying the library into a product.
+
+**Misconceptions to correct**
+
+- Students often write personal opinions only. Correction: ethics answers need stakeholders, evidence and balanced judgement.
+
+#### Mastery check (MC-L037-S7.05)
+
+Explain the following targets in one connected answer, using a concrete example for each: FSF; OSI; shareware; commercial; licences; licence.
+
+<details><summary>Answer criteria</summary>
+
+- The Free Software Foundation (FSF) emphasises freedoms to run, study, modify and share software; source access is necessary for study and modification. The Open Source Initiative (OSI) defines open-source criteria and approves licences that meet them. Free/open-source software can still be sold and remains protected by copyright; users must follow conditions such as preserving notices, attribution or sharing derivative source under compatible terms.
+- Copyright legislation is needed to give creators enforceable control over software expression that can otherwise be copied and distributed cheaply. A licence grants permission without normally transferring ownership. The required licence categories are the Free Software Foundation (FSF), Open Source Initiative (OSI), shareware and commercial software; justify a choice from the scenario's permissions, restrictions, support, cost and redistribution needs.
+- A software licence is the copyright holder's permission to use protected work under stated conditions; paying for or downloading software does not normally transfer ownership. The licence may allow or restrict installation, copying, modification and redistribution. Copyright legislation establishes the rights, while the licence defines which of those acts the user is permitted to perform.
+- Shareware is distributed for trial or limited use, with payment commonly required for continued, full or unrestricted use. A commercial/proprietary licence grants defined use while normally restricting copying, modification and redistribution.
+- Licence choice must fit the scenario: budget, support, source modification, redistribution, trial period, compatibility and legal obligations are relevant. 'Free to download' does not mean public domain.
+- The required licence categories include FSF and OSI open-source licences, shareware and commercial software. A justified licence choice links its permissions, restrictions and cost to the stated situation.
+
+</details>
+
+**Supplementary concept map**
 
 - **licences:** The required licence categories include FSF and OSI…
 - **licence:** Different software licensing types and justify a licence…
@@ -76,7 +192,7 @@ The syllabus requires the need for copyright legislation, not only a definition.
 - **shareware:** The Free Software Foundation, Open Source Initiative, shareware…
 - **commercial:** A commercial/proprietary licence grants defined use while normally…
 
-**Mechanism**
+**Supplementary three-step recap**
 
 1. **Identify who is affected** — Different software licensing types and justify a licence for a given situation.
 2. **Trace benefit and harm** — The required licence categories include FSF and OSI open-source licences, shareware and commercial software.
@@ -113,7 +229,7 @@ The syllabus explicitly includes the Free Software Foundation, Open Source Initi
 
 </details>
 
-<details><summary>Open precise terminology and exam facts</summary>
+### Lesson technical reference
 
 - The syllabus requires the need for copyright legislation, not only a definition. Evidence must connect protected software expression and restricted acts to enforceable permission, revenue or investment.
 - The syllabus explicitly includes the Free Software Foundation, Open Source Initiative, shareware and commercial software. All four must be taught; a scenario answer must justify permissions, restrictions, cost or support rather than choose by label alone.
@@ -125,16 +241,6 @@ The syllabus explicitly includes the Free Software Foundation, Open Source Initi
 - Licence choice must fit the scenario: budget, support, source modification, redistribution, trial period, compatibility and legal obligations are relevant. 'Free to download' does not mean public domain.
 - Professional ethics has a purpose: computing professionals must protect public interest, work competently and remain accountable for consequences. Joining a professional ethical body such as the British Computer Society (BCS) or the Institute of Electrical and Electronics Engineers (IEEE) provides codes of conduct, guidance, continuing professional development and a community that supports standards. In a situation, judge whether action is ethical or unethical and explain stakeholder impacts of both choices.
 - Copyright legislation is needed to give creators enforceable control over software expression that can otherwise be copied and distributed cheaply. A licence grants permission without normally transferring ownership. The required licence categories are the Free Software Foundation (FSF), Open Source Initiative (OSI), shareware and commercial software; justify a choice from the scenario's permissions, restrictions, support, cost and redistribution needs.
-
-</details>
-
-### Worked method
-
-1. Modify and redistribute a library
-2. A developer finds source code in a public repository.
-3. Copyright still protects the code, so visibility alone is not permission.
-4. An OSI-approved licence may allow modification and redistribution, while an FSF-aligned copyleft licence may require a distributed derivative to preserve notices and use compatible terms.
-5. The developer must check and follow the exact licence before copying the library into a product.
 
 Beyond syllabus / 延伸知识（不要求背诵）: professional decisions are often reviewed against law, organisational policy, public interest and a published code of conduct.
 ## 3. Practice by question type
@@ -184,10 +290,11 @@ These are indexes only. Cambridge question and mark-scheme wording is not reprod
 
 ### Summary
 
-- Define copyright and software licences with the exact technical vocabulary expected by the syllabus.
-- Use the lesson method on a fresh context and show the intermediate decision, representation or calculation.
-- Match the shape of the answer to the command word and the available marks.
-- Check the final answer against the scenario instead of repeating a memorised sentence.
+- S7.04: explain copyright, software, legislation, needed.
+- S7.04 method: Establish the exact components or states → Trace the relationship or change → Use the explanation in a concrete case.
+- S7.05: explain FSF, OSI, shareware, commercial, licences, licence.
+- S7.05 method: Identify the relevant condition or input → Trace how the process works → Connect the mechanism to its result.
+- Correction to remember: Students often write personal opinions only. Correction: ethics answers need stakeholders, evidence and balanced judgement.
 
 ### Common error to correct
 

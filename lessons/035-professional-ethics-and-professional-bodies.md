@@ -24,7 +24,59 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ### 1. The need for and purpose of ethics as a computing professional (S7.01)
 
-**Concept relationships**
+**Atomic learning targets**
+
+- **S7.01.A01:** professional
+- **S7.01.A02:** ethics
+- **S7.01.A03:** purpose
+
+**Core explanation**
+
+- Joining a professional ethical body is important because membership gives a practitioner an explicit code of conduct, current professional guidance, continuing professional development and a community through which standards and misconduct can be challenged. The British Computer Society (BCS) and the Institute of Electrical and Electronics Engineers (IEEE) are the two named syllabus examples. Their codes promote public interest, competence, integrity, privacy and accountability; a code guides judgement but does not replace law.
+- Professional ethics has a purpose: computing professionals must protect public interest, work competently and remain accountable for consequences. Joining a professional ethical body such as the British Computer Society (BCS) or the Institute of Electrical and Electronics Engineers (IEEE) provides codes of conduct, guidance, continuing professional development and a community that supports standards. In a situation, judge whether action is ethical or unethical and explain stakeholder impacts of both choices.
+- Professional ethics provides principles for deciding how a computing professional should act when technical choices can affect clients, users, colleagues or wider society. Its purpose is to protect the public interest, support competent and honest work, and make professionals accountable for foreseeable consequences rather than treating legal compliance or a manager's instruction as the whole decision.
+
+**Mechanism or method**
+
+1. **Establish the exact components or states** — Joining a professional ethical body is important because membership gives a practitioner an explicit code of conduct, current professional guidance, continuing professional development and a community through which standards and misconduct can be challenged.
+2. **Trace the relationship or change** — The British Computer Society (BCS) and the Institute of Electrical and Electronics Engineers (IEEE) are the two named syllabus examples.
+3. **Use the explanation in a concrete case** — Their codes promote public interest, competence, integrity, privacy and accountability;
+
+#### Worked example: The need for and purpose of ethics as a computing professional: complete worked route
+
+1. **Establish the exact components or states**
+
+Joining a professional ethical body is important because membership gives a practitioner an explicit code of conduct, current professional guidance, continuing professional development and a community through which standards and misconduct can be challenged.
+
+2. **Trace the relationship or change**
+
+The British Computer Society (BCS) and the Institute of Electrical and Electronics Engineers (IEEE) are the two named syllabus examples.
+
+3. **Use the explanation in a concrete case**
+
+Their codes promote public interest, competence, integrity, privacy and accountability;
+
+4. **Complete example**
+
+The developer acts ethically by documenting the risk, refusing to falsify the record and escalating through BCS/IEEE-style professional channels.
+
+**Misconceptions to correct**
+
+- Students often write personal opinions only. Correction: ethics answers need stakeholders, evidence and balanced judgement.
+
+#### Mastery check (MC-L035-S7.01)
+
+Show the following targets in one connected answer, using a concrete example for each: professional; ethics; purpose.
+
+<details><summary>Answer criteria</summary>
+
+- Joining a professional ethical body is important because membership gives a practitioner an explicit code of conduct, current professional guidance, continuing professional development and a community through which standards and misconduct can be challenged. The British Computer Society (BCS) and the Institute of Electrical and Electronics Engineers (IEEE) are the two named syllabus examples. Their codes promote public interest, competence, integrity, privacy and accountability; a code guides judgement but does not replace law.
+- Professional ethics has a purpose: computing professionals must protect public interest, work competently and remain accountable for consequences. Joining a professional ethical body such as the British Computer Society (BCS) or the Institute of Electrical and Electronics Engineers (IEEE) provides codes of conduct, guidance, continuing professional development and a community that supports standards. In a situation, judge whether action is ethical or unethical and explain stakeholder impacts of both choices.
+- Professional ethics provides principles for deciding how a computing professional should act when technical choices can affect clients, users, colleagues or wider society. Its purpose is to protect the public interest, support competent and honest work, and make professionals accountable for foreseeable consequences rather than treating legal compliance or a manager's instruction as the whole decision.
+
+</details>
+
+**Supplementary concept map**
 
 - **Public interest:** Avoid preventable harm
 - **Competence:** Work within proven ability
@@ -33,7 +85,7 @@ Ask the learner to give one accurate definition or method step before continuing
 - **professional:** The need for and purpose of ethics as…
 - **purpose:** Both the need for professional ethics and its…
 
-**Mechanism**
+**Supplementary three-step recap**
 
 1. **Identify who is affected** — The need for and purpose of ethics as a computing professional.
 2. **Trace benefit and harm** — Both the need for professional ethics and its purpose
@@ -64,7 +116,65 @@ The syllabus requires both the need for professional ethics and its purpose; evi
 
 ### 2. The importance of joining a professional ethical body, including BCS and IEEE (S7.02)
 
-**Concept relationships**
+**Atomic learning targets**
+
+- **S7.02.A01:** joining
+- **S7.02.A02:** British
+- **S7.02.A03:** Computer
+- **S7.02.A04:** Society
+- **S7.02.A05:** IEEE
+- **S7.02.A06:** codes
+- **S7.02.A07:** conduct
+
+**Core explanation**
+
+- Joining a professional ethical body is important because membership gives a practitioner an explicit code of conduct, current professional guidance, continuing professional development and a community through which standards and misconduct can be challenged. The British Computer Society (BCS) and the Institute of Electrical and Electronics Engineers (IEEE) are the two named syllabus examples. Their codes promote public interest, competence, integrity, privacy and accountability; a code guides judgement but does not replace law.
+- Professional ethics has a purpose: computing professionals must protect public interest, work competently and remain accountable for consequences. Joining a professional ethical body such as the British Computer Society (BCS) or the Institute of Electrical and Electronics Engineers (IEEE) provides codes of conduct, guidance, continuing professional development and a community that supports standards. In a situation, judge whether action is ethical or unethical and explain stakeholder impacts of both choices.
+- Professional ethics provides principles for deciding how a computing professional should act when technical choices can affect clients, users, colleagues or wider society. Its purpose is to protect the public interest, support competent and honest work, and make professionals accountable for foreseeable consequences rather than treating legal compliance or a manager's instruction as the whole decision.
+- The importance of joining a professional ethical body, including BCS and IEEE.
+
+**Mechanism or method**
+
+1. **Establish the exact components or states** — Joining a professional ethical body is important because membership gives a practitioner an explicit code of conduct, current professional guidance, continuing professional development and a community through which standards and misconduct can be challenged.
+2. **Trace the relationship or change** — The British Computer Society (BCS) and the Institute of Electrical and Electronics Engineers (IEEE) are the two named syllabus examples.
+3. **Use the explanation in a concrete case** — Their codes promote public interest, competence, integrity, privacy and accountability;
+
+#### Worked example: The importance of joining a professional ethical body, including BCS and IEEE: complete worked route
+
+1. **Establish the exact components or states**
+
+Joining a professional ethical body is important because membership gives a practitioner an explicit code of conduct, current professional guidance, continuing professional development and a community through which standards and misconduct can be challenged.
+
+2. **Trace the relationship or change**
+
+The British Computer Society (BCS) and the Institute of Electrical and Electronics Engineers (IEEE) are the two named syllabus examples.
+
+3. **Use the explanation in a concrete case**
+
+Their codes promote public interest, competence, integrity, privacy and accountability;
+
+4. **Complete example**
+
+The developer acts ethically by documenting the risk, refusing to falsify the record and escalating through BCS/IEEE-style professional channels.
+
+**Misconceptions to correct**
+
+- Students often write personal opinions only. Correction: ethics answers need stakeholders, evidence and balanced judgement.
+
+#### Mastery check (MC-L035-S7.02)
+
+Show the following targets in one connected answer, using a concrete example for each: joining; British; Computer; Society; IEEE; codes; conduct.
+
+<details><summary>Answer criteria</summary>
+
+- Joining a professional ethical body is important because membership gives a practitioner an explicit code of conduct, current professional guidance, continuing professional development and a community through which standards and misconduct can be challenged. The British Computer Society (BCS) and the Institute of Electrical and Electronics Engineers (IEEE) are the two named syllabus examples. Their codes promote public interest, competence, integrity, privacy and accountability; a code guides judgement but does not replace law.
+- Professional ethics has a purpose: computing professionals must protect public interest, work competently and remain accountable for consequences. Joining a professional ethical body such as the British Computer Society (BCS) or the Institute of Electrical and Electronics Engineers (IEEE) provides codes of conduct, guidance, continuing professional development and a community that supports standards. In a situation, judge whether action is ethical or unethical and explain stakeholder impacts of both choices.
+- Professional ethics provides principles for deciding how a computing professional should act when technical choices can affect clients, users, colleagues or wider society. Its purpose is to protect the public interest, support competent and honest work, and make professionals accountable for foreseeable consequences rather than treating legal compliance or a manager's instruction as the whole decision.
+- The importance of joining a professional ethical body, including BCS and IEEE.
+
+</details>
+
+**Supplementary concept map**
 
 - **joining:** Joining a professional ethical body such as the…
 - **British:** BCS (British Computer Society) and IEEE (Institute of…
@@ -73,7 +183,7 @@ The syllabus requires both the need for professional ethics and its purpose; evi
 - **IEEE:** The importance of joining a professional ethical body,…
 - **codes:** Their codes promote public interest, competence, integrity, privacy…
 
-**Mechanism**
+**Supplementary three-step recap**
 
 1. **Identify who is affected** — Joining a professional ethical body such as the British Computer Society (BCS) or the Institute of Electrical and…
 2. **Trace benefit and harm** — The importance of joining a professional ethical body, including BCS and IEEE.
@@ -91,7 +201,7 @@ the syllabus names BCS (British Computer Society) and IEEE (Institute of Electri
 
 </details>
 
-<details><summary>Open precise terminology and exam facts</summary>
+### Lesson technical reference
 
 - The syllabus requires both the need for professional ethics and its purpose; evidence must connect responsible professional decisions to public interest, competence and accountability.
 - the syllabus names BCS (British Computer Society) and IEEE (Institute of Electrical and Electronics Engineers). Evidence must teach why joining matters, not merely expand the abbreviations or mention a code.
@@ -99,16 +209,6 @@ the syllabus names BCS (British Computer Society) and IEEE (Institute of Electri
 - Joining a professional ethical body is important because membership gives a practitioner an explicit code of conduct, current professional guidance, continuing professional development and a community through which standards and misconduct can be challenged. The British Computer Society (BCS) and the Institute of Electrical and Electronics Engineers (IEEE) are the two named syllabus examples. Their codes promote public interest, competence, integrity, privacy and accountability; a code guides judgement but does not replace law.
 - For a given situation, decide whether an action is ethical or unethical by identifying the decision, affected stakeholders, benefits, harms, rights and responsibilities. Then explain the impact of acting ethically and the impact of acting unethically. A defensible conclusion applies evidence, proportionality and safeguards; it is not a one-sided list or an unsupported personal opinion.
 - Professional ethics has a purpose: computing professionals must protect public interest, work competently and remain accountable for consequences. Joining a professional ethical body such as the British Computer Society (BCS) or the Institute of Electrical and Electronics Engineers (IEEE) provides codes of conduct, guidance, continuing professional development and a community that supports standards. In a situation, judge whether action is ethical or unethical and explain stakeholder impacts of both choices.
-
-</details>
-
-### Worked method
-
-1. Unsafe release pressure
-2. A developer is told to hide failed safety tests so a medical system can launch on time.
-3. Concealing the evidence would be unethical because patients could be harmed and trust would be damaged.
-4. The developer acts ethically by documenting the risk, refusing to falsify the record and escalating through BCS/IEEE-style professional channels.
-5. This may delay release and cost money, but protects patients, supports accountability and allows the defect to be corrected.
 
 Beyond syllabus / 延伸知识（不要求背诵）: professional decisions are often reviewed against law, organisational policy, public interest and a published code of conduct.
 ## 3. Practice by question type
@@ -155,10 +255,11 @@ These are indexes only. Cambridge question and mark-scheme wording is not reprod
 
 ### Summary
 
-- Define professional ethics and professional bodies with the exact technical vocabulary expected by the syllabus.
-- Use the lesson method on a fresh context and show the intermediate decision, representation or calculation.
-- Match the shape of the answer to the command word and the available marks.
-- Check the final answer against the scenario instead of repeating a memorised sentence.
+- S7.01: explain professional, ethics, purpose.
+- S7.01 method: Establish the exact components or states → Trace the relationship or change → Use the explanation in a concrete case.
+- S7.02: explain joining, British, Computer, Society, IEEE, codes, conduct.
+- S7.02 method: Establish the exact components or states → Trace the relationship or change → Use the explanation in a concrete case.
+- Correction to remember: Students often write personal opinions only. Correction: ethics answers need stakeholders, evidence and balanced judgement.
 
 ### Common error to correct
 

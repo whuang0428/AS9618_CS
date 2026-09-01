@@ -30,7 +30,71 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ### 1. DBMS features: data dictionary, data modelling, logical schema, integrity, security, backup and access rights (S8.05)
 
-**Concept relationships**
+**Atomic learning targets**
+
+- **S8.05.A01:** DBMS
+- **S8.05.A02:** features
+- **S8.05.A03:** dictionary
+- **S8.05.A04:** modelling / modeling
+- **S8.05.A05:** logical
+- **S8.05.A06:** schema
+- **S8.05.A07:** integrity
+- **S8.05.A08:** security
+- **S8.05.A09:** backup
+- **S8.05.A10:** access
+- **S8.05.A11:** rights
+
+**Core explanation**
+
+- A Database Management System (DBMS) provides managed features that address file-based duplication, inconsistency, isolation and uncontrolled access. The features work together rather than acting as unrelated utilities.
+- A data dictionary stores metadata about tables, fields, data types, keys, constraints and relationships. DBMS tools consult this dictionary when checking definitions, queries and data values.
+- Data modelling represents the entities, attributes and relationships needed by the organisation. The logical schema turns that model into the table structures, keys, constraints and relationships visible to programs without depending on physical disk layout.
+- Data integrity rules reject invalid or inconsistent changes, for example an unmatched foreign key. Data security limits who can read or change data; access rights can be assigned to individual users or groups according to their roles.
+- Backup procedures copy recoverable database state, while recovery restores a consistent state after loss or failure. A backup is not an access-control substitute, and access rights do not replace recovery planning.
+
+**Mechanism or method**
+
+1. **Identify the relevant condition or input** — A Database Management System (DBMS) provides managed features that address file-based duplication, inconsistency, isolation and uncontrolled access.
+2. **Trace how the process works** — The features work together rather than acting as unrelated utilities.
+3. **Connect the mechanism to its result** — A data dictionary stores metadata about tables, fields, data types, keys, constraints and relationships.
+
+#### Worked example: DBMS features: data dictionary, data modelling, logical schema, integrity, security, backup and access rights: complete worked route
+
+1. **Identify the relevant condition or input**
+
+A Database Management System (DBMS) provides managed features that address file-based duplication, inconsistency, isolation and uncontrolled access.
+
+2. **Trace how the process works**
+
+The features work together rather than acting as unrelated utilities.
+
+3. **Connect the mechanism to its result**
+
+A data dictionary stores metadata about tables, fields, data types, keys, constraints and relationships.
+
+4. **Complete example**
+
+The syllabus explicitly requires data management including a data dictionary, data modelling, logical schema, data integrity and data security including backup procedures and access rights for individuals or groups.
+
+**Misconceptions to correct**
+
+- Students often choose names as primary keys. Correction: a primary key must uniquely and reliably identify a record.
+
+#### Mastery check (MC-L041-S8.05)
+
+Explain the following targets in one connected answer, using a concrete example for each: DBMS; features; dictionary; modelling / modeling; logical; schema; integrity; security; backup; access; rights.
+
+<details><summary>Answer criteria</summary>
+
+- A Database Management System (DBMS) provides managed features that address file-based duplication, inconsistency, isolation and uncontrolled access. The features work together rather than acting as unrelated utilities.
+- A data dictionary stores metadata about tables, fields, data types, keys, constraints and relationships. DBMS tools consult this dictionary when checking definitions, queries and data values.
+- Data modelling represents the entities, attributes and relationships needed by the organisation. The logical schema turns that model into the table structures, keys, constraints and relationships visible to programs without depending on physical disk layout.
+- Data integrity rules reject invalid or inconsistent changes, for example an unmatched foreign key. Data security limits who can read or change data; access rights can be assigned to individual users or groups according to their roles.
+- Backup procedures copy recoverable database state, while recovery restores a consistent state after loss or failure. A backup is not an access-control substitute, and access rights do not replace recovery planning.
+
+</details>
+
+**Supplementary concept map**
 
 - **DBMS:** The DBMS manages the database by controlling data…
 - **features:** DBMS features
@@ -39,7 +103,7 @@ Ask the learner to give one accurate definition or method step before continuing
 - **logical:** Data management including a data dictionary, data modelling,…
 - **schema:** Data modelling helps define entities, tables, fields and…
 
-**Mechanism**
+**Supplementary three-step recap**
 
 1. **Identify what needs protection** — Data dictionary, data modelling, logical schema, integrity, security, backup and access rights.
 2. **Trace the attack or error route** — Data management including a data dictionary, data modelling, logical schema, data integrity and data security including backup procedures…
@@ -75,7 +139,62 @@ The syllabus explicitly requires data management including a data dictionary, da
 
 ### 2. The developer interface and query processor (S8.06)
 
-**Concept relationships**
+**Atomic learning targets**
+
+- **S8.06.A01:** developer
+- **S8.06.A02:** interface
+- **S8.06.A03:** query
+- **S8.06.A04:** processor
+
+**Core explanation**
+
+- A developer interface provides tools used to define structures and build database applications, forms or reports. A query processor interprets and checks a query, chooses how to carry it out, accesses the stored data and returns or modifies the specified records while the DBMS applies access and integrity rules.
+- A complete answer follows the scenario through design, statement and result. It does not claim that a primary key prevents every duplicate fact, that a secondary key must be unique, that normalisation guarantees correctness, or that a three-table/comma-style query is within the AS core boundary.
+- The developer interface and query processor as DBMS software tools whose use and purpose must be understood in practice.
+- The developer interface and query processor.
+
+**Mechanism or method**
+
+1. **Identify the relevant condition or input** — A developer interface provides tools used to define structures and build database applications, forms or reports.
+2. **Trace how the process works** — A query processor interprets and checks a query, chooses how to carry it out, accesses the stored data and returns or modifies the specified records while the DBMS applies access and integrity rules.
+3. **Connect the mechanism to its result** — A complete answer follows the scenario through design, statement and result.
+
+#### Worked example: The developer interface and query processor: complete worked route
+
+1. **Identify the relevant condition or input**
+
+A developer interface provides tools used to define structures and build database applications, forms or reports.
+
+2. **Trace how the process works**
+
+A query processor interprets and checks a query, chooses how to carry it out, accesses the stored data and returns or modifies the specified records while the DBMS applies access and integrity rules.
+
+3. **Connect the mechanism to its result**
+
+A complete answer follows the scenario through design, statement and result.
+
+4. **Complete example**
+
+Model students joining clubs / Order line data / Run a restricted query: Draw Student(StudentID, Name) and Club(ClubID, ClubName). A developer enters a SELECT statement through the developer interface.
+
+**Misconceptions to correct**
+
+- Students often choose names as primary keys. Correction: a primary key must uniquely and reliably identify a record.
+
+#### Mastery check (MC-L041-S8.06)
+
+Explain the following targets in one connected answer, using a concrete example for each: developer; interface; query; processor.
+
+<details><summary>Answer criteria</summary>
+
+- A developer interface provides tools used to define structures and build database applications, forms or reports. A query processor interprets and checks a query, chooses how to carry it out, accesses the stored data and returns or modifies the specified records while the DBMS applies access and integrity rules.
+- A complete answer follows the scenario through design, statement and result. It does not claim that a primary key prevents every duplicate fact, that a secondary key must be unique, that normalisation guarantees correctness, or that a three-table/comma-style query is within the AS core boundary.
+- The developer interface and query processor as DBMS software tools whose use and purpose must be understood in practice.
+- The developer interface and query processor.
+
+</details>
+
+**Supplementary concept map**
 
 - **developer:** Identify data management/data dictionary, data modelling, logical schema,…
 - **interface:** The developer interface and query processor as DBMS…
@@ -83,7 +202,7 @@ The syllabus explicitly requires data management including a data dictionary, da
 - **processor:** A query processor interprets and checks a query,…
 - **DBMS:** A Database Management System (DBMS) addresses these file-based…
 
-**Mechanism**
+**Supplementary three-step recap**
 
 1. **Translate the stated design** — The developer interface and query processor as DBMS software tools whose use and purpose must be understood in…
 2. **Apply one complete operation** — The developer interface and query processor.
@@ -101,7 +220,7 @@ the syllabus names the developer interface and query processor as DBMS software 
 
 </details>
 
-<details><summary>Open precise terminology and exam facts</summary>
+### Lesson technical reference
 
 - The syllabus explicitly requires data management including a data dictionary, data modelling, logical schema, data integrity and data security including backup procedures and access rights for individuals or groups.
 - the syllabus names the developer interface and query processor as DBMS software tools whose use and purpose must be understood in practice. They must be distinguished rather than listed without function.
@@ -115,16 +234,6 @@ the syllabus names the developer interface and query processor as DBMS software 
 - Database design review: connect each file-based limitation to a relational or DBMS mechanism; use entity/table, record/tuple and field/attribute precisely; distinguish candidate, primary, secondary and foreign keys; classify one-to-one, one-to-many and many-to-many relationships; apply referential integrity and indexing; document the design with an E-R diagram; and explain or produce 1NF, 2NF and 3NF designs.
 - DBMS and SQL review: identify data management/data dictionary, data modelling, logical schema, integrity, security/backup/access rights, developer interface and query processor. Distinguish DDL structure commands from DML query/maintenance commands, use every required data type and key clause, and keep SELECT queries to at most two tables with explicit INNER JOIN ... ON when two tables are needed.
 - A complete answer follows the scenario through design, statement and result. It does not claim that a primary key prevents every duplicate fact, that a secondary key must be unique, that normalisation guarantees correctness, or that a three-table/comma-style query is within the AS core boundary.
-
-</details>
-
-### Worked method
-
-1. Model students joining clubs
-2. Order line data
-3. Run a restricted query
-4. Draw Student(StudentID, Name) and Club(ClubID, ClubName).
-5. Because each student may join many clubs and each club may contain many students, add Membership(StudentID, ClubID, JoinDate) as a linking entity.
 
 Beyond syllabus / 延伸知识（不要求背诵）: production databases also manage transactions and concurrent users; these ideas extend the syllabus model of integrity and access control.
 ## 3. Practice by question type
@@ -174,10 +283,11 @@ These are indexes only. Cambridge question and mark-scheme wording is not reprod
 
 ### Summary
 
-- Define dbms architecture, integrity, security and backup with the exact technical vocabulary expected by the syllabus.
-- Use the lesson method on a fresh context and show the intermediate decision, representation or calculation.
-- Match the shape of the answer to the command word and the available marks.
-- Check the final answer against the scenario instead of repeating a memorised sentence.
+- S8.05: explain DBMS, features, dictionary, modelling / modeling, logical, schema, integrity, security, backup, access, rights.
+- S8.05 method: Identify the relevant condition or input → Trace how the process works → Connect the mechanism to its result.
+- S8.06: explain developer, interface, query, processor.
+- S8.06 method: Identify the relevant condition or input → Trace how the process works → Connect the mechanism to its result.
+- Correction to remember: Students often choose names as primary keys. Correction: a primary key must uniquely and reliably identify a record.
 
 ### Common error to correct
 

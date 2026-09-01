@@ -24,7 +24,69 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ### 1. Why a program-development lifecycle is used; compare waterfall, iterative and RAD models and their stages (S12.01)
 
-**Concept relationships**
+**Atomic learning targets**
+
+- **S12.01.A01:** RAD
+- **S12.01.A02:** rapid prototyping
+- **S12.01.A03:** time-box / timebox / time-boxed / time-boxing
+- **S12.01.A04:** user involvement
+- **S12.01.A05:** waterfall
+- **S12.01.A06:** iterative
+- **S12.01.A07:** limitation / less suitable / unsuitable
+
+**Core explanation**
+
+- Rapid application development (RAD) uses rapid prototyping, time-boxed development and frequent user involvement to obtain feedback quickly. It can suit an interactive system with available users, but speed and repeated prototypes can conflict with exhaustive assurance or stable architecture. Agile is related extension context, not a replacement for the named RAD model.
+- Waterfall supports planned sequential stages and traceability but its limitation is costly late change. Iterative development reviews repeated versions but can need careful scope control. RAD uses rapid prototyping, time-boxing and user involvement; it may be less suitable or unsuitable where exhaustive assurance and stable architecture are required.
+- Waterfall completes planned stages largely in sequence and supports documentation and traceability, but late change can cause substantial rework. Iterative development builds and reviews repeated versions so evidence can refine later cycles.
+- Rapid application development (RAD) uses rapid prototyping, time-boxed development and frequent user involvement to obtain feedback quickly.
+- Compare the principles, benefits and drawbacks of waterfall, iterative and Rapid Application Development (RAD).
+- RAD builds rapid prototypes inside short time boxes. Users review prototypes frequently and their feedback changes the next version.
+
+**Mechanism or method**
+
+1. **Identify the relevant condition or input** — Rapid application development (RAD) uses rapid prototyping, time-boxed development and frequent user involvement to obtain feedback quickly.
+2. **Trace how the process works** — It can suit an interactive system with available users, but speed and repeated prototypes can conflict with exhaustive assurance or stable architecture.
+3. **Connect the mechanism to its result** — Agile is related extension context, not a replacement for the named RAD model.
+
+#### Worked example: Why a program-development lifecycle is used; compare waterfall, iterative and RAD models and their stages: complete worked route
+
+1. **Identify the relevant condition or input**
+
+Rapid application development (RAD) uses rapid prototyping, time-boxed development and frequent user involvement to obtain feedback quickly.
+
+2. **Trace how the process works**
+
+It can suit an interactive system with available users, but speed and repeated prototypes can conflict with exhaustive assurance or stable architecture.
+
+3. **Connect the mechanism to its result**
+
+Agile is related extension context, not a replacement for the named RAD model.
+
+4. **Complete example**
+
+Choose a lifecycle model / Choose a lifecycle model: For a small booking interface with available users and changing requirements, RAD can use a time-boxed prototype and immediate user feedback. For safety-critical stable requirements, waterfall's formal traceability may be more suitable than rapid prototyping. RAD suits a small interface whose users can review frequent prototypes. Waterfall may suit stable, safety-critical requirements where formal traceability matters, although late change remains a limitation.
+
+**Misconceptions to correct**
+
+- Students often describe the lifecycle as a fixed checklist. Correction: development is iterative; findings can send a project back to earlier stages.
+
+#### Mastery check (MC-L081-S12.01)
+
+Explain the following targets in one connected answer, using a concrete example for each: RAD; rapid prototyping; time-box / timebox / time-boxed / time-boxing; user involvement; waterfall; iterative; limitation / less suitable / unsuitable.
+
+<details><summary>Answer criteria</summary>
+
+- Rapid application development (RAD) uses rapid prototyping, time-boxed development and frequent user involvement to obtain feedback quickly. It can suit an interactive system with available users, but speed and repeated prototypes can conflict with exhaustive assurance or stable architecture. Agile is related extension context, not a replacement for the named RAD model.
+- Waterfall supports planned sequential stages and traceability but its limitation is costly late change. Iterative development reviews repeated versions but can need careful scope control. RAD uses rapid prototyping, time-boxing and user involvement; it may be less suitable or unsuitable where exhaustive assurance and stable architecture are required.
+- Waterfall completes planned stages largely in sequence and supports documentation and traceability, but late change can cause substantial rework. Iterative development builds and reviews repeated versions so evidence can refine later cycles.
+- Rapid application development (RAD) uses rapid prototyping, time-boxed development and frequent user involvement to obtain feedback quickly.
+- Compare the principles, benefits and drawbacks of waterfall, iterative and Rapid Application Development (RAD).
+- RAD builds rapid prototypes inside short time boxes. Users review prototypes frequently and their feedback changes the next version.
+
+</details>
+
+**Supplementary concept map**
 
 - **rapid prototyping:** Rapid application development (RAD) uses rapid prototyping, time-boxed…
 - **user involvement:** RAD uses rapid prototyping, time-boxing and user involvement
@@ -33,7 +95,7 @@ Ask the learner to give one accurate definition or method step before continuing
 - **waterfall:** Waterfall supports planned sequential stages and traceability but…
 - **iterative:** Iterative development reviews repeated versions but can need…
 
-**Mechanism**
+**Supplementary three-step recap**
 
 1. **Name both alternatives precisely** — Rapid application development (RAD) uses rapid prototyping, time-boxed development and frequent user involvement to obtain feedback quickly.
 2. **Connect structure to consequence** — RAD uses rapid prototyping, time-boxing and user involvement
@@ -61,23 +123,13 @@ Candidates should understand the purpose of a program-development lifecycle and 
 
 </details>
 
-<details><summary>Open precise terminology and exam facts</summary>
+### Lesson technical reference
 
 - Candidates should understand the purpose of a program-development lifecycle and the need for different lifecycles depending on the program being developed. Compare the principles, benefits and drawbacks of waterfall, iterative and Rapid Application Development (RAD). Lifecycle stages are analysis, design, coding, testing and maintenance.
 - Waterfall completes planned stages largely in sequence and supports documentation and traceability, but late change can cause substantial rework. Iterative development builds and reviews repeated versions so evidence can refine later cycles.
 - Rapid application development (RAD) uses rapid prototyping, time-boxed development and frequent user involvement to obtain feedback quickly. It can suit an interactive system with available users, but speed and repeated prototypes can conflict with exhaustive assurance or stable architecture. Agile is related extension context, not a replacement for the named RAD model.
 - A program-development lifecycle gives an organised sequence for analysis, design, implementation, testing and maintenance, with review and documentation linking decisions to evidence.
 - Waterfall supports planned sequential stages and traceability but its limitation is costly late change. Iterative development reviews repeated versions but can need careful scope control. RAD uses rapid prototyping, time-boxing and user involvement; it may be less suitable or unsuitable where exhaustive assurance and stable architecture are required.
-
-</details>
-
-### Worked method
-
-1. Choose a lifecycle model
-2. Choose a lifecycle model
-3. For a small booking interface with available users and changing requirements, RAD can use a time-boxed prototype and immediate user feedback.
-4. For safety-critical stable requirements, waterfall's formal traceability may be more suitable than rapid prototyping.
-5. RAD suits a small interface whose users can review frequent prototypes.
 
 Beyond syllabus / 延伸知识（不要求背诵）: modern teams often use continuous integration to repeat building and testing whenever a program changes.
 ## 3. Practice by question type
@@ -127,10 +179,9 @@ These are indexes only. Cambridge question and mark-scheme wording is not reprod
 
 ### Summary
 
-- Define program-development lifecycle models with the exact technical vocabulary expected by the syllabus.
-- Use the lesson method on a fresh context and show the intermediate decision, representation or calculation.
-- Match the shape of the answer to the command word and the available marks.
-- Check the final answer against the scenario instead of repeating a memorised sentence.
+- S12.01: explain RAD, rapid prototyping, time-box / timebox / time-boxed / time-boxing, user involvement, waterfall, iterative, limitation / less suitable / unsuitable.
+- S12.01 method: Identify the relevant condition or input → Trace how the process works → Connect the mechanism to its result.
+- Correction to remember: Students often describe the lifecycle as a fixed checklist. Correction: development is iterative; findings can send a project back to earlier stages.
 
 ### Common error to correct
 

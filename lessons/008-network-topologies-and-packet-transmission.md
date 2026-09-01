@@ -28,7 +28,58 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ### 1. Bus, star, mesh and hybrid network topologies (S2.04)
 
-**Concept relationships**
+**Atomic learning targets**
+
+- **S2.04.A01:** bus topology
+- **S2.04.A02:** star topology
+- **S2.04.A03:** mesh topology
+- **S2.04.A04:** hybrid topology
+
+**Core explanation**
+
+- A topology describes the pattern of links between devices. In a bus topology devices share one backbone; in a star topology each device has a separate link to a central switch; in a mesh topology nodes have multiple interconnections; a hybrid topology combines two or more topology patterns.
+- In a star topology each device has a separate link to a central switch
+
+**Mechanism or method**
+
+1. **Establish the exact components or states** — A topology describes the pattern of links between devices.
+2. **Trace the relationship or change** — In a bus topology devices share one backbone;
+3. **Use the explanation in a concrete case** — in a star topology each device has a separate link to a central switch;
+
+#### Worked example: Bus, star, mesh and hybrid network topologies: complete worked route
+
+1. **Establish the exact components or states**
+
+A topology describes the pattern of links between devices.
+
+2. **Trace the relationship or change**
+
+In a bus topology devices share one backbone;
+
+3. **Use the explanation in a concrete case**
+
+in a star topology each device has a separate link to a central switch;
+
+4. **Complete example**
+
+Send a patient record across a hybrid hospital network: The source sends the frame to its ward switch as in a star. The packet crosses the link between ward segments, then the destination switch forwards the local frame to the receiving host. A redundant inter-switch route can keep packets moving after one link fails, but adds cost and management.
+
+**Misconceptions to correct**
+
+- Students often confuse bandwidth with speed in every sense. Correction: bandwidth is capacity; latency and congestion also affect perceived performance.
+
+#### Mastery check (MC-L008-S2.04)
+
+Show the following targets in one connected answer, using a concrete example for each: bus topology; star topology; mesh topology; hybrid topology.
+
+<details><summary>Answer criteria</summary>
+
+- A topology describes the pattern of links between devices. In a bus topology devices share one backbone; in a star topology each device has a separate link to a central switch; in a mesh topology nodes have multiple interconnections; a hybrid topology combines two or more topology patterns.
+- In a star topology each device has a separate link to a central switch
+
+</details>
+
+**Supplementary concept map**
 
 - **bus topology:** In a bus topology devices share one backbone
 - **star topology:** In a star topology each device has a…
@@ -36,7 +87,7 @@ Ask the learner to give one accurate definition or method step before continuing
 - **hybrid topology:** A hybrid topology combines two or more topology…
 - **understanding:** Bus, star, mesh and hybrid network topologies.
 
-**Mechanism**
+**Supplementary three-step recap**
 
 1. **Identify incoming data or signal** — Bus, star, mesh and hybrid network topologies.
 2. **Follow the physical or logical path** — Packet or signal paths must be explicit for bus, star, mesh and hybrid.
@@ -66,7 +117,68 @@ All four named topologies are required. A hybrid combines two or more topology p
 
 ### 2. How packets are transmitted between two hosts for a given topology and justify topology choice for… (S2.05)
 
-**Concept relationships**
+**Atomic learning targets**
+
+- **S2.05.A01:** between two hosts
+- **S2.05.A02:** bus
+- **S2.05.A03:** central switch
+- **S2.05.A04:** alternative routes
+- **S2.05.A05:** hybrid
+- **S2.05.A06:** justify
+
+**Core explanation**
+
+- To describe transmission between two hosts, identify the physical or logical path used. In a bus, the signal travels along the shared backbone and attached devices inspect it. In a star, the source sends a frame to the central switch, which forwards it towards the destination device. In a mesh, packets can be forwarded through one of several alternative routes. In a hybrid, the path follows each component topology, for example source to local switch, across a connecting backbone, then through the destination switch.
+- To justify a topology choice, connect its packet path and failure behaviour to the stated scenario.
+- A topology describes the pattern of links between devices. In a bus topology devices share one backbone; in a star topology each device has a separate link to a central switch; in a mesh topology nodes have multiple interconnections; a hybrid topology combines two or more topology patterns.
+- Compare topologies using packet path, single points of failure, alternative routes, cabling, expansion and traffic. A topology name without a path or failure consequence is not a developed explanation.
+- All four named topologies are required. A hybrid combines two or more topology patterns; it is not merely a large network.
+- In a star topology each device has a separate link to a central switch
+
+**Mechanism or method**
+
+1. **Identify the relevant condition or input** — To describe transmission between two hosts, identify the physical or logical path used.
+2. **Trace how the process works** — In a bus, the signal travels along the shared backbone and attached devices inspect it.
+3. **Connect the mechanism to its result** — In a star, the source sends a frame to the central switch, which forwards it towards the destination device.
+
+#### Worked example: How packets are transmitted between two hosts for a given topology and justify topology choice for: complete worked route
+
+1. **Identify the relevant condition or input**
+
+To describe transmission between two hosts, identify the physical or logical path used.
+
+2. **Trace how the process works**
+
+In a bus, the signal travels along the shared backbone and attached devices inspect it.
+
+3. **Connect the mechanism to its result**
+
+In a star, the source sends a frame to the central switch, which forwards it towards the destination device.
+
+4. **Complete example**
+
+Send a patient record across a hybrid hospital network: The source sends the frame to its ward switch as in a star.
+
+**Misconceptions to correct**
+
+- Students often confuse bandwidth with speed in every sense. Correction: bandwidth is capacity; latency and congestion also affect perceived performance.
+
+#### Mastery check (MC-L008-S2.05)
+
+Explain the following targets in one connected answer, using a concrete example for each: between two hosts; bus; central switch; alternative routes; hybrid; justify.
+
+<details><summary>Answer criteria</summary>
+
+- To describe transmission between two hosts, identify the physical or logical path used. In a bus, the signal travels along the shared backbone and attached devices inspect it. In a star, the source sends a frame to the central switch, which forwards it towards the destination device. In a mesh, packets can be forwarded through one of several alternative routes. In a hybrid, the path follows each component topology, for example source to local switch, across a connecting backbone, then through the destination switch.
+- To justify a topology choice, connect its packet path and failure behaviour to the stated scenario.
+- A topology describes the pattern of links between devices. In a bus topology devices share one backbone; in a star topology each device has a separate link to a central switch; in a mesh topology nodes have multiple interconnections; a hybrid topology combines two or more topology patterns.
+- Compare topologies using packet path, single points of failure, alternative routes, cabling, expansion and traffic. A topology name without a path or failure consequence is not a developed explanation.
+- All four named topologies are required. A hybrid combines two or more topology patterns; it is not merely a large network.
+- In a star topology each device has a separate link to a central switch
+
+</details>
+
+**Supplementary concept map**
 
 - **between two hosts:** How packets are transmitted between two hosts for…
 - **central switch:** In a star topology each device has a…
@@ -75,7 +187,7 @@ All four named topologies are required. A hybrid combines two or more topology p
 - **hybrid:** In a hybrid, the path follows each component…
 - **justify:** To justify a topology choice, connect its packet…
 
-**Mechanism**
+**Supplementary three-step recap**
 
 1. **Name both alternatives precisely** — How packets are transmitted between two hosts for a given topology and justify topology choice for a given…
 2. **Connect structure to consequence** — To justify a topology choice, connect its packet path and failure behaviour to the stated scenario.
@@ -108,7 +220,7 @@ Packet or signal paths must be explicit for bus, star, mesh and hybrid. A justif
 
 </details>
 
-<details><summary>Open precise terminology and exam facts</summary>
+### Lesson technical reference
 
 - All four named topologies are required. A hybrid combines two or more topology patterns; it is not merely a large network.
 - Packet or signal paths must be explicit for bus, star, mesh and hybrid. A justification must link the path and failure behaviour to the scenario.
@@ -117,15 +229,6 @@ Packet or signal paths must be explicit for bus, star, mesh and hybrid. A justif
 - To describe transmission between two hosts, identify the physical or logical path used. In a bus, the signal travels along the shared backbone and attached devices inspect it. In a star, the source sends a frame to the central switch, which forwards it towards the destination device. In a mesh, packets can be forwarded through one of several alternative routes. In a hybrid, the path follows each component topology, for example source to local switch, across a connecting backbone, then through the destination switch.
 - Topology justification must connect the packet path to the scenario: central-device failure, backbone failure, individual cable failure, congestion, expansion, redundancy and cabling cost are consequences of the structure.
 - To justify a topology choice, connect its packet path and failure behaviour to the stated scenario.
-
-</details>
-
-### Worked method
-
-1. Send a patient record across a hybrid hospital network
-2. The source sends the frame to its ward switch as in a star.
-3. The packet crosses the link between ward segments, then the destination switch forwards the local frame to the receiving host.
-4. A redundant inter-switch route can keep packets moving after one link fails, but adds cost and management.
 
 Beyond syllabus / 延伸知识（不要求背诵）: real networks organise communication in layers so that hardware, addressing and application protocols can change independently.
 ## 3. Practice by question type
@@ -175,10 +278,11 @@ These are indexes only. Cambridge question and mark-scheme wording is not reprod
 
 ### Summary
 
-- Define network topologies and packet transmission with the exact technical vocabulary expected by the syllabus.
-- Use the lesson method on a fresh context and show the intermediate decision, representation or calculation.
-- Match the shape of the answer to the command word and the available marks.
-- Check the final answer against the scenario instead of repeating a memorised sentence.
+- S2.04: explain bus topology, star topology, mesh topology, hybrid topology.
+- S2.04 method: Establish the exact components or states → Trace the relationship or change → Use the explanation in a concrete case.
+- S2.05: explain between two hosts, bus, central switch, alternative routes, hybrid, justify.
+- S2.05 method: Identify the relevant condition or input → Trace how the process works → Connect the mechanism to its result.
+- Correction to remember: Students often confuse bandwidth with speed in every sense. Correction: bandwidth is capacity; latency and congestion also affect perceived performance.
 
 ### Common error to correct
 

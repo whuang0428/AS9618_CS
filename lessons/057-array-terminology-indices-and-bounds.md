@@ -24,7 +24,62 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ### 1. Array, index, lower bound and upper bound terminology (S10.03)
 
-**Concept relationships**
+**Atomic learning targets**
+
+- **S10.03.A01:** array
+- **S10.03.A02:** index
+- **S10.03.A03:** lower bound
+- **S10.03.A04:** upper bound
+
+**Core explanation**
+
+- Choose a one-dimensional array when each element needs one position, such as twenty marks or a list of names. Choose a two-dimensional array when each value naturally needs a row and a column, such as marks for several students across several tests. Do not choose 2D merely because there are many values.
+- An array is a collection of elements stored under one identifier. An index selects one element. The lower bound is the first valid index and the upper bound is the last valid index; both bounds are inclusive in a Cambridge declaration such as ARRAY[1:20] OF INTEGER.
+- Cambridge pseudocode declares explicit inclusive bounds. In DECLARE Names : ARRAY[1:4] OF STRING, 1 is the lower bound, 4 is the upper bound and the valid indexes are 1, 2, 3 and 4. A search must start and stop within those declared bounds.
+- Linear search checks successive indexed elements until the target is found or every populated element has been checked. Binary search also uses indexes, but requires the array to be sorted so each comparison can discard one half of the remaining index range.
+
+**Mechanism or method**
+
+1. **Identify the relevant condition or input** — Choose a one-dimensional array when each element needs one position, such as twenty marks or a list of names.
+2. **Trace how the process works** — Choose a two-dimensional array when each value naturally needs a row and a column, such as marks for several students across several tests.
+3. **Connect the mechanism to its result** — Do not choose 2D merely because there are many values.
+
+#### Worked example: Array, index, lower bound and upper bound terminology: complete worked route
+
+1. **Identify the relevant condition or input**
+
+Choose a one-dimensional array when each element needs one position, such as twenty marks or a list of names.
+
+2. **Trace how the process works**
+
+Choose a two-dimensional array when each value naturally needs a row and a column, such as marks for several students across several tests.
+
+3. **Connect the mechanism to its result**
+
+Do not choose 2D merely because there are many values.
+
+4. **Complete example**
+
+Declare the search data before tracing it: DECLARE Names : ARRAY[1:4] OF STRING defines four string elements. Index 0 is invalid because it is below the declared lower bound.
+
+**Misconceptions to correct**
+
+- Students often confuse the identifier of the whole structure with one element. Correction: access requires an index or field name.
+
+#### Mastery check (MC-L057-S10.03)
+
+Explain the following targets in one connected answer, using a concrete example for each: array; index; lower bound; upper bound.
+
+<details><summary>Answer criteria</summary>
+
+- Choose a one-dimensional array when each element needs one position, such as twenty marks or a list of names. Choose a two-dimensional array when each value naturally needs a row and a column, such as marks for several students across several tests. Do not choose 2D merely because there are many values.
+- An array is a collection of elements stored under one identifier. An index selects one element. The lower bound is the first valid index and the upper bound is the last valid index; both bounds are inclusive in a Cambridge declaration such as ARRAY[1:20] OF INTEGER.
+- Cambridge pseudocode declares explicit inclusive bounds. In DECLARE Names : ARRAY[1:4] OF STRING, 1 is the lower bound, 4 is the upper bound and the valid indexes are 1, 2, 3 and 4. A search must start and stop within those declared bounds.
+- Linear search checks successive indexed elements until the target is found or every populated element has been checked. Binary search also uses indexes, but requires the array to be sorted so each comparison can discard one half of the remaining index range.
+
+</details>
+
+**Supplementary concept map**
 
 - **lower bound:** Array, index, lower bound and upper bound terminology.
 - **upper bound:** One-dimensional array pseudocode must declare explicit bounds and…
@@ -32,7 +87,7 @@ Ask the learner to give one accurate definition or method step before continuing
 - **index:** ARRAY[1:4] OF STRING, 1 is the lower bound,…
 - **lower:** Cambridge array declarations state an explicit lower and…
 
-**Mechanism**
+**Supplementary three-step recap**
 
 1. **Translate the stated design** — Array, index, lower bound and upper bound terminology.
 2. **Apply one complete operation** — One-dimensional array pseudocode must declare explicit bounds and an element type, access elements with one index and use…
@@ -60,7 +115,7 @@ Use the technical terms associated with arrays, including index, lower bound and
 
 </details>
 
-<details><summary>Open precise terminology and exam facts</summary>
+### Lesson technical reference
 
 - Use the technical terms associated with arrays, including index, lower bound and upper bound. Bounds define the inclusive valid index range and an index selects one element.
 - An array is a collection of elements stored under one identifier. An index selects one element. The lower bound is the first valid index and the upper bound is the last valid index; both bounds are inclusive in a Cambridge declaration such as ARRAY[1:20] OF INTEGER.
@@ -69,15 +124,6 @@ Use the technical terms associated with arrays, including index, lower bound and
 - Before tracing a search, define the data structure it traverses. An array is a fixed-size indexed collection whose elements have one declared data type. The index selects one element; it is not the value stored in that element.
 - Cambridge pseudocode declares explicit inclusive bounds. In DECLARE Names : ARRAY[1:4] OF STRING, 1 is the lower bound, 4 is the upper bound and the valid indexes are 1, 2, 3 and 4. A search must start and stop within those declared bounds.
 - Linear search checks successive indexed elements until the target is found or every populated element has been checked. Binary search also uses indexes, but requires the array to be sorted so each comparison can discard one half of the remaining index range.
-
-</details>
-
-### Worked method
-
-1. Declare the search data before tracing it
-2. ARRAY[1:4] OF STRING defines four string elements.
-3. For Names = ['Asha', 'Ben', 'Chen', 'Dina'], a one-based linear search compares Names[1], then Names[2], and stops when it finds 'Ben'.
-4. Index 0 is invalid because it is below the declared lower bound.
 
 Beyond syllabus / 延伸知识（不要求背诵）: programming libraries often provide tested ADT implementations, but the exam expects you to understand their behaviour and selection.
 ## 3. Practice by question type
@@ -127,10 +173,9 @@ These are indexes only. Cambridge question and mark-scheme wording is not reprod
 
 ### Summary
 
-- Define array terminology, indices and bounds with the exact technical vocabulary expected by the syllabus.
-- Use the lesson method on a fresh context and show the intermediate decision, representation or calculation.
-- Match the shape of the answer to the command word and the available marks.
-- Check the final answer against the scenario instead of repeating a memorised sentence.
+- S10.03: explain array, index, lower bound, upper bound.
+- S10.03 method: Identify the relevant condition or input → Trace how the process works → Connect the mechanism to its result.
+- Correction to remember: Students often confuse the identifier of the whole structure with one element. Correction: access requires an index or field name.
 
 ### Common error to correct
 

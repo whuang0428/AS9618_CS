@@ -24,7 +24,68 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ### 1. DDL creates/modifies structure, DML queries/maintains data, and SQL is an industry-standard language (S8.07)
 
-**Concept relationships**
+**Atomic learning targets**
+
+- **S8.07.A01:** DDL
+- **S8.07.A02:** creation
+- **S8.07.A03:** modification
+- **S8.07.A04:** database structure
+- **S8.07.A05:** DML
+- **S8.07.A06:** queries
+- **S8.07.A07:** maintenance
+- **S8.07.A08:** SQL
+- **S8.07.A09:** industry-standard
+- **S8.07.A10:** language
+
+**Core explanation**
+
+- DDL is used for the creation and modification of database structure. DML is used for queries and maintenance of stored data. SQL is an industry-standard language that includes both kinds of operation.
+- A query uses SELECT fields FROM a table, may filter rows with WHERE, sort with ORDER BY and form aggregate groups with GROUP BY. SUM totals values, COUNT counts rows or values, and AVG calculates a mean. An INNER JOIN uses ON to match at most two tables in the required AS queries.
+- DDL creates/modifies structure, DML queries/maintains data, and SQL is an industry-standard language.
+- DDL is used for the creation and modification of database structure.
+
+**Mechanism or method**
+
+1. **Identify the relevant condition or input** — DDL is used for the creation and modification of database structure.
+2. **Trace how the process works** — DML is used for queries and maintenance of stored data.
+3. **Connect the mechanism to its result** — SQL is an industry-standard language that includes both kinds of operation.
+
+#### Worked example: DDL creates/modifies structure, DML queries/maintains data, and SQL is an industry-standard language: complete worked route
+
+1. **Identify the relevant condition or input**
+
+DDL is used for the creation and modification of database structure.
+
+2. **Trace how the process works**
+
+DML is used for queries and maintenance of stored data.
+
+3. **Connect the mechanism to its result**
+
+SQL is an industry-standard language that includes both kinds of operation.
+
+4. **Complete example**
+
+Classify database operations: CREATE TABLE is DDL because it creates database structure. SELECT and UPDATE are DML because they query or maintain stored data.
+
+**Misconceptions to correct**
+
+- Students often choose names as primary keys. Correction: a primary key must uniquely and reliably identify a record.
+
+#### Mastery check (MC-L042-S8.07)
+
+Explain the following targets in one connected answer, using a concrete example for each: DDL; creation; modification; database structure; DML; queries; maintenance; SQL; industry-standard; language.
+
+<details><summary>Answer criteria</summary>
+
+- DDL is used for the creation and modification of database structure. DML is used for queries and maintenance of stored data. SQL is an industry-standard language that includes both kinds of operation.
+- A query uses SELECT fields FROM a table, may filter rows with WHERE, sort with ORDER BY and form aggregate groups with GROUP BY. SUM totals values, COUNT counts rows or values, and AVG calculates a mean. An INNER JOIN uses ON to match at most two tables in the required AS queries.
+- DDL creates/modifies structure, DML queries/maintains data, and SQL is an industry-standard language.
+- DDL is used for the creation and modification of database structure.
+
+</details>
+
+**Supplementary concept map**
 
 - **database structure:** DBMS creation/modification of database structure through DDL from…
 - **industry-standard:** DDL creates/modifies structure, DML queries/maintains data, and SQL…
@@ -33,7 +94,7 @@ Ask the learner to give one accurate definition or method step before continuing
 - **modification:** SQL is an industry-standard language that includes both…
 - **DML:** DML is used for queries and maintenance of…
 
-**Mechanism**
+**Supplementary three-step recap**
 
 1. **Identify structure and target data** — DBMS creation/modification of database structure through DDL from queries and data maintenance through DML, and identifies SQL as…
 2. **Apply the database rule** — DDL creates/modifies structure, DML queries/maintains data, and SQL is an industry-standard language.
@@ -62,7 +123,7 @@ the syllabus distinguishes DBMS creation/modification of database structure thro
 
 </details>
 
-<details><summary>Open precise terminology and exam facts</summary>
+### Lesson technical reference
 
 - the syllabus distinguishes DBMS creation/modification of database structure through DDL from queries and data maintenance through DML, and identifies SQL as the industry standard for both.
 - DDL is used for the creation and modification of database structure. DML is used for queries and maintenance of stored data. SQL is an industry-standard language that includes both kinds of operation.
@@ -72,14 +133,6 @@ the syllabus distinguishes DBMS creation/modification of database structure thro
 - A complete answer follows the scenario through design, statement and result. It does not claim that a primary key prevents every duplicate fact, that a secondary key must be unique, that normalisation guarantees correctness, or that a three-table/comma-style query is within the AS core boundary.
 - A record is also called a tuple; both terms describe one row containing fields or attributes for one entity occurrence.
 - A query uses SELECT fields FROM a table, may filter rows with WHERE, sort with ORDER BY and form aggregate groups with GROUP BY. SUM totals values, COUNT counts rows or values, and AVG calculates a mean. An INNER JOIN uses ON to match at most two tables in the required AS queries.
-
-</details>
-
-### Worked method
-
-1. Classify database operations
-2. CREATE TABLE is DDL because it creates database structure.
-3. SELECT and UPDATE are DML because they query or maintain stored data.
 
 Beyond syllabus / 延伸知识（不要求背诵）: production databases also manage transactions and concurrent users; these ideas extend the syllabus model of integrity and access control.
 ## 3. Practice by question type
@@ -129,10 +182,9 @@ These are indexes only. Cambridge question and mark-scheme wording is not reprod
 
 ### Summary
 
-- Define ddl, dml and the role of sql with the exact technical vocabulary expected by the syllabus.
-- Use the lesson method on a fresh context and show the intermediate decision, representation or calculation.
-- Match the shape of the answer to the command word and the available marks.
-- Check the final answer against the scenario instead of repeating a memorised sentence.
+- S8.07: explain DDL, creation, modification, database structure, DML, queries, maintenance, SQL, industry-standard, language.
+- S8.07 method: Identify the relevant condition or input → Trace how the process works → Connect the mechanism to its result.
+- Correction to remember: Students often choose names as primary keys. Correction: a primary key must uniquely and reliably identify a record.
 
 ### Common error to correct
 

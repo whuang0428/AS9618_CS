@@ -28,7 +28,58 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ### 1. Entity-relationship diagrams (S8.03)
 
-**Concept relationships**
+**Atomic learning targets**
+
+- **S8.03.A01:** entity-relationship
+- **S8.03.A02:** diagram
+
+**Core explanation**
+
+- An entity-relationship (E-R) diagram documents a database design by showing the entities, their relevant attributes or keys, the relationships between entities and the relationship cardinality. Entity names should describe things about which the system stores multiple facts; attributes belong to the entity they describe.
+- Database design review: connect each file-based limitation to a relational or DBMS mechanism; use entity/table, record/tuple and field/attribute precisely; distinguish candidate, primary, secondary and foreign keys; classify one-to-one, one-to-many and many-to-many relationships; apply referential integrity and indexing; document the design with an E-R diagram; and explain or produce 1NF, 2NF and 3NF designs.
+- To produce an E-R diagram, extract entity candidates from the scenario, assign identifiers, connect only supported relationships and label cardinality as one-to-one, one-to-many or many-to-many. Resolve a many-to-many relationship with a linking entity when converting the design to relational tables. A diagram must preserve the stated business rules rather than inventing links from similar field names.
+
+**Mechanism or method**
+
+1. **Set up the required data and conditions** — An entity-relationship (E-R) diagram documents a database design by showing the entities, their relevant attributes or keys, the relationships between entities and the relationship cardinality.
+2. **Carry out the complete method** — Entity names should describe things about which the system stores multiple facts;
+3. **Trace or test the result** — attributes belong to the entity they describe.
+
+#### Worked example: Entity-relationship diagrams: complete worked route
+
+1. **Set up the required data and conditions**
+
+An entity-relationship (E-R) diagram documents a database design by showing the entities, their relevant attributes or keys, the relationships between entities and the relationship cardinality.
+
+2. **Carry out the complete method**
+
+Entity names should describe things about which the system stores multiple facts;
+
+3. **Trace or test the result**
+
+attributes belong to the entity they describe.
+
+4. **Complete example**
+
+Design and query a library database: Separate Student and Loan tables, identify StudentID as primary key in Student and foreign key in Loan, state the one-to-many relationship and referential-integrity rule, then write SELECT Student.StudentName, Loan.DueDate FROM Student INNER JOIN Loan ON Student.StudentID = Loan.StudentID WHERE Loan.Returned = FALSE; using exactly two tables.
+
+**Misconceptions to correct**
+
+- Students often choose names as primary keys. Correction: a primary key must uniquely and reliably identify a record.
+
+#### Mastery check (MC-L040-S8.03)
+
+Complete a fresh example that demonstrates every target: entity-relationship; diagram. Show all intermediate steps and check the result.
+
+<details><summary>Answer criteria</summary>
+
+- An entity-relationship (E-R) diagram documents a database design by showing the entities, their relevant attributes or keys, the relationships between entities and the relationship cardinality. Entity names should describe things about which the system stores multiple facts; attributes belong to the entity they describe.
+- Database design review: connect each file-based limitation to a relational or DBMS mechanism; use entity/table, record/tuple and field/attribute precisely; distinguish candidate, primary, secondary and foreign keys; classify one-to-one, one-to-many and many-to-many relationships; apply referential integrity and indexing; document the design with an E-R diagram; and explain or produce 1NF, 2NF and 3NF designs.
+- To produce an E-R diagram, extract entity candidates from the scenario, assign identifiers, connect only supported relationships and label cardinality as one-to-one, one-to-many or many-to-many. Resolve a many-to-many relationship with a linking entity when converting the design to relational tables. A diagram must preserve the stated business rules rather than inventing links from similar field names.
+
+</details>
+
+**Supplementary concept map**
 
 - **Entity:** Thing stored in the design
 - **Relationship:** Association between entities
@@ -36,7 +87,7 @@ Ask the learner to give one accurate definition or method step before continuing
 - **Diagram:** Documents the database design
 - **entity-relationship:** Use an entity-relationship diagram to document a database…
 
-**Mechanism**
+**Supplementary three-step recap**
 
 1. **Identify structure and target data** — To produce an E-R diagram, extract entity candidates from the scenario, assign identifiers, connect only supported relationships and…
 2. **Apply the database rule** — Candidates to use an entity-relationship diagram to document a database design.
@@ -68,7 +119,65 @@ The syllabus requires candidates to use an entity-relationship diagram to docume
 
 ### 2. 1NF, 2NF and 3NF; explain 3NF and produce a normalised design (S8.04)
 
-**Concept relationships**
+**Atomic learning targets**
+
+- **S8.04.A01:** 1NF
+- **S8.04.A02:** 2NF
+- **S8.04.A03:** 3NF
+- **S8.04.A04:** normalised / normalized
+- **S8.04.A05:** design
+
+**Core explanation**
+
+- Database design review: connect each file-based limitation to a relational or DBMS mechanism; use entity/table, record/tuple and field/attribute precisely; distinguish candidate, primary, secondary and foreign keys; classify one-to-one, one-to-many and many-to-many relationships; apply referential integrity and indexing; document the design with an E-R diagram; and explain or produce 1NF, 2NF and 3NF designs.
+- Normalisation decomposes tables while preserving keys and relationships. A normalised 3NF design stores each fact once in the table identified by its determinant, reducing insertion, update and deletion anomalies.
+- To produce an E-R diagram, extract entity candidates from the scenario, assign identifiers, connect only supported relationships and label cardinality as one-to-one, one-to-many or many-to-many. Resolve a many-to-many relationship with a linking entity when converting the design to relational tables. A diagram must preserve the stated business rules rather than inventing links from similar field names.
+- An entity-relationship (E-R) diagram documents a database design by showing the entities, their relevant attributes or keys, the relationships between entities and the relationship cardinality. Entity names should describe things about which the system stores multiple facts; attributes belong to the entity they describe.
+- A complete answer follows the scenario through design, statement and result. It does not claim that a primary key prevents every duplicate fact, that a secondary key must be unique, that normalisation guarantees correctness, or that a three-table/comma-style query is within the AS core boundary.
+
+**Mechanism or method**
+
+1. **Identify the relevant condition or input** — Database design review: connect each file-based limitation to a relational or DBMS mechanism;
+2. **Trace how the process works** — distinguish candidate, primary, secondary and foreign keys;
+3. **Connect the mechanism to its result** — document the design with an E-R diagram;
+
+#### Worked example: 1NF, 2NF and 3NF; explain 3NF and produce a normalised design: complete worked route
+
+1. **Identify the relevant condition or input**
+
+Database design review: connect each file-based limitation to a relational or DBMS mechanism;
+
+2. **Trace how the process works**
+
+distinguish candidate, primary, secondary and foreign keys;
+
+3. **Connect the mechanism to its result**
+
+document the design with an E-R diagram;
+
+4. **Complete example**
+
+Design and query a library database: Separate Student and Loan tables, identify StudentID as primary key in Student and foreign key in Loan, state the one-to-many relationship and referential-integrity rule, then write SELECT Student.StudentName, Loan.DueDate FROM Student INNER JOIN Loan ON Student.StudentID = Loan.StudentID WHERE Loan.Returned = FALSE;
+
+**Misconceptions to correct**
+
+- Students often choose names as primary keys. Correction: a primary key must uniquely and reliably identify a record.
+
+#### Mastery check (MC-L040-S8.04)
+
+Explain the following targets in one connected answer, using a concrete example for each: 1NF; 2NF; 3NF; normalised / normalized; design.
+
+<details><summary>Answer criteria</summary>
+
+- Database design review: connect each file-based limitation to a relational or DBMS mechanism; use entity/table, record/tuple and field/attribute precisely; distinguish candidate, primary, secondary and foreign keys; classify one-to-one, one-to-many and many-to-many relationships; apply referential integrity and indexing; document the design with an E-R diagram; and explain or produce 1NF, 2NF and 3NF designs.
+- Normalisation decomposes tables while preserving keys and relationships. A normalised 3NF design stores each fact once in the table identified by its determinant, reducing insertion, update and deletion anomalies.
+- To produce an E-R diagram, extract entity candidates from the scenario, assign identifiers, connect only supported relationships and label cardinality as one-to-one, one-to-many or many-to-many. Resolve a many-to-many relationship with a linking entity when converting the design to relational tables. A diagram must preserve the stated business rules rather than inventing links from similar field names.
+- An entity-relationship (E-R) diagram documents a database design by showing the entities, their relevant attributes or keys, the relationships between entities and the relationship cardinality. Entity names should describe things about which the system stores multiple facts; attributes belong to the entity they describe.
+- A complete answer follows the scenario through design, statement and result. It does not claim that a primary key prevents every duplicate fact, that a secondary key must be unique, that normalisation guarantees correctness, or that a three-table/comma-style query is within the AS core boundary.
+
+</details>
+
+**Supplementary concept map**
 
 - **1NF:** And explain or produce 1NF, 2NF and 3NF…
 - **2NF:** 1NF, 2NF and 3NF
@@ -76,7 +185,7 @@ The syllabus requires candidates to use an entity-relationship diagram to docume
 - **normalised:** 3NF and produce a normalised design.
 - **design:** A normalised 3NF design stores each fact once…
 
-**Mechanism**
+**Supplementary three-step recap**
 
 1. **Identify structure and target data** — First, Second and Third Normal Form and separately requires candidates to explain whether given tables are in 3NF…
 2. **Apply the database rule** — And explain or produce 1NF, 2NF and 3NF designs.
@@ -105,7 +214,7 @@ the syllabus names First, Second and Third Normal Form and separately requires c
 
 </details>
 
-<details><summary>Open precise terminology and exam facts</summary>
+### Lesson technical reference
 
 - The syllabus requires candidates to use an entity-relationship diagram to document a database design. Evidence must include entities, relationships and cardinality, not merely define entity and attribute.
 - the syllabus names First, Second and Third Normal Form and separately requires candidates to explain whether given tables are in 3NF and to produce a normalised design from a description, data or tables.
@@ -119,13 +228,6 @@ the syllabus names First, Second and Third Normal Form and separately requires c
 - Database design review: connect each file-based limitation to a relational or DBMS mechanism; use entity/table, record/tuple and field/attribute precisely; distinguish candidate, primary, secondary and foreign keys; classify one-to-one, one-to-many and many-to-many relationships; apply referential integrity and indexing; document the design with an E-R diagram; and explain or produce 1NF, 2NF and 3NF designs.
 - DBMS and SQL review: identify data management/data dictionary, data modelling, logical schema, integrity, security/backup/access rights, developer interface and query processor. Distinguish DDL structure commands from DML query/maintenance commands, use every required data type and key clause, and keep SELECT queries to at most two tables with explicit INNER JOIN ... ON when two tables are needed.
 - A complete answer follows the scenario through design, statement and result. It does not claim that a primary key prevents every duplicate fact, that a secondary key must be unique, that normalisation guarantees correctness, or that a three-table/comma-style query is within the AS core boundary.
-
-</details>
-
-### Worked method
-
-1. Design and query a library database
-2. Separate Student and Loan tables, identify StudentID as primary key in Student and foreign key in Loan, state the one-to-many relationship and referential-integrity rule, then write SELECT Student.StudentName, Loan.DueDate FROM…
 
 Beyond syllabus / 延伸知识（不要求背诵）: production databases also manage transactions and concurrent users; these ideas extend the syllabus model of integrity and access control.
 ## 3. Practice by question type
@@ -175,10 +277,11 @@ These are indexes only. Cambridge question and mark-scheme wording is not reprod
 
 ### Summary
 
-- Define entity-relationship design and normalisation with the exact technical vocabulary expected by the syllabus.
-- Use the lesson method on a fresh context and show the intermediate decision, representation or calculation.
-- Match the shape of the answer to the command word and the available marks.
-- Check the final answer against the scenario instead of repeating a memorised sentence.
+- S8.03: explain entity-relationship, diagram.
+- S8.03 method: Set up the required data and conditions → Carry out the complete method → Trace or test the result.
+- S8.04: explain 1NF, 2NF, 3NF, normalised / normalized, design.
+- S8.04 method: Identify the relevant condition or input → Trace how the process works → Connect the mechanism to its result.
+- Correction to remember: Students often choose names as primary keys. Correction: a primary key must uniquely and reliably identify a record.
 
 ### Common error to correct
 

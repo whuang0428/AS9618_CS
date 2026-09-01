@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "status": "sample-checkpoint",
+  "scope": "Cambridge International AS Level Computer Science 9618, 2027-2029, Section 2 sample materials only",
+  "authority": {
+    "syllabusUrl": "https://www.cambridgeinternational.org/Images/721397-2027-2029-syllabus.pdf",
+    "syllabusSha256": "c8a4c6d033c07c6d8025689abed5ef481d581c28bae640986d275303ed6c08bc",
+    "syllabusPages": [
+      16,
+      17
+    ],
+    "referenceBooks": [
+      {
+        "path": "参考书籍/AL CS Coursebook of New Syllabus.pdf",
+        "sha256": "86305dc7cd0014f1abf0cce1565212caf2a9bcfe6ba75c91163ec0197a68b079"
+      },
+      {
+        "path": "参考书籍/Hodder AS & A Level Computer Science Complete Book.pdf",
+        "sha256": "0719e2f5e0997acaddb7bec936b5d237924f1e1f2cde17d263113f5d9275827d"
+      }
+    ]
+  },
+  "pageContract": {
+    "order": [
+      "guiding-question",
+      "knowledge-explanation",
+      "practice",
+      "past-paper-analysis",
+      "summary"
+    ],
+    "studentLanguage": "English",
+    "teacherHintLanguage": "Chinese",
+    "teacherHintDefault": "collapsed",
+    "responsiveViewports": [
+      1440,
+      390
+    ]
+  },
+  "pastPaperAnalysis": {
+    "sourceRef": "9618/11/M/J/24 Q2(e)(i)-(ii)",
+    "marks": 3,
+    "officialQuestionPaperUrl": "https://www.cambridgeinternational.org/Images/673628-june-2024-question-paper-11.pdf",
+    "officialMarkSchemeUrl": "https://www.cambridgeinternational.org/Images/673620-june-2024-mark-scheme-paper-11.pdf",
+    "publicPagePolicy": "source index and official access link only; original equivalent task and analysis",
+    "reviewStatus": "official-question-and-mark-scheme-verified"
+  },
+  "designSystem": {
+    "direction": "restrained academic editorial",
+    "background": "#ffffff",
+    "ink": "#13233f",
+    "navy": "#123b73",
+    "blue": "#1d5aa6",
+    "teal": "#0c7c86",
+    "amber": "#b96d00",
+    "container": "1180px",
+    "comparisonRepresentation": "native HTML table",
+    "processRepresentation": "ordered steps or deterministic SVG",
+    "technicalLabels": "code-native only"
+  },
+  "samples": [
+    {
+      "sampleId": "S2-SAMPLE-CLIENT-SERVER-P2P",
+      "syllabusIds": [
+        "S2.02"
+      ],
+      "objectiveIds": [
+        "S2.02.A01",
+        "S2.02.A02",
+        "S2.02.A03",
+        "S2.02.A04",
+        "S2.02.A05"
+      ],
+      "material": {
+        "type": "comparison-table-with-role-flow",
+        "rendering": "native-html-and-inline-svg",
+        "visualNeeded": true,
+        "visualReason": "The requirement asks for roles, balanced comparison and scenario-linked justification."
+      },
+      "facts": [
+        "A client requests a service or resource; a server provides and manages that service or resource.",
+        "A peer may both request and provide resources directly to other peers.",
+        "Client-server centralises account, security, backup and resource management but requires server infrastructure and administration.",
+        "Peer-to-peer can be simple and inexpensive for a small trusted group, but management, backup, security and resource availability are distributed.",
+        "A justified choice must connect the scenario to roles, scale, control, cost, availability and trust."
+      ],
+      "forbiddenClaims": [
+        "Client-server is a topology.",
+        "Peer-to-peer means every resource is always available.",
+        "A server is always a single physical computer."
+      ],
+      "sources": [
+        "Official syllabus PDF page 16",
+        "AL CS Coursebook PDF pages 36-37 (printed page 29)",
+        "Hodder Complete Book PDF pages 72-75"
+      ],
+      "review": {
+        "factStatus": "reviewed",
+        "renderedStatus": "reviewed-desktop-and-390px"
+      }
+    },
+    {
+      "sampleId": "S2-SAMPLE-TOPOLOGIES",
+      "syllabusIds": [
+        "S2.04",
+        "S2.05"
+      ],
+      "objectiveIds": [
+        "S2.04.A01",
+        "S2.04.A02",
+        "S2.04.A03",
+        "S2.04.A04",
+        "S2.05.A01",
+        "S2.05.A02",
+        "S2.05.A03"
+      ],
+      "material": {
+        "type": "generated-physical-models-with-structured-path-and-failure-explanation",
+        "rendering": "imagegen-raster-plus-native-html",
+        "promptSetPath": "scripts/course-v3-section2-topology-imagegen-prompts.json",
+        "assets": [
+          {
+            "topology": "bus",
+            "path": "web/assets/diagrams/course-v3-pilot/topology-bus-v2.png",
+            "sha256": "886e48db0525a4d44f5e67faf73889dbc47cc695997a15aa9212986e2750b0a6"
+          },
+          {
+            "topology": "star",
+            "path": "web/assets/diagrams/course-v3-pilot/topology-star-v2.png",
+            "sha256": "f6b5b1701be376b9f21bdd866a41612757c52be4211c285e21f87ca595fbb709"
+          },
+          {
+            "topology": "mesh",
+            "path": "web/assets/diagrams/course-v3-pilot/topology-mesh-v2.png",
+            "sha256": "2e571df5836b13d097b83b3cbc0b2c4ace34c8899cf2306eb734ea78f4a4a793"
+          },
+          {
+            "topology": "hybrid",
+            "path": "web/assets/diagrams/course-v3-pilot/topology-hybrid-v2.png",
+            "sha256": "92ae189a65994350a38699b544b5c240ed08d27b348534e05852e15ec3260c48"
+          }
+        ],
+        "visualNeeded": true,
+        "visualReason": "Physical-model illustrations make the connection pattern visible. Exact packet paths and failure consequences are stated separately in ordered HTML steps and a comparison table so no decorative overlay can imply a false direct link."
+      },
+      "facts": [
+        "In a bus topology, every device attaches to one shared backbone and the signal propagates along that shared medium.",
+        "In a star topology, each device has a separate link to a central switch and a frame passes through the switch.",
+        "In a mesh topology, nodes have multiple interconnections and packets may use an alternative route when one link fails.",
+        "A hybrid topology combines two or more topology patterns; the sample uses two star segments joined by a backbone link.",
+        "A topology justification must connect packet path, failure effect, redundancy, cabling, expansion and traffic to the scenario."
+      ],
+      "diagramInvariants": {
+        "bus": "one backbone, two terminators, four separate device drops",
+        "star": "one central switch, four device-to-switch links, no device-to-device link",
+        "mesh": "four nodes, all six links present",
+        "hybrid": "two star segments connected by one inter-switch backbone link"
+      },
+      "forbiddenClaims": [
+        "A hybrid is merely a large network.",
+        "One broken end-device cable stops every device on a star.",
+        "A mesh has only one route between each pair of hosts."
+      ],
+      "sources": [
+        "Official syllabus PDF page 16",
+        "AL CS Coursebook PDF pages 37-38 (printed pages 30-31)",
+        "Hodder Complete Book PDF pages 77-79"
+      ],
+      "review": {
+        "factStatus": "reviewed",
+        "assetSubjectStatus": "reviewed",
+        "assetTextStatus": "reviewed-no-text",
+        "geometryStatus": "reviewed-against-diagram-invariants",
+        "renderedStatus": "reviewed-desktop-and-390px"
+      }
+    },
+    {
+      "sampleId": "S2-SAMPLE-STREAMING-BUFFER",
+      "syllabusIds": [
+        "S2.12"
+      ],
+      "objectiveIds": [
+        "S2.12.A01",
+        "S2.12.A02",
+        "S2.12.A03",
+        "S2.12.A04",
+        "S2.12.A05",
+        "S2.12.A06"
+      ],
+      "material": {
+        "type": "analogy-illustration-with-technical-overlay",
+        "rendering": "imagegen-raster-plus-deterministic-svg",
+        "assetPath": "web/assets/diagrams/course-v3-pilot/streaming-buffer-reservoir.png",
+        "assetSha256": "aaf5d6db4ef0e471e3627736a591901e1be90fb818a9b79d0a73ef151b7b0135",
+        "visualNeeded": true,
+        "visualReason": "The reservoir makes the relationship among incoming rate, playback rate and stored buffer level directly observable."
+      },
+      "facts": [
+        "Bit streaming delivers media progressively so playback can start before the complete file arrives.",
+        "On-demand streaming sends stored content selected by the user; real-time streaming sends content as it is produced.",
+        "Bit rate is the number of bits transmitted each second.",
+        "A buffer temporarily stores arriving data before playback consumes it.",
+        "When sustained incoming rate exceeds playback bit rate, the buffer level rises; when it is lower, the buffer level falls.",
+        "A buffer absorbs short variation but cannot repair a sustained connection rate below the media bit rate."
+      ],
+      "analogyBoundary": "Water level represents stored-but-not-yet-played data only. The analogy does not model protocols, compression, packet loss, latency or the player's complete adaptive-bitrate algorithm.",
+      "exactLabels": [
+        "Incoming data rate",
+        "Buffer level",
+        "Playback bit rate"
+      ],
+      "forbiddenClaims": [
+        "A larger buffer increases broadband speed.",
+        "A buffer can prevent interruption forever when the sustained incoming rate is below the playback bit rate.",
+        "Real-time means the complete file is downloaded before playback."
+      ],
+      "sources": [
+        "Official syllabus PDF page 16",
+        "AL CS Coursebook PDF pages 47-48 (printed pages 40-41)",
+        "Hodder Complete Book PDF pages 67 and 89-90"
+      ],
+      "generation": {
+        "mode": "built-in ImageGen",
+        "prompt": "Use case: scientific-educational illustration for an AS Level Computer Science lesson. Create an unlabelled classroom analogy for a streaming buffer: one transparent-sided rectangular reservoir centred in a wide 16:9 composition, one inlet pipe entering from the upper left with water visibly flowing in, one outlet pipe leaving at the lower right with water visibly flowing out, and a clearly visible water level. Flat educational illustration, crisp navy outlines, blue water, restrained teal accents, transparent or clean white background, ample empty space around the inlet, water level and outlet for later code-native annotations. Exactly one inlet, one reservoir and one outlet. No text, numbers, equations, icons, logos or watermark. Avoid dams, mountains, rivers, extra pipes, extra tanks, people, characters, gauges, arrows, captions, scenery, overflow and an empty tank."
+      },
+      "review": {
+        "factStatus": "reviewed",
+        "assetSubjectStatus": "reviewed",
+        "assetTextStatus": "reviewed-no-text",
+        "renderedStatus": "reviewed-desktop-and-390px"
+      }
+    }
+  ],
+  "renderedEvidence": {
+    "url": "http://127.0.0.1:8769/course-v3-pilot/section-2/",
+    "desktopScreenshot": "audits/course-v3-visual-evidence/section-2-sample-checkpoint/desktop-1440.png",
+    "mobileScreenshot": "audits/course-v3-visual-evidence/section-2-sample-checkpoint/mobile-390.png",
+    "materialContactSheet": "audits/course-v3-visual-evidence/section-2-sample-checkpoint/material-contact-sheet.png",
+    "topologyImagegenContactSheet": "audits/course-v3-visual-evidence/section-2-sample-checkpoint/topology-imagegen-contact-sheet.png",
+    "consoleWarningsOrErrors": 0,
+    "browserChecks": [
+      "five teaching sections appear once and in the required order",
+      "four generated topology images load at 1448 by 1086 pixels",
+      "topology SVG count and legacy path or failure overlay count are zero",
+      "every topology has three ordered packet-path steps and one failure-table row",
+      "teacher hints and answer guidance are collapsed by default",
+      "generated reservoir asset loads at 1672 pixels wide",
+      "desktop body has no horizontal overflow",
+      "390px body has no horizontal overflow and wide materials have explicit swipe cues"
+    ]
+  }
+}

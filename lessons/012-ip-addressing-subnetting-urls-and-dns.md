@@ -28,22 +28,90 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ### 1. IP-address use, including IPv4/IPv6 format, subnetting, device association, public/private and static/dynamic addresses, and security implications (S2.15)
 
-**Concept relationships**
+**Atomic learning targets**
 
-- **does not guarantee security:** Private addressing reduces direct public reachability but does…
-- **public address:** IP-address use, including IPv4/IPv6 format, subnetting, device association,…
-- **private address:** IPv4 is 32-bit and IPv6 is 128-bit.
-- **static addresses:** An address is associated with a network interface…
-- **dynamic addresses:** It does not resolve the path or store…
-- **128-bit:** Internet-supporting connections include the PSTN (Public Switched Telephone…
+- **S2.15.A01:** IPv4
+- **S2.15.A02:** 32-bit
+- **S2.15.A03:** IPv6
+- **S2.15.A04:** 128-bit
+- **S2.15.A05:** subnetting
+- **S2.15.A06:** network interface
+- **S2.15.A07:** public address
+- **S2.15.A08:** private address
+- **S2.15.A09:** static addresses
+- **S2.15.A10:** dynamic addresses
+- **S2.15.A11:** does not guarantee security
 
-**Mechanism**
+**Core explanation**
 
-1. **Identify what needs protection** — IP-address use, including IPv4/IPv6 format, subnetting, device association, public/private and static/dynamic addresses, and security implications.
-2. **Trace the attack or error route** — Private addressing reduces direct public reachability but does not guarantee security.
-3. **Match a safeguard and limitation** — IPv4 is 32-bit and IPv6 is 128-bit.
+- An IP address identifies a network interface so packets can be routed to it. IPv4 addresses contain 32 bits; IPv6 addresses contain 128 bits and are normally written as hexadecimal groups.
+- Subnetting divides one address space into smaller logical networks by treating part of the address as the subnet identifier. Devices use the subnet information to decide whether a destination is local or must be sent to a router.
+- A public address is an IP address routable on the public internet. A private address is used inside a local network and normally reaches the internet through address translation; private addressing reduces direct reachability but does not guarantee security.
+- Static addresses stay assigned until deliberately changed, which suits servers that must be found predictably. Dynamic addresses are assigned for a period by a service such as DHCP and may change.
+- An address belongs to a network interface, not permanently to a person or an entire physical computer. A device with wired and wireless interfaces can have a different address on each interface.
 
-**Concrete case: does not guarantee security:** IP-address use, including IPv4/IPv6 format, subnetting, device association, public/private and static/dynamic addresses, and security implications.
+**Mechanism or method**
+
+1. **Identify the address version** — Use 32-bit IPv4 or 128-bit IPv6 and interpret the address notation accurately.
+2. **Separate network and host information** — Use the subnet definition to decide whether the destination is local or must be forwarded to a router.
+3. **Classify reachability and assignment** — Distinguish public/private scope and static/dynamic allocation, then state the practical consequence of each choice.
+
+#### Worked example: Classify an interface address
+
+1. **Address**
+
+A school printer interface uses IPv4 address 192.168.10.37 with the first 24 bits identifying its subnet.
+
+2. **Subnet**
+
+The interface is on subnet 192.168.10.0; a destination on another subnet must be sent to the router.
+
+3. **Scope**
+
+192.168.10.37 is private, so it is not directly routed across the public internet.
+
+4. **Assignment**
+
+The printer should normally receive a static assignment so clients can find it predictably.
+
+5. **Security**
+
+The private address reduces direct exposure but authentication, firewall rules and updates are still needed.
+
+**Misconceptions to correct**
+
+- DNS resolves a domain name; it does not decide whether an IP address is static, dynamic, public or private.
+
+#### Mastery check (MC-L012-S2.15)
+
+Explain the following targets in one connected answer, using a concrete example for each: IPv4; 32-bit; IPv6; 128-bit; subnetting; network interface; public address; private address; static addresses; dynamic addresses; does not guarantee security.
+
+<details><summary>Answer criteria</summary>
+
+- An IP address identifies a network interface so packets can be routed to it. IPv4 addresses contain 32 bits; IPv6 addresses contain 128 bits and are normally written as hexadecimal groups.
+- Subnetting divides one address space into smaller logical networks by treating part of the address as the subnet identifier. Devices use the subnet information to decide whether a destination is local or must be sent to a router.
+- A public address is an IP address routable on the public internet. A private address is used inside a local network and normally reaches the internet through address translation; private addressing reduces direct reachability but does not guarantee security.
+- Static addresses stay assigned until deliberately changed, which suits servers that must be found predictably. Dynamic addresses are assigned for a period by a service such as DHCP and may change.
+- An address belongs to a network interface, not permanently to a person or an entire physical computer. A device with wired and wireless interfaces can have a different address on each interface.
+
+</details>
+
+**Supplementary concept map**
+
+- **IPv4:** 32-bit address
+- **IPv6:** 128-bit address
+- **Subnet:** separates logical networks
+- **Interface:** owns the address
+- **Public/private:** different routing scope
+- **Static/dynamic:** different assignment lifetime
+
+**Supplementary three-step recap**
+
+1. **Identify the address version** — Use 32-bit IPv4 or 128-bit IPv6 and interpret the address notation accurately.
+2. **Separate network and host information** — Use the subnet definition to decide whether the destination is local or must be forwarded to a router.
+3. **Classify reachability and assignment** — Distinguish public/private scope and static/dynamic allocation, then state the practical consequence of each choice.
+
+**Address one interface, then route:** Version, subnet, scope and assignment answer different questions; none is a complete security control.
 
 
 
@@ -57,22 +125,84 @@ IPv4 is 32-bit and IPv6 is 128-bit. An address is associated with a network inte
 
 ### 2. How a URL locates a WWW resource and the role of DNS (S2.16)
 
-**Concept relationships**
+**Atomic learning targets**
 
-- **Uniform Resource Locator:** DNS resolves the domain to an IP address,…
-- **domain name:** DNS resolves the domain name to an IP…
-- **DNS resolves:** How a URL locates a WWW resource and…
-- **WWW resource:** A URL locates a WWW resource
-- **scheme:** A URL may contain scheme, domain, optional port,…
-- **path:** It does not resolve the path or store…
+- **S2.16.A01:** Uniform Resource Locator
+- **S2.16.A02:** scheme
+- **S2.16.A03:** domain name
+- **S2.16.A04:** path
+- **S2.16.A05:** DNS resolves
+- **S2.16.A06:** IP address
+- **S2.16.A07:** WWW resource
 
-**Mechanism**
+**Core explanation**
 
-1. **Identify incoming data or signal** — DNS resolves the domain to an IP address, while the remaining URL components identify the required resource.
-2. **Follow the physical or logical path** — How a URL locates a WWW resource and the role of DNS.
-3. **Connect output to its use** — DNS resolves the domain name to an IP address
+- A Uniform Resource Locator (URL) identifies a WWW resource. Its scheme states how to access the resource, the domain name identifies the named host, and the path identifies the resource on that host.
+- A URL can also contain an optional port, query and fragment. These components have different jobs and are not all sent to DNS.
+- DNS resolves the domain name to an IP address. It does not resolve the path, store the web page or return the requested resource.
+- After resolution, the browser uses the returned IP address to contact the web server and sends a request containing the required host and path. The server then locates or generates the resource and returns it.
 
-**DNS: name to IP address:** 1. URL entered The user enters a URL containing a domain name. 2. DNS lookup The device asks a DNS server to resolve the domain name.
+**Mechanism or method**
+
+1. **Separate the URL components** — Identify the scheme, domain name and path before deciding which component DNS must resolve.
+2. **Ask DNS for the domain address** — DNS looks up the domain name and returns an IP address; it does not process the resource path.
+3. **Contact the web server** — The browser connects using the IP address and requests the path so the server can return the WWW resource.
+
+#### Worked example: Resolve and request one URL
+
+1. **URL**
+
+For https://www.example.org/course/page.html?unit=2#quiz, https is the scheme, www.example.org is the domain and /course/page.html is the path.
+
+2. **DNS**
+
+The browser asks DNS to resolve www.example.org and receives the server's IP address.
+
+3. **Connection**
+
+The browser opens the HTTPS connection to that address and identifies the host it wants.
+
+4. **Request**
+
+The browser requests /course/page.html with query unit=2; the server, not DNS, locates or generates the resource.
+
+5. **Fragment**
+
+The browser uses #quiz to move to a location within the returned document; the fragment is not part of the DNS lookup.
+
+**Misconceptions to correct**
+
+- DNS maps a domain name to an IP address; it does not translate the entire URL into a web page.
+
+#### Mastery check (MC-L012-S2.16)
+
+Explain the following targets in one connected answer, using a concrete example for each: Uniform Resource Locator; scheme; domain name; path; DNS resolves; IP address; WWW resource.
+
+<details><summary>Answer criteria</summary>
+
+- A Uniform Resource Locator (URL) identifies a WWW resource. Its scheme states how to access the resource, the domain name identifies the named host, and the path identifies the resource on that host.
+- A URL can also contain an optional port, query and fragment. These components have different jobs and are not all sent to DNS.
+- DNS resolves the domain name to an IP address. It does not resolve the path, store the web page or return the requested resource.
+- After resolution, the browser uses the returned IP address to contact the web server and sends a request containing the required host and path. The server then locates or generates the resource and returns it.
+
+</details>
+
+**Supplementary concept map**
+
+- **Scheme:** access method
+- **Domain:** named host
+- **Path:** resource on host
+- **DNS:** domain to IP
+- **IP address:** server network destination
+- **Browser:** requests the WWW resource
+
+**Supplementary three-step recap**
+
+1. **Separate the URL components** — Identify the scheme, domain name and path before deciding which component DNS must resolve.
+2. **Ask DNS for the domain address** — DNS looks up the domain name and returns an IP address; it does not process the resource path.
+3. **Contact the web server** — The browser connects using the IP address and requests the path so the server can return the WWW resource.
+
+**Resolve the host, request the path:** DNS handles the domain name; the browser sends the path to the web server after resolution.
 
 #### DNS: name to IP address
 
@@ -110,7 +240,7 @@ A URL may contain scheme, domain, optional port, path and optional query/fragmen
 
 </details>
 
-<details><summary>Open precise terminology and exam facts</summary>
+### Lesson technical reference
 
 - IPv4 is 32-bit and IPv6 is 128-bit. An address is associated with a network interface on a network. Private addressing reduces direct public reachability but does not guarantee security.
 - A URL may contain scheme, domain, optional port, path and optional query/fragment. DNS resolves the domain name to an IP address; it does not resolve the path or store the resource.
@@ -124,16 +254,6 @@ A URL may contain scheme, domain, optional port, path and optional query/fragmen
 - Internet hardware includes routers and transmission links that forward data between networks. Web servers store or generate web resources, while clients request those resources; the WWW is therefore not a synonym for all internet services.
 - A modem converts signals into a form suitable for the access link and back again. Internet-supporting connections include the PSTN (Public Switched Telephone Network), a dedicated line and a cell phone network or cellular phone network. Each has different sharing, mobility and availability characteristics.
 - When describing an internet connection, follow the path from the end device through its NIC, LAN switch or access point, router and access link. Name each device only for the job it performs.
-
-</details>
-
-### Worked method
-
-1. Trace a school request
-2. Two stations sense an idle cable
-3. 6 Mbit/s video on 4 Mbit/s link
-4. Separate infrastructure from service
-5. Locate one resource on a school web server
 
 Beyond syllabus / 延伸知识（不要求背诵）: real networks organise communication in layers so that hardware, addressing and application protocols can change independently.
 ## 3. Practice by question type
@@ -158,15 +278,15 @@ Why might a server use a static IP address?
 
 **Common error:** Do not repeat the same point in different words; each mark needs a separate idea or method step.
 
-### Question 3 - transfer - apply - 2 marks
+### Question 3 - transfer - explain - 6 marks
 
-What is the role of a NIC?
+For the URL https://school.example/course/page.html, identify the scheme, domain name and path, then explain how DNS and the browser use them to retrieve the WWW resource.
 
-**Answer:** It provides the device's network interface for sending and receiving data.
+**Answer:** scheme is https; domain name is school.example; path is /course/page.html; DNS resolves only the domain name to an IP address; browser connects to the server using that address; browser requests the named path and the server returns the resource
 
-**Marking guidance:** Award one mark for each distinct, technically accurate point or method step.
+**Marking guidance:** Keep DNS resolution separate from the browser's resource request.
 
-**Common error:** Do not copy the worked example unchanged; transfer the method and check it against the new context.
+**Common error:** DNS does not resolve the path or return the web page.
 
 ### Related past-paper indexes
 
@@ -183,10 +303,11 @@ These are indexes only. Cambridge question and mark-scheme wording is not reprod
 
 ### Summary
 
-- Define ip addressing, subnetting, urls and dns with the exact technical vocabulary expected by the syllabus.
-- Use the lesson method on a fresh context and show the intermediate decision, representation or calculation.
-- Match the shape of the answer to the command word and the available marks.
-- Check the final answer against the scenario instead of repeating a memorised sentence.
+- S2.15: explain IPv4, 32-bit, IPv6, 128-bit, subnetting, network interface, public address, private address, static addresses, dynamic addresses, does not guarantee security.
+- S2.15 method: Identify the address version → Separate network and host information → Classify reachability and assignment.
+- S2.16: explain Uniform Resource Locator, scheme, domain name, path, DNS resolves, IP address, WWW resource.
+- S2.16 method: Separate the URL components → Ask DNS for the domain address → Contact the web server.
+- Correction to remember: DNS resolves a domain name; it does not decide whether an IP address is static, dynamic, public or private.
 
 ### Common error to correct
 

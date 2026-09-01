@@ -28,7 +28,69 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ### 1. Artificial intelligence, its applications and its social, economic and environmental impacts (S7.06)
 
-**Concept relationships**
+**Atomic learning targets**
+
+- **S7.06.A01:** AI
+- **S7.06.A02:** applications
+- **S7.06.A03:** evaluate
+- **S7.06.A04:** social
+- **S7.06.A05:** economic
+- **S7.06.A06:** environmental
+- **S7.06.A07:** impacts
+
+**Core explanation**
+
+- Professional ethics has a purpose: computing professionals must protect public interest, work competently and remain accountable for consequences. Joining a professional ethical body such as the British Computer Society (BCS) or the Institute of Electrical and Electronics Engineers (IEEE) provides codes of conduct, guidance, continuing professional development and a community that supports standards. In a situation, judge whether action is ethical or unethical and explain stakeholder impacts of both choices.
+- Artificial intelligence (AI) applications include classification, recommendation, prediction and autonomous control. Every AI evaluation should identify the application or decision mechanism and trace social, economic and environmental impacts before reaching a contextual judgement with realistic mitigations.
+- To evaluate an AI application, balance its social, economic and environmental impacts and reach a context-linked judgement.
+- Social impacts include access, bias and privacy; economic impacts include productivity, job redesign and error cost; environmental impacts include data-centre energy/material use and optimisation of transport or power. Evaluation balances benefits, harms and mitigations in context.
+- AI applications include medical image classification, recommendation, fraud detection, language processing, autonomous control and predictive maintenance. A valid impact answer names the AI decision mechanism and traces a consequence for a stakeholder.
+- Artificial intelligence, its applications and its social, economic and environmental impacts.
+
+**Mechanism or method**
+
+1. **Establish the exact components or states** — Professional ethics has a purpose: computing professionals must protect public interest, work competently and remain accountable for consequences.
+2. **Trace the relationship or change** — Joining a professional ethical body such as the British Computer Society (BCS) or the Institute of Electrical and Electronics Engineers (IEEE) provides codes of conduct, guidance, continuing professional development and a community that supports standards.
+3. **Use the explanation in a concrete case** — In a situation, judge whether action is ethical or unethical and explain stakeholder impacts of both choices.
+
+#### Worked example: Artificial intelligence, its applications and its social, economic and environmental impacts: complete worked route
+
+1. **Establish the exact components or states**
+
+Professional ethics has a purpose: computing professionals must protect public interest, work competently and remain accountable for consequences.
+
+2. **Trace the relationship or change**
+
+Joining a professional ethical body such as the British Computer Society (BCS) or the Institute of Electrical and Electronics Engineers (IEEE) provides codes of conduct, guidance, continuing professional development and a community that supports standards.
+
+3. **Use the explanation in a concrete case**
+
+In a situation, judge whether action is ethical or unethical and explain stakeholder impacts of both choices.
+
+4. **Complete example**
+
+AI recruitment review: An AI recruitment system may speed initial screening and reduce administrative cost, but biased data can unfairly exclude applicants, automated rejection can remove accountability, and model operation consumes computing resources. The system is justified only if measured benefits outweigh social, economic and environmental costs under those safeguards.
+
+**Misconceptions to correct**
+
+- Students often write personal opinions only. Correction: ethics answers need stakeholders, evidence and balanced judgement.
+
+#### Mastery check (MC-L038-S7.06)
+
+Show the following targets in one connected answer, using a concrete example for each: AI; applications; evaluate; social; economic; environmental; impacts.
+
+<details><summary>Answer criteria</summary>
+
+- Professional ethics has a purpose: computing professionals must protect public interest, work competently and remain accountable for consequences. Joining a professional ethical body such as the British Computer Society (BCS) or the Institute of Electrical and Electronics Engineers (IEEE) provides codes of conduct, guidance, continuing professional development and a community that supports standards. In a situation, judge whether action is ethical or unethical and explain stakeholder impacts of both choices.
+- Artificial intelligence (AI) applications include classification, recommendation, prediction and autonomous control. Every AI evaluation should identify the application or decision mechanism and trace social, economic and environmental impacts before reaching a contextual judgement with realistic mitigations.
+- To evaluate an AI application, balance its social, economic and environmental impacts and reach a context-linked judgement.
+- Social impacts include access, bias and privacy; economic impacts include productivity, job redesign and error cost; environmental impacts include data-centre energy/material use and optimisation of transport or power. Evaluation balances benefits, harms and mitigations in context.
+- AI applications include medical image classification, recommendation, fraud detection, language processing, autonomous control and predictive maintenance. A valid impact answer names the AI decision mechanism and traces a consequence for a stakeholder.
+- Artificial intelligence, its applications and its social, economic and environmental impacts.
+
+</details>
+
+**Supplementary concept map**
 
 - **applications:** Artificial intelligence, its applications and its social, economic…
 - **evaluate:** To evaluate an AI application, balance its social,…
@@ -37,7 +99,7 @@ Ask the learner to give one accurate definition or method step before continuing
 - **environmental:** Environmental impacts include data-centre energy/material use and optimisation…
 - **impacts:** Social impacts include access, bias and privacy
 
-**Mechanism**
+**Supplementary three-step recap**
 
 1. **Identify who is affected** — Artificial intelligence, its applications and its social, economic and environmental impacts.
 2. **Trace benefit and harm** — To evaluate an AI application, balance its social, economic and environmental impacts and reach a context-linked judgement.
@@ -66,7 +128,7 @@ The syllabus requires applications of AI and impacts across all three named dime
 
 </details>
 
-<details><summary>Open precise terminology and exam facts</summary>
+### Lesson technical reference
 
 - The syllabus requires applications of AI and impacts across all three named dimensions: social, economic and environmental. Evidence must connect an AI mechanism to stakeholder consequences, benefits, harms and a contextual judgement.
 - AI applications include medical image classification, recommendation, fraud detection, language processing, autonomous control and predictive maintenance. A valid impact answer names the AI decision mechanism and traces a consequence for a stakeholder.
@@ -74,15 +136,6 @@ The syllabus requires applications of AI and impacts across all three named dime
 - To evaluate an AI application, balance its social, economic and environmental impacts and reach a context-linked judgement.
 - Professional ethics has a purpose: computing professionals must protect public interest, work competently and remain accountable for consequences. Joining a professional ethical body such as the British Computer Society (BCS) or the Institute of Electrical and Electronics Engineers (IEEE) provides codes of conduct, guidance, continuing professional development and a community that supports standards. In a situation, judge whether action is ethical or unethical and explain stakeholder impacts of both choices.
 - Artificial intelligence (AI) applications include classification, recommendation, prediction and autonomous control. Every AI evaluation should identify the application or decision mechanism and trace social, economic and environmental impacts before reaching a contextual judgement with realistic mitigations.
-
-</details>
-
-### Worked method
-
-1. AI recruitment review
-2. An AI recruitment system may speed initial screening and reduce administrative cost, but biased data can unfairly exclude applicants, automated rejection can remove accountability, and model operation consumes computing resources.
-3. Human review, representative data, appeal, data minimisation and efficient infrastructure address different harms.
-4. The system is justified only if measured benefits outweigh social, economic and environmental costs under those safeguards.
 
 Beyond syllabus / 延伸知识（不要求背诵）: professional decisions are often reviewed against law, organisational policy, public interest and a published code of conduct.
 ## 3. Practice by question type
@@ -132,10 +185,9 @@ These are indexes only. Cambridge question and mark-scheme wording is not reprod
 
 ### Summary
 
-- Define artificial intelligence applications and impacts with the exact technical vocabulary expected by the syllabus.
-- Use the lesson method on a fresh context and show the intermediate decision, representation or calculation.
-- Match the shape of the answer to the command word and the available marks.
-- Check the final answer against the scenario instead of repeating a memorised sentence.
+- S7.06: explain AI, applications, evaluate, social, economic, environmental, impacts.
+- S7.06 method: Establish the exact components or states → Trace the relationship or change → Use the explanation in a concrete case.
+- Correction to remember: Students often write personal opinions only. Correction: ethics answers need stakeholders, evidence and balanced judgement.
 
 ### Common error to correct
 

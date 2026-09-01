@@ -32,7 +32,57 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ### 1. Trace a simple assembly-language program (S4.11)
 
-**Concept relationships**
+**Atomic learning targets**
+
+- **S4.11.A01:** Trace
+- **S4.11.A02:** assembly-language
+- **S4.11.A03:** program
+
+**Core explanation**
+
+- To trace a simple assembly-language program, make a table with one row per executed instruction and columns for the current instruction/address, ACC, IX, relevant memory or output, and branch result. Update only the state changed by that instruction, then use the updated PC or branch target to choose the next row; do not trace source lines that a taken jump skips.
+- To trace a simple assembly-language program, make a table with one row per executed instruction and columns for the current instruction/address, ACC, IX, relevant memory or output, and branch result.
+
+**Mechanism or method**
+
+1. **Identify the relevant condition or input** — To trace a simple assembly-language program, make a table with one row per executed instruction and columns for the current instruction/address, ACC, IX, relevant memory or output, and branch result.
+2. **Trace how the process works** — Update only the state changed by that instruction, then use the updated PC or branch target to choose the next row;
+3. **Connect the mechanism to its result** — do not trace source lines that a taken jump skips.
+
+#### Worked example: Trace a simple assembly-language program: complete worked route
+
+1. **Identify the relevant condition or input**
+
+To trace a simple assembly-language program, make a table with one row per executed instruction and columns for the current instruction/address, ACC, IX, relevant memory or output, and branch result.
+
+2. **Trace how the process works**
+
+Update only the state changed by that instruction, then use the updated PC or branch target to choose the next row;
+
+3. **Connect the mechanism to its result**
+
+do not trace source lines that a taken jump skips.
+
+4. **Complete example**
+
+Compare five operand interpretations: With operand 20, immediate uses value 20; direct uses Memory[20]; indirect follows Memory[20] as another address; indexed uses address 20 + IX; relative uses PC plus a signed or stated offset. Separately, if CMI POINTER produces True, JPE MATCH branches to MATCH; a False comparison allows JPN DIFFERENT to branch.
+
+**Misconceptions to correct**
+
+- Students often memorise register names without roles. Correction: a register earns its name by what it temporarily holds.
+
+#### Mastery check (MC-L024-S4.11)
+
+Explain the following targets in one connected answer, using a concrete example for each: Trace; assembly-language; program.
+
+<details><summary>Answer criteria</summary>
+
+- To trace a simple assembly-language program, make a table with one row per executed instruction and columns for the current instruction/address, ACC, IX, relevant memory or output, and branch result. Update only the state changed by that instruction, then use the updated PC or branch target to choose the next row; do not trace source lines that a taken jump skips.
+- To trace a simple assembly-language program, make a table with one row per executed instruction and columns for the current instruction/address, ACC, IX, relevant memory or output, and branch result.
+
+</details>
+
+**Supplementary concept map**
 
 - **Instruction:** Execute in control-flow order
 - **Trace table:** Record state after each step
@@ -41,7 +91,7 @@ Ask the learner to give one accurate definition or method step before continuing
 - **assembly-language:** To trace a simple assembly-language program, make a…
 - **Trace:** Trace a given simple assembly-language program by recording…
 
-**Mechanism**
+**Supplementary three-step recap**
 
 1. **Translate the stated design** — To trace a simple assembly-language program, make a table with one row per executed instruction and columns for…
 2. **Apply one complete operation** — Trace a given simple assembly-language program by recording each executed instruction, register/memory/output changes and taken or not-taken control…
@@ -61,7 +111,68 @@ Trace a given simple assembly-language program by recording each executed instru
 
 ### 2. Instruction groups: data movement, input/output, arithmetic, conditional/unconditional branch and compare (S4.12)
 
-**Concept relationships**
+**Atomic learning targets**
+
+- **S4.12.A01:** data movement
+- **S4.12.A02:** input/output / input and output
+- **S4.12.A03:** arithmetic
+- **S4.12.A04:** conditional branch
+- **S4.12.A05:** unconditional branch
+- **S4.12.A06:** compare
+
+**Core explanation**
+
+- Data movement: LDM n loads immediate n into ACC; LDD <address loads the directly addressed contents into ACC; LDI <address follows the address stored at <address; LDX <address loads from <address + IX; LDR n loads n into IX; MOV <register moves ACC to IX; STO <address stores ACC at the address.
+- The five instruction groups are data movement (LDM, LDD, LDI, LDX, LDR, MOV, STO), input/output (IN, OUT), arithmetic (ADD, SUB, INC, DEC), unconditional branch and conditional branch. JMP is the unconditional branch instruction; CMP, CMI, JPE and JPN form the compare and conditional branch group. END returns control to the operating system.
+- Control, comparison and I/O: JMP <address is unconditional. CMP <address or CMP n compares ACC directly or with an immediate value. CMI <address compares using indirect addressing. JPE jumps after a True comparison and JPN after a False comparison. IN inputs one ASCII character code to ACC; OUT outputs the character whose ASCII code is in ACC; END returns control to the operating system.
+- The five groups are data movement, input/output, arithmetic, unconditional/conditional instructions and compare. Data movement uses LDM, LDD, LDI, LDX, LDR, MOV and STO; LDR n loads the immediate value n into IX.
+- Arithmetic: ADD <address or ADD n/Bn/&n adds a memory value or immediate denary/binary/hexadecimal value to ACC; SUB has the corresponding forms; INC <register and DEC <register change ACC or IX by one.
+- Group the specified instructions as data movement, input/output, arithmetic, unconditional branch, conditional branch and compare operations
+
+**Mechanism or method**
+
+1. **Identify the relevant condition or input** — Data movement: LDM n loads immediate n into ACC;
+2. **Trace how the process works** — LDD <address loads the directly addressed contents into ACC;
+3. **Connect the mechanism to its result** — LDI <address follows the address stored at <address;
+
+#### Worked example: Instruction groups: data movement, input/output, arithmetic, conditional/unconditional branch and compare: complete worked route
+
+1. **Identify the relevant condition or input**
+
+Data movement: LDM n loads immediate n into ACC;
+
+2. **Trace how the process works**
+
+LDD <address loads the directly addressed contents into ACC;
+
+3. **Connect the mechanism to its result**
+
+LDI <address follows the address stored at <address;
+
+4. **Complete example**
+
+Compare five operand interpretations: With operand 20, immediate uses value 20;
+
+**Misconceptions to correct**
+
+- Students often memorise register names without roles. Correction: a register earns its name by what it temporarily holds.
+
+#### Mastery check (MC-L024-S4.12)
+
+Explain the following targets in one connected answer, using a concrete example for each: data movement; input/output / input and output; arithmetic; conditional branch; unconditional branch; compare.
+
+<details><summary>Answer criteria</summary>
+
+- Data movement: LDM n loads immediate n into ACC; LDD <address loads the directly addressed contents into ACC; LDI <address follows the address stored at <address; LDX <address loads from <address + IX; LDR n loads n into IX; MOV <register moves ACC to IX; STO <address stores ACC at the address.
+- The five instruction groups are data movement (LDM, LDD, LDI, LDX, LDR, MOV, STO), input/output (IN, OUT), arithmetic (ADD, SUB, INC, DEC), unconditional branch and conditional branch. JMP is the unconditional branch instruction; CMP, CMI, JPE and JPN form the compare and conditional branch group. END returns control to the operating system.
+- Control, comparison and I/O: JMP <address is unconditional. CMP <address or CMP n compares ACC directly or with an immediate value. CMI <address compares using indirect addressing. JPE jumps after a True comparison and JPN after a False comparison. IN inputs one ASCII character code to ACC; OUT outputs the character whose ASCII code is in ACC; END returns control to the operating system.
+- The five groups are data movement, input/output, arithmetic, unconditional/conditional instructions and compare. Data movement uses LDM, LDD, LDI, LDX, LDR, MOV and STO; LDR n loads the immediate value n into IX.
+- Arithmetic: ADD <address or ADD n/Bn/&n adds a memory value or immediate denary/binary/hexadecimal value to ACC; SUB has the corresponding forms; INC <register and DEC <register change ACC or IX by one.
+- Group the specified instructions as data movement, input/output, arithmetic, unconditional branch, conditional branch and compare operations
+
+</details>
+
+**Supplementary concept map**
 
 - **conditional branch:** The five instruction groups are data movement (LDM,…
 - **unconditional branch:** Group the specified instructions as data movement, input/output,…
@@ -70,7 +181,7 @@ Trace a given simple assembly-language program by recording each executed instru
 - **arithmetic:** Arithmetic uses ADD, SUB, INC and DEC.
 - **compare:** CMP, CMI, JPE and JPN form the compare…
 
-**Mechanism**
+**Supplementary three-step recap**
 
 1. **Write values units and width** — The five instruction groups are data movement (LDM, LDD, LDI, LDX, LDR, MOV, STO), input/output (IN, OUT), arithmetic…
 2. **Apply the required method** — Group the specified instructions as data movement, input/output, arithmetic, unconditional branch, conditional branch and compare operations
@@ -102,7 +213,91 @@ Group the specified instructions as data movement, input/output, arithmetic, unc
 
 ### 3. The specified instruction set: LDM, LDD, LDI, LDX, LDR, MOV, STO, ADD, SUB, INC, DEC, JMP,… (S4.13)
 
-**Concept relationships**
+**Atomic learning targets**
+
+- **S4.13.A01:** LDM
+- **S4.13.A02:** LDD
+- **S4.13.A03:** LDI
+- **S4.13.A04:** LDX
+- **S4.13.A05:** LDR #n
+- **S4.13.A06:** MOV
+- **S4.13.A07:** STO
+- **S4.13.A08:** ADD
+- **S4.13.A09:** SUB
+- **S4.13.A10:** INC
+- **S4.13.A11:** DEC
+- **S4.13.A12:** JMP
+- **S4.13.A13:** CMP
+- **S4.13.A14:** CMI <address>
+- **S4.13.A15:** JPE <address>
+- **S4.13.A16:** JPN <address>
+- **S4.13.A17:** IN
+- **S4.13.A18:** OUT
+- **S4.13.A19:** END
+
+**Core explanation**
+
+- Data movement: LDM #n loads immediate n into ACC; LDD address loads Memory[address]; LDI address follows the address stored in Memory[address]; LDX address loads Memory[address + IX]; LDR #n loads n into IX; MOV IX copies ACC to IX; STO address stores ACC in memory.
+- Arithmetic: ADD and SUB change ACC using a directly addressed or immediate denary, binary or hexadecimal operand. INC register and DEC register increase or decrease ACC or IX by one.
+- Control and comparison: JMP address always branches. CMP compares ACC with a direct or immediate operand; CMI address compares ACC with the value reached by indirect addressing. JPE <address> branches after a True comparison and JPN <address> branches after a False comparison.
+- Input/output and termination: IN reads one character and places its ASCII code in ACC; OUT outputs the character represented by the ASCII code in ACC; END returns control to the operating system.
+- Operands are part of the semantics. # marks an immediate value, B an immediate binary value and & an immediate hexadecimal value; an address can be absolute or a symbolic label.
+
+**Mechanism or method**
+
+1. **Identify opcode and addressing form** — Read the mnemonic and operand prefix together; do not guess an effect from the mnemonic letters alone.
+2. **Update only the affected state** — Change ACC, IX, memory, comparison flag, input/output or control flow exactly as the instruction specifies.
+3. **Choose the next executed instruction** — Record one row per executed instruction and follow a taken branch instead of tracing skipped source lines.
+
+#### Worked example: Trace load, arithmetic, comparison and output
+
+1. **Initial**
+
+Memory[20]=4, Memory[21]=65, ACC=0 and IX=0.
+
+2. **LDM #3**
+
+Load immediate value 3 into ACC; ACC becomes 3.
+
+3. **ADD 20**
+
+Add Memory[20], which is 4; ACC becomes 7.
+
+4. **CMP #7**
+
+Compare ACC with immediate 7; the comparison result is True.
+
+5. **JPE MATCH**
+
+Because the comparison is True, branch to MATCH and skip any intervening instructions.
+
+6. **LDD 21 / OUT**
+
+Load ASCII code 65 into ACC and output character A.
+
+7. **END**
+
+Return control to the operating system.
+
+**Misconceptions to correct**
+
+- LDR #n loads IX, not ACC. CMI is indirect comparison. JPE follows True and JPN follows False.
+
+#### Mastery check (MC-L024-S4.13)
+
+Complete a fresh example that demonstrates every target: LDM; LDD; LDI; LDX; LDR #n; MOV; STO; ADD; SUB; INC; DEC; JMP; CMP; CMI <address>; JPE <address>; JPN <address>; IN; OUT; END. Show all intermediate steps and check the result.
+
+<details><summary>Answer criteria</summary>
+
+- Data movement: LDM #n loads immediate n into ACC; LDD address loads Memory[address]; LDI address follows the address stored in Memory[address]; LDX address loads Memory[address + IX]; LDR #n loads n into IX; MOV IX copies ACC to IX; STO address stores ACC in memory.
+- Arithmetic: ADD and SUB change ACC using a directly addressed or immediate denary, binary or hexadecimal operand. INC register and DEC register increase or decrease ACC or IX by one.
+- Control and comparison: JMP address always branches. CMP compares ACC with a direct or immediate operand; CMI address compares ACC with the value reached by indirect addressing. JPE <address> branches after a True comparison and JPN <address> branches after a False comparison.
+- Input/output and termination: IN reads one character and places its ASCII code in ACC; OUT outputs the character represented by the ASCII code in ACC; END returns control to the operating system.
+- Operands are part of the semantics. # marks an immediate value, B an immediate binary value and & an immediate hexadecimal value; an address can be absolute or a symbolic label.
+
+</details>
+
+**Supplementary concept map**
 
 - **CMI <address>:** In particular LDR n loads IX, CMI <address…
 - **JPE <address>:** JPE <address jumps when the preceding comparison result…
@@ -111,11 +306,11 @@ Group the specified instructions as data movement, input/output, arithmetic, unc
 - **LDM:** The five instruction groups are data movement (LDM,…
 - **LDD:** LDD <address loads the directly addressed contents into…
 
-**Mechanism**
+**Supplementary three-step recap**
 
-1. **Name the exact concept** — LDM, LDD, LDI, LDX, LDR, MOV, STO, ADD, SUB, INC, DEC, JMP, CMP, CMI, JPE, JPN, IN, OUT…
-2. **Explain how its parts connect** — The five instruction groups are data movement (LDM, LDD, LDI, LDX, LDR, MOV, STO), input/output (IN, OUT), arithmetic…
-3. **Use it in a concrete context** — In particular LDR n loads IX, CMI <address is indirect comparison, JPE follows a True comparison and JPN…
+1. **Identify opcode and addressing form** — Read the mnemonic and operand prefix together; do not guess an effect from the mnemonic letters alone.
+2. **Update only the affected state** — Change ACC, IX, memory, comparison flag, input/output or control flow exactly as the instruction specifies.
+3. **Choose the next executed instruction** — Record one row per executed instruction and follow a taken branch instead of tracing skipped source lines.
 
 **Official LDR, CMI, JPE and JPN semantics:** LDR n loads the immediate value n into the index register IX. CMI <address compares ACC with a value reached using indirect addressing.
 
@@ -143,7 +338,68 @@ Use the complete specified instruction set with its specified operands and effec
 
 ### 4. Immediate, direct, indirect, indexed and relative addressing (S4.14)
 
-**Concept relationships**
+**Atomic learning targets**
+
+- **S4.14.A01:** immediate
+- **S4.14.A02:** direct
+- **S4.14.A03:** indirect
+- **S4.14.A04:** indexed
+- **S4.14.A05:** relative
+- **S4.14.A06:** addressing
+
+**Core explanation**
+
+- Control, comparison and I/O: JMP <address is unconditional. CMP <address or CMP n compares ACC directly or with an immediate value. CMI <address compares using indirect addressing. JPE jumps after a True comparison and JPN after a False comparison. IN inputs one ASCII character code to ACC; OUT outputs the character whose ASCII code is in ACC; END returns control to the operating system.
+- Use immediate, direct, indirect, indexed and relative addressing. Relative addressing forms an address from a PC-based instruction address plus an offset; LDR n remains immediate-to-IX, not relative.
+- Data movement: LDM n loads immediate n into ACC; LDD <address loads the directly addressed contents into ACC; LDI <address follows the address stored at <address; LDX <address loads from <address + IX; LDR n loads n into IX; MOV <register moves ACC to IX; STO <address stores ACC at the address.
+- ACC is the accumulator and IX is the index register. An address can be absolute or symbolic. Prefix gives immediate denary, B immediate binary and & immediate hexadecimal data. These prefixes and operand forms are part of the instruction semantics, not optional decoration.
+- Arithmetic: ADD <address or ADD n/Bn/&n adds a memory value or immediate denary/binary/hexadecimal value to ACC; SUB has the corresponding forms; INC <register and DEC <register change ACC or IX by one.
+- Use the complete specified instruction set with its specified operands and effects. In particular LDR n loads IX, CMI <address is indirect comparison, JPE follows a True comparison and JPN follows a False comparison.
+
+**Mechanism or method**
+
+1. **Identify the relevant condition or input** — Control, comparison and I/O: JMP <address is unconditional.
+2. **Trace how the process works** — CMP <address or CMP n compares ACC directly or with an immediate value.
+3. **Connect the mechanism to its result** — JPE jumps after a True comparison and JPN after a False comparison.
+
+#### Worked example: Immediate, direct, indirect, indexed and relative addressing: complete worked route
+
+1. **Identify the relevant condition or input**
+
+Control, comparison and I/O: JMP <address is unconditional.
+
+2. **Trace how the process works**
+
+CMP <address or CMP n compares ACC directly or with an immediate value.
+
+3. **Connect the mechanism to its result**
+
+JPE jumps after a True comparison and JPN after a False comparison.
+
+4. **Complete example**
+
+Compare five operand interpretations: With operand 20, immediate uses value 20; relative uses PC plus a signed or stated offset.
+
+**Misconceptions to correct**
+
+- Students often memorise register names without roles. Correction: a register earns its name by what it temporarily holds.
+
+#### Mastery check (MC-L024-S4.14)
+
+Explain the following targets in one connected answer, using a concrete example for each: immediate; direct; indirect; indexed; relative; addressing.
+
+<details><summary>Answer criteria</summary>
+
+- Control, comparison and I/O: JMP <address is unconditional. CMP <address or CMP n compares ACC directly or with an immediate value. CMI <address compares using indirect addressing. JPE jumps after a True comparison and JPN after a False comparison. IN inputs one ASCII character code to ACC; OUT outputs the character whose ASCII code is in ACC; END returns control to the operating system.
+- Use immediate, direct, indirect, indexed and relative addressing. Relative addressing forms an address from a PC-based instruction address plus an offset; LDR n remains immediate-to-IX, not relative.
+- Data movement: LDM n loads immediate n into ACC; LDD <address loads the directly addressed contents into ACC; LDI <address follows the address stored at <address; LDX <address loads from <address + IX; LDR n loads n into IX; MOV <register moves ACC to IX; STO <address stores ACC at the address.
+- ACC is the accumulator and IX is the index register. An address can be absolute or symbolic. Prefix gives immediate denary, B immediate binary and & immediate hexadecimal data. These prefixes and operand forms are part of the instruction semantics, not optional decoration.
+- Arithmetic: ADD <address or ADD n/Bn/&n adds a memory value or immediate denary/binary/hexadecimal value to ACC; SUB has the corresponding forms; INC <register and DEC <register change ACC or IX by one.
+- Use the complete specified instruction set with its specified operands and effects. In particular LDR n loads IX, CMI <address is indirect comparison, JPE follows a True comparison and JPN follows a False comparison.
+
+</details>
+
+**Supplementary concept map**
 
 - **direct:** Immediate, direct, indirect, indexed and relative addressing.
 - **indirect:** CMI <address compares using indirect addressing.
@@ -152,7 +408,7 @@ Use the complete specified instruction set with its specified operands and effec
 - **relative:** Relative addressing forms an address from a PC-based…
 - **addressing:** LDR #n remains immediate-to-IX, not relative.
 
-**Mechanism**
+**Supplementary three-step recap**
 
 1. **Name the exact concept** — Immediate, direct, indirect, indexed and relative addressing.
 2. **Explain how its parts connect** — CMI <address compares using indirect addressing.
@@ -187,7 +443,7 @@ Use immediate, direct, indirect, indexed and relative addressing. Relative addre
 
 </details>
 
-<details><summary>Open precise terminology and exam facts</summary>
+### Lesson technical reference
 
 - Trace a given simple assembly-language program by recording each executed instruction, register/memory/output changes and taken or not-taken control flow.
 - Group the specified instructions as data movement, input/output, arithmetic, unconditional branch, conditional branch and compare operations; classification must follow each instruction's official effect rather than an English guess from its mnemonic.
@@ -201,14 +457,6 @@ Use immediate, direct, indirect, indexed and relative addressing. Relative addre
 - Control, comparison and I/O: JMP <address is unconditional. CMP <address or CMP n compares ACC directly or with an immediate value. CMI <address compares using indirect addressing. JPE jumps after a True comparison and JPN after a False comparison. IN inputs one ASCII character code to ACC; OUT outputs the character whose ASCII code is in ACC; END returns control to the operating system.
 - ACC is the accumulator and IX is the index register. An address can be absolute or symbolic. Prefix gives immediate denary, B immediate binary and & immediate hexadecimal data. These prefixes and operand forms are part of the instruction semantics, not optional decoration.
 - To trace a simple assembly-language program, make a table with one row per executed instruction and columns for the current instruction/address, ACC, IX, relevant memory or output, and branch result. Update only the state changed by that instruction, then use the updated PC or branch target to choose the next row; do not trace source lines that a taken jump skips.
-
-</details>
-
-### Worked method
-
-1. Compare five operand interpretations
-2. With operand 20, immediate uses value 20; direct uses Memory[20]; indirect follows Memory[20] as another address; indexed uses address 20 + IX; relative uses PC plus a signed or stated…
-3. Separately, if CMI POINTER produces True, JPE MATCH branches to MATCH; a False comparison allows JPN DIFFERENT to branch.
 
 Beyond syllabus / 延伸知识（不要求背诵）: modern processors add pipelining and several cache levels, but exam answers should begin with the syllabus processor model.
 ## 3. Practice by question type
@@ -233,15 +481,15 @@ Compare immediate, direct, indirect, indexed and relative addressing, then state
 
 **Common error:** Do not repeat the same point in different words; each mark needs a separate idea or method step.
 
-### Question 3 - transfer - state - 5 marks
+### Question 3 - transfer - state - 19 marks
 
-State the exact effects of LDR n, CMI <address, JPE <address and JPN <address.
+State the exact effect of each instruction: LDM #n, LDD address, LDI address, LDX address, LDR #n, MOV IX, STO address, ADD, SUB, INC, DEC, JMP, CMP, CMI, JPE, JPN, IN, OUT and END.
 
-**Answer:** LDR loads immediate n into IX; CMI obtains the comparison value by indirect addressing; CMI compares that value with ACC; JPE branches after a True comparison; JPN branches after a False comparison
+**Answer:** LDM loads immediate n to ACC; LDD loads directly addressed memory to ACC; LDI loads through an address stored in memory; LDX loads address+IX; LDR loads immediate n to IX; MOV IX copies ACC to IX; STO stores ACC; ADD/SUB change ACC by the operand; INC/DEC change ACC or IX by one; JMP always branches; CMP compares ACC directly or with immediate data; CMI compares indirectly; JPE branches after True; JPN branches after False; IN places an input character ASCII code in ACC; OUT outputs the character represented by ACC; END returns control to the operating system
 
-**Marking guidance:** Do not infer an instruction effect from the mnemonic letters; use the specified instruction-set semantics.
+**Marking guidance:** Award one mark per correct effect; operand and target register are part of the effect.
 
-**Common error:** Do not copy the worked example unchanged; transfer the method and check it against the new context.
+**Common error:** Do not infer effects from mnemonic letters: LDR targets IX and CMI is indirect.
 
 ### Related past-paper indexes
 
@@ -258,10 +506,11 @@ These are indexes only. Cambridge question and mark-scheme wording is not reprod
 
 ### Summary
 
-- Define tracing instructions and addressing modes with the exact technical vocabulary expected by the syllabus.
-- Use the lesson method on a fresh context and show the intermediate decision, representation or calculation.
-- Match the shape of the answer to the command word and the available marks.
-- Check the final answer against the scenario instead of repeating a memorised sentence.
+- S4.11: explain Trace, assembly-language, program.
+- S4.11 method: Identify the relevant condition or input → Trace how the process works → Connect the mechanism to its result.
+- S4.12: explain data movement, input/output / input and output, arithmetic, conditional branch, unconditional branch, compare.
+- S4.12 method: Identify the relevant condition or input → Trace how the process works → Connect the mechanism to its result.
+- S4.13: explain LDM, LDD, LDI, LDX, LDR #n, MOV, STO, ADD, SUB, INC, DEC, JMP, CMP, CMI <address>, JPE <address>, JPN <address>, IN, OUT, END.
 
 ### Common error to correct
 

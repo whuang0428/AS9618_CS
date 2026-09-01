@@ -28,7 +28,75 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ### 1. NOT, AND, OR, NAND, NOR and XOR; use symbols/functions/truth tables and convert among problem, expression, circuit… (S3.10)
 
-**Concept relationships**
+**Atomic learning targets**
+
+- **S3.10.A01:** NOT
+- **S3.10.A02:** AND
+- **S3.10.A03:** OR
+- **S3.10.A04:** NAND
+- **S3.10.A05:** NOR
+- **S3.10.A06:** XOR
+- **S3.10.A07:** symbol
+- **S3.10.A08:** function
+- **S3.10.A09:** truth table
+- **S3.10.A10:** problem statement
+- **S3.10.A11:** expression
+- **S3.10.A12:** circuit
+- **S3.10.A13:** two inputs
+
+**Core explanation**
+
+- Use the standard symbols and exact functions of NOT, AND, OR, NAND, NOR and XOR (EOR). NOT has one input; each of the other five gates has two inputs for this syllabus. A truth table lists every input combination and the resulting output according to the gate or circuit function.
+- You must be able to construct a logic circuit from a problem statement, logic expression or truth table; construct a truth table from a problem statement, logic circuit or logic expression; and construct a logic expression from a problem statement, logic circuit or truth table. Move through variables and conditions first, then intermediate gate outputs, then the final output so every representation can be checked against the same rows.
+- Visual explanation Read each symbol from left to right. A small circle on the output means “invert”; the extra curved input line distinguishes XOR from OR.
+- Each standard gate symbol identifies its function; do not substitute a labelled box when a logic-circuit symbol is required.
+- Symbols/functions/truth tables and convert among problem, expression, circuit and truth table.
+- The standard symbols and define the functions of NOT, AND, OR, NAND, NOR and XOR (EOR)
+
+**Mechanism or method**
+
+1. **Identify the relevant condition or input** — Use the standard symbols and exact functions of NOT, AND, OR, NAND, NOR and XOR (EOR).
+2. **Trace how the process works** — each of the other five gates has two inputs for this syllabus.
+3. **Connect the mechanism to its result** — A truth table lists every input combination and the resulting output according to the gate or circuit function.
+
+#### Worked example: NOT, AND, OR, NAND, NOR and XOR; use symbols/functions/truth tables and convert among problem, expression, circuit: complete worked route
+
+1. **Identify the relevant condition or input**
+
+Use the standard symbols and exact functions of NOT, AND, OR, NAND, NOR and XOR (EOR).
+
+2. **Trace how the process works**
+
+each of the other five gates has two inputs for this syllabus.
+
+3. **Connect the mechanism to its result**
+
+A truth table lists every input combination and the resulting output according to the gate or circuit function.
+
+4. **Complete example**
+
+Convert one rule among four representations: Rule: an alarm sounds when the system is armed and either the door or window is open. write Alarm = A AND (D OR W); draw an OR gate for D and W feeding an AND gate with A; then list all eight input combinations and evaluate the intermediate OR column before Alarm.
+
+**Misconceptions to correct**
+
+- Students often use everyday 'or' instead of logical OR. Correction: OR is true when at least one input is true unless XOR is specified.
+
+#### Mastery check (MC-L017-S3.10)
+
+Explain the following targets in one connected answer, using a concrete example for each: NOT; AND; OR; NAND; NOR; XOR; symbol; function; truth table; problem statement; expression; circuit; two inputs.
+
+<details><summary>Answer criteria</summary>
+
+- Use the standard symbols and exact functions of NOT, AND, OR, NAND, NOR and XOR (EOR). NOT has one input; each of the other five gates has two inputs for this syllabus. A truth table lists every input combination and the resulting output according to the gate or circuit function.
+- You must be able to construct a logic circuit from a problem statement, logic expression or truth table; construct a truth table from a problem statement, logic circuit or logic expression; and construct a logic expression from a problem statement, logic circuit or truth table. Move through variables and conditions first, then intermediate gate outputs, then the final output so every representation can be checked against the same rows.
+- Visual explanation Read each symbol from left to right. A small circle on the output means “invert”; the extra curved input line distinguishes XOR from OR.
+- Each standard gate symbol identifies its function; do not substitute a labelled box when a logic-circuit symbol is required.
+- Symbols/functions/truth tables and convert among problem, expression, circuit and truth table.
+- The standard symbols and define the functions of NOT, AND, OR, NAND, NOR and XOR (EOR)
+
+</details>
+
+**Supplementary concept map**
 
 - **truth table:** Symbols/functions/truth tables and convert among problem, expression, circuit…
 - **problem statement:** Problem statement, logic expression, logic circuit and truth…
@@ -37,7 +105,7 @@ Ask the learner to give one accurate definition or method step before continuing
 - **XOR:** NOT, AND, OR, NAND, NOR and XOR
 - **symbol:** Do not substitute a labelled box when a…
 
-**Mechanism**
+**Supplementary three-step recap**
 
 1. **Translate the stated design** — Symbols/functions/truth tables and convert among problem, expression, circuit and truth table.
 2. **Apply one complete operation** — The standard symbols and exact functions of NOT, AND, OR, NAND, NOR and XOR (EOR).
@@ -70,20 +138,12 @@ Use the standard symbols and define the functions of NOT, AND, OR, NAND, NOR and
 
 </details>
 
-<details><summary>Open precise terminology and exam facts</summary>
+### Lesson technical reference
 
 - Use the standard symbols and define the functions of NOT, AND, OR, NAND, NOR and XOR (EOR); all gates except NOT have two inputs. Construct circuits, truth tables and expressions from each of the other stated representations: problem statement, logic expression, logic circuit and truth table.
 - Use the standard symbols and exact functions of NOT, AND, OR, NAND, NOR and XOR (EOR). NOT has one input; each of the other five gates has two inputs for this syllabus. A truth table lists every input combination and the resulting output according to the gate or circuit function.
 - You must be able to construct a logic circuit from a problem statement, logic expression or truth table; construct a truth table from a problem statement, logic circuit or logic expression; and construct a logic expression from a problem statement, logic circuit or truth table. Move through variables and conditions first, then intermediate gate outputs, then the final output so every representation can be checked against the same rows.
 - Each standard gate symbol identifies its function; do not substitute a labelled box when a logic-circuit symbol is required.
-
-</details>
-
-### Worked method
-
-1. Convert one rule among four representations
-2. an alarm sounds when the system is armed and either the door or window is open.
-3. Define A, D and W; write Alarm = A AND (D OR W); draw an OR gate for D and W feeding an AND gate with A; then list all…
 
 Beyond syllabus / 延伸知识（不要求背诵）: professional device selection also considers accessibility, reliability, repairability and energy use.
 ## 3. Practice by question type
@@ -133,10 +193,9 @@ These are indexes only. Cambridge question and mark-scheme wording is not reprod
 
 ### Summary
 
-- Define logic gates, symbols and truth tables with the exact technical vocabulary expected by the syllabus.
-- Use the lesson method on a fresh context and show the intermediate decision, representation or calculation.
-- Match the shape of the answer to the command word and the available marks.
-- Check the final answer against the scenario instead of repeating a memorised sentence.
+- S3.10: explain NOT, AND, OR, NAND, NOR, XOR, symbol, function, truth table, problem statement, expression, circuit, two inputs.
+- S3.10 method: Identify the relevant condition or input → Trace how the process works → Connect the mechanism to its result.
+- Correction to remember: Students often use everyday 'or' instead of logical OR. Correction: OR is true when at least one input is true unless XOR is specified.
 
 ### Common error to correct
 

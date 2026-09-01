@@ -24,7 +24,59 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ### 1. Built-in/library and string functions (S11.03)
 
-**Concept relationships**
+**Atomic learning targets**
+
+- **S11.03.A01:** built-in / library
+- **S11.03.A02:** string
+- **S11.03.A03:** functions
+
+**Core explanation**
+
+- Read the supplied function name, parameter order, position convention and returned type before using it. LENGTH is a familiar built-in example; LEFT, RIGHT, MID or SUBSTRING examples in this course illustrate a mechanism only when their definition and indexing convention are stated.
+- String manipulation functions are supplied in the question; use the stated name, parameter order and position convention. Trace the supplied routine exactly, then use its returned string in an assignment, comparison, output or expression.
+- A function call returns a value, so it can be assigned, compared, output or combined in an expression. Do not import Java's zero-based substring convention unless the question explicitly specifies it.
+
+**Mechanism or method**
+
+1. **Set up the required data and conditions** — Read the supplied function name, parameter order, position convention and returned type before using it.
+2. **Carry out the complete method** — LEFT, RIGHT, MID or SUBSTRING examples in this course illustrate a mechanism only when their definition and indexing convention are stated.
+3. **Trace or test the result** — String manipulation functions are supplied in the question;
+
+#### Worked example: Built-in/library and string functions: complete worked route
+
+1. **Set up the required data and conditions**
+
+Read the supplied function name, parameter order, position convention and returned type before using it.
+
+2. **Carry out the complete method**
+
+LEFT, RIGHT, MID or SUBSTRING examples in this course illustrate a mechanism only when their definition and indexing convention are stated.
+
+3. **Trace or test the result**
+
+String manipulation functions are supplied in the question;
+
+4. **Complete example**
+
+Apply a supplied string routine: A question supplies FUNCTION EXTRACT(Text : STRING, Start : INTEGER, Count : INTEGER) RETURNS STRING and states that positions start at 1.
+
+**Misconceptions to correct**
+
+- Students often think working Java automatically means good pseudocode. Correction: Paper 2 rewards clear Cambridge-style algorithm expression.
+
+#### Mastery check (MC-L072-S11.03)
+
+Complete a fresh example that demonstrates every target: built-in / library; string; functions. Show all intermediate steps and check the result.
+
+<details><summary>Answer criteria</summary>
+
+- Read the supplied function name, parameter order, position convention and returned type before using it. LENGTH is a familiar built-in example; LEFT, RIGHT, MID or SUBSTRING examples in this course illustrate a mechanism only when their definition and indexing convention are stated.
+- String manipulation functions are supplied in the question; use the stated name, parameter order and position convention. Trace the supplied routine exactly, then use its returned string in an assignment, comparison, output or expression.
+- A function call returns a value, so it can be assigned, compared, output or combined in an expression. Do not import Java's zero-based substring convention unless the question explicitly specifies it.
+
+</details>
+
+**Supplementary concept map**
 
 - **Built-in:** Available without user definition
 - **Library:** Reusable supplied routine
@@ -33,7 +85,7 @@ Ask the learner to give one accurate definition or method step before continuing
 - **string:** Built-in/library and string functions.
 - **functions:** Built-in functions and library routines.
 
-**Mechanism**
+**Supplementary three-step recap**
 
 1. **Translate the stated design** — Built-in/library and string functions.
 2. **Apply one complete operation** — Built-in functions and library routines.
@@ -61,22 +113,12 @@ Use built-in functions and library routines. Any function not given in the pseud
 
 </details>
 
-<details><summary>Open precise terminology and exam facts</summary>
+### Lesson technical reference
 
 - Use built-in functions and library routines. Any function not given in the pseudocode guide will be provided; string manipulation functions will always be given in the question.
 - Read the supplied function name, parameter order, position convention and returned type before using it. LENGTH is a familiar built-in example; LEFT, RIGHT, MID or SUBSTRING examples in this course illustrate a mechanism only when their definition and indexing convention are stated.
 - A function call returns a value, so it can be assigned, compared, output or combined in an expression. Do not import Java's zero-based substring convention unless the question explicitly specifies it.
 - For built-in routines and string functions, identify the required concept before describing its mechanism or consequence.
-
-</details>
-
-### Worked method
-
-1. Apply a supplied string routine
-2. A question supplies FUNCTION EXTRACT(Text
-3. INTEGER) RETURNS STRING and states that positions start at 1.
-4. LENGTH("NETWORK") returns 7; EXTRACT("NETWORK", 4, 2) returns "WO".
-5. Code <- EXTRACT(Name, 1, 3) uses the supplied routine in an assignment without importing Java indexing.
 
 Beyond syllabus / 延伸知识（不要求背诵）: consistent style, modularity and automated tests reduce maintenance errors in larger programs.
 ## 3. Practice by question type
@@ -126,10 +168,9 @@ These are indexes only. Cambridge question and mark-scheme wording is not reprod
 
 ### Summary
 
-- Define built-in routines and string functions with the exact technical vocabulary expected by the syllabus.
-- Use the lesson method on a fresh context and show the intermediate decision, representation or calculation.
-- Match the shape of the answer to the command word and the available marks.
-- Check the final answer against the scenario instead of repeating a memorised sentence.
+- S11.03: explain built-in / library, string, functions.
+- S11.03 method: Set up the required data and conditions → Carry out the complete method → Trace or test the result.
+- Correction to remember: Students often think working Java automatically means good pseudocode. Correction: Paper 2 rewards clear Cambridge-style algorithm expression.
 
 ### Common error to correct
 

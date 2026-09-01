@@ -39,12 +39,20 @@ Ask the learner to give one accurate definition or method step before continuing
 - Understand what an algorithm is.
 - Choose meaningful identifier names and construct an identifier table.
 
+- **Retrieve:** Without notes, explain how the listed Section 9 ideas connect. Give one mechanism, calculation or construction step rather than a list of terms.
+- **Correct:** Correct one plausible error about understand abstraction, its purpose/benefits and creation of an abstract model. and state exactly why the corrected version is accurate.
+- **Transfer:** Apply one Section 9 method to a new scenario, show the intermediate reasoning and check the final result.
+
 #### Section 10: Data types and structures
 
 - Understand integer, real, char, string, Boolean and date types and Cambridge pseudocode type names.
 - Understand record purpose and define, read and save record data.
 - Understand array, index, lower bound and upper bound terminology.
 - Select one- or two-dimensional arrays for a scenario.
+
+- **Retrieve:** Without notes, explain how the listed Section 10 ideas connect. Give one mechanism, calculation or construction step rather than a list of terms.
+- **Correct:** Correct one plausible error about understand integer, real, char, string, boolean and date types and cambridge pseudocode type names. and state exactly why the corrected version is accurate.
+- **Transfer:** Apply one Section 10 method to a new scenario, show the intermediate reasoning and check the final result.
 
 #### Section 11: Programming
 
@@ -53,12 +61,20 @@ Ask the learner to give one accurate definition or method step before continuing
 - Use built-in/library and string functions.
 - Use IF/ELSE/nested selection, CASE, count-controlled loops, post-condition and pre-condition loops.
 
+- **Retrieve:** Without notes, explain how the listed Section 11 ideas connect. Give one mechanism, calculation or construction step rather than a list of terms.
+- **Correct:** Correct one plausible error about write pseudocode from a flowchart or structured-english description. and state exactly why the corrected version is accurate.
+- **Transfer:** Apply one Section 11 method to a new scenario, show the intermediate reasoning and check the final result.
+
 #### Section 12: Software development
 
 - Understand why a program-development lifecycle is used; compare waterfall, iterative and RAD models and their stages.
 - Understand, construct and use structure charts, including parameters, and derive pseudocode.
 - Show understanding of the purpose of state-transition diagrams to document an algorithm.
 - Identify and correct syntax, logic and runtime errors.
+
+- **Retrieve:** Without notes, explain how the listed Section 12 ideas connect. Give one mechanism, calculation or construction step rather than a list of terms.
+- **Correct:** Correct one plausible error about understand why a program-development lifecycle is used; compare waterfall, iterative and rad models and their stages. and state exactly why the corrected version is accurate.
+- **Transfer:** Apply one Section 12 method to a new scenario, show the intermediate reasoning and check the final result.
 
 ### Review method
 

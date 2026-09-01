@@ -28,7 +28,69 @@ Ask the learner to give one accurate definition or method step before continuing
 
 ### 1. LAN hardware: switch, server, NIC, WNIC, WAP, cables, bridge and repeater (S2.09)
 
-**Concept relationships**
+**Atomic learning targets**
+
+- **S2.09.A01:** switch
+- **S2.09.A02:** server
+- **S2.09.A03:** NIC/WNIC
+- **S2.09.A04:** WAP
+- **S2.09.A05:** cables
+- **S2.09.A06:** bridge
+- **S2.09.A07:** repeater
+
+**Core explanation**
+
+- LAN hardware includes a switch, server, NIC/WNIC, WAP, cables, bridge and repeater. A server provides network services. A NIC/WNIC connects a device by cable or wirelessly; a WAP connects wireless devices to a wired LAN. A switch forwards frames within a LAN, a bridge connects LAN segments, a repeater regenerates a weakened signal, and cables carry signals.
+- Internet hardware includes routers and transmission links that forward data between networks. Web servers store or generate web resources, while clients request those resources; the WWW is therefore not a synonym for all internet services.
+- A switch connects devices on a local area network and forwards frames to the correct device. Uses: MAC addresses to decide which port should receive the frame.
+- A router connects different networks and forwards packets using destination IP addresses and stored routing information. It is not a replacement name for a switch: the two devices make forwarding decisions at different scopes.
+- LAN hardware includes a switch, server, NIC/WNIC, WAP, cables, bridge and repeater.
+- Switch, server, NIC, WNIC, WAP, cables, bridge and repeater.
+
+**Mechanism or method**
+
+1. **Establish the exact components or states** — LAN hardware includes a switch, server, NIC/WNIC, WAP, cables, bridge and repeater.
+2. **Trace the relationship or change** — A NIC/WNIC connects a device by cable or wirelessly;
+3. **Use the explanation in a concrete case** — a WAP connects wireless devices to a wired LAN.
+
+#### Worked example: LAN hardware: switch, server, NIC, WNIC, WAP, cables, bridge and repeater: complete worked route
+
+1. **Establish the exact components or states**
+
+LAN hardware includes a switch, server, NIC/WNIC, WAP, cables, bridge and repeater.
+
+2. **Trace the relationship or change**
+
+A NIC/WNIC connects a device by cable or wirelessly;
+
+3. **Use the explanation in a concrete case**
+
+a WAP connects wireless devices to a wired LAN.
+
+4. **Complete example**
+
+Trace a school request / Two stations sense an idle cable / 6 Mbit/s video on 4 Mbit/s link / Separate infrastructure from service / Home-to-provider path / Locate one resource on a school web server: A laptop sends a frame through its wireless interface to an access point. The LAN switch forwards it toward the router.
+
+**Misconceptions to correct**
+
+- Students often confuse bandwidth with speed in every sense. Correction: bandwidth is capacity; latency and congestion also affect perceived performance.
+
+#### Mastery check (MC-L010-S2.09)
+
+Describe the following targets in one connected answer, using a concrete example for each: switch; server; NIC/WNIC; WAP; cables; bridge; repeater.
+
+<details><summary>Answer criteria</summary>
+
+- LAN hardware includes a switch, server, NIC/WNIC, WAP, cables, bridge and repeater. A server provides network services. A NIC/WNIC connects a device by cable or wirelessly; a WAP connects wireless devices to a wired LAN. A switch forwards frames within a LAN, a bridge connects LAN segments, a repeater regenerates a weakened signal, and cables carry signals.
+- Internet hardware includes routers and transmission links that forward data between networks. Web servers store or generate web resources, while clients request those resources; the WWW is therefore not a synonym for all internet services.
+- A switch connects devices on a local area network and forwards frames to the correct device. Uses: MAC addresses to decide which port should receive the frame.
+- A router connects different networks and forwards packets using destination IP addresses and stored routing information. It is not a replacement name for a switch: the two devices make forwarding decisions at different scopes.
+- LAN hardware includes a switch, server, NIC/WNIC, WAP, cables, bridge and repeater.
+- Switch, server, NIC, WNIC, WAP, cables, bridge and repeater.
+
+</details>
+
+**Supplementary concept map**
 
 - **NIC:** LAN hardware includes a switch, server, NIC/WNIC, WAP,…
 - **switch:** Switch, server, NIC, WNIC, WAP, cables, bridge and…
@@ -37,7 +99,7 @@ Ask the learner to give one accurate definition or method step before continuing
 - **cables:** A switch forwards frames within a LAN, a…
 - **bridge:** A NIC/WNIC connects a device by cable or…
 
-**Mechanism**
+**Supplementary three-step recap**
 
 1. **Translate the stated design** — LAN hardware includes a switch, server, NIC/WNIC, WAP, cables, bridge and repeater.
 2. **Apply one complete operation** — Switch, server, NIC, WNIC, WAP, cables, bridge and repeater.
@@ -71,7 +133,65 @@ Every named hardware category is required and must be distinguished by its role;
 
 ### 2. The role and function of a router in a network (S2.10)
 
-**Concept relationships**
+**Atomic learning targets**
+
+- **S2.10.A01:** router
+- **S2.10.A02:** different networks
+- **S2.10.A03:** forwards packets
+- **S2.10.A04:** IP addresses
+- **S2.10.A05:** routing information
+
+**Core explanation**
+
+- Internet hardware includes routers and transmission links that forward data between networks. Web servers store or generate web resources, while clients request those resources; the WWW is therefore not a synonym for all internet services.
+- A router connects different networks and forwards packets using destination IP addresses and stored routing information. It is not a replacement name for a switch: the two devices make forwarding decisions at different scopes.
+- A router connects different networks and forwards packets towards their destination. Uses: IP addresses and routing information to choose a path.
+- A router connects different networks and forwards packets using destination IP addresses and stored routing information.
+- A router connects different networks and forwards packets using destination IP addresses and routing information
+
+**Mechanism or method**
+
+1. **Establish the exact components or states** — Internet hardware includes routers and transmission links that forward data between networks.
+2. **Trace the relationship or change** — Web servers store or generate web resources, while clients request those resources;
+3. **Use the explanation in a concrete case** — the WWW is therefore not a synonym for all internet services.
+
+#### Worked example: The role and function of a router in a network: complete worked route
+
+1. **Establish the exact components or states**
+
+Internet hardware includes routers and transmission links that forward data between networks.
+
+2. **Trace the relationship or change**
+
+Web servers store or generate web resources, while clients request those resources;
+
+3. **Use the explanation in a concrete case**
+
+the WWW is therefore not a synonym for all internet services.
+
+4. **Complete example**
+
+The LAN switch forwards it toward the router. The router then forwards the packet from the school LAN toward another network.
+
+**Misconceptions to correct**
+
+- Students often confuse bandwidth with speed in every sense. Correction: bandwidth is capacity; latency and congestion also affect perceived performance.
+
+#### Mastery check (MC-L010-S2.10)
+
+Describe the following targets in one connected answer, using a concrete example for each: router; different networks; forwards packets; IP addresses; routing information.
+
+<details><summary>Answer criteria</summary>
+
+- Internet hardware includes routers and transmission links that forward data between networks. Web servers store or generate web resources, while clients request those resources; the WWW is therefore not a synonym for all internet services.
+- A router connects different networks and forwards packets using destination IP addresses and stored routing information. It is not a replacement name for a switch: the two devices make forwarding decisions at different scopes.
+- A router connects different networks and forwards packets towards their destination. Uses: IP addresses and routing information to choose a path.
+- A router connects different networks and forwards packets using destination IP addresses and stored routing information.
+- A router connects different networks and forwards packets using destination IP addresses and routing information
+
+</details>
+
+**Supplementary concept map**
 
 - **forwards packets:** A router connects different networks and forwards packets…
 - **routing information:** IP addresses and routing information to choose a…
@@ -79,7 +199,7 @@ Every named hardware category is required and must be distinguished by its role;
 - **router:** Internet hardware includes routers and transmission links that…
 - **IP addresses:** Between networks, IP-address routing matters.
 
-**Mechanism**
+**Supplementary three-step recap**
 
 1. **Translate the stated design** — A router connects different networks and forwards packets using destination IP addresses and routing information
 2. **Apply one complete operation** — A router connects different networks and forwards packets using destination IP addresses and stored routing information.
@@ -113,7 +233,66 @@ A router connects different networks and forwards packets using destination IP a
 
 ### 3. Ethernet and how collisions are detected and handled using CSMA/CD (S2.11)
 
-**Concept relationships**
+**Atomic learning targets**
+
+- **S2.11.A01:** Ethernet
+- **S2.11.A02:** CSMA/CD
+- **S2.11.A03:** Carrier Sense
+- **S2.11.A04:** collision
+- **S2.11.A05:** random backoff
+- **S2.11.A06:** retry
+
+**Core explanation**
+
+- Ethernet and how collisions are detected and handled using CSMA/CD.
+- CSMA/CD means Carrier Sense Multiple Access with Collision Detection. A station listens to the shared medium; if idle it transmits, while continuing to detect a collision.
+- After a collision, stations stop transmitting, send/recognise a jam signal, wait for different random backoff periods and retry. The random delay reduces the chance of another simultaneous attempt.
+- A collision causes stop/jam, random backoff, sensing and retry.
+- CSMA/CD means Carrier Sense Multiple Access with Collision Detection.
+
+**Mechanism or method**
+
+1. **Establish the exact components or states** — Ethernet and how collisions are detected and handled using CSMA/CD.
+2. **Trace the relationship or change** — CSMA/CD means Carrier Sense Multiple Access with Collision Detection.
+3. **Use the explanation in a concrete case** — A station listens to the shared medium;
+
+#### Worked example: Ethernet and how collisions are detected and handled using CSMA/CD: complete worked route
+
+1. **Establish the exact components or states**
+
+Ethernet and how collisions are detected and handled using CSMA/CD.
+
+2. **Trace the relationship or change**
+
+CSMA/CD means Carrier Sense Multiple Access with Collision Detection.
+
+3. **Use the explanation in a concrete case**
+
+A station listens to the shared medium;
+
+4. **Complete example**
+
+They detect the collision, stop, wait different random periods and the station whose timer expires first retries.
+
+**Misconceptions to correct**
+
+- Students often confuse bandwidth with speed in every sense. Correction: bandwidth is capacity; latency and congestion also affect perceived performance.
+
+#### Mastery check (MC-L010-S2.11)
+
+Show the following targets in one connected answer, using a concrete example for each: Ethernet; CSMA/CD; Carrier Sense; collision; random backoff; retry.
+
+<details><summary>Answer criteria</summary>
+
+- Ethernet and how collisions are detected and handled using CSMA/CD.
+- CSMA/CD means Carrier Sense Multiple Access with Collision Detection. A station listens to the shared medium; if idle it transmits, while continuing to detect a collision.
+- After a collision, stations stop transmitting, send/recognise a jam signal, wait for different random backoff periods and retry. The random delay reduces the chance of another simultaneous attempt.
+- A collision causes stop/jam, random backoff, sensing and retry.
+- CSMA/CD means Carrier Sense Multiple Access with Collision Detection.
+
+</details>
+
+**Supplementary concept map**
 
 - **Carrier Sense:** CSMA/CD means Carrier Sense Multiple Access with Collision…
 - **random backoff:** A collision causes stop/jam, random backoff, sensing and…
@@ -122,7 +301,7 @@ A router connects different networks and forwards packets using destination IP a
 - **CSMA:** If idle it transmits, while continuing to detect…
 - **retry:** Collision detection occurs after transmission begins.
 
-**Mechanism**
+**Supplementary three-step recap**
 
 1. **Identify incoming data or signal** — Ethernet and how collisions are detected and handled using CSMA/CD.
 2. **Follow the physical or logical path** — A collision causes stop/jam, random backoff, sensing and retry.
@@ -140,7 +319,7 @@ Carrier sensing occurs before transmission; collision detection occurs after tra
 
 </details>
 
-<details><summary>Open precise terminology and exam facts</summary>
+### Lesson technical reference
 
 - Every named hardware category is required and must be distinguished by its role; a combined consumer device does not merge the logical functions.
 - A router connects different networks and forwards packets using destination IP addresses and routing information; providing WiFi is not the defining role.
@@ -154,16 +333,6 @@ Carrier sensing occurs before transmission; collision detection occurs after tra
 - Bit rate is the number of bits transmitted each second. Available broadband speed must normally exceed the media bit rate and absorb variation; otherwise the player buffers, lowers quality or pauses. A buffer stores arriving data temporarily.
 - The internet is the global network infrastructure that interconnects networks and carries many services. The World Wide Web is one service that uses the internet to provide linked resources accessed with web protocols and browsers.
 - Internet hardware includes routers and transmission links that forward data between networks. Web servers store or generate web resources, while clients request those resources; the WWW is therefore not a synonym for all internet services.
-
-</details>
-
-### Worked method
-
-1. Trace a school request
-2. Two stations sense an idle cable
-3. 6 Mbit/s video on 4 Mbit/s link
-4. Separate infrastructure from service
-5. Locate one resource on a school web server
 
 Beyond syllabus / 延伸知识（不要求背诵）: real networks organise communication in layers so that hardware, addressing and application protocols can change independently.
 ## 3. Practice by question type
@@ -213,10 +382,11 @@ These are indexes only. Cambridge question and mark-scheme wording is not reprod
 
 ### Summary
 
-- Define lan hardware, routers and ethernet with the exact technical vocabulary expected by the syllabus.
-- Use the lesson method on a fresh context and show the intermediate decision, representation or calculation.
-- Match the shape of the answer to the command word and the available marks.
-- Check the final answer against the scenario instead of repeating a memorised sentence.
+- S2.09: explain switch, server, NIC/WNIC, WAP, cables, bridge, repeater.
+- S2.09 method: Establish the exact components or states → Trace the relationship or change → Use the explanation in a concrete case.
+- S2.10: explain router, different networks, forwards packets, IP addresses, routing information.
+- S2.10 method: Establish the exact components or states → Trace the relationship or change → Use the explanation in a concrete case.
+- S2.11: explain Ethernet, CSMA/CD, Carrier Sense, collision, random backoff, retry.
 
 ### Common error to correct
 
