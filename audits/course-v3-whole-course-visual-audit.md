@@ -6,7 +6,8 @@
 - Visual evidence: 186/186 desktop/mobile page reviews recorded.
 - Browser findings: 0 failing viewport reviews.
 - Each knowledge unit presents exactly one lead visual before its core explanation; method and worked-example roles appear only when they add distinct work.
-- All 329 practice questions expose a Cambridge command word and separate marking points.
+- All 329 practice questions and 279 original exam-style questions expose Cambridge command words and separate marking points.
+- All 145 teaching units begin with an image-based knowledge diagram; 49 targeted ImageGen diagrams close the previous table/card/flow-only gaps.
 
 ## Evidence index
 

@@ -681,10 +681,11 @@ export const courseV3Lessons = rawCourse.map((lesson, index) => finaliseLessonPr
 }));
 
 export const courseV3Meta = Object.freeze({
-  schemaVersion: 4,
+  schemaVersion: 5,
   syllabus: "Cambridge International AS Level Computer Science 9618 · 2027–2029",
   lessonCount: courseV3Lessons.length,
   teachingLessonCount: courseV3Lessons.filter((lesson) => lesson.kind === "teaching").length,
   reviewLessonCount: courseV3Lessons.filter((lesson) => lesson.kind === "review").length,
   officialRequirementCount: Object.keys(officialAsMapping).length,
+  examStyleQuestionCount: courseV3Lessons.flatMap((lesson) => lesson.examStyleQuestions).length,
 });

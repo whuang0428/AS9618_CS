@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-01T11:54:30.204Z",
+  "generatedAt": "2026-09-01T14:06:35.206Z",
   "engine": "Google Chrome via DevTools Protocol",
-  "baseUrl": "http://127.0.0.1:8771/course-v3",
+  "baseUrl": "http://127.0.0.1:8772/course-v3",
   "expectedLessonPages": 93,
   "viewports": [
     {
@@ -40,12 +40,13 @@
         "materials": 1,
         "practices": 3,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 2563,
+        "contentLength": 3612,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -55,11 +56,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 5200,
-        "bytes": 578276,
+        "height": 6097,
+        "bytes": 1452825,
         "captureMode": "single"
       },
-      "sourceSha256": "df1b347a35b2ba37a442c9d53a6c564a05c937cf6b275eba2d11b5f9f761643f",
+      "sourceSha256": "6b7f479b302979ee9809ff352dbd7cb13990919da9b0375ae3c8456d9a44ac30",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-001.png"
     },
     {
@@ -83,12 +84,13 @@
         "materials": 2,
         "practices": 5,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
         "imageCount": 2,
         "pageOverflow": 0,
-        "contentLength": 4959,
+        "contentLength": 6174,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -98,11 +100,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 7761,
-        "bytes": 2221373,
-        "captureMode": "single"
+        "height": 8715,
+        "bytes": 1693686,
+        "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "1d9446ff415d9d4cccc8549e4724717119d8061ff47a13e587fb62a8f9ced844",
+      "sourceSha256": "9d4b7920a66e49f5554829977c1d7baaad3ca45cfd13eaf275b36d4e4b192c43",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-002.png"
     },
     {
@@ -126,12 +128,13 @@
         "materials": 2,
         "practices": 3,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
         "imageCount": 2,
         "pageOverflow": 0,
-        "contentLength": 4318,
+        "contentLength": 5130,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -141,11 +144,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 7038,
-        "bytes": 814814,
+        "height": 7765,
+        "bytes": 1735549,
         "captureMode": "single"
       },
-      "sourceSha256": "d13628d69e46baa1f786d9228b1e1ed28e18b08279d39820b879f637ea09d469",
+      "sourceSha256": "b622545aa815f5fda74e31fab102dd16732f10d37a6392d28df4f862f3469ed5",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-003.png"
     },
     {
@@ -169,12 +172,13 @@
         "materials": 2,
         "practices": 3,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
-        "imageCount": 1,
+        "imageCount": 2,
         "pageOverflow": 0,
-        "contentLength": 4467,
+        "contentLength": 5532,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -184,11 +188,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 6572,
-        "bytes": 1758857,
-        "captureMode": "single"
+        "height": 8012,
+        "bytes": 2022044,
+        "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "c56b3be644c985d1b15b86817abf28acce61b5da0b7d4d486245d66d00cb155e",
+      "sourceSha256": "d07e1510e30d677fb17e88a82ab1bd73870c80cac3bcfa684d7532aab0503dbd",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-004.png"
     },
     {
@@ -212,12 +216,13 @@
         "materials": 3,
         "practices": 5,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
         "imageCount": 2,
         "pageOverflow": 0,
-        "contentLength": 5813,
+        "contentLength": 6815,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -227,11 +232,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 8175,
-        "bytes": 1661104,
+        "height": 8985,
+        "bytes": 1786261,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "c450dc7c9222fd1368faccddca67649f0a6f350d4920423572fd4bad239fd4ee",
+      "sourceSha256": "d5167d7596b6dcff145d1da60f1bdf4afb5a44b7526b58319b6404c5e9c8dee0",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-005.png"
     },
     {
@@ -255,12 +260,13 @@
         "materials": 5,
         "practices": 4,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
         "imageCount": 2,
         "pageOverflow": 0,
-        "contentLength": 7517,
+        "contentLength": 9149,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -270,11 +276,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 9243,
-        "bytes": 2238553,
+        "height": 10194,
+        "bytes": 2414333,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "167d1fa34c026afaf9412cf231836c953fb1f936a2d061bfd2836288b2d7003b",
+      "sourceSha256": "49c00772c146d417129e25e5886412d34849635414669ae8c48ff027babd20e2",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-006.png"
     },
     {
@@ -298,12 +304,13 @@
         "materials": 4,
         "practices": 3,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
-        "imageCount": 0,
+        "imageCount": 3,
         "pageOverflow": 0,
-        "contentLength": 6455,
+        "contentLength": 7195,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -313,11 +320,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 7355,
-        "bytes": 1070046,
-        "captureMode": "single"
+        "height": 10217,
+        "bytes": 2482968,
+        "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "efd2fa8b5e955080297a0f335926375a442c64cbf8adf8ac272f76852fc83948",
+      "sourceSha256": "2b561f0e79aead829ad6ee788b3cd1fab736c009958db2256f3f686a0773aea7",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-007.png"
     },
     {
@@ -341,12 +348,13 @@
         "materials": 2,
         "practices": 3,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
-        "imageCount": 4,
+        "imageCount": 5,
         "pageOverflow": 0,
-        "contentLength": 5256,
+        "contentLength": 5792,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -356,11 +364,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 6816,
-        "bytes": 1627473,
-        "captureMode": "single"
+        "height": 8348,
+        "bytes": 1493002,
+        "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "f727a3a0a22d0f2ff1d739fb5084105de1ad4a7212c7a4e3dd44adb804cd6b61",
+      "sourceSha256": "dd8faabf4c5061b50c003a14a12d00cea7d00f84aecf2981948d83dc15738ca9",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-008.png"
     },
     {
@@ -381,15 +389,16 @@
         ],
         "unitOrderIssues": [],
         "knowledgeUnits": 2,
-        "materials": 2,
+        "materials": 3,
         "practices": 3,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
-        "imageCount": 0,
+        "imageCount": 2,
         "pageOverflow": 0,
-        "contentLength": 4160,
+        "contentLength": 5520,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -399,11 +408,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 5558,
-        "bytes": 767273,
-        "captureMode": "single"
+        "height": 8150,
+        "bytes": 2078688,
+        "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "2d5e4d9753762a2214f18695b80bd77fca0923920dbd82f5b03863ea441f3808",
+      "sourceSha256": "7ab0e6be015df82dbec28e90add25c8d6d78e63a8afc529cfa6ef78ad3438a90",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-009.png"
     },
     {
@@ -427,12 +436,13 @@
         "materials": 3,
         "practices": 3,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
-        "imageCount": 0,
+        "imageCount": 2,
         "pageOverflow": 0,
-        "contentLength": 5552,
+        "contentLength": 6024,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -442,11 +452,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 6329,
-        "bytes": 919468,
-        "captureMode": "single"
+        "height": 8434,
+        "bytes": 1810373,
+        "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "1929746820bb56abbc55c1c10ce04d72d27e5f8f360c5a2de1f3c653e9f9a67b",
+      "sourceSha256": "96eee863d588f73560708805d59b20649a174aab1cd7b8d33515206d8739303e",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-010.png"
     },
     {
@@ -467,15 +477,16 @@
         ],
         "unitOrderIssues": [],
         "knowledgeUnits": 3,
-        "materials": 3,
+        "materials": 6,
         "practices": 4,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
-        "imageCount": 0,
+        "imageCount": 3,
         "pageOverflow": 0,
-        "contentLength": 5558,
+        "contentLength": 7081,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -485,11 +496,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 7141,
-        "bytes": 988722,
-        "captureMode": "single"
+        "height": 10862,
+        "bytes": 2322574,
+        "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "d6b57ff7ec286771cca70e13b451d0be1ceb801355be50dcfcf82c7330eda514",
+      "sourceSha256": "acfa0f5970cf69ebcc576b3a645c6fdfe9ce8500d08f55cca0368e4ac5aaf096",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-011.png"
     },
     {
@@ -513,12 +524,13 @@
         "materials": 3,
         "practices": 3,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
-        "imageCount": 1,
+        "imageCount": 2,
         "pageOverflow": 0,
-        "contentLength": 4841,
+        "contentLength": 5787,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -528,11 +540,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 6781,
-        "bytes": 1260527,
-        "captureMode": "single"
+        "height": 8220,
+        "bytes": 1211475,
+        "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "d50244d16474c6239fc53d6a2d9b74f1315973dce0c4c33490d9a305eb9b581f",
+      "sourceSha256": "eb9f1e2b1c1266b2cca28bb0ed486aa05c196c281d166f7275663d00dcf8808e",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-012.png"
     },
     {
@@ -556,12 +568,13 @@
         "materials": 3,
         "practices": 3,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
-        "imageCount": 0,
+        "imageCount": 2,
         "pageOverflow": 0,
-        "contentLength": 5121,
+        "contentLength": 5968,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -571,11 +584,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 6372,
-        "bytes": 888446,
-        "captureMode": "single"
+        "height": 8522,
+        "bytes": 2107144,
+        "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "be7fb6922d57127f6d64070c633c17ab0bfee6658d58709130ebbf44f14fdb00",
+      "sourceSha256": "d56db1b05f09f73f6934888272dde714620e91ea63e8b05b31fb5eb5dc403f99",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-013.png"
     },
     {
@@ -596,15 +609,16 @@
         ],
         "unitOrderIssues": [],
         "knowledgeUnits": 3,
-        "materials": 4,
+        "materials": 5,
         "practices": 4,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
-        "imageCount": 0,
+        "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 6510,
+        "contentLength": 7615,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -614,11 +628,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 7619,
-        "bytes": 1115174,
-        "captureMode": "single"
+        "height": 9621,
+        "bytes": 1832628,
+        "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "1e382bbfe2cb3fe61d8d42f6032299b307e24e2fc0d8a4f6a6bbbf860bb34bfb",
+      "sourceSha256": "095e07eab5d48f265651acbeb944e89673593cec5f972a9fc4861df6698fae2c",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-014.png"
     },
     {
@@ -642,12 +656,13 @@
         "materials": 2,
         "practices": 3,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
         "imageCount": 2,
         "pageOverflow": 0,
-        "contentLength": 4527,
+        "contentLength": 5601,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -657,11 +672,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 7165,
-        "bytes": 2138458,
-        "captureMode": "single"
+        "height": 8033,
+        "bytes": 1426639,
+        "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "4b2d00b80d66c422ac287ed37eaa81bdef4e0ceaf367156d6ca815be1aabeecf",
+      "sourceSha256": "04fe37463e8af6c6bf70ac6017147e782918153b033edb201714a94fd512d3f7",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-015.png"
     },
     {
@@ -682,15 +697,16 @@
         ],
         "unitOrderIssues": [],
         "knowledgeUnits": 1,
-        "materials": 2,
+        "materials": 3,
         "practices": 3,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
-        "imageCount": 0,
+        "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 5742,
+        "contentLength": 7170,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -700,11 +716,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 5912,
-        "bytes": 930262,
+        "height": 7664,
+        "bytes": 1141376,
         "captureMode": "single"
       },
-      "sourceSha256": "08e4c1c3588aab4be342d76b241483303da82a43fa42a4543d31b07c84a09e7e",
+      "sourceSha256": "22a6e9e5429b5ee9558f850425455be0b14b9f325c5641bb23cbea449c0dbb2a",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-016.png"
     },
     {
@@ -728,12 +744,13 @@
         "materials": 4,
         "practices": 5,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
-        "imageCount": 2,
+        "imageCount": 4,
         "pageOverflow": 0,
-        "contentLength": 6159,
+        "contentLength": 7339,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -743,11 +760,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 9578,
-        "bytes": 2310512,
+        "height": 11729,
+        "bytes": 3334641,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "9d7d7729fb2c4b906fe1d5771797cb55d4e1fe16845e5d0b1189283ee6e40614",
+      "sourceSha256": "6a0ac2c821bb8a49a26901e94bf06b66cbe5fc87bd5e087d9d804c90a45acf12",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-017.png"
     },
     {
@@ -771,12 +788,13 @@
         "materials": 2,
         "practices": 4,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
         "imageCount": 2,
         "pageOverflow": 0,
-        "contentLength": 5230,
+        "contentLength": 6290,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -786,11 +804,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 7542,
-        "bytes": 911697,
-        "captureMode": "single"
+        "height": 8410,
+        "bytes": 1471303,
+        "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "ca896eb6c84fd74f36dcad07a10d9c21c89478b9b2f5d2008cee4da8d0d465a8",
+      "sourceSha256": "4fbf57da7de3e717f105d1d621d2530e726ddffe4ce617449535f2c8a5d30753",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-018.png"
     },
     {
@@ -814,12 +832,13 @@
         "materials": 3,
         "practices": 4,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 5401,
+        "contentLength": 6447,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -829,11 +848,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 6800,
-        "bytes": 1787065,
+        "height": 7699,
+        "bytes": 1095556,
         "captureMode": "single"
       },
-      "sourceSha256": "ae2e9f190b572dc487c431337deecae28da4b1f443a82fb6897f4b7633382616",
+      "sourceSha256": "19090bed1f4dc6e7bb8671b493db808a6497194e56ee59cea9470603b37ff935",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-019.png"
     },
     {
@@ -854,15 +873,16 @@
         ],
         "unitOrderIssues": [],
         "knowledgeUnits": 1,
-        "materials": 2,
+        "materials": 3,
         "practices": 4,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
-        "imageCount": 0,
+        "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 5491,
+        "contentLength": 6752,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -872,11 +892,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 6110,
-        "bytes": 951506,
-        "captureMode": "single"
+        "height": 8033,
+        "bytes": 1336162,
+        "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "7b94873f5bb9b4f0180268054b6836d761df0b77c347152ce53076d340b4682b",
+      "sourceSha256": "c54abc0ec475af0af21ab7995d40ef016fd995c0b201bfdb4988215c237c5ce2",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-020.png"
     },
     {
@@ -900,12 +920,13 @@
         "materials": 3,
         "practices": 4,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
         "imageCount": 3,
         "pageOverflow": 0,
-        "contentLength": 7198,
+        "contentLength": 8497,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -915,11 +936,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 9742,
-        "bytes": 2745181,
+        "height": 10667,
+        "bytes": 2956426,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "ac2b899ebecbc914091f0234b4a9720c44254c6f7ede046a727dff5eedab86b2",
+      "sourceSha256": "0f154b1dc5ad5c15a8c03d9f44494d62533d62c16fb09e8be2303da0128f7062",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-021.png"
     },
     {
@@ -943,12 +964,13 @@
         "materials": 3,
         "practices": 4,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
-        "imageCount": 2,
+        "imageCount": 3,
         "pageOverflow": 0,
-        "contentLength": 7108,
+        "contentLength": 8280,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -958,11 +980,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 8904,
-        "bytes": 1898301,
+        "height": 10426,
+        "bytes": 2443135,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "22f3c17f01b9ecfed445bc070c4c26e3dd15020628b843c496daed51341c350c",
+      "sourceSha256": "6e4fe8d510aeafee16fb0f4a4cb033916048d3a13ae39670eb303b13c9b71943",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-022.png"
     },
     {
@@ -986,12 +1008,13 @@
         "materials": 1,
         "practices": 3,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 2428,
+        "contentLength": 3425,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -1001,11 +1024,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 5216,
-        "bytes": 573458,
+        "height": 6083,
+        "bytes": 1621395,
         "captureMode": "single"
       },
-      "sourceSha256": "6eec70b95cae27a3b35da111734f449d9222f33fc9cce22607fa18a794203d43",
+      "sourceSha256": "23d7530afac6c834e614ae2ae19bc102d391aaa7ae85c4b3d9aaca3901f5f395",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-023.png"
     },
     {
@@ -1029,12 +1052,13 @@
         "materials": 1,
         "practices": 4,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 3336,
+        "contentLength": 4466,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -1044,11 +1068,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 5696,
-        "bytes": 1516325,
+        "height": 6563,
+        "bytes": 844463,
         "captureMode": "single"
       },
-      "sourceSha256": "6165784d31b5017eabc4cc679e42c6e46a6ae187ff4d548b95d6b3d6f23c5788",
+      "sourceSha256": "090b5fdebdfa9220f0fb80f9750845992fec19cbcf2cce01864d10b12933d105",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-024.png"
     },
     {
@@ -1072,12 +1096,13 @@
         "materials": 2,
         "practices": 3,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
-        "imageCount": 1,
+        "imageCount": 2,
         "pageOverflow": 0,
-        "contentLength": 4994,
+        "contentLength": 6029,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -1087,11 +1112,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 6594,
-        "bytes": 883166,
-        "captureMode": "single"
+        "height": 8087,
+        "bytes": 1851397,
+        "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "fd4c5ec0b2875fc0ca59f9075b855de41b8b5ad9d87baccc516ef71dbee978f3",
+      "sourceSha256": "eece7baf0eb29e845cb5160c04686b4de08b9b8adc35ce091ed5fcecd04db4c3",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-025.png"
     },
     {
@@ -1115,12 +1140,13 @@
         "materials": 5,
         "practices": 7,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
-        "imageCount": 3,
+        "imageCount": 4,
         "pageOverflow": 0,
-        "contentLength": 10939,
+        "contentLength": 11672,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -1130,11 +1156,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 12992,
-        "bytes": 3153763,
+        "height": 14260,
+        "bytes": 3901234,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "01f5a800a3ee5d20b8f93ec0b0dbcf47ecc61eb6e9e3613acb68450d224eaae8",
+      "sourceSha256": "9c89ec05f98273ab7b43a0e9c9a275806afeb2aae32005b726675c0dfe5b2b40",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-026.png"
     },
     {
@@ -1158,12 +1184,13 @@
         "materials": 1,
         "practices": 4,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 4342,
+        "contentLength": 5129,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -1173,11 +1200,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 5964,
-        "bytes": 776295,
+        "height": 6860,
+        "bytes": 912262,
         "captureMode": "single"
       },
-      "sourceSha256": "f15823d301266daa2aeb94034c64793a5586bfa283341cf92691415392b0cb52",
+      "sourceSha256": "5e9e7a51d89819e93b550ef9e3f8e498bf48960800950eee4e0ab6ccaa2de6c4",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-027.png"
     },
     {
@@ -1201,12 +1228,13 @@
         "materials": 1,
         "practices": 3,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 3174,
+        "contentLength": 4296,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -1216,11 +1244,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 5361,
-        "bytes": 1644719,
+        "height": 6228,
+        "bytes": 1814012,
         "captureMode": "single"
       },
-      "sourceSha256": "0f8c90fabc60271748b555b6740e4122bad25af2cd61cba55736f281d5f6ece7",
+      "sourceSha256": "1cd877781c71acc675826cf9a01c5ce0170ab4e97beedf094993302aa311fb24",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-028.png"
     },
     {
@@ -1244,12 +1272,13 @@
         "materials": 2,
         "practices": 4,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
         "imageCount": 2,
         "pageOverflow": 0,
-        "contentLength": 5206,
+        "contentLength": 6305,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -1259,11 +1288,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 7539,
-        "bytes": 2743252,
-        "captureMode": "single"
+        "height": 8379,
+        "bytes": 1998228,
+        "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "f7b4d2313656bc871411e330fd7dd517b9fcba978463b8898c17d1c154403cf1",
+      "sourceSha256": "89edc36e96fa303bd2f638f2a2f350d7b98d7e68ed0d5d40417c96848140e8fd",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-029.png"
     },
     {
@@ -1287,12 +1316,13 @@
         "materials": 1,
         "practices": 3,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 3193,
+        "contentLength": 4860,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -1302,11 +1332,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 5449,
-        "bytes": 651840,
+        "height": 6404,
+        "bytes": 873815,
         "captureMode": "single"
       },
-      "sourceSha256": "484fd498ae64e4261c877aa4de7b79b31c0fe4690fd1242ae9456d82db3d8e43",
+      "sourceSha256": "79d9a9bc78ba43d1b1f34256ba66602e16df4dafb2e033786d96d5ee4e507a32",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-030.png"
     },
     {
@@ -1330,12 +1360,13 @@
         "materials": 2,
         "practices": 3,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
-        "imageCount": 1,
+        "imageCount": 2,
         "pageOverflow": 0,
-        "contentLength": 4908,
+        "contentLength": 6283,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -1345,11 +1376,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 6652,
-        "bytes": 887815,
-        "captureMode": "single"
+        "height": 8203,
+        "bytes": 2155261,
+        "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "ecb9a96e4a54f088d898c4b40b2b207052bd8acff79c5ae8ba1c3b5193422971",
+      "sourceSha256": "ebd4109f27b1650c4aea0ce1ac81f7e9f98e5d100de5b537dee31f14d5dbdb3e",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-031.png"
     },
     {
@@ -1373,12 +1404,13 @@
         "materials": 1,
         "practices": 4,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 4449,
+        "contentLength": 5104,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -1388,11 +1420,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 6032,
-        "bytes": 828675,
+        "height": 6731,
+        "bytes": 942511,
         "captureMode": "single"
       },
-      "sourceSha256": "b45c14e8b37458efd420994c6715017e0bc08f6bf98e81eca8d43d5b908b73f0",
+      "sourceSha256": "55841126db9b1f816cc790bd05be805ad3f7c391f28ac61a04ae35d3cba9a353",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-032.png"
     },
     {
@@ -1416,12 +1448,13 @@
         "materials": 2,
         "practices": 3,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
         "imageCount": 2,
         "pageOverflow": 0,
-        "contentLength": 3949,
+        "contentLength": 5378,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -1431,11 +1464,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 6923,
-        "bytes": 779457,
+        "height": 7820,
+        "bytes": 976749,
         "captureMode": "single"
       },
-      "sourceSha256": "29a5ca2dd82ac9a83613f38feea37fc87d059aaa97467d7c8f759a37c8ce8ad3",
+      "sourceSha256": "4d99f6e16da6cbdce8ed42a8b07ba1ddc3997b97ea210d48ab0c520e1e051d9f",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-033.png"
     },
     {
@@ -1459,12 +1492,13 @@
         "materials": 1,
         "practices": 4,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 4428,
+        "contentLength": 5569,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -1474,11 +1508,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 5997,
-        "bytes": 799394,
+        "height": 6836,
+        "bytes": 961416,
         "captureMode": "single"
       },
-      "sourceSha256": "beb8a4427c26e7d86ee4b2445c33c3eb8193c10c6dc0d4407ae08b14aa5b38a0",
+      "sourceSha256": "d97064e44b1fe744776aac53d5321783aaaaa962a18e0bb98962c6c100a99787",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-034.png"
     },
     {
@@ -1502,12 +1536,13 @@
         "materials": 2,
         "practices": 4,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
         "imageCount": 2,
         "pageOverflow": 0,
-        "contentLength": 6573,
+        "contentLength": 7624,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -1517,11 +1552,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 7994,
-        "bytes": 2982896,
-        "captureMode": "single"
+        "height": 8833,
+        "bytes": 2483612,
+        "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "9aceb4f62080d9114058603e9c0ad86e02c8ded261ea47213e5e83f95b62eb40",
+      "sourceSha256": "1c53476812f76cb6f43510258052ec17346e8b602a647fed3bac866fdbcebefd",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-035.png"
     },
     {
@@ -1545,12 +1580,13 @@
         "materials": 1,
         "practices": 3,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 3530,
+        "contentLength": 4737,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -1560,11 +1596,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 5394,
-        "bytes": 1598517,
+        "height": 6262,
+        "bytes": 1768673,
         "captureMode": "single"
       },
-      "sourceSha256": "2fbb155a248f1e1a9ad1fb8b754bedbb6233c140c3bf99834b055ad45dea1ba6",
+      "sourceSha256": "4396e2c96c30c48abae63c9922f4f65b257a3381ee262664590ce214fbfa7479",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-036.png"
     },
     {
@@ -1588,12 +1624,13 @@
         "materials": 2,
         "practices": 4,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
         "imageCount": 2,
         "pageOverflow": 0,
-        "contentLength": 5003,
+        "contentLength": 6010,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -1603,11 +1640,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 7525,
-        "bytes": 2416841,
-        "captureMode": "single"
+        "height": 8392,
+        "bytes": 2003833,
+        "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "21ae30adae4f2b19421ca3f1d4d4fbc0fdbbe2c95c9fe1cbcb2ba4c66ad2027b",
+      "sourceSha256": "8f5d63c3d96c1edefb233596302137e0ca55e44705cf2286286e90e38aa76442",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-037.png"
     },
     {
@@ -1631,12 +1668,13 @@
         "materials": 2,
         "practices": 3,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
-        "imageCount": 1,
+        "imageCount": 2,
         "pageOverflow": 0,
-        "contentLength": 6976,
+        "contentLength": 8089,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -1646,11 +1684,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 7189,
-        "bytes": 2003578,
-        "captureMode": "single"
+        "height": 8606,
+        "bytes": 2023098,
+        "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "3d1ee7946e170aa7f9f2a2c2ba6cd926a86aa96a1a90bf195b7147a02d850646",
+      "sourceSha256": "b7deedd94bdc18fe9977ac4823f76f29592275780aa44915787d079bd44fb5d0",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-038.png"
     },
     {
@@ -1674,12 +1712,13 @@
         "materials": 1,
         "practices": 3,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 4955,
+        "contentLength": 5707,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -1689,11 +1728,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 5933,
-        "bytes": 836110,
+        "height": 6608,
+        "bytes": 1847050,
         "captureMode": "single"
       },
-      "sourceSha256": "504820d47f4933c05545e4240d079d7712d5de8edd3b662b43518f9b940abf8e",
+      "sourceSha256": "32a1e20e9662c6579ab71d7f998c93d85fdc60f512693da12bd5a027d3502e2c",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-039.png"
     },
     {
@@ -1717,12 +1756,13 @@
         "materials": 2,
         "practices": 4,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
         "imageCount": 2,
         "pageOverflow": 0,
-        "contentLength": 6282,
+        "contentLength": 7554,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -1732,11 +1772,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 7681,
-        "bytes": 1937008,
-        "captureMode": "single"
+        "height": 8549,
+        "bytes": 2440745,
+        "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "6d60d684f2689baa72eaeb8c3e230a21109b7017bb13996d12344941d2604882",
+      "sourceSha256": "ebaf4b3f96bf9dac52857dde3f8dce061cfe549f12aa4dd282e1d3a5ad29c9d6",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-040.png"
     },
     {
@@ -1760,12 +1800,13 @@
         "materials": 1,
         "practices": 4,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 3052,
+        "contentLength": 4250,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -1775,11 +1816,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 5608,
-        "bytes": 654121,
+        "height": 6478,
+        "bytes": 1819532,
         "captureMode": "single"
       },
-      "sourceSha256": "7675fa18eeffee9e5e154964a2ee721afdfb02161f5ade768c4ef613b8885bab",
+      "sourceSha256": "7ef88da623a45490ef6f55e2c6109f91f2ca6e5e597d63d29b43718fc6431b90",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-041.png"
     },
     {
@@ -1803,12 +1844,13 @@
         "materials": 2,
         "practices": 4,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
         "imageCount": 2,
         "pageOverflow": 0,
-        "contentLength": 6491,
+        "contentLength": 8151,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -1818,11 +1860,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 7922,
-        "bytes": 2874099,
-        "captureMode": "single"
+        "height": 9017,
+        "bytes": 2404887,
+        "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "b8f335562f5e479459c4f79b9acbfb947b24a077a7cd0ba5c000577a4781390b",
+      "sourceSha256": "d29bd8b6693afdc11f48d5721e3e0c2282f39e2b254bcab607e987e494b39c7f",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-042.png"
     },
     {
@@ -1846,12 +1888,13 @@
         "materials": 2,
         "practices": 4,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
         "imageCount": 2,
         "pageOverflow": 0,
-        "contentLength": 5810,
+        "contentLength": 6993,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -1861,11 +1904,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 7631,
-        "bytes": 1001474,
-        "captureMode": "single"
+        "height": 8527,
+        "bytes": 2046518,
+        "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "a1d049cdf549b307af3aa3998b1b6091f854988074696f8197f3fd2b0fbf211f",
+      "sourceSha256": "f1512599958cbf5331faba482cedcb5e05f9f46b8590462581260bdaa8858f01",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-043.png"
     },
     {
@@ -1889,12 +1932,13 @@
         "materials": 2,
         "practices": 4,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
-        "imageCount": 1,
+        "imageCount": 2,
         "pageOverflow": 0,
-        "contentLength": 6145,
+        "contentLength": 6864,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -1904,11 +1948,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 7199,
-        "bytes": 1027819,
-        "captureMode": "single"
+        "height": 8553,
+        "bytes": 1901283,
+        "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "554bf644984edd02b6b42d53ab39852e7f4c587373c8ce724b70f1d98bc13507",
+      "sourceSha256": "7d4cf671f30a7b83836781553c470a472d256736e06ec6ffc005eb6116b13577",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-044.png"
     },
     {
@@ -1932,12 +1976,13 @@
         "materials": 1,
         "practices": 3,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 3564,
+        "contentLength": 3912,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -1947,11 +1992,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 5506,
-        "bytes": 1595908,
+        "height": 6093,
+        "bytes": 784305,
         "captureMode": "single"
       },
-      "sourceSha256": "d4ef66173890f9020866e98cd8f7108e3236ffecf83239c78b81235c333afaa2",
+      "sourceSha256": "dd9c06cb256001a228ae76a484df3bfc79cf2a4bafa7cbca2d2033fb4b311b23",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-045.png"
     },
     {
@@ -1975,12 +2020,13 @@
         "materials": 2,
         "practices": 5,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
-        "imageCount": 1,
+        "imageCount": 2,
         "pageOverflow": 0,
-        "contentLength": 6312,
+        "contentLength": 7055,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -1990,11 +2036,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 7609,
-        "bytes": 1974668,
-        "captureMode": "single"
+        "height": 9082,
+        "bytes": 2151881,
+        "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "3093868595d327556e6aa2c51f845429289b6e4ce135704f3b8505c74c77de13",
+      "sourceSha256": "bb28534f0016522b5dbf9e7e29ea2d4ccf8e160b8a31cbf55264560992c64e5d",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-046.png"
     },
     {
@@ -2018,12 +2064,13 @@
         "materials": 3,
         "practices": 6,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
         "imageCount": 2,
         "pageOverflow": 0,
-        "contentLength": 5994,
+        "contentLength": 7119,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -2033,11 +2080,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 8666,
-        "bytes": 2121413,
+        "height": 9589,
+        "bytes": 2269777,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "5f80c43408ac0621ef4d6722764bc16341cf741eab73a202f744154a642689a0",
+      "sourceSha256": "a2688f0df81b987eabde6992459e62894b76269c5d666c12d4ad45d032a0c4ad",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-047.png"
     },
     {
@@ -2061,12 +2108,13 @@
         "materials": 8,
         "practices": 4,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
         "imageCount": 0,
         "pageOverflow": 0,
-        "contentLength": 13894,
+        "contentLength": 15033,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -2076,11 +2124,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 12494,
-        "bytes": 1536219,
+        "height": 13334,
+        "bytes": 1672911,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "579a09516c914cff6ca4c022d70f337e666c817aad55deb3edadf343ba20ca3c",
+      "sourceSha256": "a09f7eb7de01fdcbebc9d67ec83c86242c324c5768e75f2cb4eb2f2e17e86625",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-048.png"
     },
     {
@@ -2104,12 +2152,13 @@
         "materials": 1,
         "practices": 3,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 3818,
+        "contentLength": 5048,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -2119,11 +2168,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 5460,
-        "bytes": 1009146,
+        "height": 6384,
+        "bytes": 1189728,
         "captureMode": "single"
       },
-      "sourceSha256": "bd916800f28a7fead1941e8ea96f0cb82ccc231190f47fe419241335e496ee77",
+      "sourceSha256": "3f732141a7057a286d390b4c10f008324eb3407271d8cc5fcc23609de6e0eb78",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-049.png"
     },
     {
@@ -2147,12 +2196,13 @@
         "materials": 1,
         "practices": 3,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 2915,
+        "contentLength": 4021,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -2162,11 +2212,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 5314,
-        "bytes": 955270,
+        "height": 6155,
+        "bytes": 1121450,
         "captureMode": "single"
       },
-      "sourceSha256": "72021f95129df5d44d321dbb70c7694807e7aee7c8e51a2f5631e001b03b5dfc",
+      "sourceSha256": "62885df9684ea9a44e88309cc74f32129d4a678d7cf585ae9b8a1d9783a9bd1d",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-050.png"
     },
     {
@@ -2190,12 +2240,13 @@
         "materials": 2,
         "practices": 3,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
         "imageCount": 2,
         "pageOverflow": 0,
-        "contentLength": 3941,
+        "contentLength": 5308,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -2205,11 +2256,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 6983,
-        "bytes": 771614,
+        "height": 7909,
+        "bytes": 969485,
         "captureMode": "single"
       },
-      "sourceSha256": "dd6967e53d72585f2c3494fa6b9129eb327d4c7631ac30406c1503130a5804c7",
+      "sourceSha256": "c23692a214ab11e33952c7d9bcf1fa9ff809a85dea65639c8fb847f44c56c641",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-051.png"
     },
     {
@@ -2233,12 +2284,13 @@
         "materials": 1,
         "practices": 3,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 3373,
+        "contentLength": 4607,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -2248,11 +2300,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 5462,
-        "bytes": 1483621,
+        "height": 6360,
+        "bytes": 1661009,
         "captureMode": "single"
       },
-      "sourceSha256": "3c1fbf08e59ac5a61900f9f9c8155de3e07825ba873dea0b384f8146d1b38738",
+      "sourceSha256": "28187c39b6f25b15d1f7266ad18641b6aeb6f936183269313502930e672d7df1",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-052.png"
     },
     {
@@ -2276,12 +2328,13 @@
         "materials": 1,
         "practices": 3,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 2456,
+        "contentLength": 3516,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -2291,11 +2344,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 5096,
-        "bytes": 1439162,
+        "height": 5966,
+        "bytes": 1602109,
         "captureMode": "single"
       },
-      "sourceSha256": "d03e117339cf2c26e5a50f70714fb6892c5fa954713661e1a8e370afcc5001b8",
+      "sourceSha256": "905e225ad357463d0117bcb7f7ca35bcff280fc6203c76de8d42451e27cd41bc",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-053.png"
     },
     {
@@ -2319,12 +2372,13 @@
         "materials": 1,
         "practices": 3,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 2671,
+        "contentLength": 3777,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -2334,11 +2388,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 5288,
-        "bytes": 611767,
+        "height": 6158,
+        "bytes": 1159730,
         "captureMode": "single"
       },
-      "sourceSha256": "176dc5ebd32bf0d984cf749c431b8aa3c3ca410afb55d84db1725c81e40d8324",
+      "sourceSha256": "a6909fa20891ddd44ad6869f2e548e6ba448ec586294e9c5e6680f263b0bad62",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-054.png"
     },
     {
@@ -2362,12 +2416,13 @@
         "materials": 1,
         "practices": 3,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
-        "imageCount": 0,
+        "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 3732,
+        "contentLength": 4780,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -2377,11 +2432,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 4771,
-        "bytes": 671613,
+        "height": 6238,
+        "bytes": 1726369,
         "captureMode": "single"
       },
-      "sourceSha256": "7660c772b6ea2839f53667d78b608d6dbb70d5012f5cc835c6e74409584db00a",
+      "sourceSha256": "5bde0030656aee6c262f3c60765a98602910566635ade7883c2b46b5aef59494",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-055.png"
     },
     {
@@ -2405,12 +2460,13 @@
         "materials": 3,
         "practices": 3,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 3205,
+        "contentLength": 4199,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -2420,11 +2476,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 6041,
-        "bytes": 694110,
+        "height": 6910,
+        "bytes": 1169636,
         "captureMode": "single"
       },
-      "sourceSha256": "627479e175fa8f0f41fca964921e50b9bed470fae46fb528ab2f59afea29250f",
+      "sourceSha256": "33f9a4540603ea3bd20a1e0e7f2f6d18bda80e3c7fdf5c4ec7c696ed5d4e048c",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-056.png"
     },
     {
@@ -2448,12 +2504,13 @@
         "materials": 3,
         "practices": 3,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
-        "imageCount": 1,
+        "imageCount": 3,
         "pageOverflow": 0,
-        "contentLength": 7466,
+        "contentLength": 8336,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -2463,11 +2520,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 8152,
-        "bytes": 1359028,
+        "height": 10167,
+        "bytes": 2812061,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "aaec28077b959af81d6f3cd97747008571706dbfda93aa82c3d7548e25b868e0",
+      "sourceSha256": "5b0ec377b2a0d68324dae9c239ea6bd22d864f64d110255ff540c8882886dc23",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-057.png"
     },
     {
@@ -2491,12 +2548,13 @@
         "materials": 2,
         "practices": 4,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 3439,
+        "contentLength": 4371,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -2506,11 +2564,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 5947,
-        "bytes": 1052331,
+        "height": 6814,
+        "bytes": 1206139,
         "captureMode": "single"
       },
-      "sourceSha256": "0a0ef1c31312798e0b9548b60326063d725f048f0b8c457756ccf3e797febe9b",
+      "sourceSha256": "cd5c4cc556528e528de320b1bee70b6298c0d367f7c19f020b306b963e84e611",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-058.png"
     },
     {
@@ -2534,12 +2592,13 @@
         "materials": 1,
         "practices": 3,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 2987,
+        "contentLength": 4094,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -2549,11 +2608,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 5304,
-        "bytes": 911771,
+        "height": 6202,
+        "bytes": 1084117,
         "captureMode": "single"
       },
-      "sourceSha256": "164612afcd4f798490c7cdd6083bc7dc5d4aca7de79a5ef43ec97d260856f520",
+      "sourceSha256": "aa5d59664531491a034d2a2d95a5b013b1c56c53975fc070cefee23eaa49ed77",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-059.png"
     },
     {
@@ -2577,12 +2636,13 @@
         "materials": 1,
         "practices": 3,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 2920,
+        "contentLength": 4091,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -2592,11 +2652,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 5295,
-        "bytes": 910123,
+        "height": 6163,
+        "bytes": 1085783,
         "captureMode": "single"
       },
-      "sourceSha256": "204970fbea01d4762ae5e02dcfeaba1706742c4ca0f19d219a410553dbdee67c",
+      "sourceSha256": "e1fbaa26aaf4cc511802c09d68938722a96086a8357a1d32cf98649748d10779",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-060.png"
     },
     {
@@ -2620,12 +2680,13 @@
         "materials": 2,
         "practices": 3,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
         "imageCount": 2,
         "pageOverflow": 0,
-        "contentLength": 4370,
+        "contentLength": 5626,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -2635,11 +2696,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 7122,
-        "bytes": 846958,
-        "captureMode": "single"
+        "height": 8048,
+        "bytes": 1733481,
+        "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "9e96afd6264aa4b817086363e67ff1676cb93111393f533a0006c2b5d819ca9d",
+      "sourceSha256": "c79485a0b4bba04056c42ff8927e414ff10abcc65b67f25af2196fcd2960140a",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-061.png"
     },
     {
@@ -2663,12 +2724,13 @@
         "materials": 2,
         "practices": 3,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
-        "imageCount": 0,
+        "imageCount": 2,
         "pageOverflow": 0,
-        "contentLength": 5071,
+        "contentLength": 5736,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -2678,11 +2740,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 6089,
-        "bytes": 900520,
-        "captureMode": "single"
+        "height": 8048,
+        "bytes": 2089441,
+        "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "20ffa0b4b53e75b39251f9a0a010544bbdb75e69ad121980ca8f461d34c658fe",
+      "sourceSha256": "54a13bd3ac7ed9e2df74c285d178e02ded588a7174e78369d2b5101abd50a2b5",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-062.png"
     },
     {
@@ -2706,12 +2768,13 @@
         "materials": 3,
         "practices": 3,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 4335,
+        "contentLength": 5228,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -2721,11 +2784,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 6438,
-        "bytes": 1626865,
+        "height": 7250,
+        "bytes": 1774335,
         "captureMode": "single"
       },
-      "sourceSha256": "f4042f42546063b13e9522c96dc349eccfee2bb81033d40518be0cb252e2bd4c",
+      "sourceSha256": "03b0db9f150cfea5b1f36dfee3f0856b2088f3be093f805f7e011ed31eb47755",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-063.png"
     },
     {
@@ -2746,15 +2809,16 @@
         ],
         "unitOrderIssues": [],
         "knowledgeUnits": 1,
-        "materials": 2,
+        "materials": 3,
         "practices": 3,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
-        "imageCount": 0,
+        "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 3516,
+        "contentLength": 4942,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -2764,11 +2828,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 5150,
-        "bytes": 681171,
+        "height": 7098,
+        "bytes": 1816527,
         "captureMode": "single"
       },
-      "sourceSha256": "3b566cc798aeaa63317f215fb5abf958157a9779d2ed7e77883aeae1a22d0718",
+      "sourceSha256": "0f584781ca82150eda0fa9caf3249ba8cd42cc88a1a3364213612df9c61b3794",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-064.png"
     },
     {
@@ -2792,12 +2856,13 @@
         "materials": 1,
         "practices": 3,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 2441,
+        "contentLength": 3527,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -2807,11 +2872,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 5179,
-        "bytes": 568904,
+        "height": 6105,
+        "bytes": 1613562,
         "captureMode": "single"
       },
-      "sourceSha256": "c159e3438c8b65554b2c7dfb8c2bf367252a130885704cf0bfc62837d4e2a8eb",
+      "sourceSha256": "f7efc2cd681d8cd6a65eaff37a7b2029c854debcbb5e648018541145d869f95f",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-065.png"
     },
     {
@@ -2835,12 +2900,13 @@
         "materials": 1,
         "practices": 3,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 2315,
+        "contentLength": 3665,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -2850,11 +2916,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 4919,
-        "bytes": 827401,
+        "height": 5787,
+        "bytes": 1011849,
         "captureMode": "single"
       },
-      "sourceSha256": "246bf1e13550a0e6402a75324061a21a89a7b044012a0b0d101305210f9f61b4",
+      "sourceSha256": "dedd1547a515e76ac41ff60a2a7ada6e4d6181709a00152a78122e098d34001b",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-066.png"
     },
     {
@@ -2878,12 +2944,13 @@
         "materials": 2,
         "practices": 4,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
         "imageCount": 2,
         "pageOverflow": 0,
-        "contentLength": 5788,
+        "contentLength": 6736,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -2893,11 +2960,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 7727,
-        "bytes": 2105207,
-        "captureMode": "single"
+        "height": 8540,
+        "bytes": 1473208,
+        "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "13c1c523314e2935d039af56e08cfe5adcd68c7cbf70da27051344fd6bb0a1ef",
+      "sourceSha256": "5dea6ebc82bde2000e29e8d0d568df372c329d4f379d6dc95e12c4a629563000",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-067.png"
     },
     {
@@ -2921,12 +2988,13 @@
         "materials": 2,
         "practices": 3,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
-        "imageCount": 0,
+        "imageCount": 2,
         "pageOverflow": 0,
-        "contentLength": 5865,
+        "contentLength": 6639,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -2936,11 +3004,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 6271,
-        "bytes": 951288,
-        "captureMode": "single"
+        "height": 8309,
+        "bytes": 1532601,
+        "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "ab9adb63694c073c798b9bfab6e7e3cc825d02621d1e4aeb80b30422c1a7eddd",
+      "sourceSha256": "4ac7d2ddf80c16387d8b4274d9c7cda1ff2f4bf00f059b9756d0be47a0b70159",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-068.png"
     },
     {
@@ -2964,12 +3032,13 @@
         "materials": 2,
         "practices": 4,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
-        "imageCount": 0,
+        "imageCount": 2,
         "pageOverflow": 0,
-        "contentLength": 6646,
+        "contentLength": 7417,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -2979,11 +3048,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 6722,
-        "bytes": 1049111,
-        "captureMode": "single"
+        "height": 8710,
+        "bytes": 1778255,
+        "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "d26dbae20aa04569255ccefca90130d505c113754a9d152c2f7256ed8d24110e",
+      "sourceSha256": "78eef2328b28f3a7abc8c46155d9341720a0357a1aa46d3b005625c5facc7daf",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-069.png"
     },
     {
@@ -3007,12 +3076,13 @@
         "materials": 1,
         "practices": 3,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
-        "imageCount": 0,
+        "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 4317,
+        "contentLength": 5042,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -3022,11 +3092,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 5231,
-        "bytes": 764139,
+        "height": 6562,
+        "bytes": 900091,
         "captureMode": "single"
       },
-      "sourceSha256": "3a5c2d126c13e9b1b6fad82ce6fd9ab31d25ca1566924e6bccbf73aac229b9a9",
+      "sourceSha256": "2696329d96b7fd6f1635486d97f1fac61beb12f87b22bc6756bed2eb8444e55b",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-070.png"
     },
     {
@@ -3050,12 +3120,13 @@
         "materials": 3,
         "practices": 3,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
-        "imageCount": 0,
+        "imageCount": 2,
         "pageOverflow": 0,
-        "contentLength": 5825,
+        "contentLength": 6663,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -3065,11 +3136,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 6540,
-        "bytes": 989817,
-        "captureMode": "single"
+        "height": 8469,
+        "bytes": 1800129,
+        "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "958ee24fcfd98c2b2267da5440437df1a512637e2f6cd4f31920a058ff55d518",
+      "sourceSha256": "3ab50635cf6ae3e98d96ffba015e6740cacdb745e07e1f86fbc118ad2a10af29",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-071.png"
     },
     {
@@ -3093,12 +3164,13 @@
         "materials": 3,
         "practices": 3,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 3834,
+        "contentLength": 5140,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -3108,11 +3180,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 6353,
-        "bytes": 1128661,
+        "height": 7252,
+        "bytes": 980865,
         "captureMode": "single"
       },
-      "sourceSha256": "5a7bd3685afe47d90ea30cbe4444b23217b99672e7948e2493b3058e881374f3",
+      "sourceSha256": "78c61f6ebfb38176b4d289663be3d928a524d3d7fe10d0787c09918829505100",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-072.png"
     },
     {
@@ -3136,12 +3208,13 @@
         "materials": 3,
         "practices": 4,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 4179,
+        "contentLength": 5120,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -3151,11 +3224,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 6846,
-        "bytes": 839828,
+        "height": 7772,
+        "bytes": 1890964,
         "captureMode": "single"
       },
-      "sourceSha256": "50289fc4e28f8419d2980711323fa425a93f36657b0f766c6c0c2f2a0b1e0508",
+      "sourceSha256": "e23de3f3d894c3f19219b87d19f7f3a2ef2b5a9a223437eec2f8eab989f7ec1a",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-073.png"
     },
     {
@@ -3176,15 +3249,16 @@
         ],
         "unitOrderIssues": [],
         "knowledgeUnits": 1,
-        "materials": 2,
+        "materials": 3,
         "practices": 4,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
-        "imageCount": 0,
+        "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 3960,
+        "contentLength": 5360,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -3194,11 +3268,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 5765,
-        "bytes": 779117,
+        "height": 7577,
+        "bytes": 1950425,
         "captureMode": "single"
       },
-      "sourceSha256": "c1018e1dd256e8cf51774649696dd43e5c2b208a6447568b0e0a28adf96dd6eb",
+      "sourceSha256": "b9ee8df3bf8cd54caa81cc98fcf09375f5aca4c742a0ab3ff1bee3c85e87be09",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-074.png"
     },
     {
@@ -3222,12 +3296,13 @@
         "materials": 1,
         "practices": 3,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 2830,
+        "contentLength": 4114,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -3237,11 +3312,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 5185,
-        "bytes": 928559,
+        "height": 6111,
+        "bytes": 1121703,
         "captureMode": "single"
       },
-      "sourceSha256": "d55f4e4104185a83f73dd0b48778b5e517db7bc9cd281b86cd921afaaa00fa92",
+      "sourceSha256": "6cbd86ffb341da4b56bb8d397d14e84b51b7ee1adc9b7bbd0eed517235891a79",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-075.png"
     },
     {
@@ -3262,15 +3337,16 @@
         ],
         "unitOrderIssues": [],
         "knowledgeUnits": 1,
-        "materials": 2,
+        "materials": 3,
         "practices": 4,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
-        "imageCount": 0,
+        "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 3495,
+        "contentLength": 4735,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -3280,11 +3356,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 5652,
-        "bytes": 716537,
+        "height": 7351,
+        "bytes": 911413,
         "captureMode": "single"
       },
-      "sourceSha256": "96c48d0d792e861d4c151f97e39f6117ef7a1b5d8d084d8e45130b80d78d717e",
+      "sourceSha256": "cb9362ba156d8b79092982ec940284e4b410deddcff807123728f9bda864512c",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-076.png"
     },
     {
@@ -3305,15 +3381,16 @@
         ],
         "unitOrderIssues": [],
         "knowledgeUnits": 1,
-        "materials": 2,
+        "materials": 3,
         "practices": 3,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
-        "imageCount": 0,
+        "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 4008,
+        "contentLength": 5371,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -3323,11 +3400,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 5562,
-        "bytes": 747077,
+        "height": 7268,
+        "bytes": 957995,
         "captureMode": "single"
       },
-      "sourceSha256": "d13ff882d8b9949ddca03eb646032dfb76a6c1d7f9f01a6ebff93c770d7211cf",
+      "sourceSha256": "3fdf86874dcb53eb6840dc331341a5c137961de3ddbda16b104f0779a6ee1be5",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-077.png"
     },
     {
@@ -3348,15 +3425,16 @@
         ],
         "unitOrderIssues": [],
         "knowledgeUnits": 1,
-        "materials": 2,
+        "materials": 3,
         "practices": 3,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
-        "imageCount": 0,
+        "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 4437,
+        "contentLength": 5709,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -3366,11 +3444,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 5759,
-        "bytes": 812218,
+        "height": 7514,
+        "bytes": 2008163,
         "captureMode": "single"
       },
-      "sourceSha256": "8604b4b07531209782722678c3c7b180808c268a0cf8496b23963fcb7a8172fe",
+      "sourceSha256": "34416534323b4d965a9f7d3b4bdb599447a74f0215ebde294c47b1e3df4fc62d",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-078.png"
     },
     {
@@ -3394,12 +3472,13 @@
         "materials": 1,
         "practices": 3,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 4117,
+        "contentLength": 4107,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -3409,11 +3488,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 5828,
-        "bytes": 784327,
+        "height": 6216,
+        "bytes": 805617,
         "captureMode": "single"
       },
-      "sourceSha256": "ebca638511c054768e6a4b7b0fdf361762257c452058f96035d49b6855780f1d",
+      "sourceSha256": "37187f0b287157e9bc6f6d515fa806f9bdeb06833bbcf0857f8fca75f7074067",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-079.png"
     },
     {
@@ -3437,12 +3516,13 @@
         "materials": 3,
         "practices": 3,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 4161,
+        "contentLength": 5193,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -3452,11 +3532,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 6282,
-        "bytes": 1705356,
+        "height": 7150,
+        "bytes": 1870920,
         "captureMode": "single"
       },
-      "sourceSha256": "362db5671bcd5b7f6bb5c17c69ed16eab289e1eea730a1f4dc3bfd2f4f260d8c",
+      "sourceSha256": "5f2bf45d2b6470f90f406b894892b6a560e34bafff16ebe9db19062da6bc0d3c",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-080.png"
     },
     {
@@ -3480,12 +3560,13 @@
         "materials": 4,
         "practices": 5,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
         "imageCount": 2,
         "pageOverflow": 0,
-        "contentLength": 6545,
+        "contentLength": 7048,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -3495,11 +3576,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 8820,
-        "bytes": 1824658,
+        "height": 9462,
+        "bytes": 1902156,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "3802ede06a2ab7fa9315ddd7a6c8e8c9d69d32943017274f3252ef48b682df48",
+      "sourceSha256": "a84e75cdeff80c26258969681e6163d4b87557b7f76d0426477d179135e7e33a",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-081.png"
     },
     {
@@ -3523,12 +3604,13 @@
         "materials": 1,
         "practices": 3,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 2874,
+        "contentLength": 4083,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -3538,11 +3620,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 5309,
-        "bytes": 622010,
+        "height": 6178,
+        "bytes": 800571,
         "captureMode": "single"
       },
-      "sourceSha256": "ea4546f091d3829d951d43a8445bb0321fdde7b75c0f75e9f94c812ebfbc0c22",
+      "sourceSha256": "761b371a25accb2be746a9c6bfacba6db315fa0ad5c1e51d6f0faf2abd5d273c",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-082.png"
     },
     {
@@ -3563,15 +3645,16 @@
         ],
         "unitOrderIssues": [],
         "knowledgeUnits": 4,
-        "materials": 9,
+        "materials": 12,
         "practices": 5,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
-        "imageCount": 1,
+        "imageCount": 4,
         "pageOverflow": 0,
-        "contentLength": 10958,
+        "contentLength": 12480,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -3581,11 +3664,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 12417,
-        "bytes": 1734124,
+        "height": 15998,
+        "bytes": 3639705,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "2aa5b6b7ef8c45603f018e2a2bd2b2da00964cbba9795456f3378f7593580be4",
+      "sourceSha256": "01476915209eaca3561167929ceb68c9975eb211115b77e6d0c3fa39c94538f1",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-083.png"
     },
     {
@@ -3609,12 +3692,13 @@
         "materials": 1,
         "practices": 4,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 3809,
+        "contentLength": 5104,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -3624,11 +3708,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 5870,
-        "bytes": 745111,
+        "height": 6796,
+        "bytes": 2034715,
         "captureMode": "single"
       },
-      "sourceSha256": "34e1027996286b206122cefce5c95cb45d540bf19af90f5eb804b93fa9f9e95c",
+      "sourceSha256": "edfc7aa6c52419c56a818839bcbf01d8c5679e41944418111376fdb0561e3f13",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-084.png"
     },
     {
@@ -3652,12 +3736,13 @@
         "materials": 1,
         "practices": 3,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 3606,
+        "contentLength": 4815,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -3667,11 +3752,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 5387,
-        "bytes": 1049688,
+        "height": 6284,
+        "bytes": 859959,
         "captureMode": "single"
       },
-      "sourceSha256": "77a87ea0cf63fc947a210b017002be4820d519cb4327f1ca028ff20f49d8fd3f",
+      "sourceSha256": "f7dd9830a0074d1b73b06ae71bdfcf14dda8cded0a43aa94242012c0d05a435f",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-085.png"
     },
     {
@@ -3695,12 +3780,13 @@
         "materials": 1,
         "practices": 3,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
-        "imageCount": 0,
+        "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 2391,
+        "contentLength": 3370,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -3710,11 +3796,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 4494,
-        "bytes": 547758,
+        "height": 5904,
+        "bytes": 1478637,
         "captureMode": "single"
       },
-      "sourceSha256": "994faf7d54479b15ba8d4a30eceb677d7074fbc634674ce0618bdd0ff530bb02",
+      "sourceSha256": "92f531510e3d1e55085a55e8fbf491082528a0346e22b25658cd764a5defccd1",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-086.png"
     },
     {
@@ -3738,12 +3824,13 @@
         "materials": 2,
         "practices": 4,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 3827,
+        "contentLength": 4991,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -3753,11 +3840,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 6004,
-        "bytes": 1593632,
+        "height": 6843,
+        "bytes": 1762554,
         "captureMode": "single"
       },
-      "sourceSha256": "677ef68643dcc9bfabbbaa4c0d362d030e0686516478524d44c2e4832469b21c",
+      "sourceSha256": "b17531b4dd8f8ad7740fc0abcc8bc1acd5b27d5978f67054f061dd69abf48d2e",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-087.png"
     },
     {
@@ -3781,12 +3868,13 @@
         "materials": 1,
         "practices": 4,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 3912,
+        "contentLength": 5101,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -3796,11 +3884,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 5892,
-        "bytes": 757968,
+        "height": 6789,
+        "bytes": 1853955,
         "captureMode": "single"
       },
-      "sourceSha256": "2b538f7f05f450c894ccc429273fdcb8a9b46508eac47c8678d24ff5fef03049",
+      "sourceSha256": "d2bff9c418577ac33be768854b647860bd1956fbcbde424c77770debba90ff22",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-088.png"
     },
     {
@@ -3824,12 +3912,13 @@
         "materials": 1,
         "practices": 3,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 3333,
+        "contentLength": 4473,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -3839,11 +3928,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 5413,
-        "bytes": 992148,
+        "height": 6283,
+        "bytes": 1156991,
         "captureMode": "single"
       },
-      "sourceSha256": "beff2a682b53aa2d21a432f203219c8e08aa2363a81aacd6949af73e25869820",
+      "sourceSha256": "f3a6078bcb007fd85685ee88afef66b03fad127c31a3d550202ce3acadba7dcf",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-089.png"
     },
     {
@@ -3867,12 +3956,13 @@
         "materials": 1,
         "practices": 3,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 3148,
+        "contentLength": 3673,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -3882,11 +3972,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 5444,
-        "bytes": 641208,
+        "height": 6117,
+        "bytes": 744205,
         "captureMode": "single"
       },
-      "sourceSha256": "ae0dc567cec4adb31ebd877ec4085e8740fa2ebc40db94ecff5962b5bf76444f",
+      "sourceSha256": "2d7223b384a839c41b3a5f0437a1e94ba217e8ad0a88c89ee7890a711a5dbeca",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-090.png"
     },
     {
@@ -3910,12 +4000,13 @@
         "materials": 1,
         "practices": 3,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 3604,
+        "contentLength": 4594,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -3925,11 +4016,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 5483,
-        "bytes": 684465,
+        "height": 6267,
+        "bytes": 831029,
         "captureMode": "single"
       },
-      "sourceSha256": "4c09a0f735f7a2f1e09566cf0b00bbb098af8e2988f79af91b02fcd29936016a",
+      "sourceSha256": "71cf0349ac0192e8944d9b37b7d7f2ee2a346fe860c1f77d25f0164f72c9c74e",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-091.png"
     },
     {
@@ -3953,12 +4044,13 @@
         "materials": 1,
         "practices": 3,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 2436,
+        "contentLength": 3520,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -3968,11 +4060,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 5208,
-        "bytes": 581555,
+        "height": 6021,
+        "bytes": 739314,
         "captureMode": "single"
       },
-      "sourceSha256": "11e6091f96f6c6b06778d0cb8457dde568e391f930deded8d686ca3d6d2bb732",
+      "sourceSha256": "6ae9d527434b628e04546fa613224f9ac2ea55b91c802de97722433acaade0aa",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-092.png"
     },
     {
@@ -3996,12 +4088,13 @@
         "materials": 4,
         "practices": 4,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
         "imageCount": 0,
         "pageOverflow": 0,
-        "contentLength": 7530,
+        "contentLength": 8497,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -4011,11 +4104,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 8019,
-        "bytes": 919779,
+        "height": 8858,
+        "bytes": 1045609,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "0baed501c87c35845959603765631d85e4fd4880864d5d903ccbc184afd37f1e",
+      "sourceSha256": "3d45c1c3f3d8048e9bcb2314992aa255d915540e5c157ec68f99b2d825e5ff15",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-093.png"
     },
     {
@@ -4039,12 +4132,13 @@
         "materials": 1,
         "practices": 3,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 2563,
+        "contentLength": 3612,
         "viewport": {
           "width": 390,
           "height": 844
@@ -4054,11 +4148,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 5287,
-        "bytes": 428458,
+        "height": 6627,
+        "bytes": 745533,
         "captureMode": "single"
       },
-      "sourceSha256": "df1b347a35b2ba37a442c9d53a6c564a05c937cf6b275eba2d11b5f9f761643f",
+      "sourceSha256": "6b7f479b302979ee9809ff352dbd7cb13990919da9b0375ae3c8456d9a44ac30",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-001.png"
     },
     {
@@ -4082,12 +4176,13 @@
         "materials": 2,
         "practices": 5,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
         "imageCount": 2,
         "pageOverflow": 0,
-        "contentLength": 4959,
+        "contentLength": 6174,
         "viewport": {
           "width": 390,
           "height": 844
@@ -4097,11 +4192,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 8378,
-        "bytes": 849295,
+        "height": 9853,
+        "bytes": 1007699,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "1d9446ff415d9d4cccc8549e4724717119d8061ff47a13e587fb62a8f9ced844",
+      "sourceSha256": "9d4b7920a66e49f5554829977c1d7baaad3ca45cfd13eaf275b36d4e4b192c43",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-002.png"
     },
     {
@@ -4125,12 +4220,13 @@
         "materials": 2,
         "practices": 3,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
         "imageCount": 2,
         "pageOverflow": 0,
-        "contentLength": 4318,
+        "contentLength": 5130,
         "viewport": {
           "width": 390,
           "height": 844
@@ -4140,11 +4236,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 7658,
-        "bytes": 813066,
-        "captureMode": "single"
+        "height": 8759,
+        "bytes": 678327,
+        "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "d13628d69e46baa1f786d9228b1e1ed28e18b08279d39820b879f637ea09d469",
+      "sourceSha256": "b622545aa815f5fda74e31fab102dd16732f10d37a6392d28df4f862f3469ed5",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-003.png"
     },
     {
@@ -4168,12 +4264,13 @@
         "materials": 2,
         "practices": 3,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
-        "imageCount": 1,
+        "imageCount": 2,
         "pageOverflow": 0,
-        "contentLength": 4514,
+        "contentLength": 5532,
         "viewport": {
           "width": 390,
           "height": 844
@@ -4183,11 +4280,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 7439,
-        "bytes": 847975,
-        "captureMode": "single"
+        "height": 9199,
+        "bytes": 863820,
+        "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "c56b3be644c985d1b15b86817abf28acce61b5da0b7d4d486245d66d00cb155e",
+      "sourceSha256": "d07e1510e30d677fb17e88a82ab1bd73870c80cac3bcfa684d7532aab0503dbd",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-004.png"
     },
     {
@@ -4211,12 +4308,13 @@
         "materials": 3,
         "practices": 5,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
         "imageCount": 2,
         "pageOverflow": 0,
-        "contentLength": 5813,
+        "contentLength": 6815,
         "viewport": {
           "width": 390,
           "height": 844
@@ -4226,11 +4324,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 9418,
-        "bytes": 902290,
+        "height": 10666,
+        "bytes": 1026775,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "c450dc7c9222fd1368faccddca67649f0a6f350d4920423572fd4bad239fd4ee",
+      "sourceSha256": "d5167d7596b6dcff145d1da60f1bdf4afb5a44b7526b58319b6404c5e9c8dee0",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-005.png"
     },
     {
@@ -4254,12 +4352,13 @@
         "materials": 5,
         "practices": 4,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
         "imageCount": 2,
         "pageOverflow": 0,
-        "contentLength": 7517,
+        "contentLength": 9149,
         "viewport": {
           "width": 390,
           "height": 844
@@ -4269,11 +4368,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 11150,
-        "bytes": 1094879,
+        "height": 12936,
+        "bytes": 1296036,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "167d1fa34c026afaf9412cf231836c953fb1f936a2d061bfd2836288b2d7003b",
+      "sourceSha256": "49c00772c146d417129e25e5886412d34849635414669ae8c48ff027babd20e2",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-006.png"
     },
     {
@@ -4297,12 +4396,13 @@
         "materials": 4,
         "practices": 3,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
-        "imageCount": 0,
+        "imageCount": 3,
         "pageOverflow": 0,
-        "contentLength": 6549,
+        "contentLength": 7195,
         "viewport": {
           "width": 390,
           "height": 844
@@ -4312,11 +4412,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 9181,
-        "bytes": 767423,
+        "height": 11819,
+        "bytes": 1119099,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "efd2fa8b5e955080297a0f335926375a442c64cbf8adf8ac272f76852fc83948",
+      "sourceSha256": "2b561f0e79aead829ad6ee788b3cd1fab736c009958db2256f3f686a0773aea7",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-007.png"
     },
     {
@@ -4340,12 +4440,13 @@
         "materials": 2,
         "practices": 3,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
-        "imageCount": 4,
+        "imageCount": 5,
         "pageOverflow": 0,
-        "contentLength": 5303,
+        "contentLength": 5792,
         "viewport": {
           "width": 390,
           "height": 844
@@ -4355,11 +4456,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 8731,
-        "bytes": 799704,
+        "height": 10263,
+        "bytes": 914250,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "f727a3a0a22d0f2ff1d739fb5084105de1ad4a7212c7a4e3dd44adb804cd6b61",
+      "sourceSha256": "dd8faabf4c5061b50c003a14a12d00cea7d00f84aecf2981948d83dc15738ca9",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-008.png"
     },
     {
@@ -4380,15 +4481,16 @@
         ],
         "unitOrderIssues": [],
         "knowledgeUnits": 2,
-        "materials": 2,
+        "materials": 3,
         "practices": 3,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
-        "imageCount": 0,
+        "imageCount": 2,
         "pageOverflow": 0,
-        "contentLength": 4207,
+        "contentLength": 5520,
         "viewport": {
           "width": 390,
           "height": 844
@@ -4398,11 +4500,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 6752,
-        "bytes": 614935,
-        "captureMode": "single"
+        "height": 9485,
+        "bytes": 970744,
+        "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "2d5e4d9753762a2214f18695b80bd77fca0923920dbd82f5b03863ea441f3808",
+      "sourceSha256": "7ab0e6be015df82dbec28e90add25c8d6d78e63a8afc529cfa6ef78ad3438a90",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-009.png"
     },
     {
@@ -4426,12 +4528,13 @@
         "materials": 3,
         "practices": 3,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
-        "imageCount": 0,
+        "imageCount": 2,
         "pageOverflow": 0,
-        "contentLength": 5646,
+        "contentLength": 6024,
         "viewport": {
           "width": 390,
           "height": 844
@@ -4441,11 +4544,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 7980,
-        "bytes": 737100,
-        "captureMode": "single"
+        "height": 10053,
+        "bytes": 826130,
+        "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "1929746820bb56abbc55c1c10ce04d72d27e5f8f360c5a2de1f3c653e9f9a67b",
+      "sourceSha256": "96eee863d588f73560708805d59b20649a174aab1cd7b8d33515206d8739303e",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-010.png"
     },
     {
@@ -4466,15 +4569,16 @@
         ],
         "unitOrderIssues": [],
         "knowledgeUnits": 3,
-        "materials": 3,
+        "materials": 6,
         "practices": 4,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
-        "imageCount": 0,
+        "imageCount": 3,
         "pageOverflow": 0,
-        "contentLength": 5558,
+        "contentLength": 7081,
         "viewport": {
           "width": 390,
           "height": 844
@@ -4484,11 +4588,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 9054,
-        "bytes": 717627,
+        "height": 12687,
+        "bytes": 1202237,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "d6b57ff7ec286771cca70e13b451d0be1ceb801355be50dcfcf82c7330eda514",
+      "sourceSha256": "acfa0f5970cf69ebcc576b3a645c6fdfe9ce8500d08f55cca0368e4ac5aaf096",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-011.png"
     },
     {
@@ -4512,12 +4616,13 @@
         "materials": 3,
         "practices": 3,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
-        "imageCount": 1,
+        "imageCount": 2,
         "pageOverflow": 0,
-        "contentLength": 4888,
+        "contentLength": 5787,
         "viewport": {
           "width": 390,
           "height": 844
@@ -4527,11 +4632,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 7612,
-        "bytes": 723223,
-        "captureMode": "single"
+        "height": 9379,
+        "bytes": 855071,
+        "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "d50244d16474c6239fc53d6a2d9b74f1315973dce0c4c33490d9a305eb9b581f",
+      "sourceSha256": "eb9f1e2b1c1266b2cca28bb0ed486aa05c196c281d166f7275663d00dcf8808e",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-012.png"
     },
     {
@@ -4555,12 +4660,13 @@
         "materials": 3,
         "practices": 3,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
-        "imageCount": 0,
+        "imageCount": 2,
         "pageOverflow": 0,
-        "contentLength": 5215,
+        "contentLength": 5968,
         "viewport": {
           "width": 390,
           "height": 844
@@ -4570,11 +4676,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 7667,
-        "bytes": 709010,
-        "captureMode": "single"
+        "height": 9949,
+        "bytes": 803882,
+        "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "be7fb6922d57127f6d64070c633c17ab0bfee6658d58709130ebbf44f14fdb00",
+      "sourceSha256": "d56db1b05f09f73f6934888272dde714620e91ea63e8b05b31fb5eb5dc403f99",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-013.png"
     },
     {
@@ -4595,15 +4701,16 @@
         ],
         "unitOrderIssues": [],
         "knowledgeUnits": 3,
-        "materials": 4,
+        "materials": 5,
         "practices": 4,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
-        "imageCount": 0,
+        "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 6510,
+        "contentLength": 7615,
         "viewport": {
           "width": 390,
           "height": 844
@@ -4613,11 +4720,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 9975,
-        "bytes": 824094,
+        "height": 12088,
+        "bytes": 981749,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "1e382bbfe2cb3fe61d8d42f6032299b307e24e2fc0d8a4f6a6bbbf860bb34bfb",
+      "sourceSha256": "095e07eab5d48f265651acbeb944e89673593cec5f972a9fc4861df6698fae2c",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-014.png"
     },
     {
@@ -4641,12 +4748,13 @@
         "materials": 2,
         "practices": 3,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
         "imageCount": 2,
         "pageOverflow": 0,
-        "contentLength": 4527,
+        "contentLength": 5601,
         "viewport": {
           "width": 390,
           "height": 844
@@ -4656,11 +4764,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 7857,
-        "bytes": 940169,
-        "captureMode": "single"
+        "height": 9210,
+        "bytes": 795203,
+        "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "4b2d00b80d66c422ac287ed37eaa81bdef4e0ceaf367156d6ca815be1aabeecf",
+      "sourceSha256": "04fe37463e8af6c6bf70ac6017147e782918153b033edb201714a94fd512d3f7",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-015.png"
     },
     {
@@ -4681,15 +4789,16 @@
         ],
         "unitOrderIssues": [],
         "knowledgeUnits": 1,
-        "materials": 2,
+        "materials": 3,
         "practices": 3,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
-        "imageCount": 0,
+        "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 5742,
+        "contentLength": 7170,
         "viewport": {
           "width": 390,
           "height": 844
@@ -4699,11 +4808,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 7840,
-        "bytes": 822594,
-        "captureMode": "single"
+        "height": 10063,
+        "bytes": 1014204,
+        "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "08e4c1c3588aab4be342d76b241483303da82a43fa42a4543d31b07c84a09e7e",
+      "sourceSha256": "22a6e9e5429b5ee9558f850425455be0b14b9f325c5641bb23cbea449c0dbb2a",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-016.png"
     },
     {
@@ -4727,12 +4836,13 @@
         "materials": 4,
         "practices": 5,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
-        "imageCount": 2,
+        "imageCount": 4,
         "pageOverflow": 0,
-        "contentLength": 6253,
+        "contentLength": 7339,
         "viewport": {
           "width": 390,
           "height": 844
@@ -4742,11 +4852,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 10671,
-        "bytes": 1032217,
+        "height": 12918,
+        "bytes": 1186969,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "9d7d7729fb2c4b906fe1d5771797cb55d4e1fe16845e5d0b1189283ee6e40614",
+      "sourceSha256": "6a0ac2c821bb8a49a26901e94bf06b66cbe5fc87bd5e087d9d804c90a45acf12",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-017.png"
     },
     {
@@ -4770,12 +4880,13 @@
         "materials": 2,
         "practices": 4,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
         "imageCount": 2,
         "pageOverflow": 0,
-        "contentLength": 5230,
+        "contentLength": 6290,
         "viewport": {
           "width": 390,
           "height": 844
@@ -4785,11 +4896,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 8566,
-        "bytes": 762124,
+        "height": 9927,
+        "bytes": 970449,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "ca896eb6c84fd74f36dcad07a10d9c21c89478b9b2f5d2008cee4da8d0d465a8",
+      "sourceSha256": "4fbf57da7de3e717f105d1d621d2530e726ddffe4ce617449535f2c8a5d30753",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-018.png"
     },
     {
@@ -4813,12 +4924,13 @@
         "materials": 3,
         "practices": 4,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 5401,
+        "contentLength": 6447,
         "viewport": {
           "width": 390,
           "height": 844
@@ -4828,11 +4940,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 8393,
-        "bytes": 815006,
+        "height": 9712,
+        "bytes": 955834,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "ae2e9f190b572dc487c431337deecae28da4b1f443a82fb6897f4b7633382616",
+      "sourceSha256": "19090bed1f4dc6e7bb8671b493db808a6497194e56ee59cea9470603b37ff935",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-019.png"
     },
     {
@@ -4853,15 +4965,16 @@
         ],
         "unitOrderIssues": [],
         "knowledgeUnits": 1,
-        "materials": 2,
+        "materials": 3,
         "practices": 4,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
-        "imageCount": 0,
+        "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 5491,
+        "contentLength": 6752,
         "viewport": {
           "width": 390,
           "height": 844
@@ -4871,11 +4984,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 7915,
-        "bytes": 827048,
-        "captureMode": "single"
+        "height": 9973,
+        "bytes": 983512,
+        "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "7b94873f5bb9b4f0180268054b6836d761df0b77c347152ce53076d340b4682b",
+      "sourceSha256": "c54abc0ec475af0af21ab7995d40ef016fd995c0b201bfdb4988215c237c5ce2",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-020.png"
     },
     {
@@ -4899,12 +5012,13 @@
         "materials": 3,
         "practices": 4,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
         "imageCount": 3,
         "pageOverflow": 0,
-        "contentLength": 7198,
+        "contentLength": 8497,
         "viewport": {
           "width": 390,
           "height": 844
@@ -4914,11 +5028,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 11214,
-        "bytes": 1121462,
+        "height": 12781,
+        "bytes": 1289696,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "ac2b899ebecbc914091f0234b4a9720c44254c6f7ede046a727dff5eedab86b2",
+      "sourceSha256": "0f154b1dc5ad5c15a8c03d9f44494d62533d62c16fb09e8be2303da0128f7062",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-021.png"
     },
     {
@@ -4942,12 +5056,13 @@
         "materials": 3,
         "practices": 4,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
-        "imageCount": 2,
+        "imageCount": 3,
         "pageOverflow": 0,
-        "contentLength": 7108,
+        "contentLength": 8280,
         "viewport": {
           "width": 390,
           "height": 844
@@ -4957,11 +5072,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 10735,
-        "bytes": 1051337,
+        "height": 12426,
+        "bytes": 1199351,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "22f3c17f01b9ecfed445bc070c4c26e3dd15020628b843c496daed51341c350c",
+      "sourceSha256": "6e4fe8d510aeafee16fb0f4a4cb033916048d3a13ae39670eb303b13c9b71943",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-022.png"
     },
     {
@@ -4985,12 +5100,13 @@
         "materials": 1,
         "practices": 3,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 2428,
+        "contentLength": 3425,
         "viewport": {
           "width": 390,
           "height": 844
@@ -5000,11 +5116,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 5218,
-        "bytes": 605649,
+        "height": 6500,
+        "bytes": 753396,
         "captureMode": "single"
       },
-      "sourceSha256": "6eec70b95cae27a3b35da111734f449d9222f33fc9cce22607fa18a794203d43",
+      "sourceSha256": "23d7530afac6c834e614ae2ae19bc102d391aaa7ae85c4b3d9aaca3901f5f395",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-023.png"
     },
     {
@@ -5028,12 +5144,13 @@
         "materials": 1,
         "practices": 4,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 3336,
+        "contentLength": 4466,
         "viewport": {
           "width": 390,
           "height": 844
@@ -5043,11 +5160,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 6130,
-        "bytes": 532911,
+        "height": 7488,
+        "bytes": 693544,
         "captureMode": "single"
       },
-      "sourceSha256": "6165784d31b5017eabc4cc679e42c6e46a6ae187ff4d548b95d6b3d6f23c5788",
+      "sourceSha256": "090b5fdebdfa9220f0fb80f9750845992fec19cbcf2cce01864d10b12933d105",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-024.png"
     },
     {
@@ -5071,12 +5188,13 @@
         "materials": 2,
         "practices": 3,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
-        "imageCount": 1,
+        "imageCount": 2,
         "pageOverflow": 0,
-        "contentLength": 4994,
+        "contentLength": 6029,
         "viewport": {
           "width": 390,
           "height": 844
@@ -5086,11 +5204,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 7823,
-        "bytes": 725542,
-        "captureMode": "single"
+        "height": 9404,
+        "bytes": 855507,
+        "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "fd4c5ec0b2875fc0ca59f9075b855de41b8b5ad9d87baccc516ef71dbee978f3",
+      "sourceSha256": "eece7baf0eb29e845cb5160c04686b4de08b9b8adc35ce091ed5fcecd04db4c3",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-025.png"
     },
     {
@@ -5114,12 +5232,13 @@
         "materials": 5,
         "practices": 7,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
-        "imageCount": 3,
+        "imageCount": 4,
         "pageOverflow": 0,
-        "contentLength": 10939,
+        "contentLength": 11672,
         "viewport": {
           "width": 390,
           "height": 844
@@ -5129,11 +5248,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 16198,
-        "bytes": 1538803,
+        "height": 17382,
+        "bytes": 1894172,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "01f5a800a3ee5d20b8f93ec0b0dbcf47ecc61eb6e9e3613acb68450d224eaae8",
+      "sourceSha256": "9c89ec05f98273ab7b43a0e9c9a275806afeb2aae32005b726675c0dfe5b2b40",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-026.png"
     },
     {
@@ -5157,12 +5276,13 @@
         "materials": 1,
         "practices": 4,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 4342,
+        "contentLength": 5129,
         "viewport": {
           "width": 390,
           "height": 844
@@ -5172,11 +5292,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 7005,
-        "bytes": 653263,
-        "captureMode": "single"
+        "height": 8186,
+        "bytes": 752172,
+        "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "f15823d301266daa2aeb94034c64793a5586bfa283341cf92691415392b0cb52",
+      "sourceSha256": "5e9e7a51d89819e93b550ef9e3f8e498bf48960800950eee4e0ab6ccaa2de6c4",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-027.png"
     },
     {
@@ -5200,12 +5320,13 @@
         "materials": 1,
         "practices": 3,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 3174,
+        "contentLength": 4296,
         "viewport": {
           "width": 390,
           "height": 844
@@ -5215,11 +5336,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 5903,
-        "bytes": 516083,
+        "height": 7332,
+        "bytes": 861406,
         "captureMode": "single"
       },
-      "sourceSha256": "0f8c90fabc60271748b555b6740e4122bad25af2cd61cba55736f281d5f6ece7",
+      "sourceSha256": "1cd877781c71acc675826cf9a01c5ce0170ab4e97beedf094993302aa311fb24",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-028.png"
     },
     {
@@ -5243,12 +5364,13 @@
         "materials": 2,
         "practices": 4,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
         "imageCount": 2,
         "pageOverflow": 0,
-        "contentLength": 5206,
+        "contentLength": 6305,
         "viewport": {
           "width": 390,
           "height": 844
@@ -5258,11 +5380,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 8619,
-        "bytes": 933467,
+        "height": 9989,
+        "bytes": 1080290,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "f7b4d2313656bc871411e330fd7dd517b9fcba978463b8898c17d1c154403cf1",
+      "sourceSha256": "89edc36e96fa303bd2f638f2a2f350d7b98d7e68ed0d5d40417c96848140e8fd",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-029.png"
     },
     {
@@ -5286,12 +5408,13 @@
         "materials": 1,
         "practices": 3,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 3193,
+        "contentLength": 4860,
         "viewport": {
           "width": 390,
           "height": 844
@@ -5301,11 +5424,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 5766,
-        "bytes": 498280,
+        "height": 7610,
+        "bytes": 912647,
         "captureMode": "single"
       },
-      "sourceSha256": "484fd498ae64e4261c877aa4de7b79b31c0fe4690fd1242ae9456d82db3d8e43",
+      "sourceSha256": "79d9a9bc78ba43d1b1f34256ba66602e16df4dafb2e033786d96d5ee4e507a32",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-030.png"
     },
     {
@@ -5329,12 +5452,13 @@
         "materials": 2,
         "practices": 3,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
-        "imageCount": 1,
+        "imageCount": 2,
         "pageOverflow": 0,
-        "contentLength": 4908,
+        "contentLength": 6283,
         "viewport": {
           "width": 390,
           "height": 844
@@ -5344,11 +5468,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 7794,
-        "bytes": 885798,
-        "captureMode": "single"
+        "height": 9573,
+        "bytes": 1006898,
+        "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "ecb9a96e4a54f088d898c4b40b2b207052bd8acff79c5ae8ba1c3b5193422971",
+      "sourceSha256": "ebd4109f27b1650c4aea0ce1ac81f7e9f98e5d100de5b537dee31f14d5dbdb3e",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-031.png"
     },
     {
@@ -5372,12 +5496,13 @@
         "materials": 1,
         "practices": 4,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 4449,
+        "contentLength": 5104,
         "viewport": {
           "width": 390,
           "height": 844
@@ -5387,11 +5512,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 7181,
-        "bytes": 868512,
-        "captureMode": "single"
+        "height": 8203,
+        "bytes": 829849,
+        "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "b45c14e8b37458efd420994c6715017e0bc08f6bf98e81eca8d43d5b908b73f0",
+      "sourceSha256": "55841126db9b1f816cc790bd05be805ad3f7c391f28ac61a04ae35d3cba9a353",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-032.png"
     },
     {
@@ -5415,12 +5540,13 @@
         "materials": 2,
         "practices": 3,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
         "imageCount": 2,
         "pageOverflow": 0,
-        "contentLength": 3949,
+        "contentLength": 5378,
         "viewport": {
           "width": 390,
           "height": 844
@@ -5430,11 +5556,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 7393,
-        "bytes": 957656,
-        "captureMode": "single"
+        "height": 8961,
+        "bytes": 822854,
+        "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "29a5ca2dd82ac9a83613f38feea37fc87d059aaa97467d7c8f759a37c8ce8ad3",
+      "sourceSha256": "4d99f6e16da6cbdce8ed42a8b07ba1ddc3997b97ea210d48ab0c520e1e051d9f",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-033.png"
     },
     {
@@ -5458,12 +5584,13 @@
         "materials": 1,
         "practices": 4,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 4428,
+        "contentLength": 5569,
         "viewport": {
           "width": 390,
           "height": 844
@@ -5473,11 +5600,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 6856,
-        "bytes": 866100,
-        "captureMode": "single"
+        "height": 8235,
+        "bytes": 871739,
+        "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "beb8a4427c26e7d86ee4b2445c33c3eb8193c10c6dc0d4407ae08b14aa5b38a0",
+      "sourceSha256": "d97064e44b1fe744776aac53d5321783aaaaa962a18e0bb98962c6c100a99787",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-034.png"
     },
     {
@@ -5501,12 +5628,13 @@
         "materials": 2,
         "practices": 4,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
         "imageCount": 2,
         "pageOverflow": 0,
-        "contentLength": 6573,
+        "contentLength": 7624,
         "viewport": {
           "width": 390,
           "height": 844
@@ -5516,11 +5644,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 9493,
-        "bytes": 975825,
+        "height": 10847,
+        "bytes": 1197475,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "9aceb4f62080d9114058603e9c0ad86e02c8ded261ea47213e5e83f95b62eb40",
+      "sourceSha256": "1c53476812f76cb6f43510258052ec17346e8b602a647fed3bac866fdbcebefd",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-035.png"
     },
     {
@@ -5544,12 +5672,13 @@
         "materials": 1,
         "practices": 3,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 3530,
+        "contentLength": 4737,
         "viewport": {
           "width": 390,
           "height": 844
@@ -5559,11 +5688,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 5929,
-        "bytes": 541665,
+        "height": 7366,
+        "bytes": 901231,
         "captureMode": "single"
       },
-      "sourceSha256": "2fbb155a248f1e1a9ad1fb8b754bedbb6233c140c3bf99834b055ad45dea1ba6",
+      "sourceSha256": "4396e2c96c30c48abae63c9922f4f65b257a3381ee262664590ce214fbfa7479",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-036.png"
     },
     {
@@ -5587,12 +5716,13 @@
         "materials": 2,
         "practices": 4,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
         "imageCount": 2,
         "pageOverflow": 0,
-        "contentLength": 5003,
+        "contentLength": 6010,
         "viewport": {
           "width": 390,
           "height": 844
@@ -5602,11 +5732,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 8462,
-        "bytes": 902116,
+        "height": 9774,
+        "bytes": 1035939,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "21ae30adae4f2b19421ca3f1d4d4fbc0fdbbe2c95c9fe1cbcb2ba4c66ad2027b",
+      "sourceSha256": "8f5d63c3d96c1edefb233596302137e0ca55e44705cf2286286e90e38aa76442",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-037.png"
     },
     {
@@ -5630,12 +5760,13 @@
         "materials": 2,
         "practices": 3,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
-        "imageCount": 1,
+        "imageCount": 2,
         "pageOverflow": 0,
-        "contentLength": 7023,
+        "contentLength": 8089,
         "viewport": {
           "width": 390,
           "height": 844
@@ -5645,11 +5776,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 9098,
-        "bytes": 942757,
+        "height": 10834,
+        "bytes": 1192142,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "3d1ee7946e170aa7f9f2a2c2ba6cd926a86aa96a1a90bf195b7147a02d850646",
+      "sourceSha256": "b7deedd94bdc18fe9977ac4823f76f29592275780aa44915787d079bd44fb5d0",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-038.png"
     },
     {
@@ -5673,12 +5804,13 @@
         "materials": 1,
         "practices": 3,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 4955,
+        "contentLength": 5707,
         "viewport": {
           "width": 390,
           "height": 844
@@ -5688,11 +5820,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 7087,
-        "bytes": 701296,
-        "captureMode": "single"
+        "height": 8086,
+        "bytes": 835899,
+        "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "504820d47f4933c05545e4240d079d7712d5de8edd3b662b43518f9b940abf8e",
+      "sourceSha256": "32a1e20e9662c6579ab71d7f998c93d85fdc60f512693da12bd5a027d3502e2c",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-039.png"
     },
     {
@@ -5716,12 +5848,13 @@
         "materials": 2,
         "practices": 4,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
         "imageCount": 2,
         "pageOverflow": 0,
-        "contentLength": 6282,
+        "contentLength": 7554,
         "viewport": {
           "width": 390,
           "height": 844
@@ -5731,11 +5864,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 9161,
-        "bytes": 869331,
+        "height": 10637,
+        "bytes": 1023883,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "6d60d684f2689baa72eaeb8c3e230a21109b7017bb13996d12344941d2604882",
+      "sourceSha256": "ebaf4b3f96bf9dac52857dde3f8dce061cfe549f12aa4dd282e1d3a5ad29c9d6",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-040.png"
     },
     {
@@ -5759,12 +5892,13 @@
         "materials": 1,
         "practices": 4,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 3052,
+        "contentLength": 4250,
         "viewport": {
           "width": 390,
           "height": 844
@@ -5774,11 +5908,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 5916,
-        "bytes": 501425,
+        "height": 7319,
+        "bytes": 675359,
         "captureMode": "single"
       },
-      "sourceSha256": "7675fa18eeffee9e5e154964a2ee721afdfb02161f5ade768c4ef613b8885bab",
+      "sourceSha256": "7ef88da623a45490ef6f55e2c6109f91f2ca6e5e597d63d29b43718fc6431b90",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-041.png"
     },
     {
@@ -5802,12 +5936,13 @@
         "materials": 2,
         "practices": 4,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
         "imageCount": 2,
         "pageOverflow": 0,
-        "contentLength": 6491,
+        "contentLength": 8151,
         "viewport": {
           "width": 390,
           "height": 844
@@ -5817,11 +5952,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 9376,
-        "bytes": 1012887,
+        "height": 11241,
+        "bytes": 1199785,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "b8f335562f5e479459c4f79b9acbfb947b24a077a7cd0ba5c000577a4781390b",
+      "sourceSha256": "d29bd8b6693afdc11f48d5721e3e0c2282f39e2b254bcab607e987e494b39c7f",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-042.png"
     },
     {
@@ -5845,12 +5980,13 @@
         "materials": 2,
         "practices": 4,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
         "imageCount": 2,
         "pageOverflow": 0,
-        "contentLength": 5810,
+        "contentLength": 6993,
         "viewport": {
           "width": 390,
           "height": 844
@@ -5860,11 +5996,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 8864,
-        "bytes": 761588,
+        "height": 10323,
+        "bytes": 909576,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "a1d049cdf549b307af3aa3998b1b6091f854988074696f8197f3fd2b0fbf211f",
+      "sourceSha256": "f1512599958cbf5331faba482cedcb5e05f9f46b8590462581260bdaa8858f01",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-043.png"
     },
     {
@@ -5888,12 +6024,13 @@
         "materials": 2,
         "practices": 4,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
-        "imageCount": 1,
+        "imageCount": 2,
         "pageOverflow": 0,
-        "contentLength": 6145,
+        "contentLength": 6864,
         "viewport": {
           "width": 390,
           "height": 844
@@ -5903,11 +6040,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 9081,
-        "bytes": 897209,
+        "height": 10372,
+        "bytes": 1004454,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "554bf644984edd02b6b42d53ab39852e7f4c587373c8ce724b70f1d98bc13507",
+      "sourceSha256": "7d4cf671f30a7b83836781553c470a472d256736e06ec6ffc005eb6116b13577",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-044.png"
     },
     {
@@ -5931,12 +6068,13 @@
         "materials": 1,
         "practices": 3,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 3564,
+        "contentLength": 3912,
         "viewport": {
           "width": 390,
           "height": 844
@@ -5946,11 +6084,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 6200,
-        "bytes": 747989,
+        "height": 6972,
+        "bytes": 640488,
         "captureMode": "single"
       },
-      "sourceSha256": "d4ef66173890f9020866e98cd8f7108e3236ffecf83239c78b81235c333afaa2",
+      "sourceSha256": "dd9c06cb256001a228ae76a484df3bfc79cf2a4bafa7cbca2d2033fb4b311b23",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-045.png"
     },
     {
@@ -5974,12 +6112,13 @@
         "materials": 2,
         "practices": 5,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
-        "imageCount": 1,
+        "imageCount": 2,
         "pageOverflow": 0,
-        "contentLength": 6312,
+        "contentLength": 7055,
         "viewport": {
           "width": 390,
           "height": 844
@@ -5989,11 +6128,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 9746,
-        "bytes": 974832,
+        "height": 10885,
+        "bytes": 1070776,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "3093868595d327556e6aa2c51f845429289b6e4ce135704f3b8505c74c77de13",
+      "sourceSha256": "bb28534f0016522b5dbf9e7e29ea2d4ccf8e160b8a31cbf55264560992c64e5d",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-046.png"
     },
     {
@@ -6017,12 +6156,13 @@
         "materials": 3,
         "practices": 6,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
         "imageCount": 2,
         "pageOverflow": 0,
-        "contentLength": 5994,
+        "contentLength": 7119,
         "viewport": {
           "width": 390,
           "height": 844
@@ -6032,11 +6172,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 10010,
-        "bytes": 946334,
+        "height": 11363,
+        "bytes": 1216730,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "5f80c43408ac0621ef4d6722764bc16341cf741eab73a202f744154a642689a0",
+      "sourceSha256": "a2688f0df81b987eabde6992459e62894b76269c5d666c12d4ad45d032a0c4ad",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-047.png"
     },
     {
@@ -6060,12 +6200,13 @@
         "materials": 8,
         "practices": 4,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
         "imageCount": 0,
         "pageOverflow": 0,
-        "contentLength": 13894,
+        "contentLength": 15033,
         "viewport": {
           "width": 390,
           "height": 844
@@ -6075,11 +6216,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 18976,
-        "bytes": 1673388,
+        "height": 20296,
+        "bytes": 1810505,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "579a09516c914cff6ca4c022d70f337e666c817aad55deb3edadf343ba20ca3c",
+      "sourceSha256": "a09f7eb7de01fdcbebc9d67ec83c86242c324c5768e75f2cb4eb2f2e17e86625",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-048.png"
     },
     {
@@ -6103,12 +6244,13 @@
         "materials": 1,
         "practices": 3,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 3818,
+        "contentLength": 5048,
         "viewport": {
           "width": 390,
           "height": 844
@@ -6118,11 +6260,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 6373,
-        "bytes": 574156,
+        "height": 7778,
+        "bytes": 813698,
         "captureMode": "single"
       },
-      "sourceSha256": "bd916800f28a7fead1941e8ea96f0cb82ccc231190f47fe419241335e496ee77",
+      "sourceSha256": "3f732141a7057a286d390b4c10f008324eb3407271d8cc5fcc23609de6e0eb78",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-049.png"
     },
     {
@@ -6146,12 +6288,13 @@
         "materials": 1,
         "practices": 3,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 2915,
+        "contentLength": 4021,
         "viewport": {
           "width": 390,
           "height": 844
@@ -6161,11 +6304,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 5593,
-        "bytes": 542150,
+        "height": 6941,
+        "bytes": 637336,
         "captureMode": "single"
       },
-      "sourceSha256": "72021f95129df5d44d321dbb70c7694807e7aee7c8e51a2f5631e001b03b5dfc",
+      "sourceSha256": "62885df9684ea9a44e88309cc74f32129d4a678d7cf585ae9b8a1d9783a9bd1d",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-050.png"
     },
     {
@@ -6189,12 +6332,13 @@
         "materials": 2,
         "practices": 3,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
         "imageCount": 2,
         "pageOverflow": 0,
-        "contentLength": 3941,
+        "contentLength": 5308,
         "viewport": {
           "width": 390,
           "height": 844
@@ -6204,11 +6348,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 7318,
-        "bytes": 832899,
-        "captureMode": "single"
+        "height": 8927,
+        "bytes": 863922,
+        "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "dd6967e53d72585f2c3494fa6b9129eb327d4c7631ac30406c1503130a5804c7",
+      "sourceSha256": "c23692a214ab11e33952c7d9bcf1fa9ff809a85dea65639c8fb847f44c56c641",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-051.png"
     },
     {
@@ -6232,12 +6376,13 @@
         "materials": 1,
         "practices": 3,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 3373,
+        "contentLength": 4607,
         "viewport": {
           "width": 390,
           "height": 844
@@ -6247,11 +6392,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 5949,
-        "bytes": 676192,
+        "height": 7398,
+        "bytes": 857405,
         "captureMode": "single"
       },
-      "sourceSha256": "3c1fbf08e59ac5a61900f9f9c8155de3e07825ba873dea0b384f8146d1b38738",
+      "sourceSha256": "28187c39b6f25b15d1f7266ad18641b6aeb6f936183269313502930e672d7df1",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-052.png"
     },
     {
@@ -6275,12 +6420,13 @@
         "materials": 1,
         "practices": 3,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 2456,
+        "contentLength": 3516,
         "viewport": {
           "width": 390,
           "height": 844
@@ -6290,11 +6436,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 5244,
-        "bytes": 584475,
+        "height": 6538,
+        "bytes": 740594,
         "captureMode": "single"
       },
-      "sourceSha256": "d03e117339cf2c26e5a50f70714fb6892c5fa954713661e1a8e370afcc5001b8",
+      "sourceSha256": "905e225ad357463d0117bcb7f7ca35bcff280fc6203c76de8d42451e27cd41bc",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-053.png"
     },
     {
@@ -6318,12 +6464,13 @@
         "materials": 1,
         "practices": 3,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 2671,
+        "contentLength": 3777,
         "viewport": {
           "width": 390,
           "height": 844
@@ -6333,11 +6480,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 5521,
-        "bytes": 532994,
+        "height": 6954,
+        "bytes": 704014,
         "captureMode": "single"
       },
-      "sourceSha256": "176dc5ebd32bf0d984cf749c431b8aa3c3ca410afb55d84db1725c81e40d8324",
+      "sourceSha256": "a6909fa20891ddd44ad6869f2e548e6ba448ec586294e9c5e6680f263b0bad62",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-054.png"
     },
     {
@@ -6361,12 +6508,13 @@
         "materials": 1,
         "practices": 3,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
-        "imageCount": 0,
+        "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 3732,
+        "contentLength": 4780,
         "viewport": {
           "width": 390,
           "height": 844
@@ -6376,11 +6524,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 5968,
-        "bytes": 556066,
+        "height": 7524,
+        "bytes": 888301,
         "captureMode": "single"
       },
-      "sourceSha256": "7660c772b6ea2839f53667d78b608d6dbb70d5012f5cc835c6e74409584db00a",
+      "sourceSha256": "5bde0030656aee6c262f3c60765a98602910566635ade7883c2b46b5aef59494",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-055.png"
     },
     {
@@ -6404,12 +6552,13 @@
         "materials": 3,
         "practices": 3,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 3205,
+        "contentLength": 4199,
         "viewport": {
           "width": 390,
           "height": 844
@@ -6419,11 +6568,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 6287,
-        "bytes": 521362,
+        "height": 7544,
+        "bytes": 739362,
         "captureMode": "single"
       },
-      "sourceSha256": "627479e175fa8f0f41fca964921e50b9bed470fae46fb528ab2f59afea29250f",
+      "sourceSha256": "33f9a4540603ea3bd20a1e0e7f2f6d18bda80e3c7fdf5c4ec7c696ed5d4e048c",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-056.png"
     },
     {
@@ -6447,12 +6596,13 @@
         "materials": 3,
         "practices": 3,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
-        "imageCount": 1,
+        "imageCount": 3,
         "pageOverflow": 0,
-        "contentLength": 7466,
+        "contentLength": 8336,
         "viewport": {
           "width": 390,
           "height": 844
@@ -6462,11 +6612,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 10799,
-        "bytes": 887296,
+        "height": 12360,
+        "bytes": 1231938,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "aaec28077b959af81d6f3cd97747008571706dbfda93aa82c3d7548e25b868e0",
+      "sourceSha256": "5b0ec377b2a0d68324dae9c239ea6bd22d864f64d110255ff540c8882886dc23",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-057.png"
     },
     {
@@ -6490,12 +6640,13 @@
         "materials": 2,
         "practices": 4,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 3439,
+        "contentLength": 4371,
         "viewport": {
           "width": 390,
           "height": 844
@@ -6505,11 +6656,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 6506,
-        "bytes": 580287,
+        "height": 7767,
+        "bytes": 725304,
         "captureMode": "single"
       },
-      "sourceSha256": "0a0ef1c31312798e0b9548b60326063d725f048f0b8c457756ccf3e797febe9b",
+      "sourceSha256": "cd5c4cc556528e528de320b1bee70b6298c0d367f7c19f020b306b963e84e611",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-058.png"
     },
     {
@@ -6533,12 +6684,13 @@
         "materials": 1,
         "practices": 3,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 2987,
+        "contentLength": 4094,
         "viewport": {
           "width": 390,
           "height": 844
@@ -6548,11 +6700,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 5578,
-        "bytes": 540571,
+        "height": 6918,
+        "bytes": 637617,
         "captureMode": "single"
       },
-      "sourceSha256": "164612afcd4f798490c7cdd6083bc7dc5d4aca7de79a5ef43ec97d260856f520",
+      "sourceSha256": "aa5d59664531491a034d2a2d95a5b013b1c56c53975fc070cefee23eaa49ed77",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-059.png"
     },
     {
@@ -6576,12 +6728,13 @@
         "materials": 1,
         "practices": 3,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 2920,
+        "contentLength": 4091,
         "viewport": {
           "width": 390,
           "height": 844
@@ -6591,11 +6744,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 5576,
-        "bytes": 469115,
+        "height": 7018,
+        "bytes": 709039,
         "captureMode": "single"
       },
-      "sourceSha256": "204970fbea01d4762ae5e02dcfeaba1706742c4ca0f19d219a410553dbdee67c",
+      "sourceSha256": "e1fbaa26aaf4cc511802c09d68938722a96086a8357a1d32cf98649748d10779",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-060.png"
     },
     {
@@ -6619,12 +6772,13 @@
         "materials": 2,
         "practices": 3,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
         "imageCount": 2,
         "pageOverflow": 0,
-        "contentLength": 4370,
+        "contentLength": 5626,
         "viewport": {
           "width": 390,
           "height": 844
@@ -6634,11 +6788,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 7750,
-        "bytes": 668492,
-        "captureMode": "single"
+        "height": 9250,
+        "bytes": 860861,
+        "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "9e96afd6264aa4b817086363e67ff1676cb93111393f533a0006c2b5d819ca9d",
+      "sourceSha256": "c79485a0b4bba04056c42ff8927e414ff10abcc65b67f25af2196fcd2960140a",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-061.png"
     },
     {
@@ -6662,12 +6816,13 @@
         "materials": 2,
         "practices": 3,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
-        "imageCount": 0,
+        "imageCount": 2,
         "pageOverflow": 0,
-        "contentLength": 5071,
+        "contentLength": 5736,
         "viewport": {
           "width": 390,
           "height": 844
@@ -6677,11 +6832,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 7780,
-        "bytes": 745611,
-        "captureMode": "single"
+        "height": 9224,
+        "bytes": 887834,
+        "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "20ffa0b4b53e75b39251f9a0a010544bbdb75e69ad121980ca8f461d34c658fe",
+      "sourceSha256": "54a13bd3ac7ed9e2df74c285d178e02ded588a7174e78369d2b5101abd50a2b5",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-062.png"
     },
     {
@@ -6705,12 +6860,13 @@
         "materials": 3,
         "practices": 3,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 4335,
+        "contentLength": 5228,
         "viewport": {
           "width": 390,
           "height": 844
@@ -6720,11 +6876,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 7187,
-        "bytes": 644204,
-        "captureMode": "single"
+        "height": 8405,
+        "bytes": 793499,
+        "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "f4042f42546063b13e9522c96dc349eccfee2bb81033d40518be0cb252e2bd4c",
+      "sourceSha256": "03b0db9f150cfea5b1f36dfee3f0856b2088f3be093f805f7e011ed31eb47755",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-063.png"
     },
     {
@@ -6745,15 +6901,16 @@
         ],
         "unitOrderIssues": [],
         "knowledgeUnits": 1,
-        "materials": 2,
+        "materials": 3,
         "practices": 3,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
-        "imageCount": 0,
+        "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 3516,
+        "contentLength": 4942,
         "viewport": {
           "width": 390,
           "height": 844
@@ -6763,11 +6920,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 5970,
-        "bytes": 546283,
-        "captureMode": "single"
+        "height": 8164,
+        "bytes": 657226,
+        "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "3b566cc798aeaa63317f215fb5abf958157a9779d2ed7e77883aeae1a22d0718",
+      "sourceSha256": "0f584781ca82150eda0fa9caf3249ba8cd42cc88a1a3364213612df9c61b3794",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-064.png"
     },
     {
@@ -6791,12 +6948,13 @@
         "materials": 1,
         "practices": 3,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 2441,
+        "contentLength": 3527,
         "viewport": {
           "width": 390,
           "height": 844
@@ -6806,11 +6964,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 5151,
-        "bytes": 412482,
+        "height": 6488,
+        "bytes": 571462,
         "captureMode": "single"
       },
-      "sourceSha256": "c159e3438c8b65554b2c7dfb8c2bf367252a130885704cf0bfc62837d4e2a8eb",
+      "sourceSha256": "f7efc2cd681d8cd6a65eaff37a7b2029c854debcbb5e648018541145d869f95f",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-065.png"
     },
     {
@@ -6834,12 +6992,13 @@
         "materials": 1,
         "practices": 3,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 2315,
+        "contentLength": 3665,
         "viewport": {
           "width": 390,
           "height": 844
@@ -6849,11 +7008,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 5037,
-        "bytes": 463042,
+        "height": 6555,
+        "bytes": 643751,
         "captureMode": "single"
       },
-      "sourceSha256": "246bf1e13550a0e6402a75324061a21a89a7b044012a0b0d101305210f9f61b4",
+      "sourceSha256": "dedd1547a515e76ac41ff60a2a7ada6e4d6181709a00152a78122e098d34001b",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-066.png"
     },
     {
@@ -6877,12 +7036,13 @@
         "materials": 2,
         "practices": 4,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
         "imageCount": 2,
         "pageOverflow": 0,
-        "contentLength": 5788,
+        "contentLength": 6736,
         "viewport": {
           "width": 390,
           "height": 844
@@ -6892,11 +7052,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 8716,
-        "bytes": 871611,
+        "height": 9901,
+        "bytes": 917445,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "13c1c523314e2935d039af56e08cfe5adcd68c7cbf70da27051344fd6bb0a1ef",
+      "sourceSha256": "5dea6ebc82bde2000e29e8d0d568df372c329d4f379d6dc95e12c4a629563000",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-067.png"
     },
     {
@@ -6920,12 +7080,13 @@
         "materials": 2,
         "practices": 3,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
-        "imageCount": 0,
+        "imageCount": 2,
         "pageOverflow": 0,
-        "contentLength": 5865,
+        "contentLength": 6639,
         "viewport": {
           "width": 390,
           "height": 844
@@ -6935,11 +7096,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 8197,
-        "bytes": 690644,
+        "height": 9766,
+        "bytes": 959047,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "ab9adb63694c073c798b9bfab6e7e3cc825d02621d1e4aeb80b30422c1a7eddd",
+      "sourceSha256": "4ac7d2ddf80c16387d8b4274d9c7cda1ff2f4bf00f059b9756d0be47a0b70159",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-068.png"
     },
     {
@@ -6963,12 +7124,13 @@
         "materials": 2,
         "practices": 4,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
-        "imageCount": 0,
+        "imageCount": 2,
         "pageOverflow": 0,
-        "contentLength": 6646,
+        "contentLength": 7417,
         "viewport": {
           "width": 390,
           "height": 844
@@ -6978,11 +7140,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 9058,
-        "bytes": 777824,
+        "height": 10587,
+        "bytes": 1104852,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "d26dbae20aa04569255ccefca90130d505c113754a9d152c2f7256ed8d24110e",
+      "sourceSha256": "78eef2328b28f3a7abc8c46155d9341720a0357a1aa46d3b005625c5facc7daf",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-069.png"
     },
     {
@@ -7006,12 +7168,13 @@
         "materials": 1,
         "practices": 3,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
-        "imageCount": 0,
+        "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 4317,
+        "contentLength": 5042,
         "viewport": {
           "width": 390,
           "height": 844
@@ -7021,11 +7184,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 6504,
-        "bytes": 622573,
+        "height": 7805,
+        "bytes": 747950,
         "captureMode": "single"
       },
-      "sourceSha256": "3a5c2d126c13e9b1b6fad82ce6fd9ab31d25ca1566924e6bccbf73aac229b9a9",
+      "sourceSha256": "2696329d96b7fd6f1635486d97f1fac61beb12f87b22bc6756bed2eb8444e55b",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-070.png"
     },
     {
@@ -7049,12 +7212,13 @@
         "materials": 3,
         "practices": 3,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
-        "imageCount": 0,
+        "imageCount": 2,
         "pageOverflow": 0,
-        "contentLength": 5825,
+        "contentLength": 6663,
         "viewport": {
           "width": 390,
           "height": 844
@@ -7064,11 +7228,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 8536,
-        "bytes": 708742,
+        "height": 10028,
+        "bytes": 866111,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "958ee24fcfd98c2b2267da5440437df1a512637e2f6cd4f31920a058ff55d518",
+      "sourceSha256": "3ab50635cf6ae3e98d96ffba015e6740cacdb745e07e1f86fbc118ad2a10af29",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-071.png"
     },
     {
@@ -7092,12 +7256,13 @@
         "materials": 3,
         "practices": 3,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 3834,
+        "contentLength": 5140,
         "viewport": {
           "width": 390,
           "height": 844
@@ -7107,11 +7272,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 7031,
-        "bytes": 694599,
-        "captureMode": "single"
+        "height": 8573,
+        "bytes": 773592,
+        "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "5a7bd3685afe47d90ea30cbe4444b23217b99672e7948e2493b3058e881374f3",
+      "sourceSha256": "78c61f6ebfb38176b4d289663be3d928a524d3d7fe10d0787c09918829505100",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-072.png"
     },
     {
@@ -7135,12 +7300,13 @@
         "materials": 3,
         "practices": 4,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 4179,
+        "contentLength": 5120,
         "viewport": {
           "width": 390,
           "height": 844
@@ -7150,11 +7316,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 7601,
-        "bytes": 667461,
-        "captureMode": "single"
+        "height": 8895,
+        "bytes": 847156,
+        "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "50289fc4e28f8419d2980711323fa425a93f36657b0f766c6c0c2f2a0b1e0508",
+      "sourceSha256": "e23de3f3d894c3f19219b87d19f7f3a2ef2b5a9a223437eec2f8eab989f7ec1a",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-073.png"
     },
     {
@@ -7175,15 +7341,16 @@
         ],
         "unitOrderIssues": [],
         "knowledgeUnits": 1,
-        "materials": 2,
+        "materials": 3,
         "practices": 4,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
-        "imageCount": 0,
+        "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 3960,
+        "contentLength": 5360,
         "viewport": {
           "width": 390,
           "height": 844
@@ -7193,11 +7360,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 6802,
-        "bytes": 632181,
-        "captureMode": "single"
+        "height": 8984,
+        "bytes": 763458,
+        "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "c1018e1dd256e8cf51774649696dd43e5c2b208a6447568b0e0a28adf96dd6eb",
+      "sourceSha256": "b9ee8df3bf8cd54caa81cc98fcf09375f5aca4c742a0ab3ff1bee3c85e87be09",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-074.png"
     },
     {
@@ -7221,12 +7388,13 @@
         "materials": 1,
         "practices": 3,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 2830,
+        "contentLength": 4114,
         "viewport": {
           "width": 390,
           "height": 844
@@ -7236,11 +7404,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 5493,
-        "bytes": 461281,
+        "height": 7010,
+        "bytes": 722067,
         "captureMode": "single"
       },
-      "sourceSha256": "d55f4e4104185a83f73dd0b48778b5e517db7bc9cd281b86cd921afaaa00fa92",
+      "sourceSha256": "6cbd86ffb341da4b56bb8d397d14e84b51b7ee1adc9b7bbd0eed517235891a79",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-075.png"
     },
     {
@@ -7261,15 +7429,16 @@
         ],
         "unitOrderIssues": [],
         "knowledgeUnits": 1,
-        "materials": 2,
+        "materials": 3,
         "practices": 4,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
-        "imageCount": 0,
+        "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 3495,
+        "contentLength": 4735,
         "viewport": {
           "width": 390,
           "height": 844
@@ -7279,11 +7448,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 6335,
-        "bytes": 557868,
-        "captureMode": "single"
+        "height": 8332,
+        "bytes": 785206,
+        "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "96c48d0d792e861d4c151f97e39f6117ef7a1b5d8d084d8e45130b80d78d717e",
+      "sourceSha256": "cb9362ba156d8b79092982ec940284e4b410deddcff807123728f9bda864512c",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-076.png"
     },
     {
@@ -7304,15 +7473,16 @@
         ],
         "unitOrderIssues": [],
         "knowledgeUnits": 1,
-        "materials": 2,
+        "materials": 3,
         "practices": 3,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
-        "imageCount": 0,
+        "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 4008,
+        "contentLength": 5371,
         "viewport": {
           "width": 390,
           "height": 844
@@ -7322,11 +7492,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 6591,
-        "bytes": 602708,
-        "captureMode": "single"
+        "height": 8661,
+        "bytes": 810046,
+        "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "d13ff882d8b9949ddca03eb646032dfb76a6c1d7f9f01a6ebff93c770d7211cf",
+      "sourceSha256": "3fdf86874dcb53eb6840dc331341a5c137961de3ddbda16b104f0779a6ee1be5",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-077.png"
     },
     {
@@ -7347,15 +7517,16 @@
         ],
         "unitOrderIssues": [],
         "knowledgeUnits": 1,
-        "materials": 2,
+        "materials": 3,
         "practices": 3,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
-        "imageCount": 0,
+        "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 4437,
+        "contentLength": 5709,
         "viewport": {
           "width": 390,
           "height": 844
@@ -7365,11 +7536,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 7016,
-        "bytes": 664213,
-        "captureMode": "single"
+        "height": 9068,
+        "bytes": 785453,
+        "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "8604b4b07531209782722678c3c7b180808c268a0cf8496b23963fcb7a8172fe",
+      "sourceSha256": "34416534323b4d965a9f7d3b4bdb599447a74f0215ebde294c47b1e3df4fc62d",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-078.png"
     },
     {
@@ -7393,12 +7564,13 @@
         "materials": 1,
         "practices": 3,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 4117,
+        "contentLength": 4107,
         "viewport": {
           "width": 390,
           "height": 844
@@ -7408,11 +7580,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 6586,
-        "bytes": 807598,
+        "height": 6987,
+        "bytes": 655266,
         "captureMode": "single"
       },
-      "sourceSha256": "ebca638511c054768e6a4b7b0fdf361762257c452058f96035d49b6855780f1d",
+      "sourceSha256": "37187f0b287157e9bc6f6d515fa806f9bdeb06833bbcf0857f8fca75f7074067",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-079.png"
     },
     {
@@ -7436,12 +7608,13 @@
         "materials": 3,
         "practices": 3,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 4161,
+        "contentLength": 5193,
         "viewport": {
           "width": 390,
           "height": 844
@@ -7451,11 +7624,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 7172,
-        "bytes": 635915,
-        "captureMode": "single"
+        "height": 8483,
+        "bytes": 691272,
+        "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "362db5671bcd5b7f6bb5c17c69ed16eab289e1eea730a1f4dc3bfd2f4f260d8c",
+      "sourceSha256": "5f2bf45d2b6470f90f406b894892b6a560e34bafff16ebe9db19062da6bc0d3c",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-080.png"
     },
     {
@@ -7479,12 +7652,13 @@
         "materials": 4,
         "practices": 5,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
         "imageCount": 2,
         "pageOverflow": 0,
-        "contentLength": 6545,
+        "contentLength": 7048,
         "viewport": {
           "width": 390,
           "height": 844
@@ -7494,11 +7668,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 10442,
-        "bytes": 1006023,
+        "height": 11279,
+        "bytes": 965853,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "3802ede06a2ab7fa9315ddd7a6c8e8c9d69d32943017274f3252ef48b682df48",
+      "sourceSha256": "a84e75cdeff80c26258969681e6163d4b87557b7f76d0426477d179135e7e33a",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-081.png"
     },
     {
@@ -7522,12 +7696,13 @@
         "materials": 1,
         "practices": 3,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 2874,
+        "contentLength": 4083,
         "viewport": {
           "width": 390,
           "height": 844
@@ -7537,11 +7712,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 5624,
-        "bytes": 660787,
+        "height": 7095,
+        "bytes": 837775,
         "captureMode": "single"
       },
-      "sourceSha256": "ea4546f091d3829d951d43a8445bb0321fdde7b75c0f75e9f94c812ebfbc0c22",
+      "sourceSha256": "761b371a25accb2be746a9c6bfacba6db315fa0ad5c1e51d6f0faf2abd5d273c",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-082.png"
     },
     {
@@ -7562,15 +7737,16 @@
         ],
         "unitOrderIssues": [],
         "knowledgeUnits": 4,
-        "materials": 9,
+        "materials": 12,
         "practices": 5,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
-        "imageCount": 1,
+        "imageCount": 4,
         "pageOverflow": 0,
-        "contentLength": 10958,
+        "contentLength": 12480,
         "viewport": {
           "width": 390,
           "height": 844
@@ -7580,11 +7756,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 16035,
-        "bytes": 1405217,
+        "height": 19439,
+        "bytes": 1935868,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "2aa5b6b7ef8c45603f018e2a2bd2b2da00964cbba9795456f3378f7593580be4",
+      "sourceSha256": "01476915209eaca3561167929ceb68c9975eb211115b77e6d0c3fa39c94538f1",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-083.png"
     },
     {
@@ -7608,12 +7784,13 @@
         "materials": 1,
         "practices": 4,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 3809,
+        "contentLength": 5104,
         "viewport": {
           "width": 390,
           "height": 844
@@ -7623,11 +7800,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 6413,
-        "bytes": 800921,
+        "height": 7930,
+        "bytes": 984884,
         "captureMode": "single"
       },
-      "sourceSha256": "34e1027996286b206122cefce5c95cb45d540bf19af90f5eb804b93fa9f9e95c",
+      "sourceSha256": "edfc7aa6c52419c56a818839bcbf01d8c5679e41944418111376fdb0561e3f13",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-084.png"
     },
     {
@@ -7651,12 +7828,13 @@
         "materials": 1,
         "practices": 3,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 3606,
+        "contentLength": 4815,
         "viewport": {
           "width": 390,
           "height": 844
@@ -7666,11 +7844,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 6189,
-        "bytes": 633018,
+        "height": 7626,
+        "bytes": 804156,
         "captureMode": "single"
       },
-      "sourceSha256": "77a87ea0cf63fc947a210b017002be4820d519cb4327f1ca028ff20f49d8fd3f",
+      "sourceSha256": "f7dd9830a0074d1b73b06ae71bdfcf14dda8cded0a43aa94242012c0d05a435f",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-085.png"
     },
     {
@@ -7694,12 +7872,13 @@
         "materials": 1,
         "practices": 3,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
-        "imageCount": 0,
+        "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 2391,
+        "contentLength": 3370,
         "viewport": {
           "width": 390,
           "height": 844
@@ -7709,11 +7888,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 5027,
-        "bytes": 409587,
+        "height": 6452,
+        "bytes": 563151,
         "captureMode": "single"
       },
-      "sourceSha256": "994faf7d54479b15ba8d4a30eceb677d7074fbc634674ce0618bdd0ff530bb02",
+      "sourceSha256": "92f531510e3d1e55085a55e8fbf491082528a0346e22b25658cd764a5defccd1",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-086.png"
     },
     {
@@ -7737,12 +7916,13 @@
         "materials": 2,
         "practices": 4,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 3827,
+        "contentLength": 4991,
         "viewport": {
           "width": 390,
           "height": 844
@@ -7752,11 +7932,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 6699,
-        "bytes": 585388,
-        "captureMode": "single"
+        "height": 8082,
+        "bytes": 775347,
+        "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "677ef68643dcc9bfabbbaa4c0d362d030e0686516478524d44c2e4832469b21c",
+      "sourceSha256": "b17531b4dd8f8ad7740fc0abcc8bc1acd5b27d5978f67054f061dd69abf48d2e",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-087.png"
     },
     {
@@ -7780,12 +7960,13 @@
         "materials": 1,
         "practices": 4,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 3912,
+        "contentLength": 5101,
         "viewport": {
           "width": 390,
           "height": 844
@@ -7795,11 +7976,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 6630,
-        "bytes": 803499,
-        "captureMode": "single"
+        "height": 8013,
+        "bytes": 777365,
+        "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "2b538f7f05f450c894ccc429273fdcb8a9b46508eac47c8678d24ff5fef03049",
+      "sourceSha256": "d2bff9c418577ac33be768854b647860bd1956fbcbde424c77770debba90ff22",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-088.png"
     },
     {
@@ -7823,12 +8004,13 @@
         "materials": 1,
         "practices": 3,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 3333,
+        "contentLength": 4473,
         "viewport": {
           "width": 390,
           "height": 844
@@ -7838,11 +8020,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 5887,
-        "bytes": 580992,
+        "height": 7257,
+        "bytes": 670033,
         "captureMode": "single"
       },
-      "sourceSha256": "beff2a682b53aa2d21a432f203219c8e08aa2363a81aacd6949af73e25869820",
+      "sourceSha256": "f3a6078bcb007fd85685ee88afef66b03fad127c31a3d550202ce3acadba7dcf",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-089.png"
     },
     {
@@ -7866,12 +8048,13 @@
         "materials": 1,
         "practices": 3,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 3148,
+        "contentLength": 3673,
         "viewport": {
           "width": 390,
           "height": 844
@@ -7881,11 +8064,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 5856,
-        "bytes": 494370,
+        "height": 6771,
+        "bytes": 594429,
         "captureMode": "single"
       },
-      "sourceSha256": "ae0dc567cec4adb31ebd877ec4085e8740fa2ebc40db94ecff5962b5bf76444f",
+      "sourceSha256": "2d7223b384a839c41b3a5f0437a1e94ba217e8ad0a88c89ee7890a711a5dbeca",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-090.png"
     },
     {
@@ -7909,12 +8092,13 @@
         "materials": 1,
         "practices": 3,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 3604,
+        "contentLength": 4594,
         "viewport": {
           "width": 390,
           "height": 844
@@ -7924,11 +8108,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 6228,
-        "bytes": 544935,
+        "height": 7493,
+        "bytes": 851068,
         "captureMode": "single"
       },
-      "sourceSha256": "4c09a0f735f7a2f1e09566cf0b00bbb098af8e2988f79af91b02fcd29936016a",
+      "sourceSha256": "71cf0349ac0192e8944d9b37b7d7f2ee2a346fe860c1f77d25f0164f72c9c74e",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-091.png"
     },
     {
@@ -7952,12 +8136,13 @@
         "materials": 1,
         "practices": 3,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 2436,
+        "contentLength": 3520,
         "viewport": {
           "width": 390,
           "height": 844
@@ -7967,11 +8152,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 5184,
-        "bytes": 486791,
+        "height": 6554,
+        "bytes": 576200,
         "captureMode": "single"
       },
-      "sourceSha256": "11e6091f96f6c6b06778d0cb8457dde568e391f930deded8d686ca3d6d2bb732",
+      "sourceSha256": "6ae9d527434b628e04546fa613224f9ac2ea55b91c802de97722433acaade0aa",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-092.png"
     },
     {
@@ -7995,12 +8180,13 @@
         "materials": 4,
         "practices": 4,
         "pastPaper": 1,
+        "examQuestions": 3,
         "answerToggleWorks": true,
         "brokenImages": [],
         "missingAlt": [],
         "imageCount": 0,
         "pageOverflow": 0,
-        "contentLength": 7530,
+        "contentLength": 8497,
         "viewport": {
           "width": 390,
           "height": 844
@@ -8010,11 +8196,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 11196,
-        "bytes": 938241,
+        "height": 12474,
+        "bytes": 1064798,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "0baed501c87c35845959603765631d85e4fd4880864d5d903ccbc184afd37f1e",
+      "sourceSha256": "3d45c1c3f3d8048e9bcb2314992aa255d915540e5c157ec68f99b2d825e5ff15",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-093.png"
     }
   ],
@@ -8033,6 +8219,7 @@
         "materials": 0,
         "practices": 0,
         "pastPaper": 0,
+        "examQuestions": 0,
         "answerToggleWorks": false,
         "brokenImages": [],
         "missingAlt": [],
@@ -8069,6 +8256,7 @@
         "materials": 0,
         "practices": 0,
         "pastPaper": 0,
+        "examQuestions": 0,
         "answerToggleWorks": false,
         "brokenImages": [],
         "missingAlt": [],
@@ -8085,7 +8273,7 @@
       "capture": {
         "width": 1440,
         "height": 1892,
-        "bytes": 268673,
+        "bytes": 268964,
         "captureMode": "single"
       },
       "sourceSha256": "8e26c2539e569e19c4abf970fe4061915b48b950dea685421f8b94b2f191bf1b",
@@ -8105,6 +8293,7 @@
         "materials": 0,
         "practices": 0,
         "pastPaper": 0,
+        "examQuestions": 0,
         "answerToggleWorks": false,
         "brokenImages": [],
         "missingAlt": [],
@@ -8121,7 +8310,7 @@
       "capture": {
         "width": 1440,
         "height": 2975,
-        "bytes": 439494,
+        "bytes": 439822,
         "captureMode": "single"
       },
       "sourceSha256": "db7953ab38505ba49549e2c91c30ec3426247fbb68457ce6d879a0da6ec4ebaa",
@@ -8141,6 +8330,7 @@
         "materials": 0,
         "practices": 0,
         "pastPaper": 0,
+        "examQuestions": 0,
         "answerToggleWorks": false,
         "brokenImages": [],
         "missingAlt": [],
@@ -8157,7 +8347,7 @@
       "capture": {
         "width": 1440,
         "height": 2551,
-        "bytes": 368074,
+        "bytes": 368618,
         "captureMode": "single"
       },
       "sourceSha256": "822d7321cf96d208f34eb20089759989260cba2f171db6ae5cc0f1a421469b32",
@@ -8177,6 +8367,7 @@
         "materials": 0,
         "practices": 0,
         "pastPaper": 0,
+        "examQuestions": 0,
         "answerToggleWorks": false,
         "brokenImages": [],
         "missingAlt": [],
@@ -8193,7 +8384,7 @@
       "capture": {
         "width": 1440,
         "height": 2298,
-        "bytes": 325456,
+        "bytes": 325490,
         "captureMode": "single"
       },
       "sourceSha256": "65ded255c826d0505988ab5e5933bab285914758fe435e6fa3cb38d89f8935b2",
@@ -8213,6 +8404,7 @@
         "materials": 0,
         "practices": 0,
         "pastPaper": 0,
+        "examQuestions": 0,
         "answerToggleWorks": false,
         "brokenImages": [],
         "missingAlt": [],
@@ -8249,6 +8441,7 @@
         "materials": 0,
         "practices": 0,
         "pastPaper": 0,
+        "examQuestions": 0,
         "answerToggleWorks": false,
         "brokenImages": [],
         "missingAlt": [],
@@ -8265,7 +8458,7 @@
       "capture": {
         "width": 1440,
         "height": 1738,
-        "bytes": 237052,
+        "bytes": 236857,
         "captureMode": "single"
       },
       "sourceSha256": "35525bbdb36d32ab5308b024b97929f50873ce407407613914b44fce0ab60809",
@@ -8285,6 +8478,7 @@
         "materials": 0,
         "practices": 0,
         "pastPaper": 0,
+        "examQuestions": 0,
         "answerToggleWorks": false,
         "brokenImages": [],
         "missingAlt": [],
@@ -8301,7 +8495,7 @@
       "capture": {
         "width": 1440,
         "height": 2027,
-        "bytes": 284856,
+        "bytes": 284986,
         "captureMode": "single"
       },
       "sourceSha256": "43a15ce48011bf91e4fe577525b9acf5a614f380133ca2288e41a7d3f220ffa7",
@@ -8321,6 +8515,7 @@
         "materials": 0,
         "practices": 0,
         "pastPaper": 0,
+        "examQuestions": 0,
         "answerToggleWorks": false,
         "brokenImages": [],
         "missingAlt": [],
@@ -8357,6 +8552,7 @@
         "materials": 0,
         "practices": 0,
         "pastPaper": 0,
+        "examQuestions": 0,
         "answerToggleWorks": false,
         "brokenImages": [],
         "missingAlt": [],
@@ -8393,6 +8589,7 @@
         "materials": 0,
         "practices": 0,
         "pastPaper": 0,
+        "examQuestions": 0,
         "answerToggleWorks": false,
         "brokenImages": [],
         "missingAlt": [],
@@ -8429,6 +8626,7 @@
         "materials": 0,
         "practices": 0,
         "pastPaper": 0,
+        "examQuestions": 0,
         "answerToggleWorks": false,
         "brokenImages": [],
         "missingAlt": [],
@@ -8465,6 +8663,7 @@
         "materials": 0,
         "practices": 0,
         "pastPaper": 0,
+        "examQuestions": 0,
         "answerToggleWorks": false,
         "brokenImages": [],
         "missingAlt": [],
@@ -8501,6 +8700,7 @@
         "materials": 0,
         "practices": 0,
         "pastPaper": 0,
+        "examQuestions": 0,
         "answerToggleWorks": false,
         "brokenImages": [],
         "missingAlt": [],
@@ -8517,7 +8717,7 @@
       "capture": {
         "width": 390,
         "height": 21758,
-        "bytes": 1934883,
+        "bytes": 1934882,
         "captureMode": "tiled-lossless"
       },
       "sourceSha256": "b3090657213c9cb1ba7059388764d30c7785fc4f5c33983cbd7136a300d6b0bd",
@@ -8537,6 +8737,7 @@
         "materials": 0,
         "practices": 0,
         "pastPaper": 0,
+        "examQuestions": 0,
         "answerToggleWorks": false,
         "brokenImages": [],
         "missingAlt": [],
@@ -8573,6 +8774,7 @@
         "materials": 0,
         "practices": 0,
         "pastPaper": 0,
+        "examQuestions": 0,
         "answerToggleWorks": false,
         "brokenImages": [],
         "missingAlt": [],
@@ -8609,6 +8811,7 @@
         "materials": 0,
         "practices": 0,
         "pastPaper": 0,
+        "examQuestions": 0,
         "answerToggleWorks": false,
         "brokenImages": [],
         "missingAlt": [],
@@ -8645,6 +8848,7 @@
         "materials": 0,
         "practices": 0,
         "pastPaper": 0,
+        "examQuestions": 0,
         "answerToggleWorks": false,
         "brokenImages": [],
         "missingAlt": [],
@@ -8681,6 +8885,7 @@
         "materials": 0,
         "practices": 0,
         "pastPaper": 0,
+        "examQuestions": 0,
         "answerToggleWorks": false,
         "brokenImages": [],
         "missingAlt": [],
@@ -8697,7 +8902,7 @@
       "capture": {
         "width": 390,
         "height": 3029,
-        "bytes": 315783,
+        "bytes": 315629,
         "captureMode": "single"
       },
       "sourceSha256": "8b6dd7ee04589a33aca6f49be44dfa1a9df74da75cf5793806ffade0d23598c7",
@@ -8717,6 +8922,7 @@
         "materials": 0,
         "practices": 0,
         "pastPaper": 0,
+        "examQuestions": 0,
         "answerToggleWorks": false,
         "brokenImages": [],
         "missingAlt": [],
@@ -8753,6 +8959,7 @@
         "materials": 0,
         "practices": 0,
         "pastPaper": 0,
+        "examQuestions": 0,
         "answerToggleWorks": false,
         "brokenImages": [],
         "missingAlt": [],
@@ -8789,6 +8996,7 @@
         "materials": 0,
         "practices": 0,
         "pastPaper": 0,
+        "examQuestions": 0,
         "answerToggleWorks": false,
         "brokenImages": [],
         "missingAlt": [],
@@ -8825,6 +9033,7 @@
         "materials": 0,
         "practices": 0,
         "pastPaper": 0,
+        "examQuestions": 0,
         "answerToggleWorks": false,
         "brokenImages": [],
         "missingAlt": [],
@@ -8841,7 +9050,7 @@
       "capture": {
         "width": 390,
         "height": 1905,
-        "bytes": 191947,
+        "bytes": 191263,
         "captureMode": "single"
       },
       "sourceSha256": "00ddaaf8d5c5518528647bc1ff949f29e3c209a9b6cdfe205d0930376fb5dabf",
@@ -8861,6 +9070,7 @@
         "materials": 0,
         "practices": 0,
         "pastPaper": 0,
+        "examQuestions": 0,
         "answerToggleWorks": false,
         "brokenImages": [],
         "missingAlt": [],
@@ -8897,6 +9107,7 @@
         "materials": 0,
         "practices": 0,
         "pastPaper": 0,
+        "examQuestions": 0,
         "answerToggleWorks": false,
         "brokenImages": [],
         "missingAlt": [],
@@ -8933,6 +9144,7 @@
         "materials": 0,
         "practices": 0,
         "pastPaper": 0,
+        "examQuestions": 0,
         "answerToggleWorks": false,
         "brokenImages": [],
         "missingAlt": [],

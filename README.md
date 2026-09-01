@@ -11,9 +11,9 @@ Official qualification page: <https://www.cambridgeinternational.org/programmes-
 - Target: AS Level only.
 - Structure: 93 numbered pages: 91 teaching lessons and two integrated reviews.
 - Sequence: Cambridge syllabus Sections 1-12.
-- Lesson flow: lesson title and objectives → visual overview → core explanation → any required method or worked example → common misconception → practice questions → original exam-style question and marking points → summary.
-- Materials: every knowledge unit has exactly one lead visual. A method appears only for a genuine calculation, operation, algorithm or physical process; a worked example uses concrete data, state, code or a scenario.
-- Practice: every atomic objective is explicitly mapped to at least one question; all 329 questions store and display an explicit Cambridge command word, while answers remain collapsed by default.
+- Lesson flow: lesson title and objectives → visual overview → core explanation → any required method or worked example → common misconception → practice questions → original exam-style questions and marking points → summary.
+- Materials: every teaching knowledge unit has exactly one image-based lead visual. Forty-nine targeted ImageGen diagrams close the previous table/card/flow-only gaps without changing the lesson structure. A method appears only for a genuine calculation, operation, algorithm or physical process; a worked example uses concrete data, state, code or a scenario.
+- Practice: every atomic objective is explicitly mapped to at least one question; all 329 questions store and display an explicit Cambridge command word, while answers remain collapsed by default. Every course page also provides at least three original exam-style questions with separate marking points.
 - Assessment Bank: 12 cumulative section checks and two original 75-mark paper mocks.
 - Coverage: all 121 syllabus requirements have direct teaching and practice evidence.
 - Exam language: Cambridge pseudocode is the standard; Java is supporting material only.
@@ -32,7 +32,8 @@ Start with the lesson objectives, then teach each knowledge unit in order. The l
 - `web/course-v3/`: active visual course, section indexes and lesson navigation.
 - `scripts/course-v3-content.mjs`: human-reviewed structured teaching source.
 - `scripts/course-v3-contract.json`: generated objective/material/practice ownership contract.
-- `scripts/course-v3-section-anchor-assets.json`: ImageGen prompt, provenance, review and SHA-256 manifest.
+- `scripts/course-v3-section-anchor-assets.json`: section-anchor ImageGen prompt, provenance, review and SHA-256 manifest.
+- `scripts/course-v3-knowledge-diagrams.mjs`: knowledge-unit ImageGen asset mapping, alternative text and prompt summaries.
 - `audits/course-v3-objective-material-ledger.csv`: 589 atomic-objective evidence rows.
 - `audits/course-v3-knowledge-unit-role-audit.csv`: role and duplicate status for all 145 teaching knowledge units.
 - `audits/course-v3-visual-evidence/`: 186 lesson screenshots, 26 index reviews and 24 section contact sheets.
@@ -95,7 +96,7 @@ Run the complete compatibility and active-course acceptance workflow:
 node scripts/verify-all.mjs
 ```
 
-This verifies the retained historical source records and the single active course: official order, 121-requirement coverage, 589 objective mappings, 145 knowledge-unit roles, 329 Cambridge command words, 151 compatibility entries, generation idempotency, 186 passing lesson viewport reviews, 26 passing index reviews, 24 contact sheets and public copyright boundaries. It also builds and verifies the active-course release archive:
+This verifies the retained historical source records and the single active course: official order, 121-requirement coverage, 589 objective mappings, 145 image-led knowledge-unit roles, 329 practice command words, 279 exam-style questions, 151 compatibility entries, generation idempotency, 186 passing lesson viewport reviews, 26 passing index reviews, 24 contact sheets and public copyright boundaries. It also builds and verifies the active-course release archive:
 
 ```text
 dist/AS9618-CS-2027-2029-course.zip

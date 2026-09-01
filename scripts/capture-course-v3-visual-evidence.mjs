@@ -197,6 +197,7 @@ async function inspect(cdp, expectedStages = true) {
       materials:document.querySelectorAll(".teaching-material").length,
       practices:document.querySelectorAll(".practice-question").length,
       pastPaper:document.querySelectorAll(".past-paper").length,
+      examQuestions:document.querySelectorAll(".exam-question").length,
       answerToggleWorks,
       brokenImages:images.filter(image=>!image.complete||image.width<1).map(image=>image.src),
       missingAlt:images.filter(image=>image.alt.trim().length<20).map(image=>image.src),
@@ -252,6 +253,7 @@ function issuesFor(metrics, diagnostics, isLesson) {
   if (isLesson && metrics.materials < metrics.knowledgeUnits) issues.push("a knowledge unit is missing its lead visual");
   if (isLesson && metrics.practices < 3) issues.push("fewer than three practice tasks");
   if (isLesson && metrics.pastPaper !== 1) issues.push("past-paper analysis missing or duplicated");
+  if (isLesson && metrics.examQuestions < 3) issues.push("fewer than three exam-style questions");
   if (isLesson && metrics.unitOrderIssues.length) issues.push(`visual/core order: ${metrics.unitOrderIssues.join(",")}`);
   if (isLesson && !metrics.answerToggleWorks) issues.push("practice answer disclosure did not toggle and restore");
   if (metrics.brokenImages.length) issues.push(`broken images: ${metrics.brokenImages.join(" | ")}`);

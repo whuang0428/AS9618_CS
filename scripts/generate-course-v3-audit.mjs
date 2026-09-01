@@ -32,7 +32,7 @@ for (const lesson of courseV3Lessons) {
       [...new Set(materials.map((material) => material.type))].join(" | "),
       [...new Set(materials.map((material) => material.title))].join(" | "),
       questions.map((question) => question.id).join(" | "),
-      lesson.pastPaper.reference,
+      lesson.examStyleQuestions.filter((question) => question.objectiveIds.includes(objectiveId)).map((question) => question.sourceRef).join(" | "),
       "reviewed",
       evidencePath(lesson, "desktop"), evidencePath(lesson, "mobile-390"), "high",
     ]);
@@ -79,7 +79,7 @@ const mapLines = [
   "",
   `- ${courseV3Meta.lessonCount} pages: ${courseV3Meta.teachingLessonCount} teaching lessons and ${courseV3Meta.reviewLessonCount} integrated reviews.`,
   "- 121/121 official AS requirements in Cambridge syllabus order.",
-  "- Fixed page flow: lesson title and objectives → visual overview → core explanation → optional method/worked example → misconception → practice → original exam-style question → summary.",
+  "- Fixed page flow: lesson title and objectives → visual overview → core explanation → optional method/worked example → misconception → practice → original exam-style questions → summary.",
   "",
 ];
 for (const section of Object.keys(sectionMeta).map(Number)) {
@@ -105,7 +105,8 @@ const report = [
   `- Visual evidence: ${allResults.length ? `${allResults.length}/${courseV3Meta.lessonCount * 2} desktop/mobile page reviews recorded` : "capture pending"}.`,
   `- Browser findings: ${allResults.length ? `${failures.length} failing viewport reviews` : "capture pending"}.`,
   "- Each knowledge unit presents exactly one lead visual before its core explanation; method and worked-example roles appear only when they add distinct work.",
-  "- All 329 practice questions expose a Cambridge command word and separate marking points.",
+  `- All 329 practice questions and ${courseV3Meta.examStyleQuestionCount} original exam-style questions expose Cambridge command words and separate marking points.`,
+  "- All 145 teaching units begin with an image-based knowledge diagram; 49 targeted ImageGen diagrams close the previous table/card/flow-only gaps.",
   "",
   "## Evidence index",
   "",

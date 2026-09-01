@@ -6,6 +6,7 @@ import { fileURLToPath } from "node:url";
 import { classifyCommand } from "./cie-command-words.mjs";
 import { courseV3Lessons, courseV3Meta, sectionMeta } from "./course-v3-content.mjs";
 import { normalisePresentationText, unitMaterials, visibleRoleTexts } from "./course-v3-presentation.mjs";
+import { courseV3KnowledgeDiagramRecords } from "./course-v3-knowledge-diagrams.mjs";
 import { officialAsMapping } from "./syllabus-official-as-mapping.mjs";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
@@ -73,14 +74,16 @@ function requirementForQuestion(question, lesson) {
   return question.objectiveIds.map((id) => id.match(/^S(?:[1-9]|1[0-2])\.\d{2}/)?.[0]).find(Boolean) ?? lesson.syllabusIds[0];
 }
 
-check(courseV3Meta.schemaVersion === 4, `Expected schema version 4, found ${courseV3Meta.schemaVersion}`);
+check(courseV3Meta.schemaVersion === 5, `Expected schema version 5, found ${courseV3Meta.schemaVersion}`);
 check(courseV3Meta.lessonCount === 93, `Expected 93 pages, found ${courseV3Meta.lessonCount}`);
 check(courseV3Meta.teachingLessonCount === 91, `Expected 91 teaching lessons, found ${courseV3Meta.teachingLessonCount}`);
 check(courseV3Meta.reviewLessonCount === 2, `Expected two review lessons, found ${courseV3Meta.reviewLessonCount}`);
 check(Object.keys(sectionMeta).length === 12, "Expected Sections 1–12");
-check(contract.schemaVersion === 4 && contract.lessons.length === 93, "Generated contract must use schema version 4 and contain 93 pages");
+check(contract.schemaVersion === 5 && contract.lessons.length === 93, "Generated contract must use schema version 5 and contain 93 pages");
 check(courseV3Lessons.filter((lesson) => lesson.kind === "teaching").flatMap((lesson) => lesson.units).length === 145, "Expected 145 teaching knowledge units");
 check(courseV3Lessons.flatMap((lesson) => lesson.practice).length === 329, "Expected 329 practice questions");
+check(courseV3Meta.examStyleQuestionCount === 279, `Expected 279 exam-style questions, found ${courseV3Meta.examStyleQuestionCount}`);
+check(courseV3KnowledgeDiagramRecords.length === 49, `Expected 49 ImageGen knowledge diagrams, found ${courseV3KnowledgeDiagramRecords.length}`);
 
 const officialOrder = Object.keys(officialAsMapping);
 const firstOccurrence = [];
@@ -92,7 +95,10 @@ check(JSON.stringify(contract.syllabusOrder) === JSON.stringify(officialOrder), 
 
 const stageNames = ["1-visual-and-core", "2-practice", "3-original-exam-style-question", "4-summary"];
 const forbiddenStudentLabels = /Mechanism or method|Mastery check|Knowledge check|Supplementary visual recap|Method recap|Lesson technical reference|Identify\s*(?:\/|→)\s*Connect\s*(?:\/|→)\s*Apply|Cause\s*(?:\/|→)\s*Mechanism\s*(?:\/|→)\s*Consequence|Stage\s*\d+[^.]{0,60}(?:approved|review)|approved assets|Teaching-depth menu/i;
+const forbiddenExamPhrasing = /show understanding|diagnose and connect|in an integrated response|(?:explain|describe)\s+(?:understand|analyse)|why the statement|how why|how choose|describe why|(?:explain|describe)\s+how how|(?:explain|describe)\s+(?:give|complete)|how put|how whether|the required the|when (?:suggest|recommend|write|explain|describe)|(?:explain|describe) apply|explain type adds/i;
+const forbiddenExamMarkingPoint = /database design review:|each named item remains core|do not revise each term in isolation|correct one plausible error about|^transfer\.?$|apply one section \d+ method|and limitation\.?$|\bcandidates?\s+(?:must|should|are required|need)|not required by the syllabus|the syllabus says|will always be given|syllabus list above|non-required task|^(?:yes|no)\.?$/i;
 let commandWordCount = 0;
+let examStyleQuestionCount = 0;
 for (const lesson of courseV3Lessons) {
   const label = `L${String(lesson.sequenceIndex).padStart(3, "0")} ${lesson.lessonKey}`;
   const htmlPath = join(webRoot, "course-v3", lesson.route, "index.html");
@@ -106,7 +112,7 @@ for (const lesson of courseV3Lessons) {
     check(index > priorIndex, `${label}: missing or out-of-order ${stage}`);
     priorIndex = index;
   }
-  for (const heading of ["Visual overview and core explanation", "Practice questions", "Original exam-style question and marking points", "Summary"]) check(studentText.includes(heading), `${label}: missing fixed heading ${heading}`);
+  for (const heading of ["Visual overview and core explanation", "Practice questions", "Original exam-style questions and marking points", "Summary"]) check(studentText.includes(heading), `${label}: missing fixed heading ${heading}`);
   check(!forbiddenStudentLabels.test(studentText), `${label}: retired or internal teaching label remains visible`);
   check(!/<header><span>(?:Retrieval|Application|Mastery)<\/span>/i.test(html), `${label}: internal question classification remains visible`);
   check(!hasRootRelativeAsset(html), `${label}: root-relative /assets URL breaks on project-based GitHub Pages`);
@@ -115,7 +121,9 @@ for (const lesson of courseV3Lessons) {
   check((html.match(/data-role="lead-visual"/g) ?? []).length === lesson.units.length, `${label}: every unit must render exactly one lead visual`);
   check((html.match(/data-role="core-explanation"/g) ?? []).length === lesson.units.length, `${label}: every unit must render exactly one core explanation`);
   check(html.includes("class=\"past-paper\""), `${label}: original exam-style question is missing`);
+  check((html.match(/class="exam-question"/g) ?? []).length === lesson.examStyleQuestions.length, `${label}: rendered exam-style question count differs from source`);
   check(lesson.practice.length >= 3, `${label}: fewer than three practice questions`);
+  check(lesson.examStyleQuestions.length >= 3, `${label}: fewer than three exam-style questions`);
 
   for (const [unitIndex, unit] of lesson.units.entries()) {
     const unitLabel = `${label} ${unit.syllabusId ?? unit.heading}`;
@@ -163,6 +171,22 @@ for (const lesson of courseV3Lessons) {
     check(html.includes(`Command word: ${question.commandWord}`), `${label} ${question.id}: command word is not rendered`);
     for (const point of question.answerPoints) check(!(words(point).length >= 8 && coreParagraphs.has(normalisePresentationText(point))), `${label} ${question.id}: marking point copies a full core paragraph`);
   }
+  const examMarkingPointSignatures = new Set();
+  for (const question of lesson.examStyleQuestions) {
+    examStyleQuestionCount += 1;
+    const classification = classifyCommand(question.task, requirementForQuestion(question, lesson));
+    check(classification.status === "Approved", `${label} ${question.id}: exam-style Cambridge command classification is blocked`);
+    check(question.commandWord?.toLowerCase() === classification.word, `${label} ${question.id}: exam-style commandWord does not match the task`);
+    check(question.markLogic.length >= 1, `${label} ${question.id}: exam-style marking points are missing`);
+    check(question.marks === question.markLogic.length, `${label} ${question.id}: exam-style marks do not match the number of marking points`);
+    check(!forbiddenExamPhrasing.test(question.task), `${label} ${question.id}: exam-style task contains internal or ungrammatical objective wording`);
+    check(!question.markLogic.some((point) => forbiddenExamMarkingPoint.test(point)), `${label} ${question.id}: exam-style marking points contain internal or incomplete review wording`);
+    check(html.includes(`data-question-id="${question.id}"`), `${label} ${question.id}: exam-style question is not rendered`);
+    for (const practiceQuestion of lesson.practice) check(!duplicateReason(question.task, practiceQuestion.prompt), `${label} ${question.id}: exam-style task repeats Practice question ${practiceQuestion.id}`);
+    for (const point of question.markLogic) check(!(words(point).length >= 8 && coreParagraphs.has(normalisePresentationText(point))), `${label} ${question.id}: exam-style marking point copies a full core paragraph`);
+    examMarkingPointSignatures.add(question.markLogic.map(normalisePresentationText).sort().join("|"));
+  }
+  check(examMarkingPointSignatures.size === lesson.examStyleQuestions.length, `${label}: exam-style questions repeat the same marking-point set`);
   for (const [, body] of lesson.summary) for (const paragraph of lesson.units.flatMap((unit) => unit.coreExplanation)) {
     check(!duplicateReason(body, paragraph), `${label}: summary repeats the core explanation`);
   }
@@ -178,6 +202,10 @@ for (const lesson of courseV3Lessons) {
   }
 }
 check(commandWordCount === 329, `Expected 329 classified questions, found ${commandWordCount}`);
+check(examStyleQuestionCount === 279, `Expected 279 classified exam-style questions, found ${examStyleQuestionCount}`);
+
+const nonImageLeadVisuals = courseV3Lessons.filter((lesson) => lesson.kind === "teaching").flatMap((lesson) => lesson.units.filter((unit) => !["reviewed-visual", "topology-gallery", "reservoir", "address-demo", "url-demo"].includes(unit.leadVisual.type)).map((unit) => `${lesson.lessonKey}:${unit.heading}`));
+check(nonImageLeadVisuals.length === 0, `Teaching units still lack an image-based lead visual: ${nonImageLeadVisuals.join(" | ")}`);
 
 const s109Lessons = courseV3Lessons.filter((lesson) => lesson.syllabusIds.includes("S1.09"));
 const s109 = s109Lessons.flatMap((lesson) => lesson.units).find((unit) => unit.syllabusId === "S1.09");
@@ -215,6 +243,8 @@ check(!/vector file/i.test(s110), "Regression: vector-compression content pollut
 for (const term of ["analogue", "sample", "quantis", "sampling rate", "sampling resolution", "file size"]) check(s110.toLowerCase().includes(term), `S1.10 missing ${term}`);
 const s111 = `${lessonText("S1.11")} ${practiceText("S1.11")}`.toLowerCase();
 for (const term of ["lossless", "lossy", "rle", "count", "decode", "text", "bitmap", "vector", "sound"]) check(s111.includes(term), `S1.11 missing ${term}`);
+const s111Unit = courseV3Lessons.flatMap((lesson) => lesson.units).find((unit) => unit.syllabusId === "S1.11");
+check(/lossless.*lossy/i.test(s111Unit?.leadVisual?.title ?? "") && /lossless-lossy\.png$/.test(s111Unit?.leadVisual?.asset ?? ""), "S1.11 must begin with a lossless/lossy comparison visual");
 const s303 = `${lessonText("S3.03")} ${practiceText("S3.03")}`.toLowerCase();
 for (const term of ["laser printer", "3d printer", "microphone", "speaker", "magnetic hard", "flash", "optical disc", "touchscreen", "virtual-reality"]) check(s303.includes(term), `S3.03 missing ${term}`);
 const s310 = `${lessonText("S3.10")} ${practiceText("S3.10")}`.toLowerCase();

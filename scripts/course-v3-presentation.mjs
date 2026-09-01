@@ -1,4 +1,5 @@
 import { classifyCommand, normaliseQuestionPrompt } from "./cie-command-words.mjs";
+import { knowledgeDiagramForUnit } from "./course-v3-knowledge-diagrams.mjs";
 
 const imageVisualTypes = new Set(["reviewed-visual", "topology-gallery", "reservoir", "address-demo", "url-demo"]);
 const structuredVisualTypes = new Set(["flow", "table", "cards"]);
@@ -253,6 +254,9 @@ const markPointRewrites = new Map(Object.entries({
   "cambridge pseudocode uses the type names integer real char string boolean date array and file": "Valid Cambridge pseudocode type names include INTEGER, REAL, CHAR, STRING, BOOLEAN, DATE, ARRAY and FILE.",
   "a record structure groups a set of related fields which may have different data types under one identifier": "A record groups related, differently typed fields under one identifier.",
   "stack queue and linked list are examples of adts": "Stack, queue and linked list are abstract data types defined by their permitted operations and behaviour.",
+  "waterfall and limitation": "Waterfall is less flexible when requirements change after a stage has been completed.",
+  "iterative and limitation": "Iterative development requires repeated review and careful control of successive versions.",
+  "conversions apply to integer values and the binary denary hexadecimal bcd one's complement and two's complement representations named in the syllabus list above": "Conversions apply to integer values represented in binary, denary, hexadecimal, BCD, one's complement and two's complement.",
 }));
 
 function rewriteQuestionForm(prompt) {
@@ -313,8 +317,10 @@ function finaliseQuestion(question, lesson) {
   };
 }
 
-function finaliseUnit(unit) {
+function finaliseUnit(unit, lesson, unitIndex) {
   const sourceMaterials = [...(unit.materials ?? [])];
+  const generatedDiagram = knowledgeDiagramForUnit(lesson.sequenceIndex, unitIndex + 1);
+  if (generatedDiagram) sourceMaterials.unshift({ ...generatedDiagram, objectiveIds: [...unit.objectiveIds] });
   const candidates = sourceMaterials
     .filter((material) => material.type !== "worked-example")
     .sort((left, right) => visualPriority(left) - visualPriority(right));
@@ -346,6 +352,283 @@ function finaliseUnit(unit) {
   };
 }
 
+const examContexts = Object.freeze({
+  1: "a school that stores and transmits digital media",
+  2: "a school network serving several buildings",
+  3: "an automated greenhouse and its computer system",
+  4: "a processor executing a stored program",
+  5: "a development team preparing software for release",
+  6: "an organisation protecting personal and operational data",
+  7: "a software project with professional and legal responsibilities",
+  8: "a school database used by staff and students",
+  9: "a booking problem that must be converted into an algorithm",
+  10: "a program that stores and processes a changing collection of data",
+  11: "a Cambridge pseudocode program processing student records",
+  12: "a software system moving from design through testing and maintenance",
+  Review: "an integrated examination scenario",
+});
+
+function cleanObjectiveTopic(description) {
+  let topic = String(description)
+    .replace(/\s+/g, " ")
+    .trim()
+    .replace(/[.!?]+$/, "")
+    .replace(/^Students (?:are expected to|will)\s+/i, "")
+    .replace(/^Show understanding of and be able to\s+/i, "how to ")
+    .replace(/^Show an? understanding of\s+/i, "")
+    .replace(/^Show understanding of(?: and be able to)?\s+/i, "")
+    .replace(/^Show understanding that\s+/i, "")
+    .replace(/^Understand the difference between and use:\s*/i, "the distinction and correct use of ")
+    .replace(/^Understand given (.+?) and be able to write (.+)$/i, "how to interpret given $1 and write $2")
+    .replace(/^Understand a given\s+/i, "how to interpret a given ")
+    .replace(/^Understand given\s+/i, "how to interpret given ")
+    .replace(/^Understand\s+/i, "")
+    .replace(/^Analyse\s+/i, "how to analyse ")
+    .replace(/^Write\s+/i, "how to write ")
+    .replace(/^Use\s+/i, "how to use ")
+    .replace(/^Using\s+/i, "how to use ")
+    .replace(/^Select\s+/i, "how to select ")
+    .replace(/^Choose\s+/i, "how to choose ")
+    .replace(/^Calculate\s+/i, "how to calculate ")
+    .replace(/^Convert\s+/i, "how to convert ")
+    .replace(/^Perform\s+/i, "how to perform ")
+    .replace(/^Construct\s+/i, "how to construct ")
+    .replace(/^Encode and decode\s+/i, "how to encode and decode ")
+    .replace(/^Recognise and use\s+/i, "how to recognise and use ")
+    .replace(/^Recognise and explain\s+/i, "how to recognise and explain ")
+    .replace(/^Add, edit and delete\s+/i, "how to add, edit and delete ")
+    .replace(/^Break down\s+/i, "how to break down ")
+    .replace(/^Pass\s+/i, "how to pass ")
+    .replace(/^Define\s+/i, "how to define ")
+    .replace(/^Declare\s+/i, "how to declare ")
+    .replace(/^Assign\s+/i, "how to assign ")
+    .replace(/^Read\s+/i, "how to read ")
+    .replace(/^Call\s+/i, "how to call ")
+    .replace(/^Implement\s+/i, "how to implement ")
+    .replace(/^Complete\s+/i, "how to complete ")
+    .replace(/^Give\s+/i, "")
+    .replace(/^(?:Recommend|Suggest)\s+/i, "the choice of ")
+    .replace(/^Trace\s+/i, "how to trace ")
+    .replace(/^Produce\s+/i, "how to produce ")
+    .replace(/^Predict\s+/i, "how to predict ")
+    .replace(/^Apply\s+/i, "how to apply ")
+    .replace(/^Interpret\s+/i, "how to interpret ")
+    .replace(/^Inspect\s+/i, "how to inspect ")
+    .replace(/^Test\s+/i, "how to test ")
+    .replace(/^Document\s+/i, "how to document ")
+    .replace(/^Draw\s+/i, "how to draw ")
+    .replace(/^Put (.+?) in order\b/i, "the correct order of $1")
+    .replace(/^Derive\s+/i, "how to derive ")
+    .replace(/^Locate\s+/i, "how to locate ")
+    .replace(/^Correct\s+/i, "how to correct ")
+    .replace(/^Classify and explain\s+/i, "the classification and characteristics of ")
+    .replace(/^Compare\s+(?:the differences? between\s+)?/i, "the differences between ")
+    .replace(/^Distinguish\s+/i, "the distinction between ")
+    .replace(/^Justify\s+/i, "the choice of ")
+    .replace(/^(?:Explain|Describe|State|Identify)\s+/i, "")
+    .replace(/^Diagnose and connect\s+/i, "technical relationships in ")
+    .replace(/^Including:\s*/i, "")
+    .replace(/^Including\s+/i, "")
+    .replace(/^And\s+/i, "")
+    .replace(/^That\s+/i, "")
+    .trim();
+  topic = topic.replace(/^(?:be able to|expected to)\s+/i, "").trim();
+  return topic;
+}
+
+function inlineTopic(value) {
+  const topic = String(value).trim();
+  if (!topic || /^[A-Z]{2}/.test(topic)) return topic;
+  return `${topic[0].toLowerCase()}${topic.slice(1)}`;
+}
+
+const reviewExamTopics = Object.freeze({
+  "REV-P1": Object.freeze([
+    "conversion between binary, denary, hexadecimal, BCD and signed binary representations",
+    "the relationship between logic-gate symbols, functions, circuits and truth tables",
+    "verification during data entry and data transfer",
+  ]),
+  "REV-P2": Object.freeze([
+    "stepwise refinement from a high-level solution to implementable pseudocode",
+    "procedure definitions, parameters and appropriate use",
+    "linear search and ascending bubble sort in Cambridge pseudocode",
+  ]),
+});
+
+const examTopicOverrides = Object.freeze({
+  "S2-L01-Q2": "WAN classification and the choice between client-server and peer-to-peer",
+  "V3-Q-L042-01": "the distinction between DDL and DML operations in SQL",
+  "V3-Q-L042-02": "DDL as the SQL category used to change table structure",
+  "V3-Q-L042-03": "the roles of DDL, DML and SQL",
+  "V3-Q-L043-02": "the clauses and result of a SELECT query",
+  "V3-Q-L043-03": "the two-table limit for an AS SQL query",
+  "V3-Q-L044-01": "a table definition with suitable data types, a primary key and a foreign key",
+  "V3-Q-L048-03": "the requirement for an algorithm to contain ordered and unambiguous steps",
+  "V3-Q-L062-01": "text-file pseudocode and the need for persistent storage",
+  "V3-Q-L062-02": "why a file is used when data must persist between program runs",
+  "V3-Q-L062-03": "why NOT EOF is tested before READFILE",
+  "V3-Q-L063-01": "the definition of an abstract data type",
+  "V3-Q-L063-02": "array implementations that preserve stack, queue and linked-list operations",
+  "V3-Q-L063-03": "the distinction between an ADT's operations and its implementation",
+  "V3-Q-L072-01": "how supplied string manipulation functions are used",
+  "V3-Q-L072-02": "LENGTH, TAKE and TOUPPER in Cambridge pseudocode",
+  "V3-Q-L072-03": "the use of a returned STRING value in an expression or assignment",
+  "V3-Q-L081-01": "the differences between waterfall, iterative and RAD, including one limitation of each",
+  "V3-Q-L081-02": "three defining features of RAD",
+  "V3-Q-L081-03": "why RAD may be unsuitable for a safety-critical system",
+  "V3-Q-L089-01": "the information recorded before an existing program is amended",
+  "V3-Q-L089-02": "why regression tests are rerun after a feature is added",
+  "V3-Q-L089-03": "perfective maintenance as an enhancement to functionality or performance",
+});
+
+const examMarkingPointLimits = Object.freeze({
+  "V3-Q-L042-03": 4,
+  "V3-Q-L044-01": 4,
+  "V3-Q-L043-03": 1,
+});
+
+function examTopicForSource(lesson, sourceQuestion, unit, fallback, variant) {
+  const reviewTopic = reviewExamTopics[lesson.lessonKey]?.[variant];
+  if (reviewTopic) return reviewTopic;
+  if (examTopicOverrides[sourceQuestion.id]) return examTopicOverrides[sourceQuestion.id];
+  const mappedDescriptions = lesson.objectives
+    .filter(([id]) => sourceQuestion.objectiveIds.includes(id))
+    .map(([, description]) => description);
+  const bestDescription = [...mappedDescriptions]
+    .sort((left, right) => tokenSimilarity(right, sourceQuestion.prompt) - tokenSimilarity(left, sourceQuestion.prompt))[0]
+    ?? fallback;
+  return (cleanObjectiveTopic(bestDescription) || unit.heading)
+    .replace(/^where (.+)$/i, "the location in which $1")
+    .replace(/^the industry standard for both DDL and DML is Structured Query Language \(SQL\)$/i, "the role of SQL as the industry-standard language for DDL and DML")
+    .replace(/^an ADT is a collection of data and a set of operations on those data$/i, "the definition of an ADT as data together with its permitted operations")
+    .replace(/^an algorithm is a solution to a problem expressed as a sequence of defined steps$/i, "the definition of an algorithm as a sequence of defined steps that solves a problem")
+    .replace(/^string manipulation functions will always be given$/i, "how to use supplied string manipulation functions");
+}
+
+function examPromptForTopic(value, unit, context, variant, isReview) {
+  const topic = inlineTopic(value || (isReview ? unit.heading : unit.heading));
+  const startsWithHow = /^how\b/i.test(topic);
+  const startsWithWhy = /^why\b/i.test(topic);
+  const startsWithWhether = /^whether\b/i.test(topic);
+  const startsWithWhich = /^which\b/i.test(topic);
+  const startsWithChoice = /^(?:the choice of|the correct order of)\b/i.test(topic);
+  const startsWithReturnedValues = /^the values returned by\b/i.test(topic);
+  const isNounPhrase = /^(?:a technical|an? (?:effect|limitation|purpose)|one limiting|the (?:choice|complete|definition|difference|distinction|effect|information|location|operation|purpose|relationship|role|use)|array implementations|conversion|LENGTH|linear search|perfective|procedure definitions|verification)\b/i.test(topic);
+  const isClause = !isNounPhrase && /\b(?:is|are|carries|causes|contains|controls|does|has|holds|must|occurs|provides|reduces|stores|uses|will)\b/i.test(topic);
+  const contextSuffix = /\bwhen\s+(?:a|an|the)\b/i.test(topic) ? "" : ` in ${context}`;
+  if (startsWithWhether) return `Explain ${topic}${contextSuffix}.`;
+  if (startsWithReturnedValues) return `Write ${topic}${contextSuffix}.`;
+  if (startsWithWhich) return variant === 2
+    ? `Explain ${topic}${contextSuffix}, including one relevant technical distinction.`
+    : `State ${topic}${contextSuffix}.`;
+  if (variant === 0) {
+    return isClause && !startsWithHow && !startsWithWhy
+      ? `Explain how ${topic}${contextSuffix}.`
+      : `Explain ${topic}${contextSuffix}.`;
+  }
+  if (variant === 1) {
+    if (startsWithWhy) return `Explain ${topic}${contextSuffix}.`;
+    return isClause && !startsWithHow
+      ? `Describe how ${topic}${contextSuffix}.`
+      : `Describe ${topic}${contextSuffix}.`;
+  }
+  if (startsWithWhy || startsWithChoice) return `Explain ${topic}${contextSuffix}, including one relevant technical distinction.`;
+  if (startsWithHow) return `Explain ${topic} correctly${contextSuffix}, including one relevant limitation or distinction.`;
+  if (isClause) return `Explain how ${topic}${contextSuffix}, including one relevant limitation or distinction.`;
+  return `Explain ${topic}${contextSuffix}, including one relevant limitation or distinction.`;
+}
+
+function uniqueExamMarkingPoints(values) {
+  const seen = new Set();
+  return values.flatMap((value) => {
+    const point = conciseMarkPoint(value);
+    const key = normalisePresentationText(point);
+    if (!key || seen.has(key) || /^for the command word\b|^database design review:/i.test(point)) return [];
+    seen.add(key);
+    return [point];
+  });
+}
+
+function selectSourceQuestion(practice, objectiveId, unit, description, usedQuestionIds) {
+  const weakPointPattern = /each named item remains core|correct one plausible error about|do not revise each term in isolation|^transfer\.?$|apply one section \d+ method/i;
+  const eligible = practice.filter((question) => !/-CHECK$/i.test(question.id) && !question.answerPoints.some((point) => weakPointPattern.test(point)));
+  const available = eligible.length >= 3 ? eligible : practice.filter((question) => !/-CHECK$/i.test(question.id));
+  const objectiveMatches = available.filter((question) => question.objectiveIds.includes(objectiveId));
+  const unitMatches = available.filter((question) => question.objectiveIds.some((id) => unit.objectiveIds.includes(id)));
+  const candidates = objectiveMatches.length ? objectiveMatches : unitMatches.length ? unitMatches : available;
+  const unused = candidates.filter((question) => !usedQuestionIds.has(question.id));
+  const unusedUnit = unitMatches.filter((question) => !usedQuestionIds.has(question.id));
+  const unusedLesson = available.filter((question) => !usedQuestionIds.has(question.id));
+  const pool = unused.length ? unused : unusedUnit.length ? unusedUnit : unusedLesson.length ? unusedLesson : candidates;
+  const focus = `${description} ${unit.heading}`;
+  return [...pool].sort((left, right) => tokenSimilarity(focus, right.prompt) - tokenSimilarity(focus, left.prompt))[0];
+}
+
+function selectExamMarkingPoints(sourceQuestion, variant, unit, isReview) {
+  const internalScopePoint = /\bcandidates?\s+(?:must|should|are required|need)|not required by the syllabus|the syllabus says|will always be given/i;
+  let points = uniqueExamMarkingPoints(sourceQuestion.answerPoints)
+    .filter((point) => !internalScopePoint.test(point) && !/^(?:yes|no)\.?$/i.test(point) && !/non-required task/i.test(point));
+  if (!points.length || points.every((point) => /^(?:yes|no)\.?$/i.test(point))) {
+    if (points.every((point) => /^(?:yes|no)\.?$/i.test(point))) points = [];
+    const visualPoints = materialTexts(unit.leadVisual, { includeTranscript: true })
+      .filter((value) => normalisePresentationText(value) !== normalisePresentationText(unit.leadVisual.title));
+    const methodPoints = [unit.method, unit.workedExample]
+      .filter(Boolean)
+      .flatMap((material) => material.steps?.map(([, body]) => body) ?? []);
+    points = uniqueExamMarkingPoints([...points, ...visualPoints, ...methodPoints, ...(unit.misconceptions ?? [])]);
+  }
+  const limit = examMarkingPointLimits[sourceQuestion.id] ?? 6;
+  if (variant !== 2 || isReview || sourceQuestion.id === "V3-Q-L043-03") return points.slice(0, limit);
+  return uniqueExamMarkingPoints([...points.slice(0, Math.min(5, limit)), ...(unit.misconceptions ?? []).slice(0, 1)]).slice(0, Math.max(limit, 2));
+}
+
+function examStyleQuestionSet(lesson, practice, staged) {
+  const objectiveRows = lesson.objectives.length ? lesson.objectives : [[`${lesson.syllabusIds[0]}.R`, lesson.title]];
+  const selectedIndexes = [...new Set([0, Math.floor((objectiveRows.length - 1) / 2), objectiveRows.length - 1])];
+  while (selectedIndexes.length < 3) selectedIndexes.push(selectedIndexes.length % objectiveRows.length);
+  const context = examContexts[lesson.section] ?? examContexts.Review;
+  const usedQuestionIds = new Set();
+  const usedTopics = new Set();
+  return selectedIndexes.slice(0, 3).map((objectiveIndex, index) => {
+    const [objectiveId, description] = objectiveRows[objectiveIndex];
+    const requirementId = objectiveId.match(/^S(?:[1-9]|1[0-2])\.\d{2}/)?.[0] ?? lesson.syllabusIds[0];
+    const unit = staged.units.find((candidate) => candidate.objectiveIds.includes(objectiveId))
+      ?? staged.units.find((candidate) => candidate.objectiveIds.some((id) => id.startsWith(requirementId)))
+      ?? staged.units[index % staged.units.length];
+    const sourceQuestion = selectSourceQuestion(practice, objectiveId, unit, description, usedQuestionIds) ?? practice[index % practice.length];
+    usedQuestionIds.add(sourceQuestion.id);
+    let topic = examTopicForSource(lesson, sourceQuestion, unit, description, index);
+    const topicKey = normalisePresentationText(topic);
+    if (usedTopics.has(topicKey)) topic = index === 1
+      ? `the operation and practical use of ${unit.heading.toLowerCase()}`
+      : `one limiting case involving ${unit.heading.toLowerCase()}`;
+    usedTopics.add(normalisePresentationText(topic));
+    const prompt = examPromptForTopic(topic, unit, context, index, lesson.section === "Review");
+    const answerPoints = selectExamMarkingPoints(sourceQuestion, index, unit, lesson.section === "Review");
+    const question = finaliseQuestion({
+      id: `${lesson.lessonKey}-EXAM-${index + 1}`,
+      type: "Exam-style",
+      prompt,
+      marks: answerPoints.length,
+      objectiveIds: sourceQuestion.objectiveIds.length ? sourceQuestion.objectiveIds : [objectiveId],
+      answerPoints,
+      commonError: sourceQuestion.commonError,
+    }, staged);
+    return {
+      id: question.id,
+      sourceRef: index === 0 ? lesson.pastPaper.sourceRef : `Cambridge 9618 syllabus · ${requirementId}`,
+      accessUrl: lesson.pastPaper.accessUrl,
+      objectiveIds: question.objectiveIds,
+      task: question.prompt,
+      commandWord: question.commandWord,
+      marks: question.marks,
+      build: question.answerPoints,
+      markLogic: question.answerPoints,
+      commonLosses: [question.commonError],
+    };
+  });
+}
+
 function conciseSummary(lesson) {
   const stopwords = new Set("a an and are as at be by for from how in is it of on or plus that the this to use used uses using when which why with store stores stored required".split(" "));
   const seen = new Set();
@@ -361,7 +644,7 @@ function conciseSummary(lesson) {
 }
 
 export function finaliseLessonPresentation(lesson) {
-  const units = lesson.units.map(finaliseUnit);
+  const units = lesson.units.map((unit, unitIndex) => finaliseUnit(unit, lesson, unitIndex));
   const staged = { ...lesson, units };
   const practice = lesson.practice.map((question) => finaliseQuestion(question, staged));
   const rawPastPaper = lesson.syllabusIds.includes("S1.09") ? {
@@ -384,27 +667,12 @@ export function finaliseLessonPresentation(lesson) {
       "Stating that quality is preserved without linking this to object redrawing.",
     ],
   } : lesson.pastPaper;
-  const rawMatchingPracticeIndex = lesson.practice.findIndex((question) => normalisePresentationText(question.prompt) === normalisePresentationText(rawPastPaper.task));
-  const paperQuestion = rawMatchingPracticeIndex >= 0 ? practice[rawMatchingPracticeIndex] : finaliseQuestion({
-    id: `${lesson.lessonKey}-ORIGINAL-EXAM-STYLE`,
-    type: "Exam-style",
-    prompt: rawPastPaper.task,
-    marks: Math.max(1, rawPastPaper.markLogic.length),
-    objectiveIds: rawPastPaper.objectiveIds,
-    answerPoints: rawPastPaper.markLogic,
-    commonError: rawPastPaper.commonLosses[0] ?? "",
-  }, staged);
+  const examStyleQuestions = examStyleQuestionSet({ ...lesson, pastPaper: rawPastPaper }, practice, staged);
   return {
     ...staged,
     practice,
-    pastPaper: {
-      ...rawPastPaper,
-      task: paperQuestion?.prompt ?? lesson.pastPaper.task,
-      commandWord: paperQuestion?.commandWord ?? "Explain",
-      build: rawPastPaper.build.map(conciseMarkPoint),
-      markLogic: (rawMatchingPracticeIndex >= 0 ? paperQuestion.answerPoints : rawPastPaper.markLogic).map(conciseMarkPoint),
-      commonLosses: rawPastPaper.commonLosses.map(conciseMarkPoint),
-    },
+    pastPaper: examStyleQuestions[0],
+    examStyleQuestions,
     summary: conciseSummary(lesson),
     sources: lesson.sources.filter((source) => !/stage\s*\d+|audit|approved assets|\bV[23]\b/i.test(source)),
   };

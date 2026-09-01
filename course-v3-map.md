@@ -2,7 +2,7 @@
 
 - 93 pages: 91 teaching lessons and 2 integrated reviews.
 - 121/121 official AS requirements in Cambridge syllabus order.
-- Fixed page flow: lesson title and objectives → visual overview → core explanation → optional method/worked example → misconception → practice → original exam-style question → summary.
+- Fixed page flow: lesson title and objectives → visual overview → core explanation → optional method/worked example → misconception → practice → original exam-style questions → summary.
 
 ## Section 1 — Information representation
 
