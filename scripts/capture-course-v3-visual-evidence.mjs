@@ -169,6 +169,20 @@ async function navigate(cdp, url, diagnostics) {
 async function inspect(cdp, expectedStages = true) {
   return evaluate(cdp, `(()=>{
     const stageOrder=[...document.querySelectorAll("main > .lesson-stage")].map(section=>section.id);
+    const unitOrderIssues=[...document.querySelectorAll(".knowledge-unit")].filter(unit=>{
+      const visual=unit.querySelector('[data-role="lead-visual"]');
+      const core=unit.querySelector('[data-role="core-explanation"]');
+      return !visual||!core||Boolean(visual.compareDocumentPosition(core)&Node.DOCUMENT_POSITION_PRECEDING);
+    }).map(unit=>unit.dataset.syllabusId||unit.dataset.unitIndex);
+    const answerDetails=document.querySelector(".practice-question details");
+    let answerToggleWorks=false;
+    if(answerDetails){
+      const initial=answerDetails.open;
+      answerDetails.querySelector("summary")?.click();
+      const changed=answerDetails.open!==initial;
+      answerDetails.querySelector("summary")?.click();
+      answerToggleWorks=changed&&answerDetails.open===initial;
+    }
     const images=[...document.images].map(image=>({src:image.currentSrc||image.src,alt:image.alt,complete:image.complete,width:image.naturalWidth,height:image.naturalHeight}));
     const main=document.querySelector("main");
     const rect=document.querySelector("h1")?.getBoundingClientRect();
@@ -178,11 +192,12 @@ async function inspect(cdp, expectedStages = true) {
       title:document.title,
       h1:document.querySelector("h1")?.textContent?.trim()||"",
       stageOrder,
+      unitOrderIssues,
       knowledgeUnits:document.querySelectorAll(".knowledge-unit").length,
       materials:document.querySelectorAll(".teaching-material").length,
       practices:document.querySelectorAll(".practice-question").length,
       pastPaper:document.querySelectorAll(".past-paper").length,
-      teacherNotes:document.querySelectorAll("details.teacher-note:not([open])").length,
+      answerToggleWorks,
       brokenImages:images.filter(image=>!image.complete||image.width<1).map(image=>image.src),
       missingAlt:images.filter(image=>image.alt.trim().length<20).map(image=>image.src),
       imageCount:images.length,
@@ -229,15 +244,16 @@ async function screenshot(cdp, outputPath, viewport) {
   return { width: Math.max(viewport.width, width), height, bytes: Buffer.byteLength(capture.data, "base64"), captureMode: "single" };
 }
 
-const expectedStageOrder = ["guiding-question", "knowledge-explanation", "practice", "past-paper-analysis", "summary"];
+const expectedStageOrder = ["visual-and-core", "practice", "original-exam-style-question", "summary"];
 function issuesFor(metrics, diagnostics, isLesson) {
   const issues = [];
   if (isLesson && JSON.stringify(metrics.stageOrder) !== JSON.stringify(expectedStageOrder)) issues.push(`stage order: ${metrics.stageOrder.join(",")}`);
   if (isLesson && metrics.knowledgeUnits < 1) issues.push("no knowledge unit");
-  if (isLesson && metrics.materials < 2) issues.push("fewer than two teaching materials");
+  if (isLesson && metrics.materials < metrics.knowledgeUnits) issues.push("a knowledge unit is missing its lead visual");
   if (isLesson && metrics.practices < 3) issues.push("fewer than three practice tasks");
   if (isLesson && metrics.pastPaper !== 1) issues.push("past-paper analysis missing or duplicated");
-  if (isLesson && metrics.teacherNotes < 1) issues.push("teacher note is not collapsed by default");
+  if (isLesson && metrics.unitOrderIssues.length) issues.push(`visual/core order: ${metrics.unitOrderIssues.join(",")}`);
+  if (isLesson && !metrics.answerToggleWorks) issues.push("practice answer disclosure did not toggle and restore");
   if (metrics.brokenImages.length) issues.push(`broken images: ${metrics.brokenImages.join(" | ")}`);
   if (metrics.missingAlt.length) issues.push(`weak/missing alt: ${metrics.missingAlt.join(" | ")}`);
   if (metrics.pageOverflow > 1) issues.push(`page horizontal overflow ${metrics.pageOverflow}px`);

@@ -5,6 +5,7 @@ import { fileURLToPath } from "node:url";
 import { officialAsMapping } from "./syllabus-official-as-mapping.mjs";
 import { teachingDepthOverrides, questionRepairs } from "./course-v2-teaching-depth-overrides.mjs";
 import { section2Lessons } from "./course-v3-section2-content.mjs";
+import { finaliseLessonPresentation } from "./course-v3-presentation.mjs";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const v2 = JSON.parse(readFileSync(join(root, "scripts", "course-v2-content.json"), "utf8"));
@@ -413,12 +414,13 @@ function materialForPoint(point, objectiveIds, mechanismSteps, workedExamples, e
   const rows = [];
   for (const node of point.nodes ?? []) {
     const label = clean(node.label);
-    const match = explanations.find((explanation) => explanation.toLowerCase().includes(label.toLowerCase()) && !explanation.includes("…"));
-    if (label && match && !rows.some(([existing]) => existing.toLowerCase() === label.toLowerCase())) rows.push([label, match]);
+    const value = clean(node.value);
+    if (label && value && !rows.some(([existing]) => existing.toLowerCase() === label.toLowerCase())) rows.push([label, value]);
   }
-  if (rows.length < 2) explanations.slice(0, 6).forEach((explanation, index) => rows.push([`Key relationship ${index + 1}`, explanation]));
+  if (rows.length < 2) explanations.slice(0, 6).forEach((explanation, index) => rows.push([`Key relationship ${index + 1}`, explanation.split(/[,;:.]/)[0]]));
   const materials = [];
-  if (point.visualMode === "process") {
+  const specificMechanism = mechanismSteps.length >= 2 && mechanismSteps.every((step) => !/identify the relevant|connect the mechanism|establish the exact|trace the relationship|use the explanation|set up the required|carry out the complete|trace or test the result|extract the constraints|match mechanisms to|link the choice to/i.test(`${step.label} ${step.title}`));
+  if (point.visualMode === "process" && specificMechanism) {
     materials.push({ type: "flow", title: "Mechanism in examinable order", objectiveIds, steps: mechanismSteps.map((step) => [clean(step.title), clean(step.detail)]) });
   } else if (point.visualMode === "comparison" || point.visualMode === "decision") {
     materials.push({ type: "table", title: point.visualMode === "comparison" ? "Compare by technical factor" : "Decision evidence", objectiveIds, headers: ["Factor, term or condition", "Technical reading"], rows: rows.slice(0, 8) });
@@ -438,7 +440,7 @@ function materialForPoint(point, objectiveIds, mechanismSteps, workedExamples, e
       asset: `/${visual.path}`,
       alt: facts.join(" "),
       facts,
-      review: "Stage 10 two-pass semantic review approved",
+      review: "reviewed",
     });
   }
   return materials;
@@ -565,7 +567,6 @@ function transformTeachingLesson(sourceLesson, sectionPosition) {
       `Cambridge 9618 2027–2029 syllabus · ${sourceLesson.syllabusIds.join(", ")}`,
       "AL Computer Science Coursebook of New Syllabus · local teacher reference",
       "Hodder AS & A Level Computer Science Complete Book · local teacher reference",
-      "Stage 10 semantic image audit · approved assets only",
     ],
   };
 }
@@ -672,7 +673,7 @@ const rawCourse = [
   transformReviewLesson(v2.lessons.find((lesson) => lesson.lesson === 90)),
 ];
 
-export const courseV3Lessons = rawCourse.map((lesson, index) => ({
+export const courseV3Lessons = rawCourse.map((lesson, index) => finaliseLessonPresentation({
   ...lesson,
   sequenceIndex: index + 1,
   lessonKey: lesson.kind === "review" ? `REV-P${lesson.paper}` : `S${lesson.section}-L${String(rawCourse.slice(0, index + 1).filter((item) => item.section === lesson.section).length).padStart(2, "0")}`,
@@ -680,7 +681,7 @@ export const courseV3Lessons = rawCourse.map((lesson, index) => ({
 }));
 
 export const courseV3Meta = Object.freeze({
-  schemaVersion: 3,
+  schemaVersion: 4,
   syllabus: "Cambridge International AS Level Computer Science 9618 · 2027–2029",
   lessonCount: courseV3Lessons.length,
   teachingLessonCount: courseV3Lessons.filter((lesson) => lesson.kind === "teaching").length,

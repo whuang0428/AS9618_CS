@@ -5,13 +5,14 @@
 - Scope: 93/93 rendered pages, 121/121 official requirements and 589 atomic-objective instances.
 - Visual evidence: 186/186 desktop/mobile page reviews recorded.
 - Browser findings: 0 failing viewport reviews.
-- Each teaching page uses the same visible sequence: guiding question, knowledge explanation with adjacent materials, practice, copyright-safe past-paper analysis, lesson-specific summary.
-- ImageGen assets are limited to academic analogies and section anchors. Exact technical facts remain in default-visible text, tables, numbered processes, code traces and separately reviewed visuals.
+- Each knowledge unit presents exactly one lead visual before its core explanation; method and worked-example roles appear only when they add distinct work.
+- All 329 practice questions expose a Cambridge command word and separate marking points.
 
 ## Evidence index
 
 - [Visual evidence browser](course-v3-visual-evidence/index.html)
 - [Atomic objective—material—practice—past-paper ledger](course-v3-objective-material-ledger.csv)
+- [145-unit role and deduplication audit](course-v3-knowledge-unit-role-audit.csv)
 - [Generated course map](../course-v3-map.md)
 - [Browser QA data](course-v3-visual-evidence/browser-qa.json)
 - [ImageGen prompt, source and SHA-256 manifest](../scripts/course-v3-section-anchor-assets.json)

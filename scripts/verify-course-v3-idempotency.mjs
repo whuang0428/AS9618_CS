@@ -5,7 +5,13 @@ import { dirname, join, relative } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
-const targets = [join(root, "web", "course-v3"), join(root, "scripts", "course-v3-contract.json")];
+const targets = [
+  join(root, "web", "course-v3"),
+  join(root, "web", "index.html"),
+  join(root, "web", "assessments", "index.html"),
+  ...Array.from({ length: 151 }, (_, index) => join(root, "web", `lesson-${String(index + 1).padStart(3, "0")}`)),
+  join(root, "scripts", "course-v3-contract.json"),
+];
 
 function files(path) {
   if (!statSync(path).isDirectory()) return [path];

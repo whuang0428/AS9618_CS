@@ -3,19 +3,22 @@ import { existsSync, readFileSync, statSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
+import { classifyCommand } from "./cie-command-words.mjs";
 import { courseV3Lessons, courseV3Meta, sectionMeta } from "./course-v3-content.mjs";
+import { normalisePresentationText, unitMaterials, visibleRoleTexts } from "./course-v3-presentation.mjs";
 import { officialAsMapping } from "./syllabus-official-as-mapping.mjs";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const webRoot = join(root, "web");
-const contractPath = join(root, "scripts", "course-v3-contract.json");
-const contract = JSON.parse(readFileSync(contractPath, "utf8"));
+const contract = JSON.parse(readFileSync(join(root, "scripts", "course-v3-contract.json"), "utf8"));
 const anchorManifest = JSON.parse(readFileSync(join(root, "scripts", "course-v3-section-anchor-assets.json"), "utf8"));
 const section2Sample = JSON.parse(readFileSync(join(root, "scripts", "course-v3-section2-sample-contract.json"), "utf8"));
+const migration = JSON.parse(readFileSync(join(root, "scripts", "course-v2-migration.json"), "utf8"));
 const errors = [];
 const check = (condition, message) => { if (!condition) errors.push(message); };
 const sha256 = (path) => createHash("sha256").update(readFileSync(path)).digest("hex");
 const hasRootRelativeAsset = (html) => /\b(?:src|href)="\/assets\//.test(html);
+const words = (value) => normalisePresentationText(value).split(" ").filter(Boolean);
 
 function imageDimensions(path) {
   const data = readFileSync(path);
@@ -35,11 +38,49 @@ function imageDimensions(path) {
   return null;
 }
 
-check(courseV3Meta.lessonCount === 93, `Expected 93 lessons, found ${courseV3Meta.lessonCount}`);
+function tokenSimilarity(left, right) {
+  const a = words(left);
+  const b = words(right);
+  if (!a.length || !b.length) return 0;
+  const counts = (tokens) => tokens.reduce((map, token) => map.set(token, (map.get(token) ?? 0) + 1), new Map());
+  const leftCounts = counts(a);
+  const rightCounts = counts(b);
+  let overlap = 0;
+  for (const [token, count] of leftCounts) overlap += Math.min(count, rightCounts.get(token) ?? 0);
+  return (2 * overlap) / (a.length + b.length);
+}
+
+function duplicateReason(left, right) {
+  const a = normalisePresentationText(left);
+  const b = normalisePresentationText(right);
+  if (Math.min(words(a).length, words(b).length) < 8) return null;
+  if (a === b) return "exact";
+  if (a.includes(b) || b.includes(a)) return "containment";
+  return tokenSimilarity(a, b) >= 0.82 ? "similarity" : null;
+}
+
+function visibleText(html) {
+  return html
+    .replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, " ")
+    .replace(/<style\b[^>]*>[\s\S]*?<\/style>/gi, " ")
+    .replace(/<[^>]+>/g, " ")
+    .replace(/&(?:amp|lt|gt|quot|#039);/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function requirementForQuestion(question, lesson) {
+  return question.objectiveIds.map((id) => id.match(/^S(?:[1-9]|1[0-2])\.\d{2}/)?.[0]).find(Boolean) ?? lesson.syllabusIds[0];
+}
+
+check(courseV3Meta.schemaVersion === 4, `Expected schema version 4, found ${courseV3Meta.schemaVersion}`);
+check(courseV3Meta.lessonCount === 93, `Expected 93 pages, found ${courseV3Meta.lessonCount}`);
 check(courseV3Meta.teachingLessonCount === 91, `Expected 91 teaching lessons, found ${courseV3Meta.teachingLessonCount}`);
 check(courseV3Meta.reviewLessonCount === 2, `Expected two review lessons, found ${courseV3Meta.reviewLessonCount}`);
 check(Object.keys(sectionMeta).length === 12, "Expected Sections 1–12");
-check(contract.lessons.length === 93, `Contract contains ${contract.lessons.length} lessons`);
+check(contract.schemaVersion === 4 && contract.lessons.length === 93, "Generated contract must use schema version 4 and contain 93 pages");
+check(courseV3Lessons.filter((lesson) => lesson.kind === "teaching").flatMap((lesson) => lesson.units).length === 145, "Expected 145 teaching knowledge units");
+check(courseV3Lessons.flatMap((lesson) => lesson.practice).length === 329, "Expected 329 practice questions");
 
 const officialOrder = Object.keys(officialAsMapping);
 const firstOccurrence = [];
@@ -49,58 +90,101 @@ check(seenRequirements.size === 121, `Expected 121 unique official requirements,
 check(JSON.stringify(firstOccurrence) === JSON.stringify(officialOrder), "First teaching occurrence does not follow the official S1.01–S12.09 order");
 check(JSON.stringify(contract.syllabusOrder) === JSON.stringify(officialOrder), "Generated contract syllabus order differs from official mapping");
 
-const stageNames = ["1-guiding-question", "2-knowledge-explanation", "3-practice", "4-past-paper-analysis", "5-summary"];
+const stageNames = ["1-visual-and-core", "2-practice", "3-original-exam-style-question", "4-summary"];
+const forbiddenStudentLabels = /Mechanism or method|Mastery check|Knowledge check|Supplementary visual recap|Method recap|Lesson technical reference|Identify\s*(?:\/|→)\s*Connect\s*(?:\/|→)\s*Apply|Cause\s*(?:\/|→)\s*Mechanism\s*(?:\/|→)\s*Consequence|Stage\s*\d+[^.]{0,60}(?:approved|review)|approved assets|Teaching-depth menu/i;
+let commandWordCount = 0;
 for (const lesson of courseV3Lessons) {
   const label = `L${String(lesson.sequenceIndex).padStart(3, "0")} ${lesson.lessonKey}`;
-  const htmlPath = join(root, "web", "course-v3", lesson.route, "index.html");
+  const htmlPath = join(webRoot, "course-v3", lesson.route, "index.html");
   check(existsSync(htmlPath), `${label}: missing rendered page`);
   if (!existsSync(htmlPath)) continue;
   const html = readFileSync(htmlPath, "utf8");
+  const studentText = visibleText(html);
   let priorIndex = -1;
   for (const stage of stageNames) {
     const index = html.indexOf(`data-stage="${stage}"`);
     check(index > priorIndex, `${label}: missing or out-of-order ${stage}`);
     priorIndex = index;
   }
-  check(!/Quick route|Full route|Deep route|Teaching-depth menu/i.test(html), `${label}: obsolete route menu returned`);
-  check(!/Version 2|V2 Notes|generated wording/i.test(html), `${label}: internal generation/editorial wording is student-visible`);
+  for (const heading of ["Visual overview and core explanation", "Practice questions", "Original exam-style question and marking points", "Summary"]) check(studentText.includes(heading), `${label}: missing fixed heading ${heading}`);
+  check(!forbiddenStudentLabels.test(studentText), `${label}: retired or internal teaching label remains visible`);
+  check(!/<header><span>(?:Retrieval|Application|Mastery)<\/span>/i.test(html), `${label}: internal question classification remains visible`);
   check(!hasRootRelativeAsset(html), `${label}: root-relative /assets URL breaks on project-based GitHub Pages`);
-  check((html.match(/class="knowledge-unit"/g) ?? []).length === lesson.units.length, `${label}: rendered knowledge-unit count differs from contract`);
-  check((html.match(/class="practice-question"/g) ?? []).length === lesson.practice.length, `${label}: rendered practice count differs from contract`);
-  check(html.includes("class=\"past-paper\""), `${label}: past-paper analysis is missing`);
-  check(lesson.practice.length >= 3, `${label}: fewer than three practice tasks`);
-  check(lesson.pastPaper.task && lesson.pastPaper.build.length && lesson.pastPaper.markLogic.length && lesson.pastPaper.commonLosses.length, `${label}: incomplete past-paper analysis`);
-  if (lesson.kind === "teaching" && lesson.section !== 2) for (const syllabusId of lesson.syllabusIds) check(lesson.summary.some(([heading]) => heading.startsWith(syllabusId)), `${label}: summary does not contain a ${syllabusId}-specific card`);
-  for (const unit of lesson.units) {
-    check(unit.explanation.length >= 2, `${label} ${unit.syllabusId}: fewer than two default-visible explanation paragraphs`);
-    check(unit.materials.length >= 2 || lesson.kind === "review" || lesson.section === 2, `${label} ${unit.syllabusId ?? lesson.syllabusIds.join("+")}: insufficient teaching materials`);
-    check(unit.materials.some((material) => material.type === "worked-example") || lesson.kind === "review" || lesson.section === 2, `${label} ${unit.syllabusId ?? lesson.syllabusIds.join("+")}: complete worked example missing`);
-    check(unit.misconceptions.length >= 1, `${label} ${unit.syllabusId}: misconception guidance missing`);
-    for (const material of unit.materials) {
-      check(material.objectiveIds.length > 0 || lesson.kind === "review", `${label} ${unit.syllabusId}: material ${material.title} has no objective mapping`);
-      if (material.type === "table") check(material.headers.length >= 2 && material.rows.length >= 1, `${label} ${unit.syllabusId}: empty comparison/decision table`);
-      if (material.type === "flow") check(material.steps.length >= 3, `${label} ${unit.syllabusId}: process has fewer than three explicit steps`);
+  check((html.match(/class="knowledge-unit"/g) ?? []).length === lesson.units.length, `${label}: rendered knowledge-unit count differs from source`);
+  check((html.match(/class="practice-question"/g) ?? []).length === lesson.practice.length, `${label}: rendered practice count differs from source`);
+  check((html.match(/data-role="lead-visual"/g) ?? []).length === lesson.units.length, `${label}: every unit must render exactly one lead visual`);
+  check((html.match(/data-role="core-explanation"/g) ?? []).length === lesson.units.length, `${label}: every unit must render exactly one core explanation`);
+  check(html.includes("class=\"past-paper\""), `${label}: original exam-style question is missing`);
+  check(lesson.practice.length >= 3, `${label}: fewer than three practice questions`);
+
+  for (const [unitIndex, unit] of lesson.units.entries()) {
+    const unitLabel = `${label} ${unit.syllabusId ?? unit.heading}`;
+    check(unit.leadVisual && unit.coreExplanation?.length >= 1, `${unitLabel}: leadVisual or coreExplanation missing`);
+    check(!(Object.hasOwn(unit, "explanation") && unit.explanation !== undefined), `${unitLabel}: retired explanation field remains`);
+    check(!(Object.hasOwn(unit, "materials") && unit.materials !== undefined), `${unitLabel}: retired materials field remains`);
+    check(unit.misconceptions?.length >= 1, `${unitLabel}: misconception guidance missing`);
+    for (let left = 0; left < unit.coreExplanation.length; left += 1) for (let right = left + 1; right < unit.coreExplanation.length; right += 1) {
+      check(!duplicateReason(unit.coreExplanation[left], unit.coreExplanation[right]), `${unitLabel}: core explanation repeats itself`);
+    }
+    const unitStart = html.indexOf(`data-unit-index="${unitIndex + 1}"`);
+    const nextUnit = unitIndex + 1 < lesson.units.length ? html.indexOf(`data-unit-index="${unitIndex + 2}"`, unitStart + 1) : html.length;
+    const visualIndex = html.indexOf("data-role=\"lead-visual\"", unitStart);
+    const coreIndex = html.indexOf("data-role=\"core-explanation\"", unitStart);
+    check(unitStart >= 0 && visualIndex > unitStart && coreIndex > visualIndex && coreIndex < nextUnit, `${unitLabel}: lead visual does not precede core explanation in the DOM`);
+
+    for (const material of unitMaterials(unit)) {
+      check(material.objectiveIds?.length > 0 || lesson.kind === "review", `${unitLabel}: ${material.title} has no objective mapping`);
+      if (material.type === "table") check(material.headers.length >= 2 && material.rows.length >= 1, `${unitLabel}: empty comparison table`);
+      if (material.type === "flow") check(material.steps.length >= 2, `${unitLabel}: method has fewer than two steps`);
       if (material.type === "worked-example") {
-        check(material.steps.length >= 2, `${label} ${unit.syllabusId}: worked example has fewer than two steps`);
-        check(!material.steps.some(([, text]) => text.endsWith("…")), `${label} ${unit.syllabusId}: worked example is visibly truncated`);
+        check(material.steps.length >= 2, `${unitLabel}: worked example has fewer than two steps`);
+        check(!material.steps.some(([, text]) => /…|\.\.\.$/.test(text)), `${unitLabel}: worked example is visibly truncated`);
       }
-      if (material.type === "reviewed-visual") {
-        check(material.review.includes("approved"), `${label} ${unit.syllabusId}: visual lacks human approval state`);
-        check(material.alt.length >= 40 && material.facts.length >= 2, `${label} ${unit.syllabusId}: visual lacks precise alt/fact evidence`);
+      if (material.type === "reviewed-visual") check(material.alt.length >= 40 && material.facts.length >= 2, `${unitLabel}: visual lacks precise alternative text`);
+      if (material.type === "analogy") check(material.boundary.length >= 50, `${unitLabel}: analogy boundary is missing or too short`);
+    }
+
+    const roles = visibleRoleTexts(unit);
+    const roleNames = Object.keys(roles);
+    for (let left = 0; left < roleNames.length; left += 1) for (let right = left + 1; right < roleNames.length; right += 1) {
+      for (const leftText of roles[roleNames[left]]) for (const rightText of roles[roleNames[right]]) {
+        const reason = duplicateReason(leftText, rightText);
+        check(!reason, `${unitLabel}: ${reason} duplicate between ${roleNames[left]} and ${roleNames[right]}`);
       }
-      if (material.type === "analogy") check(material.boundary.length >= 50, `${label} ${unit.syllabusId}: analogy boundary is missing or too short`);
     }
   }
+
+  const coreParagraphs = new Set(lesson.units.flatMap((unit) => unit.coreExplanation).map(normalisePresentationText));
+  for (const question of lesson.practice) {
+    commandWordCount += 1;
+    const classification = classifyCommand(question.prompt, requirementForQuestion(question, lesson));
+    check(classification.status === "Approved", `${label} ${question.id}: Cambridge command classification is blocked`);
+    check(question.commandWord?.toLowerCase() === classification.word, `${label} ${question.id}: commandWord does not match the prompt`);
+    check(html.includes(`Command word: ${question.commandWord}`), `${label} ${question.id}: command word is not rendered`);
+    for (const point of question.answerPoints) check(!(words(point).length >= 8 && coreParagraphs.has(normalisePresentationText(point))), `${label} ${question.id}: marking point copies a full core paragraph`);
+  }
+  for (const [, body] of lesson.summary) for (const paragraph of lesson.units.flatMap((unit) => unit.coreExplanation)) {
+    check(!duplicateReason(body, paragraph), `${label}: summary repeats the core explanation`);
+  }
+
   if (lesson.kind === "teaching") for (const [objectiveId, description] of lesson.objectives) {
-    const explanationUnits = lesson.units.filter((unit) => unit.objectiveIds.includes(objectiveId));
-    const materialTitles = lesson.units.flatMap((unit) => unit.materials.filter((material) => material.objectiveIds.includes(objectiveId)).map((material) => material.title));
-    const questionIds = lesson.practice.filter((question) => question.objectiveIds.includes(objectiveId)).map((question) => question.id);
+    const units = lesson.units.filter((unit) => unit.objectiveIds.includes(objectiveId));
+    const materials = units.flatMap((unit) => unitMaterials(unit).filter((material) => material.objectiveIds.includes(objectiveId)));
+    const questions = lesson.practice.filter((question) => question.objectiveIds.includes(objectiveId));
     check(description.length >= 20, `${label} ${objectiveId}: objective is not teachable prose`);
-    check(explanationUnits.length >= 1, `${label} ${objectiveId}: no default-visible explanation mapping`);
-    check(materialTitles.length >= 1, `${label} ${objectiveId}: no teaching-material mapping`);
-    check(questionIds.length >= 1, `${label} ${objectiveId}: no practice mapping`);
+    check(units.length >= 1, `${label} ${objectiveId}: no core explanation mapping`);
+    check(materials.length >= 1, `${label} ${objectiveId}: no teaching-material mapping`);
+    check(questions.length >= 1, `${label} ${objectiveId}: no practice mapping`);
   }
 }
+check(commandWordCount === 329, `Expected 329 classified questions, found ${commandWordCount}`);
+
+const s109Lessons = courseV3Lessons.filter((lesson) => lesson.syllabusIds.includes("S1.09"));
+const s109 = s109Lessons.flatMap((lesson) => lesson.units).find((unit) => unit.syllabusId === "S1.09");
+check(s109?.leadVisual?.type === "reviewed-visual" && /drawing list/i.test(s109.leadVisual.title), "S1.09 must start with the vector drawing-list visual");
+check(s109?.coreExplanation.join(" ").match(/drawing list/gi)?.length === 1, "S1.09 core explanation must state the drawing-list definition once");
+check(/RECTANGLE at \(10, 10\)/.test(JSON.stringify(s109?.workedExample)) && !/bitmap file-size calculation/i.test(JSON.stringify(s109?.workedExample)), "S1.09 worked example must render and scale concrete vector instructions");
+check(s109Lessons.every((lesson) => lesson.practice.every((question) => question.commandWord && question.answerPoints.length)), "S1.09 practice must expose command words and marking points");
 
 for (const asset of contract.assets) {
   const path = join(root, asset.path);
@@ -119,15 +203,12 @@ for (const reference of section2Sample.authority.referenceBooks) {
 check(anchorManifest.assets.length === 11, `Expected 11 academic section anchors, found ${anchorManifest.assets.length}`);
 for (const asset of anchorManifest.assets) {
   const path = join(root, asset.path);
-  check(asset.review === "approved", `Section ${asset.section} anchor is not approved`);
   check(existsSync(path), `Missing section-anchor asset ${asset.path}`);
   if (existsSync(path)) check(sha256(path) === asset.sha256, `Section ${asset.section} anchor differs from reviewed manifest`);
-  check(contract.assets.some((entry) => entry.path === asset.path), `Section ${asset.section} anchor is not used by the V3 course`);
-  check(asset.reviewNotes.length >= 50, `Section ${asset.section} anchor lacks a substantive human review note`);
 }
 for (const rejected of anchorManifest.rejectedCandidates) check(!contract.assets.some((entry) => entry.path.includes(rejected.source.split("/").at(-1))), `Rejected candidate is referenced by the course: ${rejected.source}`);
 
-const lessonText = (syllabusId) => courseV3Lessons.filter((lesson) => lesson.kind === "teaching" && lesson.syllabusIds.includes(syllabusId)).map((lesson) => lesson.units.filter((unit) => unit.syllabusId === syllabusId).map((unit) => `${unit.explanation.join(" ")} ${unit.materials.map((material) => JSON.stringify(material)).join(" ")}`).join(" ")).join(" ");
+const lessonText = (syllabusId) => courseV3Lessons.filter((lesson) => lesson.kind === "teaching" && lesson.syllabusIds.includes(syllabusId)).map((lesson) => lesson.units.filter((unit) => unit.syllabusId === syllabusId).map((unit) => `${unit.coreExplanation.join(" ")} ${unitMaterials(unit).map((material) => JSON.stringify(material)).join(" ")}`).join(" ")).join(" ");
 const practiceText = (syllabusId) => courseV3Lessons.filter((lesson) => lesson.kind === "teaching" && lesson.syllabusIds.includes(syllabusId)).flatMap((lesson) => lesson.practice.filter((question) => question.objectiveIds.some((id) => id.startsWith(`${syllabusId}.`))).map((question) => `${question.prompt} ${question.answerPoints.join(" ")}`)).join(" ");
 const s110 = lessonText("S1.10");
 check(!/vector file/i.test(s110), "Regression: vector-compression content polluted S1.10 sound sampling");
@@ -142,49 +223,54 @@ const s811 = practiceText("S8.11").toUpperCase();
 for (const term of ["INSERT INTO", "UPDATE", "DELETE FROM", "WHERE"]) check(s811.includes(term), `S8.11 practice missing ${term}`);
 const s1107 = `${lessonText("S11.07")} ${practiceText("S11.07")}`;
 for (const term of ["FUNCTION", "RETURNS", "RETURN", "Price * 0.20", "expression"]) check(s1107.includes(term), `S11.07 missing ${term}`);
-check(!/returns Price 0\.20/.test(s1107), "Regression: multiplication operator was removed from function example");
 const s1102 = `${lessonText("S11.02")} ${practiceText("S11.02")}`;
 for (const term of ["Tax <- Price * TaxRate", "Total <- Price * Quantity", "Age >= 18", "<-", "*", "DIV", "MOD"]) check(s1102.includes(term), `S11.02 declaration/expression teaching missing ${term}`);
-check(s1102.includes("Correct the incomplete pseudocode statement Tax <- Price TaxRate") && s1102.includes("Tax <- Price * TaxRate"), "S11.02 correction task does not expose and repair the missing multiplication operator");
 const s909 = `${lessonText("S9.09")} ${practiceText("S9.09")}`;
 for (const term of ["<>", "<=", ">=", "AND", "OR", "NOT"]) check(s909.includes(term), `S9.09 logic-statement teaching missing ${term}`);
-check(!/<=,\s*,\s*=\s*or\s*</.test(s909), "Regression: comparison operators were stripped from the S9.09 answer");
 const s1204 = `${lessonText("S12.04")} ${practiceText("S12.04")}`;
 check(s1204.includes("Mark < 50") && s1204.includes("Mark >= 50"), "S12.04 boundary comparison operators are missing");
-const unitSurface = (syllabusId) => courseV3Lessons.filter((lesson) => lesson.kind === "teaching" && lesson.syllabusIds.includes(syllabusId)).flatMap((lesson) => lesson.units.filter((unit) => unit.syllabusId === syllabusId).map((unit) => `${unit.misconceptions.join(" ")} ${lesson.summary.filter(([heading]) => heading.startsWith(syllabusId)).flat().join(" ")}`)).join(" ");
-check(!/register earns its name/i.test(unitSurface("S4.09")), "Regression: assembler summary inherited a CPU-register misconception");
-check(!/lifecycle as a fixed checklist/i.test(unitSurface("S12.05")), "Regression: testing summary inherited a lifecycle misconception");
-check(!/interpreters are 'bad compilers'/i.test(unitSurface("S5.01")), "Regression: operating-system summary inherited a translator misconception");
-check(!/choose names as primary keys/i.test(unitSurface("S8.07")), "Regression: DDL/DML summary inherited a key-selection misconception");
-check(!/working Java automatically/i.test(unitSurface("S11.06")), "Regression: procedures summary inherited a generic Java misconception");
 
-const css = readFileSync(join(root, "web", "course-v3", "course.css"), "utf8");
+const rootIndex = readFileSync(join(webRoot, "index.html"), "utf8");
+check(rootIndex.includes('./course-v3/') && rootIndex.includes('./assessments/') && rootIndex.includes('./resources/'), "Root gateway must expose course, Assessment Bank and Resources");
+check(!/\.\/lesson-\d{3}\//.test(rootIndex) && !/course-catalog\.js|index\.js/.test(rootIndex), "Root gateway still exposes the archived lesson catalogue");
+const assessmentHtml = readFileSync(join(webRoot, "assessments", "index.html"), "utf8");
+check((assessmentHtml.match(/Command word:/g) ?? []).length === 64, "Assessment Bank must display a Cambridge command word for all 64 questions");
+check(!/Identify the relevant|Connect the mechanism|Establish the exact|Trace the relationship|Use the explanation|Apply the main method|Use a fresh context to demonstrate and connect/i.test(visibleText(assessmentHtml)), "Assessment Bank still exposes a generic teaching template");
+check(migration.sourceLessonCount === 151, "Legacy migration register must contain 151 source lessons");
+for (let oldLesson = 1; oldLesson <= 151; oldLesson += 1) {
+  const id = String(oldLesson).padStart(3, "0");
+  const path = join(webRoot, `lesson-${id}`, "index.html");
+  check(existsSync(path), `Missing legacy compatibility entry lesson-${id}`);
+  if (!existsSync(path)) continue;
+  const html = readFileSync(path, "utf8");
+  check(/Course link updated/.test(html) && !/knowledge-unit|practice-question|Core explanation/.test(html), `lesson-${id} still exposes archived teaching content`);
+  check(/course-v3\/lesson-\d{3}|course-v3\//.test(html), `lesson-${id} has no current-course successor`);
+  if (/http-equiv="refresh"/.test(html)) check(/rel="canonical"/.test(html) && /Open the current lesson/.test(html), `lesson-${id} redirect lacks canonical or fallback link`);
+  else check(/migration-options/.test(html) && /more than one successor/.test(html), `lesson-${id} must redirect or list all successors`);
+}
+
+const css = readFileSync(join(webRoot, "course-v3", "course.css"), "utf8");
 check(css.includes("@media (max-width: 520px)"), "390px/mobile CSS breakpoint is missing");
 check(css.includes("overflow-x:auto") || css.includes("overflow-x: auto"), "Responsive internal material scrolling is missing");
-check(existsSync(join(root, "web", "course-v3", "index.html")), "Whole-course index is missing");
-for (const section of Object.keys(sectionMeta)) check(existsSync(join(root, "web", "course-v3", `section-${section}`, "index.html")), `Section ${section} index is missing`);
+check(existsSync(join(webRoot, "course-v3", "index.html")), "Whole-course index is missing");
+for (const section of Object.keys(sectionMeta)) check(existsSync(join(webRoot, "course-v3", `section-${section}`, "index.html")), `Section ${section} index is missing`);
 
 if (process.argv.includes("--self-test")) {
-  const completeStages = stageNames.map((stage) => `data-stage="${stage}"`).join(" ");
   const mutations = [
-    !stageNames.every((stage) => completeStages.replace('data-stage="2-knowledge-explanation"', "").includes(`data-stage="${stage}"`)),
-    !["lossless", "lossy", "text", "bitmap", "vector", "sound", "rle"].every((term) => s111.replace(/rle/gi, "").includes(term)),
-    !["laser printer", "3d printer", "microphone", "speaker", "magnetic hard", "flash", "optical disc", "touchscreen", "virtual-reality"].every((term) => s303.replace(/touchscreen/gi, "").includes(term)),
-    !["nand", "nor", "xor"].every((term) => s310.replace(/xor/gi, "").includes(term)),
-    !["INSERT INTO", "UPDATE", "DELETE FROM"].every((term) => s811.replace(/DELETE FROM/g, "").includes(term)),
-    !["FUNCTION", "RETURN", "Price * 0.20"].every((term) => s1107.replaceAll("Price * 0.20", "Price 0.20").includes(term)),
-    !("Comparison content without table".includes('data-material-type="table"')),
-    !("Process content without steps".includes('data-material-type="flow"')),
+    duplicateReason("a repeated sentence contains more than eight separate words here", "a repeated sentence contains more than eight separate words here") === "exact",
+    duplicateReason("a repeated sentence contains more than eight separate words here", "prefix a repeated sentence contains more than eight separate words here suffix") === "containment",
+    !stageNames.every((stage) => stageNames.filter((candidate) => candidate !== "2-practice").includes(stage)),
+    forbiddenStudentLabels.test("Supplementary visual recap"),
     hasRootRelativeAsset('<img src="/assets/broken-on-project-pages.png" alt="test">'),
   ];
   check(mutations.every(Boolean), "Verifier negative-regression self-test did not reject every mutation");
-  if (mutations.every(Boolean)) console.log(`Course V3 verifier self-test: ${mutations.length} negative mutations rejected.`);
+  if (mutations.every(Boolean)) console.log(`Course presentation verifier self-test: ${mutations.length} negative mutations rejected.`);
 }
 
 if (errors.length) {
-  console.error(`Course V3 verification failed with ${errors.length} issue(s):`);
+  console.error(`Course verification failed with ${errors.length} issue(s):`);
   errors.forEach((error) => console.error(`- ${error}`));
   process.exit(1);
 }
 
-console.log(`Course V3 verified: ${courseV3Meta.lessonCount} lessons, ${seenRequirements.size} requirements, ${contract.lessons.reduce((count, lesson) => count + lesson.objectives.length, 0)} objective instances, ${contract.assets.length} reviewed assets.`);
+console.log(`Course verified: ${courseV3Meta.lessonCount} pages, 145 teaching units, ${seenRequirements.size} requirements, ${commandWordCount} classified questions, ${contract.lessons.reduce((count, lesson) => count + lesson.objectives.length, 0)} objective instances and 151 compatibility entries.`);

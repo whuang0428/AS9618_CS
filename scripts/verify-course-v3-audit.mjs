@@ -37,7 +37,9 @@ for (const lesson of courseV3Lessons) {
     check(record?.metrics?.pageOverflow === 0, `Page overflow remains for L${id} ${viewport}`);
     check(record?.metrics?.brokenImages?.length === 0, `Broken image remains for L${id} ${viewport}`);
     check(record?.sourceSha256 === sha256(join(root, "web", "course-v3", lesson.route, "index.html")), `Visual evidence is stale for L${id} ${viewport}`);
-    check(JSON.stringify(record?.metrics?.stageOrder) === JSON.stringify(["guiding-question", "knowledge-explanation", "practice", "past-paper-analysis", "summary"]), `Stage order failed for L${id} ${viewport}`);
+    check(JSON.stringify(record?.metrics?.stageOrder) === JSON.stringify(["visual-and-core", "practice", "original-exam-style-question", "summary"]), `Stage order failed for L${id} ${viewport}`);
+    check(record?.metrics?.unitOrderIssues?.length === 0, `Lead visual/core explanation order failed for L${id} ${viewport}`);
+    check(record?.metrics?.answerToggleWorks === true, `Practice answer interaction failed for L${id} ${viewport}`);
   }
 }
 
@@ -61,6 +63,13 @@ if (existsSync(ledgerPath)) {
   check(lines.length === 590, `Expected 589 ledger data rows; found ${lines.length - 1}`);
   check(lines.slice(1).every((line) => line.includes('"reviewed"') && line.includes('"high"')), "Ledger contains an unreviewed or low-confidence row");
 }
+const unitAuditPath = join(root, "audits", "course-v3-knowledge-unit-role-audit.csv");
+check(existsSync(unitAuditPath), "Knowledge-unit role audit is missing");
+if (existsSync(unitAuditPath)) {
+  const lines = readFileSync(unitAuditPath, "utf8").trim().split("\n");
+  check(lines.length === 146, `Expected 145 teaching-unit audit rows; found ${lines.length - 1}`);
+  check(lines.slice(1).every((line) => line.includes('"none"') && line.endsWith('"PASS"')), "Knowledge-unit audit contains an unresolved duplicate or role failure");
+}
 
 for (const relative of ["audits/course-v3-whole-course-visual-audit.md", "audits/course-v3-visual-evidence/index.html", "course-v3-map.md"]) check(existsSync(join(root, relative)), `Missing audit artifact ${relative}`);
 const report = existsSync(join(root, "audits/course-v3-whole-course-visual-audit.md")) ? readFileSync(join(root, "audits/course-v3-whole-course-visual-audit.md"), "utf8") : "";
@@ -73,4 +82,4 @@ if (errors.length) {
   process.exit(1);
 }
 
-console.log("Course V3 visual audit verified: 186 lesson screenshots, 26 index reviews, 24 contact sheets and 589 reviewed objective rows.");
+console.log("Course visual audit verified: 186 lesson screenshots, 26 index reviews, 24 contact sheets, 589 objective rows and 145 teaching-unit role rows.");
