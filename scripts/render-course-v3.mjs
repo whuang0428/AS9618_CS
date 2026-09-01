@@ -20,7 +20,8 @@ const escapeHtml = (value = "") => String(value)
 const sha256 = (path) => createHash("sha256").update(readFileSync(path)).digest("hex");
 const write = (path, contents) => { mkdirSync(dirname(path), { recursive: true }); writeFileSync(path, contents); };
 const objectiveBadges = (ids) => ids.map((id) => `<span class="objective-badge">${escapeHtml(id)}</span>`).join("");
-const assetSource = (asset, section) => asset.startsWith("/") ? asset : `/assets/course-v3/section-${section}/${asset}`;
+const webAssetPath = (asset, section) => asset.startsWith("/") ? asset : `/assets/course-v3/section-${section}/${asset}`;
+const lessonAssetSource = (asset, section) => `../../${webAssetPath(asset, section).replace(/^\//, "")}`;
 
 function renderTable(material) {
   const rows = material.rows.length ? material.rows : [["Read the exact explanation", "This topic is taught through the adjacent definition, worked example and practice rather than an invented comparison."]];
@@ -41,23 +42,23 @@ function renderFlow(material) {
 }
 
 function renderAnalogy(material, section) {
-  return `<figure class="teaching-material material-analogy" data-material-type="analogy" data-objectives="${material.objectiveIds.join(" ")}"><h4>${escapeHtml(material.title)}</h4><img src="${escapeHtml(assetSource(material.asset, section))}" alt="${escapeHtml(material.alt)}" loading="lazy" decoding="async"><figcaption>${escapeHtml(material.caption)}</figcaption><aside class="analogy-boundary"><strong>Analogy boundary</strong><p>${escapeHtml(material.boundary)}</p></aside></figure>`;
+  return `<figure class="teaching-material material-analogy" data-material-type="analogy" data-objectives="${material.objectiveIds.join(" ")}"><h4>${escapeHtml(material.title)}</h4><img src="${escapeHtml(lessonAssetSource(material.asset, section))}" alt="${escapeHtml(material.alt)}" loading="lazy" decoding="async"><figcaption>${escapeHtml(material.caption)}</figcaption><aside class="analogy-boundary"><strong>Analogy boundary</strong><p>${escapeHtml(material.boundary)}</p></aside></figure>`;
 }
 
 function renderWorkedExample(material) {
   return `<section class="teaching-material worked-example" data-material-type="worked-example" data-objectives="${material.objectiveIds.join(" ")}"><h4>Worked example · ${escapeHtml(material.title)}</h4><ol class="worked-steps">${material.steps.map(([label, text]) => `<li><strong>${escapeHtml(label)}</strong>${text.includes("\n") ? `<pre><code>${escapeHtml(text)}</code></pre>` : `<p>${escapeHtml(text)}</p>`}</li>`).join("")}</ol></section>`;
 }
 
-function renderReviewedVisual(material) {
-  return `<figure class="teaching-material reviewed-visual" data-material-type="reviewed-visual" data-objectives="${material.objectiveIds.join(" ")}" data-review-state="approved"><h4>${escapeHtml(material.title)}</h4><div class="visual-scroll"><img src="${escapeHtml(material.asset)}" alt="${escapeHtml(material.alt)}" loading="lazy" decoding="async"></div><figcaption>${escapeHtml(material.review)}</figcaption><div class="figure-facts"><strong>Exact facts represented</strong><ul>${material.facts.map((fact) => `<li>${escapeHtml(fact)}</li>`).join("")}</ul></div></figure>`;
+function renderReviewedVisual(material, section) {
+  return `<figure class="teaching-material reviewed-visual" data-material-type="reviewed-visual" data-objectives="${material.objectiveIds.join(" ")}" data-review-state="approved"><h4>${escapeHtml(material.title)}</h4><div class="visual-scroll"><img src="${escapeHtml(lessonAssetSource(material.asset, section))}" alt="${escapeHtml(material.alt)}" loading="lazy" decoding="async"></div><figcaption>${escapeHtml(material.review)}</figcaption><div class="figure-facts"><strong>Exact facts represented</strong><ul>${material.facts.map((fact) => `<li>${escapeHtml(fact)}</li>`).join("")}</ul></div></figure>`;
 }
 
 function renderTopologyGallery(material, section) {
-  return `<section class="teaching-material topology-gallery" data-material-type="topology-gallery" data-objectives="${material.objectiveIds.join(" ")}"><h4>${escapeHtml(material.title)}</h4><div class="topology-grid">${material.entries.map(([name, asset, alt, steps]) => `<article class="topology-plate"><h5>${escapeHtml(name)}</h5><img src="${escapeHtml(assetSource(asset, section))}" alt="${escapeHtml(alt)}" loading="lazy" decoding="async"><ol>${steps.map((step) => `<li>${escapeHtml(step)}</li>`).join("")}</ol></article>`).join("")}</div><aside class="precision-note"><strong>Technical reading rule</strong><p>The reviewed image establishes the link pattern. The numbered path is authoritative: count each physical segment and name every forwarding device.</p></aside></section>`;
+  return `<section class="teaching-material topology-gallery" data-material-type="topology-gallery" data-objectives="${material.objectiveIds.join(" ")}"><h4>${escapeHtml(material.title)}</h4><div class="topology-grid">${material.entries.map(([name, asset, alt, steps]) => `<article class="topology-plate"><h5>${escapeHtml(name)}</h5><img src="${escapeHtml(lessonAssetSource(asset, section))}" alt="${escapeHtml(alt)}" loading="lazy" decoding="async"><ol>${steps.map((step) => `<li>${escapeHtml(step)}</li>`).join("")}</ol></article>`).join("")}</div><aside class="precision-note"><strong>Technical reading rule</strong><p>The reviewed image establishes the link pattern. The numbered path is authoritative: count each physical segment and name every forwarding device.</p></aside></section>`;
 }
 
 function renderReservoir(material, section) {
-  return `<figure class="teaching-material material-reservoir" data-material-type="reservoir" data-objectives="${material.objectiveIds.join(" ")}"><h4>${escapeHtml(material.title)}</h4><div class="reservoir-stage"><img src="${escapeHtml(assetSource(material.asset, section))}" alt="A reservoir with an inlet, stored water and an outlet, used only as an analogy for a streaming buffer." loading="lazy" decoding="async"><span class="reservoir-label label-in">arrival rate</span><span class="reservoir-label label-level">buffer level</span><span class="reservoir-label label-out">playback bit rate</span></div><figcaption>Data arriving from the network fills the buffer; playback drains it at the media bit rate.</figcaption><aside class="analogy-boundary"><strong>Critical limit</strong><p>If the long-term arrival rate is lower than the playback bit rate, any finite buffer eventually empties. A larger buffer delays the pause; it cannot repair sustained insufficient input.</p></aside></figure>`;
+  return `<figure class="teaching-material material-reservoir" data-material-type="reservoir" data-objectives="${material.objectiveIds.join(" ")}"><h4>${escapeHtml(material.title)}</h4><div class="reservoir-stage"><img src="${escapeHtml(lessonAssetSource(material.asset, section))}" alt="A reservoir with an inlet, stored water and an outlet, used only as an analogy for a streaming buffer." loading="lazy" decoding="async"><span class="reservoir-label label-in">arrival rate</span><span class="reservoir-label label-level">buffer level</span><span class="reservoir-label label-out">playback bit rate</span></div><figcaption>Data arriving from the network fills the buffer; playback drains it at the media bit rate.</figcaption><aside class="analogy-boundary"><strong>Critical limit</strong><p>If the long-term arrival rate is lower than the playback bit rate, any finite buffer eventually empties. A larger buffer delays the pause; it cannot repair sustained insufficient input.</p></aside></figure>`;
 }
 
 function renderAddressDemo(material) {
@@ -76,7 +77,7 @@ function renderMaterial(material, section) {
   if (material.type === "flow") return renderFlow(material);
   if (material.type === "analogy") return renderAnalogy(material, section);
   if (material.type === "worked-example") return renderWorkedExample(material);
-  if (material.type === "reviewed-visual") return renderReviewedVisual(material);
+  if (material.type === "reviewed-visual") return renderReviewedVisual(material, section);
   if (material.type === "topology-gallery") return renderTopologyGallery(material, section);
   if (material.type === "reservoir") return renderReservoir(material, section);
   if (material.type === "address-demo") return renderAddressDemo(material);
@@ -145,8 +146,8 @@ for (const lesson of courseV3Lessons.filter((item) => item.kind === "teaching"))
   requirementOwners.set(id, owners);
 }
 const assets = [...new Set(courseV3Lessons.flatMap((lesson) => lesson.units.flatMap((unit) => unit.materials.flatMap((material) => {
-  if (material.type === "topology-gallery") return material.entries.map((entry) => assetSource(entry[1], lesson.section));
-  return material.asset ? [assetSource(material.asset, lesson.section)] : [];
+  if (material.type === "topology-gallery") return material.entries.map((entry) => webAssetPath(entry[1], lesson.section));
+  return material.asset ? [webAssetPath(material.asset, lesson.section)] : [];
 }))))];
 for (const asset of assets) if (!existsSync(join(reviewedAssetRoot, asset.replace(/^\//, "")))) throw new Error(`Missing V3 asset ${asset}`);
 

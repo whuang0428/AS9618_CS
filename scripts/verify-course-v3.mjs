@@ -15,6 +15,7 @@ const section2Sample = JSON.parse(readFileSync(join(root, "scripts", "course-v3-
 const errors = [];
 const check = (condition, message) => { if (!condition) errors.push(message); };
 const sha256 = (path) => createHash("sha256").update(readFileSync(path)).digest("hex");
+const hasRootRelativeAsset = (html) => /\b(?:src|href)="\/assets\//.test(html);
 
 function imageDimensions(path) {
   const data = readFileSync(path);
@@ -63,6 +64,7 @@ for (const lesson of courseV3Lessons) {
   }
   check(!/Quick route|Full route|Deep route|Teaching-depth menu/i.test(html), `${label}: obsolete route menu returned`);
   check(!/Version 2|V2 Notes|generated wording/i.test(html), `${label}: internal generation/editorial wording is student-visible`);
+  check(!hasRootRelativeAsset(html), `${label}: root-relative /assets URL breaks on project-based GitHub Pages`);
   check((html.match(/class="knowledge-unit"/g) ?? []).length === lesson.units.length, `${label}: rendered knowledge-unit count differs from contract`);
   check((html.match(/class="practice-question"/g) ?? []).length === lesson.practice.length, `${label}: rendered practice count differs from contract`);
   check(html.includes("class=\"past-paper\""), `${label}: past-paper analysis is missing`);
@@ -173,6 +175,7 @@ if (process.argv.includes("--self-test")) {
     !["FUNCTION", "RETURN", "Price * 0.20"].every((term) => s1107.replaceAll("Price * 0.20", "Price 0.20").includes(term)),
     !("Comparison content without table".includes('data-material-type="table"')),
     !("Process content without steps".includes('data-material-type="flow"')),
+    hasRootRelativeAsset('<img src="/assets/broken-on-project-pages.png" alt="test">'),
   ];
   check(mutations.every(Boolean), "Verifier negative-regression self-test did not reject every mutation");
   if (mutations.every(Boolean)) console.log(`Course V3 verifier self-test: ${mutations.length} negative mutations rejected.`);
