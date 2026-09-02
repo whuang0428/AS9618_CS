@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-01T14:06:35.206Z",
+  "generatedAt": "2026-09-02T04:52:52.786Z",
   "engine": "Google Chrome via DevTools Protocol",
-  "baseUrl": "http://127.0.0.1:8772/course-v3",
+  "baseUrl": "http://127.0.0.1:8769/course-v3",
   "expectedLessonPages": 93,
   "viewports": [
     {
@@ -46,7 +46,7 @@
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 3612,
+        "contentLength": 3802,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -56,11 +56,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 6097,
-        "bytes": 1452825,
+        "height": 6153,
+        "bytes": 1418449,
         "captureMode": "single"
       },
-      "sourceSha256": "6b7f479b302979ee9809ff352dbd7cb13990919da9b0375ae3c8456d9a44ac30",
+      "sourceSha256": "321536631b6cec4e4896b1fd8ebfd709b35fe65941c79b41ea88937cd9a08218",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-001.png"
     },
     {
@@ -90,7 +90,7 @@
         "missingAlt": [],
         "imageCount": 2,
         "pageOverflow": 0,
-        "contentLength": 6174,
+        "contentLength": 6368,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -100,11 +100,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 8715,
-        "bytes": 1693686,
+        "height": 8800,
+        "bytes": 1715780,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "9d4b7920a66e49f5554829977c1d7baaad3ca45cfd13eaf275b36d4e4b192c43",
+      "sourceSha256": "2f03e3a62556d14ba3d704938c7ffb22edf2240afcfa2a28a71f9d382441ac6b",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-002.png"
     },
     {
@@ -134,7 +134,7 @@
         "missingAlt": [],
         "imageCount": 2,
         "pageOverflow": 0,
-        "contentLength": 5130,
+        "contentLength": 5434,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -144,11 +144,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 7765,
-        "bytes": 1735549,
+        "height": 7880,
+        "bytes": 977689,
         "captureMode": "single"
       },
-      "sourceSha256": "b622545aa815f5fda74e31fab102dd16732f10d37a6392d28df4f862f3469ed5",
+      "sourceSha256": "0556003c3e3ad831fbd4bfb431c23c4016b6e30e8e24860f1d64a1ceed23dee6",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-003.png"
     },
     {
@@ -178,7 +178,7 @@
         "missingAlt": [],
         "imageCount": 2,
         "pageOverflow": 0,
-        "contentLength": 5532,
+        "contentLength": 5754,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -188,11 +188,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 8012,
-        "bytes": 2022044,
+        "height": 8068,
+        "bytes": 1786758,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "d07e1510e30d677fb17e88a82ab1bd73870c80cac3bcfa684d7532aab0503dbd",
+      "sourceSha256": "3fd7990dc1e86651984e2d896ef3c70003210e53825df5615157a8f7d0493981",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-004.png"
     },
     {
@@ -222,7 +222,7 @@
         "missingAlt": [],
         "imageCount": 2,
         "pageOverflow": 0,
-        "contentLength": 6815,
+        "contentLength": 7029,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -232,11 +232,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 8985,
-        "bytes": 1786261,
+        "height": 9100,
+        "bytes": 1508790,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "d5167d7596b6dcff145d1da60f1bdf4afb5a44b7526b58319b6404c5e9c8dee0",
+      "sourceSha256": "80d27e48b284d818adb6cdb481c3db413790d5d479827b836ba35cabe8edce7a",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-005.png"
     },
     {
@@ -266,7 +266,7 @@
         "missingAlt": [],
         "imageCount": 2,
         "pageOverflow": 0,
-        "contentLength": 9149,
+        "contentLength": 9122,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -276,11 +276,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 10194,
-        "bytes": 2414333,
+        "height": 10135,
+        "bytes": 2328373,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "49c00772c146d417129e25e5886412d34849635414669ae8c48ff027babd20e2",
+      "sourceSha256": "d2f0a2b17d83b2d817893a794f5cce4677ae9e00fa20c1f76f5ff5d0c27fd7e3",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-006.png"
     },
     {
@@ -310,7 +310,7 @@
         "missingAlt": [],
         "imageCount": 3,
         "pageOverflow": 0,
-        "contentLength": 7195,
+        "contentLength": 7415,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -320,11 +320,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 10217,
-        "bytes": 2482968,
+        "height": 10302,
+        "bytes": 2506366,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "2b561f0e79aead829ad6ee788b3cd1fab736c009958db2256f3f686a0773aea7",
+      "sourceSha256": "511397ec4bac4585b0ace0ea1202c14d4436fd58b169e0fae8f159a528d0cd30",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-007.png"
     },
     {
@@ -354,7 +354,7 @@
         "missingAlt": [],
         "imageCount": 5,
         "pageOverflow": 0,
-        "contentLength": 5792,
+        "contentLength": 6010,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -364,11 +364,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 8348,
-        "bytes": 1493002,
+        "height": 8462,
+        "bytes": 1515523,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "dd8faabf4c5061b50c003a14a12d00cea7d00f84aecf2981948d83dc15738ca9",
+      "sourceSha256": "b32aac835a609aa9e4f88ee66a9feb4743e1403870ee29810e61d6974c80ff71",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-008.png"
     },
     {
@@ -398,7 +398,7 @@
         "missingAlt": [],
         "imageCount": 2,
         "pageOverflow": 0,
-        "contentLength": 5520,
+        "contentLength": 5720,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -408,11 +408,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 8150,
-        "bytes": 2078688,
+        "height": 8265,
+        "bytes": 2102582,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "7ab0e6be015df82dbec28e90add25c8d6d78e63a8afc529cfa6ef78ad3438a90",
+      "sourceSha256": "90b1795ee2645d7c503651832c08b5f87947c42d04ed9cebcc42714d33e6de87",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-009.png"
     },
     {
@@ -442,7 +442,7 @@
         "missingAlt": [],
         "imageCount": 2,
         "pageOverflow": 0,
-        "contentLength": 6024,
+        "contentLength": 6241,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -452,11 +452,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 8434,
-        "bytes": 1810373,
+        "height": 8549,
+        "bytes": 1834219,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "96eee863d588f73560708805d59b20649a174aab1cd7b8d33515206d8739303e",
+      "sourceSha256": "6ea8dd67f805e12bb6542f896881bf290bb3e5b3751f33dacb78c21edf121d64",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-010.png"
     },
     {
@@ -486,7 +486,7 @@
         "missingAlt": [],
         "imageCount": 3,
         "pageOverflow": 0,
-        "contentLength": 7081,
+        "contentLength": 7302,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -496,11 +496,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 10862,
-        "bytes": 2322574,
+        "height": 10977,
+        "bytes": 2345823,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "acfa0f5970cf69ebcc576b3a645c6fdfe9ce8500d08f55cca0368e4ac5aaf096",
+      "sourceSha256": "bd451ded5f36b1b9fb1ed0f88bbbc8e25fe4b7b6ce9c538f56b0bf0136bca1e1",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-011.png"
     },
     {
@@ -530,7 +530,7 @@
         "missingAlt": [],
         "imageCount": 2,
         "pageOverflow": 0,
-        "contentLength": 5787,
+        "contentLength": 6000,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -540,11 +540,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 8220,
-        "bytes": 1211475,
+        "height": 8335,
+        "bytes": 1235901,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "eb9f1e2b1c1266b2cca28bb0ed486aa05c196c281d166f7275663d00dcf8808e",
+      "sourceSha256": "c1ba82d0445439ddd5ef201665d72d5a828ac2b57e683ac77a876fc384950174",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-012.png"
     },
     {
@@ -574,7 +574,7 @@
         "missingAlt": [],
         "imageCount": 2,
         "pageOverflow": 0,
-        "contentLength": 5968,
+        "contentLength": 6244,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -584,11 +584,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 8522,
-        "bytes": 2107144,
+        "height": 8637,
+        "bytes": 1783383,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "d56db1b05f09f73f6934888272dde714620e91ea63e8b05b31fb5eb5dc403f99",
+      "sourceSha256": "542dd1b57fa49e089a8805a1b3653402051e486dfb2e6a68c69df94d7a45232d",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-013.png"
     },
     {
@@ -618,7 +618,7 @@
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 7615,
+        "contentLength": 7855,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -628,11 +628,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 9621,
-        "bytes": 1832628,
+        "height": 9706,
+        "bytes": 1857679,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "095e07eab5d48f265651acbeb944e89673593cec5f972a9fc4861df6698fae2c",
+      "sourceSha256": "0e2821c552e237e14955936514164c8fae226704714de34126a50e408f5f187c",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-014.png"
     },
     {
@@ -662,7 +662,7 @@
         "missingAlt": [],
         "imageCount": 2,
         "pageOverflow": 0,
-        "contentLength": 5601,
+        "contentLength": 5884,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -672,11 +672,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 8033,
-        "bytes": 1426639,
+        "height": 8119,
+        "bytes": 1454282,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "04fe37463e8af6c6bf70ac6017147e782918153b033edb201714a94fd512d3f7",
+      "sourceSha256": "76d1ec7612f0d8e89b7a8e4df48167e74ac2e6fd04aef898fe0f9cb14b16718b",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-015.png"
     },
     {
@@ -706,7 +706,7 @@
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 7170,
+        "contentLength": 7534,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -716,11 +716,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 7664,
-        "bytes": 1141376,
+        "height": 7779,
+        "bytes": 1177518,
         "captureMode": "single"
       },
-      "sourceSha256": "22a6e9e5429b5ee9558f850425455be0b14b9f325c5641bb23cbea449c0dbb2a",
+      "sourceSha256": "b37ed264a67daaa454b7b0d87b1eed5e114f8c41bdb8c113322deddc3037d87c",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-016.png"
     },
     {
@@ -750,7 +750,7 @@
         "missingAlt": [],
         "imageCount": 4,
         "pageOverflow": 0,
-        "contentLength": 7339,
+        "contentLength": 7441,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -760,11 +760,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 11729,
-        "bytes": 3334641,
+        "height": 11758,
+        "bytes": 3346873,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "6a0ac2c821bb8a49a26901e94bf06b66cbe5fc87bd5e087d9d804c90a45acf12",
+      "sourceSha256": "3b410444ad16dee0f1f86cf7de5a61209b32ec059df26191201d39b1643a3d1f",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-017.png"
     },
     {
@@ -794,7 +794,7 @@
         "missingAlt": [],
         "imageCount": 2,
         "pageOverflow": 0,
-        "contentLength": 6290,
+        "contentLength": 6656,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -804,11 +804,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 8410,
-        "bytes": 1471303,
+        "height": 8496,
+        "bytes": 1503451,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "4fbf57da7de3e717f105d1d621d2530e726ddffe4ce617449535f2c8a5d30753",
+      "sourceSha256": "8d1e381444a1a9851a2d10734cd988583894d85c2ebdc134189d347592555c91",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-018.png"
     },
     {
@@ -838,7 +838,7 @@
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 6447,
+        "contentLength": 6615,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -848,11 +848,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 7699,
-        "bytes": 1095556,
+        "height": 7755,
+        "bytes": 1972035,
         "captureMode": "single"
       },
-      "sourceSha256": "19090bed1f4dc6e7bb8671b493db808a6497194e56ee59cea9470603b37ff935",
+      "sourceSha256": "a36f6ee0bb39c8d24d4d423bf451b9481a815212229f1527d0bfea6ee537e0e4",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-019.png"
     },
     {
@@ -882,7 +882,7 @@
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 6752,
+        "contentLength": 6920,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -892,11 +892,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 8033,
-        "bytes": 1336162,
+        "height": 8089,
+        "bytes": 1355263,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "c54abc0ec475af0af21ab7995d40ef016fd995c0b201bfdb4988215c237c5ce2",
+      "sourceSha256": "e6ee317024e9d49f252cad87c8a5b953c4a20cf13992482de8b4b254de1a1141",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-020.png"
     },
     {
@@ -926,7 +926,7 @@
         "missingAlt": [],
         "imageCount": 3,
         "pageOverflow": 0,
-        "contentLength": 8497,
+        "contentLength": 8705,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -936,11 +936,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 10667,
-        "bytes": 2956426,
+        "height": 10752,
+        "bytes": 3316454,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "0f154b1dc5ad5c15a8c03d9f44494d62533d62c16fb09e8be2303da0128f7062",
+      "sourceSha256": "3e555a3aa14c3b84f53aa8d4d2218604e005f527b98edebff4ca045318bb9303",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-021.png"
     },
     {
@@ -970,7 +970,7 @@
         "missingAlt": [],
         "imageCount": 3,
         "pageOverflow": 0,
-        "contentLength": 8280,
+        "contentLength": 8412,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -980,11 +980,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 10426,
-        "bytes": 2443135,
+        "height": 10483,
+        "bytes": 2456067,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "6e4fe8d510aeafee16fb0f4a4cb033916048d3a13ae39670eb303b13c9b71943",
+      "sourceSha256": "4d2c825d93b7e1d644fb92709d0a6bf5cd61c6669056617adf383f6fa4bac3ed",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-022.png"
     },
     {
@@ -1014,7 +1014,7 @@
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 3425,
+        "contentLength": 3707,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -1024,11 +1024,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 6083,
-        "bytes": 1621395,
+        "height": 6198,
+        "bytes": 761570,
         "captureMode": "single"
       },
-      "sourceSha256": "23d7530afac6c834e614ae2ae19bc102d391aaa7ae85c4b3d9aaca3901f5f395",
+      "sourceSha256": "4eef617909579b4b45b7e66f660a6e27f24285ffa2872b67067925864e63e982",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-023.png"
     },
     {
@@ -1058,7 +1058,7 @@
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 4466,
+        "contentLength": 4680,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -1068,11 +1068,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 6563,
-        "bytes": 844463,
+        "height": 6677,
+        "bytes": 1713210,
         "captureMode": "single"
       },
-      "sourceSha256": "090b5fdebdfa9220f0fb80f9750845992fec19cbcf2cce01864d10b12933d105",
+      "sourceSha256": "ed6be95bfc05c3dfbcf31be95beecfaa9ff9019da709cc1e70f9566f92b9e767",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-024.png"
     },
     {
@@ -1102,7 +1102,7 @@
         "missingAlt": [],
         "imageCount": 2,
         "pageOverflow": 0,
-        "contentLength": 6029,
+        "contentLength": 6260,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -1112,11 +1112,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 8087,
-        "bytes": 1851397,
+        "height": 8173,
+        "bytes": 1879202,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "eece7baf0eb29e845cb5160c04686b4de08b9b8adc35ce091ed5fcecd04db4c3",
+      "sourceSha256": "e436893e0bc65a88a81d226189ce6f5a4d3da114c709b9b085c4c4afa5a5f73f",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-025.png"
     },
     {
@@ -1146,7 +1146,7 @@
         "missingAlt": [],
         "imageCount": 4,
         "pageOverflow": 0,
-        "contentLength": 11672,
+        "contentLength": 11806,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -1156,11 +1156,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 14260,
-        "bytes": 3901234,
+        "height": 14317,
+        "bytes": 3785333,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "9c89ec05f98273ab7b43a0e9c9a275806afeb2aae32005b726675c0dfe5b2b40",
+      "sourceSha256": "357654105320e81e54d3ba920836e1e2fbc9257fcd75aefe6da334343eebe5a2",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-026.png"
     },
     {
@@ -1190,7 +1190,7 @@
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 5129,
+        "contentLength": 5311,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -1200,11 +1200,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 6860,
-        "bytes": 912262,
+        "height": 6945,
+        "bytes": 935683,
         "captureMode": "single"
       },
-      "sourceSha256": "5e9e7a51d89819e93b550ef9e3f8e498bf48960800950eee4e0ab6ccaa2de6c4",
+      "sourceSha256": "e6ec26c1263dece45bfffa4a51964f4db9c4d90d02d5a40e65003bc2e015768c",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-027.png"
     },
     {
@@ -1234,7 +1234,7 @@
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 4296,
+        "contentLength": 4548,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -1244,11 +1244,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 6228,
-        "bytes": 1814012,
+        "height": 6343,
+        "bytes": 847838,
         "captureMode": "single"
       },
-      "sourceSha256": "1cd877781c71acc675826cf9a01c5ce0170ab4e97beedf094993302aa311fb24",
+      "sourceSha256": "3d23924374048c21d0f4a190f2828a69c3381257aabca946bca04896bb54c6fb",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-028.png"
     },
     {
@@ -1278,7 +1278,7 @@
         "missingAlt": [],
         "imageCount": 2,
         "pageOverflow": 0,
-        "contentLength": 6305,
+        "contentLength": 6699,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -1288,11 +1288,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 8379,
-        "bytes": 1998228,
+        "height": 8550,
+        "bytes": 2035346,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "89edc36e96fa303bd2f638f2a2f350d7b98d7e68ed0d5d40417c96848140e8fd",
+      "sourceSha256": "49705669b84d6b51b14a281b7dc99528595a17ce99889c444bca4af552fcbfb0",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-029.png"
     },
     {
@@ -1322,7 +1322,7 @@
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 4860,
+        "contentLength": 5208,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -1332,11 +1332,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 6404,
-        "bytes": 873815,
+        "height": 6460,
+        "bytes": 906647,
         "captureMode": "single"
       },
-      "sourceSha256": "79d9a9bc78ba43d1b1f34256ba66602e16df4dafb2e033786d96d5ee4e507a32",
+      "sourceSha256": "ddae614cb603af9c274d2da3781b151c0e0cd95fbc2578559d0543d6da9c5b25",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-030.png"
     },
     {
@@ -1366,7 +1366,7 @@
         "missingAlt": [],
         "imageCount": 2,
         "pageOverflow": 0,
-        "contentLength": 6283,
+        "contentLength": 6701,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -1376,11 +1376,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 8203,
-        "bytes": 2155261,
+        "height": 8316,
+        "bytes": 1759003,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "ebd4109f27b1650c4aea0ce1ac81f7e9f98e5d100de5b537dee31f14d5dbdb3e",
+      "sourceSha256": "95ab5e8dc126afcf998774e077c1917f98f96b2b6dc420e1b0d087daa100abc6",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-031.png"
     },
     {
@@ -1410,7 +1410,7 @@
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 5104,
+        "contentLength": 5316,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -1420,11 +1420,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 6731,
-        "bytes": 942511,
+        "height": 6816,
+        "bytes": 1848537,
         "captureMode": "single"
       },
-      "sourceSha256": "55841126db9b1f816cc790bd05be805ad3f7c391f28ac61a04ae35d3cba9a353",
+      "sourceSha256": "5ac5e959351a1d2511c1dab876abf78fd4daa9b3b4f8b0c23f3c7a73fb014c88",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-032.png"
     },
     {
@@ -1454,7 +1454,7 @@
         "missingAlt": [],
         "imageCount": 2,
         "pageOverflow": 0,
-        "contentLength": 5378,
+        "contentLength": 5700,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -1464,11 +1464,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 7820,
-        "bytes": 976749,
+        "height": 7876,
+        "bytes": 2832824,
         "captureMode": "single"
       },
-      "sourceSha256": "4d99f6e16da6cbdce8ed42a8b07ba1ddc3997b97ea210d48ab0c520e1e051d9f",
+      "sourceSha256": "4f649be390263eaba7c0a0eea3a2a380d167d4689f440ba113b36414eb278b00",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-033.png"
     },
     {
@@ -1498,7 +1498,7 @@
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 5569,
+        "contentLength": 5881,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -1508,11 +1508,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 6836,
-        "bytes": 961416,
+        "height": 6950,
+        "bytes": 997924,
         "captureMode": "single"
       },
-      "sourceSha256": "d97064e44b1fe744776aac53d5321783aaaaa962a18e0bb98962c6c100a99787",
+      "sourceSha256": "07b4dc5ca9b012c9f03e8002e8310316a1956fd6b55f56d87aa5091d5728f617",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-034.png"
     },
     {
@@ -1542,7 +1542,7 @@
         "missingAlt": [],
         "imageCount": 2,
         "pageOverflow": 0,
-        "contentLength": 7624,
+        "contentLength": 7848,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -1552,11 +1552,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 8833,
-        "bytes": 2483612,
+        "height": 8948,
+        "bytes": 2509023,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "1c53476812f76cb6f43510258052ec17346e8b602a647fed3bac866fdbcebefd",
+      "sourceSha256": "74bba34747e8e1567b8bb891b7d3be4d942e7aa862c6726026a2be72d5723e2e",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-035.png"
     },
     {
@@ -1586,7 +1586,7 @@
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 4737,
+        "contentLength": 5063,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -1596,11 +1596,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 6262,
-        "bytes": 1768673,
+        "height": 6348,
+        "bytes": 1804418,
         "captureMode": "single"
       },
-      "sourceSha256": "4396e2c96c30c48abae63c9922f4f65b257a3381ee262664590ce214fbfa7479",
+      "sourceSha256": "bdfd5110c81468d93426549e9e7720fbbc34acb4c3724a7adfbff800bc63f322",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-036.png"
     },
     {
@@ -1630,7 +1630,7 @@
         "missingAlt": [],
         "imageCount": 2,
         "pageOverflow": 0,
-        "contentLength": 6010,
+        "contentLength": 6259,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -1640,11 +1640,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 8392,
-        "bytes": 2003833,
+        "height": 8507,
+        "bytes": 2030495,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "8f5d63c3d96c1edefb233596302137e0ca55e44705cf2286286e90e38aa76442",
+      "sourceSha256": "056f9e54d4cfe2ed99bf88c8b9badb14d21bc1a7f1e3ab63d5f031c97d049fbd",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-037.png"
     },
     {
@@ -1674,7 +1674,7 @@
         "missingAlt": [],
         "imageCount": 2,
         "pageOverflow": 0,
-        "contentLength": 8089,
+        "contentLength": 8298,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -1684,11 +1684,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 8606,
-        "bytes": 2023098,
+        "height": 8691,
+        "bytes": 2394521,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "b7deedd94bdc18fe9977ac4823f76f29592275780aa44915787d079bd44fb5d0",
+      "sourceSha256": "4f75c9258bf6caedfff88f3b1e47946f0c49a742918244b89af3cf6191aaa4ab",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-038.png"
     },
     {
@@ -1718,7 +1718,7 @@
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 5707,
+        "contentLength": 5822,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -1728,11 +1728,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 6608,
-        "bytes": 1847050,
+        "height": 6665,
+        "bytes": 1861385,
         "captureMode": "single"
       },
-      "sourceSha256": "32a1e20e9662c6579ab71d7f998c93d85fdc60f512693da12bd5a027d3502e2c",
+      "sourceSha256": "aeab77f573cffc6a42c707d1bad0acaefee906868406f1420a0ef3479bc36795",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-039.png"
     },
     {
@@ -1762,7 +1762,7 @@
         "missingAlt": [],
         "imageCount": 2,
         "pageOverflow": 0,
-        "contentLength": 7554,
+        "contentLength": 7712,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -1772,11 +1772,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 8549,
-        "bytes": 2440745,
+        "height": 8606,
+        "bytes": 2458517,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "ebaf4b3f96bf9dac52857dde3f8dce061cfe549f12aa4dd282e1d3a5ad29c9d6",
+      "sourceSha256": "5c11f075f41d570de62b5b763391c0633559428de2a4a91f00fa51bdccabb87e",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-040.png"
     },
     {
@@ -1806,7 +1806,7 @@
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 4250,
+        "contentLength": 4502,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -1816,11 +1816,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 6478,
-        "bytes": 1819532,
+        "height": 6563,
+        "bytes": 857829,
         "captureMode": "single"
       },
-      "sourceSha256": "7ef88da623a45490ef6f55e2c6109f91f2ca6e5e597d63d29b43718fc6431b90",
+      "sourceSha256": "874e0e5aac1b6d7a422de97359d2db675dfb80133818b69d106a4f65799e1358",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-041.png"
     },
     {
@@ -1850,7 +1850,7 @@
         "missingAlt": [],
         "imageCount": 2,
         "pageOverflow": 0,
-        "contentLength": 8151,
+        "contentLength": 8286,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -1860,11 +1860,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 9017,
-        "bytes": 2404887,
+        "height": 9045,
+        "bytes": 2418661,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "d29bd8b6693afdc11f48d5721e3e0c2282f39e2b254bcab607e987e494b39c7f",
+      "sourceSha256": "6c293397df9009ca6fc57e7185630259039a4cd72078df920ebfe3a6030fe870",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-042.png"
     },
     {
@@ -1894,7 +1894,7 @@
         "missingAlt": [],
         "imageCount": 2,
         "pageOverflow": 0,
-        "contentLength": 6993,
+        "contentLength": 7125,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -1904,11 +1904,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 8527,
-        "bytes": 2046518,
+        "height": 8585,
+        "bytes": 2059190,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "f1512599958cbf5331faba482cedcb5e05f9f46b8590462581260bdaa8858f01",
+      "sourceSha256": "1e0284b14681c9ecd6df98faa680db0db4cdf32a8f14f53a8f228c2e8d3d2e39",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-043.png"
     },
     {
@@ -1938,7 +1938,7 @@
         "missingAlt": [],
         "imageCount": 2,
         "pageOverflow": 0,
-        "contentLength": 6864,
+        "contentLength": 7046,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -1948,11 +1948,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 8553,
-        "bytes": 1901283,
+        "height": 8610,
+        "bytes": 2334023,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "7d4cf671f30a7b83836781553c470a472d256736e06ec6ffc005eb6116b13577",
+      "sourceSha256": "96dbb161c85f5f93d02a1bc37e79edac758025b4a01dc2d1a098d93decc15e12",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-044.png"
     },
     {
@@ -1982,7 +1982,7 @@
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 3912,
+        "contentLength": 4013,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -1992,11 +1992,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 6093,
-        "bytes": 784305,
+        "height": 6150,
+        "bytes": 798559,
         "captureMode": "single"
       },
-      "sourceSha256": "dd9c06cb256001a228ae76a484df3bfc79cf2a4bafa7cbca2d2033fb4b311b23",
+      "sourceSha256": "59f0961a861dcd8c8c7ec33cf739836f3929bb1e6e7eacb8dfdac98f99c37272",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-045.png"
     },
     {
@@ -2026,7 +2026,7 @@
         "missingAlt": [],
         "imageCount": 2,
         "pageOverflow": 0,
-        "contentLength": 7055,
+        "contentLength": 7309,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -2036,11 +2036,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 9082,
-        "bytes": 2151881,
+        "height": 9167,
+        "bytes": 2177050,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "bb28534f0016522b5dbf9e7e29ea2d4ccf8e160b8a31cbf55264560992c64e5d",
+      "sourceSha256": "7bef17183f44f2b0ed781f21da66c17482013cb4fd887db2e4e58fd821de7872",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-046.png"
     },
     {
@@ -2070,7 +2070,7 @@
         "missingAlt": [],
         "imageCount": 2,
         "pageOverflow": 0,
-        "contentLength": 7119,
+        "contentLength": 7325,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -2080,11 +2080,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 9589,
-        "bytes": 2269777,
+        "height": 9704,
+        "bytes": 1987333,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "a2688f0df81b987eabde6992459e62894b76269c5d666c12d4ad45d032a0c4ad",
+      "sourceSha256": "e204ce5db42d21c2a64679d0c45f90c98abfd0a9252d492b875aa03c8ef16eda",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-047.png"
     },
     {
@@ -2114,7 +2114,7 @@
         "missingAlt": [],
         "imageCount": 0,
         "pageOverflow": 0,
-        "contentLength": 15033,
+        "contentLength": 15336,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -2124,11 +2124,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 13334,
-        "bytes": 1672911,
+        "height": 13417,
+        "bytes": 1705992,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "a09f7eb7de01fdcbebc9d67ec83c86242c324c5768e75f2cb4eb2f2e17e86625",
+      "sourceSha256": "599a80ee0bce0082a35dd134c76656ffc05b1221aef3231501e6fba6caec859c",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-048.png"
     },
     {
@@ -2202,7 +2202,7 @@
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 4021,
+        "contentLength": 4407,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -2212,11 +2212,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 6155,
-        "bytes": 1121450,
+        "height": 6296,
+        "bytes": 830883,
         "captureMode": "single"
       },
-      "sourceSha256": "62885df9684ea9a44e88309cc74f32129d4a678d7cf585ae9b8a1d9783a9bd1d",
+      "sourceSha256": "5144a08c2907fc57ed651a82cd41d50558734bb629b1117ea3b3f6826906057f",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-050.png"
     },
     {
@@ -2246,7 +2246,7 @@
         "missingAlt": [],
         "imageCount": 2,
         "pageOverflow": 0,
-        "contentLength": 5308,
+        "contentLength": 5631,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -2256,11 +2256,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 7909,
-        "bytes": 969485,
-        "captureMode": "single"
+        "height": 8023,
+        "bytes": 1607404,
+        "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "c23692a214ab11e33952c7d9bcf1fa9ff809a85dea65639c8fb847f44c56c641",
+      "sourceSha256": "4939546ac25e14e69c7850395529bef937968980c56b71f49b05d41a29d3743c",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-051.png"
     },
     {
@@ -2290,7 +2290,7 @@
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 4607,
+        "contentLength": 4728,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -2300,11 +2300,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 6360,
-        "bytes": 1661009,
+        "height": 6388,
+        "bytes": 862726,
         "captureMode": "single"
       },
-      "sourceSha256": "28187c39b6f25b15d1f7266ad18641b6aeb6f936183269313502930e672d7df1",
+      "sourceSha256": "d7dd4da7d572404d8daab076414fd1b0175807160c9b18e662237786ec612da6",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-052.png"
     },
     {
@@ -2334,7 +2334,7 @@
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 3516,
+        "contentLength": 3778,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -2344,11 +2344,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 5966,
-        "bytes": 1602109,
+        "height": 6022,
+        "bytes": 1627816,
         "captureMode": "single"
       },
-      "sourceSha256": "905e225ad357463d0117bcb7f7ca35bcff280fc6203c76de8d42451e27cd41bc",
+      "sourceSha256": "966cc1caf8dbbf5f084a0088e387c7654974b8b4689591d6fad87f8e7cc3cb83",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-053.png"
     },
     {
@@ -2378,7 +2378,7 @@
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 3777,
+        "contentLength": 4083,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -2388,11 +2388,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 6158,
-        "bytes": 1159730,
+        "height": 6214,
+        "bytes": 811847,
         "captureMode": "single"
       },
-      "sourceSha256": "a6909fa20891ddd44ad6869f2e548e6ba448ec586294e9c5e6680f263b0bad62",
+      "sourceSha256": "de631c7dc7b933181d6127bc9f4b43094f254ec71ee07fe665297fdff3f06c45",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-054.png"
     },
     {
@@ -2422,7 +2422,7 @@
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 4780,
+        "contentLength": 5104,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -2432,11 +2432,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 6238,
-        "bytes": 1726369,
+        "height": 6323,
+        "bytes": 1760861,
         "captureMode": "single"
       },
-      "sourceSha256": "5bde0030656aee6c262f3c60765a98602910566635ade7883c2b46b5aef59494",
+      "sourceSha256": "a00627a8a56bd11e89ce4c763fb91174fa99ef1e38b6bac4dc6ee16700b3eef5",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-055.png"
     },
     {
@@ -2466,7 +2466,7 @@
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 4199,
+        "contentLength": 4521,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -2476,11 +2476,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 6910,
-        "bytes": 1169636,
+        "height": 6995,
+        "bytes": 882016,
         "captureMode": "single"
       },
-      "sourceSha256": "33f9a4540603ea3bd20a1e0e7f2f6d18bda80e3c7fdf5c4ec7c696ed5d4e048c",
+      "sourceSha256": "df5c27c934a40654dd10e412da8da6043ff7777b6bb8fd0d792b0551e51eb480",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-056.png"
     },
     {
@@ -2510,7 +2510,7 @@
         "missingAlt": [],
         "imageCount": 3,
         "pageOverflow": 0,
-        "contentLength": 8336,
+        "contentLength": 8722,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -2520,11 +2520,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 10167,
-        "bytes": 2812061,
+        "height": 10337,
+        "bytes": 2524768,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "5b0ec377b2a0d68324dae9c239ea6bd22d864f64d110255ff540c8882886dc23",
+      "sourceSha256": "b9436dc3f9862eeffd76ad120a83b20a0af31ccde1c2aa36005aa3d6a114e5df",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-057.png"
     },
     {
@@ -2554,7 +2554,7 @@
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 4371,
+        "contentLength": 4487,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -2564,11 +2564,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 6814,
-        "bytes": 1206139,
+        "height": 6871,
+        "bytes": 896702,
         "captureMode": "single"
       },
-      "sourceSha256": "cd5c4cc556528e528de320b1bee70b6298c0d367f7c19f020b306b963e84e611",
+      "sourceSha256": "9a1806fdea38f5010616709c96f1f7b9038b1e8565174a01f9f7ca4e94d576c4",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-058.png"
     },
     {
@@ -2598,7 +2598,7 @@
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 4094,
+        "contentLength": 4330,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -2608,11 +2608,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 6202,
-        "bytes": 1084117,
+        "height": 6258,
+        "bytes": 825246,
         "captureMode": "single"
       },
-      "sourceSha256": "aa5d59664531491a034d2a2d95a5b013b1c56c53975fc070cefee23eaa49ed77",
+      "sourceSha256": "6a73393d1c3f1c69cb9f19c9fd298b02ebff6b196fe90bf232b93a410a5bfeeb",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-059.png"
     },
     {
@@ -2642,7 +2642,7 @@
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 4091,
+        "contentLength": 4449,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -2652,11 +2652,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 6163,
-        "bytes": 1085783,
+        "height": 6248,
+        "bytes": 1122642,
         "captureMode": "single"
       },
-      "sourceSha256": "e1fbaa26aaf4cc511802c09d68938722a96086a8357a1d32cf98649748d10779",
+      "sourceSha256": "639594fde7257a12f35a8d6a38aa86aae8808e23b683fe3e7649077d0537a028",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-060.png"
     },
     {
@@ -2686,7 +2686,7 @@
         "missingAlt": [],
         "imageCount": 2,
         "pageOverflow": 0,
-        "contentLength": 5626,
+        "contentLength": 5896,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -2696,11 +2696,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 8048,
-        "bytes": 1733481,
+        "height": 8133,
+        "bytes": 1809864,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "c79485a0b4bba04056c42ff8927e414ff10abcc65b67f25af2196fcd2960140a",
+      "sourceSha256": "f53211aad137ef6df6d7d7b4a8e69e6559770f98ba3ade6eace564512dc3a893",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-061.png"
     },
     {
@@ -2730,7 +2730,7 @@
         "missingAlt": [],
         "imageCount": 2,
         "pageOverflow": 0,
-        "contentLength": 5736,
+        "contentLength": 6006,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -2740,11 +2740,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 8048,
-        "bytes": 2089441,
+        "height": 8162,
+        "bytes": 1758010,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "54a13bd3ac7ed9e2df74c285d178e02ded588a7174e78369d2b5101abd50a2b5",
+      "sourceSha256": "3bd1dc81d35ca7932b4265b67b36951fedb64dfa2e492ecc0a58abf6906f6bce",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-062.png"
     },
     {
@@ -2785,7 +2785,7 @@
       "capture": {
         "width": 1440,
         "height": 7250,
-        "bytes": 1774335,
+        "bytes": 1774121,
         "captureMode": "single"
       },
       "sourceSha256": "03b0db9f150cfea5b1f36dfee3f0856b2088f3be093f805f7e011ed31eb47755",
@@ -2818,7 +2818,7 @@
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 4942,
+        "contentLength": 5134,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -2828,11 +2828,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 7098,
-        "bytes": 1816527,
+        "height": 7154,
+        "bytes": 1836285,
         "captureMode": "single"
       },
-      "sourceSha256": "0f584781ca82150eda0fa9caf3249ba8cd42cc88a1a3364213612df9c61b3794",
+      "sourceSha256": "2702baa928e3e2b6c11fc5545b3a0196b3805375b0eaea5d94d83d63b54a06e7",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-064.png"
     },
     {
@@ -2862,7 +2862,7 @@
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 3527,
+        "contentLength": 3761,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -2872,11 +2872,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 6105,
-        "bytes": 1613562,
+        "height": 6161,
+        "bytes": 762547,
         "captureMode": "single"
       },
-      "sourceSha256": "f7efc2cd681d8cd6a65eaff37a7b2029c854debcbb5e648018541145d869f95f",
+      "sourceSha256": "06730273a868eeff42a6bfd4d2feea88ae55d198864c223dc9e2d065e2d321c5",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-065.png"
     },
     {
@@ -2906,7 +2906,7 @@
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 3665,
+        "contentLength": 3849,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -2916,11 +2916,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 5787,
-        "bytes": 1011849,
+        "height": 5845,
+        "bytes": 1032466,
         "captureMode": "single"
       },
-      "sourceSha256": "dedd1547a515e76ac41ff60a2a7ada6e4d6181709a00152a78122e098d34001b",
+      "sourceSha256": "1448f10441d0aa0837fe248abe35b46e67ec0d7f91e3bfdc883abea1644e7397",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-066.png"
     },
     {
@@ -2950,7 +2950,7 @@
         "missingAlt": [],
         "imageCount": 2,
         "pageOverflow": 0,
-        "contentLength": 6736,
+        "contentLength": 7133,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -2960,11 +2960,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 8540,
-        "bytes": 1473208,
+        "height": 8625,
+        "bytes": 1509609,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "5dea6ebc82bde2000e29e8d0d568df372c329d4f379d6dc95e12c4a629563000",
+      "sourceSha256": "b24cf62d9a33bb1eb1a0e04caa3fc9daf01858d9779af65aeadbeea4d49b261f",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-067.png"
     },
     {
@@ -2994,7 +2994,7 @@
         "missingAlt": [],
         "imageCount": 2,
         "pageOverflow": 0,
-        "contentLength": 6639,
+        "contentLength": 7036,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -3004,11 +3004,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 8309,
-        "bytes": 1532601,
+        "height": 8422,
+        "bytes": 1803190,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "4ac7d2ddf80c16387d8b4274d9c7cda1ff2f4bf00f059b9756d0be47a0b70159",
+      "sourceSha256": "1a9a89f4201abc68e43bfa000c0f62718098fba4f68e309f1ce5c806efc9088d",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-068.png"
     },
     {
@@ -3038,7 +3038,7 @@
         "missingAlt": [],
         "imageCount": 2,
         "pageOverflow": 0,
-        "contentLength": 7417,
+        "contentLength": 7591,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -3048,11 +3048,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 8710,
-        "bytes": 1778255,
+        "height": 8738,
+        "bytes": 1794399,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "78eef2328b28f3a7abc8c46155d9341720a0357a1aa46d3b005625c5facc7daf",
+      "sourceSha256": "5a57d24da3c77221c6a76608a2396c9f6348be98d76d7e6d96298dba56486da4",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-069.png"
     },
     {
@@ -3082,7 +3082,7 @@
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 5042,
+        "contentLength": 5265,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -3092,11 +3092,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 6562,
-        "bytes": 900091,
+        "height": 6618,
+        "bytes": 923106,
         "captureMode": "single"
       },
-      "sourceSha256": "2696329d96b7fd6f1635486d97f1fac61beb12f87b22bc6756bed2eb8444e55b",
+      "sourceSha256": "fd7fb1a5b1f987f6f026b53d92ee233dc3ee9cf2e076273d2761813c20f4ccc4",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-070.png"
     },
     {
@@ -3126,7 +3126,7 @@
         "missingAlt": [],
         "imageCount": 2,
         "pageOverflow": 0,
-        "contentLength": 6663,
+        "contentLength": 6837,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -3136,11 +3136,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 8469,
-        "bytes": 1800129,
+        "height": 8527,
+        "bytes": 1815198,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "3ab50635cf6ae3e98d96ffba015e6740cacdb745e07e1f86fbc118ad2a10af29",
+      "sourceSha256": "6cbe9675c74b10faee88046be690075233921f87815b7e012847d0ac6049c48b",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-071.png"
     },
     {
@@ -3170,7 +3170,7 @@
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 5140,
+        "contentLength": 5504,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -3180,11 +3180,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 7252,
-        "bytes": 980865,
+        "height": 7367,
+        "bytes": 1017984,
         "captureMode": "single"
       },
-      "sourceSha256": "78c61f6ebfb38176b4d289663be3d928a524d3d7fe10d0787c09918829505100",
+      "sourceSha256": "94bb2498ec744462ef752a3519407c88b252085dd6086e74b901b5512b25def4",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-072.png"
     },
     {
@@ -3214,7 +3214,7 @@
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 5120,
+        "contentLength": 5334,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -3224,11 +3224,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 7772,
-        "bytes": 1890964,
+        "height": 7828,
+        "bytes": 1021672,
         "captureMode": "single"
       },
-      "sourceSha256": "e23de3f3d894c3f19219b87d19f7f3a2ef2b5a9a223437eec2f8eab989f7ec1a",
+      "sourceSha256": "72d285c0f253f5af8c578eefc36c8ac7f909debd97d902e516e460374c056f3c",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-073.png"
     },
     {
@@ -3258,7 +3258,7 @@
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 5360,
+        "contentLength": 5574,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -3268,11 +3268,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 7577,
-        "bytes": 1950425,
+        "height": 7662,
+        "bytes": 1026781,
         "captureMode": "single"
       },
-      "sourceSha256": "b9ee8df3bf8cd54caa81cc98fcf09375f5aca4c742a0ab3ff1bee3c85e87be09",
+      "sourceSha256": "31ed1ae22b4a7c59b17634c1fbeb27c1eac3f6f8ebbbf98b564c61204b8758dc",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-074.png"
     },
     {
@@ -3346,7 +3346,7 @@
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 4735,
+        "contentLength": 4925,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -3356,11 +3356,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 7351,
-        "bytes": 911413,
+        "height": 7465,
+        "bytes": 939149,
         "captureMode": "single"
       },
-      "sourceSha256": "cb9362ba156d8b79092982ec940284e4b410deddcff807123728f9bda864512c",
+      "sourceSha256": "b0eede836f1f93de4bb51f672de8d1e0714c2e68b3dd895ed7d3a2f3b54f7d0b",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-076.png"
     },
     {
@@ -3445,7 +3445,7 @@
       "capture": {
         "width": 1440,
         "height": 7514,
-        "bytes": 2008163,
+        "bytes": 1014731,
         "captureMode": "single"
       },
       "sourceSha256": "34416534323b4d965a9f7d3b4bdb599447a74f0215ebde294c47b1e3df4fc62d",
@@ -3478,7 +3478,7 @@
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 4107,
+        "contentLength": 4283,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -3488,11 +3488,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 6216,
-        "bytes": 805617,
+        "height": 6244,
+        "bytes": 822283,
         "captureMode": "single"
       },
-      "sourceSha256": "37187f0b287157e9bc6f6d515fa806f9bdeb06833bbcf0857f8fca75f7074067",
+      "sourceSha256": "7ef53710322e4c81ecb5b28a950eff02ba6c36f9aa11ccb359c64b13ae4d8f27",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-079.png"
     },
     {
@@ -3522,7 +3522,7 @@
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 5193,
+        "contentLength": 5453,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -3532,11 +3532,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 7150,
-        "bytes": 1870920,
+        "height": 7235,
+        "bytes": 993488,
         "captureMode": "single"
       },
-      "sourceSha256": "5f2bf45d2b6470f90f406b894892b6a560e34bafff16ebe9db19062da6bc0d3c",
+      "sourceSha256": "c1eaa137bfe6889678c5da2774d98ace2ce647840b6a448f0a4aa6d242579666",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-080.png"
     },
     {
@@ -3566,7 +3566,7 @@
         "missingAlt": [],
         "imageCount": 2,
         "pageOverflow": 0,
-        "contentLength": 7048,
+        "contentLength": 7161,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -3576,11 +3576,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 9462,
-        "bytes": 1902156,
+        "height": 9491,
+        "bytes": 1912634,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "a84e75cdeff80c26258969681e6163d4b87557b7f76d0426477d179135e7e33a",
+      "sourceSha256": "dfb07514b997fdb437594e1415a396a23d8ead5629c8bb813460c3293c19be6a",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-081.png"
     },
     {
@@ -3654,7 +3654,7 @@
         "missingAlt": [],
         "imageCount": 4,
         "pageOverflow": 0,
-        "contentLength": 12480,
+        "contentLength": 12610,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -3664,11 +3664,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 15998,
-        "bytes": 3639705,
+        "height": 16026,
+        "bytes": 3652667,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "01476915209eaca3561167929ceb68c9975eb211115b77e6d0c3fa39c94538f1",
+      "sourceSha256": "b62b5f59a7b63c92e8827b0ee201ff61bd1ed027be7be270d9d9dff1b72c69b1",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-083.png"
     },
     {
@@ -3698,7 +3698,7 @@
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 5104,
+        "contentLength": 5255,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -3708,11 +3708,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 6796,
-        "bytes": 2034715,
+        "height": 6824,
+        "bytes": 949130,
         "captureMode": "single"
       },
-      "sourceSha256": "edfc7aa6c52419c56a818839bcbf01d8c5679e41944418111376fdb0561e3f13",
+      "sourceSha256": "d0890608ef850ceb4fc35a52bd6e1af072bfc322213d0c4cb6fcb7b9df8f047d",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-084.png"
     },
     {
@@ -3742,7 +3742,7 @@
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 4815,
+        "contentLength": 5065,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -3752,11 +3752,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 6284,
-        "bytes": 859959,
+        "height": 6369,
+        "bytes": 888829,
         "captureMode": "single"
       },
-      "sourceSha256": "f7dd9830a0074d1b73b06ae71bdfcf14dda8cded0a43aa94242012c0d05a435f",
+      "sourceSha256": "c2638423b8dd09c74abf76c74cfbb4d2589d319cf89ef2a774d28c74364d24aa",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-085.png"
     },
     {
@@ -3786,7 +3786,7 @@
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 3370,
+        "contentLength": 3650,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -3796,11 +3796,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 5904,
-        "bytes": 1478637,
+        "height": 5960,
+        "bytes": 1508845,
         "captureMode": "single"
       },
-      "sourceSha256": "92f531510e3d1e55085a55e8fbf491082528a0346e22b25658cd764a5defccd1",
+      "sourceSha256": "2c1e61c6f68845cfb709f1d4d7efe82e263eed66f146154e506515e10e853c9d",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-086.png"
     },
     {
@@ -3830,7 +3830,7 @@
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 4991,
+        "contentLength": 5229,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -3840,11 +3840,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 6843,
-        "bytes": 1762554,
+        "height": 6958,
+        "bytes": 927939,
         "captureMode": "single"
       },
-      "sourceSha256": "b17531b4dd8f8ad7740fc0abcc8bc1acd5b27d5978f67054f061dd69abf48d2e",
+      "sourceSha256": "af46bc5651995a9c06a26597b14b69695a4adba8ad7759a2f7f2da4d1007daa1",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-087.png"
     },
     {
@@ -3874,7 +3874,7 @@
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 5101,
+        "contentLength": 5246,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -3884,11 +3884,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 6789,
-        "bytes": 1853955,
+        "height": 6846,
+        "bytes": 1871087,
         "captureMode": "single"
       },
-      "sourceSha256": "d2bff9c418577ac33be768854b647860bd1956fbcbde424c77770debba90ff22",
+      "sourceSha256": "c144d94b6cba86fa8b1f9a23f7143cc331eb8cc17d81ee67a2eedf8a70fe2746",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-088.png"
     },
     {
@@ -3918,7 +3918,7 @@
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 4473,
+        "contentLength": 4670,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -3928,11 +3928,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 6283,
-        "bytes": 1156991,
+        "height": 6339,
+        "bytes": 1176128,
         "captureMode": "single"
       },
-      "sourceSha256": "f3a6078bcb007fd85685ee88afef66b03fad127c31a3d550202ce3acadba7dcf",
+      "sourceSha256": "d47be4f2ed9184605e7dde26e7c4145d39857b1db11d4c341c898f03aee61320",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-089.png"
     },
     {
@@ -3962,7 +3962,7 @@
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 3673,
+        "contentLength": 3788,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -3972,11 +3972,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 6117,
-        "bytes": 744205,
+        "height": 6145,
+        "bytes": 755911,
         "captureMode": "single"
       },
-      "sourceSha256": "2d7223b384a839c41b3a5f0437a1e94ba217e8ad0a88c89ee7890a711a5dbeca",
+      "sourceSha256": "46da1b22632377c31a76af8b1918dd6d7bf7f15c0405ed656fce8e017f23119b",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-090.png"
     },
     {
@@ -4006,7 +4006,7 @@
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 4594,
+        "contentLength": 5024,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -4016,11 +4016,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 6267,
-        "bytes": 831029,
+        "height": 6409,
+        "bytes": 875694,
         "captureMode": "single"
       },
-      "sourceSha256": "71cf0349ac0192e8944d9b37b7d7f2ee2a346fe860c1f77d25f0164f72c9c74e",
+      "sourceSha256": "0077faac328c39fd457f2f1facf3b8d3c7666e876509fccb48abe0ee02012e9c",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-091.png"
     },
     {
@@ -4050,7 +4050,7 @@
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 3520,
+        "contentLength": 3926,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -4060,11 +4060,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 6021,
-        "bytes": 739314,
+        "height": 6133,
+        "bytes": 1100317,
         "captureMode": "single"
       },
-      "sourceSha256": "6ae9d527434b628e04546fa613224f9ac2ea55b91c802de97722433acaade0aa",
+      "sourceSha256": "296b6cda423e2d7416af7aff5e45a3f5693475950384d209b5aaaf2d93167ef0",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-092.png"
     },
     {
@@ -4094,7 +4094,7 @@
         "missingAlt": [],
         "imageCount": 0,
         "pageOverflow": 0,
-        "contentLength": 8497,
+        "contentLength": 9480,
         "viewport": {
           "width": 1440,
           "height": 1000
@@ -4104,11 +4104,11 @@
       },
       "capture": {
         "width": 1440,
-        "height": 8858,
-        "bytes": 1045609,
+        "height": 9029,
+        "bytes": 1128899,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "3d45c1c3f3d8048e9bcb2314992aa255d915540e5c157ec68f99b2d825e5ff15",
+      "sourceSha256": "6a62b12a6fcadafff8cbf3a5b6f8c5a3c30f32f67ce378b2fce4d091c2afffcf",
       "evidence": "audits/course-v3-visual-evidence/full-pages/desktop/lesson-093.png"
     },
     {
@@ -4138,7 +4138,7 @@
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 3612,
+        "contentLength": 3802,
         "viewport": {
           "width": 390,
           "height": 844
@@ -4148,11 +4148,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 6627,
-        "bytes": 745533,
+        "height": 6765,
+        "bytes": 610136,
         "captureMode": "single"
       },
-      "sourceSha256": "6b7f479b302979ee9809ff352dbd7cb13990919da9b0375ae3c8456d9a44ac30",
+      "sourceSha256": "321536631b6cec4e4896b1fd8ebfd709b35fe65941c79b41ea88937cd9a08218",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-001.png"
     },
     {
@@ -4182,7 +4182,7 @@
         "missingAlt": [],
         "imageCount": 2,
         "pageOverflow": 0,
-        "contentLength": 6174,
+        "contentLength": 6368,
         "viewport": {
           "width": 390,
           "height": 844
@@ -4192,11 +4192,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 9853,
-        "bytes": 1007699,
+        "height": 10020,
+        "bytes": 912034,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "9d4b7920a66e49f5554829977c1d7baaad3ca45cfd13eaf275b36d4e4b192c43",
+      "sourceSha256": "2f03e3a62556d14ba3d704938c7ffb22edf2240afcfa2a28a71f9d382441ac6b",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-002.png"
     },
     {
@@ -4226,7 +4226,7 @@
         "missingAlt": [],
         "imageCount": 2,
         "pageOverflow": 0,
-        "contentLength": 5130,
+        "contentLength": 5434,
         "viewport": {
           "width": 390,
           "height": 844
@@ -4236,11 +4236,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 8759,
-        "bytes": 678327,
+        "height": 8969,
+        "bytes": 709771,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "b622545aa815f5fda74e31fab102dd16732f10d37a6392d28df4f862f3469ed5",
+      "sourceSha256": "0556003c3e3ad831fbd4bfb431c23c4016b6e30e8e24860f1d64a1ceed23dee6",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-003.png"
     },
     {
@@ -4270,7 +4270,7 @@
         "missingAlt": [],
         "imageCount": 2,
         "pageOverflow": 0,
-        "contentLength": 5532,
+        "contentLength": 5754,
         "viewport": {
           "width": 390,
           "height": 844
@@ -4280,11 +4280,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 9199,
-        "bytes": 863820,
+        "height": 9359,
+        "bytes": 975803,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "d07e1510e30d677fb17e88a82ab1bd73870c80cac3bcfa684d7532aab0503dbd",
+      "sourceSha256": "3fd7990dc1e86651984e2d896ef3c70003210e53825df5615157a8f7d0493981",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-004.png"
     },
     {
@@ -4314,7 +4314,7 @@
         "missingAlt": [],
         "imageCount": 2,
         "pageOverflow": 0,
-        "contentLength": 6815,
+        "contentLength": 7029,
         "viewport": {
           "width": 390,
           "height": 844
@@ -4324,11 +4324,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 10666,
-        "bytes": 1026775,
+        "height": 10855,
+        "bytes": 1035171,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "d5167d7596b6dcff145d1da60f1bdf4afb5a44b7526b58319b6404c5e9c8dee0",
+      "sourceSha256": "80d27e48b284d818adb6cdb481c3db413790d5d479827b836ba35cabe8edce7a",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-005.png"
     },
     {
@@ -4358,7 +4358,7 @@
         "missingAlt": [],
         "imageCount": 2,
         "pageOverflow": 0,
-        "contentLength": 9149,
+        "contentLength": 9122,
         "viewport": {
           "width": 390,
           "height": 844
@@ -4368,11 +4368,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 12936,
-        "bytes": 1296036,
+        "height": 12944,
+        "bytes": 1314259,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "49c00772c146d417129e25e5886412d34849635414669ae8c48ff027babd20e2",
+      "sourceSha256": "d2f0a2b17d83b2d817893a794f5cce4677ae9e00fa20c1f76f5ff5d0c27fd7e3",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-006.png"
     },
     {
@@ -4402,7 +4402,7 @@
         "missingAlt": [],
         "imageCount": 3,
         "pageOverflow": 0,
-        "contentLength": 7195,
+        "contentLength": 7415,
         "viewport": {
           "width": 390,
           "height": 844
@@ -4412,11 +4412,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 11819,
-        "bytes": 1119099,
+        "height": 11953,
+        "bytes": 1121086,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "2b561f0e79aead829ad6ee788b3cd1fab736c009958db2256f3f686a0773aea7",
+      "sourceSha256": "511397ec4bac4585b0ace0ea1202c14d4436fd58b169e0fae8f159a528d0cd30",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-007.png"
     },
     {
@@ -4446,7 +4446,7 @@
         "missingAlt": [],
         "imageCount": 5,
         "pageOverflow": 0,
-        "contentLength": 5792,
+        "contentLength": 6010,
         "viewport": {
           "width": 390,
           "height": 844
@@ -4456,11 +4456,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 10263,
-        "bytes": 914250,
+        "height": 10481,
+        "bytes": 972963,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "dd8faabf4c5061b50c003a14a12d00cea7d00f84aecf2981948d83dc15738ca9",
+      "sourceSha256": "b32aac835a609aa9e4f88ee66a9feb4743e1403870ee29810e61d6974c80ff71",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-008.png"
     },
     {
@@ -4490,7 +4490,7 @@
         "missingAlt": [],
         "imageCount": 2,
         "pageOverflow": 0,
-        "contentLength": 5520,
+        "contentLength": 5720,
         "viewport": {
           "width": 390,
           "height": 844
@@ -4500,11 +4500,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 9485,
-        "bytes": 970744,
+        "height": 9674,
+        "bytes": 842609,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "7ab0e6be015df82dbec28e90add25c8d6d78e63a8afc529cfa6ef78ad3438a90",
+      "sourceSha256": "90b1795ee2645d7c503651832c08b5f87947c42d04ed9cebcc42714d33e6de87",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-009.png"
     },
     {
@@ -4534,7 +4534,7 @@
         "missingAlt": [],
         "imageCount": 2,
         "pageOverflow": 0,
-        "contentLength": 6024,
+        "contentLength": 6241,
         "viewport": {
           "width": 390,
           "height": 844
@@ -4544,11 +4544,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 10053,
-        "bytes": 826130,
+        "height": 10271,
+        "bytes": 850675,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "96eee863d588f73560708805d59b20649a174aab1cd7b8d33515206d8739303e",
+      "sourceSha256": "6ea8dd67f805e12bb6542f896881bf290bb3e5b3751f33dacb78c21edf121d64",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-010.png"
     },
     {
@@ -4578,7 +4578,7 @@
         "missingAlt": [],
         "imageCount": 3,
         "pageOverflow": 0,
-        "contentLength": 7081,
+        "contentLength": 7302,
         "viewport": {
           "width": 390,
           "height": 844
@@ -4588,11 +4588,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 12687,
-        "bytes": 1202237,
+        "height": 12851,
+        "bytes": 1227669,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "acfa0f5970cf69ebcc576b3a645c6fdfe9ce8500d08f55cca0368e4ac5aaf096",
+      "sourceSha256": "bd451ded5f36b1b9fb1ed0f88bbbc8e25fe4b7b6ce9c538f56b0bf0136bca1e1",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-011.png"
     },
     {
@@ -4622,7 +4622,7 @@
         "missingAlt": [],
         "imageCount": 2,
         "pageOverflow": 0,
-        "contentLength": 5787,
+        "contentLength": 6000,
         "viewport": {
           "width": 390,
           "height": 844
@@ -4632,11 +4632,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 9379,
-        "bytes": 855071,
+        "height": 9543,
+        "bytes": 789808,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "eb9f1e2b1c1266b2cca28bb0ed486aa05c196c281d166f7275663d00dcf8808e",
+      "sourceSha256": "c1ba82d0445439ddd5ef201665d72d5a828ac2b57e683ac77a876fc384950174",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-012.png"
     },
     {
@@ -4666,7 +4666,7 @@
         "missingAlt": [],
         "imageCount": 2,
         "pageOverflow": 0,
-        "contentLength": 5968,
+        "contentLength": 6244,
         "viewport": {
           "width": 390,
           "height": 844
@@ -4676,11 +4676,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 9949,
-        "bytes": 803882,
+        "height": 10189,
+        "bytes": 928488,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "d56db1b05f09f73f6934888272dde714620e91ea63e8b05b31fb5eb5dc403f99",
+      "sourceSha256": "542dd1b57fa49e089a8805a1b3653402051e486dfb2e6a68c69df94d7a45232d",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-013.png"
     },
     {
@@ -4710,7 +4710,7 @@
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 7615,
+        "contentLength": 7855,
         "viewport": {
           "width": 390,
           "height": 844
@@ -4720,11 +4720,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 12088,
-        "bytes": 981749,
+        "height": 12277,
+        "bytes": 1150288,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "095e07eab5d48f265651acbeb944e89673593cec5f972a9fc4861df6698fae2c",
+      "sourceSha256": "0e2821c552e237e14955936514164c8fae226704714de34126a50e408f5f187c",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-014.png"
     },
     {
@@ -4754,7 +4754,7 @@
         "missingAlt": [],
         "imageCount": 2,
         "pageOverflow": 0,
-        "contentLength": 5601,
+        "contentLength": 5884,
         "viewport": {
           "width": 390,
           "height": 844
@@ -4764,11 +4764,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 9210,
-        "bytes": 795203,
+        "height": 9450,
+        "bytes": 779476,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "04fe37463e8af6c6bf70ac6017147e782918153b033edb201714a94fd512d3f7",
+      "sourceSha256": "76d1ec7612f0d8e89b7a8e4df48167e74ac2e6fd04aef898fe0f9cb14b16718b",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-015.png"
     },
     {
@@ -4798,7 +4798,7 @@
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 7170,
+        "contentLength": 7534,
         "viewport": {
           "width": 390,
           "height": 844
@@ -4808,11 +4808,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 10063,
-        "bytes": 1014204,
+        "height": 10353,
+        "bytes": 1049147,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "22a6e9e5429b5ee9558f850425455be0b14b9f325c5641bb23cbea449c0dbb2a",
+      "sourceSha256": "b37ed264a67daaa454b7b0d87b1eed5e114f8c41bdb8c113322deddc3037d87c",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-016.png"
     },
     {
@@ -4842,7 +4842,7 @@
         "missingAlt": [],
         "imageCount": 4,
         "pageOverflow": 0,
-        "contentLength": 7339,
+        "contentLength": 7441,
         "viewport": {
           "width": 390,
           "height": 844
@@ -4852,11 +4852,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 12918,
-        "bytes": 1186969,
+        "height": 13027,
+        "bytes": 1201730,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "6a0ac2c821bb8a49a26901e94bf06b66cbe5fc87bd5e087d9d804c90a45acf12",
+      "sourceSha256": "3b410444ad16dee0f1f86cf7de5a61209b32ec059df26191201d39b1643a3d1f",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-017.png"
     },
     {
@@ -4886,7 +4886,7 @@
         "missingAlt": [],
         "imageCount": 2,
         "pageOverflow": 0,
-        "contentLength": 6290,
+        "contentLength": 6656,
         "viewport": {
           "width": 390,
           "height": 844
@@ -4896,11 +4896,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 9927,
-        "bytes": 970449,
+        "height": 10217,
+        "bytes": 939169,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "4fbf57da7de3e717f105d1d621d2530e726ddffe4ce617449535f2c8a5d30753",
+      "sourceSha256": "8d1e381444a1a9851a2d10734cd988583894d85c2ebdc134189d347592555c91",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-018.png"
     },
     {
@@ -4930,7 +4930,7 @@
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 6447,
+        "contentLength": 6615,
         "viewport": {
           "width": 390,
           "height": 844
@@ -4940,11 +4940,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 9712,
-        "bytes": 955834,
+        "height": 9880,
+        "bytes": 976738,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "19090bed1f4dc6e7bb8671b493db808a6497194e56ee59cea9470603b37ff935",
+      "sourceSha256": "a36f6ee0bb39c8d24d4d423bf451b9481a815212229f1527d0bfea6ee537e0e4",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-019.png"
     },
     {
@@ -4974,7 +4974,7 @@
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 6752,
+        "contentLength": 6920,
         "viewport": {
           "width": 390,
           "height": 844
@@ -4984,11 +4984,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 9973,
-        "bytes": 983512,
+        "height": 10111,
+        "bytes": 1001759,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "c54abc0ec475af0af21ab7995d40ef016fd995c0b201bfdb4988215c237c5ce2",
+      "sourceSha256": "e6ee317024e9d49f252cad87c8a5b953c4a20cf13992482de8b4b254de1a1141",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-020.png"
     },
     {
@@ -5018,7 +5018,7 @@
         "missingAlt": [],
         "imageCount": 3,
         "pageOverflow": 0,
-        "contentLength": 8497,
+        "contentLength": 8705,
         "viewport": {
           "width": 390,
           "height": 844
@@ -5028,11 +5028,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 12781,
-        "bytes": 1289696,
+        "height": 12937,
+        "bytes": 1309247,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "0f154b1dc5ad5c15a8c03d9f44494d62533d62c16fb09e8be2303da0128f7062",
+      "sourceSha256": "3e555a3aa14c3b84f53aa8d4d2218604e005f527b98edebff4ca045318bb9303",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-021.png"
     },
     {
@@ -5062,7 +5062,7 @@
         "missingAlt": [],
         "imageCount": 3,
         "pageOverflow": 0,
-        "contentLength": 8280,
+        "contentLength": 8412,
         "viewport": {
           "width": 390,
           "height": 844
@@ -5072,11 +5072,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 12426,
-        "bytes": 1199351,
+        "height": 12531,
+        "bytes": 1211424,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "6e4fe8d510aeafee16fb0f4a4cb033916048d3a13ae39670eb303b13c9b71943",
+      "sourceSha256": "4d2c825d93b7e1d644fb92709d0a6bf5cd61c6669056617adf383f6fa4bac3ed",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-022.png"
     },
     {
@@ -5106,7 +5106,7 @@
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 3425,
+        "contentLength": 3707,
         "viewport": {
           "width": 390,
           "height": 844
@@ -5116,11 +5116,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 6500,
-        "bytes": 753396,
+        "height": 6769,
+        "bytes": 603319,
         "captureMode": "single"
       },
-      "sourceSha256": "23d7530afac6c834e614ae2ae19bc102d391aaa7ae85c4b3d9aaca3901f5f395",
+      "sourceSha256": "4eef617909579b4b45b7e66f660a6e27f24285ffa2872b67067925864e63e982",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-023.png"
     },
     {
@@ -5150,7 +5150,7 @@
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 4466,
+        "contentLength": 4680,
         "viewport": {
           "width": 390,
           "height": 844
@@ -5160,11 +5160,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 7488,
-        "bytes": 693544,
+        "height": 7677,
+        "bytes": 721002,
         "captureMode": "single"
       },
-      "sourceSha256": "090b5fdebdfa9220f0fb80f9750845992fec19cbcf2cce01864d10b12933d105",
+      "sourceSha256": "ed6be95bfc05c3dfbcf31be95beecfaa9ff9019da709cc1e70f9566f92b9e767",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-024.png"
     },
     {
@@ -5194,7 +5194,7 @@
         "missingAlt": [],
         "imageCount": 2,
         "pageOverflow": 0,
-        "contentLength": 6029,
+        "contentLength": 6260,
         "viewport": {
           "width": 390,
           "height": 844
@@ -5204,11 +5204,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 9404,
-        "bytes": 855507,
+        "height": 9593,
+        "bytes": 879988,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "eece7baf0eb29e845cb5160c04686b4de08b9b8adc35ce091ed5fcecd04db4c3",
+      "sourceSha256": "e436893e0bc65a88a81d226189ce6f5a4d3da114c709b9b085c4c4afa5a5f73f",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-025.png"
     },
     {
@@ -5238,7 +5238,7 @@
         "missingAlt": [],
         "imageCount": 4,
         "pageOverflow": 0,
-        "contentLength": 11672,
+        "contentLength": 11806,
         "viewport": {
           "width": 390,
           "height": 844
@@ -5248,11 +5248,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 17382,
-        "bytes": 1894172,
+        "height": 17491,
+        "bytes": 1767016,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "9c89ec05f98273ab7b43a0e9c9a275806afeb2aae32005b726675c0dfe5b2b40",
+      "sourceSha256": "357654105320e81e54d3ba920836e1e2fbc9257fcd75aefe6da334343eebe5a2",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-026.png"
     },
     {
@@ -5282,7 +5282,7 @@
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 5129,
+        "contentLength": 5311,
         "viewport": {
           "width": 390,
           "height": 844
@@ -5292,11 +5292,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 8186,
-        "bytes": 752172,
+        "height": 8295,
+        "bytes": 771123,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "5e9e7a51d89819e93b550ef9e3f8e498bf48960800950eee4e0ab6ccaa2de6c4",
+      "sourceSha256": "e6ec26c1263dece45bfffa4a51964f4db9c4d90d02d5a40e65003bc2e015768c",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-027.png"
     },
     {
@@ -5326,7 +5326,7 @@
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 4296,
+        "contentLength": 4548,
         "viewport": {
           "width": 390,
           "height": 844
@@ -5336,11 +5336,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 7332,
-        "bytes": 861406,
+        "height": 7601,
+        "bytes": 714719,
         "captureMode": "single"
       },
-      "sourceSha256": "1cd877781c71acc675826cf9a01c5ce0170ab4e97beedf094993302aa311fb24",
+      "sourceSha256": "3d23924374048c21d0f4a190f2828a69c3381257aabca946bca04896bb54c6fb",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-028.png"
     },
     {
@@ -5370,7 +5370,7 @@
         "missingAlt": [],
         "imageCount": 2,
         "pageOverflow": 0,
-        "contentLength": 6305,
+        "contentLength": 6699,
         "viewport": {
           "width": 390,
           "height": 844
@@ -5380,11 +5380,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 9989,
-        "bytes": 1080290,
+        "height": 10279,
+        "bytes": 1117708,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "89edc36e96fa303bd2f638f2a2f350d7b98d7e68ed0d5d40417c96848140e8fd",
+      "sourceSha256": "49705669b84d6b51b14a281b7dc99528595a17ce99889c444bca4af552fcbfb0",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-029.png"
     },
     {
@@ -5414,7 +5414,7 @@
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 4860,
+        "contentLength": 5208,
         "viewport": {
           "width": 390,
           "height": 844
@@ -5424,11 +5424,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 7610,
-        "bytes": 912647,
+        "height": 7820,
+        "bytes": 766045,
         "captureMode": "single"
       },
-      "sourceSha256": "79d9a9bc78ba43d1b1f34256ba66602e16df4dafb2e033786d96d5ee4e507a32",
+      "sourceSha256": "ddae614cb603af9c274d2da3781b151c0e0cd95fbc2578559d0543d6da9c5b25",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-030.png"
     },
     {
@@ -5458,7 +5458,7 @@
         "missingAlt": [],
         "imageCount": 2,
         "pageOverflow": 0,
-        "contentLength": 6283,
+        "contentLength": 6701,
         "viewport": {
           "width": 390,
           "height": 844
@@ -5468,11 +5468,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 9573,
-        "bytes": 1006898,
+        "height": 9917,
+        "bytes": 951859,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "ebd4109f27b1650c4aea0ce1ac81f7e9f98e5d100de5b537dee31f14d5dbdb3e",
+      "sourceSha256": "95ab5e8dc126afcf998774e077c1917f98f96b2b6dc420e1b0d087daa100abc6",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-031.png"
     },
     {
@@ -5502,7 +5502,7 @@
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 5104,
+        "contentLength": 5316,
         "viewport": {
           "width": 390,
           "height": 844
@@ -5512,11 +5512,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 8203,
-        "bytes": 829849,
+        "height": 8387,
+        "bytes": 852013,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "55841126db9b1f816cc790bd05be805ad3f7c391f28ac61a04ae35d3cba9a353",
+      "sourceSha256": "5ac5e959351a1d2511c1dab876abf78fd4daa9b3b4f8b0c23f3c7a73fb014c88",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-032.png"
     },
     {
@@ -5546,7 +5546,7 @@
         "missingAlt": [],
         "imageCount": 2,
         "pageOverflow": 0,
-        "contentLength": 5378,
+        "contentLength": 5700,
         "viewport": {
           "width": 390,
           "height": 844
@@ -5556,11 +5556,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 8961,
-        "bytes": 822854,
+        "height": 9254,
+        "bytes": 731231,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "4d99f6e16da6cbdce8ed42a8b07ba1ddc3997b97ea210d48ab0c520e1e051d9f",
+      "sourceSha256": "4f649be390263eaba7c0a0eea3a2a380d167d4689f440ba113b36414eb278b00",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-033.png"
     },
     {
@@ -5590,7 +5590,7 @@
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 5569,
+        "contentLength": 5881,
         "viewport": {
           "width": 390,
           "height": 844
@@ -5600,11 +5600,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 8235,
-        "bytes": 871739,
+        "height": 8446,
+        "bytes": 863528,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "d97064e44b1fe744776aac53d5321783aaaaa962a18e0bb98962c6c100a99787",
+      "sourceSha256": "07b4dc5ca9b012c9f03e8002e8310316a1956fd6b55f56d87aa5091d5728f617",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-034.png"
     },
     {
@@ -5634,7 +5634,7 @@
         "missingAlt": [],
         "imageCount": 2,
         "pageOverflow": 0,
-        "contentLength": 7624,
+        "contentLength": 7848,
         "viewport": {
           "width": 390,
           "height": 844
@@ -5644,11 +5644,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 10847,
-        "bytes": 1197475,
+        "height": 11036,
+        "bytes": 998800,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "1c53476812f76cb6f43510258052ec17346e8b602a647fed3bac866fdbcebefd",
+      "sourceSha256": "74bba34747e8e1567b8bb891b7d3be4d942e7aa862c6726026a2be72d5723e2e",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-035.png"
     },
     {
@@ -5678,7 +5678,7 @@
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 4737,
+        "contentLength": 5063,
         "viewport": {
           "width": 390,
           "height": 844
@@ -5688,11 +5688,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 7366,
-        "bytes": 901231,
+        "height": 7605,
+        "bytes": 753193,
         "captureMode": "single"
       },
-      "sourceSha256": "4396e2c96c30c48abae63c9922f4f65b257a3381ee262664590ce214fbfa7479",
+      "sourceSha256": "bdfd5110c81468d93426549e9e7720fbbc34acb4c3724a7adfbff800bc63f322",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-036.png"
     },
     {
@@ -5722,7 +5722,7 @@
         "missingAlt": [],
         "imageCount": 2,
         "pageOverflow": 0,
-        "contentLength": 6010,
+        "contentLength": 6259,
         "viewport": {
           "width": 390,
           "height": 844
@@ -5732,11 +5732,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 9774,
-        "bytes": 1035939,
+        "height": 9933,
+        "bytes": 1061279,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "8f5d63c3d96c1edefb233596302137e0ca55e44705cf2286286e90e38aa76442",
+      "sourceSha256": "056f9e54d4cfe2ed99bf88c8b9badb14d21bc1a7f1e3ab63d5f031c97d049fbd",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-037.png"
     },
     {
@@ -5766,7 +5766,7 @@
         "missingAlt": [],
         "imageCount": 2,
         "pageOverflow": 0,
-        "contentLength": 8089,
+        "contentLength": 8298,
         "viewport": {
           "width": 390,
           "height": 844
@@ -5776,11 +5776,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 10834,
-        "bytes": 1192142,
+        "height": 11018,
+        "bytes": 1121777,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "b7deedd94bdc18fe9977ac4823f76f29592275780aa44915787d079bd44fb5d0",
+      "sourceSha256": "4f75c9258bf6caedfff88f3b1e47946f0c49a742918244b89af3cf6191aaa4ab",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-038.png"
     },
     {
@@ -5810,7 +5810,7 @@
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 5707,
+        "contentLength": 5822,
         "viewport": {
           "width": 390,
           "height": 844
@@ -5820,11 +5820,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 8086,
-        "bytes": 835899,
+        "height": 8195,
+        "bytes": 709704,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "32a1e20e9662c6579ab71d7f998c93d85fdc60f512693da12bd5a027d3502e2c",
+      "sourceSha256": "aeab77f573cffc6a42c707d1bad0acaefee906868406f1420a0ef3479bc36795",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-039.png"
     },
     {
@@ -5854,7 +5854,7 @@
         "missingAlt": [],
         "imageCount": 2,
         "pageOverflow": 0,
-        "contentLength": 7554,
+        "contentLength": 7712,
         "viewport": {
           "width": 390,
           "height": 844
@@ -5864,11 +5864,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 10637,
-        "bytes": 1023883,
+        "height": 10771,
+        "bytes": 1044059,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "ebaf4b3f96bf9dac52857dde3f8dce061cfe549f12aa4dd282e1d3a5ad29c9d6",
+      "sourceSha256": "5c11f075f41d570de62b5b763391c0633559428de2a4a91f00fa51bdccabb87e",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-040.png"
     },
     {
@@ -5898,7 +5898,7 @@
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 4250,
+        "contentLength": 4502,
         "viewport": {
           "width": 390,
           "height": 844
@@ -5908,11 +5908,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 7319,
-        "bytes": 675359,
+        "height": 7537,
+        "bytes": 707250,
         "captureMode": "single"
       },
-      "sourceSha256": "7ef88da623a45490ef6f55e2c6109f91f2ca6e5e597d63d29b43718fc6431b90",
+      "sourceSha256": "874e0e5aac1b6d7a422de97359d2db675dfb80133818b69d106a4f65799e1358",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-041.png"
     },
     {
@@ -5942,7 +5942,7 @@
         "missingAlt": [],
         "imageCount": 2,
         "pageOverflow": 0,
-        "contentLength": 8151,
+        "contentLength": 8286,
         "viewport": {
           "width": 390,
           "height": 844
@@ -5952,11 +5952,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 11241,
-        "bytes": 1199785,
+        "height": 11376,
+        "bytes": 1215275,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "d29bd8b6693afdc11f48d5721e3e0c2282f39e2b254bcab607e987e494b39c7f",
+      "sourceSha256": "6c293397df9009ca6fc57e7185630259039a4cd72078df920ebfe3a6030fe870",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-042.png"
     },
     {
@@ -5986,7 +5986,7 @@
         "missingAlt": [],
         "imageCount": 2,
         "pageOverflow": 0,
-        "contentLength": 6993,
+        "contentLength": 7125,
         "viewport": {
           "width": 390,
           "height": 844
@@ -5996,11 +5996,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 10323,
-        "bytes": 909576,
+        "height": 10457,
+        "bytes": 1064391,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "f1512599958cbf5331faba482cedcb5e05f9f46b8590462581260bdaa8858f01",
+      "sourceSha256": "1e0284b14681c9ecd6df98faa680db0db4cdf32a8f14f53a8f228c2e8d3d2e39",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-043.png"
     },
     {
@@ -6030,7 +6030,7 @@
         "missingAlt": [],
         "imageCount": 2,
         "pageOverflow": 0,
-        "contentLength": 6864,
+        "contentLength": 7046,
         "viewport": {
           "width": 390,
           "height": 844
@@ -6040,11 +6040,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 10372,
-        "bytes": 1004454,
+        "height": 10532,
+        "bytes": 1121558,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "7d4cf671f30a7b83836781553c470a472d256736e06ec6ffc005eb6116b13577",
+      "sourceSha256": "96dbb161c85f5f93d02a1bc37e79edac758025b4a01dc2d1a098d93decc15e12",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-044.png"
     },
     {
@@ -6074,7 +6074,7 @@
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 3912,
+        "contentLength": 4013,
         "viewport": {
           "width": 390,
           "height": 844
@@ -6084,11 +6084,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 6972,
-        "bytes": 640488,
+        "height": 7052,
+        "bytes": 652713,
         "captureMode": "single"
       },
-      "sourceSha256": "dd9c06cb256001a228ae76a484df3bfc79cf2a4bafa7cbca2d2033fb4b311b23",
+      "sourceSha256": "59f0961a861dcd8c8c7ec33cf739836f3929bb1e6e7eacb8dfdac98f99c37272",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-045.png"
     },
     {
@@ -6118,7 +6118,7 @@
         "missingAlt": [],
         "imageCount": 2,
         "pageOverflow": 0,
-        "contentLength": 7055,
+        "contentLength": 7309,
         "viewport": {
           "width": 390,
           "height": 844
@@ -6128,11 +6128,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 10885,
-        "bytes": 1070776,
+        "height": 11128,
+        "bytes": 1225909,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "bb28534f0016522b5dbf9e7e29ea2d4ccf8e160b8a31cbf55264560992c64e5d",
+      "sourceSha256": "7bef17183f44f2b0ed781f21da66c17482013cb4fd887db2e4e58fd821de7872",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-046.png"
     },
     {
@@ -6162,7 +6162,7 @@
         "missingAlt": [],
         "imageCount": 2,
         "pageOverflow": 0,
-        "contentLength": 7119,
+        "contentLength": 7325,
         "viewport": {
           "width": 390,
           "height": 844
@@ -6172,11 +6172,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 11363,
-        "bytes": 1216730,
+        "height": 11581,
+        "bytes": 1114719,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "a2688f0df81b987eabde6992459e62894b76269c5d666c12d4ad45d032a0c4ad",
+      "sourceSha256": "e204ce5db42d21c2a64679d0c45f90c98abfd0a9252d492b875aa03c8ef16eda",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-047.png"
     },
     {
@@ -6206,7 +6206,7 @@
         "missingAlt": [],
         "imageCount": 0,
         "pageOverflow": 0,
-        "contentLength": 15033,
+        "contentLength": 15336,
         "viewport": {
           "width": 390,
           "height": 844
@@ -6216,11 +6216,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 20296,
-        "bytes": 1810505,
+        "height": 20603,
+        "bytes": 1843405,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "a09f7eb7de01fdcbebc9d67ec83c86242c324c5768e75f2cb4eb2f2e17e86625",
+      "sourceSha256": "599a80ee0bce0082a35dd134c76656ffc05b1221aef3231501e6fba6caec859c",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-048.png"
     },
     {
@@ -6261,7 +6261,7 @@
       "capture": {
         "width": 390,
         "height": 7778,
-        "bytes": 813698,
+        "bytes": 743315,
         "captureMode": "single"
       },
       "sourceSha256": "3f732141a7057a286d390b4c10f008324eb3407271d8cc5fcc23609de6e0eb78",
@@ -6294,7 +6294,7 @@
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 4021,
+        "contentLength": 4407,
         "viewport": {
           "width": 390,
           "height": 844
@@ -6304,11 +6304,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 6941,
-        "bytes": 637336,
+        "height": 7231,
+        "bytes": 681486,
         "captureMode": "single"
       },
-      "sourceSha256": "62885df9684ea9a44e88309cc74f32129d4a678d7cf585ae9b8a1d9783a9bd1d",
+      "sourceSha256": "5144a08c2907fc57ed651a82cd41d50558734bb629b1117ea3b3f6826906057f",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-050.png"
     },
     {
@@ -6338,7 +6338,7 @@
         "missingAlt": [],
         "imageCount": 2,
         "pageOverflow": 0,
-        "contentLength": 5308,
+        "contentLength": 5631,
         "viewport": {
           "width": 390,
           "height": 844
@@ -6348,11 +6348,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 8927,
-        "bytes": 863922,
+        "height": 9162,
+        "bytes": 760608,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "c23692a214ab11e33952c7d9bcf1fa9ff809a85dea65639c8fb847f44c56c641",
+      "sourceSha256": "4939546ac25e14e69c7850395529bef937968980c56b71f49b05d41a29d3743c",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-051.png"
     },
     {
@@ -6382,7 +6382,7 @@
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 4607,
+        "contentLength": 4728,
         "viewport": {
           "width": 390,
           "height": 844
@@ -6392,11 +6392,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 7398,
-        "bytes": 857405,
+        "height": 7508,
+        "bytes": 715061,
         "captureMode": "single"
       },
-      "sourceSha256": "28187c39b6f25b15d1f7266ad18641b6aeb6f936183269313502930e672d7df1",
+      "sourceSha256": "d7dd4da7d572404d8daab076414fd1b0175807160c9b18e662237786ec612da6",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-052.png"
     },
     {
@@ -6426,7 +6426,7 @@
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 3516,
+        "contentLength": 3778,
         "viewport": {
           "width": 390,
           "height": 844
@@ -6436,11 +6436,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 6538,
-        "bytes": 740594,
+        "height": 6756,
+        "bytes": 600697,
         "captureMode": "single"
       },
-      "sourceSha256": "905e225ad357463d0117bcb7f7ca35bcff280fc6203c76de8d42451e27cd41bc",
+      "sourceSha256": "966cc1caf8dbbf5f084a0088e387c7654974b8b4689591d6fad87f8e7cc3cb83",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-053.png"
     },
     {
@@ -6470,7 +6470,7 @@
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 3777,
+        "contentLength": 4083,
         "viewport": {
           "width": 390,
           "height": 844
@@ -6480,11 +6480,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 6954,
-        "bytes": 704014,
+        "height": 7164,
+        "bytes": 659634,
         "captureMode": "single"
       },
-      "sourceSha256": "a6909fa20891ddd44ad6869f2e548e6ba448ec586294e9c5e6680f263b0bad62",
+      "sourceSha256": "de631c7dc7b933181d6127bc9f4b43094f254ec71ee07fe665297fdff3f06c45",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-054.png"
     },
     {
@@ -6514,7 +6514,7 @@
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 4780,
+        "contentLength": 5104,
         "viewport": {
           "width": 390,
           "height": 844
@@ -6524,11 +6524,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 7524,
-        "bytes": 888301,
+        "height": 7763,
+        "bytes": 754374,
         "captureMode": "single"
       },
-      "sourceSha256": "5bde0030656aee6c262f3c60765a98602910566635ade7883c2b46b5aef59494",
+      "sourceSha256": "a00627a8a56bd11e89ce4c763fb91174fa99ef1e38b6bac4dc6ee16700b3eef5",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-055.png"
     },
     {
@@ -6558,7 +6558,7 @@
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 4199,
+        "contentLength": 4521,
         "viewport": {
           "width": 390,
           "height": 844
@@ -6568,11 +6568,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 7544,
-        "bytes": 739362,
+        "height": 7784,
+        "bytes": 707742,
         "captureMode": "single"
       },
-      "sourceSha256": "33f9a4540603ea3bd20a1e0e7f2f6d18bda80e3c7fdf5c4ec7c696ed5d4e048c",
+      "sourceSha256": "df5c27c934a40654dd10e412da8da6043ff7777b6bb8fd0d792b0551e51eb480",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-056.png"
     },
     {
@@ -6602,7 +6602,7 @@
         "missingAlt": [],
         "imageCount": 3,
         "pageOverflow": 0,
-        "contentLength": 8336,
+        "contentLength": 8722,
         "viewport": {
           "width": 390,
           "height": 844
@@ -6612,11 +6612,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 12360,
-        "bytes": 1231938,
+        "height": 12650,
+        "bytes": 1214417,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "5b0ec377b2a0d68324dae9c239ea6bd22d864f64d110255ff540c8882886dc23",
+      "sourceSha256": "b9436dc3f9862eeffd76ad120a83b20a0af31ccde1c2aa36005aa3d6a114e5df",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-057.png"
     },
     {
@@ -6646,7 +6646,7 @@
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 4371,
+        "contentLength": 4487,
         "viewport": {
           "width": 390,
           "height": 844
@@ -6656,11 +6656,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 7767,
-        "bytes": 725304,
+        "height": 7847,
+        "bytes": 741047,
         "captureMode": "single"
       },
-      "sourceSha256": "cd5c4cc556528e528de320b1bee70b6298c0d367f7c19f020b306b963e84e611",
+      "sourceSha256": "9a1806fdea38f5010616709c96f1f7b9038b1e8565174a01f9f7ca4e94d576c4",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-058.png"
     },
     {
@@ -6690,7 +6690,7 @@
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 4094,
+        "contentLength": 4330,
         "viewport": {
           "width": 390,
           "height": 844
@@ -6700,11 +6700,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 6918,
-        "bytes": 637617,
+        "height": 7107,
+        "bytes": 667218,
         "captureMode": "single"
       },
-      "sourceSha256": "aa5d59664531491a034d2a2d95a5b013b1c56c53975fc070cefee23eaa49ed77",
+      "sourceSha256": "6a73393d1c3f1c69cb9f19c9fd298b02ebff6b196fe90bf232b93a410a5bfeeb",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-059.png"
     },
     {
@@ -6734,7 +6734,7 @@
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 4091,
+        "contentLength": 4449,
         "viewport": {
           "width": 390,
           "height": 844
@@ -6744,11 +6744,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 7018,
-        "bytes": 709039,
+        "height": 7337,
+        "bytes": 686861,
         "captureMode": "single"
       },
-      "sourceSha256": "e1fbaa26aaf4cc511802c09d68938722a96086a8357a1d32cf98649748d10779",
+      "sourceSha256": "639594fde7257a12f35a8d6a38aa86aae8808e23b683fe3e7649077d0537a028",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-060.png"
     },
     {
@@ -6778,7 +6778,7 @@
         "missingAlt": [],
         "imageCount": 2,
         "pageOverflow": 0,
-        "contentLength": 5626,
+        "contentLength": 5896,
         "viewport": {
           "width": 390,
           "height": 844
@@ -6788,11 +6788,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 9250,
-        "bytes": 860861,
+        "height": 9435,
+        "bytes": 794287,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "c79485a0b4bba04056c42ff8927e414ff10abcc65b67f25af2196fcd2960140a",
+      "sourceSha256": "f53211aad137ef6df6d7d7b4a8e69e6559770f98ba3ade6eace564512dc3a893",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-061.png"
     },
     {
@@ -6822,7 +6822,7 @@
         "missingAlt": [],
         "imageCount": 2,
         "pageOverflow": 0,
-        "contentLength": 5736,
+        "contentLength": 6006,
         "viewport": {
           "width": 390,
           "height": 844
@@ -6832,11 +6832,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 9224,
-        "bytes": 887834,
+        "height": 9438,
+        "bytes": 800183,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "54a13bd3ac7ed9e2df74c285d178e02ded588a7174e78369d2b5101abd50a2b5",
+      "sourceSha256": "3bd1dc81d35ca7932b4265b67b36951fedb64dfa2e492ecc0a58abf6906f6bce",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-062.png"
     },
     {
@@ -6877,7 +6877,7 @@
       "capture": {
         "width": 390,
         "height": 8405,
-        "bytes": 793499,
+        "bytes": 680645,
         "captureMode": "tiled-lossless"
       },
       "sourceSha256": "03b0db9f150cfea5b1f36dfee3f0856b2088f3be093f805f7e011ed31eb47755",
@@ -6910,7 +6910,7 @@
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 4942,
+        "contentLength": 5134,
         "viewport": {
           "width": 390,
           "height": 844
@@ -6920,11 +6920,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 8164,
-        "bytes": 657226,
+        "height": 8331,
+        "bytes": 678449,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "0f584781ca82150eda0fa9caf3249ba8cd42cc88a1a3364213612df9c61b3794",
+      "sourceSha256": "2702baa928e3e2b6c11fc5545b3a0196b3805375b0eaea5d94d83d63b54a06e7",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-064.png"
     },
     {
@@ -6954,7 +6954,7 @@
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 3527,
+        "contentLength": 3761,
         "viewport": {
           "width": 390,
           "height": 844
@@ -6964,11 +6964,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 6488,
-        "bytes": 571462,
+        "height": 6706,
+        "bytes": 601421,
         "captureMode": "single"
       },
-      "sourceSha256": "f7efc2cd681d8cd6a65eaff37a7b2029c854debcbb5e648018541145d869f95f",
+      "sourceSha256": "06730273a868eeff42a6bfd4d2feea88ae55d198864c223dc9e2d065e2d321c5",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-065.png"
     },
     {
@@ -6998,7 +6998,7 @@
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 3665,
+        "contentLength": 3849,
         "viewport": {
           "width": 390,
           "height": 844
@@ -7008,11 +7008,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 6555,
-        "bytes": 643751,
+        "height": 6685,
+        "bytes": 598733,
         "captureMode": "single"
       },
-      "sourceSha256": "dedd1547a515e76ac41ff60a2a7ada6e4d6181709a00152a78122e098d34001b",
+      "sourceSha256": "1448f10441d0aa0837fe248abe35b46e67ec0d7f91e3bfdc883abea1644e7397",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-066.png"
     },
     {
@@ -7042,7 +7042,7 @@
         "missingAlt": [],
         "imageCount": 2,
         "pageOverflow": 0,
-        "contentLength": 6736,
+        "contentLength": 7133,
         "viewport": {
           "width": 390,
           "height": 844
@@ -7052,11 +7052,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 9901,
-        "bytes": 917445,
+        "height": 10220,
+        "bytes": 955104,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "5dea6ebc82bde2000e29e8d0d568df372c329d4f379d6dc95e12c4a629563000",
+      "sourceSha256": "b24cf62d9a33bb1eb1a0e04caa3fc9daf01858d9779af65aeadbeea4d49b261f",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-067.png"
     },
     {
@@ -7086,7 +7086,7 @@
         "missingAlt": [],
         "imageCount": 2,
         "pageOverflow": 0,
-        "contentLength": 6639,
+        "contentLength": 7036,
         "viewport": {
           "width": 390,
           "height": 844
@@ -7096,11 +7096,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 9766,
-        "bytes": 959047,
+        "height": 10056,
+        "bytes": 995813,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "4ac7d2ddf80c16387d8b4274d9c7cda1ff2f4bf00f059b9756d0be47a0b70159",
+      "sourceSha256": "1a9a89f4201abc68e43bfa000c0f62718098fba4f68e309f1ce5c806efc9088d",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-068.png"
     },
     {
@@ -7130,7 +7130,7 @@
         "missingAlt": [],
         "imageCount": 2,
         "pageOverflow": 0,
-        "contentLength": 7417,
+        "contentLength": 7591,
         "viewport": {
           "width": 390,
           "height": 844
@@ -7140,11 +7140,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 10587,
-        "bytes": 1104852,
+        "height": 10721,
+        "bytes": 1121201,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "78eef2328b28f3a7abc8c46155d9341720a0357a1aa46d3b005625c5facc7daf",
+      "sourceSha256": "5a57d24da3c77221c6a76608a2396c9f6348be98d76d7e6d96298dba56486da4",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-069.png"
     },
     {
@@ -7174,7 +7174,7 @@
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 5042,
+        "contentLength": 5265,
         "viewport": {
           "width": 390,
           "height": 844
@@ -7184,11 +7184,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 7805,
-        "bytes": 747950,
+        "height": 7990,
+        "bytes": 773698,
         "captureMode": "single"
       },
-      "sourceSha256": "2696329d96b7fd6f1635486d97f1fac61beb12f87b22bc6756bed2eb8444e55b",
+      "sourceSha256": "fd7fb1a5b1f987f6f026b53d92ee233dc3ee9cf2e076273d2761813c20f4ccc4",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-070.png"
     },
     {
@@ -7218,7 +7218,7 @@
         "missingAlt": [],
         "imageCount": 2,
         "pageOverflow": 0,
-        "contentLength": 6663,
+        "contentLength": 6837,
         "viewport": {
           "width": 390,
           "height": 844
@@ -7228,11 +7228,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 10028,
-        "bytes": 866111,
+        "height": 10163,
+        "bytes": 995877,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "3ab50635cf6ae3e98d96ffba015e6740cacdb745e07e1f86fbc118ad2a10af29",
+      "sourceSha256": "6cbe9675c74b10faee88046be690075233921f87815b7e012847d0ac6049c48b",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-071.png"
     },
     {
@@ -7262,7 +7262,7 @@
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 5140,
+        "contentLength": 5504,
         "viewport": {
           "width": 390,
           "height": 844
@@ -7272,11 +7272,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 8573,
-        "bytes": 773592,
+        "height": 8863,
+        "bytes": 740594,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "78c61f6ebfb38176b4d289663be3d928a524d3d7fe10d0787c09918829505100",
+      "sourceSha256": "94bb2498ec744462ef752a3519407c88b252085dd6086e74b901b5512b25def4",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-072.png"
     },
     {
@@ -7306,7 +7306,7 @@
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 5120,
+        "contentLength": 5334,
         "viewport": {
           "width": 390,
           "height": 844
@@ -7316,11 +7316,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 8895,
-        "bytes": 847156,
+        "height": 9113,
+        "bytes": 778473,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "e23de3f3d894c3f19219b87d19f7f3a2ef2b5a9a223437eec2f8eab989f7ec1a",
+      "sourceSha256": "72d285c0f253f5af8c578eefc36c8ac7f909debd97d902e516e460374c056f3c",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-073.png"
     },
     {
@@ -7350,7 +7350,7 @@
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 5360,
+        "contentLength": 5574,
         "viewport": {
           "width": 390,
           "height": 844
@@ -7360,11 +7360,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 8984,
-        "bytes": 763458,
+        "height": 9173,
+        "bytes": 786407,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "b9ee8df3bf8cd54caa81cc98fcf09375f5aca4c742a0ab3ff1bee3c85e87be09",
+      "sourceSha256": "31ed1ae22b4a7c59b17634c1fbeb27c1eac3f6f8ebbbf98b564c61204b8758dc",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-074.png"
     },
     {
@@ -7405,7 +7405,7 @@
       "capture": {
         "width": 390,
         "height": 7010,
-        "bytes": 722067,
+        "bytes": 647353,
         "captureMode": "single"
       },
       "sourceSha256": "6cbd86ffb341da4b56bb8d397d14e84b51b7ee1adc9b7bbd0eed517235891a79",
@@ -7438,7 +7438,7 @@
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 4735,
+        "contentLength": 4925,
         "viewport": {
           "width": 390,
           "height": 844
@@ -7448,11 +7448,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 8332,
-        "bytes": 785206,
+        "height": 8470,
+        "bytes": 679163,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "cb9362ba156d8b79092982ec940284e4b410deddcff807123728f9bda864512c",
+      "sourceSha256": "b0eede836f1f93de4bb51f672de8d1e0714c2e68b3dd895ed7d3a2f3b54f7d0b",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-076.png"
     },
     {
@@ -7493,7 +7493,7 @@
       "capture": {
         "width": 390,
         "height": 8661,
-        "bytes": 810046,
+        "bytes": 706095,
         "captureMode": "tiled-lossless"
       },
       "sourceSha256": "3fdf86874dcb53eb6840dc331341a5c137961de3ddbda16b104f0779a6ee1be5",
@@ -7537,7 +7537,7 @@
       "capture": {
         "width": 390,
         "height": 9068,
-        "bytes": 785453,
+        "bytes": 878750,
         "captureMode": "tiled-lossless"
       },
       "sourceSha256": "34416534323b4d965a9f7d3b4bdb599447a74f0215ebde294c47b1e3df4fc62d",
@@ -7570,7 +7570,7 @@
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 4107,
+        "contentLength": 4283,
         "viewport": {
           "width": 390,
           "height": 844
@@ -7580,11 +7580,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 6987,
-        "bytes": 655266,
+        "height": 7146,
+        "bytes": 675071,
         "captureMode": "single"
       },
-      "sourceSha256": "37187f0b287157e9bc6f6d515fa806f9bdeb06833bbcf0857f8fca75f7074067",
+      "sourceSha256": "7ef53710322e4c81ecb5b28a950eff02ba6c36f9aa11ccb359c64b13ae4d8f27",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-079.png"
     },
     {
@@ -7614,7 +7614,7 @@
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 5193,
+        "contentLength": 5453,
         "viewport": {
           "width": 390,
           "height": 844
@@ -7624,11 +7624,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 8483,
-        "bytes": 691272,
+        "height": 8701,
+        "bytes": 853973,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "5f2bf45d2b6470f90f406b894892b6a560e34bafff16ebe9db19062da6bc0d3c",
+      "sourceSha256": "c1eaa137bfe6889678c5da2774d98ace2ce647840b6a448f0a4aa6d242579666",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-080.png"
     },
     {
@@ -7658,7 +7658,7 @@
         "missingAlt": [],
         "imageCount": 2,
         "pageOverflow": 0,
-        "contentLength": 7048,
+        "contentLength": 7161,
         "viewport": {
           "width": 390,
           "height": 844
@@ -7668,11 +7668,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 11279,
-        "bytes": 965853,
+        "height": 11358,
+        "bytes": 1096057,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "a84e75cdeff80c26258969681e6163d4b87557b7f76d0426477d179135e7e33a",
+      "sourceSha256": "dfb07514b997fdb437594e1415a396a23d8ead5629c8bb813460c3293c19be6a",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-081.png"
     },
     {
@@ -7713,7 +7713,7 @@
       "capture": {
         "width": 390,
         "height": 7095,
-        "bytes": 837775,
+        "bytes": 654882,
         "captureMode": "single"
       },
       "sourceSha256": "761b371a25accb2be746a9c6bfacba6db315fa0ad5c1e51d6f0faf2abd5d273c",
@@ -7746,7 +7746,7 @@
         "missingAlt": [],
         "imageCount": 4,
         "pageOverflow": 0,
-        "contentLength": 12480,
+        "contentLength": 12610,
         "viewport": {
           "width": 390,
           "height": 844
@@ -7756,11 +7756,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 19439,
-        "bytes": 1935868,
+        "height": 19548,
+        "bytes": 1948941,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "01476915209eaca3561167929ceb68c9975eb211115b77e6d0c3fa39c94538f1",
+      "sourceSha256": "b62b5f59a7b63c92e8827b0ee201ff61bd1ed027be7be270d9d9dff1b72c69b1",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-083.png"
     },
     {
@@ -7790,7 +7790,7 @@
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 5104,
+        "contentLength": 5255,
         "viewport": {
           "width": 390,
           "height": 844
@@ -7800,11 +7800,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 7930,
-        "bytes": 984884,
-        "captureMode": "single"
+        "height": 8065,
+        "bytes": 862831,
+        "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "edfc7aa6c52419c56a818839bcbf01d8c5679e41944418111376fdb0561e3f13",
+      "sourceSha256": "d0890608ef850ceb4fc35a52bd6e1af072bfc322213d0c4cb6fcb7b9df8f047d",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-084.png"
     },
     {
@@ -7834,7 +7834,7 @@
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 4815,
+        "contentLength": 5065,
         "viewport": {
           "width": 390,
           "height": 844
@@ -7844,11 +7844,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 7626,
-        "bytes": 804156,
+        "height": 7815,
+        "bytes": 758714,
         "captureMode": "single"
       },
-      "sourceSha256": "f7dd9830a0074d1b73b06ae71bdfcf14dda8cded0a43aa94242012c0d05a435f",
+      "sourceSha256": "c2638423b8dd09c74abf76c74cfbb4d2589d319cf89ef2a774d28c74364d24aa",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-085.png"
     },
     {
@@ -7878,7 +7878,7 @@
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 3370,
+        "contentLength": 3650,
         "viewport": {
           "width": 390,
           "height": 844
@@ -7888,11 +7888,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 6452,
-        "bytes": 563151,
+        "height": 6721,
+        "bytes": 599115,
         "captureMode": "single"
       },
-      "sourceSha256": "92f531510e3d1e55085a55e8fbf491082528a0346e22b25658cd764a5defccd1",
+      "sourceSha256": "2c1e61c6f68845cfb709f1d4d7efe82e263eed66f146154e506515e10e853c9d",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-086.png"
     },
     {
@@ -7922,7 +7922,7 @@
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 4991,
+        "contentLength": 5229,
         "viewport": {
           "width": 390,
           "height": 844
@@ -7932,11 +7932,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 8082,
-        "bytes": 775347,
+        "height": 8271,
+        "bytes": 674744,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "b17531b4dd8f8ad7740fc0abcc8bc1acd5b27d5978f67054f061dd69abf48d2e",
+      "sourceSha256": "af46bc5651995a9c06a26597b14b69695a4adba8ad7759a2f7f2da4d1007daa1",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-087.png"
     },
     {
@@ -7966,7 +7966,7 @@
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 5101,
+        "contentLength": 5246,
         "viewport": {
           "width": 390,
           "height": 844
@@ -7976,11 +7976,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 8013,
-        "bytes": 777365,
+        "height": 8148,
+        "bytes": 844264,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "d2bff9c418577ac33be768854b647860bd1956fbcbde424c77770debba90ff22",
+      "sourceSha256": "c144d94b6cba86fa8b1f9a23f7143cc331eb8cc17d81ee67a2eedf8a70fe2746",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-088.png"
     },
     {
@@ -8010,7 +8010,7 @@
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 4473,
+        "contentLength": 4670,
         "viewport": {
           "width": 390,
           "height": 844
@@ -8020,11 +8020,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 7257,
-        "bytes": 670033,
+        "height": 7416,
+        "bytes": 692372,
         "captureMode": "single"
       },
-      "sourceSha256": "f3a6078bcb007fd85685ee88afef66b03fad127c31a3d550202ce3acadba7dcf",
+      "sourceSha256": "d47be4f2ed9184605e7dde26e7c4145d39857b1db11d4c341c898f03aee61320",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-089.png"
     },
     {
@@ -8054,7 +8054,7 @@
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 3673,
+        "contentLength": 3788,
         "viewport": {
           "width": 390,
           "height": 844
@@ -8064,11 +8064,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 6771,
-        "bytes": 594429,
+        "height": 6880,
+        "bytes": 782429,
         "captureMode": "single"
       },
-      "sourceSha256": "2d7223b384a839c41b3a5f0437a1e94ba217e8ad0a88c89ee7890a711a5dbeca",
+      "sourceSha256": "46da1b22632377c31a76af8b1918dd6d7bf7f15c0405ed656fce8e017f23119b",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-090.png"
     },
     {
@@ -8098,7 +8098,7 @@
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 4594,
+        "contentLength": 5024,
         "viewport": {
           "width": 390,
           "height": 844
@@ -8108,11 +8108,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 7493,
-        "bytes": 851068,
+        "height": 7863,
+        "bytes": 741513,
         "captureMode": "single"
       },
-      "sourceSha256": "71cf0349ac0192e8944d9b37b7d7f2ee2a346fe860c1f77d25f0164f72c9c74e",
+      "sourceSha256": "0077faac328c39fd457f2f1facf3b8d3c7666e876509fccb48abe0ee02012e9c",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-091.png"
     },
     {
@@ -8142,7 +8142,7 @@
         "missingAlt": [],
         "imageCount": 1,
         "pageOverflow": 0,
-        "contentLength": 3520,
+        "contentLength": 3926,
         "viewport": {
           "width": 390,
           "height": 844
@@ -8152,11 +8152,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 6554,
-        "bytes": 576200,
+        "height": 6895,
+        "bytes": 624548,
         "captureMode": "single"
       },
-      "sourceSha256": "6ae9d527434b628e04546fa613224f9ac2ea55b91c802de97722433acaade0aa",
+      "sourceSha256": "296b6cda423e2d7416af7aff5e45a3f5693475950384d209b5aaaf2d93167ef0",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-092.png"
     },
     {
@@ -8186,7 +8186,7 @@
         "missingAlt": [],
         "imageCount": 0,
         "pageOverflow": 0,
-        "contentLength": 8497,
+        "contentLength": 9480,
         "viewport": {
           "width": 390,
           "height": 844
@@ -8196,11 +8196,11 @@
       },
       "capture": {
         "width": 390,
-        "height": 12474,
-        "bytes": 1064798,
+        "height": 13223,
+        "bytes": 1155055,
         "captureMode": "tiled-lossless"
       },
-      "sourceSha256": "3d45c1c3f3d8048e9bcb2314992aa255d915540e5c157ec68f99b2d825e5ff15",
+      "sourceSha256": "6a62b12a6fcadafff8cbf3a5b6f8c5a3c30f32f67ce378b2fce4d091c2afffcf",
       "evidence": "audits/course-v3-visual-evidence/full-pages/mobile-390/lesson-093.png"
     }
   ],
@@ -8310,7 +8310,7 @@
       "capture": {
         "width": 1440,
         "height": 2975,
-        "bytes": 439822,
+        "bytes": 439494,
         "captureMode": "single"
       },
       "sourceSha256": "db7953ab38505ba49549e2c91c30ec3426247fbb68457ce6d879a0da6ec4ebaa",
@@ -8458,7 +8458,7 @@
       "capture": {
         "width": 1440,
         "height": 1738,
-        "bytes": 236857,
+        "bytes": 237052,
         "captureMode": "single"
       },
       "sourceSha256": "35525bbdb36d32ab5308b024b97929f50873ce407407613914b44fce0ab60809",
@@ -8532,7 +8532,7 @@
       "capture": {
         "width": 1440,
         "height": 1756,
-        "bytes": 241013,
+        "bytes": 240691,
         "captureMode": "single"
       },
       "sourceSha256": "5e4442ebd58aae72c313b30a0b7b22518308805cce656c543a6774811a5e197c",
@@ -8569,7 +8569,7 @@
       "capture": {
         "width": 1440,
         "height": 1910,
-        "bytes": 273521,
+        "bytes": 273479,
         "captureMode": "single"
       },
       "sourceSha256": "00ddaaf8d5c5518528647bc1ff949f29e3c209a9b6cdfe205d0930376fb5dabf",
@@ -8606,7 +8606,7 @@
       "capture": {
         "width": 1440,
         "height": 1621,
-        "bytes": 217703,
+        "bytes": 217377,
         "captureMode": "single"
       },
       "sourceSha256": "2cf40d95a2fb2c75bd1a609e37da2376b14284213e636d22ea22621e3f59880e",
@@ -8754,7 +8754,7 @@
       "capture": {
         "width": 390,
         "height": 2047,
-        "bytes": 198908,
+        "bytes": 198984,
         "captureMode": "single"
       },
       "sourceSha256": "8e26c2539e569e19c4abf970fe4061915b48b950dea685421f8b94b2f191bf1b",
@@ -8828,7 +8828,7 @@
       "capture": {
         "width": 390,
         "height": 2989,
-        "bytes": 295989,
+        "bytes": 295823,
         "captureMode": "single"
       },
       "sourceSha256": "822d7321cf96d208f34eb20089759989260cba2f171db6ae5cc0f1a421469b32",
@@ -8865,7 +8865,7 @@
       "capture": {
         "width": 390,
         "height": 2497,
-        "bytes": 248339,
+        "bytes": 248435,
         "captureMode": "single"
       },
       "sourceSha256": "65ded255c826d0505988ab5e5933bab285914758fe435e6fa3cb38d89f8935b2",
@@ -8902,7 +8902,7 @@
       "capture": {
         "width": 390,
         "height": 3029,
-        "bytes": 315629,
+        "bytes": 315783,
         "captureMode": "single"
       },
       "sourceSha256": "8b6dd7ee04589a33aca6f49be44dfa1a9df74da75cf5793806ffade0d23598c7",
@@ -9013,7 +9013,7 @@
       "capture": {
         "width": 390,
         "height": 1898,
-        "bytes": 178489,
+        "bytes": 178544,
         "captureMode": "single"
       },
       "sourceSha256": "5e4442ebd58aae72c313b30a0b7b22518308805cce656c543a6774811a5e197c",
@@ -9050,7 +9050,7 @@
       "capture": {
         "width": 390,
         "height": 1905,
-        "bytes": 191263,
+        "bytes": 191947,
         "captureMode": "single"
       },
       "sourceSha256": "00ddaaf8d5c5518528647bc1ff949f29e3c209a9b6cdfe205d0930376fb5dabf",

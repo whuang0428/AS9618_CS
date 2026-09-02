@@ -81,6 +81,37 @@ const specialTeaching = Object.freeze({
     ] }],
     misconceptions: ["Sampling rate is not the number of bits per sample. Sampling resolution is not the number of samples per second."],
   },
+  "S1.11": {
+    explanations: [
+      "Files are compressed so that they require less storage space and fewer bits have to be transmitted. A smaller file can be transferred or streamed in less time at the same data-transfer rate and uses less network bandwidth for a given transfer time.",
+      "Run-length encoding (RLE) is a lossless, reversible compression method for adjacent identical data items. Each run is represented by two values: the number of repeated items followed by the value or code of the repeated item.",
+      "Lossless compression reconstructs every original bit. Lossy compression permanently removes selected detail, so it is suitable only when an exact copy is unnecessary and the reduced quality remains acceptable for the application.",
+      "RLE is effective when long runs save more bits than the count-and-value pairs require. Data with short runs or frequent changes can become larger because every run adds a count as overhead.",
+    ],
+    mechanismSteps: [
+      { label: "Identify runs", title: "Separate adjacent identical values", detail: "Read the data in order and divide it whenever the value changes; non-adjacent repetitions belong to different runs." },
+      { label: "Encode", title: "Store a count and value for each run", detail: "Write the run length first and then the repeated data value or its code." },
+      { label: "Decode", title: "Expand every count-and-value pair", detail: "Recreate each value the stated number of times and confirm that the complete output exactly matches the original data." },
+      { label: "Judge", title: "Compare the encoded and original sizes", detail: "Use RLE only when the saved repeated values outweigh the extra count stored for every run." },
+    ],
+    workedExamples: [{ title: "Encode, decode and judge an RLE string", steps: [
+      { label: "Source", text: "AAAABBCCCCCCCCDD contains four runs: AAAA, BB, CCCCCCCC and DD." },
+      { label: "Encode", text: "Store each run as count then value: 4A 2B 8C 2D." },
+      { label: "Decode", text: "Expanding the pairs produces AAAABBCCCCCCCCDD, so the method is lossless." },
+      { label: "Counterexample", text: "ABC becomes 1A 1B 1C; the counts add overhead, so RLE increases the amount of stored data." },
+    ] }],
+    misconceptions: ["RLE replaces adjacent runs, not every occurrence of a value throughout a file; separated occurrences must be encoded as separate runs."],
+    masteryCheck: {
+      prompt: "Explain why compression is needed, then describe how RLE encodes and decodes adjacent repeated data and judge when it is effective.",
+      answerCriteria: [
+        "smaller files require less storage space",
+        "fewer transmitted bits can reduce transfer time or bandwidth use",
+        "RLE is lossless and stores each adjacent run as a count followed by its value or code",
+        "decoding repeats each value by its stored count to reconstruct the original exactly",
+        "long runs can save space but short runs may add more count overhead than they remove",
+      ],
+    },
+  },
   "S3.10": teachingDepthOverrides["018:S3.10"],
   "S9.09": {
     explanations: [

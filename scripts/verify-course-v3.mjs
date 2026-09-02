@@ -20,6 +20,7 @@ const check = (condition, message) => { if (!condition) errors.push(message); };
 const sha256 = (path) => createHash("sha256").update(readFileSync(path)).digest("hex");
 const hasRootRelativeAsset = (html) => /\b(?:src|href)="\/assets\//.test(html);
 const words = (value) => normalisePresentationText(value).split(" ").filter(Boolean);
+const markingPointSignature = (values) => values.map(normalisePresentationText).sort().join("|");
 
 function imageDimensions(path) {
   const data = readFileSync(path);
@@ -171,6 +172,10 @@ for (const lesson of courseV3Lessons) {
     check(html.includes(`Command word: ${question.commandWord}`), `${label} ${question.id}: command word is not rendered`);
     for (const point of question.answerPoints) check(!(words(point).length >= 8 && coreParagraphs.has(normalisePresentationText(point))), `${label} ${question.id}: marking point copies a full core paragraph`);
   }
+  const practiceMarkingPointSignatures = new Map(lesson.practice.map((question) => [
+    markingPointSignature(question.answerPoints),
+    question.id,
+  ]));
   const examMarkingPointSignatures = new Set();
   for (const question of lesson.examStyleQuestions) {
     examStyleQuestionCount += 1;
@@ -184,7 +189,9 @@ for (const lesson of courseV3Lessons) {
     check(html.includes(`data-question-id="${question.id}"`), `${label} ${question.id}: exam-style question is not rendered`);
     for (const practiceQuestion of lesson.practice) check(!duplicateReason(question.task, practiceQuestion.prompt), `${label} ${question.id}: exam-style task repeats Practice question ${practiceQuestion.id}`);
     for (const point of question.markLogic) check(!(words(point).length >= 8 && coreParagraphs.has(normalisePresentationText(point))), `${label} ${question.id}: exam-style marking point copies a full core paragraph`);
-    examMarkingPointSignatures.add(question.markLogic.map(normalisePresentationText).sort().join("|"));
+    const answerSignature = markingPointSignature(question.markLogic);
+    check(!practiceMarkingPointSignatures.has(answerSignature), `${label} ${question.id}: marking points repeat Practice answer ${practiceMarkingPointSignatures.get(answerSignature)}`);
+    examMarkingPointSignatures.add(answerSignature);
   }
   check(examMarkingPointSignatures.size === lesson.examStyleQuestions.length, `${label}: exam-style questions repeat the same marking-point set`);
   for (const [, body] of lesson.summary) for (const paragraph of lesson.units.flatMap((unit) => unit.coreExplanation)) {
@@ -242,7 +249,7 @@ const s110 = lessonText("S1.10");
 check(!/vector file/i.test(s110), "Regression: vector-compression content polluted S1.10 sound sampling");
 for (const term of ["analogue", "sample", "quantis", "sampling rate", "sampling resolution", "file size"]) check(s110.toLowerCase().includes(term), `S1.10 missing ${term}`);
 const s111 = `${lessonText("S1.11")} ${practiceText("S1.11")}`.toLowerCase();
-for (const term of ["lossless", "lossy", "rle", "count", "decode", "text", "bitmap", "vector", "sound"]) check(s111.includes(term), `S1.11 missing ${term}`);
+for (const term of ["storage space", "transmit", "lossless", "lossy", "rle", "adjacent", "two values", "count", "decode", "text", "bitmap", "vector", "sound"]) check(s111.includes(term), `S1.11 missing ${term}`);
 const s111Unit = courseV3Lessons.flatMap((lesson) => lesson.units).find((unit) => unit.syllabusId === "S1.11");
 check(/lossless.*lossy/i.test(s111Unit?.leadVisual?.title ?? "") && /lossless-lossy\.png$/.test(s111Unit?.leadVisual?.asset ?? ""), "S1.11 must begin with a lossless/lossy comparison visual");
 const s303 = `${lessonText("S3.03")} ${practiceText("S3.03")}`.toLowerCase();
@@ -292,6 +299,7 @@ if (process.argv.includes("--self-test")) {
     !stageNames.every((stage) => stageNames.filter((candidate) => candidate !== "2-practice").includes(stage)),
     forbiddenStudentLabels.test("Supplementary visual recap"),
     hasRootRelativeAsset('<img src="/assets/broken-on-project-pages.png" alt="test">'),
+    markingPointSignature(["same marking point"]) === markingPointSignature(["same marking point"]),
   ];
   check(mutations.every(Boolean), "Verifier negative-regression self-test did not reject every mutation");
   if (mutations.every(Boolean)) console.log(`Course presentation verifier self-test: ${mutations.length} negative mutations rejected.`);

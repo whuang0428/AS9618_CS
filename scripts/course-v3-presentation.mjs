@@ -487,6 +487,122 @@ const examMarkingPointLimits = Object.freeze({
   "V3-Q-L043-03": 1,
 });
 
+const examQuestionOverrides = Object.freeze({
+  "S1-L06-EXAM-1": {
+    prompt: "A mono sound recording sampled at 22 kHz is resampled at 44 kHz while its duration and sampling resolution remain unchanged. Explain the effects on the digital representation, time accuracy and file size.",
+    objectiveIds: ["S1.10.A01", "S1.10.A03"],
+    answerPoints: [
+      "44 000 samples are stored for each second instead of 22 000.",
+      "the interval between measurements is halved, so the wave is measured at more points in time",
+      "the digital representation can follow changes in the analogue wave more accurately",
+      "the file contains twice as many sample values, so its data size doubles when the other stated factors remain unchanged",
+    ],
+    commonError: "Do not claim that the sampling resolution or number of amplitude levels changes; only the sampling rate changes in this scenario.",
+  },
+  "S1-L06-EXAM-2": {
+    prompt: "A text file contains the sequence AAAAAAABBBCC and must be sent over a slow connection. Describe how run-length encoding compresses this sequence and explain why using RLE can be useful here.",
+    objectiveIds: ["S1.11.A01", "S1.11.A03", "S1.11.A04"],
+    answerPoints: [
+      "RLE separates adjacent identical characters into the runs AAAAAAA, BBB and CC.",
+      "each run is stored as its count followed by its character or character code",
+      "the encoded sequence is 7A 3B 2C when count then character is used",
+      "decoding repeats A seven times, B three times and C twice to reconstruct the original exactly",
+      "the long runs allow repeated characters to be replaced by fewer stored values",
+      "fewer bits need to be transmitted, which can reduce transfer time or bandwidth use on the slow connection",
+    ],
+    commonError: "Do not combine non-adjacent occurrences into one run, and always state the count/value order used in the encoding.",
+  },
+  "S1-L06-EXAM-3": {
+    prompt: "A school keeps an archive master of a concert recording and also provides a streamed copy. Explain why lossless compression is suitable for the master and lossy compression may be suitable for the streamed copy.",
+    objectiveIds: ["S1.11.A02", "S1.11.A07", "S1.11.A08"],
+    answerPoints: [
+      "lossless compression allows every original sample value in the archive master to be reconstructed exactly",
+      "the master preserves the recording for later editing or production without irreversible quality loss",
+      "lossy sound compression can remove less-audible information from the streamed copy",
+      "the discarded information cannot be recovered, so the streamed copy is not an exact reconstruction",
+      "the smaller streamed file can require less bandwidth and transfer in less time when the quality remains acceptable",
+    ],
+    commonError: "Do not say that lossy compression can recreate the exact original; its selected sound detail has been removed permanently.",
+  },
+  "REV-P1-EXAM-1": {
+    prompt: "The 8-bit unsigned binary value 10110110 is stored in a register. Explain how to convert it to hexadecimal and denary.",
+    objectiveIds: ["S1.03.R"],
+    sourceRef: "Cambridge 9618 syllabus · S1.03",
+    answerPoints: [
+      "split the binary value into the nibbles 1011 and 0110",
+      "1011 represents hexadecimal B and 0110 represents hexadecimal 6",
+      "the hexadecimal value is B6",
+      "adding the binary place values 128 + 32 + 16 + 4 + 2 gives denary 182",
+    ],
+    commonError: "Do not interpret the most significant bit as a sign bit; the question states that the value is unsigned.",
+  },
+  "REV-P1-EXAM-2": {
+    prompt: "An alarm uses the logic expression Q = (Door AND NOT Key) OR Smoke. Describe how to construct a complete truth table for this expression.",
+    objectiveIds: ["S3.10.R"],
+    sourceRef: "Cambridge 9618 syllabus · S3.10",
+    answerPoints: [
+      "create input columns for Door, Key and Smoke and list all eight input combinations",
+      "add an intermediate column for NOT Key by inverting each Key value",
+      "add a column for Door AND NOT Key that is 1 only when both inputs to the AND gate are 1",
+      "OR that intermediate result with Smoke to obtain Q",
+      "Q is 1 whenever Smoke is 1 or Door is 1 while Key is 0",
+    ],
+    commonError: "Do not omit input combinations or apply NOT to the whole expression; it applies only to Key.",
+  },
+  "REV-P1-EXAM-3": {
+    prompt: "A customer account number is entered twice and a data block is then sent with a checksum. Explain how these two verification methods detect errors and give one limitation of each.",
+    objectiveIds: ["S6.08.R"],
+    sourceRef: "Cambridge 9618 syllabus · S6.08",
+    answerPoints: [
+      "double entry compares two independently entered account numbers and flags a mismatch",
+      "matching entries can still both be wrong, so double entry does not prove that the value is true",
+      "the sender calculates a checksum from the data block and sends it with the data",
+      "the receiver recalculates the checksum and compares it with the received checksum",
+      "a matching checksum does not guarantee error-free data because some different error patterns can produce the same checksum",
+    ],
+    commonError: "Do not describe a range or format check; those are validation methods, not the two verification methods named here.",
+  },
+  "REV-P2-EXAM-1": {
+    prompt: "A high-level solution says ‘Process all student marks and report the class average’. Explain how stepwise refinement develops this into implementable pseudocode.",
+    objectiveIds: ["S9.08.R"],
+    sourceRef: "Cambridge 9618 syllabus · S9.08",
+    answerPoints: [
+      "decompose the high-level process into input marks, accumulate a total, calculate the average and output the result",
+      "refine each subtask into smaller ordered steps with defined inputs and outputs",
+      "continue until each step can be expressed as a declaration, loop, assignment, calculation or output statement",
+      "each refined level must preserve the purpose and result of its parent step",
+    ],
+    commonError: "Do not merely add more prose; every refinement must make the algorithm more precise and closer to implementable operations.",
+  },
+  "REV-P2-EXAM-2": {
+    prompt: "A procedure UpdateMark receives StudentID by value and Mark by reference. Describe the procedure definition, call and effect of the two parameter modes.",
+    objectiveIds: ["S11.06.R"],
+    sourceRef: "Cambridge 9618 syllabus · S11.06",
+    answerPoints: [
+      "the procedure header declares formal parameters for StudentID and Mark with their types and parameter modes",
+      "the call supplies matching arguments in the same order as the formal parameters",
+      "StudentID passed by value gives the procedure a local copy, so assigning to that parameter does not change the caller’s variable",
+      "Mark passed by reference gives access to the caller’s variable, so assigning to Mark changes that variable after the call",
+      "the procedure performs an action and is invoked with CALL rather than returning a function value",
+    ],
+    commonError: "Do not say that both parameters change the caller; only the parameter passed by reference can do so through assignment.",
+  },
+  "REV-P2-EXAM-3": {
+    prompt: "An array Name[1:20] is searched for a target, and an array Score[1:20] is sorted into ascending order. Explain the key control and data operations required for a linear search and a bubble sort.",
+    objectiveIds: ["S10.06.R"],
+    sourceRef: "Cambridge 9618 syllabus · S10.06",
+    answerPoints: [
+      "linear search initialises an index and a Boolean found flag before examining array elements in order",
+      "the search stops when the target is found or the index has passed the upper bound",
+      "each search comparison tests Name[Index] against the target and records a match before advancing",
+      "bubble sort makes repeated passes and compares adjacent values Score[Index] and Score[Index + 1]",
+      "when the left value is greater, a temporary variable or equivalent safe method swaps the adjacent values",
+      "after each pass the unsorted range is reduced, or a no-swap flag is used to stop when the array is sorted",
+    ],
+    commonError: "Do not access Index + 1 beyond the upper bound, and do not overwrite one value before completing the swap.",
+  },
+});
+
 function examTopicForSource(lesson, sourceQuestion, unit, fallback, variant) {
   const reviewTopic = reviewExamTopics[lesson.lessonKey]?.[variant];
   if (reviewTopic) return reviewTopic;
@@ -564,6 +680,10 @@ function selectSourceQuestion(practice, objectiveId, unit, description, usedQues
   return [...pool].sort((left, right) => tokenSimilarity(focus, right.prompt) - tokenSimilarity(focus, left.prompt))[0];
 }
 
+function markingPointSignature(values) {
+  return values.map(normalisePresentationText).filter(Boolean).sort().join("|");
+}
+
 function selectExamMarkingPoints(sourceQuestion, variant, unit, isReview) {
   const internalScopePoint = /\bcandidates?\s+(?:must|should|are required|need)|not required by the syllabus|the syllabus says|will always be given/i;
   let points = uniqueExamMarkingPoints(sourceQuestion.answerPoints)
@@ -605,18 +725,32 @@ function examStyleQuestionSet(lesson, practice, staged) {
     usedTopics.add(normalisePresentationText(topic));
     const prompt = examPromptForTopic(topic, unit, context, index, lesson.section === "Review");
     const answerPoints = selectExamMarkingPoints(sourceQuestion, index, unit, lesson.section === "Review");
-    const question = finaliseQuestion({
-      id: `${lesson.lessonKey}-EXAM-${index + 1}`,
+    const questionId = `${lesson.lessonKey}-EXAM-${index + 1}`;
+    const override = examQuestionOverrides[questionId];
+    let question = finaliseQuestion({
+      id: questionId,
       type: "Exam-style",
-      prompt,
-      marks: answerPoints.length,
-      objectiveIds: sourceQuestion.objectiveIds.length ? sourceQuestion.objectiveIds : [objectiveId],
-      answerPoints,
-      commonError: sourceQuestion.commonError,
+      prompt: override?.prompt ?? prompt,
+      marks: override?.answerPoints.length ?? answerPoints.length,
+      objectiveIds: override?.objectiveIds ?? (sourceQuestion.objectiveIds.length ? sourceQuestion.objectiveIds : [objectiveId]),
+      answerPoints: override?.answerPoints ?? answerPoints,
+      commonError: override?.commonError ?? sourceQuestion.commonError,
     }, staged);
+    if (!override && practice.some((practiceQuestion) => markingPointSignature(practiceQuestion.answerPoints) === markingPointSignature(question.answerPoints))) {
+      const distinctionPoint = uniqueExamMarkingPoints(unit.misconceptions ?? [])
+        .find((point) => !question.answerPoints.some((answerPoint) => normalisePresentationText(answerPoint) === normalisePresentationText(point)));
+      if (distinctionPoint) {
+        question = {
+          ...question,
+          prompt: `${question.prompt.replace(/[.!?]+$/, "")}. Include one relevant technical limitation or distinction.`,
+          marks: question.answerPoints.length + 1,
+          answerPoints: [...question.answerPoints, distinctionPoint],
+        };
+      }
+    }
     return {
       id: question.id,
-      sourceRef: index === 0 ? lesson.pastPaper.sourceRef : `Cambridge 9618 syllabus · ${requirementId}`,
+      sourceRef: override?.sourceRef ?? (index === 0 ? lesson.pastPaper.sourceRef : `Cambridge 9618 syllabus · ${requirementId}`),
       accessUrl: lesson.pastPaper.accessUrl,
       objectiveIds: question.objectiveIds,
       task: question.prompt,
