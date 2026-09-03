@@ -10,7 +10,7 @@ This offline-delivery release of the Cambridge International AS Level Computer S
 - 151 interactive lesson webpages plus course, assessment and resource hubs;
 - 30 short quizzes, 7 monthly checkpoints and 14 stage reviews;
 - fixed lesson navigation, collapsible lesson contents, section jumps and Assessment Bank filters;
-- resource guides, syllabus audits and question/page approval evidence;
+- resource guides and current course content;
 - verification and deterministic release-building scripts;
 - `MANIFEST.sha256`, covering every other file inside the release archive.
 
@@ -32,7 +32,7 @@ Keep the `.zip` and `.zip.sha256` files together, then run from their directory:
 shasum -a 256 -c AS9618-CS-2027-2029-v1.0.0.zip.sha256
 ```
 
-The archive contains its own per-file `MANIFEST.sha256`. From the source repository, `node scripts/verify-all.mjs` rebuilds and validates the complete release after running every earlier stage check.
+The archive contains its own per-file `MANIFEST.sha256`. From the source repository, run `python3 scripts/build-course-release.py` followed by `python3 scripts/verify-course-release.py` to rebuild and validate the current release.
 
 ## Delivery Notes
 

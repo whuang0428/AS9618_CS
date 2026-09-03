@@ -33,8 +33,6 @@ def main() -> None:
     files: set[Path] = {
         ROOT / "README.md",
         ROOT / "course-v3-map.md",
-        ROOT / "audits/course-v3-knowledge-unit-role-audit.csv",
-        ROOT / "audits/course-v3-objective-material-ledger.csv",
         ROOT / "web/index.html",
         ROOT / "web/course-v3/index.html",
         ROOT / "web/course-v3/course.css",

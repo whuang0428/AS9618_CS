@@ -36,6 +36,11 @@ function conciseMarkPoint(value) {
   return /[.!?]$/.test(firstClause) ? firstClause : `${firstClause}.`;
 }
 
+function completeMarkPoint(value) {
+  const text = String(value ?? "").replace(/\s+/g, " ").trim();
+  return /[.!?]$/.test(text) ? text : `${text}.`;
+}
+
 function visualPriority(material) {
   if (imageVisualTypes.has(material.type)) return 0;
   if (structuredVisualTypes.has(material.type)) return 1;
@@ -58,6 +63,7 @@ function materialTexts(material, { includeTranscript = false } = {}) {
 }
 
 function compactLeadVisual(material, heading) {
+  if (material.preserveText) return { ...material };
   if (material.type === "cards") return {
     ...material,
     title: `Visual overview · ${heading}`,
@@ -107,6 +113,50 @@ function tokenSimilarity(left, right) {
   let overlap = 0;
   for (const [token, count] of leftCounts) overlap += Math.min(count, rightCounts.get(token) ?? 0);
   return (2 * overlap) / (a.length + b.length);
+}
+
+const markingPointStopwords = new Set("a an and are as at be by can complete computer data demonstrate device devices different each every explain feature features for from given how in include including information input into is it may method methods more must of on one operation or output practical process processing program relevant represented required requires result scenario school should state step steps store stored system systems target technical than the then this to two three four five six all answer application applications correct correctly use used uses using when which why with without".split(" "));
+
+function markingPointTokens(value) {
+  return new Set(words(normalisePresentationText(value)).filter((token) => token.length > 2 && !markingPointStopwords.has(token)));
+}
+
+function markingPointRelevance(focus, point) {
+  const focusTokens = markingPointTokens(focus);
+  const pointTokens = markingPointTokens(point);
+  if (!focusTokens.size || !pointTokens.size) return 0;
+  const shared = [...pointTokens].filter((token) => focusTokens.has(token)).length;
+  return shared ? shared + tokenSimilarity(focus, point) : 0;
+}
+
+function atomicMarkingPointValues(values) {
+  return values.flatMap((value) => String(value ?? "").split(/;\s+|\.\s+/)).map((value) => value.trim()).filter(Boolean);
+}
+
+function rankedRelevantMarkingPoints(values, focus, { target = 2 } = {}) {
+  const seen = new Set();
+  const uniquePoints = [];
+  const ranked = atomicMarkingPointValues(values).flatMap((value, index) => {
+    const point = conciseMarkPoint(value);
+    const key = normalisePresentationText(point);
+    if (!key || seen.has(key) || isSubstantiveDuplicate(point, uniquePoints.map(normalisePresentationText))) return [];
+    seen.add(key);
+    uniquePoints.push(point);
+    return [{ point, index, score: markingPointRelevance(focus, point) }];
+  }).sort((left, right) => right.score - left.score || left.index - right.index);
+  const relevant = ranked.filter((candidate) => candidate.score > 0);
+  const pool = relevant.length ? relevant : ranked;
+  return pool.slice(0, Math.min(Math.max(1, target), pool.length)).map((candidate) => candidate.point);
+}
+
+function unitAnswerCandidateValues(unit, { includeCore = true } = {}) {
+  return [
+    ...(includeCore ? (unit.coreExplanation ?? []) : []),
+    ...materialTexts(unit.leadVisual, { includeTranscript: true })
+      .filter((value) => normalisePresentationText(value) !== normalisePresentationText(unit.leadVisual?.title)),
+    ...[unit.method, unit.workedExample].filter(Boolean).flatMap((material) => material.steps?.map(([, body]) => body) ?? []),
+    ...(unit.misconceptions ?? []),
+  ];
 }
 
 function cleanCoreParagraph(value) {
@@ -163,6 +213,9 @@ function cleanWorkedExample(material, coreExplanation, leadVisual) {
 }
 
 const methodTitleOverrides = Object.freeze({
+  "S1.03": "Convert between number bases and representations",
+  "S1.04": "Unsigned binary addition",
+  "S1.05": "Check for overflow",
   "S1.10": "Sound sampling process",
   "S3.10": "From Boolean requirement to truth table",
   "S9.09": "Constructing a logic statement",
@@ -173,23 +226,6 @@ const methodTitleOverrides = Object.freeze({
   "S11.06": "Procedure parameter passing",
   "S11.07": "Functions and return values",
 });
-
-const vectorWorkedExample = Object.freeze({
-  type: "worked-example",
-  title: "Read and scale a vector drawing list",
-  objectiveIds: ["S1.09.A01", "S1.09.A02", "S1.09.A03"],
-  steps: [
-    ["Drawing list", "RECTANGLE at (10, 10), width 40, height 20, blue fill; LINE from (10, 30) to (50, 30), black, 2 px."],
-    ["Render", "The software creates the rectangle and line in list order using the stored coordinates, dimensions, colours and line thickness."],
-    ["Scale", "At scale factor 2, the coordinates and dimensions double while the objects remain defined by the same types and properties."],
-    ["Result", "The graphic is redrawn at the new size without enlarging a fixed grid of stored pixels."],
-  ],
-});
-
-const vectorCoreExplanation = Object.freeze([
-  "A vector graphic is encoded as a drawing list. Each entry defines a drawing object and stores properties such as its type, coordinates, dimensions, line colour, fill colour and line thickness.",
-  "When the graphic is displayed, the software reads the list and redraws each object from its properties. Changing the coordinates or dimensions allows the image to be scaled without enlarging a fixed pixel grid.",
-]);
 
 function questionRequirement(question, lesson) {
   return question.objectiveIds.map((id) => id.match(/^S(?:[1-9]|1[0-2])\.\d{2}/)?.[0]).find(Boolean)
@@ -213,6 +249,9 @@ const promptOverrides = Object.freeze({
   "V3-Q-L034-01": "Explain how validation and verification help protect data integrity.",
   "V3-Q-L034-03": "Explain how double-entry verification works.",
   "V3-Q-L040-03": "Explain why matching field spelling is not sufficient evidence of a relationship between tables.",
+  "V3-Q-L045-02": "A student claims that every foreign key must be unique. Explain why this is incorrect and state the rule that should be enforced instead.",
+  "V3-Q-L045-03": "Compare AND and OR gates, including their output conditions and the result for the input pair 1, 0.",
+  "V3-Q-L045-04": "Convert the unsigned binary value 10110110 to hexadecimal and denary, showing both methods.",
   "V3-Q-L047-03": "Explain how an IPO table supports one level of stepwise refinement.",
   "V3-Q-L051-02": "Explain why indentation is useful in structured English.",
   "V3-Q-L054-01": "State what decomposition produces in this scenario.",
@@ -220,6 +259,7 @@ const promptOverrides = Object.freeze({
   "V3-Q-L058-02": "Explain why a seating grid is normally represented by a two-dimensional array.",
   "V3-Q-L067-01": "Compare the removal rules of a stack and a queue.",
   "V3-Q-L069-02": "Describe how a flowchart decision is normally translated into pseudocode.",
+  "V3-Q-L072-01": "Explain how an unfamiliar supplied string-manipulation function should be used in pseudocode.",
   "V3-Q-L076-02": "Explain why a FOR loop is suitable for processing Marks[1:30].",
   "V3-Q-L077-02": "Compare a function return value with output produced by a procedure.",
   "V3-Q-L079-02": "Explain why one combined traversal is more efficient than two separate full traversals in this scenario.",
@@ -230,6 +270,9 @@ const promptOverrides = Object.freeze({
   "V3-Q-L084-01": "Explain why a translator cannot detect every logic error.",
   "V3-Q-L086-01": "State what a stub replaces during testing.",
   "V3-Q-L088-02": "Explain why maintenance continues after a system has been accepted.",
+  "V3-Q-L090-02": "A student uses a procedure call where a value is required inside an expression. Explain the error and give the correct use of a function.",
+  "V3-Q-L090-03": "Compare decomposition with stepwise refinement when designing an algorithm.",
+  "V3-Q-L090-04": "A school needs early user feedback while developing a booking system. Explain how an iterative or RAD lifecycle can support this and give one relevant drawback.",
 });
 
 const answerOverrides = Object.freeze({
@@ -240,6 +283,339 @@ const answerOverrides = Object.freeze({
   "V3-005-S1.09-CHECK": [
     "The logo is stored as drawing objects with properties rather than as a fixed pixel grid.",
     "The objects are redrawn at the required size, so enlarging the logo does not produce bitmap pixelation.",
+  ],
+  "V3-002-S1.02-CHECK": [
+    "The base determines the place values: binary uses powers of 2, denary powers of 10 and hexadecimal powers of 16.",
+    "Signed representations such as one's complement and two's complement specify how a fixed-width bit pattern represents a negative integer.",
+  ],
+  "V3-002-S1.03-CHECK": [
+    "To convert a binary integer to denary, add the place values whose bits are 1.",
+    "To convert between binary and hexadecimal, group the binary digits into four-bit nibbles and map each nibble to one hexadecimal digit.",
+  ],
+  "V3-015-S3.04-CHECK": [
+    "A buffer temporarily stores data while it is transferred between components that operate at different speeds or in different-sized bursts.",
+    "The producer can continue after filling the buffer while the slower device consumes the buffered data at its own rate.",
+  ],
+  "V3-015-S3.05-CHECK": [
+    "RAM is normally volatile and writable working storage, whereas ROM is non-volatile and stores instructions or data that must remain when power is removed.",
+    "A computer uses RAM for active programs and data, while an embedded device can use ROM for fixed start-up or control instructions.",
+  ],
+  "V3-016-S3.09-CHECK": [
+    "A sensor measures a physical property and converts it into a signal that the computer can process.",
+    "Temperature, pressure, infra-red and sound sensors must be selected by matching the measured physical property to the application.",
+    "An actuator converts a computer output signal into a physical action, such as a motor turning or a heater switching on.",
+  ],
+  "V3-017-S3.10-CHECK": [
+    "NOT inverts one input, so 0 becomes 1 and 1 becomes 0.",
+    "AND outputs 1 only when both inputs are 1, whereas OR outputs 1 when at least one input is 1.",
+    "NAND is the inverse of AND and NOR is the inverse of OR.",
+    "XOR outputs 1 when its two inputs are different.",
+    "A truth table lists every possible input combination and the output produced by the gate or circuit.",
+    "A problem statement, Boolean expression, logic circuit and truth table are equivalent only when they give the same output for every input combination.",
+  ],
+  "V3-018-S3.10-CHECK": [
+    "Translate each condition in the problem statement into a Boolean variable or comparison and combine them with the required logic operations.",
+    "Draw or read the circuit in the same operation order, using intermediate outputs when gates are connected in stages.",
+    "For n inputs, list all 2^n input combinations in the truth table.",
+    "Evaluate the intermediate columns before calculating the final output column.",
+    "Check that the expression, circuit and truth table produce the same final output for every input combination.",
+  ],
+  "V3-019-S4.02-CHECK": [
+    "PC holds the address of the next instruction, MAR holds the memory address being accessed and MDR holds the data or instruction transferred to or from memory.",
+    "CIR holds the current instruction while it is decoded and executed.",
+    "ACC stores arithmetic, logic and intermediate results, while IX supports indexed addressing.",
+    "The status register stores condition flags such as zero, negative, carry or overflow results.",
+    "These registers provide faster, specialised temporary storage inside the processor than main memory.",
+  ],
+  "V3-020-S4.06-CHECK": [
+    "USB is a general serial interface that carries digital data and can also supply power to peripherals.",
+    "HDMI carries digital video and audio to a display or similar multimedia device.",
+    "VGA carries analogue video to a compatible display and does not carry digital audio.",
+  ],
+  "V3-022-S4.08-CHECK": [
+    "An interrupt requests processor attention when an event needs service without continuous polling.",
+    "Possible causes include an input/output device request, a timer event, a hardware fault or a software exception.",
+    "The processor normally completes the current instruction and checks that the interrupt is enabled and has sufficient priority.",
+    "It saves the current execution context and uses the interrupt type or vector to locate and execute the interrupt service routine.",
+    "After the ISR has serviced the event, the saved context is restored and the interrupted program resumes.",
+  ],
+  "V3-024-S4.11-CHECK": [
+    "A trace table records each executed instruction together with ACC, IX, relevant memory or output, and the result of each comparison or branch.",
+    "Follow the actual control path after every jump and do not trace source instructions skipped by a taken branch.",
+  ],
+  "V3-024-S4.12-CHECK": [
+    "Data-movement instructions load, copy or store values between registers and memory.",
+    "Input/output instructions transfer character codes between ACC and an input or output device.",
+    "Arithmetic instructions add, subtract, increment or decrement numeric values.",
+    "An unconditional branch always changes the next instruction address, while a conditional branch does so only when its condition is satisfied.",
+    "Compare instructions set the comparison result used by a later conditional branch.",
+  ],
+  "V3-024-S4.14-CHECK": [
+    "Immediate addressing places the operand value in the instruction itself.",
+    "Direct addressing places the address of the operand in the instruction.",
+    "Indirect addressing uses the instruction's address to find another address that locates the operand.",
+    "Indexed addressing forms the effective address by combining the instruction's address with the index register.",
+    "Relative addressing forms the target address by adding an offset to the current program-counter value.",
+  ],
+  "V3-024-S4.13-CHECK": [
+    "LDM loads an immediate value into ACC; LDD, LDI and LDX load data using direct, indirect and indexed addressing; LDR loads an immediate value into IX; MOV copies ACC to IX; and STO stores ACC in memory.",
+    "ADD and SUB perform arithmetic on ACC, while INC and DEC change a register by one.",
+    "JMP branches unconditionally; CMP or CMI performs a comparison; JPE branches when the comparison is true and JPN branches when it is false.",
+    "IN reads the ASCII code of an input character into ACC, and OUT outputs the character whose ASCII code is in ACC.",
+    "END stops the program and returns control to the operating system.",
+    "A trace follows the executed branch path and records only the processor, memory and output state changed by each instruction.",
+  ],
+  "V3-025-S4.15-CHECK": [
+    "AND with a mask can test selected bits or clear bits where the mask contains 0.",
+    "OR with a mask can set selected bits to 1.",
+    "XOR with a mask can toggle selected bits.",
+    "LSL and LSR shift bits left or right and insert 0 into the vacated position.",
+    "An arithmetic right shift preserves the sign bit, while a cyclic shift moves the displaced end bit to the opposite end.",
+    "Bit manipulation is used to monitor or control individual status and control flags stored within a bit pattern.",
+  ],
+  "V3-027-S5.02-CHECK": [
+    "A disk formatter prepares a storage medium with the structures needed to store files.",
+    "Anti-virus software detects, quarantines or removes malicious code.",
+    "Defragmentation rearranges fragmented file blocks into more contiguous storage locations.",
+    "Disk-analysis and repair utilities detect storage errors and attempt to repair damaged file-system structures.",
+    "A compression utility rewrites data using fewer bits and reverses the process when the file is decompressed.",
+    "Backup software creates recoverable copies so data can be restored after loss, damage or corruption.",
+  ],
+  "V3-030-S5.07-CHECK": [
+    "Context-sensitive prompts suggest valid language elements for the current position in the code.",
+    "Dynamic syntax checking reports syntax problems as code is entered, while pretty-printing formats code consistently.",
+    "Expand and collapse controls hide or reveal code blocks to make a large program easier to navigate.",
+    "Single stepping executes one statement at a time and breakpoints pause execution at selected statements.",
+    "Variable and expression inspection shows current values while the program is paused.",
+    "A report or diagnostic window displays translator messages, run-time information or program output.",
+  ],
+  "V3-033-S6.03-CHECK": [
+    "User accounts identify users and passwords provide a secret authentication factor.",
+    "A digital signature can provide evidence of message origin and detect later alteration.",
+    "Biometric authentication compares a captured physical or behavioural feature with an enrolled template.",
+    "A firewall filters network traffic according to security rules and blocks disallowed connections.",
+    "Anti-virus and anti-spyware software detect, quarantine or remove malicious software.",
+    "Encryption converts plaintext into ciphertext so intercepted data is unreadable without the correct key.",
+  ],
+  "V3-032-S6.04-CHECK": [
+    "A virus is malicious code that attaches to or modifies files and replicates when an infected host is executed.",
+    "Spyware secretly collects information about a user or system.",
+    "A hacker attempts to gain unauthorised access to a computer system or its data.",
+    "Phishing uses a deceptive message or website to persuade a user to reveal information or perform an unsafe action.",
+    "Pharming redirects a user to a fraudulent site, for example by corrupting DNS or local name-resolution data, even when the user enters the intended address.",
+  ],
+  "V3-034-S6.08-CHECK": [
+    "Visual checking compares entered data with the original source, while double entry compares two independently entered copies.",
+    "A parity check tests whether the number of 1 bits matches the agreed odd or even parity.",
+    "Block parity can locate a single erroneous bit by combining parity checks across rows and columns.",
+    "The sender calculates and transmits a checksum derived from the data block.",
+    "The receiver recalculates the checksum and compares it with the received value; a mismatch indicates that an error occurred during transfer.",
+  ],
+  "V3-037-S7.05-CHECK": [
+    "An FSF free-software licence protects the freedoms to run, study, modify and share software, so source access is required for study and modification.",
+    "An OSI-approved open-source licence satisfies published open-source criteria and grants stated rights to inspect, modify and redistribute source code.",
+    "Shareware is distributed for trial or limited use and normally requires payment for continued or complete use.",
+    "A commercial licence grants use under the supplier's restrictions and may provide paid support while limiting copying, modification or redistribution.",
+    "A justified choice links the scenario's budget, support, source-modification, redistribution and legal-compliance needs to the selected licence conditions.",
+  ],
+  "V3-038-S7.06-CHECK": [
+    "Artificial intelligence enables a computer system to perform tasks that normally require human-like interpretation, learning or decision making.",
+    "Applications include pattern recognition, recommendation, diagnosis, prediction and control of autonomous systems.",
+    "Social and economic effects can include improved accessibility or productivity as well as bias, job displacement and unequal access.",
+    "Environmental effects include the energy and hardware resources used to train and operate AI systems, balanced against any efficiency savings the application produces.",
+  ],
+  "V3-039-S8.02-CHECK": [
+    "An entity is a real-world object or concept represented by a table; each record or tuple is one instance and each field or attribute stores one property.",
+    "A primary key uniquely identifies each record, a candidate key is any minimal possible unique identifier, and a secondary key supports retrieval without necessarily being unique.",
+    "A foreign key stores a referenced table's primary-key value and enforces the relationship through referential integrity.",
+    "Relationships can be one-to-one, one-to-many or many-to-many; a many-to-many relationship is implemented using a linking table.",
+    "An index stores an ordered lookup structure for selected field values so matching records can be located more quickly, at the cost of extra storage and update work.",
+  ],
+  "V3-040-S8.04-CHECK": [
+    "First Normal Form removes repeating groups and requires each field value to be atomic.",
+    "Second Normal Form is in 1NF and removes partial dependency on part of a composite primary key.",
+    "Third Normal Form is in 2NF and removes transitive dependency, so a non-key attribute does not depend on another non-key attribute.",
+    "To judge or produce a 3NF design, identify keys and dependencies, split the relations where a dependency violates the next normal form, and preserve links with foreign keys.",
+  ],
+  "V3-041-S8.05-CHECK": [
+    "The data dictionary stores metadata such as table names, field names, data types, sizes and constraints.",
+    "Data modelling defines entities, attributes and relationships, while the logical schema defines the complete logical organisation of the database.",
+    "Integrity constraints and validation rules restrict invalid or inconsistent stored values.",
+    "Authentication, access rights and other security controls restrict who can view or change data.",
+    "Backup and recovery procedures create restorable copies and use them to recover the database after loss or corruption.",
+  ],
+  "V3-043-S8.09-CHECK": [
+    "CREATE DATABASE creates a named database.",
+    "CREATE TABLE defines fields using suitable types such as CHARACTER, VARCHAR, BOOLEAN, INTEGER, REAL, DATE and TIME.",
+    "A PRIMARY KEY constraint identifies each row uniquely.",
+    "A FOREIGN KEY with REFERENCES links a field to the primary key of another table.",
+    "ALTER TABLE changes the structure of an existing table, for example by adding a field or constraint.",
+    "A complete DDL example must use valid identifiers, data types, commas, brackets and constraints consistently.",
+  ],
+  "V3-043-S8.10-CHECK": [
+    "SELECT identifies the required fields, FROM identifies the table, and WHERE filters rows using a condition.",
+    "ORDER BY sorts the result in ascending order by default or descending order when DESC is specified.",
+    "GROUP BY forms groups so aggregate functions such as SUM, COUNT or AVG can calculate one result per group.",
+    "An INNER JOIN combines matching rows by using an ON condition that compares the related key fields.",
+    "For AS Level SQL, one query joins a maximum of two tables.",
+    "A complete query must keep field names, table names, aliases, conditions and grouping clauses mutually consistent.",
+  ],
+  "V3-055-S10.01-CHECK": [
+    "INTEGER stores whole numbers and REAL stores numbers that may require a fractional part.",
+    "CHAR stores one character, whereas STRING stores a sequence of characters.",
+    "BOOLEAN stores TRUE or FALSE and DATE stores a calendar date using the Cambridge pseudocode type names.",
+  ],
+  "V3-064-S10.09-CHECK": [
+    "A stack provides LIFO access through push and pop operations, while a queue provides FIFO access through enqueue and dequeue operations.",
+    "A linked list stores each item in a node together with a link to another node rather than requiring contiguous array positions.",
+    "Choose a linked list when insertion, deletion or a changing number of linked items matters more than direct indexed access.",
+  ],
+  "V3-066-S10.09-CHECK": [
+    "A stack is suitable when the most recently added item must be removed first, such as nested calls or undo history.",
+    "A queue is suitable when items must be processed in arrival order, such as print jobs or service requests.",
+    "A linked list is suitable for a changing sequence when nodes must be inserted or removed by changing links.",
+  ],
+  "V3-070-S11.02-CHECK": [
+    "Declare each identifier with a suitable Cambridge data type before it is used.",
+    "INPUT reads the required values into the declared variables.",
+    "Use arithmetic operators to form the right-hand expression and <- to assign its result to a variable.",
+    "OUTPUT displays the required result, and a trace checks the variable values after each executed statement.",
+  ],
+  "V3-071-S11.02-CHECK": [
+    "Declare the required numeric and Boolean variables with suitable Cambridge data types.",
+    "INPUT reads the source values before any expression uses them.",
+    "Evaluate arithmetic and comparison expressions on the right before assigning their results with <-.",
+    "OUTPUT the final value and trace representative input values to confirm the calculation and logic result.",
+  ],
+  "V3-073-S11.04-CHECK": [
+    "IF ... THEN ... ELSE selects between alternatives, and nested IF statements support further decisions inside a branch.",
+    "CASE selects one branch by matching one expression against several stated values.",
+    "A FOR loop is count-controlled and is suitable when the number of repetitions is known.",
+    "A WHILE loop is a pre-condition loop that tests before the body, so the body may execute zero times.",
+    "A REPEAT loop is a post-condition loop that tests after the body, so the body executes at least once.",
+    "The chosen structure must match the control requirement and be tested for its initial, terminating and boundary conditions.",
+  ],
+  "V3-078-S11.07-CHECK": [
+    "A function header gives the function name, formal parameters and return data type.",
+    "Arguments in a function call supply values to the matching formal parameters.",
+    "RETURN sends one value of the declared type back to the caller.",
+    "Because a function returns a value, its call can be used in an expression or assignment.",
+  ],
+  "V3-078-S11.08-CHECK": [
+    "A procedure header gives the procedure name and any formal parameters but does not declare a function return type.",
+    "A function header gives the function name, formal parameters and the type of the value it returns.",
+    "A parameter is declared in the subroutine header, while an argument is the actual value or variable supplied by the caller.",
+    "A procedure is invoked with CALL when an action is required.",
+    "A function executes RETURN and its call supplies one value for use in an expression or assignment.",
+    "The call must supply arguments whose number, order, data types and parameter modes match the subroutine interface.",
+  ],
+  "V3-080-S11.04-CHECK": [
+    "IF ... THEN ... ELSE selects between alternatives, and nested IF statements support further decisions inside a branch.",
+    "CASE selects one branch by matching one expression against several stated values.",
+    "A FOR loop is count-controlled and is suitable when the number of repetitions is known.",
+    "A WHILE loop is a pre-condition loop that tests before the body, so the body may execute zero times.",
+    "A REPEAT loop is a post-condition loop that tests after the body, so the body executes at least once.",
+    "The chosen structure must match the control requirement and be tested for its initial, terminating and boundary conditions.",
+  ],
+  "V3-080-S11.06-CHECK": [
+    "A procedure header declares its name and any formal parameters with their data types.",
+    "CALL invokes the procedure and supplies arguments in the order required by the formal parameters.",
+    "A procedure can have no parameters, one parameter or several parameters according to the data it must receive or update.",
+    "A parameter passed by value gives the procedure a local copy, so changing it does not change the caller's variable.",
+    "A parameter passed by reference gives access to the caller's variable, so an assignment can change that variable.",
+    "A procedure performs an action and does not return a function value for use in an expression.",
+  ],
+  "V3-081-S12.01-CHECK": [
+    "A development lifecycle organises requirements, design, implementation, testing, installation and maintenance so work and evidence can be controlled.",
+    "Waterfall completes defined stages in sequence and provides clear documentation, but late requirement changes can be expensive.",
+    "Iterative development builds and reviews successive versions, allowing feedback and changing requirements but requiring version and scope control.",
+    "RAD uses rapid prototyping, time-boxed development and frequent user involvement to obtain feedback quickly.",
+    "The selected model must match requirement stability, user availability, delivery time, documentation and assurance needs.",
+  ],
+  "V3-084-S12.04-CHECK": [
+    "A syntax error breaks a language rule and is normally reported by the translator.",
+    "A logic error uses valid syntax but implements the wrong rule, so the program can run and produce an incorrect result.",
+    "A run-time error occurs during execution, for example division by zero or access outside an array bound.",
+    "After locating and correcting the cause, rerun the failed test and relevant regression tests to confirm the correction did not introduce another fault.",
+  ],
+  "V3-085-S12.05-CHECK": [
+    "A dry run manually traces code, while a walkthrough has people review the logic and data collaboratively.",
+    "White-box testing selects tests from internal paths and conditions, while black-box testing selects tests from the specification without using internal code structure.",
+    "Integration testing checks interfaces between combined modules, and a stub temporarily replaces a called module that is not yet available.",
+    "Alpha testing is performed by or with the developer in a controlled environment before wider release.",
+    "Beta testing is performed by selected external users in their own environment before final release.",
+    "Acceptance testing checks the completed system against agreed user requirements before the customer accepts it.",
+  ],
+  "V3-Q-L041-03": [
+    "The DBMS stores the schema or data dictionary that defines tables, fields, data types and relationships.",
+    "Integrity and security controls such as constraints, validation and access rights protect the stored data.",
+    "Backup and recovery facilities allow the database to be restored after loss or corruption.",
+  ],
+  "V3-Q-L045-02": [
+    "A foreign key does not have to be unique because several rows may refer to the same row in the related table.",
+    "Each non-null foreign-key value must match an existing primary-key value in the referenced table.",
+    "This referential-integrity rule prevents a row from referring to a related record that does not exist.",
+  ],
+  "V3-Q-L045-03": [
+    "An AND gate outputs 1 only when both inputs are 1.",
+    "An OR gate outputs 1 when at least one input is 1.",
+    "For inputs 1 and 0, AND outputs 0.",
+    "For inputs 1 and 0, OR outputs 1.",
+  ],
+  "V3-Q-L045-04": [
+    "Split 10110110 into the nibbles 1011 and 0110.",
+    "The nibbles map to hexadecimal B and 6, so the hexadecimal value is B6.",
+    "For denary, add the place values of the 1 bits: 128 + 32 + 16 + 4 + 2.",
+    "The denary value is 182.",
+  ],
+  "V3-Q-L072-01": [
+    "The question supplies the function's name, parameters, returned data type and stated behaviour when the function is not one of the standard pseudocode functions.",
+    "Use that supplied interface exactly, passing suitable arguments and using the returned value in the required expression or assignment.",
+  ],
+  "V3-Q-L074-02": [
+    "A FOR loop is count-controlled and is used when the required number of repetitions is known.",
+    "The loop variable changes on each iteration until the stated final value has been processed.",
+  ],
+  "V3-Q-L074-03": [
+    "For example, FOR Index <- 1 TO 30 ... NEXT Index processes the 30 elements of an array.",
+    "The initial value, final value and optional STEP determine the sequence of loop-variable values.",
+    "This is appropriate because the array bounds make the number of iterations known before the loop starts.",
+  ],
+  "V3-Q-L075-01": [
+    "A WHILE loop tests its condition before the body, so the body may execute zero times.",
+    "A REPEAT loop tests its condition after the body, so the body executes at least once.",
+  ],
+  "V3-Q-L075-02": [
+    "Use WHILE when the condition must be checked before any processing, such as reading only while data remains available.",
+    "Use REPEAT when one execution must occur before the stopping condition can be tested, such as validating an entered value.",
+    "In both structures, the body must change the state used by the condition so that the loop can terminate.",
+  ],
+  "V3-Q-L075-03": [
+    "WHILE is a pre-condition loop and REPEAT is a post-condition loop.",
+    "WHILE Condition ... ENDWHILE can execute zero times when Condition is initially false.",
+    "REPEAT ... UNTIL Condition executes once before Condition is first tested.",
+    "Choose the structure by deciding whether the body may be skipped or must run at least once.",
+  ],
+  "V3-Q-L083-03": [
+    "Each node represents a possible state of the system.",
+    "A directed, labelled transition shows the event or condition that changes the system from one state to another.",
+  ],
+  "V3-Q-L090-02": [
+    "A procedure performs an action but does not supply a value, so its call cannot replace an operand inside an expression.",
+    "A function declares a return type and executes RETURN to send one value back to its caller.",
+    "The corrected expression uses the function call where the returned value is required.",
+  ],
+  "V3-Q-L090-03": [
+    "Decomposition divides a large problem or system into smaller, manageable subproblems or modules.",
+    "The decomposed parts can be designed, implemented or tested separately while preserving their defined interfaces.",
+    "Stepwise refinement starts with one high-level algorithm step and repeatedly replaces it with more detailed ordered steps.",
+    "Refinement continues until each step can be expressed as an implementable pseudocode operation.",
+  ],
+  "V3-Q-L090-04": [
+    "An iterative or RAD lifecycle develops a working part or prototype early and presents it to users.",
+    "User feedback is used to revise requirements, interfaces and behaviour in the next iteration.",
+    "Repeated build-review-refine cycles allow the booking system to converge on users' actual needs.",
+    "A relevant drawback is the management time required for repeated feedback and version control, or the risk of weak documentation when changes are rushed.",
   ],
 });
 
@@ -305,15 +681,38 @@ function finaliseQuestion(question, lesson) {
     classification = requirementId ? classifyCommand(prompt, requirementId) : { status: "Blocked" };
   }
   if (classification.status !== "Approved") throw new Error(`${question.id}: unable to assign a Cambridge command word`);
+  const isCoverageCheck = /-CHECK$/i.test(question.id);
+  const directAnswerOverride = answerOverrides[question.id];
+  let selectedAnswerPoints = directAnswerOverride ?? question.answerPoints;
+  if (isCoverageCheck && !directAnswerOverride) {
+    const unit = lesson.units.find((candidate) => candidate.objectiveIds.some((id) => question.objectiveIds.includes(id)));
+    if (unit?.masteryCheck?.marks === question.marks && selectedAnswerPoints.length === question.marks) {
+      selectedAnswerPoints = [...selectedAnswerPoints];
+    } else if (unit) {
+      const objectiveFocus = lesson.objectives.filter(([id]) => question.objectiveIds.includes(id)).map(([, description]) => description).join(" ");
+      selectedAnswerPoints = rankedRelevantMarkingPoints(
+        [...selectedAnswerPoints, ...unitAnswerCandidateValues(unit)],
+        `${prompt} ${objectiveFocus}`,
+        { target: Math.min(6, Math.max(2, question.marks)) },
+      );
+    }
+  }
+  const seenAnswerPoints = new Set();
+  const answerPoints = selectedAnswerPoints
+    .map(directAnswerOverride ? completeMarkPoint : conciseMarkPoint)
+    .map((point) => markPointRewrites.get(normalisePresentationText(point)) ?? point)
+    .filter((point) => {
+      const key = normalisePresentationText(point);
+      if (!key || seenAnswerPoints.has(key)) return false;
+      seenAnswerPoints.add(key);
+      return true;
+    });
   return {
     ...question,
     prompt,
     commandWord: sentenceCase(classification.word),
-    answerPoints: (/-CHECK$/i.test(question.id)
-      ? (answerOverrides[question.id] ?? question.answerPoints).slice(0, Math.max(1, question.marks))
-      : (answerOverrides[question.id] ?? question.answerPoints))
-      .map(conciseMarkPoint)
-      .map((point) => markPointRewrites.get(normalisePresentationText(point)) ?? point),
+    marks: isCoverageCheck ? answerPoints.length : question.marks,
+    answerPoints,
   };
 }
 
@@ -327,17 +726,13 @@ function finaliseUnit(unit, lesson, unitIndex) {
   if (!candidates.length) throw new Error(`${unit.syllabusId}: no lead visual candidate`);
   let coreExplanation = dedupeCoreParagraphs(unit.coreExplanation ?? unit.explanation ?? []);
   let leadVisual = { ...compactLeadVisual(candidates[0], unit.heading), objectiveIds: [...unit.objectiveIds] };
-  if (unit.syllabusId === "S1.09") coreExplanation = [...vectorCoreExplanation];
-
   const methodCandidate = sourceMaterials.find((material) => material.type === "flow" && material !== candidates[0]);
   const cleanedMethod = cleanMethod(methodCandidate, coreExplanation, leadVisual);
   const method = cleanedMethod && !/worked.*example/i.test(cleanedMethod.title)
     ? { ...cleanedMethod, title: methodTitleOverrides[unit.syllabusId] ?? cleanedMethod.title }
     : null;
   const sourceExample = sourceMaterials.find((material) => material.type === "worked-example");
-  const workedExample = unit.syllabusId === "S1.09"
-    ? { ...vectorWorkedExample }
-    : /worked.*example/i.test(cleanedMethod?.title ?? "")
+  const workedExample = /worked.*example/i.test(cleanedMethod?.title ?? "")
       ? { ...cleanedMethod, type: "worked-example" }
       : cleanWorkedExample(sourceExample, coreExplanation, leadVisual);
 
@@ -488,6 +883,911 @@ const examMarkingPointLimits = Object.freeze({
 });
 
 const examQuestionOverrides = Object.freeze({
+  "S1-L01-EXAM-1": {
+    prompt: "A storage manufacturer labels a drive as 512 GB, but system software reports approximately 477 GiB. Explain why the numerical values differ even though no storage capacity has been lost.",
+    objectiveIds: ["S1.01.A01", "S1.01.A02"],
+    answerPoints: [
+      "The label GB uses the decimal prefix giga, so 1 GB equals 10^9 bytes.",
+      "The software value GiB uses the binary prefix gibi, so 1 GiB equals 2^30 bytes.",
+      "The same byte capacity is divided by two different unit sizes, producing different numerical values.",
+      "Because one GiB is larger than one GB, the numerical value in GiB is lower; the difference does not indicate missing bytes.",
+    ],
+    commonError: "Do not claim that the operating system deleted capacity; the two displays use different unit definitions.",
+  },
+  "S1-L01-EXAM-2": {
+    prompt: "Calculate the number of bytes in 2 MiB and in 2 MB, then calculate the difference between the two capacities.",
+    objectiveIds: ["S1.01.A01", "S1.01.A02"],
+    answerPoints: [
+      "2 MiB = 2 × 2^20 = 2,097,152 bytes.",
+      "2 MB = 2 × 10^6 = 2,000,000 bytes.",
+      "The difference is 2,097,152 − 2,000,000 = 97,152 bytes.",
+    ],
+    commonError: "Do not use 1024 as the value of mebi; one mebibyte is 1024 squared bytes.",
+  },
+  "S1-L01-EXAM-3": {
+    prompt: "A network specification states a transfer amount in gigabytes while a memory specification states a capacity in gibibytes. Describe the multiplier represented by each prefix and explain why the unit symbols must not be treated as interchangeable.",
+    objectiveIds: ["S1.01.A02"],
+    answerPoints: [
+      "Giga is the decimal multiplier 10^9 and uses the symbol G in GB.",
+      "Gibi is the binary multiplier 2^30 and uses the symbol Gi in GiB.",
+      "The multipliers have different byte values, so replacing GB with GiB changes the stated capacity rather than only changing its spelling.",
+    ],
+    commonError: "Do not state that giga and gibi are synonyms or give them the same multiplier.",
+  },
+  "S1-L02-EXAM-2": {
+    prompt: "Describe how the denary value -23 is represented in 8-bit one's complement and 8-bit two's complement, and explain why the two bit patterns differ.",
+    objectiveIds: ["S1.02.A05", "S1.02.A06", "S1.03.A05", "S1.03.A06"],
+    answerPoints: [
+      "Write +23 as the 8-bit binary value 00010111.",
+      "Invert every bit to obtain the one's-complement representation 11101000.",
+      "Add 1 to the one's-complement pattern to obtain the two's-complement representation 11101001.",
+      "The two patterns differ because two's complement applies inversion followed by addition of 1, while one's complement applies inversion only.",
+    ],
+    commonError: "Do not convert the magnitude separately and then attach a minus sign; the fixed-width bit pattern itself represents the negative value.",
+  },
+  "S1-L02-EXAM-1": {
+    prompt: "Calculate the 16-bit BCD representation of the denary display value 4072 and explain why this is not the ordinary binary representation of 4072.",
+    objectiveIds: ["S1.02.A04", "S1.03.A04"],
+    answerPoints: [
+      "Encode the four denary digits separately as 4 = 0100, 0 = 0000, 7 = 0111 and 2 = 0010.",
+      "The complete BCD representation is 0100 0000 0111 0010.",
+      "BCD assigns one four-bit group to each displayed denary digit rather than converting the whole value in one operation.",
+      "Ordinary binary uses powers-of-two place values for the complete integer, so it produces a different bit pattern.",
+    ],
+    commonError: "Do not convert 4072 directly to binary and label that result BCD; encode 4, 0, 7 and 2 independently.",
+  },
+  "S3-L01-EXAM-2": {
+    prompt: "An embedded controller operates a washing machine. Explain one benefit and one drawback of using an embedded system for this task.",
+    answerPoints: [
+      "The controller is designed for one dedicated set of washing-machine functions, allowing efficient, reliable operation with limited hardware resources.",
+      "Dedicated hardware and software can reduce size, power use or unit cost compared with a general-purpose computer.",
+      "Limited memory, processing capacity and fixed interfaces make unrelated new functions or major upgrades difficult to add.",
+    ],
+    commonError: "Do not identify an embedded system only by its small size; link its dedicated purpose to the stated benefit and limitation.",
+  },
+  "S4-L03-EXAM-2": {
+    prompt: "Describe the fetch stage of the fetch-execute cycle using register-transfer notation from the address in PC to the instruction in CIR.",
+    answerPoints: [
+      "MAR <- PC copies the address of the next instruction into the memory address register.",
+      "MDR <- Memory[MAR] transfers the instruction at that address from memory into MDR.",
+      "CIR <- MDR copies the fetched instruction into the current instruction register.",
+      "PC <- PC + 1 advances PC to the address of the following instruction.",
+    ],
+    commonError: "Do not put the fetched instruction directly into ACC; CIR holds the current instruction for decoding.",
+  },
+  "S4-L05-EXAM-2": {
+    prompt: "Describe the two passes made by a two-pass assembler and explain how the symbol table is used.",
+    answerPoints: [
+      "During pass one, the assembler assigns addresses to instructions and data and records label-address pairs in the symbol table.",
+      "Forward references can be recorded even though the final address is not yet available when an earlier source line is first read.",
+      "During pass two, mnemonics are translated into opcodes and symbolic operands are replaced using their addresses from the symbol table.",
+      "The completed machine or object code can then contain the correct numeric addresses for both earlier and forward-referenced labels.",
+    ],
+    commonError: "Do not describe pass one only; pass two must use the completed symbol table to produce the translated code.",
+  },
+  "S4-L07-EXAM-3": {
+    prompt: "Compare logical, arithmetic and cyclic right shifts of an 8-bit register, stating what enters the most significant bit in each case.",
+    answerPoints: [
+      "A logical right shift moves every bit one place right and inserts 0 into the most significant position.",
+      "An arithmetic right shift moves bits right but copies the original sign bit into the most significant position to preserve the sign of a two's-complement value.",
+      "A cyclic right shift moves the least significant bit around into the most significant position instead of discarding it.",
+    ],
+    commonError: "Do not say that every right shift inserts 0; arithmetic and cyclic shifts treat the vacated position differently.",
+  },
+  "S6-L02-EXAM-2": {
+    prompt: "Describe how a user account and password work together to authenticate a user, and give one limitation of password authentication.",
+    answerPoints: [
+      "The user account supplies a distinct identity that the system can associate with access rights and an audit trail.",
+      "The entered password is transformed and compared with the stored verifier for that account before authentication succeeds.",
+      "A guessed, reused, disclosed or phished password can allow an attacker to impersonate the account holder.",
+    ],
+    commonError: "Do not describe a digital signature; this task concerns identity authentication using an account and secret password.",
+  },
+  "S6-L03-EXAM-1": {
+    prompt: "Explain how spyware threatens a user and how anti-spyware software can reduce the risk.",
+    answerPoints: [
+      "Spyware runs without the user's informed consent and secretly monitors activity or collects information such as browsing data or credentials.",
+      "The captured information can be transmitted to an unauthorised third party, causing privacy, account or financial harm.",
+      "Updated anti-spyware software scans for known signatures or suspicious behaviour and can block, quarantine or remove detected spyware.",
+      "Detection reduces risk but does not guarantee protection from a new or well-hidden spyware variant.",
+    ],
+    commonError: "Do not describe a self-replicating virus; spyware is characterised by covert monitoring or information collection.",
+  },
+  "S8-L02-EXAM-3": {
+    prompt: "A table OrderLine(OrderID, ProductID, ProductName, UnitPrice, Quantity) has the composite key (OrderID, ProductID), and ProductName and UnitPrice depend only on ProductID. Explain how to convert it to 2NF and then state the remaining 3NF test.",
+    answerPoints: [
+      "ProductName and UnitPrice have a partial dependency on ProductID, which is only part of the composite primary key.",
+      "Create Product(ProductID, ProductName, UnitPrice) with ProductID as its primary key.",
+      "Keep OrderLine(OrderID, ProductID, Quantity), using the composite key and ProductID as a foreign key to Product.",
+      "For 3NF, check that no non-key attribute depends transitively on another non-key attribute in either relation.",
+    ],
+    commonError: "Do not remove ProductID from OrderLine; it is needed in the composite key and to reference Product.",
+  },
+  "S8-L03-EXAM-1": {
+    prompt: "A school database stores StudentID as a primary key and TutorID as a foreign key. Explain how a DBMS can enforce entity, referential and domain integrity for these fields.",
+    answerPoints: [
+      "A primary-key constraint requires each StudentID to be unique and not null, enforcing entity integrity.",
+      "A foreign-key constraint requires each non-null TutorID to match an existing primary-key value in the Tutor table, enforcing referential integrity.",
+      "Data types, ranges or validation constraints restrict each field to permitted values, enforcing domain integrity.",
+      "The DBMS rejects an insert or update that violates one of these declared constraints.",
+    ],
+    commonError: "Do not substitute backup or access rights for integrity constraints; those protect recovery and permissions rather than valid relationships and values.",
+  },
+  "S8-L06-EXAM-2": {
+    prompt: "Describe the AS Level two-table limit for an SQL query and explain how Student and Loan can be joined within that limit.",
+    answerPoints: [
+      "One AS Level query joins at most two tables, so the query uses Student and Loan only.",
+      "INNER JOIN combines matching rows and ON compares the related keys, for example Student.StudentID = Loan.StudentID.",
+      "Fields from either of these two tables can then be selected, but a third table is not added to the same query.",
+    ],
+    commonError: "Do not describe GROUP BY as the table limit; GROUP BY forms aggregate groups and does not replace the join condition.",
+  },
+  "S10-L04-EXAM-3": {
+    prompt: "A program stores the 30 daily attendance totals for one class. Explain why a one-dimensional array is suitable and give one relevant limitation.",
+    answerPoints: [
+      "Each attendance total needs one position identified by a single day index, so a one-dimensional array matches the data structure.",
+      "The fixed bounds can represent the 30 days and support a FOR loop that processes every valid element.",
+      "An array has a fixed declared size, so a different number of days may require a different bound or another structure.",
+    ],
+    commonError: "Do not choose a two-dimensional array merely because there are many values; each value needs only one index.",
+  },
+  "S10-L05-EXAM-2": {
+    prompt: "Describe pseudocode that inputs values into a two-dimensional array Marks[1:30, 1:4].",
+    answerPoints: [
+      "Declare Marks with two inclusive index ranges and a suitable element type.",
+      "Use an outer loop for Student <- 1 TO 30 and an inner loop for Test <- 1 TO 4.",
+      "INPUT Marks[Student, Test] supplies both indexes to identify one complete array element.",
+      "Close the inner loop before advancing the outer loop so all four tests are entered for each student.",
+    ],
+    commonError: "Do not use one index only or reverse the loop terminators; every element is identified by both student and test indexes.",
+  },
+  "S10-L05-EXAM-3": {
+    prompt: "A theatre stores whether each seat in 20 rows and 6 columns is occupied. Explain why a two-dimensional BOOLEAN array is suitable and give one limitation.",
+    answerPoints: [
+      "Each seat is naturally identified by two coordinates, row and column, so two indexes locate one element.",
+      "BOOLEAN is suitable because each element needs only the two states occupied and not occupied.",
+      "The fixed array bounds work for a fixed seating plan but must be changed if the row or column layout changes.",
+    ],
+    commonError: "Do not use a one-dimensional array without an additional mapping because the task identifies seats by both row and column.",
+  },
+  "S10-L08-EXAM-3": {
+    prompt: "Explain why a text-file loop tests NOT EOF before executing READFILE and state what should happen after the final record.",
+    answerPoints: [
+      "NOT EOF confirms that another record is available before READFILE attempts to read it.",
+      "The test prevents a read beyond the end of the file, which could cause an error or invalid data.",
+      "After the final record has been processed and EOF becomes true, the loop terminates and the file is closed.",
+    ],
+    commonError: "Do not execute READFILE first and test EOF afterwards when no record may remain.",
+  },
+  "S1-L02-EXAM-3": {
+    prompt: "The unsigned binary value 11010110 must be written in denary and hexadecimal. Explain both conversion methods and give both results.",
+    objectiveIds: ["S1.03.A01", "S1.03.A02"],
+    answerPoints: [
+      "For denary, add the place values of the 1 bits: 128 + 64 + 16 + 4 + 2.",
+      "The denary result is 214.",
+      "For hexadecimal, split the binary value into the nibbles 1101 and 0110.",
+      "The nibbles map to D and 6, so the hexadecimal result is D6.",
+    ],
+    commonError: "Do not treat the most significant bit as a sign bit because the value is explicitly unsigned.",
+  },
+  "S1-L03-EXAM-2": {
+    prompt: "Two unsigned 8-bit values are added and produce the nine-bit result 1 00000010. Explain why overflow has occurred and what is stored in the 8-bit register.",
+    answerPoints: [
+      "An unsigned 8-bit register can represent only values from 0 to 255.",
+      "The mathematical result needs a ninth bit, so it is outside that representable range.",
+      "Only the lower eight bits 00000010 remain in the register and the carry out indicates overflow.",
+    ],
+    commonError: "Do not say that every carry within the addition is overflow; overflow is caused by a result outside the fixed-width range.",
+  },
+  "S1-L03-EXAM-1": {
+    prompt: "Calculate the 8-bit two's-complement sum 11011011 + 00010010, interpret the result in denary and state whether signed overflow occurs.",
+    objectiveIds: ["S1.04.A02", "S1.05.A01"],
+    answerPoints: [
+      "The 8-bit addition produces 11101101.",
+      "The first operand represents -37 and the second operand represents +18.",
+      "Invert 11101101 and add 1 to obtain magnitude 00010011, so the result represents -19.",
+      "The exact result -19 lies in the 8-bit signed range -128 to +127, so no signed overflow occurs.",
+    ],
+    commonError: "Do not apply the unsigned carry-out rule to decide signed overflow; interpret the operands and result using the stated two's-complement representation.",
+  },
+  "S1-L03-EXAM-3": {
+    prompt: "Complete the 8-bit unsigned subtraction 10110100 - 00101101 and verify the binary result by converting all three values to denary.",
+    objectiveIds: ["S1.04.A01"],
+    answerPoints: [
+      "The first operand 10110100 represents 180 in denary.",
+      "The second operand 00101101 represents 45 in denary.",
+      "The subtraction gives the 8-bit result 10000111.",
+      "The check 180 - 45 = 135 confirms that 10000111 is correct.",
+    ],
+    commonError: "Do not interpret the leading 1 as a sign bit because the question specifies unsigned values.",
+  },
+  "S1-L04-EXAM-1": {
+    prompt: "Calculate whether a fixed-width code with 7 bits can assign a different pattern to each of 150 symbols, and determine the minimum number of bits required.",
+    objectiveIds: ["S1.07.A01", "S1.07.A02", "S1.07.A03"],
+    answerPoints: [
+      "Seven bits provide 2^7 = 128 different patterns.",
+      "A set of 150 symbols cannot be represented uniquely by only 128 patterns.",
+      "Eight bits provide 2^8 = 256 patterns.",
+      "The minimum fixed width is therefore 8 bits.",
+    ],
+    commonError: "Do not assume that seven bits can store values from 0 to 150; seven bits provide only 128 distinct patterns in total.",
+  },
+  "S1-L04-EXAM-2": {
+    prompt: "Using the character codes C = 67, A = 65 and T = 84, describe how the text CAT is represented as three 8-bit binary codes.",
+    objectiveIds: ["S1.07.A01"],
+    answerPoints: [
+      "Look up or use the numeric code assigned to each character in sequence.",
+      "The code 67 for C is stored as 01000011.",
+      "The code 65 for A is stored as 01000001.",
+      "The code 84 for T is stored as 01010100.",
+    ],
+    commonError: "Do not store the appearance of each letter; the file stores the numeric codes selected by the character set.",
+  },
+  "S1-L04-EXAM-3": {
+    prompt: "Compare extended ASCII with Unicode for exchanging English, Arabic, Chinese and emoji text between computers, and justify the more suitable character set.",
+    objectiveIds: ["S1.07.A03", "S1.07.A04"],
+    answerPoints: [
+      "Extended ASCII provides only 256 code patterns and different extensions may assign the upper codes differently.",
+      "That limited repertoire cannot assign codes to all of the required writing systems and emoji.",
+      "Unicode defines a much larger common repertoire of code points for characters from many writing systems.",
+      "Unicode is more suitable because the sender and receiver can interpret the multilingual text using the same character assignments.",
+    ],
+    commonError: "Do not claim that every Unicode character is stored in exactly 16 bits; the task concerns repertoire and consistent character assignment.",
+  },
+  "S1-L05-EXAM-2": {
+    prompt: "A vector file stores a blue rectangle and a black line. Describe the drawing list and explain how the software uses the stored object properties to render the image.",
+    objectiveIds: ["S1.09.A01", "S1.09.A02"],
+    answerPoints: [
+      "The drawing list contains one entry for the rectangle and one entry for the line.",
+      "Each entry identifies the object type and stores properties such as coordinates, dimensions, line colour, fill colour and line thickness.",
+      "The software reads the entries in list order and draws each object using its stored properties.",
+      "Changing coordinates or dimensions allows the objects to be redrawn at another size without enlarging a fixed pixel grid.",
+    ],
+    commonError: "Do not describe a vector graphic as a grid of stored pixel colour values.",
+  },
+  "S1-L05-EXAM-1": {
+    prompt: "A bitmap has image resolution 640 by 480 and colour depth 8 bits. Calculate the number of possible pixel colours and describe how its header and pixel data are used when the file is opened.",
+    objectiveIds: ["S1.08.A01", "S1.08.A03"],
+    answerPoints: [
+      "An 8-bit colour value provides 2^8 = 256 possible colours for each pixel.",
+      "The header supplies metadata such as width, height and colour depth needed to interpret the following data.",
+      "The pixel data supplies one colour value for each position in the 640 by 480 grid.",
+      "The software uses the metadata to map the stored pixel values to the correct positions and colours on the display.",
+    ],
+    commonError: "Do not include the header bytes in the pixel count or describe the bitmap as a vector drawing list.",
+  },
+  "S1-L05-EXAM-3": {
+    prompt: "Compare the uncompressed pixel-data sizes of bitmap A, which is 1600 by 1200 with 8-bit colour, and bitmap B, which is 800 by 600 with 24-bit colour. State which is larger and by how many bytes.",
+    objectiveIds: ["S1.08.A04", "S1.08.A05", "S1.08.A06"],
+    answerPoints: [
+      "Bitmap A contains 1600 x 1200 x 8 = 15,360,000 bits, which is 1,920,000 bytes.",
+      "Bitmap B contains 800 x 600 x 24 = 11,520,000 bits, which is 1,440,000 bytes.",
+      "Bitmap A is larger by 1,920,000 - 1,440,000 = 480,000 bytes.",
+      "The higher pixel count of bitmap A outweighs the greater colour depth of bitmap B in this comparison.",
+    ],
+    commonError: "Do not compare resolution or colour depth in isolation; multiply both pixel dimensions by the bits per pixel before converting bits to bytes.",
+  },
+  "S2-L01-EXAM-1": {
+    prompt: "Compare a LAN with a WAN in terms of geographical scope, control of the network infrastructure and the links used between sites.",
+    objectiveIds: ["S2.01.A02", "S2.01.A03"],
+    answerPoints: [
+      "A LAN covers a limited area such as one building or campus, whereas a WAN spans a large geographical area or links separated sites.",
+      "A single organisation normally owns or directly controls its LAN equipment and local links.",
+      "A WAN commonly relies on telecommunications-provider infrastructure to carry data between the organisation's sites.",
+      "The classification depends on scope and infrastructure rather than an assumption that one type is always faster.",
+    ],
+    commonError: "Do not classify the networks only by speed; geographical scope, control and inter-site infrastructure are the relevant distinctions.",
+  },
+  "S2-L01-EXAM-2": {
+    prompt: "Explain why a peer-to-peer model may suit a four-person design studio that shares non-critical files, has a very small budget and has no specialist administrator. Include two drawbacks.",
+    objectiveIds: ["S2.02.A01", "S2.02.A02", "S2.02.A03"],
+    answerPoints: [
+      "A peer-to-peer model is suitable because each computer can provide files directly without a dedicated server.",
+      "Avoiding dedicated server hardware and administration matches the small budget and group size.",
+      "Accounts, permissions and backups are managed separately on the peers rather than through one central system.",
+      "A shared file becomes unavailable when the peer providing it is switched off or disconnected.",
+    ],
+    commonError: "Do not describe peer-to-peer as a topology; it specifies which computers request and provide resources.",
+  },
+  "S2-L01-EXAM-3": {
+    prompt: "Field engineers must run large CAD applications when disconnected and synchronise their work after returning online. Suggest thin or thick clients and justify the choice with one management drawback.",
+    objectiveIds: ["S2.03.A01", "S2.03.A02", "S2.03.A03"],
+    answerPoints: [
+      "Thick clients are suitable because substantial application processing takes place on each local computer.",
+      "The CAD application and working data can remain available when the network connection is absent.",
+      "Local hardware must have enough processing power and storage for the engineering workload.",
+      "Software updates, security controls and synchronisation must be managed across several separate devices.",
+    ],
+    commonError: "Do not choose a client type from the physical size of the computer; base the decision on processing placement and network dependence.",
+  },
+  "S2-L02-EXAM-1": {
+    prompt: "Four routers must each have a direct link to every other router. Identify the topology, calculate the number of links, and explain one resilience benefit and one cost drawback.",
+    objectiveIds: ["S2.04.A03", "S2.05.A02", "S2.05.A03"],
+    answerPoints: [
+      "The required topology is a full mesh.",
+      "Four routers require 4 x 3 / 2 = 6 pair-to-pair links.",
+      "If one link fails, traffic may use another connected route through the remaining links.",
+      "The extra cables, interfaces and routing configuration increase installation cost and management complexity.",
+    ],
+    commonError: "Do not count each bidirectional link twice; one physical link connects each unordered pair of routers.",
+  },
+  "S2-L02-EXAM-2": {
+    prompt: "Compare the effects of a workstation-cable failure and a central-medium failure in bus and star networks.",
+    objectiveIds: ["S2.04.A01", "S2.04.A02", "S2.05.A02"],
+    answerPoints: [
+      "A failed drop or workstation connection on a bus may isolate that device while the intact backbone can still carry other traffic.",
+      "A break in the shared bus backbone can divide the network or stop communication for multiple devices.",
+      "A failed end-device cable in a star normally isolates only the device on that separate link.",
+      "Failure of the central switch stops communication through that star even when the end-device cables remain intact.",
+    ],
+    commonError: "Do not claim that every cable failure has the same effect; identify whether the failed component is local, shared or central.",
+  },
+  "S2-L02-EXAM-3": {
+    prompt: "Suggest a topology for four critical data-centre routers when communication must continue after any one link fails. Describe two possible routes between a named pair and give one disadvantage.",
+    objectiveIds: ["S2.04.A03", "S2.05.A01", "S2.05.A02", "S2.05.A03"],
+    answerPoints: [
+      "A mesh topology provides multiple connected paths between the critical routers.",
+      "One valid route can use the direct link from the named source router to the destination router.",
+      "After that link fails, a second valid route can pass through another router whose two required links still exist.",
+      "The alternative path allows delivery to continue after the stated single-link failure.",
+      "Providing the additional links and router ports raises cost and configuration complexity.",
+    ],
+    commonError: "Do not claim resilience without naming a second route that follows links present in the proposed topology.",
+  },
+  "S2-L03-EXAM-1": {
+    prompt: "Describe what happens when a student uses a low-specification laptop to run a browser-based simulation whose processing and files are hosted by a cloud provider.",
+    objectiveIds: ["S2.06.A01", "S2.06.A03"],
+    answerPoints: [
+      "The laptop sends a request to remote computing resources through its network connection.",
+      "Servers at the provider execute the simulation and store the associated files rather than requiring all work to occur locally.",
+      "The provider returns the simulation output or interface data to the student's browser.",
+      "Loss of the network connection or provider service prevents or limits access even though the laptop still works.",
+    ],
+    commonError: "Do not describe cloud computing as files floating on the internet; identify the remote servers, network requests and returned results.",
+  },
+  "S2-L03-EXAM-2": {
+    prompt: "Explain why the term public cloud does not mean that every member of the public can read a customer's stored files.",
+    objectiveIds: ["S2.06.A02"],
+    answerPoints: [
+      "Public describes a provider-operated service whose underlying resources are offered to multiple customers.",
+      "Each customer uses authenticated accounts and permissions that restrict access to authorised users.",
+      "Logical separation prevents one customer from being given normal access to another customer's data.",
+      "The customer still needs correctly configured access controls because shared service provision is not automatic public data access.",
+    ],
+    commonError: "Do not confuse shared provider infrastructure with unrestricted file permissions.",
+  },
+  "S2-L03-EXAM-3": {
+    prompt: "Suggest two design measures that could reduce disruption when a provider outage makes a company's cloud-hosted order system unavailable. Explain how each measure helps.",
+    objectiveIds: ["S2.06.A03", "S2.06.A04"],
+    answerPoints: [
+      "Users cannot reach the remote application or current cloud data while the provider service is unavailable.",
+      "Order processing may stop even though the users' local computers continue to operate.",
+      "A tested independent backup or replicated service can provide recoverable data outside the failed service.",
+      "A documented offline procedure or failover platform can preserve a limited business function during the outage.",
+      "The organisation must test recovery because provider redundancy alone does not prove that its required service can be restored.",
+    ],
+    commonError: "Do not treat synchronised provider copies as a complete recovery plan without independent recovery and restoration testing.",
+  },
+  "S2-L04-EXAM-1": {
+    prompt: "Compare copper cable with fibre-optic cable for a 500-metre factory link that passes close to powerful electric motors, and suggest the more suitable medium.",
+    objectiveIds: ["S2.07.A01", "S2.08.A01", "S2.08.A02", "S2.08.A06"],
+    answerPoints: [
+      "Copper carries electrical signals that can be affected by electromagnetic interference from the motors.",
+      "Signal attenuation over the long copper run can also restrict reliable transmission or require additional equipment.",
+      "Fibre carries light and is not affected by electromagnetic interference from the nearby motors.",
+      "Fibre supports the long high-capacity link but normally has greater installation or termination cost.",
+      "Fibre is the more suitable choice because interference resistance and distance matter in the stated factory route.",
+    ],
+    commonError: "Do not choose fibre only because it is newer; link its light-based transmission and interference resistance to the factory conditions.",
+  },
+  "S2-L04-EXAM-2": {
+    prompt: "Describe how a terrestrial microwave link can connect two hilltop offices and explain two conditions that can reduce its reliability.",
+    objectiveIds: ["S2.08.A04", "S2.08.A06"],
+    answerPoints: [
+      "Directional microwave antennas transmit electromagnetic signals between the two fixed sites.",
+      "The antennas require a clear line of sight and accurate alignment.",
+      "Buildings, terrain or later obstructions in the path can block or weaken the link.",
+      "Severe weather, interference or misalignment can reduce signal quality and reliability.",
+    ],
+    commonError: "Do not describe the link as local WiFi; terrestrial microwave uses aligned directional endpoints over a line-of-sight path.",
+  },
+  "S2-L04-EXAM-3": {
+    prompt: "Explain why a satellite link may be selected for a research vessel far from land and give two disadvantages for interactive communication.",
+    objectiveIds: ["S2.08.A05", "S2.08.A06"],
+    answerPoints: [
+      "The vessel can communicate through radio or microwave signals sent to and received from a satellite over a very large coverage area.",
+      "Satellite coverage can reach an offshore location where a fixed terrestrial cable or local access point is unavailable.",
+      "The long signal path introduces noticeable latency that affects interactive calls or control.",
+      "Equipment, service cost, weather effects or limited shared capacity can also constrain the connection.",
+    ],
+    commonError: "Do not claim that satellite communication has zero delay; the long propagation path creates latency.",
+  },
+  "S2-L05-EXAM-1": {
+    prompt: "A long LAN has a weak signal at its far end, and two busy LAN segments exchange only occasional traffic. Explain how a repeater and a bridge solve the two different problems.",
+    objectiveIds: ["S2.09.A04"],
+    answerPoints: [
+      "A repeater receives a weakened signal and regenerates it before forwarding it along the medium.",
+      "Regeneration extends the usable transmission distance but does not choose a destination for each frame.",
+      "A bridge connects the two LAN segments and learns or examines link-layer addresses.",
+      "The bridge forwards frames that must cross between segments and filters local frames that do not need to cross.",
+      "Filtering unnecessary cross-segment traffic reduces traffic on the other segment.",
+    ],
+    commonError: "Do not interchange the devices: a repeater regenerates signals, whereas a bridge makes frame-forwarding decisions between segments.",
+  },
+  "S2-L05-EXAM-2": {
+    prompt: "Compare the network connection of a wired desktop with a wireless laptop on the same LAN, including the interfaces, access device and continuing role of the switch.",
+    objectiveIds: ["S2.09.A01", "S2.09.A02", "S2.09.A03"],
+    answerPoints: [
+      "The laptop uses a WNIC to transmit and receive LAN data by radio instead of using the desktop's wired NIC and end cable.",
+      "A wireless access point provides the laptop's wireless connection to the LAN.",
+      "The access point normally connects by cable to a port on the existing wired LAN.",
+      "The switch still forwards frames between the access point, wired devices and other required LAN ports.",
+    ],
+    commonError: "Do not state that a WNIC connects directly to the internet; it first provides the laptop's interface to the wireless LAN.",
+  },
+  "S2-L05-EXAM-3": {
+    prompt: "Two devices using CSMA/CD detect a collision after transmitting at almost the same time. Describe the complete sequence from carrier sensing to a successful retry.",
+    answerPoints: [
+      "Each device listens to the shared medium and transmits only when it senses that the medium is idle.",
+      "The near-simultaneous transmissions collide and each transmitting device detects the collision.",
+      "The devices stop transmitting and send or recognise a jam signal so all stations know that a collision occurred.",
+      "Each device waits for a randomly selected backoff period.",
+      "After the backoff, a device senses the medium again before retrying the transmission.",
+      "Different random delays reduce the chance of the same devices colliding again on the retry.",
+    ],
+    commonError: "Do not omit carrier sensing, collision detection or the second carrier check after the random backoff.",
+  },
+  "S2-L06-EXAM-1": {
+    prompt: "Describe how an on-demand recorded lecture can begin playing before its complete file has arrived, including the role of ordered data and the buffer.",
+    objectiveIds: ["S2.12.A01", "S2.12.A02", "S2.12.A04"],
+    answerPoints: [
+      "The stored lecture is delivered progressively as an ordered stream of data rather than waiting for the complete file.",
+      "The player accumulates an initial portion of the arriving stream in a buffer before playback begins.",
+      "Playback consumes buffered data in sequence while later portions continue to arrive from the server.",
+      "Because the lecture is on demand, the user chooses when to start the already stored content.",
+      "A temporary fall in arrival rate can be absorbed while enough unplayed data remains in the buffer.",
+    ],
+    commonError: "Do not say that streaming requires the complete file to arrive before playback; progressive delivery is the defining distinction in this scenario.",
+  },
+  "S2-L06-EXAM-2": {
+    prompt: "A player starts with 90 Mbit of unplayed data. The incoming rate remains 3 Mbit/s while playback uses 6 Mbit/s. Calculate how long playback can continue before the buffer empties.",
+    objectiveIds: ["S2.12.A03", "S2.12.A04", "S2.12.A05"],
+    answerPoints: [
+      "Playback consumes data 6 - 3 = 3 Mbit/s faster than new data arrives.",
+      "The 90 Mbit of unplayed data therefore falls at 3 Mbit each second.",
+      "The time to empty is 90 / 3 = 30 seconds.",
+      "After 30 seconds the player must pause, lower its playback bit rate or receive data faster.",
+    ],
+    commonError: "Do not divide by the playback rate alone; use the deficit between playback consumption and incoming data.",
+  },
+  "S2-L06-EXAM-3": {
+    prompt: "A live video requires 8 Mbit/s but the connection can sustain only 6 Mbit/s. Explain how changing the stream to 5 Mbit/s can prevent repeated interruption and state the trade-off.",
+    objectiveIds: ["S2.12.A03", "S2.12.A05", "S2.12.A06"],
+    answerPoints: [
+      "At 8 Mbit/s, playback consumes data 2 Mbit/s faster than the connection can supply it.",
+      "Any finite stored data is progressively exhausted, causing the player to pause and refill.",
+      "At 5 Mbit/s, the 6 Mbit/s connection can supply data at least as quickly as playback consumes it under the stated sustained rate.",
+      "The buffer can remain stable or gain data, so the sustained deficit no longer forces repeated pauses.",
+      "The lower stream bit rate normally reduces video or audio quality.",
+    ],
+    commonError: "Do not claim that a larger buffer changes the sustained connection rate; adaptation works here by reducing the consumption rate below the arrival rate.",
+  },
+  "S2-L07-EXAM-1": {
+    prompt: "Classify a web page, an email message, a voice-over-IP call and a file-transfer session as WWW or non-WWW internet services, explaining the basis of the classification.",
+    objectiveIds: ["S2.13.A01", "S2.13.A02", "S2.13.A03"],
+    answerPoints: [
+      "The internet is the underlying global network infrastructure used by all four communications.",
+      "A web page is a linked web resource and therefore belongs to the World Wide Web service.",
+      "Email is an internet service but is not itself a World Wide Web resource.",
+      "Voice over IP and file transfer also use internet infrastructure without becoming WWW services merely because software presents them on a screen.",
+    ],
+    commonError: "Do not label every service accessed through a browser-style interface as WWW; classify the service and resource being used.",
+  },
+  "S2-L07-EXAM-2": {
+    prompt: "Compare a PSTN access connection with a dedicated line for a permanent bank branch that requires predictable continuous connectivity, and suggest the more suitable option.",
+    objectiveIds: ["S2.14.A01", "S2.14.A02", "S2.14.A03", "S2.14.A05"],
+    answerPoints: [
+      "A PSTN service uses public switched telephone infrastructure and suitable modem or access equipment to adapt signals for that link.",
+      "Its performance and availability depend on the shared access service provided over the telephone infrastructure.",
+      "A dedicated line provides a continuously available link reserved for the branch rather than a temporary or shared access path.",
+      "The dedicated line can offer more predictable capacity and availability but has greater installation and rental cost.",
+      "The dedicated line is more suitable when the bank values predictable continuous connectivity more than the additional cost.",
+    ],
+    commonError: "Do not claim that the modem chooses packet routes; signal adaptation and inter-network routing are separate roles.",
+  },
+  "S2-L07-EXAM-3": {
+    prompt: "Describe how a passenger's phone on a moving bus connects to an internet service through a cellular network, and explain one cause of variable performance.",
+    objectiveIds: ["S2.14.A04", "S2.14.A05"],
+    answerPoints: [
+      "The phone transmits and receives radio signals through a nearby cellular base station.",
+      "The cellular provider carries the data from its access network toward the wider internet service.",
+      "As the bus moves, the connection may be transferred between cells so that a reachable base station continues to serve the phone.",
+      "Signal strength changes with distance, buildings, terrain or movement between coverage areas.",
+      "Shared radio capacity or interference can also make the available data rate vary.",
+    ],
+    commonError: "Do not describe the phone as connected by a dedicated cable; the access path to the base station is a shared radio link.",
+  },
+  "S2-L08-EXAM-1": {
+    prompt: "Identify why 192.168.4.300 is not a valid IPv4 address and why 2001:db8:0:1:0:0:0:25 cannot be written as four decimal octets.",
+    objectiveIds: ["S2.15.A01", "S2.15.A02"],
+    answerPoints: [
+      "An IPv4 address contains four 8-bit octets written in decimal.",
+      "Each IPv4 octet must be from 0 to 255, so the value 300 is invalid.",
+      "The second address uses eight hexadecimal groups and is IPv6 notation.",
+      "IPv6 contains 128 bits, so four decimal octets would provide only the 32 bits used by IPv4.",
+    ],
+    commonError: "Do not reject the letters in the IPv6 address; hexadecimal digits are valid in IPv6 groups.",
+  },
+  "S2-L08-EXAM-2": {
+    prompt: "A host at 192.168.50.70/26 sends one packet to 192.168.50.100 and another to 192.168.50.130. Explain which packet can be delivered within the local subnet and which must be sent to a router.",
+    objectiveIds: ["S2.15.A04"],
+    answerPoints: [
+      "A /26 prefix divides the final octet into ranges of 64 addresses.",
+      "The source 192.168.50.70 is in the subnet whose final-octet range is 64 to 127.",
+      "The destination ending in 100 shares that subnet prefix, so its packet can be delivered locally.",
+      "The destination ending in 130 lies in the next subnet range, 128 to 191.",
+      "The packet for 192.168.50.130 must be forwarded to a router for delivery outside the source subnet.",
+    ],
+    commonError: "Do not compare only the first three octets when the prefix is /26; the leading two bits of the final octet are part of the network prefix.",
+  },
+  "S2-L08-EXAM-3": {
+    prompt: "Suggest suitable public or private and static or dynamic addressing for a public web server and an employee laptop used only inside the organisation.",
+    objectiveIds: ["S2.15.A03", "S2.15.A05", "S2.15.A06"],
+    answerPoints: [
+      "The public web server needs a publicly reachable address so internet clients can route requests to it.",
+      "A static or reserved assignment gives the server a predictable address for its published service and DNS record.",
+      "The internal laptop can use a private address because it does not need to accept direct public internet connections.",
+      "A dynamic assignment is suitable for the laptop because its address can be allocated automatically when it joins the internal network.",
+      "Firewalls, authentication and updates are still required because address type alone does not provide complete security.",
+    ],
+    commonError: "Do not equate static with public or dynamic with private; reachability and assignment method are independent properties.",
+  },
+  "S3-L03-EXAM-1": {
+    prompt: "Explain three differences between SRAM and DRAM and state one typical use of each memory type.",
+    answerPoints: [
+      "SRAM stores each bit in a flip-flop circuit, whereas DRAM stores each bit as charge in a capacitor.",
+      "SRAM does not require refresh and is faster, whereas DRAM must be refreshed and is slower.",
+      "SRAM has a higher cost per bit and lower density than DRAM.",
+      "SRAM is typically used for processor cache, while DRAM is typically used for main memory.",
+    ],
+    commonError: "Do not confuse SRAM and DRAM with ROM; both are volatile forms of RAM.",
+  },
+  "S3-L03-EXAM-2": {
+    prompt: "A tablet requires a small amount of very fast cache and a much larger amount of working memory. Explain why SRAM is chosen for the cache and DRAM for the working memory.",
+    answerPoints: [
+      "SRAM does not need refresh and provides faster access, so it suits the frequently accessed cache.",
+      "SRAM uses more transistors per bit and is more expensive, so using it for all working memory would be costly.",
+      "DRAM stores bits at higher density and has a lower cost per bit, so a larger working-memory capacity is practical.",
+      "DRAM requires periodic refresh and is slower, but that trade-off is acceptable for the larger main-memory role.",
+    ],
+    commonError: "Do not justify the choice only by naming the device; link speed, refresh, density and cost to each role.",
+  },
+  "S3-L04-EXAM-3": {
+    prompt: "An automated greenhouse uses a temperature sensor and a heater. Explain how feedback allows the control system to maintain the target temperature.",
+    answerPoints: [
+      "The temperature sensor repeatedly measures the current temperature and sends a signal representing it to the controller.",
+      "The controller compares the measured temperature with the target value.",
+      "When the temperature is below the target, the controller sends an output signal that causes the heater actuator to operate.",
+      "New sensor readings provide feedback, allowing the controller to switch or adjust the heater as the temperature approaches the target.",
+    ],
+    commonError: "Do not describe only the sensor and actuator; include the repeated measurement, comparison and corrective output loop.",
+  },
+  "S3-L05-EXAM-2": {
+    prompt: "Describe how to construct a complete truth table for the expression Q = A AND NOT B.",
+    answerPoints: [
+      "Create columns for inputs A and B and list the four combinations 00, 01, 10 and 11.",
+      "Add an intermediate NOT B column by inverting each value of B.",
+      "Calculate Q by applying AND to A and NOT B in each row.",
+      "The final Q values for 00, 01, 10 and 11 are 0, 0, 1 and 0 respectively.",
+    ],
+    commonError: "Do not omit an input combination or apply NOT to the whole expression.",
+  },
+  "S4-L07-EXAM-2": {
+    prompt: "ACC contains 11010110 and the instruction AND #00001111 is executed. Describe the bitwise operation and state the new ACC value.",
+    answerPoints: [
+      "Each ACC bit is ANDed with the bit in the same position of the mask, producing 1 only where both bits are 1.",
+      "11010110 AND 00001111 produces 00000110, which becomes the new ACC value.",
+    ],
+    commonError: "Do not perform logical AND on the two complete values as single Boolean operands; compare corresponding bit positions.",
+  },
+  "S6-L02-EXAM-3": {
+    prompt: "An organisation unlocks a secure room by scanning a fingerprint. Explain how biometric authentication works and give one limitation.",
+    answerPoints: [
+      "A sensor captures a physical characteristic from the person attempting access.",
+      "The system extracts identifying features and compares the resulting template with the enrolled template for an authorised user.",
+      "Access is granted only when the comparison score satisfies the configured matching threshold.",
+      "A limitation is that false acceptance or false rejection can occur, or a compromised biometric characteristic cannot be replaced like a password.",
+    ],
+    commonError: "Do not describe a digital signature; biometric authentication compares a captured human characteristic with an enrolled template.",
+  },
+  "S6-L03-EXAM-2": {
+    prompt: "Describe the threat posed by a computer virus and explain how updated anti-virus software can reduce the risk.",
+    answerPoints: [
+      "A virus is malicious code that attaches to or modifies a host file or program.",
+      "It replicates when the infected host is executed and can corrupt data or disrupt the system.",
+      "Updated anti-virus software scans files, memory or activity for known signatures and suspicious behaviour.",
+      "Detected malicious code can be blocked, quarantined or removed before it is allowed to spread further.",
+    ],
+    commonError: "Do not define a hacker; a virus is executable malicious code that replicates through an infected host.",
+  },
+  "S6-L03-EXAM-3": {
+    prompt: "An employee receives an email linking to a fake sign-in page. Explain how this phishing attack can deceive the employee and state two suitable precautions.",
+    answerPoints: [
+      "The message impersonates a trusted organisation or colleague and creates a plausible or urgent reason to sign in.",
+      "The link leads to a fraudulent page designed to capture the employee's credentials or other sensitive information.",
+      "The employee should verify the sender and destination independently rather than opening the supplied link.",
+      "Email filtering, user training and multi-factor authentication can reduce the chance or impact of a successful phishing attempt.",
+    ],
+    commonError: "Do not confuse phishing with pharming; phishing relies on a deceptive message or interaction that persuades the user.",
+  },
+  "S6-L04-EXAM-1": {
+    prompt: "A company stores confidential personnel files on a network server. Explain how encryption and access rights protect the files in different ways.",
+    answerPoints: [
+      "Encryption converts plaintext into ciphertext using an algorithm and key.",
+      "Without the correct decryption key, intercepted or stolen encrypted data should not be intelligible.",
+      "Access rights associate authenticated users or roles with permitted actions such as read, create, modify or delete.",
+      "The server checks those permissions before allowing an authenticated user to perform an operation on a file.",
+    ],
+    commonError: "Do not say that encryption decides which authenticated user may edit a file; that is the role of access rights.",
+  },
+  "S8-L05-EXAM-3": {
+    prompt: "An AS Level SQL query needs fields from Student and Enrolment. Explain how to keep the query within the two-table scope and identify the join condition.",
+    answerPoints: [
+      "The query uses only the two named tables, Student and Enrolment, rather than joining a third table.",
+      "INNER JOIN combines matching rows from the two tables.",
+      "The ON condition compares the related key fields, for example Student.StudentID = Enrolment.StudentID.",
+    ],
+    commonError: "Do not add a third table to the same AS Level query or omit the key-field condition that relates the two tables.",
+  },
+  "S9-L09-EXAM-3": {
+    prompt: "A booking system is too large to design as one task. Explain how decomposition can be used before the algorithms for the smaller parts are developed.",
+    answerPoints: [
+      "Divide the complete problem into smaller subproblems such as entering a booking, checking availability, calculating cost and producing confirmation.",
+      "Define the purpose, inputs, outputs and interfaces of each subproblem.",
+      "The smaller parts can then be designed and tested separately before being combined to produce the complete required behaviour.",
+    ],
+    commonError: "Do not describe only stepwise refinement of one algorithm step; decomposition first divides the whole problem into manageable parts.",
+  },
+  "S11-L02-EXAM-3": {
+    prompt: "A pseudocode fragment must declare Price and Quantity, input both values, calculate Total and output it. Describe the required statements and operators.",
+    answerPoints: [
+      "DECLARE introduces Price with type REAL and Quantity with type INTEGER before either identifier is used.",
+      "INPUT Price and INPUT Quantity read the two source values.",
+      "Total <- Price * Quantity uses multiplication to calculate the right-hand value and <- to assign it to Total.",
+      "OUTPUT Total displays the calculated result after the assignment.",
+    ],
+    commonError: "Do not use = for assignment in Cambridge pseudocode; = compares values, while <- assigns the calculated value.",
+  },
+  "S11-L05-EXAM-1": {
+    prompt: "Explain how nested IF statements can classify a mark as Invalid, Fail, Pass or Distinction.",
+    answerPoints: [
+      "The outer selection first tests whether the mark is outside the valid range and outputs Invalid for that branch.",
+      "Inside the valid branch, another IF tests the distinction boundary and outputs Distinction when it is met.",
+      "A further ELSE or nested test separates Pass from Fail using the pass boundary.",
+      "Each nested IF has its own matching ENDIF, and the conditions are ordered so every valid and invalid mark reaches exactly one output.",
+    ],
+    commonError: "Do not describe a WHILE loop; nested IF statements perform dependent selections and require a matching ENDIF for each IF.",
+  },
+  "S11-L05-EXAM-3": {
+    prompt: "A menu choice can be Add, Edit, Delete or another value. Explain how IF/ELSE selection and CASE selection could represent this choice, and state why CASE is clearer here.",
+    answerPoints: [
+      "An IF/ELSE chain compares MenuChoice with Add, then Edit, then Delete and uses a final ELSE for an unrecognised value.",
+      "A CASE structure tests the one expression MenuChoice and places Add, Edit and Delete in separate named branches.",
+      "OTHERWISE handles values not matched by the named CASE branches.",
+      "CASE is clearer because one expression is being compared with several discrete values rather than different Boolean conditions.",
+    ],
+    commonError: "Do not describe pre-condition repetition; both named structures perform selection rather than looping.",
+  },
+  "S11-L06-EXAM-3": {
+    prompt: "A FOR loop processes Items[1:Count]. Explain the boundary conditions that prevent skipped elements or access outside the array.",
+    answerPoints: [
+      "The loop starts at the array's declared lower bound, 1, and ends at the current valid upper position Count.",
+      "Because the final FOR value is inclusive, Items[Count] is processed once before the loop terminates.",
+      "NEXT advances the counter automatically, so the body must not also increment the same counter.",
+      "Count must not exceed the declared array upper bound, and an empty collection needs separate handling if Count can be 0.",
+    ],
+    commonError: "Do not substitute a WHILE-loop property; the task asks about the inclusive bounds and counter behaviour of FOR.",
+  },
+  "S11-L08-EXAM-2": {
+    prompt: "A program repeatedly asks for a mark until the user enters a value from 0 to 100. Select a suitable loop and explain the complete control logic.",
+    answerPoints: [
+      "REPEAT is suitable because one mark must be entered before its validity can first be tested.",
+      "The loop body inputs Mark and can display an error message when Mark is outside the permitted range.",
+      "UNTIL Mark >= 0 AND Mark <= 100 stops after a valid value has been entered.",
+      "The post-condition structure guarantees at least one input attempt and repeats only while the value remains invalid.",
+    ],
+    commonError: "Do not describe nested IF selection without the repetition that requests another value after invalid input.",
+  },
+  "S11-L10-EXAM-2": {
+    prompt: "Explain when a function is more appropriate than a procedure, using a VAT calculation required inside a larger expression.",
+    answerPoints: [
+      "A function is appropriate when the named subprogram must calculate and return one value to its caller.",
+      "The function declares a return type and executes RETURN with the calculated VAT value.",
+      "Its call can be used inside an expression such as Total <- Price + CalculateVAT(Price).",
+      "A procedure call performs an action but does not itself supply the value required as an expression operand.",
+    ],
+    commonError: "Do not claim that OUTPUT inside a procedure creates a return value; a function uses RETURN and has a declared return type.",
+  },
+  "S11-L12-EXAM-1": {
+    prompt: "A flowchart inputs Age, decides whether Age >= 18, outputs Adult or Minor, and then stops. Explain how to implement this design as complete Cambridge pseudocode.",
+    answerPoints: [
+      "Declare Age with type INTEGER and use INPUT Age for the flowchart's input symbol.",
+      "Translate the decision into IF Age >= 18 THEN.",
+      "Place OUTPUT \"Adult\" in the true branch and OUTPUT \"Minor\" in the ELSE branch.",
+      "Close the selection with ENDIF, preserving the flowchart's input, condition, two paths and outputs.",
+    ],
+    commonError: "Do not copy only the decision label; implement every input, branch, output and terminator shown by the design.",
+  },
+  "S12-L01-EXAM-3": {
+    prompt: "Describe three defining features of Rapid Application Development and explain how each supports rapid feedback.",
+    answerPoints: [
+      "Rapid prototyping creates an early working model that users can inspect and comment on.",
+      "Time-boxing fixes short development periods so a usable increment is produced and reviewed on a regular schedule.",
+      "Frequent user involvement supplies prompt feedback that can change requirements, interfaces or priorities in the next iteration.",
+    ],
+    commonError: "Do not list the three terms without explaining how they shorten the build-review-refine feedback cycle.",
+  },
+  "S12-L05-EXAM-2": {
+    prompt: "Describe how beta testing is carried out and explain one benefit and one limitation.",
+    answerPoints: [
+      "A near-complete version is released to selected external users who use it in realistic environments.",
+      "The users report faults, compatibility problems and usability issues that may not appear in the developer's controlled environment.",
+      "The wider real-world coverage can reveal platform and usage combinations before final release.",
+      "A limitation is that the developer has less control over the tests and feedback may be incomplete, duplicated or arrive after damage to user confidence.",
+    ],
+    commonError: "Do not describe black-box testing only; beta identifies who tests, where they test and when this occurs before final release.",
+  },
+  "S12-L07-EXAM-2": {
+    prompt: "A mark must be an integer from 0 to 100 inclusive. Select normal, abnormal and boundary test data and explain the purpose of each selection.",
+    answerPoints: [
+      "A normal value such as 55 is valid and not close to a boundary, checking ordinary accepted input.",
+      "An abnormal value such as -1 or 101 is outside the valid range and should be rejected.",
+      "Boundary tests use 0 and 100, together with values immediately outside such as -1 and 101, to check both inclusive limits.",
+      "Expected results must state whether each value is accepted or rejected so the actual result can be compared with it.",
+    ],
+    commonError: "Do not give a value without classifying it and stating the expected acceptance or rejection result.",
+  },
+  "S12-L07-EXAM-3": {
+    prompt: "A username must contain between 6 and 12 characters inclusive. Explain a complete set of boundary tests and expected outcomes.",
+    answerPoints: [
+      "A length of 5 is immediately below the lower boundary and should be rejected.",
+      "Lengths of 6 and 12 are the valid lower and upper boundary values and should be accepted.",
+      "A length of 13 is immediately above the upper boundary and should be rejected.",
+      "Testing values on and immediately outside both limits detects incorrect <, <=, > or >= boundary conditions.",
+    ],
+    commonError: "Do not test only one boundary; include values on and immediately outside both the lower and upper limits.",
+  },
+  "S10-L01-EXAM-2": {
+    prompt: "A program stores the number of students in a class. Explain why INTEGER is a suitable data type and why REAL would be less appropriate.",
+    answerPoints: [
+      "The number of students is a whole-number count, so it can be represented exactly by INTEGER.",
+      "REAL is intended for values that may have a fractional part and is unnecessary for this whole-number quantity.",
+    ],
+    commonError: "Do not choose a data type only from the value's current appearance; use the domain of valid values.",
+  },
+  "S10-L01-EXAM-3": {
+    prompt: "A program stores a temperature such as 18.75 degrees Celsius. Explain why REAL is suitable and state one relevant limitation when comparing REAL values.",
+    answerPoints: [
+      "The temperature can contain a fractional part, so REAL is suitable whereas INTEGER would lose that fractional information.",
+      "A finite binary representation cannot represent every real-number fraction exactly.",
+      "Rounding error means equality comparisons between calculated REAL values may be unreliable, so a suitable tolerance may be needed.",
+    ],
+    commonError: "Do not assume that every decimal fraction is stored exactly in binary floating-point representation.",
+  },
+  "S10-L04-EXAM-2": {
+    prompt: "Write and explain Cambridge pseudocode declarations and element access for (i) a one-dimensional array Marks[1:30] of INTEGER and (ii) a two-dimensional array Seats[1:20, 1:6] of BOOLEAN.",
+    answerPoints: [
+      "Declare Marks as ARRAY[1:30] OF INTEGER with explicit lower and upper bounds.",
+      "Access one element with one index, for example Marks[StudentIndex].",
+      "Declare Seats as ARRAY[1:20, 1:6] OF BOOLEAN with row and column bounds.",
+      "Access one seat with two indexes, for example Seats[Row, Column].",
+    ],
+    commonError: "Do not use two indexes for the one-dimensional array or omit either index for the two-dimensional array.",
+  },
+  "S10-L14-EXAM-3": {
+    prompt: "A program stores 30 student marks and also stores the occupied state of seats arranged in 20 rows and 6 columns. Justify the use of a one-dimensional array for the marks and a two-dimensional array for the seats.",
+    answerPoints: [
+      "Each mark belongs to one student position, so one index is sufficient to access an element in the one-dimensional Marks array.",
+      "Each seat is identified by both a row and a column, so two indexes naturally locate an element in the two-dimensional Seats array.",
+      "The declared array bounds match the fixed collection sizes and allow loops to process every valid position without using a linked structure.",
+    ],
+    commonError: "Do not choose a linked list merely because several values are stored; the fixed indexed collections match array access.",
+  },
+  "S11-L02-EXAM-2": {
+    prompt: "Describe the Cambridge pseudocode statements needed to read a student's name from the keyboard and display a greeting on the console.",
+    answerPoints: [
+      "INPUT Name reads the keyboard value and stores it in the declared variable Name.",
+      "OUTPUT displays the required text and the value of Name, for example OUTPUT \"Hello \" & Name.",
+    ],
+    commonError: "Do not describe INPUT only; the task also requires the console OUTPUT statement.",
+  },
+  "S11-L05-EXAM-2": {
+    prompt: "A variable Grade contains A, B, C or another value. Describe how a CASE structure selects the correct message for these alternatives.",
+    answerPoints: [
+      "CASE OF tests the value of the single expression Grade against the stated branch values.",
+      "The A, B and C branches each execute their corresponding OUTPUT statement when that value matches.",
+      "OTHERWISE handles any Grade value not matched by the named branches before ENDCASE closes the structure.",
+    ],
+    commonError: "Do not describe a count-controlled loop; CASE performs selection between discrete alternatives.",
+  },
+  "S11-L06-EXAM-1": {
+    prompt: "Write and explain a count-controlled FOR loop that outputs each value in Marks[1:30].",
+    answerPoints: [
+      "Initialise the loop variable with FOR Index <- 1 TO 30.",
+      "The loop body accesses and outputs Marks[Index].",
+      "NEXT Index advances the loop variable and repeats until the inclusive final value 30 has been processed.",
+      "The structure is suitable because the array bounds make the required number of iterations known before the loop starts.",
+    ],
+    commonError: "Do not replace the FOR loop with selection or access Marks[Index + 1] when Index is already at the upper bound.",
+  },
+  "S11-L06-EXAM-2": {
+    prompt: "Describe how a count-controlled FOR loop can calculate the total of Values[1:30], including its initial value, final value and loop body.",
+    answerPoints: [
+      "Set Total <- 0 before the loop so the accumulator has a defined starting value.",
+      "FOR Index <- 1 TO 30 uses the inclusive array bounds as the counter's initial and final values.",
+      "The body executes Total <- Total + Values[Index] once for each valid element.",
+      "NEXT Index advances the counter, and after Index 30 the loop ends with Total containing the sum of all 30 values.",
+    ],
+    commonError: "Do not omit the accumulator initialisation or stop at 29; the upper bound in a Cambridge FOR loop is inclusive.",
+  },
+  "S11-L07-EXAM-1": {
+    prompt: "Write and explain a pre-condition WHILE loop that reads records only while EndOfFile is FALSE.",
+    answerPoints: [
+      "WHILE EndOfFile = FALSE tests the condition before the loop body.",
+      "The body reads and processes the next record and then updates EndOfFile before ENDWHILE.",
+      "If EndOfFile is already TRUE at the first test, the body executes zero times.",
+      "Updating the condition state prevents an unintended infinite loop and stops processing after the final record.",
+    ],
+    commonError: "Do not describe IF or CASE selection; WHILE repeatedly executes its body while a pre-condition remains true.",
+  },
+  "S11-L07-EXAM-3": {
+    prompt: "Compare a pre-condition WHILE loop with a post-condition REPEAT loop, giving one complete use case for each.",
+    answerPoints: [
+      "WHILE tests its condition before the body, so the body may execute zero times when the condition is initially false.",
+      "It suits processing records while NOT EOF because no read should occur when the file is already at its end.",
+      "REPEAT tests its condition after the body, so the body executes at least once.",
+      "It suits input validation because one value must be entered before the stopping condition can be evaluated.",
+    ],
+    commonError: "Do not use the same continuation wording for both structures; WHILE repeats while its condition is true, whereas REPEAT stops when its UNTIL condition becomes true.",
+  },
+  "S12-L01-EXAM-2": {
+    prompt: "A safety-critical control system requires stable requirements, complete documentation and formal testing before release. Explain why RAD may be unsuitable.",
+    answerPoints: [
+      "RAD relies on rapid prototyping, short time boxes and frequent change based on user feedback.",
+      "The speed and repeated change can conflict with the exhaustive documentation, verification and traceability required for safety assurance.",
+      "A stable staged lifecycle may provide clearer approval gates before implementation and release.",
+    ],
+    commonError: "Do not say only that RAD is fast; link its working practices to the safety-critical assurance requirements.",
+  },
+  "S12-L05-EXAM-1": {
+    prompt: "A team performs a walkthrough of a new booking procedure before running the program. Explain how the walkthrough is carried out and what it can reveal.",
+    answerPoints: [
+      "The author presents the procedure, design or code to other team members using representative inputs or scenarios.",
+      "The group follows the logic and data flow step by step and questions assumptions, interfaces and expected results.",
+      "Reviewers record defects, omissions, ambiguities or inconsistent requirements found during the discussion.",
+      "The author corrects the identified issues and the relevant parts are reviewed or tested again.",
+    ],
+    commonError: "Do not describe a solitary dry run only; a walkthrough is a collaborative review by several people.",
+  },
+  "S12-L05-EXAM-3": {
+    prompt: "A tester must check whether every branch of a complex discount function has been executed. Select and explain a suitable testing method and give one limitation.",
+    answerPoints: [
+      "White-box testing is suitable because test cases are derived from the internal decisions and control-flow paths.",
+      "The tester selects inputs that make each branch condition true and false and records which paths execute.",
+      "A limitation is that white-box tests may still miss omitted requirements because they are based on the implemented internal structure.",
+    ],
+    commonError: "Do not name white-box testing without linking its knowledge of internal branches to the required coverage.",
+  },
+  "S12-L08-EXAM-2": {
+    prompt: "Explain why software maintenance can still be required after a system has passed acceptance testing, using one example of corrective, adaptive and perfective maintenance.",
+    answerPoints: [
+      "Corrective maintenance fixes a fault discovered during real use, for example an incorrect total for a boundary input.",
+      "Adaptive maintenance changes the software when its environment changes, for example a new operating system or legal rule.",
+      "Perfective maintenance improves functionality, performance or usability in response to new user needs.",
+      "Acceptance testing checks the agreed system at that time but cannot prevent later faults, environmental changes or enhancement requests.",
+    ],
+    commonError: "Do not treat all post-release changes as bug fixes; distinguish corrective, adaptive and perfective purposes.",
+  },
   "S1-L06-EXAM-1": {
     prompt: "A mono sound recording sampled at 22 kHz is resampled at 44 kHz while its duration and sampling resolution remain unchanged. Explain the effects on the digital representation, time accuracy and file size.",
     objectiveIds: ["S1.10.A01", "S1.10.A03"],
@@ -513,7 +1813,7 @@ const examQuestionOverrides = Object.freeze({
     commonError: "Do not combine non-adjacent occurrences into one run, and always state the count/value order used in the encoding.",
   },
   "S1-L06-EXAM-3": {
-    prompt: "A school keeps an archive master of a concert recording and also provides a streamed copy. Explain why lossless compression is suitable for the master and lossy compression may be suitable for the streamed copy.",
+    prompt: "Compare lossless compression for a concert archive master with lossy compression for its streamed copy, linking each choice to its intended use.",
     objectiveIds: ["S1.11.A02", "S1.11.A07", "S1.11.A08"],
     answerPoints: [
       "lossless compression allows every original sample value in the archive master to be reconstructed exactly",
@@ -764,6 +2064,7 @@ function examStyleQuestionSet(lesson, practice, staged) {
 }
 
 function conciseSummary(lesson) {
+  if (lesson.summaryMode === "authored") return lesson.summary;
   const stopwords = new Set("a an and are as at be by for from how in is it of on or plus that the this to use used uses using when which why with store stores stored required".split(" "));
   const seen = new Set();
   return lesson.summary.flatMap(([heading], index) => {

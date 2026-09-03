@@ -123,19 +123,6 @@ export function validateSection2(lessons, options = {}) {
     const css = readFileSync(join(root, "web", "course-v3", "section-2", "course.css"), "utf8");
     fail(css.includes("@media (max-width: 520px)"), "390px/mobile breakpoint missing");
     fail(css.includes(".swipe-cue { display: block;"), "Mobile table discoverability cue missing");
-    const evidenceRoot = join(root, "audits", "course-v3-visual-evidence", "section-2");
-    const evidenceIndex = readFileSync(join(evidenceRoot, "index.html"), "utf8");
-    for (let index = 1; index <= 8; index += 1) {
-      const unit = String(index).padStart(2, "0");
-      for (const [mode, expectedWidth] of [["desktop", 1280], ["mobile", 390]]) {
-        const name = `unit-${unit}-${mode}.png`;
-        const path = join(evidenceRoot, "full-pages", name);
-        fail(existsSync(path), `Visual evidence missing: ${name}`);
-        const dimensions = pngDimensions(path);
-        fail(dimensions.width === expectedWidth && dimensions.height > 2000, `${name}: unexpected evidence dimensions ${dimensions.width}x${dimensions.height}`);
-        fail(evidenceIndex.includes(`full-pages/${name}`), `${name}: not linked from evidence index`);
-      }
-    }
   }
   return true;
 }

@@ -258,7 +258,6 @@
         "officialReferenceHash": "8657345f9d0d6469655a15c80ab8b7d00291c5c57974295dcb1bc25602302cec",
         "firstTeachingContentHash": "69d3ddf634b35beb0cd051603d179cf5d80d8096796bd98431f817d10fb1ee3c",
         "evidenceLocations": [
-          "audits/remediation-v2-official-as-source-inventory.json",
           "web/lesson-001/index.html#stage2-completion"
         ]
       }
@@ -440,7 +439,6 @@
         "officialReferenceHash": "77367bfde59f21ff92abb0ebab17c1dbfdde0c276a1787f6b608918f964346b5",
         "firstTeachingContentHash": "2a1d84c2f6380948f2b443d73d2cb8682e7e2ae403e7c5f31f9aa5918d70c068",
         "evidenceLocations": [
-          "audits/remediation-v2-official-as-source-inventory.json",
           "web/lesson-002/index.html#stage2-completion"
         ]
       }
@@ -677,7 +675,6 @@
         "officialReferenceHash": "43ffb4d4c5c7d58b1a0f12fb0d30c9d225d155d77718271f0d1bc3d7fbd7c1c4",
         "firstTeachingContentHash": "2a1d84c2f6380948f2b443d73d2cb8682e7e2ae403e7c5f31f9aa5918d70c068",
         "evidenceLocations": [
-          "audits/remediation-v2-official-as-source-inventory.json",
           "web/lesson-002/index.html#stage2-completion"
         ]
       }
@@ -852,7 +849,6 @@
         "officialReferenceHash": "255149fe2f978fdab615031a9df95432f6005520de17190599d6164d0db5cc5c",
         "firstTeachingContentHash": "a2e7f12be050b0031e800df5416a98f283a1c21d509ada59c16192a16197fb8e",
         "evidenceLocations": [
-          "audits/remediation-v2-official-as-source-inventory.json",
           "web/lesson-004/index.html#stage2-completion"
         ]
       }
@@ -1000,7 +996,6 @@
         "officialReferenceHash": "77f56432ca80f3df9d0628cf5d3aa89077ba1a562bedc0fd4a7396249125aa92",
         "firstTeachingContentHash": "a2e7f12be050b0031e800df5416a98f283a1c21d509ada59c16192a16197fb8e",
         "evidenceLocations": [
-          "audits/remediation-v2-official-as-source-inventory.json",
           "web/lesson-004/index.html#stage2-completion"
         ]
       }
@@ -1131,7 +1126,6 @@
         "officialReferenceHash": "018cf76490704342b611518d091e453a2e98d009c638246b7e3f071188168b78",
         "firstTeachingContentHash": "25640e6a3807ae1a043b72ddc4a9b696ea90e2cb09eb11454b3fc28d69c01d26",
         "evidenceLocations": [
-          "audits/remediation-v2-official-as-source-inventory.json",
           "web/lesson-006/index.html#stage2-completion"
         ]
       }
@@ -1304,7 +1298,6 @@
         "officialReferenceHash": "c463155ea607db6767e8c2597dca68f340e98117963a22daff2c76e75e440365",
         "firstTeachingContentHash": "f6b2f81b490fa4ffd0ecd1bc1a5fbc11c9e78016f189502587f0d277b1d11ad3",
         "evidenceLocations": [
-          "audits/remediation-v2-official-as-source-inventory.json",
           "web/lesson-007/index.html#stage2-completion"
         ]
       }
@@ -1493,7 +1486,6 @@
         "officialReferenceHash": "b7dde21c525f0f7241c354453aa0bcfced67f3367975e750277dfc8897ab3ee0",
         "firstTeachingContentHash": "2b5c8d9cce53009657914ddb384573b660e212904f48ebff5b8de850036c54c9",
         "evidenceLocations": [
-          "audits/remediation-v2-official-as-source-inventory.json",
           "web/lesson-008/index.html#stage2-completion"
         ]
       }
@@ -1679,7 +1671,6 @@
         "officialReferenceHash": "4fb754e6d2a8888e7443f96bce65320349d84e91109d715ff45b1cf423fe678e",
         "firstTeachingContentHash": "4f84ebbeac63353a4acc5299464c5b4c7cc7b8d4ff296f36081fa878106eea2c",
         "evidenceLocations": [
-          "audits/remediation-v2-official-as-source-inventory.json",
           "web/lesson-010/index.html#stage2-completion"
         ]
       }
@@ -1872,7 +1863,6 @@
         "officialReferenceHash": "4c25a1a7ae103a7f47b7a059ad9940ed84a1cb5963a4d6c9341580f1142c66bb",
         "firstTeachingContentHash": "cc291a00b39355573bfc1633c5c01432456a7cb35150f83af5cedc406718a349",
         "evidenceLocations": [
-          "audits/remediation-v2-official-as-source-inventory.json",
           "web/lesson-011/index.html#stage2-completion"
         ]
       }
@@ -2062,7 +2052,6 @@
         "officialReferenceHash": "a05972ead867accbba6be95673851b36eaca8aa91796f79f2e99734aad5e988a",
         "firstTeachingContentHash": "a2dae5d142be40576e4e9997e5cc7d21d3a2daf517d3395b701705f9709ff44f",
         "evidenceLocations": [
-          "audits/remediation-v2-official-as-source-inventory.json",
           "web/lesson-013/index.html#stage2-completion"
         ]
       }
@@ -2228,7 +2217,6 @@
         "officialReferenceHash": "d1cf815b22dc7c17db5d80e609295c02c487942006808fdbcb49065fe2629144",
         "firstTeachingContentHash": "ea3b630e3f485f39994abc2909bde74db02913e13fad096ffb4b897df1f06896",
         "evidenceLocations": [
-          "audits/remediation-v2-official-as-source-inventory.json",
           "web/lesson-017/index.html#stage2-completion"
         ]
       }
@@ -2403,7 +2391,6 @@
         "officialReferenceHash": "c43c5976f5d6c0ce3cf7484c6a6e0cdb876cf7ab931ba8d34dd0188198d5be66",
         "firstTeachingContentHash": "ea3b630e3f485f39994abc2909bde74db02913e13fad096ffb4b897df1f06896",
         "evidenceLocations": [
-          "audits/remediation-v2-official-as-source-inventory.json",
           "web/lesson-017/index.html#stage2-completion"
         ]
       }
@@ -2538,7 +2525,6 @@
         "officialReferenceHash": "3c77852817a64976bb444887476f5a419f8aa5b0d9aef902136f067edbb72121",
         "firstTeachingContentHash": "ea3b630e3f485f39994abc2909bde74db02913e13fad096ffb4b897df1f06896",
         "evidenceLocations": [
-          "audits/remediation-v2-official-as-source-inventory.json",
           "web/lesson-017/index.html#stage2-completion"
         ]
       }
@@ -2667,7 +2653,6 @@
         "officialReferenceHash": "6a550c50d2e7e2ea3f09b5ef709965fe17a61808d75a715ce44780e561b9ae13",
         "firstTeachingContentHash": "916b438a7373b08847955e3e231723a3cbc21cc57f2059eda3ba98d4fd3c7ae4",
         "evidenceLocations": [
-          "audits/remediation-v2-official-as-source-inventory.json",
           "web/lesson-018/index.html#stage2-completion"
         ]
       }
@@ -2844,7 +2829,6 @@
         "officialReferenceHash": "2b17e2ab576843e5e9911d9800b7ab0f232c470e40b0bb66cb7ad80024f53111",
         "firstTeachingContentHash": "862a3f68b79133768c6cf975c107334325bec4570d022c6d04c6dbddc44e1120",
         "evidenceLocations": [
-          "audits/remediation-v2-official-as-source-inventory.json",
           "web/lesson-019/index.html#stage2-completion"
         ]
       }
@@ -2999,7 +2983,6 @@
         "officialReferenceHash": "c99543c0ad060711bd9ae6ee98c123939867fd0e5100cbf0b6a3b376f1d90174",
         "firstTeachingContentHash": "4b0b654864ebe39c58738c56cd82714db319b4ef96bbe4c0682e1ec85adca2c9",
         "evidenceLocations": [
-          "audits/remediation-v2-official-as-source-inventory.json",
           "web/lesson-020/index.html#stage2-completion"
         ]
       }
@@ -3152,7 +3135,6 @@
         "officialReferenceHash": "36b38c92e28e0a164426122b2eea0ef6eeb712a0224aee5bdda8d50087038158",
         "firstTeachingContentHash": "4b0b654864ebe39c58738c56cd82714db319b4ef96bbe4c0682e1ec85adca2c9",
         "evidenceLocations": [
-          "audits/remediation-v2-official-as-source-inventory.json",
           "web/lesson-020/index.html#stage2-completion"
         ]
       }
@@ -3330,7 +3312,6 @@
         "officialReferenceHash": "36b38c92e28e0a164426122b2eea0ef6eeb712a0224aee5bdda8d50087038158",
         "firstTeachingContentHash": "4b0b654864ebe39c58738c56cd82714db319b4ef96bbe4c0682e1ec85adca2c9",
         "evidenceLocations": [
-          "audits/remediation-v2-official-as-source-inventory.json",
           "web/lesson-020/index.html#stage2-completion"
         ]
       }
@@ -3501,7 +3482,6 @@
         "officialReferenceHash": "3dca4092609d804b12e6baa2c3a6abdc05723922cea08556b3f2de781ae5db3d",
         "firstTeachingContentHash": "dcf0d618011028201984e16332bdb396ee9f4978f88fb09014f8dd6c21d0102a",
         "evidenceLocations": [
-          "audits/remediation-v2-official-as-source-inventory.json",
           "web/lesson-021/index.html#stage2-completion"
         ]
       }
@@ -3662,7 +3642,6 @@
         "officialReferenceHash": "8ef372a0f6a7528129752974e3b9028ca977a4a64d2e944b9dae47ccfc838710",
         "firstTeachingContentHash": "dcf0d618011028201984e16332bdb396ee9f4978f88fb09014f8dd6c21d0102a",
         "evidenceLocations": [
-          "audits/remediation-v2-official-as-source-inventory.json",
           "web/lesson-021/index.html#stage2-completion"
         ]
       }
@@ -3811,7 +3790,6 @@
         "officialReferenceHash": "34f32808e18f0b96f4bdf903c8dbb463591c5fb6e832c51043c03d714ea95c40",
         "firstTeachingContentHash": "dcf0d618011028201984e16332bdb396ee9f4978f88fb09014f8dd6c21d0102a",
         "evidenceLocations": [
-          "audits/remediation-v2-official-as-source-inventory.json",
           "web/lesson-021/index.html#stage2-completion"
         ]
       }
@@ -3974,7 +3952,6 @@
         "officialReferenceHash": "7e7743681632ad56854f9adbef8c21ee4f18101189b6ad0a33d9110f62c5b80e",
         "firstTeachingContentHash": "dcf0d618011028201984e16332bdb396ee9f4978f88fb09014f8dd6c21d0102a",
         "evidenceLocations": [
-          "audits/remediation-v2-official-as-source-inventory.json",
           "web/lesson-021/index.html#stage2-completion"
         ]
       }
@@ -4097,7 +4074,6 @@
         "officialReferenceHash": "5732a85dc98c37d96404fa161a232fe9a021c13b0eb8aac2a493f23921508d39",
         "firstTeachingContentHash": "dcf0d618011028201984e16332bdb396ee9f4978f88fb09014f8dd6c21d0102a",
         "evidenceLocations": [
-          "audits/remediation-v2-official-as-source-inventory.json",
           "web/lesson-021/index.html#stage2-completion"
         ]
       }
@@ -4244,7 +4220,6 @@
         "officialReferenceHash": "e3808cc0c082dd4af1ece3c7705bafbbd3a34f67c0977a442cb57393429ff0b9",
         "firstTeachingContentHash": "dcf0d618011028201984e16332bdb396ee9f4978f88fb09014f8dd6c21d0102a",
         "evidenceLocations": [
-          "audits/remediation-v2-official-as-source-inventory.json",
           "web/lesson-021/index.html#stage2-completion"
         ]
       }
@@ -4438,7 +4413,6 @@
         "officialReferenceHash": "bd06f711847a47a77f95e1f309fef6045898021e18ee8a29fdc368debd8fa019",
         "firstTeachingContentHash": "dcf0d618011028201984e16332bdb396ee9f4978f88fb09014f8dd6c21d0102a",
         "evidenceLocations": [
-          "audits/remediation-v2-official-as-source-inventory.json",
           "web/lesson-021/index.html#stage2-completion"
         ]
       }
@@ -4622,7 +4596,6 @@
         "officialReferenceHash": "86fd58b33473c84444ba26339172088495f3333c5b2f4f68a85167d70872ee4a",
         "firstTeachingContentHash": "dcf0d618011028201984e16332bdb396ee9f4978f88fb09014f8dd6c21d0102a",
         "evidenceLocations": [
-          "audits/remediation-v2-official-as-source-inventory.json",
           "web/lesson-021/index.html#stage2-completion"
         ]
       }
@@ -4779,7 +4752,6 @@
         "officialReferenceHash": "dd322496fa1fe1487072409d55d3f64544732f74346b66e307c9d51aa25bc4cc",
         "firstTeachingContentHash": "45ca3696f8cb9ec109cad35d93faa989420a6acb40b9da607bc9d1359550d4ba",
         "evidenceLocations": [
-          "audits/remediation-v2-official-as-source-inventory.json",
           "web/lesson-028/index.html#stage2-completion"
         ]
       }
@@ -4937,7 +4909,6 @@
         "officialReferenceHash": "d955710638231687256c1a287b09056d2e23901424b13b280ed433de50491e0b",
         "firstTeachingContentHash": "5685384d607b02785d27501b3aa8a28196ebaceb079873f091e9c9917cb13029",
         "evidenceLocations": [
-          "audits/remediation-v2-official-as-source-inventory.json",
           "web/lesson-029/index.html#stage2-completion"
         ]
       }
@@ -5141,7 +5112,6 @@
         "officialReferenceHash": "7f6a4c82b7cb600e56c0a5a85a7f14e3dd842482112a7746853023f72d6c0344",
         "firstTeachingContentHash": "aabbd24566ab53cb1a528ec1ccc8504dd310edcb0cd42b21776616bd6ade4602",
         "evidenceLocations": [
-          "audits/remediation-v2-official-as-source-inventory.json",
           "web/lesson-030/index.html#stage2-completion"
         ]
       }
@@ -5263,7 +5233,6 @@
         "officialReferenceHash": "c503c3ef2aa939f65f6f0b835d946b4ca9704ebcd20323c9761414264141ef5a",
         "firstTeachingContentHash": "6b4f703c2e4b6b569318ae7ede881b5e770cd36faee5af86682951be3d2b1ae2",
         "evidenceLocations": [
-          "audits/remediation-v2-official-as-source-inventory.json",
           "web/lesson-031/index.html#stage2-completion"
         ]
       }
@@ -5404,7 +5373,6 @@
         "officialReferenceHash": "eadbd9c01eb58790a9c0514fb900726e8639b22595eb6b4c5a3e8e2726a8dd2b",
         "firstTeachingContentHash": "6b4f703c2e4b6b569318ae7ede881b5e770cd36faee5af86682951be3d2b1ae2",
         "evidenceLocations": [
-          "audits/remediation-v2-official-as-source-inventory.json",
           "web/lesson-031/index.html#stage2-completion"
         ]
       }
@@ -5538,7 +5506,6 @@
         "officialReferenceHash": "d23a65147984f766d4cbd08157eeda85d710654f47f8f9ad565a9af532e3d9d3",
         "firstTeachingContentHash": "6b4f703c2e4b6b569318ae7ede881b5e770cd36faee5af86682951be3d2b1ae2",
         "evidenceLocations": [
-          "audits/remediation-v2-official-as-source-inventory.json",
           "web/lesson-031/index.html#stage2-completion"
         ]
       }
@@ -5666,7 +5633,6 @@
         "officialReferenceHash": "c5254aeb08797260e08ebb56e5aee6cba18ba07ccaaccfbe3de94fc9f178b9ed",
         "firstTeachingContentHash": "6b4f703c2e4b6b569318ae7ede881b5e770cd36faee5af86682951be3d2b1ae2",
         "evidenceLocations": [
-          "audits/remediation-v2-official-as-source-inventory.json",
           "web/lesson-031/index.html#stage2-completion"
         ]
       }
@@ -5837,7 +5803,6 @@
         "officialReferenceHash": "55a69154905a594298fc96e6a44ef3acb6b03be8d10765f6e6a97f516ee40384",
         "firstTeachingContentHash": "aa4631f68b145fdca8091e0c82db966cca284c9e76ba5e8d56b8d012dfaf1af1",
         "evidenceLocations": [
-          "audits/remediation-v2-official-as-source-inventory.json",
           "web/lesson-032/index.html#stage2-completion"
         ]
       }
@@ -5990,7 +5955,6 @@
         "officialReferenceHash": "d19a96cdd6389830b5cbc31527a0ef24ad98a54de0cd52015f94092ac18a60ab",
         "firstTeachingContentHash": "aa4631f68b145fdca8091e0c82db966cca284c9e76ba5e8d56b8d012dfaf1af1",
         "evidenceLocations": [
-          "audits/remediation-v2-official-as-source-inventory.json",
           "web/lesson-032/index.html#stage2-completion"
         ]
       }
@@ -6260,7 +6224,6 @@
         "officialReferenceHash": "c3ea5680c449d6b38b3be65405cd663c52bd6260b0a94494be076de13cf694fa",
         "firstTeachingContentHash": "b49badf4f6f39577709470f27cab18b2f20b07bdfab5d318e14cc37e30214aaa",
         "evidenceLocations": [
-          "audits/remediation-v2-official-as-source-inventory.json",
           "web/lesson-033/index.html#stage2-completion"
         ]
       }
@@ -6415,7 +6378,6 @@
         "officialReferenceHash": "3186db19cc5dbefeaed2230abb50e91985bed9b1ab17c7428db53ae7940b1381",
         "firstTeachingContentHash": "fb6071c4f7fdf377c669f1036ae424110bdcc1f2980c4bd00e724963d7c29201",
         "evidenceLocations": [
-          "audits/remediation-v2-official-as-source-inventory.json",
           "web/lesson-042/index.html#stage2-completion"
         ]
       }
@@ -6633,7 +6595,6 @@
         "officialReferenceHash": "b4c7b7edd9d5df8c9b633608d5ff375a31f9741a15a7eca77aaca4fb7cfc2f11",
         "firstTeachingContentHash": "fb6071c4f7fdf377c669f1036ae424110bdcc1f2980c4bd00e724963d7c29201",
         "evidenceLocations": [
-          "audits/remediation-v2-official-as-source-inventory.json",
           "web/lesson-042/index.html#stage2-completion"
         ]
       }
@@ -6792,7 +6753,6 @@
         "officialReferenceHash": "5f46506fab0e09263043770e02216a9dcfe0347cc47734fb0d053ab7791671d1",
         "firstTeachingContentHash": "fb6071c4f7fdf377c669f1036ae424110bdcc1f2980c4bd00e724963d7c29201",
         "evidenceLocations": [
-          "audits/remediation-v2-official-as-source-inventory.json",
           "web/lesson-042/index.html#stage2-completion"
         ]
       }
@@ -6938,7 +6898,6 @@
         "officialReferenceHash": "006fa604ce3942ea00ec539715abdcc4029a06fcb4506f1e677e3cae03b09d3f",
         "firstTeachingContentHash": "4a3fd37f780f9dba610bc2987e59f658cb113e7761cf869e64c305da2c33a871",
         "evidenceLocations": [
-          "audits/remediation-v2-official-as-source-inventory.json",
           "web/lesson-043/index.html#stage2-completion"
         ]
       }
@@ -7103,7 +7062,6 @@
         "officialReferenceHash": "666c0da1832330083eeee24bd4d946f62fa9171e3909c164f27148ddbe1761b1",
         "firstTeachingContentHash": "4a3fd37f780f9dba610bc2987e59f658cb113e7761cf869e64c305da2c33a871",
         "evidenceLocations": [
-          "audits/remediation-v2-official-as-source-inventory.json",
           "web/lesson-043/index.html#stage2-completion"
         ]
       }
@@ -7242,7 +7200,6 @@
         "officialReferenceHash": "50b7ca7ec42936e2c6700fa1f6b484ddc7f558812fec47be80217fddee3e73ef",
         "firstTeachingContentHash": "4a3fd37f780f9dba610bc2987e59f658cb113e7761cf869e64c305da2c33a871",
         "evidenceLocations": [
-          "audits/remediation-v2-official-as-source-inventory.json",
           "web/lesson-043/index.html#stage2-completion"
         ]
       }
@@ -7388,7 +7345,6 @@
         "officialReferenceHash": "964a30eaceeb9d91b574ef320c1e16923e62b8dd9f92535103d4f06d1d610d64",
         "firstTeachingContentHash": "50eb1ece4eb207587fdddf721f740056da0c323818beaa69066904c9e0540ede",
         "evidenceLocations": [
-          "audits/remediation-v2-official-as-source-inventory.json",
           "web/lesson-044/index.html#stage2-completion"
         ]
       }
@@ -7557,7 +7513,6 @@
         "officialReferenceHash": "31779baf5edfd20ec02834ca710b0feb31e74296af320f3632192b4e5c2d2746",
         "firstTeachingContentHash": "9a320541ab76249d8ba362df6600f3c745bd9b4f300fe75a9e4cd08543b805fb",
         "evidenceLocations": [
-          "audits/remediation-v2-official-as-source-inventory.json",
           "web/lesson-045/index.html#stage2-completion"
         ]
       }
@@ -7714,7 +7669,6 @@
         "officialReferenceHash": "51b5efa508e10b71def6561a750f779963d57c79f9f5e2c9ad02b1feeb631156",
         "firstTeachingContentHash": "f9dd0176588afd9ca5c47b7f7448d7c92179e97e3a0b26515f4b9dfe2f1b18db",
         "evidenceLocations": [
-          "audits/remediation-v2-official-as-source-inventory.json",
           "web/lesson-046/index.html#stage2-completion"
         ]
       }
@@ -7842,7 +7796,6 @@
         "officialReferenceHash": "246ceec36b9db216b18e177dd2177dff45db3a271ed4155a1dc59a4513bb67c0",
         "firstTeachingContentHash": "43ebb67a239f7ac7945b4d2fb81b6c00bce30a69c4bcd6d4727e80098ef9f5f1",
         "evidenceLocations": [
-          "audits/remediation-v2-official-as-source-inventory.json",
           "web/lesson-047/index.html#stage2-completion"
         ]
       }
@@ -7987,7 +7940,6 @@
         "officialReferenceHash": "fb2e3d2a70bcfd70c6022c5bacddc662fd6f350d32a3f2965a4e8a4aaaeb8b79",
         "firstTeachingContentHash": "43ebb67a239f7ac7945b4d2fb81b6c00bce30a69c4bcd6d4727e80098ef9f5f1",
         "evidenceLocations": [
-          "audits/remediation-v2-official-as-source-inventory.json",
           "web/lesson-047/index.html#stage2-completion"
         ]
       }
@@ -8181,7 +8133,6 @@
         "officialReferenceHash": "cde1f5f33ebe297d97240cc961bcb013e1235b2df91d7a4858fdbe99d82a9856",
         "firstTeachingContentHash": "43ebb67a239f7ac7945b4d2fb81b6c00bce30a69c4bcd6d4727e80098ef9f5f1",
         "evidenceLocations": [
-          "audits/remediation-v2-official-as-source-inventory.json",
           "web/lesson-047/index.html#stage2-completion"
         ]
       }
@@ -8528,7 +8479,6 @@
         "officialReferenceHash": "d4f06188d616be5c2081c5d8214a4d7ac55780ea535c5cb1c5ed79c34644dc66",
         "firstTeachingContentHash": "43ebb67a239f7ac7945b4d2fb81b6c00bce30a69c4bcd6d4727e80098ef9f5f1",
         "evidenceLocations": [
-          "audits/remediation-v2-official-as-source-inventory.json",
           "web/lesson-047/index.html#stage2-completion"
         ]
       }
@@ -8709,7 +8659,6 @@
         "officialReferenceHash": "ad223ce753ff7d9d2aea1c35cd498fe6896615496d9c26afc6b48d80a57cc386",
         "firstTeachingContentHash": "baa37b51d5bc23f1381c4f190d96dd6b667cfee2cf9e55afa4f95b78633f0a32",
         "evidenceLocations": [
-          "audits/remediation-v2-official-as-source-inventory.json",
           "web/lesson-048/index.html#stage2-completion"
         ]
       }
@@ -9013,7 +8962,6 @@
         "officialReferenceHash": "684a84987eb1ced4eb021c9ab11091cc3af86762a13688887326ef9d3ddacc0b",
         "firstTeachingContentHash": "be57c7d306bad87e36ef2f09a91cb5e77adeac36936b87dec8765b045bad74f0",
         "evidenceLocations": [
-          "audits/remediation-v2-official-as-source-inventory.json",
           "web/lesson-050/index.html#stage2-completion"
         ]
       }
@@ -9191,7 +9139,6 @@
         "officialReferenceHash": "57e770e01633cd3c52da728cd6faeef5971bb9cd3b204288bcb8716b8ae8266e",
         "firstTeachingContentHash": "58a23fce29164af1b44fc750bd6a8d68a6822f8ecd29cebef11174612e6c7775",
         "evidenceLocations": [
-          "audits/remediation-v2-official-as-source-inventory.json",
           "web/lesson-053/index.html#stage2-completion"
         ]
       }
@@ -9363,7 +9310,6 @@
         "officialReferenceHash": "11c95039cd9ae31564d12181694fa2bec69b2a5b12a2a55dad68676b76f11d38",
         "firstTeachingContentHash": "42097ec4a5c9b6c16df64e5c5a37a3000822f3196e1daca3c45f2c014a7c0d3a",
         "evidenceLocations": [
-          "audits/remediation-v2-official-as-source-inventory.json",
           "web/lesson-054/index.html#stage2-completion"
         ]
       }
@@ -9538,7 +9484,6 @@
         "officialReferenceHash": "52ade52a555da89645f41fac72273b421e3c53c815e16b8131a43524ae6a815e",
         "firstTeachingContentHash": "71899d5ece93fcada58ca0ded4a826152bc2b5bbe213176943bb7672dfaf87b3",
         "evidenceLocations": [
-          "audits/remediation-v2-official-as-source-inventory.json",
           "web/lesson-055/index.html#stage2-completion"
         ]
       }
@@ -9679,7 +9624,6 @@
         "officialReferenceHash": "1452194433f10485b2dd2cf4dd54e2d0be761627fbd953034429b59d1ce72f87",
         "firstTeachingContentHash": "af2e54e529d4928b46e47f4c1de494ae35e5db26c6fd5716e9b5cd8544f042af",
         "evidenceLocations": [
-          "audits/remediation-v2-official-as-source-inventory.json",
           "web/lesson-056/index.html#stage2-completion"
         ]
       }
@@ -9840,7 +9784,6 @@
         "officialReferenceHash": "2e4f144fc7faa9fe743900657b51259e13e919793279b1b6d1ab5f5082f26d89",
         "firstTeachingContentHash": "af2e54e529d4928b46e47f4c1de494ae35e5db26c6fd5716e9b5cd8544f042af",
         "evidenceLocations": [
-          "audits/remediation-v2-official-as-source-inventory.json",
           "web/lesson-056/index.html#stage2-completion"
         ]
       }
@@ -9989,7 +9932,6 @@
         "officialReferenceHash": "9e77d48250aa85ac31ab42697a72d24f059e9ef1e3ecd5175dcb510be4ce0743",
         "firstTeachingContentHash": "47300727bdcb54eb65c1487f31feef9004c7efe7a4f4ede0646e2b21bdf0fa9e",
         "evidenceLocations": [
-          "audits/remediation-v2-official-as-source-inventory.json",
           "web/lesson-057/index.html#stage2-completion"
         ]
       }
@@ -10222,7 +10164,6 @@
         "officialReferenceHash": "2185edb3e6e265f1fa4ee5aa199fbe85ad0e1bdfeef5964051323270ca746930",
         "firstTeachingContentHash": "47300727bdcb54eb65c1487f31feef9004c7efe7a4f4ede0646e2b21bdf0fa9e",
         "evidenceLocations": [
-          "audits/remediation-v2-official-as-source-inventory.json",
           "web/lesson-057/index.html#stage2-completion"
         ]
       }
@@ -10360,7 +10301,6 @@
         "officialReferenceHash": "02536e1cbef2f1ad86cab3ca673d3dc7191198486d1dc86ec8d116798262d1bc",
         "firstTeachingContentHash": "97bf9a498b16df0c62430df01125f897c28919b0a2f7aac63a48bdbe3508f8c8",
         "evidenceLocations": [
-          "audits/remediation-v2-official-as-source-inventory.json",
           "web/lesson-063/index.html#stage2-completion"
         ]
       }
@@ -10486,7 +10426,6 @@
         "officialReferenceHash": "294bdbd54116a151a989b58ce572e594823ff86232cbcff21878a7273e30eb83",
         "firstTeachingContentHash": "97bf9a498b16df0c62430df01125f897c28919b0a2f7aac63a48bdbe3508f8c8",
         "evidenceLocations": [
-          "audits/remediation-v2-official-as-source-inventory.json",
           "web/lesson-063/index.html#stage2-completion"
         ]
       }
@@ -10712,7 +10651,6 @@
         "officialReferenceHash": "7aae9c08635296941f4af6f0ced838e124c1641b4e38e73b5dea3b73795a07b0",
         "firstTeachingContentHash": "8d69abac6f0f0d6fbd19ebbe7cd709e1a13e68ff8a1f988d11e3491ed7580e82",
         "evidenceLocations": [
-          "audits/remediation-v2-official-as-source-inventory.json",
           "web/lesson-064/index.html#stage2-completion"
         ]
       }
@@ -10891,7 +10829,6 @@
         "officialReferenceHash": "9e748a2f8c49326e562cdbbb8212e1c28f9819be213c58569995dd2b645b1f1e",
         "firstTeachingContentHash": "8d69abac6f0f0d6fbd19ebbe7cd709e1a13e68ff8a1f988d11e3491ed7580e82",
         "evidenceLocations": [
-          "audits/remediation-v2-official-as-source-inventory.json",
           "web/lesson-064/index.html#stage2-completion"
         ]
       }
@@ -11063,7 +11000,6 @@
         "officialReferenceHash": "05def32f36fd4381aa30bd62a16c61cfd876f6e79e40d4114857f4dc6b8d800c",
         "firstTeachingContentHash": "69dcf4800e575fdbc96ce5984ef03c4bc70a15786d26dab3eeefd53b26d37b9a",
         "evidenceLocations": [
-          "audits/remediation-v2-official-as-source-inventory.json",
           "web/lesson-065/index.html#stage2-completion"
         ]
       }
@@ -11230,7 +11166,6 @@
         "officialReferenceHash": "05099156cbc99e92f6940666a4a7c841288e9918e69023340a7cfd27abaf8dc1",
         "firstTeachingContentHash": "ad6429acc1c7d000d45d8a643700c624222724a1bc044ccc125c095bd6fd12a2",
         "evidenceLocations": [
-          "audits/remediation-v2-official-as-source-inventory.json",
           "web/lesson-067/index.html#stage2-completion"
         ]
       }
@@ -11484,7 +11419,6 @@
         "officialReferenceHash": "3202c5b6984d8d1b7f0460bfb09b8bb81a3a658c690d87301f3372b72b968b6c",
         "firstTeachingContentHash": "cc8033f23f4ec1caa4d794035f328f3e8fa7ba84a4406e7c764a2736711e0293",
         "evidenceLocations": [
-          "audits/remediation-v2-official-as-source-inventory.json",
           "web/lesson-070/index.html#stage2-completion"
         ]
       }
@@ -11719,7 +11653,6 @@
         "officialReferenceHash": "00e29d2d4a93a4bfb17c110d432272344af3cb602dbfd9658e8dcd92258d4bca",
         "firstTeachingContentHash": "cc8033f23f4ec1caa4d794035f328f3e8fa7ba84a4406e7c764a2736711e0293",
         "evidenceLocations": [
-          "audits/remediation-v2-official-as-source-inventory.json",
           "web/lesson-070/index.html#stage2-completion"
         ]
       }
@@ -11863,7 +11796,6 @@
         "officialReferenceHash": "65779a5625f8bdc804fa26391d2c04dad6cbb1dbbc0409797ae20a1fbc91c21b",
         "firstTeachingContentHash": "b5feef4bf2d636f896428f01bf1c515089779dff2e5a67aed641ee3ad32e2682",
         "evidenceLocations": [
-          "audits/remediation-v2-official-as-source-inventory.json",
           "web/lesson-073/index.html#stage2-completion"
         ]
       }
@@ -12037,7 +11969,6 @@
         "officialReferenceHash": "ccd943da80106a35466119f184322be7f3167d00cdbd22e9a69e31afb05f6091",
         "firstTeachingContentHash": "b5feef4bf2d636f896428f01bf1c515089779dff2e5a67aed641ee3ad32e2682",
         "evidenceLocations": [
-          "audits/remediation-v2-official-as-source-inventory.json",
           "web/lesson-073/index.html#stage2-completion"
         ]
       }
@@ -12212,7 +12143,6 @@
         "officialReferenceHash": "d8f0464e3e34fdc0697c89867ca5dd63d49bb13bdc180d4b9df04cd8a2a0b379",
         "firstTeachingContentHash": "b5feef4bf2d636f896428f01bf1c515089779dff2e5a67aed641ee3ad32e2682",
         "evidenceLocations": [
-          "audits/remediation-v2-official-as-source-inventory.json",
           "web/lesson-073/index.html#stage2-completion"
         ]
       }
@@ -12368,7 +12298,6 @@
         "officialReferenceHash": "18b7fd92a5a4eb53bc20c62d1428f1af599a05af2cbe19c08eb83a843aad5a3d",
         "firstTeachingContentHash": "7f22863c6aef8440673a86aa361f9f31438a99ddf934d09ce858464d72f2bda0",
         "evidenceLocations": [
-          "audits/remediation-v2-official-as-source-inventory.json",
           "web/lesson-075/index.html#stage2-completion"
         ]
       }
@@ -12570,7 +12499,6 @@
         "officialReferenceHash": "d3db48b435aa90b1c60442be535c976eacb3dcafb22937cf49d2a331b17f9162",
         "firstTeachingContentHash": "7f22863c6aef8440673a86aa361f9f31438a99ddf934d09ce858464d72f2bda0",
         "evidenceLocations": [
-          "audits/remediation-v2-official-as-source-inventory.json",
           "web/lesson-075/index.html#stage2-completion"
         ]
       }
@@ -12785,7 +12713,6 @@
         "officialReferenceHash": "9e30f2415f3db91291431d4b1ba214708f903907614d6a576be1e20adc6fa0c2",
         "firstTeachingContentHash": "6f673d8f56da123d94b8cbb27a57bc3f9385a6f40f8c2a79e56dbc6acc3ff533",
         "evidenceLocations": [
-          "audits/remediation-v2-official-as-source-inventory.json",
           "web/lesson-077/index.html#stage2-completion"
         ]
       }
@@ -12961,7 +12888,6 @@
         "officialReferenceHash": "29be888f06d53a8df064fa902a4e11acdb31d9413c2a7b44038822a30481f118",
         "firstTeachingContentHash": "32e41bad4d78918d4fc0c74a2534d42f0d2f6391701182edd95a825dc4068ca6",
         "evidenceLocations": [
-          "audits/remediation-v2-official-as-source-inventory.json",
           "web/lesson-079/index.html#stage2-completion"
         ]
       }
@@ -13215,7 +13141,6 @@
         "officialReferenceHash": "448b9ac9805341ff2cd63270716a7b358a92ede96cb565ad6bce30eb4bcb09ab",
         "firstTeachingContentHash": "cbc1bc2b3bd8a6a85d5760d4550d5f84aeb1a3ec4a0cf2db11ef0c824b045899",
         "evidenceLocations": [
-          "audits/remediation-v2-official-as-source-inventory.json",
           "web/lesson-080/index.html#stage2-completion"
         ]
       }
@@ -13358,7 +13283,6 @@
         "officialReferenceHash": "7daf18e48b230bf0ae2b43fc2741cc6572dabf44b6ceddbf6e083e5f54406956",
         "firstTeachingContentHash": "6dc26fdcc4f3c6f0450b86e3052a97d8ed6f66be669b58dbadc7706302a98b89",
         "evidenceLocations": [
-          "audits/remediation-v2-official-as-source-inventory.json",
           "web/lesson-081/index.html#stage2-completion"
         ]
       }
@@ -13535,7 +13459,6 @@
         "officialReferenceHash": "caa5c34935c0de7a6fff3c1d417f5784798a64758f9f0924502b203996581172",
         "firstTeachingContentHash": "6dc26fdcc4f3c6f0450b86e3052a97d8ed6f66be669b58dbadc7706302a98b89",
         "evidenceLocations": [
-          "audits/remediation-v2-official-as-source-inventory.json",
           "web/lesson-081/index.html#stage2-completion"
         ]
       }
@@ -13746,7 +13669,6 @@
         "officialReferenceHash": "d9a3ff8b54fb4f16c7ab42337b761737d28493878e18586fe7ffb2290c2c2006",
         "firstTeachingContentHash": "6dc26fdcc4f3c6f0450b86e3052a97d8ed6f66be669b58dbadc7706302a98b89",
         "evidenceLocations": [
-          "audits/remediation-v2-official-as-source-inventory.json",
           "web/lesson-081/index.html#stage2-completion"
         ]
       }
@@ -13898,7 +13820,6 @@
         "officialReferenceHash": "12f24e44e3611a5c42bbfeacf0d848f31caa4420bbace3dddf5a7a0e2f043f3f",
         "firstTeachingContentHash": "6dc26fdcc4f3c6f0450b86e3052a97d8ed6f66be669b58dbadc7706302a98b89",
         "evidenceLocations": [
-          "audits/remediation-v2-official-as-source-inventory.json",
           "web/lesson-081/index.html#stage2-completion"
         ]
       }
@@ -14088,7 +14009,6 @@
         "officialReferenceHash": "2f79bcd1ba621485a9adfb3d812e7ce2f8d2e63d1d003c0cb1fa410d7e2b1d28",
         "firstTeachingContentHash": "5fd5af3204262cce02bffb28b3942a347afd17f6b63a58483d065786c5f30a5e",
         "evidenceLocations": [
-          "audits/remediation-v2-official-as-source-inventory.json",
           "web/lesson-084/index.html#stage2-completion"
         ]
       }
@@ -14270,7 +14190,6 @@
         "officialReferenceHash": "e7cc27782fa17f2aa7a7a5aef0eb1fe2c4caf4d5f602c24aaab37a343229d91a",
         "firstTeachingContentHash": "bc4954133c5fd443359ead51d01bdfeb52192472d850c82557895cbddce8e715",
         "evidenceLocations": [
-          "audits/remediation-v2-official-as-source-inventory.json",
           "web/lesson-085/index.html#stage2-completion"
         ]
       }
@@ -14482,7 +14401,6 @@
         "officialReferenceHash": "b3792bf8b3c310ba799f994e6daae1ec5b630f9c1eb42f369d1bbc5241760e4b",
         "firstTeachingContentHash": "1bc6992a32e313176c73b0b951e5144ce4ceadbb85c0d07735c63c274fe16c48",
         "evidenceLocations": [
-          "audits/remediation-v2-official-as-source-inventory.json",
           "web/lesson-086/index.html#stage2-completion"
         ]
       }
@@ -14682,7 +14600,6 @@
         "officialReferenceHash": "0864c843c87d9965a23b588ee083353e710a6d4e4fba0bd12788d09ca6906d32",
         "firstTeachingContentHash": "1bc6992a32e313176c73b0b951e5144ce4ceadbb85c0d07735c63c274fe16c48",
         "evidenceLocations": [
-          "audits/remediation-v2-official-as-source-inventory.json",
           "web/lesson-086/index.html#stage2-completion"
         ]
       }
@@ -14841,7 +14758,6 @@
         "officialReferenceHash": "2e283cc394303dd10fb930b968a7ce06bb1d544539c712d59809ce186205f0f3",
         "firstTeachingContentHash": "1615e53c64eb8de3ee5c7fe6ac7209e8e5c977fabcf532b6064818e2e7e4b95a",
         "evidenceLocations": [
-          "audits/remediation-v2-official-as-source-inventory.json",
           "web/lesson-088/index.html#stage2-completion"
         ]
       }
@@ -14990,7 +14906,6 @@
         "officialReferenceHash": "87b438e7abc40cc2b995454ca51d116c1f9f29c3fa2399add8f5874680faa1a1",
         "firstTeachingContentHash": "3bff33c4119e76ef4520dbc07798f0ce6f905044a1f4959d822f70482f4d98b0",
         "evidenceLocations": [
-          "audits/remediation-v2-official-as-source-inventory.json",
           "web/lesson-099/index.html#stage2-completion"
         ]
       }
@@ -15161,7 +15076,6 @@
         "officialReferenceHash": "147cae9ed426525461786b5ceaa64b1fed7ea7bcea00618d3b48cefca40c82ff",
         "firstTeachingContentHash": "3bff33c4119e76ef4520dbc07798f0ce6f905044a1f4959d822f70482f4d98b0",
         "evidenceLocations": [
-          "audits/remediation-v2-official-as-source-inventory.json",
           "web/lesson-099/index.html#stage2-completion"
         ]
       }
@@ -15309,7 +15223,6 @@
         "officialReferenceHash": "d8fbfa9ec43622b5fde081335aae4c5bbccc4001ed46bee0b9076ecc12087551",
         "firstTeachingContentHash": "46f62b06e8dc348b490442554f878b67e452aaf15c2096fc6c736e62bfcf814b",
         "evidenceLocations": [
-          "audits/remediation-v2-official-as-source-inventory.json",
           "web/lesson-100/index.html#stage2-completion"
         ]
       }
@@ -15466,7 +15379,6 @@
         "officialReferenceHash": "6983e1c1599c50796530c9ef559d7017cff1653f209476c5c19c20dd55180000",
         "firstTeachingContentHash": "46f62b06e8dc348b490442554f878b67e452aaf15c2096fc6c736e62bfcf814b",
         "evidenceLocations": [
-          "audits/remediation-v2-official-as-source-inventory.json",
           "web/lesson-100/index.html#stage2-completion"
         ]
       }
@@ -15632,7 +15544,6 @@
         "officialReferenceHash": "4e673ed44f314c0de6674b40b440bd5c09dd1eb2f11988027feb6950709085e8",
         "firstTeachingContentHash": "46f62b06e8dc348b490442554f878b67e452aaf15c2096fc6c736e62bfcf814b",
         "evidenceLocations": [
-          "audits/remediation-v2-official-as-source-inventory.json",
           "web/lesson-100/index.html#stage2-completion"
         ]
       }
@@ -15791,7 +15702,6 @@
         "officialReferenceHash": "1f92df0a595d8cf3c5c6840b0c5e88ec3bcdd7210ef20d4e8311abb9378fa8c7",
         "firstTeachingContentHash": "04063fd784daaa9201929b4a683677439d85e973f6563ff5fa1ec92b196a80e4",
         "evidenceLocations": [
-          "audits/remediation-v2-official-as-source-inventory.json",
           "web/lesson-101/index.html#stage2-completion"
         ]
       }
@@ -15967,7 +15877,6 @@
         "officialReferenceHash": "9c69e67c4731ab48ab241b295c84b3118e685f679db7026f73813e0e01999119",
         "firstTeachingContentHash": "1ff931dd611e3567f77e6f913a7b6617be2b2fbd7618af168db8ddce9498f84b",
         "evidenceLocations": [
-          "audits/remediation-v2-official-as-source-inventory.json",
           "web/lesson-102/index.html#stage2-completion"
         ]
       }
@@ -16129,7 +16038,6 @@
         "officialReferenceHash": "10be56dc0112ac3d84fcfd6b0c4d48e07765f0944b2e8c51489f2ee507dc886e",
         "firstTeachingContentHash": "18cb33ae61e5b617ff98022718260ed4063ced94bc02de249e26da78900c3e06",
         "evidenceLocations": [
-          "audits/remediation-v2-official-as-source-inventory.json",
           "web/lesson-103/index.html#stage2-completion"
         ]
       }
@@ -16273,7 +16181,6 @@
         "officialReferenceHash": "ad3e4e7291ee9e1143dad621c526b94607372c7472826946592ea6e0a0c1ce7d",
         "firstTeachingContentHash": "3117f27926e6c025f3f8e21ac372298a89280ab1938b486d3fa8574863345e45",
         "evidenceLocations": [
-          "audits/remediation-v2-official-as-source-inventory.json",
           "web/lesson-104/index.html#stage2-completion"
         ]
       }
@@ -16472,7 +16379,6 @@
         "officialReferenceHash": "c46e692c03d9a759dac8e0761e7d0be3c208f1cc227174d2eb8e2618a15db03f",
         "firstTeachingContentHash": "a320aeba4b2d1d10329d24de9566c25175418c8187608873286fbca631a43e2e",
         "evidenceLocations": [
-          "audits/remediation-v2-official-as-source-inventory.json",
           "web/lesson-114/index.html#stage2-completion"
         ]
       }
@@ -16655,7 +16561,6 @@
         "officialReferenceHash": "23313af14fbb1cf1d643b283f76c2edc6fcf248232bbfad4c7d62225f44297e2",
         "firstTeachingContentHash": "38e9a97bfe4e5eae1cc1e4da5ce292290053e2a049528000d983b8f126316ce0",
         "evidenceLocations": [
-          "audits/remediation-v2-official-as-source-inventory.json",
           "web/lesson-115/index.html#stage2-completion"
         ]
       }
@@ -16817,7 +16722,6 @@
         "officialReferenceHash": "6d1502d47e1ffb9fdac45ea2df0f27ddcaf21e1d9078e159adee4617778f4136",
         "firstTeachingContentHash": "cef90aebf20753126397016cdda4b66fe82f458ce771d989fe77eabe093ab8af",
         "evidenceLocations": [
-          "audits/remediation-v2-official-as-source-inventory.json",
           "web/lesson-116/index.html#stage2-completion"
         ]
       }
@@ -16993,7 +16897,6 @@
         "officialReferenceHash": "b500ee15fdb6ebcc6048ee3622dac788548268e8dc74279c8ee331b40957eb95",
         "firstTeachingContentHash": "cef90aebf20753126397016cdda4b66fe82f458ce771d989fe77eabe093ab8af",
         "evidenceLocations": [
-          "audits/remediation-v2-official-as-source-inventory.json",
           "web/lesson-116/index.html#stage2-completion"
         ]
       }
@@ -17173,7 +17076,6 @@
         "officialReferenceHash": "7b2467de25b51b44ff08cb821d6a1abe0479e9983db115072e3b0aec5d115534",
         "firstTeachingContentHash": "cef90aebf20753126397016cdda4b66fe82f458ce771d989fe77eabe093ab8af",
         "evidenceLocations": [
-          "audits/remediation-v2-official-as-source-inventory.json",
           "web/lesson-116/index.html#stage2-completion"
         ]
       }
@@ -17333,7 +17235,6 @@
         "officialReferenceHash": "37ea459ebb0e903bc893a4494d1b83e010d887e2e39b24d4f657afc10c2bac8b",
         "firstTeachingContentHash": "1880ef9b6c779454f902fb1a8e851b28f808bb999a01136037c51fd3e71bc630",
         "evidenceLocations": [
-          "audits/remediation-v2-official-as-source-inventory.json",
           "web/lesson-118/index.html#stage2-completion"
         ]
       }
@@ -17492,7 +17393,6 @@
         "officialReferenceHash": "55d2f56aeecf0ede6316d751e6f7c9ab62c31c2bbf3b5517b48a482823a6c8e2",
         "firstTeachingContentHash": "183fa9edfa2565ab38d67e84ad962bacb483f323ee6ee910e1ccca00379a2c45",
         "evidenceLocations": [
-          "audits/remediation-v2-official-as-source-inventory.json",
           "web/lesson-120/index.html#stage2-completion"
         ]
       }
@@ -17647,7 +17547,6 @@
         "officialReferenceHash": "97265b8d0982852853511be6494252008716085caec7b08d9bd16ec02c434d37",
         "firstTeachingContentHash": "741f5923f4afb8745d51bc3962f39c887effd756323caed06b7777bdf24bccbd",
         "evidenceLocations": [
-          "audits/remediation-v2-official-as-source-inventory.json",
           "web/lesson-121/index.html#stage2-completion"
         ]
       }
@@ -17876,7 +17775,6 @@
         "officialReferenceHash": "56c1c09124f3bd2670424a69bf2369c75159bb3641b1a7a7ca3d786e6e76a31a",
         "firstTeachingContentHash": "741f5923f4afb8745d51bc3962f39c887effd756323caed06b7777bdf24bccbd",
         "evidenceLocations": [
-          "audits/remediation-v2-official-as-source-inventory.json",
           "web/lesson-121/index.html#stage2-completion"
         ]
       }
@@ -18076,7 +17974,6 @@
         "officialReferenceHash": "e5e4c8b067cb30a3e661497a938b7a41200bec16ec9a77a2d69496b9ee1f775c",
         "firstTeachingContentHash": "741f5923f4afb8745d51bc3962f39c887effd756323caed06b7777bdf24bccbd",
         "evidenceLocations": [
-          "audits/remediation-v2-official-as-source-inventory.json",
           "web/lesson-121/index.html#stage2-completion"
         ]
       }
@@ -18242,7 +18139,6 @@
         "officialReferenceHash": "226f0b9bb840a2a2784fd7420adb1395e7a745889d1853e9a58cef10a11ae2a0",
         "firstTeachingContentHash": "89a1e632a599c87c8d8613bb0e9e737bc9e61167295665097396a81a1a8f8491",
         "evidenceLocations": [
-          "audits/remediation-v2-official-as-source-inventory.json",
           "web/lesson-127/index.html#stage2-completion"
         ]
       }
@@ -18419,7 +18315,6 @@
         "officialReferenceHash": "f21b289745df06d7ac5a649ffbf8d683c847ff1f7d10fb86181af70ecf113849",
         "firstTeachingContentHash": "c3125aa836315b580dd47d3609b02520c10068dd8191aef8779837b412a6908c",
         "evidenceLocations": [
-          "audits/remediation-v2-official-as-source-inventory.json",
           "web/lesson-128/index.html#stage2-completion"
         ]
       }
@@ -18575,7 +18470,6 @@
         "officialReferenceHash": "199875baebccf4fcef9bb1914c3fa91be589e3b77bb7abef2b18a3bb96929ed9",
         "firstTeachingContentHash": "292bf6659685b80247099a42b4a03516b80f0549e839dfd36276d4107cd859d4",
         "evidenceLocations": [
-          "audits/remediation-v2-official-as-source-inventory.json",
           "web/lesson-129/index.html#stage2-completion"
         ]
       }
@@ -18796,7 +18690,6 @@
         "officialReferenceHash": "f2b57bea17184f41638736d9b6c3c1f68663cd7ced2600261ce6e3ed97ea1698",
         "firstTeachingContentHash": "332660b57b665e0b914b8db85ed945acbf2cae94cdbcac9930e04996839b865a",
         "evidenceLocations": [
-          "audits/remediation-v2-official-as-source-inventory.json",
           "web/lesson-130/index.html#stage2-completion"
         ]
       }
@@ -18933,7 +18826,6 @@
         "officialReferenceHash": "13f6d909b92b1c60ac0518bc1348057755dd08cb526153f6abfe3de1904fb462",
         "firstTeachingContentHash": "332660b57b665e0b914b8db85ed945acbf2cae94cdbcac9930e04996839b865a",
         "evidenceLocations": [
-          "audits/remediation-v2-official-as-source-inventory.json",
           "web/lesson-130/index.html#stage2-completion"
         ]
       }
@@ -19105,7 +18997,6 @@
         "officialReferenceHash": "d2bae42688fae39c9d3f178582e877108ccbf1ad715ae43eafc4efcacee6d1ea",
         "firstTeachingContentHash": "4f711a649139d8071642d6728f707a2db92dfcd58bd26ef41ede9ff891153b98",
         "evidenceLocations": [
-          "audits/remediation-v2-official-as-source-inventory.json",
           "web/lesson-131/index.html#stage2-completion"
         ]
       }
@@ -19264,7 +19155,6 @@
         "officialReferenceHash": "87cbb2502b04cdc510a45ab15496b161c25604aa41f2c75eebd7dc7a96d043e0",
         "firstTeachingContentHash": "4f711a649139d8071642d6728f707a2db92dfcd58bd26ef41ede9ff891153b98",
         "evidenceLocations": [
-          "audits/remediation-v2-official-as-source-inventory.json",
           "web/lesson-131/index.html#stage2-completion"
         ]
       }
@@ -19423,7 +19313,6 @@
         "officialReferenceHash": "90e063d81629e252a97fcd32138facd3bad2ec6cbcd30ab13eb3a6f5e5a14cf0",
         "firstTeachingContentHash": "4f711a649139d8071642d6728f707a2db92dfcd58bd26ef41ede9ff891153b98",
         "evidenceLocations": [
-          "audits/remediation-v2-official-as-source-inventory.json",
           "web/lesson-131/index.html#stage2-completion"
         ]
       }
@@ -19570,7 +19459,6 @@
         "officialReferenceHash": "d1d9bdc3f548e98162b1ce5c500b40920435cec8eb3ffdb46e8c5f9a09730c6f",
         "firstTeachingContentHash": "aaed8f2df724019be3de7b76db453da3c202528653212a8700d15a0d6d511e91",
         "evidenceLocations": [
-          "audits/remediation-v2-official-as-source-inventory.json",
           "web/lesson-134/index.html#stage2-completion"
         ]
       }
@@ -19762,7 +19650,6 @@
         "officialReferenceHash": "c686c631bb7cc710f2e365aeac2a65527aac53a8a80a79b6de577a3371633654",
         "firstTeachingContentHash": "06742f1011449fb609a4921d882ad3cdfc19855b8fc30e51302fd909a290d764",
         "evidenceLocations": [
-          "audits/remediation-v2-official-as-source-inventory.json",
           "web/lesson-143/index.html#stage2-completion"
         ]
       }
@@ -19932,7 +19819,6 @@
         "officialReferenceHash": "6d844add4ec0ae2bfe968d0d6063ca033da7baec047f888cad0a4bdb0c061aec",
         "firstTeachingContentHash": "7fc8bc6ba54c6b56538c1fae3e227dea09c525fc90784a025a1376d3af854362",
         "evidenceLocations": [
-          "audits/remediation-v2-official-as-source-inventory.json",
           "web/lesson-144/index.html#stage2-completion"
         ]
       }
@@ -20068,7 +19954,6 @@
         "officialReferenceHash": "daf08fdaaf53b18ced92e5aafae215d9faeca2b081227363cbe5a0474c035784",
         "firstTeachingContentHash": "7fc8bc6ba54c6b56538c1fae3e227dea09c525fc90784a025a1376d3af854362",
         "evidenceLocations": [
-          "audits/remediation-v2-official-as-source-inventory.json",
           "web/lesson-144/index.html#stage2-completion"
         ]
       }
@@ -20217,7 +20102,6 @@
         "officialReferenceHash": "17662526ff43e4e6bb291fea740c4c37f0624d537ac1458d2069ccf786dff5aa",
         "firstTeachingContentHash": "9010ebb822842e1f4e63bf7afe5dacbcba1260361a7cf252b725f02996bec49e",
         "evidenceLocations": [
-          "audits/remediation-v2-official-as-source-inventory.json",
           "web/lesson-145/index.html#stage2-completion"
         ]
       }
@@ -20433,7 +20317,6 @@
         "officialReferenceHash": "1623422474f7674d73c9996d2a365078357ddf5bcbf3f42509c41dd4c5d28ec9",
         "firstTeachingContentHash": "afc895951b4bc7f99dc91016cafb573f93a451e229b35ed388b816235f54bd2d",
         "evidenceLocations": [
-          "audits/remediation-v2-official-as-source-inventory.json",
           "web/lesson-146/index.html#stage2-completion"
         ]
       }
@@ -20587,7 +20470,6 @@
         "officialReferenceHash": "112a6b71acfb5160609ecf13b353a2c3e02420761d3694d4f8ce6fafb0e015d8",
         "firstTeachingContentHash": "afc895951b4bc7f99dc91016cafb573f93a451e229b35ed388b816235f54bd2d",
         "evidenceLocations": [
-          "audits/remediation-v2-official-as-source-inventory.json",
           "web/lesson-146/index.html#stage2-completion"
         ]
       }
@@ -20733,7 +20615,6 @@
         "officialReferenceHash": "dda7e27f09105d38bbc4465727b38225f2f9cdf831f99c06556194b2c51f76c8",
         "firstTeachingContentHash": "afc895951b4bc7f99dc91016cafb573f93a451e229b35ed388b816235f54bd2d",
         "evidenceLocations": [
-          "audits/remediation-v2-official-as-source-inventory.json",
           "web/lesson-146/index.html#stage2-completion"
         ]
       }
@@ -20885,7 +20766,6 @@
         "officialReferenceHash": "f353b04866be36e21a73f0034e26ae4d5f2baab4d73c4936f87f6053bf95ad64",
         "firstTeachingContentHash": "afc895951b4bc7f99dc91016cafb573f93a451e229b35ed388b816235f54bd2d",
         "evidenceLocations": [
-          "audits/remediation-v2-official-as-source-inventory.json",
           "web/lesson-146/index.html#stage2-completion"
         ]
       }
@@ -21046,7 +20926,6 @@
         "officialReferenceHash": "f37b403fa43bfe0fe1d1e547e19540fc15bb438dc70de662beaceecd61dd51f2",
         "firstTeachingContentHash": "afc895951b4bc7f99dc91016cafb573f93a451e229b35ed388b816235f54bd2d",
         "evidenceLocations": [
-          "audits/remediation-v2-official-as-source-inventory.json",
           "web/lesson-146/index.html#stage2-completion"
         ]
       }
@@ -21064,7 +20943,6 @@
   },
   "auditIntegrity": {
     "reviewEpoch": "remediation-v2-audit-integrity-r2",
-    "officialSourceInventory": "audits/remediation-v2-official-as-source-inventory.json",
     "officialSourceInventoryHash": "8b332c00bfa314e029ced00f86db0b7e9827aa038e9fcf2f33105c32e269a917",
     "priorCompleteStatuses": "InvalidatedAndRevalidated",
     "rule": "A requirement is Complete only when its locked official source-unit bindings and exact rendered first-teaching section pass the independent bidirectional gate in this epoch.",

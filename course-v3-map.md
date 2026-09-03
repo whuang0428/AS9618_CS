@@ -10,7 +10,7 @@ Paper 1.
 
 - [Lesson 001 · S1-L01 · Binary data units and magnitude prefixes](web/course-v3/lesson-001/) — S1.01
 - [Lesson 002 · S1-L02 · Binary, denary and hexadecimal number systems](web/course-v3/lesson-002/) — S1.02, S1.03
-- [Lesson 003 · S1-L03 · Signed binary arithmetic and overflow](web/course-v3/lesson-003/) — S1.04, S1.05
+- [Lesson 003 · S1-L03 · Unsigned binary addition, overflow and signed extension](web/course-v3/lesson-003/) — S1.04, S1.05
 - [Lesson 004 · S1-L04 · BCD, hexadecimal applications and character encoding](web/course-v3/lesson-004/) — S1.06, S1.07
 - [Lesson 005 · S1-L05 · Bitmap and vector graphics](web/course-v3/lesson-005/) — S1.08, S1.09
 - [Lesson 006 · S1-L06 · Sound representation and file compression](web/course-v3/lesson-006/) — S1.10, S1.11

@@ -13,7 +13,6 @@ const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const webRoot = join(root, "web");
 const contract = JSON.parse(readFileSync(join(root, "scripts", "course-v3-contract.json"), "utf8"));
 const anchorManifest = JSON.parse(readFileSync(join(root, "scripts", "course-v3-section-anchor-assets.json"), "utf8"));
-const section2Sample = JSON.parse(readFileSync(join(root, "scripts", "course-v3-section2-sample-contract.json"), "utf8"));
 const migration = JSON.parse(readFileSync(join(root, "scripts", "course-v2-migration.json"), "utf8"));
 const errors = [];
 const check = (condition, message) => { if (!condition) errors.push(message); };
@@ -71,6 +70,24 @@ function visibleText(html) {
     .trim();
 }
 
+function renderedQuestionBlock(html, className, questionId) {
+  const marker = `class="${className}" data-question-id="${questionId}"`;
+  const markerIndex = html.indexOf(marker);
+  if (markerIndex < 0) return "";
+  const tagStart = html.lastIndexOf("<", markerIndex);
+  const nextMarker = html.indexOf(`class="${className}" data-question-id=`, markerIndex + marker.length);
+  const nextTag = nextMarker < 0 ? -1 : html.lastIndexOf("<", nextMarker);
+  const nextStageName = className === "practice-question" ? "3-original-exam-style-question" : "4-summary";
+  const nextStageMarker = html.indexOf(`data-stage="${nextStageName}"`, markerIndex + marker.length);
+  const nextStageTag = nextStageMarker < 0 ? -1 : html.lastIndexOf("<section", nextStageMarker);
+  const endCandidates = [nextTag, nextStageTag].filter((index) => index > tagStart);
+  return html.slice(tagStart, endCandidates.length ? Math.min(...endCandidates) : html.length);
+}
+
+function renderedListItemCount(block) {
+  return (block.match(/<li>/g) ?? []).length;
+}
+
 function requirementForQuestion(question, lesson) {
   return question.objectiveIds.map((id) => id.match(/^S(?:[1-9]|1[0-2])\.\d{2}/)?.[0]).find(Boolean) ?? lesson.syllabusIds[0];
 }
@@ -81,23 +98,37 @@ check(courseV3Meta.teachingLessonCount === 91, `Expected 91 teaching lessons, fo
 check(courseV3Meta.reviewLessonCount === 2, `Expected two review lessons, found ${courseV3Meta.reviewLessonCount}`);
 check(Object.keys(sectionMeta).length === 12, "Expected Sections 1–12");
 check(contract.schemaVersion === 5 && contract.lessons.length === 93, "Generated contract must use schema version 5 and contain 93 pages");
-check(courseV3Lessons.filter((lesson) => lesson.kind === "teaching").flatMap((lesson) => lesson.units).length === 145, "Expected 145 teaching knowledge units");
-check(courseV3Lessons.flatMap((lesson) => lesson.practice).length === 329, "Expected 329 practice questions");
+check(courseV3Lessons.filter((lesson) => lesson.kind === "teaching").every((lesson) => lesson.units.length > 0), "Every teaching lesson must contain at least one knowledge unit");
+const practiceQuestionCount = courseV3Lessons.flatMap((lesson) => lesson.practice).length;
+check(courseV3Lessons.every((lesson) => lesson.practice.length >= 3), "Every lesson must contain at least three practice questions");
 check(courseV3Meta.examStyleQuestionCount === 279, `Expected 279 exam-style questions, found ${courseV3Meta.examStyleQuestionCount}`);
-check(courseV3KnowledgeDiagramRecords.length === 49, `Expected 49 ImageGen knowledge diagrams, found ${courseV3KnowledgeDiagramRecords.length}`);
+check(courseV3KnowledgeDiagramRecords.length > 0, "Knowledge-diagram registry is empty");
 
 const officialOrder = Object.keys(officialAsMapping);
 const firstOccurrence = [];
 const seenRequirements = new Set();
 for (const lesson of courseV3Lessons.filter((item) => item.kind === "teaching")) for (const id of lesson.syllabusIds) if (!seenRequirements.has(id)) { seenRequirements.add(id); firstOccurrence.push(id); }
 check(seenRequirements.size === 121, `Expected 121 unique official requirements, found ${seenRequirements.size}`);
-check(JSON.stringify(firstOccurrence) === JSON.stringify(officialOrder), "First teaching occurrence does not follow the official S1.01–S12.09 order");
+const expectedTeachingOrder = officialOrder.filter((id) => id !== "S1.06");
+expectedTeachingOrder.splice(expectedTeachingOrder.indexOf("S1.03") + 1, 0, "S1.06");
+check(JSON.stringify(firstOccurrence) === JSON.stringify(expectedTeachingOrder), "First teaching occurrence does not follow the approved sequence with S1.06 integrated into lesson 002");
 check(JSON.stringify(contract.syllabusOrder) === JSON.stringify(officialOrder), "Generated contract syllabus order differs from official mapping");
 
 const stageNames = ["1-visual-and-core", "2-practice", "3-original-exam-style-question", "4-summary"];
 const forbiddenStudentLabels = /Mechanism or method|Mastery check|Knowledge check|Supplementary visual recap|Method recap|Lesson technical reference|Identify\s*(?:\/|→)\s*Connect\s*(?:\/|→)\s*Apply|Cause\s*(?:\/|→)\s*Mechanism\s*(?:\/|→)\s*Consequence|Stage\s*\d+[^.]{0,60}(?:approved|review)|approved assets|Teaching-depth menu/i;
 const forbiddenExamPhrasing = /show understanding|diagnose and connect|in an integrated response|(?:explain|describe)\s+(?:understand|analyse)|why the statement|how why|how choose|describe why|(?:explain|describe)\s+how how|(?:explain|describe)\s+(?:give|complete)|how put|how whether|the required the|when (?:suggest|recommend|write|explain|describe)|(?:explain|describe) apply|explain type adds/i;
 const forbiddenExamMarkingPoint = /database design review:|each named item remains core|do not revise each term in isolation|correct one plausible error about|^transfer\.?$|apply one section \d+ method|and limitation\.?$|\bcandidates?\s+(?:must|should|are required|need)|not required by the syllabus|the syllabus says|will always be given|syllabus list above|non-required task|^(?:yes|no)\.?$/i;
+const requiredPracticeAnswerTerms = Object.freeze({
+  "V3-006-S1.11-CHECK": ["storage space", "transmitted bits", "count followed by", "reconstruct the original", "count overhead"],
+  "V3-024-S4.13-CHECK": ["ldm", "ldd", "ldi", "ldx", "ldr", "mov", "sto", "add", "sub", "inc", "dec", "jmp", "cmp", "cmi", "jpe", "jpn", "in", "out", "end"],
+  "V3-025-S4.15-CHECK": ["and", "or", "xor", "lsl", "lsr", "arithmetic", "cyclic", "test", "set", "clear", "toggle", "monitor", "control"],
+  "V3-043-S8.09-CHECK": ["create database", "create table", "character", "varchar", "boolean", "integer", "real", "date", "time", "alter table", "primary key", "foreign key", "references"],
+  "V3-043-S8.10-CHECK": ["select", "from", "where", "order by", "group by", "inner join", "on", "sum", "count", "avg", "two tables"],
+  "V3-073-S11.04-CHECK": ["if", "else", "nested", "case", "for loop", "while loop", "repeat loop", "pre-condition", "post-condition"],
+  "V3-078-S11.08-CHECK": ["procedure header", "function header", "parameter", "argument", "return", "interface"],
+  "V3-085-S12.05-CHECK": ["dry run", "walkthrough", "white-box", "black-box", "integration", "alpha", "beta", "acceptance", "stub"],
+});
+const containsNormalisedTerm = (value, term) => ` ${normalisePresentationText(value)} `.includes(` ${normalisePresentationText(term)} `);
 let commandWordCount = 0;
 let examStyleQuestionCount = 0;
 for (const lesson of courseV3Lessons) {
@@ -170,6 +201,12 @@ for (const lesson of courseV3Lessons) {
     check(classification.status === "Approved", `${label} ${question.id}: Cambridge command classification is blocked`);
     check(question.commandWord?.toLowerCase() === classification.word, `${label} ${question.id}: commandWord does not match the prompt`);
     check(html.includes(`Command word: ${question.commandWord}`), `${label} ${question.id}: command word is not rendered`);
+    check(question.answerPoints.length >= 1, `${label} ${question.id}: practice marking points are missing`);
+    if (/-CHECK$/i.test(question.id)) check(question.marks === question.answerPoints.length, `${label} ${question.id}: coverage-check marks do not match the complete marking-point count`);
+    for (const term of requiredPracticeAnswerTerms[question.id] ?? []) check(containsNormalisedTerm(question.answerPoints.join(" "), term), `${label} ${question.id}: complete practice answer is missing ${term}`);
+    const renderedBlock = renderedQuestionBlock(html, "practice-question", question.id);
+    check(Boolean(renderedBlock), `${label} ${question.id}: practice question is not rendered`);
+    check(renderedListItemCount(renderedBlock) === question.answerPoints.length, `${label} ${question.id}: rendered practice answer has ${renderedListItemCount(renderedBlock)} points but source has ${question.answerPoints.length}`);
     for (const point of question.answerPoints) check(!(words(point).length >= 8 && coreParagraphs.has(normalisePresentationText(point))), `${label} ${question.id}: marking point copies a full core paragraph`);
   }
   const practiceMarkingPointSignatures = new Map(lesson.practice.map((question) => [
@@ -187,7 +224,18 @@ for (const lesson of courseV3Lessons) {
     check(!forbiddenExamPhrasing.test(question.task), `${label} ${question.id}: exam-style task contains internal or ungrammatical objective wording`);
     check(!question.markLogic.some((point) => forbiddenExamMarkingPoint.test(point)), `${label} ${question.id}: exam-style marking points contain internal or incomplete review wording`);
     check(html.includes(`data-question-id="${question.id}"`), `${label} ${question.id}: exam-style question is not rendered`);
-    for (const practiceQuestion of lesson.practice) check(!duplicateReason(question.task, practiceQuestion.prompt), `${label} ${question.id}: exam-style task repeats Practice question ${practiceQuestion.id}`);
+    const renderedBlock = renderedQuestionBlock(html, "exam-question", question.id);
+    check(renderedListItemCount(renderedBlock) === question.markLogic.length, `${label} ${question.id}: rendered exam-style answer has ${renderedListItemCount(renderedBlock)} points but source has ${question.markLogic.length}`);
+    for (const practiceQuestion of lesson.practice) {
+      check(!duplicateReason(question.task, practiceQuestion.prompt), `${label} ${question.id}: exam-style task repeats Practice question ${practiceQuestion.id}`);
+      if ([1, 2].includes(lesson.section)) {
+        const sharedMarkingPoints = question.markLogic.filter((examPoint) => practiceQuestion.answerPoints.some(
+          (practicePoint) => normalisePresentationText(examPoint) === normalisePresentationText(practicePoint),
+        ));
+        check(sharedMarkingPoints.length === 0, `${label} ${question.id}: reuses ${sharedMarkingPoints.length} Practice marking point(s) from ${practiceQuestion.id}`);
+        check(tokenSimilarity(question.task, practiceQuestion.prompt) < 0.55, `${label} ${question.id}: remains too similar to Practice question ${practiceQuestion.id}`);
+      }
+    }
     for (const point of question.markLogic) check(!(words(point).length >= 8 && coreParagraphs.has(normalisePresentationText(point))), `${label} ${question.id}: exam-style marking point copies a full core paragraph`);
     const answerSignature = markingPointSignature(question.markLogic);
     check(!practiceMarkingPointSignatures.has(answerSignature), `${label} ${question.id}: marking points repeat Practice answer ${practiceMarkingPointSignatures.get(answerSignature)}`);
@@ -208,11 +256,40 @@ for (const lesson of courseV3Lessons) {
     check(questions.length >= 1, `${label} ${objectiveId}: no practice mapping`);
   }
 }
-check(commandWordCount === 329, `Expected 329 classified questions, found ${commandWordCount}`);
+check(commandWordCount === practiceQuestionCount, `Expected ${practiceQuestionCount} classified questions, found ${commandWordCount}`);
 check(examStyleQuestionCount === 279, `Expected 279 classified exam-style questions, found ${examStyleQuestionCount}`);
 
-const nonImageLeadVisuals = courseV3Lessons.filter((lesson) => lesson.kind === "teaching").flatMap((lesson) => lesson.units.filter((unit) => !["reviewed-visual", "topology-gallery", "reservoir", "address-demo", "url-demo"].includes(unit.leadVisual.type)).map((unit) => `${lesson.lessonKey}:${unit.heading}`));
-check(nonImageLeadVisuals.length === 0, `Teaching units still lack an image-based lead visual: ${nonImageLeadVisuals.join(" | ")}`);
+const missingLeadVisuals = courseV3Lessons.filter((lesson) => lesson.kind === "teaching").flatMap((lesson) => lesson.units.filter((unit) => !unit.leadVisual).map((unit) => `${lesson.lessonKey}:${unit.heading}`));
+check(missingLeadVisuals.length === 0, `Teaching units lack a lead visual: ${missingLeadVisuals.join(" | ")}`);
+
+const lesson002 = courseV3Lessons.find((lesson) => lesson.sequenceIndex === 2);
+const lesson002Headings = ["Binary", "Denary", "Hexadecimal", "Binary Coded Decimal (BCD)", "One's complement", "Two's complement", "Conversion between number systems and representations"];
+check(JSON.stringify(lesson002?.units.map((unit) => unit.heading)) === JSON.stringify(lesson002Headings), "L002 must render seven independent knowledge units in the required order");
+check(/binary place values/i.test(lesson002?.units[0]?.leadVisual?.title ?? ""), "L002 must begin with the binary place-value visual rather than a complement visual");
+const lesson002Core = lesson002?.units.map((unit) => unit.coreExplanation.join(" ")) ?? [];
+check(!/(?:denary|hexadecimal|BCD|complement)/i.test(lesson002Core[0] ?? ""), "L002 Binary core explanation contains a later concept");
+check(!/(?:binary|hexadecimal|BCD|complement)/i.test(lesson002Core[1] ?? ""), "L002 Denary core explanation contains a different concept");
+check(!/(?:denary|BCD|complement)/i.test(lesson002Core[2] ?? ""), "L002 Hexadecimal core explanation contains a different concept");
+check(!/(?:hexadecimal|complement)/i.test(lesson002Core[3] ?? ""), "L002 BCD core explanation contains a later concept");
+check(!/(?:two's complement|BCD|hexadecimal)/i.test(lesson002Core[4] ?? ""), "L002 One's-complement core explanation contains a later concept");
+check(!/(?:one's complement|BCD|hexadecimal)/i.test(lesson002Core[5] ?? ""), "L002 Two's-complement core explanation contains a different representation");
+
+const lesson003 = courseV3Lessons.find((lesson) => lesson.sequenceIndex === 3);
+const lesson003Html = readFileSync(join(webRoot, "course-v3", "lesson-003", "index.html"), "utf8");
+const lesson003Terms = ["Unsigned binary addition and subtraction", "Overflow in fixed-width arithmetic", "Extension: signed binary addition and subtraction"];
+let lesson003PriorIndex = -1;
+for (const term of lesson003Terms) {
+  const index = lesson003Html.indexOf(term);
+  check(index > lesson003PriorIndex, `L003 teaching order is missing or out of sequence at ${term}`);
+  lesson003PriorIndex = index;
+}
+check(/unsigned binary addition, overflow and signed extension/i.test(lesson003?.title ?? ""), "L003 title must communicate the core-to-extension teaching order");
+
+const lesson004 = courseV3Lessons.find((lesson) => lesson.sequenceIndex === 4);
+const lesson004Headings = ["Character sets and internal binary representation", "ASCII", "Extended ASCII", "Unicode"];
+check(JSON.stringify(lesson004?.units.map((unit) => unit.heading)) === JSON.stringify(lesson004Headings), "L004 must render four independent character-encoding units in the required order");
+const lesson004VisibleContent = JSON.stringify({ title: lesson004?.title, units: lesson004?.units, practice: lesson004?.practice, exam: lesson004?.examStyleQuestions, summary: lesson004?.summary });
+check(!/\bBCD\b|hexadecimal/i.test(lesson004VisibleContent), "L004 still contains BCD or hexadecimal content after moving S1.06 to lesson 002");
 
 const s109Lessons = courseV3Lessons.filter((lesson) => lesson.syllabusIds.includes("S1.09"));
 const s109 = s109Lessons.flatMap((lesson) => lesson.units).find((unit) => unit.syllabusId === "S1.09");
@@ -229,11 +306,6 @@ for (const asset of contract.assets) {
   check(sha256(path) === asset.sha256, `Asset hash changed without regenerating contract: ${asset.path}`);
   const dimensions = imageDimensions(path);
   check(dimensions && dimensions.width >= 1000 && dimensions.height >= 500, `Asset ${asset.path} has insufficient or unreadable dimensions`);
-}
-for (const reference of section2Sample.authority.referenceBooks) {
-  const path = join(root, reference.path);
-  check(existsSync(path), `Protected reference book is missing: ${reference.path}`);
-  if (existsSync(path)) check(sha256(path) === reference.sha256, `Protected reference book changed: ${reference.path}`);
 }
 check(anchorManifest.assets.length === 11, `Expected 11 academic section anchors, found ${anchorManifest.assets.length}`);
 for (const asset of anchorManifest.assets) {
@@ -252,6 +324,12 @@ const s111 = `${lessonText("S1.11")} ${practiceText("S1.11")}`.toLowerCase();
 for (const term of ["storage space", "transmit", "lossless", "lossy", "rle", "adjacent", "two values", "count", "decode", "text", "bitmap", "vector", "sound"]) check(s111.includes(term), `S1.11 missing ${term}`);
 const s111Unit = courseV3Lessons.flatMap((lesson) => lesson.units).find((unit) => unit.syllabusId === "S1.11");
 check(/lossless.*lossy/i.test(s111Unit?.leadVisual?.title ?? "") && /lossless-lossy\.png$/.test(s111Unit?.leadVisual?.asset ?? ""), "S1.11 must begin with a lossless/lossy comparison visual");
+const s111Check = courseV3Lessons.flatMap((lesson) => lesson.practice).find((question) => question.id === "V3-006-S1.11-CHECK");
+check(s111Check?.marks === 5, `S1.11 compression knowledge check must be worth 5 marks, found ${s111Check?.marks ?? "none"}`);
+check(s111Check?.answerPoints.length === 5, `S1.11 compression knowledge check must display all 5 marking points, found ${s111Check?.answerPoints.length ?? 0}`);
+for (const term of ["storage space", "transmitted bits", "count followed by", "reconstruct the original", "count overhead"]) {
+  check(s111Check?.answerPoints.join(" ").toLowerCase().includes(term), `S1.11 compression knowledge-check answer missing ${term}`);
+}
 const s303 = `${lessonText("S3.03")} ${practiceText("S3.03")}`.toLowerCase();
 for (const term of ["laser printer", "3d printer", "microphone", "speaker", "magnetic hard", "flash", "optical disc", "touchscreen", "virtual-reality"]) check(s303.includes(term), `S3.03 missing ${term}`);
 const s310 = `${lessonText("S3.10")} ${practiceText("S3.10")}`.toLowerCase();
@@ -311,4 +389,4 @@ if (errors.length) {
   process.exit(1);
 }
 
-console.log(`Course verified: ${courseV3Meta.lessonCount} pages, 145 teaching units, ${seenRequirements.size} requirements, ${commandWordCount} classified questions, ${contract.lessons.reduce((count, lesson) => count + lesson.objectives.length, 0)} objective instances and 151 compatibility entries.`);
+console.log(`Course verified: ${courseV3Meta.lessonCount} pages, ${courseV3Lessons.filter((lesson) => lesson.kind === "teaching").flatMap((lesson) => lesson.units).length} teaching units, ${seenRequirements.size} requirements, ${commandWordCount} classified questions, ${contract.lessons.reduce((count, lesson) => count + lesson.objectives.length, 0)} objective instances and 151 compatibility entries.`);

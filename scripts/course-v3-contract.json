@@ -140,14 +140,14 @@
     "S1.03": [
       "lesson-002"
     ],
+    "S1.06": [
+      "lesson-002"
+    ],
     "S1.04": [
       "lesson-003"
     ],
     "S1.05": [
       "lesson-003"
-    ],
-    "S1.06": [
-      "lesson-004"
     ],
     "S1.07": [
       "lesson-004"
@@ -621,7 +621,7 @@
           "id": "S1-L01-EXAM-1",
           "sourceRef": "9618/13/S/24 Q1(a)",
           "commandWord": "Explain",
-          "marks": 5,
+          "marks": 4,
           "objectiveIds": [
             "S1.01.A01",
             "S1.01.A02"
@@ -630,20 +630,20 @@
         {
           "id": "S1-L01-EXAM-2",
           "sourceRef": "Cambridge 9618 syllabus · S1.01",
-          "commandWord": "Describe",
-          "marks": 2,
+          "commandWord": "Calculate",
+          "marks": 3,
           "objectiveIds": [
+            "S1.01.A01",
             "S1.01.A02"
           ]
         },
         {
           "id": "S1-L01-EXAM-3",
           "sourceRef": "Cambridge 9618 syllabus · S1.01",
-          "commandWord": "Explain",
+          "commandWord": "Describe",
           "marks": 3,
           "objectiveIds": [
-            "S1.01.A02",
-            "S1.01.A01"
+            "S1.01.A02"
           ]
         }
       ]
@@ -656,114 +656,399 @@
       "section": 1,
       "syllabusIds": [
         "S1.02",
-        "S1.03"
+        "S1.03",
+        "S1.06"
       ],
       "objectives": [
         {
           "id": "S1.02.A01",
-          "description": "Show understanding of different number systems",
+          "description": "Explain binary as a base-2 number system.",
           "explanationUnits": [
-            "Bases and signed representations answer different questions"
+            "Binary"
           ],
           "materialTitles": [
-            "Three ways to represent negative binary values"
+            "8-bit binary place values",
+            "Read a binary place-value pattern"
           ],
           "questionIds": [
-            "V3-002-S1.02-CHECK"
+            "V3-Q-L002-02",
+            "V3-Q-L002-03"
           ],
           "pastPaperAnalysis": []
         },
         {
           "id": "S1.02.A02",
-          "description": "Use the binary, denary, hexadecimal number bases and Binary Coded Decimal (BCD) and one’s and two’s complement representation for binary numbers",
+          "description": "Explain denary as a base-10 number system.",
           "explanationUnits": [
-            "Bases and signed representations answer different questions"
+            "Denary"
           ],
           "materialTitles": [
-            "Three ways to represent negative binary values"
+            "Denary place values",
+            "Read a denary numeral by place value"
           ],
           "questionIds": [
-            "V3-Q-L002-01",
+            "V3-Q-L002-02"
+          ],
+          "pastPaperAnalysis": []
+        },
+        {
+          "id": "S1.02.A03",
+          "description": "Explain hexadecimal as a base-16 number system.",
+          "explanationUnits": [
+            "Hexadecimal"
+          ],
+          "materialTitles": [
+            "Why hexadecimal is used",
+            "Read a hexadecimal numeral by place value"
+          ],
+          "questionIds": [
             "V3-Q-L002-02",
             "V3-Q-L002-03"
           ],
+          "pastPaperAnalysis": []
+        },
+        {
+          "id": "S1.02.A04",
+          "description": "Explain Binary Coded Decimal and why it is used.",
+          "explanationUnits": [
+            "Binary Coded Decimal (BCD)"
+          ],
+          "materialTitles": [
+            "BCD keeps denary digits separate",
+            "Encode the denary digits 407 in BCD"
+          ],
+          "questionIds": [
+            "V3-Q-L002-03"
+          ],
           "pastPaperAnalysis": [
-            "9618/13/W/25 Q2(a)",
-            "Cambridge 9618 syllabus · S1.02",
+            "9618/13/W/25 Q2(a)"
+          ]
+        },
+        {
+          "id": "S1.02.A05",
+          "description": "Explain one's-complement representation and why it is used.",
+          "explanationUnits": [
+            "One's complement"
+          ],
+          "materialTitles": [
+            "Why one's complement appeared",
+            "Represent −23 using one's complement"
+          ],
+          "questionIds": [
+            "V3-002-S1.02-ONES-COMPLEMENT-CHECK"
+          ],
+          "pastPaperAnalysis": [
+            "Cambridge 9618 syllabus · S1.03"
+          ]
+        },
+        {
+          "id": "S1.02.A06",
+          "description": "Explain two's-complement representation and why it is used.",
+          "explanationUnits": [
+            "Two's complement"
+          ],
+          "materialTitles": [
+            "Why two's complement replaced one's complement",
+            "Represent −23 using two's complement"
+          ],
+          "questionIds": [
+            "V3-002-S1.02-TWOS-COMPLEMENT-CHECK"
+          ],
+          "pastPaperAnalysis": [
             "Cambridge 9618 syllabus · S1.03"
           ]
         },
         {
           "id": "S1.03.A01",
-          "description": "Show understanding of different number systems",
+          "description": "Convert integers between binary and denary.",
           "explanationUnits": [
-            "Choose the conversion method from the target"
+            "Conversion between number systems and representations"
           ],
           "materialTitles": [
-            "Two conversion directions, two reliable methods"
-          ],
-          "questionIds": [
-            "V3-002-S1.03-CHECK"
-          ],
-          "pastPaperAnalysis": []
-        },
-        {
-          "id": "S1.03.A02",
-          "description": "Convert an integer value from one number base/representation to another",
-          "explanationUnits": [
-            "Choose the conversion method from the target"
-          ],
-          "materialTitles": [
-            "Two conversion directions, two reliable methods"
+            "Binary, denary and hexadecimal conversions",
+            "Convert between number bases and representations",
+            "Convert 45 through the required representations"
           ],
           "questionIds": [
             "V3-Q-L002-01"
           ],
           "pastPaperAnalysis": [
-            "Cambridge 9618 syllabus · S1.02"
+            "Cambridge 9618 syllabus · S1.06"
           ]
+        },
+        {
+          "id": "S1.03.A02",
+          "description": "Convert integers between binary and hexadecimal.",
+          "explanationUnits": [
+            "Conversion between number systems and representations"
+          ],
+          "materialTitles": [
+            "Binary, denary and hexadecimal conversions",
+            "Convert between number bases and representations",
+            "Convert 45 through the required representations"
+          ],
+          "questionIds": [
+            "V3-Q-L002-01",
+            "V3-Q-L002-03"
+          ],
+          "pastPaperAnalysis": [
+            "Cambridge 9618 syllabus · S1.06"
+          ]
+        },
+        {
+          "id": "S1.03.A03",
+          "description": "Convert integers between denary and hexadecimal.",
+          "explanationUnits": [
+            "Conversion between number systems and representations"
+          ],
+          "materialTitles": [
+            "Binary, denary and hexadecimal conversions",
+            "Convert between number bases and representations",
+            "Convert 45 through the required representations"
+          ],
+          "questionIds": [
+            "V3-Q-L002-01",
+            "V3-Q-L002-02"
+          ],
+          "pastPaperAnalysis": []
+        },
+        {
+          "id": "S1.03.A04",
+          "description": "Convert integers between denary and Binary Coded Decimal.",
+          "explanationUnits": [
+            "Conversion between number systems and representations"
+          ],
+          "materialTitles": [
+            "Binary, denary and hexadecimal conversions",
+            "Convert between number bases and representations",
+            "Convert 45 through the required representations"
+          ],
+          "questionIds": [
+            "V3-Q-L002-01"
+          ],
+          "pastPaperAnalysis": [
+            "9618/13/W/25 Q2(a)"
+          ]
+        },
+        {
+          "id": "S1.03.A05",
+          "description": "Convert integers between positive binary and one's-complement representation.",
+          "explanationUnits": [
+            "Conversion between number systems and representations"
+          ],
+          "materialTitles": [
+            "Binary, denary and hexadecimal conversions",
+            "Convert between number bases and representations",
+            "Convert 45 through the required representations"
+          ],
+          "questionIds": [
+            "V3-002-S1.03-CONVERSIONS-CHECK"
+          ],
+          "pastPaperAnalysis": [
+            "Cambridge 9618 syllabus · S1.03"
+          ]
+        },
+        {
+          "id": "S1.03.A06",
+          "description": "Convert integers between positive binary and two's-complement representation.",
+          "explanationUnits": [
+            "Conversion between number systems and representations"
+          ],
+          "materialTitles": [
+            "Binary, denary and hexadecimal conversions",
+            "Convert between number bases and representations",
+            "Convert 45 through the required representations"
+          ],
+          "questionIds": [
+            "V3-002-S1.03-CONVERSIONS-CHECK"
+          ],
+          "pastPaperAnalysis": [
+            "Cambridge 9618 syllabus · S1.03"
+          ]
+        },
+        {
+          "id": "S1.06.A01",
+          "description": "Describe practical applications where Binary Coded Decimal is used.",
+          "explanationUnits": [
+            "Binary Coded Decimal (BCD)"
+          ],
+          "materialTitles": [
+            "BCD keeps denary digits separate",
+            "Encode the denary digits 407 in BCD"
+          ],
+          "questionIds": [
+            "V3-Q-L004-03"
+          ],
+          "pastPaperAnalysis": []
+        },
+        {
+          "id": "S1.06.A02",
+          "description": "Describe practical applications where hexadecimal is used.",
+          "explanationUnits": [
+            "Hexadecimal"
+          ],
+          "materialTitles": [
+            "Why hexadecimal is used",
+            "Read a hexadecimal numeral by place value"
+          ],
+          "questionIds": [
+            "V3-002-S1.02-HEXADECIMAL-CHECK"
+          ],
+          "pastPaperAnalysis": []
         }
       ],
       "knowledgeUnits": [
         {
           "syllabusId": "S1.02",
-          "heading": "Bases and signed representations answer different questions",
+          "heading": "Binary",
           "objectiveIds": [
-            "S1.02.A01",
+            "S1.02.A01"
+          ],
+          "leadVisual": {
+            "type": "reviewed-visual",
+            "title": "8-bit binary place values"
+          },
+          "coreExplanation": [
+            "Binary is a base-2 number system. It uses only the digits 0 and 1.",
+            "Each position has a place value that is a power of 2. Starting at the right, the place values are 1, 2, 4, 8, 16 and so on; a 1 includes its place value and a 0 does not."
+          ],
+          "method": null,
+          "workedExample": {
+            "type": "worked-example",
+            "title": "Read a binary place-value pattern"
+          }
+        },
+        {
+          "syllabusId": "S1.02",
+          "heading": "Denary",
+          "objectiveIds": [
             "S1.02.A02"
           ],
           "leadVisual": {
-            "type": "reviewed-visual",
-            "title": "Three ways to represent negative binary values"
+            "type": "table",
+            "title": "Denary place values"
           },
           "coreExplanation": [
-            "Representation overview: the required integer representations are binary, denary, hexadecimal, BCD, one's-complement and two's-complement. Conversion means preserving the integer value while changing its base or signed representation.",
-            "Hexadecimal is base 16 and uses digits 0 to 9 and A to F. One hexadecimal digit represents one four-bit binary nibble, so grouping from the right gives an exact conversion between binary and hexadecimal integer representations.",
-            "Only 0000 to 1001 are valid BCD digit groups. BCD is used where decimal digits must be displayed or processed exactly, such as digital clocks, calculators and financial displays, although it usually uses more bits than pure binary.",
-            "Binary is base 2 and uses place values that are powers of 2. Denary is base 10 and uses place values that are powers of 10. A base label identifies the representation; it does not change the integer value."
+            "Denary is a base-10 number system. It uses the digits 0 to 9.",
+            "Each position has a place value that is a power of 10. Starting at the right, the place values are 1, 10, 100, 1000 and so on."
           ],
           "method": null,
-          "workedExample": null
+          "workedExample": {
+            "type": "worked-example",
+            "title": "Read a denary numeral by place value"
+          }
         },
         {
-          "syllabusId": "S1.03",
-          "heading": "Choose the conversion method from the target",
+          "syllabusId": "S1.02",
+          "heading": "Hexadecimal",
           "objectiveIds": [
-            "S1.03.A01",
-            "S1.03.A02"
+            "S1.02.A03",
+            "S1.06.A02"
           ],
           "leadVisual": {
             "type": "reviewed-visual",
-            "title": "Two conversion directions, two reliable methods"
+            "title": "Why hexadecimal is used"
           },
           "coreExplanation": [
-            "Representation overview: the required integer representations are binary, denary, hexadecimal, BCD, one's-complement and two's-complement. Conversion means preserving the integer value while changing its base or signed representation.",
-            "Binary is base 2 and uses place values that are powers of 2. Denary is base 10 and uses place values that are powers of 10. A base label identifies the representation; it does not change the integer value.",
-            "To convert a binary integer to denary, add the binary place values whose bits are 1. To convert a denary integer to binary, select powers of 2 that sum to the value and write every required bit position, including zeros.",
-            "Hexadecimal is base 16 and uses digits 0 to 9 and A to F. One hexadecimal digit represents one four-bit binary nibble, so grouping from the right gives an exact conversion between binary and hexadecimal integer representations."
+            "Hexadecimal is a base-16 number system. It uses the digits 0 to 9 followed by A, B, C, D, E and F, which represent the digit values 10 to 15.",
+            "Each position has a place value that is a power of 16. Starting at the right, the place values are 1, 16, 256, 4096 and so on.",
+            "Hexadecimal is used as a compact way for people to read long binary patterns. One hexadecimal digit represents four binary bits, so it is practical for memory addresses, machine-code or debugging values, and colour codes."
           ],
           "method": null,
-          "workedExample": null
+          "workedExample": {
+            "type": "worked-example",
+            "title": "Read a hexadecimal numeral by place value"
+          }
+        },
+        {
+          "syllabusId": "S1.02",
+          "heading": "Binary Coded Decimal (BCD)",
+          "objectiveIds": [
+            "S1.02.A04",
+            "S1.06.A01"
+          ],
+          "leadVisual": {
+            "type": "reviewed-visual",
+            "title": "BCD keeps denary digits separate"
+          },
+          "coreExplanation": [
+            "Binary Coded Decimal (BCD) is a representation in which each denary digit is encoded separately as a four-bit group. Only 0000 to 1001 are valid BCD digit groups because a single denary digit can only be 0 to 9.",
+            "BCD is used when individual decimal digits must be preserved for exact input, processing or display, such as in a digital clock or calculator. This makes digit handling direct, although BCD normally uses more bits than a pure binary representation of the same integer."
+          ],
+          "method": null,
+          "workedExample": {
+            "type": "worked-example",
+            "title": "Encode the denary digits 407 in BCD"
+          }
+        },
+        {
+          "syllabusId": "S1.02",
+          "heading": "One's complement",
+          "objectiveIds": [
+            "S1.02.A05"
+          ],
+          "leadVisual": {
+            "type": "reviewed-visual",
+            "title": "Why one's complement appeared"
+          },
+          "coreExplanation": [
+            "One's complement represents a negative fixed-width binary integer by inverting every bit of the positive value: each 0 becomes 1 and each 1 becomes 0.",
+            "It is used to represent negative values and makes sign reversal a direct bit inversion. Its drawback is that it has two zero patterns, one positive and one negative, which makes zero testing and arithmetic less convenient."
+          ],
+          "method": null,
+          "workedExample": {
+            "type": "worked-example",
+            "title": "Represent −23 using one's complement"
+          }
+        },
+        {
+          "syllabusId": "S1.02",
+          "heading": "Two's complement",
+          "objectiveIds": [
+            "S1.02.A06"
+          ],
+          "leadVisual": {
+            "type": "reviewed-visual",
+            "title": "Why two's complement replaced one's complement"
+          },
+          "coreExplanation": [
+            "Two's complement represents a negative fixed-width binary integer by inverting every bit of the positive value and then adding 1 to the inverted pattern.",
+            "It is used because it provides one representation of zero and lets the same fixed-width binary addition circuitry handle positive and negative integers. In 8 bits, its representable range is −128 to +127."
+          ],
+          "method": null,
+          "workedExample": {
+            "type": "worked-example",
+            "title": "Represent −23 using two's complement"
+          }
+        },
+        {
+          "syllabusId": "S1.03",
+          "heading": "Conversion between number systems and representations",
+          "objectiveIds": [
+            "S1.03.A01",
+            "S1.03.A02",
+            "S1.03.A03",
+            "S1.03.A04",
+            "S1.03.A05",
+            "S1.03.A06"
+          ],
+          "leadVisual": {
+            "type": "reviewed-visual",
+            "title": "Binary, denary and hexadecimal conversions"
+          },
+          "coreExplanation": [
+            "A conversion preserves the integer value while changing the number base or representation. Identify the source, destination and any required bit width before choosing a method.",
+            "Use powers of 2 for binary and denary, four-bit nibbles for binary and hexadecimal, powers of 16 for hexadecimal and denary, separate four-bit digit groups for BCD, and fixed-width inversion rules for one's complement and two's complement.",
+            "When there is no convenient direct route, convert through denary or binary as an intermediate representation, then reverse the route to check that the value has not changed."
+          ],
+          "method": {
+            "type": "flow",
+            "title": "Convert between number bases and representations"
+          },
+          "workedExample": {
+            "type": "worked-example",
+            "title": "Convert 45 through the required representations"
+          }
         }
       ],
       "practice": [
@@ -772,8 +1057,10 @@
           "commandWord": "Calculate",
           "marks": 4,
           "objectiveIds": [
-            "S1.02.A02",
-            "S1.03.A02"
+            "S1.03.A01",
+            "S1.03.A02",
+            "S1.03.A03",
+            "S1.03.A04"
           ]
         },
         {
@@ -781,7 +1068,10 @@
           "commandWord": "Explain",
           "marks": 4,
           "objectiveIds": [
-            "S1.02.A02"
+            "S1.02.A02",
+            "S1.02.A03",
+            "S1.03.A03",
+            "S1.02.A01"
           ]
         },
         {
@@ -789,23 +1079,51 @@
           "commandWord": "Explain",
           "marks": 2,
           "objectiveIds": [
-            "S1.02.A02"
+            "S1.03.A02",
+            "S1.02.A01",
+            "S1.02.A03",
+            "S1.02.A04"
           ]
         },
         {
-          "id": "V3-002-S1.02-CHECK",
+          "id": "V3-Q-L004-03",
           "commandWord": "Explain",
           "marks": 2,
           "objectiveIds": [
-            "S1.02.A01"
+            "S1.06.A01"
           ]
         },
         {
-          "id": "V3-002-S1.03-CHECK",
+          "id": "V3-002-S1.02-HEXADECIMAL-CHECK",
           "commandWord": "Explain",
-          "marks": 2,
+          "marks": 3,
           "objectiveIds": [
-            "S1.03.A01"
+            "S1.06.A02"
+          ]
+        },
+        {
+          "id": "V3-002-S1.02-ONES-COMPLEMENT-CHECK",
+          "commandWord": "Explain",
+          "marks": 3,
+          "objectiveIds": [
+            "S1.02.A05"
+          ]
+        },
+        {
+          "id": "V3-002-S1.02-TWOS-COMPLEMENT-CHECK",
+          "commandWord": "Explain",
+          "marks": 3,
+          "objectiveIds": [
+            "S1.02.A06"
+          ]
+        },
+        {
+          "id": "V3-002-S1.03-CONVERSIONS-CHECK",
+          "commandWord": "Calculate",
+          "marks": 6,
+          "objectiveIds": [
+            "S1.03.A05",
+            "S1.03.A06"
           ]
         }
       ],
@@ -813,29 +1131,33 @@
         {
           "id": "S1-L02-EXAM-1",
           "sourceRef": "9618/13/W/25 Q2(a)",
-          "commandWord": "Explain",
-          "marks": 5,
+          "commandWord": "Calculate",
+          "marks": 4,
           "objectiveIds": [
-            "S1.02.A02"
+            "S1.02.A04",
+            "S1.03.A04"
           ]
         },
         {
           "id": "S1-L02-EXAM-2",
-          "sourceRef": "Cambridge 9618 syllabus · S1.02",
+          "sourceRef": "Cambridge 9618 syllabus · S1.03",
           "commandWord": "Describe",
-          "marks": 5,
+          "marks": 4,
           "objectiveIds": [
-            "S1.02.A02",
-            "S1.03.A02"
+            "S1.02.A05",
+            "S1.02.A06",
+            "S1.03.A05",
+            "S1.03.A06"
           ]
         },
         {
           "id": "S1-L02-EXAM-3",
-          "sourceRef": "Cambridge 9618 syllabus · S1.03",
+          "sourceRef": "Cambridge 9618 syllabus · S1.06",
           "commandWord": "Explain",
-          "marks": 2,
+          "marks": 4,
           "objectiveIds": [
-            "S1.02.A02"
+            "S1.03.A01",
+            "S1.03.A02"
           ]
         }
       ]
@@ -853,30 +1175,35 @@
       "objectives": [
         {
           "id": "S1.04.A01",
-          "description": "Perform binary addition and subtraction",
+          "description": "Perform unsigned binary addition and subtraction at a stated width.",
           "explanationUnits": [
-            "Signed arithmetic keeps one fixed-width bit pattern"
+            "Unsigned binary addition and subtraction"
           ],
           "materialTitles": [
-            "8-bit addition method"
+            "Unsigned binary addition",
+            "Unsigned binary addition",
+            "Add two unsigned 8-bit integers"
           ],
           "questionIds": [
+            "V3-Q-L003-01",
             "V3-Q-L003-02",
             "V3-Q-L003-03"
           ],
           "pastPaperAnalysis": [
-            "9618/13/S/25 Q7(c)",
-            "Cambridge 9618 syllabus · S1.04"
+            "Cambridge 9618 syllabus · S1.04",
+            "Cambridge 9618 syllabus · S1.05"
           ]
         },
         {
           "id": "S1.04.A02",
-          "description": "Using positive and negative binary integers",
+          "description": "Extend binary addition and subtraction to positive and negative fixed-width integers.",
           "explanationUnits": [
-            "Signed arithmetic keeps one fixed-width bit pattern"
+            "Extension: signed binary addition and subtraction"
           ],
           "materialTitles": [
-            "8-bit addition method"
+            "Signed two's-complement addition",
+            "Unsigned binary addition",
+            "Calculate +5 + (−3) in 8-bit two's complement"
           ],
           "questionIds": [
             "V3-Q-L003-02",
@@ -889,30 +1216,14 @@
         },
         {
           "id": "S1.05.A01",
-          "description": "Perform binary addition and subtraction",
+          "description": "Explain how overflow occurs in fixed-width binary arithmetic.",
           "explanationUnits": [
-            "Overflow means the true result does not fit"
+            "Overflow in fixed-width arithmetic"
           ],
           "materialTitles": [
-            "Unsigned 8-bit overflow"
-          ],
-          "questionIds": [
-            "V3-Q-L003-02",
-            "V3-Q-L003-03"
-          ],
-          "pastPaperAnalysis": [
-            "9618/13/S/25 Q7(c)",
-            "Cambridge 9618 syllabus · S1.04"
-          ]
-        },
-        {
-          "id": "S1.05.A02",
-          "description": "Show understanding of how overflow can occur",
-          "explanationUnits": [
-            "Overflow means the true result does not fit"
-          ],
-          "materialTitles": [
-            "Unsigned 8-bit overflow"
+            "Unsigned 8-bit overflow",
+            "Check for overflow",
+            "Identify unsigned 8-bit overflow"
           ],
           "questionIds": [
             "V3-Q-L003-01",
@@ -921,50 +1232,82 @@
           ],
           "pastPaperAnalysis": [
             "9618/13/S/25 Q7(c)",
-            "Cambridge 9618 syllabus · S1.04",
-            "Cambridge 9618 syllabus · S1.05"
+            "Cambridge 9618 syllabus · S1.04"
           ]
         }
       ],
       "knowledgeUnits": [
         {
           "syllabusId": "S1.04",
-          "heading": "Signed arithmetic keeps one fixed-width bit pattern",
+          "heading": "Unsigned binary addition and subtraction",
           "objectiveIds": [
-            "S1.04.A01",
-            "S1.04.A02"
+            "S1.04.A01"
           ],
           "leadVisual": {
             "type": "reviewed-visual",
-            "title": "8-bit addition method"
+            "title": "Unsigned binary addition"
           },
           "coreExplanation": [
-            "Perform binary addition from the least-significant bit, carrying left when a column total is 2 or 3. Positive and negative integers must be interpreted using the stated representation and fixed bit width.",
-            "Binary subtraction applies to each positive or negative binary integer as well as binary addition; use the stated fixed width and signed representation when interpreting the result.",
-            "One's-complement representation forms a negative integer by inverting every bit of its positive fixed-width value. Two's-complement representation inverts every bit and adds 1. These are binary representations of signed integers, not separate number bases.",
-            "Representation overview: the required integer representations are binary, denary, hexadecimal, BCD, one's-complement and two's-complement. Conversion means preserving the integer value while changing its base or signed representation."
+            "An unsigned binary integer uses every bit as a non-negative place value. An unsigned 8-bit value represents an integer from 0 to 255.",
+            "For addition, align equal-width operands and work from the rightmost bit to the left. Use 0 + 0 = 0, 0 + 1 = 1, 1 + 1 = 10 and 1 + 1 + 1 = 11, carrying 1 into the next column when required.",
+            "For unsigned subtraction, align equal-width operands and borrow from the next column when the upper bit is smaller than the lower bit. A negative mathematical result cannot be represented as an unsigned value."
           ],
-          "method": null,
-          "workedExample": null
+          "method": {
+            "type": "flow",
+            "title": "Unsigned binary addition"
+          },
+          "workedExample": {
+            "type": "worked-example",
+            "title": "Add two unsigned 8-bit integers"
+          }
         },
         {
           "syllabusId": "S1.05",
-          "heading": "Overflow means the true result does not fit",
+          "heading": "Overflow in fixed-width arithmetic",
           "objectiveIds": [
-            "S1.05.A01",
-            "S1.05.A02"
+            "S1.05.A01"
           ],
           "leadVisual": {
             "type": "reviewed-visual",
             "title": "Unsigned 8-bit overflow"
           },
           "coreExplanation": [
-            "Overflow occurs when the mathematical result is outside the range representable in the available bits. For unsigned 8-bit addition, a carry beyond bit 7 shows that the true result is greater than 255. For signed arithmetic, compare the result with the signed representable range rather than treating every carry as overflow.",
-            "Binary subtraction applies to each positive or negative binary integer as well as binary addition; use the stated fixed width and signed representation when interpreting the result.",
-            "Unsigned subtraction can be performed column by column using borrowing, or by adding the two's complement of the subtrahend. For signed two's-complement subtraction A - B, form the two's complement of B and add it to A. Retain the fixed width, interpret the sign bit and check the representable range."
+            "Overflow occurs when the true mathematical result is outside the range that the stated bit width and representation can store. The stored bit pattern then cannot represent the true result.",
+            "For unsigned 8-bit addition, the permitted range is 0 to 255. A carry beyond the eighth bit shows that the true result needs nine bits; only the rightmost eight bits fit in the register.",
+            "A leftmost stored bit of 1 is not by itself overflow. For example, 01111111 + 00000001 = 10000000 represents 128 and still fits in the unsigned 8-bit range."
           ],
-          "method": null,
-          "workedExample": null
+          "method": {
+            "type": "flow",
+            "title": "Check for overflow"
+          },
+          "workedExample": {
+            "type": "worked-example",
+            "title": "Identify unsigned 8-bit overflow"
+          }
+        },
+        {
+          "syllabusId": "S1.04",
+          "heading": "Extension: signed binary addition and subtraction",
+          "objectiveIds": [
+            "S1.04.A02"
+          ],
+          "leadVisual": {
+            "type": "table",
+            "title": "Signed two's-complement addition"
+          },
+          "coreExplanation": [
+            "Signed arithmetic extends the same fixed-width column addition method to positive and negative integers. Encode every negative operand in the stated signed representation before calculating.",
+            "With two's-complement operands, add every column including the most-significant bit and discard any carry beyond the fixed width. Interpret the retained result as a two's-complement value.",
+            "To calculate A − B, form the two's complement of B and add it to A at the same width. For signed 8-bit arithmetic, the final mathematical result must remain in the range −128 to +127."
+          ],
+          "method": {
+            "type": "flow",
+            "title": "Unsigned binary addition"
+          },
+          "workedExample": {
+            "type": "worked-example",
+            "title": "Calculate +5 + (−3) in 8-bit two's complement"
+          }
         }
       ],
       "practice": [
@@ -973,7 +1316,8 @@
           "commandWord": "Explain",
           "marks": 2,
           "objectiveIds": [
-            "S1.05.A02"
+            "S1.05.A01",
+            "S1.04.A01"
           ]
         },
         {
@@ -981,10 +1325,9 @@
           "commandWord": "State",
           "marks": 2,
           "objectiveIds": [
-            "S1.04.A01",
-            "S1.04.A02",
             "S1.05.A01",
-            "S1.05.A02"
+            "S1.04.A02",
+            "S1.04.A01"
           ]
         },
         {
@@ -992,10 +1335,9 @@
           "commandWord": "Calculate",
           "marks": 4,
           "objectiveIds": [
-            "S1.04.A01",
-            "S1.04.A02",
             "S1.05.A01",
-            "S1.05.A02"
+            "S1.04.A01",
+            "S1.04.A02"
           ]
         }
       ],
@@ -1003,34 +1345,31 @@
         {
           "id": "S1-L03-EXAM-1",
           "sourceRef": "9618/13/S/25 Q7(c)",
-          "commandWord": "Explain",
-          "marks": 5,
+          "commandWord": "Calculate",
+          "marks": 4,
           "objectiveIds": [
-            "S1.04.A01",
             "S1.04.A02",
-            "S1.05.A01",
-            "S1.05.A02"
+            "S1.05.A01"
           ]
         },
         {
           "id": "S1-L03-EXAM-2",
           "sourceRef": "Cambridge 9618 syllabus · S1.04",
-          "commandWord": "Describe",
-          "marks": 2,
+          "commandWord": "Explain",
+          "marks": 3,
           "objectiveIds": [
-            "S1.04.A01",
-            "S1.04.A02",
             "S1.05.A01",
-            "S1.05.A02"
+            "S1.04.A02",
+            "S1.04.A01"
           ]
         },
         {
           "id": "S1-L03-EXAM-3",
           "sourceRef": "Cambridge 9618 syllabus · S1.05",
-          "commandWord": "Explain",
-          "marks": 2,
+          "commandWord": "Complete",
+          "marks": 4,
           "objectiveIds": [
-            "S1.05.A02"
+            "S1.04.A01"
           ]
         }
       ]
@@ -1042,127 +1381,161 @@
       "route": "web/course-v3/lesson-004/index.html",
       "section": 1,
       "syllabusIds": [
-        "S1.06",
         "S1.07"
       ],
       "objectives": [
         {
-          "id": "S1.06.A01",
-          "description": "Describe practical applications where Binary Coded Decimal (BCD) and Hexadecimal are used",
-          "explanationUnits": [
-            "BCD and hexadecimal suit different real uses"
-          ],
-          "materialTitles": [
-            "BCD and hexadecimal represent bits for different purposes"
-          ],
-          "questionIds": [
-            "V3-Q-L004-01",
-            "V3-Q-L004-02",
-            "V3-Q-L004-03"
-          ],
-          "pastPaperAnalysis": [
-            "9618/13/S/25 Q1(ii)",
-            "Cambridge 9618 syllabus · S1.07",
-            "Cambridge 9618 syllabus · S1.07"
-          ]
-        },
-        {
           "id": "S1.07.A01",
-          "description": "Show understanding of and be able to represent character data in its internal binary form, depending on the character set used",
+          "description": "Explain how a character set maps characters to numeric codes stored in binary.",
           "explanationUnits": [
-            "Character sets map symbols to binary codes"
+            "Character sets and internal binary representation"
           ],
           "materialTitles": [
-            "ASCII and extended ASCII"
+            "From character to stored bits",
+            "Store a character when its code is provided"
           ],
           "questionIds": [
             "V3-Q-L004-01",
-            "V3-Q-L004-02",
-            "V3-Q-L004-03"
+            "V3-Q-L004-02"
           ],
           "pastPaperAnalysis": [
-            "9618/13/S/25 Q1(ii)",
-            "Cambridge 9618 syllabus · S1.07",
+            "9618/12/S/23 Q4(a)",
             "Cambridge 9618 syllabus · S1.07"
           ]
         },
         {
           "id": "S1.07.A02",
-          "description": "Students are expected to be familiar with ASCII (American Standard Code for Information Interchange), extended ASCII and Unicode",
+          "description": "Explain standard ASCII as a 7-bit character set.",
           "explanationUnits": [
-            "Character sets map symbols to binary codes"
+            "ASCII"
           ],
           "materialTitles": [
-            "ASCII and extended ASCII"
+            "Standard ASCII capacity",
+            "Check whether a supplied code fits standard ASCII"
           ],
           "questionIds": [
-            "V3-Q-L004-01",
-            "V3-Q-L004-02"
+            "V3-004-S1.07-ASCII-CHECK"
           ],
           "pastPaperAnalysis": [
-            "Cambridge 9618 syllabus · S1.07",
-            "Cambridge 9618 syllabus · S1.07"
+            "9618/12/S/23 Q4(a)"
           ]
         },
         {
           "id": "S1.07.A03",
-          "description": "Students will not be expected to memorise any particular character codes",
+          "description": "Explain extended ASCII as an 8-bit character set.",
           "explanationUnits": [
-            "Character sets map symbols to binary codes"
+            "Extended ASCII"
           ],
           "materialTitles": [
-            "ASCII and extended ASCII"
+            "Extended ASCII capacity",
+            "Use a supplied extended-ASCII code"
           ],
           "questionIds": [
-            "V3-Q-L004-01",
-            "V3-Q-L004-02"
+            "V3-004-S1.07-EXTENDED-ASCII-CHECK"
           ],
           "pastPaperAnalysis": [
-            "Cambridge 9618 syllabus · S1.07",
+            "9618/12/S/23 Q4(a)",
+            "Cambridge 9618 syllabus · S1.07"
+          ]
+        },
+        {
+          "id": "S1.07.A04",
+          "description": "Explain why Unicode supports a much wider range of characters than ASCII.",
+          "explanationUnits": [
+            "Unicode"
+          ],
+          "materialTitles": [
+            "Unicode supports global character repertoires",
+            "Choose a character set for a multilingual website"
+          ],
+          "questionIds": [
+            "V3-Q-L004-01"
+          ],
+          "pastPaperAnalysis": [
             "Cambridge 9618 syllabus · S1.07"
           ]
         }
       ],
       "knowledgeUnits": [
         {
-          "syllabusId": "S1.06",
-          "heading": "BCD and hexadecimal suit different real uses",
+          "syllabusId": "S1.07",
+          "heading": "Character sets and internal binary representation",
           "objectiveIds": [
-            "S1.06.A01"
+            "S1.07.A01"
           ],
           "leadVisual": {
-            "type": "reviewed-visual",
-            "title": "BCD and hexadecimal represent bits for different purposes"
+            "type": "flow",
+            "title": "From character to stored bits"
           },
           "coreExplanation": [
-            "Only 0000 to 1001 are valid BCD digit groups. BCD is used where decimal digits must be displayed or processed exactly, such as digital clocks, calculators and financial displays, although it usually uses more bits than pure binary.",
-            "Representation overview: the required integer representations are binary, denary, hexadecimal, BCD, one's-complement and two's-complement. Conversion means preserving the integer value while changing its base or signed representation.",
-            "Hexadecimal is used as a compact human-readable form of binary. One hex digit represents four bits, so hexadecimal is practical for memory addresses, machine-code/debug displays and colour values.",
-            "A digital clock is a practical BCD application because each displayed denary digit maps directly to one four-bit BCD group."
+            "A character set defines a collection of characters and assigns a numeric character code to each character. The code identifies the character independently of how a font draws it on screen.",
+            "The numeric code is stored internally as a binary bit pattern. Software must use the agreed character set or encoding to interpret the stored bits as the intended character."
           ],
           "method": null,
-          "workedExample": null
+          "workedExample": {
+            "type": "worked-example",
+            "title": "Store a character when its code is provided"
+          }
         },
         {
           "syllabusId": "S1.07",
-          "heading": "Character sets map symbols to binary codes",
+          "heading": "ASCII",
           "objectiveIds": [
-            "S1.07.A01",
-            "S1.07.A02",
+            "S1.07.A02"
+          ],
+          "leadVisual": {
+            "type": "reviewed-visual",
+            "title": "Standard ASCII capacity"
+          },
+          "coreExplanation": [
+            "Standard ASCII is a 7-bit character set, so it provides 2⁷ = 128 possible character codes numbered 0 to 127.",
+            "Its repertoire includes common English letters, digits, punctuation and control characters. The limited number of codes means it cannot represent the full range of writing systems used worldwide."
+          ],
+          "method": null,
+          "workedExample": {
+            "type": "worked-example",
+            "title": "Check whether a supplied code fits standard ASCII"
+          }
+        },
+        {
+          "syllabusId": "S1.07",
+          "heading": "Extended ASCII",
+          "objectiveIds": [
             "S1.07.A03"
           ],
           "leadVisual": {
             "type": "reviewed-visual",
-            "title": "ASCII and extended ASCII"
+            "title": "Extended ASCII capacity"
           },
           "coreExplanation": [
-            "Standard ASCII uses 7-bit codes, extended ASCII uses 8-bit codes, and Unicode provides code points for a much wider range of languages and symbols.",
-            "A character set defines a collection of characters and assigns a numeric character code to each one. The code is stored internally in binary; the bit pattern is meaningful only when software interprets it using the agreed character set.",
-            "Hexadecimal is used as a compact human-readable form of binary. One hex digit represents four bits, so hexadecimal is practical for memory addresses, machine-code/debug displays and colour values.",
-            "Only 0000 to 1001 are valid BCD digit groups. BCD is used where decimal digits must be displayed or processed exactly, such as digital clocks, calculators and financial displays, although it usually uses more bits than pure binary."
+            "Extended ASCII uses 8-bit character codes, so it provides 2⁸ = 256 possible code values numbered 0 to 255.",
+            "The additional codes can represent extra accented letters and symbols, but 256 values are still insufficient for all world writing systems. Different extended-ASCII code pages may assign different characters to some of the added code values."
           ],
           "method": null,
-          "workedExample": null
+          "workedExample": {
+            "type": "worked-example",
+            "title": "Use a supplied extended-ASCII code"
+          }
+        },
+        {
+          "syllabusId": "S1.07",
+          "heading": "Unicode",
+          "objectiveIds": [
+            "S1.07.A04"
+          ],
+          "leadVisual": {
+            "type": "reviewed-visual",
+            "title": "Unicode supports global character repertoires"
+          },
+          "coreExplanation": [
+            "Unicode assigns code points to characters from a very wide range of languages, symbol systems and modern character collections. This makes it suitable for multilingual data and communication.",
+            "Unicode code points can be stored using encodings such as UTF-8 or UTF-16. It is inaccurate to claim that every Unicode character is always stored using exactly the same number of bits."
+          ],
+          "method": null,
+          "workedExample": {
+            "type": "worked-example",
+            "title": "Choose a character set for a multilingual website"
+          }
         }
       ],
       "practice": [
@@ -1171,10 +1544,8 @@
           "commandWord": "Explain",
           "marks": 4,
           "objectiveIds": [
-            "S1.07.A02",
             "S1.07.A01",
-            "S1.06.A01",
-            "S1.07.A03"
+            "S1.07.A04"
           ]
         },
         {
@@ -1182,55 +1553,55 @@
           "commandWord": "State",
           "marks": 2,
           "objectiveIds": [
-            "S1.07.A01",
-            "S1.06.A01",
-            "S1.07.A02",
-            "S1.07.A03"
+            "S1.07.A01"
           ]
         },
         {
-          "id": "V3-Q-L004-03",
+          "id": "V3-004-S1.07-ASCII-CHECK",
           "commandWord": "Explain",
           "marks": 2,
           "objectiveIds": [
-            "S1.06.A01",
-            "S1.07.A01"
+            "S1.07.A02"
+          ]
+        },
+        {
+          "id": "V3-004-S1.07-EXTENDED-ASCII-CHECK",
+          "commandWord": "Explain",
+          "marks": 2,
+          "objectiveIds": [
+            "S1.07.A03"
           ]
         }
       ],
       "examStyleQuestions": [
         {
           "id": "S1-L04-EXAM-1",
-          "sourceRef": "9618/13/S/25 Q1(ii)",
-          "commandWord": "Explain",
-          "marks": 2,
+          "sourceRef": "9618/12/S/23 Q4(a)",
+          "commandWord": "Calculate",
+          "marks": 4,
           "objectiveIds": [
-            "S1.06.A01",
-            "S1.07.A01"
+            "S1.07.A01",
+            "S1.07.A02",
+            "S1.07.A03"
           ]
         },
         {
           "id": "S1-L04-EXAM-2",
           "sourceRef": "Cambridge 9618 syllabus · S1.07",
           "commandWord": "Describe",
-          "marks": 2,
+          "marks": 4,
           "objectiveIds": [
-            "S1.07.A01",
-            "S1.06.A01",
-            "S1.07.A02",
-            "S1.07.A03"
+            "S1.07.A01"
           ]
         },
         {
           "id": "S1-L04-EXAM-3",
           "sourceRef": "Cambridge 9618 syllabus · S1.07",
-          "commandWord": "Explain",
-          "marks": 5,
+          "commandWord": "Compare",
+          "marks": 4,
           "objectiveIds": [
-            "S1.07.A02",
-            "S1.07.A01",
-            "S1.06.A01",
-            "S1.07.A03"
+            "S1.07.A03",
+            "S1.07.A04"
           ]
         }
       ]
@@ -1250,31 +1621,33 @@
           "id": "S1.08.A01",
           "description": "Explain how pixels and a file header encode a bitmap.",
           "explanationUnits": [
-            "A bitmap stores metadata plus a grid of pixels"
+            "How a bitmap image is stored",
+            "Pixel"
           ],
           "materialTitles": [
-            "Colour depth: bits per pixel"
+            "How a bitmap image is stored",
+            "Interpret a tiny bitmap file",
+            "What is a pixel?"
           ],
           "questionIds": [
             "V3-Q-L005-01",
             "V3-Q-L005-02"
           ],
           "pastPaperAnalysis": [
-            "9618/13/S/25 Q1(ii)",
-            "Cambridge 9618 syllabus · S1.09"
+            "9618/13/S/25 Q1(ii)"
           ]
         },
         {
           "id": "S1.08.A02",
           "description": "Distinguish image resolution from screen resolution.",
           "explanationUnits": [
-            "A bitmap stores metadata plus a grid of pixels"
+            "Image resolution"
           ],
           "materialTitles": [
-            "Colour depth: bits per pixel"
+            "Image resolution: width × height"
           ],
           "questionIds": [
-            "V3-005-S1.08-CHECK"
+            "V3-005-S1.08-IMAGE-RESOLUTION-CHECK"
           ],
           "pastPaperAnalysis": []
         },
@@ -1282,10 +1655,11 @@
           "id": "S1.08.A03",
           "description": "Explain colour depth as bits per pixel and the number of available colours.",
           "explanationUnits": [
-            "A bitmap stores metadata plus a grid of pixels"
+            "Colour depth"
           ],
           "materialTitles": [
-            "Colour depth: bits per pixel"
+            "Colour depth: bits per pixel",
+            "Calculate the palette capacity"
           ],
           "questionIds": [
             "V3-Q-L005-01",
@@ -1293,19 +1667,18 @@
             "V3-Q-L005-03"
           ],
           "pastPaperAnalysis": [
-            "9618/13/S/25 Q1(ii)",
-            "Cambridge 9618 syllabus · S1.08",
-            "Cambridge 9618 syllabus · S1.09"
+            "9618/13/S/25 Q1(ii)"
           ]
         },
         {
           "id": "S1.08.A04",
           "description": "Calculate uncompressed bitmap pixel-data size and convert units.",
           "explanationUnits": [
-            "A bitmap stores metadata plus a grid of pixels"
+            "Uncompressed bitmap file size"
           ],
           "materialTitles": [
-            "Colour depth: bits per pixel"
+            "Uncompressed bitmap file size",
+            "Calculate a bitmap pixel-data size"
           ],
           "questionIds": [
             "V3-Q-L005-02"
@@ -1318,33 +1691,33 @@
           "id": "S1.08.A05",
           "description": "Explain how image resolution affects stored detail and file size.",
           "explanationUnits": [
-            "A bitmap stores metadata plus a grid of pixels"
+            "Image resolution"
           ],
           "materialTitles": [
-            "Colour depth: bits per pixel"
+            "Image resolution: width × height"
           ],
           "questionIds": [
             "V3-Q-L005-03"
           ],
           "pastPaperAnalysis": [
-            "Cambridge 9618 syllabus · S1.08"
+            "Cambridge 9618 syllabus · S1.09"
           ]
         },
         {
           "id": "S1.08.A06",
           "description": "Explain how colour depth affects colour accuracy and file size.",
           "explanationUnits": [
-            "A bitmap stores metadata plus a grid of pixels"
+            "Colour depth"
           ],
           "materialTitles": [
-            "Colour depth: bits per pixel"
+            "Colour depth: bits per pixel",
+            "Calculate the palette capacity"
           ],
           "questionIds": [
             "V3-Q-L005-02",
             "V3-Q-L005-03"
           ],
           "pastPaperAnalysis": [
-            "Cambridge 9618 syllabus · S1.08",
             "Cambridge 9618 syllabus · S1.09"
           ]
         },
@@ -1352,18 +1725,17 @@
           "id": "S1.09.A01",
           "description": "Explain a vector drawing list, its drawing objects and their properties.",
           "explanationUnits": [
-            "A vector file stores drawing instructions"
+            "How a vector graphic is stored"
           ],
           "materialTitles": [
-            "Vector drawing list: objects, properties and redrawing",
-            "Read and scale a vector drawing list"
+            "How a vector graphic is stored",
+            "Read a vector drawing list"
           ],
           "questionIds": [
             "V3-Q-L005-01",
             "V3-Q-L005-03"
           ],
           "pastPaperAnalysis": [
-            "9618/13/S/25 Q1(ii)",
             "Cambridge 9618 syllabus · S1.08"
           ]
         },
@@ -1371,31 +1743,29 @@
           "id": "S1.09.A02",
           "description": "Explain why vector graphics scale without pixelation.",
           "explanationUnits": [
-            "A vector file stores drawing instructions"
+            "Bitmap and vector enlargement"
           ],
           "materialTitles": [
-            "Vector drawing list: objects, properties and redrawing",
-            "Read and scale a vector drawing list"
+            "Enlarging bitmap and vector graphics"
           ],
           "questionIds": [
             "V3-Q-L005-01"
           ],
           "pastPaperAnalysis": [
-            "9618/13/S/25 Q1(ii)"
+            "Cambridge 9618 syllabus · S1.08"
           ]
         },
         {
           "id": "S1.09.A03",
           "description": "Justify bitmap or vector representation for a given task.",
           "explanationUnits": [
-            "A vector file stores drawing instructions"
+            "Bitmap and vector enlargement"
           ],
           "materialTitles": [
-            "Vector drawing list: objects, properties and redrawing",
-            "Read and scale a vector drawing list"
+            "Enlarging bitmap and vector graphics"
           ],
           "questionIds": [
-            "V3-005-S1.09-CHECK"
+            "V3-005-S1.09-BITMAP-VECTOR-SCALING-CHECK"
           ],
           "pastPaperAnalysis": []
         }
@@ -1403,13 +1773,46 @@
       "knowledgeUnits": [
         {
           "syllabusId": "S1.08",
-          "heading": "A bitmap stores metadata plus a grid of pixels",
+          "heading": "How a bitmap image is stored",
           "objectiveIds": [
-            "S1.08.A01",
-            "S1.08.A02",
+            "S1.08.A01"
+          ],
+          "leadVisual": {
+            "type": "reviewed-visual",
+            "title": "How a bitmap image is stored"
+          },
+          "coreExplanation": [
+            "A bitmap image is represented as a rectangular grid of picture elements. The file stores an ordered colour value for every pixel, row by row or in another defined order.",
+            "The file header stores metadata needed to interpret the pixel data, such as width, height, colour depth and file type. Software reads the header and then uses the ordered pixel values to reconstruct the image correctly."
+          ],
+          "method": null,
+          "workedExample": {
+            "type": "worked-example",
+            "title": "Interpret a tiny bitmap file"
+          }
+        },
+        {
+          "syllabusId": "S1.08",
+          "heading": "Pixel",
+          "objectiveIds": [
+            "S1.08.A01"
+          ],
+          "leadVisual": {
+            "type": "reviewed-visual",
+            "title": "What is a pixel?"
+          },
+          "coreExplanation": [
+            "A pixel is one picture element in a bitmap. Each pixel occupies one position in the stored image grid and is assigned one colour value.",
+            "A pixel is a data element rather than a fixed physical size. How large it appears depends on the display size and the relationship between the image and screen resolutions."
+          ],
+          "method": null,
+          "workedExample": null
+        },
+        {
+          "syllabusId": "S1.08",
+          "heading": "Colour depth",
+          "objectiveIds": [
             "S1.08.A03",
-            "S1.08.A04",
-            "S1.08.A05",
             "S1.08.A06"
           ],
           "leadVisual": {
@@ -1417,35 +1820,90 @@
             "title": "Colour depth: bits per pixel"
           },
           "coreExplanation": [
-            "A bitmap file contains pixel data and a file header. The header stores metadata needed to interpret the file, such as its format and image properties; it is not one of the image pixels. When a calculation says to ignore the file header, calculate only width x height x colour depth.",
-            "Bitmap metadata is stored separately from pixel values, commonly in a file header. Add header or metadata bytes only when their size is supplied; when a question says to ignore the header, calculate pixel data only.",
-            "For an uncompressed bitmap, pixel-data size in bits is width in pixels x height in pixels x colour depth in bits per pixel. Divide by 8 to convert bits to bytes. Use the units requested by the question.",
-            "Image resolution is the number of pixels stored in the image, commonly width x height. Screen resolution is the number of physical display pixels available on the screen. They are independent: scaling an image on a screen does not create new captured detail."
+            "Colour depth is the number of bits used to store the colour of each pixel. A colour depth of n bits provides 2ⁿ possible bit patterns and therefore up to 2ⁿ possible colours.",
+            "Increasing colour depth can represent colours more accurately and reduce visible banding, but it stores more bits for every pixel. At the same image resolution, a higher colour depth therefore increases the uncompressed file size."
+          ],
+          "method": null,
+          "workedExample": {
+            "type": "worked-example",
+            "title": "Calculate the palette capacity"
+          }
+        },
+        {
+          "syllabusId": "S1.08",
+          "heading": "Image resolution",
+          "objectiveIds": [
+            "S1.08.A02",
+            "S1.08.A05"
+          ],
+          "leadVisual": {
+            "type": "reviewed-visual",
+            "title": "Image resolution: width × height"
+          },
+          "coreExplanation": [
+            "Image resolution is the number of pixels used to represent the stored image, normally stated as width × height. For the same subject and colour depth, a higher image resolution records more spatial detail because more pixel positions are available.",
+            "More pixels also increase the uncompressed file size. Screen resolution instead describes the pixel dimensions of a display; it does not state how many pixels are stored in a particular image file."
           ],
           "method": null,
           "workedExample": null
         },
         {
-          "syllabusId": "S1.09",
-          "heading": "A vector file stores drawing instructions",
+          "syllabusId": "S1.08",
+          "heading": "Uncompressed bitmap file size",
           "objectiveIds": [
-            "S1.09.A01",
+            "S1.08.A04"
+          ],
+          "leadVisual": {
+            "type": "reviewed-visual",
+            "title": "Uncompressed bitmap file size"
+          },
+          "coreExplanation": [
+            "The uncompressed bitmap pixel-data size in bits is width × height × colour depth. Width × height gives the number of pixels, and colour depth gives the bits stored for each pixel.",
+            "Divide the bit total by 8 to convert bits to bytes. This basic calculation excludes file-header overhead unless the question supplies an additional header size."
+          ],
+          "method": null,
+          "workedExample": {
+            "type": "worked-example",
+            "title": "Calculate a bitmap pixel-data size"
+          }
+        },
+        {
+          "syllabusId": "S1.09",
+          "heading": "How a vector graphic is stored",
+          "objectiveIds": [
+            "S1.09.A01"
+          ],
+          "leadVisual": {
+            "type": "reviewed-visual",
+            "title": "How a vector graphic is stored"
+          },
+          "coreExplanation": [
+            "A vector graphic is encoded as a drawing list. Each entry defines a drawing object and properties such as its type, coordinates, dimensions, line colour, fill colour and line thickness.",
+            "When the graphic is displayed, software reads the list in order and redraws the objects from their stored properties. The file does not store a fixed colour value for every position in a pixel grid."
+          ],
+          "method": null,
+          "workedExample": {
+            "type": "worked-example",
+            "title": "Read a vector drawing list"
+          }
+        },
+        {
+          "syllabusId": "S1.09",
+          "heading": "Bitmap and vector enlargement",
+          "objectiveIds": [
             "S1.09.A02",
             "S1.09.A03"
           ],
           "leadVisual": {
             "type": "reviewed-visual",
-            "title": "Vector drawing list: objects, properties and redrawing"
+            "title": "Enlarging bitmap and vector graphics"
           },
           "coreExplanation": [
-            "A vector graphic is encoded as a drawing list. Each entry defines a drawing object and stores properties such as its type, coordinates, dimensions, line colour, fill colour and line thickness.",
-            "When the graphic is displayed, the software reads the list and redraws each object from its properties. Changing the coordinates or dimensions allows the image to be scaled without enlarging a fixed pixel grid."
+            "Enlarging a bitmap spreads a fixed grid of stored pixels over a larger area. Individual square pixels can become visible and curved or diagonal edges may look jagged or pixelated.",
+            "A vector graphic is redrawn from its objects and properties at the new size, so its curves and edges remain smooth. Choose vector for logos and diagrams that must scale cleanly; choose bitmap for detailed continuous-tone photographs where each pixel records colour variation."
           ],
           "method": null,
-          "workedExample": {
-            "type": "worked-example",
-            "title": "Read and scale a vector drawing list"
-          }
+          "workedExample": null
         }
       ],
       "practice": [
@@ -1483,17 +1941,17 @@
           ]
         },
         {
-          "id": "V3-005-S1.08-CHECK",
+          "id": "V3-005-S1.08-IMAGE-RESOLUTION-CHECK",
           "commandWord": "Compare",
-          "marks": 2,
+          "marks": 3,
           "objectiveIds": [
             "S1.08.A02"
           ]
         },
         {
-          "id": "V3-005-S1.09-CHECK",
+          "id": "V3-005-S1.09-BITMAP-VECTOR-SCALING-CHECK",
           "commandWord": "Justify",
-          "marks": 2,
+          "marks": 3,
           "objectiveIds": [
             "S1.09.A03"
           ]
@@ -1503,11 +1961,9 @@
         {
           "id": "S1-L05-EXAM-1",
           "sourceRef": "9618/13/S/25 Q1(ii)",
-          "commandWord": "Explain",
-          "marks": 5,
+          "commandWord": "Calculate",
+          "marks": 4,
           "objectiveIds": [
-            "S1.09.A01",
-            "S1.09.A02",
             "S1.08.A01",
             "S1.08.A03"
           ]
@@ -1516,23 +1972,20 @@
           "id": "S1-L05-EXAM-2",
           "sourceRef": "Cambridge 9618 syllabus · S1.08",
           "commandWord": "Describe",
-          "marks": 2,
+          "marks": 4,
           "objectiveIds": [
             "S1.09.A01",
-            "S1.08.A03",
-            "S1.08.A05",
-            "S1.08.A06"
+            "S1.09.A02"
           ]
         },
         {
           "id": "S1-L05-EXAM-3",
           "sourceRef": "Cambridge 9618 syllabus · S1.09",
-          "commandWord": "Explain",
-          "marks": 5,
+          "commandWord": "Compare",
+          "marks": 4,
           "objectiveIds": [
-            "S1.08.A01",
-            "S1.08.A03",
             "S1.08.A04",
+            "S1.08.A05",
             "S1.08.A06"
           ]
         }
@@ -1553,12 +2006,11 @@
           "id": "S1.10.A01",
           "description": "Explain sampling of an analogue sound wave.",
           "explanationUnits": [
-            "Sampling measures a wave at discrete moments"
+            "Analogue sound and the sampling process"
           ],
           "materialTitles": [
-            "Sampling rate: samples per second",
-            "Sound sampling process",
-            "Separate the two quality controls"
+            "From continuous sound to digital samples",
+            "Trace one sample into storage"
           ],
           "questionIds": [
             "V3-Q-L006-02"
@@ -1571,12 +2023,11 @@
           "id": "S1.10.A02",
           "description": "Explain quantisation and binary encoding of sample values.",
           "explanationUnits": [
-            "Sampling measures a wave at discrete moments"
+            "Analogue sound and the sampling process"
           ],
           "materialTitles": [
-            "Sampling rate: samples per second",
-            "Sound sampling process",
-            "Separate the two quality controls"
+            "From continuous sound to digital samples",
+            "Trace one sample into storage"
           ],
           "questionIds": [
             "V3-Q-L006-02"
@@ -1587,12 +2038,10 @@
           "id": "S1.10.A03",
           "description": "Explain the effect of sampling rate on time accuracy and file size.",
           "explanationUnits": [
-            "Sampling measures a wave at discrete moments"
+            "Sampling rate"
           ],
           "materialTitles": [
-            "Sampling rate: samples per second",
-            "Sound sampling process",
-            "Separate the two quality controls"
+            "Sampling rate: samples per second"
           ],
           "questionIds": [
             "V3-Q-L006-02"
@@ -1605,12 +2054,11 @@
           "id": "S1.10.A04",
           "description": "Explain the effect of sampling resolution on amplitude accuracy and file size.",
           "explanationUnits": [
-            "Sampling measures a wave at discrete moments"
+            "Sampling resolution"
           ],
           "materialTitles": [
-            "Sampling rate: samples per second",
-            "Sound sampling process",
-            "Separate the two quality controls"
+            "Sampling resolution: bits per sample",
+            "Compare two sampling resolutions"
           ],
           "questionIds": [
             "V3-Q-L006-02"
@@ -1621,14 +2069,13 @@
           "id": "S1.11.A01",
           "description": "Explain why files are compressed.",
           "explanationUnits": [
-            "Compression removes or rewrites repeated information"
+            "Why files are compressed"
           ],
           "materialTitles": [
-            "Lossless and lossy compression make different reconstruction promises",
-            "Encode, decode and judge an RLE string"
+            "Why files are compressed"
           ],
           "questionIds": [
-            "V3-006-S1.11-CHECK"
+            "V3-006-S1.11-WHY-COMPRESS-CHECK"
           ],
           "pastPaperAnalysis": [
             "Cambridge 9618 syllabus · S1.11"
@@ -1638,11 +2085,14 @@
           "id": "S1.11.A02",
           "description": "Distinguish lossless and lossy compression by reconstruction and information loss.",
           "explanationUnits": [
-            "Compression removes or rewrites repeated information"
+            "Lossy compression and different file types",
+            "Lossless compression and different file types",
+            "Lossless and lossy compression compared"
           ],
           "materialTitles": [
-            "Lossless and lossy compression make different reconstruction promises",
-            "Encode, decode and judge an RLE string"
+            "Lossy compression: effect on file types",
+            "Lossless compression: effect on file types",
+            "Lossless and lossy compression"
           ],
           "questionIds": [
             "V3-Q-L006-01",
@@ -1656,14 +2106,14 @@
           "id": "S1.11.A03",
           "description": "Encode and decode run-length encoding and judge when it is effective.",
           "explanationUnits": [
-            "Compression removes or rewrites repeated information"
+            "Run-length encoding (RLE)"
           ],
           "materialTitles": [
-            "Lossless and lossy compression make different reconstruction promises",
-            "Encode, decode and judge an RLE string"
+            "Run-length encoding (RLE)",
+            "Encode, decode and judge RLE"
           ],
           "questionIds": [
-            "V3-006-S1.11-CHECK"
+            "V3-006-S1.11-RLE-CHECK"
           ],
           "pastPaperAnalysis": [
             "Cambridge 9618 syllabus · S1.11"
@@ -1673,11 +2123,10 @@
           "id": "S1.11.A04",
           "description": "Explain suitable lossless compression for ordinary text.",
           "explanationUnits": [
-            "Compression removes or rewrites repeated information"
+            "Lossless compression and different file types"
           ],
           "materialTitles": [
-            "Lossless and lossy compression make different reconstruction promises",
-            "Encode, decode and judge an RLE string"
+            "Lossless compression: effect on file types"
           ],
           "questionIds": [
             "V3-Q-L006-01"
@@ -1690,11 +2139,12 @@
           "id": "S1.11.A05",
           "description": "Explain lossless and lossy compression choices for bitmap images.",
           "explanationUnits": [
-            "Compression removes or rewrites repeated information"
+            "Lossy compression and different file types",
+            "Lossless compression and different file types"
           ],
           "materialTitles": [
-            "Lossless and lossy compression make different reconstruction promises",
-            "Encode, decode and judge an RLE string"
+            "Lossy compression: effect on file types",
+            "Lossless compression: effect on file types"
           ],
           "questionIds": [
             "V3-Q-L006-03"
@@ -1705,11 +2155,12 @@
           "id": "S1.11.A06",
           "description": "Explain lossless storage of repeated vector objects or properties.",
           "explanationUnits": [
-            "Compression removes or rewrites repeated information"
+            "Lossy compression and different file types",
+            "Lossless compression and different file types"
           ],
           "materialTitles": [
-            "Lossless and lossy compression make different reconstruction promises",
-            "Encode, decode and judge an RLE string"
+            "Lossy compression: effect on file types",
+            "Lossless compression: effect on file types"
           ],
           "questionIds": [
             "V3-Q-L006-01"
@@ -1720,11 +2171,12 @@
           "id": "S1.11.A07",
           "description": "Explain lossless and lossy compression choices for sound.",
           "explanationUnits": [
-            "Compression removes or rewrites repeated information"
+            "Lossy compression and different file types",
+            "Lossless compression and different file types"
           ],
           "materialTitles": [
-            "Lossless and lossy compression make different reconstruction promises",
-            "Encode, decode and judge an RLE string"
+            "Lossy compression: effect on file types",
+            "Lossless compression: effect on file types"
           ],
           "questionIds": [
             "V3-Q-L006-03"
@@ -1737,11 +2189,12 @@
           "id": "S1.11.A08",
           "description": "Justify a compression method from fidelity, repetition and intended use.",
           "explanationUnits": [
-            "Compression removes or rewrites repeated information"
+            "Lossy compression and different file types",
+            "Lossless and lossy compression compared"
           ],
           "materialTitles": [
-            "Lossless and lossy compression make different reconstruction promises",
-            "Encode, decode and judge an RLE string"
+            "Lossy compression: effect on file types",
+            "Lossless and lossy compression"
           ],
           "questionIds": [
             "V3-Q-L006-01",
@@ -1755,40 +2208,84 @@
       "knowledgeUnits": [
         {
           "syllabusId": "S1.10",
-          "heading": "Sampling measures a wave at discrete moments",
+          "heading": "Analogue sound and the sampling process",
           "objectiveIds": [
             "S1.10.A01",
-            "S1.10.A02",
-            "S1.10.A03",
-            "S1.10.A04"
+            "S1.10.A02"
+          ],
+          "leadVisual": {
+            "type": "reviewed-visual",
+            "title": "From continuous sound to digital samples"
+          },
+          "coreExplanation": [
+            "Sound in air is an analogue wave whose amplitude changes continuously. A computer creates a digital representation by measuring the wave amplitude at regular time intervals.",
+            "Each measurement is quantised to the nearest available amplitude level. The selected level is then encoded as a binary sample value, and the ordered sample values form the stored digital sound."
+          ],
+          "method": null,
+          "workedExample": {
+            "type": "worked-example",
+            "title": "Trace one sample into storage"
+          }
+        },
+        {
+          "syllabusId": "S1.10",
+          "heading": "Sampling rate",
+          "objectiveIds": [
+            "S1.10.A03"
           ],
           "leadVisual": {
             "type": "reviewed-visual",
             "title": "Sampling rate: samples per second"
           },
           "coreExplanation": [
-            "Sound in air is an analogue wave whose amplitude changes continuously. A computer creates a digital representation by measuring amplitude at regular time intervals, quantising each measurement to an available level and storing the selected level as a binary sample value.",
-            "Sampling rate is the number of samples taken each second, measured in hertz. A higher rate records the wave at more points in time, which can improve time accuracy but stores more sample values and therefore increases file size.",
-            "Sampling resolution is the number of bits used per sample. More bits provide more amplitude levels, which can reduce quantisation error and improve amplitude accuracy, but every sample needs more storage.",
-            "Rate and resolution improve different axes: rate changes how often the wave is measured; resolution changes how precisely each measured amplitude can be represented."
+            "Sampling rate is the number of samples taken each second, measured in hertz (Hz). A higher sampling rate records the wave at more points in the same time interval.",
+            "More frequent measurements can represent changes over time more accurately. At the same sampling resolution, number of channels and duration, a higher sampling rate stores more sample values and therefore increases file size."
           ],
-          "method": {
-            "type": "flow",
-            "title": "Sound sampling process"
+          "method": null,
+          "workedExample": null
+        },
+        {
+          "syllabusId": "S1.10",
+          "heading": "Sampling resolution",
+          "objectiveIds": [
+            "S1.10.A04"
+          ],
+          "leadVisual": {
+            "type": "reviewed-visual",
+            "title": "Sampling resolution: bits per sample"
           },
+          "coreExplanation": [
+            "Sampling resolution is the number of bits used to store each sample. A resolution of n bits provides 2ⁿ available amplitude levels.",
+            "More levels reduce the difference between a measured amplitude and the selected quantised level, improving amplitude accuracy. At the same sampling rate, channel count and duration, more bits per sample increase file size."
+          ],
+          "method": null,
           "workedExample": {
             "type": "worked-example",
-            "title": "Separate the two quality controls"
+            "title": "Compare two sampling resolutions"
           }
         },
         {
           "syllabusId": "S1.11",
-          "heading": "Compression removes or rewrites repeated information",
+          "heading": "Why files are compressed",
           "objectiveIds": [
-            "S1.11.A01",
+            "S1.11.A01"
+          ],
+          "leadVisual": {
+            "type": "reviewed-visual",
+            "title": "Why files are compressed"
+          },
+          "coreExplanation": [
+            "Compression reduces the number of bits needed to represent a file. Smaller files require less storage space and fewer bits must be sent across a network.",
+            "At the same data-transfer rate, sending fewer bits can reduce transfer or download time. For the same transfer time, the smaller amount of data requires less bandwidth capacity."
+          ],
+          "method": null,
+          "workedExample": null
+        },
+        {
+          "syllabusId": "S1.11",
+          "heading": "Lossy compression and different file types",
+          "objectiveIds": [
             "S1.11.A02",
-            "S1.11.A03",
-            "S1.11.A04",
             "S1.11.A05",
             "S1.11.A06",
             "S1.11.A07",
@@ -1796,18 +2293,72 @@
           ],
           "leadVisual": {
             "type": "reviewed-visual",
-            "title": "Lossless and lossy compression make different reconstruction promises"
+            "title": "Lossy compression: effect on file types"
           },
           "coreExplanation": [
-            "Files are compressed so that they require less storage space and fewer bits have to be transmitted. A smaller file can be transferred or streamed in less time at the same data-transfer rate and uses less network bandwidth for a given transfer time.",
-            "Run-length encoding (RLE) is a lossless, reversible compression method for adjacent identical data items. Each run is represented by two values: the number of repeated items followed by the value or code of the repeated item.",
-            "Lossless compression reconstructs every original bit. Lossy compression permanently removes selected detail, so it is suitable only when an exact copy is unnecessary and the reduced quality remains acceptable for the application.",
-            "RLE is effective when long runs save more bits than the count-and-value pairs require. Data with short runs or frequent changes can become larger because every run adds a count as overhead."
+            "Lossy compression permanently removes selected information, so the original file cannot be reconstructed exactly. It is suitable only when the intended use can tolerate a controlled reduction in fidelity.",
+            "Lossy text is unsuitable when every character must remain exact. A bitmap can lose fine detail or colour precision; a vector drawing can lose or simplify objects and properties; sound can lose less perceptible detail. Stronger loss may reduce size further but can produce visible or audible artefacts."
+          ],
+          "method": null,
+          "workedExample": null
+        },
+        {
+          "syllabusId": "S1.11",
+          "heading": "Lossless compression and different file types",
+          "objectiveIds": [
+            "S1.11.A02",
+            "S1.11.A04",
+            "S1.11.A05",
+            "S1.11.A06",
+            "S1.11.A07"
+          ],
+          "leadVisual": {
+            "type": "reviewed-visual",
+            "title": "Lossless compression: effect on file types"
+          },
+          "coreExplanation": [
+            "Lossless compression stores a reversible representation from which every original bit can be reconstructed. No source information is discarded.",
+            "It is required for ordinary text when every character matters and for any bitmap, vector graphic or sound master that must be reproduced exactly. Repeated patterns, pixels, object properties or sample values can be encoded more compactly, although the reduction depends on the data."
+          ],
+          "method": null,
+          "workedExample": null
+        },
+        {
+          "syllabusId": "S1.11",
+          "heading": "Lossless and lossy compression compared",
+          "objectiveIds": [
+            "S1.11.A02",
+            "S1.11.A08"
+          ],
+          "leadVisual": {
+            "type": "table",
+            "title": "Lossless and lossy compression"
+          },
+          "coreExplanation": [
+            "Choose lossless compression when exact reconstruction is required. Choose lossy compression only when some permanent information loss is acceptable for the intended use.",
+            "Lossy compression often produces a greater size reduction because it can discard selected detail. The decision must balance required fidelity, expected size reduction, file content and whether the output is a master copy or a delivery copy."
+          ],
+          "method": null,
+          "workedExample": null
+        },
+        {
+          "syllabusId": "S1.11",
+          "heading": "Run-length encoding (RLE)",
+          "objectiveIds": [
+            "S1.11.A03"
+          ],
+          "leadVisual": {
+            "type": "reviewed-visual",
+            "title": "Run-length encoding (RLE)"
+          },
+          "coreExplanation": [
+            "Run-length encoding is a lossless method for adjacent identical data items. It replaces each run with a count followed by the repeated value or code; decoding repeats the value by its stored count to reconstruct the original exactly.",
+            "RLE is effective when long runs save more bits than the count-and-value pairs require. Frequent changes create many short runs, and the added count for each run can make the encoded data larger."
           ],
           "method": null,
           "workedExample": {
             "type": "worked-example",
-            "title": "Encode, decode and judge an RLE string"
+            "title": "Encode, decode and judge RLE"
           }
         }
       ],
@@ -1846,11 +2397,18 @@
           ]
         },
         {
-          "id": "V3-006-S1.11-CHECK",
+          "id": "V3-006-S1.11-WHY-COMPRESS-CHECK",
           "commandWord": "Explain",
-          "marks": 2,
+          "marks": 3,
           "objectiveIds": [
-            "S1.11.A01",
+            "S1.11.A01"
+          ]
+        },
+        {
+          "id": "V3-006-S1.11-RLE-CHECK",
+          "commandWord": "Explain",
+          "marks": 4,
+          "objectiveIds": [
             "S1.11.A03"
           ]
         }
@@ -1880,7 +2438,7 @@
         {
           "id": "S1-L06-EXAM-3",
           "sourceRef": "Cambridge 9618 syllabus · S1.11",
-          "commandWord": "Explain",
+          "commandWord": "Compare",
           "marks": 5,
           "objectiveIds": [
             "S1.11.A02",
@@ -1914,9 +2472,7 @@
           "questionIds": [
             "S2-L01-Q1"
           ],
-          "pastPaperAnalysis": [
-            "9618/11/S/24 Q5(a)"
-          ]
+          "pastPaperAnalysis": []
         },
         {
           "id": "S2.01.A02",
@@ -1931,7 +2487,7 @@
             "S2-L01-Q2"
           ],
           "pastPaperAnalysis": [
-            "Cambridge 9618 syllabus · S2.02"
+            "9618/11/S/24 Q5(a)"
           ]
         },
         {
@@ -1947,7 +2503,7 @@
             "S2-L01-Q2"
           ],
           "pastPaperAnalysis": [
-            "Cambridge 9618 syllabus · S2.02"
+            "9618/11/S/24 Q5(a)"
           ]
         },
         {
@@ -2146,20 +2702,19 @@
         {
           "id": "S2-L01-EXAM-1",
           "sourceRef": "9618/11/S/24 Q5(a)",
-          "commandWord": "Explain",
-          "marks": 3,
+          "commandWord": "Compare",
+          "marks": 4,
           "objectiveIds": [
-            "S2.01.A01"
+            "S2.01.A02",
+            "S2.01.A03"
           ]
         },
         {
           "id": "S2-L01-EXAM-2",
           "sourceRef": "Cambridge 9618 syllabus · S2.02",
-          "commandWord": "Describe",
-          "marks": 7,
+          "commandWord": "Explain",
+          "marks": 4,
           "objectiveIds": [
-            "S2.01.A02",
-            "S2.01.A03",
             "S2.02.A01",
             "S2.02.A02",
             "S2.02.A03"
@@ -2168,8 +2723,8 @@
         {
           "id": "S2-L01-EXAM-3",
           "sourceRef": "Cambridge 9618 syllabus · S2.03",
-          "commandWord": "Explain",
-          "marks": 6,
+          "commandWord": "Suggest",
+          "marks": 4,
           "objectiveIds": [
             "S2.03.A01",
             "S2.03.A02",
@@ -2202,7 +2757,7 @@
             "S2-L02-Q1"
           ],
           "pastPaperAnalysis": [
-            "9618/11/S/24 Q8(a)–(b)"
+            "Cambridge 9618 syllabus · S2.04"
           ]
         },
         {
@@ -2219,8 +2774,7 @@
             "S2-L02-Q3"
           ],
           "pastPaperAnalysis": [
-            "9618/11/S/24 Q8(a)–(b)",
-            "Cambridge 9618 syllabus · S2.05"
+            "Cambridge 9618 syllabus · S2.04"
           ]
         },
         {
@@ -2236,7 +2790,8 @@
             "S2-L02-Q1"
           ],
           "pastPaperAnalysis": [
-            "9618/11/S/24 Q8(a)–(b)"
+            "9618/11/S/24 Q8(a)–(b)",
+            "Cambridge 9618 syllabus · S2.05"
           ]
         },
         {
@@ -2252,10 +2807,7 @@
             "S2-L02-Q1",
             "S2-L02-Q2"
           ],
-          "pastPaperAnalysis": [
-            "9618/11/S/24 Q8(a)–(b)",
-            "Cambridge 9618 syllabus · S2.04"
-          ]
+          "pastPaperAnalysis": []
         },
         {
           "id": "S2.05.A01",
@@ -2270,7 +2822,7 @@
             "S2-L02-Q2"
           ],
           "pastPaperAnalysis": [
-            "Cambridge 9618 syllabus · S2.04"
+            "Cambridge 9618 syllabus · S2.05"
           ]
         },
         {
@@ -2287,6 +2839,7 @@
             "S2-L02-Q3"
           ],
           "pastPaperAnalysis": [
+            "9618/11/S/24 Q8(a)–(b)",
             "Cambridge 9618 syllabus · S2.04",
             "Cambridge 9618 syllabus · S2.05"
           ]
@@ -2304,6 +2857,7 @@
             "S2-L02-Q3"
           ],
           "pastPaperAnalysis": [
+            "9618/11/S/24 Q8(a)–(b)",
             "Cambridge 9618 syllabus · S2.05"
           ]
         }
@@ -2388,33 +2942,33 @@
         {
           "id": "S2-L02-EXAM-1",
           "sourceRef": "9618/11/S/24 Q8(a)–(b)",
-          "commandWord": "Explain",
-          "marks": 5,
+          "commandWord": "Identify",
+          "marks": 4,
           "objectiveIds": [
-            "S2.04.A01",
-            "S2.04.A02",
             "S2.04.A03",
-            "S2.04.A04"
+            "S2.05.A02",
+            "S2.05.A03"
           ]
         },
         {
           "id": "S2-L02-EXAM-2",
           "sourceRef": "Cambridge 9618 syllabus · S2.04",
-          "commandWord": "Describe",
-          "marks": 6,
+          "commandWord": "Compare",
+          "marks": 4,
           "objectiveIds": [
-            "S2.04.A04",
-            "S2.05.A01",
+            "S2.04.A01",
+            "S2.04.A02",
             "S2.05.A02"
           ]
         },
         {
           "id": "S2-L02-EXAM-3",
           "sourceRef": "Cambridge 9618 syllabus · S2.05",
-          "commandWord": "Explain",
-          "marks": 6,
+          "commandWord": "Suggest",
+          "marks": 5,
           "objectiveIds": [
-            "S2.04.A02",
+            "S2.04.A03",
+            "S2.05.A01",
             "S2.05.A02",
             "S2.05.A03"
           ]
@@ -2462,7 +3016,6 @@
             "S2-L03-Q3"
           ],
           "pastPaperAnalysis": [
-            "9618/13/W/23 Q3(a)(i)",
             "Cambridge 9618 syllabus · S2.06"
           ]
         },
@@ -2480,7 +3033,7 @@
             "S2-L03-Q3"
           ],
           "pastPaperAnalysis": [
-            "Cambridge 9618 syllabus · S2.06",
+            "9618/13/W/23 Q3(a)(i)",
             "Cambridge 9618 syllabus · S2.06"
           ]
         },
@@ -2498,7 +3051,6 @@
             "S2-L03-Q3"
           ],
           "pastPaperAnalysis": [
-            "Cambridge 9618 syllabus · S2.06",
             "Cambridge 9618 syllabus · S2.06"
           ]
         }
@@ -2578,28 +3130,26 @@
         {
           "id": "S2-L03-EXAM-1",
           "sourceRef": "9618/13/W/23 Q3(a)(i)",
-          "commandWord": "Explain",
+          "commandWord": "Describe",
           "marks": 4,
           "objectiveIds": [
             "S2.06.A01",
-            "S2.06.A02"
+            "S2.06.A03"
           ]
         },
         {
           "id": "S2-L03-EXAM-2",
           "sourceRef": "Cambridge 9618 syllabus · S2.06",
-          "commandWord": "Describe",
-          "marks": 7,
+          "commandWord": "Explain",
+          "marks": 4,
           "objectiveIds": [
-            "S2.06.A02",
-            "S2.06.A03",
-            "S2.06.A04"
+            "S2.06.A02"
           ]
         },
         {
           "id": "S2-L03-EXAM-3",
           "sourceRef": "Cambridge 9618 syllabus · S2.06",
-          "commandWord": "Explain",
+          "commandWord": "Suggest",
           "marks": 5,
           "objectiveIds": [
             "S2.06.A03",
@@ -2633,8 +3183,7 @@
             "S2-L04-Q3"
           ],
           "pastPaperAnalysis": [
-            "9618/13/W/25 Q4(a)–(c)",
-            "Cambridge 9618 syllabus · S2.08"
+            "9618/13/W/25 Q4(a)–(c)"
           ]
         },
         {
@@ -2650,7 +3199,7 @@
             "S2-L04-Q1"
           ],
           "pastPaperAnalysis": [
-            "Cambridge 9618 syllabus · S2.08"
+            "9618/13/W/25 Q4(a)–(c)"
           ]
         },
         {
@@ -2667,8 +3216,7 @@
             "S2-L04-Q3"
           ],
           "pastPaperAnalysis": [
-            "Cambridge 9618 syllabus · S2.08",
-            "Cambridge 9618 syllabus · S2.08"
+            "9618/13/W/25 Q4(a)–(c)"
           ]
         },
         {
@@ -2685,11 +3233,7 @@
             "S2-L04-Q2",
             "S2-L04-Q3"
           ],
-          "pastPaperAnalysis": [
-            "9618/13/W/25 Q4(a)–(c)",
-            "Cambridge 9618 syllabus · S2.08",
-            "Cambridge 9618 syllabus · S2.08"
-          ]
+          "pastPaperAnalysis": []
         },
         {
           "id": "S2.08.A04",
@@ -2739,6 +3283,7 @@
           ],
           "pastPaperAnalysis": [
             "9618/13/W/25 Q4(a)–(c)",
+            "Cambridge 9618 syllabus · S2.08",
             "Cambridge 9618 syllabus · S2.08"
           ]
         }
@@ -2826,11 +3371,12 @@
         {
           "id": "S2-L04-EXAM-1",
           "sourceRef": "9618/13/W/25 Q4(a)–(c)",
-          "commandWord": "Explain",
-          "marks": 7,
+          "commandWord": "Compare",
+          "marks": 5,
           "objectiveIds": [
             "S2.07.A01",
-            "S2.08.A03",
+            "S2.08.A01",
+            "S2.08.A02",
             "S2.08.A06"
           ]
         },
@@ -2838,24 +3384,19 @@
           "id": "S2-L04-EXAM-2",
           "sourceRef": "Cambridge 9618 syllabus · S2.08",
           "commandWord": "Describe",
-          "marks": 6,
+          "marks": 4,
           "objectiveIds": [
-            "S2.08.A01",
-            "S2.08.A02",
-            "S2.08.A03",
             "S2.08.A04",
-            "S2.08.A05"
+            "S2.08.A06"
           ]
         },
         {
           "id": "S2-L04-EXAM-3",
           "sourceRef": "Cambridge 9618 syllabus · S2.08",
           "commandWord": "Explain",
-          "marks": 6,
+          "marks": 4,
           "objectiveIds": [
-            "S2.07.A01",
-            "S2.08.A02",
-            "S2.08.A03",
+            "S2.08.A05",
             "S2.08.A06"
           ]
         }
@@ -2889,7 +3430,6 @@
             "S2-L05-Q4"
           ],
           "pastPaperAnalysis": [
-            "9618/11/W/23 Q2(a)–(d)",
             "Cambridge 9618 syllabus · S2.10"
           ]
         },
@@ -2908,7 +3448,7 @@
             "S2-L05-Q2"
           ],
           "pastPaperAnalysis": [
-            "9618/11/W/23 Q2(a)–(d)"
+            "Cambridge 9618 syllabus · S2.10"
           ]
         },
         {
@@ -2926,7 +3466,7 @@
             "S2-L05-Q2"
           ],
           "pastPaperAnalysis": [
-            "9618/11/W/23 Q2(a)–(d)"
+            "Cambridge 9618 syllabus · S2.10"
           ]
         },
         {
@@ -2941,7 +3481,9 @@
           "questionIds": [
             "S2-L05-Q1"
           ],
-          "pastPaperAnalysis": []
+          "pastPaperAnalysis": [
+            "9618/11/W/23 Q2(a)–(d)"
+          ]
         },
         {
           "id": "S2.10.A01",
@@ -2957,10 +3499,7 @@
             "S2-L05-Q2",
             "S2-L05-Q4"
           ],
-          "pastPaperAnalysis": [
-            "9618/11/W/23 Q2(a)–(d)",
-            "Cambridge 9618 syllabus · S2.10"
-          ]
+          "pastPaperAnalysis": []
         },
         {
           "id": "S2.10.A02",
@@ -2975,10 +3514,7 @@
             "S2-L05-Q2",
             "S2-L05-Q4"
           ],
-          "pastPaperAnalysis": [
-            "9618/11/W/23 Q2(a)–(d)",
-            "Cambridge 9618 syllabus · S2.10"
-          ]
+          "pastPaperAnalysis": []
         },
         {
           "id": "S2.11.A01",
@@ -3150,28 +3686,24 @@
           "commandWord": "Explain",
           "marks": 5,
           "objectiveIds": [
-            "S2.09.A01",
-            "S2.09.A02",
-            "S2.09.A03",
-            "S2.10.A01",
-            "S2.10.A02"
+            "S2.09.A04"
           ]
         },
         {
           "id": "S2-L05-EXAM-2",
           "sourceRef": "Cambridge 9618 syllabus · S2.10",
-          "commandWord": "Describe",
-          "marks": 5,
+          "commandWord": "Compare",
+          "marks": 4,
           "objectiveIds": [
             "S2.09.A01",
-            "S2.10.A01",
-            "S2.10.A02"
+            "S2.09.A02",
+            "S2.09.A03"
           ]
         },
         {
           "id": "S2-L05-EXAM-3",
           "sourceRef": "Cambridge 9618 syllabus · S2.11",
-          "commandWord": "Explain",
+          "commandWord": "Describe",
           "marks": 6,
           "objectiveIds": [
             "S2.11.A01",
@@ -3256,7 +3788,7 @@
             "S2-L06-Q3"
           ],
           "pastPaperAnalysis": [
-            "Cambridge 9618 syllabus · S2.12",
+            "9618/11/S/25 Q2(a)–(b)(i)",
             "Cambridge 9618 syllabus · S2.12"
           ]
         },
@@ -3376,23 +3908,23 @@
         {
           "id": "S2-L06-EXAM-1",
           "sourceRef": "9618/11/S/25 Q2(a)–(b)(i)",
-          "commandWord": "Explain",
+          "commandWord": "Describe",
           "marks": 5,
           "objectiveIds": [
             "S2.12.A01",
-            "S2.12.A02"
+            "S2.12.A02",
+            "S2.12.A04"
           ]
         },
         {
           "id": "S2-L06-EXAM-2",
           "sourceRef": "Cambridge 9618 syllabus · S2.12",
-          "commandWord": "Describe",
-          "marks": 6,
+          "commandWord": "Calculate",
+          "marks": 4,
           "objectiveIds": [
             "S2.12.A03",
             "S2.12.A04",
-            "S2.12.A05",
-            "S2.12.A06"
+            "S2.12.A05"
           ]
         },
         {
@@ -3402,8 +3934,8 @@
           "marks": 5,
           "objectiveIds": [
             "S2.12.A03",
-            "S2.12.A04",
-            "S2.12.A05"
+            "S2.12.A05",
+            "S2.12.A06"
           ]
         }
       ]
@@ -3545,6 +4077,7 @@
             "S2-L07-Q3"
           ],
           "pastPaperAnalysis": [
+            "Cambridge 9618 syllabus · S2.14",
             "Cambridge 9618 syllabus · S2.14"
           ]
         }
@@ -3629,8 +4162,8 @@
         {
           "id": "S2-L07-EXAM-1",
           "sourceRef": "9618/12/S/24 Q3(i)–(ii)",
-          "commandWord": "Explain",
-          "marks": 5,
+          "commandWord": "Identify",
+          "marks": 4,
           "objectiveIds": [
             "S2.13.A01",
             "S2.13.A02",
@@ -3640,20 +4173,21 @@
         {
           "id": "S2-L07-EXAM-2",
           "sourceRef": "Cambridge 9618 syllabus · S2.14",
-          "commandWord": "Describe",
-          "marks": 7,
+          "commandWord": "Compare",
+          "marks": 5,
           "objectiveIds": [
             "S2.14.A01",
-            "S2.14.A02"
+            "S2.14.A02",
+            "S2.14.A03",
+            "S2.14.A05"
           ]
         },
         {
           "id": "S2-L07-EXAM-3",
           "sourceRef": "Cambridge 9618 syllabus · S2.14",
-          "commandWord": "Explain",
-          "marks": 6,
+          "commandWord": "Describe",
+          "marks": 5,
           "objectiveIds": [
-            "S2.14.A03",
             "S2.14.A04",
             "S2.14.A05"
           ]
@@ -3716,7 +4250,7 @@
             "S2-L08-Q1"
           ],
           "pastPaperAnalysis": [
-            "9618/11/W/25 Q7(a)–(c)"
+            "Cambridge 9618 syllabus · S2.16"
           ]
         },
         {
@@ -3732,7 +4266,9 @@
           "questionIds": [
             "S2-L08-Q2"
           ],
-          "pastPaperAnalysis": []
+          "pastPaperAnalysis": [
+            "Cambridge 9618 syllabus · S2.15"
+          ]
         },
         {
           "id": "S2.15.A05",
@@ -3747,7 +4283,7 @@
             "S2-L08-Q3"
           ],
           "pastPaperAnalysis": [
-            "Cambridge 9618 syllabus · S2.15"
+            "Cambridge 9618 syllabus · S2.16"
           ]
         },
         {
@@ -3763,7 +4299,7 @@
             "S2-L08-Q3"
           ],
           "pastPaperAnalysis": [
-            "Cambridge 9618 syllabus · S2.15"
+            "Cambridge 9618 syllabus · S2.16"
           ]
         },
         {
@@ -3778,9 +4314,7 @@
           "questionIds": [
             "S2-L08-Q4"
           ],
-          "pastPaperAnalysis": [
-            "Cambridge 9618 syllabus · S2.16"
-          ]
+          "pastPaperAnalysis": []
         },
         {
           "id": "S2.16.A02",
@@ -3795,9 +4329,7 @@
           "questionIds": [
             "S2-L08-Q4"
           ],
-          "pastPaperAnalysis": [
-            "Cambridge 9618 syllabus · S2.16"
-          ]
+          "pastPaperAnalysis": []
         },
         {
           "id": "S2.16.A03",
@@ -3812,9 +4344,7 @@
           "questionIds": [
             "S2-L08-Q4"
           ],
-          "pastPaperAnalysis": [
-            "Cambridge 9618 syllabus · S2.16"
-          ]
+          "pastPaperAnalysis": []
         }
       ],
       "knowledgeUnits": [
@@ -3925,33 +4455,31 @@
         {
           "id": "S2-L08-EXAM-1",
           "sourceRef": "9618/11/W/25 Q7(a)–(c)",
-          "commandWord": "Explain",
-          "marks": 7,
+          "commandWord": "Identify",
+          "marks": 4,
           "objectiveIds": [
             "S2.15.A01",
-            "S2.15.A02",
-            "S2.15.A03"
+            "S2.15.A02"
           ]
         },
         {
           "id": "S2-L08-EXAM-2",
           "sourceRef": "Cambridge 9618 syllabus · S2.15",
-          "commandWord": "Describe",
+          "commandWord": "Explain",
           "marks": 5,
           "objectiveIds": [
-            "S2.15.A05",
-            "S2.15.A06"
+            "S2.15.A04"
           ]
         },
         {
           "id": "S2-L08-EXAM-3",
           "sourceRef": "Cambridge 9618 syllabus · S2.16",
-          "commandWord": "Explain",
-          "marks": 6,
+          "commandWord": "Suggest",
+          "marks": 5,
           "objectiveIds": [
-            "S2.16.A01",
-            "S2.16.A02",
-            "S2.16.A03"
+            "S2.15.A03",
+            "S2.15.A05",
+            "S2.15.A06"
           ]
         }
       ]
@@ -4102,8 +4630,8 @@
         {
           "id": "S3-L01-EXAM-2",
           "sourceRef": "Cambridge 9618 syllabus · S3.02",
-          "commandWord": "Describe",
-          "marks": 2,
+          "commandWord": "Explain",
+          "marks": 3,
           "objectiveIds": [
             "S3.02.A01",
             "S3.02.A02"
@@ -4650,7 +5178,7 @@
           "id": "S3-L03-EXAM-1",
           "sourceRef": "9618/11/W/25 Q10(b)",
           "commandWord": "Explain",
-          "marks": 2,
+          "marks": 4,
           "objectiveIds": [
             "S3.06.A01",
             "S3.06.A02"
@@ -4659,8 +5187,8 @@
         {
           "id": "S3-L03-EXAM-2",
           "sourceRef": "Cambridge 9618 syllabus · S3.05",
-          "commandWord": "Describe",
-          "marks": 6,
+          "commandWord": "Explain",
+          "marks": 4,
           "objectiveIds": [
             "S3.05.A01",
             "S3.06.A01",
@@ -4880,7 +5408,7 @@
         {
           "id": "V3-016-S3.09-CHECK",
           "commandWord": "Explain",
-          "marks": 2,
+          "marks": 3,
           "objectiveIds": [
             "S3.09.A02"
           ]
@@ -4915,7 +5443,7 @@
           "id": "S3-L04-EXAM-3",
           "sourceRef": "Cambridge 9618 syllabus · S3.09",
           "commandWord": "Explain",
-          "marks": 2,
+          "marks": 4,
           "objectiveIds": [
             "S3.08.A01",
             "S3.08.A02",
@@ -5189,7 +5717,7 @@
         {
           "id": "V3-017-S3.10-CHECK",
           "commandWord": "Explain",
-          "marks": 5,
+          "marks": 6,
           "objectiveIds": [
             "S3.10.A01",
             "S3.10.A02",
@@ -5216,7 +5744,7 @@
           "id": "S3-L05-EXAM-2",
           "sourceRef": "Cambridge 9618 syllabus · S3.10",
           "commandWord": "Describe",
-          "marks": 3,
+          "marks": 4,
           "objectiveIds": [
             "S3.10.A04",
             "S3.10.A07"
@@ -5825,7 +6353,7 @@
         {
           "id": "V3-019-S4.02-CHECK",
           "commandWord": "Explain",
-          "marks": 3,
+          "marks": 5,
           "objectiveIds": [
             "S4.02.A01",
             "S4.02.A02",
@@ -6143,7 +6671,7 @@
         {
           "id": "V3-020-S4.06-CHECK",
           "commandWord": "Explain",
-          "marks": 4,
+          "marks": 3,
           "objectiveIds": [
             "S4.06.A01",
             "S4.06.A02",
@@ -6300,7 +6828,7 @@
           "id": "S4-L03-EXAM-2",
           "sourceRef": "Cambridge 9618 syllabus · S4.07",
           "commandWord": "Describe",
-          "marks": 2,
+          "marks": 4,
           "objectiveIds": [
             "S4.07.A02"
           ]
@@ -6477,7 +7005,7 @@
         {
           "id": "V3-022-S4.08-CHECK",
           "commandWord": "Explain",
-          "marks": 4,
+          "marks": 5,
           "objectiveIds": [
             "S4.08.A01",
             "S4.08.A02",
@@ -6678,7 +7206,7 @@
           "id": "S4-L05-EXAM-2",
           "sourceRef": "Cambridge 9618 syllabus · S4.10",
           "commandWord": "Describe",
-          "marks": 2,
+          "marks": 4,
           "objectiveIds": [
             "S4.09.A01",
             "S4.10.A02",
@@ -7072,7 +7600,7 @@
         {
           "id": "V3-024-S4.12-CHECK",
           "commandWord": "Explain",
-          "marks": 2,
+          "marks": 5,
           "objectiveIds": [
             "S4.12.A01"
           ]
@@ -7080,7 +7608,7 @@
         {
           "id": "V3-024-S4.13-CHECK",
           "commandWord": "Complete",
-          "marks": 2,
+          "marks": 6,
           "objectiveIds": [
             "S4.13.A02"
           ]
@@ -7088,7 +7616,7 @@
         {
           "id": "V3-024-S4.14-CHECK",
           "commandWord": "Explain",
-          "marks": 2,
+          "marks": 5,
           "objectiveIds": [
             "S4.14.A01"
           ]
@@ -7496,8 +8024,8 @@
         {
           "id": "S4-L07-EXAM-3",
           "sourceRef": "Cambridge 9618 syllabus · S4.15",
-          "commandWord": "Explain",
-          "marks": 2,
+          "commandWord": "Compare",
+          "marks": 3,
           "objectiveIds": [
             "S4.15.A03",
             "S4.15.A04",
@@ -7971,7 +8499,7 @@
         {
           "id": "V3-027-S5.02-CHECK",
           "commandWord": "Explain",
-          "marks": 2,
+          "marks": 6,
           "objectiveIds": [
             "S5.02.A05",
             "S5.02.A06"
@@ -8467,7 +8995,7 @@
         {
           "id": "V3-030-S5.07-CHECK",
           "commandWord": "Explain",
-          "marks": 4,
+          "marks": 6,
           "objectiveIds": [
             "S5.07.A03",
             "S5.07.A06",
@@ -8867,7 +9395,7 @@
         {
           "id": "V3-033-S6.03-CHECK",
           "commandWord": "Explain",
-          "marks": 4,
+          "marks": 6,
           "objectiveIds": [
             "S6.03.A05",
             "S6.03.A06",
@@ -8893,7 +9421,7 @@
           "id": "S6-L02-EXAM-2",
           "sourceRef": "Cambridge 9618 syllabus · S6.03",
           "commandWord": "Describe",
-          "marks": 2,
+          "marks": 3,
           "objectiveIds": [
             "S6.03.A01",
             "S6.03.A02",
@@ -8904,7 +9432,7 @@
           "id": "S6-L02-EXAM-3",
           "sourceRef": "Cambridge 9618 syllabus · S6.03",
           "commandWord": "Explain",
-          "marks": 2,
+          "marks": 4,
           "objectiveIds": [
             "S6.03.A01",
             "S6.03.A02",
@@ -9111,7 +9639,7 @@
         {
           "id": "V3-032-S6.04-CHECK",
           "commandWord": "Explain",
-          "marks": 2,
+          "marks": 5,
           "objectiveIds": [
             "S6.04.A05"
           ]
@@ -9122,7 +9650,7 @@
           "id": "S6-L03-EXAM-1",
           "sourceRef": "9618/11/S/25 Q7(b)",
           "commandWord": "Explain",
-          "marks": 7,
+          "marks": 4,
           "objectiveIds": [
             "S6.04.A01",
             "S6.04.A02",
@@ -9134,7 +9662,7 @@
           "id": "S6-L03-EXAM-2",
           "sourceRef": "Cambridge 9618 syllabus · S6.04",
           "commandWord": "Describe",
-          "marks": 2,
+          "marks": 4,
           "objectiveIds": [
             "S6.04.A01",
             "S6.04.A03",
@@ -9145,7 +9673,7 @@
           "id": "S6-L03-EXAM-3",
           "sourceRef": "Cambridge 9618 syllabus · S6.05",
           "commandWord": "Explain",
-          "marks": 6,
+          "marks": 4,
           "objectiveIds": [
             "S6.04.A01",
             "S6.04.A02",
@@ -9256,7 +9784,7 @@
           "id": "S6-L04-EXAM-1",
           "sourceRef": "9618/12/S/24 Q3(i)",
           "commandWord": "Explain",
-          "marks": 7,
+          "marks": 4,
           "objectiveIds": [
             "S6.06.A01",
             "S6.06.A02"
@@ -9527,7 +10055,7 @@
         {
           "id": "V3-034-S6.08-CHECK",
           "commandWord": "Explain",
-          "marks": 2,
+          "marks": 5,
           "objectiveIds": [
             "S6.08.A04"
           ]
@@ -10058,7 +10586,7 @@
         {
           "id": "V3-037-S7.05-CHECK",
           "commandWord": "Explain",
-          "marks": 2,
+          "marks": 5,
           "objectiveIds": [
             "S7.05.A05"
           ]
@@ -10215,7 +10743,7 @@
         {
           "id": "V3-038-S7.06-CHECK",
           "commandWord": "Explain",
-          "marks": 2,
+          "marks": 4,
           "objectiveIds": [
             "S7.06.A03"
           ]
@@ -10459,7 +10987,7 @@
         {
           "id": "V3-039-S8.02-CHECK",
           "commandWord": "Explain",
-          "marks": 3,
+          "marks": 5,
           "objectiveIds": [
             "S8.02.A01",
             "S8.02.A03",
@@ -10691,7 +11219,7 @@
         {
           "id": "V3-040-S8.04-CHECK",
           "commandWord": "Explain",
-          "marks": 2,
+          "marks": 4,
           "objectiveIds": [
             "S8.04.A03",
             "S8.04.A04"
@@ -10725,7 +11253,7 @@
           "id": "S8-L02-EXAM-3",
           "sourceRef": "Cambridge 9618 syllabus · S8.04",
           "commandWord": "Explain",
-          "marks": 2,
+          "marks": 4,
           "objectiveIds": [
             "S8.03.A01",
             "S8.04.A01"
@@ -10964,7 +11492,7 @@
         {
           "id": "V3-041-S8.05-CHECK",
           "commandWord": "Explain",
-          "marks": 2,
+          "marks": 5,
           "objectiveIds": [
             "S8.05.A03",
             "S8.05.A06"
@@ -10976,7 +11504,7 @@
           "id": "S8-L03-EXAM-1",
           "sourceRef": "9618/13/W/25 Q5(d)",
           "commandWord": "Explain",
-          "marks": 2,
+          "marks": 4,
           "objectiveIds": [
             "S8.05.A05",
             "S8.05.A01",
@@ -10988,7 +11516,7 @@
           "id": "S8-L03-EXAM-2",
           "sourceRef": "Cambridge 9618 syllabus · S8.05",
           "commandWord": "Describe",
-          "marks": 6,
+          "marks": 4,
           "objectiveIds": [
             "S8.06.A01",
             "S8.06.A02",
@@ -11382,7 +11910,7 @@
         {
           "id": "V3-043-S8.09-CHECK",
           "commandWord": "Complete",
-          "marks": 2,
+          "marks": 6,
           "objectiveIds": [
             "S8.09.A04"
           ]
@@ -11415,7 +11943,7 @@
           "id": "S8-L05-EXAM-3",
           "sourceRef": "Cambridge 9618 syllabus · S8.09",
           "commandWord": "Explain",
-          "marks": 2,
+          "marks": 3,
           "objectiveIds": [
             "S8.08.A01",
             "S8.08.A02"
@@ -11677,7 +12205,7 @@
         {
           "id": "V3-043-S8.10-CHECK",
           "commandWord": "Complete",
-          "marks": 3,
+          "marks": 6,
           "objectiveIds": [
             "S8.10.A03",
             "S8.10.A04",
@@ -11700,7 +12228,7 @@
           "id": "S8-L06-EXAM-2",
           "sourceRef": "Cambridge 9618 syllabus · S8.10",
           "commandWord": "Describe",
-          "marks": 2,
+          "marks": 3,
           "objectiveIds": [
             "S8.10.A05"
           ]
@@ -13076,7 +13604,7 @@
         },
         {
           "id": "V3-Q-L045-04",
-          "commandWord": "Explain",
+          "commandWord": "Calculate",
           "marks": 4,
           "objectiveIds": []
         }
@@ -14365,7 +14893,7 @@
           "id": "S9-L09-EXAM-3",
           "sourceRef": "Cambridge 9618 syllabus · S9.08",
           "commandWord": "Explain",
-          "marks": 2,
+          "marks": 3,
           "objectiveIds": [
             "S9.02.A02",
             "S9.02.A01"
@@ -14554,7 +15082,7 @@
         {
           "id": "V3-055-S10.01-CHECK",
           "commandWord": "Explain",
-          "marks": 2,
+          "marks": 3,
           "objectiveIds": [
             "S10.01.A04",
             "S10.01.A05"
@@ -14577,7 +15105,7 @@
         {
           "id": "S10-L01-EXAM-2",
           "sourceRef": "Cambridge 9618 syllabus · S10.01",
-          "commandWord": "Describe",
+          "commandWord": "Explain",
           "marks": 2,
           "objectiveIds": [
             "S10.01.A03",
@@ -14590,7 +15118,7 @@
           "id": "S10-L01-EXAM-3",
           "sourceRef": "Cambridge 9618 syllabus · S10.01",
           "commandWord": "Explain",
-          "marks": 2,
+          "marks": 3,
           "objectiveIds": [
             "S10.01.A02"
           ]
@@ -15019,8 +15547,8 @@
         {
           "id": "S10-L04-EXAM-2",
           "sourceRef": "Cambridge 9618 syllabus · S10.05",
-          "commandWord": "Describe",
-          "marks": 7,
+          "commandWord": "Write",
+          "marks": 4,
           "objectiveIds": [
             "S10.05.A01",
             "S10.04.A01"
@@ -15030,7 +15558,7 @@
           "id": "S10-L04-EXAM-3",
           "sourceRef": "Cambridge 9618 syllabus · S10.04",
           "commandWord": "Explain",
-          "marks": 2,
+          "marks": 3,
           "objectiveIds": [
             "S10.04.A01"
           ]
@@ -15172,7 +15700,7 @@
           "id": "S10-L05-EXAM-2",
           "sourceRef": "Cambridge 9618 syllabus · S10.05",
           "commandWord": "Describe",
-          "marks": 2,
+          "marks": 4,
           "objectiveIds": [
             "S10.04.A01",
             "S10.05.A01"
@@ -15602,7 +16130,7 @@
           "id": "S10-L08-EXAM-3",
           "sourceRef": "Cambridge 9618 syllabus · S10.07",
           "commandWord": "Explain",
-          "marks": 2,
+          "marks": 3,
           "objectiveIds": [
             "S10.07.A01",
             "S10.07.A02"
@@ -15926,7 +16454,7 @@
         {
           "id": "V3-064-S10.09-CHECK",
           "commandWord": "Explain",
-          "marks": 2,
+          "marks": 3,
           "objectiveIds": [
             "S10.09.A03"
           ]
@@ -16434,7 +16962,7 @@
         {
           "id": "V3-066-S10.09-CHECK",
           "commandWord": "Explain",
-          "marks": 2,
+          "marks": 3,
           "objectiveIds": [
             "S10.09.A01",
             "S10.09.A02"
@@ -16857,8 +17385,8 @@
         {
           "id": "S10-L14-EXAM-3",
           "sourceRef": "Cambridge 9618 syllabus · S10.09",
-          "commandWord": "Explain",
-          "marks": 2,
+          "commandWord": "State",
+          "marks": 3,
           "objectiveIds": [
             "S10.04.A01"
           ]
@@ -17150,7 +17678,7 @@
         {
           "id": "V3-070-S11.02-CHECK",
           "commandWord": "Write",
-          "marks": 2,
+          "marks": 4,
           "objectiveIds": [
             "S11.02.A03"
           ]
@@ -17173,7 +17701,7 @@
           "id": "S11-L02-EXAM-2",
           "sourceRef": "Cambridge 9618 syllabus · S11.02",
           "commandWord": "Describe",
-          "marks": 7,
+          "marks": 2,
           "objectiveIds": [
             "S11.02.A05",
             "S11.02.A02",
@@ -17183,8 +17711,8 @@
         {
           "id": "S11-L02-EXAM-3",
           "sourceRef": "Cambridge 9618 syllabus · S11.02",
-          "commandWord": "Explain",
-          "marks": 2,
+          "commandWord": "Calculate",
+          "marks": 4,
           "objectiveIds": [
             "S11.02.A05"
           ]
@@ -17355,7 +17883,7 @@
         {
           "id": "V3-071-S11.02-CHECK",
           "commandWord": "Write",
-          "marks": 2,
+          "marks": 4,
           "objectiveIds": [
             "S11.02.A01"
           ]
@@ -17512,7 +18040,7 @@
           "id": "S11-L04-EXAM-1",
           "sourceRef": "9618/23/W/25 Q4",
           "commandWord": "Explain",
-          "marks": 4,
+          "marks": 3,
           "objectiveIds": [
             "S11.03.A03",
             "S11.03.A02",
@@ -17697,7 +18225,7 @@
         {
           "id": "V3-073-S11.04-CHECK",
           "commandWord": "Complete",
-          "marks": 2,
+          "marks": 6,
           "objectiveIds": [
             "S11.04.A03",
             "S11.04.A05"
@@ -17709,7 +18237,7 @@
           "id": "S11-L05-EXAM-1",
           "sourceRef": "9618/22/W/25 Q1(a)",
           "commandWord": "Explain",
-          "marks": 2,
+          "marks": 4,
           "objectiveIds": [
             "S11.04.A01"
           ]
@@ -17718,7 +18246,7 @@
           "id": "S11-L05-EXAM-2",
           "sourceRef": "Cambridge 9618 syllabus · S11.04",
           "commandWord": "Describe",
-          "marks": 2,
+          "marks": 3,
           "objectiveIds": [
             "S11.04.A02"
           ]
@@ -17727,7 +18255,7 @@
           "id": "S11-L05-EXAM-3",
           "sourceRef": "Cambridge 9618 syllabus · S11.04",
           "commandWord": "Explain",
-          "marks": 2,
+          "marks": 4,
           "objectiveIds": [
             "S11.04.A02",
             "S11.04.A04"
@@ -17916,8 +18444,8 @@
         {
           "id": "S11-L06-EXAM-1",
           "sourceRef": "9618/22/W/25 Q1(a)",
-          "commandWord": "Explain",
-          "marks": 6,
+          "commandWord": "Write",
+          "marks": 4,
           "objectiveIds": [
             "S11.04.A01",
             "S11.04.A02",
@@ -17929,7 +18457,7 @@
           "id": "S11-L06-EXAM-2",
           "sourceRef": "Cambridge 9618 syllabus · S11.04",
           "commandWord": "Describe",
-          "marks": 6,
+          "marks": 4,
           "objectiveIds": [
             "S11.04.A01",
             "S11.04.A03",
@@ -17941,7 +18469,7 @@
           "id": "S11-L06-EXAM-3",
           "sourceRef": "Cambridge 9618 syllabus · S11.04",
           "commandWord": "Explain",
-          "marks": 2,
+          "marks": 4,
           "objectiveIds": [
             "S11.04.A03",
             "S11.04.A04",
@@ -18134,8 +18662,8 @@
         {
           "id": "S11-L07-EXAM-1",
           "sourceRef": "9618/22/W/25 Q1(a)",
-          "commandWord": "Explain",
-          "marks": 6,
+          "commandWord": "Write",
+          "marks": 4,
           "objectiveIds": [
             "S11.04.A01",
             "S11.04.A02",
@@ -18147,7 +18675,7 @@
           "id": "S11-L07-EXAM-2",
           "sourceRef": "Cambridge 9618 syllabus · S11.04",
           "commandWord": "Describe",
-          "marks": 6,
+          "marks": 4,
           "objectiveIds": [
             "S11.04.A01",
             "S11.04.A03",
@@ -18158,8 +18686,8 @@
         {
           "id": "S11-L07-EXAM-3",
           "sourceRef": "Cambridge 9618 syllabus · S11.04",
-          "commandWord": "Explain",
-          "marks": 6,
+          "commandWord": "Compare",
+          "marks": 4,
           "objectiveIds": [
             "S11.04.A01",
             "S11.04.A03",
@@ -18259,8 +18787,8 @@
         {
           "id": "S11-L08-EXAM-2",
           "sourceRef": "Cambridge 9618 syllabus · S11.05",
-          "commandWord": "Describe",
-          "marks": 6,
+          "commandWord": "Explain",
+          "marks": 4,
           "objectiveIds": [
             "S11.05.A01"
           ]
@@ -18740,7 +19268,7 @@
         {
           "id": "V3-078-S11.07-CHECK",
           "commandWord": "Explain",
-          "marks": 2,
+          "marks": 4,
           "objectiveIds": [
             "S11.07.A02"
           ]
@@ -18748,7 +19276,7 @@
         {
           "id": "V3-078-S11.08-CHECK",
           "commandWord": "Complete",
-          "marks": 2,
+          "marks": 6,
           "objectiveIds": [
             "S11.08.A03"
           ]
@@ -18770,8 +19298,8 @@
         {
           "id": "S11-L10-EXAM-2",
           "sourceRef": "Cambridge 9618 syllabus · S11.07",
-          "commandWord": "Describe",
-          "marks": 2,
+          "commandWord": "Explain",
+          "marks": 4,
           "objectiveIds": [
             "S11.07.A03",
             "S11.07.A04",
@@ -19311,7 +19839,7 @@
         {
           "id": "V3-080-S11.04-CHECK",
           "commandWord": "Complete",
-          "marks": 5,
+          "marks": 6,
           "objectiveIds": [
             "S11.04.A01",
             "S11.04.A02",
@@ -19323,7 +19851,7 @@
         {
           "id": "V3-080-S11.06-CHECK",
           "commandWord": "Explain",
-          "marks": 3,
+          "marks": 6,
           "objectiveIds": [
             "S11.06.A01",
             "S11.06.A02",
@@ -19336,7 +19864,7 @@
           "id": "S11-L12-EXAM-1",
           "sourceRef": "9618/22/S/25 Q10(a)",
           "commandWord": "Explain",
-          "marks": 1,
+          "marks": 4,
           "objectiveIds": [
             "S11.01.A01"
           ]
@@ -19535,7 +20063,7 @@
         {
           "id": "V3-081-S12.01-CHECK",
           "commandWord": "Explain",
-          "marks": 2,
+          "marks": 5,
           "objectiveIds": [
             "S12.01.A04",
             "S12.01.A05"
@@ -19558,8 +20086,8 @@
         {
           "id": "S12-L01-EXAM-2",
           "sourceRef": "Cambridge 9618 syllabus · S12.01",
-          "commandWord": "Explain",
-          "marks": 2,
+          "commandWord": "Complete",
+          "marks": 3,
           "objectiveIds": [
             "S12.01.A01",
             "S12.01.A02"
@@ -19568,8 +20096,8 @@
         {
           "id": "S12-L01-EXAM-3",
           "sourceRef": "Cambridge 9618 syllabus · S12.01",
-          "commandWord": "Explain",
-          "marks": 2,
+          "commandWord": "Describe",
+          "marks": 3,
           "objectiveIds": [
             "S12.01.A01",
             "S12.01.A02"
@@ -19840,7 +20368,7 @@
           "id": "S12-L03-EXAM-1",
           "sourceRef": "9618/21/W/25 Q7(a)",
           "commandWord": "Explain",
-          "marks": 7,
+          "marks": 3,
           "objectiveIds": [
             "S12.03.A01"
           ]
@@ -20045,7 +20573,7 @@
         {
           "id": "V3-084-S12.04-CHECK",
           "commandWord": "Explain",
-          "marks": 2,
+          "marks": 4,
           "objectiveIds": [
             "S12.04.A06"
           ]
@@ -20313,7 +20841,7 @@
         {
           "id": "V3-085-S12.05-CHECK",
           "commandWord": "Explain",
-          "marks": 2,
+          "marks": 6,
           "objectiveIds": [
             "S12.05.A06",
             "S12.05.A08"
@@ -20325,7 +20853,7 @@
           "id": "S12-L05-EXAM-1",
           "sourceRef": "9618/21/W/24 Q5(a)",
           "commandWord": "Explain",
-          "marks": 6,
+          "marks": 4,
           "objectiveIds": [
             "S12.05.A01",
             "S12.05.A02",
@@ -20337,7 +20865,7 @@
           "id": "S12-L05-EXAM-2",
           "sourceRef": "Cambridge 9618 syllabus · S12.05",
           "commandWord": "Describe",
-          "marks": 2,
+          "marks": 4,
           "objectiveIds": [
             "S12.05.A07",
             "S12.05.A03",
@@ -20349,7 +20877,7 @@
           "id": "S12-L05-EXAM-3",
           "sourceRef": "Cambridge 9618 syllabus · S12.05",
           "commandWord": "Explain",
-          "marks": 2,
+          "marks": 3,
           "objectiveIds": [
             "S12.05.A03",
             "S12.05.A09",
@@ -20575,8 +21103,8 @@
         {
           "id": "S12-L07-EXAM-2",
           "sourceRef": "Cambridge 9618 syllabus · S12.07",
-          "commandWord": "Describe",
-          "marks": 2,
+          "commandWord": "Explain",
+          "marks": 4,
           "objectiveIds": [
             "S12.07.A02"
           ]
@@ -20585,7 +21113,7 @@
           "id": "S12-L07-EXAM-3",
           "sourceRef": "Cambridge 9618 syllabus · S12.07",
           "commandWord": "Explain",
-          "marks": 2,
+          "marks": 4,
           "objectiveIds": [
             "S12.07.A02"
           ]
@@ -20759,7 +21287,7 @@
           "id": "S12-L08-EXAM-2",
           "sourceRef": "Cambridge 9618 syllabus · S12.08",
           "commandWord": "Explain",
-          "marks": 2,
+          "marks": 4,
           "objectiveIds": [
             "S12.08.A01",
             "S12.08.A02",
@@ -21559,44 +22087,104 @@
       "sha256": "a8eac65925fca8e202c510dec4cf8b435d5f80771e5439d43da054dab764c3a8"
     },
     {
-      "path": "web/assets/diagrams/stage10-infographics/stage10-lesson-005-systems.jpg",
-      "sha256": "dae84b15d2280360f0ab777a7b048a098fb5d7e9a43e943d83d5849b7df31ae0"
+      "path": "web/assets/diagrams/stage10-infographics/stage10-lesson-002-knowledge.jpg",
+      "sha256": "294cc7b75d075d694bcb942518f60443445111bcee1e5cca3e7b84fac8047e28"
     },
     {
-      "path": "web/assets/diagrams/stage10-infographics/stage10-lesson-002-methods.jpg",
-      "sha256": "47d16a625601cbc745e43635fa36b5cdfb1f3f5650448c7338ebde7432f21683"
-    },
-    {
-      "path": "web/assets/diagrams/stage10-infographics/stage10-lesson-004-method.jpg",
-      "sha256": "ca06437cf65c3da6b8de283f8222341f37c2d6a5d93bb0ed90c2949171c80ce2"
-    },
-    {
-      "path": "web/assets/diagrams/stage10-infographics/stage10-lesson-004-overflow.jpg",
-      "sha256": "fd8f320852226154d700ae888d16533ae2f1c85bb3e6ed8f966bde0f0d63150a"
+      "path": "web/assets/diagrams/course-v3-imagegen/hex-applications.png",
+      "sha256": "4893329b1ee8f877b468ad37d9b568ccbf7fd2839966747ca4e8150670fcc981"
     },
     {
       "path": "web/assets/diagrams/course-v3-imagegen/bcd-hex.png",
       "sha256": "f6c164521416569ee8895ff80044fe54b19df1e635a69a363d8fcab69975bb7c"
     },
     {
-      "path": "web/assets/diagrams/stage10-infographics/stage10-lesson-007-ascii.jpg",
-      "sha256": "c170c76b262ee5a7e810ac4cfac6fb7e1ef690752cf33e6f42abc2de8c261890"
+      "path": "web/assets/diagrams/course-v3-imagegen/ones-complement-origin.png",
+      "sha256": "ea7f17335f322da39b6ee23765a9d381d479b1bcbfbcdcfde7b06ee96fd2fb9f"
     },
     {
-      "path": "web/assets/diagrams/stage10-infographics/stage10-lesson-008-depth.jpg",
-      "sha256": "b91226bf0996cfcbbe122a3a179bdb322cf3a9cdc36d1a628a9077ec04e4224c"
+      "path": "web/assets/diagrams/course-v3-imagegen/twos-complement-origin.png",
+      "sha256": "1ac03c301fa372fba453b8bd079841aaead9e71d0eafd109f7f9c4e74230cf4d"
     },
     {
-      "path": "web/assets/diagrams/stage10-infographics/stage10-lesson-010-drawing-list.jpg",
-      "sha256": "cd186636e44f6660cdb05e15e9304ff1679e0c91382e448ba99ba234ea26f76b"
+      "path": "web/assets/diagrams/course-v3-imagegen/binary-denary-hex-conversion.png",
+      "sha256": "404a33dd84427b86e2571860f9e4dab6e13860e2225b740ad8bf14afa98c87d7"
     },
     {
-      "path": "web/assets/diagrams/stage10-infographics/stage10-lesson-011-rate.jpg",
-      "sha256": "82a8b6c41ac6d9595f2b6ebea64c01226dabc9cb50b2bc32a71e6971d968deda"
+      "path": "web/assets/diagrams/course-v3-imagegen/unsigned-binary-addition.png",
+      "sha256": "882977a8b2f5e80c3296dfd40b01755223126a36823f2f2ff667bbf7570b3475"
     },
     {
-      "path": "web/assets/diagrams/course-v3-imagegen/lossless-lossy.png",
-      "sha256": "25dc28537bf512f8fb33170cf034e32554eaf6cb9ea6a86fe0a64cc91a6da4cf"
+      "path": "web/assets/diagrams/stage10-infographics/stage10-lesson-004-overflow.jpg",
+      "sha256": "fd8f320852226154d700ae888d16533ae2f1c85bb3e6ed8f966bde0f0d63150a"
+    },
+    {
+      "path": "web/assets/diagrams/course-v3-imagegen/ascii-capacity.png",
+      "sha256": "9123e76eb51c276542d102f0425f784cb1b92f011079b94b103926770a16244b"
+    },
+    {
+      "path": "web/assets/diagrams/course-v3-imagegen/extended-ascii-capacity.png",
+      "sha256": "aff3ec8956f5dd24e783ea344f7b63eab013e58dd318e5383c095617f37e9dc2"
+    },
+    {
+      "path": "web/assets/diagrams/stage10-infographics/stage10-lesson-007-unicode.jpg",
+      "sha256": "edfdb73a5dbfa36879eebce6190bee063c84857bb49c9d0d403523dfc7b4248e"
+    },
+    {
+      "path": "web/assets/diagrams/course-v3-imagegen/bitmap-composition.png",
+      "sha256": "0924299df25d85639862aee08277dc31b4a9a6dac733243f28721eb5cc6656c3"
+    },
+    {
+      "path": "web/assets/diagrams/course-v3-imagegen/pixel-definition.png",
+      "sha256": "daf0e6256007e9803bc08eb3a8fab7b91eaf7c770e1f85bbf9460d87c4af83ee"
+    },
+    {
+      "path": "web/assets/diagrams/course-v3-imagegen/colour-depth.png",
+      "sha256": "0c7dca16bf8628da9673513babe4dbfbc4ca4b85eb2160339c30979a7b419a47"
+    },
+    {
+      "path": "web/assets/diagrams/course-v3-imagegen/image-resolution.png",
+      "sha256": "8f491497bfcacaa7cb59abb0bb0a480b5ceda14edc1d5fbc481c4947bb05468d"
+    },
+    {
+      "path": "web/assets/diagrams/course-v3-imagegen/bitmap-file-size.png",
+      "sha256": "0f5b0b972cac34a140ad0b4fa35292930bd1403647607fa277598c5dee0df4d3"
+    },
+    {
+      "path": "web/assets/diagrams/course-v3-imagegen/vector-drawing-list.png",
+      "sha256": "7b120eb1b10e900c4c027a48caa5f75d346d86f5fa84da5c563617581bb5adaa"
+    },
+    {
+      "path": "web/assets/diagrams/course-v3-imagegen/bitmap-vector-enlargement.png",
+      "sha256": "43a3e0472a37ed4f17f845097d9362d45ae48a1d37dd0d42ae08830a183c53c8"
+    },
+    {
+      "path": "web/assets/diagrams/course-v3-imagegen/analogue-sound-sampling.png",
+      "sha256": "5f7a4b8cca7aa6401c849c8a70c2ed9dc87d733ff1ce26407aa4ab75c27e26ca"
+    },
+    {
+      "path": "web/assets/diagrams/course-v3-imagegen/sampling-rate.png",
+      "sha256": "576dee7b12d9fbd3942fa2a0dab0937bfc82df08b53f3efb3dc42b47d7db347a"
+    },
+    {
+      "path": "web/assets/diagrams/course-v3-imagegen/sampling-resolution.png",
+      "sha256": "91b3c0d094715ce4b36131c9f7d0b04655275c2fd71c07137fa877d6aaa21233"
+    },
+    {
+      "path": "web/assets/diagrams/course-v3-imagegen/compression-need.png",
+      "sha256": "296645b99bc183609a9b05f1a43faf525dce1c0668e5a7902b156498051e5ac4"
+    },
+    {
+      "path": "web/assets/diagrams/course-v3-imagegen/lossy-file-effects.png",
+      "sha256": "bf8a1383d265612d332a7c58f56009c8fc17ca94b1e619066032f890b2fd2530"
+    },
+    {
+      "path": "web/assets/diagrams/course-v3-imagegen/lossless-file-effects.png",
+      "sha256": "f1e6f45e2d21d0904f54604fe67f6bc73be082dbe3dba267f310a0b75924634d"
+    },
+    {
+      "path": "web/assets/diagrams/course-v3-imagegen/rle.png",
+      "sha256": "ab5603a32877ce24ba1222aedd94a3ef5bb6e8035ed15c5be4a7b781c04aca9c"
     },
     {
       "path": "web/assets/diagrams/course-v3-imagegen/lan-wan.png",

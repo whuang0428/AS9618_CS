@@ -12,6 +12,18 @@ const v2 = JSON.parse(readFileSync(join(root, "scripts", "course-v2-content.json
 const questionBank = JSON.parse(readFileSync(join(root, "scripts", "question-bank-contract.json"), "utf8"));
 const paperFrequency = JSON.parse(readFileSync(join(root, "scripts", "past-paper-frequency-contract.json"), "utf8"));
 const v3QuestionRepairs = Object.freeze({
+  "Q-L004-01": {
+    syllabusIds: ["S1.07"],
+    objectiveIds: ["S1.07.A01", "S1.07.A04"],
+  },
+  "Q-L004-02": {
+    syllabusIds: ["S1.07"],
+    objectiveIds: ["S1.07.A01"],
+  },
+  "Q-L004-03": {
+    syllabusIds: ["S1.06"],
+    objectiveIds: ["S1.06.A01"],
+  },
   "Q-L053-01": {
     answer: "uses Temperature >= -20; uses AND Temperature <= 50; states FALSE for -21; states TRUE for -20 and 50; states FALSE for 51",
   },
@@ -45,6 +57,78 @@ const v3QuestionRepairs = Object.freeze({
 });
 const questionById = new Map(questionBank.questions.map((question) => [question.id, { ...question, ...(questionRepairs[question.id] ?? {}), ...(v3QuestionRepairs[question.id] ?? {}) }]));
 const officialPastPaperAccess = "https://www.cambridgeinternational.org/programmes-and-qualifications/cambridge-international-as-and-a-level-computer-science-9618/past-papers/";
+
+const lessonPresentationOverrides = Object.freeze({
+  "002": {
+    title: "Binary, denary, hexadecimal, BCD and signed representations",
+    subtitle: "Understand each number system or representation separately, then convert between them.",
+    guidingQuestion: "What does each number system or binary representation mean, why are BCD and complement representations used, and how can an integer be converted between them?",
+    summaryMode: "authored",
+    summary: [
+      ["Binary", "Base 2 · digits 0 and 1."],
+      ["Denary", "Base 10 · digits 0 to 9."],
+      ["Hexadecimal", "Base 16 · digits 0 to F."],
+      ["BCD", "Encode each decimal digit separately."],
+      ["One's complement", "Invert every fixed-width bit."],
+      ["Two's complement", "Invert every bit, then add 1."],
+      ["Conversion", "Preserve value; apply the destination rule."],
+    ],
+  },
+  "003": {
+    title: "Unsigned binary addition, overflow and signed extension",
+    subtitle: "Perform unsigned binary addition and subtraction. · Explain overflow in fixed-width arithmetic. · Extend the method to signed binary integers.",
+    guidingQuestion: "How does unsigned binary arithmetic work, when does it overflow, and how is the same fixed-width method extended to signed integers?",
+    summaryMode: "authored",
+    summary: [
+      ["Unsigned addition", "Align bits and carry to the left."],
+      ["Overflow", "Check the representable fixed-width range."],
+      ["Signed extension", "Encode negatives, calculate, then interpret."],
+    ],
+  },
+  "004": {
+    title: "Character encoding: ASCII, extended ASCII and Unicode",
+    subtitle: "Understand how a character set maps symbols to numeric codes, then distinguish ASCII, extended ASCII and Unicode.",
+    guidingQuestion: "How does a computer store character data as binary, and why do different character sets support different collections of symbols?",
+    summaryMode: "authored",
+    summary: [
+      ["Character sets", "Map characters to numeric codes."],
+      ["ASCII", "Seven bits provide 128 codes."],
+      ["Extended ASCII", "Eight bits provide 256 codes."],
+      ["Unicode", "Supports far more writing systems."],
+    ],
+  },
+  "005": {
+    title: "Bitmap and vector graphics",
+    subtitle: "Build bitmap representation one idea at a time, then compare it with a vector drawing list.",
+    guidingQuestion: "How are bitmap and vector graphics stored, what controls bitmap quality and file size, and what happens when each type is enlarged?",
+    summaryMode: "authored",
+    summary: [
+      ["Bitmap structure", "A header and metadata describe a grid of stored pixel values."],
+      ["Pixel", "The smallest addressable picture element in a bitmap."],
+      ["Colour depth", "Bits per pixel determine the available colours."],
+      ["Image resolution", "Width multiplied by height gives the number of stored pixels."],
+      ["File size", "Resolution multiplied by colour depth gives the uncompressed size in bits."],
+      ["Vector drawing list", "Objects are stored with properties such as coordinates, dimensions and colours."],
+      ["Enlargement", "Bitmap pixels grow; vector objects are recalculated and redrawn."],
+    ],
+  },
+  "006": {
+    title: "Sound representation and file compression",
+    subtitle: "Follow analogue sound through sampling, then choose and explain suitable compression methods.",
+    guidingQuestion: "How is continuous sound sampled into binary data, and how do lossy, lossless and RLE compression change stored files?",
+    summaryMode: "authored",
+    summary: [
+      ["Sampling", "Measure an analogue signal at regular time intervals."],
+      ["Sampling rate", "More samples per second can record changes more closely."],
+      ["Sampling resolution", "More bits per sample provide more available amplitude levels."],
+      ["Need for compression", "Reduce storage space and transfer time."],
+      ["Lossy", "Discard selected data and accept an irreversible quality change."],
+      ["Lossless", "Reconstruct the original data exactly."],
+      ["Method choice", "Match reversibility and quality to the file's purpose."],
+      ["RLE", "Store each run as a count and a value."],
+    ],
+  },
+});
 
 export const sectionMeta = Object.freeze({
   1: { title: "Information representation", paper: 1, anchor: "section-1-data-representation.png", anchorTitle: "Preserve meaning while changing representation", anchorAlt: "A mature archival workspace places full text, a photograph, a sound waveform and drawing plans beside compact archival cases.", anchorCaption: "The archive analogy separates exact preservation from acceptable perceptual simplification before the lesson states the technical rules.", anchorBoundary: "Files are bit patterns, not physical folders. The image introduces the preservation decision only; the worked examples define sampling, encoding, RLE and lossy methods precisely." },
@@ -102,6 +186,7 @@ const specialTeaching = Object.freeze({
     ] }],
     misconceptions: ["RLE replaces adjacent runs, not every occurrence of a value throughout a file; separated occurrences must be encoded as separate runs."],
     masteryCheck: {
+      marks: 5,
       prompt: "Explain why compression is needed, then describe how RLE encodes and decodes adjacent repeated data and judge when it is effective.",
       answerCriteria: [
         "smaller files require less storage space",
@@ -333,6 +418,37 @@ const misconceptionBySyllabus = Object.freeze({
 });
 
 const objectiveExpansions = Object.freeze({
+  "S1.02": [
+    "Explain binary as a base-2 number system.",
+    "Explain denary as a base-10 number system.",
+    "Explain hexadecimal as a base-16 number system.",
+    "Explain Binary Coded Decimal and why it is used.",
+    "Explain one's-complement representation and why it is used.",
+    "Explain two's-complement representation and why it is used.",
+  ],
+  "S1.03": [
+    "Convert integers between binary and denary.",
+    "Convert integers between binary and hexadecimal.",
+    "Convert integers between denary and hexadecimal.",
+    "Convert integers between denary and Binary Coded Decimal.",
+    "Convert integers between positive binary and one's-complement representation.",
+    "Convert integers between positive binary and two's-complement representation.",
+  ],
+  "S1.04": [
+    "Perform unsigned binary addition and subtraction at a stated width.",
+    "Extend binary addition and subtraction to positive and negative fixed-width integers.",
+  ],
+  "S1.05": ["Explain how overflow occurs in fixed-width binary arithmetic."],
+  "S1.06": [
+    "Describe practical applications where Binary Coded Decimal is used.",
+    "Describe practical applications where hexadecimal is used.",
+  ],
+  "S1.07": [
+    "Explain how a character set maps characters to numeric codes stored in binary.",
+    "Explain standard ASCII as a 7-bit character set.",
+    "Explain extended ASCII as an 8-bit character set.",
+    "Explain why Unicode supports a much wider range of characters than ASCII.",
+  ],
   "S1.08": ["Explain how pixels and a file header encode a bitmap.", "Distinguish image resolution from screen resolution.", "Explain colour depth as bits per pixel and the number of available colours.", "Calculate uncompressed bitmap pixel-data size and convert units.", "Explain how image resolution affects stored detail and file size.", "Explain how colour depth affects colour accuracy and file size."],
   "S1.09": ["Explain a vector drawing list, its drawing objects and their properties.", "Explain why vector graphics scale without pixelation.", "Justify bitmap or vector representation for a given task."],
   "S1.10": ["Explain sampling of an analogue sound wave.", "Explain quantisation and binary encoding of sample values.", "Explain the effect of sampling rate on time accuracy and file size.", "Explain the effect of sampling resolution on amplitude accuracy and file size."],
@@ -398,6 +514,939 @@ function objectiveRows(syllabusId) {
     seen.add(key);
     return true;
   }).map((description, index) => [`${syllabusId}.A${String(index + 1).padStart(2, "0")}`, clean(description)]);
+}
+
+function makeLesson002Units() {
+  const s102Objectives = objectiveRows("S1.02").map(([id]) => id);
+  const s103Objectives = objectiveRows("S1.03").map(([id]) => id);
+  const s106Objectives = objectiveRows("S1.06").map(([id]) => id);
+  const unit = ({ unitKey, syllabusId, heading, objectiveIds, explanation, materials, misconceptions, masteryCheck }) => ({
+    unitKey,
+    syllabusId,
+    heading,
+    objectiveIds,
+    explanation,
+    materials: materials.map((material) => ({ ...material, objectiveIds })),
+    misconceptions,
+    teacherNote: `Teach ${heading} as its own concept before moving to the next representation.`,
+    masteryCheck,
+  });
+
+  return [
+    unit({
+      unitKey: "S1.02-BINARY",
+      syllabusId: "S1.02",
+      heading: "Binary",
+      objectiveIds: [s102Objectives[0]],
+      explanation: [
+        "Binary is a base-2 number system. It uses only the digits 0 and 1.",
+        "Each position has a place value that is a power of 2. Starting at the right, the place values are 1, 2, 4, 8, 16 and so on; a 1 includes its place value and a 0 does not.",
+      ],
+      materials: [
+        {
+          type: "reviewed-visual",
+          title: "8-bit binary place values",
+          asset: "/assets/diagrams/stage10-infographics/stage10-lesson-002-knowledge.jpg",
+          facts: [
+            "Bit positions 7 to 0 have place values 128, 64, 32, 16, 8, 4, 2 and 1.",
+            "A 1 includes its place value and a 0 excludes it.",
+            "The bit pattern 10110110 selects 128, 32, 16, 4 and 2.",
+          ],
+          alt: "An 8-bit binary place-value diagram showing bit positions, powers of two and the selected values in 10110110.",
+          review: "reviewed",
+        },
+        {
+          type: "worked-example",
+          title: "Read a binary place-value pattern",
+          steps: [
+            ["Write the place values", "Above 00001101, write 128, 64, 32, 16, 8, 4, 2 and 1."],
+            ["Select the 1 bits", "The 1 bits select the place values 8, 4 and 1."],
+            ["Combine the selected values", "The value represented by 00001101 is 8 + 4 + 1 = 13."],
+          ],
+        },
+      ],
+      misconceptions: ["A binary digit string is not read like an everyday numeral; every position has a power-of-two place value."],
+      masteryCheck: { marks: 2, prompt: "Explain how the bit pattern 00101001 represents a value.", answerCriteria: ["State that binary uses power-of-two place values.", "Identify and combine the selected place values 32, 8 and 1."] },
+    }),
+    unit({
+      unitKey: "S1.02-DENARY",
+      syllabusId: "S1.02",
+      heading: "Denary",
+      objectiveIds: [s102Objectives[1]],
+      explanation: [
+        "Denary is a base-10 number system. It uses the digits 0 to 9.",
+        "Each position has a place value that is a power of 10. Starting at the right, the place values are 1, 10, 100, 1000 and so on.",
+      ],
+      materials: [
+        { type: "table", title: "Denary place values", headers: ["Digit", "Hundreds", "Tens", "Units"], rows: [["182", "1 × 100", "8 × 10", "2 × 1"]] },
+        {
+          type: "worked-example",
+          title: "Read a denary numeral by place value",
+          steps: [
+            ["Separate the positions", "In 407, the digits occupy the hundreds, tens and units positions."],
+            ["Apply the place values", "The place-value expression is 4 × 100 + 0 × 10 + 7 × 1."],
+            ["Combine the terms", "The represented value is 400 + 0 + 7 = 407."],
+          ],
+        },
+      ],
+      misconceptions: ["Denary is the name of the base-10 system; it does not mean that every written number is automatically base 10."],
+      masteryCheck: { marks: 2, prompt: "Explain the place values used in the denary numeral 6305.", answerCriteria: ["Identify the thousands, hundreds, tens and units positions.", "Give the expression 6 × 1000 + 3 × 100 + 0 × 10 + 5 × 1."] },
+    }),
+    unit({
+      unitKey: "S1.02-HEXADECIMAL",
+      syllabusId: "S1.02",
+      heading: "Hexadecimal",
+      objectiveIds: [s102Objectives[2], s106Objectives[1]],
+      explanation: [
+        "Hexadecimal is a base-16 number system. It uses the digits 0 to 9 followed by A, B, C, D, E and F, which represent the digit values 10 to 15.",
+        "Each position has a place value that is a power of 16. Starting at the right, the place values are 1, 16, 256, 4096 and so on.",
+        "Hexadecimal is used as a compact way for people to read long binary patterns. One hexadecimal digit represents four binary bits, so it is practical for memory addresses, machine-code or debugging values, and colour codes.",
+      ],
+      materials: [
+        {
+          type: "reviewed-visual",
+          title: "Why hexadecimal is used",
+          asset: "/assets/diagrams/course-v3-imagegen/hex-applications.png",
+          facts: [
+            "One hexadecimal digit represents exactly four binary bits.",
+            "Hexadecimal is used for compact memory addresses, machine-code or debugging values, and colour codes.",
+            "Hexadecimal is human-readable notation for the same underlying bits, not an additional stored value.",
+          ],
+          alt: "An ImageGen infographic showing four-bit hexadecimal grouping and practical uses in memory addresses, debugging values and colour codes.",
+          review: "imagegen-generated-and-course-reviewed",
+        },
+        {
+          type: "worked-example",
+          title: "Read a hexadecimal numeral by place value",
+          steps: [
+            ["Identify the digit values", "In 3A, the digit values are 3 and 10."],
+            ["Apply the place values", "The left position has place value 16 and the right position has place value 1."],
+            ["Combine the terms", "The represented value is 3 × 16 + 10 × 1 = 58."],
+          ],
+        },
+      ],
+      misconceptions: ["A to F are single hexadecimal digits with values 10 to 15; they are not variables or separate place values."],
+      masteryCheck: { marks: 3, prompt: "Explain how hexadecimal 4C represents an integer value and give one practical use of hexadecimal.", answerCriteria: ["State that C has digit value 12.", "Give the place-value expression 4 × 16 + 12 × 1.", "Link a valid use such as a memory address, debugging value or colour code to compact four-bit grouping."] },
+    }),
+    unit({
+      unitKey: "S1.02-BCD",
+      syllabusId: "S1.02",
+      heading: "Binary Coded Decimal (BCD)",
+      objectiveIds: [s102Objectives[3], s106Objectives[0]],
+      explanation: [
+        "Binary Coded Decimal (BCD) is a representation in which each denary digit is encoded separately as a four-bit group. Only 0000 to 1001 are valid BCD digit groups because a single denary digit can only be 0 to 9.",
+        "BCD is used when individual decimal digits must be preserved for exact input, processing or display, such as in a digital clock or calculator. This makes digit handling direct, although BCD normally uses more bits than a pure binary representation of the same integer.",
+      ],
+      materials: [
+        {
+          type: "reviewed-visual",
+          title: "BCD keeps denary digits separate",
+          asset: "/assets/diagrams/course-v3-imagegen/bcd-hex.png",
+          facts: [
+            "BCD encodes each denary digit as its own four-bit group.",
+            "The denary digits 5 and 9 become 0101 and 1001, so a display can reproduce 59 directly.",
+            "Hexadecimal instead maps each four-bit binary group to one hexadecimal digit.",
+          ],
+          alt: "An ImageGen comparison showing denary digits 5 and 9 encoded separately in BCD and two binary nibbles represented as hexadecimal D6.",
+          review: "imagegen-generated-and-course-reviewed",
+        },
+        {
+          type: "worked-example",
+          title: "Encode the denary digits 407 in BCD",
+          steps: [
+            ["Keep the digits separate", "Treat 407 as the three digits 4, 0 and 7."],
+            ["Encode each digit", "Use 0100 for 4, 0000 for 0 and 0111 for 7."],
+            ["Join the groups", "The BCD representation is 0100 0000 0111."],
+          ],
+        },
+      ],
+      misconceptions: ["BCD does not treat the complete bit pattern as one pure binary number; each four-bit group represents one decimal digit."],
+      masteryCheck: { marks: 3, prompt: "Explain why BCD may be used for a digital clock and encode 59 in BCD.", answerCriteria: ["State that each decimal digit is encoded separately.", "Give 0101 for 5 and 1001 for 9.", "Link BCD to direct, exact decimal-digit display."] },
+    }),
+    unit({
+      unitKey: "S1.02-ONES-COMPLEMENT",
+      syllabusId: "S1.02",
+      heading: "One's complement",
+      objectiveIds: [s102Objectives[4]],
+      explanation: [
+        "One's complement represents a negative fixed-width binary integer by inverting every bit of the positive value: each 0 becomes 1 and each 1 becomes 0.",
+        "It is used to represent negative values and makes sign reversal a direct bit inversion. Its drawback is that it has two zero patterns, one positive and one negative, which makes zero testing and arithmetic less convenient.",
+      ],
+      materials: [
+        {
+          type: "reviewed-visual",
+          title: "Why one's complement appeared",
+          asset: "/assets/diagrams/course-v3-imagegen/ones-complement-origin.png",
+          facts: [
+            "Early binary arithmetic needed a way to represent negative integers.",
+            "Inverting every bit made sign reversal direct and allowed subtraction to use addition circuitry.",
+            "The representation has two zero patterns: 00000000 and 11111111 in eight bits.",
+          ],
+          alt: "An ImageGen history-and-purpose diagram showing why one's complement was introduced and its two-zero drawback.",
+          review: "imagegen-generated-and-course-reviewed",
+        },
+        {
+          type: "worked-example",
+          title: "Represent −23 using one's complement",
+          steps: [
+            ["Fix the width", "Write +23 using exactly 8 bits: 00010111."],
+            ["Invert every bit", "Change each 0 to 1 and each 1 to 0: 11101000."],
+            ["Label the representation", "11101000 is the 8-bit one's-complement representation of −23."],
+          ],
+        },
+      ],
+      misconceptions: ["Do not change only the leftmost bit; one's complement requires every bit in the fixed-width pattern to be inverted."],
+      masteryCheck: { marks: 3, prompt: "Explain how one's complement represents −18 in 8 bits and state one drawback.", answerCriteria: ["Write +18 as 00010010.", "Invert every bit to obtain 11101101.", "State that one's complement has both positive and negative zero."] },
+    }),
+    unit({
+      unitKey: "S1.02-TWOS-COMPLEMENT",
+      syllabusId: "S1.02",
+      heading: "Two's complement",
+      objectiveIds: [s102Objectives[5]],
+      explanation: [
+        "Two's complement represents a negative fixed-width binary integer by inverting every bit of the positive value and then adding 1 to the inverted pattern.",
+        "It is used because it provides one representation of zero and lets the same fixed-width binary addition circuitry handle positive and negative integers. In 8 bits, its representable range is −128 to +127.",
+      ],
+      materials: [
+        {
+          type: "reviewed-visual",
+          title: "Why two's complement replaced one's complement",
+          asset: "/assets/diagrams/course-v3-imagegen/twos-complement-origin.png",
+          facts: [
+            "One's complement has both positive and negative zero patterns.",
+            "Two's complement changes the rule to invert every bit and then add 1.",
+            "The result has one zero and lets the same fixed-width adder handle positive and negative operands.",
+          ],
+          alt: "An ImageGen history-and-purpose diagram showing why two's complement replaced one's complement and giving correct eight-bit examples.",
+          review: "imagegen-generated-and-course-reviewed",
+        },
+        {
+          type: "worked-example",
+          title: "Represent −23 using two's complement",
+          steps: [
+            ["Fix the width", "Write +23 using exactly 8 bits: 00010111."],
+            ["Invert every bit", "Invert the pattern to obtain 11101000."],
+            ["Add one", "Add 1 to the inverted pattern to obtain 11101001."],
+            ["Label the representation", "11101001 is the 8-bit two's-complement representation of −23."],
+          ],
+        },
+      ],
+      misconceptions: ["Stopping after inversion produces the one's-complement pattern; two's complement requires the additional +1 step."],
+      masteryCheck: { marks: 3, prompt: "Explain how two's complement represents −18 in 8 bits and why it is widely used.", answerCriteria: ["Write +18 as 00010010 and invert to 11101101.", "Add 1 to obtain 11101110.", "Link its use to one zero representation or shared addition circuitry."] },
+    }),
+    unit({
+      unitKey: "S1.03-CONVERSIONS",
+      syllabusId: "S1.03",
+      heading: "Conversion between number systems and representations",
+      objectiveIds: s103Objectives,
+      explanation: [
+        "A conversion preserves the integer value while changing the number base or representation. Identify the source, destination and any required bit width before choosing a method.",
+        "Use powers of 2 for binary and denary, four-bit nibbles for binary and hexadecimal, powers of 16 for hexadecimal and denary, separate four-bit digit groups for BCD, and fixed-width inversion rules for one's complement and two's complement.",
+        "When there is no convenient direct route, convert through denary or binary as an intermediate representation, then reverse the route to check that the value has not changed.",
+      ],
+      materials: [
+        {
+          type: "reviewed-visual",
+          title: "Binary, denary and hexadecimal conversions",
+          asset: "/assets/diagrams/course-v3-imagegen/binary-denary-hex-conversion.png",
+          facts: [
+            "Binary and denary conversions use powers of 2.",
+            "Binary and hexadecimal conversions map four-bit groups to hexadecimal digits.",
+            "Denary and hexadecimal conversions use powers of 16 while preserving the integer value.",
+          ],
+          alt: "An ImageGen triangular diagram showing bidirectional conversions between binary, denary and hexadecimal using the equivalent values 00101101, 45 and 2D.",
+          review: "imagegen-generated-and-course-reviewed",
+        },
+        { type: "flow", title: "Convert without changing the value", steps: [["Name source, destination and width", "Separate number bases, BCD and signed fixed-width representations."], ["Apply the matching rule", "Use place values, nibbles, digit groups or the stated complement rule."], ["Preserve every required bit", "Keep leading zeros and the fixed width when the representation requires them."], ["Reverse-check the result", "Decode using the destination rule and confirm the original integer value."]] },
+        {
+          type: "worked-example",
+          title: "Convert 45 through the required representations",
+          steps: [
+            ["Denary to binary", "45 = 32 + 8 + 4 + 1, so 45 is 00101101 in 8-bit binary."],
+            ["Binary to hexadecimal", "Group 00101101 as 0010 1101; the nibbles map to hexadecimal 2D."],
+            ["Hexadecimal to denary", "For 2D, calculate 2 × 16 + 13 = 45."],
+            ["Denary to BCD", "Encode the digits 4 and 5 separately, giving 0100 0101."],
+            ["Positive to one's complement", "Invert 00101101 to obtain 11010010 as the 8-bit one's-complement representation of −45."],
+            ["Positive to two's complement", "Add 1 to the inverted pattern to obtain 11010011 as the 8-bit two's-complement representation of −45."],
+          ],
+        },
+      ],
+      misconceptions: ["Do not decode BCD as pure binary or use a signed representation without its fixed width; the destination representation determines the rule."],
+      masteryCheck: { marks: 6, prompt: "Convert denary 29 to 8-bit binary, hexadecimal and BCD, then give the 8-bit one's-complement and two's-complement representations of −29.", answerCriteria: ["Give 00011101 in 8-bit binary.", "Give hexadecimal 1D.", "Give BCD 0010 1001.", "Invert 00011101 to obtain one's complement 11100010.", "Add 1 to obtain two's complement 11100011.", "Use the stated 8-bit width throughout."] },
+    }),
+  ];
+}
+
+function makeLesson003Units() {
+  const s104Objectives = objectiveRows("S1.04").map(([id]) => id);
+  const s105Objectives = objectiveRows("S1.05").map(([id]) => id);
+  const unit = ({ unitKey, syllabusId, heading, objectiveIds, explanation, materials, misconceptions, masteryCheck }) => ({
+    unitKey,
+    syllabusId,
+    heading,
+    objectiveIds,
+    explanation,
+    materials: materials.map((material) => ({ ...material, objectiveIds })),
+    misconceptions,
+    teacherNote: `Teach ${heading} at this point in the lesson sequence.`,
+    masteryCheck,
+  });
+
+  return [
+    unit({
+      unitKey: "S1.04-UNSIGNED",
+      syllabusId: "S1.04",
+      heading: "Unsigned binary addition and subtraction",
+      objectiveIds: [s104Objectives[0]],
+      explanation: [
+        "An unsigned binary integer uses every bit as a non-negative place value. An unsigned 8-bit value represents an integer from 0 to 255.",
+        "For addition, align equal-width operands and work from the rightmost bit to the left. Use 0 + 0 = 0, 0 + 1 = 1, 1 + 1 = 10 and 1 + 1 + 1 = 11, carrying 1 into the next column when required.",
+        "For unsigned subtraction, align equal-width operands and borrow from the next column when the upper bit is smaller than the lower bit. A negative mathematical result cannot be represented as an unsigned value.",
+      ],
+      materials: [
+        {
+          type: "reviewed-visual",
+          title: "Unsigned binary addition",
+          asset: "/assets/diagrams/course-v3-imagegen/unsigned-binary-addition.png",
+          facts: [
+            "Align equal-width operands and add from right to left.",
+            "A column total of 2 writes 0 and carries 1; a total of 3 writes 1 and carries 1.",
+            "00101101 plus 00010111 equals 01000100, which is 45 plus 23 equals 68.",
+          ],
+          alt: "An ImageGen diagram of the exact eight-bit unsigned addition 00101101 plus 00010111 equals 01000100 with the four binary column rules.",
+          review: "imagegen-generated-and-course-reviewed",
+        },
+        { type: "flow", title: "Unsigned binary addition", steps: [["Align equal-width operands", "Place bits with the same value in the same column."], ["Start at the right", "Add both bits and any carry from the previous column."], ["Write and carry", "Write the result bit and carry 1 left for totals 2 or 3."], ["Complete every column", "Keep the result at the stated width for later checking."]] },
+        {
+          type: "worked-example",
+          title: "Add two unsigned 8-bit integers",
+          steps: [
+            ["Write equal-width operands", "45 is 00101101 and 23 is 00010111."],
+            ["Add from right to left", "Apply the four column rules and carry 1 into the next column whenever the column total is 2 or 3."],
+            ["Record the result", "00101101 + 00010111 = 01000100."],
+            ["Interpret the result", "01000100 represents 68 as an unsigned 8-bit integer."],
+          ],
+        },
+      ],
+      misconceptions: ["In unsigned arithmetic the most-significant bit is an ordinary positive place value; a leading 1 does not make the value negative."],
+      masteryCheck: { marks: 3, prompt: "Perform the unsigned 8-bit addition 00110110 + 00001101 and explain the carrying.", answerCriteria: ["Align the operands and add from the rightmost column.", "Show each carry into the next column.", "Give the result 01000011."] },
+    }),
+    unit({
+      unitKey: "S1.05-OVERFLOW",
+      syllabusId: "S1.05",
+      heading: "Overflow in fixed-width arithmetic",
+      objectiveIds: s105Objectives,
+      explanation: [
+        "Overflow occurs when the true mathematical result is outside the range that the stated bit width and representation can store. The stored bit pattern then cannot represent the true result.",
+        "For unsigned 8-bit addition, the permitted range is 0 to 255. A carry beyond the eighth bit shows that the true result needs nine bits; only the rightmost eight bits fit in the register.",
+        "A leftmost stored bit of 1 is not by itself overflow. For example, 01111111 + 00000001 = 10000000 represents 128 and still fits in the unsigned 8-bit range.",
+      ],
+      materials: [
+        {
+          type: "reviewed-visual",
+          title: "Unsigned 8-bit overflow",
+          asset: "/assets/diagrams/stage10-infographics/stage10-lesson-004-overflow.jpg",
+          facts: [
+            "Unsigned 8-bit storage represents values from 0 to 255.",
+            "Adding 240 and 16 produces the nine-bit true sum 1 00000000.",
+            "The stored rightmost eight bits are 00000000, which is not the true sum 256.",
+          ],
+          alt: "An unsigned 8-bit overflow diagram showing 240 plus 16 producing a ninth carry bit, while only 00000000 remains in the 8-bit result.",
+          review: "reviewed",
+        },
+        { type: "flow", title: "Check for overflow", steps: [["State the range", "Use the bit width and representation to establish the limits."], ["Calculate the true result", "Retain any bit produced beyond the fixed storage width."], ["Compare with the limits", "Overflow occurs only when the true result lies outside the range."], ["Report the stored pattern", "Distinguish the retained bits from the true mathematical result."]] },
+        {
+          type: "worked-example",
+          title: "Identify unsigned 8-bit overflow",
+          steps: [
+            ["State the range", "Eight unsigned bits can store values from 0 to 255."],
+            ["Add the operands", "11110000 + 00010000 = 1 00000000, which is the true value 256."],
+            ["Compare with the range", "256 is greater than 255, so overflow has occurred."],
+            ["State the stored result", "Only 00000000 fits in the 8-bit register; it is not the true mathematical sum."],
+          ],
+        },
+      ],
+      misconceptions: ["Overflow is not any internal carry and is not caused merely by a leftmost stored 1; it means the true result is outside the representable range."],
+      masteryCheck: { marks: 3, prompt: "Explain whether unsigned 8-bit addition overflows for 11111100 + 00000101.", answerCriteria: ["State the unsigned 8-bit range 0 to 255.", "Give the true sum 257 and the nine-bit result 1 00000001.", "Conclude that overflow occurs because 257 is outside the range."] },
+    }),
+    unit({
+      unitKey: "S1.04-SIGNED-EXTENSION",
+      syllabusId: "S1.04",
+      heading: "Extension: signed binary addition and subtraction",
+      objectiveIds: [s104Objectives[1]],
+      explanation: [
+        "Signed arithmetic extends the same fixed-width column addition method to positive and negative integers. Encode every negative operand in the stated signed representation before calculating.",
+        "With two's-complement operands, add every column including the most-significant bit and discard any carry beyond the fixed width. Interpret the retained result as a two's-complement value.",
+        "To calculate A − B, form the two's complement of B and add it to A at the same width. For signed 8-bit arithmetic, the final mathematical result must remain in the range −128 to +127.",
+      ],
+      materials: [
+        { type: "table", title: "Signed two's-complement addition", headers: ["Operand or result", "8-bit pattern", "Meaning"], rows: [["+5", "00000101", "positive operand"], ["−3", "11111101", "two's-complement operand"], ["retained sum", "00000010", "+2"]] },
+        { type: "flow", title: "Extend the method to signed integers", steps: [["Fix the width", "Use the same number of bits for every operand and result."], ["Encode negative operands", "Apply the stated signed representation before addition."], ["Add every column", "Use ordinary binary addition and discard a carry beyond the width."], ["Interpret and range-check", "Decode the retained signed result and compare it with the signed limits."]] },
+        {
+          type: "worked-example",
+          title: "Calculate +5 + (−3) in 8-bit two's complement",
+          steps: [
+            ["Encode the operands", "+5 is 00000101 and −3 is 11111101."],
+            ["Add at fixed width", "00000101 + 11111101 = 1 00000010."],
+            ["Retain eight bits", "Discard the carry beyond the 8-bit width, leaving 00000010."],
+            ["Interpret the result", "00000010 is positive 2, so +5 + (−3) = +2."],
+          ],
+        },
+      ],
+      misconceptions: ["For signed two's-complement addition, a carry beyond the most-significant bit is discarded; signed overflow is decided from the signed range, not from that carry alone."],
+      masteryCheck: { marks: 4, prompt: "Perform +9 + (−4) using 8-bit two's-complement addition.", answerCriteria: ["Encode +9 as 00001001.", "Encode −4 as 11111100.", "Add to obtain 1 00000101 and discard the carry beyond 8 bits.", "Interpret 00000101 as +5."] },
+    }),
+  ];
+}
+
+function makeLesson004Units() {
+  const objectives = objectiveRows("S1.07").map(([id]) => id);
+  const unit = ({ unitKey, heading, objectiveIds, explanation, materials, misconceptions, masteryCheck }) => ({
+    unitKey,
+    syllabusId: "S1.07",
+    heading,
+    objectiveIds,
+    explanation,
+    materials: materials.map((material) => ({ ...material, objectiveIds })),
+    misconceptions,
+    teacherNote: `Teach ${heading} as a separate character-encoding concept.`,
+    masteryCheck,
+  });
+
+  return [
+    unit({
+      unitKey: "S1.07-CHARACTER-SETS",
+      heading: "Character sets and internal binary representation",
+      objectiveIds: [objectives[0]],
+      explanation: [
+        "A character set defines a collection of characters and assigns a numeric character code to each character. The code identifies the character independently of how a font draws it on screen.",
+        "The numeric code is stored internally as a binary bit pattern. Software must use the agreed character set or encoding to interpret the stored bits as the intended character.",
+      ],
+      materials: [
+        { type: "flow", title: "From character to stored bits", preserveText: true, steps: [["Character", "The user enters or the program selects a symbol."], ["Numeric code", "The character set assigns that symbol a number."], ["Binary storage", "The number is encoded as a bit pattern in memory."], ["Interpretation", "Software decodes the bits using the agreed encoding."]] },
+        {
+          type: "worked-example",
+          title: "Store a character when its code is provided",
+          steps: [
+            ["Read the supplied code", "The question states that the character A has numeric code 65."],
+            ["Convert the code", "Convert 65 to the 8-bit pattern 01000001."],
+            ["Store the bits", "The computer stores 01000001 rather than a drawn picture of A."],
+            ["Interpret the bits", "Software uses the agreed encoding to map that code back to the character A."],
+          ],
+        },
+      ],
+      misconceptions: ["A computer stores a character code, not the visual shape drawn by a particular font."],
+      masteryCheck: { marks: 3, prompt: "Explain how a character entered at a keyboard is represented internally as binary data.", answerCriteria: ["State that a character set assigns the character a numeric code.", "State that the numeric code is stored as a binary bit pattern.", "Explain that software must interpret the bits using the agreed encoding."] },
+    }),
+    unit({
+      unitKey: "S1.07-ASCII",
+      heading: "ASCII",
+      objectiveIds: [objectives[1]],
+      explanation: [
+        "Standard ASCII is a 7-bit character set, so it provides 2⁷ = 128 possible character codes numbered 0 to 127.",
+        "Its repertoire includes common English letters, digits, punctuation and control characters. The limited number of codes means it cannot represent the full range of writing systems used worldwide.",
+      ],
+      materials: [
+        {
+          type: "reviewed-visual",
+          title: "Standard ASCII capacity",
+          asset: "/assets/diagrams/course-v3-imagegen/ascii-capacity.png",
+          facts: [
+            "Standard ASCII uses seven bits and therefore provides 128 codes numbered 0 to 127.",
+            "It includes common English letters, digits, punctuation and control characters.",
+            "The supplied example A equals code 65, stored as the seven-bit pattern 1000001.",
+          ],
+          alt: "An ImageGen capacity diagram showing seven-bit standard ASCII, 128 codes and the code range 0 to 127.",
+          review: "imagegen-generated-and-course-reviewed",
+        },
+        {
+          type: "worked-example",
+          title: "Check whether a supplied code fits standard ASCII",
+          steps: [
+            ["Use the width", "A 7-bit code can represent values from 0 to 127."],
+            ["Inspect the supplied value", "The supplied code value is 65, which lies inside that range."],
+            ["Write seven bits", "65 is written as the 7-bit pattern 1000001."],
+            ["State the conclusion", "The supplied character code can be represented in standard ASCII."],
+          ],
+        },
+      ],
+      misconceptions: ["ASCII does not provide 256 codes; standard ASCII uses 7 bits and therefore provides 128 codes."],
+      masteryCheck: { marks: 2, prompt: "Explain why standard ASCII provides 128 possible codes and state one limitation.", answerCriteria: ["State that 7 bits provide 2⁷ = 128 patterns.", "State that its limited repertoire cannot represent the full range of world writing systems."] },
+    }),
+    unit({
+      unitKey: "S1.07-EXTENDED-ASCII",
+      heading: "Extended ASCII",
+      objectiveIds: [objectives[2]],
+      explanation: [
+        "Extended ASCII uses 8-bit character codes, so it provides 2⁸ = 256 possible code values numbered 0 to 255.",
+        "The additional codes can represent extra accented letters and symbols, but 256 values are still insufficient for all world writing systems. Different extended-ASCII code pages may assign different characters to some of the added code values.",
+      ],
+      materials: [
+        {
+          type: "reviewed-visual",
+          title: "Extended ASCII capacity",
+          asset: "/assets/diagrams/course-v3-imagegen/extended-ascii-capacity.png",
+          facts: [
+            "Extended ASCII uses eight bits and therefore provides 256 code values numbered 0 to 255.",
+            "Values 128 to 255 can add accented letters and symbols.",
+            "The upper-range characters depend on the selected code page, so extended ASCII is not universal.",
+          ],
+          alt: "An ImageGen capacity diagram showing eight-bit extended ASCII, 256 codes and code-page-dependent upper values.",
+          review: "imagegen-generated-and-course-reviewed",
+        },
+        {
+          type: "worked-example",
+          title: "Use a supplied extended-ASCII code",
+          steps: [
+            ["Read the supplied code page", "The question supplies an 8-bit code page in which a character has code value 233."],
+            ["Check the range", "233 lies within the 8-bit range 0 to 255."],
+            ["Convert the value", "233 is stored as the 8-bit pattern 11101001."],
+            ["Keep the interpretation", "The selected code page determines which character that upper-range value represents."],
+          ],
+        },
+      ],
+      misconceptions: ["Extended ASCII is not a single universal worldwide repertoire; an 8-bit code still provides only 256 values."],
+      masteryCheck: { marks: 2, prompt: "Explain one difference between standard ASCII and extended ASCII.", answerCriteria: ["State that extended ASCII uses 8 bits rather than 7 bits.", "State that it provides 256 possible codes rather than 128."] },
+    }),
+    unit({
+      unitKey: "S1.07-UNICODE",
+      heading: "Unicode",
+      objectiveIds: [objectives[3]],
+      explanation: [
+        "Unicode assigns code points to characters from a very wide range of languages, symbol systems and modern character collections. This makes it suitable for multilingual data and communication.",
+        "Unicode code points can be stored using encodings such as UTF-8 or UTF-16. It is inaccurate to claim that every Unicode character is always stored using exactly the same number of bits.",
+      ],
+      materials: [
+        {
+          type: "reviewed-visual",
+          title: "Unicode supports global character repertoires",
+          asset: "/assets/diagrams/stage10-infographics/stage10-lesson-007-unicode.jpg",
+          facts: [
+            "Unicode assigns code points for characters from many languages and symbol systems.",
+            "Its repertoire is much larger than the ASCII repertoires.",
+            "The number of stored bytes depends on the Unicode encoding and the character.",
+          ],
+          alt: "A Unicode diagram showing characters from multiple writing systems and symbols, with a note that storage size depends on the encoding used.",
+          review: "reviewed",
+        },
+        {
+          type: "worked-example",
+          title: "Choose a character set for a multilingual website",
+          steps: [
+            ["Identify the requirement", "The website must store English, Chinese and Arabic text as well as symbols."],
+            ["Compare the repertoires", "The ASCII repertoires do not provide codes for all of those characters."],
+            ["Choose Unicode", "Unicode has code points for the required writing systems and symbols."],
+            ["State the storage detail", "A Unicode encoding such as UTF-8 converts those code points into stored bytes."],
+          ],
+        },
+      ],
+      misconceptions: ["Unicode is not restricted to exactly 16 bits per character; the stored length depends on the encoding and character."],
+      masteryCheck: { marks: 3, prompt: "Explain why Unicode is preferred to ASCII for a multilingual messaging system.", answerCriteria: ["State that Unicode supports a much wider character repertoire.", "Link that repertoire to the required languages and symbols.", "State that a Unicode encoding converts code points into stored binary data."] },
+    }),
+  ];
+}
+
+function makeLesson005Units() {
+  const bitmapObjectives = objectiveRows("S1.08").map(([id]) => id);
+  const vectorObjectives = objectiveRows("S1.09").map(([id]) => id);
+  const visual = (title, asset, facts, alt) => ({
+    type: "reviewed-visual",
+    title,
+    asset: `/assets/diagrams/course-v3-imagegen/${asset}.png`,
+    facts,
+    alt,
+    review: "imagegen-generated-and-course-reviewed",
+  });
+  const unit = ({ unitKey, syllabusId, heading, objectiveIds, explanation, materials, misconceptions, masteryCheck }) => ({
+    unitKey,
+    syllabusId,
+    heading,
+    objectiveIds,
+    explanation,
+    materials: materials.map((material) => ({ ...material, objectiveIds })),
+    misconceptions,
+    teacherNote: `Teach ${heading} as one self-contained image-representation concept.`,
+    masteryCheck,
+  });
+
+  return [
+    unit({
+      unitKey: "S1.08-BITMAP-STRUCTURE",
+      syllabusId: "S1.08",
+      heading: "How a bitmap image is stored",
+      objectiveIds: [bitmapObjectives[0]],
+      explanation: [
+        "A bitmap image is represented as a rectangular grid of picture elements. The file stores an ordered colour value for every pixel, row by row or in another defined order.",
+        "The file header stores metadata needed to interpret the pixel data, such as width, height, colour depth and file type. Software reads the header and then uses the ordered pixel values to reconstruct the image correctly.",
+      ],
+      materials: [
+        visual(
+          "How a bitmap image is stored",
+          "bitmap-composition",
+          [
+            "A bitmap file contains a file header and pixel data.",
+            "The header supplies width, height, colour depth and file-type metadata.",
+            "The ordered colour values allow software to rebuild the rectangular image.",
+          ],
+          "An ImageGen diagram separating a bitmap file header from ordered pixel data and showing how software rebuilds the image.",
+        ),
+        {
+          type: "worked-example",
+          title: "Interpret a tiny bitmap file",
+          steps: [
+            ["Read the header", "The header states width 3 pixels, height 2 pixels and a colour depth of 1 bit per pixel."],
+            ["Read the pixel data", "The six stored values are 1 0 1 0 1 0 in the file's defined row order."],
+            ["Rebuild the grid", "Place three values in each row to obtain rows 1 0 1 and 0 1 0."],
+          ],
+        },
+      ],
+      misconceptions: ["The file header describes how to interpret the bitmap; it is not one of the image pixels."],
+      masteryCheck: { marks: 3, prompt: "Describe how a bitmap file header and its pixel data are used to reconstruct an image.", answerCriteria: ["State that the header stores interpretation metadata such as width, height or colour depth.", "State that pixel data stores an ordered colour value for each pixel.", "Explain that software uses both parts to rebuild the rectangular image."] },
+    }),
+    unit({
+      unitKey: "S1.08-PIXEL",
+      syllabusId: "S1.08",
+      heading: "Pixel",
+      objectiveIds: [bitmapObjectives[0]],
+      explanation: [
+        "A pixel is one picture element in a bitmap. Each pixel occupies one position in the stored image grid and is assigned one colour value.",
+        "A pixel is a data element rather than a fixed physical size. How large it appears depends on the display size and the relationship between the image and screen resolutions.",
+      ],
+      materials: [
+        visual(
+          "What is a pixel?",
+          "pixel-definition",
+          ["A pixel is one picture element in a bitmap.", "Each pixel stores one colour value.", "A pixel is a data element, not a fixed physical size."],
+          "An ImageGen diagram magnifying a bitmap photograph into a grid and identifying one highlighted square as one pixel.",
+        ),
+      ],
+      misconceptions: ["A pixel is not a fixed-size square on every screen; it is one stored picture element in the bitmap grid."],
+      masteryCheck: { marks: 2, prompt: "Define a pixel and explain what value it contributes to a bitmap image.", answerCriteria: ["Define a pixel as one picture element or one position in the bitmap grid.", "State that it stores one colour value."] },
+    }),
+    unit({
+      unitKey: "S1.08-COLOUR-DEPTH",
+      syllabusId: "S1.08",
+      heading: "Colour depth",
+      objectiveIds: [bitmapObjectives[2], bitmapObjectives[5]],
+      explanation: [
+        "Colour depth is the number of bits used to store the colour of each pixel. A colour depth of n bits provides 2ⁿ possible bit patterns and therefore up to 2ⁿ possible colours.",
+        "Increasing colour depth can represent colours more accurately and reduce visible banding, but it stores more bits for every pixel. At the same image resolution, a higher colour depth therefore increases the uncompressed file size.",
+      ],
+      materials: [
+        visual(
+          "Colour depth: bits per pixel",
+          "colour-depth",
+          ["One, two, four and eight bits per pixel provide 2, 4, 16 and 256 possible colours respectively.", "n bits per pixel provide 2 to the power n possible colours.", "Higher colour depth increases file size at the same resolution."],
+          "An ImageGen diagram comparing the same pixel-art subject at one, two, four and eight bits per pixel.",
+        ),
+        {
+          type: "worked-example",
+          title: "Calculate the palette capacity",
+          steps: [["Use the colour depth", "A colour depth of 6 bits assigns six bits to each pixel."], ["Count the patterns", "Six bits provide 2⁶ = 64 possible bit patterns."], ["State the result", "The bitmap can use up to 64 different colour values."]],
+        },
+      ],
+      misconceptions: ["Colour depth changes the bits stored for each pixel; it does not change the number of pixels in the image."],
+      masteryCheck: { marks: 3, prompt: "Explain how increasing colour depth affects a bitmap's colour accuracy and uncompressed file size.", answerCriteria: ["State that colour depth is bits per pixel.", "Explain that more bits provide more possible colours.", "Explain that more bits per pixel increase file size at the same resolution."] },
+    }),
+    unit({
+      unitKey: "S1.08-IMAGE-RESOLUTION",
+      syllabusId: "S1.08",
+      heading: "Image resolution",
+      objectiveIds: [bitmapObjectives[1], bitmapObjectives[4]],
+      explanation: [
+        "Image resolution is the number of pixels used to represent the stored image, normally stated as width × height. For the same subject and colour depth, a higher image resolution records more spatial detail because more pixel positions are available.",
+        "More pixels also increase the uncompressed file size. Screen resolution instead describes the pixel dimensions of a display; it does not state how many pixels are stored in a particular image file.",
+      ],
+      materials: [
+        visual(
+          "Image resolution: width × height",
+          "image-resolution",
+          ["Image resolution is stated as stored pixel width multiplied by stored pixel height.", "More stored pixels can record more spatial detail and increase uncompressed file size.", "Screen resolution describes the display rather than the stored image."],
+          "An ImageGen comparison of lower and higher bitmap image resolution with exact example pixel totals and a separate screen-resolution note.",
+        ),
+      ],
+      misconceptions: ["Image resolution describes the stored image and screen resolution describes a display; the two terms are not interchangeable."],
+      masteryCheck: { marks: 3, prompt: "Distinguish image resolution from screen resolution and explain one effect of increasing image resolution.", answerCriteria: ["Define image resolution as the stored image's width by height in pixels.", "Define screen resolution as the display's pixel dimensions.", "Link a higher image resolution to more recorded detail and a larger uncompressed file at the same colour depth."] },
+    }),
+    unit({
+      unitKey: "S1.08-FILE-SIZE",
+      syllabusId: "S1.08",
+      heading: "Uncompressed bitmap file size",
+      objectiveIds: [bitmapObjectives[3]],
+      explanation: [
+        "The uncompressed bitmap pixel-data size in bits is width × height × colour depth. Width × height gives the number of pixels, and colour depth gives the bits stored for each pixel.",
+        "Divide the bit total by 8 to convert bits to bytes. This basic calculation excludes file-header overhead unless the question supplies an additional header size.",
+      ],
+      materials: [
+        visual(
+          "Uncompressed bitmap file size",
+          "bitmap-file-size",
+          ["Width multiplied by height multiplied by colour depth gives the pixel-data size in bits.", "An 800 by 600 image at 24 bits per pixel stores 11,520,000 pixel-data bits.", "Dividing by eight gives 1,440,000 bytes before any supplied header overhead."],
+          "An ImageGen formula diagram with the exact calculation for an 800 by 600 bitmap at 24 bits per pixel.",
+        ),
+        {
+          type: "worked-example",
+          title: "Calculate a bitmap pixel-data size",
+          steps: [["Count the pixels", "640 × 480 = 307,200 pixels."], ["Multiply by colour depth", "307,200 × 8 = 2,457,600 bits."], ["Convert to bytes", "2,457,600 ÷ 8 = 307,200 bytes."]],
+        },
+      ],
+      misconceptions: ["Do not multiply by the number of colours; multiply the pixel count by the number of bits stored per pixel."],
+      masteryCheck: { marks: 3, prompt: "Calculate the uncompressed pixel-data size in bytes for a 320 × 200 bitmap with a colour depth of 4 bits.", answerCriteria: ["Calculate 320 × 200 = 64,000 pixels.", "Calculate 64,000 × 4 = 256,000 bits.", "Divide by 8 to obtain 32,000 bytes."] },
+    }),
+    unit({
+      unitKey: "S1.09-VECTOR-LIST",
+      syllabusId: "S1.09",
+      heading: "How a vector graphic is stored",
+      objectiveIds: [vectorObjectives[0]],
+      explanation: [
+        "A vector graphic is encoded as a drawing list. Each entry defines a drawing object and properties such as its type, coordinates, dimensions, line colour, fill colour and line thickness.",
+        "When the graphic is displayed, software reads the list in order and redraws the objects from their stored properties. The file does not store a fixed colour value for every position in a pixel grid.",
+      ],
+      materials: [
+        visual(
+          "How a vector graphic is stored",
+          "vector-drawing-list",
+          ["A vector drawing list stores objects such as rectangles, circles and lines.", "Each object stores properties including coordinates, dimensions and colours.", "Software reads the list and redraws the complete image."],
+          "An ImageGen diagram showing a vector drawing list of objects and properties being rendered into a completed graphic.",
+        ),
+        {
+          type: "worked-example",
+          title: "Read a vector drawing list",
+          steps: [["Read the first object", "Draw a blue rectangle at coordinates (10, 10) with width 40 and height 20."], ["Read the next object", "Draw a black line from (10, 30) to (50, 30) with thickness 2."], ["Render in order", "Software applies the stored object properties to construct the complete graphic."]],
+        },
+      ],
+      misconceptions: ["A vector file stores drawing objects and their properties, not the colour of every pixel in a fixed grid."],
+      masteryCheck: { marks: 3, prompt: "Describe how a vector drawing list represents a graphic.", answerCriteria: ["State that the file stores drawing objects.", "Give relevant stored properties such as coordinates, dimensions, colours or line thickness.", "Explain that software reads the list and redraws the objects."] },
+    }),
+    unit({
+      unitKey: "S1.09-BITMAP-VECTOR-SCALING",
+      syllabusId: "S1.09",
+      heading: "Bitmap and vector enlargement",
+      objectiveIds: [vectorObjectives[1], vectorObjectives[2]],
+      explanation: [
+        "Enlarging a bitmap spreads a fixed grid of stored pixels over a larger area. Individual square pixels can become visible and curved or diagonal edges may look jagged or pixelated.",
+        "A vector graphic is redrawn from its objects and properties at the new size, so its curves and edges remain smooth. Choose vector for logos and diagrams that must scale cleanly; choose bitmap for detailed continuous-tone photographs where each pixel records colour variation.",
+      ],
+      materials: [
+        visual(
+          "Enlarging bitmap and vector graphics",
+          "bitmap-vector-enlargement",
+          ["A bitmap enlargement reveals the stored pixel grid and may become pixelated.", "A vector enlargement is redrawn from objects and properties and remains smooth.", "The representation should be chosen from the image content and scaling requirement."],
+          "An ImageGen side-by-side comparison showing a bitmap icon becoming pixelated and the same vector icon remaining smooth when enlarged.",
+        ),
+      ],
+      misconceptions: ["Vector scaling stays smooth because objects are redrawn; it does not create missing photographic detail or make vector suitable for every image."],
+      masteryCheck: { marks: 3, prompt: "Justify the use of vector graphics rather than a bitmap for a logo displayed at many sizes.", answerCriteria: ["State that vector graphics store objects and properties.", "Explain that the objects are redrawn at the new size without enlarging a fixed pixel grid.", "Link this to smooth edges and avoidance of pixelation in the logo."] },
+    }),
+  ];
+}
+
+function makeLesson006Units() {
+  const soundObjectives = objectiveRows("S1.10").map(([id]) => id);
+  const compressionObjectives = objectiveRows("S1.11").map(([id]) => id);
+  const visual = (title, asset, facts, alt) => ({
+    type: "reviewed-visual",
+    title,
+    asset: `/assets/diagrams/course-v3-imagegen/${asset}.png`,
+    facts,
+    alt,
+    review: "imagegen-generated-and-course-reviewed",
+  });
+  const unit = ({ unitKey, syllabusId, heading, objectiveIds, explanation, materials, misconceptions, masteryCheck }) => ({
+    unitKey,
+    syllabusId,
+    heading,
+    objectiveIds,
+    explanation,
+    materials: materials.map((material) => ({ ...material, objectiveIds })),
+    misconceptions,
+    teacherNote: `Teach ${heading} as one self-contained sound or compression concept.`,
+    masteryCheck,
+  });
+
+  return [
+    unit({
+      unitKey: "S1.10-ANALOGUE-SAMPLING",
+      syllabusId: "S1.10",
+      heading: "Analogue sound and the sampling process",
+      objectiveIds: [soundObjectives[0], soundObjectives[1]],
+      explanation: [
+        "Sound in air is an analogue wave whose amplitude changes continuously. A computer creates a digital representation by measuring the wave amplitude at regular time intervals.",
+        "Each measurement is quantised to the nearest available amplitude level. The selected level is then encoded as a binary sample value, and the ordered sample values form the stored digital sound.",
+      ],
+      materials: [
+        visual(
+          "From continuous sound to digital samples",
+          "analogue-sound-sampling",
+          ["Analogue sound has continuously changing amplitude.", "Sampling measures amplitude at regular time intervals.", "Each measurement is quantised to an available level and the selected level is stored as binary."],
+          "An ImageGen four-stage diagram showing a continuous analogue sound wave being sampled, quantised and encoded as binary sample values.",
+        ),
+        {
+          type: "worked-example",
+          title: "Trace one sample into storage",
+          steps: [["Measure", "At the next regular sampling instant, the converter measures the current analogue amplitude."], ["Quantise", "The measured amplitude is assigned to the nearest level available at the stated sampling resolution."], ["Encode", "The selected level is stored as its binary sample value in time order."]],
+        },
+      ],
+      misconceptions: ["Sampling records discrete measurements of a continuous wave; it does not store the complete continuous waveform directly."],
+      masteryCheck: { marks: 3, prompt: "Describe how sampling, quantisation and binary encoding represent an analogue sound wave.", answerCriteria: ["State that amplitude is measured at regular time intervals.", "State that each measurement is assigned to an available amplitude level.", "State that the selected levels are stored as ordered binary sample values."] },
+    }),
+    unit({
+      unitKey: "S1.10-SAMPLING-RATE",
+      syllabusId: "S1.10",
+      heading: "Sampling rate",
+      objectiveIds: [soundObjectives[2]],
+      explanation: [
+        "Sampling rate is the number of samples taken each second, measured in hertz (Hz). A higher sampling rate records the wave at more points in the same time interval.",
+        "More frequent measurements can represent changes over time more accurately. At the same sampling resolution, number of channels and duration, a higher sampling rate stores more sample values and therefore increases file size.",
+      ],
+      materials: [
+        visual(
+          "Sampling rate: samples per second",
+          "sampling-rate",
+          ["Sampling rate is the number of samples taken each second and is measured in hertz.", "A higher rate takes more measurements in the same time.", "At the same resolution and duration, a higher sampling rate increases file size."],
+          "An ImageGen comparison showing sparse samples at a lower sampling rate and denser samples at a higher sampling rate over the same one-second waveform.",
+        ),
+      ],
+      misconceptions: ["Sampling rate is samples per second; it is not the number of bits used for each sample."],
+      masteryCheck: { marks: 3, prompt: "Explain how increasing the sampling rate affects a digital sound recording.", answerCriteria: ["State that more samples are taken each second.", "Link more time measurements to a closer representation of wave changes over time.", "State that more sample values increase file size when other factors stay the same."] },
+    }),
+    unit({
+      unitKey: "S1.10-SAMPLING-RESOLUTION",
+      syllabusId: "S1.10",
+      heading: "Sampling resolution",
+      objectiveIds: [soundObjectives[3]],
+      explanation: [
+        "Sampling resolution is the number of bits used to store each sample. A resolution of n bits provides 2ⁿ available amplitude levels.",
+        "More levels reduce the difference between a measured amplitude and the selected quantised level, improving amplitude accuracy. At the same sampling rate, channel count and duration, more bits per sample increase file size.",
+      ],
+      materials: [
+        visual(
+          "Sampling resolution: bits per sample",
+          "sampling-resolution",
+          ["Three bits per sample provide eight available amplitude levels, while eight bits provide 256.", "More levels can reduce quantisation error.", "At the same sampling rate and duration, more bits per sample increase file size."],
+          "An ImageGen comparison showing a measured amplitude quantised with eight coarse levels and with a dense set of 256 levels.",
+        ),
+        {
+          type: "worked-example",
+          title: "Compare two sampling resolutions",
+          steps: [["Count 8-bit levels", "2⁸ = 256 different amplitude levels are available."], ["Count 16-bit levels", "2¹⁶ = 65,536 different amplitude levels are available."], ["Compare", "Sixteen-bit samples can represent amplitude more accurately but store twice as many bits for each sample."]],
+        },
+      ],
+      misconceptions: ["Sampling resolution is bits per sample; it is not the number of samples taken each second."],
+      masteryCheck: { marks: 3, prompt: "Explain how increasing sampling resolution affects sound accuracy and file size.", answerCriteria: ["State that more bits are used for each sample.", "Explain that more amplitude levels can reduce quantisation error.", "State that more bits per sample increase file size when other factors stay the same."] },
+    }),
+    unit({
+      unitKey: "S1.11-WHY-COMPRESS",
+      syllabusId: "S1.11",
+      heading: "Why files are compressed",
+      objectiveIds: [compressionObjectives[0]],
+      explanation: [
+        "Compression reduces the number of bits needed to represent a file. Smaller files require less storage space and fewer bits must be sent across a network.",
+        "At the same data-transfer rate, sending fewer bits can reduce transfer or download time. For the same transfer time, the smaller amount of data requires less bandwidth capacity.",
+      ],
+      materials: [
+        visual(
+          "Why files are compressed",
+          "compression-need",
+          ["Compression reduces the number of bits needed to represent a file.", "A compressed file uses less storage space and sends fewer bits.", "Fewer bits can reduce transfer time at the same data-transfer rate."],
+          "An ImageGen cause-and-effect diagram showing a large file compressed into a smaller file with storage and transmission benefits.",
+        ),
+      ],
+      misconceptions: ["Compression means reducing the number of stored bits; it does not automatically mean that information or quality has been lost."],
+      masteryCheck: { marks: 3, prompt: "Explain why an organisation compresses files before storage or transmission.", answerCriteria: ["State that compressed files use less storage space.", "State that fewer bits must be transmitted.", "Link fewer transmitted bits to shorter transfer time at the same rate or lower bandwidth use for the same time."] },
+    }),
+    unit({
+      unitKey: "S1.11-LOSSY-FILES",
+      syllabusId: "S1.11",
+      heading: "Lossy compression and different file types",
+      objectiveIds: [compressionObjectives[1], compressionObjectives[4], compressionObjectives[5], compressionObjectives[6], compressionObjectives[7]],
+      explanation: [
+        "Lossy compression permanently removes selected information, so the original file cannot be reconstructed exactly. It is suitable only when the intended use can tolerate a controlled reduction in fidelity.",
+        "Lossy text is unsuitable when every character must remain exact. A bitmap can lose fine detail or colour precision; a vector drawing can lose or simplify objects and properties; sound can lose less perceptible detail. Stronger loss may reduce size further but can produce visible or audible artefacts.",
+      ],
+      materials: [
+        visual(
+          "Lossy compression: effect on file types",
+          "lossy-file-effects",
+          ["Lossy compression permanently removes selected information.", "The effect differs for text, bitmap images, vector graphics and sound.", "The original cannot be reconstructed exactly and quality can fall."],
+          "An ImageGen four-panel diagram showing the effects of lossy compression on text, bitmap images, vector graphics and sound.",
+        ),
+      ],
+      misconceptions: ["Lossy decompression does not restore the removed information; it only reconstructs an approximation from the retained data."],
+      masteryCheck: { marks: 4, prompt: "Explain why lossy compression may be suitable for a streamed sound file but unsuitable for an ordinary text file.", answerCriteria: ["State that lossy compression permanently removes information.", "Link sound use to tolerating removal of less perceptible detail.", "State that audio quality can fall.", "Explain that changing or removing text characters prevents exact recovery of the message."] },
+    }),
+    unit({
+      unitKey: "S1.11-LOSSLESS-FILES",
+      syllabusId: "S1.11",
+      heading: "Lossless compression and different file types",
+      objectiveIds: [compressionObjectives[1], compressionObjectives[3], compressionObjectives[4], compressionObjectives[5], compressionObjectives[6]],
+      explanation: [
+        "Lossless compression stores a reversible representation from which every original bit can be reconstructed. No source information is discarded.",
+        "It is required for ordinary text when every character matters and for any bitmap, vector graphic or sound master that must be reproduced exactly. Repeated patterns, pixels, object properties or sample values can be encoded more compactly, although the reduction depends on the data.",
+      ],
+      materials: [
+        visual(
+          "Lossless compression: effect on file types",
+          "lossless-file-effects",
+          ["Lossless decompression reconstructs the original data exactly.", "Text characters, bitmap pixels, vector objects and sound samples are all restored.", "Lossless methods exploit patterns without discarding information."],
+          "An ImageGen four-panel diagram showing exact lossless reconstruction for text, bitmap images, vector graphics and sound.",
+        ),
+      ],
+      misconceptions: ["Lossless means exact reconstruction, not that the compressed representation contains fewer bytes for every possible input."],
+      masteryCheck: { marks: 3, prompt: "Explain why lossless compression is required for a program source file and may be chosen for a bitmap master.", answerCriteria: ["State that every original bit or character is reconstructed exactly.", "Explain that a changed source character could change program meaning.", "Explain that an exact bitmap master preserves every original pixel value for future editing."] },
+    }),
+    unit({
+      unitKey: "S1.11-COMPARISON",
+      syllabusId: "S1.11",
+      heading: "Lossless and lossy compression compared",
+      objectiveIds: [compressionObjectives[1], compressionObjectives[7]],
+      explanation: [
+        "Choose lossless compression when exact reconstruction is required. Choose lossy compression only when some permanent information loss is acceptable for the intended use.",
+        "Lossy compression often produces a greater size reduction because it can discard selected detail. The decision must balance required fidelity, expected size reduction, file content and whether the output is a master copy or a delivery copy.",
+      ],
+      materials: [
+        {
+          type: "table",
+          title: "Lossless and lossy compression",
+          preserveText: true,
+          headers: ["Factor", "Lossless", "Lossy"],
+          rows: [
+            ["Reconstruction", "Original data reconstructed exactly", "Original cannot be reconstructed exactly"],
+            ["Information", "No source information discarded", "Selected information permanently removed"],
+            ["Typical reduction", "Often smaller reduction", "Often greater reduction"],
+            ["Choose when", "Exact data or an editable master is required", "Reduced size matters and lower fidelity is acceptable"],
+          ],
+        },
+      ],
+      misconceptions: ["File type alone does not decide the method; the required reconstruction fidelity and intended use decide whether loss is acceptable."],
+      masteryCheck: { marks: 4, prompt: "Compare lossless and lossy compression and justify which should be used for an editable master copy.", answerCriteria: ["State that lossless reconstructs the original exactly.", "State that lossy permanently removes selected information.", "State that lossy often achieves greater size reduction.", "Choose lossless for the master because its original data must remain available for later editing."] },
+    }),
+    unit({
+      unitKey: "S1.11-RLE",
+      syllabusId: "S1.11",
+      heading: "Run-length encoding (RLE)",
+      objectiveIds: [compressionObjectives[2]],
+      explanation: [
+        "Run-length encoding is a lossless method for adjacent identical data items. It replaces each run with a count followed by the repeated value or code; decoding repeats the value by its stored count to reconstruct the original exactly.",
+        "RLE is effective when long runs save more bits than the count-and-value pairs require. Frequent changes create many short runs, and the added count for each run can make the encoded data larger.",
+      ],
+      materials: [
+        visual(
+          "Run-length encoding (RLE)",
+          "rle",
+          ["AAAABBCCCCCCCCDD contains runs of four A, two B, eight C and two D.", "The count-then-value encoding is 4A 2B 8C 2D and decodes exactly.", "Long runs can save space while short runs can add overhead."],
+          "An ImageGen RLE diagram grouping the exact source sequence into adjacent runs, encoding it as 4A 2B 8C 2D and decoding it losslessly.",
+        ),
+        {
+          type: "worked-example",
+          title: "Encode, decode and judge RLE",
+          steps: [["Identify adjacent runs", "AAAABBCCCCCCCCDD contains four runs: AAAA, BB, CCCCCCCC and DD."], ["Encode", "Store count then value for each run: 4A 2B 8C 2D."], ["Decode", "Expanding the pairs reproduces AAAABBCCCCCCCCDD exactly."], ["Judge", "ABC becomes 1A 1B 1C, so short runs add overhead instead of saving space."]],
+        },
+      ],
+      misconceptions: ["RLE groups only adjacent identical values; separated occurrences of the same value belong to different runs."],
+      masteryCheck: { marks: 4, prompt: "Encode AAAAABCCCCC using RLE and explain why RLE is lossless and when it is effective.", answerCriteria: ["Give the count-then-value encoding 5A 1B 5C.", "State that decoding repeats each value by its count.", "State that the exact original sequence is reconstructed.", "Explain that long runs save space but short runs can add count overhead."] },
+    }),
+  ];
 }
 
 function selectExplanations(lesson, point) {
@@ -483,7 +1532,8 @@ function makePractice(sourceLesson, allObjectives, units) {
     type: index === 0 ? "Retrieval" : index === 1 ? "Application" : "Exam-style",
     marks: question.marks,
     prompt: clean(question.prompt),
-    objectiveIds: chooseQuestionObjectives(question, allObjectives),
+    objectiveIds: question.objectiveIds?.filter((id) => allObjectives.some(([objectiveId]) => objectiveId === id))
+      ?? chooseQuestionObjectives(question, allObjectives),
     answerPoints: sentences(question.answer),
     commonError: clean(question.commonError),
   }));
@@ -492,9 +1542,9 @@ function makePractice(sourceLesson, allObjectives, units) {
     const missing = unit.objectiveIds.filter((id) => !covered.has(id));
     if (!missing.length) continue;
     questions.push({
-      id: `V3-${sourceLesson.id}-${unit.syllabusId}-CHECK`,
+      id: `V3-${sourceLesson.id}-${unit.unitKey ?? unit.syllabusId}-CHECK`,
       type: "Knowledge check",
-      marks: Math.max(2, missing.length),
+      marks: unit.masteryCheck.marks ?? Math.max(2, missing.length),
       prompt: clean(unit.masteryCheck.prompt),
       objectiveIds: missing,
       answerPoints: unit.masteryCheck.answerCriteria.map(clean),
@@ -552,8 +1602,19 @@ function makeLessonSummary(units) {
 }
 
 function transformTeachingLesson(sourceLesson, sectionPosition) {
+  const lessonOverride = lessonPresentationOverrides[sourceLesson.id] ?? {};
   const allObjectives = sourceLesson.knowledgePoints.flatMap((point) => objectiveRows(point.id));
-  const units = sourceLesson.knowledgePoints.map((point, index) => {
+  const units = sourceLesson.id === "002"
+    ? makeLesson002Units()
+    : sourceLesson.id === "003"
+      ? makeLesson003Units()
+      : sourceLesson.id === "004"
+        ? makeLesson004Units()
+        : sourceLesson.id === "005"
+          ? makeLesson005Units()
+          : sourceLesson.id === "006"
+            ? makeLesson006Units()
+      : sourceLesson.knowledgePoints.map((point, index) => {
     const objectives = objectiveRows(point.id);
     const objectiveIds = objectives.map(([id]) => id);
     const override = specialTeaching[point.id] ?? teachingDepthOverrides[`${String(sourceLesson.lesson).padStart(3, "0")}:${point.id}`] ?? {};
@@ -562,10 +1623,11 @@ function transformTeachingLesson(sourceLesson, sectionPosition) {
     const misconceptions = override.misconceptions?.length ? override.misconceptions : misconceptionBySyllabus[point.id] ? [misconceptionBySyllabus[point.id]] : point.misconceptions;
     const explanation = selectExplanations(sourceLesson, point);
     const materials = materialForPoint(point, objectiveIds, mechanismSteps, workedExamples, explanation);
+    if (override.leadVisual) materials.unshift({ ...override.leadVisual, objectiveIds });
     if (index === 0 && sectionPosition === 0) materials.unshift(makeAnchorMaterial(sourceLesson.section, objectiveIds));
     return {
       syllabusId: point.id,
-      heading: String(point.displayTitle).includes("…") ? clean(point.title) : clean(point.displayTitle),
+      heading: override.heading ?? (String(point.displayTitle).includes("…") ? clean(point.title) : clean(point.displayTitle)),
       objectiveIds,
       explanation,
       materials: materials.filter(Boolean),
@@ -582,9 +1644,9 @@ function transformTeachingLesson(sourceLesson, sectionPosition) {
     section: sourceLesson.section,
     sectionTitle: sectionMeta[sourceLesson.section].title,
     syllabusIds: sourceLesson.syllabusIds,
-    title: sourceLesson.title,
-    subtitle: clean(sourceLesson.focus === "integrated-review" ? sourceLesson.title : sourceLesson.learningObjectives.join(" · ")),
-    guidingQuestion: clean(sourceLesson.prerequisitePrompt || `How would you explain and apply ${sourceLesson.title.toLowerCase()} in a new scenario?`),
+    title: lessonOverride.title ?? sourceLesson.title,
+    subtitle: lessonOverride.subtitle ?? clean(sourceLesson.focus === "integrated-review" ? sourceLesson.title : sourceLesson.learningObjectives.join(" · ")),
+    guidingQuestion: lessonOverride.guidingQuestion ?? clean(sourceLesson.prerequisitePrompt || `How would you explain and apply ${sourceLesson.title.toLowerCase()} in a new scenario?`),
     diagnostic: {
       prompt: clean(sourceLesson.prerequisitePrompt || `State one fact you already know about ${sourceLesson.title.toLowerCase()}.`),
       answer: sourceLesson.prerequisiteKnowledge?.length ? clean(sourceLesson.prerequisiteKnowledge[0]) : clean(sourceLesson.coreFacts[0]),
@@ -593,7 +1655,10 @@ function transformTeachingLesson(sourceLesson, sectionPosition) {
     units,
     practice,
     pastPaper: makePastPaper(sourceLesson, practice, allObjectives),
-    summary: makeLessonSummary(units),
+    summaryMode: lessonOverride.summaryMode,
+    summary: lessonOverride.summaryMode === "authored"
+      ? lessonOverride.summary
+      : makeLessonSummary(units),
     sources: [
       `Cambridge 9618 2027–2029 syllabus · ${sourceLesson.syllabusIds.join(", ")}`,
       "AL Computer Science Coursebook of New Syllabus · local teacher reference",
@@ -665,6 +1730,17 @@ function sliceTeachingLesson(sourceLesson, syllabusIds, title) {
   };
 }
 
+function attachNumberApplications(sourceLesson, applicationsLesson) {
+  const applicationsPoint = applicationsLesson.knowledgePoints.find((point) => point.id === "S1.06");
+  return {
+    ...sourceLesson,
+    syllabusIds: [...sourceLesson.syllabusIds, "S1.06"],
+    knowledgePoints: [...sourceLesson.knowledgePoints, applicationsPoint],
+    questionIds: [...sourceLesson.questionIds, "Q-L004-03"],
+    learningObjectives: [...sourceLesson.learningObjectives, applicationsPoint.title],
+  };
+}
+
 function mergeTeachingLessons(sourceLessons, syllabusIds, title) {
   const base = sourceLessons[0];
   const unique = (values) => [...new Set(values)];
@@ -685,9 +1761,14 @@ function mergeTeachingLessons(sourceLessons, syllabusIds, title) {
 const teaching = v2.lessons.filter((lesson) => lesson.section !== "Review");
 const firstBySection = new Map();
 for (const lesson of teaching) if (!firstBySection.has(lesson.section)) firstBySection.set(lesson.section, lesson.lesson);
+const section1Lesson002 = attachNumberApplications(teaching.find((lesson) => lesson.lesson === 2), teaching.find((lesson) => lesson.lesson === 4));
+const section1Lesson004 = sliceTeachingLesson(teaching.find((lesson) => lesson.lesson === 4), ["S1.07"], "Character encoding: ASCII, extended ASCII and Unicode");
 
 const rawCourse = [
-  ...teaching.filter((lesson) => lesson.section === 1).map((lesson) => transformTeachingLesson(lesson, lesson.lesson === firstBySection.get(1) ? 0 : 1)),
+  ...teaching.filter((lesson) => lesson.section === 1).map((lesson) => transformTeachingLesson(
+    lesson.lesson === 2 ? section1Lesson002 : lesson.lesson === 4 ? section1Lesson004 : lesson,
+    lesson.lesson === firstBySection.get(1) ? 0 : 1,
+  )),
   ...section2Lessons.map(transformSection2Lesson),
   ...teaching.filter((lesson) => lesson.section >= 3 && lesson.section <= 5).map((lesson) => transformTeachingLesson(lesson, lesson.lesson === firstBySection.get(lesson.section) ? 0 : 1)),
   transformTeachingLesson(teaching.find((lesson) => lesson.lesson === 31), 0),

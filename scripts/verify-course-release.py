@@ -39,7 +39,9 @@ def main() -> None:
         if any(re.fullmatch(r"web/course-v3/section-2/unit-\d{2}/index\.html", name) for name in names):
             raise SystemExit("Archived Section 2 unit routes entered the active release")
         manifest = json.loads(archive.read("release-manifest.json"))
-        if manifest.get("coursePageCount") != 93 or manifest.get("teachingUnitCount") != 145 or manifest.get("legacyCompatibilityCount") != 151:
+        course_contract = json.loads(archive.read("scripts/course-v3-contract.json"))
+        teaching_unit_count = sum(len(lesson["knowledgeUnits"]) for lesson in course_contract["lessons"] if lesson["kind"] == "teaching")
+        if manifest.get("coursePageCount") != 93 or manifest.get("teachingUnitCount") != teaching_unit_count or manifest.get("legacyCompatibilityCount") != 151:
             raise SystemExit("Embedded release manifest has incorrect counts")
         for row in manifest["files"]:
             if digest(archive.read(row["path"])) != row["sha256"]:

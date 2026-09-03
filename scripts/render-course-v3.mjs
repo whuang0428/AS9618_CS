@@ -5,6 +5,7 @@ import { fileURLToPath } from "node:url";
 
 import { courseV3Lessons, courseV3Meta, sectionMeta } from "./course-v3-content.mjs";
 import { unitMaterials } from "./course-v3-presentation.mjs";
+import { officialAsMapping } from "./syllabus-official-as-mapping.mjs";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const outRoot = join(root, "web", "course-v3");
@@ -231,7 +232,7 @@ for (const asset of assets) if (!existsSync(join(reviewedAssetRoot, asset.replac
 const contract = {
   ...courseV3Meta,
   generatedAt: "deterministic",
-  syllabusOrder: [...requirementOwners.keys()],
+  syllabusOrder: Object.keys(officialAsMapping),
   requirementOwners: Object.fromEntries(requirementOwners),
   lessons: courseV3Lessons.map((lesson) => ({
     sequenceIndex: lesson.sequenceIndex,
