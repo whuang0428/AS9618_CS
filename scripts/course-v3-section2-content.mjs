@@ -277,29 +277,54 @@ export const section2Lessons = [
     ],
     units: [
       {
-        heading: "Cloud changes where resources run and who controls the infrastructure",
-        objectiveIds: ["S2.06.A01", "S2.06.A02"],
+        heading: "Cloud computing provides remote resources through a network",
+        objectiveIds: ["S2.06.A01"],
         explanation: [
           "Cloud computing provides storage, processing, applications or platforms from remote infrastructure accessed through a network. The organisation uses the service without operating every physical server locally.",
-          "A public cloud is operated by a third-party provider and its underlying resources serve multiple customers with logical separation. A private cloud is dedicated to one organisation and may be operated by that organisation or on its behalf.",
-          "Public/private describes tenancy and control, not whether a file is publicly readable. Authentication, permissions and encryption remain necessary.",
+          "A client sends a request across its local network and the internet to provider infrastructure. A virtual server or managed service performs the requested processing or storage operation and returns the result.",
+          "Cloud describes where computing resources are provided and accessed; it does not mean that data has no physical location. The resources run on physical provider or organisation-controlled hardware.",
         ],
         materials: [
-          analogy("Shared facility and dedicated facility", ["S2.06.A01", "S2.06.A02"], "public-private-cloud-analogy.png", "A large professionally managed data-centre cutaway contains several visually separated zones for distinct customers; a smaller facility is dedicated to one customer.", "The left facility models provider-operated shared infrastructure with separated tenants; the right models organisation-only infrastructure.", "Data-centre rooms represent control and tenancy only. Real clouds deliver computing services and may distribute data and processing across many physical sites."),
           flow("One cloud request", ["S2.06.A01"], [
             ["Client", "Authenticates and requests storage, processing or an application"],
             ["Network", "Carries the request to remote infrastructure"],
             ["Cloud service", "Allocates resources and returns the result"],
           ]),
-          table("Public and private cloud", ["S2.06.A02"], ["Factor", "Public cloud", "Private cloud"], [
-            ["Infrastructure", "Provider-operated", "Dedicated to one organisation"],
-            ["Tenancy", "Underlying resources serve multiple customers", "Organisation-only environment"],
-            ["Control", "More provider control", "More organisational control/configuration"],
-            ["Typical trade-off", "Elastic capacity and lower initial infrastructure", "Control/compliance with higher dedicated cost"],
-          ]),
         ],
+        misconceptions: ["Cloud resources still run on physical computers and storage devices; ‘cloud’ describes remote service provision, not the absence of hardware."],
+        teacherNote: "先沿 client → network → remote resource 追踪一次 request，再讨论 public/private 的 tenancy。",
+      },
+      {
+        heading: "A public cloud uses shared third-party provider infrastructure",
+        objectiveIds: ["S2.06.A02"],
+        explanation: [
+          "A public cloud is operated by a third-party provider. Its underlying physical resources serve multiple customers, while virtualisation, accounts and permissions provide logical separation between customers.",
+          "Public cloud describes provider control and multi-customer tenancy. It does not mean that files are open to the public; authentication, permissions and encryption are still required.",
+          "Because the provider owns and operates the shared platform, a customer can obtain resources without purchasing all of the underlying hardware but accepts greater dependence on the provider's service and controls.",
+        ],
+        materials: [cards("Read a public cloud", ["S2.06.A02"], [
+          ["Operator", "A third-party provider operates the underlying platform."],
+          ["Tenancy", "Physical resources serve multiple logically separated customers."],
+          ["Access", "Accounts and permissions decide who may read each customer's data."],
+        ])],
         misconceptions: ["Public cloud does not mean public access; access rights are separate from tenancy."],
-        teacherNote: "用 ownership、tenancy、control 三个词固定比较轴，避免学生只写 public=free、private=secure。",
+        teacherNote: "固定三个判断词：third-party provider、shared infrastructure、logical separation。",
+      },
+      {
+        heading: "A private cloud is dedicated to one organisation",
+        objectiveIds: ["S2.06.A02"],
+        explanation: [
+          "A private cloud is dedicated to one organisation. It may be operated by that organisation on its own premises or hosted and managed on its behalf by another provider.",
+          "Private describes single-organisation tenancy and the potential for greater control or configuration. It does not require every server to be in the organisation's building.",
+          "Dedicated infrastructure can support control or compliance requirements, but it usually brings greater cost or management responsibility and still requires authentication, permissions, encryption and backup.",
+        ],
+        materials: [cards("Read a private cloud", ["S2.06.A02"], [
+          ["Tenancy", "Infrastructure is dedicated to one organisation."],
+          ["Location", "It may be on-site or hosted on the organisation's behalf."],
+          ["Control", "Greater control does not remove the need for security controls."],
+        ])],
+        misconceptions: ["Private cloud means dedicated to one organisation; it does not necessarily mean physically on-site or automatically secure."],
+        teacherNote: "把 private 与 on-premises 分开：dedicated tenancy 是定义，location 是可变条件。",
       },
       {
         heading: "Cloud benefits and risks must be connected to dependence",
@@ -514,11 +539,11 @@ export const section2Lessons = [
     units: [
       {
         heading: "Every LAN device has a specific job",
-        objectiveIds: ["S2.09.A01", "S2.09.A02", "S2.09.A03", "S2.09.A04"],
+        objectiveIds: ["S2.09.A01", "S2.09.A02", "S2.09.A03"],
         explanation: [
           "A NIC connects a device to a wired network; a WNIC connects it wirelessly. A wireless access point (WAP) bridges wireless devices into the wired LAN. Cables carry signals between wired interfaces.",
           "A switch learns and uses link-layer addresses to forward frames to the required LAN port. A server provides network services or resources such as authentication, files, printing or web content.",
-          "A bridge connects LAN segments and filters traffic between them. A repeater receives and regenerates a weakened signal so it can continue farther; it does not choose a destination.",
+          "These devices perform different jobs even when several functions share one physical case. Name the device and the exact forwarding, connection or service role it performs.",
         ],
         materials: [
           flow("One wireless request to a local server", ["S2.09.A01", "S2.09.A02", "S2.09.A03"], [
@@ -527,18 +552,48 @@ export const section2Lessons = [
             ["Switch", "Forwards the frame to the server port"],
             ["Server", "Checks access and provides the requested resource"],
           ]),
-          table("LAN hardware role map", ["S2.09.A01", "S2.09.A02", "S2.09.A03", "S2.09.A04"], ["Hardware", "Exact role", "Not this"], [
+          table("LAN hardware role map", ["S2.09.A01", "S2.09.A02", "S2.09.A03"], ["Hardware", "Exact role", "Not this"], [
             ["Switch", "Forwards frames within a LAN", "Does not provide the file itself"],
             ["Server", "Provides/manages network service or resource", "Not every central box is a switch"],
             ["NIC / WNIC", "Connects one device by wire / radio", "Not the wireless access point"],
             ["WAP", "Connects wireless devices to a LAN", "Not automatically the internet router"],
             ["Cable", "Carries a guided signal", "Does not interpret destination addresses"],
-            ["Bridge", "Connects/filters between LAN segments", "Not the route to every external network"],
-            ["Repeater", "Regenerates a weakened signal", "Does not forward by address"],
           ]),
         ],
         misconceptions: ["A WAP provides wireless LAN access; it is not simply another name for the router."],
         teacherNote: "用完整路径让学生说每个设备只做自己的 job；设备名和作用必须一一对应。",
+      },
+      {
+        heading: "A bridge connects and filters between LAN segments",
+        objectiveIds: ["S2.09.A04"],
+        explanation: [
+          "A bridge connects LAN segments and learns which link-layer or MAC addresses are reachable through each side. It uses that information to decide whether a frame needs to cross the bridge.",
+          "A frame whose destination remains on its source segment is filtered rather than copied to the other segment. A frame required on the other segment is forwarded across the bridge.",
+          "A bridge makes a link-layer forwarding decision inside a LAN; it does not replace the router that forwards IP packets between different networks.",
+        ],
+        materials: [cards("Bridge decision", ["S2.09.A04"], [
+          ["Connect", "Join two LAN segments."],
+          ["Filter", "Keep a local frame on its source segment."],
+          ["Forward", "Send a required frame to the other segment."],
+        ])],
+        misconceptions: ["A bridge connects LAN segments and filters frames; it is not the router for every external network."],
+        teacherNote: "用同段 frame 与跨段 frame 对比，让学生把 filter 和 forward 都说出来。",
+      },
+      {
+        heading: "A repeater regenerates a weakened signal",
+        objectiveIds: ["S2.09.A04"],
+        explanation: [
+          "As a signal travels through a medium, attenuation and distortion can make it too weak or unclear to continue reliably. A repeater receives that weakened signal and regenerates the intended signal pattern.",
+          "The restored signal is retransmitted so it can travel farther along the network medium. The repeater extends the usable transmission distance; it does not create a new destination.",
+          "A repeater does not inspect a MAC or IP destination and does not choose a route. Its job is signal regeneration rather than selective forwarding.",
+        ],
+        materials: [flow("Signal regeneration", ["S2.09.A04"], [
+          ["Receive", "Accept the weakened signal after transmission loss"],
+          ["Regenerate", "Restore the intended signal pattern"],
+          ["Retransmit", "Send the restored signal farther along the medium"],
+        ])],
+        misconceptions: ["A repeater regenerates a signal; it does not forward frames by address or route packets."],
+        teacherNote: "先画衰减波形再恢复波形；全程不出现 address lookup。",
       },
       {
         heading: "The router crosses a network boundary",
@@ -743,34 +798,70 @@ export const section2Lessons = [
         teacherNote: "让学生分类 infrastructure 与 service；internet 是路，WWW 是其中一种服务，不是两套不同网络。",
       },
       {
-        heading: "Access infrastructure connects the local router to wider networks",
-        objectiveIds: ["S2.14.A01", "S2.14.A02", "S2.14.A03", "S2.14.A04", "S2.14.A05"],
+        heading: "A modem adapts signals for the access link",
+        objectiveIds: ["S2.14.A01"],
         explanation: [
           "A modem converts or adapts signals into the form required by the access link and converts received signals back for the local digital system. A modem and router may share one physical case, but conversion and routing are distinct functions.",
-          "The PSTN is the public switched telephone network. Existing telephone infrastructure can carry access traffic, but characteristics depend on the service and shared provider network.",
-          "A dedicated line provides a permanent or reserved connection for one customer or site, offering predictable availability/capacity at higher cost. A cell phone network connects mobile devices by radio to a base station, providing mobility but depending on coverage, shared capacity and radio conditions.",
+          "For outgoing data, modulation or link adaptation produces a signal suitable for the physical access link. For incoming data, demodulation or conversion recovers the digital information required by the local system.",
+          "The modem does not inspect the destination IP address or choose the next network path. That routing decision belongs to the router even when a consumer device combines both functions in one case.",
         ],
         materials: [
-          table("Connection route and trade-off", ["S2.14.A02", "S2.14.A03", "S2.14.A04", "S2.14.A05"], ["Access route", "Path", "Useful when", "Limitation"], [
-            ["PSTN", "Local modem/access equipment → public switched telephone infrastructure", "Existing fixed-line infrastructure is available", "Shared/legacy path characteristics vary by service"],
-            ["Dedicated line", "Site router/access equipment → reserved provider circuit", "Predictable business/site-to-site connection is required", "Higher recurring and installation cost"],
-            ["Cell phone network", "Mobile modem/radio → base station → provider network", "Mobility or no fixed line", "Coverage, interference and shared capacity"],
-          ]),
-          flow("From a home device to the internet", ["S2.14.A01"], [
-            ["Device", "Creates the application data"],
-            ["LAN equipment", "NIC/WNIC, WAP and switch carry it locally"],
-            ["Router", "Selects the route to another network"],
-            ["Modem/access equipment", "Adapts signals for the access link"],
-            ["Provider network", "Carries packets toward the wider internet"],
-          ]),
-          table("Router is not modem", ["S2.14.A01"], ["Device function", "Router", "Modem"], [
-            ["Main decision", "Where should the packet go next?", "How must the signal be represented on this access link?"],
-            ["Uses", "Destination IP and routing information", "Modulation/conversion or link adaptation"],
-            ["May be combined?", "Yes, in one consumer device", "Yes, but the functions stay distinct"],
+          flow("Modem conversion in both directions", ["S2.14.A01"], [
+            ["Outgoing digital data", "Modem converts or adapts it for the access link"],
+            ["Access-link signal", "Physical link carries the suitable signal"],
+            ["Incoming signal", "Modem converts it back for the local digital system"],
           ]),
         ],
         misconceptions: ["A modem does not choose the internet route; the router performs the routing decision."],
-        teacherNote: "按 device → LAN → router → modem/access link → provider 口述路径，可避免把 router、modem、WAP 混成一个词。",
+        teacherNote: "把 router 的 route decision 与 modem 的 signal conversion 分两栏讲，即使两者在同一个盒子里。",
+      },
+      {
+        heading: "PSTN carries signals through switched fixed telephone lines",
+        objectiveIds: ["S2.14.A02"],
+        explanation: [
+          "PSTN means Public Switched Telephone Network. It is the fixed telephone system formed from telephone lines, cables and telephone exchanges that establish a switched path between connected endpoints.",
+          "A home telephone connects through a fixed telephone line to a telephone exchange. Further exchanges can switch the call or signal through the PSTN to another connected telephone line.",
+          "A computer can use a modem or access equipment to send data through a suitable telephone-line service. The modem is the endpoint conversion device; the PSTN is the wider switched telephone-line network.",
+        ],
+        materials: [flow("One PSTN path", ["S2.14.A02"], [
+          ["Endpoint", "Home telephone or computer with a modem"],
+          ["Fixed telephone line", "Connects the premises to a telephone exchange"],
+          ["PSTN exchanges", "Switch a path through the public telephone network"],
+        ])],
+        misconceptions: ["PSTN is the switched fixed telephone-line network; it is not an IP router mesh or a single server."],
+        teacherNote: "按附件参考图讲 physical telephone line → telephone exchange → switched telephone path，避免画成服务器网络。",
+      },
+      {
+        heading: "A dedicated line reserves a connection for one customer or site",
+        objectiveIds: ["S2.14.A03", "S2.14.A05"],
+        explanation: [
+          "A dedicated line provides a permanent or reserved provider connection for one customer or site rather than establishing a temporary connection only when required.",
+          "Reserved capacity can give predictable availability, performance or site-to-site connectivity, which can suit an organisation with continuous or critical communication requirements.",
+          "The organisation normally pays higher installation and recurring costs. A sound choice connects that extra cost to the scenario's need for predictable permanent connectivity.",
+        ],
+        materials: [cards("Dedicated-line decision", ["S2.14.A03", "S2.14.A05"], [
+          ["Structure", "Permanent or reserved provider connection."],
+          ["Benefit", "Predictable availability or capacity."],
+          ["Trade-off", "Higher installation and recurring cost."],
+        ])],
+        misconceptions: ["A dedicated line is a reserved connection; it is not another name for any ordinary fixed telephone line or local Ethernet cable."],
+        teacherNote: "每个 recommendation 都要把 reserved connection 的结构连到 availability/capacity，再扣回 higher cost。",
+      },
+      {
+        heading: "A cell phone network provides mobile radio access",
+        objectiveIds: ["S2.14.A04", "S2.14.A05"],
+        explanation: [
+          "A cell phone or cellular network connects a mobile device by radio to a base station. The base station passes the traffic into the cellular provider network and onward to wider networks.",
+          "As the user moves, the device can connect through available coverage areas and may transfer between base stations. This provides mobility without a fixed telephone line to the device.",
+          "Availability and performance depend on coverage, distance, obstacles, interference, radio conditions and capacity shared with other users. A recommendation must test those constraints against the scenario.",
+        ],
+        materials: [flow("One cellular access path", ["S2.14.A04", "S2.14.A05"], [
+          ["Mobile device", "Uses a radio link within cellular coverage"],
+          ["Base station", "Receives and transmits radio signals for the cell"],
+          ["Provider network", "Carries the traffic onward to wider networks"],
+        ])],
+        misconceptions: ["A cell phone network is the wider cellular access system; it is not the same as local WiFi through a wireless access point."],
+        teacherNote: "固定三段路径 mobile device → radio/base station → provider network，再评价 coverage 与 shared capacity。",
       },
     ],
     practice: [
@@ -807,7 +898,7 @@ export const section2Lessons = [
     guidingQuestion: "When a browser opens https://learn.example.org/course/page.html, which part does DNS resolve, which address identifies the interface, and how does the subnet decide whether the router is needed?",
     diagnostic: {
       prompt: "Does DNS translate the complete URL into a web page?",
-      answer: "No. DNS resolves the domain name to an IP address; the browser later requests the path from the web server.",
+      answer: "No. DNS resolves the domain name to an IP address; the browser later requests the named web page or file from the web server.",
     },
     objectives: [
       ["S2.15.A01", "Describe IPv4 format and 32-bit length."],
@@ -816,7 +907,7 @@ export const section2Lessons = [
       ["S2.15.A04", "Use subnet information to decide local or routed delivery."],
       ["S2.15.A05", "Compare public and private addresses and security implications."],
       ["S2.15.A06", "Compare static and dynamic assignment."],
-      ["S2.16.A01", "Break a URL into scheme, domain and path."],
+      ["S2.16.A01", "Identify the protocol, domain name and web page or file name in a URL."],
       ["S2.16.A02", "Explain DNS domain-to-IP resolution."],
       ["S2.16.A03", "Trace browser contact and resource request after DNS."],
     ],
@@ -840,12 +931,12 @@ export const section2Lessons = [
         teacherNote: "先数 bit/组，再问 address 属于哪个 interface。避免说 one computer always has one IP。",
       },
       {
-        heading: "Subnet, public/private and static/dynamic answer different questions",
-        objectiveIds: ["S2.15.A04", "S2.15.A05", "S2.15.A06"],
+        heading: "Subnetting decides whether delivery is local or routed",
+        objectiveIds: ["S2.15.A04"],
         explanation: [
           "Subnetting divides an address space into smaller logical networks. A host combines the destination address with the given subnet mask or prefix: a local destination can be sent within the subnet; a destination in another subnet is sent to a router.",
-          "A public IP address is routable on the public internet. A private address is used inside a local network and normally reaches public networks through address translation. Reduced direct reachability is useful, but private addressing does not guarantee security; firewalls, authentication, updates and permissions are still required.",
-          "A static address remains assigned until deliberately changed, which suits a server or printer that clients must find predictably. A dynamic address is allocated for a lease, commonly by DHCP, and may change; it simplifies management for ordinary client devices.",
+          "With a /24 prefix, the first 24 bits identify the network. For 192.168.10.37/24, destination 192.168.10.80 shares the network prefix and is local; destination 192.168.11.80 has a different prefix and must be sent to a router.",
+          "Subnetting answers a forwarding question about network membership. It does not by itself state whether an address is public, private, static or dynamic.",
         ],
         materials: [
           flow("Worked local-or-router decision", ["S2.15.A04"], [
@@ -854,43 +945,69 @@ export const section2Lessons = [
             ["Decision", "Destination is local; send within the LAN"],
             ["Contrast", "192.168.11.80 is outside that /24; send to the router"],
           ]),
-          table("Do not mix scope and assignment", ["S2.15.A05", "S2.15.A06"], ["Pair", "First", "Second", "Decision question"], [
-            ["Public / private", "Publicly routable", "Local private scope", "Where can it be routed?"],
-            ["Static / dynamic", "Deliberately stable", "Leased and may change", "How long is it assigned?"],
-            ["Security", "May be directly reachable, depending on controls", "Less directly reachable, but not automatically secure", "Which protections are still required?"],
-          ]),
         ],
-        misconceptions: ["Static does not mean public, and dynamic does not mean private; the pairs describe different properties."],
-        teacherNote: "用两条轴：scope（public/private）与 assignment（static/dynamic），让学生把四种组合都说得通。",
+        misconceptions: ["A subnet decision uses the supplied mask or prefix; physical distance does not decide whether the destination is local."],
+        teacherNote: "只讲一条轴：compare network prefix → local or router。先不要混入 public/private 或 DHCP。",
       },
       {
-        heading: "DNS resolves the domain; the browser requests the path",
+        heading: "Public and private IP addresses describe routing scope",
+        objectiveIds: ["S2.15.A05"],
+        explanation: [
+          "A public IP address is routable on the public internet. Public describes routing scope; it does not mean that every service at the address must be open to every user.",
+          "A private IP address is used inside a local network and is not routed directly across the public internet. Private interfaces commonly reach public networks through network address translation (NAT) at a router.",
+          "Private addressing reduces direct public reachability but does not guarantee security. Firewalls, authentication, updates, encryption and permissions remain necessary.",
+        ],
+        materials: [table("Public and private scope", ["S2.15.A05"], ["Property", "Public IP address", "Private IP address"], [
+          ["Routing scope", "Routable on the public internet", "Used inside a local network"],
+          ["Typical outward access", "Can identify an internet-facing interface", "Normally uses NAT to reach public networks"],
+          ["Security", "Access still depends on security controls", "Not automatically secure"],
+        ])],
+        misconceptions: ["Public does not mean unrestricted access, and private addressing alone does not make a device secure."],
+        teacherNote: "围绕 routing scope 与 NAT 讲，不把 public/private 误写成 user permission。",
+      },
+      {
+        heading: "Static and dynamic IP addresses describe assignment lifetime",
+        objectiveIds: ["S2.15.A06"],
+        explanation: [
+          "A static IP address remains assigned until it is deliberately changed. This suits a server or printer that clients must find predictably at the same address.",
+          "A dynamic IP address is assigned for a lease, commonly by DHCP. The service simplifies address management for ordinary client devices, and the address may change between leases.",
+          "Static/dynamic describes assignment lifetime, not routing scope. A static address can be private, and a dynamic address can be public.",
+        ],
+        materials: [table("Static and dynamic assignment", ["S2.15.A06"], ["Property", "Static IP address", "Dynamic IP address"], [
+          ["Assignment", "Remains until deliberately changed", "Allocated for a lease"],
+          ["Management", "Configured or reserved to stay predictable", "Commonly managed by DHCP"],
+          ["Use", "Server or printer that must be found consistently", "Ordinary client whose address may change"],
+        ])],
+        misconceptions: ["Static does not mean public, and dynamic does not mean private; the pairs describe different properties."],
+        teacherNote: "只讲 assignment lifetime：fixed until changed 对 leased and may change。最后再用四种组合检验理解。",
+      },
+      {
+        heading: "DNS resolves the domain name; the browser requests the web page or file",
         objectiveIds: ["S2.16.A01", "S2.16.A02", "S2.16.A03"],
         explanation: [
-          "A Uniform Resource Locator identifies a WWW resource. The scheme states how to access it, the domain names the host, and the path identifies the resource on that host. Optional query and fragment components have separate jobs.",
-          "DNS resolves the domain name to an IP address. DNS does not resolve the path, store the web page or return the resource.",
-          "After resolution, the browser uses the IP address to contact the web server and requests the required host/path. The server locates or generates the resource and returns it.",
+          "A Uniform Resource Locator (URL) is a text-based address used to identify and locate a resource on the World Wide Web. In https://learn.example.org/course/page.html, https is the protocol, learn.example.org is the domain name and course/page.html is the web page or file name.",
+          "The Domain Name Service (DNS) resolves the domain name to an IP address. DNS does not resolve the complete URL, store the web page or return the requested resource.",
+          "After DNS returns the IP address, the browser contacts the web server at that address, requests the web page or file named by the URL and receives the WWW resource from the server.",
         ],
         materials: [
-          { type: "url-demo", title: "Break the URL before resolving it", objectiveIds: ["S2.16.A01"], scheme: "https", domain: "learn.example.org", path: "/course/page.html", query: "?unit=2", fragment: "#quiz" },
-          flow("DNS and browser sequence", ["S2.16.A02", "S2.16.A03"], [
-            ["1 · Parse URL", "Separate scheme, domain and path"],
+          flow("URL, DNS and browser sequence", ["S2.16.A01", "S2.16.A02", "S2.16.A03"], [
+            ["1 · Read URL", "Identify protocol, domain name and web page or file name"],
             ["2 · DNS query", "Ask for the IP address of learn.example.org"],
-            ["3 · DNS response", "Return the matching IP address"],
-            ["4 · Connect", "Browser contacts the server using that address"],
-            ["5 · Request", "Browser requests /course/page.html?unit=2"],
-            ["6 · Display", "Server returns the resource; browser handles #quiz locally"],
+            ["3 · DNS response", "Return IP address 203.0.113.24"],
+            ["4 · Connect", "Browser contacts the web server at that IP address"],
+            ["5 · Request", "Browser requests course/page.html"],
+            ["6 · Return", "Web server returns the named WWW resource"],
           ]),
         ],
         misconceptions: ["DNS maps a domain name to an IP address; it does not turn the whole URL into a page."],
-        teacherNote: "把 URL 切成色块，再遮住 path 问 DNS 看哪一块；最后才进入 browser request。",
+        teacherNote: "按 Cambridge 措辞把 URL 切成 protocol、domain name、web page/file name；遮住后两块时强调 DNS 只接收 domain name。",
       },
     ],
     practice: [
       q("S2-L08-Q1", "Retrieval", 6, "State the length and normal notation of IPv4 and IPv6, then explain why one device can have more than one IP address.", ["S2.15.A01", "S2.15.A02", "S2.15.A03"], ["IPv4 is 32-bit.", "Four decimal octets.", "IPv6 is 128-bit.", "Hexadecimal groups separated by colons.", "Addresses are associated with interfaces.", "Wired and wireless interfaces can have different addresses."], "Do not state that IPv6 is 129-bit."),
       q("S2-L08-Q2", "Application", 4, "A host 192.168.10.37/24 sends to 192.168.10.90 and then 192.168.11.90. Explain both forwarding decisions.", ["S2.15.A04"], ["192.168.10.90 shares the /24 network prefix.", "It can be sent within the local subnet.", "192.168.11.90 has a different /24 network prefix.", "It must be sent to a router for another subnet."], "Compare the supplied subnet information; do not decide from physical distance."),
       q("S2-L08-Q3", "Application", 4, "Recommend public/private and static/dynamic addressing properties for an internal school printer, including the security implication.", ["S2.15.A05", "S2.15.A06"], ["Private address for internal scope.", "Static/reserved assignment so clients find it predictably.", "Not directly publicly routed under normal design.", "Private addressing alone does not guarantee security; permissions/firewall/updates remain necessary."], "Static/private are compatible; the pairs are not opposites."),
-      q("S2-L08-Q4", "Exam-style", 7, "For https://learn.example.org/course/page.html?unit=2#quiz, identify the scheme, domain and path, then explain how DNS and the browser retrieve the resource.", ["S2.16.A01", "S2.16.A02", "S2.16.A03"], ["Scheme: https.", "Domain: learn.example.org.", "Path: /course/page.html.", "DNS resolves domain to IP.", "Browser contacts the server using the IP.", "Browser requests path with query unit=2.", "Fragment #quiz is handled within the returned document, not by DNS."], "DNS does not receive or resolve the path."),
+      q("S2-L08-Q4", "Exam-style", 7, "For https://learn.example.org/course/page.html, identify the protocol, domain name and web page or file name, then explain how DNS and the browser retrieve the resource.", ["S2.16.A01", "S2.16.A02", "S2.16.A03"], ["Protocol: https.", "Domain name: learn.example.org.", "Web page or file name: course/page.html.", "DNS resolves the domain name to an IP address.", "Browser contacts the web server using the returned IP address.", "Browser requests the named web page or file.", "The web server returns the WWW resource."], "DNS receives and resolves the domain name, not the complete URL."),
     ],
     pastPaper: {
       sourceRef: "9618/11/W/25 Q7(a)–(c)",
@@ -898,7 +1015,7 @@ export const section2Lessons = [
       accessUrl: officialPastPaperAccess,
       objectiveIds: ["S2.15.A01", "S2.15.A02", "S2.15.A03", "S2.15.A04", "S2.15.A05", "S2.15.A06", "S2.16.A01", "S2.16.A02", "S2.16.A03"],
       task: "A browser requests a school resource from a named URL. Classify the IP-address properties, use supplied subnet information to decide local or routed delivery, and explain DNS resolution before the resource request.",
-      build: ["Identify IPv4/IPv6 from format and state the correct bit length.", "Associate the address with the relevant interface.", "Use the supplied prefix/mask to decide local or router.", "Keep public/private separate from static/dynamic.", "Parse scheme, domain and path.", "Resolve only the domain through DNS.", "Use the returned IP to contact the server and request the path."],
+      build: ["Identify IPv4/IPv6 from format and state the correct bit length.", "Associate the address with the relevant interface.", "Use the supplied prefix/mask to decide local or router.", "Keep public/private separate from static/dynamic.", "Identify the protocol, domain name and web page or file name in the URL.", "Resolve only the domain name through DNS.", "Use the returned IP address to contact the web server and request the named web page or file."],
       markLogic: ["Each classification answers a different question: version, subnet, routing scope or assignment lifetime.", "DNS and the browser request are sequential, distinct stages."],
       commonLosses: ["Resolving the full URL through DNS.", "Claiming a private address is secure without other controls.", "Confusing static with public."],
     },
@@ -907,7 +1024,7 @@ export const section2Lessons = [
       ["Owner", "Network interface"],
       ["Local or routed", "Subnet comparison"],
       ["Scope and assignment", "Public/private; static/dynamic"],
-      ["Find a WWW resource", "Parse URL → DNS domain-to-IP → browser requests path"],
+      ["Find a WWW resource", "Read protocol/domain/file → DNS domain-to-IP → browser requests the named resource"],
     ],
     sources: ["Official syllabus PDF pages 16–17", "AL Coursebook PDF pages 48–54", "Hodder Complete Book PDF pages 68–71 and 90–93"],
   },

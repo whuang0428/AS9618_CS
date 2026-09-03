@@ -65,7 +65,11 @@ def main() -> None:
         "schemaVersion": 2,
         "release": "AS9618-CS-2027-2029-course",
         "coursePageCount": 93,
-        "teachingUnitCount": 145,
+        "teachingUnitCount": sum(
+            len(lesson["knowledgeUnits"])
+            for lesson in contract["lessons"]
+            if lesson["kind"] == "teaching"
+        ),
         "legacyCompatibilityCount": 151,
         "files": [
             {"path": path.relative_to(ROOT).as_posix(), "sha256": sha256(path), "bytes": path.stat().st_size}

@@ -119,7 +119,8 @@ const forbiddenStudentLabels = /Mechanism or method|Mastery check|Knowledge chec
 const forbiddenExamPhrasing = /show understanding|diagnose and connect|in an integrated response|(?:explain|describe)\s+(?:understand|analyse)|why the statement|how why|how choose|describe why|(?:explain|describe)\s+how how|(?:explain|describe)\s+(?:give|complete)|how put|how whether|the required the|when (?:suggest|recommend|write|explain|describe)|(?:explain|describe) apply|explain type adds/i;
 const forbiddenExamMarkingPoint = /database design review:|each named item remains core|do not revise each term in isolation|correct one plausible error about|^transfer\.?$|apply one section \d+ method|and limitation\.?$|\bcandidates?\s+(?:must|should|are required|need)|not required by the syllabus|the syllabus says|will always be given|syllabus list above|non-required task|^(?:yes|no)\.?$/i;
 const requiredPracticeAnswerTerms = Object.freeze({
-  "V3-006-S1.11-CHECK": ["storage space", "transmitted bits", "count followed by", "reconstruct the original", "count overhead"],
+  "V3-006-S1.11-WHY-COMPRESS-CHECK": ["storage space", "transmitted bits", "transfer time", "bandwidth"],
+  "V3-006-S1.11-RLE-CHECK": ["count-then-value", "repeats each value", "exact original", "count overhead"],
   "V3-024-S4.13-CHECK": ["ldm", "ldd", "ldi", "ldx", "ldr", "mov", "sto", "add", "sub", "inc", "dec", "jmp", "cmp", "cmi", "jpe", "jpn", "in", "out", "end"],
   "V3-025-S4.15-CHECK": ["and", "or", "xor", "lsl", "lsr", "arithmetic", "cyclic", "test", "set", "clear", "toggle", "monitor", "control"],
   "V3-043-S8.09-CHECK": ["create database", "create table", "character", "varchar", "boolean", "integer", "real", "date", "time", "alter table", "primary key", "foreign key", "references"],
@@ -291,11 +292,41 @@ check(JSON.stringify(lesson004?.units.map((unit) => unit.heading)) === JSON.stri
 const lesson004VisibleContent = JSON.stringify({ title: lesson004?.title, units: lesson004?.units, practice: lesson004?.practice, exam: lesson004?.examStyleQuestions, summary: lesson004?.summary });
 check(!/\bBCD\b|hexadecimal/i.test(lesson004VisibleContent), "L004 still contains BCD or hexadecimal content after moving S1.06 to lesson 002");
 
+const unitCovers = (unit, syllabusId) => unit?.syllabusId === syllabusId || unit?.objectiveIds?.some((id) => id.startsWith(`${syllabusId}.`));
+
+const checkUnitAssetSequence = (sequenceIndex, expectedAssets) => {
+  const lesson = courseV3Lessons.find((item) => item.sequenceIndex === sequenceIndex);
+  check(lesson?.units.length === expectedAssets.length, `L${String(sequenceIndex).padStart(3, "0")} must contain ${expectedAssets.length} independently illustrated knowledge units`);
+  for (const [unitIndex, assetName] of expectedAssets.entries()) {
+    if (!assetName) continue;
+    check(lesson?.units[unitIndex]?.leadVisual?.asset?.endsWith(`/${assetName}`), `L${String(sequenceIndex).padStart(3, "0")} unit ${unitIndex + 1} must use ${assetName}`);
+  }
+  return lesson;
+};
+
+const lesson008 = courseV3Lessons.find((lesson) => lesson.sequenceIndex === 8);
+check(lesson008?.units[1]?.leadVisual?.asset?.endsWith("/topology-consequences.png"), "L008 topology consequences must use a topology visual");
+check(!/client[- ]server|peer[- ]to[- ]peer/i.test(JSON.stringify({ leadVisual: lesson008?.units[1]?.leadVisual, coreExplanation: lesson008?.units[1]?.coreExplanation })), "L008 topology consequences still mixes network-model content into the topology unit");
+
+checkUnitAssetSequence(9, ["cloud-request.png", "public-cloud.png", "private-cloud.png", "cloud-tradeoffs.png"]);
+checkUnitAssetSequence(11, ["lan-devices.png", "bridge.png", "repeater.png", "router-boundary.png", "csma-cd.png"]);
+const lesson013 = checkUnitAssetSequence(13, ["internet-www.png", "modem.png", "pstn.png", "dedicated-line.png", "cell-phone-network.png"]);
+check(!/lossless|lossy|compression/i.test(JSON.stringify(lesson013?.units[0])), "L013 Internet/WWW unit still contains the former compression mismatch");
+const pstnUnitText = JSON.stringify({ leadVisual: lesson013?.units[2]?.leadVisual, coreExplanation: lesson013?.units[2]?.coreExplanation, method: lesson013?.units[2]?.method });
+for (const term of ["fixed telephone line", "telephone exchange"]) check(pstnUnitText.toLowerCase().includes(term), `L013 PSTN teaching is missing ${term}`);
+check(!/ip router|router mesh|server rack/i.test(pstnUnitText), "L013 PSTN teaching incorrectly presents an IP data network");
+
+const lesson014 = checkUnitAssetSequence(14, [null, "subnetting.png", "public-private-ip.png", "static-dynamic-ip.png", "url-dns.png"]);
+const urlDnsUnitText = JSON.stringify({ leadVisual: lesson014?.units[4]?.leadVisual, coreExplanation: lesson014?.units[4]?.coreExplanation, method: lesson014?.units[4]?.method });
+for (const term of ["protocol", "domain name", "web page or file name", "domain name service", "dns"]) check(urlDnsUnitText.toLowerCase().includes(term), `L014 URL/DNS teaching is missing ${term}`);
+check(!/\bscheme\b|query parameter|fragment identifier/i.test(urlDnsUnitText), "L014 URL teaching still uses terminology outside the selected Cambridge wording");
+
 const s109Lessons = courseV3Lessons.filter((lesson) => lesson.syllabusIds.includes("S1.09"));
-const s109 = s109Lessons.flatMap((lesson) => lesson.units).find((unit) => unit.syllabusId === "S1.09");
-check(s109?.leadVisual?.type === "reviewed-visual" && /drawing list/i.test(s109.leadVisual.title), "S1.09 must start with the vector drawing-list visual");
+const s109 = s109Lessons.flatMap((lesson) => lesson.units).find((unit) => unitCovers(unit, "S1.09"));
+check(s109?.leadVisual?.type === "reviewed-visual" && /vector-drawing-list\.png$/.test(s109.leadVisual.asset ?? ""), "S1.09 must start with the vector drawing-list visual");
 check(s109?.coreExplanation.join(" ").match(/drawing list/gi)?.length === 1, "S1.09 core explanation must state the drawing-list definition once");
-check(/RECTANGLE at \(10, 10\)/.test(JSON.stringify(s109?.workedExample)) && !/bitmap file-size calculation/i.test(JSON.stringify(s109?.workedExample)), "S1.09 worked example must render and scale concrete vector instructions");
+const s109WorkedExample = JSON.stringify(s109?.workedExample ?? {});
+check(/blue rectangle.*\(10, 10\).*width 40.*height 20/i.test(s109WorkedExample) && /black line.*\(10, 30\).*\(50, 30\)/i.test(s109WorkedExample) && !/bitmap file-size calculation/i.test(s109WorkedExample), "S1.09 worked example must render concrete vector instructions");
 check(s109Lessons.every((lesson) => lesson.practice.every((question) => question.commandWord && question.answerPoints.length)), "S1.09 practice must expose command words and marking points");
 
 for (const asset of contract.assets) {
@@ -315,21 +346,21 @@ for (const asset of anchorManifest.assets) {
 }
 for (const rejected of anchorManifest.rejectedCandidates) check(!contract.assets.some((entry) => entry.path.includes(rejected.source.split("/").at(-1))), `Rejected candidate is referenced by the course: ${rejected.source}`);
 
-const lessonText = (syllabusId) => courseV3Lessons.filter((lesson) => lesson.kind === "teaching" && lesson.syllabusIds.includes(syllabusId)).map((lesson) => lesson.units.filter((unit) => unit.syllabusId === syllabusId).map((unit) => `${unit.coreExplanation.join(" ")} ${unitMaterials(unit).map((material) => JSON.stringify(material)).join(" ")}`).join(" ")).join(" ");
+const lessonText = (syllabusId) => courseV3Lessons.filter((lesson) => lesson.kind === "teaching" && lesson.syllabusIds.includes(syllabusId)).map((lesson) => lesson.units.filter((unit) => unitCovers(unit, syllabusId)).map((unit) => `${unit.coreExplanation.join(" ")} ${unitMaterials(unit).map((material) => JSON.stringify(material)).join(" ")}`).join(" ")).join(" ");
 const practiceText = (syllabusId) => courseV3Lessons.filter((lesson) => lesson.kind === "teaching" && lesson.syllabusIds.includes(syllabusId)).flatMap((lesson) => lesson.practice.filter((question) => question.objectiveIds.some((id) => id.startsWith(`${syllabusId}.`))).map((question) => `${question.prompt} ${question.answerPoints.join(" ")}`)).join(" ");
 const s110 = lessonText("S1.10");
 check(!/vector file/i.test(s110), "Regression: vector-compression content polluted S1.10 sound sampling");
 for (const term of ["analogue", "sample", "quantis", "sampling rate", "sampling resolution", "file size"]) check(s110.toLowerCase().includes(term), `S1.10 missing ${term}`);
 const s111 = `${lessonText("S1.11")} ${practiceText("S1.11")}`.toLowerCase();
-for (const term of ["storage space", "transmit", "lossless", "lossy", "rle", "adjacent", "two values", "count", "decode", "text", "bitmap", "vector", "sound"]) check(s111.includes(term), `S1.11 missing ${term}`);
-const s111Unit = courseV3Lessons.flatMap((lesson) => lesson.units).find((unit) => unit.syllabusId === "S1.11");
-check(/lossless.*lossy/i.test(s111Unit?.leadVisual?.title ?? "") && /lossless-lossy\.png$/.test(s111Unit?.leadVisual?.asset ?? ""), "S1.11 must begin with a lossless/lossy comparison visual");
-const s111Check = courseV3Lessons.flatMap((lesson) => lesson.practice).find((question) => question.id === "V3-006-S1.11-CHECK");
-check(s111Check?.marks === 5, `S1.11 compression knowledge check must be worth 5 marks, found ${s111Check?.marks ?? "none"}`);
-check(s111Check?.answerPoints.length === 5, `S1.11 compression knowledge check must display all 5 marking points, found ${s111Check?.answerPoints.length ?? 0}`);
-for (const term of ["storage space", "transmitted bits", "count followed by", "reconstruct the original", "count overhead"]) {
-  check(s111Check?.answerPoints.join(" ").toLowerCase().includes(term), `S1.11 compression knowledge-check answer missing ${term}`);
-}
+for (const term of ["storage space", "transmit", "lossless", "lossy", "rle", "adjacent", "count", "value", "decode", "text", "bitmap", "vector", "sound"]) check(s111.includes(term), `S1.11 missing ${term}`);
+const s111Units = courseV3Lessons.filter((lesson) => lesson.kind === "teaching" && lesson.syllabusIds.includes("S1.11")).flatMap((lesson) => lesson.units).filter((unit) => unitCovers(unit, "S1.11"));
+check(s111Units.length === 5, `S1.11 must contain five independently taught compression units, found ${s111Units.length}`);
+check(/compression-need\.png$/.test(s111Units[0]?.leadVisual?.asset ?? ""), "S1.11 must begin with the reason-for-compression visual");
+check(/lossless.*lossy/i.test(s111Units[3]?.leadVisual?.title ?? "") && s111Units[3]?.leadVisual?.type === "table", "S1.11 must include a separate lossless/lossy comparison visual");
+const s111WhyCheck = courseV3Lessons.flatMap((lesson) => lesson.practice).find((question) => question.id === "V3-006-S1.11-WHY-COMPRESS-CHECK");
+check(s111WhyCheck?.marks === 3 && s111WhyCheck?.answerPoints.length === 3, "S1.11 reason-for-compression check must display three marking points");
+const s111RleCheck = courseV3Lessons.flatMap((lesson) => lesson.practice).find((question) => question.id === "V3-006-S1.11-RLE-CHECK");
+check(s111RleCheck?.marks === 4 && s111RleCheck?.answerPoints.length === 4, "S1.11 RLE check must display four marking points");
 const s303 = `${lessonText("S3.03")} ${practiceText("S3.03")}`.toLowerCase();
 for (const term of ["laser printer", "3d printer", "microphone", "speaker", "magnetic hard", "flash", "optical disc", "touchscreen", "virtual-reality"]) check(s303.includes(term), `S3.03 missing ${term}`);
 const s310 = `${lessonText("S3.10")} ${practiceText("S3.10")}`.toLowerCase();

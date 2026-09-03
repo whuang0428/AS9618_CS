@@ -2832,7 +2832,7 @@
             "A good choice connects structure to consequence"
           ],
           "materialTitles": [
-            "Network-model choices create management and failure consequences"
+            "Topology choices create cost and failure consequences"
           ],
           "questionIds": [
             "S2-L02-Q2",
@@ -2851,7 +2851,7 @@
             "A good choice connects structure to consequence"
           ],
           "materialTitles": [
-            "Network-model choices create management and failure consequences"
+            "Topology choices create cost and failure consequences"
           ],
           "questionIds": [
             "S2-L02-Q3"
@@ -2893,7 +2893,7 @@
           ],
           "leadVisual": {
             "type": "reviewed-visual",
-            "title": "Network-model choices create management and failure consequences"
+            "title": "Topology choices create cost and failure consequences"
           },
           "coreExplanation": [
             "A star usually isolates one end-device cable failure, but the central switch is a single point of failure for that star.",
@@ -2989,7 +2989,7 @@
           "id": "S2.06.A01",
           "description": "Explain cloud computing as remote computing resources accessed through a network.",
           "explanationUnits": [
-            "Cloud changes where resources run and who controls the infrastructure"
+            "Cloud computing provides remote resources through a network"
           ],
           "materialTitles": [
             "A cloud request crosses local and provider infrastructure",
@@ -3006,10 +3006,12 @@
           "id": "S2.06.A02",
           "description": "Distinguish public and private cloud control and tenancy.",
           "explanationUnits": [
-            "Cloud changes where resources run and who controls the infrastructure"
+            "A public cloud uses shared third-party provider infrastructure",
+            "A private cloud is dedicated to one organisation"
           ],
           "materialTitles": [
-            "A cloud request crosses local and provider infrastructure"
+            "A public cloud uses shared provider infrastructure",
+            "A private cloud is dedicated to one organisation"
           ],
           "questionIds": [
             "S2-L03-Q1",
@@ -3057,10 +3059,9 @@
       ],
       "knowledgeUnits": [
         {
-          "heading": "Cloud changes where resources run and who controls the infrastructure",
+          "heading": "Cloud computing provides remote resources through a network",
           "objectiveIds": [
-            "S2.06.A01",
-            "S2.06.A02"
+            "S2.06.A01"
           ],
           "leadVisual": {
             "type": "reviewed-visual",
@@ -3068,13 +3069,47 @@
           },
           "coreExplanation": [
             "Cloud computing provides storage, processing, applications or platforms from remote infrastructure accessed through a network. The organisation uses the service without operating every physical server locally.",
-            "A public cloud is operated by a third-party provider and its underlying resources serve multiple customers with logical separation. A private cloud is dedicated to one organisation and may be operated by that organisation or on its behalf.",
-            "Public/private describes tenancy and control, not whether a file is publicly readable. Authentication, permissions and encryption remain necessary."
+            "A client sends a request across its local network and the internet to provider infrastructure. A virtual server or managed service performs the requested processing or storage operation and returns the result.",
+            "Cloud describes where computing resources are provided and accessed; it does not mean that data has no physical location. The resources run on physical provider or organisation-controlled hardware."
           ],
           "method": {
             "type": "flow",
             "title": "One cloud request"
           },
+          "workedExample": null
+        },
+        {
+          "heading": "A public cloud uses shared third-party provider infrastructure",
+          "objectiveIds": [
+            "S2.06.A02"
+          ],
+          "leadVisual": {
+            "type": "reviewed-visual",
+            "title": "A public cloud uses shared provider infrastructure"
+          },
+          "coreExplanation": [
+            "A public cloud is operated by a third-party provider. Its underlying physical resources serve multiple customers, while virtualisation, accounts and permissions provide logical separation between customers.",
+            "Public cloud describes provider control and multi-customer tenancy. It does not mean that files are open to the public; authentication, permissions and encryption are still required.",
+            "Because the provider owns and operates the shared platform, a customer can obtain resources without purchasing all of the underlying hardware but accepts greater dependence on the provider's service and controls."
+          ],
+          "method": null,
+          "workedExample": null
+        },
+        {
+          "heading": "A private cloud is dedicated to one organisation",
+          "objectiveIds": [
+            "S2.06.A02"
+          ],
+          "leadVisual": {
+            "type": "reviewed-visual",
+            "title": "A private cloud is dedicated to one organisation"
+          },
+          "coreExplanation": [
+            "A private cloud is dedicated to one organisation. It may be operated by that organisation on its own premises or hosted and managed on its behalf by another provider.",
+            "Private describes single-organisation tenancy and the potential for greater control or configuration. It does not require every server to be in the organisation's building.",
+            "Dedicated infrastructure can support control or compliance requirements, but it usually brings greater cost or management responsibility and still requires authentication, permissions, encryption and backup."
+          ],
+          "method": null,
           "workedExample": null
         },
         {
@@ -3520,10 +3555,13 @@
           "id": "S2.09.A04",
           "description": "Describe bridge and repeater roles.",
           "explanationUnits": [
-            "Every LAN device has a specific job"
+            "A bridge connects and filters between LAN segments",
+            "A repeater regenerates a weakened signal"
           ],
           "materialTitles": [
-            "Each LAN device has a distinct networking role"
+            "A bridge connects and filters between LAN segments",
+            "A repeater regenerates a weakened signal",
+            "Signal regeneration"
           ],
           "questionIds": [
             "S2-L05-Q1"
@@ -3620,8 +3658,7 @@
           "objectiveIds": [
             "S2.09.A01",
             "S2.09.A02",
-            "S2.09.A03",
-            "S2.09.A04"
+            "S2.09.A03"
           ],
           "leadVisual": {
             "type": "reviewed-visual",
@@ -3630,11 +3667,48 @@
           "coreExplanation": [
             "A NIC connects a device to a wired network; a WNIC connects it wirelessly. A wireless access point (WAP) bridges wireless devices into the wired LAN. Cables carry signals between wired interfaces.",
             "A switch learns and uses link-layer addresses to forward frames to the required LAN port. A server provides network services or resources such as authentication, files, printing or web content.",
-            "A bridge connects LAN segments and filters traffic between them. A repeater receives and regenerates a weakened signal so it can continue farther; it does not choose a destination."
+            "These devices perform different jobs even when several functions share one physical case. Name the device and the exact forwarding, connection or service role it performs."
           ],
           "method": {
             "type": "flow",
             "title": "One wireless request to a local server"
+          },
+          "workedExample": null
+        },
+        {
+          "heading": "A bridge connects and filters between LAN segments",
+          "objectiveIds": [
+            "S2.09.A04"
+          ],
+          "leadVisual": {
+            "type": "reviewed-visual",
+            "title": "A bridge connects and filters between LAN segments"
+          },
+          "coreExplanation": [
+            "A bridge connects LAN segments and learns which link-layer or MAC addresses are reachable through each side. It uses that information to decide whether a frame needs to cross the bridge.",
+            "A frame whose destination remains on its source segment is filtered rather than copied to the other segment. A frame required on the other segment is forwarded across the bridge.",
+            "A bridge makes a link-layer forwarding decision inside a LAN; it does not replace the router that forwards IP packets between different networks."
+          ],
+          "method": null,
+          "workedExample": null
+        },
+        {
+          "heading": "A repeater regenerates a weakened signal",
+          "objectiveIds": [
+            "S2.09.A04"
+          ],
+          "leadVisual": {
+            "type": "reviewed-visual",
+            "title": "A repeater regenerates a weakened signal"
+          },
+          "coreExplanation": [
+            "As a signal travels through a medium, attenuation and distortion can make it too weak or unclear to continue reliably. A repeater receives that weakened signal and regenerates the intended signal pattern.",
+            "The restored signal is retransmitted so it can travel farther along the network medium. The repeater extends the usable transmission distance; it does not create a new destination.",
+            "A repeater does not inspect a MAC or IP destination and does not choose a route. Its job is signal regeneration rather than selective forwarding."
+          ],
+          "method": {
+            "type": "flow",
+            "title": "Signal regeneration"
           },
           "workedExample": null
         },
@@ -4050,11 +4124,11 @@
           "id": "S2.14.A01",
           "description": "Explain a modem’s role at an access link.",
           "explanationUnits": [
-            "Access infrastructure connects the local router to wider networks"
+            "A modem adapts signals for the access link"
           ],
           "materialTitles": [
-            "Access infrastructure connects a local router to wider networks",
-            "From a home device to the internet"
+            "A modem adapts signals for the access link",
+            "Modem conversion in both directions"
           ],
           "questionIds": [
             "S2-L07-Q2"
@@ -4067,10 +4141,11 @@
           "id": "S2.14.A02",
           "description": "Describe PSTN connectivity.",
           "explanationUnits": [
-            "Access infrastructure connects the local router to wider networks"
+            "PSTN carries signals through switched fixed telephone lines"
           ],
           "materialTitles": [
-            "Access infrastructure connects a local router to wider networks"
+            "PSTN carries signals through switched telephone lines",
+            "One PSTN path"
           ],
           "questionIds": [
             "S2-L07-Q2"
@@ -4083,10 +4158,10 @@
           "id": "S2.14.A03",
           "description": "Describe a dedicated line.",
           "explanationUnits": [
-            "Access infrastructure connects the local router to wider networks"
+            "A dedicated line reserves a connection for one customer or site"
           ],
           "materialTitles": [
-            "Access infrastructure connects a local router to wider networks"
+            "A dedicated line reserves a provider connection"
           ],
           "questionIds": [
             "S2-L07-Q3"
@@ -4099,10 +4174,11 @@
           "id": "S2.14.A04",
           "description": "Describe a cell phone/cellular network connection.",
           "explanationUnits": [
-            "Access infrastructure connects the local router to wider networks"
+            "A cell phone network provides mobile radio access"
           ],
           "materialTitles": [
-            "Access infrastructure connects a local router to wider networks"
+            "A cell phone network provides mobile radio access",
+            "One cellular access path"
           ],
           "questionIds": [
             "S2-L07-Q3"
@@ -4115,10 +4191,13 @@
           "id": "S2.14.A05",
           "description": "Choose connection infrastructure for a scenario.",
           "explanationUnits": [
-            "Access infrastructure connects the local router to wider networks"
+            "A dedicated line reserves a connection for one customer or site",
+            "A cell phone network provides mobile radio access"
           ],
           "materialTitles": [
-            "Access infrastructure connects a local router to wider networks"
+            "A dedicated line reserves a provider connection",
+            "A cell phone network provides mobile radio access",
+            "One cellular access path"
           ],
           "questionIds": [
             "S2-L07-Q3"
@@ -4150,26 +4229,81 @@
           "workedExample": null
         },
         {
-          "heading": "Access infrastructure connects the local router to wider networks",
+          "heading": "A modem adapts signals for the access link",
           "objectiveIds": [
-            "S2.14.A01",
-            "S2.14.A02",
+            "S2.14.A01"
+          ],
+          "leadVisual": {
+            "type": "reviewed-visual",
+            "title": "A modem adapts signals for the access link"
+          },
+          "coreExplanation": [
+            "A modem converts or adapts signals into the form required by the access link and converts received signals back for the local digital system. A modem and router may share one physical case, but conversion and routing are distinct functions.",
+            "For outgoing data, modulation or link adaptation produces a signal suitable for the physical access link. For incoming data, demodulation or conversion recovers the digital information required by the local system.",
+            "The modem does not inspect the destination IP address or choose the next network path. That routing decision belongs to the router even when a consumer device combines both functions in one case."
+          ],
+          "method": {
+            "type": "flow",
+            "title": "Modem conversion in both directions"
+          },
+          "workedExample": null
+        },
+        {
+          "heading": "PSTN carries signals through switched fixed telephone lines",
+          "objectiveIds": [
+            "S2.14.A02"
+          ],
+          "leadVisual": {
+            "type": "reviewed-visual",
+            "title": "PSTN carries signals through switched telephone lines"
+          },
+          "coreExplanation": [
+            "PSTN means Public Switched Telephone Network. It is the fixed telephone system formed from telephone lines, cables and telephone exchanges that establish a switched path between connected endpoints.",
+            "A home telephone connects through a fixed telephone line to a telephone exchange. Further exchanges can switch the call or signal through the PSTN to another connected telephone line.",
+            "A computer can use a modem or access equipment to send data through a suitable telephone-line service. The modem is the endpoint conversion device; the PSTN is the wider switched telephone-line network."
+          ],
+          "method": {
+            "type": "flow",
+            "title": "One PSTN path"
+          },
+          "workedExample": null
+        },
+        {
+          "heading": "A dedicated line reserves a connection for one customer or site",
+          "objectiveIds": [
             "S2.14.A03",
+            "S2.14.A05"
+          ],
+          "leadVisual": {
+            "type": "reviewed-visual",
+            "title": "A dedicated line reserves a provider connection"
+          },
+          "coreExplanation": [
+            "A dedicated line provides a permanent or reserved provider connection for one customer or site rather than establishing a temporary connection only when required.",
+            "Reserved capacity can give predictable availability, performance or site-to-site connectivity, which can suit an organisation with continuous or critical communication requirements.",
+            "The organisation normally pays higher installation and recurring costs. A sound choice connects that extra cost to the scenario's need for predictable permanent connectivity."
+          ],
+          "method": null,
+          "workedExample": null
+        },
+        {
+          "heading": "A cell phone network provides mobile radio access",
+          "objectiveIds": [
             "S2.14.A04",
             "S2.14.A05"
           ],
           "leadVisual": {
             "type": "reviewed-visual",
-            "title": "Access infrastructure connects a local router to wider networks"
+            "title": "A cell phone network provides mobile radio access"
           },
           "coreExplanation": [
-            "A modem converts or adapts signals into the form required by the access link and converts received signals back for the local digital system. A modem and router may share one physical case, but conversion and routing are distinct functions.",
-            "The PSTN is the public switched telephone network. Existing telephone infrastructure can carry access traffic, but characteristics depend on the service and shared provider network.",
-            "A dedicated line provides a permanent or reserved connection for one customer or site, offering predictable availability/capacity at higher cost. A cell phone network connects mobile devices by radio to a base station, providing mobility but depending on coverage, shared capacity and radio conditions."
+            "A cell phone or cellular network connects a mobile device by radio to a base station. The base station passes the traffic into the cellular provider network and onward to wider networks.",
+            "As the user moves, the device can connect through available coverage areas and may transfer between base stations. This provides mobility without a fixed telephone line to the device.",
+            "Availability and performance depend on coverage, distance, obstacles, interference, radio conditions and capacity shared with other users. A recommendation must test those constraints against the scenario."
           ],
           "method": {
             "type": "flow",
-            "title": "From a home device to the internet"
+            "title": "One cellular access path"
           },
           "workedExample": null
         }
@@ -4304,10 +4438,10 @@
           "id": "S2.15.A04",
           "description": "Use subnet information to decide local or routed delivery.",
           "explanationUnits": [
-            "Subnet, public/private and static/dynamic answer different questions"
+            "Subnetting decides whether delivery is local or routed"
           ],
           "materialTitles": [
-            "Subnet, public/private and static/dynamic answer different questions",
+            "Subnetting decides local delivery or router forwarding",
             "Worked local-or-router decision"
           ],
           "questionIds": [
@@ -4321,10 +4455,10 @@
           "id": "S2.15.A05",
           "description": "Compare public and private addresses and security implications.",
           "explanationUnits": [
-            "Subnet, public/private and static/dynamic answer different questions"
+            "Public and private IP addresses describe routing scope"
           ],
           "materialTitles": [
-            "Subnet, public/private and static/dynamic answer different questions"
+            "Public and private IP addresses describe routing scope"
           ],
           "questionIds": [
             "S2-L08-Q3"
@@ -4337,10 +4471,10 @@
           "id": "S2.15.A06",
           "description": "Compare static and dynamic assignment.",
           "explanationUnits": [
-            "Subnet, public/private and static/dynamic answer different questions"
+            "Static and dynamic IP addresses describe assignment lifetime"
           ],
           "materialTitles": [
-            "Subnet, public/private and static/dynamic answer different questions"
+            "Static and dynamic IP addresses describe assignment lifetime"
           ],
           "questionIds": [
             "S2-L08-Q3"
@@ -4351,12 +4485,13 @@
         },
         {
           "id": "S2.16.A01",
-          "description": "Break a URL into scheme, domain and path.",
+          "description": "Identify the protocol, domain name and web page or file name in a URL.",
           "explanationUnits": [
-            "DNS resolves the domain; the browser requests the path"
+            "DNS resolves the domain name; the browser requests the web page or file"
           ],
           "materialTitles": [
-            "Break the URL before resolving it"
+            "A URL and DNS locate one WWW resource",
+            "URL, DNS and browser sequence"
           ],
           "questionIds": [
             "S2-L08-Q4"
@@ -4367,11 +4502,11 @@
           "id": "S2.16.A02",
           "description": "Explain DNS domain-to-IP resolution.",
           "explanationUnits": [
-            "DNS resolves the domain; the browser requests the path"
+            "DNS resolves the domain name; the browser requests the web page or file"
           ],
           "materialTitles": [
-            "Break the URL before resolving it",
-            "DNS and browser sequence"
+            "A URL and DNS locate one WWW resource",
+            "URL, DNS and browser sequence"
           ],
           "questionIds": [
             "S2-L08-Q4"
@@ -4382,11 +4517,11 @@
           "id": "S2.16.A03",
           "description": "Trace browser contact and resource request after DNS.",
           "explanationUnits": [
-            "DNS resolves the domain; the browser requests the path"
+            "DNS resolves the domain name; the browser requests the web page or file"
           ],
           "materialTitles": [
-            "Break the URL before resolving it",
-            "DNS and browser sequence"
+            "A URL and DNS locate one WWW resource",
+            "URL, DNS and browser sequence"
           ],
           "questionIds": [
             "S2-L08-Q4"
@@ -4415,20 +4550,18 @@
           "workedExample": null
         },
         {
-          "heading": "Subnet, public/private and static/dynamic answer different questions",
+          "heading": "Subnetting decides whether delivery is local or routed",
           "objectiveIds": [
-            "S2.15.A04",
-            "S2.15.A05",
-            "S2.15.A06"
+            "S2.15.A04"
           ],
           "leadVisual": {
             "type": "reviewed-visual",
-            "title": "Subnet, public/private and static/dynamic answer different questions"
+            "title": "Subnetting decides local delivery or router forwarding"
           },
           "coreExplanation": [
             "Subnetting divides an address space into smaller logical networks. A host combines the destination address with the given subnet mask or prefix: a local destination can be sent within the subnet; a destination in another subnet is sent to a router.",
-            "A public IP address is routable on the public internet. A private address is used inside a local network and normally reaches public networks through address translation. Reduced direct reachability is useful, but private addressing does not guarantee security; firewalls, authentication, updates and permissions are still required.",
-            "A static address remains assigned until deliberately changed, which suits a server or printer that clients must find predictably. A dynamic address is allocated for a lease, commonly by DHCP, and may change; it simplifies management for ordinary client devices."
+            "With a /24 prefix, the first 24 bits identify the network. For 192.168.10.37/24, destination 192.168.10.80 shares the network prefix and is local; destination 192.168.11.80 has a different prefix and must be sent to a router.",
+            "Subnetting answers a forwarding question about network membership. It does not by itself state whether an address is public, private, static or dynamic."
           ],
           "method": {
             "type": "flow",
@@ -4437,24 +4570,58 @@
           "workedExample": null
         },
         {
-          "heading": "DNS resolves the domain; the browser requests the path",
+          "heading": "Public and private IP addresses describe routing scope",
+          "objectiveIds": [
+            "S2.15.A05"
+          ],
+          "leadVisual": {
+            "type": "reviewed-visual",
+            "title": "Public and private IP addresses describe routing scope"
+          },
+          "coreExplanation": [
+            "A public IP address is routable on the public internet. Public describes routing scope; it does not mean that every service at the address must be open to every user.",
+            "A private IP address is used inside a local network and is not routed directly across the public internet. Private interfaces commonly reach public networks through network address translation (NAT) at a router.",
+            "Private addressing reduces direct public reachability but does not guarantee security. Firewalls, authentication, updates, encryption and permissions remain necessary."
+          ],
+          "method": null,
+          "workedExample": null
+        },
+        {
+          "heading": "Static and dynamic IP addresses describe assignment lifetime",
+          "objectiveIds": [
+            "S2.15.A06"
+          ],
+          "leadVisual": {
+            "type": "reviewed-visual",
+            "title": "Static and dynamic IP addresses describe assignment lifetime"
+          },
+          "coreExplanation": [
+            "A static IP address remains assigned until it is deliberately changed. This suits a server or printer that clients must find predictably at the same address.",
+            "A dynamic IP address is assigned for a lease, commonly by DHCP. The service simplifies address management for ordinary client devices, and the address may change between leases.",
+            "Static/dynamic describes assignment lifetime, not routing scope. A static address can be private, and a dynamic address can be public."
+          ],
+          "method": null,
+          "workedExample": null
+        },
+        {
+          "heading": "DNS resolves the domain name; the browser requests the web page or file",
           "objectiveIds": [
             "S2.16.A01",
             "S2.16.A02",
             "S2.16.A03"
           ],
           "leadVisual": {
-            "type": "url-demo",
-            "title": "Break the URL before resolving it"
+            "type": "reviewed-visual",
+            "title": "A URL and DNS locate one WWW resource"
           },
           "coreExplanation": [
-            "A Uniform Resource Locator identifies a WWW resource. The scheme states how to access it, the domain names the host, and the path identifies the resource on that host. Optional query and fragment components have separate jobs.",
-            "DNS resolves the domain name to an IP address. DNS does not resolve the path, store the web page or return the resource.",
-            "After resolution, the browser uses the IP address to contact the web server and requests the required host/path. The server locates or generates the resource and returns it."
+            "A Uniform Resource Locator (URL) is a text-based address used to identify and locate a resource on the World Wide Web. In https://learn.example.org/course/page.html, https is the protocol, learn.example.org is the domain name and course/page.html is the web page or file name.",
+            "The Domain Name Service (DNS) resolves the domain name to an IP address. DNS does not resolve the complete URL, store the web page or return the requested resource.",
+            "After DNS returns the IP address, the browser contacts the web server at that address, requests the web page or file named by the URL and receives the WWW resource from the server."
           ],
           "method": {
             "type": "flow",
-            "title": "DNS and browser sequence"
+            "title": "URL, DNS and browser sequence"
           },
           "workedExample": null
         }
@@ -22262,12 +22429,20 @@
       "sha256": "92ae189a65994350a38699b544b5c240ed08d27b348534e05852e15ec3260c48"
     },
     {
-      "path": "web/assets/diagrams/course-v3-imagegen/network-choice.png",
-      "sha256": "a16c3a589c4eac9eeaa66d8947f3f669690cc29ed6e409e005b1b41f5cc49305"
+      "path": "web/assets/diagrams/course-v3-imagegen/topology-consequences.png",
+      "sha256": "082f7d14b2d536f3afd7241928dd80dcb9b3f2382d882cf97106f5902380508f"
     },
     {
       "path": "web/assets/diagrams/course-v3-imagegen/cloud-request.png",
       "sha256": "939e5e5ae1bbd390b56d38d7b28212c252c874085a4dd245240f24908afa7fe5"
+    },
+    {
+      "path": "web/assets/diagrams/course-v3-imagegen/public-cloud.png",
+      "sha256": "d38340bebadc74536b01aec0af5178cbfce71705a44721e243fdafda96c05958"
+    },
+    {
+      "path": "web/assets/diagrams/course-v3-imagegen/private-cloud.png",
+      "sha256": "821042b0a0d62e68999b36a7edff6f1f67ad1de73ff8d4113ef34be750f2da46"
     },
     {
       "path": "web/assets/diagrams/course-v3-imagegen/cloud-tradeoffs.png",
@@ -22294,6 +22469,14 @@
       "sha256": "c808594f3fffaffa09ae36c8417e1e81d995b5e0f4dd01055c234afc77789922"
     },
     {
+      "path": "web/assets/diagrams/course-v3-imagegen/bridge.png",
+      "sha256": "0c9bc3c99d60633bd8fd536ad56f15e56aa1bde7ae03974276a58a07f945a178"
+    },
+    {
+      "path": "web/assets/diagrams/course-v3-imagegen/repeater.png",
+      "sha256": "93f795ce980d0d627d545a3fcdae2f2adec6390b9b18cf164ec1e6865559cf42"
+    },
+    {
       "path": "web/assets/diagrams/course-v3-imagegen/router-boundary.png",
       "sha256": "fb0e7b3df5911d145669b5d4a39d3bc77217479a0a9ace7196537dc663940d86"
     },
@@ -22311,15 +22494,39 @@
     },
     {
       "path": "web/assets/diagrams/course-v3-imagegen/internet-www.png",
-      "sha256": "25dc28537bf512f8fb33170cf034e32554eaf6cb9ea6a86fe0a64cc91a6da4cf"
+      "sha256": "f758be43ca8e75dca891dd0fbf5d87516b8faeb42b41cb0421483a03f9ba293e"
     },
     {
-      "path": "web/assets/diagrams/course-v3-imagegen/access-infrastructure.png",
-      "sha256": "2f63292ed36b7908a7ca9f6f0d5a94bdd6d59993b24d5b68f99cae52a99c652c"
+      "path": "web/assets/diagrams/course-v3-imagegen/modem.png",
+      "sha256": "2ab996827d3728b2bfe23ebd9f935198ccd268eb319c3426a725b07ecf55bc37"
     },
     {
-      "path": "web/assets/diagrams/course-v3-imagegen/ip-address-properties.png",
-      "sha256": "1072c3b22618b46f9782b65e3e624a5b59fb2d114ae3be9839bc884977eac66d"
+      "path": "web/assets/diagrams/course-v3-imagegen/pstn.png",
+      "sha256": "fa86f5b8f78c46cb898b41a3880c145f6ec0d63ac929a4a79eff67fc400bc5dc"
+    },
+    {
+      "path": "web/assets/diagrams/course-v3-imagegen/dedicated-line.png",
+      "sha256": "a4eecf4ac02634a462f4bebacb33014e49aa7553599c7ebd04265b93692ee58e"
+    },
+    {
+      "path": "web/assets/diagrams/course-v3-imagegen/cell-phone-network.png",
+      "sha256": "910ce635e4a4b662b7bb2979ea488dfbab069d3f7be63c6626be3dcdac501a4a"
+    },
+    {
+      "path": "web/assets/diagrams/course-v3-imagegen/subnetting.png",
+      "sha256": "97d145601a76e275273f61675e8f61f1d069ec1059c0f3d7f92642f6649f6594"
+    },
+    {
+      "path": "web/assets/diagrams/course-v3-imagegen/public-private-ip.png",
+      "sha256": "15bb9f23d635ee0d9038170cb785ab0eb04740286f613686a55f723a15877393"
+    },
+    {
+      "path": "web/assets/diagrams/course-v3-imagegen/static-dynamic-ip.png",
+      "sha256": "77831d7d4a06938c98e837c01b2066b817a44035b0fb1bfd96a2c19584d040fb"
+    },
+    {
+      "path": "web/assets/diagrams/course-v3-imagegen/url-dns.png",
+      "sha256": "5de0c2259131cb62a60f3005b8322663527080c66d6b526baf4a8e6bebc02515"
     },
     {
       "path": "web/assets/diagrams/stage10-infographics/stage10-lesson-028-components.jpg",
