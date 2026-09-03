@@ -43,6 +43,22 @@
       "review": { "academicStyle": true, "threeMechanismsVisible": true, "generatedTextAbsent": true, "technicalFactsDelegatedToHtml": true }
     },
     {
+      "id": "microwaves",
+      "workspacePath": "web/assets/course-v3/section-2/microwaves-diagram.png",
+      "generatedPath": "/Users/kw/.codex/generated_images/01a0649e-bd82-7a13-8d8a-8a0f64dae791/exec-29094753-3873-4a38-bce3-29f51168340e.png",
+      "sha256": "9c2c68d412aa8198d0259eedaa006c6a1fe7accffe47694e61a0a3728bba0bf9",
+      "prompt": "Create one wide 16:9 academic textbook technical illustration for a Cambridge International AS Computer Science lesson about microwaves as a transmission medium. Show exactly two fixed professional sites on separate hilltops, each with one aligned directional dish antenna. Show a narrow, straight electromagnetic beam travelling point-to-point between the dishes across a clear unobstructed line of sight. Include a lower hill or building away from the beam so the need for an unobstructed path is visually apparent, without adding annotations. Use realistic proportions and materials, restrained navy, slate, off-white and muted teal, crisp editorial lighting, and clean negative space suitable for an educational web page. No words, letters, numerals, labels, legends, arrows, logos, watermark, satellite, WiFi router, people, clay, plastic toy, cartoon, cute characters, childish classroom styling, neon colours, explosions or sparks.",
+      "review": { "academicStyle": true, "directionalLinkVisible": true, "lineOfSightVisible": true, "generatedTextAbsent": true, "technicalFactsDelegatedToHtml": true }
+    },
+    {
+      "id": "satellites",
+      "workspacePath": "web/assets/course-v3/section-2/satellites-diagram.png",
+      "generatedPath": "/Users/kw/.codex/generated_images/01a0649e-bd82-7a13-8d8a-8a0f64dae791/exec-61e99bf1-b2cd-423e-8a20-f8d3dd7d4785.png",
+      "sha256": "ff70e194115d103041db2d6e9ebdde8928af6fd8819d311bbc28de374f4bb6d6",
+      "prompt": "Create one wide 16:9 academic textbook technical illustration for a Cambridge International AS Computer Science lesson about satellites as a transmission medium. Show one realistic communications satellite in orbit above the curved Earth, one professional ground station sending an uplink, and two clearly separated remote receiving locations within a broad visible coverage area, including a research vessel at sea. Use restrained luminous signal paths to show ground-to-satellite and satellite-to-ground travel without arrows or annotations; make the long propagation path and wide geographical coverage visually clear. Add a small bank of realistic cloud near part of one signal path to suggest that weather may affect reception, but keep every path readable. Use realistic engineering proportions, restrained navy, slate, off-white and muted teal, sophisticated academic editorial lighting, and clean negative space suitable for an educational web page. No words, letters, numerals, labels, legends, arrows, logos, watermark, terrestrial tower-only link, WiFi router, people, clay, plastic toy, cartoon, cute characters, childish classroom styling, neon colours or fantasy spacecraft.",
+      "review": { "academicStyle": true, "uplinkAndDownlinkVisible": true, "wideCoverageVisible": true, "generatedTextAbsent": true, "technicalFactsDelegatedToHtml": true }
+    },
+    {
       "id": "ethernet-collision",
       "workspacePath": "web/assets/course-v3/section-2/ethernet-collision-analogy.png",
       "generatedPath": "/Users/kw/.codex/generated_images/01a05a80-5d9f-73c3-bae7-12c6e73cf49f/exec-2569fac6-03e0-4a9d-b1a0-2dd32339fe59.png",

@@ -13,7 +13,7 @@ const q = (id, type, marks, prompt, objectiveIds, answerPoints, commonError) => 
 const table = (title, objectiveIds, headers, rows) => ({ type: "table", title, objectiveIds, headers, rows });
 const cards = (title, objectiveIds, items) => ({ type: "cards", title, objectiveIds, items });
 const flow = (title, objectiveIds, steps) => ({ type: "flow", title, objectiveIds, steps });
-const analogy = (title, objectiveIds, asset, alt, caption, boundary) => ({
+const analogy = (title, objectiveIds, asset, alt, caption, boundary, boundaryLabel) => ({
   type: "analogy",
   title,
   objectiveIds,
@@ -21,6 +21,7 @@ const analogy = (title, objectiveIds, asset, alt, caption, boundary) => ({
   alt,
   caption,
   boundary,
+  ...(boundaryLabel ? { boundaryLabel } : {}),
 });
 
 export const section2Lessons = [
@@ -355,18 +356,18 @@ export const section2Lessons = [
     syllabusIds: ["S2.07", "S2.08"],
     title: "Wired, wireless and transmission media",
     subtitle: "Choose a medium by signal mechanism, distance, interference, capacity, mobility and installation.",
-    guidingQuestion: "Why might a hospital use fibre between buildings, copper to desk devices and WiFi for mobile equipment instead of choosing one medium everywhere?",
+    guidingQuestion: "Why might a hospital use fibre between buildings, copper to desk devices, WiFi for mobile equipment, microwaves to a nearby site and satellites for a remote clinic?",
     diagnostic: {
-      prompt: "Which statement is wrong: fibre carries light, copper carries electrical signals, or WiFi requires a physical cable to every mobile device?",
-      answer: "The WiFi statement is wrong. WiFi carries data using radio waves between the device and wireless access point.",
+      prompt: "Which two statements are wrong: fibre carries light, WiFi needs a cable to every device, microwave links need line of sight, or satellite communication has no time delay?",
+      answer: "The WiFi and no-delay statements are wrong. WiFi uses radio waves, and a satellite signal takes time to travel through the uplink and downlink paths.",
     },
     objectives: [
       ["S2.07.A01", "Compare wired and wireless networks and explain implications."],
       ["S2.08.A01", "Describe copper-cable signal characteristics."],
       ["S2.08.A02", "Describe fibre-optic signal characteristics."],
       ["S2.08.A03", "Describe radio waves including WiFi."],
-      ["S2.08.A04", "Describe terrestrial microwave links."],
-      ["S2.08.A05", "Describe satellite links."],
+      ["S2.08.A04", "Describe the characteristics of microwaves."],
+      ["S2.08.A05", "Describe the characteristics of satellites."],
       ["S2.08.A06", "Justify a transmission medium for a scenario."],
     ],
     units: [
@@ -389,21 +390,66 @@ export const section2Lessons = [
         teacherNote: "比较必须用同一 factor 横向写 wired 与 wireless，不能一边写 speed、另一边写 cost。",
       },
       {
-        heading: "The carrier determines capacity, attenuation and interference",
-        objectiveIds: ["S2.08.A01", "S2.08.A02", "S2.08.A03", "S2.08.A04", "S2.08.A05", "S2.08.A06"],
+        heading: "Copper cable, fibre-optic cable and radio waves including WiFi",
+        objectiveIds: ["S2.08.A01", "S2.08.A02", "S2.08.A03"],
         explanation: [
           "Copper cable carries changing electrical signals. It is widely available and relatively inexpensive, but suffers attenuation and can be affected by electromagnetic interference; shielding and twisted pairs reduce interference.",
           "Fibre-optic cable carries pulses of light through glass or plastic. It supports high data capacity, low attenuation over long distances and immunity to electromagnetic interference, but equipment and installation can cost more and the fibre needs careful handling.",
-          "Radio waves, including WiFi, can provide local wireless coverage and may pass through obstacles, but share spectrum and can suffer interference. Terrestrial microwave links are directional and normally require line of sight between antennas. Satellite links use radio/microwave signals to cover very large areas, but long paths—especially to high-orbit satellites—add delay and can be affected by weather or line-of-sight constraints.",
+          "Radio waves, including WiFi, carry data through space and provide mobility within a coverage area. They can pass through some obstacles, but distance, walls, competing transmitters and shared spectrum can weaken the signal or reduce capacity. Wireless access must use authentication and encryption because signals can extend beyond the intended room or building.",
         ],
         materials: [
-          analogy("Three carrier mechanisms", ["S2.08.A01", "S2.08.A02", "S2.08.A03"], "transmission-media-analogy.png", "Three separate demonstration lanes show a metal conductor with an electrical pulse, a transparent fibre with a light pulse, and open air between two antennas with electromagnetic ripples.", "Use the physical carrier first: electrical signal, light pulse or electromagnetic wave.", "The display separates carrier mechanisms only. It does not compare exact speeds or ranges, and real cable construction and wireless propagation are more complex."),
-          table("Medium selection matrix", ["S2.08.A01", "S2.08.A02", "S2.08.A03", "S2.08.A04", "S2.08.A05", "S2.08.A06"], ["Medium", "Signal/path", "Strength", "Limitation / suitable use"], [
+          analogy("Three carrier mechanisms", ["S2.08.A01", "S2.08.A02", "S2.08.A03"], "transmission-media-analogy.png", "Three separate demonstration lanes show a metal conductor with an electrical pulse, a transparent fibre with a light pulse, and open air between two antennas with electromagnetic ripples.", "Use the physical carrier first: electrical signal, light pulse or electromagnetic wave.", "The display separates carrier mechanisms only. It does not compare exact speeds or ranges. Real cables have more detailed construction, and wireless signals behave differently in different environments."),
+          table("Copper, fibre and WiFi characteristics", ["S2.08.A01", "S2.08.A02", "S2.08.A03"], ["Medium", "Signal/path", "Strength", "Limitation / suitable use"], [
             ["Copper", "Electrical signal in cable", "Low cost; established LAN access", "Attenuation/interference; shorter links"],
             ["Fibre", "Light pulse in glass/plastic", "High capacity; low attenuation; EMI resistant", "Installation/equipment cost; backbones and long links"],
             ["WiFi / radio", "Radio waves through space", "Mobility; flexible local access", "Shared spectrum, obstacles, range and security controls"],
-            ["Microwave", "Directional electromagnetic link", "High-capacity point-to-point without cable", "Line of sight and alignment; terrestrial links"],
-            ["Satellite", "Uplink/downlink through satellite", "Very wide coverage and remote areas", "Delay, weather/line of sight and cost"],
+          ]),
+        ],
+        misconceptions: ["Fibre carries light rather than electrical pulses in its core.", "WiFi is one use of radio waves; it is not the name for every wireless transmission method."],
+        teacherNote: "先固定 carrier：copper 是 electrical、fibre 是 light、WiFi 是 radio；再分别写 attenuation、interference、capacity 和 mobility。",
+      },
+      {
+        heading: "Microwaves",
+        objectiveIds: ["S2.08.A04"],
+        explanation: [
+          "Microwaves are high-frequency electromagnetic waves. A narrow, directional beam can carry data between fixed antennas at two sites, providing a high-bandwidth point-to-point link without installing cable between the sites.",
+          "The transmitting and receiving antennas must be accurately aligned and normally need a clear line of sight. Buildings, hills and the curvature of the Earth can block the signal, so tall masts or relay stations may be needed over a long distance.",
+          "Microwaves are useful between buildings or across ground where laying cable is difficult or expensive. Interference, movement of an antenna and bad weather can weaken the signal and make the link less reliable.",
+        ],
+        materials: [
+          analogy("Microwaves: direction and line of sight", ["S2.08.A04"], "microwaves-diagram.png", "Two fixed sites on separate hilltops use aligned dish antennas to send a narrow microwave signal across a clear, straight path.", "The aligned dishes and narrow signal path show a directional point-to-point link that needs a clear line of sight.", "The image shows the signal path only. It does not imply that microwaves pass through obstacles or that every wireless network uses WiFi.", "Diagram note"),
+        ],
+        misconceptions: ["Microwaves are not the same as local WiFi and do not pass through every obstacle; fixed directional antennas normally need line of sight."],
+        teacherNote: "microwaves 答题必须出现 directional、line of sight 和 fixed point-to-point；只写 wireless 不足以描述其特性。",
+      },
+      {
+        heading: "Satellites",
+        objectiveIds: ["S2.08.A05"],
+        explanation: [
+          "A ground station sends microwaves to a satellite using an uplink. The satellite receives the signal and sends it back to one or more receiving dishes using a downlink.",
+          "Satellites can cover a very large geographical area and reach ships, aircraft and remote locations where installing cable is difficult or impossible. The same transmission can also be sent across a wide area.",
+          "Signals travel a very long distance to and from a satellite, so there is a time delay. This can affect telephone calls, video conferencing and real-time control. Bad weather can weaken the signal, and satellite equipment and services can be expensive.",
+        ],
+        materials: [
+          analogy("Satellites: uplink, downlink and coverage", ["S2.08.A05"], "satellites-diagram.png", "A ground station sends a signal to a communications satellite, which sends signals back across a wide area to a distant receiving station and a research vessel.", "The long ground-to-satellite and satellite-to-ground paths show the uplink, downlink, wide coverage and the cause of time delay.", "The image simplifies the coverage area and signal paths. It does not show exact orbits, distances or signal strength.", "Diagram note"),
+        ],
+        misconceptions: ["Satellite communication is not local WiFi and it is not delay-free; every signal must travel through both an uplink and a downlink path."],
+        teacherNote: "satellites 答题按 uplink → satellite → downlink 描述，再把 wide coverage 与 time delay、weather、cost 的代价对应起来。",
+      },
+      {
+        heading: "Selecting a transmission medium from the scenario",
+        objectiveIds: ["S2.08.A06"],
+        explanation: [
+          "Choose a transmission medium by matching its physical carrier and operating characteristics to the scenario. Relevant factors include distance, required bandwidth, attenuation, interference, mobility, line of sight, time delay, installation constraints, security controls and cost.",
+          "A justified choice states the medium, names a specific characteristic and explains the consequence in the given setting. For example, fibre suits a long link near electrical machinery because light transmission is not affected by electromagnetic interference; satellites suit a remote vessel because their wide coverage does not require cable to be installed along the whole route.",
+        ],
+        materials: [
+          table("Medium selection matrix", ["S2.08.A06"], ["Medium", "Signal/path", "Strength", "Limitation / suitable use"], [
+            ["Copper", "Electrical signal in cable", "Low cost; established LAN access", "Attenuation/interference; shorter links"],
+            ["Fibre", "Light pulse in glass/plastic", "High capacity; low attenuation; EMI resistant", "Installation/equipment cost; backbones and long links"],
+            ["WiFi / radio", "Radio waves through space", "Mobility; flexible local access", "Shared spectrum, obstacles, range and security controls"],
+            ["Microwaves", "Directional electromagnetic waves", "High-bandwidth point-to-point link without cable", "Line of sight, alignment, interference and bad weather"],
+            ["Satellites", "Uplink and downlink using microwaves", "Very wide coverage and remote locations", "Time delay, bad weather and cost"],
           ]),
           flow("Choose a medium", ["S2.08.A06"], [
             ["1 · Need", "Distance, mobility, capacity and availability"],
@@ -412,12 +458,12 @@ export const section2Lessons = [
             ["4 · Justify", "Link the chosen carrier feature to the scenario consequence"],
           ]),
         ],
-        misconceptions: ["A satellite link is wireless but not the same as local WiFi.", "Fibre does not carry electrical pulses in the fibre core."],
-        teacherNote: "先问 signal是什么，再问为什么适合；这样学生不会把 fibre 的优点写给 copper。",
+        misconceptions: ["No medium is always best. A valid recommendation must connect a named characteristic to the actual distance, environment, mobility or delay requirement."],
+        teacherNote: "选择题必须写 medium + characteristic + scenario consequence，不能只写 faster、better 或 more modern。",
       },
     ],
     practice: [
-      q("S2-L04-Q1", "Retrieval", 5, "For copper, fibre, WiFi, microwave and satellite, state the signal/path used by each.", ["S2.08.A01", "S2.08.A02", "S2.08.A03", "S2.08.A04", "S2.08.A05"], ["Copper: electrical signals in cable.", "Fibre: light pulses in fibre.", "WiFi: radio waves.", "Microwave: directional electromagnetic/microwave link.", "Satellite: radio/microwave uplink and downlink."], "Do not say all wireless media use WiFi."),
+      q("S2-L04-Q1", "Retrieval", 10, "Describe the characteristics of copper cable, fibre-optic cable, radio waves including WiFi, microwaves and satellites.", ["S2.08.A01", "S2.08.A02", "S2.08.A03", "S2.08.A04", "S2.08.A05"], ["Copper carries electrical signals through a guided cable path.", "Copper is relatively inexpensive but suffers attenuation and electromagnetic interference.", "Fibre carries pulses of light through glass or plastic.", "Fibre provides high bandwidth, low attenuation and immunity to electromagnetic interference, but installation and termination can cost more.", "WiFi uses radio waves through space and provides mobility within its coverage area.", "WiFi is affected by distance, obstacles, interference, shared spectrum and wireless-security requirements.", "Microwaves use an aligned directional beam between fixed antennas and can provide a high-bandwidth point-to-point link without cable between the sites.", "Microwaves normally need line of sight and can be weakened by obstruction, misalignment, interference or bad weather.", "Satellites use an uplink and downlink to provide very wide coverage, including remote or moving locations.", "Satellite communication can be affected by time delay, bad weather and higher equipment or service cost."], "Do not describe every wireless medium as WiFi; distinguish local radio coverage, directional microwaves and a satellite uplink/downlink."),
       q("S2-L04-Q2", "Application", 6, "Compare a wired connection and WiFi for tablets used around a warehouse.", ["S2.07.A01", "S2.08.A03", "S2.08.A06"], ["WiFi supports mobility.", "Coverage/interference/obstacles must be planned.", "Wireless authentication/encryption is required.", "Wired can provide a stable guided path.", "Cables restrict tablet movement and need ports/installation.", "Conclude which requirement matters most in the warehouse."], "Use paired comparison factors, not unrelated lists."),
       q("S2-L04-Q3", "Exam-style", 6, "Recommend a medium for a high-capacity link between two school buildings and a different medium for laptops inside classrooms.", ["S2.07.A01", "S2.08.A02", "S2.08.A03", "S2.08.A06"], ["Fibre between buildings.", "High capacity/low attenuation/EMI resistance linked to the backbone.", "WiFi inside classrooms.", "Mobility and reduced end-device cabling linked to laptops.", "Coverage/interference is acknowledged.", "Security and/or installation trade-off is stated."], "One medium need not solve every part of the scenario."),
     ],
@@ -431,11 +477,14 @@ export const section2Lessons = [
       markLogic: ["A comparison factor must address both sides.", "The recommendation must use a characteristic of the named medium, not a generic networking benefit."],
       commonLosses: ["Calling fibre wireless.", "Giving WiFi features when the question asks about the cable backbone."],
     },
+    summaryMode: "authored",
     summary: [
       ["Copper", "Electrical; affordable; attenuation and EMI"],
       ["Fibre", "Light; capacity and distance; installation cost"],
       ["WiFi/radio", "Mobility; shared spectrum and obstacles"],
-      ["Microwave/satellite", "Directional/large-area wireless; line of sight and delay trade-offs"],
+      ["Microwaves", "Directional point-to-point; line of sight and alignment"],
+      ["Satellites", "Uplink/downlink; wide coverage with time delay and weather trade-offs"],
+      ["Choose", "Match a named characteristic to the scenario consequence"],
     ],
     sources: ["Official syllabus PDF page 16", "AL Coursebook PDF pages 39–42", "Hodder Complete Book PDF pages 83–87"],
   },

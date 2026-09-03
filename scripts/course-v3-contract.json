@@ -3190,7 +3190,7 @@
           "id": "S2.08.A01",
           "description": "Describe copper-cable signal characteristics.",
           "explanationUnits": [
-            "The carrier determines capacity, attenuation and interference"
+            "Copper cable, fibre-optic cable and radio waves including WiFi"
           ],
           "materialTitles": [
             "Transmission media carry signals in different physical forms"
@@ -3206,7 +3206,7 @@
           "id": "S2.08.A02",
           "description": "Describe fibre-optic signal characteristics.",
           "explanationUnits": [
-            "The carrier determines capacity, attenuation and interference"
+            "Copper cable, fibre-optic cable and radio waves including WiFi"
           ],
           "materialTitles": [
             "Transmission media carry signals in different physical forms"
@@ -3223,7 +3223,7 @@
           "id": "S2.08.A03",
           "description": "Describe radio waves including WiFi.",
           "explanationUnits": [
-            "The carrier determines capacity, attenuation and interference"
+            "Copper cable, fibre-optic cable and radio waves including WiFi"
           ],
           "materialTitles": [
             "Transmission media carry signals in different physical forms"
@@ -3237,12 +3237,12 @@
         },
         {
           "id": "S2.08.A04",
-          "description": "Describe terrestrial microwave links.",
+          "description": "Describe the characteristics of microwaves.",
           "explanationUnits": [
-            "The carrier determines capacity, attenuation and interference"
+            "Microwaves"
           ],
           "materialTitles": [
-            "Transmission media carry signals in different physical forms"
+            "Microwaves: direction and line of sight"
           ],
           "questionIds": [
             "S2-L04-Q1"
@@ -3253,12 +3253,12 @@
         },
         {
           "id": "S2.08.A05",
-          "description": "Describe satellite links.",
+          "description": "Describe the characteristics of satellites.",
           "explanationUnits": [
-            "The carrier determines capacity, attenuation and interference"
+            "Satellites"
           ],
           "materialTitles": [
-            "Transmission media carry signals in different physical forms"
+            "Satellites: uplink, downlink and coverage"
           ],
           "questionIds": [
             "S2-L04-Q1"
@@ -3271,10 +3271,10 @@
           "id": "S2.08.A06",
           "description": "Justify a transmission medium for a scenario.",
           "explanationUnits": [
-            "The carrier determines capacity, attenuation and interference"
+            "Selecting a transmission medium from the scenario"
           ],
           "materialTitles": [
-            "Transmission media carry signals in different physical forms",
+            "Medium selection matrix",
             "Choose a medium"
           ],
           "questionIds": [
@@ -3307,14 +3307,11 @@
           "workedExample": null
         },
         {
-          "heading": "The carrier determines capacity, attenuation and interference",
+          "heading": "Copper cable, fibre-optic cable and radio waves including WiFi",
           "objectiveIds": [
             "S2.08.A01",
             "S2.08.A02",
-            "S2.08.A03",
-            "S2.08.A04",
-            "S2.08.A05",
-            "S2.08.A06"
+            "S2.08.A03"
           ],
           "leadVisual": {
             "type": "reviewed-visual",
@@ -3323,7 +3320,57 @@
           "coreExplanation": [
             "Copper cable carries changing electrical signals. It is widely available and relatively inexpensive, but suffers attenuation and can be affected by electromagnetic interference; shielding and twisted pairs reduce interference.",
             "Fibre-optic cable carries pulses of light through glass or plastic. It supports high data capacity, low attenuation over long distances and immunity to electromagnetic interference, but equipment and installation can cost more and the fibre needs careful handling.",
-            "Radio waves, including WiFi, can provide local wireless coverage and may pass through obstacles, but share spectrum and can suffer interference. Terrestrial microwave links are directional and normally require line of sight between antennas. Satellite links use radio/microwave signals to cover very large areas, but long paths—especially to high-orbit satellites—add delay and can be affected by weather or line-of-sight constraints."
+            "Radio waves, including WiFi, carry data through space and provide mobility within a coverage area. They can pass through some obstacles, but distance, walls, competing transmitters and shared spectrum can weaken the signal or reduce capacity. Wireless access must use authentication and encryption because signals can extend beyond the intended room or building."
+          ],
+          "method": null,
+          "workedExample": null
+        },
+        {
+          "heading": "Microwaves",
+          "objectiveIds": [
+            "S2.08.A04"
+          ],
+          "leadVisual": {
+            "type": "analogy",
+            "title": "Microwaves: direction and line of sight"
+          },
+          "coreExplanation": [
+            "Microwaves are high-frequency electromagnetic waves. A narrow, directional beam can carry data between fixed antennas at two sites, providing a high-bandwidth point-to-point link without installing cable between the sites.",
+            "The transmitting and receiving antennas must be accurately aligned and normally need a clear line of sight. Buildings, hills and the curvature of the Earth can block the signal, so tall masts or relay stations may be needed over a long distance.",
+            "Microwaves are useful between buildings or across ground where laying cable is difficult or expensive. Interference, movement of an antenna and bad weather can weaken the signal and make the link less reliable."
+          ],
+          "method": null,
+          "workedExample": null
+        },
+        {
+          "heading": "Satellites",
+          "objectiveIds": [
+            "S2.08.A05"
+          ],
+          "leadVisual": {
+            "type": "analogy",
+            "title": "Satellites: uplink, downlink and coverage"
+          },
+          "coreExplanation": [
+            "A ground station sends microwaves to a satellite using an uplink. The satellite receives the signal and sends it back to one or more receiving dishes using a downlink.",
+            "Satellites can cover a very large geographical area and reach ships, aircraft and remote locations where installing cable is difficult or impossible. The same transmission can also be sent across a wide area.",
+            "Signals travel a very long distance to and from a satellite, so there is a time delay. This can affect telephone calls, video conferencing and real-time control. Bad weather can weaken the signal, and satellite equipment and services can be expensive."
+          ],
+          "method": null,
+          "workedExample": null
+        },
+        {
+          "heading": "Selecting a transmission medium from the scenario",
+          "objectiveIds": [
+            "S2.08.A06"
+          ],
+          "leadVisual": {
+            "type": "table",
+            "title": "Medium selection matrix"
+          },
+          "coreExplanation": [
+            "Choose a transmission medium by matching its physical carrier and operating characteristics to the scenario. Relevant factors include distance, required bandwidth, attenuation, interference, mobility, line of sight, time delay, installation constraints, security controls and cost.",
+            "A justified choice states the medium, names a specific characteristic and explains the consequence in the given setting. For example, fibre suits a long link near electrical machinery because light transmission is not affected by electromagnetic interference; satellites suit a remote vessel because their wide coverage does not require cable to be installed along the whole route."
           ],
           "method": {
             "type": "flow",
@@ -3335,8 +3382,8 @@
       "practice": [
         {
           "id": "S2-L04-Q1",
-          "commandWord": "State",
-          "marks": 5,
+          "commandWord": "Describe",
+          "marks": 10,
           "objectiveIds": [
             "S2.08.A01",
             "S2.08.A02",
@@ -3393,7 +3440,7 @@
         {
           "id": "S2-L04-EXAM-3",
           "sourceRef": "Cambridge 9618 syllabus · S2.08",
-          "commandWord": "Explain",
+          "commandWord": "Describe",
           "marks": 4,
           "objectiveIds": [
             "S2.08.A05",
@@ -22233,6 +22280,14 @@
     {
       "path": "web/assets/diagrams/course-v3-imagegen/transmission-media.png",
       "sha256": "86737246896c95e8bb2e112bfac3fc825cd22b89d0c7178c91549b33ed8d1c74"
+    },
+    {
+      "path": "web/assets/course-v3/section-2/microwaves-diagram.png",
+      "sha256": "9c2c68d412aa8198d0259eedaa006c6a1fe7accffe47694e61a0a3728bba0bf9"
+    },
+    {
+      "path": "web/assets/course-v3/section-2/satellites-diagram.png",
+      "sha256": "ff70e194115d103041db2d6e9ebdde8928af6fd8819d311bbc28de374f4bb6d6"
     },
     {
       "path": "web/assets/diagrams/course-v3-imagegen/lan-devices.png",

@@ -1281,7 +1281,7 @@ const examQuestionOverrides = Object.freeze({
     commonError: "Do not choose fibre only because it is newer; link its light-based transmission and interference resistance to the factory conditions.",
   },
   "S2-L04-EXAM-2": {
-    prompt: "Describe how a terrestrial microwave link can connect two hilltop offices and explain two conditions that can reduce its reliability.",
+    prompt: "Describe the characteristics of microwaves used to connect two hilltop offices, including two conditions that can reduce the reliability of the link.",
     objectiveIds: ["S2.08.A04", "S2.08.A06"],
     answerPoints: [
       "Directional microwave antennas transmit electromagnetic signals between the two fixed sites.",
@@ -1289,18 +1289,18 @@ const examQuestionOverrides = Object.freeze({
       "Buildings, terrain or later obstructions in the path can block or weaken the link.",
       "Severe weather, interference or misalignment can reduce signal quality and reliability.",
     ],
-    commonError: "Do not describe the link as local WiFi; terrestrial microwave uses aligned directional endpoints over a line-of-sight path.",
+    commonError: "Do not describe the link as local WiFi; microwaves use aligned directional antennas over a line-of-sight path.",
   },
   "S2-L04-EXAM-3": {
-    prompt: "Explain why a satellite link may be selected for a research vessel far from land and give two disadvantages for interactive communication.",
+    prompt: "Describe the characteristics of satellites used for communication with a research vessel far from land, including two disadvantages for interactive communication.",
     objectiveIds: ["S2.08.A05", "S2.08.A06"],
     answerPoints: [
-      "The vessel can communicate through radio or microwave signals sent to and received from a satellite over a very large coverage area.",
-      "Satellite coverage can reach an offshore location where a fixed terrestrial cable or local access point is unavailable.",
-      "The long signal path introduces noticeable latency that affects interactive calls or control.",
+      "The vessel can communicate using microwaves sent to and received from a satellite over a very large coverage area.",
+      "Satellite coverage can reach an offshore location where installing cable along the whole route is impossible.",
+      "The long signal path introduces a noticeable time delay that affects interactive calls or control.",
       "Equipment, service cost, weather effects or limited shared capacity can also constrain the connection.",
     ],
-    commonError: "Do not claim that satellite communication has zero delay; the long propagation path creates latency.",
+    commonError: "Do not claim that satellite communication has zero delay; the signal travels a long distance to and from the satellite, which creates a time delay.",
   },
   "S2-L05-EXAM-1": {
     prompt: "A long LAN has a weak signal at its far end, and two busy LAN segments exchange only occasional traffic. Explain how a repeater and a bridge solve the two different problems.",

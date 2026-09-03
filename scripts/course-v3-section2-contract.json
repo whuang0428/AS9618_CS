@@ -397,11 +397,11 @@
           "id": "S2.08.A01",
           "description": "Describe copper-cable signal characteristics.",
           "explanationUnits": [
-            "The carrier determines capacity, attenuation and interference"
+            "Copper cable, fibre-optic cable and radio waves including WiFi"
           ],
           "materialTitles": [
             "Three carrier mechanisms",
-            "Medium selection matrix"
+            "Copper, fibre and WiFi characteristics"
           ],
           "questionIds": [
             "S2-L04-Q1"
@@ -412,11 +412,11 @@
           "id": "S2.08.A02",
           "description": "Describe fibre-optic signal characteristics.",
           "explanationUnits": [
-            "The carrier determines capacity, attenuation and interference"
+            "Copper cable, fibre-optic cable and radio waves including WiFi"
           ],
           "materialTitles": [
             "Three carrier mechanisms",
-            "Medium selection matrix"
+            "Copper, fibre and WiFi characteristics"
           ],
           "questionIds": [
             "S2-L04-Q1",
@@ -428,11 +428,11 @@
           "id": "S2.08.A03",
           "description": "Describe radio waves including WiFi.",
           "explanationUnits": [
-            "The carrier determines capacity, attenuation and interference"
+            "Copper cable, fibre-optic cable and radio waves including WiFi"
           ],
           "materialTitles": [
             "Three carrier mechanisms",
-            "Medium selection matrix"
+            "Copper, fibre and WiFi characteristics"
           ],
           "questionIds": [
             "S2-L04-Q1",
@@ -443,12 +443,12 @@
         },
         {
           "id": "S2.08.A04",
-          "description": "Describe terrestrial microwave links.",
+          "description": "Describe the characteristics of microwaves.",
           "explanationUnits": [
-            "The carrier determines capacity, attenuation and interference"
+            "Microwaves"
           ],
           "materialTitles": [
-            "Medium selection matrix"
+            "Microwaves: direction and line of sight"
           ],
           "questionIds": [
             "S2-L04-Q1"
@@ -457,12 +457,12 @@
         },
         {
           "id": "S2.08.A05",
-          "description": "Describe satellite links.",
+          "description": "Describe the characteristics of satellites.",
           "explanationUnits": [
-            "The carrier determines capacity, attenuation and interference"
+            "Satellites"
           ],
           "materialTitles": [
-            "Medium selection matrix"
+            "Satellites: uplink, downlink and coverage"
           ],
           "questionIds": [
             "S2-L04-Q1"
@@ -473,7 +473,7 @@
           "id": "S2.08.A06",
           "description": "Justify a transmission medium for a scenario.",
           "explanationUnits": [
-            "The carrier determines capacity, attenuation and interference"
+            "Selecting a transmission medium from the scenario"
           ],
           "materialTitles": [
             "Medium selection matrix",
@@ -1037,6 +1037,16 @@
       "name": "transmission-media-analogy.png",
       "path": "web/assets/course-v3/section-2/transmission-media-analogy.png",
       "sha256": "7e692d9ab1dbdd94bcae64a2c8200f6d1f038bebc0801f9c135e3df16fbd4b38"
+    },
+    {
+      "name": "microwaves-diagram.png",
+      "path": "web/assets/course-v3/section-2/microwaves-diagram.png",
+      "sha256": "9c2c68d412aa8198d0259eedaa006c6a1fe7accffe47694e61a0a3728bba0bf9"
+    },
+    {
+      "name": "satellites-diagram.png",
+      "path": "web/assets/course-v3/section-2/satellites-diagram.png",
+      "sha256": "ff70e194115d103041db2d6e9ebdde8928af6fd8819d311bbc28de374f4bb6d6"
     },
     {
       "name": "ethernet-collision-analogy.png",

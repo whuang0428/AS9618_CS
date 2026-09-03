@@ -56,7 +56,7 @@ function renderAnalogy(material) {
     <h4>${escapeHtml(material.title)}</h4>
     <img src="../../../assets/course-v3/section-2/${escapeHtml(material.asset)}" alt="${escapeHtml(material.alt)}" loading="lazy" decoding="async">
     <figcaption>${escapeHtml(material.caption)}</figcaption>
-    <aside class="analogy-boundary"><strong>Analogy boundary</strong><p>${escapeHtml(material.boundary)}</p></aside>
+    <aside class="analogy-boundary"><strong>${escapeHtml(material.boundaryLabel ?? "Analogy boundary")}</strong><p>${escapeHtml(material.boundary)}</p></aside>
   </figure>`;
 }
 

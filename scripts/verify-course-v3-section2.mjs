@@ -35,6 +35,31 @@ export function validateSection2(lessons, options = {}) {
   assert.deepEqual(requirementOrder, expectedRequirements, "S2 requirements must appear exactly once in official order");
   assert.deepEqual(section2Meta.requirementOrder, expectedRequirements, "Section metadata requirement order is incorrect");
 
+  const transmissionLesson = lessons.find((lesson) => lesson.lessonKey === "S2-L04");
+  fail(transmissionLesson, "S2-L04 transmission-media lesson is missing");
+  const microwaveUnit = transmissionLesson?.units.find((unit) => /microwave/i.test(unit.heading) && unit.objectiveIds.includes("S2.08.A04"));
+  const satelliteUnit = transmissionLesson?.units.find((unit) => /satellite/i.test(unit.heading) && unit.objectiveIds.includes("S2.08.A05"));
+  fail(microwaveUnit, "S2-L04 needs a dedicated microwaves knowledge unit");
+  fail(satelliteUnit, "S2-L04 needs a dedicated satellite knowledge unit");
+  const microwaveExplanation = microwaveUnit?.explanation.join(" ").toLowerCase() ?? "";
+  for (const term of ["directional", "line of sight", "aligned", "point-to-point"]) {
+    fail(microwaveExplanation.includes(term), `S2-L04 microwave explanation missing ${term}`);
+  }
+  const satelliteExplanation = satelliteUnit?.explanation.join(" ").toLowerCase() ?? "";
+  for (const term of ["uplink", "downlink", "cover", "time delay", "weather"]) {
+    fail(satelliteExplanation.includes(term), `S2-L04 satellite explanation missing ${term}`);
+  }
+  const microwaveDiagram = microwaveUnit?.materials.find((material) => material.type === "analogy" && material.asset === "microwaves-diagram.png");
+  const satelliteDiagram = satelliteUnit?.materials.find((material) => material.type === "analogy" && material.asset === "satellites-diagram.png");
+  fail(microwaveDiagram, "S2-L04 microwaves explanation needs its reviewed ImageGen diagram");
+  fail(satelliteDiagram, "S2-L04 satellites explanation needs its reviewed ImageGen diagram");
+  fail(microwaveDiagram?.boundaryLabel === "Diagram note", "S2-L04 microwaves material must be presented as a diagram");
+  fail(satelliteDiagram?.boundaryLabel === "Diagram note", "S2-L04 satellites material must be presented as a diagram");
+  fail(!microwaveUnit?.materials.some((material) => material.type === "table"), "S2-L04 microwaves explanation must not use a table");
+  fail(!satelliteUnit?.materials.some((material) => material.type === "table"), "S2-L04 satellites explanation must not use a table");
+  const transmissionCoverageQuestion = transmissionLesson?.practice.find((question) => question.id === "S2-L04-Q1");
+  fail(transmissionCoverageQuestion?.marks === 10 && transmissionCoverageQuestion.answerPoints.length === 10, "S2-L04-Q1 must assess all five media with ten supported marking points");
+
   const assetRecords = new Map(imageManifest.accepted.map((record) => [record.workspacePath.split("/").at(-1), record]));
   const pilotAssets = new Set(imageManifest.approvedPilotAssets.map((path) => path.split("/").at(-1)));
 
@@ -137,6 +162,10 @@ function selfTest() {
     ["missing past-paper analysis", (copy) => { copy[0].pastPaper.task = ""; }, /incomplete past-paper/],
     ["flow collapsed", (copy) => { const flow = copy.flatMap((lesson) => lesson.units.flatMap((unit) => unit.materials)).find((material) => material.type === "flow"); flow.steps = flow.steps.slice(0, 2); }, /at least three steps/],
     ["topology path corruption", (copy) => { const gallery = copy[1].units[0].materials[0]; gallery.entries[1][3] = ["Source directly crosses central device to destination"]; }, /exactly three explicit stages/],
+    ["microwave detail removed", (copy) => { const unit = copy.find((lesson) => lesson.lessonKey === "S2-L04").units.find((item) => /microwave/i.test(item.heading)); unit.explanation = ["Microwave is wireless."]; }, /microwave explanation missing directional/],
+    ["satellite detail removed", (copy) => { const unit = copy.find((lesson) => lesson.lessonKey === "S2-L04").units.find((item) => /satellite/i.test(item.heading)); unit.explanation = ["Satellite uses radio waves."]; }, /satellite explanation missing uplink/],
+    ["microwave diagram replaced", (copy) => { const unit = copy.find((lesson) => lesson.lessonKey === "S2-L04").units.find((item) => /microwave/i.test(item.heading)); unit.materials[0].asset = "transmission-media-analogy.png"; }, /microwaves explanation needs its reviewed ImageGen diagram/],
+    ["satellite diagram replaced", (copy) => { const unit = copy.find((lesson) => lesson.lessonKey === "S2-L04").units.find((item) => /satellite/i.test(item.heading)); unit.materials[0].asset = "transmission-media-analogy.png"; }, /satellites explanation needs its reviewed ImageGen diagram/],
   ];
   for (const [name, mutate, expected] of scenarios) {
     const copy = structuredClone(section2Lessons);

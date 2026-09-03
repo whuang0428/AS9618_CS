@@ -46,7 +46,7 @@ function renderFlow(material) {
 }
 
 function renderAnalogy(material, section) {
-  return `<figure class="teaching-material material-analogy" data-material-type="analogy" data-objectives="${material.objectiveIds.join(" ")}"><h4>${escapeHtml(material.title)}</h4><img src="${escapeHtml(lessonAssetSource(material.asset, section))}" alt="${escapeHtml(material.alt)}" loading="lazy" decoding="async"><figcaption>${escapeHtml(material.caption)}</figcaption><aside class="analogy-boundary"><strong>Analogy boundary</strong><p>${escapeHtml(material.boundary)}</p></aside></figure>`;
+  return `<figure class="teaching-material material-analogy" data-material-type="analogy" data-objectives="${material.objectiveIds.join(" ")}"><h4>${escapeHtml(material.title)}</h4><img src="${escapeHtml(lessonAssetSource(material.asset, section))}" alt="${escapeHtml(material.alt)}" loading="lazy" decoding="async"><figcaption>${escapeHtml(material.caption)}</figcaption><aside class="analogy-boundary"><strong>${escapeHtml(material.boundaryLabel ?? "Analogy boundary")}</strong><p>${escapeHtml(material.boundary)}</p></aside></figure>`;
 }
 
 function renderWorkedExample(material) {
