@@ -2,7 +2,7 @@ import { classifyCommand, normaliseQuestionPrompt } from "./cie-command-words.mj
 import { knowledgeDiagramForUnit } from "./course-v3-knowledge-diagrams.mjs";
 
 const imageVisualTypes = new Set(["reviewed-visual", "topology-gallery", "reservoir", "address-demo", "url-demo"]);
-const structuredVisualTypes = new Set(["flow", "table", "cards"]);
+const structuredVisualTypes = new Set(["flow", "table", "cards", "list"]);
 const genericMethodPattern = /identify the relevant|connect the mechanism|establish the exact|trace the relationship|use the explanation|set up the required|carry out the complete|trace or test the result|extract the constraints|match mechanisms to|link the choice to/i;
 
 export function normalisePresentationText(value = "") {
@@ -51,6 +51,7 @@ function visualPriority(material) {
 function materialTexts(material, { includeTranscript = false } = {}) {
   if (!material) return [];
   if (material.type === "cards") return material.items.flatMap(([heading, body]) => [heading, body]);
+  if (material.type === "list") return [material.title, ...material.items.flat()];
   if (material.type === "table") return [material.title, ...material.headers, ...material.rows.flat()];
   if (material.type === "flow") return [material.title, ...material.steps.flat()];
   if (material.type === "worked-example") return [material.title, ...material.steps.flat()];
@@ -938,12 +939,211 @@ const examQuestionOverrides = Object.freeze({
   },
   "S3-L01-EXAM-2": {
     prompt: "An embedded controller operates a washing machine. Explain one benefit and one drawback of using an embedded system for this task.",
+    objectiveIds: ["S3.02.A02", "S3.02.A03"],
     answerPoints: [
       "The controller is designed for one dedicated set of washing-machine functions, allowing efficient, reliable operation with limited hardware resources.",
       "Dedicated hardware and software can reduce size, power use or unit cost compared with a general-purpose computer.",
       "Limited memory, processing capacity and fixed interfaces make unrelated new functions or major upgrades difficult to add.",
     ],
     commonError: "Do not identify an embedded system only by its small size; link its dedicated purpose to the stated benefit and limitation.",
+  },
+  "S3-L01-EXAM-1": {
+    prompt: "A field data logger receives measurements, processes them, shows warnings and retains a record after power is removed. Explain the roles of input, output, primary memory, secondary storage and removable storage in this system.",
+    objectiveIds: ["S3.01.A01", "S3.01.A02", "S3.01.A03", "S3.01.A04", "S3.01.A05"],
+    answerPoints: [
+      "Input devices supply data and instructions to the computer system.",
+      "Output devices communicate processed information or cause an action.",
+      "Primary memory holds instructions and data needed during current processing.",
+      "Secondary storage retains programs and data when power is removed.",
+      "Removable storage can transfer data between systems or hold an offline copy.",
+    ],
+    commonError: "Do not replace the hardware-role explanation with embedded-system or control-system detail.",
+  },
+  "S3-L01-EXAM-3": {
+    prompt: "A washing machine contains a programmable controller. Explain why this is an embedded system and how the controller, memory, inputs and outputs support its dedicated function.",
+    objectiveIds: ["S3.02.A01"],
+    answerPoints: [
+      "The computer system is built into the larger washing machine.",
+      "It performs a dedicated washing-control function or closely related functions.",
+      "Inputs supply data such as a selected program or sensor reading.",
+      "The controller executes instructions held in memory.",
+      "Outputs operate components such as the motor, valve or display.",
+    ],
+    commonError: "Do not identify an embedded system only by its size; state the larger device and dedicated function.",
+  },
+  "S3-L02-EXAM-1": {
+    prompt: "A school prints examination cover sheets using a laser printer. Describe the principal operation that produces each printed page.",
+    objectiveIds: ["S3.03.A01"],
+    answerPoints: [
+      "A photosensitive drum is given an electrostatic charge.",
+      "A laser creates a charge pattern representing the page.",
+      "Toner adheres to the required areas of the drum.",
+      "The toner image transfers to paper.",
+      "Heat and pressure fuse the toner to the paper.",
+    ],
+    commonError: "Do not describe an inkjet print head; a laser printer uses a charged drum, toner and a fuser.",
+  },
+  "S3-L02-EXAM-2": {
+    prompt: "A designer sends a digital model to a 3D printer. Describe how the printer produces the physical object.",
+    objectiveIds: ["S3.03.A02"],
+    answerPoints: [
+      "Software divides the digital model into thin layers.",
+      "The printer follows the data for one layer at a time.",
+      "Material is deposited or solidified at the required positions.",
+      "The print head or platform moves for the next layer.",
+      "Successive layers form the physical object.",
+    ],
+    commonError: "Do not state only that material is added; explain the digital slicing and successive layer process.",
+  },
+  "S3-L02-EXAM-3": {
+    prompt: "Describe how a microphone and an analogue-to-digital converter produce binary data representing speech.",
+    objectiveIds: ["S3.03.A03"],
+    answerPoints: [
+      "Sound waves cause the microphone diaphragm to vibrate.",
+      "A transducer converts the movement into a varying analogue electrical signal.",
+      "The ADC samples the signal at regular time intervals.",
+      "Each sample is quantised to an available level.",
+      "The sample values are encoded as binary data.",
+    ],
+    commonError: "Do not omit the analogue electrical signal or claim that the diaphragm directly stores binary values.",
+  },
+  "S3-L02-EXAM-4": {
+    prompt: "A media player sends stored audio to powered speakers. Describe the signal path and physical operation that produce sound waves.",
+    objectiveIds: ["S3.03.A04"],
+    answerPoints: [
+      "A DAC converts the binary sample values into a varying analogue signal.",
+      "An amplifier supplies sufficient current to the speaker.",
+      "Current in the voice coil produces a changing magnetic field.",
+      "The coil and attached cone move.",
+      "The cone vibrates the air to produce sound waves.",
+    ],
+    commonError: "Do not reverse the conversion direction; speakers convert digital data towards analogue motion and sound.",
+  },
+  "S3-L02-EXAM-5": {
+    prompt: "A file is written to a magnetic hard disk and later read. Describe the physical and electronic operations used in both processes.",
+    objectiveIds: ["S3.03.A05"],
+    answerPoints: [
+      "The magnetic platters rotate.",
+      "An actuator positions the read/write head over the required track.",
+      "The required sector passes beneath the head.",
+      "Writing changes the magnetic orientation of areas that represent bits.",
+      "Reading senses the magnetic pattern and the controller decodes it as binary data.",
+    ],
+    commonError: "Do not describe the head as normally touching the platter or replace the magnetic mechanism with laser reading.",
+  },
+  "S3-L02-EXAM-6": {
+    prompt: "Describe how solid-state flash memory cells in a digital camera are programmed, erased and read.",
+    objectiveIds: ["S3.03.A06"],
+    answerPoints: [
+      "Flash memory uses floating-gate transistor cells.",
+      "Electrical charge trapped in a cell changes its threshold behaviour and represents stored data.",
+      "The controller applies voltages to program cells.",
+      "Erasing removes or changes the stored charge electrically.",
+      "Reading detects the charge state of the addressed cells.",
+    ],
+    commonError: "Do not describe flash memory as magnetic storage; it stores charge electronically and has no moving parts.",
+  },
+  "S3-L02-EXAM-7": {
+    prompt: "An optical drive reads a recorded file and later writes a backup to a recordable disc. Describe the laser and detector operations used for both tasks.",
+    objectiveIds: ["S3.03.A07"],
+    answerPoints: [
+      "The drive spins the disc and focuses a laser on its track.",
+      "A low-power laser is used for reading.",
+      "A detector senses differences in reflected light.",
+      "The controller converts the detected changes into binary data.",
+      "A higher-power laser changes areas of the recording layer when writing.",
+    ],
+    commonError: "Do not use a magnetic read/write explanation; the optical drive uses laser light and reflection differences.",
+  },
+  "S3-L02-EXAM-8": {
+    prompt: "A user selects an icon on a capacitive touchscreen. Describe how the system detects the touch position.",
+    objectiveIds: ["S3.03.A08"],
+    answerPoints: [
+      "The screen maintains an electric field across a transparent electrode grid.",
+      "The user's finger changes the local capacitance or electric field.",
+      "The electrode grid detects the location of the change.",
+      "The controller calculates the touch coordinates.",
+      "The coordinates are supplied to the software as input.",
+    ],
+    commonError: "Do not describe only the displayed icon; explain how the touch-sensitive layer produces position data.",
+  },
+  "S3-L02-EXAM-9": {
+    prompt: "A user turns their head while wearing a virtual-reality headset. Describe how the headset and computer update the user's view.",
+    objectiveIds: ["S3.03.A09"],
+    answerPoints: [
+      "Motion and orientation sensors detect the head movement.",
+      "The sensor data is sent to the computer.",
+      "The computer recalculates the rendered viewpoint.",
+      "A separate updated image is displayed for each eye.",
+      "The scene therefore appears to follow the user's head movement.",
+    ],
+    commonError: "Do not describe the headset only as a display; movement sensors provide the input used to update the view.",
+  },
+  "S3-L03-EXAM-1": {
+    prompt: "Several applications send documents to one slow printer. Explain how the print queue, printer driver and buffer allow the transfers to be managed.",
+    objectiveIds: ["S3.04.A01"],
+    answerPoints: [
+      "The driver translates operating-system requests into printer-specific commands and data formats.",
+      "The buffer temporarily stores data during transfer.",
+      "The queue preserves the order of waiting print jobs.",
+      "The printer consumes buffered data at its own rate while the processor continues other work.",
+    ],
+    commonError: "Do not claim that the buffer increases the printer's long-term operating speed.",
+  },
+  "S3-L03-EXAM-2": {
+    prompt: "Compare RAM with ROM, then explain why a computer uses RAM for active programs and ROM for start-up instructions.",
+    objectiveIds: ["S3.05.A01", "S3.05.A02"],
+    answerPoints: [
+      "RAM is normally volatile whereas ROM is non-volatile.",
+      "RAM is read/write working memory whereas ROM is normally read during operation.",
+      "Active programs and changing data require writable RAM.",
+      "Start-up instructions must persist without power, so they are held in ROM.",
+    ],
+    commonError: "Do not introduce SRAM and DRAM when the comparison requested is RAM against ROM.",
+  },
+  "S3-L03-EXAM-3": {
+    prompt: "Explain the differences between PROM, EPROM and EEPROM, including how each can be programmed or erased.",
+    objectiveIds: ["S3.07.A01", "S3.07.A02", "S3.07.A03"],
+    answerPoints: [
+      "PROM is supplied blank and can be programmed once.",
+      "EPROM can be erased using ultraviolet light and then reprogrammed.",
+      "EEPROM can be erased and reprogrammed electrically.",
+    ],
+    commonError: "Do not state only that all three are non-volatile; distinguish their programming and erasing methods.",
+  },
+  "S3-L04-EXAM-1": {
+    prompt: "Compare the monitoring and control functions of an automated greenhouse.",
+    objectiveIds: ["S3.08.A01", "S3.08.A02"],
+    answerPoints: [
+      "Both functions can obtain data from sensors.",
+      "Monitoring records, displays or alerts about the measured condition.",
+      "Control compares a reading with a stored target or rule.",
+      "Control sends an output signal to an actuator to change the physical condition.",
+    ],
+    commonError: "Do not call measurement and display alone a control action.",
+  },
+  "S3-L04-EXAM-2": {
+    prompt: "For each use, identify the appropriate named sensor and explain why it is suitable: greenhouse temperature, tyre pressure, remote-control signal and room noise level.",
+    objectiveIds: ["S3.09.A01"],
+    answerPoints: [
+      "A temperature sensor measures greenhouse temperature.",
+      "A pressure sensor measures tyre pressure.",
+      "An infra-red sensor detects radiation from the remote control.",
+      "A sound sensor detects the room's sound waves or sound level.",
+    ],
+    commonError: "Use the physical quantity detected to justify each named sensor.",
+  },
+  "S3-L04-EXAM-3": {
+    prompt: "An automated greenhouse uses a temperature sensor and a heater. Explain how feedback allows the control system to maintain the target temperature.",
+    objectiveIds: ["S3.08.A03", "S3.09.A02"],
+    answerPoints: [
+      "The temperature sensor repeatedly supplies a reading to the controller.",
+      "The controller compares the current reading with the target temperature.",
+      "It sends an output signal to the heater actuator when a change is required.",
+      "The actuator changes the physical temperature.",
+      "New readings report the effect of the action, allowing the controller to adjust or stop the heater and correct disturbances.",
+    ],
+    commonError: "Feedback is the new sensor reading returned after the action, not the output signal sent to the heater.",
   },
   "S4-L03-EXAM-2": {
     prompt: "Describe the fetch stage of the fetch-execute cycle using register-transfer notation from the address in PC to the instruction in CIR.",
@@ -1441,36 +1641,6 @@ const examQuestionOverrides = Object.freeze({
       "Firewalls, authentication and updates are still required because address type alone does not provide complete security.",
     ],
     commonError: "Do not equate static with public or dynamic with private; reachability and assignment method are independent properties.",
-  },
-  "S3-L03-EXAM-1": {
-    prompt: "Explain three differences between SRAM and DRAM and state one typical use of each memory type.",
-    answerPoints: [
-      "SRAM stores each bit in a flip-flop circuit, whereas DRAM stores each bit as charge in a capacitor.",
-      "SRAM does not require refresh and is faster, whereas DRAM must be refreshed and is slower.",
-      "SRAM has a higher cost per bit and lower density than DRAM.",
-      "SRAM is typically used for processor cache, while DRAM is typically used for main memory.",
-    ],
-    commonError: "Do not confuse SRAM and DRAM with ROM; both are volatile forms of RAM.",
-  },
-  "S3-L03-EXAM-2": {
-    prompt: "A tablet requires a small amount of very fast cache and a much larger amount of working memory. Explain why SRAM is chosen for the cache and DRAM for the working memory.",
-    answerPoints: [
-      "SRAM does not need refresh and provides faster access, so it suits the frequently accessed cache.",
-      "SRAM uses more transistors per bit and is more expensive, so using it for all working memory would be costly.",
-      "DRAM stores bits at higher density and has a lower cost per bit, so a larger working-memory capacity is practical.",
-      "DRAM requires periodic refresh and is slower, but that trade-off is acceptable for the larger main-memory role.",
-    ],
-    commonError: "Do not justify the choice only by naming the device; link speed, refresh, density and cost to each role.",
-  },
-  "S3-L04-EXAM-3": {
-    prompt: "An automated greenhouse uses a temperature sensor and a heater. Explain how feedback allows the control system to maintain the target temperature.",
-    answerPoints: [
-      "The temperature sensor repeatedly measures the current temperature and sends a signal representing it to the controller.",
-      "The controller compares the measured temperature with the target value.",
-      "When the temperature is below the target, the controller sends an output signal that causes the heater actuator to operate.",
-      "New sensor readings provide feedback, allowing the controller to switch or adjust the heater as the temperature approaches the target.",
-    ],
-    commonError: "Do not describe only the sensor and actuator; include the repeated measurement, comparison and corrective output loop.",
   },
   "S3-L05-EXAM-2": {
     prompt: "Describe how to construct a complete truth table for the expression Q = A AND NOT B.",
@@ -2004,12 +2174,15 @@ function selectExamMarkingPoints(sourceQuestion, variant, unit, isReview) {
 
 function examStyleQuestionSet(lesson, practice, staged) {
   const objectiveRows = lesson.objectives.length ? lesson.objectives : [[`${lesson.syllabusIds[0]}.R`, lesson.title]];
-  const selectedIndexes = [...new Set([0, Math.floor((objectiveRows.length - 1) / 2), objectiveRows.length - 1])];
-  while (selectedIndexes.length < 3) selectedIndexes.push(selectedIndexes.length % objectiveRows.length);
+  const questionCount = Math.max(1, lesson.examQuestionCount ?? 3);
+  const selectedIndexes = questionCount === 3
+    ? [...new Set([0, Math.floor((objectiveRows.length - 1) / 2), objectiveRows.length - 1])]
+    : Array.from({ length: questionCount }, (_, index) => Math.round(index * (objectiveRows.length - 1) / Math.max(1, questionCount - 1)));
+  while (selectedIndexes.length < questionCount) selectedIndexes.push(selectedIndexes.length % objectiveRows.length);
   const context = examContexts[lesson.section] ?? examContexts.Review;
   const usedQuestionIds = new Set();
   const usedTopics = new Set();
-  return selectedIndexes.slice(0, 3).map((objectiveIndex, index) => {
+  return selectedIndexes.slice(0, questionCount).map((objectiveIndex, index) => {
     const [objectiveId, description] = objectiveRows[objectiveIndex];
     const requirementId = objectiveId.match(/^S(?:[1-9]|1[0-2])\.\d{2}/)?.[0] ?? lesson.syllabusIds[0];
     const unit = staged.units.find((candidate) => candidate.objectiveIds.includes(objectiveId))
@@ -2121,6 +2294,7 @@ export function visibleRoleTexts(unit) {
   const bodyTexts = (material) => {
     if (!material) return [];
     if (material.type === "cards") return material.items.map(([, body]) => body);
+    if (material.type === "list") return material.items.map(([, body]) => body);
     if (material.type === "table") return material.rows.flat();
     if (material.type === "flow" || material.type === "worked-example") return material.steps.map(([, body]) => body);
     if (material.type === "analogy") return [material.caption, material.boundary];

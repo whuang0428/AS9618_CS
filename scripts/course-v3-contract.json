@@ -5,7 +5,7 @@
   "teachingLessonCount": 91,
   "reviewLessonCount": 2,
   "officialRequirementCount": 121,
-  "examStyleQuestionCount": 279,
+  "examStyleQuestionCount": 285,
   "generatedAt": "deterministic",
   "syllabusOrder": [
     "S1.01",
@@ -4711,15 +4711,79 @@
       "objectives": [
         {
           "id": "S3.01.A01",
-          "description": "Show understanding of the need for input, output, primary memory and secondary (including removable) storage",
+          "description": "Explain the need for input devices.",
           "explanationUnits": [
-            "The need for input, output, primary storage, secondary storage and removable storage"
+            "Why a computer system needs input, output, primary memory and secondary storage"
           ],
           "materialTitles": [
-            "Component roles and examples"
+            "Component roles in a computer system"
           ],
           "questionIds": [
-            "V3-Q-L013-01"
+            "V3-013-S3.01-ROLES"
+          ],
+          "pastPaperAnalysis": [
+            "9618/12/W/24 Q2(a)"
+          ]
+        },
+        {
+          "id": "S3.01.A02",
+          "description": "Explain the need for output devices.",
+          "explanationUnits": [
+            "Why a computer system needs input, output, primary memory and secondary storage"
+          ],
+          "materialTitles": [
+            "Component roles in a computer system"
+          ],
+          "questionIds": [
+            "V3-013-S3.01-ROLES"
+          ],
+          "pastPaperAnalysis": [
+            "9618/12/W/24 Q2(a)"
+          ]
+        },
+        {
+          "id": "S3.01.A03",
+          "description": "Explain the need for primary memory.",
+          "explanationUnits": [
+            "Why a computer system needs input, output, primary memory and secondary storage"
+          ],
+          "materialTitles": [
+            "Component roles in a computer system"
+          ],
+          "questionIds": [
+            "V3-013-S3.01-ROLES"
+          ],
+          "pastPaperAnalysis": [
+            "9618/12/W/24 Q2(a)"
+          ]
+        },
+        {
+          "id": "S3.01.A04",
+          "description": "Explain the need for secondary storage.",
+          "explanationUnits": [
+            "Why a computer system needs input, output, primary memory and secondary storage"
+          ],
+          "materialTitles": [
+            "Component roles in a computer system"
+          ],
+          "questionIds": [
+            "V3-013-S3.01-ROLES"
+          ],
+          "pastPaperAnalysis": [
+            "9618/12/W/24 Q2(a)"
+          ]
+        },
+        {
+          "id": "S3.01.A05",
+          "description": "Explain the use of removable secondary storage.",
+          "explanationUnits": [
+            "Why a computer system needs input, output, primary memory and secondary storage"
+          ],
+          "materialTitles": [
+            "Component roles in a computer system"
+          ],
+          "questionIds": [
+            "V3-013-S3.01-ROLES"
           ],
           "pastPaperAnalysis": [
             "9618/12/W/24 Q2(a)"
@@ -4727,77 +4791,105 @@
         },
         {
           "id": "S3.02.A01",
-          "description": "Show understanding of embedded systems",
+          "description": "Show understanding of an embedded system as a computer system built into a larger device for a dedicated function.",
           "explanationUnits": [
-            "Embedded systems and their benefits/drawbacks"
+            "What an embedded system is"
           ],
           "materialTitles": [
-            "What is an embedded system?"
+            "Embedded system structure"
           ],
           "questionIds": [
-            "V3-Q-L013-02",
-            "V3-Q-L013-03"
+            "V3-013-S3.02-STRUCTURE"
           ],
           "pastPaperAnalysis": [
-            "Cambridge 9618 syllabus · S3.02",
             "Cambridge 9618 syllabus · S3.02"
           ]
         },
         {
           "id": "S3.02.A02",
-          "description": "Including: benefits and drawbacks of embedded systems",
+          "description": "Explain benefits of embedded systems.",
           "explanationUnits": [
-            "Embedded systems and their benefits/drawbacks"
+            "Benefits and drawbacks of embedded systems"
           ],
           "materialTitles": [
-            "What is an embedded system?"
+            "Embedded-system benefits and drawbacks"
           ],
           "questionIds": [
-            "V3-Q-L013-02",
-            "V3-Q-L013-03"
+            "V3-013-S3.02-TRADEOFFS"
           ],
           "pastPaperAnalysis": [
-            "Cambridge 9618 syllabus · S3.02",
-            "Cambridge 9618 syllabus · S3.02"
+            "Cambridge 9618 syllabus · S3.01"
+          ]
+        },
+        {
+          "id": "S3.02.A03",
+          "description": "Explain drawbacks of embedded systems.",
+          "explanationUnits": [
+            "Benefits and drawbacks of embedded systems"
+          ],
+          "materialTitles": [
+            "Embedded-system benefits and drawbacks"
+          ],
+          "questionIds": [
+            "V3-013-S3.02-TRADEOFFS"
+          ],
+          "pastPaperAnalysis": [
+            "Cambridge 9618 syllabus · S3.01"
           ]
         }
       ],
       "knowledgeUnits": [
         {
           "syllabusId": "S3.01",
-          "heading": "The need for input, output, primary storage, secondary storage and removable storage",
+          "heading": "Why a computer system needs input, output, primary memory and secondary storage",
           "objectiveIds": [
-            "S3.01.A01"
+            "S3.01.A01",
+            "S3.01.A02",
+            "S3.01.A03",
+            "S3.01.A04",
+            "S3.01.A05"
           ],
           "leadVisual": {
             "type": "reviewed-visual",
-            "title": "Component roles and examples"
+            "title": "Component roles in a computer system"
           },
           "coreExplanation": [
-            "Primary memory is needed to hold the instructions and data currently being used by the processor. Secondary storage is needed for non-volatile, long-term retention of programs and data. Removable storage is secondary storage that can be disconnected, so it can transfer data or hold an offline backup, although it can be lost or stolen.",
-            "An embedded system is a computer system built into a larger device to perform one dedicated task or a closely related set of tasks. A microcontroller may integrate the processor, memory and input/output interfaces needed for that task.",
-            "Input is needed to enter data and instructions into a computer system. Output is needed to communicate processed information to a user or to cause an action. A processor cannot perform a useful task unless it can receive the required data and make the result available.",
-            "A control system sends output signals to actuators and uses sensor feedback to determine the next control action."
+            "Input devices are needed to supply data and instructions. The processor follows instructions and transforms data, and output devices are needed to communicate the result or cause an action.",
+            "Primary memory holds instructions and data that the processor needs during current processing. Secondary storage retains programs and data when power is removed; removable secondary storage can transfer data between systems or hold an offline copy."
           ],
           "method": null,
           "workedExample": null
         },
         {
           "syllabusId": "S3.02",
-          "heading": "Embedded systems and their benefits/drawbacks",
+          "heading": "What an embedded system is",
           "objectiveIds": [
-            "S3.02.A01",
-            "S3.02.A02"
+            "S3.02.A01"
           ],
           "leadVisual": {
             "type": "reviewed-visual",
-            "title": "What is an embedded system?"
+            "title": "Embedded system structure"
           },
           "coreExplanation": [
-            "Embedded systems, including their benefits and drawbacks.",
-            "Benefits can include low cost, low power use, small size and reliable, predictable automatic operation because the hardware and software are designed for a limited purpose. Drawbacks can include limited processing, storage and user interface, difficulty adding new functions, and dependence on the embedded controller: if it fails, the larger device may stop working. A valid comparison must link each point to the device and task.",
-            "An embedded system is a computer system built into a larger device to perform one dedicated task or a closely related set of tasks. A microcontroller may integrate the processor, memory and input/output interfaces needed for that task.",
-            "An embedded system is designed to perform a specific task or closely related set of tasks. It forms part of a larger product, such as a washing machine, microwave oven or router."
+            "An embedded system is a computer system built into a larger device to perform a dedicated function or a closely related set of functions.",
+            "Its controller receives input, executes stored instructions and produces output inside the larger device. A microcontroller can combine a processor, memory and input/output interfaces in one integrated circuit for this purpose."
+          ],
+          "method": null,
+          "workedExample": null
+        },
+        {
+          "syllabusId": "S3.02",
+          "heading": "Benefits and drawbacks of embedded systems",
+          "objectiveIds": [
+            "S3.02.A02",
+            "S3.02.A03"
+          ],
+          "leadVisual": {
+            "type": "table",
+            "title": "Embedded-system benefits and drawbacks"
+          },
+          "coreExplanation": [
+            "The benefits and drawbacks follow from the same dedicated design. A valid evaluation links each point to the device and its required function rather than presenting a general list with no scenario connection."
           ],
           "method": null,
           "workedExample": null
@@ -4805,29 +4897,32 @@
       ],
       "practice": [
         {
-          "id": "V3-Q-L013-01",
+          "id": "V3-013-S3.01-ROLES",
           "commandWord": "Explain",
           "marks": 5,
           "objectiveIds": [
-            "S3.01.A01"
+            "S3.01.A01",
+            "S3.01.A02",
+            "S3.01.A03",
+            "S3.01.A04",
+            "S3.01.A05"
           ]
         },
         {
-          "id": "V3-Q-L013-02",
-          "commandWord": "Identify",
-          "marks": 2,
+          "id": "V3-013-S3.02-STRUCTURE",
+          "commandWord": "Describe",
+          "marks": 4,
           "objectiveIds": [
-            "S3.02.A01",
-            "S3.02.A02"
+            "S3.02.A01"
           ]
         },
         {
-          "id": "V3-Q-L013-03",
-          "commandWord": "Give",
-          "marks": 2,
+          "id": "V3-013-S3.02-TRADEOFFS",
+          "commandWord": "Explain",
+          "marks": 4,
           "objectiveIds": [
-            "S3.02.A01",
-            "S3.02.A02"
+            "S3.02.A02",
+            "S3.02.A03"
           ]
         }
       ],
@@ -4836,29 +4931,32 @@
           "id": "S3-L01-EXAM-1",
           "sourceRef": "9618/12/W/24 Q2(a)",
           "commandWord": "Explain",
-          "marks": 6,
+          "marks": 5,
           "objectiveIds": [
-            "S3.01.A01"
+            "S3.01.A01",
+            "S3.01.A02",
+            "S3.01.A03",
+            "S3.01.A04",
+            "S3.01.A05"
           ]
         },
         {
           "id": "S3-L01-EXAM-2",
-          "sourceRef": "Cambridge 9618 syllabus · S3.02",
+          "sourceRef": "Cambridge 9618 syllabus · S3.01",
           "commandWord": "Explain",
           "marks": 3,
           "objectiveIds": [
-            "S3.02.A01",
-            "S3.02.A02"
+            "S3.02.A02",
+            "S3.02.A03"
           ]
         },
         {
           "id": "S3-L01-EXAM-3",
           "sourceRef": "Cambridge 9618 syllabus · S3.02",
           "commandWord": "Explain",
-          "marks": 2,
+          "marks": 5,
           "objectiveIds": [
-            "S3.02.A01",
-            "S3.02.A02"
+            "S3.02.A01"
           ]
         }
       ]
@@ -4877,41 +4975,31 @@
           "id": "S3.03.A01",
           "description": "Describe the principal operation of a laser printer.",
           "explanationUnits": [
-            "Describe principal operation of laser printer, 3D printer, microphone, speakers, HDD, flash memory, optical reader/writer, touchscreen and VR headset."
+            "Laser printer"
           ],
           "materialTitles": [
-            "Input, output and storage devices convert signals in specific ways",
-            "Mechanism in examinable order",
-            "Trace three different conversions"
+            "Laser printer: principal operation"
           ],
           "questionIds": [
-            "V3-Q-L014-01",
-            "V3-Q-L014-02",
-            "V3-Q-L014-03"
+            "V3-014-S3.03-LASER"
           ],
           "pastPaperAnalysis": [
-            "9618/11/S/25 Q6(b)",
-            "Cambridge 9618 syllabus · S3.03",
-            "Cambridge 9618 syllabus · S3.03"
+            "9618/11/S/25 Q6(b)"
           ]
         },
         {
           "id": "S3.03.A02",
           "description": "Describe the principal operation of a 3D printer.",
           "explanationUnits": [
-            "Describe principal operation of laser printer, 3D printer, microphone, speakers, HDD, flash memory, optical reader/writer, touchscreen and VR headset."
+            "3D printer"
           ],
           "materialTitles": [
-            "Input, output and storage devices convert signals in specific ways",
-            "Mechanism in examinable order",
-            "Trace three different conversions"
+            "3D printer: principal operation"
           ],
           "questionIds": [
-            "V3-Q-L014-01",
-            "V3-Q-L014-02"
+            "V3-014-S3.03-3D"
           ],
           "pastPaperAnalysis": [
-            "9618/11/S/25 Q6(b)",
             "Cambridge 9618 syllabus · S3.03"
           ]
         },
@@ -4919,51 +5007,45 @@
           "id": "S3.03.A03",
           "description": "Describe the principal operation of a microphone.",
           "explanationUnits": [
-            "Describe principal operation of laser printer, 3D printer, microphone, speakers, HDD, flash memory, optical reader/writer, touchscreen and VR headset."
+            "Microphone"
           ],
           "materialTitles": [
-            "Input, output and storage devices convert signals in specific ways",
-            "Mechanism in examinable order",
-            "Trace three different conversions"
+            "Microphone: principal operation"
           ],
           "questionIds": [
-            "V3-Q-L014-01"
+            "V3-014-S3.03-MICROPHONE"
           ],
           "pastPaperAnalysis": [
-            "9618/11/S/25 Q6(b)"
+            "Cambridge 9618 syllabus · S3.03"
           ]
         },
         {
           "id": "S3.03.A04",
           "description": "Describe the principal operation of speakers.",
           "explanationUnits": [
-            "Describe principal operation of laser printer, 3D printer, microphone, speakers, HDD, flash memory, optical reader/writer, touchscreen and VR headset."
+            "Speakers"
           ],
           "materialTitles": [
-            "Input, output and storage devices convert signals in specific ways",
-            "Mechanism in examinable order",
-            "Trace three different conversions"
+            "Speakers: principal operation"
           ],
           "questionIds": [
-            "V3-Q-L014-01"
+            "V3-014-S3.03-SPEAKERS"
           ],
           "pastPaperAnalysis": [
-            "9618/11/S/25 Q6(b)"
+            "Cambridge 9618 syllabus · S3.03"
           ]
         },
         {
           "id": "S3.03.A05",
           "description": "Describe the principal operation of magnetic hard-disk storage.",
           "explanationUnits": [
-            "Describe principal operation of laser printer, 3D printer, microphone, speakers, HDD, flash memory, optical reader/writer, touchscreen and VR headset."
+            "Magnetic hard disk"
           ],
           "materialTitles": [
-            "Input, output and storage devices convert signals in specific ways",
-            "Mechanism in examinable order",
-            "Trace three different conversions"
+            "Magnetic hard disk: principal operation"
           ],
           "questionIds": [
-            "V3-Q-L014-02"
+            "V3-014-S3.03-HDD"
           ],
           "pastPaperAnalysis": [
             "Cambridge 9618 syllabus · S3.03"
@@ -4973,15 +5055,13 @@
           "id": "S3.03.A06",
           "description": "Describe the principal operation of solid-state flash memory.",
           "explanationUnits": [
-            "Describe principal operation of laser printer, 3D printer, microphone, speakers, HDD, flash memory, optical reader/writer, touchscreen and VR headset."
+            "Solid-state flash memory"
           ],
           "materialTitles": [
-            "Input, output and storage devices convert signals in specific ways",
-            "Mechanism in examinable order",
-            "Trace three different conversions"
+            "Solid-state flash memory: principal operation"
           ],
           "questionIds": [
-            "V3-Q-L014-02"
+            "V3-014-S3.03-FLASH"
           ],
           "pastPaperAnalysis": [
             "Cambridge 9618 syllabus · S3.03"
@@ -4991,15 +5071,13 @@
           "id": "S3.03.A07",
           "description": "Describe the principal operation of an optical disc reader/writer.",
           "explanationUnits": [
-            "Describe principal operation of laser printer, 3D printer, microphone, speakers, HDD, flash memory, optical reader/writer, touchscreen and VR headset."
+            "Optical disc reader/writer"
           ],
           "materialTitles": [
-            "Input, output and storage devices convert signals in specific ways",
-            "Mechanism in examinable order",
-            "Trace three different conversions"
+            "Optical disc reader/writer: principal operation"
           ],
           "questionIds": [
-            "V3-Q-L014-03"
+            "V3-014-S3.03-OPTICAL"
           ],
           "pastPaperAnalysis": [
             "Cambridge 9618 syllabus · S3.03"
@@ -5009,15 +5087,13 @@
           "id": "S3.03.A08",
           "description": "Describe the principal operation of a touchscreen.",
           "explanationUnits": [
-            "Describe principal operation of laser printer, 3D printer, microphone, speakers, HDD, flash memory, optical reader/writer, touchscreen and VR headset."
+            "Touchscreen"
           ],
           "materialTitles": [
-            "Input, output and storage devices convert signals in specific ways",
-            "Mechanism in examinable order",
-            "Trace three different conversions"
+            "Touchscreen: principal operation"
           ],
           "questionIds": [
-            "V3-Q-L014-03"
+            "V3-014-S3.03-TOUCHSCREEN"
           ],
           "pastPaperAnalysis": [
             "Cambridge 9618 syllabus · S3.03"
@@ -5027,15 +5103,13 @@
           "id": "S3.03.A09",
           "description": "Describe the principal operation of a virtual-reality headset.",
           "explanationUnits": [
-            "Describe principal operation of laser printer, 3D printer, microphone, speakers, HDD, flash memory, optical reader/writer, touchscreen and VR headset."
+            "Virtual-reality headset"
           ],
           "materialTitles": [
-            "Input, output and storage devices convert signals in specific ways",
-            "Mechanism in examinable order",
-            "Trace three different conversions"
+            "Virtual-reality headset: principal operation"
           ],
           "questionIds": [
-            "V3-Q-L014-03"
+            "V3-014-S3.03-VR"
           ],
           "pastPaperAnalysis": [
             "Cambridge 9618 syllabus · S3.03"
@@ -5045,75 +5119,229 @@
       "knowledgeUnits": [
         {
           "syllabusId": "S3.03",
-          "heading": "Describe principal operation of laser printer, 3D printer, microphone, speakers, HDD, flash memory, optical reader/writer, touchscreen and VR headset.",
+          "heading": "Laser printer",
           "objectiveIds": [
-            "S3.03.A01",
-            "S3.03.A02",
-            "S3.03.A03",
-            "S3.03.A04",
-            "S3.03.A05",
-            "S3.03.A06",
-            "S3.03.A07",
-            "S3.03.A08",
+            "S3.03.A01"
+          ],
+          "leadVisual": {
+            "type": "reviewed-visual",
+            "title": "Laser printer: principal operation"
+          },
+          "coreExplanation": [
+            "A photosensitive drum receives a uniform electrostatic charge. A laser scans the drum and creates a charge pattern representing the page; toner is attracted to the required parts of that pattern.",
+            "The toner image transfers from the drum to paper. Heated pressure rollers fuse the toner permanently to the paper."
+          ],
+          "method": null,
+          "workedExample": null
+        },
+        {
+          "syllabusId": "S3.03",
+          "heading": "3D printer",
+          "objectiveIds": [
+            "S3.03.A02"
+          ],
+          "leadVisual": {
+            "type": "reviewed-visual",
+            "title": "3D printer: principal operation"
+          },
+          "coreExplanation": [
+            "Software divides a digital three-dimensional model into thin layers. The printer follows the data for one layer at a time and deposits or solidifies material at the required positions.",
+            "The print head or build platform moves between layers. Successive layers bond or solidify until they form the physical object."
+          ],
+          "method": null,
+          "workedExample": null
+        },
+        {
+          "syllabusId": "S3.03",
+          "heading": "Microphone",
+          "objectiveIds": [
+            "S3.03.A03"
+          ],
+          "leadVisual": {
+            "type": "reviewed-visual",
+            "title": "Microphone: principal operation"
+          },
+          "coreExplanation": [
+            "Sound waves make a diaphragm vibrate. A transducer converts these movements into a varying analogue electrical signal that represents the sound wave.",
+            "For a computer to store or process the sound, an analogue-to-digital converter samples and quantises the signal and encodes the sample values as binary data."
+          ],
+          "method": null,
+          "workedExample": null
+        },
+        {
+          "syllabusId": "S3.03",
+          "heading": "Speakers",
+          "objectiveIds": [
+            "S3.03.A04"
+          ],
+          "leadVisual": {
+            "type": "reviewed-visual",
+            "title": "Speakers: principal operation"
+          },
+          "coreExplanation": [
+            "A digital-to-analogue converter changes stored binary sample values into a varying analogue signal. An amplifier supplies sufficient current to drive the speaker.",
+            "The signal in the voice coil produces a changing magnetic field that interacts with a permanent magnet. The coil and attached cone move, vibrating the air to create sound waves."
+          ],
+          "method": null,
+          "workedExample": null
+        },
+        {
+          "syllabusId": "S3.03",
+          "heading": "Magnetic hard disk",
+          "objectiveIds": [
+            "S3.03.A05"
+          ],
+          "leadVisual": {
+            "type": "reviewed-visual",
+            "title": "Magnetic hard disk: principal operation"
+          },
+          "coreExplanation": [
+            "Magnetic platters rotate while an actuator positions a read/write head above the required track. The required sector passes beneath the head as the platter turns.",
+            "To write, the head changes the magnetic orientation of small areas that represent bits. To read, the head senses the stored magnetic pattern and the controller decodes it as binary data."
+          ],
+          "method": null,
+          "workedExample": null
+        },
+        {
+          "syllabusId": "S3.03",
+          "heading": "Solid-state flash memory",
+          "objectiveIds": [
+            "S3.03.A06"
+          ],
+          "leadVisual": {
+            "type": "reviewed-visual",
+            "title": "Solid-state flash memory: principal operation"
+          },
+          "coreExplanation": [
+            "Flash memory stores charge in floating-gate transistor cells. The presence or amount of trapped charge changes a cell's threshold behaviour and represents stored bit values.",
+            "A controller applies voltages to program or erase cells and detects their charge state when reading. Because storage is electronic, flash memory has no moving mechanical parts."
+          ],
+          "method": null,
+          "workedExample": null
+        },
+        {
+          "syllabusId": "S3.03",
+          "heading": "Optical disc reader/writer",
+          "objectiveIds": [
+            "S3.03.A07"
+          ],
+          "leadVisual": {
+            "type": "reviewed-visual",
+            "title": "Optical disc reader/writer: principal operation"
+          },
+          "coreExplanation": [
+            "The drive spins the disc and focuses a low-power laser on a track. A detector senses differences in reflected light, and the controller converts those changes into binary data.",
+            "For a recordable disc, a higher-power laser changes areas of the recording layer. The changed and unchanged areas produce distinguishable optical states when the disc is read."
+          ],
+          "method": null,
+          "workedExample": null
+        },
+        {
+          "syllabusId": "S3.03",
+          "heading": "Touchscreen",
+          "objectiveIds": [
+            "S3.03.A08"
+          ],
+          "leadVisual": {
+            "type": "reviewed-visual",
+            "title": "Touchscreen: principal operation"
+          },
+          "coreExplanation": [
+            "A capacitive touchscreen maintains an electric field across a transparent electrode grid. A finger touching the screen changes the local capacitance or electric field.",
+            "The controller detects the change at the electrodes and calculates the touch coordinates. The display provides visual output while the touch-sensitive layer provides input."
+          ],
+          "method": null,
+          "workedExample": null
+        },
+        {
+          "syllabusId": "S3.03",
+          "heading": "Virtual-reality headset",
+          "objectiveIds": [
             "S3.03.A09"
           ],
           "leadVisual": {
             "type": "reviewed-visual",
-            "title": "Input, output and storage devices convert signals in specific ways"
+            "title": "Virtual-reality headset: principal operation"
           },
           "coreExplanation": [
-            "Laser printer: a drum is charged, a laser changes the charge at image positions, toner adheres to those positions, the toner transfers to paper, and heat and pressure fuse it permanently.",
-            "3D printer: software slices a digital model into layers; the printer deposits, melts or solidifies material one layer at a time until the physical object is built.",
-            "Microphone: sound vibrates a diaphragm; a transducer produces an analogue electrical signal, and an analogue-to-digital converter samples it into binary values.",
-            "Speaker: a digital-to-analogue converter and amplifier drive a coil in a magnetic field; the attached cone vibrates and creates pressure waves that are heard as sound.",
-            "Magnetic hard disk: platters rotate while an actuator positions a read/write head. Writing changes magnetic orientation; reading senses the stored magnetic pattern.",
-            "Flash memory: electrical charge is stored in floating-gate cells. The controller reads charge states and erases or programs blocks electronically, so no moving parts are required.",
-            "Optical disc reader/writer: the disc spins while a laser follows its track. Reflected-light differences are read as data; a higher-power writing laser changes a dye or recording layer on writable media.",
-            "Capacitive touchscreen: a transparent electrode grid creates an electric field. A finger changes capacitance, and the controller calculates the touch coordinates from the measured changes.",
-            "Virtual-reality headset: separate images are displayed to the two eyes while orientation and motion sensors measure head movement. The computer updates the viewpoint with low latency so the scene follows the user's movement."
+            "The headset displays a separate viewpoint for each eye so the user perceives depth. Lenses place the displays in the user's field of view, and speakers or headphones can provide corresponding sound output.",
+            "Motion and orientation sensors detect head movement. The computer uses the sensor data to update the rendered viewpoint, so the displayed scene appears to follow the user's movement."
           ],
-          "method": {
-            "type": "flow",
-            "title": "Mechanism in examinable order"
-          },
-          "workedExample": {
-            "type": "worked-example",
-            "title": "Trace three different conversions"
-          }
+          "method": null,
+          "workedExample": null
         }
       ],
       "practice": [
         {
-          "id": "V3-Q-L014-01",
+          "id": "V3-014-S3.03-LASER",
           "commandWord": "Describe",
-          "marks": 9,
+          "marks": 5,
           "objectiveIds": [
-            "S3.03.A01",
-            "S3.03.A02",
-            "S3.03.A03",
-            "S3.03.A04"
+            "S3.03.A01"
           ]
         },
         {
-          "id": "V3-Q-L014-02",
+          "id": "V3-014-S3.03-3D",
           "commandWord": "Describe",
-          "marks": 9,
+          "marks": 4,
           "objectiveIds": [
-            "S3.03.A05",
-            "S3.03.A06",
-            "S3.03.A01",
             "S3.03.A02"
           ]
         },
         {
-          "id": "V3-Q-L014-03",
-          "commandWord": "Compare",
-          "marks": 9,
+          "id": "V3-014-S3.03-MICROPHONE",
+          "commandWord": "Describe",
+          "marks": 4,
           "objectiveIds": [
-            "S3.03.A07",
-            "S3.03.A09",
-            "S3.03.A01",
+            "S3.03.A03"
+          ]
+        },
+        {
+          "id": "V3-014-S3.03-SPEAKERS",
+          "commandWord": "Describe",
+          "marks": 5,
+          "objectiveIds": [
+            "S3.03.A04"
+          ]
+        },
+        {
+          "id": "V3-014-S3.03-HDD",
+          "commandWord": "Describe",
+          "marks": 5,
+          "objectiveIds": [
+            "S3.03.A05"
+          ]
+        },
+        {
+          "id": "V3-014-S3.03-FLASH",
+          "commandWord": "Describe",
+          "marks": 4,
+          "objectiveIds": [
+            "S3.03.A06"
+          ]
+        },
+        {
+          "id": "V3-014-S3.03-OPTICAL",
+          "commandWord": "Describe",
+          "marks": 4,
+          "objectiveIds": [
+            "S3.03.A07"
+          ]
+        },
+        {
+          "id": "V3-014-S3.03-TOUCHSCREEN",
+          "commandWord": "Describe",
+          "marks": 4,
+          "objectiveIds": [
             "S3.03.A08"
+          ]
+        },
+        {
+          "id": "V3-014-S3.03-VR",
+          "commandWord": "Describe",
+          "marks": 5,
+          "objectiveIds": [
+            "S3.03.A09"
           ]
         }
       ],
@@ -5121,37 +5349,82 @@
         {
           "id": "S3-L02-EXAM-1",
           "sourceRef": "9618/11/S/25 Q6(b)",
-          "commandWord": "Explain",
-          "marks": 4,
+          "commandWord": "Describe",
+          "marks": 5,
           "objectiveIds": [
-            "S3.03.A01",
-            "S3.03.A02",
-            "S3.03.A03",
-            "S3.03.A04"
+            "S3.03.A01"
           ]
         },
         {
           "id": "S3-L02-EXAM-2",
           "sourceRef": "Cambridge 9618 syllabus · S3.03",
           "commandWord": "Describe",
-          "marks": 4,
+          "marks": 5,
           "objectiveIds": [
-            "S3.03.A05",
-            "S3.03.A06",
-            "S3.03.A01",
             "S3.03.A02"
           ]
         },
         {
           "id": "S3-L02-EXAM-3",
           "sourceRef": "Cambridge 9618 syllabus · S3.03",
-          "commandWord": "Explain",
-          "marks": 4,
+          "commandWord": "Describe",
+          "marks": 5,
           "objectiveIds": [
-            "S3.03.A07",
-            "S3.03.A09",
-            "S3.03.A01",
+            "S3.03.A03"
+          ]
+        },
+        {
+          "id": "S3-L02-EXAM-4",
+          "sourceRef": "Cambridge 9618 syllabus · S3.03",
+          "commandWord": "Describe",
+          "marks": 5,
+          "objectiveIds": [
+            "S3.03.A04"
+          ]
+        },
+        {
+          "id": "S3-L02-EXAM-5",
+          "sourceRef": "Cambridge 9618 syllabus · S3.03",
+          "commandWord": "Describe",
+          "marks": 5,
+          "objectiveIds": [
+            "S3.03.A05"
+          ]
+        },
+        {
+          "id": "S3-L02-EXAM-6",
+          "sourceRef": "Cambridge 9618 syllabus · S3.03",
+          "commandWord": "Describe",
+          "marks": 5,
+          "objectiveIds": [
+            "S3.03.A06"
+          ]
+        },
+        {
+          "id": "S3-L02-EXAM-7",
+          "sourceRef": "Cambridge 9618 syllabus · S3.03",
+          "commandWord": "Describe",
+          "marks": 5,
+          "objectiveIds": [
+            "S3.03.A07"
+          ]
+        },
+        {
+          "id": "S3-L02-EXAM-8",
+          "sourceRef": "Cambridge 9618 syllabus · S3.03",
+          "commandWord": "Describe",
+          "marks": 5,
+          "objectiveIds": [
             "S3.03.A08"
+          ]
+        },
+        {
+          "id": "S3-L02-EXAM-9",
+          "sourceRef": "Cambridge 9618 syllabus · S3.03",
+          "commandWord": "Describe",
+          "marks": 5,
+          "objectiveIds": [
+            "S3.03.A09"
           ]
         }
       ]
@@ -5171,87 +5444,111 @@
       "objectives": [
         {
           "id": "S3.04.A01",
-          "description": "Show understanding of the use of buffers",
+          "description": "Explain the use of a buffer during data transfer between components or devices.",
           "explanationUnits": [
-            "Why buffers are used"
+            "Device drivers, buffers and queues: what each is and why they work together"
           ],
           "materialTitles": [
-            "Why drivers, buffers and queues work together"
+            "Drivers, buffers and queues in one device transfer"
           ],
           "questionIds": [
-            "V3-015-S3.04-CHECK"
+            "V3-015-S3.04-BUFFER"
           ],
-          "pastPaperAnalysis": []
+          "pastPaperAnalysis": [
+            "9618/11/W/25 Q10(b)"
+          ]
         },
         {
           "id": "S3.05.A01",
-          "description": "Explain the differences between Random Access Memory (RAM) and Read Only Memory (ROM)",
+          "description": "Explain the differences between Random Access Memory (RAM) and Read Only Memory (ROM).",
           "explanationUnits": [
-            "RAM and ROM"
-          ],
-          "materialTitles": [
             "Why RAM changes while ROM remains stable"
           ],
+          "materialTitles": [
+            "RAM and ROM"
+          ],
           "questionIds": [
-            "V3-Q-L015-01"
+            "V3-015-S3.05-RAM-ROM"
           ],
           "pastPaperAnalysis": [
-            "Cambridge 9618 syllabus · S3.05"
+            "Cambridge 9618 syllabus · S3.06"
           ]
         },
         {
           "id": "S3.05.A02",
-          "description": "Including their use in a range of devices and systems",
+          "description": "Explain the use of RAM and ROM in a range of devices and systems.",
           "explanationUnits": [
-            "RAM and ROM"
-          ],
-          "materialTitles": [
             "Why RAM changes while ROM remains stable"
           ],
+          "materialTitles": [
+            "RAM and ROM"
+          ],
           "questionIds": [
-            "V3-015-S3.05-CHECK"
+            "V3-015-S3.05-RAM-ROM"
+          ],
+          "pastPaperAnalysis": [
+            "Cambridge 9618 syllabus · S3.06"
+          ]
+        },
+        {
+          "id": "S3.06.A01",
+          "description": "Explain how Static RAM (SRAM) and Dynamic RAM (DRAM) store bits.",
+          "explanationUnits": [
+            "SRAM and DRAM: storage method, performance and use"
+          ],
+          "materialTitles": [
+            "SRAM and DRAM store volatile bits differently"
+          ],
+          "questionIds": [
+            "V3-015-S3.06-COMPARE"
           ],
           "pastPaperAnalysis": []
         },
         {
-          "id": "S3.06.A01",
-          "description": "Explain the differences between Static RAM (SRAM) and Dynamic RAM (DRAM)",
+          "id": "S3.06.A02",
+          "description": "Explain why DRAM requires refresh and SRAM does not.",
           "explanationUnits": [
-            "Uses of SRAM and DRAM and reasons for each use"
+            "SRAM and DRAM: storage method, performance and use"
           ],
           "materialTitles": [
             "SRAM and DRAM store volatile bits differently"
           ],
           "questionIds": [
-            "V3-Q-L015-01",
-            "V3-Q-L015-03"
+            "V3-015-S3.06-COMPARE"
           ],
-          "pastPaperAnalysis": [
-            "9618/11/W/25 Q10(b)",
-            "Cambridge 9618 syllabus · S3.05"
-          ]
+          "pastPaperAnalysis": []
         },
         {
-          "id": "S3.06.A02",
-          "description": "Including the use of SRAM and DRAM in a range of devices and systems and the reasons for using one instead of the other depending on the device and its use",
+          "id": "S3.06.A03",
+          "description": "Compare SRAM and DRAM by speed, cost and density.",
           "explanationUnits": [
-            "Uses of SRAM and DRAM and reasons for each use"
+            "SRAM and DRAM: storage method, performance and use"
           ],
           "materialTitles": [
             "SRAM and DRAM store volatile bits differently"
           ],
           "questionIds": [
-            "V3-Q-L015-01",
-            "V3-Q-L015-03"
+            "V3-015-S3.06-COMPARE"
           ],
-          "pastPaperAnalysis": [
-            "9618/11/W/25 Q10(b)",
-            "Cambridge 9618 syllabus · S3.05"
-          ]
+          "pastPaperAnalysis": []
+        },
+        {
+          "id": "S3.06.A04",
+          "description": "Explain uses of SRAM and DRAM and reasons for choosing each type.",
+          "explanationUnits": [
+            "SRAM and DRAM: storage method, performance and use"
+          ],
+          "materialTitles": [
+            "SRAM and DRAM store volatile bits differently"
+          ],
+          "questionIds": [
+            "V3-015-S3.06-COMPARE"
+          ],
+          "pastPaperAnalysis": []
         },
         {
           "id": "S3.07.A01",
-          "description": "Explain the difference between Programmable ROM (PROM), Erasable Programmable ROM (EPROM) and Electrically Erasable Programmable ROM (EEPROM)",
+          "description": "Explain how Programmable ROM (PROM) is programmed.",
           "explanationUnits": [
             "PROM, EPROM and EEPROM"
           ],
@@ -5259,11 +5556,41 @@
             "PROM, EPROM and EEPROM differ in how they are erased"
           ],
           "questionIds": [
-            "V3-Q-L015-01",
-            "V3-Q-L015-02"
+            "V3-015-S3.07-ROM-TYPES"
           ],
           "pastPaperAnalysis": [
-            "Cambridge 9618 syllabus · S3.05",
+            "Cambridge 9618 syllabus · S3.07"
+          ]
+        },
+        {
+          "id": "S3.07.A02",
+          "description": "Explain how Erasable Programmable ROM (EPROM) is erased and reprogrammed.",
+          "explanationUnits": [
+            "PROM, EPROM and EEPROM"
+          ],
+          "materialTitles": [
+            "PROM, EPROM and EEPROM differ in how they are erased"
+          ],
+          "questionIds": [
+            "V3-015-S3.07-ROM-TYPES"
+          ],
+          "pastPaperAnalysis": [
+            "Cambridge 9618 syllabus · S3.07"
+          ]
+        },
+        {
+          "id": "S3.07.A03",
+          "description": "Explain how Electrically Erasable Programmable ROM (EEPROM) is erased and reprogrammed.",
+          "explanationUnits": [
+            "PROM, EPROM and EEPROM"
+          ],
+          "materialTitles": [
+            "PROM, EPROM and EEPROM differ in how they are erased"
+          ],
+          "questionIds": [
+            "V3-015-S3.07-ROM-TYPES"
+          ],
+          "pastPaperAnalysis": [
             "Cambridge 9618 syllabus · S3.07"
           ]
         }
@@ -5271,54 +5598,56 @@
       "knowledgeUnits": [
         {
           "syllabusId": "S3.04",
-          "heading": "Why buffers are used",
+          "heading": "Device drivers, buffers and queues: what each is and why they work together",
           "objectiveIds": [
             "S3.04.A01"
           ],
           "leadVisual": {
             "type": "reviewed-visual",
-            "title": "Why drivers, buffers and queues work together"
+            "title": "Drivers, buffers and queues in one device transfer"
           },
           "coreExplanation": [
-            "A driver converts a general request into device-specific commands. A buffer absorbs the speed difference between producer and device.",
-            "A speaker uses a DAC/amplifier to drive a coil and cone, producing pressure waves. An output buffer temporarily holds data because the processor can produce it faster or in different-sized bursts than a printer or audio device can consume it."
+            "A device driver is system software that translates operating-system requests into the commands and data format required by a particular device.",
+            "A buffer is an area of memory that temporarily stores data while it is transferred between components or devices operating at different speeds or in different-sized bursts. A queue is an ordered list of jobs waiting to be processed.",
+            "For a print job, the operating system places work in a queue, data waits temporarily in a buffer, and the printer driver sends device-specific commands and formatted data. The processor can continue other work while the printer consumes the buffered data at its own rate."
           ],
           "method": null,
           "workedExample": null
         },
         {
           "syllabusId": "S3.05",
-          "heading": "RAM and ROM",
+          "heading": "Why RAM changes while ROM remains stable",
           "objectiveIds": [
             "S3.05.A01",
             "S3.05.A02"
           ],
           "leadVisual": {
             "type": "reviewed-visual",
-            "title": "Why RAM changes while ROM remains stable"
+            "title": "RAM and ROM"
           },
           "coreExplanation": [
-            "Explain the differences between SRAM and DRAM, including their uses in a range of devices and systems and the reasons for choosing one instead of the other.",
-            "SRAM stores bits using flip-flop circuits, needs no refresh and is fast but expensive with lower density, so it is used for cache. DRAM stores charge in capacitors, requires refresh and is slower but cheaper and denser, so it is used for main memory.",
-            "RAM is volatile read/write primary memory used for programs and data currently being processed. ROM is non-volatile primary memory used for instructions that must remain when power is removed, such as firmware or start-up instructions. ROM is not ordinary long-term storage for user files."
+            "RAM is read/write primary memory used for programs and data currently being processed. Its contents change as programs start, data is edited and intermediate results are produced; ordinary RAM is volatile, so its contents are lost when power is removed.",
+            "ROM is non-volatile primary memory used for instructions that must remain available when power is removed, such as firmware or start-up instructions. During normal operation its contents are read rather than repeatedly changed, so they remain stable."
           ],
           "method": null,
           "workedExample": null
         },
         {
           "syllabusId": "S3.06",
-          "heading": "Uses of SRAM and DRAM and reasons for each use",
+          "heading": "SRAM and DRAM: storage method, performance and use",
           "objectiveIds": [
             "S3.06.A01",
-            "S3.06.A02"
+            "S3.06.A02",
+            "S3.06.A03",
+            "S3.06.A04"
           ],
           "leadVisual": {
             "type": "reviewed-visual",
             "title": "SRAM and DRAM store volatile bits differently"
           },
           "coreExplanation": [
-            "Uses of SRAM and DRAM and reasons for each use.",
-            "SRAM stores bits using flip-flop circuits, needs no refresh and is fast but expensive with lower density, so it is used for cache. DRAM stores charge in capacitors, requires refresh and is slower but cheaper and denser, so it is used for main memory."
+            "SRAM stores each bit in a flip-flop circuit and does not need refresh while power is supplied. It is fast but uses more components per bit, giving lower density and higher cost per bit, so it is used for processor cache.",
+            "DRAM stores each bit as charge in a capacitor. Charge leaks, so the cells require periodic refresh; DRAM is slower but denser and cheaper per bit, so it is used for large-capacity main memory."
           ],
           "method": null,
           "workedExample": null
@@ -5327,15 +5656,17 @@
           "syllabusId": "S3.07",
           "heading": "PROM, EPROM and EEPROM",
           "objectiveIds": [
-            "S3.07.A01"
+            "S3.07.A01",
+            "S3.07.A02",
+            "S3.07.A03"
           ],
           "leadVisual": {
             "type": "reviewed-visual",
             "title": "PROM, EPROM and EEPROM differ in how they are erased"
           },
           "coreExplanation": [
-            "The difference between PROM, EPROM and EEPROM, including how each can be programmed or erased.",
-            "PROM is programmed once. EPROM can be erased with ultraviolet light and reprogrammed. EEPROM is erased and rewritten electrically, often without removing it from the system. All three are non-volatile ROM technologies."
+            "PROM is supplied blank and can be programmed once. EPROM can be erased using ultraviolet light and then reprogrammed, normally after removal from the system.",
+            "EEPROM can be erased and reprogrammed electrically, often while it remains in the system. All three are non-volatile ROM technologies, but their erase and rewrite methods differ."
           ],
           "method": null,
           "workedExample": null
@@ -5343,47 +5674,41 @@
       ],
       "practice": [
         {
-          "id": "V3-Q-L015-01",
+          "id": "V3-015-S3.04-BUFFER",
           "commandWord": "Explain",
-          "marks": 8,
-          "objectiveIds": [
-            "S3.05.A01",
-            "S3.06.A01",
-            "S3.06.A02",
-            "S3.07.A01"
-          ]
-        },
-        {
-          "id": "V3-Q-L015-02",
-          "commandWord": "Compare",
-          "marks": 2,
-          "objectiveIds": [
-            "S3.07.A01"
-          ]
-        },
-        {
-          "id": "V3-Q-L015-03",
-          "commandWord": "Explain",
-          "marks": 2,
-          "objectiveIds": [
-            "S3.06.A01",
-            "S3.06.A02"
-          ]
-        },
-        {
-          "id": "V3-015-S3.04-CHECK",
-          "commandWord": "Explain",
-          "marks": 2,
+          "marks": 4,
           "objectiveIds": [
             "S3.04.A01"
           ]
         },
         {
-          "id": "V3-015-S3.05-CHECK",
+          "id": "V3-015-S3.05-RAM-ROM",
           "commandWord": "Explain",
-          "marks": 2,
+          "marks": 4,
           "objectiveIds": [
+            "S3.05.A01",
             "S3.05.A02"
+          ]
+        },
+        {
+          "id": "V3-015-S3.06-COMPARE",
+          "commandWord": "Compare",
+          "marks": 5,
+          "objectiveIds": [
+            "S3.06.A01",
+            "S3.06.A02",
+            "S3.06.A03",
+            "S3.06.A04"
+          ]
+        },
+        {
+          "id": "V3-015-S3.07-ROM-TYPES",
+          "commandWord": "Explain",
+          "marks": 3,
+          "objectiveIds": [
+            "S3.07.A01",
+            "S3.07.A02",
+            "S3.07.A03"
           ]
         }
       ],
@@ -5394,29 +5719,28 @@
           "commandWord": "Explain",
           "marks": 4,
           "objectiveIds": [
-            "S3.06.A01",
-            "S3.06.A02"
+            "S3.04.A01"
           ]
         },
         {
           "id": "S3-L03-EXAM-2",
-          "sourceRef": "Cambridge 9618 syllabus · S3.05",
-          "commandWord": "Explain",
+          "sourceRef": "Cambridge 9618 syllabus · S3.06",
+          "commandWord": "Compare",
           "marks": 4,
           "objectiveIds": [
             "S3.05.A01",
-            "S3.06.A01",
-            "S3.06.A02",
-            "S3.07.A01"
+            "S3.05.A02"
           ]
         },
         {
           "id": "S3-L03-EXAM-3",
           "sourceRef": "Cambridge 9618 syllabus · S3.07",
           "commandWord": "Explain",
-          "marks": 4,
+          "marks": 3,
           "objectiveIds": [
-            "S3.07.A01"
+            "S3.07.A01",
+            "S3.07.A02",
+            "S3.07.A03"
           ]
         }
       ]
@@ -5434,73 +5758,50 @@
       "objectives": [
         {
           "id": "S3.08.A01",
-          "description": "Show an understanding of monitoring and control systems",
+          "description": "Show understanding of monitoring and control systems.",
           "explanationUnits": [
-            "Monitoring and control; understand sensors, actuators and feedback"
+            "Monitoring and control systems compared"
           ],
           "materialTitles": [
-            "Control systems use rules and feedback"
+            "Monitoring and control"
           ],
           "questionIds": [
-            "V3-Q-L016-01",
-            "V3-Q-L016-02",
-            "V3-Q-L016-03"
+            "V3-016-S3.08-COMPARE",
+            "V3-016-INTEGRATED-GREENHOUSE"
           ],
           "pastPaperAnalysis": [
-            "9618/11/W/25 Q9",
-            "Cambridge 9618 syllabus · S3.08",
-            "Cambridge 9618 syllabus · S3.09"
+            "9618/11/W/25 Q9"
           ]
         },
         {
           "id": "S3.08.A02",
-          "description": "difference between monitoring and control",
+          "description": "Explain the difference between monitoring and control.",
           "explanationUnits": [
-            "Monitoring and control; understand sensors, actuators and feedback"
+            "Monitoring and control systems compared"
           ],
           "materialTitles": [
-            "Control systems use rules and feedback"
+            "Monitoring and control"
           ],
           "questionIds": [
-            "V3-Q-L016-01",
-            "V3-Q-L016-02",
-            "V3-Q-L016-03"
+            "V3-016-S3.08-COMPARE",
+            "V3-016-INTEGRATED-GREENHOUSE"
           ],
           "pastPaperAnalysis": [
-            "9618/11/W/25 Q9",
-            "Cambridge 9618 syllabus · S3.08",
-            "Cambridge 9618 syllabus · S3.09"
+            "9618/11/W/25 Q9"
           ]
         },
         {
           "id": "S3.08.A03",
-          "description": "use of sensors (including temperature, pressure, infra-red, sound) and actuators",
+          "description": "Explain the importance of feedback in a control system.",
           "explanationUnits": [
-            "Monitoring and control; understand sensors, actuators and feedback"
+            "The importance of feedback"
           ],
           "materialTitles": [
-            "Control systems use rules and feedback"
+            "Why feedback matters"
           ],
           "questionIds": [
-            "V3-Q-L016-01",
-            "V3-Q-L016-03"
-          ],
-          "pastPaperAnalysis": [
-            "9618/11/W/25 Q9",
-            "Cambridge 9618 syllabus · S3.08"
-          ]
-        },
-        {
-          "id": "S3.08.A04",
-          "description": "importance of feedback",
-          "explanationUnits": [
-            "Monitoring and control; understand sensors, actuators and feedback"
-          ],
-          "materialTitles": [
-            "Control systems use rules and feedback"
-          ],
-          "questionIds": [
-            "V3-Q-L016-02"
+            "V3-016-S3.08-FEEDBACK",
+            "V3-016-INTEGRATED-GREENHOUSE"
           ],
           "pastPaperAnalysis": [
             "Cambridge 9618 syllabus · S3.09"
@@ -5508,78 +5809,104 @@
         },
         {
           "id": "S3.09.A01",
-          "description": "Show an understanding of monitoring and control systems",
+          "description": "Explain the use of temperature, pressure, infra-red and sound sensors.",
           "explanationUnits": [
-            "Temperature, pressure, infrared and sound sensors and appropriate applications"
+            "Named sensors and their uses"
           ],
           "materialTitles": [
-            "Required sensor types and applications"
+            "CIE-named sensors"
           ],
           "questionIds": [
-            "V3-Q-L016-01",
-            "V3-Q-L016-02",
-            "V3-Q-L016-03"
+            "V3-016-S3.09-SENSORS",
+            "V3-016-INTEGRATED-GREENHOUSE"
           ],
           "pastPaperAnalysis": [
-            "9618/11/W/25 Q9",
-            "Cambridge 9618 syllabus · S3.08",
-            "Cambridge 9618 syllabus · S3.09"
+            "Cambridge 9618 syllabus · S3.08"
           ]
         },
         {
           "id": "S3.09.A02",
-          "description": "use of sensors (including temperature, pressure, infra-red, sound) and actuators",
+          "description": "Explain the use of actuators in monitoring and control systems.",
           "explanationUnits": [
-            "Temperature, pressure, infrared and sound sensors and appropriate applications"
+            "How sensors, a microprocessor and actuators form a control system"
           ],
           "materialTitles": [
-            "Required sensor types and applications"
+            "Sensor, microprocessor and actuator flow"
           ],
           "questionIds": [
-            "V3-016-S3.09-CHECK"
+            "V3-016-S3.09-ACTUATOR",
+            "V3-016-INTEGRATED-GREENHOUSE"
           ],
-          "pastPaperAnalysis": []
+          "pastPaperAnalysis": [
+            "Cambridge 9618 syllabus · S3.09"
+          ]
         }
       ],
       "knowledgeUnits": [
         {
           "syllabusId": "S3.08",
-          "heading": "Monitoring and control; understand sensors, actuators and feedback",
+          "heading": "Monitoring and control systems compared",
           "objectiveIds": [
             "S3.08.A01",
-            "S3.08.A02",
-            "S3.08.A03",
-            "S3.08.A04"
+            "S3.08.A02"
           ],
           "leadVisual": {
             "type": "reviewed-visual",
-            "title": "Control systems use rules and feedback"
+            "title": "Monitoring and control"
           },
           "coreExplanation": [
-            "A monitoring system uses sensors to collect data for recording, display or alerts; it does not necessarily change the environment. A control system uses sensor input and a stored rule or target to send output to an actuator. In closed-loop control, feedback is the new sensor reading produced after the action, allowing the controller to adjust or stop the output.",
-            "Actuators produce physical output actions such as moving a vent or switching a fan after the controller processes sensor input.",
-            "Choose a sensor by matching the physical quantity to the application: temperature for a greenhouse, pressure for a tyre or burglar mat, infra-red for a remote-control receiver or beam alarm, and sound for a noise monitor. A light-intensity sensor is useful supporting context but does not replace the named infra-red and sound sensors.",
-            "A temperature sensor measures temperature, a pressure sensor measures force per unit area or pressure, an infra-red sensor detects infra-red radiation, and a sound sensor detects sound level or sound waves. The sensor supplies input data; it does not itself decide or perform the control action."
+            "A monitoring system uses sensors to collect data for recording, display or an alert. It reports the measured condition and does not necessarily change it.",
+            "A control system uses sensor data and a stored rule or target to decide an output. It sends an output signal to an actuator, which changes the physical condition."
           ],
           "method": null,
           "workedExample": null
         },
         {
           "syllabusId": "S3.09",
-          "heading": "Temperature, pressure, infrared and sound sensors and appropriate applications",
+          "heading": "Named sensors and their uses",
           "objectiveIds": [
-            "S3.09.A01",
+            "S3.09.A01"
+          ],
+          "leadVisual": {
+            "type": "list",
+            "title": "CIE-named sensors"
+          },
+          "coreExplanation": [
+            "Select a sensor by matching the physical quantity it detects to the data required by the system. The official syllabus names temperature, pressure, infra-red and sound sensors."
+          ],
+          "method": null,
+          "workedExample": null
+        },
+        {
+          "syllabusId": "S3.09",
+          "heading": "How sensors, a microprocessor and actuators form a control system",
+          "objectiveIds": [
             "S3.09.A02"
           ],
           "leadVisual": {
             "type": "reviewed-visual",
-            "title": "Required sensor types and applications"
+            "title": "Sensor, microprocessor and actuator flow"
           },
           "coreExplanation": [
-            "Choose a sensor by matching the physical quantity to the application: temperature for a greenhouse, pressure for a tyre or burglar mat, infra-red for a remote-control receiver or beam alarm, and sound for a noise monitor. A light-intensity sensor is useful supporting context but does not replace the named infra-red and sound sensors.",
-            "Temperature, pressure, infrared and sound sensors and appropriate applications.",
-            "A temperature sensor measures temperature, a pressure sensor measures force per unit area or pressure, an infra-red sensor detects infra-red radiation, and a sound sensor detects sound level or sound waves. The sensor supplies input data; it does not itself decide or perform the control action.",
-            "A temperature sensor measures temperature and a pressure sensor measures pressure. An infra-red sensor detects infra-red radiation, for example in a beam alarm or remote-control receiver."
+            "A sensor measures a physical condition and sends a signal representing the reading. If the signal is analogue, an ADC converts it into digital data before a microprocessor can process it.",
+            "The microprocessor compares the reading with a stored target or rule and sends an output signal to an actuator. The actuator converts that signal into a physical action, such as operating a motor, heater, valve or alarm."
+          ],
+          "method": null,
+          "workedExample": null
+        },
+        {
+          "syllabusId": "S3.08",
+          "heading": "The importance of feedback",
+          "objectiveIds": [
+            "S3.08.A03"
+          ],
+          "leadVisual": {
+            "type": "flow",
+            "title": "Why feedback matters"
+          },
+          "coreExplanation": [
+            "Feedback is a new sensor reading obtained after an actuator has changed the physical condition. It tells the controller the actual effect of the previous output rather than assuming that the required change occurred.",
+            "By repeatedly comparing new readings with the target, the controller can continue, adjust or stop the actuator. Without feedback, a disturbance or an ineffective actuator could leave the condition away from the target with no automatic correction."
           ],
           "method": null,
           "workedExample": null
@@ -5587,43 +5914,47 @@
       ],
       "practice": [
         {
-          "id": "V3-Q-L016-01",
+          "id": "V3-016-S3.08-COMPARE",
           "commandWord": "Compare",
-          "marks": 5,
+          "marks": 4,
           "objectiveIds": [
             "S3.08.A01",
-            "S3.08.A02",
-            "S3.09.A01",
+            "S3.08.A02"
+          ]
+        },
+        {
+          "id": "V3-016-S3.09-SENSORS",
+          "commandWord": "Identify",
+          "marks": 4,
+          "objectiveIds": [
+            "S3.09.A01"
+          ]
+        },
+        {
+          "id": "V3-016-S3.09-ACTUATOR",
+          "commandWord": "Describe",
+          "marks": 5,
+          "objectiveIds": [
+            "S3.09.A02"
+          ]
+        },
+        {
+          "id": "V3-016-S3.08-FEEDBACK",
+          "commandWord": "Explain",
+          "marks": 4,
+          "objectiveIds": [
             "S3.08.A03"
           ]
         },
         {
-          "id": "V3-Q-L016-02",
-          "commandWord": "State",
-          "marks": 2,
-          "objectiveIds": [
-            "S3.08.A01",
-            "S3.08.A02",
-            "S3.08.A04",
-            "S3.09.A01"
-          ]
-        },
-        {
-          "id": "V3-Q-L016-03",
-          "commandWord": "Identify",
-          "marks": 2,
+          "id": "V3-016-INTEGRATED-GREENHOUSE",
+          "commandWord": "Explain",
+          "marks": 5,
           "objectiveIds": [
             "S3.08.A01",
             "S3.08.A02",
             "S3.08.A03",
-            "S3.09.A01"
-          ]
-        },
-        {
-          "id": "V3-016-S3.09-CHECK",
-          "commandWord": "Explain",
-          "marks": 3,
-          "objectiveIds": [
+            "S3.09.A01",
             "S3.09.A02"
           ]
         }
@@ -5632,24 +5963,19 @@
         {
           "id": "S3-L04-EXAM-1",
           "sourceRef": "9618/11/W/25 Q9",
-          "commandWord": "Explain",
-          "marks": 6,
+          "commandWord": "Compare",
+          "marks": 4,
           "objectiveIds": [
             "S3.08.A01",
-            "S3.08.A02",
-            "S3.09.A01",
-            "S3.08.A03"
+            "S3.08.A02"
           ]
         },
         {
           "id": "S3-L04-EXAM-2",
           "sourceRef": "Cambridge 9618 syllabus · S3.08",
-          "commandWord": "Describe",
-          "marks": 2,
+          "commandWord": "Identify",
+          "marks": 4,
           "objectiveIds": [
-            "S3.08.A01",
-            "S3.08.A02",
-            "S3.08.A03",
             "S3.09.A01"
           ]
         },
@@ -5657,12 +5983,10 @@
           "id": "S3-L04-EXAM-3",
           "sourceRef": "Cambridge 9618 syllabus · S3.09",
           "commandWord": "Explain",
-          "marks": 4,
+          "marks": 5,
           "objectiveIds": [
-            "S3.08.A01",
-            "S3.08.A02",
-            "S3.08.A04",
-            "S3.09.A01"
+            "S3.08.A03",
+            "S3.09.A02"
           ]
         }
       ]
@@ -22533,12 +22857,44 @@
       "sha256": "7c684c82168655ef2b60b43df6ffa9059fdd3a7ca4ebaf0032ffbcbf6b4fcdac"
     },
     {
-      "path": "web/assets/diagrams/stage10-infographics/stage10-lesson-034-embedded.jpg",
-      "sha256": "e47c48ad29de4ec44865ff07e417c06a7cfc7d30e6b18f134a40702d879c6e23"
+      "path": "web/assets/diagrams/course-v3-imagegen/embedded-system-structure.png",
+      "sha256": "3dc6cb7eed9c69861d154c26ee7118c3442c434be5977149053f129e35cf5e36"
     },
     {
-      "path": "web/assets/diagrams/course-v3-imagegen/device-principles.png",
-      "sha256": "5c63f49210824e3c0175eb32ada97a202a0d36bac8fc88cb701f733a9e97cad6"
+      "path": "web/assets/diagrams/course-v3-imagegen/laser-printer-operation.png",
+      "sha256": "f32a5b8e2514341a342ab05f9b68a459c7486a4563c14a5dd46ee15fa8d21df9"
+    },
+    {
+      "path": "web/assets/diagrams/course-v3-imagegen/3d-printer-operation.png",
+      "sha256": "a835993dc1517d3e47b3eb2b95f07413f173c8834ef9c2ebfc33f5cbdac7bd76"
+    },
+    {
+      "path": "web/assets/diagrams/course-v3-imagegen/microphone-operation.png",
+      "sha256": "fa852396e80180036933832e5e4c2dfef4d2095437ecfc7f7b8670faa8d06818"
+    },
+    {
+      "path": "web/assets/diagrams/course-v3-imagegen/speakers-operation.png",
+      "sha256": "f5796534358754afa1086001156131d0d5d280b84177a66099bbf7a506de4b8a"
+    },
+    {
+      "path": "web/assets/diagrams/course-v3-imagegen/magnetic-hard-disk-operation.png",
+      "sha256": "03a4a64d29fafabe1a302164b967922b8bfd1cfee6a57bee886f91704432ff45"
+    },
+    {
+      "path": "web/assets/diagrams/course-v3-imagegen/solid-state-flash-memory-operation.png",
+      "sha256": "f326b67b42723e3445af5b7e574193c814d46d9b223fff0fb3359d613b64a991"
+    },
+    {
+      "path": "web/assets/diagrams/course-v3-imagegen/optical-disc-reader-writer-operation.png",
+      "sha256": "74d9487e9ab33a02486b6f172bf38f871f9917eaaca7c945dee6148b38e46726"
+    },
+    {
+      "path": "web/assets/diagrams/course-v3-imagegen/capacitive-touchscreen-operation.png",
+      "sha256": "e7d93444400b632d5085a462adca76f20de71ea90a3d18baf997944ecf4b28fc"
+    },
+    {
+      "path": "web/assets/diagrams/course-v3-imagegen/virtual-reality-headset-operation.png",
+      "sha256": "4d25bd5af215bd90556428ae8221d07daf99ee6be3eaa1184a86c0dd994bfb90"
     },
     {
       "path": "web/assets/diagrams/stage10-infographics/stage10-lesson-054-device.jpg",
@@ -22557,12 +22913,12 @@
       "sha256": "70d0adc7dd121f812274d6973e160c6ec4da3377347ab6114cda0d73034da6db"
     },
     {
-      "path": "web/assets/diagrams/stage10-infographics/stage10-lesson-035-control.jpg",
-      "sha256": "bc67bceff41dded0fc2eecd6860047bce30a3c3ff00436b6c7c781194903e49d"
+      "path": "web/assets/diagrams/course-v3-imagegen/monitoring-control-comparison.png",
+      "sha256": "ece294ebc53f76ce75558ca70864ac0310b7a5f9f1ada46a318b298fa47a1a8b"
     },
     {
-      "path": "web/assets/diagrams/stage10-infographics/stage10-lesson-035-sensors.jpg",
-      "sha256": "03404a2a7717dc04be4cb8102f29dbd74aeee1ed79e17e8546293b6bf82ffd36"
+      "path": "web/assets/diagrams/course-v3-imagegen/control-system-feedback.png",
+      "sha256": "1d51c8e8e1556a6ed064cdfaf6c84c3dd93afc57c7e1e7348a4e9540801173ac"
     },
     {
       "path": "web/assets/diagrams/stage10-infographics/stage10-lesson-036-gate-visual.jpg",

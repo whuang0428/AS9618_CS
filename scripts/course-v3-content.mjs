@@ -128,6 +128,50 @@ const lessonPresentationOverrides = Object.freeze({
       ["RLE", "Store each run as a count and a value."],
     ],
   },
+  "013": {
+    title: "Input, output, storage and embedded systems",
+    subtitle: "Explain why a computer system needs input, output, primary memory and secondary storage, then evaluate an embedded system.",
+    guidingQuestion: "Why does a computer system need each hardware role, and what follows from designing an embedded system for a dedicated task?",
+    summaryMode: "authored",
+    summary: [
+      ["Computer-system roles", "Input supplies data; processing transforms it; output communicates a result."],
+      ["Storage roles", "Primary memory supports current processing; secondary storage retains data long term."],
+      ["Embedded system", "A computer system built into a larger device for a dedicated function."],
+      ["Trade-offs", "Dedicated design can improve efficiency but reduces flexibility and upgrade capacity."],
+    ],
+  },
+  "014": {
+    title: "Principal operations of hardware devices",
+    subtitle: "Describe each device as an ordered input, internal operation and output rather than as one combined hardware survey.",
+    guidingQuestion: "What physical or electronic operation allows each named device to convert, store or present data?",
+    examQuestionCount: 9,
+    summaryMode: "authored",
+    summary: [
+      ["Laser printer", "Charge, expose, develop, transfer and fuse."],
+      ["3D printer", "Slice a model and build successive material layers."],
+      ["Sound devices", "A microphone digitises sound; speakers recreate sound."],
+      ["Storage devices", "Magnetic, flash and optical media store bits by different physical states."],
+      ["Interactive devices", "A touchscreen locates touch; a VR headset tracks movement and updates its view."],
+    ],
+  },
+  "015": {
+    title: "Buffers, RAM, ROM and memory technologies",
+    subtitle: "Define drivers and buffers before connecting them, then distinguish RAM, ROM, SRAM, DRAM, PROM, EPROM and EEPROM.",
+    guidingQuestion: "How do temporary transfer storage and different primary-memory technologies meet different system needs?",
+  },
+  "016": {
+    title: "Monitoring, control, sensors, actuators and feedback",
+    subtitle: "Distinguish monitoring from control, match the named sensors to uses, and trace a complete feedback loop.",
+    guidingQuestion: "How do sensor readings become monitored information or corrective physical action, and why must a control system receive feedback?",
+    summaryMode: "authored",
+    summary: [
+      ["Monitoring", "Measure, record, display or alert without necessarily changing the condition."],
+      ["Control", "Compare with a target and send an output signal to an actuator."],
+      ["Named sensors", "Temperature, pressure, infra-red and sound sensors match different physical quantities."],
+      ["Actuator", "Converts an output signal into a physical action."],
+      ["Feedback", "A new reading shows the effect of the action and supports the next correction."],
+    ],
+  },
 });
 
 export const sectionMeta = Object.freeze({
@@ -453,7 +497,15 @@ const objectiveExpansions = Object.freeze({
   "S1.09": ["Explain a vector drawing list, its drawing objects and their properties.", "Explain why vector graphics scale without pixelation.", "Justify bitmap or vector representation for a given task."],
   "S1.10": ["Explain sampling of an analogue sound wave.", "Explain quantisation and binary encoding of sample values.", "Explain the effect of sampling rate on time accuracy and file size.", "Explain the effect of sampling resolution on amplitude accuracy and file size."],
   "S1.11": ["Explain why files are compressed.", "Distinguish lossless and lossy compression by reconstruction and information loss.", "Encode and decode run-length encoding and judge when it is effective.", "Explain suitable lossless compression for ordinary text.", "Explain lossless and lossy compression choices for bitmap images.", "Explain lossless storage of repeated vector objects or properties.", "Explain lossless and lossy compression choices for sound.", "Justify a compression method from fidelity, repetition and intended use."],
+  "S3.01": ["Explain the need for input devices.", "Explain the need for output devices.", "Explain the need for primary memory.", "Explain the need for secondary storage.", "Explain the use of removable secondary storage."],
+  "S3.02": ["Show understanding of an embedded system as a computer system built into a larger device for a dedicated function.", "Explain benefits of embedded systems.", "Explain drawbacks of embedded systems."],
   "S3.03": ["Describe the principal operation of a laser printer.", "Describe the principal operation of a 3D printer.", "Describe the principal operation of a microphone.", "Describe the principal operation of speakers.", "Describe the principal operation of magnetic hard-disk storage.", "Describe the principal operation of solid-state flash memory.", "Describe the principal operation of an optical disc reader/writer.", "Describe the principal operation of a touchscreen.", "Describe the principal operation of a virtual-reality headset."],
+  "S3.04": ["Explain the use of a buffer during data transfer between components or devices."],
+  "S3.05": ["Explain the differences between Random Access Memory (RAM) and Read Only Memory (ROM).", "Explain the use of RAM and ROM in a range of devices and systems."],
+  "S3.06": ["Explain how Static RAM (SRAM) and Dynamic RAM (DRAM) store bits.", "Explain why DRAM requires refresh and SRAM does not.", "Compare SRAM and DRAM by speed, cost and density.", "Explain uses of SRAM and DRAM and reasons for choosing each type."],
+  "S3.07": ["Explain how Programmable ROM (PROM) is programmed.", "Explain how Erasable Programmable ROM (EPROM) is erased and reprogrammed.", "Explain how Electrically Erasable Programmable ROM (EEPROM) is erased and reprogrammed."],
+  "S3.08": ["Show understanding of monitoring and control systems.", "Explain the difference between monitoring and control.", "Explain the importance of feedback in a control system."],
+  "S3.09": ["Explain the use of temperature, pressure, infra-red and sound sensors.", "Explain the use of actuators in monitoring and control systems."],
   "S3.10": ["Recognise and use the NOT gate symbol and function.", "Recognise and use the AND gate symbol and function.", "Recognise and use the OR gate symbol and function.", "Recognise and use the NAND gate symbol and function.", "Recognise and use the NOR gate symbol and function.", "Recognise and use the XOR/EOR gate symbol and function.", "Construct truth tables with one-input NOT and two-input gates.", "Construct a logic circuit from a problem statement, expression or truth table.", "Construct a truth table from a problem statement, circuit or expression.", "Construct a logic expression from a problem statement, circuit or truth table."],
   "S4.02": ["Distinguish general-purpose and special-purpose registers.", "Explain the role of the Program Counter.", "Explain the role of the Memory Data Register.", "Explain the role of the Memory Address Register.", "Explain the role of the Accumulator.", "Explain the role of the Index Register.", "Explain the role of the Current Instruction Register.", "Explain the role of the Status Register."],
   "S4.12": ["Classify data-movement instructions.", "Classify input/output instructions.", "Classify arithmetic instructions.", "Classify unconditional and conditional control instructions.", "Classify compare instructions."],
@@ -1449,6 +1501,401 @@ function makeLesson006Units() {
   ];
 }
 
+const hardwareVisual = (title, asset, facts, alt) => ({
+  type: "reviewed-visual",
+  title,
+  asset: `/assets/diagrams/course-v3-imagegen/${asset}.png`,
+  facts,
+  alt,
+  review: "reviewed",
+});
+
+const hardwareUnit = ({ unitKey, syllabusId, heading, objectiveIds, explanation, materials, misconceptions, masteryCheck }) => ({
+  unitKey,
+  syllabusId,
+  heading,
+  objectiveIds,
+  explanation,
+  materials: materials.map((material) => ({ ...material, objectiveIds })),
+  misconceptions,
+  teacherNote: `Teach ${heading} as one bounded Cambridge syllabus idea before connecting it to another unit.`,
+  masteryCheck,
+});
+
+function makeLesson013Units() {
+  const s301 = objectiveRows("S3.01").map(([id]) => id);
+  const s302 = objectiveRows("S3.02").map(([id]) => id);
+  return [
+    hardwareUnit({
+      unitKey: "S3.01-COMPONENT-ROLES",
+      syllabusId: "S3.01",
+      heading: "Why a computer system needs input, output, primary memory and secondary storage",
+      objectiveIds: s301,
+      explanation: [
+        "Input devices are needed to supply data and instructions. The processor follows instructions and transforms data, and output devices are needed to communicate the result or cause an action.",
+        "Primary memory holds instructions and data that the processor needs during current processing. Secondary storage retains programs and data when power is removed; removable secondary storage can transfer data between systems or hold an offline copy.",
+      ],
+      materials: [{
+        type: "reviewed-visual",
+        title: "Component roles in a computer system",
+        asset: "/assets/diagrams/stage10-infographics/stage10-lesson-028-components.jpg",
+        facts: [
+          "Input devices supply data and instructions to the computer system.",
+          "The processor executes instructions and processes data.",
+          "Primary memory holds instructions and data required during current processing.",
+          "Output devices communicate processed information or cause an action.",
+          "Secondary storage provides non-volatile long-term storage, including removable storage.",
+        ],
+        alt: "A labelled computer-system diagram separating input, processing, primary memory, secondary storage and output roles.",
+        review: "reviewed",
+      }],
+      misconceptions: ["Primary memory is defined by direct processor access, not by volatility: RAM is volatile but ROM is non-volatile."],
+      masteryCheck: {
+        marks: 5,
+        prompt: "Explain why a computer system needs input, output, primary memory and secondary storage, including one use of removable storage.",
+        answerCriteria: [
+          "Input supplies data and instructions.",
+          "Output communicates processed information or causes an action.",
+          "Primary memory holds instructions and data needed during current processing.",
+          "Secondary storage retains programs and data when power is removed.",
+          "Removable storage can transfer data or hold an offline copy.",
+        ],
+      },
+    }),
+    hardwareUnit({
+      unitKey: "S3.02-EMBEDDED-STRUCTURE",
+      syllabusId: "S3.02",
+      heading: "What an embedded system is",
+      objectiveIds: [s302[0]],
+      explanation: [
+        "An embedded system is a computer system built into a larger device to perform a dedicated function or a closely related set of functions.",
+        "Its controller receives input, executes stored instructions and produces output inside the larger device. A microcontroller can combine a processor, memory and input/output interfaces in one integrated circuit for this purpose.",
+      ],
+      materials: [hardwareVisual(
+        "Embedded system structure",
+        "embedded-system-structure",
+        [
+          "The embedded system is part of a larger device.",
+          "Inputs provide data to a controller that executes the dedicated task.",
+          "Memory holds the instructions and data used by the controller.",
+          "Outputs communicate a result or operate another part of the larger device.",
+        ],
+        "An ImageGen diagram showing input, controller, memory and output inside the boundary of a larger device, labelled as a dedicated task.",
+      )],
+      misconceptions: ["An embedded system is identified by being built into a larger device for a dedicated function, not merely by being small."],
+      masteryCheck: {
+        marks: 4,
+        prompt: "Describe an embedded system and explain how its input, controller, memory and output support a dedicated function.",
+        answerCriteria: [
+          "It is a computer system built into a larger device.",
+          "It performs a dedicated function or closely related functions.",
+          "The controller processes input according to stored instructions.",
+          "The output communicates a result or operates part of the device.",
+        ],
+      },
+    }),
+    hardwareUnit({
+      unitKey: "S3.02-EMBEDDED-TRADEOFFS",
+      syllabusId: "S3.02",
+      heading: "Benefits and drawbacks of embedded systems",
+      objectiveIds: [s302[1], s302[2]],
+      explanation: [
+        "The benefits and drawbacks follow from the same dedicated design. A valid evaluation links each point to the device and its required function rather than presenting a general list with no scenario connection.",
+      ],
+      materials: [{
+        type: "table",
+        title: "Embedded-system benefits and drawbacks",
+        preserveText: true,
+        headers: ["Design factor", "Potential benefit", "Potential drawback"],
+        rows: [
+          ["Dedicated function", "Hardware and software can be optimised for one task.", "The system has limited flexibility for unrelated new tasks."],
+          ["Size and resources", "A compact design can use less power and fewer components.", "Limited processing power or memory restricts future features."],
+          ["Cost and reliability", "Mass-produced dedicated hardware can reduce unit cost and unnecessary complexity.", "A failure can disable the larger device and specialist repair may be required."],
+          ["Updates", "Stable fixed behaviour can make operation predictable.", "Upgrading hardware or software may be difficult after manufacture."],
+        ],
+      }],
+      misconceptions: ["A benefit or drawback is not automatic; it must be linked to the dedicated function and constraints of the stated device."],
+      masteryCheck: {
+        marks: 4,
+        prompt: "Explain two benefits and two drawbacks of using an embedded system in a washing machine.",
+        answerCriteria: [
+          "A dedicated controller can be optimised for the washing functions.",
+          "A compact, mass-produced design can reduce size, power use or unit cost.",
+          "Limited resources make unrelated new functions difficult to add.",
+          "Failure or upgrading can require specialist work on the larger appliance.",
+        ],
+      },
+    }),
+  ];
+}
+
+function makeLesson014Units() {
+  const objectives = objectiveRows("S3.03").map(([id]) => id);
+  const device = (index, unitKey, heading, asset, explanation, facts, misconception, check) => hardwareUnit({
+    unitKey,
+    syllabusId: "S3.03",
+    heading,
+    objectiveIds: [objectives[index]],
+    explanation,
+    materials: [hardwareVisual(`${heading}: principal operation`, asset, facts, `An ImageGen diagram showing the principal operation of ${heading.toLowerCase()} in labelled order.`)],
+    misconceptions: [misconception],
+    masteryCheck: check,
+  });
+  return [
+    device(0, "S3.03-LASER-PRINTER", "Laser printer", "laser-printer-operation", [
+      "A photosensitive drum receives a uniform electrostatic charge. A laser scans the drum and creates a charge pattern representing the page; toner is attracted to the required parts of that pattern.",
+      "The toner image transfers from the drum to paper. Heated pressure rollers fuse the toner permanently to the paper.",
+    ], ["Charge the photosensitive drum.", "Use a laser to create an electrostatic image.", "Attract toner, transfer it to paper and fuse it using heat and pressure."], "An inkjet printer sprays liquid ink; a laser printer uses an electrostatic drum, toner and a fuser.", { marks: 5, prompt: "Describe the principal operation of a laser printer from charged drum to fused page.", answerCriteria: ["The drum is given an electrostatic charge.", "The laser creates a charge pattern on the drum.", "Toner adheres to the required areas.", "The toner transfers to paper.", "Heat and pressure fuse the toner to the paper."] }),
+    device(1, "S3.03-3D-PRINTER", "3D printer", "3d-printer-operation", [
+      "Software divides a digital three-dimensional model into thin layers. The printer follows the data for one layer at a time and deposits or solidifies material at the required positions.",
+      "The print head or build platform moves between layers. Successive layers bond or solidify until they form the physical object.",
+    ], ["Start with a digital three-dimensional model.", "Slice the model into layers.", "Deposit or solidify material and build successive layers."], "A 3D printer uses an additive layer-by-layer process; it does not print one complete solid layer in a single step.", { marks: 4, prompt: "Describe how a 3D printer produces a physical object from a digital model.", answerCriteria: ["Software slices the digital model into layers.", "The printer follows the data for one layer at a time.", "Material is deposited or solidified at the required positions.", "Successive layers form the finished object."] }),
+    device(2, "S3.03-MICROPHONE", "Microphone", "microphone-operation", [
+      "Sound waves make a diaphragm vibrate. A transducer converts these movements into a varying analogue electrical signal that represents the sound wave.",
+      "For a computer to store or process the sound, an analogue-to-digital converter samples and quantises the signal and encodes the sample values as binary data.",
+    ], ["Sound waves vibrate a diaphragm.", "The transducer produces an analogue electrical signal.", "An ADC samples, quantises and encodes the signal as binary data."], "A microphone initially produces an analogue signal; it does not convert sound waves directly into stored binary values without conversion.", { marks: 4, prompt: "Describe how a microphone and an ADC produce binary sound data.", answerCriteria: ["Sound waves make the diaphragm vibrate.", "The transducer produces a varying analogue electrical signal.", "The ADC samples and quantises the signal.", "The sample values are encoded as binary data."] }),
+    device(3, "S3.03-SPEAKERS", "Speakers", "speakers-operation", [
+      "A digital-to-analogue converter changes stored binary sample values into a varying analogue signal. An amplifier supplies sufficient current to drive the speaker.",
+      "The signal in the voice coil produces a changing magnetic field that interacts with a permanent magnet. The coil and attached cone move, vibrating the air to create sound waves.",
+    ], ["A DAC converts binary sound data to an analogue signal.", "An amplifier drives a coil in a magnetic field.", "The coil moves the cone, and the cone produces sound waves."], "A speaker is an output device; the DAC and amplifier prepare the signal, while the moving cone produces the sound waves.", { marks: 5, prompt: "Describe how speakers convert binary sound data into sound waves.", answerCriteria: ["A DAC produces an analogue signal from the binary sample values.", "An amplifier increases the signal power.", "Current flows through a voice coil in a magnetic field.", "The coil and attached cone move.", "The cone vibrations produce sound waves."] }),
+    device(4, "S3.03-MAGNETIC-HARD-DISK", "Magnetic hard disk", "magnetic-hard-disk-operation", [
+      "Magnetic platters rotate while an actuator positions a read/write head above the required track. The required sector passes beneath the head as the platter turns.",
+      "To write, the head changes the magnetic orientation of small areas that represent bits. To read, the head senses the stored magnetic pattern and the controller decodes it as binary data.",
+    ], ["Platters rotate and an actuator positions the read/write head.", "Writing changes magnetic orientation.", "Reading senses and decodes the magnetic pattern."], "The read/write head is held just above the rotating platter; it should not normally touch the platter surface.", { marks: 5, prompt: "Describe how a magnetic hard disk writes and reads binary data.", answerCriteria: ["The magnetic platters rotate.", "The actuator positions the read/write head over the required track.", "The required sector passes beneath the head.", "Writing changes magnetic orientation to represent bits.", "Reading senses the magnetic pattern and decodes it as data."] }),
+    device(5, "S3.03-FLASH", "Solid-state flash memory", "solid-state-flash-memory-operation", [
+      "Flash memory stores charge in floating-gate transistor cells. The presence or amount of trapped charge changes a cell's threshold behaviour and represents stored bit values.",
+      "A controller applies voltages to program or erase cells and detects their charge state when reading. Because storage is electronic, flash memory has no moving mechanical parts.",
+    ], ["A controller addresses floating-gate cells.", "Programming or erasing changes stored charge.", "Reading detects the charge state; no moving parts are used."], "Flash memory stores data electronically in cells; it is not magnetic storage simply because it is non-volatile.", { marks: 4, prompt: "Describe how solid-state flash memory stores and reads binary data.", answerCriteria: ["Floating-gate cells store electrical charge.", "Stored charge changes the cell's threshold behaviour and represents data.", "The controller applies voltages to program or erase cells.", "The controller detects the charge state when reading."] }),
+    device(6, "S3.03-OPTICAL-DISC", "Optical disc reader/writer", "optical-disc-reader-writer-operation", [
+      "The drive spins the disc and focuses a low-power laser on a track. A detector senses differences in reflected light, and the controller converts those changes into binary data.",
+      "For a recordable disc, a higher-power laser changes areas of the recording layer. The changed and unchanged areas produce distinguishable optical states when the disc is read.",
+    ], ["A spinning disc carries a track read by a laser.", "Reflected-light differences are detected and decoded as binary data.", "A higher-power laser changes the recording layer when writing."], "The laser reads optical differences without touching the disc; it does not read magnetic fields.", { marks: 5, prompt: "Describe how an optical disc drive reads data and writes to a recordable disc.", answerCriteria: ["The disc spins and a laser follows the track.", "A low-power laser is used for reading.", "A detector senses differences in reflected light.", "The controller decodes the changes as binary data.", "A higher-power laser changes the recording layer when writing."] }),
+    device(7, "S3.03-TOUCHSCREEN", "Touchscreen", "capacitive-touchscreen-operation", [
+      "A capacitive touchscreen maintains an electric field across a transparent electrode grid. A finger touching the screen changes the local capacitance or electric field.",
+      "The controller detects the change at the electrodes and calculates the touch coordinates. The display provides visual output while the touch-sensitive layer provides input.",
+    ], ["A finger changes the electric field at the screen.", "An electrode grid detects the change.", "The controller calculates the touch coordinates."], "A touchscreen combines input and output: the display presents images, while the touch layer detects a position.", { marks: 4, prompt: "Describe how a capacitive touchscreen detects the position of a touch.", answerCriteria: ["The screen uses an electric field and transparent electrode grid.", "A finger changes the local capacitance or electric field.", "The electrodes detect the change.", "The controller calculates the touch coordinates."] }),
+    device(8, "S3.03-VR-HEADSET", "Virtual-reality headset", "virtual-reality-headset-operation", [
+      "The headset displays a separate viewpoint for each eye so the user perceives depth. Lenses place the displays in the user's field of view, and speakers or headphones can provide corresponding sound output.",
+      "Motion and orientation sensors detect head movement. The computer uses the sensor data to update the rendered viewpoint, so the displayed scene appears to follow the user's movement.",
+    ], ["Motion and orientation sensors detect head movement.", "The computer updates the viewpoint from the sensor data.", "A separate image is displayed for each eye, producing an immersive view."], "A VR headset is not only a display: tracking sensors provide input so the rendered viewpoint can change with head movement.", { marks: 5, prompt: "Describe how a virtual-reality headset uses input and output to respond to head movement.", answerCriteria: ["Motion and orientation sensors detect head movement.", "The sensor data is sent to the computer.", "The computer updates the rendered viewpoint.", "A separate image is displayed for each eye.", "The updated scene appears to follow the user's movement."] }),
+  ];
+}
+
+function makeLesson015Units() {
+  const s304 = objectiveRows("S3.04").map(([id]) => id);
+  const s305 = objectiveRows("S3.05").map(([id]) => id);
+  const s306 = objectiveRows("S3.06").map(([id]) => id);
+  const s307 = objectiveRows("S3.07").map(([id]) => id);
+  return [
+    hardwareUnit({
+      unitKey: "S3.04-DRIVER-BUFFER-QUEUE",
+      syllabusId: "S3.04",
+      heading: "Device drivers, buffers and queues: what each is and why they work together",
+      objectiveIds: s304,
+      explanation: [
+        "A device driver is system software that translates operating-system requests into the commands and data format required by a particular device.",
+        "A buffer is an area of memory that temporarily stores data while it is transferred between components or devices operating at different speeds or in different-sized bursts. A queue is an ordered list of jobs waiting to be processed.",
+        "For a print job, the operating system places work in a queue, data waits temporarily in a buffer, and the printer driver sends device-specific commands and formatted data. The processor can continue other work while the printer consumes the buffered data at its own rate.",
+      ],
+      materials: [{
+        type: "reviewed-visual",
+        title: "Drivers, buffers and queues in one device transfer",
+        asset: "/assets/diagrams/stage10-infographics/stage10-lesson-054-device.jpg",
+        facts: ["A driver translates general operating-system requests into device-specific commands.", "A queue preserves the order of waiting jobs.", "A buffer temporarily holds data during transfer and absorbs a short-term rate mismatch."],
+        alt: "A labelled device-transfer diagram showing a driver, an ordered queue, a temporary buffer and a peripheral device.",
+        review: "reviewed",
+      }],
+      misconceptions: ["A buffer absorbs a temporary rate mismatch; it does not increase the long-term transfer rate and it is not permanent storage."],
+      masteryCheck: { marks: 4, prompt: "Explain what a device driver and a buffer do, then explain why a print queue, driver and buffer are used together.", answerCriteria: ["The driver translates operating-system requests into device-specific commands.", "The buffer temporarily stores data during transfer.", "The queue keeps waiting print jobs in order.", "The printer consumes buffered data at its own rate while the processor continues other work."] },
+    }),
+    hardwareUnit({
+      unitKey: "S3.05-RAM-ROM",
+      syllabusId: "S3.05",
+      heading: "Why RAM changes while ROM remains stable",
+      objectiveIds: s305,
+      explanation: [
+        "RAM is read/write primary memory used for programs and data currently being processed. Its contents change as programs start, data is edited and intermediate results are produced; ordinary RAM is volatile, so its contents are lost when power is removed.",
+        "ROM is non-volatile primary memory used for instructions that must remain available when power is removed, such as firmware or start-up instructions. During normal operation its contents are read rather than repeatedly changed, so they remain stable.",
+      ],
+      materials: [{
+        type: "reviewed-visual",
+        title: "RAM and ROM",
+        asset: "/assets/diagrams/stage10-infographics/stage10-lesson-031-ram-rom.jpg",
+        facts: ["RAM is volatile read/write primary memory used for active programs and data.", "ROM is non-volatile primary memory used for instructions that must persist.", "RAM and ROM roles do not depend on the SRAM/DRAM comparison."],
+        alt: "A comparison of RAM as changing volatile working memory and ROM as stable non-volatile instruction memory.",
+        review: "reviewed",
+      }],
+      misconceptions: ["RAM and ROM are both primary memory. ROM is not ordinary secondary storage for a user's files."],
+      masteryCheck: { marks: 4, prompt: "Explain two differences between RAM and ROM and give one use of each.", answerCriteria: ["RAM is normally volatile whereas ROM is non-volatile.", "RAM is read/write working memory whereas ROM is normally read during operation.", "RAM stores active programs and data.", "ROM stores persistent firmware or start-up instructions."] },
+    }),
+    hardwareUnit({
+      unitKey: "S3.06-SRAM-DRAM",
+      syllabusId: "S3.06",
+      heading: "SRAM and DRAM: storage method, performance and use",
+      objectiveIds: s306,
+      explanation: [
+        "SRAM stores each bit in a flip-flop circuit and does not need refresh while power is supplied. It is fast but uses more components per bit, giving lower density and higher cost per bit, so it is used for processor cache.",
+        "DRAM stores each bit as charge in a capacitor. Charge leaks, so the cells require periodic refresh; DRAM is slower but denser and cheaper per bit, so it is used for large-capacity main memory.",
+      ],
+      materials: [hardwareVisual("SRAM and DRAM", "sram-dram", ["SRAM uses flip-flop circuits and does not require refresh while powered.", "DRAM uses capacitor charge and requires periodic refresh.", "SRAM suits cache; DRAM suits large-capacity main memory."], "An ImageGen comparison of SRAM flip-flop cells and DRAM capacitor cells, including refresh, speed, density, cost and typical uses.")],
+      misconceptions: ["SRAM is a form of volatile primary memory; the word static does not mean non-volatile solid-state secondary storage."],
+      masteryCheck: { marks: 6, prompt: "Compare SRAM and DRAM and explain why SRAM is used for cache while DRAM is used for main memory.", answerCriteria: ["SRAM uses flip-flop circuits.", "DRAM stores charge in capacitors.", "SRAM does not need refresh whereas DRAM does.", "SRAM is faster but more expensive and less dense.", "Fast SRAM suits cache.", "Cheaper, denser DRAM suits large-capacity main memory."] },
+    }),
+    hardwareUnit({
+      unitKey: "S3.07-PROM-EPROM-EEPROM",
+      syllabusId: "S3.07",
+      heading: "PROM, EPROM and EEPROM",
+      objectiveIds: s307,
+      explanation: [
+        "PROM is supplied blank and can be programmed once. EPROM can be erased using ultraviolet light and then reprogrammed, normally after removal from the system.",
+        "EEPROM can be erased and reprogrammed electrically, often while it remains in the system. All three are non-volatile ROM technologies, but their erase and rewrite methods differ.",
+      ],
+      materials: [hardwareVisual("PROM, EPROM and EEPROM", "prom-eprom-eeprom", ["PROM is programmed once.", "EPROM is erased using ultraviolet light and can then be reprogrammed.", "EEPROM is erased and reprogrammed electrically."], "An ImageGen comparison of the programming and erasing methods for PROM, EPROM and EEPROM.")],
+      misconceptions: ["PROM, EPROM and EEPROM are not interchangeable names: their programming and erasing methods are different."],
+      masteryCheck: { marks: 3, prompt: "Explain the difference between PROM, EPROM and EEPROM.", answerCriteria: ["PROM can be programmed once.", "EPROM is erased using ultraviolet light before reprogramming.", "EEPROM is erased and reprogrammed electrically."] },
+    }),
+  ];
+}
+
+function makeLesson016Units() {
+  const s308 = objectiveRows("S3.08").map(([id]) => id);
+  const s309 = objectiveRows("S3.09").map(([id]) => id);
+  return [
+    hardwareUnit({
+      unitKey: "S3.08-MONITORING-CONTROL",
+      syllabusId: "S3.08",
+      heading: "Monitoring and control systems compared",
+      objectiveIds: [s308[0], s308[1]],
+      explanation: [
+        "A monitoring system uses sensors to collect data for recording, display or an alert. It reports the measured condition and does not necessarily change it.",
+        "A control system uses sensor data and a stored rule or target to decide an output. It sends an output signal to an actuator, which changes the physical condition.",
+      ],
+      materials: [hardwareVisual("Monitoring and control", "monitoring-control-comparison", ["Monitoring measures and reports a physical condition.", "Control compares a reading with a target and drives an actuator.", "Sensing alone is not control because no corrective physical action is produced."], "An ImageGen two-lane comparison of a monitoring system and a control system, showing that only the control lane includes an actuator and physical change.")],
+      misconceptions: ["A system does not become a control system merely because it uses a sensor; it must use the data to cause a physical change."],
+      masteryCheck: { marks: 4, prompt: "Compare a monitoring system with a control system.", answerCriteria: ["Both systems obtain data from sensors.", "Monitoring records, displays or alerts about the measured condition.", "Control compares the reading with a stored rule or target.", "Control sends an output to an actuator to change the physical condition."] },
+    }),
+    hardwareUnit({
+      unitKey: "S3.09-NAMED-SENSORS",
+      syllabusId: "S3.09",
+      heading: "Named sensors and their uses",
+      objectiveIds: [s309[0]],
+      explanation: [
+        "Select a sensor by matching the physical quantity it detects to the data required by the system. The official syllabus names temperature, pressure, infra-red and sound sensors.",
+      ],
+      materials: [{
+        type: "list",
+        title: "CIE-named sensors",
+        preserveText: true,
+        items: [
+          ["Temperature sensor", "Measures temperature; for example, greenhouse or heating-system monitoring."],
+          ["Pressure sensor", "Measures pressure or applied force; for example, tyre-pressure monitoring or a pressure mat."],
+          ["Infra-red sensor", "Detects infra-red radiation; for example, a remote-control receiver or beam alarm."],
+          ["Sound sensor", "Detects sound waves or sound level; for example, a noise-monitoring system."],
+        ],
+      }],
+      misconceptions: ["A sensor supplies an input signal representing a physical property; it does not decide the response or perform the corrective action."],
+      masteryCheck: { marks: 4, prompt: "State the physical quantity detected by each named sensor and give one appropriate use of each.", answerCriteria: ["A temperature sensor measures temperature, for example in a greenhouse.", "A pressure sensor measures pressure or force, for example in a tyre or pressure mat.", "An infra-red sensor detects infra-red radiation, for example in a remote-control receiver or beam alarm.", "A sound sensor detects sound waves or level, for example in noise monitoring."] },
+    }),
+    hardwareUnit({
+      unitKey: "S3.09-SENSOR-ACTUATOR-FLOW",
+      syllabusId: "S3.09",
+      heading: "How sensors, a microprocessor and actuators form a control system",
+      objectiveIds: [s309[1]],
+      explanation: [
+        "A sensor measures a physical condition and sends a signal representing the reading. If the signal is analogue, an ADC converts it into digital data before a microprocessor can process it.",
+        "The microprocessor compares the reading with a stored target or rule and sends an output signal to an actuator. The actuator converts that signal into a physical action, such as operating a motor, heater, valve or alarm.",
+      ],
+      materials: [hardwareVisual("Sensor, microprocessor and actuator flow", "control-system-feedback", ["The sensor supplies a reading to the microprocessor or controller.", "The reading is compared with a target.", "An output signal drives an actuator, which changes the physical condition."], "An ImageGen closed-loop control diagram linking a physical condition, sensor reading, microprocessor or controller, output signal, actuator and changed condition.")],
+      misconceptions: ["The actuator does not choose the action; the controller decides the output and the actuator produces the physical effect."],
+      masteryCheck: { marks: 5, prompt: "Describe how a sensor, microprocessor and actuator work together in a control system.", answerCriteria: ["The sensor measures a physical condition.", "The reading is converted to digital data if necessary.", "The microprocessor compares the reading with a stored target or rule.", "The microprocessor sends an output signal to an actuator.", "The actuator produces a physical action that changes the condition."] },
+    }),
+    hardwareUnit({
+      unitKey: "S3.08-FEEDBACK",
+      syllabusId: "S3.08",
+      heading: "The importance of feedback",
+      objectiveIds: [s308[2]],
+      explanation: [
+        "Feedback is a new sensor reading obtained after an actuator has changed the physical condition. It tells the controller the actual effect of the previous output rather than assuming that the required change occurred.",
+        "By repeatedly comparing new readings with the target, the controller can continue, adjust or stop the actuator. Without feedback, a disturbance or an ineffective actuator could leave the condition away from the target with no automatic correction.",
+      ],
+      materials: [{
+        type: "flow",
+        title: "Why feedback matters",
+        preserveText: true,
+        steps: [
+          ["Measure again", "Obtain a new sensor reading after the actuator changes the condition."],
+          ["Compare with target", "Use the new reading to find the remaining difference from the target."],
+          ["Correct or stop", "Change the output or stop the actuator according to that difference."],
+          ["Repeat", "Continue the cycle so disturbances and incomplete actions can be corrected."],
+        ],
+      }],
+      misconceptions: ["Feedback is the new information returned to the controller; it is not simply the output signal sent to the actuator."],
+      masteryCheck: { marks: 4, prompt: "Explain why feedback is important in a closed-loop temperature-control system.", answerCriteria: ["A new sensor reading reports the actual temperature after the action.", "The controller compares the new reading with the target.", "The output can be adjusted or stopped as the target is approached.", "Disturbances or incomplete changes can be detected and corrected."] },
+    }),
+  ];
+}
+
+const authoredPracticeQuestion = ({ id, type, prompt, objectiveIds, answerPoints, commonError }) => ({
+  id,
+  type,
+  marks: answerPoints.length,
+  prompt,
+  objectiveIds,
+  answerPoints,
+  commonError,
+});
+
+function makeLesson013Practice() {
+  const s301 = objectiveRows("S3.01").map(([id]) => id);
+  const s302 = objectiveRows("S3.02").map(([id]) => id);
+  return [
+    authoredPracticeQuestion({ id: "V3-013-S3.01-ROLES", type: "Retrieval", prompt: "Explain why a computer system needs input, output, primary memory and secondary storage, including removable storage.", objectiveIds: s301, answerPoints: ["Input devices supply data and instructions.", "Output devices communicate processed information or cause an action.", "Primary memory holds instructions and data required during current processing.", "Secondary storage retains programs and data when power is removed.", "Removable storage can transfer data or hold an offline copy."], commonError: "Do not place embedded-system, microcontroller or control-system detail in this component-role answer." }),
+    authoredPracticeQuestion({ id: "V3-013-S3.02-STRUCTURE", type: "Application", prompt: "A washing machine contains an embedded controller. Describe why it is an embedded system and how input, processing, memory and output support its dedicated function.", objectiveIds: [s302[0]], answerPoints: ["The controller is built into the larger washing machine.", "It performs a dedicated washing-control function.", "Inputs provide data such as a selected program or sensor reading.", "The controller executes stored instructions and produces outputs such as operating the motor or valve."], commonError: "Do not identify the system only by its size; link it to the larger device and dedicated function." }),
+    authoredPracticeQuestion({ id: "V3-013-S3.02-TRADEOFFS", type: "Exam-style", prompt: "Explain two benefits and two drawbacks of using an embedded system in a washing machine.", objectiveIds: [s302[1], s302[2]], answerPoints: ["Dedicated hardware and software can be optimised for the washing functions.", "A compact mass-produced design can reduce power use, size or unit cost.", "Limited processing, memory or interfaces make unrelated new functions difficult to add.", "A failed or obsolete controller can require specialist repair or replacement of part of the larger appliance."], commonError: "Link every benefit and drawback to the stated appliance rather than listing unsupported adjectives." }),
+  ];
+}
+
+function makeLesson014Practice() {
+  const ids = objectiveRows("S3.03").map(([id]) => id);
+  const commonError = "Give the internal conversion or physical mechanism in order; naming only the input and output is insufficient.";
+  return [
+    authoredPracticeQuestion({ id: "V3-014-S3.03-LASER", type: "Retrieval", prompt: "Describe the principal operation of a laser printer.", objectiveIds: [ids[0]], answerPoints: ["A photosensitive drum is given an electrostatic charge.", "A laser creates a charge pattern representing the page.", "Toner adheres to the required areas of the drum.", "The toner transfers to paper.", "Heated pressure rollers fuse the toner to the paper."], commonError }),
+    authoredPracticeQuestion({ id: "V3-014-S3.03-3D", type: "Application", prompt: "Describe how a 3D printer produces a physical model from digital data.", objectiveIds: [ids[1]], answerPoints: ["Software slices the digital model into layers.", "The printer follows the data for one layer at a time.", "Material is deposited or solidified at the required positions.", "Successive layers bond or solidify to form the object."], commonError }),
+    authoredPracticeQuestion({ id: "V3-014-S3.03-MICROPHONE", type: "Retrieval", prompt: "Describe how a microphone and an ADC produce binary sound data.", objectiveIds: [ids[2]], answerPoints: ["Sound waves vibrate the diaphragm.", "A transducer produces a varying analogue electrical signal.", "An ADC samples and quantises the signal.", "The sample values are encoded as binary data."], commonError }),
+    authoredPracticeQuestion({ id: "V3-014-S3.03-SPEAKERS", type: "Application", prompt: "Describe how speakers convert binary sound data into sound waves.", objectiveIds: [ids[3]], answerPoints: ["A DAC converts binary sample values into an analogue signal.", "An amplifier supplies sufficient current to the speaker.", "The signal produces a changing magnetic field in the voice coil.", "The coil and attached cone move.", "The cone vibrates the air to produce sound waves."], commonError }),
+    authoredPracticeQuestion({ id: "V3-014-S3.03-HDD", type: "Retrieval", prompt: "Describe how a magnetic hard disk writes and reads data.", objectiveIds: [ids[4]], answerPoints: ["Magnetic platters rotate.", "An actuator positions the read/write head over the required track.", "The required sector passes beneath the head.", "Writing changes magnetic orientation to represent bits.", "Reading senses the magnetic pattern and decodes it as binary data."], commonError }),
+    authoredPracticeQuestion({ id: "V3-014-S3.03-FLASH", type: "Application", prompt: "Describe how solid-state flash memory stores and reads data.", objectiveIds: [ids[5]], answerPoints: ["Floating-gate transistor cells store charge.", "Stored charge changes a cell's threshold behaviour and represents data.", "The controller applies voltages to program or erase cells.", "The controller detects the charge state when reading."], commonError }),
+    authoredPracticeQuestion({ id: "V3-014-S3.03-OPTICAL", type: "Retrieval", prompt: "Describe how an optical disc reader/writer reads data and writes to a recordable disc.", objectiveIds: [ids[6]], answerPoints: ["The drive spins the disc and focuses a laser on a track.", "A low-power laser is used when reading.", "A detector senses differences in reflected light and the controller decodes them as binary data.", "A higher-power laser changes areas of the recording layer when writing."], commonError }),
+    authoredPracticeQuestion({ id: "V3-014-S3.03-TOUCHSCREEN", type: "Application", prompt: "Describe how a capacitive touchscreen detects the position of a touch.", objectiveIds: [ids[7]], answerPoints: ["The screen maintains an electric field across an electrode grid.", "A finger changes the local capacitance or electric field.", "The grid detects the change at its electrodes.", "The controller calculates the touch coordinates."], commonError }),
+    authoredPracticeQuestion({ id: "V3-014-S3.03-VR", type: "Exam-style", prompt: "Describe how a virtual-reality headset responds when a user turns their head.", objectiveIds: [ids[8]], answerPoints: ["Motion and orientation sensors detect the head movement.", "The sensor data is sent to the computer.", "The computer updates the rendered viewpoint.", "A separate image is displayed for each eye.", "The updated scene appears to follow the movement."], commonError }),
+  ];
+}
+
+function makeLesson015Practice() {
+  const s304 = objectiveRows("S3.04").map(([id]) => id);
+  const s305 = objectiveRows("S3.05").map(([id]) => id);
+  const s306 = objectiveRows("S3.06").map(([id]) => id);
+  const s307 = objectiveRows("S3.07").map(([id]) => id);
+  return [
+    authoredPracticeQuestion({ id: "V3-015-S3.04-BUFFER", type: "Application", prompt: "Explain what a device driver and a buffer do, then explain why a print queue, driver and buffer are used together.", objectiveIds: s304, answerPoints: ["The driver translates operating-system requests into printer-specific commands.", "The buffer temporarily stores data during transfer.", "The queue preserves the order of waiting print jobs.", "The printer consumes the buffered data at its own rate while the processor continues other work."], commonError: "Do not claim that a buffer makes the printer's long-term operating speed faster." }),
+    authoredPracticeQuestion({ id: "V3-015-S3.05-RAM-ROM", type: "Retrieval", prompt: "Explain two differences between RAM and ROM and give one use of each.", objectiveIds: s305, answerPoints: ["RAM is normally volatile whereas ROM is non-volatile.", "RAM is read/write working memory whereas ROM is normally read during operation.", "RAM holds active programs and data.", "ROM holds persistent firmware or start-up instructions."], commonError: "Do not introduce SRAM and DRAM when the question asks only for RAM and ROM." }),
+    authoredPracticeQuestion({ id: "V3-015-S3.06-COMPARE", type: "Exam-style", prompt: "Compare SRAM and DRAM and explain why each is used for a different primary-memory role.", objectiveIds: s306, answerPoints: ["SRAM stores bits in flip-flop circuits whereas DRAM stores charge in capacitors.", "SRAM does not require refresh whereas DRAM requires periodic refresh.", "SRAM is faster but more expensive and less dense.", "SRAM is used for cache because fast access is required.", "DRAM is used for main memory because lower cost and greater density support large capacity."], commonError: "Do not confuse SRAM with solid-state flash storage." }),
+    authoredPracticeQuestion({ id: "V3-015-S3.07-ROM-TYPES", type: "Retrieval", prompt: "Explain the difference between PROM, EPROM and EEPROM.", objectiveIds: s307, answerPoints: ["PROM can be programmed once.", "EPROM is erased using ultraviolet light before it can be reprogrammed.", "EEPROM is erased and reprogrammed electrically."], commonError: "State the different erase or rewrite method for each memory type." }),
+  ];
+}
+
+function makeLesson016Practice() {
+  const s308 = objectiveRows("S3.08").map(([id]) => id);
+  const s309 = objectiveRows("S3.09").map(([id]) => id);
+  return [
+    authoredPracticeQuestion({ id: "V3-016-S3.08-COMPARE", type: "Retrieval", prompt: "Compare a monitoring system with a control system.", objectiveIds: [s308[0], s308[1]], answerPoints: ["Both can obtain data from sensors.", "Monitoring records, displays or alerts about measured data.", "Control compares a reading with a stored rule or target.", "Control sends an output to an actuator to change the physical condition."], commonError: "Do not call a system control when it only measures and reports data." }),
+    authoredPracticeQuestion({ id: "V3-016-S3.09-SENSORS", type: "Application", prompt: "Identify an appropriate named sensor for each of these uses and explain the match: greenhouse temperature, tyre pressure, remote-control signal and classroom noise level.", objectiveIds: [s309[0]], answerPoints: ["A temperature sensor measures the greenhouse temperature.", "A pressure sensor measures the tyre pressure.", "An infra-red sensor detects the remote-control radiation.", "A sound sensor detects the classroom sound level."], commonError: "Use the four sensor types named in the official syllabus and match each to the physical quantity detected." }),
+    authoredPracticeQuestion({ id: "V3-016-S3.09-ACTUATOR", type: "Application", prompt: "Describe how a temperature sensor, microprocessor and heater actuator work together in a control system.", objectiveIds: [s309[1]], answerPoints: ["The sensor measures temperature and sends a signal representing the reading.", "The signal is converted to digital data if necessary.", "The microprocessor compares the reading with the target.", "The microprocessor sends an output signal to the heater actuator.", "The actuator changes the physical temperature."], commonError: "The sensor measures, the microprocessor decides and the actuator acts; do not swap these roles." }),
+    authoredPracticeQuestion({ id: "V3-016-S3.08-FEEDBACK", type: "Exam-style", prompt: "Explain why feedback is important in a closed-loop temperature-control system.", objectiveIds: [s308[2]], answerPoints: ["A new sensor reading reports the actual temperature after the actuator operates.", "The controller compares the new reading with the target.", "The output can be continued, adjusted or stopped according to the remaining difference.", "Disturbances or incomplete changes can be detected and corrected."], commonError: "Feedback is the new sensor information returned to the controller, not the output sent to the actuator." }),
+    authoredPracticeQuestion({ id: "V3-016-INTEGRATED-GREENHOUSE", type: "Exam-style", prompt: "A greenhouse records temperature and automatically opens a vent. Explain the monitoring function, the control function and the feedback cycle.", objectiveIds: [...s308, ...s309], answerPoints: ["Monitoring records, displays or alerts using temperature readings.", "The controller compares a temperature reading with the target or rule.", "It sends an output signal to the vent-motor actuator when a physical change is required.", "The actuator opens or closes the vent.", "New temperature readings provide feedback so the controller can adjust or stop the action."], commonError: "Separate reporting from corrective action, then state how a new reading closes the loop." }),
+  ];
+}
+
 function selectExplanations(lesson, point) {
   const override = specialTeaching[point.id] ?? teachingDepthOverrides[`${String(lesson.lesson).padStart(3, "0")}:${point.id}`];
   if (override?.explanations?.length) return override.explanations.map(clean).filter(Boolean);
@@ -1604,17 +2051,18 @@ function makeLessonSummary(units) {
 function transformTeachingLesson(sourceLesson, sectionPosition) {
   const lessonOverride = lessonPresentationOverrides[sourceLesson.id] ?? {};
   const allObjectives = sourceLesson.knowledgePoints.flatMap((point) => objectiveRows(point.id));
-  const units = sourceLesson.id === "002"
-    ? makeLesson002Units()
-    : sourceLesson.id === "003"
-      ? makeLesson003Units()
-      : sourceLesson.id === "004"
-        ? makeLesson004Units()
-        : sourceLesson.id === "005"
-          ? makeLesson005Units()
-          : sourceLesson.id === "006"
-            ? makeLesson006Units()
-      : sourceLesson.knowledgePoints.map((point, index) => {
+  const unitFactory = {
+    "002": makeLesson002Units,
+    "003": makeLesson003Units,
+    "004": makeLesson004Units,
+    "005": makeLesson005Units,
+    "006": makeLesson006Units,
+    "013": makeLesson013Units,
+    "014": makeLesson014Units,
+    "015": makeLesson015Units,
+    "016": makeLesson016Units,
+  }[sourceLesson.id];
+  const units = unitFactory ? unitFactory() : sourceLesson.knowledgePoints.map((point, index) => {
     const objectives = objectiveRows(point.id);
     const objectiveIds = objectives.map(([id]) => id);
     const override = specialTeaching[point.id] ?? teachingDepthOverrides[`${String(sourceLesson.lesson).padStart(3, "0")}:${point.id}`] ?? {};
@@ -1636,7 +2084,13 @@ function transformTeachingLesson(sourceLesson, sectionPosition) {
       masteryCheck: override.masteryCheck ?? point.masteryCheck,
     };
   });
-  const practice = makePractice(sourceLesson, allObjectives, units);
+  const practiceFactory = {
+    "013": makeLesson013Practice,
+    "014": makeLesson014Practice,
+    "015": makeLesson015Practice,
+    "016": makeLesson016Practice,
+  }[sourceLesson.id];
+  const practice = practiceFactory ? practiceFactory() : makePractice(sourceLesson, allObjectives, units);
   return {
     kind: "teaching",
     originalLesson: sourceLesson.lesson,
@@ -1647,6 +2101,7 @@ function transformTeachingLesson(sourceLesson, sectionPosition) {
     title: lessonOverride.title ?? sourceLesson.title,
     subtitle: lessonOverride.subtitle ?? clean(sourceLesson.focus === "integrated-review" ? sourceLesson.title : sourceLesson.learningObjectives.join(" · ")),
     guidingQuestion: lessonOverride.guidingQuestion ?? clean(sourceLesson.prerequisitePrompt || `How would you explain and apply ${sourceLesson.title.toLowerCase()} in a new scenario?`),
+    examQuestionCount: lessonOverride.examQuestionCount,
     diagnostic: {
       prompt: clean(sourceLesson.prerequisitePrompt || `State one fact you already know about ${sourceLesson.title.toLowerCase()}.`),
       answer: sourceLesson.prerequisiteKnowledge?.length ? clean(sourceLesson.prerequisiteKnowledge[0]) : clean(sourceLesson.coreFacts[0]),

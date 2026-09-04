@@ -101,7 +101,7 @@ check(contract.schemaVersion === 5 && contract.lessons.length === 93, "Generated
 check(courseV3Lessons.filter((lesson) => lesson.kind === "teaching").every((lesson) => lesson.units.length > 0), "Every teaching lesson must contain at least one knowledge unit");
 const practiceQuestionCount = courseV3Lessons.flatMap((lesson) => lesson.practice).length;
 check(courseV3Lessons.every((lesson) => lesson.practice.length >= 3), "Every lesson must contain at least three practice questions");
-check(courseV3Meta.examStyleQuestionCount === 279, `Expected 279 exam-style questions, found ${courseV3Meta.examStyleQuestionCount}`);
+check(courseV3Meta.examStyleQuestionCount === 285, `Expected 285 exam-style questions, found ${courseV3Meta.examStyleQuestionCount}`);
 check(courseV3KnowledgeDiagramRecords.length > 0, "Knowledge-diagram registry is empty");
 
 const officialOrder = Object.keys(officialAsMapping);
@@ -176,6 +176,7 @@ for (const lesson of courseV3Lessons) {
     for (const material of unitMaterials(unit)) {
       check(material.objectiveIds?.length > 0 || lesson.kind === "review", `${unitLabel}: ${material.title} has no objective mapping`);
       if (material.type === "table") check(material.headers.length >= 2 && material.rows.length >= 1, `${unitLabel}: empty comparison table`);
+      if (material.type === "list") check(material.items.length >= 2 && material.items.every((item) => item.length === 2), `${unitLabel}: structured list is empty or malformed`);
       if (material.type === "flow") check(material.steps.length >= 2, `${unitLabel}: method has fewer than two steps`);
       if (material.type === "worked-example") {
         check(material.steps.length >= 2, `${unitLabel}: worked example has fewer than two steps`);
@@ -258,7 +259,7 @@ for (const lesson of courseV3Lessons) {
   }
 }
 check(commandWordCount === practiceQuestionCount, `Expected ${practiceQuestionCount} classified questions, found ${commandWordCount}`);
-check(examStyleQuestionCount === 279, `Expected 279 classified exam-style questions, found ${examStyleQuestionCount}`);
+check(examStyleQuestionCount === 285, `Expected 285 classified exam-style questions, found ${examStyleQuestionCount}`);
 
 const missingLeadVisuals = courseV3Lessons.filter((lesson) => lesson.kind === "teaching").flatMap((lesson) => lesson.units.filter((unit) => !unit.leadVisual).map((unit) => `${lesson.lessonKey}:${unit.heading}`));
 check(missingLeadVisuals.length === 0, `Teaching units lack a lead visual: ${missingLeadVisuals.join(" | ")}`);
@@ -320,6 +321,39 @@ const lesson014 = checkUnitAssetSequence(14, [null, "subnetting.png", "public-pr
 const urlDnsUnitText = JSON.stringify({ leadVisual: lesson014?.units[4]?.leadVisual, coreExplanation: lesson014?.units[4]?.coreExplanation, method: lesson014?.units[4]?.method });
 for (const term of ["protocol", "domain name", "web page or file name", "domain name service", "dns"]) check(urlDnsUnitText.toLowerCase().includes(term), `L014 URL/DNS teaching is missing ${term}`);
 check(!/\bscheme\b|query parameter|fragment identifier/i.test(urlDnsUnitText), "L014 URL teaching still uses terminology outside the selected Cambridge wording");
+
+const lesson015 = checkUnitAssetSequence(15, ["stage10-lesson-028-components.jpg", "embedded-system-structure.png", null]);
+const lesson015RolesCore = lesson015?.units[0]?.coreExplanation.join(" ") ?? "";
+check(!/embedded system|microcontroller|control system/i.test(lesson015RolesCore), "L015 component-role core still contains embedded, microcontroller or control-system teaching");
+check(lesson015?.units[2]?.leadVisual?.type === "table" && lesson015.units[2].leadVisual.rows.length >= 4, "L015 embedded benefits and drawbacks must use a structured comparison table");
+check(lesson015?.units[2]?.coreExplanation.every((paragraph) => words(paragraph).length <= 45), "L015 embedded trade-off core explanation is still an oversized prose block");
+
+const lesson016 = checkUnitAssetSequence(16, ["laser-printer-operation.png", "3d-printer-operation.png", "microphone-operation.png", "speakers-operation.png", "magnetic-hard-disk-operation.png", "solid-state-flash-memory-operation.png", "optical-disc-reader-writer-operation.png", "capacitive-touchscreen-operation.png", "virtual-reality-headset-operation.png"]);
+check(lesson016?.practice.length === 9, "L016 must contain one independently mapped practice question for each hardware device");
+check(lesson016?.examStyleQuestions.length === 9, "L016 must contain one independently mapped exam-style question for each hardware device");
+const lesson016FlashQuestion = lesson016?.examStyleQuestions.find((question) => question.id === "S3-L02-EXAM-6");
+check(lesson016FlashQuestion?.commandWord === "Describe" && /^Describe\b/.test(lesson016FlashQuestion?.task ?? ""), "L016 flash-memory exam task must begin with and render the command word Describe");
+for (let index = 0; index < 9; index += 1) {
+  const objectiveId = `S3.03.A${String(index + 1).padStart(2, "0")}`;
+  check(JSON.stringify(lesson016?.units[index]?.objectiveIds) === JSON.stringify([objectiveId]), `L016 unit ${index + 1} must map only to ${objectiveId}`);
+  check(lesson016?.practice.some((question) => question.objectiveIds.length === 1 && question.objectiveIds[0] === objectiveId), `L016 practice is missing an independent ${objectiveId} question`);
+  check(lesson016?.examStyleQuestions.some((question) => question.objectiveIds.length === 1 && question.objectiveIds[0] === objectiveId), `L016 exam-style questions are missing independent coverage of ${objectiveId}`);
+}
+check(!/device-principles\.png/.test(JSON.stringify(lesson016)), "L016 still uses the rejected all-devices-in-one visual");
+
+const lesson017 = checkUnitAssetSequence(17, ["stage10-lesson-054-device.jpg", "stage10-lesson-031-ram-rom.jpg", "sram-dram.png", "prom-eprom-eeprom.png"]);
+const driverBufferCore = lesson017?.units[0]?.coreExplanation.join(" ") ?? "";
+check(driverBufferCore.indexOf("A device driver") >= 0 && driverBufferCore.indexOf("A buffer") > driverBufferCore.indexOf("A device driver") && driverBufferCore.indexOf("For a print job") > driverBufferCore.indexOf("A buffer"), "L017 must define driver and buffer before explaining how they work together");
+check(!/SRAM|DRAM|flip-flop|capacitor/i.test(lesson017?.units[1]?.coreExplanation.join(" ") ?? ""), "L017 RAM/ROM core still contains SRAM/DRAM teaching");
+check(/SRAM.*DRAM|DRAM.*SRAM/i.test(lesson017?.units[2]?.coreExplanation.join(" ") ?? ""), "L017 SRAM/DRAM comparison is missing from its own unit");
+
+const lesson018 = checkUnitAssetSequence(18, ["monitoring-control-comparison.png", null, "control-system-feedback.png", null]);
+check(lesson018?.units[1]?.leadVisual?.type === "list", "L018 named sensors must render as a structured list");
+check(JSON.stringify(lesson018?.units[1]?.leadVisual?.items.map(([name]) => name)) === JSON.stringify(["Temperature sensor", "Pressure sensor", "Infra-red sensor", "Sound sensor"]), "L018 sensor list must contain exactly the four sensor types named by the official syllabus");
+check(!/light[- ]intensity sensor/i.test(JSON.stringify(lesson018)), "L018 still includes the out-of-scope light-intensity sensor");
+check(/monitoring system/i.test(lesson018?.units[0]?.coreExplanation.join(" ") ?? "") && /control system/i.test(lesson018?.units[0]?.coreExplanation.join(" ") ?? ""), "L018 monitoring/control comparison is incomplete");
+check(/new sensor reading/i.test(lesson018?.units[3]?.coreExplanation.join(" ") ?? "") && /adjust or stop/i.test(lesson018?.units[3]?.coreExplanation.join(" ") ?? ""), "L018 importance-of-feedback teaching is incomplete");
+check(!/State feedback|Identify named sensor detects/i.test(JSON.stringify({ practice: lesson018?.practice, exam: lesson018?.examStyleQuestions })), "L018 still contains malformed question wording");
 
 const s109Lessons = courseV3Lessons.filter((lesson) => lesson.syllabusIds.includes("S1.09"));
 const s109 = s109Lessons.flatMap((lesson) => lesson.units).find((unit) => unitCovers(unit, "S1.09"));
