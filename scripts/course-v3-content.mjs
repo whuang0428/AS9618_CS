@@ -5,7 +5,12 @@ import { fileURLToPath } from "node:url";
 import { officialAsMapping } from "./syllabus-official-as-mapping.mjs";
 import { teachingDepthOverrides, questionRepairs } from "./course-v2-teaching-depth-overrides.mjs";
 import { section2Lessons } from "./course-v3-section2-content.mjs";
+import { section1Practice, enhanceSection1Units } from "./course-v3-section1-content.mjs";
 import { finaliseLessonPresentation } from "./course-v3-presentation.mjs";
+import { authorSection3Lesson } from "./course-v3-section3-content.mjs";
+import { authorSection4Lesson } from "./course-v3-section4-content.mjs";
+import { authorSection6Lesson } from "./course-v3-section6-content.mjs";
+import { authorSection5Lesson } from "./course-v3-section5-content.mjs";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const v2 = JSON.parse(readFileSync(join(root, "scripts", "course-v2-content.json"), "utf8"));
@@ -59,6 +64,18 @@ const questionById = new Map(questionBank.questions.map((question) => [question.
 const officialPastPaperAccess = "https://www.cambridgeinternational.org/programmes-and-qualifications/cambridge-international-as-and-a-level-computer-science-9618/past-papers/";
 
 const lessonPresentationOverrides = Object.freeze({
+  "001": {
+    title: "Binary data units and magnitude prefixes",
+    subtitle: "Distinguish decimal and binary prefixes and calculate the same capacity in different units.",
+    guidingQuestion: "Why can one file have different numerical sizes in MB and MiB?",
+    summaryMode: "authored",
+    summary: [
+      ["Decimal prefixes", "kilo, mega, giga and tera use 10³, 10⁶, 10⁹ and 10¹²."],
+      ["Binary prefixes", "kibi, mebi, gibi and tebi use 2¹⁰, 2²⁰, 2³⁰ and 2⁴⁰."],
+      ["Convert a capacity", "Multiply by bytes per unit to obtain bytes; divide by bytes per target unit to change units."],
+      ["Symbols matter", "B means byte and b means bit; 1 byte = 8 bits. MB and MiB use different multipliers."],
+    ],
+  },
   "002": {
     title: "Binary, denary, hexadecimal, BCD and signed representations",
     subtitle: "Understand each number system or representation separately, then convert between them.",
@@ -75,14 +92,14 @@ const lessonPresentationOverrides = Object.freeze({
     ],
   },
   "003": {
-    title: "Unsigned binary addition, overflow and signed extension",
-    subtitle: "Perform unsigned binary addition and subtraction. · Explain overflow in fixed-width arithmetic. · Extend the method to signed binary integers.",
-    guidingQuestion: "How does unsigned binary arithmetic work, when does it overflow, and how is the same fixed-width method extended to signed integers?",
+    title: "Binary addition, subtraction and overflow",
+    subtitle: "Calculate with unsigned and signed binary integers and check each result against its representable range.",
+    guidingQuestion: "How do the bit width and signed representation determine whether an arithmetic result is valid?",
     summaryMode: "authored",
     summary: [
-      ["Unsigned addition", "Align bits and carry to the left."],
-      ["Overflow", "Check the representable fixed-width range."],
-      ["Signed extension", "Encode negatives, calculate, then interpret."],
+      ["Unsigned arithmetic", "Add with carries; subtract with borrowing. Eight unsigned bits represent 0 to 255."],
+      ["Signed arithmetic", "Encode negative operands in two's complement. Subtract B by adding its negation at the same width."],
+      ["Overflow", "Compare the exact result with the range: −128 to +127 for eight-bit two's complement. Carry out alone is not the signed overflow test."],
     ],
   },
   "004": {
@@ -149,7 +166,7 @@ const lessonPresentationOverrides = Object.freeze({
     summary: [
       ["Laser printer", "Charge, expose, develop, transfer and fuse."],
       ["3D printer", "Slice a model and build successive material layers."],
-      ["Sound devices", "A microphone digitises sound; speakers recreate sound."],
+      ["Sound devices", "A microphone produces an analogue signal; an ADC digitises it. A speaker turns an electrical signal into sound."],
       ["Storage devices", "Magnetic, flash and optical media store bits by different physical states."],
       ["Interactive devices", "A touchscreen locates touch; a VR headset tracks movement and updates its view."],
     ],
@@ -480,7 +497,7 @@ const objectiveExpansions = Object.freeze({
   ],
   "S1.04": [
     "Perform unsigned binary addition and subtraction at a stated width.",
-    "Extend binary addition and subtraction to positive and negative fixed-width integers.",
+    "Perform binary addition and subtraction with positive and negative fixed-width integers.",
   ],
   "S1.05": ["Explain how overflow occurs in fixed-width binary arithmetic."],
   "S1.06": [
@@ -922,9 +939,9 @@ function makeLesson003Units() {
       masteryCheck: { marks: 3, prompt: "Explain whether unsigned 8-bit addition overflows for 11111100 + 00000101.", answerCriteria: ["State the unsigned 8-bit range 0 to 255.", "Give the true sum 257 and the nine-bit result 1 00000001.", "Conclude that overflow occurs because 257 is outside the range."] },
     }),
     unit({
-      unitKey: "S1.04-SIGNED-EXTENSION",
+      unitKey: "S1.04-SIGNED",
       syllabusId: "S1.04",
-      heading: "Extension: signed binary addition and subtraction",
+      heading: "Signed binary addition and subtraction",
       objectiveIds: [s104Objectives[1]],
       explanation: [
         "Signed arithmetic extends the same fixed-width column addition method to positive and negative integers. Encode every negative operand in the stated signed representation before calculating.",
@@ -933,7 +950,7 @@ function makeLesson003Units() {
       ],
       materials: [
         { type: "table", title: "Signed two's-complement addition", headers: ["Operand or result", "8-bit pattern", "Meaning"], rows: [["+5", "00000101", "positive operand"], ["−3", "11111101", "two's-complement operand"], ["retained sum", "00000010", "+2"]] },
-        { type: "flow", title: "Extend the method to signed integers", steps: [["Fix the width", "Use the same number of bits for every operand and result."], ["Encode negative operands", "Apply the stated signed representation before addition."], ["Add every column", "Use ordinary binary addition and discard a carry beyond the width."], ["Interpret and range-check", "Decode the retained signed result and compare it with the signed limits."]] },
+        { type: "flow", title: "Calculate with signed integers", steps: [["Fix the width", "Use the same number of bits for every operand and result."], ["Encode negative operands", "Apply the stated signed representation before addition."], ["Add every column", "Use ordinary binary addition and discard a carry beyond the width."], ["Interpret and range-check", "Decode the retained signed result and compare it with the signed limits."]] },
         {
           type: "worked-example",
           title: "Calculate +5 + (−3) in 8-bit two's complement",
@@ -1649,7 +1666,7 @@ function makeLesson014Units() {
     device(1, "S3.03-3D-PRINTER", "3D printer", "3d-printer-operation", [
       "Software divides a digital three-dimensional model into thin layers. The printer follows the data for one layer at a time and deposits or solidifies material at the required positions.",
       "The print head or build platform moves between layers. Successive layers bond or solidify until they form the physical object.",
-    ], ["Start with a digital three-dimensional model.", "Slice the model into layers.", "Deposit or solidify material and build successive layers."], "A 3D printer uses an additive layer-by-layer process; it does not print one complete solid layer in a single step.", { marks: 4, prompt: "Describe how a 3D printer produces a physical object from a digital model.", answerCriteria: ["Software slices the digital model into layers.", "The printer follows the data for one layer at a time.", "Material is deposited or solidified at the required positions.", "Successive layers form the finished object."] }),
+    ], ["Start with a digital three-dimensional model.", "Slice the model into layers.", "Deposit or solidify material and build successive layers."], "A 3D printer forms successive layers. Some processes form a whole layer in one exposure; forming a layer does not complete the whole object.", { marks: 4, prompt: "Describe how a 3D printer produces a physical object from a digital model.", answerCriteria: ["Software slices the digital model into layers.", "The printer follows the data for one layer at a time.", "Material is deposited or solidified at the required positions.", "Successive layers form the finished object."] }),
     device(2, "S3.03-MICROPHONE", "Microphone", "microphone-operation", [
       "Sound waves make a diaphragm vibrate. A transducer converts these movements into a varying analogue electrical signal that represents the sound wave.",
       "For a computer to store or process the sound, an analogue-to-digital converter samples and quantises the signal and encodes the sample values as binary data.",
@@ -2062,7 +2079,7 @@ function transformTeachingLesson(sourceLesson, sectionPosition) {
     "015": makeLesson015Units,
     "016": makeLesson016Units,
   }[sourceLesson.id];
-  const units = unitFactory ? unitFactory() : sourceLesson.knowledgePoints.map((point, index) => {
+  let units = unitFactory ? unitFactory() : sourceLesson.knowledgePoints.map((point, index) => {
     const objectives = objectiveRows(point.id);
     const objectiveIds = objectives.map(([id]) => id);
     const override = specialTeaching[point.id] ?? teachingDepthOverrides[`${String(sourceLesson.lesson).padStart(3, "0")}:${point.id}`] ?? {};
@@ -2090,7 +2107,9 @@ function transformTeachingLesson(sourceLesson, sectionPosition) {
     "015": makeLesson015Practice,
     "016": makeLesson016Practice,
   }[sourceLesson.id];
-  const practice = practiceFactory ? practiceFactory() : makePractice(sourceLesson, allObjectives, units);
+  if (sourceLesson.section === 1) units = enhanceSection1Units(sourceLesson.id, units);
+  const practice = sourceLesson.section === 1 ? section1Practice[sourceLesson.id]
+    : practiceFactory ? practiceFactory() : makePractice(sourceLesson, allObjectives, units);
   return {
     kind: "teaching",
     originalLesson: sourceLesson.lesson,
@@ -2123,7 +2142,7 @@ function transformTeachingLesson(sourceLesson, sectionPosition) {
 }
 
 function transformSection2Lesson(lesson) {
-  return { ...lesson, kind: "teaching", paper: 1, section: 2, sectionTitle: sectionMeta[2].title, originalLesson: null };
+  return { ...lesson, summaryMode: "authored", kind: "teaching", paper: 1, section: 2, sectionTitle: sectionMeta[2].title, originalLesson: null };
 }
 
 function transformReviewLesson(sourceLesson) {
@@ -2240,7 +2259,7 @@ const rawCourse = [
   transformReviewLesson(v2.lessons.find((lesson) => lesson.lesson === 90)),
 ];
 
-export const courseV3Lessons = rawCourse.map((lesson, index) => finaliseLessonPresentation({
+export const courseV3Lessons = rawCourse.map(authorSection3Lesson).map(authorSection4Lesson).map(authorSection5Lesson).map(authorSection6Lesson).map((lesson, index) => finaliseLessonPresentation({
   ...lesson,
   sequenceIndex: index + 1,
   lessonKey: lesson.kind === "review" ? `REV-P${lesson.paper}` : `S${lesson.section}-L${String(rawCourse.slice(0, index + 1).filter((item) => item.section === lesson.section).length).padStart(2, "0")}`,

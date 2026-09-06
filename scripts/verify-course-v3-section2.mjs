@@ -4,18 +4,25 @@ import { existsSync, readFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
+import { courseV3Lessons } from "./course-v3-content.mjs";
+import { validateSection2Presentation, section2PresentationSelfTest } from "./course-v3-section2-checks.mjs";
 import { section2Lessons, section2Meta } from "./course-v3-section2-content.mjs";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const imageManifest = JSON.parse(readFileSync(join(root, "scripts", "course-v3-section2-imagegen-assets.json"), "utf8"));
 const expectedRequirements = Array.from({ length: 16 }, (_, index) => `S2.${String(index + 1).padStart(2, "0")}`);
-const allowedMaterialTypes = new Set(["analogy", "table", "cards", "flow", "topology-gallery", "reservoir", "address-demo", "url-demo"]);
+const allowedMaterialTypes = new Set(["analogy", "table", "cards", "flow", "topology-gallery", "reservoir", "address-demo", "url-demo", "worked-example"]);
 
 const fail = (condition, message) => { if (!condition) throw new Error(message); };
 const sha256 = (path) => createHash("sha256").update(readFileSync(path)).digest("hex");
 
 function pngDimensions(path) {
   const buffer = readFileSync(path);
+  if (path.endsWith("topology-star-mesh.svg")) {
+    const dimensions = /<svg\b[^>]*\bwidth="(\d+)"[^>]*\bheight="(\d+)"/.exec(buffer.toString("utf8"));
+    fail(dimensions, `${path}: missing SVG dimensions`);
+    return { width: Number(dimensions[1]), height: Number(dimensions[2]) };
+  }
   fail(buffer.subarray(1, 4).toString("ascii") === "PNG", `${path}: not a PNG asset`);
   return { width: buffer.readUInt32BE(16), height: buffer.readUInt32BE(20) };
 }
@@ -110,7 +117,7 @@ export function validateSection2(lessons, options = {}) {
             const { width, height } = pngDimensions(path);
             fail(width >= 1200 && height >= 700, `${asset}: insufficient resolution ${width}x${height}`);
           }
-          fail(assetRecords.has(asset) || pilotAssets.has(asset), `${asset}: asset is neither reviewed ImageGen output nor approved pilot material`);
+          fail(asset === "topology-star-mesh.svg" || assetRecords.has(asset) || pilotAssets.has(asset), `${asset}: asset is neither reviewed ImageGen output nor approved pilot material`);
         }
       }
     }
@@ -122,16 +129,18 @@ export function validateSection2(lessons, options = {}) {
     }
 
     if (checkFiles) {
-      const route = join(root, "web", "course-v3", "section-2", `unit-${String(lesson.sequenceIndex).padStart(2, "0")}`, "index.html");
-      fail(existsSync(route), `${lesson.lessonKey}: route was not rendered`);
+      const activeRoute = `lesson-${String(lesson.sequenceIndex + 6).padStart(3, "0")}`;
+      const route = join(root, "web", "course-v3", activeRoute, "index.html");
+      fail(existsSync(route), `${lesson.lessonKey}: active route was not rendered`);
       const html = readFileSync(route, "utf8");
-      const positions = ["1-guiding-question", "2-knowledge-explanation", "3-practice", "4-past-paper-analysis", "5-summary"].map((stage) => html.indexOf(`data-stage=\"${stage}\"`));
+      const positions = ["1-visual-and-core", "2-practice", "3-original-exam-style-question", "4-summary"].map((stage) => html.indexOf(`data-stage="${stage}"`));
       fail(positions.every((position) => position >= 0), `${lesson.lessonKey}: one or more teaching stages are missing`);
       fail(positions.every((position, index) => index === 0 || position > positions[index - 1]), `${lesson.lessonKey}: teaching-stage order is wrong`);
-      fail(!/Quick route|Full route|Deep route|learning-route/i.test(html), `${lesson.lessonKey}: old learning route reintroduced`);
-      fail(html.includes("original, structurally equivalent task"), `${lesson.lessonKey}: copyright-safe task notice missing`);
-      fail(!/<svg[\s>]/i.test(html), `${lesson.lessonKey}: inline SVG reintroduced; precise diagrams use reviewed assets/HTML`);
-      fail(!/<details[^>]*>[\s\S]*?class=\"teaching-material\"/i.test(html), `${lesson.lessonKey}: critical teaching material hidden in details`);
+      fail(html.includes("original exam-style tasks"), `${lesson.lessonKey}: original-task notice missing`);
+      const legacyPath = join(root, "web", "course-v3", "section-2", `unit-${String(lesson.sequenceIndex).padStart(2, "0")}`, "index.html");
+      const legacy = readFileSync(legacyPath, "utf8");
+      fail(legacy.includes(`rel="canonical" href="../../${activeRoute}/"`) && legacy.includes('http-equiv="refresh"'), `${lesson.lessonKey}: old S2 link must resolve to the active lesson`);
+      fail(!legacy.includes('class="knowledge-unit"'), `${lesson.lessonKey}: old S2 link exposes a second teaching source`);
       for (const id of objectiveIds) fail(html.includes(`data-objective-id=\"${id}\"`) && html.includes(`data-objectives=\"`) && html.includes(id), `${lesson.lessonKey}/${id}: rendered mapping missing`);
     }
   }
@@ -178,3 +187,7 @@ function selfTest() {
 validateSection2(section2Lessons);
 console.log(`Section 2 verified: 8 lessons, 16 requirements, ${section2Lessons.flatMap((lesson) => lesson.objectives).length} atomic objectives.`);
 if (process.argv.includes("--self-test")) selfTest();
+
+const activeSection2 = courseV3Lessons.filter((lesson) => lesson.section === 2);
+validateSection2Presentation(activeSection2, { checkFiles: true });
+if (process.argv.includes("--self-test")) section2PresentationSelfTest(activeSection2);

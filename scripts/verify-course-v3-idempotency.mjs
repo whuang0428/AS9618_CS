@@ -6,9 +6,12 @@ import { fileURLToPath } from "node:url";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const targets = [
+  join(root, "web", "assets", "course-v3", "section-4"),
   join(root, "web", "course-v3"),
+  join(root, "web", "assets", "course-v3", "section-6"),
   join(root, "web", "index.html"),
   join(root, "web", "assessments", "index.html"),
+  join(root, "assessments", "assessment-bank.md"),
   ...Array.from({ length: 151 }, (_, index) => join(root, "web", `lesson-${String(index + 1).padStart(3, "0")}`)),
   join(root, "scripts", "course-v3-contract.json"),
 ];

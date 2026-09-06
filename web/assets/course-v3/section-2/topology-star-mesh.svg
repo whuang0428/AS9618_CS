@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760" role="img" aria-labelledby="title description">
+  <title id="title">Hybrid topology: star LANs and a mesh of switches</title>
+  <desc id="description">A and B connect to S1. C and D connect to S2. S1, S2 and S3 have all three pair-to-pair links. A route from A to D is A, S1, S2, D. If S1 to S2 fails, the alternative is A, S1, S3, S2, D.</desc>
+  <rect width="1200" height="760" fill="#f8fbfc"/>
+  <g font-family="Arial, sans-serif" fill="#183047" text-anchor="middle">
+    <text x="600" y="62" font-size="34" font-weight="700">HYBRID: STAR + MESH</text>
+    <text x="600" y="103" font-size="23">Separate host links at each LAN; alternative links between switches</text>
+    <rect x="50" y="162" width="310" height="440" rx="20" fill="#e6f3f0"/>
+    <rect x="840" y="162" width="310" height="440" rx="20" fill="#e6f3f0"/>
+    <text x="205" y="207" font-size="27" font-weight="700">STAR LAN</text>
+    <text x="995" y="207" font-size="27" font-weight="700">STAR LAN</text>
+    <text x="600" y="568" font-size="26" font-weight="700">MESH: S1, S2, S3</text>
+  </g>
+  <g stroke="#176b69" stroke-width="7" fill="none" stroke-linecap="round">
+    <line data-link="A-S1" x1="165" y1="290" x2="330" y2="370"/>
+    <line data-link="B-S1" x1="165" y1="505" x2="330" y2="410"/>
+    <line data-link="S1-S2" x1="380" y1="390" x2="820" y2="390"/>
+    <line data-link="S1-S3" x1="374" y1="420" x2="560" y2="505"/>
+    <line data-link="S2-S3" x1="826" y1="420" x2="640" y2="505"/>
+    <line data-link="C-S2" x1="1035" y1="290" x2="870" y2="370"/>
+    <line data-link="D-S2" x1="1035" y1="505" x2="870" y2="410"/>
+  </g>
+  <g font-family="Arial, sans-serif" text-anchor="middle" font-size="29" font-weight="700">
+    <g fill="#fff" stroke="#183047" stroke-width="3">
+      <rect x="65" y="250" width="130" height="80" rx="8"/>
+      <rect x="65" y="465" width="130" height="80" rx="8"/>
+      <rect x="1005" y="250" width="130" height="80" rx="8"/>
+      <rect x="1005" y="465" width="130" height="80" rx="8"/>
+    </g>
+    <g fill="#183047">
+      <text x="130" y="300">A</text><text x="130" y="515">B</text>
+      <text x="1070" y="300">C</text><text x="1070" y="515">D</text>
+      <rect x="300" y="350" width="80" height="80" rx="12"/>
+      <rect x="820" y="350" width="80" height="80" rx="12"/>
+      <rect x="560" y="470" width="80" height="65" rx="12"/>
+    </g>
+    <g fill="#fff"><text x="340" y="401">S1</text><text x="860" y="401">S2</text><text x="600" y="513">S3</text></g>
+  </g>
+  <g font-family="Arial, sans-serif" text-anchor="middle" fill="#183047" font-size="24">
+    <text x="600" y="643">Example path: A → S1 → S2 → D</text>
+    <text x="600" y="686">If S1–S2 fails: A → S1 → S3 → S2 → D</text>
+    <text x="600" y="729" font-size="19">Assume loop-free forwarding and activation of the alternative path after failure.</text>
+  </g>
+</svg>

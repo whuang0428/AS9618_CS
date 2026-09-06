@@ -1,3 +1,4 @@
+import { section1ExamQuestions } from "./course-v3-section1-content.mjs";
 import { classifyCommand, normaliseQuestionPrompt } from "./cie-command-words.mjs";
 import { knowledgeDiagramForUnit } from "./course-v3-knowledge-diagrams.mjs";
 
@@ -674,6 +675,19 @@ function coveragePrompt(question, lesson) {
 
 function finaliseQuestion(question, lesson) {
   const requirementId = questionRequirement(question, lesson);
+  if (lesson.section === 1) {
+    const classification = classifyCommand(question.prompt, requirementId);
+    if (classification.status !== "Approved") throw new Error(`${question.id}: authored S1 command is invalid`);
+    if (!question.objectiveIds?.length || !question.objectiveIds.every((id) => lesson.objectives.some(([candidate]) => candidate === id))) throw new Error(`${question.id}: explicit S1 objective mapping is invalid`);
+    if (question.marks !== question.answerPoints.length) throw new Error(`${question.id}: authored S1 marks differ from scoring points`);
+    return { ...question, commandWord: sentenceCase(classification.word) };
+  }
+  if (question.authored) {
+    const classification = classifyCommand(question.prompt, requirementId);
+    if (classification.status !== "Approved") throw new Error(`${question.id}: authored question needs a Cambridge command word`);
+    if (lesson.section === 6 && (!question.objectiveIds?.length || !question.objectiveIds.every((id) => lesson.objectives.some(([candidate]) => candidate === id)) || question.marks !== question.answerPoints.length)) throw new Error(`${question.id}: authored S6 mapping or marking points are invalid`);
+    return { ...question, commandWord: sentenceCase(classification.word) };
+  }
   let prompt = promptOverrides[question.id] ?? coveragePrompt(question, lesson);
   prompt = normaliseQuestionPrompt(rewriteQuestionForm(prompt));
   let classification = requirementId ? classifyCommand(prompt, requirementId) : { status: "Blocked" };
@@ -700,7 +714,7 @@ function finaliseQuestion(question, lesson) {
   }
   const seenAnswerPoints = new Set();
   const answerPoints = selectedAnswerPoints
-    .map(directAnswerOverride ? completeMarkPoint : conciseMarkPoint)
+    .map(directAnswerOverride || lesson.section === 2 ? completeMarkPoint : conciseMarkPoint)
     .map((point) => markPointRewrites.get(normalisePresentationText(point)) ?? point)
     .filter((point) => {
       const key = normalisePresentationText(point);
@@ -719,7 +733,7 @@ function finaliseQuestion(question, lesson) {
 
 function finaliseUnit(unit, lesson, unitIndex) {
   const sourceMaterials = [...(unit.materials ?? [])];
-  const generatedDiagram = knowledgeDiagramForUnit(lesson.sequenceIndex, unitIndex + 1);
+  const generatedDiagram = unit.useAuthoredVisual ? null : knowledgeDiagramForUnit(lesson.sequenceIndex, unitIndex + 1);
   if (generatedDiagram) sourceMaterials.unshift({ ...generatedDiagram, objectiveIds: [...unit.objectiveIds] });
   const candidates = sourceMaterials
     .filter((material) => material.type !== "worked-example")
@@ -728,14 +742,14 @@ function finaliseUnit(unit, lesson, unitIndex) {
   let coreExplanation = dedupeCoreParagraphs(unit.coreExplanation ?? unit.explanation ?? []);
   let leadVisual = { ...compactLeadVisual(candidates[0], unit.heading), objectiveIds: [...unit.objectiveIds] };
   const methodCandidate = sourceMaterials.find((material) => material.type === "flow" && material !== candidates[0]);
-  const cleanedMethod = cleanMethod(methodCandidate, coreExplanation, leadVisual);
+  const cleanedMethod = (lesson.section === 1 || unit.preserveTeachingSteps) ? methodCandidate : cleanMethod(methodCandidate, coreExplanation, leadVisual);
   const method = cleanedMethod && !/worked.*example/i.test(cleanedMethod.title)
-    ? { ...cleanedMethod, title: methodTitleOverrides[unit.syllabusId] ?? cleanedMethod.title }
+    ? { ...cleanedMethod, title: lesson.section === 1 ? cleanedMethod.title : methodTitleOverrides[unit.syllabusId] ?? cleanedMethod.title }
     : null;
   const sourceExample = sourceMaterials.find((material) => material.type === "worked-example");
   const workedExample = /worked.*example/i.test(cleanedMethod?.title ?? "")
       ? { ...cleanedMethod, type: "worked-example" }
-      : cleanWorkedExample(sourceExample, coreExplanation, leadVisual);
+      : ([1, 6].includes(lesson.section) || unit.preserveTeachingSteps) ? sourceExample : cleanWorkedExample(sourceExample, coreExplanation, leadVisual);
 
   return {
     ...unit,
@@ -743,6 +757,7 @@ function finaliseUnit(unit, lesson, unitIndex) {
     coreExplanation,
     method,
     workedExample,
+    supportingMaterials: sourceMaterials.filter((material) => material.preserve && material !== candidates[0]),
     explanation: undefined,
     materials: undefined,
   };
@@ -884,59 +899,6 @@ const examMarkingPointLimits = Object.freeze({
 });
 
 const examQuestionOverrides = Object.freeze({
-  "S1-L01-EXAM-1": {
-    prompt: "A storage manufacturer labels a drive as 512 GB, but system software reports approximately 477 GiB. Explain why the numerical values differ even though no storage capacity has been lost.",
-    objectiveIds: ["S1.01.A01", "S1.01.A02"],
-    answerPoints: [
-      "The label GB uses the decimal prefix giga, so 1 GB equals 10^9 bytes.",
-      "The software value GiB uses the binary prefix gibi, so 1 GiB equals 2^30 bytes.",
-      "The same byte capacity is divided by two different unit sizes, producing different numerical values.",
-      "Because one GiB is larger than one GB, the numerical value in GiB is lower; the difference does not indicate missing bytes.",
-    ],
-    commonError: "Do not claim that the operating system deleted capacity; the two displays use different unit definitions.",
-  },
-  "S1-L01-EXAM-2": {
-    prompt: "Calculate the number of bytes in 2 MiB and in 2 MB, then calculate the difference between the two capacities.",
-    objectiveIds: ["S1.01.A01", "S1.01.A02"],
-    answerPoints: [
-      "2 MiB = 2 × 2^20 = 2,097,152 bytes.",
-      "2 MB = 2 × 10^6 = 2,000,000 bytes.",
-      "The difference is 2,097,152 − 2,000,000 = 97,152 bytes.",
-    ],
-    commonError: "Do not use 1024 as the value of mebi; one mebibyte is 1024 squared bytes.",
-  },
-  "S1-L01-EXAM-3": {
-    prompt: "A network specification states a transfer amount in gigabytes while a memory specification states a capacity in gibibytes. Describe the multiplier represented by each prefix and explain why the unit symbols must not be treated as interchangeable.",
-    objectiveIds: ["S1.01.A02"],
-    answerPoints: [
-      "Giga is the decimal multiplier 10^9 and uses the symbol G in GB.",
-      "Gibi is the binary multiplier 2^30 and uses the symbol Gi in GiB.",
-      "The multipliers have different byte values, so replacing GB with GiB changes the stated capacity rather than only changing its spelling.",
-    ],
-    commonError: "Do not state that giga and gibi are synonyms or give them the same multiplier.",
-  },
-  "S1-L02-EXAM-2": {
-    prompt: "Describe how the denary value -23 is represented in 8-bit one's complement and 8-bit two's complement, and explain why the two bit patterns differ.",
-    objectiveIds: ["S1.02.A05", "S1.02.A06", "S1.03.A05", "S1.03.A06"],
-    answerPoints: [
-      "Write +23 as the 8-bit binary value 00010111.",
-      "Invert every bit to obtain the one's-complement representation 11101000.",
-      "Add 1 to the one's-complement pattern to obtain the two's-complement representation 11101001.",
-      "The two patterns differ because two's complement applies inversion followed by addition of 1, while one's complement applies inversion only.",
-    ],
-    commonError: "Do not convert the magnitude separately and then attach a minus sign; the fixed-width bit pattern itself represents the negative value.",
-  },
-  "S1-L02-EXAM-1": {
-    prompt: "Calculate the 16-bit BCD representation of the denary display value 4072 and explain why this is not the ordinary binary representation of 4072.",
-    objectiveIds: ["S1.02.A04", "S1.03.A04"],
-    answerPoints: [
-      "Encode the four denary digits separately as 4 = 0100, 0 = 0000, 7 = 0111 and 2 = 0010.",
-      "The complete BCD representation is 0100 0000 0111 0010.",
-      "BCD assigns one four-bit group to each displayed denary digit rather than converting the whole value in one operation.",
-      "Ordinary binary uses powers-of-two place values for the complete integer, so it produces a different bit pattern.",
-    ],
-    commonError: "Do not convert 4072 directly to binary and label that result BCD; encode 4, 0, 7 and 2 independently.",
-  },
   "S3-L01-EXAM-2": {
     prompt: "An embedded controller operates a washing machine. Explain one benefit and one drawback of using an embedded system for this task.",
     objectiveIds: ["S3.02.A02", "S3.02.A03"],
@@ -1259,124 +1221,19 @@ const examQuestionOverrides = Object.freeze({
     ],
     commonError: "Do not execute READFILE first and test EOF afterwards when no record may remain.",
   },
-  "S1-L02-EXAM-3": {
-    prompt: "The unsigned binary value 11010110 must be written in denary and hexadecimal. Explain both conversion methods and give both results.",
-    objectiveIds: ["S1.03.A01", "S1.03.A02"],
-    answerPoints: [
-      "For denary, add the place values of the 1 bits: 128 + 64 + 16 + 4 + 2.",
-      "The denary result is 214.",
-      "For hexadecimal, split the binary value into the nibbles 1101 and 0110.",
-      "The nibbles map to D and 6, so the hexadecimal result is D6.",
-    ],
-    commonError: "Do not treat the most significant bit as a sign bit because the value is explicitly unsigned.",
-  },
-  "S1-L03-EXAM-2": {
-    prompt: "Two unsigned 8-bit values are added and produce the nine-bit result 1 00000010. Explain why overflow has occurred and what is stored in the 8-bit register.",
-    answerPoints: [
-      "An unsigned 8-bit register can represent only values from 0 to 255.",
-      "The mathematical result needs a ninth bit, so it is outside that representable range.",
-      "Only the lower eight bits 00000010 remain in the register and the carry out indicates overflow.",
-    ],
-    commonError: "Do not say that every carry within the addition is overflow; overflow is caused by a result outside the fixed-width range.",
-  },
-  "S1-L03-EXAM-1": {
-    prompt: "Calculate the 8-bit two's-complement sum 11011011 + 00010010, interpret the result in denary and state whether signed overflow occurs.",
-    objectiveIds: ["S1.04.A02", "S1.05.A01"],
-    answerPoints: [
-      "The 8-bit addition produces 11101101.",
-      "The first operand represents -37 and the second operand represents +18.",
-      "Invert 11101101 and add 1 to obtain magnitude 00010011, so the result represents -19.",
-      "The exact result -19 lies in the 8-bit signed range -128 to +127, so no signed overflow occurs.",
-    ],
-    commonError: "Do not apply the unsigned carry-out rule to decide signed overflow; interpret the operands and result using the stated two's-complement representation.",
-  },
-  "S1-L03-EXAM-3": {
-    prompt: "Complete the 8-bit unsigned subtraction 10110100 - 00101101 and verify the binary result by converting all three values to denary.",
-    objectiveIds: ["S1.04.A01"],
-    answerPoints: [
-      "The first operand 10110100 represents 180 in denary.",
-      "The second operand 00101101 represents 45 in denary.",
-      "The subtraction gives the 8-bit result 10000111.",
-      "The check 180 - 45 = 135 confirms that 10000111 is correct.",
-    ],
-    commonError: "Do not interpret the leading 1 as a sign bit because the question specifies unsigned values.",
-  },
-  "S1-L04-EXAM-1": {
-    prompt: "Calculate whether a fixed-width code with 7 bits can assign a different pattern to each of 150 symbols, and determine the minimum number of bits required.",
-    objectiveIds: ["S1.07.A01", "S1.07.A02", "S1.07.A03"],
-    answerPoints: [
-      "Seven bits provide 2^7 = 128 different patterns.",
-      "A set of 150 symbols cannot be represented uniquely by only 128 patterns.",
-      "Eight bits provide 2^8 = 256 patterns.",
-      "The minimum fixed width is therefore 8 bits.",
-    ],
-    commonError: "Do not assume that seven bits can store values from 0 to 150; seven bits provide only 128 distinct patterns in total.",
-  },
-  "S1-L04-EXAM-2": {
-    prompt: "Using the character codes C = 67, A = 65 and T = 84, describe how the text CAT is represented as three 8-bit binary codes.",
-    objectiveIds: ["S1.07.A01"],
-    answerPoints: [
-      "Look up or use the numeric code assigned to each character in sequence.",
-      "The code 67 for C is stored as 01000011.",
-      "The code 65 for A is stored as 01000001.",
-      "The code 84 for T is stored as 01010100.",
-    ],
-    commonError: "Do not store the appearance of each letter; the file stores the numeric codes selected by the character set.",
-  },
-  "S1-L04-EXAM-3": {
-    prompt: "Compare extended ASCII with Unicode for exchanging English, Arabic, Chinese and emoji text between computers, and justify the more suitable character set.",
-    objectiveIds: ["S1.07.A03", "S1.07.A04"],
-    answerPoints: [
-      "Extended ASCII provides only 256 code patterns and different extensions may assign the upper codes differently.",
-      "That limited repertoire cannot assign codes to all of the required writing systems and emoji.",
-      "Unicode defines a much larger common repertoire of code points for characters from many writing systems.",
-      "Unicode is more suitable because the sender and receiver can interpret the multilingual text using the same character assignments.",
-    ],
-    commonError: "Do not claim that every Unicode character is stored in exactly 16 bits; the task concerns repertoire and consistent character assignment.",
-  },
-  "S1-L05-EXAM-2": {
-    prompt: "A vector file stores a blue rectangle and a black line. Describe the drawing list and explain how the software uses the stored object properties to render the image.",
-    objectiveIds: ["S1.09.A01", "S1.09.A02"],
-    answerPoints: [
-      "The drawing list contains one entry for the rectangle and one entry for the line.",
-      "Each entry identifies the object type and stores properties such as coordinates, dimensions, line colour, fill colour and line thickness.",
-      "The software reads the entries in list order and draws each object using its stored properties.",
-      "Changing coordinates or dimensions allows the objects to be redrawn at another size without enlarging a fixed pixel grid.",
-    ],
-    commonError: "Do not describe a vector graphic as a grid of stored pixel colour values.",
-  },
-  "S1-L05-EXAM-1": {
-    prompt: "A bitmap has image resolution 640 by 480 and colour depth 8 bits. Calculate the number of possible pixel colours and describe how its header and pixel data are used when the file is opened.",
-    objectiveIds: ["S1.08.A01", "S1.08.A03"],
-    answerPoints: [
-      "An 8-bit colour value provides 2^8 = 256 possible colours for each pixel.",
-      "The header supplies metadata such as width, height and colour depth needed to interpret the following data.",
-      "The pixel data supplies one colour value for each position in the 640 by 480 grid.",
-      "The software uses the metadata to map the stored pixel values to the correct positions and colours on the display.",
-    ],
-    commonError: "Do not include the header bytes in the pixel count or describe the bitmap as a vector drawing list.",
-  },
-  "S1-L05-EXAM-3": {
-    prompt: "Compare the uncompressed pixel-data sizes of bitmap A, which is 1600 by 1200 with 8-bit colour, and bitmap B, which is 800 by 600 with 24-bit colour. State which is larger and by how many bytes.",
-    objectiveIds: ["S1.08.A04", "S1.08.A05", "S1.08.A06"],
-    answerPoints: [
-      "Bitmap A contains 1600 x 1200 x 8 = 15,360,000 bits, which is 1,920,000 bytes.",
-      "Bitmap B contains 800 x 600 x 24 = 11,520,000 bits, which is 1,440,000 bytes.",
-      "Bitmap A is larger by 1,920,000 - 1,440,000 = 480,000 bytes.",
-      "The higher pixel count of bitmap A outweighs the greater colour depth of bitmap B in this comparison.",
-    ],
-    commonError: "Do not compare resolution or colour depth in isolation; multiply both pixel dimensions by the bits per pixel before converting bits to bytes.",
-  },
   "S2-L01-EXAM-1": {
-    prompt: "Compare a LAN with a WAN in terms of geographical scope, control of the network infrastructure and the links used between sites.",
-    objectiveIds: ["S2.01.A02", "S2.01.A03"],
-    answerPoints: [
-      "A LAN covers a limited area such as one building or campus, whereas a WAN spans a large geographical area or links separated sites.",
-      "A single organisation normally owns or directly controls its LAN equipment and local links.",
-      "A WAN commonly relies on telecommunications-provider infrastructure to carry data between the organisation's sites.",
-      "The classification depends on scope and infrastructure rather than an assumption that one type is always faster.",
+    prompt: "Compare a LAN with a WAN in terms of geographical scope and control of the network infrastructure.",
+    objectiveIds: [
+      "S2.01.A02",
+      "S2.01.A03"
     ],
-    commonError: "Do not classify the networks only by speed; geographical scope, control and inter-site infrastructure are the relevant distinctions.",
+    answerPoints: [
+      "A LAN normally covers a limited geographical area, such as one managed campus.",
+      "A WAN spans a large geographical area and can link networks at distant sites.",
+      "A LAN is normally owned or controlled by a single organisation.",
+      "A WAN commonly depends on telecommunications-provider infrastructure for its inter-site links."
+    ],
+    commonError: "Compare the same factors for both networks; speed alone does not define LAN or WAN."
   },
   "S2-L01-EXAM-2": {
     prompt: "Explain why a peer-to-peer model may suit a four-person design studio that shares non-critical files, has a very small budget and has no specialist administrator. Include two drawbacks.",
@@ -1394,7 +1251,7 @@ const examQuestionOverrides = Object.freeze({
     objectiveIds: ["S2.03.A01", "S2.03.A02", "S2.03.A03"],
     answerPoints: [
       "Thick clients are suitable because substantial application processing takes place on each local computer.",
-      "The CAD application and working data can remain available when the network connection is absent.",
+      "Local applications remain usable offline; a thin client relying on server processing would lose that access when disconnected.",
       "Local hardware must have enough processing power and storage for the engineering workload.",
       "Software updates, security controls and synchronisation must be managed across several separate devices.",
     ],
@@ -1423,19 +1280,23 @@ const examQuestionOverrides = Object.freeze({
     commonError: "Do not claim that every cable failure has the same effect; identify whether the failed component is local, shared or central.",
   },
   "S2-L02-EXAM-3": {
-    prompt: "Suggest a topology for four critical data-centre routers when communication must continue after any one link fails. Describe two possible routes between a named pair and give one disadvantage.",
-    objectiveIds: ["S2.04.A03", "S2.05.A01", "S2.05.A02", "S2.05.A03"],
-    answerPoints: [
-      "A mesh topology provides multiple connected paths between the critical routers.",
-      "One valid route can use the direct link from the named source router to the destination router.",
-      "After that link fails, a second valid route can pass through another router whose two required links still exist.",
-      "The alternative path allows delivery to continue after the stated single-link failure.",
-      "Providing the additional links and router ports raises cost and configuration complexity.",
+    prompt: "A partial mesh has routers P, Q, R and T. Its only links are P–Q, Q–R, R–T and T–P. Describe a route from P to R after P–Q fails. A second failure then removes T–P. Explain whether P can still reach R and what this shows about mesh resilience.",
+    objectiveIds: [
+      "S2.04.A03",
+      "S2.05.A01",
+      "S2.05.A02"
     ],
-    commonError: "Do not claim resilience without naming a second route that follows links present in the proposed topology.",
+    answerPoints: [
+      "After P–Q fails, P can send to T over P–T.",
+      "T can forward to R over T–R, completing the path P → T → R.",
+      "If T–P also fails, P has no remaining working link.",
+      "P cannot reach R even though the links Q–R and R–T still work.",
+      "Resilience depends on the remaining connected paths; a mesh does not survive every combination of failures."
+    ],
+    commonError: "Use only the four supplied links; there is no direct P–R link."
   },
   "S2-L03-EXAM-1": {
-    prompt: "Describe what happens when a student uses a low-specification laptop to run a browser-based simulation whose processing and files are hosted by a cloud provider.",
+    prompt: "Describe what happens when a student uses a low-specification laptop to run a browser-based simulation whose processing and files are hosted by a cloud provider. Include the effect of losing the network connection.",
     objectiveIds: ["S2.06.A01", "S2.06.A03"],
     answerPoints: [
       "The laptop sends a request to remote computing resources through its network connection.",
@@ -1457,16 +1318,17 @@ const examQuestionOverrides = Object.freeze({
     commonError: "Do not confuse shared provider infrastructure with unrestricted file permissions.",
   },
   "S2-L03-EXAM-3": {
-    prompt: "Suggest two design measures that could reduce disruption when a provider outage makes a company's cloud-hosted order system unavailable. Explain how each measure helps.",
-    objectiveIds: ["S2.06.A03", "S2.06.A04"],
-    answerPoints: [
-      "Users cannot reach the remote application or current cloud data while the provider service is unavailable.",
-      "Order processing may stop even though the users' local computers continue to operate.",
-      "A tested independent backup or replicated service can provide recoverable data outside the failed service.",
-      "A documented offline procedure or failover platform can preserve a limited business function during the outage.",
-      "The organisation must test recovery because provider redundancy alone does not prove that its required service can be restored.",
+    prompt: "Suggest two measures that could reduce disruption when a provider outage makes a company's cloud-hosted order system unavailable. Explain how each measure helps.",
+    objectiveIds: [
+      "S2.06.A03"
     ],
-    commonError: "Do not treat synchronised provider copies as a complete recovery plan without independent recovery and restoration testing.",
+    answerPoints: [
+      "Maintain and test a replica or recoverable backup outside the affected provider service.",
+      "This provides an independent copy from which the company can restore or continue access to order data.",
+      "Provide a tested offline order-entry procedure or an independently hosted failover application.",
+      "Staff can continue recording orders during the outage and reconcile them when the main service returns."
+    ],
+    commonError: "Credit other valid measure-and-effect pairs; a backup within the same unavailable service is not an independent recovery route."
   },
   "S2-L04-EXAM-1": {
     prompt: "Compare copper cable with fibre-optic cable for a 500-metre factory link that passes close to powerful electric motors, and suggest the more suitable medium.",
@@ -1482,7 +1344,7 @@ const examQuestionOverrides = Object.freeze({
   },
   "S2-L04-EXAM-2": {
     prompt: "Describe the characteristics of microwaves used to connect two hilltop offices, including two conditions that can reduce the reliability of the link.",
-    objectiveIds: ["S2.08.A04", "S2.08.A06"],
+    objectiveIds: ["S2.08.A04"],
     answerPoints: [
       "Directional microwave antennas transmit electromagnetic signals between the two fixed sites.",
       "The antennas require a clear line of sight and accurate alignment.",
@@ -1493,7 +1355,7 @@ const examQuestionOverrides = Object.freeze({
   },
   "S2-L04-EXAM-3": {
     prompt: "Describe the characteristics of satellites used for communication with a research vessel far from land, including two disadvantages for interactive communication.",
-    objectiveIds: ["S2.08.A05", "S2.08.A06"],
+    objectiveIds: ["S2.08.A05"],
     answerPoints: [
       "The vessel can communicate using microwaves sent to and received from a satellite over a very large coverage area.",
       "Satellite coverage can reach an offshore location where installing cable along the whole route is impossible.",
@@ -1551,14 +1413,17 @@ const examQuestionOverrides = Object.freeze({
   },
   "S2-L06-EXAM-2": {
     prompt: "A player starts with 90 Mbit of unplayed data. The incoming rate remains 3 Mbit/s while playback uses 6 Mbit/s. Calculate how long playback can continue before the buffer empties.",
-    objectiveIds: ["S2.12.A03", "S2.12.A04", "S2.12.A05"],
-    answerPoints: [
-      "Playback consumes data 6 - 3 = 3 Mbit/s faster than new data arrives.",
-      "The 90 Mbit of unplayed data therefore falls at 3 Mbit each second.",
-      "The time to empty is 90 / 3 = 30 seconds.",
-      "After 30 seconds the player must pause, lower its playback bit rate or receive data faster.",
+    objectiveIds: [
+      "S2.12.A03",
+      "S2.12.A04",
+      "S2.12.A05"
     ],
-    commonError: "Do not divide by the playback rate alone; use the deficit between playback consumption and incoming data.",
+    answerPoints: [
+      "The net buffer depletion rate is 6 − 3 = 3 Mbit/s.",
+      "Time to empty = initial buffered data / net depletion rate = 90 / 3.",
+      "Playback can continue for 30 seconds."
+    ],
+    commonError: "Use the deficit between consumption and arrival; dividing by the playback rate ignores incoming data."
   },
   "S2-L06-EXAM-3": {
     prompt: "A live video requires 8 Mbit/s but the connection can sustain only 6 Mbit/s. Explain how changing the stream to 5 Mbit/s can prevent repeated interruption and state the trade-off.",
@@ -1573,15 +1438,19 @@ const examQuestionOverrides = Object.freeze({
     commonError: "Do not claim that a larger buffer changes the sustained connection rate; adaptation works here by reducing the consumption rate below the arrival rate.",
   },
   "S2-L07-EXAM-1": {
-    prompt: "Classify a web page, an email message, a voice-over-IP call and a file-transfer session as WWW or non-WWW internet services, explaining the basis of the classification.",
-    objectiveIds: ["S2.13.A01", "S2.13.A02", "S2.13.A03"],
-    answerPoints: [
-      "The internet is the underlying global network infrastructure used by all four communications.",
-      "A web page is a linked web resource and therefore belongs to the World Wide Web service.",
-      "Email is an internet service but is not itself a World Wide Web resource.",
-      "Voice over IP and file transfer also use internet infrastructure without becoming WWW services merely because software presents them on a screen.",
+    prompt: "A student can send email using a dedicated mail application and make a voice-over-IP call, but one website is unavailable. Explain why this does not prove that the whole internet has failed. Refer to the internet, the WWW and one possible fault consistent with these observations.",
+    objectiveIds: [
+      "S2.13.A01",
+      "S2.13.A02",
+      "S2.13.A03"
     ],
-    commonError: "Do not label every service accessed through a browser-style interface as WWW; classify the service and resource being used.",
+    answerPoints: [
+      "The internet is the global infrastructure interconnecting networks and carrying data for several services.",
+      "The WWW consists of linked web resources accessed through internet infrastructure.",
+      "Working email and voice-over-IP show that some internet connections and services are still available.",
+      "The web server for that site may have failed, or a fault may affect only its route or web service."
+    ],
+    commonError: "The observations narrow the fault; they do not establish its exact cause or prove that every other site works."
   },
   "S2-L07-EXAM-2": {
     prompt: "Compare a PSTN access connection with a dedicated line for a permanent bank branch that requires predictable continuous connectivity, and suggest the more suitable option.",
@@ -1631,16 +1500,19 @@ const examQuestionOverrides = Object.freeze({
     commonError: "Do not compare only the first three octets when the prefix is /26; the leading two bits of the final octet are part of the network prefix.",
   },
   "S2-L08-EXAM-3": {
-    prompt: "Suggest suitable public or private and static or dynamic addressing for a public web server and an employee laptop used only inside the organisation.",
-    objectiveIds: ["S2.15.A03", "S2.15.A05", "S2.15.A06"],
-    answerPoints: [
-      "The public web server needs a publicly reachable address so internet clients can route requests to it.",
-      "A static or reserved assignment gives the server a predictable address for its published service and DNS record.",
-      "The internal laptop can use a private address because it does not need to accept direct public internet connections.",
-      "A dynamic assignment is suitable for the laptop because its address can be allocated automatically when it joins the internal network.",
-      "Firewalls, authentication and updates are still required because address type alone does not provide complete security.",
+    prompt: "Suggest suitable public or private and static or dynamic addressing for a public web server and an employee laptop used only inside the organisation. Explain one security limitation of these choices.",
+    objectiveIds: [
+      "S2.15.A05",
+      "S2.15.A06"
     ],
-    commonError: "Do not equate static with public or dynamic with private; reachability and assignment method are independent properties.",
+    answerPoints: [
+      "Internet users need a publicly reachable address for the web service, either on its server interface or on a gateway that forwards to it.",
+      "Static or reserved assignment keeps the service address predictable for clients and its DNS record.",
+      "A private address suits the laptop because it only needs internal reachability.",
+      "A dynamic lease lets the organisation allocate an address automatically when the laptop joins the LAN.",
+      "Addressing choices do not enforce access control; firewalls, authentication and updates are still required."
+    ],
+    commonError: "Routing scope and assignment lifetime are independent: static does not mean public and dynamic does not mean private."
   },
   "S3-L05-EXAM-2": {
     prompt: "Describe how to construct a complete truth table for the expression Q = A AND NOT B.",
@@ -1653,7 +1525,7 @@ const examQuestionOverrides = Object.freeze({
     commonError: "Do not omit an input combination or apply NOT to the whole expression.",
   },
   "S4-L07-EXAM-2": {
-    prompt: "ACC contains 11010110 and the instruction AND #00001111 is executed. Describe the bitwise operation and state the new ACC value.",
+    prompt: "ACC contains 11010110 and the instruction AND B00001111 is executed. Describe the bitwise operation and state the new ACC value.",
     answerPoints: [
       "Each ACC bit is ANDed with the bit in the same position of the mask, producing 1 only where both bits are 1.",
       "11010110 AND 00001111 produces 00000110, which becomes the new ACC value.",
@@ -1958,42 +1830,6 @@ const examQuestionOverrides = Object.freeze({
     ],
     commonError: "Do not treat all post-release changes as bug fixes; distinguish corrective, adaptive and perfective purposes.",
   },
-  "S1-L06-EXAM-1": {
-    prompt: "A mono sound recording sampled at 22 kHz is resampled at 44 kHz while its duration and sampling resolution remain unchanged. Explain the effects on the digital representation, time accuracy and file size.",
-    objectiveIds: ["S1.10.A01", "S1.10.A03"],
-    answerPoints: [
-      "44 000 samples are stored for each second instead of 22 000.",
-      "the interval between measurements is halved, so the wave is measured at more points in time",
-      "the digital representation can follow changes in the analogue wave more accurately",
-      "the file contains twice as many sample values, so its data size doubles when the other stated factors remain unchanged",
-    ],
-    commonError: "Do not claim that the sampling resolution or number of amplitude levels changes; only the sampling rate changes in this scenario.",
-  },
-  "S1-L06-EXAM-2": {
-    prompt: "A text file contains the sequence AAAAAAABBBCC and must be sent over a slow connection. Describe how run-length encoding compresses this sequence and explain why using RLE can be useful here.",
-    objectiveIds: ["S1.11.A01", "S1.11.A03", "S1.11.A04"],
-    answerPoints: [
-      "RLE separates adjacent identical characters into the runs AAAAAAA, BBB and CC.",
-      "each run is stored as its count followed by its character or character code",
-      "the encoded sequence is 7A 3B 2C when count then character is used",
-      "decoding repeats A seven times, B three times and C twice to reconstruct the original exactly",
-      "the long runs allow repeated characters to be replaced by fewer stored values",
-      "fewer bits need to be transmitted, which can reduce transfer time or bandwidth use on the slow connection",
-    ],
-    commonError: "Do not combine non-adjacent occurrences into one run, and always state the count/value order used in the encoding.",
-  },
-  "S1-L06-EXAM-3": {
-    prompt: "Compare lossless compression for a concert archive master with lossy compression for its streamed copy, linking each choice to its intended use.",
-    objectiveIds: ["S1.11.A02", "S1.11.A07", "S1.11.A08"],
-    answerPoints: [
-      "lossless compression allows every original sample value in the archive master to be reconstructed exactly",
-      "the master preserves the recording for later editing or production without irreversible quality loss",
-      "lossy sound compression can remove less-audible information from the streamed copy",
-      "the discarded information cannot be recovered, so the streamed copy is not an exact reconstruction",
-      "the smaller streamed file can require less bandwidth and transfer in less time when the quality remains acceptable",
-    ],
-    commonError: "Do not say that lossy compression can recreate the exact original; its selected sound detail has been removed permanently.",
-  },
   "REV-P1-EXAM-1": {
     prompt: "The 8-bit unsigned binary value 10110110 is stored in a register. Explain how to convert it to hexadecimal and denary.",
     objectiveIds: ["S1.03.R"],
@@ -2173,6 +2009,44 @@ function selectExamMarkingPoints(sourceQuestion, variant, unit, isReview) {
 }
 
 function examStyleQuestionSet(lesson, practice, staged) {
+  if (lesson.section === 1) return section1ExamQuestions[String(lesson.originalLesson).padStart(3, "0")].map((authored) => {
+    const question = finaliseQuestion(authored, staged);
+    const requirements = [...new Set(question.objectiveIds.map((id) => id.replace(/\.A\d+$/, "")))];
+    const clauses = [...new Set(requirements.map((id) => Number(id.slice(3)) <= 7 ? "1.1" : id === "S1.11" ? "1.3" : "1.2"))];
+    return {
+      id: question.id,
+      sourceRef: `Cambridge 9618 syllabus ${clauses.join(", ")} · ${requirements.join(", ")} (course mapping)`,
+      accessUrl: lesson.pastPaper.accessUrl,
+      objectiveIds: question.objectiveIds,
+      task: question.prompt,
+      commandWord: question.commandWord,
+      marks: question.marks,
+      build: question.answerPoints,
+      markLogic: question.answerPoints,
+      commonLosses: [question.commonError],
+    };
+  });
+  if (lesson.authoredExamQuestions) return lesson.authoredExamQuestions.map((source) => {
+    const question = finaliseQuestion(source, staged);
+    const requirements = [...new Set(question.objectiveIds.map((id) => id.replace(/\.A\d+$/, "")))];
+    const clauses = lesson.section === 4
+      ? [...new Set(requirements.map((id) => Number(id.slice(3)) <= 8 ? "4.1" : Number(id.slice(3)) <= 14 ? "4.2" : "4.3"))].join(", ")
+      : lesson.section === 6
+      ? [...new Set(requirements.map((id) => Number(id.slice(3)) <= 6 ? "6.1" : "6.2"))].join(", ")
+      : lesson.section === 5
+      ? [...new Set(requirements.map((id) => Number(id.slice(3)) <= 3 ? "5.1" : "5.2"))].join(", ")
+      : requirements.includes("S3.10") ? "3.2" : "3.1";
+    return {
+      id: question.id,
+      sourceRef: `Cambridge 9618 syllabus ${clauses} · ${requirements.join(", ")} (course mapping)`,
+      accessUrl: "https://www.cambridgeinternational.org/programmes-and-qualifications/cambridge-international-as-and-a-level-computer-science-9618/past-papers/",
+      objectiveIds: question.objectiveIds, task: question.prompt, commandWord: question.commandWord,
+      marks: question.marks, build: question.answerPoints, markLogic: question.answerPoints,
+      commonLosses: [question.commonError],
+      ...(question.diagram ? { diagram: question.diagram, diagramAlt: question.diagramAlt } : {}),
+      ...(lesson.section === 4 ? Object.fromEntries(["code", "codeCaption", "programKey", "table", "answerTable", "expectedTrace", "expectedAcc", "finalMemory"].filter((key) => question[key] !== undefined).map((key) => [key, question[key]])) : {}),
+    };
+  });
   const objectiveRows = lesson.objectives.length ? lesson.objectives : [[`${lesson.syllabusIds[0]}.R`, lesson.title]];
   const questionCount = Math.max(1, lesson.examQuestionCount ?? 3);
   const selectedIndexes = questionCount === 3
@@ -2223,7 +2097,9 @@ function examStyleQuestionSet(lesson, practice, staged) {
     }
     return {
       id: question.id,
-      sourceRef: override?.sourceRef ?? (index === 0 ? lesson.pastPaper.sourceRef : `Cambridge 9618 syllabus · ${requirementId}`),
+      sourceRef: lesson.section === 2
+        ? `Cambridge 9618 syllabus 2.1 · ${[...new Set(question.objectiveIds.map((id) => id.replace(/\.A\d+$/, "")))].join(", ")} (course mapping)`
+        : override?.sourceRef ?? (index === 0 ? lesson.pastPaper.sourceRef : `Cambridge 9618 syllabus · ${requirementId}`),
       accessUrl: lesson.pastPaper.accessUrl,
       objectiveIds: question.objectiveIds,
       task: question.prompt,
@@ -2245,7 +2121,7 @@ function conciseSummary(lesson) {
     const key = syllabusId ?? normalisePresentationText(heading);
     if (seen.has(key)) return [];
     seen.add(key);
-    const unit = lesson.units.find((candidate) => candidate.syllabusId === syllabusId) ?? lesson.units[index] ?? lesson.units[0];
+    const unit = (syllabusId && lesson.units.find((candidate) => candidate.syllabusId === syllabusId)) ?? lesson.units[index] ?? lesson.units[0];
     const keywords = [...new Set(normalisePresentationText(unit?.heading ?? heading).split(" ").filter((word) => word.length > 2 && !stopwords.has(word)))].slice(0, 5);
     return [[heading, `Key focus: ${keywords.join(" · ")}.`]];
   });
@@ -2287,7 +2163,7 @@ export function finaliseLessonPresentation(lesson) {
 }
 
 export function unitMaterials(unit) {
-  return [unit.leadVisual, unit.method, unit.workedExample].filter(Boolean);
+  return [unit.leadVisual, unit.method, unit.workedExample, ...(unit.supportingMaterials ?? [])].filter(Boolean);
 }
 
 export function visibleRoleTexts(unit) {
@@ -2307,5 +2183,6 @@ export function visibleRoleTexts(unit) {
     core: unit.coreExplanation,
     method: bodyTexts(unit.method),
     workedExample: bodyTexts(unit.workedExample),
+    supporting: (unit.supportingMaterials ?? []).flatMap(bodyTexts),
   };
 }

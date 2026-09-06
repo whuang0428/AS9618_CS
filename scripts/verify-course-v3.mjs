@@ -1,8 +1,15 @@
+import { imageDimensions } from "./image-dimensions.mjs";
 import { createHash } from "node:crypto";
 import { existsSync, readFileSync, statSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
+import { validateSection2Presentation } from "./course-v3-section2-checks.mjs";
+import { validateSection1Presentation, section1PresentationSelfTest } from "./course-v3-section1-checks.mjs";
+import { validateSection3Presentation } from "./course-v3-section3-checks.mjs";
+import { validateSection4Presentation } from "./course-v3-section4-checks.mjs";
+import { validateSection6Presentation } from "./course-v3-section6-checks.mjs";
+import { validateSection5Presentation } from "./course-v3-section5-checks.mjs";
 import { classifyCommand } from "./cie-command-words.mjs";
 import { courseV3Lessons, courseV3Meta, sectionMeta } from "./course-v3-content.mjs";
 import { normalisePresentationText, unitMaterials, visibleRoleTexts } from "./course-v3-presentation.mjs";
@@ -16,28 +23,15 @@ const anchorManifest = JSON.parse(readFileSync(join(root, "scripts", "course-v3-
 const migration = JSON.parse(readFileSync(join(root, "scripts", "course-v2-migration.json"), "utf8"));
 const errors = [];
 const check = (condition, message) => { if (!condition) errors.push(message); };
+errors.push(...validateSection3Presentation(courseV3Lessons, JSON.parse(readFileSync(join(root, "scripts", "assessment-bank-contract.json"), "utf8"))));
+errors.push(...validateSection6Presentation(courseV3Lessons, JSON.parse(readFileSync(join(root, "scripts", "assessment-bank-contract.json"), "utf8"))));
+errors.push(...validateSection5Presentation(courseV3Lessons, JSON.parse(readFileSync(join(root, "scripts", "assessment-bank-contract.json"), "utf8"))));
+errors.push(...validateSection4Presentation(courseV3Lessons, JSON.parse(readFileSync(join(root, "scripts", "assessment-bank-contract.json"), "utf8"))));
 const sha256 = (path) => createHash("sha256").update(readFileSync(path)).digest("hex");
 const hasRootRelativeAsset = (html) => /\b(?:src|href)="\/assets\//.test(html);
 const words = (value) => normalisePresentationText(value).split(" ").filter(Boolean);
 const markingPointSignature = (values) => values.map(normalisePresentationText).sort().join("|");
 
-function imageDimensions(path) {
-  const data = readFileSync(path);
-  if (data.subarray(1, 4).toString("ascii") === "PNG") return { width: data.readUInt32BE(16), height: data.readUInt32BE(20) };
-  if (data[0] === 0xff && data[1] === 0xd8) {
-    let offset = 2;
-    while (offset + 9 < data.length) {
-      if (data[offset] !== 0xff) { offset += 1; continue; }
-      const marker = data[offset + 1];
-      if ([0xc0, 0xc1, 0xc2, 0xc3, 0xc5, 0xc6, 0xc7, 0xc9, 0xca, 0xcb, 0xcd, 0xce, 0xcf].includes(marker)) return { height: data.readUInt16BE(offset + 5), width: data.readUInt16BE(offset + 7) };
-      if (marker === 0xd8 || marker === 0xd9) { offset += 2; continue; }
-      const length = data.readUInt16BE(offset + 2);
-      if (!length) break;
-      offset += 2 + length;
-    }
-  }
-  return null;
-}
 
 function tokenSimilarity(left, right) {
   const a = words(left);
@@ -278,14 +272,14 @@ check(!/(?:one's complement|BCD|hexadecimal)/i.test(lesson002Core[5] ?? ""), "L0
 
 const lesson003 = courseV3Lessons.find((lesson) => lesson.sequenceIndex === 3);
 const lesson003Html = readFileSync(join(webRoot, "course-v3", "lesson-003", "index.html"), "utf8");
-const lesson003Terms = ["Unsigned binary addition and subtraction", "Overflow in fixed-width arithmetic", "Extension: signed binary addition and subtraction"];
+const lesson003Terms = ["Unsigned binary addition and subtraction", "Overflow in fixed-width arithmetic", "Signed binary addition and subtraction"];
 let lesson003PriorIndex = -1;
 for (const term of lesson003Terms) {
   const index = lesson003Html.indexOf(term);
   check(index > lesson003PriorIndex, `L003 teaching order is missing or out of sequence at ${term}`);
   lesson003PriorIndex = index;
 }
-check(/unsigned binary addition, overflow and signed extension/i.test(lesson003?.title ?? ""), "L003 title must communicate the core-to-extension teaching order");
+check(/binary addition, subtraction and overflow/i.test(lesson003?.title ?? ""), "L003 title must include the required arithmetic and overflow");
 
 const lesson004 = courseV3Lessons.find((lesson) => lesson.sequenceIndex === 4);
 const lesson004Headings = ["Character sets and internal binary representation", "ASCII", "Extended ASCII", "Unicode"];
@@ -341,9 +335,9 @@ for (let index = 0; index < 9; index += 1) {
 }
 check(!/device-principles\.png/.test(JSON.stringify(lesson016)), "L016 still uses the rejected all-devices-in-one visual");
 
-const lesson017 = checkUnitAssetSequence(17, ["stage10-lesson-054-device.jpg", "stage10-lesson-031-ram-rom.jpg", "sram-dram.png", "prom-eprom-eeprom.png"]);
+const lesson017 = checkUnitAssetSequence(17, [null, "stage10-lesson-031-ram-rom.jpg", "sram-dram-storage.svg", "prom-eprom-eeprom.png"]);
 const driverBufferCore = lesson017?.units[0]?.coreExplanation.join(" ") ?? "";
-check(driverBufferCore.indexOf("A device driver") >= 0 && driverBufferCore.indexOf("A buffer") > driverBufferCore.indexOf("A device driver") && driverBufferCore.indexOf("For a print job") > driverBufferCore.indexOf("A buffer"), "L017 must define driver and buffer before explaining how they work together");
+check(driverBufferCore.startsWith("A buffer") && /capacity is finite/i.test(driverBufferCore), "L017 must teach the purpose and finite capacity of a buffer before distinguishing driver/queue roles");
 check(!/SRAM|DRAM|flip-flop|capacitor/i.test(lesson017?.units[1]?.coreExplanation.join(" ") ?? ""), "L017 RAM/ROM core still contains SRAM/DRAM teaching");
 check(/SRAM.*DRAM|DRAM.*SRAM/i.test(lesson017?.units[2]?.coreExplanation.join(" ") ?? ""), "L017 SRAM/DRAM comparison is missing from its own unit");
 
@@ -367,7 +361,7 @@ for (const asset of contract.assets) {
   const path = join(root, asset.path);
   check(existsSync(path), `Missing asset ${asset.path}`);
   if (!existsSync(path)) continue;
-  check(statSync(path).size > 20_000, `Asset ${asset.path} is suspiciously small or blank`);
+  check(statSync(path).size > (path.endsWith(".svg") ? 200 : 20_000), `Asset ${asset.path} is suspiciously small or blank`);
   check(sha256(path) === asset.sha256, `Asset hash changed without regenerating contract: ${asset.path}`);
   const dimensions = imageDimensions(path);
   check(dimensions && dimensions.width >= 1000 && dimensions.height >= 500, `Asset ${asset.path} has insufficient or unreadable dimensions`);
@@ -391,9 +385,9 @@ const s111Units = courseV3Lessons.filter((lesson) => lesson.kind === "teaching" 
 check(s111Units.length === 5, `S1.11 must contain five independently taught compression units, found ${s111Units.length}`);
 check(/compression-need\.png$/.test(s111Units[0]?.leadVisual?.asset ?? ""), "S1.11 must begin with the reason-for-compression visual");
 check(/lossless.*lossy/i.test(s111Units[3]?.leadVisual?.title ?? "") && s111Units[3]?.leadVisual?.type === "table", "S1.11 must include a separate lossless/lossy comparison visual");
-const s111WhyCheck = courseV3Lessons.flatMap((lesson) => lesson.practice).find((question) => question.id === "V3-006-S1.11-WHY-COMPRESS-CHECK");
-check(s111WhyCheck?.marks === 3 && s111WhyCheck?.answerPoints.length === 3, "S1.11 reason-for-compression check must display three marking points");
-const s111RleCheck = courseV3Lessons.flatMap((lesson) => lesson.practice).find((question) => question.id === "V3-006-S1.11-RLE-CHECK");
+const s111WhyCheck = courseV3Lessons.flatMap((lesson) => lesson.practice).find((question) => question.id === "S1-L06-Q7");
+check(s111WhyCheck?.marks === 2 && s111WhyCheck?.answerPoints.length === 2, "S1.11 compression-benefits question must have two distinct marking points");
+const s111RleCheck = courseV3Lessons.flatMap((lesson) => lesson.practice).find((question) => question.id === "S1-L06-Q8");
 check(s111RleCheck?.marks === 4 && s111RleCheck?.answerPoints.length === 4, "S1.11 RLE check must display four marking points");
 const s303 = `${lessonText("S3.03")} ${practiceText("S3.03")}`.toLowerCase();
 for (const term of ["laser printer", "3d printer", "microphone", "speaker", "magnetic hard", "flash", "optical disc", "touchscreen", "virtual-reality"]) check(s303.includes(term), `S3.03 missing ${term}`);
@@ -434,6 +428,17 @@ check(css.includes("@media (max-width: 520px)"), "390px/mobile CSS breakpoint is
 check(css.includes("overflow-x:auto") || css.includes("overflow-x: auto"), "Responsive internal material scrolling is missing");
 check(existsSync(join(webRoot, "course-v3", "index.html")), "Whole-course index is missing");
 for (const section of Object.keys(sectionMeta)) check(existsSync(join(webRoot, "course-v3", `section-${section}`, "index.html")), `Section ${section} index is missing`);
+
+try {
+  const section1 = courseV3Lessons.filter((lesson) => lesson.section === 1);
+  const bank = JSON.parse(readFileSync(join(root, "scripts/assessment-bank-contract.json"), "utf8"));
+  validateSection1Presentation(section1, { checkFiles: true, bank });
+  if (process.argv.includes("--self-test")) console.log(`S1 regression self-test: ${section1PresentationSelfTest(section1, bank)} negative mutations rejected.`);
+} catch (error) { check(false, error.message); }
+
+try {
+  validateSection2Presentation(courseV3Lessons.filter((lesson) => lesson.section === 2), { checkFiles: true });
+} catch (error) { check(false, error.message); }
 
 if (process.argv.includes("--self-test")) {
   const mutations = [

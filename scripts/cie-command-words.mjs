@@ -62,7 +62,8 @@ export function normaliseQuestionPrompt(original) {
   prompt = replaceCommand(prompt, "Run-length encode", "Write the run-length encoding of");
   prompt = replaceCommand(prompt, "Decode", "Give the decoded form of");
   prompt = replaceCommand(prompt, "Interpret", "Give the denary value of");
-  prompt = replaceCommand(prompt, "Add", "Calculate the sum of");
+  // ADD is an assembly opcode as well as an English verb. Preserve the opcode.
+  prompt = prompt.replace(new RegExp(`${boundary}(Add|add)\\b`, "g"), (_, prefix) => `${prefix}Calculate the sum of`);
   prompt = prompt
     .replace(/\bImprove this answer\b/gi, "Develop this answer")
     .replace(/\bRewrite this\b/gi, "Write this")
