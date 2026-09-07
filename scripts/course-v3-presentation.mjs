@@ -685,7 +685,7 @@ function finaliseQuestion(question, lesson) {
   if (question.authored) {
     const classification = classifyCommand(question.prompt, requirementId);
     if (classification.status !== "Approved") throw new Error(`${question.id}: authored question needs a Cambridge command word`);
-    if (lesson.section === 6 && (!question.objectiveIds?.length || !question.objectiveIds.every((id) => lesson.objectives.some(([candidate]) => candidate === id)) || question.marks !== question.answerPoints.length)) throw new Error(`${question.id}: authored S6 mapping or marking points are invalid`);
+    if ([6, 7, 8].includes(lesson.section) && (!question.objectiveIds?.length || !question.objectiveIds.every((id) => lesson.objectives.some(([candidate]) => candidate === id)) || question.marks !== question.answerPoints.length)) throw new Error(`${question.id}: authored mapping or marking points are invalid`);
     return { ...question, commandWord: sentenceCase(classification.word) };
   }
   let prompt = promptOverrides[question.id] ?? coveragePrompt(question, lesson);
@@ -2035,6 +2035,9 @@ function examStyleQuestionSet(lesson, practice, staged) {
       ? [...new Set(requirements.map((id) => Number(id.slice(3)) <= 6 ? "6.1" : "6.2"))].join(", ")
       : lesson.section === 5
       ? [...new Set(requirements.map((id) => Number(id.slice(3)) <= 3 ? "5.1" : "5.2"))].join(", ")
+      : lesson.section === 8
+      ? [...new Set(requirements.map((id) => Number(id.slice(3)) <= 4 ? "8.1" : Number(id.slice(3)) <= 6 ? "8.2" : "8.3"))].join(", ")
+      : lesson.section === 7 ? "7.1"
       : requirements.includes("S3.10") ? "3.2" : "3.1";
     return {
       id: question.id,
@@ -2044,7 +2047,7 @@ function examStyleQuestionSet(lesson, practice, staged) {
       marks: question.marks, build: question.answerPoints, markLogic: question.answerPoints,
       commonLosses: [question.commonError],
       ...(question.diagram ? { diagram: question.diagram, diagramAlt: question.diagramAlt } : {}),
-      ...(lesson.section === 4 ? Object.fromEntries(["code", "codeCaption", "programKey", "table", "answerTable", "expectedTrace", "expectedAcc", "finalMemory"].filter((key) => question[key] !== undefined).map((key) => [key, question[key]])) : {}),
+      ...([4, 8].includes(lesson.section) ? Object.fromEntries(["code", "codeCaption", "codeLabel", "programKey", "table", "tables", "answerCode", "answerTable", "sqlCase", "expectedTrace", "expectedAcc", "finalMemory"].filter((key) => question[key] !== undefined).map((key) => [key, question[key]])) : {}),
     };
   });
   const objectiveRows = lesson.objectives.length ? lesson.objectives : [[`${lesson.syllabusIds[0]}.R`, lesson.title]];

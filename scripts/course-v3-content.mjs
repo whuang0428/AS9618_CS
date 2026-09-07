@@ -11,6 +11,8 @@ import { authorSection3Lesson } from "./course-v3-section3-content.mjs";
 import { authorSection4Lesson } from "./course-v3-section4-content.mjs";
 import { authorSection6Lesson } from "./course-v3-section6-content.mjs";
 import { authorSection5Lesson } from "./course-v3-section5-content.mjs";
+import { authorSection8Lesson } from "./course-v3-section8-content.mjs";
+import { authorSection7Lesson } from "./course-v3-section7-content.mjs";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const v2 = JSON.parse(readFileSync(join(root, "scripts", "course-v2-content.json"), "utf8"));
@@ -2259,7 +2261,7 @@ const rawCourse = [
   transformReviewLesson(v2.lessons.find((lesson) => lesson.lesson === 90)),
 ];
 
-export const courseV3Lessons = rawCourse.map(authorSection3Lesson).map(authorSection4Lesson).map(authorSection5Lesson).map(authorSection6Lesson).map((lesson, index) => finaliseLessonPresentation({
+export const courseV3Lessons = rawCourse.map(authorSection3Lesson).map(authorSection4Lesson).map(authorSection5Lesson).map(authorSection6Lesson).map(authorSection7Lesson).map(authorSection8Lesson).map((lesson, index) => finaliseLessonPresentation({
   ...lesson,
   sequenceIndex: index + 1,
   lessonKey: lesson.kind === "review" ? `REV-P${lesson.paper}` : `S${lesson.section}-L${String(rawCourse.slice(0, index + 1).filter((item) => item.section === lesson.section).length).padStart(2, "0")}`,

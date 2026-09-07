@@ -11632,100 +11632,125 @@
       "objectives": [
         {
           "id": "S7.01.A01",
-          "description": "Show understanding of the need for and purpose of ethics as a computing professional",
+          "description": "Explain the need for and purpose of ethics as a computing professional.",
           "explanationUnits": [
-            "The need for and purpose of ethics as a computing professional"
+            "Why computing professionals need ethics"
           ],
           "materialTitles": [
-            "Ethics is about responsible decision-making"
+            "From specialist knowledge to an informed decision",
+            "From technical power to responsibility"
           ],
           "questionIds": [
-            "V3-Q-L035-01",
-            "V3-Q-L035-02",
-            "V3-Q-L035-03"
+            "S7-L01-Q1",
+            "S7-L01-Q2"
           ],
           "pastPaperAnalysis": [
-            "9618/13/W/24 Q5(b)",
-            "Cambridge 9618 syllabus · S7.02",
-            "Cambridge 9618 syllabus · S7.02"
+            "Cambridge 9618 syllabus 7.1 · S7.01 (course mapping)"
+          ]
+        },
+        {
+          "id": "S7.01.A02",
+          "description": "Apply professional duties and distinguish ethical judgement from legal compliance.",
+          "explanationUnits": [
+            "Professional duties and legal compliance"
+          ],
+          "materialTitles": [
+            "Recognise the professional duty",
+            "An untested warning system"
+          ],
+          "questionIds": [
+            "S7-L01-Q3"
+          ],
+          "pastPaperAnalysis": [
+            "Cambridge 9618 syllabus 7.1 · S7.01 (course mapping)"
           ]
         },
         {
           "id": "S7.02.A01",
-          "description": "Show understanding of the need for and purpose of ethics as a computing professional",
+          "description": "Identify BCS and IEEE as professional bodies.",
           "explanationUnits": [
-            "The importance of joining a professional ethical body, including BCS and IEEE"
+            "BCS, IEEE and the value of membership"
           ],
           "materialTitles": [
-            "Professional bodies support standards, development and accountability"
+            "Membership support and its purpose"
           ],
           "questionIds": [
-            "V3-Q-L035-01",
-            "V3-Q-L035-02",
-            "V3-Q-L035-03"
+            "S7-L01-Q4"
           ],
           "pastPaperAnalysis": [
-            "9618/13/W/24 Q5(b)",
-            "Cambridge 9618 syllabus · S7.02",
-            "Cambridge 9618 syllabus · S7.02"
+            "Cambridge 9618 syllabus 7.1 · S7.02 (course mapping)"
           ]
         },
         {
           "id": "S7.02.A02",
-          "description": "Understand the importance of joining a professional ethical body including BCS (British Computer Society), IEEE (Institute of Electrical and Electronic Engineers)",
+          "description": "Explain why joining a professional ethical body supports professional practice.",
           "explanationUnits": [
-            "The importance of joining a professional ethical body, including BCS and IEEE"
+            "BCS, IEEE and the value of membership"
           ],
           "materialTitles": [
-            "Professional bodies support standards, development and accountability"
+            "Membership support and its purpose"
           ],
           "questionIds": [
-            "V3-Q-L035-01",
-            "V3-Q-L035-02",
-            "V3-Q-L035-03"
+            "S7-L01-Q5"
           ],
           "pastPaperAnalysis": [
-            "9618/13/W/24 Q5(b)",
-            "Cambridge 9618 syllabus · S7.02",
-            "Cambridge 9618 syllabus · S7.02"
+            "Cambridge 9618 syllabus 7.1 · S7.02 (course mapping)"
           ]
         }
       ],
       "knowledgeUnits": [
         {
           "syllabusId": "S7.01",
-          "heading": "The need for and purpose of ethics as a computing professional",
+          "heading": "Why computing professionals need ethics",
           "objectiveIds": [
             "S7.01.A01"
           ],
           "leadVisual": {
             "type": "reviewed-visual",
-            "title": "Ethics is about responsible decision-making"
+            "title": "From specialist knowledge to an informed decision"
           },
           "coreExplanation": [
-            "Professional ethics has a purpose: computing professionals must protect public interest, work competently and remain accountable for consequences. Joining a professional ethical body such as the British Computer Society (BCS) or the Institute of Electrical and Electronics Engineers (IEEE) provides codes of conduct, guidance, continuing professional development and a community that supports standards. In a situation, judge whether action is ethical or unethical and explain stakeholder impacts of both choices.",
-            "Joining a professional ethical body is important because membership gives a practitioner an explicit code of conduct, current professional guidance, continuing professional development and a community through which standards and misconduct can be challenged. The British Computer Society (BCS) and the Institute of Electrical and Electronics Engineers (IEEE) are the two named syllabus examples. Their codes promote public interest, competence, integrity, privacy and accountability; a code guides judgement but does not replace law.",
-            "Professional ethics provides principles for deciding how a computing professional should act when technical choices can affect clients, users, colleagues or wider society. Its purpose is to protect the public interest, support competent and honest work, and make professionals accountable for foreseeable consequences rather than treating legal compliance or a manager's instruction as the whole decision."
+            "Ethics concerns principles about right and wrong conduct. A computing professional makes decisions that can affect other people's safety, privacy, opportunities and resources. Users may lack the technical knowledge or access needed to detect an unsafe system or challenge its design, so technical power brings responsibilities.",
+            "Professional ethics helps guide decisions when interests conflict or a rule does not settle what should be done. Its purposes include protecting the public interest, promoting honest and competent work, maintaining trust and making professionals accountable for foreseeable effects of their decisions."
           ],
           "method": null,
           "workedExample": null
         },
         {
+          "syllabusId": "S7.01",
+          "heading": "Professional duties and legal compliance",
+          "objectiveIds": [
+            "S7.01.A02"
+          ],
+          "leadVisual": {
+            "type": "table",
+            "title": "Recognise the professional duty"
+          },
+          "coreExplanation": [
+            "A professional should work within their competence, report limitations honestly, protect confidential information and consider effects on the public. Conflicting interests should be disclosed so that advice can be evaluated fairly. For example, a paid relationship with a supplier can influence a recommendation even when that recommendation is technically possible.",
+            "Law sets enforceable requirements; ethical judgement also considers what is responsible in the particular circumstances. An employer's instruction or the absence of an explicit legal prohibition does not remove a professional's duty to consider harm. A defensible response records the concern, seeks appropriate guidance and proposes an action that addresses it."
+          ],
+          "method": null,
+          "workedExample": {
+            "type": "worked-example",
+            "title": "An untested warning system"
+          }
+        },
+        {
           "syllabusId": "S7.02",
-          "heading": "The importance of joining a professional ethical body, including BCS and IEEE",
+          "heading": "BCS, IEEE and the value of membership",
           "objectiveIds": [
             "S7.02.A01",
             "S7.02.A02"
           ],
           "leadVisual": {
-            "type": "reviewed-visual",
-            "title": "Professional bodies support standards, development and accountability"
+            "type": "table",
+            "title": "Membership support and its purpose"
           },
           "coreExplanation": [
-            "Joining a professional ethical body is important because membership gives a practitioner an explicit code of conduct, current professional guidance, continuing professional development and a community through which standards and misconduct can be challenged. The British Computer Society (BCS) and the Institute of Electrical and Electronics Engineers (IEEE) are the two named syllabus examples. Their codes promote public interest, competence, integrity, privacy and accountability; a code guides judgement but does not replace law.",
-            "Professional ethics has a purpose: computing professionals must protect public interest, work competently and remain accountable for consequences. Joining a professional ethical body such as the British Computer Society (BCS) or the Institute of Electrical and Electronics Engineers (IEEE) provides codes of conduct, guidance, continuing professional development and a community that supports standards. In a situation, judge whether action is ethical or unethical and explain stakeholder impacts of both choices.",
-            "The importance of joining a professional ethical body, including BCS and IEEE.",
-            "Professional ethics provides principles for deciding how a computing professional should act when technical choices can affect clients, users, colleagues or wider society. Its purpose is to protect the public interest, support competent and honest work, and make professionals accountable for foreseeable consequences rather than treating legal compliance or a manager's instruction as the whole decision."
+            "BCS is the British Computer Society. IEEE is the Institute of Electrical and Electronics Engineers. These professional bodies provide codes of conduct or ethics that express standards expected of members. A shared code gives a practitioner a reference when explaining a professional concern to an employer or client.",
+            "Joining can provide continuing professional development, technical information and contact with experienced peers. These help members maintain competence and obtain guidance when a problem exceeds their experience. Membership also brings expectations of conduct and accountability through the body's professional processes, supporting public confidence in the profession.",
+            "A code supports judgement but cannot guarantee that every member acts ethically. Membership does not replace the law, remove personal responsibility or automatically certify every product a member develops."
           ],
           "method": null,
           "workedExample": null
@@ -11733,68 +11758,73 @@
       ],
       "practice": [
         {
-          "id": "V3-Q-L035-01",
+          "id": "S7-L01-Q1",
+          "commandWord": "Explain",
+          "marks": 2,
+          "objectiveIds": [
+            "S7.01.A01"
+          ]
+        },
+        {
+          "id": "S7-L01-Q2",
+          "commandWord": "State",
+          "marks": 2,
+          "objectiveIds": [
+            "S7.01.A01"
+          ]
+        },
+        {
+          "id": "S7-L01-Q3",
+          "commandWord": "Explain",
+          "marks": 2,
+          "objectiveIds": [
+            "S7.01.A02"
+          ]
+        },
+        {
+          "id": "S7-L01-Q4",
           "commandWord": "Identify",
           "marks": 2,
           "objectiveIds": [
-            "S7.02.A02",
-            "S7.01.A01",
             "S7.02.A01"
           ]
         },
         {
-          "id": "V3-Q-L035-02",
-          "commandWord": "Evaluate",
-          "marks": 8,
-          "objectiveIds": [
-            "S7.01.A01",
-            "S7.02.A01",
-            "S7.02.A02"
-          ]
-        },
-        {
-          "id": "V3-Q-L035-03",
+          "id": "S7-L01-Q5",
           "commandWord": "Explain",
-          "marks": 6,
+          "marks": 2,
           "objectiveIds": [
-            "S7.02.A02",
-            "S7.01.A01",
-            "S7.02.A01"
+            "S7.02.A02"
           ]
         }
       ],
       "examStyleQuestions": [
         {
           "id": "S7-L01-EXAM-1",
-          "sourceRef": "9618/13/W/24 Q5(b)",
+          "sourceRef": "Cambridge 9618 syllabus 7.1 · S7.01 (course mapping)",
           "commandWord": "Explain",
-          "marks": 6,
+          "marks": 3,
           "objectiveIds": [
-            "S7.01.A01",
-            "S7.02.A01",
-            "S7.02.A02"
+            "S7.01.A01"
           ]
         },
         {
           "id": "S7-L01-EXAM-2",
-          "sourceRef": "Cambridge 9618 syllabus · S7.02",
-          "commandWord": "Describe",
-          "marks": 7,
+          "sourceRef": "Cambridge 9618 syllabus 7.1 · S7.01 (course mapping)",
+          "commandWord": "Explain",
+          "marks": 3,
           "objectiveIds": [
-            "S7.02.A02",
-            "S7.01.A01",
-            "S7.02.A01"
+            "S7.01.A02"
           ]
         },
         {
           "id": "S7-L01-EXAM-3",
-          "sourceRef": "Cambridge 9618 syllabus · S7.02",
-          "commandWord": "Explain",
-          "marks": 2,
+          "sourceRef": "Cambridge 9618 syllabus 7.1 · S7.02 (course mapping)",
+          "commandWord": "Identify",
+          "marks": 5,
           "objectiveIds": [
-            "S7.02.A02",
-            "S7.01.A01",
-            "S7.02.A01"
+            "S7.02.A01",
+            "S7.02.A02"
           ]
         }
       ]
@@ -11811,49 +11841,121 @@
       "objectives": [
         {
           "id": "S7.03.A01",
-          "description": "Show understanding of the need to act ethically and the impact of acting ethically or unethically for a given situation",
+          "description": "Identify stakeholders and professional responsibilities in a given situation.",
           "explanationUnits": [
-            "Explain the need to act ethically and the impact of acting ethically or unethically for a given situation."
+            "Identify the decision and the people affected"
           ],
           "materialTitles": [
-            "Ethical answers start with stakeholders"
+            "School trip location sharing"
           ],
           "questionIds": [
-            "V3-Q-L036-01",
-            "V3-Q-L036-02",
-            "V3-Q-L036-03"
+            "S7-L02-Q1",
+            "S7-L02-Q5"
           ],
           "pastPaperAnalysis": [
-            "9618/13/W/25 Q7(a)",
-            "Cambridge 9618 syllabus · S7.03",
-            "Cambridge 9618 syllabus · S7.03"
+            "Cambridge 9618 syllabus 7.1 · S7.03 (course mapping)"
+          ]
+        },
+        {
+          "id": "S7.03.A02",
+          "description": "Explain consequences of acting ethically and unethically for affected stakeholders.",
+          "explanationUnits": [
+            "Compare ethical and unethical actions"
+          ],
+          "materialTitles": [
+            "Compare the consequences of two actions",
+            "A travel application's accessibility error",
+            "Two responses to a reported defect"
+          ],
+          "questionIds": [
+            "S7-L02-Q2",
+            "S7-L02-Q3"
+          ],
+          "pastPaperAnalysis": [
+            "Cambridge 9618 syllabus 7.1 · S7.03 (course mapping)"
+          ]
+        },
+        {
+          "id": "S7.03.A03",
+          "description": "Justify an ethical action using evidence, alternatives and safeguards.",
+          "explanationUnits": [
+            "Justify a proportionate response"
+          ],
+          "materialTitles": [
+            "Build a supported judgement",
+            "Continuous tracking for attendance"
+          ],
+          "questionIds": [
+            "S7-L02-Q4",
+            "S7-L02-Q5"
+          ],
+          "pastPaperAnalysis": [
+            "Cambridge 9618 syllabus 7.1 · S7.03 (course mapping)"
           ]
         }
       ],
       "knowledgeUnits": [
         {
           "syllabusId": "S7.03",
-          "heading": "Explain the need to act ethically and the impact of acting ethically or unethically for a given situation.",
+          "heading": "Identify the decision and the people affected",
           "objectiveIds": [
             "S7.03.A01"
           ],
           "leadVisual": {
-            "type": "reviewed-visual",
-            "title": "Ethical answers start with stakeholders"
+            "type": "table",
+            "title": "School trip location sharing"
           },
           "coreExplanation": [
-            "For a given situation, decide whether an action is ethical or unethical by identifying the decision, affected stakeholders, benefits, harms, rights and responsibilities. Then explain the impact of acting ethically and the impact of acting unethically. A defensible conclusion applies evidence, proportionality and safeguards; it is not a one-sided list or an unsupported personal opinion.",
-            "Professional ethics has a purpose: computing professionals must protect public interest, work competently and remain accountable for consequences. Joining a professional ethical body such as the British Computer Society (BCS) or the Institute of Electrical and Electronics Engineers (IEEE) provides codes of conduct, guidance, continuing professional development and a community that supports standards. In a situation, judge whether action is ethical or unethical and explain stakeholder impacts of both choices.",
-            "Joining a professional ethical body is important because membership gives a practitioner an explicit code of conduct, current professional guidance, continuing professional development and a community through which standards and misconduct can be challenged. The British Computer Society (BCS) and the Institute of Electrical and Electronics Engineers (IEEE) are the two named syllabus examples. Their codes promote public interest, competence, integrity, privacy and accountability; a code guides judgement but does not replace law.",
-            "Artificial intelligence (AI) applications include classification, recommendation, prediction and autonomous control. Every AI evaluation should identify the application or decision mechanism and trace social, economic and environmental impacts before reaching a contextual judgement with realistic mitigations."
+            "Begin with the actual decision: what is someone proposing to collect, disclose, change or conceal? Identify direct stakeholders, such as users and employees, and others affected indirectly, such as families or the wider public. Different groups may have different interests in the same system.",
+            "Connect each stakeholder to a relevant responsibility. A school handling location data has duties towards pupils' privacy as well as safety. Naming 'society' without explaining a connection is too vague to support a judgement. Benefits and harms are parallel possibilities to investigate; one is not automatically the cause of the other."
           ],
           "method": null,
           "workedExample": null
+        },
+        {
+          "syllabusId": "S7.03",
+          "heading": "Compare ethical and unethical actions",
+          "objectiveIds": [
+            "S7.03.A02"
+          ],
+          "leadVisual": {
+            "type": "reviewed-visual",
+            "title": "Compare the consequences of two actions"
+          },
+          "coreExplanation": [
+            "Explain consequences through a cause-and-effect link: the action changes what happens to a stakeholder. For example, disclosing a known defect allows a client to avoid relying on unsafe output; concealing it can lead the client to make a harmful decision with misplaced confidence.",
+            "Consider both courses of action. Acting ethically can have an immediate cost, such as delay or extra testing, while preserving safety and trust. Acting unethically may produce a short-term advantage but can cause harm, complaints, loss of confidence or professional consequences. State consequences supported by the situation rather than assuming that every outcome is certain."
+          ],
+          "method": null,
+          "workedExample": {
+            "type": "worked-example",
+            "title": "A travel application's accessibility error"
+          }
+        },
+        {
+          "syllabusId": "S7.03",
+          "heading": "Justify a proportionate response",
+          "objectiveIds": [
+            "S7.03.A03"
+          ],
+          "leadVisual": {
+            "type": "flow",
+            "title": "Build a supported judgement"
+          },
+          "coreExplanation": [
+            "Use evidence to weigh the stated purpose against the effects on people. Compare a realistic alternative that could meet the purpose with less intrusion or risk. Proportionality means the action should be appropriate to the need and no more intrusive or harmful than necessary to achieve it.",
+            "A conclusion should identify an action and explain why it is justified. Relevant safeguards might include limiting collection and retention, restricting access, correcting inaccurate information or providing a way to challenge a decision. A safeguard needs a mechanism linked to the particular risk, and it may reduce rather than eliminate that risk."
+          ],
+          "method": null,
+          "workedExample": {
+            "type": "worked-example",
+            "title": "Continuous tracking for attendance"
+          }
         }
       ],
       "practice": [
         {
-          "id": "V3-Q-L036-01",
+          "id": "S7-L02-Q1",
           "commandWord": "Identify",
           "marks": 2,
           "objectiveIds": [
@@ -11861,48 +11963,65 @@
           ]
         },
         {
-          "id": "V3-Q-L036-02",
-          "commandWord": "State",
+          "id": "S7-L02-Q2",
+          "commandWord": "Explain",
           "marks": 2,
           "objectiveIds": [
-            "S7.03.A01"
+            "S7.03.A02"
           ]
         },
         {
-          "id": "V3-Q-L036-03",
+          "id": "S7-L02-Q3",
+          "commandWord": "Explain",
+          "marks": 2,
+          "objectiveIds": [
+            "S7.03.A02"
+          ]
+        },
+        {
+          "id": "S7-L02-Q4",
+          "commandWord": "Justify",
+          "marks": 3,
+          "objectiveIds": [
+            "S7.03.A03"
+          ]
+        },
+        {
+          "id": "S7-L02-Q5",
           "commandWord": "Explain",
           "marks": 3,
           "objectiveIds": [
-            "S7.03.A01"
+            "S7.03.A01",
+            "S7.03.A03"
           ]
         }
       ],
       "examStyleQuestions": [
         {
           "id": "S7-L02-EXAM-1",
-          "sourceRef": "9618/13/W/25 Q7(a)",
-          "commandWord": "Explain",
-          "marks": 6,
+          "sourceRef": "Cambridge 9618 syllabus 7.1 · S7.03 (course mapping)",
+          "commandWord": "Identify",
+          "marks": 4,
           "objectiveIds": [
             "S7.03.A01"
           ]
         },
         {
           "id": "S7-L02-EXAM-2",
-          "sourceRef": "Cambridge 9618 syllabus · S7.03",
-          "commandWord": "Describe",
-          "marks": 2,
+          "sourceRef": "Cambridge 9618 syllabus 7.1 · S7.03 (course mapping)",
+          "commandWord": "Explain",
+          "marks": 4,
           "objectiveIds": [
-            "S7.03.A01"
+            "S7.03.A02"
           ]
         },
         {
           "id": "S7-L02-EXAM-3",
-          "sourceRef": "Cambridge 9618 syllabus · S7.03",
-          "commandWord": "Explain",
-          "marks": 2,
+          "sourceRef": "Cambridge 9618 syllabus 7.1 · S7.03 (course mapping)",
+          "commandWord": "Justify",
+          "marks": 3,
           "objectiveIds": [
-            "S7.03.A01"
+            "S7.03.A03"
           ]
         }
       ]
@@ -11920,193 +12039,285 @@
       "objectives": [
         {
           "id": "S7.04.A01",
-          "description": "Show understanding of the need for copyright legislation",
+          "description": "Explain why copyright legislation is needed for software.",
           "explanationUnits": [
-            "The need for copyright legislation for software"
+            "Why software needs copyright protection"
           ],
           "materialTitles": [
-            "Copyright protects expression, including software code"
+            "Ownership and permission perform different roles",
+            "A purchased program copied to a class",
+            "Separate the right from permission to use it"
           ],
           "questionIds": [
-            "V3-Q-L037-01",
-            "V3-Q-L037-02"
+            "S7-L03-Q1"
           ],
           "pastPaperAnalysis": [
-            "9618/12/W/25 Q2(a)",
-            "Cambridge 9618 syllabus · S7.05"
+            "Cambridge 9618 syllabus 7.1 · S7.04 (course mapping)"
           ]
         },
         {
           "id": "S7.05.A01",
-          "description": "Explain the Free Software Foundation licensing model.",
+          "description": "Explain free software in the Free Software Foundation approach.",
           "explanationUnits": [
-            "Different software licensing types and justify a licence for a given situation"
+            "Free software and the Free Software Foundation"
           ],
           "materialTitles": [
-            "A licence grants permission under conditions"
+            "Four freedoms in use"
           ],
           "questionIds": [
-            "V3-Q-L037-01",
-            "V3-Q-L037-02",
-            "V3-Q-L037-03"
+            "S7-L03-Q2"
           ],
           "pastPaperAnalysis": [
-            "9618/12/W/25 Q2(a)",
-            "Cambridge 9618 syllabus · S7.05",
-            "Cambridge 9618 syllabus · S7.05"
+            "Cambridge 9618 syllabus 7.1 · S7.05 (course mapping)"
           ]
         },
         {
           "id": "S7.05.A02",
-          "description": "Explain open-source licensing.",
+          "description": "Explain the role of the Open Source Initiative and open-source permissions.",
           "explanationUnits": [
-            "Different software licensing types and justify a licence for a given situation"
+            "Open source and the Open Source Initiative"
           ],
           "materialTitles": [
-            "A licence grants permission under conditions"
+            "Check rights as well as source access"
           ],
           "questionIds": [
-            "V3-Q-L037-01",
-            "V3-Q-L037-02"
+            "S7-L03-Q3",
+            "S7-L03-Q5"
           ],
           "pastPaperAnalysis": [
-            "9618/12/W/25 Q2(a)",
-            "Cambridge 9618 syllabus · S7.05"
+            "Cambridge 9618 syllabus 7.1 · S7.05 (course mapping)"
           ]
         },
         {
           "id": "S7.05.A03",
-          "description": "Explain shareware licensing.",
+          "description": "Describe shareware and its trial restrictions.",
           "explanationUnits": [
-            "Different software licensing types and justify a licence for a given situation"
+            "Shareware: evaluate before continued use"
           ],
           "materialTitles": [
-            "A licence grants permission under conditions"
+            "A trial has terms and a continuation decision",
+            "A 30-day evaluation licence"
           ],
           "questionIds": [
-            "V3-Q-L037-03"
+            "S7-L03-Q4",
+            "S7-L03-Q8"
           ],
           "pastPaperAnalysis": [
-            "Cambridge 9618 syllabus · S7.05"
+            "Cambridge 9618 syllabus 7.1 · S7.05 (course mapping)"
           ]
         },
         {
           "id": "S7.05.A04",
-          "description": "Explain commercial software licensing.",
+          "description": "Explain commercial software licensing and distinguish commercial from proprietary.",
           "explanationUnits": [
-            "Different software licensing types and justify a licence for a given situation"
+            "Commercial and proprietary software"
           ],
           "materialTitles": [
-            "A licence grants permission under conditions"
+            "Separate user permissions from the price of a copy",
+            "Price, business model and permissions"
           ],
           "questionIds": [
-            "V3-Q-L037-01",
-            "V3-Q-L037-02",
-            "V3-Q-L037-03"
+            "S7-L03-Q5",
+            "S7-L03-Q6"
           ],
           "pastPaperAnalysis": [
-            "9618/12/W/25 Q2(a)",
-            "Cambridge 9618 syllabus · S7.05",
-            "Cambridge 9618 syllabus · S7.05"
+            "Cambridge 9618 syllabus 7.1 · S7.05 (course mapping)",
+            "Cambridge 9618 syllabus 7.1 · S7.05 (course mapping)"
           ]
         },
         {
           "id": "S7.05.A05",
-          "description": "Justify a licence for a given situation.",
+          "description": "Justify a licence choice using a given situation's requirements.",
           "explanationUnits": [
-            "Different software licensing types and justify a licence for a given situation"
+            "Choose a licence from the requirements"
           ],
           "materialTitles": [
-            "A licence grants permission under conditions"
+            "Match a requirement to a licence feature",
+            "Choose a tool for community centres"
           ],
           "questionIds": [
-            "V3-037-S7.05-CHECK"
+            "S7-L03-Q7",
+            "S7-L03-Q8"
           ],
-          "pastPaperAnalysis": []
+          "pastPaperAnalysis": [
+            "Cambridge 9618 syllabus 7.1 · S7.05 (course mapping)"
+          ]
         }
       ],
       "knowledgeUnits": [
         {
           "syllabusId": "S7.04",
-          "heading": "The need for copyright legislation for software",
+          "heading": "Why software needs copyright protection",
           "objectiveIds": [
             "S7.04.A01"
           ],
           "leadVisual": {
             "type": "reviewed-visual",
-            "title": "Copyright protects expression, including software code"
+            "title": "Ownership and permission perform different roles"
           },
           "coreExplanation": [
-            "Copyright legislation is needed because software can be copied and distributed at very low cost while its creation requires time, skill and investment. It gives the copyright holder legal control over protected expression such as source code and documentation, including copying, distribution and adaptation, so unauthorised use can be challenged and creators can license work and receive revenue. Copyright protects expression rather than every abstract idea, and a limited legal exception is not permission for unrestricted copying.",
-            "A software licence is the copyright holder's permission to use protected work under stated conditions; paying for or downloading software does not normally transfer ownership. The licence may allow or restrict installation, copying, modification and redistribution. Copyright legislation establishes the rights, while the licence defines which of those acts the user is permitted to perform.",
-            "Copyright legislation is needed to give creators enforceable control over software expression that can otherwise be copied and distributed cheaply. A licence grants permission without normally transferring ownership. The required licence categories are the Free Software Foundation (FSF), Open Source Initiative (OSI), shareware and commercial software; justify a choice from the scenario's permissions, restrictions, support, cost and redistribution needs.",
-            "The Free Software Foundation (FSF) emphasises freedoms to run, study, modify and share software; source access is necessary for study and modification. The Open Source Initiative (OSI) defines open-source criteria and approves licences that meet them. Free/open-source software can still be sold and remains protected by copyright; users must follow conditions such as preserving notices, attribution or sharing derivative source under compatible terms."
+            "Writing software takes time, skill and investment, while copying a finished program can cost very little. Copyright legislation gives the rights holder enforceable control over protected expression such as original source code and documentation. This allows unauthorised copying or distribution to be challenged and enables creators to grant permissions and obtain revenue from their work.",
+            "Copyright protects the expression of a program rather than every underlying idea or mathematical method. A licence grants permission for specified acts under conditions; buying a copy normally does not transfer ownership of its copyright. A user should establish the applicable permissions before copying, modifying or redistributing software, taking account of any relevant legal exceptions."
+          ],
+          "method": null,
+          "workedExample": {
+            "type": "worked-example",
+            "title": "A purchased program copied to a class"
+          }
+        },
+        {
+          "syllabusId": "S7.05",
+          "heading": "Free software and the Free Software Foundation",
+          "objectiveIds": [
+            "S7.05.A01"
+          ],
+          "leadVisual": {
+            "type": "table",
+            "title": "Four freedoms in use"
+          },
+          "coreExplanation": [
+            "The Free Software Foundation (FSF) promotes software freedom. Its approach gives users freedoms to run a program for any purpose, study and change it, redistribute copies, and distribute modified versions. Access to source code is necessary for studying how the program works and making useful changes.",
+            "Free refers to these freedoms, not necessarily a zero price. A copy or support service can be sold while the user retains the freedoms granted by a free-software licence. Some licences use copyleft conditions to preserve freedoms in distributed derivatives; not every free-software licence imposes the same redistribution conditions."
           ],
           "method": null,
           "workedExample": null
         },
         {
           "syllabusId": "S7.05",
-          "heading": "Different software licensing types and justify a licence for a given situation",
+          "heading": "Open source and the Open Source Initiative",
           "objectiveIds": [
-            "S7.05.A01",
-            "S7.05.A02",
-            "S7.05.A03",
-            "S7.05.A04",
-            "S7.05.A05"
+            "S7.05.A02"
           ],
           "leadVisual": {
-            "type": "reviewed-visual",
-            "title": "A licence grants permission under conditions"
+            "type": "table",
+            "title": "Check rights as well as source access"
           },
           "coreExplanation": [
-            "Copyright legislation is needed to give creators enforceable control over software expression that can otherwise be copied and distributed cheaply. A licence grants permission without normally transferring ownership. The required licence categories are the Free Software Foundation (FSF), Open Source Initiative (OSI), shareware and commercial software; justify a choice from the scenario's permissions, restrictions, support, cost and redistribution needs.",
-            "The required licence categories include FSF and OSI open-source licences, shareware and commercial software. A justified licence choice links its permissions, restrictions and cost to the stated situation.",
-            "The Free Software Foundation (FSF) emphasises freedoms to run, study, modify and share software; source access is necessary for study and modification. The Open Source Initiative (OSI) defines open-source criteria and approves licences that meet them. Free/open-source software can still be sold and remains protected by copyright; users must follow conditions such as preserving notices, attribution or sharing derivative source under compatible terms.",
-            "Licence choice must fit the scenario: budget, support, source modification, redistribution, trial period, compatibility and legal obligations are relevant. 'Free to download' does not mean public domain."
+            "The Open Source Initiative (OSI) maintains the Open Source Definition and approves licences that satisfy its criteria. Open-source licensing includes access to source code and permission to modify and redistribute the software. Merely allowing users to look at source code is insufficient if the licence prohibits the necessary uses or redistribution.",
+            "FSF and OSI are organisations, not two individual licences. Many licences satisfy both free-software and open-source criteria. Their emphasis differs: the FSF stresses users' freedoms, while the OSI evaluates licences against open-source criteria. For a real choice, read the licence's obligations, such as keeping notices or conditions on distributing modified work."
           ],
           "method": null,
           "workedExample": null
+        },
+        {
+          "syllabusId": "S7.05",
+          "heading": "Shareware: evaluate before continued use",
+          "objectiveIds": [
+            "S7.05.A03"
+          ],
+          "leadVisual": {
+            "type": "reviewed-visual",
+            "title": "A trial has terms and a continuation decision"
+          },
+          "coreExplanation": [
+            "Shareware is distributed so users can try software before paying for continued or complete use. A trial may expire after a stated period or restrict features until a licence is purchased. The exact trial terms determine what use and copying are permitted.",
+            "This approach can reduce the risk of buying an unsuitable program because a user can test it on their own system. However, a successful trial is not a permanent entitlement, and shareware does not automatically include source code or permission to modify it. Budget for any required payment and check what happens when the trial ends."
+          ],
+          "method": null,
+          "workedExample": null
+        },
+        {
+          "syllabusId": "S7.05",
+          "heading": "Commercial and proprietary software",
+          "objectiveIds": [
+            "S7.05.A04"
+          ],
+          "leadVisual": {
+            "type": "reviewed-visual",
+            "title": "Separate user permissions from the price of a copy"
+          },
+          "coreExplanation": [
+            "Commercial software is developed or supplied as a business activity. A supplier may earn income from licences, subscriptions, support or other services. Commercial and proprietary are not synonyms: a business can sell free or open-source software, while proprietary software can sometimes be offered without payment.",
+            "A proprietary licence commonly permits specified use while limiting copying, modification or redistribution. Terms may specify the number of users or devices, duration and support arrangements. Paid support can be useful when it is actually included in the agreement; payment alone does not guarantee support, source access or unrestricted installation."
+          ],
+          "method": null,
+          "workedExample": null
+        },
+        {
+          "syllabusId": "S7.05",
+          "heading": "Choose a licence from the requirements",
+          "objectiveIds": [
+            "S7.05.A05"
+          ],
+          "leadVisual": {
+            "type": "table",
+            "title": "Match a requirement to a licence feature"
+          },
+          "coreExplanation": [
+            "Identify the organisation's required acts before selecting software: running it on the intended devices, modifying source, distributing copies or obtaining support. Then compare those needs with the permissions, costs and obligations of the offered licences. A cheap option is unsuitable if its terms prohibit a required act.",
+            "A justification connects a stated requirement to a licence feature and its consequence. Check practical limits as well: source modification needs skilled staff, a trial needs a continuation plan, and supplier support needs agreed scope and availability. There is no single licence category that is best for every organisation."
+          ],
+          "method": null,
+          "workedExample": {
+            "type": "worked-example",
+            "title": "Choose a tool for community centres"
+          }
         }
       ],
       "practice": [
         {
-          "id": "V3-Q-L037-01",
+          "id": "S7-L03-Q1",
           "commandWord": "Explain",
-          "marks": 6,
+          "marks": 2,
           "objectiveIds": [
-            "S7.04.A01",
-            "S7.05.A01",
-            "S7.05.A04",
+            "S7.04.A01"
+          ]
+        },
+        {
+          "id": "S7-L03-Q2",
+          "commandWord": "Describe",
+          "marks": 4,
+          "objectiveIds": [
+            "S7.05.A01"
+          ]
+        },
+        {
+          "id": "S7-L03-Q3",
+          "commandWord": "Explain",
+          "marks": 2,
+          "objectiveIds": [
             "S7.05.A02"
           ]
         },
         {
-          "id": "V3-Q-L037-02",
+          "id": "S7-L03-Q4",
           "commandWord": "Explain",
           "marks": 2,
           "objectiveIds": [
-            "S7.04.A01",
-            "S7.05.A01",
+            "S7.05.A03"
+          ]
+        },
+        {
+          "id": "S7-L03-Q5",
+          "commandWord": "Explain",
+          "marks": 2,
+          "objectiveIds": [
             "S7.05.A02",
             "S7.05.A04"
           ]
         },
         {
-          "id": "V3-Q-L037-03",
-          "commandWord": "Identify",
-          "marks": 2,
+          "id": "S7-L03-Q6",
+          "commandWord": "State",
+          "marks": 3,
           "objectiveIds": [
-            "S7.05.A01",
-            "S7.05.A04",
-            "S7.05.A03"
+            "S7.05.A04"
           ]
         },
         {
-          "id": "V3-037-S7.05-CHECK",
-          "commandWord": "Explain",
-          "marks": 5,
+          "id": "S7-L03-Q7",
+          "commandWord": "Justify",
+          "marks": 3,
           "objectiveIds": [
+            "S7.05.A05"
+          ]
+        },
+        {
+          "id": "S7-L03-Q8",
+          "commandWord": "Justify",
+          "marks": 2,
+          "objectiveIds": [
+            "S7.05.A03",
             "S7.05.A05"
           ]
         }
@@ -12114,37 +12325,33 @@
       "examStyleQuestions": [
         {
           "id": "S7-L03-EXAM-1",
-          "sourceRef": "9618/12/W/25 Q2(a)",
+          "sourceRef": "Cambridge 9618 syllabus 7.1 · S7.04 (course mapping)",
           "commandWord": "Explain",
-          "marks": 7,
+          "marks": 4,
           "objectiveIds": [
-            "S7.04.A01",
-            "S7.05.A01",
-            "S7.05.A04",
-            "S7.05.A02"
+            "S7.04.A01"
           ]
         },
         {
           "id": "S7-L03-EXAM-2",
-          "sourceRef": "Cambridge 9618 syllabus · S7.05",
+          "sourceRef": "Cambridge 9618 syllabus 7.1 · S7.05 (course mapping)",
           "commandWord": "Describe",
-          "marks": 1,
+          "marks": 4,
           "objectiveIds": [
-            "S7.04.A01",
             "S7.05.A01",
             "S7.05.A02",
+            "S7.05.A03",
             "S7.05.A04"
           ]
         },
         {
           "id": "S7-L03-EXAM-3",
-          "sourceRef": "Cambridge 9618 syllabus · S7.05",
-          "commandWord": "Explain",
-          "marks": 2,
+          "sourceRef": "Cambridge 9618 syllabus 7.1 · S7.05 (course mapping)",
+          "commandWord": "Justify",
+          "marks": 4,
           "objectiveIds": [
-            "S7.05.A01",
             "S7.05.A04",
-            "S7.05.A03"
+            "S7.05.A05"
           ]
         }
       ]
@@ -12161,119 +12368,295 @@
       "objectives": [
         {
           "id": "S7.06.A01",
-          "description": "Show understanding of Artificial Intelligence (AI)",
+          "description": "Explain artificial intelligence and distinguish it from simply storing or processing data.",
           "explanationUnits": [
-            "Artificial intelligence, its applications and its social, economic and environmental impacts"
+            "What artificial intelligence does"
           ],
           "materialTitles": [
-            "Environmental impacts include energy use and resource consumption"
+            "Identify the task"
           ],
           "questionIds": [
-            "V3-Q-L038-02"
+            "S7-L04-Q1"
           ],
           "pastPaperAnalysis": [
-            "9618/11/S/25 Q4(a)"
+            "Cambridge 9618 syllabus 7.1 · S7.06 (course mapping)"
           ]
         },
         {
           "id": "S7.06.A02",
-          "description": "Understand the impact of AI including social, economic and environmental issues",
+          "description": "Describe AI applications by linking input, task, output and use.",
           "explanationUnits": [
-            "Artificial intelligence, its applications and its social, economic and environmental impacts"
+            "From input to an AI-assisted action"
           ],
           "materialTitles": [
-            "Environmental impacts include energy use and resource consumption"
+            "Follow a maintenance prediction from input to use",
+            "A pump maintenance alert",
+            "Concrete AI applications"
           ],
           "questionIds": [
-            "V3-Q-L038-01",
-            "V3-Q-L038-02",
-            "V3-Q-L038-03"
+            "S7-L04-Q2",
+            "S7-L04-Q3"
           ],
           "pastPaperAnalysis": [
-            "9618/11/S/25 Q4(a)",
-            "Cambridge 9618 syllabus · S7.06",
-            "Cambridge 9618 syllabus · S7.06"
+            "Cambridge 9618 syllabus 7.1 · S7.06 (course mapping)"
           ]
         },
         {
           "id": "S7.06.A03",
-          "description": "Understand the applications of AI",
+          "description": "Explain social benefits and risks of AI applications.",
           "explanationUnits": [
-            "Artificial intelligence, its applications and its social, economic and environmental impacts"
+            "Social effects: access, fairness and privacy"
           ],
           "materialTitles": [
-            "Environmental impacts include energy use and resource consumption"
+            "Look beyond an overall accuracy figure",
+            "One application, different social effects"
           ],
           "questionIds": [
-            "V3-038-S7.06-CHECK"
+            "S7-L04-Q4",
+            "S7-L04-Q7"
           ],
-          "pastPaperAnalysis": []
+          "pastPaperAnalysis": [
+            "Cambridge 9618 syllabus 7.1 · S7.06 (course mapping)"
+          ]
+        },
+        {
+          "id": "S7.06.A04",
+          "description": "Explain economic benefits and costs of AI applications.",
+          "explanationUnits": [
+            "Economic effects: productivity, work and cost"
+          ],
+          "materialTitles": [
+            "Account for more than one cost"
+          ],
+          "questionIds": [
+            "S7-L04-Q5"
+          ],
+          "pastPaperAnalysis": [
+            "Cambridge 9618 syllabus 7.1 · S7.06 (course mapping)"
+          ]
+        },
+        {
+          "id": "S7.06.A05",
+          "description": "Explain environmental benefits and costs of AI applications.",
+          "explanationUnits": [
+            "Environmental costs and potential savings"
+          ],
+          "materialTitles": [
+            "Compare application savings with the system footprint",
+            "Compare both sides of AI-controlled heating"
+          ],
+          "questionIds": [
+            "S7-L04-Q6",
+            "S7-L04-Q8"
+          ],
+          "pastPaperAnalysis": [
+            "Cambridge 9618 syllabus 7.1 · S7.06 (course mapping)"
+          ]
+        },
+        {
+          "id": "S7.06.A06",
+          "description": "Evaluate an AI application using relevant impacts, safeguards and a supported conclusion.",
+          "explanationUnits": [
+            "Evaluate an application in its setting"
+          ],
+          "materialTitles": [
+            "Evaluate a proposed deployment",
+            "A hospital tests scan prioritisation"
+          ],
+          "questionIds": [
+            "S7-L04-Q7",
+            "S7-L04-Q8"
+          ],
+          "pastPaperAnalysis": [
+            "Cambridge 9618 syllabus 7.1 · S7.06 (course mapping)",
+            "Cambridge 9618 syllabus 7.1 · S7.06 (course mapping)"
+          ]
         }
       ],
       "knowledgeUnits": [
         {
           "syllabusId": "S7.06",
-          "heading": "Artificial intelligence, its applications and its social, economic and environmental impacts",
+          "heading": "What artificial intelligence does",
           "objectiveIds": [
-            "S7.06.A01",
-            "S7.06.A02",
+            "S7.06.A01"
+          ],
+          "leadVisual": {
+            "type": "table",
+            "title": "Identify the task"
+          },
+          "coreExplanation": [
+            "Artificial intelligence (AI) enables computer systems to perform tasks associated with human intelligence, such as interpreting language, recognising patterns, reasoning or making predictions and decisions. A system may use expert-written rules or a model learned from data to infer an output for a new input.",
+            "An AI system does not have to be a physical robot, conscious or human-like in every respect. A recommendation service can use AI entirely in software. Conversely, recording information or performing a fixed arithmetic calculation does not by itself demonstrate AI. Identify the interpretation, inference or decision task being performed."
+          ],
+          "method": null,
+          "workedExample": null
+        },
+        {
+          "syllabusId": "S7.06",
+          "heading": "From input to an AI-assisted action",
+          "objectiveIds": [
+            "S7.06.A02"
+          ],
+          "leadVisual": {
+            "type": "reviewed-visual",
+            "title": "Follow a maintenance prediction from input to use"
+          },
+          "coreExplanation": [
+            "Describe an application as a connected chain. State the input information, what the AI infers or recognises, the resulting output and how that output is used. 'AI is used in medicine' names an area but does not explain an application; interpreting a scan to flag a possible abnormality gives a task and a use.",
+            "Outputs can guide a person or control an action. A fraud-detection model may flag a payment for an investigator, while an autonomous controller may select an action from sensor readings. Confidence, reliability and consequences determine how much checking or human intervention is appropriate. A prediction can be useful without being certain."
+          ],
+          "method": null,
+          "workedExample": {
+            "type": "worked-example",
+            "title": "A pump maintenance alert"
+          }
+        },
+        {
+          "syllabusId": "S7.06",
+          "heading": "Social effects: access, fairness and privacy",
+          "objectiveIds": [
             "S7.06.A03"
           ],
           "leadVisual": {
             "type": "reviewed-visual",
-            "title": "Environmental impacts include energy use and resource consumption"
+            "title": "Look beyond an overall accuracy figure"
           },
           "coreExplanation": [
-            "Artificial intelligence (AI) applications include classification, recommendation, prediction and autonomous control. Every AI evaluation should identify the application or decision mechanism and trace social, economic and environmental impacts before reaching a contextual judgement with realistic mitigations.",
-            "Artificial intelligence, its applications and its social, economic and environmental impacts.",
-            "Social impacts include access, bias and privacy; economic impacts include productivity, job redesign and error cost; environmental impacts include data-centre energy/material use and optimisation of transport or power. Evaluation balances benefits, harms and mitigations in context.",
-            "To evaluate an AI application, balance its social, economic and environmental impacts and reach a context-linked judgement."
+            "Social impacts concern how people live, participate and are treated. Speech recognition can improve access for someone unable to type, and translation can help people communicate. The benefit depends on whether the system works adequately for its users, including different accents, languages or disabilities.",
+            "Biased or unrepresentative data can contribute to unequal error rates and unfair decisions. Collecting personal information also creates privacy risks. Explain who benefits or is harmed: a hiring system that rejects qualified applicants unfairly changes their opportunities. Testing across affected groups, limiting unnecessary collection and providing human review or appeal can reduce specific risks."
           ],
           "method": null,
           "workedExample": null
+        },
+        {
+          "syllabusId": "S7.06",
+          "heading": "Economic effects: productivity, work and cost",
+          "objectiveIds": [
+            "S7.06.A04"
+          ],
+          "leadVisual": {
+            "type": "table",
+            "title": "Account for more than one cost"
+          },
+          "coreExplanation": [
+            "Economic impacts concern resources, production, costs and employment. An AI tool may process routine cases more quickly, reduce waste or predict failures before expensive disruption. Link the saving to the activity: an early equipment warning may allow planned maintenance during a quiet period rather than an emergency shutdown.",
+            "Costs include developing or buying the system, obtaining and maintaining suitable data, operating hardware and training staff. Incorrect decisions can create rework or losses. Automation may reduce demand for some tasks while creating or changing roles in supervision, maintenance and specialist support; workers may need retraining. A productivity gain does not mean every worker or business benefits equally."
+          ],
+          "method": null,
+          "workedExample": null
+        },
+        {
+          "syllabusId": "S7.06",
+          "heading": "Environmental costs and potential savings",
+          "objectiveIds": [
+            "S7.06.A05"
+          ],
+          "leadVisual": {
+            "type": "reviewed-visual",
+            "title": "Compare application savings with the system footprint"
+          },
+          "coreExplanation": [
+            "Training and operating AI models uses computing equipment and electricity, and cooling may require water or additional energy. Manufacturing and replacing hardware also uses materials and produces waste. Emissions depend partly on the energy supply, so identical computation can have different environmental consequences in different settings.",
+            "An AI application can also reduce resource use: optimising delivery routes may reduce fuel consumption, adjusting heating to occupancy may reduce energy waste, and detecting faults may prolong equipment life. Compare these savings with the system's own operation and hardware lifecycle. The result depends on the scale of use and the alternative being replaced, not on an assumption that all AI is environmentally beneficial or harmful."
+          ],
+          "method": null,
+          "workedExample": null
+        },
+        {
+          "syllabusId": "S7.06",
+          "heading": "Evaluate an application in its setting",
+          "objectiveIds": [
+            "S7.06.A06"
+          ],
+          "leadVisual": {
+            "type": "flow",
+            "title": "Evaluate a proposed deployment"
+          },
+          "coreExplanation": [
+            "Start an evaluation by identifying the AI task and the decision it influences. Develop relevant benefits and drawbacks through effects on named stakeholders or resources. Consider social, economic and environmental dimensions where they apply to the question, but do not force an unrelated point into a response simply to repeat three labels.",
+            "Reach a supported judgement using the supplied constraints. State a suitable safeguard or alternative and explain the risk it addresses. Human oversight needs a workable review process and competent reviewers; writing 'a human checks it' does not establish that errors will be caught. A conditional recommendation should say which evidence or conditions would make deployment acceptable."
+          ],
+          "method": null,
+          "workedExample": {
+            "type": "worked-example",
+            "title": "A hospital tests scan prioritisation"
+          }
         }
       ],
       "practice": [
         {
-          "id": "V3-Q-L038-01",
-          "commandWord": "Identify",
+          "id": "S7-L04-Q1",
+          "commandWord": "Explain",
           "marks": 2,
+          "objectiveIds": [
+            "S7.06.A01"
+          ]
+        },
+        {
+          "id": "S7-L04-Q2",
+          "commandWord": "Describe",
+          "marks": 3,
           "objectiveIds": [
             "S7.06.A02"
           ]
         },
         {
-          "id": "V3-Q-L038-02",
+          "id": "S7-L04-Q3",
+          "commandWord": "Describe",
+          "marks": 3,
+          "objectiveIds": [
+            "S7.06.A02"
+          ]
+        },
+        {
+          "id": "S7-L04-Q4",
+          "commandWord": "Explain",
+          "marks": 3,
+          "objectiveIds": [
+            "S7.06.A03"
+          ]
+        },
+        {
+          "id": "S7-L04-Q5",
+          "commandWord": "Predict",
+          "marks": 3,
+          "objectiveIds": [
+            "S7.06.A04"
+          ]
+        },
+        {
+          "id": "S7-L04-Q6",
+          "commandWord": "Explain",
+          "marks": 3,
+          "objectiveIds": [
+            "S7.06.A05"
+          ]
+        },
+        {
+          "id": "S7-L04-Q7",
           "commandWord": "Evaluate",
           "marks": 4,
           "objectiveIds": [
-            "S7.06.A01",
-            "S7.06.A02"
+            "S7.06.A03",
+            "S7.06.A06"
           ]
         },
         {
-          "id": "V3-Q-L038-03",
-          "commandWord": "Give",
+          "id": "S7-L04-Q8",
+          "commandWord": "Explain",
           "marks": 2,
           "objectiveIds": [
-            "S7.06.A02"
-          ]
-        },
-        {
-          "id": "V3-038-S7.06-CHECK",
-          "commandWord": "Explain",
-          "marks": 4,
-          "objectiveIds": [
-            "S7.06.A03"
+            "S7.06.A05",
+            "S7.06.A06"
           ]
         }
       ],
       "examStyleQuestions": [
         {
           "id": "S7-L04-EXAM-1",
-          "sourceRef": "9618/11/S/25 Q4(a)",
+          "sourceRef": "Cambridge 9618 syllabus 7.1 · S7.06 (course mapping)",
           "commandWord": "Explain",
-          "marks": 5,
+          "marks": 4,
           "objectiveIds": [
             "S7.06.A01",
             "S7.06.A02"
@@ -12281,20 +12664,23 @@
         },
         {
           "id": "S7-L04-EXAM-2",
-          "sourceRef": "Cambridge 9618 syllabus · S7.06",
-          "commandWord": "Describe",
-          "marks": 2,
+          "sourceRef": "Cambridge 9618 syllabus 7.1 · S7.06 (course mapping)",
+          "commandWord": "Evaluate",
+          "marks": 5,
           "objectiveIds": [
-            "S7.06.A02"
+            "S7.06.A03",
+            "S7.06.A04",
+            "S7.06.A06"
           ]
         },
         {
           "id": "S7-L04-EXAM-3",
-          "sourceRef": "Cambridge 9618 syllabus · S7.06",
+          "sourceRef": "Cambridge 9618 syllabus 7.1 · S7.06 (course mapping)",
           "commandWord": "Explain",
-          "marks": 2,
+          "marks": 5,
           "objectiveIds": [
-            "S7.06.A02"
+            "S7.06.A05",
+            "S7.06.A06"
           ]
         }
       ]
@@ -12312,161 +12698,223 @@
       "objectives": [
         {
           "id": "S8.01.A01",
-          "description": "Show understanding of the limitations of using a file-based approach for the storage and retrieval of data",
+          "description": "Explain limitations of a file-based approach to storing and retrieving data.",
           "explanationUnits": [
-            "Limitations of file-based systems and how relational databases address them"
+            "From repeated facts to linked tables"
           ],
           "materialTitles": [
-            "Flat-file vs relational comparison"
+            "Store shared patient facts once",
+            "A patient moves house"
           ],
           "questionIds": [
-            "V3-Q-L039-01"
+            "S8-L01-Q1"
           ],
           "pastPaperAnalysis": [
-            "9618/12/W/24 Q6(i)"
+            "Cambridge 9618 syllabus 8.1 · S8.01, S8.02 (course mapping)"
           ]
         },
         {
           "id": "S8.01.A02",
-          "description": "Describe the features of a relational database that address the limitations of a file-based approach",
+          "description": "Describe relational features that address particular file-based limitations.",
           "explanationUnits": [
-            "Limitations of file-based systems and how relational databases address them"
+            "From repeated facts to linked tables"
           ],
           "materialTitles": [
-            "Flat-file vs relational comparison"
+            "Store shared patient facts once",
+            "A patient moves house"
           ],
           "questionIds": [
-            "V3-Q-L039-01",
-            "V3-Q-L039-02",
-            "V3-Q-L039-03"
+            "S8-L01-Q1"
           ],
           "pastPaperAnalysis": [
-            "9618/12/W/24 Q6(i)",
-            "Cambridge 9618 syllabus · S8.02",
-            "Cambridge 9618 syllabus · S8.02"
+            "Cambridge 9618 syllabus 8.1 · S8.01, S8.02 (course mapping)"
           ]
         },
         {
           "id": "S8.02.A01",
-          "description": "Use entity, table, record/tuple and field/attribute terminology.",
+          "description": "Use entity, table, record, tuple, field and attribute correctly.",
           "explanationUnits": [
-            "Entity/table, record/tuple, field/attribute, primary/candidate/secondary/foreign key, relationships, referential integrity and indexing"
+            "Entities, tables, records and fields"
           ],
           "materialTitles": [
-            "Referential integrity"
+            "From an entity to its stored representation"
           ],
           "questionIds": [
-            "V3-039-S8.02-CHECK"
+            "S8-L01-Q2"
           ],
-          "pastPaperAnalysis": []
+          "pastPaperAnalysis": [
+            "Cambridge 9618 syllabus 8.1 · S8.02 (course mapping)"
+          ]
         },
         {
           "id": "S8.02.A02",
           "description": "Distinguish primary, candidate, secondary and foreign keys.",
           "explanationUnits": [
-            "Entity/table, record/tuple, field/attribute, primary/candidate/secondary/foreign key, relationships, referential integrity and indexing"
+            "Choose keys for identification and retrieval"
           ],
           "materialTitles": [
-            "Referential integrity"
+            "Keys answer different questions"
           ],
           "questionIds": [
-            "V3-Q-L039-01",
-            "V3-Q-L039-02",
-            "V3-Q-L039-03"
+            "S8-L01-Q3"
           ],
           "pastPaperAnalysis": [
-            "9618/12/W/24 Q6(i)",
-            "Cambridge 9618 syllabus · S8.02",
-            "Cambridge 9618 syllabus · S8.02"
+            "Cambridge 9618 syllabus 8.1 · S8.01, S8.02 (course mapping)",
+            "Cambridge 9618 syllabus 8.1 · S8.02 (course mapping)"
           ]
         },
         {
           "id": "S8.02.A03",
           "description": "Explain one-to-one, one-to-many and many-to-many relationships.",
           "explanationUnits": [
-            "Entity/table, record/tuple, field/attribute, primary/candidate/secondary/foreign key, relationships, referential integrity and indexing"
+            "Read relationship cardinality in both directions"
           ],
           "materialTitles": [
-            "Referential integrity"
+            "Read each relationship in both directions"
           ],
           "questionIds": [
-            "V3-039-S8.02-CHECK"
+            "S8-L01-Q4"
           ],
-          "pastPaperAnalysis": []
+          "pastPaperAnalysis": [
+            "Cambridge 9618 syllabus 8.1 · S8.02 (course mapping)"
+          ]
         },
         {
           "id": "S8.02.A04",
-          "description": "Explain referential integrity.",
+          "description": "Explain and apply referential integrity.",
           "explanationUnits": [
-            "Entity/table, record/tuple, field/attribute, primary/candidate/secondary/foreign key, relationships, referential integrity and indexing"
+            "Prevent references to missing records"
           ],
           "materialTitles": [
-            "Referential integrity"
+            "A reference must reach an existing record"
           ],
           "questionIds": [
-            "V3-Q-L039-01",
-            "V3-Q-L039-02"
+            "S8-L01-Q5"
           ],
           "pastPaperAnalysis": [
-            "9618/12/W/24 Q6(i)",
-            "Cambridge 9618 syllabus · S8.02"
+            "Cambridge 9618 syllabus 8.1 · S8.02 (course mapping)"
           ]
         },
         {
           "id": "S8.02.A05",
-          "description": "Explain the purpose of indexing.",
+          "description": "Explain the purpose and costs of indexing.",
           "explanationUnits": [
-            "Entity/table, record/tuple, field/attribute, primary/candidate/secondary/foreign key, relationships, referential integrity and indexing"
+            "Use an index to find matching records"
           ],
           "materialTitles": [
-            "Referential integrity"
+            "An index provides another access path"
           ],
           "questionIds": [
-            "V3-039-S8.02-CHECK"
+            "S8-L01-Q6"
           ],
-          "pastPaperAnalysis": []
+          "pastPaperAnalysis": [
+            "Cambridge 9618 syllabus 8.1 · S8.02 (course mapping)"
+          ]
         }
       ],
       "knowledgeUnits": [
         {
           "syllabusId": "S8.01",
-          "heading": "Limitations of file-based systems and how relational databases address them",
+          "heading": "From repeated facts to linked tables",
           "objectiveIds": [
             "S8.01.A01",
             "S8.01.A02"
           ],
           "leadVisual": {
             "type": "reviewed-visual",
-            "title": "Flat-file vs relational comparison"
+            "title": "Store shared patient facts once"
           },
           "coreExplanation": [
-            "Limitations of file-based storage/retrieval and relational-database features that address those limitations.",
-            "Relational databases reduce selected file-based limitations by storing shared facts once in linked tables with centrally enforced rules.",
-            "A relational database addresses these limitations by separating entities into linked tables, storing shared facts once, identifying records with keys and enforcing relationships and constraints centrally. A DBMS supplies shared query processing, integrity, security, access rights and backup. These mechanisms reduce particular file-based risks; a relational design is not automatically smaller, simpler or error-free.",
-            "A file-based approach stores data in separate application files. The same fact may be repeated in several files or records, causing redundancy and wasted storage. Updating only some copies creates inconsistency; insertion and deletion can also lose or require unrelated facts. Separate files may use incompatible formats, isolate data, duplicate validation/security code and make shared querying, concurrent access, backup and recovery harder to manage."
+            "A file-based approach keeps data in files managed by individual applications. Repeating a patient's address in appointment and billing files uses extra storage. If only the billing copy is updated, the two applications may report different addresses for the same patient.",
+            "A relational design can store the address in Patient and put PatientID in related records. Applications retrieve the shared fact through that relationship. Central queries, constraints and access controls also reduce isolated retrieval and duplicated control code; the benefits depend on the design and its enforcement."
+          ],
+          "method": null,
+          "workedExample": {
+            "type": "worked-example",
+            "title": "A patient moves house"
+          }
+        },
+        {
+          "syllabusId": "S8.02",
+          "heading": "Entities, tables, records and fields",
+          "objectiveIds": [
+            "S8.02.A01"
+          ],
+          "leadVisual": {
+            "type": "reviewed-visual",
+            "title": "From an entity to its stored representation"
+          },
+          "coreExplanation": [
+            "An entity is a type of real-world object or concept about which data is stored, such as Patient. A table represents occurrences of that entity. One row is a record, also called a tuple; it describes one particular patient.",
+            "An attribute is a named property of the entity, such as PatientName. A field is the corresponding column in its table. Distinguish the property from one value: PatientName is the field, while 'Imani' is a value in a particular record."
           ],
           "method": null,
           "workedExample": null
         },
         {
           "syllabusId": "S8.02",
-          "heading": "Entity/table, record/tuple, field/attribute, primary/candidate/secondary/foreign key, relationships, referential integrity and indexing",
+          "heading": "Choose keys for identification and retrieval",
           "objectiveIds": [
-            "S8.02.A01",
-            "S8.02.A02",
-            "S8.02.A03",
-            "S8.02.A04",
+            "S8.02.A02"
+          ],
+          "leadVisual": {
+            "type": "reviewed-visual",
+            "title": "Keys answer different questions"
+          },
+          "coreExplanation": [
+            "A candidate key is a minimal field or combination of fields that uniquely identifies a record. One candidate is selected as the primary key; its values must be unique and not null. A composite key uses more than one field, with every component needed for uniqueness.",
+            "A secondary key provides an additional way to retrieve records, such as looking up all patients in one town; it need not be unique. A foreign key stores a reference to a key in a related table. The same patient can therefore appear as the foreign-key value in several appointments."
+          ],
+          "method": null,
+          "workedExample": null
+        },
+        {
+          "syllabusId": "S8.02",
+          "heading": "Read relationship cardinality in both directions",
+          "objectiveIds": [
+            "S8.02.A03"
+          ],
+          "leadVisual": {
+            "type": "reviewed-visual",
+            "title": "Read each relationship in both directions"
+          },
+          "coreExplanation": [
+            "Relationship cardinality describes how many occurrences on one side may be associated with an occurrence on the other. Read the business rule in both directions before choosing one-to-one, one-to-many or many-to-many.",
+            "If a student can join several clubs and a club can have several students, the relationship is many-to-many. A Membership table records each student-club association and gives two one-to-many relationships. The pair of identifiers can be its composite key when each membership occurs only once."
+          ],
+          "method": null,
+          "workedExample": null
+        },
+        {
+          "syllabusId": "S8.02",
+          "heading": "Prevent references to missing records",
+          "objectiveIds": [
+            "S8.02.A04"
+          ],
+          "leadVisual": {
+            "type": "reviewed-visual",
+            "title": "A reference must reach an existing record"
+          },
+          "coreExplanation": [
+            "Referential integrity requires each non-null foreign-key value to match an existing referenced key value. If an appointment names PatientID 99 but no such patient exists, a declared foreign-key constraint can reject that appointment.",
+            "Updates and deletions must also preserve valid links. Deleting a referenced patient can be rejected, or handled by an explicitly defined referential action. A nullable foreign key may be null where the design allows no association; it must not hold an arbitrary unmatched identifier."
+          ],
+          "method": null,
+          "workedExample": null
+        },
+        {
+          "syllabusId": "S8.02",
+          "heading": "Use an index to find matching records",
+          "objectiveIds": [
             "S8.02.A05"
           ],
           "leadVisual": {
             "type": "reviewed-visual",
-            "title": "Referential integrity"
+            "title": "An index provides another access path"
           },
           "coreExplanation": [
-            "A one-to-one relationship links one record on each side. A one-to-many relationship links one parent record to many child records. A many-to-many relationship is normally implemented through a linking entity/table that creates two one-to-many relationships. Referential integrity prevents orphan records: insert, update and delete operations may be rejected or handled by a defined cascade/null policy, but must not silently leave an invalid reference.",
-            "A candidate key is a minimal field or field set that uniquely identifies a record. One candidate key is selected as the primary key. A secondary key is a field used as an additional retrieval or ordering route and need not be unique; it is not another name for an unselected candidate key. A foreign key refers to a key in a related table. An index is a lookup structure built on one or more fields: it can speed retrieval but uses storage and must be maintained after changes.",
-            "An entity is a real-world thing about which data is stored and is commonly represented by a table. A table contains records (tuples); each record describes one entity occurrence. A field (attribute) is one named property or column. These paired terms are related but should not be collapsed into one definition.",
-            "A relational database addresses these limitations by separating entities into linked tables, storing shared facts once, identifying records with keys and enforcing relationships and constraints centrally. A DBMS supplies shared query processing, integrity, security, access rights and backup. These mechanisms reduce particular file-based risks; a relational design is not automatically smaller, simpler or error-free."
+            "An index is an additional lookup structure associated with one or more fields. It relates indexed values to record locations so the DBMS can find matches without inspecting every table row in suitable queries.",
+            "An index on Town can help retrieve all patients in York even when Town is not unique. The index occupies storage and must be maintained when indexed data changes. It improves an access path; it does not replace the table or guarantee that stored facts are correct."
           ],
           "method": null,
           "workedExample": null
@@ -12474,42 +12922,51 @@
       ],
       "practice": [
         {
-          "id": "V3-Q-L039-01",
+          "id": "S8-L01-Q1",
           "commandWord": "Explain",
-          "marks": 6,
+          "marks": 4,
           "objectiveIds": [
             "S8.01.A01",
-            "S8.01.A02",
-            "S8.02.A04",
+            "S8.01.A02"
+          ]
+        },
+        {
+          "id": "S8-L01-Q2",
+          "commandWord": "Identify",
+          "marks": 4,
+          "objectiveIds": [
+            "S8.02.A01"
+          ]
+        },
+        {
+          "id": "S8-L01-Q3",
+          "commandWord": "Identify",
+          "marks": 4,
+          "objectiveIds": [
             "S8.02.A02"
           ]
         },
         {
-          "id": "V3-Q-L039-02",
-          "commandWord": "Write",
-          "marks": 7,
+          "id": "S8-L01-Q4",
+          "commandWord": "State",
+          "marks": 4,
           "objectiveIds": [
-            "S8.02.A02",
-            "S8.02.A04",
-            "S8.01.A02"
+            "S8.02.A03"
           ]
         },
         {
-          "id": "V3-Q-L039-03",
-          "commandWord": "Identify",
-          "marks": 2,
-          "objectiveIds": [
-            "S8.02.A02",
-            "S8.01.A02"
-          ]
-        },
-        {
-          "id": "V3-039-S8.02-CHECK",
+          "id": "S8-L01-Q5",
           "commandWord": "Explain",
-          "marks": 5,
+          "marks": 3,
           "objectiveIds": [
-            "S8.02.A01",
-            "S8.02.A03",
+            "S8.02.A04"
+          ]
+        },
+        {
+          "id": "S8-L01-Q6",
+          "commandWord": "Explain",
+          "marks": 3,
+          "objectiveIds": [
             "S8.02.A05"
           ]
         }
@@ -12517,35 +12974,34 @@
       "examStyleQuestions": [
         {
           "id": "S8-L01-EXAM-1",
-          "sourceRef": "9618/12/W/24 Q6(i)",
+          "sourceRef": "Cambridge 9618 syllabus 8.1 · S8.01, S8.02 (course mapping)",
           "commandWord": "Explain",
-          "marks": 7,
+          "marks": 4,
           "objectiveIds": [
             "S8.01.A01",
             "S8.01.A02",
-            "S8.02.A04",
             "S8.02.A02"
           ]
         },
         {
           "id": "S8-L01-EXAM-2",
-          "sourceRef": "Cambridge 9618 syllabus · S8.02",
+          "sourceRef": "Cambridge 9618 syllabus 8.1 · S8.02 (course mapping)",
           "commandWord": "Describe",
-          "marks": 6,
+          "marks": 4,
           "objectiveIds": [
+            "S8.02.A01",
             "S8.02.A02",
-            "S8.02.A04",
-            "S8.01.A02"
+            "S8.02.A03"
           ]
         },
         {
           "id": "S8-L01-EXAM-3",
-          "sourceRef": "Cambridge 9618 syllabus · S8.02",
+          "sourceRef": "Cambridge 9618 syllabus 8.1 · S8.02 (course mapping)",
           "commandWord": "Explain",
-          "marks": 2,
+          "marks": 4,
           "objectiveIds": [
-            "S8.02.A02",
-            "S8.01.A02"
+            "S8.02.A04",
+            "S8.02.A05"
           ]
         }
       ]
@@ -12563,219 +13019,282 @@
       "objectives": [
         {
           "id": "S8.03.A01",
-          "description": "Use an entity-relationship (E-R) diagram to document a database design",
+          "description": "Use an entity-relationship diagram to document a database design.",
           "explanationUnits": [
-            "Entity-relationship diagrams"
+            "Document entities, keys and relationship cardinality"
           ],
           "materialTitles": [
-            "Cardinality describes how many records may be linked"
+            "Clinic E-R design",
+            "From a clinic rule to a diagram"
           ],
           "questionIds": [
-            "V3-Q-L040-01",
-            "V3-Q-L040-02",
-            "V3-Q-L040-03"
+            "S8-L02-Q1"
           ],
           "pastPaperAnalysis": [
-            "9618/11/W/25 Q2(ii)",
-            "Cambridge 9618 syllabus · S8.04",
-            "Cambridge 9618 syllabus · S8.04"
+            "Cambridge 9618 syllabus 8.1 · S8.03 (course mapping)"
           ]
         },
         {
           "id": "S8.04.A01",
-          "description": "Explain First Normal Form.",
+          "description": "Explain First Normal Form and remove repeating groups.",
           "explanationUnits": [
-            "1NF, 2NF and 3NF; explain 3NF and produce a normalised design"
+            "1NF: one value in each field"
           ],
           "materialTitles": [
-            "How normal forms remove dependency problems"
+            "1NF: expand a repeating group",
+            "Expand the repeating product group"
           ],
           "questionIds": [
-            "V3-Q-L040-01",
-            "V3-Q-L040-02",
-            "V3-Q-L040-03"
+            "S8-L02-Q2"
           ],
           "pastPaperAnalysis": [
-            "9618/11/W/25 Q2(ii)",
-            "Cambridge 9618 syllabus · S8.04",
-            "Cambridge 9618 syllabus · S8.04"
+            "Cambridge 9618 syllabus 8.1 · S8.04 (course mapping)"
           ]
         },
         {
           "id": "S8.04.A02",
-          "description": "Explain Second Normal Form.",
+          "description": "Explain Second Normal Form and remove partial dependencies.",
           "explanationUnits": [
-            "1NF, 2NF and 3NF; explain 3NF and produce a normalised design"
+            "2NF: depend on the whole composite key"
           ],
           "materialTitles": [
-            "How normal forms remove dependency problems"
+            "2NF: separate facts with a partial dependency",
+            "The 2NF decomposition"
           ],
           "questionIds": [
-            "V3-Q-L040-01"
+            "S8-L02-Q3"
           ],
           "pastPaperAnalysis": [
-            "9618/11/W/25 Q2(ii)"
+            "Cambridge 9618 syllabus 8.1 · S8.04 (course mapping)"
           ]
         },
         {
           "id": "S8.04.A03",
-          "description": "Explain Third Normal Form.",
+          "description": "Explain Third Normal Form and remove transitive dependencies.",
           "explanationUnits": [
-            "1NF, 2NF and 3NF; explain 3NF and produce a normalised design"
+            "3NF: remove transitive dependencies"
           ],
           "materialTitles": [
-            "How normal forms remove dependency problems"
+            "3NF: remove the transitive dependency",
+            "Reconstruct the original order line"
           ],
           "questionIds": [
-            "V3-040-S8.04-CHECK"
+            "S8-L02-Q4"
           ],
-          "pastPaperAnalysis": []
+          "pastPaperAnalysis": [
+            "Cambridge 9618 syllabus 8.1 · S8.04 (course mapping)"
+          ]
         },
         {
           "id": "S8.04.A04",
-          "description": "Judge whether tables are in 3NF.",
+          "description": "Explain why a given relation is or is not in Third Normal Form.",
           "explanationUnits": [
-            "1NF, 2NF and 3NF; explain 3NF and produce a normalised design"
+            "Judge and produce a complete 3NF design"
           ],
           "materialTitles": [
-            "How normal forms remove dependency problems"
+            "Check that the original facts remain recoverable",
+            "Analyse a different relation"
           ],
           "questionIds": [
-            "V3-040-S8.04-CHECK"
+            "S8-L02-Q5"
           ],
-          "pastPaperAnalysis": []
+          "pastPaperAnalysis": [
+            "Cambridge 9618 syllabus 8.1 · S8.04 (course mapping)"
+          ]
         },
         {
           "id": "S8.04.A05",
-          "description": "Produce a normalised database design from a description or data.",
+          "description": "Produce a normalised database design from stated data and dependencies.",
           "explanationUnits": [
-            "1NF, 2NF and 3NF; explain 3NF and produce a normalised design"
+            "Judge and produce a complete 3NF design"
           ],
           "materialTitles": [
-            "How normal forms remove dependency problems"
+            "Check that the original facts remain recoverable",
+            "Analyse a different relation"
           ],
           "questionIds": [
-            "V3-Q-L040-01"
+            "S8-L02-Q5"
           ],
           "pastPaperAnalysis": [
-            "9618/11/W/25 Q2(ii)"
+            "Cambridge 9618 syllabus 8.1 · S8.04 (course mapping)"
           ]
         }
       ],
       "knowledgeUnits": [
         {
           "syllabusId": "S8.03",
-          "heading": "Entity-relationship diagrams",
+          "heading": "Document entities, keys and relationship cardinality",
           "objectiveIds": [
             "S8.03.A01"
           ],
           "leadVisual": {
             "type": "reviewed-visual",
-            "title": "Cardinality describes how many records may be linked"
+            "title": "Clinic E-R design"
           },
           "coreExplanation": [
-            "An entity-relationship (E-R) diagram documents a database design by showing the entities, their relevant attributes or keys, the relationships between entities and the relationship cardinality. Entity names should describe things about which the system stores multiple facts; attributes belong to the entity they describe.",
-            "Database design review: connect each file-based limitation to a relational or DBMS mechanism; use entity/table, record/tuple and field/attribute precisely; distinguish candidate, primary, secondary and foreign keys; classify one-to-one, one-to-many and many-to-many relationships; apply referential integrity and indexing; document the design with an E-R diagram; and explain or produce 1NF, 2NF and 3NF designs.",
-            "To produce an E-R diagram, extract entity candidates from the scenario, assign identifiers, connect only supported relationships and label cardinality as one-to-one, one-to-many or many-to-many. Resolve a many-to-many relationship with a linking entity when converting the design to relational tables. A diagram must preserve the stated business rules rather than inventing links from similar field names."
+            "Extract entity types from the facts that the organisation needs to store, then identify each entity's key and relevant attributes. Connect entities only when the business rules support an association. An E-R diagram records this structure rather than a sequence of processing steps.",
+            "In this clinic, each appointment involves exactly one patient and one doctor. A patient or doctor may have many appointments. Appointment therefore stores both foreign keys, and its separate AppointmentID allows the same patient to visit the same doctor on different occasions."
           ],
           "method": null,
-          "workedExample": null
+          "workedExample": {
+            "type": "worked-example",
+            "title": "From a clinic rule to a diagram"
+          }
         },
         {
           "syllabusId": "S8.04",
-          "heading": "1NF, 2NF and 3NF; explain 3NF and produce a normalised design",
+          "heading": "1NF: one value in each field",
           "objectiveIds": [
-            "S8.04.A01",
-            "S8.04.A02",
-            "S8.04.A03",
+            "S8.04.A01"
+          ],
+          "leadVisual": {
+            "type": "reviewed-visual",
+            "title": "1NF: expand a repeating group"
+          },
+          "coreExplanation": [
+            "First Normal Form requires atomic field values and no repeating groups. For this ordering system, a list of product entries in one order field is a repeating group. Give each product line its own row while retaining the order and customer information needed to interpret that row.",
+            "Assume each product occurs at most once per order and the stored unit price is the product's current fixed price. The pair (OrderID, ProductID) identifies a line. Separating the list makes values atomic, but repeated customer and product details still remain to be addressed in later normal forms."
+          ],
+          "method": null,
+          "workedExample": {
+            "type": "worked-example",
+            "title": "Expand the repeating product group"
+          }
+        },
+        {
+          "syllabusId": "S8.04",
+          "heading": "2NF: depend on the whole composite key",
+          "objectiveIds": [
+            "S8.04.A02"
+          ],
+          "leadVisual": {
+            "type": "reviewed-visual",
+            "title": "2NF: separate facts with a partial dependency"
+          },
+          "coreExplanation": [
+            "Second Normal Form requires 1NF and no partial dependency of a non-key attribute on part of a candidate key. In the order example, ProductName and UnitPrice depend on ProductID alone, while CustomerID and CustomerName depend on OrderID alone. Quantity depends on the whole line key.",
+            "Move the product facts to Product and the order-level facts to SalesOrder. Keep OrderLine for the association and quantity, retaining the two identifying fields as references. This decomposition removes partial dependencies but does not yet separate CustomerName from CustomerID inside SalesOrder."
+          ],
+          "method": null,
+          "workedExample": {
+            "type": "worked-example",
+            "title": "The 2NF decomposition"
+          }
+        },
+        {
+          "syllabusId": "S8.04",
+          "heading": "3NF: remove transitive dependencies",
+          "objectiveIds": [
+            "S8.04.A03"
+          ],
+          "leadVisual": {
+            "type": "reviewed-visual",
+            "title": "3NF: remove the transitive dependency"
+          },
+          "coreExplanation": [
+            "Third Normal Form requires 2NF and, in these simple designs, no dependency of one non-key attribute on another non-key attribute. SalesOrder still contains OrderID determining CustomerID and CustomerID determining CustomerName. The customer's name is transitively dependent on the order identifier.",
+            "Create Customer(CustomerID, CustomerName) and retain CustomerID as a foreign key in SalesOrder. Customer facts can then be updated in their own relation. Product and OrderLine remain unchanged; the existing keys allow the original order information to be reconstructed."
+          ],
+          "method": null,
+          "workedExample": {
+            "type": "worked-example",
+            "title": "Reconstruct the original order line"
+          }
+        },
+        {
+          "syllabusId": "S8.04",
+          "heading": "Judge and produce a complete 3NF design",
+          "objectiveIds": [
             "S8.04.A04",
             "S8.04.A05"
           ],
           "leadVisual": {
             "type": "reviewed-visual",
-            "title": "How normal forms remove dependency problems"
+            "title": "Check that the original facts remain recoverable"
           },
           "coreExplanation": [
-            "To produce an E-R diagram, extract entity candidates from the scenario, assign identifiers, connect only supported relationships and label cardinality as one-to-one, one-to-many or many-to-many. Resolve a many-to-many relationship with a linking entity when converting the design to relational tables. A diagram must preserve the stated business rules rather than inventing links from similar field names.",
-            "Database design review: connect each file-based limitation to a relational or DBMS mechanism; use entity/table, record/tuple and field/attribute precisely; distinguish candidate, primary, secondary and foreign keys; classify one-to-one, one-to-many and many-to-many relationships; apply referential integrity and indexing; document the design with an E-R diagram; and explain or produce 1NF, 2NF and 3NF designs.",
-            "Normalisation decomposes tables while preserving keys and relationships. A normalised 3NF design stores each fact once in the table identified by its determinant, reducing insertion, update and deletion anomalies.",
-            "An entity-relationship (E-R) diagram documents a database design by showing the entities, their relevant attributes or keys, the relationships between entities and the relationship cardinality. Entity names should describe things about which the system stores multiple facts; attributes belong to the entity they describe."
+            "To judge a design, name its key, state the relevant dependencies and test each normal form in order. One row per entity is not sufficient evidence of 3NF. A non-key fact can still describe another entity, producing an update, insertion or deletion anomaly.",
+            "To produce a design, assign each fact to its determinant and explicitly retain primary and foreign keys. Check that every original attribute is accounted for and that a representative original record can be reconstructed. State any assumptions about uniqueness instead of inventing extra dependencies."
           ],
           "method": null,
-          "workedExample": null
+          "workedExample": {
+            "type": "worked-example",
+            "title": "Analyse a different relation"
+          }
         }
       ],
       "practice": [
         {
-          "id": "V3-Q-L040-01",
-          "commandWord": "Write",
-          "marks": 8,
+          "id": "S8-L02-Q1",
+          "commandWord": "Draw",
+          "marks": 5,
           "objectiveIds": [
-            "S8.03.A01",
-            "S8.04.A05",
-            "S8.04.A01",
+            "S8.03.A01"
+          ]
+        },
+        {
+          "id": "S8-L02-Q2",
+          "commandWord": "Write",
+          "marks": 3,
+          "objectiveIds": [
+            "S8.04.A01"
+          ]
+        },
+        {
+          "id": "S8-L02-Q3",
+          "commandWord": "Complete",
+          "marks": 4,
+          "objectiveIds": [
             "S8.04.A02"
           ]
         },
         {
-          "id": "V3-Q-L040-02",
+          "id": "S8-L02-Q4",
           "commandWord": "Explain",
-          "marks": 2,
+          "marks": 3,
           "objectiveIds": [
-            "S8.03.A01",
-            "S8.04.A01"
+            "S8.04.A03"
           ]
         },
         {
-          "id": "V3-Q-L040-03",
-          "commandWord": "Explain",
-          "marks": 2,
-          "objectiveIds": [
-            "S8.03.A01",
-            "S8.04.A01"
-          ]
-        },
-        {
-          "id": "V3-040-S8.04-CHECK",
+          "id": "S8-L02-Q5",
           "commandWord": "Explain",
           "marks": 4,
           "objectiveIds": [
-            "S8.04.A03",
-            "S8.04.A04"
+            "S8.04.A04",
+            "S8.04.A05"
           ]
         }
       ],
       "examStyleQuestions": [
         {
           "id": "S8-L02-EXAM-1",
-          "sourceRef": "9618/11/W/25 Q2(ii)",
-          "commandWord": "Explain",
-          "marks": 6,
+          "sourceRef": "Cambridge 9618 syllabus 8.1 · S8.03 (course mapping)",
+          "commandWord": "Draw",
+          "marks": 5,
           "objectiveIds": [
-            "S8.03.A01",
-            "S8.04.A05",
-            "S8.04.A01",
-            "S8.04.A02"
+            "S8.03.A01"
           ]
         },
         {
           "id": "S8-L02-EXAM-2",
-          "sourceRef": "Cambridge 9618 syllabus · S8.04",
+          "sourceRef": "Cambridge 9618 syllabus 8.1 · S8.04 (course mapping)",
           "commandWord": "Describe",
-          "marks": 2,
+          "marks": 3,
           "objectiveIds": [
-            "S8.03.A01",
             "S8.04.A01"
           ]
         },
         {
           "id": "S8-L02-EXAM-3",
-          "sourceRef": "Cambridge 9618 syllabus · S8.04",
+          "sourceRef": "Cambridge 9618 syllabus 8.1 · S8.04 (course mapping)",
           "commandWord": "Explain",
-          "marks": 4,
+          "marks": 6,
           "objectiveIds": [
-            "S8.03.A01",
-            "S8.04.A01"
+            "S8.04.A02",
+            "S8.04.A03",
+            "S8.04.A04",
+            "S8.04.A05"
           ]
         }
       ]
@@ -12795,180 +13314,268 @@
           "id": "S8.05.A01",
           "description": "Explain DBMS data management and the role of a data dictionary.",
           "explanationUnits": [
-            "DBMS features: data dictionary, data modelling, logical schema, integrity, security, backup and access rights"
+            "Data management and the data dictionary"
           ],
           "materialTitles": [
-            "What does a DBMS provide?"
+            "Metadata describes the data"
           ],
           "questionIds": [
-            "V3-Q-L041-01",
-            "V3-Q-L041-02"
+            "S8-L03-Q1"
           ],
           "pastPaperAnalysis": [
-            "9618/13/W/25 Q5(d)",
-            "Cambridge 9618 syllabus · S8.06"
+            "Cambridge 9618 syllabus 8.2 · S8.05 (course mapping)"
           ]
         },
         {
           "id": "S8.05.A02",
-          "description": "Explain database data modelling.",
+          "description": "Explain how data modelling represents organisational data.",
           "explanationUnits": [
-            "DBMS features: data dictionary, data modelling, logical schema, integrity, security, backup and access rights"
+            "Represent the organisation's data"
           ],
           "materialTitles": [
-            "What does a DBMS provide?"
+            "Translate a business rule into a model"
           ],
           "questionIds": [
-            "V3-Q-L041-01",
-            "V3-Q-L041-02"
+            "S8-L03-Q2"
           ],
           "pastPaperAnalysis": [
-            "9618/13/W/25 Q5(d)",
-            "Cambridge 9618 syllabus · S8.06"
+            "Cambridge 9618 syllabus 8.2 · S8.05, S8.06 (course mapping)"
           ]
         },
         {
           "id": "S8.05.A03",
-          "description": "Explain the purpose of a logical schema.",
+          "description": "Explain the purpose of a logical database schema.",
           "explanationUnits": [
-            "DBMS features: data dictionary, data modelling, logical schema, integrity, security, backup and access rights"
+            "Define the logical schema"
           ],
           "materialTitles": [
-            "What does a DBMS provide?"
+            "A logical schema describes organisation"
           ],
           "questionIds": [
-            "V3-041-S8.05-CHECK"
+            "S8-L03-Q3"
           ],
-          "pastPaperAnalysis": []
+          "pastPaperAnalysis": [
+            "Cambridge 9618 syllabus 8.2 · S8.05 (course mapping)"
+          ]
         },
         {
           "id": "S8.05.A04",
           "description": "Explain how a DBMS enforces data integrity.",
           "explanationUnits": [
-            "DBMS features: data dictionary, data modelling, logical schema, integrity, security, backup and access rights"
+            "Enforce valid values and relationships"
           ],
           "materialTitles": [
-            "What does a DBMS provide?"
+            "Check a change before accepting it"
           ],
           "questionIds": [
-            "V3-Q-L041-01",
-            "V3-Q-L041-02",
-            "V3-Q-L041-03"
+            "S8-L03-Q4"
           ],
           "pastPaperAnalysis": [
-            "9618/13/W/25 Q5(d)",
-            "Cambridge 9618 syllabus · S8.05",
-            "Cambridge 9618 syllabus · S8.06"
+            "Cambridge 9618 syllabus 8.2 · S8.05 (course mapping)"
           ]
         },
         {
           "id": "S8.05.A05",
-          "description": "Explain DBMS data security using individual or group access rights.",
+          "description": "Explain individual and group access rights for database security.",
           "explanationUnits": [
-            "DBMS features: data dictionary, data modelling, logical schema, integrity, security, backup and access rights"
+            "Assign access rights to users and groups"
           ],
           "materialTitles": [
-            "What does a DBMS provide?"
+            "Permit operations according to user roles"
           ],
           "questionIds": [
-            "V3-Q-L041-01",
-            "V3-Q-L041-02",
-            "V3-Q-L041-03"
+            "S8-L03-Q5"
           ],
           "pastPaperAnalysis": [
-            "9618/13/W/25 Q5(d)",
-            "Cambridge 9618 syllabus · S8.05",
-            "Cambridge 9618 syllabus · S8.06"
+            "Cambridge 9618 syllabus 8.2 · S8.05 (course mapping)"
           ]
         },
         {
           "id": "S8.05.A06",
           "description": "Explain database backup and recovery procedures.",
           "explanationUnits": [
-            "DBMS features: data dictionary, data modelling, logical schema, integrity, security, backup and access rights"
+            "Back up and recover a consistent database"
           ],
           "materialTitles": [
-            "What does a DBMS provide?"
+            "Prepare, protect, restore and check",
+            "A failure between backups"
           ],
           "questionIds": [
-            "V3-041-S8.05-CHECK"
+            "S8-L03-Q6"
           ],
-          "pastPaperAnalysis": []
+          "pastPaperAnalysis": [
+            "Cambridge 9618 syllabus 8.2 · S8.05 (course mapping)"
+          ]
         },
         {
           "id": "S8.06.A01",
-          "description": "Explain how a DBMS developer interface is used in practice.",
+          "description": "Explain the practical use of a DBMS developer interface.",
           "explanationUnits": [
-            "The developer interface and query processor"
+            "Use the developer interface"
           ],
           "materialTitles": [
-            "A developer interface and query processor serve different DBMS roles"
+            "Build the objects and interfaces users need"
           ],
           "questionIds": [
-            "V3-Q-L041-03"
+            "S8-L03-Q7"
           ],
           "pastPaperAnalysis": [
-            "Cambridge 9618 syllabus · S8.05"
+            "Cambridge 9618 syllabus 8.2 · S8.05, S8.06 (course mapping)"
           ]
         },
         {
           "id": "S8.06.A02",
-          "description": "Explain how a DBMS query processor is used in practice.",
+          "description": "Explain the practical use of a DBMS query processor.",
           "explanationUnits": [
-            "The developer interface and query processor"
+            "Follow a query through the query processor"
           ],
           "materialTitles": [
-            "A developer interface and query processor serve different DBMS roles"
+            "Turn a SQL request into a result"
           ],
           "questionIds": [
-            "V3-Q-L041-03"
+            "S8-L03-Q8"
           ],
           "pastPaperAnalysis": [
-            "Cambridge 9618 syllabus · S8.05"
+            "Cambridge 9618 syllabus 8.2 · S8.05, S8.06 (course mapping)"
           ]
         }
       ],
       "knowledgeUnits": [
         {
           "syllabusId": "S8.05",
-          "heading": "DBMS features: data dictionary, data modelling, logical schema, integrity, security, backup and access rights",
+          "heading": "Data management and the data dictionary",
           "objectiveIds": [
-            "S8.05.A01",
-            "S8.05.A02",
-            "S8.05.A03",
-            "S8.05.A04",
-            "S8.05.A05",
+            "S8.05.A01"
+          ],
+          "leadVisual": {
+            "type": "reviewed-visual",
+            "title": "Metadata describes the data"
+          },
+          "coreExplanation": [
+            "A DBMS provides software services to store, retrieve and update database data. It maintains a data dictionary containing metadata: information about the database's tables, fields, types, lengths, keys and constraints rather than the ordinary records themselves.",
+            "When a table or query is defined, the DBMS can consult that metadata to check field names and permitted structures. Maintaining definitions centrally reduces the risk that separate applications use conflicting assumptions about the same stored data."
+          ],
+          "method": null,
+          "workedExample": null
+        },
+        {
+          "syllabusId": "S8.05",
+          "heading": "Represent the organisation's data",
+          "objectiveIds": [
+            "S8.05.A02"
+          ],
+          "leadVisual": {
+            "type": "reviewed-visual",
+            "title": "Translate a business rule into a model"
+          },
+          "coreExplanation": [
+            "Data modelling identifies the entities, attributes and relationships required by an organisation. It starts from the information and business rules, such as whether one appointment may involve several doctors, rather than from how bytes will be arranged on disk.",
+            "A DBMS modelling tool can help create and inspect the relationships before they are implemented as tables. The designer must still confirm that the model matches the stated requirements; software cannot infer every business rule from field names."
+          ],
+          "method": null,
+          "workedExample": null
+        },
+        {
+          "syllabusId": "S8.05",
+          "heading": "Define the logical schema",
+          "objectiveIds": [
+            "S8.05.A03"
+          ],
+          "leadVisual": {
+            "type": "reviewed-visual",
+            "title": "A logical schema describes organisation"
+          },
+          "coreExplanation": [
+            "The logical schema specifies the logical organisation of the database: its tables, attributes, data types, keys, relationships and constraints. Programs can use these definitions without knowing the physical disk locations of individual records.",
+            "A model of pupils and groups can become Pupil(PupilID, PupilName, GroupID) and TutorGroup(GroupID, GroupName), with specified primary and foreign keys. The schema is the design being defined; the data dictionary stores metadata describing that design."
+          ],
+          "method": null,
+          "workedExample": null
+        },
+        {
+          "syllabusId": "S8.05",
+          "heading": "Enforce valid values and relationships",
+          "objectiveIds": [
+            "S8.05.A04"
+          ],
+          "leadVisual": {
+            "type": "reviewed-visual",
+            "title": "Check a change before accepting it"
+          },
+          "coreExplanation": [
+            "Integrity constraints restrict invalid or inconsistent database changes. A primary key identifies records uniquely, a foreign key checks a declared reference, and field types or validation rules restrict values to a permitted domain.",
+            "For an examination database, a rule can require Mark to be between 0 and 100 and CandidateID to refer to an existing candidate. The DBMS rejects changes violating those rules. A plausible but incorrectly transcribed mark can still pass them, so integrity constraints do not establish factual truth."
+          ],
+          "method": null,
+          "workedExample": null
+        },
+        {
+          "syllabusId": "S8.05",
+          "heading": "Assign access rights to users and groups",
+          "objectiveIds": [
+            "S8.05.A05"
+          ],
+          "leadVisual": {
+            "type": "reviewed-visual",
+            "title": "Permit operations according to user roles"
+          },
+          "coreExplanation": [
+            "Database security restricts who can access stored information and which operations are permitted. After authentication establishes identity, access rights can allow reading selected data while denying insertion, modification or deletion.",
+            "Rights may be assigned to an individual account or to a group representing a role. A school can give Tutors access to contact information and the Finance group permission to update fees. Group membership must be maintained when responsibilities change."
+          ],
+          "method": null,
+          "workedExample": null
+        },
+        {
+          "syllabusId": "S8.05",
+          "heading": "Back up and recover a consistent database",
+          "objectiveIds": [
             "S8.05.A06"
           ],
           "leadVisual": {
             "type": "reviewed-visual",
-            "title": "What does a DBMS provide?"
+            "title": "Prepare, protect, restore and check"
           },
           "coreExplanation": [
-            "A Database Management System (DBMS) provides managed features that address file-based duplication, inconsistency, isolation and uncontrolled access. The features work together rather than acting as unrelated utilities.",
-            "A data dictionary stores metadata about tables, fields, data types, keys, constraints and relationships. DBMS tools consult this dictionary when checking definitions, queries and data values.",
-            "Data modelling represents the entities, attributes and relationships needed by the organisation. The logical schema turns that model into the table structures, keys, constraints and relationships visible to programs without depending on physical disk layout.",
-            "Data integrity rules reject invalid or inconsistent changes, for example an unmatched foreign key. Data security limits who can read or change data; access rights can be assigned to individual users or groups according to their roles.",
-            "Backup procedures copy recoverable database state, while recovery restores a consistent state after loss or failure. A backup is not an access-control substitute, and access rights do not replace recovery planning."
+            "A backup procedure creates a recoverable copy of database state. Schedule backups often enough for the acceptable data-loss interval, protect copies from the same failure as the live system, and restrict access because the copies may contain sensitive records.",
+            "Recovery restores a suitable consistent backup after loss or corruption. Where the DBMS supports transaction logs, later recorded changes may be replayed to a chosen recovery point. Periodic restore tests check that the stored copies and procedure actually work."
+          ],
+          "method": null,
+          "workedExample": {
+            "type": "worked-example",
+            "title": "A failure between backups"
+          }
+        },
+        {
+          "syllabusId": "S8.06",
+          "heading": "Use the developer interface",
+          "objectiveIds": [
+            "S8.06.A01"
+          ],
+          "leadVisual": {
+            "type": "reviewed-visual",
+            "title": "Build the objects and interfaces users need"
+          },
+          "coreExplanation": [
+            "A DBMS developer interface supplies tools for constructing database objects and applications. A developer can define tables and constraints and build forms or reports that use the database without manually implementing every interface component.",
+            "For a school admissions form, the developer chooses the fields, configures validation and links controls to the appropriate data. The resulting form collects a new pupil record. Designing that form is distinct from the query processor carrying out its eventual data request."
           ],
           "method": null,
           "workedExample": null
         },
         {
           "syllabusId": "S8.06",
-          "heading": "The developer interface and query processor",
+          "heading": "Follow a query through the query processor",
           "objectiveIds": [
-            "S8.06.A01",
             "S8.06.A02"
           ],
           "leadVisual": {
             "type": "reviewed-visual",
-            "title": "A developer interface and query processor serve different DBMS roles"
+            "title": "Turn a SQL request into a result"
           },
           "coreExplanation": [
-            "The developer interface and query processor as DBMS software tools whose use and purpose must be understood in practice.",
-            "A developer interface provides tools used to define structures and build database applications, forms or reports. A query processor interprets and checks a query, chooses how to carry it out, accesses the stored data and returns or modifies the specified records while the DBMS applies access and integrity rules.",
-            "A complete answer follows the scenario through design, statement and result. It does not claim that a primary key prevents every duplicate fact, that a secondary key must be unique, that normalisation guarantees correctness, or that a three-table/comma-style query is within the stated two-table scope."
+            "A query processor interprets a submitted query, checks its syntax and references, and determines how to carry out the requested data access. It can use table definitions and available indexes when choosing a suitable execution plan.",
+            "It executes the plan and produces the requested result while DBMS permissions and integrity rules apply. A staff query for overdue loans therefore involves locating, filtering and returning records; it does not require rebuilding the data-entry form each time."
           ],
           "method": null,
           "workedExample": null
@@ -12976,83 +13583,101 @@
       ],
       "practice": [
         {
-          "id": "V3-Q-L041-01",
-          "commandWord": "Identify",
+          "id": "S8-L03-Q1",
+          "commandWord": "Describe",
+          "marks": 3,
+          "objectiveIds": [
+            "S8.05.A01"
+          ]
+        },
+        {
+          "id": "S8-L03-Q2",
+          "commandWord": "Describe",
           "marks": 2,
           "objectiveIds": [
-            "S8.05.A05",
-            "S8.05.A01",
-            "S8.05.A04",
             "S8.05.A02"
           ]
         },
         {
-          "id": "V3-Q-L041-02",
-          "commandWord": "Identify",
-          "marks": 2,
+          "id": "S8-L03-Q3",
+          "commandWord": "Describe",
+          "marks": 3,
           "objectiveIds": [
-            "S8.05.A05",
-            "S8.05.A01",
-            "S8.05.A04",
-            "S8.05.A02"
+            "S8.05.A03"
           ]
         },
         {
-          "id": "V3-Q-L041-03",
+          "id": "S8-L03-Q4",
           "commandWord": "Explain",
           "marks": 3,
           "objectiveIds": [
-            "S8.06.A01",
-            "S8.06.A02",
-            "S8.05.A04",
+            "S8.05.A04"
+          ]
+        },
+        {
+          "id": "S8-L03-Q5",
+          "commandWord": "Explain",
+          "marks": 3,
+          "objectiveIds": [
             "S8.05.A05"
           ]
         },
         {
-          "id": "V3-041-S8.05-CHECK",
-          "commandWord": "Explain",
-          "marks": 5,
+          "id": "S8-L03-Q6",
+          "commandWord": "State",
+          "marks": 3,
           "objectiveIds": [
-            "S8.05.A03",
             "S8.05.A06"
+          ]
+        },
+        {
+          "id": "S8-L03-Q7",
+          "commandWord": "Describe",
+          "marks": 2,
+          "objectiveIds": [
+            "S8.06.A01"
+          ]
+        },
+        {
+          "id": "S8-L03-Q8",
+          "commandWord": "Describe",
+          "marks": 3,
+          "objectiveIds": [
+            "S8.06.A02"
           ]
         }
       ],
       "examStyleQuestions": [
         {
           "id": "S8-L03-EXAM-1",
-          "sourceRef": "9618/13/W/25 Q5(d)",
+          "sourceRef": "Cambridge 9618 syllabus 8.2 · S8.05 (course mapping)",
           "commandWord": "Explain",
           "marks": 4,
           "objectiveIds": [
-            "S8.05.A05",
             "S8.05.A01",
-            "S8.05.A04",
-            "S8.05.A02"
+            "S8.05.A03",
+            "S8.05.A04"
           ]
         },
         {
           "id": "S8-L03-EXAM-2",
-          "sourceRef": "Cambridge 9618 syllabus · S8.05",
-          "commandWord": "Describe",
-          "marks": 4,
+          "sourceRef": "Cambridge 9618 syllabus 8.2 · S8.05 (course mapping)",
+          "commandWord": "Explain",
+          "marks": 5,
           "objectiveIds": [
-            "S8.06.A01",
-            "S8.06.A02",
-            "S8.05.A04",
-            "S8.05.A05"
+            "S8.05.A05",
+            "S8.05.A06"
           ]
         },
         {
           "id": "S8-L03-EXAM-3",
-          "sourceRef": "Cambridge 9618 syllabus · S8.06",
+          "sourceRef": "Cambridge 9618 syllabus 8.2 · S8.05, S8.06 (course mapping)",
           "commandWord": "Explain",
-          "marks": 2,
+          "marks": 4,
           "objectiveIds": [
-            "S8.05.A05",
-            "S8.05.A01",
-            "S8.05.A04",
-            "S8.05.A02"
+            "S8.05.A02",
+            "S8.06.A01",
+            "S8.06.A02"
           ]
         }
       ]
@@ -13069,107 +13694,134 @@
       "objectives": [
         {
           "id": "S8.07.A01",
-          "description": "Show understanding that the DBMS carries out all creation / modification of the database structure using its Data Definition Language (DDL)",
+          "description": "Explain the role of DDL in creating and changing database structure.",
           "explanationUnits": [
-            "DDL creates/modifies structure, DML queries/maintains data, and SQL is an industry-standard language"
+            "DDL changes structure"
           ],
           "materialTitles": [
-            "INSERT, UPDATE and DELETE are data manipulation commands"
+            "Distinguish a new attribute from a new value"
           ],
           "questionIds": [
-            "V3-Q-L042-01",
-            "V3-Q-L042-02",
-            "V3-Q-L042-03"
+            "S8-L04-Q1",
+            "S8-L04-Q3"
           ],
           "pastPaperAnalysis": [
-            "9618/13/W/25 Q5(b)",
-            "Cambridge 9618 syllabus · S8.07",
-            "Cambridge 9618 syllabus · S8.07"
+            "Cambridge 9618 syllabus 8.3 · S8.07 (course mapping)",
+            "Cambridge 9618 syllabus 8.3 · S8.07 (course mapping)"
           ]
         },
         {
           "id": "S8.07.A02",
-          "description": "Show understanding that the DBMS carries out all queries and maintenance of data using its DML",
+          "description": "Explain the role of DML in querying and maintaining stored data.",
           "explanationUnits": [
-            "DDL creates/modifies structure, DML queries/maintains data, and SQL is an industry-standard language"
+            "DML retrieves and maintains records"
           ],
           "materialTitles": [
-            "INSERT, UPDATE and DELETE are data manipulation commands"
+            "DML works with records"
           ],
           "questionIds": [
-            "V3-Q-L042-01",
-            "V3-Q-L042-03"
+            "S8-L04-Q2",
+            "S8-L04-Q3"
           ],
           "pastPaperAnalysis": [
-            "9618/13/W/25 Q5(b)",
-            "Cambridge 9618 syllabus · S8.07"
+            "Cambridge 9618 syllabus 8.3 · S8.07 (course mapping)",
+            "Cambridge 9618 syllabus 8.3 · S8.07 (course mapping)"
           ]
         },
         {
           "id": "S8.07.A03",
-          "description": "Show understanding that the industry standard for both DDL and DML is Structured Query Language (SQL)",
+          "description": "Explain SQL as the industry-standard language for DDL and DML.",
           "explanationUnits": [
-            "DDL creates/modifies structure, DML queries/maintains data, and SQL is an industry-standard language"
+            "SQL expresses both kinds of operation"
           ],
           "materialTitles": [
-            "INSERT, UPDATE and DELETE are data manipulation commands"
+            "SQL includes both DDL and DML",
+            "Follow the database lifecycle"
           ],
           "questionIds": [
-            "V3-Q-L042-01",
-            "V3-Q-L042-02",
-            "V3-Q-L042-03"
+            "S8-L04-Q3"
           ],
           "pastPaperAnalysis": [
-            "9618/13/W/25 Q5(b)",
-            "Cambridge 9618 syllabus · S8.07",
-            "Cambridge 9618 syllabus · S8.07"
+            "Cambridge 9618 syllabus 8.3 · S8.07 (course mapping)",
+            "Cambridge 9618 syllabus 8.3 · S8.07 (course mapping)"
           ]
         }
       ],
       "knowledgeUnits": [
         {
           "syllabusId": "S8.07",
-          "heading": "DDL creates/modifies structure, DML queries/maintains data, and SQL is an industry-standard language",
+          "heading": "DDL changes structure",
           "objectiveIds": [
-            "S8.07.A01",
-            "S8.07.A02",
+            "S8.07.A01"
+          ],
+          "leadVisual": {
+            "type": "reviewed-visual",
+            "title": "Distinguish a new attribute from a new value"
+          },
+          "coreExplanation": [
+            "Data Definition Language defines and modifies database structure. It can create a database, define a table's attributes and constraints, or alter an existing table definition. These operations determine what data the database can store.",
+            "Creating a Loan table does not add a particular loan record. Similarly, adding DueDate changes the permitted structure for loan records rather than choosing the date for one member's loan."
+          ],
+          "method": null,
+          "workedExample": null
+        },
+        {
+          "syllabusId": "S8.07",
+          "heading": "DML retrieves and maintains records",
+          "objectiveIds": [
+            "S8.07.A02"
+          ],
+          "leadVisual": {
+            "type": "reviewed-visual",
+            "title": "DML works with records"
+          },
+          "coreExplanation": [
+            "Data Manipulation Language works with records in the defined structure. SELECT retrieves specified information. INSERT INTO adds records, UPDATE changes stored field values, and DELETE FROM removes records.",
+            "A query can produce a result table without altering the stored rows. Updating one member's phone number changes data while leaving the Member field definitions intact. These are both DML operations in the syllabus classification."
+          ],
+          "method": null,
+          "workedExample": null
+        },
+        {
+          "syllabusId": "S8.07",
+          "heading": "SQL expresses both kinds of operation",
+          "objectiveIds": [
             "S8.07.A03"
           ],
           "leadVisual": {
             "type": "reviewed-visual",
-            "title": "INSERT, UPDATE and DELETE are data manipulation commands"
+            "title": "SQL includes both DDL and DML"
           },
           "coreExplanation": [
-            "DDL is used for the creation and modification of database structure. DML is used for queries and maintenance of stored data. SQL is an industry-standard language that includes both kinds of operation.",
-            "DDL creates/modifies structure, DML queries/maintains data, and SQL is an industry-standard language.",
-            "A query uses SELECT fields FROM a table, may filter rows with WHERE, sort with ORDER BY and form aggregate groups with GROUP BY. SUM totals values, COUNT counts rows or values, and AVG calculates a mean. An INNER JOIN uses ON to match at most two tables in the required AS queries."
+            "Structured Query Language (SQL) is the industry-standard language used for both DDL and DML. The DBMS interprets SQL statements and carries out their requested changes or queries. DDL and DML describe roles within SQL rather than two alternative database products.",
+            "Determine the category from the requested effect, not from the word 'change' alone. A SQL statement that changes a column's definition is structural; one that changes the current value in that column operates on data."
           ],
           "method": null,
-          "workedExample": null
+          "workedExample": {
+            "type": "worked-example",
+            "title": "Follow the database lifecycle"
+          }
         }
       ],
       "practice": [
         {
-          "id": "V3-Q-L042-01",
-          "commandWord": "Identify",
-          "marks": 3,
-          "objectiveIds": [
-            "S8.07.A01",
-            "S8.07.A02",
-            "S8.07.A03"
-          ]
-        },
-        {
-          "id": "V3-Q-L042-02",
+          "id": "S8-L04-Q1",
           "commandWord": "Identify",
           "marks": 2,
           "objectiveIds": [
-            "S8.07.A01",
-            "S8.07.A03"
+            "S8.07.A01"
           ]
         },
         {
-          "id": "V3-Q-L042-03",
+          "id": "S8-L04-Q2",
+          "commandWord": "Identify",
+          "marks": 3,
+          "objectiveIds": [
+            "S8.07.A02"
+          ]
+        },
+        {
+          "id": "S8-L04-Q3",
           "commandWord": "Explain",
           "marks": 3,
           "objectiveIds": [
@@ -13182,31 +13834,29 @@
       "examStyleQuestions": [
         {
           "id": "S8-L04-EXAM-1",
-          "sourceRef": "9618/13/W/25 Q5(b)",
+          "sourceRef": "Cambridge 9618 syllabus 8.3 · S8.07 (course mapping)",
           "commandWord": "Explain",
-          "marks": 4,
+          "marks": 3,
           "objectiveIds": [
             "S8.07.A01",
-            "S8.07.A02",
-            "S8.07.A03"
+            "S8.07.A02"
           ]
         },
         {
           "id": "S8-L04-EXAM-2",
-          "sourceRef": "Cambridge 9618 syllabus · S8.07",
+          "sourceRef": "Cambridge 9618 syllabus 8.3 · S8.07 (course mapping)",
           "commandWord": "Describe",
-          "marks": 4,
+          "marks": 3,
           "objectiveIds": [
-            "S8.07.A01",
             "S8.07.A02",
             "S8.07.A03"
           ]
         },
         {
           "id": "S8-L04-EXAM-3",
-          "sourceRef": "Cambridge 9618 syllabus · S8.07",
+          "sourceRef": "Cambridge 9618 syllabus 8.3 · S8.07 (course mapping)",
           "commandWord": "Explain",
-          "marks": 2,
+          "marks": 3,
           "objectiveIds": [
             "S8.07.A01",
             "S8.07.A03"
@@ -13227,161 +13877,234 @@
       "objectives": [
         {
           "id": "S8.08.A01",
-          "description": "Understand given SQL (DDL) statements and be able to write simple SQL (DDL) statements using a sub-set of statements",
+          "description": "Explain the effect of a supplied SQL statement.",
           "explanationUnits": [
-            "A given SQL statement and explain the semantics of its clauses, identifiers, operators and values"
+            "Read the supplied statement before explaining it"
           ],
           "materialTitles": [
-            "The three foundation clauses"
+            "Read what each SQL clause asks for",
+            "Interpret an exact supplied query",
+            "Book"
           ],
           "questionIds": [
-            "V3-Q-L043-01",
-            "V3-Q-L043-02",
-            "V3-Q-L043-03"
+            "S8-L05-Q1"
           ],
           "pastPaperAnalysis": [
-            "9618/13/W/25 Q5(c)",
-            "Cambridge 9618 syllabus · S8.09"
+            "Cambridge 9618 syllabus 8.3 · S8.08, S8.09 (course mapping)"
           ]
         },
         {
           "id": "S8.08.A02",
-          "description": "Understand a given SQL statement",
+          "description": "Explain how identifiers, types, operators or literal values affect a supplied statement.",
           "explanationUnits": [
-            "A given SQL statement and explain the semantics of its clauses, identifiers, operators and values"
+            "Read the supplied statement before explaining it"
           ],
           "materialTitles": [
-            "The three foundation clauses"
+            "Read what each SQL clause asks for",
+            "Interpret an exact supplied query",
+            "Book"
           ],
           "questionIds": [
-            "V3-Q-L043-01",
-            "V3-Q-L043-02",
-            "V3-Q-L043-03"
+            "S8-L05-Q1"
           ],
           "pastPaperAnalysis": [
-            "9618/13/W/25 Q5(c)",
-            "Cambridge 9618 syllabus · S8.09"
+            "Cambridge 9618 syllabus 8.3 · S8.08, S8.09 (course mapping)"
           ]
         },
         {
           "id": "S8.09.A01",
           "description": "Write a CREATE DATABASE statement.",
           "explanationUnits": [
-            "DDL: CREATE DATABASE, CREATE TABLE with CHARACTER/VARCHAR/BOOLEAN/INTEGER/REAL/DATE/TIME, ALTER TABLE, primary and foreign keys"
+            "Create a named database"
           ],
           "materialTitles": [
-            "DDL defines and changes database structure"
+            "Create the database before defining its tables"
           ],
           "questionIds": [
-            "V3-Q-L044-01"
+            "S8-L05-Q2"
           ],
           "pastPaperAnalysis": [
-            "Cambridge 9618 syllabus · S8.09"
+            "Cambridge 9618 syllabus 8.3 · S8.09 (course mapping)"
           ]
         },
         {
           "id": "S8.09.A02",
-          "description": "Write CREATE TABLE with appropriate CHARACTER, VARCHAR, BOOLEAN, INTEGER, REAL, DATE and TIME types.",
+          "description": "Write CREATE TABLE using appropriate CHARACTER, VARCHAR(n), BOOLEAN, INTEGER, REAL, DATE and TIME types.",
           "explanationUnits": [
-            "DDL: CREATE DATABASE, CREATE TABLE with CHARACTER/VARCHAR/BOOLEAN/INTEGER/REAL/DATE/TIME, ALTER TABLE, primary and foreign keys"
+            "Choose data types and define fields"
           ],
           "materialTitles": [
-            "DDL defines and changes database structure"
+            "Choose a type from the meaning of a value",
+            "Create a referenced table before its child"
           ],
           "questionIds": [
-            "V3-Q-L044-01"
+            "S8-L05-Q3"
           ],
           "pastPaperAnalysis": [
-            "Cambridge 9618 syllabus · S8.09"
+            "Cambridge 9618 syllabus 8.3 · S8.08, S8.09 (course mapping)",
+            "Cambridge 9618 syllabus 8.3 · S8.09 (course mapping)"
           ]
         },
         {
           "id": "S8.09.A03",
-          "description": "Write an ALTER TABLE statement.",
+          "description": "Write an ALTER TABLE statement to change a definition.",
           "explanationUnits": [
-            "DDL: CREATE DATABASE, CREATE TABLE with CHARACTER/VARCHAR/BOOLEAN/INTEGER/REAL/DATE/TIME, ALTER TABLE, primary and foreign keys"
+            "Alter an existing table definition"
           ],
           "materialTitles": [
-            "DDL defines and changes database structure"
+            "ALTER TABLE adds a field to the definition",
+            "Add a contact field"
           ],
           "questionIds": [
-            "V3-Q-L044-01"
+            "S8-L05-Q4"
           ],
           "pastPaperAnalysis": [
-            "Cambridge 9618 syllabus · S8.09"
+            "Cambridge 9618 syllabus 8.3 · S8.09 (course mapping)"
           ]
         },
         {
           "id": "S8.09.A04",
           "description": "Declare a PRIMARY KEY in a table definition.",
           "explanationUnits": [
-            "DDL: CREATE DATABASE, CREATE TABLE with CHARACTER/VARCHAR/BOOLEAN/INTEGER/REAL/DATE/TIME, ALTER TABLE, primary and foreign keys"
+            "Declare the primary key"
           ],
           "materialTitles": [
-            "DDL defines and changes database structure"
+            "A primary key identifies each record"
           ],
           "questionIds": [
-            "V3-043-S8.09-CHECK"
+            "S8-L05-Q5"
           ],
-          "pastPaperAnalysis": []
+          "pastPaperAnalysis": [
+            "Cambridge 9618 syllabus 8.3 · S8.08, S8.09 (course mapping)",
+            "Cambridge 9618 syllabus 8.3 · S8.09 (course mapping)"
+          ]
         },
         {
           "id": "S8.09.A05",
-          "description": "Declare a FOREIGN KEY with REFERENCES.",
+          "description": "Declare a FOREIGN KEY with REFERENCES in a table definition.",
           "explanationUnits": [
-            "DDL: CREATE DATABASE, CREATE TABLE with CHARACTER/VARCHAR/BOOLEAN/INTEGER/REAL/DATE/TIME, ALTER TABLE, primary and foreign keys"
+            "Declare the referenced relationship"
           ],
           "materialTitles": [
-            "DDL defines and changes database structure"
+            "Declare which field references which key"
           ],
           "questionIds": [
-            "V3-Q-L044-01"
+            "S8-L05-Q6"
           ],
           "pastPaperAnalysis": [
-            "Cambridge 9618 syllabus · S8.09"
+            "Cambridge 9618 syllabus 8.3 · S8.09 (course mapping)"
           ]
         }
       ],
       "knowledgeUnits": [
         {
           "syllabusId": "S8.08",
-          "heading": "A given SQL statement and explain the semantics of its clauses, identifiers, operators and values",
+          "heading": "Read the supplied statement before explaining it",
           "objectiveIds": [
             "S8.08.A01",
             "S8.08.A02"
           ],
           "leadVisual": {
             "type": "reviewed-visual",
-            "title": "The three foundation clauses"
+            "title": "Read what each SQL clause asks for"
           },
           "coreExplanation": [
-            "Structured Query Language (SQL) is the industry-standard language used by a DBMS for DDL and DML. To understand a statement, read each clause by its effect: SELECT chooses output fields, FROM identifies the source table, and WHERE filters records using a condition. Keywords, field names, table names, operators, literal values and punctuation have different roles.",
-            "A valid answer must preserve the requested semantics, not merely contain familiar keywords. Text and date values are normally quoted using standard SQL literal syntax; numeric and Boolean values are not quoted. Clause order, comparison operators and requested output fields determine which records and columns appear.",
-            "A complete answer follows the scenario through design, statement and result. It does not claim that a primary key prevents every duplicate fact, that a secondary key must be unique, that normalisation guarantees correctness, or that a three-table/comma-style query is within the stated two-table scope.",
-            "A query uses SELECT fields FROM a table, may filter rows with WHERE, sort with ORDER BY and form aggregate groups with GROUP BY. SUM totals values, COUNT counts rows or values, and AVG calculates a mean. An INNER JOIN uses ON to match at most two tables in the required AS queries."
+            "A SQL statement must be interpreted from the actual identifiers, conditions and values supplied. In a retrieval statement, SELECT identifies output expressions, FROM identifies the source and WHERE restricts rows. A changed field list can alter the columns without changing which records qualify.",
+            "Read a definition statement by identifying the object created or altered, its field types and its constraints. Quoted text literals represent values rather than field names. Explain the effect of the operator or limit given; recognising a keyword alone does not determine the result."
+          ],
+          "method": null,
+          "workedExample": {
+            "type": "worked-example",
+            "title": "Interpret an exact supplied query"
+          }
+        },
+        {
+          "syllabusId": "S8.09",
+          "heading": "Create a named database",
+          "objectiveIds": [
+            "S8.09.A01"
+          ],
+          "leadVisual": {
+            "type": "reviewed-visual",
+            "title": "Create the database before defining its tables"
+          },
+          "coreExplanation": [
+            "CREATE DATABASE creates a named database in a DBMS that supports this SQL operation. The name is an identifier, not a quoted data value. Creating the database does not by itself define its tables or populate records.",
+            "After creating SchoolLibrary, the developer selects that database in the chosen DBMS interface and defines its tables. The interface command for selecting a database varies between products; the SQL statement below expresses the required creation operation."
           ],
           "method": null,
           "workedExample": null
         },
         {
           "syllabusId": "S8.09",
-          "heading": "DDL: CREATE DATABASE, CREATE TABLE with CHARACTER/VARCHAR/BOOLEAN/INTEGER/REAL/DATE/TIME, ALTER TABLE, primary and foreign keys",
+          "heading": "Choose data types and define fields",
           "objectiveIds": [
-            "S8.09.A01",
-            "S8.09.A02",
-            "S8.09.A03",
-            "S8.09.A04",
+            "S8.09.A02"
+          ],
+          "leadVisual": {
+            "type": "reviewed-visual",
+            "title": "Choose a type from the meaning of a value"
+          },
+          "coreExplanation": [
+            "Choose a field type from the meaning and range of its values. CHARACTER stores fixed-length character data; VARCHAR(n) stores text up to the specified maximum length. INTEGER represents whole numbers, REAL represents values with a fractional part, and BOOLEAN represents true or false.",
+            "DATE and TIME represent calendar dates and times of day separately. Field names and types appear inside the CREATE TABLE brackets, separated by commas. A numeric-looking identifier may still need a text type when leading zeroes or non-arithmetic meaning must be preserved."
+          ],
+          "method": null,
+          "workedExample": {
+            "type": "worked-example",
+            "title": "Create a referenced table before its child"
+          }
+        },
+        {
+          "syllabusId": "S8.09",
+          "heading": "Alter an existing table definition",
+          "objectiveIds": [
+            "S8.09.A03"
+          ],
+          "leadVisual": {
+            "type": "reviewed-visual",
+            "title": "ALTER TABLE adds a field to the definition"
+          },
+          "coreExplanation": [
+            "ALTER TABLE changes the structure of an existing table. To add Email to the Student definition, identify the existing table and supply the new field name and type after ADD. Existing student records remain present.",
+            "In this example the added Email field is nullable and has no default, so existing records initially have no supplied email value. Setting an email for one student is a later UPDATE operation. The new attribute and the value in one occurrence are separate changes."
+          ],
+          "method": null,
+          "workedExample": {
+            "type": "worked-example",
+            "title": "Add a contact field"
+          }
+        },
+        {
+          "syllabusId": "S8.09",
+          "heading": "Declare the primary key",
+          "objectiveIds": [
+            "S8.09.A04"
+          ],
+          "leadVisual": {
+            "type": "reviewed-visual",
+            "title": "A primary key identifies each record"
+          },
+          "coreExplanation": [
+            "A PRIMARY KEY constraint declares the chosen identifier for a table. The key must distinguish every record and cannot be null. Write the selected field inside PRIMARY KEY brackets in the CREATE TABLE definition.",
+            "A composite primary key lists all fields needed for identification, for example PRIMARY KEY (StudentID, ClubID) in Membership. The combination must be unique; either component may recur in other combinations. Choose the key from the stated business rules."
+          ],
+          "method": null,
+          "workedExample": null
+        },
+        {
+          "syllabusId": "S8.09",
+          "heading": "Declare the referenced relationship",
+          "objectiveIds": [
             "S8.09.A05"
           ],
           "leadVisual": {
             "type": "reviewed-visual",
-            "title": "DDL defines and changes database structure"
+            "title": "Declare which field references which key"
           },
           "coreExplanation": [
-            "Required DDL includes CREATE DATABASE, CREATE TABLE and ALTER TABLE. Field types include CHARACTER, VARCHAR, BOOLEAN, INTEGER, REAL, DATE and TIME.",
-            "Database design review: connect each file-based limitation to a relational or DBMS mechanism; use entity/table, record/tuple and field/attribute precisely; distinguish candidate, primary, secondary and foreign keys; classify one-to-one, one-to-many and many-to-many relationships; apply referential integrity and indexing; document the design with an E-R diagram; and explain or produce 1NF, 2NF and 3NF designs.",
-            "A PRIMARY KEY uniquely identifies a row. A FOREIGN KEY with REFERENCES links a field to a key in another table and supports referential integrity.",
-            "A query uses SELECT fields FROM a table, may filter rows with WHERE, sort with ORDER BY and form aggregate groups with GROUP BY. SUM totals values, COUNT counts rows or values, and AVG calculates a mean. An INNER JOIN uses ON to match at most two tables in the required AS queries."
+            "FOREIGN KEY names the field or fields in the current table; REFERENCES names the related table and referenced key. In Student, FOREIGN KEY (TutorID) REFERENCES Tutor(TutorID) declares which parent identifier each non-null tutor reference must match.",
+            "Create the referenced table and key first when using this teaching sequence. The child field may repeat when many students share a tutor. A foreign-key declaration enforces the link; it does not automatically assign a tutor or create the missing parent record."
           ],
           "method": null,
           "workedExample": null
@@ -13389,83 +14112,87 @@
       ],
       "practice": [
         {
-          "id": "V3-Q-L043-01",
-          "commandWord": "Identify",
-          "marks": 2,
-          "objectiveIds": [
-            "S8.08.A01",
-            "S8.08.A02"
-          ]
-        },
-        {
-          "id": "V3-Q-L043-02",
+          "id": "S8-L05-Q1",
           "commandWord": "Explain",
-          "marks": 5,
+          "marks": 3,
           "objectiveIds": [
             "S8.08.A01",
             "S8.08.A02"
           ]
         },
         {
-          "id": "V3-Q-L043-03",
-          "commandWord": "State",
+          "id": "S8-L05-Q2",
+          "commandWord": "Write",
           "marks": 2,
           "objectiveIds": [
-            "S8.08.A01",
-            "S8.08.A02"
+            "S8.09.A01"
           ]
         },
         {
-          "id": "V3-Q-L044-01",
+          "id": "S8-L05-Q3",
           "commandWord": "Write",
-          "marks": 8,
+          "marks": 7,
           "objectiveIds": [
-            "S8.09.A02",
-            "S8.09.A05",
-            "S8.09.A01",
+            "S8.09.A02"
+          ]
+        },
+        {
+          "id": "S8-L05-Q4",
+          "commandWord": "Write",
+          "marks": 2,
+          "objectiveIds": [
             "S8.09.A03"
           ]
         },
         {
-          "id": "V3-043-S8.09-CHECK",
-          "commandWord": "Complete",
-          "marks": 6,
+          "id": "S8-L05-Q5",
+          "commandWord": "Write",
+          "marks": 3,
           "objectiveIds": [
             "S8.09.A04"
+          ]
+        },
+        {
+          "id": "S8-L05-Q6",
+          "commandWord": "Write",
+          "marks": 3,
+          "objectiveIds": [
+            "S8.09.A05"
           ]
         }
       ],
       "examStyleQuestions": [
         {
           "id": "S8-L05-EXAM-1",
-          "sourceRef": "9618/13/W/25 Q5(c)",
-          "commandWord": "Explain",
-          "marks": 6,
+          "sourceRef": "Cambridge 9618 syllabus 8.3 · S8.08, S8.09 (course mapping)",
+          "commandWord": "Describe",
+          "marks": 4,
           "objectiveIds": [
             "S8.08.A01",
-            "S8.08.A02"
+            "S8.08.A02",
+            "S8.09.A02",
+            "S8.09.A04"
           ]
         },
         {
           "id": "S8-L05-EXAM-2",
-          "sourceRef": "Cambridge 9618 syllabus · S8.09",
-          "commandWord": "Describe",
-          "marks": 4,
+          "sourceRef": "Cambridge 9618 syllabus 8.3 · S8.09 (course mapping)",
+          "commandWord": "Write",
+          "marks": 6,
           "objectiveIds": [
             "S8.09.A02",
-            "S8.09.A05",
-            "S8.09.A01",
-            "S8.09.A03"
+            "S8.09.A04",
+            "S8.09.A05"
           ]
         },
         {
           "id": "S8-L05-EXAM-3",
-          "sourceRef": "Cambridge 9618 syllabus · S8.09",
-          "commandWord": "Explain",
+          "sourceRef": "Cambridge 9618 syllabus 8.3 · S8.09 (course mapping)",
+          "commandWord": "Write",
           "marks": 3,
           "objectiveIds": [
-            "S8.08.A01",
-            "S8.08.A02"
+            "S8.09.A01",
+            "S8.09.A03"
           ]
         }
       ]
@@ -13483,283 +14210,451 @@
       "objectives": [
         {
           "id": "S8.10.A01",
-          "description": "Write SELECT and FROM clauses.",
+          "description": "Write SELECT and FROM clauses for specified output fields.",
           "explanationUnits": [
-            "Use DML on at most two tables: SELECT, FROM, WHERE, ORDER BY, GROUP BY, INNER JOIN, SUM, COUNT and AVG."
+            "Choose the result columns and source"
           ],
           "materialTitles": [
-            "Two-table INNER JOIN with ON"
+            "SELECT chooses the output columns",
+            "Retrieve member names",
+            "Member"
           ],
           "questionIds": [
-            "V3-Q-L043-01",
-            "V3-Q-L043-02"
+            "S8-L06-Q1"
           ],
           "pastPaperAnalysis": [
-            "9618/13/W/25 Q5(c)"
+            "Cambridge 9618 syllabus 8.3 · S8.10 (course mapping)"
           ]
         },
         {
           "id": "S8.10.A02",
-          "description": "Use WHERE to filter rows.",
+          "description": "Use WHERE to filter records with the required condition.",
           "explanationUnits": [
-            "Use DML on at most two tables: SELECT, FROM, WHERE, ORDER BY, GROUP BY, INNER JOIN, SUM, COUNT and AVG."
+            "Filter rows using a Boolean condition"
           ],
           "materialTitles": [
-            "Two-table INNER JOIN with ON"
+            "WHERE: both conditions must be true",
+            "Apply both conditions",
+            "Loan"
           ],
           "questionIds": [
-            "V3-Q-L043-01",
-            "V3-Q-L043-02"
+            "S8-L06-Q2"
           ],
           "pastPaperAnalysis": [
-            "9618/13/W/25 Q5(c)"
+            "Cambridge 9618 syllabus 8.3 · S8.10 (course mapping)"
           ]
         },
         {
           "id": "S8.10.A03",
-          "description": "Use ORDER BY to sort results.",
+          "description": "Use ORDER BY to sort query results.",
           "explanationUnits": [
-            "Use DML on at most two tables: SELECT, FROM, WHERE, ORDER BY, GROUP BY, INNER JOIN, SUM, COUNT and AVG."
+            "Sort the returned records"
           ],
           "materialTitles": [
-            "Two-table INNER JOIN with ON"
+            "ORDER BY rearranges the result rows",
+            "State both sort directions"
           ],
           "questionIds": [
-            "V3-043-S8.10-CHECK"
+            "S8-L06-Q3"
           ],
-          "pastPaperAnalysis": []
+          "pastPaperAnalysis": [
+            "Cambridge 9618 syllabus 8.3 · S8.10 (course mapping)",
+            "Cambridge 9618 syllabus 8.3 · S8.10 (course mapping)"
+          ]
         },
         {
           "id": "S8.10.A04",
-          "description": "Use GROUP BY for grouped results.",
+          "description": "Use GROUP BY to calculate one result per group.",
           "explanationUnits": [
-            "Use DML on at most two tables: SELECT, FROM, WHERE, ORDER BY, GROUP BY, INNER JOIN, SUM, COUNT and AVG."
+            "Form groups before calculating group results"
           ],
           "materialTitles": [
-            "Two-table INNER JOIN with ON"
+            "GROUP BY forms one group per key value",
+            "Count loans per member"
           ],
           "questionIds": [
-            "V3-043-S8.10-CHECK"
+            "S8-L06-Q4"
           ],
-          "pastPaperAnalysis": []
+          "pastPaperAnalysis": [
+            "Cambridge 9618 syllabus 8.3 · S8.10 (course mapping)"
+          ]
         },
         {
           "id": "S8.10.A05",
-          "description": "Use INNER JOIN across at most two tables.",
+          "description": "Use INNER JOIN with ON across at most two tables.",
           "explanationUnits": [
-            "Use DML on at most two tables: SELECT, FROM, WHERE, ORDER BY, GROUP BY, INNER JOIN, SUM, COUNT and AVG."
+            "Match records from two tables with INNER JOIN"
           ],
           "materialTitles": [
-            "Two-table INNER JOIN with ON"
+            "INNER JOIN returns matching row pairs",
+            "Trace a two-table join"
           ],
           "questionIds": [
-            "V3-Q-L043-03"
+            "S8-L06-Q5"
           ],
           "pastPaperAnalysis": [
-            "Cambridge 9618 syllabus · S8.10"
+            "Cambridge 9618 syllabus 8.3 · S8.10 (course mapping)"
           ]
         },
         {
           "id": "S8.10.A06",
-          "description": "Use SUM, COUNT and AVG aggregate functions.",
+          "description": "Use SUM, COUNT and AVG and interpret their results.",
           "explanationUnits": [
-            "Use DML on at most two tables: SELECT, FROM, WHERE, ORDER BY, GROUP BY, INNER JOIN, SUM, COUNT and AVG."
+            "Calculate SUM, COUNT and AVG"
           ],
           "materialTitles": [
-            "Two-table INNER JOIN with ON"
+            "Aggregates calculate over the selected records",
+            "Calculate the same result by hand",
+            "If a separate fee sample contains 2, NULL and 4"
           ],
           "questionIds": [
-            "V3-043-S8.10-CHECK"
+            "S8-L06-Q6"
           ],
-          "pastPaperAnalysis": []
+          "pastPaperAnalysis": [
+            "Cambridge 9618 syllabus 8.3 · S8.10 (course mapping)"
+          ]
         },
         {
           "id": "S8.11.A01",
-          "description": "Write INSERT INTO to add a row.",
+          "description": "Write INSERT INTO to add a complete record.",
           "explanationUnits": [
-            "INSERT, DELETE and UPDATE to maintain data"
+            "Insert values into named fields"
           ],
           "materialTitles": [
-            "DELETE FROM removes records",
-            "Maintain one Student record safely"
+            "INSERT INTO adds a new record",
+            "Add a member"
           ],
           "questionIds": [
-            "V3-Q-L044-02"
+            "S8-L06-Q7"
           ],
-          "pastPaperAnalysis": []
+          "pastPaperAnalysis": [
+            "Cambridge 9618 syllabus 8.3 · S8.11 (course mapping)"
+          ]
         },
         {
           "id": "S8.11.A02",
-          "description": "Write UPDATE with SET and a safe WHERE condition.",
+          "description": "Write DELETE FROM to remove specified records.",
           "explanationUnits": [
-            "INSERT, DELETE and UPDATE to maintain data"
+            "Delete only the intended records"
           ],
           "materialTitles": [
-            "DELETE FROM removes records",
-            "Maintain one Student record safely"
+            "DELETE FROM removes the selected row",
+            "Remove a selected loan"
           ],
           "questionIds": [
-            "V3-Q-L044-02",
-            "V3-Q-L044-03"
+            "S8-L06-Q8"
           ],
           "pastPaperAnalysis": [
-            "Cambridge 9618 syllabus · S8.11"
+            "Cambridge 9618 syllabus 8.3 · S8.11 (course mapping)"
           ]
         },
         {
           "id": "S8.11.A03",
-          "description": "Write DELETE FROM with a safe WHERE condition.",
+          "description": "Write UPDATE with SET to change specified field values.",
           "explanationUnits": [
-            "INSERT, DELETE and UPDATE to maintain data"
+            "Change fields while keeping the record"
           ],
           "materialTitles": [
-            "DELETE FROM removes records",
-            "Maintain one Student record safely"
+            "UPDATE changes a field in the selected record",
+            "Record a returned loan"
           ],
           "questionIds": [
-            "V3-Q-L044-02",
-            "V3-Q-L044-03"
+            "S8-L06-Q9"
           ],
           "pastPaperAnalysis": [
-            "Cambridge 9618 syllabus · S8.11"
+            "Cambridge 9618 syllabus 8.3 · S8.11 (course mapping)"
           ]
         }
       ],
       "knowledgeUnits": [
         {
           "syllabusId": "S8.10",
-          "heading": "Use DML on at most two tables: SELECT, FROM, WHERE, ORDER BY, GROUP BY, INNER JOIN, SUM, COUNT and AVG.",
+          "heading": "Choose the result columns and source",
           "objectiveIds": [
-            "S8.10.A01",
-            "S8.10.A02",
-            "S8.10.A03",
-            "S8.10.A04",
-            "S8.10.A05",
-            "S8.10.A06"
+            "S8.10.A01"
           ],
           "leadVisual": {
             "type": "reviewed-visual",
-            "title": "Two-table INNER JOIN with ON"
+            "title": "SELECT chooses the output columns"
           },
           "coreExplanation": [
-            "A query uses SELECT fields FROM a table, may filter rows with WHERE, sort with ORDER BY and form aggregate groups with GROUP BY. SUM totals values, COUNT counts rows or values, and AVG calculates a mean. An INNER JOIN uses ON to match at most two tables in the required AS queries.",
-            "A two-table DML query uses one explicit join. Write an explicit INNER JOIN between those tables and place the matching key condition after ON; use table-qualified field names where the same field name could be ambiguous.",
-            "Structured Query Language (SQL) is the industry-standard language used by a DBMS for DDL and DML. To understand a statement, read each clause by its effect: SELECT chooses output fields, FROM identifies the source table, and WHERE filters records using a condition. Keywords, field names, table names, operators, literal values and punctuation have different roles.",
-            "A valid answer must preserve the requested semantics, not merely contain familiar keywords. Text and date values are normally quoted using standard SQL literal syntax; numeric and Boolean values are not quoted. Clause order, comparison operators and requested output fields determine which records and columns appear."
-          ],
-          "method": null,
-          "workedExample": null
-        },
-        {
-          "syllabusId": "S8.11",
-          "heading": "INSERT, DELETE and UPDATE to maintain data",
-          "objectiveIds": [
-            "S8.11.A01",
-            "S8.11.A02",
-            "S8.11.A03"
-          ],
-          "leadVisual": {
-            "type": "reviewed-visual",
-            "title": "DELETE FROM removes records"
-          },
-          "coreExplanation": [
-            "DELETE FROM removes complete rows. WHERE selects which rows are deleted; use UPDATE instead when the record should remain but one field must change.",
-            "INSERT INTO adds a new row. Name the target fields when possible and supply values in the same order with types that match the table definition.",
-            "Before executing UPDATE or DELETE, test the WHERE condition with a SELECT query or otherwise verify which rows match. The condition is part of the data-safety reasoning, not optional punctuation.",
-            "UPDATE changes values in existing rows. SET gives the new value and WHERE selects the rows; omitting WHERE can update every row."
+            "SELECT lists the fields or expressions required in the result, while FROM names the source table. Returning MemberName alone does not return MemberID or Active. Reading a result leaves the original Member records unchanged.",
+            "Use the Member and Loan data in this lesson to trace each request. Each example states any required ordering explicitly; without ORDER BY, a DBMS need not return records in insertion or primary-key order."
           ],
           "method": null,
           "workedExample": {
             "type": "worked-example",
-            "title": "Maintain one Student record safely"
+            "title": "Retrieve member names"
+          }
+        },
+        {
+          "syllabusId": "S8.10",
+          "heading": "Filter rows using a Boolean condition",
+          "objectiveIds": [
+            "S8.10.A02"
+          ],
+          "leadVisual": {
+            "type": "reviewed-visual",
+            "title": "WHERE: both conditions must be true"
+          },
+          "coreExplanation": [
+            "WHERE retains only records for which the condition is true. Combine comparisons with AND when all conditions must hold, or OR when an alternative is sufficient. Parentheses make the intended grouping explicit in compound expressions.",
+            "The Loan example requires an unreturned loan and a fee of at least 3. Loan 202 has a sufficient fee but is returned; loan 201 is unreturned but its fee is only 2. Neither satisfies both conditions."
+          ],
+          "method": null,
+          "workedExample": {
+            "type": "worked-example",
+            "title": "Apply both conditions"
+          }
+        },
+        {
+          "syllabusId": "S8.10",
+          "heading": "Sort the returned records",
+          "objectiveIds": [
+            "S8.10.A03"
+          ],
+          "leadVisual": {
+            "type": "reviewed-visual",
+            "title": "ORDER BY rearranges the result rows"
+          },
+          "coreExplanation": [
+            "ORDER BY arranges result rows by the specified field or expression. ASC means increasing order and is the default; DESC means decreasing order. Sorting changes result presentation rather than the stored values.",
+            "Multiple sort fields are applied in sequence: sort by the first field, then use the next field for ties. The example sorts fees from largest to smallest and uses LoanID ascending to make any equal-fee ordering predictable."
+          ],
+          "method": null,
+          "workedExample": {
+            "type": "worked-example",
+            "title": "State both sort directions"
+          }
+        },
+        {
+          "syllabusId": "S8.10",
+          "heading": "Form groups before calculating group results",
+          "objectiveIds": [
+            "S8.10.A04"
+          ],
+          "leadVisual": {
+            "type": "reviewed-visual",
+            "title": "GROUP BY forms one group per key value"
+          },
+          "coreExplanation": [
+            "GROUP BY places records sharing the grouping values into the same group. An aggregate can then calculate one result for each group. Grouping loans by MemberID lets COUNT(*) report the number of loans for each represented member.",
+            "Include non-aggregated selected fields in GROUP BY so each returned value has a defined meaning for the group. ORDER BY can subsequently arrange the grouped results; it does not create the groups. A member with no Loan row does not appear in a grouping of Loan alone."
+          ],
+          "method": null,
+          "workedExample": {
+            "type": "worked-example",
+            "title": "Count loans per member"
+          }
+        },
+        {
+          "syllabusId": "S8.10",
+          "heading": "Match records from two tables with INNER JOIN",
+          "objectiveIds": [
+            "S8.10.A05"
+          ],
+          "leadVisual": {
+            "type": "reviewed-visual",
+            "title": "INNER JOIN returns matching row pairs"
+          },
+          "coreExplanation": [
+            "An INNER JOIN combines row pairs satisfying its ON condition. Here Member.MemberID = Loan.MemberID connects each loan to its member. Qualify shared field names with the table name to make the intended reference unambiguous.",
+            "A member with two loans contributes two joined rows, while a member with no matching loan contributes none. WHERE may further filter the joined rows. These AS SQL tasks use at most two tables; use an explicit INNER JOIN and a separate ON matching condition."
+          ],
+          "method": null,
+          "workedExample": {
+            "type": "worked-example",
+            "title": "Trace a two-table join"
+          }
+        },
+        {
+          "syllabusId": "S8.10",
+          "heading": "Calculate SUM, COUNT and AVG",
+          "objectiveIds": [
+            "S8.10.A06"
+          ],
+          "leadVisual": {
+            "type": "reviewed-visual",
+            "title": "Aggregates calculate over the selected records"
+          },
+          "coreExplanation": [
+            "SUM adds the numeric values of an expression, COUNT(*) counts records, and AVG calculates the mean of the included non-null values. Without GROUP BY, an aggregate query calculates one overall result for the selected records.",
+            "For the five library fees, 2 + 4 + 6 + 0 + 3 = 15, with five records and a mean of 3. A null denotes a missing value: COUNT(Fee), SUM(Fee) and AVG(Fee) ignore null fees, whereas COUNT(*) still counts their rows. Zero is a known numeric value and remains included."
+          ],
+          "method": null,
+          "workedExample": {
+            "type": "worked-example",
+            "title": "Calculate the same result by hand"
+          }
+        },
+        {
+          "syllabusId": "S8.11",
+          "heading": "Insert values into named fields",
+          "objectiveIds": [
+            "S8.11.A01"
+          ],
+          "leadVisual": {
+            "type": "reviewed-visual",
+            "title": "INSERT INTO adds a new record"
+          },
+          "coreExplanation": [
+            "INSERT INTO adds a record. Name the target fields and supply the corresponding VALUES in the same order. Text literals use single quotes; numeric and Boolean values are written according to their types.",
+            "Check the new primary key and any foreign-key values before insertion. The library example adds MemberID 5 with the name Elena and Active TRUE. It does not alter an existing member's record, and it must fail if that primary key is already present."
+          ],
+          "method": null,
+          "workedExample": {
+            "type": "worked-example",
+            "title": "Add a member"
+          }
+        },
+        {
+          "syllabusId": "S8.11",
+          "heading": "Delete only the intended records",
+          "objectiveIds": [
+            "S8.11.A02"
+          ],
+          "leadVisual": {
+            "type": "reviewed-visual",
+            "title": "DELETE FROM removes the selected row"
+          },
+          "coreExplanation": [
+            "DELETE FROM removes complete records from the named table. WHERE selects the records to remove. To remove the completed loan with LoanID 204, match that identifier rather than a member identifier shared by several loans.",
+            "Without a WHERE condition, deletion targets all rows in the table, subject to constraints. Check the intended rows first with a corresponding SELECT. Removing a referenced parent may be rejected by foreign-key constraints; this example removes the child Loan record."
+          ],
+          "method": null,
+          "workedExample": {
+            "type": "worked-example",
+            "title": "Remove a selected loan"
+          }
+        },
+        {
+          "syllabusId": "S8.11",
+          "heading": "Change fields while keeping the record",
+          "objectiveIds": [
+            "S8.11.A03"
+          ],
+          "leadVisual": {
+            "type": "reviewed-visual",
+            "title": "UPDATE changes a field in the selected record"
+          },
+          "coreExplanation": [
+            "UPDATE names the table, SET supplies the new field values, and WHERE selects the affected records. Updating Returned to TRUE for LoanID 203 leaves that loan's identity, member and fee in place.",
+            "A missing or incorrect WHERE condition can affect unintended records. Decide whether the business task requires changing a value or removing a record, then verify both the affected rows and the values that should remain unchanged."
+          ],
+          "method": null,
+          "workedExample": {
+            "type": "worked-example",
+            "title": "Record a returned loan"
           }
         }
       ],
       "practice": [
         {
-          "id": "V3-Q-L043-01",
-          "commandWord": "Identify",
-          "marks": 2,
+          "id": "S8-L06-Q1",
+          "commandWord": "Write",
+          "marks": 3,
           "objectiveIds": [
-            "S8.10.A01",
+            "S8.10.A01"
+          ]
+        },
+        {
+          "id": "S8-L06-Q2",
+          "commandWord": "Write",
+          "marks": 3,
+          "objectiveIds": [
             "S8.10.A02"
           ]
         },
         {
-          "id": "V3-Q-L043-02",
-          "commandWord": "Explain",
-          "marks": 5,
+          "id": "S8-L06-Q3",
+          "commandWord": "Write",
+          "marks": 3,
           "objectiveIds": [
-            "S8.10.A01",
-            "S8.10.A02"
+            "S8.10.A03"
           ]
         },
         {
-          "id": "V3-Q-L043-03",
-          "commandWord": "State",
-          "marks": 2,
+          "id": "S8-L06-Q4",
+          "commandWord": "Write",
+          "marks": 3,
+          "objectiveIds": [
+            "S8.10.A04"
+          ]
+        },
+        {
+          "id": "S8-L06-Q5",
+          "commandWord": "Write",
+          "marks": 4,
           "objectiveIds": [
             "S8.10.A05"
           ]
         },
         {
-          "id": "V3-Q-L044-02",
+          "id": "S8-L06-Q6",
           "commandWord": "Write",
-          "marks": 6,
-          "objectiveIds": [
-            "S8.11.A03",
-            "S8.11.A01",
-            "S8.11.A02"
-          ]
-        },
-        {
-          "id": "V3-Q-L044-03",
-          "commandWord": "Explain",
           "marks": 4,
           "objectiveIds": [
-            "S8.11.A03",
+            "S8.10.A06"
+          ]
+        },
+        {
+          "id": "S8-L06-Q7",
+          "commandWord": "Write",
+          "marks": 2,
+          "objectiveIds": [
+            "S8.11.A01"
+          ]
+        },
+        {
+          "id": "S8-L06-Q8",
+          "commandWord": "Write",
+          "marks": 2,
+          "objectiveIds": [
             "S8.11.A02"
           ]
         },
         {
-          "id": "V3-043-S8.10-CHECK",
-          "commandWord": "Complete",
-          "marks": 6,
+          "id": "S8-L06-Q9",
+          "commandWord": "Write",
+          "marks": 2,
           "objectiveIds": [
-            "S8.10.A03",
-            "S8.10.A04",
-            "S8.10.A06"
+            "S8.11.A03"
           ]
         }
       ],
       "examStyleQuestions": [
         {
           "id": "S8-L06-EXAM-1",
-          "sourceRef": "9618/13/W/25 Q5(c)",
-          "commandWord": "Explain",
+          "sourceRef": "Cambridge 9618 syllabus 8.3 · S8.10 (course mapping)",
+          "commandWord": "Write",
           "marks": 6,
           "objectiveIds": [
             "S8.10.A01",
-            "S8.10.A02"
-          ]
-        },
-        {
-          "id": "S8-L06-EXAM-2",
-          "sourceRef": "Cambridge 9618 syllabus · S8.10",
-          "commandWord": "Describe",
-          "marks": 3,
-          "objectiveIds": [
+            "S8.10.A02",
+            "S8.10.A03",
             "S8.10.A05"
           ]
         },
         {
-          "id": "S8-L06-EXAM-3",
-          "sourceRef": "Cambridge 9618 syllabus · S8.11",
-          "commandWord": "Explain",
+          "id": "S8-L06-EXAM-2",
+          "sourceRef": "Cambridge 9618 syllabus 8.3 · S8.10 (course mapping)",
+          "commandWord": "Write",
           "marks": 5,
           "objectiveIds": [
-            "S8.11.A03",
-            "S8.11.A02"
+            "S8.10.A03",
+            "S8.10.A04",
+            "S8.10.A06"
+          ]
+        },
+        {
+          "id": "S8-L06-EXAM-3",
+          "sourceRef": "Cambridge 9618 syllabus 8.3 · S8.11 (course mapping)",
+          "commandWord": "Write",
+          "marks": 6,
+          "objectiveIds": [
+            "S8.11.A01",
+            "S8.11.A02",
+            "S8.11.A03"
           ]
         }
       ]
@@ -14688,9 +15583,11 @@
             "Section 7: Ethics and ownership"
           ],
           "materialTitles": [
-            "Visual overview · Section 7: Ethics and ownership"
+            "Retrieve the complete S7 reasoning"
           ],
-          "questionIds": [],
+          "questionIds": [
+            "REV-P1-S7-Q1"
+          ],
           "pastPaperAnalysis": []
         },
         {
@@ -14700,9 +15597,11 @@
             "Section 7: Ethics and ownership"
           ],
           "materialTitles": [
-            "Visual overview · Section 7: Ethics and ownership"
+            "Retrieve the complete S7 reasoning"
           ],
-          "questionIds": [],
+          "questionIds": [
+            "REV-P1-S7-Q1"
+          ],
           "pastPaperAnalysis": []
         },
         {
@@ -14712,9 +15611,11 @@
             "Section 7: Ethics and ownership"
           ],
           "materialTitles": [
-            "Visual overview · Section 7: Ethics and ownership"
+            "Retrieve the complete S7 reasoning"
           ],
-          "questionIds": [],
+          "questionIds": [
+            "REV-P1-S7-Q1"
+          ],
           "pastPaperAnalysis": []
         },
         {
@@ -14724,9 +15625,11 @@
             "Section 7: Ethics and ownership"
           ],
           "materialTitles": [
-            "Visual overview · Section 7: Ethics and ownership"
+            "Retrieve the complete S7 reasoning"
           ],
-          "questionIds": [],
+          "questionIds": [
+            "REV-P1-S7-Q2"
+          ],
           "pastPaperAnalysis": []
         },
         {
@@ -14736,9 +15639,12 @@
             "Section 7: Ethics and ownership"
           ],
           "materialTitles": [
-            "Visual overview · Section 7: Ethics and ownership"
+            "Retrieve the complete S7 reasoning"
           ],
-          "questionIds": [],
+          "questionIds": [
+            "REV-P1-S7-Q2",
+            "REV-P1-S7-Q3"
+          ],
           "pastPaperAnalysis": []
         },
         {
@@ -14748,9 +15654,11 @@
             "Section 7: Ethics and ownership"
           ],
           "materialTitles": [
-            "Visual overview · Section 7: Ethics and ownership"
+            "Retrieve the complete S7 reasoning"
           ],
-          "questionIds": [],
+          "questionIds": [
+            "REV-P1-S7-Q4"
+          ],
           "pastPaperAnalysis": []
         },
         {
@@ -14760,9 +15668,12 @@
             "Section 8: Databases"
           ],
           "materialTitles": [
-            "Visual overview · Section 8: Databases"
+            "Retrieve and apply the S8 methods",
+            "Count outstanding loans by member"
           ],
-          "questionIds": [],
+          "questionIds": [
+            "REV-P1-S8-Q1"
+          ],
           "pastPaperAnalysis": []
         },
         {
@@ -14772,9 +15683,12 @@
             "Section 8: Databases"
           ],
           "materialTitles": [
-            "Visual overview · Section 8: Databases"
+            "Retrieve and apply the S8 methods",
+            "Count outstanding loans by member"
           ],
-          "questionIds": [],
+          "questionIds": [
+            "REV-P1-S8-Q1"
+          ],
           "pastPaperAnalysis": []
         },
         {
@@ -14784,9 +15698,12 @@
             "Section 8: Databases"
           ],
           "materialTitles": [
-            "Visual overview · Section 8: Databases"
+            "Retrieve and apply the S8 methods",
+            "Count outstanding loans by member"
           ],
-          "questionIds": [],
+          "questionIds": [
+            "REV-P1-S8-Q1"
+          ],
           "pastPaperAnalysis": []
         },
         {
@@ -14796,9 +15713,12 @@
             "Section 8: Databases"
           ],
           "materialTitles": [
-            "Visual overview · Section 8: Databases"
+            "Retrieve and apply the S8 methods",
+            "Count outstanding loans by member"
           ],
-          "questionIds": [],
+          "questionIds": [
+            "REV-P1-S8-Q2"
+          ],
           "pastPaperAnalysis": []
         },
         {
@@ -14808,9 +15728,12 @@
             "Section 8: Databases"
           ],
           "materialTitles": [
-            "Visual overview · Section 8: Databases"
+            "Retrieve and apply the S8 methods",
+            "Count outstanding loans by member"
           ],
-          "questionIds": [],
+          "questionIds": [
+            "REV-P1-S8-Q3"
+          ],
           "pastPaperAnalysis": []
         },
         {
@@ -14820,9 +15743,12 @@
             "Section 8: Databases"
           ],
           "materialTitles": [
-            "Visual overview · Section 8: Databases"
+            "Retrieve and apply the S8 methods",
+            "Count outstanding loans by member"
           ],
-          "questionIds": [],
+          "questionIds": [
+            "REV-P1-S8-Q3"
+          ],
           "pastPaperAnalysis": []
         },
         {
@@ -14832,9 +15758,12 @@
             "Section 8: Databases"
           ],
           "materialTitles": [
-            "Visual overview · Section 8: Databases"
+            "Retrieve and apply the S8 methods",
+            "Count outstanding loans by member"
           ],
-          "questionIds": [],
+          "questionIds": [
+            "REV-P1-S8-Q3"
+          ],
           "pastPaperAnalysis": []
         },
         {
@@ -14844,9 +15773,12 @@
             "Section 8: Databases"
           ],
           "materialTitles": [
-            "Visual overview · Section 8: Databases"
+            "Retrieve and apply the S8 methods",
+            "Count outstanding loans by member"
           ],
-          "questionIds": [],
+          "questionIds": [
+            "REV-P1-S8-Q3"
+          ],
           "pastPaperAnalysis": []
         },
         {
@@ -14856,9 +15788,12 @@
             "Section 8: Databases"
           ],
           "materialTitles": [
-            "Visual overview · Section 8: Databases"
+            "Retrieve and apply the S8 methods",
+            "Count outstanding loans by member"
           ],
-          "questionIds": [],
+          "questionIds": [
+            "REV-P1-S8-Q3"
+          ],
           "pastPaperAnalysis": []
         },
         {
@@ -14868,9 +15803,12 @@
             "Section 8: Databases"
           ],
           "materialTitles": [
-            "Visual overview · Section 8: Databases"
+            "Retrieve and apply the S8 methods",
+            "Count outstanding loans by member"
           ],
-          "questionIds": [],
+          "questionIds": [
+            "REV-P1-S8-Q4"
+          ],
           "pastPaperAnalysis": []
         },
         {
@@ -14880,9 +15818,12 @@
             "Section 8: Databases"
           ],
           "materialTitles": [
-            "Visual overview · Section 8: Databases"
+            "Retrieve and apply the S8 methods",
+            "Count outstanding loans by member"
           ],
-          "questionIds": [],
+          "questionIds": [
+            "REV-P1-S8-Q4"
+          ],
           "pastPaperAnalysis": []
         }
       ],
@@ -15061,7 +16002,7 @@
           "workedExample": null
         },
         {
-          "syllabusId": "REVIEW-1-7",
+          "syllabusId": "S7.01.R",
           "heading": "Section 7: Ethics and ownership",
           "objectiveIds": [
             "S7.01.R",
@@ -15072,14 +16013,12 @@
             "S7.06.R"
           ],
           "leadVisual": {
-            "type": "cards",
-            "title": "Visual overview · Section 7: Ethics and ownership"
+            "type": "table",
+            "title": "Retrieve the complete S7 reasoning"
           },
           "coreExplanation": [
-            "Show understanding of the need for and purpose of ethics as a computing professional.",
-            "Show understanding of the importance of joining a professional ethical body, including BCS and IEEE.",
-            "Explain the need to act ethically and the impact of acting ethically or unethically for a…",
-            "Show understanding of the need for copyright legislation for software."
+            "Explain why specialists owe duties to affected people, then use the actual decision to identify stakeholders and compare the consequences of ethical and unethical actions. Professional membership supplies standards and development; it leaves the individual responsible for applying them.",
+            "For software ownership, distinguish copyright from the permissions in a licence. Compare free-software freedoms, open-source criteria, trial limits and commercial terms against the required use. For AI, describe the task performed before assessing its effects on people, costs and resources."
           ],
           "method": null,
           "workedExample": null
@@ -15101,17 +16040,18 @@
             "S8.11.R"
           ],
           "leadVisual": {
-            "type": "cards",
-            "title": "Visual overview · Section 8: Databases"
+            "type": "table",
+            "title": "Retrieve and apply the S8 methods"
           },
           "coreExplanation": [
-            "Explain limitations of file-based systems and how relational databases address them.",
-            "Understand entity/table, record/tuple, field/attribute, primary/candidate/secondary/foreign key, relationships, referential integrity and indexing.",
-            "Produce and interpret entity-relationship diagrams.",
-            "Understand 1NF, 2NF and 3NF; explain 3NF and produce a normalised design."
+            "Start with the information and business rules: identify entities, choose candidate and primary keys, then show relationship cardinalities. Diagnose repeated data and dependency problems before decomposing tables into 3NF. Retain foreign keys that allow the original facts to be reconstructed.",
+            "Connect the design to its DBMS implementation. The dictionary describes fields and constraints; access rights and recovery procedures protect use and availability. Read or write DDL to define the structure, and DML to retrieve or maintain records. Trace SQL against the actual data, including join matches, grouped totals and the rows targeted by a maintenance condition."
           ],
           "method": null,
-          "workedExample": null
+          "workedExample": {
+            "type": "worked-example",
+            "title": "Count outstanding loans by member"
+          }
         }
       ],
       "practice": [
@@ -15119,12 +16059,6 @@
           "id": "V3-Q-L045-01",
           "commandWord": "Describe",
           "marks": 5,
-          "objectiveIds": []
-        },
-        {
-          "id": "V3-Q-L045-02",
-          "commandWord": "Explain",
-          "marks": 3,
           "objectiveIds": []
         },
         {
@@ -15165,6 +16099,80 @@
           "marks": 3,
           "objectiveIds": [
             "S5.07.R"
+          ]
+        },
+        {
+          "id": "REV-P1-S7-Q1",
+          "commandWord": "Explain",
+          "marks": 3,
+          "objectiveIds": [
+            "S7.01.R",
+            "S7.02.R",
+            "S7.03.R"
+          ]
+        },
+        {
+          "id": "REV-P1-S7-Q2",
+          "commandWord": "Explain",
+          "marks": 3,
+          "objectiveIds": [
+            "S7.04.R",
+            "S7.05.R"
+          ]
+        },
+        {
+          "id": "REV-P1-S7-Q3",
+          "commandWord": "Justify",
+          "marks": 3,
+          "objectiveIds": [
+            "S7.05.R"
+          ]
+        },
+        {
+          "id": "REV-P1-S7-Q4",
+          "commandWord": "Describe",
+          "marks": 4,
+          "objectiveIds": [
+            "S7.06.R"
+          ]
+        },
+        {
+          "id": "REV-P1-S8-Q1",
+          "commandWord": "Explain",
+          "marks": 4,
+          "objectiveIds": [
+            "S8.01.R",
+            "S8.02.R",
+            "S8.03.R"
+          ]
+        },
+        {
+          "id": "REV-P1-S8-Q2",
+          "commandWord": "Explain",
+          "marks": 3,
+          "objectiveIds": [
+            "S8.04.R"
+          ]
+        },
+        {
+          "id": "REV-P1-S8-Q3",
+          "commandWord": "Define",
+          "marks": 5,
+          "objectiveIds": [
+            "S8.05.R",
+            "S8.06.R",
+            "S8.07.R",
+            "S8.08.R",
+            "S8.09.R"
+          ]
+        },
+        {
+          "id": "REV-P1-S8-Q4",
+          "commandWord": "Write",
+          "marks": 5,
+          "objectiveIds": [
+            "S8.10.R",
+            "S8.11.R"
           ]
         }
       ],
@@ -23994,72 +25002,184 @@
       "sha256": "86bc24113d2af92c12f356b801d4f0de339689d8b33521e2aadb006988804926"
     },
     {
-      "path": "web/assets/diagrams/stage10-infographics/stage10-lesson-073-ethics.jpg",
-      "sha256": "961b467683f8c07b320cff74aee75f9cba1dadd2333920d978d151459a2192c1"
+      "path": "web/assets/course-v3/section-7/professional-responsibility.png",
+      "sha256": "6503becf9f41554441fede6f77a79c82982f96291373eaf7be68752b65dfe9ce"
     },
     {
-      "path": "web/assets/diagrams/course-v3-imagegen/professional-bodies.png",
-      "sha256": "b84c50e0e1d2f3e5d93056d4daa1712d759523cc8a5dee01050b74fe6749473b"
+      "path": "web/assets/course-v3/section-7/ethical-decision-paths.png",
+      "sha256": "5a9a17f5f6d3524713b398a00c9abc95f18cbcb6313365f19d8f6ebd8b0e2138"
     },
     {
-      "path": "web/assets/diagrams/stage10-infographics/stage10-lesson-073-stakeholders.jpg",
-      "sha256": "62c4461d6ba8a8dd8755476c43a90bb72d975d1be2abdb5e42edf72e8be3d6b1"
+      "path": "web/assets/course-v3/section-7/copyright-permissions.png",
+      "sha256": "85445b19e3af1bcb24c3ca475f8f494e55b00964f70e1b23d4c4f7bb03838af4"
     },
     {
-      "path": "web/assets/diagrams/stage10-infographics/stage10-lesson-075-copyright.jpg",
-      "sha256": "48c374a3bc0b66beee5dad80a596c545ff2ade4a50c3076da42e4e0f7b894f16"
+      "path": "web/assets/course-v3/section-7/shareware-trial.png",
+      "sha256": "ebf85d9662237004baeb4624cc369b0e13d5df771977340c4ff59d9450e16edd"
     },
     {
-      "path": "web/assets/diagrams/stage10-infographics/stage10-lesson-075-licensing.jpg",
-      "sha256": "b75db11ba6041f7db8bfbf5ad003bd27bcb6681e4711feeb2d36171c7e480b59"
+      "path": "web/assets/course-v3/section-7/software-freedoms-and-price.png",
+      "sha256": "eb327d0a7b0859a0709060bd1d6a06258c00e9d5e9d04c27345e99c3bc5734fa"
     },
     {
-      "path": "web/assets/diagrams/stage10-infographics/stage10-lesson-077-environment.jpg",
-      "sha256": "c5564551ca6f025c23518584467b255dd0ddd11c4c48e4e67ff86725a3bcb266"
+      "path": "web/assets/course-v3/section-7/ai-inference-pipeline.png",
+      "sha256": "57ce3e692f7786feb63e0e7a6f0fc375389d282e6a61f909eaaa08d60e67f2e2"
     },
     {
-      "path": "web/assets/diagrams/stage10-infographics/stage10-lesson-080-compare.jpg",
-      "sha256": "634108a073be37aa61273c1bf264a9cc662f85eb7608d5125ddec583b1aba036"
+      "path": "web/assets/course-v3/section-7/ai-fairness.png",
+      "sha256": "8ec7011f2fd77585e89fef4fab3feb150ca85190411a677f1ac8afb060a699a1"
     },
     {
-      "path": "web/assets/diagrams/stage10-infographics/stage10-lesson-082-referential.jpg",
-      "sha256": "3d04428f7c2b27fe8b73dcb0cc1f85a0f74448277bcbacf9fc7316fdcf5dc95b"
+      "path": "web/assets/course-v3/section-7/ai-environmental-balance.png",
+      "sha256": "821a1e788acb799f0b74ee4af77720b65a251538213a49306bd5875bb667d571"
     },
     {
-      "path": "web/assets/diagrams/stage10-infographics/stage10-lesson-083-cardinality.jpg",
-      "sha256": "2ee6c6e7550525f935ace02f21b34ceaddc300e733c6f98894dafb8182b15eb4"
+      "path": "web/assets/course-v3/section-8/shared-facts.png",
+      "sha256": "b3b92aca3a4cbda435d5f45c99b0f4fdd1c1bc60c21c6308634eebc0210ab7be"
     },
     {
-      "path": "web/assets/diagrams/stage10-infographics/stage10-lesson-084-normal-forms.jpg",
-      "sha256": "a895afae0535755bc051f186bed2e76a547b7d75875aa6664da5b02a2a5a1f89"
+      "path": "web/assets/course-v3/section-8/relational-terms.svg",
+      "sha256": "ebe25d340112b8d16626c0b30af8fa77d7b74e2ed76489f99208c65b5cc1a1fd"
     },
     {
-      "path": "web/assets/diagrams/stage10-infographics/stage10-lesson-079-dbms.jpg",
-      "sha256": "d23e5ff712edf4021002075ef9f1d816702c8484182880e123e676d0f1c2eb0a"
+      "path": "web/assets/course-v3/section-8/keys-and-references.svg",
+      "sha256": "ed2d19533d2d96b9686fed61efb705f214713907fb4ec031c524b8f46deeb467"
     },
     {
-      "path": "web/assets/diagrams/course-v3-imagegen/dbms-interface-query.png",
-      "sha256": "2f56596eecddce973d35acfa8c7792f1013f37c219065b6098837fd6f6484413"
+      "path": "web/assets/course-v3/section-8/relationship-cardinality.svg",
+      "sha256": "14bc425e8b99335a58c22c8e8b6a0bf0bafd58edac360ba55ccc140760898ca2"
     },
     {
-      "path": "web/assets/diagrams/stage10-infographics/stage10-lesson-088-dml.jpg",
-      "sha256": "69eb4a10218024b591e0c590e04ddec293ac01f22b87bc54e82c7fcb5f12c24c"
+      "path": "web/assets/course-v3/section-8/referential-integrity.svg",
+      "sha256": "9136fc51d07b6939274b0fbae10ea92a5c00db2825d454c15d0aa837ca74dc58"
     },
     {
-      "path": "web/assets/diagrams/stage10-infographics/stage10-lesson-085-clauses.jpg",
-      "sha256": "7131441b5f7cc875c117661a3e515f73baa3b425d19d423f0f0d2da54c3dcff3"
+      "path": "web/assets/course-v3/section-8/index-lookup.svg",
+      "sha256": "9df0409fc17f8a454b5c44b35f7683b5c37beeaf10121715c976d55e96dfb163"
     },
     {
-      "path": "web/assets/diagrams/course-v3-imagegen/ddl-schema.png",
-      "sha256": "4a45adfe735262c74a69ef14e36e926eb196ea99795e2e05d9152092821e4e81"
+      "path": "web/assets/course-v3/section-8/clinic-er.svg",
+      "sha256": "7d6555312ef99f9b7eb053c8a52f73ef7ec67802b9b5556a13035ba1560f2166"
     },
     {
-      "path": "web/assets/diagrams/stage10-infographics/stage10-lesson-087-join.jpg",
-      "sha256": "4aa3e5e2bf7e03194cf19991b899b90baa36ce283031152ee16e42537060c817"
+      "path": "web/assets/course-v3/section-8/normalisation-1nf.svg",
+      "sha256": "9b2c5f734ff2cbb676be0add7d2f5d89fa8d46aa59edf5febcf024fbaec80919"
     },
     {
-      "path": "web/assets/diagrams/stage10-infographics/stage10-lesson-088-delete.jpg",
-      "sha256": "06889144fb817b703a20125518fefdbc41513c3bfafb77e7cbf1223008a32e15"
+      "path": "web/assets/course-v3/section-8/normalisation-2nf.svg",
+      "sha256": "3dc9a081f3c9e67cebd156ead5b585def9d881756e8f12c7961761d765e4b80e"
+    },
+    {
+      "path": "web/assets/course-v3/section-8/normalisation-3nf.svg",
+      "sha256": "1989f957cc5a833cac3d2115c35f1b19d67d3c4c50319a27c077471a66f98400"
+    },
+    {
+      "path": "web/assets/course-v3/section-8/normalisation-reconstruct.svg",
+      "sha256": "795836b9390619c3771c518911bb6ada638b4220db17791aca6222956ed0fc35"
+    },
+    {
+      "path": "web/assets/course-v3/section-8/data-dictionary.svg",
+      "sha256": "2f5b8ec5d797269d8b6e771002c090b1eb8a8c5668f10d81ed218ce1c30b1da8"
+    },
+    {
+      "path": "web/assets/course-v3/section-8/data-modelling.png",
+      "sha256": "9aabd04deb02064847793214cf31eeae17aac81c3c462138b36df19fc3b3d760"
+    },
+    {
+      "path": "web/assets/course-v3/section-8/logical-schema.svg",
+      "sha256": "1623490076af14f35477236f1faf5f9a4a0194e92fb4fd85d9678e8d4e44932b"
+    },
+    {
+      "path": "web/assets/course-v3/section-8/integrity-gates.svg",
+      "sha256": "fc7021abca9ba5f0803877db623be3391bc4588561ae5722d0a43a18639da81c"
+    },
+    {
+      "path": "web/assets/course-v3/section-8/access-rights.png",
+      "sha256": "c518b72ed68195a21f9a31f1976aebe47eaf99e3646784f4949c8f2d5d83a89d"
+    },
+    {
+      "path": "web/assets/course-v3/section-8/backup-recovery.png",
+      "sha256": "ab0991cd1b1112f48c208bf25c32a96e040c56b34000128127878473b1008ac6"
+    },
+    {
+      "path": "web/assets/course-v3/section-8/developer-interface.png",
+      "sha256": "0dc3641f3d75071a9443be8a37871b305b89b62c422739822f3083c72020d562"
+    },
+    {
+      "path": "web/assets/course-v3/section-8/query-processor.png",
+      "sha256": "44e868e0bdecea2c3dfad7b1ac1b16a4ba3c41d8f26736512fbab5a153fa20a2"
+    },
+    {
+      "path": "web/assets/course-v3/section-8/structure-versus-data.png",
+      "sha256": "2697b2e2a10ee3ad1ee8830f7ff160653138cb1acf14c5f6ba1609c7ac143b0f"
+    },
+    {
+      "path": "web/assets/course-v3/section-8/dml-record-operations.svg",
+      "sha256": "f975e6142d14908740722c2794abfa4bd56c936c361aba4ee5a8f5c70960bd00"
+    },
+    {
+      "path": "web/assets/course-v3/section-8/sql-language-roles.svg",
+      "sha256": "bcf6401d08c8c0c625a6b3d1b12379d41fe5a8fd58a1eeed59ca1839a0858a3b"
+    },
+    {
+      "path": "web/assets/course-v3/section-8/read-sql-statement.svg",
+      "sha256": "9232e7eaf3bac0223400da40009f756c4f21761834cba2b8c6886b018e14621d"
+    },
+    {
+      "path": "web/assets/course-v3/section-8/create-database.svg",
+      "sha256": "83af130abfc884eb03504ca1ec1986522428af9b5a3b6659e7beee91a3eec56c"
+    },
+    {
+      "path": "web/assets/course-v3/section-8/sql-data-types.svg",
+      "sha256": "27054929c098218d62cd802f705b3cfc2c43e7278b69e2e2c1dd952b685552f0"
+    },
+    {
+      "path": "web/assets/course-v3/section-8/alter-table.svg",
+      "sha256": "3da68f3962b2551b420f74a7a9e30e61f5efe2e741943d220d52aac452fa798f"
+    },
+    {
+      "path": "web/assets/course-v3/section-8/primary-key-constraint.svg",
+      "sha256": "9b67fc7d1a2373e4b5056094e907936b751dea4061a1f4ce9f04a54e5182016b"
+    },
+    {
+      "path": "web/assets/course-v3/section-8/foreign-key-definition.svg",
+      "sha256": "11d3d8a8ce5035f805b954aff6a59a632fae18d4c9621907d289b0b55f18b442"
+    },
+    {
+      "path": "web/assets/course-v3/section-8/select-projection.svg",
+      "sha256": "0b49021ad9aeea01a7b349aa9cf8d991bf6d12950ef1b475c81f3957fbc08de0"
+    },
+    {
+      "path": "web/assets/course-v3/section-8/where-and-filter.svg",
+      "sha256": "b361d16d2679c18b7638f729d58a0dfea36df4bf3fbbb7e53e57092ea39f56ea"
+    },
+    {
+      "path": "web/assets/course-v3/section-8/order-by-sorting.svg",
+      "sha256": "0bbf18ef8373cf0b15da47d599689ba505225d690a54c05630a7245ca0852401"
+    },
+    {
+      "path": "web/assets/course-v3/section-8/group-by-count.svg",
+      "sha256": "6bb1f69dfec55160e81b1a4c2729e908725f3b6cdc004bdee20b1a744ea0d41b"
+    },
+    {
+      "path": "web/assets/course-v3/section-8/inner-join-matches.svg",
+      "sha256": "068a0a61469cae6d362a849b470037be8bfb443137f69faebc3ea55ee7a659db"
+    },
+    {
+      "path": "web/assets/course-v3/section-8/aggregate-calculations.svg",
+      "sha256": "ebf97ec26a793ecfca21bfc6137adf0df6e1fcbc72e8f611a98dc4aa6b66155d"
+    },
+    {
+      "path": "web/assets/course-v3/section-8/insert-new-record.svg",
+      "sha256": "3d0c741ed3d335472d0b3a277db0817574bf8f7031fb72f0ca43ce0a2ca4d872"
+    },
+    {
+      "path": "web/assets/course-v3/section-8/delete-target-record.svg",
+      "sha256": "50b77b634f6daccb8955f20c66050a3e4590e82faa035ef3ba846428486df559"
+    },
+    {
+      "path": "web/assets/course-v3/section-8/update-target-value.svg",
+      "sha256": "755a23bf76d2fcdbf93301e269bc2fe9dacf54801a55b184e14dbf32c150fc49"
     },
     {
       "path": "web/assets/diagrams/stage10-infographics/stage10-lesson-100-abstraction.jpg",

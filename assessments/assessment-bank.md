@@ -361,55 +361,179 @@ Award one mark per point. Use the supplied check-digit rule; do not add weights 
 
 ## Section 7: Ethics and ownership - cumulative check (20 marks)
 
-### 1. explain - 5 marks
+### 1. Explain - 5 marks
 
-Connect two syllabus ideas from Section 7 and explain why the connection matters in a new scenario.
+A programmer reviewing a flood-warning system is pressured to hide failures to detect danger. Explain why professional ethics is needed, identify BCS and IEEE, and explain two ways membership of either body could help the programmer respond.
 
-**Answer and guidance:** S7.01: explain professional, ethics, purpose. S7.01 method: Establish the exact components or states → Trace the relationship or change → Use the explanation in a concrete case. S7.02: explain joining, British, Computer, Society, IEEE, codes, conduct. Award up to five independent marks for accurate, connected points applied to the new context.
+**Answer and guidance:**
 
-### 2. correct - 5 marks
+- People exposed to flooding depend on the programmer's specialist judgement, so duties of honest disclosure help protect the public from a hidden safety risk.
+- BCS is the British Computer Society.
+- IEEE is the Institute of Electrical and Electronics Engineers.
+- A professional code provides standards the programmer can cite when challenging concealment of the failed detections.
+- Continuing development or experienced peers can help the programmer recognise limitations and obtain informed guidance on the fault.
 
-Correct a plausible student error about ethical decisions and their consequences and justify the corrected answer.
+Award one mark for each of the five requested points. Membership benefits must help the stated professional response; membership does not certify the warning system.
 
-**Answer and guidance:** S7.03: explain situation, ethical, unethical, impact. S7.03 method: Identify the relevant condition or input → Trace how the process works → Connect the mechanism to its result. Correction to remember: Students often write personal opinions only. Correction: ethics answers need stakeholders, evidence and balanced judgement. Award up to five independent marks for accurate, connected points applied to the new context.
+### 2. Explain - 5 marks
 
-### 3. apply - 5 marks
+A mobile-app developer discovers that family photos are being made public despite a private setting. The developer can notify users and disable sharing until it is fixed, or hide the fault to avoid bad publicity. Explain one consequence for users and one for the company under each action, then justify a response.
 
-Apply the main method from copyright and software licences to a different context from the lesson.
+**Answer and guidance:**
 
-**Answer and guidance:** S7.04: explain copyright, software, legislation, needed. S7.04 method: Establish the exact components or states → Trace the relationship or change → Use the explanation in a concrete case. S7.05: explain FSF, OSI, shareware, commercial, licences, licence. Award up to five independent marks for accurate, connected points applied to the new context.
+- Notification and disabling sharing allow users to stop further exposure of photos while the fault is repaired.
+- The company must fund a fix and may face immediate criticism, but an honest response can support recovery of trust.
+- Concealment leaves users unknowingly exposing personal photos and unable to protect themselves.
+- If concealment is discovered, the company may face stronger complaints and loss of confidence because it knowingly withheld the problem.
+- Notify and correct the problem because protecting affected users and enabling an informed choice outweighs merely hiding immediate bad publicity.
 
-### 4. compare - 5 marks
+Award one mark per developed consequence and one for the justified response. Accept equivalent context-linked consequences; distinguish all four stakeholder/action combinations.
 
-Compare two alternatives from Section 7, then recommend one for a stated purpose.
+### 3. Justify - 5 marks
 
-**Answer and guidance:** S7.06: explain AI, applications, evaluate, social, economic, environmental, impacts. S7.06 method: Establish the exact components or states → Trace the relationship or change → Use the explanation in a concrete case. Correction to remember: Students often write personal opinions only. Correction: ethics answers need stakeholders, evidence and balanced judgement. Award up to five independent marks for accurate, connected points applied to the new context.
+A charity must modify a scheduling program and share it with branches. Offer A uses an OSI-approved open-source licence permitting both acts if notices are retained. Offer B is a 15-day shareware trial with no modification rights. Justify one choice, state an obligation, explain a limitation of B, and explain why copyright remains relevant even with permission to share.
+
+**Answer and guidance:**
+
+- A permits the charity to adapt the source to its scheduling needs.
+- A also allows branches to receive copies of the adaptation under the licence, meeting the distribution requirement.
+- The charity must preserve the notices specified by A.
+- B lacks the required modification right and its trial alone does not authorise continued use beyond 15 days.
+- The rights holder retains copyright and can enforce its licence conditions; sharing permission does not make the program ownerless.
+
+Award one mark per point. An alternative licence can only be justified if it meets the supplied requirements; inventing broader rights for B is not acceptable.
+
+### 4. Evaluate - 5 marks
+
+A bus service tests AI to recognise spoken destinations. It could make booking easier and reduce call-handling work, but speech from some passengers is often misrecognised and the service requires additional computing hardware. Evaluate the proposal using social, economic and environmental effects, one safeguard and a supported conclusion.
+
+**Answer and guidance:**
+
+- Voice booking could improve access, but frequent errors for some speakers may exclude those passengers or create wrong bookings.
+- Reduced routine call handling can save staff time, while buying, integrating and maintaining the service adds costs.
+- Operating and replacing the extra computing hardware consumes energy and materials, so its footprint must be considered.
+- Offer confirmation of the recognised destination and an accessible human booking alternative to address recognition failures.
+- Use a monitored service alongside that alternative only if testing shows acceptable booking accuracy across affected passengers and the benefits justify its costs.
+
+Award one mark for each requested dimension, one for a risk-linked safeguard and one for a reasoned conclusion. Accept rejection or a conditional pilot when supported by the given evidence.
 
 ## Section 8: Databases - cumulative check (20 marks)
 
-### 1. explain - 5 marks
+### 1. Explain - 3 marks
 
-Connect two syllabus ideas from Section 8 and explain why the connection matters in a new scenario.
+A volunteering service repeats VolunteerName and Phone in separate visit files. It proposes Volunteer(VolunteerID, VolunteerName, Phone) and Visit(VisitID, VolunteerID, VisitDate). Each visit has one volunteer, who may make many visits. Explain how this reduces inconsistent phone numbers, draw the relationship with its cardinalities, and state the referential-integrity rule for Visit.VolunteerID.
 
-**Answer and guidance:** S8.01: explain limitations, file-based, relational, databases, redundancy, inconsistency, linked tables. S8.01 method: Identify the relevant condition or input → Trace how the process works → Connect the mechanism to its result. S8.02: explain entity, table, record, tuple, field, attribute, primary key, candidate key, secondary key, foreign key, relationships, one-to-one, one-to-many, many-to-many, referential, integrity, indexing. Award up to five independent marks for accurate, connected points applied to the new context.
+**Answer and guidance:**
 
-### 2. correct - 5 marks
+- A single Volunteer row holds the phone number, so an update need not be repeated across visit files that could otherwise disagree.
+- Show Volunteer 1 — many Visit, with the identifiers marking the respective entity keys.
+- Every non-null Visit.VolunteerID must match an existing Volunteer.VolunteerID.
 
-Correct a plausible student error about entity-relationship design and normalisation and justify the corrected answer.
+Award one mark for each requested element. Accept a clearly labelled equivalent E-R notation.
 
-**Answer and guidance:** S8.03: explain entity-relationship, diagram. S8.03 method: Set up the required data and conditions → Carry out the complete method → Trace or test the result. S8.04: explain 1NF, 2NF, 3NF, normalised / normalized, design. Award up to five independent marks for accurate, connected points applied to the new context.
+### 2. Explain - 4 marks
 
-### 3. apply - 5 marks
+Task(TaskID, TaskName, TeamID, TeamName) has atomic values and primary key TaskID. A team has one name and can own many tasks. Explain why the relation meets 2NF but fails 3NF, and produce a 3NF design with its keys and reference.
 
-Apply the main method from dbms architecture, integrity, security and backup to a different context from the lesson.
+**Answer and guidance:**
 
-**Answer and guidance:** S8.05: explain DBMS, features, dictionary, modelling / modeling, logical, schema, integrity, security, backup, access, rights. S8.05 method: Identify the relevant condition or input → Trace how the process works → Connect the mechanism to its result. S8.06: explain developer, interface, query, processor. Award up to five independent marks for accurate, connected points applied to the new context.
+- The stated single-attribute key has no proper subset on which a partial dependency could occur, so with atomic values the table meets 2NF.
+- TeamName depends on the non-key TeamID, creating a transitive dependency from TaskID and violating 3NF.
+- Create Team(TeamID PK, TeamName).
+- Retain Task(TaskID PK, TaskName, TeamID FK referencing Team.TeamID).
 
-### 4. compare - 5 marks
+Award one mark per point; moving TeamName without keeping the reference is incomplete.
 
-Compare two alternatives from Section 8, then recommend one for a stated purpose.
+### 3. Describe - 4 marks
 
-**Answer and guidance:** S8.07: explain DDL, creation, modification, database structure, DML, queries, maintenance, SQL, industry-standard, language. S8.07 method: Identify the relevant condition or input → Trace how the process works → Connect the mechanism to its result. Correction to remember: Students often choose names as primary keys. Correction: a primary key must uniquely and reliably identify a record. Award up to five independent marks for accurate, connected points applied to the new context.
+A college DBMS must record field definitions, execute a tutor's query, prevent tutors changing payroll records, and recover after storage failure. Describe one DBMS feature or tool for each of these four needs.
+
+**Answer and guidance:**
+
+- The data dictionary records metadata such as each field's type and constraints.
+- The query processor interprets and plans the tutor's query and coordinates execution.
+- Individual or group access rights can allow teaching access while withholding payroll modification permission.
+- A tested backup and restore procedure restores data after the failed storage is replaced; its recovery point depends on the available backup and log strategy.
+
+Award one mark for each correctly matched need and mechanism; four names without their uses are insufficient.
+
+### 4. Describe - 3 marks
+
+Describe the effect of the supplied SQL, identify its language category, and state the permitted values for Code and the constraint on RouteID. No INSERT statement has been executed.
+
+Supplied SQL definition
+
+```text
+CREATE TABLE Route (RouteID INTEGER, Code VARCHAR(6), PRIMARY KEY (RouteID));
+```
+
+**Answer and guidance:**
+
+- This SQL DDL creates the Route table definition; it does not insert route records.
+- Code is a character string with a maximum length of six characters.
+- RouteID is an integer primary key, so values must be unique and not null.
+
+Award one mark per point, distinguishing structure creation from data insertion.
+
+### 5. Write - 4 marks
+
+Write a query returning each stall name and its total paid receipt amount, ordered by stall name. Use an INNER JOIN and GROUP BY. Give the exact result using the supplied tables.
+
+Stall
+
+| StallID (PK) | StallName |
+| --- | --- |
+| 1 | Art |
+| 2 | Food |
+| 3 | Games |
+
+Receipt
+
+| ReceiptID (PK) | StallID (FK) | Amount | Paid |
+| --- | --- | --- | --- |
+| 10 | 1 | 12 | TRUE |
+| 11 | 2 | 5 | TRUE |
+| 12 | 1 | 8 | FALSE |
+| 13 | 2 | 7 | TRUE |
+
+**Answer and guidance:**
+
+```sql
+SELECT Stall.StallName, SUM(Receipt.Amount) AS Total
+FROM Stall INNER JOIN Receipt ON Stall.StallID = Receipt.StallID
+WHERE Receipt.Paid = TRUE
+GROUP BY Stall.StallID, Stall.StallName
+ORDER BY Stall.StallName;
+```
+
+Expected result
+
+| StallName | Total |
+| --- | --- |
+| Art | 12 |
+| Food | 12 |
+
+- INNER JOIN matches Stall.StallID with Receipt.StallID.
+- WHERE selects only Paid = TRUE records.
+- SELECT requests StallName and SUM(Amount), with the stall grouping fields and alphabetical StallName ordering.
+- The result contains (Art, 12) and (Food, 12); Games has no matching receipt.
+
+Award one mark per point. A different valid grouping syntax is acceptable if it gives the requested defined result.
+
+### 6. Write - 2 marks
+
+Receipt 12 has now been paid. Write the SQL needed to record this change, identify whether it is DDL or DML, and state what happens to the other receipts.
+
+**Answer and guidance:**
+
+```sql
+UPDATE Receipt SET Paid = TRUE WHERE ReceiptID = 12;
+```
+
+- UPDATE Receipt SET Paid = TRUE WHERE ReceiptID = 12; targets the required field and record.
+- This is DML maintenance; the other receipt records remain unchanged.
+
+Award one mark for the complete targeted update and one for its category and effect.
 
 ## Section 9: Algorithm design and problem-solving - cumulative check (20 marks)
 
@@ -623,17 +747,74 @@ A laboratory receives an urgent email asking staff to enter credentials through 
 
 Award up to 2 marks for (a), 4 for (b) and 4 for (c), one per stated point. Do not award the same explanation twice.
 
-### 7. explain - 10 marks
+### 7. Explain - 10 marks
 
-Use a fresh context to demonstrate and connect the key ideas from copyright and software licences.
+A museum proposes AI captions that recognise speech in recorded interviews. Tests show frequent errors in minority-language names, but the developer wants to describe the captions as fully reliable. The museum also needs to adapt and redistribute the captioning software. Licence A permits these acts if notices remain; licence B permits only an unmodified installation. (a) Explain the developer's ethical responsibility, one consequence of honest reporting and one way a professional body could support the response. [3] (b) Explain why copyright matters and justify a licence choice with an obligation. [3] (c) Describe the AI application, explain one social risk and one environmental cost, then suggest a relevant safeguard. [4]
 
-**Answer and guidance:** S7.04: explain copyright, software, legislation, needed. S7.04 method: Establish the exact components or states → Trace the relationship or change → Use the explanation in a concrete case. S7.05: explain FSF, OSI, shareware, commercial, licences, licence. S7.05 method: Identify the relevant condition or input → Trace how the process works → Connect the mechanism to its result. Correction to remember: Students often write personal opinions only. Correction: ethics answers need stakeholders, evidence and balanced judgement. Award up to 10 marks for a complete, technically accurate response that follows the command word and stays in context.
+**Answer and guidance:**
 
-### 8. apply - 10 marks
+- (a) The developer should disclose the known language errors rather than mislead the museum about reliability.
+- (a) Honest reporting allows the museum to correct captions or delay release, reducing misinformation about the people interviewed.
+- (a) Professional conduct guidance can support the developer in explaining the duty to give competent, honest advice.
+- (b) Copyright gives the software rights holder control over restricted uses, so purchasing or possessing the software does not itself authorise adaptation and redistribution.
+- (b) A covers both planned acts, whereas B's unmodified-installation permission does not cover the museum's plan.
+- (b) Retain A's required notices when distributing the adapted software.
+- (c) The AI interprets patterns in interview audio to infer words and produce caption text.
+- (c) Incorrect minority-language names can misrepresent interviewees and give some audiences poorer access to accurate information.
+- (c) Processing the recordings and operating the supporting hardware uses electricity and contributes to equipment lifecycle impacts.
+- (c) Have competent language reviewers check and correct names before publication and provide a correction channel.
 
-Use a fresh context to demonstrate and connect the key ideas from entity-relationship design and normalisation.
+Award 3 marks for (a), 3 for (b) and 4 for (c), one per distinct point. Accept equivalent ethical consequences and safeguards linked to the reported language errors; do not award unrelated generic AI claims.
 
-**Answer and guidance:** S8.03: explain entity-relationship, diagram. S8.03 method: Set up the required data and conditions → Carry out the complete method → Trace or test the result. S8.04: explain 1NF, 2NF, 3NF, normalised / normalized, design. S8.04 method: Identify the relevant condition or input → Trace how the process works → Connect the mechanism to its result. Correction to remember: Students often choose names as primary keys. Correction: a primary key must uniquely and reliably identify a record. Award up to 10 marks for a complete, technically accurate response that follows the command word and stays in context.
+### 8. Explain - 10 marks
+
+A hotel records GuestData(GuestID, GuestName, AgentID, AgentName) with atomic values, primary key GuestID and the dependency AgentID → AgentName. Each guest uses one agent; an agent can serve many guests. (a) Explain why it is not in 3NF, give a 3NF design with keys, and state the Agent-to-Guest relationship. [5] Use the displayed Room and Stay data for the remaining parts. (b) Write a two-table INNER JOIN returning RoomType and Nights for stays of at least four nights, longest first, and state the result. [3] (c) Write SQL changing StayID 1 to three nights and state why RoomID 101 is an unsuitable filter. [2]
+
+Room
+
+| RoomID (PK) | RoomType |
+| --- | --- |
+| 101 | Single |
+| 102 | Double |
+
+Stay
+
+| StayID (PK) | RoomID (FK) | Nights |
+| --- | --- | --- |
+| 1 | 101 | 2 |
+| 2 | 102 | 5 |
+| 3 | 101 | 4 |
+
+**Answer and guidance:**
+
+```sql
+SELECT Room.RoomType, Stay.Nights
+FROM Room INNER JOIN Stay ON Room.RoomID = Stay.RoomID
+WHERE Stay.Nights >= 4
+ORDER BY Stay.Nights DESC;
+
+UPDATE Stay SET Nights = 3 WHERE StayID = 1;
+```
+
+Part (b): expected result
+
+| RoomType | Nights |
+| --- | --- |
+| Double | 5 |
+| Single | 4 |
+
+- (a) AgentName depends on non-key AgentID, giving a transitive dependency from GuestID.
+- Create Agent(AgentID PK, AgentName).
+- Create Guest(GuestID PK, GuestName, AgentID).
+- Guest.AgentID is a foreign key referencing Agent.AgentID.
+- Agent has a one-to-many relationship with Guest: one agent can serve several guests.
+- (b) Select Room.RoomType and Stay.Nights using INNER JOIN with ON Room.RoomID = Stay.RoomID.
+- Filter Stay.Nights >= 4 and use ORDER BY Stay.Nights DESC.
+- Return (Double, 5), followed by (Single, 4).
+- (c) UPDATE Stay SET Nights = 3 WHERE StayID = 1;
+- RoomID 101 also identifies StayID 3; using it would change an additional stay.
+
+Award the marks stated for (a), (b) and (c). Credit equivalent relation names and valid SQL when all information and the specified result are preserved.
 
 ## Paper 2 original cumulative mock (75 marks)
 

@@ -1,0 +1,83 @@
+{
+  "tool": "image_gen.imagegen",
+  "date": "2026-09-06",
+  "assetDirectory": "web/assets/course-v3/section-8",
+  "review": "All seven illustrations visually checked for labels, arrows and knowledge-point fit. Access rights were revised so the blocked route ends at Payroll; developer definitions were simplified to avoid invented SQL types; query-processor scope was corrected to include execution. Precise relational, dependency and SQL diagrams are generated separately as SVGs from repository source.",
+  "entries": [
+    {
+      "file": "shared-facts.png",
+      "unitKey": "S8.01-FILES",
+      "prompt": "Create one original scientific-educational infographic for a Cambridge AS Computer Science database lesson. Landscape 3:2, high resolution. White background, navy headings/outlines, restrained teal and blue, amber only for risk. Clear flat textbook illustrations with concrete pictorial relationships, not a slide of text boxes. Large precisely spelt British-English labels, generous white space. No brand, watermark, tiny text, decorative robots or invented facts. Use only the short labels specified; do not add explanatory paragraphs. Title 'STORE A SHARED FACT ONCE'. Two contrasting illustrated halves. LEFT title 'Separate files': three separate application folders labelled 'Appointments', 'Billing', 'Reception'. Each folder has a small contact card labelled 'Patient 14'; the address label on Appointments and Billing is 'York', but Reception says 'Leeds'. Orange broken consistency symbol between York and Leeds, caption 'Copies can disagree'. RIGHT title 'Related records': one central Patient card labelled 'Patient 14' and 'Leeds', with three thin lines connecting it to small appointment, billing and reception record cards that each show only 'PatientID 14'. Caption 'Related records reference the patient'. The central patient contact is the only address on the right. Footer 'One address update keeps a shared fact consistent'. Make the files, single shared card, and reference links visually unambiguous. Do not suggest a database has no storage files or that a DBMS eliminates every possible error.",
+      "generatedFile": "exec-f5203d05-fc30-43e1-8761-7a562491faf5.png",
+      "edits": [],
+      "sha256": "b3b92aca3a4cbda435d5f45c99b0f4fdd1c1bc60c21c6308634eebc0210ab7be"
+    },
+    {
+      "file": "data-modelling.png",
+      "unitKey": "S8.05-MODELLING",
+      "prompt": "Create one original scientific-educational infographic for a Cambridge AS Computer Science database lesson. Landscape 3:2, high resolution. White background, navy headings/outlines, restrained teal and blue, amber only for risk. Clear flat textbook illustrations with concrete pictorial relationships, not a slide of text boxes. Large precisely spelt British-English labels, generous white space. No brand, watermark, tiny text, decorative robots or invented facts. Use only the short labels specified; do not add explanatory paragraphs. Title 'FROM BUSINESS RULES TO A DATA MODEL'. Three large illustrated stages left to right. LEFT a clinician discussing visits with a designer beside appointment cards; label 'Understand the business rules'. MIDDLE a designer's sketch with a patient icon labelled 'Patient' connected by a line with '1' near Patient and 'many' near a stack of appointment cards labelled 'Appointment'; label below 'Identify entities and relationships'. RIGHT a clean database blueprint with Patient and Appointment entity boxes, linked by a clear relation; label below 'Document the model'. Above the association, exact short sentence 'One patient can have many appointments'. Beneath, separate caption 'Each appointment has one patient'. Diagram is about discovering and recording data structure, not access rights, computer networks, or processing patient data. No SQL code or fabricated dates.",
+      "generatedFile": "exec-796da322-9065-4772-8df4-7095edb98671.png",
+      "edits": [],
+      "sha256": "9aabd04deb02064847793214cf31eeae17aac81c3c462138b36df19fc3b3d760"
+    },
+    {
+      "file": "access-rights.png",
+      "unitKey": "S8.05-SECURITY",
+      "prompt": "Create one original scientific-educational infographic for a Cambridge AS Computer Science database lesson. Landscape 3:2, high resolution. White background, navy headings/outlines, restrained teal and blue, amber only for risk. Clear flat textbook illustrations with concrete pictorial relationships, not a slide of text boxes. Large precisely spelt British-English labels, generous white space. No brand, watermark, tiny text, decorative robots or invented facts. Use only the short labels specified; do not add explanatory paragraphs. Title 'ACCESS RIGHTS CONTROL PERMITTED ACTIONS'. Draw a central school database with two visually separate compartments labelled 'Attendance' and 'Payroll'. LEFT a staff member labelled 'Tutor', with a teal permitted arrow to Attendance and a padlock/cross marking a separate attempted route to Payroll. RIGHT a staff member labelled 'Payroll clerk', with a teal permitted arrow to Payroll. Small key-shaped badge labelled 'Role permissions' beside each staff member. Label at the tutor's allowed arrow 'Update attendance'; label at its rejected payroll route 'Payroll changes blocked'; label at the payroll clerk's arrow 'Update payroll'. Footer 'Assign rights to individuals or groups'. Do not show a single universal access pass, claim encryption replaces rights, or imply every school uses these exact roles. This is an illustrative permission policy.",
+      "generatedFile": "exec-64695af4-5fb7-47ef-abd1-fc39923ca410.png",
+      "edits": [
+        {
+          "prompt": "Edit this teaching infographic to remove one ambiguous connection. Preserve Tutor's green permitted arrow into Attendance, Payroll clerk's green permitted arrow into Payroll, both staff, and all labels. The red dashed blocked route currently points from Tutor into the Attendance side of the database despite being labelled Payroll changes blocked. Reroute that RED dashed attempted route so it visibly leads specifically to the Payroll compartment: travel down and underneath the Attendance compartment, then turn upward into Payroll, retaining the padlock/cross on the route to show it is blocked. Use a clear non-overlapping path, move the Payroll changes blocked caption if necessary, and keep the footer unobstructed. No red arrow may end at Attendance. All principal content and white/navy/teal textbook style should stay unchanged.",
+          "sourceFile": "exec-5acc60fb-bff3-4188-962c-e070516b678e.png"
+        }
+      ],
+      "sha256": "c518b72ed68195a21f9a31f1976aebe47eaf99e3646784f4949c8f2d5d83a89d"
+    },
+    {
+      "file": "backup-recovery.png",
+      "unitKey": "S8.05-BACKUP",
+      "prompt": "Create one original scientific-educational infographic for a Cambridge AS Computer Science database lesson. Landscape 3:2, high resolution. White background, navy headings/outlines, restrained teal and blue, amber only for risk. Clear flat textbook illustrations with concrete pictorial relationships, not a slide of text boxes. Large precisely spelt British-English labels, generous white space. No brand, watermark, tiny text, decorative robots or invented facts. Use only the short labels specified; do not add explanatory paragraphs. Title 'A BACKUP MUST BE RECOVERABLE'. Four numbered illustrated stages in a spacious clockwise route with clear separate arrows. Stage 1 at upper left: working database/server labelled '1  Take a consistent backup'. Arrow to stage 2 upper right: separate protected backup device in another location labelled '2  Protect a separate copy'. At lower left a visibly failed live disk, small label 'Storage failure'. From protected backup down to stage 3 lower right: replacement server receiving a copy labelled '3  Restore the database'. From stage 3 arrow left to stage 4 lower centre: verified restored records and a check mark labelled '4  Check the restored state'. Footnote 'Test recovery before an emergency'. Make no arrow from the failed disk into the backup copy. Do not claim backups prevent failure, that data after the latest available recovery point is always retained, or that backup equals simple synchronisation.",
+      "generatedFile": "exec-edf04807-32db-4192-a77b-76b1e8ce0924.png",
+      "edits": [],
+      "sha256": "ab0991cd1b1112f48c208bf25c32a96e040c56b34000128127878473b1008ac6"
+    },
+    {
+      "file": "developer-interface.png",
+      "unitKey": "S8.06-DEVELOPER",
+      "prompt": "Create one original scientific-educational infographic for a Cambridge AS Computer Science database lesson. Landscape 3:2, high resolution. White background, navy headings/outlines, restrained teal and blue, amber only for risk. Clear flat textbook illustrations with concrete pictorial relationships, not a slide of text boxes. Large precisely spelt British-English labels, generous white space. No brand, watermark, tiny text, decorative robots or invented facts. Use only the short labels specified; do not add explanatory paragraphs. Title 'BUILD THE DATABASE APPLICATION'. Central designer at a computer labelled 'Developer interface'. Three separate spokes from this interface to three concrete outputs: left a structural blueprint labelled 'Table definitions' with field name tokens 'PupilID' and 'PupilName'; middle a data entry form labelled 'Admissions form', containing a blank Name input and a Submit button; right a printable page with lines and a chart labelled 'Attendance report'. All three outputs connect with thin dotted lines to a database labelled 'School database'. Footer 'Define objects, arrange controls and format information'. Distinguish the developer configuring an interface from an end user submitting a query. No SQL syntax, numbered tutorial or claim that every DBMS uses identical interface tools.",
+      "generatedFile": "exec-ccb35864-6267-4965-b9d3-a29e5b8ce7d7.png",
+      "edits": [
+        {
+          "prompt": "Edit this teaching infographic, preserving composition and every other element. In the left Table definitions panel, remove the small datatype column containing INT and TEXT entirely. Make the PUPIL blueprint a single full-width list of two field names, PupilID and PupilName, with a few blank ruled rows underneath. It should be a clean illustrative field definition list, without any SQL types or code. Keep Developer interface, Admissions form, Attendance report, the dotted database links and footer unchanged.",
+          "sourceFile": "exec-6cae3ecd-8e2b-48ba-a857-8a3958ab5c0a.png"
+        }
+      ],
+      "sha256": "0dc3641f3d75071a9443be8a37871b305b89b62c422739822f3083c72020d562"
+    },
+    {
+      "file": "query-processor.png",
+      "unitKey": "S8.06-PROCESSOR",
+      "prompt": "Create one original scientific-educational infographic for a Cambridge AS Computer Science database lesson. Landscape 3:2, high resolution. White background, navy headings/outlines, restrained teal and blue, amber only for risk. Clear flat textbook illustrations with concrete pictorial relationships, not a slide of text boxes. Large precisely spelt British-English labels, generous white space. No brand, watermark, tiny text, decorative robots or invented facts. Use only the short labels specified; do not add explanatory paragraphs. Title 'HOW A QUERY BECOMES A RESULT'. A clear horizontal four-stage pipeline of concrete illustrations, arrows only left to right. 1: a user's request document labelled 'SQL request'. 2: a syntax checklist and table-name reference map labelled 'Check the request'. 3: a small branching route map with one route highlighted labelled 'Choose an execution plan'. 4: a database with a magnifier scanning highlighted matching rows labelled 'Execute the plan'. Below the final stage a short downward arrow leads to a small result grid labelled 'Return the result'. A bracket encloses stages 2, 3 and 4 labelled 'Query processor'. Footer 'Use definitions, permissions and suitable access paths'. Avoid claiming the query processor redesigns the database or that an index is used for every query. No made-up SQL code or values.",
+      "generatedFile": "exec-1e7635fe-ff3b-47b0-b7b6-6fa6ea53c0f0.png",
+      "edits": [
+        {
+          "prompt": "Edit this database teaching infographic, preserving its overall style, title and four numbered stages. Correct the Query processor bracket: it must unambiguously encompass stage 2 Check the request, stage 3 Choose an execution plan AND stage 4 Execute the plan including Return the result. The current bracket stops before stage 4. Put a single long labelled brace BELOW those stages, starting under the left edge of stage 2 and ending under the right edge of stage 4; rearrange whitespace and lower the footer as needed. In the small Table reference map, replace the four row names Customers, Orders, Products, Payments with just two rows named Member and Loan, retaining small blue generic column symbols. Keep all other principal labels exact and legible. No tiny text, no new content.",
+          "sourceFile": "exec-7307a31d-9daf-4ce7-bf18-67a2c74ebabc.png"
+        },
+        {
+          "prompt": "Edit this infographic with two precise changes. 1. DELETE the entire horizontal brace under stages 2 and 3 and DELETE its label 'Query processor'. There must be NO bracket or brace anywhere in the final image. In the empty lower area, ABOVE the existing footer, add one large centred sentence: 'The query processor checks, plans and executes.' This sentence must explicitly include executes. 2. Simplify the small Table reference map under stage 2: replace its little row/column grid with two simple document icons labelled 'Member' and 'Loan'. Remove the Columns heading and all blue column-count squares. Keep the label 'Table reference map'. Preserve the four numbered stages, the arrows to the result, all other main text and the white/navy/teal textbook style. Keep the new sentence and existing footer separate and legible.",
+          "sourceFile": "exec-6b16aebb-88fc-4642-ade2-8e06ac65a046.png"
+        }
+      ],
+      "sha256": "44e868e0bdecea2c3dfad7b1ac1b16a4ba3c41d8f26736512fbab5a153fa20a2"
+    },
+    {
+      "file": "structure-versus-data.png",
+      "unitKey": "S8.07-DDL",
+      "prompt": "Create one original scientific-educational infographic for a Cambridge AS Computer Science database lesson. Landscape 3:2, high resolution. White background, navy headings/outlines, restrained teal and blue, amber only for risk. Clear flat textbook illustrations with concrete pictorial relationships, not a slide of text boxes. Large precisely spelt British-English labels, generous white space. No brand, watermark, tiny text, decorative robots or invented facts. Use only the short labels specified; do not add explanatory paragraphs. Title 'STRUCTURE AND DATA ARE DIFFERENT'. Two independent before-and-after illustrated rows, each with one arrow. TOP row label 'DDL changes the definition'. Before: a blueprint-style table header with columns 'LoanID', 'MemberID'. After: same two headers plus a newly outlined teal column 'DueDate'. No data records in the top row. Bottom row label 'DML changes stored values'. Before and after each show the same small Member record with headers 'MemberID', 'Phone'. Before record values '14', '111'. After record values '14', '222', only 222 highlighted amber. The bottom table columns must remain identical. Captions: top 'Add an attribute'; bottom 'Update a field value'. Footer 'SQL expresses both kinds of request'. No arrows between the top and bottom rows, no added database jargon or additional rows.",
+      "generatedFile": "exec-0557bca3-35ec-4a04-ba5e-f907cedbdc08.png",
+      "edits": [],
+      "sha256": "2697b2e2a10ee3ad1ee8830f7ff160653138cb1acf14c5f6ba1609c7ac143b0f"
+    }
+  ]
+}

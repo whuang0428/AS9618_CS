@@ -9,6 +9,8 @@ const targets = [
   join(root, "web", "assets", "course-v3", "section-4"),
   join(root, "web", "course-v3"),
   join(root, "web", "assets", "course-v3", "section-6"),
+  join(root, "web", "assets", "course-v3", "section-7"),
+  join(root, "web", "assets", "course-v3", "section-8"),
   join(root, "web", "index.html"),
   join(root, "web", "assessments", "index.html"),
   join(root, "assessments", "assessment-bank.md"),

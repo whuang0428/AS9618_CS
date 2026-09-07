@@ -31,6 +31,13 @@ S5 follows syllabus 5.1 then 5.2 across five lessons: 23 knowledge units, 29 obj
 
 S6 has 26 distinct knowledge units with formative checks, worked security scenarios and exact check-digit/parity/checksum diagrams. Its 31 practice questions and 15 independent exam tasks use explicit objective mappings; exam answers start collapsed.
 
+S7 retains four lessons in syllabus 7.1 order, with 18 knowledge units, 19 objectives, 26 practice questions and 12 independent exam tasks. Each unit has a formative check, and the four lessons include seven worked scenarios. Eight ImageGen diagrams illustrate professional responsibility, ethical decisions, copyright permissions, software freedoms and price, shareware trials, AI inference, unequal errors and environmental effects. Comparison tables remain available beside the detailed explanations. Diagrams include text transcripts, keyboard-accessible scrolling and full-size links. Lesson contents, entry diagnostics and collapsed answers support classroom use. Four S7 review tasks and concrete section/mock assessments provide further practice.
+
+
+S8 follows syllabus 8.1–8.3 across six lessons: 37 knowledge units, 40 objectives, 37 practice questions and 18 independent exam tasks. Each unit opens with a relevant diagram: 30 exact SVGs cover relational structures, normalisation, DDL and SQL operations; seven reviewed ImageGen illustrations explain shared data and DBMS roles. Diagram captions, text transcripts, keyboard scrolling and full-size access support teaching and mobile reading. It includes a complete 1NF-to-3NF example, DDL definitions and query/result pairs with supplied data. Every unit has a formative check; lesson contents and collapsed answers support classroom use. Four review tasks, a 20-mark section check and a 10-mark Paper 1 task assess concrete scenarios.
+
+The S8 source is `scripts/course-v3-section8-content.mjs`; its SQL fixtures are in `scripts/course-v3-section8-sql.mjs`. Diagram placement is defined in `scripts/course-v3-section8-visuals.mjs`, with reproducible SVGs in `scripts/course-v3-section8-diagrams.mjs` and `scripts/course-v3-section8-exact-visuals.mjs`. ImageGen prompts, revision prompts and file hashes are recorded in `scripts/course-v3-section8-imagegen-assets.json`. The S8 verifier checks diagram ownership, generated SVG content, PNG provenance and rendered access. It uses Python 3’s standard-library SQLite to execute the shared SQL subset and check results, maintenance effects and keys. `CREATE DATABASE` receives a syntax check; SQLite does not validate all standard SQL type restrictions, so the verifier does not claim that coverage.
+
 ## Repository structure
 
 - `course-v3-map.md`: official-order allocation and the complete 93-page sequence.
@@ -40,10 +47,12 @@ S6 has 26 distinct knowledge units with formative checks, worked security scenar
 - `scripts/course-v3-section3-content.mjs`: authored S3 corrections, logic lessons and independent exam questions; explicit objective mappings bypass automatic question selection.
 - `scripts/course-v3-section5-content.mjs`: authored OS, utilities, libraries, translators, Java and IDE lessons; source examples and tasks use explicit objective ownership. `scripts/course-v3-section5-checks.mjs` checks mappings, scoring, repeated content, debugger states and review coverage.
 - `scripts/course-v3-section6-content.mjs`: authored S6 explanations and assessments; `course-v3-section6-diagrams.mjs` generates numerical SVGs, and `course-v3-section6-imagegen-assets.json` records the three generated conceptual images and their prompts.
+- `scripts/course-v3-section7-content.mjs`: authored S7 ethics, licensing and AI teaching, explicit objective mappings, independent questions and Paper 1 review tasks. `course-v3-section7-checks.mjs` guards teaching coverage, scenario/answer matching, repeated content and classroom controls.
+- `scripts/course-v3-section7-visuals.mjs`: S7 diagram placement, captions and transcripts. `course-v3-section7-imagegen-assets.json` records the generation prompts, reviewed assets and checksums; image files live in `web/assets/course-v3/section-7/`.
 - `scripts/course-v3-contract.json`: generated objective/material/practice ownership contract.
 - `scripts/course-v3-section-anchor-assets.json`: section-anchor asset and SHA-256 manifest.
 - `scripts/course-v3-knowledge-diagrams.mjs`: knowledge-unit visual mapping and alternative text.
-- `scripts/assessment-bank-contract.json`: Assessment Bank source. The renderer also refreshes the authored S1–S6 sections and their selected Paper 1 questions in `assessments/assessment-bank.md` from this source.
+- `scripts/assessment-bank-contract.json`: Assessment Bank source. The renderer also refreshes the authored S1–S7 sections and their selected Paper 1 questions in `assessments/assessment-bank.md` from this source.
 - `scripts/course-v2-content.json`: source material still used by lessons that have not yet moved to dedicated V3 models.
 - `scripts/question-bank-contract.json`: original question metadata and semantic fingerprints.
 - `scripts/past-paper-frequency-contract.json`: copyright-safe frequency metadata for 36 papers and 36 mark schemes.
@@ -80,6 +89,8 @@ node scripts/verify-course-v3-section3.mjs --self-test
 node scripts/verify-course-v3-section4.mjs --self-test
 node scripts/verify-course-v3-section6.mjs --self-test
 node scripts/verify-course-v3-section5.mjs --self-test
+node scripts/verify-course-v3-section7.mjs --self-test
+node scripts/verify-course-v3-section8.mjs --self-test
 node scripts/verify-course-v3-idempotency.mjs
 ```
 
@@ -106,6 +117,8 @@ node scripts/verify-course-v3-section3.mjs --self-test
 node scripts/verify-course-v3-section4.mjs --self-test
 node scripts/verify-course-v3-section6.mjs --self-test
 node scripts/verify-course-v3-section5.mjs --self-test
+node scripts/verify-course-v3-section7.mjs --self-test
+node scripts/verify-course-v3-section8.mjs --self-test
 node scripts/verify-course-v3-idempotency.mjs
 python3 scripts/build-course-release.py
 python3 scripts/verify-course-release.py
