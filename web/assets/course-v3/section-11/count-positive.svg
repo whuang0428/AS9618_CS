@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1175" viewBox="0 0 960 940" role="img" aria-labelledby="title desc"><title id="title">Count positive values among three inputs</title><desc id="desc">Count and Index are initialised. While Index is at most 3, read a value, increase Count only if the value is positive, then increase Index on both branches. On loop exit output Count and end.</desc><defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#176a70"/></marker></defs><style>svg{background:#fff}text{font:20px ui-monospace,monospace;fill:#10283e}g rect,g polygon{fill:#eff7f6;stroke:#176a70;stroke-width:2}path[data-from]{fill:none;stroke:#176a70;stroke-width:2.5;marker-end:url(#arrow)}.edge-label{font:700 19px sans-serif}</style><path data-from="start" data-to="init" d="M480 74V112"/>
+<path data-from="init" data-to="loop" d="M480 176V218"/>
+<path data-from="loop" data-to="input" d="M480 328V374"/><text class="edge-label" x="506" y="354">Yes</text>
+<path data-from="loop" data-to="output" d="M650 273H810V350"/><text class="edge-label" x="717" y="258">No</text>
+<path data-from="input" data-to="positive" d="M480 438V484"/>
+<path data-from="positive" data-to="count" d="M480 594V640"/><text class="edge-label" x="506" y="620">Yes</text>
+<path data-from="positive" data-to="advance" d="M310 539H210V798H320"/><text class="edge-label" x="234" y="524">No</text>
+<path data-from="count" data-to="advance" d="M480 704V766"/>
+<path data-from="advance" data-to="loop" d="M480 830V885H90V273H310"/>
+<path data-from="output" data-to="end" d="M810 414V474"/><g data-node="start"><rect x="320" y="20" width="320" height="54" rx="27"/><text x="480" y="54" text-anchor="middle">Start</text></g>
+<g data-node="init"><rect x="320" y="112" width="320" height="64" rx="0"/><text x="480" y="151" text-anchor="middle">Count &lt;- 0; Index &lt;- 1</text></g>
+<g data-node="loop"><polygon points="480,218 650,273 480,328 310,273"/><text x="480" y="280" text-anchor="middle">Index &lt;= 3?</text></g>
+<g data-node="input"><polygon points="340,374 640,374 620,438 320,438"/><text x="480" y="413" text-anchor="middle">INPUT Value</text></g>
+<g data-node="positive"><polygon points="480,484 650,539 480,594 310,539"/><text x="480" y="546" text-anchor="middle">Value &gt; 0?</text></g>
+<g data-node="count"><rect x="320" y="640" width="320" height="64" rx="0"/><text x="480" y="679" text-anchor="middle">Count &lt;- Count + 1</text></g>
+<g data-node="advance"><rect x="320" y="766" width="320" height="64" rx="0"/><text x="480" y="805" text-anchor="middle">Index &lt;- Index + 1</text></g>
+<g data-node="output"><polygon points="710,350 930,350 910,414 690,414"/><text x="810" y="389" text-anchor="middle">OUTPUT Count</text></g>
+<g data-node="end"><rect x="690" y="474" width="240" height="54" rx="27"/><text x="810" y="508" text-anchor="middle">End</text></g><text x="480" y="930" text-anchor="middle" style="font:17px sans-serif">Both input branches advance Index; End has no outgoing path.</text></svg>

@@ -38,6 +38,18 @@ S8 follows syllabus 8.1–8.3 across six lessons: 37 knowledge units, 40 objecti
 
 The S8 source is `scripts/course-v3-section8-content.mjs`; its SQL fixtures are in `scripts/course-v3-section8-sql.mjs`. Diagram placement is defined in `scripts/course-v3-section8-visuals.mjs`, with reproducible SVGs in `scripts/course-v3-section8-diagrams.mjs` and `scripts/course-v3-section8-exact-visuals.mjs`. ImageGen prompts, revision prompts and file hashes are recorded in `scripts/course-v3-section8-imagegen-assets.json`. The S8 verifier checks diagram ownership, generated SVG content, PNG provenance and rendered access. It uses Python 3’s standard-library SQLite to execute the shared SQL subset and check results, maintenance effects and keys. `CREATE DATABASE` receives a syntax check; SQLite does not validate all standard SQL type restrictions, so the verifier does not claim that coverage.
 
+S9 retains nine lessons in syllabus 9.1–9.2 order, with 24 knowledge units, 15 atomic objectives, 28 practice tasks and 27 independent exam tasks. Complete identifier tables, IPO programs, all four required representation conversions, refinement endpoints and a consistent ticket-purchase case support teaching. Each unit has a formative check; lesson contents, diagnostics and collapsed answers support classroom use. Four review tasks and concrete section/mock assessments replace the former placeholders.
+
+The S9 source is `scripts/course-v3-section9-content.mjs`. Its scalar pseudocode and boundary cases are in `scripts/course-v3-section9-programs.mjs`; flowchart nodes, directed edges and reproducible SVGs are in `scripts/course-v3-section9-diagrams.mjs`. The S9 verifier executes the published pseudocode and every flowchart edge against independently specified expected results, and checks mapping, duplicate paragraphs/questions, rendering and assessment marks. Its small interpreter supports only the scalar syntax used by these fixtures; it is not a general Cambridge pseudocode runtime.
+
+The S11 source is `scripts/course-v3-section11-content.mjs`; its examples and independent input/output cases are in `scripts/course-v3-section11-programs.mjs`. `verify-course-v3-section11.mjs` executes the displayed scalar pseudocode, procedure/reference calls, functions, numeric/string routines and the exact SVG flowchart, and checks objective placement, independent tasks, scoring and classroom controls. The interpreter is limited to the syntax used by the S11 fixtures.
+
+S10 retains 14 lessons in syllabus 10.1–10.4 order, with 29 distinct units, 25 atomic objectives, 44 practice tasks and 42 independent exam tasks. Its authored source is `scripts/course-v3-section10-content.mjs`; the renderer also synchronises its four section-check questions and two Paper 2 mock questions. Complete record, array, search, sort and file programs live in `scripts/course-v3-section10-programs.mjs`. Six reproducible SVGs show exact array values and ADT states. Unit checks, lesson contents, diagnostics, collapsed answers and keyboard scrolling support classroom use.
+
+The S10 verifier executes the published pseudocode subset against independent expected results, including negative readings, duplicate/absent search targets, blank lines, file replacement and append. It checks bounds, initialisation, field types and file modes. Dedicated negative tests reject known mapping, diagram, wording and answer-visibility regressions; the interpreter is limited to the syntax used by these examples.
+
+The S12 source is `scripts/course-v3-section12-content.mjs`, with cumulative assessment questions in `scripts/course-v3-section12-assessments.mjs`. Its 25 units cover all 34 objectives in syllabus order, with real structure/state diagrams, complete pseudocode, 34 practice tasks and 27 separately authored exam tasks. The verifier checks objective ownership, scoring, duplicate content and classroom rendering; it executes the published scalar and straight-line subprogram examples, all state transitions, and original/amended program comparisons. These checks cover the supported teaching fixtures, not arbitrary Cambridge pseudocode.
+
 ## Repository structure
 
 - `course-v3-map.md`: official-order allocation and the complete 93-page sequence.
@@ -91,6 +103,10 @@ node scripts/verify-course-v3-section6.mjs --self-test
 node scripts/verify-course-v3-section5.mjs --self-test
 node scripts/verify-course-v3-section7.mjs --self-test
 node scripts/verify-course-v3-section8.mjs --self-test
+node scripts/verify-course-v3-section9.mjs --self-test
+node scripts/verify-course-v3-section12.mjs --self-test
+node scripts/verify-course-v3-section11.mjs --self-test
+node scripts/verify-course-v3-section10.mjs --self-test
 node scripts/verify-course-v3-idempotency.mjs
 ```
 
@@ -119,6 +135,10 @@ node scripts/verify-course-v3-section6.mjs --self-test
 node scripts/verify-course-v3-section5.mjs --self-test
 node scripts/verify-course-v3-section7.mjs --self-test
 node scripts/verify-course-v3-section8.mjs --self-test
+node scripts/verify-course-v3-section9.mjs --self-test
+node scripts/verify-course-v3-section12.mjs --self-test
+node scripts/verify-course-v3-section11.mjs --self-test
+node scripts/verify-course-v3-section10.mjs --self-test
 node scripts/verify-course-v3-idempotency.mjs
 python3 scripts/build-course-release.py
 python3 scripts/verify-course-release.py

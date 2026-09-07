@@ -11,11 +11,16 @@ const targets = [
   join(root, "web", "assets", "course-v3", "section-6"),
   join(root, "web", "assets", "course-v3", "section-7"),
   join(root, "web", "assets", "course-v3", "section-8"),
+  join(root, "web", "assets", "course-v3", "section-9"),
+  join(root, "web", "assets", "course-v3", "section-10"),
+  join(root, "web", "assets", "course-v3", "section-11"),
+  join(root, "web", "assets", "course-v3", "section-12"),
   join(root, "web", "index.html"),
   join(root, "web", "assessments", "index.html"),
   join(root, "assessments", "assessment-bank.md"),
   ...Array.from({ length: 151 }, (_, index) => join(root, "web", `lesson-${String(index + 1).padStart(3, "0")}`)),
   join(root, "scripts", "course-v3-contract.json"),
+  join(root, "scripts", "assessment-bank-contract.json"),
 ];
 
 function files(path) {

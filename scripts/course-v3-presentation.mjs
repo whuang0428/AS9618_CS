@@ -685,7 +685,7 @@ function finaliseQuestion(question, lesson) {
   if (question.authored) {
     const classification = classifyCommand(question.prompt, requirementId);
     if (classification.status !== "Approved") throw new Error(`${question.id}: authored question needs a Cambridge command word`);
-    if ([6, 7, 8].includes(lesson.section) && (!question.objectiveIds?.length || !question.objectiveIds.every((id) => lesson.objectives.some(([candidate]) => candidate === id)) || question.marks !== question.answerPoints.length)) throw new Error(`${question.id}: authored mapping or marking points are invalid`);
+    if ([6, 7, 8, 9, 10, 11, 12].includes(lesson.section) && (!question.objectiveIds?.length || !question.objectiveIds.every((id) => lesson.objectives.some(([candidate]) => candidate === id)) || question.marks !== question.answerPoints.length)) throw new Error(`${question.id}: authored mapping or marking points are invalid`);
     return { ...question, commandWord: sentenceCase(classification.word) };
   }
   let prompt = promptOverrides[question.id] ?? coveragePrompt(question, lesson);
@@ -744,7 +744,7 @@ function finaliseUnit(unit, lesson, unitIndex) {
   const methodCandidate = sourceMaterials.find((material) => material.type === "flow" && material !== candidates[0]);
   const cleanedMethod = (lesson.section === 1 || unit.preserveTeachingSteps) ? methodCandidate : cleanMethod(methodCandidate, coreExplanation, leadVisual);
   const method = cleanedMethod && !/worked.*example/i.test(cleanedMethod.title)
-    ? { ...cleanedMethod, title: lesson.section === 1 ? cleanedMethod.title : methodTitleOverrides[unit.syllabusId] ?? cleanedMethod.title }
+    ? { ...cleanedMethod, title: [1, 10].includes(lesson.section) ? cleanedMethod.title : methodTitleOverrides[unit.syllabusId] ?? cleanedMethod.title }
     : null;
   const sourceExample = sourceMaterials.find((material) => material.type === "worked-example");
   const workedExample = /worked.*example/i.test(cleanedMethod?.title ?? "")
@@ -1626,7 +1626,7 @@ const examQuestionOverrides = Object.freeze({
       "The loop starts at the array's declared lower bound, 1, and ends at the current valid upper position Count.",
       "Because the final FOR value is inclusive, Items[Count] is processed once before the loop terminates.",
       "NEXT advances the counter automatically, so the body must not also increment the same counter.",
-      "Count must not exceed the declared array upper bound, and an empty collection needs separate handling if Count can be 0.",
+      "Count must not exceed the declared array upper bound; when Count is 0, FOR Index <- 1 TO Count performs zero iterations with the default positive step.",
     ],
     commonError: "Do not substitute a WHILE-loop property; the task asks about the inclusive bounds and counter behaviour of FOR.",
   },
@@ -2038,6 +2038,14 @@ function examStyleQuestionSet(lesson, practice, staged) {
       : lesson.section === 8
       ? [...new Set(requirements.map((id) => Number(id.slice(3)) <= 4 ? "8.1" : Number(id.slice(3)) <= 6 ? "8.2" : "8.3"))].join(", ")
       : lesson.section === 7 ? "7.1"
+      : lesson.section === 9
+      ? [...new Set(requirements.map((id) => Number(id.slice(3)) <= 2 ? "9.1" : "9.2"))].join(", ")
+      : lesson.section === 10
+      ? [...new Set(requirements.map((id) => Number(id.slice(4)) <= 2 ? "10.1" : Number(id.slice(4)) <= 6 ? "10.2" : Number(id.slice(4)) === 7 ? "10.3" : "10.4"))].join(", ")
+      : lesson.section === 11
+      ? [...new Set(requirements.map((id) => Number(id.slice(4)) <= 3 ? "11.1" : Number(id.slice(4)) <= 5 ? "11.2" : "11.3"))].join(", ")
+      : lesson.section === 12
+      ? [...new Set(requirements.map((id) => Number(id.slice(4)) === 1 ? "12.1" : Number(id.slice(4)) <= 3 ? "12.2" : "12.3"))].join(", ")
       : requirements.includes("S3.10") ? "3.2" : "3.1";
     return {
       id: question.id,
@@ -2046,8 +2054,8 @@ function examStyleQuestionSet(lesson, practice, staged) {
       objectiveIds: question.objectiveIds, task: question.prompt, commandWord: question.commandWord,
       marks: question.marks, build: question.answerPoints, markLogic: question.answerPoints,
       commonLosses: [question.commonError],
-      ...(question.diagram ? { diagram: question.diagram, diagramAlt: question.diagramAlt } : {}),
-      ...([4, 8].includes(lesson.section) ? Object.fromEntries(["code", "codeCaption", "codeLabel", "programKey", "table", "tables", "answerCode", "answerTable", "sqlCase", "expectedTrace", "expectedAcc", "finalMemory"].filter((key) => question[key] !== undefined).map((key) => [key, question[key]])) : {}),
+      ...(question.diagram ? { diagram: question.diagram, diagramAlt: question.diagramAlt, ...(question.diagramLabel ? {diagramLabel:question.diagramLabel} : {}) } : {}),
+      ...([4, 8, 9, 10, 11, 12].includes(lesson.section) ? Object.fromEntries(["code", "codeCaption", "codeLabel", "programKey", "table", "tables", "answerCode", "answerTable", "sqlCase", "expectedTrace", "expectedAcc", "finalMemory", "answerProgramKey", "answerCodeLabel", "answerLanguage", "answerDiagram", "answerDiagramAlt", "answerDiagramLabel", "conversion"].filter((key) => question[key] !== undefined).map((key) => [key, question[key]])) : {}),
     };
   });
   const objectiveRows = lesson.objectives.length ? lesson.objectives : [[`${lesson.syllabusIds[0]}.R`, lesson.title]];
@@ -2125,6 +2133,7 @@ function conciseSummary(lesson) {
     if (seen.has(key)) return [];
     seen.add(key);
     const unit = (syllabusId && lesson.units.find((candidate) => candidate.syllabusId === syllabusId)) ?? lesson.units[index] ?? lesson.units[0];
+    if (unit?.summary) return [unit.summary];
     const keywords = [...new Set(normalisePresentationText(unit?.heading ?? heading).split(" ").filter((word) => word.length > 2 && !stopwords.has(word)))].slice(0, 5);
     return [[heading, `Key focus: ${keywords.join(" · ")}.`]];
   });

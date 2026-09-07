@@ -537,107 +537,326 @@ Award one mark for the complete targeted update and one for its category and eff
 
 ## Section 9: Algorithm design and problem-solving - cumulative check (20 marks)
 
-### 1. explain - 5 marks
+### 1. produce - 5 marks
 
-Connect two syllabus ideas from Section 9 and explain why the connection matters in a new scenario.
+A school allocates study rooms by capacity and current availability. Room R1 has capacity 4 and is free; R2 has capacity 8 and is occupied. Produce a table model for choosing a free room large enough for a group. Explain why wall colour can be omitted and decompose allocation into selecting, checking and confirming a room.
 
-**Answer and guidance:** S9.01: explain abstraction, essential details, irrelevant detail, abstract model. S9.01 method: Identify the relevant condition or input → Trace how the process works → Connect the mechanism to its result. Correction to remember: Students often start coding before defining the output. Correction: an algorithm is easier to design when the required result is known first. Award up to five independent marks for accurate, connected points applied to the new context.
+**Answer and guidance:**
 
-### 2. correct - 5 marks
+One suitable room model
 
-Correct a plausible student error about decomposition and modular problem solving and justify the corrected answer.
+| RoomID | Capacity | Occupied |
+| --- | --- | --- |
+| R1 | 4 | FALSE |
+| R2 | 8 | TRUE |
 
-**Answer and guidance:** S9.02: explain decomposition, problem, modules, procedure, function. S9.02 method: Set up the required data and conditions → Carry out the complete method → Trace or test the result. Correction to remember: Students often start coding before defining the output. Correction: an algorithm is easier to design when the required result is known first. Award up to five independent marks for accurate, connected points applied to the new context.
+- The model records RoomID, Capacity and Occupied (or equivalent availability state).
+- It correctly represents R1 as capacity 4 and free, and R2 as capacity 8 and occupied.
+- Wall colour does not affect capacity or availability under the stated choice rule.
+- One part receives the requested group size and selects a candidate room.
+- A checking part compares capacity and availability; confirmation uses the accepted room identifier.
 
-### 3. apply - 5 marks
+Award one mark for each listed independent point, accepting equivalent correct solutions. Apply the rules and data stated in this question.
 
-Apply the main method from algorithms and meaningful identifiers to a different context from the lesson.
+### 2. write - 5 marks
 
-**Answer and guidance:** S9.03: explain algorithm, solution, sequence, defined steps. S9.03 method: Identify the relevant condition or input → Trace how the process works → Connect the mechanism to its result. S9.04: explain meaningful, identifier, names, table. Award up to five independent marks for accurate, connected points applied to the new context.
+A printing algorithm inputs a document title and a positive whole-number page count, calculates Cost at 0.04 per page and displays the title and cost. Write an identifier table for Title, Pages and Cost. Explain what makes the steps an algorithm and state the result for a 25-page document named Notes.
 
-### 4. compare - 5 marks
+**Answer and guidance:**
 
-Compare two alternatives from Section 9, then recommend one for a stated purpose.
+- Title: STRING, the document name to display.
+- Pages: INTEGER, the entered number of pages.
+- Cost: REAL, the calculated charge in currency units.
+- The described solution specifies an ordered input, multiplication and output rather than leaving the processing rule undefined.
+- The displayed result is Notes and 1.00.
 
-**Answer and guidance:** S9.05: explain input-process-output, design, pseudocode, solution. S9.05 method: Set up the required data and conditions → Carry out the complete method → Trace or test the result. Correction to remember: Students often create one sub-problem per tiny action. Correction: each sub-problem needs a meaningful responsibility. Award up to five independent marks for accurate, connected points applied to the new context.
+Award one mark for each listed independent point, accepting equivalent correct solutions. Apply the rules and data stated in this question.
+
+### 3. write - 5 marks
+
+Write successive refinements of this structured English into complete pseudocode: obtain the page counts of exactly three documents, total them, and display the total once. Give one intermediate IPO outline before the final algorithm, and state the output for page counts 12, 5 and 8. Assume non-negative integer inputs.
+
+**Answer and guidance:**
+
+```text
+DECLARE Index : INTEGER
+DECLARE Pages : INTEGER
+DECLARE TotalPages : INTEGER
+TotalPages <- 0
+FOR Index <- 1 TO 3
+    INPUT Pages
+    TotalPages <- TotalPages + Pages
+NEXT Index
+OUTPUT TotalPages
+```
+
+- An intermediate outline separates obtaining the counts, accumulating them and reporting the sum.
+- TotalPages is initialised to 0 before repetition.
+- Exactly three page counts are input and each is added to TotalPages.
+- OUTPUT TotalPages occurs after the completed loop.
+- The supplied page counts produce 25.
+
+Award one mark for each listed independent point, accepting equivalent correct solutions. Apply the rules and data stated in this question.
+
+### 4. write - 5 marks
+
+Write a condition for entry when Age is at least 16 and Permission is TRUE. Complete the results for (15, TRUE), (16, FALSE), (16, TRUE) and (18, TRUE). Explain the error in using Age = 16 and write the condition for refusing entry.
+
+**Answer and guidance:**
+
+- The entry condition is (Age >= 16) AND Permission.
+- The first two cases are FALSE because age or permission fails.
+- The last two cases are TRUE because both requirements hold.
+- Age = 16 would incorrectly exclude older people with permission.
+- Refusal can be expressed as (Age < 16) OR NOT Permission.
+
+Award one mark for each listed independent point, accepting equivalent correct solutions. Apply the rules and data stated in this question.
 
 ## Section 10: Data types and structures - cumulative check (20 marks)
 
-### 1. explain - 5 marks
+### 1. write - 5 marks
 
-Connect two syllabus ideas from Section 10 and explain why the connection matters in a new scenario.
+Write pseudocode for the following task. A stock record must store ItemName, UnitPrice and Available. Define StockRecord with suitable types, declare Item of that type and write an assignment that sets its price to 4.75.
 
-**Answer and guidance:** S10.01: explain integer, real, char, string, Boolean, date, ARRAY, FILE. S10.01 method: Identify the relevant condition or input → Trace how the process works → Connect the mechanism to its result. Correction to remember: Students often confuse the identifier of the whole structure with one element. Correction: access requires an index or field name. Award up to five independent marks for accurate, connected points applied to the new context.
+**Answer and guidance:**
 
-### 2. correct - 5 marks
+```text
+TYPE StockRecord
+    DECLARE ItemName : STRING
+    DECLARE UnitPrice : REAL
+    DECLARE Available : BOOLEAN
+ENDTYPE
+DECLARE Item : StockRecord
+Item.UnitPrice <- 4.75
+```
 
-Correct a plausible student error about records: defining, reading and saving structured data and justify the corrected answer.
+- TYPE StockRecord and ENDTYPE enclose the field definitions.
+- DECLARE ItemName : STRING.
+- DECLARE UnitPrice : REAL and DECLARE Available : BOOLEAN.
+- DECLARE Item : StockRecord.
+- Item.UnitPrice <- 4.75.
 
-**Answer and guidance:** S10.02: explain record, different data types, one identifier, define, read, save. S10.02 method: Identify the relevant condition or input → Trace how the process works → Connect the mechanism to its result. Correction to remember: Students often confuse the identifier of the whole structure with one element. Correction: access requires an index or field name. Award up to five independent marks for accurate, connected points applied to the new context.
+Award one mark for each listed point. Accept equivalent correct declarations, algorithms and explanations that satisfy the stated task.
 
-### 3. apply - 5 marks
+### 2. write - 5 marks
 
-Apply the main method from array terminology, indices and bounds to a different context from the lesson.
+Write an array declaration for the following task. A table stores one INTEGER score per team for 3 teams and 4 rounds. Declare a suitable array, describe complete nested traversal, and give its capacity. Separately, give the first matching 1-based position for target 6 in [4,6,2,6] and the result of one ascending bubble-sort pass on that array.
 
-**Answer and guidance:** S10.03: explain array, index, lower bound, upper bound. S10.03 method: Identify the relevant condition or input → Trace how the process works → Connect the mechanism to its result. Correction to remember: Students often confuse the identifier of the whole structure with one element. Correction: access requires an index or field name. Award up to five independent marks for accurate, connected points applied to the new context.
+**Answer and guidance:**
 
-### 4. compare - 5 marks
+- DECLARE Score : ARRAY[1:3, 1:4] OF INTEGER.
+- Loop over teams 1 to 3 and rounds 1 to 4, processing Score[Team, Round].
+- The inclusive bounds give 3 × 4 = 12 elements.
+- Linear search finds target 6 first at index 2.
+- One bubble-sort pass produces [4,2,6,6].
 
-Compare two alternatives from Section 10, then recommend one for a stated purpose.
+Award one mark for each listed point. Accept equivalent correct declarations, algorithms and explanations that satisfy the stated task.
 
-**Answer and guidance:** S10.04: explain one-dimensional / 1D, two-dimensional / 2D, select / suitable. S10.04 method: Extract the constraints from the scenario → Match mechanisms to those constraints → Link the choice to a consequence. S10.05: explain pseudocode, one-dimensional / 1D, two-dimensional / 2D, ARRAY. Award up to five independent marks for accurate, connected points applied to the new context.
+### 3. explain - 5 marks
+
+A saved register contains the lines Ada, a blank line, and Dan. Explain why file storage is needed between sessions, describe safe reading of every line and give the line count. State the mode for adding Eve without losing existing lines.
+
+**Answer and guidance:**
+
+- The file retains the register after the running program's variables cease to exist.
+- Open the file FOR READ and test NOT EOF before each READFILE.
+- Read and process each line, then close the input file after the loop.
+- The count is 3 because the blank line is still a line.
+- Use APPEND to add Eve while keeping existing contents.
+
+Award one mark for each listed point. Accept equivalent correct declarations, algorithms and explanations that satisfy the stated task.
+
+### 4. explain - 5 marks
+
+Explain suitable data structures for the following tasks. A printer processes jobs in arrival order; an editor undoes its latest change; a playlist inserts tracks between known neighbours. Suggest suitable ADTs and explain their access rules. State what an ADT specifies and how an array-backed linked list represents its links.
+
+**Answer and guidance:**
+
+- A queue serves the printer's earliest waiting job first (FIFO).
+- A stack removes the editor's latest remaining change first (LIFO).
+- A linked list permits playlist insertion by updating neighbour links without shifting every later track.
+- An ADT specifies a collection of data and the operations on those data.
+- An array implementation stores node data and next-node indices, with a head index and a null-link convention.
+
+Award one mark for each listed point. Accept equivalent correct declarations, algorithms and explanations that satisfy the stated task.
 
 ## Section 11: Programming - cumulative check (20 marks)
 
-### 1. explain - 5 marks
+### 1. write - 5 marks
 
-Connect two syllabus ideas from Section 11 and explain why the connection matters in a new scenario.
+Write pseudocode for this design: input a non-negative integer Quantity of items costing 2.50 each; calculate complete packs of 6, loose items and the total cost; output all three. Declare the data and use a constant for the price. State the outputs for Quantity 14.
 
-**Answer and guidance:** S11.01: explain pseudocode, flowchart, structured-English / structured English, description / descriptions / design. S11.01 method: Set up the required data and conditions → Carry out the complete method → Trace or test the result. Correction to remember: Students often think working Java automatically means good pseudocode. Correction: Paper 2 rewards clear Cambridge-style algorithm expression. Award up to five independent marks for accurate, connected points applied to the new context.
+**Answer and guidance:**
 
-### 2. correct - 5 marks
+```text
+CONSTANT Price = 2.50
+DECLARE Quantity, Packs, Loose : INTEGER
+DECLARE Cost : REAL
+INPUT Quantity
+Packs <- Quantity DIV 6
+Loose <- Quantity MOD 6
+Cost <- Quantity * Price
+OUTPUT Packs, Loose, Cost
+```
 
-Correct a plausible student error about declarations, assignment and input/output and justify the corrected answer.
+- Declare Quantity, Packs and Loose as INTEGER and Cost as REAL; use CONSTANT Price = 2.50.
+- INPUT Quantity precedes all calculations using that value.
+- Packs <- Quantity DIV 6 and Loose <- Quantity MOD 6 split the whole quantity.
+- Cost <- Quantity * Price and OUTPUT Packs, Loose, Cost report the required results.
+- Quantity 14 produces 2 complete packs, 2 loose items and cost 35.
 
-**Answer and guidance:** S11.02: explain declaration / declarations, constants, variables, assignment, arithmetic, logical, input, output. S11.02 method: Set up the required data and conditions → Carry out the complete method → Trace or test the result. Correction to remember: Students often think working Java automatically means good pseudocode. Correction: Paper 2 rewards clear Cambridge-style algorithm expression. Award up to five independent marks for accurate, connected points applied to the new context.
+Award one mark for each listed independent point. Accept equivalent correct pseudocode and explanations that implement the stated rules.
 
-### 3. apply - 5 marks
+### 2. calculate - 5 marks
 
-Apply the main method from arithmetic and logical expressions to a different context from the lesson.
+LENGTH(S) returns a string's length; MID(S, Start, Count) returns Count characters starting at one-based Start; UCASE(C) converts one CHAR to upper case. INT(X) takes the integer part and RAND(N) returns a real from 0 inclusive to N exclusive. For S = "SCIENCE" and C = 'm', calculate LENGTH(S), MID(S, 2, 3), UCASE(C) and INT(7.8). Write an expression generating an integer from 1 to 10 inclusive.
 
-**Answer and guidance:** S11.02: explain declaration / declarations, constants, variables, assignment, arithmetic, logical, input, output. S11.02 method: Set up the required data and conditions → Carry out the complete method → Trace or test the result. Correction to remember: Students often think working Java automatically means good pseudocode. Correction: Paper 2 rewards clear Cambridge-style algorithm expression. Award up to five independent marks for accurate, connected points applied to the new context.
+**Answer and guidance:**
 
-### 4. compare - 5 marks
+- LENGTH(S) is 7.
+- MID(S, 2, 3) is "CIE".
+- UCASE(C) is 'M'.
+- INT(7.8) is 7.
+- INT(RAND(10)) + 1 produces the specified integers.
 
-Compare two alternatives from Section 11, then recommend one for a stated purpose.
+Award one mark for each listed independent point. Accept equivalent correct pseudocode and explanations that implement the stated rules.
 
-**Answer and guidance:** S11.03: explain built-in / library, string, functions. S11.03 method: Set up the required data and conditions → Carry out the complete method → Trace or test the result. Correction to remember: Students often think working Java automatically means good pseudocode. Correction: Paper 2 rewards clear Cambridge-style algorithm expression. Award up to five independent marks for accurate, connected points applied to the new context.
+### 3. describe - 5 marks
+
+A program inputs exactly three valid integer ratings. It initialises Count to zero. For each rating it tests Rating >= 4 to increment Count, then tests the same unchanged Rating >= 4 again to output "High". It outputs Count at the end. Describe an efficient control structure that retains all these outputs, justify the loop and state the final Count for ratings 3, 4, 5.
+
+**Answer and guidance:**
+
+- A FOR loop is suitable because the three iterations are known in advance.
+- Keep Count <- 0 before the loop, with one new INPUT Rating in each iteration.
+- Use one IF Rating >= 4 block containing both the increment and OUTPUT "High".
+- Combining the unchanged comparison removes one test per iteration while preserving both true-branch actions.
+- OUTPUT Count remains after the loop and gives 2 for 3, 4, 5.
+
+Award one mark for each listed independent point. Accept equivalent correct pseudocode and explanations that implement the stated rules.
+
+### 4. explain - 5 marks
+
+The supplied parking program receives positive integer hours until sentinel 0 and charges 3 per hour. Explain the interfaces and value flow: identify the parameter and argument in Charge(Hours), describe its return, explain both AddCharge parameter modes, and state the final output for 3, 2, 0.
+
+Use this complete program for the question.
+
+```text
+FUNCTION Charge(Hours : INTEGER) RETURNS INTEGER
+    RETURN Hours * 3
+ENDFUNCTION
+PROCEDURE AddCharge(BYVAL Amount : INTEGER, BYREF Total : INTEGER)
+    Total <- Total + Amount
+ENDPROCEDURE
+DECLARE Hours, Total : INTEGER
+Total <- 0
+INPUT Hours
+WHILE Hours <> 0
+    CALL AddCharge(Charge(Hours), Total)
+    INPUT Hours
+ENDWHILE
+OUTPUT Total
+```
+
+**Answer and guidance:**
+
+- Hours in the function header is a formal parameter; Hours in the caller supplies the argument value, despite using the same spelling.
+- Charge returns an INTEGER fee using RETURN Hours * 3, which supplies the Amount argument to AddCharge.
+- Amount is BYVAL because the procedure only needs a copy of the fee.
+- Total is BYREF so each addition changes the caller's running total.
+- The final output is 15 for sessions of three and two hours.
+
+Award one mark for each listed independent point. Accept equivalent correct pseudocode and explanations that implement the stated rules.
 
 ## Section 12: Software development - cumulative check (20 marks)
 
 ### 1. explain - 5 marks
 
-Connect two syllabus ideas from Section 12 and explain why the connection matters in a new scenario.
+(a) A museum needs a prototype interface in ten days and staff can review it daily. Explain why RAD could suit this project and give one limitation (3 marks). (b) A parent calls ReadTicket and PrintTicket. TicketID is obtained by ReadTicket and supplied to PrintTicket. Describe the hierarchy and data transfers (2 marks).
 
-**Answer and guidance:** S12.01: explain RAD, rapid prototyping, time-box / timebox / time-boxed / time-boxing, user involvement, waterfall, iterative, limitation / less suitable / unsuitable. S12.01 method: Identify the relevant condition or input → Trace how the process works → Connect the mechanism to its result. Correction to remember: Students often describe the lifecycle as a fixed checklist. Correction: development is iterative; findings can send a project back to earlier stages. Award up to five independent marks for accurate, connected points applied to the new context.
+**Answer and guidance:**
 
-### 2. correct - 5 marks
+- (a) Rapid prototyping provides an early interface for the museum staff to inspect.
+- (a) Time-boxed work and daily staff feedback fit the short prototype deadline.
+- (a) Frequent changes still require scope control, or the time box may not deliver the intended usable features.
+- (b) The controlling parent sits above the two modules it calls.
+- (b) TicketID flows from ReadTicket to the parent and then from the parent to PrintTicket.
 
-Correct a plausible student error about structure charts and module interfaces and justify the corrected answer.
+Award one mark per numbered point, up to the stated subpart allocation. Accept equivalent correct charts, wording and pseudocode that satisfy the supplied requirements.
 
-**Answer and guidance:** S12.02: explain structure, charts, parameters, derive, pseudocode. S12.02 method: Identify the relevant condition or input → Trace how the process works → Connect the mechanism to its result. Correction to remember: Students often describe the lifecycle as a fixed checklist. Correction: development is iterative; findings can send a project back to earlier stages. Award up to five independent marks for accurate, connected points applied to the new context.
+### 2. state - 5 marks
 
-### 3. apply - 5 marks
+(a) A scanner begins Ready. scan changes Ready to Busy, and finish changes Busy to Ready. State the states after scan, finish and explain what the diagram documents (2 marks). (b) A pass-selection program uses IF Mark > 40 THEN OUTPUT "Pass" ELSE OUTPUT "Fail" ENDIF; the requirement says 40 or more passes. Give a revealing input, its actual and expected result, and a correction (3 marks).
 
-Apply the main method from state-transition diagrams to a different context from the lesson.
+**Answer and guidance:**
 
-**Answer and guidance:** S12.03: explain state-transition, diagrams. S12.03 method: Establish the exact components or states → Trace the relationship or change → Use the explanation in a concrete case. Correction to remember: Students often describe the lifecycle as a fixed checklist. Correction: development is iterative; findings can send a project back to earlier stages. Award up to five independent marks for accurate, connected points applied to the new context.
+- (a) The states are Busy and then Ready.
+- (a) The diagram records persistent scanner conditions and the events that change them.
+- (b) Mark 40 exposes the defect.
+- (b) The actual output is Fail whereas Pass is required.
+- (b) The Pass condition must include equality: Mark >= 40.
 
-### 4. compare - 5 marks
+Award one mark per numbered point, up to the stated subpart allocation. Accept equivalent correct charts, wording and pseudocode that satisfy the supplied requirements.
 
-Compare two alternatives from Section 12, then recommend one for a stated purpose.
+### 3. identify - 5 marks
 
-**Answer and guidance:** S12.04: explain logic, runtime, errors. S12.04 method: Establish the exact components or states → Trace the relationship or change → Use the explanation in a concrete case. Correction to remember: Students often describe the lifecycle as a fixed checklist. Correction: development is iterative; findings can send a project back to earlier stages. Award up to five independent marks for accurate, connected points applied to the new context.
+(a) A tester checks branches using the source code, while a customer checks contracted reports. Identify the appropriate testing approach or method for each (2 marks). (b) Distinguish the role of a test strategy from a test plan (1 mark). (c) An integer reservation count must be 1–6 inclusive. Give values at and immediately outside both limits, with expected outcomes (2 marks).
+
+**Answer and guidance:**
+
+- (a) Source-based branch checks use white-box testing.
+- (a) Checking contracted reports for customer approval is acceptance testing.
+- (b) A strategy coordinates the overall approach; a plan specifies individual cases and records expected and actual outcomes.
+- (c) 0 is rejected and 1 is accepted at the lower boundary.
+- (c) 6 is accepted and 7 is rejected at the upper boundary.
+
+Award one mark per numbered point, up to the stated subpart allocation. Accept equivalent correct charts, wording and pseudocode that satisfy the supplied requirements.
+
+### 4. identify - 5 marks
+
+(a) A shop repairs a miscalculated total and adds a requested sales chart. Identify the type of each maintenance change (2 marks). (b) Write an amended version of the supplied three-sale program to retain Total and also output LargeSales, counting prices of at least 100.00. Prices are non-negative REAL values. Include the additional declaration, initialisation, processing and output (3 marks).
+
+Use this supplied program and the stated assumptions.
+
+```text
+DECLARE Index : INTEGER
+DECLARE Price : REAL
+DECLARE Total : REAL
+Total <- 0.0
+FOR Index <- 1 TO 3
+    INPUT Price
+    Total <- Total + Price
+NEXT Index
+OUTPUT Total
+```
+
+**Answer and guidance:**
+
+```sql
+DECLARE Index : INTEGER
+DECLARE Price : REAL
+DECLARE Total : REAL
+DECLARE LargeSales : INTEGER
+Total <- 0.0
+LargeSales <- 0
+FOR Index <- 1 TO 3
+    INPUT Price
+    Total <- Total + Price
+    IF Price >= 100.0 THEN
+        LargeSales <- LargeSales + 1
+    ENDIF
+NEXT Index
+OUTPUT Total
+OUTPUT LargeSales
+```
+
+- (a) Repairing the faulty total is corrective maintenance.
+- (a) Adding the requested chart is perfective maintenance.
+- (b) Declare LargeSales as INTEGER and initialise it to zero before the loop.
+- (b) Independently increment LargeSales inside the loop when Price >= 100.0, preserving the original total.
+- (b) Output LargeSales after Total and retain correctly closed constructs.
+
+Award one mark per numbered point, up to the stated subpart allocation. Accept equivalent correct charts, wording and pseudocode that satisfy the supplied requirements.
 
 ## Paper 1 original cumulative mock (75 marks)
 
@@ -818,50 +1037,273 @@ Award the marks stated for (a), (b) and (c). Credit equivalent relation names an
 
 ## Paper 2 original cumulative mock (75 marks)
 
-### 1. explain - 8 marks
+### 1. describe - 8 marks
 
-Use a fresh context to demonstrate and connect the key ideas from abstraction and abstract models.
+A lift controller chooses whether one arriving group can enter. It needs the number already inside, the arriving group size and a fixed capacity of 12 people; all counts are non-negative integers. It permits entry only if the combined count is at most 12. Describe a suitable abstract model and one omitted detail. Decompose the task into three modules with a stated interface for the decision. Write an identifier table and an explicit calculation and condition for admission.
 
-**Answer and guidance:** S9.01: explain abstraction, essential details, irrelevant detail, abstract model. S9.01 method: Identify the relevant condition or input → Trace how the process works → Connect the mechanism to its result. Correction to remember: Students often start coding before defining the output. Correction: an algorithm is easier to design when the required result is known first. Award up to 8 marks for a complete, technically accurate response that follows the command word and stays in context.
+**Answer and guidance:**
 
-### 2. apply - 9 marks
+- The model retains current occupancy, arriving group size and the capacity of 12.
+- A detail such as passengers' shoe colours is irrelevant to the specified count-based decision.
+- Separate responsibilities obtain counts, decide admission and report the result.
+- The decision module receives both counts and returns a Boolean admission result.
+- Occupants and GroupSize are meaningful INTEGER identifiers for the two counts.
+- Capacity is an INTEGER constant 12 and CanEnter is a BOOLEAN result.
+- Combined <- Occupants + GroupSize defines the combined count.
+- CanEnter <- Combined <= Capacity permits the inclusive maximum.
 
-Use a fresh context to demonstrate and connect the key ideas from records: defining, reading and saving structured data.
+Award one mark for each listed independent point, accepting equivalent correct solutions. Apply the rules and data stated in this question.
 
-**Answer and guidance:** S10.02: explain record, different data types, one identifier, define, read, save. S10.02 method: Identify the relevant condition or input → Trace how the process works → Connect the mechanism to its result. Correction to remember: Students often confuse the identifier of the whole structure with one element. Correction: access requires an index or field name. Award up to 9 marks for a complete, technically accurate response that follows the command word and stays in context.
+### 2. write - 9 marks
 
-### 3. justify - 9 marks
+Write pseudocode for the following task and explain your type and storage choices. A sensor record contains Code (text, retaining leading zeros), Reading (may be fractional) and Valid (a logical state). Define SensorRecord, declare Sensor, input Code and Reading, set Valid to TRUE and display Reading. Explain why the code is text and why saving these fields in a record does not by itself preserve them between program executions.
 
-Use a fresh context to demonstrate and connect the key ideas from arithmetic and logical expressions.
+**Answer and guidance:**
 
-**Answer and guidance:** S11.02: explain declaration / declarations, constants, variables, assignment, arithmetic, logical, input, output. S11.02 method: Set up the required data and conditions → Carry out the complete method → Trace or test the result. Correction to remember: Students often think working Java automatically means good pseudocode. Correction: Paper 2 rewards clear Cambridge-style algorithm expression. Award up to 9 marks for a complete, technically accurate response that follows the command word and stays in context.
+```text
+TYPE SensorRecord
+    DECLARE Code : STRING
+    DECLARE Reading : REAL
+    DECLARE Valid : BOOLEAN
+ENDTYPE
+DECLARE Sensor : SensorRecord
+INPUT Sensor.Code
+INPUT Sensor.Reading
+Sensor.Valid <- TRUE
+OUTPUT Sensor.Reading
+```
 
-### 4. explain - 10 marks
+- TYPE SensorRecord and ENDTYPE enclose the definition.
+- Code is declared STRING.
+- Reading is declared REAL and Valid is declared BOOLEAN.
+- DECLARE Sensor : SensorRecord creates the variable.
+- INPUT Sensor.Code and INPUT Sensor.Reading save both inputs in their fields.
+- Sensor.Valid <- TRUE initialises the logical state.
+- OUTPUT Sensor.Reading reads and displays that field.
+- Code is an identifier with significant leading zeros; arithmetic is not required.
+- A record variable alone is not persistent; the fields must be written to a file for later runs.
 
-Use a fresh context to demonstrate and connect the key ideas from finding and correcting program errors.
+Award one mark for each listed point. Accept equivalent correct declarations, algorithms and explanations that satisfy the stated task.
 
-**Answer and guidance:** S12.04: explain logic, runtime, errors. S12.04 method: Establish the exact components or states → Trace the relationship or change → Use the explanation in a concrete case. Correction to remember: Students often describe the lifecycle as a fixed checklist. Correction: development is iterative; findings can send a project back to earlier stages. Award up to 10 marks for a complete, technically accurate response that follows the command word and stays in context.
+### 3. write - 9 marks
 
-### 5. apply - 9 marks
+A shop packs a non-negative integer Quantity of items into boxes of 12. Each item costs 1.50. A purchase of at least 24 items receives 10% off the whole pre-discount total. Write complete pseudocode using a named price constant, appropriate declarations and a Boolean discount decision. Input Quantity and output complete boxes, loose items and the amount due. State all outputs for Quantity 25 and explain the boundary at 24.
 
-Use a fresh context to demonstrate and connect the key ideas from sequence, selection and iteration.
+**Answer and guidance:**
 
-**Answer and guidance:** S9.06: explain sequence, selection, iteration. S9.06 method: Identify the relevant condition or input → Trace how the process works → Connect the mechanism to its result. Correction to remember: Students often start coding before defining the output. Correction: an algorithm is easier to design when the required result is known first. Award up to 9 marks for a complete, technically accurate response that follows the command word and stays in context.
+```text
+CONSTANT UnitPrice = 1.50
+DECLARE Quantity, Boxes, Loose : INTEGER
+DECLARE Total : REAL
+DECLARE Discount : BOOLEAN
+INPUT Quantity
+Boxes <- Quantity DIV 12
+Loose <- Quantity MOD 12
+Total <- Quantity * UnitPrice
+Discount <- Quantity >= 24
+IF Discount THEN
+    Total <- Total * 0.90
+ENDIF
+OUTPUT Boxes, Loose, Total
+```
 
-### 6. justify - 10 marks
+- Declare Quantity, Boxes and Loose as INTEGER.
+- Declare Total as REAL and Discount as BOOLEAN; use CONSTANT UnitPrice = 1.50.
+- Obtain Quantity with INPUT before its first calculation.
+- Boxes <- Quantity DIV 12 calculates complete boxes.
+- Loose <- Quantity MOD 12 calculates remaining items.
+- Total <- Quantity * UnitPrice calculates the pre-discount charge.
+- Discount <- Quantity >= 24 includes exactly 24 in the discount condition.
+- IF Discount THEN Total <- Total * 0.90 ENDIF applies the discount once, followed by output of the three results.
+- Quantity 25 produces Boxes 2, Loose 1 and Total 33.75.
 
-Use a fresh context to demonstrate and connect the key ideas from linear search using arrays.
+Award one mark for each listed independent point. Accept equivalent correct pseudocode and explanations that implement the stated rules.
 
-**Answer and guidance:** S10.06: explain bubble sort, linear search, write. S10.06 method: Set the first index and found state → Compare within the valid bounds → Report found or exhausted. Correction to remember: A linear search does not require sorted data, but it must still respect the declared array bounds. Award up to 10 marks for a complete, technically accurate response that follows the command word and stays in context.
+### 4. identify - 10 marks
 
-### 7. explain - 10 marks
+(a) A supplied rule accepts integer scores 10–90 inclusive, but the implementation uses (Score > 10) AND (Score < 90). Identify the error type, explain the defect and write the correction (3 marks). (b) Give a normal test and tests of both valid extremes with expected outcomes, and describe what must be recorded to decide whether each passes (4 marks). (c) Explain why testing both branches of the implementation is insufficient to prove the rule correct, and describe how specification-based testing and a planned strategy help (3 marks).
 
-Use a fresh context to demonstrate and connect the key ideas from pre-condition and post-condition loops.
+**Answer and guidance:**
 
-**Answer and guidance:** S11.04: explain IF, ELSE, nested, selection, CASE, count-controlled, loop / loops, post-condition, pre-condition. S11.04 method: Set up the required data and conditions → Carry out the complete method → Trace or test the result. Correction to remember: Students often think working Java automatically means good pseudocode. Correction: Paper 2 rewards clear Cambridge-style algorithm expression. Award up to 10 marks for a complete, technically accurate response that follows the command word and stays in context.
+- (a) This is a logic error: the syntax can be valid while the accepted set is wrong.
+- (a) The implementation rejects both required endpoint scores.
+- (a) Use (Score >= 10) AND (Score <= 90).
+- (b) A normal score such as 50 should be accepted.
+- (b) The lower extreme 10 should be accepted.
+- (b) The upper extreme 90 should be accepted.
+- (b) Record the actual result against each pre-specified expected result and its pass/fail outcome.
+- (c) Branch coverage can succeed with interior and far-outside values that miss endpoint defects.
+- (c) Black-box cases derived from the inclusive specification exercise its required boundaries.
+- (c) The strategy assigns responsibility, methods and resources and schedules correction and regression checks.
 
-### 8. apply - 10 marks
+Award one mark per numbered point, up to the stated subpart allocation. Accept equivalent correct charts, wording and pseudocode that satisfy the supplied requirements.
 
-Use a fresh context to demonstrate and connect the key ideas from corrective, adaptive and perfective maintenance.
+### 5. write - 9 marks
 
-**Answer and guidance:** S12.08: explain perfective, adaptive, corrective, maintenance. S12.08 method: Identify the relevant condition or input → Trace how the process works → Connect the mechanism to its result. Correction to remember: Students often describe the lifecycle as a fixed checklist. Correction: development is iterative; findings can send a project back to earlier stages. Award up to 10 marks for a complete, technically accurate response that follows the command word and stays in context.
+Write a refined pseudocode algorithm that reads exactly five integer temperatures. Accept only readings from 10 to 30 inclusive and output the arithmetic mean of accepted readings. If none are accepted, output the literal text "No valid readings". State the output for 9, 10, 20, 30, 31 and explain why division must follow a non-zero-count check.
+
+**Answer and guidance:**
+
+```text
+DECLARE Index : INTEGER
+DECLARE Temperature : INTEGER
+DECLARE AcceptedCount : INTEGER
+DECLARE Total : INTEGER
+DECLARE Average : REAL
+AcceptedCount <- 0
+Total <- 0
+FOR Index <- 1 TO 5
+    INPUT Temperature
+    IF (Temperature >= 10) AND (Temperature <= 30) THEN
+        AcceptedCount <- AcceptedCount + 1
+        Total <- Total + Temperature
+    ENDIF
+NEXT Index
+IF AcceptedCount > 0 THEN
+    Average <- Total / AcceptedCount
+    OUTPUT Average
+ELSE
+    OUTPUT "No valid readings"
+ENDIF
+```
+
+- Initialise AcceptedCount to 0 before repetition.
+- Initialise Total to 0 before repetition.
+- A loop obtains exactly five new temperatures.
+- The acceptance test is (Temperature >= 10) AND (Temperature <= 30).
+- Only accepted readings increase both Total and AcceptedCount.
+- After the loop, test AcceptedCount > 0.
+- For a positive count, divide Total by AcceptedCount and output that mean.
+- For zero accepted readings, output "No valid readings"; the separate path avoids division by zero.
+- The supplied readings produce a mean of 20.
+
+Award one mark for each listed independent point, accepting equivalent correct solutions. Apply the rules and data stated in this question.
+
+### 6. write - 10 marks
+
+Write complete pseudocode to input five INTEGER values into Values[1:5] and a target, then output the first matching index or 0 if the target is absent. State the output for values [21,9,14,9,30] and target 9, and explain why 0 is unambiguous. Separately, trace one ascending bubble-sort pass on [7,3,6,2] and explain the final position reached by 7.
+
+**Answer and guidance:**
+
+```text
+DECLARE Values : ARRAY[1:5] OF INTEGER
+DECLARE Index : INTEGER
+DECLARE Target : INTEGER
+DECLARE Position : INTEGER
+FOR Index <- 1 TO 5
+    INPUT Values[Index]
+NEXT Index
+INPUT Target
+Index <- 1
+Position <- 0
+WHILE (Index <= 5) AND (Position = 0)
+    IF Values[Index] = Target THEN
+        Position <- Index
+    ELSE
+        Index <- Index + 1
+    ENDIF
+ENDWHILE
+OUTPUT Position
+```
+
+- Declare the five-element INTEGER array and scalar INTEGER search variables.
+- Input every element using indices 1 through 5, then input the target.
+- Initialise Index to 1 and Position to 0.
+- Continue only while the index is valid and no match has been recorded.
+- On a match save Index in Position; on a mismatch advance Index.
+- Output Position after the search finishes.
+- The specified search outputs 2, the first matching index.
+- 0 is outside the declared 1-based bounds, so it cannot be a valid match position.
+- The bubble-sort pass produces [3,6,2,7].
+- 7 is the greatest value and each adjacent comparison moves it one position to the right until it reaches the end.
+
+Award one mark for each listed point. Accept equivalent correct declarations, algorithms and explanations that satisfy the stated task.
+
+### 7. write - 10 marks
+
+Write a complete program that inputs integers until sentinel 0, which may be the first input. Accept only values from 1 to 5 inclusive and output their sum, excluding all other values. Define Acceptable(Value : INTEGER) returning a BOOLEAN, and Accumulate(BYVAL Value : INTEGER, BYREF Total : INTEGER) to add an accepted value. Use both subprograms in the main program. Justify the loop and state the output for inputs 2, 8, 5, 0.
+
+**Answer and guidance:**
+
+```text
+FUNCTION Acceptable(Value : INTEGER) RETURNS BOOLEAN
+    RETURN (Value >= 1) AND (Value <= 5)
+ENDFUNCTION
+PROCEDURE Accumulate(BYVAL Value : INTEGER, BYREF Total : INTEGER)
+    Total <- Total + Value
+ENDPROCEDURE
+DECLARE Value, Total : INTEGER
+Total <- 0
+INPUT Value
+WHILE Value <> 0
+    IF Acceptable(Value) THEN
+        CALL Accumulate(Value, Total)
+    ENDIF
+    INPUT Value
+ENDWHILE
+OUTPUT Total
+```
+
+- The Acceptable function header specifies the INTEGER parameter and RETURNS BOOLEAN.
+- RETURN (Value >= 1) AND (Value <= 5) implements the inclusive validity test, followed by ENDFUNCTION.
+- The Accumulate procedure receives Value BYVAL and Total BYREF in the specified order.
+- Its body assigns Total <- Total + Value and closes with ENDPROCEDURE.
+- The main program declares its integer data and initialises Total to zero.
+- INPUT Value occurs before WHILE Value <> 0, allowing a first sentinel to skip processing.
+- IF Acceptable(Value) THEN guards CALL Accumulate(Value, Total), so 8 is excluded in the supplied case.
+- A new INPUT Value occurs at the end of every loop body, followed by ENDWHILE.
+- OUTPUT Total occurs after repetition and gives 7 for 2, 8, 5, 0.
+- A pre-condition loop suits an unknown number of inputs and permits zero data values; the sentinel never enters the total.
+
+Award one mark for each listed independent point. Accept equivalent correct pseudocode and explanations that implement the stated rules.
+
+### 8. identify - 10 marks
+
+(a) A delivery firm repairs a duplicated trip, updates an operating-system interface and adds a requested long-trip count. Identify the type of each of the three changes (3 marks). (b) Analyse and amend the supplied program, which totals three non-negative REAL journey distances. Retain Total and additionally output LongTrips, counting distances of at least 20.0. Include the complete amended program and state outputs for 19, 20, 21 and for 0, 0, 0 (7 marks).
+
+Use this supplied program and the stated assumptions.
+
+```text
+DECLARE Index : INTEGER
+DECLARE Distance : REAL
+DECLARE Total : REAL
+Total <- 0.0
+FOR Index <- 1 TO 3
+    INPUT Distance
+    Total <- Total + Distance
+NEXT Index
+OUTPUT Total
+```
+
+**Answer and guidance:**
+
+```sql
+DECLARE Index : INTEGER
+DECLARE Distance : REAL
+DECLARE Total : REAL
+DECLARE LongTrips : INTEGER
+Total <- 0.0
+LongTrips <- 0
+FOR Index <- 1 TO 3
+    INPUT Distance
+    Total <- Total + Distance
+    IF Distance >= 20.0 THEN
+        LongTrips <- LongTrips + 1
+    ENDIF
+NEXT Index
+OUTPUT Total
+OUTPUT LongTrips
+```
+
+- (a) Repairing the duplicate is corrective.
+- (a) Supporting the changed operating-system interface is adaptive.
+- (a) Adding the requested count is perfective.
+- (b) The existing program reads three distances, accumulates each into Total and outputs that total.
+- (b) Declare INTEGER LongTrips and initialise it once before the loop.
+- (b) Increment it inside an independent IF Distance >= 20.0.
+- (b) Preserve the original input traversal and total accumulation.
+- (b) Output Total and then LongTrips with complete constructs.
+- (b) 19, 20, 21 produces Total 60 and LongTrips 2.
+- (b) 0, 0, 0 produces Total 0 and LongTrips 0.
+
+Award one mark per numbered point, up to the stated subpart allocation. Accept equivalent correct charts, wording and pseudocode that satisfy the supplied requirements.

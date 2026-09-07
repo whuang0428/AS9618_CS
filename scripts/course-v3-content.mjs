@@ -13,6 +13,10 @@ import { authorSection6Lesson } from "./course-v3-section6-content.mjs";
 import { authorSection5Lesson } from "./course-v3-section5-content.mjs";
 import { authorSection8Lesson } from "./course-v3-section8-content.mjs";
 import { authorSection7Lesson } from "./course-v3-section7-content.mjs";
+import { authorSection9Lesson } from "./course-v3-section9-content.mjs";
+import { authorSection11Lesson } from "./course-v3-section11-content.mjs";
+import { authorSection10Lesson } from "./course-v3-section10-content.mjs";
+import { authorSection12Lesson, section12LegacyFaultQuestion } from "./course-v3-section12-content.mjs";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const v2 = JSON.parse(readFileSync(join(root, "scripts", "course-v2-content.json"), "utf8"));
@@ -57,10 +61,7 @@ const v3QuestionRepairs = Object.freeze({
     prompt: "Correct the incomplete pseudocode statement Tax <- Price TaxRate and explain the role of the assignment and multiplication operators.",
     answer: "Tax <- Price * TaxRate; * calculates the product on the right; <- stores that result in Tax; = would be comparison rather than Cambridge pseudocode assignment",
   },
-  "Q-L084-02": {
-    prompt: "For each fault, state its type, one way to expose or locate it, and the correction: a missing ENDIF; IF Mark < 50 when 50 should pass; Average <- Total / Count when Count can be zero.",
-    answer: "missing ENDIF identified as syntax error and translator/dynamic syntax check used; add the required ENDIF; Mark < 50 identified as a boundary logic error and trace/test at 50 used; use IF Mark >= 50 for the pass branch or an equivalent complete selection; division by zero identified as a run-time error/risk and execution/test diagnostics used; guard the division by checking Count or handle the zero case",
-  },
+  "Q-L084-02": section12LegacyFaultQuestion,
 });
 const questionById = new Map(questionBank.questions.map((question) => [question.id, { ...question, ...(questionRepairs[question.id] ?? {}), ...(v3QuestionRepairs[question.id] ?? {}) }]));
 const officialPastPaperAccess = "https://www.cambridgeinternational.org/programmes-and-qualifications/cambridge-international-as-and-a-level-computer-science-9618/past-papers/";
@@ -346,7 +347,7 @@ const specialTeaching = Object.freeze({
   "S11.04": {
     explanations: [
       "Use IF...THEN...ELSE...ENDIF for Boolean decisions and nested IF statements, and CASE...OF...OTHERWISE...ENDCASE when one expression is compared with several discrete values.",
-      "Use FOR...TO...NEXT when the repetition count or inclusive counter range is known before the loop. Use WHILE...DO...ENDWHILE when the condition must be checked before a body that may run zero times. Use REPEAT...UNTIL when the body must run before its stopping condition is checked.",
+      "Use FOR...TO...NEXT when the repetition count or inclusive counter range is known before the loop. Use WHILE...ENDWHILE when the condition must be checked before a body that may run zero times. Use REPEAT...UNTIL when the body must run before its stopping condition is checked.",
       "Every selection and loop must be complete, correctly nested and traceable. Choose the construct from the data and stopping rule rather than from which syntax is shortest.",
     ],
     mechanismSteps: [
@@ -356,7 +357,7 @@ const specialTeaching = Object.freeze({
     ],
     workedExamples: [{ title: "Choose and trace the right loop", steps: [
       { label: "Known count", text: "FOR Index <- 1 TO 10\n  OUTPUT Value[Index]\nNEXT Index" },
-      { label: "May run zero times", text: "WHILE Password <> CorrectPassword AND Attempts < 3 DO\n  INPUT Password\n  Attempts <- Attempts + 1\nENDWHILE" },
+      { label: "May run zero times", text: "Password <- \"\"\nAttempts <- 0\nWHILE Password <> CorrectPassword AND Attempts < 3\n  INPUT Password\n  Attempts <- Attempts + 1\nENDWHILE" },
       { label: "Must run once", text: "REPEAT\n  INPUT Mark\nUNTIL Mark >= 0 AND Mark <= 100" },
       { label: "Decision", text: "The array traversal has known bounds, password validation may already be complete, and mark input must occur before the value can be tested." },
     ] }],
@@ -374,9 +375,9 @@ const specialTeaching = Object.freeze({
       { label: "Correct", title: "Change the cause and retest", detail: "Repeat the failing case and regression cases; do not change the expected result to hide the error." },
     ],
     workedExamples: [{ title: "Correct a boundary logic error", steps: [
-      { label: "Fault", text: "IF Mark < 50 THEN Result <- 'Fail' incorrectly fails to assign a pass when the remaining branch also excludes the boundary." },
+      { label: "Fault", text: 'IF Mark > 50 THEN Result <- "Pass" ELSE Result <- "Fail" ENDIF wrongly assigns Fail at Mark 50 when the required pass rule includes 50.' },
       { label: "Expose", text: "Trace the boundary value Mark = 50 and compare the actual result with the requirement that 50 should pass." },
-      { label: "Correct", text: "Use IF Mark >= 50 THEN Result <- 'Pass' ELSE Result <- 'Fail' ENDIF, then retest 49, 50 and 51." },
+      { label: "Correct", text: 'Use IF Mark >= 50 THEN Result <- "Pass" ELSE Result <- "Fail" ENDIF, then retest 49, 50 and 51.' },
     ] }],
     misconceptions: ["Successful translation proves only that syntax was accepted; it does not prove that the algorithm implements the required rule."],
   },
@@ -2261,7 +2262,7 @@ const rawCourse = [
   transformReviewLesson(v2.lessons.find((lesson) => lesson.lesson === 90)),
 ];
 
-export const courseV3Lessons = rawCourse.map(authorSection3Lesson).map(authorSection4Lesson).map(authorSection5Lesson).map(authorSection6Lesson).map(authorSection7Lesson).map(authorSection8Lesson).map((lesson, index) => finaliseLessonPresentation({
+export const courseV3Lessons = rawCourse.map(authorSection3Lesson).map(authorSection4Lesson).map(authorSection5Lesson).map(authorSection6Lesson).map(authorSection7Lesson).map(authorSection8Lesson).map(authorSection9Lesson).map(authorSection10Lesson).map(authorSection11Lesson).map(authorSection12Lesson).map((lesson, index) => finaliseLessonPresentation({
   ...lesson,
   sequenceIndex: index + 1,
   lessonKey: lesson.kind === "review" ? `REV-P${lesson.paper}` : `S${lesson.section}-L${String(rawCourse.slice(0, index + 1).filter((item) => item.section === lesson.section).length).padStart(2, "0")}`,

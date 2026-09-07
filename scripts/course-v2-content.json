@@ -32738,11 +32738,11 @@
                 "Java support only",
                 "Cambridge-style pseudocode",
                 "FUNCTION IsValidMark(Mark : INTEGER) RETURNS BOOLEAN",
-                "RETURN Mark = 0 AND Mark <= 100",
+                "RETURN Mark >= 0 AND Mark <= 100",
                 "ENDFUNCTION",
                 "Java support example only",
                 "static boolean isValidMark(int mark) {",
-                "return mark = 0 && mark <= 100;",
+                "return mark >= 0 && mark <= 100;",
                 "Use Java to practise running code, but use Cambridge-style pseudocode when the exam asks for algorithm design."
               ],
               "kind": "comparison",

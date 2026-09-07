@@ -3886,20 +3886,20 @@
       "syllabusIds": [
         "S9.07"
       ],
-      "questionType": "calculate",
-      "commandWord": "convert",
+      "questionType": "write",
+      "commandWord": "write",
       "marks": 4,
       "difficulty": "foundation",
-      "prompt": "Convert this structured English to pseudocode: input Age; if Age is at least 18 output Adult, otherwise output Minor.",
-      "answer": "INPUT Age; IF Age = 18 THEN; OUTPUT Adult and ELSE OUTPUT Minor; closes with ENDIF / coherent Cambridge syntax",
+      "prompt": "Write pseudocode for this structured English: input a non-negative whole-number Age; if Age is at least 18 output \"Adult\", otherwise output \"Minor\".",
+      "answer": "INPUT Age; IF Age >= 18 THEN; OUTPUT \"Adult\"; ELSE; OUTPUT \"Minor\"; ENDIF.",
       "guidance": "Do not accept two independent IF statements if they can produce contradictory paths; the description requires mutually exclusive alternatives.",
-      "commonError": "For the command word convert, perform that exact action; do not replace it with an unrelated fact.",
+      "commonError": "Use Age >= 18: equality to 18 would reject older adults. Quote the two output strings.",
       "semanticFingerprint": {
         "concept": "S9.07|structured-english-flowcharts-and-pseudocode",
-        "action": "convert",
-        "scenario": "convert-input-age-least",
+        "action": "write",
+        "scenario": "age-classification-inclusive-eighteen",
         "representation": "pseudocode",
-        "answerForm": "calculate"
+        "answerForm": "pseudocode"
       },
       "originalSourceLesson": 102
     },
@@ -5840,7 +5840,7 @@
       "marks": 8,
       "difficulty": "transfer",
       "prompt": "Write Cambridge pseudocode that inputs Age and Member, outputs Adult member when Age is at least 18 and Member is TRUE, Adult non-member for other adults, and Child otherwise. Then state why nested IF is appropriate. Write Cambridge pseudocode to input and total exactly 12 monthly values, then output the total. Explain why the selected loop is count-controlled. Suggest and justify FOR, WHILE or REPEAT...UNTIL for (a) processing 50 array elements, (b) reading while a file is not at EOF, and (c) requesting a password at least once until correct.",
-      "answer": "inputs/uses both Age and Member; outer IF tests Age = 18; inner IF tests Member only on the adult path; three outputs are attached to the correct branches; closes both IF statements coherently; justifies nested selection because the membership decision depends on the age decision; initialises Total before repetition; uses FOR Month <- 1 TO 12 or an equivalent twelve-iteration range; inputs a value and adds it inside the loop; closes with NEXT and outputs Total after the loop; justifies FOR because the repetition count is known in advance; FOR for 50 known elements; justifies fixed count/bounds; WHILE for the pre-tested EOF condition and possible empty file; REPEAT...UNTIL for password input that must occur once; distinguishes pre-condition, post-condition and count-controlled structures",
+      "answer": "inputs/uses both Age and Member; outer IF tests Age >= 18; inner IF tests Member only on the adult path; three outputs are attached to the correct branches; closes both IF statements coherently; justifies nested selection because the membership decision depends on the age decision; initialises Total before repetition; uses FOR Month <- 1 TO 12 or an equivalent twelve-iteration range; inputs a value and adds it inside the loop; closes with NEXT and outputs Total after the loop; justifies FOR because the repetition count is known in advance; FOR for 50 known elements; justifies fixed count/bounds; WHILE for the pre-tested EOF condition and possible empty file; REPEAT...UNTIL for password input that must occur once; distinguishes pre-condition, post-condition and count-controlled structures",
       "guidance": "Do not use CASE for overlapping ranges without a complete mapping or close two IF statements with only one ENDIF. Do not use an eleven- or thirteen-iteration bound or reset the accumulator inside the loop. Do not select a loop only by its spelling or claim that WHILE always executes once.",
       "commonError": "Do not copy the worked example unchanged; transfer the method and check it against the new context.",
       "semanticFingerprint": {
@@ -6416,10 +6416,10 @@
       ],
       "questionType": "recall",
       "commandWord": "state",
-      "marks": 6,
+      "marks": 9,
       "difficulty": "application",
-      "prompt": "For each fault, state its type, one way to expose or locate it, and the correction: a missing ENDIF; IF Mark 50 when 50 should pass; Average <- Total / Count when Count can be zero.",
-      "answer": "missing ENDIF identified as syntax error and translator/dynamic syntax check used; adds the required ENDIF; Mark 50 identified as logic error and boundary trace/test at 50 used; changes the condition to Mark = 50 or equivalent; division by zero identified as run-time error/risk and execution/test diagnostics used; guards the division by checking Count or handles the zero case",
+      "prompt": "State the type of each fault, a way to expose or locate it, and its correction: a missing ENDIF; IF Mark > 50 THEN Result <- \"Pass\" ELSE Result <- \"Fail\" ENDIF when marks of at least 50 must pass; Average <- Total / Count when Count may be zero.",
+      "answer": "Missing ENDIF is a syntax error; a translator or syntax checker can locate the incomplete construct; add ENDIF at the correct block boundary; the complete Pass selection has a logic error; Mark 50 produces Fail instead of the required Pass; change the Pass condition to Mark >= 50 and retain both branches; division by zero is a run-time error; execute or dry-run the case Count 0 to expose the attempted division; guard the division with Count > 0 and provide the specified zero-count response",
       "guidance": "Do not accept changing the expected result to hide a program fault, or claim that successful translation proves the algorithm correct.",
       "commonError": "Do not repeat the same point in different words; each mark needs a separate idea or method step.",
       "semanticFingerprint": {

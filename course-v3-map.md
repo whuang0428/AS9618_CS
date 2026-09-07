@@ -95,15 +95,15 @@ Paper 1.
 
 Paper 2.
 
-- [Lesson 049 · S9-L01 · Abstraction and abstract models](web/course-v3/lesson-049/) — S9.01
-- [Lesson 050 · S9-L02 · Decomposition and modular problem solving](web/course-v3/lesson-050/) — S9.02
-- [Lesson 051 · S9-L03 · Algorithms and meaningful identifiers](web/course-v3/lesson-051/) — S9.03, S9.04
-- [Lesson 052 · S9-L04 · Input-process-output solution design](web/course-v3/lesson-052/) — S9.05
+- [Lesson 049 · S9-L01 · Abstraction and purposeful models](web/course-v3/lesson-049/) — S9.01
+- [Lesson 050 · S9-L02 · Decomposition into program modules](web/course-v3/lesson-050/) — S9.02
+- [Lesson 051 · S9-L03 · Defined algorithm steps and identifier tables](web/course-v3/lesson-051/) — S9.03, S9.04
+- [Lesson 052 · S9-L04 · Input, process and output in pseudocode](web/course-v3/lesson-052/) — S9.05
 - [Lesson 053 · S9-L05 · Sequence, selection and iteration](web/course-v3/lesson-053/) — S9.06
 - [Lesson 054 · S9-L06 · Structured English, flowcharts and pseudocode](web/course-v3/lesson-054/) — S9.07
-- [Lesson 055 · S9-L07 · Stepwise refinement](web/course-v3/lesson-055/) — S9.08
-- [Lesson 056 · S9-L08 · Constructing and interpreting logic statements](web/course-v3/lesson-056/) — S9.09
-- [Lesson 057 · S9-L09 · Integrated algorithm design from a word problem](web/course-v3/lesson-057/) — S9.02, S9.05, S9.08
+- [Lesson 055 · S9-L07 · Stepwise refinement to programmable detail](web/course-v3/lesson-055/) — S9.08
+- [Lesson 056 · S9-L08 · Logic statements and boundary conditions](web/course-v3/lesson-056/) — S9.09
+- [Lesson 057 · S9-L09 · Integrated design: a ticket purchase](web/course-v3/lesson-057/) — S9.02, S9.05, S9.08
 
 ## Section 10 — Data types and structures
 
@@ -134,7 +134,7 @@ Paper 2.
 - [Lesson 075 · S11-L04 · Built-in routines and string functions](web/course-v3/lesson-075/) — S11.03
 - [Lesson 076 · S11-L05 · IF, ELSE and CASE selection](web/course-v3/lesson-076/) — S11.04
 - [Lesson 077 · S11-L06 · Count-controlled iteration](web/course-v3/lesson-077/) — S11.04
-- [Lesson 078 · S11-L07 · Pre-condition and post-condition loops](web/course-v3/lesson-078/) — S11.04
+- [Lesson 078 · S11-L07 · Post-condition and pre-condition loops](web/course-v3/lesson-078/) — S11.04
 - [Lesson 079 · S11-L08 · Selecting and justifying a loop structure](web/course-v3/lesson-079/) — S11.05
 - [Lesson 080 · S11-L09 · Procedures and parameter passing](web/course-v3/lesson-080/) — S11.06
 - [Lesson 081 · S11-L10 · Functions, interfaces and return values](web/course-v3/lesson-081/) — S11.07, S11.08
@@ -145,12 +145,14 @@ Paper 2.
 
 Paper 2.
 
-- [Lesson 084 · S12-L01 · Program-development lifecycle models](web/course-v3/lesson-084/) — S12.01
+- [Lesson 084 · S12-L01 · Program development life cycles](web/course-v3/lesson-084/) — S12.01
 - [Lesson 085 · S12-L02 · Structure charts and module interfaces](web/course-v3/lesson-085/) — S12.02
 - [Lesson 086 · S12-L03 · State-transition diagrams](web/course-v3/lesson-086/) — S12.03
 - [Lesson 087 · S12-L04 · Finding and correcting program errors](web/course-v3/lesson-087/) — S12.04
-- [Lesson 088 · S12-L05 · Testing methods through the development process](web/course-v3/lesson-088/) — S12.05
+- [Lesson 088 · S12-L05 · Testing methods through development](web/course-v3/lesson-088/) — S12.05
 - [Lesson 089 · S12-L06 · Test strategies and test plans](web/course-v3/lesson-089/) — S12.06
 - [Lesson 090 · S12-L07 · Normal, abnormal and boundary test data](web/course-v3/lesson-090/) — S12.07
 - [Lesson 091 · S12-L08 · Corrective, adaptive and perfective maintenance](web/course-v3/lesson-091/) — S12.08
 - [Lesson 092 · S12-L09 · Analysing and amending an existing program](web/course-v3/lesson-092/) — S12.09
+
+S12 uses nine lessons and 25 knowledge units for 34 objectives. Each unit includes a formative check. Structure-chart translation, state traces, fault diagnosis, test planning, boundary data and program amendment use concrete examples; REV-P2 and the cumulative assessments revisit all nine S12 requirements.
