@@ -1,3 +1,4 @@
+import { validateCoreBlocks } from "./course-v3-core-blocks.mjs";
 import { codeFor } from "./course-v3-section9-programs.mjs";
 import { diagramFor, diagramPath } from "./course-v3-section9-diagrams.mjs";
 
@@ -27,6 +28,7 @@ export function validateSection9Presentation(lessons,bank) {
     check(l.units.some(u=>u.workedExample),`${l.lessonKey}: missing worked example`);
     for(const id of objectiveIds)check(l.practice.some(q=>q.objectiveIds.includes(id)),`${id}: no practice coverage`);
     for(const u of l.units) {
+      errors.push(...validateCoreBlocks(u));
       units.set(u.unitKey,u);const key=u.unitKey?.replace(/^S9-/,"");
       check(same(u.objectiveIds,ownership[key]),`${u.unitKey}: wrong knowledge-point ownership`);
       check(same(u.leadVisual.objectiveIds,u.objectiveIds),`${u.unitKey}: misplaced visual objectives`);
@@ -62,7 +64,7 @@ export function validateSection9Presentation(lessons,bank) {
       }
     }
   }
-  check(units.size===24 && paragraphs.size===48,"S9 requires 24 distinct units and 48 distinct explanation paragraphs");
+  check(units.size===24,"S9 requires 24 distinct teaching units");
   check(new Set(ls.flatMap(l=>l.objectives.map(([id])=>id))).size===15,"S9 atomic objective coverage changed");
   check(same(questions.get("S9-L03-Q2")?.objectiveIds,ids(4,1)),"Identifier-table practice mapped to another concept");
   check(questions.get("S9-L03-Q2")?.table?.rows.length===3,"Identifier-table task lacks its table");

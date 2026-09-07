@@ -1,3 +1,4 @@
+import { validateCoreBlocks } from "./course-v3-core-blocks.mjs";
 import { imageDimensions } from "./image-dimensions.mjs";
 import { createHash } from "node:crypto";
 import { existsSync, readFileSync, statSync } from "node:fs";
@@ -173,6 +174,7 @@ for (const lesson of courseV3Lessons) {
 
   for (const [unitIndex, unit] of lesson.units.entries()) {
     const unitLabel = `${label} ${unit.syllabusId ?? unit.heading}`;
+    errors.push(...validateCoreBlocks(unit));
     check(unit.leadVisual && unit.coreExplanation?.length >= 1, `${unitLabel}: leadVisual or coreExplanation missing`);
     check(!(Object.hasOwn(unit, "explanation") && unit.explanation !== undefined), `${unitLabel}: retired explanation field remains`);
     check(!(Object.hasOwn(unit, "materials") && unit.materials !== undefined), `${unitLabel}: retired materials field remains`);

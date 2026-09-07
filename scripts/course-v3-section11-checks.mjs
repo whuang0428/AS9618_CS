@@ -1,3 +1,4 @@
+import { validateCoreBlocks } from "./course-v3-core-blocks.mjs";
 import { codeFor } from "./course-v3-section11-programs.mjs";
 import { countDiagram } from "./course-v3-section11-diagrams.mjs";
 const same=(a,b)=>JSON.stringify(a)===JSON.stringify(b);
@@ -39,10 +40,11 @@ export function validateSection11Presentation(lessons,bank) {
     check(l.practice.length===3&&l.examStyleQuestions.length===3,`${l.lessonKey}: independent task counts changed`);
     check(l.units.some(u=>u.workedExample?.programKey),`${l.lessonKey}: executed worked example missing`);
     for(const u of l.units){
+      errors.push(...validateCoreBlocks(u));
       check(!units.has(u.unitKey),`${u.unitKey}: duplicate unit`);units.set(u.unitKey,u);
       const key=u.unitKey.slice(4),family=key.startsWith("TRANSLATE-")?"TRANSLATE":key.startsWith("FOR-")?"FOR":key.startsWith("EFFICIENCY-")?"EFFICIENCY":key;
       check(same(u.objectiveIds,ownership[family]),`${u.unitKey}: content/objective mismatch`);
-      check(u.coreExplanation.length===2,`${u.unitKey}: missing core explanation`);
+      check(u.coreExplanation.length>=2,`${u.unitKey}: missing core explanation`);
       check(u.checkpoint?.prompt&&u.checkpoint.answer,`${u.unitKey}: formative check missing`);
       for(const p of u.coreExplanation){check(!paragraphs.has(normalise(p)),`${u.unitKey}: duplicate explanation`);paragraphs.add(normalise(p));}
       if(u.workedExample?.programKey)check(u.workedExample.steps.some(([,text])=>text===codeFor(u.workedExample.programKey)),`${u.unitKey}: worked example differs from executed code`);
@@ -55,7 +57,7 @@ export function validateSection11Presentation(lessons,bank) {
       for(const practice of l.practice){const overlap=exam.markLogic.filter(x=>practice.answerPoints.some(y=>normalise(x)===normalise(y))).length;check(overlap<Math.ceil(exam.markLogic.length/2),`${exam.id}: recycled practice scoring points`);}
     }
   }
-  check(units.size===26&&paragraphs.size===52,"S11 distinct teaching content is incomplete");
+  check(units.size===26,"S11 distinct teaching content is incomplete");
   check(new Set(ls.flatMap(l=>l.objectives.map(([id])=>id))).size===29,"S11 atomic objective coverage changed");
   check(same(ls[6]?.units.map(u=>u.unitKey),["S11-REPEAT","S11-WHILE","S11-LOOP-CONDITIONS"]),"Teach post-condition before pre-condition in official order");
   check(same(ls[6]?.objectives.map(([id])=>id),["S11.04.A05","S11.04.A04"]),"The objective ledger must follow the taught conditional-loop order");

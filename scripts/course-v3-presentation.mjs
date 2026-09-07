@@ -1,6 +1,8 @@
 import { section1ExamQuestions } from "./course-v3-section1-content.mjs";
 import { classifyCommand, normaliseQuestionPrompt } from "./cie-command-words.mjs";
 import { knowledgeDiagramForUnit } from "./course-v3-knowledge-diagrams.mjs";
+import { coreBlockTexts, coreParagraph, validateCoreBlocks } from "./course-v3-core-blocks.mjs";
+import { expandConceptTeaching } from "./course-v3-concept-expansion.mjs";
 
 const imageVisualTypes = new Set(["reviewed-visual", "topology-gallery", "reservoir", "address-demo", "url-demo"]);
 const structuredVisualTypes = new Set(["flow", "table", "cards", "list"]);
@@ -732,6 +734,7 @@ function finaliseQuestion(question, lesson) {
 }
 
 function finaliseUnit(unit, lesson, unitIndex) {
+  unit = expandConceptTeaching(unit, lesson.section);
   const sourceMaterials = [...(unit.materials ?? [])];
   const generatedDiagram = unit.useAuthoredVisual ? null : knowledgeDiagramForUnit(lesson.sequenceIndex, unitIndex + 1);
   if (generatedDiagram) sourceMaterials.unshift({ ...generatedDiagram, objectiveIds: [...unit.objectiveIds] });
@@ -739,7 +742,13 @@ function finaliseUnit(unit, lesson, unitIndex) {
     .filter((material) => material.type !== "worked-example")
     .sort((left, right) => visualPriority(left) - visualPriority(right));
   if (!candidates.length) throw new Error(`${unit.syllabusId}: no lead visual candidate`);
-  let coreExplanation = dedupeCoreParagraphs(unit.coreExplanation ?? unit.explanation ?? []);
+  const sourceCore = unit.coreBlocks ?? unit.coreExplanation ?? unit.explanation ?? [];
+  const coreBlocks = sourceCore.some(block => typeof block !== "string")
+    ? sourceCore.map(block => typeof block === "string" ? coreParagraph(cleanCoreParagraph(block)) : block)
+    : undefined;
+  const coreExplanation = coreBlocks ? coreBlockTexts(coreBlocks) : dedupeCoreParagraphs(sourceCore);
+  const blockErrors = validateCoreBlocks({ ...unit, coreBlocks, coreExplanation });
+  if (blockErrors.length) throw new Error(blockErrors.join("\n"));
   let leadVisual = { ...compactLeadVisual(candidates[0], unit.heading), objectiveIds: [...unit.objectiveIds] };
   const methodCandidate = sourceMaterials.find((material) => material.type === "flow" && material !== candidates[0]);
   const cleanedMethod = (lesson.section === 1 || unit.preserveTeachingSteps) ? methodCandidate : cleanMethod(methodCandidate, coreExplanation, leadVisual);
@@ -755,6 +764,7 @@ function finaliseUnit(unit, lesson, unitIndex) {
     ...unit,
     leadVisual,
     coreExplanation,
+    ...(coreBlocks ? { coreBlocks } : {}),
     method,
     workedExample,
     supportingMaterials: sourceMaterials.filter((material) => material.preserve && material !== candidates[0]),

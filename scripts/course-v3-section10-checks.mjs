@@ -1,6 +1,8 @@
 import { section10Assessments } from "./course-v3-section10-content.mjs";
 import { codeFor } from "./course-v3-section10-programs.mjs";
-import { diagramFor, diagramPath, section10Diagrams } from "./course-v3-section10-diagrams.mjs";
+import { diagramFor, section10Diagrams } from "./course-v3-section10-diagrams.mjs";
+import { validateCoreBlocks } from "./course-v3-core-blocks.mjs";
+import { mechanismVisual } from "./course-v3-mechanism-diagrams.mjs";
 
 const same = (a, b) => JSON.stringify(a) === JSON.stringify(b);
 const norm = s => String(s).toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
@@ -33,13 +35,15 @@ export function validateSection10Presentation(lessons, bank) {
       const key = u.unitKey?.replace(/^S10-/, ""); units.set(key, u);
       check(same(u.objectiveIds, ownership[key]), `${u.unitKey}: wrong knowledge-point ownership`);
       check(same(u.leadVisual.objectiveIds, u.objectiveIds), `${u.unitKey}: visual objective mismatch`);
-      check(u.coreExplanation.length === 2 && !placeholder.test(u.coreExplanation.join(" ")), `${u.unitKey}: generic or incomplete explanation`);
+      check(u.coreExplanation.length >= 2 && !placeholder.test(u.coreExplanation.join(" ")), `${u.unitKey}: generic or incomplete explanation`);
+      errors.push(...validateCoreBlocks(u));
       check(u.checkpoint?.prompt && u.checkpoint?.answer, `${u.unitKey}: missing formative check`);
       for (const p of u.coreExplanation) { const sig = norm(p); check(!paragraphs.has(sig), `${u.unitKey}: duplicated core paragraph`); paragraphs.add(sig); }
       const graph = visualOwnership[key];
       if (graph) {
-        check(u.leadVisual.asset === diagramPath(graph), `${u.unitKey}: wrong diagram`);
-        check(same(u.leadVisual.facts, diagramFor(graph).facts), `${u.unitKey}: visual transcript drift`);
+        const expectedVisual = key === "QUEUE-ARRAY" ? mechanismVisual("queue-state") : diagramFor(graph);
+        check(u.leadVisual.asset === expectedVisual.asset, `${u.unitKey}: wrong diagram`);
+        check(same(u.leadVisual.facts, expectedVisual.facts), `${u.unitKey}: visual transcript drift`);
       }
       for (const m of [u.workedExample, ...(u.supportingMaterials ?? [])].filter(Boolean)) {
         if (m.programKey) check(m.steps.some(([, text]) => text === codeFor(m.programKey)), `${u.unitKey}: published code differs from executed program`);
@@ -63,7 +67,7 @@ export function validateSection10Presentation(lessons, bank) {
       }
     }
   }
-  check(units.size === 29 && paragraphs.size === 58, "S10 requires 29 distinct units and 58 distinct core paragraphs");
+  check(units.size === 29, "S10 requires 29 distinct units with complete core explanations");
   check(units.get("BUBBLE-PASSES")?.method?.title === "Bubble sort procedure", "Bubble sort labelled as linear search");
   const fileMaterials = [units.get("FILE-WRITE")?.workedExample, ...(units.get("FILE-WRITE")?.supportingMaterials ?? [])];
   check(fileMaterials.some(m => m?.programKey === "writeFile") && fileMaterials.some(m => m?.programKey === "appendFile"), "Missing complete WRITE or APPEND worked example");

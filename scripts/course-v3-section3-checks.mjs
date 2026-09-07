@@ -55,8 +55,9 @@ export function validateSection3Presentation(lessons, assessmentBank) {
   check(conversions?.units.length >= 3 && conversions.units.every((u) => u.workedExample?.steps.length >= 3), "S3-L06 needs worked conversions from statement, circuit and table");
   const memory = byKey("S3-L03");
   const buffer = memory?.units[0];
-  check(buffer?.leadVisual.type === "table", "S3 buffer must use an explicit transfer table");
-  check(JSON.stringify(buffer?.leadVisual.rows.map((row) => row[2])) === JSON.stringify(["P1, P2, P3", "P2, P3", "P3", "Empty"]), "S3 buffer table loses or retains a removed block");
+  const transferTable = [buffer?.leadVisual, ...(buffer?.supportingMaterials ?? [])].find(m => m?.type === "table");
+  check(Boolean(transferTable), "S3 buffer must retain its explicit transfer table");
+  check(JSON.stringify(transferTable?.rows?.map((row) => row[2])) === JSON.stringify(["P1, P2, P3", "P2, P3", "P3", "Empty"]), "S3 buffer table loses or retains a removed block");
   check(/^A buffer/.test(buffer?.coreExplanation[0]), "S3.04 must begin with buffering rather than driver/queue teaching");
   const memoryText = JSON.stringify(memory?.units);
   check(!/stage10-lesson-054-device\.jpg|\/sram-dram\.png/.test(memoryText), "S3 still references a rejected buffer or SRAM diagram");

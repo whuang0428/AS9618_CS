@@ -1,3 +1,4 @@
+import { validateCoreBlocks } from "./course-v3-core-blocks.mjs";
 import { codeFor12, structureCode } from './course-v3-section12-programs.mjs';
 import { diagramPath12, stateVisual12 } from './course-v3-section12-diagrams.mjs';
 import { classifyCommand } from './cie-command-words.mjs';
@@ -40,6 +41,7 @@ export function validateSection12Presentation(lessons, bank) {
     check(l.summaryMode==='authored' && l.summary.every(([,text])=>text.length>30),`${l.lessonKey}: summary lacks usable conclusions`);
     for(const id of objectiveIds)check(l.practice.some(q=>q.objectiveIds.includes(id)),`${id}: no practice`);
     for(const u of l.units){
+      errors.push(...validateCoreBlocks(u));
       units.set(u.unitKey,u);
       check(same(u.objectiveIds,ownership[u.unitKey?.replace(/^S12-/,'')]),`${u.unitKey}: wrong knowledge-point ownership`);
       check(u.coreExplanation.length>=2,`${u.unitKey}: insufficient explanation`);
@@ -59,7 +61,7 @@ export function validateSection12Presentation(lessons, bank) {
       }
     }
   }
-  check(units.size===25 && paragraphs.size===50,'S12 requires 25 distinct units and 50 distinct core paragraphs');
+  check(units.size===25,'S12 requires 25 distinct teaching units');
   check(ls.flatMap(l=>l.objectives).length===34,'S12 atomic objective coverage changed');
   check(units.get('S12-STRUCTURE-HIERARCHY')?.leadVisual.asset===diagramPath12('order'),'Structure chart replaced by unrelated visual');
   check(same(units.get('S12-STATES-MEANING')?.leadVisual.facts,stateVisual12.facts),'State diagram transcript mismatch');

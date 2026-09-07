@@ -1,3 +1,4 @@
+import { validateCoreBlocks } from "./course-v3-core-blocks.mjs";
 const normalise = (s) => String(s).toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
 const same = (a, b) => JSON.stringify(a) === JSON.stringify(b);
 const requirement = (id) => id.replace(/\.(?:A\d+|R)$/, "");
@@ -24,11 +25,12 @@ export function validateSection5Presentation(lessons, assessmentBank) {
       check(lesson.practice.some((q) => q.objectiveIds.includes(id)), `${id}: no matching practice`);
     }
     for (const u of lesson.units) {
+      errors.push(...validateCoreBlocks(u));
       check(u.objectiveIds.length > 0 && u.objectiveIds.every((id) => ownObjectives.has(id)), `${u.unitKey}: invalid ownership`);
       check(same(u.leadVisual.objectiveIds, u.objectiveIds), `${u.unitKey}: visual and knowledge point are misaligned`);
       check(u.checkpoint?.prompt && u.checkpoint?.answer, `${u.unitKey}: no formative check`);
       check(u.coreExplanation.length >= 2, `${u.unitKey}: insufficient explanation`);
-      check(["flow", "table"].includes(u.leadVisual.type), `${u.unitKey}: expected an authored diagram/table`);
+      check(["flow", "table", "reviewed-visual"].includes(u.leadVisual.type), `${u.unitKey}: expected an authored diagram/table`);
       for (const p of u.coreExplanation) {
         const key = normalise(p);
         for (const [other, owner] of paragraphs) check(!(key === other || (Math.min(key.length, other.length) > 100 && (key.includes(other) || other.includes(key)))), `${u.unitKey}: core repeats ${owner}`);
@@ -76,7 +78,7 @@ export function validateSection5Presentation(lessons, assessmentBank) {
   const units = section.flatMap((l) => l.units);
   const getUnit = (key) => units.find((u) => u.unitKey === key);
   const debug = getUnit("S5.07-DEBUG");
-  check(same(debug?.leadVisual.rows.map((r) => r.slice(1).map(Number)), [[12, 4, 12 + 4], [12 - 4, 4, (12 - 4) + 4]]), "S5 debugger table has incorrect before/after or expression values");
+  check(same((debug?.supportingMaterials?.find(m => m.title === "State around one assignment") ?? debug?.leadVisual)?.rows?.map((r) => r.slice(1).map(Number)), [[12, 4, 12 + 4], [12 - 4, 4, (12 - 4) + 4]]), "S5 debugger table has incorrect before/after or expression values");
   check(/Total <- Total - Increment/.test(JSON.stringify(debug?.workedExample)) && /output should be 16/.test(JSON.stringify(debug?.workedExample)), "S5 debugger needs its faulty assignment and verified correction");
   check(/Amount is then 14\./.test(answer("S5-L05-Q4")) && /as 15/.test(answer("S5-L05-Q4")), "S5 stepping exercise gives incorrect post-assignment/expression values");
   check(/Count is 5 before/.test(answer("S5-L05-EXAM-3")) && /changes Count to 7/.test(answer("S5-L05-EXAM-3")) && /OUTPUT has not yet run/.test(answer("S5-L05-EXAM-3")), "S5 exam confuses the pause with completed execution");

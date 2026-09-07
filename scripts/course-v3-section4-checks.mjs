@@ -1,3 +1,4 @@
+import { validateCoreBlocks } from "./course-v3-core-blocks.mjs";
 import { section4Programs, programListing } from "./course-v3-section4-programs.mjs";
 import { section4WorkedTrace } from "./course-v3-section4-content.mjs";
 import { normaliseQuestionPrompt } from "./cie-command-words.mjs";
@@ -88,6 +89,7 @@ export function validateSection4Presentation(lessons, bank) {
     check(lesson.summaryMode === 'authored' && lesson.summary.every(([,s])=>s.length>35), `${lesson.lessonKey}: incomplete summary`);
     check(lesson.diagnostic?.answer && lesson.guidingQuestion, `${lesson.lessonKey}: missing entry check`);
     for (const unit of lesson.units) {
+      errors.push(...validateCoreBlocks(unit));
       check(unit.checkpoint?.prompt && unit.checkpoint?.answer, `${unit.unitKey}: missing formative check`);
       check(unit.workedExample?.steps.length>=3, `${unit.unitKey}: no complete worked example`);
       check(unit.objectiveIds.every(id=>objectives.includes(id)), `${unit.unitKey}: foreign mapping`);
@@ -148,7 +150,8 @@ export function validateSection4Presentation(lessons, bank) {
   check(equal(section4WorkedTrace.expectedTrace, actualWorked.trace), 'Worked loop trace disagrees with program execution');
   check(equal(traceUnit?.leadVisual.rows, section4WorkedTrace.answerTable.rows), 'Displayed worked loop trace differs from verified result');
   const dataUnit = section.flatMap(l=>l.units).find(u=>u.unitKey==='s4-data-movement');
-  check(dataUnit?.leadVisual.rows.some(r=>r[0]==='LDX <address>' && r[1]==='ACC ← Memory[address + IX]'), 'LDX must load contents at the indexed address');
+  const dataTable = [dataUnit?.leadVisual, ...(dataUnit?.supportingMaterials ?? [])].find(v=>v?.type==='table' && v.rows?.some(r=>r[0]==='LDX <address>'));
+  check(dataTable?.rows.some(r=>r[0]==='LDX <address>' && r[1]==='ACC ← Memory[address + IX]'), 'LDX must load contents at the indexed address');
   const unitText = JSON.stringify(section.flatMap(l=>l.units));
   check(!/assembly-trace\.png|stage10-lesson-092-processor\.jpg/.test(unitText), 'Rejected S4 diagram is still used');
   check(/<label>: <opcode> <operand>/.test(unitText) && /<label>: <data>/.test(unitText), 'Both label forms must remain visible');

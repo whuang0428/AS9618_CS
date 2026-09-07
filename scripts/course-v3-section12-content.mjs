@@ -1,3 +1,5 @@
+import { mechanismVisual } from "./course-v3-mechanism-diagrams.mjs";
+import { coreParagraph, coreList } from "./course-v3-core-blocks.mjs";
 import { codeFor12, structureCode } from './course-v3-section12-programs.mjs';
 import { structureVisual, stateVisual12, diagramPath12 } from './course-v3-section12-diagrams.mjs';
 const ids=(r,...ns)=>ns.map(n=>`S12.${String(r).padStart(2,'0')}.A${String(n).padStart(2,'0')}`);
@@ -212,11 +214,22 @@ const data={
  title:'Normal, abnormal and boundary test data',subtitle:'Choose data from stated validation rules and give an expected result for every case.',guidingQuestion:'Which input distinguishes a correct limit check from a plausible incorrect one?',
  diagnostic:{prompt:'An integer quantity must be from 1 to 20 inclusive. Should 20 be accepted?',answer:'Yes. Inclusive means the endpoint belongs to the accepted interval; 21 must be rejected.'},
  units:[
-  unit('DATA-CATEGORIES','Distinguish ordinary, invalid and extreme values',ids(7,1,2),[
-   'Normal test data are valid values representative of ordinary use. Abnormal data violate a stated rule, such as a range, type or format restriction, and should receive the specified rejection or error response. Extreme values are the valid endpoints of an accepted range.',
-   'Boundary testing examines a limit and useful values immediately on either side. State explicitly whether each chosen value is valid or invalid: for an integer range 0 to 100, 0 and 100 are valid extremes, while -1 and 101 are abnormal values just outside. The term boundary describes their position relative to the limit and must not hide their expected acceptance or rejection.',
-  ],[table('Integer marks from 0 to 100 inclusive',['Value','Role in the test','Expected result'],[[55,'Normal ordinary value','Accepted'],[0,'Valid lower extreme','Accepted'],[100,'Valid upper extreme','Accepted'],[-1,'Abnormal, just below lower limit','Rejected'],[101,'Abnormal, just above upper limit','Rejected'],['"fifty"','Abnormal type at text-entry validation','Rejected']])],
-  'Data categories do not determine a result by themselves; the stated input rule determines validity.', 'Why can 101 be described as both abnormal and a boundary check?','It is invalid under the range rule and specifically tests the position just beyond the upper limit.'),
+  unit('DATA-CATEGORIES',
+      'Distinguish ordinary, invalid and extreme values',
+      ids(7,1,2),
+      [
+        coreList("Classify the test data", [
+          ["Normal", "Valid data representative of ordinary use."],
+          ["Abnormal", "Data violating a range, type or format rule; expect the specified rejection or error response."],
+          ["Extreme", "The valid endpoints of the accepted range."]
+        ]),
+        coreParagraph("Boundary testing checks a limit and useful values on either side. Label each case with its expected result: boundary describes position, not whether the input is valid."),
+        coreParagraph("For integer marks from 0 to 100, the endpoints are accepted and -1 and 101 are rejected. The text \"fifty\" fails the integer type rule before a range check can apply.", "Keep the type rule separate")
+      ],
+      [mechanismVisual("boundaries")],
+      'Data categories do not determine a result by themselves; the stated input rule determines validity.',
+      'Why can 101 be described as both abnormal and a boundary check?',
+      'It is invalid under the range rule and specifically tests the position just beyond the upper limit.'),
   unit('DATA-SELECT','Select cases that distinguish likely faults',ids(7,1,2),[
    'First identify the rule, data type, limits and inclusive or exclusive comparisons. Choose a normal case, values exactly at each limit and values just outside. Where useful, include values just inside so an incorrect narrow equality test is exposed. Supply the expected result of each case, not just a label such as boundary.',
    'For a username length from 6 to 12 inclusive, lengths 5 and 13 must be rejected, while 6 and 12 must be accepted. Strings with these lengths are actual test data; the word short is not. For real-valued measurements, select nearby values at the precision permitted by the specification rather than assuming that one whole unit is the next value.',

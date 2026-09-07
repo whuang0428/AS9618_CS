@@ -6,6 +6,8 @@ import { fileURLToPath } from "node:url";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const targets = [
+  join(root, "web", "assets", "course-v3", "mechanisms"),
+  join(root, "web", "assets", "course-v3", "reference"),
   join(root, "web", "assets", "course-v3", "section-4"),
   join(root, "web", "course-v3"),
   join(root, "web", "assets", "course-v3", "section-6"),

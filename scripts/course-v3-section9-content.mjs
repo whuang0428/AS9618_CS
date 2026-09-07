@@ -1,3 +1,5 @@
+import { mechanismVisual } from "./course-v3-mechanism-diagrams.mjs";
+import { coreParagraph, coreSteps } from "./course-v3-core-blocks.mjs";
 import { codeFor } from "./course-v3-section9-programs.mjs";
 import { diagramFor, diagramPath } from "./course-v3-section9-diagrams.mjs";
 
@@ -60,12 +62,22 @@ const decomposition = {
   guidingQuestion: "What must each part do, and what information must it receive or return?",
   diagnostic: { prompt: "Does renaming 'run the library' as 'manage the library' make the problem smaller?", answer: "No. Decomposition requires distinct sub-problems, such as finding a copy, recording a loan and displaying a due date." },
   units: [
-    unit("DECOMPOSITION-PARTS", "Separate responsibilities", ids(2,1), [
-      "Decomposition breaks a complex problem into smaller sub-problems. Each part should have a clear responsibility, while the parts together still meet the original requirements. A library loan task can be divided into identifying the copy, checking availability, recording the loan and reporting the result.",
-      "Smaller parts are easier to understand, implement and test. Designers can work on separate parts when their interfaces are agreed. A useful breakdown follows the work the system must perform, rather than an arbitrary list of screens or a renamed copy of the whole task.",
-    ], [flow("Break down processing a library loan", [["Identify copy", "Receive the requested CopyID."],["Check availability", "Determine whether that copy can be loaned."],["Record loan", "Associate the available copy with the borrower and due date."],["Report outcome", "Display either confirmation or the reason the loan cannot proceed."]]), worked("From a whole task to cooperating parts", [["Requirement", "A canteen order records choices, calculates the amount due and issues a receipt."],["Breakdown", "CollectOrder handles choices; CalculateTotal determines the amount; PrintReceipt presents the accepted order."],["Connection", "The collected items and quantities feed the calculation, then the items and total feed the receipt."],["Check", "An order with two items must appear correctly in both the total and receipt; the modules cannot use conflicting quantities."]])],
+    unit("DECOMPOSITION-PARTS",
+      "Separate responsibilities",
+      ids(2,1),
+      [
+        coreParagraph("Decomposition breaks a complex problem into smaller sub-problems. Each part has a clear responsibility; together, the parts must satisfy the original requirements."),
+        coreSteps("Build a useful decomposition", [
+          ["Name responsibilities", "For a loan: identify the copy, check availability, record the loan and report the outcome."],
+          ["Connect the parts", "Agree the data passed between modules and the conditions under which each is used."],
+          ["Check completeness", "Every requirement must be handled. Avoid an arbitrary list of screens or repeated names for the whole task."]
+        ]),
+        coreParagraph("Smaller parts are easier to understand, implement and test. Agreed interfaces also allow designers to work on separate parts.", "Why decomposition helps")
+      ],
+      [mechanismVisual("decomposition") , worked("From a whole task to cooperating parts", [["Requirement", "A canteen order records choices, calculates the amount due and issues a receipt."],["Breakdown", "CollectOrder handles choices; CalculateTotal determines the amount; PrintReceipt presents the accepted order."],["Connection", "The collected items and quantities feed the calculation, then the items and total feed the receipt."],["Check", "An order with two items must appear correctly in both the total and receipt; the modules cannot use conflicting quantities."]])],
       "Decomposition identifies smaller tasks; abstraction selects which details are relevant to a purpose.",
-      "Why is 'process everything' an unsuitable final sub-problem?", "It still hides several responsibilities and is too broad to implement or test independently."),
+      "Why is 'process everything' an unsuitable final sub-problem?",
+      "It still hides several responsibilities and is too broad to implement or test independently."),
     unit("DECOMPOSITION-MODULES", "Define module inputs and results", ids(2,2), [
       "A program module can implement a sub-problem as a procedure or function. A procedure performs a task when called; a function returns a value that can be used in an expression. Choose responsibilities and interfaces before writing detailed subroutine syntax.",
       "Specify what information each module needs and what result or effect it provides. CalculateCharge can receive a quantity and unit price and return an amount; DisplayReceipt can receive that amount and output it. Repeating the calculation independently in the display module risks disagreement when the charging rule changes.",

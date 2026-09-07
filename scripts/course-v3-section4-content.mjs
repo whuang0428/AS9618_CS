@@ -1,3 +1,5 @@
+import { mechanismVisual } from "./course-v3-mechanism-diagrams.mjs";
+import { coreParagraph, coreList, coreTable } from "./course-v3-core-blocks.mjs";
 import { s4ids as ids, section4Practice, section4Exams, traceData } from "./course-v3-section4-questions.mjs";
 import { section4Programs, programListing } from "./course-v3-section4-programs.mjs";
 
@@ -123,10 +125,24 @@ const authored = {
         "The program below repeats DEC and CMP until ACC reaches zero. The same JPN instruction is taken after the first comparison and not taken after the second. The trace therefore includes two visits to each loop instruction.",
         "The load after the loop replaces the loop counter with an ASCII value before OUT executes. Separate the value used for loop control from the later output value; a register's meaning can change during a program.",
       ], [table("Complete execution trace", workedTrace.answerTable.headers, workedTrace.answerTable.rows), worked("Trace the supplied loop", [["Program and initial state", "Initially ACC=0, IX=0, PC=20; Memory[90]=67. Each instruction occupies one address. No input is required.\n" + listing("workedTrace")],["First comparison", "After the first DEC, ACC=1. CMP #0 gives False; JPN returns to LOOP at address 21."],["Second comparison", "After the second DEC, ACC=0. CMP #0 gives True; JPN falls through to 24."],["Completion", "LDD 90 loads 67; OUT prints C; END returns to the OS. IX remains 0 throughout."]])], "A loop trace must include the final failed branch test that lets execution leave the loop.", "How many times does address 23 execute, and how many times is its branch taken?", "It executes twice; the branch is taken only on the first execution."),
-      unit("s4-addressing", "Immediate, direct, indirect, indexed and relative addressing", ids(14, [1,2]), [
-        "Addressing modes define how to obtain an operand or target. Immediate supplies the value itself. Direct uses the stated memory address. Indirect treats the contents at that address as a pointer to another location. Indexed adds an index-register offset to a base address before accessing memory.",
-        "Relative addressing forms an effective address from a PC-related base and a signed displacement. Use the PC base or convention supplied in the question; it may refer to a PC already advanced during fetch. The syllabus example instruction list does not specify a separate relative-jump mnemonic, so relative calculations here state the base and displacement explicitly.",
-      ], [table("Address versus value", ["Mode", "Resolution rule", "With base/operand 100, IX=2, Memory[100]=150, Memory[150]=7, Memory[102]=9"], [["Immediate", "Value = operand", "#100 gives 100"],["Direct", "Value = Memory[address]", "100 gives 150"],["Indirect", "Value = Memory[Memory[address]]", "100 gives 7"],["Indexed", "Value = Memory[address + IX]", "100+2 selects location 102; value is 9"],["Relative", "Target = stated PC base + displacement", "PC base 40 and displacement −5 give target 35"]]), worked("Moving through array elements", [["Given", "An array starts at 800; Memory[800]=21, Memory[801]=34, Memory[802]=55."],["First access", "With IX=1, LDX 800 reads location 801 and sets ACC=34."],["Next access", "INC IX makes IX=2. Another LDX 800 now reads 55 from location 802."]])], "A negative relative displacement moves to an earlier address; it is not a negative memory value to load.", "What information is missing from 'relative offset −4' alone?", "The PC base from which to calculate the effective address."),
+      unit("s4-addressing",
+      "Immediate, direct, indirect, indexed and relative addressing",
+      ids(14, [1,2]),
+      [
+        coreParagraph("An addressing mode specifies how to obtain an operand or target. Keep the instruction's operand, a selected address and that address's contents separate."),
+        coreTable("Rules for resolving an operand", ["Mode", "Resolution rule"], [
+          ["Immediate", "Use the operand itself as the value."],
+          ["Direct", "Read Memory[address]."],
+          ["Indirect", "Read Memory[Memory[address]]: the first read supplies another address."],
+          ["Indexed", "Read Memory[base address + IX]."],
+          ["Relative", "Target address = stated PC base + signed displacement."]
+        ]),
+        coreParagraph("For relative addressing, use the PC convention given in the question; it may already include the fetch increment. The example instruction set supplies no separate relative-jump mnemonic, so state the base and displacement explicitly.", "Check the PC base")
+      ],
+      [mechanismVisual("addressing") , worked("Moving through array elements", [["Given", "An array starts at 800; Memory[800]=21, Memory[801]=34, Memory[802]=55."],["First access", "With IX=1, LDX 800 reads location 801 and sets ACC=34."],["Next access", "INC IX makes IX=2. Another LDX 800 now reads 55 from location 802."]])],
+      "A negative relative displacement moves to an earlier address; it is not a negative memory value to load.",
+      "What information is missing from 'relative offset −4' alone?",
+      "The PC base from which to calculate the effective address."),
     ],
     summary: [["Operand resolution", "Read prefixes and addressing modes before calculating a loaded or compared value."],["Instruction effects", "ACC/IX, memory, comparisons and PC change only as defined by the executed instruction."],["Trace", "Follow taken branches, repeat loop rows, record stores and output characters, and stop at END."]],
   },
@@ -134,11 +150,22 @@ const authored = {
     guidingQuestion: "How can one instruction change or inspect selected bits without losing the rest of a device value?",
     diagnostic: { prompt: "Are #15, B00001111 and &0F three different numbers?", answer: "No. They denote the same immediate value in denary, binary and hexadecimal." },
     units: [
-      unit("s4-shifts", "Logical, arithmetic and cyclic shifts", ids(15, [1,3,4,13,14]), [
-        "A shift moves a fixed-width bit pattern left or right. Logical shifts introduce zeros at vacated positions and discard bits that leave the word. LSL #n and LSR #n shift ACC logically by n positions in the example instruction set.",
-        "Arithmetic shifts interpret the pattern as a signed two's complement value. Right arithmetic shift replicates the sign bit; left arithmetic shift introduces zeros on the right, like logical left, but can overflow. Multiplying by a power of two is valid only if the signed result remains representable; right shifting a negative odd value rounds towards negative infinity.",
-        "A cyclic shift (rotation) wraps the outgoing bit to the opposite end. It preserves the bit pattern's number of ones rather than introducing zero or repeating the sign bit. State the word width and direction before performing any shift.",
-      ], [table("One-place shifts of 10010111", ["Type", "Left result", "Right result"], [["Logical", "00101110", "01001011"],["Arithmetic (two's complement)", "00101110 (overflow: −105 × 2 is out of range)", "11001011 (−53)"],["Cyclic", "00101111", "11001011"]]), worked("Two logical instructions", [["Given", "ACC is unsigned 8-bit 00110100 (52). Execute LSL #1, then LSR #2."],["Shift left", "LSL #1 gives 01101000 (104); zero enters at the right."],["Shift right", "LSR #2 gives 00011010 (26); two zeros enter at the left."],["Check the scope", "These particular shifts lose only zeros. Other inputs can lose 1 bits, so opposite shifts need not restore the original value."]])], "A cyclic result can coincide with an arithmetic or logical result for one input; their rules are still different.", "What enters at the left in an arithmetic right shift of a negative value?", "Copies of the original sign bit, which is 1."),
+      unit("s4-shifts",
+      "Logical, arithmetic and cyclic shifts",
+      ids(15, [1,3,4,13,14]),
+      [
+        coreParagraph("State the word width, direction and number of positions before shifting. Each panel starts from the same original byte; the panels are not successive instructions."),
+        coreList("What fills the vacated position?", [
+          ["Logical", "Insert 0 and discard outgoing bits. LSL #n and LSR #n shift ACC logically by n positions."],
+          ["Arithmetic", "For two's complement, copy the sign bit when shifting right. A left shift inserts 0, like logical left, but may overflow."],
+          ["Cyclic", "Wrap the outgoing bit to the opposite end; the number of 1 bits is unchanged."]
+        ]),
+        coreParagraph("A left shift multiplies a signed value by a power of two only when the result remains representable. Arithmetic right shift of a negative odd value rounds towards negative infinity: -105 becomes -53.", "Check the numerical result")
+      ],
+      [mechanismVisual("shifts") , worked("Two logical instructions", [["Given", "ACC is unsigned 8-bit 00110100 (52). Execute LSL #1, then LSR #2."],["Shift left", "LSL #1 gives 01101000 (104); zero enters at the right."],["Shift right", "LSR #2 gives 00011010 (26); two zeros enter at the left."],["Check the scope", "These particular shifts lose only zeros. Other inputs can lose 1 bits, so opposite shifts need not restore the original value."]])],
+      "A cyclic result can coincide with an arithmetic or logical result for one input; their rules are still different.",
+      "What enters at the left in an arithmetic right shift of a negative value?",
+      "Copies of the original sign bit, which is 1."),
       unit("s4-bitwise", "AND, OR and XOR with immediate or memory operands", ids(15, [5,7,8,9,10,11,12]), [
         "Bitwise operations apply independently to corresponding bit positions. AND produces 1 only when both bits are 1. OR produces 1 when at least one bit is 1. XOR produces 1 when exactly one bit is 1, so equal input bits produce 0.",
         "Each of AND, OR and XOR supports immediate #n, Bn or &n forms, or a direct memory-address operand. The operation combines that operand with ACC and stores the result in ACC. For a direct operand, retrieve the contents of the address before applying the bitwise rule.",

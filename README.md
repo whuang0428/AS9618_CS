@@ -50,6 +50,12 @@ The S10 verifier executes the published pseudocode subset against independent ex
 
 The S12 source is `scripts/course-v3-section12-content.mjs`, with cumulative assessment questions in `scripts/course-v3-section12-assessments.mjs`. Its 25 units cover all 34 objectives in syllabus order, with real structure/state diagrams, complete pseudocode, 34 practice tasks and 27 separately authored exam tasks. The verifier checks objective ownership, scoring, duplicate content and classroom rendering; it executes the published scalar and straight-line subprogram examples, all state transitions, and original/amended program comparisons. These checks cover the supported teaching fixtures, not arbitrary Cambridge pseudocode.
 
+Teaching revisions now cover 156 units with authored paragraph headings, lists, steps and tables. `scripts/course-v3-core-blocks.mjs` provides the block model and searchable text view. `scripts/course-v3-concept-expansion.mjs` and `scripts/course-v3-core-completion.mjs` hold further revisions keyed by concept; Section 2 uses its existing unique authored headings. It preserves programs and assessments, and consolidates superseded comparison tables where their content has moved into the explanation.
+
+`scripts/course-v3-mechanism-diagrams.mjs`, `scripts/course-v3-mechanism-extensions.mjs` and `scripts/course-v3-mechanism-completion.mjs` generate 62 concept-keyed SVGs: character encoding, communication paths, feedback, processor transfers, device bits, OS services, backup recovery, Boolean conditions, buffers, records, array/search traces, ADT states, file modes, bounded loops, function results and development/testing relationships. Two-column explanation tables stack on phones; diagrams and wider tables support local keyboard scrolling. `verify-course-v3-concept-teaching.mjs --self-test` checks ownership, displayed values, directed paths, branch labels, active storage, file position and block/text consistency, including 67 deliberate faulty mutations. Independent SVG computations and path checks live in `course-v3-mechanism-checks.mjs` and `course-v3-mechanism-completion-checks.mjs`. Existing program execution and assessment checks remain in the section verifiers. Review rendered SVG labels and connections at desktop and 390px widths whenever a diagram changes; numerical checks do not establish visual legibility.
+
+The USB/HDMI/VGA appearance reference was generated with built-in ImageGen and visually reviewed after correcting the VGA hole count. `scripts/course-v3-reference-images.json` records its prompt, review and checksum. Its editable HTML labels explain purpose and compatibility; the bitmap is an appearance reference, not a pinout.
+
 ## Repository structure
 
 - `course-v3-map.md`: official-order allocation and the complete 93-page sequence.
@@ -96,6 +102,7 @@ Regenerate the active HTML and compatibility entries, then verify the current co
 ```bash
 node scripts/render-course-v3.mjs
 node scripts/verify-course-v3.mjs --self-test
+node scripts/verify-course-v3-concept-teaching.mjs --self-test
 node scripts/verify-course-v3-section2.mjs --self-test
 node scripts/verify-course-v3-section3.mjs --self-test
 node scripts/verify-course-v3-section4.mjs --self-test
@@ -128,6 +135,7 @@ Build and verify the current offline release:
 ```bash
 node scripts/render-course-v3.mjs
 node scripts/verify-course-v3.mjs --self-test
+node scripts/verify-course-v3-concept-teaching.mjs --self-test
 node scripts/verify-course-v3-section2.mjs --self-test
 node scripts/verify-course-v3-section3.mjs --self-test
 node scripts/verify-course-v3-section4.mjs --self-test

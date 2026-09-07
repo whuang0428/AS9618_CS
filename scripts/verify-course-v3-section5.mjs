@@ -18,7 +18,7 @@ if (process.argv.includes("--self-test")) {
     ["wrong process-management answer", (ls) => { ls.find((l) => l.lessonKey === "S5-L01").examStyleQuestions[0].markLogic = ["Allocate memory", "Manage files", "Check permissions", "Install a driver"]; }],
     ["Java answered with IDE features", (ls) => { ls.find((l) => l.lessonKey === "S5-L04").examStyleQuestions[2].markLogic = ["Use a breakpoint", "Pretty-print source", "Fold code", "Inspect variables"]; }],
     ["copied practice with appended filler", (ls) => { const l = ls.find((l) => l.lessonKey === "S5-L02"); l.examStyleQuestions[2].markLogic = [...l.practice[6].answerPoints, "Add one further distinction."]; }],
-    ["wrong debugger result", (ls) => { ls.find((l) => l.lessonKey === "S5-L05").units[3].leadVisual.rows[1][1] = "16"; }],
+    ["wrong debugger result", (ls) => { ls.find((l) => l.lessonKey === "S5-L05").units[3].supportingMaterials.find(m => m.title === "State around one assignment").rows[1][1] = "16"; }],
     ["unrelated paper attribution", (ls) => { ls.find((l) => l.lessonKey === "S5-L01").examStyleQuestions[0].sourceRef = "9618/w25/11 Q5(a)(i)"; }],
     ["repeated core paragraph", (ls) => { const l = ls.filter((l) => l.section === 5); l[3].units[0].coreExplanation[0] = l[2].units[0].coreExplanation[0]; }],
     ["misplaced review tag", (ls) => { ls.find((l) => l.lessonKey === "REV-P1").units[0].objectiveIds.push("S5.01.R"); }],

@@ -9,7 +9,7 @@ if (process.argv.includes("--self-test")) {
   const mutations = [
     (ls) => { ls.find((l) => l.lessonKey === "S3-L05").practice[0].objectiveIds = ["S3.10.A10"]; },
     (ls) => { ls.find((l) => l.lessonKey === "S3-L06").practice[0].answerPoints[4] = "L outputs are 0, 0, 0, 0, 0, 0, 0, 0."; },
-    (ls) => { ls.find((l) => l.lessonKey === "S3-L03").units[0].leadVisual.rows[3][2] = "P3"; },
+    (ls) => { ls.find((l) => l.lessonKey === "S3-L03").units[0].supportingMaterials.find(m => m.type === "table").rows[3][2] = "P3"; },
     (ls) => { ls.find((l) => l.lessonKey === "S3-L03").units[2].leadVisual.asset = "/assets/diagrams/course-v3-imagegen/sram-dram.png"; },
     (ls) => { ls.find((l) => l.lessonKey === "S3-L02").summary[2][1] = "A microphone digitises sound."; },
     (ls) => { const l = ls.find((l) => l.lessonKey === "S3-L06"); l.examStyleQuestions[1].diagram = undefined; },

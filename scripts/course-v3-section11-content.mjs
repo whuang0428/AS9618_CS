@@ -1,3 +1,5 @@
+import { mechanismVisual } from "./course-v3-mechanism-diagrams.mjs";
+import { coreParagraph, coreList, coreTable } from "./course-v3-core-blocks.mjs";
 import { codeFor } from "./course-v3-section11-programs.mjs";
 import { countDiagram } from "./course-v3-section11-diagrams.mjs";
 
@@ -183,18 +185,57 @@ const lessons = [
   guidingQuestion:"Must the body run before the condition can be evaluated?",
   diagnostic:{prompt:"Does REPEAT ... UNTIL Valid repeat when Valid becomes TRUE?",answer:"No. TRUE ends repetition; FALSE starts another iteration."},
   units:[
-    unit("REPEAT","Use a post-condition REPEAT loop",ids(4,5),[
-      "A post-condition loop tests after the body, so its statements execute at least once. Write REPEAT, the body, then UNTIL Condition. A true condition stops repetition; a false condition sends execution back to the body. There is no ENDREPEAT in this syntax.",
-      "Input validation commonly needs a first attempt before it can judge the value. Read Mark inside REPEAT and stop when (Mark >= 0) AND (Mark <= 100). Each invalid integer triggers another input. This example assumes correctly typed integers: checking a numeric range does not itself handle text entered in place of a number.",
-    ],table("Post-condition validation trace",["Input Mark","UNTIL condition","Next action"],[[-1,"FALSE","Read again"],[101,"FALSE","Read again"],[100,"TRUE","Exit and output 100"]]),"UNTIL states when to stop, so a validity test is not negated here.","How many reads occur when the first Mark is 0?","One; the valid first input ends repetition.",worked("validation","Read a mark in the inclusive range","Inputs -1, 101, 100 lead to three reads and output 100. Input 0 is accepted on the first attempt.")),
-    unit("WHILE","Use a pre-condition WHILE loop",ids(4,4),[
-      "A pre-condition loop tests before the body, which may run zero times. Write WHILE Condition, the indented body and ENDWHILE; Cambridge pseudocode does not add DO to the WHILE header. TRUE continues into the body and FALSE skips to the next statement after ENDWHILE.",
-      "For a sentinel-controlled total, read Value before the first test so the condition has a defined value. While Value <> -1, add the value and read the next one. The sentinel -1 ends input and is not included in the total. A sentinel entered first gives an empty data set and total zero.",
-    ],table("Pre-condition sentinel trace",["Value before test","Value <> -1","Total after possible body"],[[3,"TRUE","3"],[4,"TRUE","7"],[-1,"FALSE","7; body skipped"]]),"A missing fresh input can keep the condition unchanged indefinitely.","Why is the first INPUT before WHILE?","The initial test needs a defined Value, and a first sentinel must allow zero body executions.",worked("sentinel","Total integers until a sentinel","Inputs 3, 4, -1 output 7. Input -1 alone outputs 0.")),
-    unit("LOOP-CONDITIONS","Compare test position and polarity",ids(4,4,5),[
-      "Test position and condition meaning are separate choices. WHILE Valid continues when Valid is true, whereas UNTIL Valid stops when Valid is true. Moving the same condition from one loop header to the other without considering its meaning can reverse the algorithm's behaviour.",
-      "A translation between loop forms must also preserve the first-iteration rule. Replacing a WHILE loop directly with REPEAT forces an execution even when the original pre-condition was false. Establish the allowed input assumptions and, where necessary, use an outer decision to retain the original zero-iteration path.",
-    ],table("Two conditional loop contracts",["Property","REPEAT ... UNTIL","WHILE ... ENDWHILE"],[["Test position","After body","Before body"],["Minimum executions","1","0"],["TRUE means","Stop","Execute body"],["Condition role","Stopping condition","Continuation condition"]]),"Negating the condition alone does not preserve a WHILE loop's empty-input case.","For non-negative Count, can REPEAT OUTPUT Count; Count <- Count - 1 UNTIL Count = 0 replace a countdown WHILE for Count 0?","No. It executes at zero, decrements to -1 and never reaches zero by further decrements."),
+    unit("REPEAT",
+      "Use a post-condition REPEAT loop",
+      ids(4,5),
+      [
+        coreParagraph("A post-condition loop executes its body before testing, so the body runs at least once."),
+        coreList("Read the REPEAT rules", [
+          ["Syntax", "Write REPEAT, the body, then UNTIL Condition. There is no ENDREPEAT."],
+          ["TRUE", "Stop and continue after the loop."],
+          ["FALSE", "Return to the body for another iteration."]
+        ]),
+        coreParagraph("Read Mark inside the body and accept it when (Mark >= 0) AND (Mark <= 100). An invalid integer triggers another input. This example assumes integer input: the range test does not itself handle text instead of a number.", "Apply the rule to validation")
+      ],
+      mechanismVisual("repeat"),
+      "UNTIL states when to stop, so a validity test is not negated here.",
+      "How many reads occur when the first Mark is 0?",
+      "One; the valid first input ends repetition.",
+      worked("validation","Read a mark in the inclusive range","Inputs -1, 101, 100 lead to three reads and output 100. Input 0 is accepted on the first attempt.")),
+    unit("WHILE",
+      "Use a pre-condition WHILE loop",
+      ids(4,4),
+      [
+        coreParagraph("A pre-condition loop tests before the body; the body may run zero times."),
+        coreList("Read the WHILE rules", [
+          ["Syntax", "Write WHILE Condition, the indented body and ENDWHILE. Do not add DO to the header."],
+          ["TRUE", "Execute the body, then return to the condition."],
+          ["FALSE", "Skip the body and continue after ENDWHILE."]
+        ]),
+        coreParagraph("Read Value before the first test so it is defined. While Value <> -1, add it and read again. The sentinel is not added: a first input of -1 leaves Total at zero.", "Initialise and update the condition")
+      ],
+      mechanismVisual("while"),
+      "A missing fresh input can keep the condition unchanged indefinitely.",
+      "Why is the first INPUT before WHILE?",
+      "The initial test needs a defined Value, and a first sentinel must allow zero body executions.",
+      worked("sentinel","Total integers until a sentinel","Inputs 3, 4, -1 output 7. Input -1 alone outputs 0.")),
+    unit("LOOP-CONDITIONS",
+      "Compare test position and polarity",
+      ids(4,4,5),
+      [
+        coreTable("Compare test position and meaning", ["Property", "REPEAT ... UNTIL", "WHILE ... ENDWHILE"], [
+          ["Test position", "After the body", "Before the body"],
+          ["Minimum body executions", "1", "0"],
+          ["Condition TRUE", "Stop", "Execute the body"],
+          ["Condition role", "Stopping condition", "Continuation condition"]
+        ]),
+        coreParagraph("WHILE Valid continues on TRUE; UNTIL Valid stops on TRUE. Moving the same condition between loop forms can therefore reverse the behaviour.", "Check condition meaning"),
+        coreParagraph("Negating the condition alone does not preserve a zero-iteration path. Check the allowed inputs; an outer decision may be needed before REPEAT to preserve a WHILE loop's original behaviour.", "Preserve the first-iteration rule")
+      ],
+      mechanismVisual("loop-comparison"),
+      "Negating the condition alone does not preserve a WHILE loop's empty-input case.",
+      "For non-negative Count, can REPEAT OUTPUT Count; Count <- Count - 1 UNTIL Count = 0 replace a countdown WHILE for Count 0?",
+      "No. It executes at zero, decrements to -1 and never reaches zero by further decrements."),
   ],
   practice:[
     q(7,1,"Write a REPEAT loop to read an integer Rating until it is from 1 to 5 inclusive. State the number of inputs for 0, 6 and 5.",ids(4,5),["Place INPUT Rating between REPEAT and UNTIL (Rating >= 1) AND (Rating <= 5).","Three inputs are read before the valid 5 ends repetition."],"UNTIL should be true for an accepted rating."),
@@ -245,10 +286,23 @@ const lessons = [
       "A procedure groups statements that perform an action. Use it for a responsibility such as displaying a heading or updating a total when no function result is required in an expression. Define it with PROCEDURE Name(parameters) and ENDPROCEDURE; invoke it with CALL Name(arguments). A definition alone does not execute the body.",
       "A procedure can take no parameters, one parameter or several parameters. Heading() needs none, Show(Value) receives one value, and Add(Total, Amount) receives two. State each formal parameter's type and preserve the declared order at the call. Empty parentheses remain in a no-parameter definition and call.",
     ],table("Procedure interfaces",["Procedure","Interface","Call"],[["Heading","No parameters; displays a title","CALL Heading()"],["Show","One INTEGER passed by value","CALL Show(Score)"],["Add","INTEGER Total by reference; Amount by value","CALL Add(Score, 3)"]]),"Do not assign the result of a procedure call; a procedure does not supply a function return value.","What triggers Heading's body?","CALL Heading(), rather than the definition being encountered.",worked("procedures","Use procedures with zero, one and two parameters","The outputs are Results, 10 and 13. Add changes Score from 10 to 13.")),
-    unit("BYVAL-BYREF","Trace parameter passing",ids(6,4,5),[
-      "BYVAL passes a copy of an argument's value; it is the default parameter mode when no mode is specified. Changing this local parameter leaves the caller's scalar variable unchanged. A value argument may be an appropriate literal or expression, because only its evaluated value is needed.",
-      "BYREF makes the parameter refer to the caller's variable, so an assignment through the parameter changes that variable. Pass an assignable variable of the required type, not a literal such as 5 or a temporary expression. Use reference passing only for data that the procedure is intended to update, and trace both the local view and caller state.",
-    ],table("One caller variable, two modes",["Stage","Local parameter Value","Caller Number"],[["Before calls","Not yet active","5"],["After ChangeCopy adds 2","7 in the copy","5"],["After ChangeOriginal adds 2","7 through the reference","7"]]),"A display of 7 inside a BYVAL procedure does not show that the caller changed.","Can CALL ChangeOriginal(5) supply a BYREF integer parameter?","No. The argument must be a variable whose stored value can be updated.",worked("passing","Observe local and caller values","ChangeCopy displays 7 but the caller still displays 5; ChangeOriginal then changes the caller to 7.")),
+    unit("BYVAL-BYREF",
+      "Trace parameter passing",
+      ids(6,4,5),
+      [
+        coreTable("Choose the parameter mode", ["Rule", "BYVAL", "BYREF"], [
+          ["What is passed", "A copy of the argument's value; this is the default mode", "A reference to the caller's variable"],
+          ["Assigning to the parameter", "Changes the local copy only", "Changes the caller's variable"],
+          ["Permitted argument", "A suitable value, variable or expression", "An assignable variable of the required type"]
+        ]),
+        coreParagraph("Use reference passing for data the procedure is intended to update. A literal such as 5 or a temporary expression cannot supply a BYREF variable.", "Choose by the intended effect"),
+        coreParagraph("Trace the local view and caller state separately. The value printed inside a BYVAL procedure does not establish that its caller has changed.", "Trace both sides of the call")
+      ],
+      mechanismVisual("passing"),
+      "A display of 7 inside a BYVAL procedure does not show that the caller changed.",
+      "Can CALL ChangeOriginal(5) supply a BYREF integer parameter?",
+      "No. The argument must be a variable whose stored value can be updated.",
+      worked("passing","Observe local and caller values","ChangeCopy displays 7 but the caller still displays 5; ChangeOriginal then changes the caller to 7.")),
   ],
   practice:[
     q(9,1,"Write a procedure Banner() that outputs \"Welcome\", and write its call. Explain why a procedure is suitable.",ids(6,1,2,3),["Use PROCEDURE Banner(), OUTPUT \"Welcome\" and ENDPROCEDURE.","Invoke it with CALL Banner(); the required action is a display rather than a returned expression value."],"Keep the definition and invocation distinct."),

@@ -1,0 +1,19 @@
+{
+  "assets": [
+    {
+      "path": "web/assets/course-v3/reference/usb-hdmi-vga.png",
+      "tool": "Built-in ImageGen",
+      "purpose": "Physical appearance reference for USB Type-A, HDMI Type-A and VGA female sockets in s4-ports.",
+      "date": "2026-09-07",
+      "sha256": "18aba07fc3e0797dfed33f63f7f527fad0e8dfa88a0e33dcca1ec1a9e3aae340",
+      "prompt": "Create a precise educational reference photograph for a computer science lesson about common computer ports. Wide horizontal composition, white studio background, three separate close-up FEMALE computer sockets, each seen straight from the front with its external metal housing fully visible. From left to right: USB Type-A socket (the familiar rectangular USB-A opening and one black plastic tongue inside), HDMI Type-A socket (the familiar shallow symmetrical trapezoidal HDMI opening and dark inner tongue), VGA DE-15 female socket (blue plastic insert inside a D-shaped metal shell, exactly fifteen round socket holes in three clearly visible rows of five holes each, with one metal screw post to either side). Photorealistic, sharp focus on recognisable connector SHAPES, realistic brushed metal, equal visual weight, generous white separation and margins. No cables, no plugs, no laptops, no extra sockets, no logos, NO WORDS, NO LABELS, NO ARROWS, NO DECORATIVE ICONS. This is an appearance reference, not an electrical pinout: do not add pin numbering or technical annotations. The VGA female socket must not be confused with a 9-pin serial port. Do not blend one port into another. Each object isolated and facing the viewer, no perspective skew.",
+      "revisionPrompt": "Correct only the VGA socket: the initial image incorrectly showed seventeen holes. Replace with exactly five holes in each of three rows, keeping the other two sockets and the white background unchanged.",
+      "review": [
+        "Initial 17-hole VGA rejected; only the corrected 15-hole image is included.",
+        "Final VGA checked visually: 5 top + 5 middle + 5 bottom holes; D-shaped surround and two screw posts.",
+        "USB and HDMI socket shapes checked visually. The image is not a pinout or a statement of USB version or speed.",
+        "Labels, purposes and compatibility constraints are authored in HTML, not baked into the image."
+      ]
+    }
+  ]
+}

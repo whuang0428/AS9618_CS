@@ -1,3 +1,5 @@
+import { mechanismVisual } from "./course-v3-mechanism-diagrams.mjs";
+import { coreParagraph, coreList, coreSteps, coreTable } from "./course-v3-core-blocks.mjs";
 // S5 is authored as complete teaching units and tasks. Objective ownership is
 // explicit; neither prompts nor marking points are inferred from word overlap.
 const ids = (requirement, ...numbers) => numbers.map((n) => `${requirement}.A${String(n).padStart(2, "0")}`);
@@ -34,12 +36,22 @@ const operatingSystem = {
     ], [flow("A request crosses software layers", [["User", "Selects Save in an editor."], ["Application", "Requests a named file operation."], ["Operating system", "Checks the request and coordinates storage access."], ["Hardware", "Performs the physical transfer."]])],
     "An OS supplies common services; it does not replace the application that performs the user's chosen task.",
     "Would a new printer require every application to implement the printer's control protocol?", "Normally no. Applications use common OS services, with a suitable driver handling the printer-specific communication."),
-    unit("S5.01-MEMORY", "Memory management", ids("S5.01", 2), [
-      "Memory management keeps track of allocated and available main memory. When a process starts or needs more working space, the OS allocates memory; when the process finishes, that allocation can be released for reuse.",
-      "The OS also controls access to memory so one process cannot freely overwrite another process's instructions or data. Allocation answers where a process can store its working data; protection answers whether an attempted access is permitted. Allocating RAM does not itself save a file permanently.",
-    ], [table("A simplified allocation record", ["Event", "Memory allocation"], [["Editor starts", "Region A reserved for its working data"], ["Browser starts", "A separate region B reserved"], ["Editor exits", "Region A becomes available again"]])],
-    "Memory management allocates working storage; scheduling processor time is process management.",
-    "A process exits. Why can another process reuse its RAM?", "The OS releases the terminated process's allocation and records the region as available."),
+    unit("S5.01-MEMORY",
+      "Memory management",
+      ids("S5.01", 2),
+      [
+        coreParagraph("Memory management records which parts of main memory are allocated and which remain available."),
+        coreList("Three OS responsibilities", [
+          ["Allocate", "Reserve working space when a process starts or needs more memory."],
+          ["Protect", "Check access so one process cannot freely overwrite another process's instructions or data."],
+          ["Release", "Make a finished process's allocation available for reuse."]
+        ]),
+        coreParagraph("Allocation answers where a process can store data; protection answers whether access is permitted. RAM allocation does not save a file permanently.", "Working memory and saved files")
+      ],
+      [mechanismVisual("memory")],
+      "Memory management allocates working storage; scheduling processor time is process management.",
+      "A process exits. Why can another process reuse its RAM?",
+      "The OS releases the terminated process's allocation and records the region as available."),
     unit("S5.01-FILES", "File management", ids("S5.01", 3), [
       "File management maintains the organisation of files and directories, with information such as names, locations, sizes and ownership. It supports operations including creation, opening, reading, writing, renaming and deletion.",
       "When an application supplies a path, the OS locates the corresponding file and coordinates the requested operation with storage services. File organisation gives programs a consistent way to retrieve data without needing to know the physical position of each stored block.",
@@ -256,14 +268,27 @@ const ide = {
     ], [table("Presentation tools do different jobs", ["Tool", "Display effect", "Execution effect"], [["Pretty-print", "Indentation and syntax styling expose structure", "Does not itself repair the algorithm"], ["Collapse a block", "Hide its body while retaining a header", "Statements remain in the program"], ["Expand a block", "Reveal the hidden source again", "No extra statements are added"]]), worked("Read a formatted decision", [["Cambridge pseudocode", "DECLARE Mark : INTEGER\nINPUT Mark\nIF Mark >= 50 THEN\n    OUTPUT \"Pass\"\nELSE\n    OUTPUT \"Retry\"\nENDIF"], ["Presentation", "Indent the two output statements inside their respective branches; syntax colouring can distinguish IF, THEN, ELSE and ENDIF."], ["Fold and run", "Collapsing the IF block hides its body in the editor, but Mark = 60 still selects the Pass output."]])],
     "Collapsing code is not commenting it out, deleting it or disabling its execution.",
     "A collapsed loop still changes a variable. Is the IDE malfunctioning?", "No. Folding only hides source text in the editor; it does not alter control flow."),
-    unit("S5.07-DEBUG", "Single stepping, breakpoints and inspection", ids("S5.07", 5, 6, 7, 8), [
-      "Single stepping advances through execution one statement at a time, pausing so its effect can be examined before the next statement runs. This lets the programmer relate a change in program state to the instruction that just executed.",
-      "A breakpoint pauses execution when a selected location is reached, normally before that statement executes. Place it where relevant values are available and just before the suspect calculation or decision. Reaching a breakpoint does not itself correct the fault.",
-      "While paused, variable or expression inspection shows current values for comparison with the expected state. A report window displays information such as program output, run-time errors and diagnostic messages. Its output can be compared with the expected result after stepping an OUTPUT statement; inspecting a variable alone does not execute that output.",
-      "Use a deliberate loop of predict, execute one step, inspect and compare. If a watched value changes unexpectedly, inspect the statement that just executed and its inputs rather than placing unrelated breakpoints throughout the program.",
-    ], [table("State around one assignment", ["Debugger state", "Total", "Increment", "Total + Increment"], [["Paused before line 5", "12", "4", "16"], ["After stepping line 5", "8", "4", "12"]]), worked("Locate a wrong operator", [["Program with a logic error; line numbers identify debugger locations", "1  DECLARE Total : INTEGER\n2  DECLARE Increment : INTEGER\n3  Total <- 12\n4  Increment <- 4\n5  Total <- Total - Increment\n6  OUTPUT Total"], ["Predict and pause", "The required operation adds Increment. Set a breakpoint on line 5. Before it executes, Total is 12 and Increment is 4; the intended next Total is 16."], ["Step and inspect", "Execute line 5 once. Total becomes 8, showing that subtraction was performed; line 6 has not executed yet."], ["Correct", "Replace line 5 with Total <- Total + Increment. Run again from the initial state; the output should be 16."], ["Check an expression", "At the original pause Total + Increment evaluates to 16. After the faulty step it evaluates to 12 because Total has changed to 8."]])],
-    "Always state whether a variable value is observed before or after the selected statement executes.",
-    "At the breakpoint on line 5, has the subtraction already changed Total?", "No. In this example the pause occurs before line 5, so Total is still 12."),
+    unit("S5.07-DEBUG",
+      "Single stepping, breakpoints and inspection",
+      ids("S5.07", 5, 6, 7, 8),
+      [
+        coreParagraph("Debugging connects an unexpected program state to the statement that caused it. Compare a predicted result with the observed result."),
+        coreTable("Choose the debugger tool", ["Tool", "What it lets you do"], [
+          ["Single stepping", "Execute one statement, then inspect its effect before the next runs."],
+          ["Breakpoint", "Pause at a selected location, normally before that statement executes; choose a point just before the suspect operation."],
+          ["Variable / expression inspection", "Read current values while paused; evaluating an expression does not execute OUTPUT."],
+          ["Report window", "Read program output, run-time errors and diagnostic messages."]
+        ]),
+        coreSteps("Locate the cause", [
+          ["Predict", "Write the expected state at the suspect line."],
+          ["Step and compare", "Run that statement once. If a value is wrong, inspect the operation and its inputs."],
+          ["Correct and retest", "Fix the cause, restart from the initial state and compare the new output with the expectation."]
+        ])
+      ],
+      [mechanismVisual("debugger") , { ...table("State around one assignment", ["Debugger state", "Total", "Increment", "Total + Increment"], [["Paused before line 5", "12", "4", "16"], ["After stepping line 5", "8", "4", "12"]]), preserve: true }, worked("Locate a wrong operator", [["Program with a logic error; line numbers identify debugger locations", "1  DECLARE Total : INTEGER\n2  DECLARE Increment : INTEGER\n3  Total <- 12\n4  Increment <- 4\n5  Total <- Total - Increment\n6  OUTPUT Total"], ["Predict and pause", "The required operation adds Increment. Set a breakpoint on line 5. Before it executes, Total is 12 and Increment is 4; the intended next Total is 16."], ["Step and inspect", "Execute line 5 once. Total becomes 8, showing that subtraction was performed; line 6 has not executed yet."], ["Correct", "Replace line 5 with Total <- Total + Increment. Run again from the initial state; the output should be 16."], ["Check an expression", "At the original pause Total + Increment evaluates to 16. After the faulty step it evaluates to 12 because Total has changed to 8."]])],
+      "Always state whether a variable value is observed before or after the selected statement executes.",
+      "At the breakpoint on line 5, has the subtraction already changed Total?",
+      "No. In this example the pause occurs before line 5, so Total is still 12."),
   ],
   practice: [
     practice(5, 1, "Describe how context-sensitive prompts help when entering a call to a library routine and explain one limit of that help.", ids("S5.07", 1), ["The editor can suggest the routine name or display its expected parameters at the call location.", "The programmer still has to choose arguments that are correct for the intended task."], "A suggested call can be syntactically acceptable but logically inappropriate."),
