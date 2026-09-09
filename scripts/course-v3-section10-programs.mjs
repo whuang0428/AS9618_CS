@@ -1,5 +1,30 @@
 // Complete Cambridge pseudocode examples. Verification executes these strings.
 export const section10Programs = {
+  bubbleDescending: `DECLARE Values : ARRAY[0:4] OF INTEGER
+DECLARE Index : INTEGER
+DECLARE Last : INTEGER
+DECLARE Temp : INTEGER
+DECLARE Swapped : BOOLEAN
+FOR Index <- 0 TO 4
+    INPUT Values[Index]
+NEXT Index
+Last <- 4
+Swapped <- TRUE
+WHILE (Last > 0) AND Swapped
+    Swapped <- FALSE
+    FOR Index <- 0 TO Last - 1
+        IF Values[Index] < Values[Index + 1] THEN
+            Temp <- Values[Index]
+            Values[Index] <- Values[Index + 1]
+            Values[Index + 1] <- Temp
+            Swapped <- TRUE
+        ENDIF
+    NEXT Index
+    Last <- Last - 1
+ENDWHILE
+FOR Index <- 0 TO 4
+    OUTPUT Values[Index]
+NEXT Index`,
   record: `TYPE MemberRecord
     DECLARE Name : STRING
     DECLARE YearGroup : INTEGER

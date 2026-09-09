@@ -2,6 +2,7 @@ import { readFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
+import { addTeachingSupport } from "./course-v3-teaching-support.mjs";
 import { officialAsMapping } from "./syllabus-official-as-mapping.mjs";
 import { teachingDepthOverrides, questionRepairs } from "./course-v2-teaching-depth-overrides.mjs";
 import { section2Lessons } from "./course-v3-section2-content.mjs";
@@ -1663,9 +1664,9 @@ function makeLesson014Units() {
   });
   return [
     device(0, "S3.03-LASER-PRINTER", "Laser printer", "laser-printer-operation", [
-      "A photosensitive drum receives a uniform electrostatic charge. A laser scans the drum and creates a charge pattern representing the page; toner is attracted to the required parts of that pattern.",
-      "The toner image transfers from the drum to paper. Heated pressure rollers fuse the toner permanently to the paper.",
-    ], ["Charge the photosensitive drum.", "Use a laser to create an electrostatic image.", "Attract toner, transfer it to paper and fuse it using heat and pressure."], "An inkjet printer sprays liquid ink; a laser printer uses an electrostatic drum, toner and a fuser.", { marks: 5, prompt: "Describe the principal operation of a laser printer from charged drum to fused page.", answerCriteria: ["The drum is given an electrostatic charge.", "The laser creates a charge pattern on the drum.", "Toner adheres to the required areas.", "The toner transfers to paper.", "Heat and pressure fuse the toner to the paper."] }),
+      "In this negative-charge example, the photosensitive drum receives a uniform negative charge. Laser exposure makes selected areas conductive, reducing their charge while unexposed areas retain it. This creates an electrostatic image; the laser does not turn the exposed strip positively charged.",
+      "Negatively charged toner is attracted to the exposed, lower-charge areas. A positive charge applied behind the paper draws the toner from the drum onto the paper. Heated pressure rollers then fuse the toner permanently to the paper.",
+    ], ["Give the drum a uniform negative charge in this example.", "Laser exposure reduces charge in selected areas; it does not reverse the drum polarity.", "Negatively charged toner adheres to exposed areas. Positive charge behind the paper attracts it during transfer.", "Heat and pressure fuse the toner to the paper."], "An inkjet printer sprays liquid ink; a laser printer uses an electrostatic drum, toner and a fuser.", { marks: 5, prompt: "Describe the principal operation of a laser printer from charged drum to fused page.", answerCriteria: ["The drum is given an electrostatic charge.", "The laser creates a charge pattern on the drum.", "Toner adheres to the required areas.", "The toner transfers to paper.", "Heat and pressure fuse the toner to the paper."] }),
     device(1, "S3.03-3D-PRINTER", "3D printer", "3d-printer-operation", [
       "Software divides a digital three-dimensional model into thin layers. The printer follows the data for one layer at a time and deposits or solidifies material at the required positions.",
       "The print head or build platform moves between layers. Successive layers bond or solidify until they form the physical object.",
@@ -2267,7 +2268,7 @@ export const courseV3Lessons = rawCourse.map(authorSection3Lesson).map(authorSec
   sequenceIndex: index + 1,
   lessonKey: lesson.kind === "review" ? `REV-P${lesson.paper}` : `S${lesson.section}-L${String(rawCourse.slice(0, index + 1).filter((item) => item.section === lesson.section).length).padStart(2, "0")}`,
   route: `lesson-${String(index + 1).padStart(3, "0")}`,
-}));
+})).map(addTeachingSupport);
 
 export const courseV3Meta = Object.freeze({
   schemaVersion: 5,

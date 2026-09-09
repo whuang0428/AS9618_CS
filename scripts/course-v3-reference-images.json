@@ -14,6 +14,22 @@
         "USB and HDMI socket shapes checked visually. The image is not a pinout or a statement of USB version or speed.",
         "Labels, purposes and compatibility constraints are authored in HTML, not baked into the image."
       ]
+    },
+    {
+      "path": "web/assets/diagrams/course-v3-imagegen/laser-printer-operation.png",
+      "tool": "Built-in ImageGen",
+      "purpose": "Corrected negative-charge laser printer process in lesson 016.",
+      "date": "2026-09-09",
+      "sha256": "ceef3acff29bb1937a32ae2e7e0890841bd1c2e82600d4a02bc53d16777771c8",
+      "promptSummary": "Edit the existing five-stage laser printer illustration: show negative drum charging, laser exposure reducing the negative charge, negatively charged toner adhering to exposed areas, positive charge behind the paper transferring toner, and heat and pressure fusing the toner. Preserve the readable labelled sequence.",
+      "revisionPromptSummary": "Remove all charge symbols and the column of white circles from the exposed strip on the second drum; leave a plain turquoise exposed strip and keep the negative signs in unexposed areas.",
+      "source": "https://global.canon/en/technology/s_labo/light/003/07.html",
+      "review": [
+        "Rejected the first revision because the exposed strip still showed a positive sign.",
+        "Final image visually checked: the second drum has no positive sign; negative signs remain in unexposed areas.",
+        "Toner is labelled negatively charged, positive charge is shown behind the paper, and the final rollers use heat and pressure.",
+        "The lesson text explicitly describes one negative-charge implementation; exposure reduces charge and does not reverse its polarity."
+      ]
     }
   ]
 }

@@ -5520,8 +5520,8 @@
             "title": "Laser printer: principal operation"
           },
           "coreExplanation": [
-            "A photosensitive drum receives a uniform electrostatic charge. A laser scans the drum and creates a charge pattern representing the page; toner is attracted to the required parts of that pattern.",
-            "The toner image transfers from the drum to paper. Heated pressure rollers fuse the toner permanently to the paper."
+            "In this negative-charge example, the photosensitive drum receives a uniform negative charge. Laser exposure makes selected areas conductive, reducing their charge while unexposed areas retain it. This creates an electrostatic image; the laser does not turn the exposed strip positively charged.",
+            "Negatively charged toner is attracted to the exposed, lower-charge areas. A positive charge applied behind the paper draws the toner from the drum onto the paper. Heated pressure rollers then fuse the toner permanently to the paper."
           ],
           "method": null,
           "workedExample": null
@@ -28449,7 +28449,7 @@
     },
     {
       "path": "web/assets/diagrams/course-v3-imagegen/laser-printer-operation.png",
-      "sha256": "f32a5b8e2514341a342ab05f9b68a459c7486a4563c14a5dd46ee15fa8d21df9"
+      "sha256": "ceef3acff29bb1937a32ae2e7e0890841bd1c2e82600d4a02bc53d16777771c8"
     },
     {
       "path": "web/assets/diagrams/course-v3-imagegen/3d-printer-operation.png",

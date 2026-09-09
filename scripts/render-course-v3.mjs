@@ -1,3 +1,5 @@
+import { renderPracticalLabs } from "./course-v3-practical-labs.mjs";
+import "./generate-resource-hub.mjs";
 import { mechanismDiagramFiles } from "./course-v3-mechanism-diagrams.mjs";
 import { imageDimensions } from "./image-dimensions.mjs";
 import { createHash } from "node:crypto";
@@ -26,7 +28,7 @@ const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const outRoot = join(root, "web", "course-v3");
 const reviewedAssetRoot = join(root, "web");
 const sourceCss = readFileSync(join(root, "web", "course-v3", "section-2", "course.css"), "utf8");
-const sourceJs = readFileSync(join(root, "web", "course-v3", "section-2", "course.js"), "utf8");
+const sourceJs = readFileSync(join(root, "web", "course-v3", "section-2", "course.js"), "utf8") + "\n" + readFileSync(join(root, "scripts/course-v3-classroom.js"), "utf8");
 const legacyMigration = JSON.parse(readFileSync(join(root, "scripts", "course-v2-migration.json"), "utf8"));
 const assessmentBank = JSON.parse(readFileSync(join(root, "scripts", "assessment-bank-contract.json"), "utf8"));
 assessmentBank.sets = assessmentBank.sets.map(set => set.id === section12Assessment.id ? section12Assessment : set);
@@ -95,8 +97,8 @@ function imageSizeAttributes(material, section) {
 
 function renderReviewedVisual(material, section) {
   const source = escapeHtml(lessonAssetSource(material.asset, section));
-  const region = (material.layout === "mechanism" || [7, 8, 9, 10, 11, 12].includes(section)) ? ` tabindex="0" role="region" aria-label="${escapeHtml(material.title)}"` : "";
-  const fullSize = (material.layout === "mechanism" || [7, 8, 9, 10, 11, 12].includes(section)) ? ` <a class="diagram-full-size" href="${source}" target="_blank" rel="noopener">Open full-size diagram ↗</a>` : "";
+  const region = ` tabindex="0" role="region" aria-label="${escapeHtml(material.title)}"`;
+  const fullSize = ` <a class="diagram-full-size" href="${source}" target="_blank" rel="noopener">Open full-size diagram ↗</a>`;
   return `<figure class="teaching-material reviewed-visual${material.layout === "mechanism" ? " mechanism-visual" : ""}" data-material-type="reviewed-visual" data-objectives="${material.objectiveIds.join(" ")}"><h4>${escapeHtml(material.title)}</h4><div class="visual-scroll"${region}><img src="${source}"${imageSizeAttributes(material, section)} alt="${escapeHtml(material.alt)}" loading="lazy" decoding="async"></div><figcaption>${escapeHtml(material.caption)}${fullSize}</figcaption><details class="visual-transcript"><summary>Visual transcript</summary><ul>${material.facts.map((fact) => `<li>${escapeHtml(fact)}</li>`).join("")}</ul></details></figure>`;
 }
 
@@ -136,6 +138,16 @@ function renderMaterial(material, section) {
 function renderLessonContents(lesson) {
   if (![1, 4, 5, 6, 7, 8, 9, 10, 11, 12].includes(lesson.section)) return "";
   return `<nav class="lesson-toc" id="lesson-contents" aria-label="In this lesson"><h2>In this lesson</h2><ol>${lesson.units.map((unit, index) => `<li><a href="#unit-${index + 1}">${escapeHtml(unit.heading)}</a></li>`).join("")}</ol><p><a href="#practice">Practice questions</a> · <a href="#original-exam-style-question">Exam-style questions</a> · <a href="#summary">Summary</a></p></nav>`;
+}
+
+function renderLearningRoute(lesson) {
+  if (!lesson.prerequisiteLessons.length && !lesson.practicalLab) return "";
+  const links = lesson.prerequisiteLessons.map(number => courseV3Lessons[number - 1]);
+  return `<aside class="learning-route" aria-label="Preparation and practical work"><p><strong>Before this lesson</strong></p>${links.length ? `<p>Check these foundations first. You can follow these links before returning to the current syllabus section.</p><ul>${links.map(item => `<li><a href="../${item.route}/">Lesson ${String(item.sequenceIndex).padStart(3, "0")} · ${escapeHtml(item.title)}</a></li>`).join("")}</ul>` : ""}<p><a href="../../resources/practical-labs/#learning-route">Programming learning route</a>${lesson.practicalLab ? ` · <a href="../../resources/practical-labs/#${lesson.practicalLab}">Related practical task</a>` : ""}</p></aside>`;
+}
+
+function renderClassroomToolbar(lesson) {
+  return `<section class="classroom-toolbar" aria-label="Lesson display" hidden><button type="button" data-classroom-toggle aria-pressed="false">Teach one unit</button><div class="unit-controls" hidden><div class="unit-selector"><label for="classroom-unit">Knowledge unit</label><select id="classroom-unit">${lesson.units.map((unit, index) => `<option value="${index}">${escapeHtml(unit.heading)}</option>`).join("")}</select><button type="button" data-unit-previous>Previous unit</button><button type="button" data-unit-next>Next unit</button></div><div class="unit-stage-controls">${[["visual-and-core", "Explanation"], ["practice", "Practice"], ["original-exam-style-question", "Exam questions"], ["summary", "Lesson summary"]].map(([stage, label]) => `<button type="button" data-unit-stage="${stage}" aria-pressed="${stage === "visual-and-core"}">${label}</button>`).join("")}</div><p role="status" aria-live="polite"></p><p class="unit-empty" hidden>No separate question targets this unit here. Use its understanding check or choose another unit.</p></div></section>`;
 }
 
 function renderUnitCheckpoint(unit) {
@@ -184,7 +196,7 @@ function renderExamStyleQuestions(questions, section) {
 
 function pageShell({ title, description, body, depth = "lesson", assetVersion = "20260901g" }) {
   const prefix = depth === "root" ? "" : "../";
-  return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="${escapeHtml(description)}"><title>${escapeHtml(title)} · AS 9618</title><link rel="icon" href="data:"><link rel="stylesheet" href="${prefix}course.css?v=20260907concepts"><script src="${prefix}course.js?v=20260901g" defer></script></head><body>${body}</body></html>`;
+  return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="${escapeHtml(description)}"><title>${escapeHtml(title)} · AS 9618</title><link rel="icon" href="data:"><link rel="stylesheet" href="${prefix}course.css?v=20260909teaching"><script src="${prefix}course.js?v=20260909teaching" defer></script></head><body>${body}</body></html>`;
 }
 
 function renderHeader(currentLesson) {
@@ -196,7 +208,7 @@ function renderLesson(lesson, index) {
   const previous = courseV3Lessons[index - 1];
   const next = courseV3Lessons[index + 1];
   const navLink = (target, label) => target ? `<a href="../${target.route}/"><span>${label}</span><strong>${escapeHtml(target.lessonKey)} · ${escapeHtml(target.title)}</strong></a>` : `<a href="../"><span>${label}</span><strong>Course overview</strong></a>`;
-  return pageShell({ title: `${lesson.lessonKey} ${lesson.title}`, assetVersion: lesson.section === 4 ? "20260906s4" : lesson.section === 1 ? "20260906s1" : lesson.section === 6 ? "20260906s6" : lesson.section === 7 ? "20260906s7" : lesson.section === 8 ? "20260906s8" : lesson.section === 11 ? "20260907s11" : lesson.section === 9 ? "20260907s9" : lesson.section === 10 ? "20260907s10" : lesson.section === 12 ? "20260907s12" : "20260901g", description: lesson.subtitle, body: `${renderHeader(lesson)}<main><section class="lesson-hero"><p class="eyebrow">Lesson ${String(lesson.sequenceIndex).padStart(3, "0")} · ${lesson.lessonKey} · ${lesson.syllabusIds.join("–")}</p><h1>${escapeHtml(lesson.title)}</h1><p class="lead">${escapeHtml(lesson.subtitle)}</p>${[2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].includes(lesson.section) ? `<p class="guiding-question">${escapeHtml(lesson.guidingQuestion)}</p><details class="diagnostic"><summary>Before you start</summary><p>${escapeHtml(lesson.diagnostic.prompt)}</p><details><summary>Check your answer</summary><p>${escapeHtml(lesson.diagnostic.answer)}</p></details></details>${lesson.teachingCheckpoints ? `<details class="diagnostic"><summary>Teaching checkpoints</summary><ul>${lesson.teachingCheckpoints.map((point) => `<li>${escapeHtml(point)}</li>`).join("")}</ul></details>` : ""}` : ""}${lesson.section === 3 ? `<details class="diagnostic"><summary>Jump to a knowledge point</summary><ol>${lesson.units.map((unit, index) => `<li><a href="#unit-${index + 1}">${escapeHtml(unit.heading)}</a></li>`).join("")}</ol></details>` : ""}<div class="objective-ledger"><h2>Learning objectives</h2><ul>${lesson.objectives.map(([id, text]) => `<li data-objective-id="${id}"><span>${id}</span>${escapeHtml(text)}</li>`).join("")}</ul></div>${renderLessonContents(lesson)}</section>
+  return pageShell({ title: `${lesson.lessonKey} ${lesson.title}`, assetVersion: lesson.section === 4 ? "20260906s4" : lesson.section === 1 ? "20260906s1" : lesson.section === 6 ? "20260906s6" : lesson.section === 7 ? "20260906s7" : lesson.section === 8 ? "20260906s8" : lesson.section === 11 ? "20260907s11" : lesson.section === 9 ? "20260907s9" : lesson.section === 10 ? "20260907s10" : lesson.section === 12 ? "20260907s12" : "20260901g", description: lesson.subtitle, body: `${renderHeader(lesson)}<main><section class="lesson-hero"><p class="eyebrow">Lesson ${String(lesson.sequenceIndex).padStart(3, "0")} · ${lesson.lessonKey} · ${lesson.syllabusIds.join("–")}</p><h1>${escapeHtml(lesson.title)}</h1><p class="lead">${escapeHtml(lesson.subtitle)}</p>${lesson.diagnostic?.prompt && lesson.diagnostic?.answer ? `<p class="guiding-question">${escapeHtml(lesson.guidingQuestion)}</p><details class="diagnostic"><summary>Before you start</summary><p>${escapeHtml(lesson.diagnostic.prompt)}</p><details><summary>Check your answer</summary><p>${escapeHtml(lesson.diagnostic.answer)}</p></details></details>${lesson.teachingCheckpoints ? `<details class="diagnostic"><summary>Teaching checkpoints</summary><ul>${lesson.teachingCheckpoints.map((point) => `<li>${escapeHtml(point)}</li>`).join("")}</ul></details>` : ""}` : ""}${lesson.section === 3 ? `<details class="diagnostic"><summary>Jump to a knowledge point</summary><ol>${lesson.units.map((unit, index) => `<li><a href="#unit-${index + 1}">${escapeHtml(unit.heading)}</a></li>`).join("")}</ol></details>` : ""}<div class="objective-ledger"><h2>Learning objectives</h2><ul>${lesson.objectives.map(([id, text]) => `<li data-objective-id="${id}"><span>${id}</span>${escapeHtml(text)}</li>`).join("")}</ul></div>${renderLearningRoute(lesson)}${renderClassroomToolbar(lesson)}${renderLessonContents(lesson)}</section>
   <section class="lesson-stage" id="visual-and-core" data-stage="1-visual-and-core"><header class="stage-heading"><span>01</span><div><p>Concept teaching</p><h2>Visual overview and core explanation</h2></div></header>${lesson.units.map((unit, unitIndex) => renderUnit(unit, unitIndex, lesson)).join("")}</section>
   <section class="lesson-stage" id="practice" data-stage="2-practice"><header class="stage-heading"><span>02</span><div><p>Cambridge command words</p><h2>Practice questions</h2></div></header><div class="practice-stack">${lesson.practice.map((question, index) => renderPractice(question, index, lesson.section)).join("")}</div></section>
   <section class="lesson-stage" id="original-exam-style-question" data-stage="3-original-exam-style-question"><header class="stage-heading"><span>03</span><div><p>Exam response</p><h2>Original exam-style questions and marking points</h2></div></header>${renderExamStyleQuestions(lesson.examStyleQuestions, lesson.section)}</section>
@@ -312,7 +324,9 @@ write(join(outRoot, "course.css"), globalCss + `
 @media(max-width:520px){.core-block th,.core-block td{padding:10px}.core-block li{line-height:1.58}
 .core-block .core-pair-table,.core-pair-table tbody,.core-pair-table tr{display:block;min-width:0;width:100%}.core-pair-table thead{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}.core-pair-table tbody th,.core-pair-table td{display:block;width:100%}.core-pair-table tbody th{border-bottom:0}.core-pair-table td{border-top:0}.core-pair-table tr+tr{margin-top:12px}.core-block:has(.core-pair-table) .swipe-cue{display:none}}
 `);
+write(join(outRoot, "course.css"), readFileSync(join(outRoot, "course.css"), "utf8") + readFileSync(join(root, "scripts/course-v3-classroom.css"), "utf8"));
 write(join(outRoot, "course.js"), sourceJs);
+write(join(root, "web/resources/practical-labs/index.html"), renderPracticalLabs());
 write(join(outRoot, "index.html"), renderCourseIndex());
 for (const [index, lesson] of courseV3Lessons.entries()) write(join(outRoot, lesson.route, "index.html"), renderLesson(lesson, index));
 for (const section of Object.keys(sectionMeta).map(Number)) write(join(outRoot, `section-${section}`, "index.html"), renderSectionIndex(section));

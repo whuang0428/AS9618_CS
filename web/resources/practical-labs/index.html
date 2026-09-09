@@ -1,0 +1,248 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:"><title>Programming practicals · AS 9618</title><link rel="stylesheet" href="../../course-v3/course.css?v=20260909teaching"><style>.lab{padding:28px 0;border-top:1px solid var(--line-dark);scroll-margin-top:24px}.lab h2{font-size:1.8rem}.lab details{margin:18px 0;padding:14px;border:1px solid var(--line-dark);background:white}.lab summary{cursor:pointer;font-weight:700}.lab pre{max-width:100%;overflow:auto;background:#101c2c;color:#eef5f7;padding:16px;font:15px/1.6 monospace}.lab pre code{font:inherit;color:inherit;background:none}.lab table{width:100%;min-width:600px;border-collapse:collapse}.lab th,.lab td{border:1px solid var(--line-dark);padding:12px;vertical-align:top}.lab th{background:var(--blue-pale);color:var(--navy-dark)}.lab a{overflow-wrap:anywhere}main>h1{font-size:clamp(2rem,5vw,3.5rem)}.lab-intro{max-width:80ch;padding-top:24px}</style></head><body><main><p><a href="../">Resource centre</a> · <a href="../../course-v3/">Course</a></p><h1>Programming practicals</h1><div class="lab-intro"><p>Use Java to test the algorithms you can explain in Cambridge pseudocode. Each task starts with a working program, asks for a change, and supplies independent expected results. Write predictions before opening a reference solution.</p><h2>Prepare your workspace</h2><p>Use a school computer with JDK 17 or later. Check <code>java -version</code> and <code>javac -version</code>. Download a starter into a new exercise folder, keep its exact filename and open a terminal in that folder. Compile with javac and run with java as shown below. Enter numeric inputs separated by spaces or new lines. Use your IDE's terminal if preferred.</p><p>The public class name and filename must match. Recompile after each edit. An exhausted input stream before enough values have been entered is not a completed test. The file task accepts two filenames; use only your exercise files.</p></div><section id="learning-route" class="lab"><h2>A route into programming</h2><p>Keep the syllabus chapter numbering for reference. For a first course, study the foundations before the examples that combine them; after each step, write a short solution without copying the example.</p><ol><li>Values, assignment and expressions: <a href="../../course-v3/lesson-073/">Lesson 073</a> · <a href="../../course-v3/lesson-074/">Lesson 074</a>.</li><li>Decisions and loops: <a href="../../course-v3/lesson-076/">Lesson 076</a> · <a href="../../course-v3/lesson-077/">Lesson 077</a> · <a href="../../course-v3/lesson-078/">Lesson 078</a> · <a href="../../course-v3/lesson-079/">Lesson 079</a>.</li><li>Design and trace a solution: <a href="../../course-v3/lesson-052/">Lesson 052</a> · <a href="../../course-v3/lesson-053/">Lesson 053</a> · <a href="../../course-v3/lesson-055/">Lesson 055</a> · <a href="../../course-v3/lesson-057/">Lesson 057</a>.</li><li>Arrays, search and sorting: <a href="../../course-v3/lesson-060/">Lesson 060</a> · <a href="../../course-v3/lesson-061/">Lesson 061</a> · <a href="../../course-v3/lesson-062/">Lesson 062</a> · <a href="../../course-v3/lesson-063/">Lesson 063</a> · <a href="../../course-v3/lesson-064/">Lesson 064</a>.</li><li>Persistent files: <a href="../../course-v3/lesson-065/">Lesson 065</a>.</li><li>Procedures, functions and an integrated program: <a href="../../course-v3/lesson-080/">Lesson 080</a> · <a href="../../course-v3/lesson-081/">Lesson 081</a> · <a href="../../course-v3/lesson-083/">Lesson 083</a>.</li><li>Test, amend and retest: <a href="../../course-v3/lesson-089/">Lesson 089</a> · <a href="../../course-v3/lesson-090/">Lesson 090</a> · <a href="../../course-v3/lesson-092/">Lesson 092</a>.</li></ol><p>This is a dependency route for programming foundations, not a replacement for the complete Sections 9–12 syllabus sequence. Continue the remaining lessons in each section.</p></section><nav id="lab-contents" aria-label="Practical tasks"><h2>Choose a practical task</h2><ol><li><a href="#arrays">Array traversal: from pupils to tests</a></li><li><a href="#sorting">Adapt a sort and preserve every value</a></li><li><a href="#files">Persistent files and blank lines</a></li><li><a href="#subprograms">Validation, parameters and returned results</a></li><li><a href="#testing">Amend a program without losing its original behaviour</a></li></ol></nav><article id="arrays" class="lab"><h2>Array traversal: from pupils to tests</h2><p>Preparation: <a href="../../course-v3/lesson-061/">Lesson 061</a> · <a href="../../course-v3/lesson-062/">Lesson 062</a> · <a href="../../course-v3/lesson-077/">Lesson 077</a></p><h3>Predict, run and amend</h3><p>Predict the two row totals before running the starter. Then amend it to output one total for each test (column), in column order. Retain all six scores. Write the Cambridge pseudocode first, including the location where Total is reset.</p><p><a href="./ArraysLab.java" download>Download starter: ArraysLab.java</a></p><pre tabindex="0"><code>javac ArraysLab.java
+java ArraysLab</code></pre><details><summary>Read the runnable starter</summary><pre tabindex="0"><code>import java.util.Scanner;
+
+// Enter six integers: two pupils, three tests each, in row order.
+public class ArraysLab {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        int[][] scores = new int[2][3];
+        for (int row = 0; row &lt; scores.length; row++) {
+            int total = 0;
+            for (int column = 0; column &lt; scores[row].length; column++) {
+                scores[row][column] = input.nextInt();
+                total += scores[row][column];
+            }
+            System.out.println(total);
+        }
+    }
+}
+</code></pre></details><h3>Connect the code to the concept</h3><p>Java indices start at 0. Pseudocode Scores[1,1] corresponds to Java scores[0][0] for this matrix. The inner loop restarts for every outer iteration. Read all input before traversing by columns.</p><h3>Test the original and amended programs</h3><p>Commas separate successive output lines. A slash separates file lines. These expected results are specified before execution.</p><div class="table-scroll" tabindex="0" role="region" aria-label="Array traversal: from pupils to tests test cases"><table><thead><tr><th>Input</th><th>Starter result</th><th>Required amended result</th></tr></thead><tbody><tr><td>4 7 2 8 1 6</td><td>13, 15</td><td>12, 8, 8</td></tr><tr><td>0 0 0 0 0 0</td><td>0, 0</td><td>0, 0, 0</td></tr><tr><td>-1 2 -3 4 -5 6</td><td>-2, 5</td><td>3, -3, 3</td></tr></tbody></table></div><h3>Diagnose a fault</h3><p>Move total = 0 into the inner loop in a working copy. Predict the wrong results and use a test that distinguishes the last value from the full column sum. Restore the correct placement and rerun all cases.</p><h3>Evidence to submit</h3><p>Submit your Cambridge pseudocode, amended Java file, completed test log and a short explanation of the fault you exposed. Explain the loop bounds or parameter/file behaviour relevant to this task.</p><details><summary>Reference solution — open after attempting the task</summary><p>Use columns in the outer output loop and rows in the inner loop. Reset Total once per column. The separate input traversal still reads row by row.</p><p>Save the reference in a separate folder so it does not replace your attempt. Compile and run it there using the same commands.</p><p><a href="./solutions/ArraysLab.java" download>Download reference: ArraysLab.java</a></p><pre tabindex="0"><code>import java.util.Scanner;
+
+// Amended program: retain the matrix and output a separate total per test.
+public class ArraysLab {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        int[][] scores = new int[2][3];
+        for (int row = 0; row &lt; scores.length; row++) {
+            for (int column = 0; column &lt; scores[row].length; column++) {
+                scores[row][column] = input.nextInt();
+            }
+        }
+        for (int column = 0; column &lt; scores[0].length; column++) {
+            int total = 0;
+            for (int row = 0; row &lt; scores.length; row++) {
+                total += scores[row][column];
+            }
+            System.out.println(total);
+        }
+    }
+}
+</code></pre></details><p><a href="#lab-contents">Back to practical tasks</a></p></article><article id="sorting" class="lab"><h2>Adapt a sort and preserve every value</h2><p>Preparation: <a href="../../course-v3/lesson-064/">Lesson 064</a> · <a href="../../course-v3/lesson-074/">Lesson 074</a> · <a href="../../course-v3/lesson-077/">Lesson 077</a> · <a href="../../course-v3/lesson-078/">Lesson 078</a></p><h3>Predict, run and amend</h3><p>Trace the first ascending pass by hand. Run the starter, then change it to descending order without calling a sorting library. Keep the early-exit flag and zero-based bounds. Explain why duplicate values must remain and why an already sorted input still needs a checking pass.</p><p><a href="./SortingLab.java" download>Download starter: SortingLab.java</a></p><pre tabindex="0"><code>javac SortingLab.java
+java SortingLab</code></pre><details><summary>Read the runnable starter</summary><pre tabindex="0"><code>import java.util.Scanner;
+
+public class SortingLab {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        int[] values = new int[5];
+        for (int index = 0; index &lt; values.length; index++) {
+            values[index] = input.nextInt();
+        }
+        int last = values.length - 1;
+        boolean swapped = true;
+        while (last &gt; 0 &amp;&amp; swapped) {
+            swapped = false;
+            for (int index = 0; index &lt; last; index++) {
+                if (values[index] &gt; values[index + 1]) {
+                    int temp = values[index];
+                    values[index] = values[index + 1];
+                    values[index + 1] = temp;
+                    swapped = true;
+                }
+            }
+            last--;
+        }
+        for (int value : values) {
+            System.out.println(value);
+        }
+    }
+}
+</code></pre></details><h3>Connect the code to the concept</h3><p>Swap neighbouring values when the left value is smaller to obtain descending order. The smallest remaining value moves to the end of the active prefix. Reset the flag once per pass; use Index &lt; Last because Index + 1 is also accessed.</p><h3>Test the original and amended programs</h3><p>Commas separate successive output lines. A slash separates file lines. These expected results are specified before execution.</p><div class="table-scroll" tabindex="0" role="region" aria-label="Adapt a sort and preserve every value test cases"><table><thead><tr><th>Input</th><th>Starter result</th><th>Required amended result</th></tr></thead><tbody><tr><td>4 -1 4 0 2</td><td>-1, 0, 2, 4, 4</td><td>4, 4, 2, 0, -1</td></tr><tr><td>1 2 3 4 5</td><td>1, 2, 3, 4, 5</td><td>5, 4, 3, 2, 1</td></tr><tr><td>3 3 3 3 3</td><td>3, 3, 3, 3, 3</td><td>3, 3, 3, 3, 3</td></tr></tbody></table></div><h3>Diagnose a fault</h3><p>In a separate working copy, remove the assignment from Temp to the right-hand cell. Use the duplicate/negative case to check both order and preservation. A sorted-looking output is insufficient if it has lost an input value.</p><h3>Evidence to submit</h3><p>Submit your Cambridge pseudocode, amended Java file, completed test log and a short explanation of the fault you exposed. Explain the loop bounds or parameter/file behaviour relevant to this task.</p><details><summary>Reference solution — open after attempting the task</summary><p>Reverse the comparison from &gt; to &lt;. Preserve the swap, the bounds, the flag and the output loop. Neither reverse the loop bounds nor discard equal neighbours.</p><p>Save the reference in a separate folder so it does not replace your attempt. Compile and run it there using the same commands.</p><p><a href="./solutions/SortingLab.java" download>Download reference: SortingLab.java</a></p><pre tabindex="0"><code>import java.util.Scanner;
+
+public class SortingLab {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        int[] values = new int[5];
+        for (int index = 0; index &lt; values.length; index++) {
+            values[index] = input.nextInt();
+        }
+        int last = values.length - 1;
+        boolean swapped = true;
+        while (last &gt; 0 &amp;&amp; swapped) {
+            swapped = false;
+            for (int index = 0; index &lt; last; index++) {
+                if (values[index] &lt; values[index + 1]) {
+                    int temp = values[index];
+                    values[index] = values[index + 1];
+                    values[index + 1] = temp;
+                    swapped = true;
+                }
+            }
+            last--;
+        }
+        for (int value : values) {
+            System.out.println(value);
+        }
+    }
+}
+</code></pre></details><p><a href="#lab-contents">Back to practical tasks</a></p></article><article id="files" class="lab"><h2>Persistent files and blank lines</h2><p>Preparation: <a href="../../course-v3/lesson-065/">Lesson 065</a> · <a href="../../course-v3/lesson-078/">Lesson 078</a></p><h3>Predict, run and amend</h3><p>Create a UTF-8 source.txt containing Ada, an empty line and Bo on separate lines. Predict the starter's count, run it to a new copy.txt, close the program and inspect the saved copy. Amend it to copy only non-empty lines, preserving their order, and count the lines actually written. Use a new output filename on each run.</p><p><a href="./FilesLab.java" download>Download starter: FilesLab.java</a></p><pre tabindex="0"><code>javac FilesLab.java
+java FilesLab source.txt copy.txt</code></pre><details><summary>Read the runnable starter</summary><pre tabindex="0"><code>import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardOpenOption;
+
+public class FilesLab {
+    public static void main(String[] args) throws IOException {
+        if (args.length != 2) {
+            throw new IllegalArgumentException(&quot;Usage: java FilesLab source.txt new-copy.txt&quot;);
+        }
+        Path source = Path.of(args[0]);
+        Path output = Path.of(args[1]);
+        // CREATE_NEW prevents replacing either the source or an existing file.
+        try (var reader = Files.newBufferedReader(source, StandardCharsets.UTF_8);
+             var writer = Files.newBufferedWriter(output, StandardCharsets.UTF_8,
+                     StandardOpenOption.CREATE_NEW, StandardOpenOption.WRITE)) {
+            int count = 0;
+            String line;
+            while ((line = reader.readLine()) != null) {
+                writer.write(line);
+                writer.newLine();
+                count++;
+            }
+            System.out.println(count);
+        }
+    }
+}
+</code></pre></details><h3>Connect the code to the concept</h3><p>BufferedReader.readLine() returns an empty string for a blank line and null at end of file. Those are different states. The supplied try-with-resources block closes both files, including when an error occurs. CREATE_NEW protects existing files; this starter deliberately refuses to overwrite them. Cambridge WRITE normally creates or replaces contents, while APPEND keeps earlier contents and adds at the end.</p><h3>Test the original and amended programs</h3><p>Commas separate successive output lines. A slash separates file lines. These expected results are specified before execution.</p><div class="table-scroll" tabindex="0" role="region" aria-label="Persistent files and blank lines test cases"><table><thead><tr><th>Input</th><th>Starter result</th><th>Required amended result</th></tr></thead><tbody><tr><td>Ada / blank line / Bo</td><td>count 3; copy all three lines</td><td>count 2; Ada / Bo</td></tr><tr><td>empty file</td><td>count 0; empty output</td><td>count 0; empty output</td></tr><tr><td>two blank lines</td><td>count 2; two blank lines</td><td>count 0; empty output</td></tr></tbody></table></div><h3>Diagnose a fault</h3><p>Predict what happens if the loop stops at an empty string. The first blank line would hide later records. Test an empty file as well as a file with a blank line between two names. Attempt using the source filename as the output: the program must refuse and the source must remain unchanged.</p><h3>Evidence to submit</h3><p>Submit your Cambridge pseudocode, amended Java file, completed test log and a short explanation of the fault you exposed. Explain the loop bounds or parameter/file behaviour relevant to this task.</p><details><summary>Reference solution — open after attempting the task</summary><p>Keep reading until null. Put writing and count++ inside if (!line.isEmpty()). Spaces count as content in this task; do not trim a line unless the requirements ask for that.</p><p>Save the reference in a separate folder so it does not replace your attempt. Compile and run it there using the same commands.</p><p><a href="./solutions/FilesLab.java" download>Download reference: FilesLab.java</a></p><pre tabindex="0"><code>import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardOpenOption;
+
+public class FilesLab {
+    public static void main(String[] args) throws IOException {
+        if (args.length != 2) {
+            throw new IllegalArgumentException(&quot;Usage: java FilesLab source.txt new-copy.txt&quot;);
+        }
+        Path source = Path.of(args[0]);
+        Path output = Path.of(args[1]);
+        try (var reader = Files.newBufferedReader(source, StandardCharsets.UTF_8);
+             var writer = Files.newBufferedWriter(output, StandardCharsets.UTF_8,
+                     StandardOpenOption.CREATE_NEW, StandardOpenOption.WRITE)) {
+            int count = 0;
+            String line;
+            while ((line = reader.readLine()) != null) {
+                if (!line.isEmpty()) {
+                    writer.write(line);
+                    writer.newLine();
+                    count++;
+                }
+            }
+            System.out.println(count);
+        }
+    }
+}
+</code></pre></details><p><a href="#lab-contents">Back to practical tasks</a></p></article><article id="subprograms" class="lab"><h2>Validation, parameters and returned results</h2><p>Preparation: <a href="../../course-v3/lesson-078/">Lesson 078</a> · <a href="../../course-v3/lesson-080/">Lesson 080</a> · <a href="../../course-v3/lesson-081/">Lesson 081</a> · <a href="../../course-v3/lesson-083/">Lesson 083</a></p><h3>Predict, run and amend</h3><p>Enter integers until three valid marks from 0 to 100 have been accepted. Predict the mean, run the starter, then additionally output the number of accepted marks at least 50. Invalid attempts must change neither result. Supply enough input to finish; handling non-integer tokens is outside this task.</p><p><a href="./SubprogramsLab.java" download>Download starter: SubprogramsLab.java</a></p><pre tabindex="0"><code>javac SubprogramsLab.java
+java SubprogramsLab</code></pre><details><summary>Read the runnable starter</summary><pre tabindex="0"><code>import java.util.Scanner;
+
+public class SubprogramsLab {
+    static boolean valid(int mark) {
+        return mark &gt;= 0 &amp;&amp; mark &lt;= 100;
+    }
+
+    static int add(int total, int mark) {
+        total = total + mark;
+        return total;
+    }
+
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        int total = 0;
+        for (int count = 0; count &lt; 3; count++) {
+            int mark;
+            do {
+                mark = input.nextInt();
+            } while (!valid(mark));
+            total = add(total, mark);
+        }
+        System.out.println(total / 3.0);
+    }
+}
+</code></pre></details><h3>Connect the code to the concept</h3><p>Java passes all arguments by value. add receives copies of two integers; assigning its returned result to total changes the caller's variable. Calling add(total, mark) without using its return value leaves that caller variable unchanged. This is not Cambridge BYREF. Java do ... while (!valid(mark)) repeats on TRUE; Cambridge REPEAT ... UNTIL ValidMark(Mark) stops on TRUE. Use / 3.0 for a fractional Java mean.</p><h3>Test the original and amended programs</h3><p>Commas separate successive output lines. A slash separates file lines. These expected results are specified before execution.</p><div class="table-scroll" tabindex="0" role="region" aria-label="Validation, parameters and returned results test cases"><table><thead><tr><th>Input</th><th>Starter result</th><th>Required amended result</th></tr></thead><tbody><tr><td>-1 0 50 101 100</td><td>50.0</td><td>50.0, 2</td></tr><tr><td>0 0 0</td><td>0.0</td><td>0.0, 0</td></tr><tr><td>49 50 51</td><td>50.0</td><td>50.0, 2</td></tr></tbody></table></div><h3>Diagnose a fault</h3><p>Replace total = add(total, mark) with add(total, mark) in a working copy. Predict and observe the result. Then restore the assignment. Explain the difference between changing a local parameter and updating the caller from a function result.</p><h3>Evidence to submit</h3><p>Submit your Cambridge pseudocode, amended Java file, completed test log and a short explanation of the fault you exposed. Explain the loop bounds or parameter/file behaviour relevant to this task.</p><details><summary>Reference solution — open after attempting the task</summary><p>Initialise Passed before repetition, increment it only after validation when Mark &gt;= 50, and output it after the mean. Preserve the function-result assignment. Describe a Cambridge alternative that uses a BYREF parameter to update the caller.</p><p>Save the reference in a separate folder so it does not replace your attempt. Compile and run it there using the same commands.</p><p><a href="./solutions/SubprogramsLab.java" download>Download reference: SubprogramsLab.java</a></p><pre tabindex="0"><code>import java.util.Scanner;
+
+public class SubprogramsLab {
+    static boolean valid(int mark) {
+        return mark &gt;= 0 &amp;&amp; mark &lt;= 100;
+    }
+
+    static int add(int total, int mark) {
+        return total + mark;
+    }
+
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        int total = 0;
+        int passed = 0;
+        for (int count = 0; count &lt; 3; count++) {
+            int mark;
+            do {
+                mark = input.nextInt();
+            } while (!valid(mark));
+            total = add(total, mark);
+            if (mark &gt;= 50) {
+                passed++;
+            }
+        }
+        System.out.println(total / 3.0);
+        System.out.println(passed);
+    }
+}
+</code></pre></details><p><a href="#lab-contents">Back to practical tasks</a></p></article><article id="testing" class="lab"><h2>Amend a program without losing its original behaviour</h2><p>Preparation: <a href="../../course-v3/lesson-089/">Lesson 089</a> · <a href="../../course-v3/lesson-090/">Lesson 090</a> · <a href="../../course-v3/lesson-092/">Lesson 092</a></p><h3>Predict, run and amend</h3><p>The starter counts passes in four already validated marks. Add a merit count for marks at least 70; output PassCount first and MeritCount second. Before editing, record the expected results below. Keep a test log containing input, expected output, actual output and pass/fail.</p><p><a href="./TestingLab.java" download>Download starter: TestingLab.java</a></p><pre tabindex="0"><code>javac TestingLab.java
+java TestingLab</code></pre><details><summary>Read the runnable starter</summary><pre tabindex="0"><code>import java.util.Scanner;
+
+// Inputs are four already validated integer marks from 0 to 100.
+public class TestingLab {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        int passCount = 0;
+        for (int index = 0; index &lt; 4; index++) {
+            int mark = input.nextInt();
+            if (mark &gt;= 50) {
+                passCount++;
+            }
+        }
+        System.out.println(passCount);
+    }
+}
+</code></pre></details><h3>Connect the code to the concept</h3><p>Pass and merit categories overlap. A mark of 70 contributes to both, so use independent IF statements. Initialise both counts before the loop. The original pass output must remain unchanged for every test.</p><h3>Test the original and amended programs</h3><p>Commas separate successive output lines. A slash separates file lines. These expected results are specified before execution.</p><div class="table-scroll" tabindex="0" role="region" aria-label="Amend a program without losing its original behaviour test cases"><table><thead><tr><th>Input</th><th>Starter result</th><th>Required amended result</th></tr></thead><tbody><tr><td>49 50 69 70</td><td>3</td><td>3, 1</td></tr><tr><td>70 80 90 100</td><td>4</td><td>4, 4</td></tr><tr><td>0 0 0 0</td><td>0</td><td>0, 0</td></tr><tr><td>50 50 50 50</td><td>4</td><td>4, 0</td></tr></tbody></table></div><h3>Diagnose a fault</h3><p>Use ELSE IF for the merit check in a working copy. Identify the case that reveals the fault, correct it, and rerun the entire test set. Explain which tests target new functionality and which protect old functionality.</p><h3>Evidence to submit</h3><p>Submit your Cambridge pseudocode, amended Java file, completed test log and a short explanation of the fault you exposed. Explain the loop bounds or parameter/file behaviour relevant to this task.</p><details><summary>Reference solution — open after attempting the task</summary><p>Add an INTEGER merit counter initialised to zero. After the pass decision, add a separate mark &gt;= 70 decision. Output both counters after the loop. Check 49/50 and 69/70 to protect both thresholds.</p><p>Save the reference in a separate folder so it does not replace your attempt. Compile and run it there using the same commands.</p><p><a href="./solutions/TestingLab.java" download>Download reference: TestingLab.java</a></p><pre tabindex="0"><code>import java.util.Scanner;
+
+// Retain pass counting and additionally count merits at 70 and above.
+public class TestingLab {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        int passCount = 0;
+        int meritCount = 0;
+        for (int index = 0; index &lt; 4; index++) {
+            int mark = input.nextInt();
+            if (mark &gt;= 50) {
+                passCount++;
+            }
+            if (mark &gt;= 70) {
+                meritCount++;
+            }
+        }
+        System.out.println(passCount);
+        System.out.println(meritCount);
+    }
+}
+</code></pre></details><p><a href="#lab-contents">Back to practical tasks</a></p></article><section class="lab"><h2>Delayed transfer check</h2><p>On a later lesson, without the examples open, design a program that reads a 3 by 2 table of non-negative daily counts, outputs each column total and saves the two totals to a new text file. Identify the required loops and file mode. For rows [2,5], [0,3], [4,1], specify the saved values before running your implementation.</p><details><summary>Check the result and essential reasoning</summary><p>The two totals are 6 and 9, saved in that order. Read all six values, reset Total once per column, traverse all three rows for that column, and write each completed total as a line. Open the output once, close it after both lines, and protect any existing file when experimenting. Convert each numeric total to text for Java file output.</p></details></section></main></body></html>

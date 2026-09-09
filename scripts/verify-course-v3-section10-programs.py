@@ -275,6 +275,8 @@ def verify(payload):
             case("linear", values + [target], output=[expected])
     for values in [[5, 1, 4, 2, 8, 3, 7], list(range(7)), list(range(7, 0, -1)), [3] * 7, [-3, 2, 0, -3, 8, 1, 2]]:
         case("bubble", values, output=sorted(values))
+    for values in [[4, -1, 4, 0, 2], [1, 2, 3, 4, 5], [5, 4, 3, 2, 1], [3] * 5, [-9, -2, -7, -2, -5]]:
+        case("bubbleDescending", values, output=sorted(values, reverse=True))
     for lines in [[], ["Ari"], ["Ari", "", "Bo"], ["", ""], ["Red", "", "Blue"]]:
         case("readFile", files={"Names.txt": lines}, output=lines + [len(lines)])
         case("filterFile", files={"Names.txt": lines, "NonEmpty.txt": ["old"]}, final_files={"Names.txt": lines, "NonEmpty.txt": [line for line in lines if line != ""]})

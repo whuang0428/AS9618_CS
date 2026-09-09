@@ -23,6 +23,10 @@ Official qualification page: <https://www.cambridgeinternational.org/programmes-
 
 ## Teaching a lesson
 
+Use **Teach one unit** to show one explanation at a time, then switch to its related practice or exam questions. **Show whole lesson** restores the complete page; printing includes every unit and question. Answers close when switching units. The full lesson remains available when JavaScript is disabled.
+
+Programming lessons provide **Before this lesson** links to prerequisite concepts. The optional dependency-based route in [Practical labs](web/resources/practical-labs/index.html#learning-route) introduces variables, conditions and loops before array algorithms while retaining official syllabus order in the main course. Five Java 17 labs provide downloadable, complete starter programs and separate solutions, prediction/run/amend tasks, expected outputs and deliberate fault investigations. Each lab states the difference between supporting Java syntax and Cambridge pseudocode.
+
 Start with the lesson objectives, then teach each knowledge unit in order. The lead visual is always shown before the core explanation. Comparisons use tables, processes use numbered steps, and programming topics use complete code and traces. Students then answer questions whose Cambridge command word and marks are explicit before checking separate marking points. S2 includes classroom checkpoints, model-selection and subnetting examples, and collapsed answers for both practice and original exam-style tasks. S3 separates gate fundamentals from logic construction, includes classroom checkpoints and knowledge-point links, and also keeps exam answers collapsed.
 
 S1 also provides a knowledge-unit contents list, a short formative check after each unit, and collapsed original exam answers. Its regression checks cover explicit objective mapping, signed arithmetic, sampling versus resampling, assessment completeness and exact diagram data.
@@ -54,6 +58,8 @@ Teaching revisions now cover 156 units with authored paragraph headings, lists, 
 
 `scripts/course-v3-mechanism-diagrams.mjs`, `scripts/course-v3-mechanism-extensions.mjs` and `scripts/course-v3-mechanism-completion.mjs` generate 62 concept-keyed SVGs: character encoding, communication paths, feedback, processor transfers, device bits, OS services, backup recovery, Boolean conditions, buffers, records, array/search traces, ADT states, file modes, bounded loops, function results and development/testing relationships. Two-column explanation tables stack on phones; diagrams and wider tables support local keyboard scrolling. `verify-course-v3-concept-teaching.mjs --self-test` checks ownership, displayed values, directed paths, branch labels, active storage, file position and block/text consistency, including 67 deliberate faulty mutations. Independent SVG computations and path checks live in `course-v3-mechanism-checks.mjs` and `course-v3-mechanism-completion-checks.mjs`. Existing program execution and assessment checks remain in the section verifiers. Review rendered SVG labels and connections at desktop and 390px widths whenever a diagram changes; numerical checks do not establish visual legibility.
 
+The laser printer illustration now shows exposure reducing negative drum charge, negatively charged toner and positive transfer charge behind the paper. Its revision history and checksum are also recorded in `scripts/course-v3-reference-images.json`.
+
 The USB/HDMI/VGA appearance reference was generated with built-in ImageGen and visually reviewed after correcting the VGA hole count. `scripts/course-v3-reference-images.json` records its prompt, review and checksum. Its editable HTML labels explain purpose and compatibility; the bitmap is an appearance reference, not a pinout.
 
 ## Repository structure
@@ -67,6 +73,7 @@ The USB/HDMI/VGA appearance reference was generated with built-in ImageGen and v
 - `scripts/course-v3-section6-content.mjs`: authored S6 explanations and assessments; `course-v3-section6-diagrams.mjs` generates numerical SVGs, and `course-v3-section6-imagegen-assets.json` records the three generated conceptual images and their prompts.
 - `scripts/course-v3-section7-content.mjs`: authored S7 ethics, licensing and AI teaching, explicit objective mappings, independent questions and Paper 1 review tasks. `course-v3-section7-checks.mjs` guards teaching coverage, scenario/answer matching, repeated content and classroom controls.
 - `scripts/course-v3-section7-visuals.mjs`: S7 diagram placement, captions and transcripts. `course-v3-section7-imagegen-assets.json` records the generation prompts, reviewed assets and checksums; image files live in `web/assets/course-v3/section-7/`.
+- `scripts/course-v3-teaching-support.mjs`: entry diagnostics, prerequisite lessons and practical links. `course-v3-classroom.js` and `.css` provide the optional classroom controls. `course-v3-practical-labs.mjs` renders lab instructions around the Java files in `web/resources/practical-labs/`; the renderer refreshes both course and resource pages.
 - `scripts/course-v3-contract.json`: generated objective/material/practice ownership contract.
 - `scripts/course-v3-section-anchor-assets.json`: section-anchor asset and SHA-256 manifest.
 - `scripts/course-v3-knowledge-diagrams.mjs`: knowledge-unit visual mapping and alternative text.
@@ -114,6 +121,7 @@ node scripts/verify-course-v3-section9.mjs --self-test
 node scripts/verify-course-v3-section12.mjs --self-test
 node scripts/verify-course-v3-section11.mjs --self-test
 node scripts/verify-course-v3-section10.mjs --self-test
+python3 scripts/verify-practical-labs.py
 node scripts/verify-course-v3-idempotency.mjs
 ```
 
@@ -147,12 +155,15 @@ node scripts/verify-course-v3-section9.mjs --self-test
 node scripts/verify-course-v3-section12.mjs --self-test
 node scripts/verify-course-v3-section11.mjs --self-test
 node scripts/verify-course-v3-section10.mjs --self-test
+python3 scripts/verify-practical-labs.py
 node scripts/verify-course-v3-idempotency.mjs
 python3 scripts/build-course-release.py
 python3 scripts/verify-course-release.py
 ```
 
 These commands verify the current generated course, content contract, compatibility routes, generation idempotency and release archive without consulting historical audit records.
+
+With the local web server running on port 8770, run `node scripts/verify-course-v3-classroom.cjs` using an existing Playwright installation and Google Chrome. Set `PLAYWRIGHT_MODULE` to the installed module path if it is outside this repository, and `COURSE_BASE_URL` if using another port. This checks all 93 lessons at desktop and phone widths, every unit/stage transition, related-question filtering, downloads, printing and the no-JavaScript fallback. The Java verifier requires JDK 17 or later.
 
 Presentation preserves complete table cells, cards and flow steps; layout handles wrapping and local scrolling. The course verifier's self-test checks long labels and bodies and card sets larger than eight entries. Review teaching text is also checked for unfinished excerpts.
 
