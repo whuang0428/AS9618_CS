@@ -29028,6 +29028,26 @@
       "sha256": "3ded24f9c5e3e8e5d768c66dca6a8cbd10e5a1667eede8cada54d3224e5056d1"
     },
     {
+      "path": "web/assets/course-v3/section-2/question-star-mesh.svg",
+      "sha256": "5bac519350322d49c154bf58c0d8f10943bfb9205ec01cb2da67d84891c30a88"
+    },
+    {
+      "path": "web/assets/course-v3/section-2/question-partial-mesh.svg",
+      "sha256": "1c1c0ac5a5ae84d6eeee3ac09ca09142b470f117976563937038be535e38218d"
+    },
+    {
+      "path": "web/assets/course-v3/section-2/question-wireless-server.svg",
+      "sha256": "e7504b5985c603f4cc11ce6416543d4914c155f7f2609cc046771d85dc6ed77b"
+    },
+    {
+      "path": "web/assets/course-v3/section-2/question-pstn-access.svg",
+      "sha256": "bc1910a4ca4498be8d4f660ffa15ae479003d149d6de088c184e22719c7b6403"
+    },
+    {
+      "path": "web/assets/course-v3/section-3/question-circuit-d.svg",
+      "sha256": "3116c925b0b557d2f7e027c45746f10191102f10b5bc90e027dace5211f9f4d9"
+    },
+    {
       "path": "web/assets/course-v3/section-3/circuit-c.svg",
       "sha256": "d3bee4143ae5d6ec94a3c622052ddae80faef9e13d606f979b0c31a7187c6f47"
     },

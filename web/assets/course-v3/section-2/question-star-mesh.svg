@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 960 540" role="img" aria-labelledby="title description">
+<title id="title">Star + mesh network</title><desc id="description">Computers A and B connect separately to switch S1. Computers C and D connect separately to S2. The three inter-switch links are S1–S2, S1–S3 and S2–S3. All links are shown before the failure.</desc>
+<style>text{font-family:Arial,sans-serif;fill:#183047;text-anchor:middle}.title{font-size:30px;font-weight:700}.note{font-size:22px}.node-label{font-size:30px;font-weight:700}.link{stroke:#176b69;stroke-width:4;fill:none}.host,.router{fill:white;stroke:#183047;stroke-width:3}.switch{fill:#183047}.switch-label{fill:white}</style>
+<rect width="960" height="540" fill="#f8fbfc"/>
+<text x="480" y="48" class="title">Star + mesh network</text>
+<text x="480" y="85" class="note">All links are shown before the failure.</text>
+<text x="480" y="120" class="note">A–D: computers · S1–S3: switches</text>
+<line class="link" data-link="A-S1" x1="150" y1="187" x2="260" y2="270"/><line class="link" data-link="B-S1" x1="150" y1="377" x2="260" y2="298"/>
+<line class="link" data-link="S1-S2" x1="348" y1="284" x2="612" y2="284"/><line class="link" data-link="S1-S3" x1="304" y1="320" x2="450" y2="412"/><line class="link" data-link="S2-S3" x1="656" y1="320" x2="510" y2="412"/>
+<line class="link" data-link="C-S2" x1="810" y1="187" x2="700" y2="270"/><line class="link" data-link="D-S2" x1="810" y1="377" x2="700" y2="298"/>
+<g data-node="A"><rect class="host" x="40" y="155" width="110" height="64" rx="8"/><text class="node-label" x="95" y="197">A</text></g><g data-node="B"><rect class="host" x="40" y="345" width="110" height="64" rx="8"/><text class="node-label" x="95" y="387">B</text></g><g data-node="C"><rect class="host" x="810" y="155" width="110" height="64" rx="8"/><text class="node-label" x="865" y="197">C</text></g><g data-node="D"><rect class="host" x="810" y="345" width="110" height="64" rx="8"/><text class="node-label" x="865" y="387">D</text></g>
+<g data-node="S1"><rect class="switch" x="260" y="248" width="88" height="72" rx="8"/><text class="node-label switch-label" x="304" y="294">S1</text></g><g data-node="S2"><rect class="switch" x="612" y="248" width="88" height="72" rx="8"/><text class="node-label switch-label" x="656" y="294">S2</text></g><g data-node="S3"><rect class="switch" x="436" y="412" width="88" height="72" rx="8"/><text class="node-label switch-label" x="480" y="458">S3</text></g>
+</svg>

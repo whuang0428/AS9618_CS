@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 960 540" role="img" aria-labelledby="title description">
+<title id="title">Routers and physical links</title><desc id="description">Routers P, Q, R and T have only four bidirectional links: P–Q, Q–R, R–T and T–P. P is at the upper left, Q upper right, R lower right and T lower left. All links are shown before either failure.</desc>
+<style>text{font-family:Arial,sans-serif;fill:#183047;text-anchor:middle}.title{font-size:30px;font-weight:700}.note{font-size:22px}.node-label{font-size:30px;font-weight:700}.link{stroke:#176b69;stroke-width:4;fill:none}.host,.router{fill:white;stroke:#183047;stroke-width:3}.switch{fill:#183047}.switch-label{fill:white}</style>
+<rect width="960" height="540" fill="#f8fbfc"/>
+<text x="480" y="48" class="title">Routers and physical links</text>
+<text x="480" y="85" class="note">Initial network: only the four shown links exist.</text>
+<line class="link" data-link="P-Q" x1="220" y1="180" x2="740" y2="180"/><line class="link" data-link="Q-R" x1="780" y1="220" x2="780" y2="350"/>
+<line class="link" data-link="R-T" x1="740" y1="390" x2="220" y2="390"/><line class="link" data-link="T-P" x1="180" y1="350" x2="180" y2="220"/>
+<g data-node="P"><circle class="router" cx="180" cy="180" r="40"/><text class="node-label" x="180" y="190">P</text></g><g data-node="Q"><circle class="router" cx="780" cy="180" r="40"/><text class="node-label" x="780" y="190">Q</text></g><g data-node="R"><circle class="router" cx="780" cy="390" r="40"/><text class="node-label" x="780" y="400">R</text></g><g data-node="T"><circle class="router" cx="180" cy="390" r="40"/><text class="node-label" x="180" y="400">T</text></g>
+<text x="480" y="490" class="note">Each circle is a router; each line is one bidirectional link.</text>
+</svg>

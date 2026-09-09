@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 960 540" role="img" aria-labelledby="title description">
+<title id="title">Telephone-line access</title><desc id="description">The home laptop, LAN switch, router and home modem are connected in sequence. A telephone-line PSTN connection joins the home modem to a provider modem, which connects to the provider network. Router and modem functions are shown separately.</desc>
+<style>text{font-family:Arial,sans-serif;fill:#183047;text-anchor:middle}.title{font-size:30px;font-weight:700}.note{font-size:22px}.node-label{font-size:30px;font-weight:700}.link{stroke:#176b69;stroke-width:4;fill:none}.host,.router{fill:white;stroke:#183047;stroke-width:3}.switch{fill:#183047}.switch-label{fill:white}</style>
+<rect width="960" height="540" fill="#f8fbfc"/>
+<text x="480" y="48" class="title">Telephone-line access</text>
+<rect x="20" y="110" width="920" height="195" rx="12" fill="#e6f3f0"/>
+<text x="90" y="150" class="note">Home</text>
+<rect x="425" y="365" width="515" height="165" rx="12" fill="#e6f3f0"/>
+<text x="505" y="397" class="note">Provider</text>
+<line class="link" data-link="Laptop-Switch" x1="190" y1="230" x2="255" y2="230"/><line class="link" data-link="Switch-Router" x1="405" y1="230" x2="470" y2="230"/><line class="link" data-link="Router-HomeModem" x1="620" y1="230" x2="710" y2="230"/>
+<line class="link" data-link="HomeModem-ProviderModem" x1="800" y1="275" x2="800" y2="420"/><line class="link" data-link="ProviderModem-ProviderNetwork" x1="710" y1="465" x2="620" y2="465"/>
+<g data-node="Laptop"><rect class="host" x="40" y="185" width="150" height="90" rx="8"/><text class="note" x="115" y="238">Laptop</text></g><g data-node="Switch"><rect class="host" x="255" y="185" width="150" height="90" rx="8"/><text class="note" x="330" y="238">LAN switch</text></g><g data-node="Router"><rect class="host" x="470" y="185" width="150" height="90" rx="8"/><text class="note" x="545" y="238">Router</text></g><g data-node="HomeModem"><rect class="host" x="710" y="185" width="180" height="90" rx="8"/><text class="note" x="800" y="238">Home modem</text></g>
+<g data-node="ProviderModem"><rect class="host" x="710" y="420" width="180" height="90" rx="8"/><text class="note" x="800" y="457">Provider</text><text class="note" x="800" y="487">modem</text></g><g data-node="ProviderNetwork"><rect class="host" x="450" y="420" width="170" height="90" rx="8"/><text class="note" x="535" y="457">Provider</text><text class="note" x="535" y="487">network</text></g>
+<text x="580" y="343" class="note">Telephone line / PSTN</text>
+<text x="210" y="430" class="note">Router and modem</text>
+<text x="210" y="465" class="note">shown separately</text>
+</svg>

@@ -8,6 +8,8 @@ import { fileURLToPath } from "node:url";
 import { courseV3Lessons, courseV3Meta, sectionMeta } from "./course-v3-content.mjs";
 import { unitMaterials } from "./course-v3-presentation.mjs";
 import { officialAsMapping } from "./syllabus-official-as-mapping.mjs";
+import { section3DiagramFiles } from "./course-v3-section3-diagrams.mjs";
+import { section2DiagramFiles } from "./course-v3-section2-diagrams.mjs";
 import { section1DiagramFiles } from "./course-v3-section1-diagrams.mjs";
 import { section4DiagramFiles } from "./course-v3-section4-diagrams.mjs";
 import { section8DiagramFiles } from "./course-v3-section8-diagrams.mjs";
@@ -159,9 +161,9 @@ function renderUnit(unit, unitIndex, lesson) {
 
 function renderQuestionDiagram(question) {
   if (!question.diagram) return "";
-  const diagramSection = Number(question.diagram.match(/\/section-(9|11|12)\//)?.[1]);
-  const flowchart = Boolean(diagramSection);
-  return `<figure class="reviewed-visual question-diagram"><div class="visual-scroll" tabindex="0" role="region" aria-label="${escapeHtml(question.diagramLabel ?? "Logic circuit")}"><img src="${escapeHtml(lessonAssetSource(question.diagram, 3))}" alt="${escapeHtml(question.diagramAlt)}"${flowchart ? imageSizeAttributes({asset:question.diagram},diagramSection) : ""} loading="lazy"></div>${flowchart ? `<figcaption><a class="diagram-full-size" href="${escapeHtml(lessonAssetSource(question.diagram,9))}" target="_blank" rel="noopener">Open full-size ${diagramSection === 12 ? "diagram" : "flowchart"} ↗</a></figcaption>` : ""}</figure>`;
+  const diagramSection = Number(question.diagram.match(/\/section-(2|3|9|11|12)\//)?.[1]);
+  const fullSize = Boolean(diagramSection);
+  return `<figure class="reviewed-visual question-diagram"><div class="visual-scroll" tabindex="0" role="region" aria-label="${escapeHtml(question.diagramLabel ?? "Logic circuit")}"><img src="${escapeHtml(lessonAssetSource(question.diagram, 3))}" alt="${escapeHtml(question.diagramAlt)}"${fullSize ? imageSizeAttributes({asset:question.diagram,layout:"mechanism"},diagramSection) : ""} loading="lazy"></div>${fullSize ? `<figcaption><a class="diagram-full-size" href="${escapeHtml(lessonAssetSource(question.diagram,9))}" target="_blank" rel="noopener">Open full-size ${[2, 3, 12].includes(diagramSection) ? "diagram" : "flowchart"} ↗</a></figcaption>` : ""}</figure>`;
 }
 
 function renderQuestionStimulus(question) {
@@ -286,6 +288,8 @@ const globalCss = `${sourceCss}\n.question-code{min-width:0;max-width:100%;margi
 
 mkdirSync(outRoot, { recursive: true });
 for (const [name, svg] of Object.entries(mechanismDiagramFiles())) write(join(root, "web/assets/course-v3/mechanisms", name), svg);
+for (const [name, svg] of Object.entries(section3DiagramFiles)) write(join(root, "web/assets/course-v3/section-3", name), svg);
+for (const [name, svg] of Object.entries(section2DiagramFiles)) write(join(root, "web/assets/course-v3/section-2", name), svg);
 for (const [name, svg] of Object.entries(section4DiagramFiles)) write(join(root, "web/assets/course-v3/section-4", name), svg);
 for (const [name, svg] of Object.entries(section1DiagramFiles())) write(join(root, "web/assets/course-v3/section-1", name), svg);
 for (const [name, svg] of Object.entries(section8DiagramFiles())) write(join(root, "web/assets/course-v3/section-8", name), svg);
@@ -295,6 +299,11 @@ for (const [name, svg] of Object.entries(section12DiagramFiles())) write(join(ro
 for (const [name, svg] of Object.entries(section10DiagramFiles())) write(join(root, "web/assets/course-v3/section-10", name), svg);
 for (const [name, svg] of Object.entries(section6DiagramFiles())) write(join(root, "web/assets/course-v3/section-6", name), svg);
 write(join(outRoot, "course.css"), globalCss + `
+/* Supplied three-column truth tables remain fully visible on phones. */
+:is([data-question-id="S3-L06-Q4"],[data-question-id="S3-L06-EXAM-3"]) .table-scroll{max-width:420px}
+:is([data-question-id="S3-L06-Q4"],[data-question-id="S3-L06-EXAM-3"]) table{min-width:0;table-layout:fixed;font-variant-numeric:tabular-nums}
+:is([data-question-id="S3-L06-Q4"],[data-question-id="S3-L06-EXAM-3"]) :is(th,td){width:33.333%;text-align:center}
+:is([data-question-id="S3-L06-Q4"],[data-question-id="S3-L06-EXAM-3"]) .swipe-cue{display:none}
 /* Authored core explanations and mechanism diagrams */
 .core-block + .core-block{margin-top:20px}.core-block h5{margin:0 0 8px;font:700 1rem/1.4 system-ui,sans-serif;color:var(--navy-dark)}
 .core-block ul,.core-block ol{margin:0;padding-left:1.4em}.core-block li{padding-left:.2em;margin-bottom:10px;line-height:1.65}.core-block li:last-child{margin-bottom:0}.core-block li strong{color:var(--navy-dark)}

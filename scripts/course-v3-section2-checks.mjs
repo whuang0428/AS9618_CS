@@ -8,6 +8,12 @@ import { normalisePresentationText, unitMaterials } from "./course-v3-presentati
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const check = (condition, message) => assert.ok(condition, `S2 presentation: ${message}`);
+const questionDiagrams = {
+  "S2-L02-Q2": ["question-star-mesh.svg", ["A-S1", "B-S1", "C-S2", "D-S2", "S1-S2", "S1-S3", "S2-S3"]],
+  "S2-L02-EXAM-3": ["question-partial-mesh.svg", ["P-Q", "Q-R", "R-T", "T-P"]],
+  "S2-L05-Q2": ["question-wireless-server.svg", ["Router-Server", "Switch-Router", "WAP-Switch", "WNIC-WAP"]],
+  "S2-L07-Q2": ["question-pstn-access.svg", ["HomeModem-ProviderModem", "Laptop-Switch", "ProviderModem-ProviderNetwork", "Router-HomeModem", "Switch-Router"]],
+};
 
 export function validateSection2Presentation(lessons, { checkFiles = false } = {}) {
   check(lessons.length === 8, "eight active lessons are required");
@@ -22,6 +28,15 @@ export function validateSection2Presentation(lessons, { checkFiles = false } = {
       allPrompts.push(normalisePresentationText(prompt));
       check(!/draw lines to match|complete a trace table|put the six .* in order/i.test(prompt), `${question.id}: unsupported question format`);
       check(question.objectiveIds.every((id) => lesson.objectives.some(([candidate]) => id === candidate)), `${question.id}: objective belongs to another lesson`);
+      const diagram = questionDiagrams[question.id];
+      if (diagram) {
+        check(question.diagram === `/assets/course-v3/section-2/${diagram[0]}`, `${question.id}: missing or incorrect question diagram`);
+        check(question.diagramAlt && question.diagramLabel, `${question.id}: question diagram needs accessible text`);
+        if (checkFiles) {
+          const svg = readFileSync(join(root, "web", question.diagram), "utf8");
+          assert.deepEqual([...svg.matchAll(/data-link="([^"]+)"/g)].map((match) => match[1]).sort(), diagram[1], `${question.id}: diagram links differ from the supplied network`);
+        }
+      }
     }
     for (const question of lesson.examStyleQuestions) {
       const required = [...new Set(question.objectiveIds.map((id) => id.replace(/\.A\d+$/, "")))].sort();
@@ -36,6 +51,12 @@ export function validateSection2Presentation(lessons, { checkFiles = false } = {
       check((html.match(/<details class="paper-marking-points">/g) ?? []).length === lesson.examStyleQuestions.length, `${lesson.lessonKey}: examination answers must start collapsed`);
       for (const [, body] of lesson.summary) check(html.includes(body.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;").replaceAll("'", "&#039;")), `${lesson.lessonKey}: summary body missing from HTML`);
       for (const unit of lesson.units) for (const material of unit.supportingMaterials ?? []) check(html.includes(material.title), `${lesson.lessonKey}: supporting comparison missing from HTML`);
+      for (const question of [...lesson.practice, ...lesson.examStyleQuestions].filter((item) => questionDiagrams[item.id])) {
+        const start = html.indexOf(`data-question-id="${question.id}"`);
+        const answer = html.indexOf("<details", start);
+        const stimulus = html.slice(start, answer);
+        check(stimulus.includes(`<img src="../../${question.diagram.slice(1)}"`) && stimulus.includes("Open full-size diagram"), `${question.id}: diagram must appear before the collapsed answer with full-size access`);
+      }
     }
   }
   check(new Set(allPrompts).size === allPrompts.length, "duplicate lesson question prompts");
@@ -47,7 +68,21 @@ export function validateSection2Presentation(lessons, { checkFiles = false } = {
   const subnet = lessons[7].units.find((unit) => unit.objectiveIds.includes("S2.15.A04"));
   const subnetTeaching = JSON.stringify([subnet.coreExplanation, subnet.workedExample]);
   check(["/26", "11000000", "AND", "128", "192"].every((term) => subnetTeaching.includes(term)) && subnet.workedExample?.steps.length >= 4, "/26 task lacks a taught bitwise method");
-  check(lessons[7].practice.some((question) => question.objectiveIds.includes("S2.15.A04") && question.prompt.includes("00100010")), "subnet practice lacks the guided binary step");
+  const subnetQuestion = lessons[7].practice.find((question) => question.id === "S2-L08-Q2");
+  check(subnetQuestion?.objectiveIds.includes("S2.15.A04") && subnetQuestion.table?.type === "table", "subnet practice lacks the supplied binary table");
+  assert.deepEqual(subnetQuestion.table.rows, [
+    ["Host", "192.168.8.34", "34", "00100010"],
+    ["Destination 1", "192.168.8.60", "60", "00111100"],
+    ["Destination 2", "192.168.8.80", "80", "01010000"],
+    ["Subnet mask /26", "255.255.255.192", "192", "11000000"],
+  ], "S2 supplied subnet data must retain the original addresses, mask and binary values");
+  for (const row of subnetQuestion.table.rows) check(Number(row[1].split(".").at(-1)).toString(2).padStart(8, "0") === row[3], "subnet binary octet differs from its address");
+  if (checkFiles) {
+    const html = readFileSync(join(root, "web/course-v3", lessons[7].route, "index.html"), "utf8");
+    const start = html.indexOf(`data-question-id="${subnetQuestion.id}"`);
+    const stimulus = html.slice(start, html.indexOf("<details", start));
+    check(stimulus.includes("<table>") && subnetQuestion.table.rows.every((row) => row.every((value) => stimulus.includes(value))), "subnet data table must be visible before the collapsed answer");
+  }
   const ethernet = lessons[4].units.find((unit) => unit.objectiveIds.includes("S2.11.A01"));
   check(!/each station waits a different random period/i.test(JSON.stringify(ethernet)), "random backoff incorrectly guarantees different waits");
   check(/may be equal/.test(ethernet.coreExplanation.join(" ")), "backoff explanation must allow equal waits");
@@ -80,6 +115,13 @@ export function validateSection2Presentation(lessons, { checkFiles = false } = {
 
 export function section2PresentationSelfTest(lessons) {
   const mutations = [
+    ["missing practice diagram", (copy) => { delete copy[1].practice[1].diagram; }],
+    ["missing exam diagram", (copy) => { delete copy[1].examStyleQuestions[2].diagram; }],
+    ["wrong exam network", (copy) => { copy[1].examStyleQuestions[2].diagram = copy[1].practice[1].diagram; }],
+    ["missing wireless network", (copy) => { delete copy[4].practice[1].diagram; }],
+    ["missing PSTN network", (copy) => { delete copy[6].practice[1].diagram; }],
+    ["missing subnet table", (copy) => { delete copy[7].practice[1].table; }],
+    ["wrong binary octet", (copy) => { copy[7].practice[1].table.rows[2][3] = "00111100"; }],
     ["summary lost", (copy) => { copy[7].summary[4][1] = copy[7].summary[0][1]; }],
     ["missing table", (copy) => { copy[6].practice[1].prompt = "Complete a trace table for a request."; }],
     ["wrong source focus", (copy) => { copy[4].examStyleQuestions[1].sourceRef = "Cambridge 9618 syllabus 2.1 · S2.10 (course mapping)"; }],

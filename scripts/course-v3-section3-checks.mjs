@@ -88,6 +88,14 @@ export function validateSection3Presentation(lessons, assessmentBank) {
   check(nand?.objectiveIds.join() === "S3.10.A04" && /both inputs are 1/.test(nand.markLogic.join(" ")) && !/XOR|NOR|OR includes/.test(nand.markLogic.join(" ")), "S3 NAND task has a foreign answer or mapping");
   const circuitQuestion = questionById.get("S3-L06-EXAM-2");
   check(circuitQuestion?.diagram?.endsWith("/circuit-c.svg"), "S3 given-circuit exam question is missing its diagram");
+  const practiceCircuit = questionById.get("S3-L06-Q3");
+  check(practiceCircuit?.diagram?.endsWith("/question-circuit-d.svg") && practiceCircuit.diagramAlt && practiceCircuit.diagramLabel, "S3 given-circuit practice needs its accessible diagram");
+  const binaryPairs = [[0,0], [0,1], [1,0], [1,1]];
+  for (const [id, output] of [["S3-L06-Q4", (a,b) => a !== b], ["S3-L06-EXAM-3", (a,b) => a || !b]]) {
+    const table = questionById.get(id)?.table;
+    check(table?.type === "table" && JSON.stringify(table.headers) === JSON.stringify(["A", "B", "Q"]), `${id}: supplied truth table needs labelled columns`);
+    check(JSON.stringify(table?.rows) === JSON.stringify(binaryPairs.map(([a,b]) => [a,b,Number(output(a,b))])), `${id}: supplied truth-table rows differ from the question's function`);
+  }
   if (assessmentBank) {
     const checkSet = assessmentBank.sets.find((s) => s.id === "SECTION-3-CHECK");
     const mock = assessmentBank.sets.find((s) => s.id === "PAPER-1-MOCK");

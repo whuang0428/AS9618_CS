@@ -1290,6 +1290,9 @@ const examQuestionOverrides = Object.freeze({
     commonError: "Do not claim that every cable failure has the same effect; identify whether the failed component is local, shared or central.",
   },
   "S2-L02-EXAM-3": {
+    diagram: "/assets/course-v3/section-2/question-partial-mesh.svg",
+    diagramLabel: "Router network for Exam Question 3",
+    diagramAlt: "Before either failure: P is upper left, Q upper right, R lower right and T lower left. The only links are P–Q, Q–R, R–T and T–P. Each link is bidirectional.",
     prompt: "A partial mesh has routers P, Q, R and T. Its only links are P–Q, Q–R, R–T and T–P. Describe a route from P to R after P–Q fails. A second failure then removes T–P. Explain whether P can still reach R and what this shows about mesh resilience.",
     objectiveIds: [
       "S2.04.A03",
@@ -2065,7 +2068,7 @@ function examStyleQuestionSet(lesson, practice, staged) {
       marks: question.marks, build: question.answerPoints, markLogic: question.answerPoints,
       commonLosses: [question.commonError],
       ...(question.diagram ? { diagram: question.diagram, diagramAlt: question.diagramAlt, ...(question.diagramLabel ? {diagramLabel:question.diagramLabel} : {}) } : {}),
-      ...([4, 8, 9, 10, 11, 12].includes(lesson.section) ? Object.fromEntries(["code", "codeCaption", "codeLabel", "programKey", "table", "tables", "answerCode", "answerTable", "sqlCase", "expectedTrace", "expectedAcc", "finalMemory", "answerProgramKey", "answerCodeLabel", "answerLanguage", "answerDiagram", "answerDiagramAlt", "answerDiagramLabel", "conversion"].filter((key) => question[key] !== undefined).map((key) => [key, question[key]])) : {}),
+      ...([3, 4, 8, 9, 10, 11, 12].includes(lesson.section) ? Object.fromEntries(["code", "codeCaption", "codeLabel", "programKey", "table", "tables", "answerCode", "answerTable", "sqlCase", "expectedTrace", "expectedAcc", "finalMemory", "answerProgramKey", "answerCodeLabel", "answerLanguage", "answerDiagram", "answerDiagramAlt", "answerDiagramLabel", "conversion"].filter((key) => question[key] !== undefined).map((key) => [key, question[key]])) : {}),
     };
   });
   const objectiveRows = lesson.objectives.length ? lesson.objectives : [[`${lesson.syllabusIds[0]}.R`, lesson.title]];
@@ -2103,6 +2106,7 @@ function examStyleQuestionSet(lesson, practice, staged) {
       objectiveIds: override?.objectiveIds ?? (sourceQuestion.objectiveIds.length ? sourceQuestion.objectiveIds : [objectiveId]),
       answerPoints: override?.answerPoints ?? answerPoints,
       commonError: override?.commonError ?? sourceQuestion.commonError,
+      ...(override?.diagram ? { diagram: override.diagram, diagramAlt: override.diagramAlt, diagramLabel: override.diagramLabel } : {}),
     }, staged);
     if (!override && practice.some((practiceQuestion) => markingPointSignature(practiceQuestion.answerPoints) === markingPointSignature(question.answerPoints))) {
       const distinctionPoint = uniqueExamMarkingPoints(unit.misconceptions ?? [])
@@ -2129,6 +2133,7 @@ function examStyleQuestionSet(lesson, practice, staged) {
       build: question.answerPoints,
       markLogic: question.answerPoints,
       commonLosses: [question.commonError],
+      ...(question.diagram ? { diagram: question.diagram, diagramAlt: question.diagramAlt, diagramLabel: question.diagramLabel } : {}),
     };
   });
 }
