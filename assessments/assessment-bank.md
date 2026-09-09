@@ -1,4 +1,4 @@
-# AS9618 Assessment Bank - 90-lesson course
+# AS9618 Assessment Bank
 
 The active bank contains 12 section checks and two original 75-mark paper mocks. Questions test transfer and are not copied from lesson practice or Cambridge papers.
 
@@ -877,11 +877,23 @@ A digital field guide contains a 1.5 MiB image, an RLE text block and a vector i
 
 Award one mark per distinct point within each part. Accept equivalent working. Byte prefixes and the RLE storage format are as stated; do not assume additional compression.
 
-### 2. apply - 9 marks
+### 2. describe - 9 marks
 
-Use a fresh context to demonstrate and connect the key ideas from network topologies and packet transmission.
+A science centre connects PCs P, Q and R to a central switch in a star. Its inter-building routers A, B, C and D form a partial mesh with links A-B, B-D, A-C and C-D; all four links initially work. (a) Describe delivery of a frame from P to Q when the switch already knows Q's port. State the effect of P's cable failing and of the central switch failing. [3] (b) Give two routes from A to D. Link B-D then fails: explain how delivery can continue and state one hardware cost of providing the alternative route. [3] (c) A message travels as numbered packets with destination IP addresses; they arrive in order 3, 1, 2. Explain the role of the destination IP address and of the sequence numbers, then state the correct reassembly order. [3]
 
-**Answer and guidance:** S2.04: explain bus topology, star topology, mesh topology, hybrid topology. S2.04 method: Establish the exact components or states → Trace the relationship or change → Use the explanation in a concrete case. S2.05: explain between two hosts, bus, central switch, alternative routes, hybrid, justify. S2.05 method: Identify the relevant condition or input → Trace how the process works → Connect the mechanism to its result. Correction to remember: Students often confuse bandwidth with speed in every sense. Correction: bandwidth is capacity; latency and congestion also affect perceived performance. Award up to 9 marks for a complete, technically accurate response that follows the command word and stays in context.
+**Answer and guidance:**
+
+- (a) P sends the frame to the switch, which forwards it through the known port for Q.
+- (a) Failure of P's cable isolates P; Q and R can still communicate through their working switch links.
+- (a) Failure of the central switch prevents communication through that star for all three PCs.
+- (b) The two routes are A-B-D and A-C-D.
+- (b) After B-D fails, routing can use the still-working A-C-D path.
+- (b) The alternative path requires additional links, router ports or router hardware compared with a single-path connection.
+- (c) The destination IP address identifies where routers should forward each packet towards its destination.
+- (c) Sequence numbers identify the packets' original positions so the receiver can reorder them.
+- (c) Reassemble packets in the order 1, 2, 3.
+
+Award one mark for each listed point, with a maximum of three marks per part. Accept equivalent technically accurate wording. For the route point, both complete A-to-D routes must be given; do not assume a link that is absent from the stated network.
 
 ### 3. explain - 9 marks
 

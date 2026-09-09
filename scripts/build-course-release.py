@@ -5,8 +5,10 @@ from __future__ import annotations
 
 import hashlib
 import json
+import re
 import zipfile
 from pathlib import Path
+from urllib.parse import urlsplit
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -28,6 +30,26 @@ def add_tree(files: set[Path], directory: Path) -> None:
         files.update(path for path in directory.rglob("*") if path.is_file())
 
 
+def release_bytes(path: Path) -> bytes:
+    content = path.read_bytes()
+    if path.suffix != ".html":
+        return content
+
+    def explicit_index(match: re.Match[str]) -> str:
+        prefix, href, quote = match.groups()
+        url = urlsplit(href)
+        if url.scheme or url.netloc or not url.path.endswith("/"):
+            return match.group(0)
+        return prefix + url._replace(path=url.path + "index.html").geturl() + quote
+
+    # Direct file browsing does not resolve directory links to index.html.
+    # Rewrite only the packaged HTML, including older bookmark redirects.
+    html = content.decode("utf-8")
+    for pattern in (r'(\bhref=")([^"]+)(")', r'(\bcontent="\d+;\s*url=)([^"]+)(")'):
+        html = re.sub(pattern, explicit_index, html)
+    return html.encode("utf-8")
+
+
 def main() -> None:
     contract = json.loads((ROOT / "scripts/course-v3-contract.json").read_text(encoding="utf-8"))
     files: set[Path] = {
@@ -40,6 +62,7 @@ def main() -> None:
         ROOT / "web/academic-theme.css",
         ROOT / "web/course-v2.css",
         ROOT / "web/stage7-accessibility.css",
+        ROOT / "web/stage7-accessibility.js",
         ROOT / "scripts/course-v3-contract.json",
         ROOT / "scripts/course-v2-migration.json",
     }
@@ -47,6 +70,10 @@ def main() -> None:
     add_tree(files, ROOT / "web/resources")
     for section in range(1, 13):
         files.add(ROOT / "web/course-v3" / f"section-{section}" / "index.html")
+    for lesson in contract["lessons"]:
+        if lesson["section"] == 2:
+            unit = lesson["lessonKey"].rsplit("L", 1)[1]
+            files.add(ROOT / "web/course-v3/section-2" / f"unit-{unit}" / "index.html")
     for lesson in range(1, 94):
         files.add(ROOT / "web/course-v3" / f"lesson-{lesson:03d}" / "index.html")
     for lesson in range(1, 152):
@@ -61,6 +88,15 @@ def main() -> None:
     if forbidden:
         raise SystemExit(f"Copyright-sensitive input entered release: {forbidden}")
 
+    manifest_files = []
+    for path in sorted(files):
+        content = release_bytes(path)
+        manifest_files.append({
+            "path": path.relative_to(ROOT).as_posix(),
+            "sha256": hashlib.sha256(content).hexdigest(),
+            "bytes": len(content),
+        })
+
     manifest = {
         "schemaVersion": 2,
         "release": "AS9618-CS-2027-2029-course",
@@ -71,10 +107,7 @@ def main() -> None:
             if lesson["kind"] == "teaching"
         ),
         "legacyCompatibilityCount": 151,
-        "files": [
-            {"path": path.relative_to(ROOT).as_posix(), "sha256": sha256(path), "bytes": path.stat().st_size}
-            for path in sorted(files)
-        ],
+        "files": manifest_files,
     }
     manifest_bytes = (json.dumps(manifest, indent=2) + "\n").encode("utf-8")
 
@@ -84,7 +117,7 @@ def main() -> None:
             info = zipfile.ZipInfo(source.relative_to(ROOT).as_posix(), date_time=(2026, 9, 1, 0, 0, 0))
             info.compress_type = zipfile.ZIP_DEFLATED
             info.external_attr = 0o644 << 16
-            archive.writestr(info, source.read_bytes(), compress_type=zipfile.ZIP_DEFLATED, compresslevel=9)
+            archive.writestr(info, release_bytes(source), compress_type=zipfile.ZIP_DEFLATED, compresslevel=9)
         manifest_info = zipfile.ZipInfo("release-manifest.json", date_time=(2026, 9, 1, 0, 0, 0))
         manifest_info.compress_type = zipfile.ZIP_DEFLATED
         manifest_info.external_attr = 0o644 << 16

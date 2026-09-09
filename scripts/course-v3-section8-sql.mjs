@@ -1,5 +1,4 @@
-// SQL shown in lessons is also executed by verify-course-v3-section8.mjs.
-// SQLite checks the shared SQL subset; CREATE DATABASE is checked separately.
+// Shared SQL examples and supplied data used in the lessons.
 export const section8Databases = {
   library: {
     setup: `CREATE TABLE Member (MemberID INTEGER PRIMARY KEY, MemberName VARCHAR(40), Active BOOLEAN);

@@ -183,7 +183,8 @@ function renderQuestionStimulus(question) {
 }
 
 function renderQuestionAnswerTable(question) {
-  return `${question.answerCode ? `<section class="question-code"><p>${escapeHtml(question.answerCodeLabel ?? "One valid SQL answer")}</p><pre tabindex="0" aria-label="${escapeHtml(question.answerCodeLabel ?? "SQL answer")}"><code>${escapeHtml(question.answerCode)}</code></pre></section>` : ""}${question.answerTable ? renderTable({ ...question.answerTable, objectiveIds: question.objectiveIds ?? [] }) : ""}${question.answerDiagram ? renderQuestionDiagram({diagram:question.answerDiagram,diagramAlt:question.answerDiagramAlt,diagramLabel:question.answerDiagramLabel ?? (question.answerDiagram.includes("section-12/") ? "One valid structure chart" : "One valid flowchart solution")}) : ""}`;
+  const codeLabel = question.answerCodeLabel ?? (question.answerLanguage === "text" ? "One valid pseudocode answer" : "One valid SQL answer");
+  return `${question.answerCode ? `<section class="question-code"><p>${escapeHtml(codeLabel)}</p><pre tabindex="0" aria-label="${escapeHtml(codeLabel)}"><code>${escapeHtml(question.answerCode)}</code></pre></section>` : ""}${question.answerTable ? renderTable({ ...question.answerTable, objectiveIds: question.objectiveIds ?? [] }) : ""}${question.answerDiagram ? renderQuestionDiagram({diagram:question.answerDiagram,diagramAlt:question.answerDiagramAlt,diagramLabel:question.answerDiagramLabel ?? (question.answerDiagram.includes("section-12/") ? "One valid structure chart" : "One valid flowchart solution")}) : ""}`;
 }
 
 function renderPractice(question, index, section) {
@@ -343,13 +344,17 @@ for (const section of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]) {
   const markdown = `## ${check.title} (${check.totalMarks} marks)\n\n${check.questions.map(renderAssessmentQuestionMarkdown).join("\n")}\n`;
   assessmentMarkdown = assessmentMarkdown.replace(pattern, () => markdown);
 }
+const paper1S2 = assessmentBank.sets.find((set) => set.id === "PAPER-1-MOCK").questions.find((question) => question.id === "A-P1-2");
 const paper1S3 = assessmentBank.sets.find((set) => set.id === "PAPER-1-MOCK").questions.find((question) => question.id === "A-P1-3");
 const paper1Start = assessmentMarkdown.indexOf("## Paper 1 original cumulative mock");
 if (paper1Start < 0) throw new Error("Paper 1 Assessment Bank Markdown section is missing");
 const paper1Prefix = assessmentMarkdown.slice(0, paper1Start);
 const paper1Markdown = assessmentMarkdown.slice(paper1Start);
 if (!/^### 3\.[\s\S]*?(?=^### 4\.)/m.test(paper1Markdown)) throw new Error("Paper 1 S3 question is missing");
-assessmentMarkdown = paper1Prefix + paper1Markdown.replace(/^### 3\.[\s\S]*?(?=^### 4\.)/m, () => renderAssessmentQuestionMarkdown(paper1S3, 2) + "\n");
+if (!/^### 2\.[\s\S]*?(?=^### 3\.)/m.test(paper1Markdown)) throw new Error("Paper 1 S2 question is missing");
+assessmentMarkdown = paper1Prefix + paper1Markdown
+  .replace(/^### 3\.[\s\S]*?(?=^### 4\.)/m, () => renderAssessmentQuestionMarkdown(paper1S3, 2) + "\n")
+  .replace(/^### 2\.[\s\S]*?(?=^### 3\.)/m, () => renderAssessmentQuestionMarkdown(paper1S2, 1) + "\n");
 const paper1S1 = assessmentBank.sets.find((set) => set.id === "PAPER-1-MOCK").questions.find((question) => question.id === "A-P1-1");
 assessmentMarkdown = assessmentMarkdown.replace(/(^## Paper 1[^\n]*\n\n)### 1\.[\s\S]*?(?=^### 2\.)/m, (_, heading) => `${heading}${renderAssessmentQuestionMarkdown(paper1S1, 0)}\n`);
 const paper1S5 = assessmentBank.sets.find((set) => set.id === "PAPER-1-MOCK").questions.find((question) => question.id === "A-P1-5");

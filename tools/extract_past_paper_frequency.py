@@ -16,9 +16,6 @@ import math
 import re
 from pathlib import Path
 
-import pdfplumber
-
-
 STOPWORDS = {
     "a", "about", "all", "an", "and", "any", "are", "as", "at", "be", "been",
     "being", "between", "by", "can", "data", "describe", "different", "each",
@@ -117,8 +114,27 @@ def requirement_terms(requirement: dict) -> set[str]:
 
 
 def extract_pages(pdf_path: Path) -> str:
+    return "\n".join(line for line, _ in extract_question_lines(pdf_path))
+
+
+def extract_question_lines(pdf_path: Path) -> list[tuple[str, float]]:
+    try:
+        import pdfplumber
+    except ModuleNotFoundError as error:
+        if error.name != "pdfplumber":
+            raise
+        raise SystemExit("PDF extraction requires pdfplumber. Install it in your Python environment with: python -m pip install pdfplumber") from None
+
+    lines = []
     with pdfplumber.open(pdf_path) as document:
-        return "\n".join(page.extract_text() or "" for page in document.pages[1:])
+        for page in document.pages[1:]:
+            for line in page.extract_text_lines():
+                # Retain the printed label column; code line numbers and table
+                # indices must not become question numbers after whitespace removal.
+                if 55 <= line["top"] < page.height - 35:
+                    for text in clean_lines(line["text"]):
+                        lines.append((text, line["x0"]))
+    return lines
 
 
 def clean_lines(text: str) -> list[str]:
@@ -139,31 +155,58 @@ def clean_lines(text: str) -> list[str]:
 
 
 def parse_subquestions(pdf_path: Path) -> list[dict]:
-    lines = clean_lines(extract_pages(pdf_path))
+    lines = extract_question_lines(pdf_path)
     rows: list[dict] = []
     current_question = None
     current_part = ""
+    parent_part = ""
+    parent_left = 0.0
     main_context: list[str] = []
+    part_context: list[str] = []
     buffer: list[str] = []
 
-    def update_label(line: str) -> None:
-        nonlocal current_question, current_part, main_context
+    def update_label(line: str, left: float) -> str:
+        nonlocal current_question, current_part, parent_part, parent_left, main_context, part_context, buffer
         main = re.match(r"^(\d+)\s+(.*)$", line)
         candidate = int(main.group(1)) if main else None
         expected = 1 if current_question is None else current_question + 1
-        if main and candidate == expected and 1 <= candidate <= 10:
+        if main and candidate == expected and 45 <= left <= 55:
             current_question = candidate
             current_part = ""
-            main_context = [main.group(2)]
-        labels = re.findall(r"\(([a-z]|[ivxlcdm]+)\)", line[:30], flags=re.I)
-        if labels:
-            current_part = "".join(f"({label.lower()})" for label in labels)
+            parent_part = ""
+            parent_left = 0.0
+            main_context = []
+            part_context = []
+            buffer = []
+            line = main.group(2)
+        label = re.match(r"^\(([a-z]|[ivxlcdm]+)\)\s*", line, flags=re.I)
+        if label and current_question is not None and left <= 105 and (left <= 80 or re.fullmatch(r"[ivx]+", label.group(1), flags=re.I)):
+            value = label.group(1).lower()
+            is_nested = bool(parent_part) and re.fullmatch(r"[ivx]+", value) and (len(value) > 1 or left > parent_left + 12)
+            if not is_nested:
+                parent_part = f"({value})"
+                parent_left = left
+                current_part = parent_part
+                part_context = []
+            else:
+                current_part = parent_part + f"({value})"
+            buffer = []
+            line = line[label.end():]
+            nested = re.match(r"^\(([ivxlcdm]+)\)\s*", line, flags=re.I)
+            if nested:
+                current_part = parent_part + f"({nested.group(1).lower()})"
+                line = line[nested.end():]
+        return line
 
-    for line in lines:
-        update_label(line)
+    for line, left in lines:
+        line = update_label(line, left)
+        if current_question is None:
+            continue
         buffer.append(line)
-        if current_question is not None and len(" ".join(main_context)) < 700:
+        if not current_part:
             main_context.append(line)
+        elif current_part == parent_part:
+            part_context.append(line)
         bracket_values = re.findall(r"\[(\d{1,2})\]", line)
         marks = (
             re.findall(r"(?:^|\s)\[(\d{1,2})\]\s*$", line)
@@ -174,12 +217,14 @@ def parse_subquestions(pdf_path: Path) -> list[dict]:
             marks_value = int(mark_text)
             if current_question is None or marks_value <= 0 or marks_value > 15:
                 continue
-            text = normalise_text(" ".join(main_context + buffer))
+            context = main_context + (part_context if current_part != parent_part else [])
+            text = normalise_text(" ".join(context + buffer))
             rows.append({
                 "question": current_question,
                 "part": current_part,
                 "marks": marks_value,
                 "_text": text,
+                "_prompt": normalise_text(" ".join(buffer)),
             })
             buffer = []
 
@@ -187,20 +232,20 @@ def parse_subquestions(pdf_path: Path) -> list[dict]:
 
 
 def classify_command(text: str) -> str:
-    for command in COMMAND_WORDS:
-        if re.search(rf"\b{re.escape(command)}\b", text):
-            return command
+    command = re.search(r"\b(" + "|".join(COMMAND_WORDS) + r")\b", text)
+    if command:
+        return command.group(1)
     if any(token in text for token in ("what is", "what are", "which")):
         return "identify"
     return "apply"
 
 
 def classify_question_type(command: str, text: str) -> str:
-    if any(term in text for term in ("calculate", "convert", "show your working", "file size")):
+    if command in {"calculate", "convert"} or "show your working" in text:
         return "calculate"
     if any(term in text for term in ("trace", "dry run", "complete the trace")):
         return "trace"
-    if any(term in text for term in ("write pseudocode", "write an algorithm", "program code")):
+    if command == "write" or (command == "complete" and any(term in text for term in ("pseudocode", "algorithm", "program code"))):
         return "write"
     if any(term in text for term in ("debug", "error in the program", "correct the")):
         return "debug"
@@ -336,8 +381,9 @@ def main() -> None:
         paper_totals.append({"reference": reference, "marks": total_marks, "parts": len(rows)})
         for index, row in enumerate(rows, start=1):
             text = row.pop("_text")
-            command = classify_command(text)
-            question_type = classify_question_type(command, text)
+            prompt = row.pop("_prompt")
+            command = classify_command(prompt)
+            question_type = classify_question_type(command, prompt)
             section = classify_section(text, paper, requirements, token_idf)
             primary, secondary = classify_requirements(text, section, requirements, token_idf)
             source_ref = f"{reference} Q{row['question']}{row['part']}"

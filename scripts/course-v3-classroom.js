@@ -51,13 +51,27 @@
     const target = document.getElementById(location.hash.slice(1));
     if (!active || !target) return;
     const unit = target.closest('.knowledge-unit');
-    if (unit) { select.value = units.indexOf(unit); stage = 'visual-and-core'; }
+    if (unit) {
+      if (Number(select.value) !== units.indexOf(unit)) closeAnswers();
+      select.value = units.indexOf(unit);
+      stage = 'visual-and-core';
+    }
     else if (stages.includes(target)) stage = target.id;
     else { active = false; }
     render();
     target.scrollIntoView({ block: 'start' });
   }
   window.addEventListener('hashchange', followAnchor);
+  document.addEventListener('click', event => {
+    if (!active || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    const link = event.target.closest('a[href^="#"]');
+    if (link && link.hash === location.hash) {
+      // An unchanged fragment does not fire hashchange, but its target may
+      // have been hidden since the previous visit by classroom controls.
+      event.preventDefault();
+      followAnchor();
+    }
+  });
   toolbar.hidden = false;
   render();
 })();

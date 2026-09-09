@@ -16,4 +16,4 @@
 - "Java syntax is automatically acceptable in Paper 2." Correction: Java is only a support language in this course; exam answers should use Cambridge pseudocode.
 - "A trace table is busywork." Correction: trace tables expose logic errors before code becomes expensive to fix.
 - "Testing one normal case is enough." Correction: robust testing includes normal, boundary, and erroneous data.
-- "A procedure and function are the same." Correction: a function returns a value; a procedure performs a task and may not return a value.
+- "A procedure and function are the same." Correction: a function returns a value for use in an expression. A procedure is called as a statement; it can update data through BYREF parameters.

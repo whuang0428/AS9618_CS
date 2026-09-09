@@ -91,7 +91,7 @@
           "sourceRef": "9618/12/S/24 Q7(a)",
           "marks": 1,
           "commandWord": "identify",
-          "questionType": "calculate"
+          "questionType": "recall"
         },
         {
           "sourceRef": "9618/12/W/23 Q3(a)",
@@ -432,13 +432,13 @@
           "questionType": "recall"
         },
         {
-          "sourceRef": "9618/11/W/25 Q1(ii)",
+          "sourceRef": "9618/11/W/25 Q1(b)(ii)",
           "marks": 2,
-          "commandWord": "complete",
-          "questionType": "calculate"
+          "commandWord": "name",
+          "questionType": "recall"
         },
         {
-          "sourceRef": "9618/11/W/25 Q1(iii)",
+          "sourceRef": "9618/11/W/25 Q1(a)(iii)",
           "marks": 2,
           "commandWord": "convert",
           "questionType": "calculate"
@@ -958,7 +958,7 @@
         {
           "sourceRef": "9618/13/S/25 Q7(c)",
           "marks": 2,
-          "commandWord": "complete",
+          "commandWord": "show",
           "questionType": "calculate"
         },
         {
@@ -1417,27 +1417,27 @@
       ],
       "pastPaperRefs": [
         {
-          "sourceRef": "9618/13/S/25 Q1(ii)",
+          "sourceRef": "9618/13/S/25 Q1(c)(ii)",
           "marks": 3,
-          "commandWord": "complete",
-          "questionType": "calculate"
-        },
-        {
-          "sourceRef": "9618/11/S/25 Q3(i)",
-          "marks": 2,
           "commandWord": "complete",
           "questionType": "recall"
         },
         {
-          "sourceRef": "9618/11/S/25 Q3(ii)",
+          "sourceRef": "9618/11/S/25 Q3(b)(i)",
+          "marks": 2,
+          "commandWord": "give",
+          "questionType": "recall"
+        },
+        {
+          "sourceRef": "9618/11/S/25 Q3(b)(ii)",
           "marks": 1,
-          "commandWord": "complete",
+          "commandWord": "convert",
           "questionType": "calculate"
         },
         {
           "sourceRef": "9618/12/W/25 Q7(b)",
           "marks": 1,
-          "commandWord": "complete",
+          "commandWord": "state",
           "questionType": "recall"
         }
       ],
@@ -1897,16 +1897,16 @@
       ],
       "pastPaperRefs": [
         {
-          "sourceRef": "9618/13/S/25 Q1(ii)",
+          "sourceRef": "9618/13/S/25 Q1(a)(ii)",
           "marks": 4,
-          "commandWord": "calculate",
-          "questionType": "calculate"
+          "commandWord": "explain",
+          "questionType": "explain"
         },
         {
           "sourceRef": "9618/13/W/25 Q7(d)",
           "marks": 4,
-          "commandWord": "calculate",
-          "questionType": "calculate"
+          "commandWord": "describe",
+          "questionType": "explain"
         },
         {
           "sourceRef": "9618/11/S/25 Q3(a)",
@@ -1917,8 +1917,8 @@
         {
           "sourceRef": "9618/13/W/25 Q7(c)",
           "marks": 3,
-          "commandWord": "calculate",
-          "questionType": "calculate"
+          "commandWord": "identify",
+          "questionType": "recall"
         }
       ],
       "materialStatus": "complete",
@@ -2451,22 +2451,22 @@
       ],
       "pastPaperRefs": [
         {
-          "sourceRef": "9618/11/S/25 Q2(ii)",
+          "sourceRef": "9618/11/S/25 Q2(b)(ii)",
           "marks": 3,
-          "commandWord": "explain",
-          "questionType": "explain"
+          "commandWord": "identify",
+          "questionType": "recall"
         },
         {
           "sourceRef": "9618/13/S/25 Q1(b)",
           "marks": 3,
           "commandWord": "complete",
-          "questionType": "calculate"
+          "questionType": "recall"
         },
         {
           "sourceRef": "9618/13/W/25 Q1(a)",
           "marks": 3,
           "commandWord": "draw",
-          "questionType": "calculate"
+          "questionType": "diagram"
         },
         {
           "sourceRef": "9618/11/S/25 Q2(c)",
@@ -3090,8 +3090,8 @@
         {
           "sourceRef": "9618/12/S/25 Q6(e)",
           "marks": 3,
-          "commandWord": "complete",
-          "questionType": "recall"
+          "commandWord": "describe",
+          "questionType": "explain"
         },
         {
           "sourceRef": "9618/12/S/25 Q6(a)",
@@ -3733,14 +3733,14 @@
         {
           "sourceRef": "9618/12/W/25 Q5(c)",
           "marks": 3,
-          "commandWord": "complete",
-          "questionType": "recall"
+          "commandWord": "describe",
+          "questionType": "explain"
         },
         {
           "sourceRef": "9618/12/W/25 Q5(d)",
           "marks": 3,
-          "commandWord": "complete",
-          "questionType": "recall"
+          "commandWord": "describe",
+          "questionType": "explain"
         },
         {
           "sourceRef": "9618/12/W/25 Q5(e)",
@@ -4198,10 +4198,10 @@
       ],
       "pastPaperRefs": [
         {
-          "sourceRef": "9618/12/W/25 Q8(i)",
+          "sourceRef": "9618/12/W/25 Q8(b)(i)",
           "marks": 4,
           "commandWord": "explain",
-          "questionType": "calculate"
+          "questionType": "explain"
         },
         {
           "sourceRef": "9618/13/W/25 Q4(a)",
@@ -4909,16 +4909,16 @@
           "questionType": "explain"
         },
         {
-          "sourceRef": "9618/12/S/24 Q3(i)",
+          "sourceRef": "9618/12/S/24 Q3(c)(i)",
           "marks": 2,
           "commandWord": "describe",
           "questionType": "explain"
         },
         {
-          "sourceRef": "9618/13/S/24 Q6(i)",
+          "sourceRef": "9618/13/S/24 Q5(c)(i)",
           "marks": 2,
-          "commandWord": "define",
-          "questionType": "recall"
+          "commandWord": "describe",
+          "questionType": "explain"
         },
         {
           "sourceRef": "9618/11/W/23 Q2(a)",
@@ -5582,7 +5582,7 @@
           "questionType": "explain"
         },
         {
-          "sourceRef": "9618/12/S/24 Q3(ii)",
+          "sourceRef": "9618/12/S/24 Q3(c)(ii)",
           "marks": 2,
           "commandWord": "describe",
           "questionType": "explain"
@@ -6179,14 +6179,14 @@
         {
           "sourceRef": "9618/11/W/25 Q7(c)",
           "marks": 4,
-          "commandWord": "complete",
-          "questionType": "recall"
+          "commandWord": "explain",
+          "questionType": "explain"
         },
         {
           "sourceRef": "9618/12/S/25 Q6(d)",
           "marks": 4,
-          "commandWord": "complete",
-          "questionType": "recall"
+          "commandWord": "draw",
+          "questionType": "diagram"
         },
         {
           "sourceRef": "9618/11/W/25 Q7(a)",
@@ -6197,8 +6197,8 @@
         {
           "sourceRef": "9618/11/W/25 Q7(b)",
           "marks": 2,
-          "commandWord": "complete",
-          "questionType": "recall"
+          "commandWord": "justify",
+          "questionType": "evaluate"
         }
       ],
       "materialStatus": "complete",
@@ -6728,13 +6728,13 @@
           "questionType": "recall"
         },
         {
-          "sourceRef": "9618/11/S/24 Q2(i)",
+          "sourceRef": "9618/11/S/24 Q2(c)(i)",
           "marks": 2,
           "commandWord": "identify",
           "questionType": "recall"
         },
         {
-          "sourceRef": "9618/11/S/24 Q2(ii)",
+          "sourceRef": "9618/11/S/24 Q2(e)(ii)",
           "marks": 2,
           "commandWord": "give",
           "questionType": "recall"
@@ -7208,20 +7208,20 @@
         {
           "sourceRef": "9618/11/S/25 Q6(b)",
           "marks": 5,
-          "commandWord": "complete",
-          "questionType": "recall"
+          "commandWord": "describe",
+          "questionType": "explain"
         },
         {
-          "sourceRef": "9618/11/S/25 Q6(i)",
+          "sourceRef": "9618/11/S/25 Q6(a)(i)",
           "marks": 4,
           "commandWord": "complete",
           "questionType": "recall"
         },
         {
-          "sourceRef": "9618/11/S/25 Q6(ii)",
+          "sourceRef": "9618/11/S/25 Q6(a)(ii)",
           "marks": 3,
-          "commandWord": "complete",
-          "questionType": "recall"
+          "commandWord": "explain",
+          "questionType": "explain"
         },
         {
           "sourceRef": "9618/11/W/25 Q10(a)",
@@ -7539,8 +7539,8 @@
         {
           "sourceRef": "9618/11/W/25 Q10(b)",
           "marks": 1,
-          "commandWord": "explain",
-          "questionType": "explain"
+          "commandWord": "state",
+          "questionType": "recall"
         },
         {
           "sourceRef": "9618/13/W/24 Q2(b)",
@@ -7557,8 +7557,8 @@
         {
           "sourceRef": "9618/12/W/24 Q2(c)",
           "marks": 2,
-          "commandWord": "describe",
-          "questionType": "explain"
+          "commandWord": "give",
+          "questionType": "recall"
         }
       ],
       "materialStatus": "complete",
@@ -8242,11 +8242,11 @@
         {
           "sourceRef": "9618/13/S/24 Q7(d)",
           "marks": 4,
-          "commandWord": "complete",
-          "questionType": "recall"
+          "commandWord": "describe",
+          "questionType": "explain"
         },
         {
-          "sourceRef": "9618/13/S/24 Q7(i)",
+          "sourceRef": "9618/13/S/24 Q7(f)(i)",
           "marks": 4,
           "commandWord": "complete",
           "questionType": "recall"
@@ -8254,8 +8254,8 @@
         {
           "sourceRef": "9618/11/W/24 Q5(c)",
           "marks": 3,
-          "commandWord": "complete",
-          "questionType": "recall"
+          "commandWord": "explain",
+          "questionType": "explain"
         }
       ],
       "materialStatus": "complete",
@@ -8692,7 +8692,7 @@
           "sourceRef": "9618/11/S/25 Q1(a)",
           "marks": 2,
           "commandWord": "write",
-          "questionType": "recall"
+          "questionType": "write"
         },
         {
           "sourceRef": "9618/11/S/25 Q1(b)",
@@ -8709,8 +8709,8 @@
         {
           "sourceRef": "9618/11/W/25 Q3(b)",
           "marks": 2,
-          "commandWord": "draw",
-          "questionType": "diagram"
+          "commandWord": "write",
+          "questionType": "write"
         }
       ],
       "materialStatus": "complete",
@@ -9051,7 +9051,7 @@
           "sourceRef": "9618/11/S/25 Q1(a)",
           "marks": 2,
           "commandWord": "write",
-          "questionType": "recall"
+          "questionType": "write"
         },
         {
           "sourceRef": "9618/11/S/25 Q1(b)",
@@ -9068,8 +9068,8 @@
         {
           "sourceRef": "9618/11/W/25 Q3(b)",
           "marks": 2,
-          "commandWord": "draw",
-          "questionType": "diagram"
+          "commandWord": "write",
+          "questionType": "write"
         }
       ],
       "materialStatus": "complete",
@@ -9415,8 +9415,8 @@
         {
           "sourceRef": "9618/12/S/25 Q1(c)",
           "marks": 4,
-          "commandWord": "complete",
-          "questionType": "recall"
+          "commandWord": "explain",
+          "questionType": "explain"
         },
         {
           "sourceRef": "9618/13/W/25 Q6(b)",
@@ -9427,7 +9427,7 @@
         {
           "sourceRef": "9618/11/W/25 Q6(c)",
           "marks": 3,
-          "commandWord": "complete",
+          "commandWord": "state",
           "questionType": "recall"
         },
         {
@@ -10136,11 +10136,11 @@
         {
           "sourceRef": "9618/13/S/25 Q2(c)",
           "marks": 2,
-          "commandWord": "describe",
+          "commandWord": "explain",
           "questionType": "explain"
         },
         {
-          "sourceRef": "9618/13/S/25 Q2(i)",
+          "sourceRef": "9618/13/S/25 Q2(a)(i)",
           "marks": 2,
           "commandWord": "explain",
           "questionType": "explain"
@@ -10148,14 +10148,14 @@
         {
           "sourceRef": "9618/12/W/24 Q3(b)",
           "marks": 4,
-          "commandWord": "complete",
-          "questionType": "recall"
+          "commandWord": "explain",
+          "questionType": "explain"
         },
         {
           "sourceRef": "9618/12/W/24 Q3(c)",
           "marks": 4,
-          "commandWord": "complete",
-          "questionType": "recall"
+          "commandWord": "describe",
+          "questionType": "explain"
         }
       ],
       "materialStatus": "complete",
@@ -10721,10 +10721,10 @@
       ],
       "pastPaperRefs": [
         {
-          "sourceRef": "9618/13/S/25 Q2(ii)",
+          "sourceRef": "9618/13/S/25 Q2(a)(ii)",
           "marks": 4,
-          "commandWord": "explain",
-          "questionType": "explain"
+          "commandWord": "write",
+          "questionType": "write"
         },
         {
           "sourceRef": "9618/13/S/25 Q2(b)",
@@ -10986,8 +10986,8 @@
         {
           "sourceRef": "9618/13/W/23 Q9(d)",
           "marks": 3,
-          "commandWord": "complete",
-          "questionType": "recall"
+          "commandWord": "describe",
+          "questionType": "explain"
         }
       ],
       "materialStatus": "complete",
@@ -11287,13 +11287,13 @@
           "sourceRef": "9618/12/S/23 Q3(a)",
           "marks": 3,
           "commandWord": "draw",
-          "questionType": "calculate"
+          "questionType": "diagram"
         },
         {
           "sourceRef": "9618/12/S/23 Q3(b)",
           "marks": 3,
           "commandWord": "complete",
-          "questionType": "calculate"
+          "questionType": "recall"
         },
         {
           "sourceRef": "9618/11/W/23 Q8(a)",
@@ -11743,15 +11743,15 @@
           "questionType": "explain"
         },
         {
-          "sourceRef": "9618/13/S/25 Q5(ii)",
+          "sourceRef": "9618/13/S/25 Q5(a)(ii)",
           "marks": 4,
           "commandWord": "complete",
           "questionType": "recall"
         },
         {
-          "sourceRef": "9618/12/S/25 Q7(i)",
+          "sourceRef": "9618/12/S/25 Q7(a)(i)",
           "marks": 3,
-          "commandWord": "compare",
+          "commandWord": "trace",
           "questionType": "trace"
         }
       ],
@@ -12674,8 +12674,8 @@
         {
           "sourceRef": "9618/13/W/25 Q6(a)",
           "marks": 4,
-          "commandWord": "compare",
-          "questionType": "evaluate"
+          "commandWord": "complete",
+          "questionType": "recall"
         },
         {
           "sourceRef": "9618/11/W/25 Q4(a)",
@@ -13054,11 +13054,11 @@
         {
           "sourceRef": "9618/11/W/25 Q5(c)",
           "marks": 2,
-          "commandWord": "describe",
-          "questionType": "explain"
+          "commandWord": "identify",
+          "questionType": "recall"
         },
         {
-          "sourceRef": "9618/11/W/25 Q5(ii)",
+          "sourceRef": "9618/11/W/25 Q5(a)(ii)",
           "marks": 2,
           "commandWord": "state",
           "questionType": "recall"
@@ -13350,28 +13350,28 @@
       ],
       "pastPaperRefs": [
         {
-          "sourceRef": "9618/13/S/24 Q7(ii)",
+          "sourceRef": "9618/13/S/24 Q7(e)(ii)",
           "marks": 4,
-          "commandWord": "complete",
-          "questionType": "recall"
+          "commandWord": "describe",
+          "questionType": "explain"
         },
         {
           "sourceRef": "9618/11/S/24 Q3(b)",
           "marks": 3,
-          "commandWord": "complete",
-          "questionType": "write"
+          "commandWord": "explain",
+          "questionType": "explain"
         },
         {
           "sourceRef": "9618/12/W/24 Q4(c)",
           "marks": 3,
-          "commandWord": "describe",
-          "questionType": "write"
+          "commandWord": "identify",
+          "questionType": "recall"
         },
         {
           "sourceRef": "9618/11/S/24 Q3(a)",
           "marks": 2,
           "commandWord": "explain",
-          "questionType": "write"
+          "questionType": "debug"
         }
       ],
       "materialStatus": "complete",
@@ -13846,13 +13846,13 @@
           "sourceRef": "9618/13/S/25 Q3(b)",
           "marks": 4,
           "commandWord": "complete",
-          "questionType": "debug"
+          "questionType": "recall"
         },
         {
           "sourceRef": "9618/13/S/25 Q3(c)",
           "marks": 4,
-          "commandWord": "complete",
-          "questionType": "debug"
+          "commandWord": "explain",
+          "questionType": "explain"
         }
       ],
       "materialStatus": "complete",
@@ -14100,10 +14100,10 @@
       ],
       "pastPaperRefs": [
         {
-          "sourceRef": "9618/12/W/25 Q10(c)",
+          "sourceRef": "9618/12/W/25 Q11",
           "marks": 3,
-          "commandWord": "describe",
-          "questionType": "explain"
+          "commandWord": "identify",
+          "questionType": "recall"
         },
         {
           "sourceRef": "9618/13/W/25 Q8(b)",
@@ -14114,8 +14114,8 @@
         {
           "sourceRef": "9618/13/W/25 Q8(d)",
           "marks": 3,
-          "commandWord": "explain",
-          "questionType": "explain"
+          "commandWord": "give",
+          "questionType": "recall"
         },
         {
           "sourceRef": "9618/13/W/25 Q8(a)",
@@ -14539,7 +14539,7 @@
           "sourceRef": "9618/12/W/24 Q4(b)",
           "marks": 3,
           "commandWord": "describe",
-          "questionType": "debug"
+          "questionType": "explain"
         },
         {
           "sourceRef": "9618/12/S/23 Q7(c)",
@@ -15304,26 +15304,26 @@
         {
           "sourceRef": "9618/11/S/25 Q7(b)",
           "marks": 5,
-          "commandWord": "describe",
+          "commandWord": "explain",
           "questionType": "explain"
         },
         {
           "sourceRef": "9618/11/S/25 Q7(a)",
           "marks": 3,
-          "commandWord": "describe",
-          "questionType": "explain"
+          "commandWord": "identify",
+          "questionType": "recall"
         },
         {
           "sourceRef": "9618/11/S/25 Q7(c)",
           "marks": 3,
-          "commandWord": "describe",
+          "commandWord": "explain",
           "questionType": "explain"
         },
         {
           "sourceRef": "9618/11/W/25 Q8(b)",
           "marks": 3,
-          "commandWord": "explain",
-          "questionType": "explain"
+          "commandWord": "give",
+          "questionType": "recall"
         }
       ],
       "materialStatus": "complete",
@@ -15785,16 +15785,16 @@
           "questionType": "recall"
         },
         {
-          "sourceRef": "9618/12/S/24 Q3(i)",
+          "sourceRef": "9618/12/S/24 Q3(a)(i)",
           "marks": 3,
-          "commandWord": "describe",
-          "questionType": "explain"
+          "commandWord": "identify",
+          "questionType": "recall"
         },
         {
-          "sourceRef": "9618/12/S/24 Q3(ii)",
+          "sourceRef": "9618/12/S/24 Q3(a)(ii)",
           "marks": 3,
-          "commandWord": "describe",
-          "questionType": "explain"
+          "commandWord": "identify",
+          "questionType": "recall"
         },
         {
           "sourceRef": "9618/13/S/23 Q6(a)",
@@ -16286,16 +16286,16 @@
           "questionType": "recall"
         },
         {
-          "sourceRef": "9618/11/S/24 Q5(ii)",
+          "sourceRef": "9618/11/S/24 Q5(c)(ii)",
           "marks": 4,
-          "commandWord": "complete",
-          "questionType": "recall"
+          "commandWord": "describe",
+          "questionType": "explain"
         },
         {
-          "sourceRef": "9618/11/S/24 Q5(i)",
+          "sourceRef": "9618/11/S/24 Q5(c)(i)",
           "marks": 3,
-          "commandWord": "complete",
-          "questionType": "recall"
+          "commandWord": "explain",
+          "questionType": "explain"
         }
       ],
       "materialStatus": "complete",
@@ -16795,8 +16795,8 @@
         {
           "sourceRef": "9618/13/W/24 Q5(b)",
           "marks": 3,
-          "commandWord": "complete",
-          "questionType": "recall"
+          "commandWord": "explain",
+          "questionType": "explain"
         }
       ],
       "materialStatus": "complete",
@@ -17226,15 +17226,15 @@
           "questionType": "explain"
         },
         {
-          "sourceRef": "9618/12/W/24 Q5(i)",
+          "sourceRef": "9618/12/W/24 Q5(b)(i)",
           "marks": 3,
-          "commandWord": "describe",
-          "questionType": "explain"
+          "commandWord": "identify",
+          "questionType": "recall"
         },
         {
-          "sourceRef": "9618/12/W/24 Q5(ii)",
+          "sourceRef": "9618/12/W/24 Q5(b)(ii)",
           "marks": 2,
-          "commandWord": "describe",
+          "commandWord": "explain",
           "questionType": "explain"
         }
       ],
@@ -17511,22 +17511,22 @@
           "questionType": "recall"
         },
         {
-          "sourceRef": "9618/12/S/25 Q3(i)",
+          "sourceRef": "9618/12/S/25 Q3(c)(i)",
           "marks": 3,
           "commandWord": "describe",
           "questionType": "explain"
         },
         {
-          "sourceRef": "9618/12/S/25 Q3(ii)",
+          "sourceRef": "9618/12/S/25 Q3(c)(ii)",
           "marks": 3,
-          "commandWord": "describe",
+          "commandWord": "explain",
           "questionType": "explain"
         },
         {
           "sourceRef": "9618/12/W/25 Q2(b)",
           "marks": 2,
-          "commandWord": "complete",
-          "questionType": "recall"
+          "commandWord": "describe",
+          "questionType": "explain"
         }
       ],
       "materialStatus": "complete",
@@ -17971,14 +17971,14 @@
         {
           "sourceRef": "9618/11/S/25 Q4(a)",
           "marks": 4,
-          "commandWord": "explain",
-          "questionType": "explain"
+          "commandWord": "identify",
+          "questionType": "recall"
         },
         {
           "sourceRef": "9618/11/W/25 Q8(c)",
           "marks": 4,
-          "commandWord": "complete",
-          "questionType": "recall"
+          "commandWord": "describe",
+          "questionType": "explain"
         },
         {
           "sourceRef": "9618/12/S/25 Q3(a)",
@@ -17989,8 +17989,8 @@
         {
           "sourceRef": "9618/11/S/25 Q4(b)",
           "marks": 2,
-          "commandWord": "explain",
-          "questionType": "explain"
+          "commandWord": "identify",
+          "questionType": "recall"
         }
       ],
       "materialStatus": "complete",
@@ -18301,25 +18301,25 @@
       ],
       "pastPaperRefs": [
         {
-          "sourceRef": "9618/12/W/24 Q6(i)",
+          "sourceRef": "9618/12/W/24 Q6(b)(i)",
           "marks": 6,
-          "commandWord": "explain",
-          "questionType": "explain"
+          "commandWord": "identify",
+          "questionType": "recall"
         },
         {
-          "sourceRef": "9618/11/W/24 Q3(i)",
+          "sourceRef": "9618/11/W/24 Q3(d)(i)",
           "marks": 4,
-          "commandWord": "complete",
-          "questionType": "recall"
+          "commandWord": "describe",
+          "questionType": "explain"
         },
         {
           "sourceRef": "9618/11/W/24 Q2(a)",
           "marks": 3,
-          "commandWord": "explain",
-          "questionType": "explain"
+          "commandWord": "give",
+          "questionType": "recall"
         },
         {
-          "sourceRef": "9618/11/W/24 Q2(i)",
+          "sourceRef": "9618/11/W/24 Q2(b)(i)",
           "marks": 3,
           "commandWord": "complete",
           "questionType": "recall"
@@ -18894,10 +18894,10 @@
       ],
       "pastPaperRefs": [
         {
-          "sourceRef": "9618/11/W/25 Q2(ii)",
+          "sourceRef": "9618/11/W/25 Q2(c)(ii)",
           "marks": 4,
-          "commandWord": "complete",
-          "questionType": "recall"
+          "commandWord": "write",
+          "questionType": "write"
         },
         {
           "sourceRef": "9618/13/W/25 Q5(a)",
@@ -18914,8 +18914,8 @@
         {
           "sourceRef": "9618/11/W/25 Q2(b)",
           "marks": 2,
-          "commandWord": "complete",
-          "questionType": "recall"
+          "commandWord": "explain",
+          "questionType": "explain"
         }
       ],
       "materialStatus": "complete",
@@ -19344,14 +19344,14 @@
         {
           "sourceRef": "9618/13/W/25 Q5(d)",
           "marks": 4,
-          "commandWord": "complete",
-          "questionType": "recall"
+          "commandWord": "describe",
+          "questionType": "explain"
         },
         {
           "sourceRef": "9618/11/S/24 Q6(b)",
           "marks": 4,
-          "commandWord": "complete",
-          "questionType": "recall"
+          "commandWord": "describe",
+          "questionType": "explain"
         },
         {
           "sourceRef": "9618/12/S/23 Q2(a)",
@@ -19360,10 +19360,10 @@
           "questionType": "recall"
         },
         {
-          "sourceRef": "9618/12/S/23 Q2(ii)",
+          "sourceRef": "9618/12/S/23 Q2(c)(ii)",
           "marks": 4,
-          "commandWord": "complete",
-          "questionType": "recall"
+          "commandWord": "write",
+          "questionType": "write"
         }
       ],
       "materialStatus": "complete",
@@ -19830,23 +19830,23 @@
         {
           "sourceRef": "9618/13/W/25 Q5(b)",
           "marks": 4,
-          "commandWord": "complete",
+          "commandWord": "define",
           "questionType": "recall"
         },
         {
-          "sourceRef": "9618/11/W/24 Q2(ii)",
+          "sourceRef": "9618/11/W/24 Q2(b)(ii)",
           "marks": 5,
-          "commandWord": "define",
-          "questionType": "recall"
+          "commandWord": "write",
+          "questionType": "write"
         },
         {
           "sourceRef": "9618/12/S/24 Q4(d)",
           "marks": 5,
-          "commandWord": "define",
-          "questionType": "recall"
+          "commandWord": "describe",
+          "questionType": "explain"
         },
         {
-          "sourceRef": "9618/13/S/24 Q6",
+          "sourceRef": "9618/13/S/24 Q4(b)",
           "marks": 4,
           "commandWord": "define",
           "questionType": "recall"
@@ -20176,23 +20176,23 @@
         {
           "sourceRef": "9618/13/W/25 Q5(c)",
           "marks": 5,
-          "commandWord": "complete",
+          "commandWord": "apply",
           "questionType": "recall"
         },
         {
-          "sourceRef": "9618/13/S/24 Q6(b)",
+          "sourceRef": "9618/13/S/24 Q4(c)",
           "marks": 4,
-          "commandWord": "define",
-          "questionType": "recall"
+          "commandWord": "write",
+          "questionType": "write"
         },
         {
-          "sourceRef": "9618/11/S/24 Q6(ii)",
+          "sourceRef": "9618/11/S/24 Q6(c)(ii)",
           "marks": 3,
-          "commandWord": "complete",
-          "questionType": "recall"
+          "commandWord": "write",
+          "questionType": "write"
         },
         {
-          "sourceRef": "9618/11/W/24 Q3",
+          "sourceRef": "9618/11/W/24 Q2(b)(iii)",
           "marks": 3,
           "commandWord": "design",
           "questionType": "recall"
@@ -20728,20 +20728,20 @@
         {
           "sourceRef": "9618/11/S/25 Q5(e)",
           "marks": 4,
-          "commandWord": "complete",
-          "questionType": "recall"
+          "commandWord": "write",
+          "questionType": "write"
         },
         {
-          "sourceRef": "9618/12/S/25 Q5(i)",
+          "sourceRef": "9618/12/S/25 Q5(c)(i)",
           "marks": 4,
-          "commandWord": "design",
+          "commandWord": "identify",
           "questionType": "recall"
         },
         {
           "sourceRef": "9618/12/W/25 Q4(c)",
           "marks": 4,
-          "commandWord": "describe",
-          "questionType": "explain"
+          "commandWord": "write",
+          "questionType": "write"
         },
         {
           "sourceRef": "9618/13/S/25 Q6(a)",
@@ -21416,19 +21416,19 @@
         {
           "sourceRef": "9618/11/S/25 Q6(b)",
           "marks": 5,
-          "commandWord": "complete",
-          "questionType": "recall"
+          "commandWord": "describe",
+          "questionType": "explain"
         },
         {
           "sourceRef": "9618/11/S/25 Q7(b)",
           "marks": 5,
-          "commandWord": "describe",
+          "commandWord": "explain",
           "questionType": "explain"
         },
         {
           "sourceRef": "9618/13/W/25 Q5(c)",
           "marks": 5,
-          "commandWord": "complete",
+          "commandWord": "apply",
           "questionType": "recall"
         }
       ],
@@ -21860,13 +21860,13 @@
       ],
       "pastPaperRefs": [
         {
-          "sourceRef": "9618/22/S/25 Q2(i)",
+          "sourceRef": "9618/22/S/25 Q2(b)(i)",
           "marks": 2,
-          "commandWord": "calculate",
-          "questionType": "calculate"
+          "commandWord": "state",
+          "questionType": "recall"
         },
         {
-          "sourceRef": "9618/22/S/24 Q7(i)",
+          "sourceRef": "9618/22/S/24 Q7(b)(i)",
           "marks": 5,
           "commandWord": "complete",
           "questionType": "recall"
@@ -21874,14 +21874,14 @@
         {
           "sourceRef": "9618/23/W/24 Q7(b)",
           "marks": 4,
-          "commandWord": "calculate",
-          "questionType": "calculate"
+          "commandWord": "give",
+          "questionType": "recall"
         },
         {
           "sourceRef": "9618/22/S/24 Q7(a)",
           "marks": 3,
-          "commandWord": "describe",
-          "questionType": "explain"
+          "commandWord": "identify",
+          "questionType": "recall"
         }
       ],
       "materialStatus": "complete",
@@ -22150,8 +22150,8 @@
         {
           "sourceRef": "9618/21/S/24 Q2(b)",
           "marks": 2,
-          "commandWord": "complete",
-          "questionType": "recall"
+          "commandWord": "describe",
+          "questionType": "explain"
         },
         {
           "sourceRef": "9618/22/W/23 Q2(a)",
@@ -22597,19 +22597,19 @@
           "sourceRef": "9618/22/S/24 Q2(a)",
           "marks": 5,
           "commandWord": "complete",
-          "questionType": "recall"
+          "questionType": "write"
         },
         {
           "sourceRef": "9618/22/S/24 Q2(b)",
           "marks": 5,
-          "commandWord": "complete",
+          "commandWord": "write",
           "questionType": "write"
         },
         {
           "sourceRef": "9618/23/S/23 Q1(d)",
           "marks": 4,
           "commandWord": "complete",
-          "questionType": "recall"
+          "questionType": "write"
         }
       ],
       "materialStatus": "complete",
@@ -23105,19 +23105,19 @@
           "sourceRef": "9618/21/S/25 Q3",
           "marks": 8,
           "commandWord": "write",
-          "questionType": "recall"
+          "questionType": "write"
         },
         {
-          "sourceRef": "9618/21/S/23 Q4(a)",
+          "sourceRef": "9618/21/S/23 Q2(a)",
           "marks": 4,
           "commandWord": "draw",
           "questionType": "diagram"
         },
         {
-          "sourceRef": "9618/21/S/23 Q4(ii)",
+          "sourceRef": "9618/21/S/23 Q3(a)(ii)",
           "marks": 2,
           "commandWord": "describe",
-          "questionType": "write"
+          "questionType": "explain"
         }
       ],
       "materialStatus": "complete",
@@ -23382,26 +23382,26 @@
         {
           "sourceRef": "9618/23/W/25 Q2(a)",
           "marks": 6,
-          "commandWord": "describe",
-          "questionType": "explain"
+          "commandWord": "write",
+          "questionType": "write"
         },
         {
           "sourceRef": "9618/22/S/25 Q2(a)",
           "marks": 2,
-          "commandWord": "calculate",
-          "questionType": "calculate"
+          "commandWord": "design",
+          "questionType": "recall"
         },
         {
-          "sourceRef": "9618/22/S/25 Q2(ii)",
+          "sourceRef": "9618/22/S/25 Q2(b)(ii)",
           "marks": 2,
           "commandWord": "calculate",
           "questionType": "calculate"
         },
         {
-          "sourceRef": "9618/22/S/25 Q2(iii)",
+          "sourceRef": "9618/22/S/25 Q2(b)(iii)",
           "marks": 2,
-          "commandWord": "calculate",
-          "questionType": "calculate"
+          "commandWord": "identify",
+          "questionType": "recall"
         }
       ],
       "materialStatus": "complete",
@@ -23911,23 +23911,23 @@
         {
           "sourceRef": "9618/23/W/25 Q2(a)",
           "marks": 6,
-          "commandWord": "describe",
-          "questionType": "explain"
+          "commandWord": "write",
+          "questionType": "write"
         },
         {
           "sourceRef": "9618/22/S/25 Q2(a)",
           "marks": 2,
-          "commandWord": "calculate",
-          "questionType": "calculate"
+          "commandWord": "design",
+          "questionType": "recall"
         },
         {
-          "sourceRef": "9618/22/S/25 Q2(i)",
+          "sourceRef": "9618/22/S/25 Q2(b)(i)",
           "marks": 2,
-          "commandWord": "calculate",
-          "questionType": "calculate"
+          "commandWord": "state",
+          "questionType": "recall"
         },
         {
-          "sourceRef": "9618/22/S/25 Q2(ii)",
+          "sourceRef": "9618/22/S/25 Q2(b)(ii)",
           "marks": 2,
           "commandWord": "calculate",
           "questionType": "calculate"
@@ -24486,19 +24486,19 @@
       ],
       "pastPaperRefs": [
         {
-          "sourceRef": "9618/21/S/25 Q7(i)",
+          "sourceRef": "9618/21/S/25 Q7(b)(i)",
           "marks": 8,
           "commandWord": "write",
-          "questionType": "calculate"
+          "questionType": "write"
         },
         {
           "sourceRef": "9618/21/W/25 Q8(b)",
           "marks": 8,
-          "commandWord": "define",
+          "commandWord": "apply",
           "questionType": "recall"
         },
         {
-          "sourceRef": "9618/23/S/25 Q7(i)",
+          "sourceRef": "9618/23/S/25 Q7(b)(i)",
           "marks": 8,
           "commandWord": "write",
           "questionType": "write"
@@ -24506,8 +24506,8 @@
         {
           "sourceRef": "9618/23/W/25 Q8(a)",
           "marks": 8,
-          "commandWord": "define",
-          "questionType": "recall"
+          "commandWord": "write",
+          "questionType": "write"
         }
       ],
       "materialStatus": "complete",
@@ -25060,22 +25060,22 @@
           "questionType": "recall"
         },
         {
-          "sourceRef": "9618/22/S/24 Q5(ii)",
+          "sourceRef": "9618/22/S/24 Q5(a)(ii)",
           "marks": 2,
-          "commandWord": "explain",
-          "questionType": "explain"
+          "commandWord": "identify",
+          "questionType": "recall"
         },
         {
-          "sourceRef": "9618/23/W/24 Q5(i)",
+          "sourceRef": "9618/23/W/24 Q4(b)(i)",
           "marks": 2,
-          "commandWord": "complete",
-          "questionType": "recall"
+          "commandWord": "describe",
+          "questionType": "explain"
         },
         {
           "sourceRef": "9618/22/S/24 Q5(b)",
           "marks": 1,
           "commandWord": "identify",
-          "questionType": "write"
+          "questionType": "recall"
         }
       ],
       "materialStatus": "complete",
@@ -25330,17 +25330,17 @@
         {
           "sourceRef": "9618/21/S/25 Q6(b)",
           "marks": 8,
-          "commandWord": "complete",
+          "commandWord": "apply",
           "questionType": "recall"
         },
         {
           "sourceRef": "9618/21/W/25 Q4(a)",
           "marks": 6,
           "commandWord": "complete",
-          "questionType": "recall"
+          "questionType": "write"
         },
         {
-          "sourceRef": "9618/22/W/25 Q8(b)",
+          "sourceRef": "9618/22/W/25 Q4(b)",
           "marks": 5,
           "commandWord": "complete",
           "questionType": "write"
@@ -25348,7 +25348,7 @@
         {
           "sourceRef": "9618/21/W/25 Q3(a)(i)",
           "marks": 4,
-          "commandWord": "define",
+          "commandWord": "write",
           "questionType": "write"
         }
       ],
@@ -25809,17 +25809,17 @@
         {
           "sourceRef": "9618/21/S/25 Q6(b)",
           "marks": 8,
-          "commandWord": "complete",
+          "commandWord": "apply",
           "questionType": "recall"
         },
         {
           "sourceRef": "9618/21/W/25 Q4(a)",
           "marks": 6,
           "commandWord": "complete",
-          "questionType": "recall"
+          "questionType": "write"
         },
         {
-          "sourceRef": "9618/22/W/25 Q8(b)",
+          "sourceRef": "9618/22/W/25 Q4(b)",
           "marks": 5,
           "commandWord": "complete",
           "questionType": "write"
@@ -25827,7 +25827,7 @@
         {
           "sourceRef": "9618/21/W/25 Q3(a)(i)",
           "marks": 4,
-          "commandWord": "define",
+          "commandWord": "write",
           "questionType": "write"
         }
       ],
@@ -26209,10 +26209,10 @@
       ],
       "pastPaperRefs": [
         {
-          "sourceRef": "9618/21/S/23 Q4(ii)",
+          "sourceRef": "9618/21/S/23 Q1(c)(ii)",
           "marks": 1,
           "commandWord": "write",
-          "questionType": "recall"
+          "questionType": "write"
         }
       ],
       "materialStatus": "complete",
@@ -26483,10 +26483,10 @@
       ],
       "pastPaperRefs": [
         {
-          "sourceRef": "9618/21/S/23 Q4(ii)",
+          "sourceRef": "9618/21/S/23 Q1(c)(ii)",
           "marks": 1,
           "commandWord": "write",
-          "questionType": "recall"
+          "questionType": "write"
         }
       ],
       "materialStatus": "complete",
@@ -26727,14 +26727,14 @@
         {
           "sourceRef": "9618/22/S/25 Q5(b)",
           "marks": 8,
-          "commandWord": "complete",
+          "commandWord": "apply",
           "questionType": "recall"
         },
         {
           "sourceRef": "9618/22/S/24 Q8(c)",
           "marks": 8,
-          "commandWord": "give",
-          "questionType": "write"
+          "commandWord": "name",
+          "questionType": "recall"
         },
         {
           "sourceRef": "9618/23/S/24 Q2(a)",
@@ -26746,7 +26746,7 @@
           "sourceRef": "9618/21/W/24 Q3(a)",
           "marks": 4,
           "commandWord": "complete",
-          "questionType": "recall"
+          "questionType": "write"
         }
       ],
       "materialStatus": "complete",
@@ -26995,10 +26995,10 @@
       ],
       "pastPaperRefs": [
         {
-          "sourceRef": "9618/22/S/25 Q10(b)",
+          "sourceRef": "9618/22/S/25 Q6(b)",
           "marks": 2,
-          "commandWord": "complete",
-          "questionType": "trace"
+          "commandWord": "identify",
+          "questionType": "recall"
         },
         {
           "sourceRef": "9618/21/S/24 Q3(a)",
@@ -27007,7 +27007,7 @@
           "questionType": "explain"
         },
         {
-          "sourceRef": "9618/22/S/23 Q3(i)",
+          "sourceRef": "9618/22/S/23 Q3(a)(i)",
           "marks": 4,
           "commandWord": "describe",
           "questionType": "explain"
@@ -27278,25 +27278,25 @@
       ],
       "pastPaperRefs": [
         {
-          "sourceRef": "9618/23/S/25 Q5(b)",
+          "sourceRef": "9618/23/S/25 Q5",
           "marks": 8,
-          "commandWord": "describe",
+          "commandWord": "write",
           "questionType": "write"
         },
         {
           "sourceRef": "9618/21/S/25 Q5",
           "marks": 7,
-          "commandWord": "describe",
-          "questionType": "explain"
+          "commandWord": "state",
+          "questionType": "recall"
         },
         {
-          "sourceRef": "9618/23/S/25 Q5(c)",
+          "sourceRef": "9618/23/S/25 Q3",
           "marks": 7,
           "commandWord": "calculate",
           "questionType": "calculate"
         },
         {
-          "sourceRef": "9618/23/S/25 Q5(a)",
+          "sourceRef": "9618/23/S/25 Q4(a)",
           "marks": 5,
           "commandWord": "describe",
           "questionType": "explain"
@@ -27811,25 +27811,25 @@
       ],
       "pastPaperRefs": [
         {
-          "sourceRef": "9618/23/S/25 Q5(b)",
+          "sourceRef": "9618/23/S/25 Q5",
           "marks": 8,
-          "commandWord": "describe",
+          "commandWord": "write",
           "questionType": "write"
         },
         {
           "sourceRef": "9618/21/S/25 Q5",
           "marks": 7,
-          "commandWord": "describe",
-          "questionType": "explain"
+          "commandWord": "state",
+          "questionType": "recall"
         },
         {
-          "sourceRef": "9618/23/S/25 Q5(c)",
+          "sourceRef": "9618/23/S/25 Q3",
           "marks": 7,
           "commandWord": "calculate",
           "questionType": "calculate"
         },
         {
-          "sourceRef": "9618/23/S/25 Q5(a)",
+          "sourceRef": "9618/23/S/25 Q4(a)",
           "marks": 5,
           "commandWord": "describe",
           "questionType": "explain"
@@ -28306,25 +28306,25 @@
       ],
       "pastPaperRefs": [
         {
-          "sourceRef": "9618/23/S/25 Q5(b)",
+          "sourceRef": "9618/23/S/25 Q5",
           "marks": 8,
-          "commandWord": "describe",
+          "commandWord": "write",
           "questionType": "write"
         },
         {
           "sourceRef": "9618/21/S/25 Q5",
           "marks": 7,
-          "commandWord": "describe",
-          "questionType": "explain"
+          "commandWord": "state",
+          "questionType": "recall"
         },
         {
-          "sourceRef": "9618/23/S/25 Q5(c)",
+          "sourceRef": "9618/23/S/25 Q3",
           "marks": 7,
           "commandWord": "calculate",
           "questionType": "calculate"
         },
         {
-          "sourceRef": "9618/23/S/25 Q5(a)",
+          "sourceRef": "9618/23/S/25 Q4(a)",
           "marks": 5,
           "commandWord": "describe",
           "questionType": "explain"
@@ -28790,25 +28790,25 @@
       ],
       "pastPaperRefs": [
         {
-          "sourceRef": "9618/23/S/25 Q5(b)",
+          "sourceRef": "9618/23/S/25 Q5",
           "marks": 8,
-          "commandWord": "describe",
+          "commandWord": "write",
           "questionType": "write"
         },
         {
           "sourceRef": "9618/21/S/25 Q5",
           "marks": 7,
-          "commandWord": "describe",
-          "questionType": "explain"
+          "commandWord": "state",
+          "questionType": "recall"
         },
         {
-          "sourceRef": "9618/23/S/25 Q5(c)",
+          "sourceRef": "9618/23/S/25 Q3",
           "marks": 7,
           "commandWord": "calculate",
           "questionType": "calculate"
         },
         {
-          "sourceRef": "9618/23/S/25 Q5(a)",
+          "sourceRef": "9618/23/S/25 Q4(a)",
           "marks": 5,
           "commandWord": "describe",
           "questionType": "explain"
@@ -29113,28 +29113,28 @@
       ],
       "pastPaperRefs": [
         {
-          "sourceRef": "9618/23/S/25 Q5(b)",
+          "sourceRef": "9618/23/S/25 Q4(b)",
           "marks": 3,
           "commandWord": "describe",
           "questionType": "explain"
         },
         {
-          "sourceRef": "9618/23/S/25 Q5(c)",
+          "sourceRef": "9618/23/S/25 Q2(c)",
           "marks": 2,
           "commandWord": "describe",
           "questionType": "explain"
         },
         {
-          "sourceRef": "9618/23/S/25 Q5(ii)",
+          "sourceRef": "9618/23/S/25 Q2(b)(ii)",
           "marks": 1,
           "commandWord": "state",
           "questionType": "recall"
         },
         {
-          "sourceRef": "9618/22/W/23 Q4(b)",
+          "sourceRef": "9618/22/W/23 Q3(b)",
           "marks": 4,
           "commandWord": "complete",
-          "questionType": "recall"
+          "questionType": "write"
         }
       ],
       "materialStatus": "complete",
@@ -29536,10 +29536,10 @@
       ],
       "pastPaperRefs": [
         {
-          "sourceRef": "9618/22/S/25 Q10(a)",
+          "sourceRef": "9618/22/S/25 Q7(a)",
           "marks": 8,
-          "commandWord": "complete",
-          "questionType": "trace"
+          "commandWord": "write",
+          "questionType": "write"
         },
         {
           "sourceRef": "9618/21/S/25 Q7(a)",
@@ -29556,7 +29556,7 @@
         {
           "sourceRef": "9618/21/S/25 Q1(c)",
           "marks": 3,
-          "commandWord": "complete",
+          "commandWord": "design",
           "questionType": "recall"
         }
       ],
@@ -29822,16 +29822,16 @@
           "sourceRef": "9618/22/S/25 Q4",
           "marks": 6,
           "commandWord": "complete",
-          "questionType": "recall"
+          "questionType": "write"
         },
         {
           "sourceRef": "9618/21/S/25 Q1(b)",
           "marks": 5,
           "commandWord": "complete",
-          "questionType": "calculate"
+          "questionType": "write"
         },
         {
-          "sourceRef": "9618/23/S/25 Q1(i)",
+          "sourceRef": "9618/23/S/25 Q1(a)(i)",
           "marks": 2,
           "commandWord": "state",
           "questionType": "recall"
@@ -30139,16 +30139,16 @@
           "sourceRef": "9618/22/S/25 Q4",
           "marks": 6,
           "commandWord": "complete",
-          "questionType": "recall"
+          "questionType": "write"
         },
         {
           "sourceRef": "9618/21/S/25 Q1(b)",
           "marks": 5,
           "commandWord": "complete",
-          "questionType": "calculate"
+          "questionType": "write"
         },
         {
-          "sourceRef": "9618/23/S/25 Q1(i)",
+          "sourceRef": "9618/23/S/25 Q1(a)(i)",
           "marks": 2,
           "commandWord": "state",
           "questionType": "recall"
@@ -30416,11 +30416,11 @@
         {
           "sourceRef": "9618/23/W/25 Q4",
           "marks": 6,
-          "commandWord": "complete",
+          "commandWord": "convert",
           "questionType": "calculate"
         },
         {
-          "sourceRef": "9618/21/S/25 Q7(ii)",
+          "sourceRef": "9618/21/S/25 Q7(b)(ii)",
           "marks": 4,
           "commandWord": "explain",
           "questionType": "explain"
@@ -30428,11 +30428,11 @@
         {
           "sourceRef": "9618/23/W/25 Q1(a)",
           "marks": 3,
-          "commandWord": "design",
+          "commandWord": "state",
           "questionType": "recall"
         },
         {
-          "sourceRef": "9618/23/S/25 Q1(iii)",
+          "sourceRef": "9618/23/S/25 Q1(a)(iii)",
           "marks": 2,
           "commandWord": "state",
           "questionType": "recall"
@@ -30684,13 +30684,13 @@
           "sourceRef": "9618/22/W/25 Q1(a)",
           "marks": 4,
           "commandWord": "complete",
-          "questionType": "recall"
+          "questionType": "write"
         },
         {
           "sourceRef": "9618/23/W/24 Q1(a)",
           "marks": 4,
           "commandWord": "complete",
-          "questionType": "recall"
+          "questionType": "write"
         },
         {
           "sourceRef": "9618/22/W/24 Q5(c)",
@@ -30980,13 +30980,13 @@
           "sourceRef": "9618/22/W/25 Q1(a)",
           "marks": 4,
           "commandWord": "complete",
-          "questionType": "recall"
+          "questionType": "write"
         },
         {
           "sourceRef": "9618/23/W/24 Q1(a)",
           "marks": 4,
           "commandWord": "complete",
-          "questionType": "recall"
+          "questionType": "write"
         },
         {
           "sourceRef": "9618/22/W/24 Q5(c)",
@@ -31276,13 +31276,13 @@
           "sourceRef": "9618/22/W/25 Q1(a)",
           "marks": 4,
           "commandWord": "complete",
-          "questionType": "recall"
+          "questionType": "write"
         },
         {
           "sourceRef": "9618/23/W/24 Q1(a)",
           "marks": 4,
           "commandWord": "complete",
-          "questionType": "recall"
+          "questionType": "write"
         },
         {
           "sourceRef": "9618/22/W/24 Q5(c)",
@@ -31563,8 +31563,8 @@
         {
           "sourceRef": "9618/22/W/23 Q2(b)",
           "marks": 2,
-          "commandWord": "draw",
-          "questionType": "diagram"
+          "commandWord": "give",
+          "questionType": "recall"
         }
       ],
       "materialStatus": "complete",
@@ -31808,10 +31808,10 @@
       ],
       "pastPaperRefs": [
         {
-          "sourceRef": "9618/22/S/25 Q10(b)",
+          "sourceRef": "9618/22/S/25 Q7(b)",
           "marks": 7,
-          "commandWord": "complete",
-          "questionType": "trace"
+          "commandWord": "apply",
+          "questionType": "recall"
         },
         {
           "sourceRef": "9618/23/W/25 Q5(a)",
@@ -31820,10 +31820,10 @@
           "questionType": "trace"
         },
         {
-          "sourceRef": "9618/22/S/25 Q10(ii)",
+          "sourceRef": "9618/22/S/25 Q6(a)(ii)",
           "marks": 3,
           "commandWord": "complete",
-          "questionType": "trace"
+          "questionType": "recall"
         },
         {
           "sourceRef": "9618/22/W/25 Q1(b)",
@@ -32120,26 +32120,26 @@
         {
           "sourceRef": "9618/21/W/25 Q6(b)",
           "marks": 7,
-          "commandWord": "calculate",
-          "questionType": "calculate"
+          "commandWord": "identify",
+          "questionType": "recall"
         },
         {
           "sourceRef": "9618/23/W/25 Q6(b)",
           "marks": 7,
-          "commandWord": "calculate",
-          "questionType": "calculate"
+          "commandWord": "apply",
+          "questionType": "recall"
         },
         {
           "sourceRef": "9618/23/S/25 Q1(b)",
           "marks": 5,
-          "commandWord": "complete",
+          "commandWord": "design",
           "questionType": "recall"
         },
         {
           "sourceRef": "9618/21/S/25 Q2(c)",
           "marks": 4,
-          "commandWord": "calculate",
-          "questionType": "calculate"
+          "commandWord": "identify",
+          "questionType": "recall"
         }
       ],
       "materialStatus": "complete",
@@ -32866,16 +32866,16 @@
       ],
       "pastPaperRefs": [
         {
-          "sourceRef": "9618/22/S/25 Q10(a)",
+          "sourceRef": "9618/22/S/25 Q7(a)",
           "marks": 8,
-          "commandWord": "complete",
-          "questionType": "trace"
+          "commandWord": "write",
+          "questionType": "write"
         },
         {
-          "sourceRef": "9618/22/S/25 Q10(b)",
+          "sourceRef": "9618/22/S/25 Q7(b)",
           "marks": 7,
-          "commandWord": "complete",
-          "questionType": "trace"
+          "commandWord": "apply",
+          "questionType": "recall"
         },
         {
           "sourceRef": "9618/21/S/25 Q7(a)",
@@ -32886,7 +32886,7 @@
         {
           "sourceRef": "9618/23/S/25 Q1(b)",
           "marks": 5,
-          "commandWord": "complete",
+          "commandWord": "design",
           "questionType": "recall"
         }
       ],
@@ -33678,23 +33678,23 @@
         {
           "sourceRef": "9618/22/S/25 Q1(c)",
           "marks": 4,
-          "commandWord": "complete",
+          "commandWord": "design",
           "questionType": "recall"
         },
         {
-          "sourceRef": "9618/22/S/25 Q1(i)",
+          "sourceRef": "9618/22/S/25 Q1(b)(i)",
           "marks": 3,
-          "commandWord": "explain",
-          "questionType": "explain"
+          "commandWord": "give",
+          "questionType": "recall"
         },
         {
-          "sourceRef": "9618/22/S/25 Q1(iii)",
+          "sourceRef": "9618/22/S/25 Q1(d)(iii)",
           "marks": 2,
-          "commandWord": "explain",
-          "questionType": "explain"
+          "commandWord": "give",
+          "questionType": "recall"
         },
         {
-          "sourceRef": "9618/22/S/25 Q1(i)",
+          "sourceRef": "9618/22/S/25 Q1(a)(i)",
           "marks": 1,
           "commandWord": "explain",
           "questionType": "explain"
@@ -33981,19 +33981,19 @@
           "sourceRef": "9618/21/W/25 Q7(b)",
           "marks": 5,
           "commandWord": "complete",
-          "questionType": "recall"
+          "questionType": "write"
         },
         {
-          "sourceRef": "9618/22/W/25 Q8(a)",
+          "sourceRef": "9618/22/W/25 Q5(a)",
           "marks": 4,
           "commandWord": "complete",
-          "questionType": "write"
+          "questionType": "recall"
         },
         {
           "sourceRef": "9618/23/W/25 Q7(b)",
           "marks": 4,
-          "commandWord": "complete",
-          "questionType": "recall"
+          "commandWord": "draw",
+          "questionType": "diagram"
         },
         {
           "sourceRef": "9618/22/W/23 Q7(a)",
@@ -34252,13 +34252,13 @@
         {
           "sourceRef": "9618/21/W/25 Q7(a)",
           "marks": 5,
-          "commandWord": "complete",
+          "commandWord": "state",
           "questionType": "recall"
         },
         {
           "sourceRef": "9618/23/W/25 Q7(a)",
           "marks": 5,
-          "commandWord": "complete",
+          "commandWord": "state",
           "questionType": "recall"
         },
         {
@@ -34270,7 +34270,7 @@
         {
           "sourceRef": "9618/21/W/23 Q7",
           "marks": 5,
-          "commandWord": "complete",
+          "commandWord": "state",
           "questionType": "recall"
         }
       ],
@@ -34486,14 +34486,14 @@
         {
           "sourceRef": "9618/21/W/25 Q6(a)",
           "marks": 2,
-          "commandWord": "calculate",
-          "questionType": "calculate"
+          "commandWord": "identify",
+          "questionType": "recall"
         },
         {
-          "sourceRef": "9618/21/S/25 Q2(i)",
+          "sourceRef": "9618/21/S/25 Q2(b)(i)",
           "marks": 1,
-          "commandWord": "calculate",
-          "questionType": "calculate"
+          "commandWord": "state",
+          "questionType": "recall"
         }
       ],
       "materialStatus": "complete",
@@ -34737,19 +34737,19 @@
           "sourceRef": "9618/21/W/24 Q5(a)",
           "marks": 5,
           "commandWord": "complete",
-          "questionType": "recall"
+          "questionType": "write"
         },
         {
-          "sourceRef": "9618/21/W/24 Q5(ii)",
+          "sourceRef": "9618/21/W/24 Q5(b)(ii)",
           "marks": 1,
-          "commandWord": "complete",
+          "commandWord": "identify",
           "questionType": "recall"
         },
         {
           "sourceRef": "9618/23/S/23 Q5(a)",
           "marks": 3,
-          "commandWord": "explain",
-          "questionType": "explain"
+          "commandWord": "identify",
+          "questionType": "recall"
         }
       ],
       "materialStatus": "complete",
@@ -35053,7 +35053,7 @@
           "questionType": "recall"
         },
         {
-          "sourceRef": "9618/21/W/24 Q5(i)",
+          "sourceRef": "9618/21/W/24 Q5(b)(i)",
           "marks": 4,
           "commandWord": "complete",
           "questionType": "recall"
@@ -36098,24 +36098,24 @@
           "sourceRef": "9618/21/S/25 Q3",
           "marks": 8,
           "commandWord": "write",
-          "questionType": "recall"
+          "questionType": "write"
         },
         {
           "sourceRef": "9618/21/S/25 Q6(b)",
           "marks": 8,
-          "commandWord": "complete",
+          "commandWord": "apply",
           "questionType": "recall"
         },
         {
-          "sourceRef": "9618/21/S/25 Q7(i)",
+          "sourceRef": "9618/21/S/25 Q7(b)(i)",
           "marks": 8,
           "commandWord": "write",
-          "questionType": "calculate"
+          "questionType": "write"
         },
         {
           "sourceRef": "9618/21/W/25 Q8(b)",
           "marks": 8,
-          "commandWord": "define",
+          "commandWord": "apply",
           "questionType": "recall"
         }
       ],

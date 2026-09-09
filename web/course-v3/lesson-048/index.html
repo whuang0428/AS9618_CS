@@ -25,7 +25,7 @@ Ben | 2</code></pre></li></ol></section></div><aside class="misconception"><stro
     <h4>Loan</h4><div class="table-scroll" role="region" aria-label="Loan" tabindex="0"><table>
       <thead><tr><th scope="col">LoanID (PK)</th><th scope="col">MemberID (FK)</th><th scope="col">Fee</th><th scope="col">Returned</th></tr></thead>
       <tbody><tr><th scope="row">201</th><td>1</td><td>2</td><td>FALSE</td></tr><tr><th scope="row">202</th><td>1</td><td>4</td><td>TRUE</td></tr><tr><th scope="row">203</th><td>2</td><td>6</td><td>FALSE</td></tr><tr><th scope="row">204</th><td>3</td><td>0</td><td>TRUE</td></tr><tr><th scope="row">205</th><td>2</td><td>3</td><td>FALSE</td></tr></tbody>
-    </table></div><p class="swipe-cue" aria-hidden="true">Swipe horizontally to compare every column →</p></section><div class="objective-row"><span class="objective-badge">S8.10.R</span><span class="objective-badge">S8.11.R</span></div><details><summary>Answer and marking points</summary><section class="question-code"><p>One valid SQL answer</p><pre tabindex="0" aria-label="SQL answer"><code>SELECT Member.MemberName, COUNT(*) AS Outstanding
+    </table></div><p class="swipe-cue" aria-hidden="true">Swipe horizontally to compare every column →</p></section><div class="objective-row"><span class="objective-badge">S8.10.R</span><span class="objective-badge">S8.11.R</span></div><details><summary>Answer and marking points</summary><section class="question-code"><p>One valid SQL answer</p><pre tabindex="0" aria-label="One valid SQL answer"><code>SELECT Member.MemberName, COUNT(*) AS Outstanding
 FROM Member INNER JOIN Loan ON Member.MemberID = Loan.MemberID
 WHERE Loan.Returned = FALSE
 GROUP BY Member.MemberID, Member.MemberName
