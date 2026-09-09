@@ -19,7 +19,7 @@ import { validateSection10Presentation, validateSection10Diagrams, validateSecti
 import { validateSection7Presentation, validateSection7Html } from "./course-v3-section7-checks.mjs";
 import { classifyCommand } from "./cie-command-words.mjs";
 import { courseV3Lessons, courseV3Meta, sectionMeta } from "./course-v3-content.mjs";
-import { normalisePresentationText, unitMaterials, visibleRoleTexts } from "./course-v3-presentation.mjs";
+import { normalisePresentationText, prepareLeadVisual, unitMaterials, visibleRoleTexts } from "./course-v3-presentation.mjs";
 import { courseV3KnowledgeDiagramRecords } from "./course-v3-knowledge-diagrams.mjs";
 import { officialAsMapping } from "./syllabus-official-as-mapping.mjs";
 
@@ -51,6 +51,7 @@ const sha256 = (path) => createHash("sha256").update(readFileSync(path)).digest(
 const hasRootRelativeAsset = (html) => /\b(?:src|href)="\/assets\//.test(html);
 const words = (value) => normalisePresentationText(value).split(" ").filter(Boolean);
 const markingPointSignature = (values) => values.map(normalisePresentationText).sort().join("|");
+const hasUnfinishedExcerpt = (text) => /[a-z](?:…|\.{3})(?=\s|$)/i.test(text);
 
 
 function tokenSimilarity(left, right) {
@@ -199,6 +200,11 @@ for (const lesson of courseV3Lessons) {
       }
       if (material.type === "reviewed-visual") check(material.alt.length >= 40 && material.facts.length >= 2, `${unitLabel}: visual lacks precise alternative text`);
       if (material.type === "analogy") check(material.boundary.length >= 50, `${unitLabel}: analogy boundary is missing or too short`);
+    }
+
+    if (lesson.kind === "review") {
+      const reviewText = [...unit.coreExplanation, ...Object.values(visibleRoleTexts(unit)).flat()];
+      check(!reviewText.some(hasUnfinishedExcerpt), `${unitLabel}: review teaching text contains an unfinished excerpt`);
     }
 
     const roles = visibleRoleTexts(unit);
@@ -463,7 +469,27 @@ try {
 } catch (error) { check(false, error.message); }
 
 if (process.argv.includes("--self-test")) {
+  const visualFixtures = [
+    { type: "table", title: "Medium selection matrix", headers: ["Medium", "Strength", "Limitation"], rows: [["Fibre", "High capacity; low attenuation; EMI resistant", "Installation/equipment cost; backbones and long links"]] },
+    { type: "cards", title: "Review tasks", items: Array.from({ length: 9 }, (_, index) => [`Review task ${index + 1}: explain the complete mechanism`, "Apply the method to a new scenario, show the intermediate reasoning and check the final result."]) },
+    { type: "flow", title: "Mechanism in examinable order", steps: [["1 · Identify the relevant inputs before applying the method to the new scenario", "Read every supplied value and preserve the units before calculating the result."]] },
+  ];
+  for (const fixture of visualFixtures) {
+    const field = fixture.type === "table" ? "rows" : fixture.type === "cards" ? "items" : "steps";
+    for (const preserveText of [false, true]) {
+      const source = structuredClone({ ...fixture, preserveText });
+      const before = JSON.stringify(source);
+      const prepared = prepareLeadVisual(source, "Teaching text integrity");
+      check(JSON.stringify(prepared[field]) === JSON.stringify(fixture[field]), `${fixture.type}: presentation truncates teaching text or drops entries`);
+      check(JSON.stringify(source) === before, `${fixture.type}: presentation mutates source text`);
+    }
+  }
+  console.log("Teaching-text regression: complete tables, nine-card sets and flow labels/bodies checked with and without preserveText.");
   const mutations = [
+    hasUnfinishedExcerpt("Compare the characteristics of LANs and…"),
+    hasUnfinishedExcerpt("Justify a model for..."),
+    !hasUnfinishedExcerpt("TYPE MemberRecord … ENDTYPE encloses field declarations."),
+    !hasUnfinishedExcerpt("Values 0, 1, …, 5 are the possible results."),
     duplicateReason("a repeated sentence contains more than eight separate words here", "a repeated sentence contains more than eight separate words here") === "exact",
     duplicateReason("a repeated sentence contains more than eight separate words here", "prefix a repeated sentence contains more than eight separate words here suffix") === "containment",
     !stageNames.every((stage) => stageNames.filter((candidate) => candidate !== "2-practice").includes(stage)),

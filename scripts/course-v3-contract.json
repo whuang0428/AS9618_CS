@@ -17709,8 +17709,8 @@
             "title": "Visual overview · Section 2: Communication"
           },
           "coreExplanation": [
-            "Show understanding of the purpose and benefits of networking devices and the characteristics of LANs and…",
-            "Explain client-server and peer-to-peer models, their computer roles, benefits and drawbacks, and justify a model for…",
+            "Show understanding of the purpose and benefits of networking devices and the characteristics of LANs and WANs.",
+            "Explain client-server and peer-to-peer models, their computer roles, benefits and drawbacks, and justify a model for a given situation.",
             "Show understanding of thin-client and thick-client computers and the differences between them.",
             "Show understanding of bus, star, mesh and hybrid network topologies."
           ],
@@ -17739,7 +17739,7 @@
           "coreExplanation": [
             "Explain the need for input, output, primary storage, secondary storage and removable storage.",
             "Understand embedded systems and their benefits/drawbacks.",
-            "Describe principal operation of laser printer, 3D printer, microphone, speakers, HDD, flash memory, optical reader/writer, touchscreen…",
+            "Describe principal operation of laser printer, 3D printer, microphone, speakers, HDD, flash memory, optical reader/writer, touchscreen and virtual reality headset.",
             "Understand why buffers are used."
           ],
           "method": null,

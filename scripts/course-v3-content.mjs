@@ -1964,7 +1964,7 @@ function materialForPoint(point, objectiveIds, mechanismSteps, workedExamples, e
     const value = clean(node.value);
     if (label && value && !rows.some(([existing]) => existing.toLowerCase() === label.toLowerCase())) rows.push([label, value]);
   }
-  if (rows.length < 2) explanations.slice(0, 6).forEach((explanation, index) => rows.push([`Key relationship ${index + 1}`, explanation.split(/[,;:.]/)[0]]));
+  if (rows.length < 2) explanations.slice(0, 6).forEach((explanation, index) => rows.push([`Key relationship ${index + 1}`, explanation]));
   const materials = [];
   const specificMechanism = mechanismSteps.length >= 2 && mechanismSteps.every((step) => !/identify the relevant|connect the mechanism|establish the exact|trace the relationship|use the explanation|set up the required|carry out the complete|trace or test the result|extract the constraints|match mechanisms to|link the choice to/i.test(`${step.label} ${step.title}`));
   if (point.visualMode === "process" && specificMechanism) {

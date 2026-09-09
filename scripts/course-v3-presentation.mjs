@@ -26,13 +26,6 @@ function sentenceCase(value) {
   return text ? `${text[0].toUpperCase()}${text.slice(1)}` : text;
 }
 
-function concise(value, maximumWords = 16) {
-  const text = String(value ?? "").replace(/\s+/g, " ").trim();
-  const parts = words(text);
-  if (parts.length <= maximumWords) return text.replace(/[;:,]+$/, "");
-  return parts.slice(0, maximumWords).join(" ").replace(/[;:,]+$/, "");
-}
-
 function conciseMarkPoint(value) {
   const text = String(value ?? "").replace(/\s+/g, " ").trim();
   const firstClause = text.split(/;\s+|\.\s+/)[0]?.trim() || text;
@@ -66,25 +59,20 @@ function materialTexts(material, { includeTranscript = false } = {}) {
   return [material.title].filter(Boolean);
 }
 
-function compactLeadVisual(material, heading) {
+export function prepareLeadVisual(material, heading) {
+  // Layout may wrap or scroll, but it must not discard authored teaching text.
   if (material.preserveText) return { ...material };
   if (material.type === "cards") return {
     ...material,
     title: `Visual overview · ${heading}`,
-    items: material.items.slice(0, 8).map(([label, body]) => [concise(label, 5), concise(body, 5)]),
   };
   if (material.type === "table") return {
     ...material,
     title: material.title === "Decision evidence" || material.title === "Compare by technical factor" ? `Visual overview · ${heading}` : material.title,
-    rows: material.rows.map((row) => row.map((cell) => concise(cell, 5))),
   };
   if (material.type === "flow") return {
     ...material,
     title: /mechanism in examinable order/i.test(material.title) ? `Process · ${heading}` : material.title,
-    steps: material.steps.map(([title, detail], index) => [
-      genericMethodPattern.test(title) ? `${index + 1} · ${sentenceCase(concise(detail, 6))}` : concise(title, 10),
-      concise(detail, 5),
-    ]),
   };
   if (material.type === "reviewed-visual") return {
     ...material,
@@ -749,7 +737,7 @@ function finaliseUnit(unit, lesson, unitIndex) {
   const coreExplanation = coreBlocks ? coreBlockTexts(coreBlocks) : dedupeCoreParagraphs(sourceCore);
   const blockErrors = validateCoreBlocks({ ...unit, coreBlocks, coreExplanation });
   if (blockErrors.length) throw new Error(blockErrors.join("\n"));
-  let leadVisual = { ...compactLeadVisual(candidates[0], unit.heading), objectiveIds: [...unit.objectiveIds] };
+  let leadVisual = { ...prepareLeadVisual(candidates[0], unit.heading), objectiveIds: [...unit.objectiveIds] };
   const methodCandidate = sourceMaterials.find((material) => material.type === "flow" && material !== candidates[0]);
   const cleanedMethod = (lesson.section === 1 || unit.preserveTeachingSteps) ? methodCandidate : cleanMethod(methodCandidate, coreExplanation, leadVisual);
   const method = cleanedMethod && !/worked.*example/i.test(cleanedMethod.title)

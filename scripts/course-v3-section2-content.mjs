@@ -481,13 +481,16 @@ export const section2Lessons = [
           "A justified choice states the medium, names a specific characteristic and explains the consequence in the given setting. For example, fibre suits a long link near electrical machinery because light transmission is not affected by electromagnetic interference; satellites suit a remote vessel because their wide coverage does not require cable to be installed along the whole route.",
         ],
         materials: [
-          table("Medium selection matrix", ["S2.08.A06"], ["Medium", "Signal/path", "Strength", "Limitation / suitable use"], [
-            ["Copper", "Electrical signal in cable", "Low cost; established LAN access", "Attenuation/interference; shorter links"],
-            ["Fibre", "Light pulse in glass/plastic", "High capacity; low attenuation; EMI resistant", "Installation/equipment cost; backbones and long links"],
-            ["WiFi / radio", "Radio waves through space", "Mobility; flexible local access", "Shared spectrum, obstacles, range and security controls"],
-            ["Microwaves", "Directional electromagnetic waves", "High-bandwidth point-to-point link without cable", "Line of sight, alignment, interference and bad weather"],
-            ["Satellites", "Uplink and downlink using microwaves", "Very wide coverage and remote locations", "Time delay, bad weather and cost"],
-          ]),
+          {
+            ...table("Medium selection matrix", ["S2.08.A06"], ["Medium", "Signal/path", "Strength", "Limitation / suitable use"], [
+              ["Copper", "Electrical signal in cable", "Low cost; established LAN access", "Attenuation/interference; shorter links"],
+              ["Fibre", "Light pulse in glass/plastic", "High capacity; low attenuation; EMI resistant", "Installation/equipment cost; backbones and long links"],
+              ["WiFi / radio", "Radio waves through space", "Mobility; flexible local access", "Shared spectrum, obstacles, range and security controls"],
+              ["Microwaves", "Directional electromagnetic waves", "High-bandwidth point-to-point link without cable", "Line of sight, alignment, interference and bad weather"],
+              ["Satellites", "Uplink and downlink using microwaves", "Very wide coverage and remote locations", "Time delay, bad weather and cost"],
+            ]),
+            preserveText: true,
+          },
           flow("Choose a medium", ["S2.08.A06"], [
             ["1 · Need", "Distance, mobility, capacity and availability"],
             ["2 · Environment", "Obstacles, interference, cable route and line of sight"],

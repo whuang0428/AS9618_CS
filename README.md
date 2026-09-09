@@ -154,6 +154,8 @@ python3 scripts/verify-course-release.py
 
 These commands verify the current generated course, content contract, compatibility routes, generation idempotency and release archive without consulting historical audit records.
 
+Presentation preserves complete table cells, cards and flow steps; layout handles wrapping and local scrolling. The course verifier's self-test checks long labels and bodies and card sets larger than eight entries. Review teaching text is also checked for unfinished excerpts.
+
 ```text
 dist/AS9618-CS-2027-2029-course.zip
 dist/AS9618-CS-2027-2029-course.zip.sha256

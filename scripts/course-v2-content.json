@@ -21444,20 +21444,20 @@
             "Perform binary addition and subtraction using positive and negative binary integers."
           ],
           "retrievalPrompt": "Without notes, explain how the listed Section 1 ideas connect. Give one mechanism, calculation or construction step rather than a list of terms.",
-          "correctionPrompt": "Correct one plausible error about show understanding of binary magnitudes and the difference between binary prefixes and decimal prefixes. and state exactly why the corrected version is accurate.",
+          "correctionPrompt": "Correct one plausible error about binary and decimal prefixes, and explain why the correction is accurate.",
           "transferPrompt": "Apply one Section 1 method to a new scenario, show the intermediate reasoning and check the final result."
         },
         {
           "section": 2,
           "title": "Section 2: Communication",
           "points": [
-            "Show understanding of the purpose and benefits of networking devices and the characteristics of LANs and…",
-            "Explain client-server and peer-to-peer models, their computer roles, benefits and drawbacks, and justify a model for…",
+            "Show understanding of the purpose and benefits of networking devices and the characteristics of LANs and WANs.",
+            "Explain client-server and peer-to-peer models, their computer roles, benefits and drawbacks, and justify a model for a given situation.",
             "Show understanding of thin-client and thick-client computers and the differences between them.",
             "Show understanding of bus, star, mesh and hybrid network topologies."
           ],
           "retrievalPrompt": "Without notes, explain how the listed Section 2 ideas connect. Give one mechanism, calculation or construction step rather than a list of terms.",
-          "correctionPrompt": "Correct one plausible error about show understanding of the purpose and benefits of networking devices and the characteristics of lans and… and state exactly why the corrected version is accurate.",
+          "correctionPrompt": "Correct one plausible error about networking benefits or the characteristics of LANs and WANs, and explain why the correction is accurate.",
           "transferPrompt": "Apply one Section 2 method to a new scenario, show the intermediate reasoning and check the final result."
         },
         {
@@ -21466,11 +21466,11 @@
           "points": [
             "Explain the need for input, output, primary storage, secondary storage and removable storage.",
             "Understand embedded systems and their benefits/drawbacks.",
-            "Describe principal operation of laser printer, 3D printer, microphone, speakers, HDD, flash memory, optical reader/writer, touchscreen…",
+            "Describe principal operation of laser printer, 3D printer, microphone, speakers, HDD, flash memory, optical reader/writer, touchscreen and virtual reality headset.",
             "Understand why buffers are used."
           ],
           "retrievalPrompt": "Without notes, explain how the listed Section 3 ideas connect. Give one mechanism, calculation or construction step rather than a list of terms.",
-          "correctionPrompt": "Correct one plausible error about explain the need for input, output, primary storage, secondary storage and removable storage. and state exactly why the corrected version is accurate.",
+          "correctionPrompt": "Correct one plausible error about the roles of input, output and storage devices, and explain why the correction is accurate.",
           "transferPrompt": "Apply one Section 3 method to a new scenario, show the intermediate reasoning and check the final result."
         },
         {
@@ -21483,7 +21483,7 @@
             "Understand address, data and control buses."
           ],
           "retrievalPrompt": "Without notes, explain how the listed Section 4 ideas connect. Give one mechanism, calculation or construction step rather than a list of terms.",
-          "correctionPrompt": "Correct one plausible error about understand von neumann architecture and the stored-program concept. and state exactly why the corrected version is accurate.",
+          "correctionPrompt": "Correct one plausible error about Von Neumann architecture or the stored-program concept, and explain why the correction is accurate.",
           "transferPrompt": "Apply one Section 4 method to a new scenario, show the intermediate reasoning and check the final result."
         },
         {
@@ -21509,7 +21509,7 @@
             "Understand virus, spyware, hackers, phishing and pharming threats."
           ],
           "retrievalPrompt": "Without notes, explain how the listed Section 6 ideas connect. Give one mechanism, calculation or construction step rather than a list of terms.",
-          "correctionPrompt": "Correct one plausible error about distinguish data security, privacy and integrity. and state exactly why the corrected version is accurate.",
+          "correctionPrompt": "Correct one plausible error about data security, privacy or integrity, and explain why the correction is accurate.",
           "transferPrompt": "Apply one Section 6 method to a new scenario, show the intermediate reasoning and check the final result."
         },
         {
