@@ -32,9 +32,9 @@
     previous.disabled = index === 0;
     next.disabled = index === units.length - 1;
     const visibleQuestions = questions.filter(q => !q.hidden && q.closest('.lesson-stage')?.id === stage).length;
-    status.textContent = `Unit ${index + 1} of ${units.length}: ${select.selectedOptions[0].textContent}${stage === 'practice' || stage === 'original-exam-style-question' ? ` · ${visibleQuestions} related questions` : ''}`;
+    status.textContent = `Unit ${index + 1} of ${units.length}: ${select.selectedOptions[0].textContent}${stage === 'practice' || stage === 'past-paper-questions' ? ` · ${visibleQuestions} related questions` : ''}`;
     const empty = toolbar.querySelector('.unit-empty');
-    empty.hidden = !active || !['practice', 'original-exam-style-question'].includes(stage) || visibleQuestions > 0;
+    empty.hidden = !active || !['practice', 'past-paper-questions'].includes(stage) || visibleQuestions > 0;
   }
 
   function closeAnswers() {
@@ -45,7 +45,7 @@
   previous.addEventListener('click', () => { select.value = Number(select.value) - 1; closeAnswers(); render(); });
   next.addEventListener('click', () => { select.value = Number(select.value) + 1; closeAnswers(); render(); });
   toolbar.querySelectorAll('[data-unit-stage]').forEach(button => {
-    button.addEventListener('click', () => { stage = button.dataset.unitStage; render(); });
+    button.addEventListener('click', () => { stage = button.dataset.unitStage; closeAnswers(); render(); });
   });
   function followAnchor() {
     const target = document.getElementById(location.hash.slice(1));
@@ -56,7 +56,7 @@
       select.value = units.indexOf(unit);
       stage = 'visual-and-core';
     }
-    else if (stages.includes(target)) stage = target.id;
+    else if (target.closest('.lesson-stage')) stage = target.closest('.lesson-stage').id;
     else { active = false; }
     render();
     target.scrollIntoView({ block: 'start' });

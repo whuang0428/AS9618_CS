@@ -52,6 +52,30 @@ def release_bytes(path: Path) -> bytes:
 
 def main() -> None:
     contract = json.loads((ROOT / "scripts/course-v3-contract.json").read_text(encoding="utf-8"))
+    source_manifest_path = ROOT / "scripts/past-paper-source-manifest.json"
+    source_manifest = json.loads(source_manifest_path.read_text(encoding="utf-8"))
+    crop_specs = json.loads((ROOT / "scripts/past-paper-extracts.json").read_text(encoding="utf-8"))
+    registered_extracts: dict[Path, str] = {}
+    source_ids = set()
+    for question in source_manifest["questions"]:
+        source_ids.add(question["id"])
+        spec = {k: crop_specs[question["id"]][k] for k in ("qp", "ms", "insert") if k in crop_specs[question["id"]]}
+        spec_hash = hashlib.sha256(json.dumps(spec, sort_keys=True, separators=(",", ":")).encode()).hexdigest()
+        if question["extractReview"].get("cropSpecSha256") != spec_hash:
+            raise SystemExit(f"Crop changed since visual review: {question['id']}")
+        if question["sourceType"] != "past-paper" or question["extractReview"].get("status") != "verified":
+            raise SystemExit(f"Unverified past-paper source: {question['id']}")
+        for kind in ("qp", "ms"):
+            if not question[kind]["extracts"]:
+                raise SystemExit(f"Missing official {kind} content: {question['id']}")
+        for extract in question["qp"]["extracts"] + question["ms"]["extracts"] + question.get("inserts", []):
+            asset_path = ROOT / "web" / extract["asset"].lstrip("/")
+            if not asset_path.is_file() or sha256(asset_path) != extract["sha256"]:
+                raise SystemExit(f"Changed or missing official extract: {extract['asset']}")
+            registered_extracts[asset_path] = extract["sha256"]
+    course_source_ids = {q["id"] for lesson in contract["lessons"] for q in lesson["pastPaperQuestions"]}
+    if course_source_ids != source_ids:
+        raise SystemExit("Course and source manifest disagree on the selected past-paper questions.")
     files: set[Path] = {
         ROOT / "README.md",
         ROOT / "course-v3-map.md",
@@ -65,6 +89,7 @@ def main() -> None:
         ROOT / "web/stage7-accessibility.js",
         ROOT / "scripts/course-v3-contract.json",
         ROOT / "scripts/course-v2-migration.json",
+        source_manifest_path,
     }
     add_tree(files, ROOT / "web/assessments")
     add_tree(files, ROOT / "web/resources")
@@ -84,9 +109,9 @@ def main() -> None:
     missing = sorted(str(path.relative_to(ROOT)) for path in files if not path.is_file())
     if missing:
         raise SystemExit(f"Release inputs are missing: {missing}")
-    forbidden = [path for path in files if path.suffix.lower() == ".pdf" or "past-papers" in path.as_posix().lower()]
+    forbidden = [path for path in files if (path.suffix.lower() == ".pdf" or "past-paper" in path.parent.name) and path not in registered_extracts]
     if forbidden:
-        raise SystemExit(f"Copyright-sensitive input entered release: {forbidden}")
+        raise SystemExit(f"Unregistered source material entered release: {forbidden}")
 
     manifest_files = []
     for path in sorted(files):

@@ -1,3 +1,5 @@
+import { applyPracticePlan } from './course-v3-practice-plan.mjs';
+import { applyPastPaperTeaching } from './course-v3-past-paper-content.mjs';
 import { readFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -2265,19 +2267,23 @@ const rawCourse = [
   transformReviewLesson(v2.lessons.find((lesson) => lesson.lesson === 90)),
 ];
 
-export const courseV3Lessons = rawCourse.map(authorSection1Lesson).map(authorSection2Lesson).map(authorSection3Lesson).map(authorSection4Lesson).map(authorSection5Lesson).map(authorSection6Lesson).map(authorSection7Lesson).map(authorSection8Lesson).map(authorSection9Lesson).map(authorSection10Lesson).map(authorSection11Lesson).map(authorSection12Lesson).map((lesson, index) => finaliseLessonPresentation({
+const presentedLessons = rawCourse.map(authorSection1Lesson).map(authorSection2Lesson).map(authorSection3Lesson).map(authorSection4Lesson).map(authorSection5Lesson).map(authorSection6Lesson).map(authorSection7Lesson).map(authorSection8Lesson).map(authorSection9Lesson).map(authorSection10Lesson).map(authorSection11Lesson).map(authorSection12Lesson).map((lesson, index) => finaliseLessonPresentation({
   ...lesson,
   sequenceIndex: index + 1,
   lessonKey: lesson.kind === "review" ? `REV-P${lesson.paper}` : `S${lesson.section}-L${String(rawCourse.slice(0, index + 1).filter((item) => item.section === lesson.section).length).padStart(2, "0")}`,
   route: `lesson-${String(index + 1).padStart(3, "0")}`,
 })).map(addTeachingSupport);
 
+export const courseV3Lessons = applyPastPaperTeaching(applyPracticePlan(presentedLessons));
+
 export const courseV3Meta = Object.freeze({
-  schemaVersion: 5,
+  schemaVersion: 6,
   syllabus: "Cambridge International AS Level Computer Science 9618 · 2027–2029",
   lessonCount: courseV3Lessons.length,
   teachingLessonCount: courseV3Lessons.filter((lesson) => lesson.kind === "teaching").length,
   reviewLessonCount: courseV3Lessons.filter((lesson) => lesson.kind === "review").length,
   officialRequirementCount: Object.keys(officialAsMapping).length,
-  examStyleQuestionCount: courseV3Lessons.flatMap((lesson) => lesson.examStyleQuestions).length,
+  pastPaperQuestionCount: courseV3Lessons.flatMap((lesson) => lesson.pastPaperQuestions).length,
+  practiceQuestionCount: courseV3Lessons.flatMap(lesson => lesson.practice).length,
+  optionalPracticeQuestionCount: courseV3Lessons.flatMap(lesson => lesson.optionalPractice).length,
 });

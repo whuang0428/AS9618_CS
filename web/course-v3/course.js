@@ -46,9 +46,9 @@ document.querySelectorAll(".table-scroll").forEach((scroller) => {
     previous.disabled = index === 0;
     next.disabled = index === units.length - 1;
     const visibleQuestions = questions.filter(q => !q.hidden && q.closest('.lesson-stage')?.id === stage).length;
-    status.textContent = `Unit ${index + 1} of ${units.length}: ${select.selectedOptions[0].textContent}${stage === 'practice' || stage === 'original-exam-style-question' ? ` · ${visibleQuestions} related questions` : ''}`;
+    status.textContent = `Unit ${index + 1} of ${units.length}: ${select.selectedOptions[0].textContent}${stage === 'practice' || stage === 'past-paper-questions' ? ` · ${visibleQuestions} related questions` : ''}`;
     const empty = toolbar.querySelector('.unit-empty');
-    empty.hidden = !active || !['practice', 'original-exam-style-question'].includes(stage) || visibleQuestions > 0;
+    empty.hidden = !active || !['practice', 'past-paper-questions'].includes(stage) || visibleQuestions > 0;
   }
 
   function closeAnswers() {
@@ -59,7 +59,7 @@ document.querySelectorAll(".table-scroll").forEach((scroller) => {
   previous.addEventListener('click', () => { select.value = Number(select.value) - 1; closeAnswers(); render(); });
   next.addEventListener('click', () => { select.value = Number(select.value) + 1; closeAnswers(); render(); });
   toolbar.querySelectorAll('[data-unit-stage]').forEach(button => {
-    button.addEventListener('click', () => { stage = button.dataset.unitStage; render(); });
+    button.addEventListener('click', () => { stage = button.dataset.unitStage; closeAnswers(); render(); });
   });
   function followAnchor() {
     const target = document.getElementById(location.hash.slice(1));
@@ -70,7 +70,7 @@ document.querySelectorAll(".table-scroll").forEach((scroller) => {
       select.value = units.indexOf(unit);
       stage = 'visual-and-core';
     }
-    else if (stages.includes(target)) stage = target.id;
+    else if (target.closest('.lesson-stage')) stage = target.closest('.lesson-stage').id;
     else { active = false; }
     render();
     target.scrollIntoView({ block: 'start' });
@@ -88,4 +88,32 @@ document.querySelectorAll(".table-scroll").forEach((scroller) => {
   });
   toolbar.hidden = false;
   render();
+})();
+
+// Print state is temporary; closing the dialog restores classroom visibility and answer states.
+(() => {
+ const controls=document.querySelector('.exam-print-controls');
+ if(!controls)return;
+ let snapshot=null;
+ let mode='questions';
+ function prepare(){
+  if(snapshot)return;
+  const details=[...document.querySelectorAll('.lesson-stage details')];
+  snapshot={details:details.map(el=>[el,el.open]),attribute:document.body.getAttribute('data-exam-print')};
+  document.body.dataset.examPrint=mode;
+  details.forEach(el=>{el.open=el.classList.contains('optional-practice') || mode==='answers';});
+ }
+ function restore(){
+  if(!snapshot)return;
+  snapshot.details.forEach(([el,open])=>{el.open=open;});
+  if(snapshot.attribute===null)document.body.removeAttribute('data-exam-print');else document.body.setAttribute('data-exam-print',snapshot.attribute);
+  snapshot=null;mode='questions';
+ }
+ window.addEventListener('beforeprint',prepare);
+ window.addEventListener('afterprint',restore);
+ controls.querySelectorAll('button').forEach(button=>button.addEventListener('click',()=>{
+  mode=button.dataset.printExam;prepare();
+  try{window.print();}finally{restore();}
+ }));
+ controls.hidden=false;
 })();

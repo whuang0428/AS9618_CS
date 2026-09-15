@@ -74,8 +74,8 @@ export const section8SqlCases = {
   qJoin: query("books", "SELECT Book.Title, Sale.Quantity\nFROM Book INNER JOIN Sale\nON Book.BookID = Sale.BookID\nWHERE Sale.Quantity >= 3\nORDER BY Sale.SaleID;", ["Title", "Quantity"], [["Atlas",3],["River",4]]),
   qAggregate: query("books", "SELECT COUNT(*) AS SaleCount, SUM(Quantity) AS TotalQuantity, AVG(Quantity) AS MeanQuantity\nFROM Sale;", ["SaleCount", "TotalQuantity", "MeanQuantity"], [[5,12,2.4]]),
   qInsert: change("stock", "INSERT INTO Stock (StockID, ItemName, Quantity)\nVALUES (32, 'Stand', 4);", "SELECT * FROM Stock ORDER BY StockID;", [[30,"Cable",6],[31,"Adapter",2],[32,"Stand",4]]),
-  qDelete: change("stock", "DELETE FROM Stock WHERE StockID = 31;", "SELECT * FROM Stock;", [[30,"Cable",6]]),
-  qUpdate: change("stock", "UPDATE Stock SET Quantity = 8 WHERE StockID = 30;", "SELECT * FROM Stock ORDER BY StockID;", [[30,"Cable",8],[31,"Adapter",2]]),
+  qDelete: change("stock", "DELETE FROM Stock WHERE StockID = 31;", "SELECT * FROM Stock ORDER BY StockID;", [[30,"Cable",6],[32,"Stand",4]]),
+  qUpdate: change("stock", "UPDATE Stock SET Quantity = 8 WHERE StockID = 30;", "SELECT * FROM Stock ORDER BY StockID;", [[30,"Cable",8],[32,"Stand",4]]),
   examJoin: query("shop", "SELECT Category.CategoryName, Product.ProductName\nFROM Category INNER JOIN Product\nON Category.CategoryID = Product.CategoryID\nWHERE Product.Available = TRUE AND Product.Price >= 5\nORDER BY Product.Price DESC;", ["CategoryName", "ProductName"], [["Accessories","Mouse"],["Stationery","Notebook"]]),
   examGroup: query("payments", "SELECT Branch, COUNT(*) AS PaymentCount, SUM(Amount) AS Total, AVG(Amount) AS Mean\nFROM Payment\nGROUP BY Branch\nORDER BY AVG(Amount) DESC;", ["Branch", "PaymentCount", "Total", "Mean"], [["North",2,30,15],["South",3,30,10]]),
   examMaintain: change("reservations", "INSERT INTO Reservation (ReservationID, GuestName, Confirmed) VALUES (81, 'Nora', FALSE);\nUPDATE Reservation SET Confirmed = TRUE WHERE ReservationID = 81;\nDELETE FROM Reservation WHERE ReservationID = 80;", "SELECT * FROM Reservation;", [[81,"Nora",1]]),
@@ -85,6 +85,8 @@ export const section8SqlCases = {
   mockQuery: query("hotel", "SELECT Room.RoomType, Stay.Nights\nFROM Room INNER JOIN Stay ON Room.RoomID = Stay.RoomID\nWHERE Stay.Nights >= 4\nORDER BY Stay.Nights DESC;", ["RoomType","Nights"], [["Double",5],["Single",4]]),
   mockUpdate: change("hotel", "UPDATE Stay SET Nights = 3 WHERE StayID = 1;", "SELECT StayID, Nights FROM Stay ORDER BY StayID;", [[1,3],[2,5],[3,4]]),
 };
+section8SqlCases.qDelete.setup = "INSERT INTO Stock VALUES (32, 'Stand', 4);";
+section8SqlCases.qUpdate.setup = "INSERT INTO Stock VALUES (32, 'Stand', 4); DELETE FROM Stock WHERE StockID = 31;";
 section8SqlCases.nullAggregate.setup = "CREATE TABLE FeeSample (Fee REAL); INSERT INTO FeeSample VALUES (2),(NULL),(4);";
 
 export const section8Ddl = {

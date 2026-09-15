@@ -2,7 +2,7 @@
 
 - 93 pages: 91 teaching lessons and 2 integrated reviews.
 - 121/121 AS requirements mapped to Cambridge Sections 1–12; S1 number-system applications are taught with the representations in Lesson 002.
-- Fixed page flow: lesson title and objectives → visual overview → core explanation → optional method/worked example → misconception → practice → original exam-style questions → summary.
+- Fixed page flow: lesson title and objectives → visual overview → core explanation → optional method/worked example → misconception → practice → Past-paper questions and exam technique → summary.
 
 ## Section 1 — Information representation
 

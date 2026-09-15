@@ -979,7 +979,7 @@ Award one mark for each listed point, or an equivalent correct response. Do not 
 
 ### 4. explain - 10 marks
 
-(a) An interrupt saves PC=330, ACC=18 and IX=4. Explain why this state must be restored after an ISR changes ACC to 65, if the next program instruction is ADD #2 (3 marks). (b) Complete the supplied indirect-load trace and state the final contents of Memory[302] (4 marks). (c) Separately, logically shift unsigned 8-bit 00110110 right by two places, then set bit 7 using OR; give the intermediate byte, mask and result (3 marks).
+(a) An interrupt saves PC=330 and a comparison result of TRUE. The ISR changes the comparison result to FALSE. On return, PC and ACC are restored but the comparison result is not. The next user instruction at 330 is JPE 410, which should branch when the saved comparison is TRUE. Explain the incorrect next address and why restoring PC alone does not repair the fault (3 marks). (b) Complete the supplied indirect-load trace and state the final contents of Memory[302] (4 marks). (c) Separately, logically shift unsigned 8-bit 00110110 right by two places, then set bit 7 using OR; give the intermediate byte, mask and result (3 marks).
 
 Initial ACC=0, IX=0, PC=50; comparison result unset. Memory[300]=301, Memory[301]=5. No input is needed. Addresses are denary; each listed instruction or data item occupies one location.
 
@@ -1010,9 +1010,9 @@ Completed trace
 | 52 | 3 | 0 | 53 | Unset | Memory[302]=3 | — |
 | 53 | 3 | 0 | Return to OS | Unset | — | — |
 
-- (a) Restore PC=330 to resume at the interrupted continuation.
-- (a) Restore ACC=18 and IX=4 so the program retains its data and index.
-- (a) ADD #2 must produce 20; keeping the ISR’s ACC would wrongly produce 67.
+- (a) The ISR’s FALSE comparison result prevents the conditional jump, so execution incorrectly continues at 331.
+- (a) Restoring the saved TRUE comparison result makes JPE take its target address 410.
+- (a) The comparison result is separate saved processor state; restoring the instruction address and ACC does not reconstruct it.
 - (b) LDI follows Memory[300]=301 and reads Memory[301]=5 into ACC.
 - (b) SUB #2 gives ACC=3.
 - (b) STO 302 writes 3, retaining ACC=3 and IX=0.

@@ -1,0 +1,1494 @@
+[
+  {
+    "lesson": 1,
+    "required": [
+      "V3-Q-L001-01",
+      "S1-L01-CAPACITY"
+    ],
+    "optional": [
+      "V3-Q-L001-02",
+      "V3-Q-L001-03"
+    ],
+    "removed": [],
+    "practiceMinutes": "8–10",
+    "examMinutes": "2–3",
+    "reviewMenu": false
+  },
+  {
+    "lesson": 2,
+    "required": [
+      "V3-Q-L002-01",
+      "S1-L02-Q2",
+      "S1-L02-Q3",
+      "V3-Q-L002-03",
+      "S1-L02-BCD-REVERSE",
+      "S1-L02-SIGNED-BOUNDARY",
+      "S1-L02-PRESERVE-VALUE"
+    ],
+    "optional": [
+      "S1-L02-Q5",
+      "S1-L02-Q6",
+      "S1-L02-Q7"
+    ],
+    "removed": [],
+    "practiceMinutes": "25–30",
+    "examMinutes": "10–13",
+    "reviewMenu": false
+  },
+  {
+    "lesson": 3,
+    "required": [
+      "V3-Q-L003-01",
+      "V3-Q-L003-02",
+      "V3-Q-L003-03",
+      "S1-L03-Q4",
+      "S1-L03-BORROW",
+      "S1-L03-SUBTRACT-NEGATIVE"
+    ],
+    "optional": [
+      "S1-L03-Q5"
+    ],
+    "removed": [],
+    "practiceMinutes": "22–27",
+    "examMinutes": "9–12",
+    "reviewMenu": false
+  },
+  {
+    "lesson": 4,
+    "required": [
+      "V3-Q-L004-01",
+      "V3-Q-L004-02",
+      "S1-L04-Q3",
+      "S1-L04-Q4"
+    ],
+    "optional": [
+      "S1-L04-CODEPOINT-BYTES"
+    ],
+    "removed": [],
+    "practiceMinutes": "9–12",
+    "examMinutes": "5–7",
+    "reviewMenu": false
+  },
+  {
+    "lesson": 5,
+    "required": [
+      "V3-Q-L005-01",
+      "S1-L05-Q4",
+      "S1-L05-Q5",
+      "S1-L05-Q6",
+      "S1-L05-HEADER",
+      "S1-L05-VECTOR-REBUILD"
+    ],
+    "optional": [
+      "V3-Q-L005-02",
+      "V3-Q-L005-03"
+    ],
+    "removed": [],
+    "practiceMinutes": "23–28",
+    "examMinutes": "12–16",
+    "reviewMenu": false
+  },
+  {
+    "lesson": 6,
+    "required": [
+      "S1-L06-Q2",
+      "V3-Q-L006-03",
+      "S1-L06-Q4",
+      "S1-L06-Q5",
+      "S1-L06-Q6",
+      "S1-L06-Q8",
+      "S1-L06-NUMERICAL-SAMPLING",
+      "S1-L06-DICTIONARY"
+    ],
+    "optional": [
+      "V3-Q-L006-01",
+      "S1-L06-Q7"
+    ],
+    "removed": [],
+    "practiceMinutes": "30–38",
+    "examMinutes": "7–10",
+    "reviewMenu": false
+  },
+  {
+    "lesson": 7,
+    "required": [
+      "S2-L01-Q2",
+      "S2-L01-Q3",
+      "S2-L01-Q4"
+    ],
+    "optional": [
+      "S2-L01-Q1"
+    ],
+    "removed": [],
+    "practiceMinutes": "12–16",
+    "examMinutes": "10–14",
+    "reviewMenu": false
+  },
+  {
+    "lesson": 8,
+    "required": [
+      "S2-L02-Q1",
+      "S2-L02-Q2",
+      "S2-L02-Q3",
+      "S2-L02-Q4"
+    ],
+    "optional": [],
+    "removed": [],
+    "practiceMinutes": "15–20",
+    "examMinutes": "5–7",
+    "reviewMenu": false
+  },
+  {
+    "lesson": 9,
+    "required": [
+      "S2-L03-Q1",
+      "S2-L03-Q2",
+      "S2-L03-Q3"
+    ],
+    "optional": [
+      "S2-L03-Q4"
+    ],
+    "removed": [],
+    "practiceMinutes": "12–16",
+    "examMinutes": "6–8",
+    "reviewMenu": false
+  },
+  {
+    "lesson": 10,
+    "required": [
+      "S2-L04-Q2",
+      "S2-L04-Q4"
+    ],
+    "optional": [
+      "S2-L04-Q1",
+      "S2-L04-Q3"
+    ],
+    "removed": [],
+    "practiceMinutes": "10–14",
+    "examMinutes": "5–7",
+    "reviewMenu": false
+  },
+  {
+    "lesson": 11,
+    "required": [
+      "S2-L05-Q3",
+      "S2-L05-Q5",
+      "S2-L05-Q6"
+    ],
+    "optional": [
+      "S2-L05-Q1",
+      "S2-L05-Q2",
+      "S2-L05-Q4"
+    ],
+    "removed": [],
+    "practiceMinutes": "17–22",
+    "examMinutes": "10–14",
+    "reviewMenu": false
+  },
+  {
+    "lesson": 12,
+    "required": [
+      "S2-L06-Q3",
+      "S2-L06-Q4",
+      "S2-L06-Q5"
+    ],
+    "optional": [
+      "S2-L06-Q1",
+      "S2-L06-Q2"
+    ],
+    "removed": [],
+    "practiceMinutes": "15–20",
+    "examMinutes": "6–9",
+    "reviewMenu": false
+  },
+  {
+    "lesson": 13,
+    "required": [
+      "S2-L07-Q1",
+      "S2-L07-Q2",
+      "S2-L07-Q3",
+      "S2-L07-Q4"
+    ],
+    "optional": [],
+    "removed": [],
+    "practiceMinutes": "15–20",
+    "examMinutes": "2–3",
+    "reviewMenu": false
+  },
+  {
+    "lesson": 14,
+    "required": [
+      "S2-L08-Q3",
+      "S2-L08-Q4",
+      "S2-L08-Q5",
+      "S2-L08-Q6"
+    ],
+    "optional": [
+      "S2-L08-Q1",
+      "S2-L08-Q2"
+    ],
+    "removed": [],
+    "practiceMinutes": "22–28",
+    "examMinutes": "13–17",
+    "reviewMenu": false
+  },
+  {
+    "lesson": 15,
+    "required": [
+      "V3-013-S3.02-STRUCTURE",
+      "S3-L01-APPLY-1",
+      "S3-L01-APPLY-2"
+    ],
+    "optional": [
+      "V3-013-S3.01-ROLES",
+      "V3-013-S3.02-TRADEOFFS"
+    ],
+    "removed": [],
+    "practiceMinutes": "13–17",
+    "examMinutes": "5–7",
+    "reviewMenu": false
+  },
+  {
+    "lesson": 16,
+    "required": [
+      "V3-014-S3.03-LASER",
+      "S3-L02-APPLY-1",
+      "S3-L02-APPLY-2",
+      "S3-L02-APPLY-3",
+      "S3-L02-APPLY-4",
+      "S3-L02-APPLY-5"
+    ],
+    "optional": [
+      "V3-014-S3.03-3D",
+      "V3-014-S3.03-MICROPHONE",
+      "V3-014-S3.03-SPEAKERS",
+      "V3-014-S3.03-HDD",
+      "V3-014-S3.03-FLASH",
+      "V3-014-S3.03-OPTICAL",
+      "V3-014-S3.03-TOUCHSCREEN",
+      "V3-014-S3.03-VR"
+    ],
+    "removed": [],
+    "practiceMinutes": "30–38",
+    "examMinutes": "11–15",
+    "reviewMenu": false
+  },
+  {
+    "lesson": 17,
+    "required": [
+      "V3-015-S3.06-COMPARE",
+      "S3-L03-APPLY-1",
+      "S3-L03-APPLY-2"
+    ],
+    "optional": [
+      "S3-L03-Q1",
+      "V3-015-S3.05-RAM-ROM",
+      "V3-015-S3.07-ROM-TYPES"
+    ],
+    "removed": [],
+    "practiceMinutes": "16–21",
+    "examMinutes": "8–11",
+    "reviewMenu": false
+  },
+  {
+    "lesson": 18,
+    "required": [
+      "V3-016-S3.09-SENSORS",
+      "S3-L04-APPLY-1",
+      "S3-L04-APPLY-2"
+    ],
+    "optional": [
+      "V3-016-S3.08-COMPARE",
+      "V3-016-S3.09-ACTUATOR",
+      "V3-016-S3.08-FEEDBACK",
+      "S3-L04-Q5"
+    ],
+    "removed": [],
+    "practiceMinutes": "15–20",
+    "examMinutes": "10–14",
+    "reviewMenu": false
+  },
+  {
+    "lesson": 19,
+    "required": [
+      "S3-L05-Q1",
+      "S3-L05-Q2",
+      "S3-L05-Q3",
+      "S3-L05-Q4"
+    ],
+    "optional": [
+      "S3-L05-APPLY-1"
+    ],
+    "removed": [],
+    "practiceMinutes": "16–20",
+    "examMinutes": "5–7",
+    "reviewMenu": false
+  },
+  {
+    "lesson": 20,
+    "required": [
+      "S3-L06-Q1",
+      "S3-L06-Q3",
+      "S3-L06-Q4"
+    ],
+    "optional": [
+      "S3-L06-Q2",
+      "S3-L06-APPLY-1"
+    ],
+    "removed": [],
+    "practiceMinutes": "18–23",
+    "examMinutes": "10–14",
+    "reviewMenu": false
+  },
+  {
+    "lesson": 21,
+    "required": [
+      "S4-L01-Q1",
+      "S4-L01-Q3",
+      "S4-L01-Q4"
+    ],
+    "optional": [
+      "S4-L01-Q2",
+      "S4-L01-Q5"
+    ],
+    "removed": [],
+    "practiceMinutes": "13–17",
+    "examMinutes": "6–8",
+    "reviewMenu": false
+  },
+  {
+    "lesson": 22,
+    "required": [
+      "S4-L02-Q1",
+      "S4-L02-Q2",
+      "S4-L02-Q3",
+      "S4-L02-Q4",
+      "S4-L02-Q5",
+      "S4-L02-Q6"
+    ],
+    "optional": [],
+    "removed": [],
+    "practiceMinutes": "20–25",
+    "examMinutes": "9–12",
+    "reviewMenu": false
+  },
+  {
+    "lesson": 23,
+    "required": [
+      "S4-L03-Q1",
+      "S4-L03-Q2",
+      "S4-L03-Q3",
+      "S4-L03-Q4"
+    ],
+    "optional": [],
+    "removed": [],
+    "practiceMinutes": "19–24",
+    "examMinutes": "8–11",
+    "reviewMenu": false
+  },
+  {
+    "lesson": 24,
+    "required": [
+      "S4-L04-Q1",
+      "S4-L04-Q2",
+      "S4-L04-Q4"
+    ],
+    "optional": [
+      "S4-L04-Q3"
+    ],
+    "removed": [],
+    "practiceMinutes": "15–20",
+    "examMinutes": "7–10",
+    "reviewMenu": false
+  },
+  {
+    "lesson": 25,
+    "required": [
+      "S4-L05-Q2",
+      "S4-L05-Q4"
+    ],
+    "optional": [
+      "S4-L05-Q1",
+      "S4-L05-Q3"
+    ],
+    "removed": [],
+    "practiceMinutes": "12–16",
+    "examMinutes": "4–6",
+    "reviewMenu": false
+  },
+  {
+    "lesson": 26,
+    "required": [
+      "S4-L06-Q2",
+      "S4-L06-Q4",
+      "S4-L06-Q6",
+      "S4-L06-Q7",
+      "S4-L06-Q8"
+    ],
+    "optional": [
+      "S4-L06-Q1",
+      "S4-L06-Q3",
+      "S4-L06-Q5"
+    ],
+    "removed": [],
+    "practiceMinutes": "27–35",
+    "examMinutes": "13–18",
+    "reviewMenu": false
+  },
+  {
+    "lesson": 27,
+    "required": [
+      "S4-L07-Q1",
+      "S4-L07-Q3",
+      "S4-L07-Q6"
+    ],
+    "optional": [
+      "S4-L07-Q2",
+      "S4-L07-Q4",
+      "S4-L07-Q5"
+    ],
+    "removed": [],
+    "practiceMinutes": "18–23",
+    "examMinutes": "9–12",
+    "reviewMenu": false
+  },
+  {
+    "lesson": 28,
+    "required": [
+      "S5-L01-Q2",
+      "S5-L01-Q3",
+      "S5-L01-Q4",
+      "S5-L01-Q5",
+      "S5-L01-Q6"
+    ],
+    "optional": [
+      "S5-L01-Q1"
+    ],
+    "removed": [],
+    "practiceMinutes": "16–21",
+    "examMinutes": "6–8",
+    "reviewMenu": false
+  },
+  {
+    "lesson": 29,
+    "required": [
+      "S5-L02-Q3",
+      "S5-L02-Q4",
+      "S5-L02-Q6",
+      "S5-L02-Q7",
+      "S5-L02-Q8"
+    ],
+    "optional": [
+      "S5-L02-Q1",
+      "S5-L02-Q2",
+      "S5-L02-Q5"
+    ],
+    "removed": [],
+    "practiceMinutes": "20–26",
+    "examMinutes": "12–16",
+    "reviewMenu": false
+  },
+  {
+    "lesson": 30,
+    "required": [
+      "S5-L03-Q1",
+      "S5-L03-Q2",
+      "S5-L03-Q3"
+    ],
+    "optional": [],
+    "removed": [],
+    "practiceMinutes": "10–14",
+    "examMinutes": "6–8",
+    "reviewMenu": false
+  },
+  {
+    "lesson": 31,
+    "required": [
+      "S5-L04-Q2",
+      "S5-L04-Q3"
+    ],
+    "optional": [
+      "S5-L04-Q1"
+    ],
+    "removed": [],
+    "practiceMinutes": "8–12",
+    "examMinutes": "5–7",
+    "reviewMenu": false
+  },
+  {
+    "lesson": 32,
+    "required": [
+      "S5-L05-Q2",
+      "S5-L05-Q3",
+      "S5-L05-Q4"
+    ],
+    "optional": [
+      "S5-L05-Q1"
+    ],
+    "removed": [],
+    "practiceMinutes": "11–15",
+    "examMinutes": "7–10",
+    "reviewMenu": false
+  },
+  {
+    "lesson": 33,
+    "required": [
+      "S6-L01-Q1",
+      "S6-L01-Q2",
+      "S6-L01-Q3"
+    ],
+    "optional": [
+      "S6-L01-Q4"
+    ],
+    "removed": [],
+    "practiceMinutes": "9–13",
+    "examMinutes": "6–8",
+    "reviewMenu": false
+  },
+  {
+    "lesson": 34,
+    "required": [
+      "S6-L02-Q2",
+      "S6-L02-Q3",
+      "S6-L02-Q4",
+      "S6-L02-Q5",
+      "S6-L02-Q6",
+      "S6-L02-Q7"
+    ],
+    "optional": [
+      "S6-L02-Q1"
+    ],
+    "removed": [],
+    "practiceMinutes": "22–28",
+    "examMinutes": "6–9",
+    "reviewMenu": false
+  },
+  {
+    "lesson": 35,
+    "required": [
+      "S6-L03-Q1",
+      "S6-L03-Q2",
+      "S6-L03-Q3",
+      "S6-L03-Q4",
+      "S6-L03-Q5"
+    ],
+    "optional": [
+      "S6-L03-Q6"
+    ],
+    "removed": [],
+    "practiceMinutes": "17–22",
+    "examMinutes": "6–9",
+    "reviewMenu": false
+  },
+  {
+    "lesson": 36,
+    "required": [
+      "S6-L04-Q2",
+      "S6-L04-Q3",
+      "S6-L04-Q4"
+    ],
+    "optional": [
+      "S6-L04-Q1"
+    ],
+    "removed": [],
+    "practiceMinutes": "11–15",
+    "examMinutes": "5–7",
+    "reviewMenu": false
+  },
+  {
+    "lesson": 37,
+    "required": [
+      "S6-L05-Q1",
+      "S6-L05-Q2",
+      "S6-L05-Q3",
+      "S6-L05-Q4",
+      "S6-L05-Q5",
+      "S6-L05-Q6",
+      "S6-L05-Q7",
+      "S6-L05-Q8",
+      "S6-L05-Q9",
+      "S6-L05-Q10"
+    ],
+    "optional": [],
+    "removed": [],
+    "practiceMinutes": "30–40",
+    "examMinutes": "10–14",
+    "reviewMenu": false
+  },
+  {
+    "lesson": 38,
+    "required": [
+      "S7-L01-Q1",
+      "S7-L01-Q3",
+      "S7-L01-Q5"
+    ],
+    "optional": [
+      "S7-L01-Q2",
+      "S7-L01-Q4"
+    ],
+    "removed": [],
+    "practiceMinutes": "11–15",
+    "examMinutes": "7–10",
+    "reviewMenu": false
+  },
+  {
+    "lesson": 39,
+    "required": [
+      "S7-L02-Q1",
+      "S7-L02-Q2",
+      "S7-L02-Q5"
+    ],
+    "optional": [
+      "S7-L02-Q3",
+      "S7-L02-Q4"
+    ],
+    "removed": [],
+    "practiceMinutes": "12–17",
+    "examMinutes": "6–8",
+    "reviewMenu": false
+  },
+  {
+    "lesson": 40,
+    "required": [
+      "S7-L03-Q1",
+      "S7-L03-Q2",
+      "S7-L03-Q3",
+      "S7-L03-Q5",
+      "S7-L03-Q6",
+      "S7-L03-Q7",
+      "S7-L03-Q8"
+    ],
+    "optional": [
+      "S7-L03-Q4"
+    ],
+    "removed": [],
+    "practiceMinutes": "21–27",
+    "examMinutes": "9–12",
+    "reviewMenu": false
+  },
+  {
+    "lesson": 41,
+    "required": [
+      "S7-L04-Q1",
+      "S7-L04-Q3",
+      "S7-L04-Q4",
+      "S7-L04-Q5",
+      "S7-L04-Q7",
+      "S7-L04-Q8"
+    ],
+    "optional": [
+      "S7-L04-Q2",
+      "S7-L04-Q6"
+    ],
+    "removed": [],
+    "practiceMinutes": "20–27",
+    "examMinutes": "8–11",
+    "reviewMenu": false
+  },
+  {
+    "lesson": 42,
+    "required": [
+      "S8-L01-Q1",
+      "S8-L01-Q3",
+      "S8-L01-Q5",
+      "S8-L01-Q6"
+    ],
+    "optional": [
+      "S8-L01-Q2",
+      "S8-L01-Q4"
+    ],
+    "removed": [],
+    "practiceMinutes": "15–20",
+    "examMinutes": "5–7",
+    "reviewMenu": false
+  },
+  {
+    "lesson": 43,
+    "required": [
+      "S8-L02-Q1",
+      "S8-L02-Q2",
+      "S8-L02-Q3",
+      "S8-L02-Q5"
+    ],
+    "optional": [
+      "S8-L02-Q4"
+    ],
+    "removed": [],
+    "practiceMinutes": "23–30",
+    "examMinutes": "19–25",
+    "reviewMenu": false
+  },
+  {
+    "lesson": 44,
+    "required": [
+      "S8-L03-Q1",
+      "S8-L03-Q3",
+      "S8-L03-Q4",
+      "S8-L03-Q5",
+      "S8-L03-Q6",
+      "S8-L03-Q8"
+    ],
+    "optional": [
+      "S8-L03-Q2",
+      "S8-L03-Q7"
+    ],
+    "removed": [],
+    "practiceMinutes": "20–27",
+    "examMinutes": "9–12",
+    "reviewMenu": false
+  },
+  {
+    "lesson": 45,
+    "required": [
+      "S8-L04-Q1",
+      "S8-L04-Q2",
+      "S8-L04-Q3"
+    ],
+    "optional": [],
+    "removed": [],
+    "practiceMinutes": "7–10",
+    "examMinutes": "0",
+    "reviewMenu": false
+  },
+  {
+    "lesson": 46,
+    "required": [
+      "S8-L05-Q2",
+      "S8-L05-Q3",
+      "S8-L05-Q4",
+      "S8-L05-Q5",
+      "S8-L05-Q6"
+    ],
+    "optional": [
+      "S8-L05-Q1"
+    ],
+    "removed": [],
+    "practiceMinutes": "20–27",
+    "examMinutes": "14–19",
+    "reviewMenu": false
+  },
+  {
+    "lesson": 47,
+    "required": [
+      "S8-L06-Q2",
+      "S8-L06-Q3",
+      "S8-L06-Q4",
+      "S8-L06-Q5",
+      "S8-L06-Q6",
+      "S8-L06-Q7",
+      "S8-L06-Q8",
+      "S8-L06-Q9"
+    ],
+    "optional": [
+      "S8-L06-Q1"
+    ],
+    "removed": [],
+    "practiceMinutes": "30–40",
+    "examMinutes": "16–22",
+    "reviewMenu": false
+  },
+  {
+    "lesson": 48,
+    "required": [
+      "S1-REVIEW-NUMBERS",
+      "S1-REVIEW-MEDIA",
+      "REV-P1-S2-BUFFER",
+      "REV-P1-S3-DEVICES",
+      "REV-P1-S3-CONTROL",
+      "REV-P1-S4-Q1",
+      "REV-P1-S4-Q2",
+      "REV-P1-S4-Q4",
+      "REV-P1-S5-Q2",
+      "REV-P1-S5-Q3",
+      "REV-P1-S7-Q2",
+      "REV-P1-S7-Q4",
+      "REV-P1-S8-Q2"
+    ],
+    "optional": [
+      "V3-Q-L045-01",
+      "V3-Q-L045-04",
+      "REV-P1-S2-DESIGN",
+      "REV-P1-S2-HARDWARE",
+      "REV-P1-S2-RESOURCE",
+      "REV-P1-S3-MEMORY",
+      "REV-P1-S4-Q3",
+      "REV-P1-S5-Q1",
+      "REV-P1-S7-Q1",
+      "REV-P1-S7-Q3",
+      "REV-P1-S8-Q1",
+      "REV-P1-S8-Q3",
+      "REV-P1-S8-Q4"
+    ],
+    "removed": [
+      "V3-Q-L045-03"
+    ],
+    "practiceMinutes": "55–70",
+    "examMinutes": "55–65",
+    "reviewMenu": true
+  },
+  {
+    "lesson": 49,
+    "required": [
+      "S9-L01-Q1",
+      "S9-L01-Q2",
+      "S9-L01-Q3"
+    ],
+    "optional": [],
+    "removed": [],
+    "practiceMinutes": "8–11",
+    "examMinutes": "5–7",
+    "reviewMenu": false
+  },
+  {
+    "lesson": 50,
+    "required": [
+      "S9-L02-Q1",
+      "S9-L02-Q2",
+      "S9-L02-Q3"
+    ],
+    "optional": [],
+    "removed": [],
+    "practiceMinutes": "9–12",
+    "examMinutes": "7–10",
+    "reviewMenu": false
+  },
+  {
+    "lesson": 51,
+    "required": [
+      "S9-L03-Q1",
+      "S9-L03-Q2",
+      "S9-L03-Q3"
+    ],
+    "optional": [],
+    "removed": [],
+    "practiceMinutes": "9–12",
+    "examMinutes": "6–8",
+    "reviewMenu": false
+  },
+  {
+    "lesson": 52,
+    "required": [
+      "S9-L04-Q1",
+      "S9-L04-Q2",
+      "S9-L04-Q3"
+    ],
+    "optional": [],
+    "removed": [],
+    "practiceMinutes": "8–11",
+    "examMinutes": "0",
+    "reviewMenu": false
+  },
+  {
+    "lesson": 53,
+    "required": [
+      "S9-L05-Q1",
+      "S9-L05-Q2",
+      "S9-L05-Q3"
+    ],
+    "optional": [],
+    "removed": [],
+    "practiceMinutes": "9–12",
+    "examMinutes": "3–5",
+    "reviewMenu": false
+  },
+  {
+    "lesson": 54,
+    "required": [
+      "S9-L06-Q1",
+      "S9-L06-Q2",
+      "S9-L06-Q3",
+      "S9-L06-Q4"
+    ],
+    "optional": [],
+    "removed": [],
+    "practiceMinutes": "16–22",
+    "examMinutes": "11–15",
+    "reviewMenu": false
+  },
+  {
+    "lesson": 55,
+    "required": [
+      "S9-L07-Q1",
+      "S9-L07-Q2",
+      "S9-L07-Q3"
+    ],
+    "optional": [],
+    "removed": [],
+    "practiceMinutes": "10–14",
+    "examMinutes": "8–11",
+    "reviewMenu": false
+  },
+  {
+    "lesson": 56,
+    "required": [
+      "S9-L08-Q1",
+      "S9-L08-Q2",
+      "S9-L08-Q3"
+    ],
+    "optional": [],
+    "removed": [],
+    "practiceMinutes": "11–15",
+    "examMinutes": "5–8",
+    "reviewMenu": false
+  },
+  {
+    "lesson": 57,
+    "required": [
+      "S9-L09-Q1",
+      "S9-L09-Q2",
+      "S9-L09-Q3"
+    ],
+    "optional": [],
+    "removed": [],
+    "practiceMinutes": "17–24",
+    "examMinutes": "10–14",
+    "reviewMenu": false
+  },
+  {
+    "lesson": 58,
+    "required": [
+      "S10-L01-Q1",
+      "S10-L01-Q2",
+      "S10-L01-Q3",
+      "S10-L01-Q4"
+    ],
+    "optional": [],
+    "removed": [],
+    "practiceMinutes": "11–15",
+    "examMinutes": "4–6",
+    "reviewMenu": false
+  },
+  {
+    "lesson": 59,
+    "required": [
+      "S10-L02-Q1",
+      "S10-L02-Q2",
+      "S10-L02-Q3",
+      "S10-L02-Q4"
+    ],
+    "optional": [],
+    "removed": [],
+    "practiceMinutes": "12–16",
+    "examMinutes": "7–10",
+    "reviewMenu": false
+  },
+  {
+    "lesson": 60,
+    "required": [
+      "S10-L03-Q1",
+      "S10-L03-Q2",
+      "S10-L03-Q3"
+    ],
+    "optional": [],
+    "removed": [],
+    "practiceMinutes": "9–12",
+    "examMinutes": "5–8",
+    "reviewMenu": false
+  },
+  {
+    "lesson": 61,
+    "required": [
+      "S10-L04-Q1",
+      "S10-L04-Q3",
+      "S10-L04-Q4",
+      "S10-L04-Q5"
+    ],
+    "optional": [
+      "S10-L04-Q2"
+    ],
+    "removed": [],
+    "practiceMinutes": "15–21",
+    "examMinutes": "11–15",
+    "reviewMenu": false
+  },
+  {
+    "lesson": 62,
+    "required": [
+      "S10-L05-Q1",
+      "S10-L05-Q2",
+      "S10-L05-Q3",
+      "S10-L05-Q4"
+    ],
+    "optional": [],
+    "removed": [],
+    "practiceMinutes": "16–22",
+    "examMinutes": "6–9",
+    "reviewMenu": false
+  },
+  {
+    "lesson": 63,
+    "required": [
+      "S10-L06-Q1",
+      "S10-L06-Q2",
+      "S10-L06-Q3"
+    ],
+    "optional": [],
+    "removed": [],
+    "practiceMinutes": "13–18",
+    "examMinutes": "0",
+    "reviewMenu": false
+  },
+  {
+    "lesson": 64,
+    "required": [
+      "S10-L07-Q1",
+      "S10-L07-Q2",
+      "S10-L07-Q3"
+    ],
+    "optional": [],
+    "removed": [],
+    "practiceMinutes": "16–22",
+    "examMinutes": "0",
+    "reviewMenu": false
+  },
+  {
+    "lesson": 65,
+    "required": [
+      "S10-L08-Q1",
+      "S10-L08-Q2",
+      "S10-L08-Q3",
+      "S10-L08-Q4",
+      "S10-L08-Q5"
+    ],
+    "optional": [],
+    "removed": [],
+    "practiceMinutes": "16–21",
+    "examMinutes": "13–18",
+    "reviewMenu": false
+  },
+  {
+    "lesson": 66,
+    "required": [
+      "S10-L09-Q1",
+      "S10-L09-Q2",
+      "S10-L09-Q3"
+    ],
+    "optional": [],
+    "removed": [],
+    "practiceMinutes": "9–12",
+    "examMinutes": "0",
+    "reviewMenu": false
+  },
+  {
+    "lesson": 67,
+    "required": [
+      "S10-L10-Q1",
+      "S10-L10-Q2",
+      "S10-L10-Q3"
+    ],
+    "optional": [],
+    "removed": [],
+    "practiceMinutes": "13–18",
+    "examMinutes": "10–14",
+    "reviewMenu": false
+  },
+  {
+    "lesson": 68,
+    "required": [
+      "S10-L11-Q2",
+      "S10-L11-Q3",
+      "S10-L11-Q4"
+    ],
+    "optional": [
+      "S10-L11-Q1"
+    ],
+    "removed": [],
+    "practiceMinutes": "13–18",
+    "examMinutes": "8–11",
+    "reviewMenu": false
+  },
+  {
+    "lesson": 69,
+    "required": [
+      "S10-L12-Q1",
+      "S10-L12-Q2",
+      "S10-L12-Q3",
+      "S10-L12-Q4"
+    ],
+    "optional": [],
+    "removed": [],
+    "practiceMinutes": "15–20",
+    "examMinutes": "7–10",
+    "reviewMenu": false
+  },
+  {
+    "lesson": 70,
+    "required": [
+      "S10-L13-Q2",
+      "S10-L13-Q3",
+      "S10-L13-Q4"
+    ],
+    "optional": [
+      "S10-L13-Q1"
+    ],
+    "removed": [],
+    "practiceMinutes": "14–19",
+    "examMinutes": "8–11",
+    "reviewMenu": false
+  },
+  {
+    "lesson": 71,
+    "required": [
+      "S10-L14-Q1",
+      "S10-L14-Q4",
+      "S10-L14-Q5"
+    ],
+    "optional": [
+      "S10-L14-Q2",
+      "S10-L14-Q3"
+    ],
+    "removed": [],
+    "practiceMinutes": "18–25",
+    "examMinutes": "13–18",
+    "reviewMenu": false
+  },
+  {
+    "lesson": 72,
+    "required": [
+      "S11-L01-Q2",
+      "S11-L01-Q3",
+      "S11-L01-Q4"
+    ],
+    "optional": [
+      "S11-L01-Q1"
+    ],
+    "removed": [],
+    "practiceMinutes": "14–20",
+    "examMinutes": "10–14",
+    "reviewMenu": false
+  },
+  {
+    "lesson": 73,
+    "required": [
+      "S11-L02-Q1",
+      "S11-L02-Q2",
+      "S11-L02-Q3"
+    ],
+    "optional": [],
+    "removed": [],
+    "practiceMinutes": "8–12",
+    "examMinutes": "5–7",
+    "reviewMenu": false
+  },
+  {
+    "lesson": 74,
+    "required": [
+      "S11-L03-Q1",
+      "S11-L03-Q3",
+      "S11-L03-Q4"
+    ],
+    "optional": [
+      "S11-L03-Q2"
+    ],
+    "removed": [],
+    "practiceMinutes": "12–16",
+    "examMinutes": "7–10",
+    "reviewMenu": false
+  },
+  {
+    "lesson": 75,
+    "required": [
+      "S11-L04-Q1",
+      "S11-L04-Q2",
+      "S11-L04-Q3",
+      "S11-L04-Q4",
+      "S11-L04-Q5"
+    ],
+    "optional": [],
+    "removed": [],
+    "practiceMinutes": "18–24",
+    "examMinutes": "8–11",
+    "reviewMenu": false
+  },
+  {
+    "lesson": 76,
+    "required": [
+      "S11-L05-Q2",
+      "S11-L05-Q3"
+    ],
+    "optional": [
+      "S11-L05-Q1"
+    ],
+    "removed": [],
+    "practiceMinutes": "10–14",
+    "examMinutes": "7–10",
+    "reviewMenu": false
+  },
+  {
+    "lesson": 77,
+    "required": [
+      "S11-L06-Q1",
+      "S11-L06-Q2",
+      "S11-L06-Q3",
+      "S11-L06-Q4"
+    ],
+    "optional": [],
+    "removed": [],
+    "practiceMinutes": "14–19",
+    "examMinutes": "14–19",
+    "reviewMenu": false
+  },
+  {
+    "lesson": 78,
+    "required": [
+      "S11-L07-Q1",
+      "S11-L07-Q2",
+      "S11-L07-Q4"
+    ],
+    "optional": [
+      "S11-L07-Q3"
+    ],
+    "removed": [],
+    "practiceMinutes": "13–18",
+    "examMinutes": "10–14",
+    "reviewMenu": false
+  },
+  {
+    "lesson": 79,
+    "required": [
+      "S11-L08-Q2",
+      "S11-L08-Q3",
+      "S11-L08-Q4"
+    ],
+    "optional": [
+      "S11-L08-Q1"
+    ],
+    "removed": [],
+    "practiceMinutes": "12–17",
+    "examMinutes": "4–6",
+    "reviewMenu": false
+  },
+  {
+    "lesson": 80,
+    "required": [
+      "S11-L09-Q2",
+      "S11-L09-Q3",
+      "S11-L09-Q4",
+      "S11-L09-Q5"
+    ],
+    "optional": [
+      "S11-L09-Q1"
+    ],
+    "removed": [],
+    "practiceMinutes": "19–25",
+    "examMinutes": "8–12",
+    "reviewMenu": false
+  },
+  {
+    "lesson": 81,
+    "required": [
+      "S11-L10-Q2",
+      "S11-L10-Q3",
+      "S11-L10-Q4",
+      "S11-L10-Q5"
+    ],
+    "optional": [
+      "S11-L10-Q1"
+    ],
+    "removed": [],
+    "practiceMinutes": "17–23",
+    "examMinutes": "12–17",
+    "reviewMenu": false
+  },
+  {
+    "lesson": 82,
+    "required": [
+      "S11-L11-Q2",
+      "S11-L11-Q4",
+      "S11-L11-Q5"
+    ],
+    "optional": [
+      "S11-L11-Q1",
+      "S11-L11-Q3"
+    ],
+    "removed": [],
+    "practiceMinutes": "16–22",
+    "examMinutes": "14–19",
+    "reviewMenu": false
+  },
+  {
+    "lesson": 83,
+    "required": [
+      "S11-L12-Q2",
+      "S11-L12-Q3"
+    ],
+    "optional": [
+      "S11-L12-Q1"
+    ],
+    "removed": [],
+    "practiceMinutes": "15–22",
+    "examMinutes": "16–22",
+    "reviewMenu": false
+  },
+  {
+    "lesson": 84,
+    "required": [
+      "S12-L01-Q1",
+      "S12-L01-Q2",
+      "S12-L01-Q3",
+      "S12-L01-Q5"
+    ],
+    "optional": [
+      "S12-L01-Q4"
+    ],
+    "removed": [],
+    "practiceMinutes": "13–18",
+    "examMinutes": "7–10",
+    "reviewMenu": false
+  },
+  {
+    "lesson": 85,
+    "required": [
+      "S12-L02-Q3",
+      "S12-L02-Q4",
+      "S12-L02-Q5",
+      "S12-L02-Q6"
+    ],
+    "optional": [
+      "S12-L02-Q1",
+      "S12-L02-Q2"
+    ],
+    "removed": [],
+    "practiceMinutes": "22–30",
+    "examMinutes": "15–21",
+    "reviewMenu": false
+  },
+  {
+    "lesson": 86,
+    "required": [
+      "S12-L03-Q2",
+      "S12-L03-Q3",
+      "S12-L03-Q4"
+    ],
+    "optional": [
+      "S12-L03-Q1"
+    ],
+    "removed": [],
+    "practiceMinutes": "11–16",
+    "examMinutes": "10–14",
+    "reviewMenu": false
+  },
+  {
+    "lesson": 87,
+    "required": [
+      "S12-L04-Q1",
+      "S12-L04-Q3",
+      "S12-L04-Q4",
+      "S12-L04-Q5"
+    ],
+    "optional": [
+      "S12-L04-Q2"
+    ],
+    "removed": [],
+    "practiceMinutes": "14–20",
+    "examMinutes": "13–18",
+    "reviewMenu": false
+  },
+  {
+    "lesson": 88,
+    "required": [
+      "S12-L05-Q1",
+      "S12-L05-Q2",
+      "S12-L05-Q3",
+      "S12-L05-Q5",
+      "S12-L05-Q6"
+    ],
+    "optional": [
+      "S12-L05-Q4",
+      "S12-L05-Q7"
+    ],
+    "removed": [],
+    "practiceMinutes": "18–25",
+    "examMinutes": "9–13",
+    "reviewMenu": false
+  },
+  {
+    "lesson": 89,
+    "required": [
+      "S12-L06-Q1",
+      "S12-L06-Q2",
+      "S12-L06-Q4"
+    ],
+    "optional": [
+      "S12-L06-Q3"
+    ],
+    "removed": [],
+    "practiceMinutes": "14–20",
+    "examMinutes": "8–11",
+    "reviewMenu": false
+  },
+  {
+    "lesson": 90,
+    "required": [
+      "S12-L07-Q1",
+      "S12-L07-Q2",
+      "S12-L07-Q3",
+      "S12-L07-Q5"
+    ],
+    "optional": [
+      "S12-L07-Q4"
+    ],
+    "removed": [],
+    "practiceMinutes": "14–19",
+    "examMinutes": "8–11",
+    "reviewMenu": false
+  },
+  {
+    "lesson": 91,
+    "required": [
+      "S12-L08-Q1",
+      "S12-L08-Q2",
+      "S12-L08-Q3",
+      "S12-L08-Q4"
+    ],
+    "optional": [],
+    "removed": [],
+    "practiceMinutes": "12–17",
+    "examMinutes": "5–7",
+    "reviewMenu": false
+  },
+  {
+    "lesson": 92,
+    "required": [
+      "S12-L09-Q2",
+      "S12-L09-Q3",
+      "S12-L09-Q5",
+      "S12-L09-Q6"
+    ],
+    "optional": [
+      "S12-L09-Q1",
+      "S12-L09-Q4"
+    ],
+    "removed": [],
+    "practiceMinutes": "21–29",
+    "examMinutes": "9–13",
+    "reviewMenu": false
+  },
+  {
+    "lesson": 93,
+    "required": [
+      "REV-P2-S9-Q1",
+      "REV-P2-S9-Q4",
+      "REV-P2-S10-Q1",
+      "REV-P2-S10-Q2",
+      "REV-P2-S10-Q3",
+      "REV-P2-S10-Q4",
+      "REV-P2-S11-Q2",
+      "REV-P2-S12-Q1",
+      "REV-P2-S12-Q2",
+      "REV-P2-S12-Q3",
+      "REV-P2-S12-Q4"
+    ],
+    "optional": [
+      "V3-Q-L090-02",
+      "REV-P2-S9-Q2",
+      "REV-P2-S9-Q3",
+      "REV-P2-S11-Q1",
+      "REV-P2-S11-Q3"
+    ],
+    "removed": [],
+    "practiceMinutes": "45–60",
+    "examMinutes": "40–50",
+    "reviewMenu": true
+  }
+]

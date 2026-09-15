@@ -315,3 +315,44 @@ body:has(.lesson-hero [data-objective-id^="S10."]) .source-note{overflow-wrap:an
 @media(min-width:1100px){.classroom-mode .knowledge-unit{display:grid;grid-template-columns:minmax(0,1.75fr) minmax(0,1fr);gap:16px;align-items:start}.classroom-mode .knowledge-unit>.unit-heading{grid-column:1/-1}.classroom-mode .lead-visual{grid-column:1;margin-top:0}.classroom-mode .core-explanation{grid-column:2;margin:0}.classroom-mode .knowledge-unit>:not(.unit-heading,.lead-visual,.core-explanation){grid-column:1/-1}.classroom-mode .reviewed-visual img{min-width:680px;max-height:none}.classroom-mode .core-block table{min-width:400px}}
 @media(max-width:520px){.classroom-toolbar{padding:12px}.unit-selector select{flex-basis:100%}.classroom-mode .lesson-hero h1{font-size:1.7rem}.classroom-mode .reviewed-visual img{min-width:680px;max-height:none}}
 @media print{.classroom-toolbar{display:none!important}.classroom-mode .lesson-stage,.classroom-mode .knowledge-unit,.classroom-mode .practice-question,.classroom-mode .exam-question{display:block!important}.classroom-mode .lesson-hero :is(.objective-ledger,.lead,.guiding-question,.diagnostic),.classroom-mode .lesson-toc{display:block}}
+/* Source extracts use their own scroll surface; classroom diagram sizing does not shrink them. */
+.exam-allocation,.practice-allocation,.exam-connection{padding:18px 22px;border-left:4px solid var(--teal);background:var(--teal-pale);margin-bottom:28px}
+.exam-allocation p:last-child,.exam-connection p:last-child{margin-bottom:0}
+.exam-question{min-width:0;max-width:100%;scroll-margin-top:90px;padding:24px 0}
+.exam-heading p{margin:8px 0;overflow-wrap:anywhere}.exam-heading h3{margin:10px 0;line-height:1.35}
+.source-kind{color:var(--teal);font-size:.82rem;font-weight:800;letter-spacing:.04em}
+.official-extract{margin:20px 0;min-width:0;max-width:100%}
+.official-page-scroll{max-width:100%;overflow-x:auto;background:#fff;border:1px solid var(--line);overscroll-behavior-x:contain}
+.official-page-scroll img{display:block;width:100%;min-width:760px;height:auto;max-height:none;object-fit:contain}
+.official-extract figcaption{padding:8px 2px;font-size:.78rem;line-height:1.5;overflow-wrap:anywhere;color:var(--ink-soft)}
+.official-extract a{font-weight:700;color:var(--teal)}
+.original-insert{margin:26px 0;padding:12px;border-left:3px solid var(--line-dark);background:#fff}
+.exam-reveal{margin:12px 0;border:1px solid var(--line-dark);background:#fff;padding:0 18px;min-width:0}
+.exam-reveal>summary{padding:15px 0;font-weight:700;color:var(--navy-dark);cursor:pointer;line-height:1.5}
+.exam-reveal[open]{padding-bottom:14px}.exam-reveal p{line-height:1.65;overflow-wrap:anywhere}
+.exam-reveal[data-exam-role="mark-scheme"]{border-left:4px solid var(--navy)}
+.exam-reveal pre{max-width:100%;padding:18px;overflow-x:auto;background:#101c2c;color:#eef5f7;font:500 .95rem/1.6 ui-monospace,SFMono-Regular,Menlo,monospace;white-space:pre}
+.exam-reveal pre code{font:inherit;color:inherit;background:none}
+.exam-table-scroll,.exam-diagram-scroll{max-width:100%;overflow-x:auto;margin:16px 0;overscroll-behavior-x:contain}
+.exam-table-scroll table{width:100%;min-width:600px;border-collapse:collapse;font-size:.94rem;line-height:1.5}
+.exam-table-scroll th,.exam-table-scroll td{padding:12px;text-align:left;vertical-align:top;border:1px solid var(--line-dark);color:var(--navy-dark);background:white}
+.exam-table-scroll thead th{background:var(--blue-pale)}
+.exam-diagram-scroll svg{display:block;width:100%;min-width:760px;height:auto;background:#fff}
+.exam-source-link{font-size:.8rem;line-height:1.6;overflow-wrap:anywhere}
+.optional-practice{margin-top:32px;padding:18px;border:1px solid var(--line-dark);background:#fff}.optional-practice>summary{font-weight:800;cursor:pointer}
+.optional-practice .practice-question{margin-top:24px}.practice-dependency{padding:10px;border-left:3px solid var(--teal)}
+.exam-print-controls{display:flex;flex-wrap:wrap;gap:12px;margin:24px 0}.exam-print-controls[hidden]{display:none}.exam-print-controls button{padding:10px 14px;font:inherit;color:var(--navy-dark);background:white;border:1px solid var(--line-dark);cursor:pointer}
+:is(.official-page-scroll,.exam-table-scroll,.exam-diagram-scroll,.exam-reveal summary,.exam-print-controls button):focus-visible{outline:3px solid var(--teal);outline-offset:3px}
+@media(max-width:680px){.exam-reveal{padding-left:12px;padding-right:12px}.exam-allocation,.practice-allocation{padding:16px}.official-page-scroll::after{content:'Scroll horizontally to read the complete original →';display:block;position:sticky;left:0;padding:9px;font-size:.76rem;color:var(--teal)}}
+@media print{
+ .exam-print-controls,.classroom-toolbar,.lesson-pagination,.exam-source-link,.official-extract figcaption a{display:none!important}
+ body[data-exam-print] .lesson-hero,body[data-exam-print] #visual-and-core,body[data-exam-print] #summary,body[data-exam-print] .site-header{display:none!important}
+ body[data-exam-print] #practice,body[data-exam-print] #past-paper-questions,body[data-exam-print] .practice-question,body[data-exam-print] .exam-question{display:block!important}
+ .official-page-scroll,.exam-table-scroll,.exam-diagram-scroll{overflow:visible;border:0}
+ .official-page-scroll img,.exam-diagram-scroll svg{min-width:0!important;max-width:100%;width:100%;height:auto;max-height:245mm;object-fit:contain}
+ .official-page-scroll::after{display:none}.official-extract{break-inside:avoid;page-break-inside:avoid}
+ .exam-table-scroll table{min-width:0;font-size:10pt}.exam-table-scroll th,.exam-table-scroll td{padding:6px}
+ .exam-reveal pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:9pt;color:#000;background:#fff;overflow:visible}
+ .exam-question{break-before:auto}.exam-heading{break-after:avoid}.exam-reveal{break-inside:auto}.exam-diagram-scroll{break-inside:avoid}
+ body[data-exam-print="questions"] .exam-reveal,body[data-exam-print="questions"] .practice-question details{display:none!important}
+}

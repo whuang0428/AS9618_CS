@@ -1,0 +1,2997 @@
+{
+  "E001": {
+    "qp": [
+      [
+        14,
+        58,
+        238
+      ]
+    ],
+    "ms": [
+      [
+        10,
+        65,
+        139
+      ]
+    ],
+    "review": {
+      "status": "verified",
+      "date": "2026-09-15",
+      "reviewer": "Codex",
+      "cropSpecSha256": "e33796c9c7b1eb178f1d40bec216cca1e2b6d576ed23f5920a4610f8c1d459bc",
+      "method": "Approved original-page visual review and source register retained; QP/MS text and dependencies rechecked; every current QP/MS crop edge and all insert extracts visually checked; complex diagram and code extracts sampled at full size. PDF glyph-boundary checks passed."
+    }
+  },
+  "E002": {
+    "qp": [
+      [
+        9,
+        58,
+        526
+      ]
+    ],
+    "ms": [
+      [
+        6,
+        598,
+        725
+      ],
+      [
+        7,
+        65,
+        191
+      ]
+    ],
+    "review": {
+      "status": "verified",
+      "date": "2026-09-15",
+      "reviewer": "Codex",
+      "cropSpecSha256": "54c42a2f7a039b579c2930d834542f671deba2c702625f6f75213a4c14211b48",
+      "method": "Approved original-page visual review and source register retained; QP/MS text and dependencies rechecked; every current QP/MS crop edge and all insert extracts visually checked; complex diagram and code extracts sampled at full size. PDF glyph-boundary checks passed."
+    }
+  },
+  "E003": {
+    "qp": [
+      [
+        15,
+        185,
+        392
+      ]
+    ],
+    "ms": [
+      [
+        8,
+        65,
+        280
+      ]
+    ],
+    "review": {
+      "status": "verified",
+      "date": "2026-09-15",
+      "reviewer": "Codex",
+      "cropSpecSha256": "808d8b0852f2f2746e0e6649816dd7f3dd2431a983d4d8ac87ac1cb5bc74b497",
+      "method": "Approved original-page visual review and source register retained; QP/MS text and dependencies rechecked; every current QP/MS crop edge and all insert extracts visually checked; complex diagram and code extracts sampled at full size. PDF glyph-boundary checks passed."
+    }
+  },
+  "E004": {
+    "qp": [
+      [
+        14,
+        58,
+        83
+      ],
+      [
+        14,
+        240,
+        486
+      ]
+    ],
+    "ms": [
+      [
+        10,
+        139,
+        520
+      ]
+    ],
+    "review": {
+      "status": "verified",
+      "date": "2026-09-15",
+      "reviewer": "Codex",
+      "cropSpecSha256": "97ffda25a4811733b0bc8950e964b43f4cb439c11b92769322fdcb078efa267a",
+      "method": "Approved original-page visual review and source register retained; QP/MS text and dependencies rechecked; every current QP/MS crop edge and all insert extracts visually checked; complex diagram and code extracts sampled at full size. PDF glyph-boundary checks passed."
+    }
+  },
+  "E005": {
+    "qp": [
+      [
+        15,
+        58,
+        282
+      ]
+    ],
+    "ms": [
+      [
+        8,
+        65,
+        268
+      ]
+    ],
+    "review": {
+      "status": "verified",
+      "date": "2026-09-15",
+      "reviewer": "Codex",
+      "cropSpecSha256": "f7aba70fd7820eaf8aa4202f6b338492fa123305013332b619be8f81015dd0f0",
+      "method": "Approved original-page visual review and source register retained; QP/MS text and dependencies rechecked; every current QP/MS crop edge and all insert extracts visually checked; complex diagram and code extracts sampled at full size. PDF glyph-boundary checks passed."
+    }
+  },
+  "E006": {
+    "qp": [
+      [
+        2,
+        428,
+        780
+      ]
+    ],
+    "ms": [
+      [
+        4,
+        544,
+        683
+      ]
+    ],
+    "review": {
+      "status": "verified",
+      "date": "2026-09-15",
+      "reviewer": "Codex",
+      "cropSpecSha256": "b04ca86f9619fbe94b983546d5f6961d27aec962e89d1439f9b1fc7290b9f656",
+      "method": "Approved original-page visual review and source register retained; QP/MS text and dependencies rechecked; every current QP/MS crop edge and all insert extracts visually checked; complex diagram and code extracts sampled at full size. PDF glyph-boundary checks passed."
+    }
+  },
+  "E007": {
+    "qp": [
+      [
+        9,
+        504,
+        777
+      ]
+    ],
+    "ms": [
+      [
+        7,
+        349,
+        448
+      ]
+    ],
+    "review": {
+      "status": "verified",
+      "date": "2026-09-15",
+      "reviewer": "Codex",
+      "cropSpecSha256": "b8f100af96b7c1d6f26fc4d179c1852b97b6e2a20d6d84d9be9ecfbf8ba53def",
+      "method": "Approved original-page visual review and source register retained; QP/MS text and dependencies rechecked; every current QP/MS crop edge and all insert extracts visually checked; complex diagram and code extracts sampled at full size. PDF glyph-boundary checks passed."
+    }
+  },
+  "E008": {
+    "qp": [
+      [
+        3,
+        58,
+        96
+      ],
+      [
+        4,
+        58,
+        409
+      ]
+    ],
+    "ms": [
+      [
+        4,
+        566,
+        733
+      ]
+    ],
+    "review": {
+      "status": "verified",
+      "date": "2026-09-15",
+      "reviewer": "Codex",
+      "cropSpecSha256": "a64d480f1b3e970a45667e6098bc2e5a733c3b4ba4af3431a96e8d483dce663a",
+      "method": "Approved original-page visual review and source register retained; QP/MS text and dependencies rechecked; every current QP/MS crop edge and all insert extracts visually checked; complex diagram and code extracts sampled at full size. PDF glyph-boundary checks passed."
+    }
+  },
+  "E009": {
+    "qp": [
+      [
+        9,
+        321,
+        504
+      ]
+    ],
+    "ms": [
+      [
+        7,
+        65,
+        348
+      ]
+    ],
+    "review": {
+      "status": "verified",
+      "date": "2026-09-15",
+      "reviewer": "Codex",
+      "cropSpecSha256": "773a7ab6539761eb4a766935cf662db06250eca856483c24c16fea2c86105d4a",
+      "method": "Approved original-page visual review and source register retained; QP/MS text and dependencies rechecked; every current QP/MS crop edge and all insert extracts visually checked; complex diagram and code extracts sampled at full size. PDF glyph-boundary checks passed."
+    }
+  },
+  "E010": {
+    "qp": [
+      [
+        3,
+        70,
+        90
+      ],
+      [
+        3,
+        299,
+        325
+      ],
+      [
+        3,
+        533,
+        659
+      ]
+    ],
+    "ms": [
+      [
+        4,
+        65,
+        153
+      ]
+    ],
+    "review": {
+      "status": "verified",
+      "date": "2026-09-15",
+      "reviewer": "Codex",
+      "cropSpecSha256": "19becc0449ed391dd8f3093216b51ac9cafc7a70a5f198dd860aa30a26cab538",
+      "method": "Approved original-page visual review and source register retained; QP/MS text and dependencies rechecked; every current QP/MS crop edge and all insert extracts visually checked; complex diagram and code extracts sampled at full size. PDF glyph-boundary checks passed."
+    }
+  },
+  "E011": {
+    "qp": [
+      [
+        11,
+        58,
+        370
+      ]
+    ],
+    "ms": [
+      [
+        6,
+        65,
+        193
+      ]
+    ],
+    "review": {
+      "status": "verified",
+      "date": "2026-09-15",
+      "reviewer": "Codex",
+      "cropSpecSha256": "2b1b720c90d1f3cdde5d521bc4235f4ef70012b1e4a8854d8975d898b734771c",
+      "method": "Approved original-page visual review and source register retained; QP/MS text and dependencies rechecked; every current QP/MS crop edge and all insert extracts visually checked; complex diagram and code extracts sampled at full size. PDF glyph-boundary checks passed."
+    }
+  },
+  "E012": {
+    "qp": [
+      [
+        5,
+        58,
+        110
+      ],
+      [
+        6,
+        58,
+        440
+      ]
+    ],
+    "ms": [
+      [
+        6,
+        65,
+        424
+      ]
+    ],
+    "review": {
+      "status": "verified",
+      "date": "2026-09-15",
+      "reviewer": "Codex",
+      "cropSpecSha256": "0676927d4bc9acefbb72f38551d5d2df1dc58fc4dcf5f6ff7178c193b92736ea",
+      "method": "Approved original-page visual review and source register retained; QP/MS text and dependencies rechecked; every current QP/MS crop edge and all insert extracts visually checked; complex diagram and code extracts sampled at full size. PDF glyph-boundary checks passed."
+    }
+  },
+  "E013": {
+    "qp": [
+      [
+        10,
+        70,
+        104
+      ],
+      [
+        10,
+        403,
+        556
+      ]
+    ],
+    "ms": [
+      [
+        6,
+        574,
+        662
+      ]
+    ],
+    "review": {
+      "status": "verified",
+      "date": "2026-09-15",
+      "reviewer": "Codex",
+      "cropSpecSha256": "3fd31cbab2e01fec87957f1f856005ae5a9d4c8e23a114a9cada5716aa0f356b",
+      "method": "Approved original-page visual review and source register retained; QP/MS text and dependencies rechecked; every current QP/MS crop edge and all insert extracts visually checked; complex diagram and code extracts sampled at full size. PDF glyph-boundary checks passed."
+    }
+  },
+  "E014": {
+    "qp": [
+      [
+        13,
+        60,
+        367
+      ]
+    ],
+    "ms": [
+      [
+        10,
+        65,
+        389
+      ]
+    ],
+    "review": {
+      "status": "verified",
+      "date": "2026-09-15",
+      "reviewer": "Codex",
+      "cropSpecSha256": "00d944b89948fb609fcaea1a66c98a48566904e97e07261d3001658f9a381520",
+      "method": "Approved original-page visual review and source register retained; QP/MS text and dependencies rechecked; every current QP/MS crop edge and all insert extracts visually checked; complex diagram and code extracts sampled at full size. PDF glyph-boundary checks passed."
+    }
+  },
+  "E015": {
+    "qp": [
+      [
+        16,
+        60,
+        94
+      ],
+      [
+        16,
+        224,
+        560
+      ]
+    ],
+    "ms": [
+      [
+        8,
+        489,
+        591
+      ]
+    ],
+    "review": {
+      "status": "verified",
+      "date": "2026-09-15",
+      "reviewer": "Codex",
+      "cropSpecSha256": "daf653384f2d690aabea8b3f3bc6aca6f0987b020796d6386e3ac941cbb640a4",
+      "method": "Approved original-page visual review and source register retained; QP/MS text and dependencies rechecked; every current QP/MS crop edge and all insert extracts visually checked; complex diagram and code extracts sampled at full size. PDF glyph-boundary checks passed."
+    }
+  },
+  "E016": {
+    "qp": [
+      [
+        2,
+        58,
+        83
+      ],
+      [
+        3,
+        58,
+        266
+      ]
+    ],
+    "ms": [
+      [
+        3,
+        446,
+        576
+      ]
+    ],
+    "review": {
+      "status": "verified",
+      "date": "2026-09-15",
+      "reviewer": "Codex",
+      "cropSpecSha256": "a339cb2b141c095bcfb75f0d221906373fc11f7c98b3f01563d9531975bf1cbd",
+      "method": "Approved original-page visual review and source register retained; QP/MS text and dependencies rechecked; every current QP/MS crop edge and all insert extracts visually checked; complex diagram and code extracts sampled at full size. PDF glyph-boundary checks passed."
+    }
+  },
+  "E017": {
+    "qp": [
+      [
+        10,
+        58,
+        137
+      ],
+      [
+        11,
+        331,
+        539
+      ]
+    ],
+    "ms": [
+      [
+        8,
+        507,
+        648
+      ]
+    ],
+    "review": {
+      "status": "verified",
+      "date": "2026-09-15",
+      "reviewer": "Codex",
+      "cropSpecSha256": "c13350719a896b642400f76e6e5c832a3ffe1e90c8ecc82162ec9b9590e2ebac",
+      "method": "Approved original-page visual review and source register retained; QP/MS text and dependencies rechecked; every current QP/MS crop edge and all insert extracts visually checked; complex diagram and code extracts sampled at full size. PDF glyph-boundary checks passed."
+    }
+  },
+  "E018": {
+    "qp": [
+      [
+        16,
+        60,
+        94
+      ],
+      [
+        17,
+        60,
+        326
+      ]
+    ],
+    "ms": [
+      [
+        8,
+        593,
+        723
+      ]
+    ],
+    "review": {
+      "status": "verified",
+      "date": "2026-09-15",
+      "reviewer": "Codex",
+      "cropSpecSha256": "93c00719e3cd3135c10428f5894d33e7d97ecee5fc06c9c96dfa8ba80d03458c",
+      "method": "Approved original-page visual review and source register retained; QP/MS text and dependencies rechecked; every current QP/MS crop edge and all insert extracts visually checked; complex diagram and code extracts sampled at full size. PDF glyph-boundary checks passed."
+    }
+  },
+  "E019": {
+    "qp": [
+      [
+        5,
+        58,
+        110
+      ],
+      [
+        6,
+        443,
+        468
+      ],
+      [
+        6,
+        599,
+        740
+      ]
+    ],
+    "ms": [
+      [
+        6,
+        543,
+        671
+      ]
+    ],
+    "review": {
+      "status": "verified",
+      "date": "2026-09-15",
+      "reviewer": "Codex",
+      "cropSpecSha256": "b4a77b6de1c7bf62fc2b700e0a0d5bd828153653e0c867ac3f1d0a08b6e25992",
+      "method": "Approved original-page visual review and source register retained; QP/MS text and dependencies rechecked; every current QP/MS crop edge and all insert extracts visually checked; complex diagram and code extracts sampled at full size. PDF glyph-boundary checks passed."
+    }
+  },
+  "E020": {
+    "qp": [
+      [
+        10,
+        58,
+        292
+      ],
+      [
+        11,
+        58,
+        331
+      ],
+      [
+        12,
+        58,
+        515
+      ]
+    ],
+    "ms": [
+      [
+        7,
+        479,
+        555
+      ],
+      [
+        8,
+        194,
+        505
+      ],
+      [
+        9,
+        65,
+        359
+      ]
+    ],
+    "review": {
+      "status": "verified",
+      "date": "2026-09-15",
+      "reviewer": "Codex",
+      "cropSpecSha256": "abec3f176f5cb98b873bfd3643a94e15fbef07d0a7ec2e24b44473b9c58c1423",
+      "method": "Approved original-page visual review and source register retained; QP/MS text and dependencies rechecked; every current QP/MS crop edge and all insert extracts visually checked; complex diagram and code extracts sampled at full size. PDF glyph-boundary checks passed."
+    }
+  },
+  "E021": {
+    "qp": [
+      [
+        2,
+        58,
+        122
+      ],
+      [
+        2,
+        397,
+        642
+      ]
+    ],
+    "ms": [
+      [
+        3,
+        229,
+        437
+      ]
+    ],
+    "review": {
+      "status": "verified",
+      "date": "2026-09-15",
+      "reviewer": "Codex",
+      "cropSpecSha256": "72d1840750f5dd8bed9181d127663fad592652bdfb016f7873bf55be41650a17",
+      "method": "Approved original-page visual review and source register retained; QP/MS text and dependencies rechecked; every current QP/MS crop edge and all insert extracts visually checked; complex diagram and code extracts sampled at full size. PDF glyph-boundary checks passed."
+    }
+  },
+  "E022": {
+    "qp": [
+      [
+        3,
+        58,
+        318
+      ]
+    ],
+    "ms": [
+      [
+        4,
+        65,
+        293
+      ]
+    ],
+    "review": {
+      "status": "verified",
+      "date": "2026-09-15",
+      "reviewer": "Codex",
+      "cropSpecSha256": "7335e76b6ade6142465995bfe8899c9707c4499d7b2759344382670563a8b8a9",
+      "method": "Approved original-page visual review and source register retained; QP/MS text and dependencies rechecked; every current QP/MS crop edge and all insert extracts visually checked; complex diagram and code extracts sampled at full size. PDF glyph-boundary checks passed."
+    }
+  },
+  "E023": {
+    "qp": [
+      [
+        13,
+        60,
+        80
+      ],
+      [
+        13,
+        367,
+        626
+      ]
+    ],
+    "ms": [
+      [
+        10,
+        389,
+        557
+      ]
+    ],
+    "review": {
+      "status": "verified",
+      "date": "2026-09-15",
+      "reviewer": "Codex",
+      "cropSpecSha256": "e9a236a145e35d2a3705ea8c94029b84ab4d08283b6609b366baac8564fae492",
+      "method": "Approved original-page visual review and source register retained; QP/MS text and dependencies rechecked; every current QP/MS crop edge and all insert extracts visually checked; complex diagram and code extracts sampled at full size. PDF glyph-boundary checks passed."
+    }
+  },
+  "E024": {
+    "qp": [
+      [
+        3,
+        60,
+        525
+      ]
+    ],
+    "ms": [
+      [
+        3,
+        423,
+        693
+      ]
+    ],
+    "review": {
+      "status": "verified",
+      "date": "2026-09-15",
+      "reviewer": "Codex",
+      "cropSpecSha256": "c76a239d452c86ebe1216479ecee8d7a420bede9949865884e5d66f5c61b7386",
+      "method": "Approved original-page visual review and source register retained; QP/MS text and dependencies rechecked; every current QP/MS crop edge and all insert extracts visually checked; complex diagram and code extracts sampled at full size. PDF glyph-boundary checks passed."
+    }
+  },
+  "E025": {
+    "qp": [
+      [
+        16,
+        60,
+        558
+      ]
+    ],
+    "ms": [
+      [
+        10,
+        65,
+        336
+      ]
+    ],
+    "review": {
+      "status": "verified",
+      "date": "2026-09-15",
+      "reviewer": "Codex",
+      "cropSpecSha256": "636348604553d05bd43487a5978fece885d721ed07e6f533b8173a83eb365476",
+      "method": "Approved original-page visual review and source register retained; QP/MS text and dependencies rechecked; every current QP/MS crop edge and all insert extracts visually checked; complex diagram and code extracts sampled at full size. PDF glyph-boundary checks passed."
+    }
+  },
+  "E026": {
+    "qp": [
+      [
+        16,
+        60,
+        330
+      ]
+    ],
+    "ms": [
+      [
+        11,
+        585,
+        725
+      ]
+    ],
+    "review": {
+      "status": "verified",
+      "date": "2026-09-15",
+      "reviewer": "Codex",
+      "cropSpecSha256": "28be72ac1a0056777a5c170da61db56021e9d9c020f8481f525ed4b666f0017e",
+      "method": "Approved original-page visual review and source register retained; QP/MS text and dependencies rechecked; every current QP/MS crop edge and all insert extracts visually checked; complex diagram and code extracts sampled at full size. PDF glyph-boundary checks passed."
+    }
+  },
+  "E027": {
+    "qp": [
+      [
+        2,
+        58,
+        305
+      ]
+    ],
+    "ms": [
+      [
+        3,
+        65,
+        280
+      ]
+    ],
+    "review": {
+      "status": "verified",
+      "date": "2026-09-15",
+      "reviewer": "Codex",
+      "cropSpecSha256": "633ac9e897aa95d351afab18e476dc34b223c6cb83a336fa146ba41e23bfb783",
+      "method": "Approved original-page visual review and source register retained; QP/MS text and dependencies rechecked; every current QP/MS crop edge and all insert extracts visually checked; complex diagram and code extracts sampled at full size. PDF glyph-boundary checks passed."
+    }
+  },
+  "E028": {
+    "qp": [
+      [
+        12,
+        58,
+        758
+      ]
+    ],
+    "ms": [
+      [
+        8,
+        336,
+        748
+      ]
+    ],
+    "review": {
+      "status": "verified",
+      "date": "2026-09-15",
+      "reviewer": "Codex",
+      "cropSpecSha256": "86a8dac3d0108b4ef722af6d07430f25fcdcb8f4dc2bdb68d13f37198f222238",
+      "method": "Approved original-page visual review and source register retained; QP/MS text and dependencies rechecked; every current QP/MS crop edge and all insert extracts visually checked; complex diagram and code extracts sampled at full size. PDF glyph-boundary checks passed."
+    }
+  },
+  "E029": {
+    "qp": [
+      [
+        4,
+        60,
+        524
+      ]
+    ],
+    "ms": [
+      [
+        4,
+        299,
+        545
+      ]
+    ],
+    "review": {
+      "status": "verified",
+      "date": "2026-09-15",
+      "reviewer": "Codex",
+      "cropSpecSha256": "dae00134be5ce8f000ddde1d3b7dfb8749ba71f20d80d53a51354d486f0141dd",
+      "method": "Approved original-page visual review and source register retained; QP/MS text and dependencies rechecked; every current QP/MS crop edge and all insert extracts visually checked; complex diagram and code extracts sampled at full size. PDF glyph-boundary checks passed."
+    }
+  },
+  "E030": {
+    "qp": [
+      [
+        5,
+        60,
+        379
+      ]
+    ],
+    "ms": [
+      [
+        4,
+        546,
+        714
+      ]
+    ],
+    "review": {
+      "status": "verified",
+      "date": "2026-09-15",
+      "reviewer": "Codex",
+      "cropSpecSha256": "9797473d49b22464bcfb7c7fc75900274d75284d0d97022b42a40c72332d0977",
+      "method": "Approved original-page visual review and source register retained; QP/MS text and dependencies rechecked; every current QP/MS crop edge and all insert extracts visually checked; complex diagram and code extracts sampled at full size. PDF glyph-boundary checks passed."
+    }
+  },
+  "E031": {
+    "qp": [
+      [
+        5,
+        60,
+        426
+      ]
+    ],
+    "ms": [
+      [
+        5,
+        589,
+        719
+      ]
+    ],
+    "review": {
+      "status": "verified",
+      "date": "2026-09-15",
+      "reviewer": "Codex",
+      "cropSpecSha256": "97cdb43f94e534c83748f9db8004e728efe58b8819c47454aca3b7d243f22af5",
+      "method": "Approved original-page visual review and source register retained; QP/MS text and dependencies rechecked; every current QP/MS crop edge and all insert extracts visually checked; complex diagram and code extracts sampled at full size. PDF glyph-boundary checks passed."
+    }
+  },
+  "E032": {
+    "qp": [
+      [
+        13,
+        58,
+        260
+      ]
+    ],
+    "ms": [
+      [
+        11,
+        65,
+        265
+      ]
+    ],
+    "review": {
+      "status": "verified",
+      "date": "2026-09-15",
+      "reviewer": "Codex",
+      "cropSpecSha256": "79eb1f8342a76790f30afa4925c41293b107ea861d3f54d567a9ff58cf6b35e6",
+      "method": "Approved original-page visual review and source register retained; QP/MS text and dependencies rechecked; every current QP/MS crop edge and all insert extracts visually checked; complex diagram and code extracts sampled at full size. PDF glyph-boundary checks passed."
+    }
+  },
+  "E033": {
+    "qp": [
+      [
+        11,
+        320,
+        593
+      ]
+    ],
+    "ms": [
+      [
+        10,
+        274,
+        402
+      ]
+    ],
+    "review": {
+      "status": "verified",
+      "date": "2026-09-15",
+      "reviewer": "Codex",
+      "cropSpecSha256": "d8cef84f7e97fc2bba4ea1f175c2c7d7fb26a4c93e059aa392cbf1f6c260ccf9",
+      "method": "Approved original-page visual review and source register retained; QP/MS text and dependencies rechecked; every current QP/MS crop edge and all insert extracts visually checked; complex diagram and code extracts sampled at full size. PDF glyph-boundary checks passed."
+    }
+  },
+  "E034": {
+    "qp": [
+      [
+        3,
+        211,
+        444
+      ]
+    ],
+    "ms": [
+      [
+        4,
+        482,
+        651
+      ]
+    ],
+    "review": {
+      "status": "verified",
+      "date": "2026-09-15",
+      "reviewer": "Codex",
+      "cropSpecSha256": "8ab1e5748bbc646587ebb5203e80d0addb13cd87d8dca89cbb4c30b5628b6172",
+      "method": "Approved original-page visual review and source register retained; QP/MS text and dependencies rechecked; every current QP/MS crop edge and all insert extracts visually checked; complex diagram and code extracts sampled at full size. PDF glyph-boundary checks passed."
+    }
+  },
+  "E035": {
+    "qp": [
+      [
+        8,
+        58,
+        454
+      ]
+    ],
+    "ms": [
+      [
+        6,
+        65,
+        480
+      ]
+    ],
+    "review": {
+      "status": "verified",
+      "date": "2026-09-15",
+      "reviewer": "Codex",
+      "cropSpecSha256": "e0abdf095c69fce7b3246d2c8f6b270faae7bacda34c5b3d74d4524c09fbbc40",
+      "method": "Approved original-page visual review and source register retained; QP/MS text and dependencies rechecked; every current QP/MS crop edge and all insert extracts visually checked; complex diagram and code extracts sampled at full size. PDF glyph-boundary checks passed."
+    }
+  },
+  "E036": {
+    "qp": [
+      [
+        14,
+        58,
+        546
+      ],
+      [
+        14,
+        719,
+        784
+      ],
+      [
+        15,
+        58,
+        756
+      ]
+    ],
+    "ms": [
+      [
+        11,
+        65,
+        488
+      ]
+    ],
+    "review": {
+      "status": "verified",
+      "date": "2026-09-15",
+      "reviewer": "Codex",
+      "cropSpecSha256": "544922994019e40f714b50ddb334eab208c4c4600b2a534171c5ad78485db018",
+      "method": "Approved original-page visual review and source register retained; QP/MS text and dependencies rechecked; every current QP/MS crop edge and all insert extracts visually checked; complex diagram and code extracts sampled at full size. PDF glyph-boundary checks passed."
+    }
+  },
+  "E037": {
+    "qp": [
+      [
+        12,
+        58,
+        788
+      ]
+    ],
+    "ms": [
+      [
+        8,
+        338,
+        483
+      ]
+    ],
+    "review": {
+      "status": "verified",
+      "date": "2026-09-15",
+      "reviewer": "Codex",
+      "cropSpecSha256": "c2cabdcaad72cfcc8cb3ff6c12d7911fffae9b4fb3bda1d33b824cdf6efd1eb8",
+      "method": "Approved original-page visual review and source register retained; QP/MS text and dependencies rechecked; every current QP/MS crop edge and all insert extracts visually checked; complex diagram and code extracts sampled at full size. PDF glyph-boundary checks passed."
+    }
+  },
+  "E038": {
+    "qp": [
+      [
+        14,
+        60,
+        501
+      ],
+      [
+        15,
+        60,
+        287
+      ]
+    ],
+    "ms": [
+      [
+        9,
+        486,
+        641
+      ]
+    ],
+    "review": {
+      "status": "verified",
+      "date": "2026-09-15",
+      "reviewer": "Codex",
+      "cropSpecSha256": "b71ca59ce101c3aadba03601c897fe7080ca3e98ab70ac96ed627b8b5165ac02",
+      "method": "Approved original-page visual review and source register retained; QP/MS text and dependencies rechecked; every current QP/MS crop edge and all insert extracts visually checked; complex diagram and code extracts sampled at full size. PDF glyph-boundary checks passed."
+    }
+  },
+  "E039": {
+    "qp": [
+      [
+        13,
+        58,
+        397
+      ]
+    ],
+    "ms": [
+      [
+        9,
+        65,
+        312
+      ]
+    ],
+    "review": {
+      "status": "verified",
+      "date": "2026-09-15",
+      "reviewer": "Codex",
+      "cropSpecSha256": "f65e17005bd15f1c8be99a75158cae92e1df207e2f17928862bdb8b73bc31d6e",
+      "method": "Approved original-page visual review and source register retained; QP/MS text and dependencies rechecked; every current QP/MS crop edge and all insert extracts visually checked; complex diagram and code extracts sampled at full size. PDF glyph-boundary checks passed."
+    }
+  },
+  "E040": {
+    "qp": [
+      [
+        13,
+        58,
+        486
+      ]
+    ],
+    "ms": [
+      [
+        9,
+        65,
+        413
+      ]
+    ],
+    "review": {
+      "status": "verified",
+      "date": "2026-09-15",
+      "reviewer": "Codex",
+      "cropSpecSha256": "ba4523befef379fd67f3d2a31c85326c411c1bcc851f674bef024833fa6f1644",
+      "method": "Approved original-page visual review and source register retained; QP/MS text and dependencies rechecked; every current QP/MS crop edge and all insert extracts visually checked; complex diagram and code extracts sampled at full size. PDF glyph-boundary checks passed."
+    }
+  },
+  "E041": {
+    "qp": [
+      [
+        13,
+        58,
+        83
+      ],
+      [
+        13,
+        162,
+        435
+      ]
+    ],
+    "ms": [
+      [
+        9,
+        461,
+        777
+      ]
+    ],
+    "review": {
+      "status": "verified",
+      "date": "2026-09-15",
+      "reviewer": "Codex",
+      "cropSpecSha256": "6682cf3250a8949687749ec558ebbc6afcbb55f5a854d41ddd71332edf58f6f1",
+      "method": "Approved original-page visual review and source register retained; QP/MS text and dependencies rechecked; every current QP/MS crop edge and all insert extracts visually checked; complex diagram and code extracts sampled at full size. PDF glyph-boundary checks passed."
+    }
+  },
+  "E042": {
+    "qp": [
+      [
+        15,
+        60,
+        340
+      ]
+    ],
+    "ms": [
+      [
+        11,
+        206,
+        412
+      ]
+    ],
+    "review": {
+      "status": "verified",
+      "date": "2026-09-15",
+      "reviewer": "Codex",
+      "cropSpecSha256": "d9a43b12682031531dd0543cbc6c422e2a2cd1092c3205685720bb69876adf37",
+      "method": "Approved original-page visual review and source register retained; QP/MS text and dependencies rechecked; every current QP/MS crop edge and all insert extracts visually checked; complex diagram and code extracts sampled at full size. PDF glyph-boundary checks passed."
+    }
+  },
+  "E043": {
+    "qp": [
+      [
+        13,
+        58,
+        83
+      ],
+      [
+        13,
+        488,
+        760
+      ]
+    ],
+    "ms": [
+      [
+        9,
+        413,
+        660
+      ]
+    ],
+    "review": {
+      "status": "verified",
+      "date": "2026-09-15",
+      "reviewer": "Codex",
+      "cropSpecSha256": "70d7a3515f3c7a8995d8f2bbb67f620acd92ef0fd8904ea563a9387d73379042",
+      "method": "Approved original-page visual review and source register retained; QP/MS text and dependencies rechecked; every current QP/MS crop edge and all insert extracts visually checked; complex diagram and code extracts sampled at full size. PDF glyph-boundary checks passed."
+    }
+  },
+  "E044": {
+    "qp": [
+      [
+        13,
+        58,
+        83
+      ],
+      [
+        14,
+        58,
+        559
+      ]
+    ],
+    "ms": [
+      [
+        10,
+        65,
+        268
+      ]
+    ],
+    "review": {
+      "status": "verified",
+      "date": "2026-09-15",
+      "reviewer": "Codex",
+      "cropSpecSha256": "9f7f529381a4a669eb5f0ea930bd30d0ba7c6091afdb26c201e5db54d8c2f6f2",
+      "method": "Approved original-page visual review and source register retained; QP/MS text and dependencies rechecked; every current QP/MS crop edge and all insert extracts visually checked; complex diagram and code extracts sampled at full size. PDF glyph-boundary checks passed."
+    }
+  },
+  "E045": {
+    "qp": [
+      [
+        8,
+        58,
+        214
+      ]
+    ],
+    "ms": [
+      [
+        5,
+        674,
+        777
+      ],
+      [
+        6,
+        65,
+        165
+      ]
+    ],
+    "review": {
+      "status": "verified",
+      "date": "2026-09-15",
+      "reviewer": "Codex",
+      "cropSpecSha256": "1aea1cc35e9590078d2a820f0eb3e01f10dc4dd554d8edc67e1f0048dff45596",
+      "method": "Approved original-page visual review and source register retained; QP/MS text and dependencies rechecked; every current QP/MS crop edge and all insert extracts visually checked; complex diagram and code extracts sampled at full size. PDF glyph-boundary checks passed."
+    }
+  },
+  "E046": {
+    "qp": [
+      [
+        5,
+        58,
+        356
+      ]
+    ],
+    "ms": [
+      [
+        5,
+        211,
+        430
+      ]
+    ],
+    "review": {
+      "status": "verified",
+      "date": "2026-09-15",
+      "reviewer": "Codex",
+      "cropSpecSha256": "92f4b6e38739ffc2c52a2a43e67b2997dbc80dfd8fc41674adb819d262f25fa3",
+      "method": "Approved original-page visual review and source register retained; QP/MS text and dependencies rechecked; every current QP/MS crop edge and all insert extracts visually checked; complex diagram and code extracts sampled at full size. PDF glyph-boundary checks passed."
+    }
+  },
+  "E047": {
+    "qp": [
+      [
+        8,
+        215,
+        461
+      ]
+    ],
+    "ms": [
+      [
+        6,
+        166,
+        375
+      ]
+    ],
+    "review": {
+      "status": "verified",
+      "date": "2026-09-15",
+      "reviewer": "Codex",
+      "cropSpecSha256": "2bdd9f824512d28a849a5574c0e44c003eb18c333765517f4d6cb2446aeadb1d",
+      "method": "Approved original-page visual review and source register retained; QP/MS text and dependencies rechecked; every current QP/MS crop edge and all insert extracts visually checked; complex diagram and code extracts sampled at full size. PDF glyph-boundary checks passed."
+    }
+  },
+  "E048": {
+    "qp": [
+      [
+        5,
+        58,
+        137
+      ],
+      [
+        5,
+        358,
+        539
+      ]
+    ],
+    "ms": [
+      [
+        5,
+        431,
+        534
+      ]
+    ],
+    "review": {
+      "status": "verified",
+      "date": "2026-09-15",
+      "reviewer": "Codex",
+      "cropSpecSha256": "16fda2be59422ed8966e078af07b9510cd568481cfddb4f45e99428c2763e216",
+      "method": "Approved original-page visual review and source register retained; QP/MS text and dependencies rechecked; every current QP/MS crop edge and all insert extracts visually checked; complex diagram and code extracts sampled at full size. PDF glyph-boundary checks passed."
+    }
+  },
+  "E049": {
+    "qp": [
+      [
+        2,
+        60,
+        297
+      ]
+    ],
+    "ms": [
+      [
+        4,
+        65,
+        443
+      ]
+    ],
+    "review": {
+      "status": "verified",
+      "date": "2026-09-15",
+      "reviewer": "Codex",
+      "cropSpecSha256": "78c345e5c9a72a8dab7e4b48cb459405bcd6cc201ef79205345d846656e775e7",
+      "method": "Approved original-page visual review and source register retained; QP/MS text and dependencies rechecked; every current QP/MS crop edge and all insert extracts visually checked; complex diagram and code extracts sampled at full size. PDF glyph-boundary checks passed."
+    }
+  },
+  "E050": {
+    "qp": [
+      [
+        13,
+        70,
+        293
+      ],
+      [
+        16,
+        70,
+        516
+      ]
+    ],
+    "ms": [
+      [
+        9,
+        219,
+        493
+      ]
+    ],
+    "review": {
+      "status": "verified",
+      "date": "2026-09-15",
+      "reviewer": "Codex",
+      "cropSpecSha256": "311df25a9feec44eeb28adc6b990a2ce16b8f57d97fc7d0a96c801b9eb073cd6",
+      "method": "Approved original-page visual review and source register retained; QP/MS text and dependencies rechecked; every current QP/MS crop edge and all insert extracts visually checked; complex diagram and code extracts sampled at full size. PDF glyph-boundary checks passed."
+    }
+  },
+  "E051": {
+    "qp": [
+      [
+        9,
+        60,
+        80
+      ],
+      [
+        9,
+        334,
+        528
+      ]
+    ],
+    "ms": [
+      [
+        6,
+        65,
+        291
+      ]
+    ],
+    "review": {
+      "status": "verified",
+      "date": "2026-09-15",
+      "reviewer": "Codex",
+      "cropSpecSha256": "e5a8a7410138883913039303178eb7fd8ff3abacebae557876a02d6fd5370b37",
+      "method": "Approved original-page visual review and source register retained; QP/MS text and dependencies rechecked; every current QP/MS crop edge and all insert extracts visually checked; complex diagram and code extracts sampled at full size. PDF glyph-boundary checks passed."
+    }
+  },
+  "E052": {
+    "qp": [
+      [
+        3,
+        60,
+        184
+      ]
+    ],
+    "ms": [
+      [
+        5,
+        65,
+        235
+      ]
+    ],
+    "review": {
+      "status": "verified",
+      "date": "2026-09-15",
+      "reviewer": "Codex",
+      "cropSpecSha256": "36bebdb00deabf492131f989dadc0fbc50503ea4f9c132e4f2370a604f48c4e5",
+      "method": "Approved original-page visual review and source register retained; QP/MS text and dependencies rechecked; every current QP/MS crop edge and all insert extracts visually checked; complex diagram and code extracts sampled at full size. PDF glyph-boundary checks passed."
+    }
+  },
+  "E053": {
+    "qp": [
+      [
+        7,
+        60,
+        340
+      ]
+    ],
+    "ms": [
+      [
+        6,
+        65,
+        387
+      ]
+    ],
+    "review": {
+      "status": "verified",
+      "date": "2026-09-15",
+      "reviewer": "Codex",
+      "cropSpecSha256": "88a34fcda7b6a012e0dcab625ab5875051c074188ae2cf5cac70f95c82325654",
+      "method": "Approved original-page visual review and source register retained; QP/MS text and dependencies rechecked; every current QP/MS crop edge and all insert extracts visually checked; complex diagram and code extracts sampled at full size. PDF glyph-boundary checks passed."
+    }
+  },
+  "E054": {
+    "qp": [
+      [
+        7,
+        341,
+        705
+      ]
+    ],
+    "ms": [
+      [
+        6,
+        388,
+        634
+      ]
+    ],
+    "review": {
+      "status": "verified",
+      "date": "2026-09-15",
+      "reviewer": "Codex",
+      "cropSpecSha256": "50a491a56de83b9236d0343d3935a71d2fe58062827d3f592a4880b859544a8e",
+      "method": "Approved original-page visual review and source register retained; QP/MS text and dependencies rechecked; every current QP/MS crop edge and all insert extracts visually checked; complex diagram and code extracts sampled at full size. PDF glyph-boundary checks passed."
+    }
+  },
+  "E055": {
+    "qp": [
+      [
+        5,
+        60,
+        588
+      ]
+    ],
+    "ms": [
+      [
+        6,
+        65,
+        451
+      ]
+    ],
+    "review": {
+      "status": "verified",
+      "date": "2026-09-15",
+      "reviewer": "Codex",
+      "cropSpecSha256": "c20302e6164861231240ea5491a7ae195df11e94259ef66f244edff0b5072c16",
+      "method": "Approved original-page visual review and source register retained; QP/MS text and dependencies rechecked; every current QP/MS crop edge and all insert extracts visually checked; complex diagram and code extracts sampled at full size. PDF glyph-boundary checks passed."
+    }
+  },
+  "E056": {
+    "qp": [
+      [
+        8,
+        60,
+        276
+      ]
+    ],
+    "ms": [
+      [
+        7,
+        65,
+        313
+      ]
+    ],
+    "review": {
+      "status": "verified",
+      "date": "2026-09-15",
+      "reviewer": "Codex",
+      "cropSpecSha256": "03c07cde25cbb4b9bd6e92d796e62ea0a2781868336b03738319a701686474fe",
+      "method": "Approved original-page visual review and source register retained; QP/MS text and dependencies rechecked; every current QP/MS crop edge and all insert extracts visually checked; complex diagram and code extracts sampled at full size. PDF glyph-boundary checks passed."
+    }
+  },
+  "E057": {
+    "qp": [
+      [
+        13,
+        60,
+        530
+      ]
+    ],
+    "ms": [
+      [
+        7,
+        65,
+        309
+      ]
+    ],
+    "review": {
+      "status": "verified",
+      "date": "2026-09-15",
+      "reviewer": "Codex",
+      "cropSpecSha256": "8aa7f61af3066b357603e84a29f56b9265d46a89b79b56cfbb997e079a69c5e9",
+      "method": "Approved original-page visual review and source register retained; QP/MS text and dependencies rechecked; every current QP/MS crop edge and all insert extracts visually checked; complex diagram and code extracts sampled at full size. PDF glyph-boundary checks passed."
+    }
+  },
+  "E058": {
+    "qp": [
+      [
+        5,
+        60,
+        263
+      ],
+      [
+        6,
+        60,
+        270
+      ],
+      [
+        7,
+        60,
+        394
+      ]
+    ],
+    "ms": [
+      [
+        5,
+        65,
+        286
+      ]
+    ],
+    "review": {
+      "status": "verified",
+      "date": "2026-09-15",
+      "reviewer": "Codex",
+      "cropSpecSha256": "1c7e63782af9bfcf39ca59267be8217e2d514dba19fb9ecba69457853bac376c",
+      "method": "Approved original-page visual review and source register retained; QP/MS text and dependencies rechecked; every current QP/MS crop edge and all insert extracts visually checked; complex diagram and code extracts sampled at full size. PDF glyph-boundary checks passed."
+    }
+  },
+  "E059": {
+    "qp": [
+      [
+        13,
+        60,
+        197
+      ],
+      [
+        13,
+        529,
+        792
+      ]
+    ],
+    "ms": [
+      [
+        7,
+        309,
+        490
+      ]
+    ],
+    "review": {
+      "status": "verified",
+      "date": "2026-09-15",
+      "reviewer": "Codex",
+      "cropSpecSha256": "6411259eab242187ebaeeabaa137cb3403defa6331e2f9f3c5f4acda35e7aed4",
+      "method": "Approved original-page visual review and source register retained; QP/MS text and dependencies rechecked; every current QP/MS crop edge and all insert extracts visually checked; complex diagram and code extracts sampled at full size. PDF glyph-boundary checks passed."
+    }
+  },
+  "E060": {
+    "qp": [
+      [
+        6,
+        60,
+        173
+      ],
+      [
+        7,
+        60,
+        185
+      ]
+    ],
+    "ms": [
+      [
+        6,
+        572,
+        752
+      ]
+    ],
+    "review": {
+      "status": "verified",
+      "date": "2026-09-15",
+      "reviewer": "Codex",
+      "cropSpecSha256": "eb2de50e4f154d29d6f83af8fbea3ae5d438428b491d4215104c78b9cdecd38f",
+      "method": "Approved original-page visual review and source register retained; QP/MS text and dependencies rechecked; every current QP/MS crop edge and all insert extracts visually checked; complex diagram and code extracts sampled at full size. PDF glyph-boundary checks passed."
+    }
+  },
+  "E061": {
+    "qp": [
+      [
+        7,
+        60,
+        176
+      ],
+      [
+        7,
+        255,
+        614
+      ],
+      [
+        8,
+        60,
+        216
+      ]
+    ],
+    "ms": [
+      [
+        7,
+        140,
+        453
+      ]
+    ],
+    "review": {
+      "status": "verified",
+      "date": "2026-09-15",
+      "reviewer": "Codex",
+      "cropSpecSha256": "d30069f62b0cc1954b00a75e6163ffb2a5fe5ca5afea29b232250350b7d270aa",
+      "method": "Approved original-page visual review and source register retained; QP/MS text and dependencies rechecked; every current QP/MS crop edge and all insert extracts visually checked; complex diagram and code extracts sampled at full size. PDF glyph-boundary checks passed."
+    }
+  },
+  "E062": {
+    "qp": [
+      [
+        8,
+        70,
+        287
+      ],
+      [
+        8,
+        365,
+        542
+      ],
+      [
+        9,
+        70,
+        352
+      ]
+    ],
+    "ms": [
+      [
+        5,
+        358,
+        629
+      ]
+    ],
+    "review": {
+      "status": "verified",
+      "date": "2026-09-15",
+      "reviewer": "Codex",
+      "cropSpecSha256": "76fd521b43b5de653dc80b26043f343edb0da370266177df9aa66915069c3259",
+      "method": "Approved original-page visual review and source register retained; QP/MS text and dependencies rechecked; every current QP/MS crop edge and all insert extracts visually checked; complex diagram and code extracts sampled at full size. PDF glyph-boundary checks passed."
+    }
+  },
+  "E063": {
+    "qp": [
+      [
+        8,
+        60,
+        238
+      ],
+      [
+        10,
+        277,
+        523
+      ]
+    ],
+    "ms": [
+      [
+        9,
+        319,
+        473
+      ]
+    ],
+    "review": {
+      "status": "verified",
+      "date": "2026-09-15",
+      "reviewer": "Codex",
+      "cropSpecSha256": "b59e50ab03691fec886e60b9db8eab9d1a2a4a7524651b2afc87fa1dbbb0b6bb",
+      "method": "Approved original-page visual review and source register retained; QP/MS text and dependencies rechecked; every current QP/MS crop edge and all insert extracts visually checked; complex diagram and code extracts sampled at full size. PDF glyph-boundary checks passed."
+    }
+  },
+  "E064": {
+    "qp": [
+      [
+        11,
+        60,
+        784
+      ],
+      [
+        12,
+        60,
+        770
+      ]
+    ],
+    "ms": [
+      [
+        10,
+        65,
+        616
+      ],
+      [
+        11,
+        65,
+        570
+      ]
+    ],
+    "review": {
+      "status": "verified",
+      "date": "2026-09-15",
+      "reviewer": "Codex",
+      "cropSpecSha256": "a72e55737aebb9ac40398b20084bee1bb4e82d222c62118fd94cdb9e82513a05",
+      "method": "Approved original-page visual review and source register retained; QP/MS text and dependencies rechecked; every current QP/MS crop edge and all insert extracts visually checked; complex diagram and code extracts sampled at full size. PDF glyph-boundary checks passed."
+    }
+  },
+  "E065": {
+    "qp": [
+      [
+        6,
+        60,
+        460
+      ],
+      [
+        7,
+        60,
+        791
+      ],
+      [
+        8,
+        60,
+        342
+      ]
+    ],
+    "ms": [
+      [
+        8,
+        65,
+        675
+      ],
+      [
+        9,
+        65,
+        669
+      ]
+    ],
+    "review": {
+      "status": "verified",
+      "date": "2026-09-15",
+      "reviewer": "Codex",
+      "cropSpecSha256": "a1d58e2b3c7014d980ab6b9e46aae037fd7fa81aa21ae12da562aba6eb0e0ab1",
+      "method": "Approved original-page visual review and source register retained; QP/MS text and dependencies rechecked; every current QP/MS crop edge and all insert extracts visually checked; complex diagram and code extracts sampled at full size. PDF glyph-boundary checks passed."
+    }
+  },
+  "E066": {
+    "qp": [
+      [
+        9,
+        60,
+        322
+      ]
+    ],
+    "ms": [
+      [
+        6,
+        390,
+        660
+      ]
+    ],
+    "review": {
+      "status": "verified",
+      "date": "2026-09-15",
+      "reviewer": "Codex",
+      "cropSpecSha256": "dc582a9b3cb1d9bdc174815ec5d213fceb42318f1d62eb7a30d694db96bc0e31",
+      "method": "Approved original-page visual review and source register retained; QP/MS text and dependencies rechecked; every current QP/MS crop edge and all insert extracts visually checked; complex diagram and code extracts sampled at full size. PDF glyph-boundary checks passed."
+    }
+  },
+  "E067": {
+    "qp": [
+      [
+        14,
+        60,
+        656
+      ]
+    ],
+    "ms": [
+      [
+        9,
+        65,
+        600
+      ]
+    ],
+    "review": {
+      "status": "verified",
+      "date": "2026-09-15",
+      "reviewer": "Codex",
+      "cropSpecSha256": "6c52dfb7a561a7e3c131b813aec8d7d4671c5dad9258c600cefe2808adc3ed8d",
+      "method": "Approved original-page visual review and source register retained; QP/MS text and dependencies rechecked; every current QP/MS crop edge and all insert extracts visually checked; complex diagram and code extracts sampled at full size. PDF glyph-boundary checks passed."
+    }
+  },
+  "E068": {
+    "qp": [
+      [
+        16,
+        60,
+        657
+      ]
+    ],
+    "ms": [
+      [
+        10,
+        65,
+        320
+      ]
+    ],
+    "review": {
+      "status": "verified",
+      "date": "2026-09-15",
+      "reviewer": "Codex",
+      "cropSpecSha256": "df54dd57c9ca021cd0890ae22909bd69159708310c80fe8fefd59ddb0993fa72",
+      "method": "Approved original-page visual review and source register retained; QP/MS text and dependencies rechecked; every current QP/MS crop edge and all insert extracts visually checked; complex diagram and code extracts sampled at full size. PDF glyph-boundary checks passed."
+    }
+  },
+  "E069": {
+    "qp": [
+      [
+        2,
+        85,
+        397
+      ]
+    ],
+    "ms": [
+      [
+        4,
+        65,
+        350
+      ]
+    ],
+    "review": {
+      "status": "verified",
+      "date": "2026-09-15",
+      "reviewer": "Codex",
+      "cropSpecSha256": "7ea120926922b2c8971bd2cce553ec6bcec98a431e7a5464442bcedc9a968b2e",
+      "method": "Approved original-page visual review and source register retained; QP/MS text and dependencies rechecked; every current QP/MS crop edge and all insert extracts visually checked; complex diagram and code extracts sampled at full size. PDF glyph-boundary checks passed."
+    }
+  },
+  "E070": {
+    "qp": [
+      [
+        3,
+        190,
+        266
+      ],
+      [
+        3,
+        607,
+        787
+      ]
+    ],
+    "ms": [
+      [
+        5,
+        203,
+        239
+      ]
+    ],
+    "review": {
+      "status": "verified",
+      "date": "2026-09-15",
+      "reviewer": "Codex",
+      "cropSpecSha256": "a8bdb1789e69717e3fed3d04f8fbb27e6d88d26240d89b63981954cad4a3b28c",
+      "method": "Approved original-page visual review and source register retained; QP/MS text and dependencies rechecked; every current QP/MS crop edge and all insert extracts visually checked; complex diagram and code extracts sampled at full size. PDF glyph-boundary checks passed."
+    }
+  },
+  "E071": {
+    "qp": [
+      [
+        4,
+        60,
+        790
+      ]
+    ],
+    "ms": [
+      [
+        5,
+        65,
+        639
+      ]
+    ],
+    "review": {
+      "status": "verified",
+      "date": "2026-09-15",
+      "reviewer": "Codex",
+      "cropSpecSha256": "3ae383c54ee0dbdda1207c1012332528cf547a9af2a89af898305370cc7cab64",
+      "method": "Approved original-page visual review and source register retained; QP/MS text and dependencies rechecked; every current QP/MS crop edge and all insert extracts visually checked; complex diagram and code extracts sampled at full size. PDF glyph-boundary checks passed."
+    }
+  },
+  "E072": {
+    "qp": [
+      [
+        3,
+        190,
+        605
+      ]
+    ],
+    "ms": [
+      [
+        5,
+        65,
+        203
+      ]
+    ],
+    "review": {
+      "status": "verified",
+      "date": "2026-09-15",
+      "reviewer": "Codex",
+      "cropSpecSha256": "7a936260084bb30e246331fb1aa8b6b13877b4653de4401a3cf42ca40582d05a",
+      "method": "Approved original-page visual review and source register retained; QP/MS text and dependencies rechecked; every current QP/MS crop edge and all insert extracts visually checked; complex diagram and code extracts sampled at full size. PDF glyph-boundary checks passed."
+    }
+  },
+  "E073": {
+    "qp": [
+      [
+        4,
+        60,
+        770
+      ],
+      [
+        5,
+        60,
+        277
+      ]
+    ],
+    "ms": [
+      [
+        7,
+        64,
+        282,
+        25,
+        570
+      ]
+    ],
+    "review": {
+      "status": "verified",
+      "date": "2026-09-15",
+      "reviewer": "Codex",
+      "cropSpecSha256": "d76830234cc34fc36fd633c7e9529c8a725158bf6579536a14b2cb6367a6481b",
+      "method": "Approved original-page visual review and source register retained; QP/MS text and dependencies rechecked; every current QP/MS crop edge and all insert extracts visually checked; complex diagram and code extracts sampled at full size. PDF glyph-boundary checks passed."
+    }
+  },
+  "E074": {
+    "qp": [
+      [
+        6,
+        60,
+        116
+      ],
+      [
+        7,
+        60,
+        797
+      ]
+    ],
+    "ms": [
+      [
+        5,
+        280,
+        456
+      ]
+    ],
+    "review": {
+      "status": "verified",
+      "date": "2026-09-15",
+      "reviewer": "Codex",
+      "cropSpecSha256": "2485d5da4c14c59f773d12a67cb4159e99c78a4609cb9f366c58b959386f67ac",
+      "method": "Approved original-page visual review and source register retained; QP/MS text and dependencies rechecked; every current QP/MS crop edge and all insert extracts visually checked; complex diagram and code extracts sampled at full size. PDF glyph-boundary checks passed."
+    }
+  },
+  "E075": {
+    "qp": [
+      [
+        2,
+        404,
+        534
+      ]
+    ],
+    "ms": [
+      [
+        4,
+        304,
+        439
+      ]
+    ],
+    "review": {
+      "status": "verified",
+      "date": "2026-09-15",
+      "reviewer": "Codex",
+      "cropSpecSha256": "ed6fa16d75fd1440afb8a9d6c715a6d0fad0215a8026c164ec874576b4187cbb",
+      "method": "Approved original-page visual review and source register retained; QP/MS text and dependencies rechecked; every current QP/MS crop edge and all insert extracts visually checked; complex diagram and code extracts sampled at full size. PDF glyph-boundary checks passed."
+    }
+  },
+  "E076": {
+    "qp": [
+      [
+        7,
+        60,
+        505
+      ]
+    ],
+    "ms": [
+      [
+        6,
+        477,
+        718
+      ]
+    ],
+    "review": {
+      "status": "verified",
+      "date": "2026-09-15",
+      "reviewer": "Codex",
+      "cropSpecSha256": "892e4a98d98cd92dc01874cb3fde257c0c378c8f1400cf025ab2ecb07bbfb6c7",
+      "method": "Approved original-page visual review and source register retained; QP/MS text and dependencies rechecked; every current QP/MS crop edge and all insert extracts visually checked; complex diagram and code extracts sampled at full size. PDF glyph-boundary checks passed."
+    }
+  },
+  "E077": {
+    "qp": [
+      [
+        3,
+        265,
+        610
+      ]
+    ],
+    "ms": [
+      [
+        6,
+        751,
+        777
+      ],
+      [
+        7,
+        65,
+        239
+      ]
+    ],
+    "review": {
+      "status": "verified",
+      "date": "2026-09-15",
+      "reviewer": "Codex",
+      "cropSpecSha256": "ac3227bb38e4b4f53c25184148fa2da327cb1d07014918f459e014793a05bb4e",
+      "method": "Approved original-page visual review and source register retained; QP/MS text and dependencies rechecked; every current QP/MS crop edge and all insert extracts visually checked; complex diagram and code extracts sampled at full size. PDF glyph-boundary checks passed."
+    }
+  },
+  "E078": {
+    "qp": [
+      [
+        7,
+        60,
+        791
+      ]
+    ],
+    "ms": [
+      [
+        10,
+        65,
+        706
+      ]
+    ],
+    "review": {
+      "status": "verified",
+      "date": "2026-09-15",
+      "reviewer": "Codex",
+      "cropSpecSha256": "f47a555bc53c139025f5a4cb56ca2643503c163255891b005c15483cd9972c5d",
+      "method": "Approved original-page visual review and source register retained; QP/MS text and dependencies rechecked; every current QP/MS crop edge and all insert extracts visually checked; complex diagram and code extracts sampled at full size. PDF glyph-boundary checks passed."
+    }
+  },
+  "E079": {
+    "qp": [
+      [
+        7,
+        60,
+        423
+      ]
+    ],
+    "ms": [
+      [
+        6,
+        458,
+        778
+      ]
+    ],
+    "insert": [
+      [
+        "9618_w23_in_21.pdf",
+        4,
+        150,
+        182
+      ],
+      [
+        "9618_w23_in_21.pdf",
+        4,
+        356,
+        399
+      ]
+    ],
+    "review": {
+      "status": "verified",
+      "date": "2026-09-15",
+      "reviewer": "Codex",
+      "cropSpecSha256": "91142f3a3a8bde9c0d72ff3fde29904a7ff14c2a27fb893cf0ff77fb8c4ff890",
+      "method": "Approved original-page visual review and source register retained; QP/MS text and dependencies rechecked; every current QP/MS crop edge and all insert extracts visually checked; complex diagram and code extracts sampled at full size. PDF glyph-boundary checks passed."
+    }
+  },
+  "E080": {
+    "qp": [
+      [
+        4,
+        60,
+        816
+      ],
+      [
+        5,
+        60,
+        160
+      ]
+    ],
+    "ms": [
+      [
+        8,
+        65,
+        410
+      ]
+    ],
+    "insert": [
+      [
+        "9618_w25_in_22.pdf",
+        4,
+        56,
+        150
+      ],
+      [
+        "9618_w25_in_22.pdf",
+        4,
+        150,
+        253
+      ]
+    ],
+    "review": {
+      "status": "verified",
+      "date": "2026-09-15",
+      "reviewer": "Codex",
+      "cropSpecSha256": "44166e0fd428eceb933950e57fdc8f2cb392d7a9ea9dd0818be9dc5b985d4dd6",
+      "method": "Approved original-page visual review and source register retained; QP/MS text and dependencies rechecked; every current QP/MS crop edge and all insert extracts visually checked; complex diagram and code extracts sampled at full size. PDF glyph-boundary checks passed."
+    }
+  },
+  "E081": {
+    "qp": [
+      [
+        4,
+        60,
+        714
+      ],
+      [
+        5,
+        60,
+        371
+      ]
+    ],
+    "ms": [
+      [
+        5,
+        252,
+        683
+      ]
+    ],
+    "review": {
+      "status": "verified",
+      "date": "2026-09-15",
+      "reviewer": "Codex",
+      "cropSpecSha256": "07394c2d348009b7b586c6e4590afab71c428f1e8c5c6a3deb06fdce95b9158d",
+      "method": "Approved original-page visual review and source register retained; QP/MS text and dependencies rechecked; every current QP/MS crop edge and all insert extracts visually checked; complex diagram and code extracts sampled at full size. PDF glyph-boundary checks passed."
+    }
+  },
+  "E082": {
+    "qp": [
+      [
+        4,
+        60,
+        670
+      ],
+      [
+        5,
+        60,
+        339
+      ]
+    ],
+    "ms": [
+      [
+        4,
+        374,
+        551
+      ]
+    ],
+    "review": {
+      "status": "verified",
+      "date": "2026-09-15",
+      "reviewer": "Codex",
+      "cropSpecSha256": "6dd5de51e31a74a63a5abc740f44c652a5b630e31a7eb60966bf052108e9d22a",
+      "method": "Approved original-page visual review and source register retained; QP/MS text and dependencies rechecked; every current QP/MS crop edge and all insert extracts visually checked; complex diagram and code extracts sampled at full size. PDF glyph-boundary checks passed."
+    }
+  },
+  "E083": {
+    "qp": [
+      [
+        6,
+        60,
+        286
+      ],
+      [
+        7,
+        60,
+        394
+      ]
+    ],
+    "ms": [
+      [
+        6,
+        463,
+        551
+      ]
+    ],
+    "review": {
+      "status": "verified",
+      "date": "2026-09-15",
+      "reviewer": "Codex",
+      "cropSpecSha256": "2c49679aaa401e7b26f5830a54a188578523eb9ded838ffd8d2053a1400f2d21",
+      "method": "Approved original-page visual review and source register retained; QP/MS text and dependencies rechecked; every current QP/MS crop edge and all insert extracts visually checked; complex diagram and code extracts sampled at full size. PDF glyph-boundary checks passed."
+    }
+  },
+  "E084": {
+    "qp": [
+      [
+        6,
+        60,
+        714
+      ]
+    ],
+    "ms": [
+      [
+        6,
+        65,
+        463
+      ]
+    ],
+    "review": {
+      "status": "verified",
+      "date": "2026-09-15",
+      "reviewer": "Codex",
+      "cropSpecSha256": "6267203aa1a29b468f0c2cc3daec200998c7a52b90b23b39498dfa53bdd5b315",
+      "method": "Approved original-page visual review and source register retained; QP/MS text and dependencies rechecked; every current QP/MS crop edge and all insert extracts visually checked; complex diagram and code extracts sampled at full size. PDF glyph-boundary checks passed."
+    }
+  },
+  "E085": {
+    "qp": [
+      [
+        10,
+        60,
+        692
+      ],
+      [
+        11,
+        560,
+        590
+      ]
+    ],
+    "ms": [
+      [
+        10,
+        64,
+        313,
+        25,
+        570
+      ]
+    ],
+    "review": {
+      "status": "verified",
+      "date": "2026-09-15",
+      "reviewer": "Codex",
+      "cropSpecSha256": "ea505619032deb75c2077def90aaf160596c05f0574f17517a88ce09b856b332",
+      "method": "Approved original-page visual review and source register retained; QP/MS text and dependencies rechecked; every current QP/MS crop edge and all insert extracts visually checked; complex diagram and code extracts sampled at full size. PDF glyph-boundary checks passed."
+    }
+  },
+  "E086": {
+    "qp": [
+      [
+        3,
+        60,
+        550
+      ]
+    ],
+    "ms": [
+      [
+        5,
+        65,
+        383
+      ]
+    ],
+    "review": {
+      "status": "verified",
+      "date": "2026-09-15",
+      "reviewer": "Codex",
+      "cropSpecSha256": "4ea9b8598ff868b6ec273f488df5632fa55daed79b2238a797206938c3eba6f2",
+      "method": "Approved original-page visual review and source register retained; QP/MS text and dependencies rechecked; every current QP/MS crop edge and all insert extracts visually checked; complex diagram and code extracts sampled at full size. PDF glyph-boundary checks passed."
+    }
+  },
+  "E087": {
+    "qp": [
+      [
+        2,
+        85,
+        462
+      ]
+    ],
+    "ms": [
+      [
+        3,
+        65,
+        266
+      ]
+    ],
+    "review": {
+      "status": "verified",
+      "date": "2026-09-15",
+      "reviewer": "Codex",
+      "cropSpecSha256": "66918619c8f2a9475167ef4135ab124ee7696eef0719f928a7c1b5a63a11d9f6",
+      "method": "Approved original-page visual review and source register retained; QP/MS text and dependencies rechecked; every current QP/MS crop edge and all insert extracts visually checked; complex diagram and code extracts sampled at full size. PDF glyph-boundary checks passed."
+    }
+  },
+  "E088": {
+    "qp": [
+      [
+        3,
+        60,
+        479
+      ]
+    ],
+    "ms": [
+      [
+        3,
+        407,
+        618
+      ]
+    ],
+    "insert": [
+      [
+        "9618_s23_in_21.pdf",
+        4,
+        56,
+        103
+      ],
+      [
+        "9618_s23_in_21.pdf",
+        4,
+        158,
+        349
+      ]
+    ],
+    "review": {
+      "status": "verified",
+      "date": "2026-09-15",
+      "reviewer": "Codex",
+      "cropSpecSha256": "b09252a9fbda575a016328c24ecd731b9c3ea103b90028b3423d392f50f59a28",
+      "method": "Approved original-page visual review and source register retained; QP/MS text and dependencies rechecked; every current QP/MS crop edge and all insert extracts visually checked; complex diagram and code extracts sampled at full size. PDF glyph-boundary checks passed."
+    }
+  },
+  "E089": {
+    "qp": [
+      [
+        2,
+        308,
+        602
+      ]
+    ],
+    "ms": [
+      [
+        4,
+        258,
+        419
+      ]
+    ],
+    "insert": [
+      [
+        "9618_s24_in_21.pdf",
+        2,
+        56,
+        180
+      ],
+      [
+        "9618_s24_in_21.pdf",
+        2,
+        291,
+        401
+      ],
+      [
+        "9618_s24_in_21.pdf",
+        2,
+        509,
+        623
+      ],
+      [
+        "9618_s24_in_21.pdf",
+        4,
+        150,
+        445
+      ]
+    ],
+    "review": {
+      "status": "verified",
+      "date": "2026-09-15",
+      "reviewer": "Codex",
+      "cropSpecSha256": "b43236eba54aa9c4bcfa4973ca4e4ed90ca3e033d46128252584fd86295dffa6",
+      "method": "Approved original-page visual review and source register retained; QP/MS text and dependencies rechecked; every current QP/MS crop edge and all insert extracts visually checked; complex diagram and code extracts sampled at full size. PDF glyph-boundary checks passed."
+    }
+  },
+  "E090": {
+    "qp": [
+      [
+        2,
+        85,
+        255
+      ],
+      [
+        2,
+        421,
+        771
+      ]
+    ],
+    "ms": [
+      [
+        4,
+        277,
+        442
+      ]
+    ],
+    "review": {
+      "status": "verified",
+      "date": "2026-09-15",
+      "reviewer": "Codex",
+      "cropSpecSha256": "4402c8654bb71fe06c8a0c872e5d2613e064e0a46864e969f7f9934f073b9b35",
+      "method": "Approved original-page visual review and source register retained; QP/MS text and dependencies rechecked; every current QP/MS crop edge and all insert extracts visually checked; complex diagram and code extracts sampled at full size. PDF glyph-boundary checks passed."
+    }
+  },
+  "E091": {
+    "qp": [
+      [
+        6,
+        60,
+        758
+      ],
+      [
+        7,
+        60,
+        277
+      ]
+    ],
+    "ms": [
+      [
+        9,
+        65,
+        552
+      ]
+    ],
+    "review": {
+      "status": "verified",
+      "date": "2026-09-15",
+      "reviewer": "Codex",
+      "cropSpecSha256": "d90053aa4840c6f537d7feffc97a1a34bdd0e7cf29364aaf45c0d4c0dad2fa4d",
+      "method": "Approved original-page visual review and source register retained; QP/MS text and dependencies rechecked; every current QP/MS crop edge and all insert extracts visually checked; complex diagram and code extracts sampled at full size. PDF glyph-boundary checks passed."
+    }
+  },
+  "E092": {
+    "qp": [
+      [
+        3,
+        60,
+        791
+      ]
+    ],
+    "ms": [
+      [
+        6,
+        65,
+        548
+      ],
+      [
+        7,
+        65,
+        494
+      ]
+    ],
+    "review": {
+      "status": "verified",
+      "date": "2026-09-15",
+      "reviewer": "Codex",
+      "cropSpecSha256": "dd82509e3b462bb58faef213d4fe3bcb09cf5613d90020b379e086c9a8988570",
+      "method": "Approved original-page visual review and source register retained; QP/MS text and dependencies rechecked; every current QP/MS crop edge and all insert extracts visually checked; complex diagram and code extracts sampled at full size. PDF glyph-boundary checks passed."
+    }
+  },
+  "E093": {
+    "qp": [
+      [
+        4,
+        60,
+        137
+      ],
+      [
+        5,
+        60,
+        228
+      ]
+    ],
+    "ms": [
+      [
+        5,
+        639,
+        715
+      ]
+    ],
+    "review": {
+      "status": "verified",
+      "date": "2026-09-15",
+      "reviewer": "Codex",
+      "cropSpecSha256": "dbf3e176b40bcd0047224550cfb04da8e56d7d31e8778fe9515dd5838a5cf1ef",
+      "method": "Approved original-page visual review and source register retained; QP/MS text and dependencies rechecked; every current QP/MS crop edge and all insert extracts visually checked; complex diagram and code extracts sampled at full size. PDF glyph-boundary checks passed."
+    }
+  },
+  "E094": {
+    "qp": [
+      [
+        8,
+        60,
+        720
+      ]
+    ],
+    "ms": [
+      [
+        5,
+        404,
+        585
+      ]
+    ],
+    "review": {
+      "status": "verified",
+      "date": "2026-09-15",
+      "reviewer": "Codex",
+      "cropSpecSha256": "eb2e90bb5b3ce3f31355043712cb2ec5b3eb0d6abbefeeb6452021ff970ad579",
+      "method": "Approved original-page visual review and source register retained; QP/MS text and dependencies rechecked; every current QP/MS crop edge and all insert extracts visually checked; complex diagram and code extracts sampled at full size. PDF glyph-boundary checks passed."
+    }
+  },
+  "E095": {
+    "qp": [
+      [
+        6,
+        60,
+        586
+      ]
+    ],
+    "ms": [
+      [
+        5,
+        65,
+        400
+      ]
+    ],
+    "insert": [
+      [
+        "9618_s23_in_22.pdf",
+        2,
+        56,
+        168
+      ],
+      [
+        "9618_s23_in_22.pdf",
+        2,
+        278,
+        390
+      ]
+    ],
+    "review": {
+      "status": "verified",
+      "date": "2026-09-15",
+      "reviewer": "Codex",
+      "cropSpecSha256": "6ecd9ea7ea73087307a2b28d877ec3a4ff81457418c0fc3d261a2a95309d4046",
+      "method": "Approved original-page visual review and source register retained; QP/MS text and dependencies rechecked; every current QP/MS crop edge and all insert extracts visually checked; complex diagram and code extracts sampled at full size. PDF glyph-boundary checks passed."
+    }
+  },
+  "E096": {
+    "qp": [
+      [
+        14,
+        60,
+        296
+      ],
+      [
+        16,
+        60,
+        320
+      ],
+      [
+        17,
+        60,
+        680
+      ]
+    ],
+    "ms": [
+      [
+        14,
+        65,
+        730
+      ]
+    ],
+    "review": {
+      "status": "verified",
+      "date": "2026-09-15",
+      "reviewer": "Codex",
+      "cropSpecSha256": "b46b9e681603fa5d9dc42f81ea1d73c9d9d73c66179046a93362145fe11594e0",
+      "method": "Approved original-page visual review and source register retained; QP/MS text and dependencies rechecked; every current QP/MS crop edge and all insert extracts visually checked; complex diagram and code extracts sampled at full size. PDF glyph-boundary checks passed."
+    }
+  },
+  "E097": {
+    "qp": [
+      [
+        7,
+        60,
+        745
+      ]
+    ],
+    "ms": [
+      [
+        8,
+        65,
+        570,
+        25,
+        570
+      ]
+    ],
+    "insert": [
+      [
+        "9618_s25_in_21.pdf",
+        3,
+        248,
+        394
+      ]
+    ],
+    "review": {
+      "status": "verified",
+      "date": "2026-09-15",
+      "reviewer": "Codex",
+      "cropSpecSha256": "f2cace696c5ad5f665ed9be87557158db95af51d334f3d2a50902781f20121f4",
+      "method": "Approved original-page visual review and source register retained; QP/MS text and dependencies rechecked; every current QP/MS crop edge and all insert extracts visually checked; complex diagram and code extracts sampled at full size. PDF glyph-boundary checks passed."
+    }
+  },
+  "E098": {
+    "qp": [
+      [
+        9,
+        60,
+        384
+      ]
+    ],
+    "ms": [
+      [
+        6,
+        457,
+        658
+      ]
+    ],
+    "review": {
+      "status": "verified",
+      "date": "2026-09-15",
+      "reviewer": "Codex",
+      "cropSpecSha256": "9f772112a15534aae112413e3abdea19261c698d425e8a134b014db558a37a2b",
+      "method": "Approved original-page visual review and source register retained; QP/MS text and dependencies rechecked; every current QP/MS crop edge and all insert extracts visually checked; complex diagram and code extracts sampled at full size. PDF glyph-boundary checks passed."
+    }
+  },
+  "E099": {
+    "qp": [
+      [
+        14,
+        60,
+        790
+      ]
+    ],
+    "ms": [
+      [
+        10,
+        65,
+        568
+      ]
+    ],
+    "review": {
+      "status": "verified",
+      "date": "2026-09-15",
+      "reviewer": "Codex",
+      "cropSpecSha256": "3eae8314ec1b8df6951b799edb2f1cbb3206bbc87add8ac504ed62e50504dc4e",
+      "method": "Approved original-page visual review and source register retained; QP/MS text and dependencies rechecked; every current QP/MS crop edge and all insert extracts visually checked; complex diagram and code extracts sampled at full size. PDF glyph-boundary checks passed."
+    }
+  },
+  "E100": {
+    "qp": [
+      [
+        15,
+        60,
+        791
+      ]
+    ],
+    "ms": [
+      [
+        10,
+        65,
+        375
+      ]
+    ],
+    "review": {
+      "status": "verified",
+      "date": "2026-09-15",
+      "reviewer": "Codex",
+      "cropSpecSha256": "dd576f7a5882a5129231f574bc1789e7a5f9365578d6532ca37ecfa1c6528648",
+      "method": "Approved original-page visual review and source register retained; QP/MS text and dependencies rechecked; every current QP/MS crop edge and all insert extracts visually checked; complex diagram and code extracts sampled at full size. PDF glyph-boundary checks passed."
+    }
+  },
+  "E101": {
+    "qp": [
+      [
+        10,
+        60,
+        723
+      ],
+      [
+        11,
+        60,
+        177
+      ]
+    ],
+    "ms": [
+      [
+        8,
+        65,
+        333
+      ]
+    ],
+    "insert": [
+      [
+        "9618_s24_in_22.pdf",
+        2,
+        56,
+        180
+      ],
+      [
+        "9618_s24_in_22.pdf",
+        2,
+        397,
+        700
+      ],
+      [
+        "9618_s24_in_22.pdf",
+        4,
+        150,
+        445
+      ]
+    ],
+    "review": {
+      "status": "verified",
+      "date": "2026-09-15",
+      "reviewer": "Codex",
+      "cropSpecSha256": "4ae5dd9be87b7becf25789e62aea77871c44357ee8ebdb0d7ae48cb7fc19d672",
+      "method": "Approved original-page visual review and source register retained; QP/MS text and dependencies rechecked; every current QP/MS crop edge and all insert extracts visually checked; complex diagram and code extracts sampled at full size. PDF glyph-boundary checks passed."
+    }
+  },
+  "E102": {
+    "qp": [
+      [
+        4,
+        60,
+        80
+      ],
+      [
+        4,
+        239,
+        432
+      ],
+      [
+        5,
+        60,
+        459
+      ]
+    ],
+    "ms": [
+      [
+        8,
+        432,
+        673
+      ]
+    ],
+    "review": {
+      "status": "verified",
+      "date": "2026-09-15",
+      "reviewer": "Codex",
+      "cropSpecSha256": "533010a8180f44bbcb506cb84ef5aac5f4f328f222e465c7eb0cabd98d404f0d",
+      "method": "Approved original-page visual review and source register retained; QP/MS text and dependencies rechecked; every current QP/MS crop edge and all insert extracts visually checked; complex diagram and code extracts sampled at full size. PDF glyph-boundary checks passed."
+    }
+  },
+  "E103": {
+    "qp": [
+      [
+        8,
+        60,
+        122
+      ],
+      [
+        8,
+        342,
+        432
+      ]
+    ],
+    "ms": [
+      [
+        10,
+        301,
+        329
+      ]
+    ],
+    "review": {
+      "status": "verified",
+      "date": "2026-09-15",
+      "reviewer": "Codex",
+      "cropSpecSha256": "6380b138298466bdde67a909a331706ea1d863cc9f6795716fb7d3e6c657be64",
+      "method": "Approved original-page visual review and source register retained; QP/MS text and dependencies rechecked; every current QP/MS crop edge and all insert extracts visually checked; complex diagram and code extracts sampled at full size. PDF glyph-boundary checks passed."
+    }
+  },
+  "E104": {
+    "qp": [
+      [
+        12,
+        60,
+        454
+      ]
+    ],
+    "ms": [
+      [
+        10,
+        350,
+        623,
+        25,
+        570
+      ]
+    ],
+    "review": {
+      "status": "verified",
+      "date": "2026-09-15",
+      "reviewer": "Codex",
+      "cropSpecSha256": "6e218ee522ca882896fbbfc9551f1dc70d355000ace7cb712791d7ecc5db8835",
+      "method": "Approved original-page visual review and source register retained; QP/MS text and dependencies rechecked; every current QP/MS crop edge and all insert extracts visually checked; complex diagram and code extracts sampled at full size. PDF glyph-boundary checks passed."
+    }
+  },
+  "E105": {
+    "qp": [
+      [
+        8,
+        60,
+        177
+      ],
+      [
+        9,
+        60,
+        580
+      ]
+    ],
+    "ms": [
+      [
+        7,
+        541,
+        681
+      ]
+    ],
+    "review": {
+      "status": "verified",
+      "date": "2026-09-15",
+      "reviewer": "Codex",
+      "cropSpecSha256": "5326ba84d3b70dd7b6fd124cd4e6ee46b22fee4e8e2bb8d98f10af8d058c5395",
+      "method": "Approved original-page visual review and source register retained; QP/MS text and dependencies rechecked; every current QP/MS crop edge and all insert extracts visually checked; complex diagram and code extracts sampled at full size. PDF glyph-boundary checks passed."
+    }
+  },
+  "E106": {
+    "qp": [
+      [
+        2,
+        83,
+        108
+      ],
+      [
+        2,
+        317,
+        459
+      ]
+    ],
+    "ms": [
+      [
+        6,
+        451,
+        567
+      ]
+    ],
+    "review": {
+      "status": "verified",
+      "date": "2026-09-15",
+      "reviewer": "Codex",
+      "cropSpecSha256": "c16eb95b8fb8c0724bbf62fdaa88f0bf449e6ad3e79b605e2e8c01a7d1a6e057",
+      "method": "Approved original-page visual review and source register retained; QP/MS text and dependencies rechecked; every current QP/MS crop edge and all insert extracts visually checked; complex diagram and code extracts sampled at full size. PDF glyph-boundary checks passed."
+    }
+  },
+  "E107": {
+    "qp": [
+      [
+        4,
+        60,
+        396
+      ],
+      [
+        5,
+        161,
+        702
+      ]
+    ],
+    "ms": [
+      [
+        8,
+        410,
+        499
+      ]
+    ],
+    "insert": [
+      [
+        "9618_w25_in_22.pdf",
+        2,
+        346,
+        401
+      ]
+    ],
+    "review": {
+      "status": "verified",
+      "date": "2026-09-15",
+      "reviewer": "Codex",
+      "cropSpecSha256": "9a9c792f058ee3c791105906f4cf8f0db035cb62e15824246df72c3ab4184c8b",
+      "method": "Approved original-page visual review and source register retained; QP/MS text and dependencies rechecked; every current QP/MS crop edge and all insert extracts visually checked; complex diagram and code extracts sampled at full size. PDF glyph-boundary checks passed."
+    }
+  },
+  "E108": {
+    "qp": [
+      [
+        12,
+        60,
+        715
+      ],
+      [
+        13,
+        60,
+        759
+      ]
+    ],
+    "ms": [
+      [
+        10,
+        350,
+        623,
+        25,
+        570
+      ],
+      [
+        11,
+        65,
+        679,
+        25,
+        570
+      ]
+    ],
+    "review": {
+      "status": "verified",
+      "date": "2026-09-15",
+      "reviewer": "Codex",
+      "cropSpecSha256": "801fe83e391ba1cfe34f03ec378a7f6da6931721f82af939f3e9a21a0a83c066",
+      "method": "Approved original-page visual review and source register retained; QP/MS text and dependencies rechecked; every current QP/MS crop edge and all insert extracts visually checked; complex diagram and code extracts sampled at full size. PDF glyph-boundary checks passed."
+    }
+  },
+  "E109": {
+    "qp": [
+      [
+        18,
+        60,
+        622
+      ],
+      [
+        20,
+        60,
+        265
+      ],
+      [
+        21,
+        60,
+        763
+      ]
+    ],
+    "ms": [
+      [
+        10,
+        593,
+        694
+      ],
+      [
+        12,
+        65,
+        666
+      ]
+    ],
+    "insert": [
+      [
+        "9618_s24_in_22.pdf",
+        4,
+        56,
+        150
+      ]
+    ],
+    "review": {
+      "status": "verified",
+      "date": "2026-09-15",
+      "reviewer": "Codex",
+      "cropSpecSha256": "27b18507ac7ad2453af5c9574b260301f067dc75c2260cef0cdfca7e81bda6a2",
+      "method": "Approved original-page visual review and source register retained; QP/MS text and dependencies rechecked; every current QP/MS crop edge and all insert extracts visually checked; complex diagram and code extracts sampled at full size. PDF glyph-boundary checks passed."
+    }
+  }
+}
