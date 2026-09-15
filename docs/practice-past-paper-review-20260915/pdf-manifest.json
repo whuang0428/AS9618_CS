@@ -1,0 +1,569 @@
+[
+  {
+    "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2023-May-June/9618_s23_er.pdf",
+    "filename": "9618_s23_er.pdf",
+    "sha256": "9adc2194dceb96213a0b1c5f8d5f52b2d3025e36f357fb9347096d0e3fdcd4c3",
+    "pages": 48,
+    "textChars": 241419
+  },
+  {
+    "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2023-May-June/9618_s23_gt.pdf",
+    "filename": "9618_s23_gt.pdf",
+    "sha256": "e93d43787fa284f407a6145f67b52d410fabc49165a2fe74e1f0978797f46742",
+    "pages": 2,
+    "textChars": 4529
+  },
+  {
+    "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2023-May-June/9618_s23_ms_11.pdf",
+    "filename": "9618_s23_ms_11.pdf",
+    "sha256": "9955c377d09a08b7def28b097d0f1a2247d7097b30d59b525eaf73805055898c",
+    "pages": 9,
+    "textChars": 53679
+  },
+  {
+    "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2023-May-June/9618_s23_ms_12.pdf",
+    "filename": "9618_s23_ms_12.pdf",
+    "sha256": "bc0db739175ead33ca2acb9af7fc46cdc2f8153a05ac867b943ccb1ad09f5a2c",
+    "pages": 10,
+    "textChars": 54973
+  },
+  {
+    "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2023-May-June/9618_s23_ms_13.pdf",
+    "filename": "9618_s23_ms_13.pdf",
+    "sha256": "e42d1cc9bdc1e41f9c08fa51f98bdc024d3a0b2984c98b50742f810a6c6762fd",
+    "pages": 11,
+    "textChars": 58375
+  },
+  {
+    "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2023-May-June/9618_s23_ms_21.pdf",
+    "filename": "9618_s23_ms_21.pdf",
+    "sha256": "f6709d9da90d460b2192f133f1378928029c5431baf4cae26ce0f275c3b311e5",
+    "pages": 11,
+    "textChars": 47636
+  },
+  {
+    "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2023-May-June/9618_s23_ms_22.pdf",
+    "filename": "9618_s23_ms_22.pdf",
+    "sha256": "932fc08bedf23d5458a5eee2d5658be2fd03d67ca1cfd9f0da862c0d2f1570db",
+    "pages": 14,
+    "textChars": 58681
+  },
+  {
+    "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2023-May-June/9618_s23_ms_23.pdf",
+    "filename": "9618_s23_ms_23.pdf",
+    "sha256": "72a96c391f424f230696bb1df31c4d3f16d5cf096d3c49dd5b72bf03dd3a6194",
+    "pages": 10,
+    "textChars": 55397
+  },
+  {
+    "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2023-May-June/9618_s23_qp_11.pdf",
+    "filename": "9618_s23_qp_11.pdf",
+    "sha256": "547b5fef50d13125e25642bef9a06c8e96b63e27a742b045043543a87b3c0843",
+    "pages": 16,
+    "textChars": 40191
+  },
+  {
+    "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2023-May-June/9618_s23_qp_12.pdf",
+    "filename": "9618_s23_qp_12.pdf",
+    "sha256": "2ce09e20a3bdc23506591fd65a99df636065d1a16a9939d4ad382660325a7d89",
+    "pages": 16,
+    "textChars": 41845
+  },
+  {
+    "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2023-May-June/9618_s23_qp_13.pdf",
+    "filename": "9618_s23_qp_13.pdf",
+    "sha256": "b53ac2c6e575164af41410a1f4620a102aa2de42ed51fd9bfb586e24221f0d90",
+    "pages": 16,
+    "textChars": 59403
+  },
+  {
+    "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2023-May-June/9618_s23_qp_21.pdf",
+    "filename": "9618_s23_qp_21.pdf",
+    "sha256": "ec3ce014e637b1bba40235dbcd807e7749ed80d0cc816c7862483a484b516d5e",
+    "pages": 20,
+    "textChars": 65261
+  },
+  {
+    "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2023-May-June/9618_s23_qp_22.pdf",
+    "filename": "9618_s23_qp_22.pdf",
+    "sha256": "41216c66a226bd48b6125b966c2d348a4d8cd55399d38f45d810653a949d1ce8",
+    "pages": 20,
+    "textChars": 66279
+  },
+  {
+    "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2023-May-June/9618_s23_qp_23.pdf",
+    "filename": "9618_s23_qp_23.pdf",
+    "sha256": "138f8a69b1464cced192f707eeb5edf3cc19fe5cc2dfe131dcc82cc3a3f0fef6",
+    "pages": 20,
+    "textChars": 59365
+  },
+  {
+    "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2023-Oct-Nov/9618_w23_er.pdf",
+    "filename": "9618_w23_er.pdf",
+    "sha256": "63487229b4eb647062fe6ef3c2e44ed785d5298b68a782ef8f231526e8925aba",
+    "pages": 47,
+    "textChars": 237571
+  },
+  {
+    "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2023-Oct-Nov/9618_w23_gt.pdf",
+    "filename": "9618_w23_gt.pdf",
+    "sha256": "fa058b7a27680a50f583916fb079b0db8d65fd92ea12f451e70c3fa006cc5f59",
+    "pages": 2,
+    "textChars": 4729
+  },
+  {
+    "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2023-Oct-Nov/9618_w23_ms_11.pdf",
+    "filename": "9618_w23_ms_11.pdf",
+    "sha256": "7d42b9e1b7ad513fa40cc2b5ba566b8f3dd4cdded6c0cd661e13f5388aa21348",
+    "pages": 10,
+    "textChars": 24821
+  },
+  {
+    "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2023-Oct-Nov/9618_w23_ms_12.pdf",
+    "filename": "9618_w23_ms_12.pdf",
+    "sha256": "dbbe4dacd4a75ba1bf70440870c449e2c35cbc25c8708a429ed67cf6ee89cc78",
+    "pages": 11,
+    "textChars": 28273
+  },
+  {
+    "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2023-Oct-Nov/9618_w23_ms_13.pdf",
+    "filename": "9618_w23_ms_13.pdf",
+    "sha256": "c658537dc541755e6829581b37db83a5f9ae4958d765a885732383b5015d12f6",
+    "pages": 10,
+    "textChars": 23578
+  },
+  {
+    "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2023-Oct-Nov/9618_w23_ms_21.pdf",
+    "filename": "9618_w23_ms_21.pdf",
+    "sha256": "00b25d38b13ccf7e1c07bcb681ccaab56b0e906ffd689b4d99c40c3d0c68bbe3",
+    "pages": 10,
+    "textChars": 19164
+  },
+  {
+    "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2023-Oct-Nov/9618_w23_ms_22.pdf",
+    "filename": "9618_w23_ms_22.pdf",
+    "sha256": "168281052448ad61bc0eb52cde0fa8e1714b450e08e9826abe80a8423b342a9a",
+    "pages": 14,
+    "textChars": 24499
+  },
+  {
+    "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2023-Oct-Nov/9618_w23_ms_23.pdf",
+    "filename": "9618_w23_ms_23.pdf",
+    "sha256": "bc0c24f75aac754933f9d57d2a75b94e4981ddaa2cd941ff7e6528c1c9960706",
+    "pages": 11,
+    "textChars": 19304
+  },
+  {
+    "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2023-Oct-Nov/9618_w23_qp_11.pdf",
+    "filename": "9618_w23_qp_11.pdf",
+    "sha256": "0aca70a2e79414c1683c81120a9cd3144c4a5b9ad7f411cd95fcd7089d702e69",
+    "pages": 16,
+    "textChars": 51173
+  },
+  {
+    "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2023-Oct-Nov/9618_w23_qp_12.pdf",
+    "filename": "9618_w23_qp_12.pdf",
+    "sha256": "e1e0c98c7049d459406e35c040cb680b8cda7fa61a31ce2de1d8d34d6e5fc7b7",
+    "pages": 16,
+    "textChars": 53951
+  },
+  {
+    "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2023-Oct-Nov/9618_w23_qp_13.pdf",
+    "filename": "9618_w23_qp_13.pdf",
+    "sha256": "90c2b773f5d16f13ca83a637ca047c2afa31a7a7dad0664fe8522616a9ab3a4e",
+    "pages": 16,
+    "textChars": 44437
+  },
+  {
+    "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2023-Oct-Nov/9618_w23_qp_21.pdf",
+    "filename": "9618_w23_qp_21.pdf",
+    "sha256": "334b77e019343ba5e4544330d5e0b3e767309c1688253a93af5d5c095aa80342",
+    "pages": 20,
+    "textChars": 67348
+  },
+  {
+    "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2023-Oct-Nov/9618_w23_qp_22.pdf",
+    "filename": "9618_w23_qp_22.pdf",
+    "sha256": "8e46de8183ecf792adf5dd86a42d8868952822bb56d349918b594a08d720f5f4",
+    "pages": 20,
+    "textChars": 57214
+  },
+  {
+    "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2023-Oct-Nov/9618_w23_qp_23.pdf",
+    "filename": "9618_w23_qp_23.pdf",
+    "sha256": "f458eade75457917ff50ea76156ffcb5fd4773d04a4cf5684f32768d13f7611d",
+    "pages": 20,
+    "textChars": 56294
+  },
+  {
+    "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2024-May-June/9618_s24_ms_11.pdf",
+    "filename": "9618_s24_ms_11.pdf",
+    "sha256": "b53a8ca0d83d790364125ad0b74cef676204133d540c9c89f38404dd4d1fca69",
+    "pages": 8,
+    "textChars": 39821
+  },
+  {
+    "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2024-May-June/9618_s24_ms_12.pdf",
+    "filename": "9618_s24_ms_12.pdf",
+    "sha256": "27327b88c438432d5af97553d3ac09dcfe42f0a35c8d2556fdc9bd90959c7ea0",
+    "pages": 11,
+    "textChars": 43831
+  },
+  {
+    "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2024-May-June/9618_s24_ms_13.pdf",
+    "filename": "9618_s24_ms_13.pdf",
+    "sha256": "8d9b06f8ba8f9fba12b8cd725e39c5bda93fe14c1ba6c89912de801671762179",
+    "pages": 9,
+    "textChars": 49958
+  },
+  {
+    "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2024-May-June/9618_s24_ms_21.pdf",
+    "filename": "9618_s24_ms_21.pdf",
+    "sha256": "372460c1d37896d8902ebe57fe083c65443f7782e214e366a6e554eadb6c9fd1",
+    "pages": 12,
+    "textChars": 38688
+  },
+  {
+    "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2024-May-June/9618_s24_ms_22.pdf",
+    "filename": "9618_s24_ms_22.pdf",
+    "sha256": "901cb6ebf4cafc157e39b55f5e764081d9d30384b0ae8f9d3ea5f795cf475d9d",
+    "pages": 12,
+    "textChars": 45782
+  },
+  {
+    "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2024-May-June/9618_s24_ms_23.pdf",
+    "filename": "9618_s24_ms_23.pdf",
+    "sha256": "f9160abbea97946befffc4b59c9caa5c871f8b5fc93a7cb68013f310af6c8893",
+    "pages": 13,
+    "textChars": 43953
+  },
+  {
+    "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2024-May-June/9618_s24_qp_11.pdf",
+    "filename": "9618_s24_qp_11.pdf",
+    "sha256": "2e39e6c2ee1e65d621df71b4b7fbe41a16f1e4ed8e252fb1612a6d14b13de063",
+    "pages": 16,
+    "textChars": 59276
+  },
+  {
+    "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2024-May-June/9618_s24_qp_12.pdf",
+    "filename": "9618_s24_qp_12.pdf",
+    "sha256": "871b047e73c2ce0dd3c2dd1c47b7d4e176c886e61af08ffe12c6b9734285d3de",
+    "pages": 16,
+    "textChars": 49193
+  },
+  {
+    "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2024-May-June/9618_s24_qp_13.pdf",
+    "filename": "9618_s24_qp_13.pdf",
+    "sha256": "79f3dbe24332c41b155e25ba48d3a8cb75399e98d5bb9cdf9a1e71de0f4645bd",
+    "pages": 16,
+    "textChars": 6714
+  },
+  {
+    "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2024-May-June/9618_s24_qp_21.pdf",
+    "filename": "9618_s24_qp_21.pdf",
+    "sha256": "cea30586678603abd65487305af0ea516766653a33acb8abb5f7c9f8619aa091",
+    "pages": 24,
+    "textChars": 53605
+  },
+  {
+    "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2024-May-June/9618_s24_qp_22.pdf",
+    "filename": "9618_s24_qp_22.pdf",
+    "sha256": "2a454e3660ac7d44569a829e3039acdd32204216385d645a370f1c00a7714c46",
+    "pages": 24,
+    "textChars": 69469
+  },
+  {
+    "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2024-May-June/9618_s24_qp_23.pdf",
+    "filename": "9618_s24_qp_23.pdf",
+    "sha256": "1824d4b34caf0bd2e9bb3ffb71eebca3f2e78ad5c131a8a6462fe71ad0114bc6",
+    "pages": 24,
+    "textChars": 10218
+  },
+  {
+    "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2024-Oct-Nov/9618_w24_gt.pdf",
+    "filename": "9618_w24_gt.pdf",
+    "sha256": "ffbe5a75cf4da8ced448e35343d69f19ac00d9cb34bfb1c6968e606f5ab99360",
+    "pages": 2,
+    "textChars": 4776
+  },
+  {
+    "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2024-Oct-Nov/9618_w24_ms_11.pdf",
+    "filename": "9618_w24_ms_11.pdf",
+    "sha256": "e9674e802b5b850509834b1ab1b84008740729d668ae844e9b0142607dbdf1a2",
+    "pages": 9,
+    "textChars": 23850
+  },
+  {
+    "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2024-Oct-Nov/9618_w24_ms_12.pdf",
+    "filename": "9618_w24_ms_12.pdf",
+    "sha256": "42b8ef4e24bdd263e1a81b9ae34d332e77e34f7c7853ab411977410f1b43192e",
+    "pages": 10,
+    "textChars": 23576
+  },
+  {
+    "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2024-Oct-Nov/9618_w24_ms_13.pdf",
+    "filename": "9618_w24_ms_13.pdf",
+    "sha256": "d3ee5286285e4611838cb9922a4fd9706a1a4e733ece048f24f89ee5cb48ec37",
+    "pages": 9,
+    "textChars": 21982
+  },
+  {
+    "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2024-Oct-Nov/9618_w24_ms_21.pdf",
+    "filename": "9618_w24_ms_21.pdf",
+    "sha256": "0c1ea5a48c249a4c02ab9e9d51ada6109881b219bb9454a7e53fd7bf36687551",
+    "pages": 13,
+    "textChars": 26729
+  },
+  {
+    "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2024-Oct-Nov/9618_w24_ms_22.pdf",
+    "filename": "9618_w24_ms_22.pdf",
+    "sha256": "ae619e0388fcae32fdf1a37b3c70c0beceac85426c50bd7692d08be8f4e27c74",
+    "pages": 12,
+    "textChars": 25054
+  },
+  {
+    "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2024-Oct-Nov/9618_w24_ms_23.pdf",
+    "filename": "9618_w24_ms_23.pdf",
+    "sha256": "40a5ba8794ae5c0816f60488deea097623fb2fe6cc989310e828aee8795bcbe8",
+    "pages": 14,
+    "textChars": 26547
+  },
+  {
+    "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2024-Oct-Nov/9618_w24_qp_11.pdf",
+    "filename": "9618_w24_qp_11.pdf",
+    "sha256": "94d1aed5bc14f0a3fd60da0e932cf5b8b40bd8342550ff0254c19afe89001ef7",
+    "pages": 16,
+    "textChars": 6669
+  },
+  {
+    "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2024-Oct-Nov/9618_w24_qp_12.pdf",
+    "filename": "9618_w24_qp_12.pdf",
+    "sha256": "3d754f83188ee139c7ffd082496a3d0591e73714ec8787dc2b961f5aa2c744c6",
+    "pages": 16,
+    "textChars": 6623
+  },
+  {
+    "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2024-Oct-Nov/9618_w24_qp_13.pdf",
+    "filename": "9618_w24_qp_13.pdf",
+    "sha256": "1633471ff692292618910635b391aef69624188ec30b72425738f8a46354cc04",
+    "pages": 20,
+    "textChars": 8351
+  },
+  {
+    "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2024-Oct-Nov/9618_w24_qp_21.pdf",
+    "filename": "9618_w24_qp_21.pdf",
+    "sha256": "75d0f339acc8e6cb226cf6d4831a7c3fb454d24402cfcac308b25150a8e665dc",
+    "pages": 20,
+    "textChars": 8275
+  },
+  {
+    "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2024-Oct-Nov/9618_w24_qp_22.pdf",
+    "filename": "9618_w24_qp_22.pdf",
+    "sha256": "23df306798f666dc38c29fe896027b4193ba57e0db15ad9681f2680ae4897902",
+    "pages": 24,
+    "textChars": 9987
+  },
+  {
+    "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2024-Oct-Nov/9618_w24_qp_23.pdf",
+    "filename": "9618_w24_qp_23.pdf",
+    "sha256": "43a2a12ba0040fc7631e54ddc8fb7e3e35632db25fd416e0162fc2350c9b96cf",
+    "pages": 20,
+    "textChars": 8351
+  },
+  {
+    "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2025-May-June/9618_s25_gt.pdf",
+    "filename": "9618_s25_gt.pdf",
+    "sha256": "0355c81de5a9999c010ca8bcb18d6cd17d21a75f9d5b7f29758d5b596b31e6a4",
+    "pages": 2,
+    "textChars": 4655
+  },
+  {
+    "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2025-May-June/9618_s25_ms_11.pdf",
+    "filename": "9618_s25_ms_11.pdf",
+    "sha256": "8bf543ddd26e74224f40fd909152e300b9b711eb3644d7e8d07c1d5c3f07521b",
+    "pages": 12,
+    "textChars": 24049
+  },
+  {
+    "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2025-May-June/9618_s25_ms_12.pdf",
+    "filename": "9618_s25_ms_12.pdf",
+    "sha256": "0b0c41c4a7930853aaaaa00729d4ffd3a3e971948800220344c6ae6a31ec957a",
+    "pages": 12,
+    "textChars": 25973
+  },
+  {
+    "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2025-May-June/9618_s25_ms_13.pdf",
+    "filename": "9618_s25_ms_13.pdf",
+    "sha256": "a334bec016c753451ae53c56fdfc0b0758b8f2b5a7a06a86307ac100bb7ebd8e",
+    "pages": 12,
+    "textChars": 24733
+  },
+  {
+    "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2025-May-June/9618_s25_ms_21.pdf",
+    "filename": "9618_s25_ms_21.pdf",
+    "sha256": "cc0ce7f995d039ebed35955a41a87d3d09f6e25470afcf0868f8af897ac9486b",
+    "pages": 14,
+    "textChars": 25702
+  },
+  {
+    "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2025-May-June/9618_s25_ms_22.pdf",
+    "filename": "9618_s25_ms_22.pdf",
+    "sha256": "1a983412767fb5130f36d7b3ddc317384174833647aec1d75a24c41b7bf10715",
+    "pages": 20,
+    "textChars": 35735
+  },
+  {
+    "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2025-May-June/9618_s25_ms_23.pdf",
+    "filename": "9618_s25_ms_23.pdf",
+    "sha256": "13b90d3db85a32157de8c2c7af9dd35f4ee92157b8bd129566d895330f7de419",
+    "pages": 14,
+    "textChars": 26748
+  },
+  {
+    "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2025-May-June/9618_s25_qp_11.pdf",
+    "filename": "9618_s25_qp_11.pdf",
+    "sha256": "bdf74d4f15c620bde7e6fe65f17828bc85c89490ebb9a1a337e2cd0596f4b39a",
+    "pages": 20,
+    "textChars": 7510
+  },
+  {
+    "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2025-May-June/9618_s25_qp_12.pdf",
+    "filename": "9618_s25_qp_12.pdf",
+    "sha256": "607722293452744ee7107b7365cac73664d51e0eb0f7487587d038e22467826e",
+    "pages": 16,
+    "textChars": 5900
+  },
+  {
+    "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2025-May-June/9618_s25_qp_13.pdf",
+    "filename": "9618_s25_qp_13.pdf",
+    "sha256": "b341d6829ba4baf47dbd8d272cb7fd49b448d04a2a16a028e4fb3178c3c64554",
+    "pages": 20,
+    "textChars": 7432
+  },
+  {
+    "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2025-May-June/9618_s25_qp_21.pdf",
+    "filename": "9618_s25_qp_21.pdf",
+    "sha256": "bdc294eb8a519647f24d2fc53053504a0a03c164625c043397a6533ddb09e5b7",
+    "pages": 20,
+    "textChars": 7432
+  },
+  {
+    "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2025-May-June/9618_s25_qp_22.pdf",
+    "filename": "9618_s25_qp_22.pdf",
+    "sha256": "d0888a6c10be5f3ad806b71e98de7586274fe1aeb801aa4b82059f06de6e857c",
+    "pages": 20,
+    "textChars": 7375
+  },
+  {
+    "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2025-May-June/9618_s25_qp_23.pdf",
+    "filename": "9618_s25_qp_23.pdf",
+    "sha256": "598eed30b0b8138239f5173655d0579126227ea4d371402c9220e9b020c716ea",
+    "pages": 20,
+    "textChars": 7432
+  },
+  {
+    "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2025-Oct-Nov/9618_w25_gt.pdf",
+    "filename": "9618_w25_gt.pdf",
+    "sha256": "8a3498af1d995905d7a8603fa1fb0c579fcc10f0230338999af5d878f8edbb24",
+    "pages": 2,
+    "textChars": 4568
+  },
+  {
+    "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2025-Oct-Nov/9618_w25_ms_11.pdf",
+    "filename": "9618_w25_ms_11.pdf",
+    "sha256": "64b2928b1348598cd0be2cda8014405264f0a4303b73665633e4e297217056f4",
+    "pages": 15,
+    "textChars": 29859
+  },
+  {
+    "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2025-Oct-Nov/9618_w25_ms_12.pdf",
+    "filename": "9618_w25_ms_12.pdf",
+    "sha256": "4fd455f74ae4abf71a8796095c912a06c77239d6d5a6679ce05ceff1032e7dd8",
+    "pages": 11,
+    "textChars": 27947
+  },
+  {
+    "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2025-Oct-Nov/9618_w25_ms_13.pdf",
+    "filename": "9618_w25_ms_13.pdf",
+    "sha256": "d4bf99da2ca289430a18709d483892df85646dc5a90d5fb6697eb6d13c10481b",
+    "pages": 12,
+    "textChars": 25718
+  },
+  {
+    "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2025-Oct-Nov/9618_w25_ms_21.pdf",
+    "filename": "9618_w25_ms_21.pdf",
+    "sha256": "da487266bdaf79bdebcb2045ba923f46d90f01a9a8b21ed143d189fd34336501",
+    "pages": 19,
+    "textChars": 33047
+  },
+  {
+    "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2025-Oct-Nov/9618_w25_ms_22.pdf",
+    "filename": "9618_w25_ms_22.pdf",
+    "sha256": "1fef4ad8713f2424f09545464f1b31af5ee2ee1d9d38435f7487eea2d4278532",
+    "pages": 15,
+    "textChars": 24832
+  },
+  {
+    "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2025-Oct-Nov/9618_w25_ms_23.pdf",
+    "filename": "9618_w25_ms_23.pdf",
+    "sha256": "9e6101af01a65bfcd78cb1d999b3abddee3c0f17114d599808f5c630fd84a346",
+    "pages": 17,
+    "textChars": 31025
+  },
+  {
+    "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2025-Oct-Nov/9618_w25_qp_11.pdf",
+    "filename": "9618_w25_qp_11.pdf",
+    "sha256": "2fe1691a0eff789ac686121aac0ae4e7cb3852f9bd321a6542dc6b82fbedf616",
+    "pages": 16,
+    "textChars": 5900
+  },
+  {
+    "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2025-Oct-Nov/9618_w25_qp_12.pdf",
+    "filename": "9618_w25_qp_12.pdf",
+    "sha256": "ea65e75a4182f991cb2117827ee5c6734365b2c5e78686c6d6ef1e00d48fe65b",
+    "pages": 16,
+    "textChars": 5900
+  },
+  {
+    "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2025-Oct-Nov/9618_w25_qp_13.pdf",
+    "filename": "9618_w25_qp_13.pdf",
+    "sha256": "9b5d7e33de24afb406ddc00c253ebf37b4240e6b21f3c1a7f6f1eb82aba78cc6",
+    "pages": 16,
+    "textChars": 5894
+  },
+  {
+    "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2025-Oct-Nov/9618_w25_qp_21.pdf",
+    "filename": "9618_w25_qp_21.pdf",
+    "sha256": "6b85b806813779906ba15c8c5ea7e039247702f8b44b2d6923df0423ca51741a",
+    "pages": 20,
+    "textChars": 7432
+  },
+  {
+    "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2025-Oct-Nov/9618_w25_qp_22.pdf",
+    "filename": "9618_w25_qp_22.pdf",
+    "sha256": "02da3baced99f059667fc7619cca0e779db8ae369a250a1106b4c0aa55f0c4e8",
+    "pages": 20,
+    "textChars": 7375
+  },
+  {
+    "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2025-Oct-Nov/9618_w25_qp_23.pdf",
+    "filename": "9618_w25_qp_23.pdf",
+    "sha256": "7d4f54c316260a841949970ffbea217121b2e8f46ce86fe68d3584b45af35484",
+    "pages": 24,
+    "textChars": 8895
+  },
+  {
+    "path": "/Users/kw/Documents/Teaching/AS CS 9618/syllabus/9618-2027-2029-syllabus-update.pdf",
+    "filename": "9618-2027-2029-syllabus-update.pdf",
+    "sha256": "7a6d305a3370f8aa006eac43bc21be298e1d77bcabfcc57aa677016cb33b869e",
+    "pages": 1,
+    "textChars": 2722
+  },
+  {
+    "path": "/Users/kw/Documents/Teaching/AS CS 9618/syllabus/9618-2027-2029-syllabus-v2.pdf",
+    "filename": "9618-2027-2029-syllabus-v2.pdf",
+    "sha256": "c8a4c6d033c07c6d8025689abed5ef481d581c28bae640986d275303ed6c08bc",
+    "pages": 49,
+    "textChars": 272785
+  }
+]

@@ -49,11 +49,11 @@ export function completionMechanisms({text,box,arrow,decision,io,terminal,edge,n
     },
     'alu-control': {
       title:'The CU coordinates the operation; the ALU calculates the result',height:700,
-      facts:['CIR contains ADD 410, ACC starts at 6 and Memory[410] contains 11.', 'The CU decodes ADD and coordinates the operand read; the ALU adds 6 and 11.', 'The result 17 is retained in ACC. Clock pulses synchronise operations; one instruction can take several cycles.'],
-      draw:()=>box(35,130,270,90,['CIR','ADD 410'])+edge('cir','cu','M305 175H430')+box(430,130,260,90,['Control unit','Decode and signal'])+box(795,130,270,90,['System clock','Regular pulses'])+
+      facts:['CIR contains ADD 5, ACC starts at 18 and Memory[5] contains 24.', 'The CU decodes ADD and coordinates the operand read; the ALU adds 18 and 24.', 'The result 42 is retained in ACC. Clock pulses synchronise operations; one instruction can take several cycles.'],
+      draw:()=>box(35,130,270,90,['CIR','ADD 5'])+edge('cir','cu','M305 175H430')+box(430,130,260,90,['Control unit','Decode and signal'])+box(795,130,270,90,['System clock','Regular pulses'])+
         edge('clock','cu','M795 175H690')+edge('cu','alu','M560 220V320')+
-        box(35,320,270,100,['ACC before','6'])+edge('acc-old','alu','M305 370H430')+box(430,320,260,100,['ALU','6 + 11 = 17'])+box(795,320,270,100,['IAS / main memory','Memory[410] = 11'])+edge('memory','alu','M795 370H690')+
-        edge('alu','acc-new','M560 420V505')+box(390,505,340,90,['ACC after','17'])+text(35,660,'IAS holds instructions and data during execution; secondary storage has another role.',24),
+        box(35,320,270,100,['ACC before','18'])+edge('acc-old','alu','M305 370H430')+box(430,320,260,100,['ALU','18 + 24 = 42'])+box(795,320,270,100,['IAS / main memory','Memory[5] = 24'])+edge('memory','alu','M795 370H690')+
+        edge('alu','acc-new','M560 420V505')+box(390,505,340,90,['ACC after','42'])+text(35,660,'IAS holds instructions and data during execution; secondary storage has another role.',24),
     },
     'execute-load': {
       title:'Executing LDD fetches the operand after the instruction is decoded',height:610,

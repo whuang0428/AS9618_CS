@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="820" viewBox="0 0 1120 820" role="img"><title>Set motor enable only when ready</title><defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10Z" fill="#14747b"/></marker></defs><style>text{font-family:Arial,sans-serif;fill:#142b45} .title{font-size:30px;font-weight:700}.label{font-size:24px;font-weight:700}.note{font-size:21px}.wire{fill:none;stroke:#14747b;stroke-width:3;marker-end:url(#arrow)}.box{fill:#edf6f8;stroke:#4c7185;stroke-width:2}</style><rect width="100%" height="100%" fill="white"/><text x="30" y="45" class="title">Set motor enable only when ready</text>
+<rect class="box" x="325" y="85" width="470" height="145" rx="8"/><text x="343" y="120" class="label">Read and test a copy</text><text x="343" y="155" class="note">LDD 900; AND B00010000</text><text x="343" y="184" class="note">CMP #0</text>
+<path class="wire" d="M560 230 V265"/>
+<path class="box" d="M560 265 L760 340 L560 415 L360 340 Z"/><text x="465" y="347" class="label">Result = 0?</text>
+<path class="wire" d="M360 340 H80 V700 H345"/><text x="35" y="315" class="note">Yes: not ready</text>
+<text x="110" y="510" class="note">No write;</text><text x="110" y="542" class="note">stored byte unchanged.</text>
+<path class="wire" d="M760 340 H920 V460"/><text x="790" y="315" class="note">No: ready</text>
+<rect class="box" x="770" y="460" width="315" height="155" rx="8"/><text x="788" y="495" class="label">Reload, set and store</text><text x="788" y="530" class="note">LDD 900</text><text x="788" y="559" class="note">OR B00000100; STO 900</text>
+<path class="wire" d="M895 615 V700 H775"/>
+<rect class="box" x="345" y="655" width="430" height="95" rx="8"/><text x="363" y="690" class="label">DONE: END</text><text x="363" y="725" class="note">Both paths terminate</text>
+<text x="30" y="795" class="note">8-bit model: ready = bit 4; motor = bit 2. The interface byte stays stable during this sequence.</text></svg>

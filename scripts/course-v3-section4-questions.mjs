@@ -1,16 +1,36 @@
-import { programQuestionData } from "./course-v3-section4-programs.mjs";
+import { programQuestionData, section4Programs } from "./course-v3-section4-programs.mjs";
 
 export const s4ids = (requirement, numbers = [1]) => numbers.map((n) => `S4.${String(requirement).padStart(2, "0")}.A${String(n).padStart(2, "0")}`);
 const q = (id, prompt, objectiveIds, answerPoints, commonError, extra = {}) => ({ id, type: "Application", authored: true, prompt, objectiveIds, answerPoints, marks: answerPoints.length, commonError, ...extra });
 const practice = (l, n, ...args) => q(`S4-L0${l}-Q${n}`, ...args);
 const exam = (l, n, ...args) => q(`S4-L0${l}-EXAM-${n}`, ...args);
 const rows = (values) => values.map(([address, acc, ix, next, output = "—"]) => [String(address), String(acc), String(ix), next === null ? "Return to OS" : String(next), output]);
-export const traceData = (key, expectedTrace, finalMemory = {}) => ({
+export const traceData = (key, expectedTrace, finalMemory = {}) => {
+ const program=section4Programs[key], memory={...program.memory};
+ const literal=s=>s.startsWith('#')?Number(s.slice(1)):s.startsWith('B')?parseInt(s.slice(1),2):s.startsWith('&')?parseInt(s.slice(1),16):memory[Number(s)];
+ let compare='Unset';
+ const complete=rows(expectedTrace).map((row,i)=>{
+  const [opcode,operand]=(program.lines[expectedTrace[i][0]-program.origin]??'').replace(/^\w+:\s*/,'').split(/\s+/);
+  if(opcode==='CMP')compare=expectedTrace[i][1]===literal(operand)?'True':'False';
+  if(opcode==='CMI')compare=expectedTrace[i][1]===memory[memory[Number(operand)]]?'True':'False';
+  let write='—';if(opcode==='STO'){memory[Number(operand)]=expectedTrace[i][1];write=`Memory[${operand}]=${expectedTrace[i][1]}`;}
+  return [...row.slice(0,4),compare,write,row[4]];
+ });
+ const headers=['Executed address','ACC','IX','Next PC','Last CMP/CMI','Memory write','Output this step'];
+ return {
   ...programQuestionData(key), expectedTrace, finalMemory,
-  table: { title: "Trace table: state after each executed instruction", headers: ["Executed address", "ACC", "IX", "Next PC", "Output this step"], rows: expectedTrace.map((_, i) => [`Step ${i + 1}`, "", "", "", ""]) },
-  answerTable: { title: "Completed trace", headers: ["Executed address", "ACC", "IX", "Next PC", "Output this step"], rows: rows(expectedTrace) },
-});
-const tracePoints = (data) => data.answerTable.rows.map(([a, acc, ix, pc, out]) => `Address ${a}: ACC=${acc}, IX=${ix}, next PC=${pc}${out === "—" ? "; no output." : `; output character ${out}.`}`);
+  table: { title: "Trace table: state after each executed instruction", headers, rows: expectedTrace.map((_, i) => [`Step ${i + 1}`, "", "", "", "", "", ""]) },
+  answerTable: { title: "Completed trace", headers, rows: complete },
+ };
+};
+const tracePoints = key => ({
+ dataPractice:['LDR sets IX=2; LDX selects address 302 and loads 9.','MOV IX copies ACC=9 into IX, retaining ACC=9.','LDI follows 310→303 and loads 12.','STO writes 12 to 320; LDD reads it back, then END terminates.'],
+ arithmeticPractice:['The immediate operations give ACC=10,15,12.','The memory operands 4 and 6 then give ACC=16 and 10.','INC ACC and DEC ACC give 11 then 10.','LDR, INC IX and DEC IX give IX=3,4,3 while ACC stays 10.','The trace retains unchanged state and reaches END at 150.'],
+ branchPractice:['IN gives ACC=65 and CMI compares with Memory[341]=65, recording True.','JPN is not taken, so address 183 is executed.','ADD gives 66; CMP #66 is True and JPE selects 187, skipping REJECT.','OUT emits B, then END terminates; IX and memory are unchanged.'],
+ jumpPractice:['CMP records True with ACC=5.','JPE selects 224, skipping the assignment at 223.','INC ACC gives 6 and JMP selects 227, skipping DEC.','END terminates with ACC=6, IX=0 and unchanged memory.'],
+ dataExam:['LDM and MOV set ACC=2 and IX=2.','LDX selects address 502 and loads 18.','SUB 503 subtracts 5 to give 13.','STO writes 13 to 510 without changing ACC or IX; END follows.'],
+ loopExam:['LDD loads counter 2 from 520.','The first DEC gives 1; CMP is False and JPN selects 61.','The second DEC gives 0; CMP is True and JPN falls through to 64.','LDD loads 90, replacing the counter value in ACC.','OUT emits Z and END terminates; IX and memory are unchanged.'],
+ }[key]);
 const traceQuestion = (factory, l, n, key, mapping, expected, memory = {}) => {
   const data = traceData(key, expected, memory);
   const task = {
@@ -22,7 +42,7 @@ const traceQuestion = (factory, l, n, key, mapping, expected, memory = {}) => {
     loopExam: "Complete the execution trace for the countdown program. Follow every return to AGAIN until the loop finishes and identify the character printed afterwards.",
   }[key];
   return factory(l, n, `${task} ${factory === exam ? "Use the supplied table to record each post-instruction state through termination." : "Complete one row for each executed instruction, including END; record ACC, IX, the next PC and any output character."} ${Object.keys(memory).length ? `State the final contents of ${Object.keys(memory).map((a) => `Memory[${a}]`).join(" and ")}.` : "Show repeated instructions on separate rows."}`, mapping,
-    [...tracePoints(data), ...Object.entries(memory).map(([a, v]) => `The final contents of Memory[${a}] are ${v}.`)], "Use memory contents, follow the actual branch, and retain unchanged register values. END returns control to the operating system.", data);
+    tracePoints(key), "Use the completed trace to check every row. Award one mark per numbered reasoning point, not one per copied row. END returns control to the operating system.", data);
 };
 
 export const section4Practice = {

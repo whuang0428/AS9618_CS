@@ -1,0 +1,26 @@
+[
+  {
+    "pdf": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2025-May-June/9618_s25_ms_22.pdf",
+    "page": 1,
+    "png": "cancelled-items.png",
+    "status": "visually checked"
+  },
+  {
+    "pdf": "9618_s23_in_21.pdf",
+    "page": 1,
+    "png": "new-insert-1.png",
+    "status": "visually checked"
+  },
+  {
+    "pdf": "9618_s23_in_21.pdf",
+    "page": 2,
+    "png": "new-insert-2.png",
+    "status": "visually checked"
+  },
+  {
+    "pdf": "9618_s23_in_21.pdf",
+    "page": 3,
+    "png": "new-insert-3.png",
+    "status": "visually checked"
+  }
+]

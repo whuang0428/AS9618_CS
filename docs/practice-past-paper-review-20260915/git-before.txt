@@ -1,0 +1,33 @@
+ M README.md
+ M assessments/assessment-bank.md
+ M course-v3-map.md
+ M scripts/assessment-bank-contract.json
+ M scripts/course-v3-contract.json
+ M scripts/course-v3-mechanism-completion.mjs
+ M scripts/course-v3-section4-content.mjs
+ M scripts/course-v3-section4-diagrams.mjs
+ M scripts/course-v3-section4-programs.mjs
+ M scripts/course-v3-section4-questions.mjs
+ M scripts/course-v3-teaching-support.mjs
+ M scripts/render-course-v3.mjs
+ M web/assessments/index.html
+ M web/assets/course-v3/mechanisms/alu-control.svg
+ M web/assets/course-v3/section-4/von-neumann.svg
+ M web/course-v3/index.html
+ M web/course-v3/lesson-021/index.html
+ M web/course-v3/lesson-022/index.html
+ M web/course-v3/lesson-023/index.html
+ M web/course-v3/lesson-024/index.html
+ M web/course-v3/lesson-025/index.html
+ M web/course-v3/lesson-026/index.html
+ M web/course-v3/lesson-027/index.html
+ M web/course-v3/lesson-048/index.html
+ M web/course-v3/section-4/index.html
+ M web/lesson-024/index.html
+?? scripts/course-v3-section4-assessments.mjs
+?? scripts/course-v3-section4-teaching.mjs
+?? section-4-teaching-review.md
+?? web/assets/course-v3/section-4/calculation-transfers.svg
+?? web/assets/course-v3/section-4/device-conditional.svg
+?? web/assets/course-v3/section-4/interrupt-context.svg
+?? "\345\217\202\350\200\203\344\271\246\347\261\215/"

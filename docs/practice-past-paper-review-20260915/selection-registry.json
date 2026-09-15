@@ -1,0 +1,6669 @@
+[
+  {
+    "id": "E001",
+    "lesson": 1,
+    "syllabusCode": "9618",
+    "year": 2024,
+    "series": "May/June",
+    "component": 12,
+    "stem": "s24_12",
+    "parts": [
+      {
+        "part": "7(a)",
+        "marks": 1
+      }
+    ],
+    "marks": 1,
+    "qp": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2024-May-June/9618_s24_qp_12.pdf",
+      "filename": "9618_s24_qp_12.pdf",
+      "sha256": "871b047e73c2ce0dd3c2dd1c47b7d4e176c886e61af08ffe12c6b9734285d3de",
+      "pages": 16,
+      "textChars": 49193
+    },
+    "ms": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2024-May-June/9618_s24_ms_12.pdf",
+      "filename": "9618_s24_ms_12.pdf",
+      "sha256": "27327b88c438432d5af97553d3ac09dcfe42f0a35c8d2556fdc9bd90959c7ea0",
+      "pages": 11,
+      "textChars": 43831
+    },
+    "qpPages": [
+      14
+    ],
+    "msPages": [
+      10
+    ],
+    "context": "完整选项及单位",
+    "reason": "比较混用前缀；不再重复容量装入题",
+    "status": "已核验：QP+对应MS全文相关段；全部登记页PDF原页面已视觉复核",
+    "qualification": "原题适配当前AS范围；保持该题官方评分上限与替代答案，不引入通用M1/A1/FT。",
+    "syllabusMapping": [
+      "S1.01"
+    ],
+    "inserts": [],
+    "prerequisite": "001课内；整数乘除",
+    "mainAbility": "比较混用前缀；不再重复容量装入题",
+    "lessonScopeIds": [
+      "S1.01"
+    ],
+    "supportingKnowledge": []
+  },
+  {
+    "id": "E002",
+    "lesson": 2,
+    "syllabusCode": "9618",
+    "year": 2023,
+    "series": "May/June",
+    "component": 12,
+    "stem": "s23_12",
+    "parts": [
+      {
+        "part": "4(a)",
+        "marks": 1
+      },
+      {
+        "part": "4(b)",
+        "marks": 2
+      },
+      {
+        "part": "4(c)",
+        "marks": 2
+      }
+    ],
+    "marks": 5,
+    "qp": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2023-May-June/9618_s23_qp_12.pdf",
+      "filename": "9618_s23_qp_12.pdf",
+      "sha256": "2ce09e20a3bdc23506591fd65a99df636065d1a16a9939d4ad382660325a7d89",
+      "pages": 16,
+      "textChars": 41845
+    },
+    "ms": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2023-May-June/9618_s23_ms_12.pdf",
+      "filename": "9618_s23_ms_12.pdf",
+      "sha256": "bc0db739175ead33ca2acb9af7fc46cdc2f8153a05ac867b943ccb1ad09f5a2c",
+      "pages": 10,
+      "textChars": 54973
+    },
+    "qpPages": [
+      9
+    ],
+    "msPages": [
+      6,
+      7
+    ],
+    "context": "16-bit整数的模式数、8-bit one’s complement −120、十六进制换算的完整原题条件",
+    "reason": "模式数量、负数编码、十六进制位权三种不同要求",
+    "status": "已核验：QP+对应MS全文相关段；全部登记页PDF原页面已视觉复核",
+    "qualification": "原题适配当前AS范围；保持该题官方评分上限与替代答案，不引入通用M1/A1/FT。",
+    "syllabusMapping": [
+      "S1.02",
+      "S1.03"
+    ],
+    "inserts": [],
+    "prerequisite": "001",
+    "mainAbility": "模式数量、负数编码、十六进制位权三种不同要求",
+    "lessonScopeIds": [
+      "S1.02",
+      "S1.03",
+      "S1.06"
+    ],
+    "supportingKnowledge": []
+  },
+  {
+    "id": "E003",
+    "lesson": 2,
+    "syllabusCode": "9618",
+    "year": 2024,
+    "series": "Oct/Nov",
+    "component": 13,
+    "stem": "w24_13",
+    "parts": [
+      {
+        "part": "8(b)",
+        "marks": 3
+      }
+    ],
+    "marks": 3,
+    "qp": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2024-Oct-Nov/9618_w24_qp_13.pdf",
+      "filename": "9618_w24_qp_13.pdf",
+      "sha256": "1633471ff692292618910635b391aef69624188ec30b72425738f8a46354cc04",
+      "pages": 20,
+      "textChars": 8351
+    },
+    "ms": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2024-Oct-Nov/9618_w24_ms_13.pdf",
+      "filename": "9618_w24_ms_13.pdf",
+      "sha256": "d3ee5286285e4611838cb9922a4fd9706a1a4e733ece048f24f89ee5cb48ec37",
+      "pages": 9,
+      "textChars": 21982
+    },
+    "qpPages": [
+      15
+    ],
+    "msPages": [
+      8
+    ],
+    "context": "完整8位补码与解释要求",
+    "reason": "从只给结果推进到解释转换方法",
+    "status": "已核验：QP+对应MS全文相关段；全部登记页PDF原页面已视觉复核",
+    "qualification": "原题适配当前AS范围；保持该题官方评分上限与替代答案，不引入通用M1/A1/FT。",
+    "syllabusMapping": [
+      "S1.02",
+      "S1.03"
+    ],
+    "inserts": [],
+    "prerequisite": "001",
+    "mainAbility": "从只给结果推进到解释转换方法",
+    "lessonScopeIds": [
+      "S1.02",
+      "S1.03",
+      "S1.06"
+    ],
+    "supportingKnowledge": []
+  },
+  {
+    "id": "E004",
+    "lesson": 3,
+    "syllabusCode": "9618",
+    "year": 2024,
+    "series": "May/June",
+    "component": 12,
+    "stem": "s24_12",
+    "parts": [
+      {
+        "part": "7(b)",
+        "marks": 3
+      }
+    ],
+    "marks": 3,
+    "qp": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2024-May-June/9618_s24_qp_12.pdf",
+      "filename": "9618_s24_qp_12.pdf",
+      "sha256": "871b047e73c2ce0dd3c2dd1c47b7d4e176c886e61af08ffe12c6b9734285d3de",
+      "pages": 16,
+      "textChars": 49193
+    },
+    "ms": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2024-May-June/9618_s24_ms_12.pdf",
+      "filename": "9618_s24_ms_12.pdf",
+      "sha256": "27327b88c438432d5af97553d3ac09dcfe42f0a35c8d2556fdc9bd90959c7ea0",
+      "pages": 11,
+      "textChars": 43831
+    },
+    "qpPages": [
+      14
+    ],
+    "msPages": [
+      10
+    ],
+    "context": "完整100−10二进制题干及working区域",
+    "reason": "减法过程与结果分开评分",
+    "status": "已核验：QP+对应MS全文相关段；全部登记页PDF原页面已视觉复核",
+    "qualification": "减法3分分别核对编码、方法、结果。",
+    "syllabusMapping": [
+      "S1.04"
+    ],
+    "inserts": [],
+    "prerequisite": "002",
+    "mainAbility": "减法过程与结果分开评分",
+    "lessonScopeIds": [
+      "S1.04",
+      "S1.05"
+    ],
+    "supportingKnowledge": []
+  },
+  {
+    "id": "E005",
+    "lesson": 3,
+    "syllabusCode": "9618",
+    "year": 2024,
+    "series": "May/June",
+    "component": 11,
+    "stem": "s24_11",
+    "parts": [
+      {
+        "part": "7",
+        "marks": 3
+      }
+    ],
+    "marks": 3,
+    "qp": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2024-May-June/9618_s24_qp_11.pdf",
+      "filename": "9618_s24_qp_11.pdf",
+      "sha256": "2e39e6c2ee1e65d621df71b4b7fbe41a16f1e4ed8e252fb1612a6d14b13de063",
+      "pages": 16,
+      "textChars": 59276
+    },
+    "ms": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2024-May-June/9618_s24_ms_11.pdf",
+      "filename": "9618_s24_ms_11.pdf",
+      "sha256": "b53a8ca0d83d790364125ad0b74cef676204133d540c9c89f38404dd4d1fca69",
+      "pages": 8,
+      "textChars": 39821
+    },
+    "qpPages": [
+      15
+    ],
+    "msPages": [
+      8
+    ],
+    "context": "完整加法布局和进位",
+    "reason": "固定字长、进位、溢出表示",
+    "status": "已核验：QP+对应MS全文相关段；全部登记页PDF原页面已视觉复核",
+    "qualification": "完整三加数原式；勿缩为二数相加。",
+    "syllabusMapping": [
+      "S1.04",
+      "S1.05"
+    ],
+    "inserts": [],
+    "prerequisite": "002",
+    "mainAbility": "固定字长、进位、溢出表示",
+    "lessonScopeIds": [
+      "S1.04",
+      "S1.05"
+    ],
+    "supportingKnowledge": []
+  },
+  {
+    "id": "E006",
+    "lesson": 4,
+    "syllabusCode": "9618",
+    "year": 2025,
+    "series": "Oct/Nov",
+    "component": 13,
+    "stem": "w25_13",
+    "parts": [
+      {
+        "part": "1(b)",
+        "marks": 2
+      },
+      {
+        "part": "1(c)",
+        "marks": 2
+      }
+    ],
+    "marks": 4,
+    "qp": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2025-Oct-Nov/9618_w25_qp_13.pdf",
+      "filename": "9618_w25_qp_13.pdf",
+      "sha256": "9b5d7e33de24afb406ddc00c253ebf37b4240e6b21f3c1a7f6f1eb82aba78cc6",
+      "pages": 16,
+      "textChars": 5894
+    },
+    "ms": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2025-Oct-Nov/9618_w25_ms_13.pdf",
+      "filename": "9618_w25_ms_13.pdf",
+      "sha256": "d4bf99da2ca289430a18709d483892df85646dc5a90d5fb6697eb6d13c10481b",
+      "pages": 12,
+      "textChars": 25718
+    },
+    "qpPages": [
+      2
+    ],
+    "msPages": [
+      4
+    ],
+    "context": "文件名公共情境及两子问",
+    "reason": "编码过程与字符覆盖范围的不同command words",
+    "status": "已核验：QP+对应MS全文相关段；全部登记页PDF原页面已视觉复核",
+    "qualification": "原题适配当前AS范围；保持该题官方评分上限与替代答案，不引入通用M1/A1/FT。",
+    "syllabusMapping": [
+      "S1.07"
+    ],
+    "inserts": [],
+    "prerequisite": "002",
+    "mainAbility": "编码过程与字符覆盖范围的不同command words",
+    "lessonScopeIds": [
+      "S1.07"
+    ],
+    "supportingKnowledge": []
+  },
+  {
+    "id": "E007",
+    "lesson": 5,
+    "syllabusCode": "9618",
+    "year": 2023,
+    "series": "Oct/Nov",
+    "component": 12,
+    "stem": "w23_12",
+    "parts": [
+      {
+        "part": "6(c)",
+        "marks": 2
+      }
+    ],
+    "marks": 2,
+    "qp": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2023-Oct-Nov/9618_w23_qp_12.pdf",
+      "filename": "9618_w23_qp_12.pdf",
+      "sha256": "e1e0c98c7049d459406e35c040cb680b8cda7fa61a31ce2de1d8d34d6e5fc7b7",
+      "pages": 16,
+      "textChars": 53951
+    },
+    "ms": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2023-Oct-Nov/9618_w23_ms_12.pdf",
+      "filename": "9618_w23_ms_12.pdf",
+      "sha256": "dbbe4dacd4a75ba1bf70440870c449e2c35cbc25c8708a429ed67cf6ee89cc78",
+      "pages": 11,
+      "textChars": 28273
+    },
+    "qpPages": [
+      9
+    ],
+    "msPages": [
+      7
+    ],
+    "context": "完整像素尺寸、10-bit、MiB条件",
+    "reason": "展示bits到bytes到MiB的过程",
+    "status": "已核验：QP+对应MS全文相关段；全部登记页PDF原页面已视觉复核",
+    "qualification": "原题适配当前AS范围；保持该题官方评分上限与替代答案，不引入通用M1/A1/FT。",
+    "syllabusMapping": [
+      "S1.08"
+    ],
+    "inserts": [],
+    "prerequisite": "001、002",
+    "mainAbility": "展示bits到bytes到MiB的过程",
+    "lessonScopeIds": [
+      "S1.08",
+      "S1.09"
+    ],
+    "supportingKnowledge": [
+      "S1.01"
+    ]
+  },
+  {
+    "id": "E008",
+    "lesson": 5,
+    "syllabusCode": "9618",
+    "year": 2024,
+    "series": "May/June",
+    "component": 12,
+    "stem": "s24_12",
+    "parts": [
+      {
+        "part": "2(d)(i)",
+        "marks": 3
+      },
+      {
+        "part": "2(d)(ii)",
+        "marks": 2
+      }
+    ],
+    "marks": 5,
+    "qp": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2024-May-June/9618_s24_qp_12.pdf",
+      "filename": "9618_s24_qp_12.pdf",
+      "sha256": "871b047e73c2ce0dd3c2dd1c47b7d4e176c886e61af08ffe12c6b9734285d3de",
+      "pages": 16,
+      "textChars": 49193
+    },
+    "ms": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2024-May-June/9618_s24_ms_12.pdf",
+      "filename": "9618_s24_ms_12.pdf",
+      "sha256": "27327b88c438432d5af97553d3ac09dcfe42f0a35c8d2556fdc9bd90959c7ea0",
+      "pages": 11,
+      "textChars": 43831
+    },
+    "qpPages": [
+      3,
+      4
+    ],
+    "msPages": [
+      4,
+      5
+    ],
+    "context": "保留VR图像语境以及bitmap/vector两题",
+    "reason": "数值计算之外增加两种表示的结构解释",
+    "status": "已核验：QP+对应MS全文相关段；全部登记页PDF原页面已视觉复核",
+    "qualification": "原题适配当前AS范围；保持该题官方评分上限与替代答案，不引入通用M1/A1/FT。",
+    "syllabusMapping": [
+      "S1.08",
+      "S1.09"
+    ],
+    "inserts": [],
+    "prerequisite": "001、002",
+    "mainAbility": "数值计算之外增加两种表示的结构解释",
+    "lessonScopeIds": [
+      "S1.08",
+      "S1.09"
+    ],
+    "supportingKnowledge": []
+  },
+  {
+    "id": "E009",
+    "lesson": 6,
+    "syllabusCode": "9618",
+    "year": 2023,
+    "series": "Oct/Nov",
+    "component": 12,
+    "stem": "w23_12",
+    "parts": [
+      {
+        "part": "6(b)",
+        "marks": 3
+      }
+    ],
+    "marks": 3,
+    "qp": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2023-Oct-Nov/9618_w23_qp_12.pdf",
+      "filename": "9618_w23_qp_12.pdf",
+      "sha256": "e1e0c98c7049d459406e35c040cb680b8cda7fa61a31ce2de1d8d34d6e5fc7b7",
+      "pages": 16,
+      "textChars": 53951
+    },
+    "ms": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2023-Oct-Nov/9618_w23_ms_12.pdf",
+      "filename": "9618_w23_ms_12.pdf",
+      "sha256": "dbbe4dacd4a75ba1bf70440870c449e2c35cbc25c8708a429ed67cf6ee89cc78",
+      "pages": 11,
+      "textChars": 28273
+    },
+    "qpPages": [
+      9
+    ],
+    "msPages": [
+      7
+    ],
+    "context": "完整sampling resolution条件",
+    "reason": "量化精度因果链",
+    "status": "已核验：QP+对应MS全文相关段；全部登记页PDF原页面已视觉复核",
+    "qualification": "原题适配当前AS范围；保持该题官方评分上限与替代答案，不引入通用M1/A1/FT。",
+    "syllabusMapping": [
+      "S1.10"
+    ],
+    "inserts": [],
+    "prerequisite": "001、002、005",
+    "mainAbility": "量化精度因果链",
+    "lessonScopeIds": [
+      "S1.10",
+      "S1.11"
+    ],
+    "supportingKnowledge": []
+  },
+  {
+    "id": "E010",
+    "lesson": 6,
+    "syllabusCode": "9618",
+    "year": 2024,
+    "series": "May/June",
+    "component": 13,
+    "stem": "s24_13",
+    "parts": [
+      {
+        "part": "2(b)(ii)",
+        "marks": 2
+      }
+    ],
+    "marks": 2,
+    "qp": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2024-May-June/9618_s24_qp_13.pdf",
+      "filename": "9618_s24_qp_13.pdf",
+      "sha256": "79f3dbe24332c41b155e25ba48d3a8cb75399e98d5bb9cdf9a1e71de0f4645bd",
+      "pages": 16,
+      "textChars": 6714
+    },
+    "ms": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2024-May-June/9618_s24_ms_13.pdf",
+      "filename": "9618_s24_ms_13.pdf",
+      "sha256": "8d9b06f8ba8f9fba12b8cd725e39c5bda93fe14c1ba6c89912de801671762179",
+      "pages": 9,
+      "textChars": 49958
+    },
+    "qpPages": [
+      3
+    ],
+    "msPages": [
+      4
+    ],
+    "context": "保留photograph为bitmap以及RLE小问",
+    "reason": "按连续相同像素解释无损编码",
+    "status": "已核验：QP+对应MS全文相关段；全部登记页PDF原页面已视觉复核",
+    "qualification": "原题适配当前AS范围；保持该题官方评分上限与替代答案，不引入通用M1/A1/FT。",
+    "syllabusMapping": [
+      "S1.11"
+    ],
+    "inserts": [],
+    "prerequisite": "001、002、005",
+    "mainAbility": "按连续相同像素解释无损编码",
+    "lessonScopeIds": [
+      "S1.10",
+      "S1.11"
+    ],
+    "supportingKnowledge": []
+  },
+  {
+    "id": "E011",
+    "lesson": 7,
+    "syllabusCode": "9618",
+    "year": 2024,
+    "series": "May/June",
+    "component": 11,
+    "stem": "s24_11",
+    "parts": [
+      {
+        "part": "5(a)",
+        "marks": 4
+      }
+    ],
+    "marks": 4,
+    "qp": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2024-May-June/9618_s24_qp_11.pdf",
+      "filename": "9618_s24_qp_11.pdf",
+      "sha256": "2e39e6c2ee1e65d621df71b4b7fbe41a16f1e4ed8e252fb1612a6d14b13de063",
+      "pages": 16,
+      "textChars": 59276
+    },
+    "ms": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2024-May-June/9618_s24_ms_11.pdf",
+      "filename": "9618_s24_ms_11.pdf",
+      "sha256": "b53a8ca0d83d790364125ad0b74cef676204133d540c9c89f38404dd4d1fca69",
+      "pages": 8,
+      "textChars": 39821
+    },
+    "qpPages": [
+      11
+    ],
+    "msPages": [
+      6
+    ],
+    "context": "银行app客户端/服务器完整情境",
+    "reason": "两个角色各用场景展开，避免只背定义",
+    "status": "已核验：QP+对应MS全文相关段；全部登记页PDF原页面已视觉复核",
+    "qualification": "原题适配当前AS范围；保持该题官方评分上限与替代答案，不引入通用M1/A1/FT。",
+    "syllabusMapping": [
+      "S2.02"
+    ],
+    "inserts": [],
+    "prerequisite": "课内LAN/WAN与模型",
+    "mainAbility": "两个角色各用场景展开，避免只背定义",
+    "lessonScopeIds": [
+      "S2.01",
+      "S2.02",
+      "S2.03"
+    ],
+    "supportingKnowledge": []
+  },
+  {
+    "id": "E012",
+    "lesson": 7,
+    "syllabusCode": "9618",
+    "year": 2024,
+    "series": "May/June",
+    "component": 12,
+    "stem": "s24_12",
+    "parts": [
+      {
+        "part": "3(b)",
+        "marks": 4
+      }
+    ],
+    "marks": 4,
+    "qp": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2024-May-June/9618_s24_qp_12.pdf",
+      "filename": "9618_s24_qp_12.pdf",
+      "sha256": "871b047e73c2ce0dd3c2dd1c47b7d4e176c886e61af08ffe12c6b9734285d3de",
+      "pages": 16,
+      "textChars": 49193
+    },
+    "ms": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2024-May-June/9618_s24_ms_12.pdf",
+      "filename": "9618_s24_ms_12.pdf",
+      "sha256": "27327b88c438432d5af97553d3ac09dcfe42f0a35c8d2556fdc9bd90959c7ea0",
+      "pages": 11,
+      "textChars": 43831
+    },
+    "qpPages": [
+      5,
+      6
+    ],
+    "msPages": [
+      6
+    ],
+    "context": "扫描阅卷、评分员、thin client的公共语境",
+    "reason": "每个特征必须解释对阅卷工作的用处",
+    "status": "已核验：QP+对应MS全文相关段；全部登记页PDF原页面已视觉复核",
+    "qualification": "原题适配当前AS范围；保持该题官方评分上限与替代答案，不引入通用M1/A1/FT。",
+    "syllabusMapping": [
+      "S2.03"
+    ],
+    "inserts": [],
+    "prerequisite": "课内LAN/WAN与模型",
+    "mainAbility": "每个特征必须解释对阅卷工作的用处",
+    "lessonScopeIds": [
+      "S2.01",
+      "S2.02",
+      "S2.03"
+    ],
+    "supportingKnowledge": []
+  },
+  {
+    "id": "E013",
+    "lesson": 8,
+    "syllabusCode": "9618",
+    "year": 2024,
+    "series": "May/June",
+    "component": 13,
+    "stem": "s24_13",
+    "parts": [
+      {
+        "part": "5(b)",
+        "marks": 2
+      }
+    ],
+    "marks": 2,
+    "qp": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2024-May-June/9618_s24_qp_13.pdf",
+      "filename": "9618_s24_qp_13.pdf",
+      "sha256": "79f3dbe24332c41b155e25ba48d3a8cb75399e98d5bb9cdf9a1e71de0f4645bd",
+      "pages": 16,
+      "textChars": 6714
+    },
+    "ms": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2024-May-June/9618_s24_ms_13.pdf",
+      "filename": "9618_s24_ms_13.pdf",
+      "sha256": "8d9b06f8ba8f9fba12b8cd725e39c5bda93fe14c1ba6c89912de801671762179",
+      "pages": 9,
+      "textChars": 49958
+    },
+    "qpPages": [
+      10
+    ],
+    "msPages": [
+      6
+    ],
+    "context": "20设备LAN及star的公共情境",
+    "reason": "以数据路径解释星形；Practice另保留bus/mesh故障判断",
+    "status": "已核验：QP+对应MS全文相关段；全部登记页PDF原页面已视觉复核",
+    "qualification": "原题适配当前AS范围；保持该题官方评分上限与替代答案，不引入通用M1/A1/FT。",
+    "syllabusMapping": [
+      "S2.04",
+      "S2.05"
+    ],
+    "inserts": [],
+    "prerequisite": "007",
+    "mainAbility": "以数据路径解释星形；Practice另保留bus/mesh故障判断",
+    "lessonScopeIds": [
+      "S2.04",
+      "S2.05"
+    ],
+    "supportingKnowledge": []
+  },
+  {
+    "id": "E014",
+    "lesson": 9,
+    "syllabusCode": "9618",
+    "year": 2025,
+    "series": "Oct/Nov",
+    "component": 12,
+    "stem": "w25_12",
+    "parts": [
+      {
+        "part": "8(a)(i)",
+        "marks": 2
+      },
+      {
+        "part": "8(a)(ii)",
+        "marks": 2
+      }
+    ],
+    "marks": 4,
+    "qp": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2025-Oct-Nov/9618_w25_qp_12.pdf",
+      "filename": "9618_w25_qp_12.pdf",
+      "sha256": "ea65e75a4182f991cb2117827ee5c6734365b2c5e78686c6d6ef1e00d48fe65b",
+      "pages": 16,
+      "textChars": 5900
+    },
+    "ms": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2025-Oct-Nov/9618_w25_ms_12.pdf",
+      "filename": "9618_w25_ms_12.pdf",
+      "sha256": "4fd455f74ae4abf71a8796095c912a06c77239d6d5a6679ce05ceff1032e7dd8",
+      "pages": 11,
+      "textChars": 27947
+    },
+    "qpPages": [
+      13
+    ],
+    "msPages": [
+      10
+    ],
+    "context": "餐厅使用cloud完整公共语境",
+    "reason": "同一方案分别给出收益与限制",
+    "status": "已核验：QP+对应MS全文相关段；全部登记页PDF原页面已视觉复核",
+    "qualification": "原题适配当前AS范围；保持该题官方评分上限与替代答案，不引入通用M1/A1/FT。",
+    "syllabusMapping": [
+      "S2.06"
+    ],
+    "inserts": [],
+    "prerequisite": "007；安全概念另给条件",
+    "mainAbility": "同一方案分别给出收益与限制",
+    "lessonScopeIds": [
+      "S2.06"
+    ],
+    "supportingKnowledge": []
+  },
+  {
+    "id": "E015",
+    "lesson": 10,
+    "syllabusCode": "9618",
+    "year": 2024,
+    "series": "Oct/Nov",
+    "component": 13,
+    "stem": "w24_13",
+    "parts": [
+      {
+        "part": "9(b)",
+        "marks": 4
+      }
+    ],
+    "marks": 4,
+    "qp": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2024-Oct-Nov/9618_w24_qp_13.pdf",
+      "filename": "9618_w24_qp_13.pdf",
+      "sha256": "1633471ff692292618910635b391aef69624188ec30b72425738f8a46354cc04",
+      "pages": 20,
+      "textChars": 8351
+    },
+    "ms": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2024-Oct-Nov/9618_w24_ms_13.pdf",
+      "filename": "9618_w24_ms_13.pdf",
+      "sha256": "d3ee5286285e4611838cb9922a4fd9706a1a4e733ece048f24f89ee5cb48ec37",
+      "pages": 9,
+      "textChars": 21982
+    },
+    "qpPages": [
+      16
+    ],
+    "msPages": [
+      8
+    ],
+    "context": "LAN连WAN和排除copper条件",
+    "reason": "媒介名称必须配信号传输方式",
+    "status": "已核验：QP+对应MS全文相关段；全部登记页PDF原页面已视觉复核",
+    "qualification": "原题适配当前AS范围；保持该题官方评分上限与替代答案，不引入通用M1/A1/FT。",
+    "syllabusMapping": [
+      "S2.08"
+    ],
+    "inserts": [],
+    "prerequisite": "007、008",
+    "mainAbility": "媒介名称必须配信号传输方式",
+    "lessonScopeIds": [
+      "S2.07",
+      "S2.08"
+    ],
+    "supportingKnowledge": []
+  },
+  {
+    "id": "E016",
+    "lesson": 11,
+    "syllabusCode": "9618",
+    "year": 2023,
+    "series": "May/June",
+    "component": 12,
+    "stem": "s23_12",
+    "parts": [
+      {
+        "part": "1(d)",
+        "marks": 3
+      }
+    ],
+    "marks": 3,
+    "qp": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2023-May-June/9618_s23_qp_12.pdf",
+      "filename": "9618_s23_qp_12.pdf",
+      "sha256": "2ce09e20a3bdc23506591fd65a99df636065d1a16a9939d4ad382660325a7d89",
+      "pages": 16,
+      "textChars": 41845
+    },
+    "ms": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2023-May-June/9618_s23_ms_12.pdf",
+      "filename": "9618_s23_ms_12.pdf",
+      "sha256": "bc0db739175ead33ca2acb9af7fc46cdc2f8153a05ac867b943ccb1ad09f5a2c",
+      "pages": 10,
+      "textChars": 54973
+    },
+    "qpPages": [
+      2,
+      3
+    ],
+    "msPages": [
+      3
+    ],
+    "context": "公司LAN及Ethernet子问",
+    "reason": "Ethernet含协议/接入/帧，不与CSMA等同",
+    "status": "已核验：QP+对应MS全文相关段；全部登记页PDF原页面已视觉复核",
+    "qualification": "原题适配当前AS范围；保持该题官方评分上限与替代答案，不引入通用M1/A1/FT。",
+    "syllabusMapping": [
+      "S2.11"
+    ],
+    "inserts": [],
+    "prerequisite": "007–010",
+    "mainAbility": "Ethernet含协议/接入/帧，不与CSMA等同",
+    "lessonScopeIds": [
+      "S2.09",
+      "S2.10",
+      "S2.11"
+    ],
+    "supportingKnowledge": []
+  },
+  {
+    "id": "E017",
+    "lesson": 11,
+    "syllabusCode": "9618",
+    "year": 2023,
+    "series": "Oct/Nov",
+    "component": 12,
+    "stem": "w23_12",
+    "parts": [
+      {
+        "part": "7(c)",
+        "marks": 3
+      }
+    ],
+    "marks": 3,
+    "qp": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2023-Oct-Nov/9618_w23_qp_12.pdf",
+      "filename": "9618_w23_qp_12.pdf",
+      "sha256": "e1e0c98c7049d459406e35c040cb680b8cda7fa61a31ce2de1d8d34d6e5fc7b7",
+      "pages": 16,
+      "textChars": 53951
+    },
+    "ms": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2023-Oct-Nov/9618_w23_ms_12.pdf",
+      "filename": "9618_w23_ms_12.pdf",
+      "sha256": "dbbe4dacd4a75ba1bf70440870c449e2c35cbc25c8708a429ed67cf6ee89cc78",
+      "pages": 11,
+      "textChars": 28273
+    },
+    "qpPages": [
+      10,
+      11
+    ],
+    "msPages": [
+      8
+    ],
+    "context": "CSMA/CD网络公共题干",
+    "reason": "按阶段描述冲突处理，补足前题不同要求",
+    "status": "已核验：QP+对应MS全文相关段；全部登记页PDF原页面已视觉复核",
+    "qualification": "原题适配当前AS范围；保持该题官方评分上限与替代答案，不引入通用M1/A1/FT。",
+    "syllabusMapping": [
+      "S2.11"
+    ],
+    "inserts": [],
+    "prerequisite": "007–010",
+    "mainAbility": "按阶段描述冲突处理，补足前题不同要求",
+    "lessonScopeIds": [
+      "S2.09",
+      "S2.10",
+      "S2.11"
+    ],
+    "supportingKnowledge": []
+  },
+  {
+    "id": "E018",
+    "lesson": 12,
+    "syllabusCode": "9618",
+    "year": 2024,
+    "series": "Oct/Nov",
+    "component": 13,
+    "stem": "w24_13",
+    "parts": [
+      {
+        "part": "9(c)",
+        "marks": 4
+      }
+    ],
+    "marks": 4,
+    "qp": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2024-Oct-Nov/9618_w24_qp_13.pdf",
+      "filename": "9618_w24_qp_13.pdf",
+      "sha256": "1633471ff692292618910635b391aef69624188ec30b72425738f8a46354cc04",
+      "pages": 20,
+      "textChars": 8351
+    },
+    "ms": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2024-Oct-Nov/9618_w24_ms_13.pdf",
+      "filename": "9618_w24_ms_13.pdf",
+      "sha256": "d3ee5286285e4611838cb9922a4fd9706a1a4e733ece048f24f89ee5cb48ec37",
+      "pages": 9,
+      "textChars": 21982
+    },
+    "qpPages": [
+      16,
+      17
+    ],
+    "msPages": [
+      8
+    ],
+    "context": "真实时间video conference语境",
+    "reason": "串起连续传输、媒体服务器、buffer、播放",
+    "status": "已核验：QP+对应MS全文相关段；全部登记页PDF原页面已视觉复核",
+    "qualification": "原题适配当前AS范围；保持该题官方评分上限与替代答案，不引入通用M1/A1/FT。",
+    "syllabusMapping": [
+      "S2.12"
+    ],
+    "inserts": [],
+    "prerequisite": "001、010、011",
+    "mainAbility": "串起连续传输、媒体服务器、buffer、播放",
+    "lessonScopeIds": [
+      "S2.12"
+    ],
+    "supportingKnowledge": [
+      "S1.01"
+    ]
+  },
+  {
+    "id": "E019",
+    "lesson": 13,
+    "syllabusCode": "9618",
+    "year": 2024,
+    "series": "May/June",
+    "component": 12,
+    "stem": "s24_12",
+    "parts": [
+      {
+        "part": "3(c)(ii)",
+        "marks": 2
+      }
+    ],
+    "marks": 2,
+    "qp": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2024-May-June/9618_s24_qp_12.pdf",
+      "filename": "9618_s24_qp_12.pdf",
+      "sha256": "871b047e73c2ce0dd3c2dd1c47b7d4e176c886e61af08ffe12c6b9734285d3de",
+      "pages": 16,
+      "textChars": 49193
+    },
+    "ms": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2024-May-June/9618_s24_ms_12.pdf",
+      "filename": "9618_s24_ms_12.pdf",
+      "sha256": "27327b88c438432d5af97553d3ac09dcfe42f0a35c8d2556fdc9bd90959c7ea0",
+      "pages": 11,
+      "textChars": 43831
+    },
+    "qpPages": [
+      5,
+      6
+    ],
+    "msPages": [
+      6
+    ],
+    "context": "保留LAN通过router连internet及PSTN语境",
+    "reason": "PSTN的公共交换基础设施；Practice完成双向modem",
+    "status": "已核验：QP+对应MS全文相关段；全部登记页PDF原页面已视觉复核",
+    "qualification": "原题适配当前AS范围；保持该题官方评分上限与替代答案，不引入通用M1/A1/FT。",
+    "syllabusMapping": [
+      "S2.14"
+    ],
+    "inserts": [],
+    "prerequisite": "011、012",
+    "mainAbility": "PSTN的公共交换基础设施；Practice完成双向modem",
+    "lessonScopeIds": [
+      "S2.13",
+      "S2.14"
+    ],
+    "supportingKnowledge": []
+  },
+  {
+    "id": "E020",
+    "lesson": 14,
+    "syllabusCode": "9618",
+    "year": 2023,
+    "series": "Oct/Nov",
+    "component": 12,
+    "stem": "w23_12",
+    "parts": [
+      {
+        "part": "7(a)",
+        "marks": 2
+      },
+      {
+        "part": "7(b)(iii)",
+        "marks": 4
+      },
+      {
+        "part": "7(d)",
+        "marks": 4
+      }
+    ],
+    "marks": 10,
+    "qp": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2023-Oct-Nov/9618_w23_qp_12.pdf",
+      "filename": "9618_w23_qp_12.pdf",
+      "sha256": "e1e0c98c7049d459406e35c040cb680b8cda7fa61a31ce2de1d8d34d6e5fc7b7",
+      "pages": 16,
+      "textChars": 53951
+    },
+    "ms": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2023-Oct-Nov/9618_w23_ms_12.pdf",
+      "filename": "9618_w23_ms_12.pdf",
+      "sha256": "dbbe4dacd4a75ba1bf70440870c449e2c35cbc25c8708a429ed67cf6ee89cc78",
+      "pages": 11,
+      "textChars": 28273
+    },
+    "qpPages": [
+      10,
+      11,
+      12
+    ],
+    "msPages": [
+      7,
+      8,
+      9
+    ],
+    "context": "IPv4/IPv6和LAN完整公共语境、分类表所有列",
+    "reason": "地址表示、subnet用途、static/dynamic与public/private两轴",
+    "status": "已核验：QP+对应MS全文相关段；全部登记页PDF原页面已视觉复核",
+    "qualification": "原题适配当前AS范围；保持该题官方评分上限与替代答案，不引入通用M1/A1/FT。",
+    "syllabusMapping": [
+      "S2.15"
+    ],
+    "inserts": [],
+    "prerequisite": "002、011、013",
+    "mainAbility": "地址表示、subnet用途、static/dynamic与public/private两轴",
+    "lessonScopeIds": [
+      "S2.15",
+      "S2.16"
+    ],
+    "supportingKnowledge": []
+  },
+  {
+    "id": "E021",
+    "lesson": 15,
+    "syllabusCode": "9618",
+    "year": 2023,
+    "series": "Oct/Nov",
+    "component": 12,
+    "stem": "w23_12",
+    "parts": [
+      {
+        "part": "1(c)(i)",
+        "marks": 2
+      },
+      {
+        "part": "1(c)(ii)",
+        "marks": 1
+      }
+    ],
+    "marks": 3,
+    "qp": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2023-Oct-Nov/9618_w23_qp_12.pdf",
+      "filename": "9618_w23_qp_12.pdf",
+      "sha256": "e1e0c98c7049d459406e35c040cb680b8cda7fa61a31ce2de1d8d34d6e5fc7b7",
+      "pages": 16,
+      "textChars": 53951
+    },
+    "ms": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2023-Oct-Nov/9618_w23_ms_12.pdf",
+      "filename": "9618_w23_ms_12.pdf",
+      "sha256": "dbbe4dacd4a75ba1bf70440870c449e2c35cbc25c8708a429ed67cf6ee89cc78",
+      "pages": 11,
+      "textChars": 28273
+    },
+    "qpPages": [
+      2
+    ],
+    "msPages": [
+      3
+    ],
+    "context": "巧克力传送带全部公共条件",
+    "reason": "用专用任务说明embedded并识别限制",
+    "status": "已核验：QP+对应MS全文相关段；全部登记页PDF原页面已视觉复核",
+    "qualification": "原题适配当前AS范围；保持该题官方评分上限与替代答案，不引入通用M1/A1/FT。",
+    "syllabusMapping": [
+      "S3.02"
+    ],
+    "inserts": [],
+    "prerequisite": "硬件基础；001",
+    "mainAbility": "用专用任务说明embedded并识别限制",
+    "lessonScopeIds": [
+      "S3.01",
+      "S3.02"
+    ],
+    "supportingKnowledge": []
+  },
+  {
+    "id": "E022",
+    "lesson": 16,
+    "syllabusCode": "9618",
+    "year": 2024,
+    "series": "May/June",
+    "component": 12,
+    "stem": "s24_12",
+    "parts": [
+      {
+        "part": "2(a)",
+        "marks": 4
+      }
+    ],
+    "marks": 4,
+    "qp": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2024-May-June/9618_s24_qp_12.pdf",
+      "filename": "9618_s24_qp_12.pdf",
+      "sha256": "871b047e73c2ce0dd3c2dd1c47b7d4e176c886e61af08ffe12c6b9734285d3de",
+      "pages": 16,
+      "textChars": 49193
+    },
+    "ms": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2024-May-June/9618_s24_ms_12.pdf",
+      "filename": "9618_s24_ms_12.pdf",
+      "sha256": "27327b88c438432d5af97553d3ac09dcfe42f0a35c8d2556fdc9bd90959c7ea0",
+      "pages": 11,
+      "textChars": 43831
+    },
+    "qpPages": [
+      3
+    ],
+    "msPages": [
+      4
+    ],
+    "context": "VR headset完整题干",
+    "reason": "多个硬件步骤组成一个工作过程",
+    "status": "已核验：QP+对应MS全文相关段；全部登记页PDF原页面已视觉复核",
+    "qualification": "原题适配当前AS范围；保持该题官方评分上限与替代答案，不引入通用M1/A1/FT。",
+    "syllabusMapping": [
+      "S3.03"
+    ],
+    "inserts": [],
+    "prerequisite": "005、006、015",
+    "mainAbility": "多个硬件步骤组成一个工作过程",
+    "lessonScopeIds": [
+      "S3.03"
+    ],
+    "supportingKnowledge": []
+  },
+  {
+    "id": "E023",
+    "lesson": 16,
+    "syllabusCode": "9618",
+    "year": 2025,
+    "series": "Oct/Nov",
+    "component": 12,
+    "stem": "w25_12",
+    "parts": [
+      {
+        "part": "8(b)(i)",
+        "marks": 4
+      }
+    ],
+    "marks": 4,
+    "qp": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2025-Oct-Nov/9618_w25_qp_12.pdf",
+      "filename": "9618_w25_qp_12.pdf",
+      "sha256": "ea65e75a4182f991cb2117827ee5c6734365b2c5e78686c6d6ef1e00d48fe65b",
+      "pages": 16,
+      "textChars": 5900
+    },
+    "ms": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2025-Oct-Nov/9618_w25_ms_12.pdf",
+      "filename": "9618_w25_ms_12.pdf",
+      "sha256": "4fd455f74ae4abf71a8796095c912a06c77239d6d5a6679ce05ceff1032e7dd8",
+      "pages": 11,
+      "textChars": 27947
+    },
+    "qpPages": [
+      13
+    ],
+    "msPages": [
+      10
+    ],
+    "context": "餐厅菜单touchscreen公共语境",
+    "reason": "触摸检测与坐标/菜单处理两个评分组",
+    "status": "已核验：QP+对应MS全文相关段；全部登记页PDF原页面已视觉复核",
+    "qualification": "原题适配当前AS范围；保持该题官方评分上限与替代答案，不引入通用M1/A1/FT。",
+    "syllabusMapping": [
+      "S3.03"
+    ],
+    "inserts": [],
+    "prerequisite": "005、006、015",
+    "mainAbility": "触摸检测与坐标/菜单处理两个评分组",
+    "lessonScopeIds": [
+      "S3.03"
+    ],
+    "supportingKnowledge": []
+  },
+  {
+    "id": "E024",
+    "lesson": 17,
+    "syllabusCode": "9618",
+    "year": 2024,
+    "series": "Oct/Nov",
+    "component": 13,
+    "stem": "w24_13",
+    "parts": [
+      {
+        "part": "2(a)",
+        "marks": 2
+      },
+      {
+        "part": "2(b)",
+        "marks": 4
+      }
+    ],
+    "marks": 6,
+    "qp": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2024-Oct-Nov/9618_w24_qp_13.pdf",
+      "filename": "9618_w24_qp_13.pdf",
+      "sha256": "1633471ff692292618910635b391aef69624188ec30b72425738f8a46354cc04",
+      "pages": 20,
+      "textChars": 8351
+    },
+    "ms": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2024-Oct-Nov/9618_w24_ms_13.pdf",
+      "filename": "9618_w24_ms_13.pdf",
+      "sha256": "d3ee5286285e4611838cb9922a4fd9706a1a4e733ece048f24f89ee5cb48ec37",
+      "pages": 9,
+      "textChars": 21982
+    },
+    "qpPages": [
+      3
+    ],
+    "msPages": [
+      3
+    ],
+    "context": "DRAM buffer及磁盘传输全部情境",
+    "reason": "易混存储技术对比和快慢设备间的数据流",
+    "status": "已核验：QP+对应MS全文相关段；全部登记页PDF原页面已视觉复核",
+    "qualification": "原题适配当前AS范围；保持该题官方评分上限与替代答案，不引入通用M1/A1/FT。",
+    "syllabusMapping": [
+      "S3.04",
+      "S3.06"
+    ],
+    "inserts": [],
+    "prerequisite": "015、016",
+    "mainAbility": "易混存储技术对比和快慢设备间的数据流",
+    "lessonScopeIds": [
+      "S3.04",
+      "S3.05",
+      "S3.06",
+      "S3.07"
+    ],
+    "supportingKnowledge": []
+  },
+  {
+    "id": "E025",
+    "lesson": 18,
+    "syllabusCode": "9618",
+    "year": 2024,
+    "series": "Oct/Nov",
+    "component": 12,
+    "stem": "w24_12",
+    "parts": [
+      {
+        "part": "9(a)",
+        "marks": 2
+      },
+      {
+        "part": "9(b)",
+        "marks": 2
+      }
+    ],
+    "marks": 4,
+    "qp": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2024-Oct-Nov/9618_w24_qp_12.pdf",
+      "filename": "9618_w24_qp_12.pdf",
+      "sha256": "3d754f83188ee139c7ffd082496a3d0591e73714ec8787dc2b961f5aa2c744c6",
+      "pages": 16,
+      "textChars": 6623
+    },
+    "ms": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2024-Oct-Nov/9618_w24_ms_12.pdf",
+      "filename": "9618_w24_ms_12.pdf",
+      "sha256": "42b8ef4e24bdd263e1a81b9ae34d332e77e34f7c7853ab411977410f1b43192e",
+      "pages": 10,
+      "textChars": 23576
+    },
+    "qpPages": [
+      16
+    ],
+    "msPages": [
+      10
+    ],
+    "context": "桥梁height/weight报警完整题干",
+    "reason": "传感器用途与monitoring理由；名称本身未给分",
+    "status": "已核验：QP+对应MS全文相关段；全部登记页PDF原页面已视觉复核",
+    "qualification": "(9b)识别monitoring本身无分，按实际理由评分。",
+    "syllabusMapping": [
+      "S3.08",
+      "S3.09"
+    ],
+    "inserts": [],
+    "prerequisite": "015、016",
+    "mainAbility": "传感器用途与monitoring理由；名称本身未给分",
+    "lessonScopeIds": [
+      "S3.08",
+      "S3.09"
+    ],
+    "supportingKnowledge": []
+  },
+  {
+    "id": "E026",
+    "lesson": 18,
+    "syllabusCode": "9618",
+    "year": 2025,
+    "series": "Oct/Nov",
+    "component": 12,
+    "stem": "w25_12",
+    "parts": [
+      {
+        "part": "11",
+        "marks": 3
+      }
+    ],
+    "marks": 3,
+    "qp": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2025-Oct-Nov/9618_w25_qp_12.pdf",
+      "filename": "9618_w25_qp_12.pdf",
+      "sha256": "ea65e75a4182f991cb2117827ee5c6734365b2c5e78686c6d6ef1e00d48fe65b",
+      "pages": 16,
+      "textChars": 5900
+    },
+    "ms": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2025-Oct-Nov/9618_w25_ms_12.pdf",
+      "filename": "9618_w25_ms_12.pdf",
+      "sha256": "4fd455f74ae4abf71a8796095c912a06c77239d6d5a6679ce05ceff1032e7dd8",
+      "pages": 11,
+      "textChars": 27947
+    },
+    "qpPages": [
+      16
+    ],
+    "msPages": [
+      11
+    ],
+    "context": "自动门完整输入、动作、反馈情境",
+    "reason": "与前题相反的控制情境，建立判断条件",
+    "status": "已核验：QP+对应MS全文相关段；全部登记页PDF原页面已视觉复核",
+    "qualification": "原题适配当前AS范围；保持该题官方评分上限与替代答案，不引入通用M1/A1/FT。",
+    "syllabusMapping": [
+      "S3.08",
+      "S3.09"
+    ],
+    "inserts": [],
+    "prerequisite": "015、016",
+    "mainAbility": "与前题相反的控制情境，建立判断条件",
+    "lessonScopeIds": [
+      "S3.08",
+      "S3.09"
+    ],
+    "supportingKnowledge": []
+  },
+  {
+    "id": "E027",
+    "lesson": 19,
+    "syllabusCode": "9618",
+    "year": 2024,
+    "series": "May/June",
+    "component": 12,
+    "stem": "s24_12",
+    "parts": [
+      {
+        "part": "1(a)",
+        "marks": 4
+      }
+    ],
+    "marks": 4,
+    "qp": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2024-May-June/9618_s24_qp_12.pdf",
+      "filename": "9618_s24_qp_12.pdf",
+      "sha256": "871b047e73c2ce0dd3c2dd1c47b7d4e176c886e61af08ffe12c6b9734285d3de",
+      "pages": 16,
+      "textChars": 49193
+    },
+    "ms": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2024-May-June/9618_s24_ms_12.pdf",
+      "filename": "9618_s24_ms_12.pdf",
+      "sha256": "27327b88c438432d5af97553d3ac09dcfe42f0a35c8d2556fdc9bd90959c7ea0",
+      "pages": 11,
+      "textChars": 43831
+    },
+    "qpPages": [
+      2
+    ],
+    "msPages": [
+      3
+    ],
+    "context": "四种门及每行描述完整表",
+    "reason": "区分OR/XOR与反相门，按行计分",
+    "status": "已核验：QP+对应MS全文相关段；全部登记页PDF原页面已视觉复核",
+    "qualification": "原题适配当前AS范围；保持该题官方评分上限与替代答案，不引入通用M1/A1/FT。",
+    "syllabusMapping": [
+      "S3.10"
+    ],
+    "inserts": [],
+    "prerequisite": "002",
+    "mainAbility": "区分OR/XOR与反相门，按行计分",
+    "lessonScopeIds": [
+      "S3.10"
+    ],
+    "supportingKnowledge": []
+  },
+  {
+    "id": "E028",
+    "lesson": 20,
+    "syllabusCode": "9618",
+    "year": 2023,
+    "series": "May/June",
+    "component": 12,
+    "stem": "s23_12",
+    "parts": [
+      {
+        "part": "6(a)",
+        "marks": 2
+      },
+      {
+        "part": "6(b)",
+        "marks": 2
+      }
+    ],
+    "marks": 4,
+    "qp": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2023-May-June/9618_s23_qp_12.pdf",
+      "filename": "9618_s23_qp_12.pdf",
+      "sha256": "2ce09e20a3bdc23506591fd65a99df636065d1a16a9939d4ad382660325a7d89",
+      "pages": 16,
+      "textChars": 41845
+    },
+    "ms": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2023-May-June/9618_s23_ms_12.pdf",
+      "filename": "9618_s23_ms_12.pdf",
+      "sha256": "bc0db739175ead33ca2acb9af7fc46cdc2f8153a05ac867b943ccb1ad09f5a2c",
+      "pages": 10,
+      "textChars": 54973
+    },
+    "qpPages": [
+      12
+    ],
+    "msPages": [
+      8
+    ],
+    "context": "表达式、全部输入列/行及输出列",
+    "reason": "expression→circuit与expression→truth table，两种方法",
+    "status": "已核验：QP+对应MS全文相关段；全部登记页PDF原页面已视觉复核",
+    "qualification": "原题适配当前AS范围；保持该题官方评分上限与替代答案，不引入通用M1/A1/FT。",
+    "syllabusMapping": [
+      "S3.10"
+    ],
+    "inserts": [],
+    "prerequisite": "019",
+    "mainAbility": "expression→circuit与expression→truth table，两种方法",
+    "lessonScopeIds": [
+      "S3.10"
+    ],
+    "supportingKnowledge": []
+  },
+  {
+    "id": "E029",
+    "lesson": 21,
+    "syllabusCode": "9618",
+    "year": 2024,
+    "series": "Oct/Nov",
+    "component": 12,
+    "stem": "w24_12",
+    "parts": [
+      {
+        "part": "3(a)",
+        "marks": 4
+      }
+    ],
+    "marks": 4,
+    "qp": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2024-Oct-Nov/9618_w24_qp_12.pdf",
+      "filename": "9618_w24_qp_12.pdf",
+      "sha256": "3d754f83188ee139c7ffd082496a3d0591e73714ec8787dc2b961f5aa2c744c6",
+      "pages": 16,
+      "textChars": 6623
+    },
+    "ms": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2024-Oct-Nov/9618_w24_ms_12.pdf",
+      "filename": "9618_w24_ms_12.pdf",
+      "sha256": "42b8ef4e24bdd263e1a81b9ae34d332e77e34f7c7853ab411977410f1b43192e",
+      "pages": 10,
+      "textChars": 23576
+    },
+    "qpPages": [
+      4
+    ],
+    "msPages": [
+      4
+    ],
+    "context": "全部register描述",
+    "reason": "已给寄存器名称，描述各自用途；Practice负责职责错误的解释",
+    "status": "已核验：QP+对应MS全文相关段；全部登记页PDF原页面已视觉复核",
+    "qualification": "原题适配当前AS范围；保持该题官方评分上限与替代答案，不引入通用M1/A1/FT。",
+    "syllabusMapping": [
+      "S4.02"
+    ],
+    "inserts": [],
+    "prerequisite": "015、017",
+    "mainAbility": "已给寄存器名称，描述各自用途；Practice负责职责错误的解释",
+    "lessonScopeIds": [
+      "S4.01",
+      "S4.02",
+      "S4.03"
+    ],
+    "supportingKnowledge": []
+  },
+  {
+    "id": "E030",
+    "lesson": 22,
+    "syllabusCode": "9618",
+    "year": 2024,
+    "series": "Oct/Nov",
+    "component": 12,
+    "stem": "w24_12",
+    "parts": [
+      {
+        "part": "3(b)",
+        "marks": 4
+      }
+    ],
+    "marks": 4,
+    "qp": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2024-Oct-Nov/9618_w24_qp_12.pdf",
+      "filename": "9618_w24_qp_12.pdf",
+      "sha256": "3d754f83188ee139c7ffd082496a3d0591e73714ec8787dc2b961f5aa2c744c6",
+      "pages": 16,
+      "textChars": 6623
+    },
+    "ms": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2024-Oct-Nov/9618_w24_ms_12.pdf",
+      "filename": "9618_w24_ms_12.pdf",
+      "sha256": "42b8ef4e24bdd263e1a81b9ae34d332e77e34f7c7853ab411977410f1b43192e",
+      "pages": 10,
+      "textChars": 23576
+    },
+    "qpPages": [
+      5
+    ],
+    "msPages": [
+      4
+    ],
+    "context": "2560×1600且带speaker的显示器条件",
+    "reason": "端口选择需同时回应视频与音频",
+    "status": "已核验：QP+对应MS全文相关段；全部登记页PDF原页面已视觉复核",
+    "qualification": "原题适配当前AS范围；保持该题官方评分上限与替代答案，不引入通用M1/A1/FT。",
+    "syllabusMapping": [
+      "S4.06"
+    ],
+    "inserts": [],
+    "prerequisite": "021",
+    "mainAbility": "端口选择需同时回应视频与音频",
+    "lessonScopeIds": [
+      "S4.04",
+      "S4.05",
+      "S4.06"
+    ],
+    "supportingKnowledge": []
+  },
+  {
+    "id": "E031",
+    "lesson": 22,
+    "syllabusCode": "9618",
+    "year": 2025,
+    "series": "Oct/Nov",
+    "component": 12,
+    "stem": "w25_12",
+    "parts": [
+      {
+        "part": "3(c)",
+        "marks": 4
+      }
+    ],
+    "marks": 4,
+    "qp": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2025-Oct-Nov/9618_w25_qp_12.pdf",
+      "filename": "9618_w25_qp_12.pdf",
+      "sha256": "ea65e75a4182f991cb2117827ee5c6734365b2c5e78686c6d6ef1e00d48fe65b",
+      "pages": 16,
+      "textChars": 5900
+    },
+    "ms": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2025-Oct-Nov/9618_w25_ms_12.pdf",
+      "filename": "9618_w25_ms_12.pdf",
+      "sha256": "4fd455f74ae4abf71a8796095c912a06c77239d6d5a6679ce05ceff1032e7dd8",
+      "pages": 11,
+      "textChars": 27947
+    },
+    "qpPages": [
+      5
+    ],
+    "msPages": [
+      5
+    ],
+    "context": "clock speed/cache公共情境",
+    "reason": "每种因素最多2分，不能四句全写同一因素",
+    "status": "已核验：QP+对应MS全文相关段；全部登记页PDF原页面已视觉复核",
+    "qualification": "原题适配当前AS范围；保持该题官方评分上限与替代答案，不引入通用M1/A1/FT。",
+    "syllabusMapping": [
+      "S4.05"
+    ],
+    "inserts": [],
+    "prerequisite": "021",
+    "mainAbility": "每种因素最多2分，不能四句全写同一因素",
+    "lessonScopeIds": [
+      "S4.04",
+      "S4.05",
+      "S4.06"
+    ],
+    "supportingKnowledge": []
+  },
+  {
+    "id": "E032",
+    "lesson": 23,
+    "syllabusCode": "9618",
+    "year": 2023,
+    "series": "May/June",
+    "component": 13,
+    "stem": "s23_13",
+    "parts": [
+      {
+        "part": "7(c)",
+        "marks": 2
+      }
+    ],
+    "marks": 2,
+    "qp": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2023-May-June/9618_s23_qp_13.pdf",
+      "filename": "9618_s23_qp_13.pdf",
+      "sha256": "b53ac2c6e575164af41410a1f4620a102aa2de42ed51fd9bfb586e24221f0d90",
+      "pages": 16,
+      "textChars": 59403
+    },
+    "ms": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2023-May-June/9618_s23_ms_13.pdf",
+      "filename": "9618_s23_ms_13.pdf",
+      "sha256": "e42d1cc9bdc1e41f9c08fa51f98bdc024d3a0b2984c98b50742f810a6c6762fd",
+      "pages": 11,
+      "textChars": 58375
+    },
+    "qpPages": [
+      13
+    ],
+    "msPages": [
+      11
+    ],
+    "context": "两条阶段描述和完整notation表",
+    "reason": "严格区分地址与地址所指内容",
+    "status": "已核验：QP+对应MS全文相关段；全部登记页PDF原页面已视觉复核",
+    "qualification": "原题适配当前AS范围；保持该题官方评分上限与替代答案，不引入通用M1/A1/FT。",
+    "syllabusMapping": [
+      "S4.07"
+    ],
+    "inserts": [],
+    "prerequisite": "021、022",
+    "mainAbility": "严格区分地址与地址所指内容",
+    "lessonScopeIds": [
+      "S4.07"
+    ],
+    "supportingKnowledge": []
+  },
+  {
+    "id": "E033",
+    "lesson": 23,
+    "syllabusCode": "9618",
+    "year": 2025,
+    "series": "Oct/Nov",
+    "component": 13,
+    "stem": "w25_13",
+    "parts": [
+      {
+        "part": "6(b)",
+        "marks": 4
+      }
+    ],
+    "marks": 4,
+    "qp": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2025-Oct-Nov/9618_w25_qp_13.pdf",
+      "filename": "9618_w25_qp_13.pdf",
+      "sha256": "9b5d7e33de24afb406ddc00c253ebf37b4240e6b21f3c1a7f6f1eb82aba78cc6",
+      "pages": 16,
+      "textChars": 5894
+    },
+    "ms": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2025-Oct-Nov/9618_w25_ms_13.pdf",
+      "filename": "9618_w25_ms_13.pdf",
+      "sha256": "d4bf99da2ca289430a18709d483892df85646dc5a90d5fb6697eb6d13c10481b",
+      "pages": 12,
+      "textChars": 25718
+    },
+    "qpPages": [
+      11
+    ],
+    "msPages": [
+      10
+    ],
+    "context": "Von Neumann及MAR/MDR小问完整题干",
+    "reason": "由符号转成连贯fetch机制说明",
+    "status": "已核验：QP+对应MS全文相关段；全部登记页PDF原页面已视觉复核",
+    "qualification": "原题适配当前AS范围；保持该题官方评分上限与替代答案，不引入通用M1/A1/FT。",
+    "syllabusMapping": [
+      "S4.07",
+      "S4.02"
+    ],
+    "inserts": [],
+    "prerequisite": "021、022",
+    "mainAbility": "由符号转成连贯fetch机制说明",
+    "lessonScopeIds": [
+      "S4.07"
+    ],
+    "supportingKnowledge": [
+      "S4.01"
+    ]
+  },
+  {
+    "id": "E034",
+    "lesson": 24,
+    "syllabusCode": "9618",
+    "year": 2025,
+    "series": "May/June",
+    "component": 12,
+    "stem": "s25_12",
+    "parts": [
+      {
+        "part": "1(c)",
+        "marks": 4
+      }
+    ],
+    "marks": 4,
+    "qp": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2025-May-June/9618_s25_qp_12.pdf",
+      "filename": "9618_s25_qp_12.pdf",
+      "sha256": "607722293452744ee7107b7365cac73664d51e0eb0f7487587d038e22467826e",
+      "pages": 16,
+      "textChars": 5900
+    },
+    "ms": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2025-May-June/9618_s25_ms_12.pdf",
+      "filename": "9618_s25_ms_12.pdf",
+      "sha256": "0b0c41c4a7930853aaaaa00729d4ffd3a3e971948800220344c6ae6a31ec957a",
+      "pages": 12,
+      "textChars": 25973
+    },
+    "qpPages": [
+      3
+    ],
+    "msPages": [
+      4
+    ],
+    "context": "interrupt完整小问及处理器公共条件",
+    "reason": "检测、保存、ISR和恢复的必要顺序",
+    "status": "已核验：QP+对应MS全文相关段；全部登记页PDF原页面已视觉复核",
+    "qualification": "原题适配当前AS范围；保持该题官方评分上限与替代答案，不引入通用M1/A1/FT。",
+    "syllabusMapping": [
+      "S4.08"
+    ],
+    "inserts": [],
+    "prerequisite": "021、023",
+    "mainAbility": "检测、保存、ISR和恢复的必要顺序",
+    "lessonScopeIds": [
+      "S4.08"
+    ],
+    "supportingKnowledge": [
+      "S4.02",
+      "S4.07"
+    ]
+  },
+  {
+    "id": "E035",
+    "lesson": 25,
+    "syllabusCode": "9618",
+    "year": 2023,
+    "series": "May/June",
+    "component": 12,
+    "stem": "s23_12",
+    "parts": [
+      {
+        "part": "3(a)",
+        "marks": 3
+      }
+    ],
+    "marks": 3,
+    "qp": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2023-May-June/9618_s23_qp_12.pdf",
+      "filename": "9618_s23_qp_12.pdf",
+      "sha256": "2ce09e20a3bdc23506591fd65a99df636065d1a16a9939d4ad382660325a7d89",
+      "pages": 16,
+      "textChars": 41845
+    },
+    "ms": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2023-May-June/9618_s23_ms_12.pdf",
+      "filename": "9618_s23_ms_12.pdf",
+      "sha256": "bc0db739175ead33ca2acb9af7fc46cdc2f8153a05ac867b943ccb1ad09f5a2c",
+      "pages": 10,
+      "textChars": 54973
+    },
+    "qpPages": [
+      8
+    ],
+    "msPages": [
+      6
+    ],
+    "context": "两遍汇编完整matching表",
+    "reason": "四项动作却总3分，揭示分组计分",
+    "status": "已核验：QP+对应MS全文相关段；全部登记页PDF原页面已视觉复核",
+    "qualification": "3分对应三组连线，其中一组要求两个动作均正确。",
+    "syllabusMapping": [
+      "S4.10"
+    ],
+    "inserts": [],
+    "prerequisite": "021；汇编标签课内",
+    "mainAbility": "四项动作却总3分，揭示分组计分",
+    "lessonScopeIds": [
+      "S4.09",
+      "S4.10",
+      "S4.15"
+    ],
+    "supportingKnowledge": []
+  },
+  {
+    "id": "E036",
+    "lesson": 26,
+    "syllabusCode": "9618",
+    "year": 2023,
+    "series": "Oct/Nov",
+    "component": 12,
+    "stem": "w23_12",
+    "parts": [
+      {
+        "part": "9(b)",
+        "marks": 4
+      }
+    ],
+    "marks": 4,
+    "qp": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2023-Oct-Nov/9618_w23_qp_12.pdf",
+      "filename": "9618_w23_qp_12.pdf",
+      "sha256": "e1e0c98c7049d459406e35c040cb680b8cda7fa61a31ce2de1d8d34d6e5fc7b7",
+      "pages": 16,
+      "textChars": 53951
+    },
+    "ms": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2023-Oct-Nov/9618_w23_ms_12.pdf",
+      "filename": "9618_w23_ms_12.pdf",
+      "sha256": "dbbe4dacd4a75ba1bf70440870c449e2c35cbc25c8708a429ed67cf6ee89cc78",
+      "pages": 11,
+      "textChars": 28273
+    },
+    "qpPages": [
+      14,
+      15
+    ],
+    "msPages": [
+      11
+    ],
+    "context": "整个instruction set、存储初值、ASCII码表、输入'1'、trace table",
+    "reason": "沿ACC、内存及输出追踪；不能只复制最后输出",
+    "status": "已核验：QP+对应MS全文相关段；全部登记页PDF原页面已视觉复核",
+    "qualification": "按MS阴影行组给分，不按trace行数计分。",
+    "syllabusMapping": [
+      "S4.11",
+      "S4.13",
+      "S4.14"
+    ],
+    "inserts": [],
+    "prerequisite": "023–025",
+    "mainAbility": "沿ACC、内存及输出追踪；不能只复制最后输出",
+    "lessonScopeIds": [
+      "S4.11",
+      "S4.12",
+      "S4.13",
+      "S4.14"
+    ],
+    "supportingKnowledge": [
+      "S4.02",
+      "S1.07"
+    ]
+  },
+  {
+    "id": "E037",
+    "lesson": 27,
+    "syllabusCode": "9618",
+    "year": 2024,
+    "series": "May/June",
+    "component": 12,
+    "stem": "s24_12",
+    "parts": [
+      {
+        "part": "5(b)",
+        "marks": 3
+      }
+    ],
+    "marks": 3,
+    "qp": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2024-May-June/9618_s24_qp_12.pdf",
+      "filename": "9618_s24_qp_12.pdf",
+      "sha256": "871b047e73c2ce0dd3c2dd1c47b7d4e176c886e61af08ffe12c6b9734285d3de",
+      "pages": 16,
+      "textChars": 49193
+    },
+    "ms": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2024-May-June/9618_s24_ms_12.pdf",
+      "filename": "9618_s24_ms_12.pdf",
+      "sha256": "27327b88c438432d5af97553d3ac09dcfe42f0a35c8d2556fdc9bd90959c7ea0",
+      "pages": 11,
+      "textChars": 43831
+    },
+    "qpPages": [
+      12
+    ],
+    "msPages": [
+      8
+    ],
+    "context": "完整bitwise表、memory、每次reload ACC的条件",
+    "reason": "区分内存操作数与立即数，逐行独立起始状态",
+    "status": "已核验：QP+对应MS全文相关段；全部登记页PDF原页面已视觉复核",
+    "qualification": "原题适配当前AS范围；保持该题官方评分上限与替代答案，不引入通用M1/A1/FT。",
+    "syllabusMapping": [
+      "S4.15"
+    ],
+    "inserts": [],
+    "prerequisite": "002、019、026",
+    "mainAbility": "区分内存操作数与立即数，逐行独立起始状态",
+    "lessonScopeIds": [
+      "S4.15"
+    ],
+    "supportingKnowledge": [
+      "S4.14",
+      "S1.02"
+    ]
+  },
+  {
+    "id": "E038",
+    "lesson": 27,
+    "syllabusCode": "9618",
+    "year": 2024,
+    "series": "Oct/Nov",
+    "component": 12,
+    "stem": "w24_12",
+    "parts": [
+      {
+        "part": "8(b)(ii)",
+        "marks": 3
+      }
+    ],
+    "marks": 3,
+    "qp": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2024-Oct-Nov/9618_w24_qp_12.pdf",
+      "filename": "9618_w24_qp_12.pdf",
+      "sha256": "3d754f83188ee139c7ffd082496a3d0591e73714ec8787dc2b961f5aa2c744c6",
+      "pages": 16,
+      "textChars": 6623
+    },
+    "ms": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2024-Oct-Nov/9618_w24_ms_12.pdf",
+      "filename": "9618_w24_ms_12.pdf",
+      "sha256": "42b8ef4e24bdd263e1a81b9ae34d332e77e34f7c7853ab411977410f1b43192e",
+      "pages": 10,
+      "textChars": 23576
+    },
+    "qpPages": [
+      14,
+      15
+    ],
+    "msPages": [
+      9
+    ],
+    "context": "bit manipulation指令表及test odd题干",
+    "reason": "从给出结果推进到构造mask并解释",
+    "status": "已核验：QP+对应MS全文相关段；全部登记页PDF原页面已视觉复核",
+    "qualification": "原题适配当前AS范围；保持该题官方评分上限与替代答案，不引入通用M1/A1/FT。",
+    "syllabusMapping": [
+      "S4.15"
+    ],
+    "inserts": [],
+    "prerequisite": "002、019、026",
+    "mainAbility": "从给出结果推进到构造mask并解释",
+    "lessonScopeIds": [
+      "S4.15"
+    ],
+    "supportingKnowledge": [
+      "S1.02"
+    ]
+  },
+  {
+    "id": "E039",
+    "lesson": 28,
+    "syllabusCode": "9618",
+    "year": 2024,
+    "series": "May/June",
+    "component": 12,
+    "stem": "s24_12",
+    "parts": [
+      {
+        "part": "6",
+        "marks": 4
+      }
+    ],
+    "marks": 4,
+    "qp": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2024-May-June/9618_s24_qp_12.pdf",
+      "filename": "9618_s24_qp_12.pdf",
+      "sha256": "871b047e73c2ce0dd3c2dd1c47b7d4e176c886e61af08ffe12c6b9734285d3de",
+      "pages": 16,
+      "textChars": 49193
+    },
+    "ms": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2024-May-June/9618_s24_ms_12.pdf",
+      "filename": "9618_s24_ms_12.pdf",
+      "sha256": "27327b88c438432d5af97553d3ac09dcfe42f0a35c8d2556fdc9bd90959c7ea0",
+      "pages": 11,
+      "textChars": 43831
+    },
+    "qpPages": [
+      13
+    ],
+    "msPages": [
+      9
+    ],
+    "context": "操作系统memory/process management完整题干",
+    "reason": "两个评分组各最多3分、总4分",
+    "status": "已核验：QP+对应MS全文相关段；全部登记页PDF原页面已视觉复核",
+    "qualification": "memory最多3；process最多3；总共4。",
+    "syllabusMapping": [
+      "S5.01"
+    ],
+    "inserts": [],
+    "prerequisite": "017、021、024",
+    "mainAbility": "两个评分组各最多3分、总4分",
+    "lessonScopeIds": [
+      "S5.01"
+    ],
+    "supportingKnowledge": []
+  },
+  {
+    "id": "E040",
+    "lesson": 29,
+    "syllabusCode": "9618",
+    "year": 2023,
+    "series": "May/June",
+    "component": 12,
+    "stem": "s23_12",
+    "parts": [
+      {
+        "part": "7(a)(i)",
+        "marks": 2
+      },
+      {
+        "part": "7(a)(ii)",
+        "marks": 4
+      }
+    ],
+    "marks": 6,
+    "qp": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2023-May-June/9618_s23_qp_12.pdf",
+      "filename": "9618_s23_qp_12.pdf",
+      "sha256": "2ce09e20a3bdc23506591fd65a99df636065d1a16a9939d4ad382660325a7d89",
+      "pages": 16,
+      "textChars": 41845
+    },
+    "ms": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2023-May-June/9618_s23_ms_12.pdf",
+      "filename": "9618_s23_ms_12.pdf",
+      "sha256": "bc0db739175ead33ca2acb9af7fc46cdc2f8153a05ac867b943ccb1ad09f5a2c",
+      "pages": 10,
+      "textChars": 54973
+    },
+    "qpPages": [
+      13
+    ],
+    "msPages": [
+      9
+    ],
+    "context": "program library及DLL两个完整小问",
+    "reason": "library定义和DLL利益+原因配对",
+    "status": "已核验：QP+对应MS全文相关段；全部登记页PDF原页面已视觉复核",
+    "qualification": "原题适配当前AS范围；保持该题官方评分上限与替代答案，不引入通用M1/A1/FT。",
+    "syllabusMapping": [
+      "S5.03"
+    ],
+    "inserts": [],
+    "prerequisite": "017、028",
+    "mainAbility": "library定义和DLL利益+原因配对",
+    "lessonScopeIds": [
+      "S5.02",
+      "S5.03"
+    ],
+    "supportingKnowledge": []
+  },
+  {
+    "id": "E041",
+    "lesson": 29,
+    "syllabusCode": "9618",
+    "year": 2023,
+    "series": "Oct/Nov",
+    "component": 12,
+    "stem": "w23_12",
+    "parts": [
+      {
+        "part": "8(b)",
+        "marks": 3
+      }
+    ],
+    "marks": 3,
+    "qp": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2023-Oct-Nov/9618_w23_qp_12.pdf",
+      "filename": "9618_w23_qp_12.pdf",
+      "sha256": "e1e0c98c7049d459406e35c040cb680b8cda7fa61a31ce2de1d8d34d6e5fc7b7",
+      "pages": 16,
+      "textChars": 53951
+    },
+    "ms": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2023-Oct-Nov/9618_w23_ms_12.pdf",
+      "filename": "9618_w23_ms_12.pdf",
+      "sha256": "dbbe4dacd4a75ba1bf70440870c449e2c35cbc25c8708a429ed67cf6ee89cc78",
+      "pages": 11,
+      "textChars": 28273
+    },
+    "qpPages": [
+      13
+    ],
+    "msPages": [
+      9
+    ],
+    "context": "非security utility的排除条件",
+    "reason": "按目的说明工具，避免把安全软件重复列入",
+    "status": "已核验：QP+对应MS全文相关段；全部登记页PDF原页面已视觉复核",
+    "qualification": "原题适配当前AS范围；保持该题官方评分上限与替代答案，不引入通用M1/A1/FT。",
+    "syllabusMapping": [
+      "S5.02"
+    ],
+    "inserts": [],
+    "prerequisite": "017、028",
+    "mainAbility": "按目的说明工具，避免把安全软件重复列入",
+    "lessonScopeIds": [
+      "S5.02",
+      "S5.03"
+    ],
+    "supportingKnowledge": []
+  },
+  {
+    "id": "E042",
+    "lesson": 30,
+    "syllabusCode": "9618",
+    "year": 2025,
+    "series": "Oct/Nov",
+    "component": 12,
+    "stem": "w25_12",
+    "parts": [
+      {
+        "part": "10(a)",
+        "marks": 4
+      }
+    ],
+    "marks": 4,
+    "qp": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2025-Oct-Nov/9618_w25_qp_12.pdf",
+      "filename": "9618_w25_qp_12.pdf",
+      "sha256": "ea65e75a4182f991cb2117827ee5c6734365b2c5e78686c6d6ef1e00d48fe65b",
+      "pages": 16,
+      "textChars": 5900
+    },
+    "ms": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2025-Oct-Nov/9618_w25_ms_12.pdf",
+      "filename": "9618_w25_ms_12.pdf",
+      "sha256": "4fd455f74ae4abf71a8796095c912a06c77239d6d5a6679ce05ceff1032e7dd8",
+      "pages": 11,
+      "textChars": 27947
+    },
+    "qpPages": [
+      15
+    ],
+    "msPages": [
+      11
+    ],
+    "context": "interpreter开发后compiler交付的完整语境",
+    "reason": "两个阶段各最多2分",
+    "status": "已核验：QP+对应MS全文相关段；全部登记页PDF原页面已视觉复核",
+    "qualification": "原题适配当前AS范围；保持该题官方评分上限与替代答案，不引入通用M1/A1/FT。",
+    "syllabusMapping": [
+      "S5.04",
+      "S5.05"
+    ],
+    "inserts": [],
+    "prerequisite": "025、028",
+    "mainAbility": "两个阶段各最多2分",
+    "lessonScopeIds": [
+      "S5.04"
+    ],
+    "supportingKnowledge": []
+  },
+  {
+    "id": "E043",
+    "lesson": 31,
+    "syllabusCode": "9618",
+    "year": 2023,
+    "series": "May/June",
+    "component": 12,
+    "stem": "s23_12",
+    "parts": [
+      {
+        "part": "7(b)",
+        "marks": 3
+      }
+    ],
+    "marks": 3,
+    "qp": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2023-May-June/9618_s23_qp_12.pdf",
+      "filename": "9618_s23_qp_12.pdf",
+      "sha256": "2ce09e20a3bdc23506591fd65a99df636065d1a16a9939d4ad382660325a7d89",
+      "pages": 16,
+      "textChars": 41845
+    },
+    "ms": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2023-May-June/9618_s23_ms_12.pdf",
+      "filename": "9618_s23_ms_12.pdf",
+      "sha256": "bc0db739175ead33ca2acb9af7fc46cdc2f8153a05ac867b943ccb1ad09f5a2c",
+      "pages": 10,
+      "textChars": 54973
+    },
+    "qpPages": [
+      13
+    ],
+    "msPages": [
+      9
+    ],
+    "context": "program development完整语境按原题保留",
+    "reason": "不为选择本身给分；两种选择均可合理论证",
+    "status": "已核验：QP+对应MS全文相关段；全部登记页PDF原页面已视觉复核",
+    "qualification": "原题适配当前AS范围；保持该题官方评分上限与替代答案，不引入通用M1/A1/FT。",
+    "syllabusMapping": [
+      "S5.05"
+    ],
+    "inserts": [],
+    "prerequisite": "030",
+    "mainAbility": "不为选择本身给分；两种选择均可合理论证",
+    "lessonScopeIds": [
+      "S5.05",
+      "S5.06"
+    ],
+    "supportingKnowledge": []
+  },
+  {
+    "id": "E044",
+    "lesson": 32,
+    "syllabusCode": "9618",
+    "year": 2023,
+    "series": "May/June",
+    "component": 12,
+    "stem": "s23_12",
+    "parts": [
+      {
+        "part": "7(c)",
+        "marks": 4
+      }
+    ],
+    "marks": 4,
+    "qp": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2023-May-June/9618_s23_qp_12.pdf",
+      "filename": "9618_s23_qp_12.pdf",
+      "sha256": "2ce09e20a3bdc23506591fd65a99df636065d1a16a9939d4ad382660325a7d89",
+      "pages": 16,
+      "textChars": 41845
+    },
+    "ms": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2023-May-June/9618_s23_ms_12.pdf",
+      "filename": "9618_s23_ms_12.pdf",
+      "sha256": "bc0db739175ead33ca2acb9af7fc46cdc2f8153a05ac867b943ccb1ad09f5a2c",
+      "pages": 10,
+      "textChars": 54973
+    },
+    "qpPages": [
+      14
+    ],
+    "msPages": [
+      10
+    ],
+    "context": "已给四个IDE功能名称，保留全部作答格",
+    "reason": "根据给定功能名称描述行为；Practice检验调试操作流程",
+    "status": "已核验：QP+对应MS全文相关段；全部登记页PDF原页面已视觉复核",
+    "qualification": "原题适配当前AS范围；保持该题官方评分上限与替代答案，不引入通用M1/A1/FT。",
+    "syllabusMapping": [
+      "S5.07"
+    ],
+    "inserts": [],
+    "prerequisite": "030、031",
+    "mainAbility": "根据给定功能名称描述行为；Practice检验调试操作流程",
+    "lessonScopeIds": [
+      "S5.07"
+    ],
+    "supportingKnowledge": []
+  },
+  {
+    "id": "E045",
+    "lesson": 33,
+    "syllabusCode": "9618",
+    "year": 2023,
+    "series": "Oct/Nov",
+    "component": 12,
+    "stem": "w23_12",
+    "parts": [
+      {
+        "part": "5(a)",
+        "marks": 1
+      },
+      {
+        "part": "5(b)",
+        "marks": 1
+      }
+    ],
+    "marks": 2,
+    "qp": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2023-Oct-Nov/9618_w23_qp_12.pdf",
+      "filename": "9618_w23_qp_12.pdf",
+      "sha256": "e1e0c98c7049d459406e35c040cb680b8cda7fa61a31ce2de1d8d34d6e5fc7b7",
+      "pages": 16,
+      "textChars": 53951
+    },
+    "ms": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2023-Oct-Nov/9618_w23_ms_12.pdf",
+      "filename": "9618_w23_ms_12.pdf",
+      "sha256": "dbbe4dacd4a75ba1bf70440870c449e2c35cbc25c8708a429ed67cf6ee89cc78",
+      "pages": 11,
+      "textChars": 28273
+    },
+    "qpPages": [
+      8
+    ],
+    "msPages": [
+      5,
+      6
+    ],
+    "context": "privacy与integrity两小问完整题干",
+    "reason": "两定义范围不同；Practice负责分类反例",
+    "status": "已核验：QP+对应MS全文相关段；全部登记页PDF原页面已视觉复核",
+    "qualification": "原题适配当前AS范围；保持该题官方评分上限与替代答案，不引入通用M1/A1/FT。",
+    "syllabusMapping": [
+      "S6.01"
+    ],
+    "inserts": [],
+    "prerequisite": "028",
+    "mainAbility": "两定义范围不同；Practice负责分类反例",
+    "lessonScopeIds": [
+      "S6.01",
+      "S6.02"
+    ],
+    "supportingKnowledge": []
+  },
+  {
+    "id": "E046",
+    "lesson": 34,
+    "syllabusCode": "9618",
+    "year": 2024,
+    "series": "May/June",
+    "component": 12,
+    "stem": "s24_12",
+    "parts": [
+      {
+        "part": "3(a)(i)",
+        "marks": 3
+      }
+    ],
+    "marks": 3,
+    "qp": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2024-May-June/9618_s24_qp_12.pdf",
+      "filename": "9618_s24_qp_12.pdf",
+      "sha256": "871b047e73c2ce0dd3c2dd1c47b7d4e176c886e61af08ffe12c6b9734285d3de",
+      "pages": 16,
+      "textChars": 49193
+    },
+    "ms": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2024-May-June/9618_s24_ms_12.pdf",
+      "filename": "9618_s24_ms_12.pdf",
+      "sha256": "27327b88c438432d5af97553d3ac09dcfe42f0a35c8d2556fdc9bd90959c7ea0",
+      "pages": 11,
+      "textChars": 43831
+    },
+    "qpPages": [
+      5
+    ],
+    "msPages": [
+      5
+    ],
+    "context": "明确排除authentication的扫描考卷语境",
+    "reason": "名称与具体保护机制配对",
+    "status": "已核验：QP+对应MS全文相关段；全部登记页PDF原页面已视觉复核",
+    "qualification": "原题适配当前AS范围；保持该题官方评分上限与替代答案，不引入通用M1/A1/FT。",
+    "syllabusMapping": [
+      "S6.03"
+    ],
+    "inserts": [],
+    "prerequisite": "028、033",
+    "mainAbility": "名称与具体保护机制配对",
+    "lessonScopeIds": [
+      "S6.03"
+    ],
+    "supportingKnowledge": []
+  },
+  {
+    "id": "E047",
+    "lesson": 35,
+    "syllabusCode": "9618",
+    "year": 2023,
+    "series": "Oct/Nov",
+    "component": 12,
+    "stem": "w23_12",
+    "parts": [
+      {
+        "part": "5(c)",
+        "marks": 4
+      }
+    ],
+    "marks": 4,
+    "qp": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2023-Oct-Nov/9618_w23_qp_12.pdf",
+      "filename": "9618_w23_qp_12.pdf",
+      "sha256": "e1e0c98c7049d459406e35c040cb680b8cda7fa61a31ce2de1d8d34d6e5fc7b7",
+      "pages": 16,
+      "textChars": 53951
+    },
+    "ms": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2023-Oct-Nov/9618_w23_ms_12.pdf",
+      "filename": "9618_w23_ms_12.pdf",
+      "sha256": "dbbe4dacd4a75ba1bf70440870c449e2c35cbc25c8708a429ed67cf6ee89cc78",
+      "pages": 11,
+      "textChars": 28273
+    },
+    "qpPages": [
+      8
+    ],
+    "msPages": [
+      6
+    ],
+    "context": "phishing/spyware题目中给定的完整情境",
+    "reason": "按入侵/信息获取途径解释而非泛称病毒",
+    "status": "已核验：QP+对应MS全文相关段；全部登记页PDF原页面已视觉复核",
+    "qualification": "原题适配当前AS范围；保持该题官方评分上限与替代答案，不引入通用M1/A1/FT。",
+    "syllabusMapping": [
+      "S6.04"
+    ],
+    "inserts": [],
+    "prerequisite": "033、034",
+    "mainAbility": "按入侵/信息获取途径解释而非泛称病毒",
+    "lessonScopeIds": [
+      "S6.04",
+      "S6.05"
+    ],
+    "supportingKnowledge": []
+  },
+  {
+    "id": "E048",
+    "lesson": 36,
+    "syllabusCode": "9618",
+    "year": 2024,
+    "series": "May/June",
+    "component": 12,
+    "stem": "s24_12",
+    "parts": [
+      {
+        "part": "3(a)(ii)",
+        "marks": 3
+      }
+    ],
+    "marks": 3,
+    "qp": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2024-May-June/9618_s24_qp_12.pdf",
+      "filename": "9618_s24_qp_12.pdf",
+      "sha256": "871b047e73c2ce0dd3c2dd1c47b7d4e176c886e61af08ffe12c6b9734285d3de",
+      "pages": 16,
+      "textChars": 49193
+    },
+    "ms": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2024-May-June/9618_s24_ms_12.pdf",
+      "filename": "9618_s24_ms_12.pdf",
+      "sha256": "27327b88c438432d5af97553d3ac09dcfe42f0a35c8d2556fdc9bd90959c7ea0",
+      "pages": 11,
+      "textChars": 43831
+    },
+    "qpPages": [
+      5
+    ],
+    "msPages": [
+      5
+    ],
+    "context": "传输扫描答卷的完整语境",
+    "reason": "加密改变可读性和密钥解密因果链",
+    "status": "已核验：QP+对应MS全文相关段；全部登记页PDF原页面已视觉复核",
+    "qualification": "原题适配当前AS范围；保持该题官方评分上限与替代答案，不引入通用M1/A1/FT。",
+    "syllabusMapping": [
+      "S6.06"
+    ],
+    "inserts": [],
+    "prerequisite": "033–035",
+    "mainAbility": "加密改变可读性和密钥解密因果链",
+    "lessonScopeIds": [
+      "S6.06"
+    ],
+    "supportingKnowledge": []
+  },
+  {
+    "id": "E049",
+    "lesson": 37,
+    "syllabusCode": "9618",
+    "year": 2025,
+    "series": "Oct/Nov",
+    "component": 12,
+    "stem": "w25_12",
+    "parts": [
+      {
+        "part": "1",
+        "marks": 2
+      }
+    ],
+    "marks": 2,
+    "qp": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2025-Oct-Nov/9618_w25_qp_12.pdf",
+      "filename": "9618_w25_qp_12.pdf",
+      "sha256": "ea65e75a4182f991cb2117827ee5c6734365b2c5e78686c6d6ef1e00d48fe65b",
+      "pages": 16,
+      "textChars": 5900
+    },
+    "ms": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2025-Oct-Nov/9618_w25_ms_12.pdf",
+      "filename": "9618_w25_ms_12.pdf",
+      "sha256": "4fd455f74ae4abf71a8796095c912a06c77239d6d5a6679ce05ceff1032e7dd8",
+      "pages": 11,
+      "textChars": 27947
+    },
+    "qpPages": [
+      2
+    ],
+    "msPages": [
+      4
+    ],
+    "context": "完整data entry/data transfer matching表",
+    "reason": "验证方法使用场合；不是列出几个名称得几分",
+    "status": "已核验：QP+对应MS全文相关段；全部登记页PDF原页面已视觉复核",
+    "qualification": "原题适配当前AS范围；保持该题官方评分上限与替代答案，不引入通用M1/A1/FT。",
+    "syllabusMapping": [
+      "S6.08"
+    ],
+    "inserts": [],
+    "prerequisite": "002、033、035",
+    "mainAbility": "验证方法使用场合；不是列出几个名称得几分",
+    "lessonScopeIds": [
+      "S6.07",
+      "S6.08"
+    ],
+    "supportingKnowledge": []
+  },
+  {
+    "id": "E050",
+    "lesson": 37,
+    "syllabusCode": "9618",
+    "year": 2024,
+    "series": "May/June",
+    "component": 13,
+    "stem": "s24_13",
+    "parts": [
+      {
+        "part": "7(f)(i)",
+        "marks": 4
+      }
+    ],
+    "marks": 4,
+    "qp": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2024-May-June/9618_s24_qp_13.pdf",
+      "filename": "9618_s24_qp_13.pdf",
+      "sha256": "79f3dbe24332c41b155e25ba48d3a8cb75399e98d5bb9cdf9a1e71de0f4645bd",
+      "pages": 16,
+      "textChars": 6714
+    },
+    "ms": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2024-May-June/9618_s24_ms_13.pdf",
+      "filename": "9618_s24_ms_13.pdf",
+      "sha256": "8d9b06f8ba8f9fba12b8cd725e39c5bda93fe14c1ba6c89912de801671762179",
+      "pages": 9,
+      "textChars": 49958
+    },
+    "qpPages": [
+      13,
+      16
+    ],
+    "msPages": [
+      9
+    ],
+    "context": "机器人无线传输语境及两行method/description表",
+    "reason": "自行选择两种transfer verification并给机制",
+    "status": "已核验：QP+对应MS全文相关段；全部登记页PDF原页面已视觉复核",
+    "qualification": "原题适配当前AS范围；保持该题官方评分上限与替代答案，不引入通用M1/A1/FT。",
+    "syllabusMapping": [
+      "S6.08"
+    ],
+    "inserts": [],
+    "prerequisite": "002、033、035",
+    "mainAbility": "自行选择两种transfer verification并给机制",
+    "lessonScopeIds": [
+      "S6.07",
+      "S6.08"
+    ],
+    "supportingKnowledge": []
+  },
+  {
+    "id": "E051",
+    "lesson": 38,
+    "syllabusCode": "9618",
+    "year": 2024,
+    "series": "Oct/Nov",
+    "component": 13,
+    "stem": "w24_13",
+    "parts": [
+      {
+        "part": "5(b)",
+        "marks": 3
+      }
+    ],
+    "marks": 3,
+    "qp": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2024-Oct-Nov/9618_w24_qp_13.pdf",
+      "filename": "9618_w24_qp_13.pdf",
+      "sha256": "1633471ff692292618910635b391aef69624188ec30b72425738f8a46354cc04",
+      "pages": 20,
+      "textChars": 8351
+    },
+    "ms": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2024-Oct-Nov/9618_w24_ms_13.pdf",
+      "filename": "9618_w24_ms_13.pdf",
+      "sha256": "d3ee5286285e4611838cb9922a4fd9706a1a4e733ece048f24f89ee5cb48ec37",
+      "pages": 9,
+      "textChars": 21982
+    },
+    "qpPages": [
+      9
+    ],
+    "msPages": [
+      6
+    ],
+    "context": "computer programmer职业情境",
+    "reason": "专业组织的作用与具体收益",
+    "status": "已核验：QP+对应MS全文相关段；全部登记页PDF原页面已视觉复核",
+    "qualification": "原题适配当前AS范围；保持该题官方评分上限与替代答案，不引入通用M1/A1/FT。",
+    "syllabusMapping": [
+      "S7.02"
+    ],
+    "inserts": [],
+    "prerequisite": "033",
+    "mainAbility": "专业组织的作用与具体收益",
+    "lessonScopeIds": [
+      "S7.01",
+      "S7.02"
+    ],
+    "supportingKnowledge": []
+  },
+  {
+    "id": "E052",
+    "lesson": 38,
+    "syllabusCode": "9618",
+    "year": 2025,
+    "series": "Oct/Nov",
+    "component": 12,
+    "stem": "w25_12",
+    "parts": [
+      {
+        "part": "2(b)",
+        "marks": 2
+      }
+    ],
+    "marks": 2,
+    "qp": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2025-Oct-Nov/9618_w25_qp_12.pdf",
+      "filename": "9618_w25_qp_12.pdf",
+      "sha256": "ea65e75a4182f991cb2117827ee5c6734365b2c5e78686c6d6ef1e00d48fe65b",
+      "pages": 16,
+      "textChars": 5900
+    },
+    "ms": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2025-Oct-Nov/9618_w25_ms_12.pdf",
+      "filename": "9618_w25_ms_12.pdf",
+      "sha256": "4fd455f74ae4abf71a8796095c912a06c77239d6d5a6679ce05ceff1032e7dd8",
+      "pages": 11,
+      "textChars": 27947
+    },
+    "qpPages": [
+      3
+    ],
+    "msPages": [
+      5
+    ],
+    "context": "code of conduct完整小问",
+    "reason": "区分职业准则目的与加入组织收益",
+    "status": "已核验：QP+对应MS全文相关段；全部登记页PDF原页面已视觉复核",
+    "qualification": "原题适配当前AS范围；保持该题官方评分上限与替代答案，不引入通用M1/A1/FT。",
+    "syllabusMapping": [
+      "S7.01"
+    ],
+    "inserts": [],
+    "prerequisite": "033",
+    "mainAbility": "区分职业准则目的与加入组织收益",
+    "lessonScopeIds": [
+      "S7.01",
+      "S7.02"
+    ],
+    "supportingKnowledge": []
+  },
+  {
+    "id": "E053",
+    "lesson": 39,
+    "syllabusCode": "9618",
+    "year": 2024,
+    "series": "Oct/Nov",
+    "component": 12,
+    "stem": "w24_12",
+    "parts": [
+      {
+        "part": "5(a)",
+        "marks": 4
+      }
+    ],
+    "marks": 4,
+    "qp": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2024-Oct-Nov/9618_w24_qp_12.pdf",
+      "filename": "9618_w24_qp_12.pdf",
+      "sha256": "3d754f83188ee139c7ffd082496a3d0591e73714ec8787dc2b961f5aa2c744c6",
+      "pages": 16,
+      "textChars": 6623
+    },
+    "ms": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2024-Oct-Nov/9618_w24_ms_12.pdf",
+      "filename": "9618_w24_ms_12.pdf",
+      "sha256": "42b8ef4e24bdd263e1a81b9ae34d332e77e34f7c7853ab411977410f1b43192e",
+      "pages": 10,
+      "textChars": 23576
+    },
+    "qpPages": [
+      7
+    ],
+    "msPages": [
+      6
+    ],
+    "context": "对colleagues/public的完整要求",
+    "reason": "每组最多2分，技术责任落实到对象",
+    "status": "已核验：QP+对应MS全文相关段；全部登记页PDF原页面已视觉复核",
+    "qualification": "原题适配当前AS范围；保持该题官方评分上限与替代答案，不引入通用M1/A1/FT。",
+    "syllabusMapping": [
+      "S7.03"
+    ],
+    "inserts": [],
+    "prerequisite": "033、038",
+    "mainAbility": "每组最多2分，技术责任落实到对象",
+    "lessonScopeIds": [
+      "S7.03"
+    ],
+    "supportingKnowledge": []
+  },
+  {
+    "id": "E054",
+    "lesson": 40,
+    "syllabusCode": "9618",
+    "year": 2024,
+    "series": "Oct/Nov",
+    "component": 12,
+    "stem": "w24_12",
+    "parts": [
+      {
+        "part": "5(b)(i)",
+        "marks": 3
+      },
+      {
+        "part": "5(b)(ii)",
+        "marks": 2
+      }
+    ],
+    "marks": 5,
+    "qp": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2024-Oct-Nov/9618_w24_qp_12.pdf",
+      "filename": "9618_w24_qp_12.pdf",
+      "sha256": "3d754f83188ee139c7ffd082496a3d0591e73714ec8787dc2b961f5aa2c744c6",
+      "pages": 16,
+      "textChars": 6623
+    },
+    "ms": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2024-Oct-Nov/9618_w24_ms_12.pdf",
+      "filename": "9618_w24_ms_12.pdf",
+      "sha256": "42b8ef4e24bdd263e1a81b9ae34d332e77e34f7c7853ab411977410f1b43192e",
+      "pages": 10,
+      "textChars": 23576
+    },
+    "qpPages": [
+      7
+    ],
+    "msPages": [
+      6
+    ],
+    "context": "可修改软件、维护安排等所有选择条件",
+    "reason": "许可选择+理由；版权保护的独立作用",
+    "status": "已核验：QP+对应MS全文相关段；全部登记页PDF原页面已视觉复核",
+    "qualification": "历史MS使用FSF/OSI名称，教师说明组织/理念和实际许可证的区别。",
+    "syllabusMapping": [
+      "S7.04",
+      "S7.05"
+    ],
+    "inserts": [],
+    "prerequisite": "038、039",
+    "mainAbility": "许可选择+理由；版权保护的独立作用",
+    "lessonScopeIds": [
+      "S7.04",
+      "S7.05"
+    ],
+    "supportingKnowledge": []
+  },
+  {
+    "id": "E055",
+    "lesson": 41,
+    "syllabusCode": "9618",
+    "year": 2025,
+    "series": "May/June",
+    "component": 12,
+    "stem": "s25_12",
+    "parts": [
+      {
+        "part": "3(a)",
+        "marks": 4
+      },
+      {
+        "part": "3(b)",
+        "marks": 2
+      }
+    ],
+    "marks": 6,
+    "qp": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2025-May-June/9618_s25_qp_12.pdf",
+      "filename": "9618_s25_qp_12.pdf",
+      "sha256": "607722293452744ee7107b7365cac73664d51e0eb0f7487587d038e22467826e",
+      "pages": 16,
+      "textChars": 5900
+    },
+    "ms": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2025-May-June/9618_s25_ms_12.pdf",
+      "filename": "9618_s25_ms_12.pdf",
+      "sha256": "0b0c41c4a7930853aaaaa00729d4ffd3a3e971948800220344c6ae6a31ec957a",
+      "pages": 12,
+      "textChars": 25973
+    },
+    "qpPages": [
+      5
+    ],
+    "msPages": [
+      6
+    ],
+    "context": "拍照OCR翻译音频的完整应用语境",
+    "reason": "输入→识别→处理→输出；利益应用于题目",
+    "status": "已核验：QP+对应MS全文相关段；全部登记页PDF原页面已视觉复核",
+    "qualification": "原题适配当前AS范围；保持该题官方评分上限与替代答案，不引入通用M1/A1/FT。",
+    "syllabusMapping": [
+      "S7.06"
+    ],
+    "inserts": [],
+    "prerequisite": "033、039、040",
+    "mainAbility": "输入→识别→处理→输出；利益应用于题目",
+    "lessonScopeIds": [
+      "S7.06"
+    ],
+    "supportingKnowledge": []
+  },
+  {
+    "id": "E056",
+    "lesson": 42,
+    "syllabusCode": "9618",
+    "year": 2024,
+    "series": "Oct/Nov",
+    "component": 12,
+    "stem": "w24_12",
+    "parts": [
+      {
+        "part": "6(a)",
+        "marks": 3
+      }
+    ],
+    "marks": 3,
+    "qp": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2024-Oct-Nov/9618_w24_qp_12.pdf",
+      "filename": "9618_w24_qp_12.pdf",
+      "sha256": "3d754f83188ee139c7ffd082496a3d0591e73714ec8787dc2b961f5aa2c744c6",
+      "pages": 16,
+      "textChars": 6623
+    },
+    "ms": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2024-Oct-Nov/9618_w24_ms_12.pdf",
+      "filename": "9618_w24_ms_12.pdf",
+      "sha256": "42b8ef4e24bdd263e1a81b9ae34d332e77e34f7c7853ab411977410f1b43192e",
+      "pages": 10,
+      "textChars": 23576
+    },
+    "qpPages": [
+      8
+    ],
+    "msPages": [
+      7
+    ],
+    "context": "设备维修公司从files转relational的完整语境",
+    "reason": "用关系数据库解决具体文件式问题",
+    "status": "已核验：QP+对应MS全文相关段；全部登记页PDF原页面已视觉复核",
+    "qualification": "原题适配当前AS范围；保持该题官方评分上限与替代答案，不引入通用M1/A1/FT。",
+    "syllabusMapping": [
+      "S8.01"
+    ],
+    "inserts": [],
+    "prerequisite": "数据组织课内",
+    "mainAbility": "用关系数据库解决具体文件式问题",
+    "lessonScopeIds": [
+      "S8.01",
+      "S8.02"
+    ],
+    "supportingKnowledge": []
+  },
+  {
+    "id": "E057",
+    "lesson": 43,
+    "syllabusCode": "9618",
+    "year": 2024,
+    "series": "May/June",
+    "component": 11,
+    "stem": "s24_11",
+    "parts": [
+      {
+        "part": "6(a)",
+        "marks": 6
+      }
+    ],
+    "marks": 6,
+    "qp": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2024-May-June/9618_s24_qp_11.pdf",
+      "filename": "9618_s24_qp_11.pdf",
+      "sha256": "2e39e6c2ee1e65d621df71b4b7fbe41a16f1e4ed8e252fb1612a6d14b13de063",
+      "pages": 16,
+      "textChars": 59276
+    },
+    "ms": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2024-May-June/9618_s24_ms_11.pdf",
+      "filename": "9618_s24_ms_11.pdf",
+      "sha256": "b53a8ca0d83d790364125ad0b74cef676204133d540c9c89f38404dd4d1fca69",
+      "pages": 8,
+      "textChars": 39821
+    },
+    "qpPages": [
+      13
+    ],
+    "msPages": [
+      7
+    ],
+    "context": "每日quiz、年龄、唯一用户名、score/rating全部条件",
+    "reason": "从情境设计三表，PK/FK与非键字段分组",
+    "status": "已核验：QP+对应MS全文相关段；全部登记页PDF原页面已视觉复核",
+    "qualification": "原题适配当前AS范围；保持该题官方评分上限与替代答案，不引入通用M1/A1/FT。",
+    "syllabusMapping": [
+      "S8.02",
+      "S8.04"
+    ],
+    "inserts": [],
+    "prerequisite": "042",
+    "mainAbility": "从情境设计三表，PK/FK与非键字段分组",
+    "lessonScopeIds": [
+      "S8.03",
+      "S8.04"
+    ],
+    "supportingKnowledge": []
+  },
+  {
+    "id": "E058",
+    "lesson": 43,
+    "syllabusCode": "9618",
+    "year": 2024,
+    "series": "Oct/Nov",
+    "component": 13,
+    "stem": "w24_13",
+    "parts": [
+      {
+        "part": "4(c)(ii)",
+        "marks": 4
+      }
+    ],
+    "marks": 4,
+    "qp": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2024-Oct-Nov/9618_w24_qp_13.pdf",
+      "filename": "9618_w24_qp_13.pdf",
+      "sha256": "1633471ff692292618910635b391aef69624188ec30b72425738f8a46354cc04",
+      "pages": 20,
+      "textChars": 8351
+    },
+    "ms": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2024-Oct-Nov/9618_w24_ms_13.pdf",
+      "filename": "9618_w24_ms_13.pdf",
+      "sha256": "d3ee5286285e4611838cb9922a4fd9706a1a4e733ece048f24f89ee5cb48ec37",
+      "pages": 9,
+      "textChars": 21982
+    },
+    "qpPages": [
+      5,
+      6,
+      7
+    ],
+    "msPages": [
+      5
+    ],
+    "context": "完整BATCH样例数据、不得改CUSTOMER/SALE限制",
+    "reason": "在既有结构上规范化，补足从零设计以外的能力",
+    "status": "已核验：QP+对应MS全文相关段；全部登记页PDF原页面已视觉复核",
+    "qualification": "BATCH需结合前页表与不改CUSTOMER/SALE条件；不可给出前问答案冒充题干。",
+    "syllabusMapping": [
+      "S8.04"
+    ],
+    "inserts": [],
+    "prerequisite": "042",
+    "mainAbility": "在既有结构上规范化，补足从零设计以外的能力",
+    "lessonScopeIds": [
+      "S8.03",
+      "S8.04"
+    ],
+    "supportingKnowledge": []
+  },
+  {
+    "id": "E059",
+    "lesson": 44,
+    "syllabusCode": "9618",
+    "year": 2024,
+    "series": "May/June",
+    "component": 11,
+    "stem": "s24_11",
+    "parts": [
+      {
+        "part": "6(b)",
+        "marks": 4
+      }
+    ],
+    "marks": 4,
+    "qp": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2024-May-June/9618_s24_qp_11.pdf",
+      "filename": "9618_s24_qp_11.pdf",
+      "sha256": "2e39e6c2ee1e65d621df71b4b7fbe41a16f1e4ed8e252fb1612a6d14b13de063",
+      "pages": 16,
+      "textChars": 59276
+    },
+    "ms": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2024-May-June/9618_s24_ms_11.pdf",
+      "filename": "9618_s24_ms_11.pdf",
+      "sha256": "b53a8ca0d83d790364125ad0b74cef676204133d540c9c89f38404dd4d1fca69",
+      "pages": 8,
+      "textChars": 39821
+    },
+    "qpPages": [
+      13
+    ],
+    "msPages": [
+      7
+    ],
+    "context": "data dictionary/logical schema完整小问",
+    "reason": "两术语各最多2分",
+    "status": "已核验：QP+对应MS全文相关段；全部登记页PDF原页面已视觉复核",
+    "qualification": "data dictionary与logical schema分别限分；教师答案需体现区别。",
+    "syllabusMapping": [
+      "S8.05"
+    ],
+    "inserts": [],
+    "prerequisite": "042、043；034、036",
+    "mainAbility": "两术语各最多2分",
+    "lessonScopeIds": [
+      "S8.05",
+      "S8.06"
+    ],
+    "supportingKnowledge": []
+  },
+  {
+    "id": "E060",
+    "lesson": 44,
+    "syllabusCode": "9618",
+    "year": 2025,
+    "series": "Oct/Nov",
+    "component": 12,
+    "stem": "w25_12",
+    "parts": [
+      {
+        "part": "4(d)",
+        "marks": 2
+      }
+    ],
+    "marks": 2,
+    "qp": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2025-Oct-Nov/9618_w25_qp_12.pdf",
+      "filename": "9618_w25_qp_12.pdf",
+      "sha256": "ea65e75a4182f991cb2117827ee5c6734365b2c5e78686c6d6ef1e00d48fe65b",
+      "pages": 16,
+      "textChars": 5900
+    },
+    "ms": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2025-Oct-Nov/9618_w25_ms_12.pdf",
+      "filename": "9618_w25_ms_12.pdf",
+      "sha256": "4fd455f74ae4abf71a8796095c912a06c77239d6d5a6679ce05ceff1032e7dd8",
+      "pages": 11,
+      "textChars": 27947
+    },
+    "qpPages": [
+      6,
+      7
+    ],
+    "msPages": [
+      6
+    ],
+    "context": "SHIPPING DB及developer interface小问",
+    "reason": "将开发接口功能用于数据库工作",
+    "status": "已核验：QP+对应MS全文相关段；全部登记页PDF原页面已视觉复核",
+    "qualification": "原题适配当前AS范围；保持该题官方评分上限与替代答案，不引入通用M1/A1/FT。",
+    "syllabusMapping": [
+      "S8.06"
+    ],
+    "inserts": [],
+    "prerequisite": "042、043；034、036",
+    "mainAbility": "将开发接口功能用于数据库工作",
+    "lessonScopeIds": [
+      "S8.05",
+      "S8.06"
+    ],
+    "supportingKnowledge": []
+  },
+  {
+    "id": "E061",
+    "lesson": 46,
+    "syllabusCode": "9618",
+    "year": 2024,
+    "series": "May/June",
+    "component": 12,
+    "stem": "s24_12",
+    "parts": [
+      {
+        "part": "4(b)",
+        "marks": 3
+      },
+      {
+        "part": "4(c)",
+        "marks": 2
+      }
+    ],
+    "marks": 5,
+    "qp": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2024-May-June/9618_s24_qp_12.pdf",
+      "filename": "9618_s24_qp_12.pdf",
+      "sha256": "871b047e73c2ce0dd3c2dd1c47b7d4e176c886e61af08ffe12c6b9734285d3de",
+      "pages": 16,
+      "textChars": 49193
+    },
+    "ms": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2024-May-June/9618_s24_ms_12.pdf",
+      "filename": "9618_s24_ms_12.pdf",
+      "sha256": "27327b88c438432d5af97553d3ac09dcfe42f0a35c8d2556fdc9bd90959c7ea0",
+      "pages": 11,
+      "textChars": 43831
+    },
+    "qpPages": [
+      7,
+      8
+    ],
+    "msPages": [
+      7
+    ],
+    "context": "EXAM和EXAM_QUESTION完整schema、样例与关系条件",
+    "reason": "CREATE后ALTER外键，结构操作两种方式",
+    "status": "已核验：QP+对应MS全文相关段；全部登记页PDF原页面已视觉复核",
+    "qualification": "原题适配当前AS范围；保持该题官方评分上限与替代答案，不引入通用M1/A1/FT。",
+    "syllabusMapping": [
+      "S8.09"
+    ],
+    "inserts": [],
+    "prerequisite": "042–045",
+    "mainAbility": "CREATE后ALTER外键，结构操作两种方式",
+    "lessonScopeIds": [
+      "S8.08",
+      "S8.09"
+    ],
+    "supportingKnowledge": [
+      "S8.02"
+    ]
+  },
+  {
+    "id": "E062",
+    "lesson": 47,
+    "syllabusCode": "9618",
+    "year": 2024,
+    "series": "May/June",
+    "component": 13,
+    "stem": "s24_13",
+    "parts": [
+      {
+        "part": "4(c)",
+        "marks": 4
+      }
+    ],
+    "marks": 4,
+    "qp": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2024-May-June/9618_s24_qp_13.pdf",
+      "filename": "9618_s24_qp_13.pdf",
+      "sha256": "79f3dbe24332c41b155e25ba48d3a8cb75399e98d5bb9cdf9a1e71de0f4645bd",
+      "pages": 16,
+      "textChars": 6714
+    },
+    "ms": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2024-May-June/9618_s24_ms_13.pdf",
+      "filename": "9618_s24_ms_13.pdf",
+      "sha256": "8d9b06f8ba8f9fba12b8cd725e39c5bda93fe14c1ba6c89912de801671762179",
+      "pages": 9,
+      "textChars": 49958
+    },
+    "qpPages": [
+      8,
+      9
+    ],
+    "msPages": [
+      5
+    ],
+    "context": "SHOW/SEAT/PERFORMANCE三schema及PERFORMANCE样例、名字与alias要求",
+    "reason": "JOIN+GROUP BY+COUNT+别名，严格回应输出要求",
+    "status": "已核验：QP+对应MS全文相关段；全部登记页PDF原页面已视觉复核",
+    "qualification": "原题适配当前AS范围；保持该题官方评分上限与替代答案，不引入通用M1/A1/FT。",
+    "syllabusMapping": [
+      "S8.10"
+    ],
+    "inserts": [],
+    "prerequisite": "042–046",
+    "mainAbility": "JOIN+GROUP BY+COUNT+别名，严格回应输出要求",
+    "lessonScopeIds": [
+      "S8.10",
+      "S8.11"
+    ],
+    "supportingKnowledge": [
+      "S8.02"
+    ]
+  },
+  {
+    "id": "E063",
+    "lesson": 47,
+    "syllabusCode": "9618",
+    "year": 2025,
+    "series": "May/June",
+    "component": 12,
+    "stem": "s25_12",
+    "parts": [
+      {
+        "part": "5(d)(ii)",
+        "marks": 3
+      }
+    ],
+    "marks": 3,
+    "qp": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2025-May-June/9618_s25_qp_12.pdf",
+      "filename": "9618_s25_qp_12.pdf",
+      "sha256": "607722293452744ee7107b7365cac73664d51e0eb0f7487587d038e22467826e",
+      "pages": 16,
+      "textChars": 5900
+    },
+    "ms": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2025-May-June/9618_s25_ms_12.pdf",
+      "filename": "9618_s25_ms_12.pdf",
+      "sha256": "0b0c41c4a7930853aaaaa00729d4ffd3a3e971948800220344c6ae6a31ec957a",
+      "pages": 12,
+      "textChars": 25973
+    },
+    "qpPages": [
+      8,
+      9,
+      10
+    ],
+    "msPages": [
+      9
+    ],
+    "context": "四表schema以及角色更新的全部条件",
+    "reason": "UPDATE的目标、两个字段及WHERE，增加写入任务",
+    "status": "已核验：QP+对应MS全文相关段；全部登记页PDF原页面已视觉复核",
+    "qualification": "原题适配当前AS范围；保持该题官方评分上限与替代答案，不引入通用M1/A1/FT。",
+    "syllabusMapping": [
+      "S8.11"
+    ],
+    "inserts": [],
+    "prerequisite": "042–046",
+    "mainAbility": "UPDATE的目标、两个字段及WHERE，增加写入任务",
+    "lessonScopeIds": [
+      "S8.10",
+      "S8.11"
+    ],
+    "supportingKnowledge": [
+      "S8.02"
+    ]
+  },
+  {
+    "id": "E064",
+    "lesson": 48,
+    "syllabusCode": "9618",
+    "year": 2025,
+    "series": "May/June",
+    "component": 12,
+    "stem": "s25_12",
+    "parts": [
+      {
+        "part": "6(a)",
+        "marks": 2
+      },
+      {
+        "part": "6(b)",
+        "marks": 4
+      },
+      {
+        "part": "6(c)",
+        "marks": 6
+      },
+      {
+        "part": "6(d)",
+        "marks": 4
+      },
+      {
+        "part": "6(e)",
+        "marks": 3
+      }
+    ],
+    "marks": 19,
+    "qp": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2025-May-June/9618_s25_qp_12.pdf",
+      "filename": "9618_s25_qp_12.pdf",
+      "sha256": "607722293452744ee7107b7365cac73664d51e0eb0f7487587d038e22467826e",
+      "pages": 16,
+      "textChars": 5900
+    },
+    "ms": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2025-May-June/9618_s25_ms_12.pdf",
+      "filename": "9618_s25_ms_12.pdf",
+      "sha256": "0b0c41c4a7930853aaaaa00729d4ffd3a3e971948800220344c6ae6a31ec957a",
+      "pages": 12,
+      "textChars": 25973
+    },
+    "qpPages": [
+      11,
+      12
+    ],
+    "msPages": [
+      10,
+      11
+    ],
+    "context": "WAN drivers、地址填空、LAN绘图全部材料",
+    "reason": "网络情境整合；不安排成P1新75分模拟卷",
+    "status": "已核验：QP+对应MS全文相关段；全部登记页PDF原页面已视觉复核",
+    "qualification": "原题适配当前AS范围；保持该题官方评分上限与替代答案，不引入通用M1/A1/FT。",
+    "syllabusMapping": [
+      "S2.01",
+      "S2.04",
+      "S2.05",
+      "S2.09",
+      "S2.14",
+      "S2.15"
+    ],
+    "inserts": [],
+    "prerequisite": "S1–S8全部",
+    "mainAbility": "网络情境整合；不安排成P1新75分模拟卷",
+    "lessonScopeIds": [
+      "S1.01",
+      "S1.02",
+      "S1.03",
+      "S1.04",
+      "S1.05",
+      "S1.06",
+      "S1.07",
+      "S1.08",
+      "S1.09",
+      "S1.10",
+      "S1.11",
+      "S2.01",
+      "S2.02",
+      "S2.03",
+      "S2.04",
+      "S2.05",
+      "S2.06",
+      "S2.07",
+      "S2.08",
+      "S2.09",
+      "S2.10",
+      "S2.11",
+      "S2.12",
+      "S2.13",
+      "S2.14",
+      "S2.15",
+      "S2.16",
+      "S3.01",
+      "S3.02",
+      "S3.03",
+      "S3.04",
+      "S3.05",
+      "S3.06",
+      "S3.07",
+      "S3.08",
+      "S3.09",
+      "S3.10",
+      "S4.01",
+      "S4.02",
+      "S4.03",
+      "S4.04",
+      "S4.05",
+      "S4.06",
+      "S4.07",
+      "S4.08",
+      "S4.09",
+      "S4.10",
+      "S4.11",
+      "S4.12",
+      "S4.13",
+      "S4.14",
+      "S4.15",
+      "S5.01",
+      "S5.02",
+      "S5.03",
+      "S5.04",
+      "S5.05",
+      "S5.06",
+      "S5.07",
+      "S6.01",
+      "S6.02",
+      "S6.03",
+      "S6.04",
+      "S6.05",
+      "S6.06",
+      "S6.07",
+      "S6.08",
+      "S7.01",
+      "S7.02",
+      "S7.03",
+      "S7.04",
+      "S7.05",
+      "S7.06",
+      "S8.01",
+      "S8.02",
+      "S8.03",
+      "S8.04",
+      "S8.05",
+      "S8.06",
+      "S8.07",
+      "S8.08",
+      "S8.09",
+      "S8.10",
+      "S8.11"
+    ],
+    "supportingKnowledge": []
+  },
+  {
+    "id": "E065",
+    "lesson": 48,
+    "syllabusCode": "9618",
+    "year": 2025,
+    "series": "Oct/Nov",
+    "component": 13,
+    "stem": "w25_13",
+    "parts": [
+      {
+        "part": "5(a)",
+        "marks": 3
+      },
+      {
+        "part": "5(b)",
+        "marks": 4
+      },
+      {
+        "part": "5(c)",
+        "marks": 5
+      },
+      {
+        "part": "5(d)",
+        "marks": 4
+      }
+    ],
+    "marks": 16,
+    "qp": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2025-Oct-Nov/9618_w25_qp_13.pdf",
+      "filename": "9618_w25_qp_13.pdf",
+      "sha256": "9b5d7e33de24afb406ddc00c253ebf37b4240e6b21f3c1a7f6f1eb82aba78cc6",
+      "pages": 16,
+      "textChars": 5894
+    },
+    "ms": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2025-Oct-Nov/9618_w25_ms_13.pdf",
+      "filename": "9618_w25_ms_13.pdf",
+      "sha256": "d4bf99da2ca289430a18709d483892df85646dc5a90d5fb6697eb6d13c10481b",
+      "pages": 12,
+      "textChars": 25718
+    },
+    "qpPages": [
+      6,
+      7,
+      8
+    ],
+    "msPages": [
+      8,
+      9
+    ],
+    "context": "REVIEWS四表、STAFF样例、ER空图、rating要求全部材料",
+    "reason": "数据库结构、查询与安全组合",
+    "status": "已核验：QP+对应MS全文相关段；全部登记页PDF原页面已视觉复核",
+    "qualification": "原题适配当前AS范围；保持该题官方评分上限与替代答案，不引入通用M1/A1/FT。",
+    "syllabusMapping": [
+      "S8.03",
+      "S8.09",
+      "S8.10",
+      "S8.05"
+    ],
+    "inserts": [],
+    "prerequisite": "S1–S8全部",
+    "mainAbility": "数据库结构、查询与安全组合",
+    "lessonScopeIds": [
+      "S1.01",
+      "S1.02",
+      "S1.03",
+      "S1.04",
+      "S1.05",
+      "S1.06",
+      "S1.07",
+      "S1.08",
+      "S1.09",
+      "S1.10",
+      "S1.11",
+      "S2.01",
+      "S2.02",
+      "S2.03",
+      "S2.04",
+      "S2.05",
+      "S2.06",
+      "S2.07",
+      "S2.08",
+      "S2.09",
+      "S2.10",
+      "S2.11",
+      "S2.12",
+      "S2.13",
+      "S2.14",
+      "S2.15",
+      "S2.16",
+      "S3.01",
+      "S3.02",
+      "S3.03",
+      "S3.04",
+      "S3.05",
+      "S3.06",
+      "S3.07",
+      "S3.08",
+      "S3.09",
+      "S3.10",
+      "S4.01",
+      "S4.02",
+      "S4.03",
+      "S4.04",
+      "S4.05",
+      "S4.06",
+      "S4.07",
+      "S4.08",
+      "S4.09",
+      "S4.10",
+      "S4.11",
+      "S4.12",
+      "S4.13",
+      "S4.14",
+      "S4.15",
+      "S5.01",
+      "S5.02",
+      "S5.03",
+      "S5.04",
+      "S5.05",
+      "S5.06",
+      "S5.07",
+      "S6.01",
+      "S6.02",
+      "S6.03",
+      "S6.04",
+      "S6.05",
+      "S6.06",
+      "S6.07",
+      "S6.08",
+      "S7.01",
+      "S7.02",
+      "S7.03",
+      "S7.04",
+      "S7.05",
+      "S7.06",
+      "S8.01",
+      "S8.02",
+      "S8.03",
+      "S8.04",
+      "S8.05",
+      "S8.06",
+      "S8.07",
+      "S8.08",
+      "S8.09",
+      "S8.10",
+      "S8.11"
+    ],
+    "supportingKnowledge": [
+      "S8.02",
+      "S6.06"
+    ]
+  },
+  {
+    "id": "E066",
+    "lesson": 48,
+    "syllabusCode": "9618",
+    "year": 2023,
+    "series": "Oct/Nov",
+    "component": 12,
+    "stem": "w23_12",
+    "parts": [
+      {
+        "part": "6(a)",
+        "marks": 3
+      }
+    ],
+    "marks": 3,
+    "qp": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2023-Oct-Nov/9618_w23_qp_12.pdf",
+      "filename": "9618_w23_qp_12.pdf",
+      "sha256": "e1e0c98c7049d459406e35c040cb680b8cda7fa61a31ce2de1d8d34d6e5fc7b7",
+      "pages": 16,
+      "textChars": 53951
+    },
+    "ms": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2023-Oct-Nov/9618_w23_ms_12.pdf",
+      "filename": "9618_w23_ms_12.pdf",
+      "sha256": "dbbe4dacd4a75ba1bf70440870c449e2c35cbc25c8708a429ed67cf6ee89cc78",
+      "pages": 11,
+      "textChars": 28273
+    },
+    "qpPages": [
+      9
+    ],
+    "msPages": [
+      6
+    ],
+    "context": "livestream完整情境",
+    "reason": "把S1压缩选择用于S2传输情境；接受有依据的两种选择",
+    "status": "已核验：QP+对应MS全文相关段；全部登记页PDF原页面已视觉复核",
+    "qualification": "原题适配当前AS范围；保持该题官方评分上限与替代答案，不引入通用M1/A1/FT。",
+    "syllabusMapping": [
+      "S1.11"
+    ],
+    "inserts": [],
+    "prerequisite": "S1–S8全部",
+    "mainAbility": "把S1压缩选择用于S2传输情境；接受有依据的两种选择",
+    "lessonScopeIds": [
+      "S1.01",
+      "S1.02",
+      "S1.03",
+      "S1.04",
+      "S1.05",
+      "S1.06",
+      "S1.07",
+      "S1.08",
+      "S1.09",
+      "S1.10",
+      "S1.11",
+      "S2.01",
+      "S2.02",
+      "S2.03",
+      "S2.04",
+      "S2.05",
+      "S2.06",
+      "S2.07",
+      "S2.08",
+      "S2.09",
+      "S2.10",
+      "S2.11",
+      "S2.12",
+      "S2.13",
+      "S2.14",
+      "S2.15",
+      "S2.16",
+      "S3.01",
+      "S3.02",
+      "S3.03",
+      "S3.04",
+      "S3.05",
+      "S3.06",
+      "S3.07",
+      "S3.08",
+      "S3.09",
+      "S3.10",
+      "S4.01",
+      "S4.02",
+      "S4.03",
+      "S4.04",
+      "S4.05",
+      "S4.06",
+      "S4.07",
+      "S4.08",
+      "S4.09",
+      "S4.10",
+      "S4.11",
+      "S4.12",
+      "S4.13",
+      "S4.14",
+      "S4.15",
+      "S5.01",
+      "S5.02",
+      "S5.03",
+      "S5.04",
+      "S5.05",
+      "S5.06",
+      "S5.07",
+      "S6.01",
+      "S6.02",
+      "S6.03",
+      "S6.04",
+      "S6.05",
+      "S6.06",
+      "S6.07",
+      "S6.08",
+      "S7.01",
+      "S7.02",
+      "S7.03",
+      "S7.04",
+      "S7.05",
+      "S7.06",
+      "S8.01",
+      "S8.02",
+      "S8.03",
+      "S8.04",
+      "S8.05",
+      "S8.06",
+      "S8.07",
+      "S8.08",
+      "S8.09",
+      "S8.10",
+      "S8.11"
+    ],
+    "supportingKnowledge": [
+      "S2.12"
+    ]
+  },
+  {
+    "id": "E067",
+    "lesson": 49,
+    "syllabusCode": "9618",
+    "year": 2023,
+    "series": "May/June",
+    "component": 22,
+    "stem": "s23_22",
+    "parts": [
+      {
+        "part": "7(a)(i)",
+        "marks": 3
+      },
+      {
+        "part": "7(a)(ii)",
+        "marks": 2
+      }
+    ],
+    "marks": 5,
+    "qp": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2023-May-June/9618_s23_qp_22.pdf",
+      "filename": "9618_s23_qp_22.pdf",
+      "sha256": "41216c66a226bd48b6125b966c2d348a4d8cd55399d38f45d810653a949d1ce8",
+      "pages": 20,
+      "textChars": 66279
+    },
+    "ms": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2023-May-June/9618_s23_ms_22.pdf",
+      "filename": "9618_s23_ms_22.pdf",
+      "sha256": "932fc08bedf23d5458a5eee2d5658be2fd03d67ca1cfd9f0da862c0d2f1570db",
+      "pages": 14,
+      "textChars": 58681
+    },
+    "qpPages": [
+      14
+    ],
+    "msPages": [
+      9
+    ],
+    "context": "shop顾客资料的完整候选列表和理由要求",
+    "reason": "抽象保留/舍弃必须依据用途",
+    "status": "已核验：QP+对应MS全文相关段；全部登记页PDF原页面已视觉复核",
+    "qualification": "原题适配当前AS范围；保持该题官方评分上限与替代答案，不引入通用M1/A1/FT。",
+    "syllabusMapping": [
+      "S9.01"
+    ],
+    "inserts": [
+      {
+        "path": "9618_s23_in_22.pdf",
+        "pages": [
+          2,
+          3
+        ],
+        "status": "封面及相关函数表原页已核验",
+        "sourceURL": "https://pastpapers.papacambridge.com/directories/CAIE/CAIE-pastpapers/upload/9618_s23_in_22.pdf",
+        "sha256": "c60f040e5705d1286cac6c329fe3d4dbe971682ac2afd509c99269790ba15665"
+      }
+    ],
+    "prerequisite": "编程新Section入口",
+    "mainAbility": "抽象保留/舍弃必须依据用途",
+    "lessonScopeIds": [
+      "S9.01"
+    ],
+    "supportingKnowledge": []
+  },
+  {
+    "id": "E068",
+    "lesson": 50,
+    "syllabusCode": "9618",
+    "year": 2024,
+    "series": "May/June",
+    "component": 22,
+    "stem": "s24_22",
+    "parts": [
+      {
+        "part": "7(a)",
+        "marks": 3
+      }
+    ],
+    "marks": 3,
+    "qp": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2024-May-June/9618_s24_qp_22.pdf",
+      "filename": "9618_s24_qp_22.pdf",
+      "sha256": "2a454e3660ac7d44569a829e3039acdd32204216385d645a370f1c00a7714c46",
+      "pages": 24,
+      "textChars": 69469
+    },
+    "ms": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2024-May-June/9618_s24_ms_22.pdf",
+      "filename": "9618_s24_ms_22.pdf",
+      "sha256": "901cb6ebf4cafc157e39b55f5e764081d9d30384b0ae8f9d3ea5f795cf475d9d",
+      "pages": 12,
+      "textChars": 45782
+    },
+    "qpPages": [
+      16
+    ],
+    "msPages": [
+      10
+    ],
+    "context": "waiting list与SMS完整业务条件",
+    "reason": "模块名与用途配对，避免仅把原文拆句",
+    "status": "已核验：QP+对应MS全文相关段；全部登记页PDF原页面已视觉复核",
+    "qualification": "原题适配当前AS范围；保持该题官方评分上限与替代答案，不引入通用M1/A1/FT。",
+    "syllabusMapping": [
+      "S9.02"
+    ],
+    "inserts": [
+      {
+        "path": "9618_s24_in_22.pdf",
+        "pages": [
+          2,
+          3
+        ],
+        "status": "封面及相关函数表原页已核验",
+        "sourceURL": "https://pastpapers.papacambridge.com/directories/CAIE/CAIE-pastpapers/upload/9618_s24_in_22.pdf",
+        "sha256": "6dc00819a760d2f178c5a8c0b8cd4cbf6bc644447fcbb002adb9fc8303e17ef3"
+      }
+    ],
+    "prerequisite": "049",
+    "mainAbility": "模块名与用途配对，避免仅把原文拆句",
+    "lessonScopeIds": [
+      "S9.02"
+    ],
+    "supportingKnowledge": []
+  },
+  {
+    "id": "E069",
+    "lesson": 51,
+    "syllabusCode": "9618",
+    "year": 2023,
+    "series": "Oct/Nov",
+    "component": 22,
+    "stem": "w23_22",
+    "parts": [
+      {
+        "part": "1(a)",
+        "marks": 4
+      }
+    ],
+    "marks": 4,
+    "qp": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2023-Oct-Nov/9618_w23_qp_22.pdf",
+      "filename": "9618_w23_qp_22.pdf",
+      "sha256": "8e46de8183ecf792adf5dd86a42d8868952822bb56d349918b594a08d720f5f4",
+      "pages": 20,
+      "textChars": 57214
+    },
+    "ms": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2023-Oct-Nov/9618_w23_ms_22.pdf",
+      "filename": "9618_w23_ms_22.pdf",
+      "sha256": "168281052448ad61bc0eb52cde0fa8e1714b450e08e9826abe80a8423b342a9a",
+      "pages": 14,
+      "textChars": 24499
+    },
+    "qpPages": [
+      2
+    ],
+    "msPages": [
+      4
+    ],
+    "context": "完整四行identifier table",
+    "reason": "有意义名称与类型按行配套评分",
+    "status": "已核验：QP+对应MS全文相关段；全部登记页PDF原页面已视觉复核",
+    "qualification": "原题适配当前AS范围；保持该题官方评分上限与替代答案，不引入通用M1/A1/FT。",
+    "syllabusMapping": [
+      "S9.04"
+    ],
+    "inserts": [
+      {
+        "path": "9618_w23_in_22.pdf",
+        "pages": [
+          2,
+          3
+        ],
+        "status": "封面及相关函数表原页已核验",
+        "sourceURL": "https://pastpapers.papacambridge.com/directories/CAIE/CAIE-pastpapers/upload/9618_w23_in_22.pdf",
+        "sha256": "5a11f293a6e0cf6efcaceb2eff67244c8349a90f99404454e24b0b929d99e838"
+      }
+    ],
+    "prerequisite": "049、050；课内基础类型表",
+    "mainAbility": "有意义名称与类型按行配套评分",
+    "lessonScopeIds": [
+      "S9.03",
+      "S9.04"
+    ],
+    "supportingKnowledge": [
+      "S10.01"
+    ]
+  },
+  {
+    "id": "E070",
+    "lesson": 53,
+    "syllabusCode": "9618",
+    "year": 2023,
+    "series": "Oct/Nov",
+    "component": 21,
+    "stem": "w23_21",
+    "parts": [
+      {
+        "part": "2(b)",
+        "marks": 2
+      }
+    ],
+    "marks": 2,
+    "qp": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2023-Oct-Nov/9618_w23_qp_21.pdf",
+      "filename": "9618_w23_qp_21.pdf",
+      "sha256": "334b77e019343ba5e4544330d5e0b3e767309c1688253a93af5d5c095aa80342",
+      "pages": 20,
+      "textChars": 67348
+    },
+    "ms": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2023-Oct-Nov/9618_w23_ms_21.pdf",
+      "filename": "9618_w23_ms_21.pdf",
+      "sha256": "00b25d38b13ccf7e1c07bcb681ccaab56b0e906ffd689b4d99c40c3d0c68bbe3",
+      "pages": 10,
+      "textChars": 19164
+    },
+    "qpPages": [
+      3
+    ],
+    "msPages": [
+      5
+    ],
+    "context": "保留2(a)算法的两条完整说明",
+    "reason": "sequence以外另两构造；为L055共享语境但不提前展示解答",
+    "status": "已核验：QP+对应MS全文相关段；全部登记页PDF原页面已视觉复核",
+    "qualification": "原题适配当前AS范围；保持该题官方评分上限与替代答案，不引入通用M1/A1/FT。",
+    "syllabusMapping": [
+      "S9.06"
+    ],
+    "inserts": [
+      {
+        "path": "9618_w23_in_21.pdf",
+        "pages": [
+          2,
+          3
+        ],
+        "status": "封面及相关函数表原页已核验",
+        "sourceURL": "https://pastpapers.papacambridge.com/directories/CAIE/CAIE-pastpapers/upload/9618_w23_in_21.pdf",
+        "sha256": "41190f4139a02f42bb11d286f119daeee35237d62c16bbc436083b310c71e3ef"
+      }
+    ],
+    "prerequisite": "051、052",
+    "mainAbility": "sequence以外另两构造；为L055共享语境但不提前展示解答",
+    "lessonScopeIds": [
+      "S9.06"
+    ],
+    "supportingKnowledge": []
+  },
+  {
+    "id": "E071",
+    "lesson": 54,
+    "syllabusCode": "9618",
+    "year": 2023,
+    "series": "Oct/Nov",
+    "component": 22,
+    "stem": "w23_22",
+    "parts": [
+      {
+        "part": "2(a)",
+        "marks": 5
+      }
+    ],
+    "marks": 5,
+    "qp": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2023-Oct-Nov/9618_w23_qp_22.pdf",
+      "filename": "9618_w23_qp_22.pdf",
+      "sha256": "8e46de8183ecf792adf5dd86a42d8868952822bb56d349918b594a08d720f5f4",
+      "pages": 20,
+      "textChars": 57214
+    },
+    "ms": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2023-Oct-Nov/9618_w23_ms_22.pdf",
+      "filename": "9618_w23_ms_22.pdf",
+      "sha256": "168281052448ad61bc0eb52cde0fa8e1714b450e08e9826abe80a8423b342a9a",
+      "pages": 14,
+      "textChars": 24499
+    },
+    "qpPages": [
+      4
+    ],
+    "msPages": [
+      5
+    ],
+    "context": "输入范围、27开始、0结束的全部规则",
+    "reason": "真正完成控制流，包含未开始累计阶段",
+    "status": "已核验：QP+对应MS全文相关段；全部登记页PDF原页面已视觉复核",
+    "qualification": "原题适配当前AS范围；保持该题官方评分上限与替代答案，不引入通用M1/A1/FT。",
+    "syllabusMapping": [
+      "S9.07"
+    ],
+    "inserts": [
+      {
+        "path": "9618_w23_in_22.pdf",
+        "pages": [
+          2,
+          3
+        ],
+        "status": "封面及相关函数表原页已核验",
+        "sourceURL": "https://pastpapers.papacambridge.com/directories/CAIE/CAIE-pastpapers/upload/9618_w23_in_22.pdf",
+        "sha256": "5a11f293a6e0cf6efcaceb2eff67244c8349a90f99404454e24b0b929d99e838"
+      }
+    ],
+    "prerequisite": "051–053",
+    "mainAbility": "真正完成控制流，包含未开始累计阶段",
+    "lessonScopeIds": [
+      "S9.07"
+    ],
+    "supportingKnowledge": [
+      "S9.06"
+    ]
+  },
+  {
+    "id": "E072",
+    "lesson": 55,
+    "syllabusCode": "9618",
+    "year": 2023,
+    "series": "Oct/Nov",
+    "component": 21,
+    "stem": "w23_21",
+    "parts": [
+      {
+        "part": "2(a)",
+        "marks": 5
+      }
+    ],
+    "marks": 5,
+    "qp": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2023-Oct-Nov/9618_w23_qp_21.pdf",
+      "filename": "9618_w23_qp_21.pdf",
+      "sha256": "334b77e019343ba5e4544330d5e0b3e767309c1688253a93af5d5c095aa80342",
+      "pages": 20,
+      "textChars": 67348
+    },
+    "ms": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2023-Oct-Nov/9618_w23_ms_21.pdf",
+      "filename": "9618_w23_ms_21.pdf",
+      "sha256": "00b25d38b13ccf7e1c07bcb681ccaab56b0e906ffd689b4d99c40c3d0c68bbe3",
+      "pages": 10,
+      "textChars": 19164
+    },
+    "qpPages": [
+      3
+    ],
+    "msPages": [
+      5
+    ],
+    "context": "100个数字、30–70包含边界、不得写pseudocode",
+    "reason": "对已见问题进一步细化；新增答案形式不再当盲测",
+    "status": "已核验：QP+对应MS全文相关段；全部登记页PDF原页面已视觉复核",
+    "qualification": "原题适配当前AS范围；保持该题官方评分上限与替代答案，不引入通用M1/A1/FT。",
+    "syllabusMapping": [
+      "S9.08"
+    ],
+    "inserts": [
+      {
+        "path": "9618_w23_in_21.pdf",
+        "pages": [
+          2,
+          3
+        ],
+        "status": "封面及相关函数表原页已核验",
+        "sourceURL": "https://pastpapers.papacambridge.com/directories/CAIE/CAIE-pastpapers/upload/9618_w23_in_21.pdf",
+        "sha256": "41190f4139a02f42bb11d286f119daeee35237d62c16bbc436083b310c71e3ef"
+      }
+    ],
+    "prerequisite": "050、052–054",
+    "mainAbility": "对已见问题进一步细化；新增答案形式不再当盲测",
+    "lessonScopeIds": [
+      "S9.08"
+    ],
+    "supportingKnowledge": [
+      "S9.05",
+      "S9.06"
+    ]
+  },
+  {
+    "id": "E073",
+    "lesson": 56,
+    "syllabusCode": "9618",
+    "year": 2025,
+    "series": "May/June",
+    "component": 21,
+    "stem": "s25_21",
+    "parts": [
+      {
+        "part": "2(a)(i)",
+        "marks": 1
+      },
+      {
+        "part": "2(a)(ii)",
+        "marks": 1
+      }
+    ],
+    "marks": 2,
+    "qp": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2025-May-June/9618_s25_qp_21.pdf",
+      "filename": "9618_s25_qp_21.pdf",
+      "sha256": "bdc294eb8a519647f24d2fc53053504a0a03c164625c043397a6533ddb09e5b7",
+      "pages": 20,
+      "textChars": 7432
+    },
+    "ms": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2025-May-June/9618_s25_ms_21.pdf",
+      "filename": "9618_s25_ms_21.pdf",
+      "sha256": "cc0ce7f995d039ebed35955a41a87d3d09f6e25470afcf0868f8af897ac9486b",
+      "pages": 14,
+      "textChars": 25702
+    },
+    "qpPages": [
+      4,
+      5
+    ],
+    "msPages": [
+      7
+    ],
+    "context": "完整奖金分段表和错误flowchart",
+    "reason": "用路径证明为什么中间区间永远进不去并修正",
+    "status": "已核验：QP+对应MS全文相关段；全部登记页PDF原页面已视觉复核",
+    "qualification": "原题适配当前AS范围；保持该题官方评分上限与替代答案，不引入通用M1/A1/FT。",
+    "syllabusMapping": [
+      "S9.09"
+    ],
+    "inserts": [
+      {
+        "path": "9618_s25_in_21.pdf",
+        "pages": [
+          2,
+          3
+        ],
+        "status": "封面及相关函数表原页已核验",
+        "sourceURL": "https://pastpapers.papacambridge.com/directories/CAIE/CAIE-pastpapers/upload/9618_s25_in_21.pdf",
+        "sha256": "9cdddef3569351a65ebe90f4d28825329cbf7c0171a99d2d881b69b96471ea69"
+      }
+    ],
+    "prerequisite": "053、054",
+    "mainAbility": "用路径证明为什么中间区间永远进不去并修正",
+    "lessonScopeIds": [
+      "S9.09"
+    ],
+    "supportingKnowledge": [
+      "S9.07"
+    ]
+  },
+  {
+    "id": "E074",
+    "lesson": 57,
+    "syllabusCode": "9618",
+    "year": 2023,
+    "series": "May/June",
+    "component": 21,
+    "stem": "s23_21",
+    "parts": [
+      {
+        "part": "3(b)",
+        "marks": 5
+      }
+    ],
+    "marks": 5,
+    "qp": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2023-May-June/9618_s23_qp_21.pdf",
+      "filename": "9618_s23_qp_21.pdf",
+      "sha256": "ec3ce014e637b1bba40235dbcd807e7749ed80d0cc816c7862483a484b516d5e",
+      "pages": 20,
+      "textChars": 65261
+    },
+    "ms": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2023-May-June/9618_s23_ms_21.pdf",
+      "filename": "9618_s23_ms_21.pdf",
+      "sha256": "f6709d9da90d460b2192f133f1378928029c5431baf4cae26ce0f275c3b311e5",
+      "pages": 11,
+      "textChars": 47636
+    },
+    "qpPages": [
+      6,
+      7
+    ],
+    "msPages": [
+      5
+    ],
+    "context": "三个points bands、整美元规则、99.77例子",
+    "reason": "综合输入、边界和计算顺序，答案为五步细化",
+    "status": "已核验：QP+对应MS全文相关段；全部登记页PDF原页面已视觉复核",
+    "qualification": "原题适配当前AS范围；保持该题官方评分上限与替代答案，不引入通用M1/A1/FT。",
+    "syllabusMapping": [
+      "S9.08"
+    ],
+    "inserts": [
+      {
+        "path": "9618_s23_in_21.pdf",
+        "pages": [
+          2,
+          3
+        ],
+        "status": "封面及相关函数表原页已核验",
+        "sourceURL": "https://pastpapers.papacambridge.com/directories/CAIE/CAIE-pastpapers/upload/9618_s23_in_21.pdf",
+        "sha256": "5a979a2fb7d2efd4afb3cc4439f2ea8820861b573f4261270d11405bd8954199"
+      }
+    ],
+    "prerequisite": "049–056",
+    "mainAbility": "综合输入、边界和计算顺序，答案为五步细化",
+    "lessonScopeIds": [
+      "S9.02",
+      "S9.05",
+      "S9.08"
+    ],
+    "supportingKnowledge": [
+      "S9.06",
+      "S9.09"
+    ]
+  },
+  {
+    "id": "E075",
+    "lesson": 58,
+    "syllabusCode": "9618",
+    "year": 2024,
+    "series": "Oct/Nov",
+    "component": 23,
+    "stem": "w24_23",
+    "parts": [
+      {
+        "part": "1(b)",
+        "marks": 3
+      }
+    ],
+    "marks": 3,
+    "qp": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2024-Oct-Nov/9618_w24_qp_23.pdf",
+      "filename": "9618_w24_qp_23.pdf",
+      "sha256": "43a2a12ba0040fc7631e54ddc8fb7e3e35632db25fd416e0162fc2350c9b96cf",
+      "pages": 20,
+      "textChars": 8351
+    },
+    "ms": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2024-Oct-Nov/9618_w24_ms_23.pdf",
+      "filename": "9618_w24_ms_23.pdf",
+      "sha256": "40a5ba8794ae5c0816f60488deea097623fb2fe6cc989310e828aee8795bcbe8",
+      "pages": 14,
+      "textChars": 26547
+    },
+    "qpPages": [
+      2
+    ],
+    "msPages": [
+      4
+    ],
+    "context": "完整三行含带引号日期的值",
+    "reason": "数据外观像日期不等于DATE类型",
+    "status": "已核验：QP+对应MS全文相关段；全部登记页PDF原页面已视觉复核",
+    "qualification": "原题适配当前AS范围；保持该题官方评分上限与替代答案，不引入通用M1/A1/FT。",
+    "syllabusMapping": [
+      "S10.01"
+    ],
+    "inserts": [
+      {
+        "path": "9618_w24_in_23.pdf",
+        "pages": [
+          2,
+          3
+        ],
+        "status": "封面及相关函数表原页已核验",
+        "sourceURL": "https://pastpapers.papacambridge.com/directories/CAIE/CAIE-pastpapers/upload/9618_w24_in_23.pdf",
+        "sha256": "ca8ff30cd58fd6567b260e4b683bf4d1f56e7cb1584186f62fc8b27ff1b555e8"
+      }
+    ],
+    "prerequisite": "051、052",
+    "mainAbility": "数据外观像日期不等于DATE类型",
+    "lessonScopeIds": [
+      "S10.01"
+    ],
+    "supportingKnowledge": []
+  },
+  {
+    "id": "E076",
+    "lesson": 59,
+    "syllabusCode": "9618",
+    "year": 2024,
+    "series": "May/June",
+    "component": 22,
+    "stem": "s24_22",
+    "parts": [
+      {
+        "part": "3(a)(i)",
+        "marks": 4
+      }
+    ],
+    "marks": 4,
+    "qp": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2024-May-June/9618_s24_qp_22.pdf",
+      "filename": "9618_s24_qp_22.pdf",
+      "sha256": "2a454e3660ac7d44569a829e3039acdd32204216385d645a370f1c00a7714c46",
+      "pages": 24,
+      "textChars": 69469
+    },
+    "ms": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2024-May-June/9618_s24_ms_22.pdf",
+      "filename": "9618_s24_ms_22.pdf",
+      "sha256": "901cb6ebf4cafc157e39b55f5e764081d9d30384b0ae8f9d3ea5f795cf475d9d",
+      "pages": 12,
+      "textChars": 45782
+    },
+    "qpPages": [
+      7
+    ],
+    "msPages": [
+      6
+    ],
+    "context": "Component的五个字段Item_Num、Reject、Stage、Limit_1、Limit_2及全部用途/类型条件",
+    "reason": "定义record类型，避免误声明一个实例",
+    "status": "已核验：QP+对应MS全文相关段；全部登记页PDF原页面已视觉复核",
+    "qualification": "五字段定义；不是四字段。",
+    "syllabusMapping": [
+      "S10.02"
+    ],
+    "inserts": [
+      {
+        "path": "9618_s24_in_22.pdf",
+        "pages": [
+          2,
+          3
+        ],
+        "status": "封面及相关函数表原页已核验",
+        "sourceURL": "https://pastpapers.papacambridge.com/directories/CAIE/CAIE-pastpapers/upload/9618_s24_in_22.pdf",
+        "sha256": "6dc00819a760d2f178c5a8c0b8cd4cbf6bc644447fcbb002adb9fc8303e17ef3"
+      }
+    ],
+    "prerequisite": "058",
+    "mainAbility": "定义record类型，避免误声明一个实例",
+    "lessonScopeIds": [
+      "S10.02"
+    ],
+    "supportingKnowledge": [
+      "S10.01"
+    ]
+  },
+  {
+    "id": "E077",
+    "lesson": 60,
+    "syllabusCode": "9618",
+    "year": 2025,
+    "series": "May/June",
+    "component": 22,
+    "stem": "s25_22",
+    "parts": [
+      {
+        "part": "1(d)(i)",
+        "marks": 1
+      },
+      {
+        "part": "1(d)(ii)",
+        "marks": 1
+      },
+      {
+        "part": "1(d)(iii)",
+        "marks": 2
+      }
+    ],
+    "marks": 4,
+    "qp": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2025-May-June/9618_s25_qp_22.pdf",
+      "filename": "9618_s25_qp_22.pdf",
+      "sha256": "d0888a6c10be5f3ad806b71e98de7586274fe1aeb801aa4b82059f06de6e857c",
+      "pages": 20,
+      "textChars": 7375
+    },
+    "ms": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2025-May-June/9618_s25_ms_22.pdf",
+      "filename": "9618_s25_ms_22.pdf",
+      "sha256": "1a983412767fb5130f36d7b3ddc317384174833647aec1d75a24c41b7bf10715",
+      "pages": 20,
+      "textChars": 35735
+    },
+    "qpPages": [
+      3
+    ],
+    "msPages": [
+      6,
+      7
+    ],
+    "context": "Product全部上下界及元素类型",
+    "reason": "维度、容量、声明三个互相关联要求",
+    "status": "已核验：QP+对应MS全文相关段；全部登记页PDF原页面已视觉复核",
+    "qualification": "原题适配当前AS范围；保持该题官方评分上限与替代答案，不引入通用M1/A1/FT。",
+    "syllabusMapping": [
+      "S10.03",
+      "S10.05"
+    ],
+    "inserts": [
+      {
+        "path": "9618_s25_in_22.pdf",
+        "pages": [
+          2,
+          3
+        ],
+        "status": "封面及相关函数表原页已核验",
+        "sourceURL": "https://pastpapers.papacambridge.com/directories/CAIE/CAIE-pastpapers/upload/9618_s25_in_22.pdf",
+        "sha256": "d23df37d1155085f9d15335fce839aac65add7a8d992d2c4bde54027296e50ba"
+      }
+    ],
+    "prerequisite": "058",
+    "mainAbility": "维度、容量、声明三个互相关联要求",
+    "lessonScopeIds": [
+      "S10.03"
+    ],
+    "supportingKnowledge": []
+  },
+  {
+    "id": "E078",
+    "lesson": 61,
+    "syllabusCode": "9618",
+    "year": 2025,
+    "series": "May/June",
+    "component": 22,
+    "stem": "s25_22",
+    "parts": [
+      {
+        "part": "4",
+        "marks": 6
+      }
+    ],
+    "marks": 6,
+    "qp": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2025-May-June/9618_s25_qp_22.pdf",
+      "filename": "9618_s25_qp_22.pdf",
+      "sha256": "d0888a6c10be5f3ad806b71e98de7586274fe1aeb801aa4b82059f06de6e857c",
+      "pages": 20,
+      "textChars": 7375
+    },
+    "ms": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2025-May-June/9618_s25_ms_22.pdf",
+      "filename": "9618_s25_ms_22.pdf",
+      "sha256": "1a983412767fb5130f36d7b3ddc317384174833647aec1d75a24c41b7bf10715",
+      "pages": 20,
+      "textChars": 35735
+    },
+    "qpPages": [
+      7
+    ],
+    "msPages": [
+      10
+    ],
+    "context": "100个输入、倒序输出及flowchart框",
+    "reason": "输入顺序与输出顺序分离；不依赖未教函数定义",
+    "status": "已核验：QP+对应MS全文相关段；全部登记页PDF原页面已视觉复核",
+    "qualification": "原题适配当前AS范围；保持该题官方评分上限与替代答案，不引入通用M1/A1/FT。",
+    "syllabusMapping": [
+      "S10.05"
+    ],
+    "inserts": [
+      {
+        "path": "9618_s25_in_22.pdf",
+        "pages": [
+          2,
+          3
+        ],
+        "status": "封面及相关函数表原页已核验",
+        "sourceURL": "https://pastpapers.papacambridge.com/directories/CAIE/CAIE-pastpapers/upload/9618_s25_in_22.pdf",
+        "sha256": "d23df37d1155085f9d15335fce839aac65add7a8d992d2c4bde54027296e50ba"
+      }
+    ],
+    "prerequisite": "053、054、058、060",
+    "mainAbility": "输入顺序与输出顺序分离；不依赖未教函数定义",
+    "lessonScopeIds": [
+      "S10.04",
+      "S10.05"
+    ],
+    "supportingKnowledge": [
+      "S9.07",
+      "S9.06"
+    ]
+  },
+  {
+    "id": "E079",
+    "lesson": 62,
+    "syllabusCode": "9618",
+    "year": 2023,
+    "series": "Oct/Nov",
+    "component": 21,
+    "stem": "w23_21",
+    "parts": [
+      {
+        "part": "4(b)",
+        "marks": 3
+      }
+    ],
+    "marks": 3,
+    "qp": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2023-Oct-Nov/9618_w23_qp_21.pdf",
+      "filename": "9618_w23_qp_21.pdf",
+      "sha256": "334b77e019343ba5e4544330d5e0b3e767309c1688253a93af5d5c095aa80342",
+      "pages": 20,
+      "textChars": 67348
+    },
+    "ms": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2023-Oct-Nov/9618_w23_ms_21.pdf",
+      "filename": "9618_w23_ms_21.pdf",
+      "sha256": "00b25d38b13ccf7e1c07bcb681ccaab56b0e906ffd689b4d99c40c3d0c68bbe3",
+      "pages": 10,
+      "textChars": 19164
+    },
+    "qpPages": [
+      7
+    ],
+    "msPages": [
+      6
+    ],
+    "context": "全局2D声明、Row/Search已给、偶数行/任一列两个条件",
+    "reason": "行筛选AND列匹配OR，避免二维只做求和",
+    "status": "已核验：QP+对应MS全文相关段；全部登记页PDF原页面已视觉复核",
+    "qualification": "本题额外使用MOD；L062作答前须给官方guide的MOD定义参照。若尚未完成桥接，延至L074回访，不重复计分。",
+    "syllabusMapping": [
+      "S10.05"
+    ],
+    "inserts": [
+      {
+        "path": "9618_w23_in_21.pdf",
+        "pages": [
+          2,
+          3
+        ],
+        "status": "封面及相关函数表原页已核验",
+        "sourceURL": "https://pastpapers.papacambridge.com/directories/CAIE/CAIE-pastpapers/upload/9618_w23_in_21.pdf",
+        "sha256": "41190f4139a02f42bb11d286f119daeee35237d62c16bbc436083b310c71e3ef"
+      }
+    ],
+    "prerequisite": "056、060、061；补2分钟MOD参照卡",
+    "mainAbility": "行筛选AND列匹配OR，避免二维只做求和",
+    "lessonScopeIds": [
+      "S10.04",
+      "S10.05"
+    ],
+    "supportingKnowledge": [
+      "S9.09",
+      "S11.02"
+    ]
+  },
+  {
+    "id": "E080",
+    "lesson": 65,
+    "syllabusCode": "9618",
+    "year": 2025,
+    "series": "Oct/Nov",
+    "component": 22,
+    "stem": "w25_22",
+    "parts": [
+      {
+        "part": "3(a)",
+        "marks": 6
+      },
+      {
+        "part": "3(b)",
+        "marks": 1
+      }
+    ],
+    "marks": 7,
+    "qp": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2025-Oct-Nov/9618_w25_qp_22.pdf",
+      "filename": "9618_w25_qp_22.pdf",
+      "sha256": "02da3baced99f059667fc7619cca0e779db8ae369a250a1106b4c0aa55f0c4e8",
+      "pages": 20,
+      "textChars": 7375
+    },
+    "ms": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2025-Oct-Nov/9618_w25_ms_22.pdf",
+      "filename": "9618_w25_ms_22.pdf",
+      "sha256": "1fef4ad8713f2424f09545464f1b31af5ee2ee1d9d38435f7487eea2d4278532",
+      "pages": 15,
+      "textChars": 24832
+    },
+    "qpPages": [
+      4,
+      5
+    ],
+    "msPages": [
+      8
+    ],
+    "context": "OldFile三行/人、NewFile一行/人、分隔符和9步骤",
+    "reason": "文件模式、循环读取、记录边界，随后解释separator",
+    "status": "已核验：QP+对应MS全文相关段；全部登记页PDF原页面已视觉复核",
+    "qualification": "原题适配当前AS范围；保持该题官方评分上限与替代答案，不引入通用M1/A1/FT。",
+    "syllabusMapping": [
+      "S10.07"
+    ],
+    "inserts": [
+      {
+        "path": "9618_w25_in_22.pdf",
+        "pages": [
+          2,
+          3
+        ],
+        "status": "封面及相关函数表原页已核验",
+        "sourceURL": "https://pastpapers.papacambridge.com/directories/CAIE/CAIE-pastpapers/upload/9618_w25_in_22.pdf",
+        "sha256": "6a80eadc88d53a81b214eb92e15a51edde0e69e7c85cda1f2c9d386882f5b744"
+      }
+    ],
+    "prerequisite": "052、053、058",
+    "mainAbility": "文件模式、循环读取、记录边界，随后解释separator",
+    "lessonScopeIds": [
+      "S10.07"
+    ],
+    "supportingKnowledge": [
+      "S9.06",
+      "S10.01"
+    ]
+  },
+  {
+    "id": "E081",
+    "lesson": 67,
+    "syllabusCode": "9618",
+    "year": 2023,
+    "series": "Oct/Nov",
+    "component": 21,
+    "stem": "w23_21",
+    "parts": [
+      {
+        "part": "3(a)",
+        "marks": 3
+      },
+      {
+        "part": "3(b)",
+        "marks": 5
+      }
+    ],
+    "marks": 8,
+    "qp": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2023-Oct-Nov/9618_w23_qp_21.pdf",
+      "filename": "9618_w23_qp_21.pdf",
+      "sha256": "334b77e019343ba5e4544330d5e0b3e767309c1688253a93af5d5c095aa80342",
+      "pages": 20,
+      "textChars": 67348
+    },
+    "ms": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2023-Oct-Nov/9618_w23_ms_21.pdf",
+      "filename": "9618_w23_ms_21.pdf",
+      "sha256": "00b25d38b13ccf7e1c07bcb681ccaab56b0e906ffd689b4d99c40c3d0c68bbe3",
+      "pages": 10,
+      "textChars": 19164
+    },
+    "qpPages": [
+      4,
+      5
+    ],
+    "msPages": [
+      5
+    ],
+    "context": "完整stack图、8元素数组、两个pointer定义、五步算法",
+    "reason": "图→数组与操作步骤；原题只补文字，不要求ADT伪代码实现",
+    "status": "已核验：QP+对应MS全文相关段；全部登记页PDF原页面已视觉复核",
+    "qualification": "原题适配当前AS范围；保持该题官方评分上限与替代答案，不引入通用M1/A1/FT。",
+    "syllabusMapping": [
+      "S10.09",
+      "S10.10"
+    ],
+    "inserts": [
+      {
+        "path": "9618_w23_in_21.pdf",
+        "pages": [
+          2,
+          3
+        ],
+        "status": "封面及相关函数表原页已核验",
+        "sourceURL": "https://pastpapers.papacambridge.com/directories/CAIE/CAIE-pastpapers/upload/9618_w23_in_21.pdf",
+        "sha256": "41190f4139a02f42bb11d286f119daeee35237d62c16bbc436083b310c71e3ef"
+      }
+    ],
+    "prerequisite": "060、066",
+    "mainAbility": "图→数组与操作步骤；原题只补文字，不要求ADT伪代码实现",
+    "lessonScopeIds": [
+      "S10.09",
+      "S10.10"
+    ],
+    "supportingKnowledge": []
+  },
+  {
+    "id": "E082",
+    "lesson": 68,
+    "syllabusCode": "9618",
+    "year": 2023,
+    "series": "May/June",
+    "component": 22,
+    "stem": "s23_22",
+    "parts": [
+      {
+        "part": "3(a)(i)",
+        "marks": 4
+      },
+      {
+        "part": "3(a)(ii)",
+        "marks": 1
+      }
+    ],
+    "marks": 5,
+    "qp": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2023-May-June/9618_s23_qp_22.pdf",
+      "filename": "9618_s23_qp_22.pdf",
+      "sha256": "41216c66a226bd48b6125b966c2d348a4d8cd55399d38f45d810653a949d1ce8",
+      "pages": 20,
+      "textChars": 66279
+    },
+    "ms": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2023-May-June/9618_s23_ms_22.pdf",
+      "filename": "9618_s23_ms_22.pdf",
+      "sha256": "932fc08bedf23d5458a5eee2d5658be2fd03d67ca1cfd9f0da862c0d2f1570db",
+      "pages": 14,
+      "textChars": 58681
+    },
+    "qpPages": [
+      4,
+      5
+    ],
+    "msPages": [
+      4
+    ],
+    "context": "10格环形队列、初态、Front/End含义及新加入两颜色",
+    "reason": "末端回绕和有效数量，分清残留槽位",
+    "status": "已核验：QP+对应MS全文相关段；全部登记页PDF原页面已视觉复核",
+    "qualification": "两个子问分别给定状态；(a)(ii)不是接续(a)(i)。",
+    "syllabusMapping": [
+      "S10.09",
+      "S10.10"
+    ],
+    "inserts": [
+      {
+        "path": "9618_s23_in_22.pdf",
+        "pages": [
+          2,
+          3
+        ],
+        "status": "封面及相关函数表原页已核验",
+        "sourceURL": "https://pastpapers.papacambridge.com/directories/CAIE/CAIE-pastpapers/upload/9618_s23_in_22.pdf",
+        "sha256": "c60f040e5705d1286cac6c329fe3d4dbe971682ac2afd509c99269790ba15665"
+      }
+    ],
+    "prerequisite": "060、066、067",
+    "mainAbility": "末端回绕和有效数量，分清残留槽位",
+    "lessonScopeIds": [
+      "S10.09",
+      "S10.10"
+    ],
+    "supportingKnowledge": []
+  },
+  {
+    "id": "E083",
+    "lesson": 69,
+    "syllabusCode": "9618",
+    "year": 2023,
+    "series": "Oct/Nov",
+    "component": 22,
+    "stem": "w23_22",
+    "parts": [
+      {
+        "part": "3(b)",
+        "marks": 4
+      }
+    ],
+    "marks": 4,
+    "qp": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2023-Oct-Nov/9618_w23_qp_22.pdf",
+      "filename": "9618_w23_qp_22.pdf",
+      "sha256": "8e46de8183ecf792adf5dd86a42d8868952822bb56d349918b594a08d720f5f4",
+      "pages": 20,
+      "textChars": 57214
+    },
+    "ms": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2023-Oct-Nov/9618_w23_ms_22.pdf",
+      "filename": "9618_w23_ms_22.pdf",
+      "sha256": "168281052448ad61bc0eb52cde0fa8e1714b450e08e9826abe80a8423b342a9a",
+      "pages": 14,
+      "textChars": 24499
+    },
+    "qpPages": [
+      6,
+      7
+    ],
+    "msPages": [
+      6
+    ],
+    "context": "完整linked/free list图、四步插入D6要求",
+    "reason": "先保留后继与free指针，才能安全改变链",
+    "status": "已核验：QP+对应MS全文相关段；全部登记页PDF原页面已视觉复核",
+    "qualification": "原题适配当前AS范围；保持该题官方评分上限与替代答案，不引入通用M1/A1/FT。",
+    "syllabusMapping": [
+      "S10.10"
+    ],
+    "inserts": [
+      {
+        "path": "9618_w23_in_22.pdf",
+        "pages": [
+          2,
+          3
+        ],
+        "status": "封面及相关函数表原页已核验",
+        "sourceURL": "https://pastpapers.papacambridge.com/directories/CAIE/CAIE-pastpapers/upload/9618_w23_in_22.pdf",
+        "sha256": "5a11f293a6e0cf6efcaceb2eff67244c8349a90f99404454e24b0b929d99e838"
+      }
+    ],
+    "prerequisite": "060、066",
+    "mainAbility": "先保留后继与free指针，才能安全改变链",
+    "lessonScopeIds": [
+      "S10.09",
+      "S10.10"
+    ],
+    "supportingKnowledge": []
+  },
+  {
+    "id": "E084",
+    "lesson": 70,
+    "syllabusCode": "9618",
+    "year": 2023,
+    "series": "Oct/Nov",
+    "component": 22,
+    "stem": "w23_22",
+    "parts": [
+      {
+        "part": "3(a)",
+        "marks": 5
+      }
+    ],
+    "marks": 5,
+    "qp": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2023-Oct-Nov/9618_w23_qp_22.pdf",
+      "filename": "9618_w23_qp_22.pdf",
+      "sha256": "8e46de8183ecf792adf5dd86a42d8868952822bb56d349918b594a08d720f5f4",
+      "pages": 20,
+      "textChars": 57214
+    },
+    "ms": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2023-Oct-Nov/9618_w23_ms_22.pdf",
+      "filename": "9618_w23_ms_22.pdf",
+      "sha256": "168281052448ad61bc0eb52cde0fa8e1714b450e08e9826abe80a8423b342a9a",
+      "pages": 14,
+      "textChars": 24499
+    },
+    "qpPages": [
+      6
+    ],
+    "msPages": [
+      6
+    ],
+    "context": "同题完整图、array索引和pointer空表",
+    "reason": "将L069链关系映射到数组；共享题干，明确非新盲测",
+    "status": "已核验：QP+对应MS全文相关段；全部登记页PDF原页面已视觉复核",
+    "qualification": "原题适配当前AS范围；保持该题官方评分上限与替代答案，不引入通用M1/A1/FT。",
+    "syllabusMapping": [
+      "S10.10"
+    ],
+    "inserts": [
+      {
+        "path": "9618_w23_in_22.pdf",
+        "pages": [
+          2,
+          3
+        ],
+        "status": "封面及相关函数表原页已核验",
+        "sourceURL": "https://pastpapers.papacambridge.com/directories/CAIE/CAIE-pastpapers/upload/9618_w23_in_22.pdf",
+        "sha256": "5a11f293a6e0cf6efcaceb2eff67244c8349a90f99404454e24b0b929d99e838"
+      }
+    ],
+    "prerequisite": "060、067–069",
+    "mainAbility": "将L069链关系映射到数组；共享题干，明确非新盲测",
+    "lessonScopeIds": [
+      "S10.10"
+    ],
+    "supportingKnowledge": []
+  },
+  {
+    "id": "E085",
+    "lesson": 71,
+    "syllabusCode": "9618",
+    "year": 2025,
+    "series": "May/June",
+    "component": 21,
+    "stem": "s25_21",
+    "parts": [
+      {
+        "part": "5",
+        "marks": 7
+      }
+    ],
+    "marks": 7,
+    "qp": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2025-May-June/9618_s25_qp_21.pdf",
+      "filename": "9618_s25_qp_21.pdf",
+      "sha256": "bdc294eb8a519647f24d2fc53053504a0a03c164625c043397a6533ddb09e5b7",
+      "pages": 20,
+      "textChars": 7432
+    },
+    "ms": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2025-May-June/9618_s25_ms_21.pdf",
+      "filename": "9618_s25_ms_21.pdf",
+      "sha256": "cc0ce7f995d039ebed35955a41a87d3d09f6e25470afcf0868f8af897ac9486b",
+      "pages": 14,
+      "textChars": 25702
+    },
+    "qpPages": [
+      10,
+      11
+    ],
+    "msPages": [
+      10
+    ],
+    "context": "stack/queue三pointer定义、空queue、未知长度、容量足够",
+    "reason": "组合两种操作顺序逆置栈；10评分点上限7",
+    "status": "已核验：QP+对应MS全文相关段；全部登记页PDF原页面已视觉复核",
+    "qualification": "原题适配当前AS范围；保持该题官方评分上限与替代答案，不引入通用M1/A1/FT。",
+    "syllabusMapping": [
+      "S10.09",
+      "S10.10"
+    ],
+    "inserts": [
+      {
+        "path": "9618_s25_in_21.pdf",
+        "pages": [
+          2,
+          3
+        ],
+        "status": "封面及相关函数表原页已核验",
+        "sourceURL": "https://pastpapers.papacambridge.com/directories/CAIE/CAIE-pastpapers/upload/9618_s25_in_21.pdf",
+        "sha256": "9cdddef3569351a65ebe90f4d28825329cbf7c0171a99d2d881b69b96471ea69"
+      }
+    ],
+    "prerequisite": "062、065–070",
+    "mainAbility": "组合两种操作顺序逆置栈；10评分点上限7",
+    "lessonScopeIds": [
+      "S10.02",
+      "S10.04",
+      "S10.05",
+      "S10.07",
+      "S10.09"
+    ],
+    "supportingKnowledge": []
+  },
+  {
+    "id": "E086",
+    "lesson": 72,
+    "syllabusCode": "9618",
+    "year": 2024,
+    "series": "Oct/Nov",
+    "component": 23,
+    "stem": "w24_23",
+    "parts": [
+      {
+        "part": "2(a)",
+        "marks": 5
+      }
+    ],
+    "marks": 5,
+    "qp": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2024-Oct-Nov/9618_w24_qp_23.pdf",
+      "filename": "9618_w24_qp_23.pdf",
+      "sha256": "43a2a12ba0040fc7631e54ddc8fb7e3e35632db25fd416e0162fc2350c9b96cf",
+      "pages": 20,
+      "textChars": 8351
+    },
+    "ms": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2024-Oct-Nov/9618_w24_ms_23.pdf",
+      "filename": "9618_w24_ms_23.pdf",
+      "sha256": "40a5ba8794ae5c0816f60488deea097623fb2fe6cc989310e828aee8795bcbe8",
+      "pages": 14,
+      "textChars": 26547
+    },
+    "qpPages": [
+      3
+    ],
+    "msPages": [
+      5
+    ],
+    "context": "100整数、只累计positive、zero既非正非负、声明要求",
+    "reason": "把自然语言变为完整伪代码并保持一次最终输出",
+    "status": "已核验：QP+对应MS全文相关段；全部登记页PDF原页面已视觉复核",
+    "qualification": "原题适配当前AS范围；保持该题官方评分上限与替代答案，不引入通用M1/A1/FT。",
+    "syllabusMapping": [
+      "S11.01"
+    ],
+    "inserts": [
+      {
+        "path": "9618_w24_in_23.pdf",
+        "pages": [
+          2,
+          3
+        ],
+        "status": "封面及相关函数表原页已核验",
+        "sourceURL": "https://pastpapers.papacambridge.com/directories/CAIE/CAIE-pastpapers/upload/9618_w24_in_23.pdf",
+        "sha256": "ca8ff30cd58fd6567b260e4b683bf4d1f56e7cb1584186f62fc8b27ff1b555e8"
+      }
+    ],
+    "prerequisite": "051–057、058",
+    "mainAbility": "把自然语言变为完整伪代码并保持一次最终输出",
+    "lessonScopeIds": [
+      "S11.01"
+    ],
+    "supportingKnowledge": [
+      "S9.06",
+      "S10.01"
+    ]
+  },
+  {
+    "id": "E087",
+    "lesson": 73,
+    "syllabusCode": "9618",
+    "year": 2023,
+    "series": "May/June",
+    "component": 22,
+    "stem": "s23_22",
+    "parts": [
+      {
+        "part": "1(a)(i)",
+        "marks": 1
+      },
+      {
+        "part": "1(a)(ii)",
+        "marks": 3
+      }
+    ],
+    "marks": 4,
+    "qp": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2023-May-June/9618_s23_qp_22.pdf",
+      "filename": "9618_s23_qp_22.pdf",
+      "sha256": "41216c66a226bd48b6125b966c2d348a4d8cd55399d38f45d810653a949d1ce8",
+      "pages": 20,
+      "textChars": 66279
+    },
+    "ms": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2023-May-June/9618_s23_ms_22.pdf",
+      "filename": "9618_s23_ms_22.pdf",
+      "sha256": "932fc08bedf23d5458a5eee2d5658be2fd03d67ca1cfd9f0da862c0d2f1570db",
+      "pages": 14,
+      "textChars": 58681
+    },
+    "qpPages": [
+      2
+    ],
+    "msPages": [
+      3
+    ],
+    "context": "原Weight/ValidAddress/Charge程序及literal 3.75，完整保留两小问",
+    "reason": "把重复literal提出为常量并解释维护价值；Practice另查赋值值拷贝",
+    "status": "已核验：QP+对应MS全文相关段；全部登记页PDF原页面已视觉复核",
+    "qualification": "原题适配当前AS范围；保持该题官方评分上限与替代答案，不引入通用M1/A1/FT。",
+    "syllabusMapping": [
+      "S11.02"
+    ],
+    "inserts": [
+      {
+        "path": "9618_s23_in_22.pdf",
+        "pages": [
+          2,
+          3
+        ],
+        "status": "封面及相关函数表原页已核验",
+        "sourceURL": "https://pastpapers.papacambridge.com/directories/CAIE/CAIE-pastpapers/upload/9618_s23_in_22.pdf",
+        "sha256": "c60f040e5705d1286cac6c329fe3d4dbe971682ac2afd509c99269790ba15665"
+      }
+    ],
+    "prerequisite": "058、072",
+    "mainAbility": "把重复literal提出为常量并解释维护价值；Practice另查赋值值拷贝",
+    "lessonScopeIds": [
+      "S11.02"
+    ],
+    "supportingKnowledge": []
+  },
+  {
+    "id": "E088",
+    "lesson": 74,
+    "syllabusCode": "9618",
+    "year": 2023,
+    "series": "May/June",
+    "component": 21,
+    "stem": "s23_21",
+    "parts": [
+      {
+        "part": "1(c)(i)",
+        "marks": 2
+      },
+      {
+        "part": "1(c)(ii)",
+        "marks": 1
+      }
+    ],
+    "marks": 3,
+    "qp": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2023-May-June/9618_s23_qp_21.pdf",
+      "filename": "9618_s23_qp_21.pdf",
+      "sha256": "ec3ce014e637b1bba40235dbcd807e7749ed80d0cc816c7862483a484b516d5e",
+      "pages": 20,
+      "textChars": 65261
+    },
+    "ms": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2023-May-June/9618_s23_ms_21.pdf",
+      "filename": "9618_s23_ms_21.pdf",
+      "sha256": "f6709d9da90d460b2192f133f1378928029c5431baf4cae26ce0f275c3b311e5",
+      "pages": 11,
+      "textChars": 47636
+    },
+    "qpPages": [
+      3
+    ],
+    "msPages": [
+      3
+    ],
+    "context": "Active/Points/Exempt初值、四表达式",
+    "reason": "运算结果与恒真子式化简，不仅算术代入",
+    "status": "已核验：QP+对应MS全文相关段；全部登记页PDF原页面已视觉复核",
+    "qualification": "原题适配当前AS范围；保持该题官方评分上限与替代答案，不引入通用M1/A1/FT。",
+    "syllabusMapping": [
+      "S11.02"
+    ],
+    "inserts": [
+      {
+        "path": "9618_s23_in_21.pdf",
+        "pages": [
+          2,
+          3
+        ],
+        "status": "封面及相关函数表原页已核验",
+        "sourceURL": "https://pastpapers.papacambridge.com/directories/CAIE/CAIE-pastpapers/upload/9618_s23_in_21.pdf",
+        "sha256": "5a979a2fb7d2efd4afb3cc4439f2ea8820861b573f4261270d11405bd8954199"
+      }
+    ],
+    "prerequisite": "056、058、072、073",
+    "mainAbility": "运算结果与恒真子式化简，不仅算术代入",
+    "lessonScopeIds": [
+      "S11.02"
+    ],
+    "supportingKnowledge": []
+  },
+  {
+    "id": "E089",
+    "lesson": 75,
+    "syllabusCode": "9618",
+    "year": 2024,
+    "series": "May/June",
+    "component": 21,
+    "stem": "s24_21",
+    "parts": [
+      {
+        "part": "1(b)",
+        "marks": 4
+      }
+    ],
+    "marks": 4,
+    "qp": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2024-May-June/9618_s24_qp_21.pdf",
+      "filename": "9618_s24_qp_21.pdf",
+      "sha256": "cea30586678603abd65487305af0ea516766653a33acb8abb5f7c9f8619aa091",
+      "pages": 24,
+      "textChars": 53605
+    },
+    "ms": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2024-May-June/9618_s24_ms_21.pdf",
+      "filename": "9618_s24_ms_21.pdf",
+      "sha256": "372460c1d37896d8902ebe57fe083c65443f7782e214e366a6e554eadb6c9fd1",
+      "pages": 12,
+      "textChars": 38688
+    },
+    "qpPages": [
+      2
+    ],
+    "msPages": [
+      4
+    ],
+    "context": "Sorted/Tries/ID值及本卷insert中函数/operators",
+    "reason": "读取函数契约、嵌套、MOD和字符串长度",
+    "status": "已核验：QP+对应MS全文相关段；全部登记页PDF原页面已视觉复核",
+    "qualification": "原题适配当前AS范围；保持该题官方评分上限与替代答案，不引入通用M1/A1/FT。",
+    "syllabusMapping": [
+      "S11.03"
+    ],
+    "inserts": [
+      {
+        "path": "9618_s24_in_21.pdf",
+        "pages": [
+          2,
+          3
+        ],
+        "status": "封面及相关函数表原页已核验",
+        "sourceURL": "https://pastpapers.papacambridge.com/directories/CAIE/CAIE-pastpapers/upload/9618_s24_in_21.pdf",
+        "sha256": "7356fb3ff8b6a5ec1bc9a3170f58972bff7ad86a6110c76ef841dfc24bd4a4d2"
+      }
+    ],
+    "prerequisite": "058、074",
+    "mainAbility": "读取函数契约、嵌套、MOD和字符串长度",
+    "lessonScopeIds": [
+      "S11.03"
+    ],
+    "supportingKnowledge": [
+      "S11.02"
+    ]
+  },
+  {
+    "id": "E090",
+    "lesson": 76,
+    "syllabusCode": "9618",
+    "year": 2023,
+    "series": "Oct/Nov",
+    "component": 21,
+    "stem": "w23_21",
+    "parts": [
+      {
+        "part": "1(b)",
+        "marks": 3
+      },
+      {
+        "part": "1(c)",
+        "marks": 1
+      }
+    ],
+    "marks": 4,
+    "qp": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2023-Oct-Nov/9618_w23_qp_21.pdf",
+      "filename": "9618_w23_qp_21.pdf",
+      "sha256": "334b77e019343ba5e4544330d5e0b3e767309c1688253a93af5d5c095aa80342",
+      "pages": 20,
+      "textChars": 67348
+    },
+    "ms": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2023-Oct-Nov/9618_w23_ms_21.pdf",
+      "filename": "9618_w23_ms_21.pdf",
+      "sha256": "00b25d38b13ccf7e1c07bcb681ccaab56b0e906ffd689b4d99c40c3d0c68bbe3",
+      "pages": 10,
+      "textChars": 19164
+    },
+    "qpPages": [
+      2
+    ],
+    "msPages": [
+      4
+    ],
+    "context": "完整CASE程序及OTHERWISE新增行",
+    "reason": "分支遮蔽、顺序和全部范围覆盖",
+    "status": "已核验：QP+对应MS全文相关段；全部登记页PDF原页面已视觉复核",
+    "qualification": "原题适配当前AS范围；保持该题官方评分上限与替代答案，不引入通用M1/A1/FT。",
+    "syllabusMapping": [
+      "S11.04"
+    ],
+    "inserts": [
+      {
+        "path": "9618_w23_in_21.pdf",
+        "pages": [
+          2,
+          3
+        ],
+        "status": "封面及相关函数表原页已核验",
+        "sourceURL": "https://pastpapers.papacambridge.com/directories/CAIE/CAIE-pastpapers/upload/9618_w23_in_21.pdf",
+        "sha256": "41190f4139a02f42bb11d286f119daeee35237d62c16bbc436083b310c71e3ef"
+      }
+    ],
+    "prerequisite": "053、056、074",
+    "mainAbility": "分支遮蔽、顺序和全部范围覆盖",
+    "lessonScopeIds": [
+      "S11.04"
+    ],
+    "supportingKnowledge": []
+  },
+  {
+    "id": "E091",
+    "lesson": 77,
+    "syllabusCode": "9618",
+    "year": 2025,
+    "series": "Oct/Nov",
+    "component": 22,
+    "stem": "w25_22",
+    "parts": [
+      {
+        "part": "4(a)",
+        "marks": 4
+      },
+      {
+        "part": "4(b)",
+        "marks": 5
+      }
+    ],
+    "marks": 9,
+    "qp": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2025-Oct-Nov/9618_w25_qp_22.pdf",
+      "filename": "9618_w25_qp_22.pdf",
+      "sha256": "02da3baced99f059667fc7619cca0e779db8ae369a250a1106b4c0aa55f0c4e8",
+      "pages": 20,
+      "textChars": 7375
+    },
+    "ms": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2025-Oct-Nov/9618_w25_ms_22.pdf",
+      "filename": "9618_w25_ms_22.pdf",
+      "sha256": "1fef4ad8713f2424f09545464f1b31af5ee2ee1d9d38435f7487eea2d4278532",
+      "pages": 15,
+      "textChars": 24832
+    },
+    "qpPages": [
+      6,
+      7
+    ],
+    "msPages": [
+      9
+    ],
+    "context": "5道easy、4道hard、分值、CheckTotal上下界和完整两子问",
+    "reason": "先声明初始化再嵌套STEP枚举，不能只摘(b)丢数组前置结果",
+    "status": "已核验：QP+对应MS全文相关段；全部登记页PDF原页面已视觉复核",
+    "qualification": "原题适配当前AS范围；保持该题官方评分上限与替代答案，不引入通用M1/A1/FT。",
+    "syllabusMapping": [
+      "S11.04"
+    ],
+    "inserts": [
+      {
+        "path": "9618_w25_in_22.pdf",
+        "pages": [
+          2,
+          3
+        ],
+        "status": "封面及相关函数表原页已核验",
+        "sourceURL": "https://pastpapers.papacambridge.com/directories/CAIE/CAIE-pastpapers/upload/9618_w25_in_22.pdf",
+        "sha256": "6a80eadc88d53a81b214eb92e15a51edde0e69e7c85cda1f2c9d386882f5b744"
+      }
+    ],
+    "prerequisite": "060、061、074、076",
+    "mainAbility": "先声明初始化再嵌套STEP枚举，不能只摘(b)丢数组前置结果",
+    "lessonScopeIds": [
+      "S11.04"
+    ],
+    "supportingKnowledge": [
+      "S10.03",
+      "S10.05",
+      "S11.02"
+    ]
+  },
+  {
+    "id": "E092",
+    "lesson": 78,
+    "syllabusCode": "9618",
+    "year": 2025,
+    "series": "Oct/Nov",
+    "component": 22,
+    "stem": "w25_22",
+    "parts": [
+      {
+        "part": "2",
+        "marks": 5
+      }
+    ],
+    "marks": 5,
+    "qp": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2025-Oct-Nov/9618_w25_qp_22.pdf",
+      "filename": "9618_w25_qp_22.pdf",
+      "sha256": "02da3baced99f059667fc7619cca0e779db8ae369a250a1106b4c0aa55f0c4e8",
+      "pages": 20,
+      "textChars": 7375
+    },
+    "ms": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2025-Oct-Nov/9618_w25_ms_22.pdf",
+      "filename": "9618_w25_ms_22.pdf",
+      "sha256": "1fef4ad8713f2424f09545464f1b31af5ee2ee1d9d38435f7487eea2d4278532",
+      "pages": 15,
+      "textChars": 24832
+    },
+    "qpPages": [
+      3
+    ],
+    "msPages": [
+      6,
+      7
+    ],
+    "context": "20个上限、99.9哨兵不保存、REAL array全部规则",
+    "reason": "两个终止条件与零有效输入，flowchart也检验循环语义",
+    "status": "已核验：QP+对应MS全文相关段；全部登记页PDF原页面已视觉复核",
+    "qualification": "原题适配当前AS范围；保持该题官方评分上限与替代答案，不引入通用M1/A1/FT。",
+    "syllabusMapping": [
+      "S11.04"
+    ],
+    "inserts": [
+      {
+        "path": "9618_w25_in_22.pdf",
+        "pages": [
+          2,
+          3
+        ],
+        "status": "封面及相关函数表原页已核验",
+        "sourceURL": "https://pastpapers.papacambridge.com/directories/CAIE/CAIE-pastpapers/upload/9618_w25_in_22.pdf",
+        "sha256": "6a80eadc88d53a81b214eb92e15a51edde0e69e7c85cda1f2c9d386882f5b744"
+      }
+    ],
+    "prerequisite": "053、076、077",
+    "mainAbility": "两个终止条件与零有效输入，flowchart也检验循环语义",
+    "lessonScopeIds": [
+      "S11.04"
+    ],
+    "supportingKnowledge": [
+      "S9.07",
+      "S10.05"
+    ]
+  },
+  {
+    "id": "E093",
+    "lesson": 79,
+    "syllabusCode": "9618",
+    "year": 2023,
+    "series": "Oct/Nov",
+    "component": 22,
+    "stem": "w23_22",
+    "parts": [
+      {
+        "part": "2(b)",
+        "marks": 2
+      }
+    ],
+    "marks": 2,
+    "qp": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2023-Oct-Nov/9618_w23_qp_22.pdf",
+      "filename": "9618_w23_qp_22.pdf",
+      "sha256": "8e46de8183ecf792adf5dd86a42d8868952822bb56d349918b594a08d720f5f4",
+      "pages": 20,
+      "textChars": 57214
+    },
+    "ms": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2023-Oct-Nov/9618_w23_ms_22.pdf",
+      "filename": "9618_w23_ms_22.pdf",
+      "sha256": "168281052448ad61bc0eb52cde0fa8e1714b450e08e9826abe80a8423b342a9a",
+      "pages": 14,
+      "textChars": 24499
+    },
+    "qpPages": [
+      4,
+      5
+    ],
+    "msPages": [
+      5
+    ],
+    "context": "完整27开始/0停止输入条件，明确前题语境已见",
+    "reason": "justify条件循环；不重复要求重画L054流程图",
+    "status": "已核验：QP+对应MS全文相关段；全部登记页PDF原页面已视觉复核",
+    "qualification": "原题适配当前AS范围；保持该题官方评分上限与替代答案，不引入通用M1/A1/FT。",
+    "syllabusMapping": [
+      "S11.05"
+    ],
+    "inserts": [
+      {
+        "path": "9618_w23_in_22.pdf",
+        "pages": [
+          2,
+          3
+        ],
+        "status": "封面及相关函数表原页已核验",
+        "sourceURL": "https://pastpapers.papacambridge.com/directories/CAIE/CAIE-pastpapers/upload/9618_w23_in_22.pdf",
+        "sha256": "5a11f293a6e0cf6efcaceb2eff67244c8349a90f99404454e24b0b929d99e838"
+      }
+    ],
+    "prerequisite": "077、078",
+    "mainAbility": "justify条件循环；不重复要求重画L054流程图",
+    "lessonScopeIds": [
+      "S11.05"
+    ],
+    "supportingKnowledge": []
+  },
+  {
+    "id": "E094",
+    "lesson": 80,
+    "syllabusCode": "9618",
+    "year": 2023,
+    "series": "May/June",
+    "component": 22,
+    "stem": "s23_22",
+    "parts": [
+      {
+        "part": "5(a)",
+        "marks": 3
+      },
+      {
+        "part": "5(b)",
+        "marks": 1
+      }
+    ],
+    "marks": 4,
+    "qp": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2023-May-June/9618_s23_qp_22.pdf",
+      "filename": "9618_s23_qp_22.pdf",
+      "sha256": "41216c66a226bd48b6125b966c2d348a4d8cd55399d38f45d810653a949d1ce8",
+      "pages": 20,
+      "textChars": 66279
+    },
+    "ms": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2023-May-June/9618_s23_ms_22.pdf",
+      "filename": "9618_s23_ms_22.pdf",
+      "sha256": "932fc08bedf23d5458a5eee2d5658be2fd03d67ca1cfd9f0da862c0d2f1570db",
+      "pages": 14,
+      "textChars": 58681
+    },
+    "qpPages": [
+      8
+    ],
+    "msPages": [
+      5
+    ],
+    "context": "完整DisplaySqrt及主程序、BYREF参数与输出顺序",
+    "reason": "跟踪调用者变量被改，解释编译器为何不识别逻辑错误",
+    "status": "已核验：QP+对应MS全文相关段；全部登记页PDF原页面已视觉复核",
+    "qualification": "原题适配当前AS范围；保持该题官方评分上限与替代答案，不引入通用M1/A1/FT。",
+    "syllabusMapping": [
+      "S11.06",
+      "S12.04"
+    ],
+    "inserts": [
+      {
+        "path": "9618_s23_in_22.pdf",
+        "pages": [
+          2,
+          3
+        ],
+        "status": "封面及相关函数表原页已核验",
+        "sourceURL": "https://pastpapers.papacambridge.com/directories/CAIE/CAIE-pastpapers/upload/9618_s23_in_22.pdf",
+        "sha256": "c60f040e5705d1286cac6c329fe3d4dbe971682ac2afd509c99269790ba15665"
+      }
+    ],
+    "prerequisite": "058、073、075–079；030",
+    "mainAbility": "跟踪调用者变量被改，解释编译器为何不识别逻辑错误",
+    "lessonScopeIds": [
+      "S11.06"
+    ],
+    "supportingKnowledge": [
+      "S5.04"
+    ]
+  },
+  {
+    "id": "E095",
+    "lesson": 81,
+    "syllabusCode": "9618",
+    "year": 2023,
+    "series": "May/June",
+    "component": 22,
+    "stem": "s23_22",
+    "parts": [
+      {
+        "part": "4",
+        "marks": 6
+      }
+    ],
+    "marks": 6,
+    "qp": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2023-May-June/9618_s23_qp_22.pdf",
+      "filename": "9618_s23_qp_22.pdf",
+      "sha256": "41216c66a226bd48b6125b966c2d348a4d8cd55399d38f45d810653a949d1ce8",
+      "pages": 20,
+      "textChars": 66279
+    },
+    "ms": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2023-May-June/9618_s23_ms_22.pdf",
+      "filename": "9618_s23_ms_22.pdf",
+      "sha256": "932fc08bedf23d5458a5eee2d5658be2fd03d67ca1cfd9f0da862c0d2f1570db",
+      "pages": 14,
+      "textChars": 58681
+    },
+    "qpPages": [
+      6
+    ],
+    "msPages": [
+      5
+    ],
+    "context": "GetNum完整接口、示例及对应insert函数",
+    "reason": "遍历字符串、大小写敏感、返回计数",
+    "status": "已核验：QP+对应MS全文相关段；全部登记页PDF原页面已视觉复核",
+    "qualification": "MS共6分；初始化不可另编成第7个得分点。",
+    "syllabusMapping": [
+      "S11.07",
+      "S11.08"
+    ],
+    "inserts": [
+      {
+        "path": "9618_s23_in_22.pdf",
+        "pages": [
+          2,
+          3
+        ],
+        "status": "封面及相关函数表原页已核验",
+        "sourceURL": "https://pastpapers.papacambridge.com/directories/CAIE/CAIE-pastpapers/upload/9618_s23_in_22.pdf",
+        "sha256": "c60f040e5705d1286cac6c329fe3d4dbe971682ac2afd509c99269790ba15665"
+      }
+    ],
+    "prerequisite": "075、077、080",
+    "mainAbility": "遍历字符串、大小写敏感、返回计数",
+    "lessonScopeIds": [
+      "S11.07",
+      "S11.08"
+    ],
+    "supportingKnowledge": [
+      "S11.03",
+      "S11.04"
+    ]
+  },
+  {
+    "id": "E096",
+    "lesson": 82,
+    "syllabusCode": "9618",
+    "year": 2025,
+    "series": "Oct/Nov",
+    "component": 22,
+    "stem": "w25_22",
+    "parts": [
+      {
+        "part": "8(b)",
+        "marks": 7
+      }
+    ],
+    "marks": 7,
+    "qp": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2025-Oct-Nov/9618_w25_qp_22.pdf",
+      "filename": "9618_w25_qp_22.pdf",
+      "sha256": "02da3baced99f059667fc7619cca0e779db8ae369a250a1106b4c0aa55f0c4e8",
+      "pages": 20,
+      "textChars": 7375
+    },
+    "ms": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2025-Oct-Nov/9618_w25_ms_22.pdf",
+      "filename": "9618_w25_ms_22.pdf",
+      "sha256": "1fef4ad8713f2424f09545464f1b31af5ee2ee1d9d38435f7487eea2d4278532",
+      "pages": 15,
+      "textChars": 24832
+    },
+    "qpPages": [
+      14,
+      16,
+      17
+    ],
+    "msPages": [
+      14
+    ],
+    "context": "7000个Loans records、unused规则、NewLoan接口全部条件",
+    "reason": "尽早停在首个空位，数组满返回FALSE，回应efficient",
+    "status": "已核验：QP+对应MS全文相关段；全部登记页PDF原页面已视觉复核",
+    "qualification": "原题适配当前AS范围；保持该题官方评分上限与替代答案，不引入通用M1/A1/FT。",
+    "syllabusMapping": [
+      "S11.09"
+    ],
+    "inserts": [
+      {
+        "path": "9618_w25_in_22.pdf",
+        "pages": [
+          2,
+          3
+        ],
+        "status": "封面及相关函数表原页已核验",
+        "sourceURL": "https://pastpapers.papacambridge.com/directories/CAIE/CAIE-pastpapers/upload/9618_w25_in_22.pdf",
+        "sha256": "6a80eadc88d53a81b214eb92e15a51edde0e69e7c85cda1f2c9d386882f5b744"
+      }
+    ],
+    "prerequisite": "059、061、063、077–081",
+    "mainAbility": "尽早停在首个空位，数组满返回FALSE，回应efficient",
+    "lessonScopeIds": [
+      "S11.09"
+    ],
+    "supportingKnowledge": [
+      "S10.02",
+      "S10.05",
+      "S10.06",
+      "S11.07"
+    ]
+  },
+  {
+    "id": "E097",
+    "lesson": 83,
+    "syllabusCode": "9618",
+    "year": 2025,
+    "series": "May/June",
+    "component": 21,
+    "stem": "s25_21",
+    "parts": [
+      {
+        "part": "3",
+        "marks": 8
+      }
+    ],
+    "marks": 8,
+    "qp": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2025-May-June/9618_s25_qp_21.pdf",
+      "filename": "9618_s25_qp_21.pdf",
+      "sha256": "bdc294eb8a519647f24d2fc53053504a0a03c164625c043397a6533ddb09e5b7",
+      "pages": 20,
+      "textChars": 7432
+    },
+    "ms": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2025-May-June/9618_s25_ms_21.pdf",
+      "filename": "9618_s25_ms_21.pdf",
+      "sha256": "cc0ce7f995d039ebed35955a41a87d3d09f6e25470afcf0868f8af897ac9486b",
+      "pages": 14,
+      "textChars": 25702
+    },
+    "qpPages": [
+      7
+    ],
+    "msPages": [
+      8
+    ],
+    "context": "完整五步guessing game、RAND/INT定义及不验证输入条件",
+    "reason": "独立完整程序，内循环持续输入且随机值只生成一次",
+    "status": "已核验：QP+对应MS全文相关段；全部登记页PDF原页面已视觉复核",
+    "qualification": "原题适配当前AS范围；保持该题官方评分上限与替代答案，不引入通用M1/A1/FT。",
+    "syllabusMapping": [
+      "S11.01",
+      "S11.04"
+    ],
+    "inserts": [
+      {
+        "path": "9618_s25_in_21.pdf",
+        "pages": [
+          2,
+          3
+        ],
+        "status": "封面及相关函数表原页已核验",
+        "sourceURL": "https://pastpapers.papacambridge.com/directories/CAIE/CAIE-pastpapers/upload/9618_s25_in_21.pdf",
+        "sha256": "9cdddef3569351a65ebe90f4d28825329cbf7c0171a99d2d881b69b96471ea69"
+      }
+    ],
+    "prerequisite": "072–082",
+    "mainAbility": "独立完整程序，内循环持续输入且随机值只生成一次",
+    "lessonScopeIds": [
+      "S11.01",
+      "S11.04",
+      "S11.06",
+      "S11.07"
+    ],
+    "supportingKnowledge": [
+      "S11.03"
+    ]
+  },
+  {
+    "id": "E098",
+    "lesson": 84,
+    "syllabusCode": "9618",
+    "year": 2023,
+    "series": "May/June",
+    "component": 21,
+    "stem": "s23_21",
+    "parts": [
+      {
+        "part": "5(a)(i)",
+        "marks": 2
+      },
+      {
+        "part": "5(a)(ii)",
+        "marks": 1
+      }
+    ],
+    "marks": 3,
+    "qp": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2023-May-June/9618_s23_qp_21.pdf",
+      "filename": "9618_s23_qp_21.pdf",
+      "sha256": "ec3ce014e637b1bba40235dbcd807e7749ed80d0cc816c7862483a484b516d5e",
+      "pages": 20,
+      "textChars": 65261
+    },
+    "ms": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2023-May-June/9618_s23_ms_21.pdf",
+      "filename": "9618_s23_ms_21.pdf",
+      "sha256": "f6709d9da90d460b2192f133f1378928029c5431baf4cae26ce0f275c3b311e5",
+      "pages": 11,
+      "textChars": 47636
+    },
+    "qpPages": [
+      9
+    ],
+    "msPages": [
+      6
+    ],
+    "context": "竞争上市、需求变化的全部website条件",
+    "reason": "比较waterfall局限与适用模型，而非复述阶段",
+    "status": "已核验：QP+对应MS全文相关段；全部登记页PDF原页面已视觉复核",
+    "qualification": "原题适配当前AS范围；保持该题官方评分上限与替代答案，不引入通用M1/A1/FT。",
+    "syllabusMapping": [
+      "S12.01"
+    ],
+    "inserts": [
+      {
+        "path": "9618_s23_in_21.pdf",
+        "pages": [
+          2,
+          3
+        ],
+        "status": "封面及相关函数表原页已核验",
+        "sourceURL": "https://pastpapers.papacambridge.com/directories/CAIE/CAIE-pastpapers/upload/9618_s23_in_21.pdf",
+        "sha256": "5a979a2fb7d2efd4afb3cc4439f2ea8820861b573f4261270d11405bd8954199"
+      }
+    ],
+    "prerequisite": "050、072、083",
+    "mainAbility": "比较waterfall局限与适用模型，而非复述阶段",
+    "lessonScopeIds": [
+      "S12.01"
+    ],
+    "supportingKnowledge": []
+  },
+  {
+    "id": "E099",
+    "lesson": 85,
+    "syllabusCode": "9618",
+    "year": 2023,
+    "series": "Oct/Nov",
+    "component": 22,
+    "stem": "w23_22",
+    "parts": [
+      {
+        "part": "7(a)",
+        "marks": 4
+      },
+      {
+        "part": "7(b)",
+        "marks": 2
+      }
+    ],
+    "marks": 6,
+    "qp": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2023-Oct-Nov/9618_w23_qp_22.pdf",
+      "filename": "9618_w23_qp_22.pdf",
+      "sha256": "8e46de8183ecf792adf5dd86a42d8868952822bb56d349918b594a08d720f5f4",
+      "pages": 20,
+      "textChars": 57214
+    },
+    "ms": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2023-Oct-Nov/9618_w23_ms_22.pdf",
+      "filename": "9618_w23_ms_22.pdf",
+      "sha256": "168281052448ad61bc0eb52cde0fa8e1714b450e08e9826abe80a8423b342a9a",
+      "pages": 14,
+      "textChars": 24499
+    },
+    "qpPages": [
+      14
+    ],
+    "msPages": [
+      10
+    ],
+    "context": "六个module接口、已给结构及conditional diamond",
+    "reason": "层级、数据方向与条件调用；不能只画方框",
+    "status": "已核验：QP+对应MS全文相关段；全部登记页PDF原页面已视觉复核",
+    "qualification": "原题适配当前AS范围；保持该题官方评分上限与替代答案，不引入通用M1/A1/FT。",
+    "syllabusMapping": [
+      "S12.02"
+    ],
+    "inserts": [
+      {
+        "path": "9618_w23_in_22.pdf",
+        "pages": [
+          2,
+          3
+        ],
+        "status": "封面及相关函数表原页已核验",
+        "sourceURL": "https://pastpapers.papacambridge.com/directories/CAIE/CAIE-pastpapers/upload/9618_w23_in_22.pdf",
+        "sha256": "5a11f293a6e0cf6efcaceb2eff67244c8349a90f99404454e24b0b929d99e838"
+      }
+    ],
+    "prerequisite": "050、080、081、084",
+    "mainAbility": "层级、数据方向与条件调用；不能只画方框",
+    "lessonScopeIds": [
+      "S12.02"
+    ],
+    "supportingKnowledge": [
+      "S11.06",
+      "S11.07"
+    ]
+  },
+  {
+    "id": "E100",
+    "lesson": 86,
+    "syllabusCode": "9618",
+    "year": 2023,
+    "series": "May/June",
+    "component": 22,
+    "stem": "s23_22",
+    "parts": [
+      {
+        "part": "7(b)",
+        "marks": 4
+      }
+    ],
+    "marks": 4,
+    "qp": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2023-May-June/9618_s23_qp_22.pdf",
+      "filename": "9618_s23_qp_22.pdf",
+      "sha256": "41216c66a226bd48b6125b966c2d348a4d8cd55399d38f45d810653a949d1ce8",
+      "pages": 20,
+      "textChars": 66279
+    },
+    "ms": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2023-May-June/9618_s23_ms_22.pdf",
+      "filename": "9618_s23_ms_22.pdf",
+      "sha256": "932fc08bedf23d5458a5eee2d5658be2fd03d67ca1cfd9f0da862c0d2f1570db",
+      "pages": 14,
+      "textChars": 58681
+    },
+    "qpPages": [
+      15
+    ],
+    "msPages": [
+      10
+    ],
+    "context": "PIN系统四状态、事件表、初始箭头及部分图",
+    "reason": "按当前状态与事件补图，保留自环",
+    "status": "已核验：QP+对应MS全文相关段；全部登记页PDF原页面已视觉复核",
+    "qualification": "原题适配当前AS范围；保持该题官方评分上限与替代答案，不引入通用M1/A1/FT。",
+    "syllabusMapping": [
+      "S12.03"
+    ],
+    "inserts": [
+      {
+        "path": "9618_s23_in_22.pdf",
+        "pages": [
+          2,
+          3
+        ],
+        "status": "封面及相关函数表原页已核验",
+        "sourceURL": "https://pastpapers.papacambridge.com/directories/CAIE/CAIE-pastpapers/upload/9618_s23_in_22.pdf",
+        "sha256": "c60f040e5705d1286cac6c329fe3d4dbe971682ac2afd509c99269790ba15665"
+      }
+    ],
+    "prerequisite": "054、084",
+    "mainAbility": "按当前状态与事件补图，保留自环",
+    "lessonScopeIds": [
+      "S12.03"
+    ],
+    "supportingKnowledge": [
+      "S9.09"
+    ]
+  },
+  {
+    "id": "E101",
+    "lesson": 87,
+    "syllabusCode": "9618",
+    "year": 2024,
+    "series": "May/June",
+    "component": 22,
+    "stem": "s24_22",
+    "parts": [
+      {
+        "part": "5(a)(i)",
+        "marks": 3
+      },
+      {
+        "part": "5(a)(ii)",
+        "marks": 2
+      },
+      {
+        "part": "5(b)",
+        "marks": 1
+      }
+    ],
+    "marks": 6,
+    "qp": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2024-May-June/9618_s24_qp_22.pdf",
+      "filename": "9618_s24_qp_22.pdf",
+      "sha256": "2a454e3660ac7d44569a829e3039acdd32204216385d645a370f1c00a7714c46",
+      "pages": 24,
+      "textChars": 69469
+    },
+    "ms": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2024-May-June/9618_s24_ms_22.pdf",
+      "filename": "9618_s24_ms_22.pdf",
+      "sha256": "901cb6ebf4cafc157e39b55f5e764081d9d30384b0ae8f9d3ea5f795cf475d9d",
+      "pages": 12,
+      "textChars": 45782
+    },
+    "qpPages": [
+      10,
+      11
+    ],
+    "msPages": [
+      8
+    ],
+    "context": "完整Process伪代码、200元素索引、CASE及所有错误要求",
+    "reason": "错误分类、不可达分支、运行时访问分别论证",
+    "status": "已核验：QP+对应MS全文相关段；全部登记页PDF原页面已视觉复核",
+    "qualification": "原题适配当前AS范围；保持该题官方评分上限与替代答案，不引入通用M1/A1/FT。",
+    "syllabusMapping": [
+      "S12.04"
+    ],
+    "inserts": [
+      {
+        "path": "9618_s24_in_22.pdf",
+        "pages": [
+          2,
+          3
+        ],
+        "status": "封面及相关函数表原页已核验",
+        "sourceURL": "https://pastpapers.papacambridge.com/directories/CAIE/CAIE-pastpapers/upload/9618_s24_in_22.pdf",
+        "sha256": "6dc00819a760d2f178c5a8c0b8cd4cbf6bc644447fcbb002adb9fc8303e17ef3"
+      }
+    ],
+    "prerequisite": "060、076–081",
+    "mainAbility": "错误分类、不可达分支、运行时访问分别论证",
+    "lessonScopeIds": [
+      "S12.04"
+    ],
+    "supportingKnowledge": [
+      "S10.03",
+      "S11.04"
+    ]
+  },
+  {
+    "id": "E102",
+    "lesson": 88,
+    "syllabusCode": "9618",
+    "year": 2025,
+    "series": "May/June",
+    "component": 22,
+    "stem": "s25_22",
+    "parts": [
+      {
+        "part": "2(b)(ii)",
+        "marks": 2
+      },
+      {
+        "part": "2(b)(iii)",
+        "marks": 2
+      }
+    ],
+    "marks": 4,
+    "qp": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2025-May-June/9618_s25_qp_22.pdf",
+      "filename": "9618_s25_qp_22.pdf",
+      "sha256": "d0888a6c10be5f3ad806b71e98de7586274fe1aeb801aa4b82059f06de6e857c",
+      "pages": 20,
+      "textChars": 7375
+    },
+    "ms": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2025-May-June/9618_s25_ms_22.pdf",
+      "filename": "9618_s25_ms_22.pdf",
+      "sha256": "1a983412767fb5130f36d7b3ddc317384174833647aec1d75a24c41b7bf10715",
+      "pages": 20,
+      "textChars": 35735
+    },
+    "qpPages": [
+      4,
+      5
+    ],
+    "msPages": [
+      8
+    ],
+    "context": "bonus计算模块条件和测试要求",
+    "reason": "stub隔离未完成模块与black-box从规格找错",
+    "status": "已核验：QP+对应MS全文相关段；全部登记页PDF原页面已视觉复核",
+    "qualification": "原题适配当前AS范围；保持该题官方评分上限与替代答案，不引入通用M1/A1/FT。",
+    "syllabusMapping": [
+      "S12.05",
+      "S12.04"
+    ],
+    "inserts": [
+      {
+        "path": "9618_s25_in_22.pdf",
+        "pages": [
+          2,
+          3
+        ],
+        "status": "封面及相关函数表原页已核验",
+        "sourceURL": "https://pastpapers.papacambridge.com/directories/CAIE/CAIE-pastpapers/upload/9618_s25_in_22.pdf",
+        "sha256": "d23df37d1155085f9d15335fce839aac65add7a8d992d2c4bde54027296e50ba"
+      }
+    ],
+    "prerequisite": "084、085、087",
+    "mainAbility": "stub隔离未完成模块与black-box从规格找错",
+    "lessonScopeIds": [
+      "S12.05"
+    ],
+    "supportingKnowledge": [
+      "S11.06"
+    ]
+  },
+  {
+    "id": "E103",
+    "lesson": 88,
+    "syllabusCode": "9618",
+    "year": 2025,
+    "series": "Oct/Nov",
+    "component": 22,
+    "stem": "w25_22",
+    "parts": [
+      {
+        "part": "5(b)",
+        "marks": 1
+      }
+    ],
+    "marks": 1,
+    "qp": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2025-Oct-Nov/9618_w25_qp_22.pdf",
+      "filename": "9618_w25_qp_22.pdf",
+      "sha256": "02da3baced99f059667fc7619cca0e779db8ae369a250a1106b4c0aa55f0c4e8",
+      "pages": 20,
+      "textChars": 7375
+    },
+    "ms": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2025-Oct-Nov/9618_w25_ms_22.pdf",
+      "filename": "9618_w25_ms_22.pdf",
+      "sha256": "1fef4ad8713f2424f09545464f1b31af5ee2ee1d9d38435f7487eea2d4278532",
+      "pages": 15,
+      "textChars": 24832
+    },
+    "qpPages": [
+      8
+    ],
+    "msPages": [
+      10
+    ],
+    "context": "最后用户测试完整语境",
+    "reason": "acceptance目的，补足与内部测试区别",
+    "status": "已核验：QP+对应MS全文相关段；全部登记页PDF原页面已视觉复核",
+    "qualification": "原题适配当前AS范围；保持该题官方评分上限与替代答案，不引入通用M1/A1/FT。",
+    "syllabusMapping": [
+      "S12.05"
+    ],
+    "inserts": [
+      {
+        "path": "9618_w25_in_22.pdf",
+        "pages": [
+          2,
+          3
+        ],
+        "status": "封面及相关函数表原页已核验",
+        "sourceURL": "https://pastpapers.papacambridge.com/directories/CAIE/CAIE-pastpapers/upload/9618_w25_in_22.pdf",
+        "sha256": "6a80eadc88d53a81b214eb92e15a51edde0e69e7c85cda1f2c9d386882f5b744"
+      }
+    ],
+    "prerequisite": "084、085、087",
+    "mainAbility": "acceptance目的，补足与内部测试区别",
+    "lessonScopeIds": [
+      "S12.05"
+    ],
+    "supportingKnowledge": []
+  },
+  {
+    "id": "E104",
+    "lesson": 89,
+    "syllabusCode": "9618",
+    "year": 2025,
+    "series": "May/June",
+    "component": 21,
+    "stem": "s25_21",
+    "parts": [
+      {
+        "part": "6(a)",
+        "marks": 4
+      }
+    ],
+    "marks": 4,
+    "qp": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2025-May-June/9618_s25_qp_21.pdf",
+      "filename": "9618_s25_qp_21.pdf",
+      "sha256": "bdc294eb8a519647f24d2fc53053504a0a03c164625c043397a6533ddb09e5b7",
+      "pages": 20,
+      "textChars": 7432
+    },
+    "ms": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2025-May-June/9618_s25_ms_21.pdf",
+      "filename": "9618_s25_ms_21.pdf",
+      "sha256": "cc0ce7f995d039ebed35955a41a87d3d09f6e25470afcf0868f8af897ac9486b",
+      "pages": 14,
+      "textChars": 25702
+    },
+    "qpPages": [
+      12
+    ],
+    "msPages": [
+      10
+    ],
+    "context": "sensor只能产生非负INTEGER、0–60、normal样例",
+    "reason": "测试计划必须尊重输入域，三列成组评分",
+    "status": "已核验：QP+对应MS全文相关段；全部登记页PDF原页面已视觉复核",
+    "qualification": "原题适配当前AS范围；保持该题官方评分上限与替代答案，不引入通用M1/A1/FT。",
+    "syllabusMapping": [
+      "S12.06",
+      "S12.07"
+    ],
+    "inserts": [
+      {
+        "path": "9618_s25_in_21.pdf",
+        "pages": [
+          2,
+          3
+        ],
+        "status": "封面及相关函数表原页已核验",
+        "sourceURL": "https://pastpapers.papacambridge.com/directories/CAIE/CAIE-pastpapers/upload/9618_s25_in_21.pdf",
+        "sha256": "9cdddef3569351a65ebe90f4d28825329cbf7c0171a99d2d881b69b96471ea69"
+      }
+    ],
+    "prerequisite": "087、088",
+    "mainAbility": "测试计划必须尊重输入域，三列成组评分",
+    "lessonScopeIds": [
+      "S12.06"
+    ],
+    "supportingKnowledge": [
+      "S10.01"
+    ]
+  },
+  {
+    "id": "E105",
+    "lesson": 90,
+    "syllabusCode": "9618",
+    "year": 2023,
+    "series": "Oct/Nov",
+    "component": 22,
+    "stem": "w23_22",
+    "parts": [
+      {
+        "part": "4(b)",
+        "marks": 3
+      }
+    ],
+    "marks": 3,
+    "qp": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2023-Oct-Nov/9618_w23_qp_22.pdf",
+      "filename": "9618_w23_qp_22.pdf",
+      "sha256": "8e46de8183ecf792adf5dd86a42d8868952822bb56d349918b594a08d720f5f4",
+      "pages": 20,
+      "textChars": 57214
+    },
+    "ms": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2023-Oct-Nov/9618_w23_ms_22.pdf",
+      "filename": "9618_w23_ms_22.pdf",
+      "sha256": "168281052448ad61bc0eb52cde0fa8e1714b450e08e9826abe80a8423b342a9a",
+      "pages": 14,
+      "textChars": 24499
+    },
+    "qpPages": [
+      8,
+      9
+    ],
+    "msPages": [
+      7
+    ],
+    "context": "Count奇偶算法完整行为、99停止、已有mixed例及valid要求",
+    "reason": "选only odd/only even/立即终止等不同有效路径，不能写无效值",
+    "status": "已核验：QP+对应MS全文相关段；全部登记页PDF原页面已视觉复核",
+    "qualification": "QP要求不含invalid；MS有缺99终止的备选，与题干存在表面冲突。忠实保留并注明；示范采用仅奇数、仅偶数、立即99等有效路径。",
+    "syllabusMapping": [
+      "S12.07"
+    ],
+    "inserts": [
+      {
+        "path": "9618_w23_in_22.pdf",
+        "pages": [
+          2,
+          3
+        ],
+        "status": "封面及相关函数表原页已核验",
+        "sourceURL": "https://pastpapers.papacambridge.com/directories/CAIE/CAIE-pastpapers/upload/9618_w23_in_22.pdf",
+        "sha256": "5a11f293a6e0cf6efcaceb2eff67244c8349a90f99404454e24b0b929d99e838"
+      }
+    ],
+    "prerequisite": "056、078、089",
+    "mainAbility": "选only odd/only even/立即终止等不同有效路径，不能写无效值",
+    "lessonScopeIds": [
+      "S12.07"
+    ],
+    "supportingKnowledge": [
+      "S11.04"
+    ]
+  },
+  {
+    "id": "E106",
+    "lesson": 91,
+    "syllabusCode": "9618",
+    "year": 2025,
+    "series": "May/June",
+    "component": 22,
+    "stem": "s25_22",
+    "parts": [
+      {
+        "part": "1(b)(i)",
+        "marks": 3
+      }
+    ],
+    "marks": 3,
+    "qp": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2025-May-June/9618_s25_qp_22.pdf",
+      "filename": "9618_s25_qp_22.pdf",
+      "sha256": "d0888a6c10be5f3ad806b71e98de7586274fe1aeb801aa4b82059f06de6e857c",
+      "pages": 20,
+      "textChars": 7375
+    },
+    "ms": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2025-May-June/9618_s25_ms_22.pdf",
+      "filename": "9618_s25_ms_22.pdf",
+      "sha256": "1a983412767fb5130f36d7b3ddc317384174833647aec1d75a24c41b7bf10715",
+      "pages": 20,
+      "textChars": 35735
+    },
+    "qpPages": [
+      2
+    ],
+    "msPages": [
+      6
+    ],
+    "context": "adaptive maintenance完整问题",
+    "reason": "仅选有效3分小问；(a)(ii)/(b)(ii)统一给分不入选",
+    "status": "已核验：QP+对应MS全文相关段；全部登记页PDF原页面已视觉复核",
+    "qualification": "只用有效1(b)(i)；此卷1(a)(ii)/1(b)(ii)统一给满分，未入选。",
+    "syllabusMapping": [
+      "S12.08"
+    ],
+    "inserts": [
+      {
+        "path": "9618_s25_in_22.pdf",
+        "pages": [
+          2,
+          3
+        ],
+        "status": "封面及相关函数表原页已核验",
+        "sourceURL": "https://pastpapers.papacambridge.com/directories/CAIE/CAIE-pastpapers/upload/9618_s25_in_22.pdf",
+        "sha256": "d23df37d1155085f9d15335fce839aac65add7a8d992d2c4bde54027296e50ba"
+      }
+    ],
+    "prerequisite": "084、087、089",
+    "mainAbility": "仅选有效3分小问；(a)(ii)/(b)(ii)统一给分不入选",
+    "lessonScopeIds": [
+      "S12.08"
+    ],
+    "supportingKnowledge": []
+  },
+  {
+    "id": "E107",
+    "lesson": 92,
+    "syllabusCode": "9618",
+    "year": 2025,
+    "series": "Oct/Nov",
+    "component": 22,
+    "stem": "w25_22",
+    "parts": [
+      {
+        "part": "3(c)",
+        "marks": 3
+      }
+    ],
+    "marks": 3,
+    "qp": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2025-Oct-Nov/9618_w25_qp_22.pdf",
+      "filename": "9618_w25_qp_22.pdf",
+      "sha256": "02da3baced99f059667fc7619cca0e779db8ae369a250a1106b4c0aa55f0c4e8",
+      "pages": 20,
+      "textChars": 7375
+    },
+    "ms": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2025-Oct-Nov/9618_w25_ms_22.pdf",
+      "filename": "9618_w25_ms_22.pdf",
+      "sha256": "1fef4ad8713f2424f09545464f1b31af5ee2ee1d9d38435f7487eea2d4278532",
+      "pages": 15,
+      "textChars": 24832
+    },
+    "qpPages": [
+      4,
+      5
+    ],
+    "msPages": [
+      8
+    ],
+    "context": "三个字段/分隔格式及加密后任意字符、最大99长度新要求",
+    "reason": "定位旧分隔方案失效原因并设计可解析新格式",
+    "status": "已核验：QP+对应MS全文相关段；全部登记页PDF原页面已视觉复核",
+    "qualification": "原题适配当前AS范围；保持该题官方评分上限与替代答案，不引入通用M1/A1/FT。",
+    "syllabusMapping": [
+      "S12.09"
+    ],
+    "inserts": [
+      {
+        "path": "9618_w25_in_22.pdf",
+        "pages": [
+          2,
+          3
+        ],
+        "status": "封面及相关函数表原页已核验",
+        "sourceURL": "https://pastpapers.papacambridge.com/directories/CAIE/CAIE-pastpapers/upload/9618_w25_in_22.pdf",
+        "sha256": "6a80eadc88d53a81b214eb92e15a51edde0e69e7c85cda1f2c9d386882f5b744"
+      }
+    ],
+    "prerequisite": "065、075、080–091",
+    "mainAbility": "定位旧分隔方案失效原因并设计可解析新格式",
+    "lessonScopeIds": [
+      "S12.09"
+    ],
+    "supportingKnowledge": [
+      "S10.07",
+      "S11.03"
+    ]
+  },
+  {
+    "id": "E108",
+    "lesson": 93,
+    "syllabusCode": "9618",
+    "year": 2025,
+    "series": "May/June",
+    "component": 21,
+    "stem": "s25_21",
+    "parts": [
+      {
+        "part": "6(a)",
+        "marks": 4
+      },
+      {
+        "part": "6(b)",
+        "marks": 8
+      }
+    ],
+    "marks": 12,
+    "qp": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2025-May-June/9618_s25_qp_21.pdf",
+      "filename": "9618_s25_qp_21.pdf",
+      "sha256": "bdc294eb8a519647f24d2fc53053504a0a03c164625c043397a6533ddb09e5b7",
+      "pages": 20,
+      "textChars": 7432
+    },
+    "ms": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2025-May-June/9618_s25_ms_21.pdf",
+      "filename": "9618_s25_ms_21.pdf",
+      "sha256": "cc0ce7f995d039ebed35955a41a87d3d09f6e25470afcf0868f8af897ac9486b",
+      "pages": 14,
+      "textChars": 25702
+    },
+    "qpPages": [
+      12,
+      13
+    ],
+    "msPages": [
+      10,
+      11
+    ],
+    "context": "完整sensor/Reading二维表及Sort接口",
+    "reason": "沿同一需求从test plan到同步交换两列，12分；6(a)为已见复用",
+    "status": "已核验：QP+对应MS全文相关段；全部登记页PDF原页面已视觉复核",
+    "qualification": "9个候选评分点、最高8分；每次同时交换两列。6(a)已在L089教过。",
+    "syllabusMapping": [
+      "S12.07",
+      "S10.06",
+      "S11.09"
+    ],
+    "inserts": [
+      {
+        "path": "9618_s25_in_21.pdf",
+        "pages": [
+          2,
+          3
+        ],
+        "status": "封面及相关函数表原页已核验",
+        "sourceURL": "https://pastpapers.papacambridge.com/directories/CAIE/CAIE-pastpapers/upload/9618_s25_in_21.pdf",
+        "sha256": "9cdddef3569351a65ebe90f4d28825329cbf7c0171a99d2d881b69b96471ea69"
+      }
+    ],
+    "prerequisite": "S9–S12全部",
+    "mainAbility": "沿同一需求从test plan到同步交换两列，12分；6(a)为已见复用",
+    "lessonScopeIds": [
+      "S9.01",
+      "S9.02",
+      "S9.03",
+      "S9.04",
+      "S9.05",
+      "S9.06",
+      "S9.07",
+      "S9.08",
+      "S9.09",
+      "S10.01",
+      "S10.02",
+      "S10.03",
+      "S10.04",
+      "S10.05",
+      "S10.06",
+      "S10.07",
+      "S10.08",
+      "S10.09",
+      "S10.10",
+      "S11.01",
+      "S11.02",
+      "S11.03",
+      "S11.04",
+      "S11.05",
+      "S11.06",
+      "S11.07",
+      "S11.08",
+      "S11.09",
+      "S12.01",
+      "S12.02",
+      "S12.03",
+      "S12.04",
+      "S12.05",
+      "S12.06",
+      "S12.07",
+      "S12.08",
+      "S12.09"
+    ],
+    "supportingKnowledge": [
+      "S10.05",
+      "S11.06"
+    ]
+  },
+  {
+    "id": "E109",
+    "lesson": 93,
+    "syllabusCode": "9618",
+    "year": 2024,
+    "series": "May/June",
+    "component": 22,
+    "stem": "s24_22",
+    "parts": [
+      {
+        "part": "8(a)",
+        "marks": 2
+      },
+      {
+        "part": "8(c)",
+        "marks": 8
+      }
+    ],
+    "marks": 10,
+    "qp": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2024-May-June/9618_s24_qp_22.pdf",
+      "filename": "9618_s24_qp_22.pdf",
+      "sha256": "2a454e3660ac7d44569a829e3039acdd32204216385d645a370f1c00a7714c46",
+      "pages": 24,
+      "textChars": 69469
+    },
+    "ms": {
+      "path": "/Users/kw/Documents/Teaching/AS CS 9618/past-papers/2024-May-June/9618_s24_ms_22.pdf",
+      "filename": "9618_s24_ms_22.pdf",
+      "sha256": "901cb6ebf4cafc157e39b55f5e764081d9d30384b0ae8f9d3ea5f795cf475d9d",
+      "pages": 12,
+      "textChars": 45782
+    },
+    "qpPages": [
+      18,
+      20,
+      21
+    ],
+    "msPages": [
+      10,
+      12
+    ],
+    "context": "保留8(b)中DeleteSpaces接口说明及样例（p18）；不要求完成其实现",
+    "reason": "模块化、文件APPEND、调用两函数、过滤及计数综合10分",
+    "status": "已核验：QP+对应MS全文相关段；全部登记页PDF原页面已视觉复核",
+    "qualification": "8(c)官方示例写OPEN，教师示范用当前guide的OPENFILE；官方原文不静默更正。只提供8(b)接口，不使用其示例实现。",
+    "syllabusMapping": [
+      "S9.02",
+      "S10.07"
+    ],
+    "inserts": [
+      {
+        "path": "9618_s24_in_22.pdf",
+        "pages": [
+          2,
+          3
+        ],
+        "status": "封面及相关函数表原页已核验",
+        "sourceURL": "https://pastpapers.papacambridge.com/directories/CAIE/CAIE-pastpapers/upload/9618_s24_in_22.pdf",
+        "sha256": "6dc00819a760d2f178c5a8c0b8cd4cbf6bc644447fcbb002adb9fc8303e17ef3"
+      }
+    ],
+    "prerequisite": "S9–S12全部",
+    "mainAbility": "模块化、文件APPEND、调用两函数、过滤及计数综合10分",
+    "lessonScopeIds": [
+      "S9.01",
+      "S9.02",
+      "S9.03",
+      "S9.04",
+      "S9.05",
+      "S9.06",
+      "S9.07",
+      "S9.08",
+      "S9.09",
+      "S10.01",
+      "S10.02",
+      "S10.03",
+      "S10.04",
+      "S10.05",
+      "S10.06",
+      "S10.07",
+      "S10.08",
+      "S10.09",
+      "S10.10",
+      "S11.01",
+      "S11.02",
+      "S11.03",
+      "S11.04",
+      "S11.05",
+      "S11.06",
+      "S11.07",
+      "S11.08",
+      "S11.09",
+      "S12.01",
+      "S12.02",
+      "S12.03",
+      "S12.04",
+      "S12.05",
+      "S12.06",
+      "S12.07",
+      "S12.08",
+      "S12.09"
+    ],
+    "supportingKnowledge": [
+      "S11.03",
+      "S11.07"
+    ]
+  }
+]

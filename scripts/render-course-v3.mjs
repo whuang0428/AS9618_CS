@@ -13,6 +13,7 @@ import { officialAsMapping } from "./syllabus-official-as-mapping.mjs";
 import { section3DiagramFiles } from "./course-v3-section3-diagrams.mjs";
 import { section2DiagramFiles } from "./course-v3-section2-diagrams.mjs";
 import { section1DiagramFiles } from "./course-v3-section1-diagrams.mjs";
+import { section4Assessment, section4MockQuestion } from './course-v3-section4-assessments.mjs';
 import { section4DiagramFiles } from "./course-v3-section4-diagrams.mjs";
 import { section8DiagramFiles } from "./course-v3-section8-diagrams.mjs";
 import { section11Assessments } from "./course-v3-section11-assessments.mjs";
@@ -31,8 +32,8 @@ const sourceCss = readFileSync(join(root, "web", "course-v3", "section-2", "cour
 const sourceJs = readFileSync(join(root, "web", "course-v3", "section-2", "course.js"), "utf8") + "\n" + readFileSync(join(root, "scripts/course-v3-classroom.js"), "utf8");
 const legacyMigration = JSON.parse(readFileSync(join(root, "scripts", "course-v2-migration.json"), "utf8"));
 const assessmentBank = JSON.parse(readFileSync(join(root, "scripts", "assessment-bank-contract.json"), "utf8"));
-assessmentBank.sets = assessmentBank.sets.map(set => set.id === section12Assessment.id ? section12Assessment : set);
-for (const replacement of [...section10Assessments, ...section11Assessments, ...section12MockQuestions]) {
+assessmentBank.sets = assessmentBank.sets.map(set => set.id === section4Assessment.id ? section4Assessment : set.id === section12Assessment.id ? section12Assessment : set);
+for (const replacement of [section4MockQuestion, ...section10Assessments, ...section11Assessments, ...section12MockQuestions]) {
   let matches = 0;
   for (const set of assessmentBank.sets) set.questions = set.questions.map(question => {
     if (question.id !== replacement.id) return question;
@@ -50,7 +51,7 @@ const escapeHtml = (value = "") => String(value)
   .replaceAll("'", "&#039;");
 const sha256 = (path) => createHash("sha256").update(readFileSync(path)).digest("hex");
 const write = (path, contents) => { mkdirSync(dirname(path), { recursive: true }); writeFileSync(path, contents); };
-const requirementCount = (lessons) => [3, 9, 10, 11].includes(lessons[0]?.section)
+const requirementCount = (lessons) => [3, 4, 9, 10, 11].includes(lessons[0]?.section)
   ? new Set(lessons.flatMap((lesson) => lesson.syllabusIds)).size
   : lessons.flatMap((lesson) => lesson.syllabusIds).length;
 const objectiveBadges = (ids) => ids.map((id) => `<span class="objective-badge">${escapeHtml(id)}</span>`).join("");
@@ -85,22 +86,22 @@ function renderAnalogy(material, section) {
 }
 
 function renderWorkedExample(material) {
-  return `<section class="teaching-material worked-example" data-material-type="worked-example" data-objectives="${material.objectiveIds.join(" ")}"><h4>Worked example · ${escapeHtml(material.title)}</h4><ol class="worked-steps">${material.steps.map(([label, text]) => `<li><strong>${escapeHtml(label)}</strong>${text.includes("\n") ? `<pre${material.objectiveIds.some(id=>/^S(?:9|10|11|12)\./.test(id)) ? ` tabindex="0" aria-label="${escapeHtml(label)}"` : ""}><code>${escapeHtml(text)}</code></pre>` : `<p>${escapeHtml(text)}</p>`}</li>`).join("")}</ol></section>`;
+  return `<section class="teaching-material worked-example" data-material-type="worked-example" data-objectives="${material.objectiveIds.join(" ")}"><h4>Worked example · ${escapeHtml(material.title)}</h4><ol class="worked-steps">${material.steps.map(([label, text]) => `<li><strong>${escapeHtml(label)}</strong>${text.includes("\n") ? `<pre${material.objectiveIds.some(id=>/^S(?:4|9|10|11|12)\./.test(id)) ? ` tabindex="0" aria-label="${escapeHtml(label)}"` : ""}><code>${escapeHtml(text)}</code></pre>` : `<p>${escapeHtml(text)}</p>`}</li>`).join("")}</ol></section>`;
 }
 
 function imageSizeAttributes(material, section) {
   if (material.layout !== "mechanism" && ![1, 4, 7, 8, 9, 10, 11, 12].includes(section)) return "";
   const dimensions = imageDimensions(join(reviewedAssetRoot, webAssetPath(material.asset, section).replace(/^\//, "")));
   if (!dimensions) throw new Error(`Missing intrinsic dimensions for S${section} image ${material.asset}`);
-  const readableS3 = section === 3 && material.asset.includes("/section-3/") && material.asset.endsWith(".svg");
-  return ` width="${dimensions.width}" height="${dimensions.height}"${readableS3 ? ` style="min-width:${Math.round(dimensions.width * 0.8)}px"` : ""}`;
+  const readableDiagram = material.asset.endsWith(".svg") && (section === 4 || (section === 3 && material.asset.includes("/section-3/")));
+  return ` width="${dimensions.width}" height="${dimensions.height}"${readableDiagram ? ` style="min-width:${Math.round(dimensions.width * 0.8)}px"` : ""}`;
 }
 
 function renderReviewedVisual(material, section) {
   const source = escapeHtml(lessonAssetSource(material.asset, section));
   const region = ` tabindex="0" role="region" aria-label="${escapeHtml(material.title)}"`;
   const fullSize = ` <a class="diagram-full-size" href="${source}" target="_blank" rel="noopener">Open full-size diagram ↗</a>`;
-  return `<figure class="teaching-material reviewed-visual${material.layout === "mechanism" ? " mechanism-visual" : ""}" data-material-type="reviewed-visual" data-objectives="${material.objectiveIds.join(" ")}"><h4>${escapeHtml(material.title)}</h4><div class="visual-scroll"${region}><img src="${source}"${imageSizeAttributes(material, section)} alt="${escapeHtml(material.alt)}" loading="lazy" decoding="async"></div><figcaption>${escapeHtml(material.caption)}${fullSize}</figcaption><details class="visual-transcript"><summary>Visual transcript</summary><ul>${material.facts.map((fact) => `<li>${escapeHtml(fact)}</li>`).join("")}</ul></details></figure>`;
+  return `<figure class="teaching-material reviewed-visual${material.layout === "mechanism" ? " mechanism-visual" : ""}" data-material-type="reviewed-visual" data-objectives="${material.objectiveIds.join(" ")}"><h4>${escapeHtml(material.title)}</h4>${section === 4 ? '<p class="swipe-cue" aria-hidden="true">Swipe horizontally to follow the complete diagram →</p>' : ""}<div class="visual-scroll"${region}><img src="${source}"${imageSizeAttributes(material, section)} alt="${escapeHtml(material.alt)}" loading="lazy" decoding="async"></div><figcaption>${escapeHtml(material.caption)}${fullSize}</figcaption><details class="visual-transcript"><summary>Visual transcript</summary><ul>${material.facts.map((fact) => `<li>${escapeHtml(fact)}</li>`).join("")}</ul></details></figure>`;
 }
 
 function renderTopologyGallery(material, section) {
@@ -142,7 +143,7 @@ function renderLessonContents(lesson) {
 }
 
 function renderLearningRoute(lesson) {
-  if ([2, 3].includes(lesson.section)) {
+  if ([2, 3, 4].includes(lesson.section)) {
     const link = n => { const item=courseV3Lessons[n-1]; return `<li><a href="../${item.route}/">Lesson ${String(n).padStart(3,"0")} · ${escapeHtml(item.title)}</a></li>`; };
     return `<aside class="learning-route" aria-label="Preparation and related learning"><p><strong>Before this lesson</strong></p>${lesson.prerequisiteLessons.length ? `<ul>${lesson.prerequisiteLessons.map(link).join("")}</ul>` : '<p>Start with familiar uses of shared files, printers and internet access. This lesson establishes the networking vocabulary.</p>'}${lesson.relatedLessons?.length ? `<p><strong>Related review and later applications</strong></p><p>These connections are not additional prerequisites.</p><ul>${lesson.relatedLessons.map(link).join("")}</ul>` : ''}</aside>`;
   }
@@ -206,7 +207,7 @@ function renderPractice(question, index, section) {
 }
 
 function renderExamStyleQuestions(questions, section) {
-  return `<article class="past-paper" data-question-count="${questions.length}"><p class="copyright-note">These are original exam-style tasks. They do not reproduce Cambridge question or mark-scheme wording.</p>${questions.map((question, index) => `<section class="exam-question" data-question-id="${escapeHtml(question.id)}" data-source-ref="${escapeHtml(question.sourceRef)}" data-command-word="${escapeHtml(question.commandWord)}" data-objectives="${question.objectiveIds.join(" ")}"><div class="paper-source"><div><span>Syllabus/source focus</span><strong>${escapeHtml(question.sourceRef)}</strong></div><a href="${escapeHtml(question.accessUrl)}" target="_blank" rel="noreferrer">Official Cambridge access page ↗</a></div><h3>Question ${index + 1} · Command word: ${escapeHtml(question.commandWord)} · ${question.marks} marks</h3><p class="paper-task">${escapeHtml(question.task)}</p>${renderQuestionDiagram(question)}${renderQuestionStimulus(question)}${([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].includes(section) || question.objectiveIds.some(id=>/^S(?:9|10|11|12)\./.test(id))) ? `<details class="paper-marking-points"><summary>Answer and marking points</summary>${renderQuestionAnswerTable(question)}<ul>${question.markLogic.map((point) => `<li>${escapeHtml(point)}</li>`).join("")}</ul><p class="common-error"><strong>Common error:</strong> ${escapeHtml(question.commonLosses.join(" "))}</p></details>` : `<section class="paper-marking-points"><h4>Marking points</h4><ul>${question.markLogic.map((point) => `<li>${escapeHtml(point)}</li>`).join("")}</ul></section>`}</section>`).join("")}</article>`;
+  return `<article class="past-paper" data-question-count="${questions.length}"><p class="copyright-note">These are original exam-style tasks. They do not reproduce Cambridge question or mark-scheme wording.</p>${questions.map((question, index) => `<section class="exam-question" data-question-id="${escapeHtml(question.id)}" data-source-ref="${escapeHtml(question.sourceRef)}" data-command-word="${escapeHtml(question.commandWord)}" data-objectives="${question.objectiveIds.join(" ")}"><div class="paper-source"><div><span>Syllabus/source focus</span><strong>${escapeHtml(question.sourceRef)}</strong></div><a href="${escapeHtml(question.accessUrl)}" target="_blank" rel="noreferrer">Official Cambridge access page ↗</a></div><h3>Question ${index + 1} · Command word: ${escapeHtml(question.commandWord)} · ${question.marks} marks</h3><p class="paper-task">${escapeHtml(question.task)}</p>${renderQuestionDiagram(question)}${renderQuestionStimulus(question)}${([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].includes(section) || question.objectiveIds.some(id=>/^S(?:4|9|10|11|12)\./.test(id))) ? `<details class="paper-marking-points"><summary>Answer and marking points</summary>${renderQuestionAnswerTable(question)}<ul>${question.markLogic.map((point) => `<li>${escapeHtml(point)}</li>`).join("")}</ul><p class="common-error"><strong>Common error:</strong> ${escapeHtml(question.commonLosses.join(" "))}</p></details>` : `<section class="paper-marking-points"><h4>Marking points</h4><ul>${question.markLogic.map((point) => `<li>${escapeHtml(point)}</li>`).join("")}</ul></section>`}</section>`).join("")}</article>`;
 }
 
 function pageShell({ title, description, body, depth = "lesson", assetVersion = "20260901g" }) {
@@ -223,7 +224,7 @@ function renderLesson(lesson, index) {
   const previous = courseV3Lessons[index - 1];
   const next = courseV3Lessons[index + 1];
   const navLink = (target, label) => target ? `<a href="../${target.route}/"><span>${label}</span><strong>${escapeHtml(target.lessonKey)} · ${escapeHtml(target.title)}</strong></a>` : `<a href="../"><span>${label}</span><strong>Course overview</strong></a>`;
-  return pageShell({ title: `${lesson.lessonKey} ${lesson.title}`, assetVersion: lesson.section === 4 ? "20260906s4" : lesson.section === 1 ? "20260906s1" : lesson.section === 6 ? "20260906s6" : lesson.section === 7 ? "20260906s7" : lesson.section === 8 ? "20260906s8" : lesson.section === 11 ? "20260915s11" : lesson.section === 9 ? "20260907s9" : lesson.section === 10 ? "20260907s10" : lesson.section === 12 ? "20260907s12" : "20260901g", description: lesson.subtitle, body: `${renderHeader(lesson)}<main><section class="lesson-hero"><p class="eyebrow">Lesson ${String(lesson.sequenceIndex).padStart(3, "0")} · ${lesson.lessonKey} · ${lesson.syllabusIds.join("–")}</p><h1>${escapeHtml(lesson.title)}</h1><p class="lead">${escapeHtml(lesson.subtitle)}</p>${lesson.diagnostic?.prompt && lesson.diagnostic?.answer ? `<p class="guiding-question">${escapeHtml(lesson.guidingQuestion)}</p><details class="diagnostic"><summary>Before you start</summary><p>${escapeHtml(lesson.diagnostic.prompt)}</p><details><summary>Check your answer</summary><p>${escapeHtml(lesson.diagnostic.answer)}</p></details></details>${lesson.teachingCheckpoints ? `<details class="diagnostic"><summary>Teaching checkpoints</summary><ul>${lesson.teachingCheckpoints.map((point) => `<li>${escapeHtml(point)}</li>`).join("")}</ul></details>` : ""}` : ""}${lesson.section === 3 ? `<details class="diagnostic"><summary>Jump to a knowledge point</summary><ol>${lesson.units.map((unit, index) => `<li><a href="#unit-${index + 1}">${escapeHtml(unit.heading)}</a></li>`).join("")}</ol></details>` : ""}<div class="objective-ledger"><h2>Learning objectives</h2><ul>${lesson.objectives.map(([id, text]) => `<li data-objective-id="${id}"><span>${id}</span>${escapeHtml(text)}</li>`).join("")}</ul></div>${renderLearningRoute(lesson)}${renderClassroomToolbar(lesson)}${renderLessonContents(lesson)}</section>
+  return pageShell({ title: `${lesson.lessonKey} ${lesson.title}`, assetVersion: lesson.section === 4 ? "20260915s4" : lesson.section === 1 ? "20260906s1" : lesson.section === 6 ? "20260906s6" : lesson.section === 7 ? "20260906s7" : lesson.section === 8 ? "20260906s8" : lesson.section === 11 ? "20260915s11" : lesson.section === 9 ? "20260907s9" : lesson.section === 10 ? "20260907s10" : lesson.section === 12 ? "20260907s12" : "20260901g", description: lesson.subtitle, body: `${renderHeader(lesson)}<main><section class="lesson-hero"><p class="eyebrow">Lesson ${String(lesson.sequenceIndex).padStart(3, "0")} · ${lesson.lessonKey} · ${lesson.syllabusIds.join("–")}</p><h1>${escapeHtml(lesson.title)}</h1><p class="lead">${escapeHtml(lesson.subtitle)}</p>${lesson.diagnostic?.prompt && lesson.diagnostic?.answer ? `<p class="guiding-question">${escapeHtml(lesson.guidingQuestion)}</p><details class="diagnostic"><summary>Before you start</summary><p>${escapeHtml(lesson.diagnostic.prompt)}</p><details><summary>Check your answer</summary><p>${escapeHtml(lesson.diagnostic.answer)}</p></details></details>${lesson.teachingCheckpoints ? `<details class="diagnostic"><summary>Teaching checkpoints</summary><ul>${lesson.teachingCheckpoints.map((point) => `<li>${escapeHtml(point)}</li>`).join("")}</ul></details>` : ""}` : ""}${lesson.section === 3 ? `<details class="diagnostic"><summary>Jump to a knowledge point</summary><ol>${lesson.units.map((unit, index) => `<li><a href="#unit-${index + 1}">${escapeHtml(unit.heading)}</a></li>`).join("")}</ol></details>` : ""}<div class="objective-ledger"><h2>Learning objectives</h2><ul>${lesson.objectives.map(([id, text]) => `<li data-objective-id="${id}"><span>${id}</span>${escapeHtml(text)}</li>`).join("")}</ul></div>${renderLearningRoute(lesson)}${renderClassroomToolbar(lesson)}${renderLessonContents(lesson)}</section>
   <section class="lesson-stage" id="visual-and-core" data-stage="1-visual-and-core"><header class="stage-heading"><span>01</span><div><p>Concept teaching</p><h2>${lesson.units.some(unit => unit.teachingBlocks) ? "Concept explanations and worked examples" : "Visual overview and core explanation"}</h2></div></header>${lesson.units.map((unit, unitIndex) => renderUnit(unit, unitIndex, lesson)).join("")}</section>
   <section class="lesson-stage" id="practice" data-stage="2-practice"><header class="stage-heading"><span>02</span><div><p>Cambridge command words</p><h2>Practice questions</h2></div></header><div class="practice-stack">${lesson.practice.map((question, index) => renderPractice(question, index, lesson.section)).join("")}</div></section>
   <section class="lesson-stage" id="original-exam-style-question" data-stage="3-original-exam-style-question"><header class="stage-heading"><span>03</span><div><p>Exam response</p><h2>Original exam-style questions and marking points</h2></div></header>${renderExamStyleQuestions(lesson.examStyleQuestions, lesson.section)}</section>

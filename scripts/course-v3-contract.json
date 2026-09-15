@@ -273,6 +273,10 @@
     "S4.10": [
       "lesson-025"
     ],
+    "S4.15": [
+      "lesson-025",
+      "lesson-027"
+    ],
     "S4.11": [
       "lesson-026"
     ],
@@ -284,9 +288,6 @@
     ],
     "S4.14": [
       "lesson-026"
-    ],
-    "S4.15": [
-      "lesson-027"
     ],
     "S5.01": [
       "lesson-028"
@@ -11455,7 +11456,7 @@
           ],
           "materialTitles": [
             "Processor and shared memory",
-            "A program and its data in one store"
+            "One store, one complete calculation"
           ],
           "questionIds": [
             "S4-L01-Q1"
@@ -11472,7 +11473,7 @@
           ],
           "materialTitles": [
             "Register roles",
-            "Separate address and contents"
+            "Three different numbers during ADD 5"
           ],
           "questionIds": [
             "S4-L01-Q2"
@@ -11487,11 +11488,12 @@
           ],
           "materialTitles": [
             "Register roles",
-            "Separate address and contents"
+            "Three different numbers during ADD 5"
           ],
           "questionIds": [
             "S4-L01-Q2",
-            "S4-L01-Q4"
+            "S4-L01-Q4",
+            "S4-L01-Q5"
           ],
           "pastPaperAnalysis": [
             "Cambridge 9618 syllabus 4.1 · S4.02 (course mapping)"
@@ -11505,10 +11507,11 @@
           ],
           "materialTitles": [
             "Register roles",
-            "Separate address and contents"
+            "Three different numbers during ADD 5"
           ],
           "questionIds": [
-            "S4-L01-Q2"
+            "S4-L01-Q2",
+            "S4-L01-Q5"
           ],
           "pastPaperAnalysis": [
             "Cambridge 9618 syllabus 4.1 · S4.03, S4.02 (course mapping)"
@@ -11522,10 +11525,11 @@
           ],
           "materialTitles": [
             "Register roles",
-            "Separate address and contents"
+            "Three different numbers during ADD 5"
           ],
           "questionIds": [
-            "S4-L01-Q2"
+            "S4-L01-Q2",
+            "S4-L01-Q5"
           ],
           "pastPaperAnalysis": []
         },
@@ -11537,11 +11541,12 @@
           ],
           "materialTitles": [
             "Register roles",
-            "Separate address and contents"
+            "Three different numbers during ADD 5"
           ],
           "questionIds": [
             "S4-L01-Q2",
-            "S4-L01-Q4"
+            "S4-L01-Q4",
+            "S4-L01-Q5"
           ],
           "pastPaperAnalysis": [
             "Cambridge 9618 syllabus 4.1 · S4.02 (course mapping)"
@@ -11555,7 +11560,7 @@
           ],
           "materialTitles": [
             "Register roles",
-            "Separate address and contents"
+            "Three different numbers during ADD 5"
           ],
           "questionIds": [
             "S4-L01-Q2",
@@ -11573,11 +11578,12 @@
           ],
           "materialTitles": [
             "Register roles",
-            "Separate address and contents"
+            "Three different numbers during ADD 5"
           ],
           "questionIds": [
             "S4-L01-Q2",
-            "S4-L01-Q4"
+            "S4-L01-Q4",
+            "S4-L01-Q5"
           ],
           "pastPaperAnalysis": [
             "Cambridge 9618 syllabus 4.1 · S4.03, S4.02 (course mapping)"
@@ -11591,7 +11597,7 @@
           ],
           "materialTitles": [
             "Register roles",
-            "Separate address and contents"
+            "Three different numbers during ADD 5"
           ],
           "questionIds": [
             "S4-L01-Q2"
@@ -11608,10 +11614,12 @@
           ],
           "materialTitles": [
             "The CU coordinates the operation; the ALU calculates the result",
-            "Executing ADD 410"
+            "Who does what in ADD 5?",
+            "Components in one calculation"
           ],
           "questionIds": [
-            "S4-L01-Q3"
+            "S4-L01-Q3",
+            "S4-L01-Q5"
           ],
           "pastPaperAnalysis": [
             "Cambridge 9618 syllabus 4.1 · S4.01, S4.03 (course mapping)",
@@ -11631,13 +11639,75 @@
             "title": "Processor and shared memory"
           },
           "coreExplanation": [
-            "A stored program computer holds its instructions in memory. The processor fetches these instructions, decodes them and carries out the specified operations. Loading another instruction sequence changes the task the computer performs.",
-            "The basic Von Neumann model uses one memory for instructions and data. The processor contains a control unit, an arithmetic and logic unit and registers. Buses connect the processor to memory and input/output interfaces; instructions and data share transfer paths."
+            "A stored program computer fetches instructions from memory. In the Von Neumann model, instructions and data occupy the same IAS."
+          ],
+          "teachingBlocks": [
+            {
+              "type": "paragraph",
+              "text": "A stored program computer holds its instructions in memory. The processor fetches these instructions, decodes them and carries out the specified operations. Loading another instruction sequence changes the task the computer performs."
+            },
+            {
+              "type": "paragraph",
+              "text": "The basic Von Neumann model uses one memory for instructions and data. The processor contains a control unit, an arithmetic and logic unit and registers. Buses connect the processor to memory and input/output interfaces; instructions and data share transfer paths."
+            },
+            {
+              "type": "paragraph",
+              "text": "A memory address answers “where?” and its contents answer “what is stored there?”. The contents are binary patterns. Their role depends on how the processor uses them: fetching an instruction for decoding is different from reading an operand for calculation. A data value is not automatically an instruction just because it is in the same store."
+            },
+            {
+              "type": "paragraph",
+              "text": "The CPU boundary includes the CU, ALU and registers. Main memory and input/output interfaces are outside that boundary in this model. An interface connects a peripheral to the computer; it does not perform the CPU’s instruction decoding. The clock coordinates operations and the buses carry their addresses, values and control signals."
+            },
+            {
+              "type": "paragraph",
+              "text": "Use the same four-instruction calculation throughout these lessons. The listing is a readable representation of the encoded instructions in memory. LDD copies a stored value into ACC; ADD adds another stored value; STO copies ACC back to memory; END returns control to the operating system. Each item occupies one address in this teaching model."
+            }
           ],
           "method": null,
           "workedExample": {
             "type": "worked-example",
-            "title": "A program and its data in one store"
+            "title": "One store, one complete calculation"
+          }
+        },
+        {
+          "syllabusId": "S4.03",
+          "heading": "ALU, CU, system clock and immediate access store",
+          "objectiveIds": [
+            "S4.03.A01"
+          ],
+          "leadVisual": {
+            "type": "reviewed-visual",
+            "title": "The CU coordinates the operation; the ALU calculates the result"
+          },
+          "coreExplanation": [
+            "CU decodes and coordinates; ALU calculates; the clock synchronises operations; IAS supplies stored instructions and data."
+          ],
+          "teachingBlocks": [
+            {
+              "type": "paragraph",
+              "text": "The ALU carries out arithmetic and logical operations. The CU decodes the instruction held in CIR and generates the signals needed to move values and carry out the selected operation. These are processing and coordination roles respectively."
+            },
+            {
+              "type": "paragraph",
+              "text": "The system clock generates regular pulses that synchronise processor operations. One instruction can require several cycles. The immediate access store (IAS) is the main memory holding instructions and data available to the processor during execution; it is not the same as long-term secondary storage."
+            },
+            {
+              "type": "paragraph",
+              "text": "To execute ADD 5 in the shared calculation, the CU must arrange for Memory[5] to be read and select addition in the ALU. The ALU combines the old ACC value 18 with the operand 24. The result 42 returns to ACC. Neither the clock nor the IAS decides which arithmetic operation to perform."
+            },
+            {
+              "type": "paragraph",
+              "text": "Transfers need coordination: the selected address must be available when the read is performed, and the operand must be available before the ALU uses it. Clock pulses provide timing events for those operations. There is no general rule that one pulse completes one instruction."
+            },
+            {
+              "type": "paragraph",
+              "text": "The IAS is the main working store available during execution. A saved program on an SSD must be made available in main memory for this model to execute it. Registers retain a small amount of current processor state; they do not replace the program’s memory store."
+            }
+          ],
+          "method": null,
+          "workedExample": {
+            "type": "worked-example",
+            "title": "Who does what in ADD 5?"
           }
         },
         {
@@ -11658,70 +11728,34 @@
             "title": "Register roles"
           },
           "coreExplanation": [
-            "Registers are small, fast storage locations inside the processor. A general-purpose register can hold operands and intermediate results; a special-purpose register has a defined role. In CPU architecture, ACC has the designated accumulator role and appears with the special-purpose registers. In the syllabus's example assembly model, ACC is also the only register available for general data operations; IX supplies an index offset.",
-            "During instruction processing, several registers are needed at once: one identifies the next instruction, one retains the current instruction, and others support memory transfers. Status flags record conditions such as zero, carry, sign or overflow, depending on the processor; they are not the complete arithmetic answer."
+            "PC: next instruction address; CIR: current instruction; MAR/MDR: selected address/transferred value; ACC: data/result; IX: index offset; SR: conditions."
           ],
-          "coreBlocks": [
+          "teachingBlocks": [
             {
               "type": "paragraph",
-              "text": "Registers are small, fast storage locations inside the processor. A general-purpose register can hold operands and intermediate results; a special-purpose register has a defined role. In CPU architecture, ACC has the designated accumulator role and appears with the special-purpose registers. In the syllabus's example assembly model, ACC is also the only register available for general data operations; IX supplies an index offset.",
-              "title": "Roles and the example ACC convention"
+              "text": "Registers are small, fast storage locations inside the processor. A general-purpose register can hold operands and intermediate results; a special-purpose register has a defined role. In CPU architecture, ACC has the designated accumulator role and appears with the special-purpose registers. In the syllabus's example assembly model, ACC is also the only register available for general data operations; IX supplies an index offset."
             },
             {
               "type": "paragraph",
-              "text": "During instruction processing, several registers are needed at once: one identifies the next instruction, one retains the current instruction, and others support memory transfers. Status flags record conditions such as zero, carry, sign or overflow, depending on the processor; they are not the complete arithmetic answer.",
-              "title": "Several registers cooperate"
+              "text": "During instruction processing, several registers are needed at once: one identifies the next instruction, one retains the current instruction, and others support memory transfers. Status flags record conditions such as zero, carry, sign or overflow, depending on the processor; they are not the complete arithmetic answer."
+            },
+            {
+              "type": "paragraph",
+              "text": "Several pieces of state must coexist. While CIR retains ADD 5, MAR can hold the operand address 5 and MDR can hold the operand value 24. Keeping those jobs separate lets the CU continue to decode the instruction while memory supplies its data."
+            },
+            {
+              "type": "paragraph",
+              "text": "After the fetch of ADD 5 at address 1, PC is 2 in this one-location-per-instruction model. This does not say the processor is already executing address 2: CIR still contains ADD 5 until the next fetch. Once a branch executes, its target replaces the sequential next address."
+            },
+            {
+              "type": "paragraph",
+              "text": "Status flags are separate condition information, not a second copy of the answer. Real instruction sets define which operations update which flags. Later traces explicitly track the result of CMP/CMI; do not infer unspecified flag changes from the numerical sign of ACC."
             }
           ],
           "method": null,
           "workedExample": {
             "type": "worked-example",
-            "title": "Separate address and contents"
-          }
-        },
-        {
-          "syllabusId": "S4.03",
-          "heading": "ALU, CU, system clock and immediate access store",
-          "objectiveIds": [
-            "S4.03.A01"
-          ],
-          "leadVisual": {
-            "type": "reviewed-visual",
-            "title": "The CU coordinates the operation; the ALU calculates the result"
-          },
-          "coreExplanation": [
-            "ALU: Performs arithmetic and logical operations. CU: Decodes the instruction in CIR and signals the transfers and operations required. System clock: Generates regular pulses to synchronise processor operations; one instruction may need several cycles.",
-            "The immediate access store (IAS) is main memory holding instructions and data available during execution. It is separate from long-term secondary storage. In the example, the CU coordinates reading 11, the ALU adds it to 6, and ACC retains 17."
-          ],
-          "coreBlocks": [
-            {
-              "type": "list",
-              "title": "Processing and coordination",
-              "items": [
-                [
-                  "ALU",
-                  "Performs arithmetic and logical operations."
-                ],
-                [
-                  "CU",
-                  "Decodes the instruction in CIR and signals the transfers and operations required."
-                ],
-                [
-                  "System clock",
-                  "Generates regular pulses to synchronise processor operations; one instruction may need several cycles."
-                ]
-              ]
-            },
-            {
-              "type": "paragraph",
-              "text": "The immediate access store (IAS) is main memory holding instructions and data available during execution. It is separate from long-term secondary storage. In the example, the CU coordinates reading 11, the ALU adds it to 6, and ACC retains 17.",
-              "title": "Where the instruction and operands come from"
-            }
-          ],
-          "method": null,
-          "workedExample": {
-            "type": "worked-example",
-            "title": "Executing ADD 410"
+            "title": "Three different numbers during ADD 5"
           }
         }
       ],
@@ -11766,6 +11800,19 @@
             "S4.02.A05",
             "S4.02.A06",
             "S4.02.A07"
+          ]
+        },
+        {
+          "id": "S4-L01-Q5",
+          "commandWord": "State",
+          "marks": 4,
+          "objectiveIds": [
+            "S4.02.A02",
+            "S4.02.A03",
+            "S4.02.A04",
+            "S4.02.A05",
+            "S4.02.A07",
+            "S4.03.A01"
           ]
         }
       ],
@@ -11829,7 +11876,8 @@
             "A memory transaction"
           ],
           "questionIds": [
-            "S4-L02-Q1"
+            "S4-L02-Q1",
+            "S4-L02-Q6"
           ],
           "pastPaperAnalysis": [
             "Cambridge 9618 syllabus 4.1 · S4.04 (course mapping)"
@@ -11842,7 +11890,7 @@
             "Factors affecting processor performance"
           ],
           "materialTitles": [
-            "A cache hit avoids a main-memory read",
+            "Workload and limiting condition",
             "A transfer-bound calculation"
           ],
           "questionIds": [
@@ -11859,7 +11907,7 @@
             "Factors affecting processor performance"
           ],
           "materialTitles": [
-            "A cache hit avoids a main-memory read",
+            "Workload and limiting condition",
             "A transfer-bound calculation"
           ],
           "questionIds": [
@@ -11873,14 +11921,18 @@
           "id": "S4.05.A03",
           "description": "Explain how data-bus width affects transfer capacity.",
           "explanationUnits": [
+            "Address capacity and data transfers",
             "Factors affecting processor performance"
           ],
           "materialTitles": [
-            "A cache hit avoids a main-memory read",
+            "Two bus widths, two meanings",
+            "A partial final transfer",
+            "Workload and limiting condition",
             "A transfer-bound calculation"
           ],
           "questionIds": [
-            "S4-L02-Q3"
+            "S4-L02-Q3",
+            "S4-L02-Q6"
           ],
           "pastPaperAnalysis": [
             "Cambridge 9618 syllabus 4.1 · S4.06, S4.05 (course mapping)"
@@ -11893,7 +11945,7 @@
             "Factors affecting processor performance"
           ],
           "materialTitles": [
-            "A cache hit avoids a main-memory read",
+            "Workload and limiting condition",
             "A transfer-bound calculation"
           ],
           "questionIds": [
@@ -11907,14 +11959,19 @@
           "id": "S4.05.A05",
           "description": "Explain how cache memory can reduce slower main-memory access.",
           "explanationUnits": [
+            "Cache hits, misses and repeated reads",
             "Factors affecting processor performance"
           ],
           "materialTitles": [
             "A cache hit avoids a main-memory read",
+            "Change the workload",
+            "Cache history: A, B, A, B",
+            "Workload and limiting condition",
             "A transfer-bound calculation"
           ],
           "questionIds": [
-            "S4-L02-Q3"
+            "S4-L02-Q3",
+            "S4-L02-Q5"
           ],
           "pastPaperAnalysis": [
             "Cambridge 9618 syllabus 4.1 · S4.05 (course mapping)"
@@ -11928,7 +11985,8 @@
           ],
           "materialTitles": [
             "Recognise USB Type-A, HDMI Type-A and VGA sockets",
-            "A presentation station"
+            "A presentation station",
+            "Port choice"
           ],
           "questionIds": [
             "S4-L02-Q4"
@@ -11945,7 +12003,8 @@
           ],
           "materialTitles": [
             "Recognise USB Type-A, HDMI Type-A and VGA sockets",
-            "A presentation station"
+            "A presentation station",
+            "Port choice"
           ],
           "questionIds": [
             "S4-L02-Q4"
@@ -11962,7 +12021,8 @@
           ],
           "materialTitles": [
             "Recognise USB Type-A, HDMI Type-A and VGA sockets",
-            "A presentation station"
+            "A presentation station",
+            "Port choice"
           ],
           "questionIds": [
             "S4-L02-Q4"
@@ -11979,7 +12039,8 @@
           ],
           "materialTitles": [
             "Recognise USB Type-A, HDMI Type-A and VGA sockets",
-            "A presentation station"
+            "A presentation station",
+            "Port choice"
           ],
           "questionIds": [
             "S4-L02-Q4"
@@ -12001,34 +12062,96 @@
             "title": "A memory read and a memory write use different data directions"
           },
           "coreExplanation": [
-            "Address bus: Selects a memory location or addressed interface. In the basic processor-controlled model, the address travels outwards from the processor. Data bus: Carries instructions and data. Reads return values to the CPU; writes send values from the CPU.",
-            "The control bus coordinates operations. READ and WRITE travel from the CPU; interrupt requests can travel towards it. The collection is bidirectional, but each individual signal line has its own defined direction."
+            "Address selects a location; data carries its instruction/value; control coordinates the transaction. A read and a write reverse the data direction."
           ],
-          "coreBlocks": [
+          "teachingBlocks": [
             {
-              "type": "list",
-              "title": "What each bus carries",
-              "items": [
-                [
-                  "Address bus",
-                  "Selects a memory location or addressed interface. In the basic processor-controlled model, the address travels outwards from the processor."
-                ],
-                [
-                  "Data bus",
-                  "Carries instructions and data. Reads return values to the CPU; writes send values from the CPU."
-                ]
-              ]
+              "type": "paragraph",
+              "text": "The address bus carries the address that selects a memory location or an addressed interface. In the basic processor-controlled model it travels outwards from the processor. The data bus carries instructions and data between components and must support reads and writes."
             },
             {
               "type": "paragraph",
-              "text": "The control bus coordinates operations. READ and WRITE travel from the CPU; interrupt requests can travel towards it. The collection is bidirectional, but each individual signal line has its own defined direction.",
-              "title": "Control signals have individual directions"
+              "text": "The control bus is a set of coordinating signal lines. Read and write signals travel from the processor; signals such as interrupt requests travel towards it. Calling the control bus bidirectional describes the collection of lines, not a claim that every individual control signal travels both ways."
+            },
+            {
+              "type": "paragraph",
+              "text": "A read does not move the address into ACC. The CPU first selects the location through the address bus and requests a read through a control line. The stored contents return on the data bus and can be copied from MDR into ACC. Reading normally leaves the stored contents unchanged."
+            },
+            {
+              "type": "paragraph",
+              "text": "A write needs both a destination and a value: MAR supplies the address, MDR supplies the data, and the CU issues write. The same data wires can carry values in opposite directions on different transactions; they do not mean both components drive different values onto them at once."
+            },
+            {
+              "type": "paragraph",
+              "text": "For the shared calculation, reading Memory[4] sends address 4 outward and value 18 inward. Writing the result sends address 6 and value 42 outward, on different buses. A peripheral interrupt request is a control signal towards the CPU, illustrating why the control bus contains lines in both directions."
             }
           ],
           "method": null,
           "workedExample": {
             "type": "worked-example",
             "title": "Read then modify a value"
+          }
+        },
+        {
+          "syllabusId": "S4.05",
+          "heading": "Address capacity and data transfers",
+          "objectiveIds": [
+            "S4.05.A03"
+          ],
+          "leadVisual": {
+            "type": "table",
+            "title": "Two bus widths, two meanings"
+          },
+          "coreExplanation": [
+            "An n-bit address selects up to 2^n locations. Data-bus width gives bits per transfer; capacity also depends on bytes per addressed location."
+          ],
+          "teachingBlocks": [
+            {
+              "type": "paragraph",
+              "text": "Address width and data width answer different questions. Each address bit doubles the number of address patterns, so n bits provide 2^n distinct addresses numbered 0 to 2^n−1. This is a useful calculation model for understanding buses; a location is not automatically a byte."
+            },
+            {
+              "type": "paragraph",
+              "text": "To convert addressable locations to a byte capacity, multiply by the stated bytes per location. To count data transfers, divide the number of bits by the bits carried per transfer and round up if the last transfer is partial. Neither calculation gives the whole program’s running time."
+            }
+          ],
+          "method": null,
+          "workedExample": {
+            "type": "worked-example",
+            "title": "A partial final transfer"
+          }
+        },
+        {
+          "syllabusId": "S4.05",
+          "heading": "Cache hits, misses and repeated reads",
+          "objectiveIds": [
+            "S4.05.A05"
+          ],
+          "leadVisual": {
+            "type": "reviewed-visual",
+            "title": "A cache hit avoids a main-memory read"
+          },
+          "coreExplanation": [
+            "A cache hit supplies a retained copy; a miss requires main-memory access. Benefit depends on reuse and whether needed items remain in cache."
+          ],
+          "teachingBlocks": [
+            {
+              "type": "paragraph",
+              "text": "A processor may need the same instruction or data many times. Cache keeps copies close to the processor so a later access can avoid the longer main-memory path. SRAM/DRAM storage mechanisms were introduced in the memory lesson; here the focus is what this does to execution time."
+            },
+            {
+              "type": "paragraph",
+              "text": "For this read-only example, the cache starts empty, has room for both items A and B, and loads an item on a miss. No item is evicted and main memory does not change. Count each requested item as one cache lookup; ignore block-fetch details so the state changes are explicit."
+            },
+            {
+              "type": "paragraph",
+              "text": "The first A and first B cannot hit an empty cache. After each miss the fetched item is retained, so the next A and B can hit. Only two of the four requests need main-memory reads. A stream of different items, each used once, would not gain these repeated-read hits."
+            }
+          ],
+          "method": null,
+          "workedExample": {
+            "type": "worked-example",
+            "title": "Change the workload"
           }
         },
         {
@@ -12042,36 +12165,24 @@
             "S4.05.A05"
           ],
           "leadVisual": {
-            "type": "reviewed-visual",
-            "title": "A cache hit avoids a main-memory read"
+            "type": "table",
+            "title": "Workload and limiting condition"
           },
           "coreExplanation": [
-            "Processor type: Instruction sets and internal organisation affect work per cycle, pipelining and cache use. Clock frequency alone cannot rank different designs. Core count: Independent tasks or parallel parts can run concurrently. Sequential dependencies and communication overhead limit the gain. Clock and data bus: A faster clock provides more cycles per second; a wider data bus transfers more bits at once. Neither removes every memory or I/O delay.",
-            "Cache keeps copies of recently or frequently needed instructions and data near the processor. A hit avoids a slower main-memory access. More capacity helps when it retains useful parts of the working set; access patterns and hit rate matter as well as size."
+            "Justify performance using the workload: processor type, cores, data-bus width, clock frequency and cache affect different parts of execution."
           ],
-          "coreBlocks": [
+          "teachingBlocks": [
             {
-              "type": "list",
-              "title": "Compare processors for a stated workload",
-              "items": [
-                [
-                  "Processor type",
-                  "Instruction sets and internal organisation affect work per cycle, pipelining and cache use. Clock frequency alone cannot rank different designs."
-                ],
-                [
-                  "Core count",
-                  "Independent tasks or parallel parts can run concurrently. Sequential dependencies and communication overhead limit the gain."
-                ],
-                [
-                  "Clock and data bus",
-                  "A faster clock provides more cycles per second; a wider data bus transfers more bits at once. Neither removes every memory or I/O delay."
-                ]
-              ]
+              "type": "paragraph",
+              "text": "Identify what is limiting the task before choosing a factor. Independent jobs may use extra cores; a chain in which each calculation needs the previous result has less parallel work. Waiting for memory is different from doing arithmetic inside a core."
             },
             {
               "type": "paragraph",
-              "text": "Cache keeps copies of recently or frequently needed instructions and data near the processor. A hit avoids a slower main-memory access. More capacity helps when it retains useful parts of the working set; access patterns and hit rate matter as well as size.",
-              "title": "Why cache helps"
+              "text": "Clock frequency is cycles per second, not instructions per second. With comparable processors and the same cycle count, more cycles per second can reduce time. Between different processor types the amount of useful work per cycle may differ, so clock frequency alone cannot rank them."
+            },
+            {
+              "type": "paragraph",
+              "text": "Use a conditional explanation: extra cores can reduce the time for independent work because multiple cores execute it concurrently; this depends on software exposing that work and not spending the gain on coordination. A statement that eight cores always run a task twice as fast as four ignores those conditions."
             }
           ],
           "method": null,
@@ -12094,36 +12205,28 @@
             "title": "Recognise USB Type-A, HDMI Type-A and VGA sockets"
           },
           "coreExplanation": [
-            "Connection: Universal Serial Bus (USB); Typical role: Serial digital peripheral data for devices such as keyboards, printers and external drives; power where supported. Capabilities depend on the version, cable and devices.. Connection: High Definition Multimedia Interface (HDMI); Typical role: Digital video and audio to a compatible display or projector.. Connection: Video Graphics Array (VGA); Typical role: Analogue video for a legacy monitor or projector; audio requires a separate connection..",
-            "A port is a physical and electrical interface. The computer and peripheral need compatible signals and protocols; a connector that fits is not proof of compatibility. An adapter may need to convert the signal. The image shows USB Type-A, HDMI Type-A and VGA socket shapes from left to right."
+            "USB: digital peripheral data and possible power; HDMI: digital video/audio; VGA: analogue video with separate audio. Match both device and interface."
           ],
-          "coreBlocks": [
+          "teachingBlocks": [
             {
-              "type": "table",
-              "title": "Choose by the signal and purpose",
-              "headers": [
-                "Connection",
-                "Typical role"
-              ],
-              "rows": [
-                [
-                  "Universal Serial Bus (USB)",
-                  "Serial digital peripheral data for devices such as keyboards, printers and external drives; power where supported. Capabilities depend on the version, cable and devices."
-                ],
-                [
-                  "High Definition Multimedia Interface (HDMI)",
-                  "Digital video and audio to a compatible display or projector."
-                ],
-                [
-                  "Video Graphics Array (VGA)",
-                  "Analogue video for a legacy monitor or projector; audio requires a separate connection."
-                ]
-              ]
+              "type": "paragraph",
+              "text": "A port provides a physical and electrical interface for a peripheral connection. The device and computer need compatible signals and protocols. Adapters may convert signals; a connector that fits mechanically is not by itself proof of compatibility."
             },
             {
               "type": "paragraph",
-              "text": "A port is a physical and electrical interface. The computer and peripheral need compatible signals and protocols; a connector that fits is not proof of compatibility. An adapter may need to convert the signal. The image shows USB Type-A, HDMI Type-A and VGA socket shapes from left to right.",
-              "title": "Check compatibility as well as shape"
+              "text": "USB carries digital peripheral data and can provide power. HDMI carries digital video and audio to a compatible display. VGA carries analogue video and does not carry the display's audio. USB capabilities depend on the version, cable and devices, so one speed should not be assigned to every USB connection."
+            },
+            {
+              "type": "paragraph",
+              "text": "Choose a port from the required signal and the connected equipment. A display needing sound through the same connection can use compatible HDMI. VGA alone cannot satisfy that sound requirement. A USB scanner exchanges peripheral data rather than using VGA’s analogue picture signals."
+            },
+            {
+              "type": "paragraph",
+              "text": "A connector’s appearance is evidence about how it fits, not a complete specification of its capability. USB versions, cables and devices differ. Avoid assigning one speed to all USB ports or treating an internal data-bus width as the number of parallel wires in every external connection."
+            },
+            {
+              "type": "paragraph",
+              "text": "If an adapter is needed, determine whether the signal has to be converted. Digital HDMI and analogue VGA use different signal forms; a purely mechanical change of plug is not enough to establish compatibility."
             }
           ],
           "method": null,
@@ -12170,6 +12273,23 @@
             "S4.06.A02",
             "S4.06.A03",
             "S4.06.A04"
+          ]
+        },
+        {
+          "id": "S4-L02-Q5",
+          "commandWord": "Identify",
+          "marks": 3,
+          "objectiveIds": [
+            "S4.05.A05"
+          ]
+        },
+        {
+          "id": "S4-L02-Q6",
+          "commandWord": "Calculate",
+          "marks": 4,
+          "objectiveIds": [
+            "S4.04.A01",
+            "S4.05.A03"
           ]
         }
       ],
@@ -12229,15 +12349,17 @@
           ],
           "materialTitles": [
             "Instruction fetch: address and value transfers",
-            "Fetch from address 200",
-            "Executing LDD fetches the operand after the instruction is decoded",
-            "Execute the fetched load",
-            "Execution after decoding"
+            "Fetch the first instruction of the calculation",
+            "From instruction reads to a stored result",
+            "Supplied program and initial state",
+            "State after each whole instruction",
+            "Read, calculate, write and finish"
           ],
           "questionIds": [
             "S4-L03-Q1",
             "S4-L03-Q2",
-            "S4-L03-Q3"
+            "S4-L03-Q3",
+            "S4-L03-Q4"
           ],
           "pastPaperAnalysis": [
             "Cambridge 9618 syllabus 4.1 · S4.07 (course mapping)",
@@ -12254,15 +12376,17 @@
           ],
           "materialTitles": [
             "Instruction fetch: address and value transfers",
-            "Fetch from address 200",
-            "Executing LDD fetches the operand after the instruction is decoded",
-            "Execute the fetched load",
-            "Execution after decoding"
+            "Fetch the first instruction of the calculation",
+            "From instruction reads to a stored result",
+            "Supplied program and initial state",
+            "State after each whole instruction",
+            "Read, calculate, write and finish"
           ],
           "questionIds": [
             "S4-L03-Q1",
             "S4-L03-Q2",
-            "S4-L03-Q3"
+            "S4-L03-Q3",
+            "S4-L03-Q4"
           ],
           "pastPaperAnalysis": [
             "Cambridge 9618 syllabus 4.1 · S4.07 (course mapping)",
@@ -12284,25 +12408,26 @@
             "title": "Instruction fetch: address and value transfers"
           },
           "coreExplanation": [
-            "In this notation, [PC] means the contents of PC and [[MAR]] means the contents of the memory location whose address is in MAR. The arrow points towards the destination. MAR ← [PC] therefore copies the next instruction address into MAR.",
-            "The CU issues a memory-read signal; the instruction from the selected location travels to MDR and is copied to CIR. PC advances to the next sequential address. For these examples each instruction occupies one location, so the increment is one. Some fetch operations can overlap; the instruction must reach MDR before it can be copied from MDR to CIR."
+            "MAR ← [PC]; read into MDR; CIR ← [MDR]; advance PC; decode CIR. Distinguish register contents from memory contents."
           ],
-          "coreBlocks": [
+          "teachingBlocks": [
             {
               "type": "paragraph",
-              "text": "In this notation, [PC] means the contents of PC and [[MAR]] means the contents of the memory location whose address is in MAR. The arrow points towards the destination. MAR ← [PC] therefore copies the next instruction address into MAR.",
-              "title": "Follow the instruction address"
+              "text": "In this notation [PC] means the contents of PC, while [[MAR]] means the contents of the memory location whose address is in MAR. Thus MAR ← [PC] copies an address; MDR ← [[MAR]] reads the selected memory contents. The left arrow copies a value to its destination."
             },
             {
               "type": "paragraph",
-              "text": "The CU issues a memory-read signal; the instruction from the selected location travels to MDR and is copied to CIR. PC advances to the next sequential address. For these examples each instruction occupies one location, so the increment is one. Some fetch operations can overlap; the instruction must reach MDR before it can be copied from MDR to CIR.",
-              "title": "Move the instruction into CIR"
+              "text": "The fetch selects the current instruction address before advancing PC. In this teaching sequence, copy PC into MAR, issue a memory read and receive the instruction in MDR, copy it into CIR, then advance PC by one and decode CIR. Some internal transfers can overlap on real processors; the address must still identify the intended instruction."
+            },
+            {
+              "type": "paragraph",
+              "text": "Fetching LDD 4 reads the instruction at address 0. Executing it then reads the data at address 4. Those are two separate memory reads. Fetching STO 6 still reads its instruction; only its execution writes the result to memory."
             }
           ],
           "method": null,
           "workedExample": {
             "type": "worked-example",
-            "title": "Fetch from address 200"
+            "title": "Fetch the first instruction of the calculation"
           }
         },
         {
@@ -12314,41 +12439,37 @@
           ],
           "leadVisual": {
             "type": "reviewed-visual",
-            "title": "Executing LDD fetches the operand after the instruction is decoded"
+            "title": "From instruction reads to a stored result"
           },
           "coreExplanation": [
-            "Load or store: A load reads a value; a store writes a value. Arithmetic: The CU coordinates the necessary transfers and ALU calculation. Jump: A taken jump replaces PC, so the next instruction need not be adjacent.",
-            "The example has already fetched LDD 700 into CIR. Execution reads the operand 45 into MDR and copies it to ACC; it does not increment PC again. At the end of the cycle, check pending enabled interrupts before normal instruction processing continues."
+            "Execution depends on the opcode: load reads into ACC, arithmetic uses an operand, store writes through MDR, and a jump replaces PC."
           ],
-          "coreBlocks": [
+          "teachingBlocks": [
             {
-              "type": "list",
-              "title": "The decoded instruction determines the work",
-              "items": [
-                [
-                  "Load or store",
-                  "A load reads a value; a store writes a value."
-                ],
-                [
-                  "Arithmetic",
-                  "The CU coordinates the necessary transfers and ALU calculation."
-                ],
-                [
-                  "Jump",
-                  "A taken jump replaces PC, so the next instruction need not be adjacent."
-                ]
-              ]
+              "type": "paragraph",
+              "text": "Decoding identifies the operation and interprets its operand. The CU then coordinates the transfers and ALU operation required for execution. Execution depends on the instruction: a load reads data, a store writes data, arithmetic calculates a result, and a jump changes the next instruction address."
             },
             {
               "type": "paragraph",
-              "text": "The example has already fetched LDD 700 into CIR. Execution reads the operand 45 into MDR and copies it to ACC; it does not increment PC again. At the end of the cycle, check pending enabled interrupts before normal instruction processing continues.",
-              "title": "Distinguish operand access from instruction fetch"
+              "text": "The PC's sequential increment is not a guarantee that the next instruction will be adjacent. A taken branch can replace PC during execution. At the end of the cycle the processor checks for pending enabled interrupts before continuing the normal instruction sequence."
+            },
+            {
+              "type": "paragraph",
+              "text": "A decoded instruction tells the CU which transfers to arrange. LDD 4 uses MAR ← 4, a read into MDR, then ACC ← [MDR]. ADD 5 reads another operand and uses ACC ← [ACC]+[MDR]. STO 6 uses MAR ← 6, MDR ← [ACC], and a write [[MAR]] ← [MDR]."
+            },
+            {
+              "type": "paragraph",
+              "text": "Between these execution steps, the processor fetches each next instruction. The table records state after each whole instruction, so the MAR/MDR values shown are their last values for that instruction, not all intermediate transfers. The diagram separates instruction reads from operand reads and the final write."
+            },
+            {
+              "type": "paragraph",
+              "text": "After fetching JMP 40 from address 9, PC first becomes 10. Executing the jump replaces it with 40, so the next fetch is from 40. A trace’s “next PC” is the value after execution. END transfers control to the operating system; it does not execute the adjacent data."
             }
           ],
           "method": null,
           "workedExample": {
             "type": "worked-example",
-            "title": "Execute the fetched load"
+            "title": "Supplied program and initial state"
           }
         }
       ],
@@ -12375,6 +12496,15 @@
           "id": "S4-L03-Q3",
           "commandWord": "Explain",
           "marks": 3,
+          "objectiveIds": [
+            "S4.07.A01",
+            "S4.07.A02"
+          ]
+        },
+        {
+          "id": "S4-L03-Q4",
+          "commandWord": "Describe",
+          "marks": 4,
           "objectiveIds": [
             "S4.07.A01",
             "S4.07.A02"
@@ -12486,11 +12616,12 @@
             "Detection, ISR and restoration of context"
           ],
           "materialTitles": [
-            "Save the interrupted context before running the ISR",
-            "Resume at the correct point"
+            "Preserve a program across an interrupt",
+            "An interrupt between two program instructions"
           ],
           "questionIds": [
-            "S4-L04-Q2"
+            "S4-L04-Q2",
+            "S4-L04-Q4"
           ],
           "pastPaperAnalysis": [
             "Cambridge 9618 syllabus 4.1 · S4.08 (course mapping)",
@@ -12505,11 +12636,12 @@
             "Detection, ISR and restoration of context"
           ],
           "materialTitles": [
-            "Save the interrupted context before running the ISR",
-            "Resume at the correct point"
+            "Preserve a program across an interrupt",
+            "An interrupt between two program instructions"
           ],
           "questionIds": [
-            "S4-L04-Q2"
+            "S4-L04-Q2",
+            "S4-L04-Q4"
           ],
           "pastPaperAnalysis": [
             "Cambridge 9618 syllabus 4.1 · S4.08 (course mapping)",
@@ -12523,11 +12655,12 @@
             "Detection, ISR and restoration of context"
           ],
           "materialTitles": [
-            "Save the interrupted context before running the ISR",
-            "Resume at the correct point"
+            "Preserve a program across an interrupt",
+            "An interrupt between two program instructions"
           ],
           "questionIds": [
-            "S4-L04-Q2"
+            "S4-L04-Q2",
+            "S4-L04-Q4"
           ],
           "pastPaperAnalysis": [
             "Cambridge 9618 syllabus 4.1 · S4.08 (course mapping)",
@@ -12550,19 +12683,28 @@
             "title": "Event → useful response"
           },
           "coreExplanation": [
-            "An interrupt is a request or event requiring the processor to suspend its normal instruction sequence and transfer control to a handler when the request is accepted. This supports response to asynchronous events without continually polling every device.",
-            "Requests may originate from hardware, such as a device completing input/output or a timer expiring, or from software requesting a system service. Exceptional conditions such as an arithmetic error also require processor attention. The precise treatment of faults depends on the processor; the basic taught sequence considers interrupt checks at instruction boundaries."
+            "An interrupt requests processor attention. Hardware events, timers and software requests can cause it; the appropriate ISR performs the service."
           ],
-          "coreBlocks": [
+          "teachingBlocks": [
             {
               "type": "paragraph",
-              "text": "An interrupt is a request or event requiring the processor to suspend its normal instruction sequence and transfer control to a handler when the request is accepted. This supports response to asynchronous events without continually polling every device.",
-              "title": "Why an interrupt is useful"
+              "text": "An interrupt is a request or event requiring the processor to suspend its normal instruction sequence and transfer control to a handler when the request is accepted. This supports response to asynchronous events without continually polling every device."
             },
             {
               "type": "paragraph",
-              "text": "Requests may originate from hardware, such as a device completing input/output or a timer expiring, or from software requesting a system service. Exceptional conditions such as an arithmetic error also require processor attention. The precise treatment of faults depends on the processor; the basic taught sequence considers interrupt checks at instruction boundaries.",
-              "title": "Sources and instruction-boundary checks"
+              "text": "Requests may originate from hardware, such as a device completing input/output or a timer expiring, or from software requesting a system service. Exceptional conditions such as an arithmetic error also require processor attention. The precise treatment of faults depends on the processor; the basic taught sequence considers interrupt checks at instruction boundaries."
+            },
+            {
+              "type": "paragraph",
+              "text": "An input device and the CPU operate at different rates. Repeatedly checking a device’s status is polling: each check uses processor time even if nothing has changed. An interrupt allows the device to request attention when a relevant event occurs, while the processor can do other work between events."
+            },
+            {
+              "type": "paragraph",
+              "text": "Receiving a packet, completing a disk operation and detecting an alarm are hardware events. A timer can request attention after an interval, and a program can request an operating-system service through a software interrupt. Identify the event and why it needs service instead of calling every request an error."
+            },
+            {
+              "type": "paragraph",
+              "text": "A request is not the whole service. It identifies a reason to transfer control; an Interrupt Service Routine (ISR) contains the instructions that deal with that event. An interrupt also has handling overhead, so avoid claiming it is always faster than polling for every workload."
             }
           ],
           "method": null,
@@ -12581,45 +12723,37 @@
           ],
           "leadVisual": {
             "type": "reviewed-visual",
-            "title": "Save the interrupted context before running the ISR"
+            "title": "Preserve a program across an interrupt"
           },
           "coreExplanation": [
-            "Detect: After the current instruction finishes, check pending enabled requests. Priority and enable rules decide acceptance; another request may remain pending. Save context: Preserve the return address and the state needed to resume. Service: Load the appropriate Interrupt Service Routine (ISR) address into PC and run it, acknowledging or clearing the request as required. Restore and resume: Restore saved state and continue the interrupted work.",
-            "The ISR must preserve registers as required by the system’s interrupt mechanism. Servicing an event must not corrupt values the interrupted program will use later."
+            "Finish the current instruction, check pending enabled requests and priority, save context, run the ISR, restore context and resume at the saved PC."
           ],
-          "coreBlocks": [
+          "teachingBlocks": [
             {
-              "type": "steps",
-              "title": "Handle an accepted interrupt",
-              "items": [
-                [
-                  "Detect",
-                  "After the current instruction finishes, check pending enabled requests. Priority and enable rules decide acceptance; another request may remain pending."
-                ],
-                [
-                  "Save context",
-                  "Preserve the return address and the state needed to resume."
-                ],
-                [
-                  "Service",
-                  "Load the appropriate Interrupt Service Routine (ISR) address into PC and run it, acknowledging or clearing the request as required."
-                ],
-                [
-                  "Restore and resume",
-                  "Restore saved state and continue the interrupted work."
-                ]
-              ]
+              "type": "paragraph",
+              "text": "In the basic fetch-execute model, the processor checks for pending enabled interrupts after the current instruction finishes. Priority and interrupt-enable rules determine which request can be accepted. A lower-priority request can remain pending rather than being lost."
             },
             {
               "type": "paragraph",
-              "text": "The ISR must preserve registers as required by the system’s interrupt mechanism. Servicing an event must not corrupt values the interrupted program will use later.",
-              "title": "Preserve the interrupted work"
+              "text": "Before transferring control, the processor saves the return address and the state needed to resume the interrupted work. The appropriate Interrupt Service Routine (ISR) services the event and acknowledges or clears the request as required. On return, saved state is restored so normal execution can continue correctly. Registers used by the ISR must be preserved as required by the system's interrupt mechanism."
+            },
+            {
+              "type": "paragraph",
+              "text": "In the taught fetch-execute model, the processor reaches an interrupt check after completing the current instruction. A request can be pending without being accepted: it may be disabled or a higher-priority request may be selected first. In the examples below requests remain pending until serviced; lower priority does not mean lost."
+            },
+            {
+              "type": "paragraph",
+              "text": "Save enough context for the interrupted work to continue correctly. PC identifies the next instruction; ACC and IX may hold live data; status information can affect later control flow. The processor obtains the correct ISR address, transfers control, and the ISR services and acknowledges or clears the event as required."
+            },
+            {
+              "type": "paragraph",
+              "text": "Restoring only the return address is insufficient if the handler changed a value needed by the program. In the state example, using the handler’s ACC=65 would make the next ADD #2 produce 67 instead of the required 20. Restoring PC, ACC, IX and the saved comparison state avoids that interference."
             }
           ],
           "method": null,
           "workedExample": {
             "type": "worked-example",
-            "title": "Resume at the correct point"
+            "title": "An interrupt between two program instructions"
           }
         }
       ],
@@ -12651,6 +12785,16 @@
           "objectiveIds": [
             "S4.08.A02",
             "S4.08.A03"
+          ]
+        },
+        {
+          "id": "S4-L04-Q4",
+          "commandWord": "Explain",
+          "marks": 4,
+          "objectiveIds": [
+            "S4.08.A04",
+            "S4.08.A05",
+            "S4.08.A06"
           ]
         }
       ],
@@ -12702,7 +12846,8 @@
       "section": 4,
       "syllabusIds": [
         "S4.09",
-        "S4.10"
+        "S4.10",
+        "S4.15"
       ],
       "objectives": [
         {
@@ -12730,12 +12875,12 @@
             "Applying both passes of an assembler"
           ],
           "materialTitles": [
-            "A complete symbol table resolves a forward reference",
-            "Assemble a complete program",
-            "Worked symbol table"
+            "What each pass knows",
+            "Assemble a complete program"
           ],
           "questionIds": [
-            "S4-L05-Q2"
+            "S4-L05-Q2",
+            "S4-L05-Q4"
           ],
           "pastPaperAnalysis": [
             "Cambridge 9618 syllabus 4.2 · S4.10 (course mapping)",
@@ -12749,17 +12894,47 @@
             "Applying both passes of an assembler"
           ],
           "materialTitles": [
-            "A complete symbol table resolves a forward reference",
-            "Assemble a complete program",
-            "Worked symbol table"
+            "What each pass knows",
+            "Assemble a complete program"
           ],
           "questionIds": [
             "S4-L05-Q2",
-            "S4-L05-Q3"
+            "S4-L05-Q3",
+            "S4-L05-Q4"
           ],
           "pastPaperAnalysis": [
             "Cambridge 9618 syllabus 4.2 · S4.10 (course mapping)"
           ]
+        },
+        {
+          "id": "S4.15.A15",
+          "description": "Use an instruction label to name an instruction address.",
+          "explanationUnits": [
+            "Labels for instructions and data"
+          ],
+          "materialTitles": [
+            "Two label forms",
+            "Read labels before assembling"
+          ],
+          "questionIds": [
+            "S4-L05-Q4"
+          ],
+          "pastPaperAnalysis": []
+        },
+        {
+          "id": "S4.15.A16",
+          "description": "Use a data label to name a data location and distinguish its address from its contents.",
+          "explanationUnits": [
+            "Labels for instructions and data"
+          ],
+          "materialTitles": [
+            "Two label forms",
+            "Read labels before assembling"
+          ],
+          "questionIds": [
+            "S4-L05-Q4"
+          ],
+          "pastPaperAnalysis": []
         }
       ],
       "knowledgeUnits": [
@@ -12774,13 +12949,76 @@
             "title": "Three representations"
           },
           "coreExplanation": [
-            "Machine instructions are encoded as binary patterns understood by a particular processor. An instruction contains an opcode and, where required, operand information. Assembly language provides readable mnemonics and symbolic names for the same low-level operations.",
-            "An assembler translates assembly source into machine code for its target instruction set. An ordinary mnemonic instruction corresponds to a machine instruction; labels and data declarations organise the source and are not additional operations for the processor to execute. Source for a different instruction set is not automatically interchangeable."
+            "Assembly uses readable mnemonics and labels; an assembler encodes them for a particular processor. Opcode bit patterns must be supplied or known."
+          ],
+          "teachingBlocks": [
+            {
+              "type": "paragraph",
+              "text": "Machine instructions are encoded as binary patterns understood by a particular processor. An instruction contains an opcode and, where required, operand information. Assembly language provides readable mnemonics and symbolic names for the same low-level operations."
+            },
+            {
+              "type": "paragraph",
+              "text": "An assembler translates assembly source into machine code for its target instruction set. An ordinary mnemonic instruction corresponds to a machine instruction; labels and data declarations organise the source and are not additional operations for the processor to execute. Source for a different instruction set is not automatically interchangeable."
+            },
+            {
+              "type": "paragraph",
+              "text": "The opcode names the operation; an operand supplies data or information used to obtain data or a target. LDD 4 means load from address 4, whereas a supplied immediate load uses its constant directly. END needs no source operand, even if a teaching encoding reserves a field filled with zeros."
+            },
+            {
+              "type": "paragraph",
+              "text": "A mnemonic is not converted by adding the character codes of its letters. The target instruction set defines the operation’s binary code and operand format. Translating a source therefore requires those definitions as well as any symbolic addresses."
+            },
+            {
+              "type": "paragraph",
+              "text": "The example here assigns an 8-bit opcode and an 8-bit address in a 16-bit instruction word. This is a supplied encoding used to practise resolution and conversion, not a machine encoding prescribed by the Cambridge instruction list. The same textual operation could have a different encoding on another target."
+            }
           ],
           "method": null,
           "workedExample": {
             "type": "worked-example",
             "title": "A supplied encoding"
+          }
+        },
+        {
+          "syllabusId": "S4.15",
+          "heading": "Labels for instructions and data",
+          "objectiveIds": [
+            "S4.15.A15",
+            "S4.15.A16"
+          ],
+          "leadVisual": {
+            "type": "table",
+            "title": "Two label forms"
+          },
+          "coreExplanation": [
+            "An instruction label names an instruction address; a data label names a data address. The symbol table stores addresses, not the values stored there."
+          ],
+          "teachingBlocks": [
+            {
+              "type": "paragraph",
+              "text": "The form <label>: <opcode> <operand> names the address of an instruction. The operand is omitted for an instruction that does not require one, such as END. A branch can use an instruction label as its target."
+            },
+            {
+              "type": "paragraph",
+              "text": "The form <label>: <data> names a location containing the given data. The label denotes the location's address, not its contents. Loading or storing through the label accesses that location; program execution must end or branch before falling into data declarations."
+            },
+            {
+              "type": "paragraph",
+              "text": "A label binds a readable name to the location of the item that follows its colon. In START: LDD FIRST, START names the instruction’s location and FIRST is a reference to another location. Defining a label is different from using that label as an operand."
+            },
+            {
+              "type": "paragraph",
+              "text": "In the shared program, FIRST: 18 labels address 4, which initially contains 18. LDD FIRST is therefore LDD 4, not LDD 18. TOTAL labels address 6 even after STO changes its contents from 0 to 42. Storing a result changes memory data, not the label’s address."
+            },
+            {
+              "type": "paragraph",
+              "text": "Data declarations occupy locations in this model but are not executed as load instructions. Place END before them so normal execution does not fall into data. A forward reference uses a name before its definition; the two-pass assembler resolves it after finding the definition."
+            }
+          ],
+          "method": null,
+          "workedExample": {
+            "type": "worked-example",
+            "title": "Read labels before assembling"
           }
         },
         {
@@ -12791,32 +13029,32 @@
             "S4.10.A02"
           ],
           "leadVisual": {
-            "type": "reviewed-visual",
-            "title": "A complete symbol table resolves a forward reference"
+            "type": "table",
+            "title": "What each pass knows"
           },
           "coreExplanation": [
-            "Pass one: Assign locations and record labels with their addresses in a symbol table. Advance the location counter by each instruction or data item’s size; report duplicate definitions. Pass two: Use the completed table to resolve symbolic operands, translate mnemonics into opcodes and emit machine instructions and data.",
-            "A forward reference names a label defined later in the source. The completed first pass makes its address available to pass two. A label still undefined after that pass is an error. The diagram’s one-word instructions and starting location are explicit example assumptions."
+            "Pass one assigns locations and records labels. Pass two resolves operands and emits encoded instructions/data; duplicate or undefined names are errors."
           ],
-          "coreBlocks": [
+          "teachingBlocks": [
             {
-              "type": "steps",
-              "title": "Resolve source in two passes",
-              "items": [
-                [
-                  "Pass one",
-                  "Assign locations and record labels with their addresses in a symbol table. Advance the location counter by each instruction or data item’s size; report duplicate definitions."
-                ],
-                [
-                  "Pass two",
-                  "Use the completed table to resolve symbolic operands, translate mnemonics into opcodes and emit machine instructions and data."
-                ]
-              ]
+              "type": "paragraph",
+              "text": "During pass one, the assembler scans the source, assigns locations and records labels with their addresses in a symbol table. It advances a location counter according to each instruction or data item's size and can detect errors such as duplicate definitions."
             },
             {
               "type": "paragraph",
-              "text": "A forward reference names a label defined later in the source. The completed first pass makes its address available to pass two. A label still undefined after that pass is an error. The diagram’s one-word instructions and starting location are explicit example assumptions.",
-              "title": "Why a second pass is useful"
+              "text": "During pass two, the assembler uses the completed symbol table to resolve symbolic operands, translates mnemonics to opcodes and emits machine instructions and data. A forward reference is now resolvable even when its label appeared later in the source; a name that remains undefined is reported as an error."
+            },
+            {
+              "type": "paragraph",
+              "text": "At the first line, the assembler knows START=0 but has not yet reached FIRST. It can still advance its location counter and continue recording definitions. After all seven items, the counter is 7 and the completed symbol table contains every name needed by the instructions."
+            },
+            {
+              "type": "paragraph",
+              "text": "In pass two, resolve the symbolic address before converting it to bits. FIRST is 4, so the LDD operand is 00000100; the contents 18 belong in the data word at address 4. The resulting seven-word image includes both four instructions and three data words."
+            },
+            {
+              "type": "paragraph",
+              "text": "Duplicate labels make the source ambiguous: if FIRST is defined at two addresses, the assembler must report the duplicate definition. An operand such as LDD MISSING with no matching definition remains unresolved after pass one and must be reported during resolution. Guessing address zero would hide a source error."
             }
           ],
           "method": null,
@@ -12850,6 +13088,17 @@
           "marks": 5,
           "objectiveIds": [
             "S4.09.A01",
+            "S4.10.A02"
+          ]
+        },
+        {
+          "id": "S4-L05-Q4",
+          "commandWord": "Identify",
+          "marks": 4,
+          "objectiveIds": [
+            "S4.15.A15",
+            "S4.15.A16",
+            "S4.10.A01",
             "S4.10.A02"
           ]
         }
@@ -12908,14 +13157,17 @@
           "materialTitles": [
             "Trace fields",
             "A skipped instruction",
-            "Complete execution trace",
-            "Trace the supplied loop"
+            "Read the loop before its trace",
+            "Supplied program and initial state",
+            "Complete execution trace"
           ],
           "questionIds": [
             "S4-L06-Q2",
             "S4-L06-Q3",
             "S4-L06-Q4",
-            "S4-L06-Q5"
+            "S4-L06-Q5",
+            "S4-L06-Q7",
+            "S4-L06-Q8"
           ],
           "pastPaperAnalysis": [
             "Cambridge 9618 syllabus 4.2 · S4.13, S4.11 (course mapping)",
@@ -13019,14 +13271,15 @@
           "id": "S4.13.A02",
           "description": "Trace arithmetic using ADD, SUB, INC and DEC.",
           "explanationUnits": [
-            "Arithmetic, comparison, branches and character I/O"
+            "Arithmetic and character input/output"
           ],
           "materialTitles": [
-            "Operation forms",
-            "An input-dependent output"
+            "Resolve before changing state",
+            "Character conversion from start to finish"
           ],
           "questionIds": [
-            "S4-L06-Q3"
+            "S4-L06-Q3",
+            "S4-L06-Q8"
           ],
           "pastPaperAnalysis": [
             "Cambridge 9618 syllabus 4.2 · S4.13, S4.11 (course mapping)",
@@ -13037,15 +13290,19 @@
           "id": "S4.13.A03",
           "description": "Trace comparison and branches using CMP, CMI, JPE and JPN.",
           "explanationUnits": [
-            "Arithmetic, comparison, branches and character I/O"
+            "Comparison and conditional control: accept or reject input"
           ],
           "materialTitles": [
-            "Operation forms",
-            "An input-dependent output"
+            "A decision needs both operations",
+            "Supplied program and initial state",
+            "Accepted input A: complete trace",
+            "Rejected input B reaches the other output"
           ],
           "questionIds": [
             "S4-L06-Q4",
-            "S4-L06-Q5"
+            "S4-L06-Q5",
+            "S4-L06-Q7",
+            "S4-L06-Q8"
           ],
           "pastPaperAnalysis": [
             "Cambridge 9618 syllabus 4.2 · S4.11, S4.13 (course mapping)"
@@ -13055,14 +13312,16 @@
           "id": "S4.13.A04",
           "description": "Trace input, output and termination using IN, OUT and END.",
           "explanationUnits": [
-            "Arithmetic, comparison, branches and character I/O"
+            "Arithmetic and character input/output"
           ],
           "materialTitles": [
-            "Operation forms",
-            "An input-dependent output"
+            "Resolve before changing state",
+            "Character conversion from start to finish"
           ],
           "questionIds": [
-            "S4-L06-Q4"
+            "S4-L06-Q4",
+            "S4-L06-Q7",
+            "S4-L06-Q8"
           ],
           "pastPaperAnalysis": [
             "Cambridge 9618 syllabus 4.2 · S4.11, S4.13 (course mapping)"
@@ -13095,14 +13354,17 @@
             "Worked program: loop, comparison and output"
           ],
           "materialTitles": [
-            "Complete execution trace",
-            "Trace the supplied loop"
+            "Read the loop before its trace",
+            "Supplied program and initial state",
+            "Complete execution trace"
           ],
           "questionIds": [
             "S4-L06-Q2",
             "S4-L06-Q3",
             "S4-L06-Q4",
-            "S4-L06-Q5"
+            "S4-L06-Q5",
+            "S4-L06-Q7",
+            "S4-L06-Q8"
           ],
           "pastPaperAnalysis": [
             "Cambridge 9618 syllabus 4.2 · S4.13, S4.11 (course mapping)",
@@ -13146,218 +13408,6 @@
       ],
       "knowledgeUnits": [
         {
-          "syllabusId": "S4.11",
-          "heading": "Trace the executed instruction sequence",
-          "objectiveIds": [
-            "S4.11.A01"
-          ],
-          "leadVisual": {
-            "type": "table",
-            "title": "Trace fields"
-          },
-          "coreExplanation": [
-            "Start a trace from the supplied PC, register values, memory contents and input. Fetch the instruction at PC, apply its exact operation, then record the resulting state. Record a row whenever an instruction executes; a loop therefore repeats rows for the same instruction address.",
-            "Use the branch condition produced by the preceding compare operation. JPE jumps when that comparison was True; JPN jumps when it was False. A skipped instruction has no trace row. END terminates execution and returns control to the operating system, rather than fetching the following data declarations."
-          ],
-          "coreBlocks": [
-            {
-              "type": "paragraph",
-              "text": "Start a trace from the supplied PC, register values, memory contents and input. Fetch the instruction at PC, apply its exact operation, then record the resulting state. Record a row whenever an instruction executes; a loop therefore repeats rows for the same instruction address.",
-              "title": "Start from the supplied state"
-            },
-            {
-              "type": "paragraph",
-              "text": "Use the branch condition produced by the preceding compare operation. JPE jumps when that comparison was True; JPN jumps when it was False. A skipped instruction has no trace row. END terminates execution and returns control to the operating system, rather than fetching the following data declarations.",
-              "title": "Follow branch decisions and termination"
-            }
-          ],
-          "method": null,
-          "workedExample": {
-            "type": "worked-example",
-            "title": "A skipped instruction"
-          }
-        },
-        {
-          "syllabusId": "S4.12",
-          "heading": "Instruction groups in the example instruction set",
-          "objectiveIds": [
-            "S4.12.A01",
-            "S4.12.A02",
-            "S4.12.A03",
-            "S4.12.A04",
-            "S4.12.A05"
-          ],
-          "leadVisual": {
-            "type": "table",
-            "title": "Five syllabus groups"
-          },
-          "coreExplanation": [
-            "Group an instruction by the operation it performs. Movement instructions copy a value, arithmetic instructions calculate a value, and input/output instructions transfer character data between the program and its environment.",
-            "Control instructions alter the sequence of execution. JMP does so unconditionally; JPE and JPN depend on a comparison result. CMP and CMI are compare operations: they compare values without themselves jumping. END terminates the program and returns control to the operating system."
-          ],
-          "method": null,
-          "workedExample": {
-            "type": "worked-example",
-            "title": "Compare followed by control"
-          }
-        },
-        {
-          "syllabusId": "S4.13",
-          "heading": "Data movement: ACC, IX and memory contents",
-          "objectiveIds": [
-            "S4.13.A01",
-            "S4.13.A05"
-          ],
-          "leadVisual": {
-            "type": "reviewed-visual",
-            "title": "Resolve the index, copy the value, then store a copy"
-          },
-          "coreExplanation": [
-            "Immediate #15, B00001111 and &0F supply the same value in denary, binary and hexadecimal forms. A bare address instead directs an instruction to memory.",
-            "LDX: Add IX to the address operand, then read the contents at that effective address. MOV IX: Copy ACC into IX, not IX into ACC. STO: Copy ACC into memory while leaving ACC unchanged.",
-            "A copy does not consume its source. LDX 400 with IX = 2 reads location 402; STO 450 then saves a copy at 450 while the original value remains at 402."
-          ],
-          "coreBlocks": [
-            {
-              "type": "paragraph",
-              "text": "Immediate #15, B00001111 and &0F supply the same value in denary, binary and hexadecimal forms. A bare address instead directs an instruction to memory.",
-              "title": "Read the operand notation"
-            },
-            {
-              "type": "list",
-              "title": "Copy in the specified direction",
-              "items": [
-                [
-                  "LDX",
-                  "Add IX to the address operand, then read the contents at that effective address."
-                ],
-                [
-                  "MOV IX",
-                  "Copy ACC into IX, not IX into ACC."
-                ],
-                [
-                  "STO",
-                  "Copy ACC into memory while leaving ACC unchanged."
-                ]
-              ]
-            },
-            {
-              "type": "paragraph",
-              "text": "A copy does not consume its source. LDX 400 with IX = 2 reads location 402; STO 450 then saves a copy at 450 while the original value remains at 402.",
-              "title": "Preserve the source"
-            }
-          ],
-          "method": null,
-          "workedExample": {
-            "type": "worked-example",
-            "title": "Indexed load and store"
-          }
-        },
-        {
-          "syllabusId": "S4.13",
-          "heading": "Arithmetic, comparison, branches and character I/O",
-          "objectiveIds": [
-            "S4.13.A02",
-            "S4.13.A03",
-            "S4.13.A04"
-          ],
-          "leadVisual": {
-            "type": "table",
-            "title": "Operation forms"
-          },
-          "coreExplanation": [
-            "ADD / SUB: Combine ACC with an immediate operand or directly addressed contents; retain the result in ACC. INC / DEC: Increase or decrease the named ACC or IX register by one.",
-            "CMP / CMI: CMP compares with an immediate or direct operand; CMI uses an indirect operand. Neither replaces ACC. JPE / JPN: JPE jumps when the comparison was True (equal); JPN jumps when it was False (not equal). JPN does not mean negative.",
-            "IN: Read one character and put its ASCII value in ACC. OUT: Output the character represented by ACC: 65 produces A, not the printed digits 65. END: Return control to the operating system."
-          ],
-          "coreBlocks": [
-            {
-              "type": "list",
-              "title": "Change values in the intended register",
-              "items": [
-                [
-                  "ADD / SUB",
-                  "Combine ACC with an immediate operand or directly addressed contents; retain the result in ACC."
-                ],
-                [
-                  "INC / DEC",
-                  "Increase or decrease the named ACC or IX register by one."
-                ]
-              ]
-            },
-            {
-              "type": "list",
-              "title": "Compare, then branch",
-              "items": [
-                [
-                  "CMP / CMI",
-                  "CMP compares with an immediate or direct operand; CMI uses an indirect operand. Neither replaces ACC."
-                ],
-                [
-                  "JPE / JPN",
-                  "JPE jumps when the comparison was True (equal); JPN jumps when it was False (not equal). JPN does not mean negative."
-                ]
-              ]
-            },
-            {
-              "type": "list",
-              "title": "Input, output and finish",
-              "items": [
-                [
-                  "IN",
-                  "Read one character and put its ASCII value in ACC."
-                ],
-                [
-                  "OUT",
-                  "Output the character represented by ACC: 65 produces A, not the printed digits 65."
-                ],
-                [
-                  "END",
-                  "Return control to the operating system."
-                ]
-              ]
-            }
-          ],
-          "method": null,
-          "workedExample": {
-            "type": "worked-example",
-            "title": "An input-dependent output"
-          }
-        },
-        {
-          "syllabusId": "S4.11",
-          "heading": "Worked program: loop, comparison and output",
-          "objectiveIds": [
-            "S4.11.A01",
-            "S4.13.A06"
-          ],
-          "leadVisual": {
-            "type": "table",
-            "title": "Complete execution trace"
-          },
-          "coreExplanation": [
-            "The program below repeats DEC and CMP until ACC reaches zero. The same JPN instruction is taken after the first comparison and not taken after the second. The trace therefore includes two visits to each loop instruction.",
-            "The load after the loop replaces the loop counter with an ASCII value before OUT executes. Separate the value used for loop control from the later output value; a register's meaning can change during a program."
-          ],
-          "coreBlocks": [
-            {
-              "type": "paragraph",
-              "text": "The program below repeats DEC and CMP until ACC reaches zero. The same JPN instruction is taken after the first comparison and not taken after the second. The trace therefore includes two visits to each loop instruction.",
-              "title": "Follow execution rather than source order"
-            },
-            {
-              "type": "paragraph",
-              "text": "The load after the loop replaces the loop counter with an ASCII value before OUT executes. Separate the value used for loop control from the later output value; a register's meaning can change during a program.",
-              "title": "Distinguish the loop counter from the output value"
-            }
-          ],
-          "method": null,
-          "workedExample": {
-            "type": "worked-example",
-            "title": "Trace the supplied loop"
-          }
-        },
-        {
           "syllabusId": "S4.14",
           "heading": "Immediate, direct, indirect, indexed and relative addressing",
           "objectiveIds": [
@@ -13369,15 +13419,9 @@
             "title": "Follow the address to find the value"
           },
           "coreExplanation": [
-            "An addressing mode specifies how to obtain an operand or target. Keep the instruction's operand, a selected address and that address's contents separate.",
-            "Mode: Immediate; Resolution rule: Use the operand itself as the value.. Mode: Direct; Resolution rule: Read Memory[address].. Mode: Indirect; Resolution rule: Read Memory[Memory[address]]: the first read supplies another address.. Mode: Indexed; Resolution rule: Read Memory[base address + IX].. Mode: Relative; Resolution rule: Target address = stated PC base + signed displacement..",
-            "For relative addressing, use the PC convention given in the question; it may already include the fetch increment. The example instruction set supplies no separate relative-jump mnemonic, so state the base and displacement explicitly."
+            "Immediate gives a value; direct reads one location; indirect follows a pointer; indexed adds IX; relative adds a signed offset to the stated PC base."
           ],
-          "coreBlocks": [
-            {
-              "type": "paragraph",
-              "text": "An addressing mode specifies how to obtain an operand or target. Keep the instruction's operand, a selected address and that address's contents separate."
-            },
+          "teachingBlocks": [
             {
               "type": "table",
               "title": "Rules for resolving an operand",
@@ -13412,12 +13456,249 @@
               "type": "paragraph",
               "text": "For relative addressing, use the PC convention given in the question; it may already include the fetch increment. The example instruction set supplies no separate relative-jump mnemonic, so state the base and displacement explicitly.",
               "title": "Check the PC base"
+            },
+            {
+              "type": "paragraph",
+              "text": "An effective address is a calculated or selected location. It is not the value stored at that location. Resolve the location first when the instruction reads memory, then read its contents. An immediate operand is already a value and needs no data-memory lookup."
+            },
+            {
+              "type": "paragraph",
+              "text": "Given Memory[100]=150, Memory[150]=7, Memory[102]=9 and IX=2: immediate #100 supplies 100; direct 100 supplies 150; indirect 100 first reads pointer 150 and then supplies 7; indexed 100 forms address 102 and supplies 9. The instruction fetch is separate from these operand accesses."
+            },
+            {
+              "type": "paragraph",
+              "text": "Relative addressing forms a target from a stated PC base and a signed displacement. Base 40 with −5 gives target 35; with +6 it gives 46. A branch uses that address for PC, not Memory[35] or Memory[46]. Use the base supplied by the question, because an instruction format determines which PC value is the base."
             }
           ],
           "method": null,
           "workedExample": {
             "type": "worked-example",
             "title": "Moving through array elements"
+          }
+        },
+        {
+          "syllabusId": "S4.13",
+          "heading": "Data movement: ACC, IX and memory contents",
+          "objectiveIds": [
+            "S4.13.A01",
+            "S4.13.A05"
+          ],
+          "leadVisual": {
+            "type": "reviewed-visual",
+            "title": "Resolve the index, copy the value, then store a copy"
+          },
+          "coreExplanation": [
+            "Resolve the source, copy to the specified destination and retain other state. LDX loads Memory[base+IX]; MOV IX copies ACC into IX; STO writes ACC to memory."
+          ],
+          "teachingBlocks": [
+            {
+              "type": "paragraph",
+              "text": "An immediate operand supplies a value directly. The example syntax uses # for denary, B for binary and & for hexadecimal: #15, B00001111 and &0F denote the same value. A bare address instead directs an instruction to memory."
+            },
+            {
+              "type": "paragraph",
+              "text": "Copying preserves the source. LDD does not empty memory, MOV IX does not empty ACC, and STO does not clear ACC. This explains why later instructions can reuse the same value and why a trace must retain unchanged state."
+            },
+            {
+              "type": "paragraph",
+              "text": "The instruction fixes the register destination. LDR #2 puts 2 into IX; LDM #2 puts 2 into ACC. An indexed read then uses the current IX value, which may have been changed by MOV IX. Resolve that address again for each instruction rather than assuming the initial index remains in use."
+            },
+            {
+              "type": "paragraph",
+              "text": "Indirect and indexed addressing solve different problems: LDI follows a stored address, while LDX adds an offset to a base. With Memory[310]=303 and Memory[303]=12, LDI 310 loads 12. With IX=2 and Memory[302]=9, LDX 300 loads 9. Neither loads its effective address as the answer."
+            }
+          ],
+          "method": null,
+          "workedExample": {
+            "type": "worked-example",
+            "title": "Indexed load and store"
+          }
+        },
+        {
+          "syllabusId": "S4.13",
+          "heading": "Arithmetic and character input/output",
+          "objectiveIds": [
+            "S4.13.A02",
+            "S4.13.A04"
+          ],
+          "leadVisual": {
+            "type": "table",
+            "title": "Resolve before changing state"
+          },
+          "coreExplanation": [
+            "ADD/SUB change ACC; INC/DEC change the named register. IN reads a character code; OUT emits its character, not its printed denary digits."
+          ],
+          "teachingBlocks": [
+            {
+              "type": "paragraph",
+              "text": "Resolve an arithmetic operand before calculating. With ACC=10, ADD B00000101 gives 15 and then SUB &03 gives 12. ADD 330 instead adds the contents of address 330. A bare number in an address form is not an immediate constant."
+            },
+            {
+              "type": "paragraph",
+              "text": "INC IX changes IX only; DEC ACC changes ACC only. These different destinations matter when a register is used as an index or a loop counter. Use the stated number representation and width when judging overflow; do not invent a width for an otherwise unrestricted trace."
+            },
+            {
+              "type": "paragraph",
+              "text": "IN reads one character and stores its ASCII code in ACC. Input A gives 65; adding 1 gives 66; OUT then emits B. It does not output the two digits 6 and 6. END terminates the program after the output."
+            }
+          ],
+          "method": null,
+          "workedExample": {
+            "type": "worked-example",
+            "title": "Character conversion from start to finish"
+          }
+        },
+        {
+          "syllabusId": "S4.13",
+          "heading": "Comparison and conditional control: accept or reject input",
+          "objectiveIds": [
+            "S4.13.A03"
+          ],
+          "leadVisual": {
+            "type": "table",
+            "title": "A decision needs both operations"
+          },
+          "coreExplanation": [
+            "CMP/CMI compare without changing ACC. JPE branches on equality, JPN on inequality; JMP always branches. Follow the last explicit comparison."
+          ],
+          "teachingBlocks": [
+            {
+              "type": "paragraph",
+              "text": "A comparison supplies a condition, then a conditional branch uses it. In the validation example, CMI 340 follows Memory[340]=341 to compare ACC with Memory[341]=65. Input A makes that comparison True; input B makes it False. CMI does not copy 65 into ACC."
+            },
+            {
+              "type": "paragraph",
+              "text": "JPN means jump if the comparison is not equal, not jump if ACC is negative. On the A path it falls through; after adding 1, CMP #66 is True and JPE SEND skips the rejection assignment. On the B path JPN immediately selects REJECT, avoiding the addition and the second comparison."
+            },
+            {
+              "type": "paragraph",
+              "text": "Keep a separate “last CMP/CMI” column. It records the comparison being explained, not an assumption that every arithmetic instruction on every CPU preserves every hardware status flag. The given sequence explicitly compares before the conditional decisions that depend on it."
+            }
+          ],
+          "method": null,
+          "workedExample": {
+            "type": "worked-example",
+            "title": "Supplied program and initial state"
+          }
+        },
+        {
+          "syllabusId": "S4.11",
+          "heading": "Trace the executed instruction sequence",
+          "objectiveIds": [
+            "S4.11.A01"
+          ],
+          "leadVisual": {
+            "type": "table",
+            "title": "Trace fields"
+          },
+          "coreExplanation": [
+            "Record post-instruction state in execution order; repeat loop rows, omit skipped lines, and show comparison, memory writes and output where relevant."
+          ],
+          "teachingBlocks": [
+            {
+              "type": "paragraph",
+              "text": "Start a trace from the supplied PC, register values, memory contents and input. Fetch the instruction at PC, apply its exact operation, then record the resulting state. Record a row whenever an instruction executes; a loop therefore repeats rows for the same instruction address."
+            },
+            {
+              "type": "paragraph",
+              "text": "Use the branch condition produced by the preceding compare operation. JPE jumps when that comparison was True; JPN jumps when it was False. A skipped instruction has no trace row. END terminates execution and returns control to the operating system, rather than fetching the following data declarations."
+            },
+            {
+              "type": "paragraph",
+              "text": "Write the initial conditions above the table rather than assuming registers start at zero. State the input sequence, memory values, labels or resolved addresses and any word-width rule needed by the task. An unset comparison cannot be used as if it were already True."
+            },
+            {
+              "type": "paragraph",
+              "text": "For each row, use the previous row’s state to resolve the operand, perform the operation, and decide the next PC. Update only the specified destination. Record a memory write when STO runs, and an output character when OUT runs; an unchanged value remains available to later instructions."
+            },
+            {
+              "type": "paragraph",
+              "text": "A listing is static, but the trace is the actual route through it. In a loop the same source address appears more than once; in a branch some listed addresses never appear. END is a final executed instruction whose next control destination is the OS, not the data that follows it."
+            }
+          ],
+          "method": null,
+          "workedExample": {
+            "type": "worked-example",
+            "title": "A skipped instruction"
+          }
+        },
+        {
+          "syllabusId": "S4.11",
+          "heading": "Worked program: loop, comparison and output",
+          "objectiveIds": [
+            "S4.11.A01",
+            "S4.13.A06"
+          ],
+          "leadVisual": {
+            "type": "table",
+            "title": "Read the loop before its trace"
+          },
+          "coreExplanation": [
+            "Trace both the taken and not-taken loop branch, then follow the output and termination. A counter’s final value need not be ACC’s final value."
+          ],
+          "teachingBlocks": [
+            {
+              "type": "paragraph",
+              "text": "Start with the complete program and memory values before inspecting the answer. LDM #2 establishes the counter. Each visit to DEC subtracts one, CMP #0 records equality, and JPN repeats only while that comparison is False."
+            },
+            {
+              "type": "paragraph",
+              "text": "The counter reaches zero before execution leaves the loop, but ACC does not remain zero. LDD 90 replaces it with 67, which OUT converts to C. At termination ACC=67, IX=0, Memory[90]=67 and there is one output character."
+            },
+            {
+              "type": "paragraph",
+              "text": "For the boundary variant, replace the first instruction with LDM #1 and reset all initial state. There is one DEC/CMP/JPN visit: the comparison is True, so the branch is never taken. Execution addresses are 20,21,22,23,24,25,26 and the output is still C. Starting at zero would instead decrement before testing; termination would depend on numeric limits and wrap rules, which this trace does not specify."
+            }
+          ],
+          "method": null,
+          "workedExample": {
+            "type": "worked-example",
+            "title": "Supplied program and initial state"
+          }
+        },
+        {
+          "syllabusId": "S4.12",
+          "heading": "Instruction groups in the example instruction set",
+          "objectiveIds": [
+            "S4.12.A01",
+            "S4.12.A02",
+            "S4.12.A03",
+            "S4.12.A04",
+            "S4.12.A05"
+          ],
+          "leadVisual": {
+            "type": "table",
+            "title": "Five syllabus groups"
+          },
+          "coreExplanation": [
+            "Classify by effect: movement; input/output; arithmetic; unconditional/conditional control; compare. END terminates execution."
+          ],
+          "teachingBlocks": [
+            {
+              "type": "paragraph",
+              "text": "Group an instruction by the operation it performs. Movement instructions copy a value, arithmetic instructions calculate a value, and input/output instructions transfer character data between the program and its environment."
+            },
+            {
+              "type": "paragraph",
+              "text": "Control instructions alter the sequence of execution. JMP does so unconditionally; JPE and JPN depend on a comparison result. CMP and CMI are compare operations: they compare values without themselves jumping. END terminates the program and returns control to the operating system."
+            },
+            {
+              "type": "paragraph",
+              "text": "Use the traced action to classify an instruction. STO is movement because it copies ACC to memory; it is not character output. OUT is input/output because it sends the character represented by ACC to the external environment."
+            },
+            {
+              "type": "paragraph",
+              "text": "CMP and CMI are compare operations even though their results support later control. JMP, JPE and JPN select the next instruction address. Separating condition creation from using that condition helps locate a wrong branch in a trace."
+            },
+            {
+              "type": "paragraph",
+              "text": "Now apply these groups to the full programs: the indexed example obtains data, arithmetic changes the result, and a store retains it. The validation example adds comparison and control to choose which character is output. A group name should be supported by the instruction’s actual effect."
+            }
+          ],
+          "method": null,
+          "workedExample": {
+            "type": "worked-example",
+            "title": "Compare followed by control"
           }
         }
       ],
@@ -13437,7 +13718,7 @@
         {
           "id": "S4-L06-Q2",
           "commandWord": "Trace",
-          "marks": 8,
+          "marks": 4,
           "objectiveIds": [
             "S4.13.A01",
             "S4.13.A05",
@@ -13448,7 +13729,7 @@
         {
           "id": "S4-L06-Q3",
           "commandWord": "Trace",
-          "marks": 11,
+          "marks": 5,
           "objectiveIds": [
             "S4.13.A02",
             "S4.13.A05",
@@ -13459,7 +13740,7 @@
         {
           "id": "S4-L06-Q4",
           "commandWord": "Trace",
-          "marks": 8,
+          "marks": 4,
           "objectiveIds": [
             "S4.13.A03",
             "S4.13.A04",
@@ -13471,7 +13752,7 @@
         {
           "id": "S4-L06-Q5",
           "commandWord": "Trace",
-          "marks": 6,
+          "marks": 4,
           "objectiveIds": [
             "S4.11.A01",
             "S4.13.A03",
@@ -13486,6 +13767,29 @@
             "S4.14.A01",
             "S4.14.A02"
           ]
+        },
+        {
+          "id": "S4-L06-Q7",
+          "commandWord": "Trace",
+          "marks": 4,
+          "objectiveIds": [
+            "S4.11.A01",
+            "S4.13.A03",
+            "S4.13.A04",
+            "S4.13.A06"
+          ]
+        },
+        {
+          "id": "S4-L06-Q8",
+          "commandWord": "State",
+          "marks": 3,
+          "objectiveIds": [
+            "S4.11.A01",
+            "S4.13.A02",
+            "S4.13.A03",
+            "S4.13.A04",
+            "S4.13.A06"
+          ]
         }
       ],
       "examStyleQuestions": [
@@ -13493,7 +13797,7 @@
           "id": "S4-L06-EXAM-1",
           "sourceRef": "Cambridge 9618 syllabus 4.2 · S4.13, S4.11 (course mapping)",
           "commandWord": "Complete",
-          "marks": 7,
+          "marks": 4,
           "objectiveIds": [
             "S4.13.A01",
             "S4.13.A02",
@@ -13506,7 +13810,7 @@
           "id": "S4-L06-EXAM-2",
           "sourceRef": "Cambridge 9618 syllabus 4.2 · S4.11, S4.13 (course mapping)",
           "commandWord": "Complete",
-          "marks": 10,
+          "marks": 5,
           "objectiveIds": [
             "S4.11.A01",
             "S4.13.A02",
@@ -13562,12 +13866,14 @@
             "Monitor and control a device using masks"
           ],
           "materialTitles": [
-            "Test on a copy; reload the original before changing a control bit",
-            "Sensor ready and motor enable",
-            "Masking actions"
+            "Test readiness before changing the motor bit",
+            "Supplied program and initial state",
+            "Ready input 00010001: complete trace",
+            "Check both paths and preserve every other bit"
           ],
           "questionIds": [
-            "S4-L07-Q3"
+            "S4-L07-Q3",
+            "S4-L07-Q6"
           ],
           "pastPaperAnalysis": [
             "Cambridge 9618 syllabus 4.3 · S4.15 (course mapping)"
@@ -13619,14 +13925,16 @@
             "Apply the rule independently at every bit position",
             "Same mask, different operations",
             "Operand forms and bit rules",
-            "Test on a copy; reload the original before changing a control bit",
-            "Sensor ready and motor enable",
-            "Masking actions"
+            "Test readiness before changing the motor bit",
+            "Supplied program and initial state",
+            "Ready input 00010001: complete trace",
+            "Check both paths and preserve every other bit"
           ],
           "questionIds": [
             "S4-L07-Q2",
             "S4-L07-Q3",
-            "S4-L07-Q5"
+            "S4-L07-Q5",
+            "S4-L07-Q6"
           ],
           "pastPaperAnalysis": [
             "Cambridge 9618 syllabus 4.3 · S4.15 (course mapping)",
@@ -13640,12 +13948,14 @@
             "Monitor and control a device using masks"
           ],
           "materialTitles": [
-            "Test on a copy; reload the original before changing a control bit",
-            "Sensor ready and motor enable",
-            "Masking actions"
+            "Test readiness before changing the motor bit",
+            "Supplied program and initial state",
+            "Ready input 00010001: complete trace",
+            "Check both paths and preserve every other bit"
           ],
           "questionIds": [
-            "S4-L07-Q3"
+            "S4-L07-Q3",
+            "S4-L07-Q6"
           ],
           "pastPaperAnalysis": [
             "Cambridge 9618 syllabus 4.3 · S4.15 (course mapping)"
@@ -13797,14 +14107,17 @@
           "id": "S4.15.A15",
           "description": "<label>: <opcode> <operand> Labels an instruction",
           "explanationUnits": [
-            "Labels for instructions and data"
+            "Monitor and control a device using masks"
           ],
           "materialTitles": [
-            "Two label forms",
-            "Labelled device value"
+            "Test readiness before changing the motor bit",
+            "Supplied program and initial state",
+            "Ready input 00010001: complete trace",
+            "Check both paths and preserve every other bit"
           ],
           "questionIds": [
-            "S4-L07-Q5"
+            "S4-L07-Q5",
+            "S4-L07-Q6"
           ],
           "pastPaperAnalysis": []
         },
@@ -13812,14 +14125,17 @@
           "id": "S4.15.A16",
           "description": "<label>: <data> Gives a symbolic address <label> to the memory location with contents <data>",
           "explanationUnits": [
-            "Labels for instructions and data"
+            "Monitor and control a device using masks"
           ],
           "materialTitles": [
-            "Two label forms",
-            "Labelled device value"
+            "Test readiness before changing the motor bit",
+            "Supplied program and initial state",
+            "Ready input 00010001: complete trace",
+            "Check both paths and preserve every other bit"
           ],
           "questionIds": [
-            "S4-L07-Q5"
+            "S4-L07-Q5",
+            "S4-L07-Q6"
           ],
           "pastPaperAnalysis": []
         }
@@ -13840,15 +14156,9 @@
             "title": "Track every bit through a one-place shift"
           },
           "coreExplanation": [
-            "State the word width, direction and number of positions before shifting. Each panel starts from the same original byte; the panels are not successive instructions.",
-            "Logical: Insert 0 and discard outgoing bits. LSL #n and LSR #n shift ACC logically by n positions. Arithmetic: For two's complement, copy the sign bit when shifting right. A left shift inserts 0, like logical left, but may overflow. Cyclic: Wrap the outgoing bit to the opposite end; the number of 1 bits is unchanged.",
-            "A left shift multiplies a signed value by a power of two only when the result remains representable. Arithmetic right shift of a negative odd value rounds towards negative infinity: -105 becomes -53."
+            "Logical shifts fill with zero; arithmetic right repeats the sign; cyclic shifts wrap. Interpret the fixed-width result using the stated representation."
           ],
-          "coreBlocks": [
-            {
-              "type": "paragraph",
-              "text": "State the word width, direction and number of positions before shifting. Each panel starts from the same original byte; the panels are not successive instructions."
-            },
+          "teachingBlocks": [
             {
               "type": "list",
               "title": "What fills the vacated position?",
@@ -13869,8 +14179,15 @@
             },
             {
               "type": "paragraph",
-              "text": "A left shift multiplies a signed value by a power of two only when the result remains representable. Arithmetic right shift of a negative odd value rounds towards negative infinity: -105 becomes -53.",
-              "title": "Check the numerical result"
+              "text": "Each panel of the six-shift comparison begins again with 10010111. It is not a sequence of six instructions. Use eight bits and discard bits that leave the result unless the operation is cyclic. Under unsigned interpretation the starting value is 151; under two’s complement it is −105."
+            },
+            {
+              "type": "paragraph",
+              "text": "An arithmetic right shift gives 11001011, representing −53. The exact value −105/2 is −52.5: this shift rounds down to −53 rather than truncating towards zero. A positive odd value such as 00000101 becomes 00000010, or 2. Logical right of a negative pattern instead inserts zero and changes its signed interpretation."
+            },
+            {
+              "type": "paragraph",
+              "text": "An arithmetic left shift moves bits like a logical left shift. Here it gives 00101110 (46), but the intended signed double −210 is outside −128 to 127, so this is overflow. Left followed by right is not generally reversible: logical left of 10000001 gives 00000010, then logical right gives 00000001; the lost leading 1 cannot be recovered."
             }
           ],
           "method": null,
@@ -13896,32 +14213,20 @@
             "title": "Apply the rule independently at every bit position"
           },
           "coreExplanation": [
-            "AND: Produces 1 only when both input bits are 1. A mask bit 0 clears; a mask bit 1 preserves. OR: Produces 1 when at least one input is 1. A mask bit 1 sets; a mask bit 0 preserves. XOR: Produces 1 when exactly one input is 1. A mask bit 1 toggles; a mask bit 0 preserves.",
-            "AND, OR and XOR combine the operand with ACC and store the result in ACC. Immediate #n, Bn or &n forms supply the value. For a direct memory-address operand, read the contents of that address first."
+            "Apply AND, OR and XOR independently at each bit position. Resolve an immediate or memory operand before using its bit pattern."
           ],
-          "coreBlocks": [
+          "teachingBlocks": [
             {
-              "type": "list",
-              "title": "Apply one rule per bit position",
-              "items": [
-                [
-                  "AND",
-                  "Produces 1 only when both input bits are 1. A mask bit 0 clears; a mask bit 1 preserves."
-                ],
-                [
-                  "OR",
-                  "Produces 1 when at least one input is 1. A mask bit 1 sets; a mask bit 0 preserves."
-                ],
-                [
-                  "XOR",
-                  "Produces 1 when exactly one input is 1. A mask bit 1 toggles; a mask bit 0 preserves."
-                ]
-              ]
+              "type": "paragraph",
+              "text": "These are bitwise operations on equal-width patterns, not one Boolean decision about the whole byte. AND yields 1 only for two 1 bits; OR yields 1 for at least one 1; XOR yields 1 when the pair differs. Zero-extend a shorter unsigned mask to the stated width before aligning it."
             },
             {
               "type": "paragraph",
-              "text": "AND, OR and XOR combine the operand with ACC and store the result in ACC. Immediate #n, Bn or &n forms supply the value. For a direct memory-address operand, read the contents of that address first.",
-              "title": "Retrieve the operand before applying the rule"
+              "text": "The mask’s neutral bits explain preservation: AND with 1 keeps a bit; OR with 0 keeps a bit; XOR with 0 keeps a bit. Their active bits then clear, set or toggle only selected positions. This is why a mask is chosen from the required action instead of from its visual similarity to the data."
+            },
+            {
+              "type": "paragraph",
+              "text": "AND #15, AND B00001111 and AND &0F use the same immediate value. AND 700 instead reads Memory[700]; it behaves the same only if that location contains 15. Reset ACC between independent examples, but use the updated ACC for a stated instruction sequence."
             }
           ],
           "method": null,
@@ -13936,72 +14241,39 @@
           "objectiveIds": [
             "S4.15.A02",
             "S4.15.A05",
-            "S4.15.A06"
+            "S4.15.A06",
+            "S4.15.A15",
+            "S4.15.A16"
           ],
           "leadVisual": {
             "type": "reviewed-visual",
-            "title": "Test on a copy; reload the original before changing a control bit"
+            "title": "Test readiness before changing the motor bit"
           },
           "coreExplanation": [
-            "A device byte can encode several states and controls. Number its bits explicitly: here bit 7 is leftmost and bit 0 rightmost.",
-            "Test a copy: AND the copy with 00010000. Nonzero means ready bit 4 was set; other positions in the copy are cleared. Reload: Restore the original device byte before an unrelated update. Set and store: OR with 00000100 sets motor bit 2 while preserving other bits; write the updated byte back to the device register.",
-            "AND with a zero in the selected position clears it. XOR with a one toggles it. Match the operation to the requested effect and preserve unrelated controls."
+            "Read status, AND a copy to test, compare and branch, then reload before OR and STO. Preserve unrelated bits on both ready and not-ready paths."
           ],
-          "coreBlocks": [
+          "teachingBlocks": [
             {
               "type": "paragraph",
-              "text": "A device byte can encode several states and controls. Number its bits explicitly: here bit 7 is leftmost and bit 0 rightmost.",
-              "title": "Know which bit represents the device function"
-            },
-            {
-              "type": "steps",
-              "title": "Test ready, then enable the motor",
-              "items": [
-                [
-                  "Test a copy",
-                  "AND the copy with 00010000. Nonzero means ready bit 4 was set; other positions in the copy are cleared."
-                ],
-                [
-                  "Reload",
-                  "Restore the original device byte before an unrelated update."
-                ],
-                [
-                  "Set and store",
-                  "OR with 00000100 sets motor bit 2 while preserving other bits; write the updated byte back to the device register."
-                ]
-              ]
+              "text": "A device interface can encode several states or controls in one byte. A mask selects the relevant positions: AND with a single 1 tests a bit, while OR with a single 1 sets it. Number bits explicitly; these examples use bit 7 at the left and bit 0 at the right."
             },
             {
               "type": "paragraph",
-              "text": "AND with a zero in the selected position clears it. XOR with a one toggles it. Match the operation to the requested effect and preserve unrelated controls.",
-              "title": "Other mask effects"
+              "text": "Use an 8-bit memory-mapped interface model at address 900: bit 4 is ready, bit 2 enables the motor, and other bits must be preserved. Reads return the current byte; writing a byte replaces it. Assume no independent device update occurs during this short sequence; real interface registers can have different write rules."
+            },
+            {
+              "type": "paragraph",
+              "text": "Testing with AND B00010000 leaves either 16 or 0 in ACC. CMP #0 followed by JPE DONE skips the update when not ready. On the ready path the AND result has lost other status bits, so LDD 900 reloads the original byte before OR sets bit 2 and STO writes it back."
+            },
+            {
+              "type": "paragraph",
+              "text": "The required behaviour is conditional: if ready, set the motor bit; otherwise leave the stored byte unchanged. For ready input 00010001 the result is 00010101. For not-ready input 00000001 it stays 00000001. For ready input 00010101 the already-set motor bit stays set and the result is unchanged."
             }
           ],
           "method": null,
           "workedExample": {
             "type": "worked-example",
-            "title": "Sensor ready and motor enable"
-          }
-        },
-        {
-          "syllabusId": "S4.15",
-          "heading": "Labels for instructions and data",
-          "objectiveIds": [
-            "S4.15.A15",
-            "S4.15.A16"
-          ],
-          "leadVisual": {
-            "type": "table",
-            "title": "Two label forms"
-          },
-          "coreExplanation": [
-            "The form <label>: <opcode> <operand> names the address of an instruction. The operand is omitted for an instruction that does not require one, such as END. A branch can use an instruction label as its target.",
-            "The form <label>: <data> names a location containing the given data. The label denotes the location's address, not its contents. Loading or storing through the label accesses that location; program execution must end or branch before falling into data declarations."
-          ],
-          "method": null,
-          "workedExample": {
-            "type": "worked-example",
-            "title": "Labelled device value"
+            "title": "Supplied program and initial state"
           }
         }
       ],
@@ -14060,6 +14332,18 @@
           "objectiveIds": [
             "S4.15.A05",
             "S4.15.A11",
+            "S4.15.A15",
+            "S4.15.A16"
+          ]
+        },
+        {
+          "id": "S4-L07-Q6",
+          "commandWord": "Write",
+          "marks": 5,
+          "objectiveIds": [
+            "S4.15.A02",
+            "S4.15.A05",
+            "S4.15.A06",
             "S4.15.A15",
             "S4.15.A16"
           ]
@@ -21568,7 +21852,7 @@
             "Section 4: Processor fundamentals"
           ],
           "materialTitles": [
-            "Visual overview · Section 4: Processor fundamentals"
+            "Section 4: produce evidence for each claim"
           ],
           "questionIds": [],
           "pastPaperAnalysis": []
@@ -21580,9 +21864,12 @@
             "Section 4: Processor fundamentals"
           ],
           "materialTitles": [
-            "Visual overview · Section 4: Processor fundamentals"
+            "Section 4: produce evidence for each claim"
           ],
-          "questionIds": [],
+          "questionIds": [
+            "REV-P1-S4-Q1",
+            "REV-P1-S4-Q2"
+          ],
           "pastPaperAnalysis": []
         },
         {
@@ -21592,7 +21879,7 @@
             "Section 4: Processor fundamentals"
           ],
           "materialTitles": [
-            "Visual overview · Section 4: Processor fundamentals"
+            "Section 4: produce evidence for each claim"
           ],
           "questionIds": [],
           "pastPaperAnalysis": []
@@ -21604,9 +21891,11 @@
             "Section 4: Processor fundamentals"
           ],
           "materialTitles": [
-            "Visual overview · Section 4: Processor fundamentals"
+            "Section 4: produce evidence for each claim"
           ],
-          "questionIds": [],
+          "questionIds": [
+            "REV-P1-S4-Q1"
+          ],
           "pastPaperAnalysis": []
         },
         {
@@ -21616,7 +21905,7 @@
             "Section 4: Processor fundamentals"
           ],
           "materialTitles": [
-            "Visual overview · Section 4: Processor fundamentals"
+            "Section 4: produce evidence for each claim"
           ],
           "questionIds": [],
           "pastPaperAnalysis": []
@@ -21628,7 +21917,7 @@
             "Section 4: Processor fundamentals"
           ],
           "materialTitles": [
-            "Visual overview · Section 4: Processor fundamentals"
+            "Section 4: produce evidence for each claim"
           ],
           "questionIds": [],
           "pastPaperAnalysis": []
@@ -21640,9 +21929,11 @@
             "Section 4: Processor fundamentals"
           ],
           "materialTitles": [
-            "Visual overview · Section 4: Processor fundamentals"
+            "Section 4: produce evidence for each claim"
           ],
-          "questionIds": [],
+          "questionIds": [
+            "REV-P1-S4-Q1"
+          ],
           "pastPaperAnalysis": []
         },
         {
@@ -21652,9 +21943,11 @@
             "Section 4: Processor fundamentals"
           ],
           "materialTitles": [
-            "Visual overview · Section 4: Processor fundamentals"
+            "Section 4: produce evidence for each claim"
           ],
-          "questionIds": [],
+          "questionIds": [
+            "REV-P1-S4-Q2"
+          ],
           "pastPaperAnalysis": []
         },
         {
@@ -21664,7 +21957,7 @@
             "Section 4: Processor fundamentals"
           ],
           "materialTitles": [
-            "Visual overview · Section 4: Processor fundamentals"
+            "Section 4: produce evidence for each claim"
           ],
           "questionIds": [],
           "pastPaperAnalysis": []
@@ -21676,7 +21969,7 @@
             "Section 4: Processor fundamentals"
           ],
           "materialTitles": [
-            "Visual overview · Section 4: Processor fundamentals"
+            "Section 4: produce evidence for each claim"
           ],
           "questionIds": [],
           "pastPaperAnalysis": []
@@ -21688,9 +21981,11 @@
             "Section 4: Processor fundamentals"
           ],
           "materialTitles": [
-            "Visual overview · Section 4: Processor fundamentals"
+            "Section 4: produce evidence for each claim"
           ],
-          "questionIds": [],
+          "questionIds": [
+            "REV-P1-S4-Q3"
+          ],
           "pastPaperAnalysis": []
         },
         {
@@ -21700,7 +21995,7 @@
             "Section 4: Processor fundamentals"
           ],
           "materialTitles": [
-            "Visual overview · Section 4: Processor fundamentals"
+            "Section 4: produce evidence for each claim"
           ],
           "questionIds": [],
           "pastPaperAnalysis": []
@@ -21712,9 +22007,11 @@
             "Section 4: Processor fundamentals"
           ],
           "materialTitles": [
-            "Visual overview · Section 4: Processor fundamentals"
+            "Section 4: produce evidence for each claim"
           ],
-          "questionIds": [],
+          "questionIds": [
+            "REV-P1-S4-Q3"
+          ],
           "pastPaperAnalysis": []
         },
         {
@@ -21724,9 +22021,11 @@
             "Section 4: Processor fundamentals"
           ],
           "materialTitles": [
-            "Visual overview · Section 4: Processor fundamentals"
+            "Section 4: produce evidence for each claim"
           ],
-          "questionIds": [],
+          "questionIds": [
+            "REV-P1-S4-Q3"
+          ],
           "pastPaperAnalysis": []
         },
         {
@@ -21736,9 +22035,11 @@
             "Section 4: Processor fundamentals"
           ],
           "materialTitles": [
-            "Visual overview · Section 4: Processor fundamentals"
+            "Section 4: produce evidence for each claim"
           ],
-          "questionIds": [],
+          "questionIds": [
+            "REV-P1-S4-Q4"
+          ],
           "pastPaperAnalysis": []
         },
         {
@@ -22416,14 +22717,21 @@
             "S4.15.R"
           ],
           "leadVisual": {
-            "type": "cards",
-            "title": "Visual overview · Section 4: Processor fundamentals"
+            "type": "table",
+            "title": "Section 4: produce evidence for each claim"
           },
           "coreExplanation": [
-            "Understand Von Neumann architecture and the stored-program concept.",
-            "Understand general- and special-purpose registers: PC, MDR, MAR, ACC, IX, CIR and status register.",
-            "Understand ALU, CU, clock and immediate access store (IAS).",
-            "Understand address, data and control buses."
+            "Trace addresses, values and control flow; preserve context across interrupts and unrelated bits during a conditional device update."
+          ],
+          "teachingBlocks": [
+            {
+              "type": "paragraph",
+              "text": "Diagnose the state that made a result wrong. Separate the instruction address from its contents, a comparison from a branch, a pending request from an accepted one, and a test mask from the status byte that must be stored."
+            },
+            {
+              "type": "paragraph",
+              "text": "For each task, identify the initial state and trace the relevant transfers or decisions to the final state. Explain the correction and check a different path, such as unequal input or a clear ready bit. These tasks connect processor structure to assembly behaviour."
+            }
           ],
           "method": null,
           "workedExample": null
@@ -22645,6 +22953,43 @@
           "objectiveIds": [
             "S3.08.R",
             "S3.09.R"
+          ]
+        },
+        {
+          "id": "REV-P1-S4-Q1",
+          "commandWord": "Describe",
+          "marks": 3,
+          "objectiveIds": [
+            "S4.02.R",
+            "S4.04.R",
+            "S4.07.R"
+          ]
+        },
+        {
+          "id": "REV-P1-S4-Q2",
+          "commandWord": "State",
+          "marks": 3,
+          "objectiveIds": [
+            "S4.02.R",
+            "S4.08.R"
+          ]
+        },
+        {
+          "id": "REV-P1-S4-Q3",
+          "commandWord": "Complete",
+          "marks": 4,
+          "objectiveIds": [
+            "S4.11.R",
+            "S4.13.R",
+            "S4.14.R"
+          ]
+        },
+        {
+          "id": "REV-P1-S4-Q4",
+          "commandWord": "Explain",
+          "marks": 4,
+          "objectiveIds": [
+            "S4.15.R"
           ]
         },
         {
@@ -38006,11 +38351,11 @@
     },
     {
       "path": "web/assets/course-v3/section-4/von-neumann.svg",
-      "sha256": "993d76c54fd3284d250d733cff80215ca58c4c266cfb45d7721be58681e24bae"
+      "sha256": "045a08401c639fac30a03f0913bf56bd7c7eed120924f9ea92820ee365cf4f04"
     },
     {
       "path": "web/assets/course-v3/mechanisms/alu-control.svg",
-      "sha256": "85b22f15ffabacc957ae717c7ea12248a9c18980b78e3787aeb92db21bce22ba"
+      "sha256": "df30be009980051c23533d48596ce0fb0d246a39ca0ccc9f7a1e2aa4235ebe2b"
     },
     {
       "path": "web/assets/course-v3/mechanisms/buses.svg",
@@ -38029,24 +38374,20 @@
       "sha256": "4bc78e37165b49e9d4380ca0ad94557771c4cdd168cf2c1b77993164b7356022"
     },
     {
-      "path": "web/assets/course-v3/mechanisms/execute-load.svg",
-      "sha256": "faa1a868cf21a9a62e025efcfc717dccbe42a3b117337a37f265e98af83e2de4"
+      "path": "web/assets/course-v3/section-4/calculation-transfers.svg",
+      "sha256": "e366011c6bb258f0e2ba4911255a30699e414b279995444105861bb39763ab6a"
     },
     {
-      "path": "web/assets/course-v3/mechanisms/interrupt.svg",
-      "sha256": "73ff9442c5d7601e1b51b1a25d5df2f88255b45e6442a129215749446a399c5f"
-    },
-    {
-      "path": "web/assets/course-v3/mechanisms/assembler.svg",
-      "sha256": "431849ed487dee940e07a6ef5c38028ac81a42b853596176c14ab4abfe91eef7"
-    },
-    {
-      "path": "web/assets/course-v3/mechanisms/indexed-store.svg",
-      "sha256": "7ee94e294f4467ee23abcebdbe6f50b1ffc4cb9dca0dd076212afc89872812c8"
+      "path": "web/assets/course-v3/section-4/interrupt-context.svg",
+      "sha256": "df6a60f6c214837f456c0df29287a4cccfbed8f0adfa8de055c3e18f1a666519"
     },
     {
       "path": "web/assets/course-v3/mechanisms/addressing.svg",
       "sha256": "975162827418f80ffe5d0b390c2c016d199ed08d7b48ba6656346ed7991dc05b"
+    },
+    {
+      "path": "web/assets/course-v3/mechanisms/indexed-store.svg",
+      "sha256": "7ee94e294f4467ee23abcebdbe6f50b1ffc4cb9dca0dd076212afc89872812c8"
     },
     {
       "path": "web/assets/course-v3/mechanisms/shifts.svg",
@@ -38057,8 +38398,8 @@
       "sha256": "a7346444b9007093360ce0ebc1d6304ac8994675f957168d1e3726c48ce2502f"
     },
     {
-      "path": "web/assets/course-v3/mechanisms/device-control.svg",
-      "sha256": "852358b95f868db4b987c42736ecbb1c5d4c49fda590fd621d018fbe6b42e16d"
+      "path": "web/assets/course-v3/section-4/device-conditional.svg",
+      "sha256": "c3120df523bed7d99e14c058bb8bd3b3471d998776fccfa289f79664ea83d830"
     },
     {
       "path": "web/assets/course-v3/mechanisms/os-services.svg",

@@ -1,6 +1,14 @@
 // Complete, original programs used as supplied material in S4 lessons.
 // Addresses are denary; each instruction/data item occupies one location.
 export const section4Programs = {
+  sharedCalculation: {
+    origin: 0, acc: 0, ix: 0, memory: {4:18,5:24,6:0}, input: "",
+    lines: ["LDD 4", "ADD 5", "STO 6", "END"],
+  },
+  deviceReady: {
+    origin: 100, acc: 0, ix: 0, memory: {900:17}, input: "",
+    lines: ["LDD 900", "AND B00010000", "CMP #0", "JPE DONE", "LDD 900", "OR B00000100", "STO 900", "DONE: END"],
+  },
   workedTrace: {
     origin: 20, acc: 0, ix: 0, memory: { 90: 67 }, input: "",
     lines: ["LDM #2", "LOOP: DEC ACC", "CMP #0", "JPN LOOP", "LDD 90", "OUT", "END"],

@@ -47,8 +47,8 @@ Paper 1.
 - [Lesson 022 · S4-L02 · System buses, ports and processor performance](web/course-v3/lesson-022/) — S4.04, S4.05, S4.06
 - [Lesson 023 · S4-L03 · The fetch-execute cycle in register-transfer notation](web/course-v3/lesson-023/) — S4.07
 - [Lesson 024 · S4-L04 · Interrupt causes, detection and handling](web/course-v3/lesson-024/) — S4.08
-- [Lesson 025 · S4-L05 · Assembly language and the two-pass assembler](web/course-v3/lesson-025/) — S4.09, S4.10
-- [Lesson 026 · S4-L06 · Tracing instructions and addressing modes](web/course-v3/lesson-026/) — S4.11, S4.12, S4.13, S4.14
+- [Lesson 025 · S4-L05 · Assembly language and the two-pass assembler](web/course-v3/lesson-025/) — S4.09, S4.10; S4.15 instruction/data labels introduced before pass one
+- [Lesson 026 · S4-L06 · Addressing modes and complete assembly traces](web/course-v3/lesson-026/) — S4.11, S4.12, S4.13, S4.14
 - [Lesson 027 · S4-L07 · Bit manipulation, masks and binary shifts](web/course-v3/lesson-027/) — S4.15
 
 ## Section 5 — System software

@@ -193,37 +193,47 @@ Award one mark for each listed point, or an equivalent correct response. Do not 
 
 ## Section 4: Processor fundamentals - cumulative check (20 marks)
 
-### 1. explain - 5 marks
+### 1. describe - 5 marks
 
-Explain how an instruction at address 160 is fetched when PC=160. Include MAR, MDR, CIR, the read control signal and the next sequential PC. Each instruction occupies one location.
-
-**Answer and guidance:**
-
-- MAR ← [PC] places 160 in MAR for the address bus.
-- The CU issues a memory-read signal on the control bus.
-- The fetched instruction reaches MDR over the data bus.
-- CIR ← [MDR] retains that instruction for decoding.
-- PC ← [PC] + 1 gives the next sequential address 161.
-
-Award one mark for each independent point below. Accept equivalent accurate wording or notation.
-
-### 2. complete - 5 marks
-
-Complete the two-pass assembly process for this source: address 70 GO: LDD N; address 71 STO RESULT; address 72 END; address 73 N: 14; address 74 RESULT: 0. Give the symbol table, resolve both symbolic operands, and explain the purpose of each pass.
+(a) PC=160 and Memory[160] contains LDD 300. Describe the fetch, including the address, data and control buses, in a one-location-per-instruction model (3 marks). (b) An empty cache retains both A and B during reads A,B,A,B. State the hits/misses and explain the RAM-read count (2 marks).
 
 **Answer and guidance:**
 
-- The symbol table is GO=70, N=73 and RESULT=74.
-- LDD N resolves to LDD 73.
-- STO RESULT resolves to STO 74.
-- Pass one assigns locations and records label addresses, including labels defined after their use.
-- Pass two uses these addresses and the target opcode encoding to emit machine words; data 14 and 0 are emitted at 73 and 74.
+- (a) MAR receives 160 from PC and the address bus selects location 160.
+- (a) A read signal on the control bus causes the instruction to return on the data bus into MDR.
+- (a) CIR receives the instruction, PC advances to 161 and the CU decodes LDD.
+- (b) The sequence is miss,miss,hit,hit.
+- (b) Only the first A and B require RAM reads, giving two; later reads use retained copies.
 
-Award one mark for each independent point below. Accept equivalent accurate wording or notation.
+Original marking guidance: award one mark per numbered point within the stated allocation. Accept equivalent correct explanations. A completed trace is evidence; its rows are not separate automatic marks.
 
-### 3. trace - 5 marks
+### 2. give - 5 marks
 
-Trace the supplied indexed-load program. State IX after LDR, the effective address and ACC after LDX, the character output and the effect of END.
+(a) Give the complete pass-one symbol table for the supplied program (2 marks). (b) Give the resolved load and store instructions and explain why the data value 25 is not VALUE’s symbol-table address (2 marks). (c) Explain why execution ends before the data declarations (1 mark).
+
+Initial ACC=0, IX=0, PC=60; comparison result unset. Data declarations are included below. No input is needed. Addresses are denary; each listed instruction or data item occupies one location.
+
+```text
+060  ENTRY: LDD VALUE
+061  STO COPY
+062  END
+063  VALUE: 25
+064  COPY: 0
+```
+
+**Answer and guidance:**
+
+- (a) ENTRY=60.
+- (a) VALUE=63 and COPY=64.
+- (b) The instructions are LDD 63 and STO 64.
+- (b) VALUE names address 63; 25 is the separate initial content at that address.
+- (c) END at 62 returns control to the OS before addresses 63–64 would be fetched as instructions.
+
+Original marking guidance: award one mark per numbered point within the stated allocation. Accept equivalent correct explanations. A completed trace is evidence; its rows are not separate automatic marks.
+
+### 3. complete - 5 marks
+
+Complete the supplied indexed-output trace. State the effective data address, loaded value and output, and show unchanged register state and termination (5 marks).
 
 Initial ACC=0, IX=0, PC=30; comparison result unset. Memory[202]=72. No input is needed. Addresses are denary; each listed instruction or data item occupies one location.
 
@@ -234,29 +244,60 @@ Initial ACC=0, IX=0, PC=30; comparison result unset. Memory[202]=72. No input is
 033  END
 ```
 
-**Answer and guidance:**
+Trace table: state after each executed instruction
 
-- LDR #2 sets IX to 2.
-- LDX 200 uses effective address 200+2=202.
-- ACC becomes the contents of location 202, which are 72.
-- OUT prints H, the character with ASCII value 72.
-- END returns control to the operating system.
-
-Award one mark for each independent point below. Accept equivalent accurate wording or notation.
-
-### 4. calculate - 5 marks
-
-Calculate the result of testing bit 3 of device value 01001010 with AND B00001000. Then give the mask and final value for setting bit 0 in a fresh copy of the original value. Explain why the fresh copy is needed. Bits are numbered 7 to 0.
+| Executed address | ACC | IX | Next PC | Last CMP/CMI | Memory write | Output this step |
+| --- | --- | --- | --- | --- | --- | --- |
+| Step 1 |  |  |  |  |  |  |
+| Step 2 |  |  |  |  |  |  |
+| Step 3 |  |  |  |  |  |  |
+| Step 4 |  |  |  |  |  |  |
 
 **Answer and guidance:**
 
-- The AND test gives 00001000.
-- The result is non-zero, so bit 3 is set.
-- The setting mask is B00000001 and the operation is OR.
-- The value written back is 01001011.
-- The AND test removed other bits from ACC; reloading the original prevents their loss during the update.
+Completed trace
 
-Award one mark for each independent point below. Accept equivalent accurate wording or notation.
+| Executed address | ACC | IX | Next PC | Last CMP/CMI | Memory write | Output this step |
+| --- | --- | --- | --- | --- | --- | --- |
+| 30 | 0 | 2 | 31 | Unset | — | — |
+| 31 | 72 | 2 | 32 | Unset | — | — |
+| 32 | 72 | 2 | 33 | Unset | — | H |
+| 33 | 72 | 2 | Return to OS | Unset | — | — |
+
+- LDR sets IX=2 while ACC remains 0.
+- LDX forms effective address 200+2=202.
+- It loads Memory[202]=72 into ACC and keeps IX=2.
+- OUT emits ASCII H and retains ACC=72.
+- The execution addresses are 30,31,32,33 with next PC 31,32,33,then return to OS.
+
+Original marking guidance: award one mark per numbered point within the stated allocation. Accept equivalent correct explanations. A completed trace is evidence; its rows are not separate automatic marks.
+
+### 4. use - 5 marks
+
+An 8-bit interface byte uses bit 4 for ready and bit 2 for motor enable. It is stable during this sequence and writes replace the byte. Use the supplied program. State the AND test result and final stored byte for initial 00010001 (2 marks) and 00000001 (2 marks), then explain why reloading before OR is necessary (1 mark).
+
+Initial ACC=0, IX=0, PC=100; comparison result unset. Memory[900]=17. No input is needed. Addresses are denary; each listed instruction or data item occupies one location.
+
+```text
+100  LDD 900
+101  AND B00010000
+102  CMP #0
+103  JPE DONE
+104  LDD 900
+105  OR B00000100
+106  STO 900
+107  DONE: END
+```
+
+**Answer and guidance:**
+
+- Ready case: AND produces 00010000, which is not zero.
+- The ready case stores 00010101.
+- Not-ready case: AND produces 00000000, so JPE DONE is taken.
+- The not-ready byte remains 00000001 because no store executes.
+- Reloading recovers unselected original bits before OR sets bit 2; storing the AND result would corrupt the status.
+
+Original marking guidance: award one mark per numbered point within the stated allocation. Accept equivalent correct explanations. A completed trace is evidence; its rows are not separate automatic marks.
 
 ## Section 5: System software - cumulative check (20 marks)
 
@@ -936,9 +977,9 @@ Explain the following choices for a desktop computer: SRAM for a small processor
 
 Award one mark for each listed point, or an equivalent correct response. Do not award the same idea twice.
 
-### 4. describe - 10 marks
+### 4. explain - 10 marks
 
-(a) Describe why an enabled keyboard interrupt is checked after the current instruction and how saving PC and status flags permits a correct return (3 marks). (b) Calculate ACC after LDI 300 and SUB #2 in the supplied program, then state Memory[302] after STO 302; explain the first lookup performed by LDI (4 marks). (c) For unsigned 8-bit ACC=00111000, calculate LSR #2 and explain which bits enter; then give an immediate binary OR mask that sets bit 7 of the result without changing other bits (3 marks).
+(a) An interrupt saves PC=330, ACC=18 and IX=4. Explain why this state must be restored after an ISR changes ACC to 65, if the next program instruction is ADD #2 (3 marks). (b) Complete the supplied indirect-load trace and state the final contents of Memory[302] (4 marks). (c) Separately, logically shift unsigned 8-bit 00110110 right by two places, then set bit 7 using OR; give the intermediate byte, mask and result (3 marks).
 
 Initial ACC=0, IX=0, PC=50; comparison result unset. Memory[300]=301, Memory[301]=5. No input is needed. Addresses are denary; each listed instruction or data item occupies one location.
 
@@ -949,20 +990,38 @@ Initial ACC=0, IX=0, PC=50; comparison result unset. Memory[300]=301, Memory[301
 053  END
 ```
 
+Trace table: state after each executed instruction
+
+| Executed address | ACC | IX | Next PC | Last CMP/CMI | Memory write | Output this step |
+| --- | --- | --- | --- | --- | --- | --- |
+| Step 1 |  |  |  |  |  |  |
+| Step 2 |  |  |  |  |  |  |
+| Step 3 |  |  |  |  |  |  |
+| Step 4 |  |  |  |  |  |  |
+
 **Answer and guidance:**
 
-- (a) Checking after instruction completion provides a defined point at which to suspend execution.
-- (a) The saved PC identifies the next instruction to resume.
-- (a) Restoring status flags preserves the interrupted program's condition state.
-- (b) The first lookup reads pointer 301 from Memory[300].
-- (b) LDI follows that pointer and loads ACC=5 from Memory[301].
-- (b) SUB #2 changes ACC to 3.
-- (b) STO 302 writes value 3 into Memory[302].
-- (c) LSR #2 produces 00001110 (14).
-- (c) Logical right shift introduces two zeros at the left.
-- (c) OR B10000000 sets bit 7, giving 10001110.
+Completed trace
 
-Award one mark for each independent point below. Accept equivalent accurate wording or notation.
+| Executed address | ACC | IX | Next PC | Last CMP/CMI | Memory write | Output this step |
+| --- | --- | --- | --- | --- | --- | --- |
+| 50 | 5 | 0 | 51 | Unset | — | — |
+| 51 | 3 | 0 | 52 | Unset | — | — |
+| 52 | 3 | 0 | 53 | Unset | Memory[302]=3 | — |
+| 53 | 3 | 0 | Return to OS | Unset | — | — |
+
+- (a) Restore PC=330 to resume at the interrupted continuation.
+- (a) Restore ACC=18 and IX=4 so the program retains its data and index.
+- (a) ADD #2 must produce 20; keeping the ISR’s ACC would wrongly produce 67.
+- (b) LDI follows Memory[300]=301 and reads Memory[301]=5 into ACC.
+- (b) SUB #2 gives ACC=3.
+- (b) STO 302 writes 3, retaining ACC=3 and IX=0.
+- (b) Execute addresses 50,51,52,53 and return to OS at END; final Memory[302]=3.
+- (c) Logical right by two gives 00001101.
+- (c) The OR mask is 10000000.
+- (c) The final byte is 10001101.
+
+Original marking guidance: award one mark per numbered point within the stated allocation. Accept equivalent correct explanations. A completed trace is evidence; its rows are not separate automatic marks.
 
 ### 5. explain - 9 marks
 
