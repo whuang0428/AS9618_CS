@@ -180,8 +180,6 @@ export const completionHeadings = {
   'S9-LOGIC-CHECK':['Relate valid and invalid range conditions','Exercise values on both sides of a limit'],
   'S9-INTEGRATED-IPO':['Derive the charging and change calculations','Let earlier decisions control later input'],
   'S9-INTEGRATED-REFINEMENT':['Expand the rules into control flow','Trace all the relevant outcomes'],
-  'S10-TYPES-VALUES':['Choose by meaning and permitted operations','Write compatible declarations and literals'],
-  'S10-TYPES-COLLECTIONS':['Choose indexed working storage','Use files for persistence'],
   'S10-ONE-DIMENSION-CHOICE':['When one index describes the collection','Retain an array when later access needs the values'],
   'S10-TWO-DIMENSION-CODE':['Use one loop per dimension','Reset each row total at the correct level'],
   'S10-LINEAR-CODE':['Initialise and guard the search','Test first, last, duplicate and absent targets'],

@@ -7,6 +7,8 @@ import { officialAsMapping } from "./syllabus-official-as-mapping.mjs";
 import { teachingDepthOverrides, questionRepairs } from "./course-v2-teaching-depth-overrides.mjs";
 import { section2Lessons } from "./course-v3-section2-content.mjs";
 import { section1Practice, enhanceSection1Units } from "./course-v3-section1-content.mjs";
+import { authorSection2Lesson } from "./course-v3-section2-teaching.mjs";
+import { authorSection1Lesson } from "./course-v3-section1-teaching.mjs";
 import { finaliseLessonPresentation } from "./course-v3-presentation.mjs";
 import { authorSection3Lesson } from "./course-v3-section3-content.mjs";
 import { authorSection4Lesson } from "./course-v3-section4-content.mjs";
@@ -496,8 +498,8 @@ const objectiveExpansions = Object.freeze({
     "Convert integers between binary and hexadecimal.",
     "Convert integers between denary and hexadecimal.",
     "Convert integers between denary and Binary Coded Decimal.",
-    "Convert integers between positive binary and one's-complement representation.",
-    "Convert integers between positive binary and two's-complement representation.",
+    "Convert signed integers between denary and one's-complement representation at a stated width.",
+    "Convert signed integers between denary and two's-complement representation at a stated width.",
   ],
   "S1.04": [
     "Perform unsigned binary addition and subtraction at a stated width.",
@@ -839,8 +841,8 @@ function makeLesson002Units() {
             ["Binary to hexadecimal", "Group 00101101 as 0010 1101; the nibbles map to hexadecimal 2D."],
             ["Hexadecimal to denary", "For 2D, calculate 2 × 16 + 13 = 45."],
             ["Denary to BCD", "Encode the digits 4 and 5 separately, giving 0100 0101."],
-            ["Positive to one's complement", "Invert 00101101 to obtain 11010010 as the 8-bit one's-complement representation of −45."],
-            ["Positive to two's complement", "Add 1 to the inverted pattern to obtain 11010011 as the 8-bit two's-complement representation of −45."],
+            ["Preserve +45 in one's complement", "Positive 45 is 00101101 at eight bits; the value and pattern remain unchanged."],
+            ["Preserve +45 in two's complement", "Positive 45 is also 00101101. Inversion and addition of one would instead negate the value to −45."],
           ],
         },
       ],
@@ -2263,7 +2265,7 @@ const rawCourse = [
   transformReviewLesson(v2.lessons.find((lesson) => lesson.lesson === 90)),
 ];
 
-export const courseV3Lessons = rawCourse.map(authorSection3Lesson).map(authorSection4Lesson).map(authorSection5Lesson).map(authorSection6Lesson).map(authorSection7Lesson).map(authorSection8Lesson).map(authorSection9Lesson).map(authorSection10Lesson).map(authorSection11Lesson).map(authorSection12Lesson).map((lesson, index) => finaliseLessonPresentation({
+export const courseV3Lessons = rawCourse.map(authorSection1Lesson).map(authorSection2Lesson).map(authorSection3Lesson).map(authorSection4Lesson).map(authorSection5Lesson).map(authorSection6Lesson).map(authorSection7Lesson).map(authorSection8Lesson).map(authorSection9Lesson).map(authorSection10Lesson).map(authorSection11Lesson).map(authorSection12Lesson).map((lesson, index) => finaliseLessonPresentation({
   ...lesson,
   sequenceIndex: index + 1,
   lessonKey: lesson.kind === "review" ? `REV-P${lesson.paper}` : `S${lesson.section}-L${String(rawCourse.slice(0, index + 1).filter((item) => item.section === lesson.section).length).padStart(2, "0")}`,

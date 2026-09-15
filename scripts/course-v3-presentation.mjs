@@ -3,6 +3,7 @@ import { classifyCommand, normaliseQuestionPrompt } from "./cie-command-words.mj
 import { knowledgeDiagramForUnit } from "./course-v3-knowledge-diagrams.mjs";
 import { coreBlockTexts, coreParagraph, validateCoreBlocks } from "./course-v3-core-blocks.mjs";
 import { expandConceptTeaching } from "./course-v3-concept-expansion.mjs";
+import { section3ReviewAnswer } from './course-v3-section3-questions.mjs';
 
 const imageVisualTypes = new Set(["reviewed-visual", "topology-gallery", "reservoir", "address-demo", "url-demo"]);
 const structuredVisualTypes = new Set(["flow", "table", "cards", "list"]);
@@ -736,6 +737,7 @@ function finaliseUnit(unit, lesson, unitIndex) {
     : undefined;
   const coreExplanation = coreBlocks ? coreBlockTexts(coreBlocks) : dedupeCoreParagraphs(sourceCore);
   const blockErrors = validateCoreBlocks({ ...unit, coreBlocks, coreExplanation });
+  if (unit.teachingBlocks) blockErrors.push(...validateCoreBlocks({ ...unit, coreBlocks: unit.teachingBlocks, coreExplanation: coreBlockTexts(unit.teachingBlocks) }));
   if (blockErrors.length) throw new Error(blockErrors.join("\n"));
   let leadVisual = { ...prepareLeadVisual(candidates[0], unit.heading), objectiveIds: [...unit.objectiveIds] };
   const methodCandidate = sourceMaterials.find((material) => material.type === "flow" && material !== candidates[0]);
@@ -1844,6 +1846,7 @@ const examQuestionOverrides = Object.freeze({
     commonError: "Do not interpret the most significant bit as a sign bit; the question states that the value is unsigned.",
   },
   "REV-P1-EXAM-2": {
+    ...section3ReviewAnswer,
     prompt: "An alarm uses the logic expression Q = (Door AND NOT Key) OR Smoke. Describe how to construct a complete truth table for this expression.",
     objectiveIds: ["S3.10.R"],
     sourceRef: "Cambridge 9618 syllabus · S3.10",
@@ -2095,6 +2098,7 @@ function examStyleQuestionSet(lesson, practice, staged) {
       answerPoints: override?.answerPoints ?? answerPoints,
       commonError: override?.commonError ?? sourceQuestion.commonError,
       ...(override?.diagram ? { diagram: override.diagram, diagramAlt: override.diagramAlt, diagramLabel: override.diagramLabel } : {}),
+      ...(override?.answerTable ? { answerTable: override.answerTable } : {}),
     }, staged);
     if (!override && practice.some((practiceQuestion) => markingPointSignature(practiceQuestion.answerPoints) === markingPointSignature(question.answerPoints))) {
       const distinctionPoint = uniqueExamMarkingPoints(unit.misconceptions ?? [])
@@ -2122,6 +2126,7 @@ function examStyleQuestionSet(lesson, practice, staged) {
       markLogic: question.answerPoints,
       commonLosses: [question.commonError],
       ...(question.diagram ? { diagram: question.diagram, diagramAlt: question.diagramAlt, diagramLabel: question.diagramLabel } : {}),
+      ...(question.answerTable ? { answerTable: question.answerTable } : {}),
     };
   });
 }
@@ -2196,6 +2201,7 @@ export function visibleRoleTexts(unit) {
   return {
     visual: bodyTexts(unit.leadVisual),
     core: unit.coreExplanation,
+    ...(unit.teachingBlocks ? { teaching: coreBlockTexts(unit.teachingBlocks) } : {}),
     method: bodyTexts(unit.method),
     workedExample: bodyTexts(unit.workedExample),
     supporting: (unit.supportingMaterials ?? []).flatMap(bodyTexts),

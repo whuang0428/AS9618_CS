@@ -754,7 +754,7 @@ export const section2Lessons = [
     ],
     practice: [
       q("S2-L06-Q1", "Retrieval", 4, "Define bit streaming and compare real-time streaming with on-demand streaming.", ["S2.12.A01", "S2.12.A02"], ["An ordered sequence of data is transmitted progressively so playback can start before the complete file arrives.", "Real-time streaming delivers content as it is produced.", "On-demand streaming delivers content that has already been stored.", "The viewer chooses when to start on-demand content, whereas real-time content follows the ongoing event."], "Do not define streaming as downloading the whole file first."),
-      q("S2-L06-Q2", "Application", 4, "A stream plays at 5 Mbit/s and arrives at 7 Mbit/s for 12 seconds. Calculate the buffer increase and explain the result.", ["S2.12.A03", "S2.12.A04", "S2.12.A05"], ["Difference = 2 Mbit/s.", "Increase = 2 × 12 = 24 Mbit.", "Buffer stores arrived but unplayed data.", "Playback can absorb a later short drop using this stored data."], "Keep Mbit and Mbit/s units distinct."),
+      q("S2-L06-Q2", "Application", 4, "A stream plays at 5 Mbit/s and arrives at 7 Mbit/s for 12 seconds, with playback already running and enough free buffer capacity for all arrivals. Calculate the buffer increase and explain the result.", ["S2.12.A03", "S2.12.A04", "S2.12.A05"], ["Difference = 2 Mbit/s.", "Increase = 2 × 12 = 24 Mbit.", "Buffer stores arrived but unplayed data.", "Playback can absorb a later short drop using this stored data."], "Keep Mbit and Mbit/s units distinct."),
       q("S2-L06-Q3", "Exam-style", 5, "A connection remains below a video’s playback bit rate. Explain why increasing buffer size alone cannot provide uninterrupted playback forever.", ["S2.12.A03", "S2.12.A04", "S2.12.A05", "S2.12.A06"], ["Playback consumes data faster than it arrives.", "Buffer level falls by the sustained deficit.", "A larger buffer can hold a larger initial reserve of unplayed data.", "Eventually it becomes empty.", "Player must pause, reduce bit rate/quality or receive a faster sustained connection."], "Do not claim the buffer increases connection speed."),
     ],
     pastPaper: {
@@ -1020,7 +1020,7 @@ export const section2Lessons = [
         objectiveIds: ["S2.16.A01", "S2.16.A02", "S2.16.A03"],
         explanation: [
           "A Uniform Resource Locator (URL) is a text-based address used to identify and locate a resource on the World Wide Web. In https://learn.example.org/course/page.html, https is the protocol, learn.example.org is the domain name and course/page.html is the web page or file name.",
-          "The Domain Name Service (DNS) resolves the domain name to an IP address. DNS does not resolve the complete URL, store the web page or return the requested resource.",
+          "The Domain Name System (DNS) resolves the domain name to an IP address. DNS does not resolve the complete URL, store the web page or return the requested resource.",
           "After DNS returns the IP address, the browser contacts the web server at that address, requests the web page or file named by the URL and receives the WWW resource from the server.",
         ],
         materials: [

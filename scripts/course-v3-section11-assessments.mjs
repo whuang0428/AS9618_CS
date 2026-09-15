@@ -13,8 +13,8 @@ export const section11Assessments=[
     "Cost <- Quantity * Price and OUTPUT Packs, Loose, Cost report the required results.",
     "Quantity 14 produces 2 complete packs, 2 loose items and cost 35.",
   ],answer("checkInput")),
-  question("A-S11-2",5,"calculate","LENGTH(S) returns a string's length; MID(S, Start, Count) returns Count characters starting at one-based Start; UCASE(C) converts one CHAR to upper case. INT(X) takes the integer part and RAND(N) returns a real from 0 inclusive to N exclusive. For S = \"SCIENCE\" and C = 'm', calculate LENGTH(S), MID(S, 2, 3), UCASE(C) and INT(7.8). Write an expression generating an integer from 1 to 10 inclusive.",[3],[
-    "LENGTH(S) is 7.","MID(S, 2, 3) is \"CIE\".","UCASE(C) is 'M'.","INT(7.8) is 7.","INT(RAND(10)) + 1 produces the specified integers.",
+  question("A-S11-2",5,"calculate","LENGTH(S) returns a string's length; MID(S, Start, Count) returns Count characters starting at one-based Start. INT(X) takes the integer part and RAND(N) returns a real from 0 inclusive to N exclusive. For S = \"SCIENCE\", calculate LENGTH(S), MID(S, 2, 3), MID(S, 2, 3) & \"!\" and INT(7.8). Write an expression generating an integer from 1 to 10 inclusive.",[3],[
+    "LENGTH(S) is 7.","MID(S, 2, 3) is \"CIE\".","The concatenation produces the STRING \"CIE!\".","INT(7.8) is 7.","INT(RAND(10)) + 1 produces the specified integers.",
   ]),
   question("A-S11-3",5,"describe","A program inputs exactly three valid integer ratings. It initialises Count to zero. For each rating it tests Rating >= 4 to increment Count, then tests the same unchanged Rating >= 4 again to output \"High\". It outputs Count at the end. Describe an efficient control structure that retains all these outputs, justify the loop and state the final Count for ratings 3, 4, 5.",[4,5,9],[
     "A FOR loop is suitable because the three iterations are known in advance.",

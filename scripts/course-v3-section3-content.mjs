@@ -5,6 +5,7 @@ const logic = (numbers) => ids("S3.10", numbers);
 const asset = (name) => `/assets/course-v3/section-3/${name}.svg`;
 const table = (title, headers, rows) => ({ type: "table", title, headers, rows, preserveText: true, preserve: true });
 const worked = (title, steps) => ({ type: "worked-example", title, steps });
+import { authorSection3Teaching } from './course-v3-section3-teaching.mjs';
 const visual = (title, path, facts, alt) => ({ type: "reviewed-visual", title, asset: path, facts, alt, review: "reviewed", preserveText: true });
 const unit = (key, heading, objectiveIds, explanation, materials, misconceptions) => ({
   unitKey: key, syllabusId: objectiveIds[0].replace(/\.A\d+$/, ""), heading, objectiveIds,
@@ -244,6 +245,7 @@ function logicLessons(lesson) {
 }
 
 export function authorSection3Lesson(source) {
+  if (source.kind === 'review' && source.paper === 1) return authorSection3Teaching(source);
   if (source.section !== 3) return source;
   let lesson = structuredClone(source);
   if ([17, 18].includes(lesson.originalLesson)) lesson = logicLessons(lesson);
@@ -272,5 +274,5 @@ export function authorSection3Lesson(source) {
   lesson.summaryMode = "authored";
   lesson.practice = lesson.practice.map((question) => ({ ...question, authored: true }));
   lesson.authoredExamQuestions = section3ExamQuestions[lesson.originalLesson];
-  return lesson;
+  return authorSection3Teaching(lesson);
 }

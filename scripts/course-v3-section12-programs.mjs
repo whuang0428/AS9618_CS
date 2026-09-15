@@ -1,4 +1,4 @@
-// The displayed programs are the fixtures executed by the S12 verifier.
+// Complete displayed pseudocode with input/output fixtures for simulation checks.
 const program = (code, tests) => ({ code, tests });
 const selection = (condition) => `DECLARE Mark : INTEGER
 DECLARE Result : STRING
@@ -129,4 +129,129 @@ export const section12States = {
     {from:'Unlocked',event:'coin',to:'Unlocked'},
   ],
   tests:[{events:['coin','pass'],states:['Locked','Unlocked','Locked']},{events:['push','coin','coin','pass'],states:['Locked','Locked','Unlocked','Unlocked','Locked']}],
+};
+
+const roomRule = upper => `DECLARE Quantity : INTEGER
+INPUT Quantity
+IF (Quantity >= 1) AND (Quantity <= ${upper}) THEN
+    OUTPUT "Accepted"
+ELSE
+    OUTPUT "Rejected"
+ENDIF`;
+const availability = body => `FUNCTION IsAvailable(RoomID : INTEGER) RETURNS BOOLEAN
+${body}
+ENDFUNCTION
+
+DECLARE RoomID : INTEGER
+INPUT RoomID
+IF IsAvailable(RoomID) THEN
+    OUTPUT "Available"
+ELSE
+    OUTPUT "Unavailable"
+ENDIF`;
+const configurablePass = enhanced => `FUNCTION IsPass(Mark : INTEGER${enhanced ? ', PassMark : INTEGER' : ''}) RETURNS BOOLEAN
+    RETURN Mark >= ${enhanced ? 'PassMark' : '50'}
+ENDFUNCTION
+
+DECLARE Index : INTEGER
+DECLARE Mark : INTEGER
+DECLARE PassCount : INTEGER${enhanced ? '\nDECLARE PassMark : INTEGER\nINPUT PassMark' : ''}
+PassCount <- 0
+FOR Index <- 1 TO 4
+    INPUT Mark
+    IF IsPass(Mark${enhanced ? ', PassMark' : ''}) THEN
+        PassCount <- PassCount + 1
+    ENDIF
+NEXT Index
+OUTPUT PassCount`;
+
+Object.assign(section12Programs, {
+  roomRule: program(roomRule(30), [0,1,2,15,29,30,31].map(n=>({input:[n],output:[n>=1&&n<=30?'Accepted':'Rejected']}))),
+  roomFault: program(roomRule(31), [{input:[31],output:['Accepted']},{input:[30],output:['Accepted']}]),
+  syntaxFault: program(`DECLARE Mark : INTEGER
+INPUT Mark
+IF Mark >= 50 THEN
+    OUTPUT "Pass"
+ELSE
+    OUTPUT "Fail"`, []),
+  syntaxFixed: program(`DECLARE Mark : INTEGER
+INPUT Mark
+IF Mark >= 50 THEN
+    OUTPUT "Pass"
+ELSE
+    OUTPUT "Fail"
+ENDIF`, [{input:[49],output:['Fail']},{input:[50],output:['Pass']}]),
+  stubTrue: program(availability('    RETURN TRUE'), [{input:[101],output:['Available']},{input:[102],output:['Available']}]),
+  stubFalse: program(availability('    RETURN FALSE'), [{input:[101],output:['Unavailable']},{input:[102],output:['Unavailable']}]),
+  availabilityReal: program(availability('    RETURN RoomID = 101'), [{input:[101],output:['Available']},{input:[102],output:['Unavailable']}]),
+  thresholdOriginal: program(configurablePass(false), [{input:[49,50,69,70],output:[3]},{input:[59,60,61,0],output:[3]}]),
+  thresholdEnhanced: program(configurablePass(true), [{input:[50,49,50,69,70],output:[3]},{input:[60,49,50,69,70],output:[2]},{input:[60,59,60,61,0],output:[2]},{input:[0,0,0,0,0],output:[4]},{input:[100,99,100,0,50],output:[1]}]),
+  batchOrders: program(`PROCEDURE ReadOrder(BYREF Quantity : INTEGER, BYREF UnitPrice : REAL, BYREF Member : BOOLEAN)
+    INPUT Quantity
+    INPUT UnitPrice
+    INPUT Member
+ENDPROCEDURE
+
+FUNCTION StandardCost(Quantity : INTEGER, UnitPrice : REAL) RETURNS REAL
+    RETURN Quantity * UnitPrice
+ENDFUNCTION
+
+FUNCTION MemberCost(Quantity : INTEGER, UnitPrice : REAL) RETURNS REAL
+    RETURN Quantity * UnitPrice * 0.90
+ENDFUNCTION
+
+FUNCTION CalculateCost(Quantity : INTEGER, UnitPrice : REAL, Member : BOOLEAN) RETURNS REAL
+    IF Member THEN
+        RETURN MemberCost(Quantity, UnitPrice)
+    ELSE
+        RETURN StandardCost(Quantity, UnitPrice)
+    ENDIF
+ENDFUNCTION
+
+PROCEDURE DisplayCost(BYVAL Cost : REAL)
+    OUTPUT Cost
+ENDPROCEDURE
+
+PROCEDURE ProcessOrder()
+    DECLARE Quantity : INTEGER
+    DECLARE UnitPrice : REAL
+    DECLARE Member : BOOLEAN
+    DECLARE Cost : REAL
+    CALL ReadOrder(Quantity, UnitPrice, Member)
+    Cost <- CalculateCost(Quantity, UnitPrice, Member)
+    CALL DisplayCost(Cost)
+ENDPROCEDURE
+
+PROCEDURE ProcessBatch()
+    DECLARE OrderCount : INTEGER
+    DECLARE Index : INTEGER
+    INPUT OrderCount
+    IF OrderCount = 0 THEN
+        OUTPUT "No orders"
+    ELSE
+        FOR Index <- 1 TO OrderCount
+            CALL ProcessOrder()
+        NEXT Index
+    ENDIF
+ENDPROCEDURE
+
+CALL ProcessBatch()`, [{input:[2,3,2.5,false,2,5,true],output:[7.5,9]},{input:[0],output:['No orders']},{input:[1,1,0,true],output:[0]},{input:[1,4,10,false],output:[40]}]),
+});
+
+export const uploadStates12 = {
+  initial:'Ready',
+  transitions:[
+    {from:'Ready',event:'start',to:'Uploading'},
+    {from:'Ready',event:'cancel',to:'Ready'},
+    {from:'Uploading',event:'progress',to:'Uploading'},
+    {from:'Uploading',event:'complete',condition:'Valid = TRUE',to:'Ready'},
+    {from:'Uploading',event:'complete',condition:'Valid = FALSE',to:'Error'},
+    {from:'Uploading',event:'cancel',to:'Ready'},
+    {from:'Error',event:'retry',to:'Uploading'},
+    {from:'Error',event:'cancel',to:'Ready'},
+  ],
+  tests:[
+    {events:['start','progress','complete [Valid = FALSE]','retry','complete [Valid = TRUE]'],states:['Ready','Uploading','Uploading','Error','Uploading','Ready']},
+    {events:['cancel','start','cancel'],states:['Ready','Ready','Uploading','Ready']},
+  ],
 };

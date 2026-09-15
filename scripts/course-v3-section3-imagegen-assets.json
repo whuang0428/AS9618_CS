@@ -1,0 +1,20 @@
+{
+  "assets": [
+    {
+      "path": "web/assets/course-v3/section-3/vr-viewpoint-pair.png",
+      "tool": "Built-in ImageGen",
+      "created": "2026-09-15",
+      "prompt": "Create one original educational bitmap asset for a Cambridge AS Computer Science lesson explaining virtual reality viewpoint tracking. Clean restrained scientific textbook illustration, realistic spatial perspective, white margins, two equally sized landscape panels side by side separated by a generous white gutter. Both panels show exactly the SAME simple virtual gallery from the SAME viewer position, eye height and field of view. Gallery geometry and every object stay fixed in world space. In LEFT panel the viewer looks straight ahead: a matte teal cube on a short pale stone pedestal is in the center; a tall ochre doorway on the right wall is visible near the right edge. In RIGHT panel the viewer has rotated their head and viewing direction about 30 degrees to the right without translating: the same ochre doorway is now near the center, the same teal cube and pedestal move to the LEFT side of the image, and more of the right wall is visible. Match object identities, dimensions, lighting and room geometry across both images; rotation of the viewpoint is the only change. This must clearly teach that turning right changes the rendered view while the virtual objects remain stationary, not that the scene rotates along with the user. No people, no headset, no third-person view, no motion arrows, no numbers, no text, no logos, no UI. Small simple room, no extra decorations, gentle ambient daylight. Precise captions and direction diagrams will be supplied separately as editable SVG and HTML. Aim for a wide 2:1 total composition with readable clear object locations.",
+      "review": {
+        "status": "accepted as conceptual scene illustration",
+        "checked": [
+          "Same teal cube and ochre doorway are identifiable in both panels.",
+          "Rightward viewing change moves the cube toward the left and doorway toward the centre.",
+          "No embedded labels or numerical measurements are used."
+        ],
+        "limits": "Perspective is illustrative, not calibrated geometry or a measured 30-degree rotation. The two panels show successive views, not the left-eye/right-eye stereo pair."
+      },
+      "sha256": "3c1e9c2888d589026cf93b85997b59007852bd94cdccfee5f8e7edfde72ed6e4"
+    }
+  ]
+}

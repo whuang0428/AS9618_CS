@@ -1,6 +1,63 @@
 // Executed teaching examples. Test cases specify observable results, including boundaries.
 const p = (code, cases) => ({ code: code.trim(), cases });
 export const section11Programs = {
+  area: p(`
+DECLARE Length, Width, Area : REAL
+INPUT Length
+INPUT Width
+Area <- Length * Width
+OUTPUT Area`, [{input:[3.5,2],output:[7]},{input:[0,4],output:[0]}]),
+  temperature: p(`
+DECLARE Temperature : REAL
+INPUT Temperature
+IF Temperature < 0 THEN
+    OUTPUT "Ice"
+ELSE
+    OUTPUT "Water"
+ENDIF`, [{input:[-0.5],output:["Ice"]},{input:[0],output:["Water"]},{input:[2.5],output:["Water"]}]),
+  simplePurchase: p(`
+DECLARE Quantity : INTEGER
+DECLARE Price, Total : REAL
+INPUT Quantity
+INPUT Price
+Total <- Price * Quantity
+OUTPUT Total`, [{input:[3,4.5],output:[13.5]},{input:[0,4.5],output:[0]}]),
+  fourPrices: p(`
+DECLARE Index : INTEGER
+DECLARE Price, Total : REAL
+Total <- 0.0
+FOR Index <- 1 TO 4
+    INPUT Price
+    Total <- Total + Price
+NEXT Index
+OUTPUT Total`, [{input:[1,2.5,3,4.5],output:[11]},{input:[0,0,0,0],output:[0]}]),
+  twoRatings: p(`
+DECLARE Index, Rating, Total : INTEGER
+Total <- 0
+FOR Index <- 1 TO 2
+    REPEAT
+        INPUT Rating
+    UNTIL (Rating >= 1) AND (Rating <= 5)
+    Total <- Total + Rating
+NEXT Index
+OUTPUT Total`, [{input:[0,1,6,5],output:[6]},{input:[3,4],output:[7]}]),
+  warningStream: p(`
+DECLARE Temperature, Count : INTEGER
+Count <- 0
+INPUT Temperature
+WHILE Temperature <> 999
+    IF Temperature > 30 THEN
+        Count <- Count + 1
+    ENDIF
+    INPUT Temperature
+ENDWHILE
+OUTPUT Count`, [{input:[29,30,31,999],output:[1]},{input:[999],output:[0]},{input:[45,-2,31,999],output:[2]}]),
+  headingOnly: p(`
+PROCEDURE Heading()
+    OUTPUT "Results"
+ENDPROCEDURE
+CALL Heading()
+OUTPUT "Next action"`, [{input:[],output:["Results","Next action"]}]),
   countPositive: p(`
 DECLARE Count, Index, Value : INTEGER
 Count <- 0
@@ -11,6 +68,24 @@ FOR Index <- 1 TO 3
     ENDIF
 NEXT Index
 OUTPUT Count`, [{input:[-2,0,5],output:[1]},{input:[1,2,3],output:[3]},{input:[0,-1,-2],output:[0]}]),
+  countPositiveWhile: p(`
+DECLARE Count, Index, Value : INTEGER
+Count <- 0
+Index <- 1
+WHILE Index <= 3
+    INPUT Value
+    IF Value > 0 THEN
+        Count <- Count + 1
+    ENDIF
+    Index <- Index + 1
+ENDWHILE
+OUTPUT Count`, [{input:[-2,0,5],output:[1],state:{Count:1,Index:4}},{input:[1,2,3],output:[3]},{input:[0,-1,-2],output:[0]}]),
+  assignmentCopies: p(`
+DECLARE A, B : INTEGER
+A <- 4
+B <- A
+A <- A + 3
+OUTPUT "A = ", A, "; B = ", B`, [{input:[],output:["A = ",7,"; B = ",4],state:{A:7,B:4}}]),
   countdown: p(`
 DECLARE Count : INTEGER
 INPUT Count
@@ -47,6 +122,47 @@ INPUT Score
 OUTPUT LENGTH(Word), MID(Word, 2, 3), RIGHT(Word, 2)
 OUTPUT UCASE(Letter), LCASE(Letter), INT(Score)
 OUTPUT INT(RAND(6)) + 1`, [{input:["ALGORITHM","b",4.8],random:[0],output:[9,"LGO","HM","B","b",4,1]},{input:["CAMBRIDGE","Q",9.1],random:[0.999999],output:[9,"AMB","GE","Q","q",9,6]}]),
+  numericFunctions: p(`
+DECLARE Score : REAL
+DECLARE Die : INTEGER
+INPUT Score
+Die <- INT(RAND(6)) + 1
+OUTPUT INT(Score), Die`, [{input:[4.8],random:[0],output:[4,1]},{input:[9.1],random:[0.999999],output:[9,6]}]),
+  stringInterfaces: p(`
+DECLARE Word : STRING
+DECLARE Letter : CHAR
+INPUT Word
+INPUT Letter
+OUTPUT LENGTH(Word), MID(Word, 2, 3), RIGHT(Word, 2)
+OUTPUT UCASE(Letter), LCASE(Letter)`, [{input:["ALGORITHM","b"],output:[9,"LGO","HM","B","b"]},{input:["A B!","7"],output:[4," B!","B!","7","7"]}]),
+  stringCode: p(`
+DECLARE Code, Digits, Suffix, Label : STRING
+INPUT Code
+Digits <- MID(Code, 3, 4)
+Suffix <- RIGHT(Code, 2)
+Label <- Digits & "-" & Suffix
+OUTPUT Label`, [{input:["CS2046AB"],output:["2046-AB"]},{input:["IT0007XY"],output:["0007-XY"]}]),
+  independentIf: p(`
+DECLARE Mark : INTEGER
+INPUT Mark
+IF Mark >= 50 THEN
+    OUTPUT "Pass"
+ENDIF
+IF Mark >= 80 THEN
+    OUTPUT "Distinction"
+ENDIF`, [{input:[85],output:["Pass","Distinction"]},{input:[50],output:["Pass"]},{input:[49],output:[]}]),
+  exclusiveIf: p(`
+DECLARE Mark : INTEGER
+INPUT Mark
+IF Mark >= 80 THEN
+    OUTPUT "Distinction"
+ELSE
+    IF Mark >= 50 THEN
+        OUTPUT "Pass"
+    ELSE
+        OUTPUT "Fail"
+    ENDIF
+ENDIF`, [{input:[85],output:["Distinction"]},{input:[80],output:["Distinction"]},{input:[79],output:["Pass"]},{input:[50],output:["Pass"]},{input:[49],output:["Fail"]}]),
   selection: p(`
 DECLARE Age : INTEGER
 DECLARE Member : BOOLEAN
@@ -91,6 +207,16 @@ DECLARE Index : INTEGER
 FOR Index <- 6 TO 0 STEP -2
     OUTPUT Index
 NEXT Index`, [{input:[],output:[6,4,2,0]}]),
+  nestedCoordinates: p(`
+DECLARE Row, Column, Count : INTEGER
+Count <- 0
+FOR Row <- 1 TO 2
+    FOR Column <- 1 TO 3
+        OUTPUT Row, Column
+        Count <- Count + 1
+    NEXT Column
+NEXT Row
+OUTPUT Count`, [{input:[],output:[1,1,1,2,1,3,2,1,2,2,2,3,6],state:{Count:6}}]),
   validation: p(`
 DECLARE Mark : INTEGER
 REPEAT
@@ -106,6 +232,17 @@ WHILE Value <> -1
     INPUT Value
 ENDWHILE
 OUTPUT Total`, [{input:[3,4,-1],output:[7]},{input:[-1],output:[0]},{input:[0,-1],output:[0]}]),
+  sentinelRepeat: p(`
+DECLARE Value, Total : INTEGER
+Total <- 0
+INPUT Value
+IF Value <> -1 THEN
+    REPEAT
+        Total <- Total + Value
+        INPUT Value
+    UNTIL Value = -1
+ENDIF
+OUTPUT Total`, [{input:[3,4,-1],output:[7]},{input:[-1],output:[0]},{input:[0,-1],output:[0]}]),
   login: p(`
 DECLARE Password : STRING
 DECLARE Attempts : INTEGER
@@ -115,6 +252,15 @@ WHILE (Password <> "open") AND (Attempts < 3)
     INPUT Password
     Attempts <- Attempts + 1
 ENDWHILE
+OUTPUT Password = "open", Attempts`, [{input:["open"],output:[true,1]},{input:["x","y","open"],output:[true,3]},{input:["x","y","z"],output:[false,3]}]),
+  loginRepeat: p(`
+DECLARE Password : STRING
+DECLARE Attempts : INTEGER
+Attempts <- 0
+REPEAT
+    INPUT Password
+    Attempts <- Attempts + 1
+UNTIL (Password = "open") OR (Attempts >= 3)
 OUTPUT Password = "open", Attempts`, [{input:["open"],output:[true,1]},{input:["x","y","open"],output:[true,3]},{input:["x","y","z"],output:[false,3]}]),
   procedures: p(`
 PROCEDURE Heading()
@@ -146,6 +292,67 @@ CALL ChangeCopy(Number)
 OUTPUT Number
 CALL ChangeOriginal(Number)
 OUTPUT Number`, [{input:[],output:[7,5,7],state:{Number:7}}]),
+  swapReference: p(`
+PROCEDURE Swap(BYREF Left : INTEGER, BYREF Right : INTEGER)
+    DECLARE Temp : INTEGER
+    Temp <- Left
+    Left <- Right
+    Right <- Temp
+ENDPROCEDURE
+DECLARE A, B : INTEGER
+INPUT A
+INPUT B
+CALL Swap(A, B)
+OUTPUT A, B`, [{input:[6,2],output:[2,6],state:{A:2,B:6}},{input:[5,5],output:[5,5]},{input:[-3,8],output:[8,-3]}]),
+  swapCopy: p(`
+PROCEDURE SwapCopy(BYVAL Left : INTEGER, BYVAL Right : INTEGER)
+    DECLARE Temp : INTEGER
+    Temp <- Left
+    Left <- Right
+    Right <- Temp
+    OUTPUT Left, Right
+ENDPROCEDURE
+DECLARE A, B : INTEGER
+A <- 6
+B <- 2
+CALL SwapCopy(A, B)
+OUTPUT A, B`, [{input:[],output:[2,6,6,2],state:{A:6,B:2}}]),
+  maximum: p(`
+FUNCTION Larger(First : INTEGER, Second : INTEGER) RETURNS INTEGER
+    IF First > Second THEN
+        RETURN First
+    ELSE
+        RETURN Second
+    ENDIF
+ENDFUNCTION
+DECLARE A, B, Result : INTEGER
+INPUT A
+INPUT B
+Result <- Larger(A, B) + 1
+OUTPUT Result`, [{input:[7,4],output:[8]},{input:[4,7],output:[8]},{input:[5,5],output:[6]},{input:[-3,-7],output:[-2]}]),
+  earlyReturn: p(`
+FUNCTION DeliveryFee(Quantity : INTEGER) RETURNS REAL
+    IF Quantity = 0 THEN
+        RETURN 0.0
+    ENDIF
+    RETURN 2.0 + Quantity * 0.5
+ENDFUNCTION
+DECLARE Quantity : INTEGER
+DECLARE Fee : REAL
+INPUT Quantity
+Fee <- DeliveryFee(Quantity)
+OUTPUT Fee`, [{input:[0],output:[0]},{input:[4],output:[4]},{input:[1],output:[2.5]}]),
+  noParameterFunction: p(`
+FUNCTION ReadRating() RETURNS INTEGER
+    DECLARE Rating : INTEGER
+    REPEAT
+        INPUT Rating
+    UNTIL (Rating >= 1) AND (Rating <= 5)
+    RETURN Rating
+ENDFUNCTION
+DECLARE Result : INTEGER
+Result <- ReadRating()
+OUTPUT Result`, [{input:[0,6,5],output:[5]},{input:[1],output:[1]}]),
   tax: p(`
 FUNCTION Tax(Price : REAL) RETURNS REAL
     RETURN Price * 0.20
@@ -172,6 +379,59 @@ IF Mark >= 50 THEN
     OUTPUT "Pass"
 ENDIF
 OUTPUT Count`, [{input:[49],output:[0]},{input:[50],output:["Pass",1]}]),
+  invariantBefore: p(`
+DECLARE Width, Height, Area : REAL
+DECLARE Count, Index : INTEGER
+INPUT Width
+INPUT Height
+INPUT Count
+FOR Index <- 1 TO Count
+    Area <- Width * Height
+    OUTPUT Area
+NEXT Index`, [{input:[3,4,3],output:[12,12,12]},{input:[2.5,4,1],output:[10]}]),
+  invariantAfter: p(`
+DECLARE Width, Height, Area : REAL
+DECLARE Count, Index : INTEGER
+INPUT Width
+INPUT Height
+INPUT Count
+Area <- Width * Height
+FOR Index <- 1 TO Count
+    OUTPUT Area
+NEXT Index`, [{input:[3,4,3],output:[12,12,12]},{input:[2.5,4,1],output:[10]}]),
+  twoTraversals: p(`
+DECLARE Marks : ARRAY[1:5] OF INTEGER
+DECLARE Index, Total, Passed : INTEGER
+FOR Index <- 1 TO 5
+    INPUT Marks[Index]
+NEXT Index
+Total <- 0
+Passed <- 0
+FOR Index <- 1 TO 5
+    Total <- Total + Marks[Index]
+NEXT Index
+FOR Index <- 1 TO 5
+    IF Marks[Index] >= 50 THEN
+        Passed <- Passed + 1
+    ENDIF
+NEXT Index
+OUTPUT Total, Passed`, [{input:[49,50,80,21,50],output:[250,3]},{input:[0,0,0,0,0],output:[0,0]},{input:[100,100,100,100,100],output:[500,5]}]),
+  oneTraversal: p(`
+DECLARE Marks : ARRAY[1:5] OF INTEGER
+DECLARE Index, Total, Passed, Mark : INTEGER
+FOR Index <- 1 TO 5
+    INPUT Marks[Index]
+NEXT Index
+Total <- 0
+Passed <- 0
+FOR Index <- 1 TO 5
+    Mark <- Marks[Index]
+    Total <- Total + Mark
+    IF Mark >= 50 THEN
+        Passed <- Passed + 1
+    ENDIF
+NEXT Index
+OUTPUT Total, Passed`, [{input:[49,50,80,21,50],output:[250,3]},{input:[0,0,0,0,0],output:[0,0]},{input:[100,100,100,100,100],output:[500,5]}]),
   factored: p(`
 DECLARE Mark, Count : INTEGER
 INPUT Mark
@@ -200,7 +460,42 @@ FOR Index <- 1 TO 3
     UNTIL ValidMark(Mark)
     CALL RecordMark(Mark, Total, Passed)
 NEXT Index
-OUTPUT Total / 3, Passed`, [{input:[-1,0,50,101,100],output:[50,2],state:{Total:150,Passed:2}},{input:[49,49,49],output:[49,0]},{input:[100,100,100],output:[100,3]}]),
+OUTPUT Total / 3, Passed`, [{input:[-1,0,50,101,100],output:[50,2],state:{Total:150,Passed:2}},{input:[49,49,49],output:[49,0]},{input:[100,100,100],output:[100,3]},{input:[20,-5,60,80],output:[160/3,2],state:{Total:160,Passed:2}}]),
+  variableMean: p(`
+DECLARE Count, Index, Mark, Total : INTEGER
+INPUT Count
+Total <- 0
+FOR Index <- 1 TO Count
+    REPEAT
+        INPUT Mark
+    UNTIL (Mark >= 0) AND (Mark <= 100)
+    Total <- Total + Mark
+NEXT Index
+IF Count > 0 THEN
+    OUTPUT Total / Count
+ELSE
+    OUTPUT "No marks"
+ENDIF`, [{input:[0],output:["No marks"]},{input:[1,101,50],output:[50]},{input:[3,0,50,100],output:[50]}]),
+  sensorSummary: p(`
+FUNCTION ValidReading(Reading : INTEGER) RETURNS BOOLEAN
+    RETURN (Reading >= -20) AND (Reading <= 50)
+ENDFUNCTION
+PROCEDURE RecordReading(BYVAL Reading : INTEGER, BYREF Total : INTEGER, BYREF BelowZero : INTEGER)
+    Total <- Total + Reading
+    IF Reading < 0 THEN
+        BelowZero <- BelowZero + 1
+    ENDIF
+ENDPROCEDURE
+DECLARE Index, Reading, Total, BelowZero : INTEGER
+Total <- 0
+BelowZero <- 0
+FOR Index <- 1 TO 2
+    REPEAT
+        INPUT Reading
+    UNTIL ValidReading(Reading)
+    CALL RecordReading(Reading, Total, BelowZero)
+NEXT Index
+OUTPUT Total, BelowZero`, [{input:[-21,-20,51,30],output:[10,1]},{input:[-20,50],output:[30,1]},{input:[0,10],output:[10,0]}]),
   review: p(`
 FUNCTION Charge(Hours : INTEGER) RETURNS INTEGER
     RETURN Hours * 3

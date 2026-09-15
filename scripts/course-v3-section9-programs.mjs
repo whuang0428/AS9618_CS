@@ -126,7 +126,7 @@ OUTPUT Total`, [{ input: [3, 5, 2, 4], output: [14] }, { input: [-2, 2, 0, 7], o
   countdown: program(`
 DECLARE Count : INTEGER
 INPUT Count
-WHILE Count > 0 DO
+WHILE Count > 0
     OUTPUT Count
     Count <- Count - 1
 ENDWHILE

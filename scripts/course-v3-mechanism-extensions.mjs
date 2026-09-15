@@ -163,9 +163,9 @@ export function extendedMechanisms({ text, box, arrow, decision, io, terminal, e
     },
     'function-return': {
       title:'RETURN supplies a value to the caller’s expression',height:660,
-      facts:['Illustrative function: Tax(Amount : REAL) RETURNS REAL returns Amount * 0.10.', 'With Price = 20.00, Total <- Price + Tax(Price) calls Tax with a value copy of 20.00, then receives 2.00.', 'The caller completes 20.00 + 2.00 and stores Total = 22.00. Returning a value does not itself print it.'],
-      draw:()=>box(35,140,490,120,['Caller: Price = 20.00','Total <- Price + Tax(Price)'],'#f3f7fa',26)+edge('caller','tax','M525 200H675')+text(600,145,['Argument','20.00'],20,'middle')+box(675,130,390,145,['Tax(Amount) RETURNS REAL','RETURN Amount * 0.10','Result: 2.00'],'#eef7f6',24)+
-        edge('tax','expression','M870 275V370H525','Return 2.00',685,353)+box(35,325,490,110,['Total <- 20.00 + 2.00','Total becomes 22.00'])+
+      facts:['Illustrative function: Tax(Price : REAL) RETURNS REAL returns Price * 0.20.', 'With Price = 50.00, Total <- Price + Tax(Price) calls Tax with a value copy of 50.00, then receives 10.00.', 'The caller completes 50.00 + 10.00 and stores Total = 60.00. Returning a value does not itself print it.'],
+      draw:()=>box(35,140,490,120,['Caller: Price = 50.00','Total <- Price + Tax(Price)'],'#f3f7fa',26)+edge('caller','tax','M525 200H675')+text(600,145,['Argument','50.00'],20,'middle')+box(675,130,390,145,['Tax(Price) RETURNS REAL','RETURN Price * 0.20','Result: 10.00'],'#eef7f6',24)+
+        edge('tax','expression','M870 275V370H525','Return 10.00',685,353)+box(35,325,490,110,['Total <- 50.00 + 10.00','Total becomes 60.00'])+
         note(['The function call appears inside an expression; do not prefix it with CALL.','In this Cambridge notation, function parameters use value passing.'],520),
     },
     lifecycle: {

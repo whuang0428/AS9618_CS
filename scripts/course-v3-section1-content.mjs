@@ -1,4 +1,5 @@
 import { section1DiagramMaterials } from "./course-v3-section1-diagrams.mjs";
+import { section1AdditionalPractice, section1AdditionalExam } from './course-v3-section1-questions.mjs';
 
 // S1 questions are authored with explicit objectives. Do not infer coverage from vocabulary.
 const question = (id, objectiveIds, prompt, answerPoints, commonError) => ({
@@ -476,6 +477,11 @@ export const section1ExamQuestions = {
     }
   ]
 };
+
+for (const id of Object.keys(section1Practice)) {
+  section1Practice[id].push(...section1AdditionalPractice[id]);
+  section1ExamQuestions[id].push(...section1AdditionalExam[id]);
+}
 
 const checkpoints = {
   "001": [["Which is larger: 1 MB or 1 MiB? Explain using byte values.", "1 MiB is larger: 1,048,576 bytes compared with 1,000,000 bytes."]],

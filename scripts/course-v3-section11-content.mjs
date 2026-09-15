@@ -2,6 +2,8 @@ import { mechanismVisual } from "./course-v3-mechanism-diagrams.mjs";
 import { coreParagraph, coreList, coreTable } from "./course-v3-core-blocks.mjs";
 import { codeFor } from "./course-v3-section11-programs.mjs";
 import { countDiagram } from "./course-v3-section11-diagrams.mjs";
+import { enhanceSection11Lesson } from "./course-v3-section11-teaching.mjs";
+import { enhanceSection11Questions } from "./course-v3-section11-questions.mjs";
 
 const ids = (r, ...ns) => ns.map(n => `S11.${String(r).padStart(2,"0")}.A${String(n).padStart(2,"0")}`);
 const table = (title, headers, rows) => ({type:"table",title,headers,rows,preserveText:true});
@@ -415,10 +417,10 @@ export function authorSection11Lesson(source) {
     }).map(([id,text])=>[id,
       id==="S11.03.A02" ? "Use an unfamiliar routine from its supplied interface and definition." :
       id==="S11.03.A03" ? "Apply the supplied definitions of string manipulation functions." : text]);
-    return {...source,...authored,objectives,summaryMode:"authored",
+    return enhanceSection11Questions(enhanceSection11Lesson({...source,...authored,objectives,summaryMode:"authored",
       teachingCheckpoints:["Use the opening diagnostic to check prerequisite understanding.","Trace the worked example, then attempt each knowledge-point check before revealing its answer.","Complete the practice tasks before the independent exam-style tasks; compare the supplied rules, outputs and marking points."],
       sources:["Cambridge 9618 2027–2029 syllabus, sections 11.1–11.3: https://www.cambridgeinternational.org/Images/721397-2027-2029-syllabus.pdf","Cambridge 9618 2027–2029 pseudocode guide: https://www.cambridgeinternational.org/Images/721401-2027-2029-pseudocode-guide.pdf","Original teaching examples, questions and marking guidance."],
-    };
+    }));
   }
   if (source.kind !== "review" || source.paper !== 2) return source;
   const r = (...ns)=>ns.map(n=>`S11.${String(n).padStart(2,"0")}.R`);
@@ -431,7 +433,7 @@ export function authorSection11Lesson(source) {
   const practice=[
     question("REV-P2-S11-Q1","Write the parking algorithm described in this review. Include INTEGER declarations, zero initialisation, input until sentinel 0 and final output. Justify the loop and state the output for 2, 1, 0.",r(1,2,4,5),["Define Hours and Total, initialise Total to zero and read Hours before the first test.","WHILE Hours <> 0 processes each positive session and obtains the next input; it permits zero sessions.","Add three times each session's hours and output Total after the loop; the given result is 9."],"Process each value before reading the next, and exclude zero as a session.",solution("review")),
     question("REV-P2-S11-Q2","For the supplied parking program, identify each subprogram's parameters, argument types and result or effect. Explain how Charge(Hours) can be an argument to AddCharge.",r(6,7,8),["Charge receives INTEGER Hours by value and returns an INTEGER fee.","AddCharge receives INTEGER Amount by value and INTEGER Total by reference to update the caller.","Charge(Hours) is evaluated first; its returned integer supplies the Amount argument."],"A nested function call supplies a value, not a reference destination.",supplied("review")),
-    question("REV-P2-S11-Q3","A supplied function LEFT(Text : STRING, Count : INTEGER) returns the first Count characters. A session code is \"PARK204\". State LEFT(\"PARK204\", 4). A proposed program calculates Hours * 3 twice for the same unchanged Hours, once to display the fee and once to add it. Describe an efficient correction that preserves both actions.",r(3,9),["The function returns \"PARK\".","Calculate Fee <- Hours * 3 once, then display Fee and add that same Fee to Total."],"Eliminate the repeated calculation while retaining both required uses."),
+    question("REV-P2-S11-Q3","A supplied function LEFT(Text : STRING, Count : INTEGER) returns the first Count characters. A session code is \"PARK204\". State LEFT(\"PARK204\", 4) & \"-A\". A proposed program calculates Hours * 3 twice for the same unchanged Hours, once to display the fee and once to add it. Describe an efficient correction that preserves both actions.",r(3,9),["LEFT returns \"PARK\" and concatenation gives the STRING \"PARK-A\".","Calculate Fee <- Hours * 3 once, then display Fee and add that same Fee to Total."],"Eliminate the repeated calculation while retaining both required uses."),
   ];
   return {...source,units:source.units.map(u=>u.heading.startsWith("Section 11:")?review:u),practice:[...source.practice.filter(p=>!p.objectiveIds?.some(id=>id.startsWith("S11."))),...practice]};
 }

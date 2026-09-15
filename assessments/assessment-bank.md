@@ -34,26 +34,26 @@ Award one mark for each distinct point, within the mark allocation for each part
 
 ### 3. calculate - 5 marks
 
-The station stores a 32 by 16 pixel bitmap at 4 bits per pixel and a vector arrow for a map. (a) Calculate the bitmap pixel-data size in bytes, showing your working; ignore headers. [2] (b) Identify two properties needed to store a straight line in the vector arrow. [2] (c) Explain why the vector arrow can be enlarged without pixelation. [1]
+The station stores a 32 by 16 pixel bitmap at 4 bits per pixel and a vector line from (4,6) to (12,6), thickness 2. (a) Calculate the bitmap pixel-data size in bytes, showing your working; ignore headers. [2] (b) State the line endpoints and thickness after scaling all coordinates and thickness by 2. [2] (c) Explain why the vector line can be enlarged without bitmap pixelation. [1]
 
 **Answer and guidance:**
 
 - 32 × 16 × 4 = 2048 bits of pixel data.
 - 2048 / 8 = 256 bytes.
-- Any one valid line property: start/end coordinates, line colour or thickness.
-- Any second distinct valid property from the same list.
+- The scaled line joins (8,12) to (24,12).
+- Its thickness becomes 4.
 - Software redraws the line from its geometry at the new size instead of enlarging a fixed pixel grid.
 
 Award one mark for each distinct point, within the mark allocation for each part. Accept equivalent correct working and explanations. Do not award the same point twice.
 
-### 4. explain - 5 marks
+### 4. state - 5 marks
 
-The station records a mono sound. (a) Explain the effects on time accuracy and uncompressed sample-data size of doubling the sampling rate during recording, with duration and bits per sample unchanged. [2] (b) A one-bit bitmap row is 0000000011111111. RLE stores each run as an 8-bit count and a 1-bit colour. Give its count-and-colour pairs, calculate the encoded size and decide whether it is smaller than the original 16-bit row. [3]
+The station measures sound amplitudes 0.6 and 2.7. Its teaching model rounds to the nearest level from 0, 1, 2, 3, encoded as 00, 01, 10, 11 respectively. (a) State both quantised levels and their stored codes in order. [2] (b) A one-bit bitmap row is 0000000011111111. RLE stores each run as an 8-bit count and a 1-bit colour. Give its count-and-colour pairs, calculate the encoded size and decide whether it is smaller than the original 16-bit row. [3]
 
 **Answer and guidance:**
 
-- The converter measures amplitude twice as often, so it can represent changes over time more accurately.
-- Twice as many samples require twice the uncompressed sample-data size.
+- The quantised levels are 1 and 3.
+- Their stored codes are 01 and 11 in that order.
 - The pairs are (8, 0) and (8, 1).
 - Two pairs require 2 × (8 + 1) = 18 bits.
 - The encoded row is 2 bits larger; count overhead outweighs the saving.
@@ -106,7 +106,7 @@ Award one mark for each distinct marking point, up to the stated maximum for eac
 
 ### 4. identify - 5 marks
 
-A museum laptop at 192.168.40.25/24 opens https://archive.example.org/exhibits/map.html. DNS returns 203.0.113.60. (a) Identify the domain name and describe the DNS operation. [2] (b) Explain whether the laptop sends the request directly within its subnet or to a router. [2] (c) Describe what the browser requests after contacting the web server. [1]
+A museum laptop at 192.168.40.25/24 opens https://archive.example.org/exhibits/map.html. DNS returns 203.0.113.60. (a) Identify the domain name and describe the DNS operation. [2] (b) Explain whether the laptop sends the request directly within its subnet or to a router. [2] (c) Describe what the browser requests after contacting the web server. [1] Treat the returned 203.0.113.60 as a documentation address in this hypothetical network, with working routing and an appropriate IPv4 NAT arrangement supplied.
 
 **Answer and guidance:**
 
@@ -150,29 +150,44 @@ Award one mark for each listed point, or an equivalent correct response. Do not 
 
 ### 3. explain - 5 marks
 
-Explain how an automatic air pump uses a pressure sensor, a stored target and a motor to regulate tyre pressure. Include the role of a new reading after the motor runs and explain why displaying pressure alone is monitoring.
+Explain how an automatic air pump uses a pressure sensor, a stored target and a motor to regulate tyre pressure. Explain what an accurate new reading shows if the motor fails and the pressure does not rise, and why displaying pressure alone is monitoring.
 
 **Answer and guidance:**
 
 - The pressure sensor supplies a reading of the tyre pressure to the controller.
 - The controller compares that reading with the stored target and decides whether further pumping is needed.
 - The motor is the actuator whose operation raises the physical pressure.
-- A new sensor reading provides feedback so the controller can stop or adjust pumping based on the actual result.
+- An accurate unchanged reading provides feedback that pumping did not achieve the intended pressure rise; feedback does not itself repair the failed motor.
 - A display only reports the measurement; by itself it does not change tyre pressure.
 
 Award one mark for each listed point, or an equivalent correct response. Do not award the same idea twice.
 
 ### 4. construct - 5 marks
 
-Construct a Boolean expression and draw a circuit for output Q that is 1 only when input A is 0 and input B is 1. Construct its full truth table using input order AB = 00,01,10,11. Use NOT and two-input gates.
+Construct a Boolean expression and draw a circuit for Q that is 1 when A is 0 and B is 1, or whenever C is 1. Construct the complete truth table in input order ABC = 000 to 111. Use NOT and two-input gates.
 
 **Answer and guidance:**
 
-- Q = (NOT A) AND B.
-- A connects to a NOT gate.
-- The NOT output and B connect to an AND gate, with final output labelled Q.
-- The truth table includes all four input combinations: 00, 01, 10 and 11.
-- The output column is 0, 1, 0, 0 in that order.
+Complete truth table
+
+| A | B | C | Q |
+| --- | --- | --- | --- |
+| 0 | 0 | 0 | 0 |
+| 0 | 0 | 1 | 1 |
+| 0 | 1 | 0 | 1 |
+| 0 | 1 | 1 | 1 |
+| 1 | 0 | 0 | 0 |
+| 1 | 0 | 1 | 1 |
+| 1 | 1 | 0 | 0 |
+| 1 | 1 | 1 | 1 |
+
+![NOT A and B feed AND; its output and C feed OR to produce Q.](../web/assets/course-v3/section-3/logic-sectionCheck.svg)
+
+- Q = ((NOT A) AND B) OR C.
+- A feeds NOT; its output and B feed a two-input AND.
+- The AND output and C feed a two-input OR with final output Q.
+- The truth table contains all eight input combinations in 000–111 order.
+- The output column is 0, 1, 1, 1, 0, 1, 0, 1 in that order.
 
 Award one mark for each listed point, or an equivalent correct response. Do not award the same idea twice.
 
@@ -709,13 +724,13 @@ Award one mark for each listed independent point. Accept equivalent correct pseu
 
 ### 2. calculate - 5 marks
 
-LENGTH(S) returns a string's length; MID(S, Start, Count) returns Count characters starting at one-based Start; UCASE(C) converts one CHAR to upper case. INT(X) takes the integer part and RAND(N) returns a real from 0 inclusive to N exclusive. For S = "SCIENCE" and C = 'm', calculate LENGTH(S), MID(S, 2, 3), UCASE(C) and INT(7.8). Write an expression generating an integer from 1 to 10 inclusive.
+LENGTH(S) returns a string's length; MID(S, Start, Count) returns Count characters starting at one-based Start. INT(X) takes the integer part and RAND(N) returns a real from 0 inclusive to N exclusive. For S = "SCIENCE", calculate LENGTH(S), MID(S, 2, 3), MID(S, 2, 3) & "!" and INT(7.8). Write an expression generating an integer from 1 to 10 inclusive.
 
 **Answer and guidance:**
 
 - LENGTH(S) is 7.
 - MID(S, 2, 3) is "CIE".
-- UCASE(C) is 'M'.
+- The concatenation produces the STRING "CIE!".
 - INT(7.8) is 7.
 - INT(RAND(10)) + 1 produces the specified integers.
 
@@ -814,47 +829,55 @@ Award one mark per numbered point, up to the stated subpart allocation. Accept e
 
 ### 4. identify - 5 marks
 
-(a) A shop repairs a miscalculated total and adds a requested sales chart. Identify the type of each maintenance change (2 marks). (b) Write an amended version of the supplied three-sale program to retain Total and also output LargeSales, counting prices of at least 100.00. Prices are non-negative REAL values. Include the additional declaration, initialisation, processing and output (3 marks).
+(a) A school repairs an incorrect report total and adds a requested configurable pass threshold. Identify the type of each change (2 marks). (b) The supplied program uses a fixed threshold of 50. Describe three coordinated amendments needed to read one INTEGER PassMark in 0–100 before the four valid marks and use that threshold while retaining one final pass count (3 marks).
 
 Use this supplied program and the stated assumptions.
 
 ```text
+FUNCTION IsPass(Mark : INTEGER) RETURNS BOOLEAN
+    RETURN Mark >= 50
+ENDFUNCTION
+
 DECLARE Index : INTEGER
-DECLARE Price : REAL
-DECLARE Total : REAL
-Total <- 0.0
-FOR Index <- 1 TO 3
-    INPUT Price
-    Total <- Total + Price
+DECLARE Mark : INTEGER
+DECLARE PassCount : INTEGER
+PassCount <- 0
+FOR Index <- 1 TO 4
+    INPUT Mark
+    IF IsPass(Mark) THEN
+        PassCount <- PassCount + 1
+    ENDIF
 NEXT Index
-OUTPUT Total
+OUTPUT PassCount
 ```
 
 **Answer and guidance:**
 
-```sql
+```text
+FUNCTION IsPass(Mark : INTEGER, PassMark : INTEGER) RETURNS BOOLEAN
+    RETURN Mark >= PassMark
+ENDFUNCTION
+
 DECLARE Index : INTEGER
-DECLARE Price : REAL
-DECLARE Total : REAL
-DECLARE LargeSales : INTEGER
-Total <- 0.0
-LargeSales <- 0
-FOR Index <- 1 TO 3
-    INPUT Price
-    Total <- Total + Price
-    IF Price >= 100.0 THEN
-        LargeSales <- LargeSales + 1
+DECLARE Mark : INTEGER
+DECLARE PassCount : INTEGER
+DECLARE PassMark : INTEGER
+INPUT PassMark
+PassCount <- 0
+FOR Index <- 1 TO 4
+    INPUT Mark
+    IF IsPass(Mark, PassMark) THEN
+        PassCount <- PassCount + 1
     ENDIF
 NEXT Index
-OUTPUT Total
-OUTPUT LargeSales
+OUTPUT PassCount
 ```
 
-- (a) Repairing the faulty total is corrective maintenance.
-- (a) Adding the requested chart is perfective maintenance.
-- (b) Declare LargeSales as INTEGER and initialise it to zero before the loop.
-- (b) Independently increment LargeSales inside the loop when Price >= 100.0, preserving the original total.
-- (b) Output LargeSales after Total and retain correctly closed constructs.
+- (a) Repairing the incorrect existing total is corrective.
+- (a) Adding the requested threshold choice is perfective.
+- (b) Declare and input PassMark once before the four-mark loop.
+- (b) Add the typed PassMark parameter to IsPass and compare Mark >= PassMark.
+- (b) Update each call to IsPass(Mark, PassMark), retaining the four-input traversal, counter and final output.
 
 Award one mark per numbered point, up to the stated subpart allocation. Accept equivalent correct charts, wording and pseudocode that satisfy the supplied requirements.
 
@@ -879,7 +902,7 @@ Award one mark per distinct point within each part. Accept equivalent working. B
 
 ### 2. describe - 9 marks
 
-A science centre connects PCs P, Q and R to a central switch in a star. Its inter-building routers A, B, C and D form a partial mesh with links A-B, B-D, A-C and C-D; all four links initially work. (a) Describe delivery of a frame from P to Q when the switch already knows Q's port. State the effect of P's cable failing and of the central switch failing. [3] (b) Give two routes from A to D. Link B-D then fails: explain how delivery can continue and state one hardware cost of providing the alternative route. [3] (c) A message travels as numbered packets with destination IP addresses; they arrive in order 3, 1, 2. Explain the role of the destination IP address and of the sequence numbers, then state the correct reassembly order. [3]
+A science centre connects PCs P, Q and R to a central switch in a star. Its inter-building routers A, B, C and D form a partial mesh with links A-B, B-D, A-C and C-D; all four links initially work. (a) Describe delivery of a frame from P to Q when the switch already knows Q's port. State the effect of P's cable failing and of the central switch failing. [3] (b) Give two routes from A to D. Link B-D then fails: explain how delivery can continue and state one hardware cost of providing the alternative route. [3] (c) PC P has address 192.168.50.70/26, mask 255.255.255.192 and gateway 192.168.50.65. Explain whether delivery to 192.168.50.100 and 192.168.50.130 is local or routed. For the remote case, distinguish the immediate LAN recipient from the destination IP address. [3]
 
 **Answer and guidance:**
 
@@ -889,11 +912,11 @@ A science centre connects PCs P, Q and R to a central switch in a star. Its inte
 - (b) The two routes are A-B-D and A-C-D.
 - (b) After B-D fails, routing can use the still-working A-C-D path.
 - (b) The alternative path requires additional links, router ports or router hardware compared with a single-path connection.
-- (c) The destination IP address identifies where routers should forward each packet towards its destination.
-- (c) Sequence numbers identify the packets' original positions so the receiver can reorder them.
-- (c) Reassemble packets in the order 1, 2, 3.
+- (c) P is in 192.168.50.64/26; .100 has the same network result, so delivery is local.
+- (c) .130 belongs to 192.168.50.128/26, so delivery goes via gateway 192.168.50.65.
+- (c) The gateway is the immediate LAN recipient; the IP packet still targets 192.168.50.130 as routers forward it towards that network.
 
-Award one mark for each listed point, with a maximum of three marks per part. Accept equivalent technically accurate wording. For the route point, both complete A-to-D routes must be given; do not assume a link that is absent from the stated network.
+Award one mark for each listed point, with a maximum of three marks per part. Accept equivalent technically accurate wording. For the route point, both complete A-to-D routes must be given; do not assume a link that is absent from the stated network. For part (c), accept correct mask calculations or equivalent block reasoning.
 
 ### 3. explain - 9 marks
 
@@ -1271,51 +1294,59 @@ Award one mark for each listed independent point. Accept equivalent correct pseu
 
 ### 8. identify - 10 marks
 
-(a) A delivery firm repairs a duplicated trip, updates an operating-system interface and adds a requested long-trip count. Identify the type of each of the three changes (3 marks). (b) Analyse and amend the supplied program, which totals three non-negative REAL journey distances. Retain Total and additionally output LongTrips, counting distances of at least 20.0. Include the complete amended program and state outputs for 19, 20, 21 and for 0, 0, 0 (7 marks).
+(a) A school repairs a duplicated result, supports a new operating-system interface and adds a user-selected pass threshold. Identify the type of each change (3 marks). (b) Analyse and amend the supplied fixed-50 program to read one INTEGER PassMark in 0–100 before four validated INTEGER marks in 0–100. Count marks at least PassMark and output the final count. Include the complete amended program and state the outputs for thresholds 50 and 60 using marks 49, 50, 69, 70 in each run (7 marks).
 
 Use this supplied program and the stated assumptions.
 
 ```text
+FUNCTION IsPass(Mark : INTEGER) RETURNS BOOLEAN
+    RETURN Mark >= 50
+ENDFUNCTION
+
 DECLARE Index : INTEGER
-DECLARE Distance : REAL
-DECLARE Total : REAL
-Total <- 0.0
-FOR Index <- 1 TO 3
-    INPUT Distance
-    Total <- Total + Distance
+DECLARE Mark : INTEGER
+DECLARE PassCount : INTEGER
+PassCount <- 0
+FOR Index <- 1 TO 4
+    INPUT Mark
+    IF IsPass(Mark) THEN
+        PassCount <- PassCount + 1
+    ENDIF
 NEXT Index
-OUTPUT Total
+OUTPUT PassCount
 ```
 
 **Answer and guidance:**
 
-```sql
+```text
+FUNCTION IsPass(Mark : INTEGER, PassMark : INTEGER) RETURNS BOOLEAN
+    RETURN Mark >= PassMark
+ENDFUNCTION
+
 DECLARE Index : INTEGER
-DECLARE Distance : REAL
-DECLARE Total : REAL
-DECLARE LongTrips : INTEGER
-Total <- 0.0
-LongTrips <- 0
-FOR Index <- 1 TO 3
-    INPUT Distance
-    Total <- Total + Distance
-    IF Distance >= 20.0 THEN
-        LongTrips <- LongTrips + 1
+DECLARE Mark : INTEGER
+DECLARE PassCount : INTEGER
+DECLARE PassMark : INTEGER
+INPUT PassMark
+PassCount <- 0
+FOR Index <- 1 TO 4
+    INPUT Mark
+    IF IsPass(Mark, PassMark) THEN
+        PassCount <- PassCount + 1
     ENDIF
 NEXT Index
-OUTPUT Total
-OUTPUT LongTrips
+OUTPUT PassCount
 ```
 
-- (a) Repairing the duplicate is corrective.
-- (a) Supporting the changed operating-system interface is adaptive.
-- (a) Adding the requested count is perfective.
-- (b) The existing program reads three distances, accumulates each into Total and outputs that total.
-- (b) Declare INTEGER LongTrips and initialise it once before the loop.
-- (b) Increment it inside an independent IF Distance >= 20.0.
-- (b) Preserve the original input traversal and total accumulation.
-- (b) Output Total and then LongTrips with complete constructs.
-- (b) 19, 20, 21 produces Total 60 and LongTrips 2.
-- (b) 0, 0, 0 produces Total 0 and LongTrips 0.
+- (a) Repairing the duplicated result is corrective.
+- (a) Supporting the new operating-system interface is adaptive.
+- (a) Adding the user-selected threshold is perfective.
+- (b) The old function compares each mark against 50; main reads four marks and counts TRUE results.
+- (b) Add an INTEGER PassMark parameter and return Mark >= PassMark.
+- (b) Declare and read PassMark once before the existing loop.
+- (b) Update the function call to supply Mark followed by PassMark.
+- (b) Preserve the four-mark traversal, zero initialisation, conditional increment and final output, with complete constructs.
+- (b) Threshold 50 gives 3, matching the original rule.
+- (b) Threshold 60 gives 2, reflecting the requested changed rule.
 
 Award one mark per numbered point, up to the stated subpart allocation. Accept equivalent correct charts, wording and pseudocode that satisfy the supplied requirements.

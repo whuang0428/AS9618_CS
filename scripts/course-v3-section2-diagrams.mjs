@@ -1,3 +1,4 @@
+import { section2TeachingDiagramFiles } from "./course-v3-section2-teaching-diagrams.mjs";
 // Exact question stimuli: show the supplied links without revealing a route or answer.
 const start = (title, description) => `<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 960 540" role="img" aria-labelledby="title description">
 <title id="title">${title}</title><desc id="description">${description}</desc>
@@ -10,6 +11,7 @@ const router = (id, x, y) => `<g data-node="${id}"><circle class="router" cx="${
 const networkDevice = (id, x, y, width, labels) => `<g data-node="${id}"><rect class="host" x="${x}" y="${y}" width="${width}" height="90" rx="8"/>${labels.map((label, index) => `<text class="note" x="${x + width / 2}" y="${y + (labels.length === 1 ? 53 : 37 + index * 30)}">${label}</text>`).join("")}</g>`;
 
 export const section2DiagramFiles = Object.freeze({
+  ...section2TeachingDiagramFiles,
   "question-wireless-server.svg": `${start("Wireless laptop and a server on another network", "A laptop containing a WNIC has a wireless link to a WAP. Wired links connect the WAP to a switch, the switch to a router and the router to the server's network. No packet route is highlighted.")}
 <rect x="20" y="115" width="920" height="230" rx="12" fill="#e6f3f0"/>
 <text x="120" y="155" class="note">Source LAN</text>

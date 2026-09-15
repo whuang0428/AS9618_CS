@@ -187,13 +187,13 @@ const portsVisual = {
 
 export function expandConceptTeaching(unit, section) {
   const key=unit.unitKey ?? (section===2 ? unit.heading : undefined), titles=coreHeadings[key] ?? (section===2 ? section2Headings[unit.heading] : undefined);
-  let blocks=expandedCore[key] ?? (section===2 ? section2Core[unit.heading] : undefined);
-  if(!blocks && titles) {
+  let blocks=unit.teachingBlocks ? undefined : expandedCore[key] ?? (section===2 ? section2Core[unit.heading] : undefined);
+  if(!unit.teachingBlocks && !blocks && titles) {
     const original=unit.coreExplanation ?? unit.explanation;
     if(!Array.isArray(original) || original.length!==titles.length || original.some(x=>typeof x!=='string')) throw new Error(`Core heading revision is stale: ${key ?? unit.heading}`);
     blocks=original.map((text,index)=>p(text,titles[index]));
   }
-  const visual=key==='s4-ports' ? portsVisual : extendedDiagramTargets[key] ? mechanismVisual(extendedDiagramTargets[key]) : null;
+  const visual=unit.preserveSelectedVisual ? null : key==='s4-ports' ? portsVisual : extendedDiagramTargets[key] ? mechanismVisual(extendedDiagramTargets[key]) : null;
   if(!blocks && !visual)return unit;
   // Keep authored worked examples and preserved reference materials. The former
   // lead remains available only when explicitly marked preserve by its author.

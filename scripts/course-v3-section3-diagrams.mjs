@@ -1,5 +1,7 @@
 // Exact supplied circuit. Expressions and truth-table outputs belong in the answer.
+import { section3TeachingDiagramFiles } from './course-v3-section3-teaching-diagrams.mjs';
 export const section3DiagramFiles = Object.freeze({
+  ...section3TeachingDiagramFiles,
   "question-circuit-d.svg": `<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="560" viewBox="0 0 1100 560" role="img" aria-labelledby="title description">
 <title id="title">Circuit D</title><desc id="description">A and B connect to an AND gate with output X. X and C connect to an OR gate with output Y. Y connects to a NOT gate with final output Q.</desc>
 <style>text{font-family:Arial,sans-serif;fill:#142b45}.wire,.gate{stroke:#142b45;stroke-width:4;fill:none;stroke-linejoin:round;stroke-linecap:round}.gate{fill:#e8f5f5}.label{font-size:28px;font-weight:bold}.note{font-size:23px}</style>

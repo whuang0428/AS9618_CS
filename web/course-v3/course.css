@@ -279,6 +279,7 @@ body:has(.lesson-hero [data-objective-id^="S10."]) .source-note{overflow-wrap:an
 .knowledge-unit[data-syllabus-id^="S10."] .worked-steps pre,.knowledge-unit[data-syllabus-id="REVIEW-2-2"] .worked-steps pre,[data-question-id^="S10-"] .question-code pre{font-size:.95rem;font-weight:500;line-height:1.6}.knowledge-unit[data-syllabus-id^="S10."] .worked-steps pre code,[data-question-id^="S10-"] .question-code pre code{font:inherit}
 
 /* S11 pseudocode legibility */
+.knowledge-unit[data-syllabus-id^="S11."] .reviewed-visual img{min-width:960px}
 .knowledge-unit[data-syllabus-id^="S11."] .worked-steps pre,.knowledge-unit[data-syllabus-id="REVIEW-2-3"] .worked-steps pre,[data-question-id^="S11-"] .question-code pre{font-size:.95rem;font-weight:500;line-height:1.6}.knowledge-unit[data-syllabus-id^="S11."] .worked-steps pre code,[data-question-id^="S11-"] .question-code pre code{font:inherit}
 
 /* S12 diagram and pseudocode legibility */
@@ -294,6 +295,8 @@ body:has(.lesson-hero [data-objective-id^="S10."]) .source-note{overflow-wrap:an
 :is([data-question-id="S3-L06-Q4"],[data-question-id="S3-L06-EXAM-3"]) :is(th,td){width:33.333%;text-align:center}
 :is([data-question-id="S3-L06-Q4"],[data-question-id="S3-L06-EXAM-3"]) .swipe-cue{display:none}
 /* Authored core explanations and mechanism diagrams */
+.s10-lesson-toc li>a{display:block}
+.unit-extension{margin:24px 0;padding:18px;border:1px solid var(--line-dark);border-left:4px solid var(--navy);background:var(--blue-pale)}.unit-extension>summary{cursor:pointer;font-weight:700;color:var(--navy-dark)}.unit-extension>p{margin:16px 0;line-height:1.65}
 .core-block + .core-block{margin-top:20px}.core-block h5{margin:0 0 8px;font:700 1rem/1.4 system-ui,sans-serif;color:var(--navy-dark)}
 .core-block ul,.core-block ol{margin:0;padding-left:1.4em}.core-block li{padding-left:.2em;margin-bottom:10px;line-height:1.65}.core-block li:last-child{margin-bottom:0}.core-block li strong{color:var(--navy-dark)}
 .core-block table{width:100%;min-width:600px;border-collapse:collapse;font-size:.93rem;line-height:1.5}.core-block th,.core-block td{padding:12px;text-align:left;vertical-align:top;border:1px solid var(--line-dark)}.core-block thead{background:var(--navy);color:white}.core-block tbody th{background:var(--blue-pale)}

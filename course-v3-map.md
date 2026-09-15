@@ -139,7 +139,7 @@ Paper 2.
 - [Lesson 080 · S11-L09 · Procedures and parameter passing](web/course-v3/lesson-080/) — S11.06
 - [Lesson 081 · S11-L10 · Functions, interfaces and return values](web/course-v3/lesson-081/) — S11.07, S11.08
 - [Lesson 082 · S11-L11 · Clear and efficient Cambridge pseudocode](web/course-v3/lesson-082/) — S11.09
-- [Lesson 083 · S11-L12 · Writing complete program fragments](web/course-v3/lesson-083/) — S11.01, S11.04, S11.06, S11.07
+- [Lesson 083 · S11-L12 · Building a complete structured program](web/course-v3/lesson-083/) — S11.01, S11.04, S11.06, S11.07
 
 ## Section 12 — Software development
 

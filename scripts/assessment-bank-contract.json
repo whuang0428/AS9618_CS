@@ -64,15 +64,15 @@
           "section": 1,
           "marks": 5,
           "commandWord": "calculate",
-          "prompt": "The station stores a 32 by 16 pixel bitmap at 4 bits per pixel and a vector arrow for a map. (a) Calculate the bitmap pixel-data size in bytes, showing your working; ignore headers. [2] (b) Identify two properties needed to store a straight line in the vector arrow. [2] (c) Explain why the vector arrow can be enlarged without pixelation. [1]",
-          "answer": "(1) 32 × 16 × 4 = 2048 bits of pixel data. (2) 2048 / 8 = 256 bytes. (3) Any one valid line property: start/end coordinates, line colour or thickness. (4) Any second distinct valid property from the same list. (5) Software redraws the line from its geometry at the new size instead of enlarging a fixed pixel grid.",
+          "prompt": "The station stores a 32 by 16 pixel bitmap at 4 bits per pixel and a vector line from (4,6) to (12,6), thickness 2. (a) Calculate the bitmap pixel-data size in bytes, showing your working; ignore headers. [2] (b) State the line endpoints and thickness after scaling all coordinates and thickness by 2. [2] (c) Explain why the vector line can be enlarged without bitmap pixelation. [1]",
+          "answer": "(1) 32 × 16 × 4 = 2048 bits of pixel data. (2) 2048 / 8 = 256 bytes. (3) The scaled line joins (8,12) to (24,12). (4) Its thickness becomes 4. (5) Software redraws the line from its geometry at the new size instead of enlarging a fixed pixel grid.",
           "guidance": "Award one mark for each distinct point, within the mark allocation for each part. Accept equivalent correct working and explanations. Do not award the same point twice.",
           "semanticFingerprint": "assessment|S1|3|transfer",
           "answerPoints": [
             "32 × 16 × 4 = 2048 bits of pixel data.",
             "2048 / 8 = 256 bytes.",
-            "Any one valid line property: start/end coordinates, line colour or thickness.",
-            "Any second distinct valid property from the same list.",
+            "The scaled line joins (8,12) to (24,12).",
+            "Its thickness becomes 4.",
             "Software redraws the line from its geometry at the new size instead of enlarging a fixed pixel grid."
           ],
           "objectiveIds": [
@@ -86,20 +86,20 @@
           "sourceType": "original",
           "section": 1,
           "marks": 5,
-          "commandWord": "explain",
-          "prompt": "The station records a mono sound. (a) Explain the effects on time accuracy and uncompressed sample-data size of doubling the sampling rate during recording, with duration and bits per sample unchanged. [2] (b) A one-bit bitmap row is 0000000011111111. RLE stores each run as an 8-bit count and a 1-bit colour. Give its count-and-colour pairs, calculate the encoded size and decide whether it is smaller than the original 16-bit row. [3]",
-          "answer": "(1) The converter measures amplitude twice as often, so it can represent changes over time more accurately. (2) Twice as many samples require twice the uncompressed sample-data size. (3) The pairs are (8, 0) and (8, 1). (4) Two pairs require 2 × (8 + 1) = 18 bits. (5) The encoded row is 2 bits larger; count overhead outweighs the saving.",
+          "commandWord": "state",
+          "prompt": "The station measures sound amplitudes 0.6 and 2.7. Its teaching model rounds to the nearest level from 0, 1, 2, 3, encoded as 00, 01, 10, 11 respectively. (a) State both quantised levels and their stored codes in order. [2] (b) A one-bit bitmap row is 0000000011111111. RLE stores each run as an 8-bit count and a 1-bit colour. Give its count-and-colour pairs, calculate the encoded size and decide whether it is smaller than the original 16-bit row. [3]",
+          "answer": "(1) The quantised levels are 1 and 3. (2) Their stored codes are 01 and 11 in that order. (3) The pairs are (8, 0) and (8, 1). (4) Two pairs require 2 × (8 + 1) = 18 bits. (5) The encoded row is 2 bits larger; count overhead outweighs the saving.",
           "guidance": "Award one mark for each distinct point, within the mark allocation for each part. Accept equivalent correct working and explanations. Do not award the same point twice.",
           "semanticFingerprint": "assessment|S1|4|transfer",
           "answerPoints": [
-            "The converter measures amplitude twice as often, so it can represent changes over time more accurately.",
-            "Twice as many samples require twice the uncompressed sample-data size.",
+            "The quantised levels are 1 and 3.",
+            "Their stored codes are 01 and 11 in that order.",
             "The pairs are (8, 0) and (8, 1).",
             "Two pairs require 2 × (8 + 1) = 18 bits.",
             "The encoded row is 2 bits larger; count overhead outweighs the saving."
           ],
           "objectiveIds": [
-            "S1.10.A03",
+            "S1.10.A02",
             "S1.11.A03",
             "S1.11.A05"
           ]
@@ -195,7 +195,7 @@
           "section": 2,
           "marks": 5,
           "commandWord": "identify",
-          "prompt": "A museum laptop at 192.168.40.25/24 opens https://archive.example.org/exhibits/map.html. DNS returns 203.0.113.60. (a) Identify the domain name and describe the DNS operation. [2] (b) Explain whether the laptop sends the request directly within its subnet or to a router. [2] (c) Describe what the browser requests after contacting the web server. [1]",
+          "prompt": "A museum laptop at 192.168.40.25/24 opens https://archive.example.org/exhibits/map.html. DNS returns 203.0.113.60. (a) Identify the domain name and describe the DNS operation. [2] (b) Explain whether the laptop sends the request directly within its subnet or to a router. [2] (c) Describe what the browser requests after contacting the web server. [1] Treat the returned 203.0.113.60 as a documentation address in this hypothetical network, with working routing and an appropriate IPv4 NAT arrangement supplied.",
           "answer": "(1) The domain name is archive.example.org. (2) DNS resolves this domain name to the IP address 203.0.113.60. (3) The laptop subnet is 192.168.40.0/24; the returned address has a different network prefix. (4) The laptop sends the packet to a router for delivery outside its local subnet. (5) The browser requests the web page or file exhibits/map.html from the web server.",
           "guidance": "Award one mark for each distinct marking point, up to the stated maximum for each part. Accept equivalent technically accurate explanations. Do not credit the same point twice.",
           "semanticFingerprint": "assessment|S2|4|transfer",
@@ -276,15 +276,15 @@
           "section": 3,
           "marks": 5,
           "commandWord": "explain",
-          "prompt": "Explain how an automatic air pump uses a pressure sensor, a stored target and a motor to regulate tyre pressure. Include the role of a new reading after the motor runs and explain why displaying pressure alone is monitoring.",
-          "answer": "The pressure sensor supplies a reading of the tyre pressure to the controller. The controller compares that reading with the stored target and decides whether further pumping is needed. The motor is the actuator whose operation raises the physical pressure. A new sensor reading provides feedback so the controller can stop or adjust pumping based on the actual result. A display only reports the measurement; by itself it does not change tyre pressure.",
+          "prompt": "Explain how an automatic air pump uses a pressure sensor, a stored target and a motor to regulate tyre pressure. Explain what an accurate new reading shows if the motor fails and the pressure does not rise, and why displaying pressure alone is monitoring.",
+          "answer": "The pressure sensor supplies a reading of the tyre pressure to the controller. The controller compares that reading with the stored target and decides whether further pumping is needed. The motor is the actuator whose operation raises the physical pressure. An accurate unchanged reading provides feedback that pumping did not achieve the intended pressure rise; feedback does not itself repair the failed motor. A display only reports the measurement; by itself it does not change tyre pressure.",
           "guidance": "Award one mark for each listed point, or an equivalent correct response. Do not award the same idea twice.",
           "semanticFingerprint": "assessment|S3|3|transfer",
           "answerPoints": [
             "The pressure sensor supplies a reading of the tyre pressure to the controller.",
             "The controller compares that reading with the stored target and decides whether further pumping is needed.",
             "The motor is the actuator whose operation raises the physical pressure.",
-            "A new sensor reading provides feedback so the controller can stop or adjust pumping based on the actual result.",
+            "An accurate unchanged reading provides feedback that pumping did not achieve the intended pressure rise; feedback does not itself repair the failed motor.",
             "A display only reports the measurement; by itself it does not change tyre pressure."
           ],
           "objectiveIds": [
@@ -301,22 +301,85 @@
           "section": 3,
           "marks": 5,
           "commandWord": "construct",
-          "prompt": "Construct a Boolean expression and draw a circuit for output Q that is 1 only when input A is 0 and input B is 1. Construct its full truth table using input order AB = 00,01,10,11. Use NOT and two-input gates.",
-          "answer": "Q = (NOT A) AND B. A connects to a NOT gate. The NOT output and B connect to an AND gate, with final output labelled Q. The truth table includes all four input combinations: 00, 01, 10 and 11. The output column is 0, 1, 0, 0 in that order.",
+          "prompt": "Construct a Boolean expression and draw a circuit for Q that is 1 when A is 0 and B is 1, or whenever C is 1. Construct the complete truth table in input order ABC = 000 to 111. Use NOT and two-input gates.",
+          "answer": "Q = ((NOT A) AND B) OR C. A feeds NOT; its output and B feed a two-input AND. The AND output and C feed a two-input OR with final output Q. The truth table contains all eight input combinations in 000–111 order. The output column is 0, 1, 1, 1, 0, 1, 0, 1 in that order.",
           "guidance": "Award one mark for each listed point, or an equivalent correct response. Do not award the same idea twice.",
           "semanticFingerprint": "assessment|S3|4|transfer",
           "answerPoints": [
-            "Q = (NOT A) AND B.",
-            "A connects to a NOT gate.",
-            "The NOT output and B connect to an AND gate, with final output labelled Q.",
-            "The truth table includes all four input combinations: 00, 01, 10 and 11.",
-            "The output column is 0, 1, 0, 0 in that order."
+            "Q = ((NOT A) AND B) OR C.",
+            "A feeds NOT; its output and B feed a two-input AND.",
+            "The AND output and C feed a two-input OR with final output Q.",
+            "The truth table contains all eight input combinations in 000–111 order.",
+            "The output column is 0, 1, 1, 1, 0, 1, 0, 1 in that order."
           ],
           "objectiveIds": [
             "S3.10.A08",
             "S3.10.A09",
             "S3.10.A10"
-          ]
+          ],
+          "answerTable": {
+            "type": "table",
+            "title": "Complete truth table",
+            "headers": [
+              "A",
+              "B",
+              "C",
+              "Q"
+            ],
+            "rows": [
+              [
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                1,
+                1
+              ],
+              [
+                0,
+                1,
+                0,
+                1
+              ],
+              [
+                0,
+                1,
+                1,
+                1
+              ],
+              [
+                1,
+                0,
+                0,
+                0
+              ],
+              [
+                1,
+                0,
+                1,
+                1
+              ],
+              [
+                1,
+                1,
+                0,
+                0
+              ],
+              [
+                1,
+                1,
+                1,
+                1
+              ]
+            ]
+          },
+          "answerDiagram": "/assets/course-v3/section-3/logic-sectionCheck.svg",
+          "answerDiagramAlt": "NOT A and B feed AND; its output and C feed OR to produce Q.",
+          "answerDiagramLabel": "One valid logic circuit"
         }
       ]
     },
@@ -1210,14 +1273,14 @@
           "section": 11,
           "marks": 5,
           "commandWord": "calculate",
-          "prompt": "LENGTH(S) returns a string's length; MID(S, Start, Count) returns Count characters starting at one-based Start; UCASE(C) converts one CHAR to upper case. INT(X) takes the integer part and RAND(N) returns a real from 0 inclusive to N exclusive. For S = \"SCIENCE\" and C = 'm', calculate LENGTH(S), MID(S, 2, 3), UCASE(C) and INT(7.8). Write an expression generating an integer from 1 to 10 inclusive.",
+          "prompt": "LENGTH(S) returns a string's length; MID(S, Start, Count) returns Count characters starting at one-based Start. INT(X) takes the integer part and RAND(N) returns a real from 0 inclusive to N exclusive. For S = \"SCIENCE\", calculate LENGTH(S), MID(S, 2, 3), MID(S, 2, 3) & \"!\" and INT(7.8). Write an expression generating an integer from 1 to 10 inclusive.",
           "syllabusIds": [
             "S11.03"
           ],
           "answerPoints": [
             "LENGTH(S) is 7.",
             "MID(S, 2, 3) is \"CIE\".",
-            "UCASE(C) is 'M'.",
+            "The concatenation produces the STRING \"CIE!\".",
             "INT(7.8) is 7.",
             "INT(RAND(10)) + 1 produces the specified integers."
           ],
@@ -1370,7 +1433,7 @@
           "sourceType": "original",
           "section": 12,
           "commandWord": "identify",
-          "prompt": "(a) A shop repairs a miscalculated total and adds a requested sales chart. Identify the type of each maintenance change (2 marks). (b) Write an amended version of the supplied three-sale program to retain Total and also output LargeSales, counting prices of at least 100.00. Prices are non-negative REAL values. Include the additional declaration, initialisation, processing and output (3 marks).",
+          "prompt": "(a) A school repairs an incorrect report total and adds a requested configurable pass threshold. Identify the type of each change (2 marks). (b) The supplied program uses a fixed threshold of 50. Describe three coordinated amendments needed to read one INTEGER PassMark in 0–100 before the four valid marks and use that threshold while retaining one final pass count (3 marks).",
           "syllabusIds": [
             "S12.08",
             "S12.09"
@@ -1381,22 +1444,23 @@
             "S12.09.A01"
           ],
           "answerPoints": [
-            "(a) Repairing the faulty total is corrective maintenance.",
-            "(a) Adding the requested chart is perfective maintenance.",
-            "(b) Declare LargeSales as INTEGER and initialise it to zero before the loop.",
-            "(b) Independently increment LargeSales inside the loop when Price >= 100.0, preserving the original total.",
-            "(b) Output LargeSales after Total and retain correctly closed constructs."
+            "(a) Repairing the incorrect existing total is corrective.",
+            "(a) Adding the requested threshold choice is perfective.",
+            "(b) Declare and input PassMark once before the four-mark loop.",
+            "(b) Add the typed PassMark parameter to IsPass and compare Mark >= PassMark.",
+            "(b) Update each call to IsPass(Mark, PassMark), retaining the four-input traversal, counter and final output."
           ],
           "marks": 5,
           "guidance": "Award one mark per numbered point, up to the stated subpart allocation. Accept equivalent correct charts, wording and pseudocode that satisfy the supplied requirements.",
           "semanticFingerprint": "authored|A-S12-4|software-development",
-          "code": "DECLARE Index : INTEGER\nDECLARE Price : REAL\nDECLARE Total : REAL\nTotal <- 0.0\nFOR Index <- 1 TO 3\n    INPUT Price\n    Total <- Total + Price\nNEXT Index\nOUTPUT Total",
-          "programKey": "salesOriginal",
+          "code": "FUNCTION IsPass(Mark : INTEGER) RETURNS BOOLEAN\n    RETURN Mark >= 50\nENDFUNCTION\n\nDECLARE Index : INTEGER\nDECLARE Mark : INTEGER\nDECLARE PassCount : INTEGER\nPassCount <- 0\nFOR Index <- 1 TO 4\n    INPUT Mark\n    IF IsPass(Mark) THEN\n        PassCount <- PassCount + 1\n    ENDIF\nNEXT Index\nOUTPUT PassCount",
+          "programKey": "thresholdOriginal",
           "codeCaption": "Use this supplied program and the stated assumptions.",
           "codeLabel": "Supplied pseudocode",
-          "answerCode": "DECLARE Index : INTEGER\nDECLARE Price : REAL\nDECLARE Total : REAL\nDECLARE LargeSales : INTEGER\nTotal <- 0.0\nLargeSales <- 0\nFOR Index <- 1 TO 3\n    INPUT Price\n    Total <- Total + Price\n    IF Price >= 100.0 THEN\n        LargeSales <- LargeSales + 1\n    ENDIF\nNEXT Index\nOUTPUT Total\nOUTPUT LargeSales",
-          "answerProgramKey": "salesEnhanced",
-          "answerCodeLabel": "One valid pseudocode solution"
+          "answerCode": "FUNCTION IsPass(Mark : INTEGER, PassMark : INTEGER) RETURNS BOOLEAN\n    RETURN Mark >= PassMark\nENDFUNCTION\n\nDECLARE Index : INTEGER\nDECLARE Mark : INTEGER\nDECLARE PassCount : INTEGER\nDECLARE PassMark : INTEGER\nINPUT PassMark\nPassCount <- 0\nFOR Index <- 1 TO 4\n    INPUT Mark\n    IF IsPass(Mark, PassMark) THEN\n        PassCount <- PassCount + 1\n    ENDIF\nNEXT Index\nOUTPUT PassCount",
+          "answerProgramKey": "thresholdEnhanced",
+          "answerCodeLabel": "One valid pseudocode solution",
+          "answerLanguage": "text"
         }
       ]
     },
@@ -1441,8 +1505,8 @@
           "section": 2,
           "marks": 9,
           "commandWord": "describe",
-          "prompt": "A science centre connects PCs P, Q and R to a central switch in a star. Its inter-building routers A, B, C and D form a partial mesh with links A-B, B-D, A-C and C-D; all four links initially work. (a) Describe delivery of a frame from P to Q when the switch already knows Q's port. State the effect of P's cable failing and of the central switch failing. [3] (b) Give two routes from A to D. Link B-D then fails: explain how delivery can continue and state one hardware cost of providing the alternative route. [3] (c) A message travels as numbered packets with destination IP addresses; they arrive in order 3, 1, 2. Explain the role of the destination IP address and of the sequence numbers, then state the correct reassembly order. [3]",
-          "guidance": "Award one mark for each listed point, with a maximum of three marks per part. Accept equivalent technically accurate wording. For the route point, both complete A-to-D routes must be given; do not assume a link that is absent from the stated network.",
+          "prompt": "A science centre connects PCs P, Q and R to a central switch in a star. Its inter-building routers A, B, C and D form a partial mesh with links A-B, B-D, A-C and C-D; all four links initially work. (a) Describe delivery of a frame from P to Q when the switch already knows Q's port. State the effect of P's cable failing and of the central switch failing. [3] (b) Give two routes from A to D. Link B-D then fails: explain how delivery can continue and state one hardware cost of providing the alternative route. [3] (c) PC P has address 192.168.50.70/26, mask 255.255.255.192 and gateway 192.168.50.65. Explain whether delivery to 192.168.50.100 and 192.168.50.130 is local or routed. For the remote case, distinguish the immediate LAN recipient from the destination IP address. [3]",
+          "guidance": "Award one mark for each listed point, with a maximum of three marks per part. Accept equivalent technically accurate wording. For the route point, both complete A-to-D routes must be given; do not assume a link that is absent from the stated network. For part (c), accept correct mask calculations or equivalent block reasoning.",
           "semanticFingerprint": "assessment|P1|S2|2|cumulative",
           "answerPoints": [
             "(a) P sends the frame to the switch, which forwards it through the known port for Q.",
@@ -1451,9 +1515,9 @@
             "(b) The two routes are A-B-D and A-C-D.",
             "(b) After B-D fails, routing can use the still-working A-C-D path.",
             "(b) The alternative path requires additional links, router ports or router hardware compared with a single-path connection.",
-            "(c) The destination IP address identifies where routers should forward each packet towards its destination.",
-            "(c) Sequence numbers identify the packets' original positions so the receiver can reorder them.",
-            "(c) Reassemble packets in the order 1, 2, 3."
+            "(c) P is in 192.168.50.64/26; .100 has the same network result, so delivery is local.",
+            "(c) .130 belongs to 192.168.50.128/26, so delivery goes via gateway 192.168.50.65.",
+            "(c) The gateway is the immediate LAN recipient; the IP packet still targets 192.168.50.130 as routers forward it towards that network."
           ]
         },
         {
@@ -1953,7 +2017,7 @@
           "sourceType": "original",
           "section": 12,
           "commandWord": "identify",
-          "prompt": "(a) A delivery firm repairs a duplicated trip, updates an operating-system interface and adds a requested long-trip count. Identify the type of each of the three changes (3 marks). (b) Analyse and amend the supplied program, which totals three non-negative REAL journey distances. Retain Total and additionally output LongTrips, counting distances of at least 20.0. Include the complete amended program and state outputs for 19, 20, 21 and for 0, 0, 0 (7 marks).",
+          "prompt": "(a) A school repairs a duplicated result, supports a new operating-system interface and adds a user-selected pass threshold. Identify the type of each change (3 marks). (b) Analyse and amend the supplied fixed-50 program to read one INTEGER PassMark in 0–100 before four validated INTEGER marks in 0–100. Count marks at least PassMark and output the final count. Include the complete amended program and state the outputs for thresholds 50 and 60 using marks 49, 50, 69, 70 in each run (7 marks).",
           "syllabusIds": [
             "S12.08",
             "S12.09"
@@ -1965,27 +2029,28 @@
             "S12.09.A01"
           ],
           "answerPoints": [
-            "(a) Repairing the duplicate is corrective.",
-            "(a) Supporting the changed operating-system interface is adaptive.",
-            "(a) Adding the requested count is perfective.",
-            "(b) The existing program reads three distances, accumulates each into Total and outputs that total.",
-            "(b) Declare INTEGER LongTrips and initialise it once before the loop.",
-            "(b) Increment it inside an independent IF Distance >= 20.0.",
-            "(b) Preserve the original input traversal and total accumulation.",
-            "(b) Output Total and then LongTrips with complete constructs.",
-            "(b) 19, 20, 21 produces Total 60 and LongTrips 2.",
-            "(b) 0, 0, 0 produces Total 0 and LongTrips 0."
+            "(a) Repairing the duplicated result is corrective.",
+            "(a) Supporting the new operating-system interface is adaptive.",
+            "(a) Adding the user-selected threshold is perfective.",
+            "(b) The old function compares each mark against 50; main reads four marks and counts TRUE results.",
+            "(b) Add an INTEGER PassMark parameter and return Mark >= PassMark.",
+            "(b) Declare and read PassMark once before the existing loop.",
+            "(b) Update the function call to supply Mark followed by PassMark.",
+            "(b) Preserve the four-mark traversal, zero initialisation, conditional increment and final output, with complete constructs.",
+            "(b) Threshold 50 gives 3, matching the original rule.",
+            "(b) Threshold 60 gives 2, reflecting the requested changed rule."
           ],
           "marks": 10,
           "guidance": "Award one mark per numbered point, up to the stated subpart allocation. Accept equivalent correct charts, wording and pseudocode that satisfy the supplied requirements.",
           "semanticFingerprint": "authored|A-P2-8|software-development",
-          "code": "DECLARE Index : INTEGER\nDECLARE Distance : REAL\nDECLARE Total : REAL\nTotal <- 0.0\nFOR Index <- 1 TO 3\n    INPUT Distance\n    Total <- Total + Distance\nNEXT Index\nOUTPUT Total",
-          "programKey": "journeysOriginal",
+          "code": "FUNCTION IsPass(Mark : INTEGER) RETURNS BOOLEAN\n    RETURN Mark >= 50\nENDFUNCTION\n\nDECLARE Index : INTEGER\nDECLARE Mark : INTEGER\nDECLARE PassCount : INTEGER\nPassCount <- 0\nFOR Index <- 1 TO 4\n    INPUT Mark\n    IF IsPass(Mark) THEN\n        PassCount <- PassCount + 1\n    ENDIF\nNEXT Index\nOUTPUT PassCount",
+          "programKey": "thresholdOriginal",
           "codeCaption": "Use this supplied program and the stated assumptions.",
           "codeLabel": "Supplied pseudocode",
-          "answerCode": "DECLARE Index : INTEGER\nDECLARE Distance : REAL\nDECLARE Total : REAL\nDECLARE LongTrips : INTEGER\nTotal <- 0.0\nLongTrips <- 0\nFOR Index <- 1 TO 3\n    INPUT Distance\n    Total <- Total + Distance\n    IF Distance >= 20.0 THEN\n        LongTrips <- LongTrips + 1\n    ENDIF\nNEXT Index\nOUTPUT Total\nOUTPUT LongTrips",
-          "answerProgramKey": "journeysEnhanced",
-          "answerCodeLabel": "One valid pseudocode solution"
+          "answerCode": "FUNCTION IsPass(Mark : INTEGER, PassMark : INTEGER) RETURNS BOOLEAN\n    RETURN Mark >= PassMark\nENDFUNCTION\n\nDECLARE Index : INTEGER\nDECLARE Mark : INTEGER\nDECLARE PassCount : INTEGER\nDECLARE PassMark : INTEGER\nINPUT PassMark\nPassCount <- 0\nFOR Index <- 1 TO 4\n    INPUT Mark\n    IF IsPass(Mark, PassMark) THEN\n        PassCount <- PassCount + 1\n    ENDIF\nNEXT Index\nOUTPUT PassCount",
+          "answerProgramKey": "thresholdEnhanced",
+          "answerCodeLabel": "One valid pseudocode solution",
+          "answerLanguage": "text"
         }
       ]
     }
