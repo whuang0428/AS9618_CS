@@ -6,8 +6,8 @@
   "reviewLessonCount": 2,
   "officialRequirementCount": 121,
   "pastPaperQuestionCount": 109,
-  "practiceQuestionCount": 376,
-  "optionalPracticeQuestionCount": 121,
+  "practiceQuestionCount": 381,
+  "optionalPracticeQuestionCount": 124,
   "generatedAt": "deterministic",
   "syllabusOrder": [
     "S1.01",
@@ -18659,7 +18659,8 @@
             "Security, privacy and integrity"
           ],
           "materialTitles": [
-            "Classify the consequence"
+            "One record, different protection needs",
+            "Four independent events involving a source mark of 46"
           ],
           "questionIds": [
             "S6-L01-Q1",
@@ -18677,7 +18678,7 @@
           ],
           "materialTitles": [
             "Two independent protection targets",
-            "A clinic cannot open its records"
+            "Restore a clinic service from a stated recovery point"
           ],
           "questionIds": [
             "S6-L01-Q3",
@@ -18694,15 +18695,35 @@
             "S6.01.A01"
           ],
           "leadVisual": {
-            "type": "table",
-            "title": "Classify the consequence"
+            "type": "reviewed-visual",
+            "title": "One record, different protection needs"
           },
           "coreExplanation": [
-            "Data security protects information against unauthorised access, loss or damage. Privacy concerns the appropriate collection, use and disclosure of personal information. Data integrity concerns accuracy, completeness and consistency, including avoiding incorrect changes during processing or transfer.",
-            "These concepts can be affected separately. Restricting access does not make an incorrect value true, and copying a record perfectly does not make its disclosure appropriate. Identify the property affected from what happened to the data, not simply from the presence of a password."
+            "Security protects against unauthorised access, loss and damage; privacy concerns appropriate use and disclosure of personal data.",
+            "Integrity concerns accuracy, completeness and consistency. Judge each consequence; one incident can affect several properties."
+          ],
+          "teachingBlocks": [
+            {
+              "type": "paragraph",
+              "text": "Data security protects data against unauthorised access, loss or damage. Privacy concerns who may access personal information and whether its collection, use or disclosure is appropriate. Data integrity concerns accurate, complete and consistent information during storage, processing and transfer. A security control may support privacy or integrity, but the terms describe different questions.",
+              "title": "Ask a different question about each property"
+            },
+            {
+              "type": "paragraph",
+              "text": "If an unchanged medical record is sent to an unauthorised advertiser, its disclosure affects privacy and security even though its contents have not been corrupted. Conversely, a permitted employee can enter the wrong date in a protected file. The access restriction worked, but the stored date is inaccurate. Do not infer an integrity failure merely because an incident was serious.",
+              "title": "Use consequences rather than exclusive labels"
+            },
+            {
+              "type": "paragraph",
+              "text": "Check accuracy against the intended fact, completeness against the required information, and consistency between values that should agree. A missing examination mark makes the result set incomplete; two stored totals that should agree but differ are inconsistent. Rules, source comparisons and controlled updates address different causes. Lesson 037 develops the checking methods.",
+              "title": "Unpack integrity"
+            }
           ],
           "method": null,
-          "workedExample": null
+          "workedExample": {
+            "type": "worked-example",
+            "title": "Four independent events involving a source mark of 46"
+          }
         },
         {
           "syllabusId": "S6.02",
@@ -18715,13 +18736,30 @@
             "title": "Two independent protection targets"
           },
           "coreExplanation": [
-            "A system must remain available to authorised users and must execute trusted operations. Malware, stolen credentials or damaged hardware can disrupt processing or expose data even when a separate file copy has been protected.",
-            "Data also needs protection wherever copies are stored or transferred. A secured computer cannot prevent disclosure from an unencrypted removable drive that has already been lost. Combine system controls with protection of the data and recoverable copies."
+            "Protect every relevant data copy and the computer system that processes it.",
+            "Confidentiality, a functioning service and recoverable data require complementary measures."
+          ],
+          "teachingBlocks": [
+            {
+              "type": "paragraph",
+              "text": "Data is the information being protected; the computer system supplies the hardware, operating system and applications needed to use it. Protecting a file alone does not keep that processing environment trustworthy or available. Malware could stop an application, or misuse an already authenticated session to read data after the application decrypts it.",
+              "title": "Keep both protection targets in view"
+            },
+            {
+              "type": "paragraph",
+              "text": "Also follow the copies. A locked server room protects one physical location, not a readable export on a lost removable drive. Controls must suit data at rest, data in transit and data in use. These describe where or how the data is being handled, not three new encryption algorithms.",
+              "title": "Follow data beyond the original computer"
+            },
+            {
+              "type": "paragraph",
+              "text": "Recovery needs a usable copy and a functioning destination. A backup left on the failed disk may be unavailable with the working data. A tested separate backup can restore a chosen saved state, but not later changes it never captured. Lesson 029 teaches backup operation; here the point is why protection must include continued use and recovery.",
+              "title": "Explain why recovery belongs alongside prevention"
+            }
           ],
           "method": null,
           "workedExample": {
             "type": "worked-example",
-            "title": "A clinic cannot open its records"
+            "title": "Restore a clinic service from a stated recovery point"
           }
         }
       ],
@@ -18869,9 +18907,10 @@
           ],
           "materialTitles": [
             "Establish an identity before checking what that identity may do",
-            "Account login"
+            "Three independent requests for Marks.csv"
           ],
           "questionIds": [
+            "S6-L02-Q8",
             "S6-L02-Q1"
           ],
           "pastPaperAnalysis": [
@@ -18886,7 +18925,7 @@
           ],
           "materialTitles": [
             "Digital signature: sender and receiver",
-            "A signed purchase order changes"
+            "A purchase order, checked in the simplified digest model"
           ],
           "questionIds": [
             "S6-L02-Q2"
@@ -18902,7 +18941,8 @@
             "Biometric authentication"
           ],
           "materialTitles": [
-            "Capture and match a biometric"
+            "Capture and match a biometric",
+            "Check the system decision against the actual user"
           ],
           "questionIds": [
             "S6-L02-Q3"
@@ -18919,7 +18959,7 @@
           ],
           "materialTitles": [
             "Traffic decisions and firewall placement",
-            "Apply two traffic rules"
+            "Apply the policy, including a permitted unsafe download"
           ],
           "questionIds": [
             "S6-L02-Q4"
@@ -18935,7 +18975,8 @@
             "Anti-virus software"
           ],
           "materialTitles": [
-            "Respond to a suspicious executable"
+            "Respond to a suspicious executable",
+            "From a suspect executable to checked recovery"
           ],
           "questionIds": [
             "S6-L02-Q5"
@@ -18951,7 +18992,8 @@
             "Anti-spyware software"
           ],
           "materialTitles": [
-            "After detecting a keylogger"
+            "After detecting a keylogger",
+            "Use the timeline to choose the response"
           ],
           "questionIds": [
             "S6-L02-Q6"
@@ -18967,7 +19009,8 @@
             "Combine controls for different risks"
           ],
           "materialTitles": [
-            "A travelling employee's computer"
+            "A travelling employee's computer",
+            "Evaluate a travelling employee’s laptop"
           ],
           "questionIds": [
             "S6-L02-Q7"
@@ -18983,10 +19026,12 @@
             "Combine controls for different risks"
           ],
           "materialTitles": [
-            "A travelling employee's computer"
+            "A travelling employee's computer",
+            "Evaluate a travelling employee’s laptop"
           ],
           "questionIds": [
-            "S6-L02-Q7"
+            "S6-L02-Q7",
+            "S6-L02-Q8"
           ],
           "pastPaperAnalysis": [
             "Cambridge 9618/12 · May/June 2024 · 3(a)(i)"
@@ -19005,35 +19050,31 @@
             "title": "Establish an identity before checking what that identity may do"
           },
           "coreExplanation": [
-            "Account: Associates a distinct identity with permissions and an activity record. Separate accounts help attribute actions. Password: Secret knowledge used to authenticate that claimed identity against the stored verifier.",
-            "A successful login does not grant every permission. Hard-to-guess passwords and limits on repeated attempts reduce guessing, but a disclosed password can still be misused."
+            "An account identifies the claimed user; a password supplies secret evidence for authentication.",
+            "After authentication, check the requested resource and operation against access rights."
           ],
-          "coreBlocks": [
+          "teachingBlocks": [
             {
-              "type": "list",
-              "title": "Identity and permitted actions",
-              "items": [
-                [
-                  "Account",
-                  "Associates a distinct identity with permissions and an activity record. Separate accounts help attribute actions."
-                ],
-                [
-                  "Password",
-                  "Secret knowledge used to authenticate that claimed identity against the stored verifier."
-                ]
-              ]
+              "type": "paragraph",
+              "text": "A user account associates an identifier with permissions and recorded activity. At login the identifier selects the claimed identity; knowing the identifier alone does not prove that the person is its owner. Separate staff accounts make it possible to associate actions with distinct identities instead of one shared label.",
+              "title": "Claim an identity, then supply evidence"
             },
             {
               "type": "paragraph",
-              "text": "A successful login does not grant every permission. Hard-to-guess passwords and limits on repeated attempts reduce guessing, but a disclosed password can still be misused.",
-              "title": "Authenticate, then authorise"
+              "text": "A password is secret knowledge. The system checks the supplied password against the stored verifier for that account and accepts or rejects the login. The verifier is information used to check the secret; it need not be a readable stored copy of the password. Hard-to-guess passwords and restrictions on repeated attempts reduce guessing, while a disclosed password can still be used by an impostor.",
+              "title": "Explain what the password check establishes"
+            },
+            {
+              "type": "paragraph",
+              "text": "Authentication evaluates the identity claim. Authorisation checks whether that identity may perform a particular operation on a resource. A valid login can therefore lead to a denied deletion. Lesson 028 introduced this OS service; Lesson 036 develops the data-permission decisions. An activity log records the account used, not infallible proof of which human used stolen credentials.",
+              "title": "Do not stop at successful login"
             }
           ],
-          "method": {
-            "type": "flow",
-            "title": "Account login"
-          },
-          "workedExample": null
+          "method": null,
+          "workedExample": {
+            "type": "worked-example",
+            "title": "Three independent requests for Marks.csv"
+          }
         },
         {
           "syllabusId": "S6.03",
@@ -19046,31 +19087,57 @@
             "title": "Digital signature: sender and receiver"
           },
           "coreExplanation": [
-            "The sender applies a hash algorithm to a message to produce a digest, then signs that digest using the sender's private key. In the simplified signing model, this is described as encrypting the digest. The sender sends the message together with the digital signature.",
-            "The receiver uses the sender's public key to verify the signature; in the simplified model, decrypting the signature recovers the sender's digest. The receiver also hashes the received message with the same algorithm and compares the digests. A match supports the claimed origin and shows that the signed content has not changed, provided the public key is correctly associated with the sender.",
-            "A digital signature does not make the message unreadable. Confidentiality requires encryption separately. Signing the digest must not be confused with sending the private key or merely appending an unprotected checksum."
+            "Hash the message and sign using the sender’s private key; send the message and signature together.",
+            "The receiver checks with the sender’s trusted public key and the received message. A valid signature supports origin and unchanged signed content, not secrecy."
           ],
-          "coreBlocks": [
+          "teachingBlocks": [
             {
               "type": "paragraph",
-              "text": "The sender applies a hash algorithm to a message to produce a digest, then signs that digest using the sender's private key. In the simplified signing model, this is described as encrypting the digest. The sender sends the message together with the digital signature.",
-              "title": "Sender: hash and sign"
+              "text": "A hash algorithm produces a digest, a short fixed-length value derived from a message. The same message and algorithm give the same digest. A cryptographic hash is designed to make finding different messages with the same digest infeasible in practice; it is not a reversible encryption of the message. The fingerprint icon in the visual is an analogy for a message digest, not a scan of the sender's finger.",
+              "title": "First understand the digest"
             },
             {
               "type": "paragraph",
-              "text": "The receiver uses the sender's public key to verify the signature; in the simplified model, decrypting the signature recovers the sender's digest. The receiver also hashes the received message with the same algorithm and compares the digests. A match supports the claimed origin and shows that the signed content has not changed, provided the public key is correctly associated with the sender.",
-              "title": "Receiver: verify and compare"
+              "text": "The signer keeps a private key secret and makes the corresponding public key available for verification. These keys have different roles: the public key does not give its holder the ability to create that signer's valid signature. Before trusting the claimed origin, the receiver must have a reliable association between the public key and the sender. A public key supplied by an unknown impostor does not establish that association.",
+              "title": "Know which key belongs to whom"
+            },
+            {
+              "type": "steps",
+              "title": "Create, send and check the signed message",
+              "items": [
+                [
+                  "Sender calculates",
+                  "Apply the chosen hash algorithm to the exact message to obtain its digest."
+                ],
+                [
+                  "Sender signs",
+                  "Use the private key to create a signature tied to the digest. Send the message and signature; retain the private key."
+                ],
+                [
+                  "Receiver calculates",
+                  "Hash the received message with the same algorithm."
+                ],
+                [
+                  "Receiver verifies",
+                  "Use the trusted sender public key to verify the signature against the digest of the received message. Accept the signature only when verification succeeds."
+                ]
+              ]
             },
             {
               "type": "paragraph",
-              "text": "A digital signature does not make the message unreadable. Confidentiality requires encryption separately. Signing the digest must not be confused with sending the private key or merely appending an unprotected checksum.",
-              "title": "Integrity is separate from confidentiality"
+              "text": "A simplified teaching model describes signing as encrypting the digest with the private key and checking as recovering it with the public key for comparison. Actual signature algorithms differ; some verify without recovering a digest from the signature. The invariant is a check of the signature, key and received message. H(M), h1 and h2 below denote supplied conceptual values, not computed outputs of a specified cryptographic implementation.",
+              "title": "Interpret the simplified comparison model"
+            },
+            {
+              "type": "paragraph",
+              "text": "A valid signature does not conceal the accompanying plaintext, prove the sender's statements true, or compensate for a stolen signing key. An attacker can edit a message while leaving its signature bytes unchanged; the verification then fails for the altered content. Hashing alone cannot establish origin because an attacker could replace an unprotected message and its plain digest together.",
+              "title": "State what the evidence supports"
             }
           ],
           "method": null,
           "workedExample": {
             "type": "worked-example",
-            "title": "A signed purchase order changes"
+            "title": "A purchase order, checked in the simplified digest model"
           }
         },
         {
@@ -19084,11 +19151,48 @@
             "title": "Capture and match a biometric"
           },
           "coreExplanation": [
-            "Biometrics use a physical or behavioural feature, such as a fingerprint, iris, voice or typing pattern. A sensor captures the feature and software extracts a template that is compared with an enrolled reference.",
-            "A sufficient match authenticates the identity claim. False acceptance can admit an impostor, while false rejection can deny a legitimate user. Sensors and protected templates are needed, and a compromised biological feature cannot be replaced as easily as a password."
+            "Enrol a reference template, then compare features from a new capture with it.",
+            "False acceptance admits an impostor; false rejection denies a legitimate user. A match does not grant every access right."
+          ],
+          "teachingBlocks": [
+            {
+              "type": "paragraph",
+              "text": "Biometrics use a physical or behavioural feature, such as a fingerprint, iris, voice or typing pattern, as identity evidence. The sensor captures a feature and software derives a template containing information useful for matching. This need not be a raw photograph of the feature.",
+              "title": "From a feature to a reference"
+            },
+            {
+              "type": "steps",
+              "title": "Separate enrolment from later authentication",
+              "items": [
+                [
+                  "Enrol",
+                  "Register the legitimate user under the correct account, capture suitable samples and store a protected reference template."
+                ],
+                [
+                  "Capture again",
+                  "At a later login, capture the claimed user’s feature and extract a new comparison template."
+                ],
+                [
+                  "Compare",
+                  "Compare the new features with the enrolled reference and apply the system’s match requirement."
+                ],
+                [
+                  "Decide",
+                  "Accept a sufficient match or reject/request a supported retry. If authenticated, still apply the resource permissions."
+                ]
+              ]
+            },
+            {
+              "type": "paragraph",
+              "text": "Two scans need not be pixel-for-pixel identical: lighting, finger placement, noise or illness can change the capture. A false rejection occurs when the legitimate user is rejected; a false acceptance occurs when an impostor is accepted. Sensors, protected templates and an appropriate recovery method are needed. A compromised biological feature is harder to replace than a password.",
+              "title": "Explain both kinds of wrong decision"
+            }
           ],
           "method": null,
-          "workedExample": null
+          "workedExample": {
+            "type": "worked-example",
+            "title": "Check the system decision against the actual user"
+          }
         },
         {
           "syllabusId": "S6.03",
@@ -19101,13 +19205,66 @@
             "title": "Traffic decisions and firewall placement"
           },
           "coreExplanation": [
-            "A firewall checks incoming and outgoing traffic against configured rules, for example rules about addresses, ports, protocols or connection state. It allows permitted traffic and blocks disallowed traffic; it may also log decisions.",
-            "A host firewall runs on one computer. A network firewall filters traffic passing through a network boundary. Neither arrangement guarantees that all harmful content is detected: permitted traffic can still carry a deceptive message or malicious download, and poorly chosen rules can leave unwanted access open."
+            "A firewall allows or blocks traffic by configured rules on the paths it controls.",
+            "Host and network firewalls differ in placement; permitted connections may still carry harmful content."
+          ],
+          "teachingBlocks": [
+            {
+              "type": "paragraph",
+              "text": "A firewall checks traffic against a policy, using properties such as addresses, direction, protocol, port or connection state. A port identifies a service endpoint, not a physical cable socket. The firewall permits or blocks the traffic and may record the decision. It does not decide solely from the name of the sender or from whether a packet is described as dangerous.",
+              "title": "Connect a rule to observable traffic properties"
+            },
+            {
+              "type": "paragraph",
+              "text": "A host firewall protects one computer's traffic. A network firewall filters the traffic routed through a boundary, for example between a LAN and the internet. Internal traffic that stays within the LAN need not cross that boundary. The protection therefore depends on placement as well as configuration; the device cannot filter a path that bypasses it.",
+              "title": "Follow the actual path"
+            },
+            {
+              "type": "paragraph",
+              "text": "For the classroom policy below, use the first matching rule and stop; the final rule denies everything else. This is a stated simplified policy, not universal default behaviour. Rule 1 permits traffic recognised as part of a previously allowed connection. Rules 2 and 3 distinguish new inbound and outbound connections.",
+              "title": "Apply a complete policy"
+            },
+            {
+              "type": "table",
+              "title": "Policy for the worked traffic trace",
+              "headers": [
+                "Order",
+                "Condition",
+                "Decision"
+              ],
+              "rows": [
+                [
+                  "1",
+                  "Traffic belongs to an already permitted connection",
+                  "Allow"
+                ],
+                [
+                  "2",
+                  "New inbound TCP connection to the public web server, destination port 443",
+                  "Allow"
+                ],
+                [
+                  "3",
+                  "New outbound TCP connection to destination port 443",
+                  "Allow"
+                ],
+                [
+                  "4",
+                  "Anything not matched above",
+                  "Deny"
+                ]
+              ]
+            },
+            {
+              "type": "paragraph",
+              "text": "An allowed connection can carry a deceptive message or an infected download. Content checking, authentication, patching and user decisions still have separate jobs. Conversely, an overly restrictive rule can block legitimate work. Explain both the chosen rule and its consequence for the stated traffic.",
+              "title": "Separate connection permission from content trust"
+            }
           ],
           "method": null,
           "workedExample": {
             "type": "worked-example",
-            "title": "Apply two traffic rules"
+            "title": "Apply the policy, including a permitted unsafe download"
           }
         },
         {
@@ -19121,11 +19278,31 @@
             "title": "Respond to a suspicious executable"
           },
           "coreExplanation": [
-            "Anti-virus software scans files, memory or activity for known virus signatures and suspicious behaviour. On detection it can block execution, isolate a file in quarantine, or remove the malicious code.",
-            "Detection information must be updated as new threats are identified. Quarantine prevents normal use of a suspicious file while preserving it for review. New or concealed malware may escape detection, so a successful scan does not prove that every file is safe."
+            "Scan for recognised virus patterns or suspicious behaviour; block, quarantine, remove or repair detected infection as supported.",
+            "Update detection information. A clean scan is evidence of no detection, not proof of no malware."
+          ],
+          "teachingBlocks": [
+            {
+              "type": "paragraph",
+              "text": "A virus is malicious code that infects a host file or program and can replicate when that host executes. Anti-virus software checks files, memory or activity for known patterns and suspicious behaviour. A virus signature here means a detection pattern; it is different from a digital signature used to authenticate a message.",
+              "title": "Explain what is being detected"
+            },
+            {
+              "type": "paragraph",
+              "text": "A detected file can be prevented from executing, isolated in quarantine, removed, or repaired where the tool supports it. Quarantine preserves a restricted copy for investigation instead of letting it run normally. The choice depends on the detected object and tool; removal of an infected file may also remove useful content that needs restoring.",
+              "title": "Follow detection through to a usable system"
+            },
+            {
+              "type": "paragraph",
+              "text": "Updates add or improve detection knowledge as threats become known. New, concealed or modified malware can evade existing checks, and a benign file can be flagged incorrectly. Inspect the result and use trusted recovery copies where necessary. Lesson 029 introduced the utility; Lesson 035 follows the infection route that it helps interrupt.",
+              "title": "Explain the limits of the result"
+            }
           ],
           "method": null,
-          "workedExample": null
+          "workedExample": {
+            "type": "worked-example",
+            "title": "From a suspect executable to checked recovery"
+          }
         },
         {
           "syllabusId": "S6.03",
@@ -19138,11 +19315,31 @@
             "title": "After detecting a keylogger"
           },
           "coreExplanation": [
-            "Anti-spyware looks for software that covertly monitors activity or collects information. It can detect a monitoring component, stop it, quarantine it or remove it. Detection may be included within a broader anti-malware product.",
-            "Removing spyware reduces further collection but cannot retrieve information already sent to a third party. Exposed credentials may need replacing, and the entry route should be addressed to reduce reinfection."
+            "Anti-spyware detects and stops, isolates or removes covert monitoring components.",
+            "Removal cannot retrieve information already disclosed; address exposed credentials and the entry route as well."
+          ],
+          "teachingBlocks": [
+            {
+              "type": "paragraph",
+              "text": "Spyware covertly monitors activity or collects information, for example by recording keystrokes or the screen. Anti-spyware looks for recognised components and suspicious monitoring behaviour. It may be part of a broader anti-malware product, so two named functions do not necessarily require two separate installed products.",
+              "title": "Match the function to covert collection"
+            },
+            {
+              "type": "paragraph",
+              "text": "Detection can lead to blocking, quarantine or removal. Keep detection information current because newly identified components may not match older rules. Removing a detected keylogger interrupts its future collection, but a remote recipient can retain logs it already received.",
+              "title": "Distinguish the local component from disclosed information"
+            },
+            {
+              "type": "paragraph",
+              "text": "After exposed credentials are identified, replace them using a trusted device and repair the installation route, such as an unauthorised download. Changing a password on a still-monitored device can reveal the new value too. This explains the order of response, not a promise that one tool reverses every consequence.",
+              "title": "Resolve the remaining consequence"
+            }
           ],
           "method": null,
-          "workedExample": null
+          "workedExample": {
+            "type": "worked-example",
+            "title": "Use the timeline to choose the response"
+          }
         },
         {
           "syllabusId": "S6.03",
@@ -19156,26 +19353,46 @@
             "title": "A travelling employee's computer"
           },
           "coreExplanation": [
-            "Encryption changes readable plaintext into ciphertext using an algorithm and key. It protects the confidentiality of stored or intercepted copies; the authorised application needs the correct key to recover readable data.",
-            "Choose controls by mechanism. Login authentication checks identity, a firewall filters connections, anti-malware addresses malicious software, and encryption protects content outside normal access paths. Combining these controls reduces different risks without assuming that any one control replaces the others."
+            "Select controls from the threat route and the property needing protection.",
+            "Authentication, traffic filtering, malware detection, encryption and recovery perform complementary jobs."
+          ],
+          "teachingBlocks": [
+            {
+              "type": "paragraph",
+              "text": "Encryption transforms plaintext into ciphertext using an algorithm and key. An application with the required decryption key can recover the readable contents. This protects a stolen or intercepted copy from a person without the key; Lesson 036 develops the data transformation and key-protection requirements.",
+              "title": "Introduce the confidentiality layer"
+            },
+            {
+              "type": "paragraph",
+              "text": "Start a recommendation with the exposure: a guessed password calls for stronger authentication, disallowed traffic for a filtering policy, and infected code for detection and containment. A list of product names does not show that the mechanisms fit. State what each control checks or changes and how that reduces the stated risk.",
+              "title": "Choose a mechanism for each risk"
+            },
+            {
+              "type": "paragraph",
+              "text": "Layering combines measures that address different routes or consequences. If malware executes in a user's unlocked session, encryption of the disk alone may not stop access to data that the application has already decrypted. Recovery adds a way to regain a usable saved state when prevention fails; it does not prevent disclosure that has already happened.",
+              "title": "Test the combination against a changed condition"
+            }
           ],
           "method": null,
-          "workedExample": null
+          "workedExample": {
+            "type": "worked-example",
+            "title": "Evaluate a travelling employee’s laptop"
+          }
         }
       ],
       "practice": [
         {
           "id": "S6-L02-Q2",
           "commandWord": "Describe",
-          "marks": 6,
+          "marks": 5,
           "objectiveIds": [
             "S6.03.A02"
           ]
         },
         {
           "id": "S6-L02-Q3",
-          "commandWord": "Explain",
-          "marks": 3,
+          "commandWord": "Describe",
+          "marks": 4,
           "objectiveIds": [
             "S6.03.A03"
           ]
@@ -19183,7 +19400,7 @@
         {
           "id": "S6-L02-Q4",
           "commandWord": "Describe",
-          "marks": 3,
+          "marks": 4,
           "objectiveIds": [
             "S6.03.A04"
           ]
@@ -19212,6 +19429,15 @@
             "S6.03.A07",
             "S6.03.A08"
           ]
+        },
+        {
+          "id": "S6-L02-Q8",
+          "commandWord": "Describe",
+          "marks": 4,
+          "objectiveIds": [
+            "S6.03.A01",
+            "S6.03.A08"
+          ]
         }
       ],
       "optionalPractice": [
@@ -19224,7 +19450,7 @@
           ]
         }
       ],
-      "practiceTiming": "22–28",
+      "practiceTiming": "28–36",
       "examTiming": "6–9",
       "reviewMenu": false,
       "examConnection": null,
@@ -19323,7 +19549,7 @@
           ],
           "materialTitles": [
             "An infected host can carry replication to other files",
-            "Follow an infected host"
+            "Follow one infected shared program"
           ],
           "questionIds": [
             "S6-L03-Q1"
@@ -19339,7 +19565,8 @@
             "Spyware monitors and discloses"
           ],
           "materialTitles": [
-            "The collection and disclosure route"
+            "Trace a captured password to its recipient",
+            "A local keylogger affects a separate email service"
           ],
           "questionIds": [
             "S6-L03-Q2"
@@ -19355,7 +19582,8 @@
             "Unauthorised access by hackers"
           ],
           "materialTitles": [
-            "Entry route and consequence"
+            "Entry route and consequence",
+            "A receptionist account is impersonated"
           ],
           "questionIds": [
             "S6-L03-Q3"
@@ -19372,8 +19600,7 @@
           ],
           "materialTitles": [
             "Phishing succeeds by persuading a person to act",
-            "A deceptive sign-in request",
-            "Verify a payment change"
+            "Two outcomes for the same support message"
           ],
           "questionIds": [
             "S6-L03-Q4"
@@ -19389,7 +19616,8 @@
             "Pharming changes the destination"
           ],
           "materialTitles": [
-            "Pharming can redirect a correctly typed address"
+            "Two routes to an imitation page",
+            "The correctly typed payroll address"
           ],
           "questionIds": [
             "S6-L03-Q5"
@@ -19405,7 +19633,8 @@
             "Match precautions to the threat"
           ],
           "materialTitles": [
-            "Choose from the mechanism"
+            "Choose from the mechanism",
+            "Change the risk, then change the response"
           ],
           "questionIds": [
             "S6-L03-Q3",
@@ -19428,39 +19657,31 @@
             "title": "An infected host can carry replication to other files"
           },
           "coreExplanation": [
-            "Attach: Virus code attaches to or modifies a host file or program. Execute: Running the infected host can run the virus. Replicate: The virus can infect further files; a payload may corrupt, delete or disrupt data.",
-            "Shared files, networks and downloaded attachments can carry infected hosts to another computer. Avoid executing untrusted files and maintain detection software to reduce the risk."
+            "A virus infects a host file or program; executing the infected host can run the viral code and spread infection.",
+            "Explain arrival, execution, replication and possible damage separately."
           ],
-          "coreBlocks": [
+          "teachingBlocks": [
             {
-              "type": "steps",
-              "title": "Trace host-based replication",
-              "items": [
-                [
-                  "Attach",
-                  "Virus code attaches to or modifies a host file or program."
-                ],
-                [
-                  "Execute",
-                  "Running the infected host can run the virus."
-                ],
-                [
-                  "Replicate",
-                  "The virus can infect further files; a payload may corrupt, delete or disrupt data."
-                ]
-              ]
+              "type": "paragraph",
+              "text": "A virus attaches to or modifies a host file or program. A shared or downloaded infected host provides a route to another computer, but the arrival of the file and the execution of its code are different events. In the executable-host model used here, running the infected program runs the attached code.",
+              "title": "Identify the host and activation event"
             },
             {
               "type": "paragraph",
-              "text": "Shared files, networks and downloaded attachments can carry infected hosts to another computer. Avoid executing untrusted files and maintain detection software to reduce the risk.",
-              "title": "Control the route into execution"
+              "text": "The virus can copy its code into additional hosts, creating further opportunities to execute and spread. Its payload may alter or delete data or disrupt normal processing. Replication describes how it spreads; the payload describes harmful actions it performs. A virus need not immediately erase every file to count as an infection.",
+              "title": "Separate spread from impact"
+            },
+            {
+              "type": "paragraph",
+              "text": "Avoiding untrusted execution and controlling software installation reduce opportunities for the code to run. Updated anti-virus can detect and isolate recognised infection; a trusted backup may support recovery after damage. None of these precautions can be justified merely by saying that it makes the computer safe: identify the stage it interrupts.",
+              "title": "Explain the link to a precaution"
             }
           ],
-          "method": {
-            "type": "flow",
-            "title": "Follow an infected host"
-          },
-          "workedExample": null
+          "method": null,
+          "workedExample": {
+            "type": "worked-example",
+            "title": "Follow one infected shared program"
+          }
         },
         {
           "syllabusId": "S6.04",
@@ -19470,14 +19691,34 @@
           ],
           "leadVisual": {
             "type": "reviewed-visual",
-            "title": "The collection and disclosure route"
+            "title": "Trace a captured password to its recipient"
           },
           "coreExplanation": [
-            "Spyware covertly monitors activity or collects data, for example by logging keystrokes or recording the screen. Collected information may be sent to a third party, exposing private details or credentials.",
-            "Its defining feature is covert collection, not necessarily self-replication. Anti-spyware can address the installed component, while controlled installation and caution with downloads reduce entry opportunities."
+            "Spyware secretly collects activity or information and may disclose it to a third party.",
+            "Covert collection, not self-replication, defines the behaviour; one program can have several malicious behaviours."
+          ],
+          "teachingBlocks": [
+            {
+              "type": "paragraph",
+              "text": "Spyware can log keystrokes, record the screen or collect browsing activity without the user's informed awareness. Identify what is collected: a typed password, a visible customer record, or activity history. Merely saying that information is stolen omits the mechanism. Not every openly declared monitoring or analytics function is automatically spyware.",
+              "title": "Name the captured information"
+            },
+            {
+              "type": "paragraph",
+              "text": "A monitoring component can store a log and send it to a third party. A keylogger may therefore expose credentials for another service, even though the spyware is installed on the local computer. The recipient can try to impersonate the user. Removing the local component does not erase that separate log.",
+              "title": "Follow collection into disclosure"
+            },
+            {
+              "type": "paragraph",
+              "text": "Spyware need not infect other executable hosts. A single program can both replicate like a virus and collect secrets like spyware; classify the behaviours rather than forcing a mutually exclusive label. Controlled installation reduces entry, and anti-spyware addresses detected monitoring components. L034 explains the response after exposure.",
+              "title": "Use behaviour to distinguish threats"
+            }
           ],
           "method": null,
-          "workedExample": null
+          "workedExample": {
+            "type": "worked-example",
+            "title": "A local keylogger affects a separate email service"
+          }
         },
         {
           "syllabusId": "S6.04",
@@ -19490,11 +19731,31 @@
             "title": "Entry route and consequence"
           },
           "coreExplanation": [
-            "In this security context, a hacker gains or attempts unauthorised access to a system or its data. Weak credentials, exposed services or unpatched vulnerabilities can provide an entry route.",
-            "The resulting access may permit disclosure, alteration or disruption. Strong authentication reduces impersonation, software patches address known vulnerabilities, and access rights limit what a compromised account can do."
+            "Unauthorised access may exploit stolen or guessed credentials, exposed services or software flaws.",
+            "Match authentication, patches and restricted permissions to the relevant route or consequence."
+          ],
+          "teachingBlocks": [
+            {
+              "type": "paragraph",
+              "text": "In this syllabus security context, hackers attempt or gain unauthorised access to systems or data. Access is unauthorised because the person lacks legitimate permission, even if the system accepts a guessed or stolen password. The label refers here to an access threat rather than every possible use of the word hacker.",
+              "title": "Separate accepted credentials from legitimate permission"
+            },
+            {
+              "type": "paragraph",
+              "text": "A weak password permits guessing; a disclosed password permits impersonation; an unpatched vulnerability can allow unintended actions through a software flaw. These are different entry routes. Replacing a password does not repair a vulnerable service, and a patch does not automatically invalidate a previously stolen credential.",
+              "title": "Diagnose the entry route"
+            },
+            {
+              "type": "paragraph",
+              "text": "After access, permissions determine which records and operations the compromised account can reach. Least privilege limits unnecessary access but does not make the intrusion legitimate. Restrict exposed services, apply relevant patches and strengthen authentication according to the stated cause. Record the remaining risk instead of claiming complete prevention.",
+              "title": "Distinguish preventing access from limiting its impact"
+            }
           ],
           "method": null,
-          "workedExample": null
+          "workedExample": {
+            "type": "worked-example",
+            "title": "A receptionist account is impersonated"
+          }
         },
         {
           "syllabusId": "S6.04",
@@ -19507,41 +19768,30 @@
             "title": "Phishing succeeds by persuading a person to act"
           },
           "coreExplanation": [
-            "Impersonation: A message claims to come from a trusted person or organisation. Unsafe action: Urgency or a pretext encourages disclosure, a link click or another unsafe action. Credential capture: A linked fake sign-in page can collect the supplied password.",
-            "Verify a request through an independently obtained contact or known website. Filtering and training reduce exposure. Multi-factor authentication can reduce the impact of a stolen password, but does not make every deceptive request harmless."
+            "A phishing communication impersonates a trusted source and induces disclosure or an unsafe action.",
+            "Verify the request using independently known contact details or a known service, not the message’s supplied route."
           ],
-          "coreBlocks": [
+          "teachingBlocks": [
             {
-              "type": "steps",
-              "title": "Recognise the persuasion mechanism",
-              "items": [
-                [
-                  "Impersonation",
-                  "A message claims to come from a trusted person or organisation."
-                ],
-                [
-                  "Unsafe action",
-                  "Urgency or a pretext encourages disclosure, a link click or another unsafe action."
-                ],
-                [
-                  "Credential capture",
-                  "A linked fake sign-in page can collect the supplied password."
-                ]
-              ]
+              "type": "paragraph",
+              "text": "Phishing uses a deceptive email, text message or other communication to impersonate a trusted person or organisation. Urgency, a familiar logo and a plausible sender name can persuade the recipient to disclose private information or act unsafely. The message may direct the user to a copied sign-in page, but installing malware is not necessary for credential theft.",
+              "title": "Explain persuasion and the requested action"
             },
             {
               "type": "paragraph",
-              "text": "Verify a request through an independently obtained contact or known website. Filtering and training reduce exposure. Multi-factor authentication can reduce the impact of a stolen password, but does not make every deceptive request harmless.",
-              "title": "Check independently"
+              "text": "Trace where the action sends information. If a user submits credentials to an attacker-controlled form, they reach the attacker rather than the intended service. If the message requests a payment change, the harm can result from following that instruction even without a fake login page. Describe the stated route instead of assuming every phishing attempt works identically.",
+              "title": "Follow the information or instruction"
+            },
+            {
+              "type": "paragraph",
+              "text": "Use an independently known address or trusted contact record to verify the request. A phone number or reply address inside the suspicious message may also belong to the attacker. Filtering and training reduce exposure, and an additional authentication factor can reduce some consequences of a stolen password; it does not make every deceptive instruction harmless.",
+              "title": "Explain why the independent channel matters"
             }
           ],
-          "method": {
-            "type": "flow",
-            "title": "A deceptive sign-in request"
-          },
+          "method": null,
           "workedExample": {
             "type": "worked-example",
-            "title": "Verify a payment change"
+            "title": "Two outcomes for the same support message"
           }
         },
         {
@@ -19552,39 +19802,34 @@
           ],
           "leadVisual": {
             "type": "reviewed-visual",
-            "title": "Pharming can redirect a correctly typed address"
+            "title": "Two routes to an imitation page"
           },
           "coreExplanation": [
-            "Correct entry: The user may type the intended address correctly. Corrupted resolution: DNS or local name-resolution information redirects the lookup. Fraudulent site: The resulting destination belongs to the attacker rather than the intended service.",
-            "Protect name-resolution settings, update affected software and investigate certificate or hostname warnings. An HTTPS indicator alone does not prove legitimacy; check the intended destination and do not ignore a certificate mismatch."
+            "Pharming redirects a user to a fraudulent destination, for example through corrupted DNS or local name-resolution information.",
+            "A correctly typed name can still be misdirected; protect resolution settings and investigate certificate or hostname warnings."
           ],
-          "coreBlocks": [
+          "teachingBlocks": [
             {
-              "type": "steps",
-              "title": "Trace the changed destination",
-              "items": [
-                [
-                  "Correct entry",
-                  "The user may type the intended address correctly."
-                ],
-                [
-                  "Corrupted resolution",
-                  "DNS or local name-resolution information redirects the lookup."
-                ],
-                [
-                  "Fraudulent site",
-                  "The resulting destination belongs to the attacker rather than the intended service."
-                ]
-              ]
+              "type": "paragraph",
+              "text": "Normally the browser needs an address for the intended domain name before contacting its server. Lesson 014 separates DNS name resolution from the later web request. Pharming manipulates the destination, for example by corrupting a DNS record or local name-resolution entry, so the intended name leads to an attacker-controlled server.",
+              "title": "Recall the normal resolution step"
             },
             {
               "type": "paragraph",
-              "text": "Protect name-resolution settings, update affected software and investigate certificate or hostname warnings. An HTTPS indicator alone does not prove legitimacy; check the intended destination and do not ignore a certificate mismatch.",
-              "title": "Address the redirection"
+              "text": "The user may type the correct name and receive a convincing imitation page. Unlike the phishing route taught alongside it, no deceptive link is needed to start this redirection. Merely advising the user to type the address does not repair a corrupted mapping. The two routes can also be combined in a wider attack.",
+              "title": "Locate the change before the page is returned"
+            },
+            {
+              "type": "paragraph",
+              "text": "Restrict unauthorised changes to resolution settings, maintain relevant software and investigate unexpected certificate or hostname warnings. An HTTPS indicator describes an encrypted connection and its certificate context, not a guarantee that every site or request is honest. Certificate acquisition and TLS protocol details are outside this AS explanation.",
+              "title": "Match the precaution to the destination problem"
             }
           ],
           "method": null,
-          "workedExample": null
+          "workedExample": {
+            "type": "worked-example",
+            "title": "The correctly typed payroll address"
+          }
         },
         {
           "syllabusId": "S6.05",
@@ -19597,11 +19842,52 @@
             "title": "Choose from the mechanism"
           },
           "coreExplanation": [
-            "A useful precaution interrupts a specific route or reduces a specific consequence. Explain that link: patching repairs a known software weakness, permission restrictions reduce exposure, and independent verification challenges a deceptive request.",
-            "Controls reduce risk rather than eliminate every possible incident. Combining prevention, detection and recovery allows a response when one measure fails. Choose controls appropriate to the system and explain what remains outside each control's role."
+            "A justified precaution interrupts a threat route or reduces a specified consequence.",
+            "Combine prevention, detection and recovery; state what each measure does and what remains."
+          ],
+          "teachingBlocks": [
+            {
+              "type": "paragraph",
+              "text": "Start with the mechanism rather than a product. Ask what permits entry, what the attacker or code then does, and which data or service is affected. Map a control to that stage: patches repair known flaws, limited installation reduces unapproved execution, and independent confirmation challenges a deceptive request.",
+              "title": "Build a reasoned recommendation"
+            },
+            {
+              "type": "table",
+              "title": "Different purposes in a response",
+              "headers": [
+                "Purpose",
+                "Example",
+                "Important limit"
+              ],
+              "rows": [
+                [
+                  "Prevention",
+                  "Restrict new software installation or unnecessary access.",
+                  "A permitted program or compromised account may still be misused."
+                ],
+                [
+                  "Detection and containment",
+                  "Identify and quarantine recognised malicious code.",
+                  "Unknown threats may escape detection; earlier damage may remain."
+                ],
+                [
+                  "Recovery",
+                  "Restore a trusted saved state to a usable system.",
+                  "The backup cannot prevent prior disclosure or recover changes it never captured."
+                ]
+              ]
+            },
+            {
+              "type": "paragraph",
+              "text": "Physical protection, staff procedures and technical controls can complement each other. For a lost drive, restricting server permissions is insufficient for a readable independent copy; encryption and key protection fit that exposure. For a fake payment request, an encrypted disk does not authenticate the instruction. Reconsider the recommendation when the scenario changes.",
+              "title": "Test whether the proposed control reaches the risk"
+            }
           ],
           "method": null,
-          "workedExample": null
+          "workedExample": {
+            "type": "worked-example",
+            "title": "Change the risk, then change the response"
+          }
         }
       ],
       "practice": [
@@ -19754,7 +20040,7 @@
           ],
           "materialTitles": [
             "From readable data to a protected copy",
-            "An encrypted archive on a lost drive"
+            "A protected archive: normal delivery and loss"
           ],
           "questionIds": [
             "S6-L04-Q2",
@@ -19772,11 +20058,12 @@
           ],
           "materialTitles": [
             "Personnel-file permissions",
-            "Evaluate three requests"
+            "Interpret the denied operation and the independent copy"
           ],
           "questionIds": [
             "S6-L04-Q3",
-            "S6-L04-Q4"
+            "S6-L04-Q4",
+            "S6-L04-Q5"
           ],
           "pastPaperAnalysis": [
             "Cambridge 9618/12 · May/June 2024 · 3(a)(ii)"
@@ -19795,13 +20082,65 @@
             "title": "From readable data to a protected copy"
           },
           "coreExplanation": [
-            "Encryption applies an algorithm and key to plaintext, producing ciphertext. Decryption applies the corresponding algorithm and correct key to recover the original readable information. An intercepted or stolen encrypted copy should be unintelligible to someone without the required key.",
-            "Protect the key separately from the encrypted copy. Encryption does not decide which logged-in user may edit a record, prevent deletion of ciphertext, or prove that the source data was true. Its main role here is confidentiality."
+            "Encryption transforms plaintext into ciphertext; the correct decryption method and key recover the plaintext.",
+            "Protect the key as well as the copy. Encryption alone does not prevent deletion, control every authorised action or prove source truth."
+          ],
+          "teachingBlocks": [
+            {
+              "type": "paragraph",
+              "text": "Plaintext is readable original data. Encryption applies an algorithm using a key to produce ciphertext. Decryption uses the corresponding method and required key to recover the original data. An intercepted or stolen encrypted copy should not reveal its readable content to someone without the required secret. Encryption does not prevent the copy from being intercepted.",
+              "title": "Follow both directions"
+            },
+            {
+              "type": "paragraph",
+              "text": "Protect the key separately from the exposed copy. An unprotected decryption key on the same lost drive can give the finder both ciphertext and the means to recover it. A legitimate recipient who has the key can read the sent content; possession of that key does not automatically grant permission to edit the original database.",
+              "title": "Separate the copy, the key and the service"
+            },
+            {
+              "type": "paragraph",
+              "text": "The small character example illustrates reversible transformation only. It uses uppercase letters A–Z, shifts forward by three for encryption and backward by three for decryption, wrapping at either end. Its rule is deliberately simple and is not a secure cipher for real records or an algorithm to memorise for this syllabus. Cryptographic key-system comparisons belong to later study.",
+              "title": "Use a fully specified teaching model"
+            },
+            {
+              "type": "table",
+              "title": "Complete the stated character transformation",
+              "headers": [
+                "Position",
+                "Plaintext",
+                "Forward shift by 3",
+                "Backward shift by 3"
+              ],
+              "rows": [
+                [
+                  "1",
+                  "Z",
+                  "C",
+                  "Z"
+                ],
+                [
+                  "2",
+                  "O",
+                  "R",
+                  "O"
+                ],
+                [
+                  "3",
+                  "O",
+                  "R",
+                  "O"
+                ]
+              ]
+            },
+            {
+              "type": "paragraph",
+              "text": "The model turns ZOO into CRR and restores ZOO with the inverse rule. It is not a hash: the purpose is recovery of the original. If ciphertext is erased, encryption cannot recreate it. If the original data is false, decrypting it faithfully restores the same false information. Keep confidentiality, availability and integrity judgements separate.",
+              "title": "Check the result and its limits"
+            }
           ],
           "method": null,
           "workedExample": {
             "type": "worked-example",
-            "title": "An encrypted archive on a lost drive"
+            "title": "A protected archive: normal delivery and loss"
           }
         },
         {
@@ -19815,13 +20154,96 @@
             "title": "Personnel-file permissions"
           },
           "coreExplanation": [
-            "Access rights associate users or roles with permitted actions on a resource. Read permits viewing, modify permits alteration, and delete permits removal. A service checks the requested operation against these permissions after identifying the user.",
-            "Least privilege gives a role only the rights needed for its work. Restricting read access supports confidentiality; restricting changes supports integrity. Rights on a server do not protect an unencrypted copy outside that server, and authorised users can still make mistakes."
+            "Access rights specify permitted operations for users or roles on particular resources.",
+            "Least privilege limits unnecessary actions; authenticated users can still be denied an operation or make an authorised mistake."
+          ],
+          "teachingBlocks": [
+            {
+              "type": "paragraph",
+              "text": "After identifying the user, the service checks the resource and requested operation against its permissions. Read permits viewing, modify permits changing existing data, and delete permits removing it. Other systems may distinguish creation or record-level permissions too; use the rights and resource scope actually stated in the problem.",
+              "title": "Evaluate a complete request"
+            },
+            {
+              "type": "paragraph",
+              "text": "A role groups users with similar responsibilities. Least privilege gives each role only the access needed for its work. A reviewer who checks marks can have read access without modification or deletion rights. Restricting reads supports confidentiality, while restricting updates reduces unauthorised alteration. Neither establishes that an allowed update is factually correct.",
+              "title": "Connect each right to its consequence"
+            },
+            {
+              "type": "table",
+              "title": "Teaching matrix: rights on one mark record",
+              "headers": [
+                "Role",
+                "Read",
+                "Modify",
+                "Delete"
+              ],
+              "rows": [
+                [
+                  "Teacher",
+                  "Allow",
+                  "Allow",
+                  "Deny"
+                ],
+                [
+                  "Reviewer",
+                  "Allow",
+                  "Deny",
+                  "Deny"
+                ],
+                [
+                  "Visitor",
+                  "Deny",
+                  "Deny",
+                  "Deny"
+                ]
+              ]
+            },
+            {
+              "type": "table",
+              "title": "Sequential operations; initial stored mark = 46",
+              "headers": [
+                "Request",
+                "Permission check",
+                "Visible result",
+                "Stored mark afterwards"
+              ],
+              "rows": [
+                [
+                  "Teacher reads mark",
+                  "Read allowed",
+                  "Returns 46",
+                  "46"
+                ],
+                [
+                  "Teacher changes mark to 48 after checking the source",
+                  "Modify allowed",
+                  "Update saved",
+                  "48"
+                ],
+                [
+                  "Reviewer requests deletion",
+                  "Delete denied",
+                  "Request rejected",
+                  "48"
+                ],
+                [
+                  "Visitor requests the controlled record",
+                  "Read denied",
+                  "No record returned",
+                  "48"
+                ]
+              ]
+            },
+            {
+              "type": "paragraph",
+              "text": "The previous operations concern a resource controlled by the service. If a readable copy has already been exported, an outsider may read it without consulting that service's matrix. Read-only access is not a promise that no external copy can be made. Protect disclosure and exported copies as well. Lesson 044 applies these principles to database users and groups.",
+              "title": "State the enforcement boundary"
+            }
           ],
           "method": null,
           "workedExample": {
             "type": "worked-example",
-            "title": "Evaluate three requests"
+            "title": "Interpret the denied operation and the independent copy"
           }
         }
       ],
@@ -19849,6 +20271,14 @@
           "objectiveIds": [
             "S6.06.A02"
           ]
+        },
+        {
+          "id": "S6-L04-Q5",
+          "commandWord": "State",
+          "marks": 5,
+          "objectiveIds": [
+            "S6.06.A02"
+          ]
         }
       ],
       "optionalPractice": [
@@ -19861,7 +20291,7 @@
           ]
         }
       ],
-      "practiceTiming": "11–15",
+      "practiceTiming": "17–23",
       "examTiming": "5–7",
       "reviewMenu": false,
       "examConnection": null,
@@ -19966,7 +20396,8 @@
             "Validation and verification answer different questions"
           ],
           "materialTitles": [
-            "A source mark of 46 is entered as 64"
+            "A source mark of 46 is entered as 64",
+            "Validate and verify a submitted mark"
           ],
           "questionIds": [
             "S6-L05-Q1"
@@ -19984,7 +20415,8 @@
             "Test an inclusive temperature range"
           ],
           "questionIds": [
-            "S6-L05-Q2"
+            "S6-L05-Q2",
+            "S6-L05-Q11"
           ],
           "pastPaperAnalysis": []
         },
@@ -19998,7 +20430,8 @@
             "Code rule: two uppercase letters, then four digits"
           ],
           "questionIds": [
-            "S6-L05-Q3"
+            "S6-L05-Q3",
+            "S6-L05-Q11"
           ],
           "pastPaperAnalysis": []
         },
@@ -20012,7 +20445,8 @@
             "Code rule: two uppercase letters, then four digits"
           ],
           "questionIds": [
-            "S6-L05-Q3"
+            "S6-L05-Q3",
+            "S6-L05-Q11"
           ],
           "pastPaperAnalysis": []
         },
@@ -20023,10 +20457,13 @@
             "Presence and existence checks"
           ],
           "materialTitles": [
-            "Stored customer IDs: C102, C107, C115"
+            "Stored customer IDs: C102, C107, C115",
+            "Apply all stated rules and finish the submission",
+            "Distinct failures under the supplied form rules"
           ],
           "questionIds": [
-            "S6-L05-Q4"
+            "S6-L05-Q4",
+            "S6-L05-Q11"
           ],
           "pastPaperAnalysis": []
         },
@@ -20037,10 +20474,13 @@
             "Presence and existence checks"
           ],
           "materialTitles": [
-            "Stored customer IDs: C102, C107, C115"
+            "Stored customer IDs: C102, C107, C115",
+            "Apply all stated rules and finish the submission",
+            "Distinct failures under the supplied form rules"
           ],
           "questionIds": [
-            "S6-L05-Q4"
+            "S6-L05-Q4",
+            "S6-L05-Q11"
           ],
           "pastPaperAnalysis": []
         },
@@ -20067,10 +20507,11 @@
           ],
           "materialTitles": [
             "Weighted check digit: a complete calculation",
-            "Verify a scanned code"
+            "Check the scanned identifier and resolve an error"
           ],
           "questionIds": [
-            "S6-L05-Q5"
+            "S6-L05-Q5",
+            "S6-L05-Q12"
           ],
           "pastPaperAnalysis": []
         },
@@ -20081,10 +20522,13 @@
             "Validation and verification answer different questions"
           ],
           "materialTitles": [
-            "A source mark of 46 is entered as 64"
+            "A source mark of 46 is entered as 64",
+            "Validate and verify a submitted mark"
           ],
           "questionIds": [
-            "S6-L05-Q1"
+            "S6-L05-Q1",
+            "S6-L05-Q11",
+            "S6-L05-Q12"
           ],
           "pastPaperAnalysis": []
         },
@@ -20096,10 +20540,12 @@
           ],
           "materialTitles": [
             "Source code: BK209",
-            "Resolve a double-entry mismatch"
+            "Resolve a double-entry disagreement completely"
           ],
           "questionIds": [
-            "S6-L05-Q6"
+            "S6-L05-Q6",
+            "S6-L05-Q11",
+            "S6-L05-Q12"
           ],
           "pastPaperAnalysis": [
             "Cambridge 9618/12 · October/November 2025 · 1",
@@ -20114,7 +20560,7 @@
           ],
           "materialTitles": [
             "Source code: BK209",
-            "Resolve a double-entry mismatch"
+            "Resolve a double-entry disagreement completely"
           ],
           "questionIds": [
             "S6-L05-Q6"
@@ -20133,9 +20579,9 @@
           ],
           "materialTitles": [
             "Build an even-parity byte",
-            "An undetected two-bit change",
-            "Locate a single-bit error by intersection",
-            "Correct the illustrated received block"
+            "A parity failure followed by successful retransmission",
+            "Construct the transmitted block, then locate an error",
+            "Check, correct and recheck every direction"
           ],
           "questionIds": [
             "S6-L05-Q7",
@@ -20154,7 +20600,7 @@
           ],
           "materialTitles": [
             "An eight-bit sum checksum",
-            "A matching checksum can miss an error"
+            "Complete the sender–receiver exchange"
           ],
           "questionIds": [
             "S6-L05-Q9"
@@ -20174,15 +20620,16 @@
           ],
           "materialTitles": [
             "Build an even-parity byte",
-            "An undetected two-bit change",
-            "Locate a single-bit error by intersection",
-            "Correct the illustrated received block",
+            "A parity failure followed by successful retransmission",
+            "Construct the transmitted block, then locate an error",
+            "Check, correct and recheck every direction",
             "An eight-bit sum checksum",
-            "A matching checksum can miss an error"
+            "Complete the sender–receiver exchange"
           ],
           "questionIds": [
             "S6-L05-Q7",
-            "S6-L05-Q10"
+            "S6-L05-Q10",
+            "S6-L05-Q12"
           ],
           "pastPaperAnalysis": [
             "Cambridge 9618/12 · October/November 2025 · 1",
@@ -20203,11 +20650,57 @@
             "title": "A source mark of 46 is entered as 64"
           },
           "coreExplanation": [
-            "Validation tests whether input satisfies stated rules and is reasonable for its purpose. Verification checks whether information has been entered, copied or transferred accurately relative to its source. Both reduce the acceptance of errors and so help maintain data integrity.",
-            "A plausible wrong value can pass validation, and two copies of a false original can agree. Neither process proves that the source is true. Use both when a system needs acceptable values and faithful copying."
+            "Validation checks stated acceptability rules; verification checks faithful entry or transfer relative to a source.",
+            "An acceptable wrong value or two matching wrong copies can pass a check. Neither proves the original fact true."
+          ],
+          "teachingBlocks": [
+            {
+              "type": "paragraph",
+              "text": "Validation tests whether input satisfies stated rules and is reasonable for its purpose. Verification checks whether information has been entered, copied or transferred accurately relative to its source. They support integrity by detecting different kinds of error. First ask whether the task needs rule compliance, faithful copying, or both.",
+              "title": "Choose the question the check must answer"
+            },
+            {
+              "type": "paragraph",
+              "text": "A source mark of 46 entered as 64 can pass the range 0–75 while failing comparison with the source. A source age of 200 copied correctly can pass that source comparison but fail a permitted range of 0–120. If a wrong source says 12 and both copies say 12, neither a matching copy nor a reasonable age proves the person is actually 12.",
+              "title": "Separate acceptable, copied correctly and true"
+            },
+            {
+              "type": "table",
+              "title": "Use independent checks in a data-entry process",
+              "headers": [
+                "Stage",
+                "Test",
+                "If it fails"
+              ],
+              "rows": [
+                [
+                  "Input rules",
+                  "Does each field satisfy the specified bounds, pattern, required entry and lookup rules?",
+                  "Flag the relevant field and request correction."
+                ],
+                [
+                  "Source verification",
+                  "Does the entered information agree with the original form?",
+                  "Investigate the difference against the source, correct and check again."
+                ],
+                [
+                  "Record acceptance",
+                  "Have the required checks passed for this submission?",
+                  "Do not silently store the rejected submission as an accepted record."
+                ]
+              ]
+            },
+            {
+              "type": "paragraph",
+              "text": "The next units first choose and apply individual validation methods, then combine them on one form. The second stage adds a check digit and source comparisons. The final stage follows checking information from sender to receiver. This is a progression from rule decisions to complete checking processes, not a requirement to implement a program here.",
+              "title": "Follow the three learning stages"
+            }
           ],
           "method": null,
-          "workedExample": null
+          "workedExample": {
+            "type": "worked-example",
+            "title": "Validate and verify a submitted mark"
+          }
         },
         {
           "syllabusId": "S6.07",
@@ -20221,8 +20714,55 @@
             "title": "Apply the written bounds"
           },
           "coreExplanation": [
-            "A range check applies both a lower and an upper bound, such as 0 <= Mark <= 75. Test both endpoints as well as values outside them; the stated rule decides whether the bounds are inclusive.",
-            "A limit check applies one upper or lower bound, such as FileSize <= 10 MiB. It does not introduce a second bound that was not specified. Choose a range when both ends matter and a limit when the requirement supplies one bound."
+            "A range specifies lower and upper bounds; a limit specifies one bound.",
+            "Follow the stated inclusive or strict comparisons and test the endpoints as well as values just outside."
+          ],
+          "teachingBlocks": [
+            {
+              "type": "paragraph",
+              "text": "A range check compares a value with both ends of an allowed interval. For integer marks with 0 <= Mark <= 75, both 0 and 75 are allowed. The two conditions must both hold. Replacing the upper <= with < excludes 75, so the exact comparison matters.",
+              "title": "Read both bounds"
+            },
+            {
+              "type": "paragraph",
+              "text": "A limit check uses one upper or lower bound, such as UploadSize <= 10 MiB or Temperature >= -20. A lower limit alone does not impose an unstated upper limit. When a problem already supplies non-negative file sizes, that is an input condition; do not pretend the upper-limit comparison itself checked non-negativity.",
+              "title": "Distinguish the rule from supplied conditions"
+            },
+            {
+              "type": "table",
+              "title": "Test the actual boundary",
+              "headers": [
+                "Rule on integer values",
+                "Below the lower edge",
+                "At an included edge",
+                "Above the upper edge"
+              ],
+              "rows": [
+                [
+                  "-20 <= Temperature <= 50",
+                  "-21 fails",
+                  "-20 and 50 pass",
+                  "51 fails"
+                ],
+                [
+                  "Temperature >= -20",
+                  "-21 fails",
+                  "-20 passes",
+                  "51 also passes: no upper bound"
+                ],
+                [
+                  "0 <= Mark < 75",
+                  "-1 fails",
+                  "0 passes; 75 fails",
+                  "76 fails"
+                ]
+              ]
+            },
+            {
+              "type": "paragraph",
+              "text": "Use values just inside, at and just outside the relevant boundary to expose a wrong comparison. For a whole-number mark, 74, 75 and 76 distinguish an inclusive maximum of 75 from a strict maximum. For continuous or measured data, choose test values according to the stated precision rather than always adding one.",
+              "title": "Choose a discriminating test"
+            }
           ],
           "method": null,
           "workedExample": {
@@ -20242,8 +20782,25 @@
             "title": "Code rule: two uppercase letters, then four digits"
           },
           "coreExplanation": [
-            "A format check tests a required pattern, for example two uppercase letters followed by four digits. A length check tests the number of characters, for example exactly six. The two checks ask different questions about the same string.",
-            "A six-character value can still have the wrong format. Check the complete pattern and the specified character count, preserving leading zeros when a code is a string."
+            "Length counts characters; format checks their required arrangement.",
+            "Preserve leading zeros in string identifiers and apply each stated check separately."
+          ],
+          "teachingBlocks": [
+            {
+              "type": "paragraph",
+              "text": "A length check tests the number of characters, such as exactly six or at most twenty. A format check tests the required arrangement, such as two uppercase letters followed by four digits. A format may imply a length, but the tests still ask distinguishable questions: 123456 has six characters yet fails the specified letter-and-digit pattern.",
+              "title": "Count characters, then inspect positions"
+            },
+            {
+              "type": "paragraph",
+              "text": "Read the full pattern. AB0123 fits two uppercase letters and four digits, while A10123 has a digit where the second uppercase letter is required. AB123 has only five characters and too few trailing digits. A stored identifier is often a string: converting 001234 to a number would lose its leading zeros and change the representation being checked.",
+              "title": "Keep the representation needed by the rule"
+            },
+            {
+              "type": "paragraph",
+              "text": "Do not infer factual meaning from appearance. A correctly formatted date string may still describe an impossible date, and a correctly shaped customer code may not occur in the customer file. A format rule needs to be stated precisely; use an additional appropriate check for conditions the pattern does not establish.",
+              "title": "Identify what remains unchecked"
+            }
           ],
           "method": null,
           "workedExample": null
@@ -20260,11 +20817,62 @@
             "title": "Stored customer IDs: C102, C107, C115"
           },
           "coreExplanation": [
-            "A presence check requires an entry rather than a blank required field. An existence check looks for the supplied value in a specified stored lookup or file, such as checking that a customer identifier belongs to an existing customer.",
-            "A value can be present but absent from the lookup. Define which field is required and which stored set supplies valid identifiers; do not confuse these checks with a format test."
+            "Presence requires an entry; existence tests membership in the stated stored set.",
+            "A non-blank correctly shaped value can still fail existence. Give the lookup data needed to decide."
+          ],
+          "teachingBlocks": [
+            {
+              "type": "paragraph",
+              "text": "A presence check rejects an absent required entry. It does not test whether a supplied identifier corresponds to a real record. An existence check searches a specified stored lookup or file for the supplied value. The correct source matters: finding a customer code in an unrelated product file would not establish that the customer exists.",
+              "title": "State the required field and lookup"
+            },
+            {
+              "type": "paragraph",
+              "text": "In the simple examples, Blank means no characters were entered. If a real form also treats spaces-only input as empty, that must be a stated rule. Once a required field fails presence, the form can flag that error before trying its format or lookup. A skipped lookup is not a successful existence check.",
+              "title": "Explain the order of checking"
+            },
+            {
+              "type": "table",
+              "title": "Complete form specification for the worked example",
+              "headers": [
+                "Field",
+                "Supplied rule or condition",
+                "Validation methods"
+              ],
+              "rows": [
+                [
+                  "CustomerID",
+                  "Required; two uppercase letters followed by three digits; must be in {AB012, CD345}",
+                  "Presence, format, existence"
+                ],
+                [
+                  "BookingCode",
+                  "Exactly six characters; two uppercase letters followed by four digits",
+                  "Length and format"
+                ],
+                [
+                  "Age",
+                  "An integer already supplied; 5 to 18 inclusive",
+                  "Range"
+                ],
+                [
+                  "UploadSize",
+                  "A non-negative size in MiB already supplied; at most 10 MiB",
+                  "Upper limit"
+                ]
+              ]
+            },
+            {
+              "type": "paragraph",
+              "text": "All required checks must pass for this form to be accepted under its input rules. Report the failed field and request correction rather than silently replacing an unknown customer or inventing an age. Leading zeros in the two codes are characters and must remain. Passing every rule still does not prove agreement with an original form.",
+              "title": "Combine checks without changing their meaning"
+            }
           ],
           "method": null,
-          "workedExample": null
+          "workedExample": {
+            "type": "worked-example",
+            "title": "Apply all stated rules and finish the submission"
+          }
         },
         {
           "syllabusId": "S6.07",
@@ -20277,13 +20885,64 @@
             "title": "Weighted check digit: a complete calculation"
           },
           "coreExplanation": [
-            "A check digit is derived from the other digits in an identifier and stored with them. On entry or scanning, the system repeats the stated calculation and compares the expected check digit with the supplied digit. A mismatch causes rejection or re-entry.",
-            "Use the algorithm given in the question: different schemes use different weights and moduli. For the example here, multiply the four data digits by 3, 1, 3, 1 and choose a final digit that makes the total a multiple of 10. Some errors can still produce the same check digit."
+            "Derive a check digit using the specified rule; on entry recalculate and compare with the supplied digit.",
+            "A mismatch detects an error but does not identify the intended identifier. Some wrong identifiers still pass."
+          ],
+          "teachingBlocks": [
+            {
+              "type": "paragraph",
+              "text": "A check digit is a digit calculated from the other digits in an identifier and stored with them. The system repeats the stated calculation when the full code is entered or scanned. It can compare the expected final digit with the supplied final digit or apply the equivalent rule to their combined total.",
+              "title": "Distinguish generation from checking"
+            },
+            {
+              "type": "paragraph",
+              "text": "For this example only, use four data digits with weights 3, 1, 3, 1. Multiply corresponding digits and weights, add the products, then choose a digit from 0 to 9 that makes the total a multiple of 10. If the total already is a multiple of 10, choose 0; do not choose 10, which is not one digit. Different schemes use different weights and rules.",
+              "title": "Use a complete stated algorithm"
+            },
+            {
+              "type": "table",
+              "title": "Generate three check digits under the same rule",
+              "headers": [
+                "Data digits",
+                "Products",
+                "Weighted total",
+                "Check digit",
+                "Full code"
+              ],
+              "rows": [
+                [
+                  "4726",
+                  "12 + 7 + 6 + 6",
+                  "31",
+                  "9",
+                  "47269"
+                ],
+                [
+                  "2462",
+                  "6 + 4 + 18 + 2",
+                  "30",
+                  "0",
+                  "24620"
+                ],
+                [
+                  "4276",
+                  "12 + 2 + 21 + 6",
+                  "41",
+                  "9",
+                  "42769"
+                ]
+              ]
+            },
+            {
+              "type": "paragraph",
+              "text": "47269 and 42769 both satisfy this rule even though their data digits differ. The totals 31 and 41 both need a final 9. This is a concrete undetected transposition, not proof that check digits are useless. They detect many errors cheaply, but cannot establish that an accepted identifier is the one intended or that its record exists.",
+              "title": "Explain a passing wrong value"
+            }
           ],
           "method": null,
           "workedExample": {
             "type": "worked-example",
-            "title": "Verify a scanned code"
+            "title": "Check the scanned identifier and resolve an error"
           }
         },
         {
@@ -20298,13 +20957,30 @@
             "title": "Source code: BK209"
           },
           "coreExplanation": [
-            "For a visual check, a person compares the entered value with the original source and investigates differences. It is a comparison with a source, not simply a judgement that the value looks reasonable.",
-            "For double entry, the value is entered independently twice and the computer compares the entries. A mismatch is flagged for correction or re-entry. Agreement still cannot establish that the original source is correct, and repeating the same mistake can evade detection."
+            "A visual check compares the entry with its source; double entry compares two independently entered copies.",
+            "Resolve differences against the source and recheck. Identical copies can contain the same mistake."
+          ],
+          "teachingBlocks": [
+            {
+              "type": "paragraph",
+              "text": "Visual verification means that a person compares the entered information with the original source. Looking at the entry alone and deciding it seems plausible is not that comparison. The original form, document or other stated source must be available, and the person must check the relevant characters or values.",
+              "title": "Make the comparison reference explicit"
+            },
+            {
+              "type": "paragraph",
+              "text": "For double entry, enter the value independently twice and let the computer compare the copies. The second entry should not simply copy the first displayed entry. A mismatch identifies disagreement but does not say which entry is right; consult the original source, correct and compare again.",
+              "title": "Complete the mismatch-resolution process"
+            },
+            {
+              "type": "paragraph",
+              "text": "If source 640 is entered as 604 twice, both copies agree despite the repeated error. If the source itself is wrong, perfect copying preserves its error. These limitations explain why agreement is evidence from a particular check and why verification differs from validation of permitted values.",
+              "title": "Explain both agreement and disagreement"
+            }
           ],
           "method": null,
           "workedExample": {
             "type": "worked-example",
-            "title": "Resolve a double-entry mismatch"
+            "title": "Resolve a double-entry disagreement completely"
           }
         },
         {
@@ -20319,13 +20995,60 @@
             "title": "Build an even-parity byte"
           },
           "coreExplanation": [
-            "A parity bit is chosen so the total number of 1 bits, including that bit, has the agreed even or odd parity. The examples use seven data bits and one parity bit to form an eight-bit transmitted group.",
-            "The receiver counts the 1s and compares the result with the agreed convention. Any odd number of flipped bits changes parity and is detected. An even number of flips can leave parity unchanged; the check alone cannot identify the incorrect bit or prove the byte is correct."
+            "Choose the parity bit to make the total count of 1 bits, including that bit, meet the agreed odd/even convention.",
+            "Byte parity detects an odd number of bit flips; an even number can pass. It cannot locate the erroneous bit."
+          ],
+          "teachingBlocks": [
+            {
+              "type": "paragraph",
+              "text": "The sender and receiver agree a parity convention. Count the 1 bits in the data, then choose a parity bit so the whole transmitted group has an even or odd total as required. The example uses seven data bits followed by one parity bit to make an eight-bit group. Other questions may specify a different data width or bit position; follow the supplied arrangement.",
+              "title": "Fix the convention and the bit positions"
+            },
+            {
+              "type": "table",
+              "title": "Build both conventions for the same seven data bits",
+              "headers": [
+                "Data",
+                "Data 1s",
+                "Convention",
+                "Parity bit",
+                "Complete group",
+                "Total 1s"
+              ],
+              "rows": [
+                [
+                  "1011001",
+                  "4",
+                  "Even",
+                  "0",
+                  "10110010",
+                  "4"
+                ],
+                [
+                  "1011001",
+                  "4",
+                  "Odd",
+                  "1",
+                  "10110011",
+                  "5"
+                ]
+              ]
+            },
+            {
+              "type": "paragraph",
+              "text": "The receiver checks the whole received group, including its received parity bit. If 10110010 becomes 10100010, the count falls from four to three and even parity fails. The changed bit could instead have been the parity bit itself; this check alone cannot identify which position changed. Reject or request retransmission rather than guessing a correction.",
+              "title": "Trace the receiving decision"
+            },
+            {
+              "type": "paragraph",
+              "text": "Each bit flip changes the count of 1s by one in either direction. An odd number of flips changes whether the count is odd or even; an even number preserves it. Flipping the first two bits gives 01110010, still with four 1s. Therefore a passed parity check means no parity error was detected, not that the data is necessarily unchanged.",
+              "title": "Derive the limitation from the count"
+            }
           ],
           "method": null,
           "workedExample": {
             "type": "worked-example",
-            "title": "An undetected two-bit change"
+            "title": "A parity failure followed by successful retransmission"
           }
         },
         {
@@ -20337,16 +21060,119 @@
           ],
           "leadVisual": {
             "type": "reviewed-visual",
-            "title": "Locate a single-bit error by intersection"
+            "title": "Construct the transmitted block, then locate an error"
           },
           "coreExplanation": [
-            "Block parity organises transmitted groups into rows, applies a parity bit to each row, and adds a parity row or byte for the columns. The receiver checks parity in both directions using the agreed convention.",
-            "If exactly one bit has changed, the failing row and failing column intersect at that bit, allowing it to be located and corrected by flipping it. Multiple errors may be ambiguous or undetected; four flipped corner bits in a rectangle leave every affected row and column parity unchanged."
+            "Append row parity bits and a column-parity row, then transmit that checking information with the block.",
+            "Under a single-bit error assumption, one failed row and one failed column locate the bit; correct and recheck."
+          ],
+          "teachingBlocks": [
+            {
+              "type": "paragraph",
+              "text": "Two-dimensional parity adds checking information in both directions. Start with the three seven-bit data rows below and use even parity throughout. Append one row-parity bit to each row. Then count each column of these complete rows to form a final column-parity row, often called a parity byte. This last row is transmitted, not invented by the receiver after an error.",
+              "title": "Construct the sender’s complete block"
+            },
+            {
+              "type": "table",
+              "title": "Sender construction",
+              "headers": [
+                "Row",
+                "Seven left-hand bits",
+                "Eighth bit",
+                "Total 1s in complete row"
+              ],
+              "rows": [
+                [
+                  "Data row 1",
+                  "1011001",
+                  "0",
+                  "4"
+                ],
+                [
+                  "Data row 2",
+                  "0110000",
+                  "0",
+                  "2"
+                ],
+                [
+                  "Data row 3",
+                  "1100011",
+                  "0",
+                  "4"
+                ],
+                [
+                  "Column parity row",
+                  "0001010",
+                  "0",
+                  "2"
+                ]
+              ]
+            },
+            {
+              "type": "paragraph",
+              "text": "For data column 4, the sender's rows contain 1, 0, 0: one 1, so the final parity row needs 1 in that column. For column 1 they contain 1, 0, 1: two 1s, so the final bit is 0. Repeating across all eight columns gives 00010100. In this construction the lower-right bit completes the parity information consistently; it is not another original data bit.",
+              "title": "Explain how a column value is obtained"
+            },
+            {
+              "type": "table",
+              "title": "Check all column totals including the transmitted last row",
+              "headers": [
+                "Column",
+                "1",
+                "2",
+                "3",
+                "4",
+                "5",
+                "6",
+                "7",
+                "8"
+              ],
+              "rows": [
+                [
+                  "Sent block",
+                  "2",
+                  "2",
+                  "2",
+                  "2",
+                  "0",
+                  "2",
+                  "2",
+                  "0"
+                ],
+                [
+                  "Received block",
+                  "2",
+                  "2",
+                  "2",
+                  "2",
+                  "1",
+                  "2",
+                  "2",
+                  "0"
+                ],
+                [
+                  "Corrected block",
+                  "2",
+                  "2",
+                  "2",
+                  "2",
+                  "0",
+                  "2",
+                  "2",
+                  "0"
+                ]
+              ]
+            },
+            {
+              "type": "paragraph",
+              "text": "After exactly one bit changes, its row and column each have the wrong parity. Their intersection locates the bit; flip it and check the complete block again. This reasoning depends on the one-bit assumption. Multiple errors can produce several failed lines, ambiguous intersections or no parity failure. Do not promise correction from every pattern.",
+              "title": "State the correction condition"
+            }
           ],
           "method": null,
           "workedExample": {
             "type": "worked-example",
-            "title": "Correct the illustrated received block"
+            "title": "Check, correct and recheck every direction"
           }
         },
         {
@@ -20361,13 +21187,35 @@
             "title": "An eight-bit sum checksum"
           },
           "coreExplanation": [
-            "The sender calculates a value from a data block using an agreed checksum algorithm and sends it with the data. The receiver applies the same algorithm to the received block and compares its result with the transmitted checksum.",
-            "A mismatch indicates an error and can trigger rejection or retransmission. A match means no error was detected by that checksum; different data can produce the same value. Use the stated algorithm rather than assuming that all checksums are simple sums."
+            "Calculate a checksum from the data, send it with the block, recalculate from the received data and compare.",
+            "Use the specified algorithm. A mismatch detects an error; a match does not prove that the data is unchanged."
+          ],
+          "teachingBlocks": [
+            {
+              "type": "paragraph",
+              "text": "A checksum is a value calculated from a block using an agreed algorithm. The sender transmits the data and its checksum. The receiver repeats that algorithm on the received data and compares the newly calculated value with the received checksum. For this example, the checksum is not included as another data byte in the receiver's sum.",
+              "title": "Keep the two compared values distinct"
+            },
+            {
+              "type": "paragraph",
+              "text": "The stated rule adds the data bytes and keeps the remainder after division by 256. This is called sum modulo 256. For 84, 121 and 77, the sum is 282. Since 282 = 1 × 256 + 26, the remainder and eight-bit checksum value are 26, not the quotient 1 and not 282. Other checksum algorithms use different operations; do not substitute this rule when a question supplies another.",
+              "title": "Explain the remainder calculation"
+            },
+            {
+              "type": "paragraph",
+              "text": "If the received data is 84, 120, 77, its sum is 281 and its remainder is 25. Comparing 25 with the received 26 detects an error somewhere in the data/checking information. A mismatch does not locate the incorrect byte. The system can reject or request retransmission according to its protocol.",
+              "title": "Continue from mismatch to a decision"
+            },
+            {
+              "type": "paragraph",
+              "text": "Changing the data to 85, 120, 77 preserves the sum 282 and checksum 26. The two changes cancel, so this algorithm misses them. It is not a digital signature and supplies no authenticated origin: an attacker who can replace both an unprotected block and its checksum can recompute the check. A check digit instead accompanies an identifier under its stated validation rule.",
+              "title": "Compare purpose and limits"
+            }
           ],
           "method": null,
           "workedExample": {
             "type": "worked-example",
-            "title": "A matching checksum can miss an error"
+            "title": "Complete the sender–receiver exchange"
           }
         }
       ],
@@ -20437,7 +21285,7 @@
         {
           "id": "S6-L05-Q8",
           "commandWord": "Calculate",
-          "marks": 4,
+          "marks": 5,
           "objectiveIds": [
             "S6.08.A03"
           ]
@@ -20457,10 +21305,36 @@
           "objectiveIds": [
             "S6.08.A05"
           ]
+        },
+        {
+          "id": "S6-L05-Q11",
+          "commandWord": "Identify",
+          "marks": 5,
+          "objectiveIds": [
+            "S6.07.A02",
+            "S6.07.A03",
+            "S6.07.A04",
+            "S6.07.A05",
+            "S6.07.A06",
+            "S6.07.A09",
+            "S6.08.A01"
+          ]
         }
       ],
-      "optionalPractice": [],
-      "practiceTiming": "30–40",
+      "optionalPractice": [
+        {
+          "id": "S6-L05-Q12",
+          "commandWord": "Calculate",
+          "marks": 3,
+          "objectiveIds": [
+            "S6.07.A08",
+            "S6.07.A09",
+            "S6.08.A01",
+            "S6.08.A05"
+          ]
+        }
+      ],
+      "practiceTiming": "40–52",
       "examTiming": "10–14",
       "reviewMenu": false,
       "examConnection": null,
@@ -25759,9 +26633,11 @@
             "Section 6: Security, privacy and data integrity"
           ],
           "materialTitles": [
-            "Visual overview · Section 6: Security, privacy and data integrity"
+            "Retrieve the process, then apply it"
           ],
-          "questionIds": [],
+          "questionIds": [
+            "REV-P1-S6-Q1"
+          ],
           "pastPaperAnalysis": []
         },
         {
@@ -25771,9 +26647,11 @@
             "Section 6: Security, privacy and data integrity"
           ],
           "materialTitles": [
-            "Visual overview · Section 6: Security, privacy and data integrity"
+            "Retrieve the process, then apply it"
           ],
-          "questionIds": [],
+          "questionIds": [
+            "REV-P1-S6-Q1"
+          ],
           "pastPaperAnalysis": []
         },
         {
@@ -25783,9 +26661,11 @@
             "Section 6: Security, privacy and data integrity"
           ],
           "materialTitles": [
-            "Visual overview · Section 6: Security, privacy and data integrity"
+            "Retrieve the process, then apply it"
           ],
-          "questionIds": [],
+          "questionIds": [
+            "REV-P1-S6-Q2"
+          ],
           "pastPaperAnalysis": []
         },
         {
@@ -25795,7 +26675,7 @@
             "Section 6: Security, privacy and data integrity"
           ],
           "materialTitles": [
-            "Visual overview · Section 6: Security, privacy and data integrity"
+            "Retrieve the process, then apply it"
           ],
           "questionIds": [],
           "pastPaperAnalysis": []
@@ -25807,9 +26687,11 @@
             "Section 6: Security, privacy and data integrity"
           ],
           "materialTitles": [
-            "Visual overview · Section 6: Security, privacy and data integrity"
+            "Retrieve the process, then apply it"
           ],
-          "questionIds": [],
+          "questionIds": [
+            "REV-P1-S6-Q1"
+          ],
           "pastPaperAnalysis": []
         },
         {
@@ -25819,9 +26701,11 @@
             "Section 6: Security, privacy and data integrity"
           ],
           "materialTitles": [
-            "Visual overview · Section 6: Security, privacy and data integrity"
+            "Retrieve the process, then apply it"
           ],
-          "questionIds": [],
+          "questionIds": [
+            "REV-P1-S6-Q2"
+          ],
           "pastPaperAnalysis": []
         },
         {
@@ -25831,9 +26715,11 @@
             "Section 6: Security, privacy and data integrity"
           ],
           "materialTitles": [
-            "Visual overview · Section 6: Security, privacy and data integrity"
+            "Retrieve the process, then apply it"
           ],
-          "questionIds": [],
+          "questionIds": [
+            "REV-P1-S6-Q3"
+          ],
           "pastPaperAnalysis": []
         },
         {
@@ -25843,9 +26729,12 @@
             "Section 6: Security, privacy and data integrity"
           ],
           "materialTitles": [
-            "Visual overview · Section 6: Security, privacy and data integrity"
+            "Retrieve the process, then apply it"
           ],
-          "questionIds": [],
+          "questionIds": [
+            "REV-P1-S6-Q4",
+            "REV-P1-S6-Q3"
+          ],
           "pastPaperAnalysis": []
         },
         {
@@ -26391,14 +27280,24 @@
             "S6.08.R"
           ],
           "leadVisual": {
-            "type": "cards",
-            "title": "Visual overview · Section 6: Security, privacy and data integrity"
+            "type": "table",
+            "title": "Retrieve the process, then apply it"
           },
           "coreExplanation": [
-            "Distinguish data security, privacy and integrity.",
-            "Explain the need for data and computer-system security.",
-            "Understand user accounts/passwords, digital signatures, biometrics, firewall, antivirus, anti-spyware and encryption as security measures.",
-            "Understand virus, spyware, hackers, phishing and pharming threats."
+            "Classify the consequence, follow the threat route and justify controls by their mechanisms.",
+            "Trace validation, source comparison and transfer checks; a passed check does not prove truth or authenticated origin."
+          ],
+          "teachingBlocks": [
+            {
+              "type": "paragraph",
+              "text": "Begin with what happened to the record or service: unauthorised disclosure, wrong values, lost records or unavailable processing. Then separate identity authentication, operation-specific permission, encryption, signature verification, filtering and malware detection. One incident may need several controls because each checks a different condition.",
+              "title": "Reconstruct the protection argument"
+            },
+            {
+              "type": "paragraph",
+              "text": "For integrity, decide which question needs answering. Validation applies input rules. Visual comparison or double entry checks copying. Transfer parity and checksums compare calculated evidence under an agreed rule. Work from supplied data, complete the receiving decision, and explain a relevant way the check can miss an error.",
+              "title": "Choose and execute the check"
+            }
           ],
           "method": null,
           "workedExample": null
@@ -26574,6 +27473,23 @@
           "objectiveIds": [
             "S8.04.R"
           ]
+        },
+        {
+          "id": "REV-P1-S6-Q2",
+          "commandWord": "Explain",
+          "marks": 5,
+          "objectiveIds": [
+            "S6.03.R",
+            "S6.06.R"
+          ]
+        },
+        {
+          "id": "REV-P1-S6-Q4",
+          "commandWord": "Calculate",
+          "marks": 5,
+          "objectiveIds": [
+            "S6.08.R"
+          ]
         }
       ],
       "optionalPractice": [
@@ -26705,9 +27621,28 @@
             "S8.10.R",
             "S8.11.R"
           ]
+        },
+        {
+          "id": "REV-P1-S6-Q1",
+          "commandWord": "Explain",
+          "marks": 4,
+          "objectiveIds": [
+            "S6.01.R",
+            "S6.02.R",
+            "S6.05.R"
+          ]
+        },
+        {
+          "id": "REV-P1-S6-Q3",
+          "commandWord": "Describe",
+          "marks": 4,
+          "objectiveIds": [
+            "S6.07.R",
+            "S6.08.R"
+          ]
         }
       ],
-      "practiceTiming": "55–70",
+      "practiceTiming": "65–85",
       "examTiming": "55–65",
       "reviewMenu": true,
       "examConnection": null,
@@ -44716,6 +45651,10 @@
       "sha256": "2a34f68c3f912d9806332861c174e8e3ad837fcc0d785d7399ee90d39bb8013f"
     },
     {
+      "path": "web/assets/course-v3/section-6/data-lifecycle.svg",
+      "sha256": "a2a634ef27be128128935b0187f047a9af452803a7efbaf479f4ee0261be9b7a"
+    },
+    {
       "path": "web/assets/course-v3/mechanisms/account-permissions.svg",
       "sha256": "52476640d024e37b00ae2ec40fa18b9cf088dc0e077f7d0898b37a7baf2f499a"
     },
@@ -44736,16 +45675,16 @@
       "sha256": "d826f8e8f660cb45d850a4d2e010304d9fe0c37653d1f3050283b43911975c45"
     },
     {
-      "path": "web/assets/diagrams/stage10-infographics/stage10-lesson-064-spyware.jpg",
-      "sha256": "ea11428f2bca810377b6c5514a7e10ea13e92745181f8e8dda9e9611bbe17558"
+      "path": "web/assets/course-v3/section-6/spyware-route.svg",
+      "sha256": "ef6b81c27a25451489c6cdc66e07201260d2fa9908072c7d9481aa159af39def"
     },
     {
       "path": "web/assets/course-v3/mechanisms/phishing.svg",
       "sha256": "88856ca88013c86db8e9edcfee88096b3d1b37eaaadb56193f5ce2a3017c7807"
     },
     {
-      "path": "web/assets/course-v3/mechanisms/pharming.svg",
-      "sha256": "e93c356fd45eabd2269e4b0cecb79d06145924aa0d5c2c9b8e28b7c4824a7954"
+      "path": "web/assets/course-v3/section-6/phishing-pharming.svg",
+      "sha256": "a22b2d133a4b477fbb0c69b2f6de963d171d65395c064532b21aad396c12d865"
     },
     {
       "path": "web/assets/course-v3/section-6/encryption.png",
@@ -44761,7 +45700,7 @@
     },
     {
       "path": "web/assets/course-v3/section-6/block-parity.svg",
-      "sha256": "d623186ab59d663a0122eac98dfbda9f93a326bd3423c9abcf30dc89d5b6c2f3"
+      "sha256": "20fce2068be70ea59a3c2a2a28e330781f395e9ad89579ef3452ae6ba71d89eb"
     },
     {
       "path": "web/assets/course-v3/section-6/checksum.svg",

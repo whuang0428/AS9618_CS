@@ -1,4 +1,5 @@
 // Authored S6 units and assessments. Objective ownership is explicit, not inferred from word overlap.
+import { enhanceSection6Teaching, enhanceSection6Review } from './course-v3-section6-teaching.mjs';
 const ids = (r, ...ns) => ns.map((n) => `S6.${String(r).padStart(2, "0")}.A${String(n).padStart(2, "0")}`);
 const asset = (name) => `/assets/course-v3/section-6/${name}`;
 const table = (title, headers, rows) => ({ type: "table", title, headers, rows, preserveText: true });
@@ -247,15 +248,12 @@ const lessons = {
 };
 
 export function authorSection6Lesson(source) {
-  if (source.section !== 6) return source;
+  if (source.section !== 6) return enhanceSection6Review(source);
   const n = source.originalLesson === 31 ? 1 : source.originalLesson === 32 ? 3 : source.originalLesson === 34 ? 5 : source.syllabusIds.includes("S6.03") ? 2 : 4;
   const authored = structuredClone(lessons[n]);
-  return {
+  return enhanceSection6Teaching({
     ...source, ...authored, summaryMode: "authored",
     diagnostic: { prompt: authored.units[0].checkpoint.prompt, answer: authored.units[0].checkpoint.answer },
-    teachingCheckpoints: n === 5
-      ? ["Work through validation choices, then attempt practice Q1–Q5 before opening the answers.", "Compare the entry methods with Q6. Trace every bit in the parity diagrams before Q7–Q8.", "Calculate both checksum values in Q9 and discuss the limitations in Q10. Complete the three independent exam tasks."]
-      : ["Pause at each knowledge-unit check before revealing its answer.", "Use the practice tasks to check mechanisms, then attempt the independent exam questions with marking points closed."],
-    sources: ["Cambridge 9618 2027–2029 syllabus, Section 6.1 Data Security and Section 6.2 Data Integrity.", "Original teaching examples, practice and marking points; no past-paper question is reproduced."],
-  };
+    sources: ["Cambridge 9618 2027–2029 syllabus, Version 2, page 24: Section 6.1 Data Security and Section 6.2 Data Integrity. S6 identifiers are the course's objective mapping.", "Detailed explanations, worked examples and Practice marking points are teacher-authored. Optional extensions are labelled separately."],
+  }, n);
 }

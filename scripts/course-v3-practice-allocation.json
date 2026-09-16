@@ -553,13 +553,14 @@
       "S6-L02-Q4",
       "S6-L02-Q5",
       "S6-L02-Q6",
-      "S6-L02-Q7"
+      "S6-L02-Q7",
+      "S6-L02-Q8"
     ],
     "optional": [
       "S6-L02-Q1"
     ],
     "removed": [],
-    "practiceMinutes": "22–28",
+    "practiceMinutes": "28–36",
     "examMinutes": "6–9",
     "reviewMenu": false
   },
@@ -585,13 +586,14 @@
     "required": [
       "S6-L04-Q2",
       "S6-L04-Q3",
-      "S6-L04-Q4"
+      "S6-L04-Q4",
+      "S6-L04-Q5"
     ],
     "optional": [
       "S6-L04-Q1"
     ],
     "removed": [],
-    "practiceMinutes": "11–15",
+    "practiceMinutes": "17–23",
     "examMinutes": "5–7",
     "reviewMenu": false
   },
@@ -607,11 +609,14 @@
       "S6-L05-Q7",
       "S6-L05-Q8",
       "S6-L05-Q9",
-      "S6-L05-Q10"
+      "S6-L05-Q10",
+      "S6-L05-Q11"
     ],
-    "optional": [],
+    "optional": [
+      "S6-L05-Q12"
+    ],
     "removed": [],
-    "practiceMinutes": "30–40",
+    "practiceMinutes": "40–52",
     "examMinutes": "10–14",
     "reviewMenu": false
   },
@@ -802,7 +807,9 @@
       "REV-P1-S5-Q3",
       "REV-P1-S7-Q2",
       "REV-P1-S7-Q4",
-      "REV-P1-S8-Q2"
+      "REV-P1-S8-Q2",
+      "REV-P1-S6-Q2",
+      "REV-P1-S6-Q4"
     ],
     "optional": [
       "V3-Q-L045-01",
@@ -817,12 +824,14 @@
       "REV-P1-S7-Q3",
       "REV-P1-S8-Q1",
       "REV-P1-S8-Q3",
-      "REV-P1-S8-Q4"
+      "REV-P1-S8-Q4",
+      "REV-P1-S6-Q1",
+      "REV-P1-S6-Q3"
     ],
     "removed": [
       "V3-Q-L045-03"
     ],
-    "practiceMinutes": "55–70",
+    "practiceMinutes": "65–85",
     "examMinutes": "55–65",
     "reviewMenu": true
   },
