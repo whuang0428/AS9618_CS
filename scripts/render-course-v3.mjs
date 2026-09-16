@@ -25,6 +25,7 @@ import { section12DiagramFiles } from "./course-v3-section12-diagrams.mjs";
 import { section12Assessment, section12MockQuestions } from "./course-v3-section12-assessments.mjs";
 import { section10Assessments } from "./course-v3-section10-content.mjs";
 import { section6DiagramFiles } from "./course-v3-section6-diagrams.mjs";
+import { section7DiagramFiles } from "./course-v3-section7-diagrams.mjs";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const outRoot = join(root, "web", "course-v3");
@@ -95,7 +96,8 @@ function imageSizeAttributes(material, section) {
   const dimensions = imageDimensions(join(reviewedAssetRoot, webAssetPath(material.asset, section).replace(/^\//, "")));
   if (!dimensions) throw new Error(`Missing intrinsic dimensions for S${section} image ${material.asset}`);
   const readableDiagram = material.asset.endsWith(".svg") && (section === 4 || (section === 3 && material.asset.includes("/section-3/")));
-  return ` width="${dimensions.width}" height="${dimensions.height}"${readableDiagram ? ` style="min-width:${Math.round(dimensions.width * 0.8)}px"` : ""}`;
+  const minimumWidth = readableDiagram ? Math.round(dimensions.width * 0.8) : section === 7 && material.asset.endsWith(".png") ? 960 : null;
+  return ` width="${dimensions.width}" height="${dimensions.height}"${minimumWidth ? ` style="min-width:${minimumWidth}px"` : ""}`;
 }
 
 function renderReviewedVisual(material, section) {
@@ -144,7 +146,7 @@ function renderLessonContents(lesson) {
 }
 
 function renderLearningRoute(lesson) {
-  if ([2, 3, 4, 6].includes(lesson.section)) {
+  if ([2, 3, 4, 6, 7, 8].includes(lesson.section)) {
     const link = n => { const item=courseV3Lessons[n-1]; return `<li><a href="../${item.route}/">Lesson ${String(n).padStart(3,"0")} · ${escapeHtml(item.title)}</a></li>`; };
     return `<aside class="learning-route" aria-label="Preparation and related learning"><p><strong>Before this lesson</strong></p>${lesson.prerequisiteLessons.length ? `<ul>${lesson.prerequisiteLessons.map(link).join("")}</ul>` : '<p>Start with familiar uses of shared files, printers and internet access. This lesson establishes the networking vocabulary.</p>'}${lesson.relatedLessons?.length ? `<p><strong>Related review and later applications</strong></p><p>These connections are not additional prerequisites.</p><ul>${lesson.relatedLessons.map(link).join("")}</ul>` : ''}</aside>`;
   }
@@ -164,7 +166,7 @@ function renderClassroomToolbar(lesson) {
 
 function renderUnitCheckpoint(unit) {
   if (!unit.checkpoint) return "";
-  return `<aside class="unit-checkpoint"><h4>Check your understanding</h4><p>${escapeHtml(unit.checkpoint.prompt)}</p><details><summary>Check your answer</summary><p>${escapeHtml(unit.checkpoint.answer)}</p></details>${["REVIEW-1-2", "REVIEW-1-3", "REVIEW-1-6", "REVIEW-2-3", "REVIEW-2-4"].includes(unit.syllabusId) ? "" : `<a class="back-to-contents" href="#lesson-contents">Back to lesson contents</a>`}</aside>`;
+  return `<aside class="unit-checkpoint"><h4>Check your understanding</h4><p>${escapeHtml(unit.checkpoint.prompt)}</p><details><summary>Check your answer</summary><p>${escapeHtml(unit.checkpoint.answer)}</p></details>${unit.unitKey === "S7-REVIEW" || ["REVIEW-1-2", "REVIEW-1-3", "REVIEW-1-6", "REVIEW-2-3", "REVIEW-2-4"].includes(unit.syllabusId) ? "" : `<a class="back-to-contents" href="#lesson-contents">Back to lesson contents</a>`}</aside>`;
 }
 
 function renderCoreBlock(block, headingLevel = 5) {
@@ -184,7 +186,7 @@ function renderUnit(unit, unitIndex, lesson) {
   const extensions = (unit.extensions ?? []).map(extension => `<details class="unit-extension"><summary>${escapeHtml(extension.title)}</summary><p>${escapeHtml(extension.explanation)}</p>${extension.materials.map(material => renderMaterial(material, lesson.section)).join("")}</details>`).join("");
   const core = `<section class="explanation-copy core-explanation" data-role="core-explanation"><h4>Core explanation${unit.teachingBlocks ? " · Exam essentials" : ""}</h4>${unit.teachingBlocks ? `<ul>${unit.coreExplanation.map(point => `<li>${escapeHtml(point)}</li>`).join("")}</ul>` : unit.coreBlocks ? unit.coreBlocks.map(block => renderCoreBlock(block)).join("") : unit.coreExplanation.map((paragraph) => `<p>${escapeHtml(paragraph)}</p>`).join("")}</section>`;
   const teaching = unit.teachingBlocks ? `<section class="explanation-copy teaching-explanation" data-role="detailed-explanation" aria-label="Detailed explanation">${unit.teachingBlocks.map(block => renderCoreBlock(block, 4)).join("")}</section>` : "";
-  return `<article class="knowledge-unit"${[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].includes(lesson.section) || unit.unitKey === "S6-REVIEW" ? ` id="unit-${unitIndex + 1}"` : ""} data-unit-index="${unitIndex + 1}" data-syllabus-id="${escapeHtml(unit.syllabusId)}" data-objectives="${unit.objectiveIds.join(" ")}"><header class="unit-heading"><span class="section-number">${String(unitIndex + 1).padStart(2, "0")}</span><div><h3>${escapeHtml(unit.heading)}</h3><div class="objective-row">${objectiveBadges(unit.objectiveIds)}</div></div></header><div class="lead-visual" data-role="lead-visual"><p class="unit-stage-label">Visual overview</p>${renderMaterial(unit.leadVisual, lesson.section)}</div>${teaching || core}${supportingAfterExample ? "" : supporting}${unit.method ? `<div class="unit-method" data-role="method">${renderMaterial(unit.method, lesson.section)}</div>` : ""}${unit.workedExample ? `<div class="unit-worked-example" data-role="worked-example">${renderMaterial(unit.workedExample, lesson.section)}</div>` : ""}${supportingAfterExample ? supporting : ""}${teaching ? core : ""}${extensions}<aside class="misconception"><strong>Common misconception</strong>${unit.misconceptions.map((item) => `<p>${escapeHtml(item)}</p>`).join("")}</aside>${([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].includes(lesson.section) || ["REVIEW-1-2", "REVIEW-1-3", "REVIEW-1-6", "REVIEW-2-3", "REVIEW-2-4"].includes(unit.syllabusId)) ? renderUnitCheckpoint(unit) : ""}</article>`;
+  return `<article class="knowledge-unit"${[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].includes(lesson.section) || ["S6-REVIEW", "S7-REVIEW"].includes(unit.unitKey) ? ` id="unit-${unitIndex + 1}"` : ""} data-unit-index="${unitIndex + 1}" data-syllabus-id="${escapeHtml(unit.syllabusId)}" data-objectives="${unit.objectiveIds.join(" ")}"><header class="unit-heading"><span class="section-number">${String(unitIndex + 1).padStart(2, "0")}</span><div><h3>${escapeHtml(unit.heading)}</h3><div class="objective-row">${objectiveBadges(unit.objectiveIds)}</div></div></header><div class="lead-visual" data-role="lead-visual"><p class="unit-stage-label">Visual overview</p>${renderMaterial(unit.leadVisual, lesson.section)}</div>${teaching || core}${supportingAfterExample ? "" : supporting}${unit.method ? `<div class="unit-method" data-role="method">${renderMaterial(unit.method, lesson.section)}</div>` : ""}${unit.workedExample ? `<div class="unit-worked-example" data-role="worked-example">${renderMaterial(unit.workedExample, lesson.section)}</div>` : ""}${supportingAfterExample ? supporting : ""}${teaching ? core : ""}${extensions}<aside class="misconception"><strong>Common misconception</strong>${unit.misconceptions.map((item) => `<p>${escapeHtml(item)}</p>`).join("")}</aside>${([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].includes(lesson.section) || unit.unitKey === "S7-REVIEW" || ["REVIEW-1-2", "REVIEW-1-3", "REVIEW-1-6", "REVIEW-2-3", "REVIEW-2-4"].includes(unit.syllabusId)) ? renderUnitCheckpoint(unit) : ""}</article>`;
 }
 
 function renderQuestionDiagram(question) {
@@ -324,6 +326,7 @@ for (const [name, svg] of Object.entries(section9DiagramFiles())) write(join(roo
 for (const [name, svg] of Object.entries(section12DiagramFiles())) write(join(root, "web/assets/course-v3/section-12", name), svg);
 for (const [name, svg] of Object.entries(section10DiagramFiles())) write(join(root, "web/assets/course-v3/section-10", name), svg);
 for (const [name, svg] of Object.entries(section6DiagramFiles())) write(join(root, "web/assets/course-v3/section-6", name), svg);
+for (const [name, svg] of Object.entries(section7DiagramFiles)) write(join(root, "web/assets/course-v3/section-7", name), svg);
 write(join(outRoot, "course.css"), globalCss + `
 /* Supplied three-column truth tables remain fully visible on phones. */
 :is([data-question-id="S3-L06-Q4"],[data-question-id="S3-L06-EXAM-3"]) .table-scroll{max-width:420px}

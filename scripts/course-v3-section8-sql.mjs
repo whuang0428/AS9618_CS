@@ -89,6 +89,28 @@ section8SqlCases.qDelete.setup = "INSERT INTO Stock VALUES (32, 'Stand', 4);";
 section8SqlCases.qUpdate.setup = "INSERT INTO Stock VALUES (32, 'Stand', 4); DELETE FROM Stock WHERE StockID = 31;";
 section8SqlCases.nullAggregate.setup = "CREATE TABLE FeeSample (Fee REAL); INSERT INTO FeeSample VALUES (2),(NULL),(4);";
 
+// Each variant starts from its named fixture; it never changes another example's input.
+section8Databases.sortTies = {
+  setup: "CREATE TABLE Charge (ChargeID INTEGER PRIMARY KEY, Fee REAL); INSERT INTO Charge VALUES (1,3),(2,6),(3,3);",
+  tables: [{title:"Charge: a separate sorting example",headers:["ChargeID","Fee"],rows:[[1,3],[2,6],[3,3]]}],
+};
+Object.assign(section8SqlCases, {
+  qCombined: query("books", "SELECT Book.BookID, Book.Title, COUNT(*) AS SaleCount, SUM(Sale.Quantity) AS TotalQuantity\nFROM Book INNER JOIN Sale ON Book.BookID = Sale.BookID\nWHERE Sale.Quantity >= 2\nGROUP BY Book.BookID, Book.Title\nORDER BY SUM(Sale.Quantity) DESC, Book.BookID ASC;", ["BookID","Title","SaleCount","TotalQuantity"], [[3,"River",1,4],[1,"Atlas",1,3],[2,"Orbit",1,2],[4,"Map",1,2]]),
+  filterOr: query("library", "SELECT LoanID FROM Loan\nWHERE Returned = FALSE OR Fee >= 3\nORDER BY LoanID;", ["LoanID"], [[201],[202],[203],[205]]),
+  filterGrouped: query("library", "SELECT LoanID FROM Loan\nWHERE (MemberID = 1 OR MemberID = 2) AND Returned = FALSE\nORDER BY LoanID;", ["LoanID"], [[201],[203],[205]]),
+  filterUngrouped: query("library", "SELECT LoanID FROM Loan\nWHERE MemberID = 1 OR MemberID = 2 AND Returned = FALSE\nORDER BY LoanID;", ["LoanID"], [[201],[202],[203],[205]]),
+  noMatches: query("library", "SELECT LoanID FROM Loan WHERE Fee > 6;", ["LoanID"], []),
+  sortTies: query("sortTies", "SELECT ChargeID, Fee FROM Charge\nORDER BY Fee DESC, ChargeID DESC;", ["ChargeID","Fee"], [[2,6],[3,3],[1,3]]),
+  combined: query("library", "SELECT Member.MemberName, COUNT(*) AS LoanCount,\n       SUM(Loan.Fee) AS TotalFee, AVG(Loan.Fee) AS MeanFee\nFROM Member INNER JOIN Loan\nON Member.MemberID = Loan.MemberID\nWHERE Loan.Returned = FALSE\nGROUP BY Member.MemberID, Member.MemberName\nORDER BY SUM(Loan.Fee) DESC, Member.MemberID ASC;", ["MemberName","LoanCount","TotalFee","MeanFee"], [["Ben",2,9,4.5],["Asha",1,2,2]]),
+  emptyAggregate: query("library", "SELECT COUNT(*) AS LoanCount, SUM(Fee) AS TotalFee, AVG(Fee) AS MeanFee\nFROM Loan WHERE Fee > 6;", ["LoanCount","TotalFee","MeanFee"], [[0,null,null]]),
+  noUpdate: change("stock", "UPDATE Stock SET Quantity = 8 WHERE StockID = 99;", "SELECT * FROM Stock ORDER BY StockID;", [[30,"Cable",6],[31,"Adapter",2]]),
+  multiUpdate: change("library", "UPDATE Loan SET Returned = TRUE, Fee = 0 WHERE LoanID = 203;", "SELECT * FROM Loan ORDER BY LoanID;", [[201,1,2,0],[202,1,4,1],[203,2,0,1],[204,3,0,1],[205,2,3,0]]),
+});
+section8SqlCases.sameName = {
+  ...query("library", "SELECT Member.MemberID, Member.MemberName, COUNT(*) AS LoanCount\nFROM Member INNER JOIN Loan ON Member.MemberID = Loan.MemberID\nWHERE Loan.Returned = FALSE\nGROUP BY Member.MemberID, Member.MemberName\nORDER BY Member.MemberID;", ["MemberID","MemberName","LoanCount"], [[1,"Asha",1],[2,"Ben",2],[5,"Asha",1]]),
+  setup: "INSERT INTO Member VALUES (5,'Asha',TRUE); INSERT INTO Loan VALUES (206,5,4,FALSE);",
+};
+
 export const section8Ddl = {
   database: "CREATE DATABASE SchoolLibrary;",
   tables: `CREATE TABLE Tutor (\n    TutorID INTEGER,\n    TutorName VARCHAR(40),\n    PRIMARY KEY (TutorID)\n);\nCREATE TABLE Student (\n    StudentID INTEGER,\n    Initial CHARACTER(1),\n    StudentName VARCHAR(40),\n    Active BOOLEAN,\n    Score REAL,\n    BirthDate DATE,\n    ArrivalTime TIME,\n    TutorID INTEGER,\n    PRIMARY KEY (StudentID),\n    FOREIGN KEY (TutorID) REFERENCES Tutor(TutorID)\n);`,
@@ -99,4 +121,5 @@ export const section8Ddl = {
   practiceForeign: "CREATE TABLE Allocation (AllocationID INTEGER, LockerID INTEGER, PRIMARY KEY (AllocationID), FOREIGN KEY (LockerID) REFERENCES Locker(LockerID));",
   examTables: "CREATE TABLE Venue (VenueID INTEGER, VenueName VARCHAR(50), PRIMARY KEY (VenueID));\nCREATE TABLE Booking (BookingID INTEGER, VenueID INTEGER, BookingDate DATE, Confirmed BOOLEAN, PRIMARY KEY (BookingID), FOREIGN KEY (VenueID) REFERENCES Venue(VenueID));",
   examAlter: "ALTER TABLE Booking ADD Cost REAL;",
+  addConstraints: "ALTER TABLE Tutor ADD PRIMARY KEY (TutorID);\nALTER TABLE Student ADD FOREIGN KEY (TutorID) REFERENCES Tutor(TutorID);",
 };

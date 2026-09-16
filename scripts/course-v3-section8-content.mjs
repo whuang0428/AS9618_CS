@@ -1,4 +1,5 @@
 import { addSection8Visual } from "./course-v3-section8-visuals.mjs";
+import { enhanceSection8Teaching, enhanceSection8Review } from "./course-v3-section8-teaching.mjs";
 import { section8Databases as databases, section8SqlCases as sql, section8Ddl as ddl } from "./course-v3-section8-sql.mjs";
 
 // Authored S8 teaching and lesson assessments, with explicit objective ownership.
@@ -312,14 +313,14 @@ export function authorSection8Lesson(source) {
     const index = source.syllabusIds.includes("S8.10") ? 5 : source.syllabusIds.includes("S8.08") ? 4 : source.originalLesson - 39;
     const authored = structuredClone(authoredLessons[index]);
     if (!authored) throw new Error(`Missing S8 lesson for ${source.syllabusIds}`);
-    return {
+    return enhanceSection8Teaching({
       ...source, ...authored, units: authored.units.map(addSection8Visual), summaryMode: "authored",
       teachingCheckpoints: ["Attempt each knowledge-unit check before revealing the answer.", "Trace the supplied example, then attempt the practice and independent exam questions.", ...(index >= 4 ? ["For SQL, compare the exact result or changed records with the specified data and constraints."] : [])],
       sources: [
         "Cambridge 9618 2027–2029 syllabus, sections 8.1–8.3: https://www.cambridgeinternational.org/Images/721397-2027-2029-syllabus.pdf",
         "Original database scenarios, SQL examples, practice questions and marking points.",
       ],
-    };
+    },index+1);
   }
   if (source.kind !== "review" || source.paper !== 1) return source;
   const objectiveIds = source.objectives.filter(([id]) => id.startsWith("S8.")).map(([id]) => id);
@@ -334,5 +335,5 @@ export function authorSection8Lesson(source) {
     question("REV-P1-S8-Q3", "A developer uses a DBMS interface to define Courier(CourierID INTEGER, CourierName VARCHAR(30), PRIMARY KEY (CourierID)). Explain the roles of the developer interface, data dictionary and query processor. Identify the language category used to create this table and state what the definition permits and prevents.", ["S8.05.R","S8.06.R","S8.07.R","S8.08.R","S8.09.R"], ["The developer interface provides tools through which the developer submits definitions or builds the application.","The dictionary records metadata such as Courier's fields, data types and key constraint.","The query processor interprets and plans submitted queries and coordinates their execution.","CREATE TABLE is SQL DDL and defines a structure without inserting courier records.","CourierName can contain up to 30 characters; the CourierID primary key forbids duplicate and null identifier values."], "The dictionary contains metadata rather than the courier records themselves."),
     question("REV-P1-S8-Q4", "Using Member and Loan, write a query returning each member name and number of unreturned loans, grouped by MemberID and MemberName and ordered by MemberID. State the result. Then write SQL marking LoanID 205 as returned and explain why that update must not identify the loan by MemberID alone.", ["S8.10.R","S8.11.R"], ["INNER JOIN matches Member.MemberID with Loan.MemberID and WHERE selects Returned = FALSE.","SELECT requests MemberName and COUNT(*), grouped by the specified member fields and ordered by MemberID.","The query returns (Asha, 1) and (Ben, 2).","UPDATE Loan SET Returned = TRUE WHERE LoanID = 205; changes only the specified loan.","A MemberID 2 filter would also target Ben's LoanID 203."], "Run the query on the supplied initial data before applying the update.", {tables:databases.library.tables.map((_,i)=>dataTable("library",i)),answerCode:sql.reviewQuery.sql + "\n\nUPDATE Loan SET Returned = TRUE WHERE LoanID = 205;",answerTable:resultTable("reviewQuery")}),
   ];
-  return { ...source, units:source.units.map((u)=>u.heading === "Section 8: Databases" ? review : u), practice:[...source.practice.filter((q)=>q.id !== "V3-Q-L045-02"),...reviewQuestions] };
+  return enhanceSection8Review({ ...source, units:source.units.map((u)=>u.heading === "Section 8: Databases" ? review : u), practice:[...source.practice.filter((q)=>q.id !== "V3-Q-L045-02"),...reviewQuestions] });
 }

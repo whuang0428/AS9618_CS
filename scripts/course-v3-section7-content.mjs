@@ -1,5 +1,6 @@
 // S7 teaching and assessment ownership is authored explicitly.
 import { addSection7Visual } from "./course-v3-section7-visuals.mjs";
+import { enhanceSection7Teaching, enhanceSection7Review } from './course-v3-section7-teaching.mjs';
 const ids = (r, ...ns) => ns.map((n) => `S7.${String(r).padStart(2, "0")}.A${String(n).padStart(2, "0")}`);
 const objective = (r, n, text) => [ids(r, n)[0], text];
 const table = (title, headers, rows) => ({ type: "table", title, headers, rows, preserveText: true });
@@ -211,7 +212,7 @@ const artificialIntelligence = {
     q(4, 2, "Describe an AI speech-to-text application using its input, recognition task, output and practical use.", ids(6, 2), ["Recorded or live speech supplies audio input.", "The system recognises speech patterns and infers the spoken words.", "It produces text that can be used for captions or dictation."], "Connect the stages instead of listing unrelated AI application areas."),
     q(4, 3, "An AI payment service flags unusual transactions for staff review. Describe what the model analyses and how its output is used; explain why a flag is not proof of fraud.", ids(6, 2), ["The model examines features of a new payment in relation to transaction patterns.", "A risk flag directs staff attention to a payment needing investigation.", "A legitimate unusual payment can also be flagged, so further evidence is needed."], "A prediction or classification may be wrong."),
     q(4, 4, "Automatic captions work well for one accent but often misrecognise another. Explain one social benefit and one social risk of using them in an online lesson, and suggest a safeguard.", ids(6, 3), ["Captions can give students who cannot hear the audio access to the spoken lesson.", "Students relying on poorly recognised speech may receive inaccurate information and unequal access.", "Provide a way to correct captions or supply checked lesson text for affected users."], "Name the students affected and connect the safeguard to caption errors."),
-    q(4, 5, "A factory uses AI to predict machine faults. Explain one economic benefit, one system cost and one possible effect on workers.", ids(6, 4), ["Earlier repair scheduling can reduce production time lost to unexpected breakdowns.", "Sensors, model operation and integration require expenditure even when forecasts are useful.", "Maintenance staff may need retraining to interpret alerts and plan work differently."], "Do not treat a reduction in emergency repairs as elimination of all maintenance jobs."),
+    q(4, 5, "A factory uses an AI system that forecasts machine faults. Explain one economic benefit, one system cost and one possible effect on workers.", ids(6, 4), ["Earlier repair scheduling can reduce production time lost to unexpected breakdowns.", "Sensors, model operation and integration require expenditure even when forecasts are useful.", "Maintenance staff may need retraining to interpret alerts and plan work differently."], "Do not treat a reduction in emergency repairs as elimination of all maintenance jobs."),
     q(4, 6, "An AI system reduces a building's heating demand but requires new servers. Explain one environmental benefit and two environmental costs that should be considered.", ids(6, 5), ["Lower heating demand can reduce fuel or electricity consumption in the building.", "Running and cooling the servers consumes energy and may add emissions.", "Making and eventually replacing the servers uses materials and creates disposal impacts."], "Include the AI equipment's footprint as well as the controlled building's saving."),
     q(4, 7, "A recruitment firm wants AI to reject applicants automatically. Testing shows good overall accuracy but much poorer results for one group. Evaluate automatic rejection and recommend a safeguard.", ids(6, 3, 6), ["Automated screening can process applications quickly, reducing routine staff workload.", "The poorer group performance can unfairly exclude suitable applicants, so the overall average is insufficient evidence of fairness.", "Use audited assistance with human review and an appeal route rather than final rejection solely from the model.", "Deployment should depend on investigating the unequal errors and showing that review can address them."], "A judgement must use the supplied group-performance evidence."),
     q(4, 8, "A delivery company claims its AI route planner is environmentally beneficial because its computers are efficient. Explain why this evidence alone is insufficient and suggest a more useful comparison.", ids(6, 5, 6), ["Efficient computers still consume resources and do not establish that the resulting vehicle routes save fuel.", "Compare total vehicle fuel use and the planning system's energy and hardware impacts with those of the previous routing approach."], "State a baseline and evaluate the whole application rather than one component."),
@@ -230,16 +231,17 @@ export function authorSection7Lesson(source) {
   if (source.section === 7) {
     const authored = structuredClone(authoredLessons[source.originalLesson]);
     if (!authored) throw new Error(`Missing S7 lesson ${source.originalLesson}`);
-    return {
+    return enhanceSection7Teaching({
       ...source, ...authored, units: authored.units.map(addSection7Visual), summaryMode: "authored",
       teachingCheckpoints: ["Answer each knowledge-unit check before revealing its explanation.", "Use the worked scenario to connect a claim to evidence, then attempt the practice and independent exam questions."],
       sources: [
         "Cambridge 9618 2027–2029 syllabus 7.1: https://www.cambridgeinternational.org/Images/721397-2027-2029-syllabus.pdf",
-        ...(source.originalLesson === 35 ? ["BCS Code of Conduct: https://www.bcs.org/membership-and-registrations/become-a-member/bcs-code-of-conduct/"] : []),
+        ...([35, 36].includes(source.originalLesson) ? ["BCS Code of Conduct: https://www.bcs.org/membership-and-registrations/become-a-member/bcs-code-of-conduct/"] : []),
         ...(source.originalLesson === 37 ? ["FSF software freedoms: https://www.gnu.org/philosophy/free-sw.en.html", "GNU software categories: https://www.gnu.org/philosophy/categories.en.html", "OSI Open Source Definition: https://opensource.org/osd", "WIPO copyright overview: https://www.wipo.int/en/web/copyright/faq-copyright"] : []),
         "Original teaching scenarios, practice questions and marking points.",
+        "Numerical examples are invented teaching data, not reported AI performance. Optional extensions are labelled separately.",
       ],
-    };
+    }, source.originalLesson - 34);
   }
   if (source.kind !== "review" || source.paper !== 1) return source;
   const objectiveIds = source.objectives.filter(([id]) => id.startsWith("S7.")).map(([id]) => id);
@@ -255,9 +257,9 @@ export function authorSection7Lesson(source) {
     question("REV-P1-S7-Q3", "An archive needs to adapt an indexer and distribute it to partner archives. Licence A supplies source and permits both acts if notices remain. Licence B permits one unmodified installation. Justify a choice and state a continuing responsibility.", ["S7.05.R"], ["A authorises the adaptation needed for the archive's index format.", "A permits distribution to partners whereas B's single-installation condition does not cover that plan.", "The archive must retain the specified notices in its distributed versions."], "Use the permissions in the question rather than guessing from the licence name."),
     question("REV-P1-S7-Q4", "A transport service uses AI to recognise spoken destinations. Describe this application and explain one social benefit, one economic cost and one environmental cost.", ["S7.06.R"], ["The system interprets passengers' audio to produce recognised destination information for journey planning.", "Voice input may help passengers who cannot conveniently use a keyboard or touch screen.", "The service must fund development or purchase, integration and continued support of recognition.", "Processing speech and operating the supporting equipment consumes electricity and hardware resources."], "Distinguish the AI task from its consequences in each requested dimension."),
   ];
-  return {
+  return enhanceSection7Review({
     ...source,
     units: source.units.map((u) => u.heading === "Section 7: Ethics and ownership" ? reviewUnit : u),
     practice: [...source.practice, ...practice],
-  };
+  });
 }
