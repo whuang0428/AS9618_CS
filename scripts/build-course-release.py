@@ -83,6 +83,8 @@ def main() -> None:
         ROOT / "web/course-v3/index.html",
         ROOT / "web/course-v3/course.css",
         ROOT / "web/course-v3/course.js",
+        ROOT / "web/course-v3/section-4-interactive.css",
+        ROOT / "web/course-v3/section-4-interactive-bundle.js",
         ROOT / "web/academic-theme.css",
         ROOT / "web/course-v2.css",
         ROOT / "web/stage7-accessibility.css",
