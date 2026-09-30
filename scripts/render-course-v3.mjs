@@ -1,11 +1,11 @@
 import { renderPastPaperQuestions, minuteRange } from './course-v3-past-paper-render.mjs';
 import { renderPracticalLabs } from "./course-v3-practical-labs.mjs";
-import "./generate-resource-hub.mjs";
+if (!process.argv.includes("--section2") && !process.argv.includes("--section1") && !process.argv.includes("--section8") && !process.argv.includes("--section9") && !process.argv.includes("--section10") && !process.argv.includes("--section11") && !process.argv.includes("--section12")) await import("./generate-resource-hub.mjs");
 import { mechanismDiagramFiles } from "./course-v3-mechanism-diagrams.mjs";
 import { imageDimensions } from "./image-dimensions.mjs";
 import { createHash } from "node:crypto";
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
-import { dirname, join } from "node:path";
+import { dirname, join, relative } from "node:path";
 import { fileURLToPath } from "node:url";
 
 import { courseV3Lessons, courseV3Meta, sectionMeta } from "./course-v3-content.mjs";
@@ -13,21 +13,111 @@ import { unitMaterials } from "./course-v3-presentation.mjs";
 import { officialAsMapping } from "./syllabus-official-as-mapping.mjs";
 import { section3DiagramFiles } from "./course-v3-section3-diagrams.mjs";
 import { section2DiagramFiles } from "./course-v3-section2-diagrams.mjs";
+import { renderSection2AcademicFigures } from "./course-v3-section2-academic-figures.mjs";
+import { renderSection2Classroom, renderSection2Overview, section2GroupObjectives, section2PapersForLesson } from "./course-v3-section2-classroom.mjs";
+import { section2Journey, section2Sessions, section2PaperCoverageNotes } from "./course-v3-section2-journey.mjs";
+import { renderSection1Classroom, renderSection1Overview, section1GroupObjectives, section1PapersForLesson } from "./course-v3-section1-classroom.mjs";
+import { section1Journey, section1Sessions, section1PaperCoverageNotes } from "./course-v3-section1-journey.mjs";
 import { section1DiagramFiles } from "./course-v3-section1-diagrams.mjs";
 import { section4Assessment, section4MockQuestion } from './course-v3-section4-assessments.mjs';
 import { section4DiagramFiles } from "./course-v3-section4-diagrams.mjs";
+import { section5DiagramFiles } from "./course-v3-section5-diagrams.mjs";
+import { renderSection5Classroom, renderSection5Overview, groupObjectives as section5GroupObjectives, section5PapersForLesson } from "./course-v3-section5-classroom.mjs";
+import { section5Journey, section5Sessions, section5PaperCoverageNotes } from "./course-v3-section5-journey.mjs";
+import { renderSection3Classroom, renderSection3Overview, groupObjectives, section3PapersForLesson, paperIdsForGroup } from "./course-v3-section3-classroom.mjs";
+import { section3Journey, section3Sessions } from "./course-v3-section3-journey.mjs";
+import { renderSection4Classroom, renderSection4Overview, groupObjectives as section4GroupObjectives, section4PapersForLesson } from "./course-v3-section4-classroom.mjs";
+import { section4Journey, section4Sessions, section4PaperCoverageNotes } from "./course-v3-section4-journey.mjs";
 import { section8DiagramFiles } from "./course-v3-section8-diagrams.mjs";
 import { section11Assessments } from "./course-v3-section11-assessments.mjs";
 import { section11DiagramFiles } from "./course-v3-section11-diagrams.mjs";
 import { section9DiagramFiles } from "./course-v3-section9-diagrams.mjs";
 import { section10DiagramFiles } from "./course-v3-section10-diagrams.mjs";
 import { section12DiagramFiles } from "./course-v3-section12-diagrams.mjs";
+import { section12ClassroomFigures } from "./course-v3-section12-classroom-figures.mjs";
 import { section12Assessment, section12MockQuestions } from "./course-v3-section12-assessments.mjs";
 import { section10Assessments } from "./course-v3-section10-content.mjs";
 import { section6DiagramFiles } from "./course-v3-section6-diagrams.mjs";
 import { section7DiagramFiles } from "./course-v3-section7-diagrams.mjs";
+import { section7AcademicScene } from "./course-v3-section7-academic-scene.mjs";
+import { renderSection7AcademicConceptFigures } from "./course-v3-section7-academic-concepts.mjs";
+import { renderSection8AcademicFigures } from "./course-v3-section8-academic-figures.mjs";
+import { renderSection7Classroom, renderSection7Overview, section7GroupObjectives, section7PapersForLesson } from "./course-v3-section7-classroom.mjs";
+import { section7Journey, section7Sessions, section7PaperCoverageNotes } from "./course-v3-section7-journey.mjs";
+import { renderSection8ClassroomFigures } from "./course-v3-section8-classroom-figures.mjs";
+import { renderSection8Classroom, renderSection8Overview, section8GroupObjectives, section8PapersForLesson } from "./course-v3-section8-classroom.mjs";
+import { section8Journey, section8Sessions, section8Modules, section8PaperCoverageNotes } from "./course-v3-section8-journey.mjs";
+import { renderSection9Classroom, renderSection9Overview, section9GroupObjectives, section9PapersForLesson } from "./course-v3-section9-classroom.mjs";
+import { section9Journey, section9Sessions, section9PaperCoverageNotes } from "./course-v3-section9-journey.mjs";
+// A Section 9 rebuild does not evaluate another classroom that may be in progress.
+const { renderSection10Classroom, renderSection10Overview, section10GroupObjectives, section10PapersForLesson } = process.argv.includes('--section9') ? {} : await import("./course-v3-section10-classroom.mjs");
+const { section10Journey = {}, section10Sessions, section10PaperCoverageNotes } = process.argv.includes('--section9') ? {} : await import("./course-v3-section10-journey.mjs");
+
+const section11Enabled = !['--section2', '--section1', '--section8', '--section9', '--section10', '--section12'].some(flag => process.argv.includes(flag));
+const { renderSection11Classroom, renderSection11Overview, section11GroupObjectives, section11PapersForLesson } = section11Enabled ? await import("./course-v3-section11-classroom.mjs") : {};
+const { section11Journey = {}, section11Sessions, section11PaperCoverageNotes } = section11Enabled ? await import("./course-v3-section11-journey.mjs") : {};
+
+const section12Enabled = !['--section2', '--section1', '--section8', '--section9', '--section10', '--section11'].some(flag => process.argv.includes(flag));
+const { renderSection12Classroom, renderSection12Overview, section12GroupObjectives, section12PapersForLesson } = section12Enabled ? await import('./course-v3-section12-classroom.mjs') : {};
+const { section12Journey = {}, section12Sessions, section12PaperCoverageNotes } = section12Enabled ? await import('./course-v3-section12-journey.mjs') : {};
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
+const section2PaperPool = courseV3Lessons.filter(lesson => lesson.section === 2).flatMap(lesson => lesson.pastPaperQuestions);
+for (const lesson of courseV3Lessons.filter(lesson => lesson.section === 2)) lesson.pastPaperQuestions = section2PapersForLesson(lesson, section2PaperPool);
+const section1PaperPool = courseV3Lessons.filter(lesson => lesson.section === 1).flatMap(lesson => lesson.pastPaperQuestions);
+for (const lesson of courseV3Lessons.filter(lesson => lesson.section === 1)) lesson.pastPaperQuestions = section1PapersForLesson(lesson, section1PaperPool);
+for (const lesson of courseV3Lessons.filter(lesson => lesson.section === 3)) lesson.pastPaperQuestions = section3PapersForLesson(lesson);
+const section4PaperPool = courseV3Lessons.filter(lesson => lesson.section === 4).flatMap(lesson => lesson.pastPaperQuestions);
+for (const lesson of courseV3Lessons.filter(lesson => lesson.section === 4)) lesson.pastPaperQuestions = section4PapersForLesson(lesson, section4PaperPool);
+const section5PaperPool = courseV3Lessons.filter(lesson => lesson.section === 5).flatMap(lesson => lesson.pastPaperQuestions);
+for (const lesson of courseV3Lessons.filter(lesson => lesson.section === 5)) lesson.pastPaperQuestions = section5PapersForLesson(lesson, section5PaperPool);
+const section7PaperPool = courseV3Lessons.filter(lesson => lesson.section === 7).flatMap(lesson => lesson.pastPaperQuestions);
+for (const lesson of courseV3Lessons.filter(lesson => lesson.section === 7)) lesson.pastPaperQuestions = section7PapersForLesson(lesson, section7PaperPool);
+const section8PaperPool = courseV3Lessons.flatMap(lesson => lesson.pastPaperQuestions);
+for (const lesson of courseV3Lessons.filter(lesson => lesson.section === 8)) lesson.pastPaperQuestions = section8PapersForLesson(lesson, section8PaperPool);
+const section9PaperPool = courseV3Lessons.flatMap(lesson => lesson.pastPaperQuestions);
+const section9ObjectiveText = new Map(courseV3Lessons.filter(lesson => lesson.section === 9).flatMap(lesson => lesson.objectives));
+for (const lesson of courseV3Lessons.filter(lesson => lesson.section === 9)) {
+  // A teaching session may revisit a foundation owned by another stable lesson route.
+  const objectives = new Set([...lesson.objectives.map(([id]) => id), ...section9Journey[lesson.sequenceIndex].groups.flatMap(group => group.objectiveIds)]);
+  lesson.objectives = [...objectives].map(id => {
+    if (!section9ObjectiveText.has(id)) throw new Error(`Unknown Section 9 learning goal ${id}`);
+    return [id, section9ObjectiveText.get(id)];
+  });
+  lesson.pastPaperQuestions = section9PapersForLesson(lesson, section9PaperPool);
+}
+const section10PaperPool = courseV3Lessons.flatMap(lesson => lesson.pastPaperQuestions);
+const section10ObjectiveText = new Map(courseV3Lessons.filter(lesson => lesson.section === 10).flatMap(lesson => lesson.objectives));
+if (!process.argv.includes('--section9')) for (const lesson of courseV3Lessons.filter(lesson => lesson.section === 10)) {
+  const objectives = new Set([...lesson.objectives.map(([id]) => id), ...section10Journey[lesson.sequenceIndex].groups.flatMap(group => group.objectiveIds)]);
+  lesson.objectives = [...objectives].map(id => {
+    if (!section10ObjectiveText.has(id)) throw new Error(`Unknown Section 10 learning goal ${id}`);
+    return [id, section10ObjectiveText.get(id)];
+  });
+  lesson.pastPaperQuestions = section10PapersForLesson(lesson, section10PaperPool);
+}
+const section11PaperPool = courseV3Lessons.filter(lesson => lesson.section === 11).flatMap(lesson => lesson.pastPaperQuestions);
+const section11ObjectiveText = new Map(courseV3Lessons.filter(lesson => lesson.section === 11).flatMap(lesson => lesson.objectives));
+if (section11Enabled) for (const lesson of courseV3Lessons.filter(lesson => lesson.section === 11)) {
+  lesson.legacyPastPaperQuestions = [...lesson.pastPaperQuestions];
+  const objectives = new Set([...lesson.objectives.map(([id]) => id), ...section11Journey[lesson.sequenceIndex].groups.flatMap(group => group.objectiveIds)]);
+  lesson.objectives = [...objectives].map(id => {
+    if (!section11ObjectiveText.has(id)) throw new Error(`Unknown Section 11 learning goal ${id}`);
+    return [id, section11ObjectiveText.get(id)];
+  });
+  lesson.pastPaperQuestions = section11PapersForLesson(lesson, section11PaperPool);
+}
+const section12PaperPool = courseV3Lessons.filter(lesson => lesson.section === 12).flatMap(lesson => lesson.pastPaperQuestions);
+const section12ObjectiveText = new Map(courseV3Lessons.filter(lesson => lesson.section === 12).flatMap(lesson => lesson.objectives));
+if (section12Enabled) for (const lesson of courseV3Lessons.filter(lesson => lesson.section === 12)) {
+  lesson.legacyPastPaperQuestions = [...lesson.pastPaperQuestions];
+  const objectives = new Set([...lesson.objectives.map(([id]) => id), ...section12Journey[lesson.sequenceIndex].groups.flatMap(group => group.objectiveIds)]);
+  lesson.objectives = [...objectives].map(id => {
+    if (!section12ObjectiveText.has(id)) throw new Error(`Unknown Section 12 learning goal ${id}`);
+    return [id, section12ObjectiveText.get(id)];
+  });
+  lesson.pastPaperQuestions = section12PapersForLesson(lesson, section12PaperPool);
+}
 const outRoot = join(root, "web", "course-v3");
 const reviewedAssetRoot = join(root, "web");
 const sourceCss = readFileSync(join(root, "web", "course-v3", "section-2", "course.css"), "utf8");
@@ -52,8 +142,29 @@ const escapeHtml = (value = "") => String(value)
   .replaceAll('"', "&quot;")
   .replaceAll("'", "&#039;");
 const sha256 = (path) => createHash("sha256").update(readFileSync(path)).digest("hex");
-const write = (path, contents) => { mkdirSync(dirname(path), { recursive: true }); writeFileSync(path, contents); };
-const requirementCount = (lessons) => [3, 4, 9, 10, 11].includes(lessons[0]?.section)
+const section2Only = process.argv.includes('--section2');
+const section1Only = process.argv.includes('--section1');
+const section8Only = process.argv.includes('--section8');
+const section9Only = process.argv.includes('--section9');
+const section10Only = process.argv.includes('--section10');
+const section11Only = process.argv.includes('--section11');
+const section12Only = process.argv.includes('--section12');
+if ([section2Only, section1Only, section8Only, section9Only, section10Only, section11Only, section12Only].filter(Boolean).length > 1) throw new Error('Choose one scoped section per rebuild.');
+const selectedSection = section2Only ? 2 : section1Only ? 1 : section12Only ? 12 : section11Only ? 11 : section10Only ? 10 : section9Only ? 9 : section8Only ? 8 : null;
+// A scoped rebuild preserves unrelated work in this shared generated checkout.
+const write = (path, contents) => {
+  const name = relative(root, path);
+  if (section2Only && name !== 'scripts/course-v3-contract.json' && !/^web\/course-v3\/(?:lesson-0(?:0[7-9]|1[0-4])\/index\.html|section-2\/index\.html|section2(?:-models\.js|-labs\.js|-labs\.css|-classroom\.js|\.css))$/.test(name) && !name.startsWith('web/assets/course-v3/section-2/')) return;
+  if (section1Only && name !== 'scripts/course-v3-contract.json' && !/^web\/course-v3\/(?:lesson-00[1-6]\/index\.html|section-1\/index\.html|section1(?:-models\.js|-labs\.js|-labs\.css|-classroom\.js|\.css))$/.test(name) && !name.startsWith('web/assets/course-v3/section-1/')) return;
+  if (section8Only && name !== 'scripts/course-v3-contract.json' && !/^web\/course-v3\/(?:lesson-04[2-7]\/index\.html|section-8\/index\.html|section8[^/]*)$/.test(name) && !name.startsWith('web/assets/course-v3/section-8/')) return;
+  if (section9Only && name !== 'scripts/course-v3-contract.json' && !/^web\/course-v3\/(?:lesson-(?:049|05[0-7])\/index\.html|section-9\/index\.html|section9[^/]*)$/.test(name) && !name.startsWith('web/assets/course-v3/section-9/')) return;
+  if (section10Only && name !== 'scripts/course-v3-contract.json' && !/^web\/course-v3\/(?:lesson-(?:05[89]|06[0-9]|07[01])\/index\.html|section-10\/index\.html|section10[^/]*)$/.test(name) && !name.startsWith('web/assets/course-v3/section-10/')) return;
+  if (section11Only && name !== 'scripts/course-v3-contract.json' && !/^web\/course-v3\/(?:lesson-(?:07[2-9]|08[0-3])\/index\.html|section-11\/index\.html|section11[^/]*)$/.test(name) && !name.startsWith('web/assets/course-v3/section-11/')) return;
+  if (section12Only && name !== 'scripts/course-v3-contract.json' && !/^web\/course-v3\/(?:lesson-(?:08[4-9]|09[0-2])\/index\.html|section-12\/index\.html|section12[^/]*)$/.test(name) && !name.startsWith('web/assets/course-v3/section-12/')) return;
+  mkdirSync(dirname(path), { recursive: true });
+  if (!existsSync(path) || readFileSync(path, 'utf8') !== contents) writeFileSync(path, contents);
+};
+const requirementCount = (lessons) => [3, 4, 9, 10, 11, 12].includes(lessons[0]?.section)
   ? new Set(lessons.flatMap((lesson) => lesson.syllabusIds)).size
   : lessons.flatMap((lesson) => lesson.syllabusIds).length;
 const objectiveBadges = (ids) => ids.map((id) => `<span class="objective-badge">${escapeHtml(id)}</span>`).join("");
@@ -88,14 +199,14 @@ function renderAnalogy(material, section) {
 }
 
 function renderWorkedExample(material) {
-  return `<section class="teaching-material worked-example" data-material-type="worked-example" data-objectives="${material.objectiveIds.join(" ")}"><h4>Worked example · ${escapeHtml(material.title)}</h4><ol class="worked-steps">${material.steps.map(([label, text]) => `<li><strong>${escapeHtml(label)}</strong>${text.includes("\n") ? `<pre${material.objectiveIds.some(id=>/^S(?:4|6|9|10|11|12)\./.test(id)) ? ` tabindex="0" aria-label="${escapeHtml(label)}"` : ""}><code>${escapeHtml(text)}</code></pre>` : `<p>${escapeHtml(text)}</p>`}</li>`).join("")}</ol></section>`;
+  return `<section class="teaching-material worked-example" data-material-type="worked-example" data-objectives="${material.objectiveIds.join(" ")}"><h4>Worked example · ${escapeHtml(material.title)}</h4><ol class="worked-steps">${material.steps.map(([label, text]) => `<li><strong>${escapeHtml(label)}</strong>${text.includes("\n") ? `<pre${material.objectiveIds.some(id=>/^S(?:4|5|6|9|10|11|12)\./.test(id)) ? ` tabindex="0" aria-label="${escapeHtml(label)}"` : ""}><code>${escapeHtml(text)}</code></pre>` : `<p>${escapeHtml(text)}</p>`}</li>`).join("")}</ol></section>`;
 }
 
 function imageSizeAttributes(material, section) {
   if (material.layout !== "mechanism" && ![1, 4, 7, 8, 9, 10, 11, 12].includes(section)) return "";
   const dimensions = imageDimensions(join(reviewedAssetRoot, webAssetPath(material.asset, section).replace(/^\//, "")));
   if (!dimensions) throw new Error(`Missing intrinsic dimensions for S${section} image ${material.asset}`);
-  const readableDiagram = material.asset.endsWith(".svg") && (section === 4 || (section === 3 && material.asset.includes("/section-3/")));
+  const readableDiagram = material.asset.endsWith(".svg") && ([4, 5].includes(section) || (section === 3 && material.asset.includes("/section-3/")));
   const minimumWidth = readableDiagram ? Math.round(dimensions.width * 0.8) : section === 7 && material.asset.endsWith(".png") ? 960 : null;
   return ` width="${dimensions.width}" height="${dimensions.height}"${minimumWidth ? ` style="min-width:${minimumWidth}px"` : ""}`;
 }
@@ -146,7 +257,7 @@ function renderLessonContents(lesson) {
 }
 
 function renderLearningRoute(lesson) {
-  if ([2, 3, 4, 6, 7, 8].includes(lesson.section)) {
+  if ([2, 3, 4, 5, 6, 7, 8].includes(lesson.section)) {
     const link = n => { const item=courseV3Lessons[n-1]; return `<li><a href="../${item.route}/">Lesson ${String(n).padStart(3,"0")} · ${escapeHtml(item.title)}</a></li>`; };
     return `<aside class="learning-route" aria-label="Preparation and related learning"><p><strong>Before this lesson</strong></p>${lesson.prerequisiteLessons.length ? `<ul>${lesson.prerequisiteLessons.map(link).join("")}</ul>` : '<p>Start with familiar uses of shared files, printers and internet access. This lesson establishes the networking vocabulary.</p>'}${lesson.relatedLessons?.length ? `<p><strong>Related review and later applications</strong></p><p>These connections are not additional prerequisites.</p><ul>${lesson.relatedLessons.map(link).join("")}</ul>` : ''}</aside>`;
   }
@@ -212,7 +323,19 @@ function renderPractice(question, index, section) {
 
 function pageShell({ title, description, body, depth = "lesson", assetVersion = "20260901g" }) {
   const prefix = depth === "root" ? "" : "../";
-  return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="${escapeHtml(description)}"><title>${escapeHtml(title)} · AS 9618</title><link rel="icon" href="data:"><link rel="stylesheet" href="${prefix}course.css?v=20260915pastpapers"><script src="${prefix}course.js?v=20260915pastpapers" defer></script></head><body>${body}</body></html>`;
+  const version = assetVersion === "20260929s9" ? "20260929s9r4" : ["20260930s1", "20260930s12", "20260930s11", "20260929s10", "20260929s7", "20260929s5", "20260929s3", "20260929s4"].includes(assetVersion) ? assetVersion : "20260915pastpapers";
+  if (assetVersion === "20260930s2") return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="${escapeHtml(description)}"><title>${escapeHtml(title)} · AS 9618</title><link rel="icon" href="data:"><link rel="stylesheet" href="${prefix}course.css?v=${version}"><link rel="stylesheet" href="${prefix}section5.css?v=${version}"><link rel="stylesheet" href="${prefix}section2.css?v=${version}"><link rel="stylesheet" href="${prefix}section2-labs.css?v=${version}"><script src="${prefix}course.js?v=${version}" defer></script><script src="${prefix}section2-models.js?v=${version}" defer></script><script src="${prefix}section2-labs.js?v=${version}" defer></script><script src="${prefix}section2-classroom.js?v=${version}" defer></script><script src="${prefix}section5-classroom.js?v=${version}" defer></script></head><body>${body}</body></html>`;
+  if (assetVersion === "20260930s1") return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="${escapeHtml(description)}"><title>${escapeHtml(title)} · AS 9618</title><link rel="icon" href="data:"><link rel="stylesheet" href="${prefix}course.css?v=${version}"><link rel="stylesheet" href="${prefix}section5.css?v=${version}"><link rel="stylesheet" href="${prefix}section1.css?v=${version}"><link rel="stylesheet" href="${prefix}section1-labs.css?v=${version}"><script src="${prefix}course.js?v=${version}" defer></script><script src="${prefix}section1-models.js?v=${version}" defer></script><script src="${prefix}section1-labs.js?v=${version}" defer></script><script src="${prefix}section1-classroom.js?v=${version}" defer></script><script src="${prefix}section5-classroom.js?v=${version}" defer></script></head><body>${body}</body></html>`;
+  if (assetVersion === "20260930s12") return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="${escapeHtml(description)}"><title>${escapeHtml(title)} · AS 9618</title><link rel="icon" href="data:"><link rel="stylesheet" href="${prefix}course.css?v=${version}"><link rel="stylesheet" href="${prefix}section5.css?v=${version}"><link rel="stylesheet" href="${prefix}section12.css?v=${version}"><link rel="stylesheet" href="${prefix}section12-labs.css?v=${version}"><script src="${prefix}course.js?v=${version}" defer></script><script src="${prefix}section12-models.js?v=${version}" defer></script><script src="${prefix}section12-labs.js?v=${version}" defer></script><script src="${prefix}section12-classroom.js?v=${version}" defer></script><script src="${prefix}section5-classroom.js?v=${version}" defer></script></head><body>${body}</body></html>`;
+  if (assetVersion === "20260930s11") return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="${escapeHtml(description)}"><title>${escapeHtml(title)} · AS 9618</title><link rel="icon" href="data:"><link rel="stylesheet" href="${prefix}course.css?v=${version}"><link rel="stylesheet" href="${prefix}section5.css?v=${version}"><link rel="stylesheet" href="${prefix}section11.css?v=${version}"><link rel="stylesheet" href="${prefix}section11-labs.css?v=${version}"><script src="${prefix}course.js?v=${version}" defer></script><script src="${prefix}section11-models.js?v=${version}" defer></script><script src="${prefix}section11-labs.js?v=${version}" defer></script><script src="${prefix}section11-classroom.js?v=${version}" defer></script><script src="${prefix}section5-classroom.js?v=${version}" defer></script></head><body>${body}</body></html>`;
+  if (assetVersion === "20260929s10") return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="${escapeHtml(description)}"><title>${escapeHtml(title)} · AS 9618</title><link rel="icon" href="data:"><link rel="stylesheet" href="${prefix}course.css?v=${version}"><link rel="stylesheet" href="${prefix}section5.css?v=${version}"><link rel="stylesheet" href="${prefix}section10.css?v=${version}"><link rel="stylesheet" href="${prefix}section10-labs.css?v=${version}"><script src="${prefix}course.js?v=${version}" defer></script><script src="${prefix}section10-models.js?v=${version}" defer></script><script src="${prefix}section10-labs.js?v=${version}" defer></script><script src="${prefix}section10-classroom.js?v=${version}" defer></script><script src="${prefix}section5-classroom.js?v=${version}" defer></script></head><body>${body}</body></html>`;
+  if (assetVersion === "20260929s9") return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="${escapeHtml(description)}"><title>${escapeHtml(title)} · AS 9618</title><link rel="icon" href="data:"><link rel="stylesheet" href="${prefix}course.css?v=${version}"><link rel="stylesheet" href="${prefix}section5.css?v=${version}"><link rel="stylesheet" href="${prefix}section9.css?v=${version}"><script src="${prefix}course.js?v=${version}" defer></script><script src="${prefix}section9-models.js?v=${version}" defer></script><script src="${prefix}section9-labs.js?v=${version}" defer></script><script src="${prefix}section9-classroom.js?v=${version}" defer></script><script src="${prefix}section5-classroom.js?v=${version}" defer></script></head><body>${body}</body></html>`;
+  if (assetVersion === "20260929s8") return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="${escapeHtml(description)}"><title>${escapeHtml(title)} · AS 9618</title><link rel="icon" href="data:"><link rel="stylesheet" href="${prefix}course.css?v=${version}"><link rel="stylesheet" href="${prefix}section5.css?v=${version}"><link rel="stylesheet" href="${prefix}section8.css?v=${version}"><script src="${prefix}course.js?v=${version}" defer></script><script src="${prefix}section8-models.js?v=${version}" defer></script><script src="${prefix}section8-labs.js?v=${version}" defer></script><script src="${prefix}section8-classroom.js?v=${version}" defer></script><script type="module" src="${prefix}section8-sql-runtime.js?v=${version}"></script></head><body>${body}</body></html>`;
+  if (assetVersion === "20260929s7") return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="${escapeHtml(description)}"><title>${escapeHtml(title)} · AS 9618</title><link rel="icon" href="data:"><link rel="stylesheet" href="${prefix}course.css?v=${version}"><link rel="stylesheet" href="${prefix}section5.css?v=${version}"><script src="${prefix}course.js?v=${version}" defer></script><link rel="stylesheet" href="${prefix}section7.css?v=${version}"><script src="${prefix}section7-models.js?v=${version}" defer></script><script src="${prefix}section7-labs.js?v=${version}" defer></script><script src="${prefix}section7-classroom.js?v=${version}" defer></script><script src="${prefix}section5-classroom.js?v=${version}" defer></script></head><body>${body}</body></html>`;
+  if (assetVersion === "20260929s5") return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="${escapeHtml(description)}"><title>${escapeHtml(title)} · AS 9618</title><link rel="icon" href="data:"><link rel="stylesheet" href="${prefix}course.css?v=${version}"><link rel="stylesheet" href="${prefix}section5.css?v=${version}"><script src="${prefix}course.js?v=${version}" defer></script><script src="${prefix}section5-models.js?v=${version}" defer></script><script src="${prefix}section5-labs.js?v=${version}" defer></script><script src="${prefix}section5-classroom.js?v=${version}" defer></script></head><body>${body}</body></html>`;
+  if (assetVersion === "20260929s4") return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="${escapeHtml(description)}"><title>${escapeHtml(title)} · AS 9618</title><link rel="icon" href="data:"><link rel="stylesheet" href="${prefix}course.css?v=${version}"><link rel="stylesheet" href="${prefix}section4.css?v=${version}"><script src="${prefix}course.js?v=${version}" defer></script><script src="${prefix}section4-models.js?v=${version}" defer></script><script src="${prefix}section4-labs.js?v=${version}" defer></script><script src="${prefix}section4-classroom.js?v=${version}" defer></script></head><body>${body}</body></html>`;
+  if (assetVersion === "20260929s3") return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="${escapeHtml(description)}"><title>${escapeHtml(title)} · AS 9618</title><link rel="icon" href="data:"><link rel="stylesheet" href="${prefix}course.css?v=${version}"><link rel="stylesheet" href="${prefix}section3.css?v=${version}"><script src="${prefix}course.js?v=${version}" defer></script><script src="${prefix}section3-models.js?v=${version}" defer></script><script src="${prefix}section3-labs.js?v=${version}" defer></script><script src="${prefix}section3-classroom.js?v=${version}" defer></script></head><body>${body}</body></html>`;
+  return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="${escapeHtml(description)}"><title>${escapeHtml(title)} · AS 9618</title><link rel="icon" href="data:"><link rel="stylesheet" href="${prefix}course.css?v=${version}"><script src="${prefix}course.js?v=${version}" defer></script></head><body>${body}</body></html>`;
 }
 
 function renderHeader(currentLesson) {
@@ -224,7 +347,51 @@ function renderLesson(lesson, index) {
   const previous = courseV3Lessons[index - 1];
   const next = courseV3Lessons[index + 1];
   const navLink = (target, label) => target ? `<a href="../${target.route}/"><span>${label}</span><strong>${escapeHtml(target.lessonKey)} · ${escapeHtml(target.title)}</strong></a>` : `<a href="../"><span>${label}</span><strong>Course overview</strong></a>`;
-  return pageShell({ title: `${lesson.lessonKey} ${lesson.title}`, assetVersion: lesson.section === 4 ? "20260915s4" : lesson.section === 1 ? "20260906s1" : lesson.section === 6 ? "20260915s6" : lesson.section === 7 ? "20260906s7" : lesson.section === 8 ? "20260906s8" : lesson.section === 11 ? "20260915s11" : lesson.section === 9 ? "20260907s9" : lesson.section === 10 ? "20260907s10" : lesson.section === 12 ? "20260907s12" : "20260901g", description: lesson.subtitle, body: `${renderHeader(lesson)}<main><section class="lesson-hero"><p class="eyebrow">Lesson ${String(lesson.sequenceIndex).padStart(3, "0")} · ${lesson.lessonKey} · ${lesson.syllabusIds.join("–")}</p><h1>${escapeHtml(lesson.title)}</h1><p class="lead">${escapeHtml(lesson.subtitle)}</p>${lesson.diagnostic?.prompt && lesson.diagnostic?.answer ? `<p class="guiding-question">${escapeHtml(lesson.guidingQuestion)}</p><details class="diagnostic"><summary>Before you start</summary><p>${escapeHtml(lesson.diagnostic.prompt)}</p><details><summary>Check your answer</summary><p>${escapeHtml(lesson.diagnostic.answer)}</p></details></details>${lesson.teachingCheckpoints ? `<details class="diagnostic"><summary>Teaching checkpoints</summary><ul>${lesson.teachingCheckpoints.map((point) => `<li>${escapeHtml(point)}</li>`).join("")}</ul></details>` : ""}` : ""}${lesson.section === 3 ? `<details class="diagnostic"><summary>Jump to a knowledge point</summary><ol>${lesson.units.map((unit, index) => `<li><a href="#unit-${index + 1}">${escapeHtml(unit.heading)}</a></li>`).join("")}</ol></details>` : ""}<div class="objective-ledger"><h2>Learning objectives</h2><ul>${lesson.objectives.map(([id, text]) => `<li data-objective-id="${id}"><span>${id}</span>${escapeHtml(text)}</li>`).join("")}</ul></div>${renderLearningRoute(lesson)}${renderClassroomToolbar(lesson)}${renderLessonContents(lesson)}<div class="exam-print-controls" hidden><button type="button" data-print-exam="questions">Print Practice and exam questions</button><button type="button" data-print-exam="answers">Print with answers</button></div></section>
+  if (lesson.section === 4) return pageShell({
+    title: `${lesson.lessonKey} ${section4Journey[lesson.sequenceIndex].title}`, description: section4Journey[lesson.sequenceIndex].intro, assetVersion: "20260929s4",
+    body: `${renderHeader(lesson)}${renderSection4Classroom(lesson, { renderPractice, renderPastPaperQuestions, navigation: `<nav class="lesson-pagination" aria-label="Lesson navigation">${navLink(previous, "Previous topic")}${navLink(next, "Next topic")}</nav>` })}`,
+  });
+  if (lesson.section === 3) return pageShell({
+    title: `${lesson.lessonKey} ${section3Journey[lesson.sequenceIndex].title}`, description: section3Journey[lesson.sequenceIndex].intro, assetVersion: "20260929s3",
+    body: `${renderHeader(lesson)}${renderSection3Classroom(lesson, { renderPractice, renderPastPaperQuestions, navigation: `<nav class="lesson-pagination" aria-label="Lesson navigation">${navLink(previous, "Previous topic")}${navLink(next, "Next topic")}</nav>` })}`,
+  });
+  if (lesson.section === 2) return pageShell({
+    title: `${lesson.lessonKey} ${section2Journey[lesson.sequenceIndex].title}`, description: section2Journey[lesson.sequenceIndex].intro, assetVersion: "20260930s2",
+    body: `${renderHeader(lesson)}${renderSection2Classroom(lesson, { renderPractice, renderPastPaperQuestions })}`,
+  }).replace(/^[\t ]+$/gm, '');
+  if (lesson.section === 1) return pageShell({
+    title: `${lesson.lessonKey} ${section1Journey[lesson.sequenceIndex].title}`, description: section1Journey[lesson.sequenceIndex].intro, assetVersion: "20260930s1",
+    body: `${renderHeader(lesson)}${renderSection1Classroom(lesson, { renderPractice, renderPastPaperQuestions })}`,
+  }).replace(/^[\t ]+$/gm, '');
+  if (lesson.section === 12) return pageShell({
+    title: `${lesson.lessonKey} ${section12Journey[lesson.sequenceIndex].title}`, description: section12Journey[lesson.sequenceIndex].intro, assetVersion: "20260930s12",
+    body: `${renderHeader(lesson)}${renderSection12Classroom(lesson, { renderPractice, renderPastPaperQuestions })}`,
+  }).replace(/^[\t ]+$/gm, '');
+  if (lesson.section === 11) return pageShell({
+    title: `${lesson.lessonKey} ${section11Journey[lesson.sequenceIndex].title}`, description: section11Journey[lesson.sequenceIndex].intro, assetVersion: "20260930s11",
+    body: `${renderHeader(lesson)}${renderSection11Classroom(lesson, { renderPractice, renderPastPaperQuestions })}`,
+  }).replace(/^[\t ]+$/gm, '');
+  if (lesson.section === 10) return pageShell({
+    title: `${lesson.lessonKey} ${section10Journey[lesson.sequenceIndex].title}`, description: section10Journey[lesson.sequenceIndex].intro, assetVersion: "20260929s10",
+    body: `${renderHeader(lesson)}${renderSection10Classroom(lesson, { renderPractice, renderPastPaperQuestions })}`,
+  });
+  if (lesson.section === 9) return pageShell({
+    title: `${lesson.lessonKey} ${section9Journey[lesson.sequenceIndex].title}`, description: section9Journey[lesson.sequenceIndex].intro, assetVersion: "20260929s9",
+    body: `${renderHeader(lesson)}${renderSection9Classroom(lesson, { renderPractice, renderPastPaperQuestions })}`,
+  });
+  if (lesson.section === 8) return pageShell({
+    title: `${lesson.lessonKey} ${section8Journey[lesson.sequenceIndex].title}`, description: section8Journey[lesson.sequenceIndex].intro, assetVersion: "20260929s8",
+    body: `${renderHeader(lesson)}${renderSection8Classroom(lesson, { renderPractice, renderPastPaperQuestions })}`,
+  });
+  if (lesson.section === 7) return pageShell({
+    title: `${lesson.lessonKey} ${section7Journey[lesson.sequenceIndex].title}`, description: section7Journey[lesson.sequenceIndex].intro, assetVersion: "20260929s7",
+    body: `${renderHeader(lesson)}${renderSection7Classroom(lesson, { renderPractice, renderPastPaperQuestions, learningRoute: renderLearningRoute(lesson), navigation: `<nav class="lesson-pagination" aria-label="Lesson navigation">${navLink(previous, "Previous")}${navLink(next, "Next")}</nav>` })}`,
+  });
+  if (lesson.section === 5) return pageShell({
+    title: `${lesson.lessonKey} ${section5Journey[lesson.sequenceIndex].title}`, description: section5Journey[lesson.sequenceIndex].intro, assetVersion: "20260929s5",
+    body: `${renderHeader(lesson)}${renderSection5Classroom(lesson, { renderPractice, renderPastPaperQuestions, learningRoute: renderLearningRoute(lesson), navigation: `<nav class="lesson-pagination" aria-label="Lesson navigation">${navLink(previous, "Previous")}${navLink(next, "Next")}</nav>` })}`,
+  });
+  return pageShell({ title: `${lesson.lessonKey} ${lesson.title}`, assetVersion: lesson.section === 5 ? "20260915s5" : lesson.section === 4 ? "20260915s4" : lesson.section === 1 ? "20260906s1" : lesson.section === 6 ? "20260915s6" : lesson.section === 7 ? "20260906s7" : lesson.section === 8 ? "20260906s8" : lesson.section === 11 ? "20260915s11" : lesson.section === 9 ? "20260907s9" : lesson.section === 10 ? "20260907s10" : lesson.section === 12 ? "20260907s12" : "20260901g", description: lesson.subtitle, body: `${renderHeader(lesson)}<main><section class="lesson-hero"><p class="eyebrow">Lesson ${String(lesson.sequenceIndex).padStart(3, "0")} · ${lesson.lessonKey} · ${lesson.syllabusIds.join("–")}</p><h1>${escapeHtml(lesson.title)}</h1><p class="lead">${escapeHtml(lesson.subtitle)}</p>${lesson.diagnostic?.prompt && lesson.diagnostic?.answer ? `<p class="guiding-question">${escapeHtml(lesson.guidingQuestion)}</p><details class="diagnostic"><summary>Before you start</summary><p>${escapeHtml(lesson.diagnostic.prompt)}</p><details><summary>Check your answer</summary><p>${escapeHtml(lesson.diagnostic.answer)}</p></details></details>${lesson.teachingCheckpoints ? `<details class="diagnostic"><summary>Teaching checkpoints</summary><ul>${lesson.teachingCheckpoints.map((point) => `<li>${escapeHtml(point)}</li>`).join("")}</ul></details>` : ""}` : ""}${lesson.section === 3 ? `<details class="diagnostic"><summary>Jump to a knowledge point</summary><ol>${lesson.units.map((unit, index) => `<li><a href="#unit-${index + 1}">${escapeHtml(unit.heading)}</a></li>`).join("")}</ol></details>` : ""}<div class="objective-ledger"><h2>Learning objectives</h2><ul>${lesson.objectives.map(([id, text]) => `<li data-objective-id="${id}"><span>${id}</span>${escapeHtml(text)}</li>`).join("")}</ul></div>${renderLearningRoute(lesson)}${renderClassroomToolbar(lesson)}${renderLessonContents(lesson)}<div class="exam-print-controls" hidden><button type="button" data-print-exam="questions">Print Practice and exam questions</button><button type="button" data-print-exam="answers">Print with answers</button></div></section>
   <section class="lesson-stage" id="visual-and-core" data-stage="1-visual-and-core"><header class="stage-heading"><span>01</span><div><p>Concept teaching</p><h2>${lesson.units.some(unit => unit.teachingBlocks) ? "Concept explanations and worked examples" : "Visual overview and core explanation"}</h2></div></header>${lesson.units.map((unit, unitIndex) => renderUnit(unit, unitIndex, lesson)).join("")}</section>
   <section class="lesson-stage" id="practice" data-stage="2-practice"><header class="stage-heading"><span>02</span><div><p>Check understanding</p><h2>Practice questions</h2></div></header><p class="practice-allocation">${lesson.practice.length} core tasks · ${lesson.practice.reduce((n,q)=>n+q.marks,0)} teacher marks · ${minuteRange(lesson.practiceTiming)} minutes (teacher estimate). Explain your reasoning before checking the answer.</p><div class="practice-stack">${lesson.practice.map((question, index) => renderPractice(question, index, lesson.section)).join("")}</div>${lesson.optionalPractice.length ? `<details class="optional-practice"><summary>Optional consolidation · ${lesson.optionalPractice.length} tasks · ${lesson.optionalPractice.reduce((n,q)=>n+q.marks,0)} teacher marks</summary><p>Choose a task when you need another check of this idea.</p>${lesson.optionalPractice.map((question,index)=>renderPractice(question,index,lesson.section)).join("")}</details>` : ""}</section>
   <section class="lesson-stage" id="past-paper-questions" data-stage="3-past-paper-questions"><span id="original-exam-style-question" class="legacy-anchor"></span><header class="stage-heading"><span>03</span><div><p>Exam response</p><h2>Past-paper questions and exam technique</h2></div></header>${renderPastPaperQuestions(lesson)}</section>
@@ -239,6 +406,17 @@ function renderCourseIndex() {
 function renderSectionIndex(section) {
   const meta = sectionMeta[section];
   const lessons = courseV3Lessons.filter((lesson) => lesson.section === section);
+  if (section === 4) return pageShell({ title: "Section 4 Processor fundamentals", description: "Build a working model of a processor through guided explanations, experiments and past-paper practice.", assetVersion: "20260929s4", body: `${renderHeader({ section })}${renderSection4Overview(lessons)}` });
+  if (section === 3) return pageShell({ title: `Section 3 Hardware`, description: "Explore hardware through observation, guided explanations, experiments and past-paper practice.", assetVersion: "20260929s3", body: `${renderHeader({ section })}${renderSection3Overview(lessons)}` });
+  if (section === 2) return pageShell({ title: `Section 2 ${meta.title}`, description: "Learn how a school shares resources, sends data, reaches websites and plays video through guided explanations, experiments and past-paper practice.", assetVersion: "20260930s2", body: `${renderHeader({ section })}${renderSection2Overview(lessons)}` });
+  if (section === 1) return pageShell({ title: `Section 1 ${meta.title}`, description: "Learn how bits represent numbers, text, pictures and sound through guided explanations, experiments and past-paper practice.", assetVersion: "20260930s1", body: `${renderHeader({ section })}${renderSection1Overview(lessons)}` });
+  if (section === 12) return pageShell({ title: `Section 12 ${meta.title}`, description: "Develop, test and maintain a booking program through concrete examples, experiments and past-paper practice.", assetVersion: "20260930s12", body: `${renderHeader({ section })}${renderSection12Overview(lessons)}` });
+  if (section === 11) return pageShell({ title: `Section 11 ${meta.title}`, description: "Learn how to write a booking program through guided examples, experiments and past-paper practice.", assetVersion: "20260930s11", body: `${renderHeader({ section })}${renderSection11Overview(lessons)}` });
+  if (section === 10) return pageShell({ title: `Section 10 ${meta.title}`, description: "Learn how to store and process bookings through guided examples, experiments and past-paper practice.", assetVersion: "20260929s10", body: `${renderHeader({ section })}${renderSection10Overview(lessons)}` });
+  if (section === 9) return pageShell({ title: `Section 9 ${meta.title}`, description: "Design a school ticket system through guided examples, experiments and past-paper practice.", assetVersion: "20260929s9", body: `${renderHeader({ section })}${renderSection9Overview(lessons)}` });
+  if (section === 8) return pageShell({ title: `Section 8 ${meta.title}`, description: "Build a library database through connected examples, experiments and SQL.", assetVersion: "20260929s8", body: `${renderHeader({ section })}${renderSection8Overview(lessons)}` });
+  if (section === 7) return pageShell({ title: `Section 7 ${meta.title}`, description: "Explore professional responsibility, software permissions and AI through cases, experiments and past-paper practice.", assetVersion: "20260929s7", body: `${renderHeader({ section })}${renderSection7Overview(lessons)}` });
+  if (section === 5) return pageShell({ title: `Section 5 ${meta.title}`, description: "Understand system software through guided explanations, experiments and past-paper practice.", assetVersion: "20260929s5", body: `${renderHeader({ section })}${renderSection5Overview(lessons)}` });
   return pageShell({ title: `Section ${section} ${meta.title}`, description: `Section ${section} lessons in official syllabus order.`, body: `${renderHeader({ section })}<main><section class="course-hero"><p class="eyebrow">Paper ${meta.paper} · Section ${section}</p><h1>${escapeHtml(meta.title)}</h1><p class="lead">${lessons.length} ${[3, 4, 5, 6, 7, 8, 9, 10, 11, 12].includes(section) ? "lessons" : "continuous teaching units"}. Every knowledge unit presents its visual overview before the core explanation and maps practice to explicit objectives.</p><div class="coverage-band"><strong>${lessons.length} lessons</strong><span>${requirementCount(lessons)} requirements</span><span>default-visible teaching</span><span>responsive materials</span></div></section><section class="course-sequence"><header><p>Official sequence</p><h2>Teach the section in order</h2></header><ol>${lessons.map((lesson) => `<li><a href="../${lesson.route}/"><span class="course-number">${String(lesson.sequenceIndex).padStart(3, "0")}</span><div><p>${lesson.lessonKey} · ${lesson.syllabusIds.join("–")}</p><h3>${escapeHtml(lesson.title)}</h3><span>${escapeHtml(lesson.guidingQuestion)}</span></div><b aria-hidden="true">→</b></a></li>`).join("")}</ol></section></main><footer><p>AS 9618 · Section ${section} ${escapeHtml(meta.title)}</p></footer>` });
 }
 
@@ -319,14 +497,20 @@ for (const [name, svg] of Object.entries(mechanismDiagramFiles())) write(join(ro
 for (const [name, svg] of Object.entries(section3DiagramFiles)) write(join(root, "web/assets/course-v3/section-3", name), svg);
 for (const [name, svg] of Object.entries(section2DiagramFiles)) write(join(root, "web/assets/course-v3/section-2", name), svg);
 for (const [name, svg] of Object.entries(section4DiagramFiles)) write(join(root, "web/assets/course-v3/section-4", name), svg);
+for (const [name, svg] of Object.entries(section5DiagramFiles)) write(join(root, "web/assets/course-v3/section-5", name), svg);
 for (const [name, svg] of Object.entries(section1DiagramFiles())) write(join(root, "web/assets/course-v3/section-1", name), svg);
 for (const [name, svg] of Object.entries(section8DiagramFiles())) write(join(root, "web/assets/course-v3/section-8", name), svg);
 for (const [name, svg] of Object.entries(section11DiagramFiles())) write(join(root, "web/assets/course-v3/section-11", name), svg);
 for (const [name, svg] of Object.entries(section9DiagramFiles())) write(join(root, "web/assets/course-v3/section-9", name), svg);
 for (const [name, svg] of Object.entries(section12DiagramFiles())) write(join(root, "web/assets/course-v3/section-12", name), svg);
+for (const [name, svg] of Object.entries(section12ClassroomFigures())) write(join(root, "web/assets/course-v3/section-12", name), svg);
 for (const [name, svg] of Object.entries(section10DiagramFiles())) write(join(root, "web/assets/course-v3/section-10", name), svg);
 for (const [name, svg] of Object.entries(section6DiagramFiles())) write(join(root, "web/assets/course-v3/section-6", name), svg);
 for (const [name, svg] of Object.entries(section7DiagramFiles)) write(join(root, "web/assets/course-v3/section-7", name), svg);
+for (const figure of [section7AcademicScene, ...renderSection7AcademicConceptFigures()]) write(join(root, "web", figure.asset), figure.svg);
+for (const figure of renderSection8AcademicFigures()) write(join(root, "web", figure.path.replace(/^\//, "")), figure.svg);
+for (const figure of renderSection8ClassroomFigures()) write(join(root, "web", figure.asset.replace(/^\//, "")), figure.svg);
+for (const figure of renderSection2AcademicFigures()) write(join(root, "web", figure.asset), figure.svg);
 write(join(outRoot, "course.css"), globalCss + `
 /* Supplied three-column truth tables remain fully visible on phones. */
 :is([data-question-id="S3-L06-Q4"],[data-question-id="S3-L06-EXAM-3"]) .table-scroll{max-width:420px}
@@ -345,10 +529,21 @@ write(join(outRoot, "course.css"), globalCss + `
 `);
 write(join(outRoot, "course.css"), readFileSync(join(outRoot, "course.css"), "utf8") + readFileSync(join(root, "scripts/course-v3-classroom.css"), "utf8") + readFileSync(join(root, "scripts/course-v3-past-paper.css"), "utf8"));
 write(join(outRoot, "course.js"), sourceJs);
+for (const [source, target] of [["classroom.css", "section3.css"], ["models.js", "section3-models.js"], ["labs.js", "section3-labs.js"], ["classroom.js", "section3-classroom.js"]]) write(join(outRoot, target), readFileSync(join(root, `scripts/course-v3-section3-${source}`), "utf8"));
+for (const [source, target] of [["classroom.css", "section4.css"], ["models.js", "section4-models.js"], ["labs.js", "section4-labs.js"], ["classroom.js", "section4-classroom.js"]]) write(join(outRoot, target), readFileSync(join(root, `scripts/course-v3-section4-${source}`), "utf8"));
+for (const [source, target] of [["classroom.css", "section5.css"], ["models.js", "section5-models.js"], ["labs.js", "section5-labs.js"], ["classroom.js", "section5-classroom.js"]]) write(join(outRoot, target), readFileSync(join(root, `scripts/course-v3-section5-${source}`), "utf8"));
+for (const [source, target] of [["classroom.css", "section7.css"], ["models.js", "section7-models.js"], ["labs.js", "section7-labs.js"], ["classroom.js", "section7-classroom.js"]]) write(join(outRoot, target), readFileSync(join(root, `scripts/course-v3-section7-${source}`), "utf8"));
 write(join(root, "web/resources/practical-labs/index.html"), renderPracticalLabs());
+for (const [source, target] of [["classroom.css", "section8.css"], ["models.js", "section8-models.js"], ["labs.js", "section8-labs.js"], ["classroom.js", "section8-classroom.js"], ["sql-runtime.js", "section8-sql-runtime.js"], ["sql-worker.js", "section8-sql-worker.js"]]) write(join(outRoot, target), readFileSync(join(root, `scripts/course-v3-section8-${source}`), "utf8"));
+for (const [source, target] of [["classroom.css", "section9.css"], ["models.js", "section9-models.js"], ["labs.js", "section9-labs.js"], ["classroom.js", "section9-classroom.js"]]) write(join(outRoot, target), readFileSync(join(root, `scripts/course-v3-section9-${source}`), "utf8"));
+if (!section9Only) for (const [source, target] of [["labs.css", "section10-labs.css"], ["classroom.css", "section10.css"], ["models.js", "section10-models.js"], ["labs.js", "section10-labs.js"], ["classroom.js", "section10-classroom.js"]]) write(join(outRoot, target), readFileSync(join(root, `scripts/course-v3-section10-${source}`), "utf8"));
+for (const [source, target] of [["labs.css", "section2-labs.css"], ["classroom.css", "section2.css"], ["models.js", "section2-models.js"], ["labs.js", "section2-labs.js"], ["classroom.js", "section2-classroom.js"]]) write(join(outRoot, target), readFileSync(join(root, `scripts/course-v3-section2-${source}`), "utf8"));
+for (const [source, target] of [["labs.css", "section1-labs.css"], ["classroom.css", "section1.css"], ["models.js", "section1-models.js"], ["labs.js", "section1-labs.js"], ["classroom.js", "section1-classroom.js"]]) write(join(outRoot, target), readFileSync(join(root, `scripts/course-v3-section1-${source}`), "utf8"));
+if (section11Enabled) for (const [source, target] of [["labs.css", "section11-labs.css"], ["classroom.css", "section11.css"], ["models.js", "section11-models.js"], ["labs.js", "section11-labs.js"], ["classroom.js", "section11-classroom.js"]]) write(join(outRoot, target), readFileSync(join(root, `scripts/course-v3-section11-${source}`), "utf8"));
+if (section12Enabled) for (const [source, target] of [["labs.css", "section12-labs.css"], ["classroom.css", "section12.css"], ["models.js", "section12-models.js"], ["labs.js", "section12-labs.js"], ["classroom.js", "section12-classroom.js"]]) write(join(outRoot, target), readFileSync(join(root, `scripts/course-v3-section12-${source}`), "utf8"));
 write(join(outRoot, "index.html"), renderCourseIndex());
-for (const [index, lesson] of courseV3Lessons.entries()) write(join(outRoot, lesson.route, "index.html"), renderLesson(lesson, index));
-for (const section of Object.keys(sectionMeta).map(Number)) write(join(outRoot, `section-${section}`, "index.html"), renderSectionIndex(section));
+for (const [index, lesson] of courseV3Lessons.entries()) if (!selectedSection || lesson.section === selectedSection) write(join(outRoot, lesson.route, "index.html"), renderLesson(lesson, index));
+for (const section of Object.keys(sectionMeta).map(Number)) if (!selectedSection || section === selectedSection) write(join(outRoot, `section-${section}`, "index.html"), renderSectionIndex(section));
 write(join(root, "web", "index.html"), renderGateway());
 write(join(root, "web", "assessments", "index.html"), renderAssessmentBank());
 const assessmentMarkdownPath = join(root, "assessments", "assessment-bank.md");
@@ -429,14 +624,25 @@ for (const lesson of courseV3Lessons.filter((item) => item.kind === "teaching"))
   owners.push(lesson.route);
   requirementOwners.set(id, owners);
 }
-const unitAssets = courseV3Lessons.flatMap((lesson) => lesson.units.flatMap((unit) => unitMaterials(unit).flatMap((material) => {
+const unitAssets = courseV3Lessons.flatMap((lesson) => lesson.section === 5 ? [] : lesson.units.flatMap((unit) => unitMaterials(unit).flatMap((material) => {
   if (material.type === "topology-gallery") return material.entries.map((entry) => webAssetPath(entry[1], lesson.section));
   return material.asset ? [webAssetPath(material.asset, lesson.section)] : [];
 })));
 const questionAssets = courseV3Lessons.flatMap((lesson) => [...lesson.practice, ...lesson.optionalPractice].flatMap((question) => [question.diagram, question.answerDiagram].filter(Boolean).map(asset=>webAssetPath(asset, lesson.section))));
 const officialAssets = courseV3Lessons.flatMap(l=>l.pastPaperQuestions.flatMap(q=>[...q.qp.extracts,...q.ms.extracts,...(q.inserts??[])].map(e=>e.asset)));
 const assessmentAssets = assessmentBank.sets.flatMap(set => set.questions.flatMap(question => [question.diagram, question.answerDiagram].filter(Boolean).map(asset => webAssetPath(asset, question.section ?? set.section))));
-const assets = [...new Set([...unitAssets, ...questionAssets, ...officialAssets, ...assessmentAssets])];
+const s2Assets = Object.values(section2Journey).flatMap(topic => topic.groups.flatMap(group => [group.image?.asset, ...group.steps.map(step => step.image?.asset), ...group.worked.steps.map(step => step.image?.asset)].filter(Boolean)));
+const s1Assets = Object.values(section1Journey).flatMap(topic => topic.groups.flatMap(group => [group.image?.asset].filter(Boolean)));
+const s3Assets = JSON.parse(readFileSync(join(root, "scripts/course-v3-section3-classroom-images.json"), "utf8")).assets.map(a => a.path.replace(/^web/, ''));
+const s4Assets = Object.values(section4Journey).flatMap(topic => topic.groups.flatMap(group => [typeof group.image === 'string' ? group.image : group.image?.asset].filter(Boolean)));
+const s5Assets = Object.values(section5Journey).flatMap(topic => topic.groups.flatMap(group => [typeof group.image === "string" ? group.image : group.image?.asset].filter(Boolean)));
+const s7Assets = Object.values(section7Journey).flatMap(topic => topic.groups.flatMap(group => [typeof group.image === "string" ? group.image : group.image?.asset].filter(Boolean)));
+const s8Assets = Object.values(section8Journey).flatMap(topic => topic.groups.flatMap(group => [group.image?.asset].filter(Boolean)));
+const s9Assets = ['/assets/course-v3/section-9/ticket-desk-scene.png', ...Object.values(section9Journey).flatMap(topic => topic.groups.flatMap(group => [group.image?.asset].filter(Boolean)))];
+const s10Assets = Object.values(section10Journey).flatMap(topic => topic.groups.flatMap(group => [group.image?.asset].filter(Boolean)));
+const s11Assets = Object.values(section11Journey).flatMap(topic => topic.groups.flatMap(group => [group.image?.asset].filter(Boolean)));
+const s12Assets = Object.values(section12Journey).flatMap(topic => topic.groups.flatMap(group => [group.image?.asset, ...group.steps.map(step => step.image?.asset), ...group.worked.steps.map(step => step.image?.asset)].filter(Boolean)));
+const assets = [...new Set([...s2Assets, ...s1Assets, ...s12Assets, ...s11Assets, ...s10Assets, ...unitAssets, ...questionAssets, ...officialAssets, ...assessmentAssets, ...s3Assets, ...s4Assets, ...s5Assets, ...s7Assets, ...s8Assets, ...s9Assets])];
 for (const asset of assets) if (!existsSync(join(reviewedAssetRoot, asset.replace(/^\//, "")))) throw new Error(`Missing V3 asset ${asset}`);
 
 const contract = {
@@ -444,7 +650,7 @@ const contract = {
   generatedAt: "deterministic",
   syllabusOrder: Object.keys(officialAsMapping),
   requirementOwners: Object.fromEntries(requirementOwners),
-  lessons: courseV3Lessons.map((lesson) => ({
+  lessons: courseV3Lessons.filter(lesson => !selectedSection || lesson.section === selectedSection).map((lesson) => ({
     sequenceIndex: lesson.sequenceIndex,
     lessonKey: lesson.lessonKey,
     kind: lesson.kind,
@@ -454,12 +660,114 @@ const contract = {
     objectives: lesson.objectives.map(([id, description]) => ({
       id,
       description,
-      explanationUnits: lesson.units.filter((unit) => unit.objectiveIds.includes(id)).map((unit) => unit.heading),
-      materialTitles: lesson.units.flatMap((unit) => unitMaterials(unit).filter((material) => material.objectiveIds.includes(id)).map((material) => material.title)),
+      explanationUnits: lesson.section === 2 ? section2Journey[lesson.sequenceIndex].groups.filter(group => section2GroupObjectives(group, lesson).includes(id)).map(group => group.title) : lesson.section === 1 ? section1Journey[lesson.sequenceIndex].groups.filter(group => section1GroupObjectives(group, lesson).includes(id)).map(group => group.title) : lesson.section === 12 ? section12Journey[lesson.sequenceIndex].groups.filter(g => section12GroupObjectives(g, lesson).includes(id)).map(g => g.title) : lesson.section === 11 ? section11Journey[lesson.sequenceIndex].groups.filter(g => section11GroupObjectives(g, lesson).includes(id)).map(g => g.title) : lesson.section === 10 ? section10Journey[lesson.sequenceIndex].groups.filter(g => section10GroupObjectives(g, lesson).includes(id)).map(g => g.title) : lesson.section === 9 ? section9Journey[lesson.sequenceIndex].groups.filter(g => section9GroupObjectives(g, lesson).includes(id)).map(g => g.title) : lesson.section === 4 ? section4Journey[lesson.sequenceIndex].groups.filter(g => section4GroupObjectives(g, lesson).includes(id)).map(g => g.title) : lesson.section === 3 ? section3Journey[lesson.sequenceIndex].groups.filter(g => groupObjectives(g, lesson).includes(id)).map(g => g.title) : lesson.section === 5 ? section5Journey[lesson.sequenceIndex].groups.filter(g => section5GroupObjectives(g, lesson).includes(id)).map(g => g.title) : lesson.section === 7 ? section7Journey[lesson.sequenceIndex].groups.filter(g => section7GroupObjectives(g, lesson).includes(id)).map(g => g.title) : lesson.section === 8 ? section8Journey[lesson.sequenceIndex].groups.filter(g => section8GroupObjectives(g, lesson).includes(id)).map(g => g.title) : lesson.units.filter((unit) => unit.objectiveIds.includes(id)).map((unit) => unit.heading),
+      materialTitles: lesson.section === 2 ? section2Journey[lesson.sequenceIndex].groups.filter(group => section2GroupObjectives(group, lesson).includes(id)).map(group => group.lab ? `Interactive experiment: ${group.lab}` : group.stimulus?.title ?? group.title) : lesson.section === 1 ? section1Journey[lesson.sequenceIndex].groups.filter(group => section1GroupObjectives(group, lesson).includes(id)).map(group => group.lab ? `Interactive experiment: ${group.lab}` : group.stimulus?.title ?? group.title) : lesson.section === 12 ? section12Journey[lesson.sequenceIndex].groups.filter(g => section12GroupObjectives(g, lesson).includes(id)).map(g => g.lab ? `Interactive experiment: ${g.lab}` : g.title) : lesson.section === 11 ? section11Journey[lesson.sequenceIndex].groups.filter(g => section11GroupObjectives(g, lesson).includes(id)).map(g => g.lab ? `Interactive experiment: ${g.lab}` : g.title) : lesson.section === 10 ? section10Journey[lesson.sequenceIndex].groups.filter(g => section10GroupObjectives(g, lesson).includes(id)).map(g => g.lab ? `Interactive experiment: ${g.lab}` : g.title) : lesson.section === 9 ? section9Journey[lesson.sequenceIndex].groups.filter(g => section9GroupObjectives(g, lesson).includes(id)).map(g => g.lab ? `Interactive experiment: ${g.lab}` : g.title) : lesson.section === 4 ? section4Journey[lesson.sequenceIndex].groups.filter(g => section4GroupObjectives(g, lesson).includes(id)).map(g => g.lab ? `Interactive lab: ${g.lab}` : `Guided example: ${g.title}`) : lesson.section === 3 ? section3Journey[lesson.sequenceIndex].groups.filter(g => groupObjectives(g, lesson).includes(id)).map(g => g.lab ? `Interactive lab: ${g.lab}` : `Guided visual: ${g.title}`) : lesson.section === 5 ? section5Journey[lesson.sequenceIndex].groups.filter(g => section5GroupObjectives(g, lesson).includes(id)).map(g => g.title) : lesson.section === 7 ? section7Journey[lesson.sequenceIndex].groups.filter(g => section7GroupObjectives(g, lesson).includes(id)).map(g => g.title) : lesson.section === 8 ? section8Journey[lesson.sequenceIndex].groups.filter(g => section8GroupObjectives(g, lesson).includes(id)).map(g => g.lab ? `Interactive experiment: ${g.lab}` : g.title) : lesson.units.flatMap((unit) => unitMaterials(unit).filter((material) => material.objectiveIds.includes(id)).map((material) => material.title)),
       questionIds: [...lesson.practice,...lesson.optionalPractice].filter((question) => question.objectiveIds.includes(id)).map((question) => question.id),
       pastPaperAnalysis: lesson.pastPaperQuestions.filter((question) => question.objectiveIds.includes(id)).map((question) => question.sourceRef),
     })),
-    knowledgeUnits: lesson.units.map((unit) => ({
+    ...(lesson.section === 2 ? {
+      classroomSessions: section2Sessions.filter(session => session.groups.some(id => section2Journey[lesson.sequenceIndex].groups.some(group => group.id === id))),
+      pastPaperCoverageNotes: Object.fromEntries(lesson.pastPaperQuestions.map(question => [question.id, section2PaperCoverageNotes[question.id]])),
+    } : {}),
+    ...(lesson.section === 1 ? {
+      classroomSessions: section1Sessions.filter(session => session.groups.some(id => section1Journey[lesson.sequenceIndex].groups.some(group => group.id === id))),
+      pastPaperCoverageNotes: Object.fromEntries(lesson.pastPaperQuestions.map(question => [question.id, section1PaperCoverageNotes[question.id]])),
+    } : {}),
+    ...(lesson.section === 3 ? { classroomSessions: section3Sessions.filter(s => s.groups.some(id => section3Journey[lesson.sequenceIndex].groups.some(g => g.id === id))) } : {}),
+    ...(lesson.section === 4 ? {
+      classroomSessions: section4Sessions.filter(s => s.groups.some(id => section4Journey[lesson.sequenceIndex].groups.some(g => g.id === id))),
+      pastPaperCoverageNotes: Object.fromEntries(lesson.pastPaperQuestions.map(question => [question.id, section4PaperCoverageNotes[question.id]])),
+    } : {}),
+    ...(lesson.section === 5 ? {
+      classroomSessions: section5Sessions.filter(s => s.groups.some(id => section5Journey[lesson.sequenceIndex].groups.some(g => g.id === id))),
+      pastPaperCoverageNotes: Object.fromEntries(lesson.pastPaperQuestions.map(question => [question.id, section5PaperCoverageNotes[question.id]])),
+    } : {}),
+    ...(lesson.section === 7 ? {
+      classroomSessions: section7Sessions.filter(s => s.groups.some(id => section7Journey[lesson.sequenceIndex].groups.some(g => g.id === id))),
+      pastPaperCoverageNotes: Object.fromEntries(lesson.pastPaperQuestions.map(question => [question.id, section7PaperCoverageNotes[question.id]])),
+    } : {}),
+    ...(lesson.section === 8 ? {
+      classroomSessions: section8Sessions.filter(s => s.groups.some(id => section8Journey[lesson.sequenceIndex].groups.some(g => g.id === id))),
+      pastPaperCoverageNotes: Object.fromEntries(lesson.pastPaperQuestions.map(question => [question.id, section8PaperCoverageNotes[question.id]])),
+    } : {}),
+    ...(lesson.section === 12 ? {
+      classroomSessions: section12Sessions.filter(session => session.groups.some(id => section12Journey[lesson.sequenceIndex].groups.some(group => group.id === id))),
+      pastPaperCoverageNotes: Object.fromEntries(lesson.pastPaperQuestions.map(question => [question.id, section12PaperCoverageNotes[question.id]])),
+    } : {}),
+    ...(lesson.section === 11 ? {
+      classroomSessions: section11Sessions.filter(session => session.groups.some(id => section11Journey[lesson.sequenceIndex].groups.some(group => group.id === id))),
+      pastPaperCoverageNotes: Object.fromEntries(lesson.pastPaperQuestions.map(question => [question.id, section11PaperCoverageNotes[question.id]])),
+    } : {}),
+    ...(lesson.section === 10 ? {
+      classroomSessions: section10Sessions.filter(session => session.groups.some(id => section10Journey[lesson.sequenceIndex].groups.some(group => group.id === id))),
+      pastPaperCoverageNotes: Object.fromEntries(lesson.pastPaperQuestions.map(question => [question.id, section10PaperCoverageNotes[question.id]])),
+    } : {}),
+    ...(lesson.section === 9 ? {
+      classroomSessions: section9Sessions.filter(session => session.groups.some(id => section9Journey[lesson.sequenceIndex].groups.some(group => group.id === id))),
+      pastPaperCoverageNotes: Object.fromEntries(lesson.pastPaperQuestions.map(question => [question.id, section9PaperCoverageNotes[question.id]])),
+    } : {}),
+    knowledgeUnits: lesson.section === 2 ? section2Journey[lesson.sequenceIndex].groups.map(group => ({
+      id: group.id, syllabusId: group.objectiveIds[0].replace(/\.A\d+$/, ''), heading: group.title, objectiveIds: section2GroupObjectives(group, lesson),
+      leadVisual: { type: group.lab ? 'interactive-model' : 'guided-material', title: group.stimulus?.title ?? group.title }, coreExplanation: group.steps.map(step => step.body),
+      learningCycle: { observe: group.observe, stimulus: group.stimulus, question: group.question, prerequisite: group.prerequisite, requires: group.requires, steps: group.steps, worked: group.worked, lab: group.lab ?? null, labConfig: group.labConfig ?? {}, check: group.check, pastPapers: group.papers, takeaway: group.takeaway, bridge: group.bridge },
+      method: null, workedExample: group.worked,
+    })) : lesson.section === 1 ? section1Journey[lesson.sequenceIndex].groups.map(group => ({
+      id: group.id, syllabusId: group.objectiveIds[0].replace(/\.A\d+$/, ''), heading: group.title, objectiveIds: section1GroupObjectives(group, lesson),
+      leadVisual: { type: group.lab ? 'interactive-model' : 'guided-material', title: group.stimulus?.title ?? group.title }, coreExplanation: group.steps.map(step => step.body),
+      learningCycle: { observe: group.observe, stimulus: group.stimulus, question: group.question, prerequisite: group.prerequisite, requires: group.requires, steps: group.steps, worked: group.worked, lab: group.lab ?? null, labConfig: group.labConfig ?? {}, check: group.check, pastPapers: group.papers, takeaway: group.takeaway, bridge: group.bridge },
+      method: null, workedExample: group.worked,
+    })) : lesson.section === 12 ? section12Journey[lesson.sequenceIndex].groups.map(group => ({
+      id: group.id, syllabusId: group.objectiveIds[0].replace(/\.A\d+$/, ''), heading: group.title, objectiveIds: section12GroupObjectives(group, lesson),
+      leadVisual: {type: group.lab ? 'interactive-model' : 'guided-material', title: group.title}, coreExplanation: group.steps.map(step => step.body),
+      learningCycle: {observe: group.observe, stimulus: group.stimulus, question: group.question, prerequisite: group.prerequisite, prerequisites: group.prerequisites, steps: group.steps, worked: group.worked, lab: group.lab ?? null, labConfig: group.labConfig ?? {}, check: group.check, pastPapers: group.papers, takeaway: group.takeaway, bridge: group.bridge},
+      method: null, workedExample: group.worked,
+    })) : lesson.section === 11 ? section11Journey[lesson.sequenceIndex].groups.map(group => ({
+      id: group.id, syllabusId: group.objectiveIds[0].replace(/\.A\d+$/, ''), heading: group.title, objectiveIds: section11GroupObjectives(group, lesson),
+      leadVisual: {type: group.lab ? 'interactive-model' : 'guided-material', title: group.title}, coreExplanation: group.steps.map(step => step.body),
+      learningCycle: {observe: group.observe, stimulus: group.stimulus, question: group.question, prerequisite: group.prerequisite, prerequisites: group.prerequisites, steps: group.steps, worked: group.worked, lab: group.lab ?? null, labConfig: group.labConfig ?? {}, check: group.check, pastPapers: group.papers, takeaway: group.takeaway, bridge: group.bridge},
+      method: null, workedExample: group.worked,
+    })) : lesson.section === 10 ? section10Journey[lesson.sequenceIndex].groups.map(group => ({
+      id: group.id, syllabusId: group.objectiveIds[0].replace(/\.A\d+$/, ''), heading: group.title, objectiveIds: section10GroupObjectives(group, lesson),
+      leadVisual: {type: group.lab ? 'interactive-model' : 'guided-material', title: group.title}, coreExplanation: group.steps.map(step => step.body),
+      learningCycle: {observe: group.observe, stimulus: group.stimulus, question: group.question, prerequisite: group.prerequisite, prerequisites: group.prerequisites, steps: group.steps, worked: group.worked, lab: group.lab ?? null, labConfig: group.labConfig ?? {}, check: group.check, pastPapers: group.papers, takeaway: group.takeaway, bridge: group.bridge},
+      method: null, workedExample: group.worked,
+    })) : lesson.section === 9 ? section9Journey[lesson.sequenceIndex].groups.map(group => ({
+      id: group.id, syllabusId: group.objectiveIds[0].replace(/\.A\d+$/, ''), heading: group.title, objectiveIds: section9GroupObjectives(group, lesson),
+      leadVisual: {type: group.lab ? 'interactive-model' : 'guided-material', title: group.title}, coreExplanation: group.steps.map(step => step.body),
+      learningCycle: {observe: group.observe, stimulus: group.stimulus, question: group.question, prerequisite: group.prerequisite, steps: group.steps, worked: group.worked, lab: group.lab ?? null, labConfig: group.labConfig ?? {}, check: group.check, challenge: group.challenge, pastPapers: group.papers, takeaway: group.takeaway, bridge: group.bridge},
+      method: null, workedExample: group.worked,
+    })) : lesson.section === 8 ? section8Journey[lesson.sequenceIndex].groups.map(group => ({
+      id: group.id, syllabusId: group.objectiveIds[0].replace(/\.A\d+$/, ''), heading: group.title, objectiveIds: section8GroupObjectives(group, lesson),
+      leadVisual: {type: group.lab ? 'interactive-model' : 'guided-visual', title: group.title}, coreExplanation: group.steps.map(step => step.body),
+      learningCycle: {observe: group.observe, question: group.question, prerequisites: group.prerequisites, steps: group.steps, worked: group.worked, lab: group.lab ?? null, check: group.check, pastPapers: group.papers, takeaway: group.takeaway, bridge: group.bridge},
+      method: null, workedExample: group.worked,
+    })) : lesson.section === 4 ? section4Journey[lesson.sequenceIndex].groups.map(group => ({
+      id: group.id, syllabusId: section4GroupObjectives(group, lesson)[0].replace(/\.A\d+$/, ''), heading: group.title, objectiveIds: section4GroupObjectives(group, lesson),
+      leadVisual: { type: group.lab ? 'interactive-model' : 'guided-visual', title: group.title },
+      coreExplanation: group.steps.map(step => step.body),
+      learningCycle: { observe: group.observe, question: group.question, steps: group.steps, worked: group.worked, lab: group.lab ?? null, labConfig: group.labConfig ?? {}, labControls: group.labControls ?? null, check: group.check, pastPapers: group.papers, takeaway: group.takeaway, bridge: group.bridge },
+      method: null, workedExample: group.worked,
+    })) : lesson.section === 3 ? section3Journey[lesson.sequenceIndex].groups.map(group => ({
+      id: group.id, syllabusId: group.unitKeys[0].split('-')[0], heading: group.title, objectiveIds: groupObjectives(group, lesson),
+      leadVisual: { type: group.lab ? 'interactive-lab-and-illustration' : 'guided-illustration', title: group.title },
+      coreExplanation: group.steps.map(step => step.body),
+      learningCycle: { observe: group.observe, question: group.question, steps: group.steps, lab: group.lab ?? null, check: group.check, pastPapers: paperIdsForGroup(group), takeaway: group.takeaway, bridge: group.bridge },
+      method: null, workedExample: null,
+    })) : lesson.section === 5 ? section5Journey[lesson.sequenceIndex].groups.map(group => ({
+      id: group.id, syllabusId: section5GroupObjectives(group, lesson)[0].replace(/\.A\d+$/, ''),
+      heading: group.title, objectiveIds: section5GroupObjectives(group, lesson),
+      leadVisual: { type: group.lab ? 'interactive-model' : 'guided-visual', title: group.title },
+      coreExplanation: group.steps.map(step => step.body),
+      learningCycle: { observe: group.observe, question: group.question, prerequisite: group.prerequisite, steps: group.steps, worked: group.worked, lab: group.lab ?? null, check: group.check, pastPapers: group.papers, takeaway: group.takeaway, bridge: group.bridge },
+      method: null, workedExample: group.worked,
+    })) : lesson.section === 7 ? section7Journey[lesson.sequenceIndex].groups.map(group => ({
+      id: group.id, syllabusId: section7GroupObjectives(group, lesson)[0].replace(/\.A\d+$/, ''),
+      heading: group.title, objectiveIds: section7GroupObjectives(group, lesson),
+      leadVisual: { type: group.lab ? 'interactive-model' : 'guided-visual', title: group.title },
+      coreExplanation: group.steps.map(step => step.body),
+      learningCycle: { observe: group.observe, question: group.question, prerequisite: group.prerequisite, steps: group.steps, worked: group.worked, lab: group.lab ?? null, check: group.check, pastPapers: group.papers, takeaway: group.takeaway, bridge: group.bridge },
+      method: null, workedExample: group.worked,
+    })) : lesson.units.map((unit) => ({
       syllabusId: unit.syllabusId,
       heading: unit.heading,
       objectiveIds: unit.objectiveIds,
@@ -485,5 +793,16 @@ const contract = {
   })),
   assets: assets.map((asset) => ({ path: `web${asset}`, sha256: sha256(join(reviewedAssetRoot, asset.replace(/^\//, ""))) })),
 };
+if (section2Only || section1Only || section8Only || section9Only || section10Only || section11Only || section12Only) {
+  const scopedSection = section2Only ? 2 : section1Only ? 1 : section12Only ? 12 : section11Only ? 11 : section10Only ? 10 : section9Only ? 9 : 8;
+  const previous = JSON.parse(readFileSync(join(root, 'scripts/course-v3-contract.json'), 'utf8'));
+  const replacements = new Map(contract.lessons.filter(lesson => lesson.section === scopedSection).map(lesson => [lesson.sequenceIndex, lesson]));
+  previous.lessons = previous.lessons.map(lesson => replacements.get(lesson.sequenceIndex) ?? lesson);
+  const ownAssets = contract.assets.filter(asset => asset.path.startsWith(`web/assets/course-v3/section-${scopedSection}/`) || asset.path.startsWith(`web/assets/past-paper-questions/s${scopedSection}-`));
+  const merged = new Map(previous.assets.map(asset => [asset.path, asset]));
+  ownAssets.forEach(asset => merged.set(asset.path, asset));
+  previous.assets = [...merged.values()];
+  Object.assign(contract, previous);
+}
 write(join(root, "scripts", "course-v3-contract.json"), `${JSON.stringify(contract, null, 2)}\n`);
-console.log(`Rendered ${courseV3Meta.lessonCount} course pages, ${Object.keys(sectionMeta).length} sections, ${legacyMigration.sourceLessonCount} compatibility entries and ${assets.length} assets.`);
+console.log(section2Only ? "Rendered Section 2: eight lesson pages, section overview and local browser assets." : section1Only ? "Rendered Section 1: six lesson pages, section overview and local browser assets." : section12Only ? "Rendered Section 12: nine lesson pages, section overview and local browser assets." : section11Only ? "Rendered Section 11: twelve lesson pages, section overview and local browser assets." : section10Only ? "Rendered Section 10: fourteen lesson pages, section overview and local browser assets." : section9Only ? "Rendered Section 9: nine lesson pages, section overview and local browser assets." : section8Only ? "Rendered Section 8: six lesson pages, section overview and local browser assets." : `Rendered ${courseV3Meta.lessonCount} course pages, ${Object.keys(sectionMeta).length} sections, ${legacyMigration.sourceLessonCount} compatibility entries and ${assets.length} assets.`);

@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1040" viewBox="0 0 1600 1040" role="img" aria-labelledby="library-er-title library-er-description">
+    <title id="library-er-title">Library ER design: titles, copies and borrowing events</title>
+    <desc id="library-er-description">Book has primary key BookID and Title. Copy has primary key CopyID and foreign key BookID referring to Book. Loan has primary key LoanID, foreign keys CopyID and MemberID, and BorrowDate. Member has primary key MemberID and MemberName. One Book may have zero or many Copies; every Copy belongs to exactly one Book. One Copy may have zero or many Loans over time; every Loan names exactly one Copy. One Member may have zero or many Loans; every Loan names exactly one Member. Repeated borrowing uses a new LoanID. Preventing overlapping active loans for one copy requires an additional business rule.</desc>
+    <style>text{font-family:Arial,Helvetica,sans-serif}line,path,rect{vector-effect:non-scaling-stroke}</style>
+    <rect width="1600" height="1040" fill="white"/>
+    <text x="60" y="65" font-size="40" font-weight="600" fill="#202a32" text-anchor="start">Library ER design: titles, copies and borrowing events</text>
+    <text x="60" y="111" font-size="28" font-weight="400" fill="#52606b" text-anchor="start">Each line represents a relationship. Read the number at both ends.</text>
+    <line x1="60" y1="137" x2="1540" y2="137" stroke="#aebbc4" stroke-width="1.6"/>
+    <g data-entity="Book"><text x="60" y="190" font-size="26" font-weight="400" fill="#52606b" text-anchor="start">A catalogue title</text>
+    <rect x="60" y="209" width="340" height="172" fill="white" stroke="#254f68" stroke-width="2"/>
+    <rect x="60" y="209" width="340" height="64" fill="#f2f5f7"/>
+    <line x1="60" y1="273" x2="400" y2="273" stroke="#254f68" stroke-width="1.6"/>
+    <text x="80" y="252" font-size="34" font-weight="600" fill="#202a32" text-anchor="start">Book</text>
+    <text x="80" y="310" font-size="25" font-weight="600" fill="#254f68" text-anchor="start">PK</text><text x="142" y="310" font-size="30" font-weight="400" fill="#202a32" text-anchor="start">BookID</text><line x1="78" y1="327" x2="382" y2="327" stroke="#aebbc4" stroke-width="1.6"/><text x="80" y="364" font-size="25" font-weight="600" fill="#254f68" text-anchor="start"></text><text x="142" y="364" font-size="30" font-weight="400" fill="#202a32" text-anchor="start">Title</text>
+  </g>
+    <g data-entity="Copy"><text x="600" y="190" font-size="26" font-weight="400" fill="#52606b" text-anchor="start">One physical item</text>
+    <rect x="600" y="209" width="340" height="172" fill="white" stroke="#254f68" stroke-width="2"/>
+    <rect x="600" y="209" width="340" height="64" fill="#f2f5f7"/>
+    <line x1="600" y1="273" x2="940" y2="273" stroke="#254f68" stroke-width="1.6"/>
+    <text x="620" y="252" font-size="34" font-weight="600" fill="#202a32" text-anchor="start">Copy</text>
+    <text x="620" y="310" font-size="25" font-weight="600" fill="#254f68" text-anchor="start">PK</text><text x="682" y="310" font-size="30" font-weight="400" fill="#202a32" text-anchor="start">CopyID</text><line x1="618" y1="327" x2="922" y2="327" stroke="#aebbc4" stroke-width="1.6"/><text x="620" y="364" font-size="25" font-weight="600" fill="#254f68" text-anchor="start">FK</text><text x="682" y="364" font-size="30" font-weight="400" fill="#202a32" text-anchor="start">BookID</text>
+  </g>
+    <g data-entity="Loan"><text x="1160" y="190" font-size="26" font-weight="400" fill="#52606b" text-anchor="start">One borrowing event</text>
+    <rect x="1160" y="209" width="380" height="280" fill="white" stroke="#254f68" stroke-width="2"/>
+    <rect x="1160" y="209" width="380" height="64" fill="#f2f5f7"/>
+    <line x1="1160" y1="273" x2="1540" y2="273" stroke="#254f68" stroke-width="1.6"/>
+    <text x="1180" y="252" font-size="34" font-weight="600" fill="#202a32" text-anchor="start">Loan</text>
+    <text x="1180" y="310" font-size="25" font-weight="600" fill="#254f68" text-anchor="start">PK</text><text x="1242" y="310" font-size="30" font-weight="400" fill="#202a32" text-anchor="start">LoanID</text><line x1="1178" y1="327" x2="1522" y2="327" stroke="#aebbc4" stroke-width="1.6"/><text x="1180" y="364" font-size="25" font-weight="600" fill="#254f68" text-anchor="start">FK</text><text x="1242" y="364" font-size="30" font-weight="400" fill="#202a32" text-anchor="start">CopyID</text><line x1="1178" y1="381" x2="1522" y2="381" stroke="#aebbc4" stroke-width="1.6"/><text x="1180" y="418" font-size="25" font-weight="600" fill="#254f68" text-anchor="start">FK</text><text x="1242" y="418" font-size="30" font-weight="400" fill="#202a32" text-anchor="start">MemberID</text><line x1="1178" y1="435" x2="1522" y2="435" stroke="#aebbc4" stroke-width="1.6"/><text x="1180" y="472" font-size="25" font-weight="600" fill="#254f68" text-anchor="start"></text><text x="1242" y="472" font-size="30" font-weight="400" fill="#202a32" text-anchor="start">BorrowDate</text>
+  </g>
+    <g data-entity="Member"><text x="600" y="481" font-size="26" font-weight="400" fill="#52606b" text-anchor="start">A registered person</text>
+    <rect x="600" y="500" width="340" height="172" fill="white" stroke="#254f68" stroke-width="2"/>
+    <rect x="600" y="500" width="340" height="64" fill="#f2f5f7"/>
+    <line x1="600" y1="564" x2="940" y2="564" stroke="#254f68" stroke-width="1.6"/>
+    <text x="620" y="543" font-size="34" font-weight="600" fill="#202a32" text-anchor="start">Member</text>
+    <text x="620" y="601" font-size="25" font-weight="600" fill="#254f68" text-anchor="start">PK</text><text x="682" y="601" font-size="30" font-weight="400" fill="#202a32" text-anchor="start">MemberID</text><line x1="618" y1="618" x2="922" y2="618" stroke="#aebbc4" stroke-width="1.6"/><text x="620" y="655" font-size="25" font-weight="600" fill="#254f68" text-anchor="start"></text><text x="682" y="655" font-size="30" font-weight="400" fill="#202a32" text-anchor="start">MemberName</text>
+  </g>
+    <g data-from="Book" data-to="Copy">
+    <path d="M400 303H600" fill="none" stroke="#254f68" stroke-width="2.8"/>
+    <text x="421" y="284" font-size="30" font-weight="600" fill="#254f68" text-anchor="start">1</text>
+    <text x="522" y="284" font-size="30" font-weight="600" fill="#254f68" text-anchor="start">0..*</text>
+    <text x="500" y="341" font-size="25" font-weight="400" fill="#52606b" text-anchor="middle">has copies</text>
+  </g>
+    <g data-from="Copy" data-to="Loan">
+    <path d="M940 303H1160" fill="none" stroke="#254f68" stroke-width="2.8"/>
+    <text x="961" y="284" font-size="30" font-weight="600" fill="#254f68" text-anchor="start">1</text>
+    <text x="1082" y="284" font-size="30" font-weight="600" fill="#254f68" text-anchor="start">0..*</text>
+    <text x="1050" y="341" font-size="25" font-weight="400" fill="#52606b" text-anchor="middle">appears in</text>
+  </g>
+    <g data-from="Member" data-to="Loan">
+    <path d="M940 594H1048V454H1160" fill="none" stroke="#254f68" stroke-width="2.8"/>
+    <text x="961" y="575" font-size="30" font-weight="600" fill="#254f68" text-anchor="start">1</text>
+    <text x="1082" y="435" font-size="30" font-weight="600" fill="#254f68" text-anchor="start">0..*</text>
+    <text x="1143" y="590" font-size="25" font-weight="400" fill="#52606b" text-anchor="middle">has loans</text>
+  </g>
+    <line x1="60" y1="724" x2="1540" y2="724" stroke="#aebbc4" stroke-width="1.6"/>
+    <text x="60" y="772" font-size="27" font-weight="600" fill="#254f68" text-anchor="start">PK: primary key   ·   FK: foreign key   ·   1: exactly one   ·   0..*: zero, one or many</text>
+    <text x="60" y="829" font-size="28" font-weight="400" fill="#202a32" text-anchor="start">Each Copy has exactly one Book; a Book may have zero or many Copies.</text>
+    <text x="60" y="879" font-size="28" font-weight="400" fill="#202a32" text-anchor="start">Each Loan has exactly one Copy and one Member; each may have zero or many Loans.</text>
+    <text x="60" y="929" font-size="28" font-weight="400" fill="#202a32" text-anchor="start">Loans describe history: borrowing the same copy again creates a new LoanID.</text>
+    <text x="60" y="984" font-size="27" font-weight="400" fill="#52606b" text-anchor="start">Preventing overlapping active loans is an additional rule, beyond these relationship lines.</text>
+  </svg>

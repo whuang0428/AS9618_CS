@@ -98,7 +98,7 @@ document.querySelectorAll(".table-scroll").forEach((scroller) => {
  let mode='questions';
  function prepare(){
   if(snapshot)return;
-  const details=[...document.querySelectorAll('.lesson-stage details')];
+  const details=[...document.querySelectorAll('.lesson-stage details, .s5-teaching details, .s5-exam-challenge details')];
   snapshot={details:details.map(el=>[el,el.open]),attribute:document.body.getAttribute('data-exam-print')};
   document.body.dataset.examPrint=mode;
   details.forEach(el=>{el.open=el.classList.contains('optional-practice') || mode==='answers';});

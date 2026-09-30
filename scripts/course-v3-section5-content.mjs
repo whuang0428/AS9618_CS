@@ -1,4 +1,7 @@
 import { mechanismVisual } from "./course-v3-mechanism-diagrams.mjs";
+import { enhanceSection5Teaching } from './course-v3-section5-teaching.mjs';
+import { enhanceSection5Questions } from './course-v3-section5-questions.mjs';
+import { section5Journey } from './course-v3-section5-journey.mjs';
 import { coreParagraph, coreList, coreSteps, coreTable } from "./course-v3-core-blocks.mjs";
 // S5 is authored as complete teaching units and tasks. Objective ownership is
 // explicit; neither prompts nor marking points are inferred from word overlap.
@@ -310,7 +313,9 @@ export function authorSection5Lesson(lesson) {
   if (lesson.section === 5) {
     const authored = authoredLessons[lesson.originalLesson];
     if (!authored) throw new Error(`Missing S5 lesson ${lesson.originalLesson}`);
-    return { ...lesson, ...authored, summaryMode: "authored", sources: ["Cambridge 9618 2027–2029 syllabus 5.1 and 5.2", "Original teaching examples and assessment tasks"] };
+    const prepared = enhanceSection5Questions(enhanceSection5Teaching({ ...lesson, ...authored, summaryMode: "authored", sources: ["Cambridge 9618 2027–2029 syllabus Version 2, sections 5.1 and 5.2", "Cambridge 9618 2027–2029 Pseudocode Guide for Teachers", "Original teaching examples and assessment tasks"] }));
+    // The sequence index is assigned after authoring; original S5 lessons 26–30 become 028–032.
+    return { ...prepared, classroomCourse: section5Journey[lesson.originalLesson + 2] };
   }
   if (lesson.kind !== "review" || lesson.paper !== 1) return lesson;
   // A section heading owns its section's requirements, never a modulo slice

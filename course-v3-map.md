@@ -8,6 +8,8 @@
 
 Paper 1.
 
+The six stable routes are topic containers, not six fixed lessons. The beginner route starts with concrete material and follows prerequisites through explanation, worked examples, experiments, checks and suitable original papers. The Section 1 overview gives flexible 45-minute sessions; Classroom and Full reading share the same content.
+
 - [Lesson 001 · S1-L01 · Binary data units and magnitude prefixes](web/course-v3/lesson-001/) — S1.01
 - [Lesson 002 · S1-L02 · Binary, denary, hexadecimal, BCD and signed representations](web/course-v3/lesson-002/) — S1.02, S1.03, S1.06
 - [Lesson 003 · S1-L03 · Binary addition, subtraction and overflow](web/course-v3/lesson-003/) — S1.04, S1.05
@@ -155,4 +157,4 @@ Paper 2.
 - [Lesson 091 · S12-L08 · Corrective, adaptive and perfective maintenance](web/course-v3/lesson-091/) — S12.08
 - [Lesson 092 · S12-L09 · Analysing and amending an existing program](web/course-v3/lesson-092/) — S12.09
 
-S12 uses nine lessons and 25 knowledge units for 34 objectives. Each unit includes a formative check. Structure-chart translation, state traces, fault diagnosis, test planning, boundary data and program amendment use concrete examples; REV-P2 and the cumulative assessments revisit all nine S12 requirements.
+S12 retains nine lesson routes, 30 base unit keys and 34 objectives. Its beginner classroom journey connects concrete booking materials, prerequisite recall, guided examples, experiments, independent checks and verified past-paper practice. Follow the concept navigation: testing methods lead to data selection in Lesson 090, then test planning in Lesson 089. Suggested 45-minute sessions are flexible. The ten original paper groups assess their documented direct scope; teacher-written checks cover remaining application skills. REV-P2 and the cumulative assessments remain available for consolidation.

@@ -1,0 +1,58 @@
+/* All rules are local to Section 11 guided experiments. */
+.s11-lab { --s11-lab-ink:#153046; --s11-lab-border:#acbecc; --s11-lab-accent:#1f557c; color:var(--s11-lab-ink); border:1px solid var(--s11-lab-border); border-radius:10px; padding:clamp(.9rem,2vw,1.5rem); background:#fff; margin:1rem 0; font-size:1.15rem; line-height:1.5; }
+.s11-lab h3 { font-size:clamp(1.3rem,1.7vw,1.7rem); margin:0 0 .65rem; }
+.s11-lab h4 { font-size:1.1rem; line-height:1.5; margin:.55rem 0; }
+.s11-lab h4 small { display:block; font-size:1rem; font-weight:400; }
+.s11-lab p { margin:.6rem 0; }
+.s11-lab .s11-lab-note { font-size:1rem; color:#405367; }
+.s11-lab .s11-lab-setup,.s11-lab .s11-lab-notes { margin:.7rem 0; border-bottom:1px solid #c5d1da; }
+.s11-lab summary { min-height:44px; padding:.55rem 0; box-sizing:border-box; font-weight:650; cursor:pointer; }
+.s11-lab .s11-lab-fields,.s11-lab .s11-lab-controls { display:flex; flex-wrap:wrap; align-items:end; gap:.65rem; margin:.7rem 0; }
+/* Keep stepping and its explanation visible while the teacher examines the trace. */
+.s11-lab .s11-lab-console { position:sticky; top:var(--s11-toolbar-height,0px); z-index:12; padding:.4rem 0 .5rem; background:#fff; border-bottom:1px solid var(--s11-lab-border); box-shadow:0 5px 8px #1530460d; }
+.s11-lab .s11-lab-console .s11-lab-controls { margin:0 0 .4rem; }
+.s11-lab .s11-lab-console .s11-lab-status { margin:0; }
+.s11-lab label { display:flex; flex-direction:column; gap:.3rem; max-width:100%; font-size:1rem; font-weight:650; }
+.s11-lab input,.s11-lab select,.s11-lab textarea { box-sizing:border-box; min-height:44px; max-width:100%; border:1px solid #728c9f; border-radius:5px; padding:.5rem .65rem; font:inherit; color:#17344a; background:white; }
+.s11-lab input[type="number"] { width:9rem; }
+.s11-lab input[type="text"] { width:26rem; }
+.s11-lab textarea { width:100%; resize:vertical; font-weight:400; }
+.s11-lab button { min-height:44px; border:1px solid #597b92; border-radius:6px; background:#edf3f7; color:#173f5e; padding:.55rem .8rem; font:inherit; font-size:1.05rem; font-weight:650; cursor:pointer; }
+.s11-lab button[data-s11-action="next"],.s11-lab button[data-s11-action="prepare"] { background:var(--s11-lab-accent); color:#fff; }
+.s11-lab button:hover:not(:disabled) { box-shadow:inset 0 0 0 2px currentColor; }
+.s11-lab button:disabled { opacity:.45; cursor:default; }
+.s11-lab :is(button,input,select,textarea,summary,[tabindex]):focus-visible { outline:3px solid #a36513; outline-offset:3px; }
+.s11-lab [data-s11-role="progress"] { font-size:1rem; font-weight:650; padding:.5rem 0; }
+.s11-lab .s11-lab-prediction { border-left:4px solid #95702a; background:#fbf5e5; padding:.65rem .8rem; }
+.s11-lab .s11-lab-status { min-height:3em; border-left:4px solid #357398; padding:.5rem .8rem; background:#edf4f8; }
+.s11-lab .s11-lab-status[data-error="true"] { border-left-color:#94442a; color:#772b17; background:#fff3ee; }
+.s11-lab .s11-lab-grid { display:grid; grid-template-columns:minmax(0,1.25fr) minmax(0,1fr); gap:1.1rem; align-items:start; }
+.s11-lab .s11-lab-grid>section { min-width:0; }
+.s11-lab .s11-lab-code { position:relative; overflow:auto; max-height:30rem; border:1px solid var(--s11-lab-border); border-radius:5px; background:#f7fafc; font:1.05rem/1.7 ui-monospace,SFMono-Regular,Consolas,monospace; scroll-behavior:auto; }
+.s11-lab .s11-lab-code ol { padding: .7rem .5rem .7rem 3.3rem; margin:0; width:max-content; min-width:100%; box-sizing:border-box; }
+.s11-lab .s11-lab-code li { padding:.1rem .5rem; border-left:4px solid transparent; white-space:pre; }
+.s11-lab .s11-lab-code li::marker { color:#586f80; font-size:.85em; }
+.s11-lab .s11-lab-code code { color:inherit; background:transparent; font:inherit; padding:0; border:0; }
+.s11-lab .s11-lab-code li.is-current { color:#0e3f63; background:#dcecf7; border-left-color:#1b5b86; font-weight:750; }
+.s11-lab table { width:100%; border-collapse:collapse; font-size:1rem; }
+.s11-lab th,.s11-lab td { border:1px solid #b5c6d2; padding:.45rem .6rem; text-align:left; overflow-wrap:anywhere; }
+.s11-lab thead th { background:#edf3f7; }
+.s11-lab tbody th { font-weight:600; }
+.s11-lab table code { font:inherit; color:inherit; background:transparent; padding:0; }
+.s11-lab .s11-lab-stream { display:flex; gap:.4rem; flex-wrap:wrap; }
+.s11-lab .s11-lab-stream>span { min-width:3rem; border:1px solid #9db2c2; border-radius:4px; text-align:center; padding:.3rem .5rem; }
+.s11-lab .s11-lab-stream small { display:block; font-size:.8rem; }
+.s11-lab .s11-lab-stream .is-read { background:#f0f2f4; color:#516574; }
+.s11-lab .s11-lab-stream .is-next { outline:2px solid #286386; background:#e7f1f8; font-weight:650; }
+.s11-lab .s11-lab-output { margin:.5rem 0; padding:.5rem .65rem .5rem 2rem; background:#edf5ef; border:1px solid #aac5b1; max-height:12rem; overflow:auto; font-family:ui-monospace,SFMono-Regular,Consolas,monospace; overflow-wrap:anywhere; }
+.s11-lab .s11-lab-empty { color:#48604f; font-family:inherit; }
+.s11-lab .s11-lab-return { border-left:3px solid #765998; padding:.4rem .6rem; background:#f4effa; }
+@media (min-width:1700px) { .s11-lab { font-size:1.3rem; } .s11-lab :is(h4,label,table,button),.s11-lab .s11-lab-code { font-size:1.2rem; } .s11-lab .s11-lab-note { font-size:1.125rem; } .s11-lab button { min-height:48px; } }
+@media (max-width:850px) { .s11-lab .s11-lab-grid { grid-template-columns:1fr; } .s11-lab .s11-lab-code { max-height:25rem; } }
+@media (max-width:500px) { .s11-lab { padding:.75rem; font-size:1.05rem; } .s11-lab .s11-lab-fields>label { width:100%; } .s11-lab input[type="text"] { width:100%; } .s11-lab .s11-lab-code { font-size:1rem; } .s11-lab th,.s11-lab td { padding:.35rem; } }
+@media print { .s11-lab .s11-lab-controls,.s11-lab .s11-lab-setup,.s11-lab .s11-lab-notes { display:none; } .s11-lab .s11-lab-code,.s11-lab .s11-lab-output { max-height:none; overflow:visible; } .s11-lab .s11-lab-grid { display:block; } .s11-lab .s11-lab-code li { white-space:pre-wrap; overflow-wrap:anywhere; } }
+
+.s11-lab .s11-lab-output-group { margin:.3rem 0 .65rem; }
+.s11-lab .s11-lab-output-group>ol { margin:.2rem 0; padding-left:1.5rem; }
+
+@media print { .s11-lab .s11-lab-console { position:static; box-shadow:none; } }

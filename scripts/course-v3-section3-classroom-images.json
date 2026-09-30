@@ -1,0 +1,36 @@
+{
+  "assets": [
+    {
+      "path": "web/assets/course-v3/section-3/hdd-anatomy.png",
+      "tool": "Built-in ImageGen",
+      "prompt": "Use case: scientific-educational. Create one landscape 3:2 original textbook illustration for a beginner computer-science lesson: a simplified open magnetic hard disk seen from a clear top-oblique angle. White background, restrained teal and graphite accents, clean scientific cutaway, generous empty margins. Show one circular silver platter on a central spindle, one clearly visible pivoting actuator arm entering from outside the platter, and its tiny read/write head hovering just above the platter near its outer half. Add a very subtle concentric circular track indication on the platter surface without implying grooves or printed binary text. Make the platter circle and arm mechanism easy to distinguish at classroom distance. Components must be physically plausible: actuator pivot outside platter, arm reaches across radius, head does not touch or scrape surface, no wires crossing recording surface. No case clutter, no second disconnected platter, no screws foreground, no text, letters, numeric labels, arrows, watermark or logo. Editable labels and accurate animated track/sector overlays are supplied separately by the website. This is a simplified anatomy illustration, not a complete engineering drawing.",
+      "review": {
+        "status": "accepted for simplified anatomy",
+        "checked": [
+          "One platter and spindle are distinguishable.",
+          "Actuator pivot is outside the platter and its arm carries the head above the recording region.",
+          "No incorrect embedded labels."
+        ],
+        "limits": "Not to scale. Faint circles illustrate tracks; they are not physical grooves. Use the separate schematic for exact track/sector motion."
+      },
+      "sha256": "63d2e4cc55b64a3e618c5aac6c18066d5d9c4d081ca3e948389a1bf46b24af5d",
+      "created": "2026-09-29"
+    },
+    {
+      "path": "web/assets/course-v3/section-3/speaker-cutaway.png",
+      "tool": "Built-in ImageGen",
+      "prompt": "Use case: scientific-educational. Create an original landscape textbook cutaway illustration of a SIMPLE DYNAMIC MOVING-COIL LOUDSPEAKER for a beginner hardware lesson. Wide 3:2 composition, bright white background, crisp restrained teal, graphite and copper. Clear side cutaway: wide cone on left facing the air, narrow cone neck on right mechanically attached to a cylindrical copper voice coil, the coil sits in the annular air gap of a fixed magnet assembly on right. The coil and cone can move together horizontally; fixed magnet remains stationary. Show cone as a thin conical membrane, a flexible surround at the wide rim, clearly distinct copper coil and grey fixed magnet cutaway. Minimal engineering detail, enough empty margin for external HTML captions, scientific textbook style, easy to read from classroom distance. No electronics circuit, no extra speakers, no arrows, no text, no labels, no numbers, no watermark. Illustration shows parts only; causal explanation and exact signal path will be supplied as editable website text. Avoid decorative glowing effects or waveform overlays.",
+      "review": {
+        "status": "accepted for component identification",
+        "checked": [
+          "Cone is mechanically joined to the copper coil.",
+          "Magnet assembly is shown separately from the moving cone.",
+          "No incorrect embedded labels."
+        ],
+        "limits": "Simplified cutaway, not a dimensioned magnetic air-gap drawing. HTML labels identify components; causal explanation is supplied separately."
+      },
+      "sha256": "dae699d098ab91408ecf021ea022f16a7943fdf4c5a1b3fcd3138fe504cdf20a",
+      "created": "2026-09-29"
+    }
+  ]
+}

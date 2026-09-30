@@ -1,0 +1,23 @@
+{
+  "assets": [
+    {
+      "path": "web/assets/course-v3/section-7/reading-assistant-scene.png",
+      "tool": "Built-in ImageGen",
+      "created": "2026-09-29",
+      "prompt": "Use case: scientific-educational. Asset type: a wide classroom teaching illustration for a Cambridge AS computing lesson about professional responsibility. Create a clean editorial textbook illustration, landscape 16:9, warm white background, dark navy outlines with restrained teal and amber accents, flat shapes with subtle paper texture. Depict one coherent school library scene: a teenage student wearing headphones holds a camera-enabled tablet over a printed book; the tablet is a reading assistant. Beside the student a teacher watches the page. On the other side of the same desk a software developer inspects a laptop and a simple bug report with an amber warning triangle. A small tablet screen shows only a line-shaped text pattern and a speaker icon, no readable words. Their faces and gestures should make it easy to discuss who depends on the software and who can identify a fault. Keep the student, teacher, book/tablet and developer clearly distinct. Generous whitespace, clear large forms readable from the back of a classroom, educational rather than promotional. No text, letters, numbers, labels, logos, title, caption or watermark anywhere. No robot, futuristic holograms, broken body proportions or photorealism. The illustration establishes the situation only; it should not imply the software always succeeds or automatically decides what is ethical.",
+      "sha256": "7b747bc52c270fcf3e645d0c53e09eeceb635d6d06e218115b59ad8c06e17413",
+      "review": {
+        "status": "superseded by an editable academic diagram after visual-style review",
+        "checked": [
+          "Student, teacher, developer, printed page and reading device are visually distinguishable.",
+          "No embedded explanatory labels or claimed performance figures.",
+          "Wide layout and large shapes remain clear in the classroom page."
+        ],
+        "limits": "Fictional scene for discussion. The illustrated devices do not specify the recognition pipeline or prove software accuracy; editable text and the separate pipeline activity explain these.",
+        "styleRevision": "The original cartoon scene is retained only as a historical asset. A later ImageGen style trial was rejected and was not added to the project."
+      },
+      "active": false,
+      "supersededBy": "web/assets/course-v3/section-7/reading-assistant-responsibility-academic.svg"
+    }
+  ]
+}

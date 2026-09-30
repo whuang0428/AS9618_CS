@@ -1,0 +1,15 @@
+{
+  "assets": [
+    {
+      "path": "web/assets/course-v3/section-12/development-workshop.png",
+      "generator": "Built-in ImageGen",
+      "date": "2026-09-30",
+      "prompt": "Use case: scientific-educational. Asset type: wide 16:9 classroom opening illustration for beginner Cambridge AS software development. Create a restrained academic editorial illustration of a small school event booking software workshop. On the LEFT a school booking organiser with a paper request form is explaining a need to a developer. At the CENTRE a desk holds a modest laptop with a very simple blank booking form and a paper sheet with a few blank module boxes; the developer is considering both. On the RIGHT a second staff member tests the laptop interface using a small set of paper sample booking cards and a checklist. A school hall with orderly chairs is subtly visible behind, connecting the software to its real use. Show distinct tangible artifacts: request notes, design sheet, working laptop, test cards. Keep object grouping uncluttered and figures secondary to the artifacts. Soft warm ivory background, muted teal/charcoal accents, natural proportions, clean illustrated shading, professional textbook feel, legible when projected. No words, no numbers, no code, no arrows, no logos, no watermarks. Exact rules, definitions and labels will be accessible HTML outside the illustration. This is a concrete discussion scene about agreeing, designing and checking a booking system, not a claim that all software development happens simultaneously.",
+      "review": "Inspected generated image: organiser with requirements notes, developer beside a design sheet and working form, and a staff member with trial cards/checklist. No words, code, numbers or arrows embedded. The picture supplies a discussion context; precise process order, rules and test values are authored in HTML.",
+      "usage": "Opening observation: a booking system needs agreed requirements, a design and evidence from checking.",
+      "sha256": "7af1bb3fc866a189372c1fba892ee455dedfdc4d5bafc61f08b99bd1fa727734",
+      "width": 1672,
+      "height": 941
+    }
+  ]
+}

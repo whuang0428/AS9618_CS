@@ -1,0 +1,85 @@
+/* Section 9: readable code, concrete opening material and touch-operated models. */
+.s9-classroom,.s9-overview{--s5-accent:#176b73;--s5-soft:#edf5f3;--s5-line:#bfd3d2;--s5-ink:#183540;--s5-muted:#435d66;font-size:20px;line-height:1.5}
+.s9-classroom{max-width:1480px;padding:16px 28px 40px}
+.s9-classroom .s5-intro{max-width:100ch;font-size:20px;line-height:1.4}
+.s9-classroom .s5-toolbar{margin-bottom:10px}
+.s9-classroom .s5-group-heading h2{margin-bottom:12px}
+.s9-classroom .s5-phase{margin:10px 0 18px}
+.s9-classroom .s5-step{padding:18px 24px}
+.s9-classroom .s5-step>p:not(.s5-eyebrow),.s9-classroom .s5-observe-copy>p:not(.s5-eyebrow){font-size:clamp(20px,1.6vw,25px);line-height:1.5}
+.s9-classroom .s5-code{font-size:20px;line-height:1.5;overflow:auto;max-width:100%;tab-size:4}
+.s9-classroom .s5-table-scroll table,.s9-classroom .s5-table-scroll caption{font-size:20px}
+.s9-classroom .s5-table-scroll{overflow:auto}
+.s9-classroom .s5-table-scroll th,.s9-classroom .s5-table-scroll td{padding:9px 12px}
+.s9-classroom .s5-worked-intro{margin-bottom:14px}
+.s9-classroom .s5-worked-intro p,.s9-classroom .s5-worked-conclusion,.s9-classroom .s5-answer>p,.s9-classroom .s5-misconception>p,.s9-classroom .s5-predict,.s9-classroom .s5-reference>p,.s9-classroom .s5-reference li p{font-size:20px;line-height:1.5}
+.s9-classroom .s5-check,.s9-classroom .s5-connection{padding:20px 26px}
+.s9-classroom button,.s9-classroom summary{min-height:44px;touch-action:manipulation}
+.s9-classroom .s5-phases button,.s9-classroom .s5-mode-switch button,.s9-classroom .s5-directory>summary{font-size:17px}
+.s9-classroom .s5-step-map button{font-size:17px;min-height:44px}
+.s9-classroom .s5-step-map{margin-top:10px}
+.s9-classroom .s5-navigation{gap:8px;padding:8px 0}
+.s9-classroom .s5-navigation button{font-size:17px}
+.s9-classroom .s5-position{font-size:17px}
+.s9-classroom .s5-directory ol{width:min(560px,85vw)}
+.s9-classroom .s5-directory a{font-size:18px}
+.s9-opening{max-width:1100px;margin:auto}
+.s9-opening-with-image{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);align-items:center;gap:24px;max-width:none}
+.s9-classroom .s9-opening .s5-figure img{max-height:390px}
+.s9-stimulus{padding:18px 22px;margin:0 0 20px;border:1px solid var(--s5-line);border-radius:8px;background:#fff}
+.s9-stimulus h3{font-size:24px;margin-bottom:10px}
+.s9-stimulus ul{padding-left:24px;margin:0}
+.s9-stimulus li{font-size:20px;line-height:1.5;margin:7px 0}
+.s9-classroom .s5-observe-copy h3{font-size:clamp(24px,2vw,30px)}
+.s9-continue{display:inline-block;min-height:44px;padding:10px 0;font-size:20px;font-weight:650}
+.s9-challenge{max-width:1100px;margin:18px auto;border:1px solid var(--s5-line);background:#fff}
+.s9-challenge>p{padding:16px 20px;font-size:20px}
+.s9-challenge .s5-answer{margin:0 20px 18px}
+.s9-classroom .s5-phase[data-s5-phase="papers"]{max-width:1180px;margin-left:auto;margin-right:auto}
+.s9-classroom .official-page-scroll{max-height:none}
+.s9-classroom .exam-reveal>summary,.s9-classroom .question-prompt{font-size:20px}
+.s9-classroom .s5-phase .official-extract figcaption{font-size:17px}
+.s9-overview .s5-topic-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+.s9-topic-directory>summary{font-size:22px;font-weight:650;min-height:48px;cursor:pointer;padding:12px 0}
+.s9-overview .s5-session-plan p,.s9-overview .s5-session-plan a{font-size:20px}
+.s9-lab{display:grid;gap:18px;padding:22px;border:1px solid var(--s5-line);border-radius:8px;background:#fff;min-width:0}
+.s9-lab>*{min-width:0}
+.s9-lab p{font-size:20px;line-height:1.5}
+.s9-lab-controls{display:flex;flex-wrap:wrap;align-items:end;gap:12px}
+.s9-step-controls{position:sticky;top:var(--s9-toolbar-height,64px);z-index:12;padding:8px 0;background:#fff;border-bottom:1px solid var(--s5-line)}
+.s9-lab fieldset{min-width:0;margin:0;border:1px solid var(--s5-line);padding:14px 18px}.s9-lab legend{font-size:20px;font-weight:650;padding:0 6px}
+.s9-lab label{display:grid;gap:6px;font-size:20px;font-weight:650;max-width:100%}
+.s9-lab input,.s9-lab select{font:inherit;min-height:46px;padding:8px 12px;color:var(--s5-ink);border:1px solid var(--s5-line);border-radius:5px;background:#fff;max-width:100%;min-width:0}
+.s9-lab input[type="checkbox"]{min-height:24px;width:24px;height:24px}
+.s9-lab button{font-size:20px;min-height:46px}
+.s9-lab button[aria-pressed="true"],.s9-lab button[aria-current="step"]{background:var(--s5-accent);color:#fff}
+.s9-lab-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.s9-lab-output{padding:18px 22px;border-left:4px solid var(--s5-accent);background:var(--s5-soft);min-width:0;overflow-wrap:break-word;container-name:s9-result;container-type:inline-size}
+.s9-representation-grid{grid-template-columns:minmax(0,1fr)}
+.s9-representation-grid[data-view="both"]{grid-template-columns:minmax(250px,1fr) minmax(860px,2.5fr);align-items:start}
+.s9-lab-output:empty{display:none}
+.s9-lab-output h4{font-size:24px}
+.s9-lab-output p:last-child{margin-bottom:0}
+.s9-lab-table{max-width:100%;overflow:auto;overscroll-behavior-x:contain}
+.s9-lab table{width:100%;border-collapse:collapse;font-size:20px;line-height:1.5}
+.s9-lab th,.s9-lab td{border:1px solid var(--s5-line);padding:9px 12px;vertical-align:top;text-align:left;font-size:inherit;letter-spacing:0;text-transform:none;width:auto;color:var(--s5-ink)}
+.s9-lab th{background:#e1eeea}
+.s9-lab td{background:#fff}
+.s9-lab-code{max-width:100%;overflow:auto;font:500 20px/1.5 ui-monospace,SFMono-Regular,Consolas,monospace;background:#f8fbfa;border:1px solid var(--s5-line);padding:14px 18px;white-space:pre}
+.s9-lab-code code{font:inherit;color:inherit;white-space:pre;background:none}
+.s9-lab-code pre{margin:0;font:inherit;color:inherit;line-height:inherit;white-space:normal;background:transparent}
+.s9-lab-code .s9-code-line{white-space:pre}
+.s9-code-line{display:block;padding:2px 8px;border-left:4px solid transparent}
+.s9-code-line[data-current="true"],.s9-code-line[data-active="true"]{background:#dceee7;border-left-color:#176b73;font-weight:750}
+.s9-lab-flow{max-width:100%;max-height:min(65vh,700px);overflow:auto;overscroll-behavior:contain;scroll-padding:24px;background:#fff}
+.s9-lab-flow svg{display:block;width:100%;min-width:860px;height:auto}
+.s9-lab-flow svg.s9-flow-wide{min-width:1200px}
+.s9-flow-node[data-current="true"]{fill:#dceee7;stroke:#176b73;stroke-width:3}
+.s9-flow-node[data-current="true"] text{fill:var(--s5-ink);stroke:none}
+.s9-lab .s9-lab-note,.s9-lab .s9-lab-status{font-size:18px;line-height:1.5;color:var(--s5-muted)}
+.s9-lab-prediction{padding:14px 18px;background:#fff9ee;border-left:4px solid #b27322;font-size:20px}
+@container s9-result (max-width:1140px){.s9-representation-grid[data-view="both"]{grid-template-columns:minmax(0,1fr)}}
+@media(min-width:1550px){.s9-classroom .s5-step>p:not(.s5-eyebrow),.s9-classroom .s5-observe-copy>p:not(.s5-eyebrow),.s9-lab p{font-size:24px}.s9-classroom .s5-code,.s9-lab-code,.s9-lab table{font-size:22px}}
+@media(max-width:900px){.s9-opening-with-image,.s9-lab-grid{grid-template-columns:1fr}.s9-classroom{padding:14px 20px 36px}.s9-overview .s5-topic-grid{grid-template-columns:1fr 1fr}.s9-classroom .s5-navigation{flex-wrap:wrap}.s9-classroom .s5-position{flex-basis:100%;order:-1}.s9-classroom .s5-navigation button{flex:1}.s9-classroom .s5-titlebar{align-items:start;flex-wrap:wrap;gap:12px}}
+@media(max-width:560px){.s9-overview .s5-topic-grid{grid-template-columns:1fr}.s9-classroom{padding:12px 14px 30px}.s9-lab,.s9-stimulus,.s9-classroom .s5-step,.s9-classroom .s5-check,.s9-classroom .s5-connection{padding:16px}.s9-lab-controls label{flex-basis:100%}.s9-lab select{width:100%}.s9-lab table,.s9-classroom .s5-table-scroll table{min-width:480px}.s9-classroom .s5-toolbar{align-items:start;flex-wrap:wrap}.s9-classroom .s5-directory{max-width:none;width:100%}.s9-classroom .s5-directory ol{left:0;right:auto;width:min(490px,90vw)}}
+@media print{.s9-lab-controls{display:none}.s9-classroom .s5-code,.s9-lab-code{white-space:pre-wrap;overflow:visible}.s9-classroom .s9-opening .s5-figure img{max-height:280px}.s9-lab{break-inside:avoid}}

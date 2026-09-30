@@ -1,0 +1,88 @@
+/* Section 2 uses the established classroom layout and a precise, quiet teaching canvas. */
+.s2-classroom,.s2-overview{--s5-accent:#215e70;--s5-soft:#edf4f5;--s5-line:#b9cdd2;--s5-ink:#18323d;--s5-muted:#405c65;font-size:20px;line-height:1.5;overflow-wrap:anywhere}
+.s2-classroom{max-width:1480px;padding:12px 28px 40px}
+.s2-classroom .s5-intro{font-size:18px;line-height:1.45;max-width:100ch}
+.s2-classroom .s5-toolbar{margin-bottom:10px}
+.s2-classroom .s5-group-heading h2{margin-bottom:12px}
+.s2-classroom .s5-phase{margin:10px 0 18px}
+.s2-classroom[data-mode="classroom"] .s5-phase{scroll-margin-top:200px}
+.s2-classroom .s5-step{padding:18px 24px}
+.s2-classroom .s5-step>p:not(.s5-eyebrow),.s2-classroom .s5-observe-copy>p:not(.s5-eyebrow){font-size:clamp(20px,1.6vw,25px);line-height:1.5}
+.s2-classroom .s5-code{font-size:20px;line-height:1.5;overflow:auto;max-width:100%;tab-size:4}
+.s2-classroom .s5-table-scroll table,.s2-classroom .s5-table-scroll caption{font-size:20px}
+.s2-classroom .s5-table-scroll th,.s2-classroom .s5-table-scroll td{padding:9px 12px}
+.s2-classroom .s5-worked-intro{margin-bottom:14px}
+.s2-classroom .s5-worked-intro p,.s2-classroom .s5-worked-conclusion,.s2-classroom .s5-answer>p,.s2-classroom .s5-misconception>p,.s2-classroom .s5-predict,.s2-classroom .s5-reference>p{font-size:20px;line-height:1.5}
+.s2-classroom .s5-check,.s2-classroom .s5-connection{padding:20px 26px}
+.s2-classroom button,.s2-classroom summary{min-height:44px;touch-action:manipulation}
+.s2-classroom .s5-phases button,.s2-classroom .s5-mode-switch button,.s2-classroom .s5-directory>summary,.s2-classroom .s5-navigation button,.s2-classroom .s5-position{font-size:17px}
+.s2-classroom .s5-step-map button{font-size:17px;min-height:44px}
+.s2-classroom .s5-step-map{margin-top:10px}
+.s2-classroom .s5-navigation{gap:8px;padding:8px 0}
+.s2-classroom .s5-directory ol{width:min(560px,85vw)}
+.s2-classroom .s5-directory a{font-size:18px}
+.s2-opening{max-width:1100px;margin:auto}
+.s2-opening-with-image{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);align-items:center;gap:24px;max-width:none}
+.s2-opening-with-image>*{min-width:0}
+.s2-stimulus{padding:18px 22px;margin:0 0 20px;border:1px solid var(--s5-line);border-radius:6px;background:#fff}
+.s2-stimulus h3{font-size:24px;margin-bottom:10px}
+.s2-stimulus ul{padding-left:24px;margin:0}
+.s2-stimulus li{font-size:22px;line-height:1.5;margin:7px 0}
+.s2-classroom .s5-observe-copy h3{font-size:clamp(24px,2vw,30px)}
+.s2-continue{display:inline-block;min-height:44px;padding:10px 0;font-size:20px;font-weight:650}
+.s2-challenge{max-width:1100px;margin:18px auto;border:1px solid var(--s5-line);background:#fff}
+.s2-challenge>p{padding:16px 20px;font-size:20px}
+.s2-challenge .s5-answer{margin:0 20px 18px}
+.s2-classroom .s5-phase[data-s5-phase="papers"]{max-width:1180px;margin-left:auto;margin-right:auto}
+.s2-classroom .official-page-scroll{max-height:none}
+.s2-classroom .exam-reveal>summary,.s2-classroom .question-prompt{font-size:20px}
+.s2-classroom .s5-phase .official-extract figcaption{font-size:17px}
+.s2-overview .s5-topic-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+.s2-topic-directory>summary{font-size:22px;font-weight:650;min-height:48px;cursor:pointer;padding:12px 0}
+.s2-overview .s5-session-plan p,.s2-overview .s5-session-plan a{font-size:20px}
+.s2-route>ol{list-style:none;counter-reset:route;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 36px;padding:0}
+.s2-route>ol>li{counter-increment:route;border-top:1px solid var(--s5-line);padding:20px 0}
+.s2-route>ol>li h3:before{content:counter(route,decimal-leading-zero) ' / ';font-family:system-ui,sans-serif;font-size:18px;color:var(--s5-accent)}
+.s2-route p{font-size:20px}
+.s2-enlarge-table{display:block;margin:0 0 8px auto;font-size:16px!important}
+.s2-table-zoom{width:min(1400px,95vw);max-width:95vw;max-height:90vh;border:1px solid #9bb3bd;border-radius:8px;color:var(--s5-ink);padding:20px;background:#fff}
+.s2-table-zoom::backdrop{background:#152c38b3}
+.s2-table-zoom form{text-align:right;margin-bottom:16px}
+.s2-table-zoom>div{overflow:auto}
+.s2-table-zoom table{border-collapse:collapse;width:100%;font:22px/1.5 system-ui,sans-serif}
+.s2-table-zoom th,.s2-table-zoom td{padding:12px;border:1px solid #b9cdd2;text-align:left;color:var(--s5-ink);font-size:inherit}
+.s2-table-zoom th{background:#edf4f5}
+@media(min-width:1550px){.s2-classroom .s5-code,.s2-classroom .s5-table-scroll table{font-size:22px}}
+@media(max-width:900px){.s2-opening-with-image{grid-template-columns:1fr}.s2-classroom{padding:12px 20px 36px}.s2-classroom .s5-navigation{flex-wrap:wrap}.s2-classroom .s5-position{flex-basis:100%;order:-1}.s2-classroom .s5-navigation button{flex:1}.s2-classroom .s5-titlebar{align-items:start;flex-wrap:wrap;gap:12px}}
+@media(max-width:560px){.s2-overview .s5-topic-grid,.s2-route>ol{grid-template-columns:1fr}.s2-classroom{padding:12px 14px 30px}.s2-stimulus,.s2-classroom .s5-step,.s2-classroom .s5-check,.s2-classroom .s5-connection{padding:16px}.s2-classroom .s5-table-scroll table{min-width:450px}.s2-classroom .s5-toolbar{align-items:start;flex-wrap:wrap}.s2-classroom .s5-directory{max-width:none;width:100%}.s2-classroom .s5-directory ol{left:0;right:auto;width:min(490px,90vw)}}
+@media print{.s2-enlarge-table{display:none}.s2-classroom .s5-code{white-space:pre-wrap;overflow:visible}}
+
+/* Keep projection navigation available without squeezing the teaching canvas. */
+.s2-classroom .s5-navigation{position:sticky;bottom:0;background:#fafcfbf5;border-top:1px solid var(--s5-line);z-index:20;padding:10px 0}
+.s2-classroom .s5-step-stack{min-width:0}
+.s2-classroom .s5-explanation:not(.s5-has-media){max-width:1100px;margin:auto}
+.s2-classroom .s5-step-map{display:flex;flex-wrap:wrap;gap:8px;padding:0;list-style:none}
+.s2-classroom .s5-step-map button{font-size:16px;padding:8px 12px}
+.s2-classroom .s5-titlebar h1{font-size:clamp(24px,2.2vw,34px)}
+.s2-classroom .s5-group-heading h2{font-size:clamp(28px,2.5vw,40px)}
+.s2-classroom .s5-figure img{max-height:420px;object-fit:contain}
+.s2-classroom .s5-paper-set>summary{font-size:20px}
+.s2-classroom .objective-row{display:none}
+.s2-classroom .s5-content{min-height:320px}
+.s2-table-zoom img{width:100%;height:auto;max-width:none}
+.s2-table-zoom .official-page-scroll{max-height:none;overflow:visible}
+.s2-table-zoom .s5-table-scroll{overflow:visible}
+body:has(.s2-table-zoom[open]){overflow:hidden}
+.s2-overview .s2-route a{display:inline-block;min-height:44px;padding:8px 0}
+@media(min-width:1100px){.s2-classroom[data-mode="classroom"] .s5-step-map{margin-top:12px}.s2-classroom .s5-observe-copy>p{max-width:70ch}}
+@media(min-width:1100px){.s2-classroom[data-mode="classroom"] .s5-group:has(>[data-s5-phase="experiment"]:not([hidden]))>.s5-group-heading>.s5-eyebrow{display:none}}
+@media(max-width:560px){.s2-classroom .s5-navigation{position:static}.s2-classroom .s5-step-map{display:grid;grid-template-columns:1fr}.s2-classroom .s5-figure img{max-height:280px}}
+@media print{.s2-classroom .s5-navigation,.s2-classroom .s5-toolbar,.s2-classroom .s5-mode-switch,.s2-classroom dialog{display:none!important}}
+
+/* Keep the page title and mode switch intact above the teaching stages. */
+@media(min-width:901px){
+  .s2-classroom .s5-titlebar{position:sticky;top:0;z-index:18;background:#fafcfb;padding:8px 0;min-height:70px}
+  .s2-classroom .s5-titlebar h1{font-size:clamp(23px,1.8vw,29px);margin:2px 0}
+  .s2-classroom .s5-toolbar{top:var(--s2-title-height,80px)}
+  .s2-classroom [data-s5-scroll-anchor]{scroll-margin-top:var(--s2-title-height,80px)}
+}

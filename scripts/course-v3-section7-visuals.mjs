@@ -4,7 +4,7 @@ const visual = (file, title, caption, alt, facts) => ({
 });
 
 const diagrams = {
-  "S7-PURPOSE": visual("professional-responsibility.png", "From specialist knowledge to an informed decision",
+  "S7-PURPOSE": visual("professional-responsibility-academic.svg", "From specialist knowledge to an informed decision",
     "Follow how a professional's knowledge creates a duty to explain a risk. Professional-body support helps the person discharge that duty.",
     "A programmer discovers a hidden safety fault, explains it in a report, and enables an informed customer decision. Codes, peers and continuing development support the professional.", [
       "Specialist knowledge: a programmer can identify a hidden safety fault that the customer cannot independently assess.",
@@ -12,7 +12,7 @@ const diagrams = {
       "The purpose is to protect people who depend on the system.",
       "A code of conduct, peer guidance and continuing development support judgement; they do not replace personal responsibility or product testing.",
     ]),
-  "S7-CONSEQUENCES": visual("ethical-decision-paths.png", "Compare the consequences of two actions",
+  "S7-CONSEQUENCES": visual("ethical-decision-paths-academic.svg", "Compare the consequences of two actions",
     "Read each branch separately: identify the developer's action, the user affected and the resulting consequence.",
     "A route wrongly labelled wheelchair-accessible branches into reporting and correction, or concealment and publication, with separate consequences for users and the launch.", [
       "Shared problem: a route labelled wheelchair-accessible includes steps.",
@@ -20,7 +20,7 @@ const diagrams = {
       "Conceal and publish: users may reach an inaccessible location, need assistance and complain.",
       "The branches compare alternative actions; a benefit on one branch is not the cause of a harm on the other.",
     ]),
-  "S7-COPYRIGHT": visual("copyright-permissions.png", "Ownership and permission perform different roles",
+  "S7-COPYRIGHT": visual("copyright-permissions-academic.svg", "Ownership and permission perform different roles",
     "Trace each activity back to the licence. Permission to perform one activity does not automatically authorise another.",
     "A copyright holder grants permissions through a licence. Separate branches show running, modifying and redistributing, each only if permitted, with continuing conditions on copies.", [
       "The copyright holder can grant permissions through a licence.",
@@ -54,12 +54,13 @@ const diagrams = {
       "A false alert can lead to unnecessary inspection. A missed fault can still lead to a breakdown.",
       "A prediction guides a decision; it is not a guarantee.",
     ]),
-  "S7-AI-SOCIAL": visual("ai-fairness.png", "Look beyond an overall accuracy figure",
+  "S7-AI-SOCIAL": visual("ai-fairness-academic.svg", "Look beyond an overall accuracy figure",
     "Compare the results for each accent. The difference concerns the system's performance, not the value or ability of its users.",
-    "Two accents enter one speech-to-text system but receive different caption quality. An overall score can hide the unequal errors; group-level checks and corrections are needed.", [
+    "Illustrative speech-to-text results: group A has 90 correct captions in 90 tests and group B has 5 in 10. The overall 95% combines group rates of 100% and 50%, weighted by their sample sizes.", [
       "The same speech-to-text system processes speech from users with two different accents.",
       "It produces mostly correct captions for one accent but frequent caption errors for the other.",
       "One overall accuracy figure can conceal unequal access to reliable captions.",
+      "In this invented example, (90 + 5) correct captions out of (90 + 10) tests gives 95%. Group A contributes 90 of the 100 tests.",
       "Check performance for each affected group and provide a way to correct inaccurate captions.",
     ]),
   "S7-AI-ENVIRONMENT": visual("ai-environmental-balance.png", "Compare application savings with the system footprint",

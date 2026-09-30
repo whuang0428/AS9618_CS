@@ -1,0 +1,21 @@
+{
+  "name": "@electric-sql/pglite",
+  "version": "0.5.8",
+  "source": "https://registry.npmjs.org/@electric-sql/pglite/-/pglite-0.5.8.tgz",
+  "integrity": "sha512-n9tsbUOhwx2epK1V0ZG9Ar4SHWUju04dhmzZXiSBXwBoleOvIfals33NAaWgagQVAL4Rbvx/Ptsu3P+pA09f6Q==",
+  "purpose": "In-memory PostgreSQL for Section 8 browser experiments. Local assets only; no persistent student database.",
+  "license": "Apache-2.0; see LICENSE",
+  "files": {
+    "index.js": "388fa6f88cfa02adda63b2f05853d310dec9a42fc0b91b0a78927f97d4bc5964",
+    "pglite.wasm": "356b89f6fcb2ab3a397bec4128327b67b7137ec2a900b13251dade81bcbc0ef0",
+    "pglite.data": "c574cc331d96e33311470ec57bf58c579d972c111dbd9c0ab54bb42d79ec4c0d",
+    "initdb.wasm": "4c8988dca3b2f0bbfd23a0714023e4822a2909ead01804f37acffd9ff3ca9f8a",
+    "chunk-2BOC2OMW.js": "518217918b120059f84abfd5da2548c208cb232ed8fa45c330c7c358c472e185",
+    "chunk-RYDTTX3G.js": "a929aa141dccfb2f412b0fbee3a1e5b4aab3b228f89d2131ac24f73ad1136a90",
+    "chunk-NNS5RQRF.js": "e04c14da71c248d5e7e02f45df665b8e2b136526ee0bef419274bb2b345a1017",
+    "chunk-F4GETNPB.js": "5ab11fd9fd74b259484f42a7855cd9569a5fe6ee1cf3c032238ac43a59511d97",
+    "chunk-JDT7TZ73.js": "ccc0c2ea7269c23559d23cd86e0d12b3a35beb6d420253790890ecd7d08e1852",
+    "chunk-QY3QWFKW.js": "bff6d3144dd6ea2689b00d9d0eea1ea2267b9cc14505fb9107b6194c1832bdea",
+    "chunk-DDJLRBDX.js": "09cdee35c53b92a6498c3f1ece5fe2d71063b637ea0036f808c08f7b11024393"
+  }
+}

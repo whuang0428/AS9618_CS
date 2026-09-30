@@ -1,0 +1,66 @@
+/* Section 1 classroom experiments; all rules are scoped to the lab root. */
+.s1-classroom .s1-lab { --s1-ink:#18334b; --s1-accent:#245b88; --s1-soft:#eef5fb; --s1-line:#b6c9d9; color:var(--s1-ink); font-size:20px; line-height:1.5; }
+.s1-classroom .s1-lab *, .s1-classroom .s1-lab *::before, .s1-classroom .s1-lab *::after { box-sizing:border-box; }
+.s1-classroom .s1-lab h3 { margin:0 0 .45rem; font-size:1.45em; }
+.s1-classroom .s1-lab p { margin:.6rem 0; }
+.s1-classroom .s1-lab button, .s1-classroom .s1-lab input, .s1-classroom .s1-lab select { font:inherit; color:inherit; min-height:44px; border:1px solid var(--s1-line); border-radius:8px; background:#fff; }
+.s1-classroom .s1-lab button { padding:.45rem .85rem; cursor:pointer; font-weight:650; }
+.s1-classroom .s1-lab button:hover { background:var(--s1-soft); border-color:var(--s1-accent); }
+.s1-classroom .s1-lab button:focus-visible, .s1-classroom .s1-lab input:focus-visible, .s1-classroom .s1-lab select:focus-visible, .s1-classroom .s1-lab summary:focus-visible { outline:3px solid #b16a18; outline-offset:3px; }
+.s1-classroom .s1-lab button:disabled { opacity:.45; cursor:default; }
+.s1-classroom .s1-lab [hidden] { display:none!important; }
+.s1-classroom .s1-lab-inputs { display:flex; flex-wrap:wrap; align-items:end; gap:.8rem; margin:.8rem 0; }
+.s1-classroom .s1-lab-inputs label { display:grid; gap:.3rem; flex:1 1 180px; max-width:100%; font-size:.9em; }
+.s1-classroom .s1-lab-inputs input, .s1-classroom .s1-lab-inputs select { width:100%; padding:.4rem .65rem; }
+.s1-classroom .s1-lab-setup { border-block:1px solid var(--s1-line); padding:.6rem 0; margin:.8rem 0; }
+.s1-classroom .s1-lab-setup summary { cursor:pointer; min-height:44px; display:list-item; padding:.4rem 0; }
+.s1-classroom .s1-lab-prediction { border-left:4px solid #bb751d; padding:.55rem .85rem; background:#fff8e9; }
+.s1-classroom .s1-lab-display { min-width:0; max-width:100%; margin:.8rem 0; overflow-x:auto; }
+.s1-classroom .s1-lab-actions { display:flex; flex-wrap:wrap; gap:.6rem; align-items:center; }
+.s1-classroom .s1-lab-actions [data-s1-action="reveal"] { background:var(--s1-accent); color:#fff; border-color:var(--s1-accent); }
+.s1-classroom .s1-lab-progress, .s1-classroom .s1-lab-note { font-size:.9em; color:#38536a; }
+.s1-classroom .s1-lab-explanation { background:var(--s1-soft); border-radius:10px; padding:.8rem 1rem; overflow-wrap:anywhere; }
+.s1-classroom .s1-lab-explanation strong { font-size:1.06em; }
+.s1-classroom .s1-lab [data-rejected="true"] { color:#a62619; }
+.s1-classroom .s1-lab-metrics { display:flex; flex-wrap:wrap; gap:.55rem .8rem; margin:.8rem 0; }
+.s1-classroom .s1-lab-metrics > span { padding:.4rem .65rem; border:1px solid var(--s1-line); border-radius:8px; background:#fff; }
+.s1-classroom .s1-lab-metrics b { display:inline-block; margin-left:.25rem; }
+.s1-classroom .s1-bit-row { display:flex; flex-wrap:wrap; gap:.45rem; align-items:start; }
+.s1-classroom .s1-bit-cell { display:grid; gap:.25rem; text-align:center; min-width:58px; padding:.35rem; border:1px solid var(--s1-line); border-radius:8px; }
+.s1-classroom .s1-bit-cell button { font:700 1.35em ui-monospace,monospace; padding:.2rem .7rem; }
+.s1-classroom .s1-bit-cell button[aria-pressed="true"] { color:#fff; background:var(--s1-accent); }
+.s1-classroom .s1-bit-cell small { font-size:.8em; }
+.s1-classroom .s1-lab-table { width:100%; border-collapse:collapse; margin:.8rem 0; font-size:1em; }
+.s1-classroom .s1-lab-table th, .s1-classroom .s1-lab-table td { padding:.5rem .65rem; border-bottom:1px solid var(--s1-line); text-align:left; overflow-wrap:anywhere; font-size:1em; color:var(--s1-ink); }
+.s1-classroom .s1-lab-table th { background:var(--s1-soft); }
+.s1-classroom .s1-lab-table code, .s1-classroom .s1-lab code { font-size:1em; color:var(--s1-ink); background:transparent; }
+.s1-classroom .s1-arithmetic { display:grid; gap:.3rem; padding:1rem; background:var(--s1-soft); border-radius:10px; max-width:100%; }
+.s1-classroom .s1-arithmetic-row { display:flex; gap:.3rem; justify-content:center; font:650 1.45em ui-monospace,monospace; }
+.s1-classroom .s1-arithmetic-row span { width:1.7em; text-align:center; padding:.2rem; border-radius:5px; }
+.s1-classroom .s1-arithmetic-row .is-focus { background:#ffe0a4; color:#402800; outline:2px solid #9e6418; }
+.s1-classroom .s1-arithmetic-row.is-result { border-top:2px solid var(--s1-accent); padding-top:.4rem; }
+.s1-classroom .s1-lab-columns { display:grid; grid-template-columns:1fr 1fr; gap:1.1rem; align-items:start; }
+.s1-classroom .s1-pixel-grid { display:grid; gap:1px; width:min(100%,440px); aspect-ratio:1; border:2px solid var(--s1-ink); background:var(--s1-ink); }
+.s1-classroom .s1-lab-columns.is-pixel-dense { grid-template-columns:1fr; }
+.s1-classroom .is-pixel-dense .s1-pixel-grid { width:min(100%,720px); }
+.s1-classroom .s1-pixel-grid button { min-height:0; min-width:0; border:0; border-radius:0; padding:0; width:100%; height:100%; }
+.s1-classroom .s1-pixel-grid button:hover { outline:3px solid #e8a235; outline-offset:-3px; }
+.s1-classroom .s1-palette { display:flex; flex-wrap:wrap; gap:.4rem; margin:.5rem 0; }
+.s1-classroom .s1-palette button { width:48px; height:48px; padding:0; border:2px solid #596c7b; }
+.s1-classroom .s1-palette button[aria-pressed="true"] { outline:3px solid #b66a0a; outline-offset:2px; }
+.s1-classroom .s1-lab svg { display:block; width:100%; max-height:360px; background:#fff; border:1px solid var(--s1-line); border-radius:8px; }
+.s1-classroom .s1-lab svg text { font-family:inherit; fill:var(--s1-ink); }
+.s1-classroom .s1-lab-swatches { display:flex; gap:.3rem; flex-wrap:wrap; margin:.45rem 0; }
+.s1-classroom .s1-lab-swatch { width:clamp(48px,8vw,76px); text-align:center; border:1px solid var(--s1-line); border-radius:6px; overflow:hidden; font-size:.85em; }
+.s1-classroom .s1-lab-swatch > span { display:block; height:48px; border-bottom:1px solid var(--s1-line); }
+.s1-classroom .s1-runs { display:flex; flex-wrap:wrap; gap:.5rem; margin:.65rem 0; }
+.s1-classroom .s1-runs span { border:1px solid var(--s1-line); border-radius:6px; padding:.4rem .6rem; font-family:ui-monospace,monospace; }
+.s1-classroom .s1-lab-long { overflow-wrap:anywhere; letter-spacing:.08em; }
+@media(max-width:700px) {
+  .s1-classroom .s1-lab { font-size:18px; }
+  .s1-classroom .s1-lab-columns { grid-template-columns:1fr; }
+  .s1-classroom .s1-bit-cell { min-width:47px; padding:.15rem; }
+  .s1-classroom .s1-bit-cell button { padding:.2rem .45rem; }
+  .s1-classroom .s1-lab-table th, .s1-classroom .s1-lab-table td { padding:.4rem .25rem; }
+  .s1-classroom .s1-arithmetic-row { font-size:1.15em; gap:.1rem; }
+}

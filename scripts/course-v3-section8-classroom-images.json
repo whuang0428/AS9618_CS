@@ -1,0 +1,22 @@
+{
+  "tool": "image_gen.imagegen",
+  "date": "2026-09-29",
+  "assets": [
+    {
+      "path": "web/assets/course-v3/section-8/library-desk.png",
+      "prompt": "Replace the attached cartoon illustration with an academic textbook photographic plate. Redraw the entire image as a photorealistic documentary photograph, not an illustration or animation. Preserve only the educational scene: a secondary-school student presenting a membership card and a physical book to a librarian recording a borrowing event in a paper register, a computer beside the register, and two matching copies of a plain-covered book on a nearby shelf. Use realistic human anatomy, real skin and fabric textures, natural diffused light, restrained low-saturation neutral colours, precise focus on the hands, card, book and register. Academic, objective, calm composition, like a documentary plate in an information-systems textbook, no cinematic glamour. The paperwork and card must contain no readable personal information. Plain book covers. No cartoons, anime, comic outlines, painterly rendering, exaggerated features, decorative icons, mascot, typography, labels or logos. Landscape 3:2. Use clean negative space and an uncluttered background.",
+      "generatedFile": "/Users/kw/.codex/generated_images/01a0eb9d-87c0-7c20-8034-8575790e716b/exec-f0c51cf0-35ef-4283-992f-3ee3e701c1a1.png",
+      "review": {
+        "status": "verified",
+        "checked": [
+          "Photorealistic academic style; no cartoon outlines",
+          "Membership card, book and register clearly show a borrowing event",
+          "No readable personal data or invented diagram text",
+          "Matching physical copies visible"
+        ],
+        "limits": "Generated illustrative scene, not a photograph of an actual school. Precise records are authored as HTML."
+      },
+      "sha256": "f4947ff6c9f75ea0df77085028bb7d9f464a5ef2bc5367951bfe6f43f90982ae"
+    }
+  ]
+}

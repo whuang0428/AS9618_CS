@@ -1,0 +1,88 @@
+/* Section 11 uses the established classroom layout and a precise, quiet teaching canvas. */
+.s11-classroom,.s11-overview{--s5-accent:#215e70;--s5-soft:#edf4f5;--s5-line:#b9cdd2;--s5-ink:#18323d;--s5-muted:#405c65;font-size:20px;line-height:1.5}
+.s11-classroom{max-width:1480px;padding:12px 28px 40px}
+.s11-classroom .s5-intro{font-size:18px;line-height:1.45;max-width:100ch}
+.s11-classroom .s5-toolbar{margin-bottom:10px}
+.s11-classroom .s5-group-heading h2{margin-bottom:12px}
+.s11-classroom .s5-phase{margin:10px 0 18px}
+.s11-classroom .s5-step{padding:18px 24px}
+.s11-classroom .s5-step>p:not(.s5-eyebrow),.s11-classroom .s5-observe-copy>p:not(.s5-eyebrow){font-size:clamp(20px,1.6vw,25px);line-height:1.5}
+.s11-classroom .s5-code{font-size:20px;line-height:1.5;overflow:auto;max-width:100%;tab-size:4}
+.s11-classroom .s5-table-scroll table,.s11-classroom .s5-table-scroll caption{font-size:20px}
+.s11-classroom .s5-table-scroll th,.s11-classroom .s5-table-scroll td{padding:9px 12px}
+.s11-classroom .s5-worked-intro{margin-bottom:14px}
+.s11-classroom .s5-worked-intro p,.s11-classroom .s5-worked-conclusion,.s11-classroom .s5-answer>p,.s11-classroom .s5-misconception>p,.s11-classroom .s5-predict,.s11-classroom .s5-reference>p{font-size:20px;line-height:1.5}
+.s11-classroom .s5-check,.s11-classroom .s5-connection{padding:20px 26px}
+.s11-classroom button,.s11-classroom summary{min-height:44px;touch-action:manipulation}
+.s11-classroom .s5-phases button,.s11-classroom .s5-mode-switch button,.s11-classroom .s5-directory>summary,.s11-classroom .s5-navigation button,.s11-classroom .s5-position{font-size:17px}
+.s11-classroom .s5-step-map button{font-size:17px;min-height:44px}
+.s11-classroom .s5-step-map{margin-top:10px}
+.s11-classroom .s5-navigation{gap:8px;padding:8px 0}
+.s11-classroom .s5-directory ol{width:min(560px,85vw)}
+.s11-classroom .s5-directory a{font-size:18px}
+.s11-opening{max-width:1100px;margin:auto}
+.s11-opening-with-image{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);align-items:center;gap:24px;max-width:none}
+.s11-opening-with-image>*{min-width:0}
+.s11-stimulus{padding:18px 22px;margin:0 0 20px;border:1px solid var(--s5-line);border-radius:6px;background:#fff}
+.s11-stimulus h3{font-size:24px;margin-bottom:10px}
+.s11-stimulus ul{padding-left:24px;margin:0}
+.s11-stimulus li{font-size:22px;line-height:1.5;margin:7px 0}
+.s11-classroom .s5-observe-copy h3{font-size:clamp(24px,2vw,30px)}
+.s11-continue{display:inline-block;min-height:44px;padding:10px 0;font-size:20px;font-weight:650}
+.s11-challenge{max-width:1100px;margin:18px auto;border:1px solid var(--s5-line);background:#fff}
+.s11-challenge>p{padding:16px 20px;font-size:20px}
+.s11-challenge .s5-answer{margin:0 20px 18px}
+.s11-classroom .s5-phase[data-s5-phase="papers"]{max-width:1180px;margin-left:auto;margin-right:auto}
+.s11-classroom .official-page-scroll{max-height:none}
+.s11-classroom .exam-reveal>summary,.s11-classroom .question-prompt{font-size:20px}
+.s11-classroom .s5-phase .official-extract figcaption{font-size:17px}
+.s11-overview .s5-topic-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+.s11-topic-directory>summary{font-size:22px;font-weight:650;min-height:48px;cursor:pointer;padding:12px 0}
+.s11-syllabus-directory{margin:28px 0;border-top:1px solid var(--s5-line);border-bottom:1px solid var(--s5-line)}
+.s11-syllabus-directory summary{font-size:21px;font-weight:650;min-height:48px;cursor:pointer;padding:12px 0}
+.s11-syllabus-directory>details{padding-left:20px}
+.s11-syllabus-directory a{display:inline-block;min-height:44px;padding:8px 0}
+.s11-classroom .s11-syllabus-label{font-size:18px;margin:16px 20px;color:var(--s5-muted)}
+.s11-overview .s5-session-plan p,.s11-overview .s5-session-plan a{font-size:20px}
+.s11-route>ol{list-style:none;counter-reset:route;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 36px;padding:0}
+.s11-route>ol>li{counter-increment:route;border-top:1px solid var(--s5-line);padding:20px 0}
+.s11-route>ol>li h3:before{content:counter(route,decimal-leading-zero) ' / ';font-family:system-ui,sans-serif;font-size:18px;color:var(--s5-accent)}
+.s11-route p{font-size:20px}
+.s11-classroom{--s11-toolbar-height:72px}
+.s11-classroom .s5-phase,.s11-classroom .s5-step,.s11-classroom .s5-reference,.s11-classroom .exam-question{scroll-margin-top:calc(var(--s11-toolbar-height) + 24px)}
+.s11-classroom .s5-paper-set>summary{font-size:22px;line-height:1.4}
+.s11-classroom .s11-enlarge{display:block;margin:8px 0 6px auto;min-height:44px;font-size:17px;padding:8px 14px;border:1px solid var(--s5-line);border-radius:5px;background:#fff;color:var(--s5-accent);cursor:pointer}
+.s11-classroom .s11-enlarge:hover,.s11-classroom .s11-enlarge:focus-visible{background:var(--s5-soft);outline:2px solid var(--s5-accent);outline-offset:2px}
+.s11-content-zoom{width:min(1500px,96vw);max-width:96vw;max-height:94vh;box-sizing:border-box;border:1px solid #8ca8b1;border-radius:8px;padding:20px;background:#fff;color:var(--s5-ink)}
+.s11-content-zoom::backdrop{background:#152c38c9}
+.s11-content-zoom>header{display:flex;align-items:center;justify-content:space-between;gap:20px;margin-bottom:16px}
+.s11-content-zoom h2{font-size:24px;margin:0}
+.s11-content-zoom form{margin:0}
+.s11-content-zoom form button{font-size:18px;min-height:48px;padding:10px 18px}
+.s11-zoom-body{overflow:auto;max-height:calc(94vh - 120px)}
+.s11-classroom .s11-zoom-body pre{font-size:clamp(22px,2vw,30px);line-height:1.6;white-space:pre;overflow:visible;background:#f3f6f7;padding:24px;color:#18323d;max-height:none}
+.s11-zoom-body table{font:clamp(22px,1.8vw,28px)/1.5 system-ui,sans-serif;border-collapse:collapse;width:100%;min-width:600px}
+.s11-zoom-body th,.s11-zoom-body td{padding:14px 18px;border:1px solid #b9cdd2;text-align:left}
+.s11-zoom-body th{background:#edf4f5;color:var(--s5-ink);font-size:inherit;letter-spacing:normal}
+.s11-zoom-body .official-page-scroll,.s11-zoom-body .s5-table-scroll,.s11-zoom-body .exam-table-scroll,.s11-zoom-body .s11-table-scroll{max-height:none;overflow:visible}
+.s11-zoom-body .official-page-scroll img{display:block;width:100%;max-width:none;height:auto}
+.s11-zoom-body .exam-diagram-scroll{max-height:none;overflow:visible}
+.s11-zoom-body .exam-diagram-scroll svg{display:block;width:100%;min-width:900px;max-width:none;height:auto}
+.s11-zoom-body .question-diagram{max-width:none;margin:0}
+.s11-zoom-body .question-diagram img{display:block;width:100%;height:auto;max-width:none}
+.s11-zoom-body .s11-lab-code{max-height:none;overflow:visible;font:clamp(22px,2vw,30px)/1.6 ui-monospace,SFMono-Regular,Consolas,monospace;background:#f7fafc}
+.s11-zoom-body .s11-lab-code ol{margin:0;padding:16px 12px 16px 70px;width:max-content;min-width:100%;box-sizing:border-box}
+.s11-zoom-body .s11-lab-code li{font:inherit;white-space:pre;padding:4px 12px;border-left:4px solid transparent}
+.s11-zoom-body .s11-lab-code code{font:inherit;white-space:inherit;color:inherit;background:transparent;padding:0}
+.s11-zoom-body .s11-lab-code li.is-current{background:#dcecf7;border-left-color:#1b5b86;color:#0e3f63;font-weight:750}
+.s11-classroom .s5-zoom img{width:auto;max-width:100%;max-height:80vh;object-fit:contain}
+/* The course-wide table minimum is intended for scrollable comparison tables.
+   Working memory belongs inside the experiment's narrower state column. */
+.s11-classroom .s11-lab table{min-width:0;table-layout:fixed;font-size:inherit}
+.s11-classroom .s11-lab thead th{color:var(--s11-lab-ink);font-size:inherit;letter-spacing:normal}
+.s11-classroom .s11-lab th:first-child{width:45%}
+@media(min-width:1550px){.s11-classroom .s5-code,.s11-classroom .s5-table-scroll table{font-size:22px}}
+@media(max-width:900px){.s11-opening-with-image{grid-template-columns:minmax(0,1fr)}.s11-classroom{padding:12px 20px 36px}.s11-classroom .s5-navigation{flex-wrap:wrap}.s11-classroom .s5-position{flex-basis:100%;order:-1}.s11-classroom .s5-navigation button{flex:1}.s11-classroom .s5-titlebar{align-items:start;flex-wrap:wrap;gap:12px}}
+@media(max-width:560px){.s11-overview .s5-topic-grid,.s11-route>ol{grid-template-columns:1fr}.s11-classroom{padding:12px 14px 30px}.s11-stimulus,.s11-classroom .s5-step,.s11-classroom .s5-check,.s11-classroom .s5-connection{padding:16px}.s11-classroom .s5-table-scroll table{min-width:450px}.s11-classroom .s5-toolbar{align-items:start;flex-wrap:wrap}.s11-classroom .s5-directory{max-width:none;width:100%}.s11-classroom .s5-directory ol{left:0;right:auto;width:min(490px,90vw)}}
+@media(max-width:560px){.s11-classroom .s5-toolbar{align-items:stretch;flex-wrap:nowrap;position:sticky;top:0}.s11-classroom .s5-phases{flex:0 0 auto;width:100%;flex-wrap:nowrap;overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:thin;padding:2px 0 6px}.s11-classroom .s5-phases button{flex:0 0 auto;min-height:44px;white-space:nowrap}}
+@media print{.s11-enlarge{display:none}.s11-classroom .s5-code{white-space:pre-wrap;overflow:visible}}

@@ -459,13 +459,14 @@
       "S5-L01-Q3",
       "S5-L01-Q4",
       "S5-L01-Q5",
-      "S5-L01-Q6"
+      "S5-L01-Q6",
+      "S5-L01-Q7"
     ],
     "optional": [
       "S5-L01-Q1"
     ],
     "removed": [],
-    "practiceMinutes": "16–21",
+    "practiceMinutes": "22–29",
     "examMinutes": "6–8",
     "reviewMenu": false
   },
@@ -476,7 +477,8 @@
       "S5-L02-Q4",
       "S5-L02-Q6",
       "S5-L02-Q7",
-      "S5-L02-Q8"
+      "S5-L02-Q8",
+      "S5-L02-Q9"
     ],
     "optional": [
       "S5-L02-Q1",
@@ -484,7 +486,7 @@
       "S5-L02-Q5"
     ],
     "removed": [],
-    "practiceMinutes": "20–26",
+    "practiceMinutes": "28–36",
     "examMinutes": "12–16",
     "reviewMenu": false
   },
@@ -497,7 +499,7 @@
     ],
     "optional": [],
     "removed": [],
-    "practiceMinutes": "10–14",
+    "practiceMinutes": "14–19",
     "examMinutes": "6–8",
     "reviewMenu": false
   },
@@ -505,13 +507,14 @@
     "lesson": 31,
     "required": [
       "S5-L04-Q2",
-      "S5-L04-Q3"
+      "S5-L04-Q3",
+      "S5-L04-Q4"
     ],
     "optional": [
       "S5-L04-Q1"
     ],
     "removed": [],
-    "practiceMinutes": "8–12",
+    "practiceMinutes": "13–18",
     "examMinutes": "5–7",
     "reviewMenu": false
   },
@@ -520,13 +523,14 @@
     "required": [
       "S5-L05-Q2",
       "S5-L05-Q3",
-      "S5-L05-Q4"
+      "S5-L05-Q4",
+      "S5-L05-Q5"
     ],
     "optional": [
       "S5-L05-Q1"
     ],
     "removed": [],
-    "practiceMinutes": "11–15",
+    "practiceMinutes": "20–28",
     "examMinutes": "7–10",
     "reviewMenu": false
   },

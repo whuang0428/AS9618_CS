@@ -1,0 +1,12 @@
+{
+  "tool": "Codex built-in ImageGen",
+  "assets": [
+    {
+      "path": "web/assets/course-v3/section-1/information-sources.png",
+      "prompt": "Use case: scientific-educational. Asset type: classroom teaching opening image for beginner Cambridge AS computer science, information representation. Create a clean realistic editorial still life on a pale neutral desk: three distinct sources of information, a plain paper note with a single large uppercase letter A, a small printed photograph of a green leaf with visible veins, and a compact ordinary microphone beside a gently vibrating tuning fork (subtle motion cue only, no invented technical diagram). Three subjects laid out left to right, generous spacing, frontal slightly elevated view, wide landscape 3:2 composition, soft natural lighting, restrained deep blue and green accents. The objects should be immediately recognisable from the back of a classroom. This image introduces text, image and sound before precise digital models are taught. No binary digits, no charts, no arrows, no UI, no labels other than the letter A on the note, no branding, no watermark. Do not depict sound as a visible substance. Detailed but uncluttered, academically calm, suitable for ages 16\u201318.",
+      "sha256": "b0d8b1ea78af6e47c2f3d0da2e696f6f6644509b7427d247829220a079168a04",
+      "review": "Visually inspected: recognisable letter A, leaf photograph, microphone and tuning fork. A source-material scene only; no claim that the photograph depicts binary storage or a precise sampling process. Labels and all exact data remain editable HTML/SVG.",
+      "role": "Concrete opening: text, picture and sound are different information sources."
+    }
+  ]
+}

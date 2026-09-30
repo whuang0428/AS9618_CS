@@ -1,0 +1,13 @@
+{
+  "tool": "built-in ImageGen",
+  "generatedOn": "2026-09-29",
+  "assets": [
+    {
+      "path": "web/assets/course-v3/section-9/ticket-desk-scene.png",
+      "sha256": "6a07deec3092b3fa0ab26f9c5375cc9481b07f090e34a3fcbc9aa554a2b10d78",
+      "prompt": "Use case: style-transfer / scientific-educational. Edit target: the provided school ticket-desk image. Replace its cartoon illustration style entirely with a restrained academic textbook documentary photograph: realistic people and body proportions, natural faces, accurate everyday materials, neutral daylight, subdued navy, grey and off-white palette, crisp purposeful detail. Preserve the concrete educational scene and arrangement: a student buying school-event tickets from a seated student volunteer, a plain laptop and blank tickets on the desk, a school hall entrance behind. Simplify the decorative balloons and string lights into a plain uncluttered institutional background. Wide 16:9 composition suitable for classroom projection. Avoid cartoon, anime, comic outlines, stylised facial features, playful children\u2019s illustration, glossy advertising lighting and decorative graphics. No embedded text, no readable money denominations, numbers, labels, price signs, arrows, logos or watermark. Exact teaching labels are supplied separately in HTML. Opaque background.",
+      "review": "Visually reviewed: realistic textbook documentary style, natural proportions, restrained colours, recognisable school ticket desk, student customer and volunteer, laptop and blank tickets. No embedded instructional text, code, arrows or numerical claims. Prices, quantities and rules remain editable HTML.",
+      "source": "Built-in ImageGen style edit of the first generated course scene, replacing its cartoon style at the user's request. The first scene is retained in the ImageGen output history."
+    }
+  ]
+}

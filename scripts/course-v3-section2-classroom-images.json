@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "assets": [
+    {
+      "asset": "/assets/course-v3/section-2/school-network-scene.png",
+      "generator": "Codex built-in ImageGen",
+      "generatedOn": "2026-09-30",
+      "prompt": "Use case: scientific-educational. Create one calm, precise academic textbook illustration for an AS Computer Science beginner lesson. Asset type: a wide landscape opening observation image on a classroom teaching website. Scene: a modest school computer room shown as a clear architectural cutaway. Show two student workstations with ordinary desktop computers, a shared laser printer on a side table, a small separate equipment cabinet with a server and network switch, a ceiling wireless access point, and a student laptop on a nearby table. Outside the window, show one clearly separate distant school building across the grounds as a context for later discussion of network scope. The students' screens show only simple abstract file/document shapes, no readable interface text. Students may be absent; focus on identifiable equipment and what resources might be shared. Style: restrained editorial technical illustration with realistic equipment proportions, cream background, graphite outlines, muted teal and warm grey, soft natural lighting, generous clear space around objects, highly legible at projector scale. Composition: wide 3:2 or 16:9, the shared printer, computers and cabinet each visibly distinct, no decorative clutter, no title or written labels, no arrows, no coloured network lines, no technical labels, no logos, no clouds, no floating icons. This illustration is an observation scene, not a wiring diagram; precise network links and labels will be added separately in editable web graphics. Avoid glossy marketing, cartoon faces, dramatic perspective and artificial neon.",
+      "review": {
+        "status": "reviewed",
+        "scope": "Observation scene: desktop computers, shared printer, laptop, equipment cabinet and access point are identifiable. No precise topology, data values or embedded labels are asserted by the illustration.",
+        "technicalBoundary": "The outside building provides a discussion prompt. Distance in an illustration alone does not determine LAN or WAN."
+      },
+      "sha256": "2e73bc3777d79ac6c21dc73d3059b94b50ec89136964fd9c2a208c710498f28c",
+      "width": 1672,
+      "height": 941
+    }
+  ]
+}

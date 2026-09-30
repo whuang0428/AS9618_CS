@@ -1,0 +1,15 @@
+{
+  "assets": [
+    {
+      "path": "web/assets/course-v3/section-11/booking-program-scene.png",
+      "generator": "Built-in ImageGen",
+      "date": "2026-09-30",
+      "prompt": "Use case: scientific-educational. Asset type: opening stimulus illustration for a Cambridge AS Computer Science beginner programming lesson, wide 16:9 landscape. Create a restrained academic editorial illustration of a school-event booking desk, showing the concrete problem a simple program solves. A small stack of booking request cards with blank fields and a pen sits to the left, a modest laptop at the desk centre shows simple empty input boxes, three seat tokens/cards are beside it, and a small receipt printer with a blank confirmation slip is to the right. A school hall with orderly seating is subtly visible in the background. No people needed. Clear spatial grouping, light cream background, muted teal and charcoal accents, realistic proportions, soft illustrated shading, strong legibility when projected. The teaching point is collecting a request, checking availability and producing a confirmation; do not draw code or an abstract motherboard. No words, no numbers, no labels, no arrows, no logos, no watermark. Leave generous uncluttered space around the objects. All exact data labels will be added as accessible HTML outside the image.",
+      "review": "Inspected generated image: booking cards, laptop, three seat tokens and confirmation printer. No code, exact values, words or arrows are embedded. Accessible lesson labels and input data are authored in HTML.",
+      "usage": "Opening stimulus for input, processing and output in a school booking program.",
+      "sha256": "c7ed63b674a02e76e750c57afc47e142e1766b268677e998530c56dc4f5dda81",
+      "width": 1672,
+      "height": 941
+    }
+  ]
+}

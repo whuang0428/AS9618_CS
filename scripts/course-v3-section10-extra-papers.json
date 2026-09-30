@@ -1,0 +1,291 @@
+[
+  {
+    "id": "E079L",
+    "lesson": 63,
+    "syllabusCode": "9618",
+    "year": 2025,
+    "series": "Oct/Nov",
+    "component": 21,
+    "parts": [
+      {
+        "part": "5(a)(i)",
+        "marks": 1
+      },
+      {
+        "part": "5(a)(ii)",
+        "marks": 1
+      },
+      {
+        "part": "5(a)(iii)",
+        "marks": 1
+      },
+      {
+        "part": "5(b)(i)",
+        "marks": 1
+      },
+      {
+        "part": "5(b)(ii)",
+        "marks": 2
+      }
+    ],
+    "marks": 6,
+    "syllabusMapping": [
+      "S10.06"
+    ],
+    "sourceType": "past-paper",
+    "originalReview": "2026-09-29; original question and official mark scheme reviewed for beginner teaching",
+    "extractReview": {
+      "status": "verified",
+      "date": "2026-09-29",
+      "reviewer": "Codex",
+      "cropSpecSha256": "1f919f9c23ca896c34eb6e995f91092f0ae81c093f5349dc117ff90bb68879ad",
+      "method": "Read complete original QP/MS pages. Rendered unaltered PDF regions at 144 dpi, checked glyph boundaries, and visually inspected all final extracts, including prerequisite context, question commands, marks and complete official answers. Source PDFs, crop bounds, PNG dimensions and SHA-256 identities recorded."
+    },
+    "qp": {
+      "filename": "9618_w25_qp_21.pdf",
+      "sourcePdf": "2025-Oct-Nov/9618_w25_qp_21.pdf",
+      "sha256": "6b85b806813779906ba15c8c5ea7e039247702f8b44b2d6923df0423ca51741a",
+      "extracts": [
+        {
+          "asset": "/assets/past-paper-questions/s10-e079l-qp-1.png",
+          "page": 8,
+          "bbox": [
+            45,
+            60,
+            560.27559,
+            700
+          ],
+          "width": 1030,
+          "height": 1280,
+          "sha256": "943cf16e871661496754ec7bb1ad0ab3dd88802db5491a0d265bde8ff90980ab"
+        },
+        {
+          "asset": "/assets/past-paper-questions/s10-e079l-qp-2.png",
+          "page": 9,
+          "bbox": [
+            45,
+            60,
+            560.27559,
+            305
+          ],
+          "width": 1030,
+          "height": 490,
+          "sha256": "af7c1feae36e86da44a632221a7b3d2f2a61449f078ff72a1721c2d56c840192"
+        }
+      ]
+    },
+    "ms": {
+      "filename": "9618_w25_ms_21.pdf",
+      "sourcePdf": "2025-Oct-Nov/9618_w25_ms_21.pdf",
+      "sha256": "da487266bdaf79bdebcb2045ba923f46d90f01a9a8b21ed143d189fd34336501",
+      "extracts": [
+        {
+          "asset": "/assets/past-paper-questions/s10-e079l-ms-1.png",
+          "page": 12,
+          "bbox": [
+            45,
+            228,
+            560.2,
+            573
+          ],
+          "width": 1030,
+          "height": 690,
+          "sha256": "9c2d860ac37911794dd024be27d70f208c8826a47380ffd016a6cedeab0a5798"
+        }
+      ]
+    },
+    "inserts": [],
+    "title": "Explain a first-match linear search",
+    "commandWord": "Explain",
+    "reading": [
+      "The function is supplied: SearchString is the value to find, and RETURN sends the result back. Explain the existing statements before improving the loop. The valid array indices are 1 to 10000."
+    ],
+    "solution": [
+      {
+        "type": "table",
+        "headers": [
+          "Part",
+          "Reasoning"
+        ],
+        "rows": [
+          [
+            "5(a)(i)",
+            "-1 is outside the valid indices 1 to 10000, so it cannot be mistaken for a found position."
+          ],
+          [
+            "5(a)(ii)",
+            "The outer IF compares the current array element with SearchString."
+          ],
+          [
+            "5(a)(iii)",
+            "FoundAt changes only while it is -1. After the first match it stores a valid index, so later matches cannot replace it."
+          ],
+          [
+            "5(b)(i)",
+            "The FOR loop checks the remaining elements even after the first occurrence has been found."
+          ],
+          [
+            "5(b)(ii)",
+            "Use a conditional loop such as WHILE. Continue only while the index is in range and no match has been found, so a successful search stops immediately."
+          ]
+        ]
+      },
+      "For a small array containing Ada, Lin, Ada and target Ada, the first comparison records index 1. The original loop still visits all three elements, but the inner condition prevents index 3 from replacing 1. An absent target leaves the sentinel unchanged."
+    ],
+    "marking": [
+      "There is one mark for each of the first four explanations; part 5(b)(ii) gives one mark for a conditional loop and one for early termination after a match. Six marks in total."
+    ],
+    "mistakes": [
+      "Do not say the FOR loop gives the wrong position: its first-match guard is correct. Its problem is unnecessary comparisons after a match. A conditional search also needs a bound for the unsuccessful case."
+    ],
+    "objectiveIds": [
+      "S10.06.A01"
+    ],
+    "sourceRef": "Cambridge 9618/21 · October/November 2025 · 5(a)(i), 5(a)(ii), 5(a)(iii), 5(b)(i), 5(b)(ii)",
+    "accessUrl": "https://www.cambridgeinternational.org/programmes-and-qualifications/cambridge-international-as-and-a-level-computer-science-9618/past-papers/"
+  },
+  {
+    "id": "E079B",
+    "lesson": 64,
+    "syllabusCode": "9618",
+    "year": 2025,
+    "series": "May/June",
+    "component": 21,
+    "parts": [
+      {
+        "part": "6(b)",
+        "marks": 8
+      }
+    ],
+    "marks": 8,
+    "syllabusMapping": [
+      "S10.06"
+    ],
+    "sourceType": "past-paper",
+    "originalReview": "2026-09-29; original question and official mark scheme reviewed for beginner teaching",
+    "extractReview": {
+      "status": "verified",
+      "date": "2026-09-29",
+      "reviewer": "Codex",
+      "cropSpecSha256": "b841bdedb41e3d875d062bdb8fb14d027a5c68fc5a8079d9b3fede4b92304def",
+      "method": "Read complete original QP/MS pages. Rendered unaltered PDF regions at 144 dpi, checked glyph boundaries, and visually inspected all final extracts, including prerequisite context, question commands, marks and complete official answers. Source PDFs, crop bounds, PNG dimensions and SHA-256 identities recorded."
+    },
+    "qp": {
+      "filename": "9618_s25_qp_21.pdf",
+      "sourcePdf": "2025-May-June/9618_s25_qp_21.pdf",
+      "sha256": "bdc294eb8a519647f24d2fc53053504a0a03c164625c043397a6533ddb09e5b7",
+      "extracts": [
+        {
+          "asset": "/assets/past-paper-questions/s10-e079b-qp-1.png",
+          "page": 12,
+          "bbox": [
+            45,
+            60,
+            560.27559,
+            166
+          ],
+          "width": 1030,
+          "height": 212,
+          "sha256": "f3953dab9a7f897b08587569b047a53c2d1c6e54c1c0a575e438d2fb540bab94"
+        },
+        {
+          "asset": "/assets/past-paper-questions/s10-e079b-qp-2.png",
+          "page": 12,
+          "bbox": [
+            45,
+            458,
+            560.27559,
+            715
+          ],
+          "width": 1030,
+          "height": 514,
+          "sha256": "f5cda4e03c3c2dec39f7f04e8cac9f2e9d6dc015a2ac923271c77702222fbad3"
+        },
+        {
+          "asset": "/assets/past-paper-questions/s10-e079b-qp-3.png",
+          "page": 13,
+          "bbox": [
+            45,
+            60,
+            560.27559,
+            759
+          ],
+          "width": 1030,
+          "height": 1398,
+          "sha256": "1f4f07b334f6209b3c278507eaa43f803eb46798e9f34f4c07dd05f44e592a14"
+        }
+      ]
+    },
+    "ms": {
+      "filename": "9618_s25_ms_21.pdf",
+      "sourcePdf": "2025-May-June/9618_s25_ms_21.pdf",
+      "sha256": "cc0ce7f995d039ebed35955a41a87d3d09f6e25470afcf0868f8af897ac9486b",
+      "extracts": [
+        {
+          "asset": "/assets/past-paper-questions/s10-e079b-ms-1.png",
+          "page": 11,
+          "bbox": [
+            25,
+            65,
+            570,
+            679
+          ],
+          "width": 1090,
+          "height": 1228,
+          "sha256": "c4416d485f5b1c6a1dd7fde8f0a7951689936fa819597c0dd66d14c330860cba"
+        }
+      ]
+    },
+    "inserts": [],
+    "title": "Sort paired readings without separating their sensor IDs",
+    "commandWord": "Write",
+    "reading": [
+      "Each row is one reading: column 1 is speed and column 2 is its sensor ID. Sort by speed, but swap both fields together. This selected task is part 6(b) only; it does not include the test-plan question in part 6(a)."
+    ],
+    "solution": [
+      {
+        "type": "code",
+        "text": "PROCEDURE Sort()\n    DECLARE Temp, J, Boundary : INTEGER\n    DECLARE NoSwaps : BOOLEAN\n    Boundary ← 1999\n    REPEAT\n        NoSwaps ← TRUE\n        FOR J ← 1 TO Boundary\n            IF Reading[J, 1] > Reading[J + 1, 1] THEN\n                Temp ← Reading[J, 1]\n                Reading[J, 1] ← Reading[J + 1, 1]\n                Reading[J + 1, 1] ← Temp\n                Temp ← Reading[J, 2]\n                Reading[J, 2] ← Reading[J + 1, 2]\n                Reading[J + 1, 2] ← Temp\n                NoSwaps ← FALSE\n            ENDIF\n        NEXT J\n        Boundary ← Boundary - 1\n    UNTIL NoSwaps OR Boundary = 0\nENDPROCEDURE"
+      },
+      "The initial comparison boundary is 1999 so J + 1 never exceeds row 2000. Each pass places the largest remaining speed at the end of the unsorted region, so the boundary decreases. Reset NoSwaps at the beginning of each pass and change it to FALSE whenever a swap occurs.",
+      {
+        "type": "table",
+        "headers": [
+          "Teacher three-row trace",
+          "Rows as (speed, sensor ID)"
+        ],
+        "rows": [
+          [
+            "Start",
+            "(40, 7), (10, 3), (30, 9)"
+          ],
+          [
+            "After the first comparison",
+            "(10, 3), (40, 7), (30, 9)"
+          ],
+          [
+            "After the second comparison",
+            "(10, 3), (30, 9), (40, 7)"
+          ],
+          [
+            "Next pass: no swap",
+            "Stop; every sensor ID still belongs to its original speed."
+          ]
+        ]
+      },
+      "The teacher solution additionally stops when Boundary reaches 0. The official example uses its no-swap condition to terminate. Both retain paired rows and the same ascending order."
+    ],
+    "marking": [
+      "Part 6(b) is capped at eight marks across nine available marking points: procedure wrapper, conditional loop and Boolean initialisation, inner loop, correct initial bounds, adjacent comparison, temporary-variable swap, both-column swap, no-swap mechanism and reduced outer boundary."
+    ],
+    "mistakes": [
+      "Swapping speeds alone attaches sensor IDs to the wrong readings. Do not compare J = 2000 with J + 1. Reset the no-swap flag on every pass, not only before the sort."
+    ],
+    "objectiveIds": [
+      "S10.05.A01",
+      "S10.06.A02"
+    ],
+    "sourceRef": "Cambridge 9618/21 · May/June 2025 · 6(b)",
+    "accessUrl": "https://www.cambridgeinternational.org/programmes-and-qualifications/cambridge-international-as-and-a-level-computer-science-9618/past-papers/"
+  }
+]

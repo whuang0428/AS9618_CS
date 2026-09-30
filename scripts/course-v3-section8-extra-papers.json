@@ -1,0 +1,963 @@
+[
+  {
+    "id": "E061B",
+    "lesson": 46,
+    "syllabusCode": "9618",
+    "year": 2024,
+    "series": "May/June",
+    "component": 12,
+    "parts": [
+      {
+        "part": "4(b)",
+        "marks": 3
+      }
+    ],
+    "marks": 3,
+    "syllabusMapping": [
+      "S8.09"
+    ],
+    "sourceType": "past-paper",
+    "originalReview": "2026-09-15; approved selection register",
+    "extractReview": {
+      "status": "verified",
+      "date": "2026-09-29",
+      "cropSpecSha256": "54306631d8168b0cecdcc29d6495a191682095da8dfe10fe8512208d263b47c6",
+      "reviewer": "Codex",
+      "method": "Read original QP/MS relevant pages and verified source identities. Rendered unaltered PDF regions at 144 dpi with glyph-boundary checks. Visually inspected all 22 final selected extracts, including shared table definitions, question parts, marks and complete official answers. Recorded source PDF, crop specification and PNG SHA-256 hashes."
+    },
+    "qp": {
+      "filename": "9618_s24_qp_12.pdf",
+      "sourcePdf": "2024-May-June/9618_s24_qp_12.pdf",
+      "sha256": "871b047e73c2ce0dd3c2dd1c47b7d4e176c886e61af08ffe12c6b9734285d3de",
+      "extracts": [
+        {
+          "asset": "/assets/past-paper-questions/s8-e061b-qp-1.png",
+          "page": 7,
+          "bbox": [
+            45,
+            60,
+            560.276,
+            176
+          ],
+          "width": 1030,
+          "height": 232,
+          "sha256": "e523b33ddaa892ea8c69f467cab8f91be8c3641a4055e7dbd852d85e96851d8b"
+        },
+        {
+          "asset": "/assets/past-paper-questions/s8-e061b-qp-2.png",
+          "page": 7,
+          "bbox": [
+            45,
+            255,
+            560.276,
+            614
+          ],
+          "width": 1030,
+          "height": 718,
+          "sha256": "04d7bb672ed3281a8992f7a9a02a22a9239b9cadaec78bdf8f80a1cedd0d58e7"
+        }
+      ]
+    },
+    "ms": {
+      "filename": "9618_s24_ms_12.pdf",
+      "sourcePdf": "2024-May-June/9618_s24_ms_12.pdf",
+      "sha256": "27327b88c438432d5af97553d3ac09dcfe42f0a35c8d2556fdc9bd90959c7ea0",
+      "extracts": [
+        {
+          "asset": "/assets/past-paper-questions/s8-e061b-ms-1.png",
+          "page": 7,
+          "bbox": [
+            45,
+            140,
+            560.22,
+            336
+          ],
+          "width": 1030,
+          "height": 392,
+          "sha256": "343d7dcfa85989f9ba1569cb04f33ececa5d9ed84eb6bd7ae8be779f40a2586d"
+        }
+      ]
+    },
+    "inserts": [],
+    "title": "Define the EXAM table",
+    "commandWord": "Write",
+    "reading": [
+      "Read the sample values before choosing types. Preserve leading zeroes in the identifier."
+    ],
+    "solution": [
+      {
+        "type": "code",
+        "text": "CREATE TABLE EXAM (\n  ExamID VARCHAR(8) NOT NULL,\n  Subject VARCHAR(40),\n  Level INTEGER,\n  TotalMarks INTEGER,\n  PRIMARY KEY (ExamID)\n);"
+      },
+      "Text preserves 00956124 as an identifier. The field lengths shown are teacher choices sufficient for the supplied examples."
+    ],
+    "marking": [
+      "Three marks: table definition structure; all fields with suitable types; the primary key."
+    ],
+    "mistakes": [],
+    "objectiveIds": [
+      "S8.09.A01",
+      "S8.09.A02",
+      "S8.09.A03",
+      "S8.09.A04",
+      "S8.09.A05"
+    ],
+    "sourceRef": "Cambridge 9618/12 · May/June 2024 · 4(b)",
+    "accessUrl": "https://www.cambridgeinternational.org/programmes-and-qualifications/cambridge-international-as-and-a-level-computer-science-9618/past-papers/",
+    "cropSpec": {
+      "qp": [
+        [
+          7,
+          60,
+          176
+        ],
+        [
+          7,
+          255,
+          614
+        ]
+      ],
+      "ms": [
+        [
+          7,
+          140,
+          336
+        ]
+      ]
+    }
+  },
+  {
+    "id": "E061C",
+    "lesson": 46,
+    "syllabusCode": "9618",
+    "year": 2024,
+    "series": "May/June",
+    "component": 12,
+    "parts": [
+      {
+        "part": "4(c)",
+        "marks": 2
+      }
+    ],
+    "marks": 2,
+    "syllabusMapping": [
+      "S8.09"
+    ],
+    "sourceType": "past-paper",
+    "originalReview": "2026-09-15; approved selection register",
+    "extractReview": {
+      "status": "verified",
+      "date": "2026-09-29",
+      "cropSpecSha256": "133d2fcce75cbe7fd63e93b4125c2cca3b7d9af7074aea92b5820688ae869a8e",
+      "reviewer": "Codex",
+      "method": "Read original QP/MS relevant pages and verified source identities. Rendered unaltered PDF regions at 144 dpi with glyph-boundary checks. Visually inspected all 22 final selected extracts, including shared table definitions, question parts, marks and complete official answers. Recorded source PDF, crop specification and PNG SHA-256 hashes."
+    },
+    "qp": {
+      "filename": "9618_s24_qp_12.pdf",
+      "sourcePdf": "2024-May-June/9618_s24_qp_12.pdf",
+      "sha256": "871b047e73c2ce0dd3c2dd1c47b7d4e176c886e61af08ffe12c6b9734285d3de",
+      "extracts": [
+        {
+          "asset": "/assets/past-paper-questions/s8-e061c-qp-1.png",
+          "page": 7,
+          "bbox": [
+            45,
+            60,
+            560.276,
+            176
+          ],
+          "width": 1030,
+          "height": 232,
+          "sha256": "e523b33ddaa892ea8c69f467cab8f91be8c3641a4055e7dbd852d85e96851d8b"
+        },
+        {
+          "asset": "/assets/past-paper-questions/s8-e061c-qp-2.png",
+          "page": 8,
+          "bbox": [
+            45,
+            60,
+            560.276,
+            216
+          ],
+          "width": 1030,
+          "height": 312,
+          "sha256": "617de4dbc2cebed2d5c4c513869e2a6831e45ee3f03751b00e1391f67173b4ee"
+        }
+      ]
+    },
+    "ms": {
+      "filename": "9618_s24_ms_12.pdf",
+      "sourcePdf": "2024-May-June/9618_s24_ms_12.pdf",
+      "sha256": "27327b88c438432d5af97553d3ac09dcfe42f0a35c8d2556fdc9bd90959c7ea0",
+      "extracts": [
+        {
+          "asset": "/assets/past-paper-questions/s8-e061c-ms-1.png",
+          "page": 7,
+          "bbox": [
+            45,
+            337,
+            560.22,
+            453
+          ],
+          "width": 1030,
+          "height": 232,
+          "sha256": "73d4f7902194ca28c479fe71125388fcccaaddfbd370f35d1f22184291464200"
+        }
+      ]
+    },
+    "inserts": [],
+    "title": "Add a foreign-key constraint",
+    "commandWord": "Write",
+    "reading": [
+      "Alter the existing EXAM_QUESTION table. Identify the referencing field and the parent key."
+    ],
+    "solution": [
+      {
+        "type": "code",
+        "text": "ALTER TABLE EXAM_QUESTION\nADD FOREIGN KEY (ExamID) REFERENCES EXAM(ExamID);"
+      },
+      "This changes the table definition. It does not insert an exam or update an ExamID value."
+    ],
+    "marking": [
+      "One mark for altering EXAM_QUESTION; one for linking the correct keys."
+    ],
+    "mistakes": [],
+    "objectiveIds": [
+      "S8.09.A01",
+      "S8.09.A02",
+      "S8.09.A03",
+      "S8.09.A04",
+      "S8.09.A05"
+    ],
+    "sourceRef": "Cambridge 9618/12 · May/June 2024 · 4(c)",
+    "accessUrl": "https://www.cambridgeinternational.org/programmes-and-qualifications/cambridge-international-as-and-a-level-computer-science-9618/past-papers/",
+    "cropSpec": {
+      "qp": [
+        [
+          7,
+          60,
+          176
+        ],
+        [
+          8,
+          60,
+          216
+        ]
+      ],
+      "ms": [
+        [
+          7,
+          337,
+          453
+        ]
+      ]
+    }
+  },
+  {
+    "id": "E065A",
+    "lesson": 48,
+    "syllabusCode": "9618",
+    "year": 2025,
+    "series": "Oct/Nov",
+    "component": 13,
+    "parts": [
+      {
+        "part": "5(a)",
+        "marks": 3
+      }
+    ],
+    "marks": 3,
+    "syllabusMapping": [
+      "S8.03",
+      "S8.09",
+      "S8.10",
+      "S8.05"
+    ],
+    "sourceType": "past-paper",
+    "originalReview": "2026-09-15; approved selection register",
+    "extractReview": {
+      "status": "verified",
+      "date": "2026-09-29",
+      "cropSpecSha256": "36612c133984bc1940029544fa1b2e2d89bd667d28efcefcd88959eab0630d3e",
+      "reviewer": "Codex",
+      "method": "Read original QP/MS relevant pages and verified source identities. Rendered unaltered PDF regions at 144 dpi with glyph-boundary checks. Visually inspected all 22 final selected extracts, including shared table definitions, question parts, marks and complete official answers. Recorded source PDF, crop specification and PNG SHA-256 hashes."
+    },
+    "qp": {
+      "filename": "9618_w25_qp_13.pdf",
+      "sourcePdf": "2025-Oct-Nov/9618_w25_qp_13.pdf",
+      "sha256": "9b5d7e33de24afb406ddc00c253ebf37b4240e6b21f3c1a7f6f1eb82aba78cc6",
+      "extracts": [
+        {
+          "asset": "/assets/past-paper-questions/s8-e065a-qp-1.png",
+          "page": 6,
+          "bbox": [
+            45,
+            60,
+            560.27559,
+            460
+          ],
+          "width": 1030,
+          "height": 800,
+          "sha256": "cb1dba08299f36cd007eeec9d341ec403308773dec7c0f0def20d2cbc54a7552"
+        }
+      ]
+    },
+    "ms": {
+      "filename": "9618_w25_ms_13.pdf",
+      "sourcePdf": "2025-Oct-Nov/9618_w25_ms_13.pdf",
+      "sha256": "d4bf99da2ca289430a18709d483892df85646dc5a90d5fb6697eb6d13c10481b",
+      "extracts": [
+        {
+          "asset": "/assets/past-paper-questions/s8-e065a-ms-1.png",
+          "page": 8,
+          "bbox": [
+            45,
+            65,
+            560.2,
+            319
+          ],
+          "width": 1030,
+          "height": 508,
+          "sha256": "c1e7a9f1309271d9018c91ca2ac2b28b1e0d7eafe3d5cc1e00a53ccf683683c3"
+        }
+      ]
+    },
+    "inserts": [],
+    "title": "Connect the complaint database",
+    "commandWord": "Complete / Write / Describe",
+    "reading": [
+      "Trace each foreign key in COMPLAINT to its parent table. Read each relationship in both directions."
+    ],
+    "solution": [
+      {
+        "type": "diagram",
+        "name": "review-er"
+      },
+      "CUSTOMER, PRODUCT and STAFF each have a one-to-many relationship with COMPLAINT. Each complaint identifies one customer, one product and one member of staff."
+    ],
+    "marking": [
+      "One mark for each of the three correct relationships."
+    ],
+    "mistakes": [],
+    "objectiveIds": [
+      "S8.03.R",
+      "S8.05.R",
+      "S8.09.R",
+      "S8.10.R"
+    ],
+    "sourceRef": "Cambridge 9618/13 · October/November 2025 · 5(a)",
+    "accessUrl": "https://www.cambridgeinternational.org/programmes-and-qualifications/cambridge-international-as-and-a-level-computer-science-9618/past-papers/",
+    "cropSpec": {
+      "qp": [
+        [
+          6,
+          60,
+          460
+        ]
+      ],
+      "ms": [
+        [
+          8,
+          65,
+          319
+        ]
+      ]
+    }
+  },
+  {
+    "id": "E065B",
+    "lesson": 48,
+    "syllabusCode": "9618",
+    "year": 2025,
+    "series": "Oct/Nov",
+    "component": 13,
+    "parts": [
+      {
+        "part": "5(b)",
+        "marks": 4
+      }
+    ],
+    "marks": 4,
+    "syllabusMapping": [
+      "S8.03",
+      "S8.09",
+      "S8.10",
+      "S8.05"
+    ],
+    "sourceType": "past-paper",
+    "originalReview": "2026-09-15; approved selection register",
+    "extractReview": {
+      "status": "verified",
+      "date": "2026-09-29",
+      "cropSpecSha256": "664edf9b475f10c71ae68fbc1910f35bb68dece46cdca24f2d196fde3661cce7",
+      "reviewer": "Codex",
+      "method": "Read original QP/MS relevant pages and verified source identities. Rendered unaltered PDF regions at 144 dpi with glyph-boundary checks. Visually inspected all 22 final selected extracts, including shared table definitions, question parts, marks and complete official answers. Recorded source PDF, crop specification and PNG SHA-256 hashes."
+    },
+    "qp": {
+      "filename": "9618_w25_qp_13.pdf",
+      "sourcePdf": "2025-Oct-Nov/9618_w25_qp_13.pdf",
+      "sha256": "9b5d7e33de24afb406ddc00c253ebf37b4240e6b21f3c1a7f6f1eb82aba78cc6",
+      "extracts": [
+        {
+          "asset": "/assets/past-paper-questions/s8-e065b-qp-1.png",
+          "page": 6,
+          "bbox": [
+            45,
+            60,
+            560.27559,
+            235
+          ],
+          "width": 1030,
+          "height": 350,
+          "sha256": "64a0105b2951ca04422d5e7f1e360269c224931a27ad78679ed43e353844355f"
+        },
+        {
+          "asset": "/assets/past-paper-questions/s8-e065b-qp-2.png",
+          "page": 7,
+          "bbox": [
+            45,
+            60,
+            560.27559,
+            512
+          ],
+          "width": 1030,
+          "height": 904,
+          "sha256": "17a1b84e515eb998acacbb7ae50b6f878d94443d9754093565a472d6e1b289d6"
+        }
+      ]
+    },
+    "ms": {
+      "filename": "9618_w25_ms_13.pdf",
+      "sourcePdf": "2025-Oct-Nov/9618_w25_ms_13.pdf",
+      "sha256": "d4bf99da2ca289430a18709d483892df85646dc5a90d5fb6697eb6d13c10481b",
+      "extracts": [
+        {
+          "asset": "/assets/past-paper-questions/s8-e065b-ms-1.png",
+          "page": 8,
+          "bbox": [
+            45,
+            323,
+            560.2,
+            675
+          ],
+          "width": 1030,
+          "height": 704,
+          "sha256": "cc06d4b040a1f662f18ac0843b483f7f406db5f7c3c63260bb4ec13561495124"
+        }
+      ]
+    },
+    "inserts": [],
+    "title": "Define the STAFF table",
+    "commandWord": "Complete / Write / Describe",
+    "reading": [
+      "Choose types using the given sample, then declare the identifier explicitly."
+    ],
+    "solution": [
+      {
+        "type": "code",
+        "text": "CREATE TABLE STAFF (\n  StaffID INTEGER NOT NULL,\n  StaffFirstName VARCHAR(40),\n  StaffLastName VARCHAR(40),\n  Department CHARACTER(1),\n  RemoteWorker BOOLEAN,\n  PRIMARY KEY (StaffID)\n);"
+      },
+      "Yes/No represents a Boolean property. The string lengths are teacher choices."
+    ],
+    "marking": [
+      "Four points cover CREATE structure, the three text fields, the other two field types and the primary key."
+    ],
+    "mistakes": [],
+    "objectiveIds": [
+      "S8.03.R",
+      "S8.05.R",
+      "S8.09.R",
+      "S8.10.R"
+    ],
+    "sourceRef": "Cambridge 9618/13 · October/November 2025 · 5(b)",
+    "accessUrl": "https://www.cambridgeinternational.org/programmes-and-qualifications/cambridge-international-as-and-a-level-computer-science-9618/past-papers/",
+    "cropSpec": {
+      "qp": [
+        [
+          6,
+          60,
+          235
+        ],
+        [
+          7,
+          60,
+          512
+        ]
+      ],
+      "ms": [
+        [
+          8,
+          323,
+          675
+        ]
+      ]
+    }
+  },
+  {
+    "id": "E065C",
+    "lesson": 48,
+    "syllabusCode": "9618",
+    "year": 2025,
+    "series": "Oct/Nov",
+    "component": 13,
+    "parts": [
+      {
+        "part": "5(c)",
+        "marks": 5
+      }
+    ],
+    "marks": 5,
+    "syllabusMapping": [
+      "S8.03",
+      "S8.09",
+      "S8.10",
+      "S8.05"
+    ],
+    "sourceType": "past-paper",
+    "originalReview": "2026-09-15; approved selection register",
+    "extractReview": {
+      "status": "verified",
+      "date": "2026-09-29",
+      "cropSpecSha256": "5b794c6a13cb304dceb390da8ac9859824f2c2a837f089c8649a3b1ca2dc0712",
+      "reviewer": "Codex",
+      "method": "Read original QP/MS relevant pages and verified source identities. Rendered unaltered PDF regions at 144 dpi with glyph-boundary checks. Visually inspected all 22 final selected extracts, including shared table definitions, question parts, marks and complete official answers. Recorded source PDF, crop specification and PNG SHA-256 hashes."
+    },
+    "qp": {
+      "filename": "9618_w25_qp_13.pdf",
+      "sourcePdf": "2025-Oct-Nov/9618_w25_qp_13.pdf",
+      "sha256": "9b5d7e33de24afb406ddc00c253ebf37b4240e6b21f3c1a7f6f1eb82aba78cc6",
+      "extracts": [
+        {
+          "asset": "/assets/past-paper-questions/s8-e065c-qp-1.png",
+          "page": 6,
+          "bbox": [
+            45,
+            60,
+            560.27559,
+            235
+          ],
+          "width": 1030,
+          "height": 350,
+          "sha256": "64a0105b2951ca04422d5e7f1e360269c224931a27ad78679ed43e353844355f"
+        },
+        {
+          "asset": "/assets/past-paper-questions/s8-e065c-qp-2.png",
+          "page": 7,
+          "bbox": [
+            45,
+            515,
+            560.27559,
+            791
+          ],
+          "width": 1030,
+          "height": 552,
+          "sha256": "2e5384cd94fffabad14b23e093a684d5a8b839cbce011cac3ada7ee50a0cb5f8"
+        }
+      ]
+    },
+    "ms": {
+      "filename": "9618_w25_ms_13.pdf",
+      "sourcePdf": "2025-Oct-Nov/9618_w25_ms_13.pdf",
+      "sha256": "d4bf99da2ca289430a18709d483892df85646dc5a90d5fb6697eb6d13c10481b",
+      "extracts": [
+        {
+          "asset": "/assets/past-paper-questions/s8-e065c-ms-1.png",
+          "page": 9,
+          "bbox": [
+            45,
+            65,
+            560.2,
+            380
+          ],
+          "width": 1030,
+          "height": 630,
+          "sha256": "289c3ff75b197aacc4b7df617e1f7e5ee33c8371b50988e4b33a70ff977cf321"
+        }
+      ]
+    },
+    "inserts": [],
+    "title": "Find complaints about lower-rated products",
+    "commandWord": "Complete / Write / Describe",
+    "reading": [
+      "Use PRODUCT for the name and rating, and COMPLAINT for the complaint details. Include rating 5 and sort highest qualifying rating first."
+    ],
+    "solution": [
+      {
+        "type": "code",
+        "text": "SELECT PRODUCT.ProductID, ProductName, ComplaintDetails\nFROM PRODUCT INNER JOIN COMPLAINT\nON PRODUCT.ProductID = COMPLAINT.ProductID\nWHERE Rating <= 5\nORDER BY Rating DESC;"
+      },
+      "One product can appear several times when it has several complaints. Rating controls filtering and ordering without needing to be an output column. No official sample rows are supplied, so any runnable sample data must be labelled teacher-written."
+    ],
+    "marking": [
+      "One point each for the selected attributes, source tables, join, inclusive condition and descending order."
+    ],
+    "mistakes": [],
+    "objectiveIds": [
+      "S8.03.R",
+      "S8.05.R",
+      "S8.09.R",
+      "S8.10.R"
+    ],
+    "sourceRef": "Cambridge 9618/13 · October/November 2025 · 5(c)",
+    "accessUrl": "https://www.cambridgeinternational.org/programmes-and-qualifications/cambridge-international-as-and-a-level-computer-science-9618/past-papers/",
+    "cropSpec": {
+      "qp": [
+        [
+          6,
+          60,
+          235
+        ],
+        [
+          7,
+          515,
+          791
+        ]
+      ],
+      "ms": [
+        [
+          9,
+          65,
+          380
+        ]
+      ]
+    }
+  },
+  {
+    "id": "E065D",
+    "lesson": 48,
+    "syllabusCode": "9618",
+    "year": 2025,
+    "series": "Oct/Nov",
+    "component": 13,
+    "parts": [
+      {
+        "part": "5(d)",
+        "marks": 4
+      }
+    ],
+    "marks": 4,
+    "syllabusMapping": [
+      "S8.03",
+      "S8.09",
+      "S8.10",
+      "S8.05"
+    ],
+    "sourceType": "past-paper",
+    "originalReview": "2026-09-15; approved selection register",
+    "extractReview": {
+      "status": "verified",
+      "date": "2026-09-29",
+      "cropSpecSha256": "557b298edb69b9f0c6cdca7fa2db1e734cc3a2a2c4fd58db9e80217b28439410",
+      "reviewer": "Codex",
+      "method": "Read original QP/MS relevant pages and verified source identities. Rendered unaltered PDF regions at 144 dpi with glyph-boundary checks. Visually inspected all 22 final selected extracts, including shared table definitions, question parts, marks and complete official answers. Recorded source PDF, crop specification and PNG SHA-256 hashes."
+    },
+    "qp": {
+      "filename": "9618_w25_qp_13.pdf",
+      "sourcePdf": "2025-Oct-Nov/9618_w25_qp_13.pdf",
+      "sha256": "9b5d7e33de24afb406ddc00c253ebf37b4240e6b21f3c1a7f6f1eb82aba78cc6",
+      "extracts": [
+        {
+          "asset": "/assets/past-paper-questions/s8-e065d-qp-1.png",
+          "page": 6,
+          "bbox": [
+            45,
+            60,
+            560.27559,
+            235
+          ],
+          "width": 1030,
+          "height": 350,
+          "sha256": "64a0105b2951ca04422d5e7f1e360269c224931a27ad78679ed43e353844355f"
+        },
+        {
+          "asset": "/assets/past-paper-questions/s8-e065d-qp-2.png",
+          "page": 8,
+          "bbox": [
+            45,
+            60,
+            560.27559,
+            342
+          ],
+          "width": 1030,
+          "height": 564,
+          "sha256": "48c45b7acc7d87041bc130a1a64028fed106c5e4e14b2aac816158d9e3729fdb"
+        }
+      ]
+    },
+    "ms": {
+      "filename": "9618_w25_ms_13.pdf",
+      "sourcePdf": "2025-Oct-Nov/9618_w25_ms_13.pdf",
+      "sha256": "d4bf99da2ca289430a18709d483892df85646dc5a90d5fb6697eb6d13c10481b",
+      "extracts": [
+        {
+          "asset": "/assets/past-paper-questions/s8-e065d-ms-1.png",
+          "page": 9,
+          "bbox": [
+            45,
+            384,
+            560.2,
+            669
+          ],
+          "width": 1030,
+          "height": 570,
+          "sha256": "da6b6117806f7efdaf02771f607928c7ccaabd11ee724516b160f352f36bdaa3"
+        }
+      ]
+    },
+    "inserts": [],
+    "title": "Protect access to customer data",
+    "commandWord": "Complete / Write / Describe",
+    "reading": [
+      "Describe two distinct methods and explain how each protects the customer data."
+    ],
+    "solution": [
+      "Authentication checks credentials before access is allowed. Access rights restrict which authenticated users may read or change particular data. Backups offer another valid approach when explained as recovery from loss or damage."
+    ],
+    "marking": [
+      "One mark per method and one per corresponding explanation, up to four. Backups, encryption and views are alternatives accepted by the scheme."
+    ],
+    "mistakes": [],
+    "objectiveIds": [
+      "S8.03.R",
+      "S8.05.R",
+      "S8.09.R",
+      "S8.10.R"
+    ],
+    "sourceRef": "Cambridge 9618/13 · October/November 2025 · 5(d)",
+    "accessUrl": "https://www.cambridgeinternational.org/programmes-and-qualifications/cambridge-international-as-and-a-level-computer-science-9618/past-papers/",
+    "cropSpec": {
+      "qp": [
+        [
+          6,
+          60,
+          235
+        ],
+        [
+          8,
+          60,
+          342
+        ]
+      ],
+      "ms": [
+        [
+          9,
+          384,
+          669
+        ]
+      ]
+    }
+  },
+  {
+    "id": "E8D01",
+    "year": 2025,
+    "series": "Oct/Nov",
+    "component": 12,
+    "parts": [
+      {
+        "part": "4(a)",
+        "marks": 2
+      }
+    ],
+    "marks": 2,
+    "title": "Identify the keys that connect ships and containers",
+    "commandWord": "Describe",
+    "objectiveIds": [],
+    "syllabusMapping": [
+      "S8.02"
+    ],
+    "reading": [
+      "Use the SHIP and CONTAINER definitions. State the relationship and identify both fields involved."
+    ],
+    "solution": [
+      "SHIP has a one-to-many relationship with CONTAINER. SHIP.ShipID is the primary key; CONTAINER.ShipID is the foreign key that references it."
+    ],
+    "marking": [
+      "One mark for the one-to-many relationship and one for identifying the primary and foreign keys correctly."
+    ],
+    "mistakes": [],
+    "sourceType": "past-paper",
+    "syllabusCode": "9618",
+    "inserts": [],
+    "accessUrl": "https://www.cambridgeinternational.org/programmes-and-qualifications/cambridge-international-as-and-a-level-computer-science-9618/past-papers/",
+    "qp": {
+      "filename": "9618_w25_qp_12.pdf",
+      "sourcePdf": "2025-Oct-Nov/9618_w25_qp_12.pdf",
+      "sha256": "ea65e75a4182f991cb2117827ee5c6734365b2c5e78686c6d6ef1e00d48fe65b",
+      "extracts": [
+        {
+          "asset": "/assets/past-paper-questions/s8-e8d01-qp-1.png",
+          "page": 6,
+          "bbox": [
+            45,
+            60,
+            560.27559,
+            313
+          ],
+          "width": 1030,
+          "height": 506,
+          "sha256": "2e53a151f8d6126f101535396135e1341a2e9cf6213294fd806825eac59e2e75"
+        }
+      ]
+    },
+    "ms": {
+      "filename": "9618_w25_ms_12.pdf",
+      "sourcePdf": "2025-Oct-Nov/9618_w25_ms_12.pdf",
+      "sha256": "4fd455f74ae4abf71a8796095c912a06c77239d6d5a6679ce05ceff1032e7dd8",
+      "extracts": [
+        {
+          "asset": "/assets/past-paper-questions/s8-e8d01-ms-1.png",
+          "page": 6,
+          "bbox": [
+            45,
+            90,
+            560.2,
+            177
+          ],
+          "width": 1030,
+          "height": 174,
+          "sha256": "ad173e35091ac94ce4b90918be30169293db5d9fb49ee7b09a8cf4de677021c0"
+        }
+      ]
+    },
+    "cropSpec": {
+      "qp": [
+        [
+          6,
+          60,
+          313
+        ]
+      ],
+      "ms": [
+        [
+          6,
+          90,
+          177
+        ]
+      ]
+    },
+    "extractReview": {
+      "status": "verified",
+      "date": "2026-09-29",
+      "cropSpecSha256": "746552759693cd2653313ea5ad97537e1010edff16c7e8630c7b270231c890fa",
+      "reviewer": "Codex",
+      "method": "Read original QP/MS relevant pages and verified source identities. Rendered unaltered PDF regions at 144 dpi with glyph-boundary checks. Visually inspected all 22 final selected extracts, including shared table definitions, question parts, marks and complete official answers. Recorded source PDF, crop specification and PNG SHA-256 hashes."
+    },
+    "sourceRef": "Cambridge 9618/12 · October/November 2025 · 4(a)"
+  },
+  {
+    "id": "E8D02",
+    "year": 2025,
+    "series": "Oct/Nov",
+    "component": 11,
+    "parts": [
+      {
+        "part": "2(d)",
+        "marks": 3
+      }
+    ],
+    "marks": 3,
+    "title": "Apply referential integrity to placements",
+    "commandWord": "Explain",
+    "objectiveIds": [],
+    "syllabusMapping": [
+      "S8.02"
+    ],
+    "reading": [
+      "Explain the consistency rule, then use a specific pair of tables from WORKEXPERIENCE."
+    ],
+    "solution": [
+      "Referential integrity keeps related data consistent. Each non-null foreign-key value must match a referenced key. For example, PLACEMENT.CompanyID refers to COMPANY.CompanyID, so a placement cannot refer to a company that is absent."
+    ],
+    "marking": [
+      "Three marks overall; at most two generic and at most two specific points. The response above supplies the rule and a concrete application.",
+      "The official scheme includes cascading actions. In an implemented database these depend on declared update/delete rules; a foreign key can instead restrict an operation. Do not infer that all foreign keys automatically cascade."
+    ],
+    "mistakes": [],
+    "sourceType": "past-paper",
+    "syllabusCode": "9618",
+    "inserts": [],
+    "accessUrl": "https://www.cambridgeinternational.org/programmes-and-qualifications/cambridge-international-as-and-a-level-computer-science-9618/past-papers/",
+    "qp": {
+      "filename": "9618_w25_qp_11.pdf",
+      "sourcePdf": "2025-Oct-Nov/9618_w25_qp_11.pdf",
+      "sha256": "2fe1691a0eff789ac686121aac0ae4e7cb3852f9bd321a6542dc6b82fbedf616",
+      "extracts": [
+        {
+          "asset": "/assets/past-paper-questions/s8-e8d02-qp-1.png",
+          "page": 4,
+          "bbox": [
+            45,
+            60,
+            560.27559,
+            275
+          ],
+          "width": 1030,
+          "height": 430,
+          "sha256": "905fc6ae7a74ed1f005d55e5fd3eedd1b4f6138010325d90d0e084812993cabe"
+        },
+        {
+          "asset": "/assets/past-paper-questions/s8-e8d02-qp-2.png",
+          "page": 6,
+          "bbox": [
+            45,
+            60,
+            560.27559,
+            353
+          ],
+          "width": 1030,
+          "height": 586,
+          "sha256": "7597ee0d10b8ed0516adb867c009b5590454484b29184ff2e626bae045eb2b55"
+        }
+      ]
+    },
+    "ms": {
+      "filename": "9618_w25_ms_11.pdf",
+      "sourcePdf": "2025-Oct-Nov/9618_w25_ms_11.pdf",
+      "sha256": "64b2928b1348598cd0be2cda8014405264f0a4303b73665633e4e297217056f4",
+      "extracts": [
+        {
+          "asset": "/assets/past-paper-questions/s8-e8d02-ms-1.png",
+          "page": 6,
+          "bbox": [
+            45,
+            90,
+            560.2,
+            373
+          ],
+          "width": 1030,
+          "height": 566,
+          "sha256": "f1e02e2903f0551a20fe3c2b543d001ee8de9e6abf7c0a1a18606cd15fe392f7"
+        }
+      ]
+    },
+    "cropSpec": {
+      "qp": [
+        [
+          4,
+          60,
+          275
+        ],
+        [
+          6,
+          60,
+          353
+        ]
+      ],
+      "ms": [
+        [
+          6,
+          90,
+          373
+        ]
+      ]
+    },
+    "extractReview": {
+      "status": "verified",
+      "date": "2026-09-29",
+      "cropSpecSha256": "b65673a6c53f6fd67e76b4ad26fb3537dd991df727da4b174443ec721dd28b74",
+      "reviewer": "Codex",
+      "method": "Read original QP/MS relevant pages and verified source identities. Rendered unaltered PDF regions at 144 dpi with glyph-boundary checks. Visually inspected all 22 final selected extracts, including shared table definitions, question parts, marks and complete official answers. Recorded source PDF, crop specification and PNG SHA-256 hashes."
+    },
+    "sourceRef": "Cambridge 9618/11 · October/November 2025 · 2(d)"
+  }
+]

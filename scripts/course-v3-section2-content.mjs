@@ -735,7 +735,7 @@ export const section2Lessons = [
           "A buffer absorbs short variation. If the deficit continues, stored data reaches zero and playback must pause or switch to a lower-bit-rate version. More buffer increases the time before interruption but does not repair sustained insufficient speed.",
         ],
         materials: [
-          { type: "reservoir", title: "Reservoir analogy: fill rate, stored level and drain rate", objectiveIds: ["S2.12.A03", "S2.12.A04", "S2.12.A05", "S2.12.A06"], asset: "streaming-buffer-reservoir.png" },
+          { type: "reservoir", title: "Reservoir analogy: fill rate, stored level and drain rate", objectiveIds: ["S2.12.A03", "S2.12.A04", "S2.12.A05", "S2.12.A06"], asset: "streaming-buffer-reservoir-academic.svg" },
           cards("Read the sign of the rate difference", ["S2.12.A03", "S2.12.A05"], [
             ["Incoming > playback", "Buffer fills by the positive difference each second."],
             ["Incoming = playback", "Buffer level stays stable over time."],

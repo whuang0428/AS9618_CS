@@ -1,0 +1,11 @@
+{
+  "tool": "Built-in ImageGen",
+  "images": [
+    {
+      "asset": "/assets/course-v3/section-10/booking-desk-academic.png",
+      "prompt": "Use case: scientific-educational. Asset type: introductory observation illustration for a Cambridge AS Computer Science classroom lesson about storing school event bookings. Create one academic textbook editorial photograph, landscape 3:2, no cartoon or stylized characters. Subject: an unoccupied school registration desk, viewed from a shallow overhead angle, with one neatly designed white event booking form on a clipboard, a few identical separate forms beneath it, one black pen and a simple small calendar at the edge. Beside them a plain laptop angled toward the form, its screen showing only an unlabelled restrained grid of blank cells. The image should clearly contrast one person's paper form with a collection of forms and a computer for recording the data. Ordinary clean school setting, professional documentary clarity, realistic proportions and materials, diffuse neutral daylight, white/stone-grey and muted blue-green palette, ample uncluttered space. The forms should have clean blank ruled fields with no handwriting, the calendar should show an unlabelled blank grid. No people, faces, mascots, cartoons, 3D toy rendering, decorative floating icons, arrows, invented numbers, legible text, logos, watermark, or marketing slogan. All exact teaching data and labels will be supplied in adjacent HTML. Emphasis on objects and their relationships, suitable for academic teaching rather than advertising.",
+      "review": "Visually reviewed: realistic academic editorial photograph, no cartoon figures, no embedded claims or legible teaching data. Context only; exact values and explanations are editable HTML.",
+      "sha256": "a9c93c3f78b5a08eb7639f214c3e09ad955d9dcf7cb8eb49555d05a62bbd8083"
+    }
+  ]
+}

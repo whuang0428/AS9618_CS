@@ -1,0 +1,20 @@
+{
+  "generatedAt": "2026-09-29",
+  "tool": "Built-in image_gen.imagegen",
+  "assets": [
+    {
+      "path": "web/assets/course-v3/section-5/classroom-workstation.png",
+      "prompt": "Use case: scientific-educational. Asset type: wide classroom teaching observation illustration for Cambridge AS Computer Science system software. Create a clear realistic cutaway-free 3D editorial illustration of ONE desktop computer workstation with a monitor, keyboard, mouse and a small desktop printer connected by a clearly visible cable, on a clean light cream surface. Monitor shows a simple generic document: a very small timetable grid with colored cells, no readable text and no brand. Printer has one sheet emerging with the SAME simple timetable grid. Computer tower separately visible beside monitor; visible power and printer cable are plausible, no impossible connections. Large identifiable objects, restrained teal blue and warm orange accents, light neutral background. This is an observation scene to ask what software coordinates opening, editing, saving and printing a file. Do not depict internal software as physical parts. No labels, arrows, captions, letters, numbers, decorative icons, logos, people or watermarks. Wide landscape composition 3:2, objects fill frame with modest margins, accurate recognizable everyday hardware.",
+      "purpose": "Observe separate application, computer and printer before tracing OS requests.",
+      "review": "Visually checked recognizable hardware, printer sheet and monitor document, no pedagogical text embedded. Context illustration; it does not represent OS internals.",
+      "sha256": "401632e3d2e0d52abc876d3a47e9f90610ff08cd9ec7fb94bd3cee90ee1d756e"
+    },
+    {
+      "path": "web/assets/course-v3/section-5/backup-devices.png",
+      "prompt": "Use case: scientific-educational. Asset type: beginner classroom illustration teaching backup stored on a separate physical device. Wide landscape 3:2 illustration with clean neutral off-white background and restrained teal/blue accents. Show an open generic laptop on the left, an unbranded portable external hard drive on the right, connected by a physically plausible USB cable. Laptop screen shows ONE simple document icon with a distinctive colored timetable grid (no letters or numbers); above the external drive show a separate clean enlarged inset bubble of the SAME document grid, indicating a saved copy on this device. Exact matching document grid 3 columns by 4 rows colored teal, orange, white. Use a thin dotted connector from the inset to the external drive only to identify where the saved copy is stored. No other arrows or diagrams. The hardware remains clearly separate; no cloud, padlock, shield, antivirus icon, network or automatic backup symbols. Visual intention: identify original on computer versus recovery copy on separate drive; a backed up version may be older, but DO NOT put dates or any text in the image. Accurate simple editorial 3D style, identifiable connectors, no human figures, no brand, no text, no watermark, very large clear objects and modest margins.",
+      "purpose": "Identify the working computer and a separate device holding a recovery copy.",
+      "review": "Visually checked physically separate storage and matching document motif. Illustration represents a copy already made; the classroom timeline separately explains captured versions, availability and restore limits.",
+      "sha256": "91f24d4f033d4eebef98e6c991d0d4d90739fb030b751fe50b678ebbc8381423"
+    }
+  ]
+}
