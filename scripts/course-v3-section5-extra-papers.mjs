@@ -1,6 +1,6 @@
 // Original Section 5 questions selected for the beginner teaching sequence.
-// Source PDFs stay in /Users/kw/Documents/Teaching/AS CS 9618/past-papers.
-// sourcePdf is relative to that read-only archive; only reviewed extracts are published.
+// sourcePdf paths are relative to the read-only teacher archive. For papers outside
+// that archive, sourceURL identifies a public copy of the Cambridge original.
 // E5D02 deliberately reviews file management before applying back-up software.
 // Placement and any cumulative objective mapping are owned by the Section 5 journey.
 import { readFileSync } from 'node:fs';
@@ -734,6 +734,63 @@ export const section5ExtraPapers = [
       "reviewer": "Codex",
       "method": "Read the local original QP/MS text and checked identities, context, selected parts and marks. Rendered at 144 dpi, checked readable glyph boundaries and visually inspected every final crop. Recorded original PDF, crop-specification and PNG SHA-256 hashes."
     }
+  },
+  {
+    id: 'E5C01',
+    year: 2022,
+    series: 'Oct/Nov',
+    component: 12,
+    parts: [{ part: '1(a)', marks: 5 }],
+    marks: 5,
+    title: 'Match five utilities to their purposes',
+    commandWord: 'Draw one line',
+    objectiveIds: ['S5.02.A01', 'S5.02.A02', 'S5.02.A03', 'S5.02.A04', 'S5.02.A06'],
+    syllabusMapping: ['S5.02'],
+    reading: ['Draw one line from each tool on the left. One of the six purposes on the right will be left over.'],
+    solution: [{
+      type: 'table',
+      headers: ['Utility', 'Matching purpose'],
+      rows: [
+        ['Virus checker', 'Scans for malicious code.'],
+        ['Disk formatter', 'Initialises the disk for use.'],
+        ['Back-up', 'Makes copies that can be restored if the originals are lost.'],
+        ['Disk repair', 'Detects and fixes inconsistencies on the disk.'],
+        ['Defragmentation', 'Moves file blocks together so that each file is contiguous.'],
+      ],
+    }],
+    marking: ['Each correct connection earns one mark, up to five marks.'],
+    mistakes: ['A file can occupy the same number of blocks before and after defragmentation. Reducing the file size would require compression, which is the unused purpose here.'],
+    sourceType: 'past-paper',
+    syllabusCode: '9618',
+    inserts: [],
+    sourceRef: 'Cambridge 9618/12 · October/November 2022 · 1(a)',
+    accessUrl: 'https://www.cambridgeinternational.org/programmes-and-qualifications/cambridge-international-as-and-a-level-computer-science-9618/past-papers/',
+    cropSpec: { ms: [[3, 58, 481]], qp: [[2, 57, 443]] },
+    qp: {
+      filename: '9618_w22_qp_12.pdf',
+      sourceURL: 'https://dynamicpapers.com/wp-content/uploads/2015/09/9618_w22_qp_12.pdf',
+      sha256: 'b4598c9803261b160d58018f7411abc161637b8b803d40fc79875089ea3922b0',
+      extracts: [{
+        asset: '/assets/past-paper-questions/s5-e5c01-qp-1.png',
+        page: 2, bbox: [45, 57, 560, 443], width: 1030, height: 772,
+        sha256: 'ad843a41a29a35fb90cc1fe5f58a8e9a218e2eaaadffcc21dae43ddc3be1ae86',
+      }],
+    },
+    ms: {
+      filename: '9618_w22_ms_12.pdf',
+      sourceURL: 'https://dynamicpapers.com/wp-content/uploads/2015/09/9618_w22_ms_12.pdf',
+      sha256: '72fed820c9b8a2ad31ce693de743e0418c16ac51fa8699b77368e231e482e793',
+      extracts: [{
+        asset: '/assets/past-paper-questions/s5-e5c01-ms-1.png',
+        page: 3, bbox: [45, 58, 560, 481], width: 1030, height: 846,
+        sha256: '87420de66c891b976cbaabf804f4d56259ecac881005f2893230e31ecc56c0a1',
+      }],
+    },
+    extractReview: {
+      status: 'verified', date: '2026-11-11', reviewer: 'Codex',
+      cropSpecSha256: 'de035bb7dac390a3c4a72d5ec66c62d84f601d58543d7c57d855b9c84e31340d',
+      method: 'Compared both Cambridge pages with the 144 dpi extracts. Confirmed the five tools, six purposes, five official connecting lines, question number and marks. No glyph crosses a crop edge.',
+    },
   }
 ];
 for (const question of section5ExtraPapers) {

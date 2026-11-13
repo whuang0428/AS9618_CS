@@ -1,0 +1,60 @@
+/* The shared guided-classroom stylesheet is also used by other chapters. */
+.s5-pages .s5-directory ol { left: 0; right: auto; }
+.s5-pages .s5-toolbar { align-items: center; }
+.s5-pages .s5-position { text-align: right; }
+.s5-pages .s5-material { min-width: 0; scroll-margin-top: 80px; padding: 8px 0 20px; }
+.s5-pages .s5-material + .s5-material { border-top: 1px solid var(--s5-line); padding-top: 24px; }
+.s5-pages[data-mode="classroom"] .s5-material { border: 0; padding-top: 4px; }
+.s5-pages .s5-group-heading { margin-bottom: .4rem; }
+.s5-pages .s5-enlarge { padding: 6px 14px; font-weight: 600; font-size: .95rem; color: var(--s5-accent); }
+.s5-pages .s5-navigation { justify-content: space-between; }
+.s5-pages .s5-boundary { border-top: 5px solid var(--s5-accent); padding-top: 18px; }
+.s5-pages .s5-boundary .exam-question { margin-top: 0; }
+.s5-pages .s5-moved { display: none; }
+.s5-pages .s5-moved:target { display: block; }
+.s5-pages .s5-choice { margin-block: .6rem; }
+.s5-pages .s5-choice p { margin: .35rem 1rem 1rem; }
+.s5-pages .official-page-scroll { max-width: 100%; overflow: auto; }
+.s5-pages .official-page-scroll img { width: auto; height: auto; max-width: 100%; }
+.s5-material-dialog { width: min(1800px, 97vw); max-width: 97vw; max-height: 95vh; padding: 12px clamp(12px, 2vw, 34px) 24px; border: 1px solid var(--s5-line); border-radius: 8px; overflow: auto; color: var(--s5-ink); }
+.s5-material-dialog::backdrop { background: #112839bf; }
+.s5-material-dialog > form { display: flex; justify-content: flex-end; position: sticky; top: 0; z-index: 5; pointer-events: none; }
+.s5-material-dialog > form button { pointer-events: auto; }
+.s5-material-dialog > :not(form) { font-size: clamp(1.15rem, 1.6vw, 1.65rem); }
+.s5-material-dialog .official-page-scroll img { width: max(100%, 800px); max-width: none; }
+.s5-index > header { padding-bottom: 1rem; }
+.s5-index > nav { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(20px, 4vw, 72px); }
+.s5-outline { border-top: 3px solid var(--s5-accent); padding-top: .8rem; }
+.s5-outline h2 { margin: .35rem 0; }
+.s5-outline p { color: var(--s5-muted); }
+.s5-outline ul { list-style: none; padding: 0; }
+.s5-outline li { border-top: 1px solid var(--s5-line); }
+.s5-outline a { display: flex; gap: 1rem; padding: .8rem .35rem; text-decoration: none; font-weight: 650; align-items: baseline; }
+.s5-outline a:hover { text-decoration: underline; }
+.s5-outline a span { font-variant-numeric: tabular-nums; color: var(--s5-muted); }
+.s5-outline .s5-exam-link { padding-inline: .5rem; background: var(--s5-soft); border-left: 4px solid var(--s5-accent); }
+@media (max-width: 700px) {
+  .s5-index > nav { grid-template-columns: minmax(0, 1fr); }
+  .s5-pages .s5-toolbar { display: flex; flex-wrap: wrap; }
+  .s5-pages .s5-position { order: unset; text-align: left; }
+  .s5-pages .s5-directory { max-width: 100%; }
+  .s5-pages .s5-material { scroll-margin-top: 8px; }
+}
+@media print {
+  .s5-pages.s5-classroom [data-s5-topic][hidden], .s5-pages.s5-classroom [data-s5-card][hidden] { display: block !important; }
+  .s5-pages .s5-enlarge, .s5-material-dialog { display: none; }
+}
+.s5-card-heading { display: flex; justify-content: space-between; align-items: baseline; gap: .6rem 1rem; flex-wrap: wrap; margin-bottom: .6rem; }
+.s5-pages .s5-card-heading h3 { margin: 0; }
+.s5-pages .s5-card-heading .s5-enlarge { flex-shrink: 0; }
+.s5-pages[data-mode="classroom"] .s5-group:not(.s5-boundary) > .s5-group-heading { display: flex; align-items: baseline; flex-wrap: wrap; gap: .5rem; margin: .2rem 0; }
+.s5-pages[data-mode="classroom"] .s5-group:not(.s5-boundary) > .s5-group-heading h2 { margin: 0; color: var(--s5-muted); font: 600 1rem/1.4 system-ui,sans-serif; letter-spacing: normal; }
+.s5-pages[data-mode="classroom"] .s5-group:not(.s5-boundary) > .s5-group-heading .s5-eyebrow { margin: 0 !important; }
+.s5-pages .official-question > .s5-enlarge, .s5-pages .exam-reveal > .s5-enlarge { margin-block: .25rem; }
+@media (min-width: 900px) {
+  .s5-pages[data-mode="classroom"] .s5-boundary .exam-heading { display: flex; align-items: baseline; flex-wrap: wrap; gap: .2rem 1rem; margin-bottom: .4rem; }
+  .s5-pages[data-mode="classroom"] .s5-boundary .exam-heading > * { margin: 0; }
+  .s5-pages[data-mode="classroom"] .s5-boundary .exam-heading h3 { flex-basis: 100%; }
+  .s5-pages[data-mode="classroom"] .s5-boundary .exam-heading .source-kind { display: none; }
+}
+.exam-question-sheet > summary { margin-block: .4rem; padding-inline: .75rem; background: var(--s5-soft); border: 1px solid var(--s5-line); border-radius: 5px; }

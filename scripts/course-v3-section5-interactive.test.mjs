@@ -5,9 +5,8 @@ import { createHash } from 'node:crypto';
 import { resolve, join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { courseV3Lessons } from './course-v3-content.mjs';
-import { section5Journey, section5Sessions, section5PaperObjectives, section5PaperCoverageNotes } from './course-v3-section5-journey.mjs';
-import { groupObjectives, section5PapersForLesson, renderSection5Classroom } from './course-v3-section5-classroom.mjs';
-import { labMarkup } from './course-v3-section5-labs.mjs';
+import { section5Journey, section5Checkpoint, section5Route, section5PaperObjectives, section5PaperCoverageNotes } from './course-v3-section5-journey.mjs';
+import { groupObjectives, section5PapersForLesson, renderSection5Overview, renderSection5Classroom } from './course-v3-section5-classroom.mjs';
 import { renderPastPaperQuestions } from './course-v3-past-paper-render.mjs';
 import { section5ExtraPapers } from './course-v3-section5-extra-papers.mjs';
 import { section5Programs, s5LoopTrace } from './course-v3-section5-programs.mjs';
@@ -36,8 +35,8 @@ test('every AS Section 5 objective has one owner and all original units remain r
 
 test('past-paper practice follows all its prerequisites, including cumulative cross-topic questions', () => {
   const taught = new Set(), assigned = [];
-  for (const group of groups) {
-    group.objectiveIds.forEach(id => taught.add(id));
+  for (const group of lessons.flatMap(l => section5Route(l.sequenceIndex))) {
+    (group.objectiveIds ?? []).forEach(id => taught.add(id));
     for (const id of group.papers) {
       assert.ok(section5PaperObjectives[id]?.length, id);
       for (const objective of section5PaperObjectives[id]) assert.ok(taught.has(objective), `${id} precedes ${objective}`);
@@ -51,22 +50,23 @@ test('past-paper practice follows all its prerequisites, including cumulative cr
   assert.ok(section5Journey[31].groups.some(group => group.papers.includes('E042')), 'development-stage comparison follows comparison teaching');
 });
 
-test('the route contains complete explanations, concrete materials and usable model configurations', () => {
-  for (const group of groups) {
-    assert.ok(group.question && group.observe && group.check?.prompt && group.check?.answer && group.takeaway, group.id);
-    assert.ok(group.steps.length >= 3, `${group.id}: missing explanation stages`);
-    assert.ok(group.image || group.lab || group.steps.some(step => step.table || step.code), `${group.id}: lacks concrete material`);
-    for (const step of [...group.steps, ...(group.worked?.steps ?? [])]) {
-      assert.ok(step.title && step.body, `${group.id}: incomplete step`);
-      if (step.table) for (const row of step.table.rows) assert.equal(row.length, step.table.headers.length, `${group.id}: table columns`);
-    }
-    if (group.lab) assert.ok(labMarkup[group.lab]?.includes('data-action="reset-lab"'), `${group.id}: missing resettable lab`);
-    if (group.labConfig?.problem) assert.ok(labMarkup[group.lab].includes(`value="${group.labConfig.problem}"`));
-    if (group.labConfig?.scenario) assert.ok(labMarkup[group.lab].includes(`value="${group.labConfig.scenario}"`));
-    if (group.image) assert.ok(existsSync(join(root, 'web', group.image.asset)), `${group.id}: missing illustration`);
+test('the nine chapter links lead to numbered sections or the 15-mark boundary', () => {
+  const overview = renderSection5Overview(lessons);
+  const route = lessons.flatMap(lesson => section5Route(lesson.sequenceIndex));
+  assert.deepEqual(route.map(g => g.number ?? 'checkpoint'), ['5.1.1','5.1.2','5.1.3','5.1.4','checkpoint','5.2.1','5.2.2','5.2.3','5.2.4']);
+  for (const lesson of lessons) for (const group of section5Route(lesson.sequenceIndex)) {
+    assert.ok(overview.includes(`href="../${lesson.route}/#${group.id}"`));
   }
-  assert.deepEqual(section5Sessions.flatMap(session => session.groups), groups.map(group => group.id));
-  for (const session of section5Sessions) assert.ok(session.minutes[0] > 0 && session.minutes[1] >= session.minutes[0]);
+  assert.deepEqual(groups.map(g => g.materials.length), [1,5,6,3,3,1,1,4]);
+  for (const group of groups) for (const material of group.materials) {
+    assert.ok(material.html && material.title && material.objectiveIds.length, material.id);
+    if (['5.1.2','5.1.3'].includes(group.number)) {
+      assert.match(material.html, /<figure/);
+      assert.match(material.html, /QP p\d+, MS p\d+/);
+      assert.match(material.html, /Describe|Explain|explain|describe/);
+    }
+  }
+  assert.deepEqual(groups.find(g => g.number === '5.2.1').materials.map(m => m.id), ['assembler','compiler','interpreter']);
 });
 
 test('worked arithmetic agrees with the executable classroom models', () => {
@@ -85,11 +85,12 @@ test('the renderer keeps source questions after explanations and every answer fo
     const qs = section5PapersForLesson(lesson, pool);
     const html = renderSection5Classroom({ ...lesson, pastPaperQuestions: qs }, helpers);
     assert.equal((html.match(/data-s5-classroom/g) ?? []).length, 1);
-    assert.doesNotMatch(html, /<details\b[^>]*\sopen(?:[\s=>])/);
+    const revealed = [...html.matchAll(/<details\b[^>]*\sopen(?:[\s=>])[^<]*/g)];
+    assert.ok(revealed.every(match => match[0].includes('class="exam-question-sheet"')), 'only the original question may start expanded');
     for (const group of section5Journey[lesson.sequenceIndex].groups) {
       const groupStart = html.indexOf(`id="${group.id}"`);
       assert.ok(groupStart >= 0);
-      for (const id of group.papers) assert.ok(html.indexOf(`data-question-id="${id}"`, groupStart) > html.indexOf(`id="${group.id}--explain"`, groupStart));
+      for (const id of group.papers) assert.ok(html.indexOf(`data-question-id="${id}"`, groupStart) > groupStart);
     }
     const identifiers = [...html.matchAll(/\sid="([^"]+)"/g)].map(match => match[1]);
     assert.equal(new Set(identifiers).size, identifiers.length, `Duplicate anchors on ${lesson.route}`);
@@ -118,8 +119,33 @@ test('local original PDFs match recorded source identities when the teaching arc
   for (const question of papers) for (const kind of ['qp','ms']) {
     const source = question[kind];
     const path = source.sourcePdf ?? candidates.find(path => path.endsWith('/' + source.filename) || path === source.filename);
+    if (!path && source.sourceURL) continue; // The public originals have a separate check below.
     assert.ok(path, source.filename);
     assert.equal(digest(readFileSync(join(archive,path))), source.sha256, `${question.id}: ${source.filename}`);
+  }
+});
+
+test('the five-mark matching question has the original five tools, one unused purpose and both public PDF sources', () => {
+  const question = section5ExtraPapers.find(q => q.id === 'E5C01');
+  assert.deepEqual(question.parts, [{ part: '1(a)', marks: 5 }]);
+  assert.deepEqual(question.solution[0].rows.map(row => row[0]), ['Virus checker', 'Disk formatter', 'Back-up', 'Disk repair', 'Defragmentation']);
+  assert.deepEqual(question.objectiveIds, ['S5.02.A01', 'S5.02.A02', 'S5.02.A03', 'S5.02.A04', 'S5.02.A06']);
+  for (const [kind, page] of [['qp', 2], ['ms', 3]]) {
+    const source = question[kind];
+    assert.equal(new URL(source.sourceURL).pathname.split('/').at(-1), source.filename);
+    const [extract] = source.extracts;
+    assert.equal(extract.page, page);
+    const [left, top, right, bottom] = extract.bbox;
+    assert.deepEqual([extract.width, extract.height], [2 * (right - left), 2 * (bottom - top)]);
+  }
+});
+
+test('downloaded public originals have the reviewed SHA-256 values', t => {
+  const cache = process.env.AS9618_PAST_PAPER_PUBLIC_ROOT;
+  if (!cache) return t.skip('Set AS9618_PAST_PAPER_PUBLIC_ROOT to the directory containing the public Cambridge PDFs to check originals offline');
+  for (const question of section5ExtraPapers) for (const kind of ['qp', 'ms']) {
+    const source = question[kind];
+    if (source.sourceURL) assert.equal(digest(readFileSync(join(cache, source.filename))), source.sha256, source.filename);
   }
 });
 
@@ -132,15 +158,25 @@ test('generated illustrations match the reviewed prompt and asset register', () 
 });
 
 
-test('bookmarks from the previous interactive presentation lead to the corresponding new concept', () => {
-  const expected = { 28: { 3: 'process-turns' }, 29: { 2: 'library-routine', 3: 'dll-sharing' }, 32: { 2: 'debug-with-evidence' } };
-  for (const [sequence, anchors] of Object.entries(expected)) {
-    const lesson = lessons.find(item => item.sequenceIndex === Number(sequence));
-    const html = renderSection5Classroom({ ...lesson, pastPaperQuestions: section5PapersForLesson(lesson, pool) }, { renderPastPaperQuestions, renderPractice: () => '' });
-    for (const [number, concept] of Object.entries(anchors)) {
-      const anchor = html.indexOf(`id="unit-${number}"`);
-      const group = html.lastIndexOf('<article class="s5-group"', anchor);
-      assert.ok(html.slice(group,anchor).includes(`id="${concept}"`), `${sequence} unit-${number}`);
-    }
+test('the checkpoint first presents exactly three independent questions totalling 15 marks', () => {
+  const helpers = { renderPractice: () => '' };
+  const pages = lessons.map(l => renderSection5Classroom({ ...l, pastPaperQuestions: section5PapersForLesson(l, pool) }, helpers));
+  const start = pages[1].indexOf(`data-s5-topic id="${section5Checkpoint.id}"`);
+  const end = pages[1].indexOf('<nav class="s5-navigation"', start);
+  const before = pages[0] + pages[1].slice(0, start);
+  const checkpoint = pages[1].slice(start, end);
+  const published = [...checkpoint.matchAll(/class="exam-question" id="[^"]+" data-question-id="([^"]+)"/g)].map(match => match[1]);
+  assert.deepEqual(published, ['E5C01', 'E039', 'E040']);
+  for (const id of published) assert.ok(!before.includes(`data-question-id="${id}"`));
+  assert.equal(published.reduce((sum,id) => sum + papers.find(q => q.id === id).marks, 0), 15);
+  assert.equal(checkpoint.split('<details class="exam-question-sheet" open>').length - 1, 3);
+  for (const role of ['original-question', 'solution', 'mark-scheme']) assert.equal(checkpoint.split(`data-exam-role="${role}"`).length - 1, 3);
+});
+
+test('legacy unit and concept bookmarks share the intended material', () => {
+  const expected = [[28, 'unit-3', 'process-turns'],[29, 'unit-2', 'library-routine'],[29, 'unit-3', 'dll-sharing'],[32, 'unit-2', 'debug-with-evidence']];
+  for (const [page, unit, concept] of expected) {
+    const material = section5Journey[page].groups.flatMap(g => g.materials).find(m => m.aliases.includes(unit));
+    assert.ok(material?.aliases.includes(concept), `${page} ${unit}`);
   }
 });

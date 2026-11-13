@@ -1,9 +1,279 @@
 // Additional original Section 4 questions. Source PDFs remain in the teacher archive.
 // Crop geometry and original/image hashes make every displayed extract verifiable.
+import { section4NewPaperObjectives } from './course-v3-section4-checkpoints.mjs';
 import { readFileSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 const digest = value => createHash('sha256').update(value).digest('hex');
+// Page numbers are one-based. Crop boxes are unscaled PDF points.
+const checkpointSources = {
+  E4C01: {
+    season: 's25', component: 12, part: '1(a)', marks: 3,
+    cropSpecSha256: 'b6ebcf45f24dd038e9f580450f5b3bfd051e34e120ee62ac00526bbd28935f13',
+    qp: {
+      sha256: '607722293452744ee7107b7365cac73664d51e0eb0f7487587d038e22467826e',
+      extracts: [
+        { page: 2, bbox: [45, 60, 557, 693], width: 1024, height: 1266,
+          sha256: '01e0a6c8f61add856404144f4bb18825234caf18e899031939c9745d4bae39cb' },
+      ],
+    },
+    ms: {
+      sha256: '0b0c41c4a7930853aaaaa00729d4ffd3a3e971948800220344c6ae6a31ec957a',
+      extracts: [
+        { page: 4, bbox: [45, 85, 557, 313], width: 1024, height: 456,
+          sha256: 'cf367da5189fdbc61527fb223fa06d7fe281bf367e42d8fbb14524a097944d53' },
+      ],
+    },
+  },
+  E4C02: {
+    season: 'w23', component: 13, part: '9(a)(ii)', marks: 2,
+    cropSpecSha256: '6f194a600c3f8a1eada4043a1f3518374540b1ff268e7552a27879503ca34a6f',
+    qp: {
+      sha256: '90c2b773f5d16f13ca83a637ca047c2afa31a7a7dad0664fe8522616a9ab3a4e',
+      extracts: [
+        { page: 13, bbox: [45, 55, 557, 107], width: 1024, height: 104,
+          sha256: 'fd1b1590837deda110c1b12f0162a36fcd28e6e1a90267ac505406341ebccafc' },
+        { page: 13, bbox: [45, 250, 557, 410], width: 1024, height: 320,
+          sha256: '435e06af507ff1f00e1c6a4ef32dcfeb0c4fc57b773d17a266590f2a6b04a9e0' },
+      ],
+    },
+    ms: {
+      sha256: 'c658537dc541755e6829581b37db83a5f9ae4958d765a885732383b5015d12f6',
+      extracts: [
+        { page: 9, bbox: [45, 518, 557, 637], width: 1024, height: 238,
+          sha256: '5687179b76adf4e34967f2b606f87a32aa4ed09e39537f76ceb89531cd7fe214' },
+      ],
+    },
+  },
+  E4C03: {
+    season: 'w23', component: 11, part: '5(c)(ii)', marks: 5,
+    cropSpecSha256: '0064db13ffb3de62e322b33986beb6aa440bf70ec36ae42cb13dfc247f677caa',
+    qp: {
+      sha256: '0aca70a2e79414c1683c81120a9cd3144c4a5b9ad7f411cd95fcd7089d702e69',
+      extracts: [
+        { page: 10, bbox: [45, 55, 557, 81], width: 1024, height: 52,
+          sha256: 'da8e5d192c42d33c4a8374d28367ff2ab1a50d2e897980918ea14bbffb3d34f7' },
+        { page: 10, bbox: [45, 198, 557, 527], width: 1024, height: 658,
+          sha256: '0de7bd41da5d611632cf63ba4b7ecf69a4f79e74932861b5cef2de6297e3b4bb' },
+      ],
+    },
+    ms: {
+      sha256: '7d42b9e1b7ad513fa40cc2b5ba566b8f3dd4cdded6c0cd661e13f5388aa21348',
+      extracts: [
+        { page: 8, bbox: [45, 85, 557, 261], width: 1024, height: 352,
+          sha256: '1c3b5497a59d912ff3578657271713a657dc3be9b8ec3b14fa6c704daa7041a3' },
+      ],
+    },
+  },
+  E4C04: {
+    season: 's25', component: 11, part: '6(a)(iii)', marks: 2,
+    cropSpecSha256: '76b2fd6ddb8a1723f9be55fd67c947e652717a2e0c6de8c715c0f28618caf212',
+    qp: {
+      sha256: 'bdf74d4f15c620bde7e6fe65f17828bc85c89490ebb9a1a337e2cd0596f4b39a',
+      extracts: [
+        { page: 10, bbox: [45, 60, 557, 242], width: 1024, height: 364,
+          sha256: 'b08b1ff1f0f31cfe562afba2cc910fb793b282983f565413a48305585e324759' },
+        { page: 11, bbox: [45, 60, 557, 212], width: 1024, height: 304,
+          sha256: 'ad80d94553ea12df66cfa793aa4c72d456b5e55ea057f1c1412dc0f7361f08d1' },
+      ],
+    },
+    ms: {
+      sha256: '8bf543ddd26e74224f40fd909152e300b9b711eb3644d7e8d07c1d5c3f07521b',
+      extracts: [
+        { page: 10, bbox: [45, 381, 557, 514], width: 1024, height: 266,
+          sha256: '8cd3f94adff2c07885db0f5fec7c451a69c107039e7c768b1300eb4c39ee5c61' },
+      ],
+    },
+  },
+  E4C05: {
+    season: 'w24', component: 11, part: '3(b)(ii)', marks: 3,
+    cropSpecSha256: 'd24b1f92a139f5810d86aba75adf2bccd078a234ec71d2a7a93c3376c8dac19c',
+    qp: {
+      sha256: '94d1aed5bc14f0a3fd60da0e932cf5b8b40bd8342550ff0254c19afe89001ef7',
+      extracts: [
+        { page: 7, bbox: [45, 408, 557, 653], width: 1024, height: 490,
+          sha256: 'c716bd5b42f73b876897bb2efc114b6d643ef4001cdd57b47c161350a9a4cc4d' },
+      ],
+    },
+    ms: {
+      sha256: 'e9674e802b5b850509834b1ab1b84008740729d668ae844e9b0142607dbdf1a2',
+      extracts: [
+        { page: 6, bbox: [45, 85, 557, 231], width: 1024, height: 292,
+          sha256: '695457589b5fb774b34db2f7b589ada426c8ac9bcbf2a8dbed3e10544fc4cfc4' },
+      ],
+    },
+  },
+  E4C06: {
+    season: 's25', component: 13, part: '2(c)', marks: 2,
+    cropSpecSha256: 'd4647ddc5f01a640ade2d2b040d20f33afbd47a1cb31fb6689c4abd32f79faed',
+    qp: {
+      sha256: 'b341d6829ba4baf47dbd8d272cb7fd49b448d04a2a16a028e4fb3178c3c64554',
+      extracts: [
+        { page: 4, bbox: [45, 603, 557, 770], width: 1024, height: 334,
+          sha256: '2434036c3ea91e792beb6c4a6073463a1d4628db44d58147cf024b6a6e12593f' },
+      ],
+    },
+    ms: {
+      sha256: 'a334bec016c753451ae53c56fdfc0b0758b8f2b5a7a06a86307ac100bb7ebd8e',
+      extracts: [
+        { page: 5, bbox: [45, 437, 557, 571], width: 1024, height: 268,
+          sha256: '231d5268761b8549c26c4fd4907caeb81e22fce55f75987d782f1098e4473f24' },
+      ],
+    },
+  },
+  E4C07: {
+    season: 'w23', component: 13, part: '9(c)', marks: 1,
+    cropSpecSha256: '83c4a2109af1a5c283117242ba677b2fa635322eca73d57ebac921a5c1cdf511',
+    qp: {
+      sha256: '90c2b773f5d16f13ca83a637ca047c2afa31a7a7dad0664fe8522616a9ab3a4e',
+      extracts: [
+        { page: 14, bbox: [45, 499, 557, 605], width: 1024, height: 212,
+          sha256: '7ac284378eb5299d66f479e84e08c6f7e8596116275ce07e7300eb8596f621e3' },
+      ],
+    },
+    ms: {
+      sha256: 'c658537dc541755e6829581b37db83a5f9ae4958d765a885732383b5015d12f6',
+      extracts: [
+        { page: 10, bbox: [45, 308, 557, 428], width: 1024, height: 240,
+          sha256: 'd913f825ce84541e043f52467144e9f1a0c87e60a94e0993892664c13c439b29' },
+      ],
+    },
+  },
+  E4C08: {
+    season: 'w23', component: 13, part: '9(d)', marks: 3,
+    cropSpecSha256: '218206c0a08ae8923fc6679af1ab87bd8eeede93afb8d0bfa79106fdef4710e4',
+    qp: {
+      sha256: '90c2b773f5d16f13ca83a637ca047c2afa31a7a7dad0664fe8522616a9ab3a4e',
+      extracts: [
+        { page: 15, bbox: [45, 55, 557, 597], width: 1024, height: 1084,
+          sha256: '6bd46c0640a7db63ce9ca7593c9d338d5e88be6c2296fc5b56d4955ee5d31cfc' },
+      ],
+    },
+    ms: {
+      sha256: 'c658537dc541755e6829581b37db83a5f9ae4958d765a885732383b5015d12f6',
+      extracts: [
+        { page: 10, bbox: [45, 425, 557, 504], width: 1024, height: 158,
+          sha256: '2c7d349da03d1d3ae8c02b25e9b3698f06c839af4d7ab7537fdea7bf6b3e7958' },
+      ],
+    },
+  },
+};
+
+const checkpointGuidance = {
+  E4C01: {
+    title: 'Correct the statements about the processor',
+    commandWord: 'Complete',
+    reading: 'For each statement, decide what the component holds or which bus it uses. Then pair an incorrect statement number with a correction.',
+    solution: { type: 'table', headers: ['Statement', 'Correction'], rows: [
+      ['1', 'PC holds the memory address from which the CPU will fetch the next instruction.'],
+      ['3', 'The CU sends control signals to components over the control bus.'],
+      ['4', 'MDR temporarily holds the value being read or written at the address selected by MAR.'],
+    ] },
+    marking: 'Each row earns one mark when both its statement number and its correction are accurate.',
+    mistakes: 'Copying an instruction into PC would leave the CPU without the address for its next fetch. Reading the addressed memory location supplies MDR with its contents.',
+  },
+  E4C02: {
+    title: 'Compare general-purpose and special-purpose registers',
+    commandWord: 'Identify',
+    reading: 'Give two paired differences. Compare the registers’ jobs in one sentence and how instructions use them in another.',
+    solution: 'A program can reuse a general-purpose register for different temporary values. Each special-purpose register has a designated job, such as holding the next instruction address. Many instructions can use a general-purpose register as an operand. Access to a special-purpose register is tied to particular instructions or processor operations.',
+    marking: 'One comparison concerns the assigned role and a second concerns which instructions can use the register. Each distinct comparison is worth one mark.',
+    mistakes: 'Giving PC and MAR as two examples illustrates two special roles. To earn both marks, compare the two register classes in two different ways.',
+  },
+  E4C03: {
+    title: 'Explain the speed of two cores on the same workload',
+    commandWord: 'Explain',
+    reading: 'The clock frequency per core is held at 2.1 GHz. Consider how much work the program can divide, what information each core needs and how quickly memory can supply it.',
+    solution: 'If the next calculation depends on the result of the previous one, one core can be idle during that part. Even where both cores have work, they may spend time passing results between them and waiting for shared data. Both may also wait when the memory system cannot supply their requests quickly enough. Adding a core therefore need not halve the running time.',
+    marking: 'Link each cause to its effect. Limited parallel work can leave one core idle. Communication consumes time, and slow memory can delay both cores. The scheme allows up to five marks.',
+    mistakes: 'Each core still uses a 2.1 GHz clock. Adding the frequencies does not give the speed of a serial instruction sequence.',
+  },
+  E4C04: {
+    title: 'Explain how bus width affects a computer',
+    commandWord: 'Explain',
+    reading: 'The specifications belong to two complete computers. Focus on the two meanings of width: bits moved by a data transfer and bits available to select an address.',
+    solution: 'With equal transfer timing, a wider data bus moves more bits at once. A fixed block that previously needed multiple transfers can then arrive in fewer transfers, reducing time spent waiting for data. A wider address bus can encode more distinct addresses and therefore select more memory locations directly.',
+    marking: 'The scheme awards up to two points. For the data bus, connect the larger amount per transfer to its effect on waiting. For the address bus, connect additional address bits to the number of directly selectable locations.',
+    mistakes: 'A wider address bus increases the range of addresses. The data-bus width determines how many bits of the stored value travel together.',
+  },
+  E4C05: {
+    title: 'Identify the port and explain automatic device recognition',
+    commandWord: 'Explain',
+    reading: 'The key event is plugging a flash drive into a running computer. Follow the connection from detection to the driver that lets the OS use the device.',
+    solution: 'Use a USB port. The host detects an electrical change as the drive is attached. During enumeration it obtains identifying information from the device. The OS uses that information to select and load an appropriate driver.',
+    marking: 'Naming USB earns one mark. Two further marks are available for stages in detection and recognition, such as sensing the voltage change and receiving the device identification.',
+    mistakes: 'Describing a plug as reversible or naming its shape does not explain how the computer recognises a drive.',
+  },
+  E4C06: {
+    title: 'Explain how HDMI connects a display',
+    commandWord: 'Explain',
+    reading: 'Consider the kind of signal reaching the monitor and the content one cable can carry.',
+    solution: 'The computer transmits a stream of digital video to the monitor. Audio for its speakers can travel in the same cable. HDMI provides the bandwidth needed to carry these streams.',
+    marking: 'Two distinct supported details earn the two marks, such as carrying video and audio together and transmitting them digitally as a stream.',
+    mistakes: 'A plug shape says how the cable fits. The question asks how the interface transfers information to the peripheral.',
+  },
+  E4C07: {
+    title: 'Give a software cause of an interrupt',
+    commandWord: 'State',
+    reading: 'Choose an event caused by the instructions the program is executing.',
+    solution: 'A program attempts an integer division with a zero divisor. This arithmetic error can trigger an exception that transfers control to a handler.',
+    marking: 'One appropriate software-generated event earns the single mark. Division by zero is an example accepted in this question.',
+    mistakes: 'A key press originates from a hardware device and would answer a different question.',
+  },
+  E4C08: {
+    title: 'Complete the interrupt-handling sequence',
+    commandWord: 'Write',
+    reading: 'Read the fixed stages first. Identify the decision before context is saved, the action that starts the handler, and the action after registers have been restored.',
+    solution: { type: 'table', headers: ['Gap', 'Letter', 'Why it fits here'], rows: [
+      ['2', 'D', 'Identify the source and check its priority before deciding whether to service it.'],
+      ['4', 'A', 'Load the ISR start address into PC so that the next fetch enters the handler.'],
+      ['6', 'B', 'With the interrupted state restored, enable lower-priority requests again.'],
+    ] },
+    marking: 'The official scheme awards one mark per letter in its correct position. The order is D, A, B.',
+    mistakes: 'An ISR is a routine in memory. Loading its start address into PC initiates the transfer of control.',
+  },
+};
+
+function checkpointQuestion([id, source]) {
+  const { season, component, part, marks } = source;
+  const year = 2000 + Number(season.slice(1));
+  const summer = season[0] === 's';
+  const objectiveIds = section4NewPaperObjectives[id];
+  const detail = checkpointGuidance[id];
+
+  function document(kind) {
+    const filename = `9618_${season}_${kind}_${component}.pdf`;
+    return {
+      filename,
+      sourcePdf: `${year}-${summer ? 'May-June' : 'Oct-Nov'}/${filename}`,
+      sha256: source[kind].sha256,
+      extracts: source[kind].extracts.map((extract, index) => ({
+        ...extract, asset: `/assets/past-paper-questions/s4-${id.toLowerCase()}-${kind}-${index + 1}.png`,
+      })),
+    };
+  }
+
+  const cropSpec = {};
+  for (const kind of ['ms', 'qp']) {
+    cropSpec[kind] = source[kind].extracts.map(({ page, bbox }) => [page, bbox[1], bbox[3]]);
+  }
+  return {
+    id, year, component, marks, title: detail.title, commandWord: detail.commandWord,
+    reading: [detail.reading], solution: [detail.solution], marking: [detail.marking], mistakes: [detail.mistakes],
+    sourceType: 'past-paper', syllabusCode: '9618', series: summer ? 'May/June' : 'Oct/Nov',
+    parts: [{ part, marks }], objectiveIds,
+    syllabusMapping: [...new Set(objectiveIds.map(objective => objective.split('.').slice(0, 2).join('.')))],
+    inserts: [], sourceRef: `Cambridge 9618/${component} · ${summer ? 'May/June' : 'October/November'} ${year} · ${part}`,
+    accessUrl: 'https://www.cambridgeinternational.org/programmes-and-qualifications/cambridge-international-as-and-a-level-computer-science-9618/past-papers/',
+    qp: document('qp'), ms: document('ms'), cropSpec,
+    extractReview: {
+      status: 'verified', date: '2026-11-11', cropSpecSha256: source.cropSpecSha256, reviewer: 'Codex',
+      method: 'Matched original QP and MS parts and marks. Rendered the registered regions at 144 dpi, checked their boundaries against PDF glyphs and visually reviewed all 19 extracts including shared stems and specifications.',
+    },
+  };
+}
+
 export const section4ExtraPapers = [
+  ...Object.entries(checkpointSources).map(checkpointQuestion),
   {
     "id": "E4D01",
     "year": 2025,

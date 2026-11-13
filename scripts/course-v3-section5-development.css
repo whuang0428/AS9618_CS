@@ -1,0 +1,263 @@
+/* Translator and IDE teaching materials. The arrows and state labels stay adjacent
+   to their source data when a teaching card is enlarged or read on a phone. */
+.s5-comparison, .s5-dev-figure {
+  --dev-ink: #203948;
+  --dev-accent: #125e68;
+  --dev-line: #bdcfd1;
+  --dev-tint: #edf5f3;
+  --dev-mono: ui-monospace, "SFMono-Regular", Consolas, monospace;
+  color: var(--dev-ink);
+  font: inherit;
+  line-height: 1.45;
+  container-type: inline-size;
+  min-width: 0;
+}
+.s5-comparison { margin-block: .6rem 1.25rem; }
+.s5-comparison table, .s5-debug-watch table {
+  width: 100%;
+  min-width: 0;
+  border-collapse: collapse;
+  table-layout: fixed;
+  margin: 0;
+}
+.s5-comparison table { font: inherit; }
+.s5-comparison caption {
+  text-align: left;
+  padding-bottom: .6rem;
+  color: var(--dev-ink);
+  font-size: 1rem;
+  font-weight: 600;
+}
+.s5-comparison th, .s5-comparison td, .s5-debug-watch th, .s5-debug-watch td {
+  text-transform: none;
+  letter-spacing: normal;
+  text-align: left;
+  vertical-align: top;
+  white-space: normal;
+  border: 0;
+  border-bottom: 1px solid var(--dev-line);
+  padding: .65rem .9rem;
+  color: var(--dev-ink);
+  font: inherit;
+}
+.s5-comparison thead th, .s5-debug-watch thead th {
+  background: var(--dev-ink);
+  color: white;
+  font-weight: 650;
+}
+.s5-comparison thead th:first-child { width: 19%; }
+.s5-comparison tbody th, .s5-debug-watch tbody th { background: var(--dev-tint); font-weight: 650; }
+.s5-comparison td { background: #fff; }
+.s5-comparison td + td { border-left: 1px solid var(--dev-line); }
+.s5-comparison td > span { display: none; }
+.s5-dev-choice { margin: .6rem 0 0; border: 1px solid #bdcfd1; }
+.s5-dev-choice > summary { cursor: pointer; min-height: 44px; padding: .65rem .9rem; font-weight: 650; }
+.s5-dev-choice > p { margin: 0; padding: .25rem .9rem 1rem; }
+.s5-dev-figure {
+  margin: .5rem 0 1rem;
+  border: 1px solid var(--dev-line);
+  border-radius: 8px;
+  background: #fff;
+}
+.s5-dev-figure figcaption {
+  margin: 0;
+  padding: .8rem 1.25rem;
+  border-top: 1px solid var(--dev-line);
+  background: var(--dev-tint);
+  color: var(--dev-ink);
+  font-size: 1em;
+  line-height: 1.45;
+}
+.s5-dev-figure h4, .s5-dev-figure p { margin: 0; }
+.s5-dev-figure h4 { font-family: inherit; font-size: 1em; font-weight: 700; line-height: 1.35; color: inherit; }
+.s5-dev-figure code, .s5-dev-figure samp { font-family: var(--dev-mono); font-size: .95em; }
+.s5-dev-figure .s5-editor, .s5-dev-figure .s5-java-source {
+  min-width: 0;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid var(--dev-line);
+  border-radius: 6px;
+  background: #f6f9f9;
+}
+.s5-dev-figure .s5-editor-tab, .s5-java-source > h4 {
+  margin: 0;
+  padding: .55rem .9rem;
+  font-size: 1em;
+  line-height: 1.35;
+  color: #fff;
+  background: var(--dev-ink);
+  border-bottom: 1px solid #70898f;
+}
+.s5-dev-figure .s5-editor pre, .s5-dev-figure .s5-java-source pre {
+  margin: 0;
+  min-height: 0;
+  min-width: 0;
+  width: 100%;
+  padding: .9rem;
+  overflow: auto;
+  border: 0;
+  border-radius: 0;
+  background: #f6f9f9;
+  color: #193847;
+  font: 500 clamp(.94rem, 1.55cqw, 1.24rem)/1.55 var(--dev-mono);
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  tab-size: 2;
+}
+.s5-dev-figure pre code {
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  white-space: inherit;
+}
+.s5-java-flow {
+  --arrow: #397b7f;
+  --gap: 2.2rem;
+  display: grid;
+  grid-template-columns: minmax(0,1.15fr) minmax(0,.74fr) minmax(0,1fr);
+  align-items: center;
+  gap: var(--gap);
+  padding: clamp(.8rem, 2.2cqw, 1.8rem);
+}
+.s5-java-class, .s5-java-host {
+  min-width: 0;
+  position: relative;
+  border: 1px solid var(--dev-line);
+  border-radius: 6px;
+  padding: .75rem .85rem;
+}
+.s5-java-source h4, .s5-java-class h4 { font-family: var(--dev-mono); }
+.s5-java-compile, .s5-java-console, .s5-debug-output p {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: .3rem .7rem;
+}
+.s5-java-compile { padding: .65rem .85rem; background: #e3efed; border-top: 1px solid var(--dev-line); }
+.s5-java-compile code, .s5-java-console code, .s5-suggestions code, .s5-debug-watch code { background: transparent; color: inherit; padding: 0; }
+.s5-java-class { border-width: 2px; border-color: #6b999a; background: var(--dev-tint); }
+.s5-java-class h4 { color: var(--dev-accent); }
+.s5-java-class p, .s5-java-host p { margin-top: .35rem; }
+.s5-java-class p + p { margin-top: .6rem; }
+.s5-java-hosts { position: relative; display: grid; gap: .9rem; min-width: 0; }
+.s5-java-console { justify-content: space-between; margin-top: .55rem; border-top: 1px solid var(--dev-line); padding-top: .4rem; }
+.s5-java-console samp, .s5-debug-output samp { font-weight: 700; color: var(--dev-accent); }
+.s5-java-class::before, .s5-java-class::after, .s5-java-host::before {
+  position: absolute;
+  top: 50%;
+  content: "";
+  border-top: 2px solid var(--arrow);
+}
+.s5-java-class::before { right: 100%; width: var(--gap); }
+.s5-java-class::after { left: 100%; width: calc(var(--gap) / 2 + 1px); }
+.s5-java-host::before { right: 100%; width: calc(var(--gap) / 2); }
+.s5-java-host::after {
+  content: "";
+  position: absolute;
+  right: calc(100% + var(--gap) / 2);
+  height: calc(50% + .45rem + 2px);
+  border-left: 2px solid var(--arrow);
+}
+.s5-java-host:first-child::after { top: 50%; }
+.s5-java-host:last-child::after { bottom: 50%; }
+.s5-java-class h4::before, .s5-java-host h4::before {
+  content: "";
+  position: absolute;
+  right: 100%;
+  top: calc(50% - .28rem);
+  border-block: .35rem solid transparent;
+  border-left: .48rem solid var(--arrow);
+}
+.s5-dev-grid, .s5-code-completion, .s5-debug-workbench {
+  display: grid;
+  gap: 1rem;
+  padding: clamp(.8rem, 2.2cqw, 1.8rem);
+  min-width: 0;
+}
+.s5-dev-grid { grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr)); align-items: start; }
+.s5-code-completion, .s5-debug-workbench { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.s5-caret { display: inline-block; height: 1em; border-left: 3px solid #116267; vertical-align: -.12em; }
+.s5-suggestions, .s5-debug-watch, .s5-debug-report, .s5-debug-output {
+  border: 1px solid var(--dev-line);
+  border-radius: 6px;
+  overflow: hidden;
+  min-width: 0;
+  background: white;
+}
+.s5-suggestions h4, .s5-debug-workbench section:not(.s5-editor) h4 {
+  padding: .55rem .9rem;
+  background: var(--dev-tint);
+  border-bottom: 1px solid var(--dev-line);
+}
+.s5-suggestions ul, .s5-debug-report ol { margin: 0; }
+.s5-suggestions ul { list-style: none; padding: 0; }
+.s5-suggestions li, .s5-suggestions p {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: .25rem .7rem;
+  padding: .55rem .9rem;
+}
+.s5-suggestions li:first-child { background: #d1ebe7; border-left: 4px solid var(--dev-accent); padding-left: calc(.9rem - 4px); }
+.s5-suggestions li span { font-family: var(--dev-mono); font-size: .9em; }
+.s5-suggestions p { border-top: 1px solid var(--dev-line); }
+.s5-error-token { color: #912819; background: #ffe4dc; text-decoration: underline wavy #ae3623; text-underline-offset: .23em; }
+.s5-dev-figure .s5-diagnostic, .s5-dev-figure .s5-success, .s5-dev-figure .s5-fold-note {
+  margin: 0;
+  padding: .6rem .9rem;
+  border-top: 1px solid var(--dev-line);
+}
+.s5-diagnostic { background: #fff2e9; color: #71301e; }
+.s5-success { background: #ebf5ef; color: #1c5542; }
+.s5-diagnostic strong, .s5-success strong { margin-right: .6rem; }
+.s5-break-line { background: #ffe1c1; color: #503115; box-shadow: 0 0 0 2px #ffe1c1; }
+.s5-break-line > span { color: #a42624; font-size: .8em; margin-right: .25em; }
+.s5-debug-watch table { font-size: .92em; }
+.s5-debug-watch th, .s5-debug-watch td { padding: .36rem .55rem; }
+.s5-debug-watch thead th:first-child { width: 47%; }
+.s5-debug-watch tbody tr:last-child th, .s5-debug-watch tbody tr:last-child td { border-top: 2px solid var(--dev-line); border-bottom: 0; }
+.s5-debug-watch td { background: #fff; }
+.s5-debug-watch small { display: block; color: var(--dev-accent); font-size: .9em; }
+.s5-debug-report ol { padding: .6rem .8rem .6rem 2.2rem; }
+.s5-debug-report li + li { margin-top: .3rem; }
+.s5-debug-output p { flex-wrap: nowrap; justify-content: space-between; padding: .45rem .85rem; }
+.s5-debug-output samp { padding: .12rem .4rem; background: var(--dev-tint); }
+@container (max-width: 54rem) {
+  .s5-java-flow { grid-template-columns: 1fr; gap: 1rem; }
+  .s5-java-class::before, .s5-java-class::after { left: 50%; right: auto; width: 0; height: 1rem; border-top: none; border-left: 2px solid var(--arrow); }
+  .s5-java-class::before { top: auto; bottom: 100%; }
+  .s5-java-class::after { top: 100%; }
+  .s5-java-hosts { grid-template-columns: repeat(2, minmax(0,1fr)); padding-top: .85rem; }
+  .s5-java-hosts::before { content: ""; position: absolute; left: 25%; right: 25%; top: 0; border-top: 2px solid var(--arrow); }
+  .s5-java-host::before { width: 0; height: .85rem; top: auto; bottom: 100%; right: 50%; border-top: none; border-left: 2px solid var(--arrow); }
+  .s5-java-host::after { display: none; }
+  .s5-java-class h4::before, .s5-java-host h4::before { top: auto; bottom: 100%; right: calc(50% - .35rem); border-inline: .35rem solid transparent; border-top: .48rem solid var(--arrow); border-bottom: 0; }
+  .s5-debug-workbench { grid-template-columns: 1fr; }
+}
+@container (max-width: 42rem) {
+  .s5-comparison table, .s5-comparison tbody, .s5-comparison tr, .s5-comparison tbody th, .s5-comparison td { display: block; width: 100%; }
+  .s5-comparison caption { display: block; }
+  .s5-comparison thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+  .s5-comparison tbody tr { margin-bottom: .8rem; border: 1px solid var(--dev-line); }
+  .s5-comparison tbody th { padding: .45rem .75rem; }
+  .s5-comparison td { padding: .5rem .75rem; border: 0; }
+  .s5-comparison td + td { border: 0; border-top: 1px solid var(--dev-line); }
+  .s5-comparison td > span { display: block; color: var(--dev-accent); font-size: .9em; font-weight: 700; }
+  .s5-code-completion, .s5-debug-workbench { grid-template-columns: 1fr; }
+  .s5-dev-grid { grid-template-columns: 1fr; }
+  .s5-dev-figure figcaption { padding: .7rem .85rem; }
+}
+@container (max-width: 32rem) {
+  .s5-java-flow, .s5-java-hosts { grid-template-columns: 1fr; }
+  .s5-java-source, .s5-java-class, .s5-java-hosts { grid-column: 1; }
+  .s5-java-class::before { width: 0; height: 1rem; right: auto; left: 1rem; top: auto; bottom: 100%; border-top: none; border-left: 2px solid var(--arrow); }
+  .s5-java-class::after { display: none; }
+  .s5-java-class h4::before { left: calc(1rem - .28rem); right: auto; }
+  .s5-java-hosts { padding: 0 0 0 1.8rem; }
+  .s5-java-hosts::before { left: 1rem; right: auto; top: -1rem; bottom: 50%; border-top: 0; border-left: 2px solid var(--arrow); }
+  .s5-java-host::before { left: auto; right: 100%; top: 50%; width: .8rem; height: 0; border-top: 2px solid var(--arrow); }
+  .s5-java-host:last-child::after { display: block; right: calc(100% + .8rem - 2px); bottom: 50%; height: calc(50% + .9rem); }
+  .s5-java-host h4::before { top: calc(50% - .28rem); right: 100%; bottom: auto; border-right: 0; border-block: .35rem solid transparent; border-left: .48rem solid var(--arrow); }
+}

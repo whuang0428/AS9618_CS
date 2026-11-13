@@ -1,6 +1,51 @@
 # Section 5 source and classroom verification
 
-Reviewed on 2026-09-29 against the teacher's local Cambridge archive. This is an implementation record; it is not student-facing course content.
+The 2026-11-11 review covers the 5.1 diagrams and the 15-mark checkpoint. The teacher’s 2023–2025 archive supplies the named local papers. The 2022 and 2026 source links below lead to public copies of Cambridge’s question papers and mark schemes. Page references use one-based PDF pages.
+
+## 5.1 diagram sources
+
+| Diagram | Cambridge question and command | QP / MS pages | Evidence to show |
+| --- | --- | --- | --- |
+| 5.1.1 OS purpose | 9618/11 M/J 2025 Q6(b), Describe | 11 / 10 | A user request reaches the hardware through an interface. The OS supplies common services for files, peripherals, memory and processes. Without those services, an ordinary application depends on firmware or its own hardware-specific routines. |
+| 5.1.2 Memory and processes | 9618/12 M/J 2024 Q6, Explain | 13 / 9 | Keep data from active programs in RAM and prevent overwrites. Show one core switching from a paused process to the next scheduled process. |
+| 5.1.2 Files | 9618/11 O/N 2024 Q4(a)(i), Describe | 9 / 7 | A directory entry locates a file. Allocated storage holds its data. The OS supports operations such as creating, renaming, opening and reading files. |
+| 5.1.2 Security | 9618/13 M/J 2022 Q4(a), Describe. Also 9618/11 O/N 2025 Q5(a)(ii), State | 9 / 6 and 10 / 8 | Accounts and passwords identify authorised users. Permissions determine whether a particular access request succeeds. |
+| 5.1.2 Hardware | 9618/11 M/J 2023 Q3(a), Describe | 8 / 5 | A driver communicates with a peripheral. A buffer handles the speed difference between sender and receiver. An interrupt signals the OS. |
+| 5.1.3 Formatter and compression | 9618/13 O/N 2023 Q5(b)(i–ii), Explain / Describe | 8 / 6 | Initialise the disk with a file system and allocation records. Smaller files save storage space and shorten transmission time. |
+| 5.1.3 Virus checker | 9618/13 M/J 2023 Q6(b), Identify and describe | 11 / 9 | Compare scanned files with regularly updated virus signatures, then block the download or quarantine an identified threat. The paper asks for two security tools. The diagram uses the antivirus example. |
+| 5.1.3 Defragmentation | 9618/11 M/J 2023 Q3(c), Explain | 8 / 6 | Reorder a magnetic disk’s file blocks into contiguous positions. The head travels less when reading the file, reducing access time. |
+| 5.1.3 Disk analysis / repair | 9618/12 O/N 2023 Q8(b), Identify / Explain | 13 / 9 | The scheme accepts identification and marking of bad sectors and possible recovery of damaged data. Contents analysis can also show which folders use storage. The capacity diagram draws on the textbook. |
+| 5.1.3 Back-up | 9618/11 O/N 2024 Q4(a)(ii), Explain | 9 / 7 | Automatically create regular copies, then restore a surviving copy after loss. |
+| 5.1.4 Program libraries and DLLs | 9618/12 M/J 2023 Q7(a)(i–ii), Define / Explain. Also 9618/13 O/N 2025 Q8(b), Explain | 13 / 9 and 15 / 12 | Import and call existing routines, reducing development and testing time. A separate DLL can serve multiple applications. A compatible fix can be delivered without rebuilding the caller. |
+
+The five management categories appear together in [the 2022 Describe question](https://dynamicpapers.com/wp-content/uploads/2015/09/9618_s22_qp_13.pdf#page=9) and its [Cambridge marking table](https://papers.xtremepape.rs/CAIE/AS%20and%20A%20Level/Computer%20Science%20%28for%20first%20examination%20in%202021%29%20%289618%29/9618_s22_ms_13.pdf#page=6).
+
+The memory figure also uses 9618/12 M/J 2026 Q7(a)(ii). The Identify question and its scheme accept dynamic allocation, release on exit and preventing two processes from accessing the same memory. The diagram uses a private cell at address 101: B’s attempted write leaves A’s value intact. [Question, p12](https://pastpapers.papacambridge.com/directories/CAIE/CAIE-pastpapers/upload/9618_s26_qp_12.pdf#page=12) · [Mark scheme, p15](https://pastpapers.papacambridge.com/directories/CAIE/CAIE-pastpapers/upload/9618_s26_ms_12.pdf#page=15).
+
+The local Hodder *AS & A Level Computer Science Complete Book* illustrates protection of private memory (PDF p223), background antivirus scanning (pp227–228) and disk capacity analysis (p230). In the memory example, a competing process attempts to write to another process’s private location. The antivirus diagram shows foreground work continuing during scanning. The scoring point from Q6(b) concerns virus detection and handling. The textbook supplies the background-running detail.
+
+## 5.1 checkpoint
+
+| Order / ID | Assessed task | Cambridge paper | Marks |
+| --- | --- | --- | ---: |
+| 1 · E5C01 | Match five utility programs to their purposes | 9618/12 O/N 2022 Q1(a), QP p2, MS p3 | 5 |
+| 2 · E039 | Explain how memory and process management support multitasking | 9618/12 M/J 2024 Q6, QP p13, MS p9 | 4 |
+| 3 · E040 | Define a program library and explain two DLL benefits | 9618/12 M/J 2023 Q7(a)(i–ii), QP p13, MS p9 | 6 |
+
+E5C01 gives one mark for each correct line. The unused purpose describes compression. E039 caps each management category at three of four marks. E040 gives two marks for the definition and two benefit–explanation pairs for the DLL. The checkpoint totals 15 marks.
+
+For E5C01, the published 144 dpi extracts show the complete question with six choices and five official solution lines. Both PDF hashes, crop regions, PNG hashes and dimensions are recorded in `scripts/course-v3-section5-extra-papers.mjs`. The original files were downloaded to a temporary directory, checked against the cuts and kept outside the teacher archive. The matching, crop and source-hash tests passed with `AS9618_PAST_PAPER_PUBLIC_ROOT` pointing at that directory. To repeat the original-byte check, place the linked PDFs in one directory under their original filenames and supply the same variable. [Original question](https://dynamicpapers.com/wp-content/uploads/2015/09/9618_w22_qp_12.pdf#page=2) · [Official mark scheme](https://dynamicpapers.com/wp-content/uploads/2015/09/9618_w22_ms_12.pdf#page=3).
+
+The complete paper pool now contains 13 source groups, 17 selected parts and 49 marks. The three checkpoint questions above are a subset of this pool.
+
+## Classroom verification, 2026-11-11
+
+The active chapter has eight numbered subsections and a separate 15-mark checkpoint. Its five lesson pages contain 27 classroom positions: 15 OS/library visuals, three checkpoint questions, three interactive translators, one comparison table, one Java diagram and four IDE views. Additional past papers and teacher-written practice remain available below each lesson.
+
+- Ran the section-specific build and the course’s 533 Node tests with both the local and public original PDFs available. All passed with zero skips. The assembler produced the relocated operand, the compiler ran its last successful executable after a failed rebuild, and the interpreter skipped the loop body when the limit was zero.
+- Compared the scoped build with a default full render in an isolated working copy. The six chapter HTML files, four generated script/style files, five course-contract lessons and all 32 referenced original exam images matched. Previously registered lead images were removed from the active S5 manifest; the historical files are still on disk.
+- In Chrome at 1366 × 768 and 390 × 844, followed all nine index links, stepped through all 27 materials in both directions and checked old unit, concept and moved-question bookmarks. Switched between both modes on all five pages. The three checkpoint question sheets, teacher solutions and official schemes could be opened independently. Enlarged materials retained their content and interactive state. No horizontal page overflow, missing resources or browser errors were observed.
+- With JavaScript disabled, the five pages remained readable and the native mark-scheme controls still opened their original extracts. The browser checks used a simulated mobile viewport. Physical phone and classroom projector testing was not performed.
 
 ## Syllabus and depth
 
@@ -17,7 +62,7 @@ The source was extracted and visually inspected. Section 5 requires:
 
 Page 35 was also extracted and visually inspected. Named scheduling algorithms, formal process states, virtual memory/paging/segmentation, compiler stages, BNF and RPN are A Level Section 16 material. An AS explanation may use a simple resource-sharing example without making that advanced detail an assessed prerequisite.
 
-## Existing selections rechecked
+## 2026-09-29 source review
 
 The original QP/MS files were read from `/Users/kw/Documents/Teaching/AS CS 9618/past-papers`. All source hashes match the existing manifest. All 15 existing extract image hashes and dimensions match the manifest; all 15 displayed extracts were visually inspected and readable-text crop edges checked. No original source or existing extract was changed.
 
@@ -32,7 +77,7 @@ The original QP/MS files were read from `/Users/kw/Documents/Teaching/AS CS 9618
 
 E042 needs the comparison lesson, rather than being assigned immediately after identifying the three translator types. E043 gives no mark for the name alone and accepts a justified compiler choice as well as an interpreter choice. E039 caps either management task at three of the available four marks. These limits remain reflected in the teacher explanations.
 
-## Added selections
+### Selections added in September
 
 Six coherent source groups add nine selected parts and 20 marks. Combined with the six existing groups, the sequence has 12 groups, 16 selected parts and 44 marks. These are interleaved teaching opportunities, not a single timed examination.
 
@@ -49,7 +94,7 @@ The new module records each local relative PDF path, original SHA-256, selected 
 
 All 15 new extracts were rendered at 144 dpi and visually inspected alongside their corresponding QP/MS extract. The six relevant full QP pages were also inspected. Context, question numbers, marks and necessary parent text are retained. Crop-edge checks found no clipped readable glyphs. Scanner barcode glyphs are not teaching text and are excluded from this check. Source QP/MS text was compared to the teacher solutions and marking explanations. No download, PDF alteration or replacement of existing assets was needed.
 
-## Wording and remaining limits
+### September coverage notes
 
 - E5D03 accepts a file allocation table as an allocation-record example. It should not imply that every file system uses FAT. Error checking applies to a full format; a quick format may omit a surface check.
 - E5D04 uses the paper's simplified interpreter model, which permits immediate correction and continuation. The explanation makes clear that the ability to resume depends on the interpreter/environment. Successful compilation does not prove logical correctness; `.exe` is an accepted example, not a universal extension.
@@ -58,7 +103,7 @@ All 15 new extracts were rendered at 144 dpi and visually inspected alongside th
 - The additions target missing concepts rather than giving every small teaching step a separate original question. There is no newly selected direct question on the need for an assembler or virus checker. The local assembler questions found concern two-pass translation rather than this introduction. Use identified teacher checks for those concepts and retain honest syllabus coverage independently of past-paper frequency.
 - E041 permits disk analysis/repair, but students can instead choose another utility. E044 allows variable inspection within its breakpoint/stepping explanations, but does not separately assess every report-window or expression-watch detail. These are still required teaching and checking points.
 
-## Checks run
+### September checks
 
 - Imported `scripts/course-v3-section5-extra-papers.mjs`: six questions, nine parts, 20 marks; crop, PNG hash, dimension and total-mark checks passed.
 - Compared the existing selections' local original-PDF hashes and all 15 PNG hashes/dimensions with `scripts/past-paper-source-manifest.json`: passed.
@@ -66,9 +111,9 @@ All 15 new extracts were rendered at 144 dpi and visually inspected alongside th
 - Full-site generation and browser checks are handled by the main Section 5 implementation; they are not claimed by this source review.
 
 
-## Current classroom implementation
+## Historical classroom acceptance, 2026-09-29
 
-The active source is `scripts/course-v3-section5-journey.mjs`. The five existing page routes remain, with 19 concept groups, 29 explicitly owned objectives and all 23 original teaching-unit identities retained. Eleven suggested teaching segments provide flexible stopping points, without a fixed total-time limit. Previous interactive bookmarks for processes, libraries, DLLs and debugging are preserved.
+These results refer to the September classroom version. It used `scripts/course-v3-section5-journey.mjs` across five routes with 19 concept groups, 29 objectives and 23 original teaching-unit identities. Eleven suggested teaching segments provide flexible stopping points, without a fixed total-time limit. Previous interactive bookmarks for processes, libraries, DLLs and debugging are preserved.
 
 | Route | Concept groups | Teaching route |
 | --- | ---: | --- |

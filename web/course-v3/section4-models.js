@@ -15,11 +15,12 @@ const section4Models = (() => {
   const binary = (value, width = 8) => value.toString(2).padStart(width, '0');
   const signed = value => byte(value) > 127 ? value - 256 : value;
   const pairs = [[18, 24], [7, 9], [8, 8], [18, 7]];
-  const kinds = ['memory', 'cpu', 'fetch', 'interrupt', 'assembler', 'addressing', 'trace', 'bits', 'performance', 'ports'];
+  const kinds = ['memory', 'cpu', 'fetch', 'interrupt', 'assembler', 'addressing', 'trace', 'bits', 'performance', 'ports', 'registerFlow', 'busCycle', 'application', 'assemblyStages', 'deviceControl'];
   const defaults = {
+    registerFlow: {}, busCycle: { access: 'read' }, application: { event: 'keyboard' }, assemblyStages: {}, deviceControl: { ready: 'yes' },
     memory: { address: 4, access: 'read', showInstructions: true }, cpu: { pair: 0, showRegisters: true }, fetch: { pair: 0, operation: 'ADD' },
-    interrupt: { event: 'keyboard' }, assembler: { origin: 0, pair: 0 }, addressing: { mode: 'direct', variant: 0 },
-    trace: { program: 'sum', count: 2, input: 'A' }, bits: { value: 150, operation: 'LSR', amount: 1, mask: 15 },
+    interrupt: { event: 'keyboard', arrival: 'manual' }, assembler: { origin: 0, pair: 0 }, addressing: { mode: 'direct', variant: 0 },
+    trace: { program: 'sum', count: 2, input: 'A' }, bits: { family: 'all', value: 150, operation: 'LSR', amount: 1, mask: 15 },
     performance: { cores: 1, parallel: 75, clock: 1, width: 32, cache: 0 }, ports: { task: 'display', choice: 'HDMI' },
   };
   function createLab(type) {
@@ -33,35 +34,37 @@ const section4Models = (() => {
   function fetchFrames(config) {
     const memory = programMemory(config), frames = [];
     const s = { pc: 0, mar: null, mdr: null, cir: '—', acc: 0, ix: 0, flags: { zero: false }, memory, current: null, active: [], bus: '', address: null, boundary: true, halted: false };
-    const save = (title, message, active = [], bus = '', address = null) => frames.push(copy({ ...s, title, message, active, bus, address }));
+    const save = (title, message, active = [], bus = '', address = null, links = [], notation = null) => {
+      frames.push(copy({ ...s, title, message, active, bus, address, links, notation }));
+    };
     save('Ready: predict the result', 'Instructions occupy addresses 0–3. Data occupy addresses 4–6. PC=0 selects the first instruction; ACC starts at 0.');
     for (let address = 0; address < 4; address += 1) {
       const instruction = memory[address], [op, textOperand] = instruction.split(' '), operand = Number(textOperand);
       s.current = address; s.boundary = false; s.mar = s.pc;
-      save('Fetch 1 · select the instruction address', `MAR ← [PC]. Copy address ${s.pc} into MAR. This is an address, not the instruction stored there.`, ['MAR'], 'Address: CPU → memory', s.mar);
-      s.mdr = memory[s.mar];
-      save('Fetch 2 · read the instruction', `MDR ← Memory[MAR]. The CU issues READ. The instruction at ${s.mar}, ${s.mdr}, travels to MDR on the data bus.`, ['MDR', 'CU'], 'READ; data: memory → CPU', s.mar);
-      s.cir = s.mdr;
-      save('Fetch 3 · retain the current instruction', `CIR ← [MDR]. CIR retains ${s.cir} while MDR becomes available for another memory transfer.`, ['CIR']);
+      save('Fetch 1 · select the instruction address', `MAR ← [PC]. Copy address ${s.pc} into MAR. This is an address, not the instruction stored there.`, ['PC', 'MAR'], 'Address: CPU → memory', s.mar, ['pcMar', 'marAddress'], 0);
       s.pc += 1;
-      save('Fetch 4 · advance the next address', `PC ← [PC] + 1. PC is now ${s.pc}, the next sequential instruction address. Each instruction occupies one location in this model.`, ['PC']);
-      save('Decode · identify the operation', `The CU decodes ${op}${op === 'END' ? ': return control to the operating system.' : ` and its address operand ${operand}. The operand is not the value stored at that address.`}`, ['CU', 'CIR']);
+      save('Fetch 2 · advance the program counter', `PC ← [PC] + 1. The next address is ${s.pc}. MAR still holds address ${s.mar} for this fetch.`, ['PC', 'CLOCK'], '', null, ['clockCu', 'incPC'], 1);
+      s.mdr = memory[s.mar];
+      save('Fetch 3 · read the instruction', `MDR ← [[MAR]]. The CU sends READ on the control bus. The word at ${s.mar}, ${s.mdr}, travels from IAS to MDR on the data bus.`, ['MDR', 'CU'], 'READ; data: memory → CPU', s.mar, ['cuControl', 'dataMdr'], 2);
+      s.cir = s.mdr;
+      save('Fetch 4 · retain the current instruction', `CIR ← [MDR]. CIR holds ${s.cir} for decoding. MDR can now buffer the operand.`, ['CIR', 'MDR'], '', null, ['mdrCir'], 3);
+      save('Decode · identify the operation', `The CU decodes ${op}${op === 'END' ? ': return control to the operating system.' : ` and its address operand ${operand}. The operand is not the value stored at that address.`}`, ['CU', 'CIR'], '', null, ['cirCu']);
       if (op === 'LDD' || op === 'ADD' || op === 'SUB') {
         s.mar = operand;
-        save('Execute 1 · select the data address', `MAR ← ${operand}. Keep instruction address ${address} separate from data address ${operand}.`, ['MAR'], 'Address: CPU → memory', operand);
+        save('Execute 1 · select the data address', `MAR ← ${operand}. Keep instruction address ${address} separate from data address ${operand}.`, ['CIR', 'MAR'], 'Address: CPU → memory', operand, ['cirMar', 'marAddress']);
         s.mdr = memory[operand];
-        save('Execute 2 · read the operand', `MDR ← Memory[${operand}] = ${s.mdr}. Another READ brings the data value into MDR; CIR still contains ${s.cir}.`, ['MDR', 'CU'], 'READ; data: memory → CPU', operand);
+        save('Execute 2 · read the operand', `MDR ← Memory[${operand}] = ${s.mdr}. Another READ brings the data value into MDR; CIR still contains ${s.cir}.`, ['MDR', 'CU'], 'READ; data: memory → CPU', operand, ['cuControl', 'dataMdr']);
         const before = s.acc;
         s.acc = op === 'LDD' ? s.mdr : op === 'ADD' ? s.acc + s.mdr : s.acc - s.mdr;
         if (op !== 'LDD') s.flags.zero = s.acc === 0;
-        save(op === 'LDD' ? 'Execute 3 · copy into ACC' : 'Execute 3 · calculate in the ALU', op === 'LDD' ? `ACC ← [MDR] = ${s.acc}. Reading and copying leave Memory[${operand}] unchanged.` : `ACC ← ${before} ${op === 'ADD' ? '+' : '−'} ${s.mdr} = ${s.acc}. The ALU calculates; ACC retains the result.`, op === 'LDD' ? ['ACC'] : ['ALU', 'ACC', 'SR']);
+        save(op === 'LDD' ? 'Execute 3 · copy into ACC' : 'Execute 3 · calculate in the ALU', op === 'LDD' ? `ACC ← [MDR] = ${s.acc}. Reading and copying leave Memory[${operand}] unchanged.` : `ACC ← ${before} ${op === 'ADD' ? '+' : '−'} ${s.mdr} = ${s.acc}. The ALU calculates; ACC retains the result.`, op === 'LDD' ? ['MDR', 'ACC'] : ['ALU', 'MDR', 'ACC', 'SR'], '', null, op === 'LDD' ? ['mdrAcc'] : ['accAlu', 'mdrAlu', 'aluAcc', 'aluSr']);
       } else if (op === 'STO') {
         s.mar = operand;
-        save('Execute 1 · select the destination', `MAR ← ${operand}. This address selects where the answer will be stored.`, ['MAR'], 'Address: CPU → memory', operand);
+        save('Execute 1 · select the destination', `MAR ← ${operand}. This address selects where the answer will be stored.`, ['CIR', 'MAR'], 'Address: CPU → memory', operand, ['cirMar', 'marAddress']);
         s.mdr = s.acc;
-        save('Execute 2 · prepare the value', `MDR ← [ACC] = ${s.acc}. ACC keeps its value; copying does not consume the source.`, ['MDR']);
+        save('Execute 2 · prepare the value', `MDR ← [ACC] = ${s.acc}. ACC keeps its value; copying does not consume the source.`, ['ACC', 'MDR'], '', null, ['accMdr']);
         s.memory[operand] = s.mdr;
-        save('Execute 3 · write the answer', `Memory[${operand}] ← [MDR] = ${s.mdr}. The CU issues WRITE; data travel from CPU to memory.`, ['CU'], 'WRITE; data: CPU → memory', operand);
+        save('Execute 3 · write the answer', `Memory[${operand}] ← [MDR] = ${s.mdr}. The CU issues WRITE; data travel from CPU to memory.`, ['CU', 'MDR'], 'WRITE; data: CPU → memory', operand, ['cuControl', 'mdrData']);
       } else {
         s.halted = true;
         save('Execute · END', `END returns control to the operating system. This program stops with Memory[6]=${s.memory[6]}. It does not execute the following data.`, ['CU']);
@@ -69,6 +72,114 @@ const section4Models = (() => {
       s.boundary = true;
       save(s.halted ? 'Program complete' : 'Instruction complete · interrupt checkpoint', s.halted ? `The stored answer is ${s.memory[6]}. Compare it with the original data at 4 and 5, then change the experiment conditions.` : `Instruction ${address} is complete. This model checks for an accepted interrupt at this boundary before fetching the next instruction at PC=${s.pc}.`);
     }
+    return frames;
+  }
+  // Each frame snapshots both the source and the destination of the transfer.
+  function registerFlowFrames() {
+    const state = { pc: 0, mar: null, mdr: null, cir: '—', acc: 0, ix: 2, flags: { zero: false },
+      memory: { 0: 'LDX 4', 1: 'CMP #42', 4: 5, 5: 8, 6: 42 }, address: null };
+    const frames = [];
+    function transfer(title, message, route, active, update = {}, bus = '', links = [], notation = null) {
+      Object.assign(state, update);
+      frames.push(copy({ ...state, title, message, route, active, bus, links, notation }));
+    }
+    transfer('Locate the next instruction', 'PC holds 0. IX already contains the offset 2. Follow the source and destination of each transfer.', 'PC holds address 0', ['PC']);
+    transfer('Copy the address', 'Transfer the contents of PC to MAR. MAR selects location 0.', 'PC → MAR', ['PC', 'MAR'], { mar: 0, address: 0 }, 'Address: CPU → memory', ['pcMar', 'marAddress'], 0);
+    transfer('Advance PC', 'PC advances to 1 while MAR retains address 0.', 'PC → increment → PC', ['PC', 'CLOCK'], { pc: 1 }, '', ['clockCu', 'incPC'], 1);
+    transfer('Fetch the instruction', 'The word LDX 4 returns from IAS to MDR on the data bus.', 'IAS[0] → MDR', ['MDR', 'CU'], { mdr: 'LDX 4' }, 'READ; data: memory → CPU', ['cuControl', 'dataMdr'], 2);
+    transfer('Decode the word', 'Copy the instruction into CIR. The CU identifies an indexed load and reads its base address 4.', 'MDR → CIR → CU', ['MDR', 'CIR', 'CU'], { cir: 'LDX 4' }, '', ['mdrCir', 'cirCu'], 3);
+    transfer('Use the index', 'The base 4 plus IX = 2 selects address 6. The register IX retains its offset.', 'CIR operand + IX → MAR', ['IX', 'ALU', 'MAR'], { mar: 6, address: 6 }, 'Address: CPU → memory', ['ixAlu', 'cirAlu', 'aluMar', 'marAddress']);
+    transfer('Read the selected word', 'IAS supplies 42 on the data bus. CIR continues to hold the instruction.', 'IAS[6] → MDR', ['MDR'], { mdr: 42 }, 'READ; data: memory → CPU', ['dataMdr', 'cuControl']);
+    transfer('Copy the result into ACC', 'MDR transfers 42 into ACC. LDX has completed; IX remains 2.', 'MDR → ACC', ['MDR', 'ACC'], { acc: 42 }, '', ['mdrAcc']);
+    transfer('Observe the following compare', 'After fetching the next instruction, CMP #42 compares ACC with 42. The equality condition is recorded in the status register (shown here by the zero flag). ACC retains 42.', 'ACC → ALU → status register', ['ACC', 'ALU', 'SR'], { pc: 2, mar: 1, mdr: 'CMP #42', cir: 'CMP #42', address: null, flags: { zero: true } }, '', ['accAlu', 'aluSr']);
+    return frames;
+  }
+
+  function busCycleFrames(config) {
+    const write = config.access === 'write';
+    const memory = { 5: 24, 6: 0 };
+    const state = { pc: 2, mar: null, mdr: null, acc: write ? 42 : 18, ix: 0, cir: write ? 'STO 6' : 'ADD 5', flags: { zero: false }, memory, address: null };
+    const frames = [];
+    function stage(title, message, route, active, bus, values = {}, links = []) {
+      Object.assign(state, values);
+      frames.push(copy({ ...state, title, message, route, active, bus, links }));
+    }
+    stage('Clock and CU', 'A timing signal synchronises the CU. The instruction is already in CIR; each teaching step identifies a transfer, rather than an elapsed clock cycle.',
+      'System clock → CU', ['CLOCK', 'CU'], '', {}, ['clockCu']);
+    const address = write ? 6 : 5;
+    stage('Select the memory location', `The CU places ${address} in MAR. The address bus carries the location number from the processor to IAS.`, `MAR → IAS address ${address}`, ['CU', 'MAR'], 'Address: CPU → memory', { mar: address, address }, ['cirMar', 'marAddress']);
+    if (write) {
+      stage('Buffer the value', 'ACC supplies 42 to MDR. The destination still holds zero.', 'ACC → MDR', ['ACC', 'MDR'], '', { mdr: 42 }, ['accMdr']);
+      stage('Assert WRITE', 'The CU signals a write on the control bus. The address identifies the destination; MDR holds the data.', 'CU → IAS: WRITE', ['CU'], 'WRITE', {}, ['cuControl']);
+      memory[address] = state.mdr;
+      stage('Store the word', 'The data bus carries 42 from MDR to IAS. Location 6 now contains 42.', 'MDR → IAS[6]', ['MDR'], 'WRITE; data: CPU → memory', {}, ['mdrData']);
+    } else {
+      stage('Assert READ', 'The CU signals a read on the control bus. The memory interface responds to the selected address.', 'CU → IAS: READ', ['CU'], 'READ', {}, ['cuControl']);
+      stage('Receive the operand', 'Location 5 supplies 24 on the data bus. MDR buffers the returned value.', 'IAS[5] → MDR', ['MDR'], 'READ; data: memory → CPU', { mdr: memory[address] }, ['dataMdr']);
+      stage('Complete ADD', 'The ALU adds ACC = 18 and MDR = 24. The result 42 enters ACC; IAS[5] still holds 24.', 'ACC + MDR → ALU → ACC', ['ACC', 'MDR', 'ALU'], '', { acc: state.acc + state.mdr }, ['accAlu', 'mdrAlu', 'aluAcc']);
+    }
+    return frames;
+  }
+
+  const applications = {
+    keyboard: {
+      labels: ['USB host', 'CPU / interrupt', 'Driver / OS', 'Application'],
+      frames: [
+        ['Attach a keyboard', 'A USB hub detects the change at its port and reports it to the host controller.', 'Port connected'],
+        ['Finish the active instruction', 'The controller signals the system. The CPU checks the pending hardware request at an instruction boundary.', 'Change pending'],
+        ['Service the controller', 'The handler acknowledges the event and schedules device discovery. The USB stack reads the descriptors and configures a compatible keyboard driver.', 'Driver configured'],
+        ['Receive input', 'Subsequent key reports reach an input buffer. An application can receive the character while the processor continues its other work.', 'Input available'],
+      ],
+    },
+    timer: {
+      labels: ['Hardware timer', 'CPU / interrupt', 'OS scheduler', 'Task B'],
+      frames: [
+        ['Run task A', 'Task A uses its current time slice. A hardware timer counts toward expiry.', 'Task A running'],
+        ['Timer expires', 'Timer hardware raises a request. The processor finishes its current instruction.', 'Timer pending'],
+        ['Save task A', 'The interrupt handler acknowledges the timer and invokes the scheduling decision. Task A’s resumable context is saved.', 'Context A saved'],
+        ['Run task B', 'If the scheduler selects B, it restores B’s context. A can resume from its own saved PC on a later time slice.', 'Task B running'],
+      ],
+    },
+    io: {
+      labels: ['Storage device', 'Controller', 'Interrupt handler', 'Waiting task'],
+      frames: [
+        ['Start an I/O request', 'A task requests a block read. While the device works, the CPU can run another task.', 'Read in progress'],
+        ['Signal completion', 'The controller records the transfer result and issues an interrupt when the block is ready.', 'Block available'],
+        ['Read the completion status', 'At an instruction boundary the request is accepted. The handler reads the device status and acknowledges completion.', 'Status checked'],
+        ['Wake the waiting task', 'The OS marks the task ready. Once scheduled, the task uses the completed buffer.', 'Buffer ready'],
+      ],
+    },
+  };
+  function applicationFrames(config) {
+    const { labels, frames } = applications[config.event];
+    return frames.map(([title, message, signal], stage) => ({ title, message, signal, labels, stage }));
+  }
+  function assemblyStagesFrames() {
+    const labels = ['Source text', 'Symbol table', 'Opcode + address', 'Object program'];
+    return [
+      ['Read source statements', 'LDD PRICE contains the mnemonic LDD and a symbolic operand. PRICE is declared later at address 4.', 'LDD PRICE'],
+      ['Assign label addresses', 'Walk the program using a location counter. Record PRICE = 4, so a forward reference can be resolved.', 'PRICE → 4'],
+      ['Translate and resolve', 'Look up the mnemonic in the model instruction table and substitute address 4 for PRICE.', 'LDD 4'],
+      ['Emit a machine word', 'This illustrative machine represents LDD by 00000001. Joining it to address 00000100 produces a word the example processor can decode.', '00000001 00000100'],
+    ].map(([title, message, signal], stage) => ({ labels, title, message, signal, stage }));
+  }
+  function deviceControlFrames(config) {
+    const original = config.ready === 'yes' ? 17 : 1;
+    let acc = original, device = original;
+    const frames = [];
+    function record(title, message, instruction, mask = null, written = false) {
+      frames.push({ title, message, instruction, original, device, acc, mask, written });
+    }
+    record('Read the interface byte', 'Bit 4 reports readiness; bit 2 enables the motor. Bit 0 already holds other information.', 'LDD 900');
+    acc &= 16;
+    record('Test the ready bit', 'AND isolates bit 4 in ACC. The physical interface has not been written.', 'AND B00010000', 16);
+    record('Compare and branch', acc ? 'The result is 16, so the comparison with zero is false. Continue to the update.' : 'The result is zero. Jump to DONE and leave the device untouched.', 'CMP #0 · JPE DONE');
+    if (acc) {
+      acc = device; record('Read the full byte again', 'Reload the interface to recover unrelated bits before modifying the control bit.', 'LDD 900');
+      acc |= 4; record('Set the motor bit', 'OR sets bit 2; every other original bit is preserved.', 'OR B00000100', 4);
+      device = acc; record('Write back', 'STO copies the updated byte to the device register. Bit 0 remains set.', 'STO 900', null, true);
+    }
+    record('Return control', config.ready === 'yes' ? 'The motor has been enabled. Other bits retain their original values.' : 'The not-ready path executed no store.', 'END');
     return frames;
   }
   function memoryFrames(config) {
@@ -107,7 +218,9 @@ const section4Models = (() => {
     const s = { pc: 1, acc: 18, flags: { zero: false }, memory: programMemory(), current: 1, saved: null, active: [], pending: requested, boundary: false, accepted: false };
     const frames = [];
     const add = (title, message, active = []) => { s.pending = requested && frames.length >= requestAt && !s.accepted; frames.push(copy({ ...s, title, message, active })); };
-    add('Main program is about to add', 'ACC=18. The next instruction is ADD 5. Request an interrupt at any point before the checkpoint, then finish the current instruction.');
+    add('Main program is about to add', config.arrival === 'during'
+      ? 'ACC=18. The next instruction is ADD 5. Step forward to see the scheduled request arrive during execution.'
+      : 'ACC=18. The next instruction is ADD 5. Use the request button before the checkpoint to interrupt the program.');
     s.pc = 2; add('Fetch and decode ADD 5', 'ADD 5 has been fetched. PC=2 points to the instruction to resume later. An interrupt request may be pending, but it is not accepted midway through this instruction.', ['PC', 'CU']);
     add('Read the operand', 'Memory[5]=24 is available. The addition has not yet completed, so the main program must continue this instruction.', ['MDR']);
     s.acc = 42; s.flags.zero = false; s.boundary = true;
@@ -205,6 +318,7 @@ const section4Models = (() => {
     return frames;
   }
   const bitOperations = ['LSL', 'LSR', 'ASL', 'ASR', 'ROL', 'ROR', 'AND', 'OR', 'XOR'];
+  const bitFamilies = { all: bitOperations, logical: ['LSL', 'LSR'], shifts: bitOperations.slice(0, 6), masks: ['AND', 'OR', 'XOR'] };
   function bitResult(value, operation, amount = 1, mask = 15) {
     value = byte(value); choose(operation, bitOperations); amount = integer(amount, 0, 8); mask = byte(mask);
     let result = value, overflow = false, outgoing = '', inserted = '';
@@ -255,13 +369,24 @@ const section4Models = (() => {
       { ...task, visible: true, correct, title: correct ? 'Connection fits the requirement' : 'Compare the required signals', message: `${correct ? 'Yes.' : `${config.choice} does not meet this specified requirement.`} ${task.reason} A matching connector shape alone does not prove signal compatibility.` },
     ];
   }
-  const builders = { memory: memoryFrames, cpu: cpuFrames, fetch: fetchFrames, interrupt: interruptFrames, assembler: assemblerFrames, addressing: addressingFrames, trace: traceFrames, bits: bitsFrames, performance: performanceFrames, ports: portsFrames };
-  function frames(state) { return builders[state.type](state.config, state.requested, state.requestAt ?? 0); }
+  const builders = { registerFlow: registerFlowFrames, busCycle: busCycleFrames, application: applicationFrames, assemblyStages: assemblyStagesFrames, deviceControl: deviceControlFrames, memory: memoryFrames, cpu: cpuFrames, fetch: fetchFrames, interrupt: interruptFrames, assembler: assemblerFrames, addressing: addressingFrames, trace: traceFrames, bits: bitsFrames, performance: performanceFrames, ports: portsFrames };
+  function frames(state) {
+    const automatic = state.type === 'interrupt' && state.config.arrival === 'during';
+    return builders[state.type](state.config, automatic || state.requested, automatic ? 1 : state.requestAt ?? 0);
+  }
   function view(state) {
     const list = frames(state), index = Math.min(state.step, list.length - 1);
     const frame = list[index];
     if (state.type === 'interrupt' && state.requested && index >= state.requestAt && index < 4) frame.message += ' A request is now pending; finish the current instruction before accepting it.';
-    return { ...frame, step: index, total: list.length - 1, complete: index === list.length - 1, config: copy(state.config), requested: state.requested, type: state.type };
+    const changes = [];
+    if (index > 0 && ['fetch', 'registerFlow', 'busCycle'].includes(state.type)) {
+      const previous = list[index - 1];
+      const record = (name, from, to) => { if (from !== to) changes.push({ name, from: from ?? '—', to: to ?? '—' }); };
+      for (const key of ['pc', 'mar', 'mdr', 'cir', 'acc', 'ix']) record(key.toUpperCase(), previous[key], frame[key]);
+      record('SR · Z', Number(previous.flags.zero), Number(frame.flags.zero));
+      for (const address of Object.keys(frame.memory)) record(`IAS[${address}]`, previous.memory[address], frame.memory[address]);
+    }
+    return { ...frame, changes, step: index, total: list.length - 1, complete: index === list.length - 1, config: copy(state.config), requested: state.requested, type: state.type };
   }
   function labAction(state, action, value) {
     if (!state || !kinds.includes(state.type)) throw new Error('A known lab state is required.');
@@ -271,8 +396,12 @@ const section4Models = (() => {
     else if (action === 'back') next.step = Math.max(0, next.step - 1);
     else if (action === 'request') { if (next.type === 'interrupt' && next.step < 4 && !next.requested) { next.requested = true; next.requestAt = next.step; } }
     else if (Object.hasOwn(next.config, action)) {
-      const options = { access: ['read', 'write'], operation: next.type === 'bits' ? bitOperations : ['ADD', 'SUB'], event: ['keyboard', 'timer'], mode: ['immediate', 'direct', 'indirect', 'indexed', 'relative'], program: ['sum', 'loop', 'character', 'branch'], input: ['A', 'B'], task: Object.keys(portTasks), choice: ['USB', 'HDMI', 'VGA'] };
-      if (action === 'showRegisters') next.config[action] = choose(value, [true, false]);
+      const options = { arrival: ['manual', 'during'], access: ['read', 'write'], family: Object.keys(bitFamilies), operation: next.type === 'bits' ? bitFamilies[next.config.family] : ['ADD', 'SUB'], event: next.type === 'application' ? Object.keys(applications) : ['keyboard', 'timer'], ready: ['yes', 'no'], mode: ['immediate', 'direct', 'indirect', 'indexed', 'relative'], program: ['sum', 'loop', 'character', 'branch'], input: ['A', 'B'], task: Object.keys(portTasks), choice: ['USB', 'HDMI', 'VGA'] };
+      if (action === 'family') {
+        next.config.family = choose(value, Object.keys(bitFamilies));
+        if (!bitFamilies[value].includes(next.config.operation)) next.config.operation = bitFamilies[value][0];
+      }
+      else if (action === 'showRegisters') next.config[action] = choose(value, [true, false]);
       else if (action === 'showInstructions') { next.config[action] = choose(value, [true, false]); if (!value && next.config.address < 4) next.config.address = 4; }
       else if (options[action]) next.config[action] = choose(value, options[action]);
       else if (action === 'origin') next.config[action] = choose(Number(value), [0, 10, 20]);
@@ -288,7 +417,7 @@ const section4Models = (() => {
     } else throw new Error(`Unknown action: ${action}`);
     return next;
   }
-  return { kinds, pairs, defaults: copy(defaults), binary, signed, bitOperations, bitResult, performanceResult, programMemory, portTasks, createLab, labAction, view, frames };
+  return { kinds, pairs, defaults: copy(defaults), binary, signed, bitOperations, bitFamilies, bitResult, performanceResult, programMemory, portTasks, createLab, labAction, view, frames };
 })();
 if (typeof window !== 'undefined') window.Section4Models = section4Models;
 if (typeof module !== 'undefined' && module.exports) module.exports = section4Models;

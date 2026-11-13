@@ -1,198 +1,136 @@
-// Progressive enhancement: one DOM keeps the experiments intact across both modes.
+// Both modes share the same DOM so that a paused animation retains its frame.
 (() => {
   const root = document.querySelector('[data-s4-classroom]');
   if (!root) return;
   const groups = [...root.querySelectorAll('[data-s4-group]')];
-  const navigation = root.querySelector('.s4-navigation');
-  const stages = root.querySelector('.s4-phases');
-  const modeSwitch = root.querySelector('.s4-mode-switch');
-  const position = navigation.querySelector('[role="status"]');
+  const cards = [...root.querySelectorAll('[data-s4-card]')];
   const directory = root.querySelector('.s4-directory');
-  const labels = { observe: 'Observe', explain: 'Explain', worked: 'Work together', experiment: 'Experiment', check: 'Check', papers: 'Past paper', recap: 'Connect' };
-  const cursors = groups.map(() => ({ phase: 0, steps: {} }));
-  let groupIndex = 0;
+  const navigation = root.querySelector('.s4-navigation');
+  const modeSwitch = root.querySelector('.s4-mode-switch');
+  const position = root.querySelector('[data-s4-position]');
+  let index = 0;
   let mode = 'classroom';
-
-  const currentGroup = () => groups[groupIndex];
-  const currentCursor = () => cursors[groupIndex];
-  const phasesFor = group => [...group.querySelectorAll('[data-s4-phase]')];
-  const currentPhase = () => phasesFor(currentGroup())[currentCursor().phase];
-  const stepsFor = phase => [...phase.querySelectorAll('[data-s4-step-panel]')];
-  const currentStep = () => currentCursor().steps[currentPhase().dataset.s4Phase] ?? 0;
-  function closeAnswers() {
-    root.querySelectorAll('.s4-group details[open], .s4-reference details[open]').forEach(detail => { detail.open = false; });
-  }
+  try { if (sessionStorage.getItem('s4-reading-mode') === 'reading') mode = 'reading'; } catch { /* Local files may disable storage. */ }
   function leave() {
-    closeAnswers();
-    root.querySelectorAll('.s4-reference[open]').forEach(detail => { detail.open = false; });
     document.dispatchEvent(new CustomEvent('s4:leave'));
+    root.querySelectorAll('.exam-reveal[open], .s4-reference[open], .s4-reference details[open]').forEach(d => { d.open = false; });
+    directory.open = false;
   }
-  function rememberLocation() {
-    const phase = currentPhase();
-    const target = stepsFor(phase)[currentStep()] ?? phase;
-    history.replaceState(null, '', `#${target.id}`);
-  }
-  function render(scroll = false) {
+  function display(scroll = false) {
+    const card = cards[index];
+    const group = card.closest('[data-s4-group]');
     const classroom = mode === 'classroom';
     root.dataset.mode = mode;
-    groups.forEach((group, index) => {
-      group.hidden = classroom && index !== groupIndex;
-      const cursor = cursors[index];
-      const phases = phasesFor(group);
-      cursor.phase = Math.max(0, Math.min(cursor.phase, phases.length - 1));
-      phases.forEach((phase, phaseIndex) => {
-        phase.hidden = classroom && phaseIndex !== cursor.phase;
-        const key = phase.dataset.s4Phase;
-        const steps = stepsFor(phase);
-        const stepIndex = Math.max(0, Math.min(cursor.steps[key] ?? 0, Math.max(0, steps.length - 1)));
-        cursor.steps[key] = stepIndex;
-        steps.forEach((step, i) => { step.hidden = classroom && i !== stepIndex; });
-        phase.querySelectorAll('[data-s4-step]').forEach(button => button.setAttribute('aria-current', Number(button.dataset.s4Step) === stepIndex ? 'step' : 'false'));
-        const conclusion = phase.querySelector('[data-s4-worked-conclusion]');
-        if (conclusion) conclusion.hidden = classroom && stepIndex !== steps.length - 1;
-        phase.querySelectorAll('[data-s4-question-fold]').forEach(detail => { detail.open = classroom; });
-      });
-    });
-    const phases = phasesFor(currentGroup());
-    const cursor = currentCursor();
-    const phase = currentPhase();
-    const steps = stepsFor(phase);
-    stages.innerHTML = phases.map((item, index) => `<button type="button" data-s4-stage="${index}" aria-current="${index === cursor.phase ? 'step' : 'false'}">${labels[item.dataset.s4Phase]}</button>`).join('');
-    stages.hidden = !classroom;
-    navigation.hidden = !classroom;
-    modeSwitch.querySelectorAll('[data-s4-mode]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.s4Mode === mode)));
-    const atStart = groupIndex === 0 && cursor.phase === 0 && currentStep() === 0;
-    const atEnd = groupIndex === groups.length - 1 && cursor.phase === phases.length - 1 && (!steps.length || currentStep() === steps.length - 1);
-    navigation.querySelector('[data-s4-prev]').disabled = atStart;
-    navigation.querySelector('[data-s4-next]').disabled = atEnd;
-    navigation.querySelector('[data-s4-next]').textContent = atEnd ? 'Topic complete' : cursor.phase === phases.length - 1 ? 'Next concept →' : 'Next →';
-    position.textContent = `Concept ${groupIndex + 1} / ${groups.length} · ${labels[phase.dataset.s4Phase]}${steps.length ? ` · Step ${currentStep() + 1} / ${steps.length}` : ''}`;
-    directory.querySelectorAll('a').forEach(link => link.setAttribute('aria-current', link.hash === `#${currentGroup().id}` ? 'location' : 'false'));
+    groups.forEach(item => { item.hidden = classroom && item !== group; });
+    cards.forEach(item => { item.hidden = classroom && item !== card; });
+    navigation.hidden = position.hidden = !classroom;
+    modeSwitch.querySelectorAll('button').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.s4Mode === mode)));
+    directory.querySelectorAll('a').forEach(a => a.setAttribute('aria-current', a.hash === '#' + group.id ? 'location' : 'false'));
+    const peers = [...group.querySelectorAll('[data-s4-card]')];
+    position.textContent = `${group.dataset.label} · ${peers.indexOf(card) + 1} / ${peers.length}`;
+    const prev = navigation.querySelector('[data-s4-prev]'), next = navigation.querySelector('[data-s4-next]');
+    prev.disabled = index === 0 && !root.dataset.prevPage;
+    prev.textContent = index === 0 && root.dataset.prevPage ? '← Previous lesson' : '← Previous';
+    next.disabled = index === cards.length - 1 && !root.dataset.nextPage;
+    next.textContent = index === cards.length - 1 ? (root.dataset.nextPage ? 'Next lesson →' : 'Chapter complete') : 'Next →';
     if (scroll) {
-      const focus = steps[currentStep()]?.querySelector('h3') ?? currentGroup().querySelector('h2');
-      focus.focus({ preventScroll: true });
-      root.querySelector('[data-s4-scroll-anchor]').scrollIntoView({ block: 'start', behavior: 'instant' });
+      const target = peers[0] === card ? group : card;
+      const heading = target.querySelector('h2,h3');
+      if (heading) { heading.tabIndex = -1; heading.focus({ preventScroll: true }); }
+      target.scrollIntoView({ block: 'start' });
     }
   }
-  function enterPhase(index, direction = 1) {
-    currentCursor().phase = index;
-    const phase = currentPhase();
-    currentCursor().steps[phase.dataset.s4Phase] = direction < 0 ? Math.max(0, stepsFor(phase).length - 1) : 0;
-  }
-  function move(direction) {
-    leave();
-    const phase = currentPhase();
-    const cursor = currentCursor();
-    const steps = stepsFor(phase);
-    const candidate = currentStep() + direction;
-    if (steps.length && candidate >= 0 && candidate < steps.length) cursor.steps[phase.dataset.s4Phase] = candidate;
-    else if (cursor.phase + direction >= 0 && cursor.phase + direction < phasesFor(currentGroup()).length) enterPhase(cursor.phase + direction, direction);
-    else if (groupIndex + direction >= 0 && groupIndex + direction < groups.length) {
-      groupIndex += direction;
-      enterPhase(direction < 0 ? phasesFor(currentGroup()).length - 1 : 0, direction);
-    }
-    render(true);
-    rememberLocation();
-  }
-  function followHash(scroll = true) {
+  function followHash(scroll) {
     let id;
     try { id = decodeURIComponent(location.hash.slice(1)); } catch { return; }
-    const target = id ? document.getElementById(id) : null;
-    let group = target?.closest('[data-s4-group]');
-    let phase = target?.closest('[data-s4-phase]');
-    if (id === 'visual-and-core') { group = groups[0]; phase = null; }
-    if (id === 'past-paper-questions' || id === 'original-exam-style-question') {
-      group = groups.find(item => item.querySelector('[data-s4-phase="papers"]'));
-      phase = group?.querySelector('[data-s4-phase="papers"]');
+    if (!id) return;
+    let target = document.getElementById(id);
+    // Bookmarks created by the previous staged classroom ended in --explain-2, etc.
+    if (!target && id.includes('--')) target = document.getElementById(id.split('--')[0]);
+    if (target?.matches('[data-s4-moved]')) { location.replace(target.href); return; }
+    if (id === 's4-last') target = cards.at(-1);
+    if (id === 'visual-and-core') target = cards[0];
+    if (!target) return;
+    leave();
+    const card = target.closest('[data-s4-card]') ?? target.closest('[data-s4-group]')?.querySelector('[data-s4-card]');
+    if (card) {
+      index = cards.indexOf(card);
+      display(scroll && mode === 'classroom');
+      if (scroll && mode === 'reading') target.scrollIntoView({ block: 'start' });
+    } else {
+      for (let node = target; node && node !== root; node = node.parentElement) if (node.matches('details')) node.open = true;
+      if (scroll) target.scrollIntoView({ block: 'start' });
     }
-    if (!group) {
-      if (target?.matches('.s4-reference, .s4-directory')) {
-        leave();
-        target.open = true;
-        if (scroll) target.scrollIntoView({ block: 'start' });
-      }
+  }
+  function move(delta) {
+    leave();
+    const candidate = index + delta;
+    if (candidate < 0 || candidate >= cards.length) {
+      const url = candidate < 0 ? root.dataset.prevPage : root.dataset.nextPage;
+      if (url) location.assign(url);
       return;
     }
-    leave();
-    groupIndex = groups.indexOf(group);
-    currentCursor().phase = phase ? phasesFor(group).indexOf(phase) : 0;
-    const step = target?.closest('[data-s4-step-panel]');
-    if (phase) currentCursor().steps[phase.dataset.s4Phase] = step ? stepsFor(phase).indexOf(step) : 0;
-    directory.open = false;
-    render(scroll && mode === 'classroom');
-    if (target?.matches('.exam-question')) target.closest('[data-s4-question-fold]').open = true;
-    else if (phase?.dataset.s4Phase === 'papers') phase.querySelector('[data-s4-question-fold]').open = true;
-    if (scroll && (mode === 'reading' || target?.matches('.exam-question'))) target.scrollIntoView({ block: 'start' });
+    index = candidate;
+    history.replaceState(null, '', '#' + cards[index].id);
+    display(true);
   }
   navigation.addEventListener('click', event => {
     if (event.target.closest('[data-s4-prev]')) move(-1);
     if (event.target.closest('[data-s4-next]')) move(1);
-    if (event.target.closest('[data-s4-reset]')) {
-      leave();
-      cursors[groupIndex] = { phase: 0, steps: {} };
-      currentGroup().querySelectorAll('[data-s4-lab]').forEach(lab => lab.dispatchEvent(new CustomEvent('s4:reset')));
-      render(true);
-      rememberLocation();
-    }
-  });
-  stages.addEventListener('click', event => {
-    const button = event.target.closest('[data-s4-stage]');
-    if (!button) return;
-    leave();
-    currentCursor().phase = Number(button.dataset.s4Stage);
-    render(true);
-    rememberLocation();
   });
   modeSwitch.addEventListener('click', event => {
-    const button = event.target.closest('[data-s4-mode]');
-    if (!button || button.dataset.s4Mode === mode) return;
+    const next = event.target.closest('[data-s4-mode]')?.dataset.s4Mode;
+    if (!next || next === mode) return;
+    if (mode === 'reading') {
+      const top = root.querySelector('.s4-toolbar').getBoundingClientRect().height;
+      const visible = cards.findIndex(card => card.getBoundingClientRect().bottom > top);
+      if (visible >= 0) index = visible;
+    }
     leave();
-    mode = button.dataset.s4Mode;
-    render(mode === 'classroom');
-    if (mode === 'reading') currentPhase().scrollIntoView({ block: 'start' });
+    mode = next;
+    try { sessionStorage.setItem('s4-reading-mode', mode); } catch { /* Optional preference. */ }
+    history.replaceState(null, '', '#' + cards[index].id);
+    display(true);
   });
   root.addEventListener('click', event => {
-    const step = event.target.closest('[data-s4-step]');
-    if (step) {
-      leave();
-      const phase = step.closest('[data-s4-phase]');
-      currentCursor().steps[phase.dataset.s4Phase] = Number(step.dataset.s4Step);
-      render(true);
-      rememberLocation();
-    }
-    if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
     const link = event.target.closest('a[href^="#"]');
-    if (link && link.hash === location.hash) { event.preventDefault(); followHash(); }
+    if (link && link.hash === location.hash && !event.ctrlKey && !event.metaKey && !event.shiftKey && !event.altKey) {
+      event.preventDefault(); followHash(true);
+    }
   });
-  window.addEventListener('hashchange', () => followHash());
+  window.addEventListener('hashchange', () => followHash(true));
+
+  // Move the actual material into the dialog. Live controls, SVG IDs and
+  // accessibility relationships stay attached to the same elements.
+  const zoom = document.createElement('dialog');
+  zoom.className = 's4-zoom';
+  zoom.setAttribute('aria-label', 'Enlarged teaching material');
+  zoom.innerHTML = '<form method="dialog"><button autofocus>Close</button></form>';
+  root.append(zoom);
+  let restore = null;
+  root.querySelectorAll('.s4-figure,.s4-table-scroll,.s4-lab,.official-extract').forEach(material => {
+    const button = document.createElement('button');
+    button.type = 'button'; button.className = 's4-enlarge';
+    button.textContent = material.matches('.s4-lab') ? 'Enlarge animation' : material.matches('.s4-table-scroll') ? 'Enlarge table' : 'Enlarge figure';
+    material.after(button);
+    button.addEventListener('click', () => {
+      document.dispatchEvent(new CustomEvent('s4:leave'));
+      restore = () => button.before(material);
+      zoom.append(material);
+      zoom.showModal();
+    });
+  });
+  zoom.addEventListener('close', () => { restore?.(); restore = null; });
+  document.addEventListener('keydown', event => {
+    if (mode !== 'classroom' || zoom.open || event.defaultPrevented || event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) return;
+    if (event.target.closest('input,select,textarea,button,a,summary,details[open],[role="region"],[contenteditable="true"]')) return;
+    if (event.key === 'ArrowRight' || event.key === 'ArrowLeft') {
+      event.preventDefault();
+      move(event.key === 'ArrowRight' ? 1 : -1);
+    }
+  });
   root.classList.add('s4-enhanced');
   modeSwitch.hidden = false;
-  render();
-  followHash(Boolean(location.hash));
-
-  // Eagerly load every local image on this page, including folded mark schemes.
-  // This reports only image readiness; it does not promise first-load offline access.
-  const resourceStatus = root.querySelector('[data-s4-resources]');
-  resourceStatus.hidden = false;
-  const images = [...root.querySelectorAll('img')];
-  images.forEach(image => { image.loading = 'eager'; });
-  let loaded = 0;
-  let failed = 0;
-  function updateResources() {
-    const done = loaded + failed === images.length;
-    resourceStatus.dataset.ready = done && failed === 0 ? 'true' : 'false';
-    resourceStatus.textContent = done ? failed ? `${failed} page image${failed === 1 ? '' : 's'} could not load. Reconnect and reload before using those materials.` : 'This page’s images are ready.' : `Loading this page’s images: ${loaded + failed} / ${images.length}`;
-    if (!navigator.onLine) resourceStatus.textContent += ' Offline: stay on this loaded page.';
-  }
-  images.forEach(image => {
-    const finish = ok => { if (ok) loaded += 1; else failed += 1; updateResources(); };
-    if (image.complete) finish(image.naturalWidth > 0);
-    else {
-      image.addEventListener('load', () => finish(true), { once: true });
-      image.addEventListener('error', () => finish(false), { once: true });
-    }
-  });
-  window.addEventListener('online', updateResources);
-  window.addEventListener('offline', updateResources);
-  updateResources();
+  display();
+  followHash(true);
 })();

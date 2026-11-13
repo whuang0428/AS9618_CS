@@ -35,9 +35,9 @@ test('reading distinguishes instruction address, operand address and contents', 
 
 test('fetch executes the shared stored program with isolated registers and correct bus direction', () => {
   const frames = M.frames(M.createLab('fetch'));
-  const instructionRead = frames.find(f => f.title.startsWith('Fetch 2'));
+  const instructionRead = frames.find(f => f.notation === 2);
   assert.equal(instructionRead.mar, 0); assert.equal(instructionRead.mdr, 'LDD 4');
-  assert.equal(instructionRead.acc, 0); assert.equal(instructionRead.pc, 0);
+  assert.equal(instructionRead.acc, 0); assert.equal(instructionRead.pc, 1);
   const operandRead = frames.find(f => f.title.startsWith('Execute 2') && f.current === 0);
   assert.equal(operandRead.mar, 4); assert.equal(operandRead.mdr, 18); assert.equal(operandRead.cir, 'LDD 4');
   assert.match(operandRead.bus, /memory → CPU/);
@@ -231,6 +231,10 @@ test('per-concept configuration gives matching starting values and limits unrela
   const cache = L.initialMarkup('performance', {}, ['cache']);
   assert.equal((cache.match(/data-s4-setting=/g) || []).length, 1);
   assert.match(cache, /data-s4-setting="cache"/);
+  assert.match(cache, /Changing a setting/);
+  assert.doesNotMatch(L.initialMarkup('registerFlow', {}, []), /data-s4-setting=|Changing a setting/);
+  assert.doesNotMatch(M.view(set(M.createLab('interrupt'), { arrival: 'during' })).message, /request button/);
+  assert.match(M.view(set(M.createLab('interrupt'), { arrival: 'manual' })).message, /request button/);
   const character = L.initialMarkup('trace', { program: 'character', input: 'B' }, ['input']);
   assert.match(character, /value="B" selected/); assert.doesNotMatch(character, /data-s4-setting="program"/);
   assert.equal(M.view(finish(set(M.createLab('fetch'), { pair: 3 }))).memory[6], 25);
@@ -245,4 +249,88 @@ test('component introduction hides register acronyms until their teaching group'
   }
   assert.equal(M.view(state).acc, 42);
   assert.match(L.initialMarkup('cpu', { showRegisters: true }), /MAR/);
+});
+
+test('the four Cambridge fetch transfers target live registers and identify their active paths', () => {
+  const state = M.createLab('fetch');
+  assert.deepEqual(M.frames(state).slice(1, 5).map(f => f.notation), [0, 1, 2, 3]);
+  assert.deepEqual(M.frames(state).slice(1, 5).map(f => f.message.split('.')[0]), [
+    'MAR ← [PC]', 'PC ← [PC] + 1', 'MDR ← [[MAR]]', 'CIR ← [MDR]',
+  ]);
+  assert.match(L.render(advance(state, 1)), /data-s4-path="pcMar"/);
+  assert.match(L.render(advance(state, 3)), /data-s4-path="dataMdr"/);
+  assert.match(L.render(advance(state, 4)), /data-s4-path="mdrCir"/);
+});
+
+test('an indexed load connects IX, MAR, MDR, ACC and a subsequent comparison updates SR', () => {
+  const frames = M.frames(M.createLab('registerFlow'));
+  const selected = frames.find(f => f.links.includes('ixAlu'));
+  assert.equal(selected.ix, 2);
+  assert.equal(selected.mar, 6);
+  assert.equal(selected.memory[selected.mar], 42);
+  assert.equal(frames.at(-1).acc, 42);
+  assert.equal(frames.at(-1).flags.zero, true);
+});
+
+test('read and write drive distinct command and data paths', () => {
+  const run = access => M.frames(set(M.createLab('busCycle'), { access }));
+  const read = run('read'), write = run('write');
+  assert.equal(read.at(-1).acc, 42);
+  assert.equal(read.at(-1).memory[5], 24);
+  assert.match(read.find(f => f.links.includes('dataMdr')).bus, /memory → CPU/);
+  assert.equal(write[3].memory[6], 0);
+  assert.equal(write.at(-1).memory[6], 42);
+  assert.match(write.at(-1).bus, /CPU → memory/);
+});
+
+test('the scheduled request arrives during ADD and the resumed store uses restored context', () => {
+  const f = M.frames(set(M.createLab('interrupt'), { arrival: 'during' }));
+  assert.equal(f[0].pending, false);
+  assert.equal(f[1].pending, true);
+  assert.equal(f[2].accepted, false);
+  assert.equal(f[4].accepted, true);
+  assert.equal(f.at(-1).memory[6], 42);
+});
+
+test('a device register is written only along the ready branch', () => {
+  const run = ready => M.frames(set(M.createLab('deviceControl'), { ready }));
+  const yes = run('yes'), no = run('no');
+  assert.equal(yes[1].acc, 16);
+  assert.equal(yes[1].device, 17);
+  assert.equal(yes.filter(f => f.written).length, 1);
+  assert.equal(yes.at(-1).device, 21);
+  assert.equal(no.some(f => f.written), false);
+  assert.equal(no.at(-1).device, 1);
+});
+
+test('three interrupt applications and two separate assembly animations expose distinct states', () => {
+  const signal = event => M.frames(set(M.createLab('application'), { event })).at(-1).signal;
+  assert.deepEqual(['keyboard', 'timer', 'io'].map(signal), ['Input available', 'Task B running', 'Buffer ready']);
+  assert.equal(M.frames(M.createLab('assemblyStages')).at(-1).signal, '00000001 00000100');
+  assert.equal(M.frames(M.createLab('assembler')).at(-1).output[0].word, '0000000100000100');
+});
+
+test('each animation exposes playback and supplies illustrated key states without JavaScript', () => {
+  for (const type of M.kinds) {
+    const markup = L.initialMarkup(type);
+    assert.match(markup, /data-s4-action="play"/);
+    assert.match(markup, /<noscript><details open>/);
+    assert.match(markup, /class="s4-nojs-frame"/);
+    assert.match(markup, /<ol><li>/);
+  }
+});
+
+test('fetch delta contains only register and memory values that changed on the current step', () => {
+  let state = M.createLab('fetch');
+  const views = [M.view(state)];
+  while (!M.view(state).complete) {
+    state = M.labAction(state, 'step');
+    views.push(M.view(state));
+  }
+  const byTitle = (prefix, current) => views.find(v => v.title.startsWith(prefix) && v.current === current);
+  assert.deepEqual(byTitle('Fetch 2', 0).changes, [{ name: 'PC', from: 0, to: 1 }]);
+  assert.deepEqual(byTitle('Fetch 3', 0).changes, [{ name: 'MDR', from: '—', to: 'LDD 4' }]);
+  assert.deepEqual(byTitle('Decode', 0).changes, []);
+  assert.deepEqual(byTitle('Execute 3 · calculate', 1).changes, [{ name: 'ACC', from: 18, to: 42 }]);
+  assert.deepEqual(byTitle('Execute 3 · write', 2).changes, [{ name: 'IAS[6]', from: 0, to: 42 }]);
 });
