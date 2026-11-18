@@ -71,13 +71,11 @@ function renderGroup(item, lesson, firstPaperGroup) {
     });
   } else item.materials.forEach(material => {
     const companion = material.companion ? materialMarkup(material.companion, 'h4') : '';
-    cards.push({ cardId: material.cardId, title: material.title, html: materialMarkup(material) + companion });
+    cards.push({ title: material.title, html: materialMarkup(material) + companion });
   });
   const marks = item.papers?.reduce((sum, id) => sum + lesson.pastPaperQuestions.find(q => q.id === id).marks, 0);
   const kicker = item.number ?? (review ? 'Cycle review' : `Past-paper checkpoint · ${item.papers.length} parts · ${marks} marks`);
-  // New named cards do not consume the numbers used by existing bookmarks.
-  let legacyCardNumber = 0;
-  return `<article class="s4-group${item.kind ? ' s4-boundary' : ''}" id="${item.id}" data-s4-group${item.kind ? ` data-s4-kind="${item.kind}"` : ''} data-label="${esc(label(item))}">${aliases.map(anchor).join('')}<header class="s4-group-heading"><p class="s4-eyebrow">${esc(kicker)}</p><h2 tabindex="-1">${esc(item.title)}</h2></header>${cards.map(card => `<section class="s4-phase" id="${item.id}--${esc(card.cardId ?? ++legacyCardNumber)}" data-s4-card data-label="${esc(card.title)}">${card.html}</section>`).join('')}</article>`;
+  return `<article class="s4-group${item.kind ? ' s4-boundary' : ''}" id="${item.id}" data-s4-group${item.kind ? ` data-s4-kind="${item.kind}"` : ''} data-label="${esc(label(item))}">${aliases.map(anchor).join('')}<header class="s4-group-heading"><p class="s4-eyebrow">${esc(kicker)}</p><h2 tabindex="-1">${esc(item.title)}</h2></header>${cards.map((card, i) => `<section class="s4-phase" id="${item.id}--${i + 1}" data-s4-card data-label="${esc(card.title)}">${card.html}</section>`).join('')}</article>`;
 }
 
 export function renderSection4Classroom(lesson, helpers) {

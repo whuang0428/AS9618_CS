@@ -1,13 +1,9 @@
 import { vonNeumann, sharedProgramMemory, registerFamilies, processorType, cores, busWidth, clockSpeed, cache } from './course-v3-section4-architecture-figures.mjs';
 
 const source = (label, url) => ({ label, url });
-const text = (title, body, code) => ({ type: 'text', title, body, ...(code ? { code } : {}) });
+const text = (title, body) => ({ type: 'text', title, body });
 const table = (title, headers, rows, sources) => ({ type: 'table', title, headers, rows, sources });
-// Named additions leave the existing numbered classroom-card bookmarks intact.
-const card = (cardId, material) => ({ ...material, cardId });
 const syllabus = source('Cambridge 9618 syllabus, 2027–2029, section 4.1', 'https://www.cambridgeinternational.org/Images/721397-2027-2029-syllabus.pdf');
-const instructionSetSource = source('Cambridge 9618 example instruction set, pp. 21–22', 'https://www.cambridgeinternational.org/Images/721397-2027-2029-syllabus.pdf#page=21');
-const isaSource = source('Arm: instruction set architecture and microarchitecture', 'https://www.arm.com/glossary/isa');
 const archive = source('US National Archives, photograph 594262, c. 1946', 'https://docsteach.org/document/eniac-women-programmers/');
 const eniacHistory = source('University of Pennsylvania, how the original ENIAC was programmed', 'https://penntoday.upenn.edu/news/penns-eniac-worlds-first-electronic-computer-turns-80');
 const usbHistory = source('Intel, USB protocol and connector timeline', 'https://download.intel.com/newsroom/2021/archive/2015-08-13-editorials-thunderbolt-3-usb-type-c-40-gbps.pdf');
@@ -96,9 +92,6 @@ export const architectureLessons = {
     {
       number: '4.1.2', title: 'What makes a program a stored program?',
       materials: [
-        card('instruction', text('One instruction specifies an operation',
-          'A machine instruction is an encoded command that the CPU can decode and execute. A program arranges instructions to perform a task. Here memory address 4 holds 18, address 5 holds 24 and address 6 starts at 0. ACC is the CPU’s working storage for the current value; the next sections explain registers. Each line below represents one instruction, written with a readable operation name instead of its binary encoding.',
-          'LDD 4   Load the value at address 4 into ACC: 18\nADD 5   Add the value at address 5: ACC becomes 42\nSTO 6   Copy ACC to address 6: store 42\nEND     Finish this program and return to the OS')),
         table('Where does each machine keep the program and its data?', ['Question', 'Original ENIAC configuration', 'Basic von Neumann model'], [
           ['Where is the procedure?', 'Patch cables and switches set the sequence of operations.', 'The instructions occupy addresses 0–3 in main memory. At address 1 the CPU finds ADD 5.'],
           ['Where are the numbers?', 'Electronic storage units hold the numbers used in the calculation.', 'Addresses 4 and 5 in that same main memory hold 18 and 24. Address 6 is reserved for the result.'],
@@ -108,28 +101,6 @@ export const architectureLessons = {
           body: 'In the von Neumann model, the program’s machine instructions and the data they use share the same main memory. Each address here holds a binary word, shown as a mnemonic or a decimal number for readability. With ADD 5, the CPU calculates 18 + 24 = 42 and STO 6 writes 42 to address 6. Replace the instruction at address 1 with SUB 5 and restart at address 0. Address 5 still holds 24, so this time the CPU calculates 18 − 24 = −6 and stores −6 at address 6.',
           sources: [source('Cambridge 9618/11, October/November 2022, Q5(a), mark scheme p. 6', 'https://pastpapers.papacambridge.com/directories/CAIE/CAIE-pastpapers/upload/9618_w22_ms_11.pdf#page=6')],
         },
-        card('operation-and-operand', { ...table('Why separate the operation from its operand?', ['Instruction', 'Operation', 'Where the second value comes from', 'Result in ACC'], [
-          ['ADD 5', 'Add', 'Address 5 contains 24', '18 + 24 = 42'],
-          ['SUB 5', 'Subtract', 'Address 5 contains 24', '18 − 24 = −6'],
-          ['ADD 4', 'Add', 'Address 4 contains 18', '18 + 18 = 36'],
-        ]), body: 'Start each row independently with ACC = 18. Changing ADD to SUB keeps the data source but changes the operation; changing 5 to 4 keeps addition but changes the source. The opcode specifies what operation to perform. An operand supplies a value or information identifying data or a target. Separating these roles lets one operation work with different data. The CPU decodes the operation and interprets the operand information according to the instruction’s format.' }),
-        card('instruction-fields', { ...table('Decode the fields of ADD 5', ['Field', 'Opcode · 8 bits', 'Operand/address · 8 bits'], [
-          ['Encoded bits', '00000010', '00000101'],
-          ['Meaning on this teaching CPU', 'ADD: select addition', '5: select memory address 5'],
-        ]), body: 'The complete word is 00000010 00000101. ADD is the mnemonic, a readable name for the operation; 00000010 is its opcode in this illustrative encoding, not the character codes of A, D and D. The encoded operand is address 5, while the value read from that address is 24. ACC supplies the other value, 18, implicitly. These fields are part of the instruction’s defined format; decoding interprets them. This 8-bit + 8-bit layout is a teaching convention, not a universal CPU format or an encoding prescribed by Cambridge.' }),
-        card('operand-forms', { ...table('An operand can identify different kinds of information', ['Example', 'Explicit operand', 'Meaning'], [
-          ['LDM #18', '#18: an immediate value', 'Put 18 directly into ACC. # marks a denary constant.'],
-          ['ADD 5', '5: a memory address', 'Read the value at address 5 and add it to ACC.'],
-          ['INC ACC', 'ACC: a register name', 'Increase the value in ACC by one.'],
-          ['END', 'None', 'Finish the program and return to the OS.'],
-        ], [instructionSetSource]), body: 'An operand is not always an address. Some instructions have no explicit operand, while other designs specify several. ADD 5 still uses ACC even though ACC is not written: the instruction’s definition supplies that information. Section 4.2.4 will explain the addressing rules in detail; for now, distinguish a value from the address where a value is stored.' }),
-        card('instruction-set', { ...table('A program selects from the CPU’s instruction set', ['Some supported instruction forms', 'What this CPU can do', 'Used by the four-line addition program?'], [
-          ['LDD address', 'Load a value from memory into ACC', 'Yes: LDD 4'],
-          ['ADD address', 'Add a value from memory to ACC', 'Yes: ADD 5'],
-          ['SUB address', 'Subtract a value from memory from ACC', 'No, but the CPU still supports subtraction'],
-          ['STO address', 'Store ACC in memory', 'Yes: STO 6'],
-          ['END', 'Finish the program and return to the OS', 'Yes'],
-        ], [instructionSetSource]), body: 'An instruction set is the complete collection of machine instructions a processor supports. This table shows only part of the course CPU’s instruction set. The program is a particular sequence chosen from it: leaving SUB out of this program does not remove subtraction from the CPU’s capabilities. Next, registers hold instructions and working values, and the control unit coordinates their execution. In 4.1.14, follow how the CPU fetches one encoded instruction, decodes it using its instruction set and executes it. Section 4.2.3 provides the fuller instruction reference.' }),
       ],
     },
     {
@@ -180,22 +151,6 @@ export const architectureLessons = {
     {
       number: '4.1.6', title: 'Processor type and number of cores',
       materials: [
-        card('cpu-instruction-designs', { ...text('Two CPU designs perform the same calculation',
-          'Both examples start with Memory[4] = 18 and Memory[5] = 24 and store 42 at address 6. These snippets show the calculation and store only. CPU A uses the accumulator model from 4.1.2: ADD reads ACC and writes its result back to ACC without naming that register.',
-          'CPU A · accumulator model\nLDD 4\nADD 5\nSTO 6'),
-          companion: text('CPU B names its working registers',
-            'CPU B is a separate illustrative design, not Cambridge assembly syntax. LOAD and STORE access memory; arithmetic uses registers. Here [4] means the contents of memory address 4. In ADD R3, R1, R2, R1 and R2 supply 18 and 24, and R3 receives 42.',
-            'CPU B · general-purpose register model\nLOAD R1, [4]\nLOAD R2, [5]\nADD R3, R1, R2\nSTORE [6], R3'),
-        }),
-        card('instruction-design-comparison', { ...table('Instruction formats reflect the programmer-visible design', ['Compare the addition', 'CPU A: ADD 5', 'CPU B: ADD R3, R1, R2'], [
-          ['First source', 'ACC is implied by the instruction', 'R1 is explicitly named'],
-          ['Second source', 'Read memory address 5', 'Read R2, loaded by an earlier instruction'],
-          ['Destination', 'ACC is implied by the instruction', 'R3 is explicitly named'],
-          ['Information to encode', 'Operation and memory address', 'Operation, destination register and two source registers'],
-          ['Result of these snippets', 'ACC = 42; Memory[6] = 42', 'R3 = 42; Memory[6] = 42'],
-        ]), body: 'These designs define different operand forms and memory-access rules. Each needs an encoding that its decoder understands; sharing the mnemonic ADD does not make their machine code interchangeable. The A snippet uses three instructions and B uses four, but counts alone do not establish which is faster: elapsed time also depends on the work and time taken by each instruction and on memory access.' }),
-        card('isa-and-implementation', { ...text('Different hardware can implement the same instruction set',
-          'An instruction set architecture (ISA) specifies the operations, encodings and programmer-visible rules, including register use. A microarchitecture is the internal hardware design that implements those rules. Two processors can use different internal circuits while supporting the same instructions; their different internal structure does not by itself imply a different instruction set. At the instruction level, code is compatible when the required instructions and modes are supported; a complete application also needs the appropriate system environment. In 4.2.1, the assembler must target the chosen instruction set. The next example compares another possible difference: an instruction that works on one value versus one that works on several values.'), sources: [isaSource] }),
         { ...processorType, body: 'A processor with a vector instruction can apply one arithmetic operation to several independent pixels at once. Like the four-hole punch, it saves repetitions when the work fits the operation.' },
         { ...table('How much useful work does an instruction do?', ['Workload', 'One pixel per arithmetic instruction', 'Four pixels per vector arithmetic instruction'], [
           ['Brighten eight independent pixels', '8 arithmetic instructions', '2 vector arithmetic instructions'],

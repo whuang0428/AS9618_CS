@@ -17537,13 +17537,8 @@
           "materialTitles": [
             "One memory supplies instructions and data",
             "Programming the original ENIAC",
-            "One instruction specifies an operation",
             "Where does each machine keep the program and its data?",
-            "Instructions and data share one main memory",
-            "Why separate the operation from its operand?",
-            "Decode the fields of ADD 5",
-            "An operand can identify different kinds of information",
-            "A program selects from the CPU’s instruction set"
+            "Instructions and data share one main memory"
           ],
           "questionIds": [
             "S4-L01-Q1"
@@ -17783,23 +17778,14 @@
             "S4.01.A01"
           ],
           "leadVisual": {
-            "type": "text",
-            "title": "One instruction specifies an operation"
+            "type": "table",
+            "title": "Where does each machine keep the program and its data?"
           },
           "coreExplanation": [
-            "A machine instruction is an encoded command that the CPU can decode and execute. A program arranges instructions to perform a task. Here memory address 4 holds 18, address 5 holds 24 and address 6 starts at 0. ACC is the CPU’s working storage for the current value; the next sections explain registers. Each line below represents one instruction, written with a readable operation name instead of its binary encoding.",
             "In the von Neumann model, the program’s machine instructions and the data they use share the same main memory. Each address here holds a binary word, shown as a mnemonic or a decimal number for readability. With ADD 5, the CPU calculates 18 + 24 = 42 and STO 6 writes 42 to address 6. Replace the instruction at address 1 with SUB 5 and restart at address 0. Address 5 still holds 24, so this time the CPU calculates 18 − 24 = −6 and stores −6 at address 6.",
-            "Start at address 1. The CPU fetches ADD 5 as an instruction. Its operand tells the CPU to read address 5 in that same memory, where it finds the number 24.",
-            "Start each row independently with ACC = 18. Changing ADD to SUB keeps the data source but changes the operation; changing 5 to 4 keeps addition but changes the source. The opcode specifies what operation to perform. An operand supplies a value or information identifying data or a target. Separating these roles lets one operation work with different data. The CPU decodes the operation and interprets the operand information according to the instruction’s format.",
-            "The complete word is 00000010 00000101. ADD is the mnemonic, a readable name for the operation; 00000010 is its opcode in this illustrative encoding, not the character codes of A, D and D. The encoded operand is address 5, while the value read from that address is 24. ACC supplies the other value, 18, implicitly. These fields are part of the instruction’s defined format; decoding interprets them. This 8-bit + 8-bit layout is a teaching convention, not a universal CPU format or an encoding prescribed by Cambridge.",
-            "An operand is not always an address. Some instructions have no explicit operand, while other designs specify several. ADD 5 still uses ACC even though ACC is not written: the instruction’s definition supplies that information. Section 4.2.4 will explain the addressing rules in detail; for now, distinguish a value from the address where a value is stored.",
-            "An instruction set is the complete collection of machine instructions a processor supports. This table shows only part of the course CPU’s instruction set. The program is a particular sequence chosen from it: leaving SUB out of this program does not remove subtraction from the CPU’s capabilities. Next, registers hold instructions and working values, and the control unit coordinates their execution. In 4.1.14, follow how the CPU fetches one encoded instruction, decodes it using its instruction set and executes it. Section 4.2.3 provides the fuller instruction reference."
+            "Start at address 1. The CPU fetches ADD 5 as an instruction. Its operand tells the CPU to read address 5 in that same memory, where it finds the number 24."
           ],
           "materials": [
-            {
-              "type": "text",
-              "title": "One instruction specifies an operation"
-            },
             {
               "type": "table",
               "title": "Where does each machine keep the program and its data?"
@@ -17807,22 +17793,6 @@
             {
               "type": "diagram",
               "title": "Instructions and data share one main memory"
-            },
-            {
-              "type": "table",
-              "title": "Why separate the operation from its operand?"
-            },
-            {
-              "type": "table",
-              "title": "Decode the fields of ADD 5"
-            },
-            {
-              "type": "table",
-              "title": "An operand can identify different kinds of information"
-            },
-            {
-              "type": "table",
-              "title": "A program selects from the CPU’s instruction set"
             }
           ]
         },
@@ -18230,10 +18200,6 @@
             "Processor type and number of cores"
           ],
           "materialTitles": [
-            "Two CPU designs perform the same calculation",
-            "CPU B names its working registers",
-            "Instruction formats reflect the programmer-visible design",
-            "Different hardware can implement the same instruction set",
             "Two hole punches doing the same job",
             "How much useful work does an instruction do?",
             "Two proofreaders divide four independent pages",
@@ -18251,10 +18217,6 @@
             "Processor type and number of cores"
           ],
           "materialTitles": [
-            "Two CPU designs perform the same calculation",
-            "CPU B names its working registers",
-            "Instruction formats reflect the programmer-visible design",
-            "Different hardware can implement the same instruction set",
             "Two hole punches doing the same job",
             "How much useful work does an instruction do?",
             "Two proofreaders divide four independent pages",
@@ -18500,14 +18462,10 @@
             "S4.05.A02"
           ],
           "leadVisual": {
-            "type": "text",
-            "title": "Two CPU designs perform the same calculation"
+            "type": "diagram",
+            "title": "Two hole punches doing the same job"
           },
           "coreExplanation": [
-            "Both examples start with Memory[4] = 18 and Memory[5] = 24 and store 42 at address 6. These snippets show the calculation and store only. CPU A uses the accumulator model from 4.1.2: ADD reads ACC and writes its result back to ACC without naming that register.",
-            "CPU B is a separate illustrative design, not Cambridge assembly syntax. LOAD and STORE access memory; arithmetic uses registers. Here [4] means the contents of memory address 4. In ADD R3, R1, R2, R1 and R2 supply 18 and 24, and R3 receives 42.",
-            "These designs define different operand forms and memory-access rules. Each needs an encoding that its decoder understands; sharing the mnemonic ADD does not make their machine code interchangeable. The A snippet uses three instructions and B uses four, but counts alone do not establish which is faster: elapsed time also depends on the work and time taken by each instruction and on memory access.",
-            "An instruction set architecture (ISA) specifies the operations, encodings and programmer-visible rules, including register use. A microarchitecture is the internal hardware design that implements those rules. Two processors can use different internal circuits while supporting the same instructions; their different internal structure does not by itself imply a different instruction set. At the instruction level, code is compatible when the required instructions and modes are supported; a complete application also needs the appropriate system environment. In 4.2.1, the assembler must target the chosen instruction set. The next example compares another possible difference: an instruction that works on one value versus one that works on several values.",
             "A processor with a vector instruction can apply one arithmetic operation to several independent pixels at once. Like the four-hole punch, it saves repetitions when the work fits the operation.",
             "Both tools make eight holes. A desktop punch makes one per stroke; the gang punch makes four in one stroke. An instruction that processes several data items together can save work on a suitable program.",
             "Apply the same adjustment to every requested pixel. In this example, the vector processor can turn unused lanes off. The counts cover the arithmetic. Loading pixels, issuing instructions and storing the results also take time. Processor type affects elapsed time through the instructions available and the time each takes.",
@@ -18516,22 +18474,6 @@
             "Divide the original time by the new time to find the speedup, 100 ÷ 64 ≈ 1.56×. Both cores need the shared key before they can start checking pages. Communicating their results takes a further four units."
           ],
           "materials": [
-            {
-              "type": "text",
-              "title": "Two CPU designs perform the same calculation",
-              "companion": {
-                "type": "text",
-                "title": "CPU B names its working registers"
-              }
-            },
-            {
-              "type": "table",
-              "title": "Instruction formats reflect the programmer-visible design"
-            },
-            {
-              "type": "text",
-              "title": "Different hardware can implement the same instruction set"
-            },
             {
               "type": "diagram",
               "title": "Two hole punches doing the same job"
@@ -19366,7 +19308,6 @@
             "Begin at PC = 0. Instructions occupy locations 0–3. The starting data you select occupy 4 and 5 (18 and 24 by default). Watch which address is selected and what reaches MDR during the instruction fetch, operand read and result write. The diagram shows all seven registers. IX stays at 0 because this program uses direct addressing.",
             "Cambridge 9618/13, May/June 2025, Q2(a)(ii), mark scheme p. 5. Read the arrow from right to left. Single brackets give register contents; the nested brackets in [[MAR]] add a memory lookup.",
             "Follow LDX 4 with IX = 2. The effective address is 6, so MDR and then ACC receive 42. The following CMP #42 sets the equality condition in SR.",
-            "Recall the fields in 4.1.2: CIR holds the encoded instruction 00000010 00000101, displayed here as ADD 5. During decode, the CU interprets opcode 00000010 as addition using a direct memory operand, and 00000101 as address 5. During execution, it reads the data 24 from that address and adds it to the implicit operand in ACC, 18. The instruction’s address field contains 5, not 24; decoding the address is separate from reading its contents.",
             "The address bus carries 5, the control bus carries READ and the data bus carries 24 back to MDR. The clock synchronises these transfers. An instruction can take several clock cycles.",
             "This trace starts with PC = 0 and ACC = 0. Memory[4] holds 18, Memory[5] holds 24 and Memory[6] starts at 0."
           ],
@@ -20233,10 +20174,8 @@
             "title": "Machine code gives the decoder a bit pattern"
           },
           "coreExplanation": [
-            "In 4.1.2, ADD 5 was encoded as 00000010 00000101: an addition opcode followed by address 5. Here LDD 4 uses the same illustrative 8-bit opcode and 8-bit address fields. Changing the opcode selects a different operation; changing the address selects a different memory location. These field widths and opcode values belong to this teaching machine.",
             "Instruction and data words occupy addressable memory. The decoder interprets a fetched word using the instruction set of this example CPU.",
-            "A mnemonic names an operation and a label names a location. Both are easier to read and revise than binary fields. The assembler looks up the operation’s machine encoding; it does not encode the letters L, D and D as character data.",
-            "The target instruction set determines which operations and operand forms the assembler accepts and how it encodes them. The accumulator and register-based teaching CPUs in 4.1.6 express the same calculation differently. Their different source instructions require their own target encodings; a shared word such as ADD does not establish machine-code compatibility. The CPU fetches, decodes and executes the emitted instruction as in 4.1.14.",
+            "A mnemonic names an operation and a label names a location. Both are easier to read and revise than binary fields.",
             "On this teaching machine the assembler resolves PRICE to address 4. The CPU executes the emitted word; labels and comments occupy no instruction slot of their own."
           ],
           "materials": [
@@ -20698,7 +20637,7 @@
             "title": "Mnemonic, operand form and effect"
           },
           "coreExplanation": [
-            "Cambridge International AS & A Level Computer Science 9618, 2027–2029 syllabus, pp. 20–21. In these questions ACC is the single general-purpose working register. # denotes denary, B binary, and & hexadecimal. The instruction set is an example for the course. In 4.1.2, the addition program selected only a few supported instructions. This table expands that selection into instruction families and allowed operand forms; it is a reference, not a program to execute from top to bottom. Use this accumulator-based instruction set for the following traces, rather than the separate register-based comparison model in 4.1.6. Section 4.2.4 explains how each addressing mode obtains the data or target."
+            "Cambridge International AS & A Level Computer Science 9618, 2027–2029 syllabus, pp. 20–21. In these questions ACC is the single general-purpose working register. # denotes denary, B binary, and & hexadecimal. The instruction set is an example for the course."
           ],
           "materials": [
             {
