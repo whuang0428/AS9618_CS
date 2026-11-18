@@ -156,7 +156,7 @@ test('architecture, performance analogies and port diagrams cover the specified 
   assert.deepEqual(opening.map(m => m.type), ['diagram', 'figure']);
   assert.match(opening[1].title, /ENIAC/);
   assert.ok(opening[1].sources.some(s => /archives|docsteach|upenn/.test(s.url)));
-  const comparison = materials.get('4.1.2');
+  const comparison = materials.get('4.1.2').filter(material => !material.cardId);
   assert.deepEqual(comparison.map(m => m.type), ['table', 'diagram']);
   assert.match(comparison[1].body, /instructions and the data they use share the same main memory/);
   assert.ok(comparison[1].sources.some(source => source.url.endsWith('9618_w22_ms_11.pdf#page=6')));
@@ -272,7 +272,10 @@ function hasContent(html, text, message) {
 }
 
 test('worked examples include the referenced visual or interactive material on the same step', () => {
-  for (const [number, step] of [['4.1.6', 2], ['4.1.6', 4], ['4.1.7', 2], ['4.1.8', 2], ['4.1.9', 2]]) {
+  for (const title of ['How much useful work does an instruction do?', 'Why twice as many cores can deliver less than twice the performance']) {
+    assert.equal(materials.get('4.1.6').find(material => material.title === title)?.type, 'table', title);
+  }
+  for (const [number, step] of [['4.1.7', 2], ['4.1.8', 2], ['4.1.9', 2]]) {
     assert.equal(materials.get(number)[step - 1].type, 'table', `${number} step ${step}`);
   }
   const symbols = materials.get('4.2.2')[2].companion;
@@ -286,6 +289,41 @@ test('worked examples include the referenced visual or interactive material on t
   const shift = materials.get('4.3.2')[1].companion;
   assert.equal(shift.lab, 'bits');
   assert.deepEqual(shift.config, { family: 'shifts', value: 64, operation: 'ASL', amount: 1 });
+});
+
+test('instruction introductions preserve existing card bookmarks and their teaching targets', () => {
+  const expectations = [
+    {
+      page: 21, number: '4.1.2',
+      order: ['instruction', '1', '2', 'operation-and-operand', 'instruction-fields', 'operand-forms', 'instruction-set'],
+      originalTitles: [
+        'Where does each machine keep the program and its data?',
+        'Instructions and data share one main memory',
+      ],
+    },
+    {
+      page: 22, number: '4.1.6',
+      order: ['cpu-instruction-designs', 'instruction-design-comparison', 'isa-and-implementation', '1', '2', '3', '4'],
+      originalTitles: [
+        'Two hole punches doing the same job',
+        'How much useful work does an instruction do?',
+        'Two proofreaders divide four independent pages',
+        'Why twice as many cores can deliver less than twice the performance',
+      ],
+    },
+  ];
+  for (const { page, number, order, originalTitles } of expectations) {
+    const groups = sectionsOf(pageHtml.get(page), /<article class="s4-group(?: s4-boundary)?" id="([^"]+)"[^>]*data-s4-group[^>]*>/g);
+    const cards = sectionsOf(groups.get(number), /<section class="s4-phase" id="([^"]+)"[^>]*data-s4-card[^>]*>/g);
+    assert.deepEqual([...cards.keys()], order.map(suffix => `${number}--${suffix}`), number);
+    originalTitles.forEach((title, index) => {
+      const id = `${number}--${index + 1}`;
+      const heading = cards.get(id)?.match(/<h3\b[^>]*>([^<]*)<\/h3>/)?.[1];
+      assert.equal(heading, esc(title), `${id} must still open its original material`);
+    });
+    const idsOnPage = [...pageHtml.get(page).matchAll(/\sid="([^"]+)"/g)].map(match => match[1]);
+    assert.equal(unique(idsOnPage).length, idsOnPage.length, `Duplicate HTML id on lesson ${page}`);
+  }
 });
 
 for (const lesson of lessons) {
@@ -318,10 +356,14 @@ for (const lesson of lessons) {
         continue;
       }
       assert.equal(cards.size, item.materials.length, item.id);
+      const cardIds = [...cards.keys()];
+      item.materials.forEach((material, index) => {
+        if (material.cardId) assert.equal(cardIds[index], `${item.id}--${material.cardId}`);
+      });
       const inCard = item.materials.flatMap((main, index) =>
         [main, main.companion].filter(Boolean).map(material => ({ material, index })));
       inCard.forEach(({ material: m, index }) => {
-        const card = cards.get(`${item.id}--${index + 1}`);
+        const card = cards.get(cardIds[index]);
         assert.ok(card, item.id);
         for (const text of [m.title, m.caption, m.body, m.code].filter(Boolean)) hasContent(card, text);
         for (const citation of m.sources ?? []) {

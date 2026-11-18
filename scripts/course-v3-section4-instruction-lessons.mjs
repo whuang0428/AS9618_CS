@@ -48,18 +48,22 @@ const sourcesDiagram = diagram('Where an interrupt begins',
   + panel(431, 74, 365, 112, 'CPU and operating system', ['Identify the cause and priority', 'Dispatch the appropriate handler'], true), 267,
   'An external device may raise a request while another instruction is executing. A program can deliberately invoke an operating-system service. A fault such as division by zero is synchronous with its instruction and may need different recovery.');
 
-const machineDiagram = routeDiagram('Machine code gives the decoder a bit pattern',
+const machineDiagram = { ...routeDiagram('Machine code gives the decoder a bit pattern',
   'Instruction and data words occupy addressable memory. The decoder interprets a fetched word using the instruction set of this example CPU.',
   [['Memory word', '00000001 00000100', 'illustrative 16 bits'], ['Decode fields', '00000001 → load', '00000100 → address 4'], ['Execute', 'IAS[4] → ACC', 'ACC receives the data']],
-  'Digital circuits distinguish bit patterns; the instruction set assigns each pattern a meaning.');
+  'Digital circuits distinguish bit patterns; the instruction set assigns each pattern a meaning.'),
+  body: 'In 4.1.2, ADD 5 was encoded as 00000010 00000101: an addition opcode followed by address 5. Here LDD 4 uses the same illustrative 8-bit opcode and 8-bit address fields. Changing the opcode selects a different operation; changing the address selects a different memory location. These field widths and opcode values belong to this teaching machine.',
+};
 const assemblyDiagram = routeDiagram('Why programmers use mnemonics and labels',
-  'A mnemonic names an operation and a label names a location. Both are easier to read and revise than binary fields.',
+  'A mnemonic names an operation and a label names a location. Both are easier to read and revise than binary fields. The assembler looks up the operation’s machine encoding; it does not encode the letters L, D and D as character data.',
   [['Operation', 'LDD', 'load from memory'], ['Named operand', 'PRICE', 'label for a location'], ['Assembly source', 'LDD PRICE', 'read the named value']],
   'Moving PRICE changes its assigned address; the source can keep the same label.');
-const relationshipDiagram = routeDiagram('One real assembly instruction becomes one machine instruction',
+const relationshipDiagram = { ...routeDiagram('One real assembly instruction becomes one machine instruction',
   'On this teaching machine the assembler resolves PRICE to address 4. The CPU executes the emitted word; labels and comments occupy no instruction slot of their own.',
   [['Assembly', 'LDD PRICE', 'symbolic source'], ['Assembler', 'PRICE → 4', 'LDD → 00000001'], ['Machine word', '00000001 00000100', 'opcode + address']],
-  'The opcode numbers and field widths illustrate this machine; Cambridge specifies the mnemonic meanings.');
+  'The opcode numbers and field widths illustrate this machine; Cambridge specifies the mnemonic meanings.'),
+  body: 'The target instruction set determines which operations and operand forms the assembler accepts and how it encodes them. The accumulator and register-based teaching CPUs in 4.1.6 express the same calculation differently. Their different source instructions require their own target encodings; a shared word such as ADD does not establish machine-code compatibility. The CPU fetches, decodes and executes the emitted instruction as in 4.1.14.',
+};
 
 const addressingDiagrams = [
   routeDiagram('Immediate addressing · take the value',
@@ -96,10 +100,12 @@ export const instructionLessons = {
         ['CIR ← [MDR]', 'Copy the fetched instruction from MDR into CIR.'],
       ], 'Cambridge 9618/13, May/June 2025, Q2(a)(ii), mark scheme p. 5. Read the arrow from right to left. Single brackets give register contents; the nested brackets in [[MAR]] add a memory lookup.', [{ label: 'Official mark scheme · 9618/13 Q2(a)(ii), p. 5', url: 'https://pastpapers.papacambridge.com/directories/CAIE/CAIE-pastpapers/upload/9618_s25_ms_13.pdf#page=5' }, syllabus(19)]),
       lab('An indexed load brings IX into the data path', 'registerFlow', {}, [], 'Follow LDX 4 with IX = 2. The effective address is 6, so MDR and then ACC receive 42. The following CMP #42 sets the equality condition in SR.'),
-      routeDiagram('Decode and execute ADD 5',
+      { ...routeDiagram('Decode and execute ADD 5',
         'The address bus carries 5, the control bus carries READ and the data bus carries 24 back to MDR. The clock synchronises these transfers. An instruction can take several clock cycles.',
         [['Decode', 'CIR holds ADD 5', 'CU selects addition'], ['Read the operand', 'Select address 5', 'Memory[5] → MDR: 24'], ['Calculate', 'ACC holds 18', 'ALU adds 18 + 24']],
         'ACC now holds 42. Memory[6] changes only when the CPU executes STO 6.'),
+        body: 'Recall the fields in 4.1.2: CIR holds the encoded instruction 00000010 00000101, displayed here as ADD 5. During decode, the CU interprets opcode 00000010 as addition using a direct memory operand, and 00000101 as address 5. During execution, it reads the data 24 from that address and adds it to the implicit operand in ACC, 18. The instruction’s address field contains 5, not 24; decoding the address is separate from reading its contents.',
+      },
       table('Track the working values', ['Completed instruction', 'Next PC', 'ACC', 'Memory[6]'], [
         ['LDD 4', '1', '18', '0'], ['ADD 5', '2', '42', '0'], ['STO 6', '3', '42', '42'], ['END', 'Control returns to the OS', '42', '42'],
       ], 'This trace starts with PC = 0 and ACC = 0. Memory[4] holds 18, Memory[5] holds 24 and Memory[6] starts at 0.')),
@@ -153,7 +159,7 @@ export const instructionLessons = {
         ['Compare instructions', 'CMP <address> / CMP #n', 'CMP 300 · CMP #18', 'Compare ACC with a stored value or an immediate denary value.'],
         ['Compare instructions', 'CMI <address>', 'CMI 310', 'Dereference the pointer at the given address and compare the target value with ACC.'],
         ['Program termination', 'END', 'END', 'Return control to the operating system.'],
-      ], 'Cambridge International AS & A Level Computer Science 9618, 2027–2029 syllabus, pp. 20–21. In these questions ACC is the single general-purpose working register. # denotes denary, B binary, and & hexadecimal. The instruction set is an example for the course.', [syllabus(21)])),
+      ], 'Cambridge International AS & A Level Computer Science 9618, 2027–2029 syllabus, pp. 20–21. In these questions ACC is the single general-purpose working register. # denotes denary, B binary, and & hexadecimal. The instruction set is an example for the course. In 4.1.2, the addition program selected only a few supported instructions. This table expands that selection into instruction families and allowed operand forms; it is a reference, not a program to execute from top to bottom. Use this accumulator-based instruction set for the following traces, rather than the separate register-based comparison model in 4.1.6. Section 4.2.4 explains how each addressing mode obtains the data or target.', [syllabus(21)])),
     section('4.2.4', 'Follow five addressing modes', ...addressingDiagrams,
       lab('Trace a compare, a branch and an output', 'trace', { program: 'branch', input: 'A' }, ['input'],
         'Read A and compare its ASCII value, 65, through the pointer at 340. Identify the next PC after JPN. Repeat with B and compare the two output characters.'),
