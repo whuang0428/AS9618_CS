@@ -1,271 +1,205 @@
-// Progressive enhancement: one DOM keeps the experiments intact across both modes.
+// One DOM serves classroom, full reading, enlargement and printing.
 (() => {
   const root = document.querySelector('[data-s8-classroom]');
   if (!root) return;
-  const groups = [...root.querySelectorAll('[data-s5-group]')];
-  const navigation = root.querySelector('.s5-navigation');
-  const stages = root.querySelector('.s5-phases');
-  const modeSwitch = root.querySelector('.s5-mode-switch');
-  const position = navigation.querySelector('[role="status"]');
-  const directory = root.querySelector('.s5-directory');
-  const toolbar = root.querySelector('.s5-toolbar');
-  new ResizeObserver(() => root.style.setProperty('--s8-toolbar-height', `${toolbar.getBoundingClientRect().height}px`)).observe(toolbar);
-  const labels = { observe: 'Observe', prepare: 'Recall', explain: 'Explain', worked: 'Work together', experiment: 'Experiment', check: 'Check', papers: 'Past paper', recap: 'Connect' };
-  const cursors = groups.map(() => ({ phase: 0, steps: {} }));
-  let groupIndex = 0;
-  let mode = 'classroom';
+  const cards = [...root.querySelectorAll('[data-s8-card]')];
+  const topics = [...root.querySelectorAll('[data-s8-topic]')];
+  const nav = root.querySelector('.s8-navigation');
+  const modes = root.querySelector('.s8-mode-switch');
+  const directory = root.querySelector('.s8-directory');
+  const position = root.querySelector('[data-s8-position]');
+  const prev = nav.querySelector('[data-s8-prev]');
+  const next = nav.querySelector('[data-s8-next]');
+  let index = 0;
+  let reading = false;
+  try { reading = sessionStorage.getItem('s8-reading-mode') === 'reading'; } catch { /* Optional on local files. */ }
 
-  const currentGroup = () => groups[groupIndex];
-  const currentCursor = () => cursors[groupIndex];
-  const phasesFor = group => [...group.querySelectorAll('[data-s5-phase]')];
-  const currentPhase = () => phasesFor(currentGroup())[currentCursor().phase];
-  const stepsFor = phase => [...phase.querySelectorAll('[data-s5-step-panel]')];
-  const currentStep = () => currentCursor().steps[currentPhase().dataset.s5Phase] ?? 0;
-  function closeAnswers() {
-    root.querySelectorAll('.s5-group details[open]:not([data-s5-question-fold]):not(.s8-source-context):not(.s8-sql-source):not(.s8-sql-source details), .s5-reference details[open]').forEach(detail => { detail.open = false; });
+  function hideAnswers() {
+    root.querySelectorAll('.exam-reveal[open], .s8-choice[open], .practice-question details[open]').forEach(element => { element.open = false; });
+    root.dispatchEvent(new CustomEvent('s8:hide', { bubbles: true }));
   }
   function leave() {
-    closeAnswers();
-    root.querySelectorAll('.s5-reference[open]').forEach(detail => { detail.open = false; });
-    document.dispatchEvent(new CustomEvent('s5:leave'));
+    hideAnswers();
+    directory.open = false;
+    root.querySelectorAll('.s8-reference[open]').forEach(element => { element.open = false; });
   }
-  function rememberLocation() {
-    const phase = currentPhase();
-    const target = stepsFor(phase)[currentStep()] ?? phase;
-    history.replaceState(null, '', `#${target.id}`);
-  }
-  function render(scroll = false) {
-    const classroom = mode === 'classroom';
-    root.dataset.mode = mode;
-    groups.forEach((group, index) => {
-      group.hidden = classroom && index !== groupIndex;
-      const cursor = cursors[index];
-      const phases = phasesFor(group);
-      cursor.phase = Math.max(0, Math.min(cursor.phase, phases.length - 1));
-      phases.forEach((phase, phaseIndex) => {
-        phase.hidden = classroom && phaseIndex !== cursor.phase;
-        const key = phase.dataset.s5Phase;
-        const steps = stepsFor(phase);
-        const stepIndex = Math.max(0, Math.min(cursor.steps[key] ?? 0, Math.max(0, steps.length - 1)));
-        cursor.steps[key] = stepIndex;
-        steps.forEach((step, i) => { step.hidden = classroom && i !== stepIndex; });
-        phase.querySelectorAll('[data-s5-step]').forEach(button => button.setAttribute('aria-current', Number(button.dataset.s5Step) === stepIndex ? 'step' : 'false'));
-        const conclusion = phase.querySelector('[data-s5-worked-conclusion]');
-        if (conclusion) conclusion.hidden = classroom && stepIndex !== steps.length - 1;
-        phase.querySelectorAll('[data-s5-question-fold]').forEach(detail => { detail.open = classroom; });
-      });
-    });
-    const phases = phasesFor(currentGroup());
-    const cursor = currentCursor();
-    const phase = currentPhase();
-    const steps = stepsFor(phase);
-    stages.innerHTML = classroom ? phases.map((item, index) => `<button type="button" data-s5-stage="${index}" aria-current="${index === cursor.phase ? 'step' : 'false'}">${labels[item.dataset.s5Phase]}</button>`).join('') : '<button type="button" data-s5-resume>Teach from this point →</button>';
-    stages.hidden = false;
-    navigation.hidden = !classroom;
-    modeSwitch.querySelectorAll('[data-s5-mode]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.s5Mode === mode)));
-    const atStart = !currentGroup().dataset.s8PrevHref && cursor.phase === 0 && currentStep() === 0;
-    const atEnd = !currentGroup().dataset.s8NextHref && cursor.phase === phases.length - 1 && (!steps.length || currentStep() === steps.length - 1);
-    navigation.querySelector('[data-s5-prev]').disabled = atStart;
-    navigation.querySelector('[data-s5-next]').disabled = atEnd;
-    navigation.querySelector('[data-s5-next]').textContent = atEnd ? 'Topic complete' : cursor.phase === phases.length - 1 ? 'Next concept →' : 'Next →';
-    position.textContent = `Concept ${groupIndex + 1} / ${groups.length} · ${labels[phase.dataset.s5Phase]}${steps.length ? ` · Step ${currentStep() + 1} / ${steps.length}` : ''}`;
-    directory.querySelectorAll('a').forEach(link => link.setAttribute('aria-current', link.hash === `#${currentGroup().id}` ? 'location' : 'false'));
+  function display(scroll = false) {
+    const card = cards[index], topic = card.closest('[data-s8-topic]');
+    const peers = [...topic.querySelectorAll('[data-s8-card]')];
+    root.dataset.mode = reading ? 'reading' : 'classroom';
+    topics.forEach(element => { element.hidden = !reading && element !== topic; });
+    cards.forEach(element => { element.hidden = !reading && element !== card; });
+    position.hidden = nav.hidden = reading;
+    nav.querySelector('[data-s8-hide]').hidden = !card.querySelector('.exam-reveal,.s8-choice,[data-s8-lab]');
+    nav.querySelector('[data-s8-hide]').hidden = false;
+    position.textContent = `${topic.dataset.label} · ${peers.indexOf(card) + 1} / ${peers.length}`;
+    directory.querySelectorAll('a').forEach(link => link.setAttribute('aria-current', link.pathname === location.pathname && link.hash === '#' + topic.id ? 'location' : 'false'));
+    modes.querySelectorAll('button').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.s8Mode === root.dataset.mode)));
+    prev.disabled = index === 0 && !root.dataset.prevPage;
+    prev.textContent = index === 0 && root.dataset.prevPage ? 'Previous lesson' : 'Previous';
+    next.disabled = index === cards.length - 1 && !root.dataset.nextPage;
+    next.textContent = index === cards.length - 1 ? (root.dataset.nextPage ? 'Next lesson' : 'Chapter complete') : 'Next';
     if (scroll) {
-      const focus = steps[currentStep()]?.querySelector('h3') ?? currentGroup().querySelector('h2');
-      focus.focus({ preventScroll: true });
-      root.querySelector('[data-s5-scroll-anchor]').scrollIntoView({ block: 'start', behavior: 'instant' });
+      const surface = card === peers[0] ? topic : card;
+      const heading = surface.querySelector('h2,h3');
+      heading?.focus({ preventScroll: true });
+      surface.scrollIntoView({ block: 'start' });
     }
   }
-  function enterPhase(index, direction = 1) {
-    currentCursor().phase = index;
-    const phase = currentPhase();
-    currentCursor().steps[phase.dataset.s5Phase] = direction < 0 ? Math.max(0, stepsFor(phase).length - 1) : 0;
-  }
-  function move(direction) {
-    leave();
-    const phase = currentPhase();
-    const cursor = currentCursor();
-    const steps = stepsFor(phase);
-    const candidate = currentStep() + direction;
-    if (steps.length && candidate >= 0 && candidate < steps.length) cursor.steps[phase.dataset.s5Phase] = candidate;
-    else if (cursor.phase + direction >= 0 && cursor.phase + direction < phasesFor(currentGroup()).length) enterPhase(cursor.phase + direction, direction);
-    else {
-      const href = direction < 0 ? currentGroup().dataset.s8PrevHref : currentGroup().dataset.s8NextHref;
-      if (href) {
-        const url = new URL(href, location.href);
-        const nextIndex = groups.findIndex(group => `#${group.id}` === url.hash);
-        if (url.pathname === location.pathname && nextIndex >= 0) {
-          groupIndex = nextIndex;
-          enterPhase(direction < 0 ? phasesFor(currentGroup()).length - 1 : 0, direction);
-        } else {
-          location.assign(href + (direction < 0 ? '--recap' : ''));
-          return;
-        }
-      }
-    }
-    render(true);
-    rememberLocation();
-  }
-  function followHash(scroll = true) {
+  function followHash() {
     let id;
     try { id = decodeURIComponent(location.hash.slice(1)); } catch { return; }
-    const target = id ? document.getElementById(id) : null;
-    let group = target?.closest('[data-s5-group]');
-    let phase = target?.closest('[data-s5-phase]');
-    if (id === 'visual-and-core') { group = groups[0]; phase = null; }
-    if (id === 'past-paper-questions' || id === 'original-exam-style-question') {
-      group = groups.find(item => item.querySelector('[data-s5-phase="papers"]'));
-      phase = group?.querySelector('[data-s5-phase="papers"]');
+    if (!id) return;
+    let target = document.getElementById(id);
+    if (!target && id.includes('--')) target = document.getElementById(id.split('--')[0]);
+    if (id === 'last-material') target = cards.at(-1);
+    if (['visual-and-core', 'classroom-unit'].includes(id)) target = cards[0];
+    if (!target) return;
+    if (target.matches('[data-s8-moved]')) { location.replace(target.href); return; }
+    leave();
+    const card = target.closest('[data-s8-card]') ?? target.closest('[data-s8-topic]')?.querySelector('[data-s8-card]');
+    if (card) {
+      index = cards.indexOf(card);
+      display(true);
+      for (let element = target; element && element !== card; element = element.parentElement) if (element.matches('details')) element.open = true;
+    } else {
+      for (let element = target; element && element !== root; element = element.parentElement) if (element.matches('details')) element.open = true;
+      target.scrollIntoView({ block: 'start' });
     }
-    if (!group) {
-      if (target?.matches('.s5-reference, .s5-directory')) {
-        leave();
-        target.open = true;
-        if (scroll) target.scrollIntoView({ block: 'start' });
-      }
+  }
+  function move(delta) {
+    if (document.documentElement.dataset.s8DbmsBusy === 'true') return;
+    const candidate = index + delta;
+    leave();
+    if (candidate < 0 || candidate >= cards.length) {
+      const url = delta < 0 ? root.dataset.prevPage : root.dataset.nextPage;
+      if (url) location.assign(url);
       return;
     }
-    leave();
-    groupIndex = groups.indexOf(group);
-    currentCursor().phase = phase ? phasesFor(group).indexOf(phase) : 0;
-    const step = target?.closest('[data-s5-step-panel]');
-    if (phase) currentCursor().steps[phase.dataset.s5Phase] = step ? stepsFor(phase).indexOf(step) : 0;
-    directory.open = false;
-    render(scroll && mode === 'classroom');
-    if (target?.matches('.exam-question')) target.closest('[data-s5-question-fold]').open = true;
-    else if (phase?.dataset.s5Phase === 'papers') phase.querySelector('[data-s5-question-fold]').open = true;
-    if (scroll && (mode === 'reading' || target?.matches('.exam-question'))) target.scrollIntoView({ block: 'start' });
+    index = candidate;
+    history.replaceState(null, '', '#' + cards[index].id);
+    display(true);
   }
-  navigation.addEventListener('click', event => {
-    if (event.target.closest('[data-s5-hide]')) closeAnswers();
-    if (event.target.closest('[data-s5-prev]')) move(-1);
-    if (event.target.closest('[data-s5-next]')) move(1);
-    if (event.target.closest('[data-s5-reset]')) {
-      leave();
-      cursors[groupIndex] = { phase: 0, steps: {} };
-      currentGroup().dispatchEvent(new CustomEvent('s5:reset', { bubbles: true }));
-      render(true);
-      rememberLocation();
-    }
-  });
-  function captureReadingPosition() {
-    const candidates = groups.flatMap(group => phasesFor(group).map(phase => ({ group, phase, rect: phase.getBoundingClientRect() })));
-    const visible = candidates.find(item => item.rect.bottom > 140 && item.rect.top < window.innerHeight);
-    if (!visible) return;
-    groupIndex = groups.indexOf(visible.group);
-    currentCursor().phase = phasesFor(visible.group).indexOf(visible.phase);
-    const steps = stepsFor(visible.phase);
-    const visibleStep = steps.findIndex(step => step.getBoundingClientRect().bottom > 140);
-    currentCursor().steps[visible.phase.dataset.s5Phase] = Math.max(0, visibleStep);
-  }
-  stages.addEventListener('click', event => {
-    if (event.target.closest('[data-s5-resume]')) {
-      captureReadingPosition();
-      leave();
-      mode = 'classroom';
-      render(true);
-      rememberLocation();
-      return;
-    }
-    const button = event.target.closest('[data-s5-stage]');
-    if (!button) return;
-    leave();
-    currentCursor().phase = Number(button.dataset.s5Stage);
-    render(true);
-    rememberLocation();
-  });
-  modeSwitch.addEventListener('click', event => {
-    const button = event.target.closest('[data-s5-mode]');
-    if (!button || button.dataset.s5Mode === mode) return;
-    leave();
-    mode = button.dataset.s5Mode;
-    render(mode === 'classroom');
-    if (mode === 'reading') currentPhase().scrollIntoView({ block: 'start' });
-  });
-  root.addEventListener('click', event => {
-    const step = event.target.closest('[data-s5-step]');
-    if (step) {
-      leave();
-      const phase = step.closest('[data-s5-phase]');
-      currentCursor().steps[phase.dataset.s5Phase] = Number(step.dataset.s5Step);
-      render(true);
-      rememberLocation();
-    }
-    if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
-    const link = event.target.closest('a[href^="#"]');
-    if (link && link.hash === location.hash) { event.preventDefault(); followHash(); }
-  });
-  const zoom = root.querySelector('.s5-zoom');
-  root.addEventListener('click', event => {
-    const button = event.target.closest('[data-s5-zoom]');
-    if (!button) return;
-    const original = button.querySelector('img');
-    const image = zoom.querySelector('img');
-    image.src = original.src;
-    image.alt = original.alt;
-    zoom.showModal();
-  });
-  const tableDialog = document.createElement('dialog');
-  tableDialog.className = 's8-table-zoom';
-  tableDialog.setAttribute('aria-label', 'Enlarged data table');
-  tableDialog.innerHTML = '<form method="dialog"><button autofocus>Close table</button></form><div data-s8-table-content></div>';
-  root.append(tableDialog);
-  function addTableControls() {
-    root.querySelectorAll('.s5-table-scroll, .s8-table-wrap, .s8-sql-lab .table-wrap').forEach(wrapper => {
-      if (wrapper.dataset.s8Enlarge || !wrapper.querySelector('table') || wrapper.closest('dialog')) return;
-      wrapper.dataset.s8Enlarge = 'true';
-      const button = document.createElement('button');
-      button.type = 'button'; button.className = 's8-enlarge-table'; button.textContent = 'Enlarge table';
-      button.addEventListener('click', () => {
-        const copy = wrapper.querySelector('table').cloneNode(true);
-        copy.querySelectorAll('[id]').forEach(item => item.removeAttribute('id'));
-        copy.querySelectorAll('button,input,select,textarea').forEach(item => { item.disabled = true; });
-        tableDialog.querySelector('[data-s8-table-content]').replaceChildren(copy);
-        tableDialog.showModal();
+  prev.addEventListener('click', () => move(-1));
+  next.addEventListener('click', () => move(1));
+  nav.querySelector('[data-s8-hide]').addEventListener('click', hideAnswers);
+  modes.addEventListener('click', event => {
+    const button = event.target.closest('[data-s8-mode]');
+    if (!button || button.dataset.s8Mode === root.dataset.mode) return;
+    if (reading) {
+      const top = root.querySelector('.s8-toolbar').getBoundingClientRect().bottom;
+      const bottom = Math.max(top + 1, window.innerHeight / 2);
+      const overlaps = cards.map(card => {
+        const rect = card.getBoundingClientRect();
+        return Math.max(0, Math.min(rect.bottom, bottom) - Math.max(rect.top, top));
       });
-      wrapper.prepend(button);
-    });
-  }
-  let tableFrame;
-  new MutationObserver(() => { cancelAnimationFrame(tableFrame); tableFrame = requestAnimationFrame(addTableControls); }).observe(root, { childList: true, subtree: true });
-  addTableControls();
-  window.addEventListener('keydown', event => {
-    if (mode !== 'classroom' || root.querySelector('dialog[open]') || event.defaultPrevented || event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) return;
-    if (event.target.closest('input, select, textarea, [contenteditable="true"], summary, pre, [role="region"], [tabindex="0"]')) return;
-    if (event.key === 'ArrowRight' || event.key === 'ArrowLeft') {
+      const largest = Math.max(...overlaps);
+      if (largest > 0) index = overlaps.indexOf(largest);
+    }
+    leave();
+    reading = button.dataset.s8Mode === 'reading';
+    try { sessionStorage.setItem('s8-reading-mode', reading ? 'reading' : 'classroom'); } catch { /* Optional preference. */ }
+    history.replaceState(null, '', '#' + cards[index].id);
+    display(true);
+  });
+  root.addEventListener('click', event => {
+    const link = event.target.closest('a[href^="#"]');
+    if (link && link.hash === location.hash && !event.metaKey && !event.ctrlKey && !event.altKey && !event.shiftKey) {
       event.preventDefault();
-      move(event.key === 'ArrowRight' ? 1 : -1);
+      followHash();
     }
   });
-  window.addEventListener('hashchange', () => followHash());
-  root.classList.add('s5-enhanced');
-  modeSwitch.hidden = false;
-  render();
-  followHash(Boolean(location.hash));
+  window.addEventListener('hashchange', followHash);
 
-  // Eagerly load every local image on this page, including folded mark schemes.
-  // This reports only image readiness; it does not promise first-load offline access.
-  const resourceStatus = root.querySelector('[data-s5-resources]');
-  resourceStatus.hidden = false;
-  const images = [...root.querySelectorAll('img[src]')];
-  images.forEach(image => { image.loading = 'eager'; });
-  let loaded = 0;
-  let failed = 0;
-  function updateResources() {
-    const done = loaded + failed === images.length;
-    resourceStatus.dataset.ready = done && failed === 0 ? 'true' : 'false';
-    resourceStatus.textContent = done ? failed ? `${failed} page image${failed === 1 ? '' : 's'} could not load. Reconnect and reload before using those materials.` : 'This page’s images are ready.' : `Loading this page’s images: ${loaded + failed} / ${images.length}`;
-    if (!navigator.onLine) resourceStatus.textContent += ' Offline: stay on this loaded page.';
-  }
-  images.forEach(image => {
-    const finish = ok => { if (ok) loaded += 1; else failed += 1; updateResources(); };
-    if (image.complete) finish(image.naturalWidth > 0);
-    else {
-      image.addEventListener('load', () => finish(true), { once: true });
-      image.addEventListener('error', () => finish(false), { once: true });
+  const dialog = document.createElement('dialog');
+  dialog.className = 's8-material-dialog';
+  dialog.setAttribute('aria-label', 'Enlarged teaching material');
+  dialog.innerHTML = '<form method="dialog"><button autofocus>Close</button></form>';
+  root.append(dialog);
+  let restore;
+  const zoomable = '.s8-visual, .s8-table-scroll, .s8-lab, .official-extract';
+  root.querySelectorAll(zoomable).forEach(material => {
+    if (material.parentElement.closest(zoomable)) return;
+    const button = document.createElement('button');
+    button.type = 'button'; button.className = 's8-enlarge';
+    button.textContent = material.matches('.s8-lab') ? 'Enlarge interactive' : material.matches('.s8-table-scroll') ? 'Enlarge table' : material.matches('.official-extract') ? 'Enlarge original extract' : 'Enlarge figure';
+    const home = document.createComment('teaching material');
+    const heading = material.closest('[data-s8-card]')?.querySelector('.s8-card-heading');
+    if (heading && material.closest('[data-s8-card]').querySelectorAll(zoomable).length === 1 && !material.matches('.official-extract') && !material.closest('details.s8-choice')) heading.append(button);
+    else material.before(button);
+    material.before(home);
+    button.addEventListener('click', () => {
+      restore = () => { home.after(material); button.focus({ preventScroll: true }); };
+      dialog.append(material);
+      dialog.showModal();
+    });
+  });
+  dialog.addEventListener('close', () => { restore?.(); restore = undefined; });
+  document.addEventListener('keydown', event => {
+    if (reading || document.querySelector('dialog[open]') || event.defaultPrevented || event.ctrlKey || event.metaKey || event.altKey || event.shiftKey) return;
+    if (event.target.closest('button,select,input,textarea,a,summary,[contenteditable="true"],[tabindex="0"],details[open]')) return;
+    if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
+      event.preventDefault();
+      move(event.key === 'ArrowLeft' ? -1 : 1);
     }
   });
-  window.addEventListener('online', updateResources);
-  window.addEventListener('offline', updateResources);
-  updateResources();
+
+  let printRequest, printState;
+  root.querySelector('.s8-print-controls').hidden = false;
+  root.querySelectorAll('[data-s8-print]').forEach(button => button.addEventListener('click', () => {
+    printRequest = button.dataset.s8Print;
+    window.print();
+  }));
+  window.addEventListener('beforeprint', () => {
+    if (printState) return;
+    if (dialog.open) { dialog.close(); restore?.(); restore = undefined; }
+    printState = [...root.querySelectorAll('details')].map(element => [element, element.open]);
+    root.querySelectorAll('[data-s8-topic],[data-s8-card]').forEach(element => { element.hidden = false; });
+    if (printRequest) {
+      root.dataset.printMode = printRequest;
+      root.querySelectorAll('#practice,.exam-question-sheet,.s8-extension').forEach(element => { element.open = true; });
+      root.querySelectorAll('.exam-reveal,.practice-question details').forEach(element => { element.open = printRequest === 'answers'; });
+    }
+  });
+  window.addEventListener('afterprint', () => {
+    printState?.forEach(([element, open]) => { element.open = open; });
+    delete root.dataset.printMode;
+    printRequest = printState = undefined;
+    display();
+  });
+  // A lesson may change while the shared DBMS is saving. Never abandon that write.
+  document.addEventListener('click', event => {
+    const link = event.target.closest('a[href]');
+    if (!link || document.documentElement.dataset.s8DbmsBusy !== 'true') return;
+    if (link.origin === location.origin && link.pathname !== location.pathname) {
+      event.preventDefault();
+      position.hidden = false;
+      position.textContent = 'Wait for the Library DBMS to finish saving before changing pages.';
+    }
+  }, true);
+  root.addEventListener('click', event => {
+    const button = event.target.closest('[data-s8-vocabulary]');
+    if (!button) return;
+    const demo = button.closest('.s8-vocabulary-demo');
+    demo.dataset.highlight = button.dataset.s8Vocabulary;
+    demo.querySelectorAll('[data-s8-vocabulary]').forEach(b => b.setAttribute('aria-pressed', String(b === button)));
+    const explanations = {
+      entity: 'Member is the real-world entity type. Asha is one occurrence of that entity.',
+      table: 'The Member table represents stored member occurrences using rows and named columns.',
+      record: 'This whole row is one record, also called a tuple. It contains the values for member 1.',
+      field: 'MemberName is an attribute, represented by this field (column). Asha is one value in that field.'
+    };
+    demo.querySelector('[data-s8-vocabulary-explanation]').textContent = button.dataset.explanation || explanations[button.dataset.s8Vocabulary];
+  });
+  root.addEventListener('click', event => {
+    const button = event.target.closest('[data-s8-er-highlight]');
+    if (!button) return;
+    const demo = button.closest('.s8-er-demo');
+    demo.dataset.active = button.dataset.s8ErHighlight;
+    demo.querySelectorAll('[data-s8-er-highlight]').forEach(b => b.setAttribute('aria-pressed', String(b === button)));
+    demo.querySelector('[data-s8-er-explanation]').textContent = button.dataset.explanation;
+  });
+  modes.hidden = false;
+  display();
+  followHash();
 })();

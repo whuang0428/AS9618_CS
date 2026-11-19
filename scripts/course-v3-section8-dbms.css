@@ -1,0 +1,63 @@
+.s8-dbms-launch { margin:1.5rem 0; padding:1.1rem; border:1px solid #a8bdc6; border-radius:.65rem; background:#eef5f6; }
+.s8-dbms-launch-button { font-weight:700; font-size:1rem; }
+.s8-dbms-dialog { box-sizing:border-box; width:min(1200px,96vw); max-width:96vw; max-height:94dvh; padding:1.25rem; border:1px solid #7896a4; border-radius:.7rem; color:#172e3b; background:#fff; overflow:auto; font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; line-height:1.5; }
+.s8-dbms-dialog::backdrop { background:#142b3cbd; }
+.s8-dbms-dialog * { box-sizing:border-box; }
+.s8-dbms-dialog [hidden] { display:none!important; }
+.s8-dbms-header { display:flex; align-items:flex-start; justify-content:space-between; gap:1rem; }
+.s8-dbms-header h2 { margin:.2rem 0; }
+.s8-dbms-eyebrow { margin:0; font-size:.75rem; font-weight:700; text-transform:uppercase; letter-spacing:.08em; color:#416878; }
+.s8-dbms-intro,.s8-dbms-storage { font-size:.9rem; }
+.s8-dbms-toolbar,.s8-dbms-actions,.s8-dbms-footer { display:flex; align-items:center; flex-wrap:wrap; gap:.6rem; margin:1rem 0; }
+.s8-dbms-dialog button,.s8-dbms-dialog select,.s8-dbms-dialog input { min-height:2.65rem; padding:.5rem .7rem; font:inherit; border:1px solid #8fa5b0; border-radius:.35rem; background:white; color:#163449; }
+.s8-dbms-dialog button { cursor:pointer; }
+.s8-dbms-dialog button:hover { background:#eaf3f4; }
+.s8-dbms-dialog button:disabled { cursor:wait; opacity:.55; }
+.s8-dbms-dialog button:focus-visible,.s8-dbms-dialog input:focus-visible,.s8-dbms-dialog select:focus-visible,.s8-dbms-dialog textarea:focus-visible,.s8-dbms-table:focus-visible { outline:3px solid #d79c34; outline-offset:2px; }
+.s8-dbms-tabs { display:flex; flex-wrap:wrap; gap:.35rem; padding:.8rem 0; border-top:1px solid #c8d5da; border-bottom:1px solid #c8d5da; }
+.s8-dbms-tabs [aria-selected=true],.s8-dbms-actions [aria-pressed=true],.s8-dbms-tabs [aria-selected=true]:hover,.s8-dbms-actions [aria-pressed=true]:hover { background:#163f52; color:#fff; border-color:#163f52; }
+.s8-dbms-panel { padding:1rem 0; min-width:0; }
+.s8-dbms-panel h3 { margin:.2rem 0 1rem; }
+.s8-dbms-status { padding:.75rem; background:#eef5f6; border-left:4px solid #357084; white-space:pre-wrap; }
+.s8-dbms-status[data-error=true] { background:#fff2ea; border-color:#b05b29; }
+.s8-dbms-storage[data-temporary=true] { color:#8c431b; font-weight:600; }
+.s8-dbms-table { width:100%; max-width:100%; overflow:auto; margin:.7rem 0; border:1px solid #c8d5da; border-radius:.3rem; }
+.s8-dbms-table table { border-collapse:collapse; width:100%; font-size:.9rem; white-space:nowrap; }
+.s8-dbms-table th,.s8-dbms-table td { padding:.55rem .7rem; text-align:left; border-bottom:1px solid #dde5e9; }
+.s8-dbms-table th { background:#eff4f6; color:#163449; }
+.s8-dbms-null { color:#627784; font-style:italic; }
+.s8-dbms-form { display:flex; flex-wrap:wrap; align-items:end; gap:.7rem; padding:1rem 0; }
+.s8-dbms-form label { display:grid; gap:.3rem; max-width:100%; }
+.s8-dbms-form input { width:100%; max-width:15rem; }
+.s8-dbms-dialog details { margin:1rem 0; border:1px solid #cedae0; border-radius:.4rem; padding:.7rem; }
+.s8-dbms-dialog summary { cursor:pointer; font-weight:600; }
+.s8-dbms-schema { display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:.7rem; }
+.s8-dbms-schema article { padding:.8rem; border:1px solid #b8ccd4; border-top:4px solid #3b7488; border-radius:.35rem; min-width:0; }
+.s8-dbms-schema h4 { margin:0 0 .6rem; }
+.s8-dbms-schema ul,.s8-dbms-relations { padding-left:1.25rem; }
+.s8-dbms-schema li,.s8-dbms-relations li { margin:.4rem 0; overflow-wrap:anywhere; }
+.s8-dbms-editor { display:grid; gap:.5rem; margin:1rem 0; }
+.s8-dbms-editor textarea { width:100%; min-width:0; resize:vertical; font:.95rem/1.5 ui-monospace,SFMono-Regular,Consolas,monospace; tab-size:2; border:1px solid #7e9aa7; padding:.75rem; border-radius:.4rem; min-height:12rem; }
+.s8-dbms-editor textarea[readonly] { background:#f3f6f7; }
+.s8-dbms-panel select { max-width:100%; }
+.s8-dbms-footer { border-top:1px solid #c8d5da; padding-top:1rem; font-size:.85rem; }
+.s8-dbms-plan pre { max-width:100%; overflow:auto; font-size:.85rem; background:#f3f6f7; padding:.8rem; }
+.s8-dbms-plan ol { padding-left:1.2rem; }
+.s8-dbms-plan li { margin:.5rem 0; }
+.s8-dbms-dialog code { overflow-wrap:anywhere; }
+.s8-dbms-no-records { padding:1rem; background:#f4f6f7; }
+.s8-dbms-instruction { padding:.7rem; border:1px solid #c9d8dd; background:#f2f7f8; }
+.s8-dbms-dialog[aria-busy=true] { cursor:progress; }
+@media(max-width:600px) {
+  .s8-dbms-dialog { width:98vw; max-width:98vw; padding:.7rem; max-height:97dvh; }
+  .s8-dbms-toolbar { align-items:stretch; }
+  .s8-dbms-toolbar label { display:flex; flex-wrap:wrap; align-items:center; gap:.3rem; }
+  .s8-dbms-tabs { gap:.3rem; }
+  .s8-dbms-tabs button { flex:1 1 42%; font-size:.85rem; }
+  .s8-dbms-schema { grid-template-columns:minmax(0,1fr); }
+  .s8-dbms-form label { width:100%; }
+  .s8-dbms-form input { max-width:100%; }
+  .s8-dbms-editor textarea { font-size:.85rem; }
+  .s8-dbms-dialog h2 { font-size:1.4rem; }
+}
+@media print { .s8-dbms-launch,.s8-dbms-dialog { display:none!important; } }

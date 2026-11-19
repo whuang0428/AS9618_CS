@@ -1,0 +1,704 @@
+[
+  {
+    "id": "E8N01",
+    "lesson": 43,
+    "year": 2025,
+    "series": "Oct/Nov",
+    "component": 11,
+    "parts": [
+      {
+        "part": "2(b)",
+        "marks": 2
+      }
+    ],
+    "marks": 2,
+    "title": "Explain why the work-experience tables are in 3NF",
+    "commandWord": "Explain",
+    "objectiveIds": [
+      "S8.04.A04"
+    ],
+    "syllabusMapping": [
+      "S8.04"
+    ],
+    "reading": [
+      "Use the stated business rules and all three table definitions. Explain the dependencies; do not infer normal form only from how a few sample values look."
+    ],
+    "solution": [
+      "Each table stores atomic values with no repeating groups. In each table, the non-key attributes describe its own identifier: StudentID identifies student details, PlacementID identifies one placement and CompanyID identifies company details. There is no partial-key dependency and no non-key attribute determines another non-key attribute under the supplied design. Therefore no transitive dependency remains."
+    ],
+    "marking": [
+      "The official maximum is two marks. Give two valid normal-form reasons, such as no repeating groups and no partial or transitive dependencies, and relate the explanation to the supplied tables.",
+      "The unchanged official scheme also accepts that there are no many-to-many relationships. That observation alone does not prove 3NF: a table can have no many-to-many relationship and still contain a transitive dependency."
+    ],
+    "mistakes": [
+      "Do not claim that using primary keys, or merely splitting data into three tables, proves 3NF. Name the dependency or repeating-group condition that the design satisfies."
+    ],
+    "assessmentFocus": [
+      "Explain why a supplied relational design satisfies 3NF."
+    ],
+    "coverageNotes": [
+      "This is a two-mark explanation, not a request to redesign the tables or draw the E-R diagram from part (a)."
+    ],
+    "cropSpec": {
+      "ms": [
+        [
+          5,
+          252,
+          343
+        ]
+      ],
+      "qp": [
+        [
+          4,
+          60,
+          275
+        ],
+        [
+          4,
+          500,
+          630
+        ]
+      ]
+    },
+    "sourceType": "past-paper",
+    "syllabusCode": "9618",
+    "inserts": [],
+    "sourceRef": "Cambridge 9618/11 · October/November 2025 · 2(b)",
+    "accessUrl": "https://www.cambridgeinternational.org/programmes-and-qualifications/cambridge-international-as-and-a-level-computer-science-9618/past-papers/",
+    "qp": {
+      "filename": "9618_w25_qp_11.pdf",
+      "sourcePdf": "2025-Oct-Nov/9618_w25_qp_11.pdf",
+      "sha256": "2fe1691a0eff789ac686121aac0ae4e7cb3852f9bd321a6542dc6b82fbedf616",
+      "extracts": [
+        {
+          "asset": "/assets/past-paper-questions/s8-e8n01-qp-1.png",
+          "page": 4,
+          "bbox": [
+            45,
+            60,
+            560.27559,
+            275
+          ],
+          "width": 1030,
+          "height": 430,
+          "sha256": "905fc6ae7a74ed1f005d55e5fd3eedd1b4f6138010325d90d0e084812993cabe"
+        },
+        {
+          "asset": "/assets/past-paper-questions/s8-e8n01-qp-2.png",
+          "page": 4,
+          "bbox": [
+            45,
+            500,
+            560.27559,
+            630
+          ],
+          "width": 1030,
+          "height": 260,
+          "sha256": "8feb363bc3d8b1cd70b362e00a71bc4798c85227f7fe571a67d46b092a8a78aa"
+        }
+      ]
+    },
+    "ms": {
+      "filename": "9618_w25_ms_11.pdf",
+      "sourcePdf": "2025-Oct-Nov/9618_w25_ms_11.pdf",
+      "sha256": "64b2928b1348598cd0be2cda8014405264f0a4303b73665633e4e297217056f4",
+      "extracts": [
+        {
+          "asset": "/assets/past-paper-questions/s8-e8n01-ms-1.png",
+          "page": 5,
+          "bbox": [
+            45,
+            252,
+            560.2,
+            343
+          ],
+          "width": 1030,
+          "height": 182,
+          "sha256": "7e5d898f87923e741c4cf4384c97c9433d4d084529f91ad37621ee7deccb2153"
+        }
+      ]
+    },
+    "extractReview": {
+      "status": "verified",
+      "date": "2026-11-19",
+      "reviewer": "Codex",
+      "cropSpecSha256": "6d0d477843a8c329f8cf842d5eb8321d223be0982f1fe9fb3bcc7d64218706a9",
+      "method": "Read the original local QP/MS pages, checked selected parts, marks, source identities and all required shared context. Rendered unchanged original regions at 144 dpi, checked every crop boundary against original glyph boxes, and visually reviewed every final PNG against the original pages on 2026-11-19. Confirmed full question text, table definitions, answer rows and marks remain visible. Recorded original PDF, crop-specification and final PNG SHA-256 hashes. Teacher explanations are separate from the unchanged official extracts."
+    }
+  },
+  {
+    "id": "E8N02",
+    "lesson": 44,
+    "year": 2023,
+    "series": "May/June",
+    "component": 12,
+    "parts": [
+      {
+        "part": "2(a)",
+        "marks": 4
+      }
+    ],
+    "marks": 4,
+    "title": "Match DBMS features and tools to their purposes",
+    "commandWord": "Complete",
+    "objectiveIds": [
+      "S8.05.A01",
+      "S8.05.A03",
+      "S8.06.A01",
+      "S8.06.A02"
+    ],
+    "syllabusMapping": [
+      "S8.05",
+      "S8.06"
+    ],
+    "reading": [
+      "Complete all four missing entries. Two rows require descriptions; the other two require the name of a feature or tool."
+    ],
+    "solution": [
+      {
+        "type": "table",
+        "headers": [
+          "Row",
+          "Missing entry"
+        ],
+        "rows": [
+          [
+            "Data dictionary",
+            "Metadata describing the structure of the database, including its fields, types and constraints."
+          ],
+          [
+            "Query processor",
+            "Software that processes and executes a query and returns the matching results."
+          ],
+          [
+            "A model not specific to one DBMS",
+            "Logical schema"
+          ],
+          [
+            "A tool for creating tables, forms and reports",
+            "Developer interface"
+          ]
+        ]
+      }
+    ],
+    "marking": [
+      "One mark is available for each of the four correct entries. The query-processor description must explain processing or executing a query and obtaining results; simply repeating the word query does not describe its purpose."
+    ],
+    "mistakes": [
+      "The data dictionary contains descriptions of data, not the ordinary lesson-booking records. A developer interface creates database objects and application elements; the query processor executes a query."
+    ],
+    "assessmentFocus": [
+      "Distinguish metadata, a logical schema, development tools and query execution."
+    ],
+    "coverageNotes": [
+      "This matching task does not directly assess backup procedures, access rights or every data-integrity mechanism."
+    ],
+    "cropSpec": {
+      "ms": [
+        [
+          4,
+          88,
+          361
+        ]
+      ],
+      "qp": [
+        [
+          5,
+          60,
+          513
+        ]
+      ]
+    },
+    "sourceType": "past-paper",
+    "syllabusCode": "9618",
+    "inserts": [],
+    "sourceRef": "Cambridge 9618/12 · May/June 2023 · 2(a)",
+    "accessUrl": "https://www.cambridgeinternational.org/programmes-and-qualifications/cambridge-international-as-and-a-level-computer-science-9618/past-papers/",
+    "qp": {
+      "filename": "9618_s23_qp_12.pdf",
+      "sourcePdf": "2023-May-June/9618_s23_qp_12.pdf",
+      "sha256": "2ce09e20a3bdc23506591fd65a99df636065d1a16a9939d4ad382660325a7d89",
+      "extracts": [
+        {
+          "asset": "/assets/past-paper-questions/s8-e8n02-qp-1.png",
+          "page": 5,
+          "bbox": [
+            45,
+            60,
+            560.276,
+            513
+          ],
+          "width": 1030,
+          "height": 906,
+          "sha256": "3be8778749ee9a76c1013cfdfe8c215327c4d8dcbf2d34aae29fa70941000980"
+        }
+      ]
+    },
+    "ms": {
+      "filename": "9618_s23_ms_12.pdf",
+      "sourcePdf": "2023-May-June/9618_s23_ms_12.pdf",
+      "sha256": "bc0db739175ead33ca2acb9af7fc46cdc2f8153a05ac867b943ccb1ad09f5a2c",
+      "extracts": [
+        {
+          "asset": "/assets/past-paper-questions/s8-e8n02-ms-1.png",
+          "page": 4,
+          "bbox": [
+            45,
+            88,
+            560.22,
+            361
+          ],
+          "width": 1030,
+          "height": 546,
+          "sha256": "3655101474612be2f0bb99a7fbb38948cf7209240ee8ebaf73999975c6bf42a4"
+        }
+      ]
+    },
+    "extractReview": {
+      "status": "verified",
+      "date": "2026-11-19",
+      "reviewer": "Codex",
+      "cropSpecSha256": "80c03285605280edb682b7b711b7d9ea797379dfc55a51568548eab334238cb9",
+      "method": "Read the original local QP/MS pages, checked selected parts, marks, source identities and all required shared context. Rendered unchanged original regions at 144 dpi, checked every crop boundary against original glyph boxes, and visually reviewed every final PNG against the original pages on 2026-11-19. Confirmed full question text, table definitions, answer rows and marks remain visible. Recorded original PDF, crop-specification and final PNG SHA-256 hashes. Teacher explanations are separate from the unchanged official extracts."
+    }
+  },
+  {
+    "id": "E8N03",
+    "lesson": 47,
+    "year": 2025,
+    "series": "Oct/Nov",
+    "component": 11,
+    "parts": [
+      {
+        "part": "2(c)(i)",
+        "marks": 2
+      }
+    ],
+    "marks": 2,
+    "title": "Delete completed work-experience placements",
+    "commandWord": "Write",
+    "objectiveIds": [
+      "S8.11.A02"
+    ],
+    "syllabusMapping": [
+      "S8.11"
+    ],
+    "reading": [
+      "The task removes every completed placement record. Read Complete as a Boolean field and distinguish deleting a record from changing its Complete value."
+    ],
+    "solution": [
+      {
+        "type": "code",
+        "text": "DELETE FROM PLACEMENT\nWHERE Complete = TRUE;"
+      },
+      "In the supplied sample, PC001 and PC004 are removed. PC002 and PC003 remain. These remaining records are a teacher-derived check on the supplied data; the official answer asks for the SQL statement."
+    ],
+    "marking": [
+      "One mark is available for DELETE FROM with PLACEMENT, and one for the correct condition Complete = TRUE."
+    ],
+    "mistakes": [
+      "Omitting WHERE targets all placements. UPDATE would change values rather than remove the completed records. Do not delete from STUDENT or COMPANY."
+    ],
+    "assessmentFocus": [
+      "Write a conditional DELETE using a Boolean attribute."
+    ],
+    "coverageNotes": [
+      "The source does not ask for a row count or output table; the before/after explanation is teacher-written."
+    ],
+    "cropSpec": {
+      "ms": [
+        [
+          5,
+          344,
+          457
+        ]
+      ],
+      "qp": [
+        [
+          4,
+          60,
+          275
+        ],
+        [
+          5,
+          60,
+          339
+        ]
+      ]
+    },
+    "sourceType": "past-paper",
+    "syllabusCode": "9618",
+    "inserts": [],
+    "sourceRef": "Cambridge 9618/11 · October/November 2025 · 2(c)(i)",
+    "accessUrl": "https://www.cambridgeinternational.org/programmes-and-qualifications/cambridge-international-as-and-a-level-computer-science-9618/past-papers/",
+    "qp": {
+      "filename": "9618_w25_qp_11.pdf",
+      "sourcePdf": "2025-Oct-Nov/9618_w25_qp_11.pdf",
+      "sha256": "2fe1691a0eff789ac686121aac0ae4e7cb3852f9bd321a6542dc6b82fbedf616",
+      "extracts": [
+        {
+          "asset": "/assets/past-paper-questions/s8-e8n03-qp-1.png",
+          "page": 4,
+          "bbox": [
+            45,
+            60,
+            560.27559,
+            275
+          ],
+          "width": 1030,
+          "height": 430,
+          "sha256": "905fc6ae7a74ed1f005d55e5fd3eedd1b4f6138010325d90d0e084812993cabe"
+        },
+        {
+          "asset": "/assets/past-paper-questions/s8-e8n03-qp-2.png",
+          "page": 5,
+          "bbox": [
+            45,
+            60,
+            560.27559,
+            339
+          ],
+          "width": 1030,
+          "height": 558,
+          "sha256": "16380d348f09e9392209ce8dff561570c8d69e63c507f199a2ef927f9c5a9a8b"
+        }
+      ]
+    },
+    "ms": {
+      "filename": "9618_w25_ms_11.pdf",
+      "sourcePdf": "2025-Oct-Nov/9618_w25_ms_11.pdf",
+      "sha256": "64b2928b1348598cd0be2cda8014405264f0a4303b73665633e4e297217056f4",
+      "extracts": [
+        {
+          "asset": "/assets/past-paper-questions/s8-e8n03-ms-1.png",
+          "page": 5,
+          "bbox": [
+            45,
+            344,
+            560.2,
+            457
+          ],
+          "width": 1030,
+          "height": 226,
+          "sha256": "949fef7500bf245389043249e5a15407f4eb0ed9d01378ee4affee2bdfd3aae2"
+        }
+      ]
+    },
+    "extractReview": {
+      "status": "verified",
+      "date": "2026-11-19",
+      "reviewer": "Codex",
+      "cropSpecSha256": "e681e6d89858f25e764ae72287ce30bcf1ef87e30a1d36c453cafe4f2b94969e",
+      "method": "Read the original local QP/MS pages, checked selected parts, marks, source identities and all required shared context. Rendered unchanged original regions at 144 dpi, checked every crop boundary against original glyph boxes, and visually reviewed every final PNG against the original pages on 2026-11-19. Confirmed full question text, table definitions, answer rows and marks remain visible. Recorded original PDF, crop-specification and final PNG SHA-256 hashes. Teacher explanations are separate from the unchanged official extracts."
+    }
+  },
+  {
+    "id": "E8N04",
+    "lesson": 47,
+    "year": 2023,
+    "series": "May/June",
+    "component": 12,
+    "parts": [
+      {
+        "part": "2(c)(iii)",
+        "marks": 4
+      }
+    ],
+    "marks": 4,
+    "title": "Read and repair a four-error SQL query",
+    "commandWord": "Identify and correct",
+    "objectiveIds": [
+      "S8.08.A01",
+      "S8.08.A02",
+      "S8.10.A02",
+      "S8.10.A05",
+      "S8.10.A06"
+    ],
+    "syllabusMapping": [
+      "S8.08",
+      "S8.10"
+    ],
+    "reading": [
+      "The query should count beginner riders with a lesson on the stated date. Compare each expression and condition against that purpose. The original question uses a comma-separated join and #DD/MM/YYYY# date literals."
+    ],
+    "solution": [
+      {
+        "type": "table",
+        "headers": [
+          "Error in the supplied query",
+          "Correction and reason"
+        ],
+        "rows": [
+          [
+            "SUM(STUDENT.RiderLevel)",
+            "Use COUNT(STUDENT.RiderLevel): count matching rider values, rather than trying to sum level names."
+          ],
+          [
+            "WHERE StudentID = StudentID",
+            "Use STUDENT.StudentID = LESSON.StudentID so the condition joins a student to their lesson."
+          ],
+          [
+            "OR Date = #09/09/2023#",
+            "Use AND Date = #09/09/2023# so the date condition must hold as well as the join."
+          ],
+          [
+            "STUDENT.RiderLevel = Beginner",
+            "Quote the string value: STUDENT.RiderLevel = 'Beginner'."
+          ]
+        ]
+      },
+      {
+        "type": "code",
+        "text": "SELECT COUNT(STUDENT.RiderLevel) AS NumberOfRiders\nFROM STUDENT, LESSON\nWHERE STUDENT.StudentID = LESSON.StudentID\nAND Date = #09/09/2023#\nAND STUDENT.RiderLevel = 'Beginner';"
+      },
+      "The corrected version above retains the date notation stated in this paper. In the PostgreSQL classroom workbench use an ISO date literal, DATE '2023-09-09', and its matching local schema. Do not silently change the original question or treat its date notation as executable PostgreSQL."
+    ],
+    "marking": [
+      "There are four marks, one for each identified and corrected error. The official points are COUNT instead of SUM, qualified join fields, AND instead of OR, and quotation marks around Beginner."
+    ],
+    "mistakes": [
+      "Replacing SUM with COUNT is not enough: an ambiguous join or incorrect OR can still select the wrong records. This question asks for four corrections, not invented output rows; no full set of stored data is supplied."
+    ],
+    "assessmentFocus": [
+      "Interpret SQL identifiers, aggregate purpose, joining, logical conditions and string literals."
+    ],
+    "coverageNotes": [
+      "This is a SQL-reading and debugging task, not a write-the-output question. The original comma join is retained; teaching examples may separately introduce INNER JOIN."
+    ],
+    "cropSpec": {
+      "ms": [
+        [
+          5,
+          254,
+          370
+        ]
+      ],
+      "qp": [
+        [
+          5,
+          60,
+          109
+        ],
+        [
+          6,
+          60,
+          228
+        ],
+        [
+          7,
+          60,
+          500
+        ]
+      ]
+    },
+    "sourceType": "past-paper",
+    "syllabusCode": "9618",
+    "inserts": [],
+    "sourceRef": "Cambridge 9618/12 · May/June 2023 · 2(c)(iii)",
+    "accessUrl": "https://www.cambridgeinternational.org/programmes-and-qualifications/cambridge-international-as-and-a-level-computer-science-9618/past-papers/",
+    "qp": {
+      "filename": "9618_s23_qp_12.pdf",
+      "sourcePdf": "2023-May-June/9618_s23_qp_12.pdf",
+      "sha256": "2ce09e20a3bdc23506591fd65a99df636065d1a16a9939d4ad382660325a7d89",
+      "extracts": [
+        {
+          "asset": "/assets/past-paper-questions/s8-e8n04-qp-1.png",
+          "page": 5,
+          "bbox": [
+            45,
+            60,
+            560.276,
+            109
+          ],
+          "width": 1030,
+          "height": 98,
+          "sha256": "2ea2c93e4cd78206e7e44ef3c77dfb3044f9f4dfb00103f4dd3eed7889de7ce1"
+        },
+        {
+          "asset": "/assets/past-paper-questions/s8-e8n04-qp-2.png",
+          "page": 6,
+          "bbox": [
+            45,
+            60,
+            560.276,
+            228
+          ],
+          "width": 1030,
+          "height": 336,
+          "sha256": "96bb046259643449f29f56f95df13b49b84b7db966170e21e4d66dac314c7b82"
+        },
+        {
+          "asset": "/assets/past-paper-questions/s8-e8n04-qp-3.png",
+          "page": 7,
+          "bbox": [
+            45,
+            60,
+            560.276,
+            500
+          ],
+          "width": 1030,
+          "height": 880,
+          "sha256": "0b2ccf6f69bdd7603c8d337e012e3fda362a5522ccd196d80d157f5a873adc77"
+        }
+      ]
+    },
+    "ms": {
+      "filename": "9618_s23_ms_12.pdf",
+      "sourcePdf": "2023-May-June/9618_s23_ms_12.pdf",
+      "sha256": "bc0db739175ead33ca2acb9af7fc46cdc2f8153a05ac867b943ccb1ad09f5a2c",
+      "extracts": [
+        {
+          "asset": "/assets/past-paper-questions/s8-e8n04-ms-1.png",
+          "page": 5,
+          "bbox": [
+            45,
+            254,
+            560.22,
+            370
+          ],
+          "width": 1030,
+          "height": 232,
+          "sha256": "1f87c5616c869f2a8b487103797c11f75c16b32dd25e744e30a983540368e8cb"
+        }
+      ]
+    },
+    "extractReview": {
+      "status": "verified",
+      "date": "2026-11-19",
+      "reviewer": "Codex",
+      "cropSpecSha256": "665422e58b4add3495235186f3473535139ac5219e693b6d3b7dfe911522712e",
+      "method": "Read the original local QP/MS pages, checked selected parts, marks, source identities and all required shared context. Rendered unchanged original regions at 144 dpi, checked every crop boundary against original glyph boxes, and visually reviewed every final PNG against the original pages on 2026-11-19. Confirmed full question text, table definitions, answer rows and marks remain visible. Recorded original PDF, crop-specification and final PNG SHA-256 hashes. Teacher explanations are separate from the unchanged official extracts."
+    }
+  },
+  {
+    "id": "E8N05",
+    "lesson": 47,
+    "year": 2025,
+    "series": "May/June",
+    "component": 13,
+    "parts": [
+      {
+        "part": "6(b)",
+        "marks": 4
+      }
+    ],
+    "marks": 4,
+    "title": "Insert a new pen product",
+    "commandWord": "Write",
+    "objectiveIds": [
+      "S8.11.A01"
+    ],
+    "syllabusMapping": [
+      "S8.11"
+    ],
+    "reading": [
+      "Use the PRODUCT field order or specify an explicit field list. The product identifier has leading zeros, so preserve it as text."
+    ],
+    "solution": [
+      {
+        "type": "code",
+        "text": "INSERT INTO PRODUCT\n  (ProductID, ProductName, QuantityInBox, Cost, SupplierID)\nVALUES ('002323', 'Blue ball point 2mm', 50, 5.00, 'SFX223');"
+      },
+      "The string values match the identifier, name and supplier fields. QuantityInBox and Cost receive numeric values. The explicit field list makes the correspondence visible."
+    ],
+    "marking": [
+      "The four marking points cover INSERT INTO PRODUCT; VALUES with parentheses; the three quoted string values in the correct fields; and the quantity and cost in the correct fields.",
+      "The teacher answer preserves the product name exactly as printed in the question, Blue ball point 2mm. The unchanged official examples show a space in 2 mm; both original extracts are retained without editing their text."
+    ],
+    "mistakes": [
+      "Writing 002323 as an unquoted numeric value loses the intended text identifier. UPDATE changes an existing product; this question requests a new record."
+    ],
+    "assessmentFocus": [
+      "Insert one record with correctly ordered text and numeric literals."
+    ],
+    "coverageNotes": [
+      "Use as the optional INSERT extension after the main DDL/DML checkpoint."
+    ],
+    "cropSpec": {
+      "ms": [
+        [
+          10,
+          340,
+          559
+        ]
+      ],
+      "qp": [
+        [
+          14,
+          60,
+          275
+        ],
+        [
+          15,
+          60,
+          353
+        ]
+      ]
+    },
+    "sourceType": "past-paper",
+    "syllabusCode": "9618",
+    "inserts": [],
+    "sourceRef": "Cambridge 9618/13 · May/June 2025 · 6(b)",
+    "accessUrl": "https://www.cambridgeinternational.org/programmes-and-qualifications/cambridge-international-as-and-a-level-computer-science-9618/past-papers/",
+    "qp": {
+      "filename": "9618_s25_qp_13.pdf",
+      "sourcePdf": "2025-May-June/9618_s25_qp_13.pdf",
+      "sha256": "b341d6829ba4baf47dbd8d272cb7fd49b448d04a2a16a028e4fb3178c3c64554",
+      "extracts": [
+        {
+          "asset": "/assets/past-paper-questions/s8-e8n05-qp-1.png",
+          "page": 14,
+          "bbox": [
+            45,
+            60,
+            560.27559,
+            275
+          ],
+          "width": 1030,
+          "height": 430,
+          "sha256": "58de13cbe5fb4975011ab4f8766e161ff1853133f21da89167aa7c38ccc6f43a"
+        },
+        {
+          "asset": "/assets/past-paper-questions/s8-e8n05-qp-2.png",
+          "page": 15,
+          "bbox": [
+            45,
+            60,
+            560.27559,
+            353
+          ],
+          "width": 1030,
+          "height": 586,
+          "sha256": "c074f5e92c862f1b57a3d5ba922334a3927dcf9eadd29c5b0d8eb6a651b4f5da"
+        }
+      ]
+    },
+    "ms": {
+      "filename": "9618_s25_ms_13.pdf",
+      "sourcePdf": "2025-May-June/9618_s25_ms_13.pdf",
+      "sha256": "a334bec016c753451ae53c56fdfc0b0758b8f2b5a7a06a86307ac100bb7ebd8e",
+      "extracts": [
+        {
+          "asset": "/assets/past-paper-questions/s8-e8n05-ms-1.png",
+          "page": 10,
+          "bbox": [
+            45,
+            340,
+            560.32,
+            559
+          ],
+          "width": 1030,
+          "height": 438,
+          "sha256": "ff086bc0f2482109a44443d2363c5ef1a8071bda8f275e6eb189bdc1389be024"
+        }
+      ]
+    },
+    "extractReview": {
+      "status": "verified",
+      "date": "2026-11-19",
+      "reviewer": "Codex",
+      "cropSpecSha256": "c53b6b7da6fc6f01f6dc1b404f0a2bb45fbe9a3fd3cd2b43d9ef4da5d6b616bf",
+      "method": "Read the original local QP/MS pages, checked selected parts, marks, source identities and all required shared context. Rendered unchanged original regions at 144 dpi, checked every crop boundary against original glyph boxes, and visually reviewed every final PNG against the original pages on 2026-11-19. Confirmed full question text, table definitions, answer rows and marks remain visible. Recorded original PDF, crop-specification and final PNG SHA-256 hashes. Teacher explanations are separate from the unchanged official extracts."
+    }
+  }
+]

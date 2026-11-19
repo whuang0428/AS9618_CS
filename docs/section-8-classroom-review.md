@@ -1,109 +1,107 @@
 # Section 8 classroom redesign
 
-Local implementation and acceptance record · 2026-09-29
+Implementation and acceptance record · 2026-11-19
 
-## Teaching route
+## Active teaching route
 
-The student pages are in English and assume that a learner understands rows and columns but has not studied databases or SQL. A library borrowing system connects the chapter. Shop orders provide a complete, small normalisation example. The six original routes, lesson-042 through lesson-047, remain usable, with old unit and question bookmarks retained. The learning route crosses those pages in prerequisite order.
+The chapter uses English explanations for database beginners. Eleven subsections replace the previous 35-concept route while retaining six public lesson URLs, all 40 objective IDs, all 37 original knowledge-unit links and 35 original concept links. Old stage suffixes resolve to the corresponding replacement material. Where teaching has moved to another page, an explicit bookmark link forwards to that page; the no-JavaScript view retains a usable link.
 
-- 40 explicit syllabus objectives; all 37 original knowledge units retained in the mapping.
-- 35 teaching groups, 134 explanation steps and 74 worked-example steps.
-- 12 connected modules and 27 suggested 45-minute sessions. These are flexible stopping points.
-- A concrete observation precedes explanation, worked reasoning, the applicable experiment, an independent check and a recap/connection.
-- A matched official question follows the knowledge it requires. Topics without a directly matching selected question use clearly labelled teacher-written checks.
-
-| Module | Focus | Concept groups |
+| Page | Subsections | Stage boundary |
 | --- | --- | --- |
-| 1. A library needs reliable records | Discover repeated facts, then distinguish people, physical items and borrowing events. | 2 |
-| 2. Identify a member and link a loan | Choose minimal keys, distinguish references from event identities and enforce valid links. | 3 |
-| 3. Turn library rules into an ER design | Read relationships in both directions and test a design with repeated borrowing events. | 2 |
-| 4. Put each fact in the right table | Use complete order data to explain 1NF, 2NF and 3NF, then reconstruct every original fact. | 4 |
-| 5. From a design to a working database | Connect the model, schema, dictionary, developer tools and the roles of SQL. | 5 |
-| 6. Keep library data usable | Distinguish integrity from permissions and recover a defined consistent state. | 3 |
-| 7. Ask questions of one table | Choose result fields, filter rows and order results before independently writing a query. | 3 |
-| 8. Turn records into summaries | Calculate totals, counts and means, then group records by a meaningful identity. | 2 |
-| 9. Reconnect related information | Trace matching pairs and combine JOIN, filtering, grouping and ordering. | 2 |
-| 10. Find records efficiently | Explain index lookup costs and the query processor’s interpretation, planning and execution. | 2 |
-| 11. Build and change the structure with SQL | Create and connect to a database, choose field types, declare keys and alter definitions. | 4 |
-| 12. Maintain data and explain a complete solution | Insert, update and delete precisely, then transfer the design and query methods to a new context. | 3 |
+| Lesson 042 | 8.1.1 flat-file comparison; 8.1.2 relational terms and matching ER model | — |
+| Lesson 043 | 8.1.3 three worked normal forms; 8.1.4 four 3NF judgements | Database concepts |
+| Lesson 044 | 8.2.1 DBMS features; 8.2.2 developer interface and query processor | DBMS |
+| Lesson 045 | 8.3.1 DDL; 8.3.2 DML; 8.3.3 SQL and reading statements | — |
+| Lesson 046 | 8.3.4 complete SQL definitions and alterations | — |
+| Lesson 047 | 8.3.5 querying and maintaining records | DDL and DML |
 
-The complete objective-to-concept and prerequisite mapping is in `scripts/course-v3-section8-journey.mjs` and the generated S8 entries of `scripts/course-v3-contract.json`. The route introduces reading queries before DDL and returns to indexing after learners have executed queries. The 27th session transfers earlier methods to another scenario.
+There are 49 teaching materials. Classroom presents one material or question at a time; Full reading uses the same complete DOM. Answers close on navigation. Tables, diagrams and original extracts can be enlarged. Printing supports question-only and teacher-answer versions, including folded extension questions, then restores the prior screen state. Subsection numbers are not fixed lesson durations.
 
-## Materials and classroom use
+The shared fixture contains Member, MemberCard, Book, Copy and Loan. It supplies the reading tables and real SQL database. MemberID and SchoolEmail illustrate candidate keys; TutorGroup illustrates a secondary retrieval key. MemberCard permits at most one current card per member. Loan represents historical Member–Copy associations using a separate LoanID, preserving repeat borrowing. The E-R diagram uses a single line for one and three branches for many, with selectable relationship highlighting. Optional participation is stated in the business rules. Vocabulary controls locate an entity, table, record and field.
 
-The opening image uses a restrained, realistic textbook style. Its complete built-in ImageGen prompt, file hash and visual review are recorded in `scripts/course-v3-section8-classroom-images.json`. The image is illustrative; exact records and relationships are authored as HTML tables and an editable academic SVG. There are no generated text labels or database values embedded in the photograph.
+Independent shop orders demonstrate removal of repeating groups, partial dependencies and transitive dependencies. Business rules and keys accompany every example. The final relations reconstruct all three original order lines. The 3NF judgement cases include a repeating group, a partial dependency, a transitive dependency and a valid design. An absent M:N relationship alone is not taught as proof of 3NF.
 
-Classroom mode displays one concept stage and one explanation/worked step at a time. Full reading uses the same complete DOM and can resume teaching from the reading position. Keyboard Previous/Next and the large buttons follow the module route across pages. The concept menu remains local to each original topic page; the chapter overview provides all modules and sessions. Images and data tables can be enlarged. On wide screens, SQL statements and results appear side by side; on narrow screens they stack. The index controls stay visible while the teacher scrolls to its data tables. Hints, teacher reasoning and official mark schemes are separate closed controls. Navigation hides previously opened answers.
+## Shared Library DBMS
 
-Eight deterministic experiments cover repeated records, primary/foreign keys, relationship cardinality, normalisation, metadata, integrity/permissions, backup/recovery and indexing. They support changed inputs, explanations, reset and keyboard/touch controls. Normalisation accounts for all three source lines, follows a selected line through the final relations and updates one shared customer record. The index lab explicitly models a linear scan and binary search of a sorted index; its counts are logical accesses, not actual DBMS timings or physical disk reads.
+`course-v3-section8-dbms-data.mjs` defines the shared records, SQL definitions, examples and roles. The workbench modules implement seven panels: Data, Model & schema, Dictionary, Integrity, Users & groups, Backup, and Developer & SQL. The existing vendored PGlite 0.5.8 engine is reused without dependency changes.
 
-Twelve SQL workspaces provide Guided, Modify and Write your own stages. A real PostgreSQL engine runs in a Worker using locally vendored PGlite 0.5.8. Results, errors, affected records and current table definitions come from execution. This includes creating a database, connecting to it, table definitions, all seven taught types, constraints, ALTER, queries and maintenance. Each experiment has isolated temporary data. Switching groups preserves its state until page reload or Reset. One Worker hosts the active database and restores the selected experiment's memory snapshot.
+- One workbench per page, opened from any teaching card. Choosing a card/example prepares an editor without executing SQL or resetting records.
+- Actual PostgreSQL executes definitions, queries, record maintenance, constraints, grants and EXPLAIN. Results preserve duplicate column labels and NULL values.
+- The dictionary reads current system metadata, including types, lengths, nullability, constraints, FK targets and indexes. Schema and permissions panels are labelled administrative teaching views. Data and SQL use the selected identity; denied table reads do not leak their records.
+- The Student inherits SELECT from library_readers; Librarian inherits record maintenance from library_writers. Individual grants and group grants can be changed by Administrator. These are simulated classroom identities, not online accounts or an authentication boundary.
+- CREATE DATABASE creates a real separate database. The student must explicitly Connect before executing its table definitions. The engine maintains one active connection, preserving the cluster when switching databases.
+- Guided SQL and an editable mode share the current state. The complete DDL and the five-table insert script remain available statically, together with expected query results.
+- A teaching backup preserves the complete cluster, selected database and user. Restore recovers structures, records and grants and removes subsequent changes. A simulated outage demonstrates data unavailability and recovery. The teaching backup and automatic progress save are distinct; neither is represented as an off-device backup.
+- IndexedDB stores a versioned gzip snapshot after completed operations. Compare-and-swap revisions reject stale tab writes without automatically rerunning SQL. A conflicting tab restores the winning saved state.
+- Errors roll back an unfinished explicit transaction. The 20-second SQL watchdog stops a hung Worker; a subsequent request restores the most recent completed snapshot. Incompatible or unreadable saved work is preserved. Storage failures use an explicitly labelled temporary mode.
+- Reset and teaching-backup restore require explicit confirmation because they replace the current workspace state. Page navigation waits for an in-progress operation/save.
 
-## Official questions
+The browser renders at most 100 result rows, 50 rows per displayed table and inspects up to 30 public tables. These bounds keep the classroom UI manageable; they are not database capacity claims. HTTP is required for Worker/WASM execution. Without JavaScript the complete authored teaching content remains readable.
 
-There are 15 selected official parts, totalling 52 marks. The six selected parts previously grouped as E061/E065 are placed separately after their prerequisites. E065 remains in the existing integrated review as well. E8D01 and E8D02 add direct key and referential-integrity practice. Original QP context, diagrams and complete mark-scheme extracts remain available; teacher reasoning is separately labelled.
+## Original question selection
 
-| ID | Source | Marks |
+Three checkpoints contain 16 main parts, 51 marks in total. Four extension parts add 17 marks without interrupting the main route.
+
+| Stage | Main selections | Marks |
 | --- | --- | --- |
-| E056 | Cambridge 9618/12 · October/November 2024 · 6(a) | 3 |
-| E8D02 | Cambridge 9618/11 · October/November 2025 · 2(d) | 3 |
-| E8D01 | Cambridge 9618/12 · October/November 2025 · 4(a) | 2 |
-| E065A | Cambridge 9618/13 · October/November 2025 · 5(a) | 3 |
-| E058 | Cambridge 9618/13 · October/November 2024 · 4(c)(ii) | 4 |
-| E057 | Cambridge 9618/11 · May/June 2024 · 6(a) | 6 |
-| E059 | Cambridge 9618/11 · May/June 2024 · 6(b) | 4 |
-| E060 | Cambridge 9618/12 · October/November 2025 · 4(d) | 2 |
-| E065D | Cambridge 9618/13 · October/November 2025 · 5(d) | 4 |
-| E061B | Cambridge 9618/12 · May/June 2024 · 4(b) | 3 |
-| E065B | Cambridge 9618/13 · October/November 2025 · 5(b) | 4 |
-| E061C | Cambridge 9618/12 · May/June 2024 · 4(c) | 2 |
-| E065C | Cambridge 9618/13 · October/November 2025 · 5(c) | 5 |
-| E062 | Cambridge 9618/13 · May/June 2024 · 4(c) | 4 |
-| E063 | Cambridge 9618/12 · May/June 2025 · 5(d)(ii) | 3 |
+| Database concepts | E056, E8D01, E065A, E058, E8N01 | 14 |
+| DBMS | E8N02, E059, E060, E065D | 14 |
+| DDL and DML | E061B, E061C, E065C, E062, E063, E8N03, E8N04 | 23 |
 
-The original paper definitions remain in the course source. New/split part records, original PDF identities, crop bounds, extract hashes and completed visual reviews are in `scripts/course-v3-section8-extra-papers.json`. Twenty-two new extract images were checked against contact sheets containing every QP and MS crop. The local archive check verifies the identities of 18 distinct original PDFs.
+Extensions: E057 (design, 6), E8D02 (referential integrity, 3), E065B (CREATE TABLE, 4), E8N05 (INSERT, 4).
 
-### Coverage limits
+| New selection | Original source | Marks |
+| --- | --- | --- |
+| E8N01 | 2025 O/N 9618/11 Q2(b): explain 3NF | 2 |
+| E8N02 | 2023 M/J 9618/12 Q2(a): DBMS terms and descriptions | 4 |
+| E8N03 | 2025 O/N 9618/11 Q2(c)(i): DELETE | 2 |
+| E8N04 | 2023 M/J 9618/12 Q2(c)(iii): read and correct SQL | 4 |
+| E8N05 | 2025 M/J 9618/13 Q6(b): INSERT | 4 |
 
-- **E056:** Assesses benefits of the relational approach. Explain the mechanism addressing each file-based problem; the teacher-written record activity checks the vocabulary separately.
-- **E057:** Assesses a three-table design with appropriate primary and foreign keys. It does not directly ask for an ER diagram or a verbal proof of normal form; those skills have their own checks.
-- **E058:** Applies decomposition of repeated product facts. Trace the dependency and retained reference; this part alone does not test every stage of normalisation.
-- **E059:** Assesses the data dictionary and logical schema. Data modelling, integrity, permissions and recovery have their own checks.
-- **E060:** Assesses practical uses of the developer interface. Query processing needs the separate trace activity.
-- **E061B:** Assesses a table definition and its specified fields and primary key. It does not assess every required SQL data type.
-- **E061C:** Assesses changing a definition to declare a foreign key. Creating a named database has a separate teacher-written check.
-- **E062:** Combines two-table matching, grouping and counting. Use after the individual JOIN and aggregate explanations.
-- **E063:** Assesses a conditional UPDATE. INSERT and DELETE remain separate teacher-written checks until a suitable sourced question is added.
-- **E065A:** Assesses relationships in an ER design. Retain the supplied common scenario before attempting this part.
-- **E065B:** Assesses CREATE TABLE using the supplied schema. Preserve the original field definitions and required context.
-- **E065C:** Assesses a two-table query with selection and ordering. This is suitable after the first JOIN explanation; it does not require the later grouped query.
-- **E065D:** Assesses database access security in context. It does not directly assess restoration of a backup.
-- **E8D01:** Assesses primary and foreign keys and a one-to-many relationship. Candidate-key minimality, secondary keys and composite keys also need the preceding checks.
-- **E8D02:** Assesses referential integrity in the supplied relations. A deletion or update is rejected or handled by its explicitly declared referential action; cascading is not automatic in every design.
+Five records and 15 unaltered QP/MS crops are maintained in `course-v3-section8-new-papers.json`. Eleven original pages and all final crops were visually inspected. Tests verify PDF and PNG hashes, dimensions, crop review identities, exact re-rendered pixels and that crop boundaries do not intersect text. Required table definitions and original question context remain included. Earlier source records and split-source identities remain intact.
 
-## Source and build
+Hints, teacher reasoning and official mark schemes are independently folded. Official answers are unchanged; teacher interpretation distinguishes syllabus notation from executable PostgreSQL syntax where needed. Detailed coverage notes do not claim that these questions assess every taught SQL keyword or DBMS feature.
 
-- Teaching, sessions and mapping: `scripts/course-v3-section8-journey.mjs`.
-- Renderer and browser presentation: `scripts/course-v3-section8-classroom.mjs`, `.js`, `.css`.
-- Exact ER figure: `scripts/course-v3-section8-classroom-figures.mjs`.
-- Experiment markup, behaviour and pure state models: `course-v3-section8-labs.mjs`, `-labs.js`, `-models.js`.
-- SQL configuration, UI and Worker: `course-v3-section8-sql-labs.mjs`, `-sql-runtime.js`, `-sql-worker.js`.
-- Fixed vendor files, Apache license and source/hash manifest: `web/assets/vendor/pglite/` (about 17.4 MB uncompressed).
+## Verification
 
-Regenerate only S8 while preserving other generated pages:
+### CIE wording and E-R notation revision · 2026-11-19
+
+Teaching headings and explanations now use direct database terminology. Practice questions use explicit command words such as State, Identify, Describe and Explain. Authorial slogans have been removed from the active materials, overview and checkpoints; official question and mark-scheme extracts are unchanged.
+
+The library E-R diagram and the one-to-one / one-to-many / many-to-many comparison use the single-line and three-branch convention visually checked against 2025 O/N 9618/13 Q5(a), MS page 8. The diagrams do not use numerical UML multiplicities, circles, bars or arrowheads to denote relationships. Attribute-list arrows identify foreign-key references; they are not relationship-end symbols. Optional card membership and other minimum participation rules remain explicit in the prose.
+
+Terminology was also checked against 2023 M/J 9618/13 Q4(a–b), MS page 6, and 2024 M/J 9618/11 Q6(b), MS page 7. Flat-file limitations explicitly identify data redundancy, data inconsistency and program–data dependency. Secondary keys are defined by their additional retrieval purpose without categorically excluding unselected candidate keys. The logical schema is described as a DBMS-independent conceptual design, followed by the workbench's PostgreSQL implementation.
+
+Review corrected three question/example inconsistencies: the one-loan-per-member question now specifies a hypothetical sample; the returned-loan aggregate answer gives the actual counts and totals; and ALTER describes unchanged record counts without assuming that a newly created database is populated.
+
+Revision checks: targeted generation succeeded; 72 Section 8 tests passed without skips, including a relationship-symbol regression check. The revised returned-loan answer was executed in PostgreSQL and returned `(1, Asha, 1, 4)` and `(3, Chen, 1, 0)`. Browser checks covered all six pages at 1440px and 390px, both reading modes, keyboard relationship selection, highlighting of all three branches, diagram enlargement, hidden answers, local diagram scrolling, the legacy E-R bookmark, no-JavaScript display and 1920px projection layout. Screenshots of both diagrams and the narrow and projection layouts were visually reviewed. The complete browser backup, permission and persistence scenarios below were not repeated for this wording/diagram revision; their execution code was unchanged.
+
+### Initial implementation acceptance
+
+Executed after integration:
 
 ```sh
 node scripts/render-course-v3.mjs --section8
-node --test scripts/course-v3-section8-classroom.test.mjs scripts/course-v3-section8-models.test.cjs scripts/course-v3-section8-sql.test.mjs
-python3 -m http.server 8828 --bind 127.0.0.1 --directory web
+node --test scripts/course-v3-section8-*.test.*
+git diff --check
 ```
 
-Open `http://127.0.0.1:8828/course-v3/section-8/`. SQL requires HTTP(S); file URLs keep the reading content but cannot run the module Worker. Source-PDF tests use `AS9618_PAST_PAPER_ROOT` when set, otherwise the existing local teaching archive. Missing source files cause explicit skips, not a claimed source verification.
+All 71 tests passed, with zero failures and zero skips. This includes retained model/SQL tests, the new shared DBMS tests, all teaching and bookmark mappings, original-source identities and the new crop checks.
 
-## Verification and operating limits
+Browser acceptance used the installed Chrome through the bundled Playwright runtime, with a fresh temporary profile and a local HTTP server. The computer-use connector was unavailable; no dependency installation was needed.
 
-All 50 automated checks passed with zero failures or skipped checks. They cover complete objective/unit mapping, module/session dependencies, precise paper placement, source-PDF and crop hashes, old anchors, initially hidden answers, generated routes, image provenance, state transitions and real PostgreSQL execution. The PostgreSQL suite executes all 39 retained SQL fixtures plus constraints, changed data, connection switching, state isolation and reset. A repeated scoped build left all 1,130 checked output/contract files byte-identical; JavaScript syntax and targeted whitespace checks also passed.
+- All six pages at 1440px and 390px: no page-level horizontal overflow; local table/diagram scrolling retained.
+- Classroom and Full reading, vocabulary and ER highlighting, image/table enlargement, old cross-page bookmarks, extension deep links and no-JavaScript reading passed.
+- Question-only and answer print states include extension questions and restore the prior screen state.
+- All seven DBMS panels at desktop and 390px; keyboard-accessible tabs and controls; no browser page errors.
+- Real group and individual rights, SELECT revocation and denied Data display passed.
+- Backup restored schema and records after changes and recovered the simulated outage.
+- Lesson 044 to 045 and reload preserved a newly inserted record.
+- A failed explicit transaction recovered; EXPLAIN did not execute an UPDATE.
+- Concurrent writes from two tabs produced exactly one saved change and one conflict response.
+- With IndexedDB unavailable, SQL remained usable and the UI reported temporary mode.
+- An actual 25-second SQL request was interrupted by the 20-second watchdog. Recovery preserved the preceding saved insertion and discarded the unfinished update.
+- A deliberately incompatible seedVersion remained unchanged, including its revision and saved Blob, while a temporary workspace was used.
+- Screenshots at 390px, 1440px and 1920px were reviewed. Fixed pale table-header contrast and active-tab hover contrast. 1920px checks simulate projection resolution; physical classroom projector hardware was not tested.
 
-Real Chrome acceptance covered all six pages and the overview at 1366, 1920, 910 and 390 CSS-pixel widths. The navigation run checked 34 forward and 34 backward transitions, 612 stage/viewport combinations and 24 complete-reading page/viewport combinations. No page-wide horizontal overflow, script errors or failed resources were observed. It also operated independent answer controls, image/table enlargement and the old E061 bookmark. Separate browser runs operated all eight model labs and the real SQL workflows, including changed source data and recoverable errors.
-
-The implementation is local and has not been pushed or published. Actual HDMI hardware, classroom display scaling and the classroom's installed browser were not available for this verification. SQL data is temporary and resets on page reload. A stalled query is stopped after 20 seconds by replacing the Worker; that recovery loses temporary state for all experiments on the page. This is stated in the error message. The first SQL start loads the local database runtime; give the page time to finish loading before using it with a class.
+Scope verification compared existing-file hashes against the pre-task working tree: no unrelated file changed. Existing Section 6/7 edits were preserved. Only Section 8 is regenerated; other entries in the shared course contract remain unchanged. No push, deployment, migration or dependency change was performed.
