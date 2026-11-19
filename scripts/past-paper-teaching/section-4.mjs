@@ -38,7 +38,7 @@ export default {
  reading:['Input is the character “1”, whose supplied ASCII value is 49. Follow executed addresses, including the second visit to 13–15. The comparison does not change ACC.'],
  solution:[
  'LDR sets IX to 0. IN places 49 in ACC, and STO 101 saves it. The first indexed load reads location 110 + 0 = 110, giving 51. This does not equal Memory[100]=0, so JPE is not taken. The program reloads 49, adds 16 to obtain 65, increments IX to 1 and stores 65 in location 100.',
- 'On the second visit, LDX reads location 111 and gets 65. It now equals Memory[100], so JPE goes to 21. OUT emits the character with ASCII code 65, which is A, and END returns control to the operating system.',
+ 'On the second visit, LDX reads location 111 and gets 65. It now equals Memory[100], so JPE goes to 21. OUT outputs the character with ASCII code 65, which is A, and END returns control to the operating system.',
  {type:'table',headers:['Executed address','ACC after','IX after','Memory[100]','Memory[101]','Output'],rows:[['10','Unchanged; initial value not supplied',0,0,0,'—'],['11',49,0,0,0,'—'],['12',49,0,0,49,'—'],['13',51,0,0,49,'—'],['14',51,0,0,49,'—'],['15',51,0,0,49,'—'],['16',49,0,0,49,'—'],['17',65,0,0,49,'—'],['18',65,1,0,49,'—'],['19',65,1,65,49,'—'],['20',65,1,65,49,'—'],['13',65,1,65,49,'—'],['14',65,1,65,49,'—'],['15',65,1,65,49,'—'],['21',65,1,65,49,'A'],['22',65,1,65,49,'—']]},
  'Memory[110]=51 and Memory[111]=65 throughout. The teacher table carries unchanged values forward. Open “Official mark scheme” on this step to see how the examiner records changes in the original trace table.'
  ],

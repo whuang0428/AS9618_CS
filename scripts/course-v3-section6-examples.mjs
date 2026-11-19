@@ -24,7 +24,7 @@ export const blockCounts = rows => ({
   rows: rows.map(row => [...row].reduce((n, bit) => n + Number(bit), 0)),
   columns: Array.from({length: 8}, (_, c) => rows.reduce((n, row) => n + Number(row[c]), 0)),
 });
-export const parityTableRows = parityExample.sentBlock.map((row, r) => [r === 3 ? 'Column parity row' : `Data row ${r + 1}`, row.slice(0, 7), row[7], String(row.split('1').length - 1)]);
+export const parityTableRows = parityExample.sentBlock.map((row, r) => [r === 3 ? 'Parity byte' : `Data row ${r + 1}`, row.slice(0, 7), row[7], String(row.split('1').length - 1)]);
 
 export const checksumExample = {
   modulus: 256, original: [84, 121, 77], changed: [84, 120, 77], cancelling: [85, 120, 77],
@@ -41,7 +41,7 @@ export const firewallRequests = [
   ['New inbound TCP to the public web server, port 443', '2', 'Allow'],
   ['New inbound TCP to a staff server, port 22', '4', 'Deny'],
   ['New outbound TCP to an external web server, port 443', '3', 'Allow'],
-  ['Reply carrying a malicious download on that permitted outbound connection', '1', 'Allow by this traffic policy; content still needs checking'],
+  ['Reply carrying a malicious download on that permitted outbound connection', '1', 'Allow under these firewall rules; content still needs checking'],
 ];
 
 export const permissionRows = [

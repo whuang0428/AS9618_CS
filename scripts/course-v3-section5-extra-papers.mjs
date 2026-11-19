@@ -399,7 +399,7 @@ export const section5ExtraPapers = [
           [
             "1",
             "an executable file / .exe",
-            "The native compiled output can be run as a separate file."
+            "The compiler produces an executable file that can be run separately."
           ],
           [
             "2",

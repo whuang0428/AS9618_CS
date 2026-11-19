@@ -147,3 +147,20 @@ Exact prompts, purpose, review notes and SHA-256 hashes are saved in `scripts/co
 - JavaScript syntax checks and `git diff --check`: passed.
 
 Actual classroom HDMI projection and the standalone smart-screen browser were not available for testing. No remote publication or Git push was performed. Offline ZIP packaging was outside this local webpage acceptance.
+
+## Terminology review, 2026-11-19
+
+Reviewed the five active lesson routes (27 classroom positions), translator controls and status messages, teacher-written practice and the accompanying teacher answers. The source review used the local 2027–2029 Version 2 syllabus, p23, and the original Cambridge mark-scheme pages below. This pass does not claim to verify a newer syllabus version or prove a phrase absent from every Cambridge publication.
+
+| Source | Wording used in this chapter |
+| --- | --- |
+| Syllabus p23, Section 5.2; 9618/13 M/J 2025 Q3(a), MS p6 | An assembler translates assembly language into machine code; a compiler translates the whole high-level program and produces an executable file; an interpreter translates and executes one line/statement at a time. |
+| Syllabus p23; 9618/11 O/N 2023 Q6(c), MS p8; 9618/11 O/N 2024 Q4(d), MS p8 | Use **prettyprint**, **expand/collapse code blocks**, **breakpoints**, **single stepping** and **report window** as the feature names. A report window shows variable values and how they change as each line runs. |
+| 9618/12 M/J 2023 Q7(a–c), MS pp9–10 | Program libraries contain pre-written/pre-compiled/pre-tested subroutines called by other programs. Compiler/interpreter choices need scenario-specific reasons; IDE features need a description of their behaviour. |
+| 9618/11 O/N 2023 Q6(b), MS p8 | Partial compilation and interpretation support running on different platforms. Java bytecode/JVM illustrate this route; JIT details are labelled supporting extension. |
+
+Changes replace student-facing “emit” and “machine words” with translation/production of machine code, distinguish declared data from executable instructions, and replace “Compile one line” with “Next compilation step” so the animation does not define compilation as line-by-line execution. The compiler model's custom instruction names/encodings are explicitly labelled as a teaching example. The report-window figure now contains variable values before and after a step, and the related objective and practice answer use the same description. Original QP/MS crops, source identities and executable model behaviour are unchanged.
+
+Validation for this wording pass: `node --test scripts/course-v3-section5-models.test.cjs scripts/course-v3-section5-translators.test.mjs` passed all 27 tests with no skips. The 12 interactive checks also completed: 11 passed and the public-original PDF hash check skipped because `AS9618_PAST_PAPER_PUBLIC_ROOT` was not supplied. `git diff --check` passed for the edited files. Chapter regeneration and cross-chapter checks are performed by the combined Sections 4–7 review.
+
+Combined verification completed on 2026-11-19: scoped pages regenerated; all 39 Section 5 tests passed without skips after the two public 2022 PDFs were downloaded to temporary storage and their hashes verified. Browser spot-check of lesson-032 confirmed the report window displays variable values before and after single stepping.

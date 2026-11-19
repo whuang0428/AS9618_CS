@@ -34,8 +34,8 @@
       const symbols = Object.entries(frame.symbols);
       const table = symbols.length ? measurements(symbols) : hint('Pass 1 records each label and its address here.');
       const words = frame.output.map(word => word.word.slice(0, 8) + ' ' + word.word.slice(8));
-      const wordPanel = section('Machine words', words.length ? listing(words, words.length - 1, frame.origin)
-        : hint('Pass 2 emits one 16-bit word per location. For an instruction, the first byte is its opcode and the second is its operand.'));
+      const wordPanel = section('Machine code and data', words.length ? listing(words, words.length - 1, frame.origin)
+        : hint('Pass 2 produces machine code using the symbol table. This teaching model stores one instruction or data value per 16-bit location. Each instruction has an 8-bit opcode and an 8-bit operand.'));
       return '<div class="s5t-grid"><div>' + sourcePanel + section('Symbol table', table) + '</div>' + wordPanel + '</div>';
     }
     const source = M.program(state.config).map(line => line.text);
@@ -55,7 +55,7 @@
     const words = showDraft ? b.words : state.executable?.words ?? [];
     const currentWord = showDraft ? words.length - 1 : state.machine.last;
     const targetHeading = showDraft ? 'Draft target instructions' : 'Saved executable';
-    const version = showDraft ? (b.error ? 'Incomplete draft. It cannot run.' : 'The build is in progress. @?? marks an unresolved branch.') : state.executable ? 'Built version: ' + state.executable.name + '.' : 'Compile the source to create instructions for the model CPU.';
+    const version = showDraft ? (b.error ? 'Incomplete draft. It cannot run.' : 'The build is in progress. @?? marks an unresolved branch.') : state.executable ? 'Built version: ' + state.executable.name + '.' : 'Compile the whole source program to produce an executable file for the model CPU. Its instruction names and encodings illustrate compilation; they are not the Cambridge assembly-language instruction set.';
     const target = words.length ? listing(words.map(M.describeWord), currentWord, 0) : '';
     const bytes = words.length ? '<details class="s5t-bytes"><summary>Show instruction bytes (hex)</summary><pre>' + words.map((w, i) => M.address(i) + '   ' + w.map(M.hex).join(' ')).join('\n') + '</pre></details>' : '';
     return '<div class="s5t-grid">' + sourcePanel + section(targetHeading, hint(version) + target + bytes) + '</div>'
@@ -83,7 +83,7 @@
     ];
     const choices = {
       assembler: [['step', 'Next line'], ['pass', 'Finish pass'], ['back', 'Previous line'], ['reset', 'Reset']],
-      compiler: [['step-build', 'Compile one line'], ['build', 'Compile all'], ['step-run', 'Run one instruction'], ['run', 'Run executable'], ['reset', 'Reset']],
+      compiler: [['step-build', 'Next compilation step'], ['build', 'Compile whole program'], ['step-run', 'Run one instruction'], ['run', 'Run executable'], ['reset', 'Reset']],
       interpreter: [['step', 'Interpret one statement'], ['run', 'Run to end'], ['restart', 'Restart program'], ['reset', 'Reset']],
     };
     return '<div class="s5t-fields" data-s5t-controls hidden>' + fields.join('') + '</div><div class="s5t-buttons" data-s5t-controls hidden>'

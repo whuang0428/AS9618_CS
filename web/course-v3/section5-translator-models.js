@@ -78,22 +78,22 @@
       case 'while':
         build.loop = build.words.length;
         build.words.push([opcode.JGE, slot, line.value, null]);
-        explanation = 'Emit a branch that leaves the loop when Count reaches the limit. Its exit address is pending.';
+        explanation = 'Produce a branch instruction that leaves the loop when Count reaches the limit. Its exit address is pending.';
         break;
       case 'end':
         build.words.push([opcode.JUMP, 0, 0, build.loop]);
         build.words[build.loop][3] = build.words.length;
-        explanation = 'Emit the jump back to the test. Fill in the forward branch with the address after the loop.';
+        explanation = 'Produce the jump instruction back to the test. Fill in the forward branch with the address after the loop.';
         break;
       case 'output':
         build.words.push([opcode.OUT, slot, 0, 0], [opcode.HALT, 0, 0, 0]);
         build.complete = true;
         return { ...state, build, activity: 'build', executable: { name: exampleName(state.config), words: build.words.map(word => [...word]) },
-          machine: initialMemory(), notice: 'Build complete. OUT and HALT finish the executable. Run it to produce output.' };
+          machine: initialMemory(), notice: 'Compilation complete. The executable ends with OUT and HALT for this teaching CPU. Run it to produce output.' };
       default: {
         const op = { set: opcode.SET, add: opcode.ADD, divide: opcode.DIV }[line.kind];
         build.words.push([op, slot, line.value, 0]);
-        explanation = 'Emit ' + describeWord(build.words.at(-1)) + '.';
+        explanation = 'Produce instruction ' + describeWord(build.words.at(-1)) + '.';
       }
     }
     return { ...state, build, activity: 'build', notice: message + explanation };

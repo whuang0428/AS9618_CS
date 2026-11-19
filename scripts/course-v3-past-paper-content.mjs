@@ -45,6 +45,8 @@ const connections = {
   66: {text:'Use Practice to distinguish an abstract data type from its representation. The following lessons use original questions to trace stack, queue and linked-list operations.',lessons:[67,68,69,70,71]}
 };
 const exactObjectives = {
+ E045:['S6.01.A01'], E046:['S6.03.A04'], E047:['S6.04.A02','S6.04.A04'],
+ E048:['S6.06.A01'], E049:['S6.08.A01','S6.08.A03','S6.08.A04'], E050:['S6.08.A03','S6.08.A04'],
  E062:['S8.10.A01','S8.10.A04','S8.10.A05','S8.10.A06'],
  E063:['S8.11.A03']
 };

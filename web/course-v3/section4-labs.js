@@ -171,11 +171,11 @@
   function assemblerVisual(v) {
     let d = box(20, 24, 240, 104, 'ASSEMBLY SOURCE', `${v.source.length} source lines`, v.pass === 0);
     d += box(300, 24, 240, 104, 'PASS 1', 'Build symbol table', v.pass === 1);
-    d += box(580, 24, 240, 104, 'PASS 2', 'Resolve and translate', v.pass === 2);
+    d += box(580, 24, 240, 104, 'PASS 2', 'Generate object code', v.pass === 2);
     d += arrow(264, 78, 292, '') + arrow(544, 78, 572, '');
     d += box(140, 174, 250, 88, 'LABELS KNOWN', `${Object.keys(v.symbols).length} / 4`);
-    d += box(450, 174, 250, 88, 'WORDS EMITTED', `${v.output.length} / 7`);
-    d += text(420, 308, 'Example word: 8-bit opcode + 8-bit address', 22);
+    d += box(450, 174, 250, 88, 'OUTPUT LOCATIONS', `${v.output.length} / 7`);
+    d += text(420, 308, 'Example instruction: 8-bit opcode + 8-bit address', 22);
     d += text(420, 339, 'Illustrative encoding only; not a Cambridge or real CPU encoding.', 17);
     return svg('Two-pass assembly: source, label address collection, then operand resolution and translation.', d, 364);
   }
@@ -293,7 +293,7 @@
     if (type === 'interrupt' && v.config.arrival === 'manual') return `<div class="s4-lab-controls">${button('request', v.requested ? 'Request is queued / handled' : 'Request an interrupt', v.requested || v.step >= 4)}</div>`;
     if (type === 'assembler') {
       const sourceRows = v.source.map(([label, op, operand], i) => [v.origin + i, `${label ? label + ': ' : ''}${op === 'DATA' ? operand : op + (operand === '' ? '' : ' ' + operand)}`]);
-      return `<div class="s4-lab-columns">${table('Source: one word per line', ['Address', 'Assembly / data'], sourceRows, v.row)}${table('Pass 1 symbol table', ['Label', 'Address'], Object.entries(v.symbols))}${table('Pass 2 output · illustrative 16-bit words', ['Address', 'Resolved', 'Word'], v.output.map(item => [item.address, item.resolved, item.word]), v.output.length - 1)}</div>`;
+      return `<div class="s4-lab-columns">${table('Source: one word per line', ['Address', 'Assembly / data'], sourceRows, v.row)}${table('Pass 1 symbol table', ['Label', 'Address'], Object.entries(v.symbols))}${table('Pass 2 object code · illustrative 16-bit encoding', ['Address', 'Resolved instruction / data', 'Binary code / data'], v.output.map(item => [item.address, item.resolved, item.word]), v.output.length - 1)}</div>`;
     }
     if (type === 'trace') {
       const rows = v.rows.map(row => [row.address, row.instruction, row.acc, row.ix, row.pc, row.comparison === null ? '—' : row.comparison ? 'True' : 'False', row.output || '—', row.stored ?? '—']);

@@ -72,7 +72,7 @@ const topics = {
 const pageTitles = {
   21: 'CPU architecture and the stored program',
   22: 'Processor performance and peripheral ports',
-  23: 'The fetch–decode–execute cycle',
+  23: 'The fetch-execute cycle',
   24: 'Interrupts and service routines',
   25: 'Machine code and the assembler',
   26: 'Instructions and addressing modes',
@@ -114,7 +114,7 @@ export function section4Route(sequence) {
       const checkpoint = section4Checkpoints[group.checkpoint];
       items.push({ id: `checkpoint-${group.checkpoint}`, title: checkpoint.title, kind: 'checkpoint', papers: checkpoint.papers });
     }
-    if (group.number === '4.1.14') items.push({ id: 'fde-review', title: 'FDE cycle review', kind: 'review', papers: ['E032', 'E033'] });
+    if (group.number === '4.1.14') items.push({ id: 'fde-review', title: 'Fetch-execute cycle review', kind: 'review', papers: ['E032', 'E033'] });
   }
   return items;
 }

@@ -11,8 +11,8 @@ const revisions = [
   ],'These properties are not mutually exclusive labels. Tie each claim to the stated consequence.'),
   q(2,2,'A sender signs document M with private key K. A receiver already trusts the corresponding sender public key. An attacker replaces M with M2 but sends the old signature unchanged. The supplied conceptual digest values are H(M)=h1 and H(M2)=h2, with h1 different from h2. Describe the receiver’s correct check and result, identify which key it uses, and explain why a signature alone does not hide either document.',ids(3,2),[
     'The receiver hashes the received M2 using the agreed algorithm and obtains h2.',
-    'It uses the trusted sender public key, not the sender private key, to verify the received signature.',
-    'In the simplified comparison model, the old signature is tied to h1; the h2 evidence does not match and verification fails.',
+    'It decrypts the received signature using the sender’s public key to reproduce the original digest h1.',
+    'It compares h2 with h1. The digests differ, showing that the received message has changed.',
     'It rejects the claim that M2 is the unchanged signed document; it must not infer that the signature bytes themselves necessarily changed.',
     'The accompanying document remains readable without separate encryption, so signing alone has not supplied confidentiality.',
   ],'Verification must include the received content. A trusted key without a content check is insufficient.'),
@@ -32,7 +32,7 @@ const revisions = [
     'The wrong password fails authentication; no read is granted and the stored result stays 25.',
     'The correct password authenticates the account; permitted reading returns 25 without changing it.',
     'The correct password succeeds at login but delete permission is denied; the file remains with result 25.',
-    'An impostor can satisfy a credential check with a stolen secret while still lacking legitimate permission to act as the owner.',
+    'An impostor can pass the password check with a stolen password while still lacking legitimate permission to act as the owner.',
   ],'Each attempt starts independently at 25; do not treat denied deletion as an update or assume a successful login permits every operation.'),
   q(4,5,'An invoice starts with Amount=60. Clerk may read and modify it but may not delete it; Auditor may only read it. In order, Clerk changes Amount to 70, Auditor reads it, and Auditor tries to delete it. State each result and the final record. Then explain why this permission matrix cannot establish that 70 is factually correct or protect an unencrypted copy already sent to an outsider.',ids(6,2),[
     'Clerk’s modification is allowed and the stored amount becomes 70.',
@@ -41,9 +41,9 @@ const revisions = [
     'An authorised clerk can still enter a wrong value; the permission check does not compare the amount with the source invoice.',
     'An outsider can read the independent unencrypted copy without consulting the original service’s permissions.',
   ],'Follow the stated order. A denied operation preserves the current value, not necessarily the initial one.'),
-  q(5,8,'Calculate the checking bits to complete an even-parity block from these three seven-bit data rows: 1110000, 0101010, 0011001. Append one parity bit at the right of each row, then calculate the transmitted column-parity row. Only the second complete row changes during transmission to 01011101. Identify the failed row and column, correct the bit under a single-bit error assumption, and state the final complete block.',ids(8,3),[
+  q(5,8,'Calculate the checking bits to complete an even-parity block from these three seven-bit data rows: 1110000, 0101010, 0011001. Append one parity bit at the right of each row, then calculate the transmitted parity byte. Only the second complete row changes during transmission to 01011101. Identify the failed row and column, correct the bit under a single-bit error assumption, and state the final complete block.',ids(8,3),[
     'All three data rows have three 1s, so each row-parity bit is 1. The complete rows are 11100001, 01010101 and 00110011.',
-    'The column-parity row is 10000111; it is sent with the complete data rows.',
+    'The parity byte is 10000111; it is sent with the complete data rows.',
     'Only row 2 and column 5 fail even parity, locating the single changed bit at their intersection.',
     'Change that bit from 1 to 0. The final block is 11100001 / 01010101 / 00110011 / 10000111.',
     'All final row counts are 4; column counts are 2,2,2,2,0,2,2,4. All are even, confirming the recheck.',
@@ -82,7 +82,7 @@ export const section6ReviewQuestions = [
   ],'Do not force each event into one exclusive label or infer changed storage merely from an application failure.'),
   review(2,'An auditor logs in correctly and receives a signed but unencrypted report. The auditor has read-only rights on the original records. The sender’s public key is trusted. Explain what login, signature verification and access rights each establish, how the received report must be checked, and whether a person who intercepts it can read it.',[3,6],[
     'Login authenticates the account claim using its supplied evidence; it does not by itself authenticate every document.',
-    'Signature verification must include the received report and the trusted sender public key, using the received-message digest in the taught model.',
+    'The receiver decrypts the signature using the sender’s public key, hashes the received report with the same algorithm and compares the two digests.',
     'Successful signature verification supports the claimed origin and unchanged signed content; it does not prove that the report’s original statements are true.',
     'Read-only rights allow reading but deny modification/deletion of the controlled records; they do not prohibit every independent copy.',
     'The unencrypted report remains readable to an interceptor; confidentiality needs separate encryption.',

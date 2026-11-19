@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "reviewDate": "2026-11-16",
+  "assets": [
+    {
+      "asset": "/assets/course-v3/section-6/nist-biometric-fingerprints.jpg",
+      "title": "Biometric fingerprints colored",
+      "sourcePage": "https://www.nist.gov/image/biometric-fingerprints-colored",
+      "sourceImage": "https://www.nist.gov/sites/default/files/images/2019/12/11/biometric_fingerprints.jpg",
+      "credit": "N. Hanacek/NIST",
+      "sourceType": "Illustration",
+      "uploadDate": "2019-12-11",
+      "width": 1800,
+      "height": 1200,
+      "sha256": "5ba504169175d9ae40332f9cc60838aaf054cec344ad01165d09735be1ef33d1",
+      "reusePolicy": "https://www.nist.gov/copyrights-disclaimers",
+      "reuseBasis": "The source image page credits N. Hanacek/NIST and does not mark the image as copyrighted. NIST's general policy permits copying or distribution of information not marked as copyrighted and requests appropriate image credit.",
+      "modifications": "None; original downloaded bytes retained. Displayed at a smaller responsive size with an adjacent caption and source link.",
+      "teachingUse": "Supplementary fingerprint-ridge example in 6.1.3 Biometrics. The image does not replace the enrolment, capture, feature-comparison or authentication explanations. Colours are described as illustrative, not matching scores.",
+      "visualReview": "Inspected the original 1800 by 1200 image. It contains six coloured fingerprint impressions. Source and credit are visible in the teaching caption."
+    }
+  ]
+}

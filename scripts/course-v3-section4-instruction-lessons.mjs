@@ -41,12 +41,12 @@ function routeDiagram(title, caption, nodes, footer) {
 }
 
 const sourcesDiagram = diagram('Where an interrupt begins',
-  'The source can be hardware or software. An interrupt handler is selected according to the cause.',
+  'The source can be hardware or software. An interrupt service routine (ISR) is selected according to the cause.',
   panel(18, 18, 270, 101, 'Hardware event', ['Key ready · timer expired', 'Storage transfer completed'])
-  + panel(18, 147, 270, 101, 'Software request', ['Program requests a service', 'A trap enters the OS'])
+  + panel(18, 147, 270, 101, 'Software request', ['Program requests a service', 'Software interrupt'])
   + arrow(291, 68, 425, 117) + arrow(291, 196, 425, 141)
-  + panel(431, 74, 365, 112, 'CPU and operating system', ['Identify the cause and priority', 'Dispatch the appropriate handler'], true), 267,
-  'An external device may raise a request while another instruction is executing. A program can deliberately invoke an operating-system service. A fault such as division by zero is synchronous with its instruction and may need different recovery.');
+  + panel(431, 74, 365, 112, 'CPU and operating system', ['Identify the cause and priority', 'Call the appropriate ISR'], true), 267,
+  'An external device may raise a request while another instruction is executing. A program can deliberately invoke an operating-system service. An error such as division by zero can also cause an interrupt.');
 
 const machineDiagram = routeDiagram('Machine code gives the decoder a bit pattern',
   'Instruction and data words occupy addressable memory. The decoder interprets a fetched word using the instruction set of this example CPU.',
@@ -57,14 +57,14 @@ const assemblyDiagram = routeDiagram('Why programmers use mnemonics and labels',
   [['Operation', 'LDD', 'load from memory'], ['Named operand', 'PRICE', 'label for a location'], ['Assembly source', 'LDD PRICE', 'read the named value']],
   'Moving PRICE changes its assigned address; the source can keep the same label.');
 const relationshipDiagram = routeDiagram('One real assembly instruction becomes one machine instruction',
-  'On this teaching machine the assembler resolves PRICE to address 4. The CPU executes the emitted word; labels and comments occupy no instruction slot of their own.',
-  [['Assembly', 'LDD PRICE', 'symbolic source'], ['Assembler', 'PRICE → 4', 'LDD → 00000001'], ['Machine word', '00000001 00000100', 'opcode + address']],
+  'On this teaching machine the assembler resolves PRICE to address 4. The CPU executes the generated machine code instruction; labels and comments occupy no instruction slot of their own.',
+  [['Assembly', 'LDD PRICE', 'symbolic source'], ['Assembler', 'PRICE → 4', 'LDD → 00000001'], ['Machine code', '00000001 00000100', 'opcode + address']],
   'The opcode numbers and field widths illustrate this machine; Cambridge specifies the mnemonic meanings.');
 
 const addressingDiagrams = [
   routeDiagram('Immediate addressing · take the value',
     'LDM #18 copies the number 18 into ACC. After the instruction has been fetched, no additional data-memory read supplies the operand.',
-    [['Instruction', 'LDM #18', '# marks denary literal'], ['Value', '18', 'part of the instruction'], ['Accumulator', 'ACC = 18']],
+    [['Instruction', 'LDM #18', '# marks a denary number'], ['Value', '18', 'part of the instruction'], ['Accumulator', 'ACC = 18']],
     'The operand itself supplies the value.'),
   routeDiagram('Direct addressing · read one location',
     'LDD 300 reads data at address 300. Address 300 and its stored value 18 have different roles.',
@@ -86,7 +86,7 @@ const addressingDiagrams = [
 
 export const instructionLessons = {
   23: [
-    section('4.1.14', 'Fetch, decode and execute an instruction',
+    section('4.1.14', 'The fetch-execute cycle: fetch, decode and execute',
       lab('Follow a complete program through the CPU', 'fetch', { pair: 0, operation: 'ADD' }, ['pair', 'operation'],
         'Begin at PC = 0. Instructions occupy locations 0–3. The starting data you select occupy 4 and 5 (18 and 24 by default). Watch which address is selected and what reaches MDR during the instruction fetch, operand read and result write. The diagram shows all seven registers. IX stays at 0 because this program uses direct addressing.'),
       table('Cambridge register transfer notation · fetch', ['Official notation', 'Meaning in this machine'], [
@@ -123,12 +123,12 @@ export const instructionLessons = {
     section('4.2.1', 'Machine code, assembly language and their relationship',
       machineDiagram, assemblyDiagram, relationshipDiagram),
     section('4.2.2', 'Assemble a source program in two passes',
-      lab('From source statement to object code', 'assemblyStages', {}, [], 'Watch a source statement pass through label resolution and opcode translation. The resulting object word can be loaded and executed by the target processor.'),
-      lab('Walk both passes of an addition program', 'assembler', { origin: 0, pair: 0 }, ['origin', 'pair'], 'Pass 1 visits each source line and records label addresses. Pass 2 reads the lines again, resolves operands and emits words. Change the origin to 10 to see FIRST move from 4 to 14.'),
+      lab('From source statement to object code', 'assemblyStages', {}, [], 'Watch a source statement pass through label resolution and opcode translation. The resulting object code (machine code) can be executed by the target processor. The binary opcode values are supplied for this example only.'),
+      lab('Walk both passes of an addition program', 'assembler', { origin: 0, pair: 0 }, ['origin', 'pair'], 'Pass 1 reads the source code one line at a time, removes unnecessary white space and adds labels and their addresses to the symbol table. Pass 2 reads the source again, replaces symbolic addresses using the symbol table and generates object code. Change the origin to 10 to see FIRST move from 4 to 14.'),
       { ...table('Read the two label forms', ['Source', 'What is labelled', 'Effect on the output'], [
         ['START: LDD FIRST', 'An instruction location', 'Encode LDD with the resolved address of FIRST.'],
         ['FIRST: 18', 'A data location', 'Place the value 18 in this word. The symbol table records its address.'],
-      ], 'The four instructions at addresses 0–3 are LDD FIRST, ADD SECOND, STO TOTAL and END. FIRST appears as an operand before its declaration. Find FIRST in the completed symbol table to see why the second pass emits LDD 4, even though the data value is 18.'),
+      ], 'The four instructions at addresses 0–3 are LDD FIRST, ADD SECOND, STO TOTAL and END. FIRST appears as an operand before its declaration. Find FIRST in the completed symbol table to see why the operand in LDD FIRST becomes address 4, even though the data stored there is 18. LDD 4 shows the resolved instruction; the object code is its binary representation.'),
         companion: table('Completed pass 1 symbol table at origin 0', ['Label', 'Address', 'Source declaration at that address'], [
           ['START', '0', 'START: LDD FIRST'], ['FIRST', '4', 'FIRST: 18'], ['SECOND', '5', 'SECOND: 24'], ['TOTAL', '6', 'TOTAL: 0'],
         ]),
@@ -151,7 +151,7 @@ export const instructionLessons = {
         ['Unconditional and conditional instructions', 'JMP <address>', 'JMP START', 'Continue at the given absolute or symbolic address.'],
         ['Unconditional and conditional instructions', 'JPE / JPN <address>', 'JPE SAME · JPN AGAIN', 'After a comparison, JPE branches on true and JPN on false.'],
         ['Compare instructions', 'CMP <address> / CMP #n', 'CMP 300 · CMP #18', 'Compare ACC with a stored value or an immediate denary value.'],
-        ['Compare instructions', 'CMI <address>', 'CMI 310', 'Dereference the pointer at the given address and compare the target value with ACC.'],
+        ['Compare instructions', 'CMI <address>', 'CMI 310', 'Read the address stored at the given address, then compare the contents of this second address with ACC.'],
         ['Program termination', 'END', 'END', 'Return control to the operating system.'],
       ], 'Cambridge International AS & A Level Computer Science 9618, 2027–2029 syllabus, pp. 20–21. In these questions ACC is the single general-purpose working register. # denotes denary, B binary, and & hexadecimal. The instruction set is an example for the course.', [syllabus(21)])),
     section('4.2.4', 'Follow five addressing modes', ...addressingDiagrams,

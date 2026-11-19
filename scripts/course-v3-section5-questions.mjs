@@ -35,17 +35,17 @@ const revisions = [
     'The scan may fail to recognise a threat; no detection is not proof that all possible threats are absent.',
     'Archive overhead or poorly compressible data can outweigh the size reduction, especially for tiny inputs.',
   ],'Do not propose formatting for recovery, or call a compressed working copy an independent backup.'),
-  q(3,2,'Source A outputs 6 and its native executable has been built successfully. The developer saves source B, which should output 12, but has not rebuilt. State what happens when the old executable runs, describe how to obtain the new result, and explain why a successful build can still produce an unintended result.',ids(4,2),[
+  q(3,2,'Source A outputs 6 and it has been compiled successfully to produce an executable file. The developer saves source B, which should output 12, but has not recompiled it. State what happens when the old executable runs, describe how to obtain the new result, and explain why a successfully compiled program can still produce an unintended result.',ids(4,2),[
     'The old executable still outputs 6 because it contains the translated version A.',
-    'Compile B and link required modules successfully to produce an updated native executable.',
+    'Compile source B successfully to produce an updated executable file.',
     'Run that updated executable on a compatible system to obtain 12 for the stated correct source B.',
-    'A build can accept valid language constructs that implement the wrong algorithm; test results against the requirement.',
-  ],'Saving source, completing a build and launching a particular build are separate actions.'),
-  q(3,3,'Complete a trace of the supplied calculation in the taught high-level interpretation model. Give the number of condition checks, the number of loop-body executions and the output. Then change only the condition limit from 3 to 0 and state the output. Explain whether this model must first save a permanent native executable of the complete source.',ids(4,3),[
+    'A compiler can accept valid source code that implements the wrong algorithm; test results against the requirement.',
+  ],'Saving source, compiling it and running the resulting executable are separate actions.'),
+  q(3,3,'Complete a trace of the supplied calculation in the taught high-level interpretation model. Give the number of condition checks, the number of loop-body executions and the output. Then change only the condition limit from 3 to 0 and state the output. Explain whether this model must first produce a separate executable file of the complete program.',ids(4,3),[
     'The condition is checked four times, with Count equal to 0, 1, 2 and 3.',
     'The body executes three times, producing Total values 2, 4 and 6; OUTPUT displays 6.',
     'With Count < 0, the first check is false and the output is 0 from the initial Total.',
-    'This model follows the source control flow through an interpreter without requiring a saved permanent native executable of the whole source.',
+    'The interpreter translates and executes one statement at a time, following the control flow, without producing a separate executable file.',
   ],'Count only executed statements; a source position can be revisited or skipped.',supplied('repeatedA','No input is required; initialise both variables as shown. The code specifies the teaching model rather than input to an unspecified real interpreter.')),
   q(4,3,'Describe what javac produces from Hello.java and how a compatible destination executes it. A second computer can run an existing Hello.class but cannot find javac. Explain why these observations are consistent, and why bytecode is not a universal physical-processor instruction set.',ids(6,1),[
     'javac produces Hello.class containing bytecode for the JVM.',

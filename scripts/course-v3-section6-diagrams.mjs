@@ -29,13 +29,13 @@ export function section6DiagramFiles() {
   ].join(""));
   const { sentBlock, receivedBlock } = parityExample;
   const grid = (rows, top, highlight) => rows.flatMap((row, r) => [
-    text(52, top + 30 + r * 54, r === 3 ? 'Column parity' : `Row ${r + 1}`, 23),
+    text(52, top + 30 + r * 54, r === 3 ? 'Parity byte' : `Row ${r + 1}`, 23),
     ...[...row].map((bit, c) => box(290+c*87, top+r*54, 68, 43,
       highlight && (r===1 || c===4) ? '#fff0e5' : c===7 || r===3 ? '#e1edf7' : '#edf6f5',
       highlight && r===1 && c===4 ? '#aa4824' : '#bdd3d4') + centred(324+c*87,top+30+r*54,bit,27)),
     text(1012,top+30+r*54,highlight && r===1 ? 'FAIL: 3 ones' : `${blockCounts(rows).rows[r]} ones`,22),
   ]).join('');
-  const blockParity = frame('Block parity: build, check and correct', 'Even parity · seven data bits per row, one row-parity bit, then a transmitted column-parity row', [
+  const blockParity = frame('Block parity: build, check and correct', 'Even parity · seven data bits per row, one row-parity bit, then a transmitted parity byte', [
     text(52,150,'1  SENDER: append the row bits, then count each column',27,'font-weight="700"'),
     text(290,193,'Data columns 1–7',23), text(895,193,'Row bit',23),
     grid(sentBlock,215,false),

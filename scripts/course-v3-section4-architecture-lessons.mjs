@@ -98,7 +98,7 @@ export const architectureLessons = {
           ['How would you change addition to subtraction?', 'An operator changes the relevant connections and settings.', 'Replace ADD 5 with SUB 5 at address 1 and run the program again. Both versions read the same data at addresses 4 and 5.'],
         ]),
         { ...sharedProgramMemory,
-          body: 'In the von Neumann model, the program’s machine instructions and the data they use share the same main memory. Each address here holds a binary word, shown as a mnemonic or a decimal number for readability. With ADD 5, the CPU calculates 18 + 24 = 42 and STO 6 writes 42 to address 6. Replace the instruction at address 1 with SUB 5 and restart at address 0. Address 5 still holds 24, so this time the CPU calculates 18 − 24 = −6 and stores −6 at address 6.',
+          body: 'In the von Neumann model, the program’s machine instructions and the data they use share the same main memory. Each address here holds a binary word, shown as a mnemonic or a denary number for readability. With ADD 5, the CPU calculates 18 + 24 = 42 and STO 6 writes 42 to address 6. Replace the instruction at address 1 with SUB 5 and restart at address 0. Address 5 still holds 24, so this time the CPU calculates 18 − 24 = −6 and stores −6 at address 6.',
           sources: [source('Cambridge 9618/11, October/November 2022, Q5(a), mark scheme p. 6', 'https://pastpapers.papacambridge.com/directories/CAIE/CAIE-pastpapers/upload/9618_w22_ms_11.pdf#page=6')],
         },
       ],

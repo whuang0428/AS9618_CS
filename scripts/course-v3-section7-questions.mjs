@@ -29,8 +29,8 @@ const revisions = [
   ],'Do not count cooling twice or treat equal energy quantities from different sources as necessarily equal emissions.'),
   q(4,9,'A museum device photographs a printed Italian description, translates it into English and reads it aloud. Describe the role and intermediate output of OCR, language processing, translation and text-to-speech. A blurred image causes a wrong recognised word that is then spoken clearly: explain one suitable correction and why clear speech does not establish a correct reading.',ids(6,2),[
     'OCR locates character patterns in the camera image and converts them to text; pixels are not already a recognised character sequence.',
-    'Language processing uses the recognised words and language/context to interpret the description; it may help resolve ambiguity but cannot guarantee repair of every wrong recognition.',
-    'Translation produces English text from the interpreted source-language text.',
+    'Natural language processing combines the recognised characters into words and compares the words with a database to identify matches in the source language; it may predict incomplete words but cannot guarantee repair of every recognition error.',
+    'Translation compares the words with a database of the chosen language to find matching English words.',
     'Text-to-speech generates the corresponding audio waveform for playback through the speaker.',
     'Retake the blurred image or verify and correct the recognised text before relying on the translation. Clear speech can reproduce an incorrect intermediate word, so it does not prove correct recognition.',
   ],'The camera supplies images; speech-to-text is not the conversion from translated text to audio.'),

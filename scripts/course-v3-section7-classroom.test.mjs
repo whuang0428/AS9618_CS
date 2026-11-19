@@ -5,234 +5,199 @@ import { createHash } from 'node:crypto';
 import { resolve, join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { courseV3Lessons } from './course-v3-content.mjs';
-import { section7Journey, section7Sessions, section7PaperObjectives, section7PaperCoverageNotes } from './course-v3-section7-journey.mjs';
-import { section7GroupObjectives, section7PapersForLesson, renderSection7Classroom } from './course-v3-section7-classroom.mjs';
-import { section7ExtraPapers } from './course-v3-section7-extra-papers.mjs';
-import { labMarkup } from './course-v3-section7-labs.mjs';
-import { renderPastPaperQuestions } from './course-v3-past-paper-render.mjs';
+import { section7Journey, section7Sessions, section7LegacyGroups, section7PaperObjectives, section7PaperCoverageNotes } from './course-v3-section7-journey.mjs';
+import { section7GroupObjectives, section7PapersForLesson, renderSection7Classroom, renderSection7Overview } from './course-v3-section7-classroom.mjs';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const lessons = courseV3Lessons.filter(lesson => lesson.section === 7).sort((a, b) => a.sequenceIndex - b.sequenceIndex);
 const pool = lessons.flatMap(lesson => lesson.pastPaperQuestions);
-const sources = [...pool, ...section7ExtraPapers];
+const published = lessons.map(lesson => ({ ...lesson, pastPaperQuestions: section7PapersForLesson(lesson, pool) }));
+const papers = published.flatMap(lesson => lesson.pastPaperQuestions);
 const groups = lessons.flatMap(lesson => section7Journey[lesson.sequenceIndex].groups);
+const materials = groups.flatMap(group => group.materials);
 const sorted = values => [...values].sort();
 const unique = values => [...new Set(values)];
 const digest = bytes => createHash('sha256').update(bytes).digest('hex');
-const ids = (requirement, ...numbers) => numbers.map(number => `S7.${String(requirement).padStart(2, '0')}.A${String(number).padStart(2, '0')}`);
+const ids = (r, ...ns) => ns.map(n => `S7.${String(r).padStart(2, '0')}.A${String(n).padStart(2, '0')}`);
 const requiredObjectives = [2, 2, 3, 1, 5, 6].flatMap((count, index) => ids(index + 1, ...Array.from({ length: count }, (_, i) => i + 1)));
-const expectedPapers = ['E051', 'E052', 'E053', 'E054', 'E055', 'E7D01', 'E7D02', 'E7D03'];
-const expectedPaperObjectives = {
-  E051: ids(2, 2),
-  E052: [...ids(1, 2), ...ids(2, 2)],
-  E053: [...ids(1, 2), ...ids(3, 1, 2)],
-  E054: [...ids(4, 1), ...ids(5, 1, 2, 4, 5)],
-  E055: ids(6, 2, 3),
-  E7D01: ids(5, 3, 4),
-  E7D02: ids(6, 3),
-  E7D03: [...ids(3, 1), ...ids(6, 3)]
-};
-const helpers = {
-  renderPastPaperQuestions,
-  renderPractice: question => `<article data-question-id="${question.id}"><details><summary>Teacher-written answer</summary><p>Model reasoning</p></details></article>`
-};
+const expectedPapers = ['E051', 'E052', 'E053', 'E7D03B', 'E054B', 'E054A', 'E7D01', 'E7D02', 'E7D03C', 'E055'];
+const helpers = { renderPractice: q => `<article class="practice-question" data-question-id="${q.id}"><details><summary>Teacher-written answer</summary><p>Model reasoning</p></details></article>` };
+const rendered = lesson => renderSection7Classroom(lesson, helpers);
+const identifiers = html => [...html.matchAll(/\sid="([^"]+)"/g)].map(match => match[1]);
 
-function rendered(lesson) {
-  return renderSection7Classroom({ ...lesson, pastPaperQuestions: section7PapersForLesson(lesson, pool) }, helpers);
-}
-function groupHtml(html, lesson, group) {
-  const lessonGroups = section7Journey[lesson.sequenceIndex].groups;
-  const index = lessonGroups.indexOf(group);
-  const start = html.indexOf(`id="${group.id}"`);
-  const next = lessonGroups[index + 1];
-  const end = next ? html.indexOf(`id="${next.id}"`, start + 1) : html.indexOf('<nav class="s5-navigation"', start);
-  assert.ok(start >= 0 && end > start, `Missing group boundary: ${group.id}`);
-  return html.slice(start, end);
-}
-
-// The fixed list is the published syllabus contract, not a count of whichever content happens to exist.
-test('the four lesson routes cover all 19 required objectives and all 18 original knowledge units', () => {
+test('the requested five subsections preserve four routes, 19 objectives and 18 old units', () => {
   assert.deepEqual(lessons.map(lesson => lesson.sequenceIndex), [38, 39, 40, 41]);
+  assert.deepEqual(groups.map(group => group.number), ['7.1.1', '7.1.2', '7.1.3', '7.1.4', '7.1.5']);
   assert.equal(requiredObjectives.length, 19);
   assert.deepEqual(sorted(lessons.flatMap(lesson => lesson.objectives.map(([id]) => id))), sorted(requiredObjectives));
-  assert.deepEqual(sorted(unique(groups.flatMap(group => group.objectiveIds))), sorted(requiredObjectives));
+  assert.deepEqual(sorted(unique(materials.filter(m => !m.paperId).flatMap(m => m.objectiveIds))), sorted(requiredObjectives), 'Original questions must not be the sole teaching of an objective');
   assert.equal(lessons.reduce((count, lesson) => count + lesson.units.length, 0), 18);
-  assert.equal(new Set(groups.map(group => group.id)).size, groups.length, 'concept IDs must be unique across the section');
+  assert.equal(new Set(materials.map(m => m.id)).size, materials.length);
   for (const lesson of lessons) {
-    const lessonGroups = section7Journey[lesson.sequenceIndex].groups;
-    assert.deepEqual(sorted(unique(lessonGroups.flatMap(group => section7GroupObjectives(group, lesson)))), sorted(lesson.objectives.map(([id]) => id)), lesson.route);
-    assert.deepEqual(sorted(unique(lessonGroups.flatMap(group => group.unitKeys))), sorted(lesson.units.map(unit => unit.unitKey)), lesson.route);
+    const ownGroups = section7Journey[lesson.sequenceIndex].groups;
+    assert.deepEqual(sorted(unique(ownGroups.flatMap(group => section7GroupObjectives(group, lesson)))), sorted(lesson.objectives.map(([id]) => id)), lesson.route);
+    assert.deepEqual(sorted(unique(ownGroups.flatMap(group => group.unitKeys))), sorted(lesson.units.map(unit => unit.unitKey)), lesson.route);
+    for (const group of ownGroups) for (const material of group.materials) {
+      assert.ok(material.id && material.title && (material.html || material.paperId));
+      assert.ok(material.unitKeys.length && material.unitKeys.every(key => group.unitKeys.includes(key)));
+      assert.ok(material.objectiveIds.length && material.objectiveIds.every(id => group.objectiveIds.includes(id)));
+    }
   }
 });
 
-test('suggested sessions cover every concept once in teaching order and allocate 45 minutes', () => {
+test('the route and overview link directly to five numbered sections without fixed-duration promises', () => {
   assert.deepEqual(section7Sessions.flatMap(session => session.groups), groups.map(group => group.id));
-  for (const session of section7Sessions) {
-    assert.equal(session.minutes, 45, session.title);
-    assert.ok(session.title.trim() && session.focus.trim());
-    assert.ok(session.groups.length > 0);
-  }
+  assert.ok(section7Sessions.every(session => session.pacing && !('minutes' in session)));
+  const html = renderSection7Overview(lessons);
+  for (const lesson of lessons) for (const group of section7Journey[lesson.sequenceIndex].groups) assert.ok(html.includes(`href="../${lesson.route}/#${group.id}"`));
+  for (const lesson of published) for (const group of groups) assert.ok(rendered(lesson).includes(`#${group.id}"`), 'Every lesson has the five-part chapter directory');
 });
 
-test('all eight selected paper groups are placed once after their explicit cumulative prerequisites', () => {
-  assert.deepEqual(sorted(sources.map(question => question.id)), sorted(expectedPapers));
+test('body diagrams precede membership analysis, and four software figures precede the comparison', () => {
+  const bodies = groups[0].materials;
+  assert.deepEqual(bodies.slice(0, 2).map(m => m.id), ['s7-bcs', 's7-ieee']);
+  for (const m of bodies.slice(0, 2)) assert.match(m.html, /class="s7-visual"/);
+  assert.ok(bodies.findIndex(m => m.id === 's7-membership-ms') > 1);
+  const licences = groups.find(group => group.number === '7.1.4').materials;
+  assert.deepEqual(licences.slice(0, 4).map(m => m.id), ['s7-free-software', 's7-open-source', 's7-shareware', 's7-commercial']);
+  for (const m of licences.slice(0, 4)) assert.match(m.html, /class="s7-visual"/);
+  assert.equal(licences[4].id, 's7-software-comparison');
+  assert.match(licences[4].html, /<table>/);
+});
+
+test('all 12 original parts and 33 marks are assigned once after their cumulative teaching prerequisites', () => {
+  assert.deepEqual(papers.map(p => p.id), expectedPapers);
   assert.deepEqual(sorted(Object.keys(section7PaperObjectives)), sorted(expectedPapers));
   assert.deepEqual(sorted(Object.keys(section7PaperCoverageNotes)), sorted(expectedPapers));
+  assert.equal(papers.reduce((n, paper) => n + paper.marks, 0), 33);
+  assert.equal(papers.reduce((n, paper) => n + paper.parts.length, 0), 12);
+  const parts = papers.flatMap(p => p.parts.map(part => `${p.year}:${p.series}:${p.component}:${part.part}`));
+  assert.equal(unique(parts).length, parts.length, 'Splitting a question must not count any original part twice');
   const taught = new Set();
-  const assigned = [];
-  for (const group of groups) {
-    for (const objective of group.objectiveIds) taught.add(objective);
-    for (const id of group.papers) {
-      assert.ok(section7PaperObjectives[id]?.length, `${id}: missing explicit prerequisite mapping`);
-      for (const objective of section7PaperObjectives[id]) assert.ok(taught.has(objective), `${id} in ${group.id} precedes ${objective}`);
-      assert.ok(section7PaperCoverageNotes[id]?.trim(), `${id}: missing coverage limitation`);
-      assigned.push(id);
+  for (const material of materials) {
+    if (!material.paperId) material.objectiveIds.forEach(id => taught.add(id));
+    else {
+      const id = material.paperId;
+      assert.ok(section7PaperCoverageNotes[id]);
+      for (const objective of section7PaperObjectives[id]) assert.ok(taught.has(objective), `${id} precedes ${objective}`);
     }
   }
-  assert.deepEqual(sorted(assigned), sorted(expectedPapers));
+  assert.deepEqual(papers.find(p => p.id === 'E054B').parts, [{ part: '5(b)(ii)', marks: 2 }]);
+  assert.deepEqual(papers.find(p => p.id === 'E054A').parts, [{ part: '5(b)(i)', marks: 3 }]);
+  assert.deepEqual(papers.find(p => p.id === 'E7D03B').parts, [{ part: '8(b)', marks: 3 }]);
+  assert.deepEqual(papers.find(p => p.id === 'E7D03C').parts, [{ part: '8(c)', marks: 4 }]);
+});
+
+test('paper allocation works with the default lesson pool as well as the complete section pool', () => {
   for (const lesson of lessons) {
-    const allocation = section7PapersForLesson(lesson, pool);
-    assert.deepEqual(allocation.map(question => question.id), section7Journey[lesson.sequenceIndex].groups.flatMap(group => group.papers));
-    for (const question of allocation) assert.deepEqual(question.objectiveIds, section7PaperObjectives[question.id], `${question.id}: renderer must use the precise mapping`);
+    assert.deepEqual(section7PapersForLesson(lesson), section7PapersForLesson(lesson, pool), lesson.route);
   }
 });
 
-test('selected questions claim only their reviewed coverage, including explicit economic and environmental gaps', () => {
-  assert.deepEqual(section7PaperObjectives, expectedPaperObjectives);
+test('learning explanations and AI coverage gaps remain distinct from official marking claims', () => {
   const assessed = new Set(Object.values(section7PaperObjectives).flat());
-  assert.ok(!assessed.has('S7.06.A04'), 'the selected sources do not directly assess the economic cost comparison');
-  assert.ok(!assessed.has('S7.06.A05'), 'the selected sources do not directly assess the environmental calculation');
-  assert.ok(!assessed.has('S7.06.A06'), 'a specific AI impact is not a complete deployment evaluation');
-  assert.match(section7PaperCoverageNotes.E055, /does not directly test.*economic.*environmental/i);
-  for (const id of ['S7.06.A04', 'S7.06.A05', 'S7.06.A06']) {
-    const owner = groups.find(group => group.objectiveIds.includes(id));
-    assert.ok(owner?.check?.prompt && owner.check.answer, `${id}: the coverage gap needs a teacher-written check`);
+  for (const id of ids(6, 4, 5, 6)) assert.ok(!assessed.has(id));
+  for (const name of ['economic', 'environmental']) {
+    const material = materials.find(m => m.id === `s7-ai-${name}-impacts`);
+    assert.match(material.html, /teacher-written/i);
+    assert.match(material.html, /No directly matching .*MS/);
+    assert.match(material.html, /<details class="s7-choice"/);
   }
+  for (const method of ['supervised', 'unsupervised', 'reinforcement']) {
+    const material = materials.find(m => m.id === `s7-ai-${method}-learning`);
+    assert.match(material.html, /class="s7-visual"/);
+    assert.match(material.html, /A Level Section 18/);
+  }
+  assert.ok(materials.find(m => m.id === 's7-ai-family-relationships'));
+  assert.ok(materials.find(m => m.id === 's7-ai-evaluate-use').html.includes('Teacher-written'));
 });
 
-test('each concept supplies complete observation, explanation, worked reasoning and an independent check', () => {
-  for (const group of groups) {
-    for (const field of ['title', 'question', 'observe', 'takeaway', 'bridge']) assert.ok(group[field]?.trim(), `${group.id}: empty ${field}`);
-    assert.ok(group.steps?.length >= 3, `${group.id}: missing explanation stages`);
-    assert.ok(group.worked?.title?.trim() && group.worked.setup?.trim() && group.worked.conclusion?.trim(), `${group.id}: incomplete worked context`);
-    assert.ok(group.worked.steps?.length >= 2, `${group.id}: incomplete worked reasoning`);
-    assert.ok(group.check?.prompt?.trim() && group.check.answer?.trim(), `${group.id}: incomplete independent check`);
-    for (const step of [...group.steps, ...group.worked.steps]) {
-      assert.ok(step.title?.trim() && step.body?.trim(), `${group.id}: incomplete teaching step`);
-      if (step.table) {
-        assert.ok(step.table.headers.length && step.table.rows.length, `${group.id}: empty table`);
-        for (const row of step.table.rows) assert.equal(row.length, step.table.headers.length, `${group.id}: inconsistent table columns`);
-      }
-    }
-    if (group.image) {
-      assert.ok(group.image.alt?.trim() && group.image.caption?.trim(), `${group.id}: missing visual explanation`);
-      assert.ok(existsSync(join(root, 'web', group.image.asset)), `${group.id}: missing image ${group.image.asset}`);
-    }
+test('old unit, concept, practice and source-question bookmarks remain reachable with unique IDs', () => {
+  for (const lesson of published) {
+    const html = rendered(lesson), all = identifiers(html);
+    assert.equal(unique(all).length, all.length, `Duplicate IDs on ${lesson.route}`);
+    for (const [id] of lesson.objectives) assert.ok(all.includes(id), id);
+    lesson.units.forEach((unit, index) => assert.ok(all.includes(`unit-${index + 1}`), `${lesson.route}: ${unit.unitKey}`));
+    for (const id of Object.keys(section7LegacyGroups[lesson.sequenceIndex])) assert.ok(all.includes(id), id);
+    for (const id of ['lesson-contents', 'visual-and-core', 'classroom-unit', 'past-paper-questions', 'original-exam-style-question', 'practice', 'summary']) assert.ok(all.includes(id), id);
+    for (const q of [...lesson.practice, ...lesson.optionalPractice]) assert.ok(all.includes(q.id), q.id);
+    for (const q of lesson.pastPaperQuestions) { assert.ok(all.includes(q.id), q.id); assert.ok(all.includes(q.id.toLowerCase())); }
+    assert.match(html, /data-mode="reading"/, 'No-JavaScript view must retain the complete text');
+    assert.doesNotMatch(html, /data-s7-card[^>]*\bhidden\b/, 'Source materials must not start hidden');
+    const firstPaper = section7Journey[lesson.sequenceIndex].groups.flatMap(g => g.materials).find(m => m.paperId);
+    assert.ok(html.indexOf('id="past-paper-questions"') > html.indexOf(`id="${firstPaper.id}"`));
   }
+  const copyright = rendered(published[2]), ai = rendered(published[3]);
+  for (const id of ['E054', 'e054']) assert.ok(identifiers(copyright).includes(id));
+  for (const id of ['E7D03', 'e7d03']) assert.ok(identifiers(ai).includes(id));
+  assert.ok(ai.includes('href="../lesson-039/#e7d03b"'));
 });
 
-test('the six teaching activities are used and each starts hidden with a local reset', () => {
-  const expected = ['ethics', 'licence', 'pipeline', 'fairness', 'costs', 'environment'];
-  assert.deepEqual(sorted(Object.keys(labMarkup)), sorted(expected));
-  assert.deepEqual(sorted(unique(groups.map(group => group.lab).filter(Boolean))), sorted(expected));
-  for (const group of groups.filter(group => group.lab)) {
-    assert.ok(group.experimentPrompt?.trim(), `${group.id}: missing prediction instructions`);
-    const markup = labMarkup[group.lab];
-    assert.ok(markup.includes(`data-s7-lab="${group.lab}"`));
-    assert.ok(markup.includes('data-s7-action="reset"'), `${group.lab}: missing local reset`);
-    assert.match(markup, /data-s7-role="output"[^>]*\bhidden\b/, `${group.lab}: initial output must be hidden`);
-    assert.ok(markup.includes('type="button"'), `${group.lab}: buttons must not submit a form`);
-  }
-});
-
-test('rendered answers are folded and original questions follow the group explanation and check', () => {
-  for (const lesson of lessons) {
+test('official questions, guidance, teacher solutions and schemes remain separate and answers closed', () => {
+  for (const lesson of published) {
     const html = rendered(lesson);
-    assert.equal((html.match(/\bdata-s7-classroom(?=[\s=>])/g) ?? []).length, 1, lesson.route);
-    assert.doesNotMatch(html, /<details\b[^>]*\sopen(?:[\s=>])/i, `${lesson.route}: exposed answer or guidance`);
-    const identifiers = [...html.matchAll(/\sid="([^"]+)"/g)].map(match => match[1]);
-    assert.equal(new Set(identifiers).size, identifiers.length, `${lesson.route}: duplicate HTML IDs`);
-    for (const group of section7Journey[lesson.sequenceIndex].groups) {
-      const fragment = groupHtml(html, lesson, group);
-      const explanation = fragment.indexOf(`id="${group.id}--explain"`);
-      const check = fragment.indexOf(`id="${group.id}--check"`);
-      assert.ok(explanation >= 0 && check > explanation, group.id);
-      for (const id of group.papers) {
-        const start = fragment.indexOf(`data-question-id="${id}"`);
-        assert.ok(start > check, `${id}: question appears before this group's teaching and check`);
-        const question = sources.find(source => source.id === id);
-        for (const extract of [...question.qp.extracts, ...question.ms.extracts]) assert.ok(fragment.includes(`src="../..${extract.asset}"`), `${id}: missing original extract ${extract.asset}`);
-        const questionHtml = fragment.slice(start, fragment.indexOf('</article>', start));
-        for (const role of ['original-question', 'reading', 'solution', 'mark-scheme']) assert.ok(questionHtml.includes(`data-exam-role="${role}"`), `${id}: missing independent ${role} content`);
-      }
+    for (const tag of html.match(/<details\b[^>]*\bopen[^>]*>/g) ?? []) assert.match(tag, /class="exam-question-sheet"/, 'Only the original question may start expanded');
+    for (const question of lesson.pastPaperQuestions) {
+      const start = html.indexOf(`data-question-id="${question.id}"`), end = html.indexOf('</article>', start);
+      const fragment = html.slice(start, end);
+      assert.ok(start > 0 && end > start);
+      for (const role of ['original-question', 'reading', 'solution', 'mark-scheme', 'marking-explanation']) assert.ok(fragment.includes(`data-exam-role="${role}"`), `${question.id}: missing ${role}`);
+      for (const extract of [...question.qp.extracts, ...question.ms.extracts]) assert.ok(fragment.includes(`src="../..${extract.asset}"`), extract.asset);
     }
   }
 });
 
-test('every old unit anchor opens its first corresponding concept and source question IDs remain reachable', () => {
-  for (const lesson of lessons) {
-    const html = rendered(lesson);
-    const lessonGroups = section7Journey[lesson.sequenceIndex].groups;
-    for (const [index, unit] of lesson.units.entries()) {
-      const owner = lessonGroups.find(group => group.unitKeys.includes(unit.unitKey));
-      assert.ok(owner, unit.unitKey);
-      assert.ok(groupHtml(html, lesson, owner).includes(`id="unit-${index + 1}"`), `${lesson.route}#unit-${index + 1} changed owner`);
-    }
-    for (const question of section7PapersForLesson(lesson, pool)) assert.ok(html.includes(`id="${question.id.toLowerCase()}"`), `${question.id}: missing bookmark`);
-    for (const id of ['visual-and-core', 'past-paper-questions', 'original-exam-style-question', 'practice', 'summary']) assert.ok(html.includes(`id="${id}"`), `${lesson.route}#${id}`);
-  }
-});
-
-test('legacy paper anchors occur once inside each lesson’s first past-paper phase', () => {
-  for (const lesson of lessons) {
-    const html = rendered(lesson);
-    const firstGroup = section7Journey[lesson.sequenceIndex].groups.find(group => group.papers.length);
-    assert.ok(firstGroup, `${lesson.route}: no past-paper group`);
-    const start = html.indexOf(`id="${firstGroup.id}--papers"`);
-    const end = html.indexOf(`id="${firstGroup.id}--recap"`, start);
-    assert.ok(start >= 0 && end > start, `${lesson.route}: missing first past-paper phase`);
-    const firstPhase = html.slice(start, end);
-    for (const id of ['past-paper-questions', 'original-exam-style-question']) {
-      assert.equal(html.split(`id="${id}"`).length - 1, 1, `${lesson.route}#${id}: duplicate or missing anchor`);
-      assert.ok(firstPhase.includes(`id="${id}"`), `${lesson.route}#${id}: anchor must be inside the first past-paper phase`);
-    }
-  }
-});
-
-test('the original question and mark-scheme extracts retain reviewed bytes, dimensions and complete marks', () => {
-  for (const question of sources) {
+test('original extracts preserve reviewed source identities, crop geometry, hashes and dimensions', () => {
+  for (const question of papers) {
     assert.equal(question.parts.reduce((sum, part) => sum + part.marks, 0), question.marks, question.id);
     assert.equal(question.extractReview.status, 'verified', question.id);
-    if (question.cropSpec) assert.equal(digest(JSON.stringify(question.cropSpec)), question.extractReview.cropSpecSha256, `${question.id}: crop review invalidated`);
+    if (question.cropSpec) assert.equal(digest(JSON.stringify(question.cropSpec)), question.extractReview.cropSpecSha256, question.id);
     for (const kind of ['qp', 'ms']) {
       const source = question[kind];
-      assert.ok(source.filename.endsWith('.pdf') && /^[a-f0-9]{64}$/.test(source.sha256) && source.extracts.length, `${question.id}: incomplete ${kind} source`);
+      assert.ok(source.filename.endsWith('.pdf') && /^[a-f0-9]{64}$/.test(source.sha256) && source.extracts.length);
       for (const extract of source.extracts) {
         const bytes = readFileSync(join(root, 'web', extract.asset));
-        assert.equal(bytes.subarray(0, 8).toString('hex'), '89504e470d0a1a0a', extract.asset);
+        assert.equal(bytes.subarray(0, 8).toString('hex'), '89504e470d0a1a0a');
         assert.equal(digest(bytes), extract.sha256, extract.asset);
         assert.equal(bytes.readUInt32BE(16), extract.width, extract.asset);
         assert.equal(bytes.readUInt32BE(20), extract.height, extract.asset);
-        assert.ok(extract.page > 0 && extract.bbox[2] > extract.bbox[0] && extract.bbox[3] > extract.bbox[1], `${extract.asset}: invalid crop bounds`);
+        assert.ok(extract.page > 0 && extract.bbox[2] > extract.bbox[0] && extract.bbox[3] > extract.bbox[1]);
       }
     }
   }
 });
 
-test('local original PDFs match recorded source identities when the teaching archive is available', async t => {
+test('local original PDFs match the source identities when the archive is available', async t => {
   const archive = process.env.AS9618_PAST_PAPER_ROOT ?? '/Users/kw/Documents/Teaching/AS CS 9618/past-papers';
-  if (!existsSync(archive)) return t.skip('Local original-PDF archive unavailable; published extract hashes are verified separately.');
-  const candidates = readdirSync(archive, { recursive: true }).map(String);
-  const verified = new Set();
-  for (const question of sources) for (const kind of ['qp', 'ms']) {
-    const source = question[kind];
-    const identity = `${source.filename}:${source.sha256}`;
+  if (!existsSync(archive)) return t.skip('Local PDF archive unavailable; published extract hashes are tested separately.');
+  const candidates = readdirSync(archive, { recursive: true }).map(String), verified = new Set();
+  for (const question of papers) for (const kind of ['qp', 'ms']) {
+    const source = question[kind], identity = `${source.filename}:${source.sha256}`;
     if (verified.has(identity)) continue;
     verified.add(identity);
     await t.test(source.filename, subtest => {
       const path = source.sourcePdf ?? candidates.find(path => path.endsWith('/' + source.filename) || path === source.filename);
-      if (!path || !existsSync(join(archive, path))) return subtest.skip(`Local original PDF unavailable: ${source.filename}`);
-      assert.equal(digest(readFileSync(join(archive, path))), source.sha256, `${question.id}: ${source.filename}`);
+      if (!path || !existsSync(join(archive, path))) return subtest.skip(`Missing ${source.filename}`);
+      assert.equal(digest(readFileSync(join(archive, path))), source.sha256);
     });
+  }
+});
+
+test('generated pages load only the S7 controller, include the five-part route and have valid local links', () => {
+  for (const lesson of published) {
+    const html = readFileSync(join(root, 'web/course-v3', lesson.route, 'index.html'), 'utf8');
+    assert.match(html, /section7-classroom\.js/);
+    assert.match(html, /section7-materials\.css/);
+    assert.doesNotMatch(html, /section[56]-(?:pages|classroom)\.js/);
+    assert.match(html, /data-s7-classroom/);
+    assert.equal(unique(identifiers(html)).length, identifiers(html).length, lesson.route);
+    for (const group of section7Journey[lesson.sequenceIndex].groups) {
+      assert.ok(html.includes(`id="${group.id}"`));
+      for (const material of group.materials) assert.ok(html.includes(`id="${material.id}"`), `${lesson.route}: rebuild missing ${material.id}`);
+    }
+    for (const [, src] of html.matchAll(/(?:src|href)="([^"?#]+)(?:[?#][^"]*)?"/g)) {
+      if (/^(?:https?:|data:|#)/.test(src)) continue;
+      assert.ok(existsSync(resolve(root, 'web/course-v3', lesson.route, src)), `${lesson.route}: ${src}`);
+    }
   }
 });

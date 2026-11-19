@@ -3,14 +3,14 @@ const figure = (label, body, caption) => `<figure class="s5-visual s5-dev-figure
 const code = text => `<pre tabindex="0"><code>${text}</code></pre>`;
 const choice = (prompt, answer) => `<details class="s5-choice s5-dev-choice"><summary>${prompt}</summary><p>${answer}</p></details>`;
 const comparison = [
-  ['Translation', 'Build the source into native target code before execution.', 'Translate and execute statements as control reaches them. A loop can revisit a statement.'],
-  ['Error feedback', 'A build can report several source errors together. Fix them to obtain a new executable.', 'Stops at the first error reached in this model. Earlier statements may already have produced output.'],
+  ['Translation', 'Translate the whole high-level source program into machine code before execution.', 'Translate and execute one statement at a time as control reaches it. A loop can revisit a statement.'],
+  ['Error feedback', 'The compiler reports detected errors after checking the whole source program. Correct them and recompile to produce an executable file.', 'Stops at the first error reached in this model. Earlier statements may already have produced output.'],
   ['After an edit', 'Rebuild to include the change. An old executable still runs the old version.', 'Run the edited source immediately to try a correction.'],
-  ['Execution speed', 'Repeated runs use the existing native code, avoiding repeated translation.', 'Translation during execution adds overhead. Actual speed depends on the implementation and the program.'],
+  ['Execution speed', 'Repeated runs use the existing machine code, avoiding repeated translation.', 'Translation during execution adds overhead. Actual speed depends on the implementation and the program.'],
   ['Distribution', 'Supply a build for the target platform and its required libraries. The user needs neither source nor compiler.', 'Supply the source and a compatible interpreter. The same source can run on several supported platforms.'],
   ['Typical use', 'Release a finished application for repeated use on a known platform.', 'Try small changes, debug a calculation or run a short script.'],
 ];
-const compareTable = `<div class="s5-comparison s5-table-scroll" role="region" aria-label="Compiler and interpreter comparison" tabindex="0"><table role="table"><caption>Native compilation and source interpretation</caption>
+const compareTable = `<div class="s5-comparison s5-table-scroll" role="region" aria-label="Compiler and interpreter comparison" tabindex="0"><table role="table"><caption>Compiler and interpreter</caption>
   <thead><tr><th scope="col">Consider</th><th scope="col">Compiler</th><th scope="col">Interpreter</th></tr></thead>
   <tbody>${comparison.map(([factor, compiled, interpreted]) => `<tr><th scope="row">${factor}</th><td><span aria-hidden="true">Compiler</span>${compiled}</td><td><span aria-hidden="true">Interpreter</span>${interpreted}</td></tr>`).join('')}</tbody></table></div>`;
 export const comparisonMaterials = [{
@@ -31,7 +31,7 @@ export const javaMaterials = [{
     <section class="s5-java-class"><h4>Hello.class</h4><p>Bytecode for a Java Virtual Machine</p><p>Copy this same file to both hosts.</p></section>
     <div class="s5-java-hosts">${javaHost('Windows PC', 'x86-64')}${javaHost('Linux computer', 'Arm64')}</div></div>`,
     'Compiling to a shared intermediate format makes the class file portable. Each host needs a compatible JVM to execute the bytecode on its processor.')
-    + choice('How does just-in-time compilation fit?', 'A JVM can compile frequently executed bytecode to native instructions for its own processor, speeding up subsequent executions.'),
+    + choice('Extension: how does just-in-time compilation fit?', 'A JVM can compile frequently executed bytecode to machine code for its own processor, speeding up subsequent executions. JIT is supporting explanation, not a named Section 5 syllabus requirement.'),
 }];
 
 const editor = (label, body) => `<section class="s5-editor"><h4 class="s5-editor-tab">${label}</h4>${body}</section>`;
@@ -52,17 +52,17 @@ export const ideMaterials = [
     grid(editor('While typing', code('Cost ← Quantity <mark class="s5-error-token">*</mark>') + '<p class="s5-diagnostic"><strong>Line 4</strong>Expected an operand after *</p>'),
       editor('After correction', code(cost) + '<p class="s5-success"><strong>Line 4</strong>Syntax check passed.</p>')),
     'The diagnostic appears while the programmer types. Adding UnitPrice completes the expression. Using Delivery would also pass this syntax check, even though it gives the wrong price.')},
-  {id: 'prettyprint-and-fold', title: 'Presentation · prettyprint, collapse and expand', html: figure('Three editor views of the same conditional block',
+  {id: 'prettyprint-and-fold', title: 'Presentation · prettyprint, expand and collapse code blocks', html: figure('Three editor views of the same conditional block',
     grid(editor('Before prettyprint', code('IF Quantity > 0 THEN\nCost←Quantity*UnitPrice\nELSE\nCost←0\nENDIF\nOUTPUT Cost')),
       editor('Prettyprinted and expanded', code('▾ IF Quantity > 0 THEN\n    Cost ← Quantity * UnitPrice\n  ELSE\n    Cost ← 0\n  ENDIF\n  OUTPUT Cost')),
       editor('Collapsed', code('▸ IF Quantity > 0 THEN …\n  OUTPUT Cost') + '<p class="s5-fold-note">Expand ▸ to see the block again.</p>')),
-    'Prettyprint makes the two branches easier to read. Folding changes the editor view only. With Quantity = 3 and UnitPrice = 4, all three views execute the same code and output 12.')},
-  {id: 'debugging-price', title: 'Debugging · pause, inspect and single-step', html: figure('A debugger paused at a faulty multiplication, with variables, an expression watch and a report window',
+    'Prettyprint makes the two branches easier to read. Expanding or collapsing a code block changes the editor view only. With Quantity = 3 and UnitPrice = 4, all three views execute the same code and output 12.')},
+  {id: 'debugging-price', title: 'Debugging · breakpoints, single stepping and report window', html: figure('A debugger paused at a faulty multiplication, with variables, an expression watch and a report window',
     `<div class="s5-debug-workbench">
       ${editor('Source · paused before line 4', code('1  Quantity ← 3\n2  UnitPrice ← 4\n3  Delivery ← 2\n<span class="s5-break-line"><span aria-hidden="true">●</span>4  Cost ← Quantity * Delivery</span>\n5  OUTPUT Cost'))}
       <section class="s5-debug-watch"><h4>Variables and expression watch</h4><table><thead><tr><th scope="col">Inspect</th><th scope="col">At break</th><th scope="col">After step</th></tr></thead>
       <tbody>${watchRows.map(([item, before, after]) => `<tr><th scope="row">${item === 'Quantity * UnitPrice' ? '<small>Watched expression</small>' : ''}<code>${item}</code></th><td>${before}</td><td>${after}</td></tr>`).join('')}</tbody></table></section>
-      <section class="s5-debug-report"><h4>Report window</h4><ol><li>Breakpoint hit. Paused before line 4.</li><li>Single step executed line 4. Paused before line 5.</li></ol></section>
+      <section class="s5-debug-report"><h4>Report window</h4><ol><li>Before line 4: Quantity = 3, UnitPrice = 4, Delivery = 2; Cost is unset.</li><li>After single stepping line 4: Cost = 6. The other values are unchanged.</li></ol></section>
       <section class="s5-debug-output"><h4>Program output</h4><p><span>Step over line 5</span><samp>6</samp></p><p><span>Replace Delivery with UnitPrice, then rerun</span><samp>12</samp></p></section></div>`,
-    'The breakpoint pauses before the assignment. One step sets Cost to 6. The watched expression still reads 12 and reveals the wrong operand. The report window records execution events while the output pane shows what the program prints.')},
+    'The breakpoint pauses before the assignment. One step sets Cost to 6. The watched expression still reads 12 and reveals the wrong operand. The report window shows variable values and how they change as each line runs. The separate output pane shows what the program prints.')},
 ];

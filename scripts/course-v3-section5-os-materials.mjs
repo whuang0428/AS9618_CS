@@ -162,7 +162,7 @@ const backup = {
 
 const libraryCall = {
   id: 'library-import-call', title: 'What is a program library?',
-  html: '<p>A program library is a collection of pre-written routines that other programs can call. Examples include maths routines for square roots, image routines for resizing pictures and compression routines for producing smaller files.</p>' +
+  html: '<p>A program library is a collection of pre-written subroutines that can be called from other programs. Examples include maths routines for square roots, image routines for resizing pictures and compression routines for producing smaller files.</p>' +
     figure(flow([['Import','<code>import math</code><br>Make the Python maths module available to this program.'],
       ['Call','<code>side = math.sqrt(81)</code><br>Pass 81 to the square-root routine.'],
       ['Use the result','<code>side</code> holds <code>9.0</code>.<br>The caller can now use it as a side length.']]),

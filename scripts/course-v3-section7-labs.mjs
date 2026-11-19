@@ -35,7 +35,7 @@ export const labMarkup = {
     <p>A school reading aid photographs a French sign and reads its meaning in English. The original sign says <strong lang="fr">Sortie</strong> (exit).</p>
     ${controls(select('condition', 'Photograph', '<option value="clear">Clear image</option><option value="blurred">Blurred image: OCR misses one letter</option>'))}
     <div class="s7-lab-card" data-s7-role="stimulus"><strong lang="fr">Sortie</strong><p>This is the original sign. Predict which representation passes to each stage.</p></div>
-    ${steps(['Camera', 'OCR', 'Language processing', 'Translation', 'Speech'])}
+    ${steps(['Camera', 'OCR', 'Natural language processing', 'Translation', 'Text-to-speech'])}
     <p><strong>Predict:</strong> Can a later stage produce a clear result from incorrect recognised text?</p>
     ${sequence()}${controls(button('correct', 'Check and correct the OCR text', 'disabled'))}`),
   fairness: wrap('fairness', `

@@ -26,10 +26,10 @@ export const traceData = (key, expectedTrace, finalMemory = {}) => {
 const tracePoints = key => ({
  dataPractice:['LDR sets IX=2; LDX selects address 302 and loads 9.','MOV IX copies ACC=9 into IX, retaining ACC=9.','LDI follows 310→303 and loads 12.','STO writes 12 to 320; LDD reads it back, then END terminates.'],
  arithmeticPractice:['The immediate operations give ACC=10,15,12.','The memory operands 4 and 6 then give ACC=16 and 10.','INC ACC and DEC ACC give 11 then 10.','LDR, INC IX and DEC IX give IX=3,4,3 while ACC stays 10.','The trace retains unchanged state and reaches END at 150.'],
- branchPractice:['IN gives ACC=65 and CMI compares with Memory[341]=65, recording True.','JPN is not taken, so address 183 is executed.','ADD gives 66; CMP #66 is True and JPE selects 187, skipping REJECT.','OUT emits B, then END terminates; IX and memory are unchanged.'],
+ branchPractice:['IN gives ACC=65 and CMI compares with Memory[341]=65, recording True.','JPN is not taken, so address 183 is executed.','ADD gives 66; CMP #66 is True and JPE selects 187, skipping REJECT.','OUT outputs B, then END terminates; IX and memory are unchanged.'],
  jumpPractice:['CMP records True with ACC=5.','JPE selects 224, skipping the assignment at 223.','INC ACC gives 6 and JMP selects 227, skipping DEC.','END terminates with ACC=6, IX=0 and unchanged memory.'],
  dataExam:['LDM and MOV set ACC=2 and IX=2.','LDX selects address 502 and loads 18.','SUB 503 subtracts 5 to give 13.','STO writes 13 to 510 without changing ACC or IX; END follows.'],
- loopExam:['LDD loads counter 2 from 520.','The first DEC gives 1; CMP is False and JPN selects 61.','The second DEC gives 0; CMP is True and JPN falls through to 64.','LDD loads 90, replacing the counter value in ACC.','OUT emits Z and END terminates; IX and memory are unchanged.'],
+ loopExam:['LDD loads counter 2 from 520.','The first DEC gives 1; CMP is False and JPN selects 61.','The second DEC gives 0; CMP is True and JPN falls through to 64.','LDD loads 90, replacing the counter value in ACC.','OUT outputs Z and END terminates; IX and memory are unchanged.'],
  }[key]);
 const traceQuestion = (factory, l, n, key, mapping, expected, memory = {}) => {
   const data = traceData(key, expected, memory);

@@ -155,12 +155,12 @@ const section4Models = (() => {
     return frames.map(([title, message, signal], stage) => ({ title, message, signal, labels, stage }));
   }
   function assemblyStagesFrames() {
-    const labels = ['Source text', 'Symbol table', 'Opcode + address', 'Object program'];
+    const labels = ['Source code', 'Symbol table', 'Opcode + address', 'Object code'];
     return [
       ['Read source statements', 'LDD PRICE contains the mnemonic LDD and a symbolic operand. PRICE is declared later at address 4.', 'LDD PRICE'],
       ['Assign label addresses', 'Walk the program using a location counter. Record PRICE = 4, so a forward reference can be resolved.', 'PRICE → 4'],
       ['Translate and resolve', 'Look up the mnemonic in the model instruction table and substitute address 4 for PRICE.', 'LDD 4'],
-      ['Emit a machine word', 'This illustrative machine represents LDD by 00000001. Joining it to address 00000100 produces a word the example processor can decode.', '00000001 00000100'],
+      ['Generate object code', 'This illustrative machine represents LDD by 00000001. Combining it with address 00000100 produces a machine code instruction the example processor can decode.', '00000001 00000100'],
     ].map(([title, message, signal], stage) => ({ labels, title, message, signal, stage }));
   }
   function deviceControlFrames(config) {
@@ -246,17 +246,17 @@ const section4Models = (() => {
     const source = [ ['START', 'LDD', 'FIRST'], ['', 'ADD', 'SECOND'], ['', 'STO', 'TOTAL'], ['', 'END', ''], ['FIRST', 'DATA', a], ['SECOND', 'DATA', b], ['TOTAL', 'DATA', 0] ];
     const symbols = {}, output = [], frames = [];
     const add = (pass, row, title, message) => frames.push(copy({ source, origin, symbols, output, pass, row, title, message }));
-    add(0, -1, 'Predict a forward reference', 'The first line uses FIRST before its declaration. Which address belongs to FIRST? Pass 1 must establish label addresses before pass 2 resolves every use.');
+    add(0, -1, 'Predict a forward reference', 'The first line uses FIRST before its declaration. Which address belongs to FIRST? Both passes read the source code one line at a time. Pass 1 removes unnecessary white space and builds the symbol table; pass 2 uses it to replace symbolic addresses and generate object code.');
     source.forEach(([label], i) => {
       if (label) symbols[label] = origin + i;
-      add(1, i, `Pass 1 · assign address ${origin + i}`, label ? `Record ${label} → ${origin + i} in the symbol table. ${i < 4 ? 'Instruction mnemonics are not yet emitted as machine words.' : 'A data declaration also occupies one location.'}` : `Advance the location counter to ${origin + i}. This line has no label to add. The assembler continues collecting definitions.`);
+      add(1, i, `Pass 1 · assign address ${origin + i}`, label ? `Record ${label} → ${origin + i} in the symbol table. ${i < 4 ? 'Object code is generated in the second pass.' : 'A data declaration also occupies one location.'}` : `Advance the location counter to ${origin + i}. This line has no label to add. The assembler continues collecting definitions.`);
     });
     source.forEach(([, op, operand], i) => {
       const opcode = { END: 255, LDD: 1, ADD: 2, STO: 3 }[op];
       const value = op === 'DATA' ? operand : op === 'END' ? 0 : symbols[operand];
       const word = op === 'DATA' ? binary(value, 16) : binary(opcode, 8) + binary(value, 8);
       output.push({ address: origin + i, word, resolved: op === 'DATA' ? String(value) : `${op}${op === 'END' ? '' : ` ${value}`}` });
-      add(2, i, `Pass 2 · emit location ${origin + i}`, op === 'DATA' ? `Represent declared value ${value} as a 16-bit data word.` : op === 'END' ? 'Translate END to its illustrative opcode; the unused operand field is zero.' : `Look up ${operand}=${value}. Translate ${op} to opcode ${binary(opcode, 8)} and combine it with the 8-bit address ${binary(value, 8)}.`);
+      add(2, i, `Pass 2 · generate code at ${origin + i}`, op === 'DATA' ? `Represent declared value ${value} as a 16-bit data word.` : op === 'END' ? 'Translate END to its illustrative opcode; the unused operand field is zero.' : `Look up ${operand}=${value}. Translate ${op} to opcode ${binary(opcode, 8)} and combine it with the 8-bit address ${binary(value, 8)}.`);
     });
     return frames;
   }

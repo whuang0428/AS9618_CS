@@ -1,0 +1,40 @@
+/* Editable AI figures; scoped to the Section 7 classroom and its enlargement dialog. */
+.s7-ai-scope{font-size:.98rem;line-height:1.5;color:var(--s7-muted);border-left:3px solid var(--s7-line);padding:8px 14px;margin:16px 0}
+.s7-ai-chain+.s7-ai-chain{margin-top:24px;padding-top:20px;border-top:1px solid var(--s7-line)}
+.s7-ai-chain h4{font-size:1.15rem;margin:0 0 12px;color:var(--s7-accent)}
+.s7-ai-family{border:2px solid var(--s7-accent);padding:18px;background:#f4f8f6;border-radius:8px;min-width:0}
+.s7-ai-family>strong{display:block;font-size:1.3rem;color:var(--s7-ink)}
+.s7-ai-family p{margin:6px 0 14px}
+.s7-ai-family-branches{display:grid;grid-template-columns:minmax(180px,.65fr) minmax(0,1.8fr);gap:18px;align-items:start}
+.s7-ai-rule-branch{border-left:3px solid #8b7750;padding:12px;background:#f7f2e8}
+.s7-ai-ml{background:#e7f2ed}
+.s7-ai-nn{background:#dcece7;margin-top:14px}
+.s7-ai-dl{background:#c9e1d8;margin-top:14px}
+.s7-ai-other-models{padding:10px 12px;background:#fff;border-left:3px solid var(--s7-line)}
+.s7-ai-family p:last-child{margin-bottom:0}
+.s7-ai-network,.s7-ai-clusters{display:block;width:100%;height:auto;max-width:850px;margin:0 auto;font-family:inherit}
+.s7-ai-network text{font-size:18px;fill:var(--s7-ink)}
+.s7-ai-links line{stroke:#91afa5;stroke-width:1.6}
+.s7-ai-network-layer circle{fill:#d4eade;stroke:var(--s7-accent);stroke-width:2}
+.s7-ai-axis path{fill:none;stroke:var(--s7-ink);stroke-width:2}
+.s7-ai-cluster-area ellipse{fill:#e2f0e9;stroke:#81aa9b;stroke-width:1.5;stroke-dasharray:5 5}
+.s7-ai-point{fill:var(--s7-accent);stroke:#fff;stroke-width:2}
+.s7-ai-point-2{fill:#755a2f}
+.s7-ai-chart-label text,.s7-ai-point-label{fill:var(--s7-ink);font-size:17px}
+.s7-ai-example-pairs{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;margin:4px 0 24px}
+.s7-ai-sample{display:flex;align-items:center;gap:18px;border:1px solid var(--s7-line);padding:14px 24px;background:#fff;border-radius:5px}
+.s7-ai-handwriting{display:grid;place-items:center;background:#eff3f1;width:70px;height:80px;font-family:Georgia,serif;font-style:italic;font-size:3.6rem;transform:rotate(-7deg)}
+.s7-ai-sample>span:last-child{display:grid;gap:8px;font-size:1rem}
+.s7-ai-sample strong{font-size:1.8rem}
+.s7-ai-conclusion,.s7-ai-return{padding:16px 20px;margin:18px 0 0;text-align:center;background:var(--s7-soft);font-weight:650;line-height:1.5;border:1px solid var(--s7-line)}
+.s7-ai-return{border:2px solid var(--s7-accent);border-top:0;border-radius:0 0 12px 12px;background:#e8f3ec}
+.s7-ai-rewards{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:20px}
+.s7-ai-rewards span{padding:12px 16px;background:#fff;border:1px solid var(--s7-line)}
+.s7-ai-rewards strong{display:inline-block;margin-left:8px;font-size:1.3rem}
+.s7-ai-large-value{font-size:2.4rem!important;font-weight:750;line-height:1.2;margin:16px 0!important;color:var(--s7-accent)}
+.s7-ai-pipeline .s7-flow{grid-template-columns:repeat(3,minmax(0,1fr))}
+.s7-ai-extension{margin-top:20px}
+.s7-ai-extension[open]>.s7-ai-scope{margin-inline:16px}
+@media(max-width:800px){.s7-ai-family-branches{grid-template-columns:1fr}.s7-ai-family{padding:12px}.s7-ai-family>strong{font-size:1.12rem}.s7-ai-pipeline .s7-flow{grid-template-columns:1fr}.s7-ai-network text{font-size:20px}.s7-ai-chart-label text,.s7-ai-point-label{font-size:19px}}
+@media(max-width:560px){.s7-ai-network,.s7-ai-clusters{min-width:620px}.s7-visual:has(.s7-ai-network),.s7-visual:has(.s7-ai-clusters){overflow-x:auto}.s7-ai-sample{padding:12px;gap:12px}.s7-ai-rewards{justify-content:stretch}.s7-ai-rewards span{flex:1;min-width:150px}.s7-ai-large-value{font-size:2rem!important}}
+@media print{.s7-ai-scope{font-size:.85rem}.s7-ai-network,.s7-ai-clusters{min-width:0}.s7-ai-family{break-inside:avoid}}

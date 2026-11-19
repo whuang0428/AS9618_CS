@@ -27,13 +27,13 @@ export const section5PaperCoverageNotes = {
   E041: 'Requires one utility outside security and an explanation of its use. Formatting, defragmentation, disk repair and compression are possible choices; one response does not assess all four utilities.',
   E042: 'Tests why interpretation suits the stated development stage and compilation suits later distribution. It does not test assembly translation or the Java pipeline.',
   E043: 'Tests a translator choice justified from development requirements. The source scheme permits a suitably justified compiler or interpreter answer.',
-  E044: 'Tests context-sensitive prompts, dynamic syntax checking, breakpoints and single stepping. Pretty-printing, folding, inspection and report windows require separate checks.',
+  E044: 'Tests context-sensitive prompts, dynamic syntax checking, breakpoints and single stepping. Prettyprint, expanding and collapsing code blocks, variable inspection and report windows require separate checks.',
   E5D01: 'Tests hardware and security management. The adjacent activities distinguish drivers, queues, buffers and permissions before this question.',
   E5D02: 'Combines file management with backup software. The file-management part revisits the preceding lesson; the backup part follows the recovery example.',
   E5D03: 'Tests compression and disk formatting. It does not assess every utility; the preceding examples distinguish formatting from repair and recovery.',
   E5D04: 'Tests the compiler and interpreter mechanisms in the question’s simplified model. Stopping and correction behaviour should be read in that stated model.',
   E5D05: 'Tests why a partial-compilation and interpretation route supports execution on different hardware platforms; the complete Java pipeline is taught before it.',
-  E5D06: 'Excludes prettyprint as the chosen feature. The selected taught response assesses expanding and collapsing blocks. The scheme also permits an explained indentation or formatting feature, but this question is not counted as a direct assessment of the excluded pretty-printing objective.',
+  E5D06: 'Excludes prettyprint as the chosen feature. The selected taught response assesses expanding and collapsing blocks. The scheme also permits an explained indentation or formatting feature, but this question is not counted as a direct assessment of the excluded prettyprint objective.',
 };
 
 // Aliases point to individual visuals, including destinations from both previous editions.
@@ -104,7 +104,7 @@ export const section5Journey = {
     ],
   },
   32: {
-    title: 'Inside an IDE', intro: 'Use one price calculation to observe the editor, its diagnostics and the debugger.',
+    title: 'Inside an IDE', intro: 'Use one price calculation to observe the editor, dynamic syntax checks and debugging features.',
     groups: [topic('5.2.4', 'Integrated development environment features', ideMaterials, [
       ['S5.07-CODING', ids(7, 1), ['unit-1', 'editor-feedback']],
       ['S5.07-SYNTAX', ids(7, 2)],

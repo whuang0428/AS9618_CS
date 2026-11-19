@@ -50,39 +50,39 @@ const teaching = {
     'After authentication, check the requested resource and operation against access rights.',
   ],[
     p("A user account associates an identifier with permissions and recorded activity. At login the identifier selects the claimed identity; knowing the identifier alone does not prove that the person is its owner. Separate staff accounts make it possible to associate actions with distinct identities instead of one shared label.",'Claim an identity, then supply evidence'),
-    p("A password is secret knowledge. The system checks the supplied password against the stored verifier for that account and accepts or rejects the login. The verifier is information used to check the secret; it need not be a readable stored copy of the password. Hard-to-guess passwords and restrictions on repeated attempts reduce guessing, while a disclosed password can still be used by an impostor.",'Explain what the password check establishes'),
+    p("A password is a secret used for authentication. The system checks that the supplied password is correct for the user account and accepts or rejects the login. Hard-to-guess passwords and restrictions on repeated attempts reduce guessing, while a disclosed password can still be used by an impostor.",'Explain what the password check establishes'),
     p("Authentication evaluates the identity claim. Authorisation checks whether that identity may perform a particular operation on a resource. A valid login can therefore lead to a denied deletion. Lesson 028 introduced this OS service; Lesson 036 develops the data-permission decisions. An activity log records the account used, not infallible proof of which human used stolen credentials.",'Do not stop at successful login'),
   ],{
     visual:mechanismVisual('account-permissions'),
     examples:[worked('Three independent requests for Marks.csv',[
       ['Conditions','The teacher account may read and modify Marks.csv but may not delete it. The stored mark is 46. No actual password is needed for this conceptual trace.'],
-      ['Wrong password','The verifier does not match. Login fails, the read is not authorised, and the mark remains 46.'],
+      ['Wrong password','The supplied password is incorrect. Login fails, the read is not authorised, and the mark remains 46.'],
       ['Correct password; read','Authentication succeeds. Read permission allows the service to return 46. Reading does not change it.'],
       ['Correct password; delete','Authentication succeeds but delete permission is denied. The service rejects the operation and the mark remains 46.'],
     ])],
     check:['A teacher logs in successfully but cannot delete Marks.csv. Which decision failed?','The delete authorisation failed. Authentication succeeded; the operation-specific right is absent.'],
   }),
   'S6-SIGNATURE': entry([
-    'Hash the message and sign using the sender’s private key; send the message and signature together.',
-    'The receiver checks with the sender’s trusted public key and the received message. A valid signature supports origin and unchanged signed content, not secrecy.',
+    'Hash the message to produce a digest, encrypt the digest using the sender’s private key, then send the message and digital signature together.',
+    'The receiver decrypts the signature with the sender’s public key, hashes the received message and compares the two digests. The signature checks origin and unchanged content; it does not encrypt the message.',
   ],[
     p("A hash algorithm produces a digest, a short fixed-length value derived from a message. The same message and algorithm give the same digest. A cryptographic hash is designed to make finding different messages with the same digest infeasible in practice; it is not a reversible encryption of the message. The fingerprint icon in the visual is an analogy for a message digest, not a scan of the sender's finger.",'First understand the digest'),
     p("The signer keeps a private key secret and makes the corresponding public key available for verification. These keys have different roles: the public key does not give its holder the ability to create that signer's valid signature. Before trusting the claimed origin, the receiver must have a reliable association between the public key and the sender. A public key supplied by an unknown impostor does not establish that association.",'Know which key belongs to whom'),
     steps('Create, send and check the signed message',[
       ['Sender calculates','Apply the chosen hash algorithm to the exact message to obtain its digest.'],
-      ['Sender signs','Use the private key to create a signature tied to the digest. Send the message and signature; retain the private key.'],
+      ['Sender signs','Encrypt the digest with the sender’s private key to create the digital signature. Send the message and signature; retain the private key.'],
       ['Receiver calculates','Hash the received message with the same algorithm.'],
-      ['Receiver verifies','Use the trusted sender public key to verify the signature against the digest of the received message. Accept the signature only when verification succeeds.'],
+      ['Receiver verifies','Decrypt the signature with the sender’s public key to reproduce the original digest. Compare it with the digest calculated from the received message.'],
     ]),
-    p("A simplified teaching model describes signing as encrypting the digest with the private key and checking as recovering it with the public key for comparison. Actual signature algorithms differ; some verify without recovering a digest from the signature. The invariant is a check of the signature, key and received message. H(M), h1 and h2 below denote supplied conceptual values, not computed outputs of a specified cryptographic implementation.",'Interpret the simplified comparison model'),
+    p("A simplified teaching model describes signing as encrypting the digest with the private key and checking as recovering it with the public key for comparison. Actual signature algorithms differ; some verify without recovering a digest from the signature. For this Cambridge model, describe encryption, decryption, hashing and comparison explicitly. H(M), h1 and h2 below denote supplied conceptual values, not computed outputs of a specified cryptographic implementation.",'Interpret the simplified comparison model'),
     p("A valid signature does not conceal the accompanying plaintext, prove the sender's statements true, or compensate for a stolen signing key. An attacker can edit a message while leaving its signature bytes unchanged; the verification then fails for the altered content. Hashing alone cannot establish origin because an attacker could replace an unprotected message and its plain digest together.",'State what the evidence supports'),
   ],{
     examples:[worked('A purchase order, checked in the simplified digest model',[
       ['Conditions','The sender signs message M = Order 12 units. H(M) = h1. The receiver already trusts the public key associated with this sender. These symbols illustrate the process.'],
-      ['Sender','Create signature S from h1 with the private key. Transmit M and S; do not transmit the private key.'],
-      ['Unchanged arrival','The receiver hashes M and obtains h1. Checking S with the sender public key provides matching evidence for h1. Signature verification succeeds.'],
+      ['Sender','Encrypt h1 with the sender’s private key to create signature S. Transmit M and S; do not transmit the private key.'],
+      ['Unchanged arrival','The receiver hashes M and obtains h1. Decrypting S with the sender’s public key reproduces h1, so the two digests match. Signature verification succeeds.'],
       ['Altered arrival','An attacker sends M2 = Order 120 units with the old S. In this example H(M2) = h2, different from h1.'],
-      ['Failed check','The received-message digest h2 does not match the evidence tied to S and h1. Reject the claim that M2 is the original signed content; do not silently change the order back.'],
+      ['Failed check','The digest h2 of the received message differs from h1 recovered by decrypting S. Reject the claim that M2 is the original signed content; do not silently change the order back.'],
       ['Interpret both outcomes','Observers can read either unencrypted order. A signature authenticates signed content; encryption must separately provide confidentiality.'],
     ])],
     check:['A receiver verifies the old signature but never hashes or otherwise checks the received document against it. Has the document been authenticated?','No. The received content must be included in the signature verification. Checking evidence detached from the received message cannot detect that the message was replaced.'],
@@ -172,7 +172,7 @@ const teaching = {
     'Explain arrival, execution, replication and possible damage separately.',
   ],[
     p("A virus attaches to or modifies a host file or program. A shared or downloaded infected host provides a route to another computer, but the arrival of the file and the execution of its code are different events. In the executable-host model used here, running the infected program runs the attached code.",'Identify the host and activation event'),
-    p("The virus can copy its code into additional hosts, creating further opportunities to execute and spread. Its payload may alter or delete data or disrupt normal processing. Replication describes how it spreads; the payload describes harmful actions it performs. A virus need not immediately erase every file to count as an infection.",'Separate spread from impact'),
+    p("The virus can copy its code into additional hosts, creating further opportunities to execute and spread. The virus may alter or delete data or disrupt normal processing. Replication describes how it spreads; these other actions describe the damage it causes. A virus need not immediately erase every file to count as an infection.",'Separate spread from impact'),
     p("Avoiding untrusted execution and controlling software installation reduce opportunities for the code to run. Updated anti-virus can detect and isolate recognised infection; a trusted backup may support recovery after damage. None of these precautions can be justified merely by saying that it makes the computer safe: identify the stage it interrupts.",'Explain the link to a precaution'),
   ],{
     visual:mechanismVisual('virus-host'),
@@ -180,7 +180,7 @@ const teaching = {
       ['Initial state','Computer A has an infected drawing program. Computer B has two clean executable files and an independent backup of its work.'],
       ['Arrival','The program is copied to B. In this stated model it has not yet executed on B.'],
       ['Execution and replication','A user runs it. The viral code executes and infects one other executable on B; that file can now carry infection when shared or run.'],
-      ['Possible impact','Its payload corrupts a saved drawing. Detection and isolation address the infected files; recovery of the drawing requires a usable clean copy.'],
+      ['Possible impact','The virus corrupts a saved drawing. Detection and isolation address the infected files; recovery of the drawing requires a usable clean copy.'],
       ['Changed condition','If the copied host is detected and quarantined before execution, this execution-and-replication path is interrupted.'],
     ])],
   }),
@@ -423,10 +423,10 @@ const teaching = {
     check:['The parity bit alone flips in an even-parity group. Is an error detected, and can the check locate that bit?','Yes: one flip changes parity. No: a failed byte-parity check cannot distinguish that position from another single flipped bit.'],
   }),
   'S6-BLOCK-PARITY': entry([
-    'Append row parity bits and a column-parity row, then transmit that checking information with the block.',
+    'Append a parity bit to each row and a parity byte for the columns, then transmit them with the block.',
     'Under a single-bit error assumption, one failed row and one failed column locate the bit; correct and recheck.',
   ],[
-    p("Two-dimensional parity adds checking information in both directions. Start with the three seven-bit data rows below and use even parity throughout. Append one row-parity bit to each row. Then count each column of these complete rows to form a final column-parity row, often called a parity byte. This last row is transmitted, not invented by the receiver after an error.",'Construct the sender’s complete block'),
+    p("A parity block check uses parity bits for both rows and columns. Start with the three seven-bit data rows below and use even parity throughout. Append one row-parity bit to each row. Then count each column of these complete rows to form a parity byte, placed in the final row. This last row is transmitted, not invented by the receiver after an error.",'Construct the sender’s complete block'),
     table('Sender construction',['Row','Seven left-hand bits','Eighth bit','Total 1s in complete row'],parityTableRows),
     p("For data column 4, the sender's rows contain 1, 0, 0: one 1, so the final parity row needs 1 in that column. For column 1 they contain 1, 0, 1: two 1s, so the final bit is 0. Repeating across all eight columns gives 00010100. In this construction the lower-right bit completes the parity information consistently; it is not another original data bit.",'Explain how a column value is obtained'),
     table('Check all column totals including the transmitted last row',['Column','1','2','3','4','5','6','7','8'],[
@@ -470,7 +470,7 @@ const teaching = {
 
 const lessonStages = {
   1:['Classify the four independent incidents, allowing justified overlap between the properties.','Then identify which protection must follow the data copy and which must restore the working service.'],
-  2:['Stage 1: authenticate an account and a message. Read the digest and key explanation before tracing a digital signature; compare enrolment with later biometric matching.','Stage 2: apply the complete firewall policy, then distinguish detection, containment and recovery. Justify a control from the stated risk.'],
+  2:['Stage 1: authenticate an account and a message. Read the digest and key explanation before tracing a digital signature; compare enrolment with later biometric matching.','Stage 2: apply the complete set of firewall rules, then distinguish detection, containment and recovery. Justify a control from the stated risk.'],
   3:['Stage 1: follow host execution, covert collection and unauthorised access as different threat mechanisms.','Stage 2: compare phishing with pharming using the normal DNS route. Match each precaution to the step it interrupts.'],
   4:['Follow both encryption and decryption, including the key and final readable result.','Then execute the permission table as a sequence and distinguish a protected service from an independent exported copy.'],
   5:['Stage 1 · Input rules: distinguish validation from source verification, then apply bounds, patterns, presence and lookup checks to the complete form.','Stage 2 · Identifier and entry checks: generate and test a check digit, including zero and a missed error; resolve double-entry differences against the source.','Stage 3 · Transfer checks: construct byte and block parity, calculate both checksum values, and finish rejection, correction or retransmission before evaluating limitations.'],
